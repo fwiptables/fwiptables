@@ -31,8 +31,8 @@ command_id="$(command -v id)" &> /dev/null
 command_xhost="$(command -v xhost)" &> /dev/null
 ####
 ####
-if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] || [ "$(logname)" = "no login name" ]; then echo -n
-else sudo -u "$(logname)" command_xhost +SI:localuser:root &> /dev/null; fi
+if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] &> /dev/null ; then echo -n
+else sudo -u "$(logname)" command_xhost +SI:localuser:root &> /dev/null ; fi
 ####
 ####
 #### deprecated
