@@ -9,7 +9,7 @@
 ##############################        spanish:   las basicas variables del sistema
 ##
 mifirewall=$1 ; mivariable=$2 ; yes=""; no="no" ; # system variables
-fprogram="Fran iptables" ; fver="dev-156" ; # program and version
+fprogram="Fran iptables" ; fver="156" ; # program and version
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ; # download web link
 brillo="tput bold"; normal="tput sgr0"; # deleted, now all tput sgr0
 ##
