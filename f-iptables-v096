@@ -1,0 +1,166 @@
+# franes.iptables.airoso
+# doc.iptables.airoso:  iptables para legacy y para nft
+#
+# puertos del firewall
+###########################
+#!/bin/bash
+#
+###############################		inicio de /etc/f-iptables/default.cfg |||||
+# hace el archivo de configuracion por defecto cuando no existe previamente
+if [ -f /etc/f-iptables/default.cfg ]; then echo; else sudo mkdir /etc/f-iptables/ ; sudo cat $0 | head -45 > /etc/f-iptables/default.cfg; fi
+# limpia la pantalla
+clear
+# deja una linea en blanco
+echo
+export ruta="/usr/sbin" si="" no="echo off"
+# las variables que puedes cambiar para permitir acceso
+######################	variables para modificar con $si o $no
+export hayexcepciones="$no"
+# hayexcepciones: $si para permitir host excepcioneles y $no para desactivar
+export hayping="$no"
+# hayping: $si para permitir los pings a terceros y $no para denegar
+export haylogserver="$no"
+# haylogeosserver: $si para poder logear tcp $no para no poder logear tcp
+######
+######################	variables a modificar añadiendo "," o con rangos de ":"
+export excepciones="baldras.wesnoth.org"
+# excepciones permitir a uno o a varios  host desde el firewall o sin valor
+export logserver=discard,ipp,dict,ssh
+# puertos servidor tcp a los que se guarda un log cuando entran paquetes
+export redserver=192.168.1.0/16,192.168.2.0/24
+# redserver: la red para puertos servidores preferible red local o varias ips
+export redcliente=0/0
+# redcliente: la red para puertos clientes preferible todas las redes
+export servidortcp=discard,ipp,dict,6771
+# servidortcp: los puertos servidores tcp especificados
+export servidorudp=discard,dict
+# servidorudp: los puertos servidores udp especificados
+export clienteudp=domain,bootpc,bootps,ntp
+# clienteudp: los puertos clientes udp  especificados
+export clientetcp=domain,http,https
+# clientetcp: los puertos clientes tcp especificados
+##############################		fin de /etc/f-iptables/default.cfg |||||
+###############################		fin de variables para modificar
+##
+##
+##
+##################################
+export firewall=$1 variable=$2
+if [ -f /etc/f-iptables/$variable ]; then source /etc/f-iptables/$variable;
+else source /etc/f-iptables/default.cfg; fi
+###############################		o va sobreescribir las variables con un archivo.cfg
+############################################################################################
+export firewall=$1 export variable=$2
+##########################################	variables automaticas del sistema
+if [ "$firewall" = "desconectado" ]; then echo FIREWALL DESCONECTADO;
+export activarservidor="$no" activarcliente="$no" mojado="$no"; 
+elif [ "$firewall" = "cliente" ];then echo FIREWALL CLIENTE;
+export activarservidor="$no" activarcliente="" mojado="$no"; 
+elif [ "$firewall" = "servidor" ]; then echo FIREWALL SERVIDOR;
+export activarservidor="" activarcliente="$no" mojado="$no"; 
+elif [ "$firewall" = "clienteyservidor" ]; then echo FIREWALL CLIENTE Y SERVIDOR;
+export activarservidor=""; export activarcliente="";export mojado="$no"; 
+elif [ "$firewall" = "permisivo" ]; then echo FIREWALL PERMISIVO;
+export activarservidor="$no" activarcliente="$no" mojado=""; 
+else
+$comprueba sudo echo iptables-legacy:
+$comprueba sudo $ruta/iptables-legacy -v -L INPUT
+$comprueba sudo $ruta/iptables-legacy -v -L OUTPUT
+$comprueba sudo echo iptables-nft:
+$comprueba sudo $ruta/iptables-nft -v -L INPUT
+$comprueba sudo $ruta/iptables-nft -v -L OUTPUT
+echo _____parmetros____ $0 $1 $2
+echo "lanza sin parametros es para listar iptables."
+echo "El primer parametro (activar iptables):  desconectado o cliente o clienteyservidor o permisivo"
+echo "El segundo parametro: (opcional):        configs de la carpeta: /etc/f-iptables/"
+echo "Las configuraciones opcionales:         " $(ls /etc/f-iptables/)
+echo "Fran iptables version 0.96"
+exit 0; fi
+################
+echo
+################################	 las anteriores variables activadas
+################################
+echo Configurando las variables de iptables
+echo variables activadas
+echo 
+############################ las reglas de iptables
+echo Configurando iptables-legacy
+sudo $ruta/iptables-legacy -t filter -F
+sudo $ruta/iptables-legacy -t nat -F
+sudo $ruta/iptables-legacy -t mangle -F
+sudo $ruta/ip6tables-legacy -t filter -F
+sudo $ruta/ip6tables-legacy -t nat -F
+sudo $ruta/ip6tables-legacy -t mangle -F
+sudo $ruta/ip6tables-legacy -A INPUT -j DROP
+sudo $ruta/ip6tables-legacy -A OUTPUT -j DROP
+sudo $ruta/ip6tables-legacy -A FORWARD -j DROP
+sudo $ruta/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT > /dev/null
+$haylogserver  sudo $ruta/iptables-legacy -A INPUT -p tcp -m multiport --dports $logserver -j LOG > /dev/null
+$hayexcepciones sudo $ruta/iptables-legacy -A INPUT -s $excepciones -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-legacy -A INPUT -p udp -m multiport --dports $servidorudp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-legacy -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-legacy -A INPUT -p udp -m multiport --sports $clienteudp -m state --state established -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-legacy -A INPUT -p tcp -m multiport --sports $clientetcp -m state --state established -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$hayping sudo $ruta/iptables-legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT > /dev/null
+sudo $ruta/iptables-legacy -A INPUT -j DROP > /dev/null
+sudo $ruta/iptables-legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT > /dev/null
+$hayexcepciones sudo $ruta/iptables-legacy -A OUTPUT -d $excepciones -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-legacy -A OUTPUT -p udp -m multiport --sports $servidorudp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-legacy -A OUTPUT -p tcp -m multiport --sports $servidortcp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-legacy -A OUTPUT -p udp -m multiport --dports $clienteudp -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-legacy -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$hayping sudo $ruta/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT > /dev/null
+sudo $ruta/iptables-legacy -A OUTPUT -j DROP
+sudo $ruta/iptables-legacy -A FORWARD  -j DROP
+echo iptables-legacy activado
+echo
+echo Configurando iptables-nft
+sudo $ruta/iptables-nft -t filter -F
+sudo $ruta/iptables-nft -t nat -F
+sudo $ruta/iptables-nft -t mangle -F
+sudo $ruta/ip6tables-nft -t filter -F
+sudo $ruta/ip6tables-nft -t nat -F
+sudo $ruta/ip6tables-nft -t mangle -F
+sudo $ruta/ip6tables-nft -A INPUT -j DROP
+sudo $ruta/ip6tables-nft -A OUTPUT -j DROP
+sudo $ruta/ip6tables-nft -A FORWARD -j DROP
+sudo $ruta/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT > /dev/null
+$haylogserver sudo $ruta/iptables-nft -A INPUT -p tcp -m multiport --dports $logserver -j LOG > /dev/null
+$hayexcepciones sudo $ruta/iptables-nft -A INPUT -s $excepciones -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-nft -A INPUT -p udp -m multiport --dports $servidorudp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-nft -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-nft -A INPUT -p udp -m multiport --sports $clienteudp -m state --state established -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-nft -A INPUT -p tcp -m multiport --sports $clientetcp -m state --state established -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$hayping sudo $ruta/iptables-nft -A INPUT -p icmp --icmp-type echo-reply  -j ACCEPT > /dev/null
+sudo $ruta/iptables-nft -A INPUT -j DROP > /dev/null
+sudo $ruta/iptables-nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT > /dev/null
+$hayexcepciones sudo $ruta/iptables-nft -A OUTPUT -d $excepciones -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-nft -A OUTPUT -p udp -m multiport --sports $servidorudp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarservidor sudo $ruta/iptables-nft -A OUTPUT -p tcp -m multiport --sports $servidortcp -s $redserver -d $redserver -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-nft -A OUTPUT -p udp -m multiport --dports $clienteudp -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$activarcliente sudo $ruta/iptables-nft -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redcliente -d $redcliente -j ACCEPT > /dev/null
+$hayping sudo $ruta/iptables-nft -A OUTPUT -p icmp --icmp-type echo-request  -j ACCEPT > /dev/null
+sudo $ruta/iptables-nft -A OUTPUT -j DROP
+sudo $ruta/iptables-nft -A FORWARD -j DROP
+echo iptables-nft activado
+echo
+$mojado sudo $ruta/iptables-legacy -F > /dev/null
+$mojado sudo $ruta/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT > /dev/null
+$mojado sudo $ruta/iptables-legacy -A INPUT -m state --state established -j ACCEPT > /dev/null
+$mojado sudo $ruta/iptables-legacy -A INPUT -j DROP > /dev/null
+$mojado sudo $ruta/iptables-legacy -A OUTPUT -j ACCEPT > /dev/null
+$mojado sudo $ruta/iptables-legacy -A FORWARD  -j DROP > /dev/null
+$mojado sudo $ruta/iptables-nft -F > /dev/null
+$mojado sudo $ruta/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT > /dev/null
+$mojado sudo $ruta/iptables-nft -A INPUT -m state --state established -j ACCEPT > /dev/null
+$mojado sudo $ruta/iptables-nft -A INPUT -j DROP > /dev/null
+$mojado sudo $ruta/iptables-nft -A OUTPUT -j ACCEPT > /dev/null
+$mojado sudo $ruta/iptables-nft -A FORWARD -j DROP > /dev/null
+##########################
+echo has lanzado $0 $1
+if [ "$firewall" = "permisivo" ]; then exit 0; fi
+if [ -f /etc/f-iptables/$2 ]; then echo Con la configuracion: $2;
+else echo Con la configuracion: default.cfg; fi
+echo
+# sale del script
+exit 0
