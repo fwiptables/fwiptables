@@ -12,6 +12,7 @@
 mifirewall=$1 ; mivariable=$2 ; yes=""; no="no" ; # system variables
 fprogram="Fran iptables" ; fver="dev-157" ; # program and version
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ; # download web link
+rutaconfig="/etc/f-iptables"            # path to config files
 brillo="tput bold"; normal="tput sgr0"; # deleted, now all tput sgr0
 ##
 ##############################       english: number line of the custom variables y number of customs variables y wide at list cfgs
@@ -81,8 +82,8 @@ echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
-echo $cinco "  The second Option: (Optional):  the configs are in folder /etc/f-iptables/  "
-ls /etc/f-iptables | fmt $flistado  ;
+echo $cinco "  The configs are in folder $rutaconfig  "
+ls $rutaconfig | fmt $flistado  ;
 echo ""
 echo $cinco "  Examples:"
 echo ""
@@ -117,7 +118,7 @@ else echo "clienteudp=domain,ntp,bootpc,netbios-ns,netbios-dgm; clientetcp=domai
 # else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,5900:5910" > /etc/f-iptables/vnc1.cfg ; fi
 ##############################       english: overwrite system varibles for files variables configured
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion
-if [ -f /etc/f-iptables/$2 ]; then source /etc/f-iptables/$2 ; else source /etc/f-iptables/default1.cfg; fi
+if [ -f $rutaconfig/$2 ]; then source $rutaconfig/$2 ; else source $rutaconfig/default1.cfg; fi
 ##############################       english: automatic-upgrade, upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: automatica-acutalizacion, actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "web-upgrade" ]; then echo ; echo "   $fprogram version $fver" ;
@@ -165,9 +166,9 @@ activarservidor="no" activarcliente="no" mojado="";
 #############################       english: system script, the reconfig option, delete and create files1.cfg
 #############################       spanish: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
 elif [ "$mifirewall" = "reconfig" ]; then echo -n ;
-rm /etc/f-iptables/*1.cfg; $0 ; echo;
+rm $rutaconfig/*1.cfg; $0 ; echo;
 echo $cincuenta " updating default configuration "  $cincuenta
-echo $cinco "   Updating default configurations: /etc/f-iptables/files1.cfg in $fprogram version $fver " ;
+echo $cinco "   Updating default configurations files1.cfg:  $rutaconfig/files1.cfg " ;
 echo; echo; exit
 #############################       english: system script, the eraserules option
 #############################       spanish: script de sistema, la opcion borra reglas
@@ -293,16 +294,16 @@ elif [ "$mifirewall" = "new-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
 echo "";
-echo "     Type the filename for a one new configuration it will be in path /etc/f-iptables/";
+echo "     Type the filename for a one new configuration it will be in path $rutaconfig";
 echo "     Or control+c to stop"
 echo
 echo $cinco
 read -r -p "          Type one new filename without path [ New-Config.cfg ]:  " frespuestaa ;  frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 echo; echo; echo;
-echo "  The new file will be /etc/f-iptables/$frespuestab";
+echo "  The new file will be $rutaconfig/$frespuestab";
 echo "  Edit the file $frespuestab"
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g" > /etc/f-iptables/$frespuestab
-echo "" ; echo ""; editor /etc/f-iptables/$frespuestab;
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
+echo "" ; echo ""; editor $rutaconfig/$frespuestab;
 echo "" ;
 echo "          launch firewall for client:              $0 client $frespuestab   " ;
 echo "" ;
@@ -316,16 +317,16 @@ elif [ "$mifirewall" = "nueva-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
 echo "";
-echo "     Escribe el nombre de archivo para una nueva configuracion, estara en /etc/f-iptables/";
+echo "     Escribe el nombre de archivo para una nueva configuracion, estara en $rutaconfig";
 echo "     O pulsa Control+c para parar esto"
 echo
 echo $cinco
 read -r -p "          Escribe un nuevo nombre de archivo sin ruta [ Nueva-Configuracion.cfg ]:  " frespuestaa ; frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 echo; echo;
-echo "  El nuevo archivo estara en /etc/f-iptables/$frespuestab" ;
+echo "  El nuevo archivo estara en $rutaconfig/$frespuestab" ;
 echo "  Edita el archivo $frespuestab "
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g" > /etc/f-iptables/$frespuestab
-echo "" ; echo ""; editor /etc/f-iptables/$frespuestab ;
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
+echo "" ; echo ""; editor $rutaconfig/$frespuestab ;
 echo "" ;
 echo "          lanza el cortafuegos para cliente:              $0 client $frespuestab   " ;
 echo "" ;
@@ -339,17 +340,17 @@ elif [ "$mifirewall" = "modify-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
 echo
-echo $cinco "  The configs are in folder /etc/f-iptables/ : "
-ls /etc/f-iptables | fmt $flistado
+echo $cinco "  The configs are in folder $rutaconfig : "
+ls $rutaconfig | fmt $flistado
 echo
-echo "     Type the filename for a old configuration wich will be in path /etc/f-iptables/"
+echo "     Type the filename for a old configuration wich will be in path $rutaconfig"
 echo "     Or Control+c to stop"
 echo
 echo $cinco
 read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa ; frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 echo;
 echo "" ;
-editor /etc/f-iptables/$frespuestab ;
+editor $rutaconfig/$frespuestab ;
 echo "" ;
 echo "          lanza el cortafuegos para cliente:              $0 client $frespuestab   " ;
 echo "" ;
@@ -363,10 +364,10 @@ elif [ "$mifirewall" = "rename-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
 echo
-echo $cinco "  The configs are in folder /etc/f-iptables/ : "
-ls /etc/f-iptables | fmt $flistado
+echo $cinco "  The configs are in folder $rutaconfig : "
+ls $rutaconfig | fmt $flistado
 echo
-echo "     The files are in path /etc/f-iptables/"
+echo "     The files are in path $rutaconfig"
 echo "     Or Control+c to stop"
 echo
 echo $cinco
@@ -376,7 +377,7 @@ echo
 read -r -p  "     RENAME: Type the name of one new config, whitout path: [ Config-New-To-Rename.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
 echo        "     the new name is : $nuevab"
 echo
-mv /etc/f-iptables/$fviejab /etc/f-iptables/$fnuevab
+mv $rutaconfig/$fviejab $rutaconfig/$fnuevab
 echo        "     file renamed now with new name:  $fnuevab "
 echo "" ;
 exit
@@ -386,16 +387,16 @@ elif [ "$mifirewall" = "delete-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
 echo
-echo $cinco "  The configs are in folder /etc/f-iptables/ : "
-ls /etc/f-iptables | fmt $flistado
+echo $cinco "  The configs are in folder $rutaconfig : "
+ls $rutaconfig | fmt $flistado
 echo
-echo "     The files are in path /etc/f-iptables/"
+echo "     The files are in path $rutaconfig"
 echo "     Or Control+c to stop"
 echo
 echo $cinco
 read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada ; fborradaa=$(sed 's/\///g' <<< "$fborrada")
 echo
-rm /etc/f-iptables/$fborradaa
+rm $rutaconfig/$fborradaa
 echo
 exit
 ############################       english: auth-sudo: the auth-sudo option en english
@@ -417,8 +418,10 @@ cat /etc/sudoers.d/f-iptables-firewall
 echo $cinco
 echo "     alias in /etc/bash_completion.d/f-iptables-firewall:"
 echo "     alias=sudo f-iptables-firewall "
+echo " alias=sudo f-iptables-firewall" >  /etc/bash_completion.d/f-iptables-firewall
 echo
 echo $cinco "   Ok. $autorizados will use:     f-iptables-firewall"
+echo $cinco "   Ok. f-iptables-firewall will be with alias sudo "
 echo; echo; echo;
 exit
 
@@ -455,8 +458,8 @@ echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
-echo $cinco "  The second Option, Optional:  The configs are in folder /etc/f-iptables/ are:"
-ls /etc/f-iptables | fmt $flistado  ;
+echo $cinco "  The second Option, Optional:  The configs are in folder $rutaconfig are:"
+ls $rutaconfig | fmt $flistado  ;
 echo ""
 echo $cinco "  Examples:"
 echo ""
@@ -485,10 +488,12 @@ echo "      iproute: Show net devices and ip route tables"
 echo "      sockets: Show net sockets with command ss"
 echo "      sockets: Show net sockets with command lsof"
 echo; echo $cinco "        Configure files.cfg"; echo
-echo "     reconfig: Rewrite default files in  /etc/f-iptables/files1.cfg"
+echo "     reconfig: Rewrite default files in  $rutaconfig/files1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
-echo "modify-config: Edit one configuracion.cfg"
+echo "modify-config: Edit one config.cfg"
+echo "rename-config: Rename one configuration file"
+echo "delete-config: Delete one configuration file"
 echo; echo $cinco "        Update options"; echo
 echo "      upgrade: Upgrade $fprogram at the latest version"
 echo "    auth-sudo: Permit sudo f-iptables-firewall to other choosed users"
@@ -500,7 +505,7 @@ echo $cincuenta " The second option: (optional):"
 echo ""
 echo "    f-iptables client and server takes the config.cfg in the command line"
 echo "    f-iptables without specific config.cfg it takes default1.cfg"
-echo "    you can  modify and create the files in the folder /etc/f-iptables/"
+echo "    you can  modify and create the files in the folder $rutaconfig"
 echo ""
 echo $cincuenta " Examples:"
 echo ""
@@ -546,8 +551,8 @@ echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
-echo $cinco "   La segunda opción (Opcional):  lasconfiguraciones en /etc/f-iptables/ son:"
-ls /etc/f-iptables/ | fmt $flistado  ;
+echo $cinco "   Las configuraciones en $rutaconfig son:"
+ls $rutaconfig | fmt $flistado  ;
 echo ""
 echo $cinco "  Ejemplos:"
 echo ""
@@ -576,10 +581,12 @@ echo "      iproute: Muestra los dispositivos de red y la tabla de rutas"
 echo "      sockets: Muestra las conexiones con comando ss"
 echo "         lsof: Muestra las conexiones con command lsof"
 echo; echo $cinco "        Configura archivos.cfg"; echo
-echo "     reconfig: Reescribe configs por defecto /etc/f-iptables/archivos1.cfg"
+echo "     reconfig: Reescribe configs por defecto $rutaconfig/archivos1.cfg"
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-config: Crea una nueva configuracion.cfg en español"
 echo "modify-config: Edita una existente configuracion.cfg"
+echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
+echo "delete-config: Borra unaa existente configuracion.cfg"
 echo; echo $cinco "        Opciones de actualiciacion"; echo
 echo "      upgrade: Actualiza $fprogram a la ultima version"
 echo "    auth-sudo: Permite sudo f-iptables-firewall a usuarios elegidos"
@@ -591,7 +598,7 @@ echo $cincuenta " La segunda opcion: (opcional)"
 echo ""
 echo "    f-iptables cliente y servidor toman la configuración de un archivo.cfg"
 echo "    f-iptables sin especificar una config.cfg tomara por defect default1.cfg"
-echo "    Puedes modificar y crear archivos en la carpeta /etc/f-iptables/"
+echo "    Puedes modificar y crear archivos en la carpeta $rutaconfig"
 echo ""
 echo $cincuenta "  Ejemplos:"
 echo ""
@@ -636,8 +643,8 @@ echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
-echo $cinco "  The second Option (Optional):  The configs are in folder /etc/f-iptables/"
-ls /etc/f-iptables/ | fmt $flistado ;
+echo $cinco "  Te configs are in folder $rutaconfig"
+ls $rutaconfig | fmt $flistado ;
 echo ""
 echo $cinco "  Examples: "
 echo ""
@@ -852,7 +859,7 @@ if [ "$1" = "offline" ]; then echo; echo "  The iptables configured for disconne
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
 if [ "$1" = "allpermisive" ]; then echo; echo "  The iptables configured for all permisive to internet";
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
-if [ -f /etc/f-iptables/$2 ]; then echo "  $program configured with the configuration: $2" ;
+if [ -f $rutaconfig/$2 ]; then echo "  $program configured with the configuration: $2" ;
 else echo " $program configured with the default configuration: default1.cfg"; fi ;
 echo; echo;
 echo $cinco " With Client ports IP: " $cinco ;
