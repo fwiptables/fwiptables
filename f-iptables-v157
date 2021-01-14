@@ -845,5 +845,5 @@ echo
 ##    upload f-iptables repository in folder repository  :     git commit -a ; git push ssh://f-iptables@git.code.sf.net/p/f-iptables/code
 ##    download f-iptables repository in folder user      :     git clone https://git.code.sf.net/p/f-iptables/code
 ##
-######################         exit of script
+#######################
 exit
