@@ -1,10 +1,11 @@
 #!/bin/bash
 ####
+##
 ##  this program is with gpl license, the program is copyleft, it is free.
 ##
 ## the comments are in english language and spanish language
 ##
-##
+####
 ##############################        english:   basic system variables
 ##############################        spanish:   las basicas variables del sistema
 ##
@@ -177,7 +178,7 @@ echo ; echo ; exit
 #############################       english: system script, the iproute option
 #############################       spanish: script de sistema, la opcion iproute
 elif [ "$mifirewall" = "iproute" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
-echo $cincuenta $cincuenta "   Show ip address and ip route   " $cinco ; echo
+echo $cincuenta $cincuenta "   Show ip address and ip route   " $cinco ;
 uname -a
 echo
 echo $cinco " ip address " $cinco ;
@@ -190,7 +191,6 @@ echo ; exit
 elif [ "$mifirewall" = "sockets" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  $cincuenta $cincuenta "   The sockets list with ss  " $cinco ;
-echo ;
 uname -a
 echo ;
 echo $cinco "     The ipv6 sockets      " $cinco ; echo ;  ss -a6 ;   echo ;  echo $cinco "     The ipv4 sockets     " $cinco ;echo ; ss -a4 ;
@@ -199,8 +199,7 @@ echo ; exit
 #############################       spanish: script de sistema, la lsof sockets
 elif [ "$mifirewall" = "lsof" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
-echo  $cincuenta $cincuenta "   The sockets list with lsof  " $cinco ;
-echo ;
+echo  $cincuenta $cincuenta "   The sockets list with lsof  " $cinco
 uname -a
 echo ;
 echo $cinco "     The sockets with lsof     " $cinco ;
@@ -385,8 +384,9 @@ exit
 ############################       english: the help option en english
 ############################       spanish: la opcion de ayuda en ingles
 elif [ "$mifirewall" = "ipforwading" ]; then echo ; echo ;
-echo "  The $fprogram version $fver ipforwading kernel linux"
-echo $cincuenta $cincuenta
+echo "  The $fprogram version $fver ipforwading values kernel linux"
+echo $cincuenta $cincuenta;
+uname -a
 echo; echo;
 echo $cinco "   Active 1 or deactive 0 for ipforwading with sysctl:    " $cinco
 echo; echo
