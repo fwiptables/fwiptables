@@ -841,4 +841,10 @@ echo
 # left script
 #######################         english: End of script
 #######################         spanish: fin del script
+##
+##    upload f-iptables in folder repository  :   git push  ssh://f-iptables@git.code.sf.net/p/f-iptables/code
+##
+##    download f-iptables in folder user      :   git clone https://git.code.sf.net/p/f-iptables/code
+##
+######################         exit of script
 exit
