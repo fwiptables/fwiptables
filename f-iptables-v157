@@ -486,7 +486,8 @@ echo "     nat-ipv6: List iptables nat rules from ipv6"
 echo; echo $cinco "        List open sockets"; echo
 echo "      iproute: Show net devices and ip route tables"
 echo "      sockets: Show net sockets with command ss"
-echo "      sockets: Show net sockets with command lsof"
+echo "         lsof: Show net sockets with command lsof"
+echo "  ipforwading: Show kernel config about forward"
 echo; echo $cinco "        Configure files.cfg"; echo
 echo "     reconfig: Rewrite default files in  $rutaconfig/files1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
@@ -580,6 +581,7 @@ echo; echo $cinco "        Lista las conexiones abiertas"; echo
 echo "      iproute: Muestra los dispositivos de red y la tabla de rutas"
 echo "      sockets: Muestra las conexiones con comando ss"
 echo "         lsof: Muestra las conexiones con command lsof"
+echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios"
 echo; echo $cinco "        Configura archivos.cfg"; echo
 echo "     reconfig: Reescribe configs por defecto $rutaconfig/archivos1.cfg"
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
