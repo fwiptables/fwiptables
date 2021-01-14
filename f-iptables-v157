@@ -95,30 +95,52 @@ echo ""
 echo; echo; exit ; fi
 ##
 ##
-##############################       english: create the default1.cfg file when it do not exists and the files1.cfg
-##############################       spanish: crea el archivo default1.cfg cuando no existe, y los archivos1.cfg
-if [ -d /etc/f-iptables ]; then echo -n ; else rm /etc/f-iptables; mkdir /etc/f-iptables ; fi
-if [ -f /etc/f-iptables/default1.cfg ]; then echo -n ;
-else echo "" ; cat $0 | head $flinea | grep -iv ^# | tail $fvariables  > /etc/f-iptables/default1.cfg; fi
-if [ -f /etc/f-iptables/web1.cfg ]; then echo -n ;
-else echo "clientetcp=domain,http,https ; clienteudp=domain,ntp,bootpc ; haypingsend=no ;  haypingrecive=no ; " > /etc/f-iptables/web1.cfg; fi
-if [ -f /etc/f-iptables/games1.cfg ]; then echo -n ;
-else echo "clienteudp=domain,ntp,bootpc,12000:60000; clientetcp=domain,http,https,14998:15002 ;  haypingsend= ;  haypingrecive= ; "  > /etc/f-iptables/games1.cfg; fi
-if [ -f /etc/f-iptables/samba1.cfg ]; then echo -n ;
-else echo "clienteudp=domain,ntp,bootpc,netbios-ns,netbios-dgm; clientetcp=domain,http,https,netbios-ssn,microsoft-ds; servidorudp=netbios-ns,netbios-dgm ; servidortcp=netbios-ssn,microsoft-ds" > /etc/f-iptables/samba1.cfg; fi
-#if [ -f /etc/f-iptables/server1.cfg ]; then echo -n ;
-#else echo "clientetcp=domain,domain-s,http,https; haypingrecive=""; haypingsend="" haylogserver=; logservertcp=ssh; servidortcp=ssh,http,https ipv4= ipv6=" > /etc/f-iptables/server1.cfg; fi
-# if [ -f /etc/f-iptables/vpn1.cfg ]; then echo -n ;
-# else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https;  sinreenvio=no; hayvpn=; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" > /etc/f-iptables/vpn1.cfg ; fi
-# if [ -f /etc/f-iptables/several1.cfg ]; then echo -n;
-# else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,rsync,ssh,ftp,ftp-data,pop3,pop3s,poppassd,smtp,imap2,imaps ; haypingsend=; haypingrecive=;" > /etc/f-iptables/several1.cfg ; fi
-# if [ -f /etc/f-iptables/ssh1.cfg ]; then echo -n
-# else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,printer,ipp,ssh; haypingsend= haypingrecive=" > /etc/f-iptables/ssh1.cfg ; fi
-# if [ -f /etc/f-iptables/vnc1.cfg ]; then echo -n
-# else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,5900:5910" > /etc/f-iptables/vnc1.cfg ; fi
+##############################       english: update default1.cfg
+##############################       spanish: actualiza default1.cfg
+if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; fi
+if [ -f $rutaconfig/default1.cfg ]; then echo -n ;
+else echo "" ; cat $0 | head $flinea | grep -iv ^# | tail $fvariables  > $rutaconfig/default1.cfg; fi
+#############################        english: system script, the first options: offline, client, server and allpermisive
+#############################        spanish: script the sistema, primeras opciones: offline, client, server and allpermisive
+if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo $cinco $cinco $cinco $cinco
+activarservidor="no" activarcliente="no" mojado="no";
+elif [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo $cinco $cinco $cinco $cinco
+activarservidor="no" activarcliente="" mojado="no";
+elif [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo $cinco $cinco $cinco $cinco
+activarservidor=""  activarcliente="" mojado="no";
+elif [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo $cinco $cinco $cinco $cinco
+activarservidor="no" activarcliente="no" mojado="";
 ##############################       english: overwrite system varibles for files variables configured
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion
 if [ -f $rutaconfig/$2 ]; then source $rutaconfig/$2 ; else source $rutaconfig/default1.cfg; fi
+#############################       english: system script, the reconfig option, delete and create files1.cfg
+#############################       spanish: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
+elif [ "$mifirewall" = "reconfig" ]; then echo -n ;
+echo "deleting *1.cfg"
+rm $rutaconfig/*1.cfg; $0 ; echo;
+echo $cincuenta " updating default configuration "  $cincuenta
+echo $cinco "   Updating default configurations files1.cfg:  $rutaconfig/files1.cfg " ;
+echo; echo;
+if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; fi
+if [ -f $rutaconfig/default1.cfg ]; then echo -n ;
+else echo "" ; cat $0 | head $flinea | grep -iv ^# | tail $fvariables  > $rutaconfig/default1.cfg; fi
+if [ -f $rutaconfig/web1.cfg ]; then echo -n ;
+else echo "clientetcp=domain,http,https ; clienteudp=domain,ntp,bootpc ; haypingsend=no ;  haypingrecive=no ; " >  $rutaconfig/web1.cfg; fi
+if [ -f $rutaconfig/games1.cfg ]; then echo -n ;
+else echo "clienteudp=domain,ntp,bootpc,12000:60000; clientetcp=domain,http,https,14998:15002 ;  haypingsend= ;  haypingrecive= ; "  > $rutaconfig/games1.cfg; fi
+if [ -f $rutaconfig/samba1.cfg ]; then echo -n ;
+else echo "clienteudp=domain,ntp,bootpc,137:139; clientetcp=domain,http,https,microsoft-ds; servidorudp=137:139 ; servidortcp=,microsoft-ds" > $rutaconfig/samba1.cfg; fi
+if [ -f $rutaconfig/server1.cfg ]; then echo -n ;
+else echo " haypingrecive=""; haypingsend="" haylogserver=; logservertcp=ssh; servidortcp=ssh,http,https ipv4= " > $rutaconfig/server1.cfg; fi
+if [ -f $rutaconfig/vpn1.cfg ]; then echo -n ;
+else echo "hayreenvio=; hayvpn=; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" > $rutaconfig/vpn1.cfg ; fi
+if [ -f $rutaconfig/email.cfg ]; then echo -n;
+else echo "clientetcp=domain,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps ; haypingsend=; haypingrecive=;" > $rutaconfig/email1.cfg ; fi
+if [ -f $rutaconfig/ssh1.cfg ]; then echo -n
+else echo "clientetcp=domain,http,https,printer,ipp,ssh; haypingsend= haypingrecive=" > $rutaconfig/ssh1.cfg ; fi
+if [ -f $rutaconfig/vnc1.cfg ]; then echo -n
+else echo "clientetcp=domain,http,https,5900:5910" > $rutaconfig/vnc1.cfg ; fi
+exit
 ##############################       english: automatic-upgrade, upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: automatica-acutalizacion, actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "web-upgrade" ]; then echo ; echo "   $fprogram version $fver" ;
@@ -153,23 +175,7 @@ echo
 echo  $cinco "   ok and it will be upgrade with the name /usr/bin/f-iptables-firewall" ;
 echo; echo;
 exit;  fi ;  echo ;
-#############################        english: system script, the first options: offline, client, server and allpermisive
-#############################        spanish: script the sistema, primeras opciones: offline, client, server and allpermisive
-if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo $cinco $cinco $cinco $cinco
-activarservidor="no" activarcliente="no" mojado="no";
-elif [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo $cinco $cinco $cinco $cinco
-activarservidor="no" activarcliente="" mojado="no";
-elif [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo $cinco $cinco $cinco $cinco
-activarservidor=""  activarcliente="" mojado="no";
-elif [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo $cinco $cinco $cinco $cinco
-activarservidor="no" activarcliente="no" mojado="";
-#############################       english: system script, the reconfig option, delete and create files1.cfg
-#############################       spanish: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
-elif [ "$mifirewall" = "reconfig" ]; then echo -n ;
-rm $rutaconfig/*1.cfg; $0 ; echo;
-echo $cincuenta " updating default configuration "  $cincuenta
-echo $cinco "   Updating default configurations files1.cfg:  $rutaconfig/files1.cfg " ;
-echo; echo; exit
+
 #############################       english: system script, the eraserules option
 #############################       spanish: script de sistema, la opcion borra reglas
 elif [ "$mifirewall" = "eraserules" ]; then echo -n ;
