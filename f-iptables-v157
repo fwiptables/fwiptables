@@ -77,6 +77,7 @@ echo "   Launch rules:     eraserules or offline or client or server or allpermi
 echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
 echo "   List sockets:     iproute or sockets or lsof or ipforwading"
 echo "   Modify config:    reconfig or new-config or modify-config"
+echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
@@ -131,8 +132,8 @@ echo $cincuenta "     upgraded     " $cincuenta
 echo $cinco "     upgraded:     /usr/bin/f-iptables-firewall" ; echo; echo ;
 /usr/bin/f-iptables-firewall reconfig ;
 exit ;  fi ;
-##############################       english: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
-##############################       spanish: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
+##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
+##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "upgrade" ]; then  echo ; echo "   $fprogram version $fver" ;
 echo $cincuenta ; echo ;
 echo "  The actually version is" ;
@@ -161,7 +162,7 @@ elif [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo $c
 activarservidor=""  activarcliente="" mojado="no";
 elif [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo $cinco $cinco $cinco $cinco
 activarservidor="no" activarcliente="no" mojado="";
-#############################       english: system script, the reconfig option, delette and create files1.cfg
+#############################       english: system script, the reconfig option, delete and create files1.cfg
 #############################       spanish: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
 elif [ "$mifirewall" = "reconfig" ]; then echo -n ;
 rm /etc/f-iptables/*1.cfg; $0 ; echo;
@@ -175,38 +176,38 @@ $ruta/iptables-nft -t filter -F ; $ruta/ip6tables-nft -t filter  -F ; $ruta/ipta
 $ruta/iptables-nft -t nat -F ; $ruta/ip6tables-nft -t nat  -F ; $ruta/iptables-legacy -t nat -F ; $ruta/ip6tables-legacy -t nat -F ;
 echo ; echo ; echo " Deleting all rules from ipv4 and ipv6 from iptables";
 echo ; echo ; exit
-#############################       english: system script, the iproute option
-#############################       spanish: script de sistema, la opcion iproute
+#############################       english: iproute: system script, the iproute option
+#############################       spanish: iproute: script de sistema, la opcion iproute
 elif [ "$mifirewall" = "iproute" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
 echo $cincuenta $cincuenta "   Show ip address and ip route   " $cinco ;
-uname -a
+echo; uname -a
 echo
 echo $cinco " ip address " $cinco ;
 echo; echo ; ip address ; echo ; echo ;
 echo $cinco " ip route " $cinco ;
 echo ; ip route ;
 echo ; exit
-#############################       english: system script, the sockets option
-#############################       spanish: script de sistema, la opcion sockets
+#############################       english: sockets: system script, the sockets option
+#############################       spanish: sockets: script de sistema, la opcion sockets
 elif [ "$mifirewall" = "sockets" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  $cincuenta $cincuenta "   The sockets list with ss  " $cinco ;
-uname -a
+echo; uname -a
 echo ;
 echo $cinco "     The ipv6 sockets      " $cinco ; echo ;  ss -a6 ;   echo ;  echo $cinco "     The ipv4 sockets     " $cinco ;echo ; ss -a4 ;
 echo ; exit
-#############################       english: system script, the lsof option
-#############################       spanish: script de sistema, la lsof sockets
+#############################       english: losf: system script, the lsof option
+#############################       spanish: lsof: script de sistema, la lsof sockets
 elif [ "$mifirewall" = "lsof" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  $cincuenta $cincuenta "   The sockets list with lsof  " $cinco
-uname -a
+echo; uname -a
 echo ;
 echo $cinco "     The sockets with lsof     " $cinco ;
 echo ; lsof -i  ;   echo ;
 echo ; exit
-#############################       english: system script, the list option
-#############################       spanish: script de sistema, la opcion lista
+#############################       english: list: system script, the list option
+#############################       spanish: list: script de sistema, la opcion lista
 elif [ "$mifirewall" = "list" ]; then echo -n ;
  echo;  echo "  Fran iptables version $fver for legacy/netfilter filter firewall Linux for ipv4"
  echo $cincuenta $cincuenta"   Filter ipv4   " $cinco
@@ -222,8 +223,8 @@ echo; # $ruta/iptables-legacy -v -L FORWARD
  $ruta/iptables-nft -v -L OUTPUT
 #  $ruta/iptables-nft -v -L FORWARD
 echo "" ; exit
-############################       english: system script, the forward option to list iptables filter forward rules
-############################       spanish: script de sistema, la opcion forward para listar reglas de iptables filter forward
+############################       english: forward: system script, the forward option to list iptables filter forward rules
+############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
 elif [ "$mifirewall" = "forward" ]; then echo -n
  echo;  echo "  Fran iptables version $fver for legacy/netfilter filter forward firewall Linux" ;
  echo $cincuenta $cincuenta"   Filter forward ipv4/ ipv6/   " $cinco
@@ -239,8 +240,8 @@ elif [ "$mifirewall" = "forward" ]; then echo -n
  $ruta/ip6tables-nft -v -L FORWARD
 echo ""
 exit
-############################       english: system script, the list6 option to list ipv6 rules
-############################       spanish: script de sistema, la opcion list6 para listar reglas de ipv6
+############################       english: list6: system script, the list6 option to list ipv6 rules
+############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
 elif [ "$mifirewall" = "list6" ]; then echo -n
  echo;  echo "  Fran iptables version $fver for legacy/netfilter filter firewall for ipv6"
 echo  $cincuenta $cincuenta"   Filter ipv6   " $cinco
@@ -256,8 +257,8 @@ echo;
  $ruta/ip6tables-nft -v -L OUTPUT
 echo ""
 exit
-############################       english: system script, the nat-ip4 option to list NAT rules of ipv4
-############################       spanish: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
+############################       english: nat-ip4: system script, the nat-ip4 option to list NAT rules of ipv4
+############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
 elif [ "$mifirewall" = "nat-ip4" ]; then echo -n
  echo;  echo "  Fran iptables version $fver for legacy/netfilter NAT firewall for ipv4"
 echo  $cincuenta $cincuenta"   NAT ipv4   " $cinco
@@ -271,8 +272,8 @@ echo;
  echo
 echo ""
 exit
-############################       english: system script, the nat-ip6 option to list NAT rules of ipv6
-############################       spanish: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
+############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
+############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
 elif [ "$mifirewall" = "nat-ip6" ]; then echo -n
  echo;  echo "  Fran iptables version $fver for legacy/netfilter NAT firewall for ipv6"
 echo  $cincuenta $cincuenta"   NAT ipv6   " $cinco
@@ -286,8 +287,8 @@ echo;
  echo
 echo ""
 exit
-############################       english: system script, the new-config option to create new configs
-############################       spanish: script de sistema, la opcion new-config para cear nuevas config
+############################       english: new-config: system script, the new-config option to create new configs
+############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
 elif [ "$mifirewall" = "new-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
@@ -309,8 +310,8 @@ echo "          OR launch firewall for server:           $0 server $frespuestab 
 echo "" ;
 echo "" ;
 exit
-############################       english: system script, the nueva-config option to create new configs in spanish
-############################       spanish: script de sistema, la opcion nueva-config para cear nuevas config en español
+############################       english: nueva-config: system script, the nueva-config option to create new configs in spanish
+############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config en español
 elif [ "$mifirewall" = "nueva-config" ]; then echo -n
 echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
 echo $cincuenta $cincuenta
@@ -356,8 +357,49 @@ echo "          O lanza el cortafuegos para servidor:           $0 server $fresp
 echo "" ;
 echo "" ;
 exit
-############################       english: the auth-sudo option en english
-############################       spanish: la opcion de auth-sudo en ingles
+############################       english: rename-config, change the name  a one config
+############################       spanish: rename-config, cambia el nombre a  una configuracion
+elif [ "$mifirewall" = "rename-config" ]; then echo -n
+echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
+echo $cincuenta $cincuenta
+echo
+echo $cinco "  The configs are in folder /etc/f-iptables/ : "
+ls /etc/f-iptables | fmt $flistado
+echo
+echo "     The files are in path /etc/f-iptables/"
+echo "     Or Control+c to stop"
+echo
+echo $cinco
+read -r -p  "     RENAME: Type the name of one old config, whitout path: [ Config-Old-To-Rename.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
+echo        "     the old name is : $fviejab"
+echo
+read -r -p  "     RENAME: Type the name of one new config, whitout path: [ Config-New-To-Rename.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
+echo        "     the new name is : $nuevab"
+echo
+mv /etc/f-iptables/$fviejab /etc/f-iptables/$fnuevab
+echo        "     file renamed now with new name:  $fnuevab "
+echo "" ;
+exit
+############################       english: delete-config, delete a one config
+############################       spanish: delete-config, elimina una configuracion
+elif [ "$mifirewall" = "delete-config" ]; then echo -n
+echo;  echo "  Fran iptables version $fver for legacy/netfilter config firewall Linux "
+echo $cincuenta $cincuenta
+echo
+echo $cinco "  The configs are in folder /etc/f-iptables/ : "
+ls /etc/f-iptables | fmt $flistado
+echo
+echo "     The files are in path /etc/f-iptables/"
+echo "     Or Control+c to stop"
+echo
+echo $cinco
+read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada ; fborradaa=$(sed 's/\///g' <<< "$fborrada")
+echo
+rm /etc/f-iptables/$fborradaa
+echo
+exit
+############################       english: auth-sudo: the auth-sudo option en english
+############################       spanish: auth-sudo: la opcion de auth-sudo en ingles
 elif [ "$mifirewall" = "auth-sudo" ]; then echo ; echo;
 echo "  The $fprogram version $fver"
 echo $cincuenta
@@ -381,12 +423,12 @@ echo; echo; echo;
 exit
 
 
-############################       english: the help option en english
-############################       spanish: la opcion de ayuda en ingles
+############################       english: ipforwading: the ipforwading option en english
+############################       spanish: ipforwading: la opcion de reenvios  en ingles
 elif [ "$mifirewall" = "ipforwading" ]; then echo ; echo ;
 echo "  The $fprogram version $fver ipforwading values kernel linux"
 echo $cincuenta $cincuenta;
-uname -a
+echo; uname -a
 echo; echo;
 echo $cinco "   Active 1 or deactive 0 for ipforwading with sysctl:    " $cinco
 echo; echo
@@ -409,6 +451,7 @@ echo "   Launch rules:     eraserules or offline or client or server or allpermi
 echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
 echo "   List sockets:     iproute or sockets or lsof or ipforwading"
 echo "   Modify config:    reconfig or new-config or modify-config"
+echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
@@ -499,6 +542,7 @@ echo "   Launch rules:     eraserules or offline or client or server or allpermi
 echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
 echo "   List sockets:     iproute or sockets or lsof or ipforwading"
 echo "   Modify config:    reconfig or new-config or modify-config"
+echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
@@ -588,6 +632,7 @@ echo "   Launch rules:     eraserules or offline or client or server or allpermi
 echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
 echo "   List sockets:     iproute or sockets or lsof or ipforwading"
 echo "   Modify config:    reconfig or new-config or modify-config"
+echo "                     rename-config delete-config"
 echo "   Update:           upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
 echo ""
