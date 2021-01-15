@@ -11,7 +11,7 @@
 ##
 ##
 mifirewall=$1 ; mivariable=$2 ; yes=""; no="no" ; # system variables f-iptables-firewall
-fprogram="Fran iptables" ; fver="157" ; # program and version f-iptables-firewall
+fprogram="Fran iptables" ; fver="158" ; # program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ; # download web link latest version f-iptables-firewall
 rutaconfig="/etc/f-iptables"            # path to config files f-iptables-firewall
 ## brillo="tput bold"; normal="tput sgr0"; # deleted, now all tput sgr0
