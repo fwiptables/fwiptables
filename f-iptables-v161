@@ -674,14 +674,9 @@ exit; fi
 #### Opciones para lanzar reglas:    offline o client o server o allpermisive                   ###############
 ###############################################################################################################
 ###############################################################################################################
-#############################
-lanza=no ;
-#############################
- if  [ "$mifirewall" = "client" ] ;   then    echo -n ; lanza=si; else echo -n ; fi
- if  [ "$mifirewall" = "server" ] ;   then    echo -n ; lanza=si; else echo -n ; fi
- if  [ "$mifirewall" = "offline" ] ;   then   echo -n ; lanza=si; else echo -n ; fi
- if  [ "$mifirewall" = "permisive" ] ;   then echo -n ; lanza=si; else echo -n ; fi
- if  [ "$lanza" = "si" ] ; then echo -n
+#############################        english:  launch iptables rules
+#############################        spanish:  lanza iptables rules
+if  [ "$lanza" = "si" ] ; then echo -n
 ##############################       english: overwrite system varibles for files variables configured
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion
 if [ -f "$rutaconfig/$2" ]; then source "$rutaconfig/$2" ; else source "$rutaconfig/default1.cfg"; fi
@@ -815,27 +810,23 @@ if [ -f "$rutaconfig/$2" ]; then source "$rutaconfig/$2" ; else source "$rutacon
 ##########################################    ipv4 iptables permisisive
  $hayipv4 $mojado  $ruta/iptables-legacy -F &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
- $hayipv4 $mojado  $ruta/iptables-legacy -A INPUT -m state --state established -j ACCEPT &> /dev/null
- $hayipv4 $mojado  $ruta/iptables-legacy -A INPUT -j DROP &> /dev/null
+ $hayipv4 $mojado  $ruta/iptables-legacy -A INPUT $estado  -j ACCEPT &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-legacy -A OUTPUT -j ACCEPT &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-legacy -A FORWARD  -j ACCEPT &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-nft -F &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
- $hayipv4 $mojado  $ruta/iptables-nft -A INPUT -m state --state established -j ACCEPT &> /dev/null
- $hayipv4 $mojado  $ruta/iptables-nft -A INPUT -j DROP &> /dev/null
+ $hayipv4 $mojado  $ruta/iptables-nft -A INPUT $estado -j ACCEPT &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-nft -A OUTPUT -j ACCEPT &> /dev/null
  $hayipv4 $mojado  $ruta/iptables-nft -A FORWARD -j ACCEPT &> /dev/null
  ########################################     ipv6 iptables allpermisisive
  $hayipv6 $mojado  $ruta/ip6tables-legacy -F &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
- $hayipv6 $mojado  $ruta/ip6tables-legacy -A INPUT -m state --state established -j ACCEPT &> /dev/null
- $hayipv6 $mojado  $ruta/ip6tables-legacy -A INPUT -j DROP &> /dev/null
+ $hayipv6 $mojado  $ruta/ip6tables-legacy -A INPUT $estado -j ACCEPT &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-legacy -A OUTPUT -j ACCEPT &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-legacy -A FORWARD  -j ACCEPT &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-nft -F &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-nft -A INPUT -s ::1 -d ::1  -j ACCEPT &> /dev/null
- $hayipv6 $mojado  $ruta/ip6tables-nft -A INPUT -m state --state established -j ACCEPT &> /dev/null
- $hayipv6 $mojado  $ruta/ip6tables-nft -A INPUT -j DROP &> /dev/null
+ $hayipv6 $mojado  $ruta/ip6tables-nft -A INPUT $estado -j ACCEPT &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-nft -A OUTPUT -j ACCEPT &> /dev/null
  $hayipv6 $mojado  $ruta/ip6tables-nft -A FORWARD -j ACCEPT &> /dev/null
 ########################################       iptables ipv4 and ipv6 with forward rules
@@ -915,7 +906,7 @@ exit; fi
 ############################       english: The default option, the help option for default
 ############################	   spanish: La opcion por defecto, la opcion de ayuda por defecto
 echo
-echo "   The $fprogram version $fver"
+echo "   The $fprogram version $fver notes"
 echo $cincuenta $cincuenta notes $cinco;
 echo
 # echo $cinco "  f-iptables-firewall notes:  " $cinco ;
