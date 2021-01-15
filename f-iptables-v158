@@ -14,14 +14,13 @@ mifirewall=$1 ; mivariable=$2 ; yes=""; no="no" ; # system variables f-iptables-
 fprogram="Fran iptables" ; fver="158" ; # program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ; # download web link latest version f-iptables-firewall
 rutaconfig="/etc/f-iptables"            # path to config files f-iptables-firewall
-## brillo="tput bold"; normal="tput sgr0"; # deleted, now all tput sgr0
 ##
 ##
 ##############################       english: number line of the custom variables y number of customs variables y wide at list cfgs
 ##############################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
 ##
 ##
-flinea="-66" ; fvariables="-27" ; flistado="-90" ;
+flinea="-65" ; fvariables="-27" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
