@@ -23,7 +23,7 @@ nft= ;                                  # void to yes launch rules netfilter or 
 ##############################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
 ##
 ##
-flinea="-68" ; fvariables="-25" ; flistado="-90" ;
+flinea="-66" ; fvariables="-25" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
@@ -31,8 +31,6 @@ cinco="#####" ; cincuenta="##################################################"
 ##############################        spanish: fvariables:    variables para modificar
 ##
 ##
-## echo -n #english: configuration variables to the firewall #spanish: variables de configuracion para el firewall
-## ruta="/usr/sbin" ; #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
 hayipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 hayipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
