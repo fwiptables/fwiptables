@@ -49,7 +49,7 @@ hayvpn=no ; #english: vacio to allow exceptional host, and no to drop exceptiona
 hayotroprotocolo=no ; #english: void to allow other protocol or no #spanish: vacio para permitir otro protocolo o no
 echo -n #english: add with "," and join ranges with ":" #spanish: añadir con "," y poner rangos con ":"
 clienteudp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
-clientetcp=domain,http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
+clientetcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
 servidortcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 servidorudp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 logservertcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
@@ -631,10 +631,10 @@ cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1
 echo ""
 echo $cincuenta "The iptbles legacy and the iptables netftilter"
 echo
-echo "     iptables legacy   is    support for xtables"
-echo "     iptables nft      is    support for neftables"
+echo "     iptables legacy   is    support for xtables firewall"
+echo "     iptables nft      is    support for neftables firewall"
 echo
-echo $cincuenta " It needs this clients ports to works:"
+echo $cincuenta " It needs this clients udp ports to works:"
 echo ""
 echo "     This port is necesary to update the date  : ntp"
 echo "     This port is necesary to dhcp and get ip  : bootpc and/or bootps"
@@ -730,10 +730,10 @@ cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1
 echo ""
 echo $cincuenta "Los iptbles legacy  y los iptables netftilter"
 echo
-echo "     iptables legacy   es    soporte para xtables"
-echo "     iptables nft      es    soporte para neftables"
+echo "     iptables legacy   es    soporte para xtables firewall"
+echo "     iptables nft      es    soporte para neftables firewall"
 echo
-echo $cincuenta " Puertos cliente necesarios para funcionar:"
+echo $cincuenta " Puertos cliente udp necesarios para funcionar:"
 echo ""
 echo "     necesario para actualizar la fecha :   ntp"
 echo "     necesario para dhcp y conseguir ip :   bootpc y/o bootps"
