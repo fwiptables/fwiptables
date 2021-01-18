@@ -89,7 +89,7 @@ echo ""
 echo "   Launch rules:     eraserules or offline or client or server or allpermisive"
 echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
 echo "   List sockets:     iproute or sockets or lsof or ipforwading"
-echo "   Modify config:    new-config or nueva-config or modify-config"
+echo "   Modify config:    new-config or clone-config or modify-config"
 echo "                     show-config or rename-config or delete-config"
 echo "   Update:           reconfig or upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
@@ -146,6 +146,8 @@ echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp ; clienteudp=domai
 echo "clientetcp=http,https,ircd,ircs-u" > $rutaconfig/irc-sample1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" > $rutaconfig/sql-sample1.cfg
 echo; echo
+echo "updated the configs from  /usr/bin/f-iptables-firewall"
+echo
 echo $cincuenta "  The configs are in folder $rutaconfig, " $cinco
 ls $rutaconfig | fmt $flistado  ;
 echo ; echo
@@ -417,6 +419,35 @@ echo "  $cinco        O lanza el cortafuegos para servidor:           $0 server 
 echo "" ;
 echo "" ;
 exit; fi
+############################       english: clone-config, clone a one existent config.cfg
+############################       spanish: clone-config, clona una configuracion.cfg
+if [ "$mifirewall" = "clone-config" ]; then echo -n
+echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo $cincuenta $cincuenta Clone config $cinco
+echo
+echo $cinco "  The configs are in folder $rutaconfig : "
+ls $rutaconfig | fmt $flistado
+echo
+echo "     Type the filename for a old configuration wich will be in path $rutaconfig"
+echo "     Or Control+c to stop"
+echo
+echo $cinco
+read -r -p  "     RENAME: Type the name of one old config to clone, whitout path: [ Config-Old-To-Clone.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
+echo        "     the old name is : $fviejab"
+echo
+read -r -p  "     RENAME: Type the name of one new config, whitout path: [ Config-New.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
+echo        "     the new name is : $nuevab"
+echo
+cp $rutaconfig/$fviejab $rutaconfig/$fnuevab
+echo        "     Config cloned now with new name:  $fnuevab "
+echo
+echo "" ;
+echo "  $cinco        Launch the firewall for client:              $0 client $fnuevab   " ;
+echo "" ;
+echo "  $cinco        O launch the firewall for server:            $0 server $fnuevab   " ;
+echo "" ;
+echo "" ;
+exit; fi
 ############################       english: modify-config, modify a one config.cfg
 ############################       spanish: modify-config, modify una configuracion.cfg
 if [ "$mifirewall" = "modify-config" ]; then echo -n
@@ -490,9 +521,9 @@ mv $rutaconfig/$fviejab $rutaconfig/$fnuevab
 echo        "     Config renamed now with new name:  $fnuevab "
 echo
 echo "" ;
-echo "  $cinco        Launch the firewall for client:              $0 client $frespuestab   " ;
+echo "  $cinco        Launch the firewall for client:              $0 client $fnuevab   " ;
 echo "" ;
-echo "  $cinco        O launch the firewall for server:            $0 server $frespuestab   " ;
+echo "  $cinco        O launch the firewall for server:            $0 server $fnuevab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -566,7 +597,7 @@ echo ""
 echo "   Launch rules:     eraserules or offline or client or server or allpermisive"
 echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
 echo "   List sockets:     iproute or sockets or lsof or ipforwading"
-echo "   Modify config:    new-config or nueva-config or modify-config"
+echo "   Modify config:    new-config or clone-config or modify-config"
 echo "                     show-config or rename-config or delete-config"
 echo "   Update:           reconfig or upgrade or auth-sudo"
 echo "   Help:             help or ayuda"
@@ -604,6 +635,7 @@ echo "  ipforwading: Show kernel config about forward"
 echo; echo $cinco "        Configure files.cfg"; echo
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
+echo " clone-config: Clone a old config in a one new config"
 echo "modify-config: Edit one config.cfg"
 echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
@@ -703,6 +735,7 @@ echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios"
 echo; echo $cinco "        Configura archivos.cfg"; echo
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-config: Crea una nueva configuracion.cfg en español"
+echo " clone-config: Duplica con otro nombre una config cfg"
 echo "modify-config: Edita una existente configuracion.cfg"
 echo "  show-config: Muestra una existente configuracion.cfg"
 echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
