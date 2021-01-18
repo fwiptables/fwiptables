@@ -950,9 +950,9 @@ echo; echo "  $fprogram version $fver lauunching rules ";
 echo $cincuenta $cincuenta lauching iptables rules $cinco
 echo ""
 echo "  launched $0 $1 $2  ";
-if [ "$1" = "offline" ] ; then echo; echo "  The iptables configured for disconnected to internet" ;
+if [ "$1" = "offline" ] ; then echo; echo "$cinco  The iptables configured for disconnected to internet $cinco" ;
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
-if [ "$1" = "allpermisive" ]; then echo; echo "  The iptables configured for all permisive to internet";
+if [ "$1" = "allpermisive" ]; then echo; echo "$cinco  The iptables configured for all permisive to internet $cinco";
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
 if [ -f "$rutaconfig/$2" ] ; then echo "$cinco $program configured with the configuration: $2 $cinco" ;
 else echo " $fprogram configured with the default configuration: default1.cfg"; fi ;
