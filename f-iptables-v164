@@ -12,7 +12,7 @@
 ##  /usr/bin/f-iptables-firewall
 ##
 mifirewall=$1 ; mivariable=$2 ; lanza="no";  yes=""; no="no" ; #english: system variables f-iptables-firewall
-fprogram="Fran iptables firewall" ; fver="163" ; #english: program and version f-iptables-firewall
+fprogram="Fran iptables firewall" ; fver="164" ; #english: program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ; # download web link latest version f-iptables-firewall
 rutabin="/usr/sbin" ;             #english:  iptables programs path #spanish: ruta de los ejecutables de iptables
 rutaconfig="/etc/f-iptables"      #english:  path to config files cfg from f-iptables-firewall #spanish: archivos de configuracion de f-iptables
