@@ -136,7 +136,7 @@ echo ; echo ; echo
 cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/default-sample1.cfg
 echo "clientetcp=domain,http,https" >  $rutaconfig/web-sample1.cfg
 echo "clienteudp=domain,ntp,bootpc,12000:60000; clientetcp=http,https,14998:15002 ;  haypingsend= ;  haypingrecive= ; "  > $rutaconfig/games-sample1.cfg
-echo "clienteudp=domain,ntp,bootpc,137:139 ; clientetcp=http,https,microsoft-ds ; servidorudp=137:139 ; servidortcp=microsoft-ds" > $rutaconfig/samba-sample1.cfg
+echo "clienteudp=domain,ntp,bootpc,137:139 ; clientetcp=http,https,ipp,microsoft-ds ; servidorudp=137:139 ; servidortcp=microsoft-ds" > $rutaconfig/samba-sample1.cfg
 echo "haypingrecive= ; haypingsend="" ; haylogserver= ; logservertcp=ssh ; servidortcp=ssh,http,https" > $rutaconfig/server-sample1.cfg
 echo "hayreenvio= ; hayvpn= ; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" > $rutaconfig/vpn-sample1.cfg
 echo "clientetcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" > $rutaconfig/email-sample1.cfg
