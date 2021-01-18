@@ -134,13 +134,13 @@ echo $cincuenta $cincuenta "   Updating default configuration "  $cinco
 echo $cinco "   Updating default configurations samples1.cfg:  $rutaconfig/*sample1.cfg "
 echo ; echo ; echo
 cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/default-sample1.cfg
-echo "clientetcp=domain,http,https" >  $rutaconfig/web-sample1.cfg
-echo "clienteudp=domain,ntp,bootpc,12000:60000; clientetcp=http,https,14998:15002 ;  haypingsend= ;  haypingrecive= ; "  > $rutaconfig/games-sample1.cfg
-echo "clienteudp=domain,ntp,bootpc,137:139 ; clientetcp=http,https,ipp,microsoft-ds ; servidorudp=137:139 ; servidortcp=microsoft-ds" > $rutaconfig/samba-sample1.cfg
+echo "clientetcp=http,https" >  $rutaconfig/web-sample1.cfg
+echo "clienteudp=ntp,bootpc,12000:60000; clientetcp=http,https,14998:15002 ;  haypingsend= ;  haypingrecive= ; "  > $rutaconfig/games-sample1.cfg
+echo "clienteudp=ntp,bootpc,137:139 ; clientetcp=http,https,ipp,microsoft-ds ; servidorudp=137:139 ; servidortcp=ipp,microsoft-ds" > $rutaconfig/samba-sample1.cfg
 echo "haypingrecive= ; haypingsend="" ; haylogserver= ; logservertcp=ssh ; servidortcp=ssh,http,https" > $rutaconfig/server-sample1.cfg
 echo "hayreenvio= ; hayvpn= ; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" > $rutaconfig/vpn-sample1.cfg
 echo "clientetcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" > $rutaconfig/email-sample1.cfg
-echo "clientetcp=domain,http,https,printer,ipp,ssh,git ; haypingsend= ; haypingrecive= ;" > $rutaconfig/ssh-sample1.cfg
+echo "clientetcp=http,https,printer,ipp,ssh,git ; haypingsend= ; haypingrecive= ;" > $rutaconfig/ssh-sample1.cfg
 echo "clientetcp=http,https,5900:5910" > $rutaconfig/vnc-sample1.cfg
 echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp ; clienteudp=domain,ntp,bootpc,tftp,ftps-data"> $rutaconfig/ftp-sample1.cfg
 echo "clientetcp=http,https,ircd,ircs-u" > $rutaconfig/irc-sample1.cfg
@@ -189,10 +189,13 @@ exit;  fi
 #############################       english: eraserules: system script, the eraserules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 if [ "$mifirewall" = "eraserules" ]; then echo -n ;
+echo
+echo $cincuenta $cincuenta "   Deleting rules iptables   " $cinco ;
+echo
 $rutabin/iptables-nft -t filter -F ; $rutabin/ip6tables-nft -t filter  -F ; $rutabin/iptables-legacy -t filter -F ; $rutabin/ip6tables-legacy -t filter -F ;
 $rutabin/iptables-nft -t nat -F ; $rutabin/ip6tables-nft -t nat  -F ; $rutabin/iptables-legacy -t nat -F ; $rutabin/ip6tables-legacy -t nat -F ;
-echo ; echo ; echo " Deleting all rules from ipv4 and ipv6 from iptables";
-echo ; echo ; exit; fi
+echo ; echo " Erase all rules from ipv4 and ipv6 for iptables filter and iptables nat";
+echo ; exit; fi
 #############################       english: iproute: system script, the iproute option
 #############################       spanish: iproute: script de sistema, la opcion iproute
 if [ "$mifirewall" = "iproute" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
@@ -944,7 +947,7 @@ $execnft $rutabin/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
 echo; echo "  $fprogram version $fver lauunching rules ";
-echo $cincuenta $cincuenta lauching rules $cinco
+echo $cincuenta $cincuenta lauching iptables rules $cinco
 echo ""
 echo "  launched $0 $1 $2  ";
 if [ "$1" = "offline" ] ; then echo; echo "  The iptables configured for disconnected to internet" ;
@@ -961,6 +964,7 @@ echo
 echo $cinco " With Client ports IP: " $cinco ;
 echo "  client tcp: $clientetcp"  ;
 echo "  client udp: $clienteudp"  ;
+echo "  * Ports domain,ntp,bootpc are usually udp necesary"
 if [ "$1" = "client" ]; then echo ;
 echo $cinco " Without server ports IP" $cinco ;
 else echo -n; fi
