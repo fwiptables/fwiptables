@@ -1035,7 +1035,7 @@ exit; fi
 ############################	   spanish: La opcion por defecto, la opcion de ayuda por defecto
 echo
 echo "   The $fprogram version $fver "
-echo $cincuenta $cincuenta Wellcome $cinco;
+echo "$cincuenta $cincuenta Wellcome $fprogram $cinco ";
 echo
 # echo $cinco "  f-iptables-firewall notes:  " $cinco ;
 echo ""
