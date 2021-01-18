@@ -142,7 +142,7 @@ echo "hayreenvio= ; hayvpn= ; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.ne
 echo "clientetcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" > $rutaconfig/email-sample1.cfg
 echo "clientetcp=domain,http,https,printer,ipp,ssh,git ; haypingsend= ; haypingrecive= ;" > $rutaconfig/ssh-sample1.cfg
 echo "clientetcp=http,https,5900:5910" > $rutaconfig/vnc-sample1.cfg
-echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zopeftp ; clienteudp=domain,ntp,bootpc,tftp,ftps-data"> $rutaconfig/ftp-sample1.cfg
+echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp ; clienteudp=domain,ntp,bootpc,tftp,ftps-data"> $rutaconfig/ftp-sample1.cfg
 echo "clientetcp=http,https,ircd,ircs-u" > $rutaconfig/irc-sample1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" > $rutaconfig/sql-sample1.cfg
 echo; echo
@@ -951,12 +951,12 @@ if [ "$1" = "offline" ] ; then echo; echo "  The iptables configured for disconn
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
 if [ "$1" = "allpermisive" ]; then echo; echo "  The iptables configured for all permisive to internet";
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
-if [ -f "$rutaconfig/$2" ] ; then echo "  $program configured with the configuration: $2" ;
+if [ -f "$rutaconfig/$2" ] ; then echo "$cinco $program configured with the configuration: $2 $cinco" ;
 else echo " $fprogram configured with the default configuration: default1.cfg"; fi ;
-echo; echo;
+echo;
 echo $cinco " With the firewall: " $cinco  ;
-echo "  xtables-legacy is $execlegacy  allowed  "
-echo "  neftables-netfilter is $execnft allowed "
+echo "  xtables-legacy      is $execlegacy  allowed  "
+echo "  neftables-netfilter is $execnft  allowed "
 echo
 echo $cinco " With Client ports IP: " $cinco ;
 echo "  client tcp: $clientetcp"  ;
@@ -969,9 +969,15 @@ echo $cinco " With Server ports IP: " $cinco ;
 echo "  server tcp: $servidortcp" ;
 echo "  server udp: $servidorudp" ;
 else echo -n; fi ; echo
-echo $cinco " With the protocols IP: " $cinco  ;
+echo $cinco " With the protocols IP: " $cinco ;
 echo "  ipv4 is $hayipv4 allowed "
-echo "  ipv6 is $hayipv6 allowed"
+echo "  ipv6 is $hayipv6 allowed "
+echo "  * Where ipv4 is usually necesary"
+echo
+echo $cinco " With the networks configured: " $cinco ;
+echo "  ipv4 client: $redclienteipv4 And ipv4 server: $redserveripv4"
+echo "  ipv6 client: $redclienteipv4 And ipv6 server: $redserveripv6"
+echo "  * Where 0/0 are all the networks, usually necesary "
 echo
 if [ "$estado" = "$NULL" ]; then echo $cinco " Without specific input state IP " $cinco ;  echo ;
 else echo $cinco " With input state IP: " $cinco ; echo " Input satate: $estado" ; echo ; fi
