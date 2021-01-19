@@ -986,8 +986,8 @@ $execnft $rutabin/ip6tables-nft -A OUTPUT -j DROP &> /dev/null
 $execnft $rutabin/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
-echo; echo "  $fprogram version $fver lauunching rules ";
-echo "$cincuenta $cinco lauching iptables rules $cinco"
+echo; echo "  $fprogram version $fver ";
+echo "$cincuenta lauching iptables rules $cinco"
 echo ""
 echo "  launched $0 $1 $2  ";
 if [ "$1" = "offline" ]; then echo; echo "$cinco  The iptables configured for disconnected to internet $cinco" ;
