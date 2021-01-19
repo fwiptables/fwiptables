@@ -1068,10 +1068,10 @@ ls $rutaconfig | fmt $flistado  ;
 echo ""
 echo "$cinco   The examples "
 echo ""
-echo "[Example 1]  f-iptables-firewall list                    #  List iptables rules"
-echo "[Example 2]  f-iptables-firewall client web-sample1.cfg  #  Config iptables like client web"
-echo "[Example 3]  f-iptables-firewall help                    #  Show long help in english"
-echo "[Example 4]  f-iptables-firewall ayuda                   #  Show long help in spanish"
+echo "   f-iptables-firewall list                    #  List iptables rules"
+echo "   f-iptables-firewall client web-sample1.cfg  #  Config iptables like client web"
+echo "   f-iptables-firewall help                    #  Show long help in english"
+echo "   f-iptables-firewall ayuda                   #  Show long help in spanish"
 echo
 echo
 # left script
