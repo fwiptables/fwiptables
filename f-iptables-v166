@@ -86,29 +86,29 @@ else echo ; echo "$cincuenta  f-iptables need to be root to work" ; echo ;
 echo "  the $fprogram version $fver "
 echo "$cincuenta you need to be root $cinco"
 echo
-echo "$cinco   f-iptables-firwall Notes:   $cinco" ;
 echo
-echo "$cinco   The First Option:"
-echo
-echo "   Launch rules:     eraserules or offline or client or server or allpermisive"
-echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
-echo "   List sockets:     iproute or sockets or lsof or ipforwading"
-echo "   Modify config:    new-config or clone-config or modify-config"
-echo "                     show-config or rename-config or delete-config"
-echo "   Update:           reconfig or upgrade or auth-sudo"
-echo "   Help:             help or ayuda"
+echo "$cinco   The First Option: "
 echo ""
-echo $cinco "  The configs are in folder $rutaconfig, with examples1.cfg "
+echo "        [Launch rules]     eraserules or offline or client or server or allpermisive"
+echo "        [List rules]       list or forward or list6 or nat-ip4 or nat-ip6 "
+echo "        [List sockets]     iproute or sockets or lsof or ipforwading"
+echo "        [Modify config]    new-config or clone-config or modify-config"
+echo "                           show-config or rename-config or delete-config"
+echo "        [Update]           reconfig or upgrade or auth-sudo"
+echo "        [Help]             help or ayuda"
+echo ""
+echo "$cinco   The configs are in folder $rutaconfig:"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo ""
-echo $cinco "  Examples:"
+echo "$cinco   The examples: "
 echo ""
-echo "   Example 1 launch:  $0 list                      # list iptables rules"
-echo "   Example 2 launch:  $0 client web-sample1.cfg    # config iptables like client web"
-echo "   Example 3 launch:  $0 help                      # show long help in english"
-echo "   Example 3 launch:  $0 ayuda                     # show long help in spanish"
-echo ""
+echo "[Example 1]  f-iptables-firewall list                    #  List iptables rules"
+echo "[Example 2]  f-iptables-firewall client web-sample1.cfg  #  Config iptables like client web"
+echo "[Example 3]  f-iptables-firewall help                    #  Show long help in english"
+echo "[Example 4]  f-iptables-firewall ayuda                   #  Show long help in spanish"
+echo
+echo
 echo; echo; exit ; fi
 ##
 ##
@@ -119,13 +119,13 @@ if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
 else cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg; fi
 #############################        english: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
-if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cinco $cinco $cinco $cinco"
+if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente="no"; mojado="no"; fi
-if [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cinco $cinco $cinco $cinco"
+if [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente=""; mojado="no"; fi
-if [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo "$cinco $cinco $cinco $cinco"
+if [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo "$cincuenta"
 lanza="si"; activarservidor="";  activarcliente=""; mojado="no"; fi
-if [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo "$cinco $cinco $cinco $cinco"
+if [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       english: Script: general options      ######################################### #################################################
 ##############################       spanish: Script: opciones generales   ######################################### #################################################
@@ -987,7 +987,7 @@ $execnft $rutabin/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
 echo; echo "  $fprogram version $fver lauunching rules ";
-echo $cincuenta $cincuenta lauching iptables rules $cinco
+echo "$cincuenta $cinco lauching iptables rules $cinco"
 echo ""
 echo "  launched $0 $1 $2  ";
 if [ "$1" = "offline" ]; then echo; echo "$cinco  The iptables configured for disconnected to internet $cinco" ;
@@ -998,8 +998,8 @@ if [ -f "$rutaconfig/$2" ]; then echo; echo "$cinco $program configured with the
 else echo " $cinco Configured with the default configuration: $defaultcfg $cinco"; fi ;
 echo;
 echo "$cinco  With the firewall:  $cinco"  ;
-echo "  xtables-legacy      is $execlegacy  allowed  "
-echo "  neftables-netfilter is $execnft  allowed "
+echo "  xtables   is $execlegacy allowed  "
+echo "  neftables is $execnft allowed  "
 echo
 echo "$cinco  With Client ports IP:  $cinco" ;
 echo "  client tcp: $clientetcp"  ;
@@ -1046,25 +1046,25 @@ echo "$cincuenta Wellcome $fprogram $cinco ";
 echo
 echo "$cinco   The First Option: "
 echo ""
-echo "   Launch rules:     eraserules or offline or client or server or allpermisive"
-echo "   List rules:       list or forward or list6 or nat-ip4 or nat-ip6 "
-echo "   List sockets:     iproute or sockets or lsof or ipforwading"
-echo "   Modify config:    new-config or clone-config or modify-config"
-echo "                     show-config or rename-config or delete-config"
-echo "   Update:           reconfig or upgrade or auth-sudo"
-echo "   Help:             help or ayuda"
+echo "        [Launch rules]     eraserules or offline or client or server or allpermisive"
+echo "        [List rules]       list or forward or list6 or nat-ip4 or nat-ip6 "
+echo "        [List sockets]     iproute or sockets or lsof or ipforwading"
+echo "        [Modify config]    new-config or clone-config or modify-config"
+echo "                           show-config or rename-config or delete-config"
+echo "        [Update]           reconfig or upgrade or auth-sudo"
+echo "        [Help]             help or ayuda"
 echo ""
-echo "$cinco   The configs are in folder $rutaconfig, too with examples1.cfg:"
+echo "$cinco   The configs are in folder $rutaconfig:"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo ""
 echo "$cinco   The examples: "
 echo ""
-echo "   Example 1 launch:  $0 list                    #  List iptables rules"
-echo "   Example 2 launch:  $0 client web-sample1.cfg  #  Config iptables like client web"
-echo "   Example 3 launch:  $0 help                    #  Show long help in english"
-echo "   Example 4 launch:  $0 ayuda                   #  Show long help in spanish"
-echo ""
+echo "[Example 1]  f-iptables-firewall list                    #  List iptables rules"
+echo "[Example 2]  f-iptables-firewall client web-sample1.cfg  #  Config iptables like client web"
+echo "[Example 3]  f-iptables-firewall help                    #  Show long help in english"
+echo "[Example 4]  f-iptables-firewall ayuda                   #  Show long help in spanish"
+echo
 echo
 # left script
 #######################         english: End of script
