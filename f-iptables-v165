@@ -11,11 +11,13 @@
 ##
 ##  /usr/bin/f-iptables-firewall
 ##
+## names and path ##
 mifirewall=$1 ; mivariable=$2 ; lanza="no";  yes=""; no="no" ; #english: system variables f-iptables-firewall
 fprogram="Fran iptables firewall" ; fver="165" ; #english: program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ; # download web link latest version f-iptables-firewall
 rutabin="/usr/sbin" ;             #english:  iptables programs path #spanish: ruta de los ejecutables de iptables
 rutaconfig="/etc/f-iptables"      #english:  path to config files cfg from f-iptables-firewall #spanish: archivos de configuracion de f-iptables
+## void is yes ##
 execlegacy= ;                     #english:  void to yes launch rules with iptables-xtables or no #english: vacio para lanzar xtables o no
 execnft= ;                        #english:  void to yes launch rules with iptables-netfilter or no #spanish: vacio para lanzar netfilter o no
 showlegacy= ;                     #english:  void to show iptables legacy or no #spanish: vacio para mostrar iptables legacy o no
@@ -26,7 +28,7 @@ shownft= ;                        #english:  void to show iptables netfilter or 
 ##############################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
 ##
 ##
-flinea="-68" ; fvariables="-27" ; flistado="-125" ;
+flinea="-73" ; fvariables="-27" ; flistado="-125" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
