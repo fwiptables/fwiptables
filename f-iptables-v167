@@ -260,7 +260,7 @@ echo ; exit; fi
 #############################       english: list: system script, the list option
 #############################       spanish: list: script de sistema, la opcion lista
 if [ "$mifirewall" = "list" ]; then echo -n ;
- echo;  echo "  $fprogram version $fver for legacy/netfilter filter firewall Linux for ipv4"
+ echo;  echo "  $fprogram version $fver for filter firewall Linux for ipv4"
  echo "$cincuenta $cincuenta   List filter ipv4    $cinco"
  echo ;
  case $showlegacy in
@@ -287,7 +287,7 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
 ############################       english: forward: system script, the forward option to list iptables filter forward rules
 ############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
 if [ "$mifirewall" = "forward" ]; then echo -n
- echo;  echo "  $fprogram version $fver for legacy/netfilter filter forward firewall Linux" ;
+ echo;  echo "  $fprogram version $fver for filter forward firewall Linux" ;
  echo "$cincuenta $cincuenta   List filter forward ipv4/ ipv6/    $cinco"
  echo "";
  case $showlegacy in
@@ -327,7 +327,7 @@ if [ "$mifirewall" = "forward" ]; then echo -n
 ############################       english: list6: system script, the list6 option to list ipv6 rules
 ############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
  if [ "$mifirewall" = "list6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for legacy/netfilter filter firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for filter firewall for ipv6"
  echo "$cincuenta $cincuenta   List filter ipv6    $cinco"
  echo;
  case $showlegacy in
@@ -354,7 +354,7 @@ if [ "$mifirewall" = "forward" ]; then echo -n
 ############################       english: nat-ip4: system script, the nat-ip4 option to list NAT rules of ipv4
 ############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
 if [ "$mifirewall" = "nat-ip4" ]; then echo -n
- echo;  echo "  $fprogram version $fver for legacy/netfilter NAT firewall for ipv4"
+ echo;  echo "  $fprogram version $fver for  NAT firewall for ipv4"
 echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
  echo;
  case $showlegacy in
@@ -379,7 +379,7 @@ exit; fi
 ############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
 ############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
 if [ "$mifirewall" = "nat-ip6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for legacy/netfilter NAT firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for  NAT firewall for ipv6"
 echo  "$cincuenta $cincuenta   NAT ipv6    $cinco"
  echo;
 case $showlegacy in
@@ -405,7 +405,7 @@ exit; fi
 ############################       english: new-config: system script, the new-config option to create new configs
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
 if [ "$mifirewall" = "new-config" ]; then echo -n
-echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta New config $cinco"
 echo "";
 echo "     Type the filename for a one new configuration it will be in path $rutaconfig";
@@ -428,7 +428,7 @@ exit; fi
 ############################       english: nueva-config: system script, the nueva-config option to create new configs in spanish
 ############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config en español
 if [ "$mifirewall" = "nueva-config" ]; then echo -n
-echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Nueva config $cinco"
 echo "";
 echo "     Escribe el nombre de archivo para una nueva configuracion, estara en $rutaconfig";
@@ -451,7 +451,7 @@ exit; fi
 ############################       english: clone-config, clone a one existent config.cfg
 ############################       spanish: clone-config, clona una configuracion.cfg
 if [ "$mifirewall" = "clone-config" ]; then echo -n
-echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram version $fver for config firewall Linux "
 echo "$cincuenta $cincuenta Clone config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
@@ -480,7 +480,7 @@ exit; fi
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 if [ "$mifirewall" = "modify-config" ]; then echo -n
-echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Modify config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
@@ -504,7 +504,7 @@ exit; fi
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
 if [ "$mifirewall" = "show-config" ]; then echo -n
-echo;  echo "  $fprogram  version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram  version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Show config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
@@ -530,7 +530,7 @@ exit; fi
 ############################       english: rename-config: change the name  a one config
 ############################       spanish: rename-config: cambia el nombre a  una configuracion
 if [ "$mifirewall" = "rename-config" ]; then echo -n
-echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Rename config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
@@ -559,7 +559,7 @@ exit; fi
 ############################       english: delete-config: delete a one config
 ############################       spanish: delete-config: elimina una configuracion
 if [ "$mifirewall" = "delete-config" ]; then echo -n
-echo;  echo "  $fprogram version $fver for legacy/netfilter config firewall Linux "
+echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Delete config $cinco"
 echo
 echo $cinco "  The configs are in folder $rutaconfig : "
