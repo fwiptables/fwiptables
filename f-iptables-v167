@@ -12,6 +12,7 @@
 ##  /usr/bin/f-iptables-firewall
 ##
 ##
+##################################
 ## the variables names and path ##
 mifirewall=$1 ; mivariable=$2 ; lanza="no";  no="no" ;                       #english: system variables f-iptables-firewall
 fprogram="Fran iptables firewall" ; fver="167" ;                             #english: program and version f-iptables-firewall
@@ -25,18 +26,20 @@ execlegacy= ;                       #english: void to yes launch rules with ipta
 execnft= ;                          #english: void to yes launch rules with iptables neftables or no #spanish: vacio para lanzar netfables o no
 showlegacy= ;                       #english: void to show iptables legacy or no #spanish: vacio para mostrar iptables legacy o no
 shownft= ;                          #english: void to show iptables nettables or no #spanish: vacio para mostrar iptables netfilter o no
+##################################
+##################################
 ##
 ##
-##############################       english: number line of the custom variables y number of customs variables y wide at list cfgs
-##############################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
+##################################       english: number line of the custom variables y number of customs variables y wide at list cfgs
+##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
 ##
 ##
-flinea="-76" ; fvariables="-27" ; flistado="-90" ;
+flinea="-80" ; fvariables="-27" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
-##############################        english: fvariables:    variables to modify
-##############################        spanish: fvariables:    variables para modificar
+##################################        english: fvariables:    variables to modify
+##################################        spanish: fvariables:    variables para modificar
 ##
 ##
 echo -n #english: state: void for all states or input packet state #spanish: estado: vacio para todos los estados o estado de entrada
