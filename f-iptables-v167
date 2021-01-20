@@ -1080,7 +1080,7 @@ if [ "$haynat" = "no" ]; then  echo "  Dont allow ip NAT masquerade in iptables"
 if [ "$hayvpn" = "no" ]; then echo "  Dont allow vpn excepctional in iptables"; else  echo "  Allow vpn servers are $vpn" ; fi
 if [ "$hayotroprotocolo" = "no" ]; then  echo "  Dont allow other protocolo ip more in iptables"; else echo "  Allow other protocol ip: $otroprotocolo" ; fi
 echo
-echo "$cinco   launch $0 list  # to list iptables rules $cinco"
+echo "$cinco [list iptables rules]      f-iptables-firewall list  $cinco"
 echo
 exit; fi
 ############################       english: The default option, the help option for default
