@@ -1,0 +1,27 @@
+      
+     Fran iptables firewall
+##################################################
+
+   ###    Description
+
+   One Script in bash for iptables firewall   
+
+   #####   
+
+   ###    The fran iptables ver 150 and versions up in files repository at sourceforge
+
+   https://sourceforge.net/projects/f-iptables/files
+
+   ##### #####
+
+   ###    The fran iptables all versions in code repository at sourceforge
+
+   https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
+   
+   ##### #####
+
+   ###    license
+
+   copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+
+   ##### #####
