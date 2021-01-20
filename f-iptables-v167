@@ -1042,9 +1042,9 @@ echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else ec
 if [ -f "$rutaconfig/$2" ]; then echo; echo "$cinco $program configured with the configuration: $2 $cinco" ;
 else echo " $cinco Configured with the default configuration: $defaultcfg $cinco"; fi ;
 echo;
-echo "$cinco  With the firewall:  $cinco"  ;
-echo "  xtables   is $execlegacy allowed  "
-echo "  neftables is $execnft allowed  "
+echo "$cinco  With the iptables firewall:  $cinco"  ;
+echo "  xtables   is $execlegacy configured firewall "
+echo "  neftables is $execnft configured firewall "
 echo
 echo "$cinco  With Client ports IP:  $cinco" ;
 echo "  client tcp: $clientetcp"  ;
