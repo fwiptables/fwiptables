@@ -1040,37 +1040,37 @@ echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else ec
 if [ "$1" = "allpermisive" ]; then echo; echo "$cinco  The iptables configured for all permisive to internet $cinco";
 echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
 if [ -f "$rutaconfig/$2" ]; then echo; echo "$cinco $program configured with the configuration: $2 $cinco" ;
-else echo " $cinco Configured with the default configuration: $defaultcfg $cinco"; fi ;
+else echo "$cinco [Configured with the default configuration] $cinco"; echo "  $defaultcfg "; fi ;
 echo;
-echo "$cinco  With the iptables firewall:  $cinco"  ;
-echo "  xtables   is $execlegacy configured firewall "
-echo "  neftables is $execnft configured firewall "
+echo "$cinco  [With the iptables firewall]  $cinco"  ;
+echo "  xtables    is  $execlegacy configured firewall "
+echo "  neftables  is  $execnft configured firewall "
 echo
-echo "$cinco  With Client ports IP:  $cinco" ;
+echo "$cinco  [With the client ports IP]  $cinco" ;
 echo "  client tcp: $clientetcp"  ;
 echo "  client udp: $clienteudp"  ;
 echo "  * Ports domain,ntp,bootpc are usually udp necesary"
 if [ "$1" = "client" ]; then echo ;
-echo "$cinco  Without server ports IP $cinco" ;
+echo "$cinco  [Without server ports IP] $cinco" ;
 else echo -n; fi
 if [ "$1" = "server" ]; then echo ;
-echo "$cinco  With Server ports IP:  $cinco" ;
+echo "$cinco  [With the server ports IP]  $cinco" ;
 echo "  server tcp: $servidortcp" ;
 echo "  server udp: $servidorudp" ;
 else echo -n; fi ; echo
-echo "$cinco  With the protocols IP:  $cinco" ;
+echo "$cinco  [With the protocols IP]  $cinco" ;
 echo "  ipv4 is $hayipv4 allowed "
 echo "  ipv6 is $hayipv6 allowed "
 echo "  * Where ipv4 is usually necesary"
 echo
-echo "$cinco  With the networks configured:  $cinco" ;
+echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $redclienteipv4 And ipv4 server: $redserveripv4"
 echo "  ipv6 client: $redclienteipv4 And ipv6 server: $redserveripv6"
 echo "  * Where 0/0 are all the networks, usually necesary "
 echo
-if [ "$estado" = "$NULL" ]; then echo "$cinco  Without specific input state IP  $cinco" ;  echo ;
-else echo "$cinco  With input state IP:  $cinco" ; echo " Input satate: $estado" ; echo ; fi
-echo "$cinco  With Others configs:  $cinco"
+if [ "$estado" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco" ;  echo ;
+else echo "$cinco  [With input state IP]  $cinco" ; echo " Input satate: $estado" ; echo ; fi
+echo "$cinco  [With Others configs]  $cinco"
 if [ "$haypingsend" = "no" ]; then echo "  Dont allow send ping in iptables"; else echo "  Allow send pings" ; fi
 if [ "$haypingrecive" = "no" ]; then echo "  Dont allow recive ping in iptables"; else echo "  Allow recive pings" ; fi
 if [ "$haylogservertcp" = "no" ]; then echo "  Dont allow log server tcp in iptables"; else  echo "  Allow logservers in port: $logservertcp" ; fi
@@ -1080,7 +1080,7 @@ if [ "$haynat" = "no" ]; then  echo "  Dont allow ip NAT masquerade in iptables"
 if [ "$hayvpn" = "no" ]; then echo "  Dont allow vpn excepctional in iptables"; else  echo "  Allow vpn servers are $vpn" ; fi
 if [ "$hayotroprotocolo" = "no" ]; then  echo "  Dont allow other protocolo ip more in iptables"; else echo "  Allow other protocol ip: $otroprotocolo" ; fi
 echo
-echo "$cinco [list iptables rules]      f-iptables-firewall list  $cinco"
+echo "$cinco  List iptables rules with:   f-iptables-firewall list  $cinco"
 echo
 exit; fi
 ############################       english: The default option, the help option for default
