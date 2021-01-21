@@ -91,15 +91,15 @@ echo "  the $fprogram version $fver "
 echo "$cincuenta you need to be root $cinco"
 echo
 echo
-echo "$cinco   The First Option "
+echo "$cinco   One First Option "
 echo ""
-echo "        [Launch rules]     -eraserules -offline -client -server -allpermisive"
-echo "        [List rules]       -list -forward -list6 -nat-ip4 -nat-ip6 "
-echo "        [List sockets]     -iproute -ss -netstat -lsof -ipforwading"
-echo "        [Modify config]    -new-config -clone-config -modify-config"
-echo "                           -show-config -rename-config -delete-config"
-echo "        [Update]           -reconfig -upgrade -auth-sudo"
-echo "        [Help]             -about -help -ayuda"
+echo "        [Launch rules]     eraserules offline client server allpermisive"
+echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
+echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [Modify config]    new-config clone-config modify-config"
+echo "                           show-config rename-config delete-config"
+echo "        [Update]           reconfig upgrade auth-sudo"
+echo "        [Help]             about help ayuda"
 echo ""
 echo "$cinco   The configs are in folder $rutaconfig"
 echo
@@ -107,11 +107,11 @@ ls $rutaconfig | fmt $flistado  ;
 echo
 echo "$cinco   The examples "
 echo
-echo "  [List iptables rules]                 f-iptables-firewall -list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall -client web-sample1.cfg"
-echo "  [Erase the iptables rules]            f-iptables-firewall -eraserules "
-echo "  [Show long help in english]           f-iptables-firewall -help "
-echo "  [Show long help in spanish]           f-iptables-firewall -ayuda "
+echo "  [List iptables rules]                 f-iptables-firewall list  "
+echo "  [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
+echo "  [Erase the iptables rules]            f-iptables-firewall eraserules "
+echo "  [Show long help in english]           f-iptables-firewall help "
+echo "  [Show long help in spanish]           f-iptables-firewall ayuda "
 echo
 echo
 exit; fi
@@ -124,13 +124,13 @@ if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
 else cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg; fi
 #############################        english: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
-if [ "$mifirewall" = "-offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
+if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente="no"; mojado="no"; fi
-if [ "$mifirewall" = "-client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cincuenta"
+if [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente=""; mojado="no"; fi
-if [ "$mifirewall" = "-server" ]; then echo; echo "  FIREWALL SERVER" ; echo "$cincuenta"
+if [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo "$cincuenta"
 lanza="si"; activarservidor="";  activarcliente=""; mojado="no"; fi
-if [ "$mifirewall" = "-allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
+if [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       english: Script: general options      ######################################### #################################################
 ##############################       spanish: Script: opciones generales   ######################################### #################################################
@@ -138,7 +138,7 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ####
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
-if [ "$mifirewall" = "-reconfig" ]; then echo -n ;
+if [ "$mifirewall" = "reconfig" ]; then echo -n ;
 rm $rutaconfig/*sample1.cfg; $0 ; echo;
 echo "$cincuenta $cincuenta    Updating default configuration   $cinco"
 echo "$cinco    Updating default configurations samples1.cfg:  $rutaconfig/*sample1.cfg "
@@ -172,7 +172,7 @@ echo ; echo
 exit ; fi
 ##############################       english: automatic-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: automatica-acutalizacion: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
-if [ "$mifirewall" = "-web-upgrade" ]; then echo ; echo "   $fprogram version $fver" ;
+if [ "$mifirewall" = "web-upgrade" ]; then echo ; echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
 echo
 echo ; echo "   Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links command" ; echo ;
@@ -188,7 +188,7 @@ echo "$cinco     upgraded:     /usr/bin/f-iptables-firewall" ; echo; echo ;
 exit ; fi
 ##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: actualiza: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
-if [ "$mifirewall" = "-upgrade" ]; then  echo ; echo "   $fprogram version $fver" ;
+if [ "$mifirewall" = "upgrade" ]; then  echo ; echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Upgrade $cinco"
 echo
 echo "  The actually version is" ;
@@ -209,7 +209,7 @@ echo; echo;
 exit;  fi
 #############################       english: eraserules: system script, the eraserules option
 #############################       spanish: borra reglas: script de sistema, la opcion borra reglas
-if [ "$mifirewall" = "-eraserules" ]; then echo -n ;
+if [ "$mifirewall" = "eraserules" ]; then echo -n ;
 echo
 echo "$cincuenta $cincuenta "   Deleting rules iptables   " $cinco" ;
 echo
@@ -219,7 +219,7 @@ echo ; echo " Erase all rules from ipv4 and ipv6 for iptables filter and iptable
 echo ; exit; fi
 #############################       english: iproute: system script, the iproute option
 #############################       spanish: iproute: script de sistema, la opcion iproute
-if [ "$mifirewall" = "-iproute" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
+if [ "$mifirewall" = "iproute" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
 echo "$cincuenta $cincuenta "   Show ip address and ip route   " $cinco" ;
 echo; uname -a
 echo
@@ -230,7 +230,7 @@ echo ; ip route ;
 echo ; exit; fi
 #############################       english: sockets: system script, the sockets option
 #############################       spanish: sockets: script de sistema, la opcion sockets
-if [ "$mifirewall" = "-ss" ]; then echo -n ;
+if [ "$mifirewall" = "ss" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with ss   $cinco" ;
 echo; uname -a
@@ -239,7 +239,7 @@ echo "$cinco      The ipv6 sockets       $cinco" ; echo ;  ss -a6 ;   echo ;  ec
 echo ; exit; fi
 #############################       english: losf: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
-if [ "$mifirewall" = "-lsof" ]; then echo -n ;
+if [ "$mifirewall" = "lsof" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with lsof   $cinco"
 echo; uname -a
@@ -249,7 +249,7 @@ echo ; lsof -i  ;   echo ;
 echo ; exit; fi
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat  sockets
-if [ "$mifirewall" = "-netstat" ]; then echo -n ;
+if [ "$mifirewall" = "netstat" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with netstat   $cinco"
 echo; uname -a
@@ -263,7 +263,7 @@ echo ; netstat -a -4 -6  ;   echo ;
 echo ; exit; fi
 #############################       english: list: system script, the list option
 #############################       spanish: list: script de sistema, la opcion lista
-if [ "$mifirewall" = "-list" ]; then echo -n ;
+if [ "$mifirewall" = "list" ]; then echo -n ;
  echo;  echo "  $fprogram version $fver for filter firewall Linux for ipv4"
  echo "$cincuenta $cincuenta   List filter ipv4    $cinco"
  echo ;
@@ -292,7 +292,7 @@ if [ "$mifirewall" = "-list" ]; then echo -n ;
  echo "" ; exit; fi
 ############################       english: forward: system script, the forward option to list iptables filter forward rules
 ############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
-if [ "$mifirewall" = "-forward" ]; then echo -n
+if [ "$mifirewall" = "forward" ]; then echo -n
  echo;  echo "  $fprogram version $fver for filter forward firewall Linux" ;
  echo "$cincuenta $cincuenta   List filter forward ipv4/ ipv6/    $cinco"
  echo "";
@@ -336,7 +336,7 @@ if [ "$mifirewall" = "-forward" ]; then echo -n
  exit; fi
 ############################       english: list6: system script, the list6 option to list ipv6 rules
 ############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
- if [ "$mifirewall" = "-list6" ]; then echo -n
+ if [ "$mifirewall" = "list6" ]; then echo -n
  echo;  echo "  $fprogram version $fver for filter firewall for ipv6"
  echo "$cincuenta $cincuenta   List filter ipv6    $cinco"
  echo;
@@ -367,7 +367,7 @@ if [ "$mifirewall" = "-forward" ]; then echo -n
   exit; fi
 ############################       english: nat-ip4: system script, the nat-ip4 option to list NAT rules of ipv4
 ############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
-if [ "$mifirewall" = "-nat-ip4" ]; then echo -n
+if [ "$mifirewall" = "nat-ip4" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  NAT firewall for ipv4"
 echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
  echo;
@@ -396,7 +396,7 @@ echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
  exit; fi
 ############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
 ############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
-if [ "$mifirewall" = "-nat-ip6" ]; then echo -n
+if [ "$mifirewall" = "nat-ip6" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  NAT firewall for ipv6"
 echo  "$cincuenta $cincuenta   NAT ipv6    $cinco"
  echo;
@@ -424,7 +424,7 @@ case $showlegacy in
 exit; fi
 ############################       english: new-config: system script, the new-config option to create new configs
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
-if [ "$mifirewall" = "-new-config" ]; then echo -n
+if [ "$mifirewall" = "new-config" ]; then echo -n
 echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta New config $cinco"
 echo "";
@@ -447,7 +447,7 @@ echo "" ;
 exit; fi
 ############################       english: nueva-config: system script, the nueva-config option to create new configs in spanish
 ############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config en español
-if [ "$mifirewall" = "-nueva-config" ]; then echo -n
+if [ "$mifirewall" = "nueva-config" ]; then echo -n
 echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Nueva config $cinco"
 echo "";
@@ -470,7 +470,7 @@ echo "" ;
 exit; fi
 ############################       english: clone-config, clone a one existent config.cfg
 ############################       spanish: clone-config, clona una configuracion.cfg
-if [ "$mifirewall" = "-clone-config" ]; then echo -n
+if [ "$mifirewall" = "clone-config" ]; then echo -n
 echo;  echo "  $fprogram version $fver for config firewall Linux "
 echo "$cincuenta $cincuenta Clone config $cinco"
 echo
@@ -499,7 +499,7 @@ echo "" ;
 exit; fi
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
-if [ "$mifirewall" = "-modify-config" ]; then echo -n
+if [ "$mifirewall" = "modify-config" ]; then echo -n
 echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Modify config $cinco"
 echo
@@ -523,7 +523,7 @@ echo "" ;
 exit; fi
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
-if [ "$mifirewall" = "-show-config" ]; then echo -n
+if [ "$mifirewall" = "show-config" ]; then echo -n
 echo;  echo "  $fprogram  version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Show config $cinco"
 echo
@@ -549,7 +549,7 @@ echo "" ;
 exit; fi
 ############################       english: rename-config: change the name  a one config
 ############################       spanish: rename-config: cambia el nombre a  una configuracion
-if [ "$mifirewall" = "-rename-config" ]; then echo -n
+if [ "$mifirewall" = "rename-config" ]; then echo -n
 echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Rename config $cinco"
 echo
@@ -578,7 +578,7 @@ echo "" ;
 exit; fi
 ############################       english: delete-config: delete a one config
 ############################       spanish: delete-config: elimina una configuracion
-if [ "$mifirewall" = "-delete-config" ]; then echo -n
+if [ "$mifirewall" = "delete-config" ]; then echo -n
 echo;  echo "  $fprogram version $fver for  config firewall Linux "
 echo "$cincuenta $cincuenta Delete config $cinco"
 echo
@@ -598,7 +598,7 @@ echo
 exit; fi
 ############################       english: auth-sudo: the auth-sudo option en english
 ############################       spanish: auth-sudo: la opcion de auth-sudo en ingles
-if [ "$mifirewall" = "-auth-sudo" ]; then echo ; echo;
+if [ "$mifirewall" = "auth-sudo" ]; then echo ; echo;
 echo "  The $fprogram version $fver"
 echo "$cincuenta $cincuenta Auth-sudo $cinco"
 echo; echo;
@@ -623,7 +623,7 @@ echo; echo; echo;
 exit; fi
 ############################       english: ipforwading: the ipforwading option en english
 ############################       spanish: ipforwading: la opcion de reenvios  en ingles
-if [ "$mifirewall" = "-ipforwading" ]; then echo ; echo ;
+if [ "$mifirewall" = "ipforwading" ]; then echo ; echo ;
 echo "  The $fprogram version $fver ipforwading values kernel linux"
 echo "$cincuenta $cincuenta Show ipforwading $cinco"
 echo; uname -a
@@ -635,7 +635,7 @@ echo; echo
 exit; fi
 ############################
 ############################
-if [ "$mifirewall" = "-about" ]; then echo; echo
+if [ "$mifirewall" = "about" ]; then echo; echo
 echo "  Fran iptables firewall"
 echo "$cincuenta"
 echo
@@ -664,23 +664,21 @@ echo
 exit; fi
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
-if [ "$mifirewall" = "-help" ]; then echo ; echo ;
+if [ "$mifirewall" = "help" ]; then echo ; echo ;
 echo "  The $fprogram version $fver"
 echo "$cincuenta $cincuenta Help $cinco"
 echo
 echo "$cinco   f-iptables-firewall notes:   $cinco"
 echo ""
-echo "$cinco   The First Option "
+echo "$cinco   One First Option "
 echo ""
-echo "$cinco   The First Option "
-echo ""
-echo "        [Launch rules]     -eraserules -offline -client -server -allpermisive"
-echo "        [List rules]       -list -forward -list6 -nat-ip4 -nat-ip6 "
-echo "        [List sockets]     -iproute -ss -netstat -lsof -ipforwading"
-echo "        [Modify config]    -new-config -clone-config -modify-config"
-echo "                           -show-config -rename-config -delete-config"
-echo "        [Update]           -reconfig -upgrade -auth-sudo"
-echo "        [Help]             -about -help -ayuda"
+echo "        [Launch rules]     eraserules offline client server allpermisive"
+echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
+echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [Modify config]    new-config clone-config modify-config"
+echo "                           show-config rename-config delete-config"
+echo "        [Update]           reconfig upgrade auth-sudo"
+echo "        [Help]             about help ayuda"
 echo ""
 echo "$cinco   The configs are in folder $rutaconfig"
 echo
@@ -688,11 +686,11 @@ ls $rutaconfig | fmt $flistado  ;
 echo
 echo "$cinco   The examples "
 echo
-echo "  [List iptables rules]                 f-iptables-firewall -list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall -client web-sample1.cfg"
-echo "  [Erase the iptables rules]            f-iptables-firewall -eraserules "
-echo "  [Show long help in english]           f-iptables-firewall -help "
-echo "  [Show long help in spanish]           f-iptables-firewall -ayuda "
+echo "  [List iptables rules]                 f-iptables-firewall list  "
+echo "  [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
+echo "  [Erase the iptables rules]            f-iptables-firewall eraserules "
+echo "  [Show long help in english]           f-iptables-firewall help "
+echo "  [Show long help in spanish]           f-iptables-firewall ayuda "
 echo
 echo
 echo "$cincuenta  The first option"
@@ -769,33 +767,33 @@ echo ""
 exit; fi
 ############################       english: ayuda: the help option in spanish
 ############################       spanish: ayuda: la opcion de ayuda en español
-if [ "$mifirewall" = "-ayuda" ]; then echo ; echo ;
+if [ "$mifirewall" = "ayuda" ]; then echo ; echo ;
 echo "  the $fprogram version $fver "
 echo "$cincuenta $cincuenta Ayuda $cinco"
 echo
 echo "$cincuenta   Las notas de f-iptables-firewall:   $cinco"
 echo ""
-echo "$cinco   The First Option "
+echo "$cinco   Una primera opcion "
 echo ""
-echo "        [Launch rules]     -eraserules -offline -client -server -allpermisive"
-echo "        [List rules]       -list -forward -list6 -nat-ip4 -nat-ip6 "
-echo "        [List sockets]     -iproute -ss -netstat -lsof -ipforwading"
-echo "        [Modify config]    -new-config -clone-config -modify-config"
-echo "                           -show-config -rename-config -delete-config"
-echo "        [Update]           -reconfig -upgrade -auth-sudo"
-echo "        [Help]             -about -help -ayuda"
+echo "        [Launch rules]     eraserules offline client server allpermisive"
+echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
+echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [Modify config]    new-config clone-config modify-config"
+echo "                           show-config rename-config delete-config"
+echo "        [Update]           reconfig upgrade auth-sudo"
+echo "        [Help]             about help ayuda"
 echo ""
-echo "$cinco   The configs are in folder $rutaconfig"
+echo "$cinco   Las configuraciones estan en la carpeta $rutaconfig"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo
-echo "$cinco   The examples "
+echo "$cinco   Los ejmplos "
 echo
-echo "  [List iptables rules]                 f-iptables-firewall -list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall -client web-sample1.cfg"
-echo "  [Erase the iptables rules]            f-iptables-firewall -eraserules "
-echo "  [Show long help in english]           f-iptables-firewall -help "
-echo "  [Show long help in spanish]           f-iptables-firewall -ayuda "
+echo "  [Lista iptables reglas]               f-iptables-firewall list  "
+echo "  [Lanza iptables coomo cliente web]    f-iptables-firewall client web-sample1.cfg"
+echo "  [Borra las reglas de iptables]        f-iptables-firewall eraserules "
+echo "  [Muestra larga ayuda en ingles]       f-iptables-firewall help "
+echo "  [Muestra larga ayuda en español]      f-iptables-firewall ayuda "
 echo
 echo
 echo "$cincuenta  La primera opción:"
@@ -1123,15 +1121,15 @@ echo
 echo "   The $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
 echo
-echo "$cinco   The First Option "
+echo "$cinco   One First Option "
 echo ""
-echo "        [Launch rules]     -eraserules -offline -client -server -allpermisive"
-echo "        [List rules]       -list -forward -list6 -nat-ip4 -nat-ip6 "
-echo "        [List sockets]     -iproute -ss -netstat -lsof -ipforwading"
-echo "        [Modify config]    -new-config -clone-config -modify-config"
-echo "                           -show-config -rename-config -delete-config"
-echo "        [Update]           -reconfig -upgrade -auth-sudo"
-echo "        [Help]             -about -help -ayuda"
+echo "        [Launch rules]     eraserules offline client server allpermisive"
+echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
+echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [Modify config]    new-config clone-config modify-config"
+echo "                           show-config rename-config delete-config"
+echo "        [Update]           reconfig upgrade auth-sudo"
+echo "        [Help]             about help ayuda"
 echo ""
 echo "$cinco   The configs are in folder $rutaconfig"
 echo
@@ -1139,11 +1137,11 @@ ls $rutaconfig | fmt $flistado  ;
 echo
 echo "$cinco   The examples "
 echo
-echo "  [List iptables rules]                 f-iptables-firewall -list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall -client web-sample1.cfg"
-echo "  [Erase the iptables rules]            f-iptables-firewall -eraserules "
-echo "  [Show long help in english]           f-iptables-firewall -help "
-echo "  [Show long help in spanish]           f-iptables-firewall -ayuda "
+echo "  [List iptables rules]                 f-iptables-firewall list  "
+echo "  [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
+echo "  [Erase the iptables rules]            f-iptables-firewall eraserules "
+echo "  [Show long help in english]           f-iptables-firewall help "
+echo "  [Show long help in spanish]           f-iptables-firewall ayuda "
 echo
 echo
 # left script
