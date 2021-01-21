@@ -95,7 +95,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -217,9 +217,9 @@ $rutabin/iptables-nft -t filter -F ; $rutabin/ip6tables-nft -t filter  -F ; $rut
 $rutabin/iptables-nft -t nat -F ; $rutabin/ip6tables-nft -t nat  -F ; $rutabin/iptables-legacy -t nat -F ; $rutabin/ip6tables-legacy -t nat -F ;
 echo ; echo " Erase all rules from ipv4 and ipv6 for iptables filter and iptables nat";
 echo ; exit; fi
-#############################       english: iproute: system script, the iproute option
-#############################       spanish: iproute: script de sistema, la opcion iproute
-if [ "$mifirewall" = "iproute" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
+#############################       english: route: system script, the iproute option
+#############################       spanish: route: script de sistema, la opcion iproute
+if [ "$mifirewall" = "route" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
 echo "$cincuenta $cincuenta "   Show ip address and ip route   " $cinco" ;
 echo; uname -a
 echo
@@ -674,7 +674,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -777,7 +777,7 @@ echo "$cinco   Una primera opcion "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -1125,7 +1125,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     iproute ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
