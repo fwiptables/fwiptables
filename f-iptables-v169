@@ -1,7 +1,7 @@
 #!/bin/bash
 ##############################
 ##
-##   This program is with gpl license, the program is copyleft, it is free.
+##   This program is wWith gpl license, the program is copyleft, it is free.
 ##
 ##   The comments are in english language and spanish language
 ##
@@ -95,7 +95,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     route ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -608,13 +608,14 @@ echo; echo;
 echo "$cinco                                              Example:      user1,user2 "
 echo "$cinco    The users authorizated will launch without passwd:      sudo f-iptables-firewall "
 echo; echo; read -r -p "#####    Type the user/uesrs to auth in f-iptables-firewall:     " autorizados
+echo
 echo "     $autorizados ALL=(root) NOPASSWD:/usr/bin/f-iptables-firewall " > /etc/sudoers.d/f-iptables-firewall
-echo "$cinco"
-echo "     Auth users:     $autorizados    in     /etc/sudoers.d/f-iptables-firewall: "
+echo "$cinco    Writing config:     $autorizados    in     /etc/sudoers.d/f-iptables-firewall: "
+echo "          Ready:              /etc/sudoers.d/f-iptables-firewall"
 cat /etc/sudoers.d/f-iptables-firewall
-echo "$cinco"
-echo "     alias in /etc/bash_completion.d/f-iptables-firewall:"
-echo "     alias=sudo f-iptables-firewall "
+echo
+echo "$cinco    Writing config:  alias in /etc/bash_completion.d/f-iptables-firewall:"
+echo "          Ready:           alias f-iptables-firewall='sudo f-iptables-firewall' "
 echo "alias f-iptables-firewall='sudo f-iptables-firewall'" >  /etc/bash_completion.d/f-iptables-firewall
 echo
 echo "$cinco $cinco"
@@ -634,8 +635,15 @@ echo; echo
  $rutabin/sysctl -a | grep -i forwarding
 echo; echo
 exit; fi
-############################
-############################
+############################       english: tcpdump: listen at dump from conexiones
+############################       spanish: tcpdump: escucha al volcado de conexiones
+if [ "$mifirewall" = "tcpdump" ]; then echo; echo ;
+echo "  The $fprogram version $fver listening with tcpdump sockets of the kernel linux"
+echo "$cincuenta $cincuenta Listening tcpdump $cinco"
+echo; tcpdump
+exit; fi
+############################       english: about: about of program
+############################       spanish: about: acerca del programa
 if [ "$mifirewall" = "about" ]; then echo; echo
 echo "  Fran iptables firewall"
 echo "$cincuenta"
@@ -675,7 +683,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     route ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -778,7 +786,7 @@ echo "$cinco   Una primera opcion "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     route ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -1126,7 +1134,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     route ss netstat lsof ipforwading"
+echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
