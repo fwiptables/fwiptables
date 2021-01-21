@@ -95,7 +95,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "        [List sockets]     route ss netstat lsof ipforwading"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
 echo "        [Update]           reconfig upgrade auth-sudo"
@@ -633,15 +633,8 @@ echo; echo
  $rutabin/sysctl -a | grep -i forwarding
 echo; echo
 exit; fi
-############################       english: tcpdump: listen at dump from conexiones
-############################       spanish: tcpdump: escucha al volcado de conexiones
-if [ "$mifirewall" = "tcpdump" ]; then echo; echo ;
-echo "  The $fprogram version $fver tcpdump sockets of the kernel linux"
-echo "$cincuenta $cincuenta Show tcpdump $cinco"
-echo; tcpdump
-exit; fi
-############################       english: about: about of program
-############################       spanish: about: acerca del programa
+############################
+############################
 if [ "$mifirewall" = "about" ]; then echo; echo
 echo "  Fran iptables firewall"
 echo "$cincuenta"
