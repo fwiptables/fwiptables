@@ -156,6 +156,7 @@ echo "clientetcp=http,https,5900:5910" > $rutaconfig/vnc-sample1.cfg
 echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp ; clienteudp=domain,ntp,bootpc,tftp,ftps-data"> $rutaconfig/ftp-sample1.cfg
 echo "clientetcp=http,https,ircd,ircs-u" > $rutaconfig/irc-sample1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" > $rutaconfig/sql-sample1.cfg
+echo "clientetcp=http,https,rsync,ssh" > $rutaconfig/ssh-sample1.cfg
 case $0 in
 "$fiptables")
 echo -n
@@ -640,6 +641,7 @@ exit; fi
 if [ "$mifirewall" = "tcpdump" ]; then echo; echo ;
 echo "  The $fprogram version $fver listening with tcpdump sockets of the kernel linux"
 echo "$cincuenta $cincuenta Listening tcpdump $cinco"
+echo "  Pulse control+z to stop "
 echo; tcpdump
 exit; fi
 ############################       english: about: about of program
