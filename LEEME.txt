@@ -4,7 +4,7 @@
 
    ###    Description
 
-   One Script in bash for iptables firewall   
+   One Script in bash to manage iptables firewall   
 
    #####   
 
