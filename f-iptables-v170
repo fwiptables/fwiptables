@@ -42,7 +42,7 @@ cinco="#####" ; cincuenta="##################################################"
 ##################################        spanish: fvariables:    variables para modificar
 ##
 ##
-echo -n #english: state: void for all states or input packet state #spanish: estado: vacio para todos los estados o estado de entrada
+echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
 estado="" ; #english: modify with void or -m state --state stablished #spanish: modificar con vacio o -m state --state stablished
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
 hayipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
@@ -121,7 +121,8 @@ exit; fi
 ##############################       spanish: actualiza el archivo default1.cfg     ###########################################  #################################
 if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; fi
 if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
-else cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg; fi
+else cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
+fi
 #############################        english: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
@@ -143,8 +144,8 @@ rm $rutaconfig/*sample1.cfg; $0 ; echo;
 echo "$cincuenta $cincuenta    Updating default configuration   $cinco"
 echo "$cinco    Updating default configurations samples1.cfg:  $rutaconfig/*sample1.cfg "
 echo ; echo ; echo
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/english-sample1.cfg
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"  > $rutaconfig/spanish-sample1.cfg
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/english-sample1.cfg
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/spanish-sample1.cfg
 ## config: web-sample1.cfg ##
 echo "servidortcp=http,https"  >> $rutaconfig/web-sample1
 echo "clientetcp=http,https ; clienteudp=domain,ntp,bootpc"  >>  $rutaconfig/web-sample1.cfg
@@ -466,7 +467,7 @@ read -r -p "          Type one new filename without path [ New-Config.cfg ]:  " 
 echo; echo; echo;
 echo "  The new file will be $rutaconfig/$frespuestab";
 echo "  Edit the file $frespuestab"
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
 echo "" ; echo ""; editor $rutaconfig/$frespuestab;
 echo "" ;
 echo "  $cinco        launch firewall for client:              $0 client $frespuestab   " ;
@@ -489,7 +490,7 @@ read -r -p "          Escribe un nuevo nombre de archivo sin ruta [ Nueva-Config
 echo; echo;
 echo "  El nuevo archivo estara en $rutaconfig/$frespuestab" ;
 echo "  Edita el archivo $frespuestab "
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
 echo "" ; echo ""; editor $rutaconfig/$frespuestab ;
 echo "" ;
 echo "  $cinco        lanza el cortafuegos para cliente:              $0 client $frespuestab   " ;
@@ -785,7 +786,7 @@ echo " $0 help               :  Show this help in english"
 echo ""
 echo "$cincuenta  Examples of variables to the configs files, default.cfg"
 echo "" ;
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo ""
 echo "$cincuenta  The iptables netftilter"
 echo
@@ -888,7 +889,7 @@ echo "   $0 help               :  Muestra la ayuda en ingles "
 echo ""
 echo "$cincuenta  Ejemplos de las variables de configuración, default.cfg"
 echo ""
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####  variables   #####/g" | sed "s/echo -n//g"
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo ""
 echo "$cincuenta  Los iptables netftilter"
 echo
