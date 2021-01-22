@@ -76,7 +76,7 @@ redserveripv6=0/0 ;  #english: the net to server ipv6, all is 0/0 #spanish: la r
 ##
 ##
 ##
-## if This is the line number 60 to then.. flinea="-numero" .
+## if This is the line number 60 to then up .. flinea="-number" .
 ##
 ##
 ##
@@ -93,25 +93,25 @@ echo
 echo
 echo "$cinco   One First Option "
 echo ""
-echo "        [Launch rules]     eraserules offline client server allpermisive"
-echo "        [List rules]       list forward list6 nat-ip4 nat-ip6 "
-echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "        [Modify config]    new-config clone-config modify-config"
-echo "                           show-config rename-config delete-config"
-echo "        [Update]           reconfig upgrade auth-sudo"
-echo "        [Help]             about help ayuda"
+echo "     [Launch rules]     eraserules offline client server allpermisive"
+echo "     [List rules]       list forward list6 nat-ip4 nat-ip6 "
+echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "     [Modify config]    new-config clone-config modify-config"
+echo "                        show-config rename-config delete-config"
+echo "     [Update]           reconfig upgrade auth-sudo"
+echo "     [Help]             about help ayuda"
 echo ""
 echo "$cinco   The configs are in folder $rutaconfig"
 echo
-ls $rutaconfig | fmt $flistado  ;
+echo "   $(ls $rutaconfig | fmt $flistado)"
 echo
 echo "$cinco   The examples "
 echo
-echo "  [List iptables rules]                 f-iptables-firewall list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
-echo "  [Erase the iptables rules]            f-iptables-firewall eraserules "
-echo "  [Show long help in english]           f-iptables-firewall help "
-echo "  [Show long help in spanish]           f-iptables-firewall ayuda "
+echo "   [List iptables rules]                 f-iptables-firewall list  "
+echo "   [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
+echo "   [Erase the iptables rules]            f-iptables-firewall eraserules "
+echo "   [Show long help in english]           f-iptables-firewall help "
+echo "   [Show long help in spanish]           f-iptables-firewall ayuda "
 echo
 echo
 exit; fi
@@ -121,7 +121,7 @@ exit; fi
 ##############################       spanish: actualiza el archivo default1.cfg     ###########################################  #################################
 if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; fi
 if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
-else cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
+else head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
 fi
 #############################        english: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
@@ -144,8 +144,8 @@ rm $rutaconfig/*sample1.cfg; $0 ; echo;
 echo "$cincuenta $cincuenta    Updating default configuration   $cinco"
 echo "$cinco    Updating default configurations samples1.cfg:  $rutaconfig/*sample1.cfg "
 echo ; echo ; echo
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/english-sample1.cfg
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/spanish-sample1.cfg
+head  $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/english-sample1.cfg
+head  $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/spanish-sample1.cfg
 ## config: web-sample1.cfg ##
 echo "servidortcp=http,https"  >> $rutaconfig/web-sample1
 echo "clientetcp=http,https ; clienteudp=domain,ntp,bootpc"  >>  $rutaconfig/web-sample1.cfg
@@ -205,14 +205,14 @@ echo "   Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links 
 links=""; flinks=$(which links);
 echo "   Downloading f-iptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
 links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i "download latest version"  &&
-links -source https://sourceforge.net/projects/f-iptables/files/latest/download > /usr/bin/f-iptables-firewall &&
+links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $fiptables &&
 echo "   $fprogram is upgraded: ok"
 echo
 echo
-chmod ugo+x /usr/bin/f-iptables-firewall
+chmod ugo+x $fiptables
 echo "$cincuenta      upgraded      $cincuenta"
 echo "$cinco     upgraded:     /usr/bin/f-iptables-firewall" ; echo; echo ;
-/usr/bin/f-iptables-firewall reconfig ;
+$fiptables reconfig
 exit ; fi
 ##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: actualiza: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
@@ -234,7 +234,7 @@ echo "     links -source https://sourceforge.net/projects/f-iptables/files/lates
 echo "     chmod ugo+x /usr/bin/f-iptables-firewall"
 echo "     /usr/bin/f-iptables-firewall reconfig"
 echo
-echo " $cinco    ok and it will be upgrade with the name /usr/bin/f-iptables-firewall" ;
+echo " $cinco    ok and it will be upgrade with the name $fiptables" ;
 echo; echo;
 exit;  fi
 #############################       english: eraserules: system script, the eraserules option
@@ -251,7 +251,8 @@ echo ; exit; fi
 #############################       spanish: route: script de sistema, la opcion iproute
 if [ "$mifirewall" = "route" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
 echo "$cincuenta $cincuenta    Show ip address and ip route    $cinco" ;
-echo; uname -a
+echo
+uname -a
 echo
 echo "$cinco  ip address  $cinco ";
 echo; echo ; ip address ; echo ; echo ;
@@ -263,28 +264,34 @@ echo ; exit; fi
 if [ "$mifirewall" = "ss" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with ss   $cinco" ;
-echo; uname -a
+echo
+uname -a
 echo ;
-echo "$cinco      The ipv6 sockets       $cinco" ; echo ;  ss -a6 ;   echo ;
+echo "$cinco      The ipv6 sockets       $cinco" ; echo ;  ss -a6
+echo ;
 echo "$cinco      The ipv4 sockets      $cinco" ;echo ; ss -a4 ;
 echo ; exit; fi
-#############################       english: losf: system script, the lsof option
+#############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 if [ "$mifirewall" = "lsof" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with lsof   $cinco"
-echo; uname -a
+echo
+uname -a
 echo ;
 echo "$cinco      The sockets with lsof      $cinco" ;
-echo ; lsof -i  ;   echo ;
+echo ;
+lsof -i
+echo ;
 echo ; exit; fi
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat  sockets
 if [ "$mifirewall" = "netstat" ]; then echo -n ;
 echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with netstat   $cinco"
-echo; uname -a
-echo ;
+echo
+uname -a
+echo
 echo "$cincuenta      The devices list with netstat      $cinco" ;
 echo ; netstat -i  ;   echo ;
 echo "$cincuenta      The route table with  netstat      $cinco" ;
@@ -467,7 +474,7 @@ read -r -p "          Type one new filename without path [ New-Config.cfg ]:  " 
 echo; echo; echo;
 echo "  The new file will be $rutaconfig/$frespuestab";
 echo "  Edit the file $frespuestab"
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
 echo "" ; echo ""; editor $rutaconfig/$frespuestab;
 echo "" ;
 echo "  $cinco        launch firewall for client:              $0 client $frespuestab   " ;
@@ -490,7 +497,7 @@ read -r -p "          Escribe un nuevo nombre de archivo sin ruta [ Nueva-Config
 echo; echo;
 echo "  El nuevo archivo estara en $rutaconfig/$frespuestab" ;
 echo "  Edita el archivo $frespuestab "
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
 echo "" ; echo ""; editor $rutaconfig/$frespuestab ;
 echo "" ;
 echo "  $cinco        lanza el cortafuegos para cliente:              $0 client $frespuestab   " ;
@@ -695,12 +702,12 @@ echo
 echo "$cinco   The fran iptables all versions in code repository at sourceforge"
 echo
 echo "  https://sourceforge.net/p/f-iptables/code/ci/master/tree/            "
-echo   
+echo
 echo "$cinco $cinco"
 echo
 echo "$cinco   license"
 echo
-echo " copyleft, without warranty, free to copy, free to modify, gnu license gpl." 
+echo " copyleft, without warranty, free to copy, free to modify, gnu license gpl."
 echo
 exit; fi
 ############################       english: help: the help option en english
@@ -736,25 +743,33 @@ echo
 echo
 echo "$cincuenta  The first option"
 echo ""
-echo "$cinco               Lanza iptables rules"; echo
+echo "$cinco               Lanza iptables rules"
+echo
 echo "   eraserules: Delete the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
 echo "       client: Configure the firewall for internet client"
 echo "       server: Configure the firewall for internet client and internet server"
 echo " allpermisive: Configure a firewall very permisive"
-echo; echo "$cinco         List iptables rules" ; echo
+echo
+echo "$cinco         List iptables rules"
+echo
 echo "         list: List iptables filter rules from ipv4"
 echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules from ipv6"
 echo "     nat-ipv4: List iptables nat rules from ipv4"
 echo "     nat-ipv6: List iptables nat rules from ipv6"
-echo; echo "$cinco         List open sockets"; echo
+echo
+echo "$cinco         List open sockets"
+echo
 echo "      iproute: Show net devices and ip route tables"
 echo "           ss: Show net sockets with command ss"
 echo "         lsof: Show net sockets with command lsof"
 echo "      netstat: Show net sockets with command netstat"
 echo "  ipforwading: Show kernel config about forward"
-echo; echo "$cinco         Configure files.cfg"; echo
+echo "      tcpdump: Listen the connections"
+echo
+echo "$cinco         Configure files.cfg"
+echo
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
 echo " clone-config: Clone a old config in a one new config"
@@ -762,11 +777,16 @@ echo "modify-config: Edit one config.cfg"
 echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
 echo "delete-config: Delete one configuration file"
-echo; echo "$cinco         Update options"; echo
+echo
+echo "$cinco         Update options"
+echo
 echo "     reconfig: Rewrite default files in  $rutaconfig/files1.cfg"
 echo "      upgrade: Upgrade $fprogram at the latest version"
 echo "    auth-sudo: Permit sudo f-iptables-firewall to other choosed users"
-echo; echo "$cinco         Help"; echo
+echo
+echo "$cinco         Help"
+echo
+echo "        about: About the $fprogram"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
 echo ""
@@ -785,8 +805,8 @@ echo " $0 list               :  List iptables rules"
 echo " $0 help               :  Show this help in english"
 echo ""
 echo "$cincuenta  Examples of variables to the configs files, default.cfg"
-echo "" ;
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
+echo
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo ""
 echo "$cincuenta  The iptables netftilter"
 echo
@@ -804,7 +824,7 @@ echo ""
 echo "  Download the latest version $fprogram from sourceforge"
 echo "  $web"
 echo "  This script is free software with copyleft from licence gpl, it is free, there is no warranty"
-echo ""
+echo
 exit; fi
 ############################       english: ayuda: the help option in spanish
 ############################       spanish: ayuda: la opcion de ayuda en español
@@ -838,26 +858,34 @@ echo "  [Muestra larga ayuda en español]      f-iptables-firewall ayuda "
 echo
 echo
 echo "$cincuenta  La primera opción:"
-echo ""
-echo "$cinco               Lanza iptables"; echo
+echo
+echo "$cinco               Lanza iptables"
+echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
 echo "       client: Configura el cortafuegos de cliente"
 echo "       server: Configura el cortafuegos de servidor"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
-echo; echo "$cinco         Lista las reglas de iptables"; echo
+echo
+echo "$cinco         Lista las reglas de iptables"
+echo
 echo "         list: Lista las reglas de ipv4 de filtros iptables"
 echo "      forward: Lista las reglas de filtros de reenvio de iptables"
 echo "        list6: Lista las reglas de ipv6 de filtros iptables"
 echo "     nat-ipv4: Lista las reglas de ipv4 de nat iptables"
 echo "     nat-ipv6: Lista las reglas de ipv6 de nat iptables"
-echo; echo "$cinco         Lista las conexiones abiertas"; echo
+echo
+echo "$cinco         Lista las conexiones abiertas"
+echo
 echo "      iproute: Muestra los dispositivos de red y la tabla de rutas"
 echo "           ss: Muestra las conexiones con comando ss"
 echo "      netstat: Muestra las conexiones con comando netstat"
 echo "         lsof: Muestra las conexiones con command lsof"
 echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios"
-echo; echo "$cinco         Configura archivos.cfg"; echo
+echo "      tcpdump: Escuchar las conexiones"
+echo
+echo "$cinco         Configura archivos.cfg"
+echo
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-config: Crea una nueva configuracion.cfg en español"
 echo " clone-config: Duplica con otro nombre una config cfg"
@@ -865,49 +893,54 @@ echo "modify-config: Edita una existente configuracion.cfg"
 echo "  show-config: Muestra una existente configuracion.cfg"
 echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
 echo "delete-config: Borra unaa existente configuracion.cfg"
-echo; echo "$cinco         Opciones de actualiciacion"; echo
+echo
+echo "$cinco         Opciones de actualiciacion"
+echo
 echo "     reconfig: Reescribe configs por defecto $rutaconfig/archivos1.cfg"
 echo "      upgrade: Actualiza $fprogram a la ultima version"
 echo "    auth-sudo: Permite sudo f-iptables-firewall a usuarios elegidos"
-echo; echo "$cinco         Ayuda"; echo
+echo
+echo "$cinco         Ayuda"
+echo
+echo "        About: Acerca de $fprogram"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
-echo ""
+echo
 echo "$cincuenta  La segunda opcion (opcional)"
 echo ""
 echo "    f-iptables cliente y servidor toman la configuración de un archivo.cfg"
 echo "    f-iptables sin especificar una config.cfg tomara por defect default1.cfg"
 echo "    Puedes modificar y crear archivos en la carpeta $rutaconfig"
-echo ""
+echo
 echo "$cincuenta   Ejemplos"
-echo ""
+echo
 echo "   $0 client games1.cfg  :  Configura un cliente para web y juegos"
 echo "   $0 server server1.cfg :  Configura un servidor"
 echo "   $0 eraserules         :  Borra las reglas de iptables "
 echo "   $0 list               :  Lista las reglas de iptables "
 echo "   $0 help               :  Muestra la ayuda en ingles "
-echo ""
+echo
 echo "$cincuenta  Ejemplos de las variables de configuración, default.cfg"
-echo ""
-cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
-echo ""
+echo
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
+echo
 echo "$cincuenta  Los iptables netftilter"
 echo
 echo "     iptables legacy   es    soporte para xtables firewall"
 echo "     iptables nft      es    soporte para neftables firewall"
 echo
 echo "$cincuenta  Puertos cliente udp necesarios"
-echo ""
+echo
 echo "     necesario para actualizar la fecha :   ntp"
 echo "     necesario para dhcp y conseguir ip :   bootpc y/o bootps"
 echo "     necesario para resolver dominios   :   domain y/o domain-s"
-echo ""
+echo
 echo "$cincuenta  Licencia:"
-echo ""
+echo
 echo "  Descarga la ultima version de $fprogram desde la web de sourceforge "
 echo "  $web"
 echo "  Este programa es software libre, licencia gpl, copyleft, libre, gratis y no hay garantia"
-echo ""
+echo
 exit; fi
 ###############################################################################################################    ##############################
 ###############################################################################################################    ##############################
