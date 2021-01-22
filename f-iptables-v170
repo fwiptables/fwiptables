@@ -201,7 +201,7 @@ echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
 echo "   Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links command" ; echo ;
-links=""; flinks=$(whereis -b links | cut -d ":" -f 2);
+links=""; flinks=$(which links);
 echo "   Downloading f-iptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
 links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i "download latest version"  &&
 links -source https://sourceforge.net/projects/f-iptables/files/latest/download > /usr/bin/f-iptables-firewall &&
@@ -1172,7 +1172,7 @@ echo "   [Help]             about help ayuda"
 echo ""
 echo "$cinco   The configs are in folder $rutaconfig"
 echo
-ls $rutaconfig | fmt $flistado  ;
+echo "   $(ls $rutaconfig | fmt $flistado)"  ;
 echo
 echo "$cinco   The examples "
 echo
