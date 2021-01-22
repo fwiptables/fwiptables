@@ -94,9 +94,9 @@ echo
 echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
-echo "     [List rules]       list forward list6 nat-ip4 nat-ip6"
-echo "                        mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
-echo "                        security-ip4 security-ip6"
+echo "     [List rules]       list forward list6 forward6"
+echo "                        nat-ip4 nat-ip6 mangle-ip4 mangle-ip6"
+echo "                        raw-ip4 raw-ip6 security-ip4 security-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    new-config clone-config modify-config"
 echo "                        show-config rename-config delete-config"
@@ -332,10 +332,10 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  echo "" ; exit; fi
 ############################       english: forward: system script, the forward option to list iptables filter forward rules
 ############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
-if [ "$mifirewall" = "forward" ]; then echo -n
+ if [ "$mifirewall" = "forward" ]; then echo -n
  echo;  echo "  $fprogram version $fver for filter forward firewall Linux" ;
- echo "$cincuenta $cincuenta   List filter forward ipv4/ ipv6/    $cinco"
- echo "";
+ echo "$cincuenta $cincuenta   List filter forward ipv4    $cinco"
+ echo ""
  case $showlegacy in
  "$NULL")
  echo $cinco " [The xtables ipv4]"
@@ -354,6 +354,14 @@ if [ "$mifirewall" = "forward" ]; then echo -n
  echo "     $cinco Configured without show neftables $cinco";
  echo -n  ;;
  esac
+ echo
+ exit; fi
+############################       english: forward6: system script, the forward6 option to list iptables filter forward rules
+############################       spanish: forward6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
+ if [ "$mifirewall" = "forward6" ]; then echo -n
+ echo;  echo "  $fprogram version $fver for filter forward ipv6 firewall Linux" ;
+ echo "$cincuenta $cincuenta   List filter forward ipv6    $cinco"
+ echo
  case $showlegacy in
  "$NULL")
  echo "$cinco  [The xtables ipv6]"
@@ -893,15 +901,15 @@ echo "$cinco   f-iptables-firewall notes:   $cinco"
 echo ""
 echo "$cinco   One First Option "
 echo ""
-echo "        [Launch rules]     eraserules offline client server allpermisive"
-echo "        [List rules]       list forward list6 nat-ip4 nat-ip6"
-echo "                           mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
-echo "                           security-ip4 security-ip6"
-echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "        [Modify config]    new-config clone-config modify-config"
-echo "                           show-config rename-config delete-config"
-echo "        [Update]           reconfig upgrade auth-sudo"
-echo "        [Help]             about help ayuda"
+echo "     [Launch rules]     eraserules offline client server allpermisive"
+echo "     [List rules]       list forward list6 forward6"
+echo "                        nat-ip4 nat-ip6 mangle-ip4 mangle-ip6"
+echo "                        raw-ip4 raw-ip6 security-ip4 security-ip6"
+echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "     [Modify config]    new-config clone-config modify-config"
+echo "                        show-config rename-config delete-config"
+echo "     [Update]           reconfig upgrade auth-sudo"
+echo "     [Help]             about help ayuda"
 echo ""
 echo "$cinco   The configs are in folder $rutaconfig"
 echo
@@ -1016,21 +1024,20 @@ if [ "$mifirewall" = "ayuda" ]; then echo ; echo ;
 echo "  the $fprogram version $fver "
 echo "$cincuenta $cincuenta Ayuda $cinco"
 echo
-echo "$cincuenta   Las notas de f-iptables-firewall:   $cinco"
+echo
+echo "$cinco   La primera opcion "
 echo ""
-echo "$cinco   Una primera opcion "
+echo "     [Lanza reglas]     eraserules offline client server allpermisive"
+echo "     [Lista reglas]     list forward list6 forward6"
+echo "                        nat-ip4 nat-ip6 mangle-ip4 mangle-ip6"
+echo "                        raw-ip4 raw-ip6 security-ip4 security-ip6"
+echo "     [Mira sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "     [Modifica configs] new-config clone-config modify-config"
+echo "                        show-config rename-config delete-config"
+echo "     [Actualiza]        reconfig upgrade auth-sudo"
+echo "     [Ayuda]            about help ayuda"
 echo ""
-echo "        [Launch rules]     eraserules offline client server allpermisive"
-echo "        [List rules]       list forward list6 nat-ip4 nat-ip6"
-echo "                           mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
-echo "                           security-ip4 security-ip6"
-echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "        [Modify config]    new-config clone-config modify-config"
-echo "                           show-config rename-config delete-config"
-echo "        [Update]           reconfig upgrade auth-sudo"
-echo "        [Help]             about help ayuda"
-echo ""
-echo "$cinco   Las configuraciones estan en la carpeta $rutaconfig"
+echo "$cinco   The configs are in folder $rutaconfig"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo
@@ -1390,12 +1397,13 @@ echo
 echo "   The $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
 echo
+echo
 echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
-echo "     [List rules]       list forward list6 nat-ip4 nat-ip6"
-echo "                        mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
-echo "                        security-ip4 security-ip6"
+echo "     [List rules]       list forward list6 forward6"
+echo "                        nat-ip4 nat-ip6 mangle-ip4 mangle-ip6"
+echo "                        raw-ip4 raw-ip6 security-ip4 security-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    new-config clone-config modify-config"
 echo "                        show-config rename-config delete-config"
