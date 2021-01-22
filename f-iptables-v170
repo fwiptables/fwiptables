@@ -264,7 +264,8 @@ echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with ss   $cinco" ;
 echo; uname -a
 echo ;
-echo "$cinco      The ipv6 sockets       $cinco" ; echo ;  ss -a6 ;   echo ;  echo "$cinco      The ipv4 sockets      $cinco" ;echo ; ss -a4 ;
+echo "$cinco      The ipv6 sockets       $cinco" ; echo ;  ss -a6 ;   echo ;
+echo "$cinco      The ipv4 sockets      $cinco" ;echo ; ss -a4 ;
 echo ; exit; fi
 #############################       english: losf: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
