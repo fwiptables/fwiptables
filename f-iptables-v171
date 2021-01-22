@@ -96,6 +96,7 @@ echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 nat-ip4 nat-ip6"
 echo "                        mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                        security-ip4 security-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    new-config clone-config modify-config"
 echo "                        show-config rename-config delete-config"
@@ -303,7 +304,7 @@ echo ; exit; fi
 #############################       english: list: system script, the list option
 #############################       spanish: list: script de sistema, la opcion lista
 if [ "$mifirewall" = "list" ]; then echo -n ;
- echo;  echo "  $fprogram version $fver for filter firewall Linux for ipv4"
+ echo;  echo "  $fprogram version $fver for filter table firewall Linux for ipv4"
  echo "$cincuenta $cincuenta   List filter ipv4    $cinco"
  echo ;
  case $showlegacy in
@@ -376,7 +377,7 @@ if [ "$mifirewall" = "forward" ]; then echo -n
 ############################       english: list6: system script, the list6 option to list ipv6 rules
 ############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
  if [ "$mifirewall" = "list6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for filter firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for filter table firewall for ipv6"
  echo "$cincuenta $cincuenta   List filter ipv6    $cinco"
  echo;
  case $showlegacy in
@@ -407,7 +408,7 @@ if [ "$mifirewall" = "forward" ]; then echo -n
 ############################       english: nat-ip4: system script, the nat-ip4 option to list NAT rules of ipv4
 ############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
 if [ "$mifirewall" = "nat-ip4" ]; then echo -n
- echo;  echo "  $fprogram version $fver for  NAT firewall for ipv4"
+ echo;  echo "  $fprogram version $fver for  NAT table firewall for ipv4"
 echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
  echo;
  case $showlegacy in
@@ -436,7 +437,7 @@ echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
 ############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
 ############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
 if [ "$mifirewall" = "nat-ip6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for  NAT firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for  NAT table firewall for ipv6"
 echo  "$cincuenta $cincuenta   NAT ipv6    $cinco"
  echo;
 case $showlegacy in
@@ -464,7 +465,7 @@ exit; fi
 ############################       english: mangle-ip4: system script, the mangle-ip4 option to list mangle rules from ipv4
 ############################       spanish: mangle-ip4: script de sistema, la opcion mangle-ip4 para listar reglas de mangle de ipv4
 if [ "$mifirewall" = "mangle-ip4" ]; then echo -n
- echo;  echo "  $fprogram version $fver for MANGLE firewall for ipv4"
+ echo;  echo "  $fprogram version $fver for MANGLE table firewall for ipv4"
 echo  "$cincuenta $cincuenta   mangle ipv4    $cinco"
  echo;
  case $showlegacy in
@@ -493,7 +494,7 @@ echo  "$cincuenta $cincuenta   mangle ipv4    $cinco"
  ############################       english: mangle-ip6: system script, the mangle-ip6 option to list mangle rules of ipv6
 ############################       spanish: mangle-ip6: script de sistema, la opcion mangle-ip6 para listar reglas de mangle de ipv6
 if [ "$mifirewall" = "mangle-ip6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for  MANGLE firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for  MANGLE table firewall for ipv6"
 echo  "$cincuenta $cincuenta   mangle ipv6    $cinco"
  echo;
 case $showlegacy in
@@ -521,7 +522,7 @@ exit; fi
 ############################       english: raw-ip4: system script, the raw-ip4 option to list raw rules from ipv4
 ############################       spanish: raw-ip4: script de sistema, la opcion raw-ip4 para listar reglas de raw de ipv4
 if [ "$mifirewall" = "raw-ip4" ]; then echo -n
- echo;  echo "  $fprogram version $fver for RAW firewall for ipv4"
+ echo;  echo "  $fprogram version $fver for RAW table firewall for ipv4"
 echo  "$cincuenta $cincuenta   raw ipv4    $cinco"
  echo;
  case $showlegacy in
@@ -550,7 +551,7 @@ echo  "$cincuenta $cincuenta   raw ipv4    $cinco"
 ############################       english: raw-ip6: system script, the raw-ip6 option to list raw rules of ipv6
 ############################       spanish: raw-ip6: script de sistema, la opcion raw-ip6 para listar reglas de raw de ipv6
 if [ "$mifirewall" = "raw-ip6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for  RAW  firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for  RAW  table firewall for ipv6"
 echo  "$cincuenta $cincuenta   raw ipv6    $cinco"
  echo;
 case $showlegacy in
@@ -567,6 +568,63 @@ case $showlegacy in
  "$NULL")
  echo "$cinco  [The neftables ipv6]"
  $rutabin/ip6tables-nft -t raw -v -L
+ echo
+ echo "" ;;
+ *)
+ echo "     $cinco Configured without show neftables $cinco";
+ echo -n ;;
+ esac
+ echo
+exit; fi
+############################       english: security-ip4: system script, the security-ip4 option to list security rules from ipv4
+############################       spanish: security-ip4: script de sistema, la opcion security-ip4 para listar reglas de security de ipv4
+if [ "$mifirewall" = "security-ip4" ]; then echo -n
+ echo;  echo "  $fprogram version $fver for SECURITY table firewall for ipv4"
+echo  "$cincuenta $cincuenta   security ipv4    $cinco"
+ echo;
+ case $showlegacy in
+ "$NULL")
+ echo "$cinco  [The xtables ipv4]"
+ $rutabin/iptables-legacy -t security -v -L
+ echo
+ echo ;;
+ *)
+ echo "     $cinco Configured without show legacy $cinco";
+ echo -n ;;
+ esac
+ case $shownft in
+ "$NULL")
+ echo "$cinco  [The neftables ipv4]"
+ $rutabin/iptables-nft -t security -v -L
+ echo
+ echo "" ;;
+ *)
+ echo "     $cinco Configured without show neftables $cinco";
+ echo -n ;;
+ esac
+ echo
+ echo
+ exit; fi
+############################       english: security-ip6: system script, the security-ip6 option to list security rules of ipv6
+############################       spanish: security-ip6: script de sistema, la opcion security-ip6 para listar reglas de security de ipv6
+if [ "$mifirewall" = "security-ip6" ]; then echo -n
+ echo;  echo "  $fprogram version $fver for  SECURITY table firewall for ipv6"
+echo  "$cincuenta $cincuenta   security ipv6    $cinco"
+ echo;
+case $showlegacy in
+ "$NULL")
+ echo "$cinco  [The xtables ipv6]"
+ $rutabin/ip6tables-legacy -t security -v -L
+ echo
+ echo ;;
+ *)
+ echo "     $cinco Configured without show xtables $cinco";
+ echo -n ;;
+ esac
+ case $shownft in
+ "$NULL")
+ echo "$cinco  [The neftables ipv6]"
+ $rutabin/ip6tables-nft -t security -v -L
  echo
  echo "" ;;
  *)
@@ -838,6 +896,7 @@ echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6"
 echo "                           mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                           security-ip4 security-ip6"
 echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
@@ -867,17 +926,22 @@ echo "       client: Configure the firewall for internet client"
 echo "       server: Configure the firewall for internet client and internet server"
 echo " allpermisive: Configure a firewall very permisive"
 echo
-echo "$cinco         List iptables rules"
+echo "$cinco         List iptables rules "
 echo
+echo "               The filter table: "
 echo "         list: List iptables filter rules from ipv4"
 echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules from ipv6"
+echo
+echo "               The others tables "
 echo "      nat-ip4: List iptables nat rules from ipv4"
 echo "      nat-ip6: List iptables nat rules from ipv6"
 echo "   mangle-ip4: List iptables mangle rules from ipv4"
 echo "   mangle-ip6: List iptables mangle rules from ipv6"
 echo "      raw-ip4: List iptables raw rules from ipv4"
 echo "      raw-ip6: List iptables raw rules from ipv4"
+echo " security-ip4: List iptables security rules from ipv4"
+echo " security-ip6: List iptables security rules from ipv6"
 echo
 echo "$cinco         List open sockets"
 echo
@@ -888,7 +952,7 @@ echo "      netstat: Show net sockets with command netstat"
 echo "  ipforwading: Show kernel config about forward"
 echo "      tcpdump: Listen the connections"
 echo
-echo "$cinco         Configure files.cfg"
+echo "$cinco         Configure configs cfg"
 echo
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
@@ -959,6 +1023,7 @@ echo ""
 echo "        [Launch rules]     eraserules offline client server allpermisive"
 echo "        [List rules]       list forward list6 nat-ip4 nat-ip6"
 echo "                           mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                           security-ip4 security-ip6"
 echo "        [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "        [Modify config]    new-config clone-config modify-config"
 echo "                           show-config rename-config delete-config"
@@ -988,17 +1053,22 @@ echo "       client: Configura el cortafuegos de cliente"
 echo "       server: Configura el cortafuegos de servidor"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo
-echo "$cinco         Lista las reglas de iptables"
+echo "$cinco         Lista las reglas de tablas de iptables "
 echo
+echo "               La tabla de filtros "
 echo "         list: Lista las reglas de ipv4 de filtros iptables"
 echo "      forward: Lista las reglas de filtros de reenvio de iptables"
 echo "        list6: Lista las reglas de ipv6 de filtros iptables"
+echo
+echo "               Las otras tablas "
 echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
 echo "      nat-ip6: Lista las reglas de ipv6 de nat iptables"
 echo "   mangle-ip4: Lista las reglas de ipv4 de mangle iptables"
 echo "   mangle-ip6: Lista las reglas de ipv6 de mangle iptables"
 echo "      raw-ip4: Lista las reglas de ipv4 de raw iptables"
 echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
+echo " security-ip4: lista las reglas de ip4 de security iptables"
+echo " security-ip6: Lista las reglas de ip6 de security iptables"
 echo
 echo "$cinco         Lista las conexiones abiertas"
 echo
@@ -1325,6 +1395,7 @@ echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 nat-ip4 nat-ip6"
 echo "                        mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                        security-ip4 security-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    new-config clone-config modify-config"
 echo "                        show-config rename-config delete-config"
