@@ -857,8 +857,9 @@ exit; fi
 if [ "$mifirewall" = "tcpdump" ]; then echo; echo ;
 echo "  The $fprogram version $fver listening with tcpdump sockets of the kernel linux"
 echo "$cincuenta $cincuenta Listening tcpdump $cinco"
-echo "  Pulse control+z to stop "
-echo; tcpdump
+echo
+echo;
+echo "  Launch manually tcpdump"
 exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
