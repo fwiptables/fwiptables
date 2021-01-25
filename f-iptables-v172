@@ -12,7 +12,7 @@
 ##  /usr/bin/f-iptables-firewall
 ##
 ##
-##################################
+####################################
 ## the variables names and the path ##
 mifirewall=$1 ; mivariable=$2 ; lanza="no";  no="no" ;                       #english: system variables f-iptables-firewall
 fprogram="Fran iptables firewall" ; fver="172" ;                             #english: program and version f-iptables-firewall
@@ -119,14 +119,14 @@ echo
 exit; fi
 ##
 ##
-##############################       english: update the file default1.cfg          ###########################################  #################################
-##############################       spanish: actualiza el archivo default1.cfg     ###########################################  #################################
+##############################       english: defaultcfg: update the file default.cfg          ###########################################  #################################
+##############################       spanish: defaultcfg: actualiza el archivo default.cfg     ###########################################  #################################
 if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; fi
 if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
 else head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
 fi
-#############################        english: Configure system script, the first options: offline, client, server and allpermisive             #####################
-#############################        spanish: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
+#############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
+#############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
 lanza="si"; activarservidor="no"; activarcliente="no"; mojado="no"; fi
 if [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cincuenta"
@@ -197,7 +197,7 @@ echo "$cincuenta   The configs are in folder $rutaconfig,  $cinco"
 ls $rutaconfig | fmt $flistado  ;
 echo ; echo
 exit ; fi
-##############################       english: automatic-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
+##############################       english: web-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: automatica-acutalizacion: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "web-upgrade" ]; then echo ; echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
@@ -217,7 +217,7 @@ echo "$cinco     upgraded:     /usr/bin/f-iptables-firewall" ; echo; echo ;
 $fiptables reconfig
 exit ; fi
 ##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
-##############################       spanish: actualiza: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
+##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "upgrade" ]; then  echo ; echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Upgrade $cinco"
 echo
@@ -239,8 +239,8 @@ echo
 echo " $cinco    ok and it will be upgrade with the name $fiptables" ;
 echo; echo;
 exit;  fi
-#############################       english: eraserules: system script, the eraserules option
-#############################       spanish: borra reglas: script de sistema, la opcion borra reglas
+#############################       english: eraserules: system script, the erase rules option
+#############################       spanish: eraserules: script de sistema, la opcion borra reglas
 if [ "$mifirewall" = "eraserules" ]; then echo -n ;
 echo
 echo "$cincuenta $cincuenta "   Deleting rules iptables   " $cinco" ;
@@ -499,7 +499,7 @@ echo  "$cincuenta $cincuenta   mangle ipv4    $cinco"
  echo
  echo
  exit; fi
- ############################       english: mangle-ip6: system script, the mangle-ip6 option to list mangle rules of ipv6
+############################       english: mangle-ip6: system script, the mangle-ip6 option to list mangle rules of ipv6
 ############################       spanish: mangle-ip6: script de sistema, la opcion mangle-ip6 para listar reglas de mangle de ipv6
 if [ "$mifirewall" = "mangle-ip6" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  MANGLE table firewall for ipv6"
@@ -1393,8 +1393,8 @@ echo
 echo "$cinco  List iptables rules with:   f-iptables-firewall list  $cinco"
 echo
 exit; fi
-############################       english: The default option, the help option for default
-############################	   spanish: La opcion por defecto, la opcion de ayuda por defecto
+############################       english: default: The default option, the help option for default
+############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo
 echo "   The $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
