@@ -96,6 +96,8 @@ echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "     [Other tables]     mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                        security-ip4 security-ip6"
 echo "     [Modify cfg]       reconfig new-config nueva-config show-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [Update]           upgrade auth-sudo"
@@ -896,12 +898,13 @@ if [ "$mifirewall" = "help" ]; then echo ; echo ;
 echo "  The $fprogram version $fver"
 echo "$cincuenta $cincuenta Help $cinco"
 echo
-echo "$cinco   f-iptables-firewall notes:   $cinco"
-echo ""
+echo
 echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
+echo "     [Other tables]     mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                        security-ip4 security-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify cfg]       reconfig new-config nueva-config clone-config"
 echo "                        modify-config show-config rename-config delete-config"
@@ -923,7 +926,7 @@ echo
 echo
 echo "$cincuenta  The first option"
 echo ""
-echo "$cinco               Lanza iptables rules"
+echo "$cinco         Launch iptables rules"
 echo
 echo "   eraserules: Delete the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
@@ -982,8 +985,8 @@ echo "        ayuda: Show this help in spanish"
 echo ""
 echo "$cincuenta  The second option: (optional)"
 echo ""
-echo "    f-iptables client and server takes the config.cfg in the command line"
-echo "    f-iptables without specific config.cfg it takes default1.cfg"
+echo "    $fiptables client and server takes the config from the command line"
+echo "    if launch without specific the config it takes $defaultcfg"
 echo "    you can  modify and create the files in the folder $rutaconfig"
 echo ""
 echo "$cincuenta  Examples"
@@ -994,7 +997,7 @@ echo " $0 eraserules         :  Remove the iptables rules"
 echo " $0 list               :  List iptables rules"
 echo " $0 help               :  Show this help in english"
 echo ""
-echo "$cincuenta  Examples of variables to the configs files, default.cfg"
+echo "$cincuenta  Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo ""
@@ -1027,6 +1030,8 @@ echo "$cinco   Una primera opcion "
 echo ""
 echo "     [Lanza reglas]     eraserules offline client server allpermisive"
 echo "     [Lista reglas]     list forward list6 forward6 nat-ip4 nat-ip6"
+echo "     [Otras tablas]     mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
+echo "                        security-ip4 security-ip6"
 echo "     [Lista sockets]    route ss netstat lsof ipforwading tcpdump"
 echo "     [Modifica cfg]     reconfig new-config nueva-config clone-config"
 echo "                        modify-config show-config rename-config delete-config"
@@ -1037,7 +1042,7 @@ echo "$cinco   Las configs estan en la carpeta $rutaconfig"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo
-echo "$cinco   Los ejmplos "
+echo "$cinco   Los ejemplos "
 echo
 echo "  [Lista iptables reglas]               f-iptables-firewall list  "
 echo "  [Lanza iptables coomo cliente web]    f-iptables-firewall client web-sample1.cfg"
@@ -1048,7 +1053,7 @@ echo
 echo
 echo "$cincuenta  La primera opción:"
 echo
-echo "$cinco               Lanza iptables"
+echo "$cinco         Lanza reglas de iptables"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
@@ -1080,8 +1085,8 @@ echo "      iproute: Muestra los dispositivos de red y la tabla de rutas"
 echo "           ss: Muestra las conexiones con comando ss"
 echo "      netstat: Muestra las conexiones con comando netstat"
 echo "         lsof: Muestra las conexiones con command lsof"
-echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios"
-echo "      tcpdump: Escuchar las conexiones"
+echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
+echo "      tcpdump: Escuchar las conexiones ip"
 echo
 echo "$cinco         Configura archivos cfg"
 echo
@@ -1107,8 +1112,8 @@ echo "        ayuda: Muestra la ayuda en español"
 echo
 echo "$cincuenta  La segunda opcion (opcional)"
 echo ""
-echo "    f-iptables cliente y servidor toman la configuración de un archivo.cfg"
-echo "    f-iptables sin especificar una config.cfg tomara por defect default1.cfg"
+echo "    $fiptables cliente y servidor toman la configuración de una config"
+echo "    si lanzas sin especificar una config tomara por defecto $defaultcfg"
 echo "    Puedes modificar y crear archivos en la carpeta $rutaconfig"
 echo
 echo "$cincuenta   Ejemplos"
@@ -1119,7 +1124,7 @@ echo "   $0 eraserules         :  Borra las reglas de iptables "
 echo "   $0 list               :  Lista las reglas de iptables "
 echo "   $0 help               :  Muestra la ayuda en ingles "
 echo
-echo "$cincuenta  Ejemplos de las variables de configuración, default.cfg"
+echo "$cincuenta  Ejemplos de las variables de configuración, defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
@@ -1397,8 +1402,6 @@ echo
 echo
 echo "$cinco   One First Option "
 echo ""
-echo "$cinco   One First Option "
-echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
@@ -1424,9 +1427,9 @@ echo
 #######################         english: End of script
 #######################         spanish: fin del script
 ##
-##    f-iptables with upload ssh and download https
-##    upload f-iptables repository in folder repository  :     git commit -a ; git push ;
-##    download f-iptables repository in folder user      :     git clone https://git.code.sf.net/p/f-iptables/code ;
+##    for upload push ssh with f-iptables and download clone with https, repository git.code.sf.net/p/f-iptables/code
+##    Upload f-iptables repository from local repository  :     git commit -a ; git push ;
+##    Download f-iptables repository in folder user       :     git clone https://git.code.sf.net/p/f-iptables/code ;
 ##
 #######################
 exit 0
