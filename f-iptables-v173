@@ -42,9 +42,9 @@ cinco="#####" ; cincuenta="##################################################"
 ##################################        spanish: fvariables:    variables para modificar
 ##
 ##
-echo -n #english: iptables firewall netfilter, choose one or two #spanish: iptables firewall netfilter, elige uno o dos
-execlegacy= ; #english: xtables, void to yes or type no #spanish: xtables, vacio para si, o escribe no
-execnft= ; #english: neftables, void to yes or type no #spanish: neftables, vacio para si, o escribe no
+echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
+execlegacy= ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
+execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
 echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
 estado="" ; #english: modify with void or -m state --state stablished #spanish: modificar con vacio o -m state --state stablished
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
@@ -128,6 +128,12 @@ if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; f
 if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
 else head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
 fi
+##############################       english: variables void: do not list without rules          ###########################################  #################################
+##############################       spanish: variables listadas: no lista sin reglas     ###########################################  #################################
+legacycuatro=$(iptables-legacy -t filter -L INPUT 1) &> /dev/null
+nftcuatro=$(iptables-nft -t filter -L INPUT 1) &> /dev/null
+legacyseis=$(ip6tables-legacy -t filter -L INPUT 1) &> /dev/null
+nftseis=$(ip6tables-nft -t filter -L INPUT 1) &> /dev/null
 #############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
@@ -310,26 +316,29 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  echo;  echo "  $fprogram version $fver for filter table firewall Linux for ipv4"
  echo "$cincuenta $cincuenta   List filter ipv4    $cinco"
  echo ;
- case $showlegacy in
+ case $legacycuatro in
  "$NULL")
+ echo
+ echo "$cinco [Without rules xtables ipv4]";
+ echo
+ echo -n ;;
+ *)
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -v -L INPUT
  echo
  $rutabin/iptables-legacy -v -L OUTPUT ;;
- *)
- echo "     $cinco Configured without show iptables-legacy $cinco";
- echo -n ;;
  esac
- case $shownft in
+ case $nftcuatro in
  "$NULL")
+ echo
+ echo "$cinco [Without rules neftables ipv4]";
+ echo -n;;
+ *)
   echo;
   echo "$cinco  [The neftables ipv4]"
   $rutabin/iptables-nft -v -L INPUT
   echo
   $rutabin/iptables-nft -v -L OUTPUT ;;
- *)
- echo "     $cinco Configured without show iptables-nft $cinco";
- echo -n;;
  esac
  echo
  echo "" ; exit; fi
@@ -339,23 +348,44 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  echo;  echo "  $fprogram version $fver for filter forward firewall Linux" ;
  echo "$cincuenta $cincuenta   List filter forward ipv4    $cinco"
  echo ""
- case $showlegacy in
- "$NULL")
  echo $cinco " [The xtables ipv4]"
  $rutabin/iptables-legacy -v -L FORWARD
- echo ;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
- echo -n  ;;
- esac
- case $shownft in
- "$NULL")
- echo; echo "$cinco  [The netftables ipv4] "
+ echo
+ echo "$cinco  [The netftables ipv4] "
  $rutabin/iptables-nft -v -L FORWARD
- echo ;;
+ echo
+ exit; fi
+ ############################      english: list6: system script, the list6 option to list ipv6 rules
+############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
+ if [ "$mifirewall" = "list6" ]; then echo -n
+ echo;  echo "  $fprogram version $fver for filter table firewall for ipv6"
+ echo "$cincuenta $cincuenta   List filter ipv6    $cinco"
+ echo;
+ case $legacyseis in
+ "$NULL")
+ echo
+ echo "$cinco [Without rules xtables ipv6]";
+ echo
+ echo -n ;;
  *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n  ;;
+ echo "$cinco  [The xtables ipv6]"
+ $rutabin/ip6tables-legacy -v -L INPUT
+ echo
+ $rutabin/ip6tables-legacy -v -L OUTPUT
+ echo;;
+ esac
+ case $nftseis in
+ "$NULL")
+ echo
+ echo "$cinco [Without rules neftables ipv6]";
+ echo
+ echo -n ;;
+ *)
+ echo "$cinco  [The neftables ipv6]"
+ $rutabin/ip6tables-nft -v -L INPUT
+ echo
+ $rutabin/ip6tables-nft -v -L OUTPUT
+ echo ;;
  esac
  echo
  exit; fi
@@ -365,141 +395,51 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  echo;  echo "  $fprogram version $fver for filter forward ipv6 firewall Linux" ;
  echo "$cincuenta $cincuenta   List filter forward ipv6    $cinco"
  echo
- case $showlegacy in
- "$NULL")
- echo "$cinco  [The xtables ipv6]"
+ echo ""
+ echo $cinco " [The xtables ipv6]"
  $rutabin/ip6tables-legacy -v -L FORWARD
- echo ;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
-  echo -n  ;;
- esac
- case $shownft in
- "$NULL")
- echo; echo "$cinco  [The netftables ipv6]"
+ echo
+ echo "$cinco  [The netftables ipv6] "
  $rutabin/ip6tables-nft -v -L FORWARD
- echo ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
  echo
  exit; fi
-############################       english: list6: system script, the list6 option to list ipv6 rules
-############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
- if [ "$mifirewall" = "list6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for filter table firewall for ipv6"
- echo "$cincuenta $cincuenta   List filter ipv6    $cinco"
- echo;
- case $showlegacy in
- "$NULL")
- echo "$cinco  [The xtables ipv6]"
- $rutabin/ip6tables-legacy -v -L INPUT
- echo
- $rutabin/ip6tables-legacy -v -L OUTPUT
- echo;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
- echo "$cinco  [The neftables ipv6]"
- $rutabin/ip6tables-nft -v -L INPUT
- echo
- $rutabin/ip6tables-nft -v -L OUTPUT
- echo ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
- echo
-  exit; fi
 ############################       english: nat-ip4: system script, the nat-ip4 option to list NAT rules of ipv4
 ############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
 if [ "$mifirewall" = "nat-ip4" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  NAT table firewall for ipv4"
 echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
  echo;
- case $showlegacy in
- "$NULL")
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t nat -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show legacy $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv4]"
  $rutabin/iptables-nft -t nat -v -L
- echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
  echo
  exit; fi
 ############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
 ############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
 if [ "$mifirewall" = "nat-ip6" ]; then echo -n
- echo;  echo "  $fprogram version $fver for  NAT table firewall for ipv6"
+ echo;  echo "  $fprogram version $fver for  NAT table firewall for ipv4"
 echo  "$cincuenta $cincuenta   NAT ipv6    $cinco"
  echo;
-case $showlegacy in
- "$NULL")
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t nat -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv6]"
  $rutabin/ip6tables-nft -t nat -v -L
  echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
-exit; fi
+ exit; fi
 ############################       english: mangle-ip4: system script, the mangle-ip4 option to list mangle rules from ipv4
 ############################       spanish: mangle-ip4: script de sistema, la opcion mangle-ip4 para listar reglas de mangle de ipv4
 if [ "$mifirewall" = "mangle-ip4" ]; then echo -n
  echo;  echo "  $fprogram version $fver for MANGLE table firewall for ipv4"
-echo  "$cincuenta $cincuenta   mangle ipv4    $cinco"
- echo;
- case $showlegacy in
- "$NULL")
+ echo  "$cincuenta $cincuenta   mangle ipv4    $cinco"
+ echo
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t mangle -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show legacy $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv4]"
  $rutabin/iptables-nft -t mangle -v -L
- echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
  echo
  exit; fi
 ############################       english: mangle-ip6: system script, the mangle-ip6 option to list mangle rules of ipv6
@@ -508,142 +448,65 @@ if [ "$mifirewall" = "mangle-ip6" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  MANGLE table firewall for ipv6"
 echo  "$cincuenta $cincuenta   mangle ipv6    $cinco"
  echo;
-case $showlegacy in
- "$NULL")
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t mangle -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv6]"
  $rutabin/ip6tables-nft -t mangle -v -L
  echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
-exit; fi
+ exit; fi
 ############################       english: raw-ip4: system script, the raw-ip4 option to list raw rules from ipv4
 ############################       spanish: raw-ip4: script de sistema, la opcion raw-ip4 para listar reglas de raw de ipv4
 if [ "$mifirewall" = "raw-ip4" ]; then echo -n
  echo;  echo "  $fprogram version $fver for RAW table firewall for ipv4"
-echo  "$cincuenta $cincuenta   raw ipv4    $cinco"
- echo;
- case $showlegacy in
- "$NULL")
+ echo  "$cincuenta $cincuenta   raw ipv4    $cinco"
+ echo
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t raw -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show legacy $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv4]"
  $rutabin/iptables-nft -t raw -v -L
- echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
  echo
  exit; fi
 ############################       english: raw-ip6: system script, the raw-ip6 option to list raw rules of ipv6
 ############################       spanish: raw-ip6: script de sistema, la opcion raw-ip6 para listar reglas de raw de ipv6
-if [ "$mifirewall" = "raw-ip6" ]; then echo -n
+ if [ "$mifirewall" = "raw-ip6" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  RAW  table firewall for ipv6"
-echo  "$cincuenta $cincuenta   raw ipv6    $cinco"
- echo;
-case $showlegacy in
- "$NULL")
+ echo  "$cincuenta $cincuenta   raw ipv6    $cinco"
+ echo
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t raw -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv6]"
  $rutabin/ip6tables-nft -t raw -v -L
  echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
-exit; fi
+ exit; fi
 ############################       english: security-ip4: system script, the security-ip4 option to list security rules from ipv4
 ############################       spanish: security-ip4: script de sistema, la opcion security-ip4 para listar reglas de security de ipv4
-if [ "$mifirewall" = "security-ip4" ]; then echo -n
+ if [ "$mifirewall" = "security-ip4" ]; then echo -n
  echo;  echo "  $fprogram version $fver for SECURITY table firewall for ipv4"
-echo  "$cincuenta $cincuenta   security ipv4    $cinco"
- echo;
- case $showlegacy in
- "$NULL")
+ echo  "$cincuenta $cincuenta   security ipv4    $cinco"
+ echo
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t security -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show legacy $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv4]"
  $rutabin/iptables-nft -t security -v -L
- echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
  echo
  exit; fi
 ############################       english: security-ip6: system script, the security-ip6 option to list security rules of ipv6
 ############################       spanish: security-ip6: script de sistema, la opcion security-ip6 para listar reglas de security de ipv6
 if [ "$mifirewall" = "security-ip6" ]; then echo -n
  echo;  echo "  $fprogram version $fver for  SECURITY table firewall for ipv6"
-echo  "$cincuenta $cincuenta   security ipv6    $cinco"
- echo;
-case $showlegacy in
- "$NULL")
+ echo  "$cincuenta $cincuenta   security ipv6    $cinco"
+ echo
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t security -v -L
  echo
- echo ;;
- *)
- echo "     $cinco Configured without show xtables $cinco";
- echo -n ;;
- esac
- case $shownft in
- "$NULL")
  echo "$cinco  [The neftables ipv6]"
  $rutabin/ip6tables-nft -t security -v -L
  echo
- echo "" ;;
- *)
- echo "     $cinco Configured without show neftables $cinco";
- echo -n ;;
- esac
- echo
-exit; fi
+ exit; fi
 ############################       english: new-config: system script, the new-config option to create new configs
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
 if [ "$mifirewall" = "new-config" ]; then echo -n
@@ -1329,19 +1192,19 @@ $execnft $hayreenvio $rutabin/ip6tables-nft -A FORWARD -j ACCEPT &> /dev/null
  ### ipv4 drop rules iptables-legacy
 $execlegacy $rutabin/iptables-legacy -A INPUT -j DROP &> /dev/null
 $execlegacy $rutabin/iptables-legacy -A OUTPUT -j DROP &> /dev/null
-$execlegacy $rutabin/iptables-legacy -A FORWARD -j DROP &> /dev/null
+# $execlegacy $rutabin/iptables-legacy -A FORWARD -j DROP &> /dev/null
 ### ipv6 drop rules iptables-legacy
 $execlegacy $rutabin/ip6tables-legacy -A INPUT -j DROP &> /dev/null
 $execlegacy $rutabin/ip6tables-legacy -A OUTPUT -j DROP &> /dev/null
-$execlegacy  $rutabin/ip6tables-legacy -A FORWARD -j DROP &> /dev/null
+# $execlegacy  $rutabin/ip6tables-legacy -A FORWARD -j DROP &> /dev/null
 ### ipv4 drop rules iptables-nft
 $execnft $rutabin/iptables-nft -A INPUT -j DROP &> /dev/null
 $execnft $rutabin/iptables-nft -A OUTPUT -j DROP &> /dev/null
-$execnft $rutabin/iptables-nft -A FORWARD -j DROP &> /dev/null
+# $execnft $rutabin/iptables-nft -A FORWARD -j DROP &> /dev/null
 ### ipv6 drop rules iptables-nft
 $execnft $rutabin/ip6tables-nft -A INPUT -j DROP &> /dev/null
 $execnft $rutabin/ip6tables-nft -A OUTPUT -j DROP &> /dev/null
-$execnft $rutabin/ip6tables-nft -A FORWARD -j DROP &> /dev/null
+# $execnft $rutabin/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
 echo; echo "  $fprogram version $fver ";
