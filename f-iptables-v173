@@ -21,11 +21,6 @@ fiptables="/usr/bin/f-iptables-firewall"                                     #en
 rutabin="/usr/sbin" ;               #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutaconfig="/etc/f-iptables"        #english: path to config files cfg from f-iptables-firewall #spanish: archivos de configuracion de f-iptables
 defaultcfg=default.cfg              #english: default config #spanish: configuracion por defecto
-## void is yes ##                   #english: void is yes, and no is no #spanish vacio es si, y no es no
-execlegacy= ;                       #english: void to yes launch rules with iptables xtables or no #english: vacio para lanzar xtables o no
-execnft= ;                          #english: void to yes launch rules with iptables neftables or no #spanish: vacio para lanzar netfables o no
-showlegacy= ;                       #english: void to show iptables legacy or no #spanish: vacio para mostrar iptables legacy o no
-shownft= ;                          #english: void to show iptables nettables or no #spanish: vacio para mostrar iptables netfilter o no
 ##################################
 ##################################
 ##
@@ -34,7 +29,7 @@ shownft= ;                          #english: void to show iptables nettables or
 ##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
 ##
 ##
-flinea="-83" ; fvariables="-30" ; flistado="-90" ;
+flinea="-78" ; fvariables="-30" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
