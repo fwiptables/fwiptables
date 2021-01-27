@@ -99,7 +99,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Modify cfg]       reconfig new-config nueva-config show-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [Update]           upgrade auth-sudo"
-echo "     [Help]             about help ayuda"
+echo "     [Help]             about help ayuda system-info"
 echo ""
 echo "$cinco   The cfg are in folder $rutaconfig"
 echo
@@ -108,7 +108,7 @@ echo
 echo "$cinco   The examples "
 echo
 echo "   [List iptables rules]                 f-iptables-firewall list  "
-echo "   [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
+echo "   [Launch iptables like client web]     f-iptables-firewall client web-example1.cfg"
 echo "   [Erase the iptables rules]            f-iptables-firewall eraserules "
 echo "   [Show long help in english]           f-iptables-firewall help "
 echo "   [Show long help in spanish]           f-iptables-firewall ayuda "
@@ -747,8 +747,27 @@ if [ "$mifirewall" = "tcpdump" ]; then echo; echo ;
 echo "  The $fprogram version $fver listening with tcpdump sockets of the kernel linux"
 echo "$cincuenta $cincuenta Listening tcpdump $cinco"
 echo
-echo;
+echo
 echo "  Launch manually tcpdump"
+exit; fi
+############################       english: system-info: get info system
+############################       spanish: system-info: da informacion del sistema
+if [ "$mifirewall" = "system-info" ]; then echo; echo ;
+echo "  The $fprogram version $fver system info "
+echo "$cincuenta $cincuenta System info $cinco"
+echo
+echo "$cinco [System info:  Kernel Linux] $cinco"
+echo
+uname -a
+echo
+echo "$cinco [System info:  Memory RAM] $cinco"
+echo
+free -h
+echo
+echo "$cinco [System info:  Disks] $cinco"
+echo
+df -h -x tmpfs
+echo
 exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
@@ -796,7 +815,7 @@ echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify cfg]       reconfig new-config nueva-config clone-config"
 echo "                        modify-config show-config rename-config delete-config"
 echo "     [Update]           upgrade auth-sudo"
-echo "     [Help]             about help ayuda"
+echo "     [Help]             about help ayuda system-info"
 echo ""
 echo "$cinco   The cfg are in folder $rutaconfig"
 echo
@@ -805,7 +824,7 @@ echo
 echo "$cinco   The examples "
 echo
 echo "  [List iptables rules]                 f-iptables-firewall list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall client web-sample1.cfg"
+echo "  [Launch iptables like client web]     f-iptables-firewall client web-example1.cfg"
 echo "  [Erase the iptables rules]            f-iptables-firewall eraserules "
 echo "  [Show long help in english]           f-iptables-firewall help "
 echo "  [Show long help in spanish]           f-iptables-firewall ayuda "
@@ -869,6 +888,7 @@ echo
 echo "        about: About the $fprogram"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
+echo "  system-info: Show info  system"
 echo ""
 echo "$cincuenta  The second option: (optional)"
 echo ""
@@ -878,11 +898,11 @@ echo "    you can  modify and create the files in the folder $rutaconfig"
 echo ""
 echo "$cincuenta  Examples"
 echo ""
-echo " $0 client games1.cfg  :  Configure firewall to allow connect to web and games"
-echo " $0 server server1.cfg :  Configure firewall to server somes services"
-echo " $0 eraserules         :  Remove the iptables rules"
-echo " $0 list               :  List iptables rules"
-echo " $0 help               :  Show this help in english"
+echo " $0 client games-example1.cfg    :  Configure firewall to allow connect to web and games"
+echo " $0 server server-example11.cfg  :  Configure firewall to server somes services"
+echo " $0 eraserules                   :  Remove the iptables rules"
+echo " $0 list                         :  List iptables rules"
+echo " $0 help                         :  Show this help in english"
 echo ""
 echo "$cincuenta  Examples of variables to the configs files, $defaultcfg"
 echo
@@ -923,7 +943,7 @@ echo "     [Lista sockets]    route ss netstat lsof ipforwading tcpdump"
 echo "     [Modifica cfg]     reconfig new-config nueva-config clone-config"
 echo "                        modify-config show-config rename-config delete-config"
 echo "     [Actualiza]        upgrade auth-sudo"
-echo "     [Ayuda]            about help ayuda"
+echo "     [Ayuda]            about help ayuda system-info"
 echo ""
 echo "$cinco   Las configs estan en la carpeta $rutaconfig"
 echo
@@ -932,7 +952,7 @@ echo
 echo "$cinco   Los ejemplos "
 echo
 echo "  [Lista iptables reglas]               f-iptables-firewall list  "
-echo "  [Lanza iptables coomo cliente web]    f-iptables-firewall client web-sample1.cfg"
+echo "  [Lanza iptables coomo cliente web]    f-iptables-firewall client web-example1.cfg"
 echo "  [Borra las reglas de iptables]        f-iptables-firewall eraserules "
 echo "  [Muestra larga ayuda en ingles]       f-iptables-firewall help "
 echo "  [Muestra larga ayuda en español]      f-iptables-firewall ayuda "
@@ -996,6 +1016,7 @@ echo
 echo "        About: Acerca de $fprogram"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
+echo "  system-info: Muestra la informacion del sistema"
 echo
 echo "$cincuenta  La segunda opcion (opcional)"
 echo ""
@@ -1005,11 +1026,11 @@ echo "    Puedes modificar y crear archivos en la carpeta $rutaconfig"
 echo
 echo "$cincuenta   Ejemplos"
 echo
-echo "   $0 client games1.cfg  :  Configura un cliente para web y juegos"
-echo "   $0 server server1.cfg :  Configura un servidor"
-echo "   $0 eraserules         :  Borra las reglas de iptables "
-echo "   $0 list               :  Lista las reglas de iptables "
-echo "   $0 help               :  Muestra la ayuda en ingles "
+echo "   $0 client games-example1.cfg  :  Configura un cliente para web y juegos"
+echo "   $0 server server-example1.cfg :  Configura un servidor"
+echo "   $0 eraserules                 :  Borra las reglas de iptables "
+echo "   $0 list                       :  Lista las reglas de iptables "
+echo "   $0 help                       :  Muestra la ayuda en ingles "
 echo
 echo "$cincuenta  Ejemplos de las variables de configuración, defaultcfg"
 echo
@@ -1297,7 +1318,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Modify cfg]       reconfig new-config nueva-config show-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [Update]           upgrade auth-sudo"
-echo "     [Help]             about help ayuda"
+echo "     [Help]             about help ayuda system-info"
 echo ""
 echo "$cinco   The cfg are in folder $rutaconfig"
 echo
@@ -1306,7 +1327,7 @@ echo
 echo "$cinco   The examples "
 echo
 echo "   [List iptables rules]                f-iptables-firewall list  "
-echo "   [Launch iptables like client web]    f-iptables-firewall client web-sample1.cfg"
+echo "   [Launch iptables like client web]    f-iptables-firewall client web-example1.cfg"
 echo "   [Erase the iptables rules]           f-iptables-firewall eraserules "
 echo "   [Show long help in english]          f-iptables-firewall help "
 echo "   [Show long help in spanish]          f-iptables-firewall ayuda "
