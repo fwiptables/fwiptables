@@ -162,31 +162,38 @@ echo "haypingsend=no ;" >> $rutaconfig/web-example1.cfg
 echo "haypingrecive=no ;" >> $rutaconfig/web-example1.cfg
 ## config:  games-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/games-example1.cfg
+echo "#      #" >> $rutaconfig/games-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,12000:60000; clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
 echo "haypingsend= ;  haypingrecive= ; "  >> $rutaconfig/games-example1.cfg
 ## config: samba-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/samba-example1.cfg
+echo "#      #" >> $rutaconfig/samba-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,137:139 ; clientetcp=http,https,ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
 echo "servidorudp=137:139 ; servidortcp=ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
 ## config: vpn-sample1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/vpn-example1.cfg
+echo "#      #" >> $rutaconfig/vpn-example1.cfg
 echo "hayreenvio= ; hayvpn= ; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" >> $rutaconfig/vpn-example1.cfg
 ## config: email-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/email-example1.cfg
+echo "#      #" >> $rutaconfig/email-example1.cfg
 echo "clientetcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $rutaconfig/email-example1.cfg
 echo "servidortcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $rutaconfig/email-example1.cfg
 echo "haypingsend= ; haypingrecive= " >> $rutaconfig/email-example1.cfg
 ## config: ssh-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/ssh-example1.cfg
+echo "#      #" >> $rutaconfig/ssh-example1.cfg
 echo "clientetcp=http,https,printer,ipp,ssh,rsync,git" >> $rutaconfig/ssh-example1.cfg
 echo "clientetcp=http,https,printer,ipp,ssh,rsync,git" >> $rutaconfig/ssh-example1.cfg
 echo "haypingsend= ; haypingrecive= ;" >> $rutaconfig/ssh-example1.cfg
 ## config: vnc-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/vnc-example1.cfg
+echo "#      #" >> $rutaconfig/vnc-example1.cfg
 echo "clientetcp=http,https,ssh,5900:5910" >> $rutaconfig/vnc-example1.cfg
 echo "servidortcp=http,https,5900:5910" >> $rutaconfig/vnc-example1.cfg
 ## config: ftp-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/ftp-example1.cfg
+echo "#      #" >> $rutaconfig/ftp-example1.cfg
 echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $rutaconfig/ftp-example1.cfg
 echo "servidortcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $rutaconfig/ftp-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,tftp,ftps-data">> $rutaconfig/ftp-example1.cfg
@@ -194,10 +201,12 @@ echo "servidorudp=tftp,ftps-data">> $rutaconfig/ftp-example1.cfg
 echo "haypingsend= ; haypingrecive= ;" >> $rutaconfig/ftp-example1.cfg
 ## config: irc-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/irc-example1.cfg
+echo "#      #" >> $rutaconfig/irc-example1.cfg
 echo "clientetcp=http,https,ircd,ircs-u" >> $rutaconfig/irc-example1.cfg
 echo "servidortcp=http,https,ircd,ircs-u" >> $rutaconfig/irc-example1.cfg
 ## config: sql-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/sql-example1.cfg
+echo "#      #" >> $rutaconfig/sql-example1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $rutaconfig/sql-example1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $rutaconfig/sql-example1.cfg
 case $0 in
