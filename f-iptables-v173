@@ -38,7 +38,7 @@ cinco="#####" ; cincuenta="##################################################"
 ##
 ##
 echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
-execlegacy= ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
+execlegacy=no ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
 execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
 echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
 estado="" ; #english: modify with void or -m state --state stablished #spanish: modificar con vacio o -m state --state stablished
