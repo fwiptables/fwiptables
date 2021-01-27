@@ -163,17 +163,21 @@ echo "haypingrecive=no ;" >> $rutaconfig/web-example1.cfg
 ## config:  games-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/games-example1.cfg
 echo "#      #" >> $rutaconfig/games-example1.cfg
-echo "clienteudp=domain,ntp,bootpc,12000:60000; clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
+echo "clienteudp=domain,ntp,bootpc,12000:60000; " >> $rutaconfig/games-example1.cfg
+echo " clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
 echo "haypingsend= ;  haypingrecive= ; "  >> $rutaconfig/games-example1.cfg
 ## config: samba-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/samba-example1.cfg
 echo "#      #" >> $rutaconfig/samba-example1.cfg
-echo "clienteudp=domain,ntp,bootpc,137:139 ; clientetcp=http,https,ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
-echo "servidorudp=137:139 ; servidortcp=ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
+echo "clienteudp=domain,ntp,bootpc,137:139 ; " >> $rutaconfig/samba-example1.cfg
+echo "clientetcp=http,https,ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
+echo "servidorudp=137:139 ; " >> $rutaconfig/samba-example1.cfg
+echo " servidortcp=ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
 ## config: vpn-sample1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/vpn-example1.cfg
 echo "#      #" >> $rutaconfig/vpn-example1.cfg
-echo "hayreenvio= ; hayvpn= ; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" >> $rutaconfig/vpn-example1.cfg
+echo "hayreenvio= ; hayvpn= ; " >> $rutaconfig/vpn-example1.cfg
+echo "vpn=wesnoth.org,sourceforge.net" >> $rutaconfig/vpn-example1.cfg
 ## config: email-example1.cfg ##
 sed 's/^/#example#/g' $rutaconfig/default.cfg > $rutaconfig/email-example1.cfg
 echo "#      #" >> $rutaconfig/email-example1.cfg
