@@ -125,10 +125,10 @@ else head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed 
 fi
 ##############################       english: variables void: do not list without rules          ###########################################  #################################
 ##############################       spanish: variables listadas: no lista sin reglas     ###########################################  #################################
-legacycuatro=$(iptables-legacy -t filter -L INPUT 1) &> /dev/null
-nftcuatro=$(iptables-nft -t filter -L INPUT 1) &> /dev/null
-legacyseis=$(ip6tables-legacy -t filter -L INPUT 1) &> /dev/null
-nftseis=$(ip6tables-nft -t filter -L INPUT 1) &> /dev/null
+legacycuatro=$(iptables-legacy -t filter -L INPUT 1)
+nftcuatro=$(iptables-nft -t filter -L INPUT 1)
+legacyseis=$(ip6tables-legacy -t filter -L INPUT 1)
+nftseis=$(ip6tables-nft -t filter -L INPUT 1)
 #############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
@@ -314,23 +314,22 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  case $legacycuatro in
  "$NULL")
  echo
- echo "$cinco [Without rules xtables ipv4]";
- echo
+ echo "$cinco  [Without rules xtables ipv4]";
  echo -n ;;
  *)
- echo "$cinco  [The xtables ipv4]"
+ echo "$cinco  [With rules xtables ipv4]"
  $rutabin/iptables-legacy -v -L INPUT
  echo
  $rutabin/iptables-legacy -v -L OUTPUT ;;
  esac
  case $nftcuatro in
  "$NULL")
- echo
- echo "$cinco [Without rules neftables ipv4]";
- echo -n;;
- *)
+  echo
+  echo "$cinco  [Without rules neftables ipv4]";
+  echo -n;;
+  *)
   echo;
-  echo "$cinco  [The neftables ipv4]"
+  echo "$cinco  [With rules neftables ipv4]"
   $rutabin/iptables-nft -v -L INPUT
   echo
   $rutabin/iptables-nft -v -L OUTPUT ;;
@@ -359,11 +358,11 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  case $legacyseis in
  "$NULL")
  echo
- echo "$cinco [Without rules xtables ipv6]";
+ echo "$cinco  [Without rules xtables ipv6]";
  echo
  echo -n ;;
  *)
- echo "$cinco  [The xtables ipv6]"
+ echo "$cinco  [With rules xtables ipv6]"
  $rutabin/ip6tables-legacy -v -L INPUT
  echo
  $rutabin/ip6tables-legacy -v -L OUTPUT
@@ -372,11 +371,11 @@ if [ "$mifirewall" = "list" ]; then echo -n ;
  case $nftseis in
  "$NULL")
  echo
- echo "$cinco [Without rules neftables ipv6]";
+ echo "$cinco  [Without rules neftables ipv6]";
  echo
  echo -n ;;
  *)
- echo "$cinco  [The neftables ipv6]"
+ echo "$cinco  [With rules neftables ipv6]"
  $rutabin/ip6tables-nft -v -L INPUT
  echo
  $rutabin/ip6tables-nft -v -L OUTPUT
