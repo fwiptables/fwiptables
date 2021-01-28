@@ -20,7 +20,7 @@ web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #en
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutafiptables="/usr/bin"                                                     #english: whereis path directory to ifran iptables firewall
 fiptables="ffwiptables"                                                       #english: exec from the fran iptables firewall
-rutaconfig="/etc/fwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
+rutaconfig="/etc/ffwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
 defaultcfg="default.cfg"                                                     #english: default config #spanish: configuracion por defecto
 ##################################
 ##################################
