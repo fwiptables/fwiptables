@@ -14,13 +14,14 @@
 ##
 ####################################
 ## the variables names and the path ##
-mifirewall=$1 ; mivariable=$2 ; lanza="no";  no="no" ;                       #english: system variables f-iptables-firewall
-fprogram="Fran iptables firewall" ; fver="174" ;                             #english: program and version f-iptables-firewall
+mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables f-iptables-firewall
+fprogram="Fran FireWall iptables" ; fver="174" ;                             #english: program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version f-iptables-firewall
-fiptables="/usr/bin/f-iptables-firewall"                                     #english: whereis the fran iptables firewall
-rutabin="/usr/sbin" ;               #english: iptables programs path #spanish: ruta de los ejecutables de iptables
-rutaconfig="/etc/f-iptables"        #english: path to config files cfg from f-iptables-firewall #spanish: archivos de configuracion de f-iptables
-defaultcfg=default.cfg              #english: default config #spanish: configuracion por defecto
+rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
+rutafiptables="/usr/bin"                                                     #english: whereis path directory to ifran iptables firewall
+fiptables="fwiptables"                                                       #english: exec from the fran iptables firewall
+rutaconfig="/etc/fwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
+defaultcfg="default.cfg"                                                     #english: default config #spanish: configuracion por defecto
 ##################################
 ##################################
 ##
@@ -107,11 +108,11 @@ echo "   $(ls $rutaconfig | fmt $flistado)"
 echo
 echo "$cinco   The examples "
 echo
-echo "   [List iptables rules]                 f-iptables-firewall list  "
-echo "   [Launch iptables like client web]     f-iptables-firewall client web-example1.cfg"
-echo "   [Erase the iptables rules]            f-iptables-firewall eraserules "
-echo "   [Show long help in english]           f-iptables-firewall help "
-echo "   [Show long help in spanish]           f-iptables-firewall ayuda "
+echo "   [List iptables rules]                 $fiptables list  "
+echo "   [Launch iptables like client web]     $fiptables client web-example1.cfg"
+echo "   [Erase the iptables rules]            $fiptables eraserules "
+echo "   [Show long help in english]           $fiptables help "
+echo "   [Show long help in spanish]           $fiptables ayuda "
 echo
 echo
 exit; fi
@@ -215,14 +216,14 @@ echo "# config  #" >> $rutaconfig/sql-example1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $rutaconfig/sql-example1.cfg
 echo "clientetcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $rutaconfig/sql-example1.cfg
 case $0 in
-"$fiptables")
+"$rutafiptables/$fiptables")
 echo -n
 ;;
 *)
-cp $0 $fiptables &> /dev/null
+cp $0 $rutafiptables/$fiptables &> /dev/null
 ;;
 esac
-echo "     Updated the configs from  /usr/bin/f-iptables-firewall"
+echo "     Updated the configs for $fiptables in $rutaconfig"
 echo
 echo "$cincuenta   The configs are in folder $rutaconfig,  $cinco"
 ls $rutaconfig | fmt $flistado  ;
@@ -234,18 +235,18 @@ if [ "$mifirewall" = "web-upgrade" ]; then echo ; echo "   $fprogram version $fv
 echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
-echo "   Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links command" ; echo ;
+echo "   Upgrade The f-iptables in file $rutafiptables/$fiptables with links command" ; echo ;
 links=""; flinks=$(which links);
 echo "   Downloading f-iptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
 links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i "download latest version"  &&
-links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $fiptables &&
+links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $rutafiptables/$fiptables &&
 echo "   $fprogram is upgraded: ok"
 echo
 echo
-chmod ugo+x $fiptables
+chmod ugo+x $rutafiptables/$fiptables
 echo "$cincuenta      upgraded      $cincuenta"
-echo "$cinco     upgraded:     /usr/bin/f-iptables-firewall" ; echo; echo ;
-$fiptables reconfig
+echo "$cinco     upgraded:     $rutafiptables/$fiptables" ; echo; echo ;
+$rutafiptables/$fiptables reconfig
 exit ; fi
 ##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
@@ -263,11 +264,11 @@ echo
 echo; echo "    Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links command" ; echo ;
 echo " $cinco    download manually   |or launch|   $0 web-upgrade"
 echo
-echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > /usr/bin/f-iptables-firewall"
-echo "     chmod ugo+x /usr/bin/f-iptables-firewall"
+echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $rutafiptables/$fiptables"
+echo "     chmod ugo+x $rutafiptables/$fiptables"
 echo "     /usr/bin/f-iptables-firewall reconfig"
 echo
-echo " $cinco    ok and it will be upgrade with the name $fiptables" ;
+echo " $cinco    ok and it will be upgrade with the name $rutafiptables/$fiptables" ;
 echo; echo;
 exit;  fi
 #############################       english: eraserules: system script, the erase rules option
@@ -545,9 +546,9 @@ echo "  Edit the file $frespuestab"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
 echo "" ; echo ""; editor $rutaconfig/$frespuestab;
 echo "" ;
-echo "  $cinco        launch firewall for client:              $0 client $frespuestab   " ;
+echo "  $cinco        launch firewall for client:              $fiptables client $frespuestab   " ;
 echo "" ;
-echo "  $cinco        OR launch firewall for server:           $0 server $frespuestab   " ;
+echo "  $cinco        OR launch firewall for server:           $fiptables server $frespuestab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -568,9 +569,9 @@ echo "  Edita el archivo $frespuestab "
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $rutaconfig/$frespuestab
 echo "" ; echo ""; editor $rutaconfig/$frespuestab ;
 echo "" ;
-echo "  $cinco        lanza el cortafuegos para cliente:              $0 client $frespuestab   " ;
+echo "  $cinco        lanza el cortafuegos para cliente:              $fiptables client $frespuestab   " ;
 echo "" ;
-echo "  $cinco        O lanza el cortafuegos para servidor:           $0 server $frespuestab   " ;
+echo "  $cinco        O lanza el cortafuegos para servidor:           $fiptables server $frespuestab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -597,9 +598,9 @@ cp $rutaconfig/$fviejab $rutaconfig/$fnuevab
 echo        "     Config cloned now with new name:  $fnuevab "
 echo
 echo "" ;
-echo "  $cinco        Launch the firewall for client:              $0 client $fnuevab   " ;
+echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
 echo "" ;
-echo "  $cinco        O launch the firewall for server:            $0 server $fnuevab   " ;
+echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -621,9 +622,9 @@ echo;
 echo "" ;
 editor $rutaconfig/$frespuestab ;
 echo "" ;
-echo "  $cinco        Launch the firewall for client:              $0 client $frespuestab   " ;
+echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
 echo "" ;
-echo "  $cinco        Or launch the firewall for server:           $0 server $frespuestab   " ;
+echo "  $cinco        Or launch the firewall for server:           $fiptables server $frespuestab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -647,9 +648,9 @@ echo "     $cinco     file: $rutaconfig/$frespuestab" ;
 echo
 cat $rutaconfig/$frespuestab ;
 echo "" ;
-echo "  $cinco        Launch the firewall for client:              $0 client $frespuestab   " ;
+echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
 echo "" ;
-echo "  $cinco        O launch the firewall for server:            $0 server $frespuestab   " ;
+echo "  $cinco        O launch the firewall for server:            $fiptables server $frespuestab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -676,9 +677,9 @@ mv $rutaconfig/$fviejab $rutaconfig/$fnuevab
 echo        "     Config renamed now with new name:  $fnuevab "
 echo
 echo "" ;
-echo "  $cinco        Launch the firewall for client:              $0 client $fnuevab   " ;
+echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
 echo "" ;
-echo "  $cinco        O launch the firewall for server:            $0 server $fnuevab   " ;
+echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
 echo "" ;
 echo "" ;
 exit; fi
@@ -712,21 +713,21 @@ echo "$cinco    Auth for sudo to users: "
 echo "$cinco    Auth for sudo at the users choosed "
 echo; echo;
 echo "$cinco                                              Example:      user1,user2 "
-echo "$cinco    The users authorizated will launch without passwd:      sudo f-iptables-firewall "
-echo; echo; read -r -p "#####    Type the user/uesrs to auth in f-iptables-firewall:     " autorizados
+echo "$cinco    The users authorizated will launch without passwd:      sudo $fiptables "
+echo; echo; read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
 echo
-echo "     $autorizados ALL=(root) NOPASSWD:/usr/bin/f-iptables-firewall " > /etc/sudoers.d/f-iptables-firewall
-echo "$cinco    Writing config:     $autorizados    in     /etc/sudoers.d/f-iptables-firewall: "
-echo "          Ready:              /etc/sudoers.d/f-iptables-firewall"
+echo "     $autorizados ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
+echo "$cinco    Writing config:     $autorizados    in     /etc/sudoers.d/$fiptables: "
+echo "          Ready:              /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/f-iptables-firewall
 echo
-echo "$cinco    Writing config:  alias in /etc/bash_completion.d/f-iptables-firewall:"
-echo "          Ready:           alias f-iptables-firewall='sudo f-iptables-firewall' "
-echo "alias f-iptables-firewall='sudo f-iptables-firewall'" >  /etc/bash_completion.d/f-iptables-firewall
+echo "$cinco    Writing config:  alias in /etc/bash_completion.d/$fiptables"
+echo "          Ready:           alias $fiptables='sudo $fiptables'"
+echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
 echo
 echo "$cinco $cinco"
-echo "$cinco    Ok. $autorizados will use:     f-iptables-firewall"
-echo "$cinco    Ok. f-iptables-firewall will be with alias sudo "
+echo "$cinco    Ok. $autorizados will use:     $fiptables"
+echo "$cinco    Ok. $fiptables will be with alias sudo "
 echo; echo; echo;
 exit; fi
 ############################       english: ipforwading: the ipforwading option en english
@@ -823,11 +824,11 @@ ls $rutaconfig | fmt $flistado  ;
 echo
 echo "$cinco   The examples "
 echo
-echo "  [List iptables rules]                 f-iptables-firewall list  "
-echo "  [Launch iptables like client web]     f-iptables-firewall client web-example1.cfg"
-echo "  [Erase the iptables rules]            f-iptables-firewall eraserules "
-echo "  [Show long help in english]           f-iptables-firewall help "
-echo "  [Show long help in spanish]           f-iptables-firewall ayuda "
+echo "  [List iptables rules]                 $fiptables list  "
+echo "  [Launch iptables like client web]     $fiptables client web-example1.cfg"
+echo "  [Erase the iptables rules]            $fiptables eraserules "
+echo "  [Show long help in english]           $fiptables help "
+echo "  [Show long help in spanish]           $fiptables ayuda "
 echo
 echo
 echo "$cincuenta  The first option"
@@ -898,11 +899,11 @@ echo "    you can  modify and create the files in the folder $rutaconfig"
 echo ""
 echo "$cincuenta  Examples"
 echo ""
-echo " $0 client games-example1.cfg    :  Configure firewall to allow connect to web and games"
-echo " $0 server server-example11.cfg  :  Configure firewall to server somes services"
-echo " $0 eraserules                   :  Remove the iptables rules"
-echo " $0 list                         :  List iptables rules"
-echo " $0 help                         :  Show this help in english"
+echo " $fiptables client games-example1.cfg    :  Configure firewall to allow connect to web and games"
+echo " $fiptables server server-example11.cfg  :  Configure firewall to server somes services"
+echo " $fiptables eraserules                   :  Remove the iptables rules"
+echo " $fiptables list                         :  List iptables rules"
+echo " $fiptables help                         :  Show this help in english"
 echo ""
 echo "$cincuenta  Examples of variables to the configs files, $defaultcfg"
 echo
@@ -916,8 +917,8 @@ echo
 echo "$cincuenta  It needs this clients udp ports"
 echo ""
 echo "     This port is necesary to update the date  : ntp"
-echo "     This port is necesary to dhcp and get ip  : bootpc and/or bootps"
-echo "     This port is necesary to domain resolver  : domain and/or domain-s"
+echo "     This port is necesary to dhcp and get ip  : bootpc"
+echo "     This port is necesary to domain resolver  : domain"
 echo ""
 echo "$cincuenta  License"
 echo ""
@@ -951,11 +952,11 @@ ls $rutaconfig | fmt $flistado  ;
 echo
 echo "$cinco   Los ejemplos "
 echo
-echo "  [Lista iptables reglas]               f-iptables-firewall list  "
-echo "  [Lanza iptables coomo cliente web]    f-iptables-firewall client web-example1.cfg"
-echo "  [Borra las reglas de iptables]        f-iptables-firewall eraserules "
-echo "  [Muestra larga ayuda en ingles]       f-iptables-firewall help "
-echo "  [Muestra larga ayuda en español]      f-iptables-firewall ayuda "
+echo "  [Lista iptables reglas]               $fiptables list  "
+echo "  [Lanza iptables coomo cliente web]    $fiptables client web-example1.cfg"
+echo "  [Borra las reglas de iptables]        $fiptables eraserules "
+echo "  [Muestra larga ayuda en ingles]       $fiptables help "
+echo "  [Muestra larga ayuda en español]      $fiptables ayuda "
 echo
 echo
 echo "$cincuenta  La primera opción:"
@@ -1026,11 +1027,11 @@ echo "    Puedes modificar y crear archivos en la carpeta $rutaconfig"
 echo
 echo "$cincuenta   Ejemplos"
 echo
-echo "   $0 client games-example1.cfg  :  Configura un cliente para web y juegos"
-echo "   $0 server server-example1.cfg :  Configura un servidor"
-echo "   $0 eraserules                 :  Borra las reglas de iptables "
-echo "   $0 list                       :  Lista las reglas de iptables "
-echo "   $0 help                       :  Muestra la ayuda en ingles "
+echo "   $fiptables client games-example1.cfg  :  Configura un cliente para web y juegos"
+echo "   $fiptables server server-example1.cfg :  Configura un servidor"
+echo "   $fiptables eraserules                 :  Borra las reglas de iptables "
+echo "   $fiptables list                       :  Lista las reglas de iptables "
+echo "   $fiptables help                       :  Muestra la ayuda en ingles "
 echo
 echo "$cincuenta  Ejemplos de las variables de configuración, defaultcfg"
 echo
@@ -1044,8 +1045,8 @@ echo
 echo "$cincuenta  Puertos cliente udp necesarios"
 echo
 echo "     necesario para actualizar la fecha :   ntp"
-echo "     necesario para dhcp y conseguir ip :   bootpc y/o bootps"
-echo "     necesario para resolver dominios   :   domain y/o domain-s"
+echo "     necesario para dhcp y conseguir ip :   bootpc"
+echo "     necesario para resolver dominios   :   domain"
 echo
 echo "$cincuenta  Licencia:"
 echo
@@ -1326,11 +1327,11 @@ echo "   $(ls $rutaconfig | fmt $flistado)"  ;
 echo
 echo "$cinco   The examples "
 echo
-echo "   [List iptables rules]                f-iptables-firewall list  "
-echo "   [Launch iptables like client web]    f-iptables-firewall client web-example1.cfg"
-echo "   [Erase the iptables rules]           f-iptables-firewall eraserules "
-echo "   [Show long help in english]          f-iptables-firewall help "
-echo "   [Show long help in spanish]          f-iptables-firewall ayuda "
+echo "   [List iptables rules]                $fiptables list  "
+echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
+echo "   [Erase the iptables rules]           $fiptables eraserules "
+echo "   [Show long help in english]          $fiptables help "
+echo "   [Show long help in spanish]          $fiptables ayuda "
 echo
 echo
 # left script
