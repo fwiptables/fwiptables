@@ -15,11 +15,11 @@
 ####################################
 ## the variables names and the path ##
 mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables f-iptables-firewall
-fprogram="Fran FireWall iptables" ; fver="174" ;                             #english: program and version f-iptables-firewall
+fprogram="Fran FireWall IPTABLES " ; fver="174" ;                          #english: program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version f-iptables-firewall
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutafiptables="/usr/bin"                                                     #english: whereis path directory to ifran iptables firewall
-fiptables="fwiptables"                                                       #english: exec from the fran iptables firewall
+fiptables="ffwiptables"                                                       #english: exec from the fran iptables firewall
 rutaconfig="/etc/fwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
 defaultcfg="default.cfg"                                                     #english: default config #spanish: configuracion por defecto
 ##################################
@@ -86,7 +86,7 @@ redserveripv6=0/0 ;  #english: the net to server ipv6, all is 0/0 #spanish: la r
 ##
 if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo ; echo "$cincuenta  f-iptables need to be root to work" ; echo ;
-echo "  the $fprogram version $fver "
+echo "  $fprogram version $fver "
 echo "$cincuenta you need to be root $cinco"
 echo
 echo
@@ -802,7 +802,7 @@ exit; fi
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
 if [ "$mifirewall" = "help" ]; then echo ; echo ;
-echo "  The $fprogram version $fver"
+echo "  $fprogram version $fver"
 echo "$cincuenta $cincuenta Help $cinco"
 echo
 echo
@@ -900,7 +900,7 @@ echo ""
 echo "$cincuenta  Examples"
 echo ""
 echo " $fiptables client games-example1.cfg    :  Configure firewall to allow connect to web and games"
-echo " $fiptables server server-example11.cfg  :  Configure firewall to server somes services"
+echo " $fiptables server server-example1.cfg  :  Configure firewall to server somes services"
 echo " $fiptables eraserules                   :  Remove the iptables rules"
 echo " $fiptables list                         :  List iptables rules"
 echo " $fiptables help                         :  Show this help in english"
@@ -930,7 +930,7 @@ exit; fi
 ############################       english: ayuda: the help option in spanish
 ############################       spanish: ayuda: la opcion de ayuda en español
 if [ "$mifirewall" = "ayuda" ]; then echo ; echo ;
-echo "  the $fprogram version $fver "
+echo "  $fprogram version $fver "
 echo "$cincuenta $cincuenta Ayuda $cinco"
 echo
 echo
@@ -1305,7 +1305,7 @@ exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo
-echo "   The $fprogram version $fver "
+echo "   $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
 echo
 echo
