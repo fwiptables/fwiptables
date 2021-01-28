@@ -15,12 +15,12 @@
 ####################################
 ## the variables names and the path ##
 mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables f-iptables-firewall
-fprogram="Fran FireWall IPTABLES " ; fver="174" ;                          #english: program and version f-iptables-firewall
+fprogram="Fran one FireWall IPTABLES " ; fver="174" ;                          #english: program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version f-iptables-firewall
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutafiptables="/usr/bin"                                                     #english: whereis path directory to ifran iptables firewall
-fiptables="ffwiptables"                                                       #english: exec from the fran iptables firewall
-rutaconfig="/etc/ffwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
+fiptables="fwiptables"                                                       #english: exec from the fran iptables firewall
+rutaconfig="/etc/fwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
 defaultcfg="default.cfg"                                                     #english: default config #spanish: configuracion por defecto
 ##################################
 ##################################
