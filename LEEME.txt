@@ -8,13 +8,13 @@
 
    #####   
 
-   ###    The fran iptables ver 150 and versions up in files repository at sourceforge
+   ###    The fran iptables ver 170 and next versions in [files repository at sourceforge]
 
    https://sourceforge.net/projects/f-iptables/files
 
    ##### #####
 
-   ###    The fran iptables all versions in code repository at sourceforge
+   ###    The fran iptables all versions in [code repository at sourceforge]
 
    https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
    
