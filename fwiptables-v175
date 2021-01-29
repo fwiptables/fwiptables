@@ -1,4 +1,6 @@
 #!/bin/bash
+##
+##
 ##############################
 ##
 ##   This program is wWith gpl license, the program is copyleft, it is free.
@@ -9,7 +11,7 @@
 ##############################        english:   basic system variables
 ##############################        spanish:   las basicas variables del sistema
 ##
-##  /usr/bin/f-iptables-firewall
+##  /usr/bin/fwiptables
 ##
 ##
 ####################################
@@ -26,8 +28,8 @@ defaultcfg="default.cfg"                                                     #en
 ##################################
 ##
 ##
-##################################       english: number line of the custom variables y number of customs variables y wide at list cfgs
-##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfgs
+##################################       english: number line of the custom variables and number of customs variables and wide at list cfg
+##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfg
 ##
 ##
 flinea="-78" ; fvariables="-30" ; flistado="-90" ;
@@ -166,7 +168,7 @@ echo "haypingrecive=no ;" >> $rutaconfig/web-example1.cfg
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/games-example1.cfg
 echo "# config  #" >> $rutaconfig/games-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,12000:60000; " >> $rutaconfig/games-example1.cfg
-echo " clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
+echo "clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
 echo "haypingsend= ;  haypingrecive= ; "  >> $rutaconfig/games-example1.cfg
 ## config: samba-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/samba-example1.cfg
@@ -174,24 +176,27 @@ echo "# config  #" >> $rutaconfig/samba-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,137:139 ; " >> $rutaconfig/samba-example1.cfg
 echo "clientetcp=http,https,ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
 echo "servidorudp=137:139 ; " >> $rutaconfig/samba-example1.cfg
-echo " servidortcp=ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
+echo "servidortcp=ipp,microsoft-ds" >> $rutaconfig/samba-example1.cfg
 ## config: vpn-sample1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/vpn-example1.cfg
 echo "# config  #" >> $rutaconfig/vpn-example1.cfg
-echo "hayreenvio= ; hayvpn= ; " >> $rutaconfig/vpn-example1.cfg
+echo "hayreenvio= ; " >> $rutaconfig/vpn-example1.cfg
+echo "hayvpn= ; " >> $rutaconfig/vpn-example1.cfg
 echo "vpn=wesnoth.org,sourceforge.net" >> $rutaconfig/vpn-example1.cfg
 ## config: email-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/email-example1.cfg
 echo "# config  #" >> $rutaconfig/email-example1.cfg
 echo "clientetcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $rutaconfig/email-example1.cfg
 echo "servidortcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $rutaconfig/email-example1.cfg
-echo "haypingsend= ; haypingrecive= " >> $rutaconfig/email-example1.cfg
+echo "haypingsend= ; " >> $rutaconfig/email-example1.cfg
+echo "haypingrecive= " >> $rutaconfig/email-example1.cfg
 ## config: ssh-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/ssh-example1.cfg
 echo "# config  #" >> $rutaconfig/ssh-example1.cfg
 echo "clientetcp=http,https,printer,ipp,ssh,rsync,git" >> $rutaconfig/ssh-example1.cfg
 echo "clientetcp=http,https,printer,ipp,ssh,rsync,git" >> $rutaconfig/ssh-example1.cfg
-echo "haypingsend= ; haypingrecive= ;" >> $rutaconfig/ssh-example1.cfg
+echo "haypingsend= ; " >> $rutaconfig/ssh-example1.cfg
+echo "haypingrecive= ;" >> $rutaconfig/ssh-example1.cfg
 ## config: vnc-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/vnc-example1.cfg
 echo "# config  #" >> $rutaconfig/vnc-example1.cfg
@@ -280,7 +285,8 @@ echo
 $rutabin/iptables-nft -t filter -F ; $rutabin/ip6tables-nft -t filter  -F ; $rutabin/iptables-legacy -t filter -F ; $rutabin/ip6tables-legacy -t filter -F ;
 $rutabin/iptables-nft -t nat -F ; $rutabin/ip6tables-nft -t nat  -F ; $rutabin/iptables-legacy -t nat -F ; $rutabin/ip6tables-legacy -t nat -F ;
 echo ; echo " Erase all rules from ipv4 and ipv6 for iptables filter and iptables nat";
-echo ; exit; fi
+echo
+exit; fi
 #############################       english: route: system script, the iproute option
 #############################       spanish: route: script de sistema, la opcion iproute
 if [ "$mifirewall" = "route" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
@@ -289,35 +295,49 @@ echo
 uname -a
 echo
 echo "$cinco  ip address  $cinco ";
-echo; echo ; ip address ; echo ; echo ;
+echo
+echo
+ip address
+echo
+echo
 echo "$cinco  ip route  $cinco" ;
-echo ; ip route ;
-echo ; exit; fi
+echo
+ip route
+echo
+exit; fi
 #############################       english: sockets: system script, the sockets option
 #############################       spanish: sockets: script de sistema, la opcion sockets
 if [ "$mifirewall" = "ss" ]; then echo -n ;
-echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
+echo
+echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with ss   $cinco" ;
 echo
 uname -a
-echo ;
-echo "$cinco      The ipv6 sockets       $cinco" ; echo ;  ss -a6
-echo ;
-echo "$cinco      The ipv4 sockets      $cinco" ;echo ; ss -a4 ;
-echo ; exit; fi
+echo
+echo "$cinco      The ipv6 sockets       $cinco"
+echo
+ss -a6
+echo
+echo "$cinco      The ipv4 sockets      $cinco"
+echo
+ss -a4
+echo
+exit; fi
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 if [ "$mifirewall" = "lsof" ]; then echo -n ;
-echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
+echo
+echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with lsof   $cinco"
 echo
 uname -a
-echo ;
-echo "$cinco      The sockets with lsof      $cinco" ;
-echo ;
+echo
+echo "$cinco      The sockets with lsof      $cinco"
+echo
 lsof -i
-echo ;
-echo ; exit; fi
+echo
+echo
+exit; fi
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat  sockets
 if [ "$mifirewall" = "netstat" ]; then echo -n ;
@@ -327,12 +347,19 @@ echo
 uname -a
 echo
 echo "$cincuenta      The devices list with netstat      $cinco" ;
-echo ; netstat -i  ;   echo ;
+echo
+netstat -i
+echo
 echo "$cincuenta      The route table with  netstat      $cinco" ;
-echo ; netstat -r  ;   echo ;
+echo
+netstat -r
+echo
 echo "$cincuenta      The sockets list with netstat      $cinco" ;
-echo ; netstat -a -4 -6  ;   echo ;
-echo ; exit; fi
+echo
+netstat -a -4 -6
+echo
+echo
+exit; fi
 #############################       english: list: system script, the list option
 #############################       spanish: list: script de sistema, la opcion lista
 if [ "$mifirewall" = "list" ]; then echo -n ;
