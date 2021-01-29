@@ -32,7 +32,7 @@ defaultcfg="default.cfg"                                                     #en
 ##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfg
 ##
 ##
-flinea="-78" ; fvariables="-30" ; flistado="-90" ;
+flinea="-78" ; fvariables="-30" ; flistado="-100" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
@@ -1387,9 +1387,9 @@ echo "                        security-ip4 security-ip6"
 echo "     [Update]           upgrade auth-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
-echo "$cinco   The cfg are in folder $rutaconfig"
+echo "$cinco  Optional [config.cfg] in $rutaconfig"
 echo
-echo "   $(ls $rutaconfig | fmt $flistado)"  ;
+echo "$(ls $rutaconfig | fmt $flistado)"
 echo
 echo "$cinco   The examples "
 echo
