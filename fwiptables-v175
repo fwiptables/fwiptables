@@ -1387,7 +1387,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Update]           upgrade auth-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
-echo "$cinco  Optional [config.cfg] in $rutaconfig"
+echo "$cinco  Optional $rutaconfig/[config.cfg]"
 echo
 echo "$(ls $rutaconfig | fmt $flistado)"
 echo
