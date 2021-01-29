@@ -148,7 +148,7 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ####
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
-if [ "$mifirewall" = "reconfig" ]; then echo -n ;
+if [ "$mifirewall" = "reconfig" ]; then echo -n
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
 rm $rutaconfig/*ample1.cfg; $0 ; echo;
 echo "$cincuenta $cincuenta    Updating default configuration   $cinco"
@@ -236,7 +236,9 @@ echo ; echo
 exit ; fi
 ##############################       english: web-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: automatica-acutalizacion: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
-if [ "$mifirewall" = "web-upgrade" ]; then echo ; echo "   $fprogram version $fver" ;
+if [ "$mifirewall" = "web-upgrade" ]; then echo -n
+echo
+echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
@@ -255,7 +257,9 @@ $rutafiptables/$fiptables reconfig
 exit ; fi
 ##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
-if [ "$mifirewall" = "upgrade" ]; then  echo ; echo "   $fprogram version $fver" ;
+if [ "$mifirewall" = "upgrade" ]; then  echo -n
+echo
+echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Upgrade $cinco"
 echo
 echo "  The actually version is" ;
