@@ -946,9 +946,9 @@ echo "delete-config: Delete one configuration file"
 echo
 echo "$cinco         Update options"
 echo
-echo "     reconfig: Rewrite default files in  $rutaconfig/files1.cfg"
+echo "     reconfig: Rewrite default files in  $rutaconfig/*sample1.cfg"
 echo "      upgrade: Upgrade $fprogram at the latest version"
-echo "    auth-sudo: Permit sudo f-iptables-firewall to other choosed users"
+echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
 echo
 echo "$cinco         Help"
 echo
@@ -1075,9 +1075,9 @@ echo "delete-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         Opciones de actualiciacion"
 echo
-echo "     reconfig: Reescribe configs por defecto $rutaconfig/archivos1.cfg"
+echo "     reconfig: Reescribe configs por defecto $rutaconfig/*ample1.cfg"
 echo "      upgrade: Actualiza $fprogram a la ultima version"
-echo "    auth-sudo: Permite sudo f-iptables-firewall a usuarios elegidos"
+echo "    auth-sudo: Permite sudo $fiptables a usuarios elegidos"
 echo
 echo "$cinco         Ayuda"
 echo
