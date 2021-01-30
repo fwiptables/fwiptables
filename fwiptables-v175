@@ -122,8 +122,9 @@ exit; fi
 ##
 ##############################       english: defaultcfg: update the file default.cfg          ###########################################  #################################
 ##############################       spanish: defaultcfg: actualiza el archivo default.cfg     ###########################################  #################################
-if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig; mkdir $rutaconfig ; fi
-if [ -f $rutaconfig/$defaultcfg ]; then echo -n ;
+if [ -d $rutaconfig ]; then echo -n ; else rm $rutaconfig &> /dev/null ; mkdir $rutaconfig &> /dev/null ; fi
+if [ -f $rutafiptables/$fiptables ]; then echo -n; else cp $0 $rutafiptables/$fiptables &> /dev/null ; fi
+if [ -f $rutaconfig/$defaultcfg ]; then echo -n
 else head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
 fi
 ##############################       english: variables void: do not list without rules          ###########################################  #################################
