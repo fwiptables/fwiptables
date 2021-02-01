@@ -336,10 +336,17 @@ ip tunnel ;;
 esac
 echo
 exit; fi
-#############################       english: sockets: system script, the sockets option
-#############################       spanish: sockets: script de sistema, la opcion sockets
+#############################       english: ss: system script, the sockets option
+#############################       spanish: ss: script de sistema, la opcion sockets
 if [ "$mifirewall" = "ss" ]; then echo -n ;
 echo
+case $(which ss) in
+"$NULL")
+echo
+echo " Install ss"
+echo
+echo ;;
+*)
 echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with ss   $cinco" ;
 echo
@@ -352,14 +359,21 @@ echo
 echo "$cinco      The ipv4 sockets      $cinco"
 echo
 ss -a4
+echo;;
+esac
 echo
 exit; fi
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 if [ "$mifirewall" = "lsof" ]; then echo -n ;
 echo
+case $(which lsof) in
+"$NULL")
+echo
 echo " Install lsof"
 echo
+echo ;;
+*)
 echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with lsof   $cinco"
 echo
@@ -368,13 +382,24 @@ echo
 echo "$cinco      The sockets with lsof      $cinco"
 echo
 lsof -i
-echo
+echo ;;
+esac
 echo
 exit; fi
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat  sockets
 if [ "$mifirewall" = "netstat" ]; then echo -n ;
-echo;  echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
+echo
+echo
+case $(which netstat) in
+"$NULL")
+echo
+echo
+echo " Install netstat"
+echo
+echo ;;
+*)
+echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with netstat   $cinco"
 echo
 uname -a
@@ -391,7 +416,8 @@ echo "$cincuenta      The sockets list with netstat      $cinco" ;
 echo
 netstat -a -4 -6
 echo
-echo
+echo ;;
+esac
 exit; fi
 #############################       english: list: system script, the list option
 #############################       spanish: list: script de sistema, la opcion lista
@@ -853,6 +879,14 @@ exit; fi
 ############################       english: tcpdump: listen at dump from conexiones
 ############################       spanish: tcpdump: escucha al volcado de conexiones
 if [ "$mifirewall" = "tcpdump" ]; then echo
+case $(which tcpdump) in
+"$NULL")
+echo
+echo
+echo " Install tcpdump"
+echo
+echo ;;
+*)
 echo
 echo "  The $fprogram version $fver listening with tcpdump sockets of the kernel linux"
 echo "$cincuenta $cincuenta Listening tcpdump $cinco"
@@ -860,6 +894,8 @@ echo
 echo
 echo "  Launch manually tcpdump"
 echo
+echo ;;
+esac
 exit; fi
 ############################       english: system-info: get info system
 ############################       spanish: system-info: da informacion del sistema
