@@ -101,7 +101,7 @@ echo "     [Modify cfg]       reconfig new-config nueva-config show-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [Others tables]    mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
 echo "                        security-ip4 security-ip6"
-echo "     [Update]           upgrade auth-sudo"
+echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
 echo "$cinco   The cfg are in folder $rutaconfig"
@@ -112,6 +112,7 @@ echo "$cinco   The examples "
 echo
 echo "   [List iptables rules]                 $fiptables list  "
 echo "   [Launch iptables like client web]     $fiptables client web-example1.cfg"
+echo "   [Launch iptables like server web]     $fiptables server web-example1.cfg"
 echo "   [Erase the iptables rules]            $fiptables eraserules "
 echo "   [Show long help in english]           $fiptables help "
 echo "   [Show long help in spanish]           $fiptables ayuda "
@@ -305,7 +306,12 @@ echo
 echo "$cinco  ip address  $cinco ";
 echo
 echo
-ip address
+case $(ip address) in
+$NULL)
+echo "Without net devices" ;;
+*)
+ip address ;;
+esac
 echo
 echo
 echo "$cinco  ip route  $cinco" ;
@@ -349,6 +355,8 @@ exit; fi
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 if [ "$mifirewall" = "lsof" ]; then echo -n ;
+echo
+echo " Install lsof"
 echo
 echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
 echo  "$cincuenta $cincuenta    The sockets list with lsof   $cinco"
@@ -778,13 +786,16 @@ if [ "$mifirewall" = "auth-sudo" ]; then echo
 echo
 echo "  The $fprogram version $fver"
 echo "$cincuenta $cincuenta Auth-sudo $cinco"
-echo; echo;
+echo
+echo
 echo "$cinco    Auth for sudo to users: "
 echo "$cinco    Auth for sudo at the users choosed "
-echo; echo;
+echo
+echo
 echo "$cinco                                              Example:      user1,user2 "
 echo "$cinco    The users authorizated will launch without passwd:      sudo $fiptables "
-echo; echo; read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
+echo
+echo; read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
 echo
 echo "     $autorizados ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "$cinco    Writing config:     $autorizados    in     /etc/sudoers.d/$fiptables: "
@@ -800,6 +811,25 @@ echo "$cinco    Ok. $autorizados will use:     $fiptables"
 echo "$cinco    Ok. $fiptables will be with alias sudo "
 echo
 echo
+exit; fi
+############################       english: list-sudo: the auth-sudo option en english
+############################       spanish: list-sudo: la opcion de auth-sudo en ingles
+if [ "$mifirewall" = "list-sudo" ]; then echo
+echo
+echo "  The $fprogram version $fver"
+echo "$cincuenta $cincuenta Auth-sudo $cinco"
+echo
+echo
+case $(find /etc/sudoers.d/$fiptables) in
+/etc/sudoers.d/$fiptables)
+cat /etc/sudoers.d/$fiptables
+echo
+echo;;
+*)
+echo "There is not auth users for $fiptables"
+echo
+echo ;;
+esac
 exit; fi
 ############################       english: ipforwading: the ipforwading option en english
 ############################       spanish: ipforwading: la opcion de reenvios  en ingles
@@ -896,7 +926,7 @@ echo "     [Modify cfg]       reconfig new-config nueva-config clone-config"
 echo "                        modify-config show-config rename-config delete-config"
 echo "     [Others tables]    mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
 echo "                        security-ip4 security-ip6"
-echo "     [Update]           upgrade auth-sudo"
+echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
 echo "$cinco   The cfg are in folder $rutaconfig"
@@ -907,6 +937,7 @@ echo "$cinco   The examples "
 echo
 echo "  [List iptables rules]                 $fiptables list  "
 echo "  [Launch iptables like client web]     $fiptables client web-example1.cfg"
+echo "  [Launch iptables like server web]     $fiptables server web-example1.cfg"
 echo "  [Erase the iptables rules]            $fiptables eraserules "
 echo "  [Show long help in english]           $fiptables help "
 echo "  [Show long help in spanish]           $fiptables ayuda "
@@ -964,6 +995,7 @@ echo
 echo "     reconfig: Rewrite default files in  $rutaconfig/*sample1.cfg"
 echo "      upgrade: Upgrade $fprogram at the latest version"
 echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
+echo "    list-sudo: List sudo $fiptables to other choosed users"
 echo
 echo "$cinco         Help"
 echo
@@ -1030,7 +1062,7 @@ echo "     [Modifica cfg]     reconfig new-config nueva-config clone-config"
 echo "                        modify-config show-config rename-config delete-config"
 echo "     [Otras tablas]     mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
 echo "                        security-ip4 security-ip6"
-echo "     [Actualiza]        upgrade auth-sudo"
+echo "     [Actualiza]        upgrade auth-sudo list-sudo"
 echo "     [Ayuda]            about help ayuda system-info"
 echo ""
 echo "$cinco   Las configs estan en la carpeta $rutaconfig"
@@ -1098,6 +1130,7 @@ echo
 echo "     reconfig: Reescribe configs por defecto $rutaconfig/*ample1.cfg"
 echo "      upgrade: Actualiza $fprogram a la ultima version"
 echo "    auth-sudo: Permite sudo $fiptables a usuarios elegidos"
+echo "    list-sudo: Lista sudo $fiptables to otros usuarios elegidos"
 echo
 echo "$cinco         Ayuda"
 echo
@@ -1430,7 +1463,7 @@ echo "     [Modify cfg]       reconfig new-config nueva-config show-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [Others tables]    mangle-ip4 mangle-ip6 raw-ip4 raw-ip6"
 echo "                        security-ip4 security-ip6"
-echo "     [Update]           upgrade auth-sudo"
+echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
 echo "$cinco  Optional $rutaconfig/[config.cfg]"
@@ -1441,6 +1474,7 @@ echo "$cinco   The examples "
 echo
 echo "   [List iptables rules]                $fiptables list  "
 echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
+echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
 echo "   [Erase the iptables rules]           $fiptables eraserules "
 echo "   [Show long help in english]          $fiptables help "
 echo "   [Show long help in spanish]          $fiptables ayuda "
