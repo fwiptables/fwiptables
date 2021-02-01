@@ -17,7 +17,7 @@
 ####################################
 ## the variables names and the path ##
 mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables f-iptables-firewall
-fprogram="Fran one FireWall IPTABLES " ; fver="176" ;                        #english: program and version f-iptables-firewall
+fprogram="Fran one FireWall iptables " ; fver="176" ;                        #english: program and version f-iptables-firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version f-iptables-firewall
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutafiptables="/usr/bin"                                                     #english: whereis path directory to ifran iptables firewall
