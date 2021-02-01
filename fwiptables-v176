@@ -47,9 +47,9 @@ echo -n #english: state: void for all input states or input packet state #spanis
 estado="" ; #english: modify with void or -m state --state stablished #spanish: modificar con vacio o -m state --state stablished
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
 hayipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
-hayipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
-haypingsend=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
-haypingrecive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
+hayipv6= ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
+haypingsend= ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
+haypingrecive= ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
 haylogservertcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
 haylogserverudp=no ; #english: void to udp log, and no to do not log udp #spanish: vacio para logear udp y no para evitar logear udp
 hayreenvio=no ; #english: void to allow ip forward, and no to drop forward ip #spanish: vacio para permitir reenvio, y no para denegar reenvios
@@ -153,11 +153,13 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
 if [ "$mifirewall" = "reconfig" ]; then echo -n
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
-rm $rutaconfig/*ample1.cfg; $0 ; echo;
+rm $rutaconfig/*ample1.cfg
+echo
 echo "$cincuenta $cincuenta    Updating default configuration   $cinco"
 echo "$cinco    Updating default configurations of examples:  $rutaconfig/*ample1.cfg "
-echo ; echo ; echo
+echo
+echo
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/english-example1.cfg
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/spanish-example1.cfg
 ## config: web-example1.cfg #
@@ -825,19 +827,18 @@ echo "$cinco    The users authorizated will launch without passwd:      sudo $fi
 echo
 echo; read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
 echo
-echo "     $autorizados ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
-echo "$cinco    Writing config:     $autorizados    in     /etc/sudoers.d/$fiptables: "
-echo "          Ready:              /etc/sudoers.d/$fiptables"
-cat /etc/sudoers.d/f-iptables-firewall
-echo
-echo "$cinco    Writing config:  alias in /etc/bash_completion.d/$fiptables"
-echo "          Ready:           alias $fiptables='sudo $fiptables'"
+echo "$autorizados ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
 echo
 echo "$cinco $cinco"
 echo "$cinco    Ok. $autorizados will use:     $fiptables"
-echo "$cinco    Ok. $fiptables will be with alias sudo "
+echo "$cinco    Ok. $fiptables will use alias with sudo "
 echo
+echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
+cat /etc/sudoers.d/$fiptables
+echo
+echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
+cat /etc/bash_completion.d/$fiptables
 echo
 exit; fi
 ############################       english: list-sudo: the auth-sudo option en english
@@ -850,8 +851,11 @@ echo
 echo
 case $(find /etc/sudoers.d/$fiptables) in
 /etc/sudoers.d/$fiptables)
+echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
 echo
+echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
+cat /etc/bash_completion.d/$fiptables
 echo;;
 *)
 echo "There is not auth users for $fiptables"
