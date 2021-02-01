@@ -64,7 +64,7 @@ servidorudp=discard ; #english: udp ports for server #spanish: puertos udp para 
 logservertcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
 logserverudp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
 vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
-otroprotocolo=ipv6-icmp ; #english: allow other one protocol from /etc/protocolos #spanish: permitir un otro protocolo desde /etc/protocols
+otroprotocolo=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 echo -n #english: net to connect like client or server #spanish: red para conectar como cliente o server
 redclienteipv4=0/0 ; #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 redclienteipv6=0/0 ;  #english: the net to client ipv6, all is 0/0 #spanish: la red cual cliente ipv6, todos es 0/0
@@ -310,14 +310,19 @@ echo
 echo
 echo "$cinco  ip route  $cinco" ;
 echo
-ip route
+case $(ip route) in
+$NULL)
+echo "Without route ip" ;;
+*)
+ip route ;;
+esac
 echo
 echo
 echo "$cinco  ip tunnel  $cinco" ;
 echo
 case $(ip tunnel) in
 $NULL)
-echo "Without ip tunnel" ;;
+echo "Without tunnel ip" ;;
 *)
 ip tunnel ;;
 esac
@@ -1175,7 +1180,9 @@ $execlegacy  $hayipv4 $activarcliente   $rutabin/iptables-legacy -A INPUT -p udp
 $execlegacy  $hayipv4 $activarcliente   $rutabin/iptables-legacy -A INPUT -p tcp -m multiport $estado --sports $clientetcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
 $execlegacy  $hayipv4 $haypingsend  $rutabin/iptables-legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $hayipv4 $haypingrecive $rutabin/iptables-legacy -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$execlegacy  $hayipv4 $hayotroprotocolo $rutabin/iptables-legacy -A INPUT -p $otroprotocolo -j ACCEPT &> /dev/null
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execlegacy  $hayipv4 $hayotroprotocolo $rutabin/iptables-legacy -A INPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ### ipv4 filter legacy rules output
 $execlegacy  $hayipv4 $rutabin/iptables-legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 $execlegacy  $hayipv4 $hayvpn  $rutabin/iptables-legacy -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
@@ -1187,7 +1194,9 @@ $execlegacy  $hayipv4 $activarcliente   $rutabin/iptables-legacy -A OUTPUT -p ud
 $execlegacy  $hayipv4 $activarcliente   $rutabin/iptables-legacy -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
 $execlegacy  $hayipv4 $haypingsend  $rutabin/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $hayipv4 $haypingrecive  $rutabin/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-$execlegacy  $hayipv4 $hayotroprotocolo      $rutabin/iptables-legacy -A OUTPUT -p $otroprotocolo -j ACCEPT &> /dev/null
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execlegacy  $hayipv4 $hayotroprotocolo      $rutabin/iptables-legacy -A OUTPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ########## ipv6 filter legacy rules input and output
 ### ipv6 filter legacy rules input
 $execlegacy  $hayipv6 $rutabin/ip6tables-legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
@@ -1200,9 +1209,10 @@ $execlegacy  $hayipv6 $activarcliente  $rutabin/ip6tables-legacy -A INPUT -p udp
 $execlegacy  $hayipv6 $activarcliente  $rutabin/ip6tables-legacy -A INPUT -p tcp -m multiport $estado --sports $clientetcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $haypingsend      $rutabin/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $haypingrecive  $rutabin/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
-$execlegacy  $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-legacy -A INPUT -p $otroprotocolo -j ACCEPT &> /dev/null
-# $execlegacy  $hayipv6 $rutabin/ip6tables-legacy -A INPUT -p hotopt -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $rutabin/ip6tables-legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execlegacy  $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-legacy -A INPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ### ipv6 filter legacy rules output
 $execlegacy  $hayipv6 $rutabin/ip6tables-legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $hayvpn  $rutabin/ip6tables-legacy -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
@@ -1214,10 +1224,10 @@ $execlegacy  $hayipv6 $activarcliente   $rutabin/ip6tables-legacy -A OUTPUT -p u
 $execlegacy  $hayipv6 $activarcliente   $rutabin/ip6tables-legacy -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $haypingsend  $rutabin/ip6tables-legacy -A OUTPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $haypingrecive  $rutabin/ip6tables-legacy -A OUTPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
-$execlegacy  $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-legacy -A OUTPUT -p $otroprotocolo -j ACCEPT &> /dev/null
-# $execlegacy  $hayipv6 $rutabin/ip6tables-legacy -A OUTPUT -p hotopt -j ACCEPT &> /dev/null
 $execlegacy  $hayipv6 $rutabin/ip6tables-legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execlegacy  $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-legacy -A OUTPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ############################       english: iptables rules ipv4  iptables-nft
 ############################       spanish: reglas de iptables ipv4   iptables-nft
 ######### english:  ipv4 filter nft rules erased
@@ -1239,7 +1249,9 @@ $execnft $hayipv4 $activarcliente  $rutabin/iptables-nft -A INPUT -p udp -m mult
 $execnft $hayipv4 $activarcliente  $rutabin/iptables-nft -A INPUT -p tcp -m multiport $estado --sports $clientetcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
 $execnft $hayipv4 $haypingsend     $rutabin/iptables-nft -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execnft $hayipv4 $haypingrecive   $rutabin/iptables-nft -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$execnft $hayipv4 $hayotroprotocolo       $rutabin/iptables-nft -A INPUT -p $otroprotocolo -j ACCEPT &> /dev/null
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execnft $hayipv4 $hayotroprotocolo       $rutabin/iptables-nft -A INPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ### ipv4 filter nft rules output
 $execnft $hayipv4 $rutabin/iptables-nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 $execnft $hayipv4 $hayvpn  $rutabin/iptables-nft -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
@@ -1251,7 +1263,9 @@ $execnft $hayipv4 $activarcliente   $rutabin/iptables-nft -A OUTPUT -p udp -m mu
 $execnft $hayipv4 $activarcliente   $rutabin/iptables-nft -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
 $execnft $hayipv4 $haypingsend    $rutabin/iptables-nft -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $execnft $hayipv4 $haypingrecive  $rutabin/iptables-nft -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-$execnft $hayipv4 $hayotroprotocolo      $rutabin/iptables-nft -A OUTPUT -p $otroprotocolo -j ACCEPT &> /dev/null
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execnft $hayipv4 $hayotroprotocolo      $rutabin/iptables-nft -A OUTPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ########## ipv6 filter nft rules input and output
 ### ipv6 filter nft rules input
 $execnft $hayipv6 $rutabin/ip6tables-nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
@@ -1264,10 +1278,10 @@ $execnft $hayipv6 $activarcliente   $rutabin/ip6tables-nft -A INPUT -p udp -m mu
 $execnft $hayipv6 $activarcliente   $rutabin/ip6tables-nft -A INPUT -p tcp -m multiport $estado --sports $clientetcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
 $execnft $hayipv6 $haypingsend      $rutabin/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execnft $hayipv6 $haypingrecive  $rutabin/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
-$execnft $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-nft -A INPUT -p $otroprotocolo -j ACCEPT &> /dev/null
-#$execnft $hayipv6 $rutabin/ip6tables-nft -A INPUT -p hotopt -j ACCEPT &> /dev/null
 $execnft $hayipv6 $rutabin/ip6tables-nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execnft $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-nft -A INPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ### ipv6 filter nft rules output
 $execnft $hayipv6 $rutabin/ip6tables-nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 $execnft $hayipv6 $hayvpn  $rutabin/ip6tables-nft -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
@@ -1279,9 +1293,10 @@ $execnft $hayipv6 $activarcliente   $rutabin/ip6tables-nft -A OUTPUT -p udp -m m
 $execnft $hayipv6 $activarcliente   $rutabin/ip6tables-nft -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
 $execnft $hayipv6 $haypingsend      $rutabin/ip6tables-nft -A OUTPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execnft $hayipv6 $haypingrecive  $rutabin/ip6tables-nft -A OUTPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
-$execnft $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-nft -A OUTPUT -p $otroprotocolo -j ACCEPT &> /dev/null
-# $execnft $hayipv6 $rutabin/ip6tables-nft -A OUTPUT -p hotopt -j ACCEPT &> /dev/null
 $execnft $hayipv6 $rutabin/ip6tables-nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+for unprotocolo in $(echo $otroprotocolo | sed 's/,/ /g') ;
+do $execnft $hayipv6 $hayotroprotocolo      $rutabin/ip6tables-nft -A OUTPUT -p $unprotocolo -j ACCEPT &> /dev/null
+done
 ##########################################    haynat for ipv4 and ipv6
  $rutabin/iptables-nft -t nat -F
  $rutabin/iptables-legacy -t nat -F
