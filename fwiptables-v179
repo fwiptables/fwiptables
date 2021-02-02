@@ -108,11 +108,11 @@ echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
-echo "$cinco   The cfg are in folder $rutaconfig"
+echo "$cinco   The cfg are in folder $rutaconfig/[config.cfg]"
 echo
 echo "   $(ls $rutaconfig | fmt $flistado)"
 echo
-echo "$cinco   The examples "
+echo "$cinco   [The examples]"
 echo
 echo "   [List iptables rules]                 $fiptables list  "
 echo "   [Launch iptables like client web]     $fiptables client web-example1.cfg"
@@ -1584,7 +1584,7 @@ echo "$cinco  Optional $rutaconfig/[config.cfg]"
 echo
 echo "$(ls $rutaconfig | fmt $flistado)"
 echo
-echo "$cinco   The examples "
+echo "$cinco  [The examples] "
 echo
 echo "   [List iptables rules]                $fiptables list  "
 echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
