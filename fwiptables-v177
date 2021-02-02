@@ -243,7 +243,7 @@ ls $rutaconfig | fmt $flistado  ;
 echo ; echo
 exit ; fi
 ##############################       english: web-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
-##############################       spanish: automatica-acutalizacion: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
+##############################       spanish: web-upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "web-upgrade" ]; then echo -n
 echo
 echo "   $fprogram version $fver" ;
@@ -271,15 +271,15 @@ echo "   $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Upgrade $cinco"
 echo
 echo "  The actually version is" ;
-echo "       $fprogram has the version f-iptables-v$fver actually" ;
+echo "       $fprogram has the version $fiptables $fver actually" ;
 echo
 echo "  The latest version is" ;
-links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i f-iptables-v | head -1  ;
+links -dump https://sourceforge.net/projects/f-iptables/files/  | grep -i "download latest version"  ;
 echo
 echo "$cinco"
 echo
 echo
-echo "    Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links command" ; echo ;
+echo "    Upgrade The f-iptables in file /usr/bin/$fiptables with links command" ; echo ;
 echo " $cinco    download manually   |or launch|   $0 web-upgrade"
 echo
 echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $rutafiptables/$fiptables"
