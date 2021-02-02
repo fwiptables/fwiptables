@@ -88,7 +88,7 @@ redserveripv6=0/0 ;  #english: the net to server ipv6, all is 0/0 #spanish: la r
 ##
 if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo ; echo "$cincuenta  f-iptables need to be root to work" ; echo ;
-echo "  $fprogram version $fver "
+echo "  $fiptables:  $fprogram version $fver "
 echo "$cincuenta you need to be root $cinco"
 echo
 echo
@@ -246,7 +246,7 @@ exit ; fi
 ##############################       spanish: web-upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "web-upgrade" ]; then echo -n
 echo
-echo "   $fprogram version $fver" ;
+echo "  $fiptables:  $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
@@ -259,7 +259,7 @@ echo "   $fprogram is upgraded: ok"
 echo
 echo
 chmod ugo+x $rutafiptables/$fiptables
-echo "$cincuenta      upgraded      $cincuenta"
+echo "$cincuenta      upgraded $fiptables     $cincuenta"
 echo "$cinco     upgraded:     $rutafiptables/$fiptables" ; echo; echo ;
 $rutafiptables/$fiptables reconfig
 exit ; fi
@@ -267,7 +267,7 @@ exit ; fi
 ##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "upgrade" ]; then  echo -n
 echo
-echo "   $fprogram version $fver" ;
+echo "  $fiptables:  $fprogram version $fver" ;
 echo "$cincuenta $cincuenta Upgrade $cinco"
 echo
 echo "  The actually version is" ;
@@ -1504,7 +1504,8 @@ $execnft $rutabin/ip6tables-nft -A OUTPUT -j DROP &> /dev/null
 # $execnft $rutabin/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
-echo; echo "  $fprogram version $fver ";
+echo
+echo "$fiptables:  $fprogram version $fver ";
 echo "$cincuenta lauching iptables rules $cinco"
 echo ""
 echo "  launched $0 $1 $2  ";
@@ -1559,7 +1560,7 @@ exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo
-echo "   $fprogram version $fver "
+echo "  $fiptables:  $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
 echo
 echo
