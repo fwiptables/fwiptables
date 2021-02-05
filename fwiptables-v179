@@ -87,7 +87,7 @@ redserveripv6=0/0 ;  #english: the net to server ipv6, all is 0/0 #spanish: la r
 ##
 ##
 if [ "$(id -u)" = "0" ]; then echo  -n ;
-else echo ; echo "$cincuenta  f-iptables need to be root to work" ; echo ;
+else echo ; echo "$cincuenta  $fiptables need to be root to work" ; echo ;
 echo "  $fiptables:  $fprogram version $fver "
 echo "$cincuenta you need to be root $cinco"
 echo
@@ -173,24 +173,39 @@ untexto="$($fiptables reconfig)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
 show-config)
-untexto="type the config file to show"
+untexto="Type the config file to show"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="$(cat "$(echo $unarchivo| sed 's/\///g')")"
 echo ;;
 rename-config)
-untexto="type the config to rename with: oldname.cfg newname.cfg"
+untexto="Type the config to rename with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
-zenity --info --ellipsize --text="Renamed config: $(echo $unarchivo| sed 's/\///g') $(mv $(echo $unarchivo| sed 's/\///g'))"
+zenity --info --ellipsize --text="Renamed config: $(echo $unarchivo| sed 's/\///g') $(mv $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
 clone-config)
-untexto="type the config to clone with: oldname.cfg newname.cfg"
+untexto="Type the config to clone with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
-zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo| sed 's/\///g'))"
+zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
 delete-config)
-untexto="type the config to delete"
+untexto="Type the config to delete"
 unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text=" delete config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo| sed 's/\///g'))"
+zenity --info --ellipsize --text="Deleted config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo | sed 's/\///g'))"
+echo ;;
+new-config)
+untexto="Type the name of file to write a new config"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp english-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
+echo ;;
+nueva-config)
+untexto="Escribe el nombre de archivo de la nueva configuracion"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp spanish-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
+echo ;;
+modify-config)
+untexto="Type the graphicall editor and config file, example: gedit config.cfg"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
 echo ;;
 #### ping and route ####
 ping-ip4)
@@ -227,9 +242,6 @@ echo ;;
 help)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 echo ;;
-*config*)
-zenity --info --ellipsize --text="$untexto"
-echo ;;
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 echo ;;
@@ -240,7 +252,7 @@ exit ; fi
 if [ "$mifirewall" = "reconfig" ]; then echo -n
 rm $rutaconfig/*ample1.cfg
 echo
-echo "$cincuenta $cincuenta    Updating default configuration   $cinco"
+echo "$cincuenta $fprogram version $fver $cinco"
 echo "$cinco    Updating default configurations of examples:  $rutaconfig/*ample1.cfg "
 echo
 echo
@@ -330,8 +342,8 @@ exit ; fi
 ##############################       spanish: web-upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "web-upgrade" ]; then echo -n
 echo
-echo "  $fiptables:  $fprogram version $fver" ;
-echo "$cincuenta $cincuenta Web upgrade $fprogram $cinco"
+echo "  $fiptables:  $fprogram version $fver"
+echo "$cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
 echo "   Upgrade The f-iptables in file $rutafiptables/$fiptables with links command" ; echo ;
@@ -351,8 +363,8 @@ exit ; fi
 ##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
 if [ "$mifirewall" = "upgrade" ]; then  echo -n
 echo
-echo "  $fiptables:  $fprogram version $fver" ;
-echo "$cincuenta $cincuenta Upgrade $cinco"
+echo "  $fiptables:  $fprogram version $fver"
+echo "$cincuenta  Upgrade $cinco"
 echo
 echo "  The actually version is" ;
 echo "       $fprogram has the version $fiptables $fver actually" ;
@@ -378,7 +390,8 @@ exit;  fi
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 if [ "$mifirewall" = "eraserules" ]; then echo -n ;
 echo
-echo "$cincuenta $cincuenta "   Deleting rules iptables   " $cinco" ;
+echo "$fprogram version $ver"
+echo "$cincuenta Deleting rules iptables $cinco" ;
 echo
 $rutabin/iptables-nft -t filter -F ; $rutabin/ip6tables-nft -t filter  -F ; $rutabin/iptables-legacy -t filter -F ; $rutabin/ip6tables-legacy -t filter -F ;
 $rutabin/iptables-nft -t nat -F ; $rutabin/ip6tables-nft -t nat  -F ; $rutabin/iptables-legacy -t nat -F ; $rutabin/ip6tables-legacy -t nat -F ;
@@ -390,8 +403,10 @@ exit; fi
 #############################       spanish: route: script de sistema, la opcion iproute
 ## comments: sed is necesary to full work in graphicall
 ##
-if [ "$mifirewall" = "route" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux"
-echo "$cincuenta $cincuenta    Show ip address and ip route    $cinco"
+if [ "$mifirewall" = "route" ]; then   echo  -n
+echo
+echo "$fprogram version $fver"
+echo "$cincuenta  Show ip address and ip route    $cinco"
 echo
 echo "$(uname -a)"
 echo
@@ -440,8 +455,8 @@ echo " Install ss"
 echo
 echo ;;
 *)
-echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
-echo  "$cincuenta $cincuenta    The sockets list with ss   $cinco" ;
+echo "$fprogram version $fver";
+echo "$cincuenta    The sockets list with ss   $cinco" ;
 echo
 uname -a
 echo
@@ -467,8 +482,8 @@ echo " Install lsof"
 echo
 echo ;;
 *)
-echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
-echo  "$cincuenta $cincuenta    The sockets list with lsof   $cinco"
+echo "$fprogram version $fver firewall linux ";
+echo "$cincuenta The sockets list with lsof   $cinco"
 echo
 uname -a
 echo
@@ -492,8 +507,8 @@ echo " Install netstat"
 echo
 echo ;;
 *)
-echo "  SOCKETS LIST : The $fprogram version $fver firewall linux ";
-echo  "$cincuenta $cincuenta    The sockets list with netstat   $cinco"
+echo "$fprogram version $fver";
+echo  "$cincuenta  The sockets list with netstat   $cinco"
 echo
 uname -a
 echo
@@ -515,8 +530,9 @@ exit; fi
 #############################       english: list: system script, the list option
 #############################       spanish: list: script de sistema, la opcion lista
 if [ "$mifirewall" = "list" ]; then echo -n ;
- echo;  echo "  $fprogram version $fver for filter table firewall Linux for ipv4"
- echo "$cincuenta $cincuenta   List filter ipv4    $cinco"
+ echo
+ echo "  $fprogram version $fver"
+ echo "$cincuenta   List filter ipv4    $cinco"
  echo ;
  case $legacycuatro in
  "$NULL")
@@ -548,8 +564,8 @@ exit; fi
 ############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
  if [ "$mifirewall" = "forward" ]; then echo -n
  echo
- echo "  $fprogram version $fver for filter forward firewall Linux" ;
- echo "$cincuenta $cincuenta   List filter forward ipv4    $cinco"
+ echo "  $fprogram version $fver" ;
+ echo "$cincuenta  List filter forward ipv4    $cinco"
  echo ""
  echo $cinco " [The xtables ipv4]"
  $rutabin/iptables-legacy -v -L FORWARD
@@ -562,8 +578,8 @@ exit; fi
 ############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
  if [ "$mifirewall" = "list6" ]; then echo -n
  echo
- echo "  $fprogram version $fver for filter table firewall for ipv6"
- echo "$cincuenta $cincuenta   List filter ipv6    $cinco"
+ echo "  $fprogram version $fver" ;
+ echo "$cincuenta   List filter ipv6    $cinco"
  echo;
  case $legacyseis in
  "$NULL")
@@ -597,8 +613,8 @@ exit; fi
 ############################       spanish: forward6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
  if [ "$mifirewall" = "forward6" ]; then echo -n
  echo
- echo "  $fprogram version $fver for filter forward ipv6 firewall Linux" ;
- echo "$cincuenta $cincuenta   List filter forward ipv6    $cinco"
+ echo "  $fprogram version $fver" ;
+ echo "$cincuenta   List filter forward ipv6    $cinco"
  echo
  echo ""
  echo $cinco " [The xtables ipv6]"
@@ -612,8 +628,8 @@ exit; fi
 ############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
 if [ "$mifirewall" = "nat-ip4" ]; then echo -n
  echo
- echo "  $fprogram version $fver for  NAT table firewall for ipv4"
- echo  "$cincuenta $cincuenta   NAT ipv4    $cinco"
+ echo "$fprogram version $fver "
+ echo "$cincuenta   NAT ipv4    $cinco"
  echo;
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t nat -v -L
@@ -626,8 +642,8 @@ if [ "$mifirewall" = "nat-ip4" ]; then echo -n
 ############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
 if [ "$mifirewall" = "nat-ip6" ]; then echo -n
  echo
- echo "  $fprogram version $fver for  NAT table firewall for ipv4"
- echo  "$cincuenta $cincuenta   NAT ipv6    $cinco"
+ echo "$fprogram version $fver"
+ echo "$cincuenta   NAT ipv6    $cinco"
  echo;
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t nat -v -L
@@ -640,8 +656,8 @@ if [ "$mifirewall" = "nat-ip6" ]; then echo -n
 ############################       spanish: mangle-ip4: script de sistema, la opcion mangle-ip4 para listar reglas de mangle de ipv4
 if [ "$mifirewall" = "mangle-ip4" ]; then echo -n
  echo
- echo "  $fprogram version $fver for MANGLE table firewall for ipv4"
- echo  "$cincuenta $cincuenta   mangle ipv4    $cinco"
+ echo "$fprogram version $fver"
+ echo  "$cincuenta  mangle ipv4    $cinco"
  echo
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t mangle -v -L
@@ -654,8 +670,8 @@ if [ "$mifirewall" = "mangle-ip4" ]; then echo -n
 ############################       spanish: mangle-ip6: script de sistema, la opcion mangle-ip6 para listar reglas de mangle de ipv6
 if [ "$mifirewall" = "mangle-ip6" ]; then echo -n
  echo
- echo "  $fprogram version $fver for  MANGLE table firewall for ipv6"
- echo  "$cincuenta $cincuenta   mangle ipv6    $cinco"
+ echo "$fprogram version $fver"
+ echo "$cincuenta  mangle ipv6    $cinco"
  echo;
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t mangle -v -L
@@ -668,8 +684,8 @@ if [ "$mifirewall" = "mangle-ip6" ]; then echo -n
 ############################       spanish: raw-ip4: script de sistema, la opcion raw-ip4 para listar reglas de raw de ipv4
 if [ "$mifirewall" = "raw-ip4" ]; then echo -n
  echo
- echo "  $fprogram version $fver for RAW table firewall for ipv4"
- echo  "$cincuenta $cincuenta   raw ipv4    $cinco"
+ echo "$fprogram version $fver"
+ echo  "$cincuenta  raw ipv4    $cinco"
  echo
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t raw -v -L
@@ -682,8 +698,8 @@ if [ "$mifirewall" = "raw-ip4" ]; then echo -n
 ############################       spanish: raw-ip6: script de sistema, la opcion raw-ip6 para listar reglas de raw de ipv6
  if [ "$mifirewall" = "raw-ip6" ]; then echo -n
  echo
- echo "  $fprogram version $fver for  RAW  table firewall for ipv6"
- echo  "$cincuenta $cincuenta   raw ipv6    $cinco"
+ echo "$fprogram version $fver"
+ echo  "$cincuenta  raw ipv6    $cinco"
  echo
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t raw -v -L
@@ -696,8 +712,8 @@ if [ "$mifirewall" = "raw-ip4" ]; then echo -n
 ############################       spanish: security-ip4: script de sistema, la opcion security-ip4 para listar reglas de security de ipv4
  if [ "$mifirewall" = "security-ip4" ]; then echo -n
  echo
- echo "  $fprogram version $fver for SECURITY table firewall for ipv4"
- echo  "$cincuenta $cincuenta   security ipv4    $cinco"
+ echo "$fprogram version $fver"
+ echo  "$cincuenta  security ipv4    $cinco"
  echo
  echo "$cinco  [The xtables ipv4]"
  $rutabin/iptables-legacy -t security -v -L
@@ -710,8 +726,8 @@ if [ "$mifirewall" = "raw-ip4" ]; then echo -n
 ############################       spanish: security-ip6: script de sistema, la opcion security-ip6 para listar reglas de security de ipv6
 if [ "$mifirewall" = "security-ip6" ]; then echo -n
  echo
- echo "  $fprogram version $fver for  SECURITY table firewall for ipv6"
- echo  "$cincuenta $cincuenta   security ipv6    $cinco"
+ echo "$fprogram version $fver"
+ echo  "$cincuenta  security ipv6    $cinco"
  echo
  echo "$cinco  [The xtables ipv6]"
  $rutabin/ip6tables-legacy -t security -v -L
@@ -724,8 +740,8 @@ if [ "$mifirewall" = "security-ip6" ]; then echo -n
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
 if [ "$mifirewall" = "new-config" ]; then echo -n
 echo
-echo "  $fprogram version $fver for  config firewall Linux "
-echo "$cincuenta $cincuenta New config $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta New config $cinco"
 echo "";
 echo "     Type the filename for a one new configuration it will be in path $rutaconfig";
 echo "     Or control+c to stop"
@@ -748,8 +764,8 @@ exit; fi
 ############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config en español
 if [ "$mifirewall" = "nueva-config" ]; then echo -n
 echo
-echo "  $fprogram version $fver for  config firewall Linux "
-echo "$cincuenta $cincuenta Nueva config $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta Nueva config $cinco"
 echo "";
 echo "     Escribe el nombre de archivo para una nueva configuracion, estara en $rutaconfig";
 echo "     O pulsa Control+c para parar esto"
@@ -772,8 +788,8 @@ exit; fi
 ############################       spanish: clone-config, clona una configuracion.cfg
 if [ "$mifirewall" = "clone-config" ]; then echo -n
 echo
-echo "  $fprogram version $fver for config firewall Linux "
-echo "$cincuenta $cincuenta Clone config $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta  Clone config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
 ls $rutaconfig | fmt $flistado
@@ -802,8 +818,8 @@ exit; fi
 ############################       spanish: modify-config: modify una configuracion.cfg
 if [ "$mifirewall" = "modify-config" ]; then echo -n
 echo
-echo "  $fprogram version $fver for  config firewall Linux "
-echo "$cincuenta $cincuenta Modify config $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta Modify config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
 ls $rutaconfig | fmt $flistado
@@ -827,8 +843,8 @@ exit; fi
 ############################       spanish: show-config: muestra una configuracion
 if [ "$mifirewall" = "show-config" ]; then echo -n
 echo
-echo "  $fprogram  version $fver for  config firewall Linux "
-echo "$cincuenta $cincuenta Show config $cinco"
+echo "$fprogram  version $fver"
+echo "$cincuenta Show config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
 ls $rutaconfig | fmt $flistado
@@ -854,8 +870,8 @@ exit; fi
 ############################       spanish: rename-config: cambia el nombre a  una configuracion
 if [ "$mifirewall" = "rename-config" ]; then echo -n
 echo
-echo "  $fprogram version $fver for  config firewall Linux "
-echo "$cincuenta $cincuenta Rename config $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta  Rename config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
 ls $rutaconfig | fmt $flistado
@@ -884,8 +900,8 @@ exit; fi
 ############################       spanish: delete-config: elimina una configuracion
 if [ "$mifirewall" = "delete-config" ]; then echo -n
 echo
-echo "  $fprogram version $fver for  config firewall Linux "
-echo "$cincuenta $cincuenta Delete config $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta  Delete config $cinco"
 echo
 echo $cinco "  The configs are in folder $rutaconfig : "
 ls $rutaconfig | fmt $flistado
@@ -905,8 +921,8 @@ exit; fi
 ############################       spanish: auth-sudo: la opcion de auth-sudo en ingles
 if [ "$mifirewall" = "auth-sudo" ]; then echo
 echo
-echo "  The $fprogram version $fver"
-echo "$cincuenta $cincuenta Auth-sudo $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta Auth-sudo $cinco"
 echo
 echo
 echo "$cinco    Auth for sudo to users: "
@@ -937,8 +953,8 @@ exit; fi
 ############################       spanish: list-sudo: la opcion de auth-sudo en ingles
 if [ "$mifirewall" = "list-sudo" ]; then echo
 echo
-echo "  The $fprogram version $fver"
-echo "$cincuenta $cincuenta Auth-sudo $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta Auth-sudo $cinco"
 echo
 echo
 case $(find /etc/sudoers.d/$fiptables) in
@@ -959,8 +975,8 @@ exit; fi
 ############################       spanish: ipforwading: la opcion de reenvios  en ingles
 if [ "$mifirewall" = "ipforwading" ]; then echo
 echo
-echo "  The $fprogram version $fver ipforwading values kernel linux"
-echo "$cincuenta $cincuenta Show ipforwading $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta Show ipforwading $cinco"
 echo
 uname -a
 echo
@@ -984,8 +1000,8 @@ echo
 echo ;;
 *)
 echo
-echo "  The $fprogram version $fver listening with tcpdump sockets of the kernel linux"
-echo "$cincuenta $cincuenta Listening tcpdump $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta  Listening tcpdump $cinco"
 echo
 echo
 echo "  Launch manually tcpdump"
@@ -1005,8 +1021,8 @@ echo
 echo ;;
 *)
 echo
-echo "  The $fprogram version $fver sending with ping with ipv4"
-echo "$cincuenta $cincuenta ping ipv4 $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta ping ipv4 $cinco"
 echo
 echo; read -r -p "#####    Type the host to do ping ipv4: [ fast.com   ] " trazador
 echo
@@ -1028,8 +1044,8 @@ echo
 echo ;;
 *)
 echo
-echo "  The $fprogram version $fver ping with ipv6"
-echo "$cincuenta $cincuenta ping ipv6 $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta  ping ipv6 $cinco"
 echo
 echo; read -r -p "#####    Type the host to do ping ipv6: [ fast.com   ] " trazador
 echo
@@ -1051,8 +1067,8 @@ echo
 echo ;;
 *)
 echo
-echo "  The $fprogram version $fver listening with traceroute with tcp ipv4"
-echo "$cincuenta $cincuenta traceroute tcp ipv4 $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta  traceroute tcp ipv4 $cinco"
 echo
 echo; read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 echo
@@ -1074,8 +1090,8 @@ echo
 echo ;;
 *)
 echo
-echo "  The $fprogram version $fver listening with traceroute with tcp ipv6"
-echo "$cincuenta $cincuenta traceroute tcp ipv6 $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta   traceroute tcp ipv6 $cinco"
 echo
 echo; read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 echo
@@ -1119,8 +1135,8 @@ exit; fi
 ############################       spanish: system-info: da informacion del sistema
 if [ "$mifirewall" = "system-info" ]; then echo
 echo
-echo "  The $fprogram version $fver system info "
-echo "$cincuenta $cincuenta System info $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta   System info $cinco"
 echo
 echo "$cinco [System info:  Kernel Linux] $cinco"
 echo
@@ -1139,8 +1155,8 @@ exit; fi
 ############################       spanish: help: la opcion de ayuda en ingles
 if [ "$mifirewall" = "help" ]; then echo
 echo
-echo "  $fprogram version $fver"
-echo "$cincuenta $cincuenta Help $cinco"
+echo "$fprogram version $fver"
+echo "$cincuenta Help $cinco"
 echo
 echo
 echo "$cinco   One First Option "
@@ -1291,8 +1307,8 @@ exit; fi
 ############################       spanish: ayuda: la opcion de ayuda en español
 if [ "$mifirewall" = "ayuda" ]; then echo
 echo
-echo "  $fprogram version $fver "
-echo "$cincuenta $cincuenta Ayuda $cinco"
+echo "$fprogram version $fver "
+echo "$cincuenta Ayuda $cinco"
 echo
 echo
 echo "$cinco   Una primera opcion "
@@ -1709,7 +1725,7 @@ exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo
-echo "  $fiptables:  $fprogram version $fver "
+echo "  $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
 echo
 echo
