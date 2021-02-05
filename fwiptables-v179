@@ -107,7 +107,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info"
+echo "     [Help]             about help ayuda system-info gui"
 echo ""
 echo "$cinco   Optional $rutaconfig/[config.cfg]"
 echo
@@ -157,39 +157,59 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
 if [ "$mifirewall" = "gui" ]; then echo -n
 echo -n
+#### principal gui ####
 titulo="$fiptables with gtk is experimental and it works only with some options, use command line $fiptables"
 untexto="Use $fiptables in command line to configs files or options sudo, ping and trace"
-## espera="$(zenity --progress --time-remaining=10s --text=waiting)"
 echo
-menugtk=$(zenity --entry --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="   $rutafiptables/$fiptables ")
+cd $rutaconfig
+menugtk=$(zenity --entry --title="$titulo" --width=800 --height=600 --text="$($fiptables)" )
+#--add-entry="   $rutafiptables/$fiptables ")
 case $menugtk in
 cancel)
 echo ;;
+#### manage configs ####
 reconfig)
 untexto="$($fiptables reconfig)"
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
 show-config)
 untexto="type the config file to show"
-unarchivo="$(zenity --entry --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --forms --title="$titulo" --text="$(cat $rutaconfig/$unarchivo)"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="$(cat "$(echo $unarchivo| sed 's/\///g')")"
 echo ;;
+rename-config)
+untexto="type the config to rename with: oldname.cfg newname.cfg"
+unarchivo="$(zenity --entry --text="mv $untexto")"
+zenity --info --ellipsize --text="Renamed config: $(echo $unarchivo| sed 's/\///g') $(mv $(echo $unarchivo| sed 's/\///g'))"
+echo ;;
+clone-config)
+untexto="type the config to clone with: oldname.cfg newname.cfg"
+unarchivo="$(zenity --entry --text="mv $untexto")"
+zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo| sed 's/\///g'))"
+echo ;;
+delete-config)
+untexto="type the config to delete"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text=" delete config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo| sed 's/\///g'))"
+echo ;;
+#### ping and route ####
 ping-ip4)
 untexto="$(ping -4 -c 1 fast.com)"
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
 ping-ip6)
 untexto="$(ping -6 -c 1 fast.com)"
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
 trace-ip4)
 untexto="$(traceroute -4 -T fast.com)"
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
 trace-ip6)
 untexto="$(traceroute -6 -T fast.com)"
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
+#### options sudo  #####
 auth-sudo)
 untexto="type the users to auth sudo, example: user1,user2 "
 usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
@@ -198,16 +218,20 @@ echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
 echo ;;
 list-sudo)
 untexto="$($fiptables list-sudo)"
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
+#### options several ####
 ayuda)
-zenity --forms --title="$titulo" --text="$($fiptables $menugtk)"
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+echo ;;
+help)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
 echo ;;
 *config*)
-zenity --forms --title="$titulo" --text="$untexto"
+zenity --info --ellipsize --text="$untexto"
 echo ;;
 *)
-zenity --forms --title="$titulo" --text="$($fiptables $menugtk)"
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
 echo ;;
 esac
 exit ; fi
@@ -1134,7 +1158,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info"
+echo "     [Help]             about help ayuda system-info gui"
 echo ""
 echo "$cinco   The cfg are in $rutaconfig/[config.cfg]"
 echo
@@ -1220,6 +1244,7 @@ echo "        about: About the $fprogram"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
 echo "  system-info: Show info  system"
+echo "          gui: Graphicall user interface"
 echo ""
 echo "$cincuenta  The second option: (optional)"
 echo ""
@@ -1285,7 +1310,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Traza tcp]        trace-ip4 trace-ip6"
 echo "     [Actualiza]        upgrade auth-sudo list-sudo"
-echo "     [Ayuda]            about help ayuda system-info"
+echo "     [Ayuda]            about help ayuda system-info gui"
 echo ""
 echo "$cinco   Las configs estan en $rutaconfig/[config.cfg]"
 echo
@@ -1370,6 +1395,7 @@ echo "        About: Acerca de $fprogram"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
 echo "  system-info: Muestra la informacion del sistema"
+echo "          gui: Interfaz grafico de usuario"
 echo
 echo "$cincuenta  La segunda opcion (opcional)"
 echo ""
@@ -1702,7 +1728,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info"
+echo "     [Help]             about help ayuda system-info gui"
 echo ""
 echo "$cinco  Optional $rutaconfig/[config.cfg]"
 echo
