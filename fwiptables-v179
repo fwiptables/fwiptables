@@ -59,10 +59,10 @@ hayotroprotocolo=no ; #english: void to allow other protocol or no #spanish: vac
 echo -n #english: add with "," and join ranges with ":" #spanish: añadir con "," y poner rangos con ":"
 clienteudp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
 clientetcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
-servidortcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 servidorudp=discard ; #english: udp ports for server #spanish: puertos udp para servir
-logservertcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
+servidortcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 logserverudp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
+logservertcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
 vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
 otroprotocolo=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 echo -n #english: net to connect like client or server #spanish: red para conectar como cliente o server
@@ -104,11 +104,12 @@ echo "                        rename-config delete-config"
 echo "     [Others tables]    raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
-echo "$cinco   The cfg are in folder $rutaconfig/[config.cfg]"
+echo "$cinco   Optional $rutaconfig/[config.cfg]"
 echo
 echo "   $(ls $rutaconfig | fmt $flistado)"
 echo
@@ -152,6 +153,64 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       spanish: Script: opciones generales   ######################################### #################################################
 ####
 ####
+##############################       english: gui: Manage list rules with one menu graphicall
+##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
+if [ "$mifirewall" = "gui" ]; then echo -n
+echo -n
+titulo="$fiptables with gtk is experimental and it works only with some options, use command line $fiptables"
+untexto="Use $fiptables in command line to configs files or options sudo, ping and trace"
+## espera="$(zenity --progress --time-remaining=10s --text=waiting)"
+echo
+menugtk=$(zenity --entry --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="   $rutafiptables/$fiptables ")
+case $menugtk in
+cancel)
+echo ;;
+reconfig)
+untexto="$($fiptables reconfig)"
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+show-config)
+untexto="type the config file to show"
+unarchivo="$(zenity --entry --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+zenity --forms --title="$titulo" --text="$(cat $rutaconfig/$unarchivo)"
+echo ;;
+ping-ip4)
+untexto="$(ping -4 -c 1 fast.com)"
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+ping-ip6)
+untexto="$(ping -6 -c 1 fast.com)"
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+trace-ip4)
+untexto="$(traceroute -4 -T fast.com)"
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+trace-ip6)
+untexto="$(traceroute -6 -T fast.com)"
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+auth-sudo)
+untexto="type the users to auth sudo, example: user1,user2 "
+usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+echo "$usuario ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
+echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
+echo ;;
+list-sudo)
+untexto="$($fiptables list-sudo)"
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+ayuda)
+zenity --forms --title="$titulo" --text="$($fiptables $menugtk)"
+echo ;;
+*config*)
+zenity --forms --title="$titulo" --text="$untexto"
+echo ;;
+*)
+zenity --forms --title="$titulo" --text="$($fiptables $menugtk)"
+echo ;;
+esac
+exit ; fi
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
 if [ "$mifirewall" = "reconfig" ]; then echo -n
@@ -240,7 +299,8 @@ echo "     Updated the configs for $fiptables in $rutaconfig"
 echo
 echo "$cincuenta   The configs are in folder $rutaconfig,  $cinco"
 ls $rutaconfig | fmt $flistado  ;
-echo ; echo
+echo
+echo
 exit ; fi
 ##############################       english: web-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
 ##############################       spanish: web-upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
@@ -304,41 +364,46 @@ echo
 exit; fi
 #############################       english: route: system script, the iproute option
 #############################       spanish: route: script de sistema, la opcion iproute
-if [ "$mifirewall" = "route" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux" ;
-echo "$cincuenta $cincuenta    Show ip address and ip route    $cinco" ;
+## comments: sed is necesary to full work in graphicall
+##
+if [ "$mifirewall" = "route" ]; then   echo ; echo "   ROUTE LIST : $fprogram version $fver firewall linux"
+echo "$cincuenta $cincuenta    Show ip address and ip route    $cinco"
 echo
-uname -a
+echo "$(uname -a)"
 echo
-echo "$cinco  ip address  $cinco ";
+echo "$cinco  ip address  $cinco "
 echo
 echo
 case $(ip address) in
 $NULL)
-echo "Without net devices" ;;
+echo "Without net devices"
+echo;;
 *)
-ip address ;;
+echo "$(ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo ;;
 esac
 echo
-echo
-echo "$cinco  ip route  $cinco" ;
+echo "$cinco  ip route  $cinco"
 echo
 case $(ip route) in
 $NULL)
-echo "Without route ip" ;;
+echo "Without route ip"
+echo ;;
 *)
-ip route ;;
+echo "$(ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo ;;
 esac
 echo
-echo
-echo "$cinco  ip tunnel  $cinco" ;
+echo "$cinco  ip tunnel  $cinco"
 echo
 case $(ip tunnel) in
 $NULL)
-echo "Without tunnel ip" ;;
+echo "Without tunnel ip"
+echo ;;
 *)
-ip tunnel ;;
+echo "$(ip tunnel | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo ;;
 esac
-echo
 exit; fi
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
@@ -827,7 +892,8 @@ echo
 echo "$cinco                                              Example:      user1,user2 "
 echo "$cinco    The users authorizated will launch without passwd:      sudo $fiptables "
 echo
-echo; read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
+echo
+read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
 echo
 echo "$autorizados ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
@@ -903,8 +969,54 @@ echo
 echo ;;
 esac
 exit; fi
-############################       english: trace-ip4: traceroute with tcp
-############################       spanish: trace-ip4: traceroute con tcp
+############################       english: ping-ip4: ping icmp with ipv4
+############################       spanish: ping-ip4: ping icmp with ipv6
+if [ "$mifirewall" = "ping-ip4" ]; then echo
+case $(which ping) in
+"$NULL")
+echo
+echo
+echo " Install ping"
+echo
+echo ;;
+*)
+echo
+echo "  The $fprogram version $fver sending with ping with ipv4"
+echo "$cincuenta $cincuenta ping ipv4 $cinco"
+echo
+echo; read -r -p "#####    Type the host to do ping ipv4: [ fast.com   ] " trazador
+echo
+echo
+ping -4 -c 5 -A $trazador
+echo
+echo ;;
+esac
+exit; fi
+############################       english: ping-ip6: ping icmp with ipv6
+############################       spanish: ping-ip6: ping icmp con ipv6
+if [ "$mifirewall" = "ping-ip6" ]; then echo
+case $(which traceroute) in
+"$NULL")
+echo
+echo
+echo " Install ping"
+echo
+echo ;;
+*)
+echo
+echo "  The $fprogram version $fver ping with ipv6"
+echo "$cincuenta $cincuenta ping ipv6 $cinco"
+echo
+echo; read -r -p "#####    Type the host to do ping ipv6: [ fast.com   ] " trazador
+echo
+echo
+ping -6 -c 5 -A $trazador
+echo
+echo ;;
+esac
+exit; fi
+############################       english: trace-ip4: traceroute with tcp and ipv6
+############################       spanish: trace-ip4: traceroute con tcp y ipv4
 if [ "$mifirewall" = "trace-ip4" ]; then echo
 case $(which traceroute) in
 "$NULL")
@@ -926,8 +1038,8 @@ echo
 echo ;;
 esac
 exit; fi
-############################       english: trace-ip6: traceroute with ipv6
-############################       spanish: trace-ip6: traceroute con ipv6
+############################       english: trace-ip6: traceroute with tcp and ipv6
+############################       spanish: trace-ip6: traceroute con tcp e ipv6
 if [ "$mifirewall" = "trace-ip6" ]; then echo
 case $(which traceroute) in
 "$NULL")
@@ -1019,15 +1131,16 @@ echo "                        rename-config delete-config"
 echo "     [Others tables]    raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
 echo ""
-echo "$cinco   The cfg are in folder $rutaconfig"
+echo "$cinco   The cfg are in $rutaconfig/[config.cfg]"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo
-echo "$cinco   The examples "
+echo "$cinco   [The examples]"
 echo
 echo "  [List iptables rules]                 $fiptables list  "
 echo "  [Launch iptables like client web]     $fiptables client web-example1.cfg"
@@ -1083,7 +1196,12 @@ echo "modify-config: Edit one config.cfg"
 echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
 echo "delete-config: Delete one configuration file"
-cho
+echo
+echo "$cinco         Ping icmp"
+echo
+echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
+echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
+echo
 echo "$cinco         Trace tcp"
 echo
 echo "    trace-ip4: Trace route a one host with ipv4 tcp"
@@ -1164,15 +1282,16 @@ echo "                        rename-config delete-config"
 echo "     [Otras tablas]     raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
-echo "     [Trace tcp]        trace-ip4 trace-ip6"
+echo "     [Ping icmp]        ping-ip4 ping-ip6"
+echo "     [Traza tcp]        trace-ip4 trace-ip6"
 echo "     [Actualiza]        upgrade auth-sudo list-sudo"
 echo "     [Ayuda]            about help ayuda system-info"
 echo ""
-echo "$cinco   Las configs estan en la carpeta $rutaconfig"
+echo "$cinco   Las configs estan en $rutaconfig/[config.cfg]"
 echo
 ls $rutaconfig | fmt $flistado  ;
 echo
-echo "$cinco   Los ejemplos "
+echo "$cinco   [Los ejemplos]"
 echo
 echo "  [Lista iptables reglas]               $fiptables list  "
 echo "  [Lanza iptables coomo cliente web]    $fiptables client web-example1.cfg"
@@ -1228,11 +1347,15 @@ echo "  show-config: Muestra una existente configuracion.cfg"
 echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
 echo "delete-config: Borra unaa existente configuracion.cfg"
 echo
+echo "$cinco         Ping icmp"
+echo
+echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
+echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
+echo
 echo "$cinco         Trace tcp"
 echo
 echo "    trace-ip4: Traza ruta a una host con ipv4 tcp"
 echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
-echo
 echo
 echo "$cinco         Opciones de actualiciacion"
 echo
@@ -1576,6 +1699,7 @@ echo "                        rename-config delete-config"
 echo "     [Others tables]    raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about help ayuda system-info"
@@ -1584,7 +1708,7 @@ echo "$cinco  Optional $rutaconfig/[config.cfg]"
 echo
 echo "$(ls $rutaconfig | fmt $flistado)"
 echo
-echo "$cinco  [The examples] "
+echo "$cinco  [The examples]"
 echo
 echo "   [List iptables rules]                $fiptables list  "
 echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
