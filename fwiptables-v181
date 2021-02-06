@@ -107,7 +107,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info gui"
+echo "     [Help]             about help ayuda system-info cli gui"
 echo ""
 echo "$cinco   Optional $rutaconfig/[config.cfg]"
 echo
@@ -168,18 +168,100 @@ menuprincipal="$(dialog --stdout --menu "Select:" 0 0 0 \
   25 nat-ip4 \
   26 nat-ip6 \
   00030 "list sockets" \
+  31 route \
+  32 ss \
+  33 netstat \
+  34 lsof \
+  35 ipforwading \
+  36 tcpdump \
   00040 "Modify config" \
+  41 reconfig \
+  42 show-config \
+  43 new-config \
+  44 nueva-config \
+  45 modify-config \
+  46 clone-config \
+  47 rename-config \
+  48 delete-config \
   00050 "Other tables"  \
+  51 raw-ip4 \
+  52 raw-ip6 \
+  53 mangle-ip4 \
+  54 mangle-ip6 \
+  55 security-ip4 \
+  56 security-ip6 \
   00060 "ping icmp" \
+  61 ping-ip4 \
+  62 ping-ip6 \
   00070 "trace tcp"  \
+  71 trace-ip4 \
+  72 trace-ip6 \
   00080 "update"  \
-  00090 "help" )"
+  81 upgrade \
+  82 auth-sudo \
+  83 list-sudo \
+  00090 "help" \
+  91 about \
+  92 help \
+  93 ayuda \
+  94 system-info \
+  95 cli \
+  96 gui \
+  )"
 case $menuprincipal in
-000*)
-dialog --msgbox "bien menu $menuprincipal" 0 0
+ 000*)
+clear
+dialog --msgbox "The first menu" 0 0 
+clear
+$fiptables cli
+echo ;;
+ 11)
+clear
+$fiptables eraserules
+echo ;;
+ 12)
+clear
+$fiptables offline
+echo ;;
+ 13)
+clear
+echo "a mitad"
+echo ;;
+ 14)
+echo "a mitad"
+echo ;;
+15)
+clear
+$fiptables allpermisive
+echo ;;
+21)
+clear
+$fiptables list
+echo ;;
+22)
+clear
+$fiptables forward
+echo ;;
+23)
+clear
+$fiptables list6
+echo ;;
+24)
+clear
+$fiptables forward6
+echo ;;
+25)
+clear
+$fiptables nat-ip4
+echo ;;
+26)
+clear
+$fiptables nat-ip6
 echo ;;
 *)
-dialog --msgbox "bien submenu $menuprincipal" 0 0
+clear
+dialog --msgbox "work in progress" 0 0
+clear
 echo ;;
 esac
 exit; fi
@@ -191,7 +273,7 @@ if [ "$mifirewall" = "gui" ]; then echo -n
 echo -n
 #### principal gui ####
 titulo="$fiptables with gtk is experimental,  use command line $fiptables"
-untexto="$fiptables with gtk is experimental, use command line $fiptables""
+untexto="$fiptables with gtk is experimental, use command line $fiptables"
 echo
 cd $rutaconfig
 menugtk=$(zenity --forms --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="$fiptables" )
@@ -1210,7 +1292,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info gui"
+echo "     [Help]             about help ayuda system-info cli gui"
 echo ""
 echo "$cinco   The cfg are in $rutaconfig/[config.cfg]"
 echo
@@ -1296,6 +1378,7 @@ echo "        about: About the $fprogram"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
 echo "  system-info: Show info  system"
+echo "          cli: Comand line interface with menus"
 echo "          gui: Graphicall user interface"
 echo ""
 echo "$cincuenta  The second option: (optional)"
@@ -1362,7 +1445,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Traza tcp]        trace-ip4 trace-ip6"
 echo "     [Actualiza]        upgrade auth-sudo list-sudo"
-echo "     [Ayuda]            about help ayuda system-info gui"
+echo "     [Ayuda]            about help ayuda system-info cli gui"
 echo ""
 echo "$cinco   Las configs estan en $rutaconfig/[config.cfg]"
 echo
@@ -1447,6 +1530,7 @@ echo "        About: Acerca de $fprogram"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
 echo "  system-info: Muestra la informacion del sistema"
+echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
 echo
 echo "$cincuenta  La segunda opcion (opcional)"
@@ -1740,7 +1824,7 @@ echo "  * Where ipv4 is usually necesary"
 echo
 echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $redclienteipv4 And ipv4 server: $redserveripv4"
-echo "  ipv6 client: $redclienteipv4 And ipv6 server: $redserveripv6"
+echo "  ipv6 client: $redclienteipv6 And ipv6 server: $redserveripv6"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
 echo
 if [ "$estado" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco" ;  echo ;
@@ -1780,7 +1864,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info gui"
+echo "     [Help]             about help ayuda system-info cli gui"
 echo ""
 echo "$cinco  Optional $rutaconfig/[config.cfg]"
 echo
