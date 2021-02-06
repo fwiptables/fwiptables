@@ -211,7 +211,7 @@ menuprincipal="$(dialog --stdout --menu "Select:" 0 0 0 \
 case $menuprincipal in
  000*)
 clear
-dialog --msgbox "The first menu" 0 0 
+dialog --msgbox "The first menu" 0 0
 clear
 $fiptables cli
 echo ;;
@@ -225,10 +225,15 @@ $fiptables offline
 echo ;;
  13)
 clear
-echo "a mitad"
+archivo="$(dialog --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+$fiptables client $archivo
 echo ;;
  14)
-echo "a mitad"
+clear
+archivo="$(dialog --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+$fiptables server $archivo
 echo ;;
 15)
 clear
@@ -258,6 +263,60 @@ echo ;;
 clear
 $fiptables nat-ip6
 echo ;;
+31)
+clear
+$fiptables route
+echo ;;
+32)
+clear
+$fiptables ss
+echo ;;
+33)
+clear
+$fiptables netstat
+echo ;;
+34)
+clear
+$fiptables lsof
+echo ;;
+35)
+clear
+$fiptables ipforwading
+echo ;;
+36)
+clear
+$fiptables tcpdump
+echo ;;
+41)
+clear
+$fiptables reconfig
+echo
+echo;;
+42)
+clear
+archivo="$(dialog --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+cat $rutaconfig/$archivo
+echo
+echo ;;
+43)
+echo
+echo ;;
+44)
+echo
+echo ;;
+45)
+echo
+echo ;;
+46)
+echo
+echo ;;
+47)
+echo
+echo ;;
+48)
+echo
+echo;;
 *)
 clear
 dialog --msgbox "work in progress" 0 0
