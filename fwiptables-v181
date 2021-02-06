@@ -147,13 +147,51 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       spanish: Script: opciones generales   ######################################### #################################################
 ####
 ####
+##############################       english: cli: Manage list rules with one text menu
+##############################       spanish: cli: Maneja lista de reglas con un menu de texto
+if [ "$mifirewall" = "cli" ]; then echo -n
+echo 
+echo "work in progress"
+echo
+menuprincipal="$(dialog --stdout --menu "Select:" 0 0 0 \
+  00010 "launch rules" \
+  11 "eraserules" \
+  12 "offline" \
+  13 client \
+  14 server  \
+  15 allpermisive \
+  00020 "list rules" \
+  21 list \
+  22 forward \
+  23 list6  \
+  24 forward6 \
+  25 nat-ip4 \
+  26 nat-ip6 \
+  00030 "list sockets" \
+  00040 "Modify config" \
+  00050 "Other tables"  \
+  00060 "ping icmp" \
+  00070 "trace tcp"  \
+  00080 "update"  \
+  00090 "help" )"
+case $menuprincipal in
+000*)
+dialog --msgbox "bien menu $menuprincipal" 0 0
+echo ;;
+*)
+dialog --msgbox "bien submenu $menuprincipal" 0 0
+echo ;;
+esac
+exit; fi
+####
+####
 ##############################       english: gui: Manage list rules with one menu graphicall
 ##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
 if [ "$mifirewall" = "gui" ]; then echo -n
 echo -n
 #### principal gui ####
-titulo="$fiptables with gtk is experimental and it works only with some options, use command line $fiptables"
-untexto="Use $fiptables in command line to configs files or options sudo, ping and trace"
+titulo="$fiptables with gtk is experimental,  use command line $fiptables"
+untexto="$fiptables with gtk is experimental, use command line $fiptables""
 echo
 cd $rutaconfig
 menugtk=$(zenity --forms --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="$fiptables" )
