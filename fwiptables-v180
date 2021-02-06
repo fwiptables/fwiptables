@@ -66,10 +66,10 @@ logservertcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para
 vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
 otroprotocolo=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 echo -n #english: net to connect like client or server #spanish: red para conectar como cliente o server
-redclienteipv4=0/0 ; #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
+redclienteipv4=0/0 ;  #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 redclienteipv6=0/0 ;  #english: the net to client ipv6, all is 0/0 #spanish: la red cual cliente ipv6, todos es 0/0
-redserveripv4=0/0  ; #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
-redserveripv6=0/0 ;  #english: the net to server ipv6, all is 0/0 #spanish: la red cual servidor ipv6, todos es 0/0
+redserveripv4=0/0  ;  #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
+redserveripv6=0/0  ;  #english: the net to server ipv6, all is 0/0 #spanish: la red cual servidor ipv6, todos es 0/0
 ##
 ##
 ##############################	     english:      End from user variables file, overwriter initial values       |||||
