@@ -16,14 +16,13 @@
 ##
 ####################################
 ## the variables names and the path ##
-mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables f-iptables-firewall
-fprogram="Fran one FireWall iptables" ; fver="181" ;                         #english: program and version f-iptables-firewall
-web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version f-iptables-firewall
+mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables fran iptables firewall
+rutafiptables="/usr/bin" ; fiptables="fwiptables" ;                          #english: whereis path directory to Fran iptables firewall
+fprogram="Fran FireWall iptables: $fiptables" ; fver="181" ;                 #english: program name and version to Fran iptables firewall
+web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version fran iptables firewall
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
-rutafiptables="/usr/bin"                                                     #english: whereis path directory to ifran iptables firewall
-fiptables="fwiptables"                                                       #english: exec from the fran iptables firewall
-rutaconfig="/etc/fwiptables"                                                 #english: path to config files cfg #spanish: archivos de configuracion de f-iptables
-defaultcfg="default.cfg"                                                     #english: default config #spanish: configuracion por defecto
+rutaconfig="/etc/fwiptables" ;                                               #english: path to config files cfg #spanish: archivos de configuracion de Fran iptables firewall
+defaultcfg="default.cfg" ;                                                   #english: default config #spanish: configuracion por defecto
 ##################################
 ##################################
 ##
@@ -150,10 +149,10 @@ lanza="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$mifirewall" = "cli" ]; then echo -n
-echo 
+echo
 echo "work in progress"
 echo
-menuprincipal="$(dialog --stdout --menu "Select:" 0 0 0 \
+menuprincipal="$(dialog --stdout --title "$fprogram version $fver" --menu "Select:" 0 0 0 \
   00010 "launch rules" \
   11 "eraserules" \
   12 "offline" \
@@ -225,13 +224,13 @@ $fiptables offline
 echo ;;
  13)
 clear
-archivo="$(dialog --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --title "client" --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 $fiptables client $archivo
 echo ;;
  14)
 clear
-archivo="$(dialog --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --title "server" --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 $fiptables server $archivo
 echo ;;
@@ -294,19 +293,34 @@ echo
 echo;;
 42)
 clear
-archivo="$(dialog --stdout --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --stdout --title "show-config" --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 cat $rutaconfig/$archivo
 echo
 echo ;;
 43)
+clear
+archivo="$(dialog --stdout --title "new-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+cp $rutaconfig/$"english-example1.cfg" $rutaconfig/$archivo
 echo
+echo "launch: $fiptables client $archivo"
 echo ;;
 44)
+clear
+archivo="$(dialog --stdout --title "nueva-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+cp $rutaconfig/$"spanish-example1.cfg" $rutaconfig/$archivo
 echo
+echo "launch: $fiptables client $archivo"
 echo ;;
 45)
 echo
+archivo="$(dialog --stdout --title "modify-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+editor "$rutaconfig/$archivo"
+echo
+echo "launch: $fiptables client $archivo"
 echo ;;
 46)
 echo
@@ -315,7 +329,11 @@ echo ;;
 echo
 echo ;;
 48)
+archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+rm "$rutaconfig/$archivo"
 echo
+echo deleted $archivo
 echo;;
 *)
 clear
@@ -511,17 +529,17 @@ ls $rutaconfig | fmt $flistado  ;
 echo
 echo
 exit ; fi
-##############################       english: web-upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
-##############################       spanish: web-upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
+##############################       english: web-upgrade: upgrade in the file /usr/bin/fwiptables
+##############################       spanish: web-upgrade: actualiza en el archivo /usr/bin/fwiptables
 if [ "$mifirewall" = "web-upgrade" ]; then echo -n
 echo
 echo "  $fiptables:  $fprogram version $fver"
 echo "$cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
-echo "   Upgrade The f-iptables in file $rutafiptables/$fiptables with links command" ; echo ;
+echo "   Upgrade The $fiptables in file $rutafiptables/$fiptables with links command" ; echo ;
 links=""; flinks=$(which links);
-echo "   Downloading f-iptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
+echo "   Downloading $fiptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
 links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i "download latest version"  &&
 links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $rutafiptables/$fiptables &&
 echo "   $fprogram is upgraded: ok"
@@ -532,8 +550,8 @@ echo "$cincuenta      upgraded $fiptables     $cincuenta"
 echo "$cinco     upgraded:     $rutafiptables/$fiptables" ; echo; echo ;
 $rutafiptables/$fiptables reconfig
 exit ; fi
-##############################       english: upgrade: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
-##############################       spanish: upgrade: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
+##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
+##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
 if [ "$mifirewall" = "upgrade" ]; then  echo -n
 echo
 echo "  $fiptables:  $fprogram version $fver"
@@ -548,12 +566,12 @@ echo
 echo "$cinco"
 echo
 echo
-echo "    Upgrade The f-iptables in file /usr/bin/$fiptables with links command" ; echo ;
+echo "    Upgrade The fwiptables in file /usr/bin/$fiptables with links command" ; echo ;
 echo " $cinco    download manually   |or launch|   $0 web-upgrade"
 echo
 echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $rutafiptables/$fiptables"
 echo "     chmod ugo+x $rutafiptables/$fiptables"
-echo "     /usr/bin/f-iptables-firewall reconfig"
+echo "     /usr/bin/fwiptables reconfig"
 echo
 echo " $cinco    ok and it will be upgrade with the name $rutafiptables/$fiptables" ;
 echo
