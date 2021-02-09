@@ -18,6 +18,7 @@
 ## the variables names and the path ##
 mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables fran iptables firewall
 rutafiptables="/usr/bin" ; fiptables="fwiptables" ;                          #english: whereis path directory to Fran iptables firewall
+fdescription="One Script in bash for iptables firewall"                      #english: program description to Fran iptables firewall
 fprogram="Fran FireWall iptables: $fiptables" ; fver="181" ;                 #english: program name and version to Fran iptables firewall
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version fran iptables firewall
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
@@ -106,7 +107,9 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info cli gui"
+echo "     [Help]             about version help ayuda"
+echo "                        system-info cli gui"
+echo "                        
 echo ""
 echo "$cinco   Optional $rutaconfig/[config.cfg]"
 echo
@@ -152,6 +155,7 @@ if [ "$mifirewall" = "cli" ]; then echo -n
 echo
 echo "work in progress"
 echo
+cd $rutaconfig
 menuprincipal="$(dialog --stdout --title "$fprogram version $fver" --menu "Select:" 0 0 0 \
   00010 "launch rules" \
   11 "eraserules" \
@@ -293,47 +297,135 @@ echo
 echo;;
 42)
 clear
-archivo="$(dialog --stdout --title "show-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --stdout --title "show-config: file.cfg" --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 cat $rutaconfig/$archivo
 echo
+echo "Launch: $fiptables client $archivo"
 echo ;;
 43)
 clear
-archivo="$(dialog --stdout --title "new-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --stdout --title "new-config file.cfg" --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 cp $rutaconfig/$"english-example1.cfg" $rutaconfig/$archivo
 echo
-echo "launch: $fiptables client $archivo"
+echo "Launch: $fiptables client $archivo"
 echo ;;
 44)
 clear
-archivo="$(dialog --stdout --title "nueva-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --stdout --title "nueva-config: archivo.cfg" --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 cp $rutaconfig/$"spanish-example1.cfg" $rutaconfig/$archivo
 echo
-echo "launch: $fiptables client $archivo"
+echo "Launch: $fiptables client $archivo"
 echo ;;
 45)
 echo
-archivo="$(dialog --stdout --title "modify-config" --inputbox "$(ls $rutaconfig)" 0 0)"
+archivo="$(dialog --stdout --title "modify-config: file.cfg" --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 editor "$rutaconfig/$archivo"
 echo
-echo "launch: $fiptables client $archivo"
+echo "Launch: $fiptables client $archivo"
 echo ;;
 46)
 echo
+archivo="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+echo "$(cp $archivo)"
+echo
+echo "cloned $archivo"
 echo ;;
 47)
 echo
+archivo="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $rutaconfig)" 0 0)"
+clear
+echo "$(mv $archivo)"
+echo
+echo "renamed $archivo"
 echo ;;
 48)
+echo
 archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $rutaconfig)" 0 0)"
 clear
 rm "$rutaconfig/$archivo"
 echo
-echo deleted $archivo
+echo "deleted $archivo"
+echo;;
+51)
+clear
+$fiptables raw-ip4
+echo;;
+52)
+clear
+$fiptables raw-ip6
+echo;;
+53)
+clear
+$fiptables mangle-ip4
+echo;;
+54)
+clear
+$fiptables mangle-ip6
+echo;;
+55)
+clear
+$fiptables security-ip4
+echo;;
+56)
+clear
+$fiptables security-ip6
+echo;;
+61)
+clear
+$fiptables ping-ip4
+echo;;
+62)
+clear
+$fiptables ping-ip6
+echo;;
+71)
+clear
+$fiptables trace-ip4
+echo;;
+72)
+clear
+$fiptables trace-ip6
+echo;;
+81)
+clear
+$fiptables upgrade
+echo;;
+82)
+clear
+$fiptables auth-sudo
+echo;;
+83)
+clear
+$fiptables list-sudo
+echo;;
+91)
+clear
+$fiptables about
+echo;;
+92)
+clear
+$fiptables help
+echo;;
+93)
+clear
+$fiptables ayuda
+echo;;
+94)
+clear
+$fiptables system-info
+echo;;
+95)
+clear
+$fiptables cli
+echo;;
+96)
+clear
+$fiptables gui
 echo;;
 *)
 clear
@@ -437,6 +529,18 @@ echo ;;
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 echo ;;
 esac
+exit ; fi
+##############################       english: version: system script, the version option
+##############################       spanish: version: script de sistema, la opcion mostrar version
+if [ "$mifirewall" = "version" ]; then echo -n
+echo "Exec program:"
+echo "$rutafiptables/$fiptables"
+echo "Name program:"
+echo "$fprogram"
+echo "Description program:"
+echo "$fdescription"
+echo "Version program:"
+echo "$fver"
 exit ; fi
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
@@ -1369,7 +1473,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info cli gui"
+echo "     [Help]             about version help ayuda"
+echo "                        system-info cli gui"
 echo ""
 echo "$cinco   The cfg are in $rutaconfig/[config.cfg]"
 echo
@@ -1522,7 +1627,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Traza tcp]        trace-ip4 trace-ip6"
 echo "     [Actualiza]        upgrade auth-sudo list-sudo"
-echo "     [Ayuda]            about help ayuda system-info cli gui"
+echo "     [Ayuda]            about version help ayuda"
+echo "                        system-info cli gui"
 echo ""
 echo "$cinco   Las configs estan en $rutaconfig/[config.cfg]"
 echo
@@ -1941,7 +2047,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Help]             about help ayuda system-info cli gui"
+echo "     [Help]             about version help ayuda"
+echo "                        system-info cli gui"
 echo ""
 echo "$cinco  Optional $rutaconfig/[config.cfg]"
 echo
