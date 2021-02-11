@@ -16,14 +16,15 @@
 ##
 ####################################
 ## the variables names and the path ##
-mifirewall="$1" ; mivariable="$2" ; lanza="no";  no="no" ;                   #english: system variables fran iptables firewall
-rutafiptables="/usr/bin" ; fiptables="fwiptables" ;                          #english: whereis path directory to Fran iptables firewall
-fdescription="One Script in bash for iptables firewall"                      #english: program description to Fran iptables firewall
-fprogram="Fran FireWall iptables: $fiptables" ; fver="182" ;                 #english: program name and version to Fran iptables firewall
-web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link latest version fran iptables firewall
+mifirewall="$1" ; mivariable="$2" ; miconfig="$3"                            #english: variables at launch command spanish: variables al lanzar el commando
+lanza="no";  si=""  no="no" ;                                                #english: varibales void and no  spanish: variables vacio y no
+rutafiptables="/usr/bin" ; fiptables="fwiptables" ;                          #english: whereis path spanish: donde esta el path
+fdescription="One Script in bash for iptables firewall"                      #english: program description spanish: descripcion del programa
+fprogram="Fran FireWall iptables: $fiptables" ; fver="182" ;                 #english: program name and version spanish: programa nombre y version
+web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link spanish: descarga del enlace web
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
-rutaconfig="/etc/fwiptables" ;                                               #english: path to config files cfg #spanish: archivos de configuracion de Fran iptables firewall
-defaultcfg="default.cfg" ;                                                   #english: default config #spanish: configuracion por defecto
+rutaconfig="/etc/fwiptables" ;                                               #english: path to config files cfg #spanish: archivos de configuracion
+defaultcfg="default.cfg" ;                                                   #english: default config cfg  #spanish: configuracion por defecto cfg
 ##################################
 ##################################
 ##
@@ -109,8 +110,8 @@ echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
 echo "     [Help]             about version help ayuda"
 echo "                        system-info cli gui"
-echo "                        
-echo ""
+echo
+echo
 echo "$cinco   Optional $rutaconfig/[config.cfg]"
 echo
 echo "   $(ls $rutaconfig | fmt $flistado)"
@@ -671,7 +672,7 @@ echo "$cinco"
 echo
 echo
 echo "    Upgrade The fwiptables in file /usr/bin/$fiptables with links command" ; echo ;
-echo " $cinco    download manually   |or launch|   $0 web-upgrade"
+echo " $cinco    download manually   || or launch ||   $0 web-upgrade"
 echo
 echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $rutafiptables/$fiptables"
 echo "     chmod ugo+x $rutafiptables/$fiptables"
@@ -1977,12 +1978,22 @@ echo "$fiptables:  $fprogram version $fver ";
 echo "$cincuenta lauching iptables rules $cinco"
 echo ""
 echo "  launched $0 $1 $2  ";
-if [ "$1" = "offline" ]; then echo; echo "$cinco  The iptables configured for disconnected to internet $cinco" ;
-echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
-if [ "$1" = "allpermisive" ]; then echo; echo "$cinco  The iptables configured for all permisive to internet $cinco";
-echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
-if [ -f "$rutaconfig/$2" ]; then echo; echo "$cinco $program configured with the configuration: $2 $cinco" ;
-else echo "$cinco [Configured with the default configuration] $cinco"; echo "  $defaultcfg "; fi ;
+if [ "$1" = "offline" ]; then echo
+echo "$cinco  The iptables configured for disconnected to internet $cinco"
+echo
+echo "  launch $0 list  # to list iptables rules"
+echo;  exit
+else echo ; fi
+if [ "$1" = "allpermisive" ]; then echo
+echo "$cinco  The iptables configured for all permisive to internet $cinco"
+echo
+echo "  launch $0 list  # to list iptables rules"
+echo;  exit
+else echo ; fi
+if [ -f "$rutaconfig/$2" ]; then echo
+echo "$cinco $program configured with the configuration: $2 $cinco" ;
+else echo "$cinco [Configured with the default configuration] $cinco"
+echo "  $defaultcfg "; fi ;
 echo;
 echo "$cinco  [With the iptables firewall]  $cinco"  ;
 echo "  xtables    is  $execlegacy configured firewall "
@@ -2010,8 +2021,11 @@ echo "  ipv4 client: $redclienteipv4 And ipv4 server: $redserveripv4"
 echo "  ipv6 client: $redclienteipv6 And ipv6 server: $redserveripv6"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
 echo
-if [ "$estado" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco" ;  echo ;
-else echo "$cinco  [With input state IP]  $cinco" ; echo " Input satate: $estado" ; echo ; fi
+if [ "$estado" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
+echo
+else echo "$cinco  [With input state IP]  $cinco"
+echo " Input satate: $estado"
+echo ; fi
 echo "$cinco  [With Others configs]  $cinco"
 if [ "$haypingsend" = "no" ]; then echo "  Dont allow send ping in iptables"; else echo "  Allow send pings" ; fi
 if [ "$haypingrecive" = "no" ]; then echo "  Dont allow recive ping in iptables"; else echo "  Allow recive pings" ; fi
