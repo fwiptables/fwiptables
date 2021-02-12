@@ -378,19 +378,19 @@ $fiptables security-ip6
 echo;;
 61)
 clear
-$fiptables ping-ip4
+ping -4 -c 5 -A fast.com
 echo;;
 62)
 clear
-$fiptables ping-ip6
+ping -6 -c 5 -A fast.com
 echo;;
 71)
 clear
-$fiptables trace-ip4
+traceroute -4 -T fast.com
 echo;;
 72)
 clear
-$fiptables trace-ip6
+traceroute -6 -T fast.com
 echo;;
 81)
 clear
