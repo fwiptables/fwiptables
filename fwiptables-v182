@@ -569,6 +569,12 @@ echo "# config  #" >> $rutaconfig/games-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,12000:60000; " >> $rutaconfig/games-example1.cfg
 echo "clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
 echo "haypingsend= ;  haypingrecive= ; "  >> $rutaconfig/games-example1.cfg
+## config:  torrent-example1.cfg ##
+sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/torrent-example1.cfg
+echo "# config  #" >> $rutaconfig/torrent-example1.cfg
+echo "clienteudp=domain,ntp,bootpc,1025:60000; " >> $rutaconfig/torrent-example1.cfg
+echo "clientetcp=http,https" >> $rutaconfig/torrent-example1.cfg
+echo "haypingsend=no ;  haypingrecive=no ; "  >> $rutaconfig/torrent-example1.cfg
 ## config: samba-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/samba-example1.cfg
 echo "# config  #" >> $rutaconfig/samba-example1.cfg
@@ -1092,6 +1098,8 @@ echo "$fprogram version $fver"
 echo "$cincuenta  Clone config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
+echo
+echo
 ls $rutaconfig | fmt $flistado
 echo
 echo "     Type the filename for a old configuration wich will be in path $rutaconfig"
@@ -1122,6 +1130,8 @@ echo "$fprogram version $fver"
 echo "$cincuenta Modify config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
+echo
+echo
 ls $rutaconfig | fmt $flistado
 echo
 echo "     Type the filename for a old configuration wich will be in path $rutaconfig"
@@ -1147,6 +1157,8 @@ echo "$fprogram  version $fver"
 echo "$cincuenta Show config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
+echo
+echo
 ls $rutaconfig | fmt $flistado
 echo
 echo "     Type the filename to show configuration wich will be in path $rutaconfig"
@@ -1174,6 +1186,8 @@ echo "$fprogram version $fver"
 echo "$cincuenta  Rename config $cinco"
 echo
 echo "$cinco   The configs are in folder $rutaconfig : "
+echo
+echo
 ls $rutaconfig | fmt $flistado
 echo
 echo "     The files are in path $rutaconfig"
@@ -1204,6 +1218,8 @@ echo "$fprogram version $fver"
 echo "$cincuenta  Delete config $cinco"
 echo
 echo $cinco "  The configs are in folder $rutaconfig : "
+echo
+echo
 ls $rutaconfig | fmt $flistado
 echo
 echo        "     The files are in path $rutaconfig"
