@@ -606,8 +606,8 @@ sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/ftp-example1.cfg
 echo "# config  #" >> $rutaconfig/ftp-example1.cfg
 echo "clientetcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $rutaconfig/ftp-example1.cfg
 echo "servidortcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $rutaconfig/ftp-example1.cfg
-echo "clienteudp=domain,ntp,bootpc,tftp,ftps-data">> $rutaconfig/ftp-example1.cfg
-echo "servidorudp=tftp,ftps-data">> $rutaconfig/ftp-example1.cfg
+echo "clienteudp=domain,ntp,bootpc,tftp">> $rutaconfig/ftp-example1.cfg
+echo "servidorudp=tftp">> $rutaconfig/ftp-example1.cfg
 echo "haypingsend= ; haypingrecive= ;" >> $rutaconfig/ftp-example1.cfg
 ## config: irc-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/irc-example1.cfg
