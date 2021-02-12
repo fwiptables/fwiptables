@@ -1405,7 +1405,7 @@ exit; fi
 ############################       spanish: about: acerca del programa
 if [ "$mifirewall" = "about" ]; then echo
 echo
-echo "  Fran iptables firewall"
+echo "  Fran FireWall iptables: fwiptables"
 echo "$cincuenta"
 echo
 echo "$cinco   Description"

@@ -1,27 +1,27 @@
-      
-     Fran iptables firewall
+
+
+  Fran FireWall iptables: fwiptables
 ##################################################
 
-   ###    Description
+#####   Description
 
-   One Script in bash to manage iptables firewall   
+  One Script in bash for iptables firewall   
 
-   #####   
+#####
 
-   ###    The fran iptables ver 170 and next versions in [files repository at sourceforge]
+#####   The fran iptables ver 170 and versions up in files repository at sourceforge
 
-   https://sourceforge.net/projects/f-iptables/files
+  https://sourceforge.net/projects/f-iptables/files
 
-   ##### #####
+##### #####
 
-   ###    The fran iptables all versions in [code repository at sourceforge]
+#####   The fran iptables all versions in code repository at sourceforge
 
-   https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
-   
-   ##### #####
+  https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
 
-   ###    license
+##### #####
 
-   copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+#####   license
 
-   ##### #####
+ copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+
