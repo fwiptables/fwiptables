@@ -1421,33 +1421,45 @@ exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
 if [ "$mifirewall" = "about" ]; then echo
-echo
-echo "  Fran FireWall iptables: fwiptables"
-echo "$cincuenta"
-echo
-echo "$cinco   Description"
-echo
-echo "  One Script in bash for iptables firewall   "
-echo
-echo "$cinco"
-echo
-echo "$cinco   The fran iptables ver 170 and versions up in files repository at sourceforge"
-echo
-echo "  https://sourceforge.net/projects/f-iptables/files"
-echo
-echo "$cinco $cinco"
-echo
-echo "$cinco   The fran iptables all versions in code repository at sourceforge"
-echo
-echo "  https://sourceforge.net/p/f-iptables/code/ci/master/tree/            "
-echo
-echo "$cinco $cinco"
-echo
-echo "$cinco   license"
-echo
-echo " copyleft, without warranty, free to copy, free to modify, gnu license gpl."
-echo
-exit; fi
+echo 
+echo 
+echo   Fran FireWall iptables: fwiptables
+echo ##################################################
+echo 
+echo #####   Description:
+echo 
+echo   One Script in bash for iptables firewall   
+echo 
+echo ##### #####
+echo 
+echo #####   dev version:
+echo The fran iptables ver in development in git code at sourceforge
+echo 
+echo https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
+echo 
+echo ##### #####
+echo 
+echo #####   new version: 
+echo The fran iptables ver 170 and versions up in files repository at sourceforge
+echo 
+echo   https://sourceforge.net/projects/f-iptables/files
+echo 
+echo ##### #####
+echo 
+echo #####   Old version:
+echo The fran iptables all versions in code repository at sourceforge
+echo 
+echo   https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
+echo 
+echo ##### #####
+echo 
+echo #####   license:
+echo 
+echo  copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+echo 
+echo ##### #####
+echo 
+echo 
 ############################       english: system-info: get info system
 ############################       spanish: system-info: da informacion del sistema
 if [ "$mifirewall" = "system-info" ]; then echo
