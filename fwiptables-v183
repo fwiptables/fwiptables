@@ -568,7 +568,7 @@ echo "haypingrecive=no ;" >> $rutaconfig/web-example1.cfg
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/games-example1.cfg
 echo "# config  #" >> $rutaconfig/games-example1.cfg
 echo "clienteudp=domain,ntp,bootpc,12000:60000; " >> $rutaconfig/games-example1.cfg
-echo "clientetcp=http,https,14998:15002" >> $rutaconfig/games-example1.cfg
+echo "clientetcp=http,https" >> $rutaconfig/games-example1.cfg
 echo "haypingsend= ;  haypingrecive= ; "  >> $rutaconfig/games-example1.cfg
 ## config:  torrent-example1.cfg ##
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/torrent-example1.cfg
