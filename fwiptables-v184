@@ -1253,6 +1253,7 @@ echo "$cinco                                              Example:      user1,us
 echo "$cinco    The users authorizated will launch without passwd:      sudo $fiptables "
 echo
 echo
+echo "     Control+c to stop"
 read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
 echo
 echo "$autorizados ALL=(root) NOPASSWD:$rutafiptables/$fiptables " > /etc/sudoers.d/$fiptables
@@ -1284,7 +1285,7 @@ cat /etc/sudoers.d/$fiptables
 echo
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
-echo;;
+echo ;;
 *)
 echo "There is not auth users for $fiptables"
 echo
@@ -1304,7 +1305,7 @@ echo
 echo "$cinco    Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 echo
 echo
- $rutabin/sysctl -a | grep -i forwarding
+$rutabin/sysctl -a | grep -i forwarding
 echo
 echo
 exit; fi
@@ -1346,13 +1347,14 @@ echo "############################       english: iptables-restore: load the rul
 echo
 ls $fwruta
 echo
+echo "first erase rules with:   fwiptables eraserules"
 echo
 echo "folder in $fwruta"
 echo
-echo iptables restore with one command from above:
+echo "then iptables restore with one command from above:"
 echo
-echo with ipv4:    iptables-nft-restore or iptables-legacy-restore
-echo with ipv6:    ip6tables-nft-restore or ip6tables-legacy-restore
+echo "with ipv4:    iptables-nft-restore or iptables-legacy-restore"
+echo "with ipv6:    ip6tables-nft-restore or ip6tables-legacy-restore"
 echo
 exit; fi
 ############################       english: fw-save: save the rules in iptables format
@@ -1363,6 +1365,7 @@ echo "############################       english: iptables-save: save the rules 
 echo
 ls $fwruta
 echo
+echo        "     Control+c to stop"
 read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini ; archivofin=$(sed 's/\///g' <<< "$archivoini")
 echo
 echo "$fwruta/$archivofin save as nft-$fwruta legacy-$fwruta nft6-$fwruta legacy6-fwruta"
