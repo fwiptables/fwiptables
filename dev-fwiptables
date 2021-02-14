@@ -20,7 +20,7 @@ mifirewall="$1" ; mivariable="$2" ; miconfig="$3"                            #en
 lanza="no";  si=""  no="no" ;                                                #english: varibales void and no  spanish: variables vacio y no
 rutafiptables="/usr/bin" ; fiptables="fwiptables" ;                          #english: whereis path spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"                      #english: program description spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fver="183" ;                 #english: program name and version spanish: programa nombre y version
+fprogram="Fran FireWall iptables: $fiptables" ; fver="184" ;                 #english: program name and version spanish: programa nombre y version
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link spanish: descarga del enlace web
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutaconfig="/etc/fwiptables" ;                                               #english: path to config files cfg #spanish: archivos de configuracion
