@@ -24,7 +24,7 @@ fprogram="Fran FireWall iptables: $fiptables" ; fver="184" ;                 #en
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link spanish: descarga del enlace web
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutaconfig="/etc/fwiptables" ;                                               #english: path to config files cfg #spanish: archivos de configuracion
-fwruta="/etc/fwrecover" ;                                              #english: path to save firewall #spanish: ruta de firewall guardados
+fwruta="/etc/fwrecover" ;                                                    #english: path to save firewall #spanish: ruta de firewall guardados
 defaultcfg="default.cfg" ;                                                   #english: default config cfg  #spanish: configuracion por defecto cfg
 ##################################
 ##################################
