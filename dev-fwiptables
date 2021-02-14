@@ -24,6 +24,7 @@ fprogram="Fran FireWall iptables: $fiptables" ; fver="183" ;                 #en
 web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;    #english: download web link spanish: descarga del enlace web
 rutabin="/usr/sbin" ;                                                        #english: iptables programs path #spanish: ruta de los ejecutables de iptables
 rutaconfig="/etc/fwiptables" ;                                               #english: path to config files cfg #spanish: archivos de configuracion
+fwruta="/etc/fwrecover" ;                                              #english: path to save firewall #spanish: ruta de firewall guardados
 defaultcfg="default.cfg" ;                                                   #english: default config cfg  #spanish: configuracion por defecto cfg
 ##################################
 ##################################
@@ -105,6 +106,7 @@ echo "                        rename-config delete-config"
 echo "     [Others tables]    raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
@@ -136,6 +138,7 @@ if [ -f "$rutafiptables/$fiptables" ]; then echo -n; else cp "$0" "$rutafiptable
 if [ -f "$rutaconfig/$defaultcfg" ]; then echo -n
 else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$rutaconfig/$defaultcfg"
 fi
+if [ -d "$fwruta" ]; then echo -n ; else rm "$fwruta" &> /dev/null ; mkdir "$fwruta" &> /dev/null ; fi
 if [ "$0" = "$rutafiptables/$fiptables" ] ; then echo -n; else cp "$0" "$rutafiptables/$fiptables" &> /dev/null ; fi
 #############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
@@ -553,9 +556,9 @@ echo "$cincuenta $fprogram version $fver $cinco"
 echo "$cinco    Updating default configurations of examples:  $rutaconfig/*ample1.cfg "
 echo
 echo
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/$defaultcfg
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/english-example1.cfg
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > $rutaconfig/spanish-example1.cfg
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$rutaconfig/$defaultcfg"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$rutaconfig/english-example1.cfg"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$rutaconfig/spanish-example1.cfg"
 ## config: web-example1.cfg #
 sed 's/^/# example # /g' $rutaconfig/default.cfg > $rutaconfig/web-example1.cfg
 echo "# config  #" >> $rutaconfig/web-example1.cfg
@@ -1307,7 +1310,7 @@ echo
 exit; fi
 ############################       english: tcpdump: listen at dump from conexiones
 ############################       spanish: tcpdump: escucha al volcado de conexiones
-if [ "$mifirewall" = "tcpdump" ]; then echo
+if [ "$mifirewall" = "tcpdump" ]; then echo -n
 case $(which tcpdump) in
 "$NULL")
 echo
@@ -1326,9 +1329,52 @@ echo
 echo ;;
 esac
 exit; fi
+############################       english: fw-list: file list whith rules in iptables format
+############################       spanish: fw-list: lista de archivos con reglas en formato iptables
+if [ "$mifirewall" = "fw-list" ]; then echo -n
+echo
+echo "############################       english: iptables-restore: file list with rules in iptables format in folder $fwruta"
+echo
+ls $fwruta
+echo
+exit; fi
+############################       english: fw-restore: load the rules in iptables format
+############################       spanish: fw-restore: carga las reglas en formato iptables
+if [ "$mifirewall" = "fw-restore" ]; then echo -n
+echo
+echo "############################       english: iptables-restore: load the rules in iptables format in folder $fwruta"
+echo
+ls $fwruta
+echo
+echo
+echo "folder in $fwruta"
+echo
+echo iptables restore with one command from above:
+echo
+echo with ipv4:    iptables-nft-restore or iptables-legacy-restore
+echo with ipv6:    ip6tables-nft-restore or ip6tables-legacy-restore
+echo
+exit; fi
+############################       english: fw-save: save the rules in iptables format
+############################       spanish: fw-save: guarda las reglas en formato iptables
+if [ "$mifirewall" = "fw-save" ]; then echo -n
+echo
+echo "############################       english: iptables-save: save the rules in iptables format in folder $fwruta"
+echo
+ls $fwruta
+echo
+read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini ; archivofin=$(sed 's/\///g' <<< "$archivoini")
+echo
+echo "$fwruta/$archivofin save as nft-$fwruta legacy-$fwruta nft6-$fwruta legacy6-fwruta"
+iptables-nft-save >> $fwruta/$archivofin-nft-ipv4
+iptables-legacy-save >> $fwruta/$archivofin-legacy-ipv4
+ip6tables-nft-save >> $fwruta/$archivofin-nft-ipv6
+ip6tables-legacy-save >> $fwruta/$archivofin-legacy-ipv6
+echo
+exit; fi
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
-if [ "$mifirewall" = "ping-ip4" ]; then echo
+if [ "$mifirewall" = "ping-ip4" ]; then echo -n
 case $(which ping) in
 "$NULL")
 echo
@@ -1351,7 +1397,7 @@ esac
 exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
-if [ "$mifirewall" = "ping-ip6" ]; then echo
+if [ "$mifirewall" = "ping-ip6" ]; then echo -n
 case $(which traceroute) in
 "$NULL")
 echo
@@ -1374,7 +1420,7 @@ esac
 exit; fi
 ############################       english: trace-ip4: traceroute with tcp and ipv6
 ############################       spanish: trace-ip4: traceroute con tcp y ipv4
-if [ "$mifirewall" = "trace-ip4" ]; then echo
+if [ "$mifirewall" = "trace-ip4" ]; then echo -n
 case $(which traceroute) in
 "$NULL")
 echo
@@ -1397,7 +1443,7 @@ esac
 exit; fi
 ############################       english: trace-ip6: traceroute with tcp and ipv6
 ############################       spanish: trace-ip6: traceroute con tcp e ipv6
-if [ "$mifirewall" = "trace-ip6" ]; then echo
+if [ "$mifirewall" = "trace-ip6" ]; then echo -n
 case $(which traceroute) in
 "$NULL")
 echo
@@ -1420,49 +1466,50 @@ esac
 exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
-if [ "$mifirewall" = "about" ]; then echo
-echo 
-echo 
+if [ "$mifirewall" = "about" ]; then echo -n
+echo
+echo
 echo   Fran FireWall iptables: fwiptables
 echo ##################################################
-echo 
+echo
 echo #####   Description:
-echo 
-echo   One Script in bash for iptables firewall   
-echo 
+echo
+echo   One Script in bash for iptables firewall
+echo
 echo ##### #####
-echo 
+echo
 echo #####   dev version:
 echo The fran iptables ver in development in git code at sourceforge
-echo 
+echo
 echo https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
-echo 
+echo
 echo ##### #####
-echo 
-echo #####   new version: 
+echo
+echo #####   new version:
 echo The fran iptables ver 170 and versions up in files repository at sourceforge
-echo 
+echo
 echo   https://sourceforge.net/projects/f-iptables/files
-echo 
+echo
 echo ##### #####
-echo 
+echo
 echo #####   Old version:
 echo The fran iptables all versions in code repository at sourceforge
-echo 
-echo   https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
-echo 
+echo
+echo   https://sourceforge.net/p/f-iptables/code/ci/master/tree/
+echo
 echo ##### #####
-echo 
+echo
 echo #####   license:
-echo 
+echo
 echo  copyleft, without warranty, free to copy, free to modify, gnu license gpl.
-echo 
+echo
 echo ##### #####
-echo 
-echo 
+echo
+echo
+exit; fi
 ############################       english: system-info: get info system
 ############################       spanish: system-info: da informacion del sistema
-if [ "$mifirewall" = "system-info" ]; then echo
+if [ "$mifirewall" = "system-info" ]; then echo -n
 echo
 echo "$fprogram version $fver"
 echo "$cincuenta   System info $cinco"
@@ -1482,7 +1529,7 @@ echo
 exit; fi
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
-if [ "$mifirewall" = "help" ]; then echo
+if [ "$mifirewall" = "help" ]; then echo -n
 echo
 echo "$fprogram version $fver"
 echo "$cincuenta Help $cinco"
@@ -1500,6 +1547,7 @@ echo "                        rename-config delete-config"
 echo "     [Others tables]    raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
@@ -1654,6 +1702,7 @@ echo "                        rename-config delete-config"
 echo "     [Otras tablas]     raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Recuperador fw]   fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Traza tcp]        trace-ip4 trace-ip6"
 echo "     [Actualiza]        upgrade auth-sudo list-sudo"
@@ -2067,6 +2116,11 @@ if [ "$hayotroprotocolo" = "no" ]; then  echo "  Dont allow other protocolo ip m
 echo
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 echo
+#auto generate iptables save
+#iptables-nft-save >> $fwruta/$1-$2-nft-ipv4
+#iptables-legacy-save >> $fwruta/$1-$2-legacy-ipv4
+#ip6tables-nft-save >> $fwruta/$1-$2-nft-ipv6
+#ip6tables-legacy-save >> $fwruta/$1-$2-legacy-ipv6
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
@@ -2087,6 +2141,7 @@ echo "                        rename-config delete-config"
 echo "     [Others tables]    raw-ip4 raw-ip6"
 echo "                        mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
+echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
