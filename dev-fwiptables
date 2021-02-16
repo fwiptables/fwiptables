@@ -45,7 +45,7 @@ echo -n #english: the iptables firewall netfilter, choose one or two #spanish: e
 execlegacy=no ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
 execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
 echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
-allow_state="" ; #english: modify with void or -m state --state stablished #spanish: modificar con vacio o -m state --state stablished
+input_state="" ; #english: modify with void or -m state --state established,realted #spanish: modificar con vacio o -m state --state established,related
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
 allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
@@ -1867,8 +1867,8 @@ $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-legacy -A INPUT
 $execlegacy  $allow_ipv4 $allow_log_udp  $directory_bin/iptables-legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $activarservidor  $directory_bin/iptables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $redserveripv4 -d $redserveripv4 -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $activarservidor  $directory_bin/iptables-legacy -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserveripv4 -d $redserveripv4 -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A INPUT -p udp -m multiport $allow_state --sports $client_udp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A INPUT -p tcp -m multiport $allow_state --sports $client_tcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_send  $directory_bin/iptables-legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_recive $directory_bin/iptables-legacy -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
@@ -1896,8 +1896,8 @@ $execlegacy  $allow_ipv6 $allow_log_tcp  $directory_bin/ip6tables-legacy -A INPU
 $execlegacy  $allow_ipv6 $allow_log_udp  $directory_bin/ip6tables-legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $activarservidor  $directory_bin/ip6tables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $redserveripv6 -d $redserveripv6 -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $activarservidor  $directory_bin/ip6tables-legacy -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserveripv6 -d $redserveripv6 -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarcliente  $directory_bin/ip6tables-legacy -A INPUT -p udp -m multiport $allow_state --sports $client_udp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarcliente  $directory_bin/ip6tables-legacy -A INPUT -p tcp -m multiport $allow_state --sports $client_tcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $activarcliente  $directory_bin/ip6tables-legacy -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $activarcliente  $directory_bin/ip6tables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_send      $directory_bin/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_recive  $directory_bin/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $directory_bin/ip6tables-legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -1936,8 +1936,8 @@ $execnft $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-nft -A INPUT -p tcp
 $execnft $allow_ipv4 $allow_log_udp  $directory_bin/iptables-nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execnft $allow_ipv4 $activarservidor  $directory_bin/iptables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $redserveripv4 -d $redserveripv4 -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $activarservidor  $directory_bin/iptables-nft -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserveripv4 -d $redserveripv4 -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarcliente  $directory_bin/iptables-nft -A INPUT -p udp -m multiport $allow_state --sports $client_udp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarcliente  $directory_bin/iptables-nft -A INPUT -p tcp -m multiport $allow_state --sports $client_tcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $activarcliente  $directory_bin/iptables-nft -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $activarcliente  $directory_bin/iptables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $redclienteipv4 -d $redclienteipv4 -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_send     $directory_bin/iptables-nft -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_recive   $directory_bin/iptables-nft -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
@@ -1965,8 +1965,8 @@ $execnft $allow_ipv6 $allow_log_tcp  $directory_bin/ip6tables-nft -A INPUT -p tc
 $execnft $allow_ipv6 $allow_log_udp  $directory_bin/ip6tables-nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execnft $allow_ipv6 $activarservidor  $directory_bin/ip6tables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $redserveripv6 -d $redserveripv6 -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $activarservidor  $directory_bin/ip6tables-nft -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserveripv6 -d $redserveripv6 -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarcliente   $directory_bin/ip6tables-nft -A INPUT -p udp -m multiport $allow_state --sports $client_udp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarcliente   $directory_bin/ip6tables-nft -A INPUT -p tcp -m multiport $allow_state --sports $client_tcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $activarcliente   $directory_bin/ip6tables-nft -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $activarcliente   $directory_bin/ip6tables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $redclienteipv6 -d $redclienteipv6 -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_send      $directory_bin/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_recive  $directory_bin/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $directory_bin/ip6tables-nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -2000,23 +2000,23 @@ $execlegacy $allow_ipv6 $allow_nat $directory_bin/ip6tables-legacy -t nat -A POS
 ##########################################    ipv4 iptables permisisive
 $execlegacy  $allow_ipv4 $mojado  $directory_bin/iptables-legacy -F &> /dev/null
 $execlegacy  $allow_ipv4 $mojado  $directory_bin/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $mojado  $directory_bin/iptables-legacy -A INPUT $allow_state  -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $mojado  $directory_bin/iptables-legacy -A INPUT $input_state  -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $mojado  $directory_bin/iptables-legacy -A OUTPUT -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $mojado  $directory_bin/iptables-legacy -A FORWARD  -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $mojado  $directory_bin/iptables-nft -F &> /dev/null
 $execnft $allow_ipv4 $mojado  $directory_bin/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $mojado  $directory_bin/iptables-nft -A INPUT $allow_state -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $mojado  $directory_bin/iptables-nft -A INPUT $input_state -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $mojado  $directory_bin/iptables-nft -A OUTPUT -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $mojado  $directory_bin/iptables-nft -A FORWARD -j ACCEPT &> /dev/null
  ########################################     ipv6 iptables allpermisisive
 $execlegacy $allow_ipv6 $mojado  $directory_bin/ip6tables-legacy -F &> /dev/null
 $execlegacy $allow_ipv6 $mojado  $directory_bin/ip6tables-legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$execlegacy $allow_ipv6 $mojado  $directory_bin/ip6tables-legacy -A INPUT $allow_state -j ACCEPT &> /dev/null
+$execlegacy $allow_ipv6 $mojado  $directory_bin/ip6tables-legacy -A INPUT $input_state -j ACCEPT &> /dev/null
 $execlegacy $allow_ipv6 $mojado  $directory_bin/ip6tables-legacy -A OUTPUT -j ACCEPT &> /dev/null
 $execlegacy $allow_ipv6 $mojado  $directory_bin/ip6tables-legacy -A FORWARD  -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $mojado  $directory_bin/ip6tables-nft -F &> /dev/null
 $execnft $allow_ipv6 $mojado  $directory_bin/ip6tables-nft -A INPUT -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $mojado  $directory_bin/ip6tables-nft -A INPUT $allow_state -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $mojado  $directory_bin/ip6tables-nft -A INPUT $input_state -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $mojado  $directory_bin/ip6tables-nft -A OUTPUT -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $mojado  $directory_bin/ip6tables-nft -A FORWARD -j ACCEPT &> /dev/null
 ########################################       iptables ipv4 and ipv6 with forward rules
@@ -2101,10 +2101,10 @@ echo "  ipv4 client: $redclienteipv4 And ipv4 server: $redserveripv4"
 echo "  ipv6 client: $redclienteipv6 And ipv6 server: $redserveripv6"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
 echo
-if [ "$allow_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
+if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
 echo
 else echo "$cinco  [With input state IP]  $cinco"
-echo " Input satate: $allow_state"
+echo " Input satate: $input_state"
 echo ; fi
 echo "$cinco  [With Others configs]  $cinco"
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping in iptables"; else echo "  Allow send pings" ; fi
