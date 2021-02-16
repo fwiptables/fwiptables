@@ -11,7 +11,7 @@
 ##############################        english:   basic system variables
 ##############################        spanish:   las basicas variables del sistema
 ##
-##  /usr/bin/fwiptables in vars $directory_fiptables folder and $fiptables exec
+##  /usr/bin/fwiptables in vars $directory_fiptables folder and $fiptables binary
 ##
 ##
 ####################################
