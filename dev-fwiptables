@@ -45,7 +45,7 @@ echo -n #english: the iptables firewall netfilter, choose one or two #spanish: e
 execlegacy=no ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
 execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
 echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
-input_state="" ; #english: modify with void or -m state --state established,realted #spanish: modificar con vacio o -m state --state established,related
+input_state="" ; #english: modify with void or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
 allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
