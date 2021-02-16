@@ -1,32 +1,37 @@
 
 
-  Fran FireWall iptables: fwiptables
+  Fran FireWall iptables
 ##################################################
 
-#####   Description:
+#####   Program Name
+Fran FireWall iptables: fwiptables
 
-  One Script in bash for iptables firewall   
+#####   Description:
+One Script in bash for iptables firewall
+
+#####   Install:
+chmod ugo+x fwiptables
+./fwiptables
+and then fwiptables is in /usr/bin/
 
 #####   dev version:
-The fran iptables ver in development in git code at sourceforge
+The fran iptables ver in development in git code at sourceforge:
 
 https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
 
-#####   new version: 
-The fran iptables ver 170 and versions up in files repository at sourceforge
+#####   new version:
+The fran iptables ver 170 and versions up in files repository at sourceforge:
 
   https://sourceforge.net/projects/f-iptables/files
 
-##### #####
-
 #####   Old version:
-The fran iptables all versions in code repository at sourceforge
+The fran iptables all versions in code repository at sourceforge:
 
-  https://sourceforge.net/p/f-iptables/code/ci/master/tree/            
-
-##### #####
+  https://sourceforge.net/p/f-iptables/code/ci/master/tree/
 
 #####   license:
-
  copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+
+##################################################
+
 
