@@ -164,145 +164,150 @@ echo "work in progress"
 echo
 cd $directory_config
 menuprincipal="$(dialog --stdout --title "$fprogram version $fver" --menu "Select:" 0 0 0 \
-  00010 "launch rules" \
-  11 "eraserules" \
-  12 "offline" \
-  13 client \
-  14 server  \
-  15 allpermisive \
-  00020 "list rules" \
-  21 list \
-  22 forward \
-  23 list6  \
-  24 forward6 \
-  25 nat-ip4 \
-  26 nat-ip6 \
-  00030 "list sockets" \
-  31 route \
-  32 ss \
-  33 netstat \
-  34 lsof \
-  35 ipforwading \
-  36 tcpdump \
-  00040 "Modify config" \
-  41 reconfig \
-  42 show-config \
-  43 new-config \
-  44 nueva-config \
-  45 modify-config \
-  46 clone-config \
-  47 rename-config \
-  48 delete-config \
-  00050 "Other tables"  \
-  51 raw-ip4 \
-  52 raw-ip6 \
-  53 mangle-ip4 \
-  54 mangle-ip6 \
-  55 security-ip4 \
-  56 security-ip6 \
-  00060 "ping icmp" \
-  61 ping-ip4 \
-  62 ping-ip6 \
-  00070 "trace tcp"  \
-  71 trace-ip4 \
-  72 trace-ip6 \
-  00080 "update"  \
-  81 upgrade \
-  82 auth-sudo \
-  83 list-sudo \
-  00090 "help" \
-  91 about \
-  92 help \
-  93 ayuda \
-  94 system-info \
-  95 cli \
-  96 gui \
+  00100 "launch rules" \
+  101 "eraserules" \
+  102 "offline" \
+  103 client \
+  104 server  \
+  105 allpermisive \
+  00200 "list rules" \
+  201 list \
+  202 forward \
+  203 list6  \
+  204 forward6 \
+  205 nat-ip4 \
+  206 nat-ip6 \
+  00300 "list sockets" \
+  301 route \
+  302 ss \
+  303 netstat \
+  304 lsof \
+  305 ipforwading \
+  306 tcpdump \
+  00400 "Modify config" \
+  401 reconfig \
+  402 show-config \
+  403 new-config \
+  404 nueva-config \
+  405 modify-config \
+  406 clone-config \
+  407 rename-config \
+  408 delete-config \
+  00500 "Other tables"  \
+  501 raw-ip4 \
+  502 raw-ip6 \
+  503 mangle-ip4 \
+  504 mangle-ip6 \
+  505 security-ip4 \
+  506 security-ip6 \
+  00600 "ping icmp" \
+  601 ping-ip4 \
+  602 ping-ip6 \
+  00700 "trace tcp"  \
+  701 trace-ip4 \
+  702 trace-ip6 \
+  00800 "update"  \
+  801 upgrade \
+  802 auth-sudo \
+  803 list-sudo \
+  00900 "Versions" \
+  901 version \
+  902 new-versions \
+  903 dev-versions \
+  904 all-versions \
+  01000 "Help" \
+  1001 about \
+  1002 help \
+  1003 ayuda \
+  1004 system-info \
+  1005 cli \
+  1006 gui \
   )"
 case $menuprincipal in
- 000*)
+ 0*)
 clear
-dialog --msgbox "The first menu" 0 0
+dialog --msgbox "Program Menu" 0 0
 clear
 $fiptables cli
 echo ;;
- 11)
+ 101)
 clear
 $fiptables eraserules
 echo ;;
- 12)
+ 102)
 clear
 $fiptables offline
 echo ;;
- 13)
+ 103)
 clear
 archivo="$(dialog --title "client" --stdout --inputbox "$(ls $directory_config)" 0 0)"
 clear
 $fiptables client $archivo
 echo ;;
- 14)
+ 104)
 clear
 archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
 clear
 $fiptables server $archivo
 echo ;;
-15)
+105)
 clear
 $fiptables allpermisive
 echo ;;
-21)
+201)
 clear
 $fiptables list
 echo ;;
-22)
+202)
 clear
 $fiptables forward
 echo ;;
-23)
+203)
 clear
 $fiptables list6
 echo ;;
-24)
+204)
 clear
 $fiptables forward6
 echo ;;
-25)
+205)
 clear
 $fiptables nat-ip4
 echo ;;
-26)
+206)
 clear
 $fiptables nat-ip6
 echo ;;
-31)
+301)
 clear
 $fiptables route
 echo ;;
-32)
+302)
 clear
 $fiptables ss
 echo ;;
-33)
+303)
 clear
 $fiptables netstat
 echo ;;
-34)
+304)
 clear
 $fiptables lsof
 echo ;;
-35)
+305)
 clear
 $fiptables ipforwading
 echo ;;
-36)
+306)
 clear
 $fiptables tcpdump
 echo ;;
-41)
+401)
 clear
 $fiptables reconfig
 echo
 echo;;
-42)
+402)
 clear
 archivo="$(dialog --stdout --title "show-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -310,7 +315,7 @@ cat $directory_config/$archivo
 echo
 echo "Launch: $fiptables client $archivo"
 echo ;;
-43)
+403)
 clear
 archivo="$(dialog --stdout --title "new-config file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -318,7 +323,7 @@ cp $directory_config/$"english-example1.cfg" $directory_config/$archivo
 echo
 echo "Launch: $fiptables client $archivo"
 echo ;;
-44)
+404)
 clear
 archivo="$(dialog --stdout --title "nueva-config: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -326,7 +331,7 @@ cp $directory_config/$"spanish-example1.cfg" $directory_config/$archivo
 echo
 echo "Launch: $fiptables client $archivo"
 echo ;;
-45)
+405)
 echo
 archivo="$(dialog --stdout --title "modify-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -334,7 +339,7 @@ editor "$directory_config/$archivo"
 echo
 echo "Launch: $fiptables client $archivo"
 echo ;;
-46)
+406)
 echo
 archivo="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -342,7 +347,7 @@ echo "$(cp $archivo)"
 echo
 echo "cloned $archivo"
 echo ;;
-47)
+407)
 echo
 archivo="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -350,7 +355,7 @@ echo "$(mv $archivo)"
 echo
 echo "renamed $archivo"
 echo ;;
-48)
+408)
 echo
 archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $directory_config)" 0 0)"
 clear
@@ -358,79 +363,95 @@ rm "$directory_config/$archivo"
 echo
 echo "deleted $archivo"
 echo;;
-51)
+501)
 clear
 $fiptables raw-ip4
 echo;;
-52)
+502)
 clear
 $fiptables raw-ip6
 echo;;
-53)
+503)
 clear
 $fiptables mangle-ip4
 echo;;
-54)
+504)
 clear
 $fiptables mangle-ip6
 echo;;
-55)
+505)
 clear
 $fiptables security-ip4
 echo;;
-56)
+506)
 clear
 $fiptables security-ip6
 echo;;
-61)
+601)
 clear
 ping -4 -c 5 -A fast.com
 echo;;
-62)
+602)
 clear
 ping -6 -c 5 -A fast.com
 echo;;
-71)
+701)
 clear
 traceroute -4 -T fast.com
 echo;;
-72)
+702)
 clear
 traceroute -6 -T fast.com
 echo;;
-81)
+901)
+clear
+$fiptables version
+echo;;
+902)
+clear
+$fiptables new-versions
+echo;;
+903)
+clear
+$fiptables dev-versions
+echo;;
+904)
+clear
+$fiptables all-versions
+echo;;
+801)
 clear
 $fiptables upgrade
 echo;;
-82)
+802)
 clear
 $fiptables auth-sudo
 echo;;
-83)
+803)
 clear
 $fiptables list-sudo
 echo;;
-91)
+1001)
 clear
 $fiptables about
 echo;;
-92)
+1002)
 clear
 $fiptables help
 echo;;
-93)
+1003)
 clear
 $fiptables ayuda
 echo;;
-94)
+1004)
 clear
 $fiptables system-info
 echo;;
-95)
+1005)
 clear
 $fiptables cli
 echo;;
-96)
+1006)
 clear
 $fiptables gui
 echo;;
@@ -438,7 +459,6 @@ echo;;
 clear
 dialog --msgbox "work in progress" 0 0
 clear
-echo ;;
 esac
 exit; fi
 ####
@@ -1607,7 +1627,7 @@ echo ""
 echo "  $fprogram"
 echo "$cincuenta All versions $cinco"
 echo ""
-links -dump https://sourceforge.net/p/f-iptables/code/ci/master/tree/ | egrep -i "root root" | cut -c -40
+links -dump https://sourceforge.net/p/f-iptables/code/ci/master/tree/ | egrep -i "root root" | cut -c -39
 echo ""
 exit; fi
 ############################       english: about: about of program
