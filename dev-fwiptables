@@ -540,12 +540,22 @@ exit ; fi
 ##############################       english: version: system script, the version option
 ##############################       spanish: version: script de sistema, la opcion mostrar version
 if [ "$first_option" = "version" ]; then echo -n
-echo "Exec program:"
-echo "$directory_fiptables/$fiptables"
+echo
 echo "Name program:"
 echo "$fprogram"
+echo
 echo "Description program:"
 echo "$fdescription"
+echo
+echo "Exec program:"
+echo "$directory_fiptables/$fiptables"
+echo
+echo "Config directory:"
+echo "$directory_config"
+echo
+echo "firewall export directory"
+echo "$directory_fw"
+echo
 echo "Version program:"
 echo "$fver"
 exit ; fi
