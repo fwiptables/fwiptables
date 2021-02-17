@@ -97,7 +97,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6  nat-ip4 nat-ip6"
-echo "                        numeric4 numeric6"
+echo "                        numeric numeric6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    reconfig show-config"
 echo "                        new-config nueva-config"
@@ -962,9 +962,9 @@ if [ "$first_option" = "nat-ip6" ]; then echo -n
  $directory_bin/ip6tables-nft -t nat -v -L
  echo
  exit; fi
-#############################       english: numeric4: system script, the list option without domain
-#############################       spanish: numeric4: script de sistema, la opcion lista sin resolver dominios
-if [ "$first_option" = "numeric4" ]; then echo -n ;
+#############################       english: numeric: system script, the list option numerical
+#############################       spanish: numeric: script de sistema, la opcion lista numeral
+if [ "$first_option" = "numeric" ]; then echo -n ;
 legacycuatro=$("$directory_bin/iptables-legacy" -t filter -L INPUT 1)
 nftcuatro=$("$directory_bin/iptables-nft" -t filter -L INPUT 1)
  echo
@@ -1612,7 +1612,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        numeric4 numeric6"
+echo "                        numeric numeric6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    reconfig show-config"
 echo "                        new-config nueva-config"
@@ -1768,7 +1768,7 @@ echo "$cinco   Una primera opcion "
 echo ""
 echo "     [Lanza reglas]     eraserules offline client server allpermisive"
 echo "     [Lista reglas]     list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        numeric4 numeric6"
+echo "                        numeric numeric6"
 echo "     [Lista sockets]    route ss netstat lsof ipforwading tcpdump"
 echo "     [Modifica config]  reconfig show-config"
 echo "                        new-config nueva-config"
@@ -2208,7 +2208,7 @@ echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        numeric4 numeric6"
+echo "                        numeric numeric6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Modify config]    reconfig show-config"
 echo "                        new-config nueva-config"
