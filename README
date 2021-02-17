@@ -3,7 +3,7 @@
   Fran FireWall iptables
 ##################################################
 
-#####   Program Name
+#####   Program Name:
 Fran FireWall iptables: fwiptables
 
 #####   Description:
@@ -14,12 +14,12 @@ chmod ugo+x fwiptables
 ./fwiptables
 and then fwiptables is in /usr/bin/
 
-#####   dev version:
+#####   Dev version:
 The fran iptables ver in development in git code at sourceforge:
 
 https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
 
-#####   new version:
+#####   New version:
 The fran iptables ver 170 and versions up in files repository at sourceforge:
 
   https://sourceforge.net/projects/f-iptables/files
@@ -29,8 +29,8 @@ The fran iptables all versions in code repository at sourceforge:
 
   https://sourceforge.net/p/f-iptables/code/ci/master/tree/
 
-#####   license:
- copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+#####   License:
+Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 
 ##################################################
 
