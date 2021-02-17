@@ -1568,6 +1568,36 @@ echo
 echo ;;
 esac
 exit; fi
+############################       english: dev-versions: about of program
+############################       spanish: dev-versions: acerca del programa
+if [ "$first_option" = "dev-versions" ]; then echo -n
+echo ""
+echo "  Fran FireWall iptables"
+echo "$cincuenta dev versions $cinco"
+echo ""
+links -dump https://sourceforge.net/p/f-iptables/code/ci/master/tree/ | egrep -i "dev-fwiptables"
+echo ""
+exit; fi
+############################       english: new-versions: about of program
+############################       spanish: new-versions: acerca del programa
+if [ "$first_option" = "new-versions" ]; then echo -n
+echo ""
+echo "  Fran FireWall iptables"
+echo "$cincuenta new versions $cinco"
+echo ""
+links -dump https://sourceforge.net/projects/f-iptables/files/ | egrep -i "iptables"
+echo ""
+exit; fi
+############################       english: all-versions: about of program
+############################       spanish: all-versions: acerca del programa
+if [ "$first_option" = "all-versions" ]; then echo -n
+echo ""
+echo "  Fran FireWall iptables"
+echo "$cincuenta all versions $cinco"
+echo ""
+links -dump https://sourceforge.net/p/f-iptables/code/ci/master/tree/ | egrep -i "root root" | cut -c -40
+echo ""
+exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
 if [ "$first_option" = "about" ]; then echo -n
