@@ -4,20 +4,20 @@
 ##################################################
 
 #####   Program Name:
-Fran FireWall iptables: fwiptables
+  Fran FireWall iptables: fwiptables
 
 #####   Description:
-One Script in bash for iptables firewall
+  One Script in bash for iptables firewall
 
 #####   Install:
-chmod ugo+x fwiptables
-./fwiptables
-and then fwiptables is in /usr/bin/
+  chmod ugo+x fwiptables
+  ./fwiptables
+  and then fwiptables is in /usr/bin/
 
 #####   Devevelopment version program:
 The fran iptables ver in development in git code at sourceforge:
 
-https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
+  https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
 
 #####   New version program:
 The fran iptables ver 170 and versions up in files repository at sourceforge:
@@ -30,7 +30,7 @@ The fran iptables all versions in code repository at sourceforge:
   https://sourceforge.net/p/f-iptables/code/ci/master/tree/
 
 #####   License:
-Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+  Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 
 ##################################################
 
