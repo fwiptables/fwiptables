@@ -14,17 +14,17 @@ chmod ugo+x fwiptables
 ./fwiptables
 and then fwiptables is in /usr/bin/
 
-#####   Dev version:
+#####   Devevelopment version program:
 The fran iptables ver in development in git code at sourceforge:
 
 https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
 
-#####   New version:
+#####   New version program:
 The fran iptables ver 170 and versions up in files repository at sourceforge:
 
   https://sourceforge.net/projects/f-iptables/files
 
-#####   Old version:
+#####   Old version program:
 The fran iptables all versions in code repository at sourceforge:
 
   https://sourceforge.net/p/f-iptables/code/ci/master/tree/
