@@ -2321,8 +2321,6 @@ echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg
 echo "   [Remove iptables rules]              $fiptables eraserules "
 echo "   [Show long help in english]          $fiptables help "
 echo "   [Show long help in spanish]          $fiptables ayuda "
-echo
-echo
 # left script
 #######################         english: End of script
 #######################         spanish: fin del script
