@@ -211,9 +211,7 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fver" --menu "Selec
   803 list-sudo \
   00900 "Versions" \
   901 version \
-  902 new-versions \
-  903 dev-versions \
-  904 all-versions \
+  902 dev-versions \
   01000 "Help" \
   1001 about \
   1002 help \
@@ -408,15 +406,7 @@ $fiptables version
 echo;;
 902)
 clear
-$fiptables new-versions
-echo;;
-903)
-clear
 $fiptables dev-versions
-echo;;
-904)
-clear
-$fiptables all-versions
 echo;;
 801)
 clear
