@@ -1466,7 +1466,8 @@ exit; fi
 ############################       spanish: fw-list: lista de archivos con reglas en formato iptables
 if [ "$first_option" = "fw-list" ]; then echo -n
 echo
-echo "############################       english: iptables-list: file list with rules in iptables format in folder $directory_fw"
+echo "$cincuenta iptables list $cinco"
+echo "File list with rules in iptables format in folder $directory_fw"
 echo
 ls $directory_fw
 echo
@@ -1475,7 +1476,8 @@ exit; fi
 ############################       spanish: fw-restore: carga las reglas en formato iptables
 if [ "$first_option" = "fw-restore" ]; then echo -n
 echo
-echo "############################       english: iptables-restore: load the rules in iptables format in folder $directory_fw"
+echo "$cincuenta iptables restore $cinco"
+echo "Load the rules in iptables format in folder $directory_fw"
 echo
 ls $directory_fw
 echo
@@ -1493,7 +1495,8 @@ exit; fi
 ############################       spanish: fw-save: guarda las reglas en formato iptables
 if [ "$first_option" = "fw-save" ]; then echo -n
 echo
-echo "############################       english: iptables-save: save the rules in iptables format in folder $directory_fw"
+echo "$cincuenta iptables save $cinco"
+echo "Save the rules in iptables format in folder $directory_fw"
 echo
 ls $directory_fw
 echo
