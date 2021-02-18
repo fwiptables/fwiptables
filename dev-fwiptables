@@ -125,7 +125,7 @@ echo
 echo "   [List iptables rules]                 $fiptables list  "
 echo "   [Launch iptables like client web]     $fiptables client web-example1.cfg"
 echo "   [Launch iptables like server web]     $fiptables server web-example1.cfg"
-echo "   [Remove the iptables rules]           $fiptables eraserules "
+echo "   [Remove iptables rules]               $fiptables eraserules "
 echo "   [Show long help in english]           $fiptables help "
 echo "   [Show long help in spanish]           $fiptables ayuda "
 echo
@@ -1722,7 +1722,7 @@ echo
 echo "  [List iptables rules]                 $fiptables list  "
 echo "  [Launch iptables like client web]     $fiptables client web-example1.cfg"
 echo "  [Launch iptables like server web]     $fiptables server web-example1.cfg"
-echo "  [Remove the iptables rules]           $fiptables eraserules "
+echo "  [Remove iptables rules]               $fiptables eraserules "
 echo "  [Show long help in english]           $fiptables help "
 echo "  [Show long help in spanish]           $fiptables ayuda "
 echo
@@ -1810,7 +1810,7 @@ echo "$cincuenta  Examples"
 echo ""
 echo " $fiptables client games-example1.cfg      [Configure firewall to allow connect to web and games]"
 echo " $fiptables server server-example1.cfg     [Configure firewall to server somes services]"
-echo " $fiptables eraserules                     [Remove the iptables rules]"
+echo " $fiptables eraserules                     [Remove iptables rules]"
 echo " $fiptables list                           [List iptables rules]"
 echo " $fiptables help                           [Show this help in english]"
 echo ""
@@ -2285,10 +2285,8 @@ echo
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
-echo
 echo "  $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
-echo
 echo
 echo "$cinco   One First Option "
 echo ""
@@ -2320,7 +2318,7 @@ echo
 echo "   [List iptables rules]                $fiptables list  "
 echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
 echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
-echo "   [Remove the iptables rules]          $fiptables eraserules "
+echo "   [Remove iptables rules]              $fiptables eraserules "
 echo "   [Show long help in english]          $fiptables help "
 echo "   [Show long help in spanish]          $fiptables ayuda "
 echo
