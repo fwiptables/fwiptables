@@ -1500,7 +1500,7 @@ echo
 echo        "     Control+c to stop"
 read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini ; archivofin=$(sed 's/\///g' <<< "$archivoini")
 echo
-echo "$directory_fw/$archivofin save as nft-$directory_fw legacy-$directory_fw nft6-$directory_fw legacy6-fwruta"
+echo "saved"
 iptables-nft-save >> $directory_fw/$archivofin-nft-ipv4
 iptables-legacy-save >> $directory_fw/$archivofin-legacy-ipv4
 ip6tables-nft-save >> $directory_fw/$archivofin-nft-ipv6
