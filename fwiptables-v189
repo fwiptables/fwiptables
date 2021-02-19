@@ -1703,7 +1703,7 @@ echo "  [Show long help in english]           $fiptables help "
 echo "  [Show long help in spanish]           $fiptables ayuda "
 echo
 echo
-echo "$cincuenta  The first option"
+echo "$cincuenta The first option"
 echo ""
 echo "$cinco         Launch iptables rules"
 echo
@@ -1721,7 +1721,8 @@ echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules input and output ipv6"
 echo "     forward6: List iptables filter rules forward ipv6"
 echo
-echo "               The others tables "
+echo "$cinco         The others tables "
+echo
 echo "      nat-ip4: List iptables nat rules from ipv4"
 echo "      nat-ip6: List iptables nat rules from ipv6"
 echo "   mangle-ip4: List iptables mangle rules from ipv4"
@@ -1742,6 +1743,7 @@ echo "      tcpdump: Listen the connections"
 echo
 echo "$cinco         Modify config"
 echo
+echo "     reconfig: Rewrite default files in  $directory_config/*sample1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
 echo " clone-config: Clone a old config in a one new config"
@@ -1762,27 +1764,31 @@ echo "    trace-ip6: Trace route a one host with ipv6 tcp"
 echo
 echo "$cinco         Update options"
 echo
-echo "     reconfig: Rewrite default files in  $directory_config/*sample1.cfg"
 echo "      upgrade: Upgrade $fprogram at the latest version"
 echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
 echo "    list-sudo: List sudo $fiptables to other choosed users"
 echo
+echo "$cinco         Version"
+echo
+echo "      version: Info version program from $fiptables"
+echo " dev-versions: Version in development from $fiptables"
+echo
 echo "$cinco         Help"
 echo
-echo "        about: About the $fprogram"
+echo "        about: About the $fiptables"
+echo "  system-info: Show info  system"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
-echo "  system-info: Show info  system"
 echo "          cli: Comand line interface with menus"
 echo "          gui: Graphicall user interface"
 echo ""
-echo "$cincuenta  The second option: (optional)"
+echo "$cincuenta The second option: (optional)"
 echo ""
 echo "    $fiptables client and server takes the config from the command line"
 echo "    if launch without specific the config it takes $defaultcfg"
 echo "    you can  modify and create the files in the folder $directory_config"
 echo ""
-echo "$cincuenta  Examples"
+echo "$cincuenta Examples"
 echo ""
 echo " $fiptables client games-example1.cfg      [Configure firewall to allow connect to web and games]"
 echo " $fiptables server server-example1.cfg     [Configure firewall to server somes services]"
@@ -1790,7 +1796,7 @@ echo " $fiptables eraserules                     [Remove iptables rules]"
 echo " $fiptables list                           [List iptables rules]"
 echo " $fiptables help                           [Show this help in english]"
 echo ""
-echo "$cincuenta  Examples of variables to the configs files, $defaultcfg"
+echo "$cincuenta Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo ""
@@ -1859,7 +1865,7 @@ echo "  [Muestra larga ayuda en ingles]       $fiptables help "
 echo "  [Muestra larga ayuda en español]      $fiptables ayuda "
 echo
 echo
-echo "$cincuenta  La primera opción:"
+echo "$cincuenta La primera opción:"
 echo
 echo "$cinco         Lanza reglas de iptables"
 echo
@@ -1898,6 +1904,7 @@ echo "      tcpdump: Escuchar las conexiones ip"
 echo
 echo "$cinco         Modifica config"
 echo
+echo "     reconfig: Reescribe configs por defecto $directory_config/*ample1.cfg"
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-config: Crea una nueva configuracion.cfg en español"
 echo " clone-config: Duplica con otro nombre una config cfg"
@@ -1918,27 +1925,31 @@ echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
 echo
 echo "$cinco         Opciones de actualiciacion"
 echo
-echo "     reconfig: Reescribe configs por defecto $directory_config/*ample1.cfg"
 echo "      upgrade: Actualiza $fprogram a la ultima version"
 echo "    auth-sudo: Permite sudo $fiptables a usuarios elegidos"
 echo "    list-sudo: Lista sudo $fiptables to otros usuarios elegidos"
 echo
+echo "$cinco         Version"
+echo
+echo "      version: Informacion de la actual version $fiptables"
+echo " dev-versions: Version en desarrollo de $fiptables"
+echo
 echo "$cinco         Ayuda"
 echo
-echo "        About: Acerca de $fprogram"
+echo "        About: Acerca de $fiptables"
+echo "  system-info: Muestra la informacion del sistema"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
-echo "  system-info: Muestra la informacion del sistema"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
 echo
-echo "$cincuenta  La segunda opcion (opcional)"
+echo "$cincuenta La segunda opcion (opcional)"
 echo ""
 echo "    $fiptables cliente y servidor toman la configuración de una config"
 echo "    si lanzas sin especificar una config tomara por defecto $defaultcfg"
 echo "    Puedes modificar y crear archivos en la carpeta $directory_config"
 echo
-echo "$cincuenta   Ejemplos"
+echo "$cincuenta Ejemplos"
 echo
 echo "   $fiptables client games-example1.cfg    [Configura un cliente para web y juegos]"
 echo "   $fiptables server server-example1.cfg   [Configura un servidor]"
