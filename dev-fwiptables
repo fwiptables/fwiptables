@@ -141,7 +141,7 @@ if [ -f "$directory_config/$defaultcfg" ]; then echo -n
 else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
 fi
 if [ -d "$directory_fw" ]; then echo -n ; else rm "$directory_fw" &> /dev/null ; mkdir "$directory_fw" &> /dev/null ; fi
-if [ "$0" = "$directory_fiptables/$fiptables" ] ; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; fi
+if [ "$0" = "$directory_fiptables/$fiptables" ] ; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; "directory_fiptables/$fiptables" reconfig ; fi
 #############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$first_option" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
