@@ -1472,14 +1472,16 @@ echo "Load the rules in iptables format in folder $directory_fw"
 echo
 ls $directory_fw
 echo
-echo "first erase rules with:   fwiptables eraserules"
+echo "$cinco first erase rules with:   fwiptables eraserules"
 echo
-echo "folder in $directory_fw"
+echo "$cinco the iptables recover files are in folder $directory_fw"
 echo
-echo "then iptables restore with one command from above:"
+echo "$cinco then iptables restore with one command from above:"
 echo
-echo "with ipv4:    iptables-nft-restore or iptables-legacy-restore"
-echo "with ipv6:    ip6tables-nft-restore or ip6tables-legacy-restore"
+echo "with ipv4 neftables (nft)  :    iptables-nft-restore"
+echo "with ipv4 xtables (legacy) :    iptables-legacy-restore"
+echo "with ipv6 neftables (nft)  :    ip6tables-nft-restore"
+echo "with ipv6 xtables (legacy) :    ip6tables-legacy-restore"
 echo
 exit; fi
 ############################       english: fw-save: save the rules in iptables format
@@ -2287,7 +2289,6 @@ exit; fi
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "  $fprogram version $fver "
 echo "$cincuenta Wellcome $fprogram $cinco ";
-echo
 echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
