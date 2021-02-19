@@ -1705,15 +1705,15 @@ echo
 echo
 echo "$cincuenta The first option"
 echo ""
-echo "$cinco         Launch iptables rules"
+echo "$cinco         [Launch iptables rules]"
 echo
-echo "   eraserules: Delete the iptables rules in ipv4 and ipv6"
+echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
 echo "       client: Configure the firewall for internet client"
 echo "       server: Configure the firewall for internet client and internet server"
 echo " allpermisive: Configure a firewall very permisive"
 echo
-echo "$cinco         List iptables rules "
+echo "$cinco         [List iptables rules]"
 echo
 echo "               The filter table: "
 echo "         list: List iptables filter rules input and output ipv4"
@@ -1721,7 +1721,7 @@ echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules input and output ipv6"
 echo "     forward6: List iptables filter rules forward ipv6"
 echo
-echo "$cinco         The others tables "
+echo "$cinco         [The others tables]"
 echo
 echo "      nat-ip4: List iptables nat rules from ipv4"
 echo "      nat-ip6: List iptables nat rules from ipv6"
@@ -1732,7 +1732,7 @@ echo "      raw-ip6: List iptables raw rules from ipv4"
 echo " security-ip4: List iptables security rules from ipv4"
 echo " security-ip6: List iptables security rules from ipv6"
 echo
-echo "$cinco         List open sockets"
+echo "$cinco         [List open sockets]"
 echo
 echo "      iproute: Show net devices and ip route tables"
 echo "           ss: Show net sockets with command ss"
@@ -1741,7 +1741,7 @@ echo "      netstat: Show net sockets with command netstat"
 echo "  ipforwading: Show kernel config about forward"
 echo "      tcpdump: Listen the connections"
 echo
-echo "$cinco         Modify config"
+echo "$cinco         [Modify config]"
 echo
 echo "     reconfig: Rewrite default files in  $directory_config/*sample1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
@@ -1752,28 +1752,28 @@ echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
 echo "delete-config: Delete one configuration file"
 echo
-echo "$cinco         Ping icmp"
+echo "$cinco         [Ping icmp]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
 echo
-echo "$cinco         Trace tcp"
+echo "$cinco         [Trace tcp]"
 echo
 echo "    trace-ip4: Trace route a one host with ipv4 tcp"
 echo "    trace-ip6: Trace route a one host with ipv6 tcp"
 echo
-echo "$cinco         Update options"
+echo "$cinco         [Update options]"
 echo
 echo "      upgrade: Upgrade $fprogram at the latest version"
 echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
 echo "    list-sudo: List sudo $fiptables to other choosed users"
 echo
-echo "$cinco         Version"
+echo "$cinco         [Version]"
 echo
 echo "      version: Info version program from $fiptables"
 echo " dev-versions: Version in development from $fiptables"
 echo
-echo "$cinco         Help"
+echo "$cinco         [Help]"
 echo
 echo "        about: About the $fiptables"
 echo "  system-info: Show info  system"
@@ -1867,7 +1867,7 @@ echo
 echo
 echo "$cincuenta La primera opción:"
 echo
-echo "$cinco         Lanza reglas de iptables"
+echo "$cinco         [Lanza reglas de iptables]"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
@@ -1875,7 +1875,7 @@ echo "       client: Configura el cortafuegos de cliente"
 echo "       server: Configura el cortafuegos de servidor"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo
-echo "$cinco         Lista las reglas de tablas de iptables "
+echo "$cinco         [Lista las reglas de tablas de iptables]"
 echo
 echo "               La tabla de filtros "
 echo "         list: Lista las reglas de ipv4 de filtros de entrada y salida"
@@ -1893,7 +1893,7 @@ echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
 echo " security-ip4: lista las reglas de ip4 de security iptables"
 echo " security-ip6: Lista las reglas de ip6 de security iptables"
 echo
-echo "$cinco         Lista las conexiones abiertas"
+echo "$cinco         [Lista las conexiones abiertas]"
 echo
 echo "      iproute: Muestra los dispositivos de red y la tabla de rutas"
 echo "           ss: Muestra las conexiones con comando ss"
@@ -1902,7 +1902,7 @@ echo "         lsof: Muestra las conexiones con command lsof"
 echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
 echo "      tcpdump: Escuchar las conexiones ip"
 echo
-echo "$cinco         Modifica config"
+echo "$cinco         [Modifica config]"
 echo
 echo "     reconfig: Reescribe configs por defecto $directory_config/*ample1.cfg"
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
@@ -1913,28 +1913,28 @@ echo "  show-config: Muestra una existente configuracion.cfg"
 echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
 echo "delete-config: Borra unaa existente configuracion.cfg"
 echo
-echo "$cinco         Ping icmp"
+echo "$cinco         [Ping icmp]"
 echo
 echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
 echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
 echo
-echo "$cinco         Trace tcp"
+echo "$cinco         [Trace tcp]"
 echo
 echo "    trace-ip4: Traza ruta a una host con ipv4 tcp"
 echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
 echo
-echo "$cinco         Opciones de actualiciacion"
+echo "$cinco         [Opciones de actualiciacion]"
 echo
 echo "      upgrade: Actualiza $fprogram a la ultima version"
 echo "    auth-sudo: Permite sudo $fiptables a usuarios elegidos"
 echo "    list-sudo: Lista sudo $fiptables to otros usuarios elegidos"
 echo
-echo "$cinco         Version"
+echo "$cinco         [Version]"
 echo
 echo "      version: Informacion de la actual version $fiptables"
 echo " dev-versions: Version en desarrollo de $fiptables"
 echo
-echo "$cinco         Ayuda"
+echo "$cinco         [Ayuda]"
 echo
 echo "        About: Acerca de $fiptables"
 echo "  system-info: Muestra la informacion del sistema"
