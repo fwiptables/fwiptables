@@ -92,8 +92,6 @@ if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo ; echo "$cincuenta  $fiptables need to be root to work" ; echo ;
 echo "  $fiptables:  $fprogram version $fver "
 echo "$cincuenta you need to be root $cinco"
-echo
-echo
 echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
@@ -115,7 +113,6 @@ echo "     [Version]          version dev-versions "
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
 echo
-echo
 echo "$cinco   Optional $directory_config/[config.cfg]"
 echo
 echo "   $(ls $directory_config | fmt $flistado)"
@@ -128,8 +125,6 @@ echo "   [Launch iptables like server web]     $fiptables server web-example1.cf
 echo "   [Remove iptables rules]               $fiptables eraserules "
 echo "   [Show long help in english]           $fiptables help "
 echo "   [Show long help in spanish]           $fiptables ayuda "
-echo
-echo
 exit; fi
 ##
 ##
@@ -138,10 +133,11 @@ exit; fi
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -f "$directory_fiptables/$fiptables" ]; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; fi
 if [ -f "$directory_config/$defaultcfg" ]; then echo -n
-else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
-fi
+else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"; fi
 if [ -d "$directory_fw" ]; then echo -n ; else rm "$directory_fw" &> /dev/null ; mkdir "$directory_fw" &> /dev/null ; fi
-if [ "$0" = "$directory_fiptables/$fiptables" ] ; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; "directory_fiptables/$fiptables" reconfig ; fi
+if [ "$0" = "$directory_fiptables/$fiptables" ] ; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; "$directory_fiptables/$fiptables" reconfig ;
+echo $cincuenta fwiptables installed $cinco; echo  fwiptables installed in /usr/bin ; echo fwiptables to run fwiptables; exit ;
+fi
 #############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
 #############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$first_option" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
@@ -703,7 +699,7 @@ echo
 echo "$cinco"
 echo
 echo
-echo "    Upgrade The fwiptables in file /usr/bin/$fiptables with links command" ; echo ;
+echo "    Upgrade The fwiptables in file $directory_fiptables/$fiptables with links command" ; echo ;
 echo " $cinco    download manually   || or launch ||   $0 web-upgrade"
 echo
 echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $directory_fiptables/$fiptables"
