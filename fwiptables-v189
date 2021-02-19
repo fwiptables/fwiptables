@@ -1993,7 +1993,9 @@ if [ -f "$directory_config/$second_option" ]; then source $directory_config/$sec
 ########## spanish:  reglas de ipv4 de entrada y salida
 ### ipv4 filter legacy rules input
 $execlegacy  $allow_ipv4 $directory_bin/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $allow_vpn  $directory_bin/iptables-legacy -A INPUT -s $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv4 $allow_vpn  $directory_bin/iptables-legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+done
 $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-legacy -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $allow_log_udp  $directory_bin/iptables-legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $activarservidor  $directory_bin/iptables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2002,12 +2004,14 @@ $execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A INP
 $execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_send  $directory_bin/iptables-legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_recive $directory_bin/iptables-legacy -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execlegacy  $allow_ipv4 $allow_others_protocols $directory_bin/iptables-legacy -A INPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv4 $allow_others_protocols $directory_bin/iptables-legacy -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ### ipv4 filter legacy rules output
 $execlegacy  $allow_ipv4 $directory_bin/iptables-legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $allow_vpn  $directory_bin/iptables-legacy -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv4 $allow_vpn  $directory_bin/iptables-legacy -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+done
 $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $activarservidor  $directory_bin/iptables-legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2016,13 +2020,15 @@ $execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A OUT
 $execlegacy  $allow_ipv4 $activarcliente   $directory_bin/iptables-legacy -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_send  $directory_bin/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_recive  $directory_bin/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execlegacy  $allow_ipv4 $allow_others_protocols      $directory_bin/iptables-legacy -A OUTPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv4 $allow_others_protocols      $directory_bin/iptables-legacy -A OUTPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ########## ipv6 filter legacy rules input and output
 ### ipv6 filter legacy rules input
 $execlegacy  $allow_ipv6 $directory_bin/ip6tables-legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-legacy -A INPUT -s $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+done
 $execlegacy  $allow_ipv6 $allow_log_tcp  $directory_bin/ip6tables-legacy -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $allow_log_udp  $directory_bin/ip6tables-legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $activarservidor  $directory_bin/ip6tables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2032,12 +2038,14 @@ $execlegacy  $allow_ipv6 $activarcliente  $directory_bin/ip6tables-legacy -A INP
 $execlegacy  $allow_ipv6 $allow_ping_send      $directory_bin/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_recive  $directory_bin/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $directory_bin/ip6tables-legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execlegacy  $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-legacy -A INPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-legacy -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ### ipv6 filter legacy rules output
 $execlegacy  $allow_ipv6 $directory_bin/ip6tables-legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-legacy -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-legacy -A OUTPUT -s $one_vpn -j ACCEPT &> /dev/null
+done
 $execlegacy  $allow_ipv6 $allow_log_tcp  $directory_bin/ip6tables-legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $allow_log_udp  $directory_bin/ip6tables-legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $activarservidor  $directory_bin/ip6tables-legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2047,8 +2055,8 @@ $execlegacy  $allow_ipv6 $activarcliente   $directory_bin/ip6tables-legacy -A OU
 $execlegacy  $allow_ipv6 $allow_ping_send  $directory_bin/ip6tables-legacy -A OUTPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_recive  $directory_bin/ip6tables-legacy -A OUTPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $directory_bin/ip6tables-legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execlegacy  $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-legacy -A OUTPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execlegacy  $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-legacy -A OUTPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ############################       english: iptables rules ipv4  iptables-nft
 ############################       spanish: reglas de iptables ipv4   iptables-nft
@@ -2062,7 +2070,9 @@ done
 ########## spanish:  reglas de ipv4 nft de entrada y salida
 ### ipv4 filter nft rules input
 $execnft $allow_ipv4 $directory_bin/iptables-nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $allow_vpn  $directory_bin/iptables-nft -A INPUT -s $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execnft $allow_ipv4 $allow_vpn  $directory_bin/iptables-nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+done
 $execnft $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-nft -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv4 $allow_log_udp  $directory_bin/iptables-nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execnft $allow_ipv4 $activarservidor  $directory_bin/iptables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2071,12 +2081,14 @@ $execnft $allow_ipv4 $activarcliente  $directory_bin/iptables-nft -A INPUT -p ud
 $execnft $allow_ipv4 $activarcliente  $directory_bin/iptables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_send     $directory_bin/iptables-nft -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_recive   $directory_bin/iptables-nft -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execnft $allow_ipv4 $allow_others_protocols       $directory_bin/iptables-nft -A INPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execnft $allow_ipv4 $allow_others_protocols       $directory_bin/iptables-nft -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ### ipv4 filter nft rules output
 $execnft $allow_ipv4 $directory_bin/iptables-nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $allow_vpn  $directory_bin/iptables-nft -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execnft $allow_ipv4 $allow_vpn  $directory_bin/iptables-nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+done
 $execnft $allow_ipv4 $allow_log_tcp  $directory_bin/iptables-nft -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv4 $allow_log_udp  $directory_bin/iptables-nft -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $execnft $allow_ipv4 $activarservidor  $directory_bin/iptables-nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2085,13 +2097,15 @@ $execnft $allow_ipv4 $activarcliente   $directory_bin/iptables-nft -A OUTPUT -p 
 $execnft $allow_ipv4 $activarcliente   $directory_bin/iptables-nft -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_send    $directory_bin/iptables-nft -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_recive  $directory_bin/iptables-nft -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execnft $allow_ipv4 $allow_others_protocols      $directory_bin/iptables-nft -A OUTPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execnft $allow_ipv4 $allow_others_protocols      $directory_bin/iptables-nft -A OUTPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ########## ipv6 filter nft rules input and output
 ### ipv6 filter nft rules input
 $execnft $allow_ipv6 $directory_bin/ip6tables-nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-nft -A INPUT -s $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execnft $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+done
 $execnft $allow_ipv6 $allow_log_tcp  $directory_bin/ip6tables-nft -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv6 $allow_log_udp  $directory_bin/ip6tables-nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $execnft $allow_ipv6 $activarservidor  $directory_bin/ip6tables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2101,12 +2115,14 @@ $execnft $allow_ipv6 $activarcliente   $directory_bin/ip6tables-nft -A INPUT -p 
 $execnft $allow_ipv6 $allow_ping_send      $directory_bin/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_recive  $directory_bin/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $directory_bin/ip6tables-nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execnft $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-nft -A INPUT -p $protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execnft $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-nft -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ### ipv6 filter nft rules output
 $execnft $allow_ipv6 $directory_bin/ip6tables-nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-nft -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
+for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+do $execnft $allow_ipv6 $allow_vpn  $directory_bin/ip6tables-nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+done
 $execnft $allow_ipv6 $allow_log_tcp  $directory_bin/ip6tables-nft -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv6 $allow_log_udp  $directory_bin/ip6tables-nft -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $execnft $allow_ipv6 $activarservidor  $directory_bin/ip6tables-nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2116,8 +2132,8 @@ $execnft $allow_ipv6 $activarcliente   $directory_bin/ip6tables-nft -A OUTPUT -p
 $execnft $allow_ipv6 $allow_ping_send      $directory_bin/ip6tables-nft -A OUTPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_recive  $directory_bin/ip6tables-nft -A OUTPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $directory_bin/ip6tables-nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-for protocol in $(echo $others_protocols | sed 's/,/ /g') ;
-do $execnft $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-nft -A OUTPUT -p protocol -j ACCEPT &> /dev/null
+for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+do $execnft $allow_ipv6 $allow_others_protocols      $directory_bin/ip6tables-nft -A OUTPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
 ##########################################    haynat for ipv4 and ipv6
  $directory_bin/iptables-nft -t nat -F
