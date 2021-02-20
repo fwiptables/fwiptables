@@ -70,8 +70,8 @@ others_protocols=icmp,igmp ; #english: allow others protocols from /etc/protocol
 echo -n #english: net to connect like client or server #spanish: red para conectar como cliente o server
 net_ipv4_client=0/0  ;  #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 net_ipv4_server=0/0  ;  #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
-net_ipv6_client=::/0 ;  #english: the net to client ipv6, all is :: #spanish: la red cual cliente ipv6, todos es ::/0
-net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is :: #spanish: la red cual servidor ipv6, todos es ::/0
+net_ipv6_client=::/0 ;  #english: the net to client ipv6, all is ::/0 #spanish: la red cual cliente ipv6, todos es ::/0
+net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: la red cual servidor ipv6, todos es ::/0
 ##
 ##
 ##############################	     english:      End from user variables file, overwriter initial values       |||||
@@ -1805,7 +1805,11 @@ echo ""
 echo "$cincuenta Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
-echo ""
+echo
+echo "$cincuenta  vpn"
+echo
+echo "     vpn has open the firewall to excepcional host"
+echo
 echo "$cincuenta  The iptables netftilter"
 echo
 echo "     iptables legacy   is    support for xtables firewall"
@@ -1972,6 +1976,10 @@ echo
 echo "$cincuenta  Ejemplos de las variables de configuración, defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
+echo
+echo "$cincuenta  vpn"
+echo
+echo "     vpn tiene el firewall abierto a hosts excepcionales"
 echo
 echo "$cincuenta  Los iptables netftilter"
 echo
