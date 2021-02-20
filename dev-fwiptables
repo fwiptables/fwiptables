@@ -34,7 +34,7 @@ directory_fw="/etc/fwrecover" ;                                            #engl
 ##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfg
 ##
 ##
-flinea="-78" ; fvariables="-30" ; flistado="-90" ;
+flinea="-85" ; fvariables="-32" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
@@ -45,11 +45,15 @@ cinco="#####" ; cincuenta="##################################################"
 echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
 execlegacy=no ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
 execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
-echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
-input_state="" ; #english: modify with void or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
 echo -n #english: modify with void or no #spanish: modificar con vacio o no
 allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
+echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
+input_state="" ; #english: modify with void or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
+echo -n #english: add with "," and join ranges with ":" #spanish: añadir con "," y poner rangos con ":"
+client_udp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
+client_tcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
+echo -n #english: modify with void or no #spanish: modificar con vacio o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
 allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
@@ -59,8 +63,6 @@ allow_nat=no ; #english: void to do NAT masquerade to default route, or no #span
 allow_vpn=no ; #english: void to allow exceptional host, and no to drop exceptional host #spanish: vacio para permitir hosts excepcionales y no para evitar permitirlos
 allow_others_protocols=no ; #english: void to allow other protocol or no #spanish: vacio para permitir otro protocolo o no
 echo -n #english: add with "," and join ranges with ":" #spanish: añadir con "," y poner rangos con ":"
-client_udp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
-client_tcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 log_udp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
