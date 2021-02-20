@@ -1624,14 +1624,14 @@ echo "The fran iptables ver 170 and versions up in files repository at sourcefor
 echo ""
 echo "  https://sourceforge.net/projects/f-iptables/files"
 echo ""
-echo "$cinco   Old versions program:"
+echo "$cinco   All versions program:"
 echo "The fran iptables all versions in code repository at sourceforge:"
 echo ""
 echo "  https://sourceforge.net/p/f-iptables/code/ci/master/tree/"
 echo ""
 echo "$cinco   Git clone all versions:"
 echo ""
-echo "git clone https://git.code.sf.net/p/f-iptables/code f-iptables-code"
+echo "  git clone https://git.code.sf.net/p/f-iptables/code f-iptables-code"
 echo
 echo "$cinco   License:"
 echo "  Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
@@ -1715,11 +1715,17 @@ echo " allpermisive: Configure a firewall very permisive"
 echo
 echo "$cinco         [List iptables rules]"
 echo
-echo "               The filter table: "
+echo "               The filter table:"
 echo "         list: List iptables filter rules input and output ipv4"
 echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules input and output ipv6"
 echo "     forward6: List iptables filter rules forward ipv6"
+echo
+echo "               The filter table numerical: "
+echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
+echo "   forwardnum: List iptables filter rules foward in numbers"
+echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
+echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo
 echo "$cinco         [The others tables]"
 echo
@@ -1882,6 +1888,12 @@ echo "         list: Lista las reglas de ipv4 de filtros de entrada y salida"
 echo "      forward: Lista las reglas de ipv4 de filtros de reenvio"
 echo "        list6: Lista las reglas de ipv6 de filtros de entrada y salida"
 echo "     forward6: Lista las reglas de ipv6 de filtros de reenvio"
+echo
+echo "               La tabla de filtros numerica"
+echo "      listnum: Lista las reglas de ipv4 de filtros de entrada y salida en numeros"
+echo "   forwardnum: Lista las reglas de ipv4 de filtros de reenvio en numeros"
+echo "     list6num: Lista las reglas de ipv6 de filtros de entrada y salida en numeros"
+echo "  forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros"
 echo
 echo "               Las otras tablas "
 echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
