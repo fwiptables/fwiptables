@@ -4,7 +4,7 @@
 ##################################################
 
 #####   Program Name:
-  Fran FireWall iptables: fwiptables
+  Fran FireWall iptables: 
 
 #####   Description:
   One Script in bash for iptables firewall
@@ -24,14 +24,14 @@ The fran iptables ver 170 and versions up in files repository at sourceforge:
 
   https://sourceforge.net/projects/f-iptables/files
 
-#####   Old versions program:
+#####   All versions program:
 The fran iptables all versions in code repository at sourceforge:
 
   https://sourceforge.net/p/f-iptables/code/ci/master/tree/
 
 #####   Git clone all versions:
 
-git clone https://git.code.sf.net/p/f-iptables/code f-iptables-code
+  git clone https://git.code.sf.net/p/f-iptables/code f-iptables-code
 
 #####   License:
   Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
