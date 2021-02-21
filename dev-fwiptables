@@ -16,16 +16,22 @@
 ##  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ##
 ###################################################
-## the variables names and the path 
+## the variables names and the path
 first_option="$1" ; second_option="$2" ;                                   #english: variables at launch  #spanish: variables al lanzar
 launch_iptables="no"; no="no" ; si= ; yes= ;                               #english: varibales void and no  #spanish: variables vacio y no
 fdescription="One Script in bash for iptables firewall"                    #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="190" ;           #english: Name and Version  #spanish: Nombre y Version
-fweb="https://sourceforge.net/projects/f-iptables/files/latest/download" ; #english: download web link  #spanish: descarga del enlace web
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;                  #english: whereis path  #spanish: donde esta el path
 directory_binary="/usr/sbin" ;                                             #english: iptables programs path  #spanish: ruta de iptables
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;            #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                                     #english: path to save firewall  #spanish: ruta de firewall guardados
+flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
+#english: [download web link]  #spanish: [descarga del enlace web]
+fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ; 
+fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
+fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
+fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 ##################################
 ###################################################
 ##
@@ -34,7 +40,7 @@ directory_fwrecover="/etc/fwrecover" ;                                     #engl
 ##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfg
 ##
 ##
-flinea="-85" ; fvariables="-32" ; flistado="-90" ;
+flinea="-90" ; fvariables="-32" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
@@ -45,15 +51,15 @@ cinco="#####" ; cincuenta="##################################################"
 echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
 execlegacy=no ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
 execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
-echo -n #english: modify with void or no #spanish: modificar con vacio o no
+echo -n #english: ip protocol, modify with void or no #spanish: procolo ip, modificar con vacio o no
 allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
-echo -n #english: state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
+echo -n #english: input state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
 input_state="" ; #english: modify with void or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
-echo -n #english: add with "," and join ranges with ":" #spanish: añadir con "," y poner rangos con ":"
+echo -n #english: client ports, add with "," and join ranges with ":" #spanish: puertos cliente, añadir con "," y poner rangos con ":"
 client_udp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
 client_tcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
-echo -n #english: modify with void or no #spanish: modificar con vacio o no
+echo -n #english: _Other options_,  modify with void or no #spanish: _Otras opciones_ modificar con vacio o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
 allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
@@ -62,7 +68,7 @@ allow_forwading=no ; #english: void to allow ip forward, and no to drop forward 
 allow_nat=no ; #english: void to do NAT masquerade to default route, or no #spanish: vacio para hacer masquerade a otras redes o nada
 allow_vpn=no ; #english: void to allow exceptional host, and no to drop exceptional host #spanish: vacio para permitir hosts excepcionales y no para evitar permitirlos
 allow_others_protocols=no ; #english: void to allow other protocol or no #spanish: vacio para permitir otro protocolo o no
-echo -n #english: add with "," and join ranges with ":" #spanish: añadir con "," y poner rangos con ":"
+echo -n #english: _Other options_, add with "," and join ranges with ":" #spanish: _Otras opciones_, añadir con "," y poner rangos con ":"
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 log_udp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
@@ -81,7 +87,7 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 ##
-## if This is the line number 60 to then up .. flinea="-number" .
+## if This is the line number 90 to then up .. flinea="-number" .
 ##
 ##
 ##
@@ -1574,7 +1580,7 @@ echo ""
 echo "  $fprogram"
 echo "$cincuenta Dev versions $cinco"
 echo ""
-echo https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
+echo $fweb_development
 echo ""
 exit; fi
 ############################       english: new-versions: about of program
@@ -1584,7 +1590,7 @@ echo ""
 echo "  $fprogram"
 echo "$cincuenta New versions $cinco"
 echo ""
-links -dump https://sourceforge.net/projects/f-iptables/files/ | egrep -i "iptables"
+links -dump $fweb_newfiles | egrep -i "iptables"
 echo ""
 exit; fi
 ############################       english: all-versions: about of program
@@ -1594,7 +1600,7 @@ echo ""
 echo "  $fprogram"
 echo "$cincuenta All versions $cinco"
 echo ""
-links -dump https://sourceforge.net/p/f-iptables/code/ci/master/tree/ | egrep -i "root root" | cut -c -39
+links -dump $fweb_tree | egrep -i "root root" | cut -c -39
 echo ""
 exit; fi
 ############################       english: about: about of program
@@ -1619,24 +1625,24 @@ echo
 echo "$cinco   Devevelopments version program:"
 echo "The fran iptables ver in development in git code at sourceforge:"
 echo ""
-echo "  https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw"
+echo "  $fweb_development"
 echo ""
 echo "$cinco   New versions program:"
 echo "The fran iptables ver 170 and versions up in files repository at sourceforge:"
 echo ""
-echo "  https://sourceforge.net/projects/f-iptables/files"
+echo "  $fweb_newfiles"
 echo ""
 echo "$cinco   All versions program:"
 echo "The fran iptables all versions in code repository at sourceforge:"
 echo ""
-echo "  https://sourceforge.net/p/f-iptables/code/ci/master/tree/"
+echo "  $fweb_tree"
 echo ""
 echo "$cinco   Git clone all versions:"
 echo ""
-echo "  git clone https://git.code.sf.net/p/f-iptables/code f-iptables-code"
+echo "  git clone $fweb_git"
 echo
 echo "$cinco   License:"
-echo "  Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
+echo "  $flicense"
 echo ""
 echo "$cincuenta"
 echo ""
@@ -1831,7 +1837,7 @@ echo
 echo "$cincuenta  License"
 echo ""
 echo "  Download the latest version $fprogram from sourceforge"
-echo "  $fweb"
+echo "  $fweb_latest"
 echo "  This script is free software with copyleft from licence gpl, it is free, there is no warranty"
 echo
 exit; fi
@@ -2002,7 +2008,7 @@ echo
 echo "$cincuenta  Licencia:"
 echo
 echo "  Descarga la ultima version de $fprogram desde la web de sourceforge "
-echo "  $fweb"
+echo "  $fweb_latest"
 echo "  Este programa es software libre, licencia gpl, copyleft, libre, gratis y no hay garantia"
 echo
 exit; fi
