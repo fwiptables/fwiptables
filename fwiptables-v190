@@ -43,7 +43,7 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 ##
 ##
 ## #english:[Other variables] #spanish:[Otras variables]
-flinea="-93" ; fvariables="-32" ; flistado="-90" ;
+flinea="-95" ; fvariables="-33" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
@@ -57,12 +57,15 @@ execnft= ; #english: launch neftables, void to yes or type no #spanish: lanza ne
 echo -n #english: ip protocol, modify with void or no #spanish: procolo ip, modificar con vacio o no
 allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
-echo -n #english: input state: void for all input states or input packet state #spanish: estado: vacio para todos los estados de entrada o estado de entrada
+echo -n #english: Input State: void for all input states or input packet state #spanish: Estado: vacio para todos los estados de entrada o estado de entrada
 input_state="" ; #english: modify with void or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
-echo -n #english: client ports, add with "," and join ranges with ":" #spanish: puertos cliente, añadir con "," y poner rangos con ":"
+echo -n #english: Client ports, add with "," and join ranges with ":" #spanish: Puertos Cliente, añadir con "," y poner rangos con ":"
 client_udp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
 client_tcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
-echo -n #english: _Other options_,  modify with void or no #spanish: _Otras opciones_ modificar con vacio o no
+echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: Puertos Servidor, añadir con "," y poner rangos con ":"
+server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
+server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
+echo -n #english: Allow Other Options,  modify with void or no #spanish: Permitir Otras Opciones, modificar con vacio o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
 allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
@@ -71,14 +74,12 @@ allow_forwading=no ; #english: void to allow ip forward, and no to drop forward 
 allow_nat=no ; #english: void to do NAT masquerade to default route, or no #spanish: vacio para hacer masquerade a otras redes o nada
 allow_vpn=no ; #english: void to allow exceptional host, and no to drop exceptional host #spanish: vacio para permitir hosts excepcionales y no para evitar permitirlos
 allow_others_protocols=no ; #english: void to allow other protocol or no #spanish: vacio para permitir otro protocolo o no
-echo -n #english: _Other options_, add with "," and join ranges with ":" #spanish: _Otras opciones_, añadir con "," y poner rangos con ":"
-server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
-server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
+echo -n #english: Other Options, add with "," and join ranges with ":" #spanish: Otras Opciones, añadir con "," y poner rangos con ":"
 log_udp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
 log_tcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
 vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
 others_protocols=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
-echo -n #english: net to connect like client or server #spanish: red para conectar como cliente o server
+echo -n #english: Net to connect like client or server #spanish: Red para conectar como cliente o server
 net_ipv4_client=0/0  ;  #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 net_ipv4_server=0/0  ;  #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
 net_ipv6_client=::/0 ;  #english: the net to client ipv6, all is ::/0 #spanish: la red cual cliente ipv6, todos es ::/0
@@ -648,6 +649,11 @@ echo "server_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_con
 echo "client_udp=domain,ntp,bootpc,tftp">> $directory_config/ftp-example1.cfg
 echo "server_udp=tftp">> $directory_config/ftp-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1.cfg
+## config: printer-example1.cfg ##
+sed 's/^/# example # /g' $directory_config/default.cfg > $directory_config/printer-example1.cfg
+echo "# config  #" >> $directory_config/printer-example1.cfg
+echo "client_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.cfg
+echo "server_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.cfg
 ## config: irc-example1.cfg ##
 sed 's/^/# example # /g' $directory_config/default.cfg > $directory_config/irc-example1.cfg
 echo "# config  #" >> $directory_config/irc-example1.cfg
