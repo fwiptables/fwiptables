@@ -16,7 +16,8 @@
 ##  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ##
 ###################################################
-## the variables names and the path
+###################################################
+## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                                   #english: variables at launch  #spanish: variables al lanzar
 launch_iptables="no"; no="no" ; si= ; yes= ;                               #english: varibales void and no  #spanish: variables vacio y no
 fdescription="One Script in bash for iptables firewall"                    #english: program description  #spanish: descripcion del programa
@@ -24,23 +25,25 @@ fprogram="Fran FireWall iptables: $fiptables" ; fversion="190" ;           #engl
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;                  #english: whereis path  #spanish: donde esta el path
 directory_binary="/usr/sbin" ;                                             #english: iptables programs path  #spanish: ruta de iptables
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;            #english: path to config files  #spanish: archivos de configuracion
-directory_fwrecover="/etc/fwrecover" ;                                     #english: path to save firewall  #spanish: ruta de firewall guardados
-flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
+directory_fwrecover="/etc/fwrecover" ;                                     #english: path to save firewall  #spanish: ruta de firewall guardado
 #english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ; 
 fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
-##################################
+#english: [Program license] #spanish: [Licencia del programa]
+flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
+###################################################
 ###################################################
 ##
 ##
 ##################################       english: number line of the custom variables and number of customs variables and wide at list cfg
-##################################       spanish: numero de linea de las variables modificables y numero de variables modificables y ancho al listar cfg
+##################################       spanish: numero de linea de las variables modificables y su numero. Ancho al listar cfg
 ##
 ##
-flinea="-90" ; fvariables="-32" ; flistado="-90" ;
+## #english:[Other variables] #spanish:[Otras variables]
+flinea="-93" ; fvariables="-32" ; flistado="-90" ;
 cinco="#####" ; cincuenta="##################################################"
 ##
 ##
