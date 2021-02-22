@@ -101,42 +101,38 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 if [ "$(id -u)" = "0" ]; then echo  -n ;
-else echo ; echo "$cincuenta need to be root to work" ; echo ;
-echo "  $fiptables:  $fprogram version $fversion "
-echo "$cincuenta you need to be root $cinco"
-# echo "$cinco   One First Option "
+else echo "$cincuenta need to be root to work" ; echo ;
+echo "$fprogram version $fversion , need to be root to work"
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
-echo "     [List rules]       list forward list6 forward6  nat-ip4 nat-ip6"
+echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [Modify config]    reconfig show-config"
-echo "                        new-config nueva-config"
+echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config"
 echo "                        rename-config delete-config"
-echo "     [Others tables]    raw-ip4 raw-ip6"
-echo "                        mangle-ip4 mangle-ip6"
+echo "     [Others tables]    raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Version]          version dev-versions "
+echo "     [Version]          version dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
+echo ""
+echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
-echo "$cinco   Optional $directory_config/[config.cfg]"
+echo "$(ls $directory_config | fmt $flistado)"
 echo
-echo "   $(ls $directory_config | fmt $flistado)"
+echo "$cinco  [The examples]"
 echo
-echo "$cinco   [The examples]"
-echo
-echo "   [List iptables rules]                 $fiptables list  "
-echo "   [Launch iptables like client web]     $fiptables client web-example1.cfg"
-echo "   [Launch iptables like server web]     $fiptables server web-example1.cfg"
-echo "   [Remove iptables rules]               $fiptables eraserules "
-echo "   [Show long help in english]           $fiptables help "
-echo "   [Show long help in spanish]           $fiptables ayuda "
+echo "   [List iptables rules]                $fiptables list  "
+echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
+echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
+echo "   [Remove iptables rules]              $fiptables eraserules "
+echo "   [Show long help in english]          $fiptables help "
+echo "   [Show long help in spanish]          $fiptables ayuda "
 exit; fi
 ##
 ##
@@ -2325,20 +2321,17 @@ echo
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
-echo "  $fprogram version $fversion "
+echo "$fprogram version $fversion "
 echo "$cincuenta Wellcome $cinco ";
-# echo "$cinco   One First Option "
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [Modify config]    reconfig show-config"
-echo "                        new-config nueva-config"
+echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config"
 echo "                        rename-config delete-config"
-echo "     [Others tables]    raw-ip4 raw-ip6"
-echo "                        mangle-ip4 mangle-ip6"
+echo "     [Others tables]    raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
