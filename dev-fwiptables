@@ -213,13 +213,17 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   00900 "Versions" \
   901 version \
   902 dev-versions \
-  01000 "Help" \
-  1001 about \
-  1002 help \
-  1003 ayuda \
-  1004 system-info \
-  1005 cli \
-  1006 gui \
+  01000 "Recover fw" \
+  1001 "fw-list" \
+  1002 "fw-save" \
+  1003 "fw-restore" \
+  01100 "Help" \
+  1101 about \
+  1102 help \
+  1103 ayuda \
+  1104 system-info \
+  1105 cli \
+  1106 gui \
   )"
 case $menuprincipal in
  0*)
@@ -401,14 +405,6 @@ echo;;
 clear
 traceroute -6 -T fast.com
 echo;;
-901)
-clear
-$fiptables version
-echo;;
-902)
-clear
-$fiptables dev-versions
-echo;;
 801)
 clear
 $fiptables upgrade
@@ -421,27 +417,47 @@ echo;;
 clear
 $fiptables list-sudo
 echo;;
+901)
+clear
+$fiptables version
+echo;;
+902)
+clear
+$fiptables dev-versions
+echo;;
 1001)
 clear
-$fiptables about
+$fiptables fw-list
 echo;;
 1002)
 clear
-$fiptables help | less
+$fiptables fw-save
 echo;;
 1003)
 clear
+$fiptables fw-restore
+echo;;
+1101)
+clear
+$fiptables about
+echo;;
+1102)
+clear
+$fiptables help | less
+echo;;
+1103)
+clear
 $fiptables ayuda | less
 echo;;
-1004)
+1104)
 clear
 $fiptables system-info
 echo;;
-1005)
+1105)
 clear
 $fiptables cli
 echo;;
-1006)
+1106)
 clear
 $fiptables gui
 echo;;
