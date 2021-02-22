@@ -8,15 +8,17 @@
 ##   english: The comments are in english language and spanish language
 ##   spanish: Los comentarios estan en ingles y en español
 ##
-##############################
+##
 ##############################        english:   basic system variables
 ##############################        spanish:   las basicas variables del sistema
 ##
 ##  english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
 ##  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ##
-###################################################
-###################################################
+################################################ 
+################################################ 
+##
+##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                                   #english: variables at launch  #spanish: variables al lanzar
 launch_iptables="no"; no="no" ; si= ; yes= ;                               #english: varibales void and no  #spanish: variables vacio y no
@@ -34,21 +36,15 @@ fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 #english: [Program license] #spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
-###################################################
-###################################################
-##
-##
-##################################       english: number line of the custom variables and number of customs variables and wide at list cfg
-##################################       spanish: numero de linea de las variables modificables y su numero. Ancho al listar cfg
-##
-##
-## #english:[Other variables] #spanish:[Otras variables]
-flinea="-95" ; fvariables="-33" ; flistado="-90" ;
+#english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ; cincuenta="##################################################"
+flinea="-90" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
+fvariables="-33" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
+flistado="-90" ;                                 #english: wide at list config files #spanish: Ancho al listar cfg
 ##
 ##
-##################################        english: fvariables:    variables to modify
-##################################        spanish: fvariables:    variables para modificar
+################################################        english: fvariables:    variables to modify
+################################################        spanish: fvariables:    variables para modificar
 ##
 ##
 echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
