@@ -167,7 +167,7 @@ echo
 echo "work in progress"
 echo
 cd $directory_config
-menuprincipal="$(dialog --stdout --title "$fprogram version $fver" --menu "Select:" 0 0 0 \
+menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
   00100 "launch rules" \
   101 "eraserules" \
   102 "offline" \
