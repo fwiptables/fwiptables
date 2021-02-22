@@ -431,11 +431,11 @@ $fiptables about
 echo;;
 1002)
 clear
-$fiptables help
+$fiptables help | less
 echo;;
 1003)
 clear
-$fiptables ayuda
+$fiptables ayuda | less
 echo;;
 1004)
 clear
@@ -2322,7 +2322,7 @@ exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "$fprogram version $fversion "
-echo "$cincuenta Wellcome $cinco ";
+echo "$cincuenta Wellcome $fiptables $cinco ";
 echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
