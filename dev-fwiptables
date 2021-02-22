@@ -1758,7 +1758,7 @@ echo "      tcpdump: Listen the connections"
 echo
 echo "$cinco         [Modify config]"
 echo
-echo "     reconfig: Rewrite default files in  $directory_config/*sample1.cfg"
+echo "     reconfig: Rewrite default files in $directory_config/*sample1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
 echo " clone-config: Clone a old config in a one new config"
