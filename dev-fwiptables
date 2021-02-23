@@ -21,7 +21,7 @@
 ##
 ##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-first_option="$1" ; second_option="$2" ;                            #english: variables at launch  #spanish: variables al lanzar
+first_option="$1" ; second_option="$2" ; third_option="$3" ;        #english: variables at launch  #spanish: variables al lanzar
 config_option="no" ; launch_iptables="no" ;                         #english: auto variables to no #spanish: auto variables a no
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
@@ -42,7 +42,7 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 cinco="#####" ; cincuenta="##################################################"
 flinea="-92" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
 fvariables="-33" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
-flistado="-90" ;                                 #english: wide at list config files #spanish: Ancho al listar cfg
+flistado="-90" ;                                 #english: wide of list config files #spanish: Ancho al listar cfg
 ##
 ##
 ##
@@ -102,7 +102,6 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work" ; echo ;
 echo "$fprogram version $fversion , need to be root to work"
-echo ""
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
@@ -125,7 +124,6 @@ echo
 echo "$(ls $directory_config | fmt $flistado)"
 echo
 echo "$cinco  [The examples]"
-echo
 echo "   [List iptables rules]                $fiptables list  "
 echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
 echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
@@ -1277,7 +1275,7 @@ case "$config_option" in
 "si")
 editor "$directory_config/$second_option"
 ;;
-else)
+"no")
 echo "$fprogram version $fversion"
 echo "$cincuenta Modify config $cinco"
 echo
@@ -1307,6 +1305,11 @@ exit; fi
 ############################       spanish: show-config: muestra una configuracion
 if [ "$first_option" = "show-config" ]; then echo -n
 echo
+case "$config_option" in
+"si")
+cat "$directory_config/$second_option"
+;;
+"no")
 echo "$fprogram  version $fversion"
 echo "$cincuenta Show config $cinco"
 echo
@@ -1330,7 +1333,8 @@ echo "  $cinco        Launch the firewall for client:              $fiptables cl
 echo "" ;
 echo "  $cinco        O launch the firewall for server:            $fiptables server $frespuestab   " ;
 echo "" ;
-echo "" ;
+echo "" ;;
+esac
 exit; fi
 ############################       english: rename-config: change the name  a one config
 ############################       spanish: rename-config: cambia el nombre a  una configuracion
@@ -1364,10 +1368,16 @@ echo "  $cinco        O launch the firewall for server:            $fiptables se
 echo "" ;
 echo "" ;
 exit; fi
-############################       english: delete-config: delete a one config
-############################       spanish: delete-config: elimina una configuracion
+############################       english: delete-config: delete a old config
+############################       spanish: delete-config: elimina una vieja configuracion
 if [ "$first_option" = "delete-config" ]; then echo -n
 echo
+case "$config_option" in
+"si")
+rm "$directory_config/$second_option"
+echo "$directory_config/$second_option" deleted
+;;
+"no")
 echo "$fprogram version $fversion"
 echo "$cincuenta  Delete config $cinco"
 echo
@@ -1385,7 +1395,8 @@ echo
 rm $directory_config/$fborradaa
 echo
 echo        "     Config deleted: $fborrada"
-echo
+echo ;;
+esac
 exit; fi
 ############################       english: auth-sudo: the auth-sudo option en english
 ############################       spanish: auth-sudo: la opcion de auth-sudo en ingles
@@ -2366,8 +2377,7 @@ exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "$fprogram version $fversion "
-echo "$cincuenta Wellcome $fiptables $cinco ";
-echo ""
+echo "$cincuenta Wellcome $fiptables $cinco "
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
@@ -2390,7 +2400,6 @@ echo
 echo "$(ls $directory_config | fmt $flistado)"
 echo
 echo "$cinco  [The examples]"
-echo
 echo "   [List iptables rules]                $fiptables list  "
 echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
 echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
