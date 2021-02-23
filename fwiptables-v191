@@ -23,8 +23,8 @@
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                            #english: variables at launch  #spanish: variables al lanzar
 config_option="no" ; launch_iptables="no" ;                         #english: auto variables to no #spanish: auto variables a no
-launch_server=no ; launch_client=no ; launch_permisive=no ;         #english: auto variables to no #spanish: auto variables a no
-fdirectory_fiptables="/usr/bin" ; fiptables="fwiptables" ;          #english: whereis path  #spanish: donde esta el path
+launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
+directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="191" ;    #english: Name and Version  #spanish: Nombre y Version
 directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
@@ -135,18 +135,22 @@ echo "   [Show long help in spanish]          $fiptables ayuda "
 exit; fi
 ##
 ##
-##############################       english: defaultcfg: update the file default.cfg          ###########################################  
-##############################       spanish: defaultcfg: actualiza el archivo default.cfg     ###########################################  
+##############################       english: default configs            ###########################################  
+##############################       spanish: default configurations     ###########################################  
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -f "$directory_fiptables/$fiptables" ]; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; fi
 if [ -f "$directory_config/$defaultcfg" ]; then echo -n
 else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"; fi
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-if [ "$0" = "$directory_fiptables/$fiptables" ] ; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; "$directory_fiptables/$fiptables" reconfig ;
-echo $cincuenta fwiptables installed $cinco; echo  fwiptables installed in /usr/bin ; echo fwiptables to run fwiptables; exit ; fi
+##############################       english: auto installer if necesary          ###########################################  
+##############################       spanish: auto instalador si es necesario     ###########################################  
+if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+else cp $0 $directory_fiptables/$fiptables &> /dev/null ; 
+echo "$fiptables $fversion installed in /usr/bin/$fiptables"
+echo "launch $fiptables to run $fiptables" ; fi
 ##############################       english: if third_option is a valid config.cfg          ###########################################  
 ##############################       spanish: si tercera opcion es un validoconfig.cfg       ###########################################  
-if [ -f "$directory_config/$second_option" ]; then config_option=si; else config_option=no; fi
+if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
 ##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
 ##############################      spanish: launch-rules: Primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$first_option" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
@@ -606,7 +610,7 @@ exit ; fi
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
 if [ "$first_option" = "reconfig" ]; then echo -n
-rm $directory_config/*ample1.cfg
+rm $directory_config/*ample1.cfg &> /dev/null
 echo
 echo "$cincuenta $fprogram version $fversion $cinco"
 echo "$cinco    Updating default configurations of examples:  $directory_config/*ample1.cfg "
@@ -704,6 +708,9 @@ echo "$cincuenta   The configs are in folder $directory_config,  $cinco"
 ls $directory_config | fmt $flistado  ;
 echo
 echo
+echo "$cincuenta $fiptables installed $cinco"
+echo "$fiptables $fversion installed in /usr/bin/$fiptables"
+echo "$fiptables to run $fiptables"
 exit ; fi
 ##############################       english: web-upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: web-upgrade: actualiza en el archivo /usr/bin/fwiptables
@@ -1198,7 +1205,7 @@ echo; echo; echo;
 echo "  The new file will be $directory_config/$frespuestab";
 echo "  Edit the file $frespuestab"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
-echo "" ; echo ""; editor $directory_config/$frespuestab;
+echo "" ; echo ""; editor "$directory_config/$frespuestab";
 echo "" ;
 echo "  $cinco        launch firewall for client:              $fiptables client $frespuestab   " ;
 echo "" ;
@@ -1266,6 +1273,11 @@ exit; fi
 ############################       spanish: modify-config: modify una configuracion.cfg
 if [ "$first_option" = "modify-config" ]; then echo -n
 echo
+case "$config_option" in
+"si")
+editor "$directory_config/$second_option"
+;;
+else)
 echo "$fprogram version $fversion"
 echo "$cincuenta Modify config $cinco"
 echo
@@ -1288,6 +1300,8 @@ echo "" ;
 echo "  $cinco        Or launch the firewall for server:           $fiptables server $frespuestab   " ;
 echo "" ;
 echo "" ;
+;;
+esac
 exit; fi
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
