@@ -1,7 +1,7 @@
 #!/bin/bash
 ##
-##
-##############################
+################################################   english: begin the script
+################################################   spanish: empieza el script
 ##
 ##   This program is wWith gpl license, the program is copyleft, it is free.
 ##
@@ -9,14 +9,15 @@
 ##   spanish: Los comentarios estan en ingles y en español
 ##
 ##
-##############################        english:   basic system variables
-##############################        spanish:   las basicas variables del sistema
+##############################        example in english:   basic system variables
+##############################        ejemplo in spanish:   las basicas variables del sistema
 ##
 ##  english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
 ##  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ##
-################################################ 
-################################################ 
+################################################   english:   basic system variables
+################################################   spanish:   las basicas variables del sistema
+##
 ##
 ##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
@@ -38,9 +39,10 @@ fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
 #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ; cincuenta="##################################################"
-flinea="-90" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
+flinea="-92" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
 fvariables="-33" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
 flistado="-90" ;                                 #english: wide at list config files #spanish: Ancho al listar cfg
+##
 ##
 ##
 ################################################        english: fvariables:    variables to modify
