@@ -21,14 +21,15 @@
 ##
 ##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-first_option="$1" ; second_option="$2" ;                                   #english: variables at launch  #spanish: variables al lanzar
-launch_iptables="no"; no="no" ; si= ; yes= ;                               #english: varibales void and no  #spanish: variables vacio y no
-directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;                  #english: whereis path  #spanish: donde esta el path
-fdescription="One Script in bash for iptables firewall"                    #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="191" ;           #english: Name and Version  #spanish: Nombre y Version
-directory_binary="/usr/sbin" ;                                             #english: iptables programs path  #spanish: ruta de iptables
-directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;            #english: path to config files  #spanish: archivos de configuracion
-directory_fwrecover="/etc/fwrecover" ;                                     #english: path to save firewall  #spanish: ruta de firewall guardado
+first_option="$1" ; second_option="$2" ;                            #english: variables at launch  #spanish: variables al lanzar
+config_option="no" ; launch_iptables="no" ;                         #english: auto variables to no #spanish: auto variables a no
+launch_server=no ; launch_client=no ; launch_permisive=no ;         #english: auto variables to no #spanish: auto variables a no
+fdirectory_fiptables="/usr/bin" ; fiptables="fwiptables" ;          #english: whereis path  #spanish: donde esta el path
+fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="191" ;    #english: Name and Version  #spanish: Nombre y Version
+directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
+directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
+directory_fwrecover="/etc/fwrecover" ;                              #english: path to save firewall  #spanish: ruta de firewall guardado
 #english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ; 
 fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
@@ -134,28 +135,30 @@ echo "   [Show long help in spanish]          $fiptables ayuda "
 exit; fi
 ##
 ##
-##############################       english: defaultcfg: update the file default.cfg          ###########################################  #################################
-##############################       spanish: defaultcfg: actualiza el archivo default.cfg     ###########################################  #################################
+##############################       english: defaultcfg: update the file default.cfg          ###########################################  
+##############################       spanish: defaultcfg: actualiza el archivo default.cfg     ###########################################  
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -f "$directory_fiptables/$fiptables" ]; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; fi
 if [ -f "$directory_config/$defaultcfg" ]; then echo -n
 else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"; fi
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
 if [ "$0" = "$directory_fiptables/$fiptables" ] ; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; "$directory_fiptables/$fiptables" reconfig ;
-echo $cincuenta fwiptables installed $cinco; echo  fwiptables installed in /usr/bin ; echo fwiptables to run fwiptables; exit ;
-fi
-#############################        english: launch-rules: Configure system script, the first options: offline, client, server and allpermisive             #####################
-#############################        spanish: launch-rules: Configura el script the sistema, primeras opciones: offline, client, server and allpermisive     #####################
+echo $cincuenta fwiptables installed $cinco; echo  fwiptables installed in /usr/bin ; echo fwiptables to run fwiptables; exit ; fi
+##############################       english: if third_option is a valid config.cfg          ###########################################  
+##############################       spanish: si tercera opcion es un validoconfig.cfg       ###########################################  
+if [ -f "$directory_config/$second_option" ]; then config_option=si; else config_option=no; fi
+##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
+##############################      spanish: launch-rules: Primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$first_option" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
-launch_iptables="si"; activarservidor="no"; activarcliente="no"; mojado="no"; fi
+launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="no"; fi
 if [ "$first_option" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cincuenta"
-launch_iptables="si"; activarservidor="no"; activarcliente=""; mojado="no"; fi
+launch_iptables="si"; launch_server="no"; launch_client=""; launch_permisive="no"; fi
 if [ "$first_option" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo "$cincuenta"
-launch_iptables="si"; activarservidor="";  activarcliente=""; mojado="no"; fi
+launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
 if [ "$first_option" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
-launch_iptables="si"; activarservidor="no"; activarcliente="no"; mojado=""; fi
-##############################       english: Script: general options      ######################################### #################################################
-##############################       spanish: Script: opciones generales   ######################################### #################################################
+launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
+##############################       english: Script: general options      ######################################### 
+##############################       spanish: Script: opciones generales   ######################################### 
 ####
 ####
 ##############################       english: cli: Manage list rules with one text menu
@@ -2073,10 +2076,10 @@ do $execlegacy  $allow_ipv4 $allow_vpn  $directory_binary/iptables-legacy -A INP
 done
 $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_binary/iptables-legacy -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $allow_log_udp  $directory_binary/iptables-legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
-$execlegacy  $allow_ipv4 $activarservidor  $directory_binary/iptables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarservidor  $directory_binary/iptables-legacy -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarcliente   $directory_binary/iptables-legacy -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarcliente   $directory_binary/iptables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_server  $directory_binary/iptables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_server  $directory_binary/iptables-legacy -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_client   $directory_binary/iptables-legacy -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_client   $directory_binary/iptables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_send  $directory_binary/iptables-legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_recive $directory_binary/iptables-legacy -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
@@ -2089,10 +2092,10 @@ do $execlegacy  $allow_ipv4 $allow_vpn  $directory_binary/iptables-legacy -A OUT
 done
 $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_binary/iptables-legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv4 $allow_log_tcp  $directory_binary/iptables-legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-$execlegacy  $allow_ipv4 $activarservidor  $directory_binary/iptables-legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarservidor  $directory_binary/iptables-legacy -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarcliente   $directory_binary/iptables-legacy -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $activarcliente   $directory_binary/iptables-legacy -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_server  $directory_binary/iptables-legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_server  $directory_binary/iptables-legacy -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_client   $directory_binary/iptables-legacy -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_client   $directory_binary/iptables-legacy -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_send  $directory_binary/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv4 $allow_ping_recive  $directory_binary/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
@@ -2106,10 +2109,10 @@ do $execlegacy  $allow_ipv6 $allow_vpn  $directory_binary/ip6tables-legacy -A IN
 done
 $execlegacy  $allow_ipv6 $allow_log_tcp  $directory_binary/ip6tables-legacy -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $allow_log_udp  $directory_binary/ip6tables-legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
-$execlegacy  $allow_ipv6 $activarservidor  $directory_binary/ip6tables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarservidor  $directory_binary/ip6tables-legacy -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarcliente  $directory_binary/ip6tables-legacy -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarcliente  $directory_binary/ip6tables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_server  $directory_binary/ip6tables-legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_server  $directory_binary/ip6tables-legacy -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_client  $directory_binary/ip6tables-legacy -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_client  $directory_binary/ip6tables-legacy -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_send      $directory_binary/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_recive  $directory_binary/ip6tables-legacy -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $directory_binary/ip6tables-legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -2123,10 +2126,10 @@ do $execlegacy  $allow_ipv6 $allow_vpn  $directory_binary/ip6tables-legacy -A OU
 done
 $execlegacy  $allow_ipv6 $allow_log_tcp  $directory_binary/ip6tables-legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execlegacy  $allow_ipv6 $allow_log_udp  $directory_binary/ip6tables-legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-$execlegacy  $allow_ipv6 $activarservidor  $directory_binary/ip6tables-legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarservidor  $directory_binary/ip6tables-legacy -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarcliente   $directory_binary/ip6tables-legacy -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv6 $activarcliente   $directory_binary/ip6tables-legacy -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_server  $directory_binary/ip6tables-legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_server  $directory_binary/ip6tables-legacy -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_client   $directory_binary/ip6tables-legacy -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv6 $launch_client   $directory_binary/ip6tables-legacy -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_send  $directory_binary/ip6tables-legacy -A OUTPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $allow_ping_recive  $directory_binary/ip6tables-legacy -A OUTPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execlegacy  $allow_ipv6 $directory_binary/ip6tables-legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -2150,10 +2153,10 @@ do $execnft $allow_ipv4 $allow_vpn  $directory_binary/iptables-nft -A INPUT -s $
 done
 $execnft $allow_ipv4 $allow_log_tcp  $directory_binary/iptables-nft -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv4 $allow_log_udp  $directory_binary/iptables-nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
-$execnft $allow_ipv4 $activarservidor  $directory_binary/iptables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarservidor  $directory_binary/iptables-nft -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarcliente  $directory_binary/iptables-nft -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarcliente  $directory_binary/iptables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_server  $directory_binary/iptables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_server  $directory_binary/iptables-nft -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_client  $directory_binary/iptables-nft -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_client  $directory_binary/iptables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_send     $directory_binary/iptables-nft -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_recive   $directory_binary/iptables-nft -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
@@ -2166,10 +2169,10 @@ do $execnft $allow_ipv4 $allow_vpn  $directory_binary/iptables-nft -A OUTPUT -d 
 done
 $execnft $allow_ipv4 $allow_log_tcp  $directory_binary/iptables-nft -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv4 $allow_log_udp  $directory_binary/iptables-nft -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-$execnft $allow_ipv4 $activarservidor  $directory_binary/iptables-nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarservidor  $directory_binary/iptables-nft -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarcliente   $directory_binary/iptables-nft -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $activarcliente   $directory_binary/iptables-nft -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_server  $directory_binary/iptables-nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_server  $directory_binary/iptables-nft -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_client   $directory_binary/iptables-nft -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_client   $directory_binary/iptables-nft -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv4_client -d $net_ipv4_client -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_send    $directory_binary/iptables-nft -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv4 $allow_ping_recive  $directory_binary/iptables-nft -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
@@ -2183,10 +2186,10 @@ do $execnft $allow_ipv6 $allow_vpn  $directory_binary/ip6tables-nft -A INPUT -s 
 done
 $execnft $allow_ipv6 $allow_log_tcp  $directory_binary/ip6tables-nft -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv6 $allow_log_udp  $directory_binary/ip6tables-nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
-$execnft $allow_ipv6 $activarservidor  $directory_binary/ip6tables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarservidor  $directory_binary/ip6tables-nft -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarcliente   $directory_binary/ip6tables-nft -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarcliente   $directory_binary/ip6tables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_server  $directory_binary/ip6tables-nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_server  $directory_binary/ip6tables-nft -A INPUT -p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_client   $directory_binary/ip6tables-nft -A INPUT -p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_client   $directory_binary/ip6tables-nft -A INPUT -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_send      $directory_binary/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_recive  $directory_binary/ip6tables-nft -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $directory_binary/ip6tables-nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -2200,10 +2203,10 @@ do $execnft $allow_ipv6 $allow_vpn  $directory_binary/ip6tables-nft -A OUTPUT -d
 done
 $execnft $allow_ipv6 $allow_log_tcp  $directory_binary/ip6tables-nft -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $execnft $allow_ipv6 $allow_log_udp  $directory_binary/ip6tables-nft -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-$execnft $allow_ipv6 $activarservidor  $directory_binary/ip6tables-nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarservidor  $directory_binary/ip6tables-nft -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarcliente   $directory_binary/ip6tables-nft -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $activarcliente   $directory_binary/ip6tables-nft -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_server  $directory_binary/ip6tables-nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_server  $directory_binary/ip6tables-nft -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_client   $directory_binary/ip6tables-nft -A OUTPUT -p udp -m multiport --dports $client_udp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_client   $directory_binary/ip6tables-nft -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_send      $directory_binary/ip6tables-nft -A OUTPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $allow_ping_recive  $directory_binary/ip6tables-nft -A OUTPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $execnft $allow_ipv6 $directory_binary/ip6tables-nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -2220,27 +2223,27 @@ $execlegacy $allow_ipv4 $allow_nat $directory_binary/iptables-legacy -t nat -A P
 $execnft $allow_ipv6 $allow_nat $directory_binary/ip6tables-nft -t nat -A POSTROUTING -j MASQUERADE     &>/dev/null
 $execlegacy $allow_ipv6 $allow_nat $directory_binary/ip6tables-legacy -t nat -A POSTROUTING -j MASQUERADE  &>/dev/null
 ##########################################    ipv4 iptables permisisive
-$execlegacy  $allow_ipv4 $mojado  $directory_binary/iptables-legacy -F &> /dev/null
-$execlegacy  $allow_ipv4 $mojado  $directory_binary/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $mojado  $directory_binary/iptables-legacy -A INPUT $input_state  -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $mojado  $directory_binary/iptables-legacy -A OUTPUT -j ACCEPT &> /dev/null
-$execlegacy  $allow_ipv4 $mojado  $directory_binary/iptables-legacy -A FORWARD  -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $mojado  $directory_binary/iptables-nft -F &> /dev/null
-$execnft $allow_ipv4 $mojado  $directory_binary/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $mojado  $directory_binary/iptables-nft -A INPUT $input_state -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $mojado  $directory_binary/iptables-nft -A OUTPUT -j ACCEPT &> /dev/null
-$execnft $allow_ipv4 $mojado  $directory_binary/iptables-nft -A FORWARD -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_permisive  $directory_binary/iptables-legacy -F &> /dev/null
+$execlegacy  $allow_ipv4 $launch_permisive  $directory_binary/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_permisive  $directory_binary/iptables-legacy -A INPUT $input_state  -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_permisive  $directory_binary/iptables-legacy -A OUTPUT -j ACCEPT &> /dev/null
+$execlegacy  $allow_ipv4 $launch_permisive  $directory_binary/iptables-legacy -A FORWARD  -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_permisive  $directory_binary/iptables-nft -F &> /dev/null
+$execnft $allow_ipv4 $launch_permisive  $directory_binary/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_permisive  $directory_binary/iptables-nft -A INPUT $input_state -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_permisive  $directory_binary/iptables-nft -A OUTPUT -j ACCEPT &> /dev/null
+$execnft $allow_ipv4 $launch_permisive  $directory_binary/iptables-nft -A FORWARD -j ACCEPT &> /dev/null
  ########################################     ipv6 iptables allpermisisive
-$execlegacy $allow_ipv6 $mojado  $directory_binary/ip6tables-legacy -F &> /dev/null
-$execlegacy $allow_ipv6 $mojado  $directory_binary/ip6tables-legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$execlegacy $allow_ipv6 $mojado  $directory_binary/ip6tables-legacy -A INPUT $input_state -j ACCEPT &> /dev/null
-$execlegacy $allow_ipv6 $mojado  $directory_binary/ip6tables-legacy -A OUTPUT -j ACCEPT &> /dev/null
-$execlegacy $allow_ipv6 $mojado  $directory_binary/ip6tables-legacy -A FORWARD  -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $mojado  $directory_binary/ip6tables-nft -F &> /dev/null
-$execnft $allow_ipv6 $mojado  $directory_binary/ip6tables-nft -A INPUT -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $mojado  $directory_binary/ip6tables-nft -A INPUT $input_state -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $mojado  $directory_binary/ip6tables-nft -A OUTPUT -j ACCEPT &> /dev/null
-$execnft $allow_ipv6 $mojado  $directory_binary/ip6tables-nft -A FORWARD -j ACCEPT &> /dev/null
+$execlegacy $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-legacy -F &> /dev/null
+$execlegacy $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$execlegacy $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-legacy -A INPUT $input_state -j ACCEPT &> /dev/null
+$execlegacy $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-legacy -A OUTPUT -j ACCEPT &> /dev/null
+$execlegacy $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-legacy -A FORWARD  -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-nft -F &> /dev/null
+$execnft $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-nft -A INPUT -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-nft -A INPUT $input_state -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-nft -A OUTPUT -j ACCEPT &> /dev/null
+$execnft $allow_ipv6 $launch_permisive  $directory_binary/ip6tables-nft -A FORWARD -j ACCEPT &> /dev/null
 ########################################       iptables ipv4 and ipv6 with forward rules
  ###   deactive for default with forward or without forward
  $directory_binary/sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
