@@ -5,7 +5,7 @@ version actual: 193
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli
-fw-save - guardar el archivo desde la misma linea de comandos
+fw-save - guardar el archivo desde la misma linea de comandos - ok 193
 new-config - generar archivo desde la miema linea de comandos
 nueva-config - generar archivo desde la misma linea de comandos
 rename-config - renombrar archivo desde la misma linea de comandos
