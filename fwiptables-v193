@@ -1138,30 +1138,37 @@ if [ "$first_option" = "security-ip6" ]; then echo -n
 ############################       english: new-config: system script, the new-config option to create new configs
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
 if [ "$first_option" = "new-config" ]; then echo -n
+case $second_option in
+"$NULL")
+config_option="si"
+;;
+esac
+case "$config_option" in
+"si")
 echo
 echo "$fprogram version $fversion"
 echo "$cincuenta New config $cinco"
 echo
 echo "     Type the filename for a one new configuration it will be in path $directory_config";
 echo "     Or control+c to stop"
-echo
 echo "$cinco"
-read -r -p "          Type one new filename without path [ New-Config.cfg ]:  " frespuestaa ;  frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
+read -r -p "          Type one new filename without path [ New-Config.cfg ]:  " frespuestaa
+frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
 echo
 echo
-echo
-echo "  The new file will be $directory_config/$frespuestab";
+;;
+"no")
+frespuestaa="$second_option"
+frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
+;;
+esac
+echo "  The new file will be $directory_config/$frespuestab"
 echo "  Edit the file $frespuestab"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
-echo
-echo
-editor "$directory_config/$frespuestab";
-echo
-echo "  $cinco        launch firewall for client:              $fiptables client $frespuestab   " ;
-echo
-echo "  $cinco        OR launch firewall for server:           $fiptables server $frespuestab   " ;
-echo
-echo
+editor "$directory_config/$frespuestab"
+
+echo "  $cinco        launch firewall for client:              $fiptables client $frespuestab   "
+echo "  $cinco        OR launch firewall for server:           $fiptables server $frespuestab   "
 exit; fi
 ############################       english: nueva-config: system script, the nueva-config option to create new configs in spanish
 ############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config en español
