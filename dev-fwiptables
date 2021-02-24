@@ -114,8 +114,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
-echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Version]          version dev-versions"
+echo "     [Update]           auth-sudo remove-sudo list-sudo"
+echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
 echo ""
@@ -770,9 +770,7 @@ $directory_binary/iptables-nft -t nat -F
 $directory_binary/ip6tables-nft -t nat  -F
 $directory_binary/iptables-legacy -t nat -F
 $directory_binary/ip6tables-legacy -t nat -F ;
-echo
 echo " Erased all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]";
-echo
 exit; fi
 #############################       english: route: system script, the iproute option
 #############################       spanish: route: script de sistema, la opcion iproute
@@ -1375,6 +1373,15 @@ echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
 echo
 exit; fi
+############################       english: remove-sudo: the remove-sudo option en english
+############################       spanish: remove-sudo: la opcion de remove-sudo en ingles
+if [ "$first_option" = "remove-sudo" ]; then echo
+rm /etc/sudoers.d/$fiptables
+rm /etc/bash_completion.d/$fiptables
+echo "$cinco deleted auth sudo"
+echo "deleted /etc/sudoers.d/$fiptables"
+echo "deleted /etc/bash_completion.d/$fiptables"
+exit; fi
 ############################       english: list-sudo: the auth-sudo option en english
 ############################       spanish: list-sudo: la opcion de auth-sudo en ingles
 if [ "$first_option" = "list-sudo" ]; then echo
@@ -1688,8 +1695,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
-echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Version]          version dev-versions "
+echo "     [Update]           auth-sudo remove-sudo list-sudo"
+echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
 echo ""
@@ -1861,8 +1868,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recuperador fw]   fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Traza tcp]        trace-ip4 trace-ip6"
-echo "     [Actualiza]        upgrade auth-sudo list-sudo"
-echo "     [Version]          version dev-versions "
+echo "     [Actualiza]        auth-sudo remove-sudo list-sudo"
+echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
 echo ""
@@ -2326,8 +2333,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
-echo "     [Update]           upgrade auth-sudo list-sudo"
-echo "     [Version]          version dev-versions"
+echo "     [Update]           auth-sudo remove-sudo list-sudo"
+echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
 echo ""
