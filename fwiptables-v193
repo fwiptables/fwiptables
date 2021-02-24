@@ -115,7 +115,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
-echo "     [Update]           auth-sudo remove-sudo list-sudo"
+echo "     [sudo]             auth-sudo remove-sudo list-sudo"
 echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
@@ -208,23 +208,24 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   504 mangle-ip6 \
   505 security-ip4 \
   506 security-ip6 \
-  00600 "ping icmp" \
-  601 ping-ip4 \
-  602 ping-ip6 \
-  00700 "trace tcp"  \
-  701 trace-ip4 \
-  702 trace-ip6 \
-  00800 "update"  \
-  801 upgrade \
-  802 auth-sudo \
-  803 list-sudo \
-  00900 "Versions" \
-  901 version \
-  902 dev-versions \
-  01000 "Recover fw" \
-  1001 "fw-list" \
-  1002 "fw-save" \
-  1003 "fw-restore" \
+  00600 "Recover fw" \
+  601 fw-list  \
+  602 fw-save  \
+  603 fw-restore  \
+  00700 "ping icmp" \
+  701 ping-ip4 \
+  702 ping-ip6 \
+  00800 "trace tcp"  \
+  801 trace-ip4 \
+  802 trace-ip6 \
+  00900 "update"  \
+  901 auth-sudo \
+  902 remove-sudo \
+  903 list-sudo \
+  01000 "Versions" \
+  1001 version \
+  1002 upgrade \
+  1003 dev-versions \
   01100 "Help" \
   1101 about \
   1102 help \
@@ -399,51 +400,55 @@ $fiptables security-ip6
 echo;;
 601)
 clear
-ping -4 -c 5 -A fast.com
+$fiptables fw-list
 echo;;
 602)
 clear
-ping -6 -c 5 -A fast.com
+$fiptables fw-save
+echo;;
+603)
+clear
+$fiptables fw-restore
 echo;;
 701)
 clear
-traceroute -4 -T fast.com
+ping -4 -c 5 -A fast.com
 echo;;
 702)
 clear
-traceroute -6 -T fast.com
+ping -6 -c 5 -A fast.com
 echo;;
 801)
 clear
-$fiptables upgrade
+traceroute -4 -T fast.com
 echo;;
 802)
 clear
-$fiptables auth-sudo
-echo;;
-803)
-clear
-$fiptables list-sudo
+traceroute -6 -T fast.com
 echo;;
 901)
 clear
-$fiptables version
+$fiptables auth-sudo
 echo;;
 902)
 clear
-$fiptables dev-versions
+$fiptables remove-sudo
+echo;;
+903)
+clear
+$fiptables list-sudo
 echo;;
 1001)
 clear
-$fiptables fw-list
+$fiptables version
 echo;;
 1002)
 clear
-$fiptables fw-save
+$fiptables upgrade
 echo;;
 1003)
 clear
-$fiptables fw-restore
+$fiptables dev-versions
 echo;;
 1101)
 clear
@@ -1701,7 +1706,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
-echo "     [Update]           auth-sudo remove-sudo list-sudo"
+echo "     [sudo]             auth-sudo remove-sudo list-sudo"
 echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
@@ -1874,7 +1879,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recuperador fw]   fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Traza tcp]        trace-ip4 trace-ip6"
-echo "     [Actualiza]        auth-sudo remove-sudo list-sudo"
+echo "     [sudo]             auth-sudo remove-sudo list-sudo"
 echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
@@ -2339,7 +2344,7 @@ echo "                        security-ip4 security-ip6"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Ping icmp]        ping-ip4 ping-ip6"
 echo "     [Trace tcp]        trace-ip4 trace-ip6"
-echo "     [Update]           auth-sudo remove-sudo list-sudo"
+echo "     [sudo]             auth-sudo remove-sudo list-sudo"
 echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info"
 echo "                        help ayuda cli gui"
