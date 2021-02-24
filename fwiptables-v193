@@ -1210,34 +1210,35 @@ exit; fi
 ############################       english: clone-config, clone a one existent config.cfg
 ############################       spanish: clone-config, clona una configuracion.cfg
 if [ "$first_option" = "clone-config" ]; then echo -n
+case $config_option in
+"no")
 echo
 echo "$fprogram version $fversion"
 echo "$cincuenta  Clone config $cinco"
 echo
 echo "$cinco   The configs are in folder $directory_config : "
 echo
-echo
 ls $directory_config | fmt $flistado
 echo
 echo "     Type the filename for a old configuration wich will be in path $directory_config"
 echo "     Or Control+c to stop"
-echo
-echo $cinco
+echo "$cinco"
 read -r -p  "     RENAME: Type the name of one old config to clone, whitout path: [ Config-Old-To-Clone.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
 echo        "     the old name is : $fviejab"
-echo
+echo "$cinco"
 read -r -p  "     RENAME: Type the name of one new config, whitout path: [ Config-New.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
 echo        "     the new name is : $nuevab"
-echo
 cp $directory_config/$fviejab $directory_config/$fnuevab
-echo        "     Config cloned now with new name:  $fnuevab "
-echo
-echo
+;;
+"si")
+fviejab="$(echo $second_option | sed 's/\///g' )"
+fnuevab="$(echo $third_option | sed 's/\///g' )"
+cp $directory_config/$fviejab $directory_config/$fnuevab
+;;
+esac
+echo  cloned $fviejab in $fnuevab
 echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
-echo
 echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
-echo
-echo
 exit; fi
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
@@ -1261,15 +1262,10 @@ echo "     Or Control+c to stop"
 echo
 echo "$cinco"
 read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa ; frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
-echo;
 echo
 editor $directory_config/$frespuestab ;
-echo
 echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
-echo
 echo "  $cinco        Or launch the firewall for server:           $fiptables server $frespuestab   " ;
-echo
-echo
 ;;
 esac
 exit; fi

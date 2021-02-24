@@ -8,8 +8,8 @@ cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
 fw-save - guardar el archivo desde la misma linea de comandos - ok 193
 new-config - generar archivo desde la miema linea de comandos - ok 193
 nueva-config - generar archivo desde la misma linea de comandos - ok 193
-rename-config - renombrar archivo desde la misma linea de comandos -
-clone-config - clonar archivo desde la misma linea de comandos -
+rename-config - renombrar archivo desde la misma linea de comandos - 
+clone-config - clonar archivo desde la misma linea de comandos - ok 193
 remove-sudo - añadir la opcion remove sudo - ok 193 
 upgrade - cambiarlo de categoria a categoria version - ok 193
 web-upgrade - modificar - ok 193
