@@ -713,11 +713,13 @@ echo "  $fiptables:  $fprogram version $fversion"
 echo "$cincuenta Web upgrade $fprogram $cinco"
 echo
 echo
-echo "   Upgrade The $fiptables in file $directory_fiptables/$fiptables with links command" ; echo ;
-links=""; flinks=$(which links);
-echo "   Downloading $fiptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
-links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i "download latest version"  &&
-links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $directory_fiptables/$fiptables &&
+echo "   Upgrade The $fiptables in file $directory_fiptables/$fiptables with links command"
+echo
+flinks=$(which links)
+echo "   Downloading $fiptables with the comand links browser in path: $flinks"
+echo "    Waiting several seconds..."
+links -dump "$fweb_newfiles" | grep -i "download latest version"  &&
+links -source "$fweb_latest" > "$directory_fiptables/$fiptables" &&
 echo "   $fprogram is upgraded: ok"
 echo
 echo
@@ -737,7 +739,7 @@ echo "  The actually version is" ;
 echo "       $fprogram has the version $fiptables $fversion actually" ;
 echo
 echo "  The latest version is" ;
-links -dump https://sourceforge.net/projects/f-iptables/files/  | grep -i "download latest version"  ;
+links -dump $fweb_newfiles  | grep -i "download latest version"  ;
 echo
 echo "$cinco"
 echo
@@ -745,7 +747,7 @@ echo
 echo "    Upgrade The fwiptables in file $directory_fiptables/$fiptables with links command" ; echo ;
 echo " $cinco    download manually   || or launch ||   $0 web-upgrade"
 echo
-echo "     links -source https://sourceforge.net/projects/f-iptables/files/latest/download > $directory_fiptables/$fiptables"
+echo "     links -source $fweb_latest > $directory_fiptables/$fiptables"
 echo "     chmod ugo+x $directory_fiptables/$fiptables"
 echo "     /usr/bin/fwiptables reconfig"
 echo
@@ -760,10 +762,16 @@ echo
 echo "$fprogram version $ver"
 echo "$cincuenta Deleting rules iptables $cinco" ;
 echo
-$directory_binary/iptables-nft -t filter -F ; $directory_binary/ip6tables-nft -t filter  -F ; $directory_binary/iptables-legacy -t filter -F ; $directory_binary/ip6tables-legacy -t filter -F ;
-$directory_binary/iptables-nft -t nat -F ; $directory_binary/ip6tables-nft -t nat  -F ; $directory_binary/iptables-legacy -t nat -F ; $directory_binary/ip6tables-legacy -t nat -F ;
+$directory_binary/iptables-nft -t filter -F
+$directory_binary/ip6tables-nft -t filter  -F
+$directory_binary/iptables-legacy -t filter -F
+$directory_binary/ip6tables-legacy -t filter -F ;
+$directory_binary/iptables-nft -t nat -F
+$directory_binary/ip6tables-nft -t nat  -F
+$directory_binary/iptables-legacy -t nat -F
+$directory_binary/ip6tables-legacy -t nat -F ;
 echo
-echo " Erase all rules from ipv4 and ipv6 for iptables filter and iptables nat";
+echo " Erased all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]";
 echo
 exit; fi
 #############################       english: route: system script, the iproute option
