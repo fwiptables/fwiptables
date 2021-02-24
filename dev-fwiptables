@@ -21,7 +21,8 @@
 ##
 ##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-first_option="$1" ; second_option="$2" ; third_option="$3" ;        #english: variables at launch  #spanish: variables al lanzar
+first_option="$1" ; second_option="$2" ;                            #english: variables at launch  #spanish: variables al lanzar
+third_option="$3" ; fourth_option="$4" ;                            #english: variables at launch  #spanish: variables al lanzar
 config_option="no" ; launch_iptables="no" ;                         #english: auto variables to no #spanish: auto variables a no
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
