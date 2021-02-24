@@ -642,25 +642,27 @@ sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/t
 echo "# config  #" >> $directory_config/torrent-example1.cfg
 echo "client_udp=domain,ntp,bootpc,1025:60000; " >> $directory_config/torrent-example1.cfg
 echo "client_tcp=http,https" >> $directory_config/torrent-example1.cfg
-echo "allow_pring_send=no ;  allow_ping_recive=no ; "  >> $directory_config/torrent-example1.cfg
+echo "allow_ping_send=no ;  allow_ping_recive=no ; "  >> $directory_config/torrent-example1.cfg
 ## config: samba-example1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/samba-example1.cfg
 echo "# config  #" >> $directory_config/samba-example1.cfg
 echo "client_udp=domain,ntp,bootpc,137:139 ; " >> $directory_config/samba-example1.cfg
 echo "client_tcp=http,https,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
 echo "server_udp=137:139 ; " >> $directory_config/samba-example1.cfg
-echo "server_tcp=ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
+echo "server_tcp=ssh,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
+echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/samba-example1.cfg
 ## config: vpn-sample1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/vpn-example1.cfg
 echo "# config  #" >> $directory_config/vpn-example1.cfg
 echo "allow_forwading= ; " >> $directory_config/vpn-example1.cfg
 echo "allow_vpn= ; " >> $directory_config/vpn-example1.cfg
 echo "vpn=wesnoth.org,sourceforge.net" >> $directory_config/vpn-example1.cfg
+echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vpn-example1.cfg
 ## config: email-example1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/email-example1.cfg
 echo "# config  #" >> $directory_config/email-example1.cfg
 echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
-echo "server_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
+echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
 echo "allow_ping_send= ; " >> $directory_config/email-example1.cfg
 echo "allow_ping_recive= " >> $directory_config/email-example1.cfg
 ## config: ssh-example1.cfg ##
@@ -674,12 +676,13 @@ echo "allow_ping_recive= ;" >> $directory_config/ssh-example1.cfg
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/vnc-example1.cfg
 echo "# config  #" >> $directory_config/vnc-example1.cfg
 echo "client_tcp=http,https,ssh,5900:5910" >> $directory_config/vnc-example1.cfg
-echo "server_tcp=http,https,5900:5910" >> $directory_config/vnc-example1.cfg
+echo "server_tcp=ssh,http,https,5900:5910" >> $directory_config/vnc-example1.cfg
+echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vnc-example1.cfg
 ## config: ftp-example1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/ftp-example1.cfg
 echo "# config  #" >> $directory_config/ftp-example1.cfg
 echo "client_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
-echo "server_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
+echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
 echo "client_udp=domain,ntp,bootpc,tftp">> $directory_config/ftp-example1.cfg
 echo "server_udp=tftp">> $directory_config/ftp-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1.cfg
@@ -687,17 +690,20 @@ echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/printer-example1.cfg
 echo "# config  #" >> $directory_config/printer-example1.cfg
 echo "client_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.cfg
-echo "server_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.cfg
+echo "server_tcp=ssh,http,https,ipp,printer" >> $directory_config/printer-example1.cfg
+echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/printer-example1.cfg
 ## config: irc-example1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/irc-example1.cfg
 echo "# config  #" >> $directory_config/irc-example1.cfg
 echo "client_tcp=http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
-echo "server_tcp=http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
+echo "server_tcp=ssh,http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
+echo "allow_ping_send=no ; allow_ping_recive=no ; "  >> $directory_config/irc-example1.cfg
 ## config: sql-example1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/sql-example1.cfg
 echo "# config  #" >> $directory_config/sql-example1.cfg
 echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
-echo "server_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
+echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
+echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/sql-example1.cfg
 case $0 in
 "$directory_fiptables/$fiptables")
 echo -n
