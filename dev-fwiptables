@@ -1240,6 +1240,39 @@ echo  cloned $fviejab in $fnuevab
 echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
 echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
 exit; fi
+############################       english: rename-config, rename a one existent config.cfg
+############################       spanish: rename-config, renombra una existente configuracion.cfg
+if [ "$first_option" = "rename-config" ]; then echo -n
+case $config_option in
+"no")
+echo
+echo "$fprogram version $fversion"
+echo "$cincuenta  Clone config $cinco"
+echo
+echo "$cinco   The configs are in folder $directory_config : "
+echo
+ls $directory_config | fmt $flistado
+echo
+echo "     Type the filename for a old configuration wich will be in path $directory_config"
+echo "     Or Control+c to stop"
+echo "$cinco"
+read -r -p  "     RENAME: Type the name of one old config to rename, whitout path: [ Config-Old-To-Rename.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
+echo        "     the old name is : $fviejab"
+echo "$cinco"
+read -r -p  "     RENAME: Type the name of one new name of config, whitout path: [ Config-New.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
+echo        "     the new name is : $nuevab"
+mv $directory_config/$fviejab $directory_config/$fnuevab
+;;
+"si")
+fviejab="$(echo $second_option | sed 's/\///g' )"
+fnuevab="$(echo $third_option | sed 's/\///g' )"
+cp $directory_config/$fviejab $directory_config/$fnuevab
+;;
+esac
+echo  renamed $fviejab in $fnuevab
+echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
+echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
+exit; fi
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 if [ "$first_option" = "modify-config" ]; then echo -n
@@ -1303,38 +1336,6 @@ echo "  $cinco        O launch the firewall for server:            $fiptables se
 echo
 echo
 esac
-exit; fi
-############################       english: rename-config: change the name  a one config
-############################       spanish: rename-config: cambia el nombre a  una configuracion
-if [ "$first_option" = "rename-config" ]; then echo -n
-echo
-echo "$fprogram version $fversion"
-echo "$cincuenta  Rename config $cinco"
-echo
-echo "$cinco   The configs are in folder $directory_config : "
-echo
-echo
-ls $directory_config | fmt $flistado
-echo
-echo "     The files are in path $directory_config"
-echo "     Or Control+c to stop"
-echo
-echo "$cinco"
-read -r -p  "     RENAME: Type the name of one old config, whitout path: [ Config-Old-To-Rename.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
-echo        "     the old name is : $fviejab"
-echo
-read -r -p  "     RENAME: Type the name of one new config, whitout path: [ Config-New-To-Rename.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
-echo        "     the new name is : $nuevab"
-echo
-mv $directory_config/$fviejab $directory_config/$fnuevab
-echo        "     Config renamed now with new name:  $fnuevab "
-echo
-echo
-echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
-echo
-echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
-echo
-echo
 exit; fi
 ############################       english: delete-config: delete a old config
 ############################       spanish: delete-config: elimina una vieja configuracion
