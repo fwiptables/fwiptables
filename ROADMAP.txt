@@ -12,6 +12,7 @@ rename-config - renombrar archivo desde la misma linea de comandos -
 clone-config - clonar archivo desde la misma linea de comandos -
 remove-sudo - añadir la opcion remove sudo - ok 193 
 upgrade - cambiarlo de categoria a categoria version - ok 193
+web-upgrade - modificar - ok 193
 gui - new-config modify - 
 gui - nueva-config modify -
 gui - clone-config modify -

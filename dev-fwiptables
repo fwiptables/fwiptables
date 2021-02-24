@@ -731,11 +731,12 @@ flinks=$(which links)
 echo "   Downloading $fiptables with the comand links browser in path: $flinks"
 echo "    Waiting several seconds..."
 links -dump "$fweb_newfiles" | grep -i "download latest version"  &&
-links -source "$fweb_latest" > "$directory_fiptables/$fiptables" &&
+links -source "$fweb_latest" > "/tmp/$fiptables" &&
+chmod ugo+x /tmp/$fiptables
+/tmp/$fiptables
 echo "   $fprogram is upgraded: ok"
 echo
 echo
-chmod ugo+x $directory_fiptables/$fiptables
 echo "$cincuenta      upgraded $fiptables     $cincuenta"
 echo "$cinco     upgraded:     $directory_fiptables/$fiptables" ; echo; echo ;
 $directory_fiptables/$fiptables reconfig
