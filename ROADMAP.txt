@@ -20,4 +20,5 @@ gui - modify-config modify - ok 194
 rename-config - modify - ok 193
 clone-config - modify - ok 193
 auth-sudo - modify - ok 194
-gui - modify-config -
+gui - modify-config - ok 194
+
