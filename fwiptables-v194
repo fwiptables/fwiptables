@@ -210,12 +210,14 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   601 fw-list  \
   602 fw-save  \
   603 fw-restore  \
-  00700 "ping icmp" \
+  00700 "tool icmp" \
   701 ping-ip4 \
   702 ping-ip6 \
-  00800 "trace tcp"  \
+  00800 "tool tcp"  \
   801 trace-ip4 \
   802 trace-ip6 \
+  803 host \
+  804 resolveip \
   00900 "update"  \
   901 auth-sudo \
   902 remove-sudo \
@@ -410,20 +412,34 @@ $fiptables fw-restore
 echo;;
 701)
 clear
+echo "# use command line to choose host: $fiptables ping-ip4"
 ping -4 -c 5 -A fast.com
 echo;;
 702)
 clear
+echo "# use command line to choose host: $fiptables ping-ip6"
 ping -6 -c 5 -A fast.com
 echo;;
 801)
 clear
+echo "# use command line to choose host: $fiptables trace-ip4"
 traceroute -4 -T fast.com
 echo;;
 802)
+echo "# use command line to choose host: $fiptables trace-ip6"
 clear
 traceroute -6 -T fast.com
 echo;;
+803)
+clear
+echo "# use command line to choose host: $fiptables host"
+host fast.com
+;;
+804)
+clear
+echo "# use command line to choose host: $fiptables resolveip"
+resolveip fast.com
+;;
 901)
 clear
 $fiptables auth-sudo
@@ -549,6 +565,14 @@ zenity --info --ellipsize --text="$untexto"
 echo ;;
 trace-ip6*)
 untexto="$(traceroute -6 -T fast.com)"
+zenity --info --ellipsize --text="$untexto"
+echo ;;
+host*)
+untexto="$(host fast.com)"
+zenity --info --ellipsize --text="$untexto"
+echo ;;
+resolveip*)
+untexto="$(resolveip fast.com)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
 #### options sudo  #####
@@ -1490,8 +1514,7 @@ case $(which ping) in
 echo
 echo
 echo " Install ping"
-echo
-echo ;;
+;;
 *)
 echo
 echo "$fprogram version $fversion"
@@ -1511,8 +1534,7 @@ case $(which traceroute) in
 echo
 echo
 echo " Install ping"
-echo
-echo ;;
+;;
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta  ping ipv6 $cinco"
@@ -1530,8 +1552,7 @@ case $(which traceroute) in
 echo
 echo
 echo " Install traceroute"
-echo
-echo ;;
+;;
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
@@ -1549,14 +1570,49 @@ case $(which traceroute) in
 echo
 echo
 echo " Install traceroute"
-echo
-echo ;;
+;;
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta   traceroute tcp ipv6 $cinco"
 echo
 read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 traceroute -6 -T $trazador
+;;
+esac
+exit; fi
+############################       english: host: host to resolve ip
+############################       spanish: host: host to resolve ip
+if [ "$first_option" = "host" ]; then echo -n
+case $(which host) in
+"$NULL")
+echo
+echo
+echo " Install host"
+;;
+*)
+echo "$fprogram version $fversion"
+echo "$cincuenta  resolve host  $cinco"
+echo
+read -r -p "#####    Type the host to resolve: [ fast.com   ] " trazador
+host $trazador
+;;
+esac
+exit; fi
+############################       english: resolveip: host to resolve ip and viceversa
+############################       spanish: resolveip: host to resolve ip and viceversa
+if [ "$first_option" = "resolveip" ]; then echo -n
+case $(which resolveip) in
+"$NULL")
+echo
+echo
+echo " Install resolveip"
+;;
+*)
+echo "$fprogram version $fversion"
+echo "$cincuenta  resolve ip  $cinco"
+echo
+read -r -p "#####    Type the host to resolve  ip or viceversa: [ fast.com   ] " trazador
+resolveip $trazador
 ;;
 esac
 exit; fi
