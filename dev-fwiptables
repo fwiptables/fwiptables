@@ -1777,17 +1777,6 @@ echo "   forwardnum: List iptables filter rules foward in numbers"
 echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
 echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo
-echo "$cinco         [The others tables]"
-echo
-echo "      nat-ip4: List iptables nat rules from ipv4"
-echo "      nat-ip6: List iptables nat rules from ipv6"
-echo "   mangle-ip4: List iptables mangle rules from ipv4"
-echo "   mangle-ip6: List iptables mangle rules from ipv6"
-echo "      raw-ip4: List iptables raw rules from ipv4"
-echo "      raw-ip6: List iptables raw rules from ipv4"
-echo " security-ip4: List iptables security rules from ipv4"
-echo " security-ip6: List iptables security rules from ipv6"
-echo
 echo "$cinco         [List open sockets]"
 echo
 echo "      iproute: Show net devices and ip route tables"
@@ -1808,25 +1797,45 @@ echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
 echo "delete-config: Delete one configuration file"
 echo
-echo "$cinco         [Ping icmp]"
+echo "$cinco         [The others tables]"
+echo
+echo "      nat-ip4: List iptables nat rules from ipv4"
+echo "      nat-ip6: List iptables nat rules from ipv6"
+echo "   mangle-ip4: List iptables mangle rules from ipv4"
+echo "   mangle-ip6: List iptables mangle rules from ipv6"
+echo "      raw-ip4: List iptables raw rules from ipv4"
+echo "      raw-ip6: List iptables raw rules from ipv4"
+echo " security-ip4: List iptables security rules from ipv4"
+echo " security-ip6: List iptables security rules from ipv6"
+echo
+echo "$cinco         [Recover fw]"
+echo
+echo "      fw-list: Show the files firewall standar"
+echo "      fw-save: Save the files in firewall standar"
+echo "   fw-restore: Show howto reover files firewall standar"
+echo
+echo "$cinco         [Tool icmp]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
 echo
-echo "$cinco         [Trace tcp]"
+echo "$cinco         [Tool tcp]"
 echo
 echo "    trace-ip4: Trace route a one host with ipv4 tcp"
 echo "    trace-ip6: Trace route a one host with ipv6 tcp"
+echo "         host: Resolve one host"
+echo "    resolveip: Resolve one host and viceversa"
 echo
-echo "$cinco         [Update options]"
+echo "$cinco         [sudo]"
 echo
-echo "      upgrade: Upgrade $fprogram at the latest version"
 echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
+echo "  remove-sudo: Remove sudo $fiptables to other choosed users"
 echo "    list-sudo: List sudo $fiptables to other choosed users"
 echo
 echo "$cinco         [Version]"
 echo
 echo "      version: Info version program from $fiptables"
+echo "      upgrade: Upgrade $fprogram at the latest version"
 echo " dev-versions: Version in development from $fiptables"
 echo
 echo "$cinco         [Help]"
@@ -1858,7 +1867,7 @@ head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#e
 echo
 echo "$cincuenta  vpn"
 echo
-echo "     vpn open the firewall to all in excepcionals hosts"
+echo "     Excepcionals hosts has all allowed in firewall"
 echo
 echo "$cincuenta  The iptables netftilter"
 echo
@@ -2038,7 +2047,7 @@ head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#s
 echo
 echo "$cincuenta  vpn"
 echo
-echo "     vpn abre el firewall para permitir todo a hosts excepcionales"
+echo "     vpn host excepcionales tienen todo permitido en el firewall"
 echo
 echo "$cincuenta  Los iptables netftilter"
 echo
