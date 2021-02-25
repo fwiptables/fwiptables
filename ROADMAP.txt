@@ -21,4 +21,6 @@ rename-config - modify - ok 193
 clone-config - modify - ok 193
 auth-sudo - modify - ok 194
 gui - modify-config - ok 194
+fwiptables - rediseño de apariencia inicial - ok 194
+fwiptables - elimenados lineas en blanco con "echo" - ok 194
 
