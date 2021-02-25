@@ -24,4 +24,5 @@ gui - modify-config - ok 194
 fwiptables - rediseño de apariencia inicial - ok 194
 fwiptables - elimenados lineas en blanco con "echo" - ok 194
 fwiptables - modify forwading - ok 194
-
+host - create host option -
+resolveip - create resolveip option -
