@@ -1948,19 +1948,9 @@ echo "   forwardnum: Lista las reglas de ipv4 de filtros de reenvio en numeros"
 echo "     list6num: Lista las reglas de ipv6 de filtros de entrada y salida en numeros"
 echo "  forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros"
 echo
-echo "               Las otras tablas "
-echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
-echo "      nat-ip6: Lista las reglas de ipv6 de nat iptables"
-echo "   mangle-ip4: Lista las reglas de ipv4 de mangle iptables"
-echo "   mangle-ip6: Lista las reglas de ipv6 de mangle iptables"
-echo "      raw-ip4: Lista las reglas de ipv4 de raw iptables"
-echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
-echo " security-ip4: lista las reglas de ip4 de security iptables"
-echo " security-ip6: Lista las reglas de ip6 de security iptables"
-echo
 echo "$cinco         [Lista las conexiones abiertas]"
 echo
-echo "      iproute: Muestra los dispositivos de red y la tabla de rutas"
+echo "        route: Muestra los dispositivos de red y la tabla de rutas"
 echo "           ss: Muestra las conexiones con comando ss"
 echo "      netstat: Muestra las conexiones con comando netstat"
 echo "         lsof: Muestra las conexiones con command lsof"
@@ -1978,25 +1968,45 @@ echo "  show-config: Muestra una existente configuracion.cfg"
 echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
 echo "delete-config: Borra unaa existente configuracion.cfg"
 echo
-echo "$cinco         [Ping icmp]"
+echo "$cinco         [Las otras tablas de iptables]"
+echo
+echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
+echo "      nat-ip6: Lista las reglas de ipv6 de nat iptables"
+echo "   mangle-ip4: Lista las reglas de ipv4 de mangle iptables"
+echo "   mangle-ip6: Lista las reglas de ipv6 de mangle iptables"
+echo "      raw-ip4: Lista las reglas de ipv4 de raw iptables"
+echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
+echo " security-ip4: lista las reglas de ip4 de security iptables"
+echo " security-ip6: Lista las reglas de ip6 de security iptables"
+echo
+echo "$cinco         [Recuperador de firewall en formato standar]"
+echo
+echo "      fw-list: Lista los archivos de firewall"
+echo "      fw-save: Guarda los archivos de firewall"
+echo "   fw-restore: Indica como restaurar los archivos de firewall"
+echo
+echo "$cinco         [Herramienta icmp]"
 echo
 echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
 echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
 echo
-echo "$cinco         [Trace tcp]"
+echo "$cinco         [Herramienta tcp]"
 echo
 echo "    trace-ip4: Traza ruta a una host con ipv4 tcp"
 echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
+echo "         host: Resuelve la ip de un host"
+echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo
-echo "$cinco         [Opciones de actualiciacion]"
+echo "$cinco         [Opciones de autorizacion]"
 echo
-echo "      upgrade: Actualiza $fprogram a la ultima version"
-echo "    auth-sudo: Permite sudo $fiptables a usuarios elegidos"
-echo "    list-sudo: Lista sudo $fiptables to otros usuarios elegidos"
+echo "    auth-sudo: Permite autorizacion a $fiptables a usuarios elegidos"
+echo "  remove-sudo: Borra la autorizacion otorgada con $fiptables"
+echo "    list-sudo: Lista autorizacion a $fiptables de usuarios elegidos"
 echo
 echo "$cinco         [Version]"
 echo
 echo "      version: Informacion de la actual version $fiptables"
+echo "      upgrade: Actualiza $fprogram a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
 echo
 echo "$cinco         [Ayuda]"
