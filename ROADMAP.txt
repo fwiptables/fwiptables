@@ -13,11 +13,11 @@ clone-config - clonar archivo desde la misma linea de comandos - ok 193
 remove-sudo - añadir la opcion remove sudo - ok 193 
 upgrade - cambiarlo de categoria a categoria version - ok 193
 web-upgrade - modificar - ok 193
-gui - new-config modify - 
-gui - nueva-config modify -
-gui - clone-config modify -
-gui - modify-config modify -
-rename-config - modify -
-clone-config - modify -
-
-
+gui - new-config modify - ok 194
+gui - nueva-config modify - ok 194
+gui - clone-config modify - ok 194
+gui - modify-config modify - ok 194
+rename-config - modify - ok 193
+clone-config - modify - ok 193
+auth-sudo - modify - ok 194
+gui - modify-config -

@@ -497,59 +497,59 @@ case $menugtk in
 cancel)
 echo ;;
 #### manage configs ####
-reconfig)
+reconfig*)
 untexto="$($fiptables reconfig)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
-show-config)
+show-config*)
 untexto="Type the config file to show"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="$(cat "$(echo $unarchivo| sed 's/\///g')")"
 echo ;;
-rename-config)
+rename-config*)
 untexto="Type the config to rename with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
 zenity --info --ellipsize --text="Renamed config: $(echo $unarchivo| sed 's/\///g') $(mv $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
-clone-config)
+clone-config*)
 untexto="Type the config to clone with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
 zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
-delete-config)
+delete-config*)
 untexto="Type the config to delete"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="Deleted config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
-new-config)
+new-config*)
 untexto="Type the name of file to write a new config"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp english-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
-nueva-config)
+nueva-config*)
 untexto="Escribe el nombre de archivo de la nueva configuracion"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp spanish-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
 echo ;;
-modify-config)
+modify-config*)
 untexto="Type the graphicall editor and config file, example: gedit config.cfg"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
 echo ;;
 #### ping and route ####
-ping-ip4)
+ping-ip4*)
 untexto="$(ping -4 -c 1 fast.com)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
-ping-ip6)
+ping-ip6*)
 untexto="$(ping -6 -c 1 fast.com)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
-trace-ip4)
+trace-ip4*)
 untexto="$(traceroute -4 -T fast.com)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
-trace-ip6)
+trace-ip6*)
 untexto="$(traceroute -6 -T fast.com)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
@@ -560,7 +560,7 @@ usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$unte
 echo "$usuario ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
 echo ;;
-list-sudo)
+list-sudo*)
 untexto="$($fiptables list-sudo)"
 zenity --info --ellipsize --text="$untexto"
 echo ;;
@@ -1245,7 +1245,6 @@ exit; fi
 if [ "$first_option" = "rename-config" ]; then echo -n
 case $config_option in
 "no")
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta  Clone config $cinco"
 echo
@@ -1370,32 +1369,29 @@ exit; fi
 ############################       english: auth-sudo: the auth-sudo option en english
 ############################       spanish: auth-sudo: la opcion de auth-sudo en ingles
 if [ "$first_option" = "auth-sudo" ]; then echo
-echo
+case $second_option in
+"$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta Auth-sudo $cinco"
 echo
-echo
 echo "$cinco    Auth for sudo to users: "
 echo "$cinco    Auth for sudo at the users choosed "
-echo
-echo
 echo "$cinco                                              Example:      user1,user2 "
 echo "$cinco    The users authorizated will launch without passwd:      sudo $fiptables "
-echo
-echo
 echo "     Control+c to stop"
 read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
-echo
+;;
+*)
+autorizados="$second_option"
+;;
+esac
 echo "$autorizados ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
-echo
 echo "$cinco $cinco"
 echo "$cinco    Ok. $autorizados will use:     $fiptables"
 echo "$cinco    Ok. $fiptables will use alias with sudo "
-echo
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
-echo
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
 echo
