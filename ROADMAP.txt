@@ -28,3 +28,5 @@ host - create host option - ok 194
 resolveip - create resolveip option - ok 194
 help - completa y modifica -
 ayuda - completa y modifica - 
+cli - modifica util tcp y util tcp -
+gui - modifica util tcp y util tcp -
