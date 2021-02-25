@@ -584,7 +584,7 @@ echo ;;
 #### options several ####
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
-echo ;;
+echo -n ;;
 esac
 exit ; fi
 ##############################       english: version: system script, the version option
@@ -1176,7 +1176,7 @@ echo
 echo "$fprogram version $fversion"
 echo "$cincuenta Nueva config $cinco"
 echo
-echo "     Escribe un nuevo nombre de archivo sin ruta"  
+echo "     Escribe un nuevo nombre de archivo sin ruta"
 echo "     O control+c to parar"
 echo "$cinco"
 read -r -p "          Escribe un nuevo nombre de archivo sin ruta [ Nueva-Configuracion.cfg ]:  " frespuestaa
@@ -1273,15 +1273,13 @@ echo "$cincuenta Modify config $cinco"
 echo
 echo "$cinco   The configs are in folder $directory_config : "
 echo
-echo
 ls $directory_config | fmt $flistado
 echo
 echo "     Type the filename for a old configuration wich will be in path $directory_config"
 echo "     Or Control+c to stop"
-echo
 echo "$cinco"
-read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa ; frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
-echo
+read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa
+frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 editor $directory_config/$frespuestab ;
 echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
 echo "  $cinco        Or launch the firewall for server:           $fiptables server $frespuestab   " ;
@@ -1302,25 +1300,18 @@ echo "$cincuenta Show config $cinco"
 echo
 echo "$cinco   The configs are in folder $directory_config : "
 echo
-echo
 ls $directory_config | fmt $flistado
 echo
 echo "     Type the filename to show configuration wich will be in path $directory_config"
 echo "     Or Control+c to stop"
-echo
 echo "$cinco"
-read -r -p  "     Type the name of one config file to show, whitout path: [ Config-To-Show.cfg ] " frespuestaa ; frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
-echo
-echo
+read -r -p  "     Type the name of one config file to show, whitout path: [ Config-To-Show.cfg ] " frespuestaa
+frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 echo "     $cinco     file: $directory_config/$frespuestab" ;
-echo
 cat $directory_config/$frespuestab ;
 echo
 echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
-echo
 echo "  $cinco        O launch the firewall for server:            $fiptables server $frespuestab   " ;
-echo
-echo
 esac
 exit; fi
 ############################       english: delete-config: delete a old config
@@ -1338,17 +1329,16 @@ echo "$cincuenta  Delete config $cinco"
 echo
 echo $cinco "  The configs are in folder $directory_config : "
 echo
-echo
 ls $directory_config | fmt $flistado
 echo
 echo        "     The files are in path $directory_config"
 echo        "     Or Control+c to stop"
 echo
 echo "$cinco"
-read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada ; fborradaa=$(sed 's/\///g' <<< "$fborrada")
+read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada
+fborradaa=$(sed 's/\///g' <<< "$fborrada")
 echo
 rm $directory_config/$fborradaa
-echo
 echo        "     Config deleted: $fborrada"
 echo ;;
 esac
@@ -1381,7 +1371,6 @@ echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
-echo
 exit; fi
 ############################       english: remove-sudo: the remove-sudo option en english
 ############################       spanish: remove-sudo: la opcion de remove-sudo en ingles
@@ -1399,7 +1388,6 @@ echo
 echo "$fprogram version $fversion"
 echo "$cincuenta Auth-sudo $cinco"
 echo
-echo
 case $(find /etc/sudoers.d/$fiptables) in
 /etc/sudoers.d/$fiptables)
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
@@ -1407,11 +1395,10 @@ cat /etc/sudoers.d/$fiptables
 echo
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
-echo ;;
+;;
 *)
 echo "There is not auth users for $fiptables"
-echo
-echo ;;
+echo -n ;;
 esac
 exit; fi
 ############################       english: ipforwading: the ipforwading option en english
@@ -1440,19 +1427,16 @@ echo "$cincuenta  Listening tcpdump $cinco"
 echo
 echo
 echo "  Launch manually tcpdump"
-echo
-echo ;;
+;;
 esac
 exit; fi
 ############################       english: fw-list: file list whith rules in iptables format
 ############################       spanish: fw-list: lista de archivos con reglas en formato iptables
 if [ "$first_option" = "fw-list" ]; then echo -n
-echo
 echo "$cincuenta iptables list $cinco"
 echo "File list with rules in iptables format in folder $directory_fwrecover"
 echo
 ls $directory_fwrecover
-echo
 exit; fi
 ############################       english: fw-restore: load the rules in iptables format
 ############################       spanish: fw-restore: carga las reglas en formato iptables
@@ -1485,19 +1469,18 @@ echo "Save the rules in iptables format in folder $directory_fwrecover"
 ls $directory_fwrecover
 echo
 echo        "     Control+c to stop"
-read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini ; archivofin=$(sed 's/\///g' <<< "$archivoini")
+read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini
+archivofin=$(sed 's/\///g' <<< "$archivoini")
 ;;
 *)
 archivofin=$(sed 's/\///g' <<< "$second_option")
 ;;
 esac
-echo
 echo "saved $archivofin"
 $directory_binary/iptables-nft-save > $directory_fwrecover/$archivofin-nft-ipv4
 $directory_binary/iptables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
 $directory_binary/ip6tables-nft-save > $directory_fwrecover/$archivofin-nft-ipv6
 $directory_binary/ip6tables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
-echo
 exit; fi
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
@@ -1516,10 +1499,8 @@ echo "$cincuenta ping ipv4 $cinco"
 echo
 echo; read -r -p "#####    Type the host to do ping ipv4: [ fast.com   ] " trazador
 echo
-echo
 ping -4 -c 5 -A $trazador
-echo
-echo ;;
+;;
 esac
 exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
@@ -1533,16 +1514,12 @@ echo " Install ping"
 echo
 echo ;;
 *)
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta  ping ipv6 $cinco"
 echo
-echo; read -r -p "#####    Type the host to do ping ipv6: [ fast.com   ] " trazador
-echo
-echo
+read -r -p "#####    Type the host to do ping ipv6: [ fast.com   ] " trazador
 ping -6 -c 5 -A $trazador
-echo
-echo ;;
+ ;;
 esac
 exit; fi
 ############################       english: trace-ip4: traceroute with tcp and ipv6
@@ -1556,16 +1533,12 @@ echo " Install traceroute"
 echo
 echo ;;
 *)
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
 echo
-echo; read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
-echo
-echo
+read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 traceroute -4 -T $trazador
-echo
-echo ;;
+;;
 esac
 exit; fi
 ############################       english: trace-ip6: traceroute with tcp and ipv6
@@ -1579,16 +1552,12 @@ echo " Install traceroute"
 echo
 echo ;;
 *)
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta   traceroute tcp ipv6 $cinco"
 echo
-echo; read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
-echo
-echo
+read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 traceroute -6 -T $trazador
-echo
-echo ;;
+;;
 esac
 exit; fi
 ############################       english: dev-versions: about of program
