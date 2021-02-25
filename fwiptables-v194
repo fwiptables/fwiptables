@@ -118,7 +118,6 @@ echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [sudo]             auth-sudo remove-sudo list-sudo"
 echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info help ayuda cli gui"
-echo ""
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
@@ -2245,19 +2244,19 @@ $execnft $allow_forwading $directory_binary/ip6tables-nft -A FORWARD -j ACCEPT &
  ### ipv4 drop rules iptables-legacy
 $execlegacy $directory_binary/iptables-legacy -A INPUT -j DROP &> /dev/null
 $execlegacy $directory_binary/iptables-legacy -A OUTPUT -j DROP &> /dev/null
-# $execlegacy $directory_binary/iptables-legacy -A FORWARD -j DROP &> /dev/null
+$execlegacy $directory_binary/iptables-legacy -A FORWARD -j DROP &> /dev/null
 ### ipv6 drop rules iptables-legacy
 $execlegacy $directory_binary/ip6tables-legacy -A INPUT -j DROP &> /dev/null
 $execlegacy $directory_binary/ip6tables-legacy -A OUTPUT -j DROP &> /dev/null
-# $execlegacy  $directory_binary/ip6tables-legacy -A FORWARD -j DROP &> /dev/null
+$execlegacy  $directory_binary/ip6tables-legacy -A FORWARD -j DROP &> /dev/null
 ### ipv4 drop rules iptables-nft
 $execnft $directory_binary/iptables-nft -A INPUT -j DROP &> /dev/null
 $execnft $directory_binary/iptables-nft -A OUTPUT -j DROP &> /dev/null
-# $execnft $directory_binary/iptables-nft -A FORWARD -j DROP &> /dev/null
+$execnft $directory_binary/iptables-nft -A FORWARD -j DROP &> /dev/null
 ### ipv6 drop rules iptables-nft
 $execnft $directory_binary/ip6tables-nft -A INPUT -j DROP &> /dev/null
 $execnft $directory_binary/ip6tables-nft -A OUTPUT -j DROP &> /dev/null
-# $execnft $directory_binary/ip6tables-nft -A FORWARD -j DROP &> /dev/null
+$execnft $directory_binary/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
 echo
@@ -2350,7 +2349,6 @@ echo "     [Trace tcp]        trace-ip4 trace-ip6"
 echo "     [sudo]             auth-sudo remove-sudo list-sudo"
 echo "     [Version]          version upgrade dev-versions"
 echo "     [Help]             about system-info help ayuda cli gui"
-echo
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
