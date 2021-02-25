@@ -26,5 +26,5 @@ fwiptables - elimenados lineas en blanco con "echo" - ok 194
 fwiptables - modify forwading - ok 194
 host - create host option - ok 194
 resolveip - create resolveip option - ok 194
-help - modifica -
-ayuda - modifica - 
+help - completa y modifica -
+ayuda - completa y modifica - 
