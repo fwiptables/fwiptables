@@ -116,7 +116,7 @@ echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip"
 echo "     [sudo]             auth-sudo remove-sudo list-sudo"
-echo "     [Version]          version upgrade dev-versions"
+echo "     [Version]          version upgrade dev-versions all-versions"
 echo "     [Help]             about system-info help ayuda cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
@@ -1639,12 +1639,9 @@ exit; fi
 ############################       english: all-versions: about of program
 ############################       spanish: all-versions: acerca del programa
 if [ "$first_option" = "all-versions" ]; then echo -n
-echo ""
 echo "  $fprogram"
 echo "$cincuenta All versions $cinco"
-echo ""
-links -dump $fweb_tree | egrep -i "root root" | cut -c -39
-echo ""
+links -dump $fweb_tree | grep -i root | sed 's/root//g' | cut -c -40 | sort | uniq -u
 exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
@@ -1736,7 +1733,7 @@ echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip"
 echo "     [sudo]             auth-sudo remove-sudo list-sudo"
-echo "     [Version]          version upgrade dev-versions"
+echo "     [Version]          version upgrade dev-versions all-versions"
 echo "     [Help]             about system-info help ayuda cli gui"
 echo ""
 echo "$cinco   The cfg are in $directory_config/[config.cfg]"
@@ -1835,8 +1832,9 @@ echo
 echo "$cinco         [Version]"
 echo
 echo "      version: Info version program from $fiptables"
-echo "      upgrade: Upgrade $fprogram at the latest version"
+echo "      upgrade: Upgrade $fiptables at the latest version"
 echo " dev-versions: Version in development from $fiptables"
+echo " all-versions: All versions from $fiptables"
 echo
 echo "$cinco         [Help]"
 echo
@@ -1917,7 +1915,7 @@ echo "     [Recuperador fw]   fw-list fw-save fw-restore"
 echo "     [Herramienta icmp] ping-ip4 ping-ip6"
 echo "     [Herramienta tcp]  trace-ip4 trace-ip6 host resolveip"
 echo "     [sudo]             auth-sudo remove-sudo list-sudo"
-echo "     [Version]          version upgrade dev-versions"
+echo "     [Version]          version upgrade dev-versions all-versions"
 echo "     [Ayuda]            about system-info help ayuda cli gui"
 echo ""
 echo "$cinco   Las configs estan en $directory_config/[config.cfg]"
@@ -2015,8 +2013,9 @@ echo
 echo "$cinco         [Version]"
 echo
 echo "      version: Informacion de la actual version $fiptables"
-echo "      upgrade: Actualiza $fprogram a la ultima version"
+echo "      upgrade: Actualiza $fiptables a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
+echo " all-versions: Todas las versiones de $fiptables"
 echo
 echo "$cinco         [Ayuda]"
 echo
@@ -2391,7 +2390,7 @@ echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip"
 echo "     [sudo]             auth-sudo remove-sudo list-sudo"
-echo "     [Version]          version upgrade dev-versions"
+echo "     [Version]          version upgrade dev-versions all-versions"
 echo "     [Help]             about system-info help ayuda cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo

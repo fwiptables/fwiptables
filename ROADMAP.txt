@@ -30,3 +30,6 @@ help - completa y modifica - ok 194
 ayuda - completa y modifica - ok 194
 cli - modifica util icmp y util tcp -
 gui - modifica util icmp y util tcp -
+all-versions - añadir - ok 195
+help - añadir - ok 195
+ayuda - añadir - ok 195
