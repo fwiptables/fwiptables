@@ -145,7 +145,7 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
 else cp $0 $directory_fiptables/$fiptables &> /dev/null ; 
 echo "$fiptables $fversion installed in /usr/bin/$fiptables"
-echo "launch $fiptables to run $fiptables" ; fi
+echo "Launch $fiptables to run $fiptables" ; fi
 ##############################       english: if third_option is a valid config.cfg                  ###########################################
 ##############################       spanish: si tercera opcion es un validoconfig.cfg               ###########################################
 if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
@@ -234,264 +234,264 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   )"
 case $menuprincipal in
  0*)
-clear
-dialog --msgbox "Program Menu" 0 0
-clear
-$fiptables cli
-echo ;;
+ clear
+ dialog --msgbox "Program Menu" 0 0
+ clear
+ $fiptables cli
+ ;;
  101)
-clear
-$fiptables eraserules
-echo ;;
+ clear
+ $fiptables eraserules
+ ;;
  102)
-clear
-$fiptables offline
-echo ;;
+ clear
+ $fiptables offline
+ ;;
  103)
-clear
-archivo="$(dialog --title "client" --stdout --inputbox "$(ls $directory_config)" 0 0)"
-clear
-$fiptables client $archivo
-echo ;;
+ clear
+ archivo="$(dialog --title "client" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ $fiptables client $archivo
+ ;;
  104)
-clear
-archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
-clear
-$fiptables server $archivo
-echo ;;
-105)
-clear
-$fiptables allpermisive
-echo ;;
-201)
-clear
-$fiptables list
-echo ;;
-202)
-clear
-$fiptables forward
-echo ;;
-203)
-clear
-$fiptables list6
-echo ;;
-204)
-clear
-$fiptables forward6
-echo ;;
-205)
-clear
-$fiptables nat-ip4
-echo ;;
-206)
-clear
-$fiptables nat-ip6
-echo ;;
-301)
-clear
-$fiptables route
-echo ;;
-302)
-clear
-$fiptables ss
-echo ;;
-303)
-clear
-$fiptables netstat
-echo ;;
-304)
-clear
-$fiptables lsof
-echo ;;
+ clear
+ archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ $fiptables server $archivo
+ ;;
+ 105)
+ clear
+ $fiptables allpermisive
+ ;;
+ 201)
+ clear
+ $fiptables list
+ ;;
+ 202)
+ clear
+ $fiptables forward
+ ;;
+ 203)
+ clear
+ $fiptables list6
+ ;;
+ 204)
+ clear
+ $fiptables forward6
+ ;;
+ 205)
+ clear
+ $fiptables nat-ip4
+ ;;
+ 206)
+ clear
+ $fiptables nat-ip6
+ ;;
+ 301)
+ clear
+ $fiptables route
+ ;;
+ 302)
+ clear
+ $fiptables ss
+ ;;
+ 303)
+ clear
+ $fiptables netstat
+ ;;
+ 304)
+ clear
+ $fiptables lsof
+ ;;
 305)
+ clear
+ $fiptables ipforwading
+ ;;
+ 306)
+ clear
+ $fiptables tcpdump
+ ;;
+ 401)
+ clear
+ $fiptables reconfig
+ ;;
+ 402)
+ clear
+ archivo="$(dialog --stdout --title "show-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ cat $directory_config/$archivo
+ echo
+ echo "Launch: $fiptables client $archivo"
+ ;;
+ 403)
+ clear
+ archivo="$(dialog --stdout --title "new-config file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ cp $directory_config/$"english-example1.cfg" $directory_config/$archivo
+ echo
+ echo "Launch: $fiptables client $archivo"
+ ;;
+ 404)
+ clear
+ archivo="$(dialog --stdout --title "nueva-config: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ cp $directory_config/$"spanish-example1.cfg" $directory_config/$archivo
+ echo
+ echo "Launch: $fiptables client $archivo"
+ ;;
+ 405)
+  archivo="$(dialog --stdout --title "modify-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ editor "$directory_config/$archivo"
+ echo
+ echo "Launch: $fiptables client $archivo"
+ ;;
+ 406)
+ archivo="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ echo "$(cp $archivo)"
+ echo
+ echo "cloned $archivo"
+ ;;
+ 407)
+ archivo="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ echo "$(mv $archivo)"
+ echo
+ echo "renamed $archivo"
+ ;;
+ 408)
+ echo
+ archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ rm "$directory_config/$archivo"
+ echo
+ echo "deleted $archivo"
+ ;;
+ 501)
+ clear
+ $fiptables raw-ip4
+ ;;
+ 502)
+ clear
+ $fiptables raw-ip6
+ ;;
+ 503)
+ clear
+ $fiptables mangle-ip4
+ ;;
+ 504)
+ clear
+ $fiptables mangle-ip6
+ ;;
+ 505)
+ clear
+ $fiptables security-ip4
+ ;;
+ 506)
+ clear
+ $fiptables security-ip6
+ ;;
+ 601)
 clear
-$fiptables ipforwading
-echo ;;
-306)
-clear
-$fiptables tcpdump
-echo ;;
-401)
-clear
-$fiptables reconfig
-echo
-echo;;
-402)
-clear
-archivo="$(dialog --stdout --title "show-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-cat $directory_config/$archivo
-echo
-echo "Launch: $fiptables client $archivo"
-echo ;;
-403)
-clear
-archivo="$(dialog --stdout --title "new-config file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-cp $directory_config/$"english-example1.cfg" $directory_config/$archivo
-echo
-echo "Launch: $fiptables client $archivo"
-echo ;;
-404)
-clear
-archivo="$(dialog --stdout --title "nueva-config: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-cp $directory_config/$"spanish-example1.cfg" $directory_config/$archivo
-echo
-echo "Launch: $fiptables client $archivo"
-echo ;;
-405)
-echo
-archivo="$(dialog --stdout --title "modify-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-editor "$directory_config/$archivo"
-echo
-echo "Launch: $fiptables client $archivo"
-echo ;;
-406)
-echo
-archivo="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-echo "$(cp $archivo)"
-echo
-echo "cloned $archivo"
-echo ;;
-407)
-echo
-archivo="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-echo "$(mv $archivo)"
-echo
-echo "renamed $archivo"
-echo ;;
-408)
-echo
-archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $directory_config)" 0 0)"
-clear
-rm "$directory_config/$archivo"
-echo
-echo "deleted $archivo"
-echo;;
-501)
-clear
-$fiptables raw-ip4
-echo;;
-502)
-clear
-$fiptables raw-ip6
-echo;;
-503)
-clear
-$fiptables mangle-ip4
-echo;;
-504)
-clear
-$fiptables mangle-ip6
-echo;;
-505)
-clear
-$fiptables security-ip4
-echo;;
-506)
-clear
-$fiptables security-ip6
-echo;;
-601)
-clear
-$fiptables fw-list
-echo;;
-602)
-clear
-$fiptables fw-save
-echo;;
-603)
-clear
-$fiptables fw-restore
-echo;;
-701)
-clear
-echo "# use command line to choose host: $fiptables ping-ip4"
-ping -4 -c 5 -A fast.com
-echo;;
-702)
-clear
-echo "# use command line to choose host: $fiptables ping-ip6"
-ping -6 -c 5 -A fast.com
-echo;;
-801)
-clear
-echo "# use command line to choose host: $fiptables trace-ip4"
-traceroute -4 -T fast.com
-echo;;
-802)
-echo "# use command line to choose host: $fiptables trace-ip6"
-clear
-traceroute -6 -T fast.com
-echo;;
-803)
-clear
-echo "# use command line to choose host: $fiptables host"
-host fast.com
-;;
-804)
-clear
-echo "# use command line to choose host: $fiptables resolveip"
-resolveip fast.com
-;;
-901)
-clear
-$fiptables auth-sudo
-echo;;
-902)
-clear
-$fiptables remove-sudo
-echo;;
-903)
-clear
-$fiptables list-sudo
-echo;;
-1001)
-clear
-$fiptables version
-echo;;
-1002)
-clear
-$fiptables upgrade
-echo;;
-1003)
-clear
-$fiptables dev-versions
-echo;;
-1101)
-clear
-$fiptables about
-echo;;
-1102)
-clear
-$fiptables help | less
-echo;;
-1103)
-clear
-$fiptables ayuda | less
-echo;;
-1104)
-clear
-$fiptables system-info
-echo;;
-1105)
-clear
-$fiptables cli
-echo;;
-1106)
-clear
-$fiptables gui
-echo;;
-*)
-clear
-dialog --msgbox "work in progress" 0 0
-clear
-esac
-exit; fi
+ $fiptables fw-list
+ ;;
+ 602)
+ clear
+ $fiptables fw-save
+ ;;
+ 603)
+ clear
+ $fiptables fw-restore
+ ;;
+ 701)
+ clear
+ echo "# use command line to choose host: $fiptables ping-ip4"
+ ping -4 -c 5 -A fast.com
+ ;;
+ 702)
+ clear
+ echo "# use command line to choose host: $fiptables ping-ip6"
+ ping -6 -c 5 -A fast.com
+ ;;
+ 801)
+ clear
+ echo "# use command line to choose host: $fiptables trace-ip4"
+ traceroute -4 -T fast.com
+ ;;
+ 802)
+ echo "# use command line to choose host: $fiptables trace-ip6"
+ clear
+ traceroute -6 -T fast.com
+ ;;
+ 803)
+ clear
+ echo "# use command line to choose host: $fiptables host"
+ host fast.com
+ ;;
+ 804)
+ clear
+ echo "# use command line to choose host: $fiptables resolveip"
+ resolveip fast.com
+ ;;
+ 901)
+ clear
+ $fiptables auth-sudo
+ ;;
+ 902)
+ clear
+ $fiptables remove-sudo
+ ;;
+ 903)
+ clear
+ $fiptables list-sudo
+ ;;
+ 1001)
+ clear
+ $fiptables version
+ ;;
+ 1002)
+ clear
+ $fiptables upgrade
+ ;;
+ 1003)
+ clear
+ $fiptables dev-versions
+ ;;
+ 1101)
+ clear
+ $fiptables about
+ ;;
+ 1102)
+ clear
+ $fiptables help | less
+ ;;
+ 1103)
+ clear
+ $fiptables ayuda | less
+ ;;
+ 1104)
+ clear
+ $fiptables system-info
+ ;;
+ 1105)
+ clear
+ $fiptables cli
+ ;;
+ 1106)
+ clear
+ $fiptables gui
+ ;;
+ *)
+ clear
+ dialog --msgbox "fwiptables good bye" 0 0
+ clear
+ exit
+ esac
+ echo "press enter to continue"
+ read -s
+ $fiptables cli
+ exit; fi
 ####
 ####
 ##############################       english: gui: Manage list rules with one menu graphicall
