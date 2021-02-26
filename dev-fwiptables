@@ -166,9 +166,6 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$first_option" = "cli" ]; then echo -n
-echo
-echo "work in progress"
-echo
 cd $directory_config
 menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
   00100 "launch rules" \
@@ -500,117 +497,123 @@ exit; fi
 ##############################       english: gui: Manage list rules with one menu graphicall
 ##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
 if [ "$first_option" = "gui" ]; then echo -n
-echo -n
 #### principal gui ####
 titulo="$fiptables gui"
 untexto="$fiptables gui"
-echo
 cd $directory_config
 menugtk=$(zenity --forms --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="$fiptables" )
-#--add-entry="   $directory_fiptables/$fiptables ")
-case $menugtk in
-cancel)
-echo ;;
+case $? in 
+1)
+zenity --info --ellipsize --text="fwiptables gui stoped"
+exit
+;;
+esac
 #### manage configs ####
+case $menugtk in
 reconfig*)
 untexto="$($fiptables reconfig)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 show-config*)
 untexto="Type the config file to show"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="$(cat "$(echo $unarchivo| sed 's/\///g')")"
-echo ;;
+;;
 rename-config*)
 untexto="Type the config to rename with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
 zenity --info --ellipsize --text="Renamed config: $(echo $unarchivo| sed 's/\///g') $(mv $(echo $unarchivo | sed 's/\///g'))"
-echo ;;
+;;
 clone-config*)
 untexto="Type the config to clone with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
 zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo | sed 's/\///g'))"
-echo ;;
+;;
 delete-config*)
 untexto="Type the config to delete"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="Deleted config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo | sed 's/\///g'))"
-echo ;;
+;;
 new-config*)
 untexto="Type the name of file to write a new config"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp english-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
-echo ;;
+;;
 nueva-config*)
 untexto="Escribe el nombre de archivo de la nueva configuracion"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp spanish-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
-echo ;;
+;;
 modify-config*)
 untexto="Type the graphicall editor and config file, example: gedit config.cfg"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
-echo ;;
+;;
 #### ping and route ####
 ping-ip4*)
 untexto="$(ping -4 -c 1 fast.com)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 ping-ip6*)
 untexto="$(ping -6 -c 1 fast.com)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 trace-ip4*)
 untexto="$(traceroute -4 -T fast.com)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 trace-ip6*)
 untexto="$(traceroute -6 -T fast.com)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 host*)
 untexto="$(host fast.com)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 resolveip*)
 untexto="$(resolveip fast.com)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
+geoip*)
+untexto="$(geoiplookup fast.com)"
+zenity --info --ellipsize --text="$untexto"
+;;
 #### options sudo  #####
 auth-sudo*)
 untexto="type the users to auth sudo, example: user1,user2 "
 usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 echo "$usuario ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
-echo ;;
+;;
 list-sudo*)
 untexto="$($fiptables list-sudo)"
 zenity --info --ellipsize --text="$untexto"
-echo ;;
+;;
 #### options recover fw ####
 fw-save*)
 untexto="type the filename to save firewall"
 archivoini="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 archivofin="$(echo "$archivoini" | sed 's/\///g')"
-echo $directory_fwrecover $untexto $archivofin
+## echo $directory_fwrecover $untexto $archivofin
 $directory_binary/iptables-nft-save > $directory_fwrecover/$archivofin-nft-ipv4
 $directory_binary/iptables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
 $directory_binary/ip6tables-nft-save > $directory_fwrecover/$archivofin-nft-ipv6
 $directory_binary/ip6tables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
 zenity --info --ellipsize --text="ok $(echo saved $archivofin)"
-echo ;;
+;;
 #### options help ####
 ayuda*)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
-echo ;;
+;;
 help*)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
-echo ;;
+;;
 #### options several ####
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
-echo -n ;;
+;;
 esac
+"$fiptables" gui
 exit ; fi
 ##############################       english: version: system script, the version option
 ##############################       spanish: version: script de sistema, la opcion mostrar version
