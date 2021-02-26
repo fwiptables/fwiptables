@@ -34,4 +34,4 @@ all-versions - añadir - ok 195
 help - añadir - ok 195
 ayuda - añadir - ok 195
 geoip - añadir - ok 195
-variables - allow_owner_uid -
+variables - allow_owner_uid - ok 195
