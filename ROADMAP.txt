@@ -1,7 +1,7 @@
 
-***** fwiptables roadmap *****
+     ***** fwiptables roadmap *****
 
-***** version actual: 194
+version actual: 195
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -28,5 +28,5 @@ host - create host option - ok 194
 resolveip - create resolveip option - ok 194
 help - completa y modifica - ok 194
 ayuda - completa y modifica - ok 194
-cli - modifica util tcp y util tcp -
-gui - modifica util tcp y util tcp -
+cli - modifica util icmp y util tcp -
+gui - modifica util icmp y util tcp -
