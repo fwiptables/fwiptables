@@ -2379,7 +2379,7 @@ if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading in iptab
 if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip NAT masquerade in iptables"; else echo "  Allow NAT masquerade" ; fi
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepctional in iptables"; else  echo "  Allow vpn servers are $vpn" ; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more in iptables"; else echo "  Allow other protocol ip: $others_protocols" ; fi
-if [ "$allow_output_uid" = "no" ]; then  echo " Dont allow exclusive uid"; else echo "  Allow one exclusive uid: $output_uid" ; fi
+if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow exclusive uid"; else echo "  Allow one exclusive uid: $output_uid" ; fi
 echo
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 echo

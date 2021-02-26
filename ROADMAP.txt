@@ -28,10 +28,11 @@ host - create host option - ok 194
 resolveip - create resolveip option - ok 194
 help - completa y modifica - ok 194
 ayuda - completa y modifica - ok 194
-cli - modifica util icmp y util tcp -
-gui - modifica util icmp y util tcp -
 all-versions - añadir - ok 195
 help - añadir - ok 195
 ayuda - añadir - ok 195
 geoip - añadir - ok 195
 variables - allow_owner_uid - ok 195
+fwiptables - rediseño de aspecto - ok 195
+cli - modifica util icmp y util tcp -
+gui - modifica util icmp y util tcp -
