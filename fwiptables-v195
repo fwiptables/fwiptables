@@ -1644,12 +1644,9 @@ exit; fi
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
 if [ "$first_option" = "new-versions" ]; then echo -n
-echo ""
 echo "  $fprogram"
 echo "$cincuenta New versions $cinco"
-echo ""
 links -dump $fweb_newfiles | egrep -i "iptables"
-echo ""
 exit; fi
 ############################       english: all-versions: about of program
 ############################       spanish: all-versions: acerca del programa
@@ -2320,7 +2317,7 @@ $execnft $directory_binary/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
 echo
-echo "$fiptables:  $fprogram version $fversion ";
+echo "$fprogram version $fversion ";
 echo "$cincuenta lauching iptables rules $cinco"
 echo ""
 echo "  launched $0 $first_option $second_option  ";
@@ -2341,7 +2338,7 @@ echo "$cinco $program configured with the configuration: $second_option $cinco" 
 else echo "$cinco [Configured with the default configuration] $cinco"
 echo "  $defaultcfg "; fi ;
 echo;
-echo "$cinco  [With the iptables firewall]  $cinco"  ;
+echo "$cinco  [With the netfilter iptables firewall]  $cinco"  ;
 echo "  xtables    is  $execlegacy configured firewall "
 echo "  neftables  is  $execnft configured firewall "
 echo
