@@ -113,8 +113,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [sudo auth]        auth-sudo remove-sudo list-sudo"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
+echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
@@ -504,7 +504,7 @@ cd $directory_config
 menugtk=$(zenity --forms --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="$fiptables" )
 case $? in 
 1)
-zenity --info --ellipsize --text="fwiptables gui stoped"
+zenity --info --ellipsize --text="fwiptables good bye"
 exit
 ;;
 esac
@@ -1741,8 +1741,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [sudo auth]        auth-sudo remove-sudo list-sudo"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
+echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
@@ -1817,17 +1817,17 @@ echo "      raw-ip6: List iptables raw rules from ipv4"
 echo " security-ip4: List iptables security rules from ipv4"
 echo " security-ip6: List iptables security rules from ipv6"
 echo
-echo "$cinco         [sudo $fiptables]"
-echo
-echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
-echo "  remove-sudo: Remove sudo $fiptables to other choosed users"
-echo "    list-sudo: List sudo $fiptables to other choosed users"
-echo
 echo "$cinco         [Recover fw]"
 echo
 echo "      fw-list: Show the files firewall standar"
 echo "      fw-save: Save the files in firewall standar"
 echo "   fw-restore: Show howto reover files firewall standar"
+echo
+echo "$cinco         [Auth sudo]"
+echo
+echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
+echo "  remove-sudo: Remove sudo $fiptables to other choosed users"
+echo "    list-sudo: List sudo $fiptables to other choosed users"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -1920,8 +1920,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [sudo auth]        auth-sudo remove-sudo list-sudo"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
+echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
@@ -1995,17 +1995,17 @@ echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
 echo " security-ip4: lista las reglas de ip4 de security iptables"
 echo " security-ip6: Lista las reglas de ip6 de security iptables"
 echo
-echo "$cinco         [Opciones de autorizacion]"
-echo
-echo "    auth-sudo: Permite autorizacion a $fiptables a usuarios elegidos"
-echo "  remove-sudo: Borra la autorizacion otorgada con $fiptables"
-echo "    list-sudo: Lista autorizacion a $fiptables de usuarios elegidos"
-echo
 echo "$cinco         [Recuperador de firewall en formato standar]"
 echo
 echo "      fw-list: Lista los archivos de firewall"
 echo "      fw-save: Guarda los archivos de firewall"
 echo "   fw-restore: Indica como restaurar los archivos de firewall"
+echo
+echo "$cinco         [Opciones de autorizacion]"
+echo
+echo "    auth-sudo: Permite autorizacion a $fiptables a usuarios elegidos"
+echo "  remove-sudo: Borra la autorizacion otorgada con $fiptables"
+echo "    list-sudo: Lista autorizacion a $fiptables de usuarios elegidos"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
@@ -2404,8 +2404,8 @@ echo "                        security-ip4 security-ip6"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [sudo auth]        auth-sudo remove-sudo list-sudo"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
+echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
