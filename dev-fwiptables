@@ -635,6 +635,13 @@ zenity --info --ellipsize --text="$($fiptables $menugtk)"
 help*)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
+launch-mini*)
+untexto="Type the graphicall editor, example: gedit"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $($unarchivo $directory_config/wizard.cfg)"
+zenity --info --ellipsize --text="ok $(fwiptables client wizard.cfg)"
+zenity --info --ellipsize --text="ok $(fwiptables list)"
+;;
 #### options several ####
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
