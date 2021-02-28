@@ -105,31 +105,31 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work" 
 echo "$fprogram version $fversion , need to be root to work"
-echo "     [Launch rules]     eraserules offline client server allpermisive"
-echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        listnum forwardnum listnum6 forwardnum6"
-echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                        security-ip4 security-ip6 etbtables"
-echo "     [Modify config]    reconfig show-config new-config nueva-config"
-echo "                        modify-config clone-config rename-config delete-config"
-echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [Recover fw]       fw-list fw-save fw-restore"
-echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
-echo "     [Tool icmp]        ping-ip4 ping-ip6"
-echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
-echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
+echo "  [Launch rules]     eraserules offline client server allpermisive wizard"
+echo "  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
+echo "                     listnum forwardnum listnum6 forwardnum6"
+echo "  [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
+echo "                     security-ip4 security-ip6 etbtables"
+echo "  [Modify config]    reconfig show-config new-config nueva-config"
+echo "                     modify-config clone-config rename-config delete-config"
+echo "  [List sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "  [Recover fw]       fw-list fw-save fw-restore"
+echo "  [Auth sudo]        auth-sudo remove-sudo list-sudo"
+echo "  [Tool icmp]        ping-ip4 ping-ip6"
+echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
+echo "  [Version]          version upgrade dev-versions all-versions"
+echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
 echo
 echo "$cinco  [The examples]"
-echo "   [List iptables rules]                $fiptables list  "
-echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
-echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
-echo "   [Remove iptables rules]              $fiptables eraserules "
-echo "   [Show long help in english]          $fiptables help "
-echo "   [Show long help in spanish]          $fiptables ayuda "
+echo "  [List iptables rules]                $fiptables list  "
+echo "  [Launch iptables like client web]    $fiptables client web-example1.cfg"
+echo "  [Launch iptables like server web]    $fiptables server web-example1.cfg"
+echo "  [Remove iptables rules]              $fiptables eraserules "
+echo "  [Show long help in english]          $fiptables help "
+echo "  [Show long help in spanish]          $fiptables ayuda "
 exit; fi
 ##
 ##
@@ -151,13 +151,13 @@ echo "Launch $fiptables to run $fiptables" ; fi
 if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
 ##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
 ##############################      spanish: launch-rules: Primeras opciones: offline, client, server and allpermisive     #####################
-if [ "$first_option" = "offline" ]; then echo; echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
+if [ "$first_option" = "offline" ]; then echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="no"; fi
-if [ "$first_option" = "client" ];then echo; echo "  FIREWALL CLIENT" ; echo "$cincuenta"
+if [ "$first_option" = "client" ];then echo "  FIREWALL CLIENT" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client=""; launch_permisive="no"; fi
-if [ "$first_option" = "server" ]; then echo; echo "  FIREWALL SERVER" ; echo "$cincuenta"
+if [ "$first_option" = "server" ]; then echo "  FIREWALL SERVER" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
-if [ "$first_option" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
+if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
 ##############################       english: Script: general options      #########################################
 ##############################       spanish: Script: opciones generales   #########################################
@@ -169,9 +169,17 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ##############################       english: mini-wizard: wizard to connect like simple client
 ##############################       spanish: mini-wizard: asistente to connect like simple client
 if [ "$first_option" = "mini-wizard" ]; then echo -n
-head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
+editor "$directory_config/mini-wizard.cfg"
+$fiptables client mini-wizard.cfg
+$fiptables list
+exit; fi
+##############################       english: wizard: wizard to connect like simple client
+##############################       spanish: wizard: asistente to connect like simple client
+if [ "$first_option" = "wizard" ]; then echo -n
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
 editor "$directory_config/wizard.cfg"
-$fiptables client wizard.cfg
+$fiptables server wizard.cfg
 $fiptables list
 exit; fi
 ##############################       english: cli: Manage list rules with one text menu
@@ -185,6 +193,7 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   103 client \
   104 server  \
   105 allpermisive \
+  106 wizard \
   00200 "list rules" \
   201 list \
   202 forward \
@@ -275,6 +284,10 @@ case $menuprincipal in
  clear
  $fiptables allpermisive
  ;;
+ 106)
+ clear
+ $fiptables wizard
+ ;;
  201)
  clear
  $fiptables list
@@ -315,7 +328,7 @@ case $menuprincipal in
  clear
  $fiptables lsof
  ;;
-305)
+ 305)
  clear
  $fiptables ipforwading
  ;;
@@ -535,8 +548,18 @@ zenity --info --ellipsize --text="fwiptables good bye"
 exit
 ;;
 esac
-#### manage configs ####
+#### manage some configs ####
 case $menugtk in
+#### launch rules   ####
+wizard*)
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
+untexto="Type the graphicall editor, example: gedit"
+unarchivo="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $($unarchivo $directory_config/wizard.cfg)"
+zenity --info --ellipsize --text="ok $(fwiptables server wizard.cfg)"
+zenity --info --ellipsize --text="ok $(fwiptables list)"
+;;
+#### modify configs ####
 reconfig*)
 untexto="$($fiptables reconfig)"
 zenity --info --ellipsize --text="$untexto"
@@ -643,10 +666,11 @@ help*)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 mini-wizard*)
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
 untexto="Type the graphicall editor, example: gedit"
 unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="ok $($unarchivo $directory_config/wizard.cfg)"
-zenity --info --ellipsize --text="ok $(fwiptables client wizard.cfg)"
+zenity --info --ellipsize --text="ok $($unarchivo $directory_config/mini-wizard.cfg)"
+zenity --info --ellipsize --text="ok $(fwiptables client mini-wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables list)"
 ;;
 #### options several ####
@@ -1763,7 +1787,7 @@ echo "$cincuenta Help $cinco"
 echo
 echo
 echo "$cinco   One First Option "
-echo "     [Launch rules]     eraserules offline client server allpermisive"
+echo "     [Launch rules]     eraserules offline client server allpermisive wizard"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
@@ -1948,7 +1972,7 @@ echo "$cincuenta Ayuda $cinco"
 echo
 echo
 echo "$cinco   Una primera opcion "
-echo "     [Launch rules]     eraserules offline client server allpermisive"
+echo "     [Launch rules]     eraserules offline client server allpermisive wizard"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
@@ -2362,56 +2386,46 @@ $execnft $directory_binary/ip6tables-nft -A OUTPUT -j DROP &> /dev/null
 $execnft $directory_binary/ip6tables-nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
-echo
 echo "$fprogram version $fversion ";
 echo "$cincuenta lauching iptables rules $cinco"
-echo ""
 echo "  launched $0 $first_option $second_option  ";
-if [ "$first_option" = "offline" ]; then echo
+if [ "$first_option" = "offline" ]; then echo -n
 echo "$cinco  The iptables configured for disconnected to internet $cinco"
-echo
 echo "  launch $0 list  # to list iptables rules"
-echo;  exit
-else echo -n ; fi
-if [ "$first_option" = "allpermisive" ]; then echo
+echo;  exit ; else echo -n ; fi
+if [ "$first_option" = "allpermisive" ]; then echo -n
 echo "$cinco  The iptables configured for all permisive to internet $cinco"
-echo
 echo "  launch $0 list  # to list iptables rules"
-echo;  exit
-else echo -n ; fi
+exit ; else echo -n ; fi
 if [ -f "$directory_config/$second_option" ]; then echo -n
 echo "$cinco $program configured with the configuration: $second_option $cinco" ;
 else echo "$cinco [Configured with the default configuration] $cinco"
 echo "  $defaultcfg "; fi ;
-echo;
 echo "$cinco  [With the netfilter iptables firewall]  $cinco"  ;
 echo "  xtables    is  $execlegacy configured firewall "
 echo "  neftables  is  $execnft configured firewall "
-echo
+echo "  * At least one is usually necesary"
 echo "$cinco  [With the client ports IP]  $cinco" ;
 echo "  client tcp: $client_tcp"  ;
 echo "  client udp: $client_udp"  ;
 echo "  * Ports domain,ntp,bootpc are usually udp necesary"
-if [ "$first_option" = "client" ]; then echo ;
+if [ "$first_option" = "client" ]; then echo -n ;
 echo "$cinco  [Without server ports IP] $cinco" ;
 else echo -n; fi
-if [ "$first_option" = "server" ]; then echo ;
+if [ "$first_option" = "server" ]; then echo -n ;
 echo "$cinco  [With the server ports IP]  $cinco" ;
 echo "  server tcp: $server_tcp" ;
 echo "  server udp: $server_udp" ;
-else echo -n; fi ; echo
+else echo -n; fi
 echo "$cinco  [With the protocols IP]  $cinco" ;
 echo "  ipv4 is $allow_ipv4 allowed "
 echo "  ipv6 is $allow_ipv6 allowed "
 echo "  * Where ipv4 is usually necesary"
-echo
 echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
-echo
 if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
-echo
 else echo "$cinco  [With input state IP]  $cinco"
 echo " Input satate: $input_state"
 echo ; fi
@@ -2425,9 +2439,7 @@ if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip NAT masquerade in iptabl
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepctional in iptables"; else  echo "  Allow vpn servers are $vpn" ; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more in iptables"; else echo "  Allow other protocol ip: $others_protocols" ; fi
 if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow exclusive uid"; else echo "  Allow one exclusive uid: $output_uid" ; fi
-echo
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
-echo
 #auto generate iptables save
 #iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
 #iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
@@ -2438,31 +2450,31 @@ exit; fi
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "$fprogram version $fversion"
 echo "$cincuenta Wellcome $fiptables"
-echo "     [Launch rules]     eraserules offline client server allpermisive"
-echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        listnum forwardnum listnum6 forwardnum6"
-echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                        security-ip4 security-ip6 ebtables"
-echo "     [Modify config]    reconfig show-config new-config nueva-config"
-echo "                        modify-config clone-config rename-config delete-config"
-echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "     [Recover fw]       fw-list fw-save fw-restore"
-echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
-echo "     [Tool icmp]        ping-ip4 ping-ip6"
-echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
-echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
+echo "  [Launch rules]     eraserules offline client server allpermisive wizard"
+echo "  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
+echo "                     listnum forwardnum listnum6 forwardnum6"
+echo "  [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
+echo "                     security-ip4 security-ip6 ebtables"
+echo "  [Modify config]    reconfig show-config new-config nueva-config"
+echo "                     modify-config clone-config rename-config delete-config"
+echo "  [List sockets]     route ss netstat lsof ipforwading tcpdump"
+echo "  [Recover fw]       fw-list fw-save fw-restore"
+echo "  [Auth sudo]        auth-sudo remove-sudo list-sudo"
+echo "  [Tool icmp]        ping-ip4 ping-ip6"
+echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
+echo "  [Version]          version upgrade dev-versions all-versions"
+echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
 echo
 echo "$cinco  [The examples]"
-echo "   [List iptables rules]                $fiptables list  "
-echo "   [Launch iptables like client web]    $fiptables client web-example1.cfg"
-echo "   [Launch iptables like server web]    $fiptables server web-example1.cfg"
-echo "   [Remove iptables rules]              $fiptables eraserules "
-echo "   [Show long help in english]          $fiptables help "
-echo "   [Show long help in spanish]          $fiptables ayuda "
+echo "  [List iptables rules]                $fiptables list  "
+echo "  [Launch iptables like client web]    $fiptables client web-example1.cfg"
+echo "  [Launch iptables like server web]    $fiptables server web-example1.cfg"
+echo "  [Remove iptables rules]              $fiptables eraserules "
+echo "  [Show long help in english]          $fiptables help "
+echo "  [Show long help in spanish]          $fiptables ayuda "
 # left script
 #######################         english: End of script
 #######################         spanish: fin del script
