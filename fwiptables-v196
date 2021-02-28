@@ -1515,110 +1515,138 @@ exit; fi
 if [ "$first_option" = "ping-ip4" ]; then echo -n
 case $(which ping) in
 "$NULL")
-echo
-echo
 echo " Install ping"
 ;;
 *)
-echo
-echo "$fprogram version $fversion"
-echo "$cincuenta ping ipv4 $cinco"
-echo
-echo; read -r -p "#####    Type the host to do ping ipv4: [ fast.com   ] " trazador
-echo
-ping -4 -c 5 -A $trazador
 ;;
 esac
+case "$second_option" in
+"$NULL")
+echo "$fprogram version $fversion"
+echo "$cincuenta  ping icmp ipv4 $cinco"
+echo
+read -r -p "#####    Type the host to do ping ip4: [ fast.com   ] " trazador
+;;
+*)
+trazador="$second_option"
+;;
+esac
+ping -4 -c 5 -A $trazador
 exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then echo -n
-case $(which traceroute) in
+case $(which ping) in
 "$NULL")
-echo
-echo
 echo " Install ping"
 ;;
 *)
-echo "$fprogram version $fversion"
-echo "$cincuenta  ping ipv6 $cinco"
-echo
-read -r -p "#####    Type the host to do ping ipv6: [ fast.com   ] " trazador
-ping -6 -c 5 -A $trazador
- ;;
+;;
 esac
+case "$second_option" in
+"$NULL")
+echo "$fprogram version $fversion"
+echo "$cincuenta  ping icmp ipv6 $cinco"
+echo
+read -r -p "#####    Type the host to do ping ip6: [ fast.com   ] " trazador
+;;
+*)
+trazador="$second_option"
+;;
+esac
+ping -6 -c 5 -A $trazador
 exit; fi
 ############################       english: trace-ip4: traceroute with tcp and ipv6
 ############################       spanish: trace-ip4: traceroute con tcp y ipv4
 if [ "$first_option" = "trace-ip4" ]; then echo -n
 case $(which traceroute) in
 "$NULL")
-echo
-echo
 echo " Install traceroute"
 ;;
 *)
+;;
+esac
+case "$second_option" in
+"$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
 echo
 read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
-traceroute -4 -T $trazador
+;;
+*)
+trazador="$second_option"
 ;;
 esac
+traceroute -4 -T $trazador
 exit; fi
 ############################       english: trace-ip6: traceroute with tcp and ipv6
 ############################       spanish: trace-ip6: traceroute con tcp e ipv6
 if [ "$first_option" = "trace-ip6" ]; then echo -n
 case $(which traceroute) in
 "$NULL")
-echo
-echo
 echo " Install traceroute"
 ;;
 *)
-echo "$fprogram version $fversion"
-echo "$cincuenta   traceroute tcp ipv6 $cinco"
-echo
-read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
-traceroute -6 -T $trazador
 ;;
 esac
+case "$second_option" in
+"$NULL")
+echo "$fprogram version $fversion"
+echo "$cincuenta  traceroute tcp ipv6 $cinco"
+echo
+read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
+;;
+*)
+trazador="$second_option"
+;;
+esac
+traceroute -6 -T $trazador
 exit; fi
 ############################       english: host: host to resolve ip
 ############################       spanish: host: host to resolve ip
 if [ "$first_option" = "host" ]; then echo -n
 case $(which host) in
 "$NULL")
-echo
-echo
 echo " Install host"
 ;;
 *)
-echo "$fprogram version $fversion"
-echo "$cincuenta  resolve host  $cinco"
-echo
-read -r -p "#####    Type the host to resolve: [ fast.com   ] " trazador
-host $trazador
 ;;
 esac
+case "$second_option" in
+"$NULL")
+echo "$fprogram version $fversion"
+echo "$cincuenta resolve host $cinco"
+echo
+read -r -p "#####    Type the host to do resolve host: [ fast.com   ] " trazador
+;;
+*)
+trazador="$second_option"
+;;
+esac
+host $trazador
 exit; fi
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
 if [ "$first_option" = "resolveip" ]; then echo -n
 case $(which resolveip) in
 "$NULL")
-echo
-echo
 echo " Install resolveip"
 ;;
 *)
-echo "$fprogram version $fversion"
-echo "$cincuenta  resolve ip  $cinco"
-echo
-read -r -p "#####    Type the host to resolve  ip or viceversa: [ fast.com   ] " trazador
-resolveip $trazador
 ;;
 esac
+case "$second_option" in
+"$NULL")
+echo "$fprogram version $fversion"
+echo "$cincuenta resolve ip or host $cinco"
+echo
+read -r -p "#####    Type the host to do resolve ip or host: [ fast.com   ] " trazador
+;;
+*)
+trazador="$second_option"
+;;
+esac
+resolveip $trazador
 exit; fi
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
@@ -1628,12 +1656,20 @@ case $(which geoiplookup) in
 echo " Install geoip-bin"
 ;;
 *)
-echo "$fprogram version $fversion"
-echo "$cincuenta  locate ip  $cinco"
-read -r -p "#####    Type the host to locate ip or host: [ fast.com   ] " trazador
-geoiplookup -i $trazador
 ;;
 esac
+case "$second_option" in
+"$NULL")
+echo "$fprogram version $fversion"
+echo "$cincuenta search geoip $cinco"
+echo
+read -r -p "#####    Type the host to do search geoip: [ fast.com   ] " trazador
+;;
+*)
+trazador="$second_option"
+;;
+esac
+geoiplookup -i $trazador
 exit; fi
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
