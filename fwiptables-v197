@@ -578,32 +578,39 @@ zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
 ;;
 #### ping and route ####
 ping-ip4*)
-untexto="$(ping -4 -c 1 fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables ping-ip4 $unahost)"
 ;;
 ping-ip6*)
-untexto="$(ping -6 -c 1 fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables ping-ip6 $unahost)"
 ;;
 trace-ip4*)
-untexto="$(traceroute -4 -T fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables trace-ip4 $unahost)"
 ;;
 trace-ip6*)
-untexto="$(traceroute -6 -T fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables trace-ip6 $unahost)"
 ;;
 host*)
-untexto="$(host fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables host $unahost)"
 ;;
 resolveip*)
-untexto="$(resolveip fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host or ip, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables resolveip $unahost)"
 ;;
 geoip*)
-untexto="$(geoiplookup fast.com)"
-zenity --info --ellipsize --text="$untexto"
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $( $fiptables geoip $unahost)"
 ;;
 #### options sudo  #####
 auth-sudo*)
