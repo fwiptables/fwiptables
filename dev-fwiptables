@@ -103,7 +103,7 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 if [ "$(id -u)" = "0" ]; then echo  -n ;
-else echo "$cincuenta need to be root to work" ; echo ;
+else echo "$cincuenta need to be root to work" 
 echo "$fprogram version $fversion , need to be root to work"
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
@@ -773,9 +773,8 @@ exit ; fi
 ##############################       english: web-upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: web-upgrade: actualiza en el archivo /usr/bin/fwiptables
 if [ "$first_option" = "web-upgrade" ]; then echo -n
-echo
-echo "  $fiptables:  $fprogram version $fversion"
-echo "$cincuenta Web upgrade $fprogram $cinco"
+echo "$fprogram version $fversion"
+echo "$cincuenta Web upgrade $fprogram"
 echo "   Upgrade The $fiptables in file $directory_fiptables/$fiptables with links command"
 flinks=$(which links)
 echo "   Downloading $fiptables with the comand links browser in path: $flinks"
@@ -792,19 +791,15 @@ exit ; fi
 ##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
 if [ "$first_option" = "upgrade" ]; then  echo -n
-echo
-echo "  $fiptables:  $fprogram version $fversion"
-echo "$cincuenta  Upgrade $cinco"
-echo
+echo "$fprogram version $fversion"
+echo "$cincuenta  Upgrade"
 echo "  The actually version is" ;
 echo "       $fprogram has the version $fiptables $fversion actually" ;
-echo
 echo "  The latest version is" ;
 links -dump $fweb_newfiles  | grep -i "download latest version"  ;
 echo "$cinco"
 echo "    Upgrade The fwiptables in file $directory_fiptables/$fiptables with links command" ; echo ;
 echo " $cinco    download manually   || or launch ||   $0 web-upgrade"
-echo
 echo "     links -source $fweb_latest > $directory_fiptables/$fiptables"
 echo "     chmod ugo+x $directory_fiptables/$fiptables"
 echo "     /usr/bin/$fiptables reconfig"
@@ -813,10 +808,8 @@ exit;  fi
 #############################       english: eraserules: system script, the erase rules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 if [ "$first_option" = "eraserules" ]; then echo -n ;
-echo
 echo "$fprogram version $ver"
-echo "$cincuenta Deleting rules iptables $cinco" ;
-echo
+echo "$cincuenta Deleting rules iptables"
 $directory_binary/iptables-nft -t filter -F
 $directory_binary/ip6tables-nft -t filter  -F
 $directory_binary/iptables-legacy -t filter -F
@@ -832,127 +825,89 @@ exit; fi
 ## comments: sed is necesary to full work in graphicall
 ##
 if [ "$first_option" = "route" ]; then   echo  -n
-echo
 echo "$fprogram version $fversion"
-echo "$cincuenta  Show ip address and ip route    $cinco"
-echo
+echo "$cincuenta  Show ip address and ip route"
 echo "$(uname -a)"
-echo
 echo "$cinco  ip address  $cinco "
-echo
-echo
 case $(ip address) in
 $NULL)
 echo "Without net devices"
-echo;;
+;;
 *)
 echo "$(ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
-echo ;;
+;;
 esac
-echo
 echo "$cinco  ip route  $cinco"
-echo
 case $(ip route) in
 $NULL)
 echo "Without route ip"
-echo ;;
+;;
 *)
 echo "$(ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
-echo ;;
+;;
 esac
-echo
 echo "$cinco  ip tunnel  $cinco"
-echo
 case $(ip tunnel) in
 $NULL)
 echo "Without tunnel ip"
-echo ;;
+;;
 *)
 echo "$(ip tunnel | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
-echo ;;
+;;
 esac
 exit; fi
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
 if [ "$first_option" = "ss" ]; then echo -n ;
-echo
 case $(which ss) in
 "$NULL")
-echo
 echo " Install ss"
-echo
-echo ;;
+;;
 *)
 echo "$fprogram version $fversion";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
-echo
 uname -a
-echo
 echo "$cinco      The ipv6 sockets       $cinco"
-echo
 ss -a6
-echo
 echo "$cinco      The ipv4 sockets      $cinco"
-echo
 ss -a4
-echo;;
+;;
 esac
-echo
 exit; fi
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 if [ "$first_option" = "lsof" ]; then echo -n ;
-echo
 case $(which lsof) in
 "$NULL")
-echo
 echo " Install lsof"
-echo
 echo ;;
 *)
 echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
-echo
 uname -a
-echo
 echo "$cinco      The sockets with lsof      $cinco"
-echo
 lsof -i
-echo ;;
+;;
 esac
-echo
 exit; fi
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat  sockets
 if [ "$first_option" = "netstat" ]; then echo -n ;
-echo
-echo
 case $(which netstat) in
 "$NULL")
-echo
-echo
 echo " Install netstat"
-echo
-echo ;;
+;;
 *)
-echo "$fprogram version $fversion";
-echo  "$cincuenta  The sockets list with netstat   $cinco"
-echo
+echo "$fprogram version $fversion"
+echo "$cincuenta  The sockets list with netstat"
 uname -a
-echo
 echo "$cincuenta      The devices list with netstat      $cinco" ;
-echo
 netstat -i
-echo
 echo "$cincuenta      The route table with  netstat      $cinco" ;
-echo
 netstat -r
-echo
 echo "$cincuenta      The sockets list with netstat      $cinco" ;
-echo
 netstat -a -4 -6
-echo
-echo ;;
+;;
 esac
 exit; fi
 #############################       english: list: system script, the list option
@@ -960,8 +915,8 @@ exit; fi
 if [ "$first_option" = "list" ]; then echo -n ;
 legacycuatro=$("$directory_binary/iptables-legacy" -t filter -L INPUT 1)
 nftcuatro=$("$directory_binary/iptables-nft" -t filter -L INPUT 1)
- echo "  $fprogram version $fversion"
- echo "$cincuenta   List filter ipv4    $cinco"
+ echo "$fprogram version $fversion"
+ echo "$cincuenta   List filter ipv4"
  case $legacycuatro in
  "$NULL")
  echo "$cinco  [Without rules xtables ipv4]";
@@ -986,7 +941,7 @@ exit; fi
 ############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
  if [ "$first_option" = "forward" ]; then echo -n
  echo "  $fprogram version $fversion" ;
- echo "$cincuenta  List filter forward ipv4    $cinco"
+ echo "$cincuenta  List filter forward ipv4"
  echo $cinco " [The xtables ipv4]"
  $directory_binary/iptables-legacy -v -L FORWARD
  echo "$cinco  [The netftables ipv4] "
@@ -997,8 +952,8 @@ exit; fi
  if [ "$first_option" = "list6" ]; then echo -n
 legacyseis=$("$directory_binary/ip6tables-legacy" -t filter -L INPUT 1)
 nftseis=$("$directory_binary/ip6tables-nft" -t filter -L INPUT 1)
- echo "  $fprogram version $fversion" ;
- echo "$cincuenta   List filter ipv6    $cinco"
+ echo "  $fprogram version $fversion"
+ echo "$cincuenta   List filter ipv6"
  case $legacyseis in
  "$NULL")
  echo "$cinco  [Without rules xtables ipv6]"
@@ -1024,7 +979,7 @@ nftseis=$("$directory_binary/ip6tables-nft" -t filter -L INPUT 1)
 ############################       spanish: forward6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
  if [ "$first_option" = "forward6" ]; then echo -n
  echo "  $fprogram version $fversion" ;
- echo "$cincuenta   List filter forward ipv6    $cinco"
+ echo "$cincuenta   List filter forward ipv6"
  echo $cinco " [The xtables ipv6]"
  $directory_binary/ip6tables-legacy -v -L FORWARD
  echo "$cinco  [The netftables ipv6] "
@@ -1034,7 +989,7 @@ nftseis=$("$directory_binary/ip6tables-nft" -t filter -L INPUT 1)
 ############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
 if [ "$first_option" = "nat-ip4" ]; then echo -n
  echo "$fprogram version $fversion "
- echo "$cincuenta   NAT ipv4    $cinco"
+ echo "$cincuenta   NAT ipv4"
  echo "$cinco  [The xtables ipv4]"
  $directory_binary/iptables-legacy -t nat -v -L
  echo "$cinco  [The neftables ipv4]"
@@ -1044,7 +999,7 @@ if [ "$first_option" = "nat-ip4" ]; then echo -n
 ############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
 if [ "$first_option" = "nat-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
- echo "$cincuenta   NAT ipv6    $cinco"
+ echo "$cincuenta   NAT ipv6"
  echo "$cinco  [The xtables ipv6]"
  $directory_binary/ip6tables-legacy -t nat -v -L
  echo "$cinco  [The neftables ipv6]"
@@ -1056,7 +1011,7 @@ if [ "$first_option" = "listnum" ]; then echo -n ;
 legacycuatro=$("$directory_binary/iptables-legacy" -t filter -L INPUT 1)
 nftcuatro=$("$directory_binary/iptables-nft" -t filter -L INPUT 1)
  echo "  $fprogram version $fversion"
- echo "$cincuenta   List filter ipv4 numerical  $cinco"
+ echo "$cincuenta   List filter ipv4 numerical"
  case $legacycuatro in
  "$NULL")
  echo "$cinco  [Without rules xtables ipv4]";
@@ -1064,23 +1019,24 @@ nftcuatro=$("$directory_binary/iptables-nft" -t filter -L INPUT 1)
  *)
  echo "$cinco  [With rules xtables ipv4]"
  $directory_binary/iptables-legacy -v -n -L INPUT
- $directory_binary/iptables-legacy -v -n -L OUTPUT ;;
+ $directory_binary/iptables-legacy -v -n -L OUTPUT
+ ;;
  esac
  case $nftcuatro in
  "$NULL")
-  echo "$cinco  [Without rules neftables ipv4]";
+ echo "$cinco  [Without rules neftables ipv4]";
  ;;
-  *)
-  echo "$cinco  [With rules neftables ipv4]"
-  $directory_binary/iptables-nft -v -n -L INPUT
-  $directory_binary/iptables-nft -v -n -L OUTPUT ;;
+ *)
+ echo "$cinco  [With rules neftables ipv4]"
+ $directory_binary/iptables-nft -v -n -L INPUT
+ $directory_binary/iptables-nft -v -n -L OUTPUT ;;
  esac
 exit; fi
 ############################       english: forwardnum: system script, the forward option to list iptables filter forward rules
 ############################       spanish: forwardnum: script de sistema, la opcion forward para listar reglas de iptables filter forward
  if [ "$first_option" = "forwardnum" ]; then echo -n
  echo "  $fprogram version $fversion" ;
- echo "$cincuenta  List filter forward ipv4 numerical   $cinco"
+ echo "$cincuenta  List filter forward ipv4 numerical"
  echo $cinco " [The xtables ipv4]"
  $directory_binary/iptables-legacy -v -n -L FORWARD
  echo "$cinco  [The netftables ipv4] "
@@ -1092,7 +1048,7 @@ exit; fi
 legacyseis=$("$directory_binary/ip6tables-legacy" -t filter -L INPUT 1)
 nftseis=$("$directory_binary/ip6tables-nft" -t filter -L INPUT 1)
  echo "  $fprogram version $fversion" ;
- echo "$cincuenta   List filter ipv6 numerical   $cinco"
+ echo "$cincuenta   List filter ipv6 numerical"
  case $legacyseis in
  "$NULL")
  echo "$cinco  [Without rules xtables ipv6]"
@@ -1118,7 +1074,7 @@ nftseis=$("$directory_binary/ip6tables-nft" -t filter -L INPUT 1)
 ############################       spanish: forwardnum6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
  if [ "$first_option" = "forwardnum6" ]; then echo -n
  echo "  $fprogram version $fversion" ;
- echo "$cincuenta   List filter forward ipv6 numerical   $cinco"
+ echo "$cincuenta   List filter forward ipv6 numerical"
  echo $cinco " [The xtables ipv6]"
  $directory_binary/ip6tables-legacy -v -n -L FORWARD
  echo "$cinco  [The netftables ipv6] "
@@ -1128,7 +1084,7 @@ nftseis=$("$directory_binary/ip6tables-nft" -t filter -L INPUT 1)
 ############################       spanish: mangle-ip4: script de sistema, la opcion mangle-ip4 para listar reglas de mangle de ipv4
 if [ "$first_option" = "mangle-ip4" ]; then echo -n
  echo "$fprogram version $fversion"
- echo  "$cincuenta  mangle ipv4    $cinco"
+ echo  "$cincuenta  mangle ipv4"
  echo "$cinco  [The xtables ipv4]"
  $directory_binary/iptables-legacy -t mangle -v -L
  echo "$cinco  [The neftables ipv4]"
@@ -1138,7 +1094,7 @@ if [ "$first_option" = "mangle-ip4" ]; then echo -n
 ############################       spanish: mangle-ip6: script de sistema, la opcion mangle-ip6 para listar reglas de mangle de ipv6
 if [ "$first_option" = "mangle-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
- echo "$cincuenta  mangle ipv6    $cinco"
+ echo "$cincuenta  mangle ipv6"
  echo "$cinco  [The xtables ipv6]"
  $directory_binary/ip6tables-legacy -t mangle -v -L
  echo "$cinco  [The neftables ipv6]"
@@ -1148,7 +1104,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ############################       spanish: raw-ip4: script de sistema, la opcion raw-ip4 para listar reglas de raw de ipv4
 if [ "$first_option" = "raw-ip4" ]; then echo -n
  echo "$fprogram version $fversion"
- echo  "$cincuenta  raw ipv4    $cinco"
+ echo  "$cincuenta  raw ipv4"
  echo "$cinco  [The xtables ipv4]"
  $directory_binary/iptables-legacy -t raw -v -L
  echo "$cinco  [The neftables ipv4]"
@@ -1158,7 +1114,7 @@ if [ "$first_option" = "raw-ip4" ]; then echo -n
 ############################       spanish: raw-ip6: script de sistema, la opcion raw-ip6 para listar reglas de raw de ipv6
  if [ "$first_option" = "raw-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
- echo  "$cincuenta  raw ipv6    $cinco"
+ echo  "$cincuenta  raw ipv6"
  echo "$cinco  [The xtables ipv6]"
  $directory_binary/ip6tables-legacy -t raw -v -L
  echo "$cinco  [The neftables ipv6]"
@@ -1168,7 +1124,7 @@ if [ "$first_option" = "raw-ip4" ]; then echo -n
 ############################       spanish: security-ip4: script de sistema, la opcion security-ip4 para listar reglas de security de ipv4
  if [ "$first_option" = "security-ip4" ]; then echo -n
  echo "$fprogram version $fversion"
- echo  "$cincuenta  security ipv4    $cinco"
+ echo  "$cincuenta  security ipv4"
  echo "$cinco  [The xtables ipv4]"
  $directory_binary/iptables-legacy -t security -v -L
  echo "$cinco  [The neftables ipv4]"
@@ -1178,7 +1134,7 @@ if [ "$first_option" = "raw-ip4" ]; then echo -n
 ############################       spanish: security-ip6: script de sistema, la opcion security-ip6 para listar reglas de security de ipv6
 if [ "$first_option" = "security-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
- echo  "$cincuenta  security ipv6    $cinco"
+ echo  "$cincuenta  security ipv6"
  echo "$cinco  [The xtables ipv6]"
  $directory_binary/ip6tables-legacy -t security -v -L
  echo "$cinco  [The neftables ipv6]"
@@ -1188,7 +1144,7 @@ if [ "$first_option" = "security-ip6" ]; then echo -n
 ############################       spanish: ebtables: script de sistema, la opcion ebtables to list ethernet
  if [ "$first_option" = "ebtables" ]; then echo -n
  echo "$fprogram version $fversion"
- echo  "$cincuenta ebtables ethernet nft $cinco"
+ echo  "$cincuenta ebtables ethernet nft"
  echo "$cinco filter ethernet nft"
  $directory_binary/ebtables -L -t filter
  echo "$cinco nat ethernet nft"
@@ -1480,17 +1436,11 @@ exit; fi
 if [ "$first_option" = "tcpdump" ]; then echo -n
 case $(which tcpdump) in
 "$NULL")
-echo
-echo
 echo " Install tcpdump"
-echo
-echo ;;
+;;
 *)
-echo
 echo "$fprogram version $fversion"
-echo "$cincuenta  Listening tcpdump $cinco"
-echo
-echo
+echo "$cincuenta  Listening tcpdump"
 echo "  Launch manually tcpdump"
 ;;
 esac
@@ -1500,29 +1450,21 @@ exit; fi
 if [ "$first_option" = "fw-list" ]; then echo -n
 echo "$cincuenta iptables list $cinco"
 echo "File list with rules in iptables format in folder $directory_fwrecover"
-echo
 ls $directory_fwrecover
 exit; fi
 ############################       english: fw-restore: load the rules in iptables format
 ############################       spanish: fw-restore: carga las reglas en formato iptables
 if [ "$first_option" = "fw-restore" ]; then echo -n
-echo
 echo "$cincuenta iptables restore $cinco"
 echo "Load the rules in iptables format in folder $directory_fwrecover"
-echo
 ls $directory_fwrecover
-echo
 echo "$cinco first erase rules with:   fwiptables eraserules"
-echo
 echo "$cinco the iptables recover files are in folder $directory_fwrecover"
-echo
 echo "$cinco then iptables restore with one command from above:"
-echo
 echo "with ipv4 neftables (nft)  :    iptables-nft-restore"
 echo "with ipv4 xtables (legacy) :    iptables-legacy-restore"
 echo "with ipv6 neftables (nft)  :    ip6tables-nft-restore"
 echo "with ipv6 xtables (legacy) :    ip6tables-legacy-restore"
-echo
 exit; fi
 ############################       english: fw-save: save the rules in iptables format
 ############################       spanish: fw-save: guarda las reglas en formato iptables
@@ -1532,7 +1474,6 @@ case "$second_option" in
 "$NULL")
 echo "Save the rules in iptables format in folder $directory_fwrecover"
 ls $directory_fwrecover
-echo
 echo        "     Control+c to stop"
 read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini
 archivofin=$(sed 's/\///g' <<< "$archivoini")
@@ -2481,8 +2422,8 @@ echo
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
-echo "$fprogram version $fversion "
-echo "$cincuenta Wellcome $fiptables $cinco "
+echo "$fprogram version $fversion"
+echo "$cincuenta Wellcome $fiptables"
 echo "     [Launch rules]     eraserules offline client server allpermisive"
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
