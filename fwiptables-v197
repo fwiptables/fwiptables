@@ -118,7 +118,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda launch-mini cli gui"
+echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
@@ -166,9 +166,9 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ####
 ####
 ####
-##############################       english: launch-mini: wizard to connect like simple client
-##############################       spanish: launch-mini: asistente to connect like simple client
-if [ "$first_option" = "launch-mini" ]; then echo -n
+##############################       english: mini-wizard: wizard to connect like simple client
+##############################       spanish: mini-wizard: asistente to connect like simple client
+if [ "$first_option" = "mini-wizard" ]; then echo -n
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
 editor "$directory_config/wizard.cfg"
 $fiptables client wizard.cfg
@@ -240,7 +240,7 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   1102 help \
   1103 ayuda \
   1104 system-info \
-  1105 launch-mini \
+  1105 mini-wizard \
   1106 cli \
   1107 gui \
   )"
@@ -499,7 +499,7 @@ clear
  ;;
  1105)
  clear
- $fiptables launch-mini
+ $fiptables mini-wizard
  ;;
  1106)
  clear
@@ -642,7 +642,7 @@ zenity --info --ellipsize --text="$($fiptables $menugtk)"
 help*)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
-launch-mini*)
+mini-wizard*)
 untexto="Type the graphicall editor, example: gedit"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="ok $($unarchivo $directory_config/wizard.cfg)"
@@ -1776,7 +1776,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda launch-mini cli gui"
+echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
 echo ""
 echo "$cinco   The cfg are in $directory_config/[config.cfg]"
 echo
@@ -1886,7 +1886,7 @@ echo "        about: About the $fiptables"
 echo "  system-info: Show info  system"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
-echo "  launch-mini: Wizard and Launch simple client iptables"
+echo "  mini-wizard: Wizard and Launch simple client iptables"
 echo "          cli: Comand line interface with menus"
 echo "          gui: Graphicall user interface"
 echo ""
@@ -1961,7 +1961,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda launch-mini cli gui"
+echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
 echo ""
 echo "$cinco   Las configs estan en $directory_config/[config.cfg]"
 echo
@@ -2070,7 +2070,7 @@ echo "        About: Acerca de $fiptables"
 echo "  system-info: Muestra la informacion del sistema"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
-echo "  launch-mini: Asistente y lanza simple cliente iptables"
+echo "  mini-wizard: Asistente y lanza simple cliente iptables"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
 echo
@@ -2451,7 +2451,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda launch-mini cli gui"
+echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
