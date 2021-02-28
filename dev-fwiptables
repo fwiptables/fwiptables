@@ -118,7 +118,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda cli gui"
+echo "     [Help]             about system-info help ayuda launch-mini cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
@@ -166,6 +166,14 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ####
 ####
 ####
+##############################       english: launch-mini: wizard to connect like simple client
+##############################       spanish: launch-mini: asistente to connect like simple client
+if [ "$first_option" = "launch-mini" ]; then echo -n
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
+editor "$directory_config/wizard.cfg"
+$fiptables client wizard.cfg
+$fiptables list
+exit; fi
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$first_option" = "cli" ]; then echo -n
@@ -674,7 +682,7 @@ echo "allow_pring_recive=no ;" >> $directory_config/web-example1.cfg
 ## config:  games-example1.cfg ##
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/games-example1.cfg
 echo "# config  #" >> $directory_config/games-example1.cfg
-echo "client_udp=domain,ntp,bootpc,12000:60000; " >> $directory_config/games-example1.cfg
+echo "client_udp=domain,ntp,bootpc,1025:60000; " >> $directory_config/games-example1.cfg
 echo "client_tcp=http,https" >> $directory_config/games-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/games-example1.cfg
 ## config:  torrent-example1.cfg ##
@@ -1808,7 +1816,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda cli gui"
+echo "     [Help]             about system-info help ayuda launch-mini cli gui"
 echo ""
 echo "$cinco   The cfg are in $directory_config/[config.cfg]"
 echo
@@ -1918,6 +1926,7 @@ echo "        about: About the $fiptables"
 echo "  system-info: Show info  system"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
+echo "  launch-mini: Wizard and Launch simple client iptables"
 echo "          cli: Comand line interface with menus"
 echo "          gui: Graphicall user interface"
 echo ""
@@ -1992,7 +2001,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda cli gui"
+echo "     [Help]             about system-info help ayuda launch-mini cli gui"
 echo ""
 echo "$cinco   Las configs estan en $directory_config/[config.cfg]"
 echo
@@ -2101,6 +2110,7 @@ echo "        About: Acerca de $fiptables"
 echo "  system-info: Muestra la informacion del sistema"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
+echo "  launch-mini: Asistente y lanza simple cliente iptables"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
 echo
@@ -2481,7 +2491,7 @@ echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "     [Tool icmp]        ping-ip4 ping-ip6"
 echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda cli gui"
+echo "     [Help]             about system-info help ayuda launch-mini cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo
 echo "$(ls $directory_config | fmt $flistado)"
