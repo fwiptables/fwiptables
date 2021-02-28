@@ -240,8 +240,9 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   1102 help \
   1103 ayuda \
   1104 system-info \
-  1105 cli \
-  1106 gui \
+  1105 launch-mini \
+  1106 cli \
+  1107 gui \
   )"
 case $menuprincipal in
  0*)
@@ -498,9 +499,13 @@ clear
  ;;
  1105)
  clear
- $fiptables cli
+ $fiptables launch-mini
  ;;
  1106)
+ clear
+ $fiptables cli
+ ;;
+ 1107)
  clear
  $fiptables gui
  ;;
