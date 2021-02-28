@@ -38,11 +38,11 @@ cli - recursive - ok 195
 gui - recursive - ok 195
 command line - modifica util icp  y util tcp - ok 196
 ebtables - añade la opcion - ok 197
-launch-mini - añade la opcion - ok 197
+mini-wizard - añade la opcion - ok 197
 cli - modifica util icmp y util tcp - ok 197
 gui - modifica launch-mini - ok 197
 gui - modifica util icmp y util tcp - ok 197
 cli - caso null redefine un nuevo second_option a la variable -
 gui - caso null redefine un nuevo second_option a la variable -
-
+wizard - en lanzar reglas -
 
