@@ -1,7 +1,7 @@
 
      ***** fwiptables roadmap *****
 
-version actual: 196
+version actual: 197
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -37,5 +37,6 @@ command line - rediseño de aspecto - ok 195
 cli - recursive - ok 195
 gui - recursive - ok 195
 command line - modifica util icp  y util tcp - ok 196
+ebtables - añade la opcion - ok 197
 cli - modifica util icmp y util tcp -
 gui - modifica util icmp y util tcp -
