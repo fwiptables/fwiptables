@@ -1876,27 +1876,31 @@ echo "$cincuenta Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
-echo "$cincuenta  vpn"
+echo "$cincuenta  [output uid]"
 echo
-echo "     VPN excepcionals hosts has all allowed in firewall"
+echo "     User [otput_uid] excepcional has all allowed in firewall"
 echo
-echo "$cincuenta  The iptables netftilter"
+echo "$cincuenta  [vpn]"
+echo
+echo "     Host [vpn] excepcionals hosts has all allowed in firewall"
+echo
+echo "$cincuenta  [The iptables netftilter]"
 echo
 echo "     iptables legacy   is    support for xtables firewall"
 echo "     iptables nft      is    support for neftables firewall"
 echo
-echo "$cincuenta  It needs this clients udp ports"
+echo "$cincuenta  [firewall need clients udp ports]"
 echo
 echo "     This port is necesary to update the date  : ntp"
 echo "     This port is necesary to dhcp and get ip  : bootpc"
 echo "     This port is necesary to domain resolver  : domain"
 echo
-echo "$cincuenta Ipv6 needs protocols:"
+echo "$cincuenta  [Ipv6 needs protocols]"
 echo
 echo "     Necesary protocol: ipv6-icmp"
 echo "     Ipv6 works too with: ipv4 procotols"
 echo
-echo "$cincuenta  License"
+echo "$cincuenta  [License]"
 echo ""
 echo "  Download the latest version $fprogram from sourceforge"
 echo "  $fweb_latest"
@@ -2054,27 +2058,31 @@ echo "$cincuenta  Ejemplos de las variables de configuración, defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
-echo "$cincuenta  vpn"
+echo "$cincuenta  [vpn]"
 echo
-echo "     VPN host excepcionales tienen todo permitido en el firewall"
+echo "     Host [vpn] excepcionales tienen todo permitido en el firewall"
 echo
-echo "$cincuenta  Los iptables netftilter"
+echo "$cincuenta  [output_uid]"
+echo
+echo "     User [output_uid] excepcional tienen todo permitido en el firewall"
+echo
+echo "$cincuenta  [Los iptables netftilter]"
 echo
 echo "     iptables legacy   es    soporte para xtables firewall"
 echo "     iptables nft      es    soporte para neftables firewall"
 echo
-echo "$cincuenta  Puertos cliente udp necesarios"
+echo "$cincuenta  [Puertos cliente udp necesarios]"
 echo
 echo "     necesario para actualizar la fecha :   ntp"
 echo "     necesario para dhcp y conseguir ip :   bootpc"
 echo "     necesario para resolver dominios   :   domain"
 echo
-echo "$cincuenta Protocolos necesarios para ipv6"
+echo "$cincuenta  [Protocolos necesarios para ipv6]"
 echo
 echo "     Necesario protocolo: ipv6-icmp"
 echo "     Ipv6 funciona tambien con: ipv4 procolos"
 echo
-echo "$cincuenta  Licencia:"
+echo "$cincuenta  [Licencia]"
 echo
 echo "  Descarga la ultima version de $fprogram desde la web de sourceforge "
 echo "  $fweb_latest"
