@@ -163,14 +163,17 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ##############################       spanish: Script: opciones generales   #########################################
 ####
 ####
+####
+####
+####
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$first_option" = "cli" ]; then echo -n
 cd $directory_config
 menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
   00100 "launch rules" \
-  101 "eraserules" \
-  102 "offline" \
+  101 eraserules \
+  102 offline \
   103 client \
   104 server  \
   105 allpermisive \
@@ -398,7 +401,10 @@ clear
  ;;
  602)
  clear
- $fiptables fw-save
+ archivo="$(dialog --stdout --title "save the firewall format standar" --inputbox "New name" 0 0)"
+ clear
+ echo "$cincuenta saved $archivo"
+ $fiptables fw-save $archivo
  ;;
  603)
  clear
@@ -406,37 +412,45 @@ clear
  ;;
  701)
  clear
- echo "# use command line to choose host: $fiptables ping-ip4"
- ping -4 -c 5 -A fast.com
+ resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
+ clear
+ ping -4 -c 5 -A $resolve
  ;;
  702)
  clear
- echo "# use command line to choose host: $fiptables ping-ip6"
- ping -6 -c 5 -A fast.com
+ resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
+ clear
+ ping -6 -c 5 -A $resolve
  ;;
  801)
  clear
- echo "# use command line to choose host: $fiptables trace-ip4"
- traceroute -4 -T fast.com
+ resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
+ clear
+ traceroute -4 -T $resolve
  ;;
  802)
- echo "# use command line to choose host: $fiptables trace-ip6"
  clear
- traceroute -6 -T fast.com
+ resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
+ clear
+ traceroute -6 -T $resolve
  ;;
  803)
  clear
- echo "# use command line to choose host: $fiptables host"
- host fast.com
+ resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ clear
+ host $resolve
  ;;
  804)
  clear
- echo "# use command line to choose host: $fiptables resolveip"
- resolveip fast.com
+ resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ clear
+ resolveip $resolve
  ;;
  901)
  clear
- $fiptables auth-sudo
+ resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+ clear
+ $fiptables auth-sudo $resolve
  ;;
  902)
  clear
@@ -1519,6 +1533,8 @@ $directory_binary/iptables-nft-save > $directory_fwrecover/$archivofin-nft-ipv4
 $directory_binary/iptables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
 $directory_binary/ip6tables-nft-save > $directory_fwrecover/$archivofin-nft-ipv6
 $directory_binary/ip6tables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
+echo "$cinco saved $archivofin $cinco"
+ls -l $directory_fwrecover/* | grep -i $archivofin-
 exit; fi
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
