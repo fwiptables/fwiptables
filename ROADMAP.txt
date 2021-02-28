@@ -1,7 +1,7 @@
 
      ***** fwiptables roadmap *****
 
-version actual: 195
+version actual: 196
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -21,9 +21,9 @@ rename-config - modify - ok 193
 clone-config - modify - ok 193
 auth-sudo - modify - ok 194
 gui - modify-config - ok 194
-fwiptables - rediseño de apariencia inicial - ok 194
-fwiptables - elimenados lineas en blanco con "echo" - ok 194
-fwiptables - modify forwading - ok 194
+command line - rediseño de apariencia inicial - ok 194
+command line - eliminados lineas en blanco con "echo" - ok 194
+command line - modify forwading - ok 194
 host - create host option - ok 194
 resolveip - create resolveip option - ok 194
 help - completa y modifica - ok 194
@@ -33,8 +33,9 @@ help - añadir - ok 195
 ayuda - añadir - ok 195
 geoip - añadir - ok 195
 variables - allow_owner_uid - ok 195
-fwiptables - rediseño de aspecto - ok 195
+command line - rediseño de aspecto - ok 195
 cli - recursive - ok 195
 gui - recursive - ok 195
+command line - modifica util icp  y util tcp - ok 196
 cli - modifica util icmp y util tcp -
 gui - modifica util icmp y util tcp -
