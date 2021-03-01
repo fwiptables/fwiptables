@@ -541,7 +541,7 @@ if [ "$first_option" = "gui" ]; then echo -n
 titulo="$fiptables gui"
 untexto="$fiptables gui"
 cd $directory_config
-menugtk=$(zenity --forms --title="$titulo" --width=800 --height=600 --text="$($fiptables)" --add-entry="$fiptables" )
+menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables)" --add-entry="$fiptables" )
 case $? in 
 1)
 zenity --info --ellipsize --text="fwiptables good bye"
@@ -556,19 +556,31 @@ zenity --info --ellipsize --text="$($fiptables eraserules)"
 ;;
 offline*)
 zenity --info --ellipsize --text="$($fiptables offline)"
+zenity --info --ellipsize --text="ok $($fiptables list)"
 ;;
-client*)
+client)
 untexto="Type the config file, example: default.cfg"
 unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="$($fiptables client $unaconfig)"
+zenity --info --ellipsize --text="ok $($fiptables list)"
 ;;
-server*)
+client*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+zenity --info --ellipsize --text="ok $($fiptables list)"
+;;
+server)
 untexto="Type the config file, example: default.cfg"
 unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="$($fiptables server $unaconfig)"
+zenity --info --ellipsize --text="ok $($fiptables list)"
+;;
+server*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+zenity --info --ellipsize --text="ok $($fiptables list)"
 ;;
 allpermisive*)
 zenity --info --ellipsize --text="$($fiptables allpermisive)"
+zenity --info --ellipsize --text="ok $($fiptables list)"
 ;;
 wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
