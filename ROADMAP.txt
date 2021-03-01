@@ -46,4 +46,4 @@ cli - caso null redefine un nuevo second_option a la variable -
 gui - caso null redefine un nuevo second_option a la variable -
 wizard - lanzar reglas - ok 198
 cli - comprobar - ok 198
-gui - comprobar -
+gui - comprobar - ok 198

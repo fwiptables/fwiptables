@@ -546,6 +546,12 @@ esac
 #### manage some configs ####
 case $menugtk in
 #### launch rules        ####
+eraserules*)
+zenity --info --ellipsize --text="$($fiptables eraserules)"
+;;
+offline*)
+zenity --info --ellipsize --text="$($fiptables offline)"
+;;
 client*)
 untexto="Type the config file, example: default.cfg"
 unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
@@ -555,6 +561,9 @@ server*)
 untexto="Type the config file, example: default.cfg"
 unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="$($fiptables server $unaconfig)"
+;;
+allpermisive*)
+zenity --info --ellipsize --text="$($fiptables allpermisive)"
 ;;
 wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
@@ -567,7 +576,7 @@ zenity --info --ellipsize --text="ok $(fwiptables list)"
 #### modify configs      ####
 reconfig*)
 untexto="$($fiptables reconfig)"
-zenity --info --ellipsize --text="$untexto"
+zenity --info --ellipsize --text="ok $untexto"
 ;;
 show-config*)
 untexto="Type the config file to show"
@@ -604,7 +613,41 @@ untexto="Type the graphicall editor and config file, example: gedit config.cfg"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
 ;;
-#### ping and route ####
+#### options recover fw ####
+fw-list*)
+listado="$($fiptables fw-list)"
+zenity --info --ellipsize --text="ok $listado"
+;;
+fw-save*)
+untexto="type the filename to save firewall"
+archivoini="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+archivofin="$(echo "$archivoini" | sed 's/\///g')"
+$directory_binary/iptables-nft-save > $directory_fwrecover/$archivofin-nft-ipv4
+$directory_binary/iptables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
+$directory_binary/ip6tables-nft-save > $directory_fwrecover/$archivofin-nft-ipv6
+$directory_binary/ip6tables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
+zenity --info --ellipsize --text="ok $(echo saved $archivofin)"
+;;
+fw-restore*)
+listado="$($fiptables fw-restore)"
+zenity --info --ellipsize --text="ok $listado"
+;;
+#### options sudo  #####
+auth-sudo*)
+untexto="type the users to auth sudo, example: user1,user2 "
+usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+echo "$usuario ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
+echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
+zenity --info --ellipsize --text="ok $( $fiptables list-sudo)"
+;;
+remove-sudo*)
+zenity --info --ellipsize --text="ok $($fiptables remove-sudo)"
+;;
+list-sudo*)
+untexto="$($fiptables list-sudo)"
+zenity --info --ellipsize --text="$untexto"
+;;
+#### tool icmp ####
 ping-ip4*)
 untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
@@ -615,6 +658,7 @@ untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables ping-ip6 $unahost)"
 ;;
+#### tool udp ####
 trace-ip4*)
 untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
@@ -640,29 +684,6 @@ untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables geoip $unahost)"
 ;;
-#### options sudo  #####
-auth-sudo*)
-untexto="type the users to auth sudo, example: user1,user2 "
-usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-echo "$usuario ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
-echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
-;;
-list-sudo*)
-untexto="$($fiptables list-sudo)"
-zenity --info --ellipsize --text="$untexto"
-;;
-#### options recover fw ####
-fw-save*)
-untexto="type the filename to save firewall"
-archivoini="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-archivofin="$(echo "$archivoini" | sed 's/\///g')"
-## echo $directory_fwrecover $untexto $archivofin
-$directory_binary/iptables-nft-save > $directory_fwrecover/$archivofin-nft-ipv4
-$directory_binary/iptables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
-$directory_binary/ip6tables-nft-save > $directory_fwrecover/$archivofin-nft-ipv6
-$directory_binary/ip6tables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
-zenity --info --ellipsize --text="ok $(echo saved $archivofin)"
-;;
 #### options help ####
 ayuda*)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
@@ -673,8 +694,8 @@ zenity --info --ellipsize --text="$($fiptables $menugtk)"
 mini-wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
 untexto="Type the graphicall editor, example: gedit"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="ok $($unarchivo $directory_config/mini-wizard.cfg)"
+uneditor="$(zenity --entry --text="$untexto")"
+zenity --info --ellipsize --text="ok $($uneditor $directory_config/mini-wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables client mini-wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables list)"
 ;;
@@ -1501,7 +1522,6 @@ exit; fi
 if [ "$first_option" = "fw-restore" ]; then echo -n
 echo "$cincuenta iptables restore $cinco"
 echo "Load the rules in iptables format in folder $directory_fwrecover"
-ls $directory_fwrecover
 echo "$cinco first erase rules with:   fwiptables eraserules"
 echo "$cinco the iptables recover files are in folder $directory_fwrecover"
 echo "$cinco then iptables restore with one command from above:"
@@ -2471,9 +2491,8 @@ echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "  [Version]          version upgrade dev-versions all-versions"
 echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
-echo
-echo "$(ls $directory_config | fmt $flistado)"
-echo
+echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)" 
+echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]"
 echo "  [List iptables rules]                $fiptables list  "
 echo "  [Launch iptables like client web]    $fiptables client web-example1.cfg"
