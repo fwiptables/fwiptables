@@ -120,9 +120,8 @@ echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "  [Version]          version upgrade dev-versions all-versions"
 echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
-echo
-echo "$(ls $directory_config | fmt $flistado)"
-echo
+echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]"
 echo "  [List iptables rules]                $fiptables list  "
 echo "  [Launch iptables like client web]    $fiptables client web-example1.cfg"
@@ -1829,9 +1828,8 @@ echo "     [Version]          version upgrade dev-versions all-versions"
 echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
 echo ""
 echo "$cinco   The cfg are in $directory_config/[config.cfg]"
-echo
-ls $directory_config | fmt $flistado  ;
-echo
+echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco   [The examples]"
 echo
 echo "  [List iptables rules]                 $fiptables list  "
@@ -2014,9 +2012,8 @@ echo "     [Version]          version upgrade dev-versions all-versions"
 echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
 echo ""
 echo "$cinco   Las configs estan en $directory_config/[config.cfg]"
-echo
-ls $directory_config | fmt $flistado  ;
-echo
+echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco   [Los ejemplos]"
 echo
 echo "  [Lista iptables reglas]               $fiptables list  "
