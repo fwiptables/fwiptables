@@ -43,7 +43,7 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 cinco="#####" ; cincuenta="##################################################"
 flinea="-92" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
 fvariables="-35" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
-flistado="-90" ;                                 #english: wide of list config files #spanish: Ancho al listar cfg
+flistado="-70" ;                                 #english: wide of list config files #spanish: Ancho al listar cfg
 ##
 ##
 ##
@@ -2491,7 +2491,7 @@ echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "  [Version]          version upgrade dev-versions all-versions"
 echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
-echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)" 
+echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]"
 echo "  [List iptables rules]                $fiptables list  "
