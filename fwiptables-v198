@@ -532,7 +532,7 @@ clear
 ##############################       english: gui: Manage list rules with one menu graphicall
 ##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
 if [ "$first_option" = "gui" ]; then echo -n
-#### principal gui ####
+#### principal gui      ####
 titulo="$fiptables gui"
 untexto="$fiptables gui"
 cd $directory_config
@@ -545,16 +545,26 @@ exit
 esac
 #### manage some configs ####
 case $menugtk in
-#### launch rules   ####
+#### launch rules        ####
+client*)
+untexto="Type the config file, example: default.cfg"
+unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+zenity --info --ellipsize --text="$($fiptables client $unaconfig)"
+;;
+server*)
+untexto="Type the config file, example: default.cfg"
+unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+zenity --info --ellipsize --text="$($fiptables server $unaconfig)"
+;;
 wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
 untexto="Type the graphicall editor, example: gedit"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="ok $($unarchivo $directory_config/wizard.cfg)"
+uneditor="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+zenity --info --ellipsize --text="ok $($uneditor $directory_config/wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables server wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables list)"
 ;;
-#### modify configs ####
+#### modify configs      ####
 reconfig*)
 untexto="$($fiptables reconfig)"
 zenity --info --ellipsize --text="$untexto"
@@ -597,37 +607,37 @@ zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
 #### ping and route ####
 ping-ip4*)
 untexto="Type the host, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables ping-ip4 $unahost)"
 ;;
 ping-ip6*)
 untexto="Type the host, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables ping-ip6 $unahost)"
 ;;
 trace-ip4*)
 untexto="Type the host, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables trace-ip4 $unahost)"
 ;;
 trace-ip6*)
 untexto="Type the host, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables trace-ip6 $unahost)"
 ;;
 host*)
 untexto="Type the host, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables host $unahost)"
 ;;
 resolveip*)
 untexto="Type the host or ip, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables resolveip $unahost)"
 ;;
 geoip*)
 untexto="Type the host, example: fast.com"
-unahost="$(zenity --entry --text="$untexto")"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables geoip $unahost)"
 ;;
 #### options sudo  #####
@@ -673,8 +683,8 @@ zenity --info --ellipsize --text="ok $(fwiptables list)"
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 esac
-zenity --info --ellipsize --text="Continue with the $fiptables gui"
-"$fiptables" gui
+zenity --info --ellipsize --text="Ok. Continue with the $fiptables gui"
+$fiptables gui
 exit ; fi
 ##############################       english: version: system script, the version option
 ##############################       spanish: version: script de sistema, la opcion mostrar version
