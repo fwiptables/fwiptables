@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 197
+     *****     Version actual: 198
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -44,5 +44,6 @@ gui - modifica launch-mini - ok 197
 gui - modifica util icmp y util tcp - ok 197
 cli - caso null redefine un nuevo second_option a la variable -
 gui - caso null redefine un nuevo second_option a la variable -
-wizard - en lanzar reglas -
-
+wizard - lanzar reglas - ok 198
+cli - comprobar - ok 198
+gui - comprobar -

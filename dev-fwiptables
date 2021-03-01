@@ -172,6 +172,8 @@ if [ "$first_option" = "mini-wizard" ]; then echo -n
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
 editor "$directory_config/mini-wizard.cfg"
 $fiptables client mini-wizard.cfg
+echo "press enter to continue"
+read -s
 $fiptables list
 exit; fi
 ##############################       english: wizard: wizard to connect like simple client
@@ -180,6 +182,8 @@ if [ "$first_option" = "wizard" ]; then echo -n
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
 editor "$directory_config/wizard.cfg"
 $fiptables server wizard.cfg
+echo "press enter to continue"
+read -s
 $fiptables list
 exit; fi
 ##############################       english: cli: Manage list rules with one text menu
@@ -342,54 +346,45 @@ case $menuprincipal in
  ;;
  402)
  clear
- archivo="$(dialog --stdout --title "show-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- cat $directory_config/$archivo
- echo
- echo "Launch: $fiptables client $archivo"
+ $fiptables show-config $archivo
+ echo "$cinco Launch: $fiptables client $archivo"
  ;;
  403)
  clear
- archivo="$(dialog --stdout --title "new-config file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ archivo="$(dialog --stdout --title "new-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- cp $directory_config/$"english-example1.cfg" $directory_config/$archivo
- echo
- echo "Launch: $fiptables client $archivo"
+ $fiptables new-config $archivo
  ;;
  404)
  clear
- archivo="$(dialog --stdout --title "nueva-config: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ archivo="$(dialog --stdout --title "nueva-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- cp $directory_config/$"spanish-example1.cfg" $directory_config/$archivo
- echo
- echo "Launch: $fiptables client $archivo"
+ $fiptables nueva-config $archivo
  ;;
  405)
-  archivo="$(dialog --stdout --title "modify-config: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+  archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- editor "$directory_config/$archivo"
- echo
- echo "Launch: $fiptables client $archivo"
+ $fiptables modify-config $archivo
  ;;
  406)
- archivo="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ archivos="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- echo "$(cp $archivo)"
- echo
- echo "cloned $archivo"
+ # echo "$(cp $archivo)"
+ $fiptables clone-config $archivos
  ;;
  407)
- archivo="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ archivos="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- echo "$(mv $archivo)"
- echo
- echo "renamed $archivo"
+ # echo "$(mv $archivo)"
+ $fiptables rename-config $archivos
  ;;
  408)
  echo
  archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- rm "$directory_config/$archivo"
+ $fiptables delete-config $archivo
  echo
  echo "deleted $archivo"
  ;;
@@ -528,7 +523,7 @@ clear
  clear
  exit
  esac
- echo "press enter to continue"
+ echo "press [enter] to continue with the $fiptables cli"
  read -s
  $fiptables cli
  exit; fi
@@ -678,6 +673,7 @@ zenity --info --ellipsize --text="ok $(fwiptables list)"
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 esac
+zenity --info --ellipsize --text="Continue with the $fiptables gui"
 "$fiptables" gui
 exit ; fi
 ##############################       english: version: system script, the version option
@@ -1218,8 +1214,8 @@ echo "  Edit the file $frespuestab"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
 editor "$directory_config/$frespuestab"
 
-echo "  $cinco        launch firewall for client:              $fiptables client $frespuestab   "
-echo "  $cinco        OR launch firewall for server:           $fiptables server $frespuestab   "
+echo "  $cinco        launch the firewall for client:           $fiptables client $frespuestab   "
+echo "  $cinco        launch the firewall for server:           $fiptables server $frespuestab   "
 exit; fi
 ############################       english: nueva-config: system script, the nueva-config option to create new configs
 ############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config
@@ -1283,8 +1279,8 @@ cp $directory_config/$fviejab $directory_config/$fnuevab
 ;;
 esac
 echo  cloned $fviejab in $fnuevab
-echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
-echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
+echo "  $cinco        Launch the firewall for client:            $fiptables client $fnuevab   " ;
+echo "  $cinco        launch the firewall for server:            $fiptables server $fnuevab   " ;
 exit; fi
 ############################       english: rename-config, rename a one existent config.cfg
 ############################       spanish: rename-config, renombra una existente configuracion.cfg
@@ -1315,8 +1311,8 @@ cp $directory_config/$fviejab $directory_config/$fnuevab
 ;;
 esac
 echo  renamed $fviejab in $fnuevab
-echo "  $cinco        Launch the firewall for client:              $fiptables client $fnuevab   " ;
-echo "  $cinco        O launch the firewall for server:            $fiptables server $fnuevab   " ;
+echo "  $cinco        Launch the firewall for client:            $fiptables client $fnuevab   " ;
+echo "  $cinco        launch the firewall for server:            $fiptables server $fnuevab   " ;
 exit; fi
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
@@ -1340,8 +1336,8 @@ echo "$cinco"
 read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa
 frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 editor $directory_config/$frespuestab ;
-echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
-echo "  $cinco        Or launch the firewall for server:           $fiptables server $frespuestab   " ;
+echo "  $cinco        Launch the firewall for client:           $fiptables client $frespuestab   " ;
+echo "  $cinco        launch the firewall for server:           $fiptables server $frespuestab   " ;
 ;;
 esac
 exit; fi
@@ -1369,8 +1365,8 @@ frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
 echo "     $cinco     file: $directory_config/$frespuestab" ;
 cat $directory_config/$frespuestab ;
 echo
-echo "  $cinco        Launch the firewall for client:              $fiptables client $frespuestab   " ;
-echo "  $cinco        O launch the firewall for server:            $fiptables server $frespuestab   " ;
+echo "  $cinco        Launch the firewall for client:            $fiptables client $frespuestab   " ;
+echo "  $cinco        launch the firewall for server:            $fiptables server $frespuestab   " ;
 esac
 exit; fi
 ############################       english: delete-config: delete a old config
