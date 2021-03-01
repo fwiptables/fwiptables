@@ -276,12 +276,18 @@ case $menuprincipal in
  archivo="$(dialog --title "client" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables client $archivo
+ echo "press [enter] to continue with the $fiptables cli"
+ read -s
+ $fiptables list
  ;;
  104)
  clear
  archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables server $archivo
+ echo "press [enter] to continue with the $fiptables cli"
+ read -s
+ $fiptables list
  ;;
  105)
  clear
