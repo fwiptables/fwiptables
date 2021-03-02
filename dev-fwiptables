@@ -105,50 +105,50 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work" 
 echo "$fprogram version $fversion , need to be root to work"
-echo "  [Launch rules]     eraserules offline client server allpermisive wizard"
-echo "  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                     listnum forwardnum listnum6 forwardnum6"
-echo "  [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                     security-ip4 security-ip6 etbtables"
-echo "  [Modify config]    reconfig show-config new-config nueva-config"
-echo "                     modify-config clone-config rename-config delete-config"
-echo "  [List sockets]     route ss netstat lsof ipforwading tcpdump"
-echo "  [Recover fw]       fw-list fw-save fw-restore"
-echo "  [Auth sudo]        auth-sudo remove-sudo list-sudo"
-echo "  [Tool icmp]        ping-ip4 ping-ip6"
-echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
-echo "  [Version]          version upgrade dev-versions all-versions"
-echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
+echo "  [Launch rules]        eraserules offline client server allpermisive wizard"
+echo "  [List rules]              list forward list6 forward6 nat-ip4 nat-ip6"
+echo "                                 listnum forwardnum listnum6 forwardnum6"
+echo "  [Other table]          raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
+echo "                                 security-ip4 security-ip6 etbtables arptables"
+echo "  [Modify config]      reconfig show-config new-config nueva-config"
+echo "                                modify-config clone-config rename-config delete-config"
+echo "  [List sockets]         route ss netstat lsof ipforwading tcpdump"
+echo "  [Recover fw]          fw-list fw-save fw-restore"
+echo "  [Auth sudo]           auth-sudo remove-sudo list-sudo"
+echo "  [Tool icmp]            ping-ip4 ping-ip6"
+echo "  [Tool tcp]              trace-ip4 trace-ip6 host resolveip geoip"
+echo "  [Version]              version upgrade dev-versions all-versions"
+echo "  [Help]                  about system-info help ayuda mini-wizard cli gui"
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]"
 echo "  [List iptables rules]                $fiptables list  "
-echo "  [Launch iptables like client web]    $fiptables client web-example1.cfg"
-echo "  [Launch iptables like server web]    $fiptables server web-example1.cfg"
-echo "  [Remove iptables rules]              $fiptables eraserules "
-echo "  [Show long help in english]          $fiptables help "
-echo "  [Show long help in spanish]          $fiptables ayuda "
+echo "  [Launch iptables like client web]      $fiptables client web-example1.cfg"
+echo "  [Launch iptables like server web]     $fiptables server web-example1.cfg"
+echo "  [Remove iptables rules]                    $fiptables eraserules "
+echo "  [Show long help in english]              $fiptables help "
+echo "  [Show long help in spanish]             $fiptables ayuda "
 exit; fi
 ##
 ##
-##############################       english: default configs                     ###########################################
+##############################       english: default configs                          ###########################################
 ##############################       spanish: default configurations              ###########################################
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -f "$directory_fiptables/$fiptables" ]; then echo -n; else cp "$0" "$directory_fiptables/$fiptables" &> /dev/null ; fi
 if [ -f "$directory_config/$defaultcfg" ]; then echo -n
 else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"; fi
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-##############################       english: auto installer if necesary          ###########################################
+##############################       english: auto installer if necesary              ###########################################
 ##############################       spanish: auto instalador si es necesario     ###########################################
 if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
 else cp $0 $directory_fiptables/$fiptables &> /dev/null ; 
 echo "$fiptables $fversion installed in /usr/bin/$fiptables"
 echo "Launch $fiptables to run $fiptables" ; fi
-##############################       english: if third_option is a valid config.cfg                  ###########################################
+##############################       english: if third_option is a valid config.cfg                       ###########################################
 ##############################       spanish: si tercera opcion es un validoconfig.cfg               ###########################################
 if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
-##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
+##############################      english: launch-rules: The first options: offline, client, server and allpermisive        #####################
 ##############################      spanish: launch-rules: Primeras opciones: offline, client, server and allpermisive     #####################
 if [ "$first_option" = "offline" ]; then echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="no"; fi
@@ -158,7 +158,7 @@ if [ "$first_option" = "server" ]; then echo "  FIREWALL SERVER" ; echo "$cincue
 launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
 if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
-##############################       english: Script: general options      #########################################
+##############################       english: Script: general options         #########################################
 ##############################       spanish: Script: opciones generales   #########################################
 ####
 ####
@@ -1232,6 +1232,13 @@ if [ "$first_option" = "security-ip6" ]; then echo -n
  echo "$cinco nat ethernet nft"
  $directory_binary/ebtables -L -t nat
  exit; fi
+############################       english: arptables: system script, the ebtables option to list arp
+############################       spanish: arptables: script de sistema, la opcion ebtables to list arp
+ if [ "$first_option" = "arptables" ]; then echo -n
+ echo "$fprogram version $fversion"
+ echo "$cincuenta arptables arp"
+ $directory_binary/arptables -L
+ exit; fi
 ############################       english: new-config: system script, the new-config option to create new configs
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
 if [ "$first_option" = "new-config" ]; then echo -n
@@ -1834,7 +1841,7 @@ echo "     [Launch rules]     eraserules offline client server allpermisive wiza
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                        security-ip4 security-ip6 ebtables"
+echo "                        security-ip4 security-ip6 ebtables arptables"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
@@ -1893,6 +1900,7 @@ echo "      raw-ip6: List iptables raw rules from ipv4"
 echo " security-ip4: List iptables security rules from ipv4"
 echo " security-ip6: List iptables security rules from ipv6"
 echo "     ebtables: List rules ebtables nft ethernet"
+echo "    arptables: List rules arptables arp"
 echo
 echo "$cinco         [Modify config]"
 echo
@@ -2018,7 +2026,7 @@ echo "     [Launch rules]     eraserules offline client server allpermisive wiza
 echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                        security-ip4 security-ip6 ebtables"
+echo "                        security-ip4 security-ip6 ebtables arptables"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
 echo "                        modify-config clone-config rename-config delete-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
@@ -2076,6 +2084,7 @@ echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
 echo " security-ip4: lista las reglas de ip4 de security iptables"
 echo " security-ip6: Lista las reglas de ip6 de security iptables"
 echo "     ebtables: Lista las reglas de nft de ethernet"
+echo "    arptables: Lista las reglas de arp arptables"
 echo
 echo "$cinco         [Modifica config]"
 echo
@@ -2495,7 +2504,7 @@ echo "  [Launch rules]     eraserules offline client server allpermisive wizard"
 echo "  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                     listnum forwardnum listnum6 forwardnum6"
 echo "  [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                     security-ip4 security-ip6 ebtables"
+echo "                     security-ip4 security-ip6 ebtables arptables"
 echo "  [Modify config]    reconfig show-config new-config nueva-config"
 echo "                     modify-config clone-config rename-config delete-config"
 echo "  [List sockets]     route ss netstat lsof ipforwading tcpdump"
