@@ -27,7 +27,7 @@ config_option="no" ; launch_iptables="no" ;                         #english: au
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="199" ;    #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="200" ;    #english: Name and Version  #spanish: Nombre y Version
 directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              #english: path to save firewall  #spanish: ruta de firewall guardado
@@ -742,6 +742,7 @@ zenity --info --ellipsize --text="ok $(fwiptables list)"
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 esac
+zenity --info --ellipsize --text="Remember: $($fiptables list)"
 zenity --info --ellipsize --text="Ok. Continue with the $fiptables gui"
 $fiptables gui
 exit ; fi
