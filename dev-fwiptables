@@ -165,8 +165,8 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ####
 ####
 ####
-##############################       english: mini-wizard: wizard to connect like simple client
-##############################       spanish: mini-wizard: asistente to connect like simple client
+##############################       english: mini-wizard: mini-wizard to connect like simple client
+##############################       spanish: mini-wizard: mini-asistente to connect like simple client
 if [ "$first_option" = "mini-wizard" ]; then echo -n
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
 editor "$directory_config/mini-wizard.cfg"
@@ -665,41 +665,62 @@ untexto="$($fiptables list-sudo)"
 zenity --info --ellipsize --text="$untexto"
 ;;
 #### tool icmp ####
-ping-ip4*)
+ping-ip4)
 untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables ping-ip4 $unahost)"
+zenity --info --ellipsize --text="ok $($fiptables ping-ip4 $unahost)"
+;;
+ping-ip4*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+;;
+ping-ip6)
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+zenity --info --ellipsize --text="ok $($fiptables ping-ip6 $unahost)"
 ;;
 ping-ip6*)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables ping-ip6 $unahost)"
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 #### tool udp ####
-trace-ip4*)
+trace-ip4)
 untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables trace-ip4 $unahost)"
+zenity --info --ellipsize --text="ok $($fiptables trace-ip4 $unahost)"
 ;;
-trace-ip6*)
+trace-ip4*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+;;
+trace-ip6)
 untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables trace-ip6 $unahost)"
+zenity --info --ellipsize --text="ok $($fiptables trace-ip6 $unahost)"
+;;
+ping-ip6*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+;;
+host)
+untexto="Type the host, example: fast.com"
+unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
+zenity --info --ellipsize --text="ok $($fiptables host $unahost)"
 ;;
 host*)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables host $unahost)"
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
-resolveip*)
+resolveip)
 untexto="Type the host or ip, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables resolveip $unahost)"
 ;;
-geoip*)
+resolveip*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+;;
+geoip)
 untexto="Type the host, example: fast.com"
 unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 zenity --info --ellipsize --text="ok $( $fiptables geoip $unahost)"
+;;
+geoip*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 #### options help ####
 ayuda*)
@@ -1592,8 +1613,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  ping icmp ipv4 $cinco"
-echo
-read -r -p "#####    Type the host to do ping ip4: [ fast.com   ] " trazador
+#read -r -p "#####    Type the host to do ping ip4: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
@@ -1615,8 +1636,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  ping icmp ipv6 $cinco"
-echo
-read -r -p "#####    Type the host to do ping ip6: [ fast.com   ] " trazador
+# read -r -p "#####    Type the host to do ping ip6: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
@@ -1638,8 +1659,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
-echo
-read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
+#read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
@@ -1661,8 +1682,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv6 $cinco"
-echo
-read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
+# read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
@@ -1684,8 +1705,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta resolve host $cinco"
-echo
-read -r -p "#####    Type the host to do resolve host: [ fast.com   ] " trazador
+# read -r -p "#####    Type the host to do resolve host: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
@@ -1707,8 +1728,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta resolve ip or host $cinco"
-echo
-read -r -p "#####    Type the host to do resolve ip or host: [ fast.com   ] " trazador
+# read -r -p "#####    Type the host to do resolve ip or host: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
@@ -1730,8 +1751,8 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta search geoip $cinco"
-echo
-read -r -p "#####    Type the host to do search geoip: [ fast.com   ] " trazador
+# read -r -p "#####    Type the host to do search geoip: [ fast.com   ] " trazador
+trazador="fast.com"
 ;;
 *)
 trazador="$second_option"

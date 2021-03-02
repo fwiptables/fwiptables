@@ -42,8 +42,8 @@ mini-wizard - añade la opcion - ok 197
 cli - modifica util icmp y util tcp - ok 197
 gui - modifica launch-mini - ok 197
 gui - modifica util icmp y util tcp - ok 197
-cli - caso null redefine un nuevo second_option a la variable -
-gui - caso null redefine un nuevo second_option a la variable -
+cli - caso null redefine una nueva variable - ok 199
+gui - caso null redefine una nueva variable - ok 199
 wizard - lanzar reglas - ok 198
 cli - comprobar - ok 198
 gui - comprobar - ok 198
