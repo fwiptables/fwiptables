@@ -48,3 +48,4 @@ wizard - lanzar reglas - ok 198
 cli - comprobar - ok 198
 gui - comprobar - ok 198
 arptables - añade la opcion - ok 199
+fwiptables - variables de iptables legacy y nft - ok 200
