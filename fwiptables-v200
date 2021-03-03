@@ -2021,9 +2021,9 @@ echo "$cincuenta Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
-echo "$cincuenta  [output uid]"
+echo "$cincuenta  [uid and/or gid excepcional]"
 echo
-echo "     User [otput_uid] excepcional has all allowed in firewall"
+echo "     User and/or group excepcional have conection allowed in firewall"
 echo
 echo "$cincuenta  [vpn]"
 echo
@@ -2210,9 +2210,9 @@ echo "$cincuenta  [vpn]"
 echo
 echo "     Host [vpn] excepcionales tienen todo permitido en el firewall"
 echo
-echo "$cincuenta  [output_uid]"
+echo "$cincuenta  [uid y/o gid excepcional]"
 echo
-echo "     User [output_uid] excepcional tienen todo permitido en el firewall"
+echo "     Usuario y/o grupo excepcional tienen conexion permitida en el firewall"
 echo
 echo "$cincuenta  [Los iptables netftilter]"
 echo
