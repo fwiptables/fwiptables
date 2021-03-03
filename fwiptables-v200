@@ -111,7 +111,7 @@ echo "                                 listnum forwardnum listnum6 forwardnum6"
 echo "  [Other table]          raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
 echo "                                 security-ip4 security-ip6 etbtables arptables"
 echo "  [Modify config]      reconfig show-config new-config nueva-config"
-echo "                                modify-config clone-config rename-config delete-config"
+echo "                                modify-config clone-config rename-config del-config"
 echo "  [List sockets]         route ss netstat lsof ipforwading tcpdump"
 echo "  [Recover fw]          fw-list fw-save fw-restore"
 echo "  [Auth sudo]           auth-sudo remove-sudo list-sudo"
@@ -219,7 +219,7 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   405 modify-config \
   406 clone-config \
   407 rename-config \
-  408 delete-config \
+  408 del-config \
   00500 "Other tables"  \
   501 raw-ip4 \
   502 raw-ip6 \
@@ -387,9 +387,9 @@ case $menuprincipal in
  ;;
  408)
  echo
- archivo="$(dialog --stdout --title "delete-config" --inputbox "$(ls $directory_config)" 0 0)"
+ archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
- $fiptables delete-config $archivo
+ $fiptables del-config $archivo
  echo
  echo "deleted $archivo"
  ;;
@@ -610,7 +610,7 @@ untexto="Type the config to clone with: oldname.cfg newname.cfg"
 unarchivo="$(zenity --entry --text="mv $untexto")"
 zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo | sed 's/\///g'))"
 ;;
-delete-config*)
+del-config*)
 untexto="Type the config to delete"
 unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="Deleted config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo | sed 's/\///g'))"
@@ -1446,9 +1446,9 @@ echo "  $cinco        Launch the firewall for client:            $fiptables clie
 echo "  $cinco        launch the firewall for server:            $fiptables server $frespuestab   " ;
 esac
 exit; fi
-############################       english: delete-config: delete a old config
-############################       spanish: delete-config: elimina una vieja configuracion
-if [ "$first_option" = "delete-config" ]; then echo -n
+############################       english: del-config: delete a old config
+############################       spanish: del-config: elimina una vieja configuracion
+if [ "$first_option" = "del-config" ]; then echo -n
 echo
 case "$config_option" in
 "si")
@@ -1865,7 +1865,7 @@ echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6 ebtables arptables"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
-echo "                        modify-config clone-config rename-config delete-config"
+echo "                        modify-config clone-config rename-config del-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
@@ -1933,7 +1933,7 @@ echo " clone-config: Clone a old config in a one new config"
 echo "modify-config: Edit one config.cfg"
 echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
-echo "delete-config: Delete one configuration file"
+echo "del-config: Delete one configuration file"
 echo
 echo "$cinco         [List open sockets]"
 echo
@@ -2050,7 +2050,7 @@ echo "                        listnum forwardnum listnum6 forwardnum6"
 echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
 echo "                        security-ip4 security-ip6 ebtables arptables"
 echo "     [Modify config]    reconfig show-config new-config nueva-config"
-echo "                        modify-config clone-config rename-config delete-config"
+echo "                        modify-config clone-config rename-config del-config"
 echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "     [Recover fw]       fw-list fw-save fw-restore"
 echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
@@ -2117,7 +2117,7 @@ echo " clone-config: Duplica con otro nombre una config cfg"
 echo "modify-config: Edita una existente configuracion.cfg"
 echo "  show-config: Muestra una existente configuracion.cfg"
 echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
-echo "delete-config: Borra unaa existente configuracion.cfg"
+echo "del-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         [Lista las conexiones abiertas]"
 echo
@@ -2528,7 +2528,7 @@ echo "                     listnum forwardnum listnum6 forwardnum6"
 echo "  [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
 echo "                     security-ip4 security-ip6 ebtables arptables"
 echo "  [Modify config]    reconfig show-config new-config nueva-config"
-echo "                     modify-config clone-config rename-config delete-config"
+echo "                     modify-config clone-config rename-config del-config"
 echo "  [List sockets]     route ss netstat lsof ipforwading tcpdump"
 echo "  [Recover fw]       fw-list fw-save fw-restore"
 echo "  [Auth sudo]        auth-sudo remove-sudo list-sudo"
@@ -2540,12 +2540,9 @@ echo "$cinco  Optional $directory_config/[config.cfg]"
 echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]"
-echo "  [List iptables rules]                $fiptables list  "
-echo "  [Launch iptables like client web]    $fiptables client web-example1.cfg"
-echo "  [Launch iptables like server web]    $fiptables server web-example1.cfg"
-echo "  [Remove iptables rules]              $fiptables eraserules "
-echo "  [Show long help in english]          $fiptables help "
-echo "  [Show long help in spanish]          $fiptables ayuda "
+echo "  [Create a new config myown.cfg]    $fiptables new-config myown.cfg"
+echo "  [Launch client with myown.cfg]     $fiptables client myown.cfg"
+echo "  [List iptables rules]              $fiptables list"
 # left script
 #######################         english: End of script
 #######################         spanish: fin del script
