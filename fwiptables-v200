@@ -191,6 +191,14 @@ exit; fi
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$first_option" = "cli" ]; then echo -n
+case "$(which dialog)" in
+"$NULL")
+echo " Install dialog to work"
+exit
+;;
+else)
+;;
+esac
 cd $directory_config
 menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
   00100 "launch rules" \
@@ -545,6 +553,14 @@ clear
 ##############################       english: gui: Manage list rules with one menu graphicall
 ##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
 if [ "$first_option" = "gui" ]; then echo -n
+case "$(which zenity)" in
+"$NULL")
+echo " Install zenity to work"
+exit
+;;
+else)
+;;
+esac
 #### principal gui      ####
 titulo="$fiptables gui"
 untexto="$fiptables gui"
