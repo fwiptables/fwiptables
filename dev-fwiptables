@@ -214,11 +214,11 @@ if [ "$which_lynx" = "$NULL" ]  ; then echo -n ; else favorite_text_browser=$whi
 ####
 ####
 favorite_text_editor=""
-if [ $which_vi = "$NULL" ]     ; then echo -n; else favorite_text_editor=$which_vi        ; fi
-if [ $which_vim = "$NULL" ]    ; then echo -n; else favorite_text_editor=$which_vim       ; fi
-if [ $which_tilde = "$NULL" ]  ; then echo -n; else favorite_text_editor=$which_tilde     ; fi
-if [ $which_editor = "$NULL" ] ; then echo -n; else favorite_text_editor=$which_editor    ; fi
-if [ $which_nano = "$NULL" ]   ; then echo -n; else favorite_text_editor=$which_nano      ; fi
+if [ "$which_vi" = "$NULL" ]     ; then echo -n; else favorite_text_editor=$which_vi        ; fi
+if [ "$which_vim" = "$NULL" ]    ; then echo -n; else favorite_text_editor=$which_vim       ; fi
+if [ "$which_tilde" = "$NULL" ]  ; then echo -n; else favorite_text_editor=$which_tilde     ; fi
+if [ "$which_editor" = "$NULL" ] ; then echo -n; else favorite_text_editor=$which_editor    ; fi
+if [ "$which_nano" = "$NULL" ]   ; then echo -n; else favorite_text_editor=$which_nano      ; fi
 ####
 ####
 ##############################      english: search favorite graphicall editor: favorite graphicall editor     #####################
@@ -226,11 +226,11 @@ if [ $which_nano = "$NULL" ]   ; then echo -n; else favorite_text_editor=$which_
 ####
 ####
 favorite_graphicall_editor=""
-if [ $which_yudit = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_yudit      ; fi
-if [ $which_tea = "$NULL" ]      ; then echo -n ; else favorite_graphicall_editor=$which_tea        ; fi
-if [ "$which_pluma" = "$NULL" ]  ; then echo -n ; else favorite_graphicall_editor=$which_pluma      ; fi
-if [ $which_mousepad = "$NULL" ] ; then echo -n ; else favorite_graphicall_editor=$which_mousepad   ; fi
-if [ $which_gedit = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_gedit      ; fi
+if [ "$which_yudit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_yudit      ; fi
+if [ "$which_tea" = "$NULL" ]      ; then echo -n ; else favorite_graphicall_editor=$which_tea        ; fi
+if [ "$which_pluma" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_pluma      ; fi
+if [ "$which_mousepad" = "$NULL" ] ; then echo -n ; else favorite_graphicall_editor=$which_mousepad   ; fi
+if [ "$which_gedit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_gedit      ; fi
 ####
 ####
 ##############################       english: Script: general options         #########################################
