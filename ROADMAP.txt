@@ -49,5 +49,6 @@ cli - comprobar - ok 198
 gui - comprobar - ok 198
 arptables - añade la opcion - ok 199
 fwiptables - variables de iptables legacy y nft - ok 200
-variables - autorecoger las rutas de los ejecutables y ponerlos como variables - 
+ejecutables - autorecoger las rutas de los ejecutables y poner los programas con variables - 
+
 

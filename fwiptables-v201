@@ -27,7 +27,7 @@ config_option="no" ; launch_iptables="no" ;                         #english: au
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="200" ;    #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="201" ;    #english: Name and Version  #spanish: Nombre y Version
 directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              #english: path to save firewall  #spanish: ruta de firewall guardado
@@ -42,7 +42,7 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ; cincuenta="##################################################"
 flinea="-92" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
-fvariables="-38" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
+fvariables="-37" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
 flistado="-70" ;                                 #english: wide of list config files #spanish: Ancho al listar cfg
 ##
 ##
@@ -77,7 +77,6 @@ allow_others_protocols=no ; #english: void to allow other protocol or no #spanis
 allow_output_uid=no ; #english: void to allow excepcional user or no #spanish: vacio permite salida de paquetes de un usuario excepcional o no
 allow_output_gid=no ; #english: void to allow excepcional group or no #spanish: vacio permite salida de paquetes de un grupo excepcional o no
 echo -n #english: Other Options, add with "," and join ranges with ":" #spanish: Otras Opciones, añadir con "," y poner rangos con ":"
-
 log_udp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
 log_tcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
 vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
@@ -148,7 +147,7 @@ if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
 else cp $0 $directory_fiptables/$fiptables &> /dev/null ; 
 echo "$fiptables $fversion installed in /usr/bin/$fiptables"
 echo "Launch $fiptables to run $fiptables" ; fi
-##############################       english: if third_option is a valid config.cfg                       ###########################################
+##############################       english: if third_option is a valid config.cfg                  ###########################################
 ##############################       spanish: si tercera opcion es un validoconfig.cfg               ###########################################
 if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
 ##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
@@ -161,6 +160,29 @@ if [ "$first_option" = "server" ]; then echo "  FIREWALL SERVER" ; echo "$cincue
 launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
 if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
+##############################      english: programs: path programs        #####################
+##############################      spanish: programas: ruta de programas   #####################
+####
+which_iptables_legacy=$(which iptables-legacy | cut -d " " -f 1)
+which_iptables_nft=$(which iptables-nft| cut -d " " -f 1)
+which_ip6tables_legacy=$(which ip6tables-legacy | cut -d " " -f 1)
+which_ip6tables_nft=$(which ip6tables-nft| cut -d " " -f 1)
+which_arptables=$(which arptables|cut -d " " -f 1)
+which_ebtables=$(which ebtables| cut -d " " -f 1)
+which_editor=$(which editor| cut -d " " -f 1)
+which_nano=$(which nano| cut -d " " -f 1)
+which_vim=$(which vim | cut -d " " -f 1)
+which_vi=$(which vi | cut -d " " -f 1)
+which_route=$(which route | cut -d " " -f 1)
+which_ss=$(which ss| cut -d " " -f 1)
+which_nestat=$(which netstat | cut -d " " -f 1)
+which_lsof=$(which lsof | cut -d " " -f 1)
+which_sysctl=$(which sysctl | cut -d " " -f 1)
+which_tcpdump=$(which tcpdump | cut -d " " -f 1)
+which_arp=$(which arp | cut -d " " -f 1)
+which_ping=$(which ping | cut -d " " -f 1)
+which_traceroute=$(which traceroute | cut -d " " -f 1)
+####
 ##############################       english: Script: general options         #########################################
 ##############################       spanish: Script: opciones generales      #########################################
 ####
@@ -2551,16 +2573,16 @@ else echo "$cinco  [With input state IP]  $cinco"
 echo " Input satate: $input_state"
 echo ; fi
 echo "$cinco  [With Others configs]  $cinco"
-if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping in iptables"; else echo "  Allow send pings" ; fi
-if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping in iptables"; else echo "  Allow recive pings" ; fi
-if [ "$allow_log_tcp" = "no" ]; then echo "  Dont allow log server tcp in iptables"; else  echo "  Allow logservers in port: $log_tcp" ; fi
-if [ "$allow_log_udp" = "no" ]; then echo "  Dont allow log server udp in iptables"; else  echo "  Allow logservers in port: $log_udp" ; fi
-if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading in iptables"; else echo "  Allow ip forwading iptables" ; fi
-if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip NAT masquerade in iptables"; else echo "  Allow NAT masquerade" ; fi
-if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional in iptables"; else  echo "  Allow vpn servers are $vpn" ; fi
-if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid excepcional in iptables"; else echo "  Allow one uid excepcional: $output_uid" ; fi
-if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional in iptables"; else echo "  Allow one gid excepcional: $output_uid" ; fi
-if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more in iptables"; else echo "  Allow other protocol ip: $others_protocols" ; fi
+if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allow send pings" ; fi
+if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allow recive pings" ; fi
+if [ "$allow_log_tcp" = "no" ]; then echo "  Dont allow log server tcp"; else  echo "  Allow logservers in port: $log_tcp" ; fi
+if [ "$allow_log_udp" = "no" ]; then echo "  Dont allow log server udp"; else  echo "  Allow logservers in port: $log_udp" ; fi
+if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allow ip forwading iptables" ; fi
+if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allow nat masquerade" ; fi
+if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allow vpn servers are $vpn" ; fi
+if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid excepcional"; else echo "  Allow output uid excepcional: $output_uid , and input established " ; fi
+if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; else echo "  Allow output gid excepcional: $output_uid , and input established "; fi
+if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more"; else echo "  Allow other protocol ip: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 #auto generate iptables save
 #iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
