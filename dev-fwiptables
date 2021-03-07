@@ -163,6 +163,7 @@ launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="
 ##############################      english: programs: path programs        #####################
 ##############################      spanish: programas: ruta de programas   #####################
 ####
+####
 which_iptables_legacy=$(which iptables-legacy | cut -d " " -f 1)
 which_iptables_nft=$(which iptables-nft| cut -d " " -f 1)
 which_ip6tables_legacy=$(which ip6tables-legacy | cut -d " " -f 1)
@@ -170,18 +171,52 @@ which_ip6tables_nft=$(which ip6tables-nft| cut -d " " -f 1)
 which_arptables=$(which arptables|cut -d " " -f 1)
 which_ebtables=$(which ebtables| cut -d " " -f 1)
 which_editor=$(which editor| cut -d " " -f 1)
-which_nano=$(which nano| cut -d " " -f 1)
-which_vim=$(which vim | cut -d " " -f 1)
-which_vi=$(which vi | cut -d " " -f 1)
+which_ip=$(which ip | cut -d " " -f 1)
 which_route=$(which route | cut -d " " -f 1)
 which_ss=$(which ss| cut -d " " -f 1)
-which_nestat=$(which netstat | cut -d " " -f 1)
+which_netstat=$(which netstat | cut -d " " -f 1)
 which_lsof=$(which lsof | cut -d " " -f 1)
 which_sysctl=$(which sysctl | cut -d " " -f 1)
 which_tcpdump=$(which tcpdump | cut -d " " -f 1)
 which_arp=$(which arp | cut -d " " -f 1)
 which_ping=$(which ping | cut -d " " -f 1)
 which_traceroute=$(which traceroute | cut -d " " -f 1)
+which_dialog=$(which dialog | cut -d " " -f 1)
+which_zenity=$(which zenity | cut -d " " -f 1)
+which_nano=$(which nano| cut -d " " -f 1)
+which_vim=$(which vim | cut -d " " -f 1)
+which_vi=$(which vi | cut -d " " -f 1)
+which_tilde=$(which tilde | cut -d " " -f 1)
+which_gedit=$(which gedit | cut -d " " -f 1)
+which_yudit=$(which yudit | cut -d " " -f 1)
+which_tea=$(which tea | cut -d " " -f 1)
+which_pluma=$(which pluma | cut -d " " -f 1)
+which_mousepad=$(which mousepad | cut -d " " -f 1)
+which_gedit=$(which gedit | cut -d " " -f 1)
+####
+####
+##############################      english: favorite text editor: favorite text editor         #####################
+##############################      spanish: preferido text editor: preferido editor de texto   #####################
+####
+####
+favorite_text_editor=""
+if [ $which_vi = "$NULL" ]     ; then echo -n; else favorite_text_editor=$which_vi        ; fi
+if [ $which_vim = "$NULL" ]    ; then echo -n; else favorite_text_editor=$which_vim       ; fi
+if [ $which_tilde = "$NULL" ]  ; then echo -n; else favorite_text_editor=$which_tilde     ; fi
+if [ $which_editor = "$NULL" ] ; then echo -n; else favorite_text_editor=$which_editor    ; fi
+if [ $which_nano = "$NULL" ]   ; then echo -n; else favorite_text_editor=$which_nano      ; fi
+####
+####
+##############################      english: favorite graphicall editor: favorite graphicall editor     #####################
+##############################      spanish: preferido editor grafico: preferido editor grafico         #####################
+####
+####
+favorite_graphicall_editor=""
+if [ $which_yudit = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_yudit      ; fi
+if [ $which_tea = "$NULL" ]      ; then echo -n ; else favorite_graphicall_editor=$which_tea        ; fi
+if [ $which_mousepad = "$NULL" ] ; then echo -n ; else favorite_graphicall_editor=$which_mousepad   ; fi
+if [ $which_gedit = "$NULL" ]    ; then echo -n ; else favorite_graphicall_editor=$which_gedit      ; fi
+####
 ####
 ##############################       english: Script: general options         #########################################
 ##############################       spanish: Script: opciones generales      #########################################
@@ -194,20 +229,16 @@ which_traceroute=$(which traceroute | cut -d " " -f 1)
 ##############################       spanish: mini-wizard: mini-asistente to connect like simple client
 if [ "$first_option" = "mini-wizard" ]; then echo -n
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
-editor "$directory_config/mini-wizard.cfg"
+$favorite_text_editor "$directory_config/mini-wizard.cfg"
 $fiptables client mini-wizard.cfg
-echo "press enter to continue"
-read -s
 $fiptables list
 exit; fi
 ##############################       english: wizard: wizard to connect like simple client
 ##############################       spanish: wizard: asistente to connect like simple client
 if [ "$first_option" = "wizard" ]; then echo -n
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
-editor "$directory_config/wizard.cfg"
+$favorite_text_editor "$directory_config/wizard.cfg"
 $fiptables server wizard.cfg
-echo "press enter to continue"
-read -s
 $fiptables list
 exit; fi
 ##############################       english: cli: Manage list rules with one text menu
@@ -310,18 +341,12 @@ case $menuprincipal in
  archivo="$(dialog --title "client" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables client $archivo
- echo "press [enter] to continue with the $fiptables cli"
- read -s
- $fiptables list
  ;;
  104)
  clear
  archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables server $archivo
- echo "press [enter] to continue with the $fiptables cli"
- read -s
- $fiptables list
  ;;
  105)
  clear
@@ -631,11 +656,8 @@ zenity --info --ellipsize --text="ok $($fiptables list)"
 ;;
 wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
-untexto="Type the graphicall editor, example: gedit"
-uneditor="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $($uneditor $directory_config/wizard.cfg)"
+zenity --info --ellipsize --text="ok $($favorite_graphicall_editor $directory_config/wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables server wizard.cfg)"
-zenity --info --ellipsize --text="ok $(fwiptables list)"
 ;;
 #### modify configs      ####
 reconfig*)
@@ -673,9 +695,9 @@ unarchivo="$(zenity --entry --text="$untexto")"
 zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp spanish-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
 ;;
 modify-config*)
-untexto="Type the graphicall editor and config file, example: gedit config.cfg"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="ok $($(echo $unarchivo | sed 's/\///g'))"
+#untexto="Type the config file, example: config.cfg"
+unarchivo="$(zenity --entry --title="modify-config" --text="$(ls $directory_config)")"
+zenity --info --ellipsize --text="$($favorite_graphicall_editor $unarchivo)"
 ;;
 #### options recover fw ####
 fw-list*)
@@ -778,18 +800,14 @@ zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 mini-wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
-untexto="Type the graphicall editor, example: gedit"
-uneditor="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="ok $($uneditor $directory_config/mini-wizard.cfg)"
+zenity --info --ellipsize --text="ok $($which_graphicall_editor $directory_config/mini-wizard.cfg)"
 zenity --info --ellipsize --text="ok $(fwiptables client mini-wizard.cfg)"
-zenity --info --ellipsize --text="ok $(fwiptables list)"
 ;;
 #### options several ####
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
 esac
-zenity --info --ellipsize --text="##### Remember: ##### $($fiptables list)"
 zenity --info --ellipsize --text="press [ok] to continue with the $fiptables gui"
 $fiptables gui
 exit ; fi
@@ -980,30 +998,30 @@ echo "$fprogram version $fversion"
 echo "$cincuenta  Show ip address and ip route"
 echo "$(uname -a)"
 echo "$cinco  ip address  $cinco "
-case $(ip address) in
+case $"($which_ip address)" in
 $NULL)
-echo "Without net devices"
+echo "Without ip command"
 ;;
 *)
-echo "$(ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo "$($which_ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
 ;;
 esac
 echo "$cinco  ip route  $cinco"
-case $(ip route) in
+case $($which_ip route) in
 $NULL)
 echo "Without route ip"
 ;;
 *)
-echo "$(ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo "$($which ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
 ;;
 esac
 echo "$cinco  ip tunnel  $cinco"
-case $(ip tunnel) in
+case $($which ip tunnel) in
 $NULL)
 echo "Without tunnel ip"
 ;;
 *)
-echo "$(ip tunnel | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo "$($which_ip tunnel | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
 ;;
 esac
 exit; fi
@@ -1019,9 +1037,9 @@ echo "$fprogram version $fversion";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
 uname -a
 echo "$cinco      The ipv6 sockets       $cinco"
-ss -a6
+$which_ss -a6
 echo "$cinco      The ipv4 sockets      $cinco"
-ss -a4
+$which ss -a4
 ;;
 esac
 exit; fi
@@ -1037,7 +1055,7 @@ echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
 uname -a
 echo "$cinco      The sockets with lsof      $cinco"
-lsof -i
+$which lsof -i
 ;;
 esac
 exit; fi
@@ -1053,11 +1071,11 @@ echo "$fprogram version $fversion"
 echo "$cincuenta  The sockets list with netstat"
 uname -a
 echo "$cincuenta      The devices list with netstat      $cinco" ;
-netstat -i
+$which_netstat -i
 echo "$cincuenta      The route table with  netstat      $cinco" ;
-netstat -r
+$which_netstat -r
 echo "$cincuenta      The sockets list with netstat      $cinco" ;
-netstat -a -4 -6
+$which_netstat -a -4 -6
 ;;
 esac
 exit; fi
@@ -1297,16 +1315,16 @@ if [ "$first_option" = "security-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta ebtables ethernet nft"
  echo "$cinco filter ethernet nft"
- $directory_binary/ebtables -L -t filter
+ $which_ebtables -L -t filter
  echo "$cinco nat ethernet nft"
- $directory_binary/ebtables -L -t nat
+ $which_ebtables -L -t nat
  exit; fi
 ############################       english: arptables: system script, the ebtables option to list arp
 ############################       spanish: arptables: script de sistema, la opcion ebtables to list arp
  if [ "$first_option" = "arptables" ]; then echo -n
  echo "$fprogram version $fversion"
  echo "$cincuenta arptables arp"
- $directory_binary/arptables -L
+ $which_arptables -L
  exit; fi
 ############################       english: new-config: system script, the new-config option to create new configs
 ############################       spanish: new-config: script de sistema, la opcion new-config para cear nuevas config
@@ -1336,7 +1354,7 @@ esac
 echo "  The new file will be $directory_config/$frespuestab"
 echo "  Edit the file $frespuestab"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
-editor "$directory_config/$frespuestab"
+$favorite_text_editor "$directory_config/$frespuestab"
 
 echo "  $cinco        launch the firewall for client:           $fiptables client $frespuestab   "
 echo "  $cinco        launch the firewall for server:           $fiptables server $frespuestab   "
@@ -1369,7 +1387,7 @@ esac
 echo "  El nuevo archivo estara en $directory_config/$frespuestab" ;
 echo "  Edita el archivo $frespuestab "
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
-editor "$directory_config/$frespuestab"
+$favorite_text_editor "$directory_config/$frespuestab"
 echo "  $cinco        lanza el cortafuegos para cliente:              $fiptables client $frespuestab   "
 echo "  $cinco        O lanza el cortafuegos para servidor:           $fiptables server $frespuestab   "
 exit; fi
@@ -1444,7 +1462,7 @@ if [ "$first_option" = "modify-config" ]; then echo -n
 echo
 case "$config_option" in
 "si")
-editor "$directory_config/$second_option"
+$favorite_text_editor "$directory_config/$second_option"
 ;;
 "no")
 echo "$fprogram version $fversion"
@@ -1459,7 +1477,7 @@ echo "     Or Control+c to stop"
 echo "$cinco"
 read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa
 frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
-editor $directory_config/$frespuestab ;
+$favorite_text_editor $directory_config/$frespuestab 
 echo "  $cinco        Launch the firewall for client:           $fiptables client $frespuestab   " ;
 echo "  $cinco        launch the firewall for server:           $fiptables server $frespuestab   " ;
 ;;
@@ -1608,7 +1626,7 @@ exit; fi
 if [ "$first_option" = "arp" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  the last arp conections"
-$directory_binary/arp -a
+$which_arp -a
 exit; fi
 ############################       english: fw-list: file list whith rules in iptables format
 ############################       spanish: fw-list: lista de archivos con reglas en formato iptables
@@ -2585,10 +2603,11 @@ if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; el
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more"; else echo "  Allow other protocol ip: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 #auto generate iptables save
-#iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
-#iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-#ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
-#ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
+iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
+ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
+ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+$fiptables list
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
