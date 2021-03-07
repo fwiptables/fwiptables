@@ -175,6 +175,7 @@ which_ip6tables_nft_save=$(which ip6tables-nft-save | cut -d " " -f 1)
 which_arptables=$(which arptables|cut -d " " -f 1)
 which_ebtables=$(which ebtables| cut -d " " -f 1)
 which_editor=$(which editor| cut -d " " -f 1)
+which_fmt=$(which fmt | cut -d " " -f 1)
 which_ip=$(which ip | cut -d " " -f 1)
 which_route=$(which route | cut -d " " -f 1)
 which_ss=$(which ss| cut -d " " -f 1)
@@ -235,35 +236,37 @@ if [ "$first_option" = "depends" ]; then echo -n
 echo "Depends for $fiptables"
 echo "$cincuenta $fiptables"
 echo "$cinco $fiptables cli"
-echo "dialog $which_dialog"
+echo "dialog:    $which_dialog"
 echo "$cinco $fiptables gui"
-echo "zenity $which_zenity"
+echo "zenity:    $which_zenity"
 echo "$cinco $fiptables editor"
-echo "Auto favorite text exitor $favorite_text_editor"
-echo "Auto favorite graphicall editor $favorite_graphicall_editor"
+echo "Auto favorite text exitor:       $favorite_text_editor"
+echo "Auto favorite graphicall editor: $favorite_graphicall_editor"
 echo "$cinco the iptables"
-echo "iptables legacy $which_iptables_legacy"
-echo "iptables nft $which_iptables_nft"
-echo "ip6tables legacy $which_ip6tables_legacy"
-echo "ip6tables nft $which_ip6tables_nft"
+echo "iptables legacy:   $which_iptables_legacy"
+echo "iptables nft:      $which_iptables_nft"
+echo "ip6tables legacy:  $which_ip6tables_legacy"
+echo "ip6tables nft:     $which_ip6tables_nft"
+echo "arptables:         $which_arptables"
+echo "ebtables:          $which_ebtables"
 echo "$cinco the iptables save"
-echo "iptables legacy save $which_iptables_legacy_save"
-echo "iptables nft save $which_iptables_nft_save"
-echo "iptables legacy save $which_ip6tables_legacy_save"
-echo "iptables legacy save $which_ip6tables_nft_save"
-echo "arptables $which_arptables"
-echo "ebtables  $which_ebtables"
-echo "$cinco $fiptables utils"
-echo "ip $which_ip"
-echo "route $which_route"
-echo "ss $which_ss"
-echo "netstat $which_netstat"
-echo "lsof $which_lsof"
-echo "sysctl $which_sysctl"
-echo "tcpdump $which_tcpdump"
-echo "arp $which_arp"
-echo "ping $which_ping"
-echo "traceroute $which_traceroute"
+echo "iptables legacy save:  $which_iptables_legacy_save"
+echo "iptables nft save:     $which_iptables_nft_save"
+echo "ip6tables legacy save: $which_ip6tables_legacy_save"
+echo "ip6tables nft save:    $which_ip6tables_nft_save"
+echo "$cinco $fiptables util"
+echo "fmt:     $which_fmt"
+echo "$cinco $fiptables tool"
+echo "ip:         $which_ip"
+echo "route:      $which_route"
+echo "ss:         $which_ss"
+echo "netstat:    $which_netstat"
+echo "lsof:       $which_lsof"
+echo "sysctl:     $which_sysctl"
+echo "tcpdump:    $which_tcpdump"
+echo "arp:        $which_arp"
+echo "ping:       $which_ping"
+echo "traceroute: $which_traceroute"
 exit; fi
 ##############################       english: mini-wizard: mini-wizard to connect like simple client
 ##############################       spanish: mini-wizard: mini-asistente to connect like simple client
@@ -284,7 +287,7 @@ exit; fi
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$first_option" = "cli" ]; then echo -n
-case "$(which dialog)" in
+case "$which_dialog" in
 "$NULL")
 echo " Install dialog to work"
 exit
@@ -640,7 +643,7 @@ clear
 ##############################       english: gui: Manage list rules with one menu graphicall
 ##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
 if [ "$first_option" = "gui" ]; then echo -n
-case "$(which zenity)" in
+case "$which_zenity" in
 "$NULL")
 echo " Install zenity to work"
 exit
@@ -748,10 +751,10 @@ fw-save*)
 untexto="type the filename to save firewall"
 archivoini="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
 archivofin="$(echo "$archivoini" | sed 's/\///g')"
-$directory_binary/iptables-nft-save > $directory_fwrecover/$archivofin-nft-ipv4
-$directory_binary/iptables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
-$directory_binary/ip6tables-nft-save > $directory_fwrecover/$archivofin-nft-ipv6
-$directory_binary/ip6tables-legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
+$which_iptables_nft_save > $directory_fwrecover/$archivofin-nft-ipv4
+$which_iptables_legacy_save > $directory_fwrecover/$archivofin-legacy-ipv4
+$which_ip6tables_nft_save > $directory_fwrecover/$archivofin-nft-ipv6
+$which_ip6tables_legacy_save > $directory_fwrecover/$archivofin-legacy-ipv6
 zenity --info --ellipsize --text="ok $(echo saved $archivofin)"
 ;;
 fw-restore*)
