@@ -177,6 +177,9 @@ which_ebtables=$(which ebtables| cut -d " " -f 1)
 which_editor=$(which editor| cut -d " " -f 1)
 which_fmt=$(which fmt | cut -d " " -f 1)
 which_ip=$(which ip | cut -d " " -f 1)
+which_host=$(which host | cut -d " " -f 1)
+which_resolveip=$(which resolveip | cut -d " " -f 1)
+which_geoiplookup=$(which geoiplookup | cut -d " " -f 1)
 which_route=$(which route | cut -d " " -f 1)
 which_ss=$(which ss| cut -d " " -f 1)
 which_netstat=$(which netstat | cut -d " " -f 1)
@@ -1017,17 +1020,17 @@ exit ; fi
 if [ "$first_option" = "upgrade" ]; then  echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Upgrade"
-echo "  The actually version is" 
-echo "       $fprogram has the version $fiptables $fversion actually" 
-echo "  The latest version is" 
+echo "The actually version is:" 
+echo "$fprogram has the version $fiptables $fversion actually" 
+echo "The latest version is:" 
 $favorite_text_browser -dump $fweb_newfiles  | grep -i "download latest version"  
 echo "$cinco"
-echo "    Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser" ; echo ;
-echo " $cinco    download manually   || or launch ||   $0 web-upgrade"
-echo "     $favorite_text_browser -source $fweb_latest > $directory_fiptables/$fiptables"
-echo "     chmod ugo+x $directory_fiptables/$fiptables"
-echo "     /usr/bin/$fiptables reconfig"
-echo " $cinco    ok and it will be upgrade with the name $directory_fiptables/$fiptables" ;
+echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
+echo "$cinco    download manually   || or launch ||   $0 web-upgrade"
+echo "$favorite_text_browser -source $fweb_latest > $directory_fiptables/$fiptables"
+echo "chmod ugo+x $directory_fiptables/$fiptables"
+echo "$fiptables reconfig"
+echo "$cinco    ok and it will be upgrade with the name $directory_fiptables/$fiptables"
 exit;  fi
 #############################       english: eraserules: system script, the erase rules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
@@ -1053,7 +1056,7 @@ echo "$fprogram version $fversion"
 echo "$cincuenta  Show ip address and ip route"
 echo "$(uname -a)"
 echo "$cinco  ip address  $cinco "
-case $"($which_ip address)" in
+case $which_ip in
 $NULL)
 echo "Without ip command"
 ;;
@@ -1083,9 +1086,9 @@ exit; fi
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
 if [ "$first_option" = "ss" ]; then echo -n ;
-case $(which ss) in
+case $which_ss in
 "$NULL")
-echo " Install ss"
+echo " Install ss command"
 ;;
 *)
 echo "$fprogram version $fversion";
@@ -1101,23 +1104,23 @@ exit; fi
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 if [ "$first_option" = "lsof" ]; then echo -n ;
-case $(which lsof) in
+case $which_lsof in
 "$NULL")
 echo " Install lsof"
-echo ;;
+;;
 *)
 echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
 uname -a
 echo "$cinco      The sockets with lsof      $cinco"
-$which lsof -i
+$which_lsof -i
 ;;
 esac
 exit; fi
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat  sockets
 if [ "$first_option" = "netstat" ]; then echo -n ;
-case $(which netstat) in
+case $which_netstat in
 "$NULL")
 echo " Install netstat"
 ;;
@@ -1659,8 +1662,8 @@ if [ "$first_option" = "ipforwading" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Show ipforwading $cinco"
 uname -a
-echo "$cinco    Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
-$directory_binary/sysctl -a | grep -i forwarding
+echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
+$which_sysctl -a | grep -i forwarding
 exit; fi
 ############################       english: tcpdump: listen at dump from conexiones
 ############################       spanish: tcpdump: escucha al volcado de conexiones
@@ -1730,7 +1733,7 @@ exit; fi
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
 if [ "$first_option" = "ping-ip4" ]; then echo -n
-case $(which ping) in
+case $which_ping in
 "$NULL")
 echo " Install ping"
 ;;
@@ -1741,19 +1744,18 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  ping icmp ipv4 $cinco"
-#read -r -p "#####    Type the host to do ping ip4: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
 ;;
 esac
-ping -4 -c 5 -A $trazador
+$which_ping -4 -c 5 -A $trazador
 exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then echo -n
-case $(which ping) in
+case $which_ping in
 "$NULL")
 echo " Install ping"
 ;;
@@ -1764,19 +1766,18 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  ping icmp ipv6 $cinco"
-# read -r -p "#####    Type the host to do ping ip6: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
 ;;
 esac
-ping -6 -c 5 -A $trazador
+$which_ping -6 -c 5 -A $trazador
 exit; fi
 ############################       english: trace-ip4: traceroute with tcp and ipv6
 ############################       spanish: trace-ip4: traceroute con tcp y ipv4
 if [ "$first_option" = "trace-ip4" ]; then echo -n
-case $(which traceroute) in
+case $which_traceroute in
 "$NULL")
 echo " Install traceroute"
 ;;
@@ -1794,12 +1795,12 @@ trazador="fast.com"
 trazador="$second_option"
 ;;
 esac
-traceroute -4 -T $trazador
+$which_traceroute -4 -T $trazador
 exit; fi
 ############################       english: trace-ip6: traceroute with tcp and ipv6
 ############################       spanish: trace-ip6: traceroute con tcp e ipv6
 if [ "$first_option" = "trace-ip6" ]; then echo -n
-case $(which traceroute) in
+case $which_traceroute in
 "$NULL")
 echo " Install traceroute"
 ;;
@@ -1817,12 +1818,12 @@ trazador="fast.com"
 trazador="$second_option"
 ;;
 esac
-traceroute -6 -T $trazador
+$which_traceroute -6 -T $trazador
 exit; fi
 ############################       english: host: host to resolve ip
 ############################       spanish: host: host to resolve ip
 if [ "$first_option" = "host" ]; then echo -n
-case $(which host) in
+case $which_host in
 "$NULL")
 echo " Install host"
 ;;
@@ -1840,7 +1841,7 @@ trazador="fast.com"
 trazador="$second_option"
 ;;
 esac
-host $trazador
+$which_host $trazador
 exit; fi
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
@@ -1868,7 +1869,7 @@ exit; fi
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
 if [ "$first_option" = "geoip" ]; then echo -n
-case $(which geoiplookup) in
+case $which_geoiplookup in
 "$NULL")
 echo " Install geoip-bin"
 ;;
@@ -1886,7 +1887,7 @@ trazador="fast.com"
 trazador="$second_option"
 ;;
 esac
-geoiplookup -i $trazador
+$which_geoiplookup -i $trazador
 exit; fi
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
@@ -1901,14 +1902,14 @@ exit; fi
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
 if [ "$first_option" = "new-versions" ]; then echo -n
-echo "  $fprogram"
+echo "$fprogram"
 echo "$cincuenta New versions $cinco"
 links -dump $fweb_newfiles | egrep -i "iptables"
 exit; fi
 ############################       english: all-versions: about of program
 ############################       spanish: all-versions: acerca del programa
 if [ "$first_option" = "all-versions" ]; then echo -n
-echo "  $fprogram"
+echo "$fprogram"
 echo "$cincuenta All versions $cinco"
 links -dump $fweb_tree | grep -i root | sed 's/root//g' | cut -c -40 | sort | uniq -u
 exit; fi
