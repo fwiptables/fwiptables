@@ -160,14 +160,18 @@ if [ "$first_option" = "server" ]; then echo "  FIREWALL SERVER" ; echo "$cincue
 launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
 if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
-##############################      english: programs: path programs        #####################
-##############################      spanish: programas: ruta de programas   #####################
+##############################      english: search programs: programs path       #####################
+##############################      spanish: busca programas: ruta de programas   #####################
 ####
 ####
 which_iptables_legacy=$(which iptables-legacy | cut -d " " -f 1)
 which_iptables_nft=$(which iptables-nft| cut -d " " -f 1)
 which_ip6tables_legacy=$(which ip6tables-legacy | cut -d " " -f 1)
 which_ip6tables_nft=$(which ip6tables-nft| cut -d " " -f 1)
+which_iptables_legacy_save=$(which iptables-legacy-save | cut -d " " -f 1)
+which_iptables_nft_save=$(which iptables-nft-save| cut -d " " -f 1)
+which_ip6tables_legacy_save=$(which ip6tables-legacy-save | cut -d " " -f 1)
+which_ip6tables_nft_save=$(which ip6tables-nft-save | cut -d " " -f 1)
 which_arptables=$(which arptables|cut -d " " -f 1)
 which_ebtables=$(which ebtables| cut -d " " -f 1)
 which_editor=$(which editor| cut -d " " -f 1)
@@ -195,8 +199,8 @@ which_mousepad=$(which mousepad | cut -d " " -f 1)
 which_gedit=$(which gedit | cut -d " " -f 1)
 ####
 ####
-##############################      english: favorite text editor: favorite text editor         #####################
-##############################      spanish: preferido text editor: preferido editor de texto   #####################
+##############################      english: search favorite text editor: favorite text editor            #####################
+##############################      spanish: busca preferido editor de texto: preferido editor de texto   #####################
 ####
 ####
 favorite_text_editor=""
@@ -207,8 +211,8 @@ if [ $which_editor = "$NULL" ] ; then echo -n; else favorite_text_editor=$which_
 if [ $which_nano = "$NULL" ]   ; then echo -n; else favorite_text_editor=$which_nano      ; fi
 ####
 ####
-##############################      english: favorite graphicall editor: favorite graphicall editor     #####################
-##############################      spanish: preferido editor grafico: preferido editor grafico         #####################
+##############################      english: search favorite graphicall editor: favorite graphicall editor     #####################
+##############################      spanish: busca preferido editor grafico: preferido editor grafico         #####################
 ####
 ####
 favorite_graphicall_editor=""
@@ -225,6 +229,42 @@ if [ $which_gedit = "$NULL" ]    ; then echo -n ; else favorite_graphicall_edito
 ####
 ####
 ####
+##############################       english: depends: depends for $fiptables
+##############################       spanish: dependencias: dependencias para $fiptables
+if [ "$first_option" = "depends" ]; then echo -n
+echo "Depends for $fiptables"
+echo "$cincuenta $fiptables"
+echo "$cinco $fiptables cli"
+echo "dialog $which_dialog"
+echo "$cinco $fiptables gui"
+echo "zenity $which_zenity"
+echo "$cinco $fiptables editor"
+echo "Auto favorite text exitor $favorite_text_editor"
+echo "Auto favorite graphicall editor $favorite_graphicall_editor"
+echo "$cinco iptables"
+echo "iptables legacy $which_iptables_legacy"
+echo "iptables nft $which_iptables_nft"
+echo "ip6tables legacy $which_ip6tables_legacy"
+echo "ip6tables nft $which_ip6tables_nft"
+echo "$cinco iptables save"
+echo "iptables legacy save $which_iptables_legacy_save"
+echo "iptables nft save $which_iptables_nft_save"
+echo "iptables legacy save $which_ip6tables_legacy_save"
+echo "iptables legacy save $which_ip6tables_nft_save"
+echo "arptables $which_arptables"
+echo "ebtables  $which_ebtables"
+echo "$cinco $fiptables utils"
+echo "ip $which_ip"
+echo "route $which_route"
+echo "ss $which_ss"
+echo "netstat $which_netstat"
+echo "lsof $which_lsof"
+echo "sysctl $which_sysctl"
+echo "tcpdump $which_tcpdump"
+echo "arp $which_arp"
+echo "ping $which_ping"
+echo "traceroute $which_traceroute"
+exit; fi
 ##############################       english: mini-wizard: mini-wizard to connect like simple client
 ##############################       spanish: mini-wizard: mini-asistente to connect like simple client
 if [ "$first_option" = "mini-wizard" ]; then echo -n
@@ -2613,7 +2653,7 @@ exit; fi
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "$fprogram version $fversion"
 echo "$cincuenta Wellcome $fiptables"
-echo "  [Launch rules]     eraserules offline client server allpermisive wizard"
+echo "  [Launch rules]     eraserules offline client server allpermisive"
 echo "  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
 echo "                     listnum forwardnum listnum6 forwardnum6"
 # echo "  [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
@@ -2626,7 +2666,9 @@ echo "  [Auth sudo]        auth-sudo remove-sudo list-sudo"
 echo "  [Tool icmp]        ping-ip4 ping-ip6"
 echo "  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
 echo "  [Version]          version upgrade dev-versions all-versions"
-echo "  [Help]             about system-info help ayuda mini-wizard cli gui"
+echo "  [Attend]           system-info wizard mini-wizard cli gui"
+echo "  [Help]             about depends help ayuda "
+
 echo "$cinco  Optional $directory_config/[config.cfg]"
 echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
