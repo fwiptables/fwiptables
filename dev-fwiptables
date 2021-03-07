@@ -160,8 +160,8 @@ if [ "$first_option" = "server" ]; then echo "  FIREWALL SERVER" ; echo "$cincue
 launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
 if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
-##############################      english: search programs: programs path       #####################
-##############################      spanish: busca programas: ruta de programas   #####################
+##############################      english: search programs: programs path           #####################
+##############################      spanish: busca los programas: ruta de programas   #####################
 ####
 ####
 which_iptables_legacy=$(which iptables-legacy | cut -d " " -f 1)
@@ -241,12 +241,12 @@ echo "zenity $which_zenity"
 echo "$cinco $fiptables editor"
 echo "Auto favorite text exitor $favorite_text_editor"
 echo "Auto favorite graphicall editor $favorite_graphicall_editor"
-echo "$cinco iptables"
+echo "$cinco the iptables"
 echo "iptables legacy $which_iptables_legacy"
 echo "iptables nft $which_iptables_nft"
 echo "ip6tables legacy $which_ip6tables_legacy"
 echo "ip6tables nft $which_ip6tables_nft"
-echo "$cinco iptables save"
+echo "$cinco the iptables save"
 echo "iptables legacy save $which_iptables_legacy_save"
 echo "iptables nft save $which_iptables_nft_save"
 echo "iptables legacy save $which_ip6tables_legacy_save"
