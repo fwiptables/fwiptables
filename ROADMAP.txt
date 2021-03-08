@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 201
+     *****     Version actual: 202
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -50,6 +50,7 @@ gui - comprobar - ok 198
 arptables - añade la opcion - ok 199
 fwiptables - variables de iptables legacy y nft - ok 200
 ejecutables - autorecoger las rutas de los ejecutables y poner los programas con variables - ok 201
-
+cli - corregir -
+gui - corregir -
 
 
