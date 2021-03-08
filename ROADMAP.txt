@@ -54,6 +54,6 @@ upgrade - corregir - ok 202
 web-upgrade - corregir - ok 202
 cli - corregir -
 gui - corregir -
-ayuda - añadir -
-help - añadir - 
+ayuda - añadir - 202
+help - añadir - 202
 
