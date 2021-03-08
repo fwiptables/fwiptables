@@ -27,7 +27,7 @@ config_option="no" ; launch_iptables="no" ;                         #english: au
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="201" ;    #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="202" ;    #english: Name and Version  #spanish: Nombre y Version
 directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              #english: path to save firewall  #spanish: ruta de firewall guardado
@@ -2667,11 +2667,10 @@ if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; el
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more"; else echo "  Allow other protocol ip: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 #auto generate iptables save
-iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
-iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
-ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
-$fiptables list
+# iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
+# iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
+# ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
+# ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
