@@ -19,18 +19,22 @@
 ################################################   spanish:   las basicas variables del sistema
 ##
 ##
-##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-first_option="$1" ; second_option="$2" ;                            #english: variables at launch  #spanish: variables al lanzar
-third_option="$3" ; fourth_option="$4" ;                            #english: variables at launch  #spanish: variables al lanzar
-config_option="no" ; launch_iptables="no" ;                         #english: auto variables to no #spanish: auto variables a no
-launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
-directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
-fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="202" ;    #english: Name and Version  #spanish: Nombre y Version
-directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
-directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
-directory_fwrecover="/etc/fwrecover" ;                              #english: path to save firewall  #spanish: ruta de firewall guardado
+first_option="$1" ; second_option="$2" ;                          #english: variables at launch  #spanish: variables al lanzar
+third_option="$3" ; fourth_option="$4" ;                          #english: variables at launch  #spanish: variables al lanzar
+config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
+launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
+directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
+fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="202" ;  #english: Name and Version  #spanish: Nombre y Version
+directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
+directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall  #spanish: ruta de firewall guardado
+autosave_fwrecover="no"                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
+cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
+cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
+flinea="-95" ;                                                    #english: number line #spanish:linea de variables
+fvariables="-37" ;                                                #english: custom variables to show #spanish: variables a modificar
+flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 #english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
@@ -39,12 +43,6 @@ fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 #english: [Program license] #spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
-#english: [characters to show] #spanish: [caracteres a mostrar]
-cinco="#####" ; cincuenta="##################################################"
-flinea="-92" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
-fvariables="-37" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
-flistado="-70" ;                                 #english: wide of list config files #spanish: Ancho al listar cfg
-##
 ##
 ##
 ################################################        english: fvariables:    variables to modify
@@ -2677,9 +2675,9 @@ echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
 echo "( )[Launch rules]     eraserules offline client server allpermisive        "
 echo "( )[List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
-echo "                     listnum forwardnum listnum6 forwardnum6              "
+echo "                      listnum forwardnum listnum6 forwardnum6              "
 echo "( )[Modify config]    reconfig show-config new-config nueva-config         "
-echo "                     modify-config clone-config rename-config del-config  "
+echo "                      modify-config clone-config rename-config del-config  "
 echo "( )[List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
 echo "( )[Recover fw]       fw-list fw-save fw-restore                           "
 echo "( )[Auth sudo]        auth-sudo remove-sudo list-sudo                      "
