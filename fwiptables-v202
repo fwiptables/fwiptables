@@ -29,7 +29,7 @@ fdescription="One Script in bash for iptables firewall"           #english: prog
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="202" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall  #spanish: ruta de firewall guardado
-autosave_fwrecover="no"                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
+autosave_fwrecover=""                                             #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
 flinea="-95" ;                                                    #english: number line #spanish:linea de variables
@@ -2663,11 +2663,16 @@ if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid excepcional"; el
 if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; else echo "  Allow output gid excepcional: $output_uid , and input established "; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more"; else echo "  Allow other protocol ip: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
-#auto generate iptables save
-# iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
-# iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-# ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
-# ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+# auto save iptables save
+case $autosave_fwrecover in 
+$NULL)
+iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
+iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
+ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
+ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+echo "autosave fwrecover created $first_option-$second_option with legacy and nft. See $fiptables fw-list"
+;;
+esac
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
