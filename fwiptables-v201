@@ -19,18 +19,22 @@
 ################################################   spanish:   las basicas variables del sistema
 ##
 ##
-##
 ## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-first_option="$1" ; second_option="$2" ;                            #english: variables at launch  #spanish: variables al lanzar
-third_option="$3" ; fourth_option="$4" ;                            #english: variables at launch  #spanish: variables al lanzar
-config_option="no" ; launch_iptables="no" ;                         #english: auto variables to no #spanish: auto variables a no
-launch_server="no" ; launch_client="no" ; launch_permisive="no" ;   #english: auto variables to no #spanish: auto variables a no
-directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;           #english: whereis path  #spanish: donde esta el path
-fdescription="One Script in bash for iptables firewall"             #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="201" ;    #english: Name and Version  #spanish: Nombre y Version
-directory_binary="/usr/sbin" ;                                      #english: iptables programs path  #spanish: ruta de iptables
-directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
-directory_fwrecover="/etc/fwrecover" ;                              #english: path to save firewall  #spanish: ruta de firewall guardado
+first_option="$1" ; second_option="$2" ;                          #english: variables at launch  #spanish: variables al lanzar
+third_option="$3" ; fourth_option="$4" ;                          #english: variables at launch  #spanish: variables al lanzar
+config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
+launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
+directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
+fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="201" ;  #english: Name and Version  #spanish: Nombre y Version
+directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
+directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall  #spanish: ruta de firewall guardado
+autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
+cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
+cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
+flinea="-95" ;                                                    #english: number line #spanish:linea de variables
+fvariables="-37" ;                                                #english: custom variables to show #spanish: variables a modificar
+flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 #english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
@@ -39,12 +43,6 @@ fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 #english: [Program license] #spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
-#english: [characters to show] #spanish: [caracteres a mostrar]
-cinco="#####" ; cincuenta="##################################################"
-flinea="-92" ;                                   #english: number line at custom variables #spanish:linea de variables modificables
-fvariables="-37" ;                               #english: number of custom variables to show #spanish: numero de variables a modificar
-flistado="-70" ;                                 #english: wide of list config files #spanish: Ancho al listar cfg
-##
 ##
 ##
 ################################################        english: fvariables:    variables to modify
@@ -95,7 +93,7 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 ##
-## if This is the line number 90 to then up .. flinea="-number" .
+## if This is the line number 95 to then up .. flinea="-number" .
 ##
 ##
 ##
@@ -203,14 +201,15 @@ which_mousepad="$(which mousepad | cut -d " " -f 1)"
 which_gedit="$(which gedit | cut -d " " -f 1)"
 which_lynx="$(which lynx | cut -d " " -f 1)"
 which_links="$(which links | cut -d " " -f 1)"
+which_elinks="$(which elinks | cut -d " " -f 1)"
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
 ##############################      spanish: busca preferido navegador: favorite browser   #####################
 ####
 favorite_text_browser=""
-if [ "$which_links" = "$NULL" ]  ; then echo -n ; else favorite_text_browser=$which_links   ; fi
-if [ "$which_lynx" = "$NULL" ]   ; then echo -n ; else favorite_text_browser=$which_lynx    ; fi
+if [ "$which_links" = "$NULL" ]    ; then echo -n ; else favorite_text_browser=$which_links     ; fi
+if [ "$which_elinks" = "$NULL" ]   ; then echo -n ; else favorite_text_browser=$which_elinks    ; fi
 ####
 ##############################      english: search favorite text editor: favorite text editor            #####################
 ##############################      spanish: busca preferido editor de texto: preferido editor de texto   #####################
@@ -255,7 +254,7 @@ echo "dialog:    $which_dialog"
 echo "$cinco $fiptables gui"
 echo "zenity:    $which_zenity"
 echo "$cinco $fiptables text browser"
-echo "one: links or lynx"
+echo "one: links or elinks"
 echo "auto text browser                $favorite_text_browser"
 echo "$cinco $fiptables editor"
 echo "one: vi, vim, tilde, editor, nano"
@@ -1008,11 +1007,10 @@ if [ "$first_option" = "web-upgrade" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Web upgrade $fprogram"
 echo "Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command"
-flinks=$(which links)
 echo "Downloading $fiptables with the comand $favorite_text_browser browser"
 echo "Waiting several seconds ..."
-$favorite_text_browser -dump "$fweb_newfiles" | grep -i "download latest version"  &&
-$favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables" &&
+$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+$favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables" 
 chmod ugo+x /tmp/$fiptables
 /tmp/$fiptables
 echo "$fprogram is upgraded: ok"
@@ -1025,10 +1023,9 @@ exit ; fi
 if [ "$first_option" = "upgrade" ]; then  echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Upgrade"
-echo "The actually version is:" 
-echo "$fprogram has the version $fiptables $fversion actually" 
-echo "The latest version is:" 
-$favorite_text_browser -dump $fweb_newfiles  | grep -i "download latest version"  
+echo "The actually version is: $fiptables $fversion actually" 
+echo "  The latest version is:"
+$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 echo "$cinco"
 echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
 echo "$cinco    download manually   || or launch ||   $0 web-upgrade"
@@ -1578,7 +1575,6 @@ exit; fi
 ############################       english: del-config: delete a old config
 ############################       spanish: del-config: elimina una vieja configuracion
 if [ "$first_option" = "del-config" ]; then echo -n
-echo
 case "$config_option" in
 "si")
 rm "$directory_config/$second_option"
@@ -1587,21 +1583,16 @@ echo "$directory_config/$second_option" deleted
 "no")
 echo "$fprogram version $fversion"
 echo "$cincuenta  Delete config $cinco"
-echo
 echo $cinco "  The configs are in folder $directory_config : "
-echo
 ls $directory_config | fmt $flistado
-echo
 echo        "     The files are in path $directory_config"
 echo        "     Or Control+c to stop"
-echo
 echo "$cinco"
 read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada
 fborradaa=$(sed 's/\///g' <<< "$fborrada")
-echo
 rm $directory_config/$fborradaa
 echo        "     Config deleted: $fborrada"
-echo ;;
+;;
 esac
 exit; fi
 ############################       english: auth-sudo: the auth-sudo option en english
@@ -1645,21 +1636,19 @@ exit; fi
 ############################       english: list-sudo: the auth-sudo option en english
 ############################       spanish: list-sudo: la opcion de auth-sudo en ingles
 if [ "$first_option" = "list-sudo" ]; then echo
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta Auth-sudo $cinco"
-echo
 case $(find /etc/sudoers.d/$fiptables) in
 /etc/sudoers.d/$fiptables)
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
-echo
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
 ;;
 *)
 echo "There is not auth users for $fiptables"
-echo -n ;;
+echo -n 
+;;
 esac
 exit; fi
 ############################       english: ipforwading: the ipforwading option en english
@@ -1688,9 +1677,16 @@ exit; fi
 ############################       english: arp: listen at dump from conexiones
 ############################       spanish: arp: escucha al volcado de conexiones
 if [ "$first_option" = "arp" ]; then echo -n
+case $which_arp in
+"$NULL")
+echo "install arp"
+;;
+*)
 echo "$fprogram version $fversion"
 echo "$cincuenta  the last arp conections"
 $which_arp -a
+;;
+esac
 exit; fi
 ############################       english: fw-list: file list whith rules in iptables format
 ############################       spanish: fw-list: lista de archivos con reglas en formato iptables
@@ -1794,7 +1790,6 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
-#read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -1817,7 +1812,6 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv6 $cinco"
-# read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -1840,7 +1834,6 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta resolve host $cinco"
-# read -r -p "#####    Type the host to do resolve host: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -1852,7 +1845,7 @@ exit; fi
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
 if [ "$first_option" = "resolveip" ]; then echo -n
-case $(which resolveip) in
+case $which_resolveip in
 "$NULL")
 echo " Install resolveip"
 ;;
@@ -1863,14 +1856,13 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta resolve ip or host $cinco"
-# read -r -p "#####    Type the host to do resolve ip or host: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
 ;;
 esac
-resolveip $trazador
+$which_resolveip $trazador
 exit; fi
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
@@ -1898,26 +1890,23 @@ exit; fi
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
 if [ "$first_option" = "dev-versions" ]; then echo -n
-echo ""
 echo "  $fprogram"
 echo "$cincuenta Dev versions $cinco"
-echo ""
 echo $fweb_development
-echo ""
 exit; fi
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
 if [ "$first_option" = "new-versions" ]; then echo -n
 echo "$fprogram"
 echo "$cincuenta New versions $cinco"
-links -dump $fweb_newfiles | egrep -i "iptables"
+$favorite_text_browser -dump $fweb_newfiles | egrep -i "iptables" | head -20
 exit; fi
 ############################       english: all-versions: about of program
 ############################       spanish: all-versions: acerca del programa
 if [ "$first_option" = "all-versions" ]; then echo -n
 echo "$fprogram"
 echo "$cincuenta All versions $cinco"
-links -dump $fweb_tree | grep -i root | sed 's/root//g' | cut -c -40 | sort | uniq -u
+$favorite_text_browser -dump $fweb_tree | grep -i root | sed 's/root//g' | cut -c -40 | sort | uniq -u
 exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
@@ -1939,17 +1928,17 @@ echo "  ./$fiptables"
 echo "  [and then fwiptables is in $directory_fiptables/$fiptables"]
 echo
 echo "$cinco   Devevelopments version program:"
-echo "The fran iptables ver in development in git code at sourceforge:"
+echo "  The fran iptables ver in development in git code at sourceforge:"
 echo ""
 echo "  $fweb_development"
 echo ""
 echo "$cinco   New versions program:"
-echo "The fran iptables ver 170 and versions up in files repository at sourceforge:"
+echo "  The fran iptables ver 170 and versions up in files repository at sourceforge:"
 echo ""
 echo "  $fweb_newfiles"
 echo ""
 echo "$cinco   All versions program:"
-echo "The fran iptables all versions in code repository at sourceforge:"
+echo "  The fran iptables all versions in code repository at sourceforge:"
 echo ""
 echo "  $fweb_tree"
 echo ""
@@ -1967,59 +1956,40 @@ exit; fi
 ############################       english: system-info: get info system
 ############################       spanish: system-info: da informacion del sistema
 if [ "$first_option" = "system-info" ]; then echo -n
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta   System info $cinco"
-echo
 echo "$cinco [System info:  Kernel Linux] $cinco"
-echo
 uname -a
-echo
 echo "$cinco [System info:  Memory RAM] $cinco"
-echo
 free -h
-echo
 echo "$cinco [System info:  Disks] $cinco"
-echo
 df -h -x tmpfs
-echo
 exit; fi
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
 if [ "$first_option" = "help" ]; then echo -n
-echo
 echo "$fprogram version $fversion"
-echo "$cincuenta Help $cinco"
-echo
-echo
-echo "$cinco   One First Option "
-echo "     [Launch rules]     eraserules offline client server allpermisive wizard"
-echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        listnum forwardnum listnum6 forwardnum6"
-echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                        security-ip4 security-ip6 ebtables arptables"
-echo "     [Modify config]    reconfig show-config new-config nueva-config"
-echo "                        modify-config clone-config rename-config del-config"
-echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump arp"
-echo "     [Recover fw]       fw-list fw-save fw-restore"
-echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
-echo "     [Tool icmp]        ping-ip4 ping-ip6"
-echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
-echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
-echo ""
-echo "$cinco   The cfg are in $directory_config/[config.cfg]"
-echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
-echo "$cinco   [The examples]"
-echo
-echo "  [List iptables rules]                 $fiptables list  "
-echo "  [Launch iptables like client web]     $fiptables client web-example1.cfg"
-echo "  [Launch iptables like server web]     $fiptables server web-example1.cfg"
-echo "  [Remove iptables rules]               $fiptables eraserules "
-echo "  [Show long help in english]           $fiptables help "
-echo "  [Show long help in spanish]           $fiptables ayuda "
-echo
+echo "$cincuenta   Wellcome $fiptables $cinco"
+echo "( )[Launch rules]     eraserules offline client server allpermisive        "
+echo "( )[List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
+echo "                      listnum forwardnum listnum6 forwardnum6              "
+echo "( )[Modify config]    reconfig show-config new-config nueva-config         "
+echo "                      modify-config clone-config rename-config del-config  "
+echo "( )[List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
+echo "( )[Recover fw]       fw-list fw-save fw-restore                           "
+echo "( )[Auth sudo]        auth-sudo remove-sudo list-sudo                      "
+echo "( )[Tool icmp]        ping-ip4 ping-ip6                                    "
+echo "( )[Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip             "
+echo "( )[Version]          version upgrade dev-versions all-versions            "
+echo "( )[Attend]           system-info wizard mini-wizard cli gui               "
+echo "( )[Help]             about depends help ayuda                             "
+echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
+echo "( )[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "( )[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo "$cinco  [The examples]  $cinco"
+echo "( )[Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
+echo "( )[Launch client with myown.cfg]     $fiptables client myown.cfg          "
+echo "( )[List iptables rules]              $fiptables list                      "
 echo
 echo "$cincuenta The first option"
 echo ""
@@ -2069,7 +2039,7 @@ echo "  show-config: Show one config.cfg"
 echo "rename-config: Rename one configuration file"
 echo "   del-config: Delete one configuration file"
 echo
-echo "$cinco         [List open sockets]"
+echo "$cinco         [List sockets]"
 echo
 echo "      iproute: Show net devices and ip route tables"
 echo "           ss: Show net sockets with command ss"
@@ -2111,15 +2081,20 @@ echo "      upgrade: Upgrade $fiptables at the latest version"
 echo " dev-versions: Version in development from $fiptables"
 echo " all-versions: All versions from $fiptables"
 echo
+echo "$cinco         [Attend]"
+echo
+echo "  system-info: Show info system"
+echo "       wizard: Asistant y launch complete server"
+echo "  mini-wizard: Asistant y Launch simple client"
+echo "          cli: Comand line interface with menus"
+echo "          gui: Graphicall user interface"
+echo ""
 echo "$cinco         [Help]"
 echo
 echo "        about: About the $fiptables"
-echo "  system-info: Show info  system"
+echo "      depends: Show depends for $fiptables"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
-echo "  mini-wizard: Wizard and Launch simple client iptables"
-echo "          cli: Comand line interface with menus"
-echo "          gui: Graphicall user interface"
 echo ""
 echo "$cincuenta The second option: (optional)"
 echo ""
@@ -2173,37 +2148,28 @@ exit; fi
 ############################       english: ayuda: the help option in spanish
 ############################       spanish: ayuda: la opcion de ayuda en español
 if [ "$first_option" = "ayuda" ]; then echo
-echo
-echo "$fprogram version $fversion "
-echo "$cincuenta Ayuda $cinco"
-echo
-echo
-echo "$cinco   Una primera opcion "
-echo "     [Launch rules]     eraserules offline client server allpermisive wizard"
-echo "     [List rules]       list forward list6 forward6 nat-ip4 nat-ip6"
-echo "                        listnum forwardnum listnum6 forwardnum6"
-echo "     [Other table]      raw-ip4 raw-ip6 mangle-ip4 mangle-ip6"
-echo "                        security-ip4 security-ip6 ebtables arptables"
-echo "     [Modify config]    reconfig show-config new-config nueva-config"
-echo "                        modify-config clone-config rename-config del-config"
-echo "     [List sockets]     route ss netstat lsof ipforwading tcpdump arp"
-echo "     [Recover fw]       fw-list fw-save fw-restore"
-echo "     [Auth sudo]        auth-sudo remove-sudo list-sudo"
-echo "     [Tool icmp]        ping-ip4 ping-ip6"
-echo "     [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip"
-echo "     [Version]          version upgrade dev-versions all-versions"
-echo "     [Help]             about system-info help ayuda mini-wizard cli gui"
-echo ""
-echo "$cinco   Las configs estan en $directory_config/[config.cfg]"
-echo "[Example:]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "[Own:]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
-echo "$cinco   [Los ejemplos]"
-echo
-echo "  [Lista iptables reglas]               $fiptables list  "
-echo "  [Lanza iptables coomo cliente web]    $fiptables client web-example1.cfg"
-echo "  [Borra las reglas de iptables]        $fiptables eraserules "
-echo "  [Muestra larga ayuda en ingles]       $fiptables help "
-echo "  [Muestra larga ayuda en español]      $fiptables ayuda "
+echo "$fprogram version $fversion"
+echo "$cincuenta   Wellcome $fiptables $cinco"
+echo "( )[Launch rules]     eraserules offline client server allpermisive        "
+echo "( )[List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
+echo "                      listnum forwardnum listnum6 forwardnum6              "
+echo "( )[Modify config]    reconfig show-config new-config nueva-config         "
+echo "                      modify-config clone-config rename-config del-config  "
+echo "( )[List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
+echo "( )[Recover fw]       fw-list fw-save fw-restore                           "
+echo "( )[Auth sudo]        auth-sudo remove-sudo list-sudo                      "
+echo "( )[Tool icmp]        ping-ip4 ping-ip6                                    "
+echo "( )[Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip             "
+echo "( )[Version]          version upgrade dev-versions all-versions            "
+echo "( )[Attend]           system-info wizard mini-wizard cli gui               "
+echo "( )[Help]             about depends help ayuda                             "
+echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
+echo "( )[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "( )[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo "$cinco  [The examples]  $cinco"
+echo "( )[Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
+echo "( )[Launch client with myown.cfg]     $fiptables client myown.cfg          "
+echo "( )[List iptables rules]              $fiptables list                      "
 echo
 echo
 echo "$cincuenta La primera opción:"
@@ -2296,15 +2262,20 @@ echo "      upgrade: Actualiza $fiptables a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
 echo " all-versions: Todas las versiones de $fiptables"
 echo
-echo "$cinco         [Ayuda]"
+echo "$cinco         [Asistencia]"
 echo
-echo "        About: Acerca de $fiptables"
 echo "  system-info: Muestra la informacion del sistema"
-echo "         help: Muestra la ayuda en ingles"
-echo "        ayuda: Muestra la ayuda en español"
+echo "       wizard: Asistente y lanza completo servidor iptables"
 echo "  mini-wizard: Asistente y lanza simple cliente iptables"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
+echo
+echo "$cinco         [Ayuda]"
+echo
+echo "        About: Acerca de $fiptables"
+echo "      Depends: Muestra las dependencias de $fiptables"
+echo "         help: Muestra la ayuda en ingles"
+echo "        ayuda: Muestra la ayuda en español"
 echo
 echo "$cincuenta La segunda opcion (opcional)"
 echo ""
@@ -2666,37 +2637,41 @@ if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid excepcional"; el
 if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; else echo "  Allow output gid excepcional: $output_uid , and input established "; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more"; else echo "  Allow other protocol ip: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
-#auto generate iptables save
+# auto save iptables save
+case $autosave_fwrecover in 
+$NULL)
 iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
 iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
 ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
 ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
-$fiptables list
+echo "autosave fwrecover created $first_option-$second_option with legacy and nft. See $fiptables fw-list"
+;;
+esac
 exit; fi
 ############################       english: default: The default option, the help option for default
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo "[ ]    [Launch rules]     eraserules offline client server allpermisive        "
-echo "[ ]    [List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
-echo "[ ]                       listnum forwardnum listnum6 forwardnum6              "
-echo "[ ]    [Modify config]    reconfig show-config new-config nueva-config         "
-echo "[ ]                       modify-config clone-config rename-config del-config  "
-echo "[ ]    [List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
-echo "[ ]    [Recover fw]       fw-list fw-save fw-restore                           "
-echo "[ ]    [Auth sudo]        auth-sudo remove-sudo list-sudo                      "
-echo "[ ]    [Tool icmp]        ping-ip4 ping-ip6                                    "
-echo "[ ]    [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip             "
-echo "[ ]    [Version]          version upgrade dev-versions all-versions            "
-echo "[ ]    [Attend]           system-info wizard mini-wizard cli gui               "
-echo "[ ]    [Help]             about depends help ayuda                             "
+echo " [Launch rules]     eraserules offline client server allpermisive        "
+echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
+echo "                    listnum forwardnum listnum6 forwardnum6            "
+echo " [Modify config]    reconfig show-config new-config nueva-config         "
+echo "                    modify-config clone-config rename-config del-config"
+echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
+echo " [Recover fw]       fw-list fw-save fw-restore                           "
+echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                      "
+echo " [Tool icmp]        ping-ip4 ping-ip6                                    "
+echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip             "
+echo " [Version]          version upgrade dev-versions all-versions            "
+echo " [Attend]           system-info wizard mini-wizard cli gui               "
+echo " [Help]             about depends help ayuda                             "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-echo "[ ] [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "[ ] [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo "[ ]    [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
-echo "[ ]    [Launch client with myown.cfg]     $fiptables client myown.cfg          "
-echo "[ ]    [List iptables rules]              $fiptables list                      "
+echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
+echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
+echo " [List iptables rules]              $fiptables list                      "
 # left script
 #######################         english: End of script
 #######################         spanish: fin del script
