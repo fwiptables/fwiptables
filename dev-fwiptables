@@ -29,7 +29,7 @@ fdescription="One Script in bash for iptables firewall"           #english: prog
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="202" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall  #spanish: ruta de firewall guardado
-autosave_fwrecover=""                                             #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
+autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
 flinea="-95" ;                                                    #english: number line #spanish:linea de variables
@@ -93,7 +93,7 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 ##
-## if This is the line number 90 to then up .. flinea="-number" .
+## if This is the line number 95 to then up .. flinea="-number" .
 ##
 ##
 ##
@@ -1575,7 +1575,6 @@ exit; fi
 ############################       english: del-config: delete a old config
 ############################       spanish: del-config: elimina una vieja configuracion
 if [ "$first_option" = "del-config" ]; then echo -n
-echo
 case "$config_option" in
 "si")
 rm "$directory_config/$second_option"
@@ -1584,21 +1583,16 @@ echo "$directory_config/$second_option" deleted
 "no")
 echo "$fprogram version $fversion"
 echo "$cincuenta  Delete config $cinco"
-echo
 echo $cinco "  The configs are in folder $directory_config : "
-echo
 ls $directory_config | fmt $flistado
-echo
 echo        "     The files are in path $directory_config"
 echo        "     Or Control+c to stop"
-echo
 echo "$cinco"
 read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada
 fborradaa=$(sed 's/\///g' <<< "$fborrada")
-echo
 rm $directory_config/$fborradaa
 echo        "     Config deleted: $fborrada"
-echo ;;
+;;
 esac
 exit; fi
 ############################       english: auth-sudo: the auth-sudo option en english
@@ -1642,21 +1636,19 @@ exit; fi
 ############################       english: list-sudo: the auth-sudo option en english
 ############################       spanish: list-sudo: la opcion de auth-sudo en ingles
 if [ "$first_option" = "list-sudo" ]; then echo
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta Auth-sudo $cinco"
-echo
 case $(find /etc/sudoers.d/$fiptables) in
 /etc/sudoers.d/$fiptables)
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
-echo
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
 ;;
 *)
 echo "There is not auth users for $fiptables"
-echo -n ;;
+echo -n 
+;;
 esac
 exit; fi
 ############################       english: ipforwading: the ipforwading option en english
@@ -1685,9 +1677,16 @@ exit; fi
 ############################       english: arp: listen at dump from conexiones
 ############################       spanish: arp: escucha al volcado de conexiones
 if [ "$first_option" = "arp" ]; then echo -n
+case $which_arp in
+"$NULL")
+echo "install arp"
+;;
+*)
 echo "$fprogram version $fversion"
 echo "$cincuenta  the last arp conections"
 $which_arp -a
+;;
+esac
 exit; fi
 ############################       english: fw-list: file list whith rules in iptables format
 ############################       spanish: fw-list: lista de archivos con reglas en formato iptables
@@ -1791,7 +1790,6 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
-#read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -1814,7 +1812,6 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta  traceroute tcp ipv6 $cinco"
-# read -r -p "#####    Type the host to do traceroute: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -1837,7 +1834,6 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta resolve host $cinco"
-# read -r -p "#####    Type the host to do resolve host: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -1849,7 +1845,7 @@ exit; fi
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
 if [ "$first_option" = "resolveip" ]; then echo -n
-case $(which resolveip) in
+case $which_resolveip in
 "$NULL")
 echo " Install resolveip"
 ;;
@@ -1860,14 +1856,13 @@ case "$second_option" in
 "$NULL")
 echo "$fprogram version $fversion"
 echo "$cincuenta resolve ip or host $cinco"
-# read -r -p "#####    Type the host to do resolve ip or host: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
 trazador="$second_option"
 ;;
 esac
-resolveip $trazador
+which_resolveip $trazador
 exit; fi
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
@@ -1895,26 +1890,23 @@ exit; fi
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
 if [ "$first_option" = "dev-versions" ]; then echo -n
-echo ""
 echo "  $fprogram"
 echo "$cincuenta Dev versions $cinco"
-echo ""
 echo $fweb_development
-echo ""
 exit; fi
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
 if [ "$first_option" = "new-versions" ]; then echo -n
 echo "$fprogram"
 echo "$cincuenta New versions $cinco"
-links -dump $fweb_newfiles | egrep -i "iptables"
+$which_text_browser -dump $fweb_newfiles | egrep -i "iptables"
 exit; fi
 ############################       english: all-versions: about of program
 ############################       spanish: all-versions: acerca del programa
 if [ "$first_option" = "all-versions" ]; then echo -n
 echo "$fprogram"
 echo "$cincuenta All versions $cinco"
-links -dump $fweb_tree | grep -i root | sed 's/root//g' | cut -c -40 | sort | uniq -u
+$which_text_browser -dump $fweb_tree | grep -i root | sed 's/root//g' | cut -c -40 | sort | uniq -u
 exit; fi
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
@@ -1964,22 +1956,14 @@ exit; fi
 ############################       english: system-info: get info system
 ############################       spanish: system-info: da informacion del sistema
 if [ "$first_option" = "system-info" ]; then echo -n
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta   System info $cinco"
-echo
 echo "$cinco [System info:  Kernel Linux] $cinco"
-echo
 uname -a
-echo
 echo "$cinco [System info:  Memory RAM] $cinco"
-echo
 free -h
-echo
 echo "$cinco [System info:  Disks] $cinco"
-echo
 df -h -x tmpfs
-echo
 exit; fi
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
