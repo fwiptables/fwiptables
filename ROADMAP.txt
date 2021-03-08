@@ -50,10 +50,10 @@ gui - comprobar - ok 198
 arptables - añade la opcion - ok 199
 fwiptables - variables de iptables legacy y nft - ok 200
 ejecutables - autorecoger las rutas de los ejecutables y poner los programas con variables - ok 201
-upgrade - corregir - ok 202
-web-upgrade - corregir - ok 202
+upgrade - corregir - ok 201
+web-upgrade - corregir - ok 201
+ayuda - añadir - 201
+help - añadir - 201
 cli - corregir -
 gui - corregir -
-ayuda - añadir - 202
-help - añadir - 202
 
