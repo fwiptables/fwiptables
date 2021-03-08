@@ -203,14 +203,15 @@ which_mousepad="$(which mousepad | cut -d " " -f 1)"
 which_gedit="$(which gedit | cut -d " " -f 1)"
 which_lynx="$(which lynx | cut -d " " -f 1)"
 which_links="$(which links | cut -d " " -f 1)"
+which_elinks="$(which elinks | cut -d " " -f 1)"
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
 ##############################      spanish: busca preferido navegador: favorite browser   #####################
 ####
 favorite_text_browser=""
-if [ "$which_links" = "$NULL" ]  ; then echo -n ; else favorite_text_browser=$which_links   ; fi
-if [ "$which_lynx" = "$NULL" ]   ; then echo -n ; else favorite_text_browser=$which_lynx    ; fi
+if [ "$which_links" = "$NULL" ]    ; then echo -n ; else favorite_text_browser=$which_links     ; fi
+if [ "$which_elinks" = "$NULL" ]   ; then echo -n ; else favorite_text_browser=$which_elinks    ; fi
 ####
 ##############################      english: search favorite text editor: favorite text editor            #####################
 ##############################      spanish: busca preferido editor de texto: preferido editor de texto   #####################
@@ -255,7 +256,7 @@ echo "dialog:    $which_dialog"
 echo "$cinco $fiptables gui"
 echo "zenity:    $which_zenity"
 echo "$cinco $fiptables text browser"
-echo "one: links or lynx"
+echo "one: links or elinks"
 echo "auto text browser                $favorite_text_browser"
 echo "$cinco $fiptables editor"
 echo "one: vi, vim, tilde, editor, nano"
@@ -1008,11 +1009,10 @@ if [ "$first_option" = "web-upgrade" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Web upgrade $fprogram"
 echo "Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command"
-flinks=$(which links)
 echo "Downloading $fiptables with the comand $favorite_text_browser browser"
 echo "Waiting several seconds ..."
-$favorite_text_browser -dump "$fweb_newfiles" | grep -i "download latest version"  &&
-$favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables" &&
+$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+$favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables" 
 chmod ugo+x /tmp/$fiptables
 /tmp/$fiptables
 echo "$fprogram is upgraded: ok"
@@ -1025,10 +1025,9 @@ exit ; fi
 if [ "$first_option" = "upgrade" ]; then  echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Upgrade"
-echo "The actually version is:" 
-echo "$fprogram has the version $fiptables $fversion actually" 
-echo "The latest version is:" 
-$favorite_text_browser -dump $fweb_newfiles  | grep -i "download latest version"  
+echo "The actually version is: $fiptables $fversion actually" 
+echo "  The latest version is:"
+$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 echo "$cinco"
 echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
 echo "$cinco    download manually   || or launch ||   $0 web-upgrade"
@@ -2676,26 +2675,26 @@ exit; fi
 ############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo "[ ]    [Launch rules]     eraserules offline client server allpermisive        "
-echo "[ ]    [List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
-echo "[ ]                       listnum forwardnum listnum6 forwardnum6              "
-echo "[ ]    [Modify config]    reconfig show-config new-config nueva-config         "
-echo "[ ]                       modify-config clone-config rename-config del-config  "
-echo "[ ]    [List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
-echo "[ ]    [Recover fw]       fw-list fw-save fw-restore                           "
-echo "[ ]    [Auth sudo]        auth-sudo remove-sudo list-sudo                      "
-echo "[ ]    [Tool icmp]        ping-ip4 ping-ip6                                    "
-echo "[ ]    [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip             "
-echo "[ ]    [Version]          version upgrade dev-versions all-versions            "
-echo "[ ]    [Attend]           system-info wizard mini-wizard cli gui               "
-echo "[ ]    [Help]             about depends help ayuda                             "
+echo "(]    [Launch rules]     eraserules offline client server allpermisive        "
+echo "(]    [List rules]       list forward list6 forward6 nat-ip4 nat-ip6          "
+echo "(]                       listnum forwardnum listnum6 forwardnum6              "
+echo "(]    [Modify config]    reconfig show-config new-config nueva-config         "
+echo "(]                       modify-config clone-config rename-config del-config  "
+echo "(]    [List sockets]     route ss netstat lsof ipforwading tcpdump arp        "
+echo "(]    [Recover fw]       fw-list fw-save fw-restore                           "
+echo "(]    [Auth sudo]        auth-sudo remove-sudo list-sudo                      "
+echo "(]    [Tool icmp]        ping-ip4 ping-ip6                                    "
+echo "(]    [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip             "
+echo "(]    [Version]          version upgrade dev-versions all-versions            "
+echo "(]    [Attend]           system-info wizard mini-wizard cli gui               "
+echo "(]    [Help]             about depends help ayuda                             "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-echo "[ ] [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "[ ] [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo "(] [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "(] [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo "[ ]    [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
-echo "[ ]    [Launch client with myown.cfg]     $fiptables client myown.cfg          "
-echo "[ ]    [List iptables rules]              $fiptables list                      "
+echo "(]    [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
+echo "(]    [Launch client with myown.cfg]     $fiptables client myown.cfg          "
+echo "(]    [List iptables rules]              $fiptables list                      "
 # left script
 #######################         english: End of script
 #######################         spanish: fin del script
