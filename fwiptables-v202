@@ -1520,7 +1520,6 @@ exit; fi
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 if [ "$first_option" = "modify-config" ]; then echo -n
-echo
 case "$config_option" in
 "si")
 $favorite_text_editor "$directory_config/$second_option"
@@ -1528,26 +1527,13 @@ $favorite_text_editor "$directory_config/$second_option"
 "no")
 echo "$fprogram version $fversion"
 echo "$cincuenta Modify config $cinco"
-echo
-echo "$cinco   The configs are in folder $directory_config : "
-echo
-ls $directory_config | fmt $flistado
-echo
-echo "     Type the filename for a old configuration wich will be in path $directory_config"
-echo "     Or Control+c to stop"
-echo "$cinco"
-read -r -p  "     Type the name of one config file to modify, whitout path: [ Config-To-Modify.cfg ] " frespuestaa
-frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
-$favorite_text_editor $directory_config/$frespuestab 
-echo "  $cinco        Launch the firewall for client:           $fiptables client $frespuestab   " ;
-echo "  $cinco        launch the firewall for server:           $fiptables server $frespuestab   " ;
+echo "$cinco Use: $fiptables modify-config config-existent"
 ;;
 esac
 exit; fi
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
 if [ "$first_option" = "show-config" ]; then echo -n
-echo
 case "$config_option" in
 "si")
 cat "$directory_config/$second_option"
@@ -1555,21 +1541,7 @@ cat "$directory_config/$second_option"
 "no")
 echo "$fprogram  version $fversion"
 echo "$cincuenta Show config $cinco"
-echo
-echo "$cinco   The configs are in folder $directory_config : "
-echo
-ls $directory_config | fmt $flistado
-echo
-echo "     Type the filename to show configuration wich will be in path $directory_config"
-echo "     Or Control+c to stop"
-echo "$cinco"
-read -r -p  "     Type the name of one config file to show, whitout path: [ Config-To-Show.cfg ] " frespuestaa
-frespuestab=$(sed 's/\///g' <<< "$frespuestaa")
-echo "     $cinco     file: $directory_config/$frespuestab" ;
-cat $directory_config/$frespuestab ;
-echo
-echo "  $cinco        Launch the firewall for client:            $fiptables client $frespuestab   " ;
-echo "  $cinco        launch the firewall for server:            $fiptables server $frespuestab   " ;
+echo "$cinco Use: $fiptables show-config config-existent"
 esac
 exit; fi
 ############################       english: del-config: delete a old config
@@ -1582,16 +1554,19 @@ echo "$directory_config/$second_option" deleted
 ;;
 "no")
 echo "$fprogram version $fversion"
-echo "$cincuenta  Delete config $cinco"
-echo $cinco "  The configs are in folder $directory_config : "
-ls $directory_config | fmt $flistado
-echo        "     The files are in path $directory_config"
-echo        "     Or Control+c to stop"
-echo "$cinco"
-read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada
-fborradaa=$(sed 's/\///g' <<< "$fborrada")
-rm $directory_config/$fborradaa
-echo        "     Config deleted: $fborrada"
+echo "$cincuenta"
+echo "$cinco Use: $fiptables del-config config-existent"
+#echo "$fprogram version $fversion"
+#echo "$cincuenta  Delete config $cinco"
+#echo $cinco "  The configs are in folder $directory_config : "
+#ls $directory_config | fmt $flistado
+#echo        "     The files are in path $directory_config"
+#echo        "     Or Control+c to stop"
+#echo "$cinco"
+#read -r -p  "     Type the name of one old config to delete, whitout path: [ Config-To-Delete.cfg ] " fborrada
+#fborradaa=$(sed 's/\///g' <<< "$fborrada")
+#rm $directory_config/$fborradaa
+#echo        "     Config deleted: $fborrada"
 ;;
 esac
 exit; fi
