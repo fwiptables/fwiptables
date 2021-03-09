@@ -54,6 +54,6 @@ upgrade - corregir - ok 201
 web-upgrade - corregir - ok 201
 ayuda - añadir - 201
 help - añadir - 201
+linea de comando - no pregunta, recoge $3 o directamente indica que se ponga un $3 -
 cli - corregir -
 gui - corregir -
-

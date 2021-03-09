@@ -1597,18 +1597,13 @@ esac
 exit; fi
 ############################       english: auth-sudo: the auth-sudo option en english
 ############################       spanish: auth-sudo: la opcion de auth-sudo en ingles
-if [ "$first_option" = "auth-sudo" ]; then echo
+if [ "$first_option" = "auth-sudo" ]; then echo -n
 case $second_option in
 "$NULL")
 echo "$fprogram version $fversion"
-echo "$cincuenta Auth-sudo $cinco"
-echo
-echo "$cinco    Auth for sudo to users: "
-echo "$cinco    Auth for sudo at the users choosed "
-echo "$cinco                                              Example:      user1,user2 "
-echo "$cinco    The users authorizated will launch without passwd:      sudo $fiptables "
-echo "     Control+c to stop"
-read -r -p "#####    [Type the user/uesrs to auth in $fiptables :    ] " autorizados
+echo "$cincuenta auth-sudo"
+echo "$cinco Use: $fiptables auth-sudo user"
+exit
 ;;
 *)
 autorizados="$second_option"
@@ -1619,6 +1614,7 @@ echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
 echo "$cinco $cinco"
 echo "$cinco    Ok. $autorizados will use:     $fiptables"
 echo "$cinco    Ok. $fiptables will use alias with sudo "
+echo "$cinco $cinco"
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
@@ -1626,7 +1622,7 @@ cat /etc/bash_completion.d/$fiptables
 exit; fi
 ############################       english: remove-sudo: the remove-sudo option en english
 ############################       spanish: remove-sudo: la opcion de remove-sudo en ingles
-if [ "$first_option" = "remove-sudo" ]; then echo
+if [ "$first_option" = "remove-sudo" ]; then echo -n
 rm /etc/sudoers.d/$fiptables
 rm /etc/bash_completion.d/$fiptables
 echo "$cinco deleted auth sudo"
@@ -1635,7 +1631,7 @@ echo "deleted /etc/bash_completion.d/$fiptables"
 exit; fi
 ############################       english: list-sudo: the auth-sudo option en english
 ############################       spanish: list-sudo: la opcion de auth-sudo en ingles
-if [ "$first_option" = "list-sudo" ]; then echo
+if [ "$first_option" = "list-sudo" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Auth-sudo $cinco"
 case $(find /etc/sudoers.d/$fiptables) in
@@ -1699,10 +1695,9 @@ exit; fi
 ############################       spanish: fw-restore: carga las reglas en formato iptables
 if [ "$first_option" = "fw-restore" ]; then echo -n
 echo "$cincuenta iptables restore $cinco"
-echo "Load the rules in iptables format in folder $directory_fwrecover"
 echo "$cinco first erase rules with:   fwiptables eraserules"
-echo "$cinco the iptables recover files are in folder $directory_fwrecover"
-echo "$cinco then iptables restore with one command from above:"
+echo "the iptables recover files are in folder $directory_fwrecover"
+echo "then iptables restore with one command from above:"
 echo "with ipv4 neftables (nft)  :    iptables-nft-restore"
 echo "with ipv4 xtables (legacy) :    iptables-legacy-restore"
 echo "with ipv6 neftables (nft)  :    ip6tables-nft-restore"
@@ -1714,13 +1709,8 @@ if [ "$first_option" = "fw-save" ]; then echo -n
 echo "$cincuenta iptables save $cinco"
 case "$second_option" in
 "$NULL")
-# ls $directory_fwrecover
-# echo "Save the rules in iptables format in folder $directory_fwrecover"
 echo "$cinco Use in the command line: $fiptables fw-save file-to-save"
 exit
-# echo        "     Control+c to stop"
-# read -r -p  "     Type the name of file to save firewall: [ file ] " archivoini
-# archivofin=$(sed 's/\///g' <<< "$archivoini")
 ;;
 *)
 archivofin=$(sed 's/\///g' <<< "$second_option")
