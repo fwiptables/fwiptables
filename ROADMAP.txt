@@ -56,5 +56,7 @@ ayuda - añadir - 201
 help - añadir - 201
 linea de comando - no pregunta, recoge variables - 202
 limpieza de codigo - 202
+eliminar clone-config - 202
+eliminar rename-config - 202
 cli - corregir -
 gui - corregir - 202
