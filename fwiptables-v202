@@ -303,6 +303,66 @@ $favorite_text_editor "$directory_config/wizard.cfg"
 $fiptables server wizard.cfg
 $fiptables list
 exit; fi
+##############################       english: gui: Manage list rules with one menu graphicall
+##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
+if [ "$first_option" = "gui" ]; then echo -n
+case "$which_zenity" in
+"$NULL")
+echo " Install zenity to work"
+exit
+;;
+else)
+;;
+esac
+#### principal gui      ####
+titulo="$fiptables gui"
+untexto="$fiptables gui"
+cd $directory_config
+menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables)" --add-entry="$fiptables" )
+case $? in 
+1)
+zenity --info --ellipsize --text="fwiptables good bye"
+exit
+;;
+esac
+#### manage some configs ####
+case $menugtk in
+# new-config and nueva-config
+new-config)
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+nueva-config)
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+new-config*)
+unarchivo=$(echo $menugtk | cut -d " " -f 2)
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$unarchivo"
+$favorite_graphicall_editor "$directory_config/$unarchivo"
+;;
+nueva-config*)
+unarchivo=$(echo $menugtk | cut -d " " -f 2)
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$unarchivo"
+$favorite_graphicall_editor "$directory_config/$unarchivo"
+;;
+# wizard and mini wizard
+wizard*)
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
+$favorite_graphicall_editor "$directory_config/wizard.cfg"
+zenity --info --ellipsize --text="ok $(fwiptables client wizard.cfg)"
+;;
+mini-wizard*)
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
+$favorite_graphicall_editor "$directory_config/mini-wizard.cfg"
+zenity --info --ellipsize --text="ok $(fwiptables client mini-wizard.cfg)"
+;;
+# all
+*)
+zenity --info --ellipsize --text="$($fiptables $menugtk)"
+;;
+esac
+zenity --info --ellipsize --text="press [ok] to continue with the $fiptables gui"
+$fiptables gui
+exit ; fi
 ##############################       english: cli: Manage list rules with one text menu
 ##############################       spanish: cli: Maneja lista de reglas con un menu de texto
 if [ "$first_option" = "cli" ]; then echo -n
@@ -659,220 +719,6 @@ clear
  exit; fi
 ####
 ####
-##############################       english: gui: Manage list rules with one menu graphicall
-##############################       spanish: gui: Maneja lista de reglas con un menu graphicall
-if [ "$first_option" = "gui" ]; then echo -n
-case "$which_zenity" in
-"$NULL")
-echo " Install zenity to work"
-exit
-;;
-else)
-;;
-esac
-#### principal gui      ####
-titulo="$fiptables gui"
-untexto="$fiptables gui"
-cd $directory_config
-menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables)" --add-entry="$fiptables" )
-case $? in 
-1)
-zenity --info --ellipsize --text="fwiptables good bye"
-exit
-;;
-esac
-#### manage some configs ####
-case $menugtk in
-#### launch rules        ####
-eraserules*)
-zenity --info --ellipsize --text="$($fiptables eraserules)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-offline*)
-zenity --info --ellipsize --text="$($fiptables offline)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-client)
-untexto="Type the config file, example: default.cfg"
-unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="$($fiptables client $unaconfig)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-client*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-server)
-untexto="Type the config file, example: default.cfg"
-unaconfig="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="$($fiptables server $unaconfig)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-server*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-allpermisive*)
-zenity --info --ellipsize --text="$($fiptables allpermisive)"
-zenity --info --ellipsize --text="ok $($fiptables list)"
-;;
-wizard*)
-head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
-zenity --info --ellipsize --text="ok $($favorite_graphicall_editor $directory_config/wizard.cfg)"
-zenity --info --ellipsize --text="ok $(fwiptables server wizard.cfg)"
-;;
-#### modify configs      ####
-reconfig*)
-untexto="$($fiptables reconfig)"
-zenity --info --ellipsize --text="ok $untexto"
-;;
-show-config*)
-untexto="Type the config file to show"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="$(cat "$(echo $unarchivo| sed 's/\///g')")"
-;;
-rename-config*)
-untexto="Type the config to rename with: oldname.cfg newname.cfg"
-unarchivo="$(zenity --entry --text="mv $untexto")"
-zenity --info --ellipsize --text="Renamed config: $(echo $unarchivo| sed 's/\///g') $(mv $(echo $unarchivo | sed 's/\///g'))"
-;;
-clone-config*)
-untexto="Type the config to clone with: oldname.cfg newname.cfg"
-unarchivo="$(zenity --entry --text="mv $untexto")"
-zenity --info --ellipsize --text="Cloned config: $(echo $unarchivo| sed 's/\///g') $(cp $(echo $unarchivo | sed 's/\///g'))"
-;;
-del-config*)
-untexto="Type the config to delete"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="Deleted config: $(echo $unarchivo| sed 's/\///g') $(rm $(echo $unarchivo | sed 's/\///g'))"
-;;
-new-config*)
-untexto="Type the name of file to write a new config"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp english-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
-;;
-nueva-config*)
-untexto="Escribe el nombre de archivo de la nueva configuracion"
-unarchivo="$(zenity --entry --text="$untexto")"
-zenity --info --ellipsize --text="New config: $(echo $unarchivo | sed 's/\///g')  $(cp spanish-example1.cfg $(echo $unarchivo | sed 's/\///g'))"
-;;
-modify-config*)
-#untexto="Type the config file, example: config.cfg"
-unarchivo="$(zenity --entry --title="modify-config" --text="$(ls $directory_config)")"
-zenity --info --ellipsize --text="$($favorite_graphicall_editor $unarchivo)"
-;;
-#### options recover fw ####
-fw-list*)
-listado="$($fiptables fw-list)"
-zenity --info --ellipsize --text="ok $listado"
-;;
-fw-save*)
-untexto="type the filename to save firewall"
-archivoini="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-archivofin="$(echo "$archivoini" | sed 's/\///g')"
-$which_iptables_nft_save > $directory_fwrecover/$archivofin-nft-ipv4
-$which_iptables_legacy_save > $directory_fwrecover/$archivofin-legacy-ipv4
-$which_ip6tables_nft_save > $directory_fwrecover/$archivofin-nft-ipv6
-$which_ip6tables_legacy_save > $directory_fwrecover/$archivofin-legacy-ipv6
-zenity --info --ellipsize --text="ok $(echo saved $archivofin)"
-;;
-fw-restore*)
-listado="$($fiptables fw-restore)"
-zenity --info --ellipsize --text="ok $listado"
-;;
-#### options sudo  #####
-auth-sudo*)
-untexto="type the users to auth sudo, example: user1,user2 "
-usuario="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-echo "$usuario ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
-echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
-zenity --info --ellipsize --text="ok $( $fiptables list-sudo)"
-;;
-remove-sudo*)
-zenity --info --ellipsize --text="ok $($fiptables remove-sudo)"
-;;
-list-sudo*)
-untexto="$($fiptables list-sudo)"
-zenity --info --ellipsize --text="$untexto"
-;;
-#### tool icmp ####
-ping-ip4)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $($fiptables ping-ip4 $unahost)"
-;;
-ping-ip4*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-ping-ip6)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $($fiptables ping-ip6 $unahost)"
-;;
-ping-ip6*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-#### tool udp ####
-trace-ip4)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $($fiptables trace-ip4 $unahost)"
-;;
-trace-ip4*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-trace-ip6)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $($fiptables trace-ip6 $unahost)"
-;;
-ping-ip6*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-host)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $($fiptables host $unahost)"
-;;
-host*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-resolveip)
-untexto="Type the host or ip, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables resolveip $unahost)"
-;;
-resolveip*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-geoip)
-untexto="Type the host, example: fast.com"
-unahost="$(zenity --forms --title="$titulo" --text="$untexto" --add-entry="$untexto")"
-zenity --info --ellipsize --text="ok $( $fiptables geoip $unahost)"
-;;
-geoip*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-#### options help ####
-ayuda*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-help*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-mini-wizard*)
-head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
-zenity --info --ellipsize --text="ok $($which_graphicall_editor $directory_config/mini-wizard.cfg)"
-zenity --info --ellipsize --text="ok $(fwiptables client mini-wizard.cfg)"
-;;
-#### options several ####
-*)
-zenity --info --ellipsize --text="$($fiptables $menugtk)"
-;;
-esac
-zenity --info --ellipsize --text="press [ok] to continue with the $fiptables gui"
-$fiptables gui
-exit ; fi
 ##############################       english: version: system script, the version option
 ##############################       spanish: version: script de sistema, la opcion mostrar version
 if [ "$first_option" = "version" ]; then echo -n
@@ -1397,29 +1243,20 @@ config_option="si"
 esac
 case "$config_option" in
 "si")
-echo
 echo "$fprogram version $fversion"
-echo "$cincuenta New config $cinco"
-echo
-echo "     Type the filename for a one new configuration it will be in path $directory_config";
-echo "     Or control+c to stop"
-echo "$cinco"
-read -r -p "          Type one new filename without path [ New-Config.cfg ]:  " frespuestaa
-frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
+echo "$cincuenta Nueva config $cinco"
+echo "$cinco Use: $fiptables new-config config-no-existent"
+exit
 ;;
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-;;
-esac
-echo "  The new file will be $directory_config/$frespuestab"
-echo "  Edit the file $frespuestab"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
-
-echo "  $cinco        launch the firewall for client:           $fiptables client $frespuestab   "
-echo "  $cinco        launch the firewall for server:           $fiptables server $frespuestab   "
-exit; fi
+echo Created $frespuestab
+;;
+esac
+exit ; fi
 ############################       english: nueva-config: system script, the nueva-config option to create new configs
 ############################       spanish: nueva-config: script de sistema, la opcion nueva-config para cear nuevas config
 if [ "$first_option" = "nueva-config" ]; then echo -n
@@ -1430,93 +1267,21 @@ config_option="si"
 esac
 case "$config_option" in
 "si")
-echo
 echo "$fprogram version $fversion"
 echo "$cincuenta Nueva config $cinco"
-echo
-echo "     Escribe un nuevo nombre de archivo sin ruta"
-echo "     O control+c to parar"
-echo "$cinco"
-read -r -p "          Escribe un nuevo nombre de archivo sin ruta [ Nueva-Configuracion.cfg ]:  " frespuestaa
-frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
+echo "$cinco Use: $fiptables nueva-config config-no-existente"
+exit
 ;;
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-;;
-esac
-echo "  El nuevo archivo estara en $directory_config/$frespuestab" ;
-echo "  Edita el archivo $frespuestab "
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
-echo "  $cinco        lanza el cortafuegos para cliente:              $fiptables client $frespuestab   "
-echo "  $cinco        O lanza el cortafuegos para servidor:           $fiptables server $frespuestab   "
-exit; fi
-############################       english: clone-config, clone a one existent config.cfg
-############################       spanish: clone-config, clona una configuracion.cfg
-if [ "$first_option" = "clone-config" ]; then echo -n
-case $config_option in
-"no")
-echo
-echo "$fprogram version $fversion"
-echo "$cincuenta  Clone config $cinco"
-echo
-echo "$cinco   The configs are in folder $directory_config : "
-echo
-ls $directory_config | fmt $flistado
-echo
-echo "     Type the filename for a old configuration wich will be in path $directory_config"
-echo "     Or Control+c to stop"
-echo "$cinco"
-read -r -p  "     RENAME: Type the name of one old config to clone, whitout path: [ Config-Old-To-Clone.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
-echo        "     the old name is : $fviejab"
-echo "$cinco"
-read -r -p  "     RENAME: Type the name of one new config, whitout path: [ Config-New.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
-echo        "     the new name is : $nuevab"
-cp $directory_config/$fviejab $directory_config/$fnuevab
-;;
-"si")
-fviejab="$(echo $second_option | sed 's/\///g' )"
-fnuevab="$(echo $third_option | sed 's/\///g' )"
-cp $directory_config/$fviejab $directory_config/$fnuevab
+echo Created $frespuestab
 ;;
 esac
-echo  cloned $fviejab in $fnuevab
-echo "  $cinco        Launch the firewall for client:            $fiptables client $fnuevab   " ;
-echo "  $cinco        launch the firewall for server:            $fiptables server $fnuevab   " ;
-exit; fi
-############################       english: rename-config, rename a one existent config.cfg
-############################       spanish: rename-config, renombra una existente configuracion.cfg
-if [ "$first_option" = "rename-config" ]; then echo -n
-case $config_option in
-"no")
-echo "$fprogram version $fversion"
-echo "$cincuenta  Clone config $cinco"
-echo
-echo "$cinco   The configs are in folder $directory_config : "
-echo
-ls $directory_config | fmt $flistado
-echo
-echo "     Type the filename for a old configuration wich will be in path $directory_config"
-echo "     Or Control+c to stop"
-echo "$cinco"
-read -r -p  "     RENAME: Type the name of one old config to rename, whitout path: [ Config-Old-To-Rename.cfg ] " fvieja ; fviejab=$(sed 's/\///g' <<< "$fvieja")
-echo        "     the old name is : $fviejab"
-echo "$cinco"
-read -r -p  "     RENAME: Type the name of one new name of config, whitout path: [ Config-New.cfg ] " fnueva ; fnuevab=$(sed 's/\///g' <<< "$fnueva")
-echo        "     the new name is : $nuevab"
-mv $directory_config/$fviejab $directory_config/$fnuevab
-;;
-"si")
-fviejab="$(echo $second_option | sed 's/\///g' )"
-fnuevab="$(echo $third_option | sed 's/\///g' )"
-cp $directory_config/$fviejab $directory_config/$fnuevab
-;;
-esac
-echo  renamed $fviejab in $fnuevab
-echo "  $cinco        Launch the firewall for client:            $fiptables client $fnuevab   " ;
-echo "  $cinco        launch the firewall for server:            $fiptables server $fnuevab   " ;
-exit; fi
+exit ; fi
+
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 if [ "$first_option" = "modify-config" ]; then echo -n
@@ -2628,8 +2393,8 @@ echo "$cincuenta   Wellcome $fiptables $cinco"
 echo " [Launch rules]     eraserules offline client server allpermisive      "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        "
 echo "                    listnum forwardnum listnum6 forwardnum6            "
-echo " [Modify config]    reconfig show-config new-config nueva-config       "
-echo "                    modify-config clone-config rename-config del-config" 
+echo " [Modify config]    reconfig new-config nueva-config                   "
+echo "                    show-config modify-config del-config               " 
 echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp      "
 echo " [Recover fw]       fw-list fw-save fw-restore                         "
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                    "
