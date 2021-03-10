@@ -9,17 +9,17 @@
 ##   spanish: Los comentarios estan en ingles y en español
 ##
 ##
-##############################        example in english:   basic system variables
-##############################        ejemplo in spanish:   las basicas variables del sistema
+##############################        example in english: basic system variables
+##############################        ejemplo in spanish: las basicas variables del sistema
 ##
 ##  english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
 ##  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ##
-################################################   english:   basic system variables
-################################################   spanish:   las basicas variables del sistema
+################################################   english: basic system variables
+################################################   spanish: las basicas variables del sistema
 ####
 ####
-## #english: [the variables names and the path] #spanish: [nombres de variables y rutas]
+####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                          #english: variables at launch  #spanish: variables al lanzar
 third_option="$3" ; fourth_option="$4" ;                          #english: variables at launch  #spanish: variables al lanzar
 config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
@@ -32,16 +32,16 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
-flinea="-95" ;                                                    #english: number line #spanish:linea de variables
-fvariables="-37" ;                                                #english: custom variables to show #spanish: variables a modificar
+flinea="-100" ;                                                    #english: number line #spanish:linea de variables
+fvariables="-39" ;                                                #english: custom variables to show #spanish: variables a modificar
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
-#english: [download web link]  #spanish: [descarga del enlace web]
+####       #### english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
-#english: [Program license] #spanish: [Licencia del programa]
+####       #### english: [Program license] #spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
 ####
 ####
@@ -63,7 +63,9 @@ server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tc
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
 input_state="" ; #english: modify with void for all or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
-echo -n #english: Allow Other Options,  modify with void or no #spanish: Permitir Otras Opciones, modificar con vacio o no
+echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente 
+only_output=no ; #english: void, rules are only to output, or no #spanish: vacio, reglas solo para salida o no
+echo -n #english: Allow Other Options,  modify with void, or no #spanish: Permitir Otras Opciones, modificar con vacio o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
 allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
@@ -88,8 +90,10 @@ net_ipv6_client=::/0 ;  #english: the net to client ipv6, all is ::/0 #spanish: 
 net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: la red cual servidor ipv6, todos es ::/0
 ####
 ####
-##############################	     english:      End from user variables file, overwriter initial values       |||||
-##############################       spanish:      Fin de archivo de variables, sobre escribe valores iniciales  !!!!!
+##############################	     english: End from user variables file, overwriter initial values       ##############################
+##############################       spanish: Fin de archivo de variables, sobre escribe valores iniciales  ##############################
+####
+####
 ##
 ##
 ##
@@ -98,6 +102,8 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 ##
+####
+####
 ##############################       english: are you root: uid 0 ?
 ##############################       spanish: eres admnistrador (identificador 0) ?;
 ####
@@ -467,9 +473,7 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   403 new-config \
   404 nueva-config \
   405 modify-config \
-  406 clone-config \
-  407 rename-config \
-  408 del-config \
+  406 del-config \
   00500 "Other tables"  \
   501 raw-ip4 \
   502 raw-ip6 \
@@ -489,7 +493,8 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   802 trace-ip6 \
   803 host \
   804 resolveip \
-  00900 "update"  \
+  805 geoip \
+  00900 "auth sudo"  \
   901 auth-sudo \
   902 remove-sudo \
   903 list-sudo \
@@ -497,14 +502,18 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   1001 version \
   1002 upgrade \
   1003 dev-versions \
-  01100 "Help" \
-  1101 about \
-  1102 help \
-  1103 ayuda \
-  1104 system-info \
-  1105 mini-wizard \
-  1106 cli \
-  1107 gui \
+  1004 all-versions \
+  01100 "Attend" \
+  1101 system-info \
+  1102 mini-wizard \
+  1103 wizard \
+  1104 cli \
+  1105 gui \
+  01200 "Help" \
+  1201 about \
+  1202 depends \
+  1203 help \
+  1204 ayuda \
   )"
 case $menuprincipal in
  0*)
@@ -622,23 +631,10 @@ case $menuprincipal in
  $fiptables modify-config $archivo
  ;;
  406)
- archivos="$(dialog --stdout --title "clone-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- clear
- # echo "$(cp $archivo)"
- $fiptables clone-config $archivos
- ;;
- 407)
- archivos="$(dialog --stdout --title "rename-config with: file1.cfg file2.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- clear
- # echo "$(mv $archivo)"
- $fiptables rename-config $archivos
- ;;
- 408)
  echo
  archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables del-config $archivo
- echo
  echo "deleted $archivo"
  ;;
  501)
@@ -684,37 +680,43 @@ clear
  clear
  resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
  clear
- ping -4 -c 5 -A $resolve
+ $fiptables ping-ip4 $resolve
  ;;
  702)
  clear
  resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
  clear
- ping -6 -c 5 -A $resolve
+ $fiptables ping-ip6 $resolve
  ;;
  801)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
  clear
- traceroute -4 -T $resolve
+ $fiptables trace-ip4 $resolve
  ;;
  802)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
  clear
- traceroute -6 -T $resolve
+ $fiptables trace-ip6 $resolve
  ;;
  803)
  clear
  resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear
- host $resolve
+ $fiptables host $resolve
  ;;
  804)
  clear
  resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
- resolveip $resolve
+ $fiptables resolveip $resolve
+ ;;
+ 805)
+ clear
+ resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ clear
+ $fiptables geoip $resolve
  ;;
  901)
  clear
@@ -742,33 +744,45 @@ clear
  clear
  $fiptables dev-versions
  ;;
+ 1004)
+ clear
+ $fiptables all-versions
+ ;;
  1101)
- clear
- $fiptables about
- ;;
- 1102)
- clear
- $fiptables help | less
- ;;
- 1103)
- clear
- $fiptables ayuda | less
- ;;
- 1104)
  clear
  $fiptables system-info
  ;;
- 1105)
+ 1102)
  clear
  $fiptables mini-wizard
  ;;
- 1106)
+ 1103)
+ clear
+ $fiptables wizard
+ ;;
+ 1104)
  clear
  $fiptables cli
  ;;
- 1107)
+ 1105)
  clear
  $fiptables gui
+ ;;
+ 1201)
+ clear
+ $fiptables about
+ ;;
+ 1202)
+ clear
+ $fiptables depends
+ ;;
+ 1203)
+ clear
+ $fiptables help | less
+ ;;
+ 1204)
+ clear
+ $fiptables ayuda | less
  ;;
  *)
  clear
@@ -1087,8 +1101,8 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list" ]; then echo -n ;
- legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1) &> /dev/null
- nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1) &> /dev/null
+ legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1) &> /dev/null
+ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
  echo "$fprogram version $fversion"
  echo "$cincuenta   List filter ipv4"
  case $legacycuatro in
@@ -1133,8 +1147,8 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list6" ]; then echo -n
-legacyseis=$("$which_ip6tables_legacy" -t filter -L INPUT 1)
-nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1)
+legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
+nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "  $fprogram version $fversion"
  echo "$cincuenta   List filter ipv6"
  case $legacyseis in
@@ -1207,8 +1221,8 @@ nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1)
 ####
 ####
 if [ "$first_option" = "listnum" ]; then echo -n ;
-legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1)
-nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1)
+legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
+nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo "  $fprogram version $fversion"
  echo "$cincuenta   List filter ipv4 numerical"
  case $legacycuatro in
@@ -1252,8 +1266,8 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "listnum6" ]; then echo -n
-legacyseis=$("$which_ip6tables_legacy" -t filter -L INPUT 1)
-nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1)
+legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
+nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "  $fprogram version $fversion" ;
  echo "$cincuenta   List filter ipv6 numerical"
  case $legacyseis in
@@ -1679,6 +1693,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ping-ip4" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta  ping icmp ipv4 $cinco"
 case $which_ping in
 "$NULL")
 echo " Install ping"
@@ -1688,8 +1704,6 @@ echo " Install ping"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta  ping icmp ipv4 $cinco"
 trazador="fast.com"
 ;;
 *)
@@ -1704,6 +1718,8 @@ exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta  ping-ip6 icmp ipv6 $cinco"
 case $which_ping in
 "$NULL")
 echo " Install ping"
@@ -1713,8 +1729,6 @@ echo " Install ping"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta  ping icmp ipv6 $cinco"
 trazador="fast.com"
 ;;
 *)
@@ -1731,6 +1745,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "trace-ip4" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta  traceroute tcp ipv4 $cinco"
 case $which_traceroute in
 "$NULL")
 echo " Install traceroute"
@@ -1740,8 +1756,6 @@ echo " Install traceroute"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta  traceroute tcp ipv4 $cinco"
 trazador="fast.com"
 ;;
 *)
@@ -1758,6 +1772,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "trace-ip6" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta  traceroute tcp ipv6 $cinco"
 case $which_traceroute in
 "$NULL")
 echo " Install traceroute"
@@ -1767,8 +1783,6 @@ echo " Install traceroute"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta  traceroute tcp ipv6 $cinco"
 trazador="fast.com"
 ;;
 *)
@@ -1785,6 +1799,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "host" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta resolve host $cinco"
 case $which_host in
 "$NULL")
 echo " Install host"
@@ -1794,8 +1810,6 @@ echo " Install host"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta resolve host $cinco"
 trazador="fast.com"
 ;;
 *)
@@ -1812,6 +1826,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "resolveip" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta resolve ip or host $cinco"
 case $which_resolveip in
 "$NULL")
 echo " Install resolveip"
@@ -1821,8 +1837,6 @@ echo " Install resolveip"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta resolve ip or host $cinco"
 trazador="fast.com"
 ;;
 *)
@@ -1839,6 +1853,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "geoip" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta search geoip $cinco"
 case $which_geoiplookup in
 "$NULL")
 echo " Install geoip-bin"
@@ -1848,9 +1864,6 @@ echo " Install geoip-bin"
 esac
 case "$second_option" in
 "$NULL")
-echo "$fprogram version $fversion"
-echo "$cincuenta search geoip $cinco"
-# read -r -p "#####    Type the host to do search geoip: [ fast.com   ] " trazador
 trazador="fast.com"
 ;;
 *)
@@ -2592,6 +2605,8 @@ $allow_nft $allow_forwading $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/nu
 ####
 ####
 #######################################       iptables ipv4 and ipv6 closed with drop input, and drop forward, and drop output rules
+####
+####
 #### ipv4 drop rules iptables-legacy
 $allow_legacy $which_iptables_legacy -A INPUT -j DROP &> /dev/null
 $allow_legacy $which_iptables_legacy -A OUTPUT -j DROP &> /dev/null
@@ -2608,6 +2623,26 @@ $allow_nft $which_iptables_nft -A FORWARD -j DROP &> /dev/null
 $allow_nft $which_ip6tables_nft -A INPUT -j DROP &> /dev/null
 $allow_nft $which_ip6tables_nft -A OUTPUT -j DROP &> /dev/null
 $allow_nft $which_ip6tables_nft -A FORWARD -j DROP &> /dev/null
+####
+####
+########################################       english: iptables ipv4 and ipv6 with variable only_output
+########################################       english: iptables ipv4 y ipv6 con variable only_output
+####
+####
+$only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
+$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
+$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
+$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
+$only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
+$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
+$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
+$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
+####
+####
 ########################################       english: when active rules
 ########################################       spanish: cuando activas las reglas
 ####
