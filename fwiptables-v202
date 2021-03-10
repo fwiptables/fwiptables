@@ -62,7 +62,7 @@ echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: 
 server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
-input_state="" ; #english: modify with void for all or -m state --state established,related #spanish: modificar con vacio o -m state --state established,related
+input_state="" ; #english: modify with void for all or -m state --state related,established #spanish: modificar con vacio o -m state --state related,established
 echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente 
 only_output=no ; #english: void, rules are only to output, or no #spanish: vacio, reglas solo para salida o no
 echo -n #english: Allow Other Options,  modify with void, or no #spanish: Permitir Otras Opciones, modificar con vacio o no
@@ -828,15 +828,16 @@ exit ; fi
 ####
 if [ "$first_option" = "reconfig" ]; then echo -n
 rm $directory_config/*ample1.cfg &> /dev/null
-echo
 echo "$cincuenta $fprogram version $fversion $cinco"
 echo "$cinco    Updating default configurations of examples:  $directory_config/*ample1.cfg "
-echo
-echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/english-example1.cfg"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/spanish-example1.cfg"
+####
+####
 #### config: web-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/web-example1.cfg
 echo "# config  #" >> $directory_config/web-example1.cfg
 echo "server_tcp=http,https ;"  >> $directory_config/web-example1.cfg
@@ -844,19 +845,37 @@ echo "client_tcp=http,https ;"  >>  $directory_config/web-example1.cfg
 echo "client_udp=domain,ntp,bootpc ;"  >>  $directory_config/web-example1.cfg
 echo "allow_ping_send=no ;" >> $directory_config/web-example1.cfg
 echo "allow_pring_recive=no ;" >> $directory_config/web-example1.cfg
+echo "only_output= ; " >> $directory_config/web-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/web-example1.cfg
+####
+####
 #### config:  games-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/games-example1.cfg
 echo "# config  #" >> $directory_config/games-example1.cfg
 echo "client_udp=domain,ntp,bootpc,1025:60000; " >> $directory_config/games-example1.cfg
 echo "client_tcp=http,https" >> $directory_config/games-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/games-example1.cfg
+echo "only_output= ; " >> $directory_config/games-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/games-example1.cfg
+####
+####
 #### config:  torrent-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/torrent-example1.cfg
 echo "# config  #" >> $directory_config/torrent-example1.cfg
 echo "client_udp=domain,ntp,bootpc,1025:60000; " >> $directory_config/torrent-example1.cfg
 echo "client_tcp=http,https" >> $directory_config/torrent-example1.cfg
 echo "allow_ping_send=no ;  allow_ping_recive=no ; "  >> $directory_config/torrent-example1.cfg
+echo "only_output= ; " >> $directory_config/torrent-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/torrent-example1.cfg
+####
+####
 #### config: samba-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/samba-example1.cfg
 echo "# config  #" >> $directory_config/samba-example1.cfg
 echo "client_udp=domain,ntp,bootpc,137:139 ; " >> $directory_config/samba-example1.cfg
@@ -864,34 +883,64 @@ echo "client_tcp=http,https,ipp,microsoft-ds" >> $directory_config/samba-example
 echo "server_udp=137:139 ; " >> $directory_config/samba-example1.cfg
 echo "server_tcp=ssh,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/samba-example1.cfg
-## config: vpn-sample1.cfg ##
+echo "only_output= ; " >> $directory_config/samba-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/samba-example1.cfg
+####
+####
+#### config: vpn-sample1.cfg ##
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/vpn-example1.cfg
 echo "# config  #" >> $directory_config/vpn-example1.cfg
 echo "allow_forwading= ; " >> $directory_config/vpn-example1.cfg
 echo "allow_vpn= ; " >> $directory_config/vpn-example1.cfg
 echo "vpn=wesnoth.org,sourceforge.net" >> $directory_config/vpn-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vpn-example1.cfg
+echo "only_output= ; " >> $directory_config/vpn-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/vpn-example1.cfg
+####
+####
 #### config: email-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/email-example1.cfg
 echo "# config  #" >> $directory_config/email-example1.cfg
 echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
 echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
 echo "allow_ping_send= ; " >> $directory_config/email-example1.cfg
 echo "allow_ping_recive= " >> $directory_config/email-example1.cfg
+echo "only_output= ; " >> $directory_config/email-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/email-example1.cfg
+####
+####
 #### config: ssh-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/ssh-example1.cfg
 echo "# config  #" >> $directory_config/ssh-example1.cfg
 echo "client_tcp=http,https,printer,ipp,ssh,rsync,git" >> $directory_config/ssh-example1.cfg
 echo "server_tcp=http,https,printer,ipp,ssh,rsync,git" >> $directory_config/ssh-example1.cfg
 echo "allow_ping_send= ; " >> $directory_config/ssh-example1.cfg
 echo "allow_ping_recive= ;" >> $directory_config/ssh-example1.cfg
+echo "only_output= ; " >> $directory_config/ssh-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/ssh-example1.cfg
+####
+####
 #### config: vnc-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/vnc-example1.cfg
 echo "# config  #" >> $directory_config/vnc-example1.cfg
 echo "client_tcp=http,https,ssh,5900:5910" >> $directory_config/vnc-example1.cfg
 echo "server_tcp=ssh,http,https,5900:5910" >> $directory_config/vnc-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vnc-example1.cfg
-## config: ftp-example1.cfg ##
+echo "only_output= ; " >> $directory_config/vnc-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/vnc-example1.cfg
+####
+####
+#### config: ftp-example1.cfg ##
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/ftp-example1.cfg
 echo "# config  #" >> $directory_config/ftp-example1.cfg
 echo "client_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
@@ -899,24 +948,46 @@ echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory
 echo "client_udp=domain,ntp,bootpc,tftp">> $directory_config/ftp-example1.cfg
 echo "server_udp=tftp">> $directory_config/ftp-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1.cfg
+echo "only_output= ; " >> $directory_config/ftp-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/ftp-example1.cfg
+####
+####
 #### config: printer-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/printer-example1.cfg
 echo "# config  #" >> $directory_config/printer-example1.cfg
 echo "client_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.cfg
 echo "server_tcp=ssh,http,https,ipp,printer" >> $directory_config/printer-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/printer-example1.cfg
+echo "only_output= ; " >> $directory_config/printer-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/printer-example1.cfg
+####
+####
 #### config: irc-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/irc-example1.cfg
 echo "# config  #" >> $directory_config/irc-example1.cfg
 echo "client_tcp=http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
 echo "server_tcp=ssh,http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
 echo "allow_ping_send=no ; allow_ping_recive=no ; "  >> $directory_config/irc-example1.cfg
+echo "only_output= ; " >> $directory_config/irc-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/irc-example1.cfg
+####
+####
 #### config: sql-example1.cfg ####
+####
+####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/sql-example1.cfg
 echo "# config  #" >> $directory_config/sql-example1.cfg
 echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
 echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/sql-example1.cfg
+echo "only_output= ; " >> $directory_config/sql-example1.cfg
+echo "input_state='-m state --state related,established' ; " >> $directory_config/sql-example1.cfg
+####
+####
 case $0 in
 "$directory_fiptables/$fiptables")
 echo -n
@@ -2376,11 +2447,19 @@ iptables_legacy="$allow_legacy"
 ####
 #### ipv4 erase rules
 $which_iptables_legacy -t filter -F
+####
+####
 #### ipv6 erase rules
 $which_ip6tables_legacy -t filter -F
+####
+####
 ########## english:  ipv4 filter legacy rules input and output ##### legacy ipv4
 ########## spanish:  reglas de ipv4 de entrada y salida
-### ipv4 filter legacy rules input
+####
+####
+#### ipv4 filter legacy rules input
+####
+####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
@@ -2397,7 +2476,11 @@ $allow_legacy  $allow_ipv4 $uid_gid $which_iptables_legacy -A INPUT -m state --s
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols $which_iptables_legacy -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
+####
+####
 #### ipv4 filter legacy rules output
+####
+####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
@@ -2415,8 +2498,12 @@ $allow_legacy  $allow_ipv4 $allow_output_gid $which_iptables_legacy -A OUTPUT -m
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols      $which_iptables_legacy -A OUTPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
+####
+####
 ########## ipv6 filter legacy rules input and output ##### legacy ipv6
 #### ipv6 filter legacy rules input
+####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
@@ -2434,7 +2521,11 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCE
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_others_protocols      $which_ip6tables_legacy -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
+####
+####
 #### ipv6 filter legacy rules output
+####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A OUTPUT -s $one_vpn -j ACCEPT &> /dev/null
@@ -2461,12 +2552,18 @@ done
 ####
 ######### english:  ipv4 filter nft rules erased
 ######### spanish:  borrardo de filtros nft ipv4
-#### ipv4 erase rules
+####
+####
+#### ipv4 erase filter rules
 $which_iptables_nft -t filter -F
-#### ipv6 erase rules
+#### ipv6 erase filter rules
 $which_ip6tables_nft -t filter -F
+####
+####
 ########## english:  ipv4 filter nft rules input and output  ##### nft ipv4
 ########## spanish:  reglas de ipv4 nft de entrada y salida
+####
+####
 #### ipv4 filter nft rules input
 $allow_nft $allow_ipv4 $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
@@ -2484,7 +2581,11 @@ $allow_nft $allow_ipv4 $uid_gid $which_iptables_nft -A INPUT -m state --state es
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols       $which_iptables_nft -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
+####
+####
 #### ipv4 filter nft rules output
+####
+####
 $allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
@@ -2502,8 +2603,12 @@ $allow_nft $allow_ipv4 $allow_output_gid $which_iptables_nft -A OUTPUT -m owner 
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols      $which_iptables_nft -A OUTPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
+####
+####
 ########## ipv6 filter nft rules input and output
 #### ipv6 filter nft rules input
+####
+####
 $allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
@@ -2521,6 +2626,8 @@ $allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
+####
+####
 #### ipv6 filter nft rules output
 $allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
@@ -2545,24 +2652,32 @@ done
 ##########################################    nat for ipv4 and ipv6
 ####
 ####
- $which_iptables_nft -t nat -F
- $which_iptables_legacy -t nat -F
- $which_ip6tables_nft -t nat -F
- $which_ip6tables_legacy -t nat -F
+#### nat DELETED
+$which_iptables_nft -t nat -F
+$which_iptables_legacy -t nat -F
+$which_ip6tables_nft -t nat -F
+$which_ip6tables_legacy -t nat -F
+####
+####
+#### nat ip4 and ip6 
 $allow_nft $allow_ipv4 $allow_nat $which_iptables_nft -t nat -A POSTROUTING -j MASQUERADE      &>/dev/null
 $allow_legacy $allow_ipv4 $allow_nat $which_iptables_legacy -t nat -A POSTROUTING -j MASQUERADE   &>/dev/null
 $allow_nft $allow_ipv6 $allow_nat $which_ip6tables_nft -t nat -A POSTROUTING -j MASQUERADE     &>/dev/null
 $allow_legacy $allow_ipv6 $allow_nat $which_ip6tables_legacy -t nat -A POSTROUTING -j MASQUERADE  &>/dev/null
 ####
 ####
-##########################################    ipv4 iptables permisisive
+##########################################    ipv4 iptables allpermisisive
 ####
 ####
+#### legacy ip4
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -F &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT $input_state  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A OUTPUT -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A FORWARD  -j ACCEPT &> /dev/null
+####
+####
+#### nft ip4 
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -F &> /dev/null
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT $input_state -j ACCEPT &> /dev/null
@@ -2573,11 +2688,15 @@ $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A FORWARD -j ACCE
  ########################################     ipv6 iptables allpermisisive
 ####
 ####
+#### legacy ip6 
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -F &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT $input_state -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A OUTPUT -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A FORWARD  -j ACCEPT &> /dev/null
+####
+####
+#### nft ip6 
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -F &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT $input_state -j ACCEPT &> /dev/null
@@ -2588,19 +2707,29 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD -j ACC
 ########################################       iptables ipv4 and ipv6 with forward rules
 ####
 ####
- ####   deactive for default with forward or without forward
- $which_sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
- $which_sysctl -w net.ipv6.conf.all.forwarding=0 &> /dev/null
- ####   Active when there is forward
- $ipv4 $allow_forwading $which_sysctl -w net.ipv4.conf.all.forwarding=1 &> /dev/null
- $ipv6 $allow_forwading $which_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/null
- ####   ipv4 filter legacy rules forward
+####   deactive for default with forward or without forward
+$which_sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
+$which_sysctl -w net.ipv6.conf.all.forwarding=0 &> /dev/null
+####
+####
+####   Active when there is forward
+$ipv4 $allow_forwading $which_sysctl -w net.ipv4.conf.all.forwarding=1 &> /dev/null
+$ipv6 $allow_forwading $which_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/null
+####
+####
+####   ipv4 filter legacy rules forward
 $allow_legacy $allow_forwading $which_iptables_legacy -A FORWARD -j ACCEPT &> /dev/null
- ####   ipv6 filter legacy rules forward
+####
+####
+####   ipv6 filter legacy rules forward
 $allow_legacy $allow_forwading $which_ip6tables_legacy -A FORWARD -j ACCEPT &> /dev/null
- ####   ipv4 filter nft rules forward
+####
+####
+####   ipv4 filter nft rules forward
 $allow_nft $allow_forwading $which_iptables_nft -A FORWARD -j ACCEPT &> /dev/null
- ####   ipv6 filter nft rules forward
+####
+####
+####   ipv6 filter nft rules forward
 $allow_nft $allow_forwading $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
@@ -2611,14 +2740,19 @@ $allow_nft $allow_forwading $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/nu
 $allow_legacy $which_iptables_legacy -A INPUT -j DROP &> /dev/null
 $allow_legacy $which_iptables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_legacy $which_iptables_legacy -A FORWARD -j DROP &> /dev/null
+####
+####
 #### ipv6 drop rules iptables-legacy
 $allow_legacy $which_ip6tables_legacy -A INPUT -j DROP &> /dev/null
 $allow_legacy $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_legacy  $which_ip6tables_legacy -A FORWARD -j DROP &> /dev/null
+####
+####
 #### ipv4 drop rules iptables-nft
 $allow_nft $which_iptables_nft -A INPUT -j DROP &> /dev/null
 $allow_nft $which_iptables_nft -A OUTPUT -j DROP &> /dev/null
 $allow_nft $which_iptables_nft -A FORWARD -j DROP &> /dev/null
+####
 #### ipv6 drop rules iptables-nft
 $allow_nft $which_ip6tables_nft -A INPUT -j DROP &> /dev/null
 $allow_nft $which_ip6tables_nft -A OUTPUT -j DROP &> /dev/null
@@ -2629,16 +2763,32 @@ $allow_nft $which_ip6tables_nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: iptables ipv4 y ipv6 con variable only_output
 ####
 ####
+#### nft INPUT deleted ####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
+####
+####
+#### legacy INPUT deleted ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
+####
+####  
+#### nft INPUT ACCEPT ####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+####
+####
+#### legacy INPUT ACCEPT ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+####
+####
+#### nft INPUT DROP ####
 $only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
+####
+####
+#### legacy INPUT DROP  ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
