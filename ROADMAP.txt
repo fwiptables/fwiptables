@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 202
+     *****     Version actual: 203
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -52,11 +52,15 @@ fwiptables - variables de iptables legacy y nft - ok 200
 ejecutables - autorecoger las rutas de los ejecutables y poner los programas con variables - ok 201
 upgrade - corregir - ok 201
 web-upgrade - corregir - ok 201
-ayuda - añadir - 201
-help - añadir - 201
-linea de comando - no pregunta, recoge variables - 202
-limpieza de codigo - 202
-eliminar clone-config - 202
-eliminar rename-config - 202
-cli - corregir -
-gui - corregir - 202
+ayuda - añadir - ok 201
+help - añadir - ok 201
+linea de comando - no pregunta, recoge variables - ok 202
+limpieza de codigo - ok 202
+eliminar clone-config - ok 202
+eliminar rename-config - ok 202
+cli - corregir - ok 202
+gui - corregir - ok 202
+variable only_output - añadir regla para localhost -
+verbose cliente y servidor - quitar un retorno de carro -
+añadir mas comentarios en castellano -
+
