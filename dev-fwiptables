@@ -122,8 +122,8 @@ echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
-echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
+echo " [Create a new config myown.cfg]    $fiptables new-config own.cfg      "
+echo " [Launch client with myown.cfg]     $fiptables client own.cfg          "
 echo " [List iptables rules]              $fiptables list                       "
 exit ; fi
 ####
@@ -352,11 +352,42 @@ esac
 #### manage some configs ####
 case $menugtk in
 #### new-config and nueva-config ####
-new-config)
+"new-config")
 zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
 ;;
-nueva-config)
+"new-config ")
 zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+"new-config  ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+"new-config   ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+"nueva-config")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+"nueva-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+"nueva-config  ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+
+"nueva-config   ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
+;;
+"modify-config")
+zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
+;;
+"modify-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
+;;
+"modify-config  ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
+;;
+"modify-config   ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
 ;;
 new-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
@@ -368,7 +399,11 @@ unarchivo=$(echo $menugtk | cut -d " " -f 2)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$unarchivo"
 $favorite_graphicall_editor "$directory_config/$unarchivo"
 ;;
-# wizard and mini wizard
+modify-config*)
+unarchivo=$(echo $menugtk | cut -d " " -f 2)
+$favorite_graphicall_editor "$directory_config/$unarchivo"
+;;
+#### wizard and mini wizard
 wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
 $favorite_graphicall_editor "$directory_config/wizard.cfg"
@@ -379,7 +414,7 @@ head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f
 $favorite_graphicall_editor "$directory_config/mini-wizard.cfg"
 zenity --info --ellipsize --text="ok $(fwiptables client mini-wizard.cfg)"
 ;;
-# all
+#### all other otpions
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
@@ -2086,8 +2121,8 @@ echo "     Host [vpn] excepcionals hosts has all allowed in firewall"
 echo
 echo "$cincuenta  [The iptables netftilter]"
 echo
-echo "     iptables legacy   is    support for xtables firewall"
-echo "     iptables nft      is    support for neftables firewall"
+echo "     iptables-legacy   is    support for xtables "
+echo "     iptables-nft      is    support for neftables "
 echo
 echo "$cincuenta  [firewall need clients udp ports]"
 echo
@@ -2270,8 +2305,8 @@ echo "     Usuario y/o grupo excepcional tienen conexion permitida en el firewal
 echo
 echo "$cincuenta  [Los iptables netftilter]"
 echo
-echo "     iptables legacy   es    soporte para xtables firewall"
-echo "     iptables nft      es    soporte para neftables firewall"
+echo "     iptables-legacy   es    soporte para xtables "
+echo "     iptables-nft      es    soporte para neftables "
 echo
 echo "$cincuenta  [Puertos cliente udp necesarios]"
 echo
@@ -2668,9 +2703,9 @@ echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
-echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
-echo " [List iptables rules]              $fiptables list                      "
+echo " [Create a new config myown.cfg]    $fiptables new-config own.cfg      "
+echo " [Launch client with myown.cfg]     $fiptables client own.cfg          "
+echo " [List iptables rules]              $fiptables list                    "
 ####
 ####
 # left script
