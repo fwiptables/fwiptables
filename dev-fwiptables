@@ -64,7 +64,7 @@ server_udp=discard ; #english: udp ports for server #spanish: puertos udp para s
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
 input_state="" ; #english: modify with void for all or -m state --state related,established #spanish: modificar con vacio o -m state --state related,established
 echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente 
-only_output=no ; #english: void, rules are only to output, or no #spanish: vacio, reglas solo para salida o no
+only_output="" ; #english: void, the rules are only to output in filter, or no #spanish: vacio, reglas solo para salida o no
 echo -n #english: Allow Other Options,  modify with void, or no #spanish: Permitir Otras Opciones, modificar con vacio o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
@@ -314,9 +314,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "mini-wizard" ]; then echo -n
-head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -9 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -16 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
 $favorite_text_editor "$directory_config/mini-wizard.cfg"
-$fiptables client mini-wizard.cfg
+$fiptables server mini-wizard.cfg
 $fiptables list
 exit; fi
 ####
@@ -2166,7 +2166,7 @@ echo "$cinco         [Attend]"
 echo
 echo "  system-info: Show info system"
 echo "       wizard: Asistant y launch complete server"
-echo "  mini-wizard: Asistant y Launch simple client"
+echo "  mini-wizard: Asistant y Launch simple server"
 echo "          cli: Comand line interface with menus"
 echo "          gui: Graphicall user interface"
 echo ""
@@ -2350,7 +2350,7 @@ echo "$cinco         [Asistencia]"
 echo
 echo "  system-info: Muestra la informacion del sistema"
 echo "       wizard: Asistente y lanza completo servidor iptables"
-echo "  mini-wizard: Asistente y lanza simple cliente iptables"
+echo "  mini-wizard: Asistente y lanza simple servidor iptables"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
 echo
@@ -2848,6 +2848,8 @@ echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
+if [ "$only_output" = "$NULL" ]; then echo "$cinco  [Whith only the output rules] $cinco"
+else echo "$cinco  [Whith the input rules and the output rules] $cinco"; fi
 if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
 else echo "$cinco  [With input state IP]  $cinco"
 echo " Input satate: $input_state"; fi
