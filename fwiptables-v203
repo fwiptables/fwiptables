@@ -2772,7 +2772,19 @@ $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> 
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
 ####
-####  
+####
+#### nft INPUT 127.0.0.1 accept ####
+$only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+####
+####
+#### legacy INPUT 127.0.0.1 accept ####
+####
+####
+$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+####
+####
 #### nft INPUT ACCEPT ####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
@@ -2838,8 +2850,7 @@ echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
 if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
 else echo "$cinco  [With input state IP]  $cinco"
-echo " Input satate: $input_state"
-echo ; fi
+echo " Input satate: $input_state"; fi
 echo "$cinco  [With Others configs]  $cinco"
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allow send pings" ; fi
 if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allow recive pings" ; fi
