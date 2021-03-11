@@ -32,7 +32,7 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
-flinea="-100" ;                                                    #english: number line #spanish:linea de variables
+flinea="-100" ;                                                   #english: number line #spanish:linea de variables
 fvariables="-39" ;                                                #english: custom variables to show #spanish: variables a modificar
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
@@ -109,13 +109,13 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ####
 ####
 if [ "$(id -u)" = "0" ]; then echo  -n ;
-else echo "$cincuenta need to be root to work" 
+else echo "$cincuenta need to be root to work"
 echo "$fprogram version $fversion , need to be root to work"
 echo " [Launch rules]     eraserules offline client server allpermisive      "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        "
 echo "                    listnum forwardnum listnum6 forwardnum6            "
 echo " [Modify config]    reconfig new-config nueva-config                   "
-echo "                    show-config modify-config del-config               " 
+echo "                    show-config modify-config del-config               "
 echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp      "
 echo " [Recover fw]       fw-list fw-save fw-restore                         "
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                    "
@@ -149,7 +149,7 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 ##############################       spanish: auto instalador si es necesario         ###########################################
 ####
 if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
-else cp $0 $directory_fiptables/$fiptables &> /dev/null ; 
+else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
 echo "$fiptables $fversion installed in /usr/bin/$fiptables"
 echo "Launch $fiptables to run $fiptables" ; fi
 ####
@@ -846,7 +846,7 @@ echo "client_udp=domain,ntp,bootpc ;"  >>  $directory_config/web-example1.cfg
 echo "allow_ping_send=no ;" >> $directory_config/web-example1.cfg
 echo "allow_pring_recive=no ;" >> $directory_config/web-example1.cfg
 echo "only_output= ; " >> $directory_config/web-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/web-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/web-example1.cfg
 ####
 ####
 #### config:  games-example1.cfg ####
@@ -858,7 +858,7 @@ echo "client_udp=domain,ntp,bootpc,1025:60000; " >> $directory_config/games-exam
 echo "client_tcp=http,https" >> $directory_config/games-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/games-example1.cfg
 echo "only_output= ; " >> $directory_config/games-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/games-example1.cfg
+echo "input_state='-m state --state ,new,related,established' ; " >> $directory_config/games-example1.cfg
 ####
 ####
 #### config:  torrent-example1.cfg ####
@@ -870,7 +870,7 @@ echo "client_udp=domain,ntp,bootpc,1025:60000; " >> $directory_config/torrent-ex
 echo "client_tcp=http,https" >> $directory_config/torrent-example1.cfg
 echo "allow_ping_send=no ;  allow_ping_recive=no ; "  >> $directory_config/torrent-example1.cfg
 echo "only_output= ; " >> $directory_config/torrent-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/torrent-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/torrent-example1.cfg
 ####
 ####
 #### config: samba-example1.cfg ####
@@ -884,7 +884,7 @@ echo "server_udp=137:139 ; " >> $directory_config/samba-example1.cfg
 echo "server_tcp=ssh,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/samba-example1.cfg
 echo "only_output= ; " >> $directory_config/samba-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/samba-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/samba-example1.cfg
 ####
 ####
 #### config: vpn-sample1.cfg ##
@@ -897,7 +897,7 @@ echo "allow_vpn= ; " >> $directory_config/vpn-example1.cfg
 echo "vpn=wesnoth.org,sourceforge.net" >> $directory_config/vpn-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vpn-example1.cfg
 echo "only_output= ; " >> $directory_config/vpn-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/vpn-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/vpn-example1.cfg
 ####
 ####
 #### config: email-example1.cfg ####
@@ -910,7 +910,7 @@ echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" 
 echo "allow_ping_send= ; " >> $directory_config/email-example1.cfg
 echo "allow_ping_recive= " >> $directory_config/email-example1.cfg
 echo "only_output= ; " >> $directory_config/email-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/email-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/email-example1.cfg
 ####
 ####
 #### config: ssh-example1.cfg ####
@@ -923,7 +923,7 @@ echo "server_tcp=http,https,printer,ipp,ssh,rsync,git" >> $directory_config/ssh-
 echo "allow_ping_send= ; " >> $directory_config/ssh-example1.cfg
 echo "allow_ping_recive= ;" >> $directory_config/ssh-example1.cfg
 echo "only_output= ; " >> $directory_config/ssh-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/ssh-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/ssh-example1.cfg
 ####
 ####
 #### config: vnc-example1.cfg ####
@@ -935,7 +935,7 @@ echo "client_tcp=http,https,ssh,5900:5910" >> $directory_config/vnc-example1.cfg
 echo "server_tcp=ssh,http,https,5900:5910" >> $directory_config/vnc-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vnc-example1.cfg
 echo "only_output= ; " >> $directory_config/vnc-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/vnc-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/vnc-example1.cfg
 ####
 ####
 #### config: ftp-example1.cfg ##
@@ -949,7 +949,7 @@ echo "client_udp=domain,ntp,bootpc,tftp">> $directory_config/ftp-example1.cfg
 echo "server_udp=tftp">> $directory_config/ftp-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1.cfg
 echo "only_output= ; " >> $directory_config/ftp-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/ftp-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/ftp-example1.cfg
 ####
 ####
 #### config: printer-example1.cfg ####
@@ -961,7 +961,7 @@ echo "client_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.c
 echo "server_tcp=ssh,http,https,ipp,printer" >> $directory_config/printer-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/printer-example1.cfg
 echo "only_output= ; " >> $directory_config/printer-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/printer-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/printer-example1.cfg
 ####
 ####
 #### config: irc-example1.cfg ####
@@ -985,7 +985,7 @@ echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory
 echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/sql-example1.cfg
 echo "only_output= ; " >> $directory_config/sql-example1.cfg
-echo "input_state='-m state --state related,established' ; " >> $directory_config/sql-example1.cfg
+echo "input_state='-m state --state new,related,established' ; " >> $directory_config/sql-example1.cfg
 ####
 ####
 case $0 in

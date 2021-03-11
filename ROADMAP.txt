@@ -63,4 +63,3 @@ gui - corregir - ok 202
 variable only_output - añadir regla para localhost - ok 202
 verbose cliente y servidor - quitar un retorno de carro - ok 202
 añadir mas comentarios en castellano -
-
