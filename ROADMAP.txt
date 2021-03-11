@@ -60,7 +60,7 @@ eliminar clone-config - ok 202
 eliminar rename-config - ok 202
 cli - corregir - ok 202
 gui - corregir - ok 202
-variable only_output - añadir regla para localhost -
-verbose cliente y servidor - quitar un retorno de carro -
+variable only_output - añadir regla para localhost - ok 202
+verbose cliente y servidor - quitar un retorno de carro - ok 202
 añadir mas comentarios en castellano -
 
