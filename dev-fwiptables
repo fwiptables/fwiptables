@@ -82,8 +82,8 @@ echo -n #english: no or void to works with only output rules #spanish: no o vaci
 only_output="" ; #english: void, the rules are only to output in filter, or no #spanish: vacio, reglas solo para salida o no
 echo -n #english: Optional options .......... .......... .......... #spanish: Opciones opcionales .......... .......... ..........
 echo -n #english: Allow Other Options,  modify with void, or no #spanish: Permitir Otras Opciones, modificar con vacio o no
-allow_bandwidth_input=no ; #english: void to limit bandwidth input in kbits/sec or no #spanish: vacio para limitar ancho de banda de entrada en kbits/sec o no
-allow_bandwidth_output=no ; #english: void to limit bandwidth output in kbits/sec or no #spanish: vacio limitar ancho de banda de salida en kbits/sec o no
+allow_bandwidth_input=no ; #english: void to limit bandwidth input in kbits/sec for ip or no #spanish: vacio para limitar ancho de banda de entrada para todos en kbits/sec o no
+allow_bandwidth_output=no ; #english: void to limit bandwidth output for all in kbits/sec or no #spanish: vacio limitar ancho de banda de salida por ip en kbits/sec o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
 allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
@@ -96,8 +96,8 @@ allow_output_uid=no ; #english: void to allow excepcional user or no #spanish: v
 allow_output_gid=no ; #english: void to allow excepcional group or no #spanish: vacio permite salida de paquetes de un grupo excepcional o no
 allow_others_protocols=no ; #english: void to allow other protocol ip excepcional or no #spanish: vacio para permitir otro protocolo ip excepcional o no
 echo -n #english: Other Options, add with "," and join ranges with ":" #spanish: Otras Opciones, añadir con "," y poner rangos con ":"
-bandwidth_input="12512" #english: max input bandwidth in kbits/sec #spanish: maximo entrada de ancho de banda en kbit/sec
-bandwidth_output="512" #english: max output bandwidth in kbits/sec #spanish: maximo salida de ancho de banda en kbits/sec
+bandwidth_input="12512" #english: max input bandwidth in kbits/sec for all #spanish: maximo entrada de ancho de banda en kbit/sec para todos
+bandwidth_output="512" #english: max output bandwidth in kbits/sec for ip #spanish: maximo salida de ancho de banda en kbits/sec para ip
 log_udp="" ; #english: the udp ports to log #spanish: los puertos udp para logear
 log_tcp="ssh" ; #english: the tcp ports to log #spanish: los puertos tcp para logear
 vpn="sourceforge.net,wesnoth.org" ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
@@ -549,7 +549,7 @@ unarchivo=$(echo $menugtk | cut -d " " -f 2)
 $favorite_graphicall_editor "$directory_config/$unarchivo"
 ;;
 #### full-wizard and mini full-wizard
-wizard*)
+full-wizard*)
 head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/wizard.cfg"
 $favorite_graphicall_editor "$directory_config/wizard.cfg"
 zenity --info --ellipsize --text="ok $(fwiptables custom full-wizard.cfg)"
