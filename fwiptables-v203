@@ -1178,20 +1178,20 @@ exit; fi
  echo "$cincuenta   List filter ipv4"
  case $legacycuatro in
  "$NULL")
- echo "$cinco  [Without rules xtables ipv4]";
+ echo "$cinco  [Without rules xtables ipv4][iptables-legacy]";
  ;;
  *)
- echo "$cinco  [With rules xtables ipv4]"
+ echo "$cinco  [With rules xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -L INPUT
  $which_iptables_legacy -v -L OUTPUT 
  ;;
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco  [Without rules neftables ipv4]"
+ echo "$cinco  [Without rules neftables ipv4][iptables-nft]"
  ;;
  *)
- echo "$cinco  [With rules neftables ipv4]"
+ echo "$cinco  [With rules neftables ipv4][iptables-nft]"
  $which_iptables_nft -v -L INPUT
  $which_iptables_nft -v -L OUTPUT
  ;;
@@ -1224,20 +1224,20 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "$cincuenta   List filter ipv6"
  case $legacyseis in
  "$NULL")
- echo "$cinco  [Without rules xtables ipv6]"
+ echo "$cinco  [Without rules xtables ipv6][iptables-legacy]"
  echo -n ;;
  *)
- echo "$cinco  [With rules xtables ipv6]"
+ echo "$cinco  [With rules xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -L INPUT
  $which_ip6tables_legacy -v -L OUTPUT
  ;;
  esac
  case $nftseis in
  "$NULL")
- echo "$cinco  [Without rules neftables ipv6]";
+ echo "$cinco  [Without rules neftables ipv6][iptables-nft]";
  ;;
  *)
- echo "$cinco  [With rules neftables ipv6]"
+ echo "$cinco  [With rules neftables ipv6][iptables-nft]"
  $which_ip6tables_nft -v -L INPUT
  $which_ip6tables_nft -v -L OUTPUT
  echo -n
@@ -2849,7 +2849,9 @@ echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and :: are all the networks, usually necesary "
 if [ "$only_output" = "$NULL" ]; then echo "$cinco  [Whith only the output rules] $cinco"
-else echo "$cinco  [Whith the input rules and the output rules] $cinco"; fi
+echo "  * where which only output rules is more fastly conection"
+else echo "$cinco  [Whith the input rules and the output rules] $cinco"
+echo "  * where which only output rules is more fastly conection"; fi
 if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
 else echo "$cinco  [With input state IP]  $cinco"
 echo " Input satate: $input_state"; fi
