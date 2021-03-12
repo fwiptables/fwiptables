@@ -20,7 +20,7 @@
   https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
 
 #####   New versions program:
-  The fran iptables ver 170 and versions up in files repository at sourceforge:
+  The fran iptables version 200 and new versions up in files repository at sourceforge:
 
   https://sourceforge.net/projects/f-iptables/files
 
