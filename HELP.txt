@@ -1,0 +1,218 @@
+Fran FireWall iptables: fwiptables version 204
+##################################################   Wellcome fwiptables #####
+ [Launch rules]     eraserules offline client server allpermisive      
+ [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        
+                    listnum forwardnum listnum6 forwardnum6            
+ [Modify config]    reconfig new-config nueva-config                   
+                    show-config modify-config del-config               
+ [List sockets]     route ss netstat lsof ipforwading tcpdump arp      
+ [Recover fw]       fw-list fw-save fw-restore                         
+ [Auth sudo]        auth-sudo remove-sudo list-sudo                    
+ [Tool icmp]        ping-ip4 ping-ip6                                  
+ [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip           
+ [Version]          version upgrade dev-versions all-versions          
+ [Attend]           system-info wizard mini-wizard cli gui             
+ [Help]             about depends help ayuda                           
+#####  Optional /etc/fwiptables/[config.cfg]  #####
+(*)[Example]  default.cfg email-example1.cfg english-example1.cfg
+ftp-example1.cfg games-example1.cfg irc-example1.cfg mini-wizard.cfg
+printer-example1.cfg samba-example1.cfg spanish-example1.cfg
+sql-example1.cfg ssh-example1.cfg torrent-example1.cfg
+vnc-example1.cfg vpn-example1.cfg web-example1.cfg wizard.cfg
+(*)[Own]  experimento.cfg game.cfg hola nuevaweb.cfg nuevogame.cfg web.cfg
+#####  [The examples]  #####
+ [Create a new config myown.cfg]    fwiptables new-config myown.cfg      
+ [Launch client with myown.cfg]     fwiptables client myown.cfg          
+ [List iptables rules]              fwiptables list                      
+
+################################################## The first option
+
+#####         [Launch iptables rules]
+
+   eraserules: Remove the iptables rules in ipv4 and ipv6
+      offline: Disconected for all servers and clients except localhost
+       client: Configure the firewall for internet client
+       server: Configure the firewall for internet client and internet server
+ allpermisive: Configure a firewall very permisive
+
+#####         [List iptables rules]
+
+               The filter table:
+         list: List iptables filter rules input and output ipv4
+      forward: List iptables filter rules foward
+        list6: List iptables filter rules input and output ipv6
+     forward6: List iptables filter rules forward ipv6
+
+               The filter table numerical: 
+      listnum: List iptables filter rules input and output ipv4 in numbers
+   forwardnum: List iptables filter rules foward in numbers
+     listnum6: List iptables filter rules input and output ipv6 in numbers
+  forwardnum6: List iptables filter rules forward ipv6 in numbers
+
+#####         [The others tables]
+
+      nat-ip4: List iptables nat rules from ipv4
+      nat-ip6: List iptables nat rules from ipv6
+   mangle-ip4: List iptables mangle rules from ipv4
+   mangle-ip6: List iptables mangle rules from ipv6
+      raw-ip4: List iptables raw rules from ipv4
+      raw-ip6: List iptables raw rules from ipv4
+ security-ip4: List iptables security rules from ipv4
+ security-ip6: List iptables security rules from ipv6
+     ebtables: List rules ebtables nft ethernet
+    arptables: List rules arptables arp
+
+#####         [Modify config]
+
+     reconfig: Rewrite default files in /etc/fwiptables/*sample1.cfg
+   new-config: Create a new configfile.cfg in english
+ nueva-config: Create a new configfile.cfg in spanish
+ clone-config: Clone a old config in a one new config
+modify-config: Edit one config.cfg
+  show-config: Show one config.cfg
+rename-config: Rename one configuration file
+   del-config: Delete one configuration file
+
+#####         [List sockets]
+
+      iproute: Show net devices and ip route tables
+           ss: Show net sockets with command ss
+         lsof: Show net sockets with command lsof
+      netstat: Show net sockets with command netstat
+  ipforwading: Show kernel config about forward
+      tcpdump: Listen the connections
+          arp: List the last conentions arp
+
+#####         [Recover fw]
+
+      fw-list: Show the files firewall standar
+      fw-save: Save the files in firewall standar
+   fw-restore: Show howto reover files firewall standar
+
+#####         [Auth sudo]
+
+    auth-sudo: Permit sudo fwiptables to other choosed users
+  remove-sudo: Remove sudo fwiptables to other choosed users
+    list-sudo: List sudo fwiptables to other choosed users
+
+#####         [Tool icmp]
+
+     ping-ip4: Do a one ping with to one host with ipv4 icmp
+     ping-ip6: Do a one ping with to one host with ipv6 icmp
+
+#####         [Tool tcp]
+
+    trace-ip4: Trace route a one host with ipv4 tcp
+    trace-ip6: Trace route a one host with ipv6 tcp
+         host: Resolve one host
+    resolveip: Resolve one host and viceversa
+       geo-ip: Locate a one host or ip
+
+#####         [Version]
+
+      version: Info version program from fwiptables
+      upgrade: Upgrade fwiptables at the latest version
+ dev-versions: Version in development from fwiptables
+ all-versions: All versions from fwiptables
+
+#####         [Attend]
+
+  system-info: Show info system
+       wizard: Asistant y launch complete server
+  mini-wizard: Asistant y Launch simple server
+          cli: Comand line interface with menus
+          gui: Graphicall user interface
+
+#####         [Help]
+
+        about: About the fwiptables
+      depends: Show depends for fwiptables
+         help: Show this help in english
+        ayuda: Show this help in spanish
+
+################################################## The second option: (optional)
+
+    fwiptables client and server takes the config from the command line
+    if launch without specific the config it takes default.cfg
+    you can  modify and create the files in the folder /etc/fwiptables
+
+################################################## Examples
+
+ fwiptables client games-example1.cfg      [Configure firewall to allow connect to web and games]
+ fwiptables server server-example1.cfg     [Configure firewall to server somes services]
+ fwiptables eraserules                     [Remove iptables rules]
+ fwiptables list                           [List iptables rules]
+ fwiptables help                           [Show this help in english]
+
+################################################## Examples of variables to the configs files, default.cfg
+
+#####             ###  the iptables firewall netfilter, choose one or two 
+allow_legacy=no ;             ###  launch xtables, void to yes or type no 
+allow_nft= ;             ###  launch neftables, void to yes or type no 
+#####             ###  ip protocol, modify with void or no 
+allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont configure ipv4  
+allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
+#####             ###  Client ports, add with "," and join ranges with ":" 
+client_tcp=http,https,ipp,ssh ;             ###  tcp ports for client 
+client_udp=domain,ntp,bootpc ;             ###  udp ports for client 
+#####             ###  Server ports, add with "," and join ranges with ":" 
+server_tcp=ssh,http,https ;             ###  tcp ports for server 
+server_udp=discard ;             ###  udp ports for server 
+#####             ###  Selective Input state 
+input_state="" ;             ###  modify with void for all or -m state --state related,established 
+#####             ###  no or void to works with only output rules 
+only_output="" ;             ###  void, the rules are only to output in filter, or no 
+#####             ###  Allow Other Options,  modify with void, or no 
+allow_ping_send=no ;             ###  void to allow send pings, and no to drop send pings 
+allow_ping_recive=no ;             ###  void to allow recive pings, and no to drop recive pings 
+allow_log_tcp=no ;             ###  void to tcp log, and no to do not log tcp 
+allow_log_udp=no ;             ###  void to udp log, and no to do not log udp 
+allow_forwading=no ;             ###  void to allow ip forward, and no to drop forward ip 
+allow_nat=no ;             ###  void to do NAT masquerade to default route, or no 
+allow_vpn=no ;             ###  void to allow exceptional host, and no to drop exceptional host 
+allow_others_protocols=no ;             ###  void to allow other protocol or no 
+allow_output_uid=no ;             ###  void to allow excepcional user or no 
+allow_output_gid=no ;             ###  void to allow excepcional group or no 
+#####             ###  Other Options, add with "," and join ranges with ":" 
+log_udp=discard ;             ###  the udp ports to log 
+log_tcp=ssh ;             ###  the tcp ports to log 
+vpn=sourceforge.net,wesnoth.org ;             ###  allow this excepcitonal host 
+others_protocols=icmp,igmp ;             ###  allow others protocols from /etc/protocolos 
+output_uid="root" ;             ###  allow out packages excepcional from this user 
+output_gid="root" ;             ###  allow out packages excepcional from this group 
+#####             ###  Net to connect like client or server 
+net_ipv4_client=0/0  ;              ###  the net to client ipv4, all is 0/0  
+net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0 
+net_ipv6_client=::/0 ;              ###  the net to client ipv6, all is ::/0 
+net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0 
+
+##################################################  [uid and/or gid excepcional]
+
+     User and/or group excepcional have conection allowed in firewall
+
+##################################################  [vpn]
+
+     Host [vpn] excepcionals hosts has all allowed in firewall
+
+##################################################  [The iptables netftilter]
+
+     iptables-legacy   is    support for xtables 
+     iptables-nft      is    support for neftables 
+
+##################################################  [firewall need clients udp ports]
+
+     This port is necesary to update the date  : ntp
+     This port is necesary to dhcp and get ip  : bootpc
+     This port is necesary to domain resolver  : domain
+
+##################################################  [Ipv6 needs protocols]
+
+     Necesary protocol: ipv6-icmp
+     Ipv6 works too with: ipv4 procotols
+
+##################################################  [License]
+
+  Download the latest version Fran FireWall iptables: fwiptables from sourceforge
+  https://sourceforge.net/projects/f-iptables/files/latest/download
+  Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+
