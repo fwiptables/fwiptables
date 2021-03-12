@@ -1,5 +1,11 @@
 #!/bin/bash
 ##
+##
+## necesary to path
+## necesario para los path
+source /etc/profile
+##
+##
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
 ##
@@ -2460,7 +2466,7 @@ $which_ip6tables_legacy -t filter -F
 #### ipv4 filter legacy rules input
 ####
 ####
-$allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_legacy   $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2481,7 +2487,7 @@ done
 #### ipv4 filter legacy rules output
 ####
 ####
-$allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$allow_legacy   $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2504,7 +2510,7 @@ done
 #### ipv6 filter legacy rules input
 ####
 ####
-$allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy   $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2526,7 +2532,7 @@ done
 #### ipv6 filter legacy rules output
 ####
 ####
-$allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$allow_legacy   $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A OUTPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2565,7 +2571,7 @@ $which_ip6tables_nft -t filter -F
 ####
 ####
 #### ipv4 filter nft rules input
-$allow_nft $allow_ipv4 $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2586,7 +2592,7 @@ done
 #### ipv4 filter nft rules output
 ####
 ####
-$allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$allow_nft  $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2609,7 +2615,7 @@ done
 #### ipv6 filter nft rules input
 ####
 ####
-$allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2629,7 +2635,7 @@ done
 ####
 ####
 #### ipv6 filter nft rules output
-$allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $which_ip6tables_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done

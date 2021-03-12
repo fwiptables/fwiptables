@@ -66,5 +66,6 @@ verbose cliente y servidor - añadir variable only_output - ok 202
 mini-wizard - ampliar a variable only_output - ok 203
 only_output - por defecto - ok 203
 visual - pequeños cambios - ok 203
+profile - añade source /etc/profile al script fwiptables - ok 203
 codigo - añadir localhost a ipv6 -
 codigo - añadir comentarios en castellano - 

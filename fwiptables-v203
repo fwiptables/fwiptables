@@ -1,5 +1,11 @@
 #!/bin/bash
 ##
+##
+## necesary to path
+## necesario para los path
+source /etc/profile
+##
+##
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
 ##
@@ -1178,20 +1184,20 @@ exit; fi
  echo "$cincuenta   List filter ipv4"
  case $legacycuatro in
  "$NULL")
- echo "$cinco  [Without rules xtables ipv4][iptables-legacy]";
+ # echo "$cinco [Without rules xtables ipv4][iptables-legacy]  $cinco";
  ;;
  *)
- echo "$cinco  [With rules xtables ipv4][iptables-legacy]"
+ echo "$cinco  [With rules xtables ipv4][iptables-legacy]  "
  $which_iptables_legacy -v -L INPUT
  $which_iptables_legacy -v -L OUTPUT 
  ;;
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco  [Without rules neftables ipv4][iptables-nft]"
+ # echo "$cinco  [Without rules neftables ipv4][iptables-nft]  $cinco"
  ;;
  *)
- echo "$cinco  [With rules neftables ipv4][iptables-nft]"
+ echo "$cinco  [With rules neftables ipv4][iptables-nft]  "
  $which_iptables_nft -v -L INPUT
  $which_iptables_nft -v -L OUTPUT
  ;;
@@ -1224,23 +1230,23 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "$cincuenta   List filter ipv6"
  case $legacyseis in
  "$NULL")
- echo "$cinco  [Without rules xtables ipv6][iptables-legacy]"
- echo -n ;;
+ # echo "$cinco  [Without rules xtables ipv6][iptables-legacy]  $cinco"
+ ;;
  *)
- echo "$cinco  [With rules xtables ipv6][iptables-legacy]"
+ echo "$cinco  [With rules xtables ipv6][iptables-legacy]  "
  $which_ip6tables_legacy -v -L INPUT
  $which_ip6tables_legacy -v -L OUTPUT
  ;;
  esac
  case $nftseis in
  "$NULL")
- echo "$cinco  [Without rules neftables ipv6][iptables-nft]";
+ # echo "$cinco  [Without rules neftables ipv6][iptables-nft]  $cinco";
  ;;
  *)
- echo "$cinco  [With rules neftables ipv6][iptables-nft]"
+ echo "$cinco  [With rules neftables ipv6][iptables-nft]  "
  $which_ip6tables_nft -v -L INPUT
  $which_ip6tables_nft -v -L OUTPUT
- echo -n
+ ;;
  esac
  exit; fi
 ####
@@ -1964,7 +1970,7 @@ exit; fi
 if [ "$first_option" = "new-versions" ]; then echo -n
 echo "$fprogram"
 echo "$cincuenta New versions $cinco"
-$favorite_text_browser -dump "$fweb_newfiles" | egrep -i -- iptables | head -20
+$favorite_text_browser -dump "$fweb_newfiles" | egrep -i -- iptables | head -10
 exit; fi
 ####
 ####
@@ -2460,7 +2466,7 @@ $which_ip6tables_legacy -t filter -F
 #### ipv4 filter legacy rules input
 ####
 ####
-$allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_legacy   $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2481,7 +2487,7 @@ done
 #### ipv4 filter legacy rules output
 ####
 ####
-$allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$allow_legacy   $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2504,7 +2510,7 @@ done
 #### ipv6 filter legacy rules input
 ####
 ####
-$allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy   $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2526,7 +2532,7 @@ done
 #### ipv6 filter legacy rules output
 ####
 ####
-$allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$allow_legacy   $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A OUTPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2565,7 +2571,7 @@ $which_ip6tables_nft -t filter -F
 ####
 ####
 #### ipv4 filter nft rules input
-$allow_nft $allow_ipv4 $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2586,7 +2592,7 @@ done
 #### ipv4 filter nft rules output
 ####
 ####
-$allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$allow_nft  $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2609,7 +2615,7 @@ done
 #### ipv6 filter nft rules input
 ####
 ####
-$allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2629,7 +2635,7 @@ done
 ####
 ####
 #### ipv6 filter nft rules output
-$allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $which_ip6tables_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done
@@ -2764,43 +2770,49 @@ $allow_nft $which_ip6tables_nft -A FORWARD -j DROP &> /dev/null
 ####
 ####
 #### nft INPUT deleted ####
+####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### legacy INPUT deleted ####
+####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### nft INPUT 127.0.0.1 accept ####
+####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
 #### legacy INPUT 127.0.0.1 accept ####
 ####
-####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
-#### nft INPUT ACCEPT ####
+#### nft INPUT ACCEPT all or input_state ####
+####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
-#### legacy INPUT ACCEPT ####
+#### legacy INPUT ACCEPT all or input_state  ####
+####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
-#### nft INPUT DROP ####
+#### nft INPUT DROP all ####
+####
 $only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
-#### legacy INPUT DROP  ####
+#### legacy INPUT DROP all ####
+####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
