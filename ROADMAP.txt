@@ -63,7 +63,7 @@ gui - corregir - ok 202
 variable only_output - añadir regla para localhost - ok 202
 verbose cliente y servidor - quitar un retorno de carro - ok 202
 verbose cliente y servidor - añadir variable only_output - ok 202
-mini-wizard - ampliar a variable only_output - ok 202
-only_output - por defecto - ok 202
+mini-wizard - ampliar a variable only_output - ok 203
+only_output - por defecto - ok 203
 visual - pequeños cambios - ok 203
 codigo - añadir comentarios en castellano - 
