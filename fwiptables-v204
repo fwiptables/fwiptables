@@ -39,7 +39,8 @@ autosave_fwrecover="" ;                                           #english: void
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
 flinea="-100" ;                                                   #english: number line #spanish:linea de variables
-fvariables="-39" ;                                                #english: custom variables to show #spanish: variables a modificar
+fvariables="-41" ;                                                #english: custom variables #spanish: variables modificables
+fminivariables="-17";                                             #english: custom variables necesary to show #spanish: variables a modificar necesarias
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
@@ -55,6 +56,7 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 ################################################        spanish: fvariables:    variables para modificar
 ####
 ####
+echo -n #english: Necesary options .......... .......... ..........  #spanish: Opciones Necesarias .......... .......... ..........
 echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
 allow_legacy=no ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
 allow_nft= ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
@@ -69,8 +71,9 @@ server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tc
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
 input_state="" ; #english: modify with void for all or -m state --state related,established #spanish: modificar con vacio o -m state --state related,established
-echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente 
+echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente
 only_output="" ; #english: void, the rules are only to output in filter, or no #spanish: vacio, reglas solo para salida o no
+echo -n #english: Optional options .......... .......... .......... #spanish: Opciones opcionales .......... .......... ..........
 echo -n #english: Allow Other Options,  modify with void, or no #spanish: Permitir Otras Opciones, modificar con vacio o no
 allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
@@ -320,7 +323,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "mini-wizard" ]; then echo -n
-head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head -16 | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
+head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | head "$fminivariables" | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/mini-wizard.cfg"
 $favorite_text_editor "$directory_config/mini-wizard.cfg"
 $fiptables server mini-wizard.cfg
 $fiptables list
@@ -2906,7 +2909,7 @@ echo " [Launch rules]     eraserules offline client server allpermisive      "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        "
 echo "                    listnum forwardnum listnum6 forwardnum6            "
 echo " [Modify config]    reconfig new-config nueva-config                   "
-echo "                    show-config modify-config del-config               " 
+echo "                    show-config modify-config del-config               "
 echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp      "
 echo " [Recover fw]       fw-list fw-save fw-restore                         "
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                    "
