@@ -1,4 +1,4 @@
-Fran FireWall iptables: fwiptables version 204
+Fran FireWall iptables: fwiptables version 203
 ##################################################   Wellcome fwiptables #####
  [Launch rules]     eraserules offline client server allpermisive      
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        
@@ -14,12 +14,12 @@ Fran FireWall iptables: fwiptables version 204
  [Attend]           system-info wizard mini-wizard cli gui             
  [Help]             about depends help ayuda                           
 #####  Optional /etc/fwiptables/[config.cfg]  #####
-(*)[Example]  default.cfg email-example1.cfg english-example1.cfg
+ (*) [Example]  default.cfg email-example1.cfg english-example1.cfg
 ftp-example1.cfg games-example1.cfg irc-example1.cfg mini-wizard.cfg
 printer-example1.cfg samba-example1.cfg spanish-example1.cfg
 sql-example1.cfg ssh-example1.cfg torrent-example1.cfg
 vnc-example1.cfg vpn-example1.cfg web-example1.cfg wizard.cfg
-(*)[Own]  experimento.cfg game.cfg hola nuevaweb.cfg nuevogame.cfg web.cfg
+ (*) [Own]  game.cfg web.cfg
 #####  [The examples]  #####
  [Create a new config myown.cfg]    fwiptables new-config myown.cfg      
  [Launch client with myown.cfg]     fwiptables client myown.cfg          
@@ -67,10 +67,8 @@ vnc-example1.cfg vpn-example1.cfg web-example1.cfg wizard.cfg
      reconfig: Rewrite default files in /etc/fwiptables/*sample1.cfg
    new-config: Create a new configfile.cfg in english
  nueva-config: Create a new configfile.cfg in spanish
- clone-config: Clone a old config in a one new config
 modify-config: Edit one config.cfg
   show-config: Show one config.cfg
-rename-config: Rename one configuration file
    del-config: Delete one configuration file
 
 #####         [List sockets]

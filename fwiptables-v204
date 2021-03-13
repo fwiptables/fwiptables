@@ -1,8 +1,8 @@
 #!/bin/bash
 ##
 ##
-## necesary to path
-## necesario para los path
+## english: necesary to find several PATH
+## spanish: necesario para encontrar varios PATH
 source /etc/profile
 ##
 ##
@@ -26,8 +26,8 @@ source /etc/profile
 ####
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-first_option="$1" ; second_option="$2" ;                          #english: variables at launch  #spanish: variables al lanzar
-third_option="$3" ; fourth_option="$4" ;                          #english: variables at launch  #spanish: variables al lanzar
+first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
+third_option="$3" ; fourth_option="$4" ;                          #english: variables to launch  #spanish: variables a lanzar
 config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
@@ -103,15 +103,15 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ##
 ##
 ##
-## if This is the line number 95 to then up .. flinea="-number" .
-##
+## english: Before variable. If this is the line number 100 to then up .. flinea="-number"
+## spanish: Anterior variable. Si esta la linea numero 100, despues ... flinea="-number"
 ##
 ##
 ##
 ####
 ####
 ##############################       english: are you root: uid 0 ?
-##############################       spanish: eres admnistrador (identificador 0) ?;
+##############################       spanish: eres admnistrador: identificador 0 ?;
 ####
 ####
 if [ "$(id -u)" = "0" ]; then echo  -n ;
@@ -2071,8 +2071,8 @@ echo " [Version]          version upgrade dev-versions all-versions          "
 echo " [Attend]           system-info wizard mini-wizard cli gui             "
 echo " [Help]             about depends help ayuda                           "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
 echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
 echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
@@ -2120,10 +2120,10 @@ echo
 echo "     reconfig: Rewrite default files in $directory_config/*sample1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
-echo " clone-config: Clone a old config in a one new config"
+# echo " clone-config: Clone a old config in a one new config"
 echo "modify-config: Edit one config.cfg"
 echo "  show-config: Show one config.cfg"
-echo "rename-config: Rename one configuration file"
+# echo "rename-config: Rename one configuration file"
 echo "   del-config: Delete one configuration file"
 echo
 echo "$cinco         [List sockets]"
@@ -2255,8 +2255,8 @@ echo " [Version]          version upgrade dev-versions all-versions          "
 echo " [Attend]           system-info wizard mini-wizard cli gui             "
 echo " [Help]             about depends help ayuda                           "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
 echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
 echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
@@ -2304,10 +2304,10 @@ echo
 echo "     reconfig: Reescribe configs por defecto $directory_config/*ample1.cfg"
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-config: Crea una nueva configuracion.cfg en español"
-echo " clone-config: Duplica con otro nombre una config cfg"
+# echo " clone-config: Duplica con otro nombre una config cfg"
 echo "modify-config: Edita una existente configuracion.cfg"
 echo "  show-config: Muestra una existente configuracion.cfg"
-echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
+# echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
 echo "del-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         [Lista las conexiones abiertas]"
@@ -2447,15 +2447,17 @@ iptables_legacy="$allow_legacy"
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
 ####
-#### english:  ipv4 filter legacy rules erased
-#### spanish:  borrardo de filtros ipv4
+#### english:  Ipv4 filter legacy rules erased
+#### spanish:  Borrardo de filtros ipv4
 ####
 ####
-#### ipv4 erase rules
+#### english: Erase rules ipv4
+#### spanish: Borra reglas ipv4
 $which_iptables_legacy -t filter -F
 ####
 ####
-#### ipv6 erase rules
+#### english: Erase rules ipv6
+#### spanish: Borra reglas ipv6
 $which_ip6tables_legacy -t filter -F
 ####
 ####
@@ -2463,7 +2465,8 @@ $which_ip6tables_legacy -t filter -F
 ########## spanish:  reglas de ipv4 de entrada y salida
 ####
 ####
-#### ipv4 filter legacy rules input
+#### english: rules from input of legacy ipv4
+#### spanish: reglas de entrada de legacy ipv4
 ####
 ####
 $allow_legacy   $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
@@ -2484,7 +2487,8 @@ do $allow_legacy  $allow_ipv4 $allow_others_protocols $which_iptables_legacy -A 
 done
 ####
 ####
-#### ipv4 filter legacy rules output
+#### english: rules from output of legacy ipv4
+#### spanish: reglas de salida de legacy ipv4
 ####
 ####
 $allow_legacy   $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
@@ -2912,11 +2916,11 @@ echo " [Version]          version upgrade dev-versions all-versions          "
 echo " [Attend]           system-info wizard mini-wizard cli gui             "
 echo " [Help]             about depends help ayuda                           "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]    $fiptables new-config own.cfg      "
-echo " [Launch client with myown.cfg]     $fiptables client own.cfg          "
+echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
+echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
 echo " [List iptables rules]              $fiptables list                    "
 ####
 ####
