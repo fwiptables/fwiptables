@@ -82,16 +82,16 @@ allow_log_udp=no ; #english: void to udp log, and no to do not log udp #spanish:
 allow_forwading=no ; #english: void to allow ip forward, and no to drop forward ip #spanish: vacio para permitir reenvio, y no para denegar reenvios
 allow_nat=no ; #english: void to do NAT masquerade to default route, or no #spanish: vacio para hacer masquerade a otras redes o nada
 allow_vpn=no ; #english: void to allow exceptional host, and no to drop exceptional host #spanish: vacio para permitir hosts excepcionales y no para evitar permitirlos
-allow_others_protocols=no ; #english: void to allow other protocol or no #spanish: vacio para permitir otro protocolo o no
 allow_output_uid=no ; #english: void to allow excepcional user or no #spanish: vacio permite salida de paquetes de un usuario excepcional o no
 allow_output_gid=no ; #english: void to allow excepcional group or no #spanish: vacio permite salida de paquetes de un grupo excepcional o no
+allow_others_protocols=no ; #english: void to allow other protocol ip excepcional or no #spanish: vacio para permitir otro protocolo ip excepcional o no
 echo -n #english: Other Options, add with "," and join ranges with ":" #spanish: Otras Opciones, añadir con "," y poner rangos con ":"
 log_udp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
 log_tcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
 vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
-others_protocols=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 output_uid="root" ; #english: allow out packages excepcional from this user #spanish: permite salida de paquetes de este usuario excepcional o no
 output_gid="root" ; #english: allow out packages excepcional from this group #spanish: permite salida de paquetes de este grupo excepcional o no
+others_protocols=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 echo -n #english: Net to connect like client or server #spanish: Red para conectar como cliente o server
 net_ipv4_client=0/0  ;  #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 net_ipv4_server=0/0  ;  #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
@@ -2884,7 +2884,7 @@ if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else ec
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allow vpn servers are $vpn" ; fi
 if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid excepcional"; else echo "  Allow output uid excepcional: $output_uid , and input established " ; fi
 if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; else echo "  Allow output gid excepcional: $output_uid , and input established "; fi
-if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip more"; else echo "  Allow other protocol ip: $others_protocols" ; fi
+if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip excepcional"; else echo "  Allow other protocol ip excepcional: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 # auto save iptables save
 case $autosave_fwrecover in 
