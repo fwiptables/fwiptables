@@ -34,6 +34,7 @@ directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: wher
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="204" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
+defaultcfg_eng="english.cfg" ; defaultcfg_esp="spanish.cfg" ;     #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall  #spanish: ruta de firewall guardado
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
@@ -65,7 +66,7 @@ allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configur
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
 echo -n #english: Client ports, add with "," and join ranges with ":" #spanish: Puertos Cliente, añadir con "," y poner rangos con ":"
 client_tcp=http,https,ipp,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
-client_udp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
+client_udp=domain,ntp,bootpc,1025:60000 ; #english: udp ports for client #spanish: puertos udp para ser cliente
 echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: Puertos Servidor, añadir con "," y poner rangos con ":"
 server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
@@ -159,7 +160,11 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 ####
 if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
 else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
-echo "$fiptables $fversion installed in /usr/bin/$fiptables"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_eng"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_esp"
+echo "$fiptables $fversion installed in /usr/bin/$fiptables" ;
+echo "updated default.cfg and $defaultcfg_eng and $defaultcfg_esp" ;
 echo "Launch $fiptables to run $fiptables" ; fi
 ####
 ##############################       english: if second_option is a valid config.cfg               ###########################################
@@ -388,7 +393,6 @@ zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg
 "nueva-config  ")
 zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
 ;;
-
 "nueva-config   ")
 zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-config config.cfg"
 ;;
@@ -836,12 +840,12 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "reconfig" ]; then echo -n
-rm $directory_config/*ample1.cfg &> /dev/null
+rm $directory_config/*example1.cfg &> /dev/null
 echo "$cincuenta $fprogram version $fversion $cinco"
-echo "$cinco    Updating default configurations of examples:  $directory_config/*ample1.cfg "
+echo "$cinco    Updating default configurations of examples:  $directory_config/*example1.cfg "
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/english-example1.cfg"
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/spanish-example1.cfg"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_eng"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_esp"
 ####
 ####
 #### config: web-example1.cfg ####
@@ -2120,7 +2124,7 @@ echo "    arptables: List rules arptables arp"
 echo
 echo "$cinco         [Modify config]"
 echo
-echo "     reconfig: Rewrite default files in $directory_config/*sample1.cfg"
+echo "     reconfig: Rewrite default files in $directory_config/*example1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
 # echo " clone-config: Clone a old config in a one new config"
@@ -2304,7 +2308,7 @@ echo "    arptables: Lista las reglas de arp arptables"
 echo
 echo "$cinco         [Modifica config]"
 echo
-echo "     reconfig: Reescribe configs por defecto $directory_config/*ample1.cfg"
+echo "     reconfig: Reescribe configs por defecto $directory_config/*example1.cfg"
 echo "   new-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-config: Crea una nueva configuracion.cfg en español"
 # echo " clone-config: Duplica con otro nombre una config cfg"
