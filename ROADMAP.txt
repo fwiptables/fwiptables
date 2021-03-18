@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 204
+     *****     Version actual: 205
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -70,4 +70,5 @@ profile - añade source /etc/profile al script fwiptables - ok 203
 codigo - añadir localhost a ipv6 - ok 203
 variables - variables autoinstalacion  para default example1 del castellano y del ingles - ok 204
 server - para wizard y mini-wizard - ok 204
-codigo - añadir comentarios en castellano - 
+codigo - añadir comentarios en castellano - ok 204
+
