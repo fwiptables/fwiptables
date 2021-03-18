@@ -68,6 +68,6 @@ only_output - por defecto - ok 203
 visual - pequeños cambios - ok 203
 profile - añade source /etc/profile al script fwiptables - ok 203
 codigo - añadir localhost a ipv6 - ok 203
-variables - variables para default example1 del castellano y del ingles - ok 204
+variables - variables autoinstalacion  para default example1 del castellano y del ingles - ok 204
 server - para wizard y mini-wizard - ok 204
 codigo - añadir comentarios en castellano - 

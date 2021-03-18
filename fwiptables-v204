@@ -2517,8 +2517,12 @@ do $allow_legacy  $allow_ipv4 $allow_others_protocols      $which_iptables_legac
 done
 ####
 ####
-########## ipv6 filter legacy rules input and output ##### legacy ipv6
-#### ipv6 filter legacy rules input
+#### english: ipv6 filter legacy rules input and output 
+#### spanish: ipv6 filtros legacy reglas de entrada y salida
+####
+#### 
+#### english: ipv6 filter legacy rules input
+#### spanish: ipv6 filtros de legacy reglas de entrada
 ####
 ####
 $allow_legacy   $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
@@ -2540,7 +2544,8 @@ do $allow_legacy  $allow_ipv6 $allow_others_protocols      $which_ip6tables_lega
 done
 ####
 ####
-#### ipv6 filter legacy rules output
+#### english: ipv6 filter legacy rules output
+#### spanish: ipv6 filtros legacy reglas de salida
 ####
 ####
 $allow_legacy   $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
@@ -2572,8 +2577,14 @@ done
 ####
 ####
 #### ipv4 erase filter rules
+####
+####
 $which_iptables_nft -t filter -F
+####
+####
 #### ipv6 erase filter rules
+####
+####
 $which_ip6tables_nft -t filter -F
 ####
 ####
@@ -2600,7 +2611,8 @@ do $allow_nft $allow_ipv4 $allow_others_protocols       $which_iptables_nft -A I
 done
 ####
 ####
-#### ipv4 filter nft rules output
+#### english: ipv4 filter nft rules output
+#### spanish: ipv4 filter nft reglas de salida
 ####
 ####
 $allow_nft  $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
@@ -2622,8 +2634,12 @@ do $allow_nft $allow_ipv4 $allow_others_protocols      $which_iptables_nft -A OU
 done
 ####
 ####
-########## ipv6 filter nft rules input and output
+########## english: ipv6 filter nft rules input and output
+########## spanish: ipv6 filtros nft relgas de entrada y salida
+####
+####
 #### ipv6 filter nft rules input
+#### ipv6 filtros nft reglas d entrada
 ####
 ####
 $allow_nft  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
@@ -2645,7 +2661,10 @@ do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A I
 done
 ####
 ####
-#### ipv6 filter nft rules output
+#### english: ipv6 filter nft rules output
+#### spanish: ipv6 filtros nft reglas de salida
+####
+####
 $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
 do $which_ip6tables_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
@@ -2669,14 +2688,20 @@ done
 ##########################################    nat for ipv4 and ipv6
 ####
 ####
-#### nat DELETED
+#### english: nat DELETED
+#### spanish: borrado nat
+####
+####
 $which_iptables_nft -t nat -F
 $which_iptables_legacy -t nat -F
 $which_ip6tables_nft -t nat -F
 $which_ip6tables_legacy -t nat -F
 ####
 ####
-#### nat ip4 and ip6 
+#### english: do masquerade nat ip4 and ip6 
+#### spanish: hace nat masquerade ip4 y ip6
+####
+####
 $allow_nft $allow_ipv4 $allow_nat $which_iptables_nft -t nat -A POSTROUTING -j MASQUERADE      &>/dev/null
 $allow_legacy $allow_ipv4 $allow_nat $which_iptables_legacy -t nat -A POSTROUTING -j MASQUERADE   &>/dev/null
 $allow_nft $allow_ipv6 $allow_nat $which_ip6tables_nft -t nat -A POSTROUTING -j MASQUERADE     &>/dev/null
@@ -2687,6 +2712,8 @@ $allow_legacy $allow_ipv6 $allow_nat $which_ip6tables_legacy -t nat -A POSTROUTI
 ####
 ####
 #### legacy ip4
+####
+####
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -F &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT $input_state  -j ACCEPT &> /dev/null
@@ -2695,6 +2722,8 @@ $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A FORWARD 
 ####
 ####
 #### nft ip4 
+####
+####
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -F &> /dev/null
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT $input_state -j ACCEPT &> /dev/null
@@ -2702,10 +2731,12 @@ $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A OUTPUT -j ACCEP
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
- ########################################     ipv6 iptables allpermisisive
+########################################     ipv6 iptables allpermisisive
 ####
 ####
 #### legacy ip6 
+####
+####
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -F &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT $input_state -j ACCEPT &> /dev/null
@@ -2714,6 +2745,8 @@ $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A FORWARD 
 ####
 ####
 #### nft ip6 
+####
+####
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -F &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT $input_state -j ACCEPT &> /dev/null
@@ -2721,10 +2754,14 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A OUTPUT -j ACCE
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
-########################################       iptables ipv4 and ipv6 with forward rules
+######################################## english: iptables ipv4 and ipv6 with forward rules
+######################################## spanish: iptables ipv4 y ipv5 con reglas de reenvio
 ####
 ####
-####   deactive for default with forward or without forward
+#### english: deactive for default with forward or without forward
+#### spanish: desactiva por defecto con reenvio o sin reenvio
+####
+####
 $which_sysctl -w net.ipv4.conf.all.forwarding=0 &> /dev/null
 $which_sysctl -w net.ipv6.conf.all.forwarding=0 &> /dev/null
 ####
