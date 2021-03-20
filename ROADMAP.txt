@@ -70,5 +70,5 @@ profile - añade source /etc/profile al script fwiptables - ok 203
 codigo - añadir localhost a ipv6 - ok 203
 variables - variables autoinstalacion  para default example1 del castellano y del ingles - ok 204
 server - para wizard y mini-wizard - ok 204
+ejemplos - cambios en udp de 60000 a 65000 - ok 204
 codigo - añadir comentarios en castellano - ok 204
-
