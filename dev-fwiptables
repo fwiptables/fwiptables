@@ -32,7 +32,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="204" ;  #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="205" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
@@ -1543,6 +1543,60 @@ esac
 exit ; fi
 ####
 ####
+############################       english: new-mini-config: system script, the new-mini-config option to create new configs
+############################       spanish: new--mini config: script de sistema, la opcion new-mini-config para cear nuevas config
+if [ "$first_option" = "new-mini-config" ]; then echo -n
+case $second_option in
+"$NULL")
+config_option="si"
+;;
+esac
+case "$config_option" in
+"si")
+echo "$fprogram version $fversion"
+echo "$cincuenta Nueva config $cinco"
+echo "$cinco Use: $fiptables new-mini-config config-no-existent"
+exit
+;;
+"no")
+frespuestaa="$second_option"
+frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
+head $flinea $0 | grep -iv ^# | tail $fvariables | head $fminivariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
+$favorite_text_editor "$directory_config/$frespuestab"
+echo Created $frespuestab
+;;
+esac
+exit ; fi
+####
+####
+############################       english: nueva-mini-config: system script, the nueva-mini-config option to create new configs
+############################       spanish: nueva-mini-config: script de sistema, la opcion nueva-mini-config para cear nuevas config
+####
+####
+if [ "$first_option" = "nueva-mini-config" ]; then echo -n
+case $second_option in
+"$NULL")
+config_option="si"
+;;
+esac
+case "$config_option" in
+"si")
+echo "$fprogram version $fversion"
+echo "$cincuenta Nueva config $cinco"
+echo "$cinco Use: $fiptables nueva-mini-config config-no-existente"
+exit
+;;
+"no")
+frespuestaa="$second_option"
+frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
+head $flinea $0 | grep -iv ^# | tail $fvariables | head $fminivariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g" > $directory_config/$frespuestab
+$favorite_text_editor "$directory_config/$frespuestab"
+echo Created $frespuestab
+;;
+esac
+exit ; fi
+####
+####
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 ####
@@ -1586,6 +1640,8 @@ if [ "$first_option" = "del-config" ]; then echo -n
 case "$config_option" in
 "si")
 rm "$directory_config/$second_option"
+echo "$fprogram version $fversion"
+echo "$cincuenta del-config"
 echo "$directory_config/$second_option" deleted
 ;;
 "no")
@@ -2912,8 +2968,8 @@ if [ "$allow_log_udp" = "no" ]; then echo "  Dont allow log server udp"; else  e
 if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allow ip forwading iptables" ; fi
 if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allow nat masquerade" ; fi
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allow vpn servers are $vpn" ; fi
-if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid excepcional"; else echo "  Allow output uid excepcional: $output_uid , and input established " ; fi
-if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid excepcional"; else echo "  Allow output gid excepcional: $output_uid , and input established "; fi
+if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allow output uid output excepcional: $output_uid , and input established " ; fi
+if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allow output gid output excepcional: $output_uid , and input established "; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip excepcional"; else echo "  Allow other protocol ip excepcional: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 # auto save iptables save
@@ -2939,6 +2995,7 @@ echo " [Launch rules]     eraserules offline client server allpermisive      "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        "
 echo "                    listnum forwardnum listnum6 forwardnum6            "
 echo " [Modify config]    reconfig new-config nueva-config                   "
+echo "                    new-mini-config nueva-mini-config                  "
 echo "                    show-config modify-config del-config               "
 echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp      "
 echo " [Recover fw]       fw-list fw-save fw-restore                         "
