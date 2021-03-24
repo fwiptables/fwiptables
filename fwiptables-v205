@@ -523,8 +523,10 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   402 show-config \
   403 new-config \
   404 nueva-config \
-  405 modify-config \
-  406 del-config \
+  405 new-mini-config \
+  406 nueva-mini-config \
+  407 modify-config \
+  408 del-config \
   00500 "Other tables"  \
   501 raw-ip4 \
   502 raw-ip6 \
@@ -677,11 +679,23 @@ case $menuprincipal in
  $fiptables nueva-config $archivo
  ;;
  405)
-  archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ $fiptables new-mini-config $archivo
+ ;;
+ 406)
+ clear
+ archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ $fiptables nueva-mini-config $archivo
+ ;;
+ 407)
+ archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables modify-config $archivo
  ;;
- 406)
+ 408)
  echo
  archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
@@ -2208,10 +2222,10 @@ echo
 echo "     reconfig: Rewrite default files in $directory_config/*example1.cfg"
 echo "   new-config: Create a new configfile.cfg in english"
 echo " nueva-config: Create a new configfile.cfg in spanish"
-# echo " clone-config: Clone a old config in a one new config"
+echo "   new-config: Create a new basic configfile.cfg in english"
+echo " nueva-config: Create a new basic configfile.cfg in spanish"
 echo "modify-config: Edit one config.cfg"
 echo "  show-config: Show one config.cfg"
-# echo "rename-config: Rename one configuration file"
 echo "   del-config: Delete one configuration file"
 echo
 echo "$cinco         [List sockets]"
@@ -2389,13 +2403,13 @@ echo "    arptables: Lista las reglas de arp arptables"
 echo
 echo "$cinco         [Modifica config]"
 echo
-echo "     reconfig: Reescribe configs por defecto $directory_config/*example1.cfg"
-echo "   new-config: Crea una nueva configuracion.cfg en ingles"
-echo " nueva-config: Crea una nueva configuracion.cfg en español"
-# echo " clone-config: Duplica con otro nombre una config cfg"
+echo "         reconfig: Reescribe configs por defecto $directory_config/*example1.cfg"
+echo "       new-config: Crea una nueva configuracion.cfg en ingles"
+echo "     nueva-config: Crea una nueva configuracion.cfg en español"
+echo "  new-mini-config: Crea una nueva basica configuracion.cfg en ingles"
+echo "nueva-mini-config: Crea una nueva basica configuracion.cfg en español"
 echo "modify-config: Edita una existente configuracion.cfg"
 echo "  show-config: Muestra una existente configuracion.cfg"
-# echo "rename-config: Cambia el nombre a una existente configuracion.cfg"
 echo "del-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         [Lista las conexiones abiertas]"
@@ -2988,14 +3002,14 @@ echo "  * Where ipv4 is usually necesary"
 echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
-echo "  * Where 0/0 and :: are all the networks, usually necesary "
+echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
 if [ "$only_output" = "$NULL" ]; then echo "$cinco  [Whith only the output rules] $cinco"
 echo "  * where which only output rules is more fastly conection"
 else echo "$cinco  [Whith the input rules and the output rules] $cinco"
 echo "  * where which only output rules is more fastly conection"; fi
-if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP]  $cinco"
+if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP] $cinco"
 else echo "$cinco  [With input state IP]  $cinco"
-echo " Input satate: $input_state"; fi
+echo "  Input satate: $input_state"; fi
 echo "$cinco  [With Others configs]  $cinco"
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allow send pings" ; fi
 if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allow recive pings" ; fi
