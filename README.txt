@@ -4,6 +4,7 @@ Fran FireWall iptables: fwiptables version 205
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        
                     listnum forwardnum listnum6 forwardnum6            
  [Modify config]    reconfig new-config nueva-config                   
+                    new-mini-config nueva-mini-config                  
                     show-config modify-config del-config               
  [List sockets]     route ss netstat lsof ipforwading tcpdump arp      
  [Recover fw]       fw-list fw-save fw-restore                         
