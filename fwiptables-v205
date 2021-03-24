@@ -72,7 +72,7 @@ echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: 
 server_tcp=ssh,http,https ; #english: tcp ports for server #spanish:  puertos tcp para servir
 server_udp=discard ; #english: udp ports for server #spanish: puertos udp para servir
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
-input_state="-m state --state new,related,established" ; #english:void for all or -m state --state new,related,established,untracked,invalid #spanish: modificar con vacio o -m state --state new,related,established,untracked,invalid
+input_state="" ; #english:void for all or -m state --state new,related,established,untracked,invalid #spanish: modificar con vacio o -m state --state new,related,established,untracked,invalid
 echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente
 only_output="" ; #english: void, the rules are only to output in filter, or no #spanish: vacio, reglas solo para salida o no
 echo -n #english: Optional options .......... .......... .......... #spanish: Opciones opcionales .......... .......... ..........
@@ -2219,14 +2219,14 @@ echo "    arptables: List rules arptables arp"
 echo
 echo "$cinco         [Modify config]"
 echo
-echo "     reconfig: Rewrite default files in $directory_config/*example1.cfg"
-echo "   new-config: Create a new configfile.cfg in english"
-echo " nueva-config: Create a new configfile.cfg in spanish"
-echo "   new-config: Create a new basic configfile.cfg in english"
-echo " nueva-config: Create a new basic configfile.cfg in spanish"
-echo "modify-config: Edit one config.cfg"
-echo "  show-config: Show one config.cfg"
-echo "   del-config: Delete one configuration file"
+echo "          reconfig: Rewrite default files in $directory_config/*example1.cfg"
+echo "        new-config: Create a new configfile.cfg in english"
+echo "      nueva-config: Create a new configfile.cfg in spanish"
+echo "   new-mini-config: Create a new basic configfile.cfg in english"
+echo " nueva-mini-config: Create a new basic configfile.cfg in spanish"
+echo "     modify-config: Edit one config.cfg"
+echo "       show-config: Show one config.cfg"
+echo "        del-config: Delete one configuration file"
 echo
 echo "$cinco         [List sockets]"
 echo

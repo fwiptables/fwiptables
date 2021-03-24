@@ -1,4 +1,4 @@
-Fran FireWall iptables: fwiptables version 203
+Fran FireWall iptables: fwiptables version 205
 ##################################################   Wellcome fwiptables #####
  [Launch rules]     eraserules offline client server allpermisive      
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        
@@ -14,11 +14,12 @@ Fran FireWall iptables: fwiptables version 203
  [Attend]           system-info wizard mini-wizard cli gui             
  [Help]             about depends help ayuda                           
 #####  Optional /etc/fwiptables/[config.cfg]  #####
- (*) [Example]  default.cfg email-example1.cfg english-example1.cfg
-ftp-example1.cfg games-example1.cfg irc-example1.cfg mini-wizard.cfg
-printer-example1.cfg samba-example1.cfg spanish-example1.cfg
-sql-example1.cfg ssh-example1.cfg torrent-example1.cfg
-vnc-example1.cfg vpn-example1.cfg web-example1.cfg wizard.cfg
+ (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
+email-example1.cfg ftp-example1.cfg games-example1.cfg
+irc-example1.cfg mini-wizard.cfg printer-example1.cfg
+samba-example1.cfg sql-example1.cfg ssh-example1.cfg
+torrent-example1.cfg vnc-example1.cfg vpn-example1.cfg
+web-example1.cfg wizard.cfg
  (*) [Own]  game.cfg web.cfg
 #####  [The examples]  #####
  [Create a new config myown.cfg]    fwiptables new-config myown.cfg      
@@ -64,12 +65,14 @@ vnc-example1.cfg vpn-example1.cfg web-example1.cfg wizard.cfg
 
 #####         [Modify config]
 
-     reconfig: Rewrite default files in /etc/fwiptables/*sample1.cfg
-   new-config: Create a new configfile.cfg in english
- nueva-config: Create a new configfile.cfg in spanish
-modify-config: Edit one config.cfg
-  show-config: Show one config.cfg
-   del-config: Delete one configuration file
+          reconfig: Rewrite default files in /etc/fwiptables/*example1.cfg
+        new-config: Create a new configfile.cfg in english
+      nueva-config: Create a new configfile.cfg in spanish
+   new-mini-config: Create a new basic configfile.cfg in english
+ nueva-mini-config: Create a new basic configfile.cfg in spanish
+     modify-config: Edit one config.cfg
+       show-config: Show one config.cfg
+        del-config: Delete one configuration file
 
 #####         [List sockets]
 
@@ -144,22 +147,24 @@ modify-config: Edit one config.cfg
 
 ################################################## Examples of variables to the configs files, default.cfg
 
+#####             ###  Necesary options .......... .......... ..........  
 #####             ###  the iptables firewall netfilter, choose one or two 
-allow_legacy=no ;             ###  launch xtables, void to yes or type no 
-allow_nft= ;             ###  launch neftables, void to yes or type no 
+allow_legacy= ;             ###  launch xtables, void to yes or type no 
+allow_nft=no ;             ###  launch neftables, void to yes or type no 
 #####             ###  ip protocol, modify with void or no 
 allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont configure ipv4  
 allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
 #####             ###  Client ports, add with "," and join ranges with ":" 
-client_tcp=http,https,ipp,ssh ;             ###  tcp ports for client 
-client_udp=domain,ntp,bootpc ;             ###  udp ports for client 
+client_tcp=http,https,ssh ;             ###  tcp ports for client 
+client_udp=domain,ntp,bootpc,1025:65500 ;             ###  udp ports for client 
 #####             ###  Server ports, add with "," and join ranges with ":" 
 server_tcp=ssh,http,https ;             ###  tcp ports for server 
 server_udp=discard ;             ###  udp ports for server 
 #####             ###  Selective Input state 
-input_state="" ;             ###  modify with void for all or -m state --state related,established 
+input_state="" ;             ### void for all or -m state --state new,related,established,untracked,invalid 
 #####             ###  no or void to works with only output rules 
 only_output="" ;             ###  void, the rules are only to output in filter, or no 
+#####             ###  Optional options .......... .......... .......... 
 #####             ###  Allow Other Options,  modify with void, or no 
 allow_ping_send=no ;             ###  void to allow send pings, and no to drop send pings 
 allow_ping_recive=no ;             ###  void to allow recive pings, and no to drop recive pings 
@@ -168,16 +173,16 @@ allow_log_udp=no ;             ###  void to udp log, and no to do not log udp
 allow_forwading=no ;             ###  void to allow ip forward, and no to drop forward ip 
 allow_nat=no ;             ###  void to do NAT masquerade to default route, or no 
 allow_vpn=no ;             ###  void to allow exceptional host, and no to drop exceptional host 
-allow_others_protocols=no ;             ###  void to allow other protocol or no 
 allow_output_uid=no ;             ###  void to allow excepcional user or no 
 allow_output_gid=no ;             ###  void to allow excepcional group or no 
+allow_others_protocols=no ;             ###  void to allow other protocol ip excepcional or no 
 #####             ###  Other Options, add with "," and join ranges with ":" 
 log_udp=discard ;             ###  the udp ports to log 
 log_tcp=ssh ;             ###  the tcp ports to log 
 vpn=sourceforge.net,wesnoth.org ;             ###  allow this excepcitonal host 
-others_protocols=icmp,igmp ;             ###  allow others protocols from /etc/protocolos 
 output_uid="root" ;             ###  allow out packages excepcional from this user 
 output_gid="root" ;             ###  allow out packages excepcional from this group 
+others_protocols=icmp,igmp ;             ###  allow others protocols from /etc/protocolos 
 #####             ###  Net to connect like client or server 
 net_ipv4_client=0/0  ;              ###  the net to client ipv4, all is 0/0  
 net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0 
