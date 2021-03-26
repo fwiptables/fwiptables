@@ -146,6 +146,37 @@ echo " [List iptables rules]              $fiptables list                       
 exit ; fi
 ####
 ####
+##############################       english: text if are you runing gui ?
+##############################       spanish: text si estas corriendo el gui ?
+####
+####
+if [ "$first_option" = "graphicall" ]; then echo  -n ;
+echo "$fprogram version $fversion "
+echo "$cincuenta"
+echo "_[Launch rules]_____eraserules offline client server allpermisive______"
+echo "_[List rules]_______list forward list6 forward6 nat-ip4 nat-ip6________"
+echo "____________________listnum forwardnum listnum6 forwardnum6____________"
+echo "_[Modify config]____reconfig new-config nueva-config___________________"
+echo "____________________new-mini-config nueva-mini-config__________________"
+echo "____________________show-config modify-config del-config_______________"
+echo "_[List sockets]_____route ss netstat lsof ipforwading tcpdump arp______"
+echo "_[Recover fw]_______fw-list fw-save fw-restore_________________________"
+echo "_[Auth sudo]________auth-sudo remove-sudo list-sudo____________________"
+echo "_[Tool icmp]________ping-ip4 ping-ip6__________________________________"
+echo "_[Tool tcp]_________trace-ip4 trace-ip6 host resolveip geoip___________"
+echo "_[Version]__________version upgrade dev-versions all-versions__________"
+echo "_[Attend]___________system-info wizard mini-wizard cli gui_____________"
+echo "_[Help]_____________about depends help ayuda___________________________"
+echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
+echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
+echo "$cinco  [The examples]  $cinco"
+echo "_[Create a new config myown.cfg]____$fiptables new-config own.cfg______"
+echo "_[Launch client with myown.cfg]_____$fiptables client own.cfg__________"
+echo "_[List iptables rules]______________$fiptables list____________________"
+exit ; fi
+####
+####
 ##############################       english: default configs                     ###########################################
 ##############################       spanish: default configurations              ###########################################
 ####
@@ -365,7 +396,7 @@ esac
 titulo="$fiptables gui"
 untexto="$fiptables gui"
 cd $directory_config
-menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables)" --add-entry="$fiptables" )
+menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables graphicall)" --add-entry="$fiptables" )
 case $? in
 1)
 zenity --info --ellipsize --text="fwiptables good bye"

@@ -74,3 +74,4 @@ ejemplos - cambios en udp de 60000 a 65000 - ok 204
 codigo - añadir comentarios en castellano - ok 204
 nueva-mini-config - añadir - ok 205
 nueva-new-config - añadir - ok 205
+gui - nueva apariencia - ok 206
