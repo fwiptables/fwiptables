@@ -1198,7 +1198,7 @@ exit; fi
 if [ "$first_option" = "route" ]; then   echo  -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Show ip address and ip route"
-echo "$(uname -srmon)"
+echo "$(uname -srom)"
 echo "$cinco  ip address  $cinco "
 case $which_ip in
 $NULL)
@@ -1241,7 +1241,7 @@ echo " Install ss command"
 *)
 echo "$fprogram version $fversion";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
-uname -srmon
+uname -srom
 echo "$cinco      The ipv6 sockets       $cinco"
 $which_ss -a6
 echo "$cinco      The ipv4 sockets      $cinco"
@@ -1263,7 +1263,7 @@ echo " Install lsof"
 *)
 echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
-uname -srmon
+uname -srom
 echo "$cinco      The sockets with lsof      $cinco"
 $which_lsof -i
 ;;
@@ -1283,7 +1283,7 @@ echo " Install netstat"
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta  The sockets list with netstat"
-uname -srmon
+uname -srom
 echo "$cincuenta      The devices list with netstat      $cinco" ;
 $which_netstat -i
 echo "$cincuenta      The route table with  netstat      $cinco" ;
@@ -1844,7 +1844,7 @@ exit; fi
 if [ "$first_option" = "ipforwading" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Show ipforwading $cinco"
-uname -srmon
+uname -srom
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 $which_sysctl -a | grep -i forwarding
 exit; fi
@@ -2214,7 +2214,7 @@ if [ "$first_option" = "system-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   System info $cinco"
 echo "$cinco [System info:  Kernel Linux] $cinco"
-uname -srmon
+uname -srom
 echo "$cinco [System info:  Processor] $cinco"
 lscpu | egrep -i "socket|Model name|cpu max"
 echo "$cinco [System info:  Memory RAM] $cinco"
