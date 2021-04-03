@@ -68,7 +68,7 @@ allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configur
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
 echo -n #english: Client ports, add with "," and join ranges with ":" #spanish: Puertos Cliente, añadir con "," y poner rangos con ":"
 client_tcp=http,https,ssh ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
-client_udp=domain,ntp,bootpc ; #english: udp ports for client #spanish: puertos udp para ser cliente
+client_udp=domain,bootpc,ntp,https ; #english: udp ports for client #spanish: puertos udp para ser cliente
 echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: Puertos Servidor, añadir con "," y poner rangos con ":"
 server_tcp=""  ; #english: tcp ports for server #spanish:  puertos tcp para servir
 server_udp=""  ; #english: udp ports for server #spanish: puertos udp para servir
@@ -209,6 +209,17 @@ cd $directory_config
 ####
 ####
 if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
+####
+####
+##############################       english: if first_option exists cfg launch server            ###########################################
+##############################       spanish: si primera opcion existe cfg lanza server           ###########################################
+####
+####
+case $first_option in
+*.cfg)
+if [ -f "$directory_config/$first_option" ]; then $fiptables server $first_option ; exit ; else echo -n; fi
+;;
+esac
 ####
 ####
 ##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
@@ -952,7 +963,7 @@ echo "input_state='-m state --state new,related,established' ; " >> $directory_c
 ####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/games-example1.cfg
 echo "# config  #" >> $directory_config/games-example1.cfg
-echo "client_udp=domain,ntp,bootpc,1025:65499; " >> $directory_config/games-example1.cfg
+echo "client_udp=domain,bootpc,ntp,https,1025:65499; " >> $directory_config/games-example1.cfg
 echo "client_tcp=http,https" >> $directory_config/games-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/games-example1.cfg
 echo "only_output= ; " >> $directory_config/games-example1.cfg
@@ -964,7 +975,7 @@ echo "input_state='-m state --state new,related,established' ; " >> $directory_c
 ####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/torrent-example1.cfg
 echo "# config  #" >> $directory_config/torrent-example1.cfg
-echo "client_udp=domain,ntp,bootpc,1025:65499; " >> $directory_config/torrent-example1.cfg
+echo "client_udp=domain,bootpc,ntp,https,1025:65499; " >> $directory_config/torrent-example1.cfg
 echo "client_tcp=http,https" >> $directory_config/torrent-example1.cfg
 echo "allow_ping_send=no ;  allow_ping_recive=no ; "  >> $directory_config/torrent-example1.cfg
 echo "only_output= ; " >> $directory_config/torrent-example1.cfg
@@ -976,7 +987,7 @@ echo "input_state='-m state --state new,related,established' ; " >> $directory_c
 ####
 sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/samba-example1.cfg
 echo "# config  #" >> $directory_config/samba-example1.cfg
-echo "client_udp=domain,ntp,bootpc,137:139 ; " >> $directory_config/samba-example1.cfg
+echo "client_udp=domain,bootpc,ntp,https,137:139 ; " >> $directory_config/samba-example1.cfg
 echo "client_tcp=http,https,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
 echo "server_udp=137:139 ; " >> $directory_config/samba-example1.cfg
 echo "server_tcp=ssh,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
@@ -1043,7 +1054,7 @@ sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/f
 echo "# config  #" >> $directory_config/ftp-example1.cfg
 echo "client_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
 echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
-echo "client_udp=domain,ntp,bootpc,tftp">> $directory_config/ftp-example1.cfg
+echo "client_udp=domain,bootpc,ntp,https,tftp">> $directory_config/ftp-example1.cfg
 echo "server_udp=tftp">> $directory_config/ftp-example1.cfg
 echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1.cfg
 echo "only_output= ; " >> $directory_config/ftp-example1.cfg
@@ -3078,7 +3089,7 @@ exit; fi
 ####
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch rules]     eraserules offline client server allpermisive      "
+echo " [Launch rules]     eraserules offline allpermisive [file.cfg]         "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        "
 echo "                    listnum forwardnum listnum6 forwardnum6            "
 echo " [Modify config]    reconfig new-config nueva-config                   "
@@ -3096,9 +3107,9 @@ echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]    $fiptables new-config myown.cfg      "
-echo " [Launch client with myown.cfg]     $fiptables client myown.cfg          "
-echo " [List iptables rules]              $fiptables list                    "
+echo " [Create a new config myown.cfg]              $fiptables new-config myown.cfg    "
+echo " [Launch a config.cfg with myown.cfg]         $fiptables myown.cfg               "
+echo " [List iptables rules]                        $fiptables list                    "
 ####
 ####
 # left script
