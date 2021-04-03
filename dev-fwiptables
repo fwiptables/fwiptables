@@ -7,8 +7,10 @@
 source /etc/profile
 ##
 ##
+##
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
+##
 ##
 ##   This program is wWith gpl license, the program is copyleft, it is free.
 ##
@@ -33,7 +35,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="207" ;  #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="208" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
@@ -154,27 +156,27 @@ exit ; fi
 if [ "$first_option" = "graphicall" ]; then echo  -n ;
 echo "$fprogram version $fversion "
 echo "$cincuenta"
-echo "_[Launch rules]_____eraserules_offline_allpermisive_[file.cfg]_________"
-echo "_[List rules]_______list_forward_list6_forward6_nat-ip4_nat-ip6________"
-echo "____________________listnum_forwardnum_listnum6_forwardnum6____________"
-echo "_[Modify config]____reconfig_new-config_nueva-config___________________"
-echo "____________________new-mini-config_nueva-mini-config__________________"
-echo "____________________show-config_modify-config_del-config_______________"
-echo "_[List sockets]_____route_ss_netstat_lsof_ipforwading_tcpdump_arp______"
-echo "_[Recover fw]_______fw-list_fw-save_fw-restore_________________________"
-echo "_[Auth sudo]________auth-sudo_remove-sudo_list-sudo____________________"
-echo "_[Tool icmp]________ping-ip4_ping-ip6__________________________________"
-echo "_[Tool tcp]_________trace-ip4_trace-ip6_host_resolveip_geoip___________"
-echo "_[Version]__________version_upgrade_dev-versions_all-versions__________"
-echo "_[Attend]___________system-info_wizard_mini-wizard_cli_gui_____________"
-echo "_[Help]_____________about_depends_help_ayuda___________________________"
+echo "_[Launch_rules]_____eraserules__offline__allpermisive__[file.cfg]__________"
+echo "_[List_rules]_______list__forward__list6__forward6__nat-ip4__nat-ip6_______"
+echo "____________________listnum__forwardnum__listnum6__forwardnum6_____________"
+echo "_[Modify_config]____reconfig__new-config__nueva-config_____________________"
+echo "____________________new-mini-config__nueva-mini-config_____________________"
+echo "____________________show-config__modify-config__del-config_________________"
+echo "_[List_sockets]_____route__ss__netstat__lsof__ipforwading__tcpdump_arp_____"
+echo "_[Recover_fw]_______fw-list__fw-save__fw-restore___________________________"
+echo "_[Auth_sudo]________auth-sudo__remove-sudo__list-sudo______________________"
+echo "_[Tool_icmp]________ping-ip4__ping-ip6_____________________________________"
+echo "_[Tool_tcp]_________trace-ip4__trace-ip6__host__resolveip__geoip___________"
+echo "_[Version]__________version__upgrade__dev-versions__all-versions___________"
+echo "_[Attend]___________system-info__wizard__mini-wizard__cli__gui_____________"
+echo "_[Help]_____________about__depends__help__ayuda____________________________"
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo "(*)[Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo "(*)[Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo "_[Create a new config myown.cfg]____$fiptables new-config own.cfg______"
-echo "_[Launch client with myown.cfg]_____$fiptables client own.cfg__________"
-echo "_[List iptables rules]______________$fiptables list____________________"
+echo "_[Create_a_new_config_myown.cfg]________$fiptables new-config own.cfg______"
+echo "_[Launch_client_with_myown.cfg]_________$fiptables client own.cfg__________"
+echo "_[List_iptables_rules]__________________$fiptables list____________________"
 exit ; fi
 ####
 ####
@@ -3109,13 +3111,14 @@ echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg" | fmt $flistado)"
 echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]              $fiptables new-mini-config myown.cfg   "
-echo " [Launch the config myown.cfg]                $fiptables myown.cfg                   "
-echo " [List iptables rules]                        $fiptables list                        "
-####
-####
+echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
+echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
+echo " [List iptables rules]              $fiptables list                        "
+##
+##
+########
 # left script
-####
+########
 ####
 #######################         english: End of script
 #######################         spanish: fin del script

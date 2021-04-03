@@ -1,19 +1,19 @@
-Fran FireWall iptables: fwiptables version 205
+Fran FireWall iptables: fwiptables version 207
 ##################################################   Wellcome fwiptables #####
- [Launch rules]     eraserules offline client server allpermisive      
- [List rules]       list forward list6 forward6 nat-ip4 nat-ip6        
-                    listnum forwardnum listnum6 forwardnum6            
- [Modify config]    reconfig new-config nueva-config                   
-                    new-mini-config nueva-mini-config                  
-                    show-config modify-config del-config               
- [List sockets]     route ss netstat lsof ipforwading tcpdump arp      
- [Recover fw]       fw-list fw-save fw-restore                         
- [Auth sudo]        auth-sudo remove-sudo list-sudo                    
- [Tool icmp]        ping-ip4 ping-ip6                                  
- [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip           
- [Version]          version upgrade dev-versions all-versions          
- [Attend]           system-info wizard mini-wizard cli gui             
- [Help]             about depends help ayuda                           
+ [Launch rules]     eraserules offline allpermisive client server [config.cfg]
+ [List rules]       list forward list6 forward6 nat-ip4 nat-ip6               
+                    listnum forwardnum listnum6 forwardnum6                   
+ [Modify config]    reconfig new-config nueva-config                          
+                    new-mini-config nueva-mini-config                         
+                    show-config modify-config del-config                      
+ [List sockets]     route ss netstat lsof ipforwading tcpdump arp             
+ [Recover fw]       fw-list fw-save fw-restore                                
+ [Auth sudo]        auth-sudo remove-sudo list-sudo                           
+ [Tool icmp]        ping-ip4 ping-ip6                                         
+ [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                  
+ [Version]          version upgrade dev-versions all-versions                 
+ [Attend]           system-info wizard mini-wizard cli gui                    
+ [Help]             about depends help ayuda                                  
 #####  Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
 email-example1.cfg ftp-example1.cfg games-example1.cfg
@@ -21,7 +21,7 @@ irc-example1.cfg mini-wizard.cfg printer-example1.cfg
 samba-example1.cfg sql-example1.cfg ssh-example1.cfg
 torrent-example1.cfg vnc-example1.cfg vpn-example1.cfg
 web-example1.cfg wizard.cfg
- (*) [Own]  game.cfg web.cfg
+ (*) [Own]  game.cfg musica.cfg web.cfg
 #####  [The examples]  #####
  [Create a new config myown.cfg]    fwiptables new-config myown.cfg      
  [Launch client with myown.cfg]     fwiptables client myown.cfg          
@@ -33,9 +33,10 @@ web-example1.cfg wizard.cfg
 
    eraserules: Remove the iptables rules in ipv4 and ipv6
       offline: Disconected for all servers and clients except localhost
+ allpermisive: Configure a firewall very permisive
        client: Configure the firewall for internet client
        server: Configure the firewall for internet client and internet server
- allpermisive: Configure a firewall very permisive
+   [file.cfg]: Configure the firewall for internet with file.cfg
 
 #####         [List iptables rules]
 
@@ -157,12 +158,12 @@ allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont c
 allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
 #####             ###  Client ports, add with "," and join ranges with ":" 
 client_tcp=http,https,ssh ;             ###  tcp ports for client 
-client_udp=domain,ntp,bootpc,1025:65500 ;             ###  udp ports for client 
+client_udp=domain,bootpc,ntp,https ;             ###  udp ports for client 
 #####             ###  Server ports, add with "," and join ranges with ":" 
-server_tcp=ssh,http,https ;             ###  tcp ports for server 
-server_udp=discard ;             ###  udp ports for server 
+server_tcp=""  ;             ###  tcp ports for server 
+server_udp=""  ;             ###  udp ports for server 
 #####             ###  Selective Input state 
-input_state="" ;             ### void for all or -m state --state new,related,established,untracked,invalid 
+input_state="-m state --state NEW,RELATED,ESTABLISHED" ;             ### void for all or -m state --state new,related,established,untracked,invalid 
 #####             ###  no or void to works with only output rules 
 only_output="" ;             ###  void, the rules are only to output in filter, or no 
 #####             ###  Optional options .......... .......... .......... 
