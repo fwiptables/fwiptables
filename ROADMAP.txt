@@ -77,4 +77,5 @@ nueva-new-config - añadir - ok 205
 gui - nueva apariencia - ok 206
 server - lanza server con: fwiptables config.cfg - ok 207
 ejemplos - añadir a udp https: domain,bootpc,ntp,https - ok 207
-ejemplos - only_input="" -
+ejemplos - only_input="" - ok 208
+velocidad - poder limintarla - 208
