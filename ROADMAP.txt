@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 207
+     *****     Version actual: 208
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -78,4 +78,7 @@ gui - nueva apariencia - ok 206
 server - lanza server con: fwiptables config.cfg - ok 207
 ejemplos - añadir a udp https: domain,bootpc,ntp,https - ok 207
 ejemplos - only_input="" - ok 208
-velocidad - poder limintarla - 208
+velocidad - poder limintarla - ok 208
+server y cliente - cambiados a custom - ok 208
+cfg - valida como primer parametro - ok 208
+cambios en ayuda y help - ok 208
