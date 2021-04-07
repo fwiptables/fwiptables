@@ -37,7 +37,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="208" ;  #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="209" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
@@ -1405,7 +1405,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo "$cincuenta   List filter ipv4 numerical"
  case $legacycuatro in
  "$NULL")
- echo "$cinco  [Without rules xtables ipv4]";
  ;;
  *)
  echo "$cinco  [With rules xtables ipv4]"
@@ -1415,7 +1414,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco  [Without rules neftables ipv4]";
  ;;
  *)
  echo "$cinco  [With rules neftables ipv4]"
@@ -1450,7 +1448,6 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "$cincuenta   List filter ipv6 numerical"
  case $legacyseis in
  "$NULL")
- echo "$cinco  [Without rules xtables ipv6]"
  ;;
  *)
  echo "$cinco  [With rules xtables ipv6]"
@@ -1460,7 +1457,6 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  esac
  case $nftseis in
  "$NULL")
- echo "$cinco  [Without rules neftables ipv6]"
  ;;
  *)
  echo "$cinco  [With rules neftables ipv6]"
@@ -3162,7 +3158,7 @@ echo " [List iptables rules]              $fiptables list                       
 ########
 ####
 #######################         english: End of script
-#######################         spanish: fin del script
+#######################         spanish: Fin del script
 ####
 ####
 ##
