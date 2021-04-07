@@ -2390,7 +2390,7 @@ exit; fi
 ############################       spanish: ayuda: la opcion de ayuda en español
 ####
 ####
-if [ "$first_option" = "ayuda" ]; then echo
+if [ "$first_option" = "ayuda" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg] "
