@@ -1,4 +1,3 @@
-
 Fran FireWall iptables: fwiptables version 208
 ##################################################   Wellcome fwiptables #####
  [Launch rules]     eraserules offline allpermisive custom [config.cfg] 
