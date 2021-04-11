@@ -132,7 +132,7 @@ if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work"
 echo "$fprogram version $fversion"
 echo "$cincuenta   need to be root to work $fiptables $cinco"
-echo " [launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -145,7 +145,7 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends help ayuda                                   "
+echo " [Help]             about depends examples help ayuda                                   "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -163,7 +163,7 @@ exit ; fi
 if [ "$first_option" = "graphicall" ]; then echo  -n ;
 echo "$fprogram version $fversion "
 echo "$cincuenta"
-echo " [launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -176,7 +176,7 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends help ayuda                                   "
+echo " [Help]             about depends examples help ayuda                                   "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -551,77 +551,78 @@ else)
 esac
 cd $directory_config
 menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
-  00100 "launch rules" \
-  101 eraserules \
-  102 offline \
-  103 allpermisive \
-  104 custom \
-  105 mini-wizard \
-  106 full-wizard \
-  00200 "list rules" \
-  201 list \
-  202 forward \
-  203 list6  \
-  204 forward6 \
-  205 nat-ip4 \
-  206 nat-ip6 \
-  00300 "list sockets" \
-  301 route \
-  302 ss \
-  303 netstat \
-  304 lsof \
-  305 ipforwading \
-  306 tcpdump \
-  307 arp \
-  00400 "Modify config" \
-  401 reconfig \
-  402 show-config \
-  403 new-full-config \
-  404 nueva-completa-config \
-  405 new-mini-config \
-  406 nueva-mini-config \
-  407 modify-config \
-  408 del-config \
-  00500 "Other tables"  \
-  501 raw-ip4 \
-  502 raw-ip6 \
-  503 mangle-ip4 \
-  504 mangle-ip6 \
-  505 security-ip4 \
-  506 security-ip6 \
-  00600 "Recover fw" \
-  601 fw-list  \
-  602 fw-save  \
-  603 fw-restore  \
-  00700 "tool icmp" \
-  701 ping-ip4 \
-  702 ping-ip6 \
-  00800 "tool tcp"  \
-  801 trace-ip4 \
-  802 trace-ip6 \
-  803 host \
-  804 resolveip \
-  805 geoip \
-  00900 "auth sudo"  \
-  901 auth-sudo \
-  902 remove-sudo \
-  903 list-sudo \
-  01000 "Versions" \
-  1001 version \
-  1002 upgrade \
-  1003 dev-versions \
-  1004 all-versions \
-  01100 "Attend" \
-  1101 system-info \
-  1102 mini-wizard \
-  1103 full-wizard \
-  1104 cli \
-  1105 gui \
+  00100 "Guide" \
+  101 system-info \
+  102 mini-wizard \
+  103 full-wizard \
+  104 cli \
+  105 gui \
+  00200 "Launch rules" \
+  201 eraserules \
+  202 offline \
+  203 allpermisive \
+  204 custom \
+  205 mini-wizard \
+  206 full-wizard \
+  00300 "List rules" \
+  301 list \
+  302 forward \
+  303 list6  \
+  304 forward6 \
+  305 nat-ip4 \
+  306 nat-ip6 \
+  00400 "List sockets" \
+  401 route \
+  402 ss \
+  403 netstat \
+  404 lsof \
+  405 ipforwading \
+  406 tcpdump \
+  407 arp \
+  00500 "Modify config" \
+  501 reconfig \
+  502 show-config \
+  503 new-full-config \
+  504 nueva-completa-config \
+  505 new-mini-config \
+  506 nueva-mini-config \
+  507 modify-config \
+  508 del-config \
+  00600 "Other tables"  \
+  601 raw-ip4 \
+  602 raw-ip6 \
+  603 mangle-ip4 \
+  604 mangle-ip6 \
+  605 security-ip4 \
+  606 security-ip6 \
+  00700 "Recover fw" \
+  701 fw-list  \
+  702 fw-save  \
+  703 fw-restore  \
+  00800 "Tool icmp" \
+  801 ping-ip4 \
+  802 ping-ip6 \
+  00900 "Tool tcp"  \
+  901 trace-ip4 \
+  902 trace-ip6 \
+  903 host \
+  904 resolveip \
+  905 geoip \
+  01000 "Auth sudo"  \
+  1001 auth-sudo \
+  1002 remove-sudo \
+  1003 list-sudo \
+  01100 "Versions" \
+  1101 version \
+  1102 upgrade \
+  1103 dev-versions \
+  1104 all-versions \
   01200 "Help" \
   1201 about \
   1202 depends \
-  1203 help \
-  1204 ayuda \
+  1203 examples \
+  1204 help \
+  1205 ayuda \
   )"
 case $menuprincipal in
  0*)
@@ -632,259 +633,259 @@ case $menuprincipal in
  ;;
  101)
  clear
- $fiptables eraserules
+ $fiptables system-info
  ;;
  102)
  clear
- $fiptables offline
+ $fiptables mini-wizard
  ;;
  103)
  clear
- $fiptables allpermisive
+ $fiptables full-wizard
  ;;
  104)
+ clear
+ $fiptables cli
+ ;;
+ 105)
+ clear
+ $fiptables gui
+ ;;
+ 201)
+ clear
+ $fiptables eraserules
+ ;;
+ 202)
+ clear
+ $fiptables offline
+ ;;
+ 203)
+ clear
+ $fiptables allpermisive
+ ;;
+ 204)
  clear
  archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables custom $archivo
  ;;
- 105)
+ 205)
  clear
  $fiptables mini-wizard
  ;;
- 106)
+ 206)
  clear
  $fiptables full-wizard
  ;;
- 201)
+ 301)
  clear
  $fiptables list
  ;;
- 202)
+ 302)
  clear
  $fiptables forward
  ;;
- 203)
+ 303)
  clear
  $fiptables list6
  ;;
- 204)
+ 304)
  clear
  $fiptables forward6
  ;;
- 205)
+ 305)
  clear
  $fiptables nat-ip4
  ;;
- 206)
+ 306)
  clear
  $fiptables nat-ip6
  ;;
- 301)
+ 401)
  clear
  $fiptables route
  ;;
- 302)
+ 402)
  clear
  $fiptables ss
  ;;
- 303)
+ 403)
  clear
  $fiptables netstat
  ;;
- 304)
+ 404)
  clear
  $fiptables lsof
  ;;
- 305)
+ 405)
  clear
  $fiptables ipforwading
  ;;
- 306)
+ 406)
  clear
  $fiptables tcpdump
  ;;
- 307)
+ 407)
  clear
  $fiptables arp -a
  ;;
- 401)
+ 501)
  clear
  $fiptables reconfig
  ;;
- 402)
+ 502)
  clear
  archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables show-config $archivo
  echo "$cinco Launch: $fiptables custom $archivo"
  ;;
- 403)
+ 503)
  clear
  archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-full-config $archivo
  ;;
- 404)
+ 504)
  clear
  archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-completa-config $archivo
  ;;
- 405)
+ 505)
  clear
  archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-mini-config $archivo
  ;;
- 406)
+ 506)
  clear
  archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-mini-config $archivo
  ;;
- 407)
+ 507)
  archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables modify-config $archivo
  ;;
- 408)
+ 508)
  echo
  archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables del-config $archivo
  echo "deleted $archivo"
  ;;
- 501)
+ 601)
  clear
  $fiptables raw-ip4
  ;;
- 502)
+ 602)
  clear
  $fiptables raw-ip6
  ;;
- 503)
+ 603)
  clear
  $fiptables mangle-ip4
  ;;
- 504)
+ 604)
  clear
  $fiptables mangle-ip6
  ;;
- 505)
+ 605)
  clear
  $fiptables security-ip4
  ;;
- 506)
+ 606)
  clear
  $fiptables security-ip6
  ;;
- 601)
+ 701)
 clear
  $fiptables fw-list
  ;;
- 602)
+ 702)
  clear
  archivo="$(dialog --stdout --title "save the firewall format standar" --inputbox "New name" 0 0)"
  clear
  echo "$cincuenta saved $archivo"
  $fiptables fw-save $archivo
  ;;
- 603)
+ 703)
  clear
  $fiptables fw-restore
  ;;
- 701)
+ 801)
  clear
  resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables ping-ip4 $resolve
  ;;
- 702)
+ 802)
  clear
  resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables ping-ip6 $resolve
  ;;
- 801)
+ 901)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables trace-ip4 $resolve
  ;;
- 802)
+ 902)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables trace-ip6 $resolve
  ;;
- 803)
+ 903)
  clear
  resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables host $resolve
  ;;
- 804)
+ 904)
  clear
  resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables resolveip $resolve
  ;;
- 805)
+ 905)
  clear
  resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables geoip $resolve
  ;;
- 901)
+ 1001)
  clear
  resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear
  $fiptables auth-sudo $resolve
  ;;
- 902)
+ 1002)
  clear
  $fiptables remove-sudo
  ;;
- 903)
+ 1003)
  clear
  $fiptables list-sudo
  ;;
- 1001)
+ 1101)
  clear
  $fiptables version
  ;;
- 1002)
+ 1102)
  clear
  $fiptables upgrade
  ;;
- 1003)
+ 1103)
  clear
  $fiptables dev-versions
  ;;
- 1004)
- clear
- $fiptables all-versions
- ;;
- 1101)
- clear
- $fiptables system-info
- ;;
- 1102)
- clear
- $fiptables mini-wizard
- ;;
- 1103)
- clear
- $fiptables full-wizard
- ;;
  1104)
  clear
- $fiptables cli
- ;;
- 1105)
- clear
- $fiptables gui
+ $fiptables all-versions
  ;;
  1201)
  clear
@@ -896,9 +897,13 @@ clear
  ;;
  1203)
  clear
- $fiptables help | less
+ $fiptables examples
  ;;
  1204)
+ clear
+ $fiptables help | less
+ ;;
+ 1205)
  clear
  $fiptables ayuda | less
  ;;
@@ -940,6 +945,22 @@ echo "$fversion"
 exit ; fi
 ####
 ####
+##############################       english: examples: system script, the reconfig option, delete and create files1.cfg
+##############################       spanish: examples: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
+####
+####
+if [ "$first_option" = "examples" ]; then echo -n
+#### regen config examples
+$fiptables reconfig
+#### show config examples
+echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
+echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
+echo "$cinco  [The examples]  $cinco"
+echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
+echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
+echo " [List iptables rules]              $fiptables list                        "
+exit; fi
 ##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
 ##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
 ####
@@ -2208,7 +2229,7 @@ exit; fi
 if [ "$first_option" = "help" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2221,7 +2242,7 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends help ayuda                                   "
+echo " [Help]             about depends examples help ayuda                                   "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -2391,7 +2412,7 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2404,7 +2425,7 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends help ayuda                                   "
+echo " [Help]             about depends examples help ayuda                                   "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -3146,7 +3167,7 @@ exit; fi
 ####
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -3159,7 +3180,7 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends help ayuda                                   "
+echo " [Help]             about depends examples help ayuda                                   "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
