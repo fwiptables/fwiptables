@@ -2215,6 +2215,8 @@ echo "$fprogram version $fversion"
 echo "$cincuenta   System info $cinco"
 echo "$cinco [System info:  Kernel Linux] $cinco"
 uname -a
+echo "$cinco [System info:  Processor] $cinco"
+lscpu | egrep -i "socket|Model name|cpu max"
 echo "$cinco [System info:  Memory RAM] $cinco"
 free -h
 echo "$cinco [System info:  Disks] $cinco"
