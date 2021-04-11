@@ -82,3 +82,4 @@ velocidad - poder limintarla - ok 208
 server y cliente - cambiados a custom - ok 208
 cfg - valida como primer parametro - ok 208
 cambios en ayuda y help - ok 208
+cambios en default y wizard - ok 209

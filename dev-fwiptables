@@ -46,7 +46,7 @@ autosave_fwrecover="" ;                                           #english: void
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
 flinea="-120" ;                                                   #english: number line #spanish:linea de variables
-fvariables="-41" ;                                                #english: custom variables #spanish: variables modificables
+fvariables="-45" ;                                                #english: custom variables #spanish: variables modificables
 fminivariables="-17";                                             #english: variables necesary to show #spanish: variables necesarias
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
@@ -554,9 +554,9 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   00100 "launch rules" \
   101 eraserules \
   102 offline \
-  103 client \
-  104 server  \
-  105 allpermisive \
+  103 allpermisive \
+  104 custom \
+  105 mini-wizard \
   106 full-wizard \
   00200 "list rules" \
   201 list \
@@ -640,9 +640,7 @@ case $menuprincipal in
  ;;
  103)
  clear
- archivo="$(dialog --title "client" --stdout --inputbox "$(ls $directory_config)" 0 0)"
- clear
- $fiptables custom $archivo
+ $fiptables allpermisive
  ;;
  104)
  clear
@@ -652,7 +650,7 @@ case $menuprincipal in
  ;;
  105)
  clear
- $fiptables allpermisive
+ $fiptables mini-wizard
  ;;
  106)
  clear
@@ -2988,63 +2986,81 @@ $allow_nft $which_ip6tables_nft -A FORWARD -j DROP &> /dev/null
 ########################################       english: iptables ipv4 y ipv6 con variable only_output
 ####
 ####
-#### nft INPUT deleted ####
+#### english: nft INPUT deleted 
+#### spanish: nft INPUT borradas
+####
 ####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
 ####
 ####
-#### legacy INPUT deleted ####
+#### english: legacy INPUT deleted
+#### spanish: legacy INPUT borradas
+####
 ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
 ####
 ####
-#### nft INPUT 127.0.0.1 accept ####
+#### english: nft INPUT 127.0.0.1 accept
+#### spanish: nft INPUT 127.0.0.1 acepta
+####
 ####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
-#### legacy INPUT 127.0.0.1 accept ####
+#### english: legacy INPUT 127.0.0.1 accept
+#### spanish: legacy input 127.0.0.1 acepta
+####
 ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
-#### legacy INPUT bandwidth limit ####
+#### english: legacy INPUT bandwidth limit
+#### spanish: legacay INPUT limita ancho de banda
 ####
 ####
 $only_output $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
-#### nft INPUT bandwidth limit ####
+#### english: nft INPUT bandwidth limit
+#### spanish: nft INPUT limita ancho de banda
 ####
 ####
 $only_output $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
-#### nft INPUT ACCEPT all or input_state ####
+#### english: nft INPUT ACCEPT all or input_state
+#### spanish: nft INPUT acepta todo o estado de entrada
+####
 ####
 $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
-#### legacy INPUT ACCEPT all or input_state  ####
+#### english: legacy INPUT ACCEPT all or input_state 
+#### spanish: entrada acepta todo o estado de entrada
+####
 ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
-#### nft INPUT DROP all ####
+#### english: nft INPUT DROP all
+#### spanish: nft INPUT deniega todo
+####
 ####
 $only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
-#### legacy INPUT DROP all ####
+#### english: legacy INPUT DROP all
+#### spanish: legacy INPUT deniega todo
+####
 ####
 $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
@@ -3097,9 +3113,9 @@ else echo "$cinco  [With input state IP]  $cinco"
 echo "  Input satate: $input_state"; fi
 echo "$cinco  [With Others configs]  $cinco"
 if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth" ; 
-else echo "  Limit bandwidth input until/above "$bandwidth_input"kb/sec"; fi
+else echo "  Limit input: above "$bandwidth_input"kb/sec"; fi
 if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth" ;
-else echo "  Limit bandwidth output until/above "$bandwidth_output"kb/sec"; fi
+else echo "  Limit output: above "$bandwidth_output"kb/sec"; fi
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allow send pings" ; fi
 if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allow recive pings" ; fi
 if [ "$allow_log_tcp" = "no" ]; then echo "  Dont allow log server tcp"; else  echo "  Allow logservers in port: $log_tcp" ; fi
@@ -3151,11 +3167,12 @@ echo "$cinco  [The examples]  $cinco"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
 echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
 echo " [List iptables rules]              $fiptables list                        "
-##
-##
+####
+####
 ########
 # left script
 ########
+####
 ####
 #######################         english: End of script
 #######################         spanish: Fin del script
@@ -3170,4 +3187,6 @@ echo " [List iptables rules]              $fiptables list                       
 ####
 #######################
 #######################
+####
+####
 exit 0
