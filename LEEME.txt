@@ -1,9 +1,10 @@
-Fran FireWall iptables: fwiptables version 208
+Fran FireWall iptables: fwiptables version 210
 ##################################################   Wellcome fwiptables #####
- [Launch rules]     eraserules offline allpermisive custom [config.cfg] 
+ [Launch Guide]     system-info full-wizard mini-wizard cli gui                
+ [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
                     listnum forwardnum listnum6 forwardnum6                    
- [Modify config]    reconfig new-full-config nueva-completa-config                           
+ [Modify config]    reconfig new-full-config nueva-completa-config             
                     new-mini-config nueva-mini-config                          
                     show-config modify-config del-config                       
  [List sockets]     route ss netstat lsof ipforwading tcpdump arp              
@@ -12,8 +13,7 @@ Fran FireWall iptables: fwiptables version 208
  [Tool icmp]        ping-ip4 ping-ip6                                          
  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   
  [Version]          version upgrade dev-versions all-versions                  
- [Attend]           system-info full-wizard mini-wizard cli gui                     
- [Help]             about depends help ayuda                                   
+ [Help]             about depends examples help ayuda                                   
 #####  Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
 email-example1.cfg ftp-example1.cfg full-wizard.cfg
@@ -146,6 +146,10 @@ del-config: Borra unaa existente configuracion.cfg
 
 ##################################################  Ejemplos de las variables de configuración, defaultcfg
 
+#####             ###  Opciones Necesarias .......... .......... ..........
+#####             ###  el iptables firewall netfilter, elige uno o dos
+allow_legacy= ;             ###  lanza xtables, vacio para si, o escribe no
+allow_nft=no ;             ###  lanza neftables, vacio para si, o escribe no
 #####             ###  procolo ip, modificar con vacio o no
 allow_ipv4= ;             ###  varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ;             ###  varcio para ejecutar el firewall con ipv6 o no para no

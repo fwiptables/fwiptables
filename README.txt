@@ -1,5 +1,6 @@
-Fran FireWall iptables: fwiptables version 208
+Fran FireWall iptables: fwiptables version 210
 ##################################################   Wellcome fwiptables #####
+ [Launch Guide]     system-info full-wizard mini-wizard cli gui                
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
                     listnum forwardnum listnum6 forwardnum6                    
@@ -12,8 +13,7 @@ Fran FireWall iptables: fwiptables version 208
  [Tool icmp]        ping-ip4 ping-ip6                                          
  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   
  [Version]          version upgrade dev-versions all-versions                  
- [Attend]           system-info full-wizard mini-wizard cli gui                
- [Help]             about depends help ayuda                                   
+ [Help]             about depends examples help ayuda                                   
 #####  Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
 email-example1.cfg ftp-example1.cfg full-wizard.cfg
@@ -146,6 +146,10 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 ################################################## Examples of variables to the configs files, default.cfg
 
+#####             ###  Necesary options .......... .......... ..........  
+#####             ###  the iptables firewall netfilter, choose one or two 
+allow_legacy= ;             ###  launch xtables, void to yes or type no 
+allow_nft=no ;             ###  launch neftables, void to yes or type no 
 #####             ###  ip protocol, modify with void or no 
 allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont configure ipv4  
 allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
