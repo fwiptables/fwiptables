@@ -1,6 +1,6 @@
 Fran FireWall iptables: fwiptables version 210
 ##################################################   Wellcome fwiptables #####
- [Launch Guide]     system-info full-wizard mini-wizard cli gui                
+ [Launch guide]     system-info full-wizard mini-wizard cli gui                
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
                     listnum forwardnum listnum6 forwardnum6                    

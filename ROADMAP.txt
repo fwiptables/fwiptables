@@ -85,4 +85,5 @@ cambios en ayuda y help - ok 208
 cambios en default y wizard - ok 209
 cambios de apariencia - ok 210
 system-info - ok 210
-
+help modify -
+ayuda modify - 

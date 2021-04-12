@@ -37,7 +37,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="210" ;  #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="211" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
@@ -132,7 +132,7 @@ if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work"
 echo "$fprogram version $fversion"
 echo "$cincuenta   need to be root to work $fiptables $cinco"
-echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -163,7 +163,7 @@ exit ; fi
 if [ "$first_option" = "graphicall" ]; then echo  -n ;
 echo "$fprogram version $fversion "
 echo "$cincuenta"
-echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2231,7 +2231,7 @@ exit; fi
 if [ "$first_option" = "help" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2414,7 +2414,7 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -3169,7 +3169,7 @@ exit; fi
 ####
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch Guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
