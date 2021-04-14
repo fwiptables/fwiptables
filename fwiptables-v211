@@ -1205,7 +1205,7 @@ $NULL)
 echo "Without ip command"
 ;;
 *)
-echo "$($which_ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo "$($which_ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g'| grep -iv valid_lft )"
 ;;
 esac
 echo "$cinco  ip route  $cinco"
@@ -2235,7 +2235,7 @@ echo " [Launch guide]     system-info full-wizard mini-wizard cli gui           
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
-echo " [Modify config]    reconfig new-full-config nueva-completa-config             "
+echo " [Modify config]    new-full-config nueva-completa-config             "
 echo "                    new-mini-config nueva-mini-config                          "
 echo "                    show-config modify-config del-config                       "
 echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp              "
@@ -2255,6 +2255,14 @@ echo " [List iptables rules]              $fiptables list                       
 echo
 echo "$cincuenta The first option"
 echo ""
+echo "$cinco         [Launch guide]"
+echo
+echo "  system-info: Show info system"
+echo "  full-wizard: Asistant y launch complete server"
+echo "  mini-wizard: Asistant y Launch simple server"
+echo "          cli: Comand line interface with menus"
+echo "          gui: Graphicall user interface"
+echo ""
 echo "$cinco         [Launch iptables rules]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
@@ -2265,7 +2273,7 @@ echo "   [file.cfg]: Configure the firewall for internet with file.cfg"
 echo
 echo "$cinco         [List iptables rules]"
 echo
-echo "               The filter table:"
+echo "               The filter table named:"
 echo "         list: List iptables filter rules input and output ipv4"
 echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules input and output ipv6"
@@ -2292,14 +2300,13 @@ echo "    arptables: List rules arptables arp"
 echo
 echo "$cinco         [Modify config]"
 echo
-echo "          reconfig: Rewrite default files in $directory_config/*example1.cfg"
-echo "        new-full-config: Create a new configfile.cfg in english"
-echo "      nueva-completa-config: Create a new configfile.cfg in spanish"
-echo "   new-mini-config: Create a new basic configfile.cfg in english"
-echo " nueva-mini-config: Create a new basic configfile.cfg in spanish"
-echo "     modify-config: Edit one config.cfg"
-echo "       show-config: Show one config.cfg"
-echo "        del-config: Delete one configuration file"
+echo "       new-full-config: Create a new configfile.cfg in english"
+echo " nueva-completa-config: Create a new configfile.cfg in spanish"
+echo "       new-mini-config: Create a new basic configfile.cfg in english"
+echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
+echo "         modify-config: Edit one config.cfg"
+echo "           show-config: Show one config.cfg"
+echo "            del-config: Delete one configuration file"
 echo
 echo "$cinco         [List sockets]"
 echo
@@ -2343,18 +2350,11 @@ echo "      upgrade: Upgrade $fiptables at the latest version"
 echo " dev-versions: Version in development from $fiptables"
 echo " all-versions: All versions from $fiptables"
 echo
-echo "$cinco         [Attend]"
-echo
-echo "  system-info: Show info system"
-echo "  full-wizard: Asistant y launch complete server"
-echo "  mini-wizard: Asistant y Launch simple server"
-echo "          cli: Comand line interface with menus"
-echo "          gui: Graphicall user interface"
-echo ""
 echo "$cinco         [Help]"
 echo
 echo "        about: About the $fiptables"
 echo "      depends: Show depends for $fiptables"
+echo "     examples: Regen examples for $fiptables"
 echo "         help: Show this help in english"
 echo "        ayuda: Show this help in spanish"
 echo ""
@@ -2437,6 +2437,14 @@ echo " [Launch the config myown.cfg]      $fiptables myown.cfg                  
 echo " [List iptables rules]              $fiptables list                        "
 echo
 echo "$cincuenta La primera opción:"
+echo ""
+echo "$cinco         [Lanzar guia]"
+echo
+echo "  system-info: Muestra la informacion del sistema"
+echo "       full-wizard: Asistente y lanza completo servidor iptables"
+echo "  mini-wizard: Asistente y lanza simple servidor iptables"
+echo "          cli: Interfaz de linea de comandos con menus"
+echo "          gui: Interfaz grafico de usuario"
 echo
 echo "$cinco         [Lanza reglas de iptables]"
 echo
@@ -2475,14 +2483,13 @@ echo "    arptables: Lista las reglas de arp arptables"
 echo
 echo "$cinco         [Modifica config]"
 echo
-echo "         reconfig: Reescribe configs por defecto $directory_config/*example1.cfg"
 echo "       new-full-config: Crea una nueva configuracion.cfg en ingles"
-echo "     nueva-completa-config: Crea una nueva configuracion.cfg en español"
-echo "  new-mini-config: Crea una nueva basica configuracion.cfg en ingles"
-echo "nueva-mini-config: Crea una nueva basica configuracion.cfg en español"
-echo "modify-config: Edita una existente configuracion.cfg"
-echo "  show-config: Muestra una existente configuracion.cfg"
-echo "del-config: Borra unaa existente configuracion.cfg"
+echo " nueva-completa-config: Crea una nueva configuracion.cfg en español"
+echo "       new-mini-config: Crea una nueva basica configuracion.cfg en ingles"
+echo "     nueva-mini-config: Crea una nueva basica configuracion.cfg en español"
+echo "         modify-config: Edita una existente configuracion.cfg"
+echo "           show-config: Muestra una existente configuracion.cfg"
+echo "            del-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         [Lista las conexiones abiertas]"
 echo
@@ -2526,18 +2533,11 @@ echo "      upgrade: Actualiza $fiptables a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
 echo " all-versions: Todas las versiones de $fiptables"
 echo
-echo "$cinco         [Asistencia]"
-echo
-echo "  system-info: Muestra la informacion del sistema"
-echo "       full-wizard: Asistente y lanza completo servidor iptables"
-echo "  mini-wizard: Asistente y lanza simple servidor iptables"
-echo "          cli: Interfaz de linea de comandos con menus"
-echo "          gui: Interfaz grafico de usuario"
-echo
 echo "$cinco         [Ayuda]"
 echo
 echo "        About: Acerca de $fiptables"
 echo "      Depends: Muestra las dependencias de $fiptables"
+echo "     examples: Regenerar ejemplos de $fiptables"
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
 echo
