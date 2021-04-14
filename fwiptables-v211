@@ -1198,7 +1198,7 @@ exit; fi
 if [ "$first_option" = "route" ]; then   echo  -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Show ip address and ip route"
-echo "$(uname -a)"
+echo "$(uname -srmon)"
 echo "$cinco  ip address  $cinco "
 case $which_ip in
 $NULL)
@@ -1241,7 +1241,7 @@ echo " Install ss command"
 *)
 echo "$fprogram version $fversion";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
-uname -a
+uname -srmon
 echo "$cinco      The ipv6 sockets       $cinco"
 $which_ss -a6
 echo "$cinco      The ipv4 sockets      $cinco"
@@ -1263,7 +1263,7 @@ echo " Install lsof"
 *)
 echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
-uname -a
+uname -srmon
 echo "$cinco      The sockets with lsof      $cinco"
 $which_lsof -i
 ;;
@@ -1283,7 +1283,7 @@ echo " Install netstat"
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta  The sockets list with netstat"
-uname -a
+uname -srmon
 echo "$cincuenta      The devices list with netstat      $cinco" ;
 $which_netstat -i
 echo "$cincuenta      The route table with  netstat      $cinco" ;
@@ -1844,7 +1844,7 @@ exit; fi
 if [ "$first_option" = "ipforwading" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Show ipforwading $cinco"
-uname -a
+uname -srmon
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 $which_sysctl -a | grep -i forwarding
 exit; fi
@@ -2214,7 +2214,7 @@ if [ "$first_option" = "system-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   System info $cinco"
 echo "$cinco [System info:  Kernel Linux] $cinco"
-uname -a
+uname -srmon
 echo "$cinco [System info:  Processor] $cinco"
 lscpu | egrep -i "socket|Model name|cpu max"
 echo "$cinco [System info:  Memory RAM] $cinco"
@@ -2258,8 +2258,8 @@ echo ""
 echo "$cinco         [Launch guide]"
 echo
 echo "  system-info: Show info system"
-echo "  full-wizard: Asistant y launch complete server"
-echo "  mini-wizard: Asistant y Launch simple server"
+echo "  full-wizard: Asistant y launch complete firewall"
+echo "  mini-wizard: Asistant y Launch simple firewall"
 echo "          cli: Comand line interface with menus"
 echo "          gui: Graphicall user interface"
 echo ""
@@ -2273,13 +2273,13 @@ echo "   [file.cfg]: Configure the firewall for internet with file.cfg"
 echo
 echo "$cinco         [List iptables rules]"
 echo
-echo "               The filter table named:"
+echo "               [The filter table with names]"
 echo "         list: List iptables filter rules input and output ipv4"
 echo "      forward: List iptables filter rules foward"
 echo "        list6: List iptables filter rules input and output ipv6"
 echo "     forward6: List iptables filter rules forward ipv6"
 echo
-echo "               The filter table numerical: "
+echo "               [The filter table with numbers]"
 echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
 echo "   forwardnum: List iptables filter rules foward in numbers"
 echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
@@ -2441,8 +2441,8 @@ echo ""
 echo "$cinco         [Lanzar guia]"
 echo
 echo "  system-info: Muestra la informacion del sistema"
-echo "       full-wizard: Asistente y lanza completo servidor iptables"
-echo "  mini-wizard: Asistente y lanza simple servidor iptables"
+echo "       full-wizard: Asistente y lanza completo cortafuegos"
+echo "  mini-wizard: Asistente y lanza simple cortafuegos"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
 echo
@@ -2456,13 +2456,13 @@ echo "[archivo.cfg]: Configura el cortafuegos con un archivo.cfg"
 echo
 echo "$cinco         [Lista las reglas de tablas de iptables]"
 echo
-echo "               La tabla de filtros "
+echo "               La tabla de filtros con nombres"
 echo "         list: Lista las reglas de ipv4 de filtros de entrada y salida"
 echo "      forward: Lista las reglas de ipv4 de filtros de reenvio"
 echo "        list6: Lista las reglas de ipv6 de filtros de entrada y salida"
 echo "     forward6: Lista las reglas de ipv6 de filtros de reenvio"
 echo
-echo "               La tabla de filtros numerica"
+echo "               La tabla de filtros con numeros"
 echo "      listnum: Lista las reglas de ipv4 de filtros de entrada y salida en numeros"
 echo "   forwardnum: Lista las reglas de ipv4 de filtros de reenvio en numeros"
 echo "     list6num: Lista las reglas de ipv6 de filtros de entrada y salida en numeros"

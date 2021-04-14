@@ -88,4 +88,4 @@ system-info - ok 210
 help modify - ok 211
 ayuda modify - ok 211
 arreglo route - ok 211
-
+"uname -a" pasa a "uname -srmon" - ok 211
