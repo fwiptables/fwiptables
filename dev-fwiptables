@@ -46,7 +46,7 @@ autosave_fwrecover="" ;                                           #english: void
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
 flinea="-125" ;                                                   #english: number line #spanish:linea de variables
-fvariables="-45" ;                                                #english: custom variables #spanish: variables modificables
+fvariables="-47" ;                                                #english: custom variables #spanish: variables modificables
 fminivariables="-17";                                             #english: variables necesary to show #spanish: variables necesarias
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
@@ -2390,12 +2390,12 @@ echo "$cincuenta  [uid and/or gid excepcional]"
 echo
 echo "     User and/or group excepcional have output conection allowed in firewall"
 echo
-echo "$cincuenta  [The iptables netftilter]"
+echo "$cincuenta  [Two iptables netftilter]"
 echo
 echo "     iptables-legacy   is    support for xtables "
 echo "     iptables-nft      is    support for neftables "
 echo
-echo "$cincuenta  [firewall need clients udp ports]"
+echo "$cincuenta  [client firewall needs in udp ports]"
 echo
 echo "     This port is necesary to update the date  : ntp"
 echo "     This port is necesary to dhcp and get ip  : bootpc"
@@ -2579,7 +2579,7 @@ echo "$cincuenta  [uid y/o gid excepcional]"
 echo
 echo "     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall"
 echo
-echo "$cincuenta  [Los iptables netftilter]"
+echo "$cincuenta  [Dos iptables netftilter]"
 echo
 echo "     iptables-legacy   es    soporte para xtables "
 echo "     iptables-nft      es    soporte para neftables "
