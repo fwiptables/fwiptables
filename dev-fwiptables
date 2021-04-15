@@ -45,7 +45,7 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
-flinea="-120" ;                                                   #english: number line #spanish:linea de variables
+flinea="-125" ;                                                   #english: number line #spanish:linea de variables
 fvariables="-45" ;                                                #english: custom variables #spanish: variables modificables
 fminivariables="-17";                                             #english: variables necesary to show #spanish: variables necesarias
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
@@ -90,19 +90,21 @@ allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish:
 allow_log_udp=no ; #english: void to udp log, and no to do not log udp #spanish: vacio para logear udp y no para evitar logear udp
 allow_forwading=no ; #english: void to allow ip forward, and no to drop forward ip #spanish: vacio para permitir reenvio, y no para denegar reenvios
 allow_nat=no ; #english: void to do NAT masquerade to default route, or no #spanish: vacio para hacer masquerade a otras redes o nada
-allow_vpn=no ; #english: void to allow exceptional host, and no to drop exceptional host #spanish: vacio para permitir hosts excepcionales y no para evitar permitirlos
+allow_vpn=no ; #english: void to allow some exceptional host or no #spanish: vacio para permitir hosts excepcionales o no
+allow_blacklist=no ; #english: void to drop some excepcional host or no #spanish: vacio para denegar hosts excepcionales o no
 allow_output_uid=no ; #english: void to allow excepcional user or no #spanish: vacio permite salida de paquetes de un usuario excepcional o no
 allow_output_gid=no ; #english: void to allow excepcional group or no #spanish: vacio permite salida de paquetes de un grupo excepcional o no
 allow_others_protocols=no ; #english: void to allow other protocol ip excepcional or no #spanish: vacio para permitir otro protocolo ip excepcional o no
 echo -n #english: Other Options, add with "," and join ranges with ":" #spanish: Otras Opciones, añadir con "," y poner rangos con ":"
 bandwidth_input="12512" #english: max input bandwidth in kbits/sec #spanish: maximo entrada de ancho de banda en kbit/sec
 bandwidth_output="512" #english: max output bandwidth in kbits/sec #spanish: maximo salida de ancho de banda en kbits/sec
-log_udp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
-log_tcp=ssh ; #english: the tcp ports to log #spanish: los puertos tcp para logear
-vpn=sourceforge.net,wesnoth.org ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
+log_udp="" ; #english: the udp ports to log #spanish: los puertos udp para logear
+log_tcp="ssh" ; #english: the tcp ports to log #spanish: los puertos tcp para logear
+vpn="sourceforge.net,wesnoth.org" ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
+blacklist="" ; #english: drop this excepcional host #spanish: deniega estos host excepcionales
 output_uid="root" ; #english: allow out packages excepcional from this user #spanish: permite salida de paquetes de este usuario excepcional o no
 output_gid="root" ; #english: allow out packages excepcional from this group #spanish: permite salida de paquetes de este grupo excepcional o no
-others_protocols=icmp,igmp ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
+others_protocols="icmp,igmp" ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 echo -n #english: Net to connect like client or server #spanish: Red para conectar como cliente o server
 net_ipv4_client=0/0  ;  #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 net_ipv4_server=0/0  ;  #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
@@ -2374,13 +2376,19 @@ echo "$cincuenta Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
-echo "$cincuenta  [uid and/or gid excepcional]"
-echo
-echo "     User and/or group excepcional have conection allowed in firewall"
+echo " $fiptables notes :"
 echo
 echo "$cincuenta  [vpn]"
 echo
-echo "     Host [vpn] excepcionals hosts has all allowed in firewall"
+echo "     Host [vpn] excepcionals hosts has conection allowed in firewall"
+echo ""
+echo "$cincuenta  [blacklist]"
+echo
+echo "     Host [blacklist] excepcionals hosts has conection dropped in firewall"
+echo ""
+echo "$cincuenta  [uid and/or gid excepcional]"
+echo
+echo "     User and/or group excepcional have output conection allowed in firewall"
 echo
 echo "$cincuenta  [The iptables netftilter]"
 echo
@@ -2557,13 +2565,19 @@ echo "$cincuenta  Ejemplos de las variables de configuración, defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
+echo " Notas de $fiptables :"
+echo
 echo "$cincuenta  [vpn]"
 echo
-echo "     Host [vpn] excepcionales tienen todo permitido en el firewall"
+echo "     Host [vpn] excepcionales tienen conexion permitida en el firewall"
+echo
+echo "$cincuenta  [blacklist]"
+echo
+echo "     Host [blacklist] excepcionales tienen conexion denegada en el firewall"
 echo
 echo "$cincuenta  [uid y/o gid excepcional]"
 echo
-echo "     Usuario y/o grupo excepcional tienen conexion permitida en el firewall"
+echo "     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall"
 echo
 echo "$cincuenta  [Los iptables netftilter]"
 echo
