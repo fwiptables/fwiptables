@@ -2698,6 +2698,26 @@ $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlim
 $allow_ipv6 $allow_nft $allow_bandwidth_output ip6tables-nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
+####################################### english: rules for blacklist
+####################################### spanish: reglas para lista negra
+####
+####
+#### ipv4
+####
+$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A  INPUT  -s $blacklist -j DROP &> /dev/null
+$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A  OUTPUT -d $blacklist -j DROP &> /dev/null
+$allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A  INPUT  -s $blacklist -j DROP &> /dev/null
+$allow_ipv4 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  OUTPUT -d $blacklist -j DROP &> /dev/null
+####
+####
+#### ipv6
+####
+$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A  INPUT  -s $blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A  OUTPUT -d $blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  INPUT  -s $blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  OUTPUT -d $blacklist -j DROP &> /dev/null
+#### 
+####
 ####################################### english: rules from input of legacy ipv4
 ####################################### spanish: reglas de entrada de legacy ipv4
 ####
