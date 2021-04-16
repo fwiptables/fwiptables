@@ -91,3 +91,5 @@ route - arreglado - ok 211
 uname - "uname -a" pasa a "uname -srmon" - ok 211
 blacklist - nueva variable - ok 211
 system-info - actualizado - ok 211
+system-info - mostrar sockets a la escucha -
+
