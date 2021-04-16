@@ -1,4 +1,4 @@
-Fran FireWall iptables: fwiptables version 210
+Fran FireWall iptables: fwiptables version 211
 ##################################################   Wellcome fwiptables #####
  [Launch guide]     system-info full-wizard mini-wizard cli gui                
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
@@ -29,6 +29,14 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 ################################################## La primera opción:
 
+#####         [Lanzar guia]
+
+  system-info: Muestra la informacion del sistema
+       full-wizard: Asistente y lanza completo cortafuegos
+  mini-wizard: Asistente y lanza simple cortafuegos
+          cli: Interfaz de linea de comandos con menus
+          gui: Interfaz grafico de usuario
+
 #####         [Lanza reglas de iptables]
 
    eraserules: Borra las reglas de iptables de ipv4 y de ipv6
@@ -39,13 +47,13 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 #####         [Lista las reglas de tablas de iptables]
 
-               La tabla de filtros 
+               La tabla de filtros con nombres
          list: Lista las reglas de ipv4 de filtros de entrada y salida
       forward: Lista las reglas de ipv4 de filtros de reenvio
         list6: Lista las reglas de ipv6 de filtros de entrada y salida
      forward6: Lista las reglas de ipv6 de filtros de reenvio
 
-               La tabla de filtros numerica
+               La tabla de filtros con numeros
       listnum: Lista las reglas de ipv4 de filtros de entrada y salida en numeros
    forwardnum: Lista las reglas de ipv4 de filtros de reenvio en numeros
      list6num: Lista las reglas de ipv6 de filtros de entrada y salida en numeros
@@ -66,14 +74,13 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 #####         [Modifica config]
 
-         reconfig: Reescribe configs por defecto /etc/fwiptables/*example1.cfg
        new-full-config: Crea una nueva configuracion.cfg en ingles
-     nueva-completa-config: Crea una nueva configuracion.cfg en español
-  new-mini-config: Crea una nueva basica configuracion.cfg en ingles
-nueva-mini-config: Crea una nueva basica configuracion.cfg en español
-modify-config: Edita una existente configuracion.cfg
-  show-config: Muestra una existente configuracion.cfg
-del-config: Borra unaa existente configuracion.cfg
+ nueva-completa-config: Crea una nueva configuracion.cfg en español
+       new-mini-config: Crea una nueva basica configuracion.cfg en ingles
+     nueva-mini-config: Crea una nueva basica configuracion.cfg en español
+         modify-config: Edita una existente configuracion.cfg
+           show-config: Muestra una existente configuracion.cfg
+            del-config: Borra unaa existente configuracion.cfg
 
 #####         [Lista las conexiones abiertas]
 
@@ -117,18 +124,11 @@ del-config: Borra unaa existente configuracion.cfg
  dev-versions: Version en desarrollo de fwiptables
  all-versions: Todas las versiones de fwiptables
 
-#####         [Asistencia]
-
-  system-info: Muestra la informacion del sistema
-       full-wizard: Asistente y lanza completo servidor iptables
-  mini-wizard: Asistente y lanza simple servidor iptables
-          cli: Interfaz de linea de comandos con menus
-          gui: Interfaz grafico de usuario
-
 #####         [Ayuda]
 
         About: Acerca de fwiptables
       Depends: Muestra las dependencias de fwiptables
+     examples: Regenerar ejemplos de fwiptables
          help: Muestra la ayuda en ingles
         ayuda: Muestra la ayuda en español
 
@@ -173,34 +173,42 @@ allow_log_tcp=no ;             ###  vacio para logear tcp y no para evitar logea
 allow_log_udp=no ;             ###  vacio para logear udp y no para evitar logear udp
 allow_forwading=no ;             ###  vacio para permitir reenvio, y no para denegar reenvios
 allow_nat=no ;             ###  vacio para hacer masquerade a otras redes o nada
-allow_vpn=no ;             ###  vacio para permitir hosts excepcionales y no para evitar permitirlos
+allow_vpn=no ;             ###  vacio para permitir hosts excepcionales o no
+allow_blacklist=no ;             ###  vacio para denegar hosts excepcionales o no
 allow_output_uid=no ;             ###  vacio permite salida de paquetes de un usuario excepcional o no
 allow_output_gid=no ;             ###  vacio permite salida de paquetes de un grupo excepcional o no
 allow_others_protocols=no ;             ###  vacio para permitir otro protocolo ip excepcional o no
 #####             ###  Otras Opciones, añadir con "," y poner rangos con ":"
 bandwidth_input="12512"             ###  maximo entrada de ancho de banda en kbit/sec
 bandwidth_output="512"             ###  maximo salida de ancho de banda en kbits/sec
-log_udp=discard ;             ###  los puertos udp para logear
-log_tcp=ssh ;             ###  los puertos tcp para logear
-vpn=sourceforge.net,wesnoth.org ;             ###  permitir estos host excepcionales
+log_udp="" ;             ###  los puertos udp para logear
+log_tcp="ssh" ;             ###  los puertos tcp para logear
+vpn="sourceforge.net,wesnoth.org" ;             ###  permitir estos host excepcionales
+blacklist="" ;             ###  deniega estos host excepcionales
 output_uid="root" ;             ###  permite salida de paquetes de este usuario excepcional o no
 output_gid="root" ;             ###  permite salida de paquetes de este grupo excepcional o no
-others_protocols=icmp,igmp ;             ###  permitir otros protocolos desde /etc/protocols
+others_protocols="icmp,igmp" ;             ###  permitir otros protocolos desde /etc/protocols
 #####             ###  Red para conectar como cliente o server
 net_ipv4_client=0/0  ;              ###  la red cual cliente ipv4, todos es 0/0
 net_ipv4_server=0/0  ;              ###  la red cual servidor ipv4, todos es 0/0
 net_ipv6_client=::/0 ;              ###  la red cual cliente ipv6, todos es ::/0
 net_ipv6_server=::/0 ;              ###  la red cual servidor ipv6, todos es ::/0
 
+ Notas de fwiptables :
+
 ##################################################  [vpn]
 
-     Host [vpn] excepcionales tienen todo permitido en el firewall
+     Host [vpn] excepcionales tienen conexion permitida en el firewall
+
+##################################################  [blacklist]
+
+     Host [blacklist] excepcionales tienen conexion denegada en el firewall
 
 ##################################################  [uid y/o gid excepcional]
 
-     Usuario y/o grupo excepcional tienen conexion permitida en el firewall
+     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall
 
-##################################################  [Los iptables netftilter]
+##################################################  [Dos iptables netftilter]
 
      iptables-legacy   es    soporte para xtables 
      iptables-nft      es    soporte para neftables 

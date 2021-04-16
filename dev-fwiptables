@@ -952,7 +952,10 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "examples" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta examples $cinco"
 #### regen config examples
+echo "regen examples"
 $fiptables reconfig
 #### show config examples
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
@@ -1187,7 +1190,7 @@ $which_iptables_nft -t nat -F
 $which_ip6tables_nft -t nat  -F
 $which_iptables_legacy -t nat -F
 $which_ip6tables_legacy -t nat -F ;
-echo " Erased all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]";
+echo " OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]";
 exit; fi
 ####
 ####
@@ -2215,6 +2218,8 @@ exit; fi
 if [ "$first_option" = "system-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   System info $cinco"
+echo "$cinco [System info]  distro] $cinco"
+cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2
 echo "$cinco [System info:  Kernel Linux] $cinco"
 uname -srom
 echo "$cinco [System info:  Processor] $cinco"
@@ -2684,18 +2689,18 @@ $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
-$allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$allow_ipv4 $allow_legacy $allow_bandwidth_output iptables-legacy -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_bandwidth_output iptables-nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+$allow_ipv4 $allow_legacy $allow_bandwidth_input $which_iptables_legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$allow_ipv4 $allow_legacy $allow_bandwidth_output $which_iptables_legacy -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+$allow_ipv4 $allow_nft $allow_bandwidth_input $which_iptables_nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$allow_ipv4 $allow_nft $allow_bandwidth_output $which_iptables_nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
 #### spanish: ipv6 ancho de banda
-$allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$allow_ipv6 $allow_legacy $allow_bandwidth_output ip6tables-legacy -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
-$allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$allow_ipv6 $allow_nft $allow_bandwidth_output ip6tables-nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+$allow_ipv6 $allow_legacy $allow_bandwidth_input $which_ip6tables_legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$allow_ipv6 $allow_legacy $allow_bandwidth_output $which_ip6tables_legacy -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+$allow_ipv6 $allow_nft $allow_bandwidth_input $which_ip6tables_nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$allow_ipv6 $allow_nft $allow_bandwidth_output $which_ip6tables_nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
 ####################################### english: rules for blacklist

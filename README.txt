@@ -1,10 +1,10 @@
-Fran FireWall iptables: fwiptables version 210
+Fran FireWall iptables: fwiptables version 211
 ##################################################   Wellcome fwiptables #####
  [Launch guide]     system-info full-wizard mini-wizard cli gui                
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
                     listnum forwardnum listnum6 forwardnum6                    
- [Modify config]    reconfig new-full-config nueva-completa-config             
+ [Modify config]    new-full-config nueva-completa-config             
                     new-mini-config nueva-mini-config                          
                     show-config modify-config del-config                       
  [List sockets]     route ss netstat lsof ipforwading tcpdump arp              
@@ -29,6 +29,14 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 ################################################## The first option
 
+#####         [Launch guide]
+
+  system-info: Show info system
+  full-wizard: Asistant y launch complete firewall
+  mini-wizard: Asistant y Launch simple firewall
+          cli: Comand line interface with menus
+          gui: Graphicall user interface
+
 #####         [Launch iptables rules]
 
    eraserules: Remove the iptables rules in ipv4 and ipv6
@@ -39,13 +47,13 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 #####         [List iptables rules]
 
-               The filter table:
+               [The filter table with names]
          list: List iptables filter rules input and output ipv4
       forward: List iptables filter rules foward
         list6: List iptables filter rules input and output ipv6
      forward6: List iptables filter rules forward ipv6
 
-               The filter table numerical: 
+               [The filter table with numbers]
       listnum: List iptables filter rules input and output ipv4 in numbers
    forwardnum: List iptables filter rules foward in numbers
      listnum6: List iptables filter rules input and output ipv6 in numbers
@@ -66,14 +74,13 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 
 #####         [Modify config]
 
-          reconfig: Rewrite default files in /etc/fwiptables/*example1.cfg
-        new-full-config: Create a new configfile.cfg in english
-      nueva-completa-config: Create a new configfile.cfg in spanish
-   new-mini-config: Create a new basic configfile.cfg in english
- nueva-mini-config: Create a new basic configfile.cfg in spanish
-     modify-config: Edit one config.cfg
-       show-config: Show one config.cfg
-        del-config: Delete one configuration file
+       new-full-config: Create a new configfile.cfg in english
+ nueva-completa-config: Create a new configfile.cfg in spanish
+       new-mini-config: Create a new basic configfile.cfg in english
+     nueva-mini-config: Create a new basic configfile.cfg in spanish
+         modify-config: Edit one config.cfg
+           show-config: Show one config.cfg
+            del-config: Delete one configuration file
 
 #####         [List sockets]
 
@@ -117,18 +124,11 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
  dev-versions: Version in development from fwiptables
  all-versions: All versions from fwiptables
 
-#####         [Attend]
-
-  system-info: Show info system
-  full-wizard: Asistant y launch complete server
-  mini-wizard: Asistant y Launch simple server
-          cli: Comand line interface with menus
-          gui: Graphicall user interface
-
 #####         [Help]
 
         about: About the fwiptables
       depends: Show depends for fwiptables
+     examples: Regen examples for fwiptables
          help: Show this help in english
         ayuda: Show this help in spanish
 
@@ -173,39 +173,47 @@ allow_log_tcp=no ;             ###  void to tcp log, and no to do not log tcp
 allow_log_udp=no ;             ###  void to udp log, and no to do not log udp 
 allow_forwading=no ;             ###  void to allow ip forward, and no to drop forward ip 
 allow_nat=no ;             ###  void to do NAT masquerade to default route, or no 
-allow_vpn=no ;             ###  void to allow exceptional host, and no to drop exceptional host 
+allow_vpn=no ;             ###  void to allow some exceptional host or no 
+allow_blacklist=no ;             ###  void to drop some excepcional host or no 
 allow_output_uid=no ;             ###  void to allow excepcional user or no 
 allow_output_gid=no ;             ###  void to allow excepcional group or no 
 allow_others_protocols=no ;             ###  void to allow other protocol ip excepcional or no 
 #####             ###  Other Options, add with "," and join ranges with ":" 
 bandwidth_input="12512"             ###  max input bandwidth in kbits/sec 
 bandwidth_output="512"             ###  max output bandwidth in kbits/sec 
-log_udp=discard ;             ###  the udp ports to log 
-log_tcp=ssh ;             ###  the tcp ports to log 
-vpn=sourceforge.net,wesnoth.org ;             ###  allow this excepcitonal host 
+log_udp="" ;             ###  the udp ports to log 
+log_tcp="ssh" ;             ###  the tcp ports to log 
+vpn="sourceforge.net,wesnoth.org" ;             ###  allow this excepcitonal host 
+blacklist="" ;             ###  drop this excepcional host 
 output_uid="root" ;             ###  allow out packages excepcional from this user 
 output_gid="root" ;             ###  allow out packages excepcional from this group 
-others_protocols=icmp,igmp ;             ###  allow others protocols from /etc/protocolos 
+others_protocols="icmp,igmp" ;             ###  allow others protocols from /etc/protocolos 
 #####             ###  Net to connect like client or server 
 net_ipv4_client=0/0  ;              ###  the net to client ipv4, all is 0/0  
 net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0 
 net_ipv6_client=::/0 ;              ###  the net to client ipv6, all is ::/0 
 net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0 
 
-##################################################  [uid and/or gid excepcional]
-
-     User and/or group excepcional have conection allowed in firewall
+ fwiptables notes :
 
 ##################################################  [vpn]
 
-     Host [vpn] excepcionals hosts has all allowed in firewall
+     Host [vpn] excepcionals hosts has conection allowed in firewall
 
-##################################################  [The iptables netftilter]
+##################################################  [blacklist]
+
+     Host [blacklist] excepcionals hosts has conection dropped in firewall
+
+##################################################  [uid and/or gid excepcional]
+
+     User and/or group excepcional have output conection allowed in firewall
+
+##################################################  [Two iptables netftilter]
 
      iptables-legacy   is    support for xtables 
      iptables-nft      is    support for neftables 
 
-##################################################  [firewall need clients udp ports]
+##################################################  [client firewall needs in udp ports]
 
      This port is necesary to update the date  : ntp
      This port is necesary to dhcp and get ip  : bootpc
