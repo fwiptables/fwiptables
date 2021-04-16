@@ -134,7 +134,7 @@ if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work"
 echo "$fprogram version $fversion"
 echo "$cincuenta   need to be root to work $fiptables $cinco"
-echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -165,7 +165,7 @@ exit ; fi
 if [ "$first_option" = "graphicall" ]; then echo  -n ;
 echo "$fprogram version $fversion "
 echo "$cincuenta"
-echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2231,6 +2231,22 @@ df -h -x tmpfs
 exit; fi
 ####
 ####
+############################       english: net-info: get net info
+############################       spanish: net-info: da informacion de la red
+####
+####
+if [ "$first_option" = "net-info" ]; then echo -n
+echo "$fprogram version $fversion"
+echo "$cincuenta   Net info $cinco"
+echo "$cinco [System Info:  route ipv4] $cinco"
+ip route
+echo "$cinco [System info:  listen ipv4] $cinco"
+ss -l4
+echo "$cinco [System info:  listen ipv6] $cinco"
+ss -l6
+exit; fi
+####
+####
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
 ####
@@ -2238,7 +2254,7 @@ exit; fi
 if [ "$first_option" = "help" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2265,6 +2281,7 @@ echo ""
 echo "$cinco         [Launch guide]"
 echo
 echo "  system-info: Show info system"
+echo "     net-info: Show net info"
 echo "  full-wizard: Asistant y launch complete firewall"
 echo "  mini-wizard: Asistant y Launch simple firewall"
 echo "          cli: Comand line interface with menus"
@@ -2381,7 +2398,11 @@ echo "$cincuenta Examples of variables to the configs files, $defaultcfg"
 echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
-echo " $fiptables notes :"
+echo " $fiptables notes:"
+echo
+echo "$cincuenta [only_output]"
+echo
+echo "     With [only_output] rules is more practical the firewall"
 echo
 echo "$cincuenta  [vpn]"
 echo
@@ -2427,7 +2448,7 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
@@ -2454,7 +2475,8 @@ echo ""
 echo "$cinco         [Lanzar guia]"
 echo
 echo "  system-info: Muestra la informacion del sistema"
-echo "       full-wizard: Asistente y lanza completo cortafuegos"
+echo "     net-info: Muestra informacion de la red"
+echo "  full-wizard: Asistente y lanza completo cortafuegos"
 echo "  mini-wizard: Asistente y lanza simple cortafuegos"
 echo "          cli: Interfaz de linea de comandos con menus"
 echo "          gui: Interfaz grafico de usuario"
@@ -2571,6 +2593,10 @@ echo
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 echo
 echo " Notas de $fiptables :"
+echo
+echo "$cincuenta [only_output]"
+echo
+echo "     Con [only_output] las reglas del firewall son mas utiles"
 echo
 echo "$cincuenta  [vpn]"
 echo
@@ -3208,7 +3234,7 @@ exit; fi
 ####
 echo "$fprogram version $fversion"
 echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch guide]     system-info full-wizard mini-wizard cli gui                "
+echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
