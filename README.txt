@@ -1,10 +1,10 @@
-Fran FireWall iptables: fwiptables version 211
+Fran FireWall iptables: fwiptables version 212
 ##################################################   Wellcome fwiptables #####
- [Launch guide]     system-info full-wizard mini-wizard cli gui                
+ [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
                     listnum forwardnum listnum6 forwardnum6                    
- [Modify config]    new-full-config nueva-completa-config             
+ [Modify config]    new-full-config nueva-completa-config                      
                     new-mini-config nueva-mini-config                          
                     show-config modify-config del-config                       
  [List sockets]     route ss netstat lsof ipforwading tcpdump arp              
@@ -13,7 +13,8 @@ Fran FireWall iptables: fwiptables version 211
  [Tool icmp]        ping-ip4 ping-ip6                                          
  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   
  [Version]          version upgrade dev-versions all-versions                  
- [Help]             about depends examples help ayuda                                   
+ [Show]             hosts protocols services hosts.allow hosts.deny            
+ [Help]             about depends examples help ayuda                          
 #####  Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
 email-example1.cfg ftp-example1.cfg full-wizard.cfg
@@ -32,6 +33,7 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 #####         [Launch guide]
 
   system-info: Show info system
+     net-info: Show net info
   full-wizard: Asistant y launch complete firewall
   mini-wizard: Asistant y Launch simple firewall
           cli: Comand line interface with menus
@@ -124,6 +126,14 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
  dev-versions: Version in development from fwiptables
  all-versions: All versions from fwiptables
 
+#####         [Show]
+
+        hosts: show /etc/hosts
+   protocolos: show /etc/protocols
+     services: show /etc/services
+  hosts.allow: show /etc/hosts.allow
+   hosts.deny: show /etc/hosts.deny
+
 #####         [Help]
 
         about: About the fwiptables
@@ -154,7 +164,7 @@ allow_nft=no ;             ###  launch neftables, void to yes or type no
 allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont configure ipv4  
 allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
 #####             ###  Client ports, add with "," and join ranges with ":" 
-client_tcp="http,https,ssh" ;             ###  tcp ports for client 
+client_tcp="http,https,ssh,git" ;             ###  tcp ports for client 
 client_udp="domain,bootpc,ntp,https" ;             ###  udp ports for client 
 #####             ###  Server ports, add with "," and join ranges with ":" 
 server_tcp=""  ;             ###  tcp ports for server 
@@ -194,7 +204,11 @@ net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0
 net_ipv6_client=::/0 ;              ###  the net to client ipv6, all is ::/0 
 net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0 
 
- fwiptables notes :
+ fwiptables notes:
+
+################################################## [only_output]
+
+     With [only_output] rules is more practical the firewall
 
 ##################################################  [vpn]
 

@@ -1,6 +1,6 @@
-Fran FireWall iptables: fwiptables version 211
+Fran FireWall iptables: fwiptables version 212
 ##################################################   Wellcome fwiptables #####
- [Launch guide]     system-info full-wizard mini-wizard cli gui                
+ [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
                     listnum forwardnum listnum6 forwardnum6                    
@@ -13,7 +13,8 @@ Fran FireWall iptables: fwiptables version 211
  [Tool icmp]        ping-ip4 ping-ip6                                          
  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   
  [Version]          version upgrade dev-versions all-versions                  
- [Help]             about depends examples help ayuda                                   
+ [Show]             hosts protocols services hosts.allow hosts.deny            
+ [Help]             about depends examples help ayuda                          
 #####  Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
 email-example1.cfg ftp-example1.cfg full-wizard.cfg
@@ -32,7 +33,8 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
 #####         [Lanzar guia]
 
   system-info: Muestra la informacion del sistema
-       full-wizard: Asistente y lanza completo cortafuegos
+     net-info: Muestra informacion de la red
+  full-wizard: Asistente y lanza completo cortafuegos
   mini-wizard: Asistente y lanza simple cortafuegos
           cli: Interfaz de linea de comandos con menus
           gui: Interfaz grafico de usuario
@@ -124,6 +126,14 @@ vpn-example1.cfg web-example1.cfg wizard.cfg
  dev-versions: Version en desarrollo de fwiptables
  all-versions: Todas las versiones de fwiptables
 
+#####         [Show]
+
+        hosts: muestra /etc/hosts
+   protocolos: muestra /etc/protocols
+     services: muestra /etc/services
+  hosts.allow: muestra /etc/hosts.allow
+   hosts.deny: muestra /etc/hosts.deny
+
 #####         [Ayuda]
 
         About: Acerca de fwiptables
@@ -154,7 +164,7 @@ allow_nft=no ;             ###  lanza neftables, vacio para si, o escribe no
 allow_ipv4= ;             ###  varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ;             ###  varcio para ejecutar el firewall con ipv6 o no para no
 #####             ###  Puertos Cliente, añadir con "," y poner rangos con ":"
-client_tcp="http,https,ssh" ;             ###  puertos tcp para ser cliente
+client_tcp="http,https,ssh,git" ;             ###  puertos tcp para ser cliente
 client_udp="domain,bootpc,ntp,https" ;             ###  puertos udp para ser cliente
 #####             ###  Puertos Servidor, añadir con "," y poner rangos con ":"
 server_tcp=""  ;             ###   puertos tcp para servir
@@ -195,6 +205,10 @@ net_ipv6_client=::/0 ;              ###  la red cual cliente ipv6, todos es ::/0
 net_ipv6_server=::/0 ;              ###  la red cual servidor ipv6, todos es ::/0
 
  Notas de fwiptables :
+
+################################################## [only_output]
+
+     Con [only_output] las reglas del firewall son mas utiles
 
 ##################################################  [vpn]
 
