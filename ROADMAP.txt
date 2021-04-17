@@ -97,4 +97,10 @@ show - services - ok 212
 show - protocols - ok 212
 show - hosts - ok 212
 code - actualizar blacklist - ok 212
-code - actualizar vpn - 
+code - actualizar vpn -  ok 212
+code - actualizar - ok 212
+show - hosts.allow - ok 212
+show - hosts.deny - ok 212
+help - acutalizado - ok 212
+ayuda - actualizado - ok 212
+
