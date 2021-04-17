@@ -92,4 +92,9 @@ uname - "uname -a" pasa a "uname -srmon" - ok 211
 blacklist - nueva variable - ok 211
 system-info - actualizado - ok 212
 net-info - mostrar sockets a la escucha - ok 212
-cli - actualizar - 212
+cli - actualizar - ok 212
+show - services - ok 212
+show - protocols - ok 212
+show - hosts - ok 212
+code - actualizar blacklist - ok 212
+code - actualizar vpn - 

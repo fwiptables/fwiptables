@@ -38,7 +38,7 @@ launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="212" ;  #english: Name and Version  #spanish: Nombre y Version
-directory_config="/etc/fwiptables" ; defaultcfg="default.cfg" ;   #english: path to config files  #spanish: archivos de configuracion
+directory_config="/etc/fwiptables" ; defaultcfg="default.cfg"  ;  #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall #spanish: ruta de firewall guardado
@@ -622,12 +622,16 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   1102 upgrade \
   1103 dev-versions \
   1104 all-versions \
-  01200 "Help" \
-  1201 about \
-  1202 depends \
-  1203 examples \
-  1204 help \
-  1205 ayuda \
+  01200 "Show" \
+  1201 hosts \ 
+  1202 protocols \
+  1203 services \
+  01300 "Help" \
+  1301 about \
+  1302 depends \
+  1303 examples \
+  1304 help \
+  1305 ayuda \
   )"
 case $menuprincipal in
  0*)
@@ -894,25 +898,37 @@ clear
  ;;
  1104)
  clear
- $fiptables all-versions
+ $fiptables all-versions | less
  ;;
  1201)
  clear
- $fiptables about
+ $fiptables hosts | less
  ;;
  1202)
  clear
- $fiptables depends
+ $fiptables protocols | less
  ;;
  1203)
  clear
+ $fiptables services | less
+ ;;
+ 1301)
+ clear
+ $fiptables about
+ ;;
+ 1302)
+ clear
+ $fiptables depends
+ ;;
+ 1303)
+ clear
  $fiptables examples
  ;;
- 1204)
+ 1304)
  clear
  $fiptables help | less
  ;;
- 1205)
+ 1305)
  clear
  $fiptables ayuda | less
  ;;
@@ -2169,6 +2185,42 @@ $favorite_text_browser -dump $fweb_tree | egrep -i "about|readme|roadmap|iptable
 exit; fi
 ####
 ####
+############################       english: hosts: show /etc/hosts
+############################       spanish: hosts: muestra /etc/hosts
+####
+####
+if [ "$first_option" = "hosts" ]; then echo -n
+echo "$fprogram"
+echo "$cincuenta /etc/hosts $cinco"
+cat /etc/hosts
+echo "$cinco This file is /etc/hosts"
+exit; fi
+####
+####
+############################       english: protocols: show /etc/protocols
+############################       spanish: protocols: muestra /etc/protocols
+####
+####
+if [ "$first_option" = "protocols" ]; then echo -n
+echo "$fprogram"
+echo "$cincuenta /etc/protocols $cinco"
+cat /etc/protocols
+echo "$cinco This file is /etc/protocols"
+exit; fi
+####
+####
+############################       english: services: show /etc/services
+############################       spanish: services: muestra /etc/services
+####
+####
+if [ "$first_option" = "services" ]; then echo -n
+echo "$fprogram"
+echo "$cincuenta /etc/services $cinco"
+cat /etc/services
+echo "$cinco This file is /etc/services"
+exit; fi
+####
+####
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
 ####
@@ -2716,8 +2768,8 @@ $allow_nft  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
-#######################################        english: bandwidth
-#######################################        spanish: ancho de banda
+#######################################        english: limit bandwidth
+#######################################        spanish: limitar ancho de banda
 ####
 ####
 #### english: ipv4  bandwidth
@@ -2736,33 +2788,59 @@ $allow_ipv6 $allow_nft $allow_bandwidth_input $which_ip6tables_nft -A  INPUT -m 
 $allow_ipv6 $allow_nft $allow_bandwidth_output $which_ip6tables_nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
-####################################### english: rules for blacklist
-####################################### spanish: reglas para lista negra
+####################################### english: Drop rules for blacklist
+####################################### spanish: reglas de denegar para lista negra
 ####
 ####
+for one_blacklist in $(echo $blacklist | sed 's/,/ /g') 
 #### ipv4
 ####
-$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A  INPUT  -s $blacklist -j DROP &> /dev/null
-$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A  OUTPUT -d $blacklist -j DROP &> /dev/null
-$allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A  INPUT  -s $blacklist -j DROP &> /dev/null
-$allow_ipv4 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  OUTPUT -d $blacklist -j DROP &> /dev/null
+do
+$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A  INPUT  -s $one_blacklist -j DROP &> /dev/null
+$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A  OUTPUT -d $one_blacklist -j DROP &> /dev/null
+$allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A  INPUT  -s $one_blacklist -j DROP &> /dev/null
+$allow_ipv4 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  OUTPUT -d $one_blacklist -j DROP &> /dev/null
 ####
 ####
 #### ipv6
 ####
-$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A  INPUT  -s $blacklist -j DROP &> /dev/null
-$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A  OUTPUT -d $blacklist -j DROP &> /dev/null
-$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  INPUT  -s $blacklist -j DROP &> /dev/null
-$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  OUTPUT -d $blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A  INPUT  -s $one_blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A  OUTPUT -d $one_blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  INPUT  -s $one_blacklist -j DROP &> /dev/null
+$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A  OUTPUT -d $one_blacklist -j DROP &> /dev/null
+done
+#### 
+####
+####################################### english: Accept rules for vpn
+####################################### spanish: reglas de aceptar para vpn
+####
+####
+for one_vpn in $(echo $vpn | sed 's/,/ /g') 
+#### ipv4
+####
+do
+$allow_ipv4 $allow_legacy $allow_vpn $which_iptables_legacy  -A  INPUT  -s $one_vpn -j ACCEPT &> /dev/null
+$allow_ipv4 $allow_legacy $allow_vpn $which_iptables_legacy  -A  OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+$allow_ipv4 $allow_nft    $allow_vpn $which_iptables_nft     -A  INPUT  -s $one_vpn -j ACCEPT &> /dev/null
+$allow_ipv4 $allow_nft    $allow_vpn $which_iptables_nft     -A  OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+####
+####
+#### ipv6
+####
+$allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  INPUT  -s $one_vpn -j ACCEPT &> /dev/null
+$allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+$allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  INPUT  -s $one_vpn -j ACCEPT &> /dev/null
+$allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+done
 #### 
 ####
 ####################################### english: rules from input of legacy ipv4
 ####################################### spanish: reglas de entrada de legacy ipv4
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_legacy  $allow_ipv4 $allow_log_tcp  $which_iptables_legacy -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv4 $allow_log_udp  $which_iptables_legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_server  $which_iptables_legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2781,9 +2859,9 @@ done
 ####################################### spanish: reglas de salida de legacy ipv4
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_legacy  $allow_ipv4 $allow_vpn  $which_iptables_legacy -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_legacy  $allow_ipv4 $allow_log_tcp  $which_iptables_legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv4 $allow_log_tcp  $which_iptables_legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_server  $which_iptables_legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2807,9 +2885,9 @@ done
 #### spanish: ipv6 filtros de legacy reglas de entrada
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_legacy  $allow_ipv6 $allow_log_tcp  $which_ip6tables_legacy -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv6 $allow_log_udp  $which_ip6tables_legacy -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv6 $launch_server  $which_ip6tables_legacy -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2829,9 +2907,9 @@ done
 #### spanish: ipv6 filtros legacy reglas de salida
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A OUTPUT -s $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_legacy  $allow_ipv6 $allow_vpn  $which_ip6tables_legacy -A OUTPUT -s $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_legacy  $allow_ipv6 $allow_log_tcp  $which_ip6tables_legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv6 $allow_log_udp  $which_ip6tables_legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $allow_legacy  $allow_ipv6 $launch_server  $which_ip6tables_legacy -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2860,9 +2938,9 @@ done
 #### spanish: ipv4 filter nft reglas de entrada
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_nft $allow_ipv4 $allow_log_tcp  $which_iptables_nft -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $allow_nft $allow_ipv4 $allow_log_udp  $which_iptables_nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $allow_nft $allow_ipv4 $launch_server  $which_iptables_nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2881,9 +2959,9 @@ done
 #### spanish: ipv4 filter nft reglas de salida
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_nft $allow_ipv4 $allow_vpn  $which_iptables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_nft $allow_ipv4 $allow_log_tcp  $which_iptables_nft -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $allow_nft $allow_ipv4 $allow_log_udp  $which_iptables_nft -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $allow_nft $allow_ipv4 $launch_server  $which_iptables_nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv4_server -d $net_ipv4_server -j ACCEPT &> /dev/null
@@ -2907,9 +2985,9 @@ done
 #### ipv6 filtros nft reglas d entrada
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $allow_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $allow_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A INPUT -s $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_nft $allow_ipv6 $allow_log_tcp  $which_ip6tables_nft -A INPUT -p tcp -m multiport --dports $log_tcp -j LOG &> /dev/null
 $allow_nft $allow_ipv6 $allow_log_udp  $which_ip6tables_nft -A INPUT -p udp -m multiport --dports $log_udp -j LOG &> /dev/null
 $allow_nft $allow_ipv6 $launch_server  $which_ip6tables_nft -A INPUT -p udp -m multiport --dports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -2929,9 +3007,9 @@ done
 #### spanish: ipv6 filtros nft reglas de salida
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
-do $which_ip6tables_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
-done
+#for one_vpn in $(echo $vpn | sed 's/,/ /g') ;
+#do $which_ip6tables_nft $allow_ipv6 $allow_vpn  $which_ip6tables_nft -A OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
+#done
 $allow_nft $allow_ipv6 $allow_log_tcp  $which_ip6tables_nft -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
 $allow_nft $allow_ipv6 $allow_log_udp  $which_ip6tables_nft -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
 $allow_nft $allow_ipv6 $launch_server  $which_ip6tables_nft -A OUTPUT -p udp -m multiport --sports $server_udp -s $net_ipv6_server -d $net_ipv6_server -j ACCEPT &> /dev/null
@@ -3254,7 +3332,8 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends examples help ayuda                                   "
+echo " [Show]             hosts protocols services                                   "
+echo " [Help]             about depends examples help ayuda                          "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
