@@ -71,7 +71,7 @@ echo -n #english: ip protocol, modify with void or no #spanish: procolo ip, modi
 allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
 allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
 echo -n #english: Client ports, add with "," and join ranges with ":" #spanish: Puertos Cliente, añadir con "," y poner rangos con ":"
-client_tcp="http,https,ssh" ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
+client_tcp="http,https,ssh,git" ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
 client_udp="domain,bootpc,ntp,https" ; #english: udp ports for client #spanish: puertos udp para ser cliente
 echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: Puertos Servidor, añadir con "," y poner rangos con ":"
 server_tcp=""  ; #english: tcp ports for server #spanish:  puertos tcp para servir
@@ -555,390 +555,402 @@ exit
 else)
 ;;
 esac
-cd $directory_config
-menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
-  00100 "Guide" \
-  101 system-info \
-  102 net-info \
-  103 mini-wizard \
-  104 full-wizard \
-  105 cli \
-  106 gui \
-  00200 "Launch rules" \
-  201 eraserules \
-  202 offline \
-  203 allpermisive \
-  204 custom \
-  205 mini-wizard \
-  206 full-wizard \
-  00300 "List rules" \
-  301 list \
-  302 forward \
-  303 list6  \
-  304 forward6 \
-  305 nat-ip4 \
-  306 nat-ip6 \
-  00400 "List sockets" \
-  401 route \
-  402 ss \
-  403 netstat \
-  404 lsof \
-  405 ipforwading \
-  406 tcpdump \
-  407 arp \
-  00500 "Modify config" \
-  501 reconfig \
-  502 show-config \
-  503 new-full-config \
-  504 nueva-completa-config \
-  505 new-mini-config \
-  506 nueva-mini-config \
-  507 modify-config \
-  508 del-config \
-  00600 "Other tables"  \
-  601 raw-ip4 \
-  602 raw-ip6 \
-  603 mangle-ip4 \
-  604 mangle-ip6 \
-  605 security-ip4 \
-  606 security-ip6 \
-  00700 "Recover fw" \
-  701 fw-list  \
-  702 fw-save  \
-  703 fw-restore  \
-  00800 "Tool icmp" \
-  801 ping-ip4 \
-  802 ping-ip6 \
-  00900 "Tool tcp"  \
-  901 trace-ip4 \
-  902 trace-ip6 \
-  903 host \
-  904 resolveip \
-  905 geoip \
-  01000 "Auth sudo"  \
-  1001 auth-sudo \
-  1002 remove-sudo \
-  1003 list-sudo \
-  01100 "Versions" \
-  1101 version \
-  1102 upgrade \
-  1103 dev-versions \
-  1104 all-versions \
-  01200 "Show" \
-  1201 hosts \ 
-  1202 protocols \
-  1203 services \
-  01300 "Help" \
-  1301 about \
-  1302 depends \
-  1303 examples \
-  1304 help \
-  1305 ayuda \
-  )"
-case $menuprincipal in
- 0*)
+cd "$directory_config"
+menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0\
+  010 "Guide" \
+  11 "system-info" \
+  12 "net-info" \
+  13 "mini-wizard" \
+  14 "full-wizard" \
+  15 "cli" \
+  16 "gui" \
+  020 "Launch rules" \
+  21 eraserules \
+  22 offline \
+  23 allpermisive \
+  24 custom \
+  25 mini-wizard \
+  26 full-wizard \
+  030 "List rules" \
+  31 list \
+  32 forward \
+  33 list6  \
+  34 forward6 \
+  35 nat-ip4 \
+  36 nat-ip6 \
+  040 "List sockets" \
+  41 route \
+  42 ss \
+  43 netstat \
+  44 lsof \
+  45 ipforwading \
+  46 tcpdump \
+  47 arp \
+  050 "Modify config" \
+  51 reconfig \
+  52 show-config \
+  53 new-full-config \
+  54 nueva-completa-config \
+  55 new-mini-config \
+  56 nueva-mini-config \
+  57 modify-config \
+  58 del-config \
+  060 "Other tables"  \
+  61 raw-ip4 \
+  62 raw-ip6 \
+  63 mangle-ip4 \
+  64 mangle-ip6 \
+  65 security-ip4 \
+  66 security-ip6 \
+  070 "Recover fw" \
+  71 fw-list  \
+  72 fw-save  \
+  73 fw-restore  \
+  080 "Tool icmp" \
+  81    "ping-ip4" \
+  82   "ping-ip6" \
+  090 "Tool tcp"  \
+  91   "trace-ip4" \
+  92   "trace-ip6" \
+  93   "host" \
+  94   "resolveip" \
+  95   "geoip" \
+  0100 "Auth sudo"  \
+  101  "auth-sudo" \
+  102  "remove-sudo" \
+  103  "list-sudo" \
+  0110 "Versions" \
+  111 "version" \
+  112 "upgrade" \
+  113 "dev-versions" \
+  114 "all-versions" \
+  0120 "Show" \
+  121  "hosts" \
+  122  "protocols" \
+  123  "services" \
+  124  "hosts.allow" \
+  125  "hosts.deny" \
+  0130 "Help" \
+  131  "about" \
+  132  "depends" \
+  133  "examples" \
+  134  "help" \
+  135  "ayuda" \
+ )"
+
+case "$menuprincipal" in
+0*)
  clear
  dialog --msgbox "Program Menu" 0 0
  clear
  $fiptables cli
  ;;
- 101)
+ 11)
  clear
  $fiptables system-info
  ;;
- 102)
+ 12)
  clear
  $fiptables net-info
  ;;
- 103)
+ 13)
  clear
  $fiptables mini-wizard
  ;;
- 104)
+ 14)
  clear
  $fiptables full-wizard
  ;;
- 105)
+ 15)
  clear
  $fiptables cli
  ;;
- 106)
+ 16)
  clear
  $fiptables gui
  ;;
- 201)
+ 21)
  clear
  $fiptables eraserules
  ;;
- 202)
+ 22)
  clear
  $fiptables offline
  ;;
- 203)
+ 23)
  clear
  $fiptables allpermisive
  ;;
- 204)
+ 24)
  clear
- archivo="$(dialog --title "server" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables custom $archivo
  ;;
- 205)
+ 25)
  clear
  $fiptables mini-wizard
  ;;
- 206)
+ 26)
  clear
  $fiptables full-wizard
  ;;
- 301)
+ 31)
  clear
  $fiptables list
  ;;
- 302)
+ 32)
  clear
  $fiptables forward
  ;;
- 303)
+ 33)
  clear
  $fiptables list6
  ;;
- 304)
+ 34)
  clear
  $fiptables forward6
  ;;
- 305)
+ 35)
  clear
  $fiptables nat-ip4
  ;;
- 306)
+ 36)
  clear
  $fiptables nat-ip6
  ;;
- 401)
+ 41)
  clear
  $fiptables route
  ;;
- 402)
+ 42)
  clear
  $fiptables ss
  ;;
- 403)
+ 43)
  clear
  $fiptables netstat
  ;;
- 404)
+ 44)
  clear
  $fiptables lsof
  ;;
- 405)
+ 45)
  clear
  $fiptables ipforwading
  ;;
- 406)
+ 46)
  clear
  $fiptables tcpdump
  ;;
- 407)
+ 47)
  clear
  $fiptables arp -a
  ;;
- 501)
+ 51)
  clear
  $fiptables reconfig
  ;;
- 502)
+ 52)
  clear
  archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables show-config $archivo
  echo "$cinco Launch: $fiptables custom $archivo"
  ;;
- 503)
+ 53)
  clear
  archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-full-config $archivo
  ;;
- 504)
+ 54)
  clear
  archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-completa-config $archivo
  ;;
- 505)
+ 55)
  clear
  archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-mini-config $archivo
  ;;
- 506)
+ 56)
  clear
  archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-mini-config $archivo
  ;;
- 507)
+ 57)
  archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables modify-config $archivo
  ;;
- 508)
+ 58)
  echo
  archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables del-config $archivo
  echo "deleted $archivo"
  ;;
- 601)
+ 61)
  clear
  $fiptables raw-ip4
  ;;
- 602)
+ 62)
  clear
  $fiptables raw-ip6
  ;;
- 603)
+ 63)
  clear
  $fiptables mangle-ip4
  ;;
- 604)
+ 64)
  clear
  $fiptables mangle-ip6
  ;;
- 605)
+ 65)
  clear
  $fiptables security-ip4
  ;;
- 606)
+ 66)
  clear
  $fiptables security-ip6
  ;;
- 701)
+ 71)
 clear
  $fiptables fw-list
  ;;
- 702)
+ 72)
  clear
  archivo="$(dialog --stdout --title "save the firewall format standar" --inputbox "New name" 0 0)"
  clear
  echo "$cincuenta saved $archivo"
  $fiptables fw-save $archivo
  ;;
- 703)
+ 73)
  clear
  $fiptables fw-restore
  ;;
- 801)
+ 81)
  clear
  resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables ping-ip4 $resolve
  ;;
- 802)
+ 82)
  clear
  resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables ping-ip6 $resolve
  ;;
- 901)
+ 91)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables trace-ip4 $resolve
  ;;
- 902)
+ 92)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables trace-ip6 $resolve
  ;;
- 903)
+ 93)
  clear
  resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables host $resolve
  ;;
- 904)
+ 94)
  clear
  resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables resolveip $resolve
  ;;
- 905)
+ 95)
  clear
  resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables geoip $resolve
  ;;
- 1001)
+ 101)
  clear
  resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear
  $fiptables auth-sudo $resolve
  ;;
- 1002)
+ 102)
  clear
  $fiptables remove-sudo
  ;;
- 1003)
+ 103)
  clear
  $fiptables list-sudo
  ;;
- 1101)
+ 111)
  clear
  $fiptables version
  ;;
- 1102)
+ 112)
  clear
  $fiptables upgrade
  ;;
- 1103)
+ 113)
  clear
  $fiptables dev-versions
  ;;
- 1104)
+ 114)
  clear
  $fiptables all-versions | less
  ;;
- 1201)
+ 121)
  clear
- $fiptables hosts | less
+ $fiptables "hosts" | less
  ;;
- 1202)
+ 122)
  clear
- $fiptables protocols | less
+ $fiptables "protocols" | less
  ;;
- 1203)
+ 123)
  clear
- $fiptables services | less
+ $fiptables "services" | less
  ;;
- 1301)
+ 124)
+ clear
+ $fiptables "hosts.allow" | less
+ ;;
+ 125)
+ clear
+ $fiptables "hosts.deny" | less
+ ;;
+ 131)
  clear
  $fiptables about
  ;;
- 1302)
+ 132)
  clear
  $fiptables depends
  ;;
- 1303)
+ 133)
  clear
  $fiptables examples
  ;;
- 1304)
+ 134)
  clear
  $fiptables help | less
  ;;
- 1305)
+ 135)
  clear
  $fiptables ayuda | less
  ;;
- *)
+*)
  clear
  dialog --msgbox "fwiptables good bye" 0 0
  clear
- exit
+ exit 
+ ;;
  esac
  echo "press [enter] to continue with the $fiptables cli"
  read -s
