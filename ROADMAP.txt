@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 211
+     *****     Version actual: 212
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -90,5 +90,6 @@ ayuda - modificado - ok 211
 route - arreglado - ok 211
 uname - "uname -a" pasa a "uname -srmon" - ok 211
 blacklist - nueva variable - ok 211
-system-info - actualizado - ok 211
-net-info - mostrar sockets a la escucha - 
+system-info - actualizado - ok 212
+net-info - mostrar sockets a la escucha - ok 212
+cli - actualizar - 212

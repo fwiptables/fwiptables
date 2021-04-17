@@ -263,6 +263,7 @@ which_arptables="$(which arptables|cut -d " " -f 1)"
 which_ebtables="$(which ebtables| cut -d " " -f 1)"
 which_editor="$(which editor| cut -d " " -f 1)"
 which_fmt="$(which fmt | cut -d " " -f 1)"
+which_uname="$(which uname | cut -d " " -f 1)"
 which_ip="$(which ip | cut -d " " -f 1)"
 which_host="$(which host | cut -d " " -f 1)"
 which_resolveip="$(which resolveip | cut -d " " -f 1)"
@@ -367,6 +368,7 @@ echo "iptables nft save:     $which_iptables_nft_save"
 echo "ip6tables legacy save: $which_ip6tables_legacy_save"
 echo "ip6tables nft save:    $which_ip6tables_nft_save"
 echo "$cinco $fiptables tool"
+echo "uname:      $which_uname"
 echo "ip:         $which_ip"
 echo "route:      $which_route"
 echo "ss:         $which_ss"
@@ -555,10 +557,11 @@ cd $directory_config
 menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0 \
   00100 "Guide" \
   101 system-info \
-  102 mini-wizard \
-  103 full-wizard \
-  104 cli \
-  105 gui \
+  102 net-info \
+  103 mini-wizard \
+  104 full-wizard \
+  105 cli \
+  106 gui \
   00200 "Launch rules" \
   201 eraserules \
   202 offline \
@@ -639,17 +642,21 @@ case $menuprincipal in
  ;;
  102)
  clear
- $fiptables mini-wizard
+ $fiptables net-info
  ;;
  103)
  clear
- $fiptables full-wizard
+ $fiptables mini-wizard
  ;;
  104)
  clear
- $fiptables cli
+ $fiptables full-wizard
  ;;
  105)
+ clear
+ $fiptables cli
+ ;;
+ 106)
  clear
  $fiptables gui
  ;;
@@ -1203,7 +1210,7 @@ exit; fi
 if [ "$first_option" = "route" ]; then   echo  -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Show ip address and ip route"
-echo "$(uname -srom)"
+$which_uname -srom
 echo "$cinco  ip address  $cinco "
 case $which_ip in
 $NULL)
@@ -1219,11 +1226,11 @@ $NULL)
 echo "Without route ip"
 ;;
 *)
-echo "$($which ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
+echo "$($which_ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
 ;;
 esac
 echo "$cinco  ip tunnel  $cinco"
-case $($which ip tunnel) in
+case $($which_ip tunnel) in
 $NULL)
 echo "Without tunnel ip"
 ;;
@@ -1246,7 +1253,7 @@ echo " Install ss command"
 *)
 echo "$fprogram version $fversion";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
-uname -srom
+$which_uname -srom
 echo "$cinco      The ipv6 sockets       $cinco"
 $which_ss -a6
 echo "$cinco      The ipv4 sockets      $cinco"
@@ -1268,7 +1275,7 @@ echo " Install lsof"
 *)
 echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
-uname -srom
+$which_uname -srom
 echo "$cinco      The sockets with lsof      $cinco"
 $which_lsof -i
 ;;
@@ -1288,7 +1295,7 @@ echo " Install netstat"
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta  The sockets list with netstat"
-uname -srom
+$which_uname -srom
 echo "$cincuenta      The devices list with netstat      $cinco" ;
 $which_netstat -i
 echo "$cincuenta      The route table with  netstat      $cinco" ;
@@ -1849,7 +1856,7 @@ exit; fi
 if [ "$first_option" = "ipforwading" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta Show ipforwading $cinco"
-uname -srom
+$which_uname -srom
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 $which_sysctl -a | grep -i forwarding
 exit; fi
@@ -2221,7 +2228,7 @@ echo "$cincuenta   System info $cinco"
 echo "$cinco [System info]  distro] $cinco"
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2
 echo "$cinco [System info:  Kernel Linux] $cinco"
-uname -srom
+$which_uname -srom
 echo "$cinco [System info:  Processor] $cinco"
 lscpu | egrep -i "socket|Model name|cpu max"
 echo "$cinco [System info:  Memory RAM] $cinco"
@@ -2238,12 +2245,12 @@ exit; fi
 if [ "$first_option" = "net-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Net info $cinco"
-echo "$cinco [System Info:  route ipv4] $cinco"
-ip route
-echo "$cinco [System info:  listen ipv4] $cinco"
-ss -l4
-echo "$cinco [System info:  listen ipv6] $cinco"
-ss -l6
+echo "$cinco [Net Info:  route ipv4] $cinco"
+$which_ip route
+echo "$cinco [Net info:  listen ipv4] $cinco"
+$which_ss -l4
+echo "$cinco [Net info:  listen ipv6] $cinco"
+$which_ss -l6
 exit; fi
 ####
 ####
