@@ -147,7 +147,8 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends examples help ayuda                                   "
+echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
+echo " [Help]             about depends examples help ayuda                          "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -178,7 +179,8 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends examples help ayuda                                   "
+echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
+echo " [Help]             about depends examples help ayuda                          "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -2221,6 +2223,30 @@ echo "$cinco This file is /etc/services"
 exit; fi
 ####
 ####
+############################       english: host.allow: show /etc/host.allow
+############################       spanish: host.allow: muestra /etc/host.allow
+####
+####
+if [ "$first_option" = "hosts.allow" ]; then echo -n
+echo "$fprogram"
+echo "$cincuenta /etc/hosts.allow $cinco"
+cat /etc/hosts.allow
+echo "$cinco This file is /etc/hosts.allow"
+exit; fi
+####
+####
+############################       english: host.allow: show /etc/host.deny
+############################       spanish: host.allow: muestra /etc/host.deny
+####
+####
+if [ "$first_option" = "hosts.deny" ]; then echo -n
+echo "$fprogram"
+echo "$cincuenta /etc/hosts.deny $cinco"
+cat /etc/hosts.deny
+echo "$cinco This file is /etc/hosts.deny"
+exit; fi
+####
+####
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
 ####
@@ -2317,7 +2343,7 @@ echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui  
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
 echo "                    listnum forwardnum listnum6 forwardnum6                    "
-echo " [Modify config]    new-full-config nueva-completa-config             "
+echo " [Modify config]    new-full-config nueva-completa-config                      "
 echo "                    new-mini-config nueva-mini-config                          "
 echo "                    show-config modify-config del-config                       "
 echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp              "
@@ -2326,7 +2352,8 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends examples help ayuda                                   "
+echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
+echo " [Help]             about depends examples help ayuda                          "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -2433,6 +2460,14 @@ echo "      upgrade: Upgrade $fiptables at the latest version"
 echo " dev-versions: Version in development from $fiptables"
 echo " all-versions: All versions from $fiptables"
 echo
+echo "$cinco         [Show]"
+echo
+echo "        hosts: show /etc/hosts"
+echo "   protocolos: show /etc/protocols"
+echo "     services: show /etc/services"
+echo "  hosts.allow: show /etc/hosts.allow"
+echo "   hosts.deny: show /etc/hosts.deny"
+echo 
 echo "$cinco         [Help]"
 echo
 echo "        about: About the $fiptables"
@@ -2520,7 +2555,8 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Help]             about depends examples help ayuda                                   "
+echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
+echo " [Help]             about depends examples help ayuda                          "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -2627,6 +2663,14 @@ echo "      upgrade: Actualiza $fiptables a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
 echo " all-versions: Todas las versiones de $fiptables"
 echo
+echo "$cinco         [Show]"
+echo
+echo "        hosts: muestra /etc/hosts"
+echo "   protocolos: muestra /etc/protocols"
+echo "     services: muestra /etc/services"
+echo "  hosts.allow: muestra /etc/hosts.allow"
+echo "   hosts.deny: muestra /etc/hosts.deny"
+echo 
 echo "$cinco         [Ayuda]"
 echo
 echo "        About: Acerca de $fiptables"
@@ -2940,7 +2984,7 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p tcp -m multiport --spo
 ####
 $allow_legacy  $allow_ipv4 $allow_ping_send  $which_iptables_legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $allow_ping_recive $which_iptables_legacy -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $uid_gid $which_iptables_legacy -A INPUT -m state --state established -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4 $uid_gid $which_iptables_legacy -A INPUT -m state --state related,established -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols $which_iptables_legacy -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -2969,7 +3013,7 @@ done
 ####
 $allow_legacy  $allow_ipv6 $allow_ping_send      $which_ip6tables_legacy -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $allow_ping_recive  $which_ip6tables_legacy -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $uid_gid $which_ip6tables_legacy -A INPUT -m state --state established -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6 $uid_gid $which_ip6tables_legacy -A INPUT -m state --state related,established -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_others_protocols      $which_ip6tables_legacy -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
@@ -3004,7 +3048,7 @@ done
 ####
 $allow_nft $allow_ipv4 $allow_ping_send     $which_iptables_nft -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $allow_ping_recive   $which_iptables_nft -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $uid_gid $which_iptables_nft -A INPUT -m state --state established -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv4 $uid_gid $which_iptables_nft -A INPUT -m state --state related,established -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols       $which_iptables_nft -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -3033,7 +3077,7 @@ done
 ####
 $allow_nft $allow_ipv6 $allow_ping_send      $which_ip6tables_nft -A INPUT -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $allow_ping_recive  $which_ip6tables_nft -A INPUT -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $uid_gid $which_ip6tables_nft -A INPUT -m state --state established -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $uid_gid $which_ip6tables_nft -A INPUT -m state --state related,established -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A INPUT -p $one_protocol -j ACCEPT &> /dev/null
@@ -3360,7 +3404,7 @@ echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                       
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services                                   "
+echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples help ayuda                          "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
