@@ -3415,16 +3415,17 @@ if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth"
 else echo "  Limit input: above "$bandwidth_input"kb/sec"; fi
 if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth" ;
 else echo "  Limit output: above "$bandwidth_output"kb/sec"; fi
-if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allow send pings" ; fi
-if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allow recive pings" ; fi
-if [ "$allow_log_tcp" = "no" ]; then echo "  Dont allow log server tcp"; else  echo "  Allow logservers in port: $log_tcp" ; fi
-if [ "$allow_log_udp" = "no" ]; then echo "  Dont allow log server udp"; else  echo "  Allow logservers in port: $log_udp" ; fi
-if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allow ip forwading iptables" ; fi
-if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allow nat masquerade" ; fi
-if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allow vpn servers are $vpn" ; fi
-if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allow output uid output excepcional: $output_uid , and input established " ; fi
-if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allow output gid output excepcional: $output_uid , and input established "; fi
-if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip excepcional"; else echo "  Allow other protocol ip excepcional: $others_protocols" ; fi
+if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
+if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
+if [ "$allow_log_tcp" = "no" ]; then echo "  Dont allow log server tcp"; else  echo "  Allowed logservers in port: $log_tcp" ; fi
+if [ "$allow_log_udp" = "no" ]; then echo "  Dont allow log server udp"; else  echo "  Allowed logservers in port: $log_udp" ; fi
+if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading iptables" ; fi
+if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
+if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
+if [ "$allow_blacklist" = "no" ]; then echo "  Dont allow blacklist excepcional"; else  echo "  Allowed blacklist servers are $blacklist" ; fi
+if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allowed output uid output excepcional: $output_uid , and input established " ; fi
+if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allowed output gid output excepcional: $output_uid , and input established "; fi
+if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo ip excepcional"; else echo "  Allowed other protocol ip excepcional: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 # auto save iptables save
 case $autosave_fwrecover in 
