@@ -106,3 +106,4 @@ cli - actualizado - ok 212
 offline - actualizado - ok 213
 allpermisive - actualizado - ok 213
 custom - actualizado - ok 213
+bash_completion - hecho - ok 214
