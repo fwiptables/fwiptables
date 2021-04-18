@@ -112,3 +112,7 @@ custom - actualizado - ok 213
 options - añadido - ok 214
 opciones - añadido - ok 214
 bash_completion - añadido - ok 214
+custom - actualizado - ok 214
+codigo - mas legible - ok 214
+cli - actualizado - ok 214
+
