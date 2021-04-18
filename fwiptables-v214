@@ -252,7 +252,13 @@ if [ -f "$directory_config/$second_option" ]; then config_option="si"; else conf
 ####
 case $first_option in
 *.cfg)
-if [ -f "$directory_config/$first_option" ]; then $fiptables custom $first_option ; exit ; else echo -n; fi
+if [ -f "$directory_config/$first_option" ]; then $fiptables custom $first_option &> /dev/null
+echo "$fprogram version $ver"
+echo "$cincuenta launching custom rules iptables"
+echo "$cinco  Launched $fiptables $first_option $second_option"
+echo "$cinco  The iptables configured for custom rules to internet"
+echo "$cinco  launch $0 list  # to list iptables rules"
+exit ; else echo -n; fi
 ;;
 esac
 ####
@@ -1247,7 +1253,9 @@ $which_iptables_nft -t nat -F
 $which_ip6tables_nft -t nat  -F
 $which_iptables_legacy -t nat -F
 $which_ip6tables_legacy -t nat -F ;
-echo " OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]";
+echo " OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]"
+echo "$cinco  The iptables configured for delete rules to internet $cinco"
+echo "$cinco  launch $0 list  # to list iptables rules"
 exit; fi
 ####
 ####
@@ -3456,23 +3464,24 @@ $launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t 
 $launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
-########################################       english: when active rules
-########################################       spanish: cuando activas las reglas
+########################################       english: show text when active rules
+########################################       spanish: muestra texto cuando activas las reglas
 ####
-####
+####  # show text head lines in all firewall #
 echo "$fprogram version $fversion ";
 echo "$cincuenta lauching iptables rules $cinco"
-echo "  launched $0 $first_option $second_option  ";
+echo "$cinco Launched $fiptables $first_option $second_option"
+####  # show text to firewall offline #
 if [ "$first_option" = "offline" ]; then echo -n
 echo "$cinco  The iptables configured for disconnected to internet $cinco"
-$fiptables list
-# echo "  launch $0 list  # to list iptables rules"
-echo;  exit ; else echo -n ; fi
+echo "$cinco  launch $0 list  # to list iptables rules"
+exit ; else echo -n ; fi
+####  # show text to firewall allpermisive #
 if [ "$first_option" = "allpermisive" ]; then echo -n
 echo "$cinco  The iptables configured for all permisive to internet $cinco"
-$fiptables list
-# echo "  launch $0 list  # to list iptables rules"
+echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
+####  # show text to firewall [config.cfg] (silent text) or  custom [config.cfg] (show text) #
 if [ -f "$directory_config/$second_option" ]; then echo -n
 echo "$cinco $program configured with the configuration: $second_option $cinco" ;
 else echo "$cinco [Configured with the default configuration] $cinco"
