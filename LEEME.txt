@@ -1,4 +1,4 @@
-Fran FireWall iptables: fwiptables version 213
+Fran FireWall iptables: fwiptables version 214
 ##################################################   Wellcome fwiptables #####
  [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
@@ -14,7 +14,7 @@ Fran FireWall iptables: fwiptables version 213
  [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   
  [Version]          version upgrade dev-versions all-versions                  
  [Show]             hosts protocols services hosts.allow hosts.deny            
- [Help]             about depends examples help ayuda                          
+ [Help]             about depends examples options opciones help ayuda         
 #####  Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
 email-example1.cfg ftp-example1.cfg full-wizard.cfg

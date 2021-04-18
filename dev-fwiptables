@@ -37,7 +37,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="214" ;  #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall iptables: $fiptables" ; fversion="215" ;  #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg"  ;  #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
@@ -633,7 +633,7 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   72 fw-save  \
   73 fw-restore  \
   080 "Tool icmp" \
-  81    "ping-ip4" \
+  81   "ping-ip4" \
   82   "ping-ip6" \
   090 "Tool tcp"  \
   91   "trace-ip4" \
@@ -660,8 +660,10 @@ menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "S
   131  "about" \
   132  "depends" \
   133  "examples" \
-  134  "help" \
-  135  "ayuda" \
+  134  "options" \
+  135  "opciones" \
+  136  "help" \
+  137  "ayuda" \
  )"
 
 case "$menuprincipal" in
@@ -965,9 +967,17 @@ clear
  ;;
  134)
  clear
- $fiptables help | less
+ $fiptables options | less
  ;;
  135)
+ clear
+ $fiptables opciones | less
+ ;;
+ 136)
+ clear
+ $fiptables help | less
+ ;;
+ 137)
  clear
  $fiptables ayuda | less
  ;;
