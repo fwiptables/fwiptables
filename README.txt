@@ -1,4 +1,4 @@
-Fran FireWall iptables: fwiptables version 212
+Fran FireWall iptables: fwiptables version 213
 ##################################################   Wellcome fwiptables #####
  [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
