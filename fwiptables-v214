@@ -213,8 +213,30 @@ head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#s
 echo "$fiptables $fversion installed in /usr/bin/$fiptables" ;
 echo "Updated default.cfg and $defaultcfg_eng and $defaultcfg_esp" ;
 echo "$cinco Launch $fiptables reconfig to regenerate example configs files"
-echo "$cinco Launch $fiptables to run $fiptables" ; fi
-cd $directory_config
+echo "$cinco Launch $fiptables to run $fiptables"
+####
+####
+#### bash_completion
+program_completion="\
+system-info net-info full-wizard mini-wizard cli gui \
+eraserules offline allpermisive custom [config.cfg] \
+list forward list6 forward6 nat-ip4 nat-ip6 \
+listnum forwardnum listnum6 forwardnum6 \
+new-full-config nueva-completa-config \
+new-mini-config nueva-mini-config \
+show-config modify-config del-config \
+route ss netstat lsof ipforwading tcpdump arp \
+fw-list fw-save fw-restore \
+auth-sudo remove-sudo list-sudo \
+ping-ip4 ping-ip6 \
+trace-ip4 trace-ip6 host resolveip geoip \
+version upgrade dev-versions all-versions \
+hosts protocols services hosts.allow hosts.deny \
+about depends examples options opciones help ayuda"
+echo "complete -W '$program_completion' $fiptables " > /etc/bash_completion.d/$fiptables-completion
+####
+####
+fi
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               ###########################################
@@ -1831,24 +1853,6 @@ autorizados="$second_option"
 esac
 echo "$autorizados ALL=(root) NOPASSWD:$directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
-program_completion="\
-system-info net-info full-wizard mini-wizard cli gui \
-eraserules offline allpermisive custom [config.cfg] \
-list forward list6 forward6 nat-ip4 nat-ip6 \
-listnum forwardnum listnum6 forwardnum6 \
-new-full-config nueva-completa-config \
-new-mini-config nueva-mini-config \
-show-config modify-config del-config \
-route ss netstat lsof ipforwading tcpdump arp \
-fw-list fw-save fw-restore \
-auth-sudo remove-sudo list-sudo \
-ping-ip4 ping-ip6 \
-trace-ip4 trace-ip6 host resolveip geoip \
-version upgrade dev-versions all-versions \
-hosts protocols services hosts.allow hosts.deny \
-about depends examples options opciones help ayuda"
-echo "$program_completion"
-echo "complete -W '$program_completion' $fiptables " > /etc/bash_completion.d/$fiptables-completion
 echo "$cinco $cinco"
 echo "$cinco    Ok. $autorizados will use:     $fiptables"
 echo "$cinco    Ok. $fiptables will use alias with sudo "
@@ -1857,7 +1861,6 @@ echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
-cat /etc/bash_completion.d/$fiptables-completion
 exit; fi
 ####
 ####
@@ -1872,7 +1875,6 @@ rm /etc/bash_completion.d/$fiptables-completion
 echo "$cinco deleted auth sudo"
 echo "deleted /etc/sudoers.d/$fiptables"
 echo "deleted /etc/bash_completion.d/$fiptables"
-echo "deleted /etc/bash_completion.d/$fiptables-completion"
 exit; fi
 ####
 ####
