@@ -33,8 +33,8 @@ source /etc/profile
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 third_option="$3" ; fourth_option="$4" ;                          #english: variables to launch  #spanish: variables a lanzar
-config_option="no" ; launch_iptables="no" ; launch_custom="no";   #english: auto variables to no #spanish: auto variables a no
-launch_offline="no" ;launch_permisive="no" ;                      #english: auto variables to no #spanish: auto variables a no
+config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
+launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="214" ;  #english: Name and Version  #spanish: Nombre y Version
@@ -2372,7 +2372,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "options" ]; then echo -n
-echo "$fprogram Options $fversion"
+echo "$fprogram Version $fversion"
 echo "$cincuenta   Options  $cinco"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 exit; fi
@@ -2383,7 +2383,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "opciones" ]; then echo -n
-echo "$fprogram Opciones $fversion"
+echo "$fprogram Version $fversion"
 echo "$cincuenta   Opciones  $cinco"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 exit; fi
@@ -2795,17 +2795,56 @@ echo
 exit; fi
 ####
 ####
-###############################################################################################################    
-###############################################################################################################    
-#### Options for launch rules:       offline or allpermisive or custom                          ###############    
-#### Opciones para lanzar reglas:    offline o allpermisive o custom                            ###############    
-###############################################################################################################    
-###############################################################################################################    
-#############################        english:  launch iptables rules o show the wellcome help
-#############################        spanish:  lanza iptables rules o muestra la ayuda de bienvenida
+############################       english: default: The default option, the help option for default
+############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
 ####
 ####
-if  [ "$launch_iptables" = "si" ] ; then echo -n 
+if  [ "$launch_iptables" != "si" ] ; then echo -n 
+echo "$fprogram version $fversion"
+echo "$cincuenta   Wellcome $fiptables $cinco"
+echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
+echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
+echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
+echo "                    listnum forwardnum listnum6 forwardnum6                    "
+echo " [Modify config]    new-full-config nueva-completa-config                      "
+echo "                    new-mini-config nueva-mini-config                          "
+echo "                    show-config modify-config del-config                       "
+echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp              "
+echo " [Recover fw]       fw-list fw-save fw-restore                                 "
+echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
+echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
+echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
+echo " [Version]          version upgrade dev-versions all-versions                  "
+echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
+echo " [Help]             about depends examples options opciones help ayuda         "
+echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
+# echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
+echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
+echo "$cinco  [The examples]  $cinco"
+echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
+echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
+echo " [List iptables rules]              $fiptables list                        "
+exit; else echo -n ; fi
+####
+####
+###############################################################################################################
+####                                                                                            ###############
+####           Knowed now sure that:         launch_iptables="si"                               ###############
+####                                                                                            ###############
+###############################################################################################################
+###############################################################################################################
+####                                                                                            ###############
+####                                                                                            ###############
+####     english:                                 only for:                                     ###############
+####     spanish:                                 solo para:                                    ###############
+####     english: Options for launch rules:       offline or allpermisive or custom             ###############
+####     spanish: Opciones para lanzar reglas:    offline o allpermisive o custom               ###############
+####                                                                                            ###############
+####                                                                                            ###############
+###############################################################################################################
+###############################################################################################################
+####
+####
 ####
 ####
 ##############################       english: overwrite system varibles for files variables configured or defaultcfg
@@ -3491,37 +3530,8 @@ ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legac
 echo "$cinco autosave fwrecover created $first_option-$second_option with legacy and nft. See $fiptables fw-list"
 ;;
 esac
-exit; fi
 ####
 ####
-############################       english: default: The default option, the help option for default
-############################	   spanish: default: La opcion por defecto, la opcion de ayuda por defecto
-####
-####
-echo "$fprogram version $fversion"
-echo "$cincuenta   Wellcome $fiptables $cinco"
-echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
-echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
-echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
-echo "                    listnum forwardnum listnum6 forwardnum6                    "
-echo " [Modify config]    new-full-config nueva-completa-config                      "
-echo "                    new-mini-config nueva-mini-config                          "
-echo "                    show-config modify-config del-config                       "
-echo " [List sockets]     route ss netstat lsof ipforwading tcpdump arp              "
-echo " [Recover fw]       fw-list fw-save fw-restore                                 "
-echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
-echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
-echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
-echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
-echo " [Help]             about depends examples options opciones help ayuda         "
-echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-# echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
-echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
-echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
-echo " [List iptables rules]              $fiptables list                        "
 ####
 ####
 ########
