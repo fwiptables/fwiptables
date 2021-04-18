@@ -2797,23 +2797,33 @@ exit; fi
 ####
 ###############################################################################################################    
 ###############################################################################################################    
-#### Options for launch rules:       offline or client,or server or allpermisive                ###############    
-#### Opciones para lanzar reglas:    offline o client o server o allpermisive                   ###############    
+#### Options for launch rules:       offline or allpermisive or custom                          ###############    
+#### Opciones para lanzar reglas:    offline o allpermisive o custom                            ###############    
 ###############################################################################################################    
 ###############################################################################################################    
-#############################        english:  launch iptables rules
-#############################        spanish:  lanza iptables rules
-if  [ "$launch_iptables" = "si" ] ; then echo -n
-##############################       english: overwrite system varibles for files variables configured
-##############################       spanish: sobreescribe las variables por la de los archivos de configuracion
+#############################        english:  launch iptables rules o show the wellcome help
+#############################        spanish:  lanza iptables rules o muestra la ayuda de bienvenida
+####
+####
+if  [ "$launch_iptables" = "si" ] ; then echo -n 
+####
+####
+##############################       english: overwrite system varibles for files variables configured or defaultcfg
+##############################       spanish: sobreescribe las variables por la de los archivos de configuracion o defaultcfg
 ####
 ####
 if [ -f "$directory_config/$second_option" ]; then source $directory_config/$second_option ; else source $directory_config/$defaultcfg; fi
-##############################      english: output_uid or output_gid with input established     #####################
-##############################      spanish: usuario o grupo con establecidos de entrada         #####################
+####
+####
+##############################      english: output_uid or output_gid for input established status        #####################
+##############################      spanish: usuario o grupo para establecidos de entrada de estado        #####################
+####
+####
 uid_gid=no
-if [ "$allow_output_uid" = "$NULL" ]; then uid_gid= ; else uid_gid=no; fi
-if [ "$allow_output_gid" = "$NULL" ]; then uid_gid= ; else uid_gid=no; fi
+if [ "$allow_output_uid" = "$NULL" ]; then uid_gid= ; else echo -n ; fi
+if [ "$allow_output_gid" = "$NULL" ]; then uid_gid= ; else echo -n ; fi
+####
+####
 ##############################      english: compatibility with old variables           #####################
 ##############################      spanish: compatibilidad con viejas ariables         #####################
 execnft="$which_iptables_nft"
@@ -3035,8 +3045,8 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p udp -m multiport --spo
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p tcp -m multiport --sports $server_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
 ####
 ####
-####################################### english: rules from input of legacy ipv4
-####################################### spanish: reglas de entrada de legacy ipv4
+####################################### english: rules from input of legacy ipv4 for ping, uid, gid and protocols
+####################################### spanish: reglas de entrada de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_ping_send  $which_iptables_legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
@@ -3047,8 +3057,8 @@ do $allow_legacy  $allow_ipv4 $allow_others_protocols $which_iptables_legacy -A 
 done
 ####
 ####
-####################################### english: rules from output of legacy ipv4
-####################################### spanish: reglas de salida de legacy ipv4
+####################################### english: rules from output of legacy ipv4 for ping, uid, gid and protocols
+####################################### spanish: reglas de salida de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_ping_send  $which_iptables_legacy -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
@@ -3060,8 +3070,8 @@ do $allow_legacy  $allow_ipv4 $allow_others_protocols      $which_iptables_legac
 done
 ####
 ####
-####################################### english: ipv6 filter legacy rules input and output 
-####################################### spanish: ipv6 filtros legacy reglas de entrada y salida
+####################################### english: ipv6 filter legacy rules input and output for ping, uid, gid and protocols
+####################################### spanish: ipv6 filtros legacy reglas de entrada y salida para ping, uid, gid y protocolos
 ####
 #### 
 #### english: ipv6 filter legacy rules input 
@@ -3091,12 +3101,8 @@ do $allow_legacy6  $allow_ipv6 $allow_others_protocols      $which_ip6tables_leg
 done
 ####
 ####
-############################       english: iptables rules ipv4  iptables-nft
-############################       spanish: reglas de iptables ipv4   iptables-nft
-####
-####
-########## english:  ipv4 filter nft rules input and output  ##### nft ipv4
-########## spanish:  reglas de ipv4 nft de entrada y salida
+############################       english: iptables rules ipv4  iptables-nft for ping, uid, gid and protocols
+############################       spanish: reglas de iptables ipv4 iptables-nft para ping, uid, gid y protocolos
 ####
 ####
 #### english: ipv4 filter nft rules input
@@ -3124,8 +3130,8 @@ do $allow_nft $allow_ipv4 $allow_others_protocols      $which_iptables_nft -A OU
 done
 ####
 ####
-########## english: ipv6 filter nft rules input and output
-########## spanish: ipv6 filtros nft relgas de entrada y salida
+########## english: ipv6 filter nft rules input and output for ping, uid, gid and protocols
+########## spanish: ipv6 filtros nft relgas de entrada y salida para ping, uid, gid y protocolos
 ####
 ####
 #### ipv6 filter nft rules input
@@ -3268,7 +3274,7 @@ $allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A OUTPUT  -s ::1 -
 ####
 ####
 ######################################## english: iptables ipv4 and ipv6 with forward rules
-######################################## spanish: iptables ipv4 y ipv5 con reglas de reenvio
+######################################## spanish: iptables ipv4 y ipv6 con reglas de reenvio
 ####
 ####
 #### english: deactive for default with forward or without forward
@@ -3301,6 +3307,7 @@ $allow_nft $allow_forwading $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/nu
 ####
 ####
 #######################################       iptables ipv4 and ipv6 closed with drop input, and drop forward, and drop output rules
+#######################################       iptables ipv4 y ipv6 cierran la entrada, reemvio y salida con reglas de dropeo
 ####
 ####
 #### ipv4 drop rules iptables-legacy
