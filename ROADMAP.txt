@@ -1,7 +1,7 @@
 
      *****     fwiptables roadmap     *****
 
-     *****     Version actual: 212
+     *****     Version actual: 213
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -103,3 +103,6 @@ show - hosts.deny - ok 212
 help - acutalizado - ok 212
 ayuda - actualizado - ok 212
 cli - actualizado - ok 212
+offline - actualizado - ok 213
+allpermisive - actualizado - ok 213
+custom - actualizado - ok 213

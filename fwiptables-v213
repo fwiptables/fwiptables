@@ -33,8 +33,8 @@ source /etc/profile
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 third_option="$3" ; fourth_option="$4" ;                          #english: variables to launch  #spanish: variables a lanzar
-config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
-launch_server="no" ; launch_client="no" ; launch_permisive="no" ; #english: auto variables to no #spanish: auto variables a no
+config_option="no" ; launch_iptables="no" ; launch_custom="no";   #english: auto variables to no #spanish: auto variables a no
+launch_offline="no" ;launch_permisive="no" ;                      #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables: $fiptables" ; fversion="213" ;  #english: Name and Version  #spanish: Nombre y Version
@@ -239,14 +239,12 @@ esac
 ##############################      spanish: launch-rules: Primeras opciones: offline, client, server and allpermisive     #####################
 ####
 ####
-if [ "$first_option" = "offline" ]; then echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
-launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive="no"; fi
-#### if [ "$first_option" = "client" ];then echo "  FIREWALL CLIENT" ; echo "$cincuenta"
-#### launch_iptables="si"; launch_server="no"; launch_client=""; launch_permisive="no"; fi
-if [ "$first_option" = "custom" ]; then echo "  FIREWALL CUSTOM" ; echo "$cincuenta"
-launch_iptables="si"; launch_server="";  launch_client=""; launch_permisive="no"; fi
+if [ "$first_option" = "offline" ]; then      echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
+launch_iptables="si"; launch_permisive="no"; launch_offline=""   ;  launch_custom="no" ; only_output="no"  ; fi
 if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
-launch_iptables="si"; launch_server="no"; launch_client="no"; launch_permisive=""; fi
+launch_iptables="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; only_output="no"  ; fi
+if [ "$first_option" = "custom" ]; then       echo "  FIREWALL CUSTOM" ; echo "$cincuenta"
+launch_iptables="si"; launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
@@ -2314,16 +2312,16 @@ exit; fi
 ####
 if [ "$first_option" = "system-info" ]; then echo -n
 echo "$fprogram version $fversion"
-echo "$cincuenta   System info $cinco"
-echo "$cinco [System info]  distro] $cinco"
-cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2
-echo "$cinco [System info:  Kernel Linux] $cinco"
+echo "$cincuenta   System info "
+echo "$cinco [System info]  distro] "
+cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
+echo "$cinco [System info:  Kernel Linux] "
 $which_uname -srom
-echo "$cinco [System info:  Processor] $cinco"
+echo "$cinco [System info:  Processor] "
 lscpu | egrep -i "socket|Model name|cpu max"
-echo "$cinco [System info:  Memory RAM] $cinco"
+echo "$cinco [System info:  Memory RAM] "
 free -h
-echo "$cinco [System info:  Disks] $cinco"
+echo "$cinco [System info:  Disks] "
 df -h -x tmpfs
 exit; fi
 ####
@@ -2335,12 +2333,12 @@ exit; fi
 if [ "$first_option" = "net-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Net info $cinco"
-echo "$cinco [Net Info:  route ipv4] $cinco"
+echo "$cinco [Net Info:  route ipv4] "
 $which_ip route
-echo "$cinco [Net info:  listen ipv4] $cinco"
-$which_ss -l4
-echo "$cinco [Net info:  listen ipv6] $cinco"
-$which_ss -l6
+echo "$cinco [Net info:  listen ipv4] "
+$which_ss -l4 | sed 's/   / /g'
+echo "$cinco [Net info:  listen ipv6] "
+$which_ss -l6 | sed 's/   / /g'
 exit; fi
 ####
 ####
@@ -3134,7 +3132,8 @@ $allow_nft $allow_ipv6 $allow_nat $which_ip6tables_nft -t nat -A POSTROUTING -j 
 $allow_legacy $allow_ipv6 $allow_nat $which_ip6tables_legacy -t nat -A POSTROUTING -j MASQUERADE  &>/dev/null
 ####
 ####
-##########################################    ipv4 iptables allpermisisive
+########################################     english: ipv4 iptables allpermisisive
+########################################     spanish: ipv4 iptables todo permisivo
 ####
 ####
 #### legacy ip4
@@ -3157,7 +3156,8 @@ $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A OUTPUT -j ACCEP
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
-########################################     ipv6 iptables allpermisisive
+########################################     english: ipv6 iptables allpermisisive
+########################################     spanish: ipv6 iptables todo permisivo
 ####
 ####
 #### legacy ip6 
@@ -3178,6 +3178,46 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT -s ::1 -
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT $input_state -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A OUTPUT -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/null
+####
+####
+########################################     english: ipv4 iptables offline
+########################################     spanish: ipv4 iptables desconectado
+####
+####
+#### legacy ip4
+####
+####
+$allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -F &> /dev/null
+$allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1   -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A OUTPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+#### nft ip4 
+####
+####
+$allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -F &> /dev/null
+$allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A OUTPUT  -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+####
+####
+########################################     english: ipv6 iptables offline
+########################################     spanish: ipv6 iptables desconectado
+####
+####
+#### legacy ip6
+####
+####
+$allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -F &> /dev/null
+$allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A OUTPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+#### nft ip6 
+####
+####
+$allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A OUTPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
 ######################################## english: iptables ipv4 and ipv6 with forward rules
@@ -3247,80 +3287,80 @@ $allow_nft $which_ip6tables_nft -A FORWARD -j DROP &> /dev/null
 #### spanish: nft INPUT borradas
 ####
 ####
-$only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
-$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### english: legacy INPUT deleted
 #### spanish: legacy INPUT borradas
 ####
 ####
-$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
-$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### english: nft INPUT 127.0.0.1 accept
 #### spanish: nft INPUT 127.0.0.1 acepta
 ####
 ####
-$only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT 127.0.0.1 accept
 #### spanish: legacy input 127.0.0.1 acepta
 ####
 ####
-$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT bandwidth limit
 #### spanish: legacay INPUT limita ancho de banda
 ####
 ####
-$only_output $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$only_output $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 #### english: nft INPUT bandwidth limit
 #### spanish: nft INPUT limita ancho de banda
 ####
 ####
-$only_output $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$only_output $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 #### english: nft INPUT ACCEPT all or input_state
 #### spanish: nft INPUT acepta todo o estado de entrada
 ####
 ####
-$only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
-$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT ACCEPT all or input_state 
 #### spanish: entrada acepta todo o estado de entrada
 ####
 ####
-$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
-$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
 #### english: nft INPUT DROP all
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
-$only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
 #### english: legacy INPUT DROP all
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
-$only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
 ########################################       english: when active rules
@@ -3332,11 +3372,13 @@ echo "$cincuenta lauching iptables rules $cinco"
 echo "  launched $0 $first_option $second_option  ";
 if [ "$first_option" = "offline" ]; then echo -n
 echo "$cinco  The iptables configured for disconnected to internet $cinco"
-echo "  launch $0 list  # to list iptables rules"
+$fiptables list
+# echo "  launch $0 list  # to list iptables rules"
 echo;  exit ; else echo -n ; fi
 if [ "$first_option" = "allpermisive" ]; then echo -n
 echo "$cinco  The iptables configured for all permisive to internet $cinco"
-echo "  launch $0 list  # to list iptables rules"
+$fiptables list
+# echo "  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 if [ -f "$directory_config/$second_option" ]; then echo -n
 echo "$cinco $program configured with the configuration: $second_option $cinco" ;
