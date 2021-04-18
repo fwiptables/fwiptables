@@ -148,7 +148,7 @@ echo " [Tool icmp]        ping-ip4 ping-ip6                                     
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
 echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
-echo " [Help]             about depends examples help ayuda                          "
+echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -180,7 +180,7 @@ echo " [Tool icmp]        ping-ip4 ping-ip6                                     
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
 echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
-echo " [Help]             about depends examples help ayuda                          "
+echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -2342,6 +2342,28 @@ $which_ss -l6 | sed 's/   / /g'
 exit; fi
 ####
 ####
+############################       english: options: several options to config in english
+############################       spanish: options: varias opciones para configurar en ingles
+####
+####
+if [ "$first_option" = "options" ]; then echo -n
+echo "$fprogram Options $fversion"
+echo "$cincuenta   Options  $cinco"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
+exit; fi
+####
+####
+############################       english: opciones: several options to config in spanish
+############################       spanish: opciones: varias opciones para configurar en spanish
+####
+####
+if [ "$first_option" = "opciones" ]; then echo -n
+echo "$fprogram Opciones $fversion"
+echo "$cincuenta   Opciones  $cinco"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
+exit; fi
+####
+####
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
 ####
@@ -2363,7 +2385,7 @@ echo " [Tool icmp]        ping-ip4 ping-ip6                                     
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
 echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
-echo " [Help]             about depends examples help ayuda                          "
+echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -2566,7 +2588,7 @@ echo " [Tool icmp]        ping-ip4 ping-ip6                                     
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
 echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
-echo " [Help]             about depends examples help ayuda                          "
+echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
@@ -3460,7 +3482,7 @@ echo " [Tool icmp]        ping-ip4 ping-ip6                                     
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
 echo " [Version]          version upgrade dev-versions all-versions                  "
 echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
-echo " [Help]             about depends examples help ayuda                          "
+echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
