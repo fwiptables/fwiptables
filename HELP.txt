@@ -1,5 +1,5 @@
-Fran FireWall iptables: fwiptables version 214
-##################################################   Wellcome fwiptables #####
+[Fran FireWall iptables: fwiptables] [version 215]
+##################################################
  [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
@@ -15,9 +15,9 @@ Fran FireWall iptables: fwiptables version 214
  [Version]          version upgrade dev-versions all-versions                  
  [Show]             hosts protocols services hosts.allow hosts.deny            
  [Help]             about depends examples options opciones help ayuda         
-#####  Optional /etc/fwiptables/[config.cfg]  #####
+##### Optional /etc/fwiptables/[config.cfg]  #####
  (*) [Own]  game.cfg udp.cfg web.cfg
-#####  [The examples]  #####
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg   
- [Launch the config myown.cfg]      fwiptables myown.cfg                   
- [List iptables rules]              fwiptables list                        
+##### [The examples]  #####
+ [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg       
+ [Launch the config myown.cfg]      fwiptables custom myown.cfg                
+ [List iptables rules]              fwiptables list                            

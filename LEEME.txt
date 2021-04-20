@@ -1,5 +1,5 @@
-Fran FireWall iptables: fwiptables version 214
-##################################################   Wellcome fwiptables #####
+[Fran FireWall iptables: fwiptables] [version 215]
+##################################################
  [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
@@ -16,17 +16,11 @@ Fran FireWall iptables: fwiptables version 214
  [Show]             hosts protocols services hosts.allow hosts.deny            
  [Help]             about depends examples options opciones help ayuda         
 #####  Optional /etc/fwiptables/[config.cfg]  #####
- (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
-email-example1.cfg ftp-example1.cfg full-wizard.cfg
-games-example1.cfg irc-example1.cfg mini-wizard.cfg
-printer-example1.cfg samba-example1.cfg sql-example1.cfg
-ssh-example1.cfg torrent-example1.cfg vnc-example1.cfg
-vpn-example1.cfg web-example1.cfg wizard.cfg
  (*) [Own]  game.cfg udp.cfg web.cfg
-#####  [The examples]  #####
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg   
- [Launch the config myown.cfg]      fwiptables myown.cfg                   
- [List iptables rules]              fwiptables list                        
+##### [The examples]  #####
+ [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg       
+ [Launch the config myown.cfg]      fwiptables custom myown.cfg                
+ [List iptables rules]              fwiptables list                            
 
 ################################################## La primera opción:
 
@@ -175,8 +169,8 @@ input_state="-m state --state NEW,RELATED,ESTABLISHED" ;             ###  modifi
 only_output="" ;             ###  vacio, reglas solo para salida o no
 #####             ###  Opciones opcionales .......... .......... ..........
 #####             ###  Permitir Otras Opciones, modificar con vacio o no
-allow_bandwidth_input=no ;             ###  vacio para limitar ancho de banda de entrada en kbits/sec o no
-allow_bandwidth_output=no ;             ###  vacio limitar ancho de banda de salida en kbits/sec o no
+allow_bandwidth_input=no ;             ###  vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no
+allow_bandwidth_output=no ;             ###  vacio limitar ancho de banda de salida en kbits/sec por cada destino o no
 allow_ping_send=no ;             ###  vacio para permitir enviar ping y no para evitar permitirlo
 allow_ping_recive=no ;             ###  vacio para permitir recivir ping y no para evitar permitirlo
 allow_log_tcp=no ;             ###  vacio para logear tcp y no para evitar logear tcp
@@ -189,8 +183,8 @@ allow_output_uid=no ;             ###  vacio permite salida de paquetes de un us
 allow_output_gid=no ;             ###  vacio permite salida de paquetes de un grupo excepcional o no
 allow_others_protocols=no ;             ###  vacio para permitir otro protocolo ip excepcional o no
 #####             ###  Otras Opciones, añadir con "," y poner rangos con ":"
-bandwidth_input="12512"             ###  maximo entrada de ancho de banda en kbit/sec
-bandwidth_output="512"             ###  maximo salida de ancho de banda en kbits/sec
+bandwidth_input="12512"             ###  maximo entrada de ancho de banda en kbit/sec para todos
+bandwidth_output="512"             ###  maximo salida de ancho de banda en kbits/sec para ip
 log_udp="" ;             ###  los puertos udp para logear
 log_tcp="ssh" ;             ###  los puertos tcp para logear
 vpn="sourceforge.net,wesnoth.org" ;             ###  permitir estos host excepcionales
@@ -240,7 +234,7 @@ net_ipv6_server=::/0 ;              ###  la red cual servidor ipv6, todos es ::/
 
 ##################################################  [Licencia]
 
-  Descarga la ultima version de Fran FireWall iptables: fwiptables desde la web de sourceforge 
+  Descarga la ultima version de [Fran FireWall iptables: fwiptables] desde la web de sourceforge 
   https://sourceforge.net/projects/f-iptables/files/latest/download
   Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 

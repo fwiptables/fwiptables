@@ -117,4 +117,4 @@ codigo - mas legible - ok 214
 cli - actualizado - ok 214
 apariencia - acutalizado - ok 215
 bandwidth limit output - limita velocidad por ip - ok 215
-gui - full-config arreglado - ok 215
+gui - full-wizard esta arreglado - ok 215

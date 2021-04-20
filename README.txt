@@ -1,5 +1,5 @@
-Fran FireWall iptables: fwiptables version 214
-##################################################   Wellcome fwiptables #####
+[Fran FireWall iptables: fwiptables] [version 215]
+##################################################
  [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
  [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
  [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
@@ -16,17 +16,11 @@ Fran FireWall iptables: fwiptables version 214
  [Show]             hosts protocols services hosts.allow hosts.deny            
  [Help]             about depends examples options opciones help ayuda         
 #####  Optional /etc/fwiptables/[config.cfg]  #####
- (*) [Example]  default.cfg default-english.cfg default-spanish.cfg
-email-example1.cfg ftp-example1.cfg full-wizard.cfg
-games-example1.cfg irc-example1.cfg mini-wizard.cfg
-printer-example1.cfg samba-example1.cfg sql-example1.cfg
-ssh-example1.cfg torrent-example1.cfg vnc-example1.cfg
-vpn-example1.cfg web-example1.cfg wizard.cfg
  (*) [Own]  game.cfg udp.cfg web.cfg
-#####  [The examples]  #####
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg   
- [Launch the config myown.cfg]      fwiptables myown.cfg                   
- [List iptables rules]              fwiptables list                        
+##### [The examples]  #####
+ [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg       
+ [Launch the config myown.cfg]      fwiptables custom myown.cfg                
+ [List iptables rules]              fwiptables list                            
 
 ################################################## The first option
 
@@ -175,8 +169,8 @@ input_state="-m state --state NEW,RELATED,ESTABLISHED" ;             ### void fo
 only_output="" ;             ###  void, the rules are only to output in filter, or no 
 #####             ###  Optional options .......... .......... .......... 
 #####             ###  Allow Other Options,  modify with void, or no 
-allow_bandwidth_input=no ;             ###  void to limit bandwidth input in kbits/sec or no 
-allow_bandwidth_output=no ;             ###  void to limit bandwidth output in kbits/sec or no 
+allow_bandwidth_input=no ;             ###  void to limit bandwidth input in kbits/sec for all sources or no 
+allow_bandwidth_output=no ;             ###  void to limit bandwidth output in kbits/sec for each destination or no 
 allow_ping_send=no ;             ###  void to allow send pings, and no to drop send pings 
 allow_ping_recive=no ;             ###  void to allow recive pings, and no to drop recive pings 
 allow_log_tcp=no ;             ###  void to tcp log, and no to do not log tcp 
@@ -189,8 +183,8 @@ allow_output_uid=no ;             ###  void to allow excepcional user or no
 allow_output_gid=no ;             ###  void to allow excepcional group or no 
 allow_others_protocols=no ;             ###  void to allow other protocol ip excepcional or no 
 #####             ###  Other Options, add with "," and join ranges with ":" 
-bandwidth_input="12512"             ###  max input bandwidth in kbits/sec 
-bandwidth_output="512"             ###  max output bandwidth in kbits/sec 
+bandwidth_input="12512"             ###  max input bandwidth in kbits/sec for all 
+bandwidth_output="512"             ###  max output bandwidth in kbits/sec for ip 
 log_udp="" ;             ###  the udp ports to log 
 log_tcp="ssh" ;             ###  the tcp ports to log 
 vpn="sourceforge.net,wesnoth.org" ;             ###  allow this excepcitonal host 
@@ -240,7 +234,7 @@ net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0
 
 ##################################################  [License]
 
-  Download the latest version Fran FireWall iptables: fwiptables from sourceforge
+  Download the latest version [Fran FireWall iptables: fwiptables] from sourceforge
   https://sourceforge.net/projects/f-iptables/files/latest/download
   Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 
