@@ -116,3 +116,4 @@ custom - actualizado - ok 214
 codigo - mas legible - ok 214
 cli - actualizado - ok 214
 apariencia - acutalizado - ok 215
+bandwidth limit output - limita velocidad por ip - ok 215
