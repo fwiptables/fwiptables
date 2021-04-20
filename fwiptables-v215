@@ -132,8 +132,8 @@ net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: 
 ####
 if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work"
-echo "$fprogram version $fversion"
-echo "$cincuenta   need to be root to work $fiptables $cinco"
+echo "$fprogram [version $fversion]"
+echo "$cincuenta  Be root to work $fiptables"
 echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
@@ -164,7 +164,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "graphicall" ]; then echo  -n ;
-echo "$fprogram version $fversion "
+echo "$fprogram [version $fversion]"
 echo "$cincuenta"
 echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
@@ -583,7 +583,7 @@ else)
 ;;
 esac
 cd "$directory_config"
-menuprincipal="$(dialog --stdout --title "$fprogram version $fversion" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu "Select:" 0 0 0\
   010 "Guide" \
   11 "system-info" \
   12 "net-info" \
@@ -1026,7 +1026,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "examples" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [version $fversion]"
 echo "$cincuenta examples $cinco"
 #### regen config examples
 echo "regen examples"
@@ -1213,7 +1213,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "web-upgrade" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [version $fversion]"
 echo "$cincuenta Web upgrade $fprogram"
 echo "Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command"
 echo "Downloading $fiptables with the comand $favorite_text_browser browser"
@@ -1234,7 +1234,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then  echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  Upgrade"
 echo "The actually version is: $fiptables $fversion actually" 
 echo "  The latest version is:"
@@ -1277,7 +1277,7 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 if [ "$first_option" = "route" ]; then   echo  -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  Show ip address and ip route"
 # $which_uname -srom
 echo "$tab [ip address]"
@@ -1320,7 +1320,7 @@ case $which_ss in
 echo "$tab [Install ss command]"
 ;;
 *)
-echo "$fprogram version $fversion";
+echo "$fprogram [Version $fversion]";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
 # $which_uname -srom
 echo "$tab [The ipv6 sockets]"
@@ -1362,7 +1362,7 @@ case $which_netstat in
 echo "$tab [Install netstat]"
 ;;
 *)
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  The sockets list with netstat"
 # $which_uname -srom
 echo "$tab [The devices list with netstat]"
@@ -1381,7 +1381,7 @@ exit; fi
  if [ "$first_option" = "list" ]; then echo -n ;
  legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo "$cincuenta   List filter ipv4"
  case $legacycuatro in
  "$NULL")
@@ -1411,7 +1411,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "forward" ]; then echo -n
- echo "  $fprogram version $fversion" ;
+ echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta  List filter forward ipv4"
  echo $tab " [The xtables ipv4]"
  $which_iptables_legacy -v -L FORWARD
@@ -1427,7 +1427,7 @@ exit; fi
  if [ "$first_option" = "list6" ]; then echo -n
 legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
 nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
- echo "  $fprogram version $fversion"
+ echo "  $fprogram [Version $fversion]"
  echo "$cincuenta   List filter ipv6"
  case $legacyseis in
  "$NULL")
@@ -1457,7 +1457,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
 ####
  if [ "$first_option" = "forward6" ]; then echo -n
- echo "  $fprogram version $fversion" ;
+ echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta   List filter forward ipv6"
  echo $tab " [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -L FORWARD
@@ -1485,7 +1485,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
 ####
  if [ "$first_option" = "nat-ip6" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo "$cincuenta   NAT ipv6"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t nat -v -L
@@ -1501,7 +1501,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 if [ "$first_option" = "listnum" ]; then echo -n ;
 legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
- echo "  $fprogram version $fversion"
+ echo "  $fprogram [Version $fversion]"
  echo "$cincuenta   List filter ipv4 numerical"
  case $legacycuatro in
  "$NULL")
@@ -1528,7 +1528,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "forwardnum" ]; then echo -n
- echo "  $fprogram version $fversion" ;
+ echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta  List filter forward ipv4 numerical"
  echo $tab " [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -n -L FORWARD
@@ -1544,7 +1544,7 @@ exit; fi
  if [ "$first_option" = "listnum6" ]; then echo -n
 legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
 nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
- echo "  $fprogram version $fversion" ;
+ echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta   List filter ipv6 numerical"
  case $legacyseis in
  "$NULL")
@@ -1572,7 +1572,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
 ####
  if [ "$first_option" = "forwardnum6" ]; then echo -n
- echo "  $fprogram version $fversion" ;
+ echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta   List filter forward ipv6 numerical"
  echo $tab " [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -n -L FORWARD
@@ -1586,7 +1586,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
 ####
 if [ "$first_option" = "mangle-ip4" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo  "$cincuenta  mangle ipv4"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t mangle -v -L
@@ -1600,7 +1600,7 @@ if [ "$first_option" = "mangle-ip4" ]; then echo -n
 ####
 ####
 if [ "$first_option" = "mangle-ip6" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo "$cincuenta  mangle ipv6"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t mangle -v -L
@@ -1614,7 +1614,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
 ####
  if [ "$first_option" = "raw-ip4" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo  "$cincuenta  raw ipv4"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t raw -v -L
@@ -1628,7 +1628,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
 ####
  if [ "$first_option" = "raw-ip6" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo  "$cincuenta  raw ipv6"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t raw -v -L
@@ -1642,7 +1642,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
 ####
  if [ "$first_option" = "security-ip4" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo  "$cincuenta  security ipv4"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t security -v -L
@@ -1656,7 +1656,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
 ####
  if [ "$first_option" = "security-ip6" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo  "$cincuenta  security ipv6"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t security -v -L
@@ -1670,7 +1670,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
 ####
  if [ "$first_option" = "ebtables" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo  "$cincuenta ebtables ethernet nft"
  echo "$tab filter ethernet nft"
  $which_ebtables -L -t filter
@@ -1684,7 +1684,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
 ####
  if [ "$first_option" = "arptables" ]; then echo -n
- echo "$fprogram version $fversion"
+ echo "$fprogram [Version $fversion]"
  echo "$cincuenta arptables arp"
  $which_arptables -L
  exit; fi
@@ -1700,7 +1700,7 @@ config_option="si"
 esac
 case "$config_option" in
 "si")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Nueva config $cinco"
 echo "$cinco Use: $fiptables new-full-config config-no-existent"
 exit
@@ -1728,7 +1728,7 @@ config_option="si"
 esac
 case "$config_option" in
 "si")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Nueva config $cinco"
 echo "$cinco Use: $fiptables nueva-completa-config config-no-existente"
 exit
@@ -1754,7 +1754,7 @@ config_option="si"
 esac
 case "$config_option" in
 "si")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Nueva config $cinco"
 echo "$cinco Use: $fiptables new-mini-config config-no-existent"
 exit
@@ -1782,7 +1782,7 @@ config_option="si"
 esac
 case "$config_option" in
 "si")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Nueva config $cinco"
 echo "$cinco Use: $fiptables nueva-mini-config config-no-existente"
 exit
@@ -1808,7 +1808,7 @@ case "$config_option" in
 $favorite_text_editor "$directory_config/$second_option"
 ;;
 "no")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Modify config $cinco"
 echo "$cinco Use: $fiptables modify-config config-existent"
 ;;
@@ -1826,7 +1826,7 @@ case "$config_option" in
 cat "$directory_config/$second_option"
 ;;
 "no")
-echo "$fprogram  version $fversion"
+echo "$fprogram  [Version $fversion]"
 echo "$cincuenta Show config $cinco"
 echo "$cinco Use: $fiptables show-config config-existent"
 esac
@@ -1841,12 +1841,12 @@ if [ "$first_option" = "del-config" ]; then echo -n
 case "$config_option" in
 "si")
 rm "$directory_config/$second_option"
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta del-config"
 echo "$directory_config/$second_option" deleted
 ;;
 "no")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta"
 echo "$cinco Use: $fiptables del-config config-existent"
 ;;
@@ -1861,7 +1861,7 @@ exit; fi
 if [ "$first_option" = "auth-sudo" ]; then echo -n
 case $second_option in
 "$NULL")
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta auth-sudo"
 echo "$cinco Use: $fiptables auth-sudo user"
 exit
@@ -1902,7 +1902,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-sudo" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Auth-sudo $cinco"
 case $(find /etc/sudoers.d/$fiptables) in
 /etc/sudoers.d/$fiptables)
@@ -1926,7 +1926,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ipforwading" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta Show ipforwading $cinco"
 $which_uname -srom
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
@@ -1944,7 +1944,7 @@ case $(which tcpdump) in
 echo " Install tcpdump"
 ;;
 *)
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  Listening tcpdump"
 echo "  Launch manually tcpdump"
 ;;
@@ -1962,7 +1962,7 @@ case $which_arp in
 echo "install arp"
 ;;
 *)
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  the last arp conections"
 $which_arp -a
 ;;
@@ -2026,7 +2026,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ping-ip4" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  ping icmp ipv4 $cinco"
 case $which_ping in
 "$NULL")
@@ -2051,7 +2051,7 @@ exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  ping-ip6 icmp ipv6 $cinco"
 case $which_ping in
 "$NULL")
@@ -2078,7 +2078,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "trace-ip4" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  traceroute tcp ipv4 $cinco"
 case $which_traceroute in
 "$NULL")
@@ -2105,7 +2105,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "trace-ip6" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta  traceroute tcp ipv6 $cinco"
 case $which_traceroute in
 "$NULL")
@@ -2132,7 +2132,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "host" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta resolve host $cinco"
 case $which_host in
 "$NULL")
@@ -2159,7 +2159,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "resolveip" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta resolve ip or host $cinco"
 case $which_resolveip in
 "$NULL")
@@ -2186,7 +2186,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "geoip" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta search geoip $cinco"
 case $which_geoiplookup in
 "$NULL")
@@ -2356,7 +2356,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "system-info" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta   System info "
 echo "$tab [System info:  distro] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
@@ -2376,7 +2376,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "net-info" ]; then echo -n
-echo "$fprogram version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta   Net info $cinco"
 echo "$tab [Net Info:  route ipv4] "
 $which_ip route
@@ -2392,7 +2392,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "options" ]; then echo -n
-echo "$fprogram Version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta   Options  $cinco"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 exit; fi
@@ -2403,7 +2403,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "opciones" ]; then echo -n
-echo "$fprogram Version $fversion"
+echo "$fprogram [Version $fversion]"
 echo "$cincuenta   Opciones  $cinco"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"
 exit; fi
@@ -2414,8 +2414,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help" ]; then echo -n
-echo "$fprogram version $fversion"
-echo "$cincuenta   Wellcome $fiptables $cinco"
+echo "$fprogram [version $fversion]"
+echo "$cincuenta"
 echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
@@ -2617,8 +2617,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then echo -n
-echo "$fprogram version $fversion"
-echo "$cincuenta   Wellcome $fiptables $cinco"
+echo "$fprogram [version $fversion]"
+echo "$cincuenta"
 echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
@@ -2820,8 +2820,8 @@ exit; fi
 ####
 ####
 if  [ "$launch_iptables" != "si" ] ; then echo -n 
-echo "$fprogram version $fversion"
-echo "$cincuenta   Wellcome $fiptables $cinco"
+echo "$fprogram [version $fversion]"
+echo "$cincuenta"
 echo " [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       "
 echo " [Launch rules]     eraserules offline allpermisive custom [config.cfg]        "
 echo " [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                "
@@ -2837,10 +2837,10 @@ echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip              
 echo " [Version]          version upgrade dev-versions all-versions                  "
 echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples options opciones help ayuda         "
-echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
+echo "$cinco Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
-echo "$cinco  [The examples]  $cinco"
+echo "$cinco [The examples]  $cinco"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
 echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
 echo " [List iptables rules]              $fiptables list                        "
@@ -2855,10 +2855,10 @@ exit; else echo -n ; fi
 ###############################################################################################################
 ####                                                                                            ###############
 ####                                                                                            ###############
-####     english:                                 only for:                                     ###############
-####     spanish:                                 solo para:                                    ###############
-####     english: Options for launch rules:       offline or allpermisive or custom             ###############
-####     spanish: Opciones para lanzar reglas:    offline o allpermisive o custom               ###############
+####  english:                               only for:                                          ###############
+####  spanish:                               solo para:                                         ###############
+####  english: Options for launch rules:     offline or allpermisive or custom or [config.cfg ] ###############
+####  spanish: Opciones para lanzar reglas:  offline o allpermisive o custom o [config.cfg ]    ###############
 ####                                                                                            ###############
 ####                                                                                            ###############
 ###############################################################################################################
