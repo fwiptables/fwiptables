@@ -1001,22 +1001,22 @@ clear
 ####
 if [ "$first_option" = "version" ]; then echo -n
 echo
-echo "Name program:"
+echo "$tab [Name program]"
 echo "$fprogram"
 echo
-echo "Description program:"
+echo "$tab [Description program]"
 echo "$fdescription"
 echo
-echo "Exec program:"
+echo "$tab [Exec program]"
 echo "$directory_fiptables/$fiptables"
 echo
-echo "Config directory:"
+echo "$tab [Config directory]"
 echo "$directory_config"
 echo
-echo "Firewall export directory"
+echo "$tab [Firewall export directory]"
 echo "$directory_fwrecover"
 echo
-echo "Version program:"
+echo "$tab [Version program]"
 echo "$fversion"
 exit ; fi
 ####
