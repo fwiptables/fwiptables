@@ -37,14 +37,14 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall iptables: $fiptables" ; fversion="215" ;  #english: Name and Version  #spanish: Nombre y Version
+fprogram="[Fran FireWall iptables: $fiptables]" ; fversion="215"; #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg"  ;  #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall #spanish: ruta de firewall guardado
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
-cinco="#####" ;                                                   #english: [characters to show] #spanish: [caracteres a mostrar]
+cinco="#####" ; tab="    " ;                                      #english: [characters to show] #spanish: [caracteres a mostrar]
 flinea="-125" ;                                                   #english: number line #spanish:linea de variables
 fvariables="-47" ;                                                #english: custom variables #spanish: variables modificables
 fminivariables="-17";                                             #english: variables necesary to show #spanish: variables necesarias
@@ -369,33 +369,34 @@ if [ "$which_gedit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_edi
 if [ "$first_option" = "depends" ]; then echo -n
 echo "Depends for $fiptables"
 echo "$cincuenta $fiptables"
-echo "$cinco $fiptables util"
+echo "$tab [$fiptables util]"
 echo "fmt:       $which_fmt"
-echo "$cinco $fiptables cli"
+echo "$tab [$fiptables cli]"
 echo "dialog:    $which_dialog"
-echo "$cinco $fiptables gui"
+echo "$tab [$fiptables gui]"
 echo "zenity:    $which_zenity"
-echo "$cinco $fiptables text browser"
+echo "$tab [$fiptables text browser]"
 echo "one: links or elinks"
 echo "auto text browser                $favorite_text_browser"
-echo "$cinco $fiptables editor"
+echo "$tab [$fiptables text editor]"
 echo "one: vi, vim, tilde, editor, nano"
 echo "auto favorite text exitor:       $favorite_text_editor"
+echo "$tab [$fiptables graphicall editor]"
 echo "one: yudit, tea, pluma, mousepad, gedit"
 echo "auto favorite graphicall editor: $favorite_graphicall_editor"
-echo "$cinco the iptables"
+echo "$tab [the iptables]"
 echo "iptables legacy:   $which_iptables_legacy"
 echo "iptables nft:      $which_iptables_nft"
 echo "ip6tables legacy:  $which_ip6tables_legacy"
 echo "ip6tables nft:     $which_ip6tables_nft"
 echo "arptables:         $which_arptables"
 echo "ebtables:          $which_ebtables"
-echo "$cinco the iptables save"
+echo "$tab [the iptables save]"
 echo "iptables legacy save:  $which_iptables_legacy_save"
 echo "iptables nft save:     $which_iptables_nft_save"
 echo "ip6tables legacy save: $which_ip6tables_legacy_save"
 echo "ip6tables nft save:    $which_ip6tables_nft_save"
-echo "$cinco $fiptables tool"
+echo "$tab [$fiptables tool]"
 echo "uname:      $which_uname"
 echo "ip:         $which_ip"
 echo "route:      $which_route"
@@ -1263,7 +1264,7 @@ $which_iptables_nft -t nat -F
 $which_ip6tables_nft -t nat  -F
 $which_iptables_legacy -t nat -F
 $which_ip6tables_legacy -t nat -F ;
-echo " OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]"
+echo "$cinco  OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]"
 echo "$cinco  The iptables configured for delete rules to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit; fi
@@ -1278,8 +1279,8 @@ exit; fi
 if [ "$first_option" = "route" ]; then   echo  -n
 echo "$fprogram version $fversion"
 echo "$cincuenta  Show ip address and ip route"
-$which_uname -srom
-echo "$cinco  ip address  $cinco "
+# $which_uname -srom
+echo "$tab [ip address]"
 case $which_ip in
 $NULL)
 echo "Without ip command"
@@ -1288,19 +1289,19 @@ echo "Without ip command"
 echo "$($which_ip address | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g'| grep -iv valid_lft )"
 ;;
 esac
-echo "$cinco  ip route  $cinco"
+echo "$tab [ip route]"
 case $($which_ip route) in
 $NULL)
-echo "Without route ip"
+echo "$tab [Without route ip]"
 ;;
 *)
 echo "$($which_ip route | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
 ;;
 esac
-echo "$cinco  ip tunnel  $cinco"
+echo "$tab [ip tunnel]"
 case $($which_ip tunnel) in
 $NULL)
-echo "Without tunnel ip"
+echo "$tab [Without tunnel ip]"
 ;;
 *)
 echo "$($which_ip tunnel | sed 's/,/_/g' | sed 's/</_/g' | sed 's/>/_/g' )"
@@ -1316,15 +1317,15 @@ exit; fi
 if [ "$first_option" = "ss" ]; then echo -n ;
 case $which_ss in
 "$NULL")
-echo " Install ss command"
+echo "$tab [Install ss command]"
 ;;
 *)
 echo "$fprogram version $fversion";
 echo "$cincuenta    The sockets list with ss   $cinco" ;
-$which_uname -srom
-echo "$cinco      The ipv6 sockets       $cinco"
+# $which_uname -srom
+echo "$tab [The ipv6 sockets]"
 $which_ss -a6
-echo "$cinco      The ipv4 sockets      $cinco"
+echo "$tab [The ipv4 sockets]"
 $which ss -a4
 ;;
 esac
@@ -1338,13 +1339,13 @@ exit; fi
 if [ "$first_option" = "lsof" ]; then echo -n ;
 case $which_lsof in
 "$NULL")
-echo " Install lsof"
+echo "$tab [Install lsof]"
 ;;
 *)
 echo "$fprogram version $fversion firewall linux ";
 echo "$cincuenta The sockets list with lsof   $cinco"
-$which_uname -srom
-echo "$cinco      The sockets with lsof      $cinco"
+# $which_uname -srom
+echo "$tab [The sockets with lsof]"
 $which_lsof -i
 ;;
 esac
@@ -1358,17 +1359,17 @@ exit; fi
 if [ "$first_option" = "netstat" ]; then echo -n ;
 case $which_netstat in
 "$NULL")
-echo " Install netstat"
+echo "$tab [Install netstat]"
 ;;
 *)
 echo "$fprogram version $fversion"
 echo "$cincuenta  The sockets list with netstat"
-$which_uname -srom
-echo "$cincuenta      The devices list with netstat      $cinco" ;
+# $which_uname -srom
+echo "$tab [The devices list with netstat]"
 $which_netstat -i
-echo "$cincuenta      The route table with  netstat      $cinco" ;
+echo "$tab [The route table with  netstat]"
 $which_netstat -r
-echo "$cincuenta      The sockets list with netstat      $cinco" ;
+echo "$tab [The sockets list with netstat]"
 $which_netstat -a -4 -6
 ;;
 esac
@@ -1387,7 +1388,7 @@ exit; fi
  # echo "$cinco [Without rules xtables ipv4][iptables-legacy]  $cinco";
  ;;
  *)
- echo "$cinco  [With rules xtables ipv4][iptables-legacy]  "
+ echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
  $which_iptables_legacy -v -L INPUT
  $which_iptables_legacy -v -L OUTPUT 
  ;;
@@ -1397,7 +1398,7 @@ exit; fi
  # echo "$cinco  [Without rules neftables ipv4][iptables-nft]  $cinco"
  ;;
  *)
- echo "$cinco  [With rules neftables ipv4][iptables-nft]  "
+ echo "$tab  [With rules neftables ipv4][iptables-nft]  "
  $which_iptables_nft -v -L INPUT
  $which_iptables_nft -v -L OUTPUT
  ;;
@@ -1412,9 +1413,9 @@ exit; fi
  if [ "$first_option" = "forward" ]; then echo -n
  echo "  $fprogram version $fversion" ;
  echo "$cincuenta  List filter forward ipv4"
- echo $cinco " [The xtables ipv4]"
+ echo $tab " [The xtables ipv4]"
  $which_iptables_legacy -v -L FORWARD
- echo "$cinco  [The netftables ipv4] "
+ echo "$tab  [The netftables ipv4] "
  $which_iptables_nft -v -L FORWARD
  exit; fi
 ####
@@ -1433,7 +1434,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  # echo "$cinco  [Without rules xtables ipv6][iptables-legacy]  $cinco"
  ;;
  *)
- echo "$cinco  [With rules xtables ipv6][iptables-legacy]  "
+ echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
  $which_ip6tables_legacy -v -L INPUT
  $which_ip6tables_legacy -v -L OUTPUT
  ;;
@@ -1443,7 +1444,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  # echo "$cinco  [Without rules neftables ipv6][iptables-nft]  $cinco";
  ;;
  *)
- echo "$cinco  [With rules neftables ipv6][iptables-nft]  "
+ echo "$tab  [With rules neftables ipv6][iptables-nft]  "
  $which_ip6tables_nft -v -L INPUT
  $which_ip6tables_nft -v -L OUTPUT
  ;;
@@ -1458,9 +1459,9 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "forward6" ]; then echo -n
  echo "  $fprogram version $fversion" ;
  echo "$cincuenta   List filter forward ipv6"
- echo $cinco " [The xtables ipv6]"
+ echo $tab " [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -L FORWARD
- echo "$cinco  [The netftables ipv6] "
+ echo "$tab  [The netftables ipv6][iptables-nft] "
  $which_ip6tables_nft -v -L FORWARD
  exit; fi
 ####
@@ -1472,9 +1473,9 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "nat-ip4" ]; then echo -n
  echo "$fprogram version $fversion "
  echo "$cincuenta   NAT ipv4"
- echo "$cinco  [The xtables ipv4]"
+ echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t nat -v -L
- echo "$cinco  [The neftables ipv4]"
+ echo "$tab  [The neftables ipv4][iptables-nft]"
  $which_iptables_nft -t nat -v -L
  exit; fi
 ####
@@ -1486,9 +1487,9 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "nat-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
  echo "$cincuenta   NAT ipv6"
- echo "$cinco  [The xtables ipv6]"
+ echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t nat -v -L
- echo "$cinco  [The neftables ipv6]"
+ echo "$tab  [The neftables ipv6][iptables-nft]"
  $which_ip6tables_nft -t nat -v -L
  exit; fi
 ####
@@ -1506,7 +1507,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  "$NULL")
  ;;
  *)
- echo "$cinco  [With rules xtables ipv4]"
+ echo "$tab  [With rules xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -n -L INPUT
  $which_iptables_legacy -v -n -L OUTPUT
  ;;
@@ -1515,7 +1516,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  "$NULL")
  ;;
  *)
- echo "$cinco  [With rules neftables ipv4]"
+ echo "$tab  [With rules neftables ipv4][iptables-nft]"
  $which_iptables_nft -v -n -L INPUT
  $which_iptables_nft -v -n -L OUTPUT ;;
  esac
@@ -1529,9 +1530,9 @@ exit; fi
  if [ "$first_option" = "forwardnum" ]; then echo -n
  echo "  $fprogram version $fversion" ;
  echo "$cincuenta  List filter forward ipv4 numerical"
- echo $cinco " [The xtables ipv4]"
+ echo $tab " [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -n -L FORWARD
- echo "$cinco  [The netftables ipv4] "
+ echo "$tab  [The netftables ipv4][iptables-nft]"
  $which_iptables_nft -v -n -L FORWARD
  exit; fi
 ####
@@ -1549,7 +1550,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  "$NULL")
  ;;
  *)
- echo "$cinco  [With rules xtables ipv6]"
+ echo "$tab  [With rules xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -n -L INPUT
  $which_ip6tables_legacy -v -n -L OUTPUT
  echo -n;;
@@ -1558,7 +1559,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  "$NULL")
  ;;
  *)
- echo "$cinco  [With rules neftables ipv6]"
+ echo "$tab  [With rules neftables ipv6][iptables-nft]"
  $which_ip6tables_nft -v -n -L INPUT
  $which_ip6tables_nft -v -n -L OUTPUT
  ;;
@@ -1573,9 +1574,9 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "forwardnum6" ]; then echo -n
  echo "  $fprogram version $fversion" ;
  echo "$cincuenta   List filter forward ipv6 numerical"
- echo $cinco " [The xtables ipv6]"
+ echo $tab " [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -n -L FORWARD
- echo "$cinco  [The netftables ipv6] "
+ echo "$tab  [The netftables ipv6][iptables-nft]"
  $which_ip6tables_nft -v -n -L FORWARD
  exit; fi
 ####
@@ -1587,9 +1588,9 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 if [ "$first_option" = "mangle-ip4" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta  mangle ipv4"
- echo "$cinco  [The xtables ipv4]"
+ echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t mangle -v -L
- echo "$cinco  [The neftables ipv4]"
+ echo "$tab  [The neftables ipv4][iptables-nft]"
  $which_iptables_nft -t mangle -v -L
  exit; fi
 ####
@@ -1601,9 +1602,9 @@ if [ "$first_option" = "mangle-ip4" ]; then echo -n
 if [ "$first_option" = "mangle-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
  echo "$cincuenta  mangle ipv6"
- echo "$cinco  [The xtables ipv6]"
+ echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t mangle -v -L
- echo "$cinco  [The neftables ipv6]"
+ echo "$tab  [The neftables ipv6][iptables-nft]"
  $which_ip6tables_nft -t mangle -v -L
  exit; fi
 ####
@@ -1615,9 +1616,9 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
  if [ "$first_option" = "raw-ip4" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta  raw ipv4"
- echo "$cinco  [The xtables ipv4]"
+ echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t raw -v -L
- echo "$cinco  [The neftables ipv4]"
+ echo "$tab  [The neftables ipv4][iptables-nft]"
  $which_iptables_nft -t raw -v -L
  exit; fi
 ####
@@ -1629,9 +1630,9 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
  if [ "$first_option" = "raw-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta  raw ipv6"
- echo "$cinco  [The xtables ipv6]"
+ echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t raw -v -L
- echo "$cinco  [The neftables ipv6]"
+ echo "$tab  [The neftables ipv6][iptables-nft]"
  $which_ip6tables_nft -t raw -v -L
  exit; fi
 ####
@@ -1643,9 +1644,9 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
  if [ "$first_option" = "security-ip4" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta  security ipv4"
- echo "$cinco  [The xtables ipv4]"
+ echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t security -v -L
- echo "$cinco  [The neftables ipv4]"
+ echo "$tab  [The neftables ipv4][iptables-nft]"
  $which_iptables_nft -t security -v -L
  exit; fi
 ####
@@ -1657,9 +1658,9 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
  if [ "$first_option" = "security-ip6" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta  security ipv6"
- echo "$cinco  [The xtables ipv6]"
+ echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t security -v -L
- echo "$cinco  [The neftables ipv6]"
+ echo "$tab  [The neftables ipv6][iptables-nft]"
  $which_ip6tables_nft -t security -v -L
  exit; fi
 ####
@@ -1671,9 +1672,9 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
  if [ "$first_option" = "ebtables" ]; then echo -n
  echo "$fprogram version $fversion"
  echo  "$cincuenta ebtables ethernet nft"
- echo "$cinco filter ethernet nft"
+ echo "$tab filter ethernet nft"
  $which_ebtables -L -t filter
- echo "$cinco nat ethernet nft"
+ echo "$tab nat ethernet nft"
  $which_ebtables -L -t nat
  exit; fi
 ####
@@ -2307,40 +2308,41 @@ exit; fi
 if [ "$first_option" = "about" ]; then echo -n
 echo ""
 echo ""
-echo "  Fran FireWall iptables"
+echo "$tab [Fran FireWall iptables]"
 echo "$cincuenta"
 echo ""
-echo "$cinco   Program Name:"
+echo "$tab [Program Name]"
 echo "  $fprogram"
 echo ""
-echo "$cinco   Program Description:"
+echo "$tab [Program Description]"
 echo "  $fdescription"
 echo ""
-echo "$cinco   Program Install:"
+echo "$tab [Program Install]"
 echo "  chmod ugo+x $fiptables"
 echo "  ./$fiptables"
 echo "  [and then fwiptables is in $directory_fiptables/$fiptables"]
 echo
-echo "$cinco   Devevelopments version program:"
+echo "$tab [Devevelopments version program]"
 echo "  The fran iptables ver in development in git code at sourceforge:"
 echo ""
 echo "  $fweb_development"
 echo ""
-echo "$cinco   New versions program:"
+echo "$tab [New versions program]"
 echo "  The fran iptables version 210 and new versions up in files repository at sourceforge:"
 echo ""
 echo "  $fweb_newfiles"
 echo ""
-echo "$cinco   All versions program:"
+echo "$tab [Access web with all versions program]"
 echo "  The fran iptables all versions in code repository at sourceforge:"
 echo ""
 echo "  $fweb_tree"
 echo ""
-echo "$cinco   Git clone with all versions:"
+echo "$tab [Git clone with all versions program]"
+echo "  The fran iptables all versions in code repository at sourceforge:"
 echo ""
 echo "  git clone $fweb_git"
 echo
-echo "$cinco   Program License:"
+echo "$tab [Program License]"
 echo "  $flicense"
 echo ""
 echo "$cincuenta"
@@ -2356,15 +2358,15 @@ exit; fi
 if [ "$first_option" = "system-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   System info "
-echo "$cinco [System info]  distro] "
+echo "$tab [System info:  distro] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
-echo "$cinco [System info:  Kernel Linux] "
+echo "$tab [System info:  Kernel Linux] "
 $which_uname -srom
-echo "$cinco [System info:  Processor] "
+echo "$tab [System info:  Processor] "
 lscpu | egrep -i "socket|Model name|cpu max"
-echo "$cinco [System info:  Memory RAM] "
+echo "$tab [System info:  Memory RAM] "
 free -h
-echo "$cinco [System info:  Disks] "
+echo "$tab [System info:  Disks] "
 df -h -x tmpfs
 exit; fi
 ####
@@ -2376,11 +2378,11 @@ exit; fi
 if [ "$first_option" = "net-info" ]; then echo -n
 echo "$fprogram version $fversion"
 echo "$cincuenta   Net info $cinco"
-echo "$cinco [Net Info:  route ipv4] "
+echo "$tab [Net Info:  route ipv4] "
 $which_ip route
-echo "$cinco [Net info:  listen ipv4] "
+echo "$tab [Net info:  listen ipv4] "
 $which_ss -l4 | sed 's/   / /g'
-echo "$cinco [Net info:  listen ipv6] "
+echo "$tab [Net info:  listen ipv6] "
 $which_ss -l6 | sed 's/   / /g'
 exit; fi
 ####
@@ -3480,7 +3482,7 @@ $launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t
 ####  # show text head lines in all firewall #
 echo "$fprogram version $fversion ";
 echo "$cincuenta lauching iptables rules $cinco"
-echo "$cinco Launched $fiptables $first_option $second_option"
+echo "$cinco  OK LAUNCHED $fiptables $first_option $second_option"
 ####  # show text to firewall offline #
 if [ "$first_option" = "offline" ]; then echo -n
 echo "$cinco  The iptables configured for disconnected to internet $cinco"
