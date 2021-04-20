@@ -2944,10 +2944,10 @@ $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
-$allow_ipv4 $allow_legacy $allow_bandwidth_input $which_iptables_legacy -A  INPUT -m hashlimit --hashlimit-above   "$bandwidth_input"kb/sec  --hashlimit-mode srcip --hashlimit-name maxinputl  -j DROP &> /dev/null
-$allow_ipv4 $allow_legacy $allow_bandwidth_output $which_iptables_legacy -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-mode dstip --hashlimit-name maxoutputl -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_bandwidth_input $which_iptables_nft -A INPUT -m hashlimit   --hashlimit-above "$bandwidth_input"kb/sec  --hashlimit-mode srcip  --hashlimit-name maxinputn  -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_bandwidth_output $which_iptables_nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-mode dstip  --hashlimit-name maxoutputn -j DROP &> /dev/null
+$allow_ipv4 $allow_legacy $allow_bandwidth_input $which_iptables_legacy     -A  INPUT -m hashlimit --hashlimit-above   "$bandwidth_input"kb/sec  --hashlimit-name maxinputlegacy  -j DROP &> /dev/null
+$allow_ipv4 $allow_legacy $allow_bandwidth_output $which_iptables_legacy    -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP &> /dev/null
+$allow_ipv4 $allow_nft $allow_bandwidth_input $which_iptables_nft           -A INPUT -m hashlimit    --hashlimit-above "$bandwidth_input"kb/sec  --hashlimit-name maxinputnft  -j DROP &> /dev/null
+$allow_ipv4 $allow_nft $allow_bandwidth_output $which_iptables_nft          -A OUTPUT -m hashlimit  --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
