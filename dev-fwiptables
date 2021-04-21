@@ -253,12 +253,10 @@ if [ -f "$directory_config/$second_option" ]; then config_option="si"; else conf
 ####   the first: [config.cfg]
 ####
 ####
-case $first_option in
-*.cfg)
-if [ -f "$directory_config/$first_option" ]; then  echo -n ;
-launch_iptables="si"; launch_thefirst="si"; launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; 
-else echo -n ; fi
-esac
+if [ -f "$directory_config"/"$first_option" ]; then echo -n ;
+launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ; 
+launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; 
+else echo -n; fi
 ####
 ####
 ####   the first: offline, allpermisive or custom
@@ -2868,8 +2866,9 @@ exit; else echo -n ; fi
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion o defaultcfg
 ####
 ####
-if [ si="$launch_thesecond" ]; then source $directory_config/$second_option ; else source $directory_config/$defaultcfg; fi
-if [ si="$launch_thefirst" ]; then source $directory_config/$first_option ; else echo -n; fi
+if [ -f $directory_config/$first_option ]  ; then source $directory_config/$first_option  ; fi
+if [ $first_option = "custom" ]  &&  [ -f $directory_config/$second_option ] ; then source $directory_config/$second_option ; 
+else source $directory_config/$defaultcfg ;  fi
 ####
 ####
 ##############################      english: output_uid or output_gid for input established status        #####################
