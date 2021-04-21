@@ -37,7 +37,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="[Fran FireWall iptables: $fiptables]" ; fversion="216"; #english: Name and Version  #spanish: Nombre y Version
+fprogram="[Fran FireWall iptables: $fiptables]" ; fversion="215"; #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ; defaultcfg="default.cfg"  ;  #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_eng="default-english.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
 defaultcfg_esp="default-spanish.cfg" ;                            #english: path to config files  #spanish: archivos de configuracion
@@ -2866,9 +2866,9 @@ exit; else echo -n ; fi
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion o defaultcfg
 ####
 ####
-if [ -f $directory_config/$first_option ]  ; then source $directory_config/$first_option  ; fi
 if [ $first_option = "custom" ]  &&  [ -f $directory_config/$second_option ] ; then source $directory_config/$second_option ; 
 else source $directory_config/$defaultcfg ;  fi
+if [ -f $directory_config/$first_option ]  ; then source $directory_config/$first_option  ; fi
 ####
 ####
 ##############################      english: output_uid or output_gid for input established status        #####################
