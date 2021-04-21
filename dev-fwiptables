@@ -246,25 +246,21 @@ fi
 if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
 ####
 ####
-##############################       english: if first_option exists a valid file.cfg launch custom ###########################################
-##############################       spanish: si primera opcion existe cfg lanza custom             ###########################################
+##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
+##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
+####
+####
+####   the first: [config.cfg]
 ####
 ####
 case $first_option in
 *.cfg)
-if [ -f "$directory_config/$first_option" ]; then $fiptables custom $first_option &> /dev/null
-echo "$fprogram version $ver"
-echo "$cincuenta launching custom rules iptables"
-echo "$cinco  Launched $fiptables $first_option $second_option"
-echo "$cinco  The iptables configured for custom rules to internet"
-echo "$cinco  launch $0 list  # to list iptables rules"
-exit ; else echo -n; fi
-;;
+if [ -f "$directory_config/$first_option" ]; then  echo -n ;
+launch_iptables="si"; launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
 esac
 ####
 ####
-##############################      english: launch-rules: The first options: offline, client, server and allpermisive     #####################
-##############################      spanish: launch-rules: Primeras opciones: offline, client, server and allpermisive     #####################
+####   the first: offline, allpermisive or custom
 ####
 ####
 if [ "$first_option" = "offline" ]; then      echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
@@ -3480,21 +3476,32 @@ $launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t
 ########################################       spanish: muestra texto cuando activas las reglas
 ####
 ####  # show text head lines in all firewall #
-echo "$fprogram version $fversion ";
+echo "$fprogram [version $fversion]";
 echo "$cincuenta lauching iptables rules $cinco"
 echo "$cinco  OK LAUNCHED $fiptables $first_option $second_option"
+# echo "$cinco  Fine cfg with $first_option, when fail.. run $defaultcfg"
 ####  # show text to firewall offline #
 if [ "$first_option" = "offline" ]; then echo -n
-echo "$cinco  The iptables configured for disconnected to internet $cinco"
+#echo "$cinco  The iptables configured for disconnected to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall allpermisive #
 if [ "$first_option" = "allpermisive" ]; then echo -n
-echo "$cinco  The iptables configured for all permisive to internet $cinco"
+#echo "$cinco  The iptables configured for all permisive to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
-####  # show text to firewall [config.cfg] (silent text) or  custom [config.cfg] (show text) #
+####  # show text to firewall [config.cfg] (silent text) #
+if [ -f "$directory_config/$first_option" ]; then echo -n
+#echo "$cinco  The iptables configured for custom rules to internet $cinco"
+echo "$cinco  launch $0 list  # to list iptables rules"
+exit ; else echo -n ; fi
+####  # show text to firewall custom [config.cfg] (silent text) #
 if [ -f "$directory_config/$second_option" ]; then echo -n
+#echo "$cinco  The iptables configured for custom rules to internet $cinco"
+echo "$cinco  launch $0 list  # to list iptables rules"
+exit ; else echo -n ; fi
+####  # show text to firewall [config.cfg] or custom [config.cfg] (show text) when fail #
+if [ -f "$directory_config/$first_option" ] | [ -f "$directory_config/$second_option" ] ; then echo -n
 echo "$cinco $program configured with the configuration: $second_option $cinco" ;
 else echo "$cinco [Configured with the default configuration] $cinco"
 echo "  $defaultcfg "; fi ;
