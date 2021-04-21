@@ -32,7 +32,7 @@ source /etc/profile
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
-third_option="$3" ; fourth_option="$4" ;                          #english: variables to launch  #spanish: variables a lanzar
+launch_thefirst="no" ; launch_thesecond="no" ;                    #english: variables to launch  #spanish: variables a lanzar
 config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
@@ -256,7 +256,8 @@ if [ -f "$directory_config/$second_option" ]; then config_option="si"; else conf
 case $first_option in
 *.cfg)
 if [ -f "$directory_config/$first_option" ]; then  echo -n ;
-launch_iptables="si"; launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
+launch_iptables="si"; launch_thefirst="si"; launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; 
+else echo -n ; fi
 esac
 ####
 ####
@@ -264,11 +265,11 @@ esac
 ####
 ####
 if [ "$first_option" = "offline" ]; then      echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
-launch_iptables="si"; launch_permisive="no"; launch_offline=""   ;  launch_custom="no" ; only_output="no"  ; fi
+launch_iptables="si"; launch_thesecond="si"; launch_permisive="no"; launch_offline=""   ;  launch_custom="no" ; only_output="no"  ; fi
 if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
-launch_iptables="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; only_output="no"  ; fi
+launch_iptables="si"; launch_thesecond="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; only_output="no"  ; fi
 if [ "$first_option" = "custom" ]; then       echo "  FIREWALL CUSTOM" ; echo "$cincuenta"
-launch_iptables="si"; launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
+launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
@@ -2867,7 +2868,8 @@ exit; else echo -n ; fi
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion o defaultcfg
 ####
 ####
-if [ -f "$directory_config/$second_option" ]; then source $directory_config/$second_option ; else source $directory_config/$defaultcfg; fi
+if [ si="$launch_thesecond" ]; then source $directory_config/$second_option ; else source $directory_config/$defaultcfg; fi
+if [ si="$launch_thefirst" ]; then source $directory_config/$first_option ; else echo -n; fi
 ####
 ####
 ##############################      english: output_uid or output_gid for input established status        #####################
