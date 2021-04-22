@@ -1,0 +1,49 @@
+[Fran FireWall iptables: fwiptables] [Version 215]
+##################################################   Options  #####
+#####             ###  Necesary options .......... .......... ..........  
+#####             ###  the iptables firewall netfilter, choose one or two 
+allow_legacy= ;             ###  launch xtables, void to yes or type no 
+allow_nft=no ;             ###  launch neftables, void to yes or type no 
+#####             ###  ip protocol, modify with void or no 
+allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont configure ipv4  
+allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
+#####             ###  Client ports, add with "," and join ranges with ":" 
+client_tcp="http,https,ssh,git" ;             ###  tcp ports for client 
+client_udp="domain,bootpc,ntp,https" ;             ###  udp ports for client 
+#####             ###  Server ports, add with "," and join ranges with ":" 
+server_tcp=""  ;             ###  tcp ports for server 
+server_udp=""  ;             ###  udp ports for server 
+#####             ###  Selective Input state 
+input_state="-m state --state NEW,RELATED,ESTABLISHED" ;             ### void for all or -m state --state new,related,established,untracked,invalid 
+#####             ###  no or void to works with only output rules 
+only_output="" ;             ###  void, the rules are only to output in filter, or no 
+#####             ###  Optional options .......... .......... .......... 
+#####             ###  Allow Other Options,  modify with void, or no 
+allow_bandwidth_input=no ;             ###  void to limit bandwidth input in kbits/sec for all sources or no 
+allow_bandwidth_output=no ;             ###  void to limit bandwidth output in kbits/sec for each destination or no 
+allow_ping_send=no ;             ###  void to allow send pings, and no to drop send pings 
+allow_ping_recive=no ;             ###  void to allow recive pings, and no to drop recive pings 
+allow_log_tcp=no ;             ###  void to tcp log, and no to do not log tcp 
+allow_log_udp=no ;             ###  void to udp log, and no to do not log udp 
+allow_forwading=no ;             ###  void to allow ip forward, and no to drop forward ip 
+allow_nat=no ;             ###  void to do NAT masquerade to default route, or no 
+allow_vpn=no ;             ###  void to allow some exceptional host or no 
+allow_blacklist=no ;             ###  void to drop some excepcional host or no 
+allow_output_uid=no ;             ###  void to allow excepcional user or no 
+allow_output_gid=no ;             ###  void to allow excepcional group or no 
+allow_others_protocols=no ;             ###  void to allow other protocol ip excepcional or no 
+#####             ###  Other Options, add with "," and join ranges with ":" 
+bandwidth_input="12512"             ###  max input bandwidth in kbits/sec for all 
+bandwidth_output="512"             ###  max output bandwidth in kbits/sec for ip 
+log_udp="" ;             ###  the udp ports to log 
+log_tcp="ssh" ;             ###  the tcp ports to log 
+vpn="sourceforge.net,wesnoth.org" ;             ###  allow this excepcitonal host 
+blacklist="" ;             ###  drop this excepcional host 
+output_uid="root" ;             ###  allow out packages excepcional from this user 
+output_gid="root" ;             ###  allow out packages excepcional from this group 
+others_protocols="icmp,igmp" ;             ###  allow others protocols from /etc/protocolos 
+#####             ###  Net to connect like client or server 
+net_ipv4_client=0/0  ;              ###  the net to client ipv4, all is 0/0  
+net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0 
+net_ipv6_client=::/0 ;              ###  the net to client ipv6, all is ::/0 
+net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0 

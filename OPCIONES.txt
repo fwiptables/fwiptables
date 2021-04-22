@@ -1,0 +1,49 @@
+[Fran FireWall iptables: fwiptables] [Version 215]
+##################################################   Opciones  #####
+#####             ###  Opciones Necesarias .......... .......... ..........
+#####             ###  el iptables firewall netfilter, elige uno o dos
+allow_legacy= ;             ###  lanza xtables, vacio para si, o escribe no
+allow_nft=no ;             ###  lanza neftables, vacio para si, o escribe no
+#####             ###  procolo ip, modificar con vacio o no
+allow_ipv4= ;             ###  varcio para ejecutar el firewall con ipv4 o no para no
+allow_ipv6=no ;             ###  varcio para ejecutar el firewall con ipv6 o no para no
+#####             ###  Puertos Cliente, añadir con "," y poner rangos con ":"
+client_tcp="http,https,ssh,git" ;             ###  puertos tcp para ser cliente
+client_udp="domain,bootpc,ntp,https" ;             ###  puertos udp para ser cliente
+#####             ###  Puertos Servidor, añadir con "," y poner rangos con ":"
+server_tcp=""  ;             ###   puertos tcp para servir
+server_udp=""  ;             ###  puertos udp para servir
+#####             ###  Estado de entrada selectivo
+input_state="-m state --state NEW,RELATED,ESTABLISHED" ;             ###  modificar con vacio o -m state --state new,related,established,untracked,invalid
+#####             ###  no o vacio para funcionar con reglas de salida solamente
+only_output="" ;             ###  vacio, reglas solo para salida o no
+#####             ###  Opciones opcionales .......... .......... ..........
+#####             ###  Permitir Otras Opciones, modificar con vacio o no
+allow_bandwidth_input=no ;             ###  vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no
+allow_bandwidth_output=no ;             ###  vacio limitar ancho de banda de salida en kbits/sec por cada destino o no
+allow_ping_send=no ;             ###  vacio para permitir enviar ping y no para evitar permitirlo
+allow_ping_recive=no ;             ###  vacio para permitir recivir ping y no para evitar permitirlo
+allow_log_tcp=no ;             ###  vacio para logear tcp y no para evitar logear tcp
+allow_log_udp=no ;             ###  vacio para logear udp y no para evitar logear udp
+allow_forwading=no ;             ###  vacio para permitir reenvio, y no para denegar reenvios
+allow_nat=no ;             ###  vacio para hacer masquerade a otras redes o nada
+allow_vpn=no ;             ###  vacio para permitir hosts excepcionales o no
+allow_blacklist=no ;             ###  vacio para denegar hosts excepcionales o no
+allow_output_uid=no ;             ###  vacio permite salida de paquetes de un usuario excepcional o no
+allow_output_gid=no ;             ###  vacio permite salida de paquetes de un grupo excepcional o no
+allow_others_protocols=no ;             ###  vacio para permitir otro protocolo ip excepcional o no
+#####             ###  Otras Opciones, añadir con "," y poner rangos con ":"
+bandwidth_input="12512"             ###  maximo entrada de ancho de banda en kbit/sec para todos
+bandwidth_output="512"             ###  maximo salida de ancho de banda en kbits/sec para ip
+log_udp="" ;             ###  los puertos udp para logear
+log_tcp="ssh" ;             ###  los puertos tcp para logear
+vpn="sourceforge.net,wesnoth.org" ;             ###  permitir estos host excepcionales
+blacklist="" ;             ###  deniega estos host excepcionales
+output_uid="root" ;             ###  permite salida de paquetes de este usuario excepcional o no
+output_gid="root" ;             ###  permite salida de paquetes de este grupo excepcional o no
+others_protocols="icmp,igmp" ;             ###  permitir otros protocolos desde /etc/protocols
+#####             ###  Red para conectar como cliente o server
+net_ipv4_client=0/0  ;              ###  la red cual cliente ipv4, todos es 0/0
+net_ipv4_server=0/0  ;              ###  la red cual servidor ipv4, todos es 0/0
+net_ipv6_client=::/0 ;              ###  la red cual cliente ipv6, todos es ::/0
+net_ipv6_server=::/0 ;              ###  la red cual servidor ipv6, todos es ::/0
