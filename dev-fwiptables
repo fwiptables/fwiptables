@@ -3498,6 +3498,25 @@ $launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t 
 $launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
+########################################       english: autosave of firewall to recover standard rules
+########################################       english: autoguardado de firewall para recuperador de reglas estandar
+####
+####
+#### english: iptables saved
+#### spanish: iptables guardado
+####
+####
+case $autosave_fwrecover in 
+$NULL)
+iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
+iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
+ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
+ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+# echo "$cinco autosave fwrecover created $first_option-$second_option with legacy and nft. See $fiptables fw-list"
+;;
+esac
+####
+####
 ########################################       english: show text when active rules
 ########################################       spanish: muestra texto cuando activas las reglas
 ####
@@ -3574,16 +3593,6 @@ if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcion
 if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allowed output gid output excepcional: $output_uid , and input established "; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocolo excepcional"; else echo "  Allowed other protocol excepcional: $others_protocols" ; fi
 echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
-# auto save iptables save
-case $autosave_fwrecover in 
-$NULL)
-iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
-iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
-ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
-echo "$cinco autosave fwrecover created $first_option-$second_option with legacy and nft. See $fiptables fw-list"
-;;
-esac
 ####
 ####
 ####
