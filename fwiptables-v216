@@ -202,24 +202,16 @@ else head "$flinea" "$0" | grep -iv ^# | tail "$fvariables" | cut -d "#" -f 1,2 
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
 ####
 ####
-##############################       english: auto installer if necesary              ###########################################
-##############################       spanish: auto instalador si es necesario         ###########################################
 ####
-if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
-else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_eng"
-head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_esp"
-echo "$fiptables $fversion installed in /usr/bin/$fiptables" ;
-echo "Updated default.cfg and $defaultcfg_eng and $defaultcfg_esp" ;
-echo "$cinco Launch $fiptables reconfig to regenerate example configs files"
-echo "$cinco Launch $fiptables to run $fiptables"
+####
+##############################       english: auto completion in the command         ###########################################
+##############################       spanish: auto completado en el programa         ###########################################
 ####
 ####
 #### bash_completion
-program_completion="\
-system-info net-info full-wizard mini-wizard cli gui \
-eraserules offline allpermisive custom [config.cfg] \
+complete -W \
+'system-info net-info full-wizard mini-wizard cli gui \
+eraserules offline allpermisive custom \
 list forward list6 forward6 nat-ip4 nat-ip6 \
 listnum forwardnum listnum6 forwardnum6 \
 new-full-config nueva-completa-config \
@@ -230,12 +222,24 @@ fw-list fw-save fw-restore \
 auth-sudo remove-sudo list-sudo \
 ping-ip4 ping-ip6 \
 trace-ip4 trace-ip6 host resolveip geoip \
-version upgrade dev-versions all-versions \
 hosts protocols services hosts.allow hosts.deny \
-about depends examples options opciones help ayuda"
-echo "complete -W '$program_completion' $fiptables " > /etc/bash_completion.d/$fiptables-completion
+version upgrade dev-versions all-versions \
+about depends examples options opciones help ayuda' "$fiptables"
 ####
 ####
+##############################       english: auto installer if necesary              ###########################################
+##############################       spanish: auto instalador si es necesario         ###########################################
+####
+####
+if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_eng"
+head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_esp"
+echo "$fiptables $fversion installed in /usr/bin/$fiptables" ;
+echo "Updated default.cfg and $defaultcfg_eng and $defaultcfg_esp" ;
+echo "$cinco Launch $fiptables reconfig to regenerate example configs files"
+echo "$cinco Launch $fiptables to run $fiptables"
 fi
 ####
 ####
@@ -1930,8 +1934,6 @@ echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
-echo "$cinco alias file:   /etc/bash_completion.d/$fiptables-completion"
-cat /etc/bash_completion.d/$fiptables-completion
 ;;
 *)
 echo "There is not auth users for $fiptables"
