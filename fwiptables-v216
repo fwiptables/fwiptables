@@ -1435,7 +1435,7 @@ exit; fi
  if [ "$first_option" = "forward" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta [List filter forward ipv4] $cinco"
- echo $tab " [The xtables ipv4]"
+ echo "$tab  [The xtables ipv4]"
  $which_iptables_legacy -v -L FORWARD
  echo "$tab  [The netftables ipv4] "
  $which_iptables_nft -v -L FORWARD
@@ -1481,7 +1481,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "forward6" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta [List filter forward ipv6] $cinco"
- echo $tab " [The xtables ipv6][iptables-legacy]"
+ echo "$tab [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -L FORWARD
  echo "$tab  [The netftables ipv6][iptables-nft] "
  $which_ip6tables_nft -v -L FORWARD
@@ -1552,7 +1552,7 @@ exit; fi
  if [ "$first_option" = "forwardnum" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta [List filter forward ipv4 numerical] $cinco"
- echo $tab " [The xtables ipv4][iptables-legacy]"
+ echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -n -L FORWARD
  echo "$tab  [The netftables ipv4][iptables-nft]"
  $which_iptables_nft -v -n -L FORWARD
@@ -1596,7 +1596,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "forwardnum6" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
  echo "$cincuenta [List filter forward ipv6 numerical] $cinco"
- echo $tab " [The xtables ipv6][iptables-legacy]"
+ echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -n -L FORWARD
  echo "$tab  [The netftables ipv6][iptables-nft]"
  $which_ip6tables_nft -v -n -L FORWARD
