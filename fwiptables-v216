@@ -581,7 +581,7 @@ else)
 esac
 cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu "Select:" 0 0 0\
-  000 "$tab $cinco $tab $fiptables cli $tab $cinco" \
+  000 "$tab $cinco $tab [$fiptables cli] $tab $cinco" \
   010 "$cinco [Guide to begin]" \
   11  "system-info" \
   12  "net-info" \
