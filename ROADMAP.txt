@@ -121,6 +121,5 @@ gui - full-wizard esta arreglado - ok 215
 silent and verbose - verbose cuando default.cfg - ok 215
 cli - corregir y actualizar - ok 216
 autosave fw - corregido y actualizado - ok 216
-complete - cambio bash_completion por complete en el script - ok 216
 apariencia - cambios de apariencia - ok 216
 

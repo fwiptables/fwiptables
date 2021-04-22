@@ -1,7 +1,6 @@
 #!/bin/bash
 ##
 ##
-##
 ## english: necesary to find several PATH
 ## spanish: necesario para encontrar varios PATH
 source /etc/profile
@@ -202,13 +201,14 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 ####
 ####
 ####
-##############################       english: auto completion in the command         ###########################################
-##############################       spanish: auto completado en el programa         ###########################################
+##############################       english: auto completion if update         ###########################################
+##############################       spanish: auto completado if update         ###########################################
 ####
 ####
-#### bash_completion
-complete -W \
-'system-info net-info full-wizard mini-wizard cli gui \
+#### bash_completion in the $fiptables
+if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+else echo complete -W "'system-info net-info \
+full-wizard mini-wizard cli gui \
 eraserules offline allpermisive custom \
 list forward list6 forward6 nat-ip4 nat-ip6 \
 listnum forwardnum listnum6 forwardnum6 \
@@ -222,7 +222,9 @@ ping-ip4 ping-ip6 \
 trace-ip4 trace-ip6 host resolveip geoip \
 hosts protocols services hosts.allow hosts.deny \
 version upgrade dev-versions all-versions \
-about depends examples options opciones help ayuda' "$fiptables"
+about depends examples options opciones \
+help ayuda'" $fiptables > /etc/bash_completion.d/$fiptables-completion
+fi
 ####
 ####
 ##############################       english: auto installer if necesary              ###########################################
@@ -234,9 +236,7 @@ else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_eng"
 head $flinea $0 | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g" | sed "s/echo -n/#####/g" | sed "s/echo -n//g"  > "$directory_config/$defaultcfg_esp"
-echo "$fiptables $fversion installed in /usr/bin/$fiptables" ;
-# echo "Updated default.cfg and $defaultcfg_eng and $defaultcfg_esp" ;
-# echo "$cinco Launch $fiptables reconfig to regenerate example configs files"
+echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
 echo "$cinco Launch $fiptables to run $fiptables"
 fi
 ####
@@ -2855,9 +2855,9 @@ echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                      
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
-echo " [own cfg]"
+echo " [||Own  cfg||]"
 echo " $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $listado)"
-echo " [Examples]"
+echo " [||Examples||]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
