@@ -146,8 +146,8 @@ echo " [Recover fw]       fw-list fw-save fw-restore                            
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
+echo " [Show etc]         hosts protocols services hosts.allow hosts.deny            "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 #echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
@@ -178,8 +178,8 @@ echo " [Recover fw]       fw-list fw-save fw-restore                            
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
+echo " [Show etc]         hosts protocols services hosts.allow hosts.deny            "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 #echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
@@ -579,87 +579,92 @@ else)
 esac
 cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu "Select:" 0 0 0\
-  010 "Guide" \
-  11 "system-info" \
-  12 "net-info" \
-  13 "mini-wizard" \
-  14 "full-wizard" \
-  15 "cli" \
-  16 "gui" \
-  020 "Launch rules" \
-  21 eraserules \
-  22 offline \
-  23 allpermisive \
-  24 custom \
-  25 mini-wizard \
-  26 full-wizard \
-  030 "List rules" \
-  31 list \
-  32 forward \
-  33 list6  \
-  34 forward6 \
-  35 nat-ip4 \
-  36 nat-ip6 \
-  040 "List sockets" \
-  41 route \
-  42 ss \
-  43 netstat \
-  44 lsof \
-  45 ipforwading \
-  46 tcpdump \
-  47 arp \
-  050 "Modify config" \
-  51 reconfig \
-  52 show-config \
-  53 new-full-config \
-  54 nueva-completa-config \
-  55 new-mini-config \
-  56 nueva-mini-config \
-  57 modify-config \
-  58 del-config \
-  060 "Other tables"  \
-  61 raw-ip4 \
-  62 raw-ip6 \
-  63 mangle-ip4 \
-  64 mangle-ip6 \
-  65 security-ip4 \
-  66 security-ip6 \
-  070 "Recover fw" \
-  71 fw-list  \
-  72 fw-save  \
-  73 fw-restore  \
-  080 "Tool icmp" \
-  81   "ping-ip4" \
-  82   "ping-ip6" \
-  090 "Tool tcp"  \
-  91   "trace-ip4" \
-  92   "trace-ip6" \
-  93   "host" \
-  94   "resolveip" \
-  95   "geoip" \
-  0100 "Auth sudo"  \
-  101  "auth-sudo" \
-  102  "remove-sudo" \
-  103  "list-sudo" \
-  0110 "Versions" \
-  111 "version" \
-  112 "upgrade" \
-  113 "dev-versions" \
-  114 "all-versions" \
-  0120 "Show" \
+  000 "$tab $cinco $tab $fiptables cli $tab $cinco" \
+  010 "$cinco Guide to begin" \
+  11  "system-info" \
+  12  "net-info" \
+  13  "mini-wizard" \
+  14  "full-wizard" \
+  15  "cli" \
+  16  "gui" \
+  020 "$cinco Launch rules iptables" \
+  21  "eraserules" \
+  22  "offline" \
+  23  "allpermisive" \
+  24  "custom" \
+  030 "$cinco List rules alphabetical" \
+  31  "list" \
+  32  "forward" \
+  33  "list6"  \
+  34  "forward6" \
+  35  "nat-ip4" \
+  36  "nat-ip6" \
+  040 "$cinco List rules numerical" \
+  41  "listnum" \
+  42  "forwardnum" \
+  43  "listnum6" \
+  44  "forwardnum6" \
+  050 "$cinco Modify config cfg" \
+  51  "show-config" \
+  52  "new-full-config" \
+  53  "nueva-completa-config" \
+  54  "new-mini-config" \
+  55  "nueva-mini-config" \
+  56  "modify-config" \
+  57  "del-config" \
+  060 "$cinco List net sockets" \
+  61  "route" \
+  62  "ss" \
+  63  "netstat" \
+  64  "lsof" \
+  65  "ipforwading" \
+  66  "tcpdump" \
+  67  "arp" \
+  070 "$cinco List other tables"  \
+  71  "raw-ip4" \
+  72  "raw-ip6" \
+  73  "mangle-ip4" \
+  74  "mangle-ip6" \
+  75  "security-ip4" \
+  76  "security-ip6" \
+  77  "ebtables" \
+  78  "arptables" \
+  080 "$cinco Recover fw firewall" \
+  81  "fw-list"  \
+  82  "fw-save"  \
+  83  "fw-restore"  \
+  090 "$cinco Tool icmp test" \
+  91   "ping-ip4" \
+  92   "ping-ip6" \
+  0100 "$cinco Tool tcp test"  \
+  101  "trace-ip4" \
+  102  "trace-ip6" \
+  103  "host" \
+  104  "resolveip" \
+  105  "geoip" \
+  0110 "$cinco Auth sudo operations"  \
+  111  "auth-sudo" \
+  112  "remove-sudo" \
+  113  "list-sudo" \
+  0120 "$cinco Show etc configurations" \
   121  "hosts" \
   122  "protocols" \
   123  "services" \
   124  "hosts.allow" \
   125  "hosts.deny" \
-  0130 "Help" \
-  131  "about" \
-  132  "depends" \
-  133  "examples" \
-  134  "options" \
-  135  "opciones" \
-  136  "help" \
-  137  "ayuda" \
+  0130 "$cinco Versions from $fiptables" \
+  131  "version" \
+  132  "upgrade" \
+  133  "dev-versions" \
+  134  "all-versions" \
+  0140 "$cinco Help global options" \
+  141  "about" \
+  142  "depends" \
+  143  "examples" \
+  144  "options" \
+  145  "opciones" \
+  146  "help" \
+  147  "ayuda" \
  )"
 
 case "$menuprincipal" in
@@ -711,14 +716,6 @@ case "$menuprincipal" in
  clear
  $fiptables custom $archivo
  ;;
- 25)
- clear
- $fiptables mini-wizard
- ;;
- 26)
- clear
- $fiptables full-wizard
- ;;
  31)
  clear
  $fiptables list
@@ -745,73 +742,57 @@ case "$menuprincipal" in
  ;;
  41)
  clear
- $fiptables route
+ $fiptables listnum
  ;;
  42)
  clear
- $fiptables ss
+ $fiptables forwardnum
  ;;
  43)
  clear
- $fiptables netstat
+ $fiptables listnum6
  ;;
  44)
  clear
- $fiptables lsof
- ;;
- 45)
- clear
- $fiptables ipforwading
- ;;
- 46)
- clear
- $fiptables tcpdump
- ;;
- 47)
- clear
- $fiptables arp -a
+ $fiptables forwardnum6
  ;;
  51)
- clear
- $fiptables reconfig
- ;;
- 52)
  clear
  archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables show-config $archivo
  echo "$cinco Launch: $fiptables custom $archivo"
  ;;
- 53)
+ 52)
  clear
  archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-full-config $archivo
  ;;
- 54)
+ 53)
  clear
  archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-completa-config $archivo
  ;;
- 55)
+ 54)
  clear
  archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-mini-config $archivo
  ;;
- 56)
+ 55)
  clear
  archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-mini-config $archivo
  ;;
- 57)
+ 56)
  archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables modify-config $archivo
  ;;
- 58)
+ 57)
  echo
  archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  clear
@@ -820,114 +801,142 @@ case "$menuprincipal" in
  ;;
  61)
  clear
- $fiptables raw-ip4
+ $fiptables route
  ;;
  62)
  clear
- $fiptables raw-ip6
+ $fiptables ss
  ;;
  63)
  clear
- $fiptables mangle-ip4
+ $fiptables netstat
  ;;
  64)
  clear
- $fiptables mangle-ip6
+ $fiptables lsof
  ;;
  65)
  clear
- $fiptables security-ip4
+ $fiptables ipforwading
  ;;
  66)
  clear
- $fiptables security-ip6
+ $fiptables tcpdump
+ ;;
+ 67)
+ clear
+ $fiptables arp -a
  ;;
  71)
+ clear
+ $fiptables raw-ip4
+ echo; echo; echo;
+ ;;
+ 72)
+ clear
+ $fiptables raw-ip6
+ echo; echo; echo;
+ ;;
+ 73)
+ clear
+ $fiptables mangle-ip4
+ echo; echo; echo;
+ ;;
+ 74)
+ clear
+ $fiptables mangle-ip6
+ echo; echo; echo;
+ ;;
+ 75)
+ clear
+ $fiptables security-ip4
+ echo; echo; echo;
+ ;;
+ 76)
+ clear
+ $fiptables security-ip6
+ echo; echo; echo;
+ ;;
+ 77)
+ clear
+ $fiptables ebtables
+ echo; echo; echo;
+ ;;
+ 78)
+ clear
+ $fiptables arptables
+ echo; echo; echo;
+ ;;
+  81)
 clear
  $fiptables fw-list
  ;;
- 72)
+ 82)
  clear
  archivo="$(dialog --stdout --title "save the firewall format standar" --inputbox "New name" 0 0)"
  clear
  echo "$cincuenta saved $archivo"
  $fiptables fw-save $archivo
  ;;
- 73)
+ 83)
  clear
  $fiptables fw-restore
  ;;
- 81)
+ 91)
  clear
  resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables ping-ip4 $resolve
  ;;
- 82)
+ 92)
  clear
  resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables ping-ip6 $resolve
  ;;
- 91)
+ 101)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables trace-ip4 $resolve
  ;;
- 92)
+ 102)
  clear
  resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables trace-ip6 $resolve
  ;;
- 93)
+ 103)
  clear
  resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables host $resolve
  ;;
- 94)
+ 104)
  clear
  resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables resolveip $resolve
  ;;
- 95)
+ 105)
  clear
  resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables geoip $resolve
  ;;
- 101)
+ 111)
  clear
  resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear
  $fiptables auth-sudo $resolve
  ;;
- 102)
+ 112)
  clear
  $fiptables remove-sudo
  ;;
- 103)
- clear
- $fiptables list-sudo
- ;;
- 111)
- clear
- $fiptables version
- ;;
- 112)
- clear
- $fiptables upgrade
- ;;
  113)
  clear
- $fiptables dev-versions
- ;;
- 114)
- clear
- $fiptables all-versions | less
+ $fiptables list-sudo
  ;;
  121)
  clear
@@ -951,29 +960,45 @@ clear
  ;;
  131)
  clear
- $fiptables about
+ $fiptables version
  ;;
  132)
  clear
- $fiptables depends
+ $fiptables upgrade
  ;;
  133)
  clear
- $fiptables examples
+ $fiptables dev-versions
  ;;
  134)
  clear
+ $fiptables all-versions | less
+ ;;
+ 141)
+ clear
+ $fiptables about
+ ;;
+ 142)
+ clear
+ $fiptables depends
+ ;;
+ 143)
+ clear
+ $fiptables examples
+ ;;
+ 144)
+ clear
  $fiptables options | less
  ;;
- 135)
+ 145)
  clear
  $fiptables opciones | less
  ;;
- 136)
+ 146)
  clear
  $fiptables help | less
  ;;
- 137)
+ 147)
  clear
  $fiptables ayuda | less
  ;;
@@ -2423,8 +2448,8 @@ echo " [Recover fw]       fw-list fw-save fw-restore                            
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
+echo " [Show etc]         hosts protocols services hosts.allow hosts.deny            "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 #echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
@@ -2626,8 +2651,8 @@ echo " [Recover fw]       fw-list fw-save fw-restore                            
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
+echo " [Show etc]         hosts protocols services hosts.allow hosts.deny            "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 #echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
@@ -2829,8 +2854,8 @@ echo " [Recover fw]       fw-list fw-save fw-restore                            
 echo " [Auth sudo]        auth-sudo remove-sudo list-sudo                            "
 echo " [Tool icmp]        ping-ip4 ping-ip6                                          "
 echo " [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   "
+echo " [Show etc]         hosts protocols services hosts.allow hosts.deny            "
 echo " [Version]          version upgrade dev-versions all-versions                  "
-echo " [Show]             hosts protocols services hosts.allow hosts.deny            "
 echo " [Help]             about depends examples options opciones help ayuda         "
 echo "$cinco Optional $directory_config/[config.cfg]  $cinco"
 # echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
