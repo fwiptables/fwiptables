@@ -119,4 +119,4 @@ apariencia - acutalizado - ok 215
 bandwidth limit output - limita velocidad por ip - ok 215
 gui - full-wizard esta arreglado - ok 215
 silent and verbose - verbose cuando default.cfg - ok 215
-cli - corregir - 
+cli - corregir y actualizar - ok 216
