@@ -78,7 +78,7 @@ server_udp=""     ;    #english: udp ports for server #spanish: puertos udp para
 logserver_tcp=""  ;    #english: the tcp ports to log server #spanish: puertos tcp para logear servidor
 logserver_udp=""  ;    #english: the udp ports to log server #spanish: puertos udp para logear servidor
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
-input_state="-m state --state NEW,RELATED,ESTABLISHED" ; #english: void for all or -m state --state new,related,established,untracked,invalid #spanish: modificar con vacio o -m state --state new,related,established,untracked,invalid
+input_state="-m state --state new,related,established" ; #english: void for all or -m state --state new,related,established,untracked,invalid #spanish: modificar con vacio o -m state --state new,related,established,untracked,invalid
 echo -n #english: void to works with only output rules or no #spanish: vacio para funcionar con reglas de salida solamente or no
 only_output="" ;            #english: void when the rules are only to output in filter or no #spanish: vacio, reglas solo para salida o no
 echo -n #english: .......... END Necesary options .......... ..........  #spanish: FINAL .......... Opciones Necesarias .......... ..........
@@ -656,19 +656,24 @@ menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu 
   123  "services" \
   124  "hosts.allow" \
   125  "hosts.deny" \
-  0130 "$cinco [Versions from $fiptables]" \
-  131  "version" \
-  132  "upgrade" \
-  133  "dev-versions" \
-  134  "all-versions" \
-  0140 "$cinco [Help global options]" \
-  141  "about" \
-  142  "depends" \
-  143  "examples" \
-  144  "options" \
-  145  "opciones" \
-  146  "help" \
-  147  "ayuda" \
+  0130 "$cinco [Show log registry]" \
+  131  "log-fwiptables" \
+  132  "log-sshd" \
+  133  "log-search" \
+  134  "log-search-r" \
+  0140 "$cinco [Versions from $fiptables]" \
+  141  "version" \
+  142  "upgrade" \
+  143  "dev-versions" \
+  144  "all-versions" \
+  0150 "$cinco [Help global options]" \
+  151  "about" \
+  152  "depends" \
+  153  "examples" \
+  154  "options" \
+  155  "opciones" \
+  156  "help" \
+  157  "ayuda" \
  )"
 
 case "$menuprincipal" in
@@ -964,45 +969,65 @@ clear
  ;;
  131)
  clear
- $fiptables version
+ $fiptables log-fwiptables
  ;;
  132)
  clear
- $fiptables upgrade
+ $fiptables log-sshd
  ;;
  133)
  clear
- $fiptables dev-versions
+ pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ clear
+ $fiptables log-search $pattern
  ;;
  134)
  clear
- $fiptables all-versions | less
+ pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ clear
+ $fiptables log-search-r $pattern
  ;;
  141)
  clear
- $fiptables about
+ $fiptables version
  ;;
  142)
  clear
- $fiptables depends
+ $fiptables upgrade
  ;;
  143)
  clear
- $fiptables examples
+ $fiptables dev-versions
  ;;
  144)
  clear
+ $fiptables all-versions | less
+ ;;
+ 151)
+ clear
+ $fiptables about
+ ;;
+ 152)
+ clear
+ $fiptables depends
+ ;;
+ 153)
+ clear
+ $fiptables examples
+ ;;
+ 154)
+ clear
  $fiptables options | less
  ;;
- 145)
+ 155)
  clear
  $fiptables opciones | less
  ;;
- 146)
+ 156)
  clear
  $fiptables help | less
  ;;
- 147)
+ 157)
  clear
  $fiptables ayuda | less
  ;;
