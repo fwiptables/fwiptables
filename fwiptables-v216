@@ -2228,6 +2228,46 @@ $which_geoiplookup -i $trazador
 exit; fi
 ####
 ####
+############################       english: log-fwiptables: log from program $fiptables
+############################       spanish: log-fwiptables: log desde el programa $fiptables
+####
+####
+if [ "$first_option" = "log-fwiptables" ]; then echo -n
+echo "$fprogram [Version $fversion]"
+echo "$cincuenta [log-fwiptables] $cinco"
+find /var/log -maxdepth 1 -type f | xargs egrep -i "$fiptables"
+exit; fi
+####
+####
+############################       english: log-sshd: log from ssh server
+############################       spanish: log-sshd: log desde el servidor de ssh
+####
+####
+if [ "$first_option" = "log-sshd" ]; then echo -n
+echo "$fprogram [Version $fversion]"
+echo "$cincuenta [log-sshd] $cinco"
+find /var/log -maxdepth 1 -type f | xargs egrep -i "sshd"
+exit; fi
+####
+####
+############################       english: log-search: log from a one search
+############################       spanish: log-search: log desde una busqueda
+####
+####
+if [ "$first_option" = "log-search" ]; then echo -n
+echo "$fprogram [Version $fversion]"
+echo "$cincuenta [log-search] $cinco"
+case "$second_option" in
+$NULL)
+echo "$cinco use: $fiptables $first_option pattern"
+;;
+*)
+find /var/log -maxdepth 1 -type f | xargs egrep -i "$second_option"
+;;
+esac
+exit; fi
+####
+####
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
 ####
@@ -2853,6 +2893,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
+echo " [Show log]          log-fwiptables log-sshd log-search"
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Own  cfg||]"
