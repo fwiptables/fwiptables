@@ -146,6 +146,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
+echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Own  cfg||]"
@@ -177,6 +178,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
+echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Own  cfg||]"
@@ -2268,6 +2270,24 @@ esac
 exit; fi
 ####
 ####
+############################       english: log-search-r: log from a one search
+############################       spanish: log-search-r: log desde una busqueda
+####
+####
+if [ "$first_option" = "log-search-r" ]; then echo -n
+echo "$fprogram [Version $fversion]"
+echo "$cincuenta [log-search-r] $cinco"
+case "$second_option" in
+$NULL)
+echo "$cinco use: $fiptables $first_option pattern"
+;;
+*)
+find /var/log -type f | xargs egrep -i "$second_option"
+;;
+esac
+exit; fi
+####
+####
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
 ####
@@ -2489,6 +2509,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
+echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Own  cfg||]"
@@ -2596,13 +2617,20 @@ echo "      upgrade: Upgrade $fiptables at the latest version"
 echo " dev-versions: Version in development from $fiptables"
 echo " all-versions: All versions from $fiptables"
 echo
-echo "$cinco         [Show]"
+echo "$cinco         [Show etc]"
 echo
 echo "        hosts: show /etc/hosts"
 echo "   protocolos: show /etc/protocols"
 echo "     services: show /etc/services"
 echo "  hosts.allow: show /etc/hosts.allow"
 echo "   hosts.deny: show /etc/hosts.deny"
+echo 
+echo "$cinco         [Show log]"
+echo
+echo "        hosts: search the logs from $fiptables for /var/log"
+echo "   protocolos: search the logs from sshd for /var/log"
+echo "     services: search the logs from a patter for /var/log"
+echo "     services: search the logs from a patter recursive for /var/log"
 echo 
 echo "$cinco         [Help]"
 echo
@@ -2691,6 +2719,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
+echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Own  cfg||]"
@@ -2798,13 +2827,20 @@ echo "      upgrade: Actualiza $fiptables a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
 echo " all-versions: Todas las versiones de $fiptables"
 echo
-echo "$cinco         [Show]"
+echo "$cinco         [Show etc]"
 echo
 echo "        hosts: muestra /etc/hosts"
 echo "   protocolos: muestra /etc/protocols"
 echo "     services: muestra /etc/services"
 echo "  hosts.allow: muestra /etc/hosts.allow"
 echo "   hosts.deny: muestra /etc/hosts.deny"
+echo
+echo "$cinco         [Show log]"
+echo
+echo "        hosts: busca los logs de $fiptables para /var/log"
+echo "   protocolos: busca log logs de sshd para /var/log"
+echo "     services: busca los logs dando un patron para /var/log"
+echo "     services: busca los logs dando un patron recursivo para /var/log"
 echo 
 echo "$cinco         [Ayuda]"
 echo
@@ -2893,7 +2929,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-fwiptables log-sshd log-search"
+echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Own  cfg||]"
