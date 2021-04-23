@@ -1,24 +1,42 @@
-[Fran FireWall iptables] [version 216]
+
+
+     [Fran FireWall iptables]
 ##################################################
- [Launch guide]      system-info net-info full-wizard mini-wizard cli gui   
- [Launch rules]      eraserules offline allpermisive custom [config.cfg]    
- [List rules]        list forward list6 forward6 nat-ip4 nat-ip6            
-                     listnum forwardnum listnum6 forwardnum6                
- [Modify config]     new-full-config nueva-completa-config                  
-                     new-mini-config nueva-mini-config                      
-                     show-config modify-config del-config                   
- [List sockets]      route ss netstat lsof ipforwading tcpdump arp          
- [Recover fw]        fw-list fw-save fw-restore                             
- [Tool icmp]         ping-ip4 ping-ip6                                      
- [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               
- [Auth sudo]         auth-sudo remove-sudo list-sudo                        
- [Show etc]          hosts protocols services hosts.allow hosts.deny        
- [Show log]          log-fwiptables log-sshd log-search log-search-r        
- [Version]           version upgrade dev-versions all-versions              
- [Help]              about depends examples options opciones help ayuda     
- [||Own  cfg||]
- cliente.cfg servidor.cfg
- [||Examples||]
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
- [Launch the config myown.cfg]      fwiptables custom myown.cfg             
- [List iptables rules]              fwiptables list                         
+
+     [Program Name]
+  [Fran FireWall iptables]
+
+     [Program Description]
+  One Script in bash for iptables firewall
+
+     [Program Install]
+  chmod ugo+x fwiptables
+  ./fwiptables
+  [and then fwiptables is in /usr/bin/fwiptables]
+
+     [Devevelopments version program]
+  The fran iptables ver in development in git code at sourceforge:
+
+  https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw
+
+     [New versions program]
+  The fran iptables version 210 and new versions up in files repository at sourceforge:
+
+  https://sourceforge.net/projects/f-iptables/files
+
+     [Access web with all versions program]
+  The fran iptables all versions in code repository at sourceforge:
+
+  https://sourceforge.net/p/f-iptables/code/ci/master/tree/
+
+     [Git clone with all versions program]
+  The fran iptables all versions in code repository at sourceforge:
+
+  git clone https://git.code.sf.net/p/f-iptables/code f-iptables-code
+
+     [Program License]
+  Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
+
+##################################################
+
+
