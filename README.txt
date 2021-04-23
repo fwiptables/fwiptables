@@ -1,26 +1,27 @@
-[Fran FireWall iptables: fwiptables] [version 215]
+[Fran FireWall iptables] [version 216]
 ##################################################
- [Launch guide]     system-info net-info full-wizard mini-wizard cli gui       
- [Launch rules]     eraserules offline allpermisive custom [config.cfg]        
- [List rules]       list forward list6 forward6 nat-ip4 nat-ip6                
-                    listnum forwardnum listnum6 forwardnum6                    
- [Modify config]    new-full-config nueva-completa-config                      
-                    new-mini-config nueva-mini-config                          
-                    show-config modify-config del-config                       
- [List sockets]     route ss netstat lsof ipforwading tcpdump arp              
- [Recover fw]       fw-list fw-save fw-restore                                 
- [Auth sudo]        auth-sudo remove-sudo list-sudo                            
- [Tool icmp]        ping-ip4 ping-ip6                                          
- [Tool tcp]         trace-ip4 trace-ip6 host resolveip geoip                   
- [Version]          version upgrade dev-versions all-versions                  
- [Show]             hosts protocols services hosts.allow hosts.deny            
- [Help]             about depends examples options opciones help ayuda         
-#####  Optional /etc/fwiptables/[config.cfg]  #####
- (*) [Own]  game.cfg udp.cfg web.cfg
-##### [The examples]  #####
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg       
- [Launch the config myown.cfg]      fwiptables custom myown.cfg                
- [List iptables rules]              fwiptables list                            
+ [Launch guide]      system-info net-info full-wizard mini-wizard cli gui   
+ [Launch rules]      eraserules offline allpermisive custom [config.cfg]    
+ [List rules]        list forward list6 forward6 nat-ip4 nat-ip6            
+                     listnum forwardnum listnum6 forwardnum6                
+ [Modify config]     new-full-config nueva-completa-config                  
+                     new-mini-config nueva-mini-config                      
+                     show-config modify-config del-config                   
+ [List sockets]      route ss netstat lsof ipforwading tcpdump arp          
+ [Recover fw]        fw-list fw-save fw-restore                             
+ [Tool icmp]         ping-ip4 ping-ip6                                      
+ [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               
+ [Auth sudo]         auth-sudo remove-sudo list-sudo                        
+ [Show etc]          hosts protocols services hosts.allow hosts.deny        
+ [Show log]          log-fwiptables log-sshd log-search log-search-r        
+ [Version]           version upgrade dev-versions all-versions              
+ [Help]              about depends examples options opciones help ayuda     
+ [||Own  cfg||]
+ cliente.cfg servidor.cfg
+ [||Examples||]
+ [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
+ [Launch the config myown.cfg]      fwiptables custom myown.cfg             
+ [List iptables rules]              fwiptables list                         
 
 ################################################## The first option
 
@@ -94,12 +95,6 @@
       fw-save: Save the files in firewall standar
    fw-restore: Show howto reover files firewall standar
 
-#####         [Auth sudo]
-
-    auth-sudo: Permit sudo fwiptables to other choosed users
-  remove-sudo: Remove sudo fwiptables to other choosed users
-    list-sudo: List sudo fwiptables to other choosed users
-
 #####         [Tool icmp]
 
      ping-ip4: Do a one ping with to one host with ipv4 icmp
@@ -113,6 +108,12 @@
     resolveip: Resolve one host and viceversa
        geo-ip: Locate a one host or ip
 
+#####         [Auth sudo]
+
+    auth-sudo: Permit sudo fwiptables to other choosed users
+  remove-sudo: Remove sudo fwiptables to other choosed users
+    list-sudo: List sudo fwiptables to other choosed users
+
 #####         [Version]
 
       version: Info version program from fwiptables
@@ -120,13 +121,20 @@
  dev-versions: Version in development from fwiptables
  all-versions: All versions from fwiptables
 
-#####         [Show]
+#####         [Show etc]
 
         hosts: show /etc/hosts
    protocolos: show /etc/protocols
      services: show /etc/services
   hosts.allow: show /etc/hosts.allow
    hosts.deny: show /etc/hosts.deny
+
+#####         [Show log]
+
+        hosts: search the logs from sudo fwiptables for /var/log
+   protocolos: search the logs from sshd for /var/log
+     services: search the logs from a pattern for /var/log
+     services: search the recursives logs from a pattern for /var/log
 
 #####         [Help]
 
@@ -150,53 +158,53 @@
 
 ################################################## Examples of variables to the configs files, default.cfg
 
-#####             ###  Necesary options .......... .......... ..........  
+#####             ###   .......... BEGIN Necesary options .......... ..........  
 #####             ###  the iptables firewall netfilter, choose one or two 
-allow_legacy= ;             ###  launch xtables, void to yes or type no 
-allow_nft=no ;             ###  launch neftables, void to yes or type no 
+allow_legacy= ;                 ###  launch xtables, void to yes or type no 
+allow_nft=no ;                  ###  launch neftables, void to yes or type no 
 #####             ###  ip protocol, modify with void or no 
-allow_ipv4= ;             ###  void to config firewall with ipv4 or no to dont configure ipv4  
-allow_ipv6=no ;             ###  void to config firewall with ipv6 or no to dont configure ipv6  
+allow_ipv4= ;                   ###  void to config firewall with ipv4 or no to dont configure ipv4  
+allow_ipv6=no ;                 ###  void to config firewall with ipv6 or no to dont configure ipv6  
 #####             ###  Client ports, add with "," and join ranges with ":" 
-client_tcp="http,https,ssh,git" ;             ###  tcp ports for client 
+client_tcp="http,https,ssh,git" ;                  ###  tcp ports for client 
 client_udp="domain,bootpc,ntp,https" ;             ###  udp ports for client 
 #####             ###  Server ports, add with "," and join ranges with ":" 
-server_tcp=""  ;             ###  tcp ports for server 
-server_udp=""  ;             ###  udp ports for server 
+server_tcp=""     ;                ###  tcp ports for server 
+server_udp=""     ;                ###  udp ports for server 
+logserver_tcp=""  ;                ###  the tcp ports to log server 
+logserver_udp=""  ;                ###  the udp ports to log server 
 #####             ###  Selective Input state 
-input_state="-m state --state NEW,RELATED,ESTABLISHED" ;             ### void for all or -m state --state new,related,established,untracked,invalid 
-#####             ###  no or void to works with only output rules 
-only_output="" ;             ###  void, the rules are only to output in filter, or no 
-#####             ###  Optional options .......... .......... .......... 
+input_state="-m state --state new,related,established" ;             ###  void for all or -m state --state new,related,established,untracked,invalid 
+#####             ###  void to works with only output rules or no 
+only_output="" ;                        ###  void when the rules are only to output in filter or no 
+#####             ###  .......... END Necesary options .......... ..........  
+#####             ###  .......... BEGIN Optional options .......... .......... 
 #####             ###  Allow Other Options,  modify with void, or no 
-allow_bandwidth_input=no ;             ###  void to limit bandwidth input in kbits/sec for all sources or no 
+allow_bandwidth_input=no ;              ###  void to limit bandwidth input in kbits/sec for all sources or no 
 allow_bandwidth_output=no ;             ###  void to limit bandwidth output in kbits/sec for each destination or no 
-allow_ping_send=no ;             ###  void to allow send pings, and no to drop send pings 
-allow_ping_recive=no ;             ###  void to allow recive pings, and no to drop recive pings 
-allow_log_tcp=no ;             ###  void to tcp log, and no to do not log tcp 
-allow_log_udp=no ;             ###  void to udp log, and no to do not log udp 
-allow_forwading=no ;             ###  void to allow ip forward, and no to drop forward ip 
-allow_nat=no ;             ###  void to do NAT masquerade to default route, or no 
-allow_vpn=no ;             ###  void to allow some exceptional host or no 
-allow_blacklist=no ;             ###  void to drop some excepcional host or no 
-allow_output_uid=no ;             ###  void to allow excepcional user or no 
-allow_output_gid=no ;             ###  void to allow excepcional group or no 
+allow_ping_send=no ;                    ###  void to allow send pings, and no to drop send pings 
+allow_ping_recive=no ;                  ###  void to allow recive pings, and no to drop recive pings 
+allow_forwading=no ;                    ###  void to allow ip forward, and no to drop forward ip 
+allow_nat=no ;                          ###  void to do NAT masquerade to default route, or no 
+allow_vpn=no ;                          ###  void to allow some exceptional host or no 
+allow_blacklist=no ;                    ###  void to drop some excepcional host or no 
+allow_output_uid=no ;                   ###  void to allow excepcional user or no 
+allow_output_gid=no ;                   ###  void to allow excepcional group or no 
 allow_others_protocols=no ;             ###  void to allow other protocol ip excepcional or no 
 #####             ###  Other Options, add with "," and join ranges with ":" 
-bandwidth_input="12512"             ###  max input bandwidth in kbits/sec for all 
-bandwidth_output="512"             ###  max output bandwidth in kbits/sec for ip 
-log_udp="" ;             ###  the udp ports to log 
-log_tcp="ssh" ;             ###  the tcp ports to log 
-vpn="sourceforge.net,wesnoth.org" ;             ###  allow this excepcitonal host 
-blacklist="" ;             ###  drop this excepcional host 
-output_uid="root" ;             ###  allow out packages excepcional from this user 
-output_gid="root" ;             ###  allow out packages excepcional from this group 
+bandwidth_input="12512";             ###  max input bandwidth in kbits/sec for all 
+bandwidth_output="512" ;             ###  max output bandwidth in kbits/sec for ip 
+vpn="wesnoth.org" ;                  ###  allow this excepcitonal host 
+blacklist=""      ;                  ###  drop this excepcional host 
+output_uid="root" ;                  ###  allow out packages excepcional from this user 
+output_gid="root" ;                  ###  allow out packages excepcional from this group 
 others_protocols="icmp,igmp" ;             ###  allow others protocols from /etc/protocolos 
 #####             ###  Net to connect like client or server 
 net_ipv4_client=0/0  ;              ###  the net to client ipv4, all is 0/0  
 net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0 
 net_ipv6_client=::/0 ;              ###  the net to client ipv6, all is ::/0 
 net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0 
+#####             ###  .......... END Optional options .......... .......... 
 
  fwiptables notes:
 
@@ -234,7 +242,7 @@ net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0
 
 ##################################################  [License]
 
-  Download the latest version [Fran FireWall iptables: fwiptables] from sourceforge
+  Download the latest version [Fran FireWall iptables] from sourceforge
   https://sourceforge.net/projects/f-iptables/files/latest/download
   Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 
