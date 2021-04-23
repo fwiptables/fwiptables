@@ -2627,10 +2627,10 @@ echo "   hosts.deny: show /etc/hosts.deny"
 echo 
 echo "$cinco         [Show log]"
 echo
-echo "        hosts: search the logs from $fiptables for /var/log"
+echo "        hosts: search the logs from sudo $fiptables for /var/log"
 echo "   protocolos: search the logs from sshd for /var/log"
-echo "     services: search the logs from a patter for /var/log"
-echo "     services: search the logs from a patter recursive for /var/log"
+echo "     services: search the logs from a pattern for /var/log"
+echo "     services: search the recursives logs from a pattern for /var/log"
 echo 
 echo "$cinco         [Help]"
 echo
@@ -2837,10 +2837,10 @@ echo "   hosts.deny: muestra /etc/hosts.deny"
 echo
 echo "$cinco         [Show log]"
 echo
-echo "        hosts: busca los logs de $fiptables para /var/log"
+echo "        hosts: busca los logs de sudo $fiptables para /var/log"
 echo "   protocolos: busca log logs de sshd para /var/log"
 echo "     services: busca los logs dando un patron para /var/log"
-echo "     services: busca los logs dando un patron recursivo para /var/log"
+echo "     services: busca los logs recursivos dando un patron para /var/log"
 echo 
 echo "$cinco         [Ayuda]"
 echo
@@ -2980,12 +2980,14 @@ if [ "$allow_output_uid" = "$NULL" ]; then uid_gid= ; else echo -n ; fi
 if [ "$allow_output_gid" = "$NULL" ]; then uid_gid= ; else echo -n ; fi
 ####
 ####
-##############################      english: compatibility with old variables           #####################
-##############################      spanish: compatibilidad con viejas ariables         #####################
+##############################      english: compatibility with old variables, backward compatibility      #####################
+##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
 execnft="$which_iptables_nft"
 execlegacy="$which_iptables_legacy"
 iptables_nft="$allow_nft"
 iptables_legacy="$allow_legacy"
+logserver_tcp=$log_tcp
+logserver_udp=$log_udp
 ############################       english: iptables rules ipv4  iptables-legacy
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
