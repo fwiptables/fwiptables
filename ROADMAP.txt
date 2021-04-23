@@ -126,4 +126,6 @@ variables - cambio en logserver tcp y udp - ok 216
 log fwiptables - añadido - ok 216
 log sshd - añadido - ok 216
 log busqueda - añadido - ok 216
-
+log busqueda recursiva - añadido - ok 216
+whach output with text -
+whach output with graphicall -
