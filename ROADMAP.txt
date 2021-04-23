@@ -123,3 +123,7 @@ cli - corregir y actualizar - ok 216
 autosave fw - corregido y actualizado - ok 216
 apariencia - cambios de apariencia - ok 216
 variables - cambio en logserver tcp y udp - ok 216
+log fwiptables - añadido - ok 216
+log sshd - añadido - ok 216
+log busqueda - añadido - ok 216
+
