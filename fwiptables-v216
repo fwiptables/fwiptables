@@ -1,30 +1,30 @@
 #!/bin/bash
-##
-##
+####
+####
 ## english: necesary to find several PATH
 ## spanish: necesario para encontrar varios PATH
 source /etc/profile
-##
-##
-##
+####
+####
+####
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
-##
-##   license
-##   english: This program has gpl license, this program is copyleft, it is free.
-##   spanish: Este programa tiene licencia gpl, this program is copyleft, it is free.
-##
-##   comments
-##   english: The comments are in english language and spanish language
-##   spanish: Los comentarios estan en ingles y en español
-##
-##
+####
+####   license
+####  english: This program has gpl license, this program is copyleft, it is free.
+####   spanish: Este programa tiene licencia gpl, this program is copyleft, it is free.
+####
+####   comments
+####   english: The comments are in english language and spanish language
+####   spanish: Los comentarios estan en ingles y en español
+####
+####
 ##############################        example in english: basic system variables
 ##############################        ejemplo in spanish: las basicas variables del sistema
-##
-##  english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
-##  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
-##
+####
+####  english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
+####  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
+####
 ################################################   english: basic system variables
 ################################################   spanish: las basicas variables del sistema
 ####
@@ -44,9 +44,9 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 cinco="#####" ; tab="    " ;                                      #english: [characters to show] #spanish: [caracteres a mostrar]
-flinea="-125" ;                                                   #english: number line #spanish:linea de variables
-fvariables="-47" ;                                                #english: custom variables #spanish: variables modificables
-fminivariables="-17";                                             #english: variables necesary to show #spanish: variables necesarias
+flinea="-120" ;                                                   #english: number line #spanish:linea de variables
+fvariables="-47" ;                                                #english: custom variables to full-config #spanish: variables modificables
+fminivariables="-20";                                             #english: variables necesary to mini-config #spanish: variables necesarias
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
@@ -62,53 +62,53 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 ################################################        spanish: fvariables:    variables para modificar
 ####
 ####
-echo -n #english: Necesary options .......... .......... ..........  #spanish: Opciones Necesarias .......... .......... ..........
+echo -n #english:  .......... BEGIN Necesary options .......... ..........  #spanish: INICIO .......... Opciones Necesarias .......... ..........
 echo -n #english: the iptables firewall netfilter, choose one or two #spanish: el iptables firewall netfilter, elige uno o dos
-allow_legacy= ; #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
-allow_nft=no ; #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
+allow_legacy= ;     #english: launch xtables, void to yes or type no #spanish: lanza xtables, vacio para si, o escribe no
+allow_nft=no ;      #english: launch neftables, void to yes or type no #spanish: lanza neftables, vacio para si, o escribe no
 echo -n #english: ip protocol, modify with void or no #spanish: procolo ip, modificar con vacio o no
-allow_ipv4= ; #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
-allow_ipv6=no ; #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
-echo -n #english: Client ports, add with "," and join ranges with ":" #spanish: Puertos Cliente, añadir con "," y poner rangos con ":"
-client_tcp="http,https,ssh,git" ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
+allow_ipv4= ;       #english: void to config firewall with ipv4 or no to dont configure ipv4  #spanish: varcio para ejecutar el firewall con ipv4 o no para no
+allow_ipv6=no ;     #english: void to config firewall with ipv6 or no to dont configure ipv6  #spanish: varcio para ejecutar el firewall con ipv6 o no para no
+echo -n #english: Client ports, add with "," and join ranges with ":" #spanish: puertos Cliente, añadir con "," y poner rangos con ":"
+client_tcp="http,https,ssh,git" ;      #english: tcp ports for client #spanish: puertos tcp para ser cliente
 client_udp="domain,bootpc,ntp,https" ; #english: udp ports for client #spanish: puertos udp para ser cliente
 echo -n #english: Server ports, add with "," and join ranges with ":" #spanish: Puertos Servidor, añadir con "," y poner rangos con ":"
-server_tcp=""  ; #english: tcp ports for server #spanish:  puertos tcp para servir
-server_udp=""  ; #english: udp ports for server #spanish: puertos udp para servir
+server_tcp=""     ;    #english: tcp ports for server #spanish: puertos tcp para servidor
+server_udp=""     ;    #english: udp ports for server #spanish: puertos udp para servidor
+logserver_tcp=""  ;    #english: the tcp ports to log server #spanish: puertos tcp para logear servidor
+logserver_udp=""  ;    #english: the udp ports to log server #spanish: puertos udp para logear servidor
 echo -n #english: Selective Input state #spanish: Estado de entrada selectivo
-input_state="-m state --state NEW,RELATED,ESTABLISHED" ; #english:void for all or -m state --state new,related,established,untracked,invalid #spanish: modificar con vacio o -m state --state new,related,established,untracked,invalid
-echo -n #english: no or void to works with only output rules #spanish: no o vacio para funcionar con reglas de salida solamente
-only_output="" ; #english: void, the rules are only to output in filter, or no #spanish: vacio, reglas solo para salida o no
-echo -n #english: Optional options .......... .......... .......... #spanish: Opciones opcionales .......... .......... ..........
+input_state="-m state --state NEW,RELATED,ESTABLISHED" ; #english: void for all or -m state --state new,related,established,untracked,invalid #spanish: modificar con vacio o -m state --state new,related,established,untracked,invalid
+echo -n #english: void to works with only output rules or no #spanish: vacio para funcionar con reglas de salida solamente or no
+only_output="" ;            #english: void when the rules are only to output in filter or no #spanish: vacio, reglas solo para salida o no
+echo -n #english: .......... END Necesary options .......... ..........  #spanish: FINAL .......... Opciones Necesarias .......... ..........
+echo -n #english: .......... BEGIN Optional options .......... .......... #spanish: INICIO .......... Opciones opcionales .......... ..........
 echo -n #english: Allow Other Options,  modify with void, or no #spanish: Permitir Otras Opciones, modificar con vacio o no
-allow_bandwidth_input=no ; #english: void to limit bandwidth input in kbits/sec for all sources or no #spanish: vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no
+allow_bandwidth_input=no ;  #english: void to limit bandwidth input in kbits/sec for all sources or no #spanish: vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no
 allow_bandwidth_output=no ; #english: void to limit bandwidth output in kbits/sec for each destination or no #spanish: vacio limitar ancho de banda de salida en kbits/sec por cada destino o no
-allow_ping_send=no ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
-allow_ping_recive=no ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
-allow_log_tcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
-allow_log_udp=no ; #english: void to udp log, and no to do not log udp #spanish: vacio para logear udp y no para evitar logear udp
-allow_forwading=no ; #english: void to allow ip forward, and no to drop forward ip #spanish: vacio para permitir reenvio, y no para denegar reenvios
-allow_nat=no ; #english: void to do NAT masquerade to default route, or no #spanish: vacio para hacer masquerade a otras redes o nada
-allow_vpn=no ; #english: void to allow some exceptional host or no #spanish: vacio para permitir hosts excepcionales o no
-allow_blacklist=no ; #english: void to drop some excepcional host or no #spanish: vacio para denegar hosts excepcionales o no
-allow_output_uid=no ; #english: void to allow excepcional user or no #spanish: vacio permite salida de paquetes de un usuario excepcional o no
-allow_output_gid=no ; #english: void to allow excepcional group or no #spanish: vacio permite salida de paquetes de un grupo excepcional o no
+allow_ping_send=no ;        #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
+allow_ping_recive=no ;      #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
+allow_forwading=no ;        #english: void to allow ip forward, and no to drop forward ip #spanish: vacio para permitir reenvio, y no para denegar reenvios
+allow_nat=no ;              #english: void to do NAT masquerade to default route, or no #spanish: vacio para hacer masquerade a otras redes o nada
+allow_vpn=no ;              #english: void to allow some exceptional host or no #spanish: vacio para permitir hosts excepcionales o no
+allow_blacklist=no ;        #english: void to drop some excepcional host or no #spanish: vacio para denegar hosts excepcionales o no
+allow_output_uid=no ;       #english: void to allow excepcional user or no #spanish: vacio permite salida de paquetes de un usuario excepcional o no
+allow_output_gid=no ;       #english: void to allow excepcional group or no #spanish: vacio permite salida de paquetes de un grupo excepcional o no
 allow_others_protocols=no ; #english: void to allow other protocol ip excepcional or no #spanish: vacio para permitir otro protocolo ip excepcional o no
 echo -n #english: Other Options, add with "," and join ranges with ":" #spanish: Otras Opciones, añadir con "," y poner rangos con ":"
-bandwidth_input="12512" #english: max input bandwidth in kbits/sec for all #spanish: maximo entrada de ancho de banda en kbit/sec para todos
-bandwidth_output="512" #english: max output bandwidth in kbits/sec for ip #spanish: maximo salida de ancho de banda en kbits/sec para ip
-log_udp="" ; #english: the udp ports to log #spanish: los puertos udp para logear
-log_tcp="ssh" ; #english: the tcp ports to log #spanish: los puertos tcp para logear
-vpn="sourceforge.net,wesnoth.org" ; #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
-blacklist="" ; #english: drop this excepcional host #spanish: deniega estos host excepcionales
-output_uid="root" ; #english: allow out packages excepcional from this user #spanish: permite salida de paquetes de este usuario excepcional o no
-output_gid="root" ; #english: allow out packages excepcional from this group #spanish: permite salida de paquetes de este grupo excepcional o no
+bandwidth_input="12512"; #english: max input bandwidth in kbits/sec for all #spanish: maximo entrada de ancho de banda en kbit/sec para todos
+bandwidth_output="512" ; #english: max output bandwidth in kbits/sec for ip #spanish: maximo salida de ancho de banda en kbits/sec para ip
+vpn="wesnoth.org" ;      #english: allow this excepcitonal host #spanish: permitir estos host excepcionales
+blacklist=""      ;      #english: drop this excepcional host #spanish: deniega estos host excepcionales
+output_uid="root" ;      #english: allow out packages excepcional from this user #spanish: permite salida de paquetes de este usuario excepcional o no
+output_gid="root" ;      #english: allow out packages excepcional from this group #spanish: permite salida de paquetes de este grupo excepcional o no
 others_protocols="icmp,igmp" ; #english: allow others protocols from /etc/protocolos #spanish: permitir otros protocolos desde /etc/protocols
 echo -n #english: Net to connect like client or server #spanish: Red para conectar como cliente o server
 net_ipv4_client=0/0  ;  #english: the net to client ipv4, all is 0/0  #spanish: la red cual cliente ipv4, todos es 0/0
 net_ipv4_server=0/0  ;  #english: the net to server ipv4, all is 0/0 #spanish: la red cual servidor ipv4, todos es 0/0
 net_ipv6_client=::/0 ;  #english: the net to client ipv6, all is ::/0 #spanish: la red cual cliente ipv6, todos es ::/0
 net_ipv6_server=::/0 ;  #english: the net to server ipv6, all is ::/0 #spanish: la red cual servidor ipv6, todos es ::/0
+echo -n #english: .......... END Optional options .......... .......... #spanish: FINAL .......... Opciones opcionales .......... ..........
 ####
 ####
 ##############################	     english: End from user variables file, overwriter initial values       ##############################
@@ -581,7 +581,7 @@ else)
 esac
 cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu "Select:" 0 0 0\
-  000 "$tab $cinco $tab [$fiptables cli] $tab $cinco" \
+  000 "$cinco $tab [$fiptables cli] $tab $cinco" \
   010 "$cinco [Guide to begin]" \
   11  "system-info" \
   12  "net-info" \
@@ -607,11 +607,11 @@ menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu 
   43  "listnum6" \
   44  "forwardnum6" \
   050 "$cinco [Modify config cfg]" \
-  51  "show-config" \
-  52  "new-full-config" \
-  53  "nueva-completa-config" \
-  54  "new-mini-config" \
-  55  "nueva-mini-config" \
+  51  "new-full-config" \
+  52  "nueva-completa-config" \
+  53  "new-mini-config" \
+  54  "nueva-mini-config" \
+  55  "show-config" \
   56  "modify-config" \
   57  "del-config" \
   060 "$cinco [List net sockets]" \
@@ -760,34 +760,34 @@ case "$menuprincipal" in
  ;;
  51)
  clear
- archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- clear
- $fiptables show-config $archivo
- echo "$cinco Launch: $fiptables custom $archivo"
- ;;
- 52)
- clear
  archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-full-config $archivo
  ;;
- 53)
+ 52)
  clear
  archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-completa-config $archivo
  ;;
- 54)
+ 53)
  clear
  archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables new-mini-config $archivo
  ;;
- 55)
+ 54)
  clear
  archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables nueva-mini-config $archivo
+ ;;
+ 55)
+ clear
+ archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ $fiptables show-config $archivo
+ echo "$cinco Launch: $fiptables custom $archivo"
  ;;
  56)
  archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
@@ -2865,6 +2865,7 @@ exit; else echo -n ; fi
 ####
 ####
 ###############################################################################################################
+###############################################################################################################
 ####                                                                                            ###############
 ####           Knowed now sure that:         launch_iptables="si"                               ###############
 ####                                                                                            ###############
@@ -3021,38 +3022,10 @@ $allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  OUTPUT -d $one_
 $allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  INPUT  -s $one_vpn -j ACCEPT &> /dev/null
 $allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  OUTPUT -d $one_vpn -j ACCEPT &> /dev/null
 done
-#### 
-####
-####################################### english: log rules
-####################################### spanish: reglas para logear
 ####
 ####
-#### ipv4
-####
-$allow_legacy  $allow_ipv4 $allow_log_tcp  $which_iptables_legacy -A INPUT -p tcp  -m multiport --dports $log_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv4 $allow_log_udp  $which_iptables_legacy -A INPUT -p udp  -m multiport --dports $log_udp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv4 $allow_log_tcp  $which_iptables_legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv4 $allow_log_tcp  $which_iptables_legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4 $allow_log_tcp  $which_iptables_nft    -A INPUT -p tcp  -m multiport --dports $log_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4 $allow_log_udp  $which_iptables_nft    -A INPUT -p udp  -m multiport --dports $log_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4 $allow_log_tcp  $which_iptables_nft    -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4 $allow_log_tcp  $which_iptables_nft    -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-####
-####
-#### ipv6
-####
-$allow_legacy  $allow_ipv6 $allow_log_tcp  $which_ip6tables_legacy -A INPUT -p tcp  -m multiport --dports $log_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv6 $allow_log_udp  $which_ip6tables_legacy -A INPUT -p udp  -m multiport --dports $log_udp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv6 $allow_log_tcp  $which_ip6tables_legacy -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv6 $allow_log_tcp  $which_ip6tables_legacy -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6 $allow_log_tcp  $which_ip6tables_nft    -A INPUT -p tcp  -m multiport --dports $log_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6 $allow_log_udp  $which_ip6tables_nft    -A INPUT -p udp  -m multiport --dports $log_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6 $allow_log_tcp  $which_ip6tables_nft    -A OUTPUT -p tcp -m multiport --sports $log_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6 $allow_log_tcp  $which_ip6tables_nft    -A OUTPUT -p udp -m multiport --sports $log_udp -j LOG &> /dev/null
-####
-####
-####################################### english: allow client ports
-####################################### spanish: permitir puertos cliente
+####################################### english: rules to allow client ports
+####################################### spanish: reglas para permitir puertos cliente
 ####
 ####
 #### ipv4 legacy
@@ -3087,8 +3060,36 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p udp -m multiport --dpo
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p tcp -m multiport --dports $client_tcp -s $net_ipv6_client -d $net_ipv6_client -j ACCEPT &> /dev/null
 ####
 ####
-####################################### english: allow server ports
-####################################### spanish: permitir puertos servidor 
+####################################### english: rules to log servers
+####################################### spanish: reglas para logear servers
+####
+####
+#### ipv4
+####
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
+####
+####
+#### ipv6
+####
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
+####
+####
+####################################### english: rules allow server ports
+####################################### spanish: reglas para permitir puertos servidor 
 ####
 ####
 #### ipv4 legacy
@@ -3521,25 +3522,20 @@ esac
 echo "$fprogram [version $fversion]";
 echo "$cincuenta lauching iptables rules $cinco"
 echo "$cinco  OK LAUNCHED $fiptables $first_option $second_option"
-# echo "$cinco  Fine cfg with $first_option, when fail.. run $defaultcfg"
 ####  # show text to firewall offline #
 if [ "$first_option" = "offline" ]; then echo -n
-#echo "$cinco  The iptables configured for disconnected to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall allpermisive #
 if [ "$first_option" = "allpermisive" ]; then echo -n
-#echo "$cinco  The iptables configured for all permisive to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall [config.cfg] (silent text) #
 if [ -f "$directory_config/$first_option" ]; then echo -n
-#echo "$cinco  The iptables configured for custom rules to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall custom [config.cfg] (silent text) #
 if [ -f "$directory_config/$second_option" ]; then echo -n
-#echo "$cinco  The iptables configured for custom rules to internet $cinco"
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall [config.cfg] or custom [config.cfg] (show text) when fail #
@@ -3562,6 +3558,9 @@ echo "  * Where ports domain,ntp,bootpc are usually udp necesary"
 echo "$cinco  [With the server ports IP]  $cinco" ;
 echo "  server tcp: $server_tcp" ;
 echo "  server udp: $server_udp" ;
+echo "$cinco  [With the log server ports IP]  $cinco" ;
+echo "  server tcp: $logserver_tcp" ;
+echo "  server udp: $logserver_udp" ;
 echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
@@ -3580,8 +3579,6 @@ if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidt
 else echo "  Limit output: above "$bandwidth_output"kb/sec"; fi
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
 if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
-if [ "$allow_log_tcp" = "no" ]; then echo "  Dont allow log server tcp"; else  echo "  Allowed logservers in port: $log_tcp" ; fi
-if [ "$allow_log_udp" = "no" ]; then echo "  Dont allow log server udp"; else  echo "  Allowed logservers in port: $log_udp" ; fi
 if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading iptables" ; fi
 if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
