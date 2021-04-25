@@ -2263,7 +2263,7 @@ exit; fi
 if [ "$first_option" = "log-fwiptables" ]; then echo -n
 echo "$fprogram [Version $fversion]"
 echo "$cincuenta [log-fwiptables] $cinco"
-find /var/log -maxdepth 1 -type f | xargs egrep -i "$fiptables"
+find /var/log -maxdepth 1 -type f | xargs zgrep -i "$fiptables"
 exit; fi
 ####
 ####
@@ -2274,7 +2274,7 @@ exit; fi
 if [ "$first_option" = "log-sshd" ]; then echo -n
 echo "$fprogram [Version $fversion]"
 echo "$cincuenta [log-sshd] $cinco"
-find /var/log -maxdepth 1 -type f | xargs egrep -i "sshd"
+find /var/log -maxdepth 1 -type f | xargs zgrep -i "sshd"
 exit; fi
 ####
 ####
@@ -2290,7 +2290,7 @@ $NULL)
 echo "$cinco use: $fiptables $first_option pattern"
 ;;
 *)
-find /var/log -maxdepth 1 -type f | xargs egrep -i "$second_option"
+find /var/log -maxdepth 1 -type f | xargs zgrep -i "$second_option" 
 ;;
 esac
 exit; fi
@@ -2308,7 +2308,7 @@ $NULL)
 echo "$cinco use: $fiptables $first_option pattern"
 ;;
 *)
-find /var/log -type f | xargs egrep -i "$second_option"
+find /var/log -maxdepth 5 -type f | xargs zgrep -i "$second_option" 
 ;;
 esac
 exit; fi
@@ -3012,8 +3012,8 @@ execnft="$which_iptables_nft"
 execlegacy="$which_iptables_legacy"
 iptables_nft="$allow_nft"
 iptables_legacy="$allow_legacy"
-logserver_tcp=$log_tcp
-logserver_udp=$log_udp
+log_tcp=$logserver_tcp
+log_udp=$logserver_udp
 ############################       english: iptables rules ipv4  iptables-legacy
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
