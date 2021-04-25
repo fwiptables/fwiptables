@@ -2750,7 +2750,7 @@ exit; fi
 if [ "$first_option" = "options" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Options] $cinco"
-cat $directory_config/$defaultfullcfg_spa
+cat $directory_config/$defaultfullcfg_eng
 exit; fi
 ####
 ####
