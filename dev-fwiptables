@@ -331,26 +331,26 @@ fs="$directory_config/$defaultfullcfg_spa"
 ####
 #### mini-english
 echo "# $fprogram from $fiptables config file" > $me
-echo $var1  $tabz $eng1  >> $fe
-echo $var2  $tabz $eng2  >> $fe
-echo $var3  $tabz $eng3  >> $fe
-echo $var4  $tabz $eng4  >> $fe
-echo $var5  $tabz $eng5  >> $fe
-echo $var6  $tabz $eng6  >> $fe
-echo $var7  $tabz $eng7  >> $fe
-echo $var8  $tabz $eng8  >> $fe
-echo $var9  $tabz $eng9  >> $fe
-echo $var10 $tabz $eng10 >> $fe
-echo $var11 $tabz $eng11 >> $fe
-echo $var12 $tabz $eng12 >> $fe
-echo $var13 $tabz $eng13 >> $fe
-echo $var14 $tabz $eng14 >> $fe
-echo $var15 $tabz $eng15 >> $fe
-echo $var16 $tabz $eng16 >> $fe
-echo $var17 $tabz $eng17 >> $fe
-echo $var18 $tabz $eng18 >> $fe
-echo $var19 $tabz $eng19 >> $fe
-echo $var20 $tabz $eng20 >> $fe
+echo $var1  $tabz $eng1  >> $me
+echo $var2  $tabz $eng2  >> $me
+echo $var3  $tabz $eng3  >> $me
+echo $var4  $tabz $eng4  >> $me
+echo $var5  $tabz $eng5  >> $me
+echo $var6  $tabz $eng6  >> $me
+echo $var7  $tabz $eng7  >> $me
+echo $var8  $tabz $eng8  >> $me
+echo $var9  $tabz $eng9  >> $me
+echo $var10 $tabz $eng10 >> $me
+echo $var11 $tabz $eng11 >> $me
+echo $var12 $tabz $eng12 >> $me
+echo $var13 $tabz $eng13 >> $me
+echo $var14 $tabz $eng14 >> $me
+echo $var15 $tabz $eng15 >> $me
+echo $var16 $tabz $eng16 >> $me
+echo $var17 $tabz $eng17 >> $me
+echo $var18 $tabz $eng18 >> $me
+echo $var19 $tabz $eng19 >> $me
+echo $var20 $tabz $eng20 >> $me
 #### mini-spanish
 echo "# $fprogram from $fiptables config file" > $ms
 echo $var1  $tabz $spa1  >> $fs
@@ -834,7 +834,7 @@ else)
 ;;
 esac
 cd "$directory_config"
-menuprincipal="$(dialog --stdout --title "$fprogram [version $fversion]" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
   000 "$cinco $tab [$fiptables cli] $tab $cinco" \
   010 "$cinco [Guide to begin] $cinco" \
   11  "system-info" \
