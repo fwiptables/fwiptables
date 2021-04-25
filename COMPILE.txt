@@ -6,7 +6,7 @@
 # grep -v ^## fwiptables > fwiptables-uncommented
 #
 # Compile
-# shx -o fwiptables-binary -f fwiptables-uncoment
+# shc -o fwiptables-binary -f fwiptables-uncoment
 #
 # Chmod
 # chmod ugo+x fwiptables-binary
