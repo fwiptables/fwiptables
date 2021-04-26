@@ -1,4 +1,4 @@
-[Fran FireWall iptables] [version 216]
+[Fran FireWall iptables] [version 217]
 ##################################################
  [Launch guide]      system-info net-info full-wizard mini-wizard cli gui   
  [Launch rules]      eraserules offline allpermisive custom [config.cfg]    
@@ -146,7 +146,7 @@
 
 ################################################## The second option: (optional)
 
-    if launch without specific the config it takes default.cfg
+    if launch without specific the config it takes default-full-english.cfg
     you can  modify and create the files in the folder /etc/fwiptables
 
 ################################################## Examples
@@ -156,55 +156,56 @@
  fwiptables list                           [List iptables rules]
  fwiptables help                           [Show this help in english]
 
-################################################## Examples of variables to the configs files, default.cfg
+################################################## Examples of variables to the configs files
 
-#####             ###   .......... BEGIN Necesary options .......... ..........  
-#####             ###  the iptables firewall netfilter, choose one or two 
-allow_legacy= ;                 ###  launch xtables, void to yes or type no 
-allow_nft=no ;                  ###  launch neftables, void to yes or type no 
-#####             ###  ip protocol, modify with void or no 
-allow_ipv4= ;                   ###  void to config firewall with ipv4 or no to dont configure ipv4  
-allow_ipv6=no ;                 ###  void to config firewall with ipv6 or no to dont configure ipv6  
-#####             ###  Client ports, add with "," and join ranges with ":" 
-client_tcp="http,https,ssh,git" ;                  ###  tcp ports for client 
-client_udp="domain,bootpc,ntp,https" ;             ###  udp ports for client 
-#####             ###  Server ports, add with "," and join ranges with ":" 
-server_tcp=""     ;                ###  tcp ports for server 
-server_udp=""     ;                ###  udp ports for server 
-logserver_tcp=""  ;                ###  the tcp ports to log server 
-logserver_udp=""  ;                ###  the udp ports to log server 
-#####             ###  Selective Input state 
-input_state="-m state --state new,related,established" ;             ###  void for all or -m state --state new,related,established,untracked,invalid 
-#####             ###  void to works with only output rules or no 
-only_output="" ;                        ###  void when the rules are only to output in filter or no 
-#####             ###  .......... END Necesary options .......... ..........  
-#####             ###  .......... BEGIN Optional options .......... .......... 
-#####             ###  Allow Other Options,  modify with void, or no 
-allow_bandwidth_input=no ;              ###  void to limit bandwidth input in kbits/sec for all sources or no 
-allow_bandwidth_output=no ;             ###  void to limit bandwidth output in kbits/sec for each destination or no 
-allow_ping_send=no ;                    ###  void to allow send pings, and no to drop send pings 
-allow_ping_recive=no ;                  ###  void to allow recive pings, and no to drop recive pings 
-allow_forwading=no ;                    ###  void to allow ip forward, and no to drop forward ip 
-allow_nat=no ;                          ###  void to do NAT masquerade to default route, or no 
-allow_vpn=no ;                          ###  void to allow some exceptional host or no 
-allow_blacklist=no ;                    ###  void to drop some excepcional host or no 
-allow_output_uid=no ;                   ###  void to allow excepcional user or no 
-allow_output_gid=no ;                   ###  void to allow excepcional group or no 
-allow_others_protocols=no ;             ###  void to allow other protocol ip excepcional or no 
-#####             ###  Other Options, add with "," and join ranges with ":" 
-bandwidth_input="12512";             ###  max input bandwidth in kbits/sec for all 
-bandwidth_output="512" ;             ###  max output bandwidth in kbits/sec for ip 
-vpn="wesnoth.org" ;                  ###  allow this excepcitonal host 
-blacklist=""      ;                  ###  drop this excepcional host 
-output_uid="root" ;                  ###  allow out packages excepcional from this user 
-output_gid="root" ;                  ###  allow out packages excepcional from this group 
-others_protocols="icmp,igmp" ;             ###  allow others protocols from /etc/protocolos 
-#####             ###  Net to connect like client or server 
-net_ipv4_client=0/0  ;              ###  the net to client ipv4, all is 0/0  
-net_ipv4_server=0/0  ;              ###  the net to server ipv4, all is 0/0 
-net_ipv6_client=::/0 ;              ###  the net to client ipv6, all is ::/0 
-net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0 
-#####             ###  .......... END Optional options .......... .......... 
+# Fran FireWall iptables from fwiptables config file
+# _ _ _ _ _ _ # .......... BEGIN Necesary options .......... .......... #
+# # # _ _ _ _ _ _ # the iptables firewall netfilter, choose one or two
+allow_legacy= # _ _ _ _ _ _ # launch xtables, void to yes or type no
+allow_nft=no # _ _ _ _ _ _ # launch neftables, void to yes or type no
+# # # _ _ _ _ _ _ # ip protocol, modify with void or no
+allow_ipv4= # _ _ _ _ _ _ # void to config firewall with ipv4 or no to dont configure ipv4
+allow_ipv6=no # _ _ _ _ _ _ # void to config firewall with ipv6 or no to dont configure ipv6
+# # # _ _ _ _ _ _ # Client ports, add with ',' and join ranges with ':'
+client_tcp=http,https,ssh,git # _ _ _ _ _ _ # tcp ports for client
+client_udp=domain,bootpc,ntp,https # _ _ _ _ _ _ # udp ports for client
+# # # _ _ _ _ _ _ # Server ports, add with ',' and join ranges with ':'
+server_tcp= # _ _ _ _ _ _ # tcp ports for server
+server_udp= # _ _ _ _ _ _ # udp ports for server
+logserver_tcp= # _ _ _ _ _ _ # the tcp ports to log server
+logserver_udp= # _ _ _ _ _ _ # the udp ports to log server
+# # # _ _ _ _ _ _ # Selective Input state
+input_state='-m state --state new,related,established' # _ _ _ _ _ _ # void for all or -m state --state new,related,established,untracked,invalid
+# # # _ _ _ _ _ _ # void to works with only output rules or no
+only_output= # _ _ _ _ _ _ # void when the rules are only to output in filter or no
+# # # _ _ _ _ _ _ # .......... END Necesary options .......... .......... #
+# # # _ _ _ _ _ _ # .......... BEGIN Optional options .......... .......... #
+# # # _ _ _ _ _ _ # Allow Other Options, modify with void, or no
+allow_bandwidth_input=no # _ _ _ _ _ _ # void to limit bandwidth input in kbits/sec for all sources or no
+allow_bandwidth_output=no # _ _ _ _ _ _ # void to limit bandwidth output in kbits/sec for each destination or no
+allow_ping_send=no # _ _ _ _ _ _ # void to allow send pings or no
+allow_ping_recive=no # _ _ _ _ _ _ # void to allow recive pings or no
+allow_forwading=no # _ _ _ _ _ _ # void to allow ip forward or no
+allow_nat=no # _ _ _ _ _ _ # void to do NAT masquerade to default route or no
+allow_vpn=no # _ _ _ _ _ _ # void to allow some exceptional host or no
+allow_blacklist=no # _ _ _ _ _ _ # void to drop some excepcional host or no
+allow_output_uid=no # _ _ _ _ _ _ # void to allow excepcional user or no
+allow_output_gid=no # _ _ _ _ _ _ # void to allow excepcional group or no
+allow_others_protocols=no # _ _ _ _ _ _ # void to allow other protocol ip excepcional or no
+# # # _ _ _ _ _ _ # Other Options, add with , and join ranges with :
+bandwidth_input=12512 # _ _ _ _ _ _ # max input bandwidth in kbits/sec for all
+bandwidth_output=512 # _ _ _ _ _ _ # max output bandwidth in kbits/sec for ip
+vpn=wesnoth.org # _ _ _ _ _ _ # allow this excepcitonal host
+blacklist= # _ _ _ _ _ _ # drop this excepcional host
+output_uid=root # _ _ _ _ _ _ # allow out packages excepcional from this user excepcional
+output_gid=root # _ _ _ _ _ _ # allow out packages excepcional from this group excepcional
+others_protocols=icmp,igmp # _ _ _ _ _ _ # allow others protocols from /etc/protocolos
+# # # _ _ _ _ _ _ # Net to connect like client or server
+net_ipv4_client=0/0 # _ _ _ _ _ _ # the net to client ipv4, all is 0/0
+net_ipv4_server=0/0 # _ _ _ _ _ _ # the net to server ipv4, all is 0/0
+net_ipv6_client=::/0 # _ _ _ _ _ _ # the net to client ipv6, all is ::/0
+net_ipv6_server=::/0 # _ _ _ _ _ _ # the net to server ipv6, all is ::/0
+# # # _ _ _ _ _ _ # .......... END Optional options .......... .......... #
 
  fwiptables notes:
 
@@ -242,7 +243,7 @@ net_ipv6_server=::/0 ;              ###  the net to server ipv6, all is ::/0
 
 ##################################################  [License]
 
-  Download the latest version [Fran FireWall iptables] from sourceforge
+  Download the latest version Fran FireWall iptables from sourceforge
   https://sourceforge.net/projects/f-iptables/files/latest/download
   Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 

@@ -1,10 +1,12 @@
+##### fwiptables 217 installed in /usr/bin/fwiptables
+##### Launch fwiptables to run fwiptables
 
 
      [Fran FireWall iptables]
 ##################################################
 
      [Program Name]
-  [Fran FireWall iptables]
+  Fran FireWall iptables
 
      [Program Description]
   One Script in bash for iptables firewall
