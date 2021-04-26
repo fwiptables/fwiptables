@@ -16,8 +16,8 @@
  [Show log]          log-fwiptables log-sshd log-search log-search-r        
  [Version]           version upgrade dev-versions all-versions              
  [Help]              about depends examples options opciones help ayuda     
- [||Own  cfg||]
- cliente.cfg servidor.cfg
+ [||Config||]
+cliente.cfg hola1 hola2 servidor.cfg
  [||Examples||]
  [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
  [Launch the config myown.cfg]      fwiptables custom myown.cfg             

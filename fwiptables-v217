@@ -1,8 +1,8 @@
 #!/bin/bash
 ####
 ####
-## english: necesary to find several PATH
-## spanish: necesario para encontrar varios PATH
+#### english: necesary to find several PATH
+#### spanish: necesario para encontrar varios PATH
 source /etc/profile
 ####
 ####
@@ -258,8 +258,8 @@ echo " [Show etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
-echo " [||Own  cfg||]"
-echo " $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $listado)"
+echo " [||Config||]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
@@ -309,8 +309,8 @@ echo " [Show etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
-echo " [||Own  cfg||]"
-echo " $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $listado)"
+echo " [||Config||]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
@@ -903,7 +903,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   103  "host" \
   104  "resolveip" \
   105  "geoip" \
-  106  "update" \
+  106  "ntpdate" \
   0110 "$cinco [Auth sudo operations] $cinco"  \
   111  "auth-sudo" \
   112  "remove-sudo" \
@@ -1195,7 +1195,7 @@ clear
  ;;
  106)
  clear
- $fiptables update
+ $fiptables ntpdate
  ;;
  111)
  clear
@@ -2814,8 +2814,8 @@ echo " [Show etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
-echo " [||Own  cfg||]"
-echo " $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $listado)"
+echo " [||Config||]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
@@ -3025,8 +3025,8 @@ echo " [Show etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
-echo " [||Own  cfg||]"
-echo " $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $listado)"
+echo " [||config||]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
@@ -3236,8 +3236,8 @@ echo " [Show etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
 echo " [Version]           version upgrade dev-versions all-versions              "
 echo " [Help]              about depends examples options opciones help ayuda     "
-echo " [||Own  cfg||]"
-echo " $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $listado)"
+echo " [||Config||]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
