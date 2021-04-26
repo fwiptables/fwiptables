@@ -1,8 +1,8 @@
 #!/bin/bash
 ####
 ####
-## english: necesary to find several PATH
-## spanish: necesario para encontrar varios PATH
+#### english: necesary to find several PATH
+#### spanish: necesario para encontrar varios PATH
 source /etc/profile
 ####
 ####
