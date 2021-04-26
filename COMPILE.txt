@@ -1,17 +1,16 @@
-#
-#
-# fwiptables compile with shc and without comments
-#
-# Remove comments
-# grep -v ^## fwiptables > fwiptables-uncommented
-#
-# Compile
-# shc -o fwiptables-binary -f fwiptables-uncoment
-#
-# Chmod
-# chmod ugo+x fwiptables-binary
-#
-# Launch
-# ./fwiptables-binary
-# 
-#
+##### without compiling, it works ####
+
+ chmod:  # chmod ugo+x fwiptables
+ Launch: # ./fwiptables
+
+ And then fwiptables is in /usr/bin/fwiptables
+
+#### with compiling, it works ####
+
+ Remove comments:  # grep -v ^## fwiptables > fwiptables-uncommented
+ Compile:          # shc -o fwiptables-binary -f fwiptables-uncoment
+ Chmod:            #  chmod ugo+x fwiptables-binary
+ Launch:           #  ./fwiptables-binary
+
+ And then fwiptables is in /usr/bin/fwiptables
+

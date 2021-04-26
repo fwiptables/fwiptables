@@ -4,7 +4,7 @@
      *****     english: changes, list of changes and roadmap
      *****     spanish: cambios, lista de cambios y hoja de ruta
 
-     *****     Version actual: 218    ******
+     *****     Version actual: 217    ******
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -128,4 +128,4 @@ log sshd - añadido - ok 216
 log busqueda - añadido - ok 216
 log busqueda recursiva - añadido - ok 216
 cli - actualizado - ok 216
-code - rediseñado para poder compilarlo con shc - ok 217
+codigo - rediseñado para poder compilarlo con shc - ok 217
