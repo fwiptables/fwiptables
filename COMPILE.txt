@@ -1,6 +1,6 @@
 #
-# fwiptables can compile
-# with shc and without comments
+#
+# fwiptables compile with shc and without comments
 #
 # Remove comments
 # grep -v ^## fwiptables > fwiptables-uncommented
@@ -11,6 +11,7 @@
 # Chmod
 # chmod ugo+x fwiptables-binary
 #
-# Lanza
+# Launch
 # ./fwiptables-binary
 # 
+#

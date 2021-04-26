@@ -65,7 +65,7 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 ################################################        spanish: variables:    variables para declarar
 ####
 allow_legacy= ; allow_nft= ; allow_ipv4= ; allow_ipv6=no ;
-client_tcp=http,https,ssh,git ; client_udp=domain,bootpc,ntp,https ;
+client_tcp=ssh,http,https ; client_udp=domain,bootpc,ntp,https ;
 server_tcp= ; server_udp= ; logserver_tcp= ; logserver_udp= ;
 input_state="-m state --state new,related,established" ;
 only_output= ; allow_bandwidth_input=no ;
@@ -206,11 +206,11 @@ var38=$(echo "blacklist=" )
 eng38=$(echo "# drop this excepcional host" )
 spa38=$(echo "# deniega estos host excepcionales" )
 var39=$(echo "output_uid=root" )
-eng39=$(echo "# allow out packages excepcional from this user" )
-spa39=$(echo "# permite salida de paquetes de este usuario excepcional o no" )
+eng39=$(echo "# allow out packages excepcional from this user excepcional" )
+spa39=$(echo "# permite salida de paquetes de este usuario excepcional" )
 var40=$(echo "output_gid=root" )
-eng40=$(echo "# allow out packages excepcional from this group" )
-spa40=$(echo "# permite salida de paquetes de este grupo excepcional o no" )
+eng40=$(echo "# allow out packages excepcional from this group excepcional" )
+spa40=$(echo "# permite salida de paquetes de este grupo excepcional" )
 var41=$(echo "others_protocols=icmp,igmp" )
 eng41=$(echo "# allow others protocols from /etc/protocolos" )
 spa41=$(echo "# permitir otros protocolos desde /etc/protocols" )
@@ -417,6 +417,11 @@ echo $var39 $tabz $eng39 >> $fe
 echo $var40 $tabz $eng40 >> $fe
 echo $var41 $tabz $eng41 >> $fe
 echo $var42 $tabz $eng42 >> $fe
+echo $var43 $tabz $eng43 >> $fe
+echo $var44 $tabz $eng44 >> $fe
+echo $var45 $tabz $eng45 >> $fe
+echo $var46 $tabz $eng46 >> $fe
+echo $var47 $tabz $eng47 >> $fe
 #### full-spanish 
 echo "# $fprogram from $fiptables config file" > $fs
 echo $var1  $tabz $spa1 >> $fs
