@@ -38,11 +38,11 @@ directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: wher
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
 fprogram="Fran FireWall iptables" ; fversion="217";               #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ;                              #english: path to config files  #spanish: archivos de configuracion
-defaultcfg="default-full-english.cfg"  ;                          #english: path to config files  #spanish: archivos de configuracion
-defaultfullcfg_eng="default-full-english.cfg" ;                   #english: path to config files  #spanish: archivos de configuracion
-defaultfullcfg_spa="default-full-spanish.cfg" ;                   #english: path to config files  #spanish: archivos de configuracion
-defaultminicfg_eng="default-mini-english.cfg" ;                   #english: path to config files  #spanish: archivos de configuracion
-defaultminicfg_spa="default-mini-spanish.cfg" ;                   #english: path to config files  #spanish: archivos de configuracion
+defaultcfg="$directory_config/default-full-english.cfg"           #english: path to config files  #spanish: archivos de configuracion
+defaultfullcfg_eng="$directory_config/default-full-english.cfg"   #english: path to config files  #spanish: archivos de configuracion
+defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"   #english: path to config files  #spanish: archivos de configuracion
+defaultminicfg_eng="$directory_config/default-mini-english.cfg"   #english: path to config files  #spanish: archivos de configuracion
+defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"   #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall #spanish: ruta de firewall guardado
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _"  ;             #english: [characters to show] #spanish: [caracteres a mostrar]
@@ -252,7 +252,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -303,7 +303,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -323,10 +323,10 @@ exit ; fi
 ####
 ####
 #### where save default files
-me="$directory_config/$defaultminicfg_eng"
-ms="$directory_config/$defaultminicfg_spa"
-fe="$directory_config/$defaultfullcfg_eng"
-fs="$directory_config/$defaultfullcfg_spa"
+me="$defaultminicfg_eng"
+ms="$defaultminicfg_spa"
+fe="$defaultfullcfg_eng"
+fs="$defaultfullcfg_spa"
 ####
 ####
 #### mini-english
@@ -674,7 +674,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "mini-wizard" ]; then echo -n
-cp $directory_config/$defaultminicfg_eng $directory_config/miniwizard.cfg
+cp $defaultminicfg_eng $directory_config/miniwizard.cfg
 $favorite_text_editor $directory_config/miniwizard.cfg
 $fiptables custom miniwizard.cfg
 $fiptables list
@@ -684,7 +684,7 @@ exit; fi
 ##############################       english: full-wizard: full-wizard to connect like simple client
 ##############################       spanish: full-wizard: asistente to connect like simple client
 if [ "$first_option" = "full-wizard" ]; then echo -n
-cp $directory_config/$defaultfullcfg_eng $directory_config/fullwizard.cfg
+cp $defaultfullcfg_eng $directory_config/fullwizard.cfg
 $favorite_text_editor $directory_config/fullwizard.cfg
 $fiptables custom fullwizard.cfg
 $fiptables list
@@ -782,22 +782,22 @@ zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cf
 #### spanish: varias opciones
 new-full-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
-cp $directory_config/$defaultfullcfg_eng $directory_config/$unarchivo
+cp $defaultfullcfg_eng $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 nueva-completa-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
-cp $directory_config/$defaultfullcfg_esp $directory_config/$unarchivo
+cp $defaultfullcfg_esp $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 new-mini-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
-cp $directory_config/$defaultminicfg_eng $directory_config/$unarchivo
+cp $defaultminicfg_eng $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 nueva-mini-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
-cp $directory_config/$defaultminicfg_esp $directory_config/$unarchivo
+cp $defaultminicfg_esp $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 modify-config*)
@@ -806,12 +806,12 @@ $favorite_graphicall_editor "$directory_config/$unarchivo"
 ;;
 #### full-wizard and mini full-wizard
 full-wizard*)
-cp $directory_config/$defaultfullcfg_esp $directory_config/fullwizard.cfg
+cp $defaultfullcfg_esp $directory_config/fullwizard.cfg
 $favorite_graphicall_editor "$directory_config/fullwizard.cfg"
 zenity --info --ellipsize --text="ok $(fwiptables custom fullwizard.cfg)"
 ;;
 mini-wizard*)
-cp $directory_config/$defaultminicfg_esp $directory_config/miniwizard.cfg
+cp $defaultminicfg_esp $directory_config/miniwizard.cfg
 $favorite_graphicall_editor "$directory_config/miniwizard.cfg"
 zenity --info --ellipsize --text="ok $(fwiptables custom miniwizard.cfg)"
 ;;
@@ -903,6 +903,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   103  "host" \
   104  "resolveip" \
   105  "geoip" \
+  106  "update" \
   0110 "$cinco [Auth sudo operations] $cinco"  \
   111  "auth-sudo" \
   112  "remove-sudo" \
@@ -1191,6 +1192,10 @@ clear
  resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear
  $fiptables geoip $resolve
+ ;;
+ 106)
+ clear
+ $fiptables update
  ;;
  111)
  clear
@@ -2011,7 +2016,7 @@ exit
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-cp $directory_config/defaultfullconfig_eng $directory_config/$frespuestab
+cp $defaultfullcfg_eng $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
 echo Created $frespuestab
 ;;
@@ -2039,7 +2044,7 @@ exit
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-cp $directory_config/defaultfullconfig_spa $directory_config/$frespuestab
+cp $defaultfullcfg_spa $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
 echo Created $frespuestab
 ;;
@@ -2067,7 +2072,7 @@ exit
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-cp $directory_config/defaultminiconfig_eng $directory_config/$frespuestab
+cp $defaultminicfg_eng $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
 echo Created $frespuestab
 ;;
@@ -2095,7 +2100,7 @@ exit
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-cp $directory_config/defaultfullconfig_spa $directory_config/$frespuestab
+cp $defaultfullcfg_spa $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
 echo Created $frespuestab
 ;;
@@ -2511,6 +2516,22 @@ $which_geoiplookup -i $trazador
 exit; fi
 ####
 ####
+############################       english: update: update the date and time
+############################       spanish: update: actualiza la fecha y hora
+####
+####
+if [ "$first_option" = "update" ]; then echo -n
+echo "[$fprogram] [Version $fversion]"
+echo "$cincuenta [update time] $cinco"
+pool0=0.debian.pool.ntp.org
+pool1=1.debian.pool.ntp.org
+pool2=2.debian.pool.ntp.org
+pool3=3.debian.pool.ntp.org
+ntpdate $pool0 $pool1 $pool2
+date
+exit; fi
+####
+####
 ############################       english: log-fwiptables: log from program $fiptables
 ############################       spanish: log-fwiptables: log desde el programa $fiptables
 ####
@@ -2755,7 +2776,7 @@ exit; fi
 if [ "$first_option" = "options" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Options] $cinco"
-cat $directory_config/$defaultfullcfg_eng
+cat  $defaultfullcfg_eng
 exit; fi
 ####
 ####
@@ -2766,7 +2787,7 @@ exit; fi
 if [ "$first_option" = "opciones" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Opciones] $cinco"
-cat $directory_config/$defaultfullcfg_spa
+cat $defaultfullcfg_spa
 exit; fi
 ####
 ####
@@ -2787,7 +2808,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -2884,6 +2905,7 @@ echo "    trace-ip6: Trace route a one host with ipv6 tcp"
 echo "         host: Resolve one host"
 echo "    resolveip: Resolve one host and viceversa"
 echo "       geo-ip: Locate a one host or ip"
+echo "       update: update the date from ntp server"
 echo
 echo "$cinco         [Auth sudo]"
 echo
@@ -2935,7 +2957,7 @@ echo " $fiptables help                           [Show this help in english]"
 echo ""
 echo "$cincuenta Examples of variables to the configs files"
 echo
-cat $directory_config/$defaultfullcfg_eng
+cat $defaultfullcfg_eng
 echo
 echo " $fiptables notes:"
 echo
@@ -2997,7 +3019,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -3094,6 +3116,7 @@ echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
 echo "         host: Resuelve la ip de un host"
 echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo "       geo-ip: Localiza una ip o host"
+echo "       update: actualiza la fecha desde un ntp server"
 echo
 echo "$cinco         [Opciones de autorizacion]"
 echo
@@ -3145,7 +3168,7 @@ echo "   $fiptables help                         [Muestra la ayuda en ingles] "
 echo
 echo "$cincuenta  Ejemplos de las variables de configuración"
 echo
-cat $directory_config/$defaultfullcfg_spa
+cat $defaultfullcfg_spa
 echo
 echo " Notas de $fiptables :"
 echo
@@ -3207,7 +3230,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -3249,7 +3272,7 @@ exit; else echo -n ; fi
 ####
 if [ $first_option = "custom" ]  &&  [ -f $directory_config/$second_option ]
 then source $directory_config/$second_option &> /dev/null ; 
-else source $directory_config/$defaultcfg &> /dev/null ;  fi
+else source $defaultcfg &> /dev/null ;  fi
 ####
 if [ -f $directory_config/$first_option ]
 then source $directory_config/$first_option &> /dev/null ; fi
