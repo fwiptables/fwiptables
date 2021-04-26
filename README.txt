@@ -1,4 +1,4 @@
-[Fran FireWall iptables] [version 217]
+[Fran FireWall iptables] [version 218]
 ##################################################
  [Launch guide]      system-info net-info full-wizard mini-wizard cli gui   
  [Launch rules]      eraserules offline allpermisive custom [config.cfg]    
@@ -10,7 +10,7 @@
  [List sockets]      route ss netstat lsof ipforwading tcpdump arp          
  [Recover fw]        fw-list fw-save fw-restore                             
  [Tool icmp]         ping-ip4 ping-ip6                                      
- [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip               
+ [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       
  [Auth sudo]         auth-sudo remove-sudo list-sudo                        
  [Show etc]          hosts protocols services hosts.allow hosts.deny        
  [Show log]          log-fwiptables log-sshd log-search log-search-r        
@@ -107,6 +107,7 @@
          host: Resolve one host
     resolveip: Resolve one host and viceversa
        geo-ip: Locate a one host or ip
+      ntpdate: update the date from ntp server
 
 #####         [Auth sudo]
 
@@ -146,7 +147,7 @@
 
 ################################################## The second option: (optional)
 
-    if launch without specific the config it takes default-full-english.cfg
+    if launch without specific the config it takes /etc/fwiptables/default-full-english.cfg
     you can  modify and create the files in the folder /etc/fwiptables
 
 ################################################## Examples

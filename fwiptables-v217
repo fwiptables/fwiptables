@@ -252,7 +252,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -271,10 +271,10 @@ exit ; fi
 ##############################       spanish: auto instalador en caso necesario       ###########################################
 ####
 ####
-if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+if [ $0 = $directory_fiptables/$fiptables ] ; then echo -n ;
 else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
 echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
-echo "$cinco Launch $fiptables to run $fiptables"
+echo "$cinco Launch $fiptables to run $fiptables" ;
 fi
 ####
 ####
@@ -303,7 +303,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -353,26 +353,26 @@ echo $var19 $tabz $eng19 >> $me
 echo $var20 $tabz $eng20 >> $me
 #### mini-spanish
 echo "# $fprogram from $fiptables config file" > $ms
-echo $var1  $tabz $spa1  >> $fs
-echo $var2  $tabz $spa2  >> $fs
-echo $var3  $tabz $spa3  >> $fs
-echo $var4  $tabz $spa4  >> $fs
-echo $var5  $tabz $spa5  >> $fs
-echo $var6  $tabz $spa6  >> $fs
-echo $var7  $tabz $spa7  >> $fs
-echo $var8  $tabz $spa8  >> $fs
-echo $var9  $tabz $spa9  >> $fs
-echo $var10 $tabz $spa10 >> $fs
-echo $var11 $tabz $spa11 >> $fs
-echo $var12 $tabz $spa12 >> $fs
-echo $var13 $tabz $spa13 >> $fs
-echo $var14 $tabz $spa14 >> $fs
-echo $var15 $tabz $spa15 >> $fs
-echo $var16 $tabz $spa16 >> $fs
-echo $var17 $tabz $spa17 >> $fs
-echo $var18 $tabz $spa18 >> $fs
-echo $var19 $tabz $spa19 >> $fs
-echo $var20 $tabz $spa20 >> $fs
+echo $var1  $tabz $spa1  >> $ms
+echo $var2  $tabz $spa2  >> $ms
+echo $var3  $tabz $spa3  >> $ms
+echo $var4  $tabz $spa4  >> $ms
+echo $var5  $tabz $spa5  >> $ms
+echo $var6  $tabz $spa6  >> $ms
+echo $var7  $tabz $spa7  >> $ms
+echo $var8  $tabz $spa8  >> $ms
+echo $var9  $tabz $spa9  >> $ms
+echo $var10 $tabz $spa10 >> $ms
+echo $var11 $tabz $spa11 >> $ms
+echo $var12 $tabz $spa12 >> $ms
+echo $var13 $tabz $spa13 >> $ms
+echo $var14 $tabz $spa14 >> $ms
+echo $var15 $tabz $spa15 >> $ms
+echo $var16 $tabz $spa16 >> $ms
+echo $var17 $tabz $spa17 >> $ms
+echo $var18 $tabz $spa18 >> $ms
+echo $var19 $tabz $spa19 >> $ms
+echo $var20 $tabz $spa20 >> $ms
 #### full-english
 echo "# $fprogram from $fiptables config file" > $fe
 echo $var1  $tabz $eng1  >> $fe
@@ -1587,7 +1587,7 @@ exit; fi
 if [ "$first_option" = "route" ]; then   echo  -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta  [Show ip address and ip route] $cinco"
-# $which_uname -srom
+## $which_uname -srom
 echo "$tab [ip address]"
 case $which_ip in
 $NULL)
@@ -1630,7 +1630,7 @@ echo "$tab [Install ss command]"
 *)
 echo "[$fprogram] [Version $fversion]";
 echo "$cincuenta [The sockets list with ss] $cinco" ;
-# $which_uname -srom
+## $which_uname -srom
 echo "$tab [The ipv6 sockets]"
 $which_ss -a6
 echo "$tab [The ipv4 sockets]"
@@ -1652,7 +1652,7 @@ echo "$tab [Install lsof]"
 *)
 echo "[$fprogram] version $fversion firewall linux ";
 echo "$cincuenta [The sockets list with lsof] $cinco"
-# $which_uname -srom
+## $which_uname -srom
 echo "$tab [The sockets with lsof]"
 $which_lsof -i
 ;;
@@ -1672,7 +1672,7 @@ echo "$tab [Install netstat]"
 *)
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [The sockets list with netstat] $cinco"
-# $which_uname -srom
+## $which_uname -srom
 echo "$tab [The devices list with netstat]"
 $which_netstat -i
 echo "$tab [The route table with  netstat]"
@@ -2100,7 +2100,7 @@ exit
 "no")
 frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
-cp $defaultfullcfg_spa $directory_config/$frespuestab
+cp $defaultminicfg_spa $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
 echo Created $frespuestab
 ;;
@@ -2520,7 +2520,7 @@ exit; fi
 ############################       spanish: update: actualiza la fecha y hora
 ####
 ####
-if [ "$first_option" = "update" ]; then echo -n
+if [ "$first_option" = "ntpdate" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [update time] $cinco"
 pool0=0.debian.pool.ntp.org
@@ -2808,7 +2808,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -2905,7 +2905,7 @@ echo "    trace-ip6: Trace route a one host with ipv6 tcp"
 echo "         host: Resolve one host"
 echo "    resolveip: Resolve one host and viceversa"
 echo "       geo-ip: Locate a one host or ip"
-echo "       update: update the date from ntp server"
+echo "      ntpdate: update the date from ntp server"
 echo
 echo "$cinco         [Auth sudo]"
 echo
@@ -3019,7 +3019,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate        "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -3116,7 +3116,7 @@ echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
 echo "         host: Resuelve la ip de un host"
 echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo "       geo-ip: Localiza una ip o host"
-echo "       update: actualiza la fecha desde un ntp server"
+echo "      ntpdate: actualiza la fecha desde un ntp server"
 echo
 echo "$cinco         [Opciones de autorizacion]"
 echo
@@ -3230,7 +3230,7 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip update        "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
@@ -3977,7 +3977,7 @@ echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 ####
 ####
 ########
-# left script
+## left script
 ########
 ####
 ####
