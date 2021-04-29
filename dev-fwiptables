@@ -272,7 +272,7 @@ exit ; fi
 ##############################       spanish: auto instalador en caso necesario       ###########################################
 ####
 ####
-if [ $0 = $directory_fiptables/$fiptables ] ; then echo -n ;
+if [ "$0" = "$directory_fiptables"/"$fiptables" ] ; then echo -n ;
 else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
 echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
 echo "$cinco Launch $fiptables to run $fiptables" ;
