@@ -6,7 +6,6 @@
 source /etc/profile
 ####
 ####
-####
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
 ####
@@ -47,9 +46,9 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _"  ;             #english: [characters to show] #spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
-##flinea="-120" ;                                                   #english: number line #spanish:linea de variables
-##fvariables="47" ;                                                 #english: custom variables to full-config #spanish: variables modificables
-##fminivariables="20";                                              #english: variables necesary to mini-config #spanish: variables necesarias
+##flinea="-120" ;                                                 #english: number line #spanish:linea de variables
+##fvariables="47" ;                                               #english: custom variables to full-config #spanish: variables modificables
+##fminivariables="20";                                            #english: variables necesary to mini-config #spanish: variables necesarias
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
@@ -479,6 +478,7 @@ echo $var47 $tabz $spa47 >> $fs
 ####
 #### bash_completion in the $fiptables
 if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+mkdir/etc/bash_completion.d/ &> /dev/null 
 else echo complete -W "'system-info net-info \
 full-wizard mini-wizard cli gui \
 eraserules offline allpermisive custom \
@@ -498,6 +498,11 @@ version upgrade dev-versions all-versions \
 about depends examples options opciones \
 help ayuda'" $fiptables > /etc/bash_completion.d/$fiptables-completion
 fi
+####
+####
+#### spanish: launch bash_completion to complete command do auto-complete
+#### spanish: lanza bash_completion para el comando complete haga autocompleta
+source /etc/bash_completion.d/fwiptables-completion &> /dev/null
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               ###########################################
