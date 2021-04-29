@@ -1,16 +1,17 @@
 #!/bin/bash
 ####
 ####
-#### english: necesary to find several PATH
-#### spanish: necesario para encontrar varios PATH
+####   english: necesary to find several PATH
+####   spanish: necesario para encontrar varios PATH
 source /etc/profile
 ####
 ####
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
 ####
+####
 ####   license
-####  english: This program has gpl license, this program is copyleft, it is free.
+####   english: This program has gpl license, this program is copyleft, it is free.
 ####   spanish: Este programa tiene licencia gpl, this program is copyleft, it is free.
 ####
 ####   comments
@@ -63,9 +64,10 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 ################################################        english: variables:    variables to declare
 ################################################        spanish: variables:    variables para declarar
 ####
+####
 allow_legacy= ; allow_nft= ; allow_ipv4= ; allow_ipv6=no ;
 client_tcp=ssh,http,https ; client_udp=domain,bootpc,ntp,https ;
-server_tcp= ; server_udp= ; logserver_tcp= ; logserver_udp= ;
+server_tcp=ssh ; server_udp= ; logserver_tcp=ssh ; logserver_udp= ;
 input_state="-m state --state new,related,established" ;
 only_output= ; allow_bandwidth_input=no ;
 allow_bandwidth_output=no ; allow_ping_send=no ; allow_ping_recive=no
@@ -108,7 +110,7 @@ spa7=$(echo "# varcio para ejecutar el firewall con ipv6 o no para no")
 var8="# #"
 eng8=$(echo "# Client ports, add with ',' and join ranges with ':'")
 spa8=$(echo "# puertos Cliente, añadir con ',' y poner rangos con ':' ")
-var9=$(echo "client_tcp=http,https,ssh,git") 
+var9=$(echo "client_tcp=http,https,ssh") 
 eng9=$(echo "# tcp ports for client")
 spa9=$(echo "# puertos tcp para ser cliente")
 var10=$(echo "client_udp=domain,bootpc,ntp,https")
@@ -117,13 +119,13 @@ spa10=$(echo "# puertos udp para ser cliente")
 var11="# #"
 eng11=$(echo "# Server ports, add with ',' and join ranges with ':'")
 spa11=$(echo "# Puertos Servidor, añadir con ',' y poner rangos con ':'")
-var12=$(echo "server_tcp=" )
+var12=$(echo "server_tcp=ssh" )
 eng12=$(echo "# tcp ports for server")
 spa12=$(echo "# puertos tcp para servidor")
 var13=$(echo "server_udp= ")
 eng13=$(echo "# udp ports for server")
 spa13=$(echo "# puertos udp para servidor")
-var14=$(echo "logserver_tcp= ")
+var14=$(echo "logserver_tcp=ssh ")
 eng14=$(echo "# the tcp ports to log server")
 spa14=$(echo "# puertos tcp para logear servidor")
 var15=$(echo "logserver_udp= ")
@@ -491,18 +493,23 @@ route ss netstat lsof ipforwading tcpdump arp \
 fw-list fw-save fw-restore \
 auth-sudo remove-sudo list-sudo \
 ping-ip4 ping-ip6 \
-trace-ip4 trace-ip6 host resolveip geoip \
+trace-ip4 trace-ip6 host resolveip geoip ntpdate \
 hosts protocols services hosts.allow hosts.deny \
 log-fwiptables log-sshd log-search log-search-r \
 version upgrade dev-versions all-versions \
 about depends examples options opciones \
 help ayuda'" $fiptables > /etc/bash_completion.d/$fiptables-completion
+####
+####
+chmod ugo+rx /etc/bash_completion.d/$fiptables-completion
+####
+####
 fi
 ####
 ####
 #### spanish: launch bash_completion to complete command do auto-complete
 #### spanish: lanza bash_completion para el comando complete haga autocompleta
-source /etc/bash_completion.d/fwiptables-completion &> /dev/null
+source /etc/bash_completion.d/$fiptables-completion 
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               ###########################################
@@ -1346,13 +1353,17 @@ exit ; fi
 if [ "$first_option" = "examples" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [examples] $cinco"
+####
 #### regen config examples
 echo "regen examples"
 $fiptables reconfig
+####
 #### show config examples
 echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
 echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
 echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
+####
+#### show command examples
 echo "$cinco  [The examples]  $cinco"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
 echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
@@ -2015,7 +2026,7 @@ case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Nueva config] $cinco"
-echo "$cinco Use: $fiptables new-full-config config-no-existent"
+echo "$cinco Use: $fiptables new-full-config config-new"
 exit
 ;;
 "no")
@@ -2023,7 +2034,7 @@ frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
 cp $defaultfullcfg_eng $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
-echo Created $frespuestab
+echo $directory_config/$frespuestab Created
 ;;
 esac
 exit ; fi
@@ -2043,7 +2054,7 @@ case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Nueva config] $cinco"
-echo "$cinco Use: $fiptables nueva-completa-config config-no-existente"
+echo "$cinco Use: $fiptables nueva-completa-config config-nueva"
 exit
 ;;
 "no")
@@ -2051,7 +2062,7 @@ frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
 cp $defaultfullcfg_spa $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
-echo Created $frespuestab
+echo $directory_config/$frespuestab Created
 ;;
 esac
 exit ; fi
@@ -2071,7 +2082,7 @@ case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Nueva config] $cinco"
-echo "$cinco Use: $fiptables new-mini-config config-no-existent"
+echo "$cinco Use: $fiptables new-mini-config config-new"
 exit
 ;;
 "no")
@@ -2079,7 +2090,7 @@ frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
 cp $defaultminicfg_eng $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
-echo Created $frespuestab
+echo $directory_config/$frespuestab Created
 ;;
 esac
 exit ; fi
@@ -2099,7 +2110,7 @@ case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Nueva mini config] $cinco"
-echo "$cinco Use: $fiptables nueva-mini-config config-no-existente"
+echo "$cinco Use: $fiptables nueva-mini-config config-nueva"
 exit
 ;;
 "no")
@@ -2107,7 +2118,7 @@ frespuestaa="$second_option"
 frespuestab="$(echo $frespuestaa | sed 's/\///g' )"
 cp $defaultminicfg_spa $directory_config/$frespuestab
 $favorite_text_editor "$directory_config/$frespuestab"
-echo Created $frespuestab
+echo $directory_config/$frespuestab Created
 ;;
 esac
 exit ; fi
@@ -2125,7 +2136,7 @@ $favorite_text_editor "$directory_config/$second_option"
 "no")
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [Modify config] $cinco"
-echo "$cinco Use: $fiptables modify-config config-existent"
+echo "$cinco Use: $fiptables modify-config config-old"
 ;;
 esac
 exit; fi
@@ -2143,7 +2154,7 @@ cat "$directory_config/$second_option"
 "no")
 echo "[$fprogram]  [Version $fversion]"
 echo "$cincuenta [Show config] $cinco"
-echo "$cinco Use: $fiptables show-config config-existent"
+echo "$cinco Use: $fiptables show-config config-old"
 esac
 exit; fi
 ####
@@ -2163,7 +2174,7 @@ echo "$directory_config/$second_option" deleted
 "no")
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta"
-echo "$cinco Use: $fiptables del-config config-existent"
+echo "$cinco Use: $fiptables del-config config-old"
 ;;
 esac
 exit; fi
@@ -3279,6 +3290,7 @@ if [ $first_option = "custom" ]  &&  [ -f $directory_config/$second_option ]
 then source $directory_config/$second_option &> /dev/null ; 
 else source $defaultcfg &> /dev/null ;  fi
 ####
+####
 if [ -f $directory_config/$first_option ]
 then source $directory_config/$first_option &> /dev/null ; fi
 ####
@@ -3294,12 +3306,12 @@ if [ "$allow_output_gid" = "$NULL" ]; then uid_gid= ; else echo -n ; fi
 ####
 ##############################      english: compatibility with old variables, backward compatibility      #####################
 ##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
-## execnft="$which_iptables_nft"
-## execlegacy="$which_iptables_legacy"
-## iptables_nft="$allow_nft"
-## iptables_legacy="$allow_legacy"
-## log_tcp=$logserver_tcp
-## log_udp=$logserver_udp
+#### execnft="$which_iptables_nft"
+#### execlegacy="$which_iptables_legacy"
+#### iptables_nft="$allow_nft"
+#### iptables_legacy="$allow_legacy"
+#### log_tcp=$logserver_tcp
+#### log_udp=$logserver_udp
 ############################       english: iptables rules ipv4  iptables-legacy
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
@@ -3908,6 +3920,7 @@ esac
 ########################################       english: show text when active rules
 ########################################       spanish: muestra texto cuando activas las reglas
 ####
+####
 ####  # show text head lines in all firewall #
 echo "[$fprogram] [version $fversion]";
 echo "$cincuenta lauching iptables rules $cinco"
@@ -3981,20 +3994,20 @@ echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
 ####
 ####
 ####
-########
-## left script
-########
+#######################
+####     left script
+#######################
 ####
 ####
 #######################         english: End of script
 #######################         spanish: Fin del script
 ####
 ####
-##
-##    for upload push ssh with f-iptables and download clone with https, repository git.code.sf.net/p/f-iptables/code
-##    Upload f-iptables repository from local repository  :     git commit -a ; git push ;
-##    Download f-iptables repository in folder user       :     git clone https://git.code.sf.net/p/f-iptables/code ;
-##
+####
+####    for upload push ssh with f-iptables and download clone with https, repository git.code.sf.net/p/f-iptables/code
+####    Upload f-iptables repository from local repository  :     git commit -a ; git push ;
+####    Download f-iptables repository in folder user       :     git clone https://git.code.sf.net/p/f-iptables/code ;
+####
 ####
 ####
 #######################
