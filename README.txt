@@ -1,4 +1,4 @@
-[Fran FireWall iptables] [version 217]
+[Fran FireWall iptables] [version 218]
 ##################################################
  [Launch guide]      system-info net-info full-wizard mini-wizard cli gui   
  [Launch rules]      eraserules offline allpermisive custom [config.cfg]    
@@ -14,10 +14,10 @@
  [Auth sudo]         auth-sudo remove-sudo list-sudo                        
  [Show etc]          hosts protocols services hosts.allow hosts.deny        
  [Show log]          log-fwiptables log-sshd log-search log-search-r        
- [Version]           version upgrade dev-versions all-versions              
+ [Version]           install version upgrade dev-versions all-versions      
  [Help]              about depends examples options opciones help ayuda     
  [||Config||]
-cliente.cfg hola1 hola2 servidor.cfg
+cliente.cfg servidor.cfg
  [||Examples||]
  [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
  [Launch the config myown.cfg]      fwiptables custom myown.cfg             
@@ -117,6 +117,7 @@ cliente.cfg hola1 hola2 servidor.cfg
 
 #####         [Version]
 
+      install: install this actualy fwiptables
       version: Info version program from fwiptables
       upgrade: Upgrade fwiptables at the latest version
  dev-versions: Version in development from fwiptables
@@ -168,12 +169,12 @@ allow_nft=no # _ _ _ _ _ _ # launch neftables, void to yes or type no
 allow_ipv4= # _ _ _ _ _ _ # void to config firewall with ipv4 or no to dont configure ipv4
 allow_ipv6=no # _ _ _ _ _ _ # void to config firewall with ipv6 or no to dont configure ipv6
 # # # _ _ _ _ _ _ # Client ports, add with ',' and join ranges with ':'
-client_tcp=http,https,ssh,git # _ _ _ _ _ _ # tcp ports for client
+client_tcp=http,https,ssh # _ _ _ _ _ _ # tcp ports for client
 client_udp=domain,bootpc,ntp,https # _ _ _ _ _ _ # udp ports for client
 # # # _ _ _ _ _ _ # Server ports, add with ',' and join ranges with ':'
-server_tcp= # _ _ _ _ _ _ # tcp ports for server
+server_tcp=ssh # _ _ _ _ _ _ # tcp ports for server
 server_udp= # _ _ _ _ _ _ # udp ports for server
-logserver_tcp= # _ _ _ _ _ _ # the tcp ports to log server
+logserver_tcp=ssh # _ _ _ _ _ _ # the tcp ports to log server
 logserver_udp= # _ _ _ _ _ _ # the udp ports to log server
 # # # _ _ _ _ _ _ # Selective Input state
 input_state='-m state --state new,related,established' # _ _ _ _ _ _ # void for all or -m state --state new,related,established,untracked,invalid
