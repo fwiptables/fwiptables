@@ -131,4 +131,6 @@ cli - actualizado - ok 216
 codigo - rediseñado para poder compilarlo con shc - ok 217
 install - añadido - ok 218
 variables - reparadas - ok 218
-
+arreglado - auto complete del root . ok 219
+default - cambio en variables por defecto - ok 219
+log - log-prefix a logserver:  - ok 219

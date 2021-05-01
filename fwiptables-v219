@@ -47,9 +47,7 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _"  ;             #english: [characters to show] #spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
-##flinea="-120" ;                                                 #english: number line #spanish:linea de variables
-##fvariables="47" ;                                               #english: custom variables to full-config #spanish: variables modificables
-##fminivariables="20";                                            #english: variables necesary to mini-config #spanish: variables necesarias
+log_prefix="logserver:"                                           #english: log prefix in iptables #spanish: prefijo del log en iptables
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
 ####       #### english: [download web link]  #spanish: [descarga del enlace web]
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
@@ -134,13 +132,13 @@ spa15=$(echo "# puertos udp para logear servidor")
 var16="# #"
 eng16=$(echo "# Selective Input state")
 spa16=$(echo "# Estado de entrada selectivo")
-var17=$(echo "input_state='-m state --state new,related,established'")
+var17=$(echo "input_state=''")
 eng17=$(echo "# void for all or -m state --state new,related,established,untracked,invalid")
 spa17=$(echo "# modificar con vacio o -m state --state new,related,established,untracked,invalid")
 var18="# #"
 eng18=$(echo "# void to works with only output rules or no")
 spa18=$(echo "# vacio para funcionar con reglas de salida solamente or no")
-var19=$(echo "only_output= " )
+var19=$(echo "only_output=no" )
 eng19=$(echo "# void when the rules are only to output in filter or no")
 spa19=$(echo "# vacio, reglas solo para salida o no")
 var20="# #"
@@ -256,7 +254,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
+echo " [Show log]          log-sudo log-sshd log-search                           "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -314,7 +312,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
+echo " [Show log]          log-sudo log-sshd log-search                           "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -485,10 +483,13 @@ echo $var47 $tabz $spa47 >> $fs
 ##############################       spanish: auto completado if update         ###########################################
 ####
 ####
-#### bash_completion in the $fiptables
+#### bash_completion in the $fiptables if update
 if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+else
+#### if sane directory bash_completion.d
 mkdir/etc/bash_completion.d/ &> /dev/null 
-else echo complete -W "'system-info net-info \
+#### auto complete with bash_completion.d
+echo complete -W "'system-info net-info \
 full-wizard mini-wizard cli gui \
 eraserules offline allpermisive custom \
 list forward list6 forward6 nat-ip4 nat-ip6 \
@@ -506,17 +507,14 @@ log-fwiptables log-sshd log-search log-search-r \
 version upgrade dev-versions all-versions \
 about depends examples options opciones \
 help ayuda'" $fiptables > /etc/bash_completion.d/$fiptables-completion
-####
-####
+#### give permisive to $fiptables-completion to read and exec
 chmod ugo+rx /etc/bash_completion.d/$fiptables-completion
-####
-####
 fi
 ####
 ####
 #### spanish: launch bash_completion to complete command do auto-complete
 #### spanish: lanza bash_completion para el comando complete haga autocompleta
-source /etc/bash_completion.d/$fiptables-completion 
+. /etc/bash_completion.d/$fiptables-completion
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               ###########################################
@@ -2559,10 +2557,10 @@ exit; fi
 ############################       spanish: log-fwiptables: log desde el programa $fiptables
 ####
 ####
-if [ "$first_option" = "log-fwiptables" ]; then echo -n
+if [ "$first_option" = "log-sudo" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [log-fwiptables] $cinco"
-find /var/log -maxdepth 1 -type f | xargs zgrep -i "$fiptables"
+echo "$cincuenta [log-sudo] $cinco"
+find /var/log -maxdepth 5 -type f | xargs zgrep -i "sudo:"
 exit; fi
 ####
 ####
@@ -2573,7 +2571,7 @@ exit; fi
 if [ "$first_option" = "log-sshd" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [log-sshd] $cinco"
-find /var/log -maxdepth 1 -type f | xargs zgrep -i "sshd"
+find /var/log -maxdepth 5 -type f | xargs zgrep -i "sshd"
 exit; fi
 ####
 ####
@@ -2584,24 +2582,6 @@ exit; fi
 if [ "$first_option" = "log-search" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [log-search] $cinco"
-case "$second_option" in
-$NULL)
-echo "$cinco use: $fiptables $first_option pattern"
-;;
-*)
-find /var/log -maxdepth 1 -type f | xargs zgrep -i "$second_option" 
-;;
-esac
-exit; fi
-####
-####
-############################       english: log-search-r: log from a one search
-############################       spanish: log-search-r: log desde una busqueda
-####
-####
-if [ "$first_option" = "log-search-r" ]; then echo -n
-echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [log-search-r] $cinco"
 case "$second_option" in
 $NULL)
 echo "$cinco use: $fiptables $first_option pattern"
@@ -2834,7 +2814,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
+echo " [Show log]          log-sudo log-sshd log-search                           "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -2954,10 +2934,9 @@ echo "   hosts.deny: show /etc/hosts.deny"
 echo 
 echo "$cinco         [Show log]"
 echo
-echo "        hosts: search the logs from sudo $fiptables for /var/log"
-echo "   protocolos: search the logs from sshd for /var/log"
-echo "     services: search the logs from a pattern for /var/log"
-echo "     services: search the recursives logs from a pattern for /var/log"
+echo "     log-sudo: search the logs from sudo for /var/log"
+echo "     log-sshd: search the logs from sshd for /var/log"
+echo "   log-search: search the logs from a input pattern for /var/log"
 echo 
 echo "$cinco         [Help]"
 echo
@@ -3046,7 +3025,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
+echo " [Show log]          log-sudo log-sshd log-search                           "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||config||]"
@@ -3166,10 +3145,9 @@ echo "   hosts.deny: muestra /etc/hosts.deny"
 echo
 echo "$cinco         [Show log]"
 echo
-echo "        hosts: busca los logs de sudo $fiptables para /var/log"
-echo "   protocolos: busca log logs de sshd para /var/log"
-echo "     services: busca los logs dando un patron para /var/log"
-echo "     services: busca los logs recursivos dando un patron para /var/log"
+echo "     log-sudo: busca los logs de sudo $fiptables para /var/log"
+echo "     log-sshd: busca log logs de sshd para /var/log"
+echo "   log-search: busca los logs dando un patron para /var/log"
 echo 
 echo "$cinco         [Ayuda]"
 echo
@@ -3258,7 +3236,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
+echo " [Show log]          log-sudo log-sshd log-search                           "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -3478,26 +3456,26 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p tcp -m multiport --dpo
 ####
 #### ipv4
 ####
-$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
 ####
 ####
 #### ipv6
 ####
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG &> /dev/null
-$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT -p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+$allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
 ####
 ####
 ####################################### english: rules allow server ports
