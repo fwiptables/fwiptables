@@ -45,7 +45,7 @@ defaultminicfg_eng="$directory_config/default-mini-english.cfg"   #english: path
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"   #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                            #english: path to save firewall #spanish: ruta de firewall guardado
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
-cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _"  ;             #english: [characters to show] #spanish: [caracteres a mostrar]
+cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ;          #english: [characters to show] #spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
 log_prefix="logserver:"                                           #english: log prefix in iptables #spanish: prefijo del log en iptables
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
@@ -196,8 +196,8 @@ var35=$(echo "bandwidth_input=12512" )
 eng35=$(echo "# max input bandwidth in kbits/sec for all" )
 spa35=$(echo "# maximo entrada de ancho de banda en kbit/sec para todos" )
 var36=$(echo "bandwidth_output=512" )
-eng36=$(echo "# max output bandwidth in kbits/sec for ip" )
-spa36=$(echo "# maximo salida de ancho de banda en kbits/sec para ip" )
+eng36=$(echo "# max output bandwidth in kbits/sec for each ip" )
+spa36=$(echo "# maximo salida de ancho de banda en kbits/sec para cada ip" )
 var37=$(echo "vpn=wesnoth.org" )
 eng37=$(echo "# allow this excepcitonal host" )
 spa37=$(echo "# permitir estos host excepcionales" )
@@ -254,7 +254,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-sudo log-sshd log-search                           "
+echo " [Show log]          log-sudo log-sshd log-logserver log-search             "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -312,7 +312,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-sudo log-sshd log-search                           "
+echo " [Show log]          log-sudo log-sshd log-logserver log-search             "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -484,12 +484,13 @@ echo $var47 $tabz $spa47 >> $fs
 ####
 ####
 #### bash_completion in the $fiptables if update
-if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
-else
+## if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+## else
 #### if sane directory bash_completion.d
-mkdir/etc/bash_completion.d/ &> /dev/null 
+## mkdir/etc/bash_completion.d/ &> /dev/null 
 #### auto complete with bash_completion.d
-echo complete -W "'system-info net-info \
+## echo "#!/bin/sh" > /etc/bash_completion.d/$fiptables-completion 
+complete -W "system-info net-info \
 full-wizard mini-wizard cli gui \
 eraserules offline allpermisive custom \
 list forward list6 forward6 nat-ip4 nat-ip6 \
@@ -503,18 +504,20 @@ auth-sudo remove-sudo list-sudo \
 ping-ip4 ping-ip6 \
 trace-ip4 trace-ip6 host resolveip geoip ntpdate \
 hosts protocols services hosts.allow hosts.deny \
-log-fwiptables log-sshd log-search log-search-r \
+log-sudo log-sshd log-logserver log-search  \
 version upgrade dev-versions all-versions \
 about depends examples options opciones \
-help ayuda'" $fiptables > /etc/bash_completion.d/$fiptables-completion
+help ayuda" fwiptables
+#### complete -W $completar
+## >> /etc/bash_completion.d/$fiptables-completion
 #### give permisive to $fiptables-completion to read and exec
-chmod ugo+rx /etc/bash_completion.d/$fiptables-completion
-fi
+## chmod ugo+rx /etc/bash_completion.d/$fiptables-completion
+## fi
 ####
 ####
 #### spanish: launch bash_completion to complete command do auto-complete
 #### spanish: lanza bash_completion para el comando complete haga autocompleta
-. /etc/bash_completion.d/$fiptables-completion
+## . /etc/bash_completion.d/$fiptables-completion
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               ###########################################
@@ -932,10 +935,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   124  "hosts.allow" \
   125  "hosts.deny" \
   0130 "$cinco [Show log registry] $cinco" \
-  131  "log-fwiptables" \
+  131  "log-sudo" \
   132  "log-sshd" \
-  133  "log-search" \
-  134  "log-search-r" \
+  133  "log-logserver" \
+  134  "log-search" \
   0140 "$cinco [Versions from fwiptables] $cinco" \
   141  "version" \
   142  "upgrade" \
@@ -1250,7 +1253,7 @@ clear
  ;;
  131)
  clear
- $fiptables "log-fwiptables" | less
+ $fiptables "log-sudo" | less
  ;;
  132)
  clear
@@ -1258,15 +1261,13 @@ clear
  ;;
  133)
  clear
- pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
- clear
- $fiptables "log-search" "$pattern" | less
+ $fiptables "log-server" | less
  ;;
  134)
  clear
  pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear
- $fiptables "log-search-r" "$pattern" | less
+ $fiptables "log-search" "$pattern" | less
  ;;
  141)
  clear
@@ -2553,8 +2554,8 @@ date
 exit; fi
 ####
 ####
-############################       english: log-fwiptables: log from program $fiptables
-############################       spanish: log-fwiptables: log desde el programa $fiptables
+############################       english: log-sudo: log from sudo
+############################       spanish: log-sudo: log desde sudo
 ####
 ####
 if [ "$first_option" = "log-sudo" ]; then echo -n
@@ -2572,6 +2573,17 @@ if [ "$first_option" = "log-sshd" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [log-sshd] $cinco"
 find /var/log -maxdepth 5 -type f | xargs zgrep -i "sshd"
+exit; fi
+####
+####
+############################       english: log-logserver: log from ssh server
+############################       spanish: log-logserver: log desde el servidor de ssh
+####
+####
+if [ "$first_option" = "log-logserver" ]; then echo -n
+echo "[$fprogram] [Version $fversion]"
+echo "$cincuenta [log-logserver] $cinco"
+find /var/log -maxdepth 5 -type f | xargs zgrep -i "logserver:"
 exit; fi
 ####
 ####
@@ -2814,7 +2826,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-sudo log-sshd log-search                           "
+echo " [Show log]          log-sudo log-sshd log-logserver log-search             "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -2936,6 +2948,7 @@ echo "$cinco         [Show log]"
 echo
 echo "     log-sudo: search the logs from sudo for /var/log"
 echo "     log-sshd: search the logs from sshd for /var/log"
+echo "log-logserver: search the logs from log with $fwiptables"
 echo "   log-search: search the logs from a input pattern for /var/log"
 echo 
 echo "$cinco         [Help]"
@@ -3025,7 +3038,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-sudo log-sshd log-search                           "
+echo " [Show log]          log-sudo log-sshd log-logserver log-search             "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||config||]"
@@ -3146,7 +3159,8 @@ echo
 echo "$cinco         [Show log]"
 echo
 echo "     log-sudo: busca los logs de sudo $fiptables para /var/log"
-echo "     log-sshd: busca log logs de sshd para /var/log"
+echo "     log-sshd: busca los logs de sshd para /var/log"
+echo "log-logserver: busca los logs de paquetes logeados con $fwiptables"
 echo "   log-search: busca los logs dando un patron para /var/log"
 echo 
 echo "$cinco         [Ayuda]"
@@ -3236,7 +3250,7 @@ echo " [Tool icmp]         ping-ip4 ping-ip6                                    
 echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [Show log]          log-sudo log-sshd log-search                           "
+echo " [Show log]          log-sudo log-sshd log-logserver log-search             "
 echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
@@ -3921,9 +3935,9 @@ if [ "$first_option" = "allpermisive" ]; then echo -n
 echo "$cinco  launch $0 list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall [config.cfg] (silent text) #
-if [ -f "$directory_config/$first_option" ]; then echo -n
-echo "$cinco  launch $0 list  # to list iptables rules"
-exit ; else echo -n ; fi
+## if [ -f "$directory_config/$first_option" ]; then echo -n
+## echo "$cinco  launch $0 list  # to list iptables rules"
+## exit ; else echo -n ; fi
 ####  # show text to firewall custom [config.cfg] (silent text) #
 if [ -f "$directory_config/$second_option" ]; then echo -n
 echo "$cinco  launch $0 list  # to list iptables rules"

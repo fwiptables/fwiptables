@@ -133,4 +133,8 @@ install - añadido - ok 218
 variables - reparadas - ok 218
 arreglado - auto complete del root . ok 219
 default - cambio en variables por defecto - ok 219
-log - log-prefix a logserver:  - ok 219
+logserver-tcp - log-prefix a logserver:  - ok 219
+logserver-udp - log prefix a logserver: - ok 219
+log-sudo - añadido - ok 219
+log-logserver - añadido - ok 219
+
