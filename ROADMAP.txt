@@ -139,3 +139,4 @@ log-sudo - añadido - ok 219
 log-logserver - añadido - ok 219
 mini-help - añadido - ok 219
 mini-help - por defecto - ok 219
+no compila - resolver - 

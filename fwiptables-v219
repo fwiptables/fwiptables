@@ -3094,7 +3094,7 @@ echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg  
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
 echo
-echo "$cincuenta The first option"
+echo "$cincuenta"
 echo ""
 echo "$cinco         [Launch guide]"
 echo
@@ -3320,7 +3320,7 @@ echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg  
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
 echo
-echo "$cincuenta La primera opción:"
+echo "$cincuenta"
 echo ""
 echo "$cinco         [Lanzar guia]"
 echo
