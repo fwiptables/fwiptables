@@ -137,4 +137,4 @@ logserver-tcp - log-prefix a logserver:  - ok 219
 logserver-udp - log prefix a logserver: - ok 219
 log-sudo - añadido - ok 219
 log-logserver - añadido - ok 219
-
+command in groups - añadido - ok 219
