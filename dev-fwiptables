@@ -30,6 +30,7 @@ source /etc/profile
 ####
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
+zero_dir="$(pwd)" ; zero_option="$0"                              #english: variables to launch  #spanish: variables a lanzar
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 launch_thefirst="no" ; launch_thesecond="no" ;                    #english: variables to launch  #spanish: variables a lanzar
 config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
@@ -270,18 +271,18 @@ exit ; fi
 ##############################       spanish: Instalador noticia          ###########################################
 ####
 ####
-if [ "$0" = "$directory_fiptables"/"$fiptables" ] || [ "$0" = /usr/bin/$fiptables ] ; then echo -n ;
-else echo "$cinco to install type: $0 install"; fi
+if [ "$zero_option" = $directory_fiptables/$fiptables ] ; then echo -n ;
+else echo "$cinco to install type: $zero_option install"; fi
 ####
 ####
-##############################       english: Installer $fiptables           ###########################################
-##############################       spanish: Instalador $fiptables          ###########################################
+##############################       english: Install: $fiptables           ###########################################
+##############################       spanish: Instalador: $fiptables          ###########################################
 ####
 ####
 if [ "$first_option" = "install" ] ; then echo -n ;
-cp $0 $directory_fiptables/$fiptables &> /dev/null ;
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
 echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
-echo "$cinco Launch $fiptables to run $fiptables" ; fi
+echo "$cinco Launch $fiptables to run $fiptables" ; exit; fi
 ####
 ####
 ##############################       english: if sane config dir                       ###########################################
@@ -298,7 +299,7 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 ####
 if [ "$first_option" = "graphicall" ]; then echo  -n ;
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta"
+echo "$cincuenta [ $first_option ]"
 echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
 echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
@@ -484,7 +485,7 @@ echo $var47 $tabz $spa47 >> $fs
 ####
 ####
 #### bash_completion in the $fiptables if update
-if [ $0 = $directory_fiptables/$fiptables ]; then echo -n ;
+if [ $zero_option = $fiptables ]; then echo -n ;
 else
 #### if sane directory bash_completion.d
 mkdir/etc/bash_completion.d/ &> /dev/null 
@@ -516,7 +517,7 @@ fi
 #### spanish: launch bash_completion to complete command do auto-complete
 #### spanish: lanza bash_completion para el comando complete haga autocompleta
 ####
-source /etc/profile
+#### source /etc/profile
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               #############################
@@ -640,7 +641,7 @@ if [ "$which_gedit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_edi
 ####
 if [ "$first_option" = "launch-guide" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [launch-guide] $cinco"
+echo "$cincuenta [$first_option]"
 echo "$cinco         [Launch guide]"
 echo
 echo "  system-info: Show info system"
@@ -658,7 +659,7 @@ exit; fi
 ####
 if [ "$first_option" = "launch-rules" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [launch-rules] $cinco"
+echo "$cincuenta [$first_option]"
 echo "$cinco         [Launch iptables rules]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
@@ -675,7 +676,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-rules" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [list-rules] $cinco"
+echo "$cincuenta [$first_option]"
 echo "$cinco         [List iptables rules]"
 echo
 echo "               [The filter table with names]"
@@ -711,7 +712,7 @@ exit; fi
 ####
 if [ "$first_option" = "edit-configs" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [edit-configs] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Edit config]"
 echo
 echo "       new-full-config: Create a new configfile.cfg in english"
@@ -730,10 +731,10 @@ exit; fi
 ####
 if [ "$first_option" = "list-sockets" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [list-sockects] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [List sockets]"
 echo
-echo "      iproute: Show net devices and ip route tables"
+echo "        route: Show net devices and ip route tables"
 echo "           ss: Show net sockets with command ss"
 echo "         lsof: Show net sockets with command lsof"
 echo "      netstat: Show net sockets with command netstat"
@@ -749,7 +750,7 @@ exit; fi
 ####
 if [ "$first_option" = "recover-fw" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [recover-fw] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Recover fw]"
 echo
 echo "      fw-list: Show the files firewall standar"
@@ -764,7 +765,7 @@ exit; fi
 ####
 if [ "$first_option" = "tool-icmp" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [tool-icmp] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Tool icmp]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
@@ -779,7 +780,7 @@ exit; fi
 ####
 if [ "$first_option" = "tool-tcp" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [tool-tcp] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Tool tcp]"
 echo
 echo "    trace-ip4: Trace route a one host with ipv4 tcp"
@@ -797,7 +798,7 @@ exit; fi
 ####
 if [ "$first_option" = "tool-sudo" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [tool-sudo] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Tool sudo]"
 echo
 echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
@@ -812,7 +813,7 @@ exit; fi
 ####
 if [ "$first_option" = "show-version" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [show-version] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Version]"
 echo
 echo "      install: install this actualy $fiptables"
@@ -829,14 +830,14 @@ exit; fi
 ####
 if [ "$first_option" = "show-etc" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [show-etc] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Show etc]"
 echo
-echo "        hosts: muestra /etc/hosts"
-echo "   protocolos: muestra /etc/protocols"
-echo "     services: muestra /etc/services"
-echo "  hosts.allow: muestra /etc/hosts.allow"
-echo "   hosts.deny: muestra /etc/hosts.deny"
+echo "        hosts: show /etc/hosts"
+echo "   protocolos: show /etc/protocols"
+echo "     services: show /etc/services"
+echo "  hosts.allow: show /etc/hosts.allow"
+echo "   hosts.deny: show /etc/hosts.deny"
 exit; fi
 ####
 ####
@@ -846,14 +847,14 @@ exit; fi
 ####
 if [ "$first_option" = "show-log" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [show-log] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo
 echo "$cinco         [Show log]"
 echo
-echo "     log-sudo: busca los logs de sudo $fiptables para /var/log"
-echo "     log-sshd: busca los logs de sshd para /var/log"
-echo "log-logserver: busca los logs de paquetes logeados con $fwiptables"
-echo "   log-search: busca los logs dando un patron para /var/log"
+echo "     log-sudo: search logs for sudo in /var/log"
+echo "     log-sshd: search logs for sshd in /var/log"
+echo "log-logserver: search logs for $log_prefix in /var/log"
+echo "   log-search: search logs for one prefix in  /var/log"
 exit; fi
 ####
 ####
@@ -865,7 +866,7 @@ exit; fi
 ####
 if [ "$first_option" = "show-help" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [show-help] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco         [show help]"
 echo
 echo "        about: About the $fiptables"
@@ -965,7 +966,7 @@ esac
 #### principal gui      ####
 titulo="$fiptables gui"
 untexto="$fiptables gui"
-cd $directory_config
+#### cd $directory_config
 menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables graphicall)" --add-entry="$fiptables" )
 case $? in
 1)
@@ -1096,7 +1097,7 @@ exit
 else)
 ;;
 esac
-cd "$directory_config"
+#### cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
   000 "$cinco $tab [$fiptables cli] $tab $cinco" \
   010 "$cinco [Guide to begin] $cinco" \
@@ -1178,10 +1179,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   133  "log-logserver" \
   134  "log-search" \
   0140 "$cinco [Versions from fwiptables] $cinco" \
-  141  "version" \
-  142  "upgrade" \
-  143  "dev-versions" \
-  144  "all-versions" \
+  141  "install" \
+  142  "version" \
+  143  "upgrade" \
+  144  "dev-versions" \
+  145  "all-versions" \
   0150 "$cinco [Help global options] $cinco" \
   151  "about" \
   152  "depends" \
@@ -1509,17 +1511,21 @@ clear
  ;;
  141)
  clear
- $fiptables version
+ $zero_option install
  ;;
  142)
  clear
- $fiptables upgrade
+ $fiptables version
  ;;
  143)
  clear
- $fiptables dev-versions
+ $fiptables upgrade
  ;;
  144)
+ clear
+ $fiptables dev-versions
+ ;;
+ 145)
  clear
  $fiptables "all-versions" | less
  ;;
@@ -1596,7 +1602,7 @@ exit ; fi
 ####
 if [ "$first_option" = "examples" ]; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta [examples] $cinco"
+echo "$cincuenta [ $first_option ]"
 ####
 #### regen config examples
 echo "regen examples"
@@ -1803,13 +1809,13 @@ exit ; fi
 ####
 if [ "$first_option" = "upgrade" ]; then  echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta  [Upgrade] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "The actually version is: $fiptables $fversion actually" 
 echo "  The latest version is:"
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 echo "$cinco"
 echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
-echo "$cinco    download manually   || or launch ||   $0 web-upgrade"
+echo "$cinco    download manually   || or launch ||   $fiptables web-upgrade"
 echo "$favorite_text_browser -source $fweb_latest > $directory_fiptables/$fiptables"
 echo "chmod ugo+x $directory_fiptables/$fiptables"
 echo "$fiptables reconfig"
@@ -1823,7 +1829,7 @@ exit;  fi
 ####
 if [ "$first_option" = "eraserules" ]; then echo -n ;
 echo "[$fprogram] [version $ver]"
-echo "$cincuenta [Deleting rules iptables] $cinco"
+echo "$cincuenta [ $first_option ]"
 $which_iptables_nft -t filter -F
 $which_ip6tables_nft -t filter  -F
 $which_iptables_legacy -t filter -F
@@ -1834,19 +1840,19 @@ $which_iptables_legacy -t nat -F
 $which_ip6tables_legacy -t nat -F ;
 echo "$cinco  OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]"
 echo "$cinco  The iptables configured for delete rules to internet $cinco"
-echo "$cinco  launch $0 list  # to list iptables rules"
+echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit; fi
 ####
 ####
-#############################       english: route: system script, the iproute option
-#############################       spanish: route: script de sistema, la opcion iproute
+#############################       english: route: system script, the route option
+#############################       spanish: route: script de sistema, la opcion route
 ####
 ####
 #### comments: sed is necesary to full work in graphicall
 ####
 if [ "$first_option" = "route" ]; then   echo  -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta  [Show ip address and ip route] $cinco"
+echo "$cincuenta [ $first_option ]"
 ## $which_uname -srom
 echo "$tab [ip address]"
 case $which_ip in
@@ -1889,7 +1895,7 @@ echo "$tab [Install ss command]"
 ;;
 *)
 echo "[$fprogram] [Version $fversion]";
-echo "$cincuenta [The sockets list with ss] $cinco" ;
+echo "$cincuenta [ $first_option ]"
 ## $which_uname -srom
 echo "$tab [The ipv6 sockets]"
 $which_ss -a6
@@ -1911,7 +1917,7 @@ echo "$tab [Install lsof]"
 ;;
 *)
 echo "[$fprogram] version $fversion firewall linux ";
-echo "$cincuenta [The sockets list with lsof] $cinco"
+echo "$cincuenta [ $first_option ]"
 ## $which_uname -srom
 echo "$tab [The sockets with lsof]"
 $which_lsof -i
@@ -1931,7 +1937,7 @@ echo "$tab [Install netstat]"
 ;;
 *)
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [The sockets list with netstat] $cinco"
+echo "$cincuenta [ $first_option ]"
 ## $which_uname -srom
 echo "$tab [The devices list with netstat]"
 $which_netstat -i
@@ -1952,7 +1958,7 @@ exit; fi
  legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
  echo "[$fprogram] [Version $fversion]"
- echo "$cincuenta [List filter ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
  case $legacycuatro in
  "$NULL")
  ;;
@@ -1980,7 +1986,7 @@ exit; fi
 ####
  if [ "$first_option" = "forward" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
- echo "$cincuenta [List filter forward ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv4]"
  $which_iptables_legacy -v -L FORWARD
  echo "$tab  [The netftables ipv4] "
@@ -1996,7 +2002,7 @@ exit; fi
 legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
 nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "  $fprogram [Version $fversion]"
- echo "$cincuenta [List filter ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
  case $legacyseis in
  "$NULL")
  ;;
@@ -2024,7 +2030,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "forward6" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
- echo "$cincuenta [List filter forward ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -L FORWARD
  echo "$tab  [The netftables ipv6][iptables-nft] "
@@ -2038,7 +2044,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "nat-ip4" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo "$cincuenta [NAT ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t nat -v -L
  echo "$tab  [The neftables ipv4][iptables-nft]"
@@ -2052,7 +2058,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "nat-ip6" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo "$cincuenta [NAT ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t nat -v -L
  echo "$tab  [The neftables ipv6][iptables-nft]"
@@ -2068,7 +2074,7 @@ if [ "$first_option" = "listnum" ]; then echo -n ;
 legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo "  $fprogram [Version $fversion]"
- echo "$cincuenta [List filter ipv4 numerical] $cinco"
+echo "$cincuenta [ $first_option ]"
  case $legacycuatro in
  "$NULL")
  ;;
@@ -2095,7 +2101,7 @@ exit; fi
 ####
  if [ "$first_option" = "forwardnum" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
- echo "$cincuenta [List filter forward ipv4 numerical] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -n -L FORWARD
  echo "$tab  [The netftables ipv4][iptables-nft]"
@@ -2111,7 +2117,7 @@ exit; fi
 legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
 nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "  $fprogram [Version $fversion]" ;
- echo "$cincuenta [List filter ipv6 numerical] $cinco"
+echo "$cincuenta [ $first_option ]"
  case $legacyseis in
  "$NULL")
  ;;
@@ -2139,7 +2145,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "forwardnum6" ]; then echo -n
  echo "  $fprogram [Version $fversion]" ;
- echo "$cincuenta [List filter forward ipv6 numerical] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -n -L FORWARD
  echo "$tab  [The netftables ipv6][iptables-nft]"
@@ -2153,7 +2159,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 ####
 if [ "$first_option" = "mangle-ip4" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo  "$cincuenta [mangle ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t mangle -v -L
  echo "$tab  [The neftables ipv4][iptables-nft]"
@@ -2167,7 +2173,7 @@ if [ "$first_option" = "mangle-ip4" ]; then echo -n
 ####
 if [ "$first_option" = "mangle-ip6" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo "$cincuenta [mangle ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t mangle -v -L
  echo "$tab  [The neftables ipv6][iptables-nft]"
@@ -2181,7 +2187,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
  if [ "$first_option" = "raw-ip4" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo  "$cincuenta [raw ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t raw -v -L
  echo "$tab  [The neftables ipv4][iptables-nft]"
@@ -2195,7 +2201,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
  if [ "$first_option" = "raw-ip6" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo  "$cincuenta [raw ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t raw -v -L
  echo "$tab  [The neftables ipv6][iptables-nft]"
@@ -2209,7 +2215,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
  if [ "$first_option" = "security-ip4" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo  "$cincuenta [security ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -t security -v -L
  echo "$tab  [The neftables ipv4][iptables-nft]"
@@ -2223,7 +2229,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
  if [ "$first_option" = "security-ip6" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo  "$cincuenta [security ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -t security -v -L
  echo "$tab  [The neftables ipv6][iptables-nft]"
@@ -2237,7 +2243,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
  if [ "$first_option" = "ebtables" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo  "$cincuenta [ebtables ethernet nft] $cinco"
+echo "$cincuenta [ $first_option ]"
  echo "$tab filter ethernet nft"
  $which_ebtables -L -t filter
  echo "$tab nat ethernet nft"
@@ -2251,7 +2257,7 @@ if [ "$first_option" = "mangle-ip6" ]; then echo -n
 ####
  if [ "$first_option" = "arptables" ]; then echo -n
  echo "[$fprogram] [Version $fversion]"
- echo "$cincuenta [arptables arp] $cinco"
+echo "$cincuenta [ $first_option ]"
  $which_arptables -L
  exit; fi
 ####
@@ -2269,7 +2275,7 @@ esac
 case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Nueva config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables new-full-config config-new"
 exit
 ;;
@@ -2297,7 +2303,7 @@ esac
 case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Nueva config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables nueva-completa-config config-nueva"
 exit
 ;;
@@ -2325,7 +2331,7 @@ esac
 case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Nueva config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables new-mini-config config-new"
 exit
 ;;
@@ -2353,7 +2359,7 @@ esac
 case "$config_option" in
 "si")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Nueva mini config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables nueva-mini-config config-nueva"
 exit
 ;;
@@ -2379,7 +2385,7 @@ $favorite_text_editor "$directory_config/$second_option"
 ;;
 "no")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Modify config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables modify-config config-old"
 ;;
 esac
@@ -2397,7 +2403,7 @@ cat "$directory_config/$second_option"
 ;;
 "no")
 echo "[$fprogram]  [Version $fversion]"
-echo "$cincuenta [Show config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables show-config config-old"
 esac
 exit; fi
@@ -2412,12 +2418,12 @@ case "$config_option" in
 "si")
 rm "$directory_config/$second_option"
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [del-config] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$directory_config/$second_option" deleted
 ;;
 "no")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables del-config config-old"
 ;;
 esac
@@ -2432,7 +2438,7 @@ if [ "$first_option" = "auth-sudo" ]; then echo -n
 case $second_option in
 "$NULL")
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [auth-sudo] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco Use: $fiptables auth-sudo user"
 exit
 ;;
@@ -2473,7 +2479,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-sudo" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [List-sudo] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $(find /etc/sudoers.d/$fiptables) in
 /etc/sudoers.d/$fiptables)
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
@@ -2495,7 +2501,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Show ipforwading] $cinco"
+echo "$cincuenta [ $first_option ]"
 $which_uname -srom
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 $which_sysctl -a | grep -i forwarding
@@ -2513,7 +2519,7 @@ echo " Install tcpdump"
 ;;
 *)
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Listening tcpdump] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "  Launch manually tcpdump"
 ;;
 esac
@@ -2531,7 +2537,7 @@ echo "install arp"
 ;;
 *)
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [the last arp conections] $cinco"
+echo "$cincuenta [ $first_option ]"
 $which_arp -a
 ;;
 esac
@@ -2543,7 +2549,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "fw-list" ]; then echo -n
-echo "$cincuenta [fw list] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "File list with rules in iptables format in folder $directory_fwrecover"
 ls $directory_fwrecover
 exit; fi
@@ -2554,7 +2560,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "fw-restore" ]; then echo -n
-echo "$cincuenta [iptables restore] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$cinco first erase rules with:   fwiptables eraserules"
 echo "the iptables recover files are in folder $directory_fwrecover"
 echo "then iptables restore with one command from above:"
@@ -2570,7 +2576,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "fw-save" ]; then echo -n
-echo "$cincuenta [iptables save] $cinco"
+echo "$cincuenta [ $first_option ]"
 case "$second_option" in
 "$NULL")
 echo "$cinco Use in the command line: $fiptables fw-save file-to-save"
@@ -2595,7 +2601,7 @@ exit; fi
 ####
 if [ "$first_option" = "ping-ip4" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [ping icmp ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_ping in
 "$NULL")
 echo " Install ping"
@@ -2620,7 +2626,7 @@ exit; fi
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [ping-ip6 icmp ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_ping in
 "$NULL")
 echo " Install ping"
@@ -2647,7 +2653,7 @@ exit; fi
 ####
 if [ "$first_option" = "trace-ip4" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [traceroute tcp ipv4] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_traceroute in
 "$NULL")
 echo " Install traceroute"
@@ -2674,7 +2680,7 @@ exit; fi
 ####
 if [ "$first_option" = "trace-ip6" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [traceroute tcp ipv6] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_traceroute in
 "$NULL")
 echo " Install traceroute"
@@ -2701,7 +2707,7 @@ exit; fi
 ####
 if [ "$first_option" = "host" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [resolve host] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_host in
 "$NULL")
 echo " Install host"
@@ -2728,7 +2734,7 @@ exit; fi
 ####
 if [ "$first_option" = "resolveip" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [resolve ip or host] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_resolveip in
 "$NULL")
 echo " Install resolveip"
@@ -2755,7 +2761,7 @@ exit; fi
 ####
 if [ "$first_option" = "geoip" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [search geoip] $cinco"
+echo "$cincuenta [ $first_option ]"
 case $which_geoiplookup in
 "$NULL")
 echo " Install geoip-bin"
@@ -2782,7 +2788,7 @@ exit; fi
 ####
 if [ "$first_option" = "ntpdate" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [update time] $cinco"
+echo "$cincuenta [ $first_option ]"
 pool0=0.debian.pool.ntp.org
 pool1=1.debian.pool.ntp.org
 pool2=2.debian.pool.ntp.org
@@ -2798,7 +2804,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-sudo" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [log-sudo] $cinco"
+echo "$cincuenta [ $first_option ]"
 find /var/log -maxdepth 5 -type f | xargs zgrep -i "sudo:"
 exit; fi
 ####
@@ -2809,7 +2815,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-sshd" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [log-sshd] $cinco"
+echo "$cincuenta [ $first_option ]"
 find /var/log -maxdepth 5 -type f | xargs zgrep -i "sshd"
 exit; fi
 ####
@@ -2820,7 +2826,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-logserver" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [log-logserver] $cinco"
+echo "$cincuenta [ $first_option ]"
 find /var/log -maxdepth 5 -type f | xargs zgrep -i "logserver:"
 exit; fi
 ####
@@ -2831,7 +2837,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-search" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [log-search] $cinco"
+echo "$cincuenta [ $first_option ]"
 case "$second_option" in
 $NULL)
 echo "$cinco use: $fiptables $first_option pattern"
@@ -2849,7 +2855,7 @@ exit; fi
 ####
 if [ "$first_option" = "dev-versions" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Dev versions] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo $fweb_development
 exit; fi
 ####
@@ -2860,7 +2866,7 @@ exit; fi
 ####
 if [ "$first_option" = "new-versions" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [New versions] $cinco"
+echo "$cincuenta [ $first_option ]"
 $favorite_text_browser -dump "$fweb_newfiles" | egrep  fwiptables | head -10 
 exit; fi
 ####
@@ -2871,7 +2877,7 @@ exit; fi
 ####
 if [ "$first_option" = "all-versions" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [All versions] $cinco"
+echo "$cincuenta [ $first_option ]"
 $favorite_text_browser -dump $fweb_tree | egrep -i "about|readme|roadmap|iptables" | grep -i master | sort | uniq -u
 exit; fi
 ####
@@ -2882,7 +2888,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [/etc/hosts] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat /etc/hosts
 echo "$cinco This file is /etc/hosts"
 exit; fi
@@ -2894,7 +2900,7 @@ exit; fi
 ####
 if [ "$first_option" = "protocols" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [/etc/protocols] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat /etc/protocols
 echo "$cinco This file is /etc/protocols"
 exit; fi
@@ -2906,7 +2912,7 @@ exit; fi
 ####
 if [ "$first_option" = "services" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [/etc/services] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat /etc/services
 echo "$cinco This file is /etc/services"
 exit; fi
@@ -2918,7 +2924,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts.allow" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [/etc/hosts.allow] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat /etc/hosts.allow
 echo "$cinco This file is /etc/hosts.allow"
 exit; fi
@@ -2930,7 +2936,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts.deny" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [/etc/hosts.deny] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat /etc/hosts.deny
 echo "$cinco This file is /etc/hosts.deny"
 exit; fi
@@ -2992,7 +2998,7 @@ exit; fi
 ####
 if [ "$first_option" = "system-info" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [System info] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$tab [System info:  distro] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
 echo "$tab [System info:  Kernel Linux] "
@@ -3012,7 +3018,7 @@ exit; fi
 ####
 if [ "$first_option" = "net-info" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Net info] $cinco"
+echo "$cincuenta [ $first_option ]"
 echo "$tab [Net Info:  route ipv4] "
 $which_ip route
 echo "$tab [Net info:  listen ipv4] "
@@ -3028,7 +3034,7 @@ exit; fi
 ####
 if [ "$first_option" = "options" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Options] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat  $defaultfullcfg_eng
 exit; fi
 ####
@@ -3039,7 +3045,7 @@ exit; fi
 ####
 if [ "$first_option" = "opciones" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
-echo "$cincuenta [Opciones] $cinco"
+echo "$cincuenta [ $first_option ]"
 cat $defaultfullcfg_spa
 exit; fi
 ####
@@ -3049,6 +3055,18 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help" ]; then echo -n
+echo "[$fprogram] [version $fversion]"
+echo "$cincuenta [ $first_option ]"
+echo " [  Commands list in groups ]"
+echo " launch-guide launch-rules list-rules edit-configs list-sockets recover-fw"
+echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-help"
+echo " [  User configs    ]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
+echo " [  Util examples  ]"
+echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
+echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
+echo " [List iptables rules]              $fiptables list                         "
+echo
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta"
 echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
@@ -3132,7 +3150,7 @@ echo "            del-config: Delete one configuration file"
 echo
 echo "$cinco         [List sockets]"
 echo
-echo "      iproute: Show net devices and ip route tables"
+echo "        route: Show net devices and ip route tables"
 echo "           ss: Show net sockets with command ss"
 echo "         lsof: Show net sockets with command lsof"
 echo "      netstat: Show net sockets with command netstat"
@@ -3162,17 +3180,17 @@ echo "      ntpdate: update the date from ntp server"
 echo
 echo "$cinco         [Auth sudo]"
 echo
-echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
-echo "  remove-sudo: Remove sudo $fiptables to other choosed users"
-echo "    list-sudo: List sudo $fiptables to other choosed users"
+echo "    auth-sudo: Permit sudo to other choosed users"
+echo "  remove-sudo: Remove sudo to other choosed users"
+echo "    list-sudo: List sudo to other choosed users"
 echo
 echo "$cinco         [Version]"
 echo
-echo "      install: install this actualy $fiptables"
-echo "      version: Info version program from $fiptables"
-echo "      upgrade: Upgrade $fiptables at the latest version"
-echo " dev-versions: Version in development from $fiptables"
-echo " all-versions: All versions from $fiptables"
+echo "      install: install this actualy "
+echo "      version: Info version program "
+echo "      upgrade: Upgrade at the latest version"
+echo " dev-versions: Version in development"
+echo " all-versions: All versions "
 echo
 echo "$cinco         [Show etc]"
 echo
@@ -3186,14 +3204,14 @@ echo "$cinco         [Show log]"
 echo
 echo "     log-sudo: search the logs from sudo for /var/log"
 echo "     log-sshd: search the logs from sshd for /var/log"
-echo "log-logserver: search the logs from log with $fwiptables"
+echo "log-logserver: search the logs from net packages with this firewall"
 echo "   log-search: search the logs from a input pattern for /var/log"
 echo 
 echo "$cinco         [Long Help]"
 echo
-echo "        about: About the $fiptables"
-echo "      depends: Show depends for $fiptables"
-echo "     examples: Regen examples for $fiptables"
+echo "        about: About"
+echo "      depends: Show depends"
+echo "     examples: Regen examples "
 echo "         help: Show help in english"
 echo "        ayuda: Show help in spanish"
 echo ""
@@ -3261,6 +3279,18 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then echo -n
+echo "[$fprogram] [version $fversion]"
+echo "$cincuenta [ $first_option ]"
+echo " [  Commands list in groups ]"
+echo " launch-guide launch-rules list-rules edit-configs list-sockets recover-fw"
+echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-help"
+echo " [  User configs    ]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
+echo " [  Util examples  ]"
+echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
+echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
+echo " [List iptables rules]              $fiptables list                         "
+echo
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta"
 echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
@@ -3374,17 +3404,17 @@ echo "      ntpdate: actualiza la fecha desde un ntp server"
 echo
 echo "$cinco         [Opciones de autorizacion]"
 echo
-echo "    auth-sudo: Permite autorizacion a $fiptables a usuarios elegidos"
-echo "  remove-sudo: Borra la autorizacion otorgada con $fiptables"
-echo "    list-sudo: Lista autorizacion a $fiptables de usuarios elegidos"
+echo "    auth-sudo: Permite autorizacion de usuarios elegidos"
+echo "  remove-sudo: Borra la autorizacion otorgada"
+echo "    list-sudo: Lista autorizacion de usuarios elegidos"
 echo
 echo "$cinco         [Version]"
 echo
-echo "      install: instala este actual $fiptables"
-echo "      version: Informacion de la actual version $fiptables"
-echo "      upgrade: Actualiza $fiptables a la ultima version"
-echo " dev-versions: Version en desarrollo de $fiptables"
-echo " all-versions: Todas las versiones de $fiptables"
+echo "      install: instala este actual"
+echo "      version: Informacion de la actual version"
+echo "      upgrade: Actualiza a la ultima version"
+echo " dev-versions: Version en desarrollo "
+echo " all-versions: Todas las versiones "
 echo
 echo "$cinco         [Show etc]"
 echo
@@ -3396,16 +3426,16 @@ echo "   hosts.deny: muestra /etc/hosts.deny"
 echo
 echo "$cinco         [Show log]"
 echo
-echo "     log-sudo: busca los logs de sudo $fiptables para /var/log"
-echo "     log-sshd: busca los logs de sshd para /var/log"
-echo "log-logserver: busca los logs de paquetes logeados con $fwiptables"
+echo "     log-sudo: busca los logs de sudo en /var/log"
+echo "     log-sshd: busca los logs de sshd en /var/log"
+echo "log-logserver: busca los logs de paquetes de este firewall"
 echo "   log-search: busca los logs dando un patron para /var/log"
 echo 
 echo "$cinco         [Larga Ayuda]"
 echo
-echo "        About: Acerca de $fiptables"
-echo "      Depends: Muestra las dependencias de $fiptables"
-echo "     examples: Regenerar ejemplos de $fiptables"
+echo "        About: Acerca de "
+echo "      Depends: Muestra las dependencias "
+echo "     examples: Regenerar ejemplos "
 echo "         help: Muestra la ayuda en ingles"
 echo "        ayuda: Muestra la ayuda en español"
 echo
@@ -3472,15 +3502,16 @@ exit; fi
 ############################	   spanish: default: $fiptables sin parametros
 ####
 ####
-if  [ "$first_option" = "$NULL" ] ; then echo -n 
+if  [ "$first_option" = "$NULL" ]; then first_option="mini-help"; else echo -n; fi
+if  [ "$first_option" = "mini-help" ] ; then echo -n 
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta"
-echo " [  Commands list in groups ]"
+echo "$cincuenta [ $first_option ]"
+echo "$tab [Group Commands list]"
 echo " launch-guide launch-rules list-rules edit-configs list-sockets recover-fw"
 echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-help"
-echo " [  User configs    ]"
+echo "$tab [User configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo " [  Util examples  ]"
+echo "$tab [Util examples]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
@@ -3491,9 +3522,9 @@ exit; else echo -n ; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if  [ "$launch_iptables" != "si" ] ; then echo -n 
+if  [ "$launch_iptables" != "si" ] ; then echo -n
 echo "[$fprogram] [version $fversion]"
-echo "$cincuenta"
+echo "$cincuenta choose one option"
 echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
 echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
@@ -3510,9 +3541,9 @@ echo " [show-etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
 echo " [show-help]         about depends examples options opciones help ayuda     "
-echo " [||config||]"
+echo "$tab [config]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo " [||Examples||]"
+echo "$tab [Examples]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
@@ -4185,19 +4216,19 @@ echo "$cincuenta lauching iptables rules $cinco"
 echo "$cinco  OK LAUNCHED $fiptables $first_option $second_option"
 ####  # show text to firewall offline #
 if [ "$first_option" = "offline" ]; then echo -n
-echo "$cinco  launch $0 list  # to list iptables rules"
+echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall allpermisive #
 if [ "$first_option" = "allpermisive" ]; then echo -n
-echo "$cinco  launch $0 list  # to list iptables rules"
+echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall [config.cfg] (silent text) #
 ## if [ -f "$directory_config/$first_option" ]; then echo -n
-## echo "$cinco  launch $0 list  # to list iptables rules"
+## echo "$cinco  launch $fiptables list  # to list iptables rules"
 ## exit ; else echo -n ; fi
 ####  # show text to firewall custom [config.cfg] (silent text) #
 if [ -f "$directory_config/$second_option" ]; then echo -n
-echo "$cinco  launch $0 list  # to list iptables rules"
+echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall [config.cfg] or custom [config.cfg] (show text) when fail #
 if [ -f "$directory_config/$first_option" ] | [ -f "$directory_config/$second_option" ] ; then echo -n

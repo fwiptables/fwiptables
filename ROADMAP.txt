@@ -4,7 +4,7 @@
      *****     english: changes, list of changes and roadmap
      *****     spanish: cambios, lista de cambios y hoja de ruta
 
-     *****     Version actual: 217    ******
+     *****     Version actual: 220    ******
 
 roadmap.txt - crear roadmap.txt - ok 193
 cli - subir la opcion de fw-recover desde la opcion 600 del cli - ok 193
@@ -137,4 +137,5 @@ logserver-tcp - log-prefix a logserver:  - ok 219
 logserver-udp - log prefix a logserver: - ok 219
 log-sudo - añadido - ok 219
 log-logserver - añadido - ok 219
-command in groups - añadido - ok 219
+mini-help - añadido - ok 219
+mini-help - por defecto - ok 219
