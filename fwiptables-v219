@@ -257,7 +257,7 @@ echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                      
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples options opciones help ayuda     "
+echo " [show-help]         about depends examples configurations configuraciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
@@ -315,7 +315,7 @@ echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                      
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples options opciones help ayuda     "
+echo " [show-help]         about depends examples configurations configuraciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
@@ -816,11 +816,11 @@ echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [ $first_option ]"
 echo "$cinco         [Version]"
 echo
-echo "      install: install this actualy $fiptables"
-echo "      version: Info version program from $fiptables"
-echo "      upgrade: Upgrade $fiptables at the latest version"
-echo " dev-versions: Version in development from $fiptables"
-echo " all-versions: All versions from $fiptables"
+echo "      install: install this actualy"
+echo "      version: Info version program "
+echo "      upgrade: Upgrade at the latest version"
+echo " dev-versions: Version in development "
+echo " all-versions: All versions"
 exit; fi
 ####
 ####
@@ -853,7 +853,7 @@ echo "$cinco         [Show log]"
 echo
 echo "     log-sudo: search logs for sudo in /var/log"
 echo "     log-sshd: search logs for sshd in /var/log"
-echo "log-logserver: search logs for $log_prefix in /var/log"
+echo "log-logserver: search logs for this firewall in /var/log"
 echo "   log-search: search logs for one prefix in  /var/log"
 exit; fi
 ####
@@ -869,11 +869,13 @@ echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [ $first_option ]"
 echo "$cinco         [show help]"
 echo
-echo "        about: About the $fiptables"
-echo "      depends: Show depends"
-echo "     examples: Regen examples"
-echo "         help: Show help in english"
-echo "        ayuda: Show help in spanish"
+echo "          about: About the $fiptables"
+echo "        depends: Show depends"
+echo "       examples: Regen examples"
+echo " configurations: config example with comments in english"
+echo " configurations: config example with comments in spanish"
+echo "           help: Show help in english"
+echo "          ayuda: Show help in spanish"
 exit; fi
 ####
 ####
@@ -3032,7 +3034,7 @@ exit; fi
 ############################       spanish: options: varias opciones para configurar en ingles
 ####
 ####
-if [ "$first_option" = "options" ]; then echo -n
+if [ "$first_option" = "configurations" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [ $first_option ]"
 cat  $defaultfullcfg_eng
@@ -3043,7 +3045,7 @@ exit; fi
 ############################       spanish: opciones: varias opciones para configurar en spanish
 ####
 ####
-if [ "$first_option" = "opciones" ]; then echo -n
+if [ "$first_option" = "configuraciones" ]; then echo -n
 echo "[$fprogram] [Version $fversion]"
 echo "$cincuenta [ $first_option ]"
 cat $defaultfullcfg_spa
@@ -3084,7 +3086,7 @@ echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                      
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples options opciones help ayuda     "
+echo " [show-help]         about depends examples configurations configuraciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
@@ -3209,11 +3211,13 @@ echo "   log-search: search the logs from a input pattern for /var/log"
 echo 
 echo "$cinco         [Long Help]"
 echo
-echo "        about: About"
-echo "      depends: Show depends"
-echo "     examples: Regen examples "
-echo "         help: Show help in english"
-echo "        ayuda: Show help in spanish"
+echo "          about: About"
+echo "        depends: Show depends"
+echo "       examples: Regen examples "
+echo " configurations: config example with comments in english"
+echo " configurations: config example with comments in spanish"
+echo "           help: Show help in english"
+echo "          ayuda: Show help in spanish"
 echo ""
 echo "$cincuenta The second option: (optional)"
 echo ""
@@ -3308,7 +3312,7 @@ echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                      
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples options opciones help ayuda     "
+echo " [show-help]         about depends examples configurations configuraciones help ayuda     "
 echo " [||config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo " [||Examples||]"
@@ -3433,11 +3437,13 @@ echo "   log-search: busca los logs dando un patron para /var/log"
 echo 
 echo "$cinco         [Larga Ayuda]"
 echo
-echo "        About: Acerca de "
-echo "      Depends: Muestra las dependencias "
-echo "     examples: Regenerar ejemplos "
-echo "         help: Muestra la ayuda en ingles"
-echo "        ayuda: Muestra la ayuda en español"
+echo "          About: Acerca de "
+echo "        Depends: Muestra las dependencias "
+echo "       examples: Regenerar ejemplos "
+echo " configurations: ejemplo de config con comentarios en ingles"
+echo "configuraciones: ejemplo de config con comentarios en castellano"
+echo "           help: Muestra la ayuda en ingles"
+echo "          ayuda: Muestra la ayuda en español"
 echo
 echo "$cincuenta La segunda opcion (opcional)"
 echo ""
@@ -3506,7 +3512,7 @@ if  [ "$first_option" = "$NULL" ]; then first_option="mini-help"; else echo -n; 
 if  [ "$first_option" = "mini-help" ] ; then echo -n 
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [ $first_option ]"
-echo "$tab [Group Commands list]"
+echo "$tab [Group commands list]"
 echo " launch-guide launch-rules list-rules edit-configs list-sockets recover-fw"
 echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-help"
 echo "$tab [User configs]"
@@ -3540,7 +3546,7 @@ echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                      
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples options opciones help ayuda     "
+echo " [show-help]         about depends examples configurations configuraciones help ayuda"
 echo "$tab [config]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
