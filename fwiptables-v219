@@ -30,7 +30,8 @@ source /etc/profile
 ####
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-zero_dir="$(pwd)" ; zero_option="$0"                              #english: variables to launch  #spanish: variables a lanzar
+without_option="list" ;                                      #english: variables to launch  #spanish: variables a lanzar
+zero_dir="$(pwd)" ; zero_option="$0" ;                            #english: variables to launch  #spanish: variables a lanzar
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 launch_thefirst="no" ; launch_thesecond="no" ;                    #english: variables to launch  #spanish: variables a lanzar
 config_option="no" ; launch_iptables="no" ;                       #english: auto variables to no #spanish: auto variables a no
@@ -242,29 +243,15 @@ if [ "$(id -u)" = "0" ]; then echo  -n ;
 else echo "$cincuenta need to be root to work"
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta  Be root to work $fiptables"
-echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
-echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
-echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
-echo "                     listnum forwardnum listnum6 forwardnum6                "
-echo " [edit-configs]       new-full-config nueva-completa-config                 "
-echo "                     new-mini-config nueva-mini-config                      "
-echo "                     show-config modify-config del-config                   "
-echo " [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
-echo " [recover-fw]        fw-list fw-save fw-restore                             "
-echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
-echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
-echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
-echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
-echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples configurations configuraciones help ayuda     "
-echo " [||Config||]"
-echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo " [||Examples||]"
-echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
-echo " [List iptables rules]              $fiptables list                         "
 exit ; fi
+####
+####
+##############################       english: without_option: select a one option       ###########################################
+##############################       spanish: sin opcion, selecciona una opcion         ###########################################
+####
+####
+if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option" ;
+echo "$cinco type: $fiptables list-help - [to command list help]" ; else echo -n ; fi
 ####
 ####
 ##############################       english: Notice Installer            ###########################################
@@ -293,11 +280,11 @@ if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /de
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
 ####
 ####
-##############################       english: text if are you runing gui ?
-##############################       spanish: text si estas corriendo el gui ?
+##############################       english: wellcome with semi help 
+##############################       spanish: bienvenida con semi ayuda
 ####
 ####
-if [ "$first_option" = "graphicall" ]; then echo  -n ;
+if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [ $first_option ]"
 echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
@@ -316,9 +303,9 @@ echo " [show-etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
 echo " [show-help]         about depends examples configurations configuraciones help ayuda     "
-echo " [||Config||]"
+echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo " [||Examples||]"
+echo "$tab [Examples]"
 echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
@@ -969,7 +956,7 @@ esac
 titulo="$fiptables gui"
 untexto="$fiptables gui"
 #### cd $directory_config
-menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables graphicall)" --add-entry="$fiptables" )
+menugtk=$(zenity --forms --title="$titulo" --width=320 --height=240 --text="$($fiptables list-help)" --add-entry="$fiptables" )
 case $? in
 1)
 zenity --info --ellipsize --text="fwiptables good bye"
@@ -3508,7 +3495,6 @@ exit; fi
 ############################	   spanish: default: $fiptables sin parametros
 ####
 ####
-if  [ "$first_option" = "$NULL" ]; then first_option="mini-help"; else echo -n; fi
 if  [ "$first_option" = "mini-help" ] ; then echo -n 
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [ $first_option ]"
@@ -3528,32 +3514,7 @@ exit; else echo -n ; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if  [ "$launch_iptables" != "si" ] ; then echo -n
-echo "[$fprogram] [version $fversion]"
-echo "$cincuenta choose one option"
-echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
-echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
-echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
-echo "                     listnum forwardnum listnum6 forwardnum6                "
-echo " [edit-configs]       new-full-config nueva-completa-config                 "
-echo "                     new-mini-config nueva-mini-config                      "
-echo "                     show-config modify-config del-config                   "
-echo " [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
-echo " [recover-fw]        fw-list fw-save fw-restore                             "
-echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
-echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
-echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
-echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
-echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-help]         about depends examples configurations configuraciones help ayuda"
-echo "$tab [config]"
-echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo "$tab [Examples]"
-echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
-echo " [List iptables rules]              $fiptables list                         "
-exit; else echo -n ; fi
+if [ "$launch_iptables" != "si" ] ; then $fiptables ; exit ; else echo -n ; fi
 ####
 ####
 ###############################################################################################################
