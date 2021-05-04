@@ -1134,6 +1134,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   81  "fw-list"  \
   82  "fw-save"  \
   83  "fw-restore"  \
+  84  "fw-show" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -1377,7 +1378,7 @@ case "$menuprincipal" in
  $fiptables arptables
  echo; echo; echo;
  ;;
-  81)
+ 81)
 clear
  $fiptables fw-list
  ;;
@@ -1391,6 +1392,10 @@ clear
  83)
  clear
  $fiptables fw-restore
+ ;;
+ 84)
+ clear
+ $fiptables fw-show
  ;;
  91)
  clear

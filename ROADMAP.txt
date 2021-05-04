@@ -142,5 +142,6 @@ mini-help - por defecto - ok 219
 simplificar codigo - hecho - ok 220
 fw-show - hecho - ok 220
 codigo de cabeceras - ahora con variables - ok 220
-actualizar cli - pendiente fw-show y [about] [help] -
-no compila - resolver 
+examples - cambiar a un listado y sin generar archivos - pendiente
+actualizar cli -fw-show y [about] [help] - pendiente
+no compila - resolver - pendiente
