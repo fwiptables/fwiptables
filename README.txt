@@ -1,41 +1,46 @@
-[Fran FireWall iptables generator] [version 219]
+[Fran FireWall iptables generator] [Version 220]
 ################################################## [ help ]
- [  Commands list in groups ]
+
+[Fran FireWall iptables generator] [Version 220]
+################################################## [ mini-help ]
+     [Group commands list]
  launch-guide launch-rules list-rules edit-configs list-sockets recover-fw
- tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-help
- [  User configs    ]
-cliente.cfg servidor.cfg
- [  Util examples  ]
+ tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-about show-help
+     [User configs]
+cliente.cfg complete.cfg servidor.cfg
+     [Util examples]
  [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
  [Launch the config myown.cfg]      fwiptables custom myown.cfg             
  [List iptables rules]              fwiptables list                         
 
-[Fran FireWall iptables generator] [version 219]
-##################################################
+[Fran FireWall iptables generator] [Version 220]
+################################################## [ list-help ]
+     [Options]
  [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   
  [launch-rules]      eraserules offline allpermisive custom [config.cfg]    
+ [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          
  [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            
                      listnum forwardnum listnum6 forwardnum6                
- [edit-configs]       new-full-config nueva-completa-config                 
+ [edit-configs]      new-full-config nueva-completa-config                  
                      new-mini-config nueva-mini-config                      
                      show-config modify-config del-config                   
- [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          
- [recover-fw]        fw-list fw-save fw-restore                             
+ [recover-fw]        fw-list fw-save fw-restore fw-show                     
  [tool-icmp]         ping-ip4 ping-ip6                                      
  [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       
  [tool-sudo]         auth-sudo remove-sudo list-sudo                        
  [show-etc]          hosts protocols services hosts.allow hosts.deny        
  [show-log]          log-sudo log-sshd log-logserver log-search             
  [show-version]      install version upgrade dev-versions all-versions      
- [show-help]         about depends examples configurations configuraciones help ayuda     
- [||Config||]
-cliente.cfg servidor.cfg
- [||Examples||]
+ [show-about]        about depends examples                                 
+ [show-help]         configurations configuraciones list-help help ayuda    
+     [Configs]
+cliente.cfg complete.cfg servidor.cfg
+     [Examples]
  [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
  [Launch the config myown.cfg]      fwiptables custom myown.cfg             
  [List iptables rules]              fwiptables list                         
 
-##################################################
+################################################## [ help ]
 
 #####         [Launch guide]
 
@@ -154,7 +159,7 @@ log-logserver: search the logs from net packages with this firewall
 
           about: About
         depends: Show depends
-       examples: Regen examples 
+       examples: Show examples 
  configurations: config example with comments in english
  configurations: config example with comments in spanish
            help: Show help in english

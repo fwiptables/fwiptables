@@ -274,8 +274,17 @@ source /etc/bash_completion.d/$fiptables
 ##############################       spanish: Instalador noticia          ###########################################
 ####
 ####
-if [ "$zero_option" = $directory_fiptables/$fiptables ] ; then echo -n ;
-else echo "$cinco to install type: $zero_option install"; fi
+case "$zero_option" in
+"$directory_fiptables/$fiptables")
+;;
+"./$fiptables")
+;;
+"$fiptables")
+;;
+*)
+echo "$cinco to install type: $zero_option install"
+;;
+esac
 ####
 ####
 ##############################       english: Install:    $fiptables           ###########################################
