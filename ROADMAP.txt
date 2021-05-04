@@ -141,5 +141,6 @@ mini-help - añadido - ok 219
 mini-help - por defecto - ok 219
 simplificar codigo - hecho - ok 220
 fw-show - hecho - ok 220
-actualizar cli - pendiente
+codigo de cabeceras - ahora con variables - ok 220
+actualizar cli - pendiente fw-show y [about] [help] -
 no compila - resolver 

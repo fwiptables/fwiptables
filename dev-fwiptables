@@ -248,14 +248,6 @@ echo "$cincuenta  Be root to work $fiptables"
 exit ; fi
 ####
 ####
-##############################       english: alias for root and complete list and list-help    ##############
-##############################       spanish: alias para root y completa con list y list-help   ##############
-####
-####
-alias $fiptables='sudo $fiptables'
-complete -W 'list list-help' $fiptables
-####
-####
 ##############################       english: without_option: init one option        ########################
 ##############################       spanish: sin opcion: una opcion inicial         ########################
 ####
@@ -275,6 +267,9 @@ fi
 subhead_option="$cincuenta [ $first_option ]"
 ####
 ####
+source /etc/bash_completion.d/$fiptables
+####
+####
 ##############################       english: Notice Installer            ###########################################
 ##############################       spanish: Instalador noticia          ###########################################
 ####
@@ -283,13 +278,15 @@ if [ "$zero_option" = $directory_fiptables/$fiptables ] ; then echo -n ;
 else echo "$cinco to install type: $zero_option install"; fi
 ####
 ####
-##############################       english: Install: $fiptables           ###########################################
-##############################       spanish: Instalador: $fiptables        ###########################################
+##############################       english: Install:    $fiptables           ###########################################
+##############################       spanish: Instalador: $fiptables           ###########################################
 ####
 ####
 if [ "$first_option" = "install" ] ; then echo -n ;
 cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
 echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
+echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
+echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
 echo "$cinco Launch $fiptables to run $fiptables" ; exit; fi
 ####
 ####
@@ -325,7 +322,7 @@ echo " [show-etc]          hosts protocols services hosts.allow hosts.deny      
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-version]      install version upgrade dev-versions all-versions      "
 echo " [show-about]        about depends examples                                 "
-echo " [show-help]         configurations configuraciones help ayuda              "
+echo " [show-help]         configurations configuraciones list-help help ayuda    "
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
