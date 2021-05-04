@@ -287,6 +287,7 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "[$fprogram] [version $fversion]"
 echo "$cincuenta [ $first_option ]"
+echo "$tab [Options]"
 echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
 echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
