@@ -838,7 +838,7 @@ echo "$cinco         [show about]"
 echo
 echo "          about: About"
 echo "        depends: Show depends"
-echo "       examples: Regen examples"
+echo "       examples: Show examples"
 exit; fi
 ####
 ####
@@ -1166,14 +1166,16 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   143  "upgrade" \
   144  "dev-versions" \
   145  "all-versions" \
-  0150 "$cinco [Help global options] $cinco" \
+  0150 "$cinco [About global options] $cinco" \
   151  "about" \
   152  "depends" \
   153  "examples" \
-  154  "configurations" \
-  155  "configuraciones" \
-  156  "help" \
-  157  "ayuda" \
+  0160 "$cinco [Help global options] $cinco" \
+  161  "configurations" \
+  162  "configuraciones" \
+  163  "list-help" \
+  164  "help" \
+  165  "ayuda" \
  )"
 
 case "$menuprincipal" in
@@ -1527,19 +1529,23 @@ clear
  clear
  $fiptables examples
  ;;
- 154)
+ 161)
  clear
  $fiptables "configurations" | less
  ;;
- 155)
+ 162)
  clear
  $fiptables "configuraciones" | less
  ;;
- 156)
+ 163)
+ clear
+ $fiptables list-help
+ ;;
+ 164)
  clear
  $fiptables "help" | less
  ;;
- 157)
+ 165)
  clear
  $fiptables "ayuda" | less
  ;;
@@ -1582,190 +1588,168 @@ echo "$fversion"
 exit ; fi
 ####
 ####
-##############################       english: examples: system script, the reconfig option, delete and create files1.cfg
-##############################       spanish: examples: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
+##############################       english: examples: system script to show config files examples
+##############################       spanish: examples: script de sistema para mostrar ejemplos de configuraciones
 ####
 ####
 if [ "$first_option" = "examples" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 ####
-#### regen config examples
-echo "regen examples"
-$fiptables reconfig
 ####
-#### show config examples
-echo "$cinco  Optional $directory_config/[config.cfg]  $cinco"
-echo " (*) [Example]  $(ls $directory_config| egrep -i "default|wizard|example1.cfg" | fmt $flistado)"
-echo " (*) [Own]  $(ls $directory_config| egrep -iv "default|wizard|example1.cfg"| grep -i .cfg | fmt $flistado)"
-####
-#### show command examples
-echo "$cinco  [The examples]  $cinco"
-echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg   "
-echo " [Launch the config myown.cfg]      $fiptables myown.cfg                   "
-echo " [List iptables rules]              $fiptables list                        "
-exit; fi
-##############################       english: reconfig: system script, the reconfig option, delete and create files1.cfg
-##############################       spanish: reconfig: script de sistema, la opcion reconfigurar, borra y crea files1.cfg
+#### config: web example ####
 ####
 ####
-if [ "$first_option" = "reconfig" ]; then echo -n
+echo
+echo "# config web example #" 
+echo "server_tcp=http,https ;"
+echo "client_tcp=http,https ;"
+echo "client_udp=domain,ntp,bootpc ;"
+echo "allow_ping_send=no ;"
+echo "allow_pring_recive=no ;"
+echo "only_output= ; "
+echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
-#### config: web-example1.cfg ####
+#### config:  games example  ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/web-example1.cfg
-echo "# config  #" >> $directory_config/web-example1.cfg
-echo "server_tcp=http,https ;"  >> $directory_config/web-example1.cfg
-echo "client_tcp=http,https ;"  >>  $directory_config/web-example1.cfg
-echo "client_udp=domain,ntp,bootpc ;"  >>  $directory_config/web-example1.cfg
-echo "allow_ping_send=no ;" >> $directory_config/web-example1.cfg
-echo "allow_pring_recive=no ;" >> $directory_config/web-example1.cfg
-echo "only_output= ; " >> $directory_config/web-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/web-example1.cfg
-####
-####
-#### config:  games-example1.cfg ####
-####
-####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/games-example1.cfg
-echo "# config  #" >> $directory_config/games-example1.cfg
-echo "client_udp=domain,bootpc,ntp,https,1025:65499; " >> $directory_config/games-example1.cfg
-echo "client_tcp=http,https" >> $directory_config/games-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/games-example1.cfg
-echo "only_output= ; " >> $directory_config/games-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/games-example1.cfg
+echo
+echo "# config games example #"
+echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
+echo "client_tcp=http,https" 
+echo "allow_ping_send= ; allow_ping_recive= ; "
+echo "only_output= ; "
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config:  torrent-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/torrent-example1.cfg
-echo "# config  #" >> $directory_config/torrent-example1.cfg
-echo "client_udp=domain,bootpc,ntp,https,1025:65499; " >> $directory_config/torrent-example1.cfg
-echo "client_tcp=http,https" >> $directory_config/torrent-example1.cfg
-echo "allow_ping_send=no ;  allow_ping_recive=no ; "  >> $directory_config/torrent-example1.cfg
-echo "only_output= ; " >> $directory_config/torrent-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/torrent-example1.cfg
+echo
+echo "# config torrent example #" 
+echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
+echo "client_tcp=http,https"
+echo "allow_ping_send=no ;  allow_ping_recive=no ; "
+echo "only_output= ; "
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: samba-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/samba-example1.cfg
-echo "# config  #" >> $directory_config/samba-example1.cfg
-echo "client_udp=domain,bootpc,ntp,https,137:139 ; " >> $directory_config/samba-example1.cfg
-echo "client_tcp=http,https,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
-echo "server_udp=137:139 ; " >> $directory_config/samba-example1.cfg
-echo "server_tcp=ssh,ipp,microsoft-ds" >> $directory_config/samba-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/samba-example1.cfg
-echo "only_output= ; " >> $directory_config/samba-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/samba-example1.cfg
+echo
+echo "# config samba example #" 
+echo "client_udp=domain,bootpc,ntp,https,137:139 ; "
+echo "client_tcp=http,https,ipp,microsoft-ds" 
+echo "server_udp=137:139 ; "
+echo "server_tcp=ssh,ipp,microsoft-ds" 
+echo "allow_ping_send= ; allow_ping_recive= ; " 
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: vpn-sample1.cfg ##
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/vpn-example1.cfg
-echo "# config  #" >> $directory_config/vpn-example1.cfg
-echo "allow_forwading= ; " >> $directory_config/vpn-example1.cfg
-echo "allow_vpn= ; " >> $directory_config/vpn-example1.cfg
-echo "vpn=wesnoth.org,sourceforge.net" >> $directory_config/vpn-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vpn-example1.cfg
-echo "only_output= ; " >> $directory_config/vpn-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/vpn-example1.cfg
+echo
+echo "# config vpn example #"
+echo "allow_forwading= ; "
+echo "allow_vpn= ; " 
+echo "vpn=wesnoth.org,sourceforge.net" 
+echo "allow_ping_send= ; allow_ping_recive= ; "  
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: email-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/email-example1.cfg
-echo "# config  #" >> $directory_config/email-example1.cfg
-echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
-echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" >> $directory_config/email-example1.cfg
-echo "allow_ping_send= ; " >> $directory_config/email-example1.cfg
-echo "allow_ping_recive= " >> $directory_config/email-example1.cfg
-echo "only_output= ; " >> $directory_config/email-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/email-example1.cfg
+echo
+echo "# config email example #" 
+echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" 
+echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" 
+echo "allow_ping_send= ; " 
+echo "allow_ping_recive= " 
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 #### config: ssh-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/ssh-example1.cfg
-echo "# config  #" >> $directory_config/ssh-example1.cfg
-echo "client_tcp=http,https,printer,ipp,ssh,rsync,git" >> $directory_config/ssh-example1.cfg
-echo "server_tcp=http,https,printer,ipp,ssh,rsync,git" >> $directory_config/ssh-example1.cfg
-echo "allow_ping_send= ; " >> $directory_config/ssh-example1.cfg
-echo "allow_ping_recive= ;" >> $directory_config/ssh-example1.cfg
-echo "only_output= ; " >> $directory_config/ssh-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/ssh-example1.cfg
+echo
+echo "# config ssh example #" 
+echo "client_tcp=http,https,printer,ipp,ssh,rsync,git" 
+echo "server_tcp=http,https,printer,ipp,ssh,rsync,git" 
+echo "allow_ping_send= ; " 
+echo "allow_ping_recive= ;" 
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 #### config: vnc-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/vnc-example1.cfg
-echo "# config  #" >> $directory_config/vnc-example1.cfg
-echo "client_tcp=http,https,ssh,5900:5910" >> $directory_config/vnc-example1.cfg
-echo "server_tcp=ssh,http,https,5900:5910" >> $directory_config/vnc-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/vnc-example1.cfg
-echo "only_output= ; " >> $directory_config/vnc-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/vnc-example1.cfg
+echo
+echo "# config vnc example #" 
+echo "client_tcp=http,https,ssh,5900:5910" 
+echo "server_tcp=ssh,http,https,5900:5910" 
+echo "allow_ping_send= ; allow_ping_recive= ; "  
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: ftp-example1.cfg ##
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/ftp-example1.cfg
-echo "# config  #" >> $directory_config/ftp-example1.cfg
-echo "client_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
-echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" >> $directory_config/ftp-example1.cfg
-echo "client_udp=domain,bootpc,ntp,https,tftp">> $directory_config/ftp-example1.cfg
-echo "server_udp=tftp">> $directory_config/ftp-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ;" >> $directory_config/ftp-example1.cfg
-echo "only_output= ; " >> $directory_config/ftp-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/ftp-example1.cfg
+echo
+echo "# config ftp example #" 
+echo "client_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" 
+echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" 
+echo "client_udp=domain,bootpc,ntp,https,tftp"
+echo "server_udp=tftp"
+echo "allow_ping_send= ; allow_ping_recive= ;" 
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 #### config: printer-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/printer-example1.cfg
-echo "# config  #" >> $directory_config/printer-example1.cfg
-echo "client_tcp=http,https,ipp,printer" >> $directory_config/printer-example1.cfg
-echo "server_tcp=ssh,http,https,ipp,printer" >> $directory_config/printer-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/printer-example1.cfg
-echo "only_output= ; " >> $directory_config/printer-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/printer-example1.cfg
+echo
+echo "# config printer example #"
+echo "client_tcp=http,https,ipp,printer" 
+echo "server_tcp=ssh,http,https,ipp,printer" 
+echo "allow_ping_send= ; allow_ping_recive= ; "  
+echo "only_output= ; " 
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: irc-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/irc-example1.cfg
-echo "# config  #" >> $directory_config/irc-example1.cfg
-echo "client_tcp=http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
-echo "server_tcp=ssh,http,https,ircd,ircs-u" >> $directory_config/irc-example1.cfg
-echo "allow_ping_send=no ; allow_ping_recive=no ; "  >> $directory_config/irc-example1.cfg
-echo "only_output= ; " >> $directory_config/irc-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/irc-example1.cfg
+echo
+echo "# config irc example #" 
+echo "client_tcp=http,https,ircd,ircs-u"
+echo "server_tcp=ssh,http,https,ircd,ircs-u" 
+echo "allow_ping_send=no ; allow_ping_recive=no ; " 
+echo "only_output= ; "
+echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: sql-example1.cfg ####
 ####
 ####
-sed 's/^/# for default # /g' $directory_config/default.cfg > $directory_config/sql-example1.cfg
-echo "# config  #" >> $directory_config/sql-example1.cfg
-echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
-echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s" >> $directory_config/sql-example1.cfg
-echo "allow_ping_send= ; allow_ping_recive= ; "  >> $directory_config/sql-example1.cfg
-echo "only_output= ; " >> $directory_config/sql-example1.cfg
-echo "input_state='-m state --state new,related,established' ; " >> $directory_config/sql-example1.cfg
+echo
+echo "# config sql example #" 
+echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" 
+echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s" 
+echo "allow_ping_send= ; allow_ping_recive= ; " 
+echo "only_output= ; "
+echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
-echo " $cinco Updated the configs for $fiptables in $directory_config"
 exit ; fi
 ####
 ####
@@ -1785,7 +1769,6 @@ chmod ugo+x /tmp/$fiptables
 /tmp/$fiptables
 echo "$cinco [$fprogram] is upgraded: ok"
 echo "$cinco   upgraded: $directory_fiptables/$fiptables"
-$directory_fiptables/$fiptables reconfig
 exit ; fi
 ####
 ####
@@ -1804,7 +1787,6 @@ echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favor
 echo "$cinco    download manually   || or launch ||   $fiptables web-upgrade"
 echo "$favorite_text_browser -source $fweb_latest > $directory_fiptables/$fiptables"
 echo "chmod ugo+x $directory_fiptables/$fiptables"
-echo "$fiptables reconfig"
 echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fiptables"
 exit;  fi
 ####
@@ -3194,7 +3176,7 @@ echo "$cinco         [Long Help]"
 echo
 echo "          about: About"
 echo "        depends: Show depends"
-echo "       examples: Regen examples "
+echo "       examples: Show examples "
 echo " configurations: config example with comments in english"
 echo " configurations: config example with comments in spanish"
 echo "           help: Show help in english"
