@@ -145,6 +145,7 @@ codigo de cabeceras - ahora con variables - ok 220
 examples - cambiar a un listado y sin generar archivos - ok 220
 actualizar cli -fw-show y [about] [help] - ok 220
 no compila - resuelto - ok 220
+fw-show - cambiado a fw-show-actual - ok 221
 actualizar cli - pendiente
 comprobar gui - pendiente
 
