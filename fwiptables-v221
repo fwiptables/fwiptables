@@ -2871,7 +2871,7 @@ exit; fi
 if [ "$first_option" = "new-versions" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-$favorite_text_browser -dump "$fweb_newfiles" | egrep  fwiptables | head -5 
+$favorite_text_browser -dump "$fweb_newfiles" | egrep  fwiptables | head -8 
 exit; fi
 ####
 ####
@@ -2973,7 +2973,7 @@ echo ""
 echo "  $fweb_development"
 echo ""
 echo "$tab [New versions program]"
-echo "  The fran iptables version 210 and new versions up in files repository at sourceforge:"
+echo "  The fran iptables version 220 and new versions up in files repository at sourceforge:"
 echo ""
 echo "  $fweb_newfiles"
 echo ""
