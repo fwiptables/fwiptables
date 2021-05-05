@@ -38,7 +38,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall fwiptables generator" ; fversion="221";   #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall fwiptables Generator" ; fversion="221";   #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ;                              #english: path to config files  #spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"           #english: path to config files  #spanish: archivos de configuracion
 defaultfullcfg_eng="$directory_config/default-full-english.cfg"   #english: path to config files  #spanish: archivos de configuracion
@@ -202,10 +202,10 @@ spa35=$(echo "# maximo entrada de ancho de banda en kbit/sec para todos" )
 var36=$(echo "bandwidth_output=512" )
 eng36=$(echo "# max output bandwidth in kbits/sec for each ip" )
 spa36=$(echo "# maximo salida de ancho de banda en kbits/sec para cada ip" )
-var37=$(echo "vpn=wesnoth.org" )
+var37=$(echo "vpn=wesnoth.org,sf.net" )
 eng37=$(echo "# allow this excepcitonal host" )
 spa37=$(echo "# permitir estos host excepcionales" )
-var38=$(echo "blacklist=" )
+var38=$(echo "blacklist=facebook.com,google.com" )
 eng38=$(echo "# drop this excepcional host" )
 spa38=$(echo "# deniega estos host excepcionales" )
 var39=$(echo "output_uid=root" )
@@ -2953,8 +2953,11 @@ exit; fi
 if [ "$first_option" = "about" ]; then echo -n
 echo ""
 echo ""
-echo "$tab [Fran FireWall iptables]"
+echo "$tab [Fran FireWall iptables Generator]"
 echo "$cincuenta"
+echo ""
+echo "$tab [Exec name]"
+echo "  $fiptables"
 echo ""
 echo "$tab [Program Name]"
 echo "  $fprogram"
@@ -3061,8 +3064,8 @@ exit; fi
 if [ "$first_option" = "help" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo
-$fiptables mini-help
+#### echo
+#### $fiptables mini-help
 echo
 $fiptables list-help
 echo
@@ -3257,8 +3260,8 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo
-$fiptables mini-help
+#### echo
+#### $fiptables mini-help
 echo
 $fiptables list-help
 echo
