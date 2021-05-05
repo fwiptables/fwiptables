@@ -248,24 +248,27 @@ echo "$cincuenta  Be root to work $fiptables"
 exit ; fi
 ####
 ####
-##############################       english: without_option: init one option        ########################
-##############################       spanish: sin opcion: una opcion inicial         ########################
+##############################       english: initial options            ########################
+##############################       spanish: opciones iniciales         ########################
 ####
 ####
-#### english: necesary advice the help #spanish: necesario el aviso de ayuda
+####    #english: without_option: init one option #spanish: sin opcion: una opcion inicial 
 ####
-if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option"
-case "$first_option" in
-"list-help")
-;;
-else)
-echo "$cinco type: $fiptables list-help [to command list help]" 
-;;
-esac
-fi
-#### english: [characters to show] #spanish: [caracteres a mostrar]
+if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option" ; fi
+####
+####
+####    #english: necesary advice the list-help #spanish: necesario el aviso de ayuda list-help
+####
+if  [ "$first_option" != "list-help" ] ; then echo -n ;
+echo "$cinco type: $fiptables list-help [to command list help]" ; fi 
+####
+####
+####    #english: rewrite variable [characters to show] #spanish: reescribe variable [caracteres a mostrar]
+####
 subhead_option="$cincuenta [ $first_option ]"
 ####
+####
+####    #english: bash_completion autocomplete #spanish: bash_completion autocomplete
 ####
 source /etc/bash_completion.d/$fiptables
 ####
@@ -287,18 +290,6 @@ echo "$cinco to install type: $zero_option install"
 esac
 ####
 ####
-##############################       english: Install:    $fiptables           ###########################################
-##############################       spanish: Instalador: $fiptables           ###########################################
-####
-####
-if [ "$first_option" = "install" ] ; then echo -n ;
-cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
-echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
-echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
-echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
-echo "$cinco Launch $fiptables to run $fiptables" ; exit; fi
-####
-####
 ##############################       english: if sane config dir                       #############################
 ##############################       spanish: comprobar sanos directorios              #############################
 ####
@@ -307,42 +298,8 @@ if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /de
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
 ####
 ####
-##############################       english: list-help: wellcome with semi help 
-##############################       spanish: list-help: bienvenida con semi ayuda
-####
-####
-if [ "$first_option" = "list-help" ]; then echo  -n ;
-echo "$head_option"
-echo "$subhead_option"
-echo "$tab [Options]"
-echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
-echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
-echo " [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
-echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
-echo "                     listnum forwardnum listnum6 forwardnum6                "
-echo " [edit-configs]      new-full-config nueva-completa-config                  "
-echo "                     new-mini-config nueva-mini-config                      "
-echo "                     show-config modify-config del-config                   "
-echo " [recover-fw]        fw-list fw-save fw-restore fw-show                     "
-echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
-echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
-echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
-echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
-echo " [show-version]      install version upgrade dev-versions all-versions      "
-echo " [show-about]        about depends examples                                 "
-echo " [show-help]         configurations configuraciones list-help help ayuda    "
-echo "$tab [Configs]"
-echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo "$tab [Examples]"
-echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
-echo " [List iptables rules]              $fiptables list                         "
-exit ; fi
-####
-####
-##############################   english: autogen defaults configs                  ###########################################
-##############################   spanish: auto genera configuraciones por defecto   ###########################################
+##############################   english: autogen defaults configs cfg              ###########################################
+##############################   spanish: auto genera configs cfg por defecto       ###########################################
 ####
 ####
 #### where save default files
@@ -496,6 +453,53 @@ echo $var46 $tabz $spa46 >> $fs
 echo $var47 $tabz $spa47 >> $fs
 ####
 ####
+##############################       english: Install:    $fiptables           ###########################################
+##############################       spanish: Instalador: $fiptables           ###########################################
+####
+####
+if [ "$first_option" = "install" ] ; then echo -n ;
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
+echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
+echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
+echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
+echo "$cinco Launch $fiptables to run $fiptables" ; exit; fi
+####
+####
+##############################       english: list-help: wellcome with semi help 
+##############################       spanish: list-help: bienvenida con semi ayuda
+####
+####
+if [ "$first_option" = "list-help" ]; then echo  -n ;
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Options]"
+echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
+echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
+echo " [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
+echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
+echo "                     listnum forwardnum listnum6 forwardnum6                "
+echo " [edit-configs]      new-full-config nueva-completa-config                  "
+echo "                     new-mini-config nueva-mini-config                      "
+echo "                     show-config modify-config del-config                   "
+echo " [recover-fw]        fw-list fw-save fw-restore fw-show-actual              "
+echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
+echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
+echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
+echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
+echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
+echo " [show-version]      install version upgrade dev-versions all-versions      "
+echo " [show-about]        about depends examples                                 "
+echo " [show-help]         configurations configuraciones list-help help ayuda    "
+echo "$tab [Configs]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
+echo "$tab [Examples]"
+echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
+echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
+echo " [List iptables rules]              $fiptables list                         "
+exit ; fi
+####
+####
+
 ##############################       english: if second_option is a valid config.cfg               #############################
 ##############################       spanish: si segunda opcion es un valido config.cfg            #############################
 ####
@@ -1143,7 +1147,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   81  "fw-list"  \
   82  "fw-save"  \
   83  "fw-restore"  \
-  84  "fw-show" \
+  84  "fw-show-actual" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -1406,7 +1410,7 @@ clear
  ;;
  84)
  clear
- $fiptables fw-show
+ $fiptables fw-show-actual
  ;;
  91)
  clear
@@ -2575,11 +2579,11 @@ ls -l $directory_fwrecover/* | grep -i $archivofin-
 exit; fi
 ####
 ####
-############################       english: fw-show: show actually firewall
-############################       spanish: fw-show: muestra las reglas actuales
+############################       english: fw-show-actual: show actually firewall
+############################       spanish: fw-show-actual: muestra las reglas actuales
 ####
 ####
-if [ "$first_option" = "fw-show" ]; then echo -n
+if [ "$first_option" = "fw-show-actual" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
@@ -3137,9 +3141,10 @@ echo "          arp: List the last conentions arp"
 echo
 echo "$cinco         [Recover fw]"
 echo
-echo "      fw-list: Show the files firewall standar"
-echo "      fw-save: Save the files in firewall standar"
-echo "   fw-restore: Show howto reover files firewall standar"
+echo "       fw-list: Show the files firewall standar"
+echo "       fw-save: Save the files in firewall standar"
+echo "    fw-restore: Show info to recover the files firewall standard"
+echo "fw-show-actual: Show the content of the firewall standard actual"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -3333,9 +3338,10 @@ echo "          arp: Lista las ultimas conexiones arp"
 echo
 echo "$cinco         [Recuperador de firewall en formato standard]"
 echo
-echo "      fw-list: Lista los archivos de firewall"
-echo "      fw-save: Guarda los archivos de firewall"
-echo "   fw-restore: Indica como restaurar los archivos de firewall"
+echo "       fw-list: Lista los archivos de firewall"
+echo "       fw-save: Guarda los archivos de firewall"
+echo "    fw-restore: Indica como restaurar los archivos de firewall"
+echo "fw-show-actual: Muestra el firewall standard actual"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
