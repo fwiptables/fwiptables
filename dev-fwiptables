@@ -260,7 +260,7 @@ if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option" ; fi
 ####    #english: necesary advice the list-help #spanish: necesario el aviso de ayuda list-help
 ####
 if  [ "$first_option" != "list-help" ] ; then echo -n ;
-echo "$cinco type: $fiptables list-help [to command list help] $cinco" ; fi 
+echo "$cinco [Show command list-help][type:] $fiptables list-help $cinco" ; fi 
 ####
 ####
 ####    #english: rewrite variable [characters to show] #spanish: reescribe variable [caracteres a mostrar]
