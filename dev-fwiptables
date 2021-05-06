@@ -260,7 +260,7 @@ if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option" ; fi
 ####    #english: necesary advice the list-help #spanish: necesario el aviso de ayuda list-help
 ####
 if  [ "$first_option" != "list-help" ] ; then echo -n ;
-echo "$cinco type: $fiptables list-help [to command list help]" ; fi 
+echo "$cinco type: $fiptables list-help [to command list help] $cinco" ; fi 
 ####
 ####
 ####    #english: rewrite variable [characters to show] #spanish: reescribe variable [caracteres a mostrar]
@@ -459,7 +459,7 @@ echo $var47 $tabz $spa47 >> $fs
 ####
 if [ "$first_option" = "install" ] ; then echo -n ;
 cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
-echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
+echo "$cinco [$fiptables $fversion] INSTALLED in $directory_fiptables/$fiptables" ;
 echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
 echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
 echo "$cinco Launch $fiptables to run $fiptables" ; exit; fi
@@ -1767,8 +1767,8 @@ echo "Downloading $fiptables with the comand $favorite_text_browser browser"
 echo "Waiting several seconds ..."
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 $favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables" 
-chmod ugo+x /tmp/$fiptables
-/tmp/$fiptables
+chmod ugo+rx /tmp/$fiptables
+/tmp/$fiptables install
 echo "$cinco [$fprogram] is upgraded: ok"
 echo "$cinco   upgraded: $directory_fiptables/$fiptables"
 exit ; fi
