@@ -996,8 +996,8 @@ zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cf
 ;;
 ####
 ####
-#### english: new-full-config and nueva-completa-config whithout parameters and with spaces ####
-#### spanish: new-full-config and nueva-completa-config sin parametros y con espacios       ####
+#### english: new-full-config and nueva-completa-config whithout parameters and with one space  ####
+#### spanish: new-full-config and nueva-completa-config sin parametros y con un espacio         ####
 ####
 "new-full-config ")
 zenity --info --ellipsize --text="$cinco Use: $fiptables new-full-config config.cfg"
@@ -1020,27 +1020,27 @@ zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cf
 #### spanish: varias opciones con parametros
 ####
 new-full-config*)
-unarchivo=$(echo $menugtk | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
 cp $defaultfullcfg_eng $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 nueva-completa-config*)
-unarchivo=$(echo $menugtk | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
 cp $defaultfullcfg_esp $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 new-mini-config*)
-unarchivo=$(echo $menugtk | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
 cp $defaultminicfg_eng $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 nueva-mini-config*)
-unarchivo=$(echo $menugtk | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
 cp $defaultminicfg_esp $directory_config/$unarchivo
 $favorite_graphicall_editor $directory_config/$unarchivo
 ;;
 modify-config*)
-unarchivo=$(echo $menugtk | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
 $favorite_graphicall_editor "$directory_config/$unarchivo"
 ;;
 full-wizard*)
