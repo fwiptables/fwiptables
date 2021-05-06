@@ -49,7 +49,7 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ;          #english: [characters to show] #spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
-head_option="[$fprogram] [Version $fversion]" ;                   #english: [characters to show] #spanish: [caracteres a mostrar]
+head_option="$cinco [$fprogram] [Version $fversion]" ;                   #english: [characters to show] #spanish: [caracteres a mostrar]
 subhead_option="$cincuenta [ $first_option ]" ;                   #english: [characters to show] #spanish: [caracteres a mostrar]
 log_prefix="logserver:"                                           #english: log prefix in iptables #spanish: prefijo del log en iptables
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
@@ -1955,7 +1955,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "forward" ]; then echo -n
- echo "  $fprogram [Version $fversion]" ;
+ echo "$head_option"
 echo "$subhead_option"
  echo "$tab  [The xtables ipv4]"
  $which_iptables_legacy -v -L FORWARD
@@ -1971,7 +1971,7 @@ echo "$subhead_option"
  if [ "$first_option" = "list6" ]; then echo -n
 legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
 nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
- echo "  $fprogram [Version $fversion]"
+ echo "$head_option"
 echo "$subhead_option"
  case $legacyseis in
  "$NULL")
@@ -1999,7 +1999,7 @@ echo "$subhead_option"
 ####
 ####
  if [ "$first_option" = "forward6" ]; then echo -n
- echo "  $fprogram [Version $fversion]" ;
+ echo "$head_option" ;
 echo "$subhead_option"
  echo "$tab [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -L FORWARD
@@ -2043,7 +2043,7 @@ echo "$subhead_option"
 if [ "$first_option" = "listnum" ]; then echo -n ;
 legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
- echo "  $fprogram [Version $fversion]"
+ echo "$head_option"
 echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
@@ -2070,7 +2070,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "forwardnum" ]; then echo -n
- echo "  $fprogram [Version $fversion]" ;
+ echo "$head_option" 
 echo "$subhead_option"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
  $which_iptables_legacy -v -n -L FORWARD
@@ -2086,7 +2086,7 @@ echo "$subhead_option"
  if [ "$first_option" = "listnum6" ]; then echo -n
 legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
 nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
- echo "  $fprogram [Version $fversion]" ;
+ echo "$head_option" ;
 echo "$subhead_option"
  case $legacyseis in
  "$NULL")
@@ -2114,7 +2114,7 @@ echo "$subhead_option"
 ####
 ####
  if [ "$first_option" = "forwardnum6" ]; then echo -n
- echo "  $fprogram [Version $fversion]" ;
+ echo "$head_option" ;
 echo "$subhead_option"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
  $which_ip6tables_legacy -v -n -L FORWARD
