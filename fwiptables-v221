@@ -970,69 +970,24 @@ exit
 esac
 #### manage some configs ####
 case $menugtk in
-#### new-full-config and nueva-completa-config ####
+#### new-full-config and nueva-completa-config whithout parameters ####
 "new-full-config")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
+zenity --info --ellipsize --text="$cinco Use: $fiptables new-full-config config.cfg"
 ;;
-"new-full-config ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"new-full-config  ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"new-full-config   ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
+"new-mini-config")
+zenity --info --ellipsize --text="$cinco Use: $fiptables new-mini-config config.cfg"
 ;;
 "nueva-completa-config")
 zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
 ;;
-"nueva-completa-config ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"nueva-completa-config  ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"nueva-completa-config   ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
 "new-mini-config")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"new-mini-config ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"new-mini-config  ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"new-mini-config   ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"nueva-mini-config")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"nueva-mini-config ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"nueva-mini-config  ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
-;;
-"nueva-mini-config   ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-mini-config config.cfg"
 ;;
 "modify-config")
 zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
 ;;
-"modify-config ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
-;;
-"modify-config  ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
-;;
-"modify-config   ")
-zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
-;;
-#### english: several options
-#### spanish: varias opciones
+#### english: several options con parametros
+#### spanish: varias opciones con parametros
 new-full-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
 cp $defaultfullcfg_eng $directory_config/$unarchivo
