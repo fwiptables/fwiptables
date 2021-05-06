@@ -968,9 +968,17 @@ zenity --info --ellipsize --text="fwiptables good bye"
 exit
 ;;
 esac
-#### manage some configs ####
+####
+####
+#### english: manage some configs    ####
+#### spanish: maneja algunas configs ####
+####
 case $menugtk in
-#### new-full-config and nueva-completa-config whithout parameters ####
+####
+####
+#### english: new-full-config and nueva-completa-config whithout parameters ####
+#### spanish: new-full-config and nueva-completa-config sin parametros      ####
+####
 "new-full-config")
 zenity --info --ellipsize --text="$cinco Use: $fiptables new-full-config config.cfg"
 ;;
@@ -986,8 +994,31 @@ zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-mini-config confi
 "modify-config")
 zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
 ;;
+####
+####
+#### english: new-full-config and nueva-completa-config whithout parameters and with spaces ####
+#### spanish: new-full-config and nueva-completa-config sin parametros y con espacios       ####
+####
+"new-full-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables new-full-config config.cfg"
+;;
+"new-mini-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables new-mini-config config.cfg"
+;;
+"nueva-completa-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
+;;
+"new-mini-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables nueva-mini-config config.cfg"
+;;
+"modify-config ")
+zenity --info --ellipsize --text="$cinco Use: $fiptables modify-config config.cfg"
+;;
+####
+####
 #### english: several options con parametros
 #### spanish: varias opciones con parametros
+####
 new-full-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
 cp $defaultfullcfg_eng $directory_config/$unarchivo
@@ -1012,7 +1043,6 @@ modify-config*)
 unarchivo=$(echo $menugtk | cut -d " " -f 2)
 $favorite_graphicall_editor "$directory_config/$unarchivo"
 ;;
-#### full-wizard and mini full-wizard
 full-wizard*)
 cp $defaultfullcfg_esp $directory_config/fullwizard.cfg
 $favorite_graphicall_editor "$directory_config/fullwizard.cfg"
@@ -1023,7 +1053,11 @@ cp $defaultminicfg_esp $directory_config/miniwizard.cfg
 $favorite_graphicall_editor "$directory_config/miniwizard.cfg"
 zenity --info --ellipsize --text="ok $(fwiptables custom miniwizard.cfg)"
 ;;
-#### all other otpions
+####
+####
+#### english: all other otpions    ####
+#### spanish: las demas opciones   ####
+####
 *)
 zenity --info --ellipsize --text="$($fiptables $menugtk)"
 ;;
