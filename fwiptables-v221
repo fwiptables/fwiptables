@@ -537,10 +537,10 @@ echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]  
 echo " [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
 echo "                     listnum forwardnum listnum6 forwardnum6                "
-echo " [edit-configs]      new-full-config nueva-completa-config                  "
+echo " [tool-configs]      new-full-config nueva-completa-config                  "
 echo "                     new-mini-config nueva-mini-config                      "
 echo "                     show-config modify-config del-config                   "
-echo " [recover-fw]        fw-list fw-save fw-restore fw-show-actual              "
+echo " [tool-fw]           fw-list fw-save fw-restore fw-show-actual              "
 echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
 echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
@@ -717,10 +717,10 @@ exit; fi
 ##############################       spanish: edit-config opciones
 ####
 ####
-if [ "$first_option" = "edit-configs" ]; then echo -n
+if [ "$first_option" = "tool-configs" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$cinco         [Edit config]"
+echo "$cinco         [tool config]"
 echo
 echo "       new-full-config: Create a new configfile.cfg in english"
 echo " nueva-completa-config: Create a new configfile.cfg in spanish"
@@ -755,7 +755,7 @@ exit; fi
 ##############################       spanish: recover-fw opciones
 ####
 ####
-if [ "$first_option" = "recover-fw" ]; then echo -n
+if [ "$first_option" = "tool-fw" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Recover fw]"
@@ -3160,7 +3160,7 @@ echo "  ipforwading: Show kernel config about forward"
 echo "      tcpdump: Listen the connections"
 echo "          arp: List the last conentions arp"
 echo
-echo "$cinco         [Recover fw]"
+echo "$cinco         [Tool fw]"
 echo
 echo "       fw-list: Show the files firewall standar"
 echo "       fw-save: Save the files in firewall standar"
@@ -3181,13 +3181,13 @@ echo "    resolveip: Resolve one host and viceversa"
 echo "       geo-ip: Locate a one host or ip"
 echo "      ntpdate: update the date from ntp server"
 echo
-echo "$cinco         [Auth sudo]"
+echo "$cinco         [Tool sudo]"
 echo
 echo "    auth-sudo: Permit sudo to other choosed users"
 echo "  remove-sudo: Remove sudo to other choosed users"
 echo "    list-sudo: List sudo to other choosed users"
 echo
-echo "$cinco         [Version]"
+echo "$cinco         [Show Version]"
 echo
 echo "      install: install this actualy "
 echo "  install-bin: install this actual in binary"
@@ -3384,7 +3384,7 @@ echo "    auth-sudo: Permite autorizacion de usuarios elegidos"
 echo "  remove-sudo: Borra la autorizacion otorgada"
 echo "    list-sudo: Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [Version]"
+echo "$cinco         [show Version]"
 echo
 echo "      install: instala este programa actual"
 echo "  install-bin: instala este programa actual en binario"
