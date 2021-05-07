@@ -149,4 +149,6 @@ fw-show - cambiado a fw-show-actual - ok 221
 comprobar gui - actualizado - ok 221
 install-bin - añadido - ok 221
 cambio de nombres de grupos - hecho - ok 221
+help - actualizado - ok 221
+ayuda - actualizado - ok 221
 reordenar cli - pendiente - 
