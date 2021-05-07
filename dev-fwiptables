@@ -30,7 +30,7 @@ source /etc/profile
 ####
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-without_option="list-help" ;                                      #english: variables to launch  #spanish: variables a lanzar
+favorite_option="list" ;                                          #english: list or help-list
 zero_dir="$(pwd)" ; zero_option="$0" ;                            #english: variables to launch  #spanish: variables a lanzar
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 launch_thefirst="no" ; launch_thesecond="no" ;                    #english: variables to launch  #spanish: variables a lanzar
@@ -248,13 +248,13 @@ echo "$cincuenta  Be root to work $fiptables"
 exit ; fi
 ####
 ####
-##############################       english: initial options            ########################
-##############################       spanish: opciones iniciales         ########################
+##############################       english: favorite initial option            ########################
+##############################       spanish: favorita opcion inicial            ########################
 ####
 ####
-####    #english: without_option: init one option #spanish: sin opcion: una opcion inicial 
+####    #english: favorite_option: init one option #spanish: sin opcion: una opcion inicial 
 ####
-if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option" ; fi
+if  [ "$first_option" = "$NULL" ] ; then first_option="$favorite_option" ; fi
 ####
 ####
 ####    #english: necesary advice the list-help #spanish: necesario el aviso de ayuda list-help
@@ -304,10 +304,10 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 ####
 if [ "$first_option" = "install" ] ; then echo -n ;
 cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
-echo "$cinco [$fiptables $fversion INSTALLED in:] $directory_fiptables/$fiptables" ;
+echo "$cinco [$fiptables $fversion / INSTALLED IN:] $directory_fiptables/$fiptables" ;
 echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
 echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
-echo "$cinco [Launch $fiptables to RUN:] $fiptables" ; exit; fi
+echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables" ; exit; fi
 ####
 ####
 ##############################   english: autogen defaults configs cfg              ###########################################
