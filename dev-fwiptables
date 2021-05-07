@@ -30,7 +30,7 @@ source /etc/profile
 ####
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-favorite_option="list" ;                                          #english: list or help-list
+favorite_option="list-help" ;                                          #english: list or help-list
 zero_dir="$(pwd)" ; zero_option="$0" ;                            #english: variables to launch  #spanish: variables a lanzar
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 launch_thefirst="no" ; launch_thesecond="no" ;                    #english: variables to launch  #spanish: variables a lanzar
@@ -303,11 +303,39 @@ if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" 
 ####
 ####
 if [ "$first_option" = "install" ] ; then echo -n ;
+echo "$head_option"
+echo "$subhead_option"
 cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
-echo "$cinco [$fiptables $fversion / INSTALLED IN:] $directory_fiptables/$fiptables" ;
+echo "$cinco [$fiptables $fversion / SCRIPT INSTALLED IN:] $directory_fiptables/$fiptables" ;
 echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
 echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables" ; exit; fi
+####
+####
+##############################       english: Install-bin:    $fiptables           ###########################################
+##############################       spanish: Instalador-bin: $fiptables           ###########################################
+####
+####
+if [ "$first_option" = "install-bin" ] ; then echo -n ;
+case $(which shc) in
+"$NULL")
+echo "$cinco install shc to compile"
+;;
+*)
+echo "$head_option"
+echo "$subhead_option"
+cp $zero_option /tmp/$fiptables-source &> /dev/null ;
+cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
+shc -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
+chmod ugo+rx /tmp/$fiptables-bin
+cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
+echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
+echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
+echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
+echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
+;;
+esac
+exit; fi
 ####
 ####
 ##############################   english: autogen defaults configs cfg              ###########################################
@@ -518,7 +546,7 @@ echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate     
 echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
-echo " [show-version]      install version upgrade dev-versions all-versions      "
+echo " [show-version]      install install-bin version upgrade all-versions       "
 echo " [show-about]        about depends examples                                 "
 echo " [show-help]         configurations configuraciones list-help help ayuda    "
 echo "$tab [Configs]"
@@ -732,9 +760,10 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Recover fw]"
 echo
-echo "      fw-list: Show the files firewall standar"
-echo "      fw-save: Save the files in firewall standar"
-echo "   fw-restore: Show howto reover files firewall standar"
+echo "       fw-list: Show the files firewall standar"
+echo "       fw-save: Save the files in firewall standar"
+echo "    fw-restore: Show the recover files firewall standard"
+echo "fw-show-actual: Show the actual iptables standard"
 exit; fi
 ####
 ####
@@ -795,7 +824,8 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Version]"
 echo
-echo "      install: install this actualy"
+echo "      install: install this actual"
+echo "  install-bin: install this actual in binary"
 echo "      version: Info version program "
 echo "      upgrade: Upgrade at the latest version"
 echo " dev-versions: Version in development "
@@ -865,6 +895,7 @@ echo "$cinco         [show help]"
 echo
 echo " configurations: config example with comments in english"
 echo " configurations: config example with comments in spanish"
+echo "      list-help: Show list-help"
 echo "           help: Show help in english"
 echo "          ayuda: Show help in spanish"
 exit; fi
@@ -3063,12 +3094,7 @@ exit; fi
 if [ "$first_option" = "help" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-#### echo
-#### $fiptables mini-help
 echo
-$fiptables list-help
-echo
-echo "$subhead_option"
 echo ""
 echo "$cinco         [Launch guide]"
 echo
@@ -3164,6 +3190,7 @@ echo
 echo "$cinco         [Version]"
 echo
 echo "      install: install this actualy "
+echo "  install-bin: install this actual in binary"
 echo "      version: Info version program "
 echo "      upgrade: Upgrade at the latest version"
 echo " dev-versions: Version in development"
@@ -3184,13 +3211,17 @@ echo "     log-sshd: search the logs from sshd for /var/log"
 echo "log-logserver: search the logs from net packages with this firewall"
 echo "   log-search: search the logs from a input pattern for /var/log"
 echo 
-echo "$cinco         [Long Help]"
+echo "$cinco         [Show about]"
 echo
 echo "          about: About"
 echo "        depends: Show depends"
 echo "       examples: Show examples "
+echo 
+echo "$cinco         [Show help]"
+echo
 echo " configurations: config example with comments in english"
 echo " configurations: config example with comments in spanish"
+echo "      list-help: Show list-help"
 echo "           help: Show help in english"
 echo "          ayuda: Show help in spanish"
 echo ""
@@ -3260,12 +3291,7 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-#### echo
-#### $fiptables mini-help
 echo
-$fiptables list-help
-echo
-echo "$subhead_option"
 echo ""
 echo "$cinco         [Lanzar guia]"
 echo
@@ -3360,7 +3386,8 @@ echo "    list-sudo: Lista autorizacion de usuarios elegidos"
 echo
 echo "$cinco         [Version]"
 echo
-echo "      install: instala este actual"
+echo "      install: instala este programa actual"
+echo "  install-bin: instala este programa actual en binario"
 echo "      version: Informacion de la actual version"
 echo "      upgrade: Actualiza a la ultima version"
 echo " dev-versions: Version en desarrollo "
@@ -3381,13 +3408,17 @@ echo "     log-sshd: busca los logs de sshd en /var/log"
 echo "log-logserver: busca los logs de paquetes de este firewall"
 echo "   log-search: busca los logs dando un patron para /var/log"
 echo 
-echo "$cinco         [Larga Ayuda]"
+echo "$cinco         [Show about]"
 echo
 echo "          About: Acerca de "
 echo "        Depends: Muestra las dependencias "
-echo "       examples: Regenerar ejemplos "
+echo "       examples: Muestra ejemplos "
+echo
+echo "$cinco         [Show help]"
+echo
 echo " configurations: ejemplo de config con comentarios en ingles"
 echo "configuraciones: ejemplo de config con comentarios en castellano"
+echo "      list-help: Muestra list-help"
 echo "           help: Muestra la ayuda en ingles"
 echo "          ayuda: Muestra la ayuda en español"
 echo
