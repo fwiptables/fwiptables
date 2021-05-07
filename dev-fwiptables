@@ -260,7 +260,7 @@ if  [ "$first_option" = "$NULL" ] ; then first_option="$without_option" ; fi
 ####    #english: necesary advice the list-help #spanish: necesario el aviso de ayuda list-help
 ####
 if  [ "$first_option" != "list-help" ] ; then echo -n ;
-echo "$cinco [Show command list-help][type:] $fiptables list-help $cinco" ; fi 
+echo "$cinco [Show command list-help / TYPE:] $fiptables list-help" ; fi 
 ####
 ####
 ####    #english: rewrite variable [characters to show] #spanish: reescribe variable [caracteres a mostrar]
@@ -285,7 +285,7 @@ case "$zero_option" in
 "$fiptables")
 ;;
 *)
-echo "$cinco to install type: $zero_option install"
+echo "$cinco [to install / TYPE:] $zero_option install"
 ;;
 esac
 ####
@@ -296,6 +296,18 @@ esac
 ####
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
+####
+####
+##############################       english: Install:    $fiptables           ###########################################
+##############################       spanish: Instalador: $fiptables           ###########################################
+####
+####
+if [ "$first_option" = "install" ] ; then echo -n ;
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
+echo "$cinco [$fiptables $fversion INSTALLED in:] $directory_fiptables/$fiptables" ;
+echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
+echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
+echo "$cinco [Launch $fiptables to RUN:] $fiptables" ; exit; fi
 ####
 ####
 ##############################   english: autogen defaults configs cfg              ###########################################
@@ -453,16 +465,35 @@ echo $var46 $tabz $spa46 >> $fs
 echo $var47 $tabz $spa47 >> $fs
 ####
 ####
-##############################       english: Install:    $fiptables           ###########################################
-##############################       spanish: Instalador: $fiptables           ###########################################
+##############################       english: if second_option is a valid config.cfg               #############################
+##############################       spanish: si segunda opcion es un valido config.cfg            #############################
 ####
 ####
-if [ "$first_option" = "install" ] ; then echo -n ;
-cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
-echo "$cinco [$fiptables $fversion] INSTALLED in $directory_fiptables/$fiptables" ;
-echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
-echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
-echo "$cinco Launch $fiptables to run $fiptables" ; exit; fi
+if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
+####
+####
+##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
+##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
+####
+####
+####   the first: [config.cfg]
+####
+####
+if [ -f "$directory_config"/"$first_option" ]; then echo -n ;
+launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ; 
+launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; 
+else echo -n; fi
+####
+####
+####   the first: offline, allpermisive or custom
+####
+####
+if [ "$first_option" = "offline" ]; then      echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
+launch_iptables="si"; launch_thesecond="si"; launch_permisive="no"; launch_offline=""   ;  launch_custom="no" ; only_output="no"  ; fi
+if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
+launch_iptables="si"; launch_thesecond="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; only_output="no"  ; fi
+if [ "$first_option" = "custom" ]; then       echo "  FIREWALL CUSTOM" ; echo "$cincuenta"
+launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
 ####
 ##############################       english: list-help: wellcome with semi help 
@@ -497,38 +528,6 @@ echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg  
 echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
 echo " [List iptables rules]              $fiptables list                         "
 exit ; fi
-####
-####
-
-##############################       english: if second_option is a valid config.cfg               #############################
-##############################       spanish: si segunda opcion es un valido config.cfg            #############################
-####
-####
-if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no"; fi
-####
-####
-##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
-##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
-####
-####
-####   the first: [config.cfg]
-####
-####
-if [ -f "$directory_config"/"$first_option" ]; then echo -n ;
-launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ; 
-launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; 
-else echo -n; fi
-####
-####
-####   the first: offline, allpermisive or custom
-####
-####
-if [ "$first_option" = "offline" ]; then      echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
-launch_iptables="si"; launch_thesecond="si"; launch_permisive="no"; launch_offline=""   ;  launch_custom="no" ; only_output="no"  ; fi
-if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
-launch_iptables="si"; launch_thesecond="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; only_output="no"  ; fi
-if [ "$first_option" = "custom" ]; then       echo "  FIREWALL CUSTOM" ; echo "$cincuenta"
-launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
@@ -1094,7 +1093,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   21  "eraserules" \
   22  "offline" \
   23  "allpermisive" \
-  24  "custom" \
+  24  "custom -> is silent" \
+  25  "[config.cfg] -> is verbose" \
   030 "$cinco [List rules alphabetical] $cinco" \
   31  "list" \
   32  "forward" \
@@ -1145,8 +1145,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   102  "trace-ip6" \
   103  "host" \
   104  "resolveip" \
-  105  "geoip" \
   106  "ntpdate" \
+  105  "geoip" \
   0110 "$cinco [Auth sudo operations] $cinco"  \
   111  "auth-sudo" \
   112  "remove-sudo" \
@@ -1228,6 +1228,12 @@ case "$menuprincipal" in
  archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables custom $archivo
+ ;;
+ 25)
+ clear
+ archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ clear
+ $fiptables $archivo
  ;;
  31)
  clear
