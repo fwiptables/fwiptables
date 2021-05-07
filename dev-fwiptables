@@ -3127,7 +3127,7 @@ echo "   forwardnum: List iptables filter rules foward in numbers"
 echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
 echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo
-echo "$cinco         [The others tables]"
+echo "$cinco         [List the others tables]"
 echo
 echo "      nat-ip4: List iptables nat rules from ipv4"
 echo "      nat-ip6: List iptables nat rules from ipv6"
@@ -3140,16 +3140,6 @@ echo " security-ip6: List iptables security rules from ipv6"
 echo "     ebtables: List rules ebtables nft ethernet"
 echo "    arptables: List rules arptables arp"
 echo
-echo "$cinco         [Modify config]"
-echo
-echo "       new-full-config: Create a new configfile.cfg in english"
-echo " nueva-completa-config: Create a new configfile.cfg in spanish"
-echo "       new-mini-config: Create a new basic configfile.cfg in english"
-echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
-echo "         modify-config: Edit one config.cfg"
-echo "           show-config: Show one config.cfg"
-echo "            del-config: Delete one configuration file"
-echo
 echo "$cinco         [List sockets]"
 echo
 echo "        route: Show net devices and ip route tables"
@@ -3159,6 +3149,16 @@ echo "      netstat: Show net sockets with command netstat"
 echo "  ipforwading: Show kernel config about forward"
 echo "      tcpdump: Listen the connections"
 echo "          arp: List the last conentions arp"
+echo
+echo "$cinco         [tool config]"
+echo
+echo "       new-full-config: Create a new configfile.cfg in english"
+echo " nueva-completa-config: Create a new configfile.cfg in spanish"
+echo "       new-mini-config: Create a new basic configfile.cfg in english"
+echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
+echo "         modify-config: Edit one config.cfg"
+echo "           show-config: Show one config.cfg"
+echo "            del-config: Delete one configuration file"
 echo
 echo "$cinco         [Tool fw]"
 echo
@@ -3189,8 +3189,8 @@ echo "    list-sudo: List sudo to other choosed users"
 echo
 echo "$cinco         [Show Version]"
 echo
-echo "      install: install this actualy "
-echo "  install-bin: install this actual in binary"
+echo "      install: install this program actual"
+echo "  install-bin: install this program actual in binary"
 echo "      version: Info version program "
 echo "      upgrade: Upgrade at the latest version"
 echo " dev-versions: Version in development"
@@ -3324,7 +3324,7 @@ echo "   forwardnum: Lista las reglas de ipv4 de filtros de reenvio en numeros"
 echo "     list6num: Lista las reglas de ipv6 de filtros de entrada y salida en numeros"
 echo "  forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros"
 echo
-echo "$cinco         [Las otras tablas de iptables]"
+echo "$cinco         [Lista Las otras tablas de iptables]"
 echo
 echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
 echo "      nat-ip6: Lista las reglas de ipv6 de nat iptables"
@@ -3337,16 +3337,6 @@ echo " security-ip6: Lista las reglas de ip6 de security iptables"
 echo "     ebtables: Lista las reglas de nft de ethernet"
 echo "    arptables: Lista las reglas de arp arptables"
 echo
-echo "$cinco         [Modifica config]"
-echo
-echo "       new-full-config: Crea una nueva configuracion.cfg en ingles"
-echo " nueva-completa-config: Crea una nueva configuracion.cfg en español"
-echo "       new-mini-config: Crea una nueva basica configuracion.cfg en ingles"
-echo "     nueva-mini-config: Crea una nueva basica configuracion.cfg en español"
-echo "         modify-config: Edita una existente configuracion.cfg"
-echo "           show-config: Muestra una existente configuracion.cfg"
-echo "            del-config: Borra unaa existente configuracion.cfg"
-echo
 echo "$cinco         [Lista las conexiones abiertas]"
 echo
 echo "        route: Muestra los dispositivos de red y la tabla de rutas"
@@ -3357,7 +3347,17 @@ echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
 echo "      tcpdump: Escuchar las conexiones ip"
 echo "          arp: Lista las ultimas conexiones arp"
 echo
-echo "$cinco         [Recuperador de firewall en formato standard]"
+echo "$cinco         [Herramienta de configuraciones]"
+echo
+echo "       new-full-config: Crea una nueva configuracion.cfg en ingles"
+echo " nueva-completa-config: Crea una nueva configuracion.cfg en español"
+echo "       new-mini-config: Crea una nueva basica configuracion.cfg en ingles"
+echo "     nueva-mini-config: Crea una nueva basica configuracion.cfg en español"
+echo "         modify-config: Edita una existente configuracion.cfg"
+echo "           show-config: Muestra una existente configuracion.cfg"
+echo "            del-config: Borra unaa existente configuracion.cfg"
+echo
+echo "$cinco         [Herramienta de firewall en formato standard]"
 echo
 echo "       fw-list: Lista los archivos de firewall"
 echo "       fw-save: Guarda los archivos de firewall"
@@ -3378,13 +3378,13 @@ echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo "       geo-ip: Localiza una ip o host"
 echo "      ntpdate: actualiza la fecha desde un ntp server"
 echo
-echo "$cinco         [Opciones de autorizacion]"
+echo "$cinco         [Herramienta de autorizacion]"
 echo
 echo "    auth-sudo: Permite autorizacion de usuarios elegidos"
 echo "  remove-sudo: Borra la autorizacion otorgada"
 echo "    list-sudo: Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [show Version]"
+echo "$cinco         [Mostrar Version]"
 echo
 echo "      install: instala este programa actual"
 echo "  install-bin: instala este programa actual en binario"
@@ -3393,7 +3393,7 @@ echo "      upgrade: Actualiza a la ultima version"
 echo " dev-versions: Version en desarrollo "
 echo " all-versions: Todas las versiones "
 echo
-echo "$cinco         [Show etc]"
+echo "$cinco         [Mostrar etc]"
 echo
 echo "        hosts: muestra /etc/hosts"
 echo "   protocolos: muestra /etc/protocols"
@@ -3401,20 +3401,20 @@ echo "     services: muestra /etc/services"
 echo "  hosts.allow: muestra /etc/hosts.allow"
 echo "   hosts.deny: muestra /etc/hosts.deny"
 echo
-echo "$cinco         [Show log]"
+echo "$cinco         [Mostrar log]"
 echo
 echo "     log-sudo: busca los logs de sudo en /var/log"
 echo "     log-sshd: busca los logs de sshd en /var/log"
 echo "log-logserver: busca los logs de paquetes de este firewall"
 echo "   log-search: busca los logs dando un patron para /var/log"
 echo 
-echo "$cinco         [Show about]"
+echo "$cinco         [Mostrar acerca]"
 echo
 echo "          About: Acerca de "
 echo "        Depends: Muestra las dependencias "
 echo "       examples: Muestra ejemplos "
 echo
-echo "$cinco         [Show help]"
+echo "$cinco         [Mostrar ayuda]"
 echo
 echo " configurations: ejemplo de config con comentarios en ingles"
 echo "configuraciones: ejemplo de config con comentarios en castellano"
