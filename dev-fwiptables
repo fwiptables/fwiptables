@@ -1631,7 +1631,7 @@ echo "$tab [Exec program]"
 echo "$directory_fiptables/$fiptables"
 echo
 echo "$tab [File format]"
-file $directory_fiptables/$fiptables
+file $directory_fiptables/$fiptables | cut -d "," -f 1-2
 echo
 echo "$tab [Config directory]"
 echo "$directory_config"
