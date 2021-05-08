@@ -2997,7 +2997,7 @@ echo "  $fdescription"
 echo ""
 echo "$tab [Program Install]"
 echo "  chmod ugo+x $fiptables"
-echo "  ./$fiptables"
+echo "  ./$fiptables install"
 echo "  [and then fwiptables is in $directory_fiptables/$fiptables"]
 echo
 echo "$tab [Devevelopments version program]"
