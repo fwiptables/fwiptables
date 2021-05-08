@@ -544,7 +544,8 @@ echo " [tool-fw]           fw-list fw-save fw-restore fw-show-actual            
 echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
 echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
-echo " [tool-version]      install install-bin version upgrade all-versions       "
+echo " [tool-install]      install install-bin howto-upgrade auto-upgrade         "
+echo " [tool-version]      actual-version dev-versions all-versions               "
 echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
 echo " [show-about]        about depends examples                                 "
@@ -819,17 +820,30 @@ exit; fi
 ##############################       spanish: show-version opciones
 ####
 ####
-if [ "$first_option" = "show-version" ]; then echo -n
+if [ "$first_option" = "tool-install" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$cinco         [Version]"
+echo "$cinco         [tool install]"
 echo
 echo "      install: install this actual"
 echo "  install-bin: install this actual in binary"
-echo "      version: Info version program "
-echo "      upgrade: Upgrade at the latest version"
-echo " dev-versions: Version in development "
-echo " all-versions: All versions"
+echo "howto-upgrade: Show howoto upgrade at the latest version"
+echo " auto-upgrade: Upgrade at the latest version"
+exit; fi
+####
+####
+##############################       english: show-version options
+##############################       spanish: show-version opciones
+####
+####
+if [ "$first_option" = "tool-version" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$cinco         [Tool version]"
+echo
+echo "actual-version: Info version program "
+echo "  dev-versions: Version in development "
+echo "  all-versions: All versions"
 exit; fi
 ####
 ####
@@ -1601,11 +1615,11 @@ clear
  exit; fi
 ####
 ####
-##############################       english: version: system script, the version option
-##############################       spanish: version: script de sistema, la opcion mostrar version
+##############################       english: actual-version: system script, the version option
+##############################       spanish: actual-version: script de sistema, la opcion mostrar version
 ####
 ####
-if [ "$first_option" = "version" ]; then echo -n
+if [ "$first_option" = "actual-version" ]; then echo -n
 echo
 echo "$tab [Name program]"
 echo "$fprogram"
@@ -1615,6 +1629,9 @@ echo "$fdescription"
 echo
 echo "$tab [Exec program]"
 echo "$directory_fiptables/$fiptables"
+echo
+echo "$tab [File format]"
+file $directory_fiptables/$fiptables
 echo
 echo "$tab [Config directory]"
 echo "$directory_config"
@@ -1792,11 +1809,11 @@ echo "input_state='-m state --state new,related,established' ; "
 exit ; fi
 ####
 ####
-##############################       english: web-upgrade: upgrade in the file /usr/bin/fwiptables
-##############################       spanish: web-upgrade: actualiza en el archivo /usr/bin/fwiptables
+##############################       english: auto-upgrade: upgrade in the file /usr/bin/fwiptables
+##############################       spanish: auto-upgrade: actualiza en el archivo /usr/bin/fwiptables
 ####
 ####
-if [ "$first_option" = "web-upgrade" ]; then echo -n
+if [ "$first_option" = "auto-upgrade" ]; then echo -n
 echo "$head_option"
 echo "$cincuenta [Web upgrade] $cinco"
 echo "Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command"
@@ -1811,11 +1828,11 @@ echo "$cinco   upgraded: $directory_fiptables/$fiptables"
 exit ; fi
 ####
 ####
-##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
-##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
+##############################       english: howto-upgrade: upgrade in the file /usr/bin/fwiptables
+##############################       spanish: howto-upgrade: actualiza en el archivo /usr/bin/fwiptables
 ####
 ####
-if [ "$first_option" = "upgrade" ]; then  echo -n
+if [ "$first_option" = "howto-upgrade" ]; then  echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "The actually version is: $fiptables $fversion actual" 
@@ -3189,14 +3206,19 @@ echo "    auth-sudo: Permit sudo to other choosed users"
 echo "  remove-sudo: Remove sudo to other choosed users"
 echo "    list-sudo: List sudo to other choosed users"
 echo
-echo "$cinco         [Show Version]"
+echo "$cinco         [Tool Install]"
 echo
 echo "      install: install this program actual"
 echo "  install-bin: install this program actual in binary"
-echo "      version: Info version program "
-echo "      upgrade: Upgrade at the latest version"
-echo " dev-versions: Version in development"
-echo " all-versions: All versions "
+echo "howto-upgrade: Howto install the latest version"
+echo " auto-upgrade: Upgrade at the latest version"
+
+echo
+echo "$cinco         [Tool Version]"
+echo
+echo "actual-version: Info version program actual"
+echo "  dev-versions: Version in development"
+echo "  all-versions: All versions "
 echo
 echo "$cinco         [Show etc]"
 echo
@@ -3386,14 +3408,18 @@ echo "    auth-sudo: Permite autorizacion de usuarios elegidos"
 echo "  remove-sudo: Borra la autorizacion otorgada"
 echo "    list-sudo: Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [Mostrar Version]"
+echo "$cinco         [Herramienta para instalacion]"
 echo
 echo "      install: instala este programa actual"
 echo "  install-bin: instala este programa actual en binario"
-echo "      version: Informacion de la actual version"
-echo "      upgrade: Actualiza a la ultima version"
-echo " dev-versions: Version en desarrollo "
-echo " all-versions: Todas las versiones "
+echo "howto-upgrade: Indicacion para actualizar"
+echo " auto-upgrade: Actualiza a la ultima version"
+echo
+echo "$cinco         [Herramienta de Version]"
+echo
+echo "actual-version: Informacion de la actual version"
+echo "  dev-versions: Informacion de version en desarrollo "
+echo "  all-versions: Informacion de todas las versiones "
 echo
 echo "$cinco         [Mostrar etc]"
 echo
