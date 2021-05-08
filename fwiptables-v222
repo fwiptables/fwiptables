@@ -531,7 +531,7 @@ launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_of
 if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Only one option:]"
+echo "$tab [Only one option]"
 echo " [launch-rules:]    eraserules offline allpermisive custom [config.cfg]    "
 echo " [list-rules:]      list forward nat list6 forward6 nat6                "
 echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                "
@@ -550,9 +550,9 @@ echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny       
 echo " [show-log:]        log-sudo log-sshd log-logserver log-search             "
 echo " [show-about:]      about depends examples                                 "
 echo " [show-help:]       configurations configuraciones list-help help ayuda    "
-echo "$tab [Configs:]"
+echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo "$tab [Examples:]"
+echo "$tab [Examples]"
 echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg    "
 echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg             "
 echo " [List iptables rules:]              $fiptables list                         "
