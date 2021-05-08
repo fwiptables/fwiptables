@@ -650,7 +650,7 @@ if [ "$which_gedit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_edi
 if [ "$first_option" = "tool-guide" ]; then echo -n
 echo "$head_option"
 echo "$cincuenta [$first_option]"
-echo "$cinco         [get guide]"
+echo "$cinco         [tool guide]"
 echo
 echo "  system-info: Show info system"
 echo "     net-info: Show net info"
@@ -711,6 +711,23 @@ echo " security-ip4: List iptables security rules from ipv4"
 echo " security-ip6: List iptables security rules from ipv6"
 echo "     ebtables: List rules ebtables nft ethernet"
 echo "    arptables: List rules arptables arp"
+exit; fi
+####
+####
+##############################       english: list-rules options
+##############################       spanish: list-rules opciones
+####
+####
+if [ "$first_option" = "list-numrules" ]; then echo -n
+echo "$head_option"
+echo "$cincuenta [$first_option]"
+echo "$cinco         [List iptables numerical rules]"
+echo
+echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
+echo "   forwardnum: List iptables filter rules foward in numbers"
+echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
+echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
+echo
 exit; fi
 ####
 ####
