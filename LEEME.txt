@@ -1,41 +1,7 @@
-[Fran FireWall iptables generator] [version 219]
+##### [Show command list-help / TYPE:] fwiptables list-help
+##### [Fran FireWall fwiptables Generator] [Version 221]
 ################################################## [ ayuda ]
- [  Commands list in groups ]
- launch-guide launch-rules list-rules edit-configs list-sockets recover-fw
- tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-help
- [  User configs    ]
-cliente.cfg servidor.cfg
- [  Util examples  ]
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
- [Launch the config myown.cfg]      fwiptables custom myown.cfg             
- [List iptables rules]              fwiptables list                         
 
-[Fran FireWall iptables generator] [version 219]
-##################################################
- [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   
- [launch-rules]      eraserules offline allpermisive custom [config.cfg]    
- [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            
-                     listnum forwardnum listnum6 forwardnum6                
- [edit-configs]       new-full-config nueva-completa-config                 
-                     new-mini-config nueva-mini-config                      
-                     show-config modify-config del-config                   
- [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          
- [recover-fw]        fw-list fw-save fw-restore                             
- [tool-icmp]         ping-ip4 ping-ip6                                      
- [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       
- [tool-sudo]         auth-sudo remove-sudo list-sudo                        
- [show-etc]          hosts protocols services hosts.allow hosts.deny        
- [show-log]          log-sudo log-sshd log-logserver log-search             
- [show-version]      install version upgrade dev-versions all-versions      
- [show-help]         about depends examples configurations configuraciones help ayuda     
- [||config||]
-cliente.cfg servidor.cfg
- [||Examples||]
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
- [Launch the config myown.cfg]      fwiptables custom myown.cfg             
- [List iptables rules]              fwiptables list                         
-
-##################################################
 
 #####         [Lanzar guia]
 
@@ -68,7 +34,7 @@ cliente.cfg servidor.cfg
      list6num: Lista las reglas de ipv6 de filtros de entrada y salida en numeros
   forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros
 
-#####         [Las otras tablas de iptables]
+#####         [Lista Las otras tablas de iptables]
 
       nat-ip4: Lista las reglas de ipv4 de nat iptables
       nat-ip6: Lista las reglas de ipv6 de nat iptables
@@ -81,16 +47,6 @@ cliente.cfg servidor.cfg
      ebtables: Lista las reglas de nft de ethernet
     arptables: Lista las reglas de arp arptables
 
-#####         [Modifica config]
-
-       new-full-config: Crea una nueva configuracion.cfg en ingles
- nueva-completa-config: Crea una nueva configuracion.cfg en español
-       new-mini-config: Crea una nueva basica configuracion.cfg en ingles
-     nueva-mini-config: Crea una nueva basica configuracion.cfg en español
-         modify-config: Edita una existente configuracion.cfg
-           show-config: Muestra una existente configuracion.cfg
-            del-config: Borra unaa existente configuracion.cfg
-
 #####         [Lista las conexiones abiertas]
 
         route: Muestra los dispositivos de red y la tabla de rutas
@@ -101,11 +57,22 @@ cliente.cfg servidor.cfg
       tcpdump: Escuchar las conexiones ip
           arp: Lista las ultimas conexiones arp
 
-#####         [Recuperador de firewall en formato standard]
+#####         [Herramienta de configuraciones]
 
-      fw-list: Lista los archivos de firewall
-      fw-save: Guarda los archivos de firewall
-   fw-restore: Indica como restaurar los archivos de firewall
+       new-full-config: Crea una nueva configuracion.cfg en ingles
+ nueva-completa-config: Crea una nueva configuracion.cfg en español
+       new-mini-config: Crea una nueva basica configuracion.cfg en ingles
+     nueva-mini-config: Crea una nueva basica configuracion.cfg en español
+         modify-config: Edita una existente configuracion.cfg
+           show-config: Muestra una existente configuracion.cfg
+            del-config: Borra unaa existente configuracion.cfg
+
+#####         [Herramienta de firewall en formato standard]
+
+       fw-list: Lista los archivos de firewall
+       fw-save: Guarda los archivos de firewall
+    fw-restore: Indica como restaurar los archivos de firewall
+fw-show-actual: Muestra el firewall standard actual
 
 #####         [Herramienta icmp]
 
@@ -121,21 +88,22 @@ cliente.cfg servidor.cfg
        geo-ip: Localiza una ip o host
       ntpdate: actualiza la fecha desde un ntp server
 
-#####         [Opciones de autorizacion]
+#####         [Herramienta de autorizacion]
 
     auth-sudo: Permite autorizacion de usuarios elegidos
   remove-sudo: Borra la autorizacion otorgada
     list-sudo: Lista autorizacion de usuarios elegidos
 
-#####         [Version]
+#####         [Mostrar Version]
 
-      install: instala este actual
+      install: instala este programa actual
+  install-bin: instala este programa actual en binario
       version: Informacion de la actual version
       upgrade: Actualiza a la ultima version
  dev-versions: Version en desarrollo 
  all-versions: Todas las versiones 
 
-#####         [Show etc]
+#####         [Mostrar etc]
 
         hosts: muestra /etc/hosts
    protocolos: muestra /etc/protocols
@@ -143,20 +111,24 @@ cliente.cfg servidor.cfg
   hosts.allow: muestra /etc/hosts.allow
    hosts.deny: muestra /etc/hosts.deny
 
-#####         [Show log]
+#####         [Mostrar log]
 
      log-sudo: busca los logs de sudo en /var/log
      log-sshd: busca los logs de sshd en /var/log
 log-logserver: busca los logs de paquetes de este firewall
    log-search: busca los logs dando un patron para /var/log
 
-#####         [Larga Ayuda]
+#####         [Mostrar acerca]
 
           About: Acerca de 
         Depends: Muestra las dependencias 
-       examples: Regenerar ejemplos 
+       examples: Muestra ejemplos 
+
+#####         [Mostrar ayuda]
+
  configurations: ejemplo de config con comentarios en ingles
 configuraciones: ejemplo de config con comentarios en castellano
+      list-help: Muestra list-help
            help: Muestra la ayuda en ingles
           ayuda: Muestra la ayuda en español
 
@@ -174,7 +146,7 @@ configuraciones: ejemplo de config con comentarios en castellano
 
 ##################################################  Ejemplos de las variables de configuración
 
-# Fran FireWall iptables generator from fwiptables config file
+# Fran FireWall fwiptables Generator from fwiptables config file
 # _ _ _ _ _ _ _ # INICIO .......... Opciones Necesarias .......... .......... #
 # # # _ _ _ _ _ _ _ # el iptables firewall netfilter, elige uno o dos
 allow_legacy= # _ _ _ _ _ _ _ # lanza xtables, vacio para si, o escribe no
@@ -211,8 +183,8 @@ allow_others_protocols=no # _ _ _ _ _ _ _ # vacio para permitir otro protocolo i
 # # # _ _ _ _ _ _ _ # Otras Opciones, añadir con , y poner rangos con :
 bandwidth_input=12512 # _ _ _ _ _ _ _ # maximo entrada de ancho de banda en kbit/sec para todos
 bandwidth_output=512 # _ _ _ _ _ _ _ # maximo salida de ancho de banda en kbits/sec para cada ip
-vpn=wesnoth.org # _ _ _ _ _ _ _ # permitir estos host excepcionales
-blacklist= # _ _ _ _ _ _ _ # deniega estos host excepcionales
+vpn=wesnoth.org,sf.net # _ _ _ _ _ _ _ # permitir estos host excepcionales
+blacklist=facebook.com,google.com # _ _ _ _ _ _ _ # deniega estos host excepcionales
 output_uid=root # _ _ _ _ _ _ _ # permite salida de paquetes de este usuario excepcional
 output_gid=root # _ _ _ _ _ _ _ # permite salida de paquetes de este grupo excepcional
 others_protocols=icmp,igmp # _ _ _ _ _ _ _ # permitir otros protocolos desde /etc/protocols
@@ -259,7 +231,7 @@ net_ipv6_server=::/0 # _ _ _ _ _ _ _ # la red cual servidor ipv6, todos es ::/0
 
 ##################################################  [Licencia]
 
-  Descarga la ultima version de Fran FireWall iptables generator desde la web de sourceforge 
+  Descarga la ultima version de Fran FireWall fwiptables Generator desde la web de sourceforge 
   https://sourceforge.net/projects/f-iptables/files/latest/download
   Copyleft, without warranty, free to copy, free to modify, gnu license gpl.
 
