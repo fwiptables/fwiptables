@@ -532,30 +532,30 @@ if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Options]"
-echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
-echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
-echo " [list-numrules]     listnum forwardnum listnum6 forwardnum6                "
-echo " [tool-configs]      new-full-config nueva-completa-config                  "
-echo "                     new-mini-config nueva-mini-config                      "
-echo "                     show-config modify-config del-config                   "
-echo " [tool-guide]        system-info net-info full-wizard mini-wizard cli gui   "
-echo " [tool-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
-echo " [tool-fw]           fw-list fw-save fw-restore fw-show-actual              "
-echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
-echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
-echo " [tool-sudo]         auth-sudo remove-sudo list-sudo                        "
-echo " [tool-install]      install install-bin howto-upgrade auto-upgrade         "
-echo " [tool-version]      actual-version dev-versions all-versions               "
-echo " [show-etc]          hosts protocols services hosts.allow hosts.deny        "
-echo " [show-log]          log-sudo log-sshd log-logserver log-search             "
-echo " [show-about]        about depends examples                                 "
-echo " [show-help]         configurations configuraciones list-help help ayuda    "
-echo "$tab [Configs]"
+echo " [launch-rules:]    eraserules offline allpermisive custom [config.cfg]    "
+echo " [list-rules:]      list forward nat list6 forward6 nat6                "
+echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                "
+echo " [tool-configs:]    new-full-config nueva-completa-config                  "
+echo "                    new-mini-config nueva-mini-config                     "
+echo "                    show-config modify-config del-config                  "
+echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui   "
+echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp          "
+echo " [tool-fw:]         fw-list fw-save fw-restore fw-show-actual              "
+echo " [tool-icmp:]       ping-ip4 ping-ip6                                      "
+echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
+echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                        "
+echo " [tool-install:]    install install-bin howto-upgrade auto-upgrade         "
+echo " [tool-version:]    actual-version dev-versions all-versions               "
+echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny        "
+echo " [show-log:]        log-sudo log-sshd log-logserver log-search             "
+echo " [show-about:]      about depends examples                                 "
+echo " [show-help:]       configurations configuraciones list-help help ayuda    "
+echo "$tab [Configs:]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
-echo "$tab [Examples]"
-echo " [Create a new config myown.cfg]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg]      $fiptables custom myown.cfg             "
-echo " [List iptables rules]              $fiptables list                         "
+echo "$tab [Examples:]"
+echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg    "
+echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg             "
+echo " [List iptables rules:]              $fiptables list                         "
 exit ; fi
 ####
 ####
@@ -701,8 +701,8 @@ echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo
 echo "$cinco         [The others tables]"
 echo
-echo "      nat-ip4: List iptables nat rules from ipv4"
-echo "      nat-ip6: List iptables nat rules from ipv6"
+echo "      nat: List iptables nat rules from ipv4"
+echo "      nat6: List iptables nat rules from ipv6"
 echo "   mangle-ip4: List iptables mangle rules from ipv4"
 echo "   mangle-ip6: List iptables mangle rules from ipv6"
 echo "      raw-ip4: List iptables raw rules from ipv4"
@@ -1162,8 +1162,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   32  "forward" \
   33  "list6"  \
   34  "forward6" \
-  35  "nat-ip4" \
-  36  "nat-ip6" \
+  35  "nat" \
+  36  "nat6" \
   040 "$cinco [List rules numerical] $cinco" \
   41  "listnum" \
   42  "forwardnum" \
@@ -1315,11 +1315,11 @@ case "$menuprincipal" in
  ;;
  35)
  clear
- $fiptables nat-ip4
+ $fiptables nat
  ;;
  36)
  clear
- $fiptables nat-ip6
+ $fiptables nat6
  ;;
  41)
  clear
@@ -2079,11 +2079,11 @@ echo "$subhead_option"
  exit; fi
 ####
 ####
-############################       english: nat-ip4: system script, the nat-ip4 option to list NAT rules of ipv4
-############################       spanish: nat-ip4: script de sistema, la opcion nat-ip4 para listar reglas de NAT de ipv4
+############################       english: nat: system script, the nat option to list NAT rules of ipv4
+############################       spanish: nat: script de sistema, la opcion nat para listar reglas de NAT de ipv4
 ####
 ####
- if [ "$first_option" = "nat-ip4" ]; then echo -n
+ if [ "$first_option" = "nat" ]; then echo -n
  echo "$head_option"
 echo "$subhead_option"
  echo "$tab  [The xtables ipv4][iptables-legacy]"
@@ -2093,11 +2093,11 @@ echo "$subhead_option"
  exit; fi
 ####
 ####
-############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
-############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
+############################       english: nat6: system script, the nat6 option to list NAT rules of ipv6
+############################       spanish: nat6: script de sistema, la opcion nat6 para listar reglas de NAT de ipv6
 ####
 ####
- if [ "$first_option" = "nat-ip6" ]; then echo -n
+ if [ "$first_option" = "nat6" ]; then echo -n
  echo "$head_option"
 echo "$subhead_option"
  echo "$tab  [The xtables ipv6][iptables-legacy]"
@@ -3165,8 +3165,8 @@ echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo
 echo "$cinco         [List the others tables]"
 echo
-echo "      nat-ip4: List iptables nat rules from ipv4"
-echo "      nat-ip6: List iptables nat rules from ipv6"
+echo "      nat: List iptables nat rules from ipv4"
+echo "      nat6: List iptables nat rules from ipv6"
 echo "   mangle-ip4: List iptables mangle rules from ipv4"
 echo "   mangle-ip6: List iptables mangle rules from ipv6"
 echo "      raw-ip4: List iptables raw rules from ipv4"
@@ -3367,8 +3367,8 @@ echo "  forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros"
 echo
 echo "$cinco         [Lista Las otras tablas de iptables]"
 echo
-echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
-echo "      nat-ip6: Lista las reglas de ipv6 de nat iptables"
+echo "      nat: Lista las reglas de ipv4 de nat iptables"
+echo "      nat6: Lista las reglas de ipv6 de nat iptables"
 echo "   mangle-ip4: Lista las reglas de ipv4 de mangle iptables"
 echo "   mangle-ip6: Lista las reglas de ipv6 de mangle iptables"
 echo "      raw-ip4: Lista las reglas de ipv4 de raw iptables"
