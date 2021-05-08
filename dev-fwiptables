@@ -532,14 +532,14 @@ if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Options]"
-echo " [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [launch-rules]      eraserules offline allpermisive custom [config.cfg]    "
-echo " [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            "
-echo "                     listnum forwardnum listnum6 forwardnum6                "
+echo " [list-numrules]     listnum forwardnum listnum6 forwardnum6                "
 echo " [tool-configs]      new-full-config nueva-completa-config                  "
 echo "                     new-mini-config nueva-mini-config                      "
 echo "                     show-config modify-config del-config                   "
+echo " [tool-guide]        system-info net-info full-wizard mini-wizard cli gui   "
+echo " [tool-sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [tool-fw]           fw-list fw-save fw-restore fw-show-actual              "
 echo " [tool-icmp]         ping-ip4 ping-ip6                                      "
 echo " [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
@@ -643,14 +643,14 @@ if [ "$which_gedit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_edi
 ##############################       spanish: Script: opciones generales      #########################################
 ####
 ####
-##############################       english: launch-guide options
-##############################       spanish: launch-guide opciones
+##############################       english: tool-guide options
+##############################       spanish: tool-guide opciones
 ####
 ####
-if [ "$first_option" = "launch-guide" ]; then echo -n
+if [ "$first_option" = "tool-guide" ]; then echo -n
 echo "$head_option"
 echo "$cincuenta [$first_option]"
-echo "$cinco         [Launch guide]"
+echo "$cinco         [get guide]"
 echo
 echo "  system-info: Show info system"
 echo "     net-info: Show net info"
@@ -662,7 +662,7 @@ exit; fi
 ####
 ####
 ##############################       english: launch-rules options
-##############################       spanish: launch-guide opciones
+##############################       spanish: launch-rules opciones
 ####
 ####
 if [ "$first_option" = "launch-rules" ]; then echo -n
@@ -714,14 +714,14 @@ echo "    arptables: List rules arptables arp"
 exit; fi
 ####
 ####
-##############################       english: edit-config options
-##############################       spanish: edit-config opciones
+##############################       english: tool-configs options
+##############################       spanish: tool-configs opciones
 ####
 ####
 if [ "$first_option" = "tool-configs" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$cinco         [tool config]"
+echo "$cinco         [tool configs]"
 echo
 echo "       new-full-config: Create a new configfile.cfg in english"
 echo " nueva-completa-config: Create a new configfile.cfg in spanish"
@@ -733,14 +733,14 @@ echo "            del-config: Delete one configuration file"
 exit; fi
 ####
 ####
-##############################       english: list-sockets options
-##############################       spanish: list-sockets opciones
+##############################       english: tool-sockets options
+##############################       spanish: tool-sockets opciones
 ####
 ####
-if [ "$first_option" = "list-sockets" ]; then echo -n
+if [ "$first_option" = "tool-sockets" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$cinco         [List sockets]"
+echo "$cinco         [Tool sockets]"
 echo
 echo "        route: Show net devices and ip route tables"
 echo "           ss: Show net sockets with command ss"
@@ -3517,8 +3517,8 @@ if  [ "$first_option" = "mini-help" ] ; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Group commands list]"
-echo " launch-guide launch-rules list-rules edit-configs list-sockets recover-fw"
-echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-version show-about show-help"
+echo " tool-guide launch-rules list-rules tool-configs tool-sockets tool-fw"
+echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-install show-version show-about show-help"
 echo "$tab [User configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Util examples]"
@@ -4249,7 +4249,7 @@ echo "  * where which only output rules is more fastly conection"; fi
 if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP] $cinco"
 else echo "$cinco  [With input state IP]  $cinco"
 echo "  Input satate: $input_state"; fi
-echo "$cinco  [With Others configs]  $cinco"
+echo "$cinco  [With Others configurations]  $cinco"
 if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth" ; 
 else echo "  Limit input: above "$bandwidth_input"kb/sec"; fi
 if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth" ;
