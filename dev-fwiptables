@@ -257,7 +257,7 @@ echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate     
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
-echo " [Version]           version upgrade dev-versions all-versions              "
+echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
@@ -268,15 +268,22 @@ echo " [List iptables rules]              $fiptables list                       
 exit ; fi
 ####
 ####
-##############################       english: auto installer if necesary              ###########################################
-##############################       spanish: auto instalador en caso necesario       ###########################################
+##############################       english: Notice Installer            ###########################################
+##############################       spanish: Instalador noticia          ###########################################
 ####
 ####
-if [ "$0" = "$directory_fiptables"/"$fiptables" ] ; then echo -n ;
-else cp $0 $directory_fiptables/$fiptables &> /dev/null ;
+if [ "$0" = "$directory_fiptables"/"$fiptables" ] || [ "$0" = /usr/bin/$fiptables ] ; then echo -n ;
+else echo "$cinco to install type: $0 install"; fi
+####
+####
+##############################       english: Installer $fiptables           ###########################################
+##############################       spanish: Instalador $fiptables          ###########################################
+####
+####
+if [ "$first_option" = "install" ] ; then echo -n ;
+cp $0 $directory_fiptables/$fiptables &> /dev/null ;
 echo "$cinco $fiptables $fversion installed in /usr/bin/$fiptables" ;
-echo "$cinco Launch $fiptables to run $fiptables" ;
-fi
+echo "$cinco Launch $fiptables to run $fiptables" ; fi
 ####
 ####
 ##############################       english: if sane config dir                       ###########################################
@@ -308,7 +315,7 @@ echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate     
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
-echo " [Version]           version upgrade dev-versions all-versions              "
+echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
@@ -2828,7 +2835,7 @@ echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate     
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
-echo " [Version]           version upgrade dev-versions all-versions              "
+echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
@@ -2931,6 +2938,7 @@ echo "    list-sudo: List sudo $fiptables to other choosed users"
 echo
 echo "$cinco         [Version]"
 echo
+echo "      install: install this actualy $fiptables"
 echo "      version: Info version program from $fiptables"
 echo "      upgrade: Upgrade $fiptables at the latest version"
 echo " dev-versions: Version in development from $fiptables"
@@ -3035,11 +3043,11 @@ echo "                     show-config modify-config del-config                 
 echo " [List sockets]      route ss netstat lsof ipforwading tcpdump arp          "
 echo " [Recover fw]        fw-list fw-save fw-restore                             "
 echo " [Tool icmp]         ping-ip4 ping-ip6                                      "
-echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate        "
+echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
-echo " [Version]           version upgrade dev-versions all-versions              "
+echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
@@ -3142,6 +3150,7 @@ echo "    list-sudo: Lista autorizacion a $fiptables de usuarios elegidos"
 echo
 echo "$cinco         [Version]"
 echo
+echo "      install: instala este actual $fiptables"
 echo "      version: Informacion de la actual version $fiptables"
 echo "      upgrade: Actualiza $fiptables a la ultima version"
 echo " dev-versions: Version en desarrollo de $fiptables"
@@ -3250,7 +3259,7 @@ echo " [Tool tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate     
 echo " [Auth sudo]         auth-sudo remove-sudo list-sudo                        "
 echo " [Show etc]          hosts protocols services hosts.allow hosts.deny        "
 echo " [Show log]          log-fwiptables log-sshd log-search log-search-r        "
-echo " [Version]           version upgrade dev-versions all-versions              "
+echo " [Version]           install version upgrade dev-versions all-versions      "
 echo " [Help]              about depends examples options opciones help ayuda     "
 echo " [||Config||]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")

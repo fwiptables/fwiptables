@@ -129,3 +129,6 @@ log busqueda - añadido - ok 216
 log busqueda recursiva - añadido - ok 216
 cli - actualizado - ok 216
 codigo - rediseñado para poder compilarlo con shc - ok 217
+install - añadido - ok 218
+variables - reparadas - ok 218
+
