@@ -70,8 +70,8 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 allow_legacy= ; allow_nft= ; allow_ipv4= ; allow_ipv6=no ;
 client_tcp=ssh,http,https ; client_udp=domain,bootpc,ntp,https ;
 server_tcp=ssh ; server_udp= ; logserver_tcp=ssh ; logserver_udp= ;
-input_state="-m state --state new,related,established" ;
-only_output= ; allow_bandwidth_input=no ;
+input_state="new,related,stablished"
+allow_input_state=no ; allow_only_output=no ; allow_bandwidth_input=no ;
 allow_bandwidth_output=no ; allow_ping_send=no ; allow_ping_recive=no
 allow_forwading=no ; allow_nat=no ;allow_vpn=no ; allow_blacklist=no 
 allow_output_uid=no ; allow_output_gid=no ; allow_others_protocols=no
@@ -88,10 +88,10 @@ net_ipv4_client=0/0 ; net_ipv4_server=0/0 ; net_ipv6_client=::/0 ; net_ipv6_serv
 #### spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var1=""
+var1=$(echo "# BEGIN NECESARY #" )
 eng1=$(echo "#  .......... BEGIN Necesary options .......... .......... #")
 spa1=$(echo "# INICIO .......... Opciones Necesarias .......... .......... #")
-var2="# #"
+var2=$(echo "# NETFILTER #" )
 eng2=$(echo "# the iptables firewall netfilter, choose one or two")
 spa2=$(echo "# el iptables firewall netfilter, elige uno o dos")
 var3=$(echo "allow_legacy=" )
@@ -100,7 +100,7 @@ spa3=$(echo "# lanza xtables, vacio para si, o escribe no")
 var4=$(echo "allow_nft=no" ) 
 eng4=$(echo "# launch neftables, void to yes or type no")
 spa4=$(echo "# lanza neftables, vacio para si, o escribe no")
-var5="# #"
+var5=$(echo "# PROTOCOL IP #" )
 eng5=$(echo "# ip protocol, modify with void or no")
 spa5=$(echo "# procolo ip, modificar con vacio o no")
 var6=$(echo "allow_ipv4=" )
@@ -109,7 +109,7 @@ spa6=$(echo "# varcio para ejecutar el firewall con ipv4 o no para no")
 var7=$(echo "allow_ipv6=no" )
 eng7=$(echo "# void to config firewall with ipv6 or no to dont configure ipv6")
 spa7=$(echo "# varcio para ejecutar el firewall con ipv6 o no para no")
-var8="# #"
+var8=$(echo "# CLIENT PORTS#")
 eng8=$(echo "# Client ports, add with ',' and join ranges with ':'")
 spa8=$(echo "# puertos Cliente, añadir con ',' y poner rangos con ':' ")
 var9=$(echo "client_tcp=http,https,ssh") 
@@ -118,7 +118,7 @@ spa9=$(echo "# puertos tcp para ser cliente")
 var10=$(echo "client_udp=domain,bootpc,ntp,https")
 eng10=$(echo "# udp ports for client")
 spa10=$(echo "# puertos udp para ser cliente")
-var11="# #"
+var11=$(echo "# SERVER PORTS #" )
 eng11=$(echo "# Server ports, add with ',' and join ranges with ':'")
 spa11=$(echo "# Puertos Servidor, añadir con ',' y poner rangos con ':'")
 var12=$(echo "server_tcp=ssh" )
@@ -133,69 +133,75 @@ spa14=$(echo "# puertos tcp para logear servidor")
 var15=$(echo "logserver_udp= ")
 eng15=$(echo "# the udp ports to log server")
 spa15=$(echo "# puertos udp para logear servidor")
-var16="# #"
-eng16=$(echo "# Selective Input state")
-spa16=$(echo "# Estado de entrada selectivo")
-var17=$(echo "input_state=''")
-eng17=$(echo "# void for all or -m state --state new,related,established,untracked,invalid")
-spa17=$(echo "# modificar con vacio o -m state --state new,related,established,untracked,invalid")
-var18="# #"
-eng18=$(echo "# void to works with only output rules or no")
-spa18=$(echo "# vacio para funcionar con reglas de salida solamente or no")
-var19=$(echo "only_output=no" )
-eng19=$(echo "# void when the rules are only to output in filter or no")
-spa19=$(echo "# vacio, reglas solo para salida o no")
-var20="# #"
-eng20=$(echo "# .......... END Necesary options .......... .......... #")
-spa20=$(echo "# FINAL .......... Opciones Necesarias .......... .......... #")
+var16=$(echo "# END NECESARY #" )
+eng16=$(echo "# .......... END Necesary options .......... .......... #")
+spa16=$(echo "# FINAL .......... Opciones Necesarias .......... .......... #")
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var21="# #"
-eng21=$(echo "# .......... BEGIN Optional options .......... .......... #")
-spa21=$(echo "# INICIO .......... Opciones opcionales .......... .......... #")
-var22="# #"
-eng22=$(echo "# Allow Other Options,  modify with void, or no")
-spa22=$(echo "# Permitir Otras Opciones, modificar con vacio o no")
-var23=$(echo "allow_bandwidth_input=no ")
-eng23=$(echo "# void to limit bandwidth input in kbits/sec for all sources or no")
-spa23=$(echo "# vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
-var24=$(echo "allow_bandwidth_output=no" )
-eng24=$(echo "# void to limit bandwidth output in kbits/sec for each destination or no")
-spa24=$(echo "# vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
-var25=$(echo "allow_ping_send=no" )
-eng25=$(echo "# void to allow send pings or no" )
-spa25=$(echo "# vacio para permitir enviar ping o no" )
-var26=$(echo "allow_ping_recive=no" )
-eng26=$(echo "# void to allow recive pings or no" )
-spa26=$(echo "# vacio para permitir recivir ping o no")
-var27=$(echo "allow_forwading=no" )
-eng27=$(echo "# void to allow ip forward or no")
-spa27=$(echo "# vacio para permitir reenvio, y no para denegar reenvios")
-var28=$(echo "allow_nat=no" )
-eng28=$(echo "# void to do NAT masquerade to default route or no")
-spa28=$(echo "# vacio para hacer masquerade a otras redes o no")
-var29=$(echo "allow_vpn=no" )
-eng29=$(echo "# void to allow some exceptional host or no")
-spa29=$(echo "# vacio para permitir hosts excepcionales o no")
-var30=$(echo "allow_blacklist=no")
-eng30=$(echo "# void to drop some excepcional host or no")
-spa30=$(echo "# vacio para denegar hosts excepcionales o no")
-var31=$(echo "allow_output_uid=no" )
-eng31=$(echo "# void to allow excepcional user or no" )
-spa31=$(echo "# vacio permite salida de paquetes de un usuario excepcional o no" )
-var32=$(echo "allow_output_gid=no" )
-eng32=$(echo "# void to allow excepcional group or no" )
-spa32=$(echo "# vacio permite salida de paquetes de un grupo excepcional o no" )
-var33=$(echo "allow_others_protocols=no" )
-eng33=$(echo "# void to allow other protocol ip excepcional or no" )
-spa33=$(echo "# vacio para permitir otro protocolo ip excepcional o no" )
-var34="# #"
-eng34=$(echo "# Other Options, add with , and join ranges with :" )
-spa34=$(echo "# Otras Opciones, añadir con , y poner rangos con :" )
+var17=$(echo "# BEGIN OPTIONAL #" )
+eng17=$(echo "# .......... BEGIN Optional options .......... .......... #")
+spa17=$(echo "# INICIO .......... Opciones opcionales .......... .......... #")
+var18=$(echo "# choose void or no #" )
+eng18=$(echo "# Allow Other Options,  modify with void, or no")
+spa18=$(echo "# Permitir Otras Opciones, modificar con vacio o no")
+var19=$(echo "allow_only_output=no ")
+eng19=$(echo "# void when the rules are only to output filter or no")
+spa19=$(echo "# vacio, reglas solo para salida o no")
+var20=$(echo "allow_input_state=no")
+eng20=$(echo "# Selective Input state or no")
+spa20=$(echo "# Estado de entrada selectivo o no")
+var21=$(echo "allow_bandwidth_input=no ")
+eng21=$(echo "# void to limit bandwidth input in kbits/sec for all sources or no")
+spa21=$(echo "# vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
+var22=$(echo "allow_bandwidth_output=no" )
+eng22=$(echo "# void to limit bandwidth output in kbits/sec for each destination or no")
+spa22=$(echo "# vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
+var23=$(echo "allow_ping_send=no" )
+eng23=$(echo "# void to allow send pings or no" )
+spa23=$(echo "# vacio para permitir enviar ping o no" )
+var24=$(echo "allow_ping_recive=no" )
+eng24=$(echo "# void to allow recive pings or no" )
+spa24=$(echo "# vacio para permitir recivir ping o no")
+var25=$(echo "allow_forwading=no" )
+eng25=$(echo "# void to allow ip forward or no")
+spa25=$(echo "# vacio para permitir reenvio, y no para denegar reenvios")
+var26=$(echo "allow_nat=no" )
+eng26=$(echo "# void to do NAT masquerade to default route or no")
+spa26=$(echo "# vacio para hacer masquerade a otras redes o no")
+var27=$(echo "allow_vpn=no" )
+eng27=$(echo "# void to allow some exceptional host or no")
+spa27=$(echo "# vacio para permitir hosts excepcionales o no")
+var28=$(echo "allow_blacklist=no")
+eng28=$(echo "# void to drop some excepcional host or no")
+spa28=$(echo "# vacio para denegar hosts excepcionales o no")
+var29=$(echo "allow_output_uid=no" )
+eng29=$(echo "# void to allow excepcional user or no" )
+spa29=$(echo "# vacio permite salida de paquetes de un usuario excepcional o no" )
+var30=$(echo "allow_output_gid=no" )
+eng30=$(echo "# void to allow excepcional group or no" )
+spa30=$(echo "# vacio permite salida de paquetes de un grupo excepcional o no" )
+var31=$(echo "allow_others_protocols=no" )
+eng31=$(echo "# void to allow other protocol ip excepcional or no" )
+spa31=$(echo "# vacio para permitir otro protocolo ip excepcional o no" )
+####
+####
+#### english: advance options in configurations file cfg
+#### spanish: avanzadas opciones in configuracion de archivo cfg
+####
+####
+var32=$(echo "# Begin Variables #" )
+eng32=$(echo "# Fill Variables#" )
+spa32=$(echo "# Rellena Variables #" )
+var33=$(echo "# Options" )
+eng33=$(echo "# Other Options, add with , and join ranges with :" )
+spa33=$(echo "# Otras Opciones, añadir con , y poner rangos con :" )
+var34=$(echo "input_state=new,related,established")
+eng34=$(echo "# void for all or new,related,established,untracked,invalid")
+spa34=$(echo "# modificar con vacio o new,related,established,untracked,invalid")
 var35=$(echo "bandwidth_input=12512" )
 eng35=$(echo "# max input bandwidth in kbits/sec for all" )
 spa35=$(echo "# maximo entrada de ancho de banda en kbit/sec para todos" )
@@ -217,7 +223,7 @@ spa40=$(echo "# permite salida de paquetes de este grupo excepcional" )
 var41=$(echo "others_protocols=icmp,igmp" )
 eng41=$(echo "# allow others protocols from /etc/protocolos" )
 spa41=$(echo "# permitir otros protocolos desde /etc/protocols" )
-var42="# #"
+var42=$(echo "# NET TO CLIENT AND SERVER #" )
 eng42=$(echo "# Net to connect like client or server" )
 spa42=$(echo "# Red para conectar como cliente o server" )
 var43=$(echo "net_ipv4_client=0/0" )
@@ -232,7 +238,7 @@ spa45=$(echo "# la red cual cliente ipv6, todos es ::/0" )
 var46=$(echo "net_ipv6_server=::/0" )
 eng46=$(echo "# the net to server ipv6, all is ::/0" )
 spa46=$(echo "# la red cual servidor ipv6, todos es ::/0" )
-var47="# #"
+var47=$(echo "# #" )
 eng47=$(echo "# .......... END Optional options .......... .......... #")
 spa47=$(echo "# FINAL .......... Opciones opcionales .......... .......... #")
 ####
@@ -367,10 +373,6 @@ echo $var13 $tabz $eng13 >> $me
 echo $var14 $tabz $eng14 >> $me
 echo $var15 $tabz $eng15 >> $me
 echo $var16 $tabz $eng16 >> $me
-echo $var17 $tabz $eng17 >> $me
-echo $var18 $tabz $eng18 >> $me
-echo $var19 $tabz $eng19 >> $me
-echo $var20 $tabz $eng20 >> $me
 #### mini-spanish
 echo "# $fprogram from $fiptables config file" > $ms
 echo $var1  $tabz $spa1  >> $ms
@@ -389,10 +391,6 @@ echo $var13 $tabz $spa13 >> $ms
 echo $var14 $tabz $spa14 >> $ms
 echo $var15 $tabz $spa15 >> $ms
 echo $var16 $tabz $spa16 >> $ms
-echo $var17 $tabz $spa17 >> $ms
-echo $var18 $tabz $spa18 >> $ms
-echo $var19 $tabz $spa19 >> $ms
-echo $var20 $tabz $spa20 >> $ms
 #### full-english
 echo "# $fprogram from $fiptables config file" > $fe
 echo $var1  $tabz $eng1  >> $fe
@@ -1456,7 +1454,7 @@ case "$menuprincipal" in
  echo; echo; echo;
  ;; 
  81)
-clear
+ clear
  $fiptables fw-list
  ;;
  82)
@@ -3599,6 +3597,14 @@ if [ -f $directory_config/$first_option ]
 then source $directory_config/$first_option &> /dev/null ; fi
 ####
 ####
+##############################      english: input_state              #####################
+##############################      spanish: estado de entrada        #####################
+####
+####
+if [ $allow_input_state != "$NULL" ]; then input_state="" ;
+else input_state="-m state --state $input_state" ; fi
+####
+####
 ##############################      english: output_uid or output_gid for input established status        #####################
 ##############################      spanish: usuario o grupo para establecidos de entrada de estado        #####################
 ####
@@ -4127,80 +4133,80 @@ $allow_nft $which_ip6tables_nft -A FORWARD -j DROP &> /dev/null
 #### spanish: nft INPUT borradas
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -F INPUT  &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### english: legacy INPUT deleted
 #### spanish: legacy INPUT borradas
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -F INPUT  &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -F INPUT  &> /dev/null
 ####
 ####
 #### english: nft INPUT 127.0.0.1 accept
 #### spanish: nft INPUT 127.0.0.1 acepta
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT 127.0.0.1 accept
 #### spanish: legacy input 127.0.0.1 acepta
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT bandwidth limit
 #### spanish: legacay INPUT limita ancho de banda
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 #### english: nft INPUT bandwidth limit
 #### spanish: nft INPUT limita ancho de banda
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 #### english: nft INPUT ACCEPT all or input_state
 #### spanish: nft INPUT acepta todo o estado de entrada
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT ACCEPT all or input_state 
 #### spanish: entrada acepta todo o estado de entrada
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT $input_state -j ACCEPT &> /dev/null
 ####
 ####
 #### english: nft INPUT DROP all
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_nft $allow_ipv4 $which_iptables_nft -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
 #### english: legacy INPUT DROP all
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$launch_custom $only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
-$launch_custom $only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
 ########################################       english: autosave of firewall to recover standard rules
@@ -4272,7 +4278,7 @@ echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
-if [ "$only_output" = "$NULL" ]; then echo "$cinco  [Whith only the output rules] $cinco"
+if [ "$allow_only_output" = "$NULL" ]; then echo "$cinco  [Whith only the output rules] $cinco"
 echo "  * where which only output rules is more fastly conection"
 else echo "$cinco  [Whith the input rules and the output rules] $cinco"
 echo "  * where which only output rules is more fastly conection"; fi
