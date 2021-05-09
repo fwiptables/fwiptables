@@ -1144,32 +1144,34 @@ esac
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
   000 "$cinco $tab [$fiptables cli] $tab $cinco" \
-  010 "$cinco [Guide to begin] $cinco" \
-  11  "system-info" \
-  12  "net-info" \
-  13  "mini-wizard" \
-  14  "full-wizard" \
-  15  "cli" \
-  16  "gui" \
-  020 "$cinco [Launch rules iptables] $cinco" \
-  21  "eraserules" \
-  22  "offline" \
-  23  "allpermisive" \
-  24  "custom -> is silent" \
-  25  "[config.cfg] -> is verbose" \
-  030 "$cinco [List rules alphabetical] $cinco" \
-  31  "list" \
-  32  "forward" \
-  33  "list6"  \
-  34  "forward6" \
-  35  "nat" \
-  36  "nat6" \
-  040 "$cinco [List rules numerical] $cinco" \
-  41  "listnum" \
-  42  "forwardnum" \
-  43  "listnum6" \
-  44  "forwardnum6" \
-  050 "$cinco [Modify config cfg] $cinco" \
+  010 "$cinco [Launch rules iptables] $cinco" \
+  11  "eraserules" \
+  12  "offline" \
+  13  "allpermisive" \
+  14  "custom -> is silent" \
+  15  "[config.cfg] -> is verbose" \
+  020 "$cinco [List rules alphabetical] $cinco" \
+  21  "list" \
+  22  "forward" \
+  23  "nat" \
+  24  "list6"  \
+  25  "forward6" \
+  26  "nat6" \
+  030 "$cinco [List rules numerical] $cinco" \
+  31  "listnum" \
+  32  "forwardnum" \
+  33  "listnum6" \
+  34  "forwardnum6" \
+  040 "$cinco [List other tables] $cinco"  \
+  41  "raw-ip4" \
+  42  "raw-ip6" \
+  43  "mangle-ip4" \
+  44  "mangle-ip6" \
+  45  "security-ip4" \
+  46  "security-ip6" \
+  47  "ebtables" \
+  48  "arptables" \
+  050 "$cinco [Tool configurations cfg] $cinco" \
   51  "new-full-config" \
   52  "nueva-completa-config" \
   53  "new-mini-config" \
@@ -1177,24 +1179,22 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   55  "show-config" \
   56  "modify-config" \
   57  "del-config" \
-  060 "$cinco [List net sockets] $cinco" \
-  61  "route" \
-  62  "ss" \
-  63  "netstat" \
-  64  "lsof" \
-  65  "ipforwading" \
-  66  "tcpdump" \
-  67  "arp" \
-  070 "$cinco [List other tables] $cinco"  \
-  71  "raw-ip4" \
-  72  "raw-ip6" \
-  73  "mangle-ip4" \
-  74  "mangle-ip6" \
-  75  "security-ip4" \
-  76  "security-ip6" \
-  77  "ebtables" \
-  78  "arptables" \
-  080 "$cinco [Recover fw firewall] $cinco" \
+  060 "$cinco [Tool guide to begin] $cinco" \
+  61  "system-info" \
+  62  "net-info" \
+  63  "mini-wizard" \
+  64  "full-wizard" \
+  65  "cli" \
+  66  "gui" \
+  070 "$cinco [Tool net sockets] $cinco" \
+  71  "route" \
+  72  "ss" \
+  73  "netstat" \
+  74  "lsof" \
+  75  "ipforwading" \
+  76  "tcpdump" \
+  77  "arp" \
+  080 "$cinco [Tool Recover firewall] $cinco" \
   81  "fw-list"  \
   82  "fw-save"  \
   83  "fw-restore"  \
@@ -1209,39 +1209,42 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   104  "resolveip" \
   106  "ntpdate" \
   105  "geoip" \
-  0110 "$cinco [Auth sudo operations] $cinco"  \
+  0110 "$cinco [tool sudo operations] $cinco"  \
   111  "auth-sudo" \
   112  "remove-sudo" \
   113  "list-sudo" \
-  0120 "$cinco [Show etc configurations]$cinco" \
-  121  "hosts" \
-  122  "protocols" \
-  123  "services" \
-  124  "hosts.allow" \
-  125  "hosts.deny" \
-  0130 "$cinco [Show log registry] $cinco" \
-  131  "log-sudo" \
-  132  "log-sshd" \
-  133  "log-logserver" \
-  134  "log-search" \
-  0140 "$cinco [Versions from fwiptables] $cinco" \
-  141  "install" \
-  142  "version" \
-  143  "upgrade" \
-  144  "dev-versions" \
-  145  "all-versions" \
-  0150 "$cinco [About global options] $cinco" \
-  151  "about" \
-  152  "depends" \
-  153  "examples" \
-  0160 "$cinco [Help global options] $cinco" \
-  161  "configurations" \
-  162  "configuraciones" \
-  163  "list-help" \
-  164  "help" \
-  165  "ayuda" \
- )"
-
+  0120 "$cinco [tool install program] $cinco" \
+  121  "install" \
+  122  "install-bin" \
+  123  "howto-upgrade" \
+  124  "auto-upgrade" \
+  0130 "$cinco [Tool version program] $cinco" \
+  131  "actual-version" \
+  132  "dev-versions" \
+  133  "all-versions" \
+  0140 "$cinco [Show etc configurations]$cinco" \
+  141  "hosts" \
+  142  "protocols" \
+  143  "services" \
+  144  "hosts.allow" \
+  145  "hosts.deny" \
+  0150 "$cinco [Show log registry] $cinco" \
+  151  "log-sudo" \
+  152  "log-sshd" \
+  153  "log-logserver" \
+  154  "log-search" \
+  0160 "$cinco [Show about global options] $cinco" \
+  161  "about" \
+  162  "depends" \
+  163  "examples" \
+  0170 "$cinco [Show help global options] $cinco" \
+  171  "configurations" \
+  172  "configuraciones" \
+  173  "list-help" \
+  174  "help" \
+  175  "ayuda" \
+ )"  
+# pendiente
 case "$menuprincipal" in
 0*)
  clear
@@ -1249,93 +1252,111 @@ case "$menuprincipal" in
  clear
  $fiptables cli
  ;;
+
+# hecho
  11)
- clear
- $fiptables system-info
- ;;
- 12)
- clear
- $fiptables net-info
- ;;
- 13)
- clear
- $fiptables mini-wizard
- ;;
- 14)
- clear
- $fiptables full-wizard
- ;;
- 15)
- clear
- $fiptables cli
- ;;
- 16)
- clear
- $fiptables gui
- ;;
- 21)
  clear
  $fiptables eraserules
  ;;
- 22)
+ 12)
  clear
  $fiptables offline
  ;;
- 23)
+ 13)
  clear
  $fiptables allpermisive
  ;;
- 24)
+ 14)
  clear
  archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables custom $archivo
  ;;
- 25)
+ 15)
  clear
  archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables $archivo
  ;;
- 31)
+ 21)
  clear
  $fiptables list
  ;;
- 32)
+ 22)
  clear
  $fiptables forward
  ;;
- 33)
- clear
- $fiptables list6
- ;;
- 34)
- clear
- $fiptables forward6
- ;;
- 35)
+ 23)
  clear
  $fiptables nat
  ;;
- 36)
+ 23)
+ clear
+ $fiptables list6
+ ;;
+ 24)
+ clear
+ $fiptables forward6
+ ;;
+ 26)
  clear
  $fiptables nat6
  ;;
- 41)
+ 31)
  clear
  $fiptables listnum
  ;;
- 42)
+ 32)
  clear
  $fiptables forwardnum
  ;;
- 43)
+ 33)
  clear
  $fiptables listnum6
  ;;
- 44)
+ 34)
  clear
  $fiptables forwardnum6
+ ;;
+ 41)
+ clear
+ $fiptables raw-ip4
+ echo; echo; echo;
+ ;;
+ 42)
+ clear
+ $fiptables raw-ip6
+ echo; echo; echo;
+ ;;
+ 43)
+ clear
+ $fiptables mangle-ip4
+ echo; echo; echo;
+ ;;
+ 44)
+ clear
+ $fiptables mangle-ip6
+ echo; echo; echo;
+ ;;
+ 45)
+ clear
+ $fiptables security-ip4
+ echo; echo; echo;
+ ;;
+ 46)
+ clear
+ $fiptables security-ip6
+ echo; echo; echo;
+ ;;
+ 47)
+ clear
+ $fiptables ebtables
+ echo; echo; echo;
+ ;;
+ 48)
+ clear
+ $fiptables arptables
+ echo; echo; echo;
  ;;
  51)
  clear
@@ -1382,74 +1403,58 @@ case "$menuprincipal" in
  ;;
  61)
  clear
- $fiptables route
+ $fiptables system-info
  ;;
  62)
  clear
- $fiptables ss
+ $fiptables net-info
  ;;
  63)
  clear
- $fiptables netstat
+ $fiptables mini-wizard
  ;;
  64)
  clear
- $fiptables lsof
+ $fiptables full-wizard
  ;;
  65)
  clear
- $fiptables ipforwading
+ $fiptables cli
  ;;
  66)
+ clear
+ $fiptables gui
+ ;;
+ 71)
+ clear
+ $fiptables route
+ ;;
+ 72)
+ clear
+ $fiptables ss
+ ;;
+ 73)
+ clear
+ $fiptables netstat
+ ;;
+ 74)
+ clear
+ $fiptables lsof
+ ;;
+ 75)
+ clear
+ $fiptables ipforwading
+ ;;
+ 76)
  clear
  $fiptables tcpdump
  echo; echo; echo;
  ;;
- 67)
+ 77)
  clear
  $fiptables arp -a
  echo; echo; echo;
- ;;
- 71)
- clear
- $fiptables raw-ip4
- echo; echo; echo;
- ;;
- 72)
- clear
- $fiptables raw-ip6
- echo; echo; echo;
- ;;
- 73)
- clear
- $fiptables mangle-ip4
- echo; echo; echo;
- ;;
- 74)
- clear
- $fiptables mangle-ip6
- echo; echo; echo;
- ;;
- 75)
- clear
- $fiptables security-ip4
- echo; echo; echo;
- ;;
- 76)
- clear
- $fiptables security-ip6
- echo; echo; echo;
- ;;
- 77)
- clear
- $fiptables ebtables
- echo; echo; echo;
- ;;
- 78)
- clear
- $fiptables arptables
- echo; echo; echo;
- ;;
+ ;; 
  81)
 clear
  $fiptables fw-list
@@ -1531,91 +1536,99 @@ clear
  ;;
  121)
  clear
- $fiptables "hosts" | less
+ $zero_option install
  ;;
  122)
  clear
- $fiptables "protocols" | less
+ $zero_option install-bin
  ;;
  123)
  clear
- $fiptables "services" | less
+ $fiptables howto-upgrade
  ;;
  124)
  clear
- $fiptables "hosts.allow" | less
- ;;
- 125)
- clear
- $fiptables "hosts.deny" | less
+ $fiptables auto-upgrade
  ;;
  131)
  clear
- $fiptables "log-sudo" | less
+ $zero_option actual-version
  ;;
  132)
  clear
- $fiptables "log-sshd" | less
+ $zero_option dev-versions
  ;;
  133)
  clear
+ $zero_option all-versions | less
+ ;;
+ 141)
+ clear
+ $fiptables "hosts" | less
+ ;;
+ 142)
+ clear
+ $fiptables "protocols" | less
+ ;;
+ 143)
+ clear
+ $fiptables "services" | less
+ ;;
+ 144)
+ clear
+ $fiptables "hosts.allow" | less
+ ;;
+ 145)
+ clear
+ $fiptables "hosts.deny" | less
+ ;;
+ 151)
+ clear
+ $fiptables "log-sudo" | less
+ ;;
+ 152)
+ clear
+ $fiptables "log-sshd" | less
+ ;;
+ 153)
+ clear
  $fiptables "log-server" | less
  ;;
- 134)
+ 154)
  clear
  pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear
  $fiptables "log-search" "$pattern" | less
  ;;
- 141)
- clear
- $zero_option install
- ;;
- 142)
- clear
- $fiptables version
- ;;
- 143)
- clear
- $fiptables upgrade
- ;;
- 144)
- clear
- $fiptables dev-versions
- ;;
- 145)
- clear
- $fiptables "all-versions" | less
- ;;
- 151)
- clear
- $fiptables about
- ;;
- 152)
- clear
- $fiptables "depends" | less
- ;;
- 153)
- clear
- $fiptables examples
- ;;
  161)
  clear
- $fiptables "configurations" | less
+ $fiptables about | less
  ;;
  162)
  clear
- $fiptables "configuraciones" | less
+ $fiptables "depends" | less
  ;;
  163)
  clear
+ $fiptables examples | less
+ ;;
+ 171)
+ clear
+ $fiptables "configurations" | less
+ ;;
+ 172)
+ clear
+ $fiptables "configuraciones" | less
+ ;;
+ 173)
+ clear
  $fiptables list-help
  ;;
- 164)
+ 174)
  clear
  $fiptables "help" | less
  ;;
- 165)
+ 175)
  clear
  $fiptables "ayuda" | less
  ;;
@@ -1631,7 +1644,7 @@ clear
  $fiptables cli
  exit; fi
 ####
-####
+####   
 ##############################       english: actual-version: system script, the version option
 ##############################       spanish: actual-version: script de sistema, la opcion mostrar version
 ####
