@@ -529,7 +529,7 @@ launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_of
 if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Only one option]"
+echo "$tab [Option]"
 echo " [launch-rules:]    eraserules offline allpermisive custom [config.cfg]    "
 echo " [list-rules:]      list forward nat list6 forward6 nat6                "
 echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                "
