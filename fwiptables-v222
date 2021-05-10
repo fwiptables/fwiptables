@@ -4243,22 +4243,17 @@ exit ; else echo -n ; fi
 if [ "$first_option" = "allpermisive" ]; then echo -n
 echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
-####  # show text to firewall [config.cfg] (silent text) #
-## if [ -f "$directory_config/$first_option" ]; then echo -n
-## echo "$cinco  launch $fiptables list  # to list iptables rules"
-## exit ; else echo -n ; fi
-####  # show text to firewall custom [config.cfg] (silent text) #
 if [ -f "$directory_config/$second_option" ]; then echo -n
 echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
-####  # show text to firewall [config.cfg] or custom [config.cfg] (show text) when fail #
+####  # show text to firewall [config.cfg] (show text) #
 if [ -f "$directory_config/$first_option" ] | [ -f "$directory_config/$second_option" ] ; then echo -n
 echo "$cinco $program configured with the configuration: $second_option $cinco" ;
 else echo "$cinco [Configured with the default configuration] $cinco"
 echo "  $defaultcfg "; fi ;
 echo "$cinco  [With the netfilter iptables firewall]  $cinco"  ;
-echo "  xtables    is  $which_iptables_legacy configured firewall "
-echo "  neftables  is  $which_iptables_nft configured firewall "
+echo "  xtables    is  $allow_legacy configured firewall "
+echo "  neftables  is  $allow_nft configured firewall "
 echo "  * Where at least one iptables is usually necesary"
 echo "$cinco  [With the protocols IP]  $cinco" ;
 echo "  ipv4 is $allow_ipv4 allowed "
@@ -4278,21 +4273,16 @@ echo "$cinco  [With the networks configured]  $cinco" ;
 echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
-if [ "$allow_only_output" = "$NULL" ]; then echo "$cinco  [Whith only the output rules] $cinco"
-echo "  * where which only output rules is more fastly conection"
-else echo "$cinco  [Whith the input rules and the output rules] $cinco"
-echo "  * where which only output rules is more fastly conection"; fi
-if [ "$input_state" = "$NULL" ]; then echo "$cinco  [Without specific input state IP] $cinco"
-else echo "$cinco  [With input state IP]  $cinco"
-echo "  Input satate: $input_state"; fi
 echo "$cinco  [With Others configurations]  $cinco"
 if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth" ; 
 else echo "  Limit input: above "$bandwidth_input"kb/sec"; fi
 if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth" ;
 else echo "  Limit output: above "$bandwidth_output"kb/sec"; fi
+if [ "$allow_only_output" = "no" ]; then echo "  Dont allow only output"; else echo "  Allowed only output" ; fi
+if [ "$allow_input_state" = "no" ]; then echo "  Dont allow specific input state"; else echo "  Allowed input state are $input_state"; fi
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
 if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
-if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading iptables" ; fi
+if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading" ; fi
 if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
 if [ "$allow_blacklist" = "no" ]; then echo "  Dont allow blacklist excepcional"; else  echo "  Allowed blacklist servers are $blacklist" ; fi
