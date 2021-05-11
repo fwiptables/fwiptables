@@ -70,14 +70,19 @@ flicense="Copyleft, without warranty, free to copy, free to modify, gnu license 
 allow_legacy= ; allow_nft= ; allow_ipv4= ; allow_ipv6=no ;
 client_tcp=ssh,http,https ; client_udp=domain,bootpc,ntp,https ;
 server_tcp=ssh ; server_udp= ; logserver_tcp=ssh ; logserver_udp= ;
-input_state="new,related,stablished"
-allow_input_state=no ; allow_only_output=no ; allow_bandwidth_input=no ;
-allow_bandwidth_output=no ; allow_ping_send=no ; allow_ping_recive=no
-allow_forwading=no ; allow_nat=no ;allow_vpn=no ; allow_blacklist=no 
-allow_output_uid=no ; allow_output_gid=no ; allow_others_protocols=no
-bandwidth_input=12512 ; bandwidth_output=512 ; vpn=wesnoth.org ; blacklist=
-output_uid=root ; output_gid=root ; others_protocols=icmp,igmp
-net_ipv4_client=0/0 ; net_ipv4_server=0/0 ; net_ipv6_client=::/0 ; net_ipv6_server=::/0
+allow_only_output=no ; allow_input_state=no ;
+allow_bandwidth_input=no ; allow_bandwidth_output=no ; 
+allow_maxconnect_input=no ; allow_maxconnect_output=no ; 
+allow_ping_send=no ; allow_ping_recive=no ;
+allow_forwading=no ; allow_nat=no ;allow_vpn=no ; allow_blacklist=no ;
+allow_output_uid=no ; allow_output_gid=no ; allow_others_protocols=no ;
+input_state="new,related,stablished" ;
+bandwidth_input=12512 ; bandwidth_output=512 ; 
+maxconnect_input=72 ; maxconnect_output=72 ;
+vpn=wesnoth.org ; blacklist=yandex.com ;
+output_uid=root ; output_gid=root ; others_protocols=icmp,igmp ;
+net_ipv4_client=0/0 ; net_ipv4_server=0/0 ; 
+net_ipv6_client=::/0 ; net_ipv6_server=::/0 ;
 ####
 ####
 ################################################        english: fvariables:    variables to prepare to gen files
@@ -160,87 +165,99 @@ spa21=$(echo "$cinco vacio para limitar ancho de banda de entrada para todas las
 var22=$(echo "allow_bandwidth_output=no" )
 eng22=$(echo "$cinco void to limit bandwidth output in kbits/sec for each destination or no")
 spa22=$(echo "$cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
-var23=$(echo "allow_ping_send=no" )
-eng23=$(echo "$cinco void to allow send pings or no" )
-spa23=$(echo "$cinco vacio para permitir enviar ping o no" )
-var24=$(echo "allow_ping_recive=no" )
-eng24=$(echo "$cinco void to allow recive pings or no" )
-spa24=$(echo "$cinco vacio para permitir recivir ping o no")
-var25=$(echo "allow_forwading=no" )
-eng25=$(echo "$cinco void to allow ip forward or no")
-spa25=$(echo "$cinco vacio para permitir reenvio, y no para denegar reenvios")
-var26=$(echo "allow_nat=no" )
-eng26=$(echo "$cinco void to do NAT masquerade to default route or no")
-spa26=$(echo "$cinco vacio para hacer masquerade a otras redes o no")
-var27=$(echo "allow_vpn=no" )
-eng27=$(echo "$cinco void to allow some exceptional host or no")
-spa27=$(echo "$cinco vacio para permitir hosts excepcionales o no")
-var28=$(echo "allow_blacklist=no")
-eng28=$(echo "$cinco void to drop some excepcional host or no")
-spa28=$(echo "$cinco vacio para denegar hosts excepcionales o no")
-var29=$(echo "allow_output_uid=no" )
-eng29=$(echo "$cinco void to allow excepcional user or no" )
-spa29=$(echo "$cinco vacio permite salida de paquetes de un usuario excepcional o no" )
-var30=$(echo "allow_output_gid=no" )
-eng30=$(echo "$cinco void to allow excepcional group or no" )
-spa30=$(echo "$cinco vacio permite salida de paquetes de un grupo excepcional o no" )
-var31=$(echo "allow_others_protocols=no" )
-eng31=$(echo "$cinco void to allow other protocol ip excepcional or no" )
-spa31=$(echo "$cinco vacio para permitir otro protocolo ip excepcional o no" )
+var23=$(echo "allow_maxconnect_input=no" )
+eng23=$(echo "$cinco void to limit max number for input simultaneous connections or no" )
+spa23=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de entrada o no" )
+var24=$(echo "allow_maxconnect_output=no" )
+eng24=$(echo "$cinco void to limit max number for output simultaneous connections or no" )
+spa24=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de salida o no" )
+var25=$(echo "allow_ping_send=no" )
+eng25=$(echo "$cinco void to allow send pings or no" )
+spa25=$(echo "$cinco vacio para permitir enviar ping o no" )
+var26=$(echo "allow_ping_recive=no" )
+eng26=$(echo "$cinco void to allow recive pings or no" )
+spa26=$(echo "$cinco vacio para permitir recivir ping o no")
+var27=$(echo "allow_forwading=no" )
+eng27=$(echo "$cinco void to allow ip forward or no")
+spa27=$(echo "$cinco vacio para permitir reenvio, y no para denegar reenvios")
+var28=$(echo "allow_nat=no" )
+eng28=$(echo "$cinco void to do NAT masquerade to default route or no")
+spa28=$(echo "$cinco vacio para hacer masquerade a otras redes o no")
+var29=$(echo "allow_vpn=no" )
+eng29=$(echo "$cinco void to allow some exceptional host or no")
+spa29=$(echo "$cinco vacio para permitir hosts excepcionales o no")
+var30=$(echo "allow_blacklist=no")
+eng30=$(echo "$cinco void to drop some excepcional host or no")
+spa30=$(echo "$cinco vacio para denegar hosts excepcionales o no")
+var31=$(echo "allow_output_uid=no" )
+eng31=$(echo "$cinco void to allow excepcional user or no" )
+spa31=$(echo "$cinco vacio permite salida de paquetes de un usuario excepcional o no" )
+var32=$(echo "allow_output_gid=no" )
+eng32=$(echo "$cinco void to allow excepcional group or no" )
+spa32=$(echo "$cinco vacio permite salida de paquetes de un grupo excepcional o no" )
+var33=$(echo "allow_others_protocols=no" )
+eng33=$(echo "$cinco void to allow other protocol ip excepcional or no" )
+spa33=$(echo "$cinco vacio para permitir otro protocolo ip excepcional o no" )
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var32=$(echo "$cinco Begin Variables #" )
-eng32=$(echo "$cinco Fill Variables#" )
-spa32=$(echo "$cinco Rellena Variables #" )
-var33=$(echo "$cinco Options" )
-eng33=$(echo "$cinco Other Options, add with , and join ranges with :" )
-spa33=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-var34=$(echo "input_state=new,related,established")
-eng34=$(echo "$cinco void for all or new,related,established,untracked,invalid")
-spa34=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var35=$(echo "bandwidth_input=12512" )
-eng35=$(echo "$cinco max input bandwidth in kbits/sec for all" )
-spa35=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
-var36=$(echo "bandwidth_output=512" )
-eng36=$(echo "$cinco max output bandwidth in kbits/sec for each ip" )
-spa36=$(echo "$cinco maximo salida de ancho de banda en kbits/sec para cada ip" )
-var37=$(echo "vpn=wesnoth.org,sf.net" )
-eng37=$(echo "$cinco allow this excepcitonal host" )
-spa37=$(echo "$cinco permitir estos host excepcionales" )
-var38=$(echo "blacklist=facebook.com,google.com" )
-eng38=$(echo "$cinco drop this excepcional host" )
-spa38=$(echo "$cinco deniega estos host excepcionales" )
-var39=$(echo "output_uid=root" )
-eng39=$(echo "$cinco allow out packages excepcional from this user excepcional" )
-spa39=$(echo "$cinco permite salida de paquetes de este usuario excepcional" )
-var40=$(echo "output_gid=root" )
-eng40=$(echo "$cinco allow out packages excepcional from this group excepcional" )
-spa40=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
-var41=$(echo "others_protocols=icmp,igmp" )
-eng41=$(echo "$cinco allow others protocols from /etc/protocolos" )
-spa41=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
-var42=$(echo "$cinco NET TO CLIENT AND SERVER #" )
-eng42=$(echo "$cinco Net to connect like client or server" )
-spa42=$(echo "$cinco Red para conectar como cliente o server" )
-var43=$(echo "net_ipv4_client=0/0" )
-eng43=$(echo "$cinco the net to client ipv4, all is 0/0" )
-spa43=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
-var44=$(echo "net_ipv4_server=0/0" )
-eng44=$(echo "$cinco the net to server ipv4, all is 0/0" )
-spa44=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
-var45=$(echo "net_ipv6_client=::/0" )
-eng45=$(echo "$cinco the net to client ipv6, all is ::/0" )
-spa45=$(echo "$cinco la red cual cliente ipv6, todos es ::/0" )
-var46=$(echo "net_ipv6_server=::/0" )
-eng46=$(echo "$cinco the net to server ipv6, all is ::/0" )
-spa46=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
-var47=$(echo "$cinco #" )
-eng47=$(echo "$cinco .......... END Optional options .......... .......... #")
-spa47=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
+var34=$(echo "$cinco Begin Variables #" )
+eng34=$(echo "$cinco Fill Variables#" )
+spa34=$(echo "$cinco Rellena Variables #" )
+var35=$(echo "$cinco Options" )
+eng35=$(echo "$cinco Other Options, add with , and join ranges with :" )
+spa35=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
+var36=$(echo "input_state=new,related,established")
+eng36=$(echo "$cinco void for all or new,related,established,untracked,invalid")
+spa36=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
+var37=$(echo "bandwidth_input=12512" )
+eng37=$(echo "$cinco max input bandwidth in kbits/sec for all" )
+spa37=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
+var38=$(echo "bandwidth_output=512" )
+eng38=$(echo "$cinco max output bandwidth in kbits/sec for each ip" )
+spa38=$(echo "$cinco maximo salida de ancho de banda en kbits/sec para cada ip" )
+var39=$(echo "maxconnect_input=72" )
+eng39=$(echo "$cinco max number for input simultaneous connections" )
+spa39=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
+var40=$(echo "maxconnect_output=72" )
+eng40=$(echo "$cinco max number for output simultaneous connections" )
+spa40=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
+var41=$(echo "vpn=wesnoth.org,sf.net" )
+eng41=$(echo "$cinco allow this excepcitonal host" )
+spa41=$(echo "$cinco permitir estos host excepcionales" )
+var42=$(echo "blacklist=facebook.com,google.com" )
+eng42=$(echo "$cinco drop this excepcional host" )
+spa42=$(echo "$cinco deniega estos host excepcionales" )
+var43=$(echo "output_uid=root" )
+eng43=$(echo "$cinco allow out packages excepcional from this user excepcional" )
+spa43=$(echo "$cinco permite salida de paquetes de este usuario excepcional" )
+var44=$(echo "output_gid=root" )
+eng44=$(echo "$cinco allow out packages excepcional from this group excepcional" )
+spa44=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
+var45=$(echo "others_protocols=icmp,igmp" )
+eng45=$(echo "$cinco allow others protocols from /etc/protocolos" )
+spa45=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
+var46=$(echo "$cinco NET TO CLIENT AND SERVER #" )
+eng46=$(echo "$cinco Net to connect like client or server" )
+spa46=$(echo "$cinco Red para conectar como cliente o server" )
+var47=$(echo "net_ipv4_client=0/0" )
+eng47=$(echo "$cinco the net to client ipv4, all is 0/0" )
+spa47=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
+var48=$(echo "net_ipv4_server=0/0" )
+eng48=$(echo "$cinco the net to server ipv4, all is 0/0" )
+spa48=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
+var49=$(echo "net_ipv6_client=::/0" )
+eng49=$(echo "$cinco the net to client ipv6, all is ::/0" )
+spa49=$(echo "$cinco la red cual cliente ipv6, todos es ::/0" )
+var50=$(echo "net_ipv6_server=::/0" )
+eng50=$(echo "$cinco the net to server ipv6, all is ::/0" )
+spa50=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
+var51=$(echo "$cinco #" )
+eng51=$(echo "$cinco .......... END Optional options .......... .......... #")
+spa51=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
 ####
 ####
 ##############################       english: are you root: uid 0 ?
@@ -318,14 +335,14 @@ echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fipta
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables" ; exit; fi
 ####
 ####
-##############################       english: Install-bin:    $fiptables           ###########################################
-##############################       spanish: Instalador-bin: $fiptables           ###########################################
+##############################       english: Install-bin:  install $fiptables in binary     ###########################################
+##############################       spanish: Install-bin:  instala $fiptables en binario    ###########################################
 ####
 ####
 if [ "$first_option" = "install-bin" ] ; then echo -n ;
 case $(which shc) in
 "$NULL")
-echo "$cinco install shc to compile"
+echo "$cinco install shc to compile $fwiptables"
 ;;
 *)
 echo "$head_option"
@@ -440,6 +457,10 @@ echo $var44 $tabz $eng44 >> $fe
 echo $var45 $tabz $eng45 >> $fe
 echo $var46 $tabz $eng46 >> $fe
 echo $var47 $tabz $eng47 >> $fe
+echo $var48 $tabz $eng48 >> $fe
+echo $var49 $tabz $eng49 >> $fe
+echo $var50 $tabz $eng50 >> $fe
+echo $var51 $tabz $eng51 >> $fe
 #### full-spanish 
 echo "# $fprogram from $fiptables config file" > $fs
 echo $var1  $tabz $spa1 >> $fs
@@ -489,6 +510,10 @@ echo $var44 $tabz $spa44 >> $fs
 echo $var45 $tabz $spa45 >> $fs
 echo $var46 $tabz $spa46 >> $fs
 echo $var47 $tabz $spa47 >> $fs
+echo $var48 $tabz $eng48 >> $fs
+echo $var49 $tabz $eng49 >> $fs
+echo $var50 $tabz $eng50 >> $fs
+echo $var51 $tabz $eng51 >> $fs
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               #############################
@@ -3671,8 +3696,8 @@ $allow_nft  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
-#######################################        english: limit bandwidth
-#######################################        spanish: limitar ancho de banda
+#######################################        english: limit bandwidth in kb/s
+#######################################        spanish: limitar ancho de banda en kb/s
 ####
 ####
 #### english: ipv4  bandwidth
@@ -3689,6 +3714,26 @@ $allow_ipv6 $allow_legacy $allow_bandwidth_input $which_ip6tables_legacy -A  INP
 $allow_ipv6 $allow_legacy $allow_bandwidth_output $which_ip6tables_legacy -A OUTPUT -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 $allow_ipv6 $allow_nft $allow_bandwidth_input $which_ip6tables_nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $allow_ipv6 $allow_nft $allow_bandwidth_output $which_ip6tables_nft -A OUTPUT -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+####
+####
+#######################################        english: limit number of all connections
+#######################################        spanish: limitar numero de conexiones totales
+####
+####
+#### english: ipv4  bandwidth
+#### spanish: ipv4  ancho de banda
+$allow_ipv4 $allow_legacy $allow_maxconnect_input  $which_iptables_legacy -A INPUT  -m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
+$allow_ipv4 $allow_legacy $allow_maxconnect_output $which_iptables_legacy -A OUTPUT -m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
+$allow_ipv4 $allow_nft $allow_maxconnect_input $which_iptables_nft   -A INPUT  -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+$allow_ipv4 $allow_nft $allow_maxconnect_output $which_iptables_nft  -A OUTPUT -m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
+####
+####
+#### english: ipv6 bandwidth
+#### spanish: ipv6 ancho de banda
+$allow_ipv6 $allow_legacy $allow_maxconnect_input  $which_ip6tables_legacy -A INPUT  -m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
+$allow_ipv6 $allow_legacy $allow_maxconnect_output $which_ip6tables_legacy -A OUTPUT -m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
+$allow_ipv6 $allow_nft $allow_maxconnect_input $which_ip6tables_nft   -A INPUT  -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+$allow_ipv6 $allow_nft $allow_maxconnect_output $which_ip6tables_nft  -A OUTPUT -m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
 ####
 ####
 ####################################### english: Drop rules for blacklist
@@ -4278,6 +4323,10 @@ if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth"
 else echo "  Limit input: above "$bandwidth_input"kb/sec"; fi
 if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth" ;
 else echo "  Limit output: above "$bandwidth_output"kb/sec"; fi
+if [ "$allow_maxconnect_input" = "no" ]; then echo "  Dont limit input numbers of connections" ; 
+else echo "  Limit connection: above "$maxconnect_input"/minute"; fi
+if [ "$allow_maxconnect_output" = "no" ]; then echo "  Dont limit output numbers of connections" ;
+else echo "  Limit connection: above "$maxconnect_output"/minute"; fi
 if [ "$allow_only_output" = "no" ]; then echo "  Dont allow only output"; else echo "  Allowed only output" ; fi
 if [ "$allow_input_state" = "no" ]; then echo "  Dont allow specific input state"; else echo "  Allowed input state are $input_state"; fi
 if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
