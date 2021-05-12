@@ -527,8 +527,8 @@ if [ -f "$directory_config/$second_option" ]; then config_option="si"; else conf
 ##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
 ####
 ####
-####   the first: [config.cfg]
-####
+####   the first option : [config.cfg]  ----  verbose
+####   El primera opción: [config.cfg]  ----- con info
 ####
 if [ -f "$directory_config"/"$first_option" ]; then echo -n ;
 launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ; 
@@ -536,14 +536,14 @@ launch_permisive="no" ; launch_offline="no" ; launch_custom="" ;
 else echo -n; fi
 ####
 ####
-####   the first: offline, allpermisive or custom
+####   the first option: offline, allpermisive or custom          --- semi silent
+####   El primero:       desconectado, todopermisivo o modificado --- semi silencioso
 ####
-####
-if [ "$first_option" = "offline" ]; then      echo "  FIREWALL OFFLINE" ; echo "$cincuenta"
+if [ "$first_option" = "offline" ]; then      echo "$cinco  FIREWALL OFFLINE" ; echo "$cincuenta"
 launch_iptables="si"; launch_thesecond="si"; launch_permisive="no"; launch_offline=""   ;  launch_custom="no" ; only_output="no"  ; fi
-if [ "$first_option" = "allpermisive" ]; then echo "  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
+if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIVE" ; echo "$cincuenta"
 launch_iptables="si"; launch_thesecond="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; only_output="no"  ; fi
-if [ "$first_option" = "custom" ]; then       echo "  FIREWALL CUSTOM" ; echo "$cincuenta"
+if [ "$first_option" = "custom" ]; then       echo "$cinco  FIREWALL CUSTOM" ; echo "$cincuenta"
 launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
 ####
