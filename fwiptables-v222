@@ -1713,11 +1713,7 @@ echo
 echo "# config web example #" 
 echo "server_tcp=http,https ;"
 echo "client_tcp=http,https ;"
-echo "client_udp=domain,ntp,bootpc ;"
-echo "allow_ping_send=no ;"
-echo "allow_pring_recive=no ;"
-echo "only_output= ; "
-echo "input_state='-m state --state new,related,established' ; " 
+echo "client_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  games example  ####
@@ -1727,9 +1723,6 @@ echo
 echo "# config games example #"
 echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
 echo "client_tcp=http,https" 
-echo "allow_ping_send= ; allow_ping_recive= ; "
-echo "only_output= ; "
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config:  torrent-example1.cfg ####
@@ -1739,9 +1732,6 @@ echo
 echo "# config torrent example #" 
 echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
 echo "client_tcp=http,https"
-echo "allow_ping_send=no ;  allow_ping_recive=no ; "
-echo "only_output= ; "
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: samba-example1.cfg ####
@@ -1754,8 +1744,6 @@ echo "client_tcp=http,https,ipp,microsoft-ds"
 echo "server_udp=137:139 ; "
 echo "server_tcp=ssh,ipp,microsoft-ds" 
 echo "allow_ping_send= ; allow_ping_recive= ; " 
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: vpn-sample1.cfg ##
@@ -1766,9 +1754,6 @@ echo "# config vpn example #"
 echo "allow_forwading= ; "
 echo "allow_vpn= ; " 
 echo "vpn=wesnoth.org,sourceforge.net" 
-echo "allow_ping_send= ; allow_ping_recive= ; "  
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: email-example1.cfg ####
@@ -1778,10 +1763,6 @@ echo
 echo "# config email example #" 
 echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" 
 echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps" 
-echo "allow_ping_send= ; " 
-echo "allow_ping_recive= " 
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 #### config: ssh-example1.cfg ####
@@ -1791,10 +1772,6 @@ echo
 echo "# config ssh example #" 
 echo "client_tcp=http,https,printer,ipp,ssh,rsync,git" 
 echo "server_tcp=http,https,printer,ipp,ssh,rsync,git" 
-echo "allow_ping_send= ; " 
-echo "allow_ping_recive= ;" 
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 #### config: vnc-example1.cfg ####
@@ -1804,9 +1781,6 @@ echo
 echo "# config vnc example #" 
 echo "client_tcp=http,https,ssh,5900:5910" 
 echo "server_tcp=ssh,http,https,5900:5910" 
-echo "allow_ping_send= ; allow_ping_recive= ; "  
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: ftp-example1.cfg ##
@@ -1818,9 +1792,6 @@ echo "client_tcp=http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp"
 echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp" 
 echo "client_udp=domain,bootpc,ntp,https,tftp"
 echo "server_udp=tftp"
-echo "allow_ping_send= ; allow_ping_recive= ;" 
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 #### config: printer-example1.cfg ####
@@ -1830,9 +1801,6 @@ echo
 echo "# config printer example #"
 echo "client_tcp=http,https,ipp,printer" 
 echo "server_tcp=ssh,http,https,ipp,printer" 
-echo "allow_ping_send= ; allow_ping_recive= ; "  
-echo "only_output= ; " 
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: irc-example1.cfg ####
@@ -1842,9 +1810,6 @@ echo
 echo "# config irc example #" 
 echo "client_tcp=http,https,ircd,ircs-u"
 echo "server_tcp=ssh,http,https,ircd,ircs-u" 
-echo "allow_ping_send=no ; allow_ping_recive=no ; " 
-echo "only_output= ; "
-echo "input_state='-m state --state new,related,established' ; "
 ####
 ####
 #### config: sql-example1.cfg ####
@@ -1854,9 +1819,6 @@ echo
 echo "# config sql example #" 
 echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s" 
 echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s" 
-echo "allow_ping_send= ; allow_ping_recive= ; " 
-echo "only_output= ; "
-echo "input_state='-m state --state new,related,established' ; " 
 ####
 ####
 exit ; fi
