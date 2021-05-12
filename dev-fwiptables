@@ -3168,15 +3168,6 @@ echo "$head_option"
 echo "$subhead_option"
 echo
 echo ""
-echo "$cinco         [Launch guide]"
-echo
-echo "  system-info: Show info system"
-echo "     net-info: Show net info"
-echo "  full-wizard: Asistant y launch complete firewall"
-echo "  mini-wizard: Asistant y Launch simple firewall"
-echo "          cli: Comand line interface with menus"
-echo "          gui: Graphicall user interface"
-echo ""
 echo "$cinco         [Launch iptables rules]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
@@ -3212,16 +3203,6 @@ echo " security-ip6: List iptables security rules from ipv6"
 echo "     ebtables: List rules ebtables nft ethernet"
 echo "    arptables: List rules arptables arp"
 echo
-echo "$cinco         [List sockets]"
-echo
-echo "        route: Show net devices and ip route tables"
-echo "           ss: Show net sockets with command ss"
-echo "         lsof: Show net sockets with command lsof"
-echo "      netstat: Show net sockets with command netstat"
-echo "  ipforwading: Show kernel config about forward"
-echo "      tcpdump: Listen the connections"
-echo "          arp: List the last conentions arp"
-echo
 echo "$cinco         [tool config]"
 echo
 echo "       new-full-config: Create a new configfile.cfg in english"
@@ -3231,6 +3212,25 @@ echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
 echo "         modify-config: Edit one config.cfg"
 echo "           show-config: Show one config.cfg"
 echo "            del-config: Delete one configuration file"
+echo
+echo "$cinco         [Launch guide]"
+echo
+echo "  system-info: Show info system"
+echo "     net-info: Show net info"
+echo "  full-wizard: Asistant y launch complete firewall"
+echo "  mini-wizard: Asistant y Launch simple firewall"
+echo "          cli: Comand line interface with menus"
+echo "          gui: Graphicall user interface"
+echo ""
+echo "$cinco         [List sockets]"
+echo
+echo "        route: Show net devices and ip route tables"
+echo "           ss: Show net sockets with command ss"
+echo "         lsof: Show net sockets with command lsof"
+echo "      netstat: Show net sockets with command netstat"
+echo "  ipforwading: Show kernel config about forward"
+echo "      tcpdump: Listen the connections"
+echo "          arp: List the last conentions arp"
 echo
 echo "$cinco         [Tool fw]"
 echo
@@ -3370,15 +3370,6 @@ echo "$head_option"
 echo "$subhead_option"
 echo
 echo ""
-echo "$cinco         [Lanzar guia]"
-echo
-echo "  system-info: Muestra la informacion del sistema"
-echo "     net-info: Muestra informacion de la red"
-echo "  full-wizard: Asistente y lanza completo cortafuegos"
-echo "  mini-wizard: Asistente y lanza simple cortafuegos"
-echo "          cli: Interfaz de linea de comandos con menus"
-echo "          gui: Interfaz grafico de usuario"
-echo
 echo "$cinco         [Lanza reglas de iptables]"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
@@ -3414,16 +3405,6 @@ echo " security-ip6: Lista las reglas de ip6 de security iptables"
 echo "     ebtables: Lista las reglas de nft de ethernet"
 echo "    arptables: Lista las reglas de arp arptables"
 echo
-echo "$cinco         [Lista las conexiones abiertas]"
-echo
-echo "        route: Muestra los dispositivos de red y la tabla de rutas"
-echo "           ss: Muestra las conexiones con comando ss"
-echo "      netstat: Muestra las conexiones con comando netstat"
-echo "         lsof: Muestra las conexiones con command lsof"
-echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
-echo "      tcpdump: Escuchar las conexiones ip"
-echo "          arp: Lista las ultimas conexiones arp"
-echo
 echo "$cinco         [Herramienta de configuraciones]"
 echo
 echo "       new-full-config: Crea una nueva configuracion.cfg en ingles"
@@ -3434,13 +3415,26 @@ echo "         modify-config: Edita una existente configuracion.cfg"
 echo "           show-config: Muestra una existente configuracion.cfg"
 echo "            del-config: Borra unaa existente configuracion.cfg"
 echo
-echo "$cinco         [Herramienta de firewall en formato standard]"
+echo "$cinco         [Lanzar guia]"
 echo
-echo "       fw-list: Lista los archivos de firewall"
-echo "       fw-save: Guarda los archivos de firewall"
-echo "    fw-restore: Indica como restaurar los archivos de firewall"
-echo "fw-show-actual: Muestra el firewall standard actual"
+echo "  system-info: Muestra la informacion del sistema"
+echo "     net-info: Muestra informacion de la red"
+echo "  full-wizard: Asistente y lanza completo cortafuegos"
+echo "  mini-wizard: Asistente y lanza simple cortafuegos"
+echo "          cli: Interfaz de linea de comandos con menus"
+echo "          gui: Interfaz grafico de usuario"
 echo
+echo "$cinco         [Lista las conexiones abiertas]"
+echo
+echo "        route: Muestra los dispositivos de red y la tabla de rutas"
+echo "           ss: Muestra las conexiones con comando ss"
+echo "      netstat: Muestra las conexiones con comando netstat"
+echo "         lsof: Muestra las conexiones con command lsof"
+echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
+echo "      tcpdump: Escuchar las conexiones ip"
+echo "          arp: Lista las ultimas conexiones arp"
+echo
+
 echo "$cinco         [Herramienta icmp]"
 echo
 echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
