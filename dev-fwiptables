@@ -30,7 +30,7 @@ source /etc/profile
 ####
 ####
 ####        #### english: [the variables names and the path] #spanish: [nombres de variables y rutas]
-favorite_option="list-help" ;                                          #english: list or help-list
+favorite_option="list-help" ;                                     #english: list or help-list
 zero_dir="$(pwd)" ; zero_option="$0" ;                            #english: variables to launch  #spanish: variables a lanzar
 first_option="$1" ; second_option="$2" ;                          #english: variables to launch  #spanish: variables a lanzar
 launch_thefirst="no" ; launch_thesecond="no" ;                    #english: variables to launch  #spanish: variables a lanzar
@@ -49,7 +49,7 @@ directory_fwrecover="/etc/fwrecover" ;                            #english: path
 autosave_fwrecover="" ;                                           #english: void to autosave fwrecover or no #spanish: autoguardar fwrecover
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ;          #english: [characters to show] #spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;  #english: [characters to show] #spanish: [caracteres a mostrar]
-head_option="$cinco [$fprogram] [Version $fversion]" ;                   #english: [characters to show] #spanish: [caracteres a mostrar]
+head_option="$cinco [$fprogram] [Version $fversion]" ;            #english: [characters to show] #spanish: [caracteres a mostrar]
 subhead_option="$cincuenta [ $first_option ]" ;                   #english: [characters to show] #spanish: [caracteres a mostrar]
 log_prefix="logserver:"                                           #english: log prefix in iptables #spanish: prefijo del log en iptables
 flistado="-70" ;                                                  #english: wide of list config files #spanish: Ancho al listar cfg
@@ -282,8 +282,8 @@ if  [ "$first_option" = "$NULL" ] ; then first_option="$favorite_option" ; fi
 ####
 ####    #english: necesary advice the list-help #spanish: necesario el aviso de ayuda list-help
 ####
-if  [ "$first_option" != "list-help" ] ; then echo -n ;
-echo "$cinco [Show command list-help / TYPE:] $fiptables list-help" ; fi 
+if  [ $first_option != "list-help" ] ; then echo -n ;
+echo "$cinco [Show command list-help / TYPE:] $fiptables list-help" ; else echo -n; fi 
 ####
 ####
 ####    #english: rewrite variable [characters to show] #spanish: reescribe variable [caracteres a mostrar]
@@ -3585,7 +3585,7 @@ exit; else echo -n ; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_iptables" != "si" ] ; then $fiptables ; exit ; else echo -n ; fi
+if [ $launch_iptables != "si" ] ; then $fiptables ; exit ; else echo -n ; fi
 ####
 ####
 ###############################################################################################################
@@ -3626,8 +3626,7 @@ then source $directory_config/$first_option &> /dev/null ; fi
 ##############################      spanish: estado de entrada        #####################
 ####
 ####
-if [ $allow_input_state != "$NULL" ]; then input_state="" ;
-else input_state="-m state --state $input_state" ; fi
+if [ "$allow_input_state" = "$NULL" ] ; then input_state="-m state --state $input_state" ; else input_state="$NULL" ; fi
 ####
 ####
 ##############################      english: output_uid or output_gid for input established status        #####################
@@ -4277,7 +4276,7 @@ esac
 ####
 ####
 ####  # show text head lines in all firewall #
-echo "$head_option";
+echo "$head_option"
 echo "$cincuenta lauching iptables rules $cinco"
 echo "$cinco  OK LAUNCHED $fiptables $first_option $second_option"
 ####  # show text to firewall offline #
