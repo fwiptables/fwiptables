@@ -38,7 +38,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall fwiptables Generator" ; fversion="222";   #english: Name and Version  #spanish: Nombre y Version
+fprogram="Fran FireWall fwiptables Generator" ; fversion="223";   #english: Name and Version  #spanish: Nombre y Version
 directory_config="/etc/fwiptables" ;                              #english: path to config files  #spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"           #english: path to config files  #spanish: archivos de configuracion
 defaultfullcfg_eng="$directory_config/default-full-english.cfg"   #english: path to config files  #spanish: archivos de configuracion
