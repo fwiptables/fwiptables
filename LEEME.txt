@@ -1,16 +1,7 @@
 ##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 221]
+##### [Fran FireWall fwiptables Generator] [Version 222]
 ################################################## [ ayuda ]
 
-
-#####         [Lanzar guia]
-
-  system-info: Muestra la informacion del sistema
-     net-info: Muestra informacion de la red
-  full-wizard: Asistente y lanza completo cortafuegos
-  mini-wizard: Asistente y lanza simple cortafuegos
-          cli: Interfaz de linea de comandos con menus
-          gui: Interfaz grafico de usuario
 
 #####         [Lanza reglas de iptables]
 
@@ -36,8 +27,8 @@
 
 #####         [Lista Las otras tablas de iptables]
 
-      nat-ip4: Lista las reglas de ipv4 de nat iptables
-      nat-ip6: Lista las reglas de ipv6 de nat iptables
+      nat: Lista las reglas de ipv4 de nat iptables
+      nat6: Lista las reglas de ipv6 de nat iptables
    mangle-ip4: Lista las reglas de ipv4 de mangle iptables
    mangle-ip6: Lista las reglas de ipv6 de mangle iptables
       raw-ip4: Lista las reglas de ipv4 de raw iptables
@@ -46,16 +37,6 @@
  security-ip6: Lista las reglas de ip6 de security iptables
      ebtables: Lista las reglas de nft de ethernet
     arptables: Lista las reglas de arp arptables
-
-#####         [Lista las conexiones abiertas]
-
-        route: Muestra los dispositivos de red y la tabla de rutas
-           ss: Muestra las conexiones con comando ss
-      netstat: Muestra las conexiones con comando netstat
-         lsof: Muestra las conexiones con command lsof
-  ipforwading: Muestra la configuracion del kernel sobre reenvios ip
-      tcpdump: Escuchar las conexiones ip
-          arp: Lista las ultimas conexiones arp
 
 #####         [Herramienta de configuraciones]
 
@@ -67,12 +48,24 @@
            show-config: Muestra una existente configuracion.cfg
             del-config: Borra unaa existente configuracion.cfg
 
-#####         [Herramienta de firewall en formato standard]
+#####         [Lanzar guia]
 
-       fw-list: Lista los archivos de firewall
-       fw-save: Guarda los archivos de firewall
-    fw-restore: Indica como restaurar los archivos de firewall
-fw-show-actual: Muestra el firewall standard actual
+  system-info: Muestra la informacion del sistema
+     net-info: Muestra informacion de la red
+  full-wizard: Asistente y lanza completo cortafuegos
+  mini-wizard: Asistente y lanza simple cortafuegos
+          cli: Interfaz de linea de comandos con menus
+          gui: Interfaz grafico de usuario
+
+#####         [Lista las conexiones abiertas]
+
+        route: Muestra los dispositivos de red y la tabla de rutas
+           ss: Muestra las conexiones con comando ss
+      netstat: Muestra las conexiones con comando netstat
+         lsof: Muestra las conexiones con command lsof
+  ipforwading: Muestra la configuracion del kernel sobre reenvios ip
+      tcpdump: Escuchar las conexiones ip
+          arp: Lista las ultimas conexiones arp
 
 #####         [Herramienta icmp]
 
@@ -94,14 +87,18 @@ fw-show-actual: Muestra el firewall standard actual
   remove-sudo: Borra la autorizacion otorgada
     list-sudo: Lista autorizacion de usuarios elegidos
 
-#####         [Mostrar Version]
+#####         [Herramienta para instalacion]
 
       install: instala este programa actual
   install-bin: instala este programa actual en binario
-      version: Informacion de la actual version
-      upgrade: Actualiza a la ultima version
- dev-versions: Version en desarrollo 
- all-versions: Todas las versiones 
+howto-upgrade: Indicacion para actualizar
+ auto-upgrade: Actualiza a la ultima version
+
+#####         [Herramienta de Version]
+
+actual-version: Informacion de la actual version
+  dev-versions: Informacion de version en desarrollo 
+  all-versions: Informacion de todas las versiones 
 
 #####         [Mostrar etc]
 
@@ -147,53 +144,57 @@ configuraciones: ejemplo de config con comentarios en castellano
 ##################################################  Ejemplos de las variables de configuración
 
 # Fran FireWall fwiptables Generator from fwiptables config file
-# _ _ _ _ _ _ _ # INICIO .......... Opciones Necesarias .......... .......... #
-# # # _ _ _ _ _ _ _ # el iptables firewall netfilter, elige uno o dos
-allow_legacy= # _ _ _ _ _ _ _ # lanza xtables, vacio para si, o escribe no
-allow_nft=no # _ _ _ _ _ _ _ # lanza neftables, vacio para si, o escribe no
-# # # _ _ _ _ _ _ _ # procolo ip, modificar con vacio o no
-allow_ipv4= # _ _ _ _ _ _ _ # varcio para ejecutar el firewall con ipv4 o no para no
-allow_ipv6=no # _ _ _ _ _ _ _ # varcio para ejecutar el firewall con ipv6 o no para no
-# # # _ _ _ _ _ _ _ # puertos Cliente, añadir con ',' y poner rangos con ':'
-client_tcp=http,https,ssh # _ _ _ _ _ _ _ # puertos tcp para ser cliente
-client_udp=domain,bootpc,ntp,https # _ _ _ _ _ _ _ # puertos udp para ser cliente
-# # # _ _ _ _ _ _ _ # Puertos Servidor, añadir con ',' y poner rangos con ':'
-server_tcp=ssh # _ _ _ _ _ _ _ # puertos tcp para servidor
-server_udp= # _ _ _ _ _ _ _ # puertos udp para servidor
-logserver_tcp=ssh # _ _ _ _ _ _ _ # puertos tcp para logear servidor
-logserver_udp= # _ _ _ _ _ _ _ # puertos udp para logear servidor
-# # # _ _ _ _ _ _ _ # Estado de entrada selectivo
-input_state='' # _ _ _ _ _ _ _ # modificar con vacio o -m state --state new,related,established,untracked,invalid
-# # # _ _ _ _ _ _ _ # vacio para funcionar con reglas de salida solamente or no
-only_output=no # _ _ _ _ _ _ _ # vacio, reglas solo para salida o no
-# # # _ _ _ _ _ _ _ # FINAL .......... Opciones Necesarias .......... .......... #
-# # # _ _ _ _ _ _ _ # INICIO .......... Opciones opcionales .......... .......... #
-# # # _ _ _ _ _ _ _ # Permitir Otras Opciones, modificar con vacio o no
-allow_bandwidth_input=no # _ _ _ _ _ _ _ # vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no
-allow_bandwidth_output=no # _ _ _ _ _ _ _ # vacio limitar ancho de banda de salida en kbits/sec por cada destino o no
-allow_ping_send=no # _ _ _ _ _ _ _ # vacio para permitir enviar ping o no
-allow_ping_recive=no # _ _ _ _ _ _ _ # vacio para permitir recivir ping o no
-allow_forwading=no # _ _ _ _ _ _ _ # vacio para permitir reenvio, y no para denegar reenvios
-allow_nat=no # _ _ _ _ _ _ _ # vacio para hacer masquerade a otras redes o no
-allow_vpn=no # _ _ _ _ _ _ _ # vacio para permitir hosts excepcionales o no
-allow_blacklist=no # _ _ _ _ _ _ _ # vacio para denegar hosts excepcionales o no
-allow_output_uid=no # _ _ _ _ _ _ _ # vacio permite salida de paquetes de un usuario excepcional o no
-allow_output_gid=no # _ _ _ _ _ _ _ # vacio permite salida de paquetes de un grupo excepcional o no
-allow_others_protocols=no # _ _ _ _ _ _ _ # vacio para permitir otro protocolo ip excepcional o no
-# # # _ _ _ _ _ _ _ # Otras Opciones, añadir con , y poner rangos con :
-bandwidth_input=12512 # _ _ _ _ _ _ _ # maximo entrada de ancho de banda en kbit/sec para todos
-bandwidth_output=512 # _ _ _ _ _ _ _ # maximo salida de ancho de banda en kbits/sec para cada ip
-vpn=wesnoth.org,sf.net # _ _ _ _ _ _ _ # permitir estos host excepcionales
-blacklist=facebook.com,google.com # _ _ _ _ _ _ _ # deniega estos host excepcionales
-output_uid=root # _ _ _ _ _ _ _ # permite salida de paquetes de este usuario excepcional
-output_gid=root # _ _ _ _ _ _ _ # permite salida de paquetes de este grupo excepcional
-others_protocols=icmp,igmp # _ _ _ _ _ _ _ # permitir otros protocolos desde /etc/protocols
-# # # _ _ _ _ _ _ _ # Red para conectar como cliente o server
-net_ipv4_client=0/0 # _ _ _ _ _ _ _ # la red cual cliente ipv4, todos es 0/0
-net_ipv4_server=0/0 # _ _ _ _ _ _ _ # la red cual servidor ipv4, todos es 0/0
-net_ipv6_client=::/0 # _ _ _ _ _ _ _ # la red cual cliente ipv6, todos es ::/0
-net_ipv6_server=::/0 # _ _ _ _ _ _ _ # la red cual servidor ipv6, todos es ::/0
-# # # _ _ _ _ _ _ _ # FINAL .......... Opciones opcionales .......... .......... #
+##### BEGIN NECESARY # # _ _ _ _ _ _ _ ##### INICIO .......... Opciones Necesarias .......... .......... #
+##### NETFILTER # # _ _ _ _ _ _ _ ##### el iptables firewall netfilter, elige uno o dos
+allow_legacy= # _ _ _ _ _ _ _ ##### lanza xtables, vacio para si, o escribe no
+allow_nft=no # _ _ _ _ _ _ _ ##### lanza neftables, vacio para si, o escribe no
+##### PROTOCOL IP # # _ _ _ _ _ _ _ ##### procolo ip, modificar con vacio o no
+allow_ipv4= # _ _ _ _ _ _ _ ##### varcio para ejecutar el firewall con ipv4 o no para no
+allow_ipv6=no # _ _ _ _ _ _ _ ##### varcio para ejecutar el firewall con ipv6 o no para no
+##### CLIENT PORTS# # _ _ _ _ _ _ _ ##### puertos Cliente, añadir con ',' y poner rangos con ':'
+client_tcp=http,https,ssh # _ _ _ _ _ _ _ ##### puertos tcp para ser cliente
+client_udp=domain,bootpc,ntp,https # _ _ _ _ _ _ _ ##### puertos udp para ser cliente
+##### SERVER PORTS # # _ _ _ _ _ _ _ ##### Puertos Servidor, añadir con ',' y poner rangos con ':'
+server_tcp=ssh # _ _ _ _ _ _ _ ##### puertos tcp para servidor
+server_udp= # _ _ _ _ _ _ _ ##### puertos udp para servidor
+logserver_tcp=ssh # _ _ _ _ _ _ _ ##### puertos tcp para logear servidor
+logserver_udp= # _ _ _ _ _ _ _ ##### puertos udp para logear servidor
+##### END NECESARY # # _ _ _ _ _ _ _ ##### FINAL .......... Opciones Necesarias .......... .......... #
+##### BEGIN OPTIONAL # # _ _ _ _ _ _ _ ##### INICIO .......... Opciones opcionales .......... .......... #
+##### choose void or no # # _ _ _ _ _ _ _ ##### Permitir Otras Opciones, modificar con vacio o no
+allow_only_output=no # _ _ _ _ _ _ _ ##### vacio, reglas solo para salida o no
+allow_input_state=no # _ _ _ _ _ _ _ ##### Estado de entrada selectivo o no
+allow_bandwidth_input=no # _ _ _ _ _ _ _ ##### vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no
+allow_bandwidth_output=no # _ _ _ _ _ _ _ ##### vacio limitar ancho de banda de salida en kbits/sec por cada destino o no
+allow_maxconnect_input=no # _ _ _ _ _ _ _ ##### vacio para limitar numero de conexiones simultaneas de entrada o no
+allow_maxconnect_output=no # _ _ _ _ _ _ _ ##### vacio para limitar numero de conexiones simultaneas de salida o no
+allow_ping_send=no # _ _ _ _ _ _ _ ##### vacio para permitir enviar ping o no
+allow_ping_recive=no # _ _ _ _ _ _ _ ##### vacio para permitir recivir ping o no
+allow_forwading=no # _ _ _ _ _ _ _ ##### vacio para permitir reenvio, y no para denegar reenvios
+allow_nat=no # _ _ _ _ _ _ _ ##### vacio para hacer masquerade a otras redes o no
+allow_vpn=no # _ _ _ _ _ _ _ ##### vacio para permitir hosts excepcionales o no
+allow_blacklist=no # _ _ _ _ _ _ _ ##### vacio para denegar hosts excepcionales o no
+allow_output_uid=no # _ _ _ _ _ _ _ ##### vacio permite salida de paquetes de un usuario excepcional o no
+allow_output_gid=no # _ _ _ _ _ _ _ ##### vacio permite salida de paquetes de un grupo excepcional o no
+allow_others_protocols=no # _ _ _ _ _ _ _ ##### vacio para permitir otro protocolo ip excepcional o no
+##### Begin Variables # # _ _ _ _ _ _ _ ##### Rellena Variables #
+##### Options # _ _ _ _ _ _ _ ##### Otras Opciones, añadir con , y poner rangos con :
+input_state=new,related,established # _ _ _ _ _ _ _ ##### modificar con vacio o new,related,established,untracked,invalid
+bandwidth_input=12512 # _ _ _ _ _ _ _ ##### maximo entrada de ancho de banda en kbit/sec para todos
+bandwidth_output=512 # _ _ _ _ _ _ _ ##### maximo salida de ancho de banda en kbits/sec para cada ip
+maxconnect_input=72 # _ _ _ _ _ _ _ ##### maximo numero de conexiones simultaneas de entrada
+maxconnect_output=72 # _ _ _ _ _ _ _ ##### maximo numero de conexiones simultaneas de salida
+vpn=wesnoth.org,sf.net # _ _ _ _ _ _ _ ##### permitir estos host excepcionales
+blacklist=facebook.com,google.com # _ _ _ _ _ _ _ ##### deniega estos host excepcionales
+output_uid=root # _ _ _ _ _ _ _ ##### permite salida de paquetes de este usuario excepcional
+output_gid=root # _ _ _ _ _ _ _ ##### permite salida de paquetes de este grupo excepcional
+others_protocols=icmp,igmp # _ _ _ _ _ _ _ ##### permitir otros protocolos desde /etc/protocols
+##### NET TO CLIENT AND SERVER # # _ _ _ _ _ _ _ ##### Red para conectar como cliente o server
+net_ipv4_client=0/0 # _ _ _ _ _ _ _ ##### la red cual cliente ipv4, todos es 0/0
+net_ipv4_server=0/0 # _ _ _ _ _ _ _ ##### the net to server ipv4, all is 0/0
+net_ipv6_client=::/0 # _ _ _ _ _ _ _ ##### the net to client ipv6, all is ::/0
+net_ipv6_server=::/0 # _ _ _ _ _ _ _ ##### the net to server ipv6, all is ::/0
+##### # # _ _ _ _ _ _ _ ##### .......... END Optional options .......... .......... #
 
  Notas de fwiptables :
 

@@ -1,25 +1,27 @@
-[Fran FireWall iptables generator] [version 219]
+##### [Fran FireWall fwiptables Generator] [Version 222]
 ################################################## [ list-help ]
-     [Options]
- [launch-guide]      system-info net-info full-wizard mini-wizard cli gui   
- [launch-rules]      eraserules offline allpermisive custom [config.cfg]    
- [list-rules]        list forward list6 forward6 nat-ip4 nat-ip6            
-                     listnum forwardnum listnum6 forwardnum6                
- [edit-configs]       new-full-config nueva-completa-config                 
-                     new-mini-config nueva-mini-config                      
-                     show-config modify-config del-config                   
- [list-sockets]      route ss netstat lsof ipforwading tcpdump arp          
- [recover-fw]        fw-list fw-save fw-restore                             
- [tool-icmp]         ping-ip4 ping-ip6                                      
- [tool-tcp]          trace-ip4 trace-ip6 host resolveip geoip ntpdate       
- [tool-sudo]         auth-sudo remove-sudo list-sudo                        
- [show-etc]          hosts protocols services hosts.allow hosts.deny        
- [show-log]          log-sudo log-sshd log-logserver log-search             
- [show-version]      install version upgrade dev-versions all-versions      
- [show-help]         about depends examples configurations configuraciones help ayuda     
+     [Option]
+ [launch-rules:]    eraserules offline allpermisive custom [config.cfg]    
+ [list-rules:]      list forward nat list6 forward6 nat6                
+ [list-numrules:]   listnum forwardnum listnum6 forwardnum6                
+ [tool-configs:]    new-full-config nueva-completa-config                  
+                    new-mini-config nueva-mini-config                     
+                    show-config modify-config del-config                  
+ [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui   
+ [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp          
+ [tool-fw:]         fw-list fw-save fw-restore fw-show-actual              
+ [tool-icmp:]       ping-ip4 ping-ip6                                      
+ [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate       
+ [tool-sudo:]       auth-sudo remove-sudo list-sudo                        
+ [tool-install:]    install install-bin howto-upgrade auto-upgrade         
+ [tool-version:]    actual-version dev-versions all-versions               
+ [show-etc:]        hosts protocols services hosts.allow hosts.deny        
+ [show-log:]        log-sudo log-sshd log-logserver log-search             
+ [show-about:]      about depends examples                                 
+ [show-help:]       configurations configuraciones list-help help ayuda    
      [Configs]
-cliente.cfg servidor.cfg
+cliente.cfg prueba1.cfg servidor.cfg
      [Examples]
- [Create a new config myown.cfg]    fwiptables new-mini-config myown.cfg    
- [Launch the config myown.cfg]      fwiptables custom myown.cfg             
- [List iptables rules]              fwiptables list                         
+ [Create a new config myown.cfg:]    fwiptables new-mini-config myown.cfg    
+ [Launch the config myown.cfg:]      fwiptables custom myown.cfg             
+ [List iptables rules:]              fwiptables list                         
