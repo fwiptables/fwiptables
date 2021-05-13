@@ -151,4 +151,22 @@ install-bin - añadido - ok 221
 cambio de nombres de grupos - hecho - ok 221
 help - actualizado - ok 221
 ayuda - actualizado - ok 221
-reordenar cli - pendiente - 
+reordenar cli - ok 221
+wizard in gui - arreglado -ok 222
+input_state - cambiado, ahora con allow - ok 222
+only_output - cambiado ahora con allow -ok 222
+input_state - pasado a opcional - ok 222
+only_output - pasado a opcional - ok 222
+list-help - cambio de apariencia - ok 222
+list-help - reoordenado - ok 222
+cli - reoordenador - ok 222
+upgrade - cambiado a howto-upgrade - ok 222
+web-upgrade - cambiado a auto-upgrade - ok 222
+firewall config.cfg - verbose - ok 222
+firewall custom config.cfg - semi-silent - ok 222
+help - reoordneado - ok 222
+ayuda - reoordenado -ok 222
+allow_maxconnect_input - añadido - ok 222
+allow maxconnect_output - añadido -ok 222
+maxconnect_input - añadido - ok 222
+maxconnect_output - añadido - ok 222
