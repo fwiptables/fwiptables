@@ -627,6 +627,7 @@ which_gedit="$(which gedit | cut -d " " -f 1)"
 which_lynx="$(which lynx | cut -d " " -f 1)"
 which_links="$(which links | cut -d " " -f 1)"
 which_elinks="$(which elinks | cut -d " " -f 1)"
+which_shc="$(which shc | cut -d " " -f 1)"
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
@@ -964,6 +965,7 @@ echo "Depends for $fiptables"
 echo "$cincuenta $fiptables"
 echo "$tab [$fiptables util]"
 echo "fmt:       $which_fmt"
+echo "shc:       $which_shc"
 echo "$tab [$fiptables cli]"
 echo "dialog:    $which_dialog"
 echo "$tab [$fiptables gui]"
