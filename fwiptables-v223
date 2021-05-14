@@ -1315,11 +1315,11 @@ case "$menuprincipal" in
  clear
  $fiptables nat
  ;;
- 23)
+ 24)
  clear
  $fiptables list6
  ;;
- 24)
+ 25)
  clear
  $fiptables forward6
  ;;
