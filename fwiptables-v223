@@ -4276,10 +4276,10 @@ echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
 echo "$cinco  [With Others configurations]  $cinco"
-if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth" ; 
-else echo "  Limit input: above $bandwidth_input kb/sec "; fi
-if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth" ;
-else echo "  Limit output: above $bandwidth_output kb/sec "; fi
+if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth complete" ; 
+else echo "  Limit input: above $bandwidth_input kb/sec complete"; fi
+if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth per ip" ;
+else echo "  Limit output: above $bandwidth_output kb/sec per ip"; fi
 if [ "$allow_maxconnect_input" = "no" ]; then echo "  Dont limit input numbers of connections" ; 
 else echo "  Limit max connections: above $maxconnect_input "; fi
 if [ "$allow_maxconnect_output" = "no" ]; then echo "  Dont limit output numbers of connections" ;
