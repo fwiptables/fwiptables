@@ -1482,7 +1482,7 @@ case "$menuprincipal" in
  ;; 
  81)
  clear
- $fiptables fw-list
+ $fiptables fw-list | less
  ;;
  82)
  clear
@@ -1497,7 +1497,7 @@ case "$menuprincipal" in
  ;;
  84)
  clear
- $fiptables fw-show-actual
+ $fiptables fw-show-actual | less
  ;;
  91)
  clear
