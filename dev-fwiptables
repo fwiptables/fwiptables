@@ -4148,7 +4148,7 @@ $launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_leg
 ####
 ####
 #### english: nft INPUT 127.0.0.1 accept
-#### spanish: nft INPUT 127.0.0.1 acepta
+#### spanish: nft INPUT ::1 acepta
 ####
 ####
 $launch_custom $allow_only_output $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
@@ -4156,27 +4156,43 @@ $launch_custom $allow_only_output $allow_ipv6 $allow_nft $which_ip6tables_nft -t
 ####
 ####
 #### english: legacy INPUT 127.0.0.1 accept
-#### spanish: legacy input 127.0.0.1 acepta
+#### spanish: legacy INPUT ::1 acepta
 ####
 ####
 $launch_custom $allow_only_output $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 $launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 ####
-#### english: legacy INPUT bandwidth limit
-#### spanish: legacay INPUT limita ancho de banda
+#### english: legacy4 INPUT  limit bandwidth
+#### spanish: legacy6 INPUT limita ancho de banda
 ####
 ####
 $launch_custom $allow_only_output $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $launch_custom $allow_only_output $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
-#### english: nft INPUT bandwidth limit
-#### spanish: nft INPUT limita ancho de banda
+#### english: nft4 INPUT limit bandwidth
+#### spanish: nft6 INPUT limita ancho de banda
 ####
 ####
 $launch_custom $allow_only_output $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $launch_custom $allow_only_output $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+####
+####
+#### english: ipv4  limit conections numbers
+#### spanish: ipv4  limita numero de conexiones
+####
+####
+$launch_custom $allow_only_output $allow_ipv4 $allow_legacy $allow_maxconnect_input  $which_iptables_legacy -A INPUT  -m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
+$launch_custom $allow_only_output $allow_ipv4 $allow_nft $allow_maxconnect_input $which_iptables_nft   -A INPUT  -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+####
+####
+#### english: ipv6 limit conections numbers
+#### spanish: ipv6 limita numero de conexiones
+####
+####
+$launch_custom $allow_only_output $allow_ipv6 $allow_legacy $allow_maxconnect_input  $which_ip6tables_legacy -A INPUT  -m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
+$launch_custom $allow_only_output $allow_ipv6 $allow_nft $allow_maxconnect_input $which_ip6tables_nft   -A INPUT  -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
 ####
 ####
 #### english: nft INPUT ACCEPT all or input_state
