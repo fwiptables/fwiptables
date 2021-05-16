@@ -556,11 +556,11 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Option]"
 echo " [launch-rules:]    eraserules offline allpermisive custom [config.cfg]    "
-echo " [list-rules:]      list forward nat list6 forward6 nat6                "
+echo " [list-rules:]      list forward nat list6 forward6 nat6                   "
 echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                "
 echo " [tool-configs:]    new-full-config nueva-completa-config                  "
-echo "                    new-mini-config nueva-mini-config                     "
-echo "                    show-config modify-config del-config                  "
+echo "                    new-mini-config nueva-mini-config                      "
+echo "                    show-config modify-config del-config                   "
 echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp          "
 echo " [tool-fw:]         fw-list fw-save fw-restore fw-show-actual              "
@@ -576,9 +576,9 @@ echo " [show-help:]       configurations configuraciones list-help help ayuda   
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
-echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg             "
-echo " [List iptables rules:]              $fiptables list                         "
+echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg  "
+echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg           "
+echo " [List iptables rules:]              $fiptables list                       "
 exit ; fi
 ####
 ####
@@ -1272,24 +1272,24 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 # pendiente
 case "$menuprincipal" in
 0*)
+ reset
  clear
  dialog --msgbox "Program Menu" 0 0
  clear
  $fiptables cli
  ;;
-
 # hecho
  11)
  clear
- $fiptables eraserules
+ $fiptables "eraserules"
  ;;
  12)
  clear
- $fiptables offline
+ $fiptables "offline"
  ;;
  13)
  clear
- $fiptables allpermisive
+ $fiptables "allpermisive"
  ;;
  14)
  clear
@@ -1301,87 +1301,79 @@ case "$menuprincipal" in
  clear
  archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
- $fiptables $archivo
+ $fiptables $archivo | less
  ;;
  21)
  clear
- $fiptables list
+ $fiptables "list" | less
  ;;
  22)
  clear
- $fiptables forward
+ $fiptables "forward" | less
  ;;
  23)
  clear
- $fiptables nat
+ $fiptables "nat" | less
  ;;
  24)
  clear
- $fiptables list6
+ $fiptables "list6" | less
  ;;
  25)
  clear
- $fiptables forward6
+ $fiptables "forward6" | less
  ;;
  26)
  clear
- $fiptables nat6
+ $fiptables "nat6" | less
  ;;
  31)
  clear
- $fiptables listnum
+ $fiptables "listnum" | less
  ;;
  32)
  clear
- $fiptables forwardnum
+ $fiptables "forwardnum" | less
  ;;
  33)
  clear
- $fiptables listnum6
+ $fiptables "listnum6" | less
  ;;
  34)
  clear
- $fiptables forwardnum6
+ $fiptables "forwardnum6" | less
  ;;
  41)
  clear
- $fiptables raw-ip4
- echo; echo; echo;
+ $fiptables "raw-ip4" | less
  ;;
  42)
  clear
- $fiptables raw-ip6
- echo; echo; echo;
- ;;
+ $fiptables "raw-ip6" | less
+  ;;
  43)
  clear
- $fiptables mangle-ip4
- echo; echo; echo;
+ $fiptables "mangle-ip4" | less
  ;;
  44)
  clear
- $fiptables mangle-ip6
- echo; echo; echo;
+ $fiptables "mangle-ip6" | less
  ;;
  45)
  clear
- $fiptables security-ip4
- echo; echo; echo;
+ $fiptables "security-ip4" | less
  ;;
  46)
  clear
- $fiptables security-ip6
- echo; echo; echo;
+ $fiptables "security-ip6" | less
  ;;
  47)
  clear
- $fiptables ebtables
- echo; echo; echo;
+ $fiptables "ebtables" | less
  ;;
  48)
  clear
- $fiptables arptables
- echo; echo; echo;
+ $fiptables "arptables" | less
  ;;
  51)
  clear
@@ -1428,61 +1420,59 @@ case "$menuprincipal" in
  ;;
  61)
  clear
- $fiptables system-info
+ $fiptables "system-info" | less
  ;;
  62)
  clear
- $fiptables net-info
+ $fiptables "net-info" | less
  ;;
  63)
  clear
- $fiptables mini-wizard
+ $fiptables "mini-wizard"
  ;;
  64)
  clear
- $fiptables full-wizard
+ $fiptables "full-wizard"
  ;;
  65)
  clear
- $fiptables cli
+ $fiptables "cli"
  ;;
  66)
  clear
- $fiptables gui
+ $fiptables "gui"
  ;;
  71)
  clear
- $fiptables route
+ $fiptables "route" | less
  ;;
  72)
  clear
- $fiptables ss
+ $fiptables "ss"  | less
  ;;
  73)
  clear
- $fiptables netstat
+ $fiptables "netstat" | less
  ;;
  74)
  clear
- $fiptables lsof
+ $fiptables "lsof" | less
  ;;
  75)
  clear
- $fiptables ipforwading
+ $fiptables "ipforwading" | less
  ;;
  76)
  clear
- $fiptables tcpdump
- echo; echo; echo;
+ $fiptables "tcpdump" | less
  ;;
  77)
  clear
- $fiptables arp -a
- echo; echo; echo;
+ $fiptables arp -a | less
  ;; 
  81)
  clear
- $fiptables fw-list | less
+ $fiptables "fw-list" | less
  ;;
  82)
  clear
@@ -1493,11 +1483,11 @@ case "$menuprincipal" in
  ;;
  83)
  clear
- $fiptables fw-restore
+ $fiptables "fw-restore"
  ;;
  84)
  clear
- $fiptables fw-show-actual | less
+ $fiptables "fw-show-actual" | less
  ;;
  91)
  clear
@@ -1543,7 +1533,7 @@ case "$menuprincipal" in
  ;;
  106)
  clear
- $fiptables ntpdate
+ $fiptables "ntpdate"
  ;;
  111)
  clear
@@ -1553,39 +1543,39 @@ case "$menuprincipal" in
  ;;
  112)
  clear
- $fiptables remove-sudo
+ $fiptables "remove-sudo"
  ;;
  113)
  clear
- $fiptables list-sudo
+ $fiptables "list-sudo"
  ;;
  121)
  clear
- $zero_option install
+ $zero_option "install"
  ;;
  122)
  clear
- $zero_option install-bin
+ $zero_option "install-bin"
  ;;
  123)
  clear
- $fiptables howto-upgrade
+ $fiptables "howto-upgrade" | less
  ;;
  124)
  clear
- $fiptables auto-upgrade
+ $fiptables "auto-upgrade"
  ;;
  131)
- clear
- $zero_option actual-version
+ clear 
+ $zero_option "actual-version" | less
  ;;
  132)
  clear
- $zero_option dev-versions
+ $zero_option "dev-versions"
  ;;
  133)
  clear
- $zero_option all-versions | less
+ $zero_option "all-versions" | less
  ;;
  141)
  clear
@@ -1627,7 +1617,7 @@ case "$menuprincipal" in
  ;;
  161)
  clear
- $fiptables about | less
+ $fiptables "about" | less
  ;;
  162)
  clear
@@ -1635,7 +1625,7 @@ case "$menuprincipal" in
  ;;
  163)
  clear
- $fiptables examples | less
+ $fiptables "examples" | less
  ;;
  171)
  clear
@@ -1647,7 +1637,7 @@ case "$menuprincipal" in
  ;;
  173)
  clear
- $fiptables list-help
+ $fiptables "list-help" | less
  ;;
  174)
  clear
