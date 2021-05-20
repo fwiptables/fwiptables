@@ -172,5 +172,9 @@ maxconnect_input - añadido - ok 222
 maxconnect_output - añadido - ok 222
 reglas - fixed - ok 223
 netclient and netserver - fixed - ok 223
-compolete - actualizado - ok 224
-
+complete - actualizado - ok 224
+forward - solo muestra cuando hay reglas
+nat - solo muestra cuando hay reglas
+list6 - solo muestra cuando hay reglas
+forward6 - solo muestra cuando hay reglas
+nat6 - solo muestra cuando hay reglas
