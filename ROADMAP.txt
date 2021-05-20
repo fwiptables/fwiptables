@@ -170,3 +170,7 @@ allow_maxconnect_input - añadido - ok 222
 allow maxconnect_output - añadido -ok 222
 maxconnect_input - añadido - ok 222
 maxconnect_output - añadido - ok 222
+reglas - fixed - ok 223
+netclient and netserver - fixed - ok 223
+compolete - actualizado - ok 224
+

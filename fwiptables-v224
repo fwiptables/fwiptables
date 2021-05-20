@@ -354,7 +354,7 @@ chmod ugo+rx /tmp/$fiptables-bin
 cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
 echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
 echo "alias $fiptables='sudo $fiptables'"       >  /etc/bash_completion.d/$fiptables ;
-echo "complete -W 'list list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
+echo "complete -W 'list list6 forward forward6 nat nat6 list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
 ;;
 esac
