@@ -1992,6 +1992,7 @@ exit; fi
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
+   echo "$cinco No rules in filter-legacy"
  ;;
  *)
  echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
@@ -2001,6 +2002,7 @@ exit; fi
  esac
  case $nftcuatro in
  "$NULL")
+   echo "$cinco No rules in filter-nft"
  ;;
  *)
  echo "$tab  [With rules neftables ipv4][iptables-nft]  "
@@ -2015,13 +2017,29 @@ exit; fi
 ############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
 ####
 ####
- if [ "$first_option" = "forward" ]; then echo -n
+ if [ "$first_option" = "forward" ]; then echo -n ;
+ legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
+ nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo "$head_option"
-echo "$subhead_option"
- echo "$tab  [The xtables ipv4]"
- $which_iptables_legacy -v -L FORWARD
- echo "$tab  [The netftables ipv4] "
- $which_iptables_nft -v -L FORWARD
+ echo "$subhead_option"
+ case $legacycuatro in
+ "$NULL")
+ echo "$cinco No rules in filter-forward-legacy"
+ ;;
+ *)
+ echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
+ $which_iptables_legacy -t filter -v -L FORWARD
+ ;;
+ esac
+ case $nftcuatro in
+ "$NULL")
+ echo "$cinco No rules in filter-forward-nft"
+ ;;
+ *)
+ echo "$tab  [With rules neftables ipv4][iptables-nft]  "
+ $which_iptables_nft -t filter -v -L FORWARD
+ ;;
+ esac
  exit; fi
 ####
 ####
@@ -2030,12 +2048,13 @@ echo "$subhead_option"
 ####
 ####
  if [ "$first_option" = "list6" ]; then echo -n
-legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
-nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
+ legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
+ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo "$head_option"
-echo "$subhead_option"
+ echo "$subhead_option"
  case $legacyseis in
  "$NULL")
+   echo "$cinco No rules in filter6-legacy"
  ;;
  *)
  echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
@@ -2045,6 +2064,7 @@ echo "$subhead_option"
  esac
  case $nftseis in
  "$NULL")
+   echo "$cinco No rules in filter6-nft"
  ;;
  *)
  echo "$tab  [With rules neftables ipv6][iptables-nft]  "
@@ -2059,13 +2079,29 @@ echo "$subhead_option"
 ############################       spanish: forward6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
 ####
 ####
- if [ "$first_option" = "forward6" ]; then echo -n
- echo "$head_option" ;
-echo "$subhead_option"
- echo "$tab [The xtables ipv6][iptables-legacy]"
- $which_ip6tables_legacy -v -L FORWARD
- echo "$tab  [The netftables ipv6][iptables-nft] "
- $which_ip6tables_nft -v -L FORWARD
+ if [ "$first_option" = "forward6" ]; then echo -n ;
+ legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
+ nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
+ echo "$head_option"
+ echo "$subhead_option"
+ case $legacycuatro in
+ "$NULL")
+ echo "$cinco No rules in filter-forward6-legacy"
+ ;;
+ *)
+ echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
+ $which_ip6tables_legacy -t filter -v -L FORWARD
+ ;;
+ esac
+ case $nftcuatro in
+ "$NULL")
+ echo "$cinco No rules in filter-forward6-nft"
+ ;;
+ *)
+ echo "$tab  [With rules neftables ipv6][iptables-nft]  "
+ $which_ip6tables_nft -t filter -v -L FORWARD
+ ;;
+ esac
  exit; fi
 ####
 ####
@@ -2074,12 +2110,28 @@ echo "$subhead_option"
 ####
 ####
  if [ "$first_option" = "nat" ]; then echo -n
+ legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
+ nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo "$head_option"
-echo "$subhead_option"
- echo "$tab  [The xtables ipv4][iptables-legacy]"
+ echo "$subhead_option"
+ case $legacycuatro in
+ "$NULL")
+  echo "$cinco No rules in nat-legacy"
+ ;;
+ *)
+ echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
  $which_iptables_legacy -t nat -v -L
- echo "$tab  [The neftables ipv4][iptables-nft]"
- $which_iptables_nft -t nat -v -L
+ ;;
+ esac
+ case $nftcuatro in
+ "$NULL")
+ echo "$cinco No rules in nat-nft"
+ ;;
+ *)
+ echo "$tab  [With rules neftables ipv4][iptables-nft]  "
+ $which_iptables_nft -t nat -v -L 
+ ;;
+ esac
  exit; fi
 ####
 ####
@@ -2088,12 +2140,28 @@ echo "$subhead_option"
 ####
 ####
  if [ "$first_option" = "nat6" ]; then echo -n
+ nftseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
+ nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo "$head_option"
-echo "$subhead_option"
- echo "$tab  [The xtables ipv6][iptables-legacy]"
+ echo "$subhead_option"
+ case $nftseis in
+ "$NULL")
+  echo "$cinco No rules in nat6-legacy"
+ ;;
+ *)
+ echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
  $which_ip6tables_legacy -t nat -v -L
- echo "$tab  [The neftables ipv6][iptables-nft]"
- $which_ip6tables_nft -t nat -v -L
+ ;;
+ esac
+ case $nftseis in
+ "$NULL")
+ echo "$cinco No rules in nat6-nft"
+ ;;
+ *)
+ echo "$tab  [With rules neftables ipv6][iptables-nft]  "
+ $which_ip6tables_nft -t nat -v -L 
+ ;;
+ esac
  exit; fi
 ####
 ####
