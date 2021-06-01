@@ -293,7 +293,7 @@ subhead_option="$cincuenta [ $first_option ]"
 ####
 ####    #english: bash_completion autocomplete #spanish: bash_completion autocomplete
 ####
-source "/etc/bash_completion.d/$fiptables"
+if [ -f /etc/bash_completion.d/$fiptables ] ; then source /etc/bash_completion.d/$fiptables ; fi
 ####
 ####
 ##############################       english: Notice Installer            ###########################################
@@ -331,8 +331,11 @@ echo "$subhead_option"
 if [ -d "/etc/bash_completion.d" ]; then echo -n ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
 cp $zero_option $directory_fiptables/$fiptables &> /dev/null ;
 echo "$cinco [$fiptables $fversion / SCRIPT INSTALLED IN:] $directory_fiptables/$fiptables" ;
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >  /etc/bash_completion.d/$fiptables ;
-echo "complete -W 'list list6 forward forward6 nat nat6 list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
+echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables 
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables 
+echo "complete -W 'list list6 forward forward6 nat nat6 list-help net-info' $fiptables" >>  /etc/bash_completion.d/$fiptables 
+chmod ugo+rx /etc/bash_completion.d/$fiptables
+chmod ugo+rx $directory_fiptables/$fiptables
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables" ; exit; fi
 ####
 ####
@@ -355,8 +358,11 @@ shc -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
 chmod ugo+rx /tmp/$fiptables-bin
 cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
 echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >  /etc/bash_completion.d/$fiptables ;
-echo "complete -W 'list list6 forward forward6 nat nat6 list-help' $fiptables" >>  /etc/bash_completion.d/$fiptables ;
+echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables 
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables 
+echo "complete -W 'list list6 forward forward6 nat nat6 list-help net-info' $fiptables" >>  /etc/bash_completion.d/$fiptables 
+chmod ugo+rx /etc/bash_completion.d/$fiptables
+chmod ugo+rx $directory_fiptables/$fiptables
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
 ;;
 esac
