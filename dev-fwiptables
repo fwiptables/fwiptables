@@ -2000,7 +2000,7 @@ exit; fi
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
-   echo "$cinco [Without rules in filter iptables-legacy]"
+   echo "$cinco [Without rules in filter][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
@@ -2010,7 +2010,7 @@ exit; fi
  esac
  case $nftcuatro in
  "$NULL")
-   echo "$cinco [Without rules in filter iptables-nft]"
+   echo "$cinco [Without rules in filter][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv4][iptables-nft]  "
@@ -2032,7 +2032,7 @@ exit; fi
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward iptables-legacy]"
+ echo "$cinco [Without rules in filter-forward][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
@@ -2041,7 +2041,7 @@ exit; fi
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward iptables-nft]"
+ echo "$cinco [Without rules in filter-forward][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv4][iptables-nft]  "
@@ -2062,7 +2062,7 @@ exit; fi
  echo "$subhead_option"
  case $legacyseis in
  "$NULL")
- echo "$cinco [Without rules in filter6 iptables-legacy]"
+ echo "$cinco [Without rules in filter6][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
@@ -2072,7 +2072,7 @@ exit; fi
  esac
  case $nftseis in
  "$NULL")
-   echo "$cinco [Without rules in filter6 iptables-nft]"
+   echo "$cinco [Without rules in filter6][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv6][iptables-nft]  "
@@ -2094,7 +2094,7 @@ exit; fi
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward6 iptables-legacy]"
+ echo "$cinco [Without rules in filter-forward6][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
@@ -2103,7 +2103,7 @@ exit; fi
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward6 iptables-nft]"
+ echo "$cinco [Without rules in filter-forward6][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv6][iptables-nft]  "
@@ -2124,7 +2124,7 @@ exit; fi
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
-  echo "$cinco [Without rules in nat iptables-legacy]"
+  echo "$cinco [Without rules in nat][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
@@ -2133,7 +2133,7 @@ exit; fi
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco [Without rules in nat iptables-nft]"
+ echo "$cinco [Without rules in nat][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv4][iptables-nft]  "
@@ -2154,7 +2154,7 @@ exit; fi
  echo "$subhead_option"
  case $nftseis in
  "$NULL")
-  echo "$cinco [Without rules in nat6 iptables-legacy]"
+  echo "$cinco [Without rules in nat6][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
@@ -2163,7 +2163,7 @@ exit; fi
  esac
  case $nftseis in
  "$NULL")
- echo "$cinco [Without rules in nat6 iptables-nft]"
+ echo "$cinco [Without rules in nat6][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv6][iptables-nft]  "
@@ -2184,7 +2184,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
-  echo "$cinco [Without rules in filter num iptables-nft]"
+  echo "$cinco [Without rules in filter num][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv4][iptables-legacy]"
@@ -2194,7 +2194,7 @@ echo "$subhead_option"
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-num iptables-nft]"
+ echo "$cinco [Without rules in filter-num][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv4][iptables-nft]"
@@ -2215,7 +2215,7 @@ exit; fi
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward num iptables-legacy]"
+ echo "$cinco [Without rules in filter-forward num][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv4][iptables-legacy]  "
@@ -2224,7 +2224,7 @@ exit; fi
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward num iptables-nft]"
+ echo "$cinco [Without rules in filter-forward num][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv4][iptables-nft]  "
@@ -2245,7 +2245,7 @@ nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
 echo "$subhead_option"
  case $legacyseis in
  "$NULL")
- echo "$cinco [Without rules in filter6 num iptables-legacy]"
+ echo "$cinco [Without rules in filter6 num][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv6][iptables-legacy]"
@@ -2255,7 +2255,7 @@ echo "$subhead_option"
  esac
  case $nftseis in
  "$NULL")
-   echo "$cinco [Without rules in filter6 num iptables-nft]"
+   echo "$cinco [Without rules in filter6 num][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv6][iptables-nft]"
@@ -2277,7 +2277,7 @@ echo "$subhead_option"
  echo "$subhead_option"
  case $legacycuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward6 num iptables-legacy]"
+ echo "$cinco [Without rules in filter-forward6 num][iptables-legacy]"
  ;;
  *)
  echo "$tab  [With rules xtables ipv6][iptables-legacy]  "
@@ -2286,7 +2286,7 @@ echo "$subhead_option"
  esac
  case $nftcuatro in
  "$NULL")
- echo "$cinco [Without rules in filter-forward6 num iptables-nft]"
+ echo "$cinco [Without rules in filter-forward6 num][iptables-nft]"
  ;;
  *)
  echo "$tab  [With rules neftables ipv6][iptables-nft]  "
