@@ -575,11 +575,10 @@ echo " [tool-fw:]         fw-list fw-save fw-restore fw-show-actual             
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                      "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                        "
-echo " [tool-install:]    install install-bin howto-upgrade auto-upgrade         "
-echo " [tool-version:]    actual-version dev-versions all-versions               "
+echo " [tool-install:]    install install-bin howto-upgrade net-upgrade          "
 echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log:]        log-sudo log-sshd log-logserver log-search             "
-echo " [show-about:]      about depends examples                                 "
+echo " [show-about:]      about version depends examples                         "
 echo " [show-help:]       configurations configuraciones list-help help ayuda    "
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
@@ -877,7 +876,7 @@ echo
 echo "      install: install this actual"
 echo "  install-bin: install this actual in binary"
 echo "howto-upgrade: Show howoto upgrade at the latest version"
-echo " auto-upgrade: Upgrade at the latest version"
+echo " net-upgrade: Upgrade at the latest version"
 exit; fi
 ####
 ####
@@ -890,7 +889,7 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Tool version]"
 echo
-echo "actual-version: Info version program "
+echo "       version: Info version program "
 echo "  dev-versions: Version in development "
 echo "  all-versions: All versions"
 exit; fi
@@ -1250,9 +1249,9 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   121  "install" \
   122  "install-bin" \
   123  "howto-upgrade" \
-  124  "auto-upgrade" \
+  124  "net-upgrade" \
   0130 "$cinco [Tool version program] $cinco" \
-  131  "actual-version" \
+  131  "version" \
   132  "dev-versions" \
   133  "all-versions" \
   0140 "$cinco [Show etc configurations]$cinco" \
@@ -1571,11 +1570,11 @@ case "$menuprincipal" in
  ;;
  124)
  clear
- $fiptables "auto-upgrade"
+ $fiptables "net-upgrade"
  ;;
  131)
  clear 
- $zero_option "actual-version" | less
+ $zero_option "version" | less
  ;;
  132)
  clear
@@ -1668,11 +1667,11 @@ case "$menuprincipal" in
  exit; fi
 ####
 ####   
-##############################       english: actual-version: system script, the version option
-##############################       spanish: actual-version: script de sistema, la opcion mostrar version
+##############################       english: version: system script, the version option
+##############################       spanish: version: script de sistema, la opcion mostrar version
 ####
 ####
-if [ "$first_option" = "actual-version" ]; then echo -n
+if [ "$first_option" = "version" ]; then echo -n
 echo
 echo "$tab [Name program]"
 echo "$fprogram"
@@ -1824,11 +1823,11 @@ echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 exit ; fi
 ####
 ####
-##############################       english: auto-upgrade: upgrade in the file /usr/bin/fwiptables
-##############################       spanish: auto-upgrade: actualiza en el archivo /usr/bin/fwiptables
+##############################       english: net-upgrade: upgrade in the file /usr/bin/fwiptables
+##############################       spanish: net-upgrade: actualiza en el archivo /usr/bin/fwiptables
 ####
 ####
-if [ "$first_option" = "auto-upgrade" ]; then echo -n
+if [ "$first_option" = "net-upgrade" ]; then echo -n
 echo "$head_option"
 echo "$cincuenta [Web upgrade] $cinco"
 echo "Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command"
@@ -3330,14 +3329,7 @@ echo
 echo "      install: install this program actual"
 echo "  install-bin: install this program actual in binary"
 echo "howto-upgrade: Howto install the latest version"
-echo " auto-upgrade: Upgrade at the latest version"
-
-echo
-echo "$cinco         [Tool Version]"
-echo
-echo "actual-version: Info version program actual"
-echo "  dev-versions: Version in development"
-echo "  all-versions: All versions "
+echo " net-upgrade: Upgrade at the latest version"
 echo
 echo "$cinco         [Show etc]"
 echo
@@ -3356,7 +3348,8 @@ echo "   log-search: search the logs from a input pattern for /var/log"
 echo 
 echo "$cinco         [Show about]"
 echo
-echo "          about: About"
+echo "          about: About info"
+echo "        version: Info version program actual"
 echo "        depends: Show depends"
 echo "       examples: Show examples "
 echo 
@@ -3460,8 +3453,8 @@ echo "  forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros"
 echo
 echo "$cinco         [Lista Las otras tablas de iptables]"
 echo
-echo "      nat: Lista las reglas de ipv4 de nat iptables"
-echo "      nat6: Lista las reglas de ipv6 de nat iptables"
+echo "          nat: Lista las reglas de ipv4 de nat iptables"
+echo "         nat6: Lista las reglas de ipv6 de nat iptables"
 echo "   mangle-ip4: Lista las reglas de ipv4 de mangle iptables"
 echo "   mangle-ip6: Lista las reglas de ipv6 de mangle iptables"
 echo "      raw-ip4: Lista las reglas de ipv4 de raw iptables"
@@ -3500,7 +3493,6 @@ echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
 echo "      tcpdump: Escuchar las conexiones ip"
 echo "          arp: Lista las ultimas conexiones arp"
 echo
-
 echo "$cinco         [Herramienta icmp]"
 echo
 echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
@@ -3521,18 +3513,12 @@ echo "    auth-sudo: Permite autorizacion de usuarios elegidos"
 echo "  remove-sudo: Borra la autorizacion otorgada"
 echo "    list-sudo: Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [Herramienta para instalacion]"
+echo "$cinco         [Herramienta de instalacion]"
 echo
 echo "      install: instala este programa actual"
 echo "  install-bin: instala este programa actual en binario"
 echo "howto-upgrade: Indicacion para actualizar"
-echo " auto-upgrade: Actualiza a la ultima version"
-echo
-echo "$cinco         [Herramienta de Version]"
-echo
-echo "actual-version: Informacion de la actual version"
-echo "  dev-versions: Informacion de version en desarrollo "
-echo "  all-versions: Informacion de todas las versiones "
+echo " net-upgrade: Actualiza a la ultima version"
 echo
 echo "$cinco         [Mostrar etc]"
 echo
@@ -3552,6 +3538,7 @@ echo
 echo "$cinco         [Mostrar acerca]"
 echo
 echo "          About: Acerca de "
+echo "        version: Informacion de la actual version"
 echo "        Depends: Muestra las dependencias "
 echo "       examples: Muestra ejemplos "
 echo
