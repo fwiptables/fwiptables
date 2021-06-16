@@ -563,7 +563,7 @@ if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Option]"
-echo " [launch-rules:]    eraserules offline allpermisive custom reset           "
+echo " [launch-rules:]    eraserules offline allpermisive custom [cfg] reset     "
 echo " [list-rules:]      list forward nat list6 forward6 nat6                   "
 echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                "
 echo " [tool-configs:]    new-full-config nueva-completa-config                  "
@@ -571,7 +571,7 @@ echo "                    new-mini-config nueva-mini-config                     
 echo "                    show-config modify-config del-config                   "
 echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp          "
-echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual              "
+echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual                   "
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                      "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                        "
@@ -2728,13 +2728,15 @@ exit; fi
 if [ "$first_option" = "fw-restore" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$cinco first erase rules with:   fwiptables eraserules"
+echo "$cinco First erase rules with:   fwiptables eraserules"
 echo "the iptables recover files are in folder $directory_fwrecover"
+echo "$cinco Then load the rules saved"
 echo "then iptables restore with one command from above:"
 echo "with ipv4 neftables (nft)  :    iptables-nft-restore"
 echo "with ipv4 xtables (legacy) :    iptables-legacy-restore"
 echo "with ipv6 neftables (nft)  :    ip6tables-nft-restore"
 echo "with ipv6 xtables (legacy) :    ip6tables-legacy-restore"
+#### echo "Example for nft ipv4       :    iptables-nft-restore < file "
 exit; fi
 ####
 ####
