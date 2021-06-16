@@ -133,11 +133,11 @@ var13=$(echo "server_udp= ")
 eng13=$(echo "$cinco udp ports for server")
 spa13=$(echo "$cinco puertos udp para servidor")
 var14=$(echo "logserver_tcp=ssh ")
-eng14=$(echo "$cinco the packets tcp ports to log server")
-spa14=$(echo "$cinco paquetes de puertos tcp para logear servidor")
+eng14=$(echo "$cinco the tcp ports to log server")
+spa14=$(echo "$cinco puertos tcp para logear servidor")
 var15=$(echo "logserver_udp= ")
-eng15=$(echo "$cinco the packets udp ports to log server")
-spa15=$(echo "$cinco paquetes de puertos udp para logear servidor")
+eng15=$(echo "$cinco the udp ports to log server")
+spa15=$(echo "$cinco puertos udp para logear servidor")
 var16=$(echo "$cinco END NECESARY #" )
 eng16=$(echo "$cinco .......... END Necesary options .......... .......... #")
 spa16=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
@@ -571,7 +571,7 @@ echo "                    new-mini-config nueva-mini-config                     
 echo "                    show-config modify-config del-config                   "
 echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui   "
 echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp          "
-echo " [tool-fw:]         fw-list fw-save fw-restore fw-show-actual              "
+echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual              "
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                      "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
 echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                        "
@@ -706,6 +706,7 @@ echo "      offline: Disconected for all servers and clients except localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "       custom: Configure one custom firewall with file.cfg"
 echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
+echo "        reset: Reset counter rules"
 exit; fi
 ####
 ####
@@ -812,7 +813,7 @@ echo
 echo "       fw-list: Show the files firewall standar"
 echo "       fw-save: Save the files in firewall standar"
 echo "    fw-restore: Show the recover files firewall standard"
-echo "fw-show-actual: Show the actual iptables standard"
+echo "     fw-actual: Show the actual iptables standard"
 exit; fi
 ####
 ####
@@ -960,6 +961,21 @@ echo " configurations: config example with comments in spanish"
 echo "      list-help: Show list-help"
 echo "           help: Show help in english"
 echo "          ayuda: Show help in spanish"
+exit; fi
+####
+####
+##############################       english: show-help: options
+##############################       spanish: show-help: opciones
+####
+####
+if [ "$first_option" = "reset" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "Reset counters rules"
+$which_iptables_nft -Z
+$which_iptables_legacy -Z
+$which_ip6tables_nft -Z
+$which_ip6tables_legacy -Z
 exit; fi
 ####
 ####
@@ -1182,6 +1198,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   13  "allpermisive" \
   14  "custom -> is silent" \
   15  "[config.cfg] -> is verbose" \
+  16  "reset" \
   020 "$cinco [List rules alphabetical] $cinco" \
   21  "list" \
   22  "forward" \
@@ -1230,7 +1247,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   81  "fw-list"  \
   82  "fw-save"  \
   83  "fw-restore"  \
-  84  "fw-show-actual" \
+  84  "fw-actual" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -1309,6 +1326,10 @@ case "$menuprincipal" in
  archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  clear
  $fiptables $archivo | less
+ ;;
+ 16)
+ clear
+ $fiptables reset
  ;;
  21)
  clear
@@ -1494,7 +1515,7 @@ case "$menuprincipal" in
  ;;
  84)
  clear
- $fiptables "fw-show-actual" | less
+ $fiptables "fw-actual" | less
  ;;
  91)
  clear
@@ -2742,11 +2763,11 @@ ls -l $directory_fwrecover/* | grep -i $archivofin-
 exit; fi
 ####
 ####
-############################       english: fw-show-actual: show actually firewall
-############################       spanish: fw-show-actual: muestra las reglas actuales
+############################       english: fw-actual: show actually firewall
+############################       spanish: fw-actual: muestra las reglas actuales
 ####
 ####
-if [ "$first_option" = "fw-show-actual" ]; then echo -n
+if [ "$first_option" = "fw-actual" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
@@ -3240,6 +3261,7 @@ echo "      offline: Disconected for all servers and clients except localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "       custom: Configure one custom firewall, made for you with file.cfg"
 echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
+echo "        reset: Reset counter rules"
 echo
 echo "$cinco         [List iptables rules]"
 echo
@@ -3302,7 +3324,7 @@ echo
 echo "       fw-list: Show the files firewall standar"
 echo "       fw-save: Save the files in firewall standar"
 echo "    fw-restore: Show info to recover the files firewall standard"
-echo "fw-show-actual: Show the content of the firewall standard actual"
+echo "     fw-actual: Show the content of the firewall standard actual"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -3436,6 +3458,7 @@ echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
 echo "[archivo.cfg]: Configura el cortafuegos con un archivo.cfg y muestra info"
+echo "        reset: Resetea el contador de reglas"
 echo
 echo "$cinco         [Lista las reglas de tablas de iptables]"
 echo
@@ -3492,6 +3515,13 @@ echo "         lsof: Muestra las conexiones con command lsof"
 echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
 echo "      tcpdump: Escuchar las conexiones ip"
 echo "          arp: Lista las ultimas conexiones arp"
+echo
+echo "$cinco         [herramienta de formato de firewall standard"
+echo
+echo "       fw-list: Muestra las reglas del firewall estandard"
+echo "       fw-save: Guarda las reglas de firewall estandard"
+echo "    fw-restore: Muestra la informacion para reculperar firewall estandard"
+echo "     fw-actual: Muestra el contenido del firewall estandard actual"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
