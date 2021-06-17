@@ -964,18 +964,22 @@ echo "          ayuda: Show help in spanish"
 exit; fi
 ####
 ####
-##############################       english: show-help: options
-##############################       spanish: show-help: opciones
+##############################       english: reset: reset counter rules
+##############################       spanish: reset: resetea contadores de reglas
 ####
 ####
 if [ "$first_option" = "reset" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "Reset counters rules"
-$which_iptables_nft -Z
-$which_iptables_legacy -Z
-$which_ip6tables_nft -Z
-$which_ip6tables_legacy -Z
+echo "Reset the counters rules"
+$which_iptables_nft -t filter -Z
+$which_iptables_legacy -t filter -Z
+$which_ip6tables_nft -t filter -Z
+$which_ip6tables_legacy -t filter -Z
+$which_iptables_nft -t nat -Z
+$which_iptables_legacy -t nat -Z
+$which_ip6tables_nft -t nat -Z
+$which_ip6tables_legacy -t nat -Z
 exit; fi
 ####
 ####
