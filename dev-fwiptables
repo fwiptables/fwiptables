@@ -319,6 +319,10 @@ esac
 ####
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
+if [ -f "$directory_fwrecover/show-nft-ipv4" ]; then echo -n ; else touch $directory_fwrecover/show-nft-ipv4 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/show-legacy-ipv4" ]; then echo -n ; else touch $directory_fwrecover/show-legacy-ipv4 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/show-nft-ipv6" ]; then echo -n ; else touch $directory_fwrecover/show-nft-ipv6 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/show-legacy-ipv6" ]; then echo -n ; else touch $directory_fwrecover/show-legacy-ipv6 &> /dev/null ; fi
 ####
 ####
 ##############################       english: Install:    $fiptables           ###########################################
@@ -339,11 +343,11 @@ chmod ugo+rx $directory_fiptables/$fiptables
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables" ; exit; fi
 ####
 ####
-##############################       english: Install-bin:  install $fiptables in binary     ###########################################
-##############################       spanish: Install-bin:  instala $fiptables en binario    ###########################################
+##############################       english: Install-binary:  install fwiptables in binary     ###########################################
+##############################       spanish: Install-binary:  instala fwiptables en binario    ###########################################
 ####
 ####
-if [ "$first_option" = "install-bin" ] ; then echo -n ;
+if [ "$first_option" = "install-binary" ] ; then echo -n ;
 case $(which shc) in
 "$NULL")
 echo "$cinco install shc to compile $fwiptables"
@@ -354,7 +358,7 @@ echo "$subhead_option"
 if [ -d "/etc/bash_completion.d" ]; then echo -n ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
 cp $zero_option /tmp/$fiptables-source &> /dev/null ;
 cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
-shc -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
+shc -r -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
 chmod ugo+rx /tmp/$fiptables-bin
 cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
 echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
@@ -574,8 +578,9 @@ echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp         
 echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual                   "
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                      "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate       "
+echo " [tool-nmap:]       tcp-scan syn-scan fin-scan udp-scan ping-scan          "
 echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                        "
-echo " [tool-install:]    install install-bin howto-upgrade net-upgrade          "
+echo " [tool-install:]    install howto-upgrade net-upgrade                      "
 echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny        "
 echo " [show-log:]        log-sudo log-sshd log-logserver log-search             "
 echo " [show-about:]      about version depends examples                         "
@@ -597,10 +602,6 @@ which_iptables_legacy="$(which iptables-legacy | cut -d " " -f 1)"
 which_iptables_nft="$(which iptables-nft | cut -d " " -f 1)"
 which_ip6tables_legacy="$(which ip6tables-legacy | cut -d " " -f 1)"
 which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
-which_iptables_legacy_save="$(which iptables-legacy-save | cut -d " " -f 1)"
-which_iptables_nft_save="$(which iptables-nft-save | cut -d " " -f 1)"
-which_ip6tables_legacy_save="$(which ip6tables-legacy-save | cut -d " " -f 1)"
-which_ip6tables_nft_save="$(which ip6tables-nft-save | cut -d " " -f 1)"
 which_arptables="$(which arptables|cut -d " " -f 1)"
 which_ebtables="$(which ebtables| cut -d " " -f 1)"
 which_editor="$(which editor| cut -d " " -f 1)"
@@ -635,6 +636,7 @@ which_lynx="$(which lynx | cut -d " " -f 1)"
 which_links="$(which links | cut -d " " -f 1)"
 which_elinks="$(which elinks | cut -d " " -f 1)"
 which_shc="$(which shc | cut -d " " -f 1)"
+which_nmap="$(which nmap | cut -d " " -f 1)"
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
@@ -875,7 +877,6 @@ echo "$subhead_option"
 echo "$cinco         [tool install]"
 echo
 echo "      install: install this actual"
-echo "  install-bin: install this actual in binary"
 echo "howto-upgrade: Show howoto upgrade at the latest version"
 echo " net-upgrade: Upgrade at the latest version"
 exit; fi
@@ -964,25 +965,6 @@ echo "          ayuda: Show help in spanish"
 exit; fi
 ####
 ####
-##############################       english: reset: reset counter rules
-##############################       spanish: reset: resetea contadores de reglas
-####
-####
-if [ "$first_option" = "reset" ]; then echo -n
-echo "$head_option"
-echo "$subhead_option"
-echo "Reset the counters rules"
-$which_iptables_nft -t filter -Z
-$which_iptables_legacy -t filter -Z
-$which_ip6tables_nft -t filter -Z
-$which_ip6tables_legacy -t filter -Z
-$which_iptables_nft -t nat -Z
-$which_iptables_legacy -t nat -Z
-$which_ip6tables_nft -t nat -Z
-$which_ip6tables_legacy -t nat -Z
-exit; fi
-####
-####
 ##############################       english: depends: depends for $fiptables
 ##############################       spanish: dependencias: dependencias para $fiptables
 ####
@@ -990,6 +972,9 @@ exit; fi
 if [ "$first_option" = "depends" ]; then echo -n
 echo "Depends for $fiptables"
 echo "$cincuenta $fiptables"
+echo "$tab [Configurations directory]"
+echo "cfg:       $directory_config"
+echo "fw:        $directory_fwrecover"
 echo "$tab [$fiptables util]"
 echo "fmt:       $which_fmt"
 echo "shc:       $which_shc"
@@ -1013,11 +998,6 @@ echo "ip6tables legacy:  $which_ip6tables_legacy"
 echo "ip6tables nft:     $which_ip6tables_nft"
 echo "arptables:         $which_arptables"
 echo "ebtables:          $which_ebtables"
-echo "$tab [the iptables save]"
-echo "iptables legacy save:  $which_iptables_legacy_save"
-echo "iptables nft save:     $which_iptables_nft_save"
-echo "ip6tables legacy save: $which_ip6tables_legacy_save"
-echo "ip6tables nft save:    $which_ip6tables_nft_save"
 echo "$tab [$fiptables tool]"
 echo "uname:      $which_uname"
 echo "ip:         $which_ip"
@@ -1032,6 +1012,37 @@ echo "ping:       $which_ping"
 echo "traceroute: $which_traceroute"
 echo "host:       $which_host"
 echo "geoip:      $which_geoiplookup"
+echo "nmap:       $which_nmap"
+exit; fi
+####
+####
+##############################       english: reset: reset counter rules
+##############################       spanish: reset: resetea contadores de reglas
+####
+####
+if [ "$first_option" = "reset" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+#### reset counters rules
+echo "Reset the counters rules"
+#### english: mode one posible reset with -Z
+#### spanish: modo uno posible resetear con -Z
+#### $which_iptables_nft -Z     
+#### $which_iptables_legacy -Z  
+#### $which_ip6tables_nft -Z    
+#### $which_ip6tables_legacy -Z 
+#### english: mode two posible save and load
+#### spanish: modo dos posible guarda y carga
+#### save actual fw
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### recover actual fw
+$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
 exit; fi
 ####
 ####
@@ -1268,7 +1279,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   113  "list-sudo" \
   0120 "$cinco [tool install program] $cinco" \
   121  "install" \
-  122  "install-bin" \
+  122  "install" \
   123  "howto-upgrade" \
   124  "net-upgrade" \
   0130 "$cinco [Tool version program] $cinco" \
@@ -1587,7 +1598,7 @@ case "$menuprincipal" in
  ;;
  122)
  clear
- $zero_option "install-bin"
+ $zero_option "install"
  ;;
  123)
  clear
@@ -2793,6 +2804,46 @@ cat $directory_fwrecover/show-legacy-ipv6
 exit; fi
 ####
 ####
+##############################       english: stop: stop firewall
+##############################       spanish: stop: para el firewall
+####
+####
+if [ "$first_option" = "fw-stop" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+#### save actual fw
+##$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+##$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+##$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+##$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### recover actual fw
+#### $which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+#### $which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+#### $which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+#### $which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+exit; fi
+####
+####
+##############################       english: continue: continue the firewall
+##############################       spanish: continue: continua el firewall
+####
+####
+if [ "$first_option" = "fw-continue" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+#### save actual fw
+#### $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+#### $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+#### $which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+#### $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### recover actual fw
+##$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+##$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+##$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+##$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+exit; fi
+####
+####
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
 ####
@@ -2993,6 +3044,141 @@ pool2=2.debian.pool.ntp.org
 pool3=3.debian.pool.ntp.org
 ntpdate $pool0 $pool1 $pool2
 date
+exit; fi
+####
+####
+############################       english: tcp-scan: scan one net per tcp
+############################       spanish: tcp-scan: rastrea una red por tcp
+####
+####
+if [ "$first_option" = "tcp-scan" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Usage:]  [nmap $first_option ip/mask]"
+echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+#### save actual fw
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### erase rules
+$fiptables eraserules
+#### launch nmap
+$which_nmap -sT $2
+#### recover actual fw
+$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+echo "$tab [Notice:] [Reload firewall after nmap]"
+exit; fi
+####
+####
+############################       english: syn-scan: scan one net per syn
+############################       spanish: syn-scan: rastrea una por peticiones
+####
+####
+if [ "$first_option" = "syn-scan" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Usage:]  [nmap $first_option ip/mask]"
+echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+#### save actual fw
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### erase rules
+$fiptables eraserules
+#### launch nmap
+$which_nmap -sF $2
+#### recover actual fw
+$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+echo "$tab [Notice:] [Reload firewall after nmap]"
+exit; fi
+####
+####
+############################       english: fin-scan: scan one net per conexiones
+############################       spanish: fin-scan: rastrea una red por conexiones 
+####
+####
+if [ "$first_option" = "fin-scan" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Usage:]  [nmap $first_option ip/mask]"
+echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+#### save actual fw
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### erase rules
+$fiptables eraserules
+#### launch nmap
+$which_nmap -sF $2
+#### recover actual fw
+$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+echo "$tab [Notice:] [Reload firewall after nmap]"
+exit; fi
+####
+####
+############################       english: udp-scan: scan one net per udp
+############################       spanish: udp-scan: rastrea una red por udp
+####
+####
+if [ "$first_option" = "udp-scan" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Usage:]  [nmap $first_option ip/mask]"
+echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+#### save actual fw
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### erase rules
+$fiptables eraserules
+#### launch nmap
+$which_nmap -sU $2
+#### recover actual fw
+$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+echo "$tab [Notice:] [Reload firewall after nmap]"
+exit; fi
+####
+####
+############################       english: ping-scan: scan one net per ping
+############################       spanish: ping-scan: rastrea una red por ping
+####
+####
+if [ "$first_option" = "ping-scan" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Usage:]  [nmap $first_option ip/mask]"
+echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+#### save actual fw
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### erase rules
+$fiptables eraserules
+#### launch nmap
+$which_nmap -sn $2
+#### recover actual fw
+$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+echo "$tab [Notice:] [Reload firewall after nmap]"
 exit; fi
 ####
 ####
@@ -3355,7 +3541,6 @@ echo
 echo "$cinco         [Tool Install]"
 echo
 echo "      install: install this program actual"
-echo "  install-bin: install this program actual in binary"
 echo "howto-upgrade: Howto install the latest version"
 echo " net-upgrade: Upgrade at the latest version"
 echo
@@ -3552,7 +3737,6 @@ echo
 echo "$cinco         [Herramienta de instalacion]"
 echo
 echo "      install: instala este programa actual"
-echo "  install-bin: instala este programa actual en binario"
 echo "howto-upgrade: Indicacion para actualizar"
 echo " net-upgrade: Actualiza a la ultima version"
 echo
@@ -4360,12 +4544,20 @@ $launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_leg
 #### spanish: iptables guardado
 ####
 ####
+#### english: autosave with generic name
+#### spanish: autoguardado con nombre generico
+$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+#### english: autosave with specific name
+#### spanish: autoguardado con nombre especifico
 case $autosave_fwrecover in 
 $NULL)
-iptables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv4
-iptables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-ip6tables-nft-save >> $directory_fwrecover/$first_option-$second_option-nft-ipv6
-ip6tables-legacy-save >> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/$first_option-$second_option-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/$first_option-$second_option-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/$first_option-$second_option-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/$first_option-$second_option-legacy-ipv6
 ;;
 esac
 ####
