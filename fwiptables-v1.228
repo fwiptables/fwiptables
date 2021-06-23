@@ -343,34 +343,34 @@ chmod ugo+rx $directory_fiptables/$fiptables
 echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables" ; exit; fi
 ####
 ####
-##############################       english: Install-binary:  install fwiptables in binary     ###########################################
-##############################       spanish: Install-binary:  instala fwiptables en binario    ###########################################
+##############################       english: Install-bin:  install fwiptables in binary     ###########################################
+##############################       spanish: Install-bin:  instala fwiptables en binario    ###########################################
 ####
 ####
-if [ "$first_option" = "install-binary" ] ; then echo -n ;
-case $(which shc) in
-"$NULL")
-echo "$cinco install shc to compile $fwiptables"
-;;
-*)
-echo "$head_option"
-echo "$subhead_option"
-if [ -d "/etc/bash_completion.d" ]; then echo -n ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
-cp $zero_option /tmp/$fiptables-source &> /dev/null ;
-cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
-shc -r -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
-chmod ugo+rx /tmp/$fiptables-bin
-cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
-echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
-echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables 
-echo "complete -W 'list list6 forward forward6 nat nat6 list-help net-info' $fiptables" >>  /etc/bash_completion.d/$fiptables 
-chmod ugo+rx /etc/bash_completion.d/$fiptables
-chmod ugo+rx $directory_fiptables/$fiptables
-echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
-;;
-esac
-exit; fi
+#### if [ "$first_option" = "install-bin" ] ; then echo -n ;
+#### case $(which shc) in
+#### "$NULL")
+#### echo "$cinco install shc to compile $fwiptables"
+#### ;;
+#### *)
+#### echo "$head_option"
+#### echo "$subhead_option"
+#### if [ -d "/etc/bash_completion.d" ]; then echo -n ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
+#### cp $zero_option /tmp/$fiptables-source &> /dev/null ;
+#### cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
+#### shc -r -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
+#### chmod ugo+rx /tmp/$fiptables-bin
+#### cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
+#### echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
+#### echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables 
+#### echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables 
+#### echo "complete -W 'list list6 forward forward6 nat nat6 list-help net-info' $fiptables" >>  /etc/bash_completion.d/$fiptables 
+#### chmod ugo+rx /etc/bash_completion.d/$fiptables
+#### chmod ugo+rx $directory_fiptables/$fiptables
+#### echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
+#### ;;
+#### esac
+#### exit; fi
 ####
 ####
 ##############################   english: autogen defaults configs cfg              ###########################################
