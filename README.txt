@@ -1,5 +1,5 @@
 ##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 222]
+##### [Fran FireWall fwiptables Generator] [Version 1.228]
 ################################################## [ help ]
 
 
@@ -10,6 +10,7 @@
  allpermisive: Configure a firewall very permisive
        custom: Configure one custom firewall, made for you with file.cfg
    [file.cfg]: Configure the firewall with file.cfg and show info
+        reset: Reset counter rules
 
 #####         [List iptables rules]
 
@@ -72,7 +73,7 @@
        fw-list: Show the files firewall standar
        fw-save: Save the files in firewall standar
     fw-restore: Show info to recover the files firewall standard
-fw-show-actual: Show the content of the firewall standard actual
+     fw-actual: Show the content of the firewall standard actual
 
 #####         [Tool icmp]
 
@@ -88,6 +89,14 @@ fw-show-actual: Show the content of the firewall standard actual
        geo-ip: Locate a one host or ip
       ntpdate: update the date from ntp server
 
+#####         [Tool nmap]
+
+     tcp-scan: scan a host/mask per tcp protocol
+     syn-scan: scan a host/mask per syn socket
+     fin-scan: scan a host/mask per fin socket
+     udp-scan: scan a host/mask per udp protocol
+    ping-scan: scan a host/mask per ping udp
+
 #####         [Tool sudo]
 
     auth-sudo: Permit sudo to other choosed users
@@ -97,15 +106,8 @@ fw-show-actual: Show the content of the firewall standard actual
 #####         [Tool Install]
 
       install: install this program actual
-  install-bin: install this program actual in binary
 howto-upgrade: Howto install the latest version
- auto-upgrade: Upgrade at the latest version
-
-#####         [Tool Version]
-
-actual-version: Info version program actual
-  dev-versions: Version in development
-  all-versions: All versions 
+ net-upgrade:  Upgrade at the latest version
 
 #####         [Show etc]
 
@@ -124,7 +126,8 @@ log-logserver: search the logs from net packages with this firewall
 
 #####         [Show about]
 
-          about: About
+          about: About info
+        version: Info version program actual
         depends: Show depends
        examples: Show examples 
 

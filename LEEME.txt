@@ -1,5 +1,5 @@
 ##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 222]
+##### [Fran FireWall fwiptables Generator] [Version 1.228]
 ################################################## [ ayuda ]
 
 
@@ -10,6 +10,7 @@
  allpermisive: Configura el cortafuegos muy permisivo
        custom: Configura el cortafuegos especificando un archivo.cfg
 [archivo.cfg]: Configura el cortafuegos con un archivo.cfg y muestra info
+        reset: Resetea el contador de reglas
 
 #####         [Lista las reglas de tablas de iptables]
 
@@ -27,8 +28,8 @@
 
 #####         [Lista Las otras tablas de iptables]
 
-      nat: Lista las reglas de ipv4 de nat iptables
-      nat6: Lista las reglas de ipv6 de nat iptables
+          nat: Lista las reglas de ipv4 de nat iptables
+         nat6: Lista las reglas de ipv6 de nat iptables
    mangle-ip4: Lista las reglas de ipv4 de mangle iptables
    mangle-ip6: Lista las reglas de ipv6 de mangle iptables
       raw-ip4: Lista las reglas de ipv4 de raw iptables
@@ -67,6 +68,13 @@
       tcpdump: Escuchar las conexiones ip
           arp: Lista las ultimas conexiones arp
 
+#####         [herramienta de formato de firewall standard
+
+       fw-list: Muestra las reglas del firewall estandard
+       fw-save: Guarda las reglas de firewall estandard
+    fw-restore: Muestra la informacion para reculperar firewall estandard
+     fw-actual: Muestra el contenido del firewall estandard actual
+
 #####         [Herramienta icmp]
 
      ping-ip4: Hace un ping a una host con ipv4 icmp
@@ -81,24 +89,25 @@
        geo-ip: Localiza una ip o host
       ntpdate: actualiza la fecha desde un ntp server
 
+#####         [Herramienta nmap]
+
+     tcp-scan: rastrea una host/mask por tcp protocolo
+     syn-scan: rastrea una host/mask por syn socket
+     fin-scan: rastrea una host/mask por fin socket
+     udp-scan: rastrea una host/mask por udp protocolo
+    ping-scan: rastrea una host/mask por ping udp
+
 #####         [Herramienta de autorizacion]
 
     auth-sudo: Permite autorizacion de usuarios elegidos
   remove-sudo: Borra la autorizacion otorgada
     list-sudo: Lista autorizacion de usuarios elegidos
 
-#####         [Herramienta para instalacion]
+#####         [Herramienta de instalacion]
 
       install: instala este programa actual
-  install-bin: instala este programa actual en binario
 howto-upgrade: Indicacion para actualizar
- auto-upgrade: Actualiza a la ultima version
-
-#####         [Herramienta de Version]
-
-actual-version: Informacion de la actual version
-  dev-versions: Informacion de version en desarrollo 
-  all-versions: Informacion de todas las versiones 
+ net-upgrade: Actualiza a la ultima version
 
 #####         [Mostrar etc]
 
@@ -118,6 +127,7 @@ log-logserver: busca los logs de paquetes de este firewall
 #####         [Mostrar acerca]
 
           About: Acerca de 
+        version: Informacion de la actual version
         Depends: Muestra las dependencias 
        examples: Muestra ejemplos 
 
