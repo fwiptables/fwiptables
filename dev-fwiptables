@@ -3550,7 +3550,7 @@ echo "$cinco         [Tool Install]"
 echo
 echo "      install: install this program actual"
 echo "howto-upgrade: Howto install the latest version"
-echo " net-upgrade: Upgrade at the latest version"
+echo " net-upgrade:  Upgrade at the latest version"
 echo
 echo "$cinco         [Show etc]"
 echo
