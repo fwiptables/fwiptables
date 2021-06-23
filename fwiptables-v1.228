@@ -1024,7 +1024,7 @@ if [ "$first_option" = "reset" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 #### reset counters rules
-echo "Reset the counters rules"
+echo "$cinco [Notice:] [Reset the counters rules]"
 #### english: mode one posible reset with -Z
 #### spanish: modo uno posible resetear con -Z
 #### $which_iptables_nft -Z     
@@ -3054,8 +3054,8 @@ exit; fi
 if [ "$first_option" = "tcp-scan" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Usage:]  [nmap $first_option ip/mask]"
-echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
+echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
@@ -3070,7 +3070,7 @@ $which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
-echo "$tab [Notice:] [Reload firewall after nmap]"
+echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
 ####
@@ -3081,8 +3081,8 @@ exit; fi
 if [ "$first_option" = "syn-scan" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Usage:]  [nmap $first_option ip/mask]"
-echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
+echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
@@ -3097,7 +3097,7 @@ $which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
-echo "$tab [Notice:] [Reload firewall after nmap]"
+echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
 ####
@@ -3108,8 +3108,8 @@ exit; fi
 if [ "$first_option" = "fin-scan" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Usage:]  [nmap $first_option ip/mask]"
-echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
+echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
@@ -3124,7 +3124,7 @@ $which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
-echo "$tab [Notice:] [Reload firewall after nmap]"
+echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
 ####
@@ -3135,8 +3135,8 @@ exit; fi
 if [ "$first_option" = "udp-scan" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Usage:]  [nmap $first_option ip/mask]"
-echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
+echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
@@ -3151,7 +3151,7 @@ $which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
-echo "$tab [Notice:] [Reload firewall after nmap]"
+echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
 ####
@@ -3162,8 +3162,8 @@ exit; fi
 if [ "$first_option" = "ping-scan" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Usage:]  [nmap $first_option ip/mask]"
-echo "$tab [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
+echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
 $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
@@ -3178,7 +3178,7 @@ $which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
-echo "$tab [Notice:] [Reload firewall after nmap]"
+echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
 ####
