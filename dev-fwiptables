@@ -852,6 +852,23 @@ echo "      ntpdate: update the date from ntp server"
 exit; fi
 ####
 ####
+##############################       english: tool-nmap options
+##############################       spanish: tool-nmap opciones
+####
+####
+if [ "$first_option" = "tool-nmap" ]; then echo -n
+echo "$head_option"
+echo "$subhead_option"
+echo "$cinco         [Tool nmap]"
+echo 
+echo "     tcp-scan: scan a host/mask per tcp protocol"
+echo "     syn-scan: scan a host/mask per syn socket"
+echo "     fin-scan: scan a host/mask per fin socket"
+echo "     udp-scan: scan a host/mask per udp protocol"
+echo "    ping-scan: scan a host/mask per ping udp"
+exit; fi
+####
+####
 ##############################       english: tool-sudo options
 ##############################       spanish: tool-sudo opciones
 ####
@@ -876,24 +893,9 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [tool install]"
 echo
-echo "      install: install this actual"
-echo "howto-upgrade: Show howoto upgrade at the latest version"
-echo " net-upgrade: Upgrade at the latest version"
-exit; fi
-####
-####
-##############################       english: show-version options
-##############################       spanish: show-version opciones
-####
-####
-if [ "$first_option" = "tool-version" ]; then echo -n
-echo "$head_option"
-echo "$subhead_option"
-echo "$cinco         [Tool version]"
-echo
-echo "       version: Info version program "
-echo "  dev-versions: Version in development "
-echo "  all-versions: All versions"
+echo "       install: install this actual"
+echo " howto-upgrade: Show howoto upgrade at the latest version"
+echo "   net-upgrade: Upgrade at the latest version"
 exit; fi
 ####
 ####
@@ -943,6 +945,7 @@ echo "$subhead_option"
 echo "$cinco         [show about]"
 echo
 echo "          about: About"
+echo "        version: Info version"
 echo "        depends: Show depends"
 echo "       examples: Show examples"
 exit; fi
