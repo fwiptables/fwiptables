@@ -3531,6 +3531,14 @@ echo "         host: Resolve one host"
 echo "    resolveip: Resolve one host and viceversa"
 echo "       geo-ip: Locate a one host or ip"
 echo "      ntpdate: update the date from ntp server"
+echo 
+echo "$cinco         [Tool nmap]"
+echo 
+echo "     tcp-scan: scan a host/mask per tcp protocol"
+echo "     syn-scan: scan a host/mask per syn socket"
+echo "     fin-scan: scan a host/mask per fin socket"
+echo "     udp-scan: scan a host/mask per udp protocol"
+echo "    ping-scan: scan a host/mask per ping udp"
 echo
 echo "$cinco         [Tool sudo]"
 echo
@@ -3727,6 +3735,14 @@ echo "         host: Resuelve la ip de un host"
 echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo "       geo-ip: Localiza una ip o host"
 echo "      ntpdate: actualiza la fecha desde un ntp server"
+echo 
+echo "$cinco         [Herramienta nmap]"
+echo 
+echo "     tcp-scan: rastrea una host/mask por tcp protocolo"
+echo "     syn-scan: rastrea una host/mask por syn socket"
+echo "     fin-scan: rastrea una host/mask por fin socket"
+echo "     udp-scan: rastrea una host/mask por udp protocolo"
+echo "    ping-scan: rastrea una host/mask por ping udp"
 echo
 echo "$cinco         [Herramienta de autorizacion]"
 echo
