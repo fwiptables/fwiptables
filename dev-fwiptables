@@ -1905,7 +1905,7 @@ exit;  fi
 ####
 ####
 if [ "$first_option" = "eraserules" ]; then echo -n ;
-echo "[$fprogram] [version $ver]"
+echo "$head_option"
 echo "$subhead_option"
 $which_iptables_nft -t filter -F
 $which_ip6tables_nft -t filter  -F
