@@ -813,10 +813,12 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Recover fw]"
 echo
-echo "       fw-list: Show the files firewall standar"
-echo "       fw-save: Save the files in firewall standar"
-echo "    fw-restore: Show the recover files firewall standard"
+echo "       fw-list: Show the files firewall standard"
+echo "       fw-save: Save the files in firewall standard"
+echo "    fw-restore: Recover files from firewall standard"
 echo "     fw-actual: Show the actual iptables standard"
+echo "          stop: Stop the firewall"
+echo "      continue: Recover the firewall"
 exit; fi
 ####
 ####
@@ -3539,8 +3541,10 @@ echo "$cinco         [Tool fw]"
 echo
 echo "       fw-list: Show the files firewall standar"
 echo "       fw-save: Save the files in firewall standar"
-echo "    fw-restore: Show info to recover the files firewall standard"
+echo "    fw-restore: Recover the files in firewall standard"
 echo "     fw-actual: Show the content of the firewall standard actual"
+echo "          stop: Stop the firewall erasing rules"
+echo "      continue: Recover the firewall recovering the rules stoped"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -3741,10 +3745,12 @@ echo "          arp: Lista las ultimas conexiones arp"
 echo
 echo "$cinco         [herramienta de formato de firewall standard"
 echo
-echo "       fw-list: Muestra las reglas del firewall estandard"
-echo "       fw-save: Guarda las reglas de firewall estandard"
-echo "    fw-restore: Muestra la informacion para reculperar firewall estandard"
+echo "       fw-list: Muestra las reglas del firewall estandar"
+echo "       fw-save: Guarda las reglas de firewall estandar"
+echo "    fw-restore: Reculpera firewall estandar especificado"
 echo "     fw-actual: Muestra el contenido del firewall estandard actual"
+echo "          stop: Para el firewall borrando las reglas"
+echo "      continue: Recupera el firewall recuperando las reglas paradas"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
