@@ -1044,10 +1044,10 @@ $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
 #### recover actual fw
-$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
 exit; fi
 ####
 ####
@@ -2772,8 +2772,8 @@ $which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4
 $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4
 $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6
 $which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6
-echo "$cinco  Ok RESTORED: updated firewall with fwrecover" 
-else echo "$cinco file do not exists: Dont updated firewall with fwrecover: See $fiptables fw-list" ; fi
+echo "$cinco  [Ok RESTORED: updated firewall with fwrecover]" 
+else echo "$cinco [file do not exists:] [Dont updated firewall with fwrecover: See $fiptables fw-list]" ; fi
 ;;
 esac
 #### echo "Example for nft ipv4       :    iptables-nft-restore < file "
@@ -3091,10 +3091,10 @@ $fiptables eraserules
 #### launch nmap
 $which_nmap -sT $2
 #### recover actual fw
-$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3118,10 +3118,10 @@ $fiptables eraserules
 #### launch nmap
 $which_nmap -sF $2
 #### recover actual fw
-$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3145,10 +3145,10 @@ $fiptables eraserules
 #### launch nmap
 $which_nmap -sF $2
 #### recover actual fw
-$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore $directory_fwrecover/show-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3172,10 +3172,10 @@ $fiptables eraserules
 #### launch nmap
 $which_nmap -sU $2
 #### recover actual fw
-$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3199,10 +3199,10 @@ $fiptables eraserules
 #### launch nmap
 $which_nmap -sn $2
 #### recover actual fw
-$which_iptables_nft-restore < $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore < $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore < $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore < $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
