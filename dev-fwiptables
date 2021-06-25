@@ -637,6 +637,7 @@ which_links="$(which links | cut -d " " -f 1)"
 which_elinks="$(which elinks | cut -d " " -f 1)"
 which_shc="$(which shc | cut -d " " -f 1)"
 which_nmap="$(which nmap | cut -d " " -f 1)"
+which_ntpdate="$(which ntpdate | cut -d " " -f 1)"
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
@@ -3045,7 +3046,7 @@ pool0=0.debian.pool.ntp.org
 pool1=1.debian.pool.ntp.org
 pool2=2.debian.pool.ntp.org
 pool3=3.debian.pool.ntp.org
-ntpdate $pool0 $pool1 $pool2
+$which_ntpdate $pool0 $pool1 $pool2
 date
 exit; fi
 ####
