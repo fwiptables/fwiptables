@@ -1531,7 +1531,12 @@ case "$menuprincipal" in
  ;;
  83)
  clear
- $fiptables "fw-restore"
+ $fiptables "fw-list" 
+ echo "$cincuenta"
+ read -p "Type the firewall name to restore   " nombrecillo
+ echo $nombrecillo
+ sleep 5
+ $fiptables fw-restore $nombrecillo
  ;;
  84)
  clear
@@ -2738,7 +2743,7 @@ if [ "$first_option" = "fw-list" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "File list with rules in iptables format in folder $directory_fwrecover"
-ls -1 $directory_fwrecover/*| sed s/\-ipv4//g  | sed s/\-ipv6//g | sed s/\-legacy//g | sed s/\-nft//g | sort -u
+ls -1 $directory_fwrecover | sed s/\-ipv4//g  | sed s/\-ipv6//g | sed s/\-legacy//g | sed s/\-nft//g | sort -u
 exit; fi
 ####
 ####
