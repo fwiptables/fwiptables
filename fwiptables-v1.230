@@ -1895,9 +1895,10 @@ echo "  The latest version is:"
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 echo "$cinco"
 echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
-echo "$cinco    download manually   || or launch ||   $fiptables web-upgrade"
-echo "$favorite_text_browser -source $fweb_latest > $directory_fiptables/$fiptables"
-echo "chmod ugo+x $directory_fiptables/$fiptables"
+echo "$cinco    OR download manually   || OR $fiptables net-upgrade || OR look down: "
+echo "$favorite_text_browser -source $fweb_latest > /tmp/$fiptables"
+echo "chmod ugo+x /tmp/$fiptables"
+echo "/tmp/$fiptables install"
 echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fiptables"
 exit;  fi
 ####
