@@ -2759,15 +2759,8 @@ echo "$subhead_option"
 case $second_option in
 #### English: Void in second option
 "$NULL")
-echo "$cinco First erase rules with:   fwiptables eraserules"
-echo "the iptables recover files are in folder $directory_fwrecover"
-echo "$cinco Then load the rules saved"
-echo "then iptables restore with one command from above:"
-echo "with ipv4 neftables (nft)  :    iptables-nft-restore"
-echo "with ipv4 xtables (legacy) :    iptables-legacy-restore"
-echo "with ipv6 neftables (nft)  :    ip6tables-nft-restore"
-echo "with ipv6 xtables (legacy) :    ip6tables-legacy-restore"
-echo "$cinco OR usage: $fiptables fw-restore name-of-fwlist"
+echo "$cinco [usage: $fiptables fw-restore fw-to-restore]"
+echo "$cinco [firewall do not choosed] [Did not updated firewall with fwrecover] [See: $fiptables fw-list]" 
 ;;
 #### English if do exist second option in fwrecover
 *)
@@ -2780,7 +2773,9 @@ $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4
 $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6
 $which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6
 echo "$cinco  [Ok RESTORED: updated firewall with fwrecover]" 
-else echo "$cinco [file do not exists:] [Dont updated firewall with fwrecover: See $fiptables fw-list]" ; fi
+else
+echo "$cinco [usage: $fiptables fw-restore fw-to-restore] [SEE: $fiptables fw-list]"
+echo "$cinco [firewall choosed do not exists] [Did not updated firewall with fwrecover] [See: $fiptables fw-list]" ; fi
 ;;
 esac
 #### echo "Example for nft ipv4       :    iptables-nft-restore < file "
