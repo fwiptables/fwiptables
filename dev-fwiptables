@@ -2738,7 +2738,7 @@ if [ "$first_option" = "fw-list" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "File list with rules in iptables format in folder $directory_fwrecover"
-ls $directory_fwrecover
+ls -1 $directory_fwrecover/*| sed s/\-ipv4//g  | sed s/\-ipv6//g | sed s/\-legacy//g | sed s/\-nft//g | sort -u
 exit; fi
 ####
 ####
@@ -2749,6 +2749,9 @@ exit; fi
 if [ "$first_option" = "fw-restore" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
+case $second_option in
+#### English: Void in second option
+"$NULL")
 echo "$cinco First erase rules with:   fwiptables eraserules"
 echo "the iptables recover files are in folder $directory_fwrecover"
 echo "$cinco Then load the rules saved"
@@ -2757,6 +2760,22 @@ echo "with ipv4 neftables (nft)  :    iptables-nft-restore"
 echo "with ipv4 xtables (legacy) :    iptables-legacy-restore"
 echo "with ipv6 neftables (nft)  :    ip6tables-nft-restore"
 echo "with ipv6 xtables (legacy) :    ip6tables-legacy-restore"
+echo "$cinco OR usage: $fiptables fw-restore name-of-fwlist"
+;;
+#### English if do exist second option in fwrecover
+*)
+if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] ; then echo -n
+#### English: Remove all rules 
+$fiptables eraserules
+#### English: Load all rules
+$which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4
+$which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4
+$which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6
+$which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6
+echo "$cinco  Ok RESTORED: updated firewall with fwrecover" 
+else echo "$cinco file do not exists: Dont updated firewall with fwrecover: See $fiptables fw-list" ; fi
+;;
+esac
 #### echo "Example for nft ipv4       :    iptables-nft-restore < file "
 exit; fi
 ####
