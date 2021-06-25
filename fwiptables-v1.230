@@ -117,7 +117,7 @@ spa7=$(echo "$cinco varcio para ejecutar el firewall con ipv6 o no para no")
 var8=$(echo "$cinco CLIENT PORTS#")
 eng8=$(echo "$cinco Client ports, add with ',' and join ranges with ':'")
 spa8=$(echo "$cinco puertos Cliente, añadir con ',' y poner rangos con ':' ")
-var9=$(echo "client_tcp=http,https,ssh") 
+var9=$(echo "client_tcp=http,https,ssh")
 eng9=$(echo "$cinco tcp ports for client")
 spa9=$(echo "$cinco puertos tcp para ser cliente")
 var10=$(echo "client_udp=domain,bootpc,ntp,https")
@@ -1013,6 +1013,7 @@ echo "sysctl:     $which_sysctl"
 echo "tcpdump:    $which_tcpdump"
 echo "arp:        $which_arp"
 echo "ping:       $which_ping"
+echo "ntpdate:    $which_ntpdate"
 echo "traceroute: $which_traceroute"
 echo "host:       $which_host"
 echo "geoip:      $which_geoiplookup"
