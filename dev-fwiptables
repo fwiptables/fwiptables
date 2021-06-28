@@ -688,11 +688,17 @@ echo "$cincuenta [$first_option]"
 echo "$cinco         [tool guide]"
 echo
 echo "  system-info: Show info system"
+echo "             : Muestra informacion del sistema"
 echo "     net-info: Show net info"
+echo "             : Muestra informacion del sistema"
 echo "  full-wizard: Asistant y launch complete firewall"
+echo "             : Asiste y lanza un completo firewall"
 echo "  mini-wizard: Asistant y Launch simple firewall"
+echo "             : Asiste y lanza un simple firewall"
 echo "          cli: Comand line interface with menus"
+echo "             : interfaz de menus de texto"
 echo "          gui: Graphicall user interface"
+echo "             : Interfaz grafico de usuario"
 exit; fi
 ####
 ####
@@ -706,11 +712,33 @@ echo "$cincuenta [$first_option]"
 echo "$cinco         [Launch iptables rules]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
-echo "      offline: Disconected for all servers and clients except localhost"
+echo "               Borra las reglas de iptables in ipv4 y ipv6"
+echo "      offline: Firewall disconected for all servers and clients except localhost"
+echo "               Firewall desconectado para todo servidores y clientes excepto localhost"
 echo " allpermisive: Configure a firewall very permisive"
-echo "       custom: Configure one custom firewall with file.cfg"
+echo "               Configura un firewall muy permisivo"
+echo "       custom: Configure one custom firewall with one file cfg"
+echo "               Configura un modificado firewall con un archivo cfg"
 echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
-echo "        reset: Reset counter rules"
+echo "               Configura un firewall modificado con un archivo cfg y muestra info"
+exit; fi
+####
+####
+##############################       english: launch-rules options
+##############################       spanish: launch-rules opciones
+####
+####
+if [ "$first_option" = "control-rules" ]; then echo -n
+echo "$head_option"
+echo "$cincuenta [$first_option]"
+echo "$cinco         [Control iptables rules]"
+echo
+echo "          stop: Save and stop the rules"
+echo "              : Guarda y para las reglas"
+echo "      continue: continue with old rules"
+echo "              : Continua con las viejas reglas"
+echo "         reset: Reset the rules"
+echo "              : Resetea las reglas"
 exit; fi
 ####
 ####
@@ -818,8 +846,6 @@ echo "       fw-list: Show the files firewall standard"
 echo "       fw-save: Save the files in firewall standard"
 echo "    fw-restore: Recover files from firewall standard"
 echo "     fw-actual: Show the actual iptables standard"
-echo "          stop: Stop the firewall"
-echo "      continue: Recover the firewall"
 exit; fi
 ####
 ####
