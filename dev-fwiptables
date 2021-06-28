@@ -567,7 +567,8 @@ if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Option]"
-echo " [launch-rules:]    eraserules offline allpermisive custom [cfg] reset       "
+echo " [launch-rules:]    eraserules offline allpermisive custom [cfg]             "
+echo " [control-rules:]   stop continue reset                                      "
 echo " [list-rules:]      list forward nat list6 forward6 nat6                     "
 echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                  "
 echo " [tool-configs:]    new-full-config nueva-completa-config                    "
@@ -575,7 +576,7 @@ echo "                    new-mini-config nueva-mini-config                     
 echo "                    show-config modify-config del-config                     "
 echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui     "
 echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp            "
-echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual fw-stop fw-continue "
+echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual                     "
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                        "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate         "
 echo " [tool-nmap:]       tcp-scan syn-scan fin-scan udp-scan ping-scan            "
@@ -1270,8 +1271,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   82  "fw-save"  \
   83  "fw-restore"  \
   84  "fw-actual" \
-  85  "fw-stop" \
-  86  "fw-continue" \
+  85  "stop" \
+  86  "continue" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -1548,11 +1549,11 @@ case "$menuprincipal" in
  ;;
  85)
  clear
- $fiptables "fw-stop"
+ $fiptables "stop"
  ;;
  86)
  clear
- $fiptables "fw-continue"
+ $fiptables "continue"
  ;;
  91)
  clear
@@ -2845,7 +2846,7 @@ exit; fi
 ##############################       spanish: stop: para el firewall
 ####
 ####
-if [ "$first_option" = "fw-stop" ]; then echo -n
+if [ "$first_option" = "stop" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 #### save actual fw
@@ -2863,7 +2864,7 @@ exit; fi
 ##############################       spanish: continue: continua el firewall
 ####
 ####
-if [ "$first_option" = "fw-continue" ]; then echo -n
+if [ "$first_option" = "continue" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 #### recover actual fw
