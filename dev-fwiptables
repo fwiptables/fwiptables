@@ -1219,9 +1219,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   11  "eraserules" \
   12  "offline" \
   13  "allpermisive" \
-  14  "custom -> is silent" \
-  15  "[config.cfg] -> is verbose" \
-  16  "reset" \
+  14  "custom       -> silent mode" \
+  15  "[config.cfg] -> verbose mode" \
+  16  "stop" \
+  17  "continue" \
+  18  "reset" \
   020 "$cinco [List rules alphabetical] $cinco" \
   21  "list" \
   22  "forward" \
@@ -1354,7 +1356,15 @@ case "$menuprincipal" in
  ;;
  16)
  clear
- $fiptables reset
+ $fiptables "stop"
+ ;;
+ 17)
+ clear
+ $fiptables "continue"
+ ;;
+ 18)
+ clear
+ $fiptables "reset"
  ;;
  21)
  clear
