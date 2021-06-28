@@ -584,7 +584,7 @@ echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                       
 echo " [tool-install:]    install howto-upgrade net-upgrade                        "
 echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny          "
 echo " [show-log:]        log-sudo log-sshd log-logserver log-search               "
-echo " [show-about:]      about version depends examples                           "
+echo " [show-about:]      about version depends examples new-versions              "
 echo " [show-help:]       configurations configuraciones list-help help ayuda      "
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
@@ -3616,7 +3616,8 @@ echo
 echo "          about: About info"
 echo "        version: Info version program actual"
 echo "        depends: Show depends"
-echo "       examples: Show examples "
+echo "       examples: Show examples"
+echo "   new-versions: Show the last versions"
 echo
 echo "$cinco         [Show help]"
 echo
@@ -3821,8 +3822,9 @@ echo "$cinco         [Mostrar acerca]"
 echo
 echo "          About: Acerca de "
 echo "        version: Informacion de la actual version"
-echo "        Depends: Muestra las dependencias "
-echo "       examples: Muestra ejemplos "
+echo "        Depends: Muestra las dependencias"
+echo "       examples: Muestra ejemplos"
+echo "   new-versions: Muestra las ultimas versiones"
 echo
 echo "$cinco         [Mostrar ayuda]"
 echo
