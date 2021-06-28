@@ -1270,6 +1270,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   82  "fw-save"  \
   83  "fw-restore"  \
   84  "fw-actual" \
+  85  "fw-stop" \
+  86  "fw-continue" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -1542,7 +1544,15 @@ case "$menuprincipal" in
  ;;
  84)
  clear
- $fiptables "fw-actual" | less
+ $fiptables "fw-actual" 
+ ;;
+ 85)
+ clear
+ $fiptables "fw-stop"
+ ;;
+ 86)
+ clear
+ $fiptables "fw-continue"
  ;;
  91)
  clear
@@ -3407,15 +3417,15 @@ exit; fi
 if [ "$first_option" = "system-info" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [System info:  distro] "
+echo "$tab [System info:] [Distro] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
-echo "$tab [System info:  Kernel Linux] "
+echo "$tab [System info:][Kernel Linux]"
 $which_uname -srom
-echo "$tab [System info:  Processor] "
+echo "$tab [System info:] [Processor]"
 lscpu | egrep -i "socket|Model name|cpu max"
-echo "$tab [System info:  Memory RAM] "
+echo "$tab [System info:] [Memory RAM]"
 free -h
-echo "$tab [System info:  Disks] "
+echo "$tab [System info:] [Disks]"
 df -h -x tmpfs
 exit; fi
 ####
@@ -3427,11 +3437,11 @@ exit; fi
 if [ "$first_option" = "net-info" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$tab [Net Info:  route ipv4] "
+echo "$tab [Net Info:] [Route ipv4]"
 $which_ip route
-echo "$tab [Net info:  listen ipv4] "
+echo "$tab [Net Info:] [Listen ipv4]"
 $which_ss -l4 | sed 's/   / /g'
-echo "$tab [Net info:  listen ipv6] "
+echo "$tab [Net Info:] [Listen ipv6]"
 $which_ss -l6 | sed 's/   / /g'
 exit; fi
 ####
@@ -3740,9 +3750,9 @@ echo "          arp: Lista las ultimas conexiones arp"
 echo
 echo "$cinco         [herramienta de formato de firewall standard"
 echo
-echo "       fw-list: Muestra las reglas del firewall estandar"
-echo "       fw-save: Guarda las reglas de firewall estandar"
-echo "    fw-restore: Reculpera firewall estandar especificado"
+echo "       fw-list: Muestra las reglas del firewall estandard"
+echo "       fw-save: Guarda las reglas de firewall estandard"
+echo "    fw-restore: Reculpera firewall estandard especificado"
 echo "     fw-actual: Muestra el contenido del firewall estandard actual"
 echo "          stop: Para el firewall borrando las reglas"
 echo "      continue: Recupera el firewall recuperando las reglas paradas"
