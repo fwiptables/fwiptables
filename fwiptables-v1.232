@@ -691,7 +691,6 @@ echo
 $fiptables launch-rules
 $fiptables control-rules
 $fiptables list-rules
-$fiptables list-numrules
 $fiptables tool-configs
 $fiptables tool-guide
 $fiptables tool-sockets
@@ -782,16 +781,28 @@ echo "$cincuenta [$first_option]"
 echo "$cinco         [List iptables rules]"
 echo
 echo "               [The filter table with names]"
-echo "         list: List iptables filter rules input and output ipv4"
-echo "      forward: List iptables filter rules foward"
-echo "        list6: List iptables filter rules input and output ipv6"
-echo "     forward6: List iptables filter rules forward ipv6"
+echo "               [Lista tabla filtros con nombres]"
 echo
-echo "               [The filter table with numbers]"
+echo "         list: List iptables filter rules input and output ipv4"
+echo "             : Lista reglas de tabla filtros entrada y salida ipv4"
+echo "      forward: List iptables filter rules foward"
+echo "             : Lista tabla de iptables de reenvio ipv4"
+echo "        list6: List iptables filter rules input and output ipv6"
+echo "             : Lista reglas de tabla filtros entrada y salida ipv6"
+echo "     forward6: List iptables filter rules forward ipv6"
+echo "             : Lista tabla de iptables de reenvio ipv6"
+echo
+echo "               [List filter table with numbers]"
+echo "               [Lista tabla filtros con numeros]"
+echo
 echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
+echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
 echo "   forwardnum: List iptables filter rules foward in numbers"
+echo "             : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
 echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
+echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv6 in numeros"
 echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
+echo "             : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo
 echo "$cinco         [The others tables]"
 echo
