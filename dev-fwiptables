@@ -1125,14 +1125,16 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [show help]"
 echo
+echo "      mini-help: Show mini-help"
+echo "               : Muestra mini ayuda"
 echo "      list-help: Show list-help"
-echo "               : Muestra list-help"
+echo "               : Muestra lista de ayuda"
+echo "      long-help: Show help in english and spanish"
+echo "               : Muestra la ayuda en ingles y en español"
 echo "           help: Show help in english"
 echo "               : Muestra la ayuda en ingles"
 echo "          ayuda: Show help in spanish"
 echo "               : Muestra la ayuda en español"
-echo "      long-help: Show help in english and spanish"
-echo "               : Muestra la ayuda en ingles y en español"
 exit; fi
 ####
 ####
