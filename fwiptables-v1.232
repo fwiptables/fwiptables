@@ -584,8 +584,8 @@ echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                       
 echo " [tool-install:]    install howto-upgrade net-upgrade                        "
 echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny          "
 echo " [show-log:]        log-sudo log-sshd log-logserver log-search               "
-echo " [show-about:]      about version depends examples new-versions              "
-echo " [show-help:]       configurations configuraciones list-help help ayuda      "
+echo " [show-about:]      about version depends examples config-eng config-spa     "
+echo " [show-help:]       list-help help ayuda long-help                           "
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
@@ -678,6 +678,36 @@ if [ "$which_gedit" = "$NULL" ]    ; then echo -n ; else favorite_graphicall_edi
 ##############################       spanish: Script: opciones generales      #########################################
 ####
 ####
+##############################       english: long-help 
+##############################       spanish: larga-opcion 
+####
+####
+if [ "$first_option" = "long-help" ]; then echo -n
+echo "$head_option"
+echo "$cincuenta [$first_option]"
+echo "$cinco         [Long-help] [Larga-ayuda]"
+echo
+echo
+$fiptables launch-rules
+$fiptables control-rules
+$fiptables list-rules
+$fiptables list-numrules
+$fiptables tool-configs
+$fiptables tool-guide
+$fiptables tool-sockets
+$fiptables tool-fw
+$fiptables tool-icmp
+$fiptables tool-tcp
+$fiptables tool-nmap
+$fiptables tool-sudo
+$fiptables tool-install
+$fiptables show-etc
+$fiptables show-log
+$fiptables show-about
+$fiptables show-help
+exit; fi
+####
+####
 ##############################       english: tool-guide options
 ##############################       spanish: tool-guide opciones
 ####
@@ -712,7 +742,7 @@ echo "$cincuenta [$first_option]"
 echo "$cinco         [Launch iptables rules]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
-echo "               Borra las reglas de iptables in ipv4 y ipv6"
+echo "               Borra las reglas de iptables en ipv4 y ipv6"
 echo "      offline: Firewall disconected for all servers and clients except localhost"
 echo "               Firewall desconectado para todo servidores y clientes excepto localhost"
 echo " allpermisive: Configure a firewall very permisive"
