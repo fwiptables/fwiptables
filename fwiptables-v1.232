@@ -818,9 +818,13 @@ echo "$cincuenta [$first_option]"
 echo "$cinco         [List iptables numerical rules]"
 echo
 echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
+echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
 echo "   forwardnum: List iptables filter rules foward in numbers"
+echo "             : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
 echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
+echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv6 in numeros"
 echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
+echo "             : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo
 exit; fi
 ####
@@ -834,13 +838,20 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [tool configs]"
 echo
-echo "       new-full-config: Create a new configfile.cfg in english"
-echo " nueva-completa-config: Create a new configfile.cfg in spanish"
+echo "       new-full-config: Create a new advance configfile.cfg in english"
+echo "                      : Crea una nueva avanzada configfile.cfg en ingles"
+echo " nueva-completa-config: Create a new advance configfile.cfg in spanish"
+echo "                      : Crea una nueva avanzada configfile.cfg en ingles"
 echo "       new-mini-config: Create a new basic configfile.cfg in english"
+echo "                      : Crea una nueva basica configfile.cfg en ingles"
 echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
-echo "         modify-config: Edit one config.cfg"
-echo "           show-config: Show one config.cfg"
+echo "                      : Crea una nueva basica configfile.cfg en español"
+echo "         modify-config: Edit one configfile.cfg"
+echo "                      : Edita una configuracion.cfg"
+echo "           show-config: Show one configfile.cfg"
+echo "                      : Muestra una configuracion.cfg"
 echo "            del-config: Delete one configuration file"
+echo "                      : Borra una configuracion.cfg"
 exit; fi
 ####
 ####
@@ -854,12 +865,19 @@ echo "$subhead_option"
 echo "$cinco         [Tool sockets]"
 echo
 echo "        route: Show net devices and ip route tables"
+echo "             : Muestra los dispositivos de red y la tabla de rutas"
 echo "           ss: Show net sockets with command ss"
+echo "             : Muestra las conexiones de red con ss"
 echo "         lsof: Show net sockets with command lsof"
+echo "             : Muestra las conexiones con lsof"
 echo "      netstat: Show net sockets with command netstat"
+echo "             : Muestra las conexiones con netstat"
 echo "  ipforwading: Show kernel config about forward"
+echo "             : Muestra la configuracion del kernel sobre reenvios"
 echo "      tcpdump: Listen the connections"
+echo "             : Escucha las conexiones"
 echo "          arp: List the last conentions arp"
+echo "             : Lista las ultimas conexiones arp"
 exit; fi
 ####
 ####
@@ -873,9 +891,13 @@ echo "$subhead_option"
 echo "$cinco         [Recover fw]"
 echo
 echo "       fw-list: Show the files firewall standard"
+echo "              : Muestra los archivos de firewall estandard guardados"
 echo "       fw-save: Save the files in firewall standard"
+echo "              : Guarda los archivos de firewall estandard"
 echo "    fw-restore: Recover files from firewall standard"
+echo "              : Recupera los archivos de firewall estandard"
 echo "     fw-actual: Show the actual iptables standard"
+echo "              : Muestra el actual firewall estandard"
 exit; fi
 ####
 ####
@@ -889,7 +911,9 @@ echo "$subhead_option"
 echo "$cinco         [Tool icmp]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
+echo "             : Hace un ping con una direccion con ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
+echo "             : Hace un ping con una direccion con ipv6 icmp"
 echo
 exit; fi
 ####
@@ -904,11 +928,17 @@ echo "$subhead_option"
 echo "$cinco         [Tool tcp]"
 echo
 echo "    trace-ip4: Trace route a one host with ipv4 tcp"
+echo "             : Traza la routa a una direccion con ipv4 tcp"
 echo "    trace-ip6: Trace route a one host with ipv6 tcp"
+echo "             : Traza la routa a una direccion con ipv6 tcp"
 echo "         host: Resolve one host"
+echo "             : Resuelve una direccion a ip"
 echo "    resolveip: Resolve one host and viceversa"
+echo "             : Resuelve una direccion a ip y a host"
 echo "       geo-ip: Locate a one host or ip"
-echo "      ntpdate: update the date from ntp server"
+echo "             : Localiza una direccion o ip"
+echo "      ntpdate: Update the system date from ntp server"
+echo "             : Actualiza la fecha del sistema desde un servidor de fecha"
 exit; fi
 ####
 ####
@@ -921,15 +951,15 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Tool nmap]"
 echo
-echo "     tcp-scan: scan a host/mask per tcp protocol"
+echo "     tcp-scan: Scan a host/mask per tcp protocol"
 echo "             : Escanea una host/mascara por tcp protocolo"
-echo "     syn-scan: scan a host/mask per syn socket"
+echo "     syn-scan: Scan a host/mask per syn socket"
 echo "             : Escanea una host/mascara por syn socket"
-echo "     fin-scan: scan a host/mask per fin socket"
+echo "     fin-scan: Scan a host/mask per fin socket"
 echo "             : Escanea una host/mascara por fin socket"
-echo "     udp-scan: scan a host/mask per udp protocol"
+echo "     udp-scan: Scan a host/mask per udp protocol"
 echo "             : Escanea una host/mascara por udp protocolo"
-echo "    ping-scan: scan a host/mask per ping udp"
+echo "    ping-scan: Scan a host/mask per ping udp"
 echo "             : Escanea una host/mascara por ping protocolo"
 exit; fi
 ####
@@ -961,8 +991,8 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [tool install]"
 echo
-echo "       install: install this actual"
-echo "              : instala este actual"
+echo "       install: Install this actual"
+echo "              : Instala este actual"
 echo " howto-upgrade: Show howto upgrade at the latest version"
 echo "              : Muestra como actualizar a la ultima version"
 echo "   net-upgrade: Upgrade at the latest version"
@@ -981,13 +1011,13 @@ echo "$cinco         [Show etc]"
 echo
 echo "        hosts: Show /etc/hosts"
 echo "             : Muestra /etc/hosts"
-echo "   protocolos: show /etc/protocols"
+echo "   protocolos: Show /etc/protocols"
 echo "             : Muestra /etc/protocols"
-echo "     services: show /etc/services"
+echo "     services: Show /etc/services"
 echo "             : Muestra /etc/services"
-echo "  hosts.allow: show /etc/hosts.allow"
+echo "  hosts.allow: Show /etc/hosts.allow"
 echo "             : Muestra /etc/hosts.allow"
-echo "   hosts.deny: show /etc/hosts.deny"
+echo "   hosts.deny: Show /etc/hosts.deny"
 echo "             : Muestra /etc/hosts.deny"
 exit; fi
 ####
@@ -1004,7 +1034,7 @@ echo "$cinco         [Show log]"
 echo
 echo "       log-sudo: Search logs with sudo in /var/log"
 echo "               : Busca logs con sudo en /var/log"
-echo "       log-sshd: search logs for sshd in /var/log"
+echo "       log-sshd: Search logs for sshd in /var/log"
 echo "               : Busca logs con sshd en /var/log"
 echo "  log-logserver: Search logs whith this firewall in /var/log"
 echo "               : Busca logs con this firewall en /var/log"
@@ -1025,7 +1055,7 @@ echo "$subhead_option"
 echo "$cinco         [show about]"
 echo
 echo "          about: About"
-echo "               : acerca"
+echo "               : Acerca"
 echo "        version: Info version"
 echo "               : Informacion de version"
 echo "        depends: Show depends"
@@ -1049,8 +1079,13 @@ echo "$subhead_option"
 echo "$cinco         [show help]"
 echo
 echo "      list-help: Show list-help"
+echo "               : Muestra list-help"
 echo "           help: Show help in english"
+echo "               : Muestra la ayuda en ingles"
 echo "          ayuda: Show help in spanish"
+echo "               : Muestra la ayuda en español"
+echo "      long-help: Show help in english and spanish"
+echo "               : Muestra la ayuda en ingles y en español"
 exit; fi
 ####
 ####
@@ -1301,11 +1336,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   11  "eraserules" \
   12  "offline" \
   13  "allpermisive" \
-  14  "custom       -> silent mode" \
-  15  "[config.cfg] -> verbose mode" \
-  16  "stop" \
-  17  "continue" \
-  18  "reset" \
+  14  "custom [cfg]   -> silent mode" \
+  15  "[config.cfg]   -> verbose mode" \
+  16  "stop firewall" \
+  17  "continue firewall" \
+  18  "reset firewall" \
   020 "$cinco [List rules alphabetical] $cinco" \
   21  "list" \
   22  "forward" \
