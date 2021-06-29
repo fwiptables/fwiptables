@@ -778,7 +778,8 @@ exit; fi
 if [ "$first_option" = "list-rules" ]; then echo -n
 echo "$head_option"
 echo "$cincuenta [$first_option]"
-echo "$cinco         [List iptables rules]"
+echo "$cinco         [List filter iptables rules]"
+echo "$cinco         [Lista reglas de iptables filtros]"
 echo
 echo "               [The filter table with names]"
 echo "               [Lista tabla filtros con nombres]"
@@ -805,17 +806,28 @@ echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo "             : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo
 echo "$cinco         [The others tables]"
+echo "$cinco         [Las otras tablas]"
 echo
-echo "      nat: List iptables nat rules from ipv4"
-echo "      nat6: List iptables nat rules from ipv6"
+echo "          nat: List iptables nat rules from ipv4"
+echo "             : Lista iptables nat reglas de ipv4"
+echo "         nat6: List iptables nat rules from ipv6"
+echo "             : Lista iptables nat reglas de ipv6"
 echo "   mangle-ip4: List iptables mangle rules from ipv4"
+echo "             : Lista reglas de manipulacion ipv4"
 echo "   mangle-ip6: List iptables mangle rules from ipv6"
+echo "             : Lista reglas de manipulacion ipv6"
 echo "      raw-ip4: List iptables raw rules from ipv4"
-echo "      raw-ip6: List iptables raw rules from ipv4"
+echo "             : Lista reglas directas de ipv4"
+echo "      raw-ip6: List iptables raw rules from ipv6"
+echo "             : Lista reglas directas de ipv6"
 echo " security-ip4: List iptables security rules from ipv4"
+echo "             : lista reglas de seguridad de ipv4"
 echo " security-ip6: List iptables security rules from ipv6"
+echo "             : lista reglas de seguridad de ipv6"
 echo "     ebtables: List rules ebtables nft ethernet"
+echo "             : Lista reglas de iptables de ethernet"
 echo "    arptables: List rules arptables arp"
+echo "             : Lista reglas de tabla de arpanet"
 exit; fi
 ####
 ####
