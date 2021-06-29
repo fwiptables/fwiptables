@@ -922,10 +922,15 @@ echo "$subhead_option"
 echo "$cinco         [Tool nmap]"
 echo
 echo "     tcp-scan: scan a host/mask per tcp protocol"
+echo "             : Escanea una host/mascara por tcp protocolo"
 echo "     syn-scan: scan a host/mask per syn socket"
+echo "             : Escanea una host/mascara por syn socket"
 echo "     fin-scan: scan a host/mask per fin socket"
+echo "             : Escanea una host/mascara por fin socket"
 echo "     udp-scan: scan a host/mask per udp protocol"
+echo "             : Escanea una host/mascara por udp protocolo"
 echo "    ping-scan: scan a host/mask per ping udp"
+echo "             : Escanea una host/mascara por ping protocolo"
 exit; fi
 ####
 ####
@@ -939,8 +944,11 @@ echo "$subhead_option"
 echo "$cinco         [Tool sudo]"
 echo
 echo "    auth-sudo: Permit sudo $fiptables to other choosed users"
+echo "             : Permite sudo $fiptables a otros elegidos usuarios"
 echo "  remove-sudo: Remove sudo $fiptables to other choosed users"
+echo "             : Borra sudo $fiptables a otros elegidos usuarios"
 echo "    list-sudo: List sudo $fiptables to other choosed users"
+echo "             : Lista sudo $fiptables a otros elegidos usuarios"
 exit; fi
 ####
 ####
@@ -954,8 +962,11 @@ echo "$subhead_option"
 echo "$cinco         [tool install]"
 echo
 echo "       install: install this actual"
-echo " howto-upgrade: Show howoto upgrade at the latest version"
+echo "              : instala este actual"
+echo " howto-upgrade: Show howto upgrade at the latest version"
+echo "              : Muestra como actualizar a la ultima version"
 echo "   net-upgrade: Upgrade at the latest version"
+echo "              : Actualiza a la ultima version"
 exit; fi
 ####
 ####
@@ -968,11 +979,16 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [Show etc]"
 echo
-echo "        hosts: show /etc/hosts"
+echo "        hosts: Show /etc/hosts"
+echo "             : Muestra /etc/hosts"
 echo "   protocolos: show /etc/protocols"
+echo "             : Muestra /etc/protocols"
 echo "     services: show /etc/services"
+echo "             : Muestra /etc/services"
 echo "  hosts.allow: show /etc/hosts.allow"
+echo "             : Muestra /etc/hosts.allow"
 echo "   hosts.deny: show /etc/hosts.deny"
+echo "             : Muestra /etc/hosts.deny"
 exit; fi
 ####
 ####
@@ -986,10 +1002,14 @@ echo "$subhead_option"
 echo
 echo "$cinco         [Show log]"
 echo
-echo "     log-sudo: search logs for sudo in /var/log"
-echo "     log-sshd: search logs for sshd in /var/log"
-echo "log-logserver: search logs for this firewall in /var/log"
-echo "   log-search: search logs for one prefix in  /var/log"
+echo "       log-sudo: Search logs with sudo in /var/log"
+echo "               : Busca logs con sudo en /var/log"
+echo "       log-sshd: search logs for sshd in /var/log"
+echo "               : Busca logs con sshd en /var/log"
+echo "  log-logserver: Search logs whith this firewall in /var/log"
+echo "               : Busca logs con this firewall en /var/log"
+echo "     log-search: Search logs whith a prefix in /var/log"
+echo "               : Busca logs con patron en /var/log"
 exit; fi
 ####
 ####
@@ -1005,9 +1025,17 @@ echo "$subhead_option"
 echo "$cinco         [show about]"
 echo
 echo "          about: About"
+echo "               : acerca"
 echo "        version: Info version"
+echo "               : Informacion de version"
 echo "        depends: Show depends"
+echo "               : Muestra dependencias"
 echo "       examples: Show examples"
+echo "               : Muestra ejemplos"
+echo "     config-eng: Config example with comments in english"
+echo "               : Ejemplo de configuracion con comentarios en ingles"
+echo "     config-spa: Config example with comments in spanish"
+echo "               : Ejemplo de configuracion con comentarios en español"
 exit; fi
 ####
 ####
@@ -1020,8 +1048,6 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$cinco         [show help]"
 echo
-echo " configurations: config example with comments in english"
-echo " configurations: config example with comments in spanish"
 echo "      list-help: Show list-help"
 echo "           help: Show help in english"
 echo "          ayuda: Show help in spanish"
@@ -3517,7 +3543,7 @@ exit; fi
 ############################       spanish: options: varias opciones para configurar en ingles
 ####
 ####
-if [ "$first_option" = "configurations" ]; then echo -n
+if [ "$first_option" = "config-eng" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 cat  $defaultfullcfg_eng
@@ -3528,7 +3554,7 @@ exit; fi
 ############################       spanish: opciones: varias opciones para configurar en spanish
 ####
 ####
-if [ "$first_option" = "configuraciones" ]; then echo -n
+if [ "$first_option" = "config-spa" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 cat $defaultfullcfg_spa
@@ -3674,11 +3700,11 @@ echo "        version: Info version program actual"
 echo "        depends: Show depends"
 echo "       examples: Show examples"
 echo "   new-versions: Show the last versions"
+echo "     config-eng: config example with comments in english"
+echo "     config-spa: config example with comments in spanish"
 echo
 echo "$cinco         [Show help]"
 echo
-echo " configurations: config example with comments in english"
-echo " configurations: config example with comments in spanish"
 echo "      list-help: Show list-help"
 echo "           help: Show help in english"
 echo "          ayuda: Show help in spanish"
@@ -3881,11 +3907,11 @@ echo "        version: Informacion de la actual version"
 echo "        Depends: Muestra las dependencias"
 echo "       examples: Muestra ejemplos"
 echo "   new-versions: Muestra las ultimas versiones"
+echo "     config-eng: ejemplo de config con comentarios en ingles"
+echo "     config-spa: ejemplo de config con comentarios en castellano"
 echo
 echo "$cinco         [Mostrar ayuda]"
 echo
-echo " configurations: ejemplo de config con comentarios en ingles"
-echo "configuraciones: ejemplo de config con comentarios en castellano"
 echo "      list-help: Muestra list-help"
 echo "           help: Muestra la ayuda en ingles"
 echo "          ayuda: Muestra la ayuda en español"
