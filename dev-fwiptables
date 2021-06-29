@@ -1395,12 +1395,13 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   161  "about" \
   162  "depends" \
   163  "examples" \
+  164  "config-eng" \
+  165  "config-spa" \
   0170 "$cinco [Show help global options] $cinco" \
-  171  "configurations" \
-  172  "configuraciones" \
-  173  "list-help" \
-  174  "help" \
-  175  "ayuda" \
+  171  "list-help" \
+  172  "help" \
+  173  "ayuda" \
+  174  "long-help" \
  )"  
 # pendiente
 case "$menuprincipal" in
@@ -1785,27 +1786,31 @@ case "$menuprincipal" in
  clear
  $fiptables "examples" | less
  ;;
+ 164)
+ clear
+ $fiptables "config-eng" | less
+ ;;
+ 165)
+ clear
+ $fiptables "config-spa" | less
+ ;;
  171)
- clear
- $fiptables "configurations" | less
- ;;
- 172)
- clear
- $fiptables "configuraciones" | less
- ;;
- 173)
  clear
  $fiptables "list-help" | less
  ;;
- 174)
+ 172)
  clear
  $fiptables "help" | less
  ;;
- 175)
+ 173)
  clear
  $fiptables "ayuda" | less
  ;;
-*)
+ 174)
+ clear
+ $fiptables "long-help" | less
+ ;;
+ *)
  clear
  dialog --msgbox "fwiptables good bye" 0 0
  clear
