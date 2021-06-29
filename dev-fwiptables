@@ -585,7 +585,31 @@ echo " [tool-install:]    install howto-upgrade net-upgrade                     
 echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny          "
 echo " [show-log:]        log-sudo log-sshd log-logserver log-search               "
 echo " [show-about:]      about version depends examples config-eng config-spa     "
-echo " [show-help:]       list-help help ayuda long-help                           "
+echo " [show-help:]       mini-help list-help long-help help ayuda                 "
+echo "$tab [Configs]"
+echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
+echo "$tab [Examples]"
+echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg    "
+echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg             "
+echo " [List iptables rules:]              $fiptables list                         "
+exit ; fi
+####
+####
+##############################       english: mini-help: wellcome with semi help
+##############################       spanish: mini-help: bienvenida con semi ayuda
+####
+####
+if [ "$first_option" = "mini-help" ]; then echo  -n ;
+echo "$head_option"
+echo "$subhead_option"
+echo "$tab [Option]"
+echo " [launch-rules:]    eraserules offline allpermisive custom [cfg]             "
+echo " [control-rules:]   stop continue reset                                      "
+echo " [list-rules:]      list forward nat list6 forward6 nat6                     "
+echo " [tool-configs:]    new-full-config nueva-completa-config                    "
+echo "                    new-mini-config nueva-mini-config                        "
+echo "                    show-config modify-config del-config                     "
+echo " [show-help:]       mini-help list-help long-help help ayuda                 "
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
