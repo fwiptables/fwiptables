@@ -881,8 +881,8 @@ echo "             : Lista las ultimas conexiones arp"
 exit; fi
 ####
 ####
-##############################       english: recover-fw options
-##############################       spanish: recover-fw opciones
+##############################       english: tool-fw options
+##############################       spanish: tool-fw opciones
 ####
 ####
 if [ "$first_option" = "tool-fw" ]; then echo -n
@@ -894,7 +894,7 @@ echo "       fw-list: Show the files firewall standard"
 echo "              : Muestra los archivos de firewall estandard guardados"
 echo "       fw-save: Save the files in firewall standard"
 echo "              : Guarda los archivos de firewall estandard"
-echo "    fw-restore: Recover files from firewall standard"
+echo "    fw-restore: Restore files from firewall standard"
 echo "              : Recupera los archivos de firewall estandard"
 echo "     fw-actual: Show the actual iptables standard"
 echo "              : Muestra el actual firewall estandard"
@@ -1163,7 +1163,7 @@ $which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
 $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
-#### recover actual fw
+#### restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -1385,7 +1385,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   75  "ipforwading" \
   76  "tcpdump" \
   77  "arp" \
-  080 "$cinco [Tool Recover firewall] $cinco" \
+  080 "$cinco [Tool Recover firewall standard] $cinco" \
   81  "fw-list"  \
   82  "fw-save"  \
   83  "fw-restore"  \
@@ -2999,7 +2999,7 @@ exit; fi
 if [ "$first_option" = "continue" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-#### recover actual fw
+####  Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -3229,7 +3229,7 @@ $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sT $2
-#### recover actual fw
+#### Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -3256,7 +3256,7 @@ $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sF $2
-#### recover actual fw
+#### Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -3283,7 +3283,7 @@ $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sF $2
-#### recover actual fw
+#### Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -3310,7 +3310,7 @@ $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sU $2
-#### recover actual fw
+#### Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -3337,7 +3337,7 @@ $which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sn $2
-#### recover actual fw
+#### Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
@@ -3679,10 +3679,8 @@ echo "$cinco         [Tool fw]"
 echo
 echo "       fw-list: Show the files firewall standar"
 echo "       fw-save: Save the files in firewall standar"
-echo "    fw-restore: Recover the files in firewall standard"
+echo "    fw-restore: Restore the files in firewall standard"
 echo "     fw-actual: Show the content of the firewall standard actual"
-echo "          stop: Stop the firewall erasing rules"
-echo "      continue: Recover the firewall recovering the rules stoped"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -4722,7 +4720,7 @@ $launch_custom $allow_only_output $allow_ipv4 $allow_legacy $which_iptables_lega
 $launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT  -j DROP &> /dev/null
 ####
 ####
-########################################       english: autosave of firewall to recover standard rules
+########################################       english: autosave of firewall to restore standard rules
 ########################################       english: autoguardado de firewall para recuperador de reglas estandar
 ####
 ####
