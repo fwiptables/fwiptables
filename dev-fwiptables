@@ -1434,7 +1434,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   75  "ipforwading" \
   76  "tcpdump" \
   77  "arp" \
-  080 "$cinco [Tool Recover firewall standard] $cinco" \
+  080 "$cinco [Tool firewall standard] $cinco" \
   81  "fw-list"  \
   82  "fw-save"  \
   83  "fw-restore"  \
