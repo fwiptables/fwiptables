@@ -1439,8 +1439,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   82  "fw-save"  \
   83  "fw-restore"  \
   84  "fw-actual" \
-  85  "stop" \
-  86  "continue" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -1457,13 +1455,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   113  "list-sudo" \
   0120 "$cinco [tool install program] $cinco" \
   121  "install" \
-  122  "install" \
-  123  "howto-upgrade" \
-  124  "net-upgrade" \
-  0130 "$cinco [Tool version program] $cinco" \
-  131  "version" \
-  132  "dev-versions" \
-  133  "all-versions" \
+  122  "howto-upgrade" \
+  123  "net-upgrade" \
   0140 "$cinco [Show etc configurations] $cinco" \
   141  "hosts" \
   142  "protocols" \
@@ -1724,14 +1717,6 @@ case "$menuprincipal" in
  clear
  $fiptables "fw-actual" 
  ;;
- 85)
- clear
- $fiptables "stop"
- ;;
- 86)
- clear
- $fiptables "continue"
- ;;
  91)
  clear
  resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
@@ -1798,27 +1783,11 @@ case "$menuprincipal" in
  ;;
  122)
  clear
- $zero_option "install"
+ $fiptables "howto-upgrade" | less
  ;;
  123)
  clear
- $fiptables "howto-upgrade" | less
- ;;
- 124)
- clear
  $fiptables "net-upgrade"
- ;;
- 131)
- clear
- $zero_option "version" | less
- ;;
- 132)
- clear
- $zero_option "dev-versions"
- ;;
- 133)
- clear
- $zero_option "all-versions" | less
  ;;
  141)
  clear
