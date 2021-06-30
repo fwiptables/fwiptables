@@ -576,7 +576,7 @@ echo "                    new-mini-config nueva-mini-config                     
 echo "                    show-config modify-config del-config                     "
 echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui     "
 echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp            "
-echo " [tool-fw:]         fw-list fw-save fw-restore fw-actual                     "
+echo " [tool-firewall:]   fw-list fw-save fw-restore fw-actual                     "
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                        "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate         "
 echo " [tool-nmap:]       tcp-scan syn-scan fin-scan udp-scan ping-scan            "
@@ -718,7 +718,7 @@ $fiptables list-rules
 $fiptables tool-configs
 $fiptables tool-guide
 $fiptables tool-sockets
-$fiptables tool-fw
+$fiptables tool-firewall
 $fiptables tool-icmp
 $fiptables tool-tcp
 $fiptables tool-nmap
@@ -928,14 +928,14 @@ echo "             : Lista las ultimas conexiones arp"
 exit; fi
 ####
 ####
-##############################       english: tool-fw options
-##############################       spanish: tool-fw opciones
+##############################       english: tool-firewall options
+##############################       spanish: tool-firewall opciones
 ####
 ####
-if [ "$first_option" = "tool-fw" ]; then echo -n
+if [ "$first_option" = "tool-firewall" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "$cinco         [Recover fw]"
+echo "$cinco         [tool firewall standard]"
 echo
 echo "       fw-list: Show the files firewall standard"
 echo "              : Muestra los archivos de firewall estandard guardados"
@@ -3693,7 +3693,7 @@ echo "  ipforwading: Show kernel config about forward"
 echo "      tcpdump: Listen the connections"
 echo "          arp: List the last conentions arp"
 echo
-echo "$cinco         [Tool fw]"
+echo "$cinco         [Tool firewall standard]"
 echo
 echo "       fw-list: Show the files firewall standar"
 echo "       fw-save: Save the files in firewall standar"
@@ -3898,14 +3898,12 @@ echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
 echo "      tcpdump: Escuchar las conexiones ip"
 echo "          arp: Lista las ultimas conexiones arp"
 echo
-echo "$cinco         [herramienta de formato de firewall standard"
+echo "$cinco         [Herramienta de formato de firewall standard"
 echo
 echo "       fw-list: Muestra las reglas del firewall estandard"
 echo "       fw-save: Guarda las reglas de firewall estandard"
 echo "    fw-restore: Reculpera firewall estandard especificado"
 echo "     fw-actual: Muestra el contenido del firewall estandard actual"
-echo "          stop: Para el firewall borrando las reglas"
-echo "      continue: Recupera el firewall recuperando las reglas paradas"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
@@ -4039,7 +4037,7 @@ if  [ "$first_option" = "mini-help" ] ; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Group commands list]"
-echo " tool-guide launch-rules list-rules tool-configs tool-sockets tool-fw"
+echo " tool-guide launch-rules list-rules tool-configs tool-sockets tool-firewall"
 echo " tool-icmp tool-tcp tool-sudo show-etc show-log show-install show-version show-about show-help"
 echo "$tab [User configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
