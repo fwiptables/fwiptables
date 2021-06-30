@@ -712,6 +712,7 @@ echo "$cincuenta [$first_option]"
 echo "$cinco         [Long-help] [Larga-ayuda]"
 echo
 echo
+$fiptables list-help
 $fiptables launch-rules
 $fiptables control-rules
 $fiptables list-rules
