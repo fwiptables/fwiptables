@@ -28,9 +28,9 @@
      [Configs]
 cliente.cfg servidor.cfg
      [Examples]
- [Create a new config myown.cfg:]    fwiptables new-mini-config myown.cfg    
- [Launch the config myown.cfg:]      fwiptables custom myown.cfg             
- [List iptables rules:]              fwiptables list                         
+ #Create a new config myown.cfg:#    fwiptables new-mini-config myown.cfg    
+ #Launch the config myown.cfg:#      fwiptables custom myown.cfg             
+ #List iptables rules:#              fwiptables list                         
 ##### [Show command list-help / TYPE:] fwiptables list-help
 ##### [Fran FireWall fwiptables Generator] [Version 1.235]
 ################################################## [launch-rules]
