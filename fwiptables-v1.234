@@ -38,7 +38,7 @@ config_option="no" ; launch_iptables="no" ;                       #english: auto
 launch_offline="no" ;launch_permisive="no" ; launch_custom="no";  #english: auto variables to no #spanish: auto variables a no
 directory_fiptables="/usr/bin" ; fiptables="fwiptables" ;         #english: whereis path  #spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"           #english: program description  #spanish: descripcion del programa
-fprogram="Fran FireWall fwiptables Generator" ; fversion="1.234"  #english: Name and Version #spanish: Name y Version
+fprogram="Fran FireWall fwiptables Generator" ; fversion="1.235"  #english: Name and Version #spanish: Name y Version
 directory_config="/etc/fwiptables" ;                              #english: path to config files  #spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"           #english: path to config files  #spanish: archivos de configuracion
 defaultfullcfg_eng="$directory_config/default-full-english.cfg"   #english: path to config files  #spanish: archivos de configuracion
@@ -588,9 +588,9 @@ echo " [show-help]        mini-help list-help long-help help ayuda              
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
-echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg             "
-echo " [List iptables rules:]              $fiptables list                         "
+echo " #Create a new config myown.cfg:#    $fiptables new-mini-config myown.cfg    "
+echo " #Launch the config myown.cfg:#      $fiptables custom myown.cfg             "
+echo " #List iptables rules:#              $fiptables list                         "
 exit ; fi
 ####
 ####
@@ -1185,25 +1185,10 @@ if [ "$first_option" = "reset" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 #### reset counters rules
-echo "$cinco [Notice:] [Reset the counters rules]"
-#### english: mode one posible reset with -Z
-#### spanish: modo uno posible resetear con -Z
-#### $which_iptables_nft -Z
-#### $which_iptables_legacy -Z
-#### $which_ip6tables_nft -Z
-#### $which_ip6tables_legacy -Z
-#### english: mode two posible save and load
-#### spanish: modo dos posible guarda y carga
-#### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
-#### restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
+$fiptables stop &> /dev/null
+$fiptables continue &> /dev/null
+echo "$cincuenta ok $cinco"
+echo "$cinco  [OK FIREWALL RESETED]"
 exit; fi
 ####
 ####
@@ -2908,7 +2893,7 @@ case $second_option in
 echo "$cinco [usage: $fiptables fw-restore fw-to-restore]"
 echo "$cinco [firewall do not choosed] [Did not updated firewall with fwrecover] [See: $fiptables fw-list]" 
 ;;
-#### English if do exist second option in fwrecover
+#### English if do exist second option in fwrestore
 *)
 if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] ; then echo -n
 #### English: Remove all rules
