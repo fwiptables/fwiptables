@@ -1185,25 +1185,10 @@ if [ "$first_option" = "reset" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 #### reset counters rules
-echo "$cinco [Notice:] [Reset the counters rules]"
-#### english: mode one posible reset with -Z
-#### spanish: modo uno posible resetear con -Z
-#### $which_iptables_nft -Z
-#### $which_iptables_legacy -Z
-#### $which_ip6tables_nft -Z
-#### $which_ip6tables_legacy -Z
-#### english: mode two posible save and load
-#### spanish: modo dos posible guarda y carga
-#### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
-#### restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
+$fiptables stop &> /dev/null
+$fiptables continue &> /dev/null
+echo "$cincuenta ok $cinco"
+echo "$cinco  [OK FIREWALL RESETED]"
 exit; fi
 ####
 ####
@@ -2908,7 +2893,7 @@ case $second_option in
 echo "$cinco [usage: $fiptables fw-restore fw-to-restore]"
 echo "$cinco [firewall do not choosed] [Did not updated firewall with fwrecover] [See: $fiptables fw-list]" 
 ;;
-#### English if do exist second option in fwrecover
+#### English if do exist second option in fwrestore
 *)
 if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] ; then echo -n
 #### English: Remove all rules
