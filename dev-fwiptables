@@ -568,15 +568,14 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Option]"
 echo " [launch-rules:]    eraserules offline allpermisive custom [cfg]             "
-echo " [control-rules:]   stop continue reset                                      "
+echo " [control-rules:]   stop continue reset fwlist save restore actual           "
 echo " [list-rules:]      list forward nat list6 forward6 nat6                     "
 echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                  "
-echo " [tool-configs:]    new-full-config nueva-completa-config                    "
+echo " [tool-cfg:]        new-full-config nueva-completa-config                    "
 echo "                    new-mini-config nueva-mini-config                        "
 echo "                    show-config modify-config del-config                     "
 echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui     "
 echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp            "
-echo " [tool-firewall:]   fw-list fw-save fw-restore fw-actual                     "
 echo " [tool-icmp:]       ping-ip4 ping-ip6                                        "
 echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate         "
 echo " [tool-nmap:]       tcp-scan syn-scan fin-scan udp-scan ping-scan            "
@@ -604,7 +603,7 @@ echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Option]"
 echo " [launch-rules:]    eraserules offline allpermisive custom [cfg]             "
-echo " [control-rules:]   stop continue reset                                      "
+echo " [control-rules:]   stop continue reset fwlist save restore actual           "
 echo " [list-rules:]      list forward nat list6 forward6 nat6                     "
 echo " [tool-configs:]    new-full-config nueva-completa-config                    "
 echo "                    new-mini-config nueva-mini-config                        "
@@ -719,7 +718,6 @@ $fiptables list-rules
 $fiptables tool-configs
 $fiptables tool-guide
 $fiptables tool-sockets
-$fiptables tool-firewall
 $fiptables tool-icmp
 $fiptables tool-tcp
 $fiptables tool-nmap
@@ -793,6 +791,14 @@ echo "      continue: continue with old rules"
 echo "              : Continua con las viejas reglas"
 echo "         reset: Reset the rules"
 echo "              : Resetea las reglas"
+echo "        fwlist: Show the files firewall standard"
+echo "              : Muestra los archivos de firewall estandard guardados"
+echo "          save: Save the files in firewall standard"
+echo "              : Guarda los archivos de firewall estandard"
+echo "       restore: Restore files from firewall standard"
+echo "              : Recupera los archivos de firewall estandard"
+echo "        actual: Show the actual iptables standard"
+echo "              : Muestra el actual firewall estandard"
 exit; fi
 ####
 ####
@@ -926,26 +932,6 @@ echo "      tcpdump: Listen the connections"
 echo "             : Escucha las conexiones"
 echo "          arp: List the last conentions arp"
 echo "             : Lista las ultimas conexiones arp"
-exit; fi
-####
-####
-##############################       english: tool-firewall options
-##############################       spanish: tool-firewall opciones
-####
-####
-if [ "$first_option" = "tool-firewall" ]; then echo -n
-echo "$head_option"
-echo "$subhead_option"
-echo "$cinco         [tool firewall standard]"
-echo
-echo "       fw-list: Show the files firewall standard"
-echo "              : Muestra los archivos de firewall estandard guardados"
-echo "       fw-save: Save the files in firewall standard"
-echo "              : Guarda los archivos de firewall estandard"
-echo "    fw-restore: Restore files from firewall standard"
-echo "              : Recupera los archivos de firewall estandard"
-echo "     fw-actual: Show the actual iptables standard"
-echo "              : Muestra el actual firewall estandard"
 exit; fi
 ####
 ####
@@ -2903,7 +2889,7 @@ exit; fi
 ############################       spanish: fw-list: lista de archivos con reglas en formato iptables
 ####
 ####
-if [ "$first_option" = "fw-list" ]; then echo -n
+if [ "$first_option" = "fwlist" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 echo "[File list with rules in iptables format in folder $directory_fwrecover:]"
@@ -2915,7 +2901,7 @@ exit; fi
 ############################       spanish: fw-restore: carga las reglas en formato iptables
 ####
 ####
-if [ "$first_option" = "fw-restore" ]; then echo -n
+if [ "$first_option" = "restore" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 case $second_option in
@@ -2948,7 +2934,7 @@ exit; fi
 ############################       spanish: fw-save: guarda las reglas en formato iptables
 ####
 ####
-if [ "$first_option" = "fw-save" ]; then echo -n
+if [ "$first_option" = "save" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 case "$second_option" in
@@ -2973,7 +2959,7 @@ exit; fi
 ############################       spanish: fw-actual: muestra las reglas actuales
 ####
 ####
-if [ "$first_option" = "fw-actual" ]; then echo -n
+if [ "$first_option" = "actual" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
@@ -3638,6 +3624,16 @@ echo "       custom: Configure one custom firewall, made for you with file.cfg"
 echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
 echo "        reset: Reset counter rules"
 echo
+echo "$cinco         [Control the iptables rules]"
+echo
+echo "         stop: Save and stop firewall iptables"
+echo "     continue: Restore the firewall iptables stoped"
+echo "        reset: Reset the firewall iptables"
+echo "       fwlist: List the firewall iptables names saved"
+echo "         save: Save the firewall iptables"
+echo "      restore: Restore a one firewall iptables"
+echo "       actual: show the firewall standard actual"
+echo
 echo "$cinco         [List iptables rules]"
 echo
 echo "               [The filter table with names]"
@@ -3693,13 +3689,6 @@ echo "      netstat: Show net sockets with command netstat"
 echo "  ipforwading: Show kernel config about forward"
 echo "      tcpdump: Listen the connections"
 echo "          arp: List the last conentions arp"
-echo
-echo "$cinco         [Tool firewall standard]"
-echo
-echo "       fw-list: Show the files firewall standar"
-echo "       fw-save: Save the files in firewall standar"
-echo "    fw-restore: Restore the files in firewall standard"
-echo "     fw-actual: Show the content of the firewall standard actual"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -3843,6 +3832,16 @@ echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
 echo "[archivo.cfg]: Configura el cortafuegos con un archivo.cfg y muestra info"
 echo "        reset: Resetea el contador de reglas"
 echo
+echo "$cinco         [Controla las reglas de iptables]"
+echo
+echo "         stop: Para las reglas del firewall"
+echo "     continue: Continua las reglas del firewall"
+echo "        reset: Resetea las reglas del firewall"
+echo "       fwlist: Muestra las reglas del firewall estandard"
+echo "         save: Guarda las reglas de firewall estandard"
+echo "      restore: Reculpera firewall estandard especificado"
+echo "       actual: Muestra el contenido del firewall estandard actual"
+echo
 echo "$cinco         [Lista las reglas de tablas de iptables]"
 echo
 echo "               La tabla de filtros con nombres"
@@ -3898,13 +3897,6 @@ echo "         lsof: Muestra las conexiones con command lsof"
 echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
 echo "      tcpdump: Escuchar las conexiones ip"
 echo "          arp: Lista las ultimas conexiones arp"
-echo
-echo "$cinco         [Herramienta de formato de firewall standard"
-echo
-echo "       fw-list: Muestra las reglas del firewall estandard"
-echo "       fw-save: Guarda las reglas de firewall estandard"
-echo "    fw-restore: Reculpera firewall estandard especificado"
-echo "     fw-actual: Muestra el contenido del firewall estandard actual"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
