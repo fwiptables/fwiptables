@@ -2982,13 +2982,13 @@ $which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
 $which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### echo "$cinco saved $archivofin $cinco"
 #### ls -l $directory_fwrecover/* | grep -i $archivofin-
-echo "$cinco show-nft-ipv4"
+echo "$cincuenta show-nft-ipv4"
 cat $directory_fwrecover/last-nft-ipv4
-echo "$cinco show-legacy-ipv4"
+echo "$cincuenta show-legacy-ipv4"
 cat $directory_fwrecover/last-legacy-ipv4
-echo "$cinco show-nft-ipv6"
+echo "$cincuenta show-nft-ipv6"
 cat $directory_fwrecover/last-nft-ipv6
-echo "$cinco show-legacy-ipv6"
+echo "$cincuenta show-legacy-ipv6"
 cat $directory_fwrecover/last-legacy-ipv6
 exit; fi
 ####
