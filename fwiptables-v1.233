@@ -319,10 +319,10 @@ esac
 ####
 if [ -d "$directory_config" ]; then echo -n ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -d "$directory_fwrecover" ]; then echo -n ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-if [ -f "$directory_fwrecover/show-nft-ipv4" ]; then echo -n ; else touch $directory_fwrecover/show-nft-ipv4 &> /dev/null ; fi
-if [ -f "$directory_fwrecover/show-legacy-ipv4" ]; then echo -n ; else touch $directory_fwrecover/show-legacy-ipv4 &> /dev/null ; fi
-if [ -f "$directory_fwrecover/show-nft-ipv6" ]; then echo -n ; else touch $directory_fwrecover/show-nft-ipv6 &> /dev/null ; fi
-if [ -f "$directory_fwrecover/show-legacy-ipv6" ]; then echo -n ; else touch $directory_fwrecover/show-legacy-ipv6 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/last-nft-ipv4" ]; then echo -n ; else touch $directory_fwrecover/last-nft-ipv4 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/last-legacy-ipv4" ]; then echo -n ; else touch $directory_fwrecover/last-legacy-ipv4 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/last-nft-ipv6" ]; then echo -n ; else touch $directory_fwrecover/last-nft-ipv6 &> /dev/null ; fi
+if [ -f "$directory_fwrecover/last-legacy-ipv6" ]; then echo -n ; else touch $directory_fwrecover/last-legacy-ipv6 &> /dev/null ; fi
 ####
 ####
 ##############################       english: Install:    $fiptables           ###########################################
@@ -1209,15 +1209,15 @@ echo "$cinco [Notice:] [Reset the counters rules]"
 #### english: mode two posible save and load
 #### spanish: modo dos posible guarda y carga
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
 exit; fi
 ####
 ####
@@ -2906,7 +2906,7 @@ exit; fi
 if [ "$first_option" = "fw-list" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-echo "File list with rules in iptables format in folder $directory_fwrecover"
+echo "[File list with rules in iptables format in folder $directory_fwrecover:]"
 ls -1 $directory_fwrecover | sed s/\-ipv4//g  | sed s/\-ipv6//g | sed s/\-legacy//g | sed s/\-nft//g | sort -u
 exit; fi
 ####
@@ -2976,20 +2976,20 @@ exit; fi
 if [ "$first_option" = "fw-actual" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### echo "$cinco saved $archivofin $cinco"
 #### ls -l $directory_fwrecover/* | grep -i $archivofin-
 echo "$cinco show-nft-ipv4"
-cat $directory_fwrecover/show-nft-ipv4
+cat $directory_fwrecover/last-nft-ipv4
 echo "$cinco show-legacy-ipv4"
-cat $directory_fwrecover/show-legacy-ipv4
+cat $directory_fwrecover/last-legacy-ipv4
 echo "$cinco show-nft-ipv6"
-cat $directory_fwrecover/show-nft-ipv6
+cat $directory_fwrecover/last-nft-ipv6
 echo "$cinco show-legacy-ipv6"
-cat $directory_fwrecover/show-legacy-ipv6
+cat $directory_fwrecover/last-legacy-ipv6
 exit; fi
 ####
 ####
@@ -3001,10 +3001,10 @@ if [ "$first_option" = "stop" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 echo "$cinco  [OK firewall SAVED]"
 #### erase rules
 $fiptables eraserules
@@ -3019,10 +3019,10 @@ if [ "$first_option" = "continue" ]; then echo -n
 echo "$head_option"
 echo "$subhead_option"
 ####  Restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore $directory_fwrecover/last-legacy-ipv6
 echo "$cinco  [OK firewall RESTORED]"
 exit; fi
 ####
@@ -3240,19 +3240,19 @@ echo "$subhead_option"
 echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
 echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### erase rules
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sT $2
 #### Restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3267,19 +3267,19 @@ echo "$subhead_option"
 echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
 echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### erase rules
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sF $2
 #### Restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3294,19 +3294,19 @@ echo "$subhead_option"
 echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
 echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### erase rules
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sF $2
 #### Restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore $directory_fwrecover/last-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3321,19 +3321,19 @@ echo "$subhead_option"
 echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
 echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### erase rules
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sU $2
 #### Restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -3348,19 +3348,19 @@ echo "$subhead_option"
 echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
 echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
 #### save actual fw
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### erase rules
 $fiptables eraserules
 #### launch nmap
 $which_nmap -sn $2
 #### Restore actual fw
-$which_iptables_nft-restore  $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-restore  $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-restore  $directory_fwrecover/last-legacy-ipv6
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
 exit; fi
 ####
@@ -4747,18 +4747,19 @@ $launch_custom $allow_only_output $allow_ipv6 $allow_legacy $which_ip6tables_leg
 ####
 #### english: autosave with generic name
 #### spanish: autoguardado con nombre generico
-$which_iptables_nft-save > $directory_fwrecover/show-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/show-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/show-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/show-legacy-ipv6
+$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### english: autosave with specific name
 #### spanish: autoguardado con nombre especifico
 case $autosave_fwrecover in
 $NULL)
-$which_iptables_nft-save > $directory_fwrecover/$first_option-$second_option-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/$first_option-$second_option-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+lasegunda="-$second_option"
+$which_iptables_nft-save > $directory_fwrecover/$first_option$lasegunda-nft-ipv4
+$which_iptables_legacy-save > $directory_fwrecover/$first_option$lasegunda-legacy-ipv4
+$which_ip6tables_nft-save > $directory_fwrecover/$first_option$lasegunda-nft-ipv6
+$which_ip6tables_legacy-save > $directory_fwrecover/$first_option$lasegunda-legacy-ipv6
 ;;
 esac
 ####
