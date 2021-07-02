@@ -588,9 +588,9 @@ echo " [show-help]        mini-help list-help long-help help ayuda              
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
-echo " [Create a new config myown.cfg:]    $fiptables new-mini-config myown.cfg    "
-echo " [Launch the config myown.cfg:]      $fiptables custom myown.cfg             "
-echo " [List iptables rules:]              $fiptables list                         "
+echo " #Create a new config myown.cfg:#    $fiptables new-mini-config myown.cfg    "
+echo " #Launch the config myown.cfg:#      $fiptables custom myown.cfg             "
+echo " #List iptables rules:#              $fiptables list                         "
 exit ; fi
 ####
 ####
