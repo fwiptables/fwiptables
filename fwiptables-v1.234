@@ -567,24 +567,24 @@ if [ "$first_option" = "list-help" ]; then echo  -n ;
 echo "$head_option"
 echo "$subhead_option"
 echo "$tab [Option]"
-echo " [launch-rules:]    eraserules offline allpermisive custom [cfg]             "
-echo " [control-rules:]   stop continue reset fwlist save restore actual           "
-echo " [list-rules:]      list forward nat list6 forward6 nat6                     "
-echo " [list-numrules:]   listnum forwardnum listnum6 forwardnum6                  "
-echo " [tool-cfg:]        new-full-config nueva-completa-config                    "
+echo " [launch-rules]     eraserules offline allpermisive custom [cfg]             "
+echo " [control-rules]    stop continue reset fwlist save restore actual           "
+echo " [list-rules]       list forward nat list6 forward6 nat6                     "
+echo " [list-numrules]    listnum forwardnum listnum6 forwardnum6                  "
+echo " [tool-cfg]         new-full-config nueva-completa-config                    "
 echo "                    new-mini-config nueva-mini-config                        "
 echo "                    show-config modify-config del-config                     "
-echo " [tool-guide:]      system-info net-info full-wizard mini-wizard cli gui     "
-echo " [tool-sockets:]    route ss netstat lsof ipforwading tcpdump arp            "
-echo " [tool-icmp:]       ping-ip4 ping-ip6                                        "
-echo " [tool-tcp:]        trace-ip4 trace-ip6 host resolveip geoip ntpdate         "
-echo " [tool-nmap:]       tcp-scan syn-scan fin-scan udp-scan ping-scan            "
-echo " [tool-sudo:]       auth-sudo remove-sudo list-sudo                          "
-echo " [tool-install:]    install howto-upgrade net-upgrade                        "
-echo " [show-etc:]        hosts protocols services hosts.allow hosts.deny          "
-echo " [show-log:]        log-sudo log-sshd log-logserver log-search               "
-echo " [show-about:]      about version depends examples config-eng config-spa     "
-echo " [show-help:]       mini-help list-help long-help help ayuda                 "
+echo " [tool-guide]       system-info net-info full-wizard mini-wizard cli gui     "
+echo " [tool-sockets]     route ss netstat lsof ipforwading tcpdump arp            "
+echo " [tool-icmp]        ping-ip4 ping-ip6                                        "
+echo " [tool-tcp]         trace-ip4 trace-ip6 host resolveip geoip ntpdate         "
+echo " [tool-nmap]        tcp-scan syn-scan fin-scan udp-scan ping-scan            "
+echo " [tool-sudo]        auth-sudo remove-sudo list-sudo                          "
+echo " [tool-install]     install howto-upgrade net-upgrade                        "
+echo " [show-etc]         hosts protocols services hosts.allow hosts.deny          "
+echo " [show-log]         log-sudo log-sshd log-logserver log-search               "
+echo " [show-about]       about version depends examples config-eng config-spa     "
+echo " [show-help]        mini-help list-help long-help help ayuda                 "
 echo "$tab [Configs]"
 echo $(ls $directory_config | egrep -iv "default|wizard|example1.cfg")
 echo "$tab [Examples]"
@@ -2073,9 +2073,7 @@ $which_iptables_nft -t nat -F
 $which_ip6tables_nft -t nat  -F
 $which_iptables_legacy -t nat -F
 $which_ip6tables_legacy -t nat -F
-echo "$cinco  OK ERASED all rules from [ipv4 and ipv6] for iptables [filter and nat] with [neftables and xtables]"
-echo "$cinco  The iptables configured for delete rules to internet $cinco"
-echo "$cinco  launch $fiptables list  # to list iptables rules"
+echo "$cinco  [OK FIREWALL ERASED]"
 exit; fi
 ####
 ####
@@ -2920,10 +2918,10 @@ $which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4
 $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4
 $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6
 $which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6
-echo "$cinco  [Ok RESTORED: updated firewall with fwrecover]"
+echo "$cinco  [Ok FIREWALL RESTORED]"
 else
 echo "$cinco [usage: $fiptables fw-restore fw-to-restore] [SEE: $fiptables fw-list]"
-echo "$cinco [firewall choosed do not exists] [Did not updated firewall with fwrecover] [See: $fiptables fw-list]" ; fi
+echo "$cinco [firewall choosed do not exists] [Did not updated firewall with fwrecover]" ; fi
 ;;
 esac
 #### echo "Example for nft ipv4       :    iptables-nft-restore < file "
@@ -2991,7 +2989,7 @@ $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
 $which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
 $which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
-echo "$cinco  [OK firewall SAVED]"
+echo "$cinco  [OK FIREWALL SAVED]"
 #### erase rules
 $fiptables eraserules
 exit; fi
@@ -3009,7 +3007,7 @@ $which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
 $which_ip6tables_legacy-restore $directory_fwrecover/last-legacy-ipv6
-echo "$cinco  [OK firewall RESTORED]"
+echo "$cinco  [OK FIREWALL CONTINUED]"
 exit; fi
 ####
 ####
@@ -4747,7 +4745,7 @@ $which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 #### spanish: autoguardado con nombre especifico
 case $autosave_fwrecover in
 $NULL)
-lasegunda="-$second_option"
+lasegunda="_$second_option"
 $which_iptables_nft-save > $directory_fwrecover/$first_option$lasegunda-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/$first_option$lasegunda-legacy-ipv4
 $which_ip6tables_nft-save > $directory_fwrecover/$first_option$lasegunda-nft-ipv6
