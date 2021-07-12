@@ -2840,7 +2840,7 @@ echo "$head_option"
 echo "$subhead_option"
 echo "[File list with rules in iptables format in folder $directory_fwrecover:]"
 ls -1 $directory_fwrecover | sed s/\-ipv4//g  | sed s/\-ipv6//g | sed s/\-legacy//g | sed s/\-nft//g | sort -u
-echo "$cinco  [OK FIREWALL LISTED]"
+echo "$cinco  [OK FIREWALL NAMES]"
 exit; fi
 ####
 ####
@@ -4776,17 +4776,14 @@ esac
 ####  # show text head lines in all firewall #
 echo "$head_option"
 echo "$cincuenta lauching iptables rules $cinco"
-echo "$cinco  OK LAUNCHED $fiptables $first_option $second_option"
+echo "$cinco  OK FIREWALL $first_option $second_option"
 ####  # show text to firewall offline #
 if [ "$first_option" = "offline" ]; then echo -n
-echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall allpermisive #
 if [ "$first_option" = "allpermisive" ]; then echo -n
-echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
 if [ -f "$directory_config/$second_option" ]; then echo -n
-echo "$cinco  launch $fiptables list  # to list iptables rules"
 exit ; else echo -n ; fi
 ####  # show text to firewall [config.cfg] (show text) #
 if [ -f "$directory_config/$first_option" ] | [ -f "$directory_config/$second_option" ] ; then echo -n
