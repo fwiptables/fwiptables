@@ -1,40 +1,102 @@
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [long-help]
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ long-help ]
 #####         [Long-help] [Larga-ayuda]
 
+--------------------------------------------------------------------------
+  INTRO fwiptables:
 
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ list-help ]
-     [Option]
+  Firewall managed with iptables netfilter, both: xtables and neftables,
+  Use this firewall with other utilities to control the system net ip,  
+  Firewall configured with config files or with standard iptables files.
+
+  See web page project in https://sourceforge.net/projects/f-iptables/
+--------------------------------------------------------------------------
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ list-help ]
+
+     [option]
  [launch-rules]     eraserules offline allpermisive custom [cfg]             
- [control-rules]    stop continue reset fwlist save restore actual           
+ [control-rules]    stop continue reset fwlist read save restore actual      
  [list-rules]       list forward nat list6 forward6 nat6                     
  [list-numrules]    listnum forwardnum listnum6 forwardnum6                  
  [tool-cfg]         new-full-config nueva-completa-config                    
                     new-mini-config nueva-mini-config                        
                     show-config modify-config del-config                     
- [tool-guide]       system-info net-info full-wizard mini-wizard cli gui     
+ [tool-guide]       system-info net-info full-wizard mini-wizard             
+                    cli -text -gui text gui gui-shell                        
  [tool-sockets]     route ss netstat lsof ipforwading tcpdump arp            
  [tool-icmp]        ping-ip4 ping-ip6                                        
  [tool-tcp]         trace-ip4 trace-ip6 host resolveip geoip ntpdate         
  [tool-nmap]        tcp-scan syn-scan fin-scan udp-scan ping-scan            
  [tool-sudo]        auth-sudo remove-sudo list-sudo                          
- [tool-install]     install howto-upgrade net-upgrade                        
+ [tool-install]     install howto-upgrade upgrade new-versions               
  [show-etc]         hosts protocols services hosts.allow hosts.deny          
  [show-log]         log-sudo log-sshd log-logserver log-search               
  [show-about]       about version depends examples config-eng config-spa     
  [show-help]        mini-help list-help long-help help ayuda                 
-     [Configs]
-cliente.cfg servidor.cfg
-     [Examples]
- #Create a new config myown.cfg:#    fwiptables new-mini-config myown.cfg    
- #Launch the config myown.cfg:#      fwiptables custom myown.cfg             
- #List iptables rules:#              fwiptables list                         
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [launch-rules]
-#####         [Launch iptables rules]
+
+     [cfg]
+cliente.cfg cliente-nft.cfg
+
+     [examples]                       -text for default, or -gui            
+ Create a new config myown.cfg:#      fwiptables new-mini-config myown.cfg  
+ Launch config myown.cfg:#            fwiptables custom myown.cfg           
+ List iptables rules with console:#   fwiptables list                       
+ List iptables rules with gui:#       fwiptables -gui list                  
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ option ]
+#####         [List option] [Lista opcion]
+
+  launch-rules   Launch the iptables firewall rules
+                 Lanza las reglas de iptables
+  control-rules  Control the iptables firewall rules
+                 Controla las reglas de iptables
+  list-rules     List the iptables firewall rules
+                 Lista las reglas de iptables
+  list-num       List the iptables firewall rules in numbers
+                 Lista las reglas numericas de iptables
+  tool-cfg       Create, modify and show configurations
+                 Crea, modifica y muestra configuraciones
+  tool-guide     Guide to beginners
+                 Guia para empezar
+  tool-sockets:  List net sockets ip in system
+                 Lista sockets de red ip en el sistema
+  tool-icmp:     Tool icmp to ping at other hosts
+                 Herramienta icmp para hacer ping a otros
+  tool-tcp:      Several tools tcp
+                 Verias herramientas tcp
+  tool-nmap:     Port scan
+                 Escaneo de puertos
+  tool-sudo:     Tool to auth sudo a users for fwiptables
+                 Herramienta de autorizacion a usuarios para fwiptables
+  tool-install:  Tool to install and upgrade fwiptables
+                 Herramienta para instalar y actualizar fwiptables
+  show-etc:      Show net files in /etc/
+                 Muestra archivos de red de /etc/
+  show-log:      Show logs systems
+                 Muestra logs del sistema
+  show-about:    About fwiptables
+                 Acerca de fwiptables
+  show-help:     Help for fwiptables
+                 Ayuda de fwiptables
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ cfg ]
+#####         [list cfg]
+
+  list the cfg files:
+
+cliente.cfg cliente-nft.cfg
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ examples ]
+#####         [list examples] [Lista ejemplos]
+
+     [list-examples]                   -text for default, or -gui              
+ #Create a new config myown.cfg:#      fwiptables new-mini-config myown.cfg    
+ #Launch config myown.cfg:#            fwiptables custom myown.cfg             
+ #List iptables rules with console:#   fwiptables list                         
+ #List iptables rules with gui:#       fwiptables -gui list                    
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ launch-rules ]
+#####         [Launch iptables rules] [Lanza reglas de iptables]
 
    eraserules: Remove the iptables rules in ipv4 and ipv6
                Borra las reglas de iptables en ipv4 y ipv6
@@ -46,10 +108,9 @@ cliente.cfg servidor.cfg
                Configura un modificado firewall con un archivo cfg
    [file.cfg]: Configure the firewall with file.cfg and show info
                Configura un firewall modificado con un archivo cfg y muestra info
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [control-rules]
-#####         [Control iptables rules]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ control-rules ]
+#####         [Control iptables rules] [Controla reglas de iptables]
 
           stop: Save and stop the rules
               : Guarda y para las reglas
@@ -65,9 +126,8 @@ cliente.cfg servidor.cfg
               : Recupera los archivos de firewall estandard
         actual: Show the actual iptables standard
               : Muestra el actual firewall estandard
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [list-rules]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ list-rules ]
 #####         [List filter iptables rules]
 #####         [Lista reglas de iptables filtros]
 
@@ -118,10 +178,9 @@ cliente.cfg servidor.cfg
              : Lista reglas de iptables de ethernet
     arptables: List rules arptables arp
              : Lista reglas de tabla de arpanet
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-configs ]
-#####         [tool configs]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-configs ]
+#####         [Tool configs] [Herramienta de configuraciones]
 
        new-full-config: Create a new advance configfile.cfg in english
                       : Crea una nueva avanzada configfile.cfg en ingles
@@ -137,10 +196,9 @@ cliente.cfg servidor.cfg
                       : Muestra una configuracion.cfg
             del-config: Delete one configuration file
                       : Borra una configuracion.cfg
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [tool-guide]
-#####         [tool guide]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-guide ]
+#####         [tool guide] [Herramienta guia]
 
   system-info: Show info system
              : Muestra informacion del sistema
@@ -151,13 +209,20 @@ cliente.cfg servidor.cfg
   mini-wizard: Asistant y Launch simple firewall
              : Asiste y lanza un simple firewall
           cli: Comand line interface with menus
-             : interfaz de menus de texto
-          gui: Graphicall user interface
-             : Interfaz grafico de usuario
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-sockets ]
-#####         [Tool sockets]
+             : Interfaz de menus de texto
+        -text: Text output interface, for default
+             : Interfaz de texto, por defecto
+         -gui: Graphicall output interface
+             : Interfaz grafico de salida
+         text: Text output interface, for default
+             : Interfaz de texto, por defecto
+          gui: Graphicall output interface
+             : Interfaz grafico de salida
+    gui-shell: Graphicall shell interface
+             : Entorno de comandos grafico
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-sockets ]
+#####         [Tool sockets] [Herramienta de sockets]
 
         route: Show net devices and ip route tables
              : Muestra los dispositivos de red y la tabla de rutas
@@ -173,20 +238,18 @@ cliente.cfg servidor.cfg
              : Escucha las conexiones
           arp: List the last conentions arp
              : Lista las ultimas conexiones arp
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-icmp ]
-#####         [Tool icmp]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-icmp ]
+#####         [Tool icmp] [Herramienta icmp]
 
      ping-ip4: Do a one ping with to one host with ipv4 icmp
              : Hace un ping con una direccion con ipv4 icmp
      ping-ip6: Do a one ping with to one host with ipv6 icmp
              : Hace un ping con una direccion con ipv6 icmp
 
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-tcp ]
-#####         [Tool tcp]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-tcp ]
+#####         [Tool tcp] [Herramienta tcp]
 
     trace-ip4: Trace route a one host with ipv4 tcp
              : Traza la routa a una direccion con ipv4 tcp
@@ -200,10 +263,9 @@ cliente.cfg servidor.cfg
              : Localiza una direccion o ip
       ntpdate: Update the system date from ntp server
              : Actualiza la fecha del sistema desde un servidor de fecha
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-nmap ]
-#####         [Tool nmap]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-nmap ]
+#####         [Tool nmap] [Herramienta nmap]
 
      tcp-scan: Scan a host/mask per tcp protocol
              : Escanea una host/mascara por tcp protocolo
@@ -215,10 +277,9 @@ cliente.cfg servidor.cfg
              : Escanea una host/mascara por udp protocolo
     ping-scan: Scan a host/mask per ping udp
              : Escanea una host/mascara por ping protocolo
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-sudo ]
-#####         [Tool sudo]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-sudo ]
+#####         [Tool sudo] [Herramienta sudo]
 
     auth-sudo: Permit sudo fwiptables to other choosed users
              : Permite sudo fwiptables a otros elegidos usuarios
@@ -226,21 +287,19 @@ cliente.cfg servidor.cfg
              : Borra sudo fwiptables a otros elegidos usuarios
     list-sudo: List sudo fwiptables to other choosed users
              : Lista sudo fwiptables a otros elegidos usuarios
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ tool-install ]
-#####         [tool install]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ tool-install ]
+#####         [Tool install] [Herramienta instalar]
 
        install: Install this actual
               : Instala este actual
  howto-upgrade: Show howto upgrade at the latest version
               : Muestra como actualizar a la ultima version
-   net-upgrade: Upgrade at the latest version
+       upgrade: Upgrade at the latest version
               : Actualiza a la ultima version
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ show-etc ]
-#####         [Show etc]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ show-etc ]
+#####         [Show etc] [Mostrar etc]
 
         hosts: Show /etc/hosts
              : Muestra /etc/hosts
@@ -252,11 +311,9 @@ cliente.cfg servidor.cfg
              : Muestra /etc/hosts.allow
    hosts.deny: Show /etc/hosts.deny
              : Muestra /etc/hosts.deny
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ show-log ]
 
-#####         [Show log]
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ show-log ]
+#####         [Show log] [Mostrar log]
 
        log-sudo: Search logs with sudo in /var/log
                : Busca logs con sudo en /var/log
@@ -266,10 +323,9 @@ cliente.cfg servidor.cfg
                : Busca logs con this firewall en /var/log
      log-search: Search logs whith a prefix in /var/log
                : Busca logs con patron en /var/log
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ show-about ]
-#####         [show about]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ show-about ]
+#####         [Show about] [Mostrar acerca de]
 
           about: About
                : Acerca
@@ -283,10 +339,9 @@ cliente.cfg servidor.cfg
                : Ejemplo de configuracion con comentarios en ingles
      config-spa: Config example with comments in spanish
                : Ejemplo de configuracion con comentarios en español
-##### [Show command list-help / TYPE:] fwiptables list-help
-##### [Fran FireWall fwiptables Generator] [Version 1.235]
-################################################## [ show-help ]
-#####         [show help]
+
+##### [Fran FireWall FWiptables Generator] [Version 1.32-Ramon] ##### [ show-help ]
+#####         [Show help] [Mostrar ayuda]
 
       mini-help: Show mini-help
                : Muestra mini ayuda
@@ -298,3 +353,4 @@ cliente.cfg servidor.cfg
                : Muestra la ayuda en ingles
           ayuda: Show help in spanish
                : Muestra la ayuda en español
+
