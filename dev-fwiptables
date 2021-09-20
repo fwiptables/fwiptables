@@ -2933,8 +2933,8 @@ if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
 if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
 ####
 ####
-#############################       english: list: system script, the list option
-#############################       spanish: list: script de sistema, la opcion lista
+#############################       english: filter-ip4: system script, the list option
+#############################       spanish: filter-ip4: script de sistema, la opcion lista
 ####
 ####
  if [ "$first_option" = "filter-ip4" ]; then $nada ;
@@ -2942,6 +2942,8 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
  echo $head_option
  echo $subhead_option
+ ip route ls | head -1
+ echo $ralla
  case $legacycuatro in "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
  echo "$tab [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
@@ -2997,8 +2999,8 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  exit; fi
 ####
 ####
-############################       english: list6: system script, the list6 option to list ipv6 rules
-############################       spanish: list6: script de sistema, la opcion list6 para listar reglas de ipv6
+############################       english: filter-ip6: system script, the list6 option to list ipv6 rules
+############################       spanish: filter-ip6: script de sistema, la opcion list6 para listar reglas de ipv6
 ####
 ####
  if [ "$first_option" = "filter-ip6" ]; then $nada
@@ -3006,6 +3008,8 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option
  echo $subhead_option
+ ip route ls  | head -1
+ echo $ralla
  case $legacyseis in
  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
