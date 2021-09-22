@@ -99,6 +99,8 @@ log_prefix="logserver:" ;           #### from default-fwiptables
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
 flistado="-70" ;                                                    
 #### #english: wide of list config files #spanish: Ancho al listar cfg
+case "$(whereis ip)" in "$NULL")default_route="$cinco [ No default route ip.v4 ]" ;;
+*)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default)]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
 zenity_dimension="--width=950 --height=650"   #### from default-fwiptables
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
@@ -136,12 +138,14 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ##############################       spanish: Instalador noticia          ###################################
 ####
 ####
+if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then 
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;;
 "./$fiptables") ;;
 "$fiptables") ;;
 *) echo "$cinco [to install / TYPE:] $zero_option install" ;;
 esac
+fi
 ####
 ####
 ##############################       english: $NULL: fwiptables launch .. for default
@@ -227,24 +231,24 @@ if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
 allow_only_input=no
 ####
 ####
-allow_legacy= ; allow_nft= ; allow_ipv4= ; allow_ipv6=no ;
-client_tcp=ssh,http,https ; client_udp=domain,bootpc,ntp,https ;
-server_tcp=ssh ; server_udp= ; logserver_tcp=ssh ; logserver_udp= ;
-allow_input_all=no ; allow_output_all=no ; 
-allow_input_state=no ; allow_output_state=no ;
-allow_bandwidth_input=no ; allow_bandwidth_output=no ;
-allow_maxconnect_input=no ; allow_maxconnect_output=no ;
-allow_ping_send=no ; allow_ping_recive=no ;
-allow_forwading=no ; allow_nat=no ;allow_vpn=no ; allow_blacklist=no ;
-allow_output_uid=no ; allow_output_gid=no ; allow_others_protocols=no ;
+allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="no" ;
+client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
+server_tcp="ssh" ; server_udp="" ; logserver_tcp="ssh" ; logserver_udp="" ;
+allow_input_all="no" ; allow_output_all="no" ; 
+allow_input_state="no" ; allow_output_state="no" ;
+allow_bandwidth_input="no" ; allow_bandwidth_output="no" ;
+allow_maxconnect_input="no" ; allow_maxconnect_output="no" ;
+allow_ping_send="no" ; allow_ping_recive="no" ;
+allow_forwading="no" ; allow_nat="no" ;allow_vpn="no" ; allow_blacklist="no" ;
+allow_output_uid="no" ; allow_output_gid="no" ; allow_others_protocols="no" ;
 input_state="new,related,stablished" ;
 input_state="new,related,stablished" ;
-bandwidth_input=12512 ; bandwidth_output=512 ;
-maxconnect_input=72 ; maxconnect_output=72 ;
-vpn=wesnoth.org ; blacklist=yandex.com ;
-output_uid=root ; output_gid=root ; others_protocols=icmp,igmp ;
-net_ipv4_client=0/0 ; net_ipv4_server=0/0 ;
-net_ipv6_client=::/0 ; net_ipv6_server=::/0 ;
+bandwidth_input="12512" ; bandwidth_output="512" ;
+maxconnect_input="72" ; maxconnect_output="72" ;
+vpn="wesnoth.org" ; blacklist="yandex.com" ;
+output_uid="root" ; output_gid="root" ; others_protocols="icmp,igmp" ;
+net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
+net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
 #####################################  english: fvariables:    variables to prepare to gen files
@@ -333,17 +337,12 @@ spa23=$(echo "$cinco vacio, reglas para permitir toda entrada o no")
 var24=$(echo "allow_output_all=no ")
 eng24=$(echo "$cinco void when the rules are to allow output to all or no")
 spa24=$(echo "$cinco vacio, reglas para permitir toda salida o no")
-
-
 var25=$(echo "allow_input_state=no ")
 eng25=$(echo "$cinco Selective Input state or no")
 spa25=$(echo "$cinco Estado de entrada selectivo o no")
-
 var26=$(echo "allow_output_state=no ")
 eng26=$(echo "$cinco Selective Output state or no")
 spa26=$(echo "$cinco Estado de salida selectivo o no")
-
-
 var27=$(echo "allow_bandwidth_input=no ")
 eng27=$(echo "$cinco void to limit bandwidth input in kbits/sec for all sources or no")
 spa27=$(echo "$cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
@@ -392,16 +391,9 @@ spa39=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
 var40=$(echo "input_state=new,related,established")
 eng40=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa40=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-
 var41=$(echo "output_state=new,related,established")
 eng41=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa41=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-
-
-
-
-
-
 var42=$(echo "bandwidth_input=12512" )
 eng42=$(echo "$cinco max input bandwidth in kbits/sec for all" )
 spa42=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
@@ -571,7 +563,7 @@ if [ "$which_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser=$w
 if [ "$first_option" = "install" ] ; then $nada
 echo $head_option
 echo $subhead_option
-#### english: copy file #### spanish: copia el archivo
+#### english: copy the file #### spanish: copia el archivo
 echo $zero_option
 cp $zero_option $directory_fiptables/$fiptables ;
 #### english: create alias #### spanish: crea alias
@@ -611,7 +603,7 @@ $favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables"
 chmod ugo+rx /tmp/$fiptables
 /tmp/$fiptables install
 echo "$cinco [$fprogram][Version $fversion] is upgraded: ok"
-echo "$cinco [ OK UPGRADED ] [$directory_fiptables/$fiptables]"
+echo "$cinco [ OK FIREWALL UPGRADED ] [$directory_fiptables/$fiptables]"
 echo $footer_option
 exit ; fi
 ####
@@ -897,7 +889,7 @@ echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -l
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 net-speed net-speed6              "
+echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6              "
 echo "$tab" "$tab"  "    tool-tcp           trace-ip4 trace-ip6 host geoip ntpdate              "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
@@ -935,7 +927,7 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-cfg show-config modify-config del-config       "
 echo "$tab" "$tab"  "______________________                | Third options |                    " 
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 net-speed net-speed6              "
+echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           trace-ip4 trace-ip6 host geoip ntpdate              "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
@@ -1399,9 +1391,9 @@ echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "             : Hace un ping con una direccion con ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
 echo "             : Hace un ping con una direccion con ipv6 icmp"
-echo "    net-speed: test bandwith with ipv4"
+echo "    speed-ip4: test bandwith with ipv4"
 echo "             : Testea la velocidad de conexion con ipv4"
-echo "   net-speed6: Test net bandwith with ipv6"
+echo "    speed-ip6: Test net bandwith with ipv6"
 echo "             : Testea la velocidad de conexion con ipv6"
 echo
 echo $footer_option
@@ -2084,7 +2076,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "ping-ip4" "ping-ip6" "net-speed" "net-speed6" \
+--list "Gui Principal Menu" "ping-ip4" "ping-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Icmp] [$fiptables]" )
 case $selection in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
@@ -2093,8 +2085,8 @@ case $selection in
 $fiptables -gui ping-ip4 $archivo ;;
 "ping-ip6")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv6 or host to ping with ipv6 ]")" ; 
 $fiptables -gui ping-ip6 $archivo ;;
-"net-speed") $fiptables -gui net-speed ;;
-"net-speed6") $fiptables -gui net-speed6 ;;
+"speed-ip4") $fiptables -gui speed-ip4 ;;
+"speed-ip6") $fiptables -gui speed-ip6 ;;
 *)zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit;;
 esac
@@ -2942,7 +2934,8 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
  echo $head_option
  echo $subhead_option
- ip route ls | head -1
+ echo $ralla
+ echo $default_route
  echo $ralla
  case $legacycuatro in "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
@@ -2982,6 +2975,9 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacycuatro in  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
  echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
@@ -3008,7 +3004,8 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option
  echo $subhead_option
- ip route ls  | head -1
+ echo $ralla
+ echo $default_route
  echo $ralla
  case $legacyseis in
  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
@@ -3049,6 +3046,9 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacycuatro in  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
  echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
@@ -3075,6 +3075,9 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacycuatro in "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
  echo "$tab [ With rules xtable ] [ iptables-legacy ] [ NAT ] $ralla  "
@@ -3101,6 +3104,9 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $nftseis in
  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
@@ -3128,6 +3134,9 @@ legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacycuatro in
  "$NULL") echo "$tab [Without rules netfilter] [iptables-nft]" ;;
  *)
@@ -3167,6 +3176,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacycuatro in
  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
@@ -3194,6 +3206,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option ;
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacyseis in
  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
@@ -3233,6 +3248,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  case $legacycuatro in
  "$NULL") echo "$tab [ Without rules in xtables ] [ iptables-legacy ] " ;;
  *)
@@ -3259,6 +3277,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "mangle-ip4" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
  $which_iptables_legacy -t mangle -v -L
  echo $ralla
@@ -3275,6 +3296,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "mangle-ip6" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
  $which_ip6tables_legacy -t mangle -v -L
  echo $ralla
@@ -3291,6 +3315,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "raw-ip4" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
  $which_iptables_legacy -t raw -v -L
  echo $ralla
@@ -3307,6 +3334,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "raw-ip6" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
  $which_ip6tables_legacy -t raw -v -L
  echo $ralla
@@ -3323,6 +3353,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "security-ip4" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
  $which_iptables_legacy -t security -v -L
  echo $ralla
@@ -3339,6 +3372,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "security-ip6" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
  $which_ip6tables_legacy -t security -v -L
  echo $ralla
@@ -3355,6 +3391,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "ebtables" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  echo "$tab [ ebtables: filter ethernet nft ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t filter
  echo $ralla
@@ -3371,6 +3410,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "arptables" ]; then $nada
  echo $head_option
  echo $subhead_option
+ echo $ralla
+ echo $default_route
+ echo $ralla
  $which_arptables -L
  echo $footer_option
  exit; fi
@@ -4384,11 +4426,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: net-speed: speed from internet
-############################       spanish: net-speed: velocidad desde internet
+############################       english: speed-ip4: speed from internet
+############################       spanish: speed-ip4: velocidad desde internet
 ####
 ####
-if [ "$first_option" = "net-speed" ]; then $nada
+if [ "$first_option" = "speed-ip4" ]; then $nada
 echo $head_option
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
@@ -4404,11 +4446,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: net-speed6: speed from internet
-############################       spanish: net-speed6: velocidad desde internet
+############################       english: speed-ip6: speed from internet
+############################       spanish: speed-ip6: velocidad desde internet
 ####
 ####
-if [ "$first_option" = "net-speed6" ]; then $nada
+if [ "$first_option" = "speed-ip6" ]; then $nada
 echo $head_option
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
@@ -4558,8 +4600,8 @@ echo "$cinco         [Tool icmp]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
-echo "    net-speed: Test the bandwidth with ipv4"
-echo "   net-spped6: Test the bandwidth with ipv6"
+echo "    speed-ip4: Test the bandwidth with ipv4"
+echo "    speed-ip6: Test the bandwidth with ipv6"
 echo
 echo "$cinco         [Tool tcp]"
 echo
@@ -4787,8 +4829,8 @@ echo "$cinco         [Herramienta icmp]"
 echo
 echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
 echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
-echo "    net-speed: Testea el ancho de banda con ipv4"
-echo "   net-spped6: Testea el ancho de banda con ipv6"
+echo "    speed-ip4: Testea el ancho de banda con ipv4"
+echo "    speed-ip6: Testea el ancho de banda con ipv6"
 echo
 echo "$cinco         [Herramienta tcp]"
 echo
