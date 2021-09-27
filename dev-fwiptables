@@ -43,7 +43,7 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-default_option="basic-options"       #### from default-fwiptables
+default_option="basic-options"       #### over fwiptables-for-default
 #### #english: option for default    #spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #english: variables to launch   #spanish: variables a lanzar
@@ -75,7 +75,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #english: path to config files  #spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #english: path to save firewall #spanish: ruta de firewall guardado
-autosave_fwrecover="" ;              #### from default-fwiptables
+autosave_fwrecover="" ;              #### over fwiptables-for-default
 #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ;            
@@ -95,14 +95,14 @@ footer_option="$ralla   $ralla   $ralla"
 ####       #### english: variables #### spanish: variables
 nada="$(echo -n)" ;                                                 
 #### #english: echo void # impresion vacia
-log_prefix="logserver:" ;           #### from default-fwiptables
+log_prefix="logserver:" ;           #### over fwiptables-for-default
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
 flistado="-70" ;                                                    
 #### #english: wide of list config files #spanish: Ancho al listar cfg
 case "$(whereis ip)" in "$NULL")default_route="$cinco [ No default route ip.v4 ]" ;;
 *)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default)]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
-zenity_dimension="--width=950 --height=650"   #### from default-fwiptables
+zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
 ####       #### english: zenity automatic redimensions    #### spanish: redimensiones automaticas de zenity
 #### pantallatotal="$(xrandr | grep -- \* | tail -1 | sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
@@ -574,7 +574,7 @@ echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >  /etc/bas
 echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 full-options long-help cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
 eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" >>  /etc/bash_completion.d/$fiptables
-echo "$(head -120 $0 | grep default-fwiptables)" > /etc/default/fwiptables
+echo "$(head -120 $0 | grep fwiptables-for-default)" > /etc/default/fwiptables
 #### english: modes #### spanish: modos
 chmod ugo+rx /etc/bash_completion.d/$fiptables
 chmod ugo+rx $directory_fiptables/$fiptables
