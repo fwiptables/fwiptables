@@ -59,7 +59,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #english: program description   #spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #english: program name          #spanish: nombre del porgrama
-fversion="1.52" ;                                               
+fversion="1.52-Liberto" ;                                           
 #### #english: program version       #spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #english: path to config files  #spanish: archivos de configuracion
@@ -99,8 +99,8 @@ log_prefix="logserver:" ;           #### over fwiptables-for-default
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
 flistado="-70" ;                                                    
 #### #english: wide of list config files #spanish: Ancho al listar cfg
-case "$(whereis ip)" in "$NULL")default_route="$cinco [ No default route ip.v4 ]" ;;
-*)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default)]" ;; esac
+case "$(whereis ip)" in "$NULL")default_route="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
+*)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default | head -1)]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
 zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
@@ -889,13 +889,13 @@ echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -l
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6              "
+echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           trace-ip4 trace-ip6 host geoip ntpdate              "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab" "$tab example           | -text for default output, or -log or -gui |        "
+echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |        "
 echo 
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
@@ -936,7 +936,7 @@ echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "$tab example           | -text for default output, or -log or -gui |       "
+echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
@@ -1052,7 +1052,7 @@ exit; fi
 ##############################       spanish: algun ejemplo
 ####
 ####
-if [ "$first_option" = "example" ]; then echo $nada
+if [ "$first_option" = "some-example" ]; then echo $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco         [list examples]"
