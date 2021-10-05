@@ -19,6 +19,10 @@ if [ -f /etc/profile ] ; then . /etc/profile ; fi
 if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fiptables ; fi
 ####
 ####
+####     #### english: auth xhost for root    #### spanish: autoriza xhost para root
+if [ $(logname) != $(whoami) ]; then sudo -u $(logname) xhost +SI:localuser:root &> /dev/null; fi
+####
+####
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
 ####
@@ -231,22 +235,26 @@ if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
 allow_only_input=no
 ####
 ####
-allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="no" ;
+allow_legacy="" ; allow_nft="no" ; allow_ipv4="" ; allow_ipv6="no" ;
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
-server_tcp="ssh" ; server_udp="" ; logserver_tcp="ssh" ; logserver_udp="" ;
+server_tcp="ssh" ; server_udp="" ; 
+logserver_tcp="ssh" ; logserver_udp="" ;
+allow_nat="no" ; allow_forwading="no" ; 
 allow_input_all="no" ; allow_output_all="no" ; 
 allow_input_state="no" ; allow_output_state="no" ;
-allow_bandwidth_input="no" ; allow_bandwidth_output="no" ;
-allow_maxconnect_input="no" ; allow_maxconnect_output="no" ;
-allow_ping_send="no" ; allow_ping_recive="no" ;
-allow_forwading="no" ; allow_nat="no" ;allow_vpn="no" ; allow_blacklist="no" ;
-allow_output_uid="no" ; allow_output_gid="no" ; allow_others_protocols="no" ;
+allow_input_bandwidth="no" ; allow_output_bandwidth="no" ;
+allow_input_maxconnect="no" ; allow_output_maxconnect="no" ;
+allow_input_ping="no" ; allow_output_ping="no" ;
+allow_vpn="no" ; allow_blacklist="no" ;
+allow_output_uid="no" ; allow_output_gid="no" ;
+allow_others_protocols="no" ;
 input_state="new,related,stablished" ;
-input_state="new,related,stablished" ;
+output_state="new,related,stablished" ;
 bandwidth_input="12512" ; bandwidth_output="512" ;
 maxconnect_input="72" ; maxconnect_output="72" ;
 vpn="wesnoth.org" ; blacklist="yandex.com" ;
-output_uid="root" ; output_gid="root" ; others_protocols="icmp,igmp" ;
+output_uid="root" ; output_gid="root" ;
+others_protocols="icmp,igmp" ;
 net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
@@ -343,24 +351,24 @@ spa25=$(echo "$cinco Estado de entrada selectivo o no")
 var26=$(echo "allow_output_state=no ")
 eng26=$(echo "$cinco Selective Output state or no")
 spa26=$(echo "$cinco Estado de salida selectivo o no")
-var27=$(echo "allow_bandwidth_input=no ")
+var27=$(echo "allow_input_bandwidth=no ")
 eng27=$(echo "$cinco void to limit bandwidth input in kbits/sec for all sources or no")
 spa27=$(echo "$cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
-var28=$(echo "allow_bandwidth_output=no" )
+var28=$(echo "allow_output_bandwidth=no" )
 eng28=$(echo "$cinco void to limit bandwidth output in kbits/sec for each destination or no")
 spa28=$(echo "$cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
-var29=$(echo "allow_maxconnect_input=no" )
+var29=$(echo "allow_input_maxconnect=no" )
 eng29=$(echo "$cinco void to limit max number for input simultaneous connections or no" )
 spa29=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de entrada o no" )
-var30=$(echo "allow_maxconnect_output=no" )
+var30=$(echo "allow_output_maxconnect=no" )
 eng30=$(echo "$cinco void to limit max number for output simultaneous connections or no" )
 spa30=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de salida o no" )
-var31=$(echo "allow_ping_send=no" )
-eng31=$(echo "$cinco void to allow send pings or no" )
-spa31=$(echo "$cinco vacio para permitir enviar ping o no" )
-var32=$(echo "allow_ping_recive=no" )
-eng32=$(echo "$cinco void to allow recive pings or no" )
-spa32=$(echo "$cinco vacio para permitir recivir ping o no")
+var31=$(echo "allow_input_ping=no" )
+eng31=$(echo "$cinco void to allow recive pings or no" )
+spa31=$(echo "$cinco vacio para permitir recivir ping o no")
+var32=$(echo "allow_output_ping=no" )
+eng32=$(echo "$cinco void to allow send pings or no" )
+spa32=$(echo "$cinco vacio para permitir enviar ping o no" )
 var33=$(echo "allow_vpn=no" )
 eng33=$(echo "$cinco void to allow some exceptional host or no")
 spa33=$(echo "$cinco vacio para permitir hosts excepcionales o no")
@@ -466,18 +474,20 @@ case "$NULL" in
 *)allow_output_all="no";;
 "$allow_input_state");; 
 *)allow_input_state="no";;
-"$allow_bandwidth_input");; 
-*)allow_bandwidth_input="no";;
-"$allow_bandwidth_output");; 
-*)allow_bandwidth_output="no";;
-"$allow_maxconnect_input");; 
-*)allow_maxconnect_input="no";;
-"$allow_maxconnect_output");; 
-*)allow_maxconnect_output="no";;
-"$allow_ping_send");; 
-*)allow_ping_send="no";;
-"$allow_ping_recive");; 
-*)allow_ping_recive="no";;
+"$allow_output_state");; 
+*)allow_output_state="no";;
+"$allow_input_bandwidth");;
+*)allow_input_bandwidth="no";;
+"$allow_output_bandwidth");; 
+*)allow_output_bandwidth="no";;
+"$allow_input_maxconnect");; 
+*)allow_input_maxconnect="no";;
+"$allow_output_maxconnect");; 
+*)allow_output_maxconnect="no";;
+"$allow_input_ping");; 
+*)allow_input_ping="no";;
+"$allow_output_ping");; 
+*)allow_output_ping="no";;
 "$allow_vpn");; 
 *)allow_vpn="no";;
 "$allow_blacklist");; 
@@ -2709,7 +2719,7 @@ echo "client_udp=domain,bootpc,ntp,https,137:139 ; "
 echo "client_tcp=http,https,ipp,microsoft-ds"
 #### echo "server_udp=137:139 ; "
 #### echo "server_tcp=ssh,ipp,microsoft-ds"
-echo "allow_ping_send= ; allow_ping_recive= ; "
+echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
 #### config: vpn-sample1.cfg ##
@@ -4436,11 +4446,11 @@ echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
 $fiptables stop
-echo "$cinco Doing bandwidth in ipv4 to $direccion_iperf with 4 seconds each"
+echo "$cinco Doing bandwidth in ipv4 to $direccion_iperf with 4 seconds"
 echo $ralla
-$which_iperf -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/upload-net-speed/g
-echo $ralla
-$which_iperf -z -t 4 -c $direccion_iperf  -P 4 | grep SUM | sed s/SUM/download-net-speed/g
+$which_iperf -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+#### echo $ralla
+#### $which_iperf -z -t 4 -c $direccion_iperf  -P 4 | grep SUM | sed s/SUM/download-net-speed/g
 $fiptables continue
 echo $footer_option
 exit; fi
@@ -4456,11 +4466,11 @@ echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
 $fiptables stop
-echo "$cinco Doing bandwidth in ipv6 to $direccion_iperf with 4 seconds each"
+echo "$cinco Doing bandwidth in ipv6 to $direccion_iperf with 4 seconds"
 echo $ralla
-$which_iperf -V -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/upload-net-speed/g
-echo $ralla
-$which_iperf -z -V -t 4 -c $direccion_iperf  -P 4 | grep SUM | sed s/SUM/download-net-speed/g
+$which_iperf -V -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+#### echo $ralla
+#### $which_iperf -z -V -t 4 -c $direccion_iperf  -P 4 | grep SUM | sed s/SUM/download-net-speed/g
 $fiptables continue
 echo $footer_option
 exit; fi
@@ -5072,29 +5082,29 @@ $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
-$allow_ipv4 $allow_legacy $allow_bandwidth_input $which_iptables_legacy     -A  INPUT \
+$allow_ipv4 $allow_legacy $allow_input_bandwidth $which_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$bandwidth_input"kb/sec \
 --hashlimit-name maxinputlegacy  -j DROP &> /dev/null
-$allow_ipv4 $allow_legacy $allow_bandwidth_output $which_iptables_legacy    -A OUTPUT \
+$allow_ipv4 $allow_legacy $allow_output_bandwidth $which_iptables_legacy    -A OUTPUT \
 -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_bandwidth_input $which_iptables_nft           -A INPUT \
+$allow_ipv4 $allow_nft $allow_input_bandwidth $which_iptables_nft           -A INPUT \
 -m hashlimit    --hashlimit-above "$bandwidth_input"kb/sec  \
 --hashlimit-name maxinputnft  -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_bandwidth_output $which_iptables_nft          -A OUTPUT \
+$allow_ipv4 $allow_nft $allow_output_bandwidth $which_iptables_nft          -A OUTPUT \
 -m hashlimit  --hashlimit-above "$bandwidth_output"kb/sec \
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
 #### spanish: ipv6 ancho de banda
-$allow_ipv6 $allow_legacy $allow_bandwidth_input $which_ip6tables_legacy -A  INPUT \
+$allow_ipv6 $allow_legacy $allow_input_bandwidth $which_ip6tables_legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$allow_ipv6 $allow_legacy $allow_bandwidth_output $which_ip6tables_legacy -A OUTPUT \
+$allow_ipv6 $allow_legacy $allow_output_bandwidth $which_ip6tables_legacy -A OUTPUT \
 -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
-$allow_ipv6 $allow_nft $allow_bandwidth_input $which_ip6tables_nft -A  INPUT \
+$allow_ipv6 $allow_nft $allow_input_bandwidth $which_ip6tables_nft -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$allow_ipv6 $allow_nft $allow_bandwidth_output $which_ip6tables_nft -A OUTPUT \
+$allow_ipv6 $allow_nft $allow_output_bandwidth $which_ip6tables_nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
@@ -5104,25 +5114,25 @@ $allow_ipv6 $allow_nft $allow_bandwidth_output $which_ip6tables_nft -A OUTPUT \
 ####
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
-$allow_ipv4 $allow_legacy $allow_maxconnect_input  $which_iptables_legacy -A INPUT  \
+$allow_ipv4 $allow_legacy $allow_input_maxconnect  $which_iptables_legacy -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
-$allow_ipv4 $allow_legacy $allow_maxconnect_output $which_iptables_legacy -A OUTPUT \
+$allow_ipv4 $allow_legacy $allow_output_maxconnect $which_iptables_legacy -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_maxconnect_input $which_iptables_nft   -A INPUT  \
+$allow_ipv4 $allow_nft $allow_input_maxconnect $which_iptables_nft   -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
-$allow_ipv4 $allow_nft $allow_maxconnect_output $which_iptables_nft  -A OUTPUT \
+$allow_ipv4 $allow_nft $allow_output_maxconnect $which_iptables_nft  -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
 #### spanish: ipv6 ancho de banda
-$allow_ipv6 $allow_legacy $allow_maxconnect_input  $which_ip6tables_legacy -A INPUT  \
+$allow_ipv6 $allow_legacy $allow_input_maxconnect  $which_ip6tables_legacy -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
-$allow_ipv6 $allow_legacy $allow_maxconnect_output $which_ip6tables_legacy -A OUTPUT \
+$allow_ipv6 $allow_legacy $allow_output_maxconnect $which_ip6tables_legacy -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
-$allow_ipv6 $allow_nft $allow_maxconnect_input $which_ip6tables_nft   -A INPUT  \
+$allow_ipv6 $allow_nft $allow_input_maxconnect $which_ip6tables_nft   -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
-$allow_ipv6 $allow_nft $allow_maxconnect_output $which_ip6tables_nft  -A OUTPUT \
+$allow_ipv6 $allow_nft $allow_output_maxconnect $which_ip6tables_nft  -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
 ####
 ####
@@ -5344,9 +5354,9 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 ####################################### spanish: reglas de entrada de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
-$allow_legacy  $allow_ipv4 $allow_ping_send  $which_iptables_legacy -A INPUT  \
+$allow_legacy  $allow_ipv4 $allow_output_ping  $which_iptables_legacy -A INPUT  \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $allow_ping_recive $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4 $allow_input_ping $which_iptables_legacy -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $uid_gid $which_iptables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
@@ -5360,9 +5370,9 @@ done
 ####################################### spanish: reglas de salida de legacy ipv4 para ping, uid, gid y protocolos
 ####
 ####
-$allow_legacy  $allow_ipv4 $allow_ping_send  $which_iptables_legacy   -A OUTPUT \
+$allow_legacy  $allow_ipv4 $allow_output_ping  $which_iptables_legacy   -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $allow_ping_recive  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4 $allow_input_ping  $which_iptables_legacy -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $allow_output_uid $which_iptables_legacy   -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
@@ -5382,9 +5392,9 @@ done
 #### spanish: ipv6 filtros de legacy reglas de entrada
 ####
 ####
-$allow_legacy  $allow_ipv6 $allow_ping_send      $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6 $allow_output_ping      $which_ip6tables_legacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $allow_ping_recive    $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6 $allow_input_ping    $which_ip6tables_legacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $uid_gid $which_ip6tables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
@@ -5400,9 +5410,9 @@ done
 #### spanish: ipv6 filtros legacy reglas de salida
 ####
 ####
-$allow_legacy  $allow_ipv6 $allow_ping_send  $which_ip6tables_legacy   -A OUTPUT \
+$allow_legacy  $allow_ipv6 $allow_output_ping  $which_ip6tables_legacy   -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $allow_ping_recive  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6 $allow_input_ping  $which_ip6tables_legacy -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $allow_output_uid $which_ip6tables_legacy   -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
@@ -5423,9 +5433,9 @@ done
 #### spanish: ipv4 filter nft reglas de entrada
 ####
 ####
-$allow_nft $allow_ipv4 $allow_ping_send     $which_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $allow_output_ping     $which_iptables_nft -A INPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $allow_ping_recive   $which_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $allow_input_ping   $which_iptables_nft -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $uid_gid $which_iptables_nft -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
@@ -5439,9 +5449,9 @@ done
 #### spanish: ipv4 filter nft reglas de salida
 ####
 ####
-$allow_nft $allow_ipv4 $allow_ping_send    $which_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4 $allow_output_ping    $which_iptables_nft -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $allow_ping_recive  $which_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4 $allow_input_ping  $which_iptables_nft -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $allow_output_uid $which_iptables_nft   -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
@@ -5461,9 +5471,9 @@ done
 #### ipv6 filtros nft reglas d entrada
 ####
 ####
-$allow_nft $allow_ipv6 $allow_ping_send      $which_ip6tables_nft -A INPUT \
+$allow_nft $allow_ipv6 $allow_output_ping      $which_ip6tables_nft -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $allow_ping_recive    $which_ip6tables_nft -A INPUT \
+$allow_nft $allow_ipv6 $allow_input_ping    $which_ip6tables_nft -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $uid_gid $which_ip6tables_nft -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
@@ -5479,9 +5489,9 @@ done
 #### spanish: ipv6 filtros nft reglas de salida
 ####
 ####
-$allow_nft $allow_ipv6 $allow_ping_send      $which_ip6tables_nft -A OUTPUT \
+$allow_nft $allow_ipv6 $allow_output_ping      $which_ip6tables_nft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $allow_ping_recive    $which_ip6tables_nft -A OUTPUT \
+$allow_nft $allow_ipv6 $allow_input_ping    $which_ip6tables_nft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $allow_output_uid     $which_ip6tables_nft -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
@@ -5738,9 +5748,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $which_ip6tables_legac
 #### spanish: legacy6 INPUT limita ancho de banda
 ####
 ####
-$launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_bandwidth_input iptables-legacy -A  INPUT \
+$launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_input_bandwidth iptables-legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_bandwidth_input ip6tables-legacy -A  INPUT \
+$launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_bandwidth ip6tables-legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
@@ -5748,9 +5758,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_bandwidth_input
 #### spanish: nft6 INPUT limita ancho de banda
 ####
 ####
-$launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_bandwidth_input iptables-nft -A  INPUT \
+$launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_bandwidth iptables-nft -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
-$launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_bandwidth_input ip6tables-nft -A  INPUT \
+$launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_bandwidth ip6tables-nft -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
@@ -5758,9 +5768,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_bandwidth_input ip
 #### spanish: ipv4  limita numero de conexiones
 ####
 ####
-$launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_maxconnect_input  $which_iptables_legacy -A INPUT \
+$launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_input_maxconnect  $which_iptables_legacy -A INPUT \
 -m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
-$launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_maxconnect_input $which_iptables_nft   -A INPUT \
+$launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_maxconnect $which_iptables_nft   -A INPUT \
 -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
 ####
 ####
@@ -5768,9 +5778,9 @@ $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_maxconnect_input $
 #### spanish: ipv6 limita numero de conexiones
 ####
 ####
-$launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_maxconnect_input  $which_ip6tables_legacy -A INPUT \
+$launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_maxconnect  $which_ip6tables_legacy -A INPUT \
 -m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
-$launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_maxconnect_input $which_ip6tables_nft   -A INPUT \
+$launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_maxconnect $which_ip6tables_nft   -A INPUT \
 -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
 ####
 ####
@@ -5860,9 +5870,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $which_ip6tables_lega
 #### spanish: legacy6 OUTPUT limita ancho de banda
 ####
 #### 
-$launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_bandwidth_output iptables-legacy -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_output_bandwidth iptables-legacy -A OUTPUT \
 -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
-$launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_bandwidth_output ip6tables-legacy -A  OUTPUT \
+$launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
 -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
 ####
 ####
@@ -5870,9 +5880,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_bandwidth_outp
 #### spanish: nft6 OUTPUT limita ancho de banda
 ####
 ####
-$launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_bandwidth_output iptables-nft -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_bandwidth iptables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
-$launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_bandwidth_output ip6tables-nft -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_bandwidth ip6tables-nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
 ####
 ####
@@ -5880,9 +5890,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_bandwidth_output 
 #### spanish: ipv4  limita numero de conexiones
 ####
 ####
-$launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_maxconnect_output  $which_iptables_legacy -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_output_maxconnect  $which_iptables_legacy -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output  -j DROP  &> /dev/null
-$launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_maxconnect_output $which_iptables_nft   -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_maxconnect $which_iptables_nft   -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output       -j DROP &> /dev/null
 ####
 ####
@@ -5890,9 +5900,9 @@ $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_maxconnect_output
 #### spanish: ipv6 limita numero de conexiones
 ####
 ####
-$launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_maxconnect_output  $which_ip6tables_legacy -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_maxconnect  $which_ip6tables_legacy -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output  -j DROP &> /dev/null
-$launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_maxconnect_output $which_ip6tables_nft   -A OUTPUT \
+$launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_maxconnect $which_ip6tables_nft   -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output       -j DROP &> /dev/null
 ####
 ####
@@ -6019,18 +6029,18 @@ echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
 echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
 echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
 echo "$cinco  [With Others configurations]  $cinco"
-if [ "$allow_bandwidth_input" = "no" ]; then echo "  Dont limit input bandwidth complete" ;
+if [ "$allow_input_bandwidth" = "no" ]; then echo "  Dont limit input bandwidth complete" ;
 else echo "  Limit input: above $bandwidth_input kb/sec complete"; fi
-if [ "$allow_bandwidth_output" = "no" ]; then echo "  Dont limit output bandwidth per ip" ;
+if [ "$allow_output_bandwidth" = "no" ]; then echo "  Dont limit output bandwidth per ip" ;
 else echo "  Limit output: above $bandwidth_output kb/sec per ip"; fi
-if [ "$allow_maxconnect_input" = "no" ]; then echo "  Dont limit input numbers of connections" ;
+if [ "$allow_input_maxconnect" = "no" ]; then echo "  Dont limit input numbers of connections" ;
 else echo "  Limit max connections: above $maxconnect_input "; fi
-if [ "$allow_maxconnect_output" = "no" ]; then echo "  Dont limit output numbers of connections" ;
+if [ "$allow_output_maxconnect" = "no" ]; then echo "  Dont limit output numbers of connections" ;
 else echo "  Limit max connections: above $maxconnect_output "; fi
 if [ "$allow_input_all" = "no" ]; then echo "  Dont allow only output"; else echo "  Allowed only output" ; fi
 if [ "$allow_input_state" = "no" ]; then echo "  Dont allow specific input state"; else echo "  Allowed input state are $input_state"; fi
-if [ "$allow_ping_send" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
-if [ "$allow_ping_recive" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
+if [ "$allow_output_ping" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
+if [ "$allow_input_ping" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
 if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading" ; fi
 if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
 if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
