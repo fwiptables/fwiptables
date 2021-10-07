@@ -1955,7 +1955,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-control-rules" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "stop" "continue" "reset" "list-fw" "show" "save" "load" "actual" \
+--list "Gui Principal Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $fiptables" --text="Select one option" --title="[Control Rules] [$fiptables]")
 case "$selection" in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
@@ -1963,7 +1963,7 @@ case "$selection" in
 "stop") $fiptables -gui stop ; $fiptables -gui list ;;
 "continue") $fiptables -gui continue ; $fiptables -gui list ;;
 "reset") $fiptables -gui reset ; $fiptables -gui list ;;
-"list-fw") $fiptables -gui list-fw ;;
+"names") $fiptables -gui list-fw ;;
 "show")archivo="$(zenity --entry $zenity_dimension --title "[Save Firewall]" --text="$($fiptables list-fw)")" ; 
 $fiptables -gui show $archivo ;;
 "save")archivo="$(zenity --entry $zenity_dimension --title "[Save Firewall]" --text="$($fiptables list-fw)")" ; 
@@ -1984,7 +1984,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "list" "list6" "forward" "forward6" \
+--list "Gui Principal Menu" "list" "list6" "filter-ip4" "filter-ip6" "forward" "forward6" \
 "listnum" "forwardnum" "listnum6" "forwardnum6" "nat-ip4" "nat-ip6" \
 "mangle-ip4" "mangle-ip6" "raw-ip4" "raw-ip6" "security-ip4" \
 "security-ip6" "ebtables" "arptables" \
@@ -1993,7 +1993,9 @@ case $selection in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "list") $fiptables -gui list ;;
-"list6") $fiptables -gui list6 ;; 
+"list6") $fiptables -gui list6 ;;
+"filter-ip4") $fiptables -gui filter-ip4 ;;
+"filter-ip6") $fiptables -gui filter-ip6 ;;
 "forward") $fiptables -gui forward ;;
 "forward6") $fiptables -gui forward6 ;;
 "listnum") $fiptables -gui listnum ;;
