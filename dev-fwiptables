@@ -20,7 +20,10 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####
 ####     #### english: auth xhost for root    #### spanish: autoriza xhost para root
-if [ $(logname) != $(whoami) ]; then sudo -u $(logname) xhost +SI:localuser:root &> /dev/null; fi
+####   if [ $(logname) != $(whoami) ]; then
+sudo -u $(logname) xhost +SI:localuser:root &> /dev/null
+sudo -u $(logname) xhost +root@127.0.0.1 &> /dev/null
+#### fi
 ####
 ####
 ################################################   english: begin the script
@@ -63,7 +66,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #english: program description   #spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #english: program name          #spanish: nombre del porgrama
-fversion="1.52-Liberto" ;                                           
+fversion="1.53" ;                                           
 #### #english: program version       #spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #english: path to config files  #spanish: archivos de configuracion
