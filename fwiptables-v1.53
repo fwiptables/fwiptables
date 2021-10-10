@@ -9,6 +9,8 @@
 ####
 ####     #### english: whereis path     #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;
+####
+####
 ####     #### english: program name     #### spanish: nombre de el programa
 fiptables="fwiptables" ;
 ####
@@ -20,7 +22,7 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####
 ####     #### english: auth xhost for root    #### spanish: autoriza xhost para root
-####  #### code: if [ $(logname) != $(whoami) ]; then
+####  #### code: if [ $(logname) = $(whoami) ]; then unsaludo=unhola; else
 sudo -u $(logname) xhost +SI:localuser:root &> /dev/null
 sudo -u $(logname) xhost +root@127.0.0.1 &> /dev/null
 ####  #### code: fi
@@ -251,7 +253,7 @@ allow_input_ping="no" ; allow_output_ping="no" ;
 allow_vpn="no" ; allow_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
-input_state="new,related,stablished" ;
+input_state="related,stablished" ;
 output_state="new,related,stablished" ;
 bandwidth_input="12512" ; bandwidth_output="512" ;
 maxconnect_input="72" ; maxconnect_output="72" ;
@@ -402,7 +404,7 @@ spa39=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
 var40=$(echo "input_state=new,related,established")
 eng40=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa40=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var41=$(echo "output_state=new,related,established")
+var41=$(echo "output_state=related,established")
 eng41=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa41=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
 var42=$(echo "bandwidth_input=12512" )
@@ -587,7 +589,7 @@ echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >  /etc/bas
 echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 full-options long-help cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
 eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" >>  /etc/bash_completion.d/$fiptables
-echo "$(head -120 $0 | grep fwiptables-for-default)" > /etc/default/fwiptables
+echo "$(head -140 $0 | grep fwiptables-for-default)" > /etc/default/fwiptables
 #### english: modes #### spanish: modos
 chmod ugo+rx /etc/bash_completion.d/$fiptables
 chmod ugo+rx $directory_fiptables/$fiptables
