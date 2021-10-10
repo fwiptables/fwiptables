@@ -20,10 +20,10 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####
 ####     #### english: auth xhost for root    #### spanish: autoriza xhost para root
-####   if [ $(logname) != $(whoami) ]; then
+####  #### code: if [ $(logname) != $(whoami) ]; then
 sudo -u $(logname) xhost +SI:localuser:root &> /dev/null
 sudo -u $(logname) xhost +root@127.0.0.1 &> /dev/null
-#### fi
+####  #### code: fi
 ####
 ####
 ################################################   english: begin the script
