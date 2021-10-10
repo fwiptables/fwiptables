@@ -577,7 +577,7 @@ if [ "$first_option" = "install" ] ; then $nada
 echo $head_option
 echo $subhead_option
 #### english: copy the file #### spanish: copia el archivo
-echo $zero_option
+echo "$cinco Runing.. $zero_option"
 cp $zero_option $directory_fiptables/$fiptables ;
 #### english: create alias #### spanish: crea alias
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi ;
@@ -903,12 +903,12 @@ echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
-echo "$tab" "$tab"  "    tool-tcp           trace-ip4 trace-ip6 host geoip ntpdate              "
+echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |        "
+echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |       "
 echo 
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
@@ -941,7 +941,7 @@ echo "$tab" "$tab"  "                       list-cfg show-config modify-config d
 echo "$tab" "$tab"  "______________________                | Third options |                    " 
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
-echo "$tab" "$tab"  "    tool-tcp           trace-ip4 trace-ip6 host geoip ntpdate              "
+echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
@@ -3973,8 +3973,10 @@ case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
 case "$second_option" in
 "$NULL") echo "$cinco Selecting host trace-ip4 to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
+$fiptables stop
 echo "$cinco traceroute -4 -T $trazador"
 $which_traceroute -4 -T $trazador
+$fiptables continue
 echo $footer_option
 exit; fi
 ####
@@ -3991,8 +3993,10 @@ case "$second_option" in
 "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;;
 esac
+$fiptables stop
 echo "$cinco traceroute -6 -T $trazador"
 $which_traceroute -6 -T $trazador
+$fiptables continue
 echo $footer_option
 exit; fi
 ####
