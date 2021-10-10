@@ -401,10 +401,10 @@ spa38=$(echo "$cinco Rellena Variables #" )
 var39=$(echo "$cinco Options" )
 eng39=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa39=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-var40=$(echo "input_state=new,related,established")
+var40=$(echo "input_state=related,established")
 eng40=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa40=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var41=$(echo "output_state=related,established")
+var41=$(echo "output_state=new,related,established")
 eng41=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa41=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
 var42=$(echo "bandwidth_input=12512" )
@@ -984,7 +984,7 @@ echo "  With xtables and/or nftables. with ipv4 and/or ipv6.   "
 echo "  Create one firewall with a wizard and save it          "
 echo "  Configure one firewall with your own config files      "
 echo "  Manage the firewall with the standard iptables files.  "
-echo "  Too Use too this firewall with other utilities for  ip."
+echo "  Too, use this firewall with some utilities for ip.     "
 echo
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
