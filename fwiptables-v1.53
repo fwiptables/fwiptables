@@ -5314,49 +5314,49 @@ $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT  \
 #### ipv4 legacy
 ####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  \
--p udp -m multiport $input_state --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  \
--p tcp -m multiport $input_state --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
--p udp -m multiport $output_state --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
--p tcp -m multiport $output_state --sports $server_tcp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_nft $allow_ipv4 $which_iptables_nft -A INPUT \
--p udp -m multiport $input_state --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $which_iptables_nft -A INPUT \
--p tcp -m multiport $input_state --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT \
--p udp -m multiport $output_state --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT \
--p tcp -m multiport $output_state --sports $server_tcp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  \
--p udp -m multiport $input_state --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  \
--p tcp -m multiport $input_state --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport $output_state --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport $output_state --sports $server_tcp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT  \
--p udp -m multiport $input_state --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT  \
--p tcp -m multiport $input_state --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport $output_state --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
--p tcp -m multiport $output_state --sports $server_tcp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT &> /dev/null
 ####
 ####
 ####################################### english: rules from input of legacy ipv4 for ping, uid, gid and protocols
