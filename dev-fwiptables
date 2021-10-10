@@ -253,7 +253,7 @@ allow_input_ping="no" ; allow_output_ping="no" ;
 allow_vpn="no" ; allow_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
-input_state="related,stablished" ;
+input_state="new,related,stablished" ;
 output_state="new,related,stablished" ;
 bandwidth_input="12512" ; bandwidth_output="512" ;
 maxconnect_input="72" ; maxconnect_output="72" ;
@@ -401,7 +401,7 @@ spa38=$(echo "$cinco Rellena Variables #" )
 var39=$(echo "$cinco Options" )
 eng39=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa39=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-var40=$(echo "input_state=related,established")
+var40=$(echo "input_state=new,related,established")
 eng40=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa40=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
 var41=$(echo "output_state=new,related,established")
