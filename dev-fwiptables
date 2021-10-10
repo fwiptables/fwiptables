@@ -577,7 +577,7 @@ if [ "$first_option" = "install" ] ; then $nada
 echo $head_option
 echo $subhead_option
 #### english: copy the file #### spanish: copia el archivo
-echo "$cinco Runing.. $zero_option"
+echo "$cinco [ Runing.. ] [ $zero_option ]"
 cp $zero_option $directory_fiptables/$fiptables ;
 #### english: create alias #### spanish: crea alias
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi ;
