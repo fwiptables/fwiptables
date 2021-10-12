@@ -859,6 +859,10 @@ if [ -f "$directory_config/$second_option" ]; then config_option="si"; else conf
 ####
 ####
 ####
+#### english: alias for cfg-custom to custom  #### spanish: apodo de cfg-custom para custom
+if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
+####
+####
 ####   english: the first option : [config.cfg]  ----  verbose
 ####   spanish: El primera opción: [config.cfg]  ----- con info
 ####
@@ -913,7 +917,7 @@ echo "$tab" "$tab"  "    list-rules         list list6 filter-ip4 filter-ip6 nat
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui         "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive ..                  "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom          "
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
@@ -1165,6 +1169,8 @@ echo "      offline: Firewall disconected for all servers and clients except loc
 echo "             : Firewall desconectado para todo servidores y clientes excepto localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "             : Configura un firewall muy permisivo"
+echo "   cfg-custom: Alias a custom"
+echo "             : Apodo a custom"
 echo "       custom: Configure one custom firewall with one file cfg"
 echo "             : Configura un modificado firewall con un archivo cfg"
 echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
@@ -2967,9 +2973,9 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $legacycuatro in "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
@@ -3037,9 +3043,9 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $legacyseis in
  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
