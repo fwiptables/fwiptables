@@ -23,9 +23,9 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
 ####  #### code for add xhost to root
-if [ $(logname) = "$NULL" ]; then unhey="unhola" ; else
-sudo -u $(logname) xhost +SI:localuser:root &> /dev/null
-sudo -u $(logname) xhost +root@127.0.0.1 &> /dev/null
+if [ "$(logname)" = "$NULL" ]; then unhey="unhola" ; else
+sudo -u "$(logname)" xhost +SI:localuser:root &> /dev/null
+sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 fi
 ####  ####
 ####
