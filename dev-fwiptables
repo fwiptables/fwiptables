@@ -890,7 +890,10 @@ launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_of
 ####
 if [ ! -f $directory_config/$second_option ]; then $nada ;
 case $first_option in
-"custom") $fiptables cfg ; echo "$cinco Usage: $fiptables custom existent-file-cfg" ; exit ;;
+"custom") $fiptables cfg ;
+echo "$cinco Usage: $fiptables custom existent-file-cfg"
+echo "$cinco See:   $fiptables full-options"
+exit ;;
 esac
 fi
 ####
