@@ -95,7 +95,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-ant_option=" $cinco [$fiptables] [$fversion] [$(date)] $cinco" ;    
+ant_option=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_option="$ant_option [ $first_option ] $cinco" ;                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -901,6 +901,7 @@ fi
 ####
 if [ "$first_option" = "basic-options" ]; then 
 echo $head_option
+echo $default_route
 echo $subhead_option
 echo "$tab" "$tab" "______________________                | Principal options |                 "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini        "
@@ -909,6 +910,7 @@ echo "$tab" "$tab"  "    list-rules         list list6 filter-ip4 filter-ip6 nat
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui         "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive ..                  "
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
@@ -934,6 +936,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then 
 echo $head_option
+echo $default_route
 echo $subhead_option
 echo "$tab" "$tab"  "______________________                | Principal options |                "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini        "
