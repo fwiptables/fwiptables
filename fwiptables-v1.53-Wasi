@@ -1,8 +1,8 @@
 #!/bin/bash
 ####
 ####
-####   english: necesary to find several PATH
-####   spanish: necesario para encontrar varios PATH
+####   #### english: necesary to find several PATH
+####   #### spanish: necesario para encontrar varios PATH
 ####
 ####
 ####
@@ -21,11 +21,13 @@ if [ -f /etc/profile ] ; then . /etc/profile ; fi
 if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fiptables ; fi
 ####
 ####
-####     #### english: auth xhost for root    #### spanish: autoriza xhost para root
-####  #### code: if [ $(logname) = $(whoami) ]; then unsaludo=unhola; else
+####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
+####  #### code for add xhost to root : 
+if [ $(logname) = "$NULL" ]; then unhey="unhola" ; else
 sudo -u $(logname) xhost +SI:localuser:root &> /dev/null
 sudo -u $(logname) xhost +root@127.0.0.1 &> /dev/null
-####  #### code: fi
+fi
+####  #### 
 ####
 ####
 ################################################   english: begin the script
@@ -44,70 +46,70 @@ sudo -u $(logname) xhost +root@127.0.0.1 &> /dev/null
 ##############################        example in english: basic system variables
 ##############################        ejemplo in spanish: las basicas variables del sistema
 ####
-####  english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
-####  spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
+####  #### english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
+####  #### spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ####
 ################################################   english: basic system variables
 ################################################   spanish: las basicas variables del sistema
 ####
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-default_option="basic-options"       #### over fwiptables-for-default
-#### #english: option for default    #spanish: opcion por defecto
+default_option="basic-options"           #### over fwiptables-for-default
+#### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
-#### #english: variables to launch   #spanish: variables a lanzar
+#### #### english: variables to launch   #### spanish: variables a lanzar
 first_option="$(echo $1 | sed s/\\///g -)"  ;                       
-#### #english: variable without "/"  #spanish: variable sin "/"
+#### #### english: variable without "/"  #### spanish: variable sin "/"
 second_option="$(echo $2 | sed s/\\///g -)" ;                       
-#### #english: variable without "/"  #spanish: variable sin "/"
+#### #### english: variable without "/"  #### spanish: variable sin "/"
 third_option="$(echo $3 | sed s/\\///g -)"  ;                       
-#### #english: variable without "/"  #spanish: variable sin "/"
+#### #### english: variable without "/"  #### spanish: variable sin "/"
 directory_fiptables="/usr/bin" ;                                    
-#### #english: whereis path          #spanish: donde esta el path
+#### #### english: whereis path          #### spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             
-#### #english: program description   #spanish: descripcion del programa
+#### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
-#### #english: program name          #spanish: nombre del porgrama
+#### #### english: program name          #### spanish: nombre del porgrama
 fversion="1.53-Wasi" ;                                              
-#### #english: program version       #spanish: Version del programa
+#### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
-#### #english: path to config files  #spanish: archivos de configuracion
+#### #### english: path to config files  #### spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"             
-#### #english: path to config files  #spanish: archivos de configuracion
+#### #### english: path to config files  #### spanish: archivos de configuracion
 defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
-#### #english: path to config files  #spanish: archivos de configuracion
+#### #### english: path to config files  #### spanish: archivos de configuracion
 defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
-#### #english: path to config files  #spanish: archivos de configuracion
+#### #### english: path to config files  #### spanish: archivos de configuracion
 defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
-#### #english: path to config files  #spanish: archivos de configuracion
+#### #### english: path to config files  #### spanish: archivos de configuracion
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"     
-#### #english: path to config files  #spanish: archivos de configuracion
+#### #### english: path to config files  #### spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
-#### #english: path to save firewall #spanish: ruta de firewall guardado
-autosave_fwrecover="" ;              #### over fwiptables-for-default
-#### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
-#### english: look  #### spanish: apariencia
+#### #### english: path to save firewall #### spanish: ruta de firewall guardado
+autosave_fwrecover="" ;                  #### over fwiptables-for-default
+#### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
+#### #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ;            
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ant_option=" $cinco [$fiptables] [$fversion] [$(date)] $cinco" ;    
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_option="$ant_option [ $first_option ] $cinco" ;                
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 subhead_option="$ralla   $ralla   $ralla"                           
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 footer_option="$ralla   $ralla   $ralla"                            
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
-####       #### english: variables #### spanish: variables
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+####       #### english: variables      #### spanish: variables
 nada="$(echo -n)" ;                                                 
-#### #english: echo void # impresion vacia
-log_prefix="logserver:" ;           #### over fwiptables-for-default
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
+#### #### english: echo void # impresion vacia
+log_prefix="logserver:" ;               #### over fwiptables-for-default
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 flistado="-70" ;                                                    
-#### #english: wide of list config files #spanish: Ancho al listar cfg
+#### #### english: wide of list config files  #### spanish: Ancho al listar cfg
 case "$(whereis ip)" in "$NULL")default_route="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default | head -1)]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
@@ -610,15 +612,19 @@ echo $subhead_option
 echo "$cincuenta [Web upgrade] $cinco"
 echo "Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command"
 echo "Downloading $fiptables with the comand $favorite_text_browser browser"
+rm /tmp/$fiptables
 echo "Waiting several seconds ..."
 case "$favorite_text_browser" in
 "$NULL")echo "Install a text web browser for upgrade fwiptables"; exit ;; esac
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+echo "Waiting several seconds ..."
 $favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables"
+if [ -s /tmp/$fiptables ]; then
 chmod ugo+rx /tmp/$fiptables
 /tmp/$fiptables install
 echo "$cinco [$fprogram][Version $fversion] is upgraded: ok"
 echo "$cinco [ OK FIREWALL UPGRADED ] [$directory_fiptables/$fiptables]"
+else echo "$cinco [ FAIL: ] [ FIREWALL NOT UPGRADED ]"; fi
 echo $footer_option
 exit ; fi
 ####
@@ -947,11 +953,11 @@ echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-i
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
-echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny     "
+echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
+echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |       "
 echo 
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
@@ -1528,6 +1534,8 @@ echo "  hosts.allow: Show /etc/hosts.allow"
 echo "             : Muestra /etc/hosts.allow"
 echo "   hosts.deny: Show /etc/hosts.deny"
 echo "             : Muestra /etc/hosts.deny"
+echo "  etc-default: Show /etc/default/fwiptables"
+echo "               Muestra /etc/default/fwiptables"
 echo $footer_option
 exit; fi
 ####
@@ -4663,6 +4671,7 @@ echo "   protocolos: Show /etc/protocols"
 echo "     services: Show /etc/services"
 echo "  hosts.allow: Sshow /etc/hosts.allow"
 echo "   hosts.deny: Sshow /etc/hosts.deny"
+echo "  etc-default: Show /etc/default/fwiptables"
 echo
 echo "$cinco         [Show log]"
 echo
@@ -4892,6 +4901,7 @@ echo "   protocolos: Muestra /etc/protocols"
 echo "     services: Muestra /etc/services"
 echo "  hosts.allow: Muestra /etc/hosts.allow"
 echo "   hosts.deny: Muestra /etc/hosts.deny"
+echo "  etc-default: Muestra /etc/default/fwiptables"
 echo
 echo "$cinco         [Mostrar log]"
 echo
