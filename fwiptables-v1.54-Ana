@@ -1,8 +1,8 @@
 #!/bin/bash
 ####
 ####
-####   #### english: necesary to find several PATH
-####   #### spanish: necesario para encontrar varios PATH
+####   #### english: necesary to find several PATH and auth xhost to root
+####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
 ####
 ####
 ####
@@ -54,7 +54,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-default_option="basic-options"           #### over fwiptables-for-default
+default_option="basic-options"           #### over fwiptables-for-default - example: full-options
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
@@ -86,7 +86,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #### english: path to config files  #### spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
-autosave_fwrecover="" ;                  #### over fwiptables-for-default
+autosave_fwrecover="no" ;                #### over fwiptables-for-default - void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 #### #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"           
@@ -2232,7 +2232,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
+--list "Gui Principal Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" "etc-default" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show etc] [$fiptables]" )
 case $selection in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
@@ -2242,6 +2242,7 @@ case $selection in
 "services") $fiptables -gui services ;;
 "hosts.allow") $fiptables -gui hosts.allow ;;
 "hosts.deny") $fiptables -gui hosts.deny ;;
+"etc-default") $fiptables -gui etc-default ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
