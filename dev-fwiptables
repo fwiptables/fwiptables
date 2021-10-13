@@ -859,12 +859,12 @@ if [ -f "$directory_config/$second_option" ]; then config_option="si"; else conf
 ####
 ####
 ####
-#### english: alias for cfg-custom to custom  #### spanish: apodo de cfg-custom para custom
+####   #### english: alias for cfg-custom to custom  #### spanish: apodo de cfg-custom para custom
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 ####
 ####
-####   english: the first option : [config.cfg]  ----  verbose
-####   spanish: El primera opción: [config.cfg]  ----- con info
+####   #### english: the first option : [config.cfg]  ----  verbose
+####   #### spanish: El primera opción: [config.cfg]  ----  con informacion
 ####
 if [ -f "$directory_config"/"$first_option" ]; then echo $subhead_option ;
 launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ;
@@ -874,8 +874,8 @@ else $nada; fi
 ####
 ####
 ####
-####   english: The first option: offline, allpermisive or custom          --- semi silent
-####   spanish: El primero:       desconectado, todopermisivo o modificado --- semi silencioso
+####   #### english: The first option: offline, allpermisive or custom           ----  semi silent
+####   #### spanish: El primero:       desconectado, todopermisivo o modificado  ----  semi silencioso
 ####
 ####
 if [ "$first_option" = "offline" ]; then      echo "$cinco  FIREWALL OFFLINE" ; echo $subhead_option
@@ -3729,6 +3729,19 @@ echo $subhead_option
 $which_arp -a
 ;;
 esac
+echo $footer_option
+exit; fi
+####
+####
+############################       english: etc-default: show /etc/default/fwiptables
+############################       spanish: etc-default: show /etc/default/fwiptables
+####
+####
+if [ "$first_option" = "etc-default" ]; then $nada
+echo $head_option
+echo $subhead_option
+cat /etc/default/fwiptables
+echo "$cinco file: /etc/default/fwiptables"
 echo $footer_option
 exit; fi
 ####
