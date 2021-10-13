@@ -955,7 +955,7 @@ echo "$tab" "$tab"  "______________________                | Secondary options |
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom [cfg]        "
 echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config               "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                   "
-echo "$tab" "$tab"  "                       list-cfg show-config modify-config del-config       "
+echo "$tab" "$tab"  "                       list-config show-config modify-config del-config    "
 echo "$tab" "$tab"  "______________________                | Third options |                    " 
 echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
@@ -1060,18 +1060,18 @@ echo $footer_option
 exit; fi
 ####
 ####
-##############################       english: cfg: list: some config, alias to list-cfg
-##############################       spanish: cfg: lista alguna config, apodo a list-cfg
+##############################       english: cfg: list: some config, alias to list-config
+##############################       spanish: cfg: lista alguna config, apodo a list-config
 ####
 ####
-if [ "$first_option" = "cfg" ]; then first_option="list-cfg" ; fi
+if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 ####
 ####
-##############################       english: list-cfg: list some config
-##############################       spanish: list-cfg: lista alguna config
+##############################       english: list-config: list some config
+##############################       spanish: list-config: lista alguna config
 ####
 ####
-if [ "$first_option" = "list-cfg" ]; then echo $nada
+if [ "$first_option" = "list-config" ]; then echo $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco $tab [English:] [list configs files in cfg format]"
@@ -1317,7 +1317,7 @@ echo "       new-mini-config: Create a new basic configfile.cfg in english"
 echo "                      : Crea una nueva basica configfile.cfg en ingles"
 echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
 echo "                      : Crea una nueva basica configfile.cfg en español"
-echo "              list-cfg: List config files cfg"
+echo "           list-config: List config files cfg"
 echo "                      : Lista las configuraciones de archivo cfg"
 echo "         modify-config: Edit one configfile.cfg"
 echo "                      : Edita una configuracion.cfg"
@@ -2051,7 +2051,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-config" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
 --list "Gui Principal Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
-"list-cfg" "show-config" "modify-config" "del-config" \
+"list-config" "show-config" "modify-config" "del-config" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Config] [$fiptables]" )
 case $selection in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
@@ -2068,8 +2068,8 @@ $fiptables -gui new-mini-config $archivo ;;
 "nueva-mini-config")
 archivo="$(zenity $zenity_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $fiptables -gui nueva-mini-config $archivo ;;
-"list-cfg")
-$fiptables -gui list-cfg ;;
+"list-config")
+$fiptables -gui list-config ;;
 "show-config")
 archivo="$(zenity $zenity_dimension --entry --title "[show-config]" --text="$($fiptables cfg)")" ;
 $fiptables -gui show-config $archivo ;;
@@ -2481,7 +2481,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   75  "show-config" \
   76  "modify-config" \
   77  "del-config" \
-  78  "list-cfg" \
+  78  "list-config" \
   080 "$cinco [Tool net sockets] $cinco" \
   81  "route" \
   82  "ss" \
@@ -2600,7 +2600,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  77) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fiptables del-config $archivo ; echo "deleted $archivo" ;;
- 78) clear ; $fiptables list-cfg ;;
+ 78) clear ; $fiptables list-config ;;
  81) clear ; $fiptables "route" | less ;;
  82) clear ; $fiptables "ss"  | less ;;
  83) clear ; $fiptables "netstat" | less ;;
@@ -4651,7 +4651,7 @@ echo "       new-full-config: Create a new configfile.cfg in english"
 echo " nueva-completa-config: Create a new configfile.cfg in spanish"
 echo "       new-mini-config: Create a new basic configfile.cfg in english"
 echo "     nueva-mini-config: Create a new basic configfile.cfg in spanish"
-echo "              list-cfg: List config files cfg"
+echo "           list-config: List config files cfg"
 echo "         modify-config: Edit one config.cfg"
 echo "           show-config: Show one config.cfg"
 echo "            del-config: Delete one configuration file"
@@ -4881,7 +4881,7 @@ echo "       new-full-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-completa-config: Crea una nueva configuracion.cfg en español"
 echo "       new-mini-config: Crea una nueva basica configuracion.cfg en ingles"
 echo "     nueva-mini-config: Crea una nueva basica configuracion.cfg en español"
-echo "              list-cfg: Lista los archivos de configuracion cfg"
+echo "           list-config: Lista los archivos de configuracion cfg"
 echo "         modify-config: Edita una existente configuracion.cfg"
 echo "           show-config: Muestra una existente configuracion.cfg"
 echo "            del-config: Borra unaa existente configuracion.cfg"
