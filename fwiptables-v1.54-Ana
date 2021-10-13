@@ -116,7 +116,10 @@ case "$(whereis ip)" in "$NULL")default_route="$cinco [ Route ip.v4 ] [ No ip co
 zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default
 ####       #### english: close for graphicall with timeout in seconds #####
 ####       #### spanish: cierre para graficos con retardo en segundos ##### 
-close_timeout="2"
+close_timeout="1"
+####       #### english: message to close graphicall with timeout in seconds #####
+####       #### spanish: mensage de cierre para graficos con retardo en segundos ##### 
+mensage_timeout="Closing gui menu in $close_timeout seconds"
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
 ####       #### english: zenity automatic redimensions    #### spanish: redimensiones automaticas de zenity
 #### pantallatotal="$(xrandr | grep -- \* | tail -1 | sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
@@ -1926,7 +1929,7 @@ case "$selection" in
 "14 Show help")$fiptables gui-menu-show-help;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye"; 
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit ;;
 esac
 exit; fi
 ####
@@ -1948,7 +1951,7 @@ case $selection in
 "wizard-mini")$fiptables -gui wizard-mini ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -1974,7 +1977,7 @@ $fiptables -gui custom $archivo ; $fiptables gui list ;;
 $fiptables -gui custom $archivo ; $fiptables gui list ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2004,7 +2007,7 @@ $fiptables -gui load $archivo ; $fiptables -gui list ;;
 "actual") $fiptables -gui actual ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2046,7 +2049,7 @@ case $selection in
 "arptables") $fiptables -gui arptables ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2089,7 +2092,7 @@ archivo="$(zenity $zenity_dimension --entry --title "[del-config]" --text="$($fi
 $fiptables -gui del-config $archivo;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2115,7 +2118,7 @@ case $selection in
 "tcpdump") $fiptables -gui tcpdump ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress -$zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress -$zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu 
 exit; fi
@@ -2140,7 +2143,7 @@ $fiptables -gui ping-ip6 $archivo ;;
 "speed-ip6") $fiptables -gui speed-ip6 ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2170,7 +2173,7 @@ $fiptables -gui geoip $archivo ;;
 "ntpdate")$fiptables -gui ntpdate ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2194,7 +2197,7 @@ $fiptables -gui sudo-auth $archivo ;;
 "list-alias")$fiptables -gui list-alias ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2217,7 +2220,7 @@ case $selection in
 "new-versions")$fiptables -gui new-versions ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2241,7 +2244,7 @@ case $selection in
 "hosts.deny") $fiptables -gui hosts.deny ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2261,7 +2264,7 @@ case $selection in
 "log-fwiptables") $fiptables -gui log-fwiptables ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2286,7 +2289,7 @@ case $selection in
 "config-spa")$fiptables -gui config-spa ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2310,7 +2313,7 @@ case $selection in
 "notes") $fiptables -gui notes ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye" ;
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2333,7 +2336,7 @@ menugtk=$(zenity --forms --title="[gui shell]  [$fiptables]" $zenity_dimension -
 case $? in
 1)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="Closing gui menu" --auto-close --auto-kill ; exit;;
+zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
