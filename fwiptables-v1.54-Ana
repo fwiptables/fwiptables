@@ -89,7 +89,7 @@ directory_fwrecover="/etc/fwrecover" ;
 autosave_fwrecover="" ;                  #### over fwiptables-for-default
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 #### #### english: look  #### spanish: apariencia
-cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ;            
+cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2977,28 +2977,30 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  echo $subhead_option
  echo $ralla
  echo $ralla
- case $legacycuatro in "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
+ case $legacycuatro in
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
  $which_iptables_legacy -v -L INPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
+ echo "$ralica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
  $which_iptables_legacy -v -L OUTPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -v -L FORWARD
  ;;
  esac
  echo "$ralla"
- case $nftcuatro in  "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftcuatro in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
  $which_iptables_nft -v -L INPUT
  echo "$ralla"
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
  $which_iptables_nft -v -L OUTPUT
  echo "$ralla"
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_iptables_nft -v -L FORWARD
  ;;
  esac
@@ -3014,20 +3016,22 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- case $legacycuatro in  "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
+ case $legacycuatro in
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -t filter -v -L FORWARD
  ;;
  esac
  echo $ralla
- case $nftcuatro in "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftcuatro in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_iptables_nft -t filter -v -L FORWARD
  ;;
  esac
@@ -3048,28 +3052,29 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  echo $ralla
  echo $ralla
  case $legacyseis in
- "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
  $which_ip6tables_legacy -v -L INPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
  $which_ip6tables_legacy -v -L OUTPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_ip6tables_legacy -v -L FORWARD
  ;;
  esac
  echo $ralla
- case $nftseis in "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftseis in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
  $which_ip6tables_nft -v -L INPUT
  echo "$ralla"
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
  $which_ip6tables_nft -v -L OUTPUT
  echo "$ralla"
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_ip6tables_nft -v -L FORWARD
  ;;
  esac
@@ -3085,20 +3090,22 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- case $legacycuatro in  "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+ case $legacycuatro in
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_ip6tables_legacy -t filter -v -L FORWARD
  ;;
  esac
  echo $ralla
- case $nftcuatro in  "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftcuatro in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_ip6tables_nft -t filter -v -L FORWARD
  ;;
  esac
@@ -3114,20 +3121,22 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
  nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- case $legacycuatro in "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+ case $legacycuatro in
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtable ] [ iptables-legacy ] [ NAT ] $ralla  "
+ echo "$rallica [ With rules xtable ] [ iptables-legacy ] [ NAT ] $ralla  "
  $which_iptables_legacy -t nat -v -L
  ;;
  esac
  echo $ralla
- case $nftcuatro in "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftcuatro in 
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ NAT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ NAT ] $ralla "
  $which_iptables_nft -t nat -v -L 
  ;;
  esac
@@ -3143,21 +3152,22 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $nftseis in
- "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ]  [ NAT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ]  [ NAT ] $ralla "
  $which_ip6tables_legacy -t nat -v -L 
  ;;
  esac
  echo $ralla
- case $nftseis in "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftseis in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ]  [ NAT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ]  [ NAT ] $ralla "
  $which_ip6tables_nft -t nat -v -L 
  ;;
  esac
@@ -3173,33 +3183,34 @@ if [ "$first_option" = "listnum" ]; then $nada ;
 legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$tab [Without rules netfilter] [iptables-nft]" ;;
+ "$NULL") echo "$cinco [Without rules netfilter] [iptables-nft]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
  $which_iptables_legacy -v -n -L INPUT
  echo "$ralla" 
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
  $which_iptables_legacy -v -n -L OUTPUT
  echo "$ralla" 
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -v -n -L FORWARD
  ;;
  esac
  echo $ralla
- case $nftcuatro in "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftcuatro in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
  $which_iptables_nft -v -n -L INPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
  $which_iptables_nft -v -n -L OUTPUT 
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_nft -v -n -L FORWARD
  ;;
  esac
@@ -3215,21 +3226,22 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -t filter -v -n -L FORWARD
  ;;
  esac
  echo $ralla
- case $nftcuatro in "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftcuatro in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_iptables_nft -t filter -v -n -L FORWARD
  ;;
  esac
@@ -3244,34 +3256,35 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "listnum6" ]; then $nada
  legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
- echo $head_option ;
+ echo $head_option 
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $legacyseis in
- "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
  $which_ip6tables_legacy -v -n -L INPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
  $which_ip6tables_legacy -v -n -L OUTPUT
  echo "$ralla"
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_ip6tables_legacy -v -n -L FORWARD
  ;;
  esac
  echo $ralla
- case $nftseis in "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ case $nftseis in
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
  $which_ip6tables_nft -v -n -L INPUT
  echo "$ralla"
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
  $which_ip6tables_nft -v -n -L OUTPUT
  echo "$ralla"
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_ip6tables_nft -v -n -L FORWARD
  ;;
  esac
@@ -3287,22 +3300,22 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$tab [ Without rules in xtables ] [ iptables-legacy ] " ;;
+ "$NULL") echo "$cinco [ Without rules in xtables ] [ iptables-legacy ] " ;;
  *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_ip6tables_legacy -t filter -v -n -L FORWARD
  ;;
  esac
  echo $ralla
  case $nftcuatro in
- "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_ip6tables_nft -t filter -v -n -L FORWARD
  ;;
  esac
@@ -3316,14 +3329,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "mangle-ip4" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
+ echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
  $which_iptables_legacy -t mangle -v -L
  echo $ralla
- echo "$tab  [ The nftables ] [ iptables-nft ] [ MANGLE ] $ralla "
+ echo "$rallica [ The nftables ] [ iptables-nft ] [ MANGLE ] $ralla "
  $which_iptables_nft -t mangle -v -L
  echo $footer_option
  exit; fi
@@ -3335,14 +3348,15 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "mangle-ip6" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
  echo $default_route
  echo $ralla
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
+ echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
  $which_ip6tables_legacy -t mangle -v -L
  echo $ralla
- echo "$tab  [ The nftables ] [iptables-nft ] [ MANGLE ] $ralla "
+ echo "$rallica [ The nftables ] [iptables-nft ] [ MANGLE ] $ralla "
  $which_ip6tables_nft -t mangle -v -L
  echo $footer_option
  exit; fi
@@ -3354,14 +3368,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "raw-ip4" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
+ echo "$rallica  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
  $which_iptables_legacy -t raw -v -L
  echo $ralla
- echo "$tab  [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
+ echo "$rallica [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
  $which_iptables_nft -t raw -v -L
  echo $footer_option
  exit; fi
@@ -3373,14 +3387,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "raw-ip6" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
+ echo "$rallica [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
  $which_ip6tables_legacy -t raw -v -L
  echo $ralla
- echo "$tab  [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
+ echo "$rallica [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
  $which_ip6tables_nft -t raw -v -L
  echo $footer_option
  exit; fi
@@ -3392,14 +3406,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "security-ip4" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
+ echo "$rallica [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
  $which_iptables_legacy -t security -v -L
  echo $ralla
- echo "$tab  [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
+ echo "$rallica [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
  $which_iptables_nft -t security -v -L
  echo $footer_option
  exit; fi
@@ -3411,14 +3425,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "security-ip6" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
+ echo "$rallica [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
  $which_ip6tables_legacy -t security -v -L
  echo $ralla
- echo "$tab  [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
+ echo "$rallica [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
  $which_ip6tables_nft -t security -v -L
  echo $footer_option
  exit; fi
@@ -3430,14 +3444,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "ebtables" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
- echo "$tab [ ebtables: filter ethernet nft ] [ EBTABLES ] $ralla "
+ echo "$rallica [ ebtables: filter ethernet nft ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t filter
  echo $ralla
- echo "$tab [ ebtables: nat ethernet nft ] [ EBTABLES ] $ralla "
+ echo "$rallica [ ebtables: nat ethernet nft ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t nat
  echo $footer_option
  exit; fi
@@ -3449,9 +3463,9 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ####
  if [ "$first_option" = "arptables" ]; then $nada
  echo $head_option
+ echo $default_route
  echo $subhead_option
  echo $ralla
- echo $default_route
  echo $ralla
  $which_arptables -L
  echo $footer_option
