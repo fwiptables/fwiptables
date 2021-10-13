@@ -896,7 +896,7 @@ if [ ! -f $directory_config/$second_option ]; then $nada ;
 case $first_option in
 "custom") $fiptables cfg ;
 echo "$cinco Usage: $fiptables custom existent-file-cfg"
-echo "$cinco See:   $fiptables full-options"
+echo "$cinco See:   $fiptables tool-cfg"
 exit ;;
 esac
 fi
@@ -1025,7 +1025,7 @@ echo "$cinco [ Secondary options ] $cinco"
 echo 
 $fiptables launch-rules
 echo
-$fiptables tool-configs
+$fiptables tool-cfg
 echo
 $fiptables tool-sockets
 echo
@@ -1299,11 +1299,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-##############################       english: tool-configs options
-##############################       spanish: tool-configs opciones
+##############################       english: tool-cfg options
+##############################       spanish: tool-cfg opciones
 ####
 ####
-if [ "$first_option" = "tool-configs" ]; then $nada
+if [ "$first_option" = "tool-cfg" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco         [Tool configs]"
