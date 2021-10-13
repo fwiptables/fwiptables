@@ -673,7 +673,7 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file" > $me
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $me
 echo $var1  $tabz $eng1  >> $me
 echo $var2  $tabz $eng2  >> $me
 echo $var3  $tabz $eng3  >> $me
@@ -699,7 +699,7 @@ echo $var20 $tabz $eng20 >> $me
 #### wizard mini-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file" > $ms
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $ms
 echo $var1  $tabz $spa1  >> $ms
 echo $var2  $tabz $spa2  >> $ms
 echo $var3  $tabz $spa3  >> $ms
@@ -725,7 +725,7 @@ echo $var20 $tabz $spa20 >> $ms
 #### wizard full-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file" > $fe
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fe
 echo $var1  $tabz $eng1  >> $fe
 echo $var2  $tabz $eng2  >> $fe
 echo $var3  $tabz $eng3  >> $fe
@@ -787,7 +787,7 @@ echo $var56 $tabz $eng56 >> $fe
 #### wizard full-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file" > $fs
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fs
 echo $var1  $tabz $spa1 >> $fs
 echo $var2  $tabz $spa2 >> $fs
 echo $var3  $tabz $spa3 >> $fs
