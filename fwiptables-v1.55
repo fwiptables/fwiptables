@@ -969,6 +969,7 @@ echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-i
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
+echo "$tab" "$tab"  "    tool-system        free-ram glx-gears                                  "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
@@ -1044,6 +1045,8 @@ echo
 $fiptables tool-sudo
 echo
 $fiptables tool-install
+echo
+$fiptables tool-system
 echo
 $fiptables show-etc
 echo
@@ -1512,8 +1515,8 @@ echo $footer_option
 exit; fi
 ####
 ####
-##############################       english: show-version options
-##############################       spanish: show-version opciones
+##############################       english: tool-install options
+##############################       spanish: tool-install opciones
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $nada
@@ -1528,6 +1531,24 @@ echo " howto-upgrade: Show howto upgrade at the latest version"
 echo "              : Muestra como actualizar a la ultima version"
 echo "       upgrade: Upgrade at the latest version"
 echo "              : Actualiza a la ultima version"
+echo $footer_option
+exit; fi
+####
+####
+##############################       english: tool-system options
+##############################       spanish: tool-system opciones
+####
+####
+if [ "$first_option" = "tool-system" ]; then $nada
+echo $head_option
+echo $subhead_option
+echo "$cinco         [Tool system]"
+echo "$cinco         [Herramienta systema]"
+echo
+echo "      free-ram: clean for innecesary memory"
+echo "              : libera la memoria innecesaria"
+echo "     glx-gears: show frammes for seconds with mesa graphicall"
+echo "              : Muestra fotogramas por segundo con graficos mesa"
 echo $footer_option
 exit; fi
 ####
@@ -4257,6 +4278,34 @@ $which_nmap -sn $2
 #### Restore fw
 $fiptables continue
 echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
+echo $footer_option
+exit; fi
+####
+####
+############################       english: free-ram: give one freedom to ram innecesary
+############################       spanish: free-ram: limpia la memoria ram
+####
+####
+if [ "$first_option" = "free-ram" ]; then $nada
+echo $head_option
+echo $subhead_option
+echo " Actual Memory"
+free -hw && sync
+echo 3 | sudo tee /proc/sys/vm/drop_caches
+echo " Memory ram freedom .. Actual memory"
+free -hw
+echo $footer_option
+exit; fi
+####
+####
+############################       english: glx-gears: show frammes por seconds with mesa graphicall 
+############################       spanish: glx-gears: muestra los fotogramas por segundo con graphicos mesa
+####
+####
+if [ "$first_option" = "glx-gears" ]; then $nada
+echo $head_option
+echo $subhead_option
+vblank_mode=0 glxgears
 echo $footer_option
 exit; fi
 ####
