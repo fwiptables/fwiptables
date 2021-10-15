@@ -924,7 +924,7 @@ echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -l
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom          "
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat ..                "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump           "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
@@ -964,13 +964,13 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config    "
 echo "$tab" "$tab"  "______________________                | Third options |                    " 
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump           "
-echo "$tab" "$tab"  "                       ipforwading-list ipforwading-on ipforwading-off     "
+echo "$tab" "$tab"  "    tool-forward       ipforwading-list ipforwading-on ipforwading-off     "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
-echo "$tab" "$tab"  "    tool-system        free-ram glx-gears                                  "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed glx-gears                                  "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
@@ -1036,6 +1036,8 @@ echo
 $fiptables tool-cfg
 echo
 $fiptables tool-sockets
+echo
+$fiptables tool-forward
 echo
 $fiptables tool-icmp
 echo
@@ -1417,12 +1419,26 @@ echo "           tcpdump: Listen the connections"
 echo "                  : Escucha las conexiones"
 echo "               arp: List the last conentions arp"
 echo "                  : Lista las ultimas conexiones arp"
+echo $footer_option
+exit; fi
+####
+####
+##############################       english: tool-sockets options
+##############################       spanish: tool-sockets opciones
+####
+####
+if [ "$first_option" = "tool-forward" ]; then $nada
+echo $head_option
+echo $subhead_option
+echo "$cinco         [Tool forward]"
+echo "$cinco         [Herramienta de ipforwading]"
+echo
 echo "  ipforwading-list: Show kernel config about forward"
-echo "                  : Muestra la configuracion del kernel sobre reenvios"
-echo "    ipforwading-on: Show kernel config about forward"
-echo "                  : Muestra la configuracion del kernel sobre reenvios"
-echo "   ipforwading-off: Show kernel config about forward"
-echo "                  : Muestra la configuracion del kernel sobre reenvios"
+echo "                  : Muestra configuracion del kernel sobre reenvios"
+echo "    ipforwading-on: Active the kernel config about forward"
+echo "                  : Activa la configuracion del kernel sobre reenvios"
+echo "   ipforwading-off: Deactive kernel config about forward"
+echo "                  : Desactiva la configuracion del kernel sobre reenvios"
 echo $footer_option
 exit; fi
 ####
@@ -1550,9 +1566,11 @@ echo $subhead_option
 echo "$cinco         [Tool system]"
 echo "$cinco         [Herramienta systema]"
 echo
-echo "      free-ram: clean for innecesary memory"
-echo "              : libera la memoria innecesaria"
-echo "     glx-gears: show frammes for seconds with mesa graphicall"
+echo "      ram-free: Clean for innecesary memory"
+echo "              : Libera la memoria innecesaria"
+echo "     ram-speed: Show the speed of ram"
+echo "                Muestra la velocidad de la ram"
+echo "     glx-gears: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
 echo $footer_option
 exit; fi
@@ -2535,7 +2553,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   76  "modify-config" \
   77  "del-config" \
   78  "list-config" \
-  080 "$cinco [Tool net sockets] $cinco" \
+  080 "$cinco [Tool net sockets and forward] $cinco" \
   81  "route" \
   82  "ss" \
   83  "netstat" \
@@ -4320,11 +4338,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: free-ram: give one freedom to ram innecesary
-############################       spanish: free-ram: limpia la memoria ram
+############################       english: ram-free: give one freedom to ram innecesary
+############################       spanish: ram-free: limpia la memoria ram
 ####
 ####
-if [ "$first_option" = "free-ram" ]; then $nada
+if [ "$first_option" = "ram-free" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo " Actual Memory"
@@ -4332,6 +4350,19 @@ free -hw && sync
 echo 3 | sudo tee /proc/sys/vm/drop_caches
 echo " Memory ram freedom .. Actual memory"
 free -hw
+echo $footer_option
+exit; fi
+####
+####
+############################       english: ram-speed: Show the speed of ram
+############################       spanish: ram-speed: Muestra la velocidad de ram
+####
+####
+if [ "$first_option" = "ram-speed" ]; then $nada
+echo $head_option
+echo $subhead_option
+dd if=/dev/zero of=/tmp/borrame.img status=progress bs=1M count=100
+rm /tmp/borrame.img &> /dev/null
 echo $footer_option
 exit; fi
 ####
@@ -4781,6 +4812,9 @@ echo "          netstat: Show net sockets with command netstat"
 echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
 echo "              arp: List the last conentions arp"
+echo
+echo "$cinco         [Tool forward]"
+echo
 echo " ipforwading-list: Show kernel config about forward"
 echo "   ipforwading-on: Active kernel config about forward"
 echo "  ipforwading-off: Deactive kernel config about forward"
@@ -5013,6 +5047,9 @@ echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
 echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
 echo "               arp: Lista las ultimas conexiones arp"
+echo
+echo "$cinco         [Herramienta de ip forwading]"
+echo
 echo "  ipforwading-list: Muestra la configuracion del kernel sobre reenvios ip"
 echo "    ipforwading-on: Activa la configuracion del kernel sobre reenvios ip"
 echo "   ipforwading-off: Desactiva la configuracion del kernel sobre reenvios ip"
