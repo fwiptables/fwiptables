@@ -566,6 +566,9 @@ which_nmap="$(which nmap | cut -d " " -f 1)"
 which_ntpdate="$(which ntpdate | cut -d " " -f 1)"
 which_wget="$(which wget | cut -d " " -f 1)"
 which_iperf="$(which iperf | cut -d " " -f 1)"
+which_tee="$(which tee | cut -d " " -f 1)"
+which_dd="$(which dd | cut -d " " -f 1)"
+which_glxgears="$(which glxgears | cut -d " " -f 1)"
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
@@ -970,7 +973,7 @@ echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-i
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed glx-gears                                  "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed glx-speed                                  "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
@@ -1570,7 +1573,7 @@ echo "      ram-free: Clean for innecesary memory"
 echo "              : Libera la memoria innecesaria"
 echo "     ram-speed: Show the speed of ram"
 echo "                Muestra la velocidad de la ram"
-echo "     glx-gears: Show frammes for seconds with mesa graphicall"
+echo "     glx-speed: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
 echo $footer_option
 exit; fi
@@ -1805,6 +1808,9 @@ echo "geoip:      $which_geoiplookup"
 echo "nmap:       $which_nmap"
 echo "wget:       $which_wget"
 echo "iperf:      $which_iperf"
+echo "dd:         $which_dd"
+echo "tee:        $which_tee"
+echo "glxgears:   $which_glxgears"
 echo $ralla
 echo $footer_option
 exit; fi
@@ -4345,9 +4351,10 @@ exit; fi
 if [ "$first_option" = "ram-free" ]; then $nada
 echo $head_option
 echo $subhead_option
+case $which_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 echo " Actual Memory"
 free -hw && sync
-echo 3 | sudo tee /proc/sys/vm/drop_caches
+echo 3 | $which_tee /proc/sys/vm/drop_caches &> /dev/null
 echo " Memory ram freedom .. Actual memory"
 free -hw
 echo $footer_option
@@ -4361,20 +4368,22 @@ exit; fi
 if [ "$first_option" = "ram-speed" ]; then $nada
 echo $head_option
 echo $subhead_option
-dd if=/dev/zero of=/tmp/borrame.img status=progress bs=1M count=100
+case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
+$which_dd if=/dev/zero of=/tmp/borrame.img status=progress bs=1M count=100
 rm /tmp/borrame.img &> /dev/null
 echo $footer_option
 exit; fi
 ####
 ####
-############################       english: glx-gears: show frammes por seconds with mesa graphicall 
-############################       spanish: glx-gears: muestra los fotogramas por segundo con graphicos mesa
+############################       english: glx-speed: show frammes por seconds with mesa graphicall 
+############################       spanish: glx-speed: muestra los fotogramas por segundo con graphicos mesa
 ####
 ####
-if [ "$first_option" = "glx-gears" ]; then $nada
+if [ "$first_option" = "glx-speed" ]; then $nada
 echo $head_option
 echo $subhead_option
-vblank_mode=0 glxgears
+case $which_glxgears in "$NULL") echo "$cinco Install mesa lib"; exit ;; esac
+vblank_mode=0 $which_glxgears
 echo $footer_option
 exit; fi
 ####
