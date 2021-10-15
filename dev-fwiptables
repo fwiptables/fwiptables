@@ -924,7 +924,7 @@ echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -l
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                     "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom          "
-echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat ..                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
@@ -963,7 +963,8 @@ echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-confi
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                   "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config    "
 echo "$tab" "$tab"  "______________________                | Third options |                    " 
-echo "$tab" "$tab"  "    tool-sockets       ipforwading route ss lsof netstat netstat-nat       "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump           "
+echo "$tab" "$tab"  "                       ipforwading-list ipforwading-on ipforwading-off     "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
@@ -1402,22 +1403,26 @@ echo $subhead_option
 echo "$cinco         [Tool sockets]"
 echo "$cinco         [Herramienta de sockets]"
 echo
-echo "        route: Show net devices and ip route tables"
-echo "             : Muestra los dispositivos de red y la tabla de rutas"
-echo "           ss: Show net sockets with command ss"
-echo "             : Muestra las conexiones de red con ss"
-echo "         lsof: Show net sockets with command lsof"
-echo "             : Muestra las conexiones con lsof"
-echo "      netstat: Show net sockets with command netstat"
-echo "             : Muestra las conexiones con netstat"
-echo "  netstat-nat: Show net sockets wiht command netstat-nat"
-echo "             : Muestra las conexiones con netstat-nat"
-echo "  ipforwading: Show kernel config about forward"
-echo "             : Muestra la configuracion del kernel sobre reenvios"
-echo "      tcpdump: Listen the connections"
-echo "             : Escucha las conexiones"
-echo "          arp: List the last conentions arp"
-echo "             : Lista las ultimas conexiones arp"
+echo "             route: Show net devices and ip route tables"
+echo "                  : Muestra los dispositivos de red y la tabla de rutas"
+echo "                ss: Show net sockets with command ss"
+echo "                  : Muestra las conexiones de red con ss"
+echo "              lsof: Show net sockets with command lsof"
+echo "                  : Muestra las conexiones con lsof"
+echo "           netstat: Show net sockets with command netstat"
+echo "                  : Muestra las conexiones con netstat"
+echo "       netstat-nat: Show net sockets wiht command netstat-nat"
+echo "                  : Muestra las conexiones con netstat-nat"
+echo "           tcpdump: Listen the connections"
+echo "                  : Escucha las conexiones"
+echo "               arp: List the last conentions arp"
+echo "                  : Lista las ultimas conexiones arp"
+echo "  ipforwading-list: Show kernel config about forward"
+echo "                  : Muestra la configuracion del kernel sobre reenvios"
+echo "    ipforwading-on: Show kernel config about forward"
+echo "                  : Muestra la configuracion del kernel sobre reenvios"
+echo "   ipforwading-off: Show kernel config about forward"
+echo "                  : Muestra la configuracion del kernel sobre reenvios"
 echo $footer_option
 exit; fi
 ####
@@ -2125,18 +2130,21 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "ipforwading" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
+--list "Gui Principal Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
+"ipforwading-list" "ipforwading-on" "ipforwading-off" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 case $selection in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu") $fiptables gui-menu ;;
-"ipforwading") $fiptables -gui ipforwading ;;
 "route") $fiptables -gui route ;;
 "ss") $fiptables -gui ss ;;
 "lsof") $fiptables -gui lsof ;;
 "netstat") $fiptables -gui netstat ;;
 "netstat-nat") $fiptables -gui netstat-nat ;;
 "tcpdump") $fiptables -gui tcpdump ;;
+"ipforwading-list") $fiptables -gui ipforwading-list ;;
+"ipforwading-on") $fiptables -gui ipforwading-on ;;
+"ipforwading-off") $fiptables -gui ipforwading-off ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress -$zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
@@ -2532,9 +2540,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   82  "ss" \
   83  "netstat" \
   84  "lsof" \
-  85  "ipforwading" \
-  86  "tcpdump" \
-  87  "arp" \
+  85  "tcpdump" \
+  86  "arp" \
+  87  "ipforwading-list" \
+  88  "ipforwading-on" \
+  89  "ipforwading-off" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -2650,9 +2660,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  82) clear ; $fiptables "ss"  | less ;;
  83) clear ; $fiptables "netstat" | less ;;
  84) clear ; $fiptables "lsof" | less ;;
- 85) clear ; $fiptables "ipforwading" | less ;;
- 86) clear ; $fiptables "tcpdump" | less ;;
- 87) clear ; $fiptables arp -a | less ;;
+ 85) clear ; $fiptables "tcpdump" | less ;;
+ 86) clear ; $fiptables arp -a | less ;;
+ 87) clear ; $fiptables "ipforwading-list" | less ;;
+ 88) clear ; $fiptables "ipforwading-on" | less ;;
+ 89) clear ; $fiptables "ipforwading-off" | less ;;
  91) resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables ping-ip4 $resolve ;;
  92) resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
@@ -2998,6 +3010,32 @@ echo $head_option
 echo $subhead_option
 echo "$tab [The devices list with netstat]"
 $which_netstat_nat -x
+echo $footer_option
+exit; fi
+####
+####
+#############################      english: ipforwading-on: active ip forward
+#############################      spanish: ipforwading-on: activa ip forward
+####
+####
+if [ "$first_option" = "ipforwarding-on" ]; then $nada ;
+echo $head_option
+echo $subhead_option
+$which_sysctl -a | grep -i forwarding
+echo "Working .."
+echo $footer_option
+exit; fi
+####
+####
+#############################      english: ipforwading-off: active ip forward
+#############################      spanish: ipforwading-off: activa ip forward
+####
+####
+if [ "$first_option" = "ipforwarding-off" ]; then $nada ;
+echo $head_option
+echo $subhead_option
+$which_sysctl -a | grep -i forwarding
+echo "Working .."
 echo $footer_option
 exit; fi
 ####
@@ -4736,14 +4774,16 @@ echo "            del-config: Delete one configuration file"
 echo
 echo "$cinco         [List sockets]"
 echo
-echo "        route: Show net devices and ip route tables"
-echo "           ss: Show net sockets with command ss"
-echo "         lsof: Show net sockets with command lsof"
-echo "      netstat: Show net sockets with command netstat"
-echo "  netstat-nat: Show net sockets with command netstat-nat"
-echo "  ipforwading: Show kernel config about forward"
-echo "      tcpdump: Listen the connections"
-echo "          arp: List the last conentions arp"
+echo "            route: Show net devices and ip route tables"
+echo "               ss: Show net sockets with command ss"
+echo "             lsof: Show net sockets with command lsof"
+echo "          netstat: Show net sockets with command netstat"
+echo "      netstat-nat: Show net sockets with command netstat-nat"
+echo "          tcpdump: Listen the connections"
+echo "              arp: List the last conentions arp"
+echo " ipforwading-list: Show kernel config about forward"
+echo "   ipforwading-on: active kernel config about forward"
+echo "  ipforwading-off: deactive kernel config about forward"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -4966,14 +5006,16 @@ echo "            del-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         [Lista las conexiones abiertas]"
 echo
-echo "        route: Muestra los dispositivos de red y la tabla de rutas"
-echo "           ss: Muestra las conexiones con comando ss"
-echo "      netstat: Muestra las conexiones con comando netstat"
-echo "  netstat-nat: Muestra las conexiones con comando netstat-nat"
-echo "         lsof: Muestra las conexiones con command lsof"
-echo "  ipforwading: Muestra la configuracion del kernel sobre reenvios ip"
-echo "      tcpdump: Escuchar las conexiones ip"
-echo "          arp: Lista las ultimas conexiones arp"
+echo "             route: Muestra los dispositivos de red y la tabla de rutas"
+echo "                ss: Muestra las conexiones con comando ss"
+echo "           netstat: Muestra las conexiones con comando netstat"
+echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
+echo "              lsof: Muestra las conexiones con command lsof"
+echo "           tcpdump: Escuchar las conexiones ip"
+echo "               arp: Lista las ultimas conexiones arp"
+echo "  ipforwading-list: Muestra la configuracion del kernel sobre reenvios ip"
+echo "    ipforwading-on: Activa la configuracion del kernel sobre reenvios ip"
+echo "   ipforwading-off: Desactiva la configuracion del kernel sobre reenvios ip"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
