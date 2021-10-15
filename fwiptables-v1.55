@@ -3018,7 +3018,7 @@ exit; fi
 #############################      spanish: ipforwading-on: activa ip forward
 ####
 ####
-if [ "$first_option" = "ipforwarding-on" ]; then $nada ;
+if [ "$first_option" = "ipforwading-on" ]; then $nada ;
 echo $head_option
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
@@ -3031,11 +3031,11 @@ exit; fi
 #############################      spanish: ipforwading-off: activa ip forward
 ####
 ####
-if [ "$first_option" = "ipforwarding-off" ]; then $nada ;
+if [ "$first_option" = "ipforwading-off" ]; then $nada ;
 echo $head_option
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
-do $which_sysctl -w $a=1 ; done
+do $which_sysctl -w $a=0 ; done
 echo $footer_option
 exit; fi
 ####
