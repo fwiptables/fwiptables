@@ -3021,8 +3021,8 @@ exit; fi
 if [ "$first_option" = "ipforwarding-on" ]; then $nada ;
 echo $head_option
 echo $subhead_option
-$which_sysctl -a | grep -i forwarding
-echo "Working .."
+for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+do $which_sysctl -w $a=1 ; done
 echo $footer_option
 exit; fi
 ####
@@ -3034,8 +3034,8 @@ exit; fi
 if [ "$first_option" = "ipforwarding-off" ]; then $nada ;
 echo $head_option
 echo $subhead_option
-$which_sysctl -a | grep -i forwarding
-echo "Working .."
+for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+do $which_sysctl -w $a=1 ; done
 echo $footer_option
 exit; fi
 ####
@@ -3785,11 +3785,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: ipforwading: the ipforwading option en english
-############################       spanish: ipforwading: la opcion de reenvios  en ingles
+############################       english: ipforwading-list: the ipforwading option en english
+############################       spanish: ipforwading-list: la opcion de reenvios  en ingles
 ####
 ####
-if [ "$first_option" = "ipforwading" ]; then $nada
+if [ "$first_option" = "ipforwading-list" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
@@ -4782,8 +4782,8 @@ echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
 echo "              arp: List the last conentions arp"
 echo " ipforwading-list: Show kernel config about forward"
-echo "   ipforwading-on: active kernel config about forward"
-echo "  ipforwading-off: deactive kernel config about forward"
+echo "   ipforwading-on: Active kernel config about forward"
+echo "  ipforwading-off: Deactive kernel config about forward"
 echo
 echo "$cinco         [Tool icmp]"
 echo
