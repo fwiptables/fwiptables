@@ -973,7 +973,7 @@ echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-i
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
 echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed glx-speed                                  "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed             "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
@@ -1572,7 +1572,9 @@ echo
 echo "      ram-free: Clean for innecesary memory"
 echo "              : Libera la memoria innecesaria"
 echo "     ram-speed: Show the speed of ram"
-echo "                Muestra la velocidad de la ram"
+echo "              : Muestra la velocidad de la ram"
+echo "    disc-speed: Show the speed of disc"
+echo "              : Muestra la velocidad de el disco"
 echo "     glx-speed: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
 echo $footer_option
@@ -4361,16 +4363,32 @@ echo $footer_option
 exit; fi
 ####
 ####
+############################       english: disc-speed: Show the speed of disc
+############################       spanish: disc-speed: Muestra la velocidad de el disco
+####
+####
+if [ "$first_option" = "disc-speed" ]; then $nada
+echo $head_option
+echo $subhead_option
+case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
+$which_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
+rm /root/borrame.img.img &> /dev/null
+echo $footer_option
+exit; fi
+####
+####
 ############################       english: ram-speed: Show the speed of ram
-############################       spanish: ram-speed: Muestra la velocidad de ram
+############################       spanish: ram-speed: Muestra la velocidad de la ram
 ####
 ####
 if [ "$first_option" = "ram-speed" ]; then $nada
 echo $head_option
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
-$which_dd if=/dev/zero of=/tmp/borrame.img status=progress bs=1M count=100
-rm /tmp/borrame.img &> /dev/null
+case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" in "1")
+$which_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
+rm /tmp/borrame.img.img &> /dev/null   ; exit ;;
+*) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp" ;; esac
 echo $footer_option
 exit; fi
 ####
@@ -4382,7 +4400,7 @@ exit; fi
 if [ "$first_option" = "glx-speed" ]; then $nada
 echo $head_option
 echo $subhead_option
-case $which_glxgears in "$NULL") echo "$cinco Install mesa lib"; exit ;; esac
+case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
 vblank_mode=0 $which_glxgears
 echo $footer_option
 exit; fi
