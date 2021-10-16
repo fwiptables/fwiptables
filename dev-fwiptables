@@ -95,7 +95,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-ant_option=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco" ;    
+ant_option=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_option="$ant_option [ $first_option ] $cinco" ;                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -115,10 +115,10 @@ case "$(whereis ip)" in "$NULL")default_route="$cinco [ Route ip.v4 ] [ No ip co
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
 zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default ### default: "--width=950 --height=650"
 ####       #### english: close for graphicall with timeout in seconds #####
-####       #### spanish: cierre para graficos con retardo en segundos ##### 
+####       #### spanish: cierre para graficos con retardo en segundos #####
 close_timeout="1"
 ####       #### english: message to close graphicall with timeout in seconds #####
-####       #### spanish: mensage de cierre para graficos con retardo en segundos ##### 
+####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
 mensage_timeout="Closing gui menu in $close_timeout seconds"
 #### #english: [characters to show] #spanish: [caracteres a mostrar]
 ####       #### english: zenity automatic redimensions    #### spanish: redimensiones automaticas de zenity
@@ -130,8 +130,8 @@ launch_thesecond="no" ;
 config_option="no" ;
 launch_iptables="no" ;
 launch_offline="no" ;
-launch_permisive="no" ; 
-launch_custom="no";   
+launch_permisive="no" ;
+launch_custom="no";
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
@@ -155,7 +155,7 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ##############################       spanish: Instalador noticia          ###################################
 ####
 ####
-if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then 
+if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;;
 "./$fiptables") ;;
@@ -177,7 +177,7 @@ if  [ "$first_option" = "$NULL" ] ; then $zero_option $default_option ; exit ; f
 ####
 ####
 if [ "$(id -u)" = "0" ]; then $nada
-else 
+else
 echo $head_option
 echo $subhead_option
 echo "$cincuenta need to be root to work"
