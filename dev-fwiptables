@@ -974,7 +974,7 @@ echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
-echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions          "
+echo "$tab" "$tab"  "    tool-install       install howto-upgrade upgrade new-versions license  "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed             "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
@@ -2915,6 +2915,22 @@ echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 echo $footer_option
 exit ; fi
+####
+####
+##############################       english: license: license gpl v2
+##############################       spanish: license: license gpl v2
+####
+####
+if [ "$first_option" = "license" ]; then
+echo $head_option
+echo $subhead_option
+echo license gpl v2 downloading from git f-iptables ..
+echo "$ralla" "$ralla" "$ralla"
+echo "$ralla" "$ralla" "$ralla"
+echo "$ralla" "$ralla" "$ralla"
+$favorite_text_browser -dump "https://choosealicense.com/licenses/gpl-2.0/#"
+echo $footer_option
+exit;  fi
 ####
 ####
 ##############################       english: howto-upgrade: upgrade in the file /usr/bin/fwiptables
