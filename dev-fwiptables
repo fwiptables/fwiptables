@@ -70,7 +70,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.55" ;                                                   
+fversion="1.55-Miguel" ;                                            
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -89,7 +89,7 @@ directory_fwrecover="/etc/fwrecover" ;
 autosave_fwrecover="no" ;                #### over fwiptables-for-default ### choose: void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 #### #### english: look  #### spanish: apariencia
-cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"           
+cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
