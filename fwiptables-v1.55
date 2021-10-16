@@ -1756,12 +1756,13 @@ echo $ralla
 echo "$cinco It are all the depends to full work in $fiptables $fversion"
 echo $ralla
 echo "$tab [Configuration directory]"
-echo "config cfg:          $directory_config"
+echo "list cfg:            $directory_config"
 echo "names fw:            $directory_fwrecover"
 echo $ralla
 echo "$tab [Configuration file]"
 echo "default variables:   /etc/default/fwiptables"
 echo "shell completions:   /etc/completion.d/fwiptables"
+echo "auth users:          /etc/sudoers.d/fwiptables"
 echo $ralla
 echo "$tab [output log]"
 echo "destination log:     /var/log/fwiptables"
@@ -2764,13 +2765,13 @@ file $directory_fiptables/$fiptables | cut -d "," -f 1-2
 echo
 echo "$tab [Config cfg directory]"
 echo "$directory_config"
-echo
-echo "$tab [Firewall standar directory]"
+echo "$tab [Firewall standard directory]"
 echo "$directory_fwrecover"
-echo
-echo "$tab [Config files and output log]"
+echo "$tab [Config files]"
 echo "variables:    /etc/default/fwiptables"
 echo "completion:   /etc/bash_completion.d/fwiptables"
+echo "auth users:   /etc/sudoers/fwiptables"
+echo "$tab [Output log]"
 echo "output log:   /var/log/fwiptables"
 echo
 echo "$tab [Version program]"
