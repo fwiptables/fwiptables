@@ -2596,6 +2596,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   121  "install" \
   122  "howto-upgrade" \
   123  "upgrade" \
+  124  "new-versions" \
+  125  "license" \
   0140 "$cinco [Show etc configurations] $cinco" \
   141  "hosts" \
   142  "protocols" \
@@ -2720,6 +2722,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  121) clear ; $zero_option "install";;
  122) clear ; $fiptables "howto-upgrade" | less ;;
  123) clear ; $fiptables "upgrade" ;;
+ 124) clear ; $fiptables "new-versions" | less ;;
+ 125) clear ; $fiptables "license" | less ;; 
  141) clear ; $fiptables "hosts" | less ;;
  142) clear ; $fiptables "protocols" | less ;;
  143) clear ; $fiptables "services" | less ;;
@@ -2743,6 +2747,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  esac 
  echo "press [enter] to continue with the $fiptables cli-menu"
  read -s
+ clear
  $fiptables cli-menu
  exit; fi
 ####
@@ -2932,7 +2937,7 @@ echo "license text for gpl v2 downloading .."
 echo "$ralla" "$ralla" "$ralla"
 echo "$ralla" "$ralla" "$ralla"
 echo "$ralla" "$ralla" "$ralla"
-$favorite_text_browser -dump "https://choosealicense.com/licenses/gpl-2.0/#"
+$favorite_text_browser -dump "https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 echo $footer_option
 exit;  fi
 ####
