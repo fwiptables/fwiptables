@@ -2994,14 +2994,14 @@ if [ "$first_option" = "route" ]; then   echo  -n
 echo $head_option
 echo $subhead_option
 case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
-echo "$tab [ip route ipv4 from simplify]"
+echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
 echo "$($which_ip route)"
 case $($which_route) in $NULL) echo "$tab [Install route command]" ; exit ;; esac
 echo $ralla
-echo "$tab [ip route ipv4 from lineal]"
+echo "$rallica [ ip route ipv4 ] [ mode lineal ]"
 echo "$($which_route -4)"
 echo $ralla
-echo "$tab [ip route ipv6 from lineal]"
+echo "$rallica [ ip route ipv6 ] [ mode lineal]"
 echo "$($which_route -6)"
 echo $footer_option
 exit ; fi
