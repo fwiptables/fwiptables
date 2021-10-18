@@ -625,14 +625,14 @@ if [ "$first_option" = "upgrade" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo "$cincuenta [ Web upgrade ] $cinco"
-echo "[ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
-echo "[ Downloading $fiptables with the comand $favorite_text_browser browser ]"
+echo "$cinco [ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
+echo "$cinco [ Downloading $fiptables with the comand $favorite_text_browser browser ]"
 rm /tmp/$fiptables &> /dev/null
-echo "[ Waiting several seconds .. ]"
+echo "$cinco [ Waiting several seconds .. ]"
 case "$favorite_text_browser" in
 "$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
-echo "[ Waiting several seconds .. ]"
+echo "$cinco [ Waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables"
 if [ -s /tmp/$fiptables ]; then
 chmod ugo+rx /tmp/$fiptables &> /dev/null
