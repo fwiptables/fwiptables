@@ -591,6 +591,10 @@ if [ "$which_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser=$w
 if [ "$first_option" = "install" ] ; then $nada
 echo $head_option
 echo $subhead_option
+read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
+if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
+then echo "$cinco OK. ACCEPTED LICENSE. Continue install."
+else echo "$cinco OK. DECLINED LICENSE. Stop install."; exit; fi
 #### english: copy the file #### spanish: copia el archivo
 echo "$cinco [ Runing.. ] [ $zero_option ]"
 cp $zero_option $directory_fiptables/$fiptables ;
