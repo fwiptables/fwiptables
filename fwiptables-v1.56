@@ -1665,6 +1665,8 @@ echo "     config-eng: Config example with comments in english"
 echo "               : Ejemplo de configuracion con comentarios en ingles"
 echo "     config-spa: Config example with comments in spanish"
 echo "               : Ejemplo de configuracion con comentarios en español"
+echo "        license: Show license gpl v2"
+echo "               : Muestra la licencia gpl v2"
 echo $footer_option
 exit; fi
 ####
