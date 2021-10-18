@@ -105,8 +105,8 @@ footer_option="$ralla   $ralla   $ralla"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ####       #### english: variables      #### spanish: variables
 nada="$(echo -n)" ;                                                 
-#### #### english: echo void # impresion vacia
-log_prefix="logserver:" ;               #### over fwiptables-for-default ### default: "logserver:"
+#### #### english: echo void            #### spanish: impresion vacia
+#### log_prefix="logserver:" ;          #### 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 flistado="-70" ;                                                    
 #### #### english: wide of list config files  #### spanish: Ancho al listar cfg
@@ -252,6 +252,7 @@ allow_legacy="" ; allow_nft="no" ; allow_ipv4="" ; allow_ipv6="no" ;
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="ssh" ; server_udp="" ; 
 logserver_tcp="ssh" ; logserver_udp="" ;
+##### logserver_prefix_input="fwlog-input: " ; logserver_prefix_output="fwlog-output: " ;
 allow_nat="no" ; allow_forwading="no" ; 
 allow_input_all="no" ; allow_output_all="no" ; 
 allow_input_state="no" ; allow_output_state="no" ;
@@ -328,6 +329,7 @@ spa15=$(echo "$cinco puertos tcp para logear servidor")
 var16=$(echo "logserver_udp= ")
 eng16=$(echo "$cinco the udp ports to log server")
 spa16=$(echo "$cinco puertos udp para logear servidor")
+##### logserver_prefix_input="fwlog-input: " ; logserver_prefix_output="fwlog-output: " ; #### cambio a añadir
 var17=$(echo "$cinco FORWARD IP #" )
 eng17=$(echo "$cinco void to yes, or no to no")
 spa17=$(echo "$cinco vacio para si, o no para no")
