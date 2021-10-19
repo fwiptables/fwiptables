@@ -56,7 +56,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 default_option="basic-options"           #### over fwiptables-for-default ### default: basic-options
 #### #### english: option for default    #### spanish: opcion por defecto
-zero_dir="$(pwd)" ; zero_option="$0" ;                              
+zero_dir="$(pwd)" ; zero_option="$0" ;                            
 #### #### english: variables to launch   #### spanish: variables a lanzar
 first_option="$(echo $1 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
@@ -64,6 +64,8 @@ second_option="$(echo $2 | sed s/\\///g -)" ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 third_option="$(echo $3 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
+genfiles="$0 regeneration-default"
+#### #### english: whereis path          #### spanish: donde esta el path 
 directory_fiptables="/usr/bin" ;                                    
 #### #### english: whereis path          #### spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             
@@ -240,12 +242,6 @@ exit; fi
 if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
 ####
 ####
-
-
-
-
-
-
 ################################################        english: variables:    variables to declare
 ################################################        spanish: variables:    variables para declarar
 ####
@@ -284,6 +280,7 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ################################################        spanish: regeneration-default: regenera archivos por defecto
 ####
 ####
+if [ "$1" = "regeneration-default" ]; then
 #####################################  english: fvariables:    variables to prepare to gen files
 #####################################  spanish: fvariables:    variables para preparar para generar archivos
 ####
@@ -475,8 +472,8 @@ eng66=$(echo "$cinco .......... END Optional options .......... .......... #")
 spa66=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
 ####
 ####
-##############################   english: autogen defaults configs cfg              ###########################################
-##############################   spanish: auto genera configs cfg por defecto       ###########################################
+##############################   english: continue with autogen defaults configs cfg
+##############################   spanish: continua con auto genera configs cfg por defecto
 ####
 ####
 #### where save default files
@@ -666,6 +663,11 @@ echo $var63 $tabz $eng63 >> $fs
 echo $var64 $tabz $eng64 >> $fs
 echo $var65 $tabz $eng65 >> $fs
 echo $var66 $tabz $eng66 >> $fs
+fi
+####
+####
+################################################ 
+################################################ 
 ####
 ####
 #####################################   #### english: variables: only void or in other case no
@@ -1022,6 +1024,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "long-help" ]; then 
+$genfiles
 echo $head_option
 echo $subhead_option
 echo "$cinco         [Long-help]"
@@ -3635,7 +3638,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
 ############################       spanish: new-full-config: script de sistema, la opcion new-full-config para cear nuevas config
 ####
 ####
-if [ "$first_option" = "new-full-config" ]; then $nada
+if [ "$first_option" = "new-full-config" ]; then $genfiles
 case $second_option in "$NULL") config_option="si" ;; esac
 case "$config_option" in
 "si")
@@ -3660,7 +3663,7 @@ exit ; fi
 ############################       spanish: nueva-completa-config: script de sistema, la opcion nueva-completa-config para cear nuevas config
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ]; then $nada
+if [ "$first_option" = "nueva-completa-config" ]; then $genfiles
 case $second_option in "$NULL") config_option="si" ;; esac 
 case "$config_option" in
 "si")
@@ -3685,7 +3688,7 @@ exit ; fi
 ############################       spanish: new--mini config: script de sistema, la opcion new-mini-config para cear nuevas config
 ####
 ####
-if [ "$first_option" = "new-mini-config" ]; then $nada
+if [ "$first_option" = "new-mini-config" ]; then $genfiles
 case $second_option in "$NULL") config_option="si" ;; esac
 case "$config_option" in
 "si")
@@ -3709,7 +3712,7 @@ exit ; fi
 ############################       spanish: nueva-mini-config: script de sistema, la opcion nueva-mini-config para cear nuevas config
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ]; then $nada
+if [ "$first_option" = "nueva-mini-config" ]; then $genfiles
 case $second_option in "$NULL") config_option="si" ;; esac
 case "$config_option" in
 "si")
@@ -3733,7 +3736,7 @@ exit ; fi
 ############################       spanish: modify-config: modify una configuracion.cfg
 ####
 ####
-if [ "$first_option" = "modify-config" ]; then $nada
+if [ "$first_option" = "modify-config" ]; then $genfiles
 case "$config_option" in
 "no")
 echo $head_option
@@ -3756,7 +3759,7 @@ exit; fi
 ############################       spanish: show-config: muestra una configuracion
 ####
 ####
-if [ "$first_option" = "show-config" ]; then $nada
+if [ "$first_option" = "show-config" ]; then $genfiles
 case "$config_option" in
 "si")
 echo $head_option
@@ -3777,7 +3780,7 @@ exit; fi
 ############################       spanish: del-config: elimina una vieja configuracion
 ####
 ####
-if [ "$first_option" = "del-config" ]; then $nada
+if [ "$first_option" = "del-config" ]; then $genfiles
 case "$config_option" in
 "si") archivo=$(echo $second_option | sed 's/\///g') ; rm $directory_config/$archivo
 echo $head_option
@@ -3964,7 +3967,7 @@ exit; fi
 ##############################       spanish: wizard-mini: mini-asistente to connect like simple client
 ####
 ####
-if [ "$first_option" = "wizard-mini" ]; then $nada
+if [ "$first_option" = "wizard-mini" ]; then $genfiles
 archivo="$first_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
@@ -3981,7 +3984,7 @@ exit; fi
 ##############################       spanish: wizard-full: asistente to connect like simple client
 ####
 ####
-if [ "$first_option" = "wizard-full" ]; then $nada
+if [ "$first_option" = "wizard-full" ]; then $genfiles
 archivo="$first_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
@@ -4055,7 +4058,7 @@ exit; fi
 ############################       spanish: show: muestra las reglas de un firewall en formato iptables
 ####
 ####
-if [ "$first_option" = "show" ]; then $nada
+if [ "$first_option" = "show" ]; then $genfiles
 echo $head_option
 echo $subhead_option
 case "$second_option" in
@@ -4084,7 +4087,7 @@ exit; fi
 ############################       spanish: actual: muestra las reglas actuales
 ####
 ####
-if [ "$first_option" = "actual" ]; then $nada
+if [ "$first_option" = "actual" ]; then $genfiles
 echo $head_option
 echo $subhead_option
 $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
@@ -4765,7 +4768,7 @@ exit; fi
 ############################       spanish: options: varias opciones para configurar en ingles
 ####
 ####
-if [ "$first_option" = "config-eng" ]; then $nada
+if [ "$first_option" = "config-eng" ]; then $gefiles
 echo $head_option
 echo $subhead_option
 cat  $defaultfullcfg_eng
@@ -4777,7 +4780,7 @@ exit; fi
 ############################       spanish: opciones: varias opciones para configurar en spanish
 ####
 ####
-if [ "$first_option" = "config-spa" ]; then $nada
+if [ "$first_option" = "config-spa" ]; then $genfiles
 echo $head_option
 echo $subhead_option
 cat $defaultfullcfg_spa
@@ -4789,7 +4792,8 @@ exit; fi
 ############################       spanish: help: la opcion de ayuda en ingles
 ####
 ####
-if [ "$first_option" = "help" ]; then $nada
+if [ "$first_option" = "help" ]; then $genfiles
+$genfiles
 echo $head_option
 echo $subhead_option
 echo
@@ -5026,7 +5030,8 @@ exit; fi
 ############################       spanish: ayuda: la opcion de ayuda en español
 ####
 ####
-if [ "$first_option" = "ayuda" ]; then $nada
+if [ "$first_option" = "ayuda" ]; then $genfiles
+$genfiles
 echo $head_option
 echo $subhead_option
 echo
