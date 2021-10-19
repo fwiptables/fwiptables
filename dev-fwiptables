@@ -142,7 +142,7 @@ fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 ####       #### english: [Program license] #### spanish: [Licencia del programa]
-flicense="Copyleft, without warranty, free to copy, free to modify, gnu license gpl."
+flicense="Copyleft, without warranty, gnu license GPL v2."
 ####
 ####
 ##############################       english: Update variables             ###################################
