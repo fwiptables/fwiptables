@@ -310,7 +310,7 @@ spa6=$(echo "$cinco varcio para ejecutar el firewall con ipv4 o no para no")
 var7=$(echo "allow_ipv6=no" )
 eng7=$(echo "$cinco void to config firewall with ipv6 or no to dont configure ipv6")
 spa7=$(echo "$cinco varcio para ejecutar el firewall con ipv6 o no para no")
-var8=$(echo "$cinco CLIENT PORTS#")
+var8=$(echo "$cinco CLIENT PORTS #")
 eng8=$(echo "$cinco Client ports, add with ',' and join ranges with ':'")
 spa8=$(echo "$cinco puertos Cliente, añadir con ',' y poner rangos con ':' ")
 var9=$(echo "client_tcp=http,https,ssh")
@@ -337,19 +337,28 @@ spa15=$(echo "$cinco puertos tcp para logear servidor")
 var16=$(echo "logserver_udp= ")
 eng16=$(echo "$cinco the udp ports to log server")
 spa16=$(echo "$cinco puertos udp para logear servidor")
+var17=$(echo "$cinco LOG PREFIX TO SERVER #" )
+eng17=$(echo "$cinco Log to server ports with prefix")
+spa17=$(echo "$cinco logear para puertos de servidor con prefijo")
 ##### logserver_prefix_input="fwlog-input: " ; logserver_prefix_output="fwlog-output: " ; #### cambio a añadir
-var17=$(echo "$cinco FORWARD IP #" )
-eng17=$(echo "$cinco void to yes, or no to no")
-spa17=$(echo "$cinco vacio para si, o no para no")
-var18=$(echo "allow_forwading=no" )
-eng18=$(echo "$cinco void to allow ip forward or no")
-spa18=$(echo "$cinco vacio para permitir reenvio, y no para denegar reenvios")
-var19=$(echo "allow_nat=no" )
-eng19=$(echo "$cinco void to do NAT masquerade to default route or no")
-spa19=$(echo "$cinco vacio para hacer masquerade a otras redes o no")
-var20=$(echo "$cinco END NECESARY #" )
-eng20=$(echo "$cinco .......... END Necesary options .......... .......... #")
-spa20=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
+var18=$(echo "logserver_prefix_input= ")
+eng18=$(echo "$cinco type input prefix for logserver")
+spa18=$(echo "$cinco especifica prefijo de entrada para logserver")
+var19=$(echo "logserver_prefix_output= ")
+eng19=$(echo "$cinco type output prefix for logserver")
+spa19=$(echo "$cinco especifica prefijo de salida para logserver")
+var20=$(echo "$cinco FORWARD IP #" )
+eng20=$(echo "$cinco void to yes, or no to no")
+spa20=$(echo "$cinco vacio para si, o no para no")
+var21=$(echo "allow_forwading=no" )
+eng21=$(echo "$cinco void to allow ip forward or no")
+spa21=$(echo "$cinco vacio para permitir reenvio, y no para denegar reenvios")
+var22=$(echo "allow_nat=no" )
+eng22=$(echo "$cinco void to do NAT masquerade to default route or no")
+spa22=$(echo "$cinco vacio para hacer masquerade a otras redes o no")
+var23=$(echo "$cinco END NECESARY #" )
+eng23=$(echo "$cinco .......... END Necesary options .......... .......... #")
+spa23=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
 ####
 ####
 #### english: advance options in configurations file cfg
@@ -509,6 +518,9 @@ echo $var17 $tabz $eng17 >> $me
 echo $var18 $tabz $eng18 >> $me
 echo $var19 $tabz $eng19 >> $me
 echo $var20 $tabz $eng20 >> $me
+echo $var21 $tabz $eng21 >> $me
+echo $var22 $tabz $eng22 >> $me
+echo $var23 $tabz $eng23 >> $me
 ####
 ####
 #### wizard mini-spanish
@@ -535,6 +547,9 @@ echo $var17 $tabz $spa17 >> $ms
 echo $var18 $tabz $spa18 >> $ms
 echo $var19 $tabz $spa19 >> $ms
 echo $var20 $tabz $spa20 >> $ms
+echo $var21 $tabz $spa21 >> $ms
+echo $var22 $tabz $spa22 >> $ms
+echo $var23 $tabz $spa23 >> $ms
 ####
 ####
 #### wizard full-english
@@ -561,6 +576,9 @@ echo $var17 $tabz $eng17 >> $fe
 echo $var18 $tabz $eng18 >> $fe
 echo $var19 $tabz $eng19 >> $fe
 echo $var20 $tabz $eng20 >> $fe
+echo $var21 $tabz $eng21 >> $fe
+echo $var22 $tabz $eng22 >> $fe
+echo $var23 $tabz $eng23 >> $fe
 ##### english: advance variables
 ##### spanish: avanzadas variables
 echo $var31 $tabz $eng31 >> $fe
@@ -625,6 +643,9 @@ echo $var17 $tabz $spa17 >> $fs
 echo $var18 $tabz $spa18 >> $fs
 echo $var19 $tabz $spa19 >> $fs
 echo $var20 $tabz $spa20 >> $fs
+echo $var21 $tabz $spa21 >> $fs
+echo $var22 $tabz $spa22 >> $fs
+echo $var23 $tabz $spa23 >> $fs
 ##### english: advance variables
 ##### spanish: avanzadas variables
 echo $var31 $tabz $spa31 >> $fs
