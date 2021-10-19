@@ -254,8 +254,8 @@ allow_legacy="" ; allow_nft="no" ; allow_ipv4="" ; allow_ipv6="no" ;
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="ssh" ; server_udp="" ; 
 logserver_tcp="ssh" ; logserver_udp="" ;
-logserver_prefix_input="fwlog-input :" ; 
-logserver_prefix_output="fwlog-output :" ;
+logserver_prefix_input="fwlog-input::" ; 
+logserver_prefix_output="fwlog-output::" ;
 allow_nat="no" ; allow_forwading="no" ; 
 allow_input_all="no" ; allow_output_all="no" ; 
 allow_input_state="no" ; allow_output_state="no" ;
@@ -341,10 +341,10 @@ var17=$(echo "$cinco LOG PREFIX TO SERVER #" )
 eng17=$(echo "$cinco Log to server ports with prefix")
 spa17=$(echo "$cinco logear para puertos de servidor con prefijo")
 ##### logserver_prefix_input="fwlog-input: " ; logserver_prefix_output="fwlog-output: " ; #### cambio a añadir
-var18=$(echo "logserver_prefix_input=fwlog-input :")
+var18=$(echo "logserver_prefix_input=fwlog-input::")
 eng18=$(echo "$cinco type input prefix for logserver")
 spa18=$(echo "$cinco especifica prefijo de entrada para logserver")
-var19=$(echo "logserver_prefix_output=fwlog-output :")
+var19=$(echo "logserver_prefix_output=fwlog-output::")
 eng19=$(echo "$cinco type output prefix for logserver")
 spa19=$(echo "$cinco especifica prefijo de salida para logserver")
 var20=$(echo "$cinco FORWARD IP #" )
