@@ -684,7 +684,7 @@ echo $var63 $tabz $eng63 >> $fs
 echo $var64 $tabz $eng64 >> $fs
 echo $var65 $tabz $eng65 >> $fs
 echo $var66 $tabz $eng66 >> $fs
-fi
+exit; fi
 ####
 ####
 ################################################ 
