@@ -966,29 +966,29 @@ if [ "$first_option" = "basic-options" ]; then
 echo $head_option
 echo $default_route
 echo $subhead_option
-echo "$tab" "$tab" "______________________                | Principal options |                 "
-echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini        "
-echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load     "
-echo "$tab" "$tab"  "    list-rules         list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 .. "
-echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui         "
+echo "$tab" "$tab" "______________________                | Principal options |                   "
+echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
+echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4 nat-ip6 .. "
+echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo
-echo "$tab" "$tab"  "______________________               | Other options |                     "
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom          "
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump           "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
-echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
-echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
-echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
-echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
+echo "$tab" "$tab"  "______________________               | Other options |                       "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom            "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
+echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
+echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
+echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias            "
+echo "$tab" "$tab"  "    show-about         about version depends examples ..                     "
+echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |       "
+echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
-echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
-echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
-echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list                "
-echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names               "
-echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name      "
-echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name      "
+echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini           "
+echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name             "
+echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list                  "
+echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
+echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
+echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
 echo $footer_option
 exit ; fi
 ####
@@ -1001,38 +1001,38 @@ if [ "$first_option" = "full-options" ]; then
 echo $head_option
 echo $default_route
 echo $subhead_option
-echo "$tab" "$tab"  "______________________                | Principal options |                "
-echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini        "
-echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load     "
-echo "$tab" "$tab"  "    list-rules         list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 .. "
-echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui         "
+echo "$tab" "$tab"  "______________________                | Principal options |                  "
+echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
+echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4 nat-ip6 .. "
+echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "______________________                | Secondary options |                " 
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom [cfg]        "
-echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config               "
-echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                   "
-echo "$tab" "$tab"  "                       list-config show-config modify-config del-config    "
-echo "$tab" "$tab"  "______________________                | Third options |                    " 
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump           "
-echo "$tab" "$tab"  "    tool-forward       ipforwading-list ipforwading-on ipforwading-off     "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6               "
-echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6              "
-echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping       "
-echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias          "
-echo "$tab" "$tab"  "    tool-install       install upgrade new-versions license ..             "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed             "
-echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                         "
-echo "$tab" "$tab"  "    show-about         about version depends examples ..                   "
-echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes             "
+echo "$tab" "$tab"  "______________________                | Secondary options |                  " 
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom [cfg]          "
+echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "______________________                | Third options |                      " 
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
+echo "$tab" "$tab"  "    tool-forward       ipforwading-list ipforwading-on ipforwading-off       "
+echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
+echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
+echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
+echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias            "
+echo "$tab" "$tab"  "    tool-install       install upgrade new-versions license ..               "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed               "
+echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                           "
+echo "$tab" "$tab"  "    show-about         about version depends examples ..                     "
+echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |       "
+echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
-echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
-echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
-echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list                "
-echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names               "
-echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name      "
-echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name      "
+echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini           "
+echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name             "
+echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list                  "
+echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
+echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
+echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
 echo $footer_option
 exit ; fi
 ####
@@ -3999,7 +3999,7 @@ dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-dialog --msgbox "wizard full ready" 0 0 ; clear ; $fiptables custom "$archivo" ; $fiptables list ;
+dialog --msgbox "wizard full ready" 0 0 ; clear ; $fiptables custom "$archivo" ; $fiptables listnum ;
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 echo $footer_option
 exit; fi
@@ -4016,7 +4016,7 @@ dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$dialog --msgbox "Wizard full ready" 0 0 ; clear ; $fiptables custom "$archivo" ; $fiptables list ;
+$dialog --msgbox "Wizard full ready" 0 0 ; clear ; $fiptables custom "$archivo" ; $fiptables listnum ;
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 echo $footer_option
 exit; fi
@@ -6544,7 +6544,7 @@ if [ "$allow_blacklist" = "no" ]; then echo "  Dont allow blacklist excepcional"
 if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allowed output uid output excepcional: $output_uid , and input established " ; fi
 if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allowed output gid output excepcional: $output_uid , and input established "; fi
 if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocol excepcional"; else echo "  Allowed other protocol excepcional: $others_protocols" ; fi
-echo "$cinco  List iptables rules with:   $fiptables list  $cinco"
+echo "$cinco  List iptables rules with:   $fiptables listnum  $cinco"
 echo "$cincuenta"
 echo "$cinco OK FIREWALL CUSTOM [$first_option]"
 echo $footer_option
