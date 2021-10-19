@@ -986,7 +986,7 @@ echo
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
 echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list                "
-echo "$tab" "$tab"  "  Load iptables rules :#                    $fiptables load name           "
+echo "$tab" "$tab"  "  List names from firewall saved :#         $fiptables names               "
 echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name      "
 echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name      "
 echo $footer_option
@@ -1029,7 +1029,8 @@ echo "$tab" "$tab"  "    some-example       | -text for default output, or -log 
 echo 
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fiptables save name           "
-echo "$tab" "$tab"  "  Load iptables rules :#                    $fiptables load name           "
+echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list                "
+echo "$tab" "$tab"  "  List names from firewall saved :#         $fiptables names               "
 echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name      "
 echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name      "
 echo $footer_option
