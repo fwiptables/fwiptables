@@ -1008,7 +1008,7 @@ echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 n
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "______________________                | Secondary options |                  " 
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom [cfg]          "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
@@ -1236,8 +1236,6 @@ echo "   cfg-custom: Alias a custom"
 echo "             : Apodo a custom"
 echo "       custom: Configure one custom firewall with one file cfg"
 echo "             : Configura un modificado firewall con un archivo cfg"
-echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
-echo "             : Configura un firewall modificado con un archivo cfg y muestra info"
 echo $footer_option
 exit; fi
 ####
@@ -4888,8 +4886,6 @@ echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "       custom: Configure one custom firewall, made for you with file.cfg"
-echo "   [file.cfg]: Configure the firewall with file.cfg and show info"
-echo "        reset: Reset counter rules"
 echo
 echo "$cinco         [tool config]"
 echo
@@ -5124,7 +5120,6 @@ echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
-echo "[archivo.cfg]: Configura el cortafuegos con un archivo.cfg y muestra info"
 echo
 echo "$cinco         [Herramienta de configuraciones]"
 echo
