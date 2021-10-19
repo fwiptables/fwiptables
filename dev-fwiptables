@@ -5390,11 +5390,14 @@ $which_ip6tables_nft -t filter -F
 $allow_legacy   $which_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_legacy   $which_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 ####
+####
 $allow_legacy   $which_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy   $which_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
+####
 $allow_nft  $which_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft  $which_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
 ####
 $allow_nft  $which_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
@@ -5409,12 +5412,18 @@ $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 $allow_ipv4 $allow_legacy $allow_input_bandwidth $which_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$bandwidth_input"kb/sec \
 --hashlimit-name maxinputlegacy  -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_legacy $allow_output_bandwidth $which_iptables_legacy    -A OUTPUT \
 -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft $allow_input_bandwidth $which_iptables_nft           -A INPUT \
 -m hashlimit    --hashlimit-above "$bandwidth_input"kb/sec  \
 --hashlimit-name maxinputnft  -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft $allow_output_bandwidth $which_iptables_nft          -A OUTPUT \
 -m hashlimit  --hashlimit-above "$bandwidth_output"kb/sec \
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP &> /dev/null
@@ -5422,12 +5431,20 @@ $allow_ipv4 $allow_nft $allow_output_bandwidth $which_iptables_nft          -A O
 ####
 #### english: ipv6 bandwidth
 #### spanish: ipv6 ancho de banda
+####
+####
 $allow_ipv6 $allow_legacy $allow_input_bandwidth $which_ip6tables_legacy -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_legacy $allow_output_bandwidth $which_ip6tables_legacy -A OUTPUT \
 -m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft $allow_input_bandwidth $which_ip6tables_nft -A  INPUT \
 -m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft $allow_output_bandwidth $which_ip6tables_nft -A OUTPUT \
 -m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
@@ -5440,22 +5457,36 @@ $allow_ipv6 $allow_nft $allow_output_bandwidth $which_ip6tables_nft -A OUTPUT \
 #### spanish: ipv4  ancho de banda
 $allow_ipv4 $allow_legacy $allow_input_maxconnect  $which_iptables_legacy -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
+####
+####
 $allow_ipv4 $allow_legacy $allow_output_maxconnect $which_iptables_legacy -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft $allow_input_maxconnect $which_iptables_nft   -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft $allow_output_maxconnect $which_iptables_nft  -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
 #### spanish: ipv6 ancho de banda
+####
+####
 $allow_ipv6 $allow_legacy $allow_input_maxconnect  $which_ip6tables_legacy -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_legacy $allow_output_maxconnect $which_ip6tables_legacy -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft $allow_input_maxconnect $which_ip6tables_nft   -A INPUT  \
 -m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft $allow_output_maxconnect $which_ip6tables_nft  -A OUTPUT \
 -m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
 ####
@@ -5473,10 +5504,16 @@ for one_blacklist in $(echo $blacklist | sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
 ####
@@ -5486,10 +5523,16 @@ $allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A OUTPUT \
 ####
 $allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
 done
@@ -5505,22 +5548,35 @@ for one_vpn in $(echo $vpn | sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_vpn $which_iptables_legacy  -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
+####
+####
 $allow_ipv4 $allow_legacy $allow_vpn $which_iptables_legacy  -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft    $allow_vpn $which_iptables_nft     -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
+####
+####
 $allow_ipv4 $allow_nft    $allow_vpn $which_iptables_nft     -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6
 ####
+####
 $allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
+####
+####
 $allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
+####
+####
 $allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
 done
@@ -5536,6 +5592,8 @@ $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
 -p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
 -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport $output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
@@ -5548,6 +5606,8 @@ $allow_nft $allow_ipv4     $which_iptables_nft -A INPUT \
 -p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4     $which_iptables_nft -A INPUT \
 -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv     $which_iptables_nft -A OUTPUT \
 -p udp -m multiport $output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv     $which_iptables_nft -A OUTPUT \
@@ -5560,6 +5620,8 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport $output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
@@ -5568,10 +5630,13 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 ####
 #### ipv6 nft
 ####
+####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT \
 -p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT &> /dev/null
+####
+####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport $output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
@@ -5590,15 +5655,18 @@ $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT  \
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT  \
 -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 ####
+####
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 ####
+####
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT  \
 -p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT  \
 -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
+####
 ####
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT \
 -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
@@ -5614,15 +5682,18 @@ $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT   \
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT   \
 -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 ####
+####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT  \
 -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT  \
 -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 ####
+####
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT   \
 -p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT   \
 -p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
+####
 ####
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT  \
 -p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
@@ -5640,6 +5711,8 @@ $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  \
 -p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT  \
 -p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
@@ -5652,6 +5725,8 @@ $allow_nft $allow_ipv4 $which_iptables_nft -A INPUT \
 -p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $which_iptables_nft -A INPUT \
 -p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT \
 -p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT \
@@ -5660,10 +5735,13 @@ $allow_nft $allow_ipv4 $which_iptables_nft -A OUTPUT \
 ####
 #### ipv6 legacy
 ####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  \
 -p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT  \
 -p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
@@ -5672,10 +5750,13 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 ####
 #### ipv6 nft
 ####
+####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT  \
 -p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT  \
 -p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
+####
+####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
@@ -5688,10 +5769,16 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 ####
 $allow_legacy  $allow_ipv4 $allow_output_ping  $which_iptables_legacy -A INPUT  \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $allow_input_ping $which_iptables_legacy -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $uid_gid $which_iptables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols $which_iptables_legacy -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5704,12 +5791,20 @@ done
 ####
 $allow_legacy  $allow_ipv4 $allow_output_ping  $which_iptables_legacy   -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $allow_input_ping  $which_iptables_legacy -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $allow_output_uid $which_iptables_legacy   -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $allow_output_gid $which_iptables_legacy   -A OUTPUT \
 -m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols      $which_iptables_legacy -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5726,12 +5821,20 @@ done
 ####
 $allow_legacy  $allow_ipv6 $allow_output_ping      $which_ip6tables_legacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $allow_input_ping    $which_ip6tables_legacy -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $uid_gid $which_ip6tables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT \
 -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_others_protocols      $which_ip6tables_legacy -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5744,13 +5847,23 @@ done
 ####
 $allow_legacy  $allow_ipv6 $allow_output_ping  $which_ip6tables_legacy   -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $allow_input_ping  $which_ip6tables_legacy -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $allow_output_uid $which_ip6tables_legacy   -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $allow_output_gid $which_ip6tables_legacy   -A OUTPUT \
 -m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy6  $allow_ipv6 $allow_others_protocols      $which_ip6tables_legacy -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5767,10 +5880,16 @@ done
 ####
 $allow_nft $allow_ipv4 $allow_output_ping     $which_iptables_nft -A INPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $allow_input_ping   $which_iptables_nft -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $uid_gid $which_iptables_nft -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols       $which_iptables_nft -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5783,12 +5902,20 @@ done
 ####
 $allow_nft $allow_ipv4 $allow_output_ping    $which_iptables_nft -A OUTPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $allow_input_ping  $which_iptables_nft -A OUTPUT \
 -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $allow_output_uid $which_iptables_nft   -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $allow_output_gid $which_iptables_nft   -A OUTPUT \
 -m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols      $which_iptables_nft -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5805,12 +5932,20 @@ done
 ####
 $allow_nft $allow_ipv6 $allow_output_ping      $which_ip6tables_nft -A INPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $allow_input_ping    $which_ip6tables_nft -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $uid_gid $which_ip6tables_nft -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT \
 -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5823,13 +5958,23 @@ done
 ####
 $allow_nft $allow_ipv6 $allow_output_ping      $which_ip6tables_nft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $allow_input_ping    $which_ip6tables_nft -A OUTPUT \
 -p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $allow_output_uid     $which_ip6tables_nft -A OUTPUT \
 -m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $allow_output_gid     $which_ip6tables_nft -A OUTPUT \
 -m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
@@ -5858,6 +6003,8 @@ $allow_nft $allow_ipv4 $allow_nat $which_iptables_nft -t nat \
 -A POSTROUTING -j MASQUERADE      &>/dev/null
 $allow_legacy $allow_ipv4 $allow_nat $which_iptables_legacy -t nat \
 -A POSTROUTING -j MASQUERADE   &>/dev/null
+####
+####
 $allow_nft $allow_ipv6 $allow_nat $which_ip6tables_nft -t nat \
 -A POSTROUTING -j MASQUERADE     &>/dev/null
 $allow_legacy $allow_ipv6 $allow_nat $which_ip6tables_legacy -t nat \
@@ -5872,6 +6019,8 @@ $allow_legacy $allow_ipv6 $allow_nat $which_ip6tables_legacy -t nat \
 ####
 ####
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -F &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT \
@@ -5886,6 +6035,8 @@ $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A FORWARD 
 ####
 ####
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -F &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT \
@@ -5904,6 +6055,8 @@ $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A FORWARD \
 ####
 ####
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -F &> /dev/null
+####
+####
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT \
@@ -5918,6 +6071,8 @@ $allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A FORWARD 
 ####
 ####
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -F &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT   \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT   \
@@ -5936,6 +6091,8 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD \
 ####
 ####
 $allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -F &> /dev/null
+####
+####
 $allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A INPUT  \
 -s 127.0.0.1 -d 127.0.0.1   -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A OUTPUT \
@@ -5946,6 +6103,8 @@ $allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -F &> /dev/null
+####
+####
 $allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A INPUT   \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A OUTPUT  \
@@ -5960,6 +6119,8 @@ $allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A OUTPUT  \
 ####
 ####
 $allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -F &> /dev/null
+####
+####
 $allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A OUTPUT \
@@ -5970,6 +6131,8 @@ $allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -F &> /dev/null
+####
+####
 $allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A OUTPUT \
