@@ -1605,8 +1605,8 @@ echo "       upgrade: Upgrade at the latest version"
 echo "              : Actualiza a la ultima version"
 echo "  new-versions: Show the list of the last versions"
 echo "              : Muestra el listado de las ultivas versiones"
-echo "       license: License fwiptables"
-echo "              : Licencia fwiptables"
+echo "       license: Show license gnu gpl v2 . "
+echo "              : Muestra la licencia gnu gpl v2 . "
 echo $footer_option
 exit; fi
 ####
@@ -2981,7 +2981,7 @@ echo "license text for gpl v2 downloading .."
 echo "$ralla" "$ralla" "$ralla"
 echo "$ralla" "$ralla" "$ralla"
 echo "$ralla" "$ralla" "$ralla"
-$favorite_text_browser -dump "https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+$favorite_text_browser -dump "https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw" | more
 echo $footer_option
 exit;  fi
 ####
