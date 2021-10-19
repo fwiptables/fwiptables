@@ -108,7 +108,7 @@ footer_option="$ralla   $ralla   $ralla"
 ####       #### english: variables      #### spanish: variables
 nada="$(echo -n)" ;                                                 
 #### #### english: echo void            #### spanish: impresion vacia
-#### log_prefix="logserver:" ;          #### 
+#### log_prefix="logserver:" ;          #### english: old variable #### spanish: vieja variable
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 flistado="-70" ;                                                    
 #### #### english: wide of list config files  #### spanish: Ancho al listar cfg
@@ -5584,42 +5584,50 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 ####
 #### ipv4
 ####
+####
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT  \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT  \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
+####
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
+####
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT  \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A INPUT  \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
+####
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 $allow_nft     $allow_ipv4  $which_iptables_nft    -A OUTPUT \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 ####
 ####
 #### ipv6
 ####
+####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT   \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT   \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
+####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT  \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT  \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
+####
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT   \
--p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp  -m multiport --dports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A INPUT   \
--p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp  -m multiport --dports $logserver_udp -j LOG --log-prefix "$logserver_prefix_input" &> /dev/null
+####
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT  \
--p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p tcp -m multiport --sports $logserver_tcp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 $allow_nft     $allow_ipv6   $which_ip6tables_nft    -A OUTPUT  \
--p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$log_prefix " &> /dev/null
+-p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" &> /dev/null
 ####
 ####
 ####################################### english: rules allow server ports
