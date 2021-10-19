@@ -240,6 +240,12 @@ exit; fi
 if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
 ####
 ####
+
+
+
+
+
+
 ################################################        english: variables:    variables to declare
 ################################################        spanish: variables:    variables para declarar
 ####
@@ -252,7 +258,8 @@ allow_legacy="" ; allow_nft="no" ; allow_ipv4="" ; allow_ipv6="no" ;
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="ssh" ; server_udp="" ; 
 logserver_tcp="ssh" ; logserver_udp="" ;
-##### logserver_prefix_input="fwlog-input: " ; logserver_prefix_output="fwlog-output: " ;
+logserver_prefix_input="fwlog-input: " ; 
+logserver_prefix_output="fwlog-output: " ;
 allow_nat="no" ; allow_forwading="no" ; 
 allow_input_all="no" ; allow_output_all="no" ; 
 allow_input_state="no" ; allow_output_state="no" ;
@@ -271,6 +278,10 @@ output_uid="root" ; output_gid="root" ;
 others_protocols="icmp,igmp" ;
 net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
+####
+####
+################################################        english: regeneration-default: regen default files
+################################################        spanish: regeneration-default: regenera archivos por defecto
 ####
 ####
 #####################################  english: fvariables:    variables to prepare to gen files
@@ -462,6 +473,199 @@ spa65=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
 var66=$(echo "$cinco #" )
 eng66=$(echo "$cinco .......... END Optional options .......... .......... #")
 spa66=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
+####
+####
+##############################   english: autogen defaults configs cfg              ###########################################
+##############################   spanish: auto genera configs cfg por defecto       ###########################################
+####
+####
+#### where save default files
+####
+####
+me="$defaultminicfg_eng"
+ms="$defaultminicfg_spa"
+fe="$defaultfullcfg_eng"
+fs="$defaultfullcfg_spa"
+####
+####
+#### wizard mini-english
+####
+####
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $me
+echo $var1  $tabz $eng1  >> $me
+echo $var2  $tabz $eng2  >> $me
+echo $var3  $tabz $eng3  >> $me
+echo $var4  $tabz $eng4  >> $me
+echo $var5  $tabz $eng5  >> $me
+echo $var6  $tabz $eng6  >> $me
+echo $var7  $tabz $eng7  >> $me
+echo $var8  $tabz $eng8  >> $me
+echo $var9  $tabz $eng9  >> $me
+echo $var10 $tabz $eng10 >> $me
+echo $var11 $tabz $eng11 >> $me
+echo $var12 $tabz $eng12 >> $me
+echo $var13 $tabz $eng13 >> $me
+echo $var14 $tabz $eng14 >> $me
+echo $var15 $tabz $eng15 >> $me
+echo $var16 $tabz $eng16 >> $me
+echo $var17 $tabz $eng17 >> $me
+echo $var18 $tabz $eng18 >> $me
+echo $var19 $tabz $eng19 >> $me
+echo $var20 $tabz $eng20 >> $me
+####
+####
+#### wizard mini-spanish
+####
+####
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $ms
+echo $var1  $tabz $spa1  >> $ms
+echo $var2  $tabz $spa2  >> $ms
+echo $var3  $tabz $spa3  >> $ms
+echo $var4  $tabz $spa4  >> $ms
+echo $var5  $tabz $spa5  >> $ms
+echo $var6  $tabz $spa6  >> $ms
+echo $var7  $tabz $spa7  >> $ms
+echo $var8  $tabz $spa8  >> $ms
+echo $var9  $tabz $spa9  >> $ms
+echo $var10 $tabz $spa10 >> $ms
+echo $var11 $tabz $spa11 >> $ms
+echo $var12 $tabz $spa12 >> $ms
+echo $var13 $tabz $spa13 >> $ms
+echo $var14 $tabz $spa14 >> $ms
+echo $var15 $tabz $spa15 >> $ms
+echo $var16 $tabz $spa16 >> $ms
+echo $var17 $tabz $spa17 >> $ms
+echo $var18 $tabz $spa18 >> $ms
+echo $var19 $tabz $spa19 >> $ms
+echo $var20 $tabz $spa20 >> $ms
+####
+####
+#### wizard full-english
+####
+####
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fe
+echo $var1  $tabz $eng1  >> $fe
+echo $var2  $tabz $eng2  >> $fe
+echo $var3  $tabz $eng3  >> $fe
+echo $var4  $tabz $eng4  >> $fe
+echo $var5  $tabz $eng5  >> $fe
+echo $var6  $tabz $eng6  >> $fe
+echo $var7  $tabz $eng7  >> $fe
+echo $var8  $tabz $eng8  >> $fe
+echo $var9  $tabz $eng9  >> $fe
+echo $var10 $tabz $eng10 >> $fe
+echo $var11 $tabz $eng11 >> $fe
+echo $var12 $tabz $eng12 >> $fe
+echo $var13 $tabz $eng13 >> $fe
+echo $var14 $tabz $eng14 >> $fe
+echo $var15 $tabz $eng15 >> $fe
+echo $var16 $tabz $eng16 >> $fe
+echo $var17 $tabz $eng17 >> $fe
+echo $var18 $tabz $eng18 >> $fe
+echo $var19 $tabz $eng19 >> $fe
+echo $var20 $tabz $eng20 >> $fe
+##### english: advance variables
+##### spanish: avanzadas variables
+echo $var31 $tabz $eng31 >> $fe
+echo $var32 $tabz $eng32 >> $fe
+echo $var33 $tabz $eng33 >> $fe
+echo $var34 $tabz $eng34 >> $fe
+echo $var35 $tabz $eng35 >> $fe
+echo $var36 $tabz $eng36 >> $fe
+echo $var37 $tabz $eng37 >> $fe
+echo $var38 $tabz $eng38 >> $fe
+echo $var39 $tabz $eng39 >> $fe
+echo $var40 $tabz $eng40 >> $fe
+echo $var41 $tabz $eng41 >> $fe
+echo $var42 $tabz $eng42 >> $fe
+echo $var43 $tabz $eng43 >> $fe
+echo $var44 $tabz $eng44 >> $fe
+echo $var45 $tabz $eng45 >> $fe
+echo $var46 $tabz $eng46 >> $fe
+echo $var47 $tabz $eng47 >> $fe
+echo $var48 $tabz $eng48 >> $fe
+echo $var49 $tabz $eng49 >> $fe
+echo $var50 $tabz $eng50 >> $fe
+echo $var51 $tabz $eng51 >> $fe
+echo $var52 $tabz $eng52 >> $fe
+echo $var53 $tabz $eng53 >> $fe
+echo $var54 $tabz $eng54 >> $fe
+echo $var55 $tabz $eng55 >> $fe
+echo $var56 $tabz $eng56 >> $fe
+echo $var57 $tabz $eng57 >> $fe
+echo $var58 $tabz $eng58 >> $fe
+echo $var59 $tabz $eng59 >> $fe
+echo $var60 $tabz $eng60 >> $fe
+echo $var61 $tabz $eng61 >> $fe
+echo $var62 $tabz $eng62 >> $fe
+echo $var63 $tabz $eng63 >> $fe
+echo $var64 $tabz $eng64 >> $fe
+echo $var65 $tabz $eng65 >> $fe
+echo $var66 $tabz $eng66 >> $fe
+####
+####
+#### wizard full-spanish
+####
+####
+echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fs
+echo $var1  $tabz $spa1 >> $fs
+echo $var2  $tabz $spa2 >> $fs
+echo $var3  $tabz $spa3 >> $fs
+echo $var4  $tabz $spa4 >> $fs
+echo $var5  $tabz $spa5 >> $fs
+echo $var6  $tabz $spa6 >> $fs
+echo $var7  $tabz $spa7 >> $fs
+echo $var8  $tabz $spa8 >> $fs
+echo $var9  $tabz $spa9 >> $fs
+echo $var10 $tabz $spa10 >> $fs
+echo $var11 $tabz $spa11 >> $fs
+echo $var12 $tabz $spa12 >> $fs
+echo $var13 $tabz $spa13 >> $fs
+echo $var14 $tabz $spa14 >> $fs
+echo $var15 $tabz $spa15 >> $fs
+echo $var16 $tabz $spa16 >> $fs
+echo $var17 $tabz $spa17 >> $fs
+echo $var18 $tabz $spa18 >> $fs
+echo $var19 $tabz $spa19 >> $fs
+echo $var20 $tabz $spa20 >> $fs
+##### english: advance variables
+##### spanish: avanzadas variables
+echo $var31 $tabz $spa31 >> $fs
+echo $var32 $tabz $spa32 >> $fs
+echo $var33 $tabz $spa33 >> $fs
+echo $var34 $tabz $spa34 >> $fs
+echo $var35 $tabz $spa35 >> $fs
+echo $var36 $tabz $spa36 >> $fs
+echo $var37 $tabz $spa37 >> $fs
+echo $var38 $tabz $spa38 >> $fs
+echo $var39 $tabz $spa39 >> $fs
+echo $var40 $tabz $spa40 >> $fs
+echo $var41 $tabz $spa41 >> $fs
+echo $var42 $tabz $spa42 >> $fs
+echo $var43 $tabz $spa43 >> $fs
+echo $var44 $tabz $spa44 >> $fs
+echo $var45 $tabz $spa45 >> $fs
+echo $var46 $tabz $spa46 >> $fs
+echo $var47 $tabz $spa47 >> $fs
+echo $var48 $tabz $spa48 >> $fs
+echo $var49 $tabz $spa49 >> $fs
+echo $var50 $tabz $spa50 >> $fs
+echo $var51 $tabz $spa51 >> $fs
+echo $var52 $tabz $spa52 >> $fs
+echo $var53 $tabz $spa53 >> $fs
+echo $var54 $tabz $spa54 >> $fs
+echo $var55 $tabz $spa55 >> $fs
+echo $var56 $tabz $spa56 >> $fs
+echo $var57 $tabz $spa57 >> $fs
+echo $var58 $tabz $eng58 >> $fs
+echo $var59 $tabz $eng59 >> $fs
+echo $var60 $tabz $eng60 >> $fs
+echo $var61 $tabz $eng61 >> $fs
+echo $var62 $tabz $eng62 >> $fs
+echo $var63 $tabz $eng63 >> $fs
+echo $var64 $tabz $eng64 >> $fs
+echo $var65 $tabz $eng65 >> $fs
+echo $var66 $tabz $eng66 >> $fs
 ####
 ####
 #####################################   #### english: variables: only void or in other case no
@@ -674,199 +878,7 @@ exit ; fi
 #### exit; fi
 ####
 ####
-##############################   english: autogen defaults configs cfg              ###########################################
-##############################   spanish: auto genera configs cfg por defecto       ###########################################
-####
-####
-#### where save default files
-####
-####
-me="$defaultminicfg_eng"
-ms="$defaultminicfg_spa"
-fe="$defaultfullcfg_eng"
-fs="$defaultfullcfg_spa"
-####
-####
-#### wizard mini-english
-####
-####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $me
-echo $var1  $tabz $eng1  >> $me
-echo $var2  $tabz $eng2  >> $me
-echo $var3  $tabz $eng3  >> $me
-echo $var4  $tabz $eng4  >> $me
-echo $var5  $tabz $eng5  >> $me
-echo $var6  $tabz $eng6  >> $me
-echo $var7  $tabz $eng7  >> $me
-echo $var8  $tabz $eng8  >> $me
-echo $var9  $tabz $eng9  >> $me
-echo $var10 $tabz $eng10 >> $me
-echo $var11 $tabz $eng11 >> $me
-echo $var12 $tabz $eng12 >> $me
-echo $var13 $tabz $eng13 >> $me
-echo $var14 $tabz $eng14 >> $me
-echo $var15 $tabz $eng15 >> $me
-echo $var16 $tabz $eng16 >> $me
-echo $var17 $tabz $eng17 >> $me
-echo $var18 $tabz $eng18 >> $me
-echo $var19 $tabz $eng19 >> $me
-echo $var20 $tabz $eng20 >> $me
-####
-####
-#### wizard mini-spanish
-####
-####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $ms
-echo $var1  $tabz $spa1  >> $ms
-echo $var2  $tabz $spa2  >> $ms
-echo $var3  $tabz $spa3  >> $ms
-echo $var4  $tabz $spa4  >> $ms
-echo $var5  $tabz $spa5  >> $ms
-echo $var6  $tabz $spa6  >> $ms
-echo $var7  $tabz $spa7  >> $ms
-echo $var8  $tabz $spa8  >> $ms
-echo $var9  $tabz $spa9  >> $ms
-echo $var10 $tabz $spa10 >> $ms
-echo $var11 $tabz $spa11 >> $ms
-echo $var12 $tabz $spa12 >> $ms
-echo $var13 $tabz $spa13 >> $ms
-echo $var14 $tabz $spa14 >> $ms
-echo $var15 $tabz $spa15 >> $ms
-echo $var16 $tabz $spa16 >> $ms
-echo $var17 $tabz $spa17 >> $ms
-echo $var18 $tabz $spa18 >> $ms
-echo $var19 $tabz $spa19 >> $ms
-echo $var20 $tabz $spa20 >> $ms
-####
-####
-#### wizard full-english
-####
-####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fe
-echo $var1  $tabz $eng1  >> $fe
-echo $var2  $tabz $eng2  >> $fe
-echo $var3  $tabz $eng3  >> $fe
-echo $var4  $tabz $eng4  >> $fe
-echo $var5  $tabz $eng5  >> $fe
-echo $var6  $tabz $eng6  >> $fe
-echo $var7  $tabz $eng7  >> $fe
-echo $var8  $tabz $eng8  >> $fe
-echo $var9  $tabz $eng9  >> $fe
-echo $var10 $tabz $eng10 >> $fe
-echo $var11 $tabz $eng11 >> $fe
-echo $var12 $tabz $eng12 >> $fe
-echo $var13 $tabz $eng13 >> $fe
-echo $var14 $tabz $eng14 >> $fe
-echo $var15 $tabz $eng15 >> $fe
-echo $var16 $tabz $eng16 >> $fe
-echo $var17 $tabz $eng17 >> $fe
-echo $var18 $tabz $eng18 >> $fe
-echo $var19 $tabz $eng19 >> $fe
-echo $var20 $tabz $eng20 >> $fe
-##### english: advance variables
-##### spanish: avanzadas variables
-echo $var31 $tabz $eng31 >> $fe
-echo $var32 $tabz $eng32 >> $fe
-echo $var33 $tabz $eng33 >> $fe
-echo $var34 $tabz $eng34 >> $fe
-echo $var35 $tabz $eng35 >> $fe
-echo $var36 $tabz $eng36 >> $fe
-echo $var37 $tabz $eng37 >> $fe
-echo $var38 $tabz $eng38 >> $fe
-echo $var39 $tabz $eng39 >> $fe
-echo $var40 $tabz $eng40 >> $fe
-echo $var41 $tabz $eng41 >> $fe
-echo $var42 $tabz $eng42 >> $fe
-echo $var43 $tabz $eng43 >> $fe
-echo $var44 $tabz $eng44 >> $fe
-echo $var45 $tabz $eng45 >> $fe
-echo $var46 $tabz $eng46 >> $fe
-echo $var47 $tabz $eng47 >> $fe
-echo $var48 $tabz $eng48 >> $fe
-echo $var49 $tabz $eng49 >> $fe
-echo $var50 $tabz $eng50 >> $fe
-echo $var51 $tabz $eng51 >> $fe
-echo $var52 $tabz $eng52 >> $fe
-echo $var53 $tabz $eng53 >> $fe
-echo $var54 $tabz $eng54 >> $fe
-echo $var55 $tabz $eng55 >> $fe
-echo $var56 $tabz $eng56 >> $fe
-echo $var57 $tabz $eng57 >> $fe
-echo $var58 $tabz $eng58 >> $fe
-echo $var59 $tabz $eng59 >> $fe
-echo $var60 $tabz $eng60 >> $fe
-echo $var61 $tabz $eng61 >> $fe
-echo $var62 $tabz $eng62 >> $fe
-echo $var63 $tabz $eng63 >> $fe
-echo $var64 $tabz $eng64 >> $fe
-echo $var65 $tabz $eng65 >> $fe
-echo $var66 $tabz $eng66 >> $fe
-####
-####
-#### wizard full-spanish
-####
-####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fs
-echo $var1  $tabz $spa1 >> $fs
-echo $var2  $tabz $spa2 >> $fs
-echo $var3  $tabz $spa3 >> $fs
-echo $var4  $tabz $spa4 >> $fs
-echo $var5  $tabz $spa5 >> $fs
-echo $var6  $tabz $spa6 >> $fs
-echo $var7  $tabz $spa7 >> $fs
-echo $var8  $tabz $spa8 >> $fs
-echo $var9  $tabz $spa9 >> $fs
-echo $var10 $tabz $spa10 >> $fs
-echo $var11 $tabz $spa11 >> $fs
-echo $var12 $tabz $spa12 >> $fs
-echo $var13 $tabz $spa13 >> $fs
-echo $var14 $tabz $spa14 >> $fs
-echo $var15 $tabz $spa15 >> $fs
-echo $var16 $tabz $spa16 >> $fs
-echo $var17 $tabz $spa17 >> $fs
-echo $var18 $tabz $spa18 >> $fs
-echo $var19 $tabz $spa19 >> $fs
-echo $var20 $tabz $spa20 >> $fs
-##### english: advance variables
-##### spanish: avanzadas variables
-echo $var31 $tabz $spa31 >> $fs
-echo $var32 $tabz $spa32 >> $fs
-echo $var33 $tabz $spa33 >> $fs
-echo $var34 $tabz $spa34 >> $fs
-echo $var35 $tabz $spa35 >> $fs
-echo $var36 $tabz $spa36 >> $fs
-echo $var37 $tabz $spa37 >> $fs
-echo $var38 $tabz $spa38 >> $fs
-echo $var39 $tabz $spa39 >> $fs
-echo $var40 $tabz $spa40 >> $fs
-echo $var41 $tabz $spa41 >> $fs
-echo $var42 $tabz $spa42 >> $fs
-echo $var43 $tabz $spa43 >> $fs
-echo $var44 $tabz $spa44 >> $fs
-echo $var45 $tabz $spa45 >> $fs
-echo $var46 $tabz $spa46 >> $fs
-echo $var47 $tabz $spa47 >> $fs
-echo $var48 $tabz $spa48 >> $fs
-echo $var49 $tabz $spa49 >> $fs
-echo $var50 $tabz $spa50 >> $fs
-echo $var51 $tabz $spa51 >> $fs
-echo $var52 $tabz $spa52 >> $fs
-echo $var53 $tabz $spa53 >> $fs
-echo $var54 $tabz $spa54 >> $fs
-echo $var55 $tabz $spa55 >> $fs
-echo $var56 $tabz $spa56 >> $fs
-echo $var57 $tabz $spa57 >> $fs
-echo $var58 $tabz $eng58 >> $fs
-echo $var59 $tabz $eng59 >> $fs
-echo $var60 $tabz $eng60 >> $fs
-echo $var61 $tabz $eng61 >> $fs
-echo $var62 $tabz $eng62 >> $fs
-echo $var63 $tabz $eng63 >> $fs
-echo $var64 $tabz $eng64 >> $fs
-echo $var65 $tabz $eng65 >> $fs
-echo $var66 $tabz $eng66 >> $fs
-####
-####
+
 ##############################       english: if second_option is a valid config.cfg               #############################
 ##############################       spanish: si segunda opcion es un valido config.cfg            #############################
 ####
