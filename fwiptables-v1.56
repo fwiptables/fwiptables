@@ -1023,8 +1023,7 @@ exit ; fi
 ##############################       spanish: larga-opcion 
 ####
 ####
-if [ "$first_option" = "long-help" ]; then 
-$genfiles
+if [ "$first_option" = "long-help" ]; then $genfiles
 echo $head_option
 echo $subhead_option
 echo "$cinco         [Long-help]"
@@ -1113,7 +1112,7 @@ if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 ##############################       spanish: list-config: lista alguna config
 ####
 ####
-if [ "$first_option" = "list-config" ]; then echo $nada
+if [ "$first_option" = "list-config" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco $tab [English:] [list configs files in cfg format]"
@@ -1128,7 +1127,7 @@ exit; fi
 ##############################       spanish: some-example: algun ejemplo
 ####
 ####
-if [ "$first_option" = "some-example" ]; then echo $nada
+if [ "$first_option" = "some-example" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco         [list examples]"
@@ -1148,7 +1147,7 @@ exit; fi
 ##############################       spanish: option: alguna opcion
 ####
 ####
-if [ "$first_option" = "option" ]; then echo $nada
+if [ "$first_option" = "option" ]; then $nada
 echo $head_option
 echo $subhead_option
 echo "$cinco         [List option]"
@@ -1860,61 +1859,62 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then echo "Graphics: Wait several seconds.." ;
+if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $genfiles ;
+echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
 case $second_option in
 #### "install") zenity --forms $zenity_dimension --text="TO INSTALL without gui: run ./$fiptables-version install" ;;
 "new-mini-config")
 cp "$defaultminicfg_eng" "/tmp/fiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then echo $nada ;
+if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
-if [ -s "$directory_config/$third_option" ]; then echo $nada ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 "new-full-config")
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then echo $nada ;
+if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
-if [ -s "$directory_config/$third_option" ]; then echo $nada ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "/tmp/fiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then echo $nada ;
+if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
-if [ -s "$directory_config/$third_option" ]; then echo $nada ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "/tmp/fiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then echo $nada ;
+if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
-if [ -s "$directory_config/$third_option" ]; then echo $nada ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 "modify-config")
-if [ -f "$directory_config/$third_option" ] ; then echo $nada
+if [ -f "$directory_config/$third_option" ] ; then $nada
 else zenity --forms $zenity_dimension --text="file do not exist: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "/tmp/fiptables-$third_option"
 zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" > "$directory_config/$third_option"
-if [ -s "$directory_config/$third_option" ]; then echo $nada ; 
+if [ -s "$directory_config/$third_option" ]; then $nada ; 
 zenity --forms $zenity_dimension --text="OK. file: $third_option"
 else cp "/tmp/fiptables-$third_option" "$directory_config/$third_option"
 zenity --forms $zenity_dimension --text="Canceled. file: $third_option"; fi
@@ -1936,7 +1936,8 @@ exit; fi
 ############################## spanish: -gui: con segunda opcion ##############################
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo "Graphics: Wait several seconds.." ;
+if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $genfiles
+echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
 case $second_option in
 #### "install") zenity --forms $zenity_dimension --text="TO INSTALL without gui: run ./$fiptables-version install" ;;
@@ -1945,7 +1946,7 @@ archivo=wizard-mini
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$archivo" \
 --editable --title="MODIFY FILE" > "$directory_config/$second_option"
-if [  -s "$directory_config/$archivo" ]; then echo $nada ; 
+if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fiptables -gui custom $second_option ; $fiptables -gui list ;
 else rm "$directory_config/$second_option" ;
 zenity --info $zenity_dimension --text "Ok. $archivo canceled"; fi
@@ -1955,7 +1956,7 @@ archivo=wizard-full
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$archivo" \
 --editable --title="MODIFY FILE" > "$directory_config/$second_option"
-if [  -s "$directory_config/$archivo" ]; then echo $nada ; 
+if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fiptables -gui custom $second_option ; $fiptables -gui list ;
 else rm "$directory_config/$second_option" ;
 zenity --info $zenity_dimension --text "OK. $archivo canceled"; fi
@@ -1988,7 +1989,8 @@ exit; fi
 ############################## spanish: gui-menu: gui menu general: gui con menu  ##############################
 ####
 ####
-if [ "$first_option" = "gui-menu" ] ; then echo "Graphics: Wait several seconds.." ;
+if [ "$first_option" = "gui-menu" ] ; then $genfiles 
+echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
 selection=$(zenity $zenity_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool config" \
@@ -2412,7 +2414,8 @@ exit; fi
 ############################## spanish: gui-shell: entorno de comandos grafico ##############################
 ####
 ####
-if [ "$first_option" = "gui-shell" ] ; then echo "Graphics: Wait several seconds.."  ;
+if [ "$first_option" = "gui-shell" ] ; then $genfiles
+echo "Graphics: Wait several seconds.."  ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
 ####
 ####
@@ -3651,7 +3654,7 @@ echo $subhead_option
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then echo $nada ; 
+if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
 rm "$directory_config/$second_option"
 dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
 else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
@@ -3676,7 +3679,7 @@ echo $subhead_option
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then echo $nada ; 
+if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
 rm "$directory_config/$second_option"
 dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
 else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
@@ -3700,7 +3703,7 @@ echo $subhead_option
 archivo="$second_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then echo $nada ; 
+if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
 rm "$directory_config/$second_option"
 dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
 else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
@@ -3724,7 +3727,7 @@ echo $subhead_option
 archivo="$second_option"
 cp "$defaultminicfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then echo $nada ; 
+if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
 rm "$directory_config/$second_option"
 dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
 else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
@@ -3746,7 +3749,7 @@ echo $head_option
 echo $subhead_option
 cp "$directory_config/$second_option" "/tmp/fiptables-$second_option"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$second_option" 0 0 2> "$directory_config/$second_option"
-if [ -s "$directory_config/$second_option" ]; then echo $nada ; 
+if [ -s "$directory_config/$second_option" ]; then $nada ; 
 clear ; dialog --msgbox "[OK file modify config file: $second_option]" 0 0 ;
 else cp "/tmp/fiptables-$second_option" "$directory_config/$second_option" ;
 clear ; dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 ; fi
@@ -3973,7 +3976,7 @@ cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then echo $nada ; 
+if [  -s "$directory_config/$archivo" ]; then $nada ; 
 dialog --msgbox "wizard full ready" 0 0 ; clear ; $fiptables custom "$archivo" ; $fiptables list ;
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 echo $footer_option
@@ -3990,7 +3993,7 @@ cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then echo $nada ; 
+if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $dialog --msgbox "Wizard full ready" 0 0 ; clear ; $fiptables custom "$archivo" ; $fiptables list ;
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 echo $footer_option
@@ -4793,7 +4796,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help" ]; then $genfiles
-$genfiles
 echo $head_option
 echo $subhead_option
 echo
@@ -5031,7 +5033,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then $genfiles
-$genfiles
 echo $head_option
 echo $subhead_option
 echo
