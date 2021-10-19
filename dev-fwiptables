@@ -906,7 +906,7 @@ exit ; fi
 ##############################       spanish: si segunda opcion es un valido config.cfg            #############################
 ####
 ####
-if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no" ; fi
+#### if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no" ; fi
 ####
 ####
 ##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
@@ -922,10 +922,10 @@ if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 ####   #### english: the first option : [config.cfg]  ----  verbose
 ####   #### spanish: El primera opción: [config.cfg]  ----  con informacion
 ####
-if [ -f "$directory_config"/"$first_option" ]; then echo $subhead_option ;
-launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ;
-launch_permisive="no" ; launch_offline="no" ; launch_custom="" ;
-else $nada; fi
+#### if [ -f "$directory_config"/"$first_option" ]; then echo $subhead_option ;
+#### launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ;
+#### launch_permisive="no" ; launch_offline="no" ; launch_custom="" ;
+#### else $nada; fi
 ####
 ####
 ####
@@ -2071,7 +2071,7 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-launch-rules" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "eraserules" "offline" "allpermisive" "custom" "[cfg]" \
+--list "Gui Principal Menu" "eraserules" "offline" "allpermisive" "custom_cfg" \
 --column="Option list $fiptables" --text="Select one option" --title="[Launch Rules] [$fiptables]")
 case "$selection" in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
@@ -2079,9 +2079,7 @@ case "$selection" in
 "eraserules") $fiptables -gui eraserules ; $fiptables gui list ;;
 "offline") $fiptables -gui offline ; $fiptables gui list ;;
 "allpermisive") $fiptables -gui allpermisive ; $fiptables gui list ;;
-"custom")archivo="$(zenity --entry $zenity_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
-$fiptables -gui custom $archivo ; $fiptables gui list ;;
-"[cfg]")archivo="$(zenity --entry $zenity_dimension --title "[Launch Custom]"  --text="$(ls -1 $directory_config)")" ; 
+"custom_cfg")archivo="$(zenity --entry $zenity_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fiptables -gui custom $archivo ; $fiptables gui list ;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
@@ -2607,8 +2605,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   61  "eraserules" \
   62  "offline" \
   63  "allpermisive" \
-  64  "custom [cfg]   -> silent mode" \
-  65  "[config.cfg]   -> verbose mode" \
+  64  "custom cfg" \
   070 "$cinco [Tool configurations cfg] $cinco" \
   71  "new-full-config" \
   72  "nueva-completa-config" \
@@ -2716,9 +2713,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  64) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fiptables custom $archivo ;;
- 65) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fiptables $archivo | less ;;
  71) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fiptables new-full-config $archivo ;;
@@ -5319,18 +5313,19 @@ if [ $launch_iptables != "si" ] ; then $fiptables ; exit ; else $nada ; fi
 ####
 if [ $first_option = "custom" ]  &&  [ -f $directory_config/$second_option ]
 then source $directory_config/$second_option &> /dev/null ;
-else source $defaultcfg &> /dev/null ;  fi
+else echo "$cinco File do not exits"; exit ; fi
+#### else source $defaultcfg &> /dev/null ;  fi
 ####
 ####
-if [ -f $directory_config/$first_option ]
-then source $directory_config/$first_option &> /dev/null ; fi
+#### if [ -f $directory_config/$first_option ]
+#### then source $directory_config/$first_option &> /dev/null ; fi
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
 ##############################      spanish: estado selectivo de entrada/salida        #####################
 ####
 ####
-if [ "$allow_input_state" = "$NULL" ]  ; then  input_state="-m state --state $input_state"  ; else input_state="$NULL"  ; fi
+if [ "$allow_input_state" = "$NULL" ]  ; then input_state="-m state --state $input_state"   ; else input_state="$NULL"  ; fi
 if [ "$allow_output_state" = "$NULL" ] ; then output_state="-m state --state $output_state" ; else output_state="$NULL" ; fi
 
 ####
@@ -6484,9 +6479,9 @@ fi
 ####
 ####  # show text head lines in all firewall #
 echo $head_option
-#### echo "$cincuenta"
-#### echo "$cinco lauching iptables rules $cinco"
-#### echo "$cincuenta"
+echo "$cincuenta"
+echo "$cinco lauching iptables rules $cinco"
+echo "$cincuenta"
 if [ "$first_option" = "offline" ]; then $nada
 echo "$cincuenta"
 echo "$cinco [OK FIREWALL OFFLINE]"
@@ -6501,53 +6496,53 @@ echo "$cincuenta"
 echo "$cinco [OK FIREWALL CUSTOM] [$second_option]"
 exit ; else $nada ; fi
 ####  # show text to firewall [config.cfg] (show text) #
-echo "$cinco  [Configured with the configuration:] [$first_option] $cinco" ;
-echo "$cinco  [With the netfilter iptables firewall]  $cinco"  ;
-echo "  xtables    is  $allow_legacy configured firewall "
-echo "  nftables  is  $allow_nft configured firewall "
-echo "  * Where at least one iptables is usually necesary"
-echo "$cinco  [With the protocols IP]  $cinco" ;
-echo "  ipv4 is $allow_ipv4 allowed "
-echo "  ipv6 is $allow_ipv6 allowed "
-echo "  * Where ipv4 is usually necesary"
-echo "$cinco  [With the client ports IP]  $cinco" ;
-echo "  client tcp: $client_tcp"  ;
-echo "  client udp: $client_udp"  ;
-echo "  * Where ports domain,ntp,bootpc are usually udp necesary"
-echo "$cinco  [With the server ports IP]  $cinco" ;
-echo "  server tcp: $server_tcp" ;
-echo "  server udp: $server_udp" ;
-echo "$cinco  [With the log server ports IP]  $cinco" ;
-echo "  server tcp: $logserver_tcp" ;
-echo "  server udp: $logserver_udp" ;
-echo "$cinco  [With the networks configured]  $cinco" ;
-echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
-echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
-echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
-echo "$cinco  [With Others configurations]  $cinco"
-if [ "$allow_input_bandwidth" = "no" ]; then echo "  Dont limit input bandwidth complete" ;
-else echo "  Limit input: above $bandwidth_input kb/sec complete"; fi
-if [ "$allow_output_bandwidth" = "no" ]; then echo "  Dont limit output bandwidth per ip" ;
-else echo "  Limit output: above $bandwidth_output kb/sec per ip"; fi
-if [ "$allow_input_maxconnect" = "no" ]; then echo "  Dont limit input numbers of connections" ;
-else echo "  Limit max connections: above $maxconnect_input "; fi
-if [ "$allow_output_maxconnect" = "no" ]; then echo "  Dont limit output numbers of connections" ;
-else echo "  Limit max connections: above $maxconnect_output "; fi
-if [ "$allow_input_all" = "no" ]; then echo "  Dont allow only output"; else echo "  Allowed only output" ; fi
-if [ "$allow_input_state" = "no" ]; then echo "  Dont allow specific input state"; else echo "  Allowed input state are $input_state"; fi
-if [ "$allow_output_ping" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
-if [ "$allow_input_ping" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
-if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading" ; fi
-if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
-if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
-if [ "$allow_blacklist" = "no" ]; then echo "  Dont allow blacklist excepcional"; else  echo "  Allowed blacklist servers are $blacklist" ; fi
-if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allowed output uid output excepcional: $output_uid , and input established " ; fi
-if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allowed output gid output excepcional: $output_uid , and input established "; fi
-if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocol excepcional"; else echo "  Allowed other protocol excepcional: $others_protocols" ; fi
-echo "$cinco  List iptables rules with:   $fiptables listnum  $cinco"
-echo "$cincuenta"
-echo "$cinco OK FIREWALL CUSTOM [$first_option]"
-echo $footer_option
+####  echo "$cinco  [Configured with the configuration:] [$first_option] $cinco" ;
+####  echo "$cinco  [With the netfilter iptables firewall]  $cinco"  ;
+####  echo "  xtables    is  $allow_legacy configured firewall "
+####  echo "  nftables  is  $allow_nft configured firewall "
+####  echo "  * Where at least one iptables is usually necesary"
+####  echo "$cinco  [With the protocols IP]  $cinco" ;
+####  echo "  ipv4 is $allow_ipv4 allowed "
+####  echo "  ipv6 is $allow_ipv6 allowed "
+####  echo "  * Where ipv4 is usually necesary"
+####  echo "$cinco  [With the client ports IP]  $cinco" ;
+####  echo "  client tcp: $client_tcp"  ;
+####  echo "  client udp: $client_udp"  ;
+####  echo "  * Where ports domain,ntp,bootpc are usually udp necesary"
+####  echo "$cinco  [With the server ports IP]  $cinco" ;
+####  echo "  server tcp: $server_tcp" ;
+####  echo "  server udp: $server_udp" ;
+####  echo "$cinco  [With the log server ports IP]  $cinco" ;
+####  echo "  server tcp: $logserver_tcp" ;
+####  echo "  server udp: $logserver_udp" ;
+####  echo "$cinco  [With the networks configured]  $cinco" ;
+####  echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
+####  echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
+####  echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
+####  echo "$cinco  [With Others configurations]  $cinco"
+####  if [ "$allow_input_bandwidth" = "no" ]; then echo "  Dont limit input bandwidth complete" ;
+####  else echo "  Limit input: above $bandwidth_input kb/sec complete"; fi
+####  if [ "$allow_output_bandwidth" = "no" ]; then echo "  Dont limit output bandwidth per ip" ;
+####  else echo "  Limit output: above $bandwidth_output kb/sec per ip"; fi
+####  if [ "$allow_input_maxconnect" = "no" ]; then echo "  Dont limit input numbers of connections" ;
+####  else echo "  Limit max connections: above $maxconnect_input "; fi
+####  if [ "$allow_output_maxconnect" = "no" ]; then echo "  Dont limit output numbers of connections" ;
+####  else echo "  Limit max connections: above $maxconnect_output "; fi
+####  if [ "$allow_input_all" = "no" ]; then echo "  Dont allow only output"; else echo "  Allowed only output" ; fi
+####  if [ "$allow_input_state" = "no" ]; then echo "  Dont allow specific input state"; else echo "  Allowed input state are $input_state"; fi
+####  if [ "$allow_output_ping" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
+####  if [ "$allow_input_ping" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
+####  if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading" ; fi
+####  if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
+####  if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
+####  if [ "$allow_blacklist" = "no" ]; then echo "  Dont allow blacklist excepcional"; else  echo "  Allowed blacklist servers are $blacklist" ; fi
+####  if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allowed output uid output excepcional: $output_uid , and input established " ; fi
+####  if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allowed output gid output excepcional: $output_uid , and input established "; fi
+####  if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocol excepcional"; else echo "  Allowed other protocol excepcional: $others_protocols" ; fi
+####  echo "$cinco  List iptables rules with:   $fiptables listnum  $cinco"
+####  echo "$cincuenta"
+####  echo "$cinco OK FIREWALL CUSTOM [$first_option]"
+####  echo "$footer_option"
 ####
 ####
 ####
