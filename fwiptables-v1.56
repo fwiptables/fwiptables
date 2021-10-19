@@ -348,120 +348,120 @@ spa20=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... 
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var21=$(echo "$cinco BEGIN OPTIONAL #" )
-eng21=$(echo "$cinco .......... BEGIN Optional options .......... .......... #")
-spa21=$(echo "$cinco INICIO .......... Opciones opcionales .......... .......... #")
-var22=$(echo "$cinco choose void or no #" )
-eng22=$(echo "$cinco Allow Other Options,  modify with void, or no")
-spa22=$(echo "$cinco Permitir Otras Opciones, modificar con vacio o no")
-var23=$(echo "allow_input_all=no ")
-eng23=$(echo "$cinco void when the rules are to allow input to all or no")
-spa23=$(echo "$cinco vacio, reglas para permitir toda entrada o no")
-var24=$(echo "allow_output_all=no ")
-eng24=$(echo "$cinco void when the rules are to allow output to all or no")
-spa24=$(echo "$cinco vacio, reglas para permitir toda salida o no")
-var25=$(echo "allow_input_state=no ")
-eng25=$(echo "$cinco Selective Input state with void or no")
-spa25=$(echo "$cinco Estado de entrada selectivo con vacio o no")
-var26=$(echo "allow_output_state=no ")
-eng26=$(echo "$cinco Selective Output state with void or no")
-spa26=$(echo "$cinco Estado de salida selectivo con vacio o no")
-var27=$(echo "allow_input_bandwidth=no ")
-eng27=$(echo "$cinco void to limit bandwidth input in kbits/sec for all sources or no")
-spa27=$(echo "$cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
-var28=$(echo "allow_output_bandwidth=no" )
-eng28=$(echo "$cinco void to limit bandwidth output in kbits/sec for each destination or no")
-spa28=$(echo "$cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
-var29=$(echo "allow_input_maxconnect=no" )
-eng29=$(echo "$cinco void to limit max number for input simultaneous connections or no" )
-spa29=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de entrada o no" )
-var30=$(echo "allow_output_maxconnect=no" )
-eng30=$(echo "$cinco void to limit max number for output simultaneous connections or no" )
-spa30=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de salida o no" )
-var31=$(echo "allow_input_ping=no" )
-eng31=$(echo "$cinco void to allow recive pings or no" )
-spa31=$(echo "$cinco vacio para permitir recivir ping o no")
-var32=$(echo "allow_output_ping=no" )
-eng32=$(echo "$cinco void to allow send pings or no" )
-spa32=$(echo "$cinco vacio para permitir enviar ping o no" )
-var33=$(echo "allow_vpn=no" )
-eng33=$(echo "$cinco void to allow some exceptional host or no")
-spa33=$(echo "$cinco vacio para permitir hosts excepcionales o no")
-var34=$(echo "allow_blacklist=no")
-eng34=$(echo "$cinco void to drop some excepcional host or no")
-spa34=$(echo "$cinco vacio para denegar hosts excepcionales o no")
-var35=$(echo "allow_output_uid=no" )
-eng35=$(echo "$cinco void to allow excepcional user or no" )
-spa35=$(echo "$cinco vacio permite salida de paquetes de un usuario excepcional o no" )
-var36=$(echo "allow_output_gid=no" )
-eng36=$(echo "$cinco void to allow excepcional group or no" )
-spa36=$(echo "$cinco vacio permite salida de paquetes de un grupo excepcional o no" )
-var37=$(echo "allow_others_protocols=no" )
-eng37=$(echo "$cinco void to allow other protocol ip excepcional or no" )
-spa37=$(echo "$cinco vacio para permitir otro protocolo ip excepcional o no" )
+var31=$(echo "$cinco BEGIN OPTIONAL #" )
+eng31=$(echo "$cinco .......... BEGIN Optional options .......... .......... #")
+spa31=$(echo "$cinco INICIO .......... Opciones opcionales .......... .......... #")
+var32=$(echo "$cinco choose void or no #" )
+eng32=$(echo "$cinco Allow Other Options,  modify with void, or no")
+spa32=$(echo "$cinco Permitir Otras Opciones, modificar con vacio o no")
+var33=$(echo "allow_input_all=no ")
+eng33=$(echo "$cinco void when the rules are to allow input to all or no")
+spa33=$(echo "$cinco vacio, reglas para permitir toda entrada o no")
+var34=$(echo "allow_output_all=no ")
+eng34=$(echo "$cinco void when the rules are to allow output to all or no")
+spa34=$(echo "$cinco vacio, reglas para permitir toda salida o no")
+var35=$(echo "allow_input_state=no ")
+eng35=$(echo "$cinco Selective Input state with void or no")
+spa35=$(echo "$cinco Estado de entrada selectivo con vacio o no")
+var36=$(echo "allow_output_state=no ")
+eng36=$(echo "$cinco Selective Output state with void or no")
+spa36=$(echo "$cinco Estado de salida selectivo con vacio o no")
+var37=$(echo "allow_input_bandwidth=no ")
+eng37=$(echo "$cinco void to limit bandwidth input in kbits/sec for all sources or no")
+spa37=$(echo "$cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
+var38=$(echo "allow_output_bandwidth=no" )
+eng38=$(echo "$cinco void to limit bandwidth output in kbits/sec for each destination or no")
+spa38=$(echo "$cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
+var39=$(echo "allow_input_maxconnect=no" )
+eng39=$(echo "$cinco void to limit max number for input simultaneous connections or no" )
+spa39=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de entrada o no" )
+var40=$(echo "allow_output_maxconnect=no" )
+eng40=$(echo "$cinco void to limit max number for output simultaneous connections or no" )
+spa40=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de salida o no" )
+var41=$(echo "allow_input_ping=no" )
+eng41=$(echo "$cinco void to allow recive pings or no" )
+spa41=$(echo "$cinco vacio para permitir recivir ping o no")
+var42=$(echo "allow_output_ping=no" )
+eng42=$(echo "$cinco void to allow send pings or no" )
+spa42=$(echo "$cinco vacio para permitir enviar ping o no" )
+var43=$(echo "allow_vpn=no" )
+eng43=$(echo "$cinco void to allow some exceptional host or no")
+spa43=$(echo "$cinco vacio para permitir hosts excepcionales o no")
+var44=$(echo "allow_blacklist=no")
+eng44=$(echo "$cinco void to drop some excepcional host or no")
+spa44=$(echo "$cinco vacio para denegar hosts excepcionales o no")
+var45=$(echo "allow_output_uid=no" )
+eng45=$(echo "$cinco void to allow excepcional user or no" )
+spa45=$(echo "$cinco vacio permite salida de paquetes de un usuario excepcional o no" )
+var46=$(echo "allow_output_gid=no" )
+eng46=$(echo "$cinco void to allow excepcional group or no" )
+spa46=$(echo "$cinco vacio permite salida de paquetes de un grupo excepcional o no" )
+var47=$(echo "allow_others_protocols=no" )
+eng47=$(echo "$cinco void to allow other protocol ip excepcional or no" )
+spa47=$(echo "$cinco vacio para permitir otro protocolo ip excepcional o no" )
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var38=$(echo "$cinco Begin Variables #" )
-eng38=$(echo "$cinco Fill Variables#" )
-spa38=$(echo "$cinco Rellena Variables #" )
-var39=$(echo "$cinco Options" )
-eng39=$(echo "$cinco Other Options, add with , and join ranges with :" )
-spa39=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-var40=$(echo "input_state=new,related,established")
-eng40=$(echo "$cinco void for all or new,related,established,untracked,invalid")
-spa40=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var41=$(echo "output_state=new,related,established")
-eng41=$(echo "$cinco void for all or new,related,established,untracked,invalid")
-spa41=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var42=$(echo "bandwidth_input=12512" )
-eng42=$(echo "$cinco max input bandwidth in kbits/sec for all" )
-spa42=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
-var43=$(echo "bandwidth_output=512" )
-eng43=$(echo "$cinco max output bandwidth in kbits/sec for each ip" )
-spa43=$(echo "$cinco maximo salida de ancho de banda en kbits/sec para cada ip" )
-var44=$(echo "maxconnect_input=72" )
-eng44=$(echo "$cinco max number for input simultaneous connections" )
-spa44=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
-var45=$(echo "maxconnect_output=72" )
-eng45=$(echo "$cinco max number for output simultaneous connections" )
-spa45=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
-var46=$(echo "vpn=wesnoth.org,sf.net" )
-eng46=$(echo "$cinco allow this excepcitonal host" )
-spa46=$(echo "$cinco permitir estos host excepcionales" )
-var47=$(echo "blacklist=facebook.com,www.facebook.com" )
-eng47=$(echo "$cinco drop this excepcional host" )
-spa47=$(echo "$cinco deniega estos host excepcionales" )
-var48=$(echo "output_uid=root" )
-eng48=$(echo "$cinco allow out packages excepcional from this user excepcional" )
-spa48=$(echo "$cinco permite salida de paquetes de este usuario excepcional" )
-var49=$(echo "output_gid=root" )
-eng49=$(echo "$cinco allow out packages excepcional from this group excepcional" )
-spa49=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
-var50=$(echo "others_protocols=icmp,igmp" )
-eng50=$(echo "$cinco allow others protocols from /etc/protocolos" )
-spa50=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
-var51=$(echo "$cinco NET TO CLIENT AND SERVER #" )
-eng51=$(echo "$cinco Net to connect like client or server" )
-spa51=$(echo "$cinco Red para conectar como cliente o server" )
-var52=$(echo "net_ipv4_client=0/0" )
-eng52=$(echo "$cinco the net to client ipv4, all is 0/0" )
-spa52=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
-var53=$(echo "net_ipv4_server=0/0" )
-eng53=$(echo "$cinco the net to server ipv4, all is 0/0" )
-spa53=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
-var54=$(echo "net_ipv6_client=::/0" )
-eng54=$(echo "$cinco the net to client ipv6, all is ::/0" )
-spa54=$(echo "$cinco la red cual cliente ipv6, todos es ::/0" )
-var55=$(echo "net_ipv6_server=::/0" )
-eng55=$(echo "$cinco the net to server ipv6, all is ::/0" )
-spa55=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
-var56=$(echo "$cinco #" )
-eng56=$(echo "$cinco .......... END Optional options .......... .......... #")
-spa56=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
+var48=$(echo "$cinco Begin Variables #" )
+eng48=$(echo "$cinco Fill Variables#" )
+spa48=$(echo "$cinco Rellena Variables #" )
+var49=$(echo "$cinco Options" )
+eng49=$(echo "$cinco Other Options, add with , and join ranges with :" )
+spa49=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
+var50=$(echo "input_state=new,related,established")
+eng50=$(echo "$cinco void for all or new,related,established,untracked,invalid")
+spa50=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
+var51=$(echo "output_state=new,related,established")
+eng51=$(echo "$cinco void for all or new,related,established,untracked,invalid")
+spa51=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
+var52=$(echo "bandwidth_input=12512" )
+eng52=$(echo "$cinco max input bandwidth in kbits/sec for all" )
+spa52=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
+var53=$(echo "bandwidth_output=512" )
+eng53=$(echo "$cinco max output bandwidth in kbits/sec for each ip" )
+spa53=$(echo "$cinco maximo salida de ancho de banda en kbits/sec para cada ip" )
+var54=$(echo "maxconnect_input=72" )
+eng54=$(echo "$cinco max number for input simultaneous connections" )
+spa54=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
+var55=$(echo "maxconnect_output=72" )
+eng55=$(echo "$cinco max number for output simultaneous connections" )
+spa55=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
+var56=$(echo "vpn=wesnoth.org,sf.net" )
+eng56=$(echo "$cinco allow this excepcitonal host" )
+spa56=$(echo "$cinco permitir estos host excepcionales" )
+var57=$(echo "blacklist=facebook.com,www.facebook.com" )
+eng57=$(echo "$cinco drop this excepcional host" )
+spa57=$(echo "$cinco deniega estos host excepcionales" )
+var58=$(echo "output_uid=root" )
+eng58=$(echo "$cinco allow out packages excepcional from this user excepcional" )
+spa58=$(echo "$cinco permite salida de paquetes de este usuario excepcional" )
+var59=$(echo "output_gid=root" )
+eng59=$(echo "$cinco allow out packages excepcional from this group excepcional" )
+spa59=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
+var60=$(echo "others_protocols=icmp,igmp" )
+eng60=$(echo "$cinco allow others protocols from /etc/protocolos" )
+spa60=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
+var61=$(echo "$cinco NET TO CLIENT AND SERVER #" )
+eng61=$(echo "$cinco Net to connect like client or server" )
+spa61=$(echo "$cinco Red para conectar como cliente o server" )
+var62=$(echo "net_ipv4_client=0/0" )
+eng62=$(echo "$cinco the net to client ipv4, all is 0/0" )
+spa62=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
+var63=$(echo "net_ipv4_server=0/0" )
+eng63=$(echo "$cinco the net to server ipv4, all is 0/0" )
+spa63=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
+var64=$(echo "net_ipv6_client=::/0" )
+eng64=$(echo "$cinco the net to client ipv6, all is ::/0" )
+spa64=$(echo "$cinco la red cual cliente ipv6, todos es ::/0" )
+var65=$(echo "net_ipv6_server=::/0" )
+eng65=$(echo "$cinco the net to server ipv6, all is ::/0" )
+spa65=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
+var66=$(echo "$cinco #" )
+eng66=$(echo "$cinco .......... END Optional options .......... .......... #")
+spa66=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
 ####
 ####
 #####################################   #### english: variables: only void or in other case no
@@ -763,16 +763,8 @@ echo $var17 $tabz $eng17 >> $fe
 echo $var18 $tabz $eng18 >> $fe
 echo $var19 $tabz $eng19 >> $fe
 echo $var20 $tabz $eng20 >> $fe
-echo $var21 $tabz $eng21 >> $fe
-echo $var22 $tabz $eng22 >> $fe
-echo $var23 $tabz $eng23 >> $fe
-echo $var24 $tabz $eng24 >> $fe
-echo $var25 $tabz $eng25 >> $fe
-echo $var26 $tabz $eng26 >> $fe
-echo $var27 $tabz $eng27 >> $fe
-echo $var28 $tabz $eng28 >> $fe
-echo $var29 $tabz $eng29 >> $fe
-echo $var30 $tabz $eng30 >> $fe
+##### english: advance variables
+##### spanish: avanzadas variables
 echo $var31 $tabz $eng31 >> $fe
 echo $var32 $tabz $eng32 >> $fe
 echo $var33 $tabz $eng33 >> $fe
@@ -799,6 +791,16 @@ echo $var53 $tabz $eng53 >> $fe
 echo $var54 $tabz $eng54 >> $fe
 echo $var55 $tabz $eng55 >> $fe
 echo $var56 $tabz $eng56 >> $fe
+echo $var57 $tabz $eng57 >> $fe
+echo $var58 $tabz $eng58 >> $fe
+echo $var59 $tabz $eng59 >> $fe
+echo $var60 $tabz $eng60 >> $fe
+echo $var61 $tabz $eng61 >> $fe
+echo $var62 $tabz $eng62 >> $fe
+echo $var63 $tabz $eng63 >> $fe
+echo $var64 $tabz $eng64 >> $fe
+echo $var65 $tabz $eng65 >> $fe
+echo $var66 $tabz $eng66 >> $fe
 ####
 ####
 #### wizard full-spanish
@@ -825,16 +827,8 @@ echo $var17 $tabz $spa17 >> $fs
 echo $var18 $tabz $spa18 >> $fs
 echo $var19 $tabz $spa19 >> $fs
 echo $var20 $tabz $spa20 >> $fs
-echo $var21 $tabz $spa21 >> $fs
-echo $var22 $tabz $spa22 >> $fs
-echo $var23 $tabz $spa23 >> $fs
-echo $var24 $tabz $spa24 >> $fs
-echo $var25 $tabz $spa25 >> $fs
-echo $var26 $tabz $spa26 >> $fs
-echo $var27 $tabz $spa27 >> $fs
-echo $var28 $tabz $spa28 >> $fs
-echo $var29 $tabz $spa29 >> $fs
-echo $var30 $tabz $spa30 >> $fs
+##### english: advance variables
+##### spanish: avanzadas variables
 echo $var31 $tabz $spa31 >> $fs
 echo $var32 $tabz $spa32 >> $fs
 echo $var33 $tabz $spa33 >> $fs
@@ -852,15 +846,25 @@ echo $var44 $tabz $spa44 >> $fs
 echo $var45 $tabz $spa45 >> $fs
 echo $var46 $tabz $spa46 >> $fs
 echo $var47 $tabz $spa47 >> $fs
-echo $var48 $tabz $eng48 >> $fs
-echo $var49 $tabz $eng49 >> $fs
-echo $var50 $tabz $eng50 >> $fs
-echo $var51 $tabz $eng51 >> $fs
-echo $var52 $tabz $eng52 >> $fs
-echo $var53 $tabz $eng53 >> $fs
-echo $var54 $tabz $eng54 >> $fs
-echo $var55 $tabz $eng55 >> $fs
-echo $var56 $tabz $eng56 >> $fs
+echo $var48 $tabz $spa48 >> $fs
+echo $var49 $tabz $spa49 >> $fs
+echo $var50 $tabz $spa50 >> $fs
+echo $var51 $tabz $spa51 >> $fs
+echo $var52 $tabz $spa52 >> $fs
+echo $var53 $tabz $spa53 >> $fs
+echo $var54 $tabz $spa54 >> $fs
+echo $var55 $tabz $spa55 >> $fs
+echo $var56 $tabz $spa56 >> $fs
+echo $var57 $tabz $spa57 >> $fs
+echo $var58 $tabz $eng58 >> $fs
+echo $var59 $tabz $eng59 >> $fs
+echo $var60 $tabz $eng60 >> $fs
+echo $var61 $tabz $eng61 >> $fs
+echo $var62 $tabz $eng62 >> $fs
+echo $var63 $tabz $eng63 >> $fs
+echo $var64 $tabz $eng64 >> $fs
+echo $var65 $tabz $eng65 >> $fs
+echo $var66 $tabz $eng66 >> $fs
 ####
 ####
 ##############################       english: if second_option is a valid config.cfg               #############################
