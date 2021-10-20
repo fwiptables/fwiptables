@@ -6570,13 +6570,26 @@ exit ; else $nada ; fi
 ####
 #######################         english: End of script
 #######################         spanish: Fin del script
+####    
+####
+####    Git mini tutorial:
 ####
 ####
+####    Download repository: Repository git.code.sf.net/p/f-iptables/code
 ####
-####    for upload push ssh with f-iptables and download clone with https, repository git.code.sf.net/p/f-iptables/code
+####    Download f-iptables repository to folder user       :     git clone https://git.code.sf.net/p/f-iptables/code
+####    Recover f-iptables repository to folder user        :     git fetch
+####
+####    upload repository: Repository git.code.sf.net/p/f-iptables/code
 ####    Upload f-iptables repository from local repository  :     git commit -a ; git push ;
-####    Download f-iptables repository in folder user       :     git clone https://git.code.sf.net/p/f-iptables/code ;
 ####
+####    Create repository local: /var/git/repository.localhost
+####
+####    mkdir /var/git/repository.localhost
+####    cd /var/git/repository.localhost
+####    git init --bare
+####    chmod user /var/git/repository.localhost -R
+####    service ssh start or systemctl restart ssh
 ####
 ####
 #######################
