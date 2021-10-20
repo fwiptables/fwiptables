@@ -54,7 +54,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-default_option="basic-options"           #### over fwiptables-for-default ### default: basic-options
+default_option="basic-options"                #### over fwiptables-for-default    #### default: basic-options
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
@@ -88,7 +88,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #### english: path to config files  #### spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
-autosave_fwrecover="no" ;                #### over fwiptables-for-default ### choose: void or no
+autosave_fwrecover="no" ;                     #### over fwiptables-for-default    #### choose: void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 #### #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"
@@ -115,7 +115,7 @@ flistado="-70" ;
 case "$(whereis ip)" in "$NULL")default_route="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default | head -1)]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
-zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default ### default: "--width=950 --height=650"
+zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
 ####       #### english: close for graphicall with timeout in seconds #####
 ####       #### spanish: cierre para graficos con retardo en segundos #####
 close_timeout="1"
