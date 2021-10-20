@@ -972,7 +972,7 @@ echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 n
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                       "
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom            "
+#### echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom            "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
@@ -988,6 +988,8 @@ echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list
 echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
 echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
 echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
+echo $footer_option
+echo "$tab" "$tab"  "  For more options use: $fiptables full-options"
 echo $footer_option
 exit ; fi
 ####
