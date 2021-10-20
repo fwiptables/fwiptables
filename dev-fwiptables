@@ -4515,7 +4515,7 @@ exit; fi
 if [ "$first_option" = "log-sudo" ]; then $nada
 echo $head_option
 echo $subhead_option
-find /var/log -maxdepth 5 -type f | xargs zgrep -i "sudo:"
+find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
 echo $footer_option
 exit; fi
 ####
@@ -4527,7 +4527,7 @@ exit; fi
 if [ "$first_option" = "log-sshd" ]; then $nada
 echo $head_option
 echo $subhead_option
-find /var/log -maxdepth 5 -type f | xargs zgrep -i "sshd"
+find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
 echo $footer_option
 exit; fi
 ####
@@ -4539,7 +4539,7 @@ exit; fi
 if [ "$first_option" = "log-logserver" ]; then $nada
 echo $head_option
 echo $subhead_option
-find /var/log -maxdepth 5 -type f | xargs zgrep -i "logserver:"
+find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "logserver:"
 echo $footer_option
 exit; fi
 ####
@@ -4553,7 +4553,7 @@ echo $head_option
 echo $subhead_option
 case "$second_option" in
 $NULL) echo "$cinco use: $fiptables $first_option pattern" ;;
-*) find /var/log -maxdepth 5 -type f | xargs zgrep -i "$second_option" ;;
+*) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
 esac
 echo $footer_option
 exit; fi
