@@ -1035,6 +1035,7 @@ echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions license ..               "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed               "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services ..                           "
+echo "$tab" "$tab"  "    show-log           log-sudo log-sshd log-search ..                           "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                     "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
