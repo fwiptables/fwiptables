@@ -1053,12 +1053,12 @@ echo
 echo "--------------------------------------------------------------------------"
 echo "  FRAN INTRO "
 echo 
-echo "  Fran Firewall use to configure both iptables netfilter "
-echo "  With xtables and/or nftables. with ipv4 and/or ipv6.   "
-echo "  Create one firewall with a wizard and save it          "
-echo "  Configure one firewall with your own config files      "
-echo "  Manage the firewall with the standard iptables files.  "
-echo "  Too, use this firewall with some utilities for ip.     "
+echo "  Fran Firewall use to configure both iptables netfilter. "
+echo "  With xtables and/or nftables. with ipv4 and/or ipv6.    "
+echo "  Create one firewall with a wizard and save it.          "
+echo "  Configure one firewall with your own config files.      "
+echo "  Manage the firewall with the standard iptables files.   "
+echo "  Too, use this firewall with some utilities for ip.      "
 echo
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
