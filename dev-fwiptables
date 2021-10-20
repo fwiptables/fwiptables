@@ -5,8 +5,6 @@
 ####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
 ####
 ####
-####
-####
 ####     #### english: whereis path     #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;
 ####
@@ -35,22 +33,16 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####
 ####   license
-####   english: This program has gpl license, this program is copyleft, it is free.
-####   spanish: Este programa tiene licencia gpl, this program is copyleft, it is free.
+####   english: This program has gpl license GPL v2, this program is copyleft, it is free.
+####   spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
 ####
 ####   comments
 ####   english: The comments are in english language and spanish language
-####   spanish: Los comentarios estan en ingles y en español
+####   spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
-####
-##############################        example in english: basic system variables
-##############################        ejemplo in spanish: las basicas variables del sistema
-####
-####  #### english: /usr/bin/fwiptables is in vars $directory_fiptables folder and $fiptables exec
-####  #### spanish: /usr/bin/fwiptables esta en variables $directory_fiptables carpeta y $fiptables exec
 ####
 ################################################   english: basic system variables
-################################################   spanish: las basicas variables del sistema
+################################################   spanish: las variables basicas del sistema
 ####
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
