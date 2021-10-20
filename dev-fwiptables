@@ -1001,7 +1001,7 @@ echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables name
 echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
 echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
 echo $footer_option
-echo "$tab" "$tab"  "  For more options use: $fiptables full-options"
+echo "$tab" "$tab"  "    For more options use: $fiptables full-options"
 echo $footer_option
 exit ; fi
 ####
