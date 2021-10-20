@@ -56,7 +56,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 default_option="basic-options"           #### over fwiptables-for-default ### default: basic-options
 #### #### english: option for default    #### spanish: opcion por defecto
-zero_dir="$(pwd)" ; zero_option="$0" ;                            
+zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
 first_option="$(echo $1 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
@@ -65,14 +65,14 @@ second_option="$(echo $2 | sed s/\\///g -)" ;
 third_option="$(echo $3 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 genfiles="$0 regeneration-default"
-#### #### english: whereis path          #### spanish: donde esta el path 
+#### #### english: whereis path          #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;                                    
 #### #### english: whereis path          #### spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.56-Inma" ;                                              
+fversion="1.57" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #### english: path to config files  #### spanish: archivos de configuracion
