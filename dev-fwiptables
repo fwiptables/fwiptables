@@ -340,7 +340,6 @@ spa16=$(echo "$cinco puertos udp para logear servidor")
 var17=$(echo "$cinco LOG PREFIX TO SERVER #" )
 eng17=$(echo "$cinco Log to server ports with prefix")
 spa17=$(echo "$cinco logear para puertos de servidor con prefijo")
-##### logserver_prefix_input="fwlog-input: " ; logserver_prefix_output="fwlog-output: " ; #### cambio a añadir
 var18=$(echo "logserver_prefix_input=fwlog-input::")
 eng18=$(echo "$cinco type input prefix for logserver")
 spa18=$(echo "$cinco especifica prefijo de entrada para logserver")
