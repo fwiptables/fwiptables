@@ -2385,12 +2385,16 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "log-fwiptables" \
+--list "Gui Principal Menu" "log-sudo" "log-sshd" "log-search" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show log] [$fiptables]" )
 case $selection in
 1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"log-fwiptables") $fiptables -gui log-fwiptables ;;
+"log-sudo")   $fiptables -gui log-sudo ;;
+"log-sshd")   $fiptables -gui log-sshd ;;
+"log-search")
+pattern="$(zenity $zenity_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
+$fiptables -gui log-search $pattern;;
 *)
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
@@ -2673,8 +2677,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   0150 "$cinco [Show log registry] $cinco" \
   151  "log-sudo" \
   152  "log-sshd" \
-  153  "log-logserver" \
-  154  "log-search" \
+  153  "log-search" \
   0160 "$cinco [Show about global options] $cinco" \
   161  "about" \
   162  "depends" \
@@ -2794,8 +2797,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  145) clear ; $fiptables "hosts.deny" | less ;;
  151) clear ; $fiptables "log-sudo" | less ;;
  152) clear ; $fiptables "log-sshd" | less ;;
- 153) clear ; $fiptables "log-server" | less ;;
- 154) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ 153) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fiptables "log-search" "$pattern" | less ;;
  161) clear ; $fiptables "about" | less ;;
  162) clear ; $fiptables "depends" | less ;;
