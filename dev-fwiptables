@@ -3149,14 +3149,6 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  *)
  echo "$rallica [ With rules nftables ] [ iptables-legacy ]"
  $which_iptables_legacy -t filter -v -L
-#### echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
-#### $which_iptables_legacy -v -L INPUT
-#### echo "$ralla"
-#### echo "$ralica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
-#### $which_iptables_legacy -v -L OUTPUT
-#### echo "$ralla"
-#### echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
-#### $which_iptables_legacy -v -L FORWARD
  ;;
  esac
  echo "$ralla"
@@ -3165,14 +3157,6 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  *)
  echo "$rallica [ With rules nftables ] [ iptables-nft ]" 
  $which_iptables_nft -t filter -v -L
-####  echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
-####  $which_iptables_nft -v -L INPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
-####  $which_iptables_nft -v -L OUTPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
-####  $which_iptables_nft -v -L FORWARD
  ;;
  esac
  echo $footer_option
@@ -3226,14 +3210,6 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  *)
  echo "$rallica [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_legacy -v -L
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
-####  $which_ip6tables_legacy -v -L INPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
-####  $which_ip6tables_legacy -v -L OUTPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
-####  $which_ip6tables_legacy -v -L FORWARD
  ;;
  esac
  echo $ralla
@@ -3242,14 +3218,6 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  *)
  echo "$rallica [ With rules nftables ] [ iptables-nft ]" 
  $which_ip6tables_nft -v -L
-####  echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
-####  $which_ip6tables_nft -v -L INPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
-####  $which_ip6tables_nft -v -L OUTPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
-####  $which_ip6tables_nft -v -L FORWARD
  ;;
  esac
  echo $footer_option
@@ -3363,14 +3331,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  *)
  echo "$rallica [With rules netfilter] [iptables-nft]"  
  $which_iptables_legacy -v -n -L 
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
-####  $which_iptables_legacy -v -n -L INPUT
-####  echo "$ralla" 
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
-####  $which_iptables_legacy -v -n -L OUTPUT
-####  echo "$ralla" 
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
-####  $which_iptables_legacy -v -n -L FORWARD
  ;;
  esac
  echo $ralla
@@ -3379,14 +3339,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  *)
  echo "$rallica [ With rules nftables ] [ iptables-nft ]"  
  $which_iptables_nft -v -n -L
-#### echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
-####  $which_iptables_nft -v -n -L INPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
-####  $which_iptables_nft -v -n -L OUTPUT 
-####  echo "$ralla"
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
-####  $which_iptables_nft -v -n -L FORWARD
  ;;
  esac
  echo $footer_option
@@ -3440,14 +3392,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  *)
   echo "$cinco [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_legacy -v -n -L 
-#### echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ INPUT ] $ralla "
-####  $which_ip6tables_legacy -v -n -L INPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ OUTPUT ] $ralla "
-####  $which_ip6tables_legacy -v -n -L OUTPUT
-####  echo "$ralla"
-####  echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
-####  $which_ip6tables_legacy -v -n -L FORWARD
  ;;
  esac
  echo $ralla
@@ -3456,14 +3400,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  *)
   echo "$cinco [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_nft -v -n -L
-#### echo "$rallica [ With rules nftables ] [ iptables-nft ] [ INPUT ] $ralla "
-#### $which_ip6tables_nft -v -n -L INPUT
-#### echo "$ralla"
-#### echo "$rallica [ With rules nftables ] [ iptables-nft ] [ OUTPUT ] $ralla "
-#### $which_ip6tables_nft -v -n -L OUTPUT
-#### echo "$ralla"
-#### echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
-#### $which_ip6tables_nft -v -n -L FORWARD
  ;;
  esac
  echo $footer_option
@@ -6490,56 +6426,6 @@ if [ -f "$directory_config/$second_option" ]; then $nada
 echo "$cincuenta"
 echo "$cinco [OK FIREWALL CUSTOM] [$second_option]"
 exit ; else $nada ; fi
-####  # show text to firewall [config.cfg] (show text) #
-####  echo "$cinco  [Configured with the configuration:] [$first_option] $cinco" ;
-####  echo "$cinco  [With the netfilter iptables firewall]  $cinco"  ;
-####  echo "  xtables    is  $allow_legacy configured firewall "
-####  echo "  nftables  is  $allow_nft configured firewall "
-####  echo "  * Where at least one iptables is usually necesary"
-####  echo "$cinco  [With the protocols IP]  $cinco" ;
-####  echo "  ipv4 is $allow_ipv4 allowed "
-####  echo "  ipv6 is $allow_ipv6 allowed "
-####  echo "  * Where ipv4 is usually necesary"
-####  echo "$cinco  [With the client ports IP]  $cinco" ;
-####  echo "  client tcp: $client_tcp"  ;
-####  echo "  client udp: $client_udp"  ;
-####  echo "  * Where ports domain,ntp,bootpc are usually udp necesary"
-####  echo "$cinco  [With the server ports IP]  $cinco" ;
-####  echo "  server tcp: $server_tcp" ;
-####  echo "  server udp: $server_udp" ;
-####  echo "$cinco  [With the log server ports IP]  $cinco" ;
-####  echo "  server tcp: $logserver_tcp" ;
-####  echo "  server udp: $logserver_udp" ;
-####  echo "$cinco  [With the networks configured]  $cinco" ;
-####  echo "  ipv4 client: $net_ipv4_client And ipv4 server: $net_ipv4_server"
-####  echo "  ipv6 client: $net_ipv6_client And ipv6 server: $net_ipv6_server"
-####  echo "  * Where 0/0 and ::/0 are all the networks, usually necesary "
-####  echo "$cinco  [With Others configurations]  $cinco"
-####  if [ "$allow_input_bandwidth" = "no" ]; then echo "  Dont limit input bandwidth complete" ;
-####  else echo "  Limit input: above $bandwidth_input kb/sec complete"; fi
-####  if [ "$allow_output_bandwidth" = "no" ]; then echo "  Dont limit output bandwidth per ip" ;
-####  else echo "  Limit output: above $bandwidth_output kb/sec per ip"; fi
-####  if [ "$allow_input_maxconnect" = "no" ]; then echo "  Dont limit input numbers of connections" ;
-####  else echo "  Limit max connections: above $maxconnect_input "; fi
-####  if [ "$allow_output_maxconnect" = "no" ]; then echo "  Dont limit output numbers of connections" ;
-####  else echo "  Limit max connections: above $maxconnect_output "; fi
-####  if [ "$allow_input_all" = "no" ]; then echo "  Dont allow only output"; else echo "  Allowed only output" ; fi
-####  if [ "$allow_input_state" = "no" ]; then echo "  Dont allow specific input state"; else echo "  Allowed input state are $input_state"; fi
-####  if [ "$allow_output_ping" = "no" ]; then echo "  Dont allow send ping"; else echo "  Allowed send pings" ; fi
-####  if [ "$allow_input_ping" = "no" ]; then echo "  Dont allow recive ping"; else echo "  Allowed recive pings" ; fi
-####  if [ "$allow_forwading" = "no" ]; then  echo "  Dont allow ip forwading"; else echo "  Allowed ip forwading" ; fi
-####  if [ "$allow_nat" = "no" ]; then  echo "  Dont allow ip nat masquerade"; else echo "  Allowed nat masquerade" ; fi
-####  if [ "$allow_vpn" = "no" ]; then echo "  Dont allow vpn excepcional"; else  echo "  Allowed vpn servers are $vpn" ; fi
-####  if [ "$allow_blacklist" = "no" ]; then echo "  Dont allow blacklist excepcional"; else  echo "  Allowed blacklist servers are $blacklist" ; fi
-####  if [ "$allow_output_uid" = "no" ]; then  echo "  Dont allow uid output excepcional"; else echo "  Allowed output uid output excepcional: $output_uid , and input established " ; fi
-####  if [ "$allow_output_gid" = "no" ]; then  echo "  Dont allow gid output excepcional"; else echo "  Allowed output gid output excepcional: $output_uid , and input established "; fi
-####  if [ "$allow_others_protocols" = "no" ]; then  echo "  Dont allow other protocol excepcional"; else echo "  Allowed other protocol excepcional: $others_protocols" ; fi
-####  echo "$cinco  List iptables rules with:   $fiptables listnum  $cinco"
-####  echo "$cincuenta"
-####  echo "$cinco OK FIREWALL CUSTOM [$first_option]"
-####  echo "$footer_option"
-####
-####
 ####
 ####
 #######################
