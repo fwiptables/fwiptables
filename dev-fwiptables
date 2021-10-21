@@ -4456,6 +4456,7 @@ if [ "$first_option" = "disc-speed" ]; then $nada
 echo $head_option
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
+echo "$rallica Testing speed with temporal file /root/borrame.img.img"
 $which_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
 rm /root/borrame.img.img &> /dev/null
 echo $footer_option
@@ -4470,10 +4471,11 @@ if [ "$first_option" = "ram-speed" ]; then $nada
 echo $head_option
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
-case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" in "1")
+case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" in "1")  ;;
+*) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
+echo "$rallica Testing speed with temporal file /tmp/borrame.img.img"
 $which_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
-rm /tmp/borrame.img.img &> /dev/null   ; exit ;;
-*) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp" ;; esac
+rm /tmp/borrame.img.img &> /dev/null
 echo $footer_option
 exit; fi
 ####
