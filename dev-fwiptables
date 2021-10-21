@@ -102,7 +102,7 @@ nada="$(echo -n)" ;
 #### #### english: echo void            #### spanish: impresion vacia
 #### log_prefix="logserver:" ;          #### english: old variable #### spanish: vieja variable
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-flistado="-70" ;                                                    
+#### flistado="-70" ;                                                    
 #### #### english: wide of list config files  #### spanish: Ancho al listar cfg
 case "$(whereis ip)" in "$NULL")default_route="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route="$cinco [ Route ip.v4 ] [ $(ip route | grep -i default | head -1)]" ;; esac
@@ -904,33 +904,12 @@ exit ; fi
 #### exit; fi
 ####
 ####
-
-##############################       english: if second_option is a valid config.cfg               #############################
-##############################       spanish: si segunda opcion es un valido config.cfg            #############################
-####
-####
-#### if [ -f "$directory_config/$second_option" ]; then config_option="si"; else config_option="no" ; fi
-####
-####
 ##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
 ##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
 ####
 ####
-####
-####
 ####   #### english: alias for cfg-custom to custom  #### spanish: apodo de cfg-custom para custom
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
-####
-####
-####   #### english: the first option : [config.cfg]  ----  verbose
-####   #### spanish: El primera opción: [config.cfg]  ----  con informacion
-####
-#### if [ -f "$directory_config"/"$first_option" ]; then echo $subhead_option ;
-#### launch_iptables="si"; launch_thefirst="si"; launch_thesecond="no" ;
-#### launch_permisive="no" ; launch_offline="no" ; launch_custom="" ;
-#### else $nada; fi
-####
-####
 ####
 ####
 ####   #### english: The first option: offline, allpermisive or custom           ----  semi silent
@@ -943,8 +922,6 @@ if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIV
 launch_iptables="si"; launch_thesecond="si"; launch_permisive=""  ; launch_offline="no" ;  launch_custom="no" ; input_all="no"  ; fi
 if [ "$first_option" = "custom" ]; then       echo "$cinco  FIREWALL CUSTOM" ; echo $subhead_option
 launch_iptables="si"; launch_thesecond="si";   launch_permisive="no" ; launch_offline="no" ; launch_custom="" ; fi
-####
-####
 ####
 ####
 ####   english: custom in first option and second option whithout existent-file.cfg
