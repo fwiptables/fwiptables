@@ -1764,8 +1764,8 @@ echo "$cinco [Notas] [protocolos necesarios para ipv6]"
 echo
 echo " ipv6-icmp     : Necesary protocol in ipv6"
 echo "               : Protocolo necesario en ipv6"
-echo " ipv4 protocols: ipv6 works too with pv4 procotols"
-echo "               : ipv6 funciona tambien con ipv4 protocolos"
+echo " ipv4 protocols: ipv6 works too with old ipv4 procotols"
+echo "               : ipv6 funciona tambien con viejos ipv4 protocolos"
 echo
 echo "$cincuenta  [License]"
 echo ""
