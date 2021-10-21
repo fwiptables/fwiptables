@@ -1655,8 +1655,6 @@ echo "       log-sudo: Search logs with sudo in /var/log"
 echo "               : Busca logs con sudo en /var/log"
 echo "       log-sshd: Search logs for sshd in /var/log"
 echo "               : Busca logs con sshd en /var/log"
-echo "  log-logserver: Search logs whith this firewall in /var/log"
-echo "               : Busca logs con this firewall en /var/log"
 echo "     log-search: Search logs whith a prefix in /var/log"
 echo "               : Busca logs con patron en /var/log"
 echo $footer_option
@@ -4509,12 +4507,12 @@ exit; fi
 ############################       spanish: log-logserver: log desde el servidor de ssh
 ####
 ####
-if [ "$first_option" = "log-logserver" ]; then $nada
-echo $head_option
-echo $subhead_option
-find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "logserver:"
-echo $footer_option
-exit; fi
+#### if [ "$first_option" = "log-logserver" ]; then $nada
+#### echo $head_option
+#### echo $subhead_option
+#### find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "logserver:"
+#### echo $footer_option
+#### exit; fi
 ####
 ####
 ############################       english: log-search: log from a one search
@@ -4958,7 +4956,6 @@ echo
 echo " log-fwiptables: Show /var/log/fwiptables"
 echo "       log-sudo: Search the logs from sudo for /var/log"
 echo "       log-sshd: Search the logs from sshd for /var/log"
-echo "  log-logserver: Search the logs from net packages with this firewall"
 echo "     log-search: Search the logs from a input pattern for /var/log"
 echo
 echo "$cinco         [Show about]"
@@ -5192,7 +5189,6 @@ echo
 echo " log-fwiptables: Muestra /var/log/fwiptables"
 echo "       log-sudo: Busca los logs de sudo en /var/log"
 echo "       log-sshd: Busca los logs de sshd en /var/log"
-echo "  log-logserver: Busca los logs de paquetes de este firewall"
 echo "     log-search: Busca los logs dando un patron para /var/log"
 echo
 echo "$cinco         [Mostrar acerca]"
