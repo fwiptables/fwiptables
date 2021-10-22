@@ -146,7 +146,7 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ####
 ####
 ##############################       english: Notice Installer            ###################################
-##############################       spanish: Instalador noticia          ###################################
+##############################       spanish: noticia de Instalador       ###################################
 ####
 ####
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
@@ -159,26 +159,15 @@ esac
 fi
 ####
 ####
+##############################       alias de fwiptables       ##############################
+##############################       apodos de fwiptables      ##############################
+####
+####
 ##############################       english: $NULL: fwiptables launch .. for default
 ##############################       spanish: $NULL: fwiptables lanza .. por defecto
 ####
 ####
 if  [ "$first_option" = "$NULL" ] ; then $zero_option $default_option ; exit ; fi
-####
-####
-##############################       english: are you root: uid 0 ?
-##############################       spanish: eres admnistrador: identificador 0 ?;
-####
-####
-if [ "$(id -u)" = "0" ]; then $nada
-else
-echo $head_option
-echo $subhead_option
-echo "$cincuenta need to be root to work"
-echo "$ralla"
-echo "$cincuenta  Be root to work $fiptables"
-echo $footer_option
-exit ; fi
 ####
 ####
 ############################## english -text: Manage in console
@@ -197,6 +186,13 @@ exit; fi
 if [ "$first_option" = "text" ] ; then $nada
 $fiptables $second_option $third_option
 exit; fi
+####
+####
+############################## english: gui: alias to -gui  
+############################## spanish: gui: apodo a -gui 
+####
+####
+if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
 ####
 ####
 ############################## english log: Send to log
@@ -227,11 +223,41 @@ esac
 exit; fi
 ####
 ####
-############################## english: gui: alias to -gui  
-############################## spanish: gui: apodo a -gui 
+##############################       english: cfg: list: some config, alias to list-config
+##############################       spanish: cfg: lista alguna config, apodo a list-config
 ####
 ####
-if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
+if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
+####
+####
+##############################       english: cli: Manage list rules with one text menu
+##############################       spanish: cli: Maneja lista de reglas con un menu de texto
+####
+####
+if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
+####
+####
+#############################     english: list: alias list to filter ip4
+#############################     spanish: list6: apodo list6 a filtros de ip6
+####
+####
+if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
+if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
+####
+####
+############################## english: are you root: uid 0 ?                ############################## 
+############################## spanish: eres admnistrador: identificador 0 ? ##############################
+####
+####
+if [ "$(id -u)" = "0" ]; then $nada
+else
+echo $head_option
+echo $subhead_option
+echo "$cincuenta need to be root to work"
+echo "$ralla"
+echo "$cincuenta  Be root to work $fiptables"
+echo $footer_option
+exit ; fi
 ####
 ####
 ############################## english: variables:    variables to declare     ##############################
@@ -1109,13 +1135,6 @@ echo $footer_option
 exit; fi
 ####
 ####
-##############################       english: cfg: list: some config, alias to list-config
-##############################       spanish: cfg: lista alguna config, apodo a list-config
-####
-####
-if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
-####
-####
 ##############################       english: list-config: list some config
 ##############################       spanish: list-config: lista alguna config
 ####
@@ -1934,10 +1953,6 @@ zenity --forms $zenity_dimension --text="Canceled. file: $third_option"; fi
 fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option > /tmp/fwiptables-$fecha_temporal
 zenity --text-info $zenity_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
-#### English: Other method with --forms 
-#### Spanish: Otro metodo con --forms
-#### gui_advance=$(zenity --forms --title="[ fwiptables gui ] [ $fiptables ]" --text="$($fiptables $second_option $third_option)")
-#### $gui_advance
 ;;
 esac
 exit; fi
@@ -1977,10 +1992,6 @@ fecha_temporal=$(date | sed s/\ //g)
 $fiptables $second_option > /tmp/fwiptables-$fecha_temporal
 zenity --text-info $zenity_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
-#### English: Other method with --forms
-#### Spanish: Otro metodo con --forms
-#### gui_advance=$(zenity --forms $zenity_dimension --title="[ fwiptables gui ] [ $fiptables ]" --text="$($fiptables $second_option)")
-#### $gui_advance
 ;;
 esac
 exit; fi
@@ -2025,7 +2036,6 @@ case "$selection" in
 "13 Show about")$fiptables gui-menu-show-about;;
 "14 Show help")$fiptables gui-menu-show-help;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye"; 
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit ;;
 esac
 exit; fi
@@ -2047,7 +2057,6 @@ case $selection in
 "wizard-full")$fiptables -gui wizard-full ;;
 "wizard-mini")$fiptables -gui wizard-mini ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2215,7 +2224,6 @@ case $selection in
 "ipforwading-on") $fiptables -gui ipforwading-on ;;
 "ipforwading-off") $fiptables -gui ipforwading-off ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress -$zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu 
@@ -2240,7 +2248,6 @@ $fiptables -gui ping-ip6 $archivo ;;
 "speed-ip4") $fiptables -gui speed-ip4 ;;
 "speed-ip6") $fiptables -gui speed-ip6 ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2270,7 +2277,6 @@ $fiptables -gui resolveip $archivo ;;
 $fiptables -gui geoip $archivo ;;
 "ntpdate")$fiptables -gui ntpdate ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2294,7 +2300,6 @@ $fiptables -gui sudo-auth $archivo ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "list-alias")$fiptables -gui list-alias ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2317,7 +2322,6 @@ case $selection in
 "upgrade")$fiptables -gui upgrade ;;
 "new-versions")$fiptables -gui new-versions ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2342,7 +2346,6 @@ case $selection in
 "hosts.deny") $fiptables -gui hosts.deny ;;
 "etc-default") $fiptables -gui etc-default ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2366,7 +2369,6 @@ case $selection in
 pattern="$(zenity $zenity_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2391,7 +2393,6 @@ case $selection in
 "config-eng")$fiptables -gui config-eng ;;
 "config-spa")$fiptables -gui config-spa ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2415,7 +2416,6 @@ case $selection in
 "ayuda") $fiptables -gui ayuda ;;
 "notes") $fiptables -gui notes ;;
 *)
-#### zenity --info $zenity_dimension --text="$fiptables good bye" ;
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
@@ -2433,13 +2433,23 @@ case "$which_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) 
 ####
 ####
 #### principal gui      ####
+####
+####
 titulo="$fiptables gui-shell"
 untexto="$fiptables gui-shell"
+####
+####
 #### cd $directory_config
+####
+####
 menugtk=$(zenity --forms --title="[gui shell]  [$fiptables]" $zenity_dimension --text="$($fiptables basic-options)" --add-entry="$fiptables" )
 case $? in
 1)
+####
+####
 #### zenity --info $zenity_dimension --text="$fiptables good bye";
+####
+####
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
@@ -2447,11 +2457,13 @@ esac
 #### english: manage some configs    ####
 #### spanish: maneja algunas configs ####
 ####
+####
 case $menugtk in
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
 #### spanish: new-full-config and nueva-completa-config sin parametros      ####
+####
 ####
 "new-full-config")
 zenity --forms $zenity_dimension --text="$cinco Use: $fiptables new-full-config config.cfg"
@@ -2533,21 +2545,10 @@ zenity --progress $zenity_dimension --timeout=1 --text="Closing gui menu" --auto
 *) fecha_temporal=$(date | sed s/\ //g) ; $fiptables $menugtk > /tmp/fwiptables-$fecha_temporal
 zenity --text-info $zenity_dimension --title "[$fiptables gui-shell] [$menugtk]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
-#### english: other method with --forms
-#### spanish: otro metodo con --forms
-#### zenity --forms --text="$($fiptables $menugtk)"
 ;;
 esac
-#### zenity --forms --text="Press [ok] to continue with the $fiptables gui"
 $fiptables gui-shell
 exit ; fi
-####
-####
-##############################       english: cli: Manage list rules with one text menu
-##############################       spanish: cli: Maneja lista de reglas con un menu de texto
-####
-####
-if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
 ####
 ####
 ##############################       english: cli-menu: Manage list rules with one text menu
@@ -2660,7 +2661,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   173  "ayuda" \
   174  "long-help" \
  )"  
+#### 
+#### 
 #### english: dialog choosed #### spanish: dialogo elegido
+#### 
+#### 
  case "$menuprincipal" in
  0*) reset ;  clear ; dialog --msgbox "Program Menu" 0 0 ; clear ; $fiptables cli-men ;;
  11) clear ; $fiptables "info-system" | less ;;
@@ -3145,14 +3150,6 @@ for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
 do $which_sysctl -w $a=0 ; done
 echo $footer_option
 exit; fi
-####
-####
-#############################     english: list: alias list to filter ip4
-#############################     spanish: list6: apodo list6 a filtros de ip6
-####
-####
-if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
-if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
 ####
 ####
 #############################       english: filter-ip4: system script, the list option
