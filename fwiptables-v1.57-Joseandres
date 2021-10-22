@@ -4282,15 +4282,14 @@ exit; fi
 ####
 if [ "$first_option" = "ntpdate" ]; then $nada
 echo $head_option
-echo "$cinco [ update the computer date from internet ]"
+echo "$cinco [ update the computer time and date from internet ]"
 echo $subhead_option
-echo "$cinco Updating the time and the date .."
+echo "$rallica [ Updating the time and the date .. ]"
 pool0=0.debian.pool.ntp.org
 pool1=1.debian.pool.ntp.org
 pool2=2.debian.pool.ntp.org
 pool3=3.debian.pool.ntp.org
 $favorite_date_command $pool0
-#### $which_ntpdate $pool0 $pool1 $pool2
 date
 echo $footer_option
 exit; fi
@@ -4302,18 +4301,19 @@ exit; fi
 ####
 if [ "$first_option" = "scan-tcp" ]; then $nada
 echo $head_option
+echo "$cinco [ scan with nmap tcp ]"
 echo $subhead_option
-echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
-echo "$cinco [Notice:] [Eraserules firewall while launching nmap]"
+echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
 case $which_nmap in $NULL) echo install nmap ; exit ;; esac
 #### save and stop fw
 $fiptables stop
 #### launch nmap
-echo "$cincuenta [Doing nmap]"
+echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sT $2
 #### Restore fw
 $fiptables continue
-echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
+echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
 ####
@@ -4324,18 +4324,19 @@ exit; fi
 ####
 if [ "$first_option" = "scan-syn" ]; then $nada
 echo $head_option
+echo "$cinco [ scan with nmap syn ]"
 echo $subhead_option
-echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
-echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 #### save and stop fw
 $fiptables stop
 #### launch nmap
-echo "$cincuenta [Doing nmap]"
+echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sF $2
 #### Restore actual fw
 $fiptables continue
-echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
+echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
 ####
@@ -4346,18 +4347,19 @@ exit; fi
 ####
 if [ "$first_option" = "scan-fin" ]; then $nada
 echo $head_option
+echo "$cinco [ scan with nmap fin ]"
 echo $subhead_option
-echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
-echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 #### save and stop fw
 $fiptables stop
 #### launch nmap
-echo "$cincuenta [Doing nmap]"
+echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sF $2
 #### Restore actual fw
 $fiptables continue
-echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
+echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
 ####
@@ -4368,18 +4370,19 @@ exit; fi
 ####
 if [ "$first_option" = "scan-udp" ]; then $nada
 echo $head_option
+echo "$cinco [ scan with nmap udp ]"
 echo $subhead_option
-echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
-echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 #### save and stop fw
 $fiptables stop
 #### launch nmap
-echo "$cincuenta [Doing nmap]"
+echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sU $2
 #### Restore fw
 $fiptables continue
-echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
+echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
 ####
@@ -4390,18 +4393,19 @@ exit; fi
 ####
 if [ "$first_option" = "scan-ping" ]; then $nada
 echo $head_option
+echo "$cinco [ scan with nmap ping ]"
 echo $subhead_option
-echo "$cinco [Usage:]  [nmap $first_option ip/mask]"
-echo "$cinco [Notice:] [Eraserules firewall while launch nmap]"
+echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 #### save and stop fw
 $fiptables stop
 #### launch nmap
-echo "$cincuenta [Doing nmap]"
+echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sn $2
 #### Restore fw
 $fiptables continue
-echo "$cinco [Notice:] [Reloaded firewall rules after run nmap]"
+echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
 ####
@@ -4412,6 +4416,7 @@ exit; fi
 ####
 if [ "$first_option" = "ram-free" ]; then $nada
 echo $head_option
+echo "$cinco [ freedom from innecesary ram ]"
 echo $subhead_option
 case $which_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 echo " Actual Memory"
@@ -4429,6 +4434,7 @@ exit; fi
 ####
 if [ "$first_option" = "disc-speed" ]; then $nada
 echo $head_option
+echo "$cinco [ test the disc speed ]"
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 echo "$rallica Testing speed with the temporal file /root/borrame.img.img"
@@ -4448,6 +4454,7 @@ exit; fi
 ####
 if [ "$first_option" = "ram-speed" ]; then $nada
 echo $head_option
+echo "$cinco [ test the ram speed ]"
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
@@ -4469,6 +4476,7 @@ exit; fi
 ####
 if [ "$first_option" = "glx-speed" ]; then $nada
 echo $head_option
+echo "$cinco [ test gl mesa3D speed ]"
 echo $subhead_option
 case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
 vblank_mode=0 $which_glxgears
@@ -4481,6 +4489,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "log-fwiptables" ] ; then $nada ;
+echo $head_option
+echo "$cinco [ show /var/log/fwiptables ]"
 cat /var/log/fwiptables
 echo "$cinco this file is /var/log/fwiptables"
 echo $footer_option
@@ -4493,6 +4503,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-sudo" ]; then $nada
 echo $head_option
+echo "$cinco [ search sudo in logs ]"
 echo $subhead_option
 find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
 echo $footer_option
@@ -4505,6 +4516,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-sshd" ]; then $nada
 echo $head_option
+echo "$cinco [ search sshd in logs ]"
 echo $subhead_option
 find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
 echo $footer_option
@@ -4529,6 +4541,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-search" ]; then $nada
 echo $head_option
+echo "$cinco [ search a one pattern in logs ]"
 echo $subhead_option
 case "$second_option" in
 $NULL) echo "$cinco use: $fiptables $first_option pattern" ;;
@@ -4544,6 +4557,7 @@ exit; fi
 ####
 if [ "$first_option" = "dev-versions" ]; then $nada
 echo $head_option
+echo "$cinco [ show the link to dev version from git repository ]"
 echo $subhead_option
 echo $fweb_development
 echo $footer_option
@@ -4556,24 +4570,13 @@ exit; fi
 ####
 if [ "$first_option" = "new-versions" ]; then $nada
 echo $head_option
+echo "$cinco [ show the new versions in sourceforge page ]"
 echo $subhead_option
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
 echo "$cinco list new-versions in the last week with browser $favorite_text_browser"
 echo $ralla
 $favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
-echo $footer_option
-exit; fi
-####
-####
-############################       english: all-versions: about of program
-############################       spanish: all-versions: acerca del programa
-####
-####
-if [ "$first_option" = "all-versions" ]; then $nada
-echo $head_option
-echo $subhead_option
-$favorite_text_browser -dump $fweb_tree | egrep -i "about|readme|roadmap|iptables" | sed s/\<//g | grep -i master | sort | uniq -u
 echo $footer_option
 exit; fi
 ####
