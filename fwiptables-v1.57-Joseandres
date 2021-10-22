@@ -4587,6 +4587,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts" ]; then $nada
 echo $head_option
+echo "$cinco [ show the file /etc/hosts ]"
 echo $subhead_option
 cat /etc/hosts
 echo "$cinco This file is /etc/hosts"
@@ -4600,6 +4601,7 @@ exit; fi
 ####
 if [ "$first_option" = "protocols" ]; then $nada
 echo $head_option
+echo "$cinco [ show the file /etc/protocols ]"
 echo $subhead_option
 cat /etc/protocols  | sed s/\&//g 
 echo "$cinco This file is /etc/protocols"
@@ -4613,6 +4615,7 @@ exit; fi
 ####
 if [ "$first_option" = "services" ]; then $nada
 echo $head_option
+echo "$cinco [ show the file /etc/services ]"
 echo $subhead_option
 cat /etc/services | sed s/\&//g 
 echo "$cinco This file is /etc/services"
@@ -4626,6 +4629,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts.allow" ]; then $nada
 echo $head_option
+echo "$cinco [ show the file /etc/allow ]"
 echo $subhead_option
 cat /etc/hosts.allow
 echo "$cinco This file is /etc/hosts.allow"
@@ -4639,6 +4643,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts.deny" ]; then $nada
 echo $head_option
+echo "$cinco [ show the file /etc/deny ]"
 echo $subhead_option
 cat /etc/hosts.deny
 echo "$cinco This file is /etc/hosts.deny"
@@ -4652,6 +4657,7 @@ exit; fi
 ####
 if [ "$first_option" = "about" ]; then $nada
 echo $head_option
+echo "$cinco [ about $fiptables ]"
 echo $subhead_option
 echo
 echo "$tab [Fran FireWall iptables Generator]"
@@ -4706,6 +4712,7 @@ exit; fi
 ####
 if [ "$first_option" = "info-system" ]; then $nada
 echo $head_option
+echo "$cinco [ show info about system ]"
 echo $subhead_option
 echo "$tab [ System info ] [ Distro ] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
@@ -4731,6 +4738,7 @@ exit; fi
 ####
 if [ "$first_option" = "info-net" ]; then $nada
 echo $head_option
+echo "$cinco [ show info about net ]"
 echo $subhead_option
 echo "$tab [ Net Info Route ] [ Route ipv4 ]"
 $which_ip route 
@@ -4750,6 +4758,7 @@ exit; fi
 ####
 if [ "$first_option" = "speed-ip4" ]; then $nada
 echo $head_option
+echo "$cinco [ test speed ipv4 with internet ]"
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
@@ -4770,6 +4779,7 @@ exit; fi
 ####
 if [ "$first_option" = "speed-ip6" ]; then $nada
 echo $head_option
+echo "$cinco [ test speed ipv6 with internet ]"
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
@@ -4790,6 +4800,7 @@ exit; fi
 ####
 if [ "$first_option" = "config-eng" ]; then $gefiles
 echo $head_option
+echo "$cinco [ show variables cfg from english configuration ]"
 echo $subhead_option
 cat  $defaultfullcfg_eng
 echo $footer_option
@@ -4802,6 +4813,7 @@ exit; fi
 ####
 if [ "$first_option" = "config-spa" ]; then $genfiles
 echo $head_option
+echo "$cinco [ show variables cfg from spanish configuration ]"
 echo $subhead_option
 cat $defaultfullcfg_spa
 echo $footer_option
