@@ -3820,6 +3820,7 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fiptables ] ; then $nada
 echo $head_option
+echo "$cinco [ list users with root auth for launch $fiptables ]"
 echo $subhead_option
 echo "$cinco With root sudo for $fiptables from some user"
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
@@ -3830,6 +3831,7 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fiptables ] ; then $nada
 echo $head_option
+echo "$cinco [ list users with root auth for launch $fiptables ]"
 echo $subhead_option
 echo "$cinco Wihtout root sudo from users"
 echo $footer_option
@@ -3842,6 +3844,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-alias" ]; then $nada
 echo $head_option
+echo "$cinco [ list alias and autocomplete for $fiptables ]"
 echo $subhead_option
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
@@ -3855,6 +3858,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading-list" ]; then $nada
 echo $head_option
+echo "$cinco [ Show ip forwading in kernel ]"
 echo $subhead_option
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 $which_sysctl -a | grep -i forwarding
@@ -3870,6 +3874,7 @@ if [ "$first_option" = "tcpdump" ]; then $nada
 case $(which tcpdump) in "$NULL") echo " Install tcpdump" ;;
 *) 
 echo $head_option
+echo "$cinco [ launch several seconds tcpdump ]"
 echo $subhead_option
 if [ "$second_option" = "$NULL" ]; then second_option="4"; fi
 echo "Waiting $second_option seconds to tcpdump .."
@@ -3891,6 +3896,7 @@ if [ "$first_option" = "arp" ]; then $nada
 case $which_arp in "$NULL") echo "install arp" ;;
 *)
 echo $head_option
+echo "$cinco [ Show cache arp ]"
 echo $subhead_option
 $which_arp -a
 ;;
@@ -3905,6 +3911,7 @@ exit; fi
 ####
 if [ "$first_option" = "etc-default" ]; then $nada
 echo $head_option
+echo "$cinco [ show the /etc/default/fwiptables ]"
 echo $subhead_option
 cat /etc/default/fwiptables
 echo "$cinco file: /etc/default/fwiptables"
@@ -3925,6 +3932,7 @@ if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 if [ "$first_option" = "names" ]; then $nada
 echo $head_option
+echo "$cinco [ List names from firewall saved ]"
 echo $subhead_option
 echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
 echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
@@ -3940,6 +3948,7 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then $nada
 echo $head_option
+echo "$cinco [ Reset the firewall ]"
 echo $subhead_option
 $fiptables stop &> /dev/null
 $fiptables continue &> /dev/null
@@ -4045,6 +4054,7 @@ exit; fi
 ####
 if [ "$first_option" = "show" ]; then $genfiles
 echo $head_option
+echo "$cinco [ show one firewall saved ]"
 echo $subhead_option
 case "$second_option" in
 "$NULL") echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
@@ -4074,6 +4084,7 @@ exit; fi
 ####
 if [ "$first_option" = "actual" ]; then $genfiles
 echo $head_option
+echo "$cinco [ show the last firewall saved ]"
 echo $subhead_option
 $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
@@ -4098,6 +4109,7 @@ exit; fi
 ####
 if [ "$first_option" = "stop" ]; then $nada
 echo $head_option
+echo "$cinco [ Stop the firewall ]"
 echo $subhead_option
 #### save actual fw
 $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
@@ -4118,6 +4130,7 @@ exit; fi
 ####
 if [ "$first_option" = "continue" ]; then $nada
 echo $head_option
+echo "$cinco [ Continue the stoped firewall ]"
 echo $subhead_option
 ####  Restore actual fw
 $which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
@@ -4135,6 +4148,7 @@ exit; fi
 ####
 if [ "$first_option" = "ping-ip4" ]; then $nada
 echo $head_option
+echo "$cinco [ ping ip or host with ipv4 ]"
 echo $subhead_option
 case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 case "$second_option" in
@@ -4152,6 +4166,7 @@ exit; fi
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then $nada
 echo $head_option
+echo "$cinco [ ping one ip or host with ipv6 ]"
 echo $subhead_option
 case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 case "$second_option" in
@@ -4172,6 +4187,7 @@ exit; fi
 ####
 if [ "$first_option" = "trace-ip4" ]; then $nada
 echo $head_option
+echo "$cinco [ trace ip or host with ipv4 ]"
 echo $subhead_option
 case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
 case "$second_option" in
@@ -4191,6 +4207,7 @@ exit; fi
 ####
 if [ "$first_option" = "trace-ip6" ]; then $nada
 echo $head_option
+echo "$cinco [ trace one ip or host with ipv6 ]"
 echo $subhead_option
 case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
 case "$second_option" in
@@ -4211,6 +4228,7 @@ exit; fi
 ####
 if [ "$first_option" = "host" ]; then $nada
 echo $head_option
+echo "$cinco [ resolve one ip or host ]"
 echo $subhead_option
 case $which_host in "$NULL") echo " Install host" ; exit ;; esac
 case "$second_option" in
@@ -4228,6 +4246,7 @@ exit; fi
 ####
 if [ "$first_option" = "resolveip" ]; then $nada
 echo $head_option
+echo "$cinco [ resolve one ip or host ]"
 echo $subhead_option
 case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
 case "$second_option" in
@@ -4245,6 +4264,7 @@ exit; fi
 ####
 if [ "$first_option" = "geoip" ]; then $nada
 echo $head_option
+echo "$cinco [ resolve the location to one ip or host ]"
 echo $subhead_option
 case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
 case "$second_option" in
@@ -4262,6 +4282,7 @@ exit; fi
 ####
 if [ "$first_option" = "ntpdate" ]; then $nada
 echo $head_option
+echo "$cinco [ update the computer date from internet ]"
 echo $subhead_option
 echo "$cinco Updating the time and the date .."
 pool0=0.debian.pool.ntp.org
