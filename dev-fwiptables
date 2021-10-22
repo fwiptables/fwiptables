@@ -239,16 +239,31 @@ if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
 ####
 ####
 #############################     english: list: alias list to filter ip4
-#############################     spanish: list6: apodo list6 a filtros de ip6
+#############################     spanish: list6: apodo list6 a filtros de ip4
 ####
 ####
 if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
+####
+####
+#############################     english: list: alias list to filter ip6
+#############################     spanish: list6: apodo list6 a filtros de ip6
+####
+####
 if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
 ####
 ####
 #############################     english: alias for cfg-custom to custom  
 #############################     spanish: apodo de cfg-custom para custom
+####
+####
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
+####
+####
+############################       english: list-fw: alias to names
+############################       spanish: list-fw: apodo a names
+####
+####
+if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
@@ -3716,8 +3731,6 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-####
-####
 ############################       english: ebtables: list rules arptables with arp
 ############################       spanish: ebtables: lista reglas de arptables with arp
 ####
@@ -4036,13 +4049,6 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: list-fw: alias to names
-############################       spanish: list-fw: apodo a names
-####
-####
-if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
-####
-####
 ############################       english: names: file list whith rules in iptables format
 ############################       spanish: names: lista de archivos con reglas en formato iptables
 ####
@@ -4248,7 +4254,7 @@ echo "$cinco [ Stop the firewall ]"
 echo $subhead_option
 ####
 ####
-#### save actual fw
+#### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
 $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
@@ -4257,8 +4263,7 @@ $which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
 $which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 ####
 ####
-#### echo "$cinco [OK FIREWALL SAVED]"
-#### erase rules
+#### english: erase the rules #### spanish: borra las reglas
 ####
 ####
 $fiptables eraserules &> /dev/null
@@ -4277,7 +4282,7 @@ echo "$cinco [ Continue the stoped firewall ]"
 echo $subhead_option
 ####
 ####
-####  Restore actual fw
+#### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
 $which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
@@ -4530,26 +4535,25 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 *) echo " [ OK. DECLINE ] "; exit ;; esac
 ####
 ####
-#### english: launch #### spanish: lanza
-####
-####
-#### save and stop fw
+#### english: stop the firewall #### spanish: para el firewall
 ####
 ####
 $fiptables stop
 ####
 ####
-#### launch nmap
+#### english: launch nmap #### spanish: lanza nmap
 ####
 ####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sT $2
 ####
 ####
-#### Restore fw
+#### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
 $fiptables continue
+####
+####
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
@@ -4578,23 +4582,20 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 *) echo " [ OK. DECLINE ] "; exit ;; esac
 ####
 ####
-#### english: launch #### spanish: lanza
-####
-####
-#### save and stop fw
+#### english: stop the firewall #### spanish: para el firewall
 ####
 ####
 $fiptables stop
 ####
 ####
-#### launch nmap
+#### english: launch nmap #### spanish: lanza nmap
 ####
 ####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sF $2
 ####
 ####
-#### Restore actual fw
+#### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
 $fiptables continue
@@ -4626,26 +4627,25 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 *) echo " [ OK. DECLINE ] "; exit ;; esac
 ####
 ####
-#### english: launch #### spanish: lanza
-####
-####
-#### save and stop fw
+#### english: stop the firewall #### spanish: para el firewall
 ####
 ####
 $fiptables stop
 ####
 ####
-#### launch nmap
+#### english: launch nmap #### spanish: lanza nmap
 ####
 ####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sF $2
 ####
 ####
-#### Restore actual fw
+#### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
 $fiptables continue
+####
+####
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
@@ -4674,26 +4674,25 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 *) echo " [ OK. DECLINE ] "; exit ;; esac
 ####
 ####
-#### english: launch #### spanish: lanza
-####
-####
-#### save and stop fw
+#### english: stop the firewall #### spanish: para el firewall
 ####
 ####
 $fiptables stop
 ####
 ####
-#### launch nmap
+#### english: launch nmap #### spanish: lanza nmap
 ####
 ####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sU $2
 ####
 ####
-#### Restore fw
+#### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
 $fiptables continue
+####
+####
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
 exit; fi
@@ -4722,23 +4721,20 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 *) echo " [ OK. DECLINE ] "; exit ;; esac
 ####
 ####
-#### english: launch #### spanish: lanza
-####
-####
-#### save and stop fw
+#### english: stop the firewall #### spanish: para el firewall
 ####
 ####
 $fiptables stop
 ####
 ####
-#### launch nmap
+#### english: launch nmap #### spanish: lanza nmap
 ####
 ####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sn $2
 ####
 ####
-#### Restore fw
+#### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
 $fiptables continue
