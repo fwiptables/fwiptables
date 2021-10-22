@@ -159,7 +159,7 @@ esac
 fi
 ####
 ####
-##############################       alias de fwiptables       ##############################
+##############################       alias for fwiptables       ##############################
 ##############################       apodos de fwiptables      ##############################
 ####
 ####
@@ -188,15 +188,15 @@ $fiptables $second_option $third_option
 exit; fi
 ####
 ####
-############################## english: gui: alias to -gui  
-############################## spanish: gui: apodo a -gui 
+##############################    english: gui: alias to -gui  
+##############################    spanish: gui: apodo a -gui 
 ####
 ####
 if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
 ####
 ####
-############################## english log: Send to log
-############################## spanish log: Send to log
+##############################    english log: Send to log
+##############################    spanish log: Send to log
 ####
 ####
 if [ "$first_option" = "log" ] ; then $nada
@@ -209,8 +209,8 @@ esac
 exit; fi
 ####
 ####
-############################## english -log: Send to log
-############################## spanish -log: Send to log
+##############################     english -log: Send to log
+##############################     spanish -log: Send to log
 ####
 ####
 if [ "$first_option" = "-log" ] ; then $nada
@@ -223,15 +223,15 @@ esac
 exit; fi
 ####
 ####
-##############################       english: cfg: list: some config, alias to list-config
-##############################       spanish: cfg: lista alguna config, apodo a list-config
+##############################     english: cfg: list: some config, alias to list-config
+##############################     spanish: cfg: lista alguna config, apodo a list-config
 ####
 ####
 if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 ####
 ####
-##############################       english: cli: Manage list rules with one text menu
-##############################       spanish: cli: Maneja lista de reglas con un menu de texto
+##############################     english: cli: Manage list rules with one text menu
+##############################     spanish: cli: Maneja lista de reglas con un menu de texto
 ####
 ####
 if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
@@ -243,6 +243,11 @@ if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
 ####
 if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
 if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
+####
+####
+#############################     english: alias for cfg-custom to custom  
+#############################     spanish: apodo de cfg-custom para custom
+if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
@@ -260,8 +265,8 @@ echo $footer_option
 exit ; fi
 ####
 ####
-############################## english: variables:    variables to declare     ##############################
-############################## spanish: variables:    variables para declarar  ##############################
+############################## english: variables: variables to declare     ##############################
+############################## spanish: variables: variables para declarar  ##############################
 ####
 ####
 #### english: retro compatibility with old variables #### spanish: compatible con anteriores variables
@@ -294,13 +299,15 @@ net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
-################################################        english: regeneration-default: regen default files
-################################################        spanish: regeneration-default: regenera archivos por defecto
+##################################### english: regeneration-default: regen files       #####################################
+##################################### spanish: regeneration-default: regenera archivos #####################################
 ####
 ####
 if [ "$1" = "regeneration-default" ]; then
-#####################################  english: fvariables:    variables to prepare to gen files
-#####################################  spanish: fvariables:    variables para preparar para generar archivos
+####
+####
+####  english: variables to prepare to gen files
+####  spanish: variables para preparar para generar archivos
 ####
 ####
 #### english: basic options in configuration file cfg
@@ -502,7 +509,7 @@ spa66=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... 
 ##############################   spanish: continua con auto genera configs cfg por defecto
 ####
 ####
-#### where save default files
+#### english: where save default files #### spanish: donde se guardan los archivos
 ####
 ####
 me="$defaultminicfg_eng"
@@ -704,12 +711,8 @@ echo $var66 $tabz $eng66 >> $fs
 exit; fi
 ####
 ####
-################################################ 
-################################################ 
-####
-####
-#####################################   #### english: variables: only void or in other case no
-#####################################   #### spanish: variables: solo vacio o en otro caso no
+#### english: variables for sane:   only void or in other case no
+#### spanish: variables para sanos: solo vacio o en otro caso no
 ####
 ####
 case "$NULL" in
@@ -934,10 +937,6 @@ exit ; fi
 ####
 ##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
 ##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
-####
-####
-####   #### english: alias for cfg-custom to custom  #### spanish: apodo de cfg-custom para custom
-if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 ####
 ####
 ####   #### english: The first option: offline, allpermisive or custom           ----  semi silent
@@ -3152,8 +3151,8 @@ echo $footer_option
 exit; fi
 ####
 ####
-#############################       english: filter-ip4: system script, the list option
-#############################       spanish: filter-ip4: script de sistema, la opcion lista
+#############################  english: filter-ip4: system script, the list option
+#############################  spanish: filter-ip4: script de sistema, la opcion lista
 ####
 ####
  if [ "$first_option" = "filter-ip4" ]; then $nada ;
@@ -3183,8 +3182,8 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: forward: system script, the forward option to list iptables filter forward rules
-############################       spanish: forward: script de sistema, la opcion forward para listar reglas de iptables filter forward
+############################  english: forward: list iptables filter forward rules
+############################  spanish: forward: lista reglas de iptables filter forward
 ####
 ####
  if [ "$first_option" = "forward" ]; then $nada ;
@@ -3215,8 +3214,8 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: filter-ip6: system script, the list6 option to list ipv6 rules
-############################       spanish: filter-ip6: script de sistema, la opcion list6 para listar reglas de ipv6
+############################ english: filter-ip6: list ipv6 rules filter
+############################ spanish: filter-ip6: lista reglas de filtros de ipv6
 ####
 ####
  if [ "$first_option" = "filter-ip6" ]; then $nada
@@ -3246,8 +3245,8 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: forward6: system script, the forward6 option to list iptables filter forward rules
-############################       spanish: forward6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
+############################  english: forward6: list iptables filter forward rules ipv6
+############################  spanish: forward6: lista reglas de iptables filter forward ipv6
 ####
 ####
  if [ "$first_option" = "forward6" ]; then $nada ;
@@ -3278,8 +3277,8 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: nat-ip4: system script, the nat option to list NAT rules of ipv4
-############################       spanish: nat-ip4: script de sistema, la opcion nat para listar reglas de NAT de ipv4
+############################ english: nat-ip4: list NAT rules of ipv4
+############################ spanish: nat-ip4: lista reglas de NAT de ipv4
 ####
 ####
  if [ "$first_option" = "nat-ip4" ]; then $nada
@@ -3309,8 +3308,8 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: nat-ip6: system script, the nat-ip6 option to list NAT rules of ipv6
-############################       spanish: nat-ip6: script de sistema, la opcion nat-ip6 para listar reglas de NAT de ipv6
+############################ english: nat-ip6: list NAT rules of ipv6
+############################ spanish: nat-ip6: lista reglas de NAT de ipv6
 ####
 ####
  if [ "$first_option" = "nat-ip6" ]; then $nada
@@ -3340,8 +3339,8 @@ exit; fi
  exit; fi
 ####
 ####
-#############################       english: listnum: system script, the list option numerical
-#############################       spanish: listnum: script de sistema, la opcion lista numeral
+############################# english: listnum: list option numerical filter ipv4
+############################# spanish: listnum: lista numeral filter ipv4
 ####
 ####
 if [ "$first_option" = "listnum" ]; then $nada ;
@@ -3371,8 +3370,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: forwardnum: system script, the forward option to list iptables filter forward rules
-############################       spanish: forwardnum: script de sistema, la opcion forward para listar reglas de iptables filter forward
+############################  english: forwardnum: list iptables filter forward rules in numerical
+############################  spanish: forwardnum: lista reglas de iptables filter forward in numeros
 ####
 ####
  if [ "$first_option" = "forwardnum" ]; then $nada ;
@@ -3403,8 +3402,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: listnum6: system script, the list6 option to list ipv6 rules numeral
-############################       spanish: listnum6: script de sistema, la opcion list6 para listar reglas de ipv6 numeral
+############################# english: listnum6: list option numerical filter ipv6
+############################# spanish: listnum6: lista numeral filter ipv6
 ####
 ####
  if [ "$first_option" = "listnum6" ]; then $nada
@@ -3434,8 +3433,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: forwardnum6: system script, the forward6 option to list iptables filter forward rules
-############################       spanish: forwardnum6: script de sistema, la opcion forward6 para listar reglas de iptables filter forward
+############################  english: forwardnum6: list iptables filter forward rules in numerical ipv6
+############################  spanish: forwardnum6: lista reglas de iptables filter forward in numeros ipv6
 ####
 ####
  if [ "$first_option" = "forwardnum6" ]; then $nada ;
@@ -3466,8 +3465,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: mangle-ip4: system script, the mangle-ip4 option to list mangle rules from ipv4
-############################       spanish: mangle-ip4: script de sistema, la opcion mangle-ip4 para listar reglas de mangle de ipv4
+############################       english: mangle-ip4: list mangle rules from ipv4
+############################       spanish: mangle-ip4: lista reglas de mangle de ipv4
 ####
 ####
  if [ "$first_option" = "mangle-ip4" ]; then $nada
@@ -3486,8 +3485,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: mangle-ip6: system script, the mangle-ip6 option to list mangle rules of ipv6
-############################       spanish: mangle-ip6: script de sistema, la opcion mangle-ip6 para listar reglas de mangle de ipv6
+############################       english: mangle-ip6: list mangle rules from ipv6
+############################       spanish: mangle-ip6: lista reglas de mangle de ipv6
 ####
 ####
  if [ "$first_option" = "mangle-ip6" ]; then $nada
@@ -3507,8 +3506,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: raw-ip4: system script, the raw-ip4 option to list raw rules from ipv4
-############################       spanish: raw-ip4: script de sistema, la opcion raw-ip4 para listar reglas de raw de ipv4
+############################       english: raw-ip4: list raw rules from ipv4
+############################       spanish: raw-ip4: lista reglas raw de ipv4
 ####
 ####
  if [ "$first_option" = "raw-ip4" ]; then $nada
@@ -3527,8 +3526,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: raw-ip6: system script, the raw-ip6 option to list raw rules of ipv6
-############################       spanish: raw-ip6: script de sistema, la opcion raw-ip6 para listar reglas de raw de ipv6
+############################       english: raw-ip6: list raw rules from ipv6
+############################       spanish: raw-ip6: lista reglas raw de ipv6
 ####
 ####
  if [ "$first_option" = "raw-ip6" ]; then $nada
@@ -3547,8 +3546,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: security-ip4: system script, the security-ip4 option to list security rules from ipv4
-############################       spanish: security-ip4: script de sistema, la opcion security-ip4 para listar reglas de security de ipv4
+############################       english: security-ip4: list security rules from ipv4
+############################       spanish: security-ip4: lista reglas de security de ipv4
 ####
 ####
  if [ "$first_option" = "security-ip4" ]; then $nada
@@ -3567,8 +3566,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: security-ip6: system script, the security-ip6 option to list security rules of ipv6
-############################       spanish: security-ip6: script de sistema, la opcion security-ip6 para listar reglas de security de ipv6
+############################       english: security-ip6: list security rules from ipv6
+############################       spanish: security-ip6: lista reglas de security de ipv6
 ####
 ####
  if [ "$first_option" = "security-ip6" ]; then $nada
@@ -3587,14 +3586,14 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: ebtables: system script, the ebtables option to list ethernet
-############################       spanish: ebtables: script de sistema, la opcion ebtables to list ethernet
+############################       english: ebtables: list ebtables rules with mac
+############################       spanish: ebtables: lista reglas de ebtables with mac
 ####
 ####
  if [ "$first_option" = "ebtables" ]; then $nada
  echo $head_option
  echo $default_route
- echo "$cinco [ List ebtables ipv4 ]"
+ echo "$cinco [ List ebtables ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3607,8 +3606,12 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: arptables: system script, the ebtables option to list arp
-############################       spanish: arptables: script de sistema, la opcion ebtables to list arp
+####
+####
+############################       english: ebtables: list rules arptables with arp
+############################       spanish: ebtables: lista reglas de arptables with arp
+####
+####
 ####
 ####
  if [ "$first_option" = "arptables" ]; then $nada
@@ -3623,8 +3626,8 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  exit; fi
 ####
 ####
-############################       english: new-full-config: system script, the new-full-config option to create new configs
-############################       spanish: new-full-config: script de sistema, la opcion new-full-config para cear nuevas config
+############################       english: new-full-config: new-full-config option to create new configs
+############################       spanish: new-full-config: new-full-config para cear nuevas config
 ####
 ####
 if [ "$first_option" = "new-full-config" ]; then $genfiles
@@ -3648,8 +3651,8 @@ echo $footer_option
 exit ; fi
 ####
 ####
-############################       english: nueva-completa-config: system script, the nueva-completa-config option to create new configs
-############################       spanish: nueva-completa-config: script de sistema, la opcion nueva-completa-config para cear nuevas config
+############################       english: nueva-completa-config: create new configs
+############################       spanish: nueva-completa-config: nueva-completa-config para cear nuevas config
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ]; then $genfiles
@@ -3673,8 +3676,8 @@ echo $footer_option
 exit ; fi
 ####
 ####
-############################       english: new-mini-config: system script, the new-mini-config option to create new configs
-############################       spanish: new--mini config: script de sistema, la opcion new-mini-config para cear nuevas config
+############################       english: new-mini-config: create new configs
+############################       spanish: new--mini config:cear nuevas config
 ####
 ####
 if [ "$first_option" = "new-mini-config" ]; then $genfiles
@@ -3697,8 +3700,8 @@ echo $footer_option
 exit ; fi
 ####
 ####
-############################       english: nueva-mini-config: system script, the nueva-mini-config option to create new configs
-############################       spanish: nueva-mini-config: script de sistema, la opcion nueva-mini-config para cear nuevas config
+############################       english: nueva-mini-config: create new configs
+############################       spanish: nueva-mini-config: crea nuevas config
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ]; then $genfiles
@@ -3961,8 +3964,8 @@ echo $footer_option
 exit; fi
 ####
 ####
-##############################       english: wizard-mini: wizard-mini to connect like simple client
-##############################       spanish: wizard-mini: mini-asistente to connect like simple client
+##############################       english: wizard-mini: wizard-mini
+##############################       spanish: wizard-mini: mini-asistente 
 ####
 ####
 if [ "$first_option" = "wizard-mini" ]; then $genfiles
@@ -3978,8 +3981,8 @@ echo $footer_option
 exit; fi
 ####
 ####
-##############################       english: wizard-full: wizard-full to connect like simple client
-##############################       spanish: wizard-full: asistente to connect like simple client
+##############################       english: wizard-full: wizard-full
+##############################       spanish: wizard-full: asistente 
 ####
 ####
 if [ "$first_option" = "wizard-full" ]; then $genfiles
@@ -4003,16 +4006,32 @@ if [ "$first_option" = "load" ]; then $nada
 echo $head_option
 echo $subhead_option
 case $second_option in
+####
+####
 #### English: Void in second option
+####
+####
 "$NULL") echo "$cinco [usage: $fiptables load fw-to-restore]"
 echo "$cinco [firewall do not choosed] [Did not updated firewall with load] [See: $fiptables list-fw]"  
 ;;
+####
+####
 #### English if do exist second option in load
+####
+####
 *)
 if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then $nada
+####
+####
 #### English: Remove all rules
+####
+####
 $fiptables eraserules &> /dev/null
+####
+####
 #### English: Load all rules
+####
+####
 $which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4 >> /dev/null
 $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4 >> /dev/null
 $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 >> /dev/null
@@ -4023,6 +4042,8 @@ echo "$cinco [usage: $fiptables load fw-to-restore] [SEE: $fiptables list-fw]"
 fi
 ;;
 esac
+####
+####
 echo $footer_option
 exit; fi
 ####
@@ -4115,13 +4136,21 @@ if [ "$first_option" = "stop" ]; then $nada
 echo $head_option
 echo "$cinco [ Stop the firewall ]"
 echo $subhead_option
+####
+####
 #### save actual fw
+####
+####
 $which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
 $which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
 $which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
 $which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
+####
+####
 #### echo "$cinco [OK FIREWALL SAVED]"
 #### erase rules
+####
+####
 $fiptables eraserules &> /dev/null
 echo "$cinco [ OK FIREWALL STOPED ]"
 echo $footer_option
@@ -4136,7 +4165,11 @@ if [ "$first_option" = "continue" ]; then $nada
 echo $head_option
 echo "$cinco [ Continue the stoped firewall ]"
 echo $subhead_option
+####
+####
 ####  Restore actual fw
+####
+####
 $which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
 $which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
 $which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
@@ -4391,11 +4424,21 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 ####
 ####
 #### save and stop fw
+####
+####
 $fiptables stop
+####
+####
 #### launch nmap
+####
+####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sT $2
+####
+####
 #### Restore fw
+####
+####
 $fiptables continue
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
@@ -4429,11 +4472,21 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 ####
 ####
 #### save and stop fw
+####
+####
 $fiptables stop
+####
+####
 #### launch nmap
+####
+####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sF $2
+####
+####
 #### Restore actual fw
+####
+####
 $fiptables continue
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
@@ -4467,11 +4520,21 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 ####
 ####
 #### save and stop fw
+####
+####
 $fiptables stop
+####
+####
 #### launch nmap
+####
+####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sF $2
+####
+####
 #### Restore actual fw
+####
+####
 $fiptables continue
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
@@ -4505,11 +4568,21 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 ####
 ####
 #### save and stop fw
+####
+####
 $fiptables stop
+####
+####
 #### launch nmap
+####
+####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sU $2
+####
+####
 #### Restore fw
+####
+####
 $fiptables continue
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
@@ -4543,11 +4616,21 @@ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";;
 ####
 ####
 #### save and stop fw
+####
+####
 $fiptables stop
+####
+####
 #### launch nmap
+####
+####
 echo "$cincuenta [ Doing nmap ]"
 $which_nmap -sn $2
+####
+####
 #### Restore fw
+####
+####
 $fiptables continue
 echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
 echo $footer_option
