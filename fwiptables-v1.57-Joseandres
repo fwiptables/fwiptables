@@ -3031,6 +3031,7 @@ exit; fi
 ####
 if [ "$first_option" = "route" ]; then   echo  -n
 echo $head_option
+echo $default_route
 echo "$cinco [ Show route tables ]"
 echo $subhead_option
 case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
@@ -3054,6 +3055,7 @@ exit ; fi
 if [ "$first_option" = "ss" ]; then $nada ;
 case $which_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
 echo $head_option
+echo $default_route
 echo "$cinco [ Show sockets with ss ]"
 echo $subhead_option
 echo "$tab [ The ipv6 sockets ]"
@@ -3072,6 +3074,7 @@ exit; fi
 if [ "$first_option" = "lsof" ]; then $nada ;
 case $which_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
 echo $head_option
+echo $default_route
 echo "$cinco [ Show sockets with lsof ]"
 echo $subhead_option
 echo "$tab [The sockets with lsof ipv4 ]"
@@ -3088,6 +3091,7 @@ if [ "$first_option" = "netstat" ]; then $nada ;
 case $which_netstat in
 "$NULL") echo "$tab [Install netstat]" ; exit ;; esac
 echo $head_option
+echo $default_route
 echo "$cinco [ Show sockets with netstat ]"
 echo $subhead_option
 echo "$tab [The sockets list with netstat ]"
@@ -3104,6 +3108,7 @@ if [ "$first_option" = "netstat-nat" ]; then $nada ;
 case $which_netstat_nat in
 "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
 echo $head_option
+echo $default_route
 echo "$cinco [ Show sockets with netstat-nat ]"
 echo $subhead_option
 echo "$tab [The devices list with netstat]"
@@ -3118,6 +3123,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading-on" ]; then $nada ;
 echo $head_option
+echo $default_route
 echo "$cinco [ Active ip forwading in kernel ]"
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
@@ -3132,6 +3138,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading-off" ]; then $nada ;
 echo $head_option
+echo $default_route
 echo "$cinco [ Deactive ip forwading in kernel ]"
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
@@ -4148,9 +4155,24 @@ exit; fi
 ####
 if [ "$first_option" = "ping-ip4" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ ping ip or host with ipv4 ]"
 echo $subhead_option
 case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 case "$second_option" in
 "$NULL") echo "$cinco Selecting host ping-ip4 to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
@@ -4166,9 +4188,25 @@ exit; fi
 ############################       spanish: ping-ip6: ping icmp con ipv6
 if [ "$first_option" = "ping-ip6" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ ping one ip or host with ipv6 ]"
 echo $subhead_option
 case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 case "$second_option" in
 "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;;
@@ -4187,9 +4225,24 @@ exit; fi
 ####
 if [ "$first_option" = "trace-ip4" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ trace ip or host with ipv4 ]"
 echo $subhead_option
 case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 case "$second_option" in
 "$NULL") echo "$cinco Selecting host trace-ip4 to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
@@ -4207,9 +4260,24 @@ exit; fi
 ####
 if [ "$first_option" = "trace-ip6" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ trace one ip or host with ipv6 ]"
 echo $subhead_option
 case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 case "$second_option" in
 "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;;
@@ -4228,6 +4296,7 @@ exit; fi
 ####
 if [ "$first_option" = "host" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ resolve one ip or host ]"
 echo $subhead_option
 case $which_host in "$NULL") echo " Install host" ; exit ;; esac
@@ -4246,6 +4315,7 @@ exit; fi
 ####
 if [ "$first_option" = "resolveip" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ resolve one ip or host ]"
 echo $subhead_option
 case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
@@ -4264,6 +4334,7 @@ exit; fi
 ####
 if [ "$first_option" = "geoip" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ resolve the location to one ip or host ]"
 echo $subhead_option
 case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
@@ -4282,6 +4353,7 @@ exit; fi
 ####
 if [ "$first_option" = "ntpdate" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ update the computer time and date from internet ]"
 echo $subhead_option
 echo "$rallica [ Updating the time and the date .. ]"
@@ -4301,11 +4373,26 @@ exit; fi
 ####
 if [ "$first_option" = "scan-tcp" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ scan with nmap tcp ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
 case $which_nmap in $NULL) echo install nmap ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 #### save and stop fw
 $fiptables stop
 #### launch nmap
@@ -4324,11 +4411,26 @@ exit; fi
 ####
 if [ "$first_option" = "scan-syn" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ scan with nmap syn ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 #### save and stop fw
 $fiptables stop
 #### launch nmap
@@ -4347,11 +4449,26 @@ exit; fi
 ####
 if [ "$first_option" = "scan-fin" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ scan with nmap fin ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 #### save and stop fw
 $fiptables stop
 #### launch nmap
@@ -4370,11 +4487,26 @@ exit; fi
 ####
 if [ "$first_option" = "scan-udp" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ scan with nmap udp ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 #### save and stop fw
 $fiptables stop
 #### launch nmap
@@ -4393,11 +4525,26 @@ exit; fi
 ####
 if [ "$first_option" = "scan-ping" ]; then $nada
 echo $head_option
+echo $default_route
 echo "$cinco [ scan with nmap ping ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
 case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
 #### save and stop fw
 $fiptables stop
 #### launch nmap
