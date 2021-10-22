@@ -3188,6 +3188,7 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables filter forward ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3250,6 +3251,7 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables filter forward ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3281,6 +3283,7 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables nat ipv4 ]"
  echo $subhead_option
  echo $ralla
  case $legacycuatro in
@@ -3311,6 +3314,7 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables nat ipv6 ]"
  echo $subhead_option
  echo $ralla
  case $nftseis in
@@ -3341,6 +3345,7 @@ legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables filter ipv4 in numerical ]"
  echo $subhead_option
  echo $ralla
  case $legacycuatro in
@@ -3371,6 +3376,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables filter forward ipv4 in numerical ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3402,6 +3408,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option 
  echo $default_route
+ echo "$cinco [ List iptables filter ipv6 in numerical ]"
  echo $subhead_option
  echo $ralla
  case $legacyseis in
@@ -3432,6 +3439,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables filter forward ipv6 in numerical ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3461,6 +3469,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "mangle-ip4" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables mangle ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3480,6 +3489,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "mangle-ip6" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables mangle ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $default_route
@@ -3500,6 +3510,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "raw-ip4" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables raw ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3519,6 +3530,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "raw-ip6" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables raw ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3538,6 +3550,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "security-ip4" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables security ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3557,6 +3570,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "security-ip6" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables security ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3576,6 +3590,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "ebtables" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List ebtables ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3595,6 +3610,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  if [ "$first_option" = "arptables" ]; then $nada
  echo $head_option
  echo $default_route
+ echo "$cinco [ List arptables ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
