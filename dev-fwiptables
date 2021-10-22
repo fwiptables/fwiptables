@@ -823,6 +823,7 @@ if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="
 if [ "$first_option" = "install" ] ; then $nada
 echo $head_option
 echo $subhead_option
+echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
 if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
 then echo "$cinco [ OK. ACCEPTED LICENSE ] [ Continue install ]"
@@ -856,6 +857,7 @@ exit; fi
 if [ "$first_option" = "upgrade" ]; then $nada
 echo $head_option
 echo $subhead_option
+echo "$cinco [ Upgrade $fiptables in $directory_fiptables ]"
 echo "$cincuenta [ Web upgrade ] $cinco"
 echo "$cinco [ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
 echo "$cinco [ Downloading $fiptables with the comand $favorite_text_browser browser ]"
@@ -945,6 +947,7 @@ fi
 if [ "$first_option" = "basic-options" ]; then 
 echo $head_option
 echo $default_route
+echo "$cinco [ List basic options ]"
 echo $subhead_option
 echo "$tab" "$tab" "______________________                | Principal options |                   "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -981,6 +984,7 @@ exit ; fi
 if [ "$first_option" = "full-options" ]; then 
 echo $head_option
 echo $default_route
+echo "$cinco [ List full options ]"
 echo $subhead_option
 echo "$tab" "$tab"  "______________________                | Principal options |                  "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -2789,6 +2793,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 if [ "$first_option" = "version" ]; then $nada
 echo $head_option
+echo "$cinco [ Show version $fiptables ]"
 echo $subhead_option
 echo
 echo "$tab [Name program]"
@@ -2826,6 +2831,7 @@ exit ; fi
 ####
 if [ "$first_option" = "examples" ]; then $nada
 echo $head_option
+echo "$cinco [ Show examples for $fiptables ]"
 echo $subhead_option
 ####
 ####
@@ -2963,6 +2969,7 @@ exit ; fi
 ####
 if [ "$first_option" = "license" ]; then
 echo $head_option
+echo "$cinco [ Show license for $fiptables ]"
 echo $subhead_option
 echo "license text for gpl v2 downloading .."
 echo "$ralla" "$ralla" "$ralla"
@@ -2979,6 +2986,7 @@ exit;  fi
 ####
 if [ "$first_option" = "howto-upgrade" ]; then
 echo $head_option
+echo "$cinco [ Show howto upgrade $fiptables  ]"
 echo $subhead_option
 echo "The actually version is: $fiptables $fversion actual"
 echo "  The latest version is:"
@@ -3023,6 +3031,7 @@ exit; fi
 ####
 if [ "$first_option" = "route" ]; then   echo  -n
 echo $head_option
+echo "$cinco [ Show route tables ]"
 echo $subhead_option
 case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
 echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
@@ -3043,13 +3052,14 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "ss" ]; then $nada ;
-case $which_ss in "$NULL") echo "$tab [Install ss command]" ; exit ;; esac
+case $which_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
 echo $head_option
+echo "$cinco [ Show sockets with ss ]"
 echo $subhead_option
-echo "$tab [The ipv6 sockets]"
+echo "$tab [ The ipv6 sockets ]"
 $which_ss -a6
 echo "$ralla"
-echo "$tab [The ipv4 sockets]"
+echo "$tab [ The ipv4 sockets ]"
 $which_ss -a4
 echo $footer_option
 exit; fi
@@ -3062,8 +3072,9 @@ exit; fi
 if [ "$first_option" = "lsof" ]; then $nada ;
 case $which_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
 echo $head_option
+echo "$cinco [ Show sockets with lsof ]"
 echo $subhead_option
-echo "$tab [The sockets with lsof ipv4]"
+echo "$tab [The sockets with lsof ipv4 ]"
 $which_lsof -i 4
 echo $footer_option
 exit; fi
@@ -3077,8 +3088,9 @@ if [ "$first_option" = "netstat" ]; then $nada ;
 case $which_netstat in
 "$NULL") echo "$tab [Install netstat]" ; exit ;; esac
 echo $head_option
+echo "$cinco [ Show sockets with netstat ]"
 echo $subhead_option
-echo "$tab [The sockets list with netstat]"
+echo "$tab [The sockets list with netstat ]"
 $which_netstat -a -4 -6
 echo $footer_option
 exit; fi
@@ -3092,6 +3104,7 @@ if [ "$first_option" = "netstat-nat" ]; then $nada ;
 case $which_netstat_nat in
 "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
 echo $head_option
+echo "$cinco [ Show sockets with netstat-nat ]"
 echo $subhead_option
 echo "$tab [The devices list with netstat]"
 $which_netstat_nat -x
@@ -3105,6 +3118,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading-on" ]; then $nada ;
 echo $head_option
+echo "$cinco [ Active ip forwading in kernel ]"
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
 do $which_sysctl -w $a=1 ; done
@@ -3118,6 +3132,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading-off" ]; then $nada ;
 echo $head_option
+echo "$cinco [ Deactive ip forwading in kernel ]"
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
 do $which_sysctl -w $a=0 ; done
@@ -3142,6 +3157,7 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
  echo $head_option
  echo $default_route
+ echo "$cinco [ List iptables filter ipv4 ]"
  echo $subhead_option
  echo $ralla
  case $legacycuatro in
@@ -3203,6 +3219,7 @@ if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option
  echo $default_route
+  echo "$cinco [ List iptables filter ipv6 ]"
  echo $subhead_option
  echo $ralla
  case $legacyseis in
