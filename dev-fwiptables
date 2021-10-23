@@ -107,17 +107,19 @@ case "$(whereis ip)" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ N
 case "$(whereis ip)" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_seis="$cinco [ default route ip.v6 ]   [ $(ip -6 route show | grep -i default | head -1) ]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
-zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
+####       #### english: zenity graphic redimension    
+####       #### spanish: redimensiones graficas de zenity
+graphic_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
 close_timeout="1"
 ####       #### english: message to close graphicall with timeout in seconds #####
 ####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
 mensage_timeout="Closing gui menu in $close_timeout seconds"
-#### #english: [characters to show] #spanish: [caracteres a mostrar]
-####       #### english: zenity automatic redimensions    #### spanish: redimensiones automaticas de zenity
+####       #### english: zenity graphic automatic redimension    
+####       #### spanish: redimensiones graficas automaticas de zenity
 #### pantallatotal="$(xrandr | grep -- \* | tail -1 | sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
-#### case $($which xrandr) in "$NULL") ;; *) zenity_dimension=$pantallatotal ;; esac
+#### case $($which xrandr) in "$NULL") ;; *) graphic_dimension=$pantallatotal ;; esac
 ####       #### english: autovariables        #### spanish: autovariables
 launch_thefirst="no" ;
 launch_thesecond="no" ;
@@ -1920,71 +1922,71 @@ case $second_option in
 "new-mini-config")
 cp "$defaultminicfg_eng" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
+zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
+zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
+zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
+zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
+zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
+zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
+zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
+zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
+zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
+zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
+zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $zenity_dimension --text="Canceled new file: $third_option" ; exit; fi
+zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else zenity --forms $zenity_dimension --text="file do not exist: $third_option" ; exit ; fi 
+else zenity --forms $graphic_dimension --text="file do not exist: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "/tmp/fiptables-$third_option"
-zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
+zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-zenity --forms $zenity_dimension --text="OK. file: $third_option"
+zenity --forms $graphic_dimension --text="OK. file: $third_option"
 else cp "/tmp/fiptables-$third_option" "$directory_config/$third_option"
-zenity --forms $zenity_dimension --text="Canceled. file: $third_option"; fi
+zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 #### 
 *)
 fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $zenity_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 #### 
@@ -2008,31 +2010,31 @@ case $second_option in
 wizard-mini)
 archivo=wizard-mini
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
-zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$archivo" \
+zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fiptables -gui custom $second_option ; $fiptables -gui list ;
 else rm "$directory_config/$second_option" ;
-zenity --info $zenity_dimension --text "Ok. $archivo canceled"; fi
+zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
 wizard-full)
 archivo=wizard-full
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
-zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$archivo" \
+zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fiptables -gui custom $second_option ; $fiptables -gui list ;
 else rm "$directory_config/$second_option" ;
-zenity --info $zenity_dimension --text "OK. $archivo canceled"; fi
+zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 #### 
 *)
 fecha_temporal=$(date | sed s/\ //g)
 $fiptables $second_option &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $zenity_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 #### 
@@ -2049,7 +2051,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
-zenity --forms $zenity_dimension --title="Type of Interface" --text="$($fiptables interface)"
+zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fiptables interface)"
 exit; fi
 ####
 ####
@@ -2060,7 +2062,7 @@ exit; fi
 if [ "$first_option" = "gui-menu" ] ; then $genfiles 
 echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
-selection=$(zenity $zenity_dimension  \
+selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool config" \
 "06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool install" "11 Show etc" \
 "12 Show log" "13 Show about" "14 Show help" \
@@ -2068,7 +2070,7 @@ selection=$(zenity $zenity_dimension  \
 #### 
 #### 
 case "$selection" in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "01 Control guide")$fiptables gui-menu-control-guide;;
 "02 Control rules")$fiptables gui-menu-control-rules;;
 "03 List rules")$fiptables gui-menu-list-rules;;
@@ -2086,7 +2088,7 @@ case "$selection" in
 #### 
 #### 
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit ;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit ;;
 esac
 exit; fi
 ####
@@ -2096,13 +2098,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-control-guide" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "info-net" "info-system" "wizard-full" "wizard-mini" \
 --column="Option list $fiptables" --text="Select one option" --title="[Control Guide] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "info-net") $fiptables -gui info-net ;;
 "info-system")$fiptables -gui info-system ;;
@@ -2111,7 +2113,7 @@ case $selection in
 #### 
 #### 
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2122,23 +2124,23 @@ exit; fi
 #### 
 ####  
 if [ "$first_option" = "gui-menu-launch-rules" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "eraserules" "offline" "allpermisive" "custom_cfg" \
 --column="Option list $fiptables" --text="Select one option" --title="[Launch Rules] [$fiptables]")
 #### 
 #### 
 case "$selection" in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "eraserules") $fiptables -gui eraserules ; $fiptables gui list ;;
 "offline") $fiptables -gui offline ; $fiptables gui list ;;
 "allpermisive") $fiptables -gui allpermisive ; $fiptables gui list ;;
-"custom_cfg")archivo="$(zenity --entry $zenity_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
+"custom_cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fiptables -gui custom $archivo ; $fiptables gui list ;;
 #### 
 #### 
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2149,29 +2151,29 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-control-rules" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $fiptables" --text="Select one option" --title="[Control Rules] [$fiptables]")
 #### 
 #### 
 case "$selection" in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "stop") $fiptables -gui stop ; $fiptables -gui list ;;
 "continue") $fiptables -gui continue ; $fiptables -gui list ;;
 "reset") $fiptables -gui reset ; $fiptables -gui list ;;
 "names") $fiptables -gui list-fw ;;
-"show")archivo="$(zenity --entry $zenity_dimension --title "[Save Firewall]" --text="$($fiptables list-fw)")" ; 
+"show")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($fiptables list-fw)")" ; 
 $fiptables -gui show $archivo ;;
-"save")archivo="$(zenity --entry $zenity_dimension --title "[Save Firewall]" --text="$($fiptables list-fw)")" ; 
+"save")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($fiptables list-fw)")" ; 
 $fiptables -gui save $archivo ;;
-"load")archivo="$(zenity --entry $zenity_dimension --title "[Load Firewall]" --text="$($fiptables list-fw)")" ;
+"load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($fiptables list-fw)")" ;
 $fiptables -gui load $archivo ; $fiptables -gui list ;;
 "actual") $fiptables -gui actual ;;
 #### 
 #### 
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2182,7 +2184,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "list" "list6" "filter-ip4" "filter-ip6" "forward" "forward6" \
 "listnum" "forwardnum" "listnum6" "forwardnum6" "nat-ip4" "nat-ip6" \
 "mangle-ip4" "mangle-ip6" "raw-ip4" "raw-ip6" "security-ip4" \
@@ -2191,7 +2193,7 @@ selection=$(zenity $zenity_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "list") $fiptables -gui list ;;
 "list6") $fiptables -gui list6 ;;
@@ -2216,7 +2218,7 @@ case $selection in
 *)
 #### 
 #### 
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2227,42 +2229,42 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-config" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "list-config" "show-config" "modify-config" "del-config" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Config] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "new-full-config")
-archivo="$(zenity $zenity_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $fiptables -gui new-full-config $archivo ;;
 "nueva-completa-config")
-archivo="$(zenity $zenity_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $fiptables -gui nueva-completa-config $archivo ;;
 "new-mini-config")
-archivo="$(zenity $zenity_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
 $fiptables -gui new-mini-config $archivo ;;
 "nueva-mini-config")
-archivo="$(zenity $zenity_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $fiptables -gui nueva-mini-config $archivo ;;
 "list-config")
 $fiptables -gui list-config ;;
 "show-config")
-archivo="$(zenity $zenity_dimension --entry --title "[show-config]" --text="$($fiptables cfg)")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[show-config]" --text="$($fiptables cfg)")" ;
 $fiptables -gui show-config $archivo ;;
 "modify-config")
-archivo="$(zenity $zenity_dimension --entry --title "[modify-config]" --text="$($fiptables cfg)")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[modify-config]" --text="$($fiptables cfg)")" ;
 $fiptables -gui modify-config $archivo ;;
 "del-config")
-archivo="$(zenity $zenity_dimension --entry --title "[del-config]" --text="$($fiptables cfg)")" ;
+archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($fiptables cfg)")" ;
 $fiptables -gui del-config $archivo;;
 *)
 #### 
 #### 
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2275,14 +2277,14 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
 "ipforwading-list" "ipforwading-on" "ipforwading-off" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu") $fiptables gui-menu ;;
 "route") $fiptables -gui route ;;
 "ss") $fiptables -gui ss ;;
@@ -2296,7 +2298,7 @@ case $selection in
 #### 
 #### 
 *)
-zenity --progress -$zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress -$graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2309,22 +2311,22 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "ping-ip4" "ping-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Icmp] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"ping-ip4")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv4 or host to ping with ipv4 ]")" ;
+"ping-ip4")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to ping with ipv4 ]")" ;
 $fiptables -gui ping-ip4 $archivo ;;
-"ping-ip6")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv6 or host to ping with ipv6 ]")" ; 
+"ping-ip6")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to ping with ipv6 ]")" ; 
 $fiptables -gui ping-ip6 $archivo ;;
 "speed-ip4") $fiptables -gui speed-ip4 ;;
 "speed-ip6") $fiptables -gui speed-ip6 ;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2337,29 +2339,29 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "trace-ip4" "trace-ip6" "host" "resolveip" "geoip" "ntpdate" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool tcp] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"trace-ip4")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv4 or host to trace with ipv4 ]")" ;
+"trace-ip4")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to trace with ipv4 ]")" ;
 $fiptables -gui trace-ip4 $archivo ;;
-"trace-ip6")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv6 or host to trace with ipv6 ]")" ; 
+"trace-ip6")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to trace with ipv6 ]")" ; 
 $fiptables -gui trace-ip6 $archivo ;;
-"host")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $fiptables -gui host $archivo ;;
-"resolveip")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
+"resolveip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
 $fiptables -gui resolveip $archivo ;;
-"geoip")archivo="$(zenity $zenity_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $fiptables -gui geoip $archivo ;;
 "ntpdate")$fiptables -gui ntpdate ;;
 #### 
 #### 
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2372,21 +2374,21 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "sudo-auth" "sudo-remove" "sudo-list" "alias-list" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sudo] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"sudo-auth")archivo="$(zenity $zenity_dimension --entry --text="[ type username to allow sudo, username1,username2 ]")" ;
+"sudo-auth")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo, username1,username2 ]")" ;
 $fiptables -gui sudo-auth $archivo ;;
 "sudo-remove")$fiptables -gui sudo-remove ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "alias-list")$fiptables -gui alias-list ;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2399,20 +2401,20 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "install" "howto-upgrade" "upgrade" "new-versions" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Install] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "install")$fiptables -gui install ;;
 "howto-upgrade")$fiptables -gui howto-upgrade ;;
 "upgrade")$fiptables -gui upgrade ;;
 "new-versions")$fiptables -gui new-versions ;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2425,13 +2427,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" "etc-default" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show etc] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "hosts") $fiptables -gui hosts ;;
 "protocols") $fiptables -gui protocols ;;
@@ -2440,7 +2442,7 @@ case $selection in
 "hosts.deny") $fiptables -gui hosts.deny ;;
 "etc-default") $fiptables -gui etc-default ;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2453,21 +2455,21 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "log-sudo" "log-sshd" "log-search" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show log] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "log-sudo")   $fiptables -gui log-sudo ;;
 "log-sshd")   $fiptables -gui log-sshd ;;
 "log-search")
-pattern="$(zenity $zenity_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
+pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2480,13 +2482,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "about" "version" "depends" "examples" "config-eng" "config-spa" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show about] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "about")$fiptables -gui about ;;
 "version")$fiptables -gui version ;;
@@ -2495,7 +2497,7 @@ case $selection in
 "config-eng")$fiptables -gui config-eng ;;
 "config-spa")$fiptables -gui config-spa ;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2508,13 +2510,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
-selection=$(zenity $zenity_dimension \
+selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "full-options" "long-help" "help" "ayuda" "notes" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show help] [$fiptables]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $zenity_dimension --text="$fiptables good bye"; exit ;;
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "full-options")$fiptables -gui full-options ;;
 "long-help") $fiptables -gui long-help ;;
@@ -2522,7 +2524,7 @@ case $selection in
 "ayuda") $fiptables -gui ayuda ;;
 "notes") $fiptables -gui notes ;;
 *)
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2550,15 +2552,15 @@ untexto="$fiptables gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms --title="[gui shell]  [$fiptables]" $zenity_dimension --text="$($fiptables basic-options)" --add-entry="$fiptables" )
+menugtk=$(zenity --forms --title="[gui shell]  [$fiptables]" $graphic_dimension --text="$($fiptables basic-options)" --add-entry="$fiptables" )
 case $? in
 1)
 ####
 ####
-#### zenity --info $zenity_dimension --text="$fiptables good bye";
+#### zenity --info $graphic_dimension --text="$fiptables good bye";
 ####
 ####
-zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
@@ -2574,19 +2576,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables new-full-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables new-full-config config.cfg"
 ;;
 "new-mini-config")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables new-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables new-mini-config config.cfg"
 ;;
 "nueva-completa-config")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
 ;;
 "new-mini-config")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables nueva-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables nueva-mini-config config.cfg"
 ;;
 "modify-config")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables modify-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables modify-config config.cfg"
 ;;
 ####
 ####
@@ -2595,19 +2597,19 @@ zenity --forms $zenity_dimension --text="$cinco Use: $fiptables modify-config co
 ####
 ####
 "new-full-config ")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables new-full-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables new-full-config config.cfg"
 ;;
 "new-mini-config ")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables new-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables new-mini-config config.cfg"
 ;;
 "nueva-completa-config ")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables nueva-completa-config config.cfg"
 ;;
 "new-mini-config ")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables nueva-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables nueva-mini-config config.cfg"
 ;;
 "modify-config ")
-zenity --forms $zenity_dimension --text="$cinco Use: $fiptables modify-config config.cfg"
+zenity --forms $graphic_dimension --text="$cinco Use: $fiptables modify-config config.cfg"
 ;;
 ####
 ####
@@ -2648,10 +2650,10 @@ wizard-mini*) $fiptables gui wizard-mini ;;
 ####
 ####
 "$NULL")
-zenity --info $zenity_dimension --text="$fiptables good bye";
-zenity --progress $zenity_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+zenity --info $graphic_dimension --text="$fiptables good bye";
+zenity --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
 *) fecha_temporal=$(date | sed s/\ //g) ; $fiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $zenity_dimension --title "[$fiptables gui-shell] [$menugtk]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+zenity --text-info $graphic_dimension --title "[$fiptables gui-shell] [$menugtk]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
