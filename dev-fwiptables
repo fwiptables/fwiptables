@@ -1075,7 +1075,7 @@ echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alia
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions howto-upgrade            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed               "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
-echo "$tab" "$tab"  "                       etc-default                                           "
+echo "$tab" "$tab"  "                       resolv.conf etc-default                               "
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
@@ -1688,18 +1688,20 @@ echo $subhead_option
 echo "$cinco         [Show etc]"
 echo "$cinco         [Mostrar etc]"
 echo
-echo "        hosts: Show /etc/hosts"
-echo "             : Muestra /etc/hosts"
-echo "   protocolos: Show /etc/protocols"
-echo "             : Muestra /etc/protocols"
-echo "     services: Show /etc/services"
-echo "             : Muestra /etc/services"
-echo "  hosts.allow: Show /etc/hosts.allow"
-echo "             : Muestra /etc/hosts.allow"
-echo "   hosts.deny: Show /etc/hosts.deny"
-echo "             : Muestra /etc/hosts.deny"
-echo "  etc-default: Show /etc/default/fwiptables"
-echo "               Muestra /etc/default/fwiptables"
+echo "        hosts: Show /etc/hosts, hosts local and statics host"
+echo "             : Muestra /etc/hosts, hosts locales y hosts estaticos"
+echo "   protocolos: Show /etc/protocols, protocols names"
+echo "             : Muestra /etc/protocols, nombres de protocolos"
+echo "     services: Show /etc/services, ports names"
+echo "             : Muestra /etc/services, nombres de los puertos"
+echo "  hosts.allow: Show /etc/hosts.allow, hosts allowed in some own server"
+echo "             : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores"
+echo "   hosts.deny: Show /etc/hosts.deny, hosts drops in some own server"
+echo "             : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores"
+echo "  resolv.conf: Show /etc/resolv.conf, it are the dns configured"
+echo "             : Muestra /etc/resolv.conf, este es el dns configurado"
+echo "  etc-default: Show /etc/default/fwiptables, overwrite variables for fwiptables"
+echo "               Muestra /etc/default/fwiptables, overwrite variables for fwiptables"
 echo $footer_option
 exit; fi
 ####
@@ -4959,6 +4961,7 @@ echo $head_option
 echo "$cinco [ show the file /etc/hosts ]"
 echo $subhead_option
 cat /etc/hosts
+echo $ralla
 echo "$cinco This file is /etc/hosts"
 echo $footer_option
 exit; fi
@@ -4973,6 +4976,7 @@ echo $head_option
 echo "$cinco [ show the file /etc/protocols ]"
 echo $subhead_option
 cat /etc/protocols  | sed s/\&//g 
+echo $ralla
 echo "$cinco This file is /etc/protocols"
 echo $footer_option
 exit; fi
@@ -4987,6 +4991,7 @@ echo $head_option
 echo "$cinco [ show the file /etc/services ]"
 echo $subhead_option
 cat /etc/services | sed s/\&//g 
+echo $ralla
 echo "$cinco This file is /etc/services"
 echo $footer_option
 exit; fi
@@ -5001,13 +5006,14 @@ echo $head_option
 echo "$cinco [ show the file /etc/allow ]"
 echo $subhead_option
 cat /etc/hosts.allow
+echo $ralla
 echo "$cinco This file is /etc/hosts.allow"
 echo $footer_option
 exit; fi
 ####
 ####
-############################       english: host.allow: show /etc/host.deny
-############################       spanish: host.allow: muestra /etc/host.deny
+############################       english: hosts.deny: show /etc/host.deny
+############################       spanish: hosts.deny: muestra /etc/host.deny
 ####
 ####
 if [ "$first_option" = "hosts.deny" ]; then $nada
@@ -5015,7 +5021,23 @@ echo $head_option
 echo "$cinco [ show the file /etc/deny ]"
 echo $subhead_option
 cat /etc/hosts.deny
+echo $ralla
 echo "$cinco This file is /etc/hosts.deny"
+echo $footer_option
+exit; fi
+####
+####
+############################       english: resolv.conf: show /etc/resolv.conf
+############################       spanish: resolv.conf: muestra /etc/resolv.conf
+####
+####
+if [ "$first_option" = "resolv.conf" ]; then $nada
+echo $head_option
+echo "$cinco [ show the file /resolv.conf ]"
+echo $subhead_option
+cat /etc/resolv.conf
+echo $ralla
+echo "$cinco This file is /etc/resolv.conf"
 echo $footer_option
 exit; fi
 ####
@@ -5336,12 +5358,13 @@ echo "      upgrade: Upgrade at the latest version"
 echo
 echo "$cinco         [Show etc]"
 echo
-echo "        hosts: Show /etc/hosts"
-echo "   protocolos: Show /etc/protocols"
-echo "     services: Show /etc/services"
-echo "  hosts.allow: Sshow /etc/hosts.allow"
-echo "   hosts.deny: Sshow /etc/hosts.deny"
-echo "  etc-default: Show /etc/default/fwiptables"
+echo "        hosts: Show /etc/hosts, hosts local and statics host"
+echo "   protocolos: Show /etc/protocols, protocols names"
+echo "     services: Show /etc/services, ports names"
+echo "  hosts.allow: Show /etc/hosts.allow, hosts allowed in some own server"
+echo "   hosts.deny: Show /etc/hosts.deny, hosts drops in some own server"
+echo "  resolv.conf: Show /etc/resolv.conf, it are the dns configured"
+echo "  etc-default: Show /etc/default/fwiptables, overwrite variables for fwiptables"
 echo
 echo "$cinco         [Show log]"
 echo
@@ -5569,12 +5592,13 @@ echo " upgrade: Actualiza a la ultima version"
 echo
 echo "$cinco         [Mostrar etc]"
 echo
-echo "        hosts: Muestra /etc/hosts"
-echo "   protocolos: Muestra /etc/protocols"
-echo "     services: Muestra /etc/services"
-echo "  hosts.allow: Muestra /etc/hosts.allow"
-echo "   hosts.deny: Muestra /etc/hosts.deny"
-echo "  etc-default: Muestra /etc/default/fwiptables"
+echo "        hosts: Muestra /etc/hosts, hosts locales y hosts estaticos"
+echo "   protocolos: Muestra /etc/protocols, nombres de protocolos"
+echo "     services: Muestra /etc/services, nombres de puertos y servicios"
+echo "  hosts.allow: Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores"
+echo "   hosts.deny: Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores"
+echo "  resolv.conf: Muestra /etc/resolv.conf, este es el dns configurado"
+echo "  etc-default: Muestra /etc/default/fwiptables, sobrescribe variables en fwiptables"
 echo
 echo "$cinco         [Mostrar log]"
 echo
