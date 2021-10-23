@@ -1027,7 +1027,7 @@ echo "$tab" "$tab"  "______________________               | Other options |     
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
-echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias            "
+echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    show-about         about version depends examples ..                     "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1071,7 +1071,7 @@ echo "$tab" "$tab"  "    tool-forward       ipforwading-list ipforwading-on ipfo
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
-echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list list-alias            "
+echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions howto-upgrade            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed               "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
@@ -2393,7 +2393,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
 selection=$(zenity $zenity_dimension \
---list "Gui Principal Menu" "sudo-auth" "sudo-remove" "sudo-list" "list-alias" \
+--list "Gui Principal Menu" "sudo-auth" "sudo-remove" "sudo-list" "alias-list" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sudo] [$fiptables]" )
 #### 
 #### 
@@ -2404,7 +2404,7 @@ case $selection in
 $fiptables -gui sudo-auth $archivo ;;
 "sudo-remove")$fiptables -gui sudo-remove ;;
 "sudo-list")$fiptables -gui sudo-list ;;
-"list-alias")$fiptables -gui list-alias ;;
+"alias-list")$fiptables -gui alias-list ;;
 *)
 zenity --progress $zenity_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -3991,11 +3991,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: list-alias: the sudo-auth option en english
-############################       spanish: list-alias: la opcion de sudo-auth en ingles
+############################       english: alias-list: the sudo-auth option en english
+############################       spanish: alias-list: la opcion de sudo-auth en ingles
 ####
 ####
-if [ "$first_option" = "list-alias" ]; then $nada
+if [ "$first_option" = "alias-list" ]; then $nada
 echo $head_option
 echo "$cinco [ list alias and autocomplete for $fiptables ]"
 echo $subhead_option
