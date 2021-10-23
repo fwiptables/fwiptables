@@ -1054,7 +1054,8 @@ echo "$tab" "$tab"  "                       resolv.conf etc-default             
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
-echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda notes               "
+echo "$tab" "$tab"  "    show-help          long-help help ayuda notes basic-options full-options "
+
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
@@ -1064,6 +1065,7 @@ echo "$tab" "$tab"  "  List iptables rules to output default:#   $fiptables list
 echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
 echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
 echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
+echo "$tab" "$tab"  "  For less options:#                        $fiptables basic-options         "
 echo $footer_option
 exit ; fi
 ####
