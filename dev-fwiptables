@@ -952,28 +952,29 @@ exit ; fi
 ##############################       spanish: Install-bin:  instala fwiptables en binario    ###########################################
 ####
 #### 
-#### if [ "$first_option" = "install-bin" ] ; then $nada ;
-#### case $(which shc) in
-#### "$NULL") echo "$cinco install shc to compile $fwiptables" ;;
-#### *)
-#### echo $head_option
-#### echo $subhead_option
-#### if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
-#### cp $zero_option /tmp/$fiptables-source &> /dev/null ;
-#### cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
-#### shc -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
-#### chmod ugo+rx /tmp/$fiptables-bin
-#### cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
-#### echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
-#### echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables
-#### echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables
-#### echo "complete -W 'list list6 forward forward6 nat nat-ip6 list-help info-net' $fiptables" >>  /etc/bash_completion.d/$fiptables
-#### chmod ugo+rx /etc/bash_completion.d/$fiptables
-#### chmod ugo+rx $directory_fiptables/$fiptables
-#### echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
-#### ;;
-#### esac
-#### exit; fi
+####  if [ "$first_option" = "install-bin" ] ; then $nada ;
+####  case $(which shc) in
+####  "$NULL") echo "$cinco install shc to compile $fwiptables" ; exit ;; esac
+####  echo $head_option
+####  echo $subhead_option
+####  read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
+####  if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
+####  then echo "$cinco [ OK. ACCEPTED LICENSE ] [ Continue install ]"
+####  else echo "$cinco [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi
+####  if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
+####  cp $zero_option /tmp/$fiptables-source &> /dev/null ;
+####  cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
+####  shc -r -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
+####  chmod ugo+rx /tmp/$fiptables-bin
+####  cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
+####  echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
+####  echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables
+####  echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables
+####  echo "complete -W 'list list6 forward forward6 nat nat-ip6 list-help info-net' $fiptables" >>  /etc/bash_completion.d/$fiptables
+####  chmod ugo+rx /etc/bash_completion.d/$fiptables
+####  chmod ugo+rx $directory_fiptables/$fiptables
+####  echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
+####  exit; fi
 ####
 ####
 ##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
