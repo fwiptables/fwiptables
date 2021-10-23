@@ -991,7 +991,7 @@ echo $subhead_option
 echo "$tab" "$tab" "______________________                | Principal options |                   "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4 nat-ip6 .. "
+echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4  ..        "
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                       "
@@ -1053,7 +1053,8 @@ echo "$tab" "$tab"  "                       resolv.conf etc-default             
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
-echo "$tab" "$tab"  "    show-help          long-help help ayuda notes basic-options full-options "
+echo "$tab" "$tab"  "    show-help          long-help help ayuda notes basic-options              "
+echo "$tab" "$tab"  "                       full-options                                          "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
@@ -4869,18 +4870,6 @@ echo $subhead_option
 find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
 echo $footer_option
 exit; fi
-####
-####
-############################       english: log-logserver: log from ssh server
-############################       spanish: log-logserver: log desde el servidor de ssh
-####
-####
-#### if [ "$first_option" = "log-logserver" ]; then $nada
-#### echo $head_option
-#### echo $subhead_option
-#### find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "logserver:"
-#### echo $footer_option
-#### exit; fi
 ####
 ####
 ############################       english: log-search: log from a one search
