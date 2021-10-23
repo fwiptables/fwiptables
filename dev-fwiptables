@@ -46,7 +46,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-default_option="basic-options"                #### over fwiptables-for-default    #### default: basic-options
+default_option="full-options"            #### over fwiptables-for-default    #### default: basic-options
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
@@ -2552,7 +2552,8 @@ untexto="$fiptables gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms --title="[gui shell]  [$fiptables]" $graphic_dimension --text="$($fiptables basic-options)" --add-entry="$fiptables" )
+menugtk=$(zenity --forms $graphic_dimension --title="[gui shell]  [$fiptables]" \
+--text="$($fiptables basic-options)" --add-entry="$fiptables " )
 case $? in
 1)
 ####
@@ -2560,7 +2561,8 @@ case $? in
 #### zenity --info $graphic_dimension --text="$fiptables good bye";
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" \
+--auto-close --auto-kill ; exit;;
 esac
 ####
 ####
