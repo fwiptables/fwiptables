@@ -204,7 +204,7 @@ if [ "$first_option" = "log" ] ; then $nada
 case "fwiptables" in
 "$second_option") echo "Do not recursive" ;;
 "$third_option") echo "Do not recursive";;
-*) $fiptables $second_option $third_option >> /var/log/fwiptables
+*) $fiptables $second_option $third_option &>> /var/log/fwiptables
 echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" ;;
 esac
 exit; fi
@@ -218,7 +218,7 @@ if [ "$first_option" = "-log" ] ; then $nada
 case "fwiptables" in
 "$second_option") echo "Do not recursive" ;;
 "$third_option") echo "Do not recursive";;
-*) $fiptables $second_option $third_option >> /var/log/fwiptables
+*) $fiptables $second_option $third_option &>> /var/log/fwiptables
 echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" ;;
 esac
 exit; fi
@@ -537,193 +537,193 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $me
-echo $var1  $tabz $eng1  >> $me
-echo $var2  $tabz $eng2  >> $me
-echo $var3  $tabz $eng3  >> $me
-echo $var4  $tabz $eng4  >> $me
-echo $var5  $tabz $eng5  >> $me
-echo $var6  $tabz $eng6  >> $me
-echo $var7  $tabz $eng7  >> $me
-echo $var8  $tabz $eng8  >> $me
-echo $var9  $tabz $eng9  >> $me
-echo $var10 $tabz $eng10 >> $me
-echo $var11 $tabz $eng11 >> $me
-echo $var12 $tabz $eng12 >> $me
-echo $var13 $tabz $eng13 >> $me
-echo $var14 $tabz $eng14 >> $me
-echo $var15 $tabz $eng15 >> $me
-echo $var16 $tabz $eng16 >> $me
-echo $var17 $tabz $eng17 >> $me
-echo $var18 $tabz $eng18 >> $me
-echo $var19 $tabz $eng19 >> $me
-echo $var20 $tabz $eng20 >> $me
-echo $var21 $tabz $eng21 >> $me
-echo $var22 $tabz $eng22 >> $me
-echo $var23 $tabz $eng23 >> $me
+echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $me
+echo $var1  $tabz $eng1  &>> $me
+echo $var2  $tabz $eng2  &>> $me
+echo $var3  $tabz $eng3  &>> $me
+echo $var4  $tabz $eng4  &>> $me
+echo $var5  $tabz $eng5  &>> $me
+echo $var6  $tabz $eng6  &>> $me
+echo $var7  $tabz $eng7  &>> $me
+echo $var8  $tabz $eng8  &>> $me
+echo $var9  $tabz $eng9  &>> $me
+echo $var10 $tabz $eng10 &>> $me
+echo $var11 $tabz $eng11 &>> $me
+echo $var12 $tabz $eng12 &>> $me
+echo $var13 $tabz $eng13 &>> $me
+echo $var14 $tabz $eng14 &>> $me
+echo $var15 $tabz $eng15 &>> $me
+echo $var16 $tabz $eng16 &>> $me
+echo $var17 $tabz $eng17 &>> $me
+echo $var18 $tabz $eng18 &>> $me
+echo $var19 $tabz $eng19 &>> $me
+echo $var20 $tabz $eng20 &>> $me
+echo $var21 $tabz $eng21 &>> $me
+echo $var22 $tabz $eng22 &>> $me
+echo $var23 $tabz $eng23 &>> $me
 ####
 ####
 #### wizard mini-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $ms
-echo $var1  $tabz $spa1  >> $ms
-echo $var2  $tabz $spa2  >> $ms
-echo $var3  $tabz $spa3  >> $ms
-echo $var4  $tabz $spa4  >> $ms
-echo $var5  $tabz $spa5  >> $ms
-echo $var6  $tabz $spa6  >> $ms
-echo $var7  $tabz $spa7  >> $ms
-echo $var8  $tabz $spa8  >> $ms
-echo $var9  $tabz $spa9  >> $ms
-echo $var10 $tabz $spa10 >> $ms
-echo $var11 $tabz $spa11 >> $ms
-echo $var12 $tabz $spa12 >> $ms
-echo $var13 $tabz $spa13 >> $ms
-echo $var14 $tabz $spa14 >> $ms
-echo $var15 $tabz $spa15 >> $ms
-echo $var16 $tabz $spa16 >> $ms
-echo $var17 $tabz $spa17 >> $ms
-echo $var18 $tabz $spa18 >> $ms
-echo $var19 $tabz $spa19 >> $ms
-echo $var20 $tabz $spa20 >> $ms
-echo $var21 $tabz $spa21 >> $ms
-echo $var22 $tabz $spa22 >> $ms
-echo $var23 $tabz $spa23 >> $ms
+echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $ms
+echo $var1  $tabz $spa1  &>> $ms
+echo $var2  $tabz $spa2  &>> $ms
+echo $var3  $tabz $spa3  &>> $ms
+echo $var4  $tabz $spa4  &>> $ms
+echo $var5  $tabz $spa5  &>> $ms
+echo $var6  $tabz $spa6  &>> $ms
+echo $var7  $tabz $spa7  &>> $ms
+echo $var8  $tabz $spa8  &>> $ms
+echo $var9  $tabz $spa9  &>> $ms
+echo $var10 $tabz $spa10 &>> $ms
+echo $var11 $tabz $spa11 &>> $ms
+echo $var12 $tabz $spa12 &>> $ms
+echo $var13 $tabz $spa13 &>> $ms
+echo $var14 $tabz $spa14 &>> $ms
+echo $var15 $tabz $spa15 &>> $ms
+echo $var16 $tabz $spa16 &>> $ms
+echo $var17 $tabz $spa17 &>> $ms
+echo $var18 $tabz $spa18 &>> $ms
+echo $var19 $tabz $spa19 &>> $ms
+echo $var20 $tabz $spa20 &>> $ms
+echo $var21 $tabz $spa21 &>> $ms
+echo $var22 $tabz $spa22 &>> $ms
+echo $var23 $tabz $spa23 &>> $ms
 ####
 ####
 #### wizard full-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fe
-echo $var1  $tabz $eng1  >> $fe
-echo $var2  $tabz $eng2  >> $fe
-echo $var3  $tabz $eng3  >> $fe
-echo $var4  $tabz $eng4  >> $fe
-echo $var5  $tabz $eng5  >> $fe
-echo $var6  $tabz $eng6  >> $fe
-echo $var7  $tabz $eng7  >> $fe
-echo $var8  $tabz $eng8  >> $fe
-echo $var9  $tabz $eng9  >> $fe
-echo $var10 $tabz $eng10 >> $fe
-echo $var11 $tabz $eng11 >> $fe
-echo $var12 $tabz $eng12 >> $fe
-echo $var13 $tabz $eng13 >> $fe
-echo $var14 $tabz $eng14 >> $fe
-echo $var15 $tabz $eng15 >> $fe
-echo $var16 $tabz $eng16 >> $fe
-echo $var17 $tabz $eng17 >> $fe
-echo $var18 $tabz $eng18 >> $fe
-echo $var19 $tabz $eng19 >> $fe
-echo $var20 $tabz $eng20 >> $fe
-echo $var21 $tabz $eng21 >> $fe
-echo $var22 $tabz $eng22 >> $fe
-echo $var23 $tabz $eng23 >> $fe
+echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $fe
+echo $var1  $tabz $eng1  &>> $fe
+echo $var2  $tabz $eng2  &>> $fe
+echo $var3  $tabz $eng3  &>> $fe
+echo $var4  $tabz $eng4  &>> $fe
+echo $var5  $tabz $eng5  &>> $fe
+echo $var6  $tabz $eng6  &>> $fe
+echo $var7  $tabz $eng7  &>> $fe
+echo $var8  $tabz $eng8  &>> $fe
+echo $var9  $tabz $eng9  &>> $fe
+echo $var10 $tabz $eng10 &>> $fe
+echo $var11 $tabz $eng11 &>> $fe
+echo $var12 $tabz $eng12 &>> $fe
+echo $var13 $tabz $eng13 &>> $fe
+echo $var14 $tabz $eng14 &>> $fe
+echo $var15 $tabz $eng15 &>> $fe
+echo $var16 $tabz $eng16 &>> $fe
+echo $var17 $tabz $eng17 &>> $fe
+echo $var18 $tabz $eng18 &>> $fe
+echo $var19 $tabz $eng19 &>> $fe
+echo $var20 $tabz $eng20 &>> $fe
+echo $var21 $tabz $eng21 &>> $fe
+echo $var22 $tabz $eng22 &>> $fe
+echo $var23 $tabz $eng23 &>> $fe
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo $var31 $tabz $eng31 >> $fe
-echo $var32 $tabz $eng32 >> $fe
-echo $var33 $tabz $eng33 >> $fe
-echo $var34 $tabz $eng34 >> $fe
-echo $var35 $tabz $eng35 >> $fe
-echo $var36 $tabz $eng36 >> $fe
-echo $var37 $tabz $eng37 >> $fe
-echo $var38 $tabz $eng38 >> $fe
-echo $var39 $tabz $eng39 >> $fe
-echo $var40 $tabz $eng40 >> $fe
-echo $var41 $tabz $eng41 >> $fe
-echo $var42 $tabz $eng42 >> $fe
-echo $var43 $tabz $eng43 >> $fe
-echo $var44 $tabz $eng44 >> $fe
-echo $var45 $tabz $eng45 >> $fe
-echo $var46 $tabz $eng46 >> $fe
-echo $var47 $tabz $eng47 >> $fe
-echo $var48 $tabz $eng48 >> $fe
-echo $var49 $tabz $eng49 >> $fe
-echo $var50 $tabz $eng50 >> $fe
-echo $var51 $tabz $eng51 >> $fe
-echo $var52 $tabz $eng52 >> $fe
-echo $var53 $tabz $eng53 >> $fe
-echo $var54 $tabz $eng54 >> $fe
-echo $var55 $tabz $eng55 >> $fe
-echo $var56 $tabz $eng56 >> $fe
-echo $var57 $tabz $eng57 >> $fe
-echo $var58 $tabz $eng58 >> $fe
-echo $var59 $tabz $eng59 >> $fe
-echo $var60 $tabz $eng60 >> $fe
-echo $var61 $tabz $eng61 >> $fe
-echo $var62 $tabz $eng62 >> $fe
-echo $var63 $tabz $eng63 >> $fe
-echo $var64 $tabz $eng64 >> $fe
-echo $var65 $tabz $eng65 >> $fe
-echo $var66 $tabz $eng66 >> $fe
+echo $var31 $tabz $eng31 &>> $fe
+echo $var32 $tabz $eng32 &>> $fe
+echo $var33 $tabz $eng33 &>> $fe
+echo $var34 $tabz $eng34 &>> $fe
+echo $var35 $tabz $eng35 &>> $fe
+echo $var36 $tabz $eng36 &>> $fe
+echo $var37 $tabz $eng37 &>> $fe
+echo $var38 $tabz $eng38 &>> $fe
+echo $var39 $tabz $eng39 &>> $fe
+echo $var40 $tabz $eng40 &>> $fe
+echo $var41 $tabz $eng41 &>> $fe
+echo $var42 $tabz $eng42 &>> $fe
+echo $var43 $tabz $eng43 &>> $fe
+echo $var44 $tabz $eng44 &>> $fe
+echo $var45 $tabz $eng45 &>> $fe
+echo $var46 $tabz $eng46 &>> $fe
+echo $var47 $tabz $eng47 &>> $fe
+echo $var48 $tabz $eng48 &>> $fe
+echo $var49 $tabz $eng49 &>> $fe
+echo $var50 $tabz $eng50 &>> $fe
+echo $var51 $tabz $eng51 &>> $fe
+echo $var52 $tabz $eng52 &>> $fe
+echo $var53 $tabz $eng53 &>> $fe
+echo $var54 $tabz $eng54 &>> $fe
+echo $var55 $tabz $eng55 &>> $fe
+echo $var56 $tabz $eng56 &>> $fe
+echo $var57 $tabz $eng57 &>> $fe
+echo $var58 $tabz $eng58 &>> $fe
+echo $var59 $tabz $eng59 &>> $fe
+echo $var60 $tabz $eng60 &>> $fe
+echo $var61 $tabz $eng61 &>> $fe
+echo $var62 $tabz $eng62 &>> $fe
+echo $var63 $tabz $eng63 &>> $fe
+echo $var64 $tabz $eng64 &>> $fe
+echo $var65 $tabz $eng65 &>> $fe
+echo $var66 $tabz $eng66 &>> $fe
 ####
 ####
 #### wizard full-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" > $fs
-echo $var1  $tabz $spa1 >> $fs
-echo $var2  $tabz $spa2 >> $fs
-echo $var3  $tabz $spa3 >> $fs
-echo $var4  $tabz $spa4 >> $fs
-echo $var5  $tabz $spa5 >> $fs
-echo $var6  $tabz $spa6 >> $fs
-echo $var7  $tabz $spa7 >> $fs
-echo $var8  $tabz $spa8 >> $fs
-echo $var9  $tabz $spa9 >> $fs
-echo $var10 $tabz $spa10 >> $fs
-echo $var11 $tabz $spa11 >> $fs
-echo $var12 $tabz $spa12 >> $fs
-echo $var13 $tabz $spa13 >> $fs
-echo $var14 $tabz $spa14 >> $fs
-echo $var15 $tabz $spa15 >> $fs
-echo $var16 $tabz $spa16 >> $fs
-echo $var17 $tabz $spa17 >> $fs
-echo $var18 $tabz $spa18 >> $fs
-echo $var19 $tabz $spa19 >> $fs
-echo $var20 $tabz $spa20 >> $fs
-echo $var21 $tabz $spa21 >> $fs
-echo $var22 $tabz $spa22 >> $fs
-echo $var23 $tabz $spa23 >> $fs
+echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $fs
+echo $var1  $tabz $spa1 &>> $fs
+echo $var2  $tabz $spa2 &>> $fs
+echo $var3  $tabz $spa3 &>> $fs
+echo $var4  $tabz $spa4 &>> $fs
+echo $var5  $tabz $spa5 &>> $fs
+echo $var6  $tabz $spa6 &>> $fs
+echo $var7  $tabz $spa7 &>> $fs
+echo $var8  $tabz $spa8 &>> $fs
+echo $var9  $tabz $spa9 &>> $fs
+echo $var10 $tabz $spa10 &>> $fs
+echo $var11 $tabz $spa11 &>> $fs
+echo $var12 $tabz $spa12 &>> $fs
+echo $var13 $tabz $spa13 &>> $fs
+echo $var14 $tabz $spa14 &>> $fs
+echo $var15 $tabz $spa15 &>> $fs
+echo $var16 $tabz $spa16 &>> $fs
+echo $var17 $tabz $spa17 &>> $fs
+echo $var18 $tabz $spa18 &>> $fs
+echo $var19 $tabz $spa19 &>> $fs
+echo $var20 $tabz $spa20 &>> $fs
+echo $var21 $tabz $spa21 &>> $fs
+echo $var22 $tabz $spa22 &>> $fs
+echo $var23 $tabz $spa23 &>> $fs
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo $var31 $tabz $spa31 >> $fs
-echo $var32 $tabz $spa32 >> $fs
-echo $var33 $tabz $spa33 >> $fs
-echo $var34 $tabz $spa34 >> $fs
-echo $var35 $tabz $spa35 >> $fs
-echo $var36 $tabz $spa36 >> $fs
-echo $var37 $tabz $spa37 >> $fs
-echo $var38 $tabz $spa38 >> $fs
-echo $var39 $tabz $spa39 >> $fs
-echo $var40 $tabz $spa40 >> $fs
-echo $var41 $tabz $spa41 >> $fs
-echo $var42 $tabz $spa42 >> $fs
-echo $var43 $tabz $spa43 >> $fs
-echo $var44 $tabz $spa44 >> $fs
-echo $var45 $tabz $spa45 >> $fs
-echo $var46 $tabz $spa46 >> $fs
-echo $var47 $tabz $spa47 >> $fs
-echo $var48 $tabz $spa48 >> $fs
-echo $var49 $tabz $spa49 >> $fs
-echo $var50 $tabz $spa50 >> $fs
-echo $var51 $tabz $spa51 >> $fs
-echo $var52 $tabz $spa52 >> $fs
-echo $var53 $tabz $spa53 >> $fs
-echo $var54 $tabz $spa54 >> $fs
-echo $var55 $tabz $spa55 >> $fs
-echo $var56 $tabz $spa56 >> $fs
-echo $var57 $tabz $spa57 >> $fs
-echo $var58 $tabz $eng58 >> $fs
-echo $var59 $tabz $eng59 >> $fs
-echo $var60 $tabz $eng60 >> $fs
-echo $var61 $tabz $eng61 >> $fs
-echo $var62 $tabz $eng62 >> $fs
-echo $var63 $tabz $eng63 >> $fs
-echo $var64 $tabz $eng64 >> $fs
-echo $var65 $tabz $eng65 >> $fs
-echo $var66 $tabz $eng66 >> $fs
+echo $var31 $tabz $spa31 &>> $fs
+echo $var32 $tabz $spa32 &>> $fs
+echo $var33 $tabz $spa33 &>> $fs
+echo $var34 $tabz $spa34 &>> $fs
+echo $var35 $tabz $spa35 &>> $fs
+echo $var36 $tabz $spa36 &>> $fs
+echo $var37 $tabz $spa37 &>> $fs
+echo $var38 $tabz $spa38 &>> $fs
+echo $var39 $tabz $spa39 &>> $fs
+echo $var40 $tabz $spa40 &>> $fs
+echo $var41 $tabz $spa41 &>> $fs
+echo $var42 $tabz $spa42 &>> $fs
+echo $var43 $tabz $spa43 &>> $fs
+echo $var44 $tabz $spa44 &>> $fs
+echo $var45 $tabz $spa45 &>> $fs
+echo $var46 $tabz $spa46 &>> $fs
+echo $var47 $tabz $spa47 &>> $fs
+echo $var48 $tabz $spa48 &>> $fs
+echo $var49 $tabz $spa49 &>> $fs
+echo $var50 $tabz $spa50 &>> $fs
+echo $var51 $tabz $spa51 &>> $fs
+echo $var52 $tabz $spa52 &>> $fs
+echo $var53 $tabz $spa53 &>> $fs
+echo $var54 $tabz $spa54 &>> $fs
+echo $var55 $tabz $spa55 &>> $fs
+echo $var56 $tabz $spa56 &>> $fs
+echo $var57 $tabz $spa57 &>> $fs
+echo $var58 $tabz $eng58 &>> $fs
+echo $var59 $tabz $eng59 &>> $fs
+echo $var60 $tabz $eng60 &>> $fs
+echo $var61 $tabz $eng61 &>> $fs
+echo $var62 $tabz $eng62 &>> $fs
+echo $var63 $tabz $eng63 &>> $fs
+echo $var64 $tabz $eng64 &>> $fs
+echo $var65 $tabz $eng65 &>> $fs
+echo $var66 $tabz $eng66 &>> $fs
 exit; fi
 ####
 ####
@@ -894,14 +894,14 @@ if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion
 echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
 #### 
 #### 
-#### echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables
+#### echo "#!/bin/bash"       &>  /etc/bash_completion.d/$fiptables
 #### 
 #### 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >  /etc/bash_completion.d/$fiptables
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
 echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 full-options long-help cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" >>  /etc/bash_completion.d/$fiptables
-echo "$(head -140 $0 | grep fwiptables-for-default)" > /etc/default/fwiptables
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
+echo "$(head -140 $0 | grep fwiptables-for-default)" &> /etc/default/fwiptables
 #### 
 #### 
 #### english: modes of file #### spanish: modos de archivo
@@ -937,7 +937,7 @@ case "$favorite_text_browser" in
 "$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 echo "$cinco [ Waiting several seconds .. ]"
-$favorite_text_browser -source "$fweb_latest" > "/tmp/$fiptables"
+$favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
 if [ -s /tmp/$fiptables ]; then
 chmod ugo+rx /tmp/$fiptables &> /dev/null
 /tmp/$fiptables install
@@ -963,14 +963,14 @@ exit ; fi
 ####  else echo "$cinco [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi
 ####  if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi
 ####  cp $zero_option /tmp/$fiptables-source &> /dev/null ;
-####  cat /tmp/$fiptables-source | grep -v ^## - > /tmp/$fiptables-uncommented
-####  shc -r -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
+####  cat /tmp/$fiptables-source | grep -v ^## - &> /tmp/$fiptables-uncommented
+####  shc -f /tmp/$fiptables-uncommented -o /tmp/$fiptables-bin
 ####  chmod ugo+rx /tmp/$fiptables-bin
 ####  cp /tmp/$fiptables-bin $directory_fiptables/$fiptables
 ####  echo "$cinco [$fiptables $fversion / BINARY INSTALLED IN:] $directory_fiptables/$fiptables" ;
-####  echo "#!/bin/bash"       >  /etc/bash_completion.d/$fiptables
-####  echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       >>  /etc/bash_completion.d/$fiptables
-####  echo "complete -W 'list list6 forward forward6 nat nat-ip6 list-help info-net' $fiptables" >>  /etc/bash_completion.d/$fiptables
+####  echo "#!/bin/bash"       &>  /etc/bash_completion.d/$fiptables
+####  echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>>  /etc/bash_completion.d/$fiptables
+####  echo "complete -W 'list list6 forward forward6 nat nat-ip6 list-help info-net' $fiptables" &>>  /etc/bash_completion.d/$fiptables
 ####  chmod ugo+rx /etc/bash_completion.d/$fiptables
 ####  chmod ugo+rx $directory_fiptables/$fiptables
 ####  echo "$cinco [Launch $fiptables to run / TYPE:] $fiptables"
@@ -1945,7 +1945,7 @@ cp "$defaultminicfg_eng" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
---editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -1958,7 +1958,7 @@ cp "$defaultfullcfg_eng" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
---editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -1971,7 +1971,7 @@ cp "$defaultminicfg_spa" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
---editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -1984,7 +1984,7 @@ cp "$defaultfullcfg_spa" "/tmp/fiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="file $third_option exists" ; exit 
 else zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
---editable --title="MODIFY FILE" > "$directory_config/$third_option" ; fi
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $zenity_dimension --text="OK new file: $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -1997,7 +1997,7 @@ if [ -f "$directory_config/$third_option" ] ; then $nada
 else zenity --forms $zenity_dimension --text="file do not exist: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "/tmp/fiptables-$third_option"
 zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$third_option" \
---editable --title="MODIFY FILE" > "$directory_config/$third_option"
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 zenity --forms $zenity_dimension --text="OK. file: $third_option"
 else cp "/tmp/fiptables-$third_option" "$directory_config/$third_option"
@@ -2006,7 +2006,7 @@ zenity --forms $zenity_dimension --text="Canceled. file: $third_option"; fi
 #### 
 #### 
 *)
-fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option > /tmp/fwiptables-$fecha_temporal
+fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option &> /tmp/fwiptables-$fecha_temporal
 zenity --text-info $zenity_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
@@ -2032,7 +2032,7 @@ wizard-mini)
 archivo=wizard-mini
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$archivo" \
---editable --title="MODIFY FILE" > "$directory_config/$second_option"
+--editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fiptables -gui custom $second_option ; $fiptables -gui list ;
 else rm "$directory_config/$second_option" ;
@@ -2044,7 +2044,7 @@ wizard-full)
 archivo=wizard-full
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 zenity --text-info $zenity_dimension --filename="/tmp/fiptables-$archivo" \
---editable --title="MODIFY FILE" > "$directory_config/$second_option"
+--editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fiptables -gui custom $second_option ; $fiptables -gui list ;
 else rm "$directory_config/$second_option" ;
@@ -2054,7 +2054,7 @@ zenity --info $zenity_dimension --text "OK. $archivo canceled"; fi
 #### 
 *)
 fecha_temporal=$(date | sed s/\ //g)
-$fiptables $second_option > /tmp/fwiptables-$fecha_temporal
+$fiptables $second_option &> /tmp/fwiptables-$fecha_temporal
 zenity --text-info $zenity_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
@@ -2673,7 +2673,7 @@ wizard-mini*) $fiptables gui wizard-mini ;;
 "$NULL")
 zenity --info $zenity_dimension --text="$fiptables good bye";
 zenity --progress $zenity_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
-*) fecha_temporal=$(date | sed s/\ //g) ; $fiptables $menugtk > /tmp/fwiptables-$fecha_temporal
+*) fecha_temporal=$(date | sed s/\ //g) ; $fiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
 zenity --text-info $zenity_dimension --title "[$fiptables gui-shell] [$menugtk]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
@@ -3128,7 +3128,7 @@ $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i down
 echo "$cinco"
 echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
 echo "$cinco    OR download manually   || OR $fiptables upgrade || OR look down: "
-echo "$favorite_text_browser -source $fweb_latest > /tmp/$fiptables"
+echo "$favorite_text_browser -source $fweb_latest &> /tmp/$fiptables"
 echo "chmod ugo+x /tmp/$fiptables"
 echo "/tmp/$fiptables install"
 echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fiptables"
@@ -3946,8 +3946,8 @@ if [ "$first_option" = "sudo-auth" ]; then $nada
 case $second_option in
 "$NULL") echo $head_option ; echo $subhead_option ; echo "$cinco Use: $fiptables sudo-auth user" ; exit ;;
 *) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fiptables " > /etc/sudoers.d/$fiptables
-echo "alias $fiptables='sudo $fiptables'" >  /etc/bash_completion.d/$fiptables
+echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fiptables " &> /etc/sudoers.d/$fiptables
+echo "alias $fiptables='sudo $fiptables'" &>  /etc/bash_completion.d/$fiptables
 echo "$cinco $cinco"
 echo "$cinco    Ok. $autorizados will use:     $fiptables"
 echo "$cinco    Ok. $fiptables will use alias with sudo "
@@ -4174,10 +4174,10 @@ $fiptables eraserules &> /dev/null
 #### English: Load all rules
 ####
 ####
-$which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4 >> /dev/null
-$which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4 >> /dev/null
-$which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 >> /dev/null
-$which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6 >> /dev/null
+$which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4 &>> /dev/null
+$which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4 &>> /dev/null
+$which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 &>> /dev/null
+$which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6 &>> /dev/null
 echo "$cinco [ OK FIREWALL LOADED ] [ $second_option ]"
 else
 echo "$cinco [usage: $fiptables load fw-to-restore] [SEE: $fiptables list-fw]"
@@ -4201,10 +4201,10 @@ case "$second_option" in
 "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
 *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
 esac
-$which_iptables_nft-save > $directory_fwrecover/$archivofin-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/$archivofin-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/$archivofin-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/$archivofin-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv6
 echo "$cinco [ OK FIREWALL SAVED ] [ $archivofin ]"
 ls -l $directory_fwrecover/$archivofin-nft-ipv4
 ls -l $directory_fwrecover/$archivofin-nft-ipv6
@@ -4253,10 +4253,10 @@ if [ "$first_option" = "actual" ]; then $genfiles
 echo $head_option
 echo "$cinco [ show the last firewall saved ]"
 echo $subhead_option
-$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/last-legacy-ipv6
 echo "$cincuenta nft with ipv4 $cinco"
 cat $directory_fwrecover/last-nft-ipv4
 echo "$cincuenta legacy with ipv4 $cinco"
@@ -4283,10 +4283,10 @@ echo $subhead_option
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/last-legacy-ipv6
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -6847,10 +6847,10 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $which_ip6tables_lega
 #### spanish: autoguardado con nombre generico
 ####
 ####
-$which_iptables_nft-save > $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/last-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/last-legacy-ipv6
 ####
 ####
 #### english: autosave with specific name
@@ -6860,16 +6860,16 @@ $which_ip6tables_legacy-save > $directory_fwrecover/last-legacy-ipv6
 if  [ $autosave_fwrecover= $NULL ] ; then $nada ;
 case $second_option in
 "$NULL")
-$which_iptables_nft-save > $directory_fwrecover/$first_option-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/$first_option-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/$first_option-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/$first_option-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/$first_option-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/$first_option-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/$first_option-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/$first_option-legacy-ipv6
 ;;
 *)
-$which_iptables_nft-save > $directory_fwrecover/$first_option-$second_option-nft-ipv4
-$which_iptables_legacy-save > $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-$which_ip6tables_nft-save > $directory_fwrecover/$first_option-$second_option-nft-ipv6
-$which_ip6tables_legacy-save > $directory_fwrecover/$first_option-$second_option-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/$first_option-$second_option-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/$first_option-$second_option-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
 ;;
 esac
 fi
