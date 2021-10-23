@@ -102,10 +102,10 @@ nada="$(echo -n)" ;
 #### #### english: echo void            #### spanish: impresion vacia
 #### english: default route ipv4 #### english: routa por defecto ipv4
 case "$(whereis ip)" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_cuatro="$cinco [ Route ip.v4 ] [ $(ip -4 route show | grep -i default | head -1)]" ;; esac
+*)default_route_cuatro="$cinco [ default route ip.v4 ] [ $(ip -4 route show | grep -i default | head -1) ]" ;; esac
 #### english: default route ipv6 #### english: routa por defecto ipv6
 case "$(whereis ip)" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_seis="$cinco [ Route ip.v6 ] [   $(ip -6 route show | head -1)]" ;; esac
+*)default_route_seis="$cinco [ default route ip.v6 ]   [ $(ip -6 route show | grep -i default | head -1) ]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
 zenity_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
 ####       #### english: close from graphicall with timeout in seconds #####
