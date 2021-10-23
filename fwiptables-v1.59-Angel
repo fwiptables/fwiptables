@@ -986,7 +986,7 @@ if [ "$first_option" = "basic-options" ]; then
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ List basic options ]"
+echo "$cinco [ $first_option ] [ List basic options ]"
 echo $subhead_option
 echo "$tab" "$tab" "______________________                | Principal options |                   "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -995,7 +995,6 @@ echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 n
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                       "
-#### echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive cfg-custom       "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
@@ -1024,7 +1023,7 @@ if [ "$first_option" = "full-options" ]; then
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ List full options ]"
+echo "$cinco [ $first_option ] [ List full options ]"
 echo $subhead_option
 echo "$tab" "$tab"  "______________________                | Principal options |                  "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -1055,7 +1054,6 @@ echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwi
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes basic-options full-options "
-
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
@@ -1765,6 +1763,7 @@ echo $footer_option
 ####
 if [ "$first_option" = "notes" ]; then $nada
 echo $head_option
+echo "$cinco [ $first_option ] [ List notes about $fiptables ]"
 echo $subhead_option
 echo
 echo "$cinco [vpn] [virtual private network] [whitelist]"
@@ -1825,6 +1824,7 @@ exit; fi
 ####
 if [ "$first_option" = "depends" ]; then $nada
 echo $head_option
+echo "$cinco [ $first_option ] [ List programs depends about $fiptables ]"
 echo $subhead_option
 echo $ralla
 echo "$cinco It are all the depends to full work in $fiptables $fversion"
@@ -2905,7 +2905,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 if [ "$first_option" = "version" ]; then $nada
 echo $head_option
-echo "$cinco [ Show version $fiptables ]"
+echo "$cinco [ $first_option ] [ Show version about $fiptables ]"
 echo $subhead_option
 echo
 echo "$tab [Name program]"
@@ -2943,7 +2943,7 @@ exit ; fi
 ####
 if [ "$first_option" = "examples" ]; then $nada
 echo $head_option
-echo "$cinco [ Show examples for $fiptables ]"
+echo "$cinco [ $first_option ] [ Show examples for $fiptables ]"
 echo $subhead_option
 ####
 ####
@@ -3081,7 +3081,7 @@ exit ; fi
 ####
 if [ "$first_option" = "license" ]; then
 echo $head_option
-echo "$cinco [ Show license for $fiptables ]"
+echo "$cinco [ $first_option ] [ Show license for $fiptables ]"
 echo $subhead_option
 echo "license text for gpl v2 downloading .."
 echo "$ralla" "$ralla" "$ralla"
@@ -3096,7 +3096,7 @@ exit;  fi
 ####
 if [ "$first_option" = "howto-upgrade" ]; then
 echo $head_option
-echo "$cinco [ Show howto upgrade $fiptables  ]"
+echo "$cinco [ $first_option ] [ Show howto upgrade $fiptables  ]"
 echo $subhead_option
 echo "The actually version is: $fiptables $fversion actual"
 echo "  The latest version is:"
@@ -3143,7 +3143,7 @@ if [ "$first_option" = "route" ]; then   echo  -n
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ Show route tables ]"
+echo "$cinco [ $first_option ] [ Show route tables ]"
 echo $subhead_option
 case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
 echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
@@ -3168,7 +3168,7 @@ case $which_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ Show sockets with ss ]"
+echo "$cinco [ $first_option ] [ Show sockets with ss ]"
 echo $subhead_option
 echo "$tab [ The ipv6 sockets ]"
 $which_ss -a6
@@ -3188,7 +3188,7 @@ case $which_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ Show sockets with lsof ]"
+echo "$cinco [ $first_option ] [ Show sockets with lsof ]"
 echo $subhead_option
 echo "$tab [The sockets with lsof ipv4 ]"
 $which_lsof -i 4
@@ -3206,7 +3206,7 @@ case $which_netstat in
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ Show sockets with netstat ]"
+echo "$cinco [ $first_option ] [ Show sockets with netstat ]"
 echo $subhead_option
 echo "$tab [The sockets list with netstat ]"
 $which_netstat -a -4 -6
@@ -3223,7 +3223,7 @@ case $which_netstat_nat in
 "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
 echo $head_option
 echo $default_route
-echo "$cinco [ Show sockets with netstat-nat ]"
+echo "$cinco [ $first_option ] [ Show sockets with netstat-nat ]"
 echo $subhead_option
 echo "$tab [The devices list with netstat]"
 $which_netstat_nat -x
@@ -3239,7 +3239,7 @@ if [ "$first_option" = "ipforwading-on" ]; then $nada ;
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ Active ip forwading in kernel ]"
+echo "$cinco [ $first_option ] [ Active ip forwading in kernel ]"
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
 do $which_sysctl -w $a=1 ; done
@@ -3255,7 +3255,7 @@ if [ "$first_option" = "ipforwading-off" ]; then $nada ;
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ Deactive ip forwading in kernel ]"
+echo "$cinco [ $first_option ] [ Deactive ip forwading in kernel ]"
 echo $subhead_option
 for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
 do $which_sysctl -w $a=0 ; done
@@ -3273,7 +3273,7 @@ exit; fi
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter ipv4 ]"
+echo "$cinco [ $first_option ] [ List iptables filter ipv4 ]"
  echo $subhead_option
  echo $ralla
  case $legacycuatro in
@@ -3305,7 +3305,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter forward ipv4 ]"
+echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3338,7 +3338,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-  echo "$cinco [ List iptables filter ipv6 ]"
+echo "$cinco [ $first_option ] [ List iptables filter ipv6 ]"
  echo $subhead_option
  echo $ralla
  case $legacyseis in
@@ -3370,7 +3370,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter forward ipv6 ]"
+echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3403,7 +3403,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables nat ipv4 ]"
+echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
  echo $subhead_option
  echo $ralla
  case $legacycuatro in
@@ -3435,7 +3435,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables nat ipv6 ]"
+echo "$cinco [ $first_option ] [ List iptables nat ipv6 ]"
  echo $subhead_option
  echo $ralla
  case $nftseis in
@@ -3467,7 +3467,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter ipv4 in numerical ]"
+echo "$cinco [ $first_option ] [ List iptables filter ipv4 in numerical ]"
  echo $subhead_option
  echo $ralla
  case $legacycuatro in
@@ -3499,7 +3499,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter forward ipv4 in numerical ]"
+echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 in numerical ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3532,7 +3532,7 @@ echo $default_route_seis
  echo $head_option 
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter ipv6 in numerical ]"
+echo "$cinco [ $first_option ] [ List iptables filter ipv6 in numerical ]"
  echo $subhead_option
  echo $ralla
  case $legacyseis in
@@ -3564,7 +3564,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables filter forward ipv6 in numerical ]"
+echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 in numerical ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3595,7 +3595,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables mangle ipv4 ]"
+echo "$cinco [ $first_option ] [ List iptables mangle ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3616,7 +3616,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables mangle ipv6 ]"
+echo "$cinco [ $first_option ] [ List iptables mangle ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
@@ -3636,7 +3636,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables raw ipv4 ]"
+echo "$cinco [ $first_option ] [ List iptables raw ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo "$rallica  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
@@ -3656,7 +3656,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables raw ipv6 ]"
+echo "$cinco [ $first_option ] [ List iptables raw ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3677,7 +3677,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables security ipv4 ]"
+echo "$cinco [ $first_option ] [ List iptables security ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3698,7 +3698,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List iptables security ipv6 ]"
+echo "$cinco [ $first_option ] [ List iptables security ipv6 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3719,7 +3719,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List ebtables ]"
+echo "$cinco [ $first_option ] [ List ebtables ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3742,7 +3742,7 @@ echo $default_route_seis
  echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
- echo "$cinco [ List arptables ipv4 ]"
+echo "$cinco [ $first_option ] [ List arptables ipv4 ]"
  echo $subhead_option
  echo $ralla
  echo $ralla
@@ -3952,7 +3952,7 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fiptables ] ; then $nada
 echo $head_option
-echo "$cinco [ list users with root auth for launch $fiptables ]"
+echo "$cinco [ $first_option ] [ list users with root auth for launch $fiptables ]"
 echo $subhead_option
 echo "$cinco With root sudo for $fiptables from some user"
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
@@ -3976,7 +3976,7 @@ exit; fi
 ####
 if [ "$first_option" = "alias-list" ]; then $nada
 echo $head_option
-echo "$cinco [ list alias and autocomplete for $fiptables ]"
+echo "$cinco [ $first_option ] [ list alias and autocomplete for $fiptables ]"
 echo $subhead_option
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
@@ -3990,7 +3990,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforwading-list" ]; then $nada
 echo $head_option
-echo "$cinco [ Show ip forwading in kernel ]"
+echo "$cinco [ $first_option ] [ Show ip forwading in kernel ]"
 echo $subhead_option
 echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
 $which_sysctl -a | grep -i forwarding
@@ -4028,7 +4028,7 @@ if [ "$first_option" = "arp" ]; then $nada
 case $which_arp in "$NULL") echo "install arp" ;;
 *)
 echo $head_option
-echo "$cinco [ Show cache arp ]"
+echo "$cinco [ $first_option ] [ Show cache arp ]"
 echo $subhead_option
 $which_arp -a
 ;;
@@ -4043,7 +4043,7 @@ exit; fi
 ####
 if [ "$first_option" = "etc-default" ]; then $nada
 echo $head_option
-echo "$cinco [ show the /etc/default/fwiptables ]"
+echo "$cinco [ $first_option ] [ show the /etc/default/fwiptables ]"
 echo $subhead_option
 cat /etc/default/fwiptables
 echo "$cinco file: /etc/default/fwiptables"
@@ -4057,7 +4057,7 @@ exit; fi
 ####
 if [ "$first_option" = "names" ]; then $nada
 echo $head_option
-echo "$cinco [ List names from firewall saved ]"
+echo "$cinco [ $first_option ] [ List names from firewall saved ]"
 echo $subhead_option
 echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
 echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
@@ -4073,7 +4073,7 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then $nada
 echo $head_option
-echo "$cinco [ Reset the firewall ]"
+echo "$cinco [ $first_option ] [ Reset the firewall ]"
 echo $subhead_option
 $fiptables stop &> /dev/null
 $fiptables continue &> /dev/null
@@ -4197,7 +4197,7 @@ exit; fi
 ####
 if [ "$first_option" = "show" ]; then $genfiles
 echo $head_option
-echo "$cinco [ show one firewall saved ]"
+echo "$cinco [ $first_option ] [ show one firewall saved ]"
 echo $subhead_option
 case "$second_option" in
 "$NULL") echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
@@ -4227,7 +4227,7 @@ exit; fi
 ####
 if [ "$first_option" = "actual" ]; then $genfiles
 echo $head_option
-echo "$cinco [ show the last firewall saved ]"
+echo "$cinco [ $first_option ] [ show the last firewall saved ]"
 echo $subhead_option
 $which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
 $which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
@@ -4252,7 +4252,7 @@ exit; fi
 ####
 if [ "$first_option" = "stop" ]; then $nada
 echo $head_option
-echo "$cinco [ Stop the firewall ]"
+echo "$cinco [ $first_option ] [ Stop the firewall ]"
 echo $subhead_option
 ####
 ####
@@ -4280,7 +4280,7 @@ exit; fi
 ####
 if [ "$first_option" = "continue" ]; then $nada
 echo $head_option
-echo "$cinco [ Continue the stoped firewall ]"
+echo "$cinco [ $first_option ] [ Continue the stoped firewall ]"
 echo $subhead_option
 ####
 ####
@@ -4304,7 +4304,7 @@ if [ "$first_option" = "ping-ip4" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ ping ip or host with ipv4 ]"
+echo "$cinco [ $first_option ]  [ ping ip or host with ipv4 ]"
 echo $subhead_option
 case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 ####
@@ -4338,7 +4338,7 @@ if [ "$first_option" = "ping-ip6" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ ping one ip or host with ipv6 ]"
+echo "$cinco [ $first_option ] [ ping one ip or host with ipv6 ]"
 echo $subhead_option
 case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
@@ -4376,7 +4376,7 @@ if [ "$first_option" = "trace-ip4" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ trace ip or host with ipv4 ]"
+echo "$cinco [ $first_option ] [ trace ip or host with ipv4 ]"
 echo $subhead_option
 case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
 ####
@@ -4412,7 +4412,7 @@ if [ "$first_option" = "trace-ip6" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ trace one ip or host with ipv6 ]"
+echo "$cinco [ $first_option ] [ trace one ip or host with ipv6 ]"
 echo $subhead_option
 case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
 ####
@@ -4449,7 +4449,7 @@ if [ "$first_option" = "host" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ resolve one ip or host ]"
+echo "$cinco [ $first_option ] [ resolve one ip or host ]"
 echo $subhead_option
 case $which_host in "$NULL") echo " Install host" ; exit ;; esac
 case "$second_option" in
@@ -4469,7 +4469,7 @@ if [ "$first_option" = "resolveip" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ resolve one ip or host ]"
+echo "$cinco [ $first_option ] [ resolve one ip or host ]"
 echo $subhead_option
 case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
 case "$second_option" in
@@ -4489,7 +4489,7 @@ if [ "$first_option" = "geoip" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ resolve the location to one ip or host ]"
+echo "$cinco [ $first_option ] [ resolve the location to one ip or host ]"
 echo $subhead_option
 case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
 case "$second_option" in
@@ -4509,7 +4509,7 @@ if [ "$first_option" = "ntpdate" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ update the computer time and date from internet ]"
+echo "$cinco [ $first_option ] [ update the computer time and date from internet ]"
 echo $subhead_option
 echo "$rallica [ Updating the time and the date .. ]"
 pool0=0.debian.pool.ntp.org
@@ -4530,7 +4530,7 @@ if [ "$first_option" = "scan-tcp" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ scan with nmap tcp ]"
+echo "$cinco [ $first_option ] [ scan with nmap tcp ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
@@ -4578,7 +4578,7 @@ if [ "$first_option" = "scan-syn" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ scan with nmap syn ]"
+echo "$cinco [ $first_option ] [ scan with nmap syn ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4624,7 +4624,7 @@ if [ "$first_option" = "scan-fin" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ scan with nmap fin ]"
+echo "$cinco [ $first_option ] [ scan with nmap fin ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4672,7 +4672,7 @@ if [ "$first_option" = "scan-udp" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ scan with nmap udp ]"
+echo "$cinco [ $first_option ] [ scan with nmap udp ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4720,7 +4720,7 @@ if [ "$first_option" = "scan-ping" ]; then $nada
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
-echo "$cinco [ scan with nmap ping ]"
+echo "$cinco [ $first_option ] [ scan with nmap ping ]"
 echo $subhead_option
 echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
 echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4764,7 +4764,7 @@ exit; fi
 ####
 if [ "$first_option" = "ram-free" ]; then $nada
 echo $head_option
-echo "$cinco [ freedom from innecesary ram ]"
+echo "$cinco [ $first_option ] [ freedom from innecesary ram ]"
 echo $subhead_option
 case $which_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 echo " Actual Memory"
@@ -4782,7 +4782,7 @@ exit; fi
 ####
 if [ "$first_option" = "disc-speed" ]; then $nada
 echo $head_option
-echo "$cinco [ test the disc speed ]"
+echo "$cinco [ $first_option ] [ test the disc speed ]"
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 echo "$rallica Testing speed with the temporal file /root/borrame.img.img"
@@ -4802,7 +4802,7 @@ exit; fi
 ####
 if [ "$first_option" = "ram-speed" ]; then $nada
 echo $head_option
-echo "$cinco [ test the ram speed ]"
+echo "$cinco [ $first_option ] [ test the ram speed ]"
 echo $subhead_option
 case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
 case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
@@ -4824,7 +4824,7 @@ exit; fi
 ####
 if [ "$first_option" = "glx-speed" ]; then $nada
 echo $head_option
-echo "$cinco [ test gl mesa3D speed ]"
+echo "$cinco [ $first_option ] [ test gl mesa3D speed ]"
 echo $subhead_option
 case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
 vblank_mode=0 $which_glxgears
@@ -4838,7 +4838,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-fwiptables" ] ; then $nada ;
 echo $head_option
-echo "$cinco [ show /var/log/fwiptables ]"
+echo "$cinco [ $first_option ] [ show /var/log/fwiptables ]"
 cat /var/log/fwiptables
 echo "$cinco this file is /var/log/fwiptables"
 echo $footer_option
@@ -4851,7 +4851,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-sudo" ]; then $nada
 echo $head_option
-echo "$cinco [ search sudo in logs ]"
+echo "$cinco [ $first_option ] [ search sudo in logs ]"
 echo $subhead_option
 find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
 echo $footer_option
@@ -4864,7 +4864,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-sshd" ]; then $nada
 echo $head_option
-echo "$cinco [ search sshd in logs ]"
+echo "$cinco [ $first_option ] [ search sshd in logs ]"
 echo $subhead_option
 find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
 echo $footer_option
@@ -4889,7 +4889,7 @@ exit; fi
 ####
 if [ "$first_option" = "log-search" ]; then $nada
 echo $head_option
-echo "$cinco [ search a one pattern in logs ]"
+echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
 echo $subhead_option
 case "$second_option" in
 $NULL) echo "$cinco use: $fiptables $first_option pattern" ;;
@@ -4905,7 +4905,7 @@ exit; fi
 ####
 if [ "$first_option" = "dev-versions" ]; then $nada
 echo $head_option
-echo "$cinco [ show the link to dev version from git repository ]"
+echo "$cinco [ $first_option ] [ show the link to dev version from git repository ]"
 echo $subhead_option
 echo $fweb_development
 echo $footer_option
@@ -4918,7 +4918,7 @@ exit; fi
 ####
 if [ "$first_option" = "new-versions" ]; then $nada
 echo $head_option
-echo "$cinco [ show the new versions in sourceforge page ]"
+echo "$cinco [ $first_option ] [ show the new versions in sourceforge page ]"
 echo $subhead_option
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -4935,7 +4935,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts" ]; then $nada
 echo $head_option
-echo "$cinco [ show the file /etc/hosts ]"
+echo "$cinco [ $first_option ] [ show the file /etc/hosts ]"
 echo $subhead_option
 cat /etc/hosts
 echo $ralla
@@ -4950,7 +4950,7 @@ exit; fi
 ####
 if [ "$first_option" = "protocols" ]; then $nada
 echo $head_option
-echo "$cinco [ show the file /etc/protocols ]"
+echo "$cinco [ $first_option ] [ show the file /etc/protocols ]"
 echo $subhead_option
 cat /etc/protocols  | sed s/\&//g 
 echo $ralla
@@ -4965,7 +4965,7 @@ exit; fi
 ####
 if [ "$first_option" = "services" ]; then $nada
 echo $head_option
-echo "$cinco [ show the file /etc/services ]"
+echo "$cinco [ $first_option ] [ show the file /etc/services ]"
 echo $subhead_option
 cat /etc/services | sed s/\&//g 
 echo $ralla
@@ -4980,7 +4980,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts.allow" ]; then $nada
 echo $head_option
-echo "$cinco [ show the file /etc/allow ]"
+echo "$cinco [ $first_option ] [ show the file /etc/allow ]"
 echo $subhead_option
 cat /etc/hosts.allow
 echo $ralla
@@ -4995,7 +4995,7 @@ exit; fi
 ####
 if [ "$first_option" = "hosts.deny" ]; then $nada
 echo $head_option
-echo "$cinco [ show the file /etc/deny ]"
+echo "$cinco [ $first_option ] [ show the file /etc/deny ]"
 echo $subhead_option
 cat /etc/hosts.deny
 echo $ralla
@@ -5010,7 +5010,7 @@ exit; fi
 ####
 if [ "$first_option" = "resolv.conf" ]; then $nada
 echo $head_option
-echo "$cinco [ show the file /resolv.conf ]"
+echo "$cinco [ $first_option ] [ show the file /resolv.conf ]"
 echo $subhead_option
 cat /etc/resolv.conf
 echo $ralla
@@ -5025,7 +5025,7 @@ exit; fi
 ####
 if [ "$first_option" = "about" ]; then $nada
 echo $head_option
-echo "$cinco [ about $fiptables ]"
+echo "$cinco [ $first_option ] [ about $fiptables ]"
 echo $subhead_option
 echo
 echo "$tab [Fran FireWall iptables Generator]"
@@ -5080,7 +5080,7 @@ exit; fi
 ####
 if [ "$first_option" = "info-system" ]; then $nada
 echo $head_option
-echo "$cinco [ show info about system ]"
+echo "$cinco [ $first_option ] [ show info about system ]"
 echo $subhead_option
 echo "$tab [ System info ] [ Distro ] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
@@ -5106,7 +5106,7 @@ exit; fi
 ####
 if [ "$first_option" = "info-net" ]; then $nada
 echo $head_option
-echo "$cinco [ show info about net ]"
+echo "$cinco [ $first_option ] [ show info about net ]"
 echo $subhead_option
 echo "$tab [ Net Info Route ] [ Route ipv4 ]"
 $which_ip route 
@@ -5126,7 +5126,7 @@ exit; fi
 ####
 if [ "$first_option" = "speed-ip4" ]; then $nada
 echo $head_option
-echo "$cinco [ test speed ipv4 with internet ]"
+echo "$cinco [ $first_option ] [ test speed ipv4 with internet ]"
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
@@ -5158,7 +5158,7 @@ exit; fi
 ####
 if [ "$first_option" = "speed-ip6" ]; then $nada
 echo $head_option
-echo "$cinco [ test speed ipv6 with internet ]"
+echo "$cinco [ $first_option ] [ test speed ipv6 with internet ]"
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
@@ -5190,7 +5190,7 @@ exit; fi
 ####
 if [ "$first_option" = "config-eng" ]; then $gefiles
 echo $head_option
-echo "$cinco [ show variables cfg from english configuration ]"
+echo "$cinco [ $first_option ] [ show variables cfg from english configuration ]"
 echo $subhead_option
 cat  $defaultfullcfg_eng
 echo $footer_option
@@ -5203,7 +5203,7 @@ exit; fi
 ####
 if [ "$first_option" = "config-spa" ]; then $genfiles
 echo $head_option
-echo "$cinco [ show variables cfg from spanish configuration ]"
+echo "$cinco [ $first_option ] [ show variables cfg from spanish configuration ]"
 echo $subhead_option
 cat $defaultfullcfg_spa
 echo $footer_option
@@ -5218,7 +5218,7 @@ if [ "$first_option" = "help" ]; then $genfiles
 echo $head_option
 echo $subhead_option
 echo
-echo "               [ Principal options ] $cinco"
+echo "$cinco [ $first_option ]  [ Principal options ] $cinco"
 echo
 echo
 echo "$cinco         [Launch guide]"
@@ -5453,7 +5453,7 @@ if [ "$first_option" = "ayuda" ]; then $genfiles
 echo $head_option
 echo $subhead_option
 echo
-echo "               [ Opciones principales ] $cinco"
+echo "$cinco [ $first_option ] [ Opciones principales ] $cinco"
 echo
 echo "$cinco         [Lanzar guia]"
 echo
