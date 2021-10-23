@@ -5156,6 +5156,17 @@ echo $head_option
 echo "$cinco [ test speed ipv4 with internet ]"
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
 case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
 $fiptables stop
 echo "$cinco Doing bandwidth in ipv4 to $direccion_iperf with 4 seconds"
@@ -5177,6 +5188,17 @@ echo $head_option
 echo "$cinco [ test speed ipv6 with internet ]"
 echo $subhead_option
 case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
+####
+####
+#### english: ask for continue #### spanish: pregunta para continuar
+####
+####
+read -p "$rallica First stop and then continue the firewall. Type YES to continue # " continuar
+case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+"yes") echo " [ OK. ACCEPTED ] ";; 
+*) echo " [ OK. DECLINE ] "; exit ;; esac
+####
+####
 case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
 $fiptables stop
 echo "$cinco Doing bandwidth in ipv6 to $direccion_iperf with 4 seconds"
