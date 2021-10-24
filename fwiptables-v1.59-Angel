@@ -103,11 +103,11 @@ footer_option="$ralla   $ralla   $ralla"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ;                                                 
 #### english: default route ipv4 #### english: routa por defecto ipv4
-case "$(whereis ip)" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_cuatro="$cinco [ default route ip.v4 ] [ $(ip -4 route show | grep -i default | head -1) ]" ;; esac
+case "$(which ip)" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
+*)default_route_cuatro="$cinco [ default route ip.v4 ] [ $("$(which ip)" -4 route show | grep -i default | head -1) ]" ;; esac
 #### english: default route ipv6 #### english: routa por defecto ipv6
-case "$(whereis ip)" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_seis="$cinco [ default route ip.v6 ]   [ $(ip -6 route show | grep -i default | head -1) ]" ;; esac
+case "$(which ip)" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
+*)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$(which ip)" -6 route show | grep -i default | head -1) ]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
 ####       #### english: zenity graphic redimension    
 ####       #### spanish: redimensiones graficas de zenity
@@ -120,7 +120,8 @@ close_timeout="1"
 mensage_timeout="Closing gui menu in $close_timeout seconds"
 ####       #### english: zenity graphic automatic redimension    
 ####       #### spanish: redimensiones graficas automaticas de zenity
-#### pantallatotal="$(xrandr | grep -- \* | tail -1 | sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
+#### pantallatotal="$(xrandr | grep -- \* | tail -1 \
+#### sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
 #### case $($which xrandr) in "$NULL") ;; *) graphic_dimension=$pantallatotal ;; esac
 ####       #### english: autovariables        #### spanish: autovariables
 launch_thefirst="no" ;
