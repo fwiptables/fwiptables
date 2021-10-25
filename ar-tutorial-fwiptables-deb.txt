@@ -1,0 +1,23 @@
+#!/bin/bash
+if [ -f $1 ] then; else echo "launch $0 file-fwiptables; fi
+programa=$1
+version="$(cat /usr/bin/fwiptables  | grep -i fversion= | cut -d "\"" -f 2)"
+#### crea la estructura de directorios
+mkdir -p /tmp/deb/usr/bin
+mkdir -p /tmp/deb/DEBIAN
+cp $1 /tmp/deb/usr/bin
+#### crea el archivo control
+echo "Package: fwiptables" &> /tmp/deb/DEBIAN/control
+echo "Priority: optional" &> /tmp/deb/DEBIAN/control
+echo "Section: misc" &> /tmp/deb/DEBIAN/control
+echo "Maintainer: f-iptables" &> /tmp/deb/DEBIAN/control
+echo "Architecture: all" &> /tmp/deb/DEBIAN/control
+echo Version: 1.59-Angel" &> /tmp/deb/DEBIAN/control
+echo "Depends: " &> /tmp/deb/DEBIAN/control
+echo "Description:  Fran FireWall fwiptables Generator." &> /tmp/deb/DEBIAN/control
+echo " One simple FRONT-END for iptables linux, which COMMAND-LINE \
+with CLI-MENU with GUI-MENU and with GUI-SHELL." &> /tmp/deb/DEBIAN/control
+#### empaqueta
+chown root:root /tmp/deb -R
+echo "file write in /root/$programa-$version.deb"
+dpkg -b /tmp/deb /root/$programa-$version.deb
