@@ -1296,6 +1296,8 @@ echo "      offline: Firewall disconected for all servers and clients except loc
 echo "             : Firewall desconectado para todo servidores y clientes excepto localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "             : Configura un firewall muy permisivo"
+echo "     only-web: Configure a firewall like cliente web"
+echo "             : Configura un firewall cliente web"
 echo "   cfg-custom: Alias a custom"
 echo "             : Apodo a custom"
 echo "       custom: Configure one custom firewall with one file cfg"
@@ -5349,6 +5351,7 @@ echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
 echo " allpermisive: Configure a firewall very permisive"
+echo "      onlyweb: Configure a firewall like cliente web"
 echo "       custom: Configure one custom firewall, made for you with file.cfg"
 echo
 echo "$cinco         [tool config]"
@@ -5582,6 +5585,7 @@ echo "$cinco         [Lanza reglas de iptables]"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
+echo "      onlyweb: Configura el cortafuegos como cliente web"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
 echo
