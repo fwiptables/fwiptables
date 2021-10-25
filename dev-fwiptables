@@ -67,7 +67,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.60" ;                                             
+fversion="1.61" ;                                        
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -1003,18 +1003,15 @@ launch_iptables="si"; launch_permisive="no" ;
 launch_onlyweb="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
 ####
-####   english: custom in first option and second option whithout existent-file.cfg
-####   spanish: custom en primera opcion y segunda opcion sin existente-file.cfg
+##############################   english: custom without valid config cfg
+##############################   spanish: custom sin valido configuracion cfg
 ####
 ####
-if [ ! -f $directory_config/$second_option ]; then $nada ;
-case $first_option in
-"custom") $fiptables cfg ;
+if [ "$first_option" = "custom" ]; then
+if [ -f $directory_config/$second_option ]; then $nada
+else  $fiptables cfg ;
 echo "$cinco Usage: $fiptables custom existent-file-cfg"
-echo "$cinco See:   $fiptables tool-cfg"
-exit ;;
-esac
-fi
+echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ####
 ####
 ##############################       english: basic-options: wellcome with semi help
