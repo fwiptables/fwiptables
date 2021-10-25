@@ -1050,7 +1050,7 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "______________________                | Third options |                      " 
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
-echo "$tab" "$tab"  "    tool-forward       ipforwading-list ipforwading-on ipforwading-off       "
+echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
@@ -1516,11 +1516,11 @@ echo $subhead_option
 echo "$cinco         [Tool forward]"
 echo "$cinco         [Herramienta de ipforwading]"
 echo
-echo "  ipforwading-list: Show kernel config about forward"
+echo "  ipforward-list: Show kernel config about forward"
 echo "                  : Muestra configuracion del kernel sobre reenvios"
-echo "    ipforwading-on: Active the kernel config about forward"
+echo "    ipforward-on: Active the kernel config about forward"
 echo "                  : Activa la configuracion del kernel sobre reenvios"
-echo "   ipforwading-off: Deactive kernel config about forward"
+echo "   ipforward-off: Deactive kernel config about forward"
 echo "                  : Desactiva la configuracion del kernel sobre reenvios"
 echo $footer_option
 exit; fi
@@ -2286,7 +2286,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
-"ipforwading-list" "ipforwading-on" "ipforwading-off" \
+"ipforward-list" "ipforward-on" "ipforward-off" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
 #### 
@@ -2299,9 +2299,9 @@ case $selection in
 "netstat") $fiptables -gui netstat ;;
 "netstat-nat") $fiptables -gui netstat-nat ;;
 "tcpdump") $fiptables -gui tcpdump ;;
-"ipforwading-list") $fiptables -gui ipforwading-list ;;
-"ipforwading-on") $fiptables -gui ipforwading-on ;;
-"ipforwading-off") $fiptables -gui ipforwading-off ;;
+"ipforward-list") $fiptables -gui ipforward-list ;;
+"ipforward-on") $fiptables -gui ipforward-on ;;
+"ipforward-off") $fiptables -gui ipforward-off ;;
 #### 
 #### 
 *)
@@ -2735,9 +2735,9 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   84  "lsof" \
   85  "tcpdump" \
   86  "arp" \
-  87  "ipforwading-list" \
-  88  "ipforwading-on" \
-  89  "ipforwading-off" \
+  87  "ipforward-list" \
+  88  "ipforward-on" \
+  89  "ipforward-off" \
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
@@ -2857,9 +2857,9 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  84) clear ; $fiptables "lsof" | less ;;
  85) clear ; $fiptables "tcpdump" | less ;;
  86) clear ; $fiptables arp -a | less ;;
- 87) clear ; $fiptables "ipforwading-list" | less ;;
- 88) clear ; $fiptables "ipforwading-on" | less ;;
- 89) clear ; $fiptables "ipforwading-off" | less ;;
+ 87) clear ; $fiptables "ipforward-list" | less ;;
+ 88) clear ; $fiptables "ipforward-on" | less ;;
+ 89) clear ; $fiptables "ipforward-off" | less ;;
  91) resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables ping-ip4 $resolve ;;
  92) resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
@@ -3243,11 +3243,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-#############################      english: ipforwading-on: active ip forward
-#############################      spanish: ipforwading-on: activa ip forward
+#############################      english: ipforward-on: active ip forward
+#############################      spanish: ipforward-on: activa ip forward
 ####
 ####
-if [ "$first_option" = "ipforwading-on" ]; then $nada ;
+if [ "$first_option" = "ipforward-on" ]; then $nada ;
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
@@ -3259,11 +3259,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-#############################      english: ipforwading-off: active ip forward
-#############################      spanish: ipforwading-off: activa ip forward
+#############################      english: ipforward-off: active ip forward
+#############################      spanish: ipforward-off: activa ip forward
 ####
 ####
-if [ "$first_option" = "ipforwading-off" ]; then $nada ;
+if [ "$first_option" = "ipforward-off" ]; then $nada ;
 echo $head_option
 echo $default_route_cuatro
 echo $default_route_seis
@@ -3996,11 +3996,11 @@ echo $footer_option
 exit; fi
 ####
 ####
-############################       english: ipforwading-list: the ipforwading option en english
-############################       spanish: ipforwading-list: la opcion de reenvios  en ingles
+############################       english: ipforward-list: the ipforwading option en english
+############################       spanish: ipforward-list: la opcion de reenvios  en ingles
 ####
 ####
-if [ "$first_option" = "ipforwading-list" ]; then $nada
+if [ "$first_option" = "ipforward-list" ]; then $nada
 echo $head_option
 echo "$cinco [ $first_option ] [ Show ip forwading in kernel ]"
 echo $subhead_option
@@ -5344,9 +5344,9 @@ echo "              arp: List the last conentions arp"
 echo
 echo "$cinco         [Tool forward]"
 echo
-echo " ipforwading-list: Show kernel config about forward"
-echo "   ipforwading-on: Active kernel config about forward"
-echo "  ipforwading-off: Deactive kernel config about forward"
+echo " ipforward-list: Show kernel config about forward"
+echo "   ipforward-on: Active kernel config about forward"
+echo "  ipforward-off: Deactive kernel config about forward"
 echo
 echo "$cinco         [Tool icmp]"
 echo
@@ -5578,9 +5578,9 @@ echo "               arp: Lista las ultimas conexiones arp"
 echo
 echo "$cinco         [Herramienta de ip forwading]"
 echo
-echo "  ipforwading-list: Muestra la configuracion del kernel sobre reenvios ip"
-echo "    ipforwading-on: Activa la configuracion del kernel sobre reenvios ip"
-echo "   ipforwading-off: Desactiva la configuracion del kernel sobre reenvios ip"
+echo "  ipforward-list: Muestra la configuracion del kernel sobre reenvios ip"
+echo "    ipforward-on: Activa la configuracion del kernel sobre reenvios ip"
+echo "   ipforward-off: Desactiva la configuracion del kernel sobre reenvios ip"
 echo
 echo "$cinco         [Herramienta icmp]"
 echo
