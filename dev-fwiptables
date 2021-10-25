@@ -302,7 +302,8 @@ server_tcp="ssh" ; server_udp="" ;
 logserver_tcp="ssh" ; logserver_udp="" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
-allow_nat="no" ; allow_forwading="no" ; 
+allow_gateway_ip4="no" ; allow_gateway_ip6="no" ;
+allow_forward_ip4="no" ; allow_forward_ip6="no" ; 
 allow_input_all="no" ; allow_output_all="no" ; 
 allow_input_state="no" ; allow_output_state="no" ;
 allow_input_bandwidth="no" ; allow_output_bandwidth="no" ;
@@ -397,15 +398,24 @@ spa19=$(echo "$cinco especifica prefijo de salida para logserver")
 var20=$(echo "$cinco FORWARD IP #" )
 eng20=$(echo "$cinco void to yes, or no to no")
 spa20=$(echo "$cinco vacio para si, o no para no")
-var21=$(echo "allow_forwading=no" )
-eng21=$(echo "$cinco void to allow ip forward or no")
-spa21=$(echo "$cinco vacio para permitir reenvio, y no para denegar reenvios")
-var22=$(echo "allow_nat=no" )
-eng22=$(echo "$cinco void to do NAT masquerade to default route or no")
-spa22=$(echo "$cinco vacio para hacer masquerade a otras redes o no")
-var23=$(echo "$cinco END NECESARY #" )
-eng23=$(echo "$cinco .......... END Necesary options .......... .......... #")
-spa23=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
+var21=$(echo "allow_forward_ip4=no" )
+eng21=$(echo "$cinco void to yes to forward ip4, or no to no")
+spa21=$(echo "$cinco vacio para reenvios ip4, o no para no")
+var22=$(echo "allow_forward_ip6=no" )
+eng22=$(echo "$cinco void to allow ip forward ip6 or no")
+spa22=$(echo "$cinco vacio para permitir reenvio ip6, o no")
+var23=$(echo "$cinco GATEWAY IP #" )
+eng23=$(echo "$cinco void to yes, or no to no")
+spa23=$(echo "$cinco vacio para si, o no para no")
+var24=$(echo "allow_gateway_ip4=no" )
+eng24=$(echo "$cinco void to allow gateway ip4 to others nets or no")
+spa24=$(echo "$cinco vacio para permitir gateway ip4  a otras redes, o no")
+var25=$(echo "allow_gateway_ip6=no" )
+eng25=$(echo "$cinco void to allow gateway ip6 to other nets or no")
+spa25=$(echo "$cinco vacio para hacer gateway ip6 a otras redes o no")
+var26=$(echo "$cinco END NECESARY #" )
+eng26=$(echo "$cinco .......... END Necesary options .......... .......... #")
+spa26=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
 ####
 ####
 #### english: advance options in configurations file cfg
@@ -568,6 +578,9 @@ echo $var20 $tabz $eng20 &>> $me
 echo $var21 $tabz $eng21 &>> $me
 echo $var22 $tabz $eng22 &>> $me
 echo $var23 $tabz $eng23 &>> $me
+echo $var24 $tabz $eng24 &>> $me
+echo $var25 $tabz $eng25 &>> $me
+echo $var26 $tabz $eng26 &>> $me
 ####
 ####
 #### wizard mini-spanish
@@ -597,6 +610,9 @@ echo $var20 $tabz $spa20 &>> $ms
 echo $var21 $tabz $spa21 &>> $ms
 echo $var22 $tabz $spa22 &>> $ms
 echo $var23 $tabz $spa23 &>> $ms
+echo $var24 $tabz $spa24 &>> $ms
+echo $var25 $tabz $spa25 &>> $ms
+echo $var26 $tabz $spa26 &>> $ms
 ####
 ####
 #### wizard full-english
@@ -626,6 +642,9 @@ echo $var20 $tabz $eng20 &>> $fe
 echo $var21 $tabz $eng21 &>> $fe
 echo $var22 $tabz $eng22 &>> $fe
 echo $var23 $tabz $eng23 &>> $fe
+echo $var24 $tabz $eng24 &>> $fe
+echo $var25 $tabz $eng25 &>> $fe
+echo $var26 $tabz $eng26 &>> $fe
 ##### english: advance variables
 ##### spanish: avanzadas variables
 echo $var31 $tabz $eng31 &>> $fe
@@ -693,6 +712,9 @@ echo $var20 $tabz $spa20 &>> $fs
 echo $var21 $tabz $spa21 &>> $fs
 echo $var22 $tabz $spa22 &>> $fs
 echo $var23 $tabz $spa23 &>> $fs
+echo $var24 $tabz $spa24 &>> $fs
+echo $var25 $tabz $spa25 &>> $fs
+echo $var26 $tabz $spa26 &>> $fs
 ##### english: advance variables
 ##### spanish: avanzadas variables
 echo $var31 $tabz $spa31 &>> $fs
@@ -747,10 +769,14 @@ case "$NULL" in
 *)allow_ipv4="no";;
 "$allow_ipv6");; 
 *)allow_ipv6="no";;
-"$allow_forwading");; 
-*)allow_forwading="no";;
-"$allow_nat");; 
-*)allow_nat="no";;
+"$allow_forward_ip4");; 
+*)allow_forward_ip4="no";;
+"$allow_forward_ip6");; 
+*)allow_forward_ip6="no";;
+"$allow_gateway_ip4");; 
+*)allow_gateway="no";;
+"$allow_gateway_ip6");; 
+*)allow_gateway="no";;
 "$allow_only_output");; 
 *)allow_only_output="no";;
 "$allow_input_all");; 
@@ -3013,7 +3039,7 @@ echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 echo
 echo "# config vpn example #"
-echo "allow_forwading= ; "
+echo "allow_forward= ; "
 echo "allow_vpn= ; "
 echo "vpn=wesnoth.org,sourceforge.net"
 ####
@@ -3442,7 +3468,7 @@ echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
 ####
 ####
  if [ "$first_option" = "nat-ip6" ]; then $nada
- nftseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
+ legacyseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
 echo $default_route_cuatro
@@ -3450,7 +3476,7 @@ echo $default_route_seis
 echo "$cinco [ $first_option ] [ List iptables nat ipv6 ]"
  echo $subhead_option
  echo $ralla
- case $nftseis in
+ case $legacyseis in
  "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
  echo "$rallica [ With rules xtables ] [ iptables-legacy ]  [ NAT ] $ralla "
@@ -6420,19 +6446,19 @@ $which_ip6tables_nft -t nat -F
 $which_ip6tables_legacy -t nat -F
 ####
 ####
-#### english: do masquerade nat ip4 and ip6
-#### spanish: hace nat masquerade ip4 y ip6
+#### english: do masquerade nat ip4 and ip6 ALLOW GATEWAY
+#### spanish: hace nat masquerade ip4 y ip6 PERMITIR GATEWAY
 ####
 ####
-$allow_nft $allow_ipv4 $allow_nat $which_iptables_nft -t nat \
+$allow_nft $allow_ipv4 $allow_gateway_ipv4 $which_iptables_nft -t nat \
 -A POSTROUTING -j MASQUERADE      &>/dev/null
-$allow_legacy $allow_ipv4 $allow_nat $which_iptables_legacy -t nat \
+$allow_legacy $allow_ipv4 $allow_gateway_ipv4 $which_iptables_legacy -t nat \
 -A POSTROUTING -j MASQUERADE   &>/dev/null
 ####
 ####
-$allow_nft $allow_ipv6 $allow_nat $which_ip6tables_nft -t nat \
+$allow_nft $allow_ipv6 $allow_gateway_ipv6 $which_ip6tables_nft -t nat \
 -A POSTROUTING -j MASQUERADE     &>/dev/null
-$allow_legacy $allow_ipv6 $allow_nat $which_ip6tables_legacy -t nat \
+$allow_legacy $allow_ipv6 $allow_gateway_ipv6 $which_ip6tables_legacy -t nat \
 -A POSTROUTING -j MASQUERADE  &>/dev/null
 ####
 ####
@@ -6564,8 +6590,8 @@ $allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
-######################################## english: iptables ipv4 and ipv6 with forward rules
-######################################## spanish: iptables ipv4 y ipv6 con reglas de reenvio
+######################################## english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
+######################################## spanish: iptables ipv4 y ipv6 con reglas de reenvio PERMITIR FORWARD
 ####
 ####
 #### english: deactive for default with forward or without forward
@@ -6577,24 +6603,24 @@ $which_sysctl -w net.ipv6.conf.all.forwarding=0 &> /dev/null
 ####
 ####
 ####   Active when there is forward
-$ipv4 $allow_forwading $which_sysctl -w net.ipv4.conf.all.forwarding=1 &> /dev/null
-$ipv6 $allow_forwading $which_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/null
+$ipv4 $allow_forward $which_sysctl -w net.ipv4.conf.all.forwarding=1 &> /dev/null
+$ipv6 $allow_forward $which_sysctl -w net.ipv6.conf.all.forwarding=1 &> /dev/null
 ####
 ####
 ####   ipv4 filter legacy rules forward
-$allow_legacy $allow_forwading $which_iptables_legacy -A FORWARD -j ACCEPT &> /dev/null
+$allow_legacy $allow_forward_ip4 $which_iptables_legacy -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter legacy rules forward
-$allow_legacy $allow_forwading $which_ip6tables_legacy -A FORWARD -j ACCEPT &> /dev/null
+$allow_legacy $allow_forward_ip6 $which_ip6tables_legacy -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv4 filter nft rules forward
-$allow_nft $allow_forwading $which_iptables_nft -A FORWARD -j ACCEPT &> /dev/null
+$allow_nft $allow_forward_ip4 $which_iptables_nft -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 ####   ipv6 filter nft rules forward
-$allow_nft $allow_forwading $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/null
+$allow_nft $allow_forward_ip6 $which_ip6tables_nft -A FORWARD -j ACCEPT &> /dev/null
 ####
 ####
 #######################################       iptables ipv4 and ipv6 closed with drop input, and drop forward, and drop output rules
