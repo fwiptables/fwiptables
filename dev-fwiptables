@@ -102,10 +102,9 @@ footer_option="$ralla   $ralla   $ralla"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
-
-
+#### english: command default route ip  #### spanish: comando de ruta por defecto ip
 which_ip="$(which ip | cut -d " " -f 1)"                                                
-#### english: default route ipv4 #### english: routa por defecto ipv4
+#### english: default route ipv4        #### english: routa por defecto ipv4
 case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_cuatro="$cinco [ default route ip.v4 ] [ $("$which_ip" -4 route show | grep -i default | head -1) ]" ;; esac
 #### english: default route ipv6 #### english: routa por defecto ipv6
