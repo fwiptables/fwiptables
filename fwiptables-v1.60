@@ -6554,15 +6554,15 @@ $allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
--p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
-####
-####
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
@@ -6578,15 +6578,15 @@ $allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
--p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
-####
-####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables onlyweb
