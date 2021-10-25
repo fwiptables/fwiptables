@@ -101,13 +101,16 @@ subhead_option="$ralla   $ralla   $ralla"
 footer_option="$ralla   $ralla   $ralla"                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### #### english: echo void            #### spanish: impresion vacia
-nada="$(echo -n)" ;                                                 
+nada="$(echo -n)" ; 
+
+
+which_ip="$(which ip | cut -d " " -f 1)"                                                
 #### english: default route ipv4 #### english: routa por defecto ipv4
-case "$(which ip)" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_cuatro="$cinco [ default route ip.v4 ] [ $("$(which ip)" -4 route show | grep -i default | head -1) ]" ;; esac
+case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
+*)default_route_cuatro="$cinco [ default route ip.v4 ] [ $("$which_ip" -4 route show | grep -i default | head -1) ]" ;; esac
 #### english: default route ipv6 #### english: routa por defecto ipv6
-case "$(which ip)" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$(which ip)" -6 route show | grep -i default | head -1) ]" ;; esac
+case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
+*)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$which_ip" -6 route show | grep -i default | head -1) ]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
 ####       #### english: zenity graphic redimension    
 ####       #### spanish: redimensiones graficas de zenity
