@@ -49,9 +49,9 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 #### #### english: option for default    #### spanish: opcion por defecto
 default_option="options"            #### over fwiptables-for-default    #### default: full-options
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_header="no" ;                      #### over fwiptables-for-default    #### void or no
+allow_header="" ;                        #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_question="no" ;                    #### over fwiptables-for-default    #### void or no
+allow_question="" ;                      #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
@@ -202,7 +202,11 @@ esac; fi
 ##############################       spanish: $NULL: fwiptables lanza .. por defecto
 ####
 ####
-#### if  [ "$first_option" = "$NULL" ] ; then $zero_option $default_option ; exit ; fi
+############################       english: default: without other valid options
+############################	   spanish: default: sin otra valida opcion
+####
+####
+if [ "$first_option" = "$NULL" ] ; then  first_option="$default_option" ;  fi
 ####
 ####
 ############################## english -text: Manage in console
@@ -944,8 +948,7 @@ case "$allow_question" in "no");; *)
 read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
 if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
 then echo "$cinco [ OK. ACCEPTED LICENSE ] [ Continue install ]"
-else echo "$cinco [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi
-;; esac
+else echo "$cinco [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
 #### 
 #### 
 ####  english: copy the file
@@ -1011,10 +1014,11 @@ rm /tmp/$fiptables &> /dev/null
 ####
 ####
 echo "$cinco [ Waiting several seconds .. ]"
-$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
+ | grep -i download | egrep -iv "deb" | head -1
 echo "$cinco [ Waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
-if [ -s /tmp/$fiptables ]; then
+if [ -f /tmp/$fiptables ]; then
 chmod ugo+rx /tmp/$fiptables &> /dev/null
 ####
 ####
