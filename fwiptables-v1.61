@@ -996,16 +996,16 @@ exit ; fi
 ####   #### spanish: El primero:       desconectado, todopermisivo, soloweb o modificado  ----  semi silencioso
 ####
 ####
-if [ "$first_option" = "offline" ]; then      echo "$cinco  FIREWALL OFFLINE" ; echo $header_option
+if [ "$first_option" = "offline" ]; then      echo "$cinco  FIREWALL OFFLINE" ; 
 launch_iptables="si"; launch_permisive="no";
 launch_onlyweb="no" ; launch_offline=""   ;  launch_custom="no" ; input_all="no"  ; fi
-if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIVE" ; echo $header_option
+if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIVE" ; 
 launch_iptables="si";  launch_permisive=""  ;
 launch_onlyweb="no" ; launch_offline="no" ;  launch_custom="no" ; input_all="no"  ; fi
-if [ "$first_option" = "onlyweb" ]; then echo "$cinco  FIREWALL ONLYWEB" ; echo $header_option
+if [ "$first_option" = "onlyweb" ]; then echo "$cinco  FIREWALL ONLYWEB" ;
 launch_iptables="si"; launch_permisive="no"  ;
 launch_onlyweb=""   ; launch_offline="no" ;  launch_custom="no" ; input_all="no"  ; fi
-if [ "$first_option" = "custom" ]; then       echo "$cinco  FIREWALL CUSTOM" ; echo $header_option
+if [ "$first_option" = "custom" ]; then       echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables="si"; launch_permisive="no" ;
 launch_onlyweb="no" ; launch_offline="no" ; launch_custom="" ; fi
 ####
