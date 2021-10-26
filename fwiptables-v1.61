@@ -1039,6 +1039,7 @@ echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ####
 if [ "$first_option" = "basic-options" ]; then 
 echo $head_option
+echo $recomendation
 echo $default_route_cuatro
 echo $default_route_seis
 echo "$cinco [ $first_option ] [ List basic options ]"
@@ -1076,6 +1077,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then 
 echo $head_option
+echo $recomendation
 echo $default_route_cuatro
 echo $default_route_seis
 echo "$cinco [ $first_option ] [ List full options ]"
@@ -2963,143 +2965,149 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ##############################       spanish: version: script de sistema, la opcion mostrar version
 ####
 ####
-if [ "$first_option" = "version" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ Show version about $fiptables ]"
-echo $header_option
-echo
-echo "$tab [Name program]"
-echo "$fprogram"
-echo
-echo "$tab [Description program]"
-echo "$fdescription"
-echo
-echo "$tab [Exec program]"
-echo "$directory_fiptables/$fiptables"
-echo
-echo "$tab [File format]"
-file $directory_fiptables/$fiptables | cut -d "," -f 1-2
-echo
-echo "$tab [Config cfg directory]"
-echo "$directory_config"
-echo "$tab [Firewall standard directory]"
-echo "$directory_fwrecover"
-echo "$tab [Config files]"
-echo "variables:    /etc/default/fwiptables"
-echo "completion:   /etc/bash_completion.d/fwiptables"
-echo "auth users:   /etc/sudoers/fwiptables"
-echo "$tab [Output log]"
-echo "output log:   /var/log/fwiptables"
-echo
-echo "$tab [Version program]"
-echo "$fversion"
-echo $footer_option
-exit ; fi
+ if [ "$first_option" = "version" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show version about $fiptables ]"
+ echo $header_option
+ echo
+ echo "$tab [Name program]"
+ echo "$fprogram"
+ echo
+ echo "$tab [Description program]"
+ echo "$fdescription"
+ echo
+ echo "$tab [Exec program]"
+ echo "$directory_fiptables/$fiptables"
+ echo
+ echo "$tab [File format]"
+ file $directory_fiptables/$fiptables | cut -d "," -f 1-2
+ echo
+ echo "$tab [Config cfg directory]"
+ echo "$directory_config"
+ echo "$tab [Firewall standard directory]"
+ echo "$directory_fwrecover"
+ echo "$tab [Config files]"
+ echo "variables:    /etc/default/fwiptables"
+ echo "completion:   /etc/bash_completion.d/fwiptables"
+ echo "auth users:   /etc/sudoers/fwiptables"
+ echo "$tab [Output log]"
+ echo "output log:   /var/log/fwiptables"
+ echo
+ echo "$tab [Version program]"
+ echo "$fversion"
+ echo $footer_option
+ exit ; fi
 ####
 ####
 ##############################       english: examples: system script to show config files examples
 ##############################       spanish: examples: script de sistema para mostrar ejemplos de configuraciones
 ####
 ####
-if [ "$first_option" = "examples" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ Show examples for $fiptables ]"
-echo $header_option
+ if [ "$first_option" = "examples" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show examples for $fiptables ]"
+ echo $header_option
 ####
 ####
 #### config: web example ####
 ####
 ####
-echo
-echo "# config web example #" 
-echo "client_tcp=http,https ;"
-echo "client_udp=domain,ntp,bootpc,http ;"
+ echo
+ echo "# config web example #" 
+ echo "client_tcp=http,https ;"
+ echo "client_udp=domain,ntp,bootpc,http ;"
 #### echo "server_tcp=http,https ;"
 ####
 ####
 #### config:  games example  ####
 ####
 ####
-echo
-echo "# config games example #"
-echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
-echo "client_tcp=http,https"
+ echo
+ echo "# config games example #"
+ echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
+ echo "client_tcp=http,https"
 ####
 ####
 #### config: wesnoth game example ####
 ####
 ####
-echo
-echo "# config web example #" 
-echo "client_tcp=http,https,14995:15000 ;"
-echo "client_udp=domain,ntp,bootpc,http ;"
+ echo
+ echo "# config web example #" 
+ echo "client_tcp=http,https,14995:15000 ;"
+ echo "client_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  torrent-example1.cfg ####
 ####
 ####
-echo
-echo "# config torrent example #"
-echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
-echo "client_tcp=http,https"
+ echo
+ echo "# config torrent example #"
+ echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
+ echo "client_tcp=http,https"
 ####
 ####
 #### config: samba-example1.cfg ####
 ####
 ####
-echo
-echo "# config samba example #"
-echo "client_udp=domain,bootpc,ntp,https,137:139 ; "
-echo "client_tcp=http,https,ipp,microsoft-ds"
+ echo
+ echo "# config samba example #"
+ echo "client_udp=domain,bootpc,ntp,https,137:139 ; "
+ echo "client_tcp=http,https,ipp,microsoft-ds"
 #### echo "server_udp=137:139 ; "
 #### echo "server_tcp=ssh,ipp,microsoft-ds"
-echo "allow_output_ping= ; allow_input_ping= ; "
+ echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
 #### config: vpn-sample1.cfg ##
 ####
 ####
-echo
-echo "# config vpn example #"
-echo "allow_forward= ; "
-echo "allow_vpn= ; "
-echo "vpn=wesnoth.org,sourceforge.net"
+ echo
+ echo "# config vpn example #"
+ echo "allow_forward= ; "
+ echo "allow_vpn= ; "
+ echo "vpn=wesnoth.org,sourceforge.net"
 ####
 ####
 #### config: email-example1.cfg ####
 ####
 ####
-echo
-echo "# config email example #"
-echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
+ echo
+ echo "# config email example #"
+ echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 #### echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 ####
 ####
 #### config: ssh-example1.cfg ####
 ####
 ####
-echo
-echo "# config ssh example #"
-echo "client_tcp=http,https,printer,ipp,ssh,rsync,git"
+ echo
+ echo "# config ssh example #"
+ echo "client_tcp=http,https,printer,ipp,ssh,rsync,git"
 #### echo "server_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 ####
 #### config: vnc-example1.cfg ####
 ####
 ####
-echo
-echo "# config vnc example #"
-echo "client_tcp=http,https,ssh,5900:5910"
+ echo
+ echo "# config vnc example #"
+ echo "client_tcp=http,https,ssh,5900:5910"
 #### echo "server_tcp=ssh,http,https,5900:5910"
 ####
 ####
 #### config: ftp-example1.cfg ##
 ####
 ####
-echo
-echo "# config ftp example #"
-echo "client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
-echo "client_udp=domain,bootpc,ntp,https,tftp"
+ echo
+ echo "# config ftp example #"
+ echo "client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
+ echo "client_udp=domain,bootpc,ntp,https,tftp"
 #### echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp"
 #### echo "server_udp=tftp"
 ####
@@ -3107,89 +3115,95 @@ echo "client_udp=domain,bootpc,ntp,https,tftp"
 #### config: printer-example1.cfg ####
 ####
 ####
-echo
-echo "# config printer example #"
-echo "client_tcp=http,https,ipp,printer"
+ echo
+ echo "# config printer example #"
+ echo "client_tcp=http,https,ipp,printer"
 #### echo "server_tcp=ssh,http,https,ipp,printer"
 ####
 ####
 #### config: irc-example1.cfg ####
 ####
 ####
-echo
-echo "# config irc example #"
-echo "client_tcp=http,https,ircd,ircs-u"
+ echo
+ echo "# config irc example #"
+ echo "client_tcp=http,https,ircd,ircs-u"
 #### echo "server_tcp=ssh,http,https,ircd,ircs-u"
 ####
 ####
 #### config: sql-example1.cfg ####
 ####
 ####
-echo
-echo "# config sql example #"
-echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
+ echo
+ echo "# config sql example #"
+ echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 #### echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 ####
-echo $footer_option
-exit ; fi
+ echo $footer_option
+ exit ; fi
 ####
 ####
 ##############################       english: license: license gpl v2
 ##############################       spanish: license: license gpl v2
 ####
 ####
-if [ "$first_option" = "license" ]; then
-echo $head_option
-echo "$cinco [ $first_option ] [ Show license for $fiptables ]"
-echo $header_option
-echo "license text for gpl v2 downloading .."
-echo "$ralla" "$ralla" "$ralla"
-$favorite_text_browser -dump "$license_gpl" | more
-echo $footer_option
-exit;  fi
+ if [ "$first_option" = "license" ]; then
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show license for $fiptables ]"
+ echo $header_option
+ echo "license text for gpl v2 downloading .."
+ echo "$ralla" "$ralla" "$ralla"
+ $favorite_text_browser -dump "$license_gpl" | more
+ echo $footer_option
+ exit;  fi
 ####
 ####
 ##############################       english: howto-upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: howto-upgrade: actualiza en el archivo /usr/bin/fwiptables
 ####
 ####
-if [ "$first_option" = "howto-upgrade" ]; then
-echo $head_option
-echo "$cinco [ $first_option ] [ Show howto upgrade $fiptables  ]"
-echo $header_option
-echo "The actually version is: $fiptables $fversion actual"
-echo "  The latest version is:"
-$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
-echo "$cinco"
-echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
-echo "$cinco    OR download manually   || OR $fiptables upgrade || OR look down: "
-echo "$favorite_text_browser -source $fweb_latest &> /tmp/$fiptables"
-echo "chmod ugo+x /tmp/$fiptables"
-echo "/tmp/$fiptables install"
-echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fiptables"
-echo $footer_option
-exit;  fi
+ if [ "$first_option" = "howto-upgrade" ]; then
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show howto upgrade $fiptables  ]"
+ echo $header_option
+ echo "The actually version is: $fiptables $fversion actual"
+ echo "  The latest version is:"
+ $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+ echo "$cinco"
+ echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
+ echo "$cinco    OR download manually   || OR $fiptables upgrade || OR look down: "
+ echo "$favorite_text_browser -source $fweb_latest &> /tmp/$fiptables"
+ echo "chmod ugo+x /tmp/$fiptables"
+ echo "/tmp/$fiptables install"
+ echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fiptables"
+ echo $footer_option
+ exit;  fi
 ####
 ####
 #############################       english: eraserules: system script, the erase rules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 ####
 ####
-if [ "$first_option" = "eraserules" ]; then $nada ;
-echo $head_option
-echo $header_option
-$which_iptables_nft -t filter -F
-$which_ip6tables_nft -t filter  -F
-$which_iptables_legacy -t filter -F
-$which_ip6tables_legacy -t filter -F
-$which_iptables_nft -t nat -F
-$which_ip6tables_nft -t nat  -F
-$which_iptables_legacy -t nat -F
-$which_ip6tables_legacy -t nat -F
-echo "$cinco [OK FIREWALL ERASED]"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "eraserules" ]; then $nada ;
+ echo $head_option
+ echo $header_option
+ $which_iptables_nft -t filter -F
+ $which_ip6tables_nft -t filter  -F
+ $which_iptables_legacy -t filter -F
+ $which_ip6tables_legacy -t filter -F
+ $which_iptables_nft -t nat -F
+ $which_ip6tables_nft -t nat  -F
+ $which_iptables_legacy -t nat -F
+ $which_ip6tables_legacy -t nat -F
+ echo "$cinco [OK FIREWALL ERASED]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################       english: route: system script, the route option
@@ -3199,128 +3213,136 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 ####
-if [ "$first_option" = "route" ]; then   echo  -n
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ Show route tables ]"
-echo $header_option
-case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
-echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
-echo "$($which_ip route)"
-case $($which_route) in $NULL) echo "$tab [Install route command]" ; exit ;; esac
-echo $ralla
-echo "$rallica [ ip route ipv4 ] [ mode lineal ]"
-echo "$($which_route -4)"
-echo $ralla
-echo "$rallica [ ip route ipv6 ] [ mode lineal]"
-echo "$($which_route -6)"
-echo $footer_option
-exit ; fi
+ if [ "$first_option" = "route" ]; then   echo  -n
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show route tables ]"
+ echo $header_option
+ case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
+ echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
+ echo "$($which_ip route)"
+ case $($which_route) in $NULL) echo "$tab [Install route command]" ; exit ;; esac
+ echo $ralla
+ echo "$rallica [ ip route ipv4 ] [ mode lineal ]"
+ echo "$($which_route -4)"
+ echo $ralla
+ echo "$rallica [ ip route ipv6 ] [ mode lineal]"
+ echo "$($which_route -6)"
+ echo $footer_option
+ exit ; fi
 ####
 ####
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
 ####
 ####
-if [ "$first_option" = "ss" ]; then $nada ;
-case $which_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ Show sockets with ss ]"
-echo $header_option
-echo "$tab [ The ipv6 sockets ]"
-$which_ss -a6
-echo "$ralla"
-echo "$tab [ The ipv4 sockets ]"
-$which_ss -a4
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "ss" ]; then $nada ;
+ case $which_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show sockets with ss ]"
+ echo $header_option
+ echo "$tab [ The ipv6 sockets ]"
+ $which_ss -a6
+ echo "$ralla"
+ echo "$tab [ The ipv4 sockets ]"
+ $which_ss -a4
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 ####
 ####
-if [ "$first_option" = "lsof" ]; then $nada ;
-case $which_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ Show sockets with lsof ]"
-echo $header_option
-echo "$tab [The sockets with lsof ipv4 ]"
-$which_lsof -i 4
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "lsof" ]; then $nada ;
+ case $which_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show sockets with lsof ]"
+ echo $header_option
+ echo "$tab [The sockets with lsof ipv4 ]"
+ $which_lsof -i 4
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat sockets
 ####
 ####
-if [ "$first_option" = "netstat" ]; then $nada ;
-case $which_netstat in
-"$NULL") echo "$tab [Install netstat]" ; exit ;; esac
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ Show sockets with netstat ]"
-echo $header_option
-echo "$tab [The sockets list with netstat ]"
-$which_netstat -a -4 -6
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "netstat" ]; then $nada ;
+ case $which_netstat in
+ "$NULL") echo "$tab [Install netstat]" ; exit ;; esac
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show sockets with netstat ]"
+ echo $header_option
+ echo "$tab [The sockets list with netstat ]"
+ $which_netstat -a -4 -6
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################      english: netstat-nat: system script, the netstat sockets
 #############################      spanish: netstat-nat: script de sistema, el netstat sockets
 ####
 ####
-if [ "$first_option" = "netstat-nat" ]; then $nada ;
-case $which_netstat_nat in
-"$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
-echo $head_option
-echo $default_route
-echo "$cinco [ $first_option ] [ Show sockets with netstat-nat ]"
-echo $header_option
-echo "$tab [The devices list with netstat]"
-$which_netstat_nat -x
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "netstat-nat" ]; then $nada ;
+ case $which_netstat_nat in
+ "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show sockets with netstat-nat ]"
+ echo $header_option
+ echo "$tab [The devices list with netstat]"
+ $which_netstat_nat -x
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################      english: ipforward-on: active ip forward
 #############################      spanish: ipforward-on: activa ip forward
 ####
 ####
-if [ "$first_option" = "ipforward-on" ]; then $nada ;
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ Active ip forwading in kernel ]"
-echo $header_option
-for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
-do $which_sysctl -w $a=1 ; done
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "ipforward-on" ]; then $nada ;
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Active ip forwading in kernel ]"
+ echo $header_option
+ for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+ do $which_sysctl -w $a=1 ; done
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################      english: ipforward-off: active ip forward
 #############################      spanish: ipforward-off: activa ip forward
 ####
 ####
-if [ "$first_option" = "ipforward-off" ]; then $nada ;
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ Deactive ip forwading in kernel ]"
-echo $header_option
-for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
-do $which_sysctl -w $a=0 ; done
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "ipforward-off" ]; then $nada ;
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Deactive ip forwading in kernel ]"
+ echo $header_option
+ for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+ do $which_sysctl -w $a=0 ; done
+ echo $footer_option
+ exit; fi
 ####
 ####
 #############################  english: filter-ip4: system script, the list option
