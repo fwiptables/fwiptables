@@ -47,7 +47,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 #### #### english: option for default    #### spanish: opcion por defecto
-default_option="list"                    #### over fwiptables-for-default    #### default: basic-options
+default_option="filter-ip4"              #### over fwiptables-for-default    #### default: options
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_question="" ;                      #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -971,17 +971,27 @@ echo $head_option
 echo $header_option
 echo "$cinco [ Upgrade $fiptables in $directory_fiptables ]"
 echo "$cincuenta [ Web upgrade ] $cinco"
+case "$favorite_text_browser" in
+"$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$cinco [ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
 echo "$cinco [ Downloading $fiptables with the comand $favorite_text_browser browser ]"
 rm /tmp/$fiptables &> /dev/null
+####
+####
+#### download fwiptables
+####
+####
 echo "$cinco [ Waiting several seconds .. ]"
-case "$favorite_text_browser" in
-"$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
 echo "$cinco [ Waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
 if [ -s /tmp/$fiptables ]; then
 chmod ugo+rx /tmp/$fiptables &> /dev/null
+####
+####
+#### launch install
+####
+####
 /tmp/$fiptables install
 echo "$cinco [ $fprogram ] [ Version $fversion ] [ Upgraded: OK ]"
 echo "$cinco [ OK FIREWALL UPGRADED ] [ $directory_fiptables/$fiptables ]"
@@ -1000,13 +1010,13 @@ exit ; fi
 ####
 if [ "$first_option" = "offline" ]; then      echo "$cinco  FIREWALL OFFLINE" ; 
 launch_iptables="si"; launch_permisive="no";
-launch_onlyweb="no" ; launch_offline=""   ;  launch_custom="no" ; input_all="no"  ; fi
+launch_onlyweb="no" ; launch_offline=""   ;  launch_custom="no" ;  fi
 if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIVE" ; 
 launch_iptables="si";  launch_permisive=""  ;
-launch_onlyweb="no" ; launch_offline="no" ;  launch_custom="no" ; input_all="no"  ; fi
+launch_onlyweb="no" ; launch_offline="no" ;  launch_custom="no" ;  fi
 if [ "$first_option" = "onlyweb" ]; then echo "$cinco  FIREWALL ONLYWEB" ;
 launch_iptables="si"; launch_permisive="no"  ;
-launch_onlyweb=""   ; launch_offline="no" ;  launch_custom="no" ; input_all="no"  ; fi
+launch_onlyweb=""   ; launch_offline="no" ;  launch_custom="no" ;  fi
 if [ "$first_option" = "custom" ]; then       echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables="si"; launch_permisive="no" ;
 launch_onlyweb="no" ; launch_offline="no" ; launch_custom="" ; fi
@@ -3354,9 +3364,10 @@ exit; fi
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3387,9 +3398,10 @@ echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 ]"
  legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter ipv6 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter ipv6 ]"
  echo $header_option
  echo $ralla
  case $legacyseis in
@@ -3419,9 +3431,10 @@ echo "$cinco [ $first_option ] [ List iptables filter ipv6 ]"
  legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3452,9 +3465,10 @@ echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 ]"
  legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
  nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
  echo $header_option
  echo $ralla
  case $legacycuatro in
@@ -3484,9 +3498,10 @@ echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
  legacyseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables nat ipv6 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables nat ipv6 ]"
  echo $header_option
  echo $ralla
  case $legacyseis in
@@ -3516,9 +3531,10 @@ if [ "$first_option" = "listnum" ]; then $nada ;
 legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1)
 nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1)
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter ipv4 in numerical ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter ipv4 in numerical ]"
  echo $header_option
  echo $ralla
  case $legacycuatro in
@@ -3548,9 +3564,10 @@ echo "$cinco [ $first_option ] [ List iptables filter ipv4 in numerical ]"
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 in numerical ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 in numerical ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3581,9 +3598,10 @@ echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 in numerical 
  legacyseis=$("$which_ip6tables_legacy" -t filter -L OUTPUT 1)
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1)
  echo $head_option 
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter ipv6 in numerical ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter ipv6 in numerical ]"
  echo $header_option
  echo $ralla
  case $legacyseis in
@@ -3613,9 +3631,10 @@ echo "$cinco [ $first_option ] [ List iptables filter ipv6 in numerical ]"
  legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 in numerical ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 in numerical ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3644,9 +3663,10 @@ echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 in numerical 
 ####
  if [ "$first_option" = "mangle-ip4" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables mangle ipv4 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables mangle ipv4 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3665,9 +3685,10 @@ echo "$cinco [ $first_option ] [ List iptables mangle ipv4 ]"
 ####
  if [ "$first_option" = "mangle-ip6" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables mangle ipv6 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables mangle ipv6 ]"
  echo $header_option
  echo $ralla
  echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
@@ -3685,9 +3706,10 @@ echo "$cinco [ $first_option ] [ List iptables mangle ipv6 ]"
 ####
  if [ "$first_option" = "raw-ip4" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables raw ipv4 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables raw ipv4 ]"
  echo $header_option
  echo $ralla
  echo "$rallica  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
@@ -3705,9 +3727,10 @@ echo "$cinco [ $first_option ] [ List iptables raw ipv4 ]"
 ####
  if [ "$first_option" = "raw-ip6" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables raw ipv6 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables raw ipv6 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3726,9 +3749,10 @@ echo "$cinco [ $first_option ] [ List iptables raw ipv6 ]"
 ####
  if [ "$first_option" = "security-ip4" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables security ipv4 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables security ipv4 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3747,9 +3771,10 @@ echo "$cinco [ $first_option ] [ List iptables security ipv4 ]"
 ####
  if [ "$first_option" = "security-ip6" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List iptables security ipv6 ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List iptables security ipv6 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3768,9 +3793,10 @@ echo "$cinco [ $first_option ] [ List iptables security ipv6 ]"
 ####
  if [ "$first_option" = "ebtables" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List ebtables ]"
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List ebtables ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -3791,9 +3817,10 @@ echo "$cinco [ $first_option ] [ List ebtables ]"
 ####
  if [ "$first_option" = "arptables" ]; then $nada
  echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ List arptables ipv4 ]"
+ echo $recomendation 
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List arptables ipv4 ]"
  echo $header_option
  echo $ralla
  echo $ralla
@@ -4039,14 +4066,17 @@ exit; fi
 ############################       spanish: ipforward-list: la opcion de reenvios  en ingles
 ####
 ####
-if [ "$first_option" = "ipforward-list" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ Show ip forwading in kernel ]"
-echo $header_option
-echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
-$which_sysctl -a | grep -i forwarding
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "ipforward-list" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show ip forwading in kernel ]"
+ echo $header_option
+ echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
+ $which_sysctl -a | grep -i forwarding
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: tcpdump: listen at dump from conexiones
@@ -4075,17 +4105,20 @@ exit; fi
 ############################       spanish: arp: escucha al volcado de conexiones
 ####
 ####
-if [ "$first_option" = "arp" ]; then $nada
-case $which_arp in "$NULL") echo "install arp" ;;
-*)
-echo $head_option
-echo "$cinco [ $first_option ] [ Show cache arp ]"
-echo $header_option
-$which_arp -a
-;;
-esac
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "arp" ]; then $nada
+ case $which_arp in "$NULL") echo "install arp" ;;
+ *)
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ Show cache arp ]"
+ echo $header_option
+ $which_arp -a
+ ;;
+ esac
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: etc-default: show /etc/default/fwiptables
@@ -4106,16 +4139,19 @@ exit; fi
 ############################       spanish: names: lista de archivos con reglas en formato iptables
 ####
 ####
-if [ "$first_option" = "names" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ List names from firewall saved ]"
-echo $header_option
-echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
-echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
-ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | sort -u
-echo "$cinco  [OK FIREWALL NAMES]"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "names" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ List names from firewall saved ]"
+ echo $header_option
+ echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
+ echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+ ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | sort -u
+ echo "$cinco  [OK FIREWALL NAMES]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ##############################       english: reset: reset counter rules
@@ -4174,14 +4210,13 @@ exit; fi
 if [ "$first_option" = "load" ]; then $nada
 echo $head_option
 echo $header_option
-case $second_option in
 ####
 ####
 #### English: Void in second option
 ####
 ####
-"$NULL") echo "$cinco [usage: $fiptables load fw-to-restore]"
-echo "$cinco [firewall do not choosed] [Did not updated firewall with load] [See: $fiptables list-fw]"  
+case $second_option in
+"$NULL") $fiptables names; echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"  
 ;;
 ####
 ####
@@ -4207,7 +4242,8 @@ $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 &>> /d
 $which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6 &>> /dev/null
 echo "$cinco [ OK FIREWALL LOADED ] [ $second_option ]"
 else
-echo "$cinco [usage: $fiptables load fw-to-restore] [SEE: $fiptables list-fw]"
+$fiptables names
+echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"
 fi
 ;;
 esac
