@@ -4392,7 +4392,7 @@ exit; fi
  "$NULL") echo "$cinco Selecting host resolveip to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo "$cinco resolveip $trazador"
- $which_resolveip -i $trazador
+ $which_resolveip $trazador
  echo $footer_lineal
  exit; fi
 ####
