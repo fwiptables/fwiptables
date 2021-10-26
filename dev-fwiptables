@@ -3350,8 +3350,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "filter-ip4" ]; then $nada ;
- legacycuatro=$("$which_iptables_legacy" -t filter -L OUTPUT 1) &> /dev/null
- nftcuatro=$("$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
+ legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
+ "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
+ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
+ "$which_iptables_legacy" -t filter -L OUTPUT 1) &> /dev/null
  echo $head_option
  echo $recomendation
  echo $default_route_cuatro
@@ -3383,8 +3385,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "forward" ]; then $nada ;
- legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
- nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
+ legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
+ "$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
+ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
+ "$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $head_option
  echo $recomendation
  echo $default_route_cuatro
