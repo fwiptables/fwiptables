@@ -4236,6 +4236,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "load" ]; then $nada
+ echo $head_option
  echo $recomendation
  echo $default_route_cuatro
  echo $default_route_seis
@@ -4323,7 +4324,7 @@ $fiptables eraserules &> /dev/null
  echo "$cinco [ $first_option ] [ show one firewall saved ]"
  echo $header_option
  case "$second_option" in
- "$NULL") echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
+ "$NULL") $fiptables names; echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
  *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
  esac
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
