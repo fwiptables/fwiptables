@@ -151,6 +151,7 @@ license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.tx
 ####
 ####     #### english: launch /etc/default/fwiptables #### spanish: lanza /etc/default/fwiptables
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
+header_actual="$cinco [ Actual option for default: $default_option ] [ See: fwiptables etc-default ]"
 ####
 ####
 ##############################       english: Notice Installer            ###################################
@@ -1126,16 +1127,14 @@ echo $footer_option
 exit ; fi
 ####
 ####
-##############################       english: Script: general options         #############################
-##############################       spanish: Script: opciones generales      #############################
-####
-####
-##############################       english: long-help 
-##############################       spanish: larga-opcion 
+##############################       english: long-help: long help        ##############################
+##############################       spanish: larga-opcion: larga ayuda   ##############################
 ####
 ####
 if [ "$first_option" = "long-help" ]; then $genfiles
 echo $head_option
+echo $recomendation
+echo $header_actual
 echo $header_option
 echo "$cinco         [Long-help]"
 echo "$cinco         [Larga-ayuda]"
@@ -5411,8 +5410,9 @@ if [ "$first_option" = "config-eng" ]; then $gefiles
 ####
 if [ "$first_option" = "help" ]; then $genfiles
 echo $head_option
+echo $recomendation
+echo $header_actual
 echo $header_option
-echo
 echo "$cinco [ $first_option ]  [ Principal options ] $cinco"
 echo
 echo
@@ -5647,8 +5647,9 @@ exit; fi
 ####
 if [ "$first_option" = "ayuda" ]; then $genfiles
 echo $head_option
+echo $recomendation
+echo $header_actual
 echo $header_option
-echo
 echo "$cinco [ $first_option ] [ Opciones principales ] $cinco"
 echo
 echo "$cinco         [Lanzar guia]"
