@@ -3033,7 +3033,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "# config web example #" 
  echo "client_tcp=http,https ;"
  echo "client_udp=domain,ntp,bootpc,http ;"
-#### echo "server_tcp=http,https ;"
 ####
 ####
 #### config:  games example  ####
@@ -3070,8 +3069,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "# config samba example #"
  echo "client_udp=domain,bootpc,ntp,https,137:139 ; "
  echo "client_tcp=http,https,ipp,microsoft-ds"
-#### echo "server_udp=137:139 ; "
-#### echo "server_tcp=ssh,ipp,microsoft-ds"
  echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
@@ -3091,7 +3088,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config email example #"
  echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
-#### echo "server_tcp=ssh,http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 ####
 ####
 #### config: ssh-example1.cfg ####
@@ -3100,7 +3096,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config ssh example #"
  echo "client_tcp=http,https,printer,ipp,ssh,rsync,git"
-#### echo "server_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 ####
 #### config: vnc-example1.cfg ####
@@ -3109,7 +3104,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config vnc example #"
  echo "client_tcp=http,https,ssh,5900:5910"
-#### echo "server_tcp=ssh,http,https,5900:5910"
 ####
 ####
 #### config: ftp-example1.cfg ##
@@ -3119,8 +3113,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "# config ftp example #"
  echo "client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
  echo "client_udp=domain,bootpc,ntp,https,tftp"
-#### echo "server_tcp=ssh,http,https,ftp,ftp-data,ftps,gsiftp,zope-ftp"
-#### echo "server_udp=tftp"
 ####
 ####
 #### config: printer-example1.cfg ####
@@ -3129,7 +3121,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config printer example #"
  echo "client_tcp=http,https,ipp,printer"
-#### echo "server_tcp=ssh,http,https,ipp,printer"
 ####
 ####
 #### config: irc-example1.cfg ####
@@ -3138,7 +3129,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config irc example #"
  echo "client_tcp=http,https,ircd,ircs-u"
-#### echo "server_tcp=ssh,http,https,ircd,ircs-u"
 ####
 ####
 #### config: sql-example1.cfg ####
@@ -3147,7 +3137,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config sql example #"
  echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
-#### echo "server_tcp=ssh,http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 ####
  echo $footer_option
