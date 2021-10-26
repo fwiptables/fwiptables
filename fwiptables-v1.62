@@ -85,7 +85,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #### english: path to config files  #### spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
-autosave_fwrecover="no" ;                     #### over fwiptables-for-default    #### choose: void or no
+autosave_fwrecover="no" ;                #### over fwiptables-for-default    #### choose: void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 #### #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"
@@ -130,11 +130,12 @@ mensage_timeout="Closing gui menu in $close_timeout seconds"
 #### sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
 #### case $($which xrandr) in "$NULL") ;; *) graphic_dimension=$pantallatotal ;; esac
 ####       #### english: autovariables        #### spanish: autovariables
-config_option="no" ;
-launch_iptables="no" ;
-launch_offline="no" ;
-launch_permisive="no" ;
-launch_custom="no";
+config_option="no" ;     #  autoconfigure with second option is a valid file
+launch_iptables="no" ;   #  autoconfigure with launch iptables rules
+launch_offline="no" ;    #  autoconfigure with offline rules
+launch_permisive="no" ;  #  autoconfigure with permisive rules
+launch_easyrules="no" ;  #  autoconfigure with easyrules
+launch_custom="no";      #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
