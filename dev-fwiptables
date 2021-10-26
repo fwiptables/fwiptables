@@ -96,7 +96,7 @@ ant_option=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_option="$ant_option [ $first_option ] $cinco" ;                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-recomendation="$cinco [ Recomendation for $fiptables ] [ Use: $fiptables options ]"
+recomendation="$cinco [ Usage for $fiptables ] [ Use: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_option="$ralla   $ralla   $ralla"                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -4441,197 +4441,204 @@ exit; fi
 ####
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
-if [ "$first_option" = "ping-ip6" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ ping one ip or host with ipv6 ]"
-echo $header_option
-case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
+ if [ "$first_option" = "ping-ip6" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ ping one ip or host with ipv6 ]"
+ echo $header_option
+ case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
-case "$second_option" in
-"$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;;
-esac
-$fiptables stop
-echo "$cinco ping -6 -c 5 -A $trazador"
-$which_ping -6 -c 5 -A $trazador
-$fiptables continue
-echo $footer_option
-exit; fi
+ case "$second_option" in
+ "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
+ *) trazador="$second_option" ;;
+ esac
+ $fiptables stop
+ echo "$cinco ping -6 -c 5 -A $trazador"
+ $which_ping -6 -c 5 -A $trazador
+ $fiptables continue
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: trace-ip4: traceroute with tcp and ipv6
 ############################       spanish: trace-ip4: traceroute con tcp y ipv4
 ####
 ####
-if [ "$first_option" = "trace-ip4" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ trace ip or host with ipv4 ]"
-echo $header_option
-case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
+ if [ "$first_option" = "trace-ip4" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo $header_option
+ case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
-case "$second_option" in
-"$NULL") echo "$cinco Selecting host trace-ip4 to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;; esac
-$fiptables stop
-echo "$cinco traceroute -4 -T $trazador"
-$which_traceroute -4 -T $trazador
-$fiptables continue
-echo $footer_option
-exit; fi
+ case "$second_option" in
+ "$NULL") echo "$cinco Selecting host trace-ip4 to fast.com for default" ; trazador="fast.com" ;;
+ *) trazador="$second_option" ;; esac
+ $fiptables stop
+ echo "$cinco traceroute -4 -T $trazador"
+ $which_traceroute -4 -T $trazador
+ $fiptables continue
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: trace-ip6: traceroute with tcp and ipv6
 ############################       spanish: trace-ip6: traceroute con tcp e ipv6
 ####
 ####
-if [ "$first_option" = "trace-ip6" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ trace one ip or host with ipv6 ]"
-echo $header_option
-case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
+ if [ "$first_option" = "trace-ip6" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ trace one ip or host with ipv6 ]"
+ echo $header_option
+ case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
-case "$second_option" in
-"$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;;
-esac
-$fiptables stop
-echo "$cinco traceroute -6 -T $trazador"
-$which_traceroute -6 -T $trazador
-$fiptables continue
-echo $footer_option
-exit; fi
+ case "$second_option" in
+ "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
+ *) trazador="$second_option" ;;
+ esac
+ $fiptables stop
+ echo "$cinco traceroute -6 -T $trazador"
+ $which_traceroute -6 -T $trazador
+ $fiptables continue
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: host: host to resolve ip
 ############################       spanish: host: host to resolve ip
 ####
 ####
-if [ "$first_option" = "host" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ resolve one ip or host ]"
-echo $header_option
-case $which_host in "$NULL") echo " Install host" ; exit ;; esac
-case "$second_option" in
-"$NULL") echo "$cinco Selecting host resolve to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;; esac
-echo "$cinco host $trazador"
-$which_host $trazador
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "host" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ resolve one ip or host ]"
+ echo $header_option
+ case $which_host in "$NULL") echo " Install host" ; exit ;; esac
+ case "$second_option" in
+ "$NULL") echo "$cinco Selecting host resolve to fast.com for default" ; trazador="fast.com" ;;
+ *) trazador="$second_option" ;; esac
+ echo "$cinco host $trazador"
+ $which_host $trazador
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
 ####
 ####
-if [ "$first_option" = "resolveip" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ resolve one ip or host ]"
-echo $header_option
-case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
-case "$second_option" in
-"$NULL") echo "$cinco Selecting host resolveip to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;; esac
-echo "$cinco resolveip $trazador"
-$which_resolveip -i $trazador
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "resolveip" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ resolve one ip or host ]"
+ echo $header_option
+ case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
+ case "$second_option" in
+ "$NULL") echo "$cinco Selecting host resolveip to fast.com for default" ; trazador="fast.com" ;;
+ *) trazador="$second_option" ;; esac
+ echo "$cinco resolveip $trazador"
+ $which_resolveip -i $trazador
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
 ####
 ####
-if [ "$first_option" = "geoip" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ resolve the location to one ip or host ]"
-echo $header_option
-case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
-case "$second_option" in
-"$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
-*) trazador="$second_option" ;; esac
-echo "$cinco geoiplookup -i $trazador"
-$which_geoiplookup -i $trazador
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "geoip" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ resolve the location to one ip or host ]"
+ echo $header_option
+ case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
+ case "$second_option" in
+ "$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
+ *) trazador="$second_option" ;; esac
+ echo "$cinco geoiplookup -i $trazador"
+ $which_geoiplookup -i $trazador
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: ntpdate: update the date and time
 ############################       spanish: ntpdate: actualiza la fecha y hora
 ####
 ####
-if [ "$first_option" = "ntpdate" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ update the computer time and date from internet ]"
-echo $header_option
-echo "$rallica [ Updating the time and the date .. ]"
-pool0=0.debian.pool.ntp.org
-pool1=1.debian.pool.ntp.org
-pool2=2.debian.pool.ntp.org
-pool3=3.debian.pool.ntp.org
-$favorite_date_command $pool0
-date
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "ntpdate" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ update the computer time and date from internet ]"
+ echo $header_option
+ echo "$rallica [ Updating the time and the date .. ]"
+ pool0=0.debian.pool.ntp.org
+ pool1=1.debian.pool.ntp.org
+ pool2=2.debian.pool.ntp.org
+ pool3=3.debian.pool.ntp.org
+ $favorite_date_command $pool0
+ date
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: scan-tcp: scan one net per tcp
@@ -4639,223 +4646,228 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "scan-tcp" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ scan with nmap tcp ]"
-echo $header_option
-echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
-echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
-case $which_nmap in $NULL) echo install nmap ; exit ;; esac
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ scan with nmap tcp ]"
+ echo $header_option
+ echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
+ case $which_nmap in $NULL) echo install nmap ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
-$fiptables stop
+ $fiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "$cincuenta [ Doing nmap ]"
-$which_nmap -sT $2
+ echo "$cincuenta [ Doing nmap ]"
+ $which_nmap -sT $2
 ####
 ####
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
-$fiptables continue
+ $fiptables continue
 ####
 ####
-echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
-echo $footer_option
-exit; fi
+ echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: scan-syn: scan one net per syn
 ############################       spanish: scan-syn: rastrea una por peticiones
 ####
 ####
-if [ "$first_option" = "scan-syn" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ scan with nmap syn ]"
-echo $header_option
-echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
-echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
-case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+ if [ "$first_option" = "scan-syn" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ scan with nmap syn ]"
+ echo $header_option
+ echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
+ case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
-$fiptables stop
+ $fiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "$cincuenta [ Doing nmap ]"
-$which_nmap -sF $2
+ echo "$cincuenta [ Doing nmap ]"
+ $which_nmap -sF $2
 ####
 ####
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
-$fiptables continue
-echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
-echo $footer_option
-exit; fi
+ $fiptables continue
+ echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: scan-fin: scan one net per conexiones
 ############################       spanish: scan-fin: rastrea una red por conexiones
 ####
 ####
-if [ "$first_option" = "scan-fin" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ scan with nmap fin ]"
-echo $header_option
-echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
-echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
-case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+ if [ "$first_option" = "scan-fin" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ scan with nmap fin ]"
+ echo $header_option
+ echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
+ case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
-$fiptables stop
+ $fiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "$cincuenta [ Doing nmap ]"
-$which_nmap -sF $2
+ echo "$cincuenta [ Doing nmap ]"
+ $which_nmap -sF $2
 ####
 ####
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
-$fiptables continue
+ $fiptables continue
 ####
 ####
-echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
-echo $footer_option
-exit; fi
+ echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: scan-udp: scan one net per udp
 ############################       spanish: scan-udp: rastrea una red por udp
 ####
 ####
-if [ "$first_option" = "scan-udp" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ scan with nmap udp ]"
-echo $header_option
-echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
-echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
-case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+ if [ "$first_option" = "scan-udp" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ scan with nmap udp ]"
+ echo $header_option
+ echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
+ case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
-$fiptables stop
+ $fiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "$cincuenta [ Doing nmap ]"
-$which_nmap -sU $2
+ echo "$cincuenta [ Doing nmap ]"
+ $which_nmap -sU $2
 ####
 ####
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
-$fiptables continue
+ $fiptables continue
 ####
 ####
-echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
-echo $footer_option
-exit; fi
+ echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: scan-ping: scan one net per ping
 ############################       spanish: scan-ping: rastrea una red por ping
 ####
 ####
-if [ "$first_option" = "scan-ping" ]; then $nada
-echo $head_option
-echo $default_route_cuatro
-echo $default_route_seis
-echo "$cinco [ $first_option ] [ scan with nmap ping ]"
-echo $header_option
-echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
-echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
-case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
+ if [ "$first_option" = "scan-ping" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ scan with nmap ping ]"
+ echo $header_option
+ echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
+ case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -4867,278 +4879,294 @@ $fiptables stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "$cincuenta [ Doing nmap ]"
-$which_nmap -sn $2
+ echo "$cincuenta [ Doing nmap ]"
+ $which_nmap -sn $2
 ####
 ####
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
-$fiptables continue
-echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
-echo $footer_option
-exit; fi
+ $fiptables continue
+ echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: ram-free: give one freedom to ram innecesary
 ############################       spanish: ram-free: limpia la memoria ram
 ####
 ####
-if [ "$first_option" = "ram-free" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ freedom from innecesary ram ]"
-echo $header_option
-case $which_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
-echo " Actual Memory"
-free -hw && sync
-echo 3 | $which_tee /proc/sys/vm/drop_caches &> /dev/null
-echo " Memory ram freedom .. Actual memory"
-free -hw
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "ram-free" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ freedom from innecesary ram ]"
+ echo $header_option
+ case $which_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
+ echo " Actual Memory"
+ free -hw && sync
+ echo 3 | $which_tee /proc/sys/vm/drop_caches &> /dev/null
+ echo " Memory ram freedom .. Actual memory"
+ free -hw
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: disc-speed: Show the speed of disc
 ############################       spanish: disc-speed: Muestra la velocidad de el disco
 ####
 ####
-if [ "$first_option" = "disc-speed" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ test the disc speed ]"
-echo $header_option
-case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
-echo "$rallica Testing speed with the temporal file /root/borrame.img.img"
+ if [ "$first_option" = "disc-speed" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ test the disc speed ]"
+ echo $header_option
+ case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
+ echo "$rallica Testing speed with the temporal file /root/borrame.img.img"
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
-$which_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
-rm /root/borrame.img.img &> /dev/null
-echo $footer_option
-exit; fi
+ $which_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
+ rm /root/borrame.img.img &> /dev/null
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: ram-speed: Show the speed of ram
 ############################       spanish: ram-speed: Muestra la velocidad de la ram
 ####
 ####
-if [ "$first_option" = "ram-speed" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ test the ram speed ]"
-echo $header_option
-case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
-case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
-in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
-echo "$rallica Test speed with the temporal file /tmp/borrame.img.img"
+ if [ "$first_option" = "ram-speed" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ test the ram speed ]"
+ echo $header_option
+ case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
+ case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
+ in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
+ echo "$rallica Test speed with the temporal file /tmp/borrame.img.img"
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
-$which_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
-rm /tmp/borrame.img.img &> /dev/null
-echo $footer_option
-exit; fi
+ $which_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
+ rm /tmp/borrame.img.img &> /dev/null
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: glx-speed: show frammes por seconds with mesa graphicall 
 ############################       spanish: glx-speed: muestra los fotogramas por segundo con graphicos mesa
 ####
 ####
-if [ "$first_option" = "glx-speed" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ test gl mesa3D speed ]"
-echo $header_option
-case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
-vblank_mode=0 $which_glxgears
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "glx-speed" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ test gl mesa3D speed ]"
+ echo $header_option
+ case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
+ vblank_mode=0 $which_glxgears
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################## english: read-fwiptables: Read log /var/log/fwiptables  ##############################
 ############################## spanish: read-fwiptables: Lee log  /var/log/fwiptables  ##############################
 ####
 ####
-if [ "$first_option" = "log-fwiptables" ] ; then $nada ;
-echo $head_option
-echo "$cinco [ $first_option ] [ show /var/log/fwiptables ]"
-cat /var/log/fwiptables
-echo "$cinco this file is /var/log/fwiptables"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "log-fwiptables" ] ; then $nada ;
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show /var/log/fwiptables ]"
+ cat /var/log/fwiptables
+ echo "$cinco this file is /var/log/fwiptables"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: log-sudo: log from sudo
 ############################       spanish: log-sudo: log desde sudo
 ####
 ####
-if [ "$first_option" = "log-sudo" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ search sudo in logs ]"
-echo $header_option
-find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "log-sudo" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ search sudo in logs ]"
+ echo $header_option
+ find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: log-sshd: log from ssh server
 ############################       spanish: log-sshd: log desde el servidor de ssh
 ####
 ####
-if [ "$first_option" = "log-sshd" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ search sshd in logs ]"
-echo $header_option
-find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "log-sshd" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ search sshd in logs ]"
+ echo $header_option
+ find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: log-search: log from a one search
 ############################       spanish: log-search: log desde una busqueda
 ####
 ####
-if [ "$first_option" = "log-search" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
-echo $header_option
-case "$second_option" in
-$NULL) echo "$cinco use: $fiptables $first_option pattern" ;;
-*) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
-esac
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "log-search" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
+ echo $header_option
+ case "$second_option" in
+ $NULL) echo "$cinco use: $fiptables $first_option pattern" ;;
+ *) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
+ esac
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: dev-versions: about of program
 ############################       spanish: dev-versions: acerca del programa
 ####
 ####
-if [ "$first_option" = "dev-versions" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the link to dev version from git repository ]"
-echo $header_option
-echo $fweb_development
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "dev-versions" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the link to dev version from git repository ]"
+ echo $header_option
+ echo $fweb_development
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
 ####
 ####
-if [ "$first_option" = "new-versions" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the new versions in sourceforge page ]"
-echo $header_option
-case $favorite_text_browser in 
-"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-echo "$cinco list new-versions in the last week with browser $favorite_text_browser"
-echo $ralla
-$favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "new-versions" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the new versions in sourceforge page ]"
+ echo $header_option
+ case $favorite_text_browser in 
+ "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
+ echo "$cinco list new-versions in the last week with browser $favorite_text_browser"
+ echo $ralla
+ $favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: hosts: show /etc/hosts
 ############################       spanish: hosts: muestra /etc/hosts
 ####
 ####
-if [ "$first_option" = "hosts" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the file /etc/hosts ]"
-echo $header_option
-cat /etc/hosts
-echo $ralla
-echo "$cinco This file is /etc/hosts"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "hosts" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the file /etc/hosts ]"
+ echo $header_option
+ cat /etc/hosts
+ echo $ralla
+ echo "$cinco This file is /etc/hosts"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: protocols: show /etc/protocols
 ############################       spanish: protocols: muestra /etc/protocols
 ####
 ####
-if [ "$first_option" = "protocols" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the file /etc/protocols ]"
-echo $header_option
-cat /etc/protocols  | sed s/\&//g 
-echo $ralla
-echo "$cinco This file is /etc/protocols"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "protocols" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the file /etc/protocols ]"
+ echo $header_option
+ cat /etc/protocols  | sed s/\&//g 
+ echo $ralla
+ echo "$cinco This file is /etc/protocols"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: services: show /etc/services
 ############################       spanish: services: muestra /etc/services
 ####
 ####
-if [ "$first_option" = "services" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the file /etc/services ]"
-echo $header_option
-cat /etc/services | sed s/\&//g 
-echo $ralla
-echo "$cinco This file is /etc/services"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "services" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the file /etc/services ]"
+ echo $header_option
+ cat /etc/services | sed s/\&//g 
+ echo $ralla
+ echo "$cinco This file is /etc/services"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: host.allow: show /etc/host.allow
 ############################       spanish: host.allow: muestra /etc/host.allow
 ####
 ####
-if [ "$first_option" = "hosts.allow" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the file /etc/allow ]"
-echo $header_option
-cat /etc/hosts.allow
-echo $ralla
-echo "$cinco This file is /etc/hosts.allow"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "hosts.allow" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the file /etc/allow ]"
+ echo $header_option
+ cat /etc/hosts.allow
+ echo $ralla
+ echo "$cinco This file is /etc/hosts.allow"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: hosts.deny: show /etc/host.deny
 ############################       spanish: hosts.deny: muestra /etc/host.deny
 ####
 ####
-if [ "$first_option" = "hosts.deny" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the file /etc/deny ]"
-echo $header_option
-cat /etc/hosts.deny
-echo $ralla
-echo "$cinco This file is /etc/hosts.deny"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "hosts.deny" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the file /etc/deny ]"
+ echo $header_option
+ cat /etc/hosts.deny
+ echo $ralla
+ echo "$cinco This file is /etc/hosts.deny"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: resolv.conf: show /etc/resolv.conf
 ############################       spanish: resolv.conf: muestra /etc/resolv.conf
 ####
 ####
-if [ "$first_option" = "resolv.conf" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show the file /resolv.conf ]"
-echo $header_option
-cat /etc/resolv.conf
-echo $ralla
-echo "$cinco This file is /etc/resolv.conf"
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "resolv.conf" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo "$cinco [ $first_option ] [ show the file /resolv.conf ]"
+ echo $header_option
+ cat /etc/resolv.conf
+ echo $ralla
+ echo "$cinco This file is /etc/resolv.conf"
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: about: about of program
@@ -5200,136 +5228,154 @@ exit; fi
 ############################       spanish: info-system: da informacion del sistema
 ####
 ####
-if [ "$first_option" = "info-system" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show info about system ]"
-echo $header_option
-echo "$tab [ System info ] [ Distro ] "
-cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
-echo $ralla
-echo "$tab [ System info ][ Kernel Linux ]"
-$which_uname -srom
-echo $ralla
-echo "$tab [ System info ] [ Processor ]"
-lscpu | egrep -i "socket|Model name|cpu max"
-echo $ralla
-echo "$tab [ System info ] [ Memory RAM ]"
-free -h
-echo $ralla
-echo "$tab [ System info ] [ Disks ]"
-df -h -x tmpfs
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "info-system" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ show info about system ]"
+ echo $header_option
+ echo "$tab [ System info ] [ Distro ] "
+ cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
+ echo $ralla
+ echo "$tab [ System info ][ Kernel Linux ]"
+ $which_uname -srom
+ echo $ralla
+ echo "$tab [ System info ] [ Processor ]"
+ lscpu | egrep -i "socket|Model name|cpu max"
+ echo $ralla
+ echo "$tab [ System info ] [ Memory RAM ]"
+ free -h
+ echo $ralla
+ echo "$tab [ System info ] [ Disks ]"
+ df -h -x tmpfs
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: info-net: get net info
 ############################       spanish: info-net: da informacion de la red
 ####
 ####
-if [ "$first_option" = "info-net" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ show info about net ]"
-echo $header_option
-echo "$tab [ Net Info Route ] [ Route ipv4 ]"
-$which_ip route 
-echo $ralla
-echo "$tab [ Net Info Listen ] [ Listen ipv4 ]"
-$which_ss -l4 | sed 's/   / /g'
-echo $ralla
-echo "$tab [ Net Info Listen ] [ Listen ipv6 ]"
-$which_ss -l6 | sed 's/   / /g'
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "info-net" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ show info about net ]"
+ echo $header_option
+ echo "$tab [ Net Info Route ] [ Route ipv4 ]"
+ $which_ip route 
+ echo $ralla
+ echo "$tab [ Net Info Listen ] [ Listen ipv4 ]"
+ $which_ss -l4 | sed 's/   / /g'
+ echo $ralla
+ echo "$tab [ Net Info Listen ] [ Listen ipv6 ]"
+ $which_ss -l6 | sed 's/   / /g'
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: speed-ip4: speed from internet
 ############################       spanish: speed-ip4: velocidad desde internet
 ####
 ####
-if [ "$first_option" = "speed-ip4" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ test speed ipv4 with internet ]"
-echo $header_option
-case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
+ if [ "$first_option" = "speed-ip4" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ test speed ipv4 with internet ]"
+ echo $header_option
+ case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
-case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
-$fiptables stop
-echo "$cinco Doing bandwidth in ipv4 to $direccion_iperf with 4 seconds"
-echo $ralla
-$which_iperf -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
-$fiptables continue
-echo $footer_option
-exit; fi
+ case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
+ $fiptables stop
+ echo "$cinco Doing bandwidth in ipv4 to $direccion_iperf with 4 seconds"
+ echo $ralla
+ $which_iperf -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $fiptables continue
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: speed-ip6: speed from internet
 ############################       spanish: speed-ip6: velocidad desde internet
 ####
 ####
-if [ "$first_option" = "speed-ip6" ]; then $nada
-echo $head_option
-echo "$cinco [ $first_option ] [ test speed ipv6 with internet ]"
-echo $header_option
-case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
+ if [ "$first_option" = "speed-ip6" ]; then $nada
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ test speed ipv6 with internet ]"
+ echo $header_option
+ case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
 ####
 #### english: ask for continue #### spanish: pregunta para continuar
 ####
 ####
-if [ "$allow_question" = "no" ]; then $nada ; else
-read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
-case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
-"yes") echo " [ OK. ACCEPTED ] ";; 
-*) echo " [ OK. DECLINE ] "; exit ;; esac
-fi
+ if [ "$allow_question" = "no" ]; then $nada ; else
+ read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
+ case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
+ "yes") echo " [ OK. ACCEPTED ] ";; 
+ *) echo " [ OK. DECLINE ] "; exit ;; esac
+ fi
 ####
 ####
-case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
-$fiptables stop
-echo "$cinco Doing bandwidth in ipv6 to $direccion_iperf with 4 seconds"
-echo $ralla
-$which_iperf -V -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
-$fiptables continue
-echo $footer_option
-exit; fi
+ case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
+ $fiptables stop
+ echo "$cinco Doing bandwidth in ipv6 to $direccion_iperf with 4 seconds"
+ echo $ralla
+ $which_iperf -V -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $fiptables continue
+ echo $footer_option
+ exit; fi
 ####
 ####
-############################       english: options: several options to config in english
-############################       spanish: options: varias opciones para configurar en ingles
+############################       english: config-eng: several options to config in english
+############################       spanish: config-eng: varias opciones para configurar en ingles
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then $gefiles
-echo $head_option
-echo "$cinco [ $first_option ] [ show variables cfg from english configuration ]"
-echo $header_option
-cat  $defaultfullcfg_eng
-echo $footer_option
-exit; fi
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ show variables cfg from english configuration ]"
+ echo $header_option
+ cat  $defaultfullcfg_eng
+ echo $footer_option
+ exit; fi
 ####
 ####
-############################       english: opciones: several options to config in spanish
-############################       spanish: opciones: varias opciones para configurar en spanish
+############################       english: config-spa: several options to config in spanish
+############################       spanish: config-spa: varias opciones para configurar en spanish
 ####
 ####
-if [ "$first_option" = "config-spa" ]; then $genfiles
-echo $head_option
-echo "$cinco [ $first_option ] [ show variables cfg from spanish configuration ]"
-echo $header_option
-cat $defaultfullcfg_spa
-echo $footer_option
-exit; fi
+ if [ "$first_option" = "config-spa" ]; then $genfiles
+ echo $head_option
+ echo $recomendation
+ echo $default_route_cuatro
+ echo $default_route_seis
+ echo "$cinco [ $first_option ] [ show variables cfg from spanish configuration ]"
+ echo $header_option
+ cat $defaultfullcfg_spa
+ echo $footer_option
+ exit; fi
 ####
 ####
 ############################       english: help: the help option en english
