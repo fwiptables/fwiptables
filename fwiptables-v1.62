@@ -51,7 +51,7 @@ default_option="options"            #### over fwiptables-for-default    #### def
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_header="no" ;                      #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_question="" ;                    #### over fwiptables-for-default    #### void or no
+allow_question="no" ;                    #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
@@ -98,7 +98,7 @@ prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal="$prehead_principal [ $first_option ] $cinco" ;                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_normal="$cinco [ Usage for $fiptables ] [ Use: $fiptables options ]"
+head_normal="$cinco [ Usage in $fiptables ] [ Use: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_lineal="$ralla   $ralla   $ralla"                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -5561,7 +5561,7 @@ exit; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_iptables" = "si" ] ; then $nada ; else clear ; 
+if [ "$launch_iptables" = "si" ] ; then $nada ; else 
 echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; fi
 ####
 ####
