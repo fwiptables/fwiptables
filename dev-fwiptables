@@ -156,8 +156,8 @@ license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.tx
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ####
 ####
-##############################     english: header_actual 
-##############################     spanish: header_actual
+##############################     english: header_actual                 ###################################
+##############################     spanish: header_actual                 ###################################
 ####
 ####
 ####     #### english update option for default in header
