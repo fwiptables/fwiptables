@@ -336,7 +336,7 @@ exit ; fi
 ############################## spanish: variables: variables para declarar  ##############################
 ####
 ####
-allow_legacy="" ; allow_nft="no" ; allow_ipv4="" ; allow_ipv6="no" ;
+allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="ssh" ; server_udp="" ; 
 logserver_tcp="ssh" ; logserver_udp="" ;
@@ -3282,7 +3282,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
  "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
- "$which_iptables_nft" -t filter -L OUTPUT 1) &> /dev/null
+ "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
  echo "$cinco [ $first_option ] [ List iptables filter ipv4 ]"
  echo $header_lineal
  echo $ralla
@@ -6405,21 +6405,21 @@ $allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
 $allow_nft $allow_ipv4 $launch_onlyweb  $which_iptables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A INPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
@@ -6451,27 +6451,27 @@ $allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
-#### nft ip4
+#### nft ip6
 ####
 ####
-$allow_nft $allow_ipv4 $launch_onlyweb  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A INPUT \
+$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A INPUT \
+$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A INPUT \
+$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
+$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
