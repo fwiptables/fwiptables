@@ -170,19 +170,6 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 head_default="$cinco [ Option for default: $default_option ] [ See: $fiptables default ]"
 ####
 ####
-##############################     english: header_actual if no headers       ###################################
-##############################     spanish: header_actual cuando no cabeceras  ###################################
-####
-####
-#### clear
-if [ "$allow_header" = "no" ]   ; then echo "$head_normal" ; else
-echo $head_principal 
-echo $head_default 
-echo $head_normal 
-echo $default_route_cuatro 
-echo $default_route_seis ; fi
-####
-####
 ##############################       english: Notice Installer            ###################################
 ##############################       spanish: noticia de Instalador       ###################################
 ####
@@ -309,6 +296,19 @@ if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
 if [ "$first_option" = "options" ]; then first_option="full-options"; fi
+####
+####
+##############################     english: header_actual if no headers       ###################################
+##############################     spanish: header_actual cuando no cabeceras  ###################################
+####
+####
+#### clear
+if [ "$allow_header" = "no" ]   ; then echo "$head_normal" ; else
+echo $head_principal 
+echo $head_default 
+echo $head_normal 
+echo $default_route_cuatro 
+echo $default_route_seis ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
