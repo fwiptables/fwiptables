@@ -108,8 +108,9 @@ header_lineal="$ralla   $ralla   $ralla"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 footer_lineal="$ralla   $ralla   $ralla"                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$fiptables header $first_option $second_option $third_option"
-forget_cover="$fiptables $second_option $third_option $quarter_option"
+give_cover="$fiptables header"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+give_autosave="$fiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
@@ -367,7 +368,7 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ##################################### spanish: regeneration-default: regenera archivos #####################################
 ####
 ####
-if [ "$1" = "regeneration-default" ]; then
+if [ "first_option" = "regeneration-default" ]; then
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -882,12 +883,13 @@ if [ -f "$directory_fwrecover/last-legacy-ipv6" ]; then $nada ; else touch $dire
 #### spanish: autoguardado con nombre autosave
 ####
 ####
+if [ "$first_option" = "autosave" ]; then
 if [ "$autosave_fwrecover" = "$NULL" ] ; then $nada ;
 $$which_iptables_nft-save &> $directory_fwrecover/autosave-nft-ipv4
 $which_iptables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv4
 $which_ip6tables_nft-save &> $directory_fwrecover/autosave-nft-ipv6
 $which_ip6tables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv6
-fi
+exit; fi; fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
@@ -962,8 +964,7 @@ if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="
 ##############################       spanish: Instalador: $fiptables           ###########################################
 ####
 ####
-if [ "$first_option" = "install" ] ; then $nada
-$give_cover
+if [ "$first_option" = "install" ] ; then $give_cover
 echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 #### 
 #### 
@@ -1098,8 +1099,7 @@ echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ##############################       spanish: basic-options: bienvenida con semi ayuda
 ####
 ####
-if [ "$first_option" = "basic-options" ]; then
-$give_cover
+if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List basic options ]"
 echo "$tab" "$tab" "______________________                | Principal options |                   "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -1132,8 +1132,7 @@ exit ; fi
 ##############################       spanish: full-options: bienvenida con semi ayuda
 ####
 ####
-if [ "$first_option" = "full-options" ]; then
-$give_cover
+if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List full options ]"
 echo "$tab" "$tab"  "______________________                | Principal options |                  "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -1183,8 +1182,7 @@ exit ; fi
 ##############################       spanish: larga-opcion: larga ayuda   ##############################
 ####
 ####
-if [ "$first_option" = "long-help" ]; then $genfiles
-$give_cover
+if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
 echo "$cinco         [Long-help]"
 echo "$cinco         [Larga-ayuda]"
 echo
@@ -3164,7 +3162,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 ####
 ####
- if [ "$first_option" = "eraserules" ]; then $give_cover ;
+ if [ "$first_option" = "eraserules" ]; then $give_cover 
  echo $head_principal
  echo $header_lineal
  $which_iptables_nft -t filter -F
@@ -3839,7 +3837,7 @@ exit ; fi
 ############################       spanish: modify-config: modify una configuracion.cfg
 ####
 ####
-if [ "$first_option" = "modify-config" ]; then $nada
+if [ "$first_option" = "modify-config" ]; then $genfiles ; $give_cover
 cp "$directory_config/$second_option" "/tmp/fiptables-$second_option" &> /dev/null
 ####
 ###
@@ -3870,7 +3868,7 @@ clear ; exit ; fi
 ############################       spanish: show-config: muestra una configuracion
 ####
 ####
-if [ "$first_option" = "show-config" ] ; then echo "hola"
+if [ "$first_option" = "show-config" ] ; then echo $genfiles ; $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
@@ -3887,7 +3885,7 @@ exit; fi
 ############################       spanish: del-config: elimina una vieja configuracion
 ####
 ####
-if [ "$first_option" = "del-config" ]; then $nada
+if [ "$first_option" = "del-config" ]; then $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
@@ -3907,7 +3905,7 @@ exit ; fi
 ############################       spanish: sudo-auth: la opcion de sudo-auth en ingles
 ####
 ####
-if [ "$first_option" = "sudo-auth" ]; then $nada
+if [ "$first_option" = "sudo-auth" ]; then $give_cover
 case $second_option in
 "$NULL") echo $head_principal ; echo $header_lineal ; echo "$cinco Use: $fiptables sudo-auth user" ; exit ;;
 *) autorizados="$second_option" ;; esac
@@ -3927,7 +3925,7 @@ exit; fi
 ############################       spanish: sudo-remove: la opcion de sudo-remove en ingles
 ####
 ####
-if [ "$first_option" = "sudo-remove" ]; then $nada
+if [ "$first_option" = "sudo-remove" ]; then $give_cover
 rm /etc/sudoers.d/$fiptables
 echo "$cinco deleted auth sudo"
 echo "deleted /etc/sudoers.d/$fiptables"
@@ -4037,7 +4035,7 @@ exit; fi
 ############################       spanish: names: lista de archivos con reglas en formato iptables
 ####
 ####
- if [ "$first_option" = "names" ]; then $genfiles
+ if [ "$first_option" = "names" ]; then $genfiles ; $give_cover
  echo "$cinco [ $first_option ] [ List names from firewall saved ]"
  echo $header_lineal
  echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
@@ -4167,7 +4165,7 @@ $fiptables eraserules &> /dev/null
 ############################       spanish: show: muestra las reglas de un firewall en formato iptables
 ####
 ####
- if [ "$first_option" = "show" ]; then $genfiles
+ if [ "$first_option" = "show" ]; then $genfiles ; $give_cover
  echo "$cinco [ $first_option ] [ show one firewall saved ]"
  echo $header_lineal
  case "$second_option" in
@@ -4196,7 +4194,7 @@ $fiptables eraserules &> /dev/null
 ############################       spanish: actual: muestra las reglas actuales
 ####
 ####
- if [ "$first_option" = "actual" ]; then $genfiles
+ if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
  echo "$cinco [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
  $which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
@@ -4270,7 +4268,7 @@ exit; fi
 ############################       spanish: ping-ip4: ping icmp with ipv6
 ####
 ####
- if [ "$first_option" = "ping-ip4" ]; then $nada
+ if [ "$first_option" = "ping-ip4" ]; then $give_cover
  echo "$cinco [ $first_option ]  [ ping ip or host with ipv4 ]"
  echo $header_lineal
  case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
@@ -4303,7 +4301,7 @@ exit; fi
 ####
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
- if [ "$first_option" = "ping-ip6" ]; then $nada
+ if [ "$first_option" = "ping-ip6" ]; then $give_cover
  echo "$cinco [ $first_option ] [ ping one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
@@ -4339,7 +4337,7 @@ exit; fi
 ############################       spanish: trace-ip4: traceroute con tcp y ipv4
 ####
 ####
- if [ "$first_option" = "trace-ip4" ]; then $nada
+ if [ "$first_option" = "trace-ip4" ]; then $give_cover
  echo "$cinco [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
@@ -4374,7 +4372,7 @@ exit; fi
 ############################       spanish: trace-ip6: traceroute con tcp e ipv6
 ####
 ####
- if [ "$first_option" = "trace-ip6" ]; then $nada
+ if [ "$first_option" = "trace-ip6" ]; then $give_cover
  echo "$cinco [ $first_option ] [ trace one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
@@ -4410,7 +4408,7 @@ exit; fi
 ############################       spanish: host: host to resolve ip
 ####
 ####
- if [ "$first_option" = "host" ]; then $nada
+ if [ "$first_option" = "host" ]; then $give_cover
  echo "$cinco [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
  case $which_host in "$NULL") echo " Install host" ; exit ;; esac
@@ -4427,7 +4425,7 @@ exit; fi
 ############################       spanish: resolveip: host to resolve ip and viceversa
 ####
 ####
- if [ "$first_option" = "resolveip" ]; then $nada
+ if [ "$first_option" = "resolveip" ]; then $give_cover
  echo "$cinco [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
  case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
@@ -4444,7 +4442,7 @@ exit; fi
 ############################       spanish: geoip: host to resolve and locate
 ####
 ####
- if [ "$first_option" = "geoip" ]; then $nada
+ if [ "$first_option" = "geoip" ]; then $give_cover
  echo "$cinco [ $first_option ] [ resolve the location to one ip or host ]"
  echo $header_lineal
  case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
@@ -4479,7 +4477,7 @@ exit; fi
 ############################       spanish: scan-tcp: rastrea una red por tcp
 ####
 ####
-if [ "$first_option" = "scan-tcp" ]; then $nada
+if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$cinco [ $first_option ] [ scan with nmap tcp ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
@@ -4526,7 +4524,7 @@ if [ "$first_option" = "scan-tcp" ]; then $nada
 ############################       spanish: scan-syn: rastrea una por peticiones
 ####
 ####
- if [ "$first_option" = "scan-syn" ]; then $nada
+ if [ "$first_option" = "scan-syn" ]; then $give_cover
  echo "$cinco [ $first_option ] [ scan with nmap syn ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
@@ -4571,7 +4569,7 @@ if [ "$first_option" = "scan-tcp" ]; then $nada
 ############################       spanish: scan-fin: rastrea una red por conexiones
 ####
 ####
- if [ "$first_option" = "scan-fin" ]; then $nada
+ if [ "$first_option" = "scan-fin" ]; then $give_cover
  echo "$cinco [ $first_option ] [ scan with nmap fin ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
@@ -4618,7 +4616,7 @@ if [ "$first_option" = "scan-tcp" ]; then $nada
 ############################       spanish: scan-udp: rastrea una red por udp
 ####
 ####
- if [ "$first_option" = "scan-udp" ]; then $nada
+ if [ "$first_option" = "scan-udp" ]; then $give_cover
  echo "$cinco [ $first_option ] [ scan with nmap udp ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
@@ -4665,7 +4663,7 @@ if [ "$first_option" = "scan-tcp" ]; then $nada
 ############################       spanish: scan-ping: rastrea una red por ping
 ####
 ####
- if [ "$first_option" = "scan-ping" ]; then $nada
+ if [ "$first_option" = "scan-ping" ]; then $give_cover
  echo "$cinco [ $first_option ] [ scan with nmap ping ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
@@ -4828,7 +4826,7 @@ $fiptables stop
 ############################       spanish: log-search: log desde una busqueda
 ####
 ####
- if [ "$first_option" = "log-search" ]; then $nada
+ if [ "$first_option" = "log-search" ]; then $give_cover
  echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
  echo $header_lineal
  case "$second_option" in
@@ -5053,7 +5051,7 @@ exit; fi
 ############################       spanish: speed-ip4: velocidad desde internet
 ####
 ####
- if [ "$first_option" = "speed-ip4" ]; then $nada
+ if [ "$first_option" = "speed-ip4" ]; then $give_cover
  echo "$cinco [ $first_option ] [ test speed ipv4 with internet ]"
  echo $header_lineal
  case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
@@ -5084,7 +5082,7 @@ exit; fi
 ############################       spanish: speed-ip6: velocidad desde internet
 ####
 ####
- if [ "$first_option" = "speed-ip6" ]; then $nada
+ if [ "$first_option" = "speed-ip6" ]; then $give_cover
  echo "$cinco [ $first_option ] [ test speed ipv6 with internet ]"
  echo $header_lineal
  case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
@@ -6856,6 +6854,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $which_ip6tables_lega
 ####
 ########################################       english: show text when active rules
 ########################################       spanish: muestra texto cuando activas las reglas
+####
+####  
+$fiptables autosave
 ####
 ####
 ####  # show text head lines in all firewall #
