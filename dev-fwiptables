@@ -47,11 +47,13 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 #### #### english: option for default    #### spanish: opcion por defecto
-default_option="options"            #### over fwiptables-for-default    #### default: full-options
+default_option="options"                 #### over fwiptables-for-default    #### default: full-options
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_header="no" ;                        #### over fwiptables-for-default    #### void or no
+allow_header="" ;                        #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_question="" ;                      #### over fwiptables-for-default    #### void or no
+#### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
+autosave_fwrecover="" ;                  #### over fwiptables-for-default    #### choose: void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ; zero_option="$0" ;                              
 #### #### english: variables to launch   #### spanish: variables a lanzar
@@ -87,8 +89,8 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #### english: path to config files  #### spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
-autosave_fwrecover="" ;                #### over fwiptables-for-default    #### choose: void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
+autosave_fwrecover="" ;                #### over fwiptables-for-default    #### choose: void or no
 #### #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -866,6 +868,26 @@ if [ -f "$directory_fwrecover/last-nft-ipv4" ]; then $nada ; else touch $directo
 if [ -f "$directory_fwrecover/last-legacy-ipv4" ]; then $nada ; else touch $directory_fwrecover/last-legacy-ipv4 &> /dev/null ; fi
 if [ -f "$directory_fwrecover/last-nft-ipv6" ]; then $nada ; else touch $directory_fwrecover/last-nft-ipv6 &> /dev/null ; fi
 if [ -f "$directory_fwrecover/last-legacy-ipv6" ]; then $nada ; else touch $directory_fwrecover/last-legacy-ipv6 &> /dev/null ; fi
+####
+####
+########################################       english: autosave of firewall to restore standard rules
+########################################       english: autoguardado de firewall para recuperador de reglas estandar
+####
+####
+#### english: iptables saved
+#### spanish: iptables guardado
+####
+####
+#### english: autosave with name autosave
+#### spanish: autoguardado con nombre autosave
+####
+####
+if [ "$autosave_fwrecover" = "$NULL" ] ; then $nada ;
+$$which_iptables_nft-save &> $directory_fwrecover/autosave-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/autosave-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv6
+fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
@@ -4207,10 +4229,10 @@ echo $header_lineal
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/last-legacy-ipv6
+$which_iptables_nft-save &> $directory_fwrecover/stoped-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/stoped-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/stoped-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/stoped-legacy-ipv6
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -4235,10 +4257,10 @@ echo $header_lineal
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-$which_iptables_nft-restore  $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-restore $directory_fwrecover/last-legacy-ipv6
+$which_iptables_nft-restore  $directory_fwrecover/stoped-nft-ipv4
+$which_iptables_legacy-restore  $directory_fwrecover/stoped-legacy-ipv4
+$which_ip6tables_nft-restore  $directory_fwrecover/stoped-nft-ipv6
+$which_ip6tables_legacy-restore $directory_fwrecover/stoped-legacy-ipv6
 echo "$cinco [ OK FIREWALL CONTINUED ]"
 echo $footer_lineal
 exit; fi
@@ -6830,46 +6852,6 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $which_ip6tables_nft -t 
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $which_iptables_legacy  -t filter -A OUTPUT  -j DROP &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A OUTPUT  -j DROP &> /dev/null
-####
-####
-########################################       english: autosave of firewall to restore standard rules
-########################################       english: autoguardado de firewall para recuperador de reglas estandar
-####
-####
-#### english: iptables saved
-#### spanish: iptables guardado
-####
-####
-#### english: autosave with generic name
-#### spanish: autoguardado con nombre generico
-####
-####
-$which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/last-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/last-legacy-ipv6
-####
-####
-#### english: autosave with specific name
-#### spanish: autoguardado con nombre especifico
-####
-####
-if  [ $autosave_fwrecover= $NULL ] ; then $nada ;
-case $second_option in
-"$NULL")
-$which_iptables_nft-save &> $directory_fwrecover/$first_option-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/$first_option-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/$first_option-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/$first_option-legacy-ipv6
-;;
-*)
-$which_iptables_nft-save &> $directory_fwrecover/$first_option-$second_option-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/$first_option-$second_option-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/$first_option-$second_option-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/$first_option-$second_option-legacy-ipv6
-;;
-esac
-fi
 ####
 ####
 ########################################       english: show text when active rules
