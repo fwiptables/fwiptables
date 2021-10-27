@@ -55,7 +55,9 @@ allow_question="" ;                      #### over fwiptables-for-default    ###
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 autosave_fwrecover="" ;                  #### over fwiptables-for-default    #### choose: void or no
 #### #### english: option for default    #### spanish: opcion por defecto
-zero_dir="$(pwd)" ; zero_option="$0" ;                              
+zero_dir="$(pwd)" 
+#### #### english: option for default    #### spanish: opcion por defecto
+zero_option="$0" 
 #### #### english: variables to launch   #### spanish: variables a lanzar
 first_option="$(echo $1 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
@@ -65,7 +67,7 @@ third_option="$(echo $3 | sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 quarter_option="$(echo $4 | sed s/\\///g -)"  ; 
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-genfiles="$0 regeneration-default"
+genfiles="$zero_option regeneration-default"
 #### #### english: whereis path          #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;                                    
 #### #### english: whereis path          #### spanish: donde esta el path
@@ -315,7 +317,7 @@ echo $head_principal
 echo $head_default 
 echo $head_normal 
 echo $default_route_cuatro 
-echo $default_route_seis ; fi ; for_option="" ; exit ; fi
+echo $default_route_seis ; fi ; exit ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
@@ -368,7 +370,7 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ##################################### spanish: regeneration-default: regenera archivos #####################################
 ####
 ####
-if [ "first_option" = "regeneration-default" ]; then
+if [ "$first_option" = "regeneration-default" ]; then $nada
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -794,11 +796,12 @@ echo $var63 $tabz $eng63 &>> $fs
 echo $var64 $tabz $eng64 &>> $fs
 echo $var65 $tabz $eng65 &>> $fs
 echo $var66 $tabz $eng66 &>> $fs
-exit; fi
+exit 0
+fi
 ####
 ####
-#### english:  sane variables: for work sane            ############################## 
-#### spanish:  sana variables: para funcionamiento sano ##############################
+##############################  english:  sane variables: for work sane            ############################## 
+##############################  spanish:  sana variables: para funcionamiento sano ##############################
 ####
 ####
 case "$NULL" in
