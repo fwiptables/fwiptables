@@ -1,18 +1,19 @@
-#### #### file: /etc/rc.service ####
 
+#### Tutorial sysvinit
+
+######################################## /etc/rc.service
 
 #!/bin/sh
 for parada in $(ls -1 /etc/rc$1.d/K* | sort | cut -d "/" -f 4- | cut -c 4- )
-do /usr/sbin/service $parada stop; done
+do  /etc/init.d/$parada stop; done
 for arranca in $(ls -1 /etc/rc$1.d/S* | sort | cut -d "/" -f 4- | cut -c 4- )
-do /usr/sbin/service $arranca restart; done; exit
-
-
-#### #### file: /etc/inittab ####
-
-
+do  /etc/init.d/$arranca restart; done; exit
 # /etc/inittab: init(8) configuration.
 # $Id: inittab,v 1.91 2002/01/25 13:35:21 miquels Exp $
+
+
+######################################## /etc/inittab
+
 
 # The default runlevel.
 id:2:initdefault:
@@ -41,7 +42,7 @@ si::sysinit:/etc/init.d/rcS
 # l5:5:wait:/etc/init.d/rc 5
 # l6:6:wait:/etc/init.d/rc 6
 
-##### with rc.servicios
+#### with rc.servicios
 l0:0:wait:/etc/rc.service 0
 l1:1:wait:/etc/rc.service 1
 l2:2:wait:/etc/rc.service 2
@@ -50,22 +51,26 @@ l4:4:wait:/etc/rc.service 4
 l5:5:wait:/etc/rc.service 5
 l6:6:wait:/etc/rc.service 6
 
-##### /etc/rc.local
-# fr:2345:once:/etc/rc.local
+#### /etc/rc.local
+#### fr:2345:once:/etc/rc.local
 
 # Normally not reached, but fallthrough in case of emergency.
 z6:6:respawn:/sbin/sulogin --force
 
 # What to do when CTRL-ALT-DEL is pressed.
-ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+# ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+ca:12345:ctrlaltdel:/etc/rc.service 6
+# ce:12345:XF86Sleep:/etc/rc.service 0
+#ci:12345:XF86Power:/etc/rc.service 0
+# co:12345:XF86Standby:/etc/rc.service 0
 
 # Action on special keypress (ALT-UpArrow).
 #kb::kbrequest:/bin/echo "Keyboard Request--edit /etc/inittab to let this work."
 
 # What to do when the power fails/returns.
-pf::powerwait:/etc/init.d/powerfail start
-pn::powerfailnow:/etc/init.d/powerfail now
-po::powerokwait:/etc/init.d/powerfail stop
+# pf::powerwait:/etc/init.d/powerfail start
+# pn::powerfailnow:/etc/init.d/powerfail now
+# po::powerokwait:/etc/init.d/powerfail stop
 
 # /sbin/getty invocations for the runlevels.
 #
