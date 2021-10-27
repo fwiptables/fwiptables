@@ -49,7 +49,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 #### #### english: option for default    #### spanish: opcion por defecto
 default_option="options"            #### over fwiptables-for-default    #### default: full-options
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_header="" ;                        #### over fwiptables-for-default    #### void or no
+allow_header="no" ;                        #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_question="" ;                      #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -3170,16 +3170,19 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "route" ]; then  $give_cover
  echo "$cinco [ $first_option ] [ Show route tables ]"
  echo $header_lineal
- case $which_ip in  $NULL) echo "$tab [Install ip command]" ; exit ;; esac
+ case $which_ip in  $NULL) echo "$tab [ Install ip command ]" ; exit ;; esac
  echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
- echo "$($which_ip route)"
- case $($which_route) in $NULL) echo "$tab [Install route command]" ; exit ;; esac
+ echo "$($which_ip -4 route)"
  echo $ralla
- echo "$rallica [ ip route ipv4 ] [ mode lineal ]"
- echo "$($which_route -4)"
- echo $ralla
- echo "$rallica [ ip route ipv6 ] [ mode lineal]"
- echo "$($which_route -6)"
+ echo "$rallica [ ip route ipv6 ] [ mode simplify ]"
+ echo "$($which_ip -6 route)"
+#### case $($which_route) in $NULL) echo "$tab [ Install route command ]" ; exit ;; esac
+#### echo $ralla
+#### echo "$rallica [ ip route ipv4 ] [ mode lineal ]"
+#### echo "$($which_route -4)"
+#### echo $ralla
+#### echo "$rallica [ ip route ipv6 ] [ mode lineal]"
+#### echo "$($which_route -6)"
  echo $footer_lineal
  exit ; fi
 ####
