@@ -204,25 +204,23 @@ if [ "$first_option" = "$NULL" ] ; then  first_option="$default_option" ;  fi
 ############################## spanish -text: Manage in console
 ####
 ####
-if [ "$first_option" = "-text" ] ; then $nada
-$fiptables $second_option $third_option
-exit; fi
+if [ "$first_option" = "-text" ] ; then 
+first_option=$second_option ; second_option=$third_option ; exit ; fi
 ####
 ####
 ############################## english text: Manage in console
 ############################## spanish text: Manage in console
 ####
 ####
-if [ "$first_option" = "text" ] ; then $nada
-$fiptables $second_option $third_option
-exit; fi
+if [ "$first_option" = "text" ] ; then 
+first_option=$second_option ; second_option=$third_option ; exit ; fi
 ####
 ####
 ##############################    english: gui: alias to -gui  
 ##############################    spanish: gui: apodo a -gui 
 ####
 ####
-if [ "$first_option" = "gui" ] ; then $nada ; first_option="-gui" ; fi
+if [ "$first_option" = "gui" ] ; then first_option="-gui" ; fi
 ####
 ####
 ##############################    english log: Send to log
@@ -3110,7 +3108,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "license" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show license for $fiptables ]"
+ echo "$cinco [ $first_option ] [ Show license from git sourceforge for $fiptables ]"
  echo $header_lineal
  echo "license text for gpl v2 downloading .."
  echo "$ralla" "$ralla" "$ralla"
@@ -3819,66 +3817,67 @@ exit ; fi
 ############################       spanish: modify-config: modify una configuracion.cfg
 ####
 ####
-if [ "$first_option" = "modify-config" ]; then $genfiles
-case "$config_option" in
-"no")
-echo "$cinco Use: $fiptables modify-config config-old" ; exit  ;;  esac
-echo $head_principal
-echo $header_lineal
+if [ "$first_option" = "modify-config" ]; then $nada
 cp "$directory_config/$second_option" "/tmp/fiptables-$second_option"
+####
+###
+if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
+echo "$cinco Use: $fiptables modify-config config-existent" ; exit; fi
+####
+####
+if [ -f "$directory_config"/"$second_option" ] ; then $nada
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$second_option" 0 0 2> "$directory_config/$second_option"
-if [ -s "$directory_config/$second_option" ]; then $nada ; 
-clear ; dialog --msgbox "[OK file modify config file: $second_option]" 0 0 ;
-else cp "/tmp/fiptables-$second_option" "$directory_config/$second_option" ;
-clear ; dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 ; fi
-clear
-echo $footer_lineal
-exit; fi
+clear; fi
+####
+####
+if [  -s "$directory_config/$second_option" ] ; then
+dialog --msgbox "[OK file modify config file: $second_option]" 0 0 
+clear ; exit ; fi
+if [ ! -s "$directory_config/$second_option" ] ; then $nada
+cp "/tmp/fiptables-$second_option" "$directory_config/$second_option" 
+dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 
+clear ; exit ; fi
+####
+####
+clear ; exit ; fi
 ####
 ####
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
 ####
 ####
-if [ "$first_option" = "show-config" ]; then $genfiles
-case "$config_option" in
-"si")
-archivo=$(echo $second_option | sed 's/\///g')
-cat $directory_config/$archivo
-;;
-"no")
-echo $head_principal
-echo $header_lineal
-echo "$cinco Use: $fiptables show-config config-old"
-esac
-echo $footer_lineal
-exit; fi
+if [ "$first_option" = "show-config" ] ; then echo "hola"
+####
+####
+if [ -f "$directory_config"/"$second_option" ] ; then $nada 
+else echo "$cinco Use: $fiptables show-config config-old" ; exit; fi
+####
+####
+cat $directory_config/$second_option ;
+echo $footer_lineal ; exit ; fi
 ####
 ####
 ############################       english: del-config: delete a old config
 ############################       spanish: del-config: elimina una vieja configuracion
 ####
 ####
-if [ "$first_option" = "del-config" ]; then $genfiles
-case "$config_option" in
-"si") archivo=$(echo $second_option | sed 's/\///g') ; rm $directory_config/$archivo
-echo "$directory_config/$second_option" deleted
-;;
-"no") 
-echo $head_principal
-echo $header_lineal
-echo "$cinco Use: $fiptables del-config config-old"
-;;
-esac
-echo $footer_lineal
-exit; fi
+if [ "$first_option" = "del-config" ]; then $nada
+####
+####
+if [ -f $directory_config/$second_option ] ; then $nada
+else echo "$cinco Use: $fiptables del-config config-old" ; exit ; fi
+####
+####
+rm $directory_config/$archivo
+echo "$directory_config/$second_option Deleted"
+echo $footer_lineal ; exit ; fi
 ####
 ####
 ############################       english: sudo-auth: the sudo-auth option en english
 ############################       spanish: sudo-auth: la opcion de sudo-auth en ingles
 ####
 ####
-if [ "$first_option" = "sudo-auth" ]; then  $genfiles
+if [ "$first_option" = "sudo-auth" ]; then $nada
 case $second_option in
 "$NULL") echo $head_principal ; echo $header_lineal ; echo "$cinco Use: $fiptables sudo-auth user" ; exit ;;
 *) autorizados="$second_option" ;; esac
@@ -6923,4 +6922,4 @@ exit ; else $nada ; fi
 #######################
 ####
 ####
-exit 0
+exit 
