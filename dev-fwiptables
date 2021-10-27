@@ -943,7 +943,7 @@ if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="
 ####
 ####
 if [ "$first_option" = "install" ] ; then $nada
-"$give_cover"
+$give_cover
 echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 #### 
 #### 
@@ -1163,7 +1163,8 @@ exit ; fi
 ##############################       spanish: larga-opcion: larga ayuda   ##############################
 ####
 ####
-if [ "$first_option" = "long-help" ]; then $nada
+if [ "$first_option" = "long-help" ]; then $genfiles
+$give_cover
 echo "$cinco         [Long-help]"
 echo "$cinco         [Larga-ayuda]"
 echo
@@ -1243,7 +1244,7 @@ exit; fi
 ##############################       spanish: list-config: lista alguna config
 ####
 ####
-if [ "$first_option" = "list-config" ]; then $nada
+if [ "$first_option" = "list-config" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List configs cfg ]"
 echo "$cinco $tab [English:] [list configs files in cfg format]"
 echo "$cinco $tab [Spanish:] [Lista de archivos de configuraciones en cfg formato]"
@@ -1257,7 +1258,7 @@ exit; fi
 ##############################       spanish: some-example: algun ejemplo
 ####
 ####
-if [ "$first_option" = "some-example" ]; then $nada
+if [ "$first_option" = "some-example" ]; then $give_cover
 echo "$cinco         [list examples]"
 echo "$cinco         [Lista ejemplos]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1275,7 +1276,7 @@ exit; fi
 ##############################       spanish: option: alguna opcion
 ####
 ####
-if [ "$first_option" = "option" ]; then $nada
+if [ "$first_option" = "option" ]; then $give_cover
 echo "$cinco         [List option]"
 echo "$cinco         [Lista opcion]"
 echo
@@ -1324,7 +1325,7 @@ exit; fi
 ##############################       spanish: launch-rules: opciones
 ####
 ####
-if [ "$first_option" = "launch-rules" ]; then $nada
+if [ "$first_option" = "launch-rules" ]; then $give_cover
 echo "$cinco         [Launch iptables rules]"
 echo "$cinco         [Lanza reglas de iptables]"
 echo
@@ -1348,7 +1349,7 @@ exit; fi
 ##############################       spanish: control-rules: opciones
 ####
 ####
-if [ "$first_option" = "control-rules" ]; then $nada
+if [ "$first_option" = "control-rules" ]; then $give_cover
 echo "$cinco         [Control iptables rules]"
 echo "$cinco         [Controla reglas de iptables]"
 echo
@@ -1378,7 +1379,7 @@ exit; fi
 ##############################       spanish: list-rules: opciones
 ####
 ####
-if [ "$first_option" = "list-rules" ]; then $nada
+if [ "$first_option" = "list-rules" ]; then $give_cover
 echo "$cinco         [List filter iptables rules]"
 echo "$cinco         [Lista reglas de iptables filtros]"
 echo
@@ -1441,7 +1442,7 @@ exit; fi
 ##############################       spanish: list-numrules: opciones
 ####
 ####
-if [ "$first_option" = "list-numrules" ]; then $nada
+if [ "$first_option" = "list-numrules" ]; then $give_cover
 echo "$cinco         [List iptables numerical rules]"
 echo "$cinco         [Lista reglas numericas de iptables]"
 echo
@@ -1462,7 +1463,7 @@ exit; fi
 ##############################       spanish: tool-cfg: opciones
 ####
 ####
-if [ "$first_option" = "tool-cfg" ]; then $nada
+if [ "$first_option" = "tool-cfg" ]; then $give_cover
 echo "$cinco         [Tool configs]"
 echo "$cinco         [Herramienta de configuraciones]"
 echo
@@ -1490,7 +1491,7 @@ exit; fi
 ##############################       spanish: control-guide: opciones
 ####
 ####
-if [ "$first_option" = "control-guide" ]; then $nada
+if [ "$first_option" = "control-guide" ]; then $give_cover
 echo "$cinco         [Control guide]" 
 echo "$cinco         [Control guia]"
 echo
@@ -1510,7 +1511,7 @@ exit; fi
 ##############################       spanish: tool-intarface: opciones
 ####
 ####
-if [ "$first_option" = "interface" ]; then $nada
+if [ "$first_option" = "interface" ]; then $give_cover
 echo "$cinco         [control interface]" 
 echo "$cinco         [control de interfaz]"
 echo
@@ -1540,7 +1541,7 @@ exit; fi
 ##############################       spanish: tool-sockets: opciones
 ####
 ####
-if [ "$first_option" = "tool-sockets" ]; then $nada
+if [ "$first_option" = "tool-sockets" ]; then $give_cover
 echo "$cinco         [Tool sockets]"
 echo "$cinco         [Herramienta de sockets]"
 echo
@@ -1566,7 +1567,7 @@ exit; fi
 ##############################       spanish: tool-sockets: opciones
 ####
 ####
-if [ "$first_option" = "tool-forward" ]; then $nada
+if [ "$first_option" = "tool-forward" ]; then $give_cover
 echo "$cinco         [Tool forward]"
 echo "$cinco         [Herramienta de ipforwading]"
 echo
@@ -1584,7 +1585,7 @@ exit; fi
 ##############################       spanish: tool-cimp: opciones
 ####
 ####
-if [ "$first_option" = "tool-icmp" ]; then $nada
+if [ "$first_option" = "tool-icmp" ]; then $give_cover
 echo "$cinco         [Tool icmp]"
 echo "$cinco         [Herramienta icmp]"
 echo
@@ -1605,7 +1606,7 @@ exit; fi
 ##############################       spanish: tool-tcp: opciones
 ####
 ####
-if [ "$first_option" = "tool-tcp" ]; then $nada
+if [ "$first_option" = "tool-tcp" ]; then $give_cover
 echo "$cinco         [Tool tcp]"
 echo "$cinco         [Herramienta tcp]"
 echo
@@ -1629,7 +1630,7 @@ exit; fi
 ##############################       spanish: tool-nmap: opciones
 ####
 ####
-if [ "$first_option" = "tool-nmap" ]; then $nada
+if [ "$first_option" = "tool-nmap" ]; then $give_cover
 echo "$cinco         [Tool nmap]"
 echo "$cinco         [Herramienta nmap]"
 echo
@@ -1651,7 +1652,7 @@ exit; fi
 ##############################       spanish: tool-sudo: opciones
 ####
 ####
-if [ "$first_option" = "tool-sudo" ]; then $nada
+if [ "$first_option" = "tool-sudo" ]; then $give_cover
 echo "$cinco         [Tool sudo]"
 echo "$cinco         [Herramienta sudo]"
 echo
@@ -1669,7 +1670,7 @@ exit; fi
 ##############################       spanish: tool-install: opciones
 ####
 ####
-if [ "$first_option" = "tool-install" ]; then $nada
+if [ "$first_option" = "tool-install" ]; then $give_cover
 echo "$cinco         [Tool install]"
 echo "$cinco         [Herramienta instalar]"
 echo
@@ -1689,7 +1690,7 @@ exit; fi
 ##############################       spanish: tool-system: opciones
 ####
 ####
-if [ "$first_option" = "tool-system" ]; then $nada
+if [ "$first_option" = "tool-system" ]; then $give_cover
 echo "$cinco         [Tool system]"
 echo "$cinco         [Herramienta systema]"
 echo
@@ -1709,7 +1710,7 @@ exit; fi
 ##############################       spanish: show-ver: opciones
 ####
 ####
-if [ "$first_option" = "show-etc" ]; then $nada
+if [ "$first_option" = "show-etc" ]; then $give_cover
 echo "$cinco         [Show etc]"
 echo "$cinco         [Mostrar etc]"
 echo
@@ -1735,7 +1736,7 @@ exit; fi
 ##############################       spanish: show-log: opciones
 ####
 ####
-if [ "$first_option" = "show-log" ]; then $nada
+if [ "$first_option" = "show-log" ]; then $give_cover
 echo "$cinco         [Show log]"
 echo "$cinco         [Mostrar log]"
 echo
@@ -1757,7 +1758,7 @@ exit; fi
 ##############################       spanish: show-about: opciones
 ####
 ####
-if [ "$first_option" = "show-about" ]; then $nada
+if [ "$first_option" = "show-about" ]; then $give_cover
 echo "$cinco         [Show about]"
 echo "$cinco         [Mostrar acerca de]"
 echo
@@ -1783,7 +1784,7 @@ exit; fi
 ##############################       spanish: show-help: opciones
 ####
 ####
-if [ "$first_option" = "show-help" ]; then $nada
+if [ "$first_option" = "show-help" ]; then $give_cover
 echo "$cinco         [Show help]"
 echo "$cinco         [Mostrar ayuda]"
 echo
@@ -1805,7 +1806,7 @@ echo $footer_lineal
 ##############################       spanish: notes: notas para configurar iptables
 ####
 ####
-if [ "$first_option" = "notes" ]; then $nada
+if [ "$first_option" = "notes" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List notes about $fiptables ]"
 echo
 echo "$cinco [vpn] [virtual private network] [whitelist]"
@@ -1864,7 +1865,7 @@ exit; fi
 ##############################       spanish: dependencias: dependencias para $fiptables
 ####
 ####
-if [ "$first_option" = "depends" ]; then $nada
+if [ "$first_option" = "depends" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List programs depends about $fiptables ]"
 echo $ralla
 echo "$cinco It are all the depends to full work in $fiptables $fversion"
