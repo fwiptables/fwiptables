@@ -4125,7 +4125,7 @@ $fiptables eraserules &> /dev/null
  if [ "$first_option" = "save" ]; then $nada
  case "$second_option" in
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
- *) archivofin=$(sed 's/\///g' <<< "$second_option") ;; 
+ *) archivofin="$second_option" ;; 
  esac
  $which_iptables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv4
  $which_iptables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv4
