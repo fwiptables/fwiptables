@@ -3818,7 +3818,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then $nada
-cp "$directory_config/$second_option" "/tmp/fiptables-$second_option"
+cp "$directory_config/$second_option" "/tmp/fiptables-$second_option" &> /dev/null
 ####
 ###
 if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
@@ -3833,8 +3833,10 @@ clear; fi
 if [  -s "$directory_config/$second_option" ] ; then
 dialog --msgbox "[OK file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
+####
+####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "/tmp/fiptables-$second_option" "$directory_config/$second_option" 
+cp "/tmp/fiptables-$second_option" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
@@ -3849,14 +3851,16 @@ clear ; exit ; fi
 if [ "$first_option" = "show-config" ] ; then echo "hola"
 ####
 ####
-if [ -f "$directory_config"/"$second_option" ] ; then $nada 
-else echo "$cinco Use: $fiptables show-config config-old" ; exit; fi
+if [ ! -f "$directory_config"/"$second_option" ] ; then 
+echo "$cinco Use: $fiptables show-config config-old" ; exit; fi
 ####
 ####
+if [ -f "$directory_config"/"$second_option" ] ; then 
 cat $directory_config/$second_option ;
 echo $footer_lineal ; exit ; fi
 ####
 ####
+exit; fi
 ############################       english: del-config: delete a old config
 ############################       spanish: del-config: elimina una vieja configuracion
 ####
@@ -3864,13 +3868,17 @@ echo $footer_lineal ; exit ; fi
 if [ "$first_option" = "del-config" ]; then $nada
 ####
 ####
-if [ -f $directory_config/$second_option ] ; then $nada
-else echo "$cinco Use: $fiptables del-config config-old" ; exit ; fi
+if [ ! -f $directory_config/$second_option ] ; then
+echo "$cinco Use: $fiptables del-config config-old" ; exit ; fi
 ####
 ####
-rm $directory_config/$archivo
+if [ -f $directory_config/$second_option ] ; then
+rm $directory_config/$second_option
 echo "$directory_config/$second_option Deleted"
 echo $footer_lineal ; exit ; fi
+####
+####
+exit ; fi
 ####
 ####
 ############################       english: sudo-auth: the sudo-auth option en english
