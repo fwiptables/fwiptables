@@ -4084,16 +4084,14 @@ exit; fi
 #### English: Void in second option
 ####
 ####
- case $second_option in
- "$NULL") $fiptables names; echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"  
- ;;
+if [ "second_option" = "$NULL" ]; then
+$fiptables names; echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
 ####
 ####
- *)
- if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then $nada
+if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 ####
 ####
 #### English: Remove all rules
@@ -4113,9 +4111,7 @@ $fiptables eraserules &> /dev/null
  else
  $fiptables names
  echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"
- fi
- ;;
- esac
+ fi 
 ####
 ####
  echo $footer_lineal
