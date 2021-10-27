@@ -3296,7 +3296,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #############################  spanish: filter-ip4: script de sistema, la opcion lista
 ####
 ####
- if [ "$first_option" = "filter-ip4" ]; then  $give_cover
+ if [ "$first_option" = "filter-ip4" ]; then $give_cover
  legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
  "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
