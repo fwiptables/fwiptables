@@ -3145,7 +3145,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show howto upgrade $fiptables  ]"
+ echo "$cinco [ $first_option ] [ Show howto upgrade $fiptables ]"
  echo $header_lineal
  echo "The actually version is: $fiptables $fversion actual"
  echo "  The latest version is:"
@@ -3743,99 +3743,127 @@ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
 ############################       spanish: new-full-config: new-full-config para cear nuevas config
 ####
 ####
-if [ "$first_option" = "new-full-config" ]; then $genfiles
-case $second_option in "$NULL") config_option="si" ;; esac
-case "$config_option" in
-"si")
-echo $head_principal
-echo $header_lineal
+if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
 echo "$cinco Use: $fiptables new-full-config config-new"
-exit ;; esac
-echo $head_principal
-echo $header_lineal
+exit; fi
+####
+####
+if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
-rm "$directory_config/$second_option"
-dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
-else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
+####
+####
+if [ -s "$directory_config/$second_option" ]; then $nada 
+dialog --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
 echo $footer_lineal
-exit ; fi
+fi
+####
+####
+if [ ! -s "$directory_config/$second_option" ]; then $nada 
+rm "$directory_config/$second_option" &> /dev/null
+cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
+fi
+####
+####
+exit; fi
 ####
 ####
 ############################       english: nueva-completa-config: create new configs
 ############################       spanish: nueva-completa-config: nueva-completa-config para cear nuevas config
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ]; then $genfiles
-case $second_option in "$NULL") config_option="si" ;; esac 
-case "$config_option" in
-"si")
-echo $head_principal
-echo $header_lineal
+if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
 echo "$cinco Use: $fiptables nueva-completa-config config-nueva"
-exit ;; esac
-echo $head_principal
-echo $header_lineal
+exit; fi
+####
+####
+if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
-rm "$directory_config/$second_option"
-dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
-else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
+####
+####
+if [ -s "$directory_config/$second_option" ]; then $nada 
+dialog --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
 echo $footer_lineal
-exit ; fi
+fi
+####
+####
+if [ ! -s "$directory_config/$second_option" ]; then $nada 
+rm "$directory_config/$second_option" &> /dev/null
+cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
+fi
+####
+####
+exit; fi
 ####
 ####
 ############################       english: new-mini-config: create new configs
-############################       spanish: new--mini config:cear nuevas config
+############################       spanish: new--mini config: cea nuevas config
 ####
 ####
-if [ "$first_option" = "new-mini-config" ]; then $genfiles
-case $second_option in "$NULL") config_option="si" ;; esac
-case "$config_option" in
-"si")
-echo $head_principal
-echo $header_lineal
-echo "$cinco Use: $fiptables new-mini-config config-new" ; exit ;; esac
-echo $head_principal
-echo $header_lineal
+if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
+echo "$cinco Use: $fiptables new-mini-config config-new"
+exit; fi
+####
+####
+if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
-rm "$directory_config/$second_option"
-dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
-else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
+####
+####
+if [ -s "$directory_config/$second_option" ]; then $nada 
+dialog --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
 echo $footer_lineal
-exit ; fi
+fi
+####
+####
+if [ ! -s "$directory_config/$second_option" ]; then $nada 
+rm "$directory_config/$second_option" &> /dev/null
+cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
+fi
+####
+####
+exit; fi
 ####
 ####
 ############################       english: nueva-mini-config: create new configs
 ############################       spanish: nueva-mini-config: crea nuevas config
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ]; then $genfiles
-case $second_option in "$NULL") config_option="si" ;; esac
-case "$config_option" in
-"si")
-echo $header_lineal
-echo "$cinco Use: $fiptables nueva-mini-config config-nueva" ; exit ;; esac
-echo $head_principal
-echo $header_lineal
+if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
+echo "$cinco Use: $fiptables nueva-mini-config config-nueva"
+exit; fi
+####
+####
+if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
-if [ ! -s "$directory_config/$second_option" ]; then $nada ; 
-rm "$directory_config/$second_option"
-dialog --msgbox "[Canceled. file modify $second_option]" 0 0 ; clear
-else  dialog --msgbox "[OK. file modify $second_option]" 0 0 ; clear; fi 
+####
+####
+if [ -s "$directory_config/$second_option" ]; then $nada 
+dialog --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
 echo $footer_lineal
-exit ; fi
+fi
 ####
 ####
+if [ ! -s "$directory_config/$second_option" ]; then $nada 
+rm "$directory_config/$second_option" &> /dev/null
+cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
+fi
+####
+####
+exit; fi
+####
+####
+
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 ####
