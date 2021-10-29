@@ -106,6 +106,8 @@ head_principal="$prehead_principal [ $first_option ] $cinco" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ Usage in $fiptables ] [ Use: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+header_ender="$cinco $ralla   $ralla   $ralla"      
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_lineal="$ralla   $ralla   $ralla"                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 footer_lineal="$ralla   $ralla   $ralla"                            
@@ -311,13 +313,15 @@ if [ "$first_option" = "options" ]; then first_option="full-options"; fi
 ####
 #### clear
 if [ "$first_option" = "header" ] ; then
-if [ "$allow_header" = "no" ]   ; then 
-echo "$head_normal" ; else
+if [ "$allow_header" = "no" ]   ; then echo "$head_normal" 
+else 
 echo $head_principal 
 echo $head_default 
 echo $head_normal 
 echo $default_route_cuatro 
-echo $default_route_seis ; fi ; exit ; fi
+echo $default_route_seis 
+echo $header_ender
+fi ; exit ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
