@@ -994,14 +994,6 @@ echo "$cinco [ Runing.. ] [ $zero_option ]"
 cp $zero_option $directory_fiptables/$fiptables ;
 #### 
 #### 
-####  english: probe sane dir /etc/bash_completion.d
-####  spanish: comprueba directorio sano /etc/bash_completion.d
-#### 
-#### 
-if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
-#### 
-#### 
 ####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
 ####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
 #### 
@@ -1013,8 +1005,8 @@ eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" 
 echo "$(head -160 $0 | grep fwiptables-for-default)" &> /etc/default/fwiptables
 #### 
 #### 
-####  english: modes of file 
-####  spanish: modos de archivo
+####  english: probe sane dir /etc/bash_completion.d
+####  spanish: comprueba directorio sano /etc/bash_completion.d
 #### 
 #### 
 chmod ugo+rx /etc/bash_completion.d/$fiptables &> /dev/null
@@ -1023,6 +1015,18 @@ chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
 #### 
 ####  english: show info 
 ####  spanish: muestra informacion
+#### 
+#### 
+if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
+####
+####
+echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
+echo "$cinco [ Files in: ] [ /etc/fwiptables | /etc/fwrecover ]"
+echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/default/fwiptables ]"
+#### 
+#### 
+####  english: modes of file 
+####  spanish: modos de archivo
 #### 
 #### 
 echo "$cinco [ Launch $fiptables to run / TYPE :] [ $fiptables ]" 
