@@ -53,10 +53,10 @@ allow_header="" ;                        ## fwiptables-default ## void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_question="" ;                      ## fwiptables-default ## void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
-autosave_fwrecover="" ;                  ## fwiptables-default ## choose: void or no
+autosave_fwrecover="" ;                  ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds #####
 ####       #### spanish: cierre desde red ping, trace.. con retardo en segundos #####
-net_waiting="9"                          ## fwiptables-default ## choose seconds: 1..,9..30
+server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
 server_ping="fast.com"                   ## fwiptables-default ## default fast.com
 server_trace="fast.com"                  ## fwiptables-default ## default fast.com
 server_iperf="ping.online.net"           ## fwiptables-default ## default ping.online.net
@@ -4045,9 +4045,9 @@ exit; fi
  echo $header_lineal
 ####
 ####
- echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  echo "$ralla" "$ralla" "$ralla"
- timeout -s SIGINT -v $net_waiting tcpdump -v
+ timeout -s SIGINT -v $server_waiting tcpdump -v
  echo "$ralla" "$ralla" "$ralla"
  echo $footer_lineal
  exit; fi
@@ -4340,9 +4340,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  echo "$cinco ping -4 -c 5 -A $server_ping"
- timeout -s SIGINT -v $net_waiting $which_ping -4 -c 5 -A $server_ping
+ timeout -s SIGINT -v $server_waiting $which_ping -4 -c 5 -A $server_ping
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4370,9 +4370,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  echo "$cinco ping -6 -c 5 -A $server_ping"
- timeout -s SIGINT -v $net_waiting $which_ping -6 -c 5 -A $server_ping
+ timeout -s SIGINT -v $server_waiting $which_ping -6 -c 5 -A $server_ping
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4402,10 +4402,10 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  echo "$cinco traceroute -4 -T $server_trace"
- timeout -s SIGINT -v $net_waiting $which_traceroute -4 -T $server_trace
- echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ timeout -s SIGINT -v $server_waiting $which_traceroute -4 -T $server_trace
+ echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4435,9 +4435,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  echo "$cinco traceroute -6 -T $trazador"
- timeout -s SIGINT -v $net_waiting $which_traceroute -6 -T $server_trace
+ timeout -s SIGINT -v $server_waiting $which_traceroute -6 -T $server_trace
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5123,7 +5123,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ Doing bandwidth in ipv4 to $server_iperf ] [ with max $net_waiting seconds ]"
+ echo "$cinco [ Doing bandwidth in ipv4 to $server_iperf ] [ with max $server_waiting seconds ]"
  echo $ralla
  $which_iperf -t 4 -c $server_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
@@ -5152,7 +5152,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ Doing bandwidth in ipv6 to $server_iperf ] [ with max $net_waiting seconds ]"
+ echo "$cinco [ Doing bandwidth in ipv6 to $server_iperf ] [ with max $server_waiting seconds ]"
  echo $ralla
  $which_iperf -V -t 4 -c $server_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
