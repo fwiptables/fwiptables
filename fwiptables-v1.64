@@ -47,24 +47,24 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 #### #### english: option for default    #### spanish: opcion por defecto
-default_option="options"                 #### over fwiptables-for-default    #### default: full-options
+default_option="full-options"            #### over fwiptables-for-default    #### default: full-options
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_header="" ;                        #### over fwiptables-for-default    #### void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 allow_question="" ;                      #### over fwiptables-for-default    #### void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 autosave_fwrecover="" ;                  #### over fwiptables-for-default    #### choose: void or no
-#### #### english: option for default    #### spanish: opcion por defecto
-radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   #### over fwiptables-for-default    #### url
-####       #### english: close from graphicall with timeout in seconds #####
-####       #### spanish: cierre desde graficos con retardo en segundos #####
-close_graphicall="1"                     #### over fwiptables-for-default    #### choose seconds : 1..,9..30
 ####       #### english: close from networking ping, trace.. with timeout in seconds #####
 ####       #### spanish: cierre desde red ping, trace.. con retardo en segundos #####
 net_waiting="9"                          #### over fwiptables-for-default    #### choose seconds: 1..,9..30
 server_ping="fast.com"                   #### over fwiptables-for-default    #### default fast.com
 server_trace="fast.com"                  #### over fwiptables-for-default    #### default fast.com
 server_iperf="ping.online.net"           #### over fwiptables-for-default    #### default ping.online.net
+####       #### english: zenity graphic redimension    
+####       #### spanish: redimensiones graficas de zenity
+graphic_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
+#### #### english: option for default    #### spanish: opcion por defecto
+radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   #### over fwiptables-for-default    #### url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" 
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -102,8 +102,6 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #### english: path to config files  #### spanish: archivos de configuracion
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
-#### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
-autosave_fwrecover="" ;                #### over fwiptables-for-default    #### choose: void or no
 #### #### english: look  #### spanish: apariencia
 cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -137,15 +135,9 @@ case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip
 case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$which_ip" -6 route show | grep -i default | head -1) ]" ;; esac
 ####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
-####       #### english: zenity graphic redimension    
-####       #### spanish: redimensiones graficas de zenity
-graphic_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
 close_graphicall="1"
-####       #### english: close from networking ping, trace.. with timeout in seconds #####
-####       #### spanish: cierre desde red ping, trace.. con retardo en segundos #####
-net_waiting="9"
 ####       #### english: message to close graphicall with timeout in seconds #####
 ####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
 mensage_timeout="Closing gui menu in $close_graphicall seconds"
