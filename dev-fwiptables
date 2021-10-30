@@ -4772,7 +4772,7 @@ $fiptables stop
  echo "$cinco [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
  case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
- echo "$rallica Testing speed with the temporal file /root/borrame.img.img"
+ echo "$rallica Testing speed with the temporal file /root/borrame.img.img about 100Mb"
 ####
 ####
  if [ "$allow_question" = "no" ]; then $nada ; else
@@ -4799,7 +4799,7 @@ $fiptables stop
  case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
  case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
  in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
- echo "$rallica Test speed with the temporal file /tmp/borrame.img.img"
+ echo "$rallica Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
 ####
 ####
  if [ "$allow_question" = "no" ]; then $nada ; else
