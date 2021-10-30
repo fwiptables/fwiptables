@@ -1173,7 +1173,7 @@ echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions howto-upgrade            "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed radio         "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
 echo "$tab" "$tab"  "                       resolv.conf default                                   "
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
@@ -1735,7 +1735,7 @@ echo "     ram-speed: Show the speed of ram"
 echo "              : Muestra la velocidad de la ram"
 echo "    disc-speed: Show the speed of disc"
 echo "              : Muestra la velocidad de el disco"
-echo "     glx-speed: Show frammes for seconds with mesa graphicall"
+echo "      gl-speed: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo "                connecta a on servidor mp3, see $fiptables default"
@@ -2747,12 +2747,12 @@ case "$which_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; else) 
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
   000 "$cinco $tab [$fiptables cli-menu] $tab $cinco" \
-  010 "$cinco [Tool guide to begin] $cinco" \
+  010 "$cinco [ Tool guide to begin ] $cinco" \
   11  "info-system" \
   12  "info-net" \
   13  "wizard-mini" \
   14  "wizard-full" \
-  020 "$cinco [Control rules with firewall standard] $cinco" \
+  020 "$cinco [ Control rules with firewall standard ] $cinco" \
   21  "stop" \
   22  "continue" \
   23  "reset" \
@@ -2761,19 +2761,19 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   26  "save"  \
   27  "load"  \
   28  "actual" \
-  030 "$cinco [List rules alphabetical] $cinco" \
+  030 "$cinco [ List rules alphabetical ] $cinco" \
   31  "list" \
   32  "forward" \
   33  "nat-ip4" \
   34  "list6"  \
   35  "forward6" \
   36  "nat-ip6" \
-  040 "$cinco [List rules numerical] $cinco" \
+  040 "$cinco [ List rules numerical ] $cinco" \
   41  "listnum" \
   42  "forwardnum" \
   43  "listnum6" \
   44  "forwardnum6" \
-  050 "$cinco [List other tables] $cinco"  \
+  050 "$cinco [ List other tables ] $cinco"  \
   51  "raw-ip4" \
   52  "raw-ip6" \
   53  "mangle-ip4" \
@@ -2782,12 +2782,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   56  "security-ip6" \
   57  "ebtables" \
   58  "arptables" \
-  060 "$cinco [Launch rules iptables with one cfg] $cinco" \
+  060 "$cinco [ Launch rules iptables with one cfg ] $cinco" \
   61  "eraserules" \
   62  "offline" \
   63  "allpermisive" \
   64  "custom cfg" \
-  070 "$cinco [Tool configurations cfg] $cinco" \
+  070 "$cinco [ Tool configurations cfg ] $cinco" \
   71  "new-full-config" \
   72  "nueva-completa-config" \
   73  "new-mini-config" \
@@ -2796,7 +2796,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   76  "modify-config" \
   77  "del-config" \
   78  "list-config" \
-  080 "$cinco [Tool net sockets and forward] $cinco" \
+  080 "$cinco [ Tool net sockets and forward ] $cinco" \
   81  "route" \
   82  "ss" \
   83  "netstat" \
@@ -2806,45 +2806,51 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   87  "ipforward-list" \
   88  "ipforward-on" \
   89  "ipforward-off" \
-  090 "$cinco [Tool icmp test] $cinco" \
+  090 "$cinco [ Tool icmp test ] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
   93   "speed-ip4" \
   94   "speed-ip6" \
-  0100 "$cinco [Tool tcp test] $cinco"  \
+  0100 "$cinco [ Tool tcp test ] $cinco"  \
   101  "trace-ip4" \
   102  "trace-ip6" \
   103  "host" \
   104  "resolveip" \
   106  "ntpdate" \
   105  "geoip" \
-  0110 "$cinco [tool sudo operations] $cinco"  \
+  0110 "$cinco [ tool sudo operations ] $cinco"  \
   111  "sudo-auth" \
   112  "sudo-remove" \
   113  "sudo-list" \
-  0120 "$cinco [tool install program] $cinco" \
+  0120 "$cinco [ tool install program ] $cinco" \
   121  "install" \
   122  "howto-upgrade" \
   123  "upgrade" \
   124  "new-versions" \
   125  "license" \
-  0140 "$cinco [Show etc configurations] $cinco" \
+  0130 "$cinco [ tool system program ] $cinco" \
+  131  "ram-free" \
+  132  "ram-speed" \
+  133  "disc-speed" \
+  134  "gl-speed" \
+  135  "radio" \
+  0140 "$cinco [ Show etc configurations ] $cinco" \
   141  "hosts" \
   142  "protocols" \
   143  "services" \
   144  "hosts.allow" \
   145  "hosts.deny" \
-  0150 "$cinco [Show log registry] $cinco" \
+  0150 "$cinco [ Show log registry ] $cinco" \
   151  "log-sudo" \
   152  "log-sshd" \
   153  "log-search" \
-  0160 "$cinco [Show about global options] $cinco" \
+  0160 "$cinco [ Show about global options ] $cinco" \
   161  "about" \
   162  "depends" \
   163  "examples" \
   164  "config-eng" \
   165  "config-spa" \
-  0170 "$cinco [Show help global options] $cinco" \
+  0170 "$cinco [ Show help global options ] $cinco" \
   171  "basic-options" \
   172  "full-options" \
   173  "help" \
@@ -2957,7 +2963,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  122) clear ; $fiptables "howto-upgrade" | less ;;
  123) clear ; $fiptables "upgrade" ;;
  124) clear ; $fiptables "new-versions" | less ;;
- 125) clear ; $fiptables "license" | less ;; 
+ 125) clear ; $fiptables "license" | less ;;
+ 131) clear ; $fiptables "ram-free" ;;
+ 132) clear ; $fiptables "ram-speed" ;;
+ 133) clear ; $fiptables "disc-speed" ;;
+ 134) clear ; $fiptables "gl-speed" ;;
+ 135) clear ; $fiptables "radio" ;;
  141) clear ; $fiptables "hosts" | less ;;
  142) clear ; $fiptables "protocols" | less ;;
  143) clear ; $fiptables "services" | less ;;
@@ -4812,11 +4823,11 @@ $fiptables stop
  exit; fi
 ####
 ####
-############################       english: glx-speed: show frammes por seconds with mesa graphicall 
-############################       spanish: glx-speed: muestra los fotogramas por segundo con graphicos mesa
+############################       english: gl-speed: show frammes por seconds with mesa graphicall 
+############################       spanish: gl-speed: muestra los fotogramas por segundo con graphicos mesa
 ####
 ####
- if [ "$first_option" = "glx-speed" ]; then  $give_cover
+ if [ "$first_option" = "gl-speed" ]; then  $give_cover
  echo "$cinco [ $first_option ] [ test gl mesa3D speed ]"
  echo $header_lineal
  case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
@@ -4835,7 +4846,6 @@ $fiptables stop
  echo "$rallica [ Usually it do not working like root, probe as user ]"
  echo "$rallica [ mpg123 -@ $radio ]"
  echo $header_lineal
-# case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
  echo $footer_lineal
  mpg123 -@ $radio
  exit; fi
@@ -5332,7 +5342,7 @@ echo
 echo "      ram-free: Clean for innecesary memory"
 echo "     ram-speed: Show the speed of ram"
 echo "    disc-speed: Show the speed of disc"
-echo "     glx-speed: Show frammes for seconds with mesa graphicall"
+echo "      gl-speed: Show frammes for seconds with mesa graphicall"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo
 echo
@@ -5573,7 +5583,7 @@ echo
 echo "      ram-free: Libera la memoria innecesaria"
 echo "     ram-speed: Muestra la velocidad de la ram"
 echo "    disc-speed: Muestra la velocidad de el disco"
-echo "     glx-speed: Muestra fotogramas por segundo con graficos mesa"
+echo "      gl-speed: Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connecta a on servidor mp3, see $fiptables default"
 echo
 echo
