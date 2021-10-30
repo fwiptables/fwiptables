@@ -47,24 +47,24 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####        #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 #### #### english: option for default    #### spanish: opcion por defecto
-default_option="full-options"            #### over fwiptables-for-default    #### default: full-options
+default_option="full-options"            ## fwiptables-default ## default: full-options
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_header="" ;                        #### over fwiptables-for-default    #### void or no
+allow_header="" ;                        ## fwiptables-default ## void or no
 #### #### english: option for default    #### spanish: opcion por defecto
-allow_question="" ;                      #### over fwiptables-for-default    #### void or no
+allow_question="" ;                      ## fwiptables-default ## void or no
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
-autosave_fwrecover="" ;                  #### over fwiptables-for-default    #### choose: void or no
+autosave_fwrecover="" ;                  ## fwiptables-default ## choose: void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds #####
 ####       #### spanish: cierre desde red ping, trace.. con retardo en segundos #####
-net_waiting="9"                          #### over fwiptables-for-default    #### choose seconds: 1..,9..30
-server_ping="fast.com"                   #### over fwiptables-for-default    #### default fast.com
-server_trace="fast.com"                  #### over fwiptables-for-default    #### default fast.com
-server_iperf="ping.online.net"           #### over fwiptables-for-default    #### default ping.online.net
+net_waiting="9"                          ## fwiptables-default ## choose seconds: 1..,9..30
+server_ping="fast.com"                   ## fwiptables-default ## default fast.com
+server_trace="fast.com"                  ## fwiptables-default ## default fast.com
+server_iperf="ping.online.net"           ## fwiptables-default ## default ping.online.net
 ####       #### english: zenity graphic redimension    
 ####       #### spanish: redimensiones graficas de zenity
-graphic_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
+graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
 #### #### english: option for default    #### spanish: opcion por defecto
-radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   #### over fwiptables-for-default    #### url
+radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   ## fwiptables-default ## url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" 
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -1007,7 +1007,7 @@ echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/ba
 echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 full-options long-help cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
 eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
-echo "$(head -160 $0 | grep fwiptables-for-default)" &> /etc/default/fwiptables
+echo "$(head -160 $0 | grep fwiptables-default)" &> /etc/default/fwiptables
 #### 
 #### 
 ####  english: probe sane dir /etc/bash_completion.d
