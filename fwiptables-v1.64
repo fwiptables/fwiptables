@@ -2809,6 +2809,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   090 "$cinco [Tool icmp test] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
+  93   "speed-ip4" \
+  94   "speed-ip6" \
   0100 "$cinco [Tool tcp test] $cinco"  \
   101  "trace-ip4" \
   102  "trace-ip6" \
@@ -2932,6 +2934,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  clear ; $fiptables ping-ip4 $resolve ;;
  92) resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables ping-ip6 $resolve ;;
+ 93) clear ; $fiptables speed-ip4 ;;
+ 94) clear ; $fiptables speed-ip6 ;;
  101) resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables trace-ip4 $resolve ;;
  102) resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
