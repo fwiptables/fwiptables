@@ -2845,10 +2845,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   164  "config-eng" \
   165  "config-spa" \
   0170 "$cinco [Show help global options] $cinco" \
-  171  "full-options" \
-  172  "help" \
-  173  "ayuda" \
-  174  "long-help" \
+  171  "basic-options" \
+  172  "full-options" \
+  173  "help" \
+  174  "ayuda" \
+  175  "long-help" \
+  176  "notes" \
  )"  
 #### 
 #### 
@@ -2970,10 +2972,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  163) clear ; $fiptables "examples" | less ;;
  164) clear ; $fiptables "config-eng" | less ;;
  165) clear ; $fiptables "config-spa" | less ;;
- 171) clear ; $fiptables "full-options" | less ;;
- 172) clear ; $fiptables "help" | less ;;
- 173) clear ; $fiptables "ayuda" | less ;;
- 174) clear ; $fiptables "long-help" | less ;;
+ 171) clear ; $fiptables "basic-options" ;;
+ 172) clear ; $fiptables "full-options" | less ;;
+ 173) clear ; $fiptables "help" | less ;;
+ 174) clear ; $fiptables "ayuda" | less ;;
+ 175) clear ; $fiptables "long-help" | less ;;
+ 176) clear ; $fiptables "notes" | less ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  echo "press [enter] to continue with the $fiptables cli-menu"
