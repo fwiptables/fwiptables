@@ -56,6 +56,15 @@ allow_question="" ;                      #### over fwiptables-for-default    ###
 autosave_fwrecover="" ;                  #### over fwiptables-for-default    #### choose: void or no
 #### #### english: option for default    #### spanish: opcion por defecto
 radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   #### over fwiptables-for-default    #### url
+####       #### english: close from graphicall with timeout in seconds #####
+####       #### spanish: cierre desde graficos con retardo en segundos #####
+close_graphicall="1"                     #### over fwiptables-for-default    #### choose seconds : 1..,9..30
+####       #### english: close from networking ping, trace.. with timeout in seconds #####
+####       #### spanish: cierre desde red ping, trace.. con retardo en segundos #####
+net_waiting="9"                          #### over fwiptables-for-default    #### choose seconds: 1..,9..30
+server_ping="fast.com"                   #### over fwiptables-for-default    #### default fast.com
+server_trace="fast.com"                  #### over fwiptables-for-default    #### default fast.com
+server_iperf="ping.online.net"           #### over fwiptables-for-default    #### default ping.online.net
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" 
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -133,10 +142,13 @@ case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip c
 graphic_dimension="--width=950 --height=650"   #### over fwiptables-for-default    #### default: "--width=950 --height=650"
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
-close_timeout="1"
+close_graphicall="1"
+####       #### english: close from networking ping, trace.. with timeout in seconds #####
+####       #### spanish: cierre desde red ping, trace.. con retardo en segundos #####
+net_waiting="9"
 ####       #### english: message to close graphicall with timeout in seconds #####
 ####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
-mensage_timeout="Closing gui menu in $close_timeout seconds"
+mensage_timeout="Closing gui menu in $close_graphicall seconds"
 ####       #### english: zenity graphic automatic redimension    
 ####       #### spanish: redimensiones graficas automaticas de zenity
 #### pantallatotal="$(xrandr | grep -- \* | tail -1 \
@@ -2159,7 +2171,7 @@ case "$selection" in
 #### 
 #### 
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit ;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit ;;
 esac
 exit; fi
 ####
@@ -2184,7 +2196,7 @@ case $selection in
 #### 
 #### 
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2211,7 +2223,7 @@ $fiptables -gui custom $archivo ; $fiptables gui list ;;
 #### 
 #### 
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2244,7 +2256,7 @@ $fiptables -gui load $archivo ; $fiptables -gui list ;;
 #### 
 #### 
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2289,7 +2301,7 @@ case $selection in
 *)
 #### 
 #### 
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 $fiptables gui-menu
 exit; fi
@@ -2335,7 +2347,7 @@ $fiptables -gui del-config $archivo;;
 *)
 #### 
 #### 
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2369,7 +2381,7 @@ case $selection in
 #### 
 #### 
 *)
-zenity --progress -$graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress -$graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2397,7 +2409,7 @@ $fiptables -gui ping-ip6 $archivo ;;
 "speed-ip4") $fiptables -gui speed-ip4 ;;
 "speed-ip6") $fiptables -gui speed-ip6 ;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2432,7 +2444,7 @@ $fiptables -gui geoip $archivo ;;
 #### 
 #### 
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2459,7 +2471,7 @@ $fiptables -gui sudo-auth $archivo ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "alias-list")$fiptables -gui alias-list ;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2485,7 +2497,7 @@ case $selection in
 "upgrade")$fiptables -gui upgrade ;;
 "new-versions")$fiptables -gui new-versions ;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2513,7 +2525,7 @@ case $selection in
 "hosts.deny") $fiptables -gui hosts.deny ;;
 "default") $fiptables -gui default ;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2540,7 +2552,7 @@ case $selection in
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2568,7 +2580,7 @@ case $selection in
 "config-eng")$fiptables -gui config-eng ;;
 "config-spa")$fiptables -gui config-spa ;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2595,7 +2607,7 @@ case $selection in
 "ayuda") $fiptables -gui ayuda ;;
 "notes") $fiptables -gui notes ;;
 *)
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 #### 
 #### 
@@ -2632,7 +2644,7 @@ case $? in
 #### zenity --info $graphic_dimension --text="$fiptables good bye";
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_timeout --text="$mensage_timeout" \
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
 --auto-close --auto-kill ; exit;;
 esac
 ####
@@ -4028,18 +4040,15 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "tcpdump" ]; then $give_cover
- case $(which tcpdump) in "$NULL") echo " Install tcpdump" ;;
- *) 
+ case $which_tcpdump in "$NULL") echo " Install tcpdump" ; exit ;; esac
  echo "$cinco [ launch several seconds tcpdump ]"
  echo $header_lineal
- if [ "$second_option" = "$NULL" ]; then second_option="4"; fi
- echo "Waiting $second_option seconds to tcpdump .."
+####
+####
+ echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
  echo "$ralla" "$ralla" "$ralla"
- timeout -s SIGINT -v $second_option tcpdump -v
+ timeout -s SIGINT -v $net_waiting tcpdump -v
  echo "$ralla" "$ralla" "$ralla"
- echo "[ Launch: ] [ $fiptables $first_option seconds ] [ for default 4 seconds ]"
- ;;
- esac
  echo $footer_lineal
  exit; fi
 ####
@@ -4324,19 +4333,16 @@ exit; fi
  read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
  case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
  "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
+ *) echo " [ OK. DECLINE ] "; exit ;; esac; fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
- case "$second_option" in
- "$NULL") echo "$cinco Selecting host ping-ip4 to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;; esac
  $fiptables stop
- echo "$cinco ping -4 -c 5 -A $trazador"
- $which_ping -4 -c 5 -A $trazador
+ echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco ping -4 -c 5 -A $server_ping"
+ timeout -s SIGINT -v $net_waiting $which_ping -4 -c 5 -A $server_ping
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4357,20 +4363,16 @@ exit; fi
  read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
  case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
  "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
+ *) echo " [ OK. DECLINE ] "; exit ;; esac ; fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
- case "$second_option" in
- "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;;
- esac
  $fiptables stop
- echo "$cinco ping -6 -c 5 -A $trazador"
- $which_ping -6 -c 5 -A $trazador
+ echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco ping -6 -c 5 -A $server_ping"
+ timeout -s SIGINT -v $net_waiting $which_ping -6 -c 5 -A $server_ping
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4393,19 +4395,17 @@ exit; fi
  read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
  case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
  "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
+ *) echo " [ OK. DECLINE ] "; exit ;; esac ; fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
- case "$second_option" in
- "$NULL") echo "$cinco Selecting host trace-ip4 to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;; esac
  $fiptables stop
- echo "$cinco traceroute -4 -T $trazador"
- $which_traceroute -4 -T $trazador
+ echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
+ echo "$cinco traceroute -4 -T $server_trace"
+ timeout -s SIGINT -v $net_waiting $which_traceroute -4 -T $server_trace
+ echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4428,20 +4428,16 @@ exit; fi
  read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
  case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
  "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
+ *) echo " [ OK. DECLINE ] "; exit ;; esac;  fi
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
- case "$second_option" in
- "$NULL") echo "$cinco Selecting host ping-ip6 to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;;
- esac
  $fiptables stop
+ echo "$cinco [ $first_option: ] [ for default max $net_waiting seconds ]"
  echo "$cinco traceroute -6 -T $trazador"
- $which_traceroute -6 -T $trazador
+ timeout -s SIGINT -v $net_waiting $which_traceroute -6 -T $server_trace
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5123,15 +5119,13 @@ exit; fi
  read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
  case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
  "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
+ *) echo " [ OK. DECLINE ] "; exit ;; esac ; fi
 ####
 ####
- case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
  $fiptables stop
- echo "$cinco Doing bandwidth in ipv4 to $direccion_iperf with 4 seconds"
+ echo "$cinco [ Doing bandwidth in ipv4 to $server_iperf ] [ with max $net_waiting seconds ]"
  echo $ralla
- $which_iperf -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $which_iperf -t 4 -c $server_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5154,15 +5148,13 @@ exit; fi
  read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
  case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
  "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
+ *) echo " [ OK. DECLINE ] "; exit ;; esac;  fi
 ####
 ####
- case $second_option in $NULL) direccion_iperf="ping.online.net" ;; *) direccion_iperf="$second_option" ;; esac
  $fiptables stop
- echo "$cinco Doing bandwidth in ipv6 to $direccion_iperf with 4 seconds"
+ echo "$cinco [ Doing bandwidth in ipv6 to $server_iperf ] [ with max $net_waiting seconds ]"
  echo $ralla
- $which_iperf -V -t 4 -c $direccion_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $which_iperf -V -t 4 -c $server_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
