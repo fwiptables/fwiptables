@@ -55,6 +55,8 @@ allow_question="" ;                      #### over fwiptables-for-default    ###
 #### #### english: void to autosave fwrecover or no #spanish: autoguardar fwrecover o no
 autosave_fwrecover="" ;                  #### over fwiptables-for-default    #### choose: void or no
 #### #### english: option for default    #### spanish: opcion por defecto
+radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   #### over fwiptables-for-default    #### url
+#### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" 
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_option="$0" 
@@ -273,13 +275,13 @@ if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
 ####
 ####
 #############################     english: list: alias list to filter ip4
-#############################     spanish: list6: apodo list6 a filtros de ip4
+#############################     spanish: list6: apodo list a filtros de ip4
 ####
 ####
 if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
 ####
 ####
-#############################     english: list: alias list to filter ip6
+#############################     english: list: alias list6 to filter ip6
 #############################     spanish: list6: apodo list6 a filtros de ip6
 ####
 ####
@@ -331,7 +333,6 @@ fi ; exit ; fi
 if [ "$(id -u)" = "0" ]; then $nada
 else
 echo $head_principal
-echo $header_lineal
 echo "$cincuenta need to be root to work"
 echo "$ralla"
 echo "$cincuenta  Be root to work $fiptables"
@@ -990,7 +991,7 @@ else echo "$cinco [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$cinco [ Runing.. ] [ $zero_option ]"
+echo "$cinco [ Runing.. ] [ $zero_option install ]"
 cp $zero_option $directory_fiptables/$fiptables ;
 #### 
 #### 
@@ -1148,8 +1149,9 @@ echo "$cinco [ $first_option ] [ List full options ]"
 echo "$tab" "$tab"  "______________________                | Principal options |                  "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4 nat-ip6    "
+echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                       forward forwardnum forward6 fowardnum6                "
+echo "$tab" "$tab"  "                       filter-ip4 filter-ip6 nat-ip4 nat-ip6                 "
 echo "$tab" "$tab"  "                       raw-ip4 raw-ip6 mangle-ip4 mangle-ip6                 "
 echo "$tab" "$tab"  "                       security-ip4 security-ip6 ebtables arptables          "
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
@@ -1167,9 +1169,9 @@ echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions howto-upgrade            "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed               "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed glx-speed radio         "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
-echo "$tab" "$tab"  "                       resolv.conf default                               "
+echo "$tab" "$tab"  "                       resolv.conf default                                   "
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
@@ -1731,6 +1733,8 @@ echo "    disc-speed: Show the speed of disc"
 echo "              : Muestra la velocidad de el disco"
 echo "     glx-speed: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
+echo "         radio: connect to one server mp3, see $fiptables default"
+echo "                connecta a on servidor mp3, see $fiptables default"
 echo $footer_lineal
 exit; fi
 ####
@@ -4825,6 +4829,22 @@ $fiptables stop
  exit; fi
 ####
 ####
+############################       english: radio: url from one radio mp3
+############################       spanish: radio: url de una radio en mp3
+####
+####
+ if [ "$first_option" = "radio" ]; then  $give_cover
+ echo "$cinco [ $first_option ] [ Listen radio online ]"
+ echo "$rallica [ for choose radio see: ] [ $fiptables default ]"
+ echo "$rallica [ Usually it do not working like root, probe as user ]"
+ echo "$rallica [ mpg123 -@ $radio ]"
+ echo $header_lineal
+# case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
+ echo $footer_lineal
+ mpg123 -@ $radio
+ exit; fi
+####
+####
 ############################## english: read-fwiptables: Read log /var/log/fwiptables  ##############################
 ############################## spanish: read-fwiptables: Lee log  /var/log/fwiptables  ##############################
 ####
@@ -5315,6 +5335,15 @@ echo "      install: Install this program actual"
 echo "howto-upgrade: Howto install the latest version"
 echo "      upgrade: Upgrade at the latest version"
 echo
+echo "$cinco         [Tool system]"
+echo
+echo "      ram-free: Clean for innecesary memory"
+echo "     ram-speed: Show the speed of ram"
+echo "    disc-speed: Show the speed of disc"
+echo "     glx-speed: Show frammes for seconds with mesa graphicall"
+echo "         radio: connect to one server mp3, see $fiptables default"
+echo
+echo
 echo "$cinco         [Show etc]"
 echo
 echo "        hosts: Show /etc/hosts, hosts local and statics host"
@@ -5545,7 +5574,16 @@ echo "$cinco         [Herramienta de instalacion]"
 echo
 echo "      install: Instala este programa actual"
 echo "howto-upgrade: Indicacion para actualizar"
-echo " upgrade: Actualiza a la ultima version"
+echo "      upgrade: Actualiza a la ultima version"
+echo
+echo "$cinco         [Herramienta de sistema]"
+echo
+echo "      ram-free: Libera la memoria innecesaria"
+echo "     ram-speed: Muestra la velocidad de la ram"
+echo "    disc-speed: Muestra la velocidad de el disco"
+echo "     glx-speed: Muestra fotogramas por segundo con graficos mesa"
+echo "         radio: connecta a on servidor mp3, see $fiptables default"
+echo
 echo
 echo "$cinco         [Mostrar etc]"
 echo
