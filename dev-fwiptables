@@ -1003,6 +1003,11 @@ cp $zero_option $directory_fiptables/$fiptables ;
 ####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
 #### 
 #### 
+####  english: Install new bash_completion/fwiptables
+####  spanish: instala nuevo bash_completion/fwiptables
+#### 
+#### 
+if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
 echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 full-options long-help cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
@@ -1016,13 +1021,6 @@ echo "$(head -160 $0 | grep fwiptables-default)" &> /etc/default/fwiptables
 #### 
 chmod ugo+rx /etc/bash_completion.d/$fiptables &> /dev/null
 chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
-#### 
-#### 
-####  english: show info 
-####  spanish: muestra informacion
-#### 
-#### 
-if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 ####
 ####
 echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
@@ -1055,7 +1053,8 @@ echo "$cinco [ Downloading $fiptables with the comand $favorite_text_browser bro
 rm /tmp/$fiptables &> /dev/null
 ####
 ####
-#### download fwiptables
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
 ####
 ####
 echo "$cinco [ Waiting several seconds .. ]"
@@ -1067,7 +1066,8 @@ if [ -f /tmp/$fiptables ]; then
 chmod ugo+rx /tmp/$fiptables &> /dev/null
 ####
 ####
-#### launch install
+#### English: launch install
+#### Spanish: lanza instalacion
 ####
 ####
 /tmp/$fiptables install
@@ -1294,6 +1294,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "some-example" ]; then $give_cover
+echo "$cinco [ $first_option ] [ List examples ]"
 echo "$cinco         [list examples]"
 echo "$cinco         [Lista ejemplos]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1312,6 +1313,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "option" ]; then $give_cover
+echo "$cinco [ $first_option ] [ List options ]"
 echo "$cinco         [List option]"
 echo "$cinco         [Lista opcion]"
 echo
@@ -1361,6 +1363,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "launch-rules" ]; then $give_cover
+echo "$cinco [ $first_option ] [ launch rules ]"
 echo "$cinco         [Launch iptables rules]"
 echo "$cinco         [Lanza reglas de iptables]"
 echo
@@ -1385,6 +1388,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "control-rules" ]; then $give_cover
+echo "$cinco [ $first_option ] [ control rules ]"
 echo "$cinco         [Control iptables rules]"
 echo "$cinco         [Controla reglas de iptables]"
 echo
@@ -1415,6 +1419,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-rules" ]; then $give_cover
+echo "$cinco [ $first_option ] [ List rules ]"
 echo "$cinco         [List filter iptables rules]"
 echo "$cinco         [Lista reglas de iptables filtros]"
 echo
@@ -1478,6 +1483,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-numrules" ]; then $give_cover
+echo "$cinco [ $first_option ] [ List rules in numerical ]"
 echo "$cinco         [List iptables numerical rules]"
 echo "$cinco         [Lista reglas numericas de iptables]"
 echo
@@ -1499,6 +1505,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-cfg" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool config ]"
 echo "$cinco         [Tool configs]"
 echo "$cinco         [Herramienta de configuraciones]"
 echo
@@ -1527,6 +1534,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "control-guide" ]; then $give_cover
+echo "$cinco [ $first_option ] [ control guide ]"
 echo "$cinco         [Control guide]" 
 echo "$cinco         [Control guia]"
 echo
@@ -1547,6 +1555,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "interface" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool interface ]"
 echo "$cinco         [control interface]" 
 echo "$cinco         [control de interfaz]"
 echo
@@ -1577,6 +1586,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool sockets ]"
 echo "$cinco         [Tool sockets]"
 echo "$cinco         [Herramienta de sockets]"
 echo
@@ -1603,10 +1613,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool forward ]"
 echo "$cinco         [Tool forward]"
 echo "$cinco         [Herramienta de ipforwading]"
 echo
-echo "  ipforward-list: Show kernel config about forward"
+echo "    ipforward-list: Show kernel config about forward"
 echo "                  : Muestra configuracion del kernel sobre reenvios"
 echo "    ipforward-on: Active the kernel config about forward"
 echo "                  : Activa la configuracion del kernel sobre reenvios"
@@ -1621,6 +1632,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool icmp ]"
 echo "$cinco         [Tool icmp]"
 echo "$cinco         [Herramienta icmp]"
 echo
@@ -1642,6 +1654,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool tcp ]"
 echo "$cinco         [Tool tcp]"
 echo "$cinco         [Herramienta tcp]"
 echo
@@ -1666,6 +1679,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool nmap ]"
 echo "$cinco         [Tool nmap]"
 echo "$cinco         [Herramienta nmap]"
 echo
@@ -1688,6 +1702,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool sudo $fiptables ]"
 echo "$cinco         [Tool sudo]"
 echo "$cinco         [Herramienta sudo]"
 echo
@@ -1706,6 +1721,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool install $fiptables ]"
 echo "$cinco         [Tool install]"
 echo "$cinco         [Herramienta instalar]"
 echo
@@ -1726,6 +1742,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
+echo "$cinco [ $first_option ] [ tool system ]"
 echo "$cinco         [Tool system]"
 echo "$cinco         [Herramienta systema]"
 echo
@@ -1748,6 +1765,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
+echo "$cinco [ $first_option ] [ show etc files ]"
 echo "$cinco         [Show etc]"
 echo "$cinco         [Mostrar etc]"
 echo
@@ -1774,6 +1792,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
+echo "$cinco [ $first_option ] [ show log files ]"
 echo "$cinco         [Show log]"
 echo "$cinco         [Mostrar log]"
 echo
@@ -1796,6 +1815,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
+echo "$cinco [ $first_option ] [ show about $fiptables ]"
 echo "$cinco         [Show about]"
 echo "$cinco         [Mostrar acerca de]"
 echo
@@ -1822,6 +1842,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
+echo "$cinco [ $first_option ] [ show help ]"
 echo "$cinco         [Show help]"
 echo "$cinco         [Mostrar ayuda]"
 echo
