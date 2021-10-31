@@ -46,8 +46,8 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####
 ####
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-####       #### english: option for default when is invalid option
-####       #### spanish: opcion por defecto cuando no hay una valida
+####       #### english: option for default when there is an invalid option
+####       #### spanish: opcion por defecto cuando no hay una valida opcion
 default_option="full-options"            ## fwiptables-default ## default: full-options
 ####       #### english: allow info header in each option    
 ####       #### spanish: permitir informacion de cabecera en cada opcion
@@ -97,7 +97,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.65" ;                                                   
+fversion="1.66" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -158,11 +158,10 @@ mensage_timeout="Closing gui menu in $close_graphicall seconds"
 #### sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
 #### case $($which xrandr) in "$NULL") ;; *) graphic_dimension=$pantallatotal ;; esac
 ####       #### english: autovariables        #### spanish: autovariables
-config_option="no" ;     #  autoconfigure with second option is a valid file
 launch_iptables="no" ;   #  autoconfigure with launch iptables rules
 launch_offline="no" ;    #  autoconfigure with offline rules
 launch_permisive="no" ;  #  autoconfigure with permisive rules
-launch_easyrules="no" ;  #  autoconfigure with easyrules
+launch_onlyweb="no" ;    #  autoconfigure with easyrules
 launch_custom="no";      #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
@@ -820,7 +819,7 @@ exit 0
 fi
 ####
 ####
-##############################  english:  sane variables: for work sane            ############################## 
+##############################  english:  sane variables: for working sane         ############################## 
 ##############################  spanish:  sana variables: para funcionamiento sano ##############################
 ####
 ####
@@ -1097,18 +1096,14 @@ exit ; fi
 ####   #### spanish: El primero:       desconectado, todopermisivo, soloweb o modificado  ----  semi silencioso
 ####
 ####
-if [ "$first_option" = "offline" ]; then      echo "$cinco  FIREWALL OFFLINE" ; 
-launch_iptables="si"; launch_permisive="no";
-launch_onlyweb="no" ; launch_offline=""   ;  launch_custom="no" ;  fi
+if [ "$first_option" = "offline" ];      then echo "$cinco  FIREWALL OFFLINE" ; 
+launch_iptables=""; launch_offline=""    ;  fi
 if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIVE" ; 
-launch_iptables="si";  launch_permisive=""  ;
-launch_onlyweb="no" ; launch_offline="no" ;  launch_custom="no" ;  fi
-if [ "$first_option" = "onlyweb" ]; then echo "$cinco  FIREWALL ONLYWEB" ;
-launch_iptables="si"; launch_permisive="no"  ;
-launch_onlyweb=""   ; launch_offline="no" ;  launch_custom="no" ;  fi
-if [ "$first_option" = "custom" ]; then       echo "$cinco  FIREWALL CUSTOM" ;
-launch_iptables="si"; launch_permisive="no" ;
-launch_onlyweb="no" ; launch_offline="no" ; launch_custom="" ; fi
+launch_iptables="";  launch_permisive="" ;  fi
+if [ "$first_option" = "onlyweb" ];      then echo "$cinco  FIREWALL ONLYWEB" ;
+launch_iptables=""; launch_onlyweb=""    ;  fi
+if [ "$first_option" = "custom" ];       then echo "$cinco  FIREWALL CUSTOM" ;
+launch_iptables=""; launch_custom=""     ;  fi
 ####
 ####
 ##############################   english: custom without valid config cfg
@@ -5713,14 +5708,14 @@ exit; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_iptables" = "si" ] ; then $nada ; else 
+if [ "$launch_iptables" = "" ] ; then $nada ; else 
 echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; fi
 ####
 ####
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####           Knowed now sure that:         launch_iptables="si"                               ###############
+####           Knowed now sure that:         launch_iptables=""                               ###############
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
