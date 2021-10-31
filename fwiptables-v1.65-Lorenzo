@@ -54,10 +54,10 @@ default_option="full-options"            ## fwiptables-default ## default: full-
 allow_header="" ;                        ## fwiptables-default ## void or no
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
-allow_question="" ;                      ## fwiptables-default ## void or no
+allow_question="no" ;                    ## fwiptables-default ## void or no
 ####       #### english: void to autosave fwrecover or no 
 ####       #### spanish: autoguardar fwrecover o no
-autosave_fwrecover="" ;                  ## fwiptables-default ## void or no
+autosave_fwrecover="no" ;                ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds #####
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    #####
 server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
