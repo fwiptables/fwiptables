@@ -911,7 +911,7 @@ $$which_iptables_nft-save &> $directory_fwrecover/autosave-nft-ipv4
 $which_iptables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv4
 $which_ip6tables_nft-save &> $directory_fwrecover/autosave-nft-ipv6
 $which_ip6tables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv6
-exit; fi; fi
+fi; exit; fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
