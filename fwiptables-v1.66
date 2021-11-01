@@ -4141,7 +4141,7 @@ exit; fi
 ##############################       spanish: reset: resetea contadores de reglas
 ####
 ####
-if [ "$first_option" = "reset" ]; then $nada
+if [ "$first_option" = "reset" ]; then $give_cover
 echo "$cinco [ $first_option ] [ Reset the firewall ]"
 echo $header_lineal
 $fiptables stop &> /dev/null
@@ -4189,7 +4189,7 @@ exit; fi
 ############################       spanish: load: carga las reglas en formato iptables
 ####
 ####
- if [ "$first_option" = "load" ]; then $nada
+ if [ "$first_option" = "load" ]; then $give_cover
 ####
 ####
 #### English: Void in second option
@@ -4233,7 +4233,7 @@ $fiptables eraserules &> /dev/null
 ############################       spanish: save: guarda las reglas en formato iptables
 ####
 ####
- if [ "$first_option" = "save" ]; then $nada
+ if [ "$first_option" = "save" ]; then $give_cover
  case "$second_option" in
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
  *) archivofin="$second_option" ;; 
