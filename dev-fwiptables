@@ -580,7 +580,7 @@ spa59=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
 var60=$(echo "others_protocols=icmp,igmp" )
 eng60=$(echo "$cinco allow others protocols from /etc/protocolos" )
 spa60=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
-var61=$(echo "$cinco NET TO CLIENT AND SERVER #" )
+var61=$(echo "$cinco NET CLIENT AND NET SERVER #" )
 eng61=$(echo "$cinco Net to connect like client or server" )
 spa61=$(echo "$cinco Red para conectar como cliente o server" )
 var62=$(echo "net_ipv4_client=0/0" )
@@ -2088,7 +2088,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 #### 
 #### 
 *)
-fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option | echo yes &> /tmp/fwiptables-$fecha_temporal
+fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option &> /tmp/fwiptables-$fecha_temporal
 zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
