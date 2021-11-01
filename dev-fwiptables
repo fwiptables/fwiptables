@@ -5736,8 +5736,8 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ###############################################################################################################
 ####
 ####
-##############################       english: overwrite system varibles for files variables configured or defaultcfg
-##############################       spanish: sobreescribe las variables por la de los archivos de configuracion o defaultcfg
+##############################       english: overwrite system varibles with the config cfg
+##############################       spanish: sobreescribe las variables con la config cfg
 ####
 ####
 if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
@@ -5748,7 +5748,7 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$cinco Fi
 ##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
 ####
 ####
-if [ $variables_version = "uno" ]; then
+if [ $variables_version = "1" ]; then
  config_input_state="$input_state" ;
  config_output_state="$output_state" ;
  config_input_bandwidth="$bandwidth_input" ;
@@ -5763,8 +5763,7 @@ if [ $variables_version = "uno" ]; then
 fi
 ####
 ####
-if [ $variables_version = "dos" ]; then $nada
-fi 
+if [ $variables_version = "2" ]; then $nada; fi 
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
