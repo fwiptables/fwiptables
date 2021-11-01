@@ -1097,13 +1097,13 @@ exit ; fi
 ####   #### spanish: El primero:       desconectado, todopermisivo, soloweb o modificado  ----  semi silencioso
 ####
 ####
-if [ "$first_option" = "offline" ];      then echo "$cinco  FIREWALL OFFLINE" ; 
+if [ "$first_option" = "offline" ];      then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
 launch_iptables=""; launch_offline=""    ;  fi
-if [ "$first_option" = "allpermisive" ]; then echo "$cinco  FIREWALL ALLPERMISIVE" ; 
+if [ "$first_option" = "allpermisive" ]; then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
 launch_iptables="";  launch_permisive="" ;  fi
-if [ "$first_option" = "onlyweb" ];      then echo "$cinco  FIREWALL ONLYWEB" ;
+if [ "$first_option" = "onlyweb" ];      then $give_cover; echo "$cinco  FIREWALL ONLYWEB" ;
 launch_iptables=""; launch_onlyweb=""    ;  fi
-if [ "$first_option" = "custom" ];       then echo "$cinco  FIREWALL CUSTOM" ;
+if [ "$first_option" = "custom" ];       then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables=""; launch_custom=""     ;  fi
 ####
 ####
@@ -6970,16 +6970,16 @@ $fiptables autosave
 echo $head_principal
 echo "$cinco lauching iptables rules $cinco"
 if [ "$first_option" = "offline" ]; then $nada
-echo "$cinco [OK FIREWALL OFFLINE]"
+echo "$cinco [ OK RULES ] [ FIREWALL OFFLINE ]"
 exit ; else $nada ; fi
 if [ "$first_option" = "allpermisive" ]; then $nada
-echo "$cinco [OK FIREWALL ALLPERMISIVE]"
+echo "$cinco [ OK RULES ] [ FIREWALL ALLPERMISIVE ]"
 exit ; else $nada ; fi
 if [ "$first_option" = "onlyweb" ]; then $nada
-echo "$cinco [OK FIREWALL ONLYWEB]"
+echo "$cinco [ OK RULES ] [ FIREWALL ONLYWEB ]"
 exit ; else $nada ; fi
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo "$cinco [OK FIREWALL CUSTOM] [$second_option]"
+echo "$cinco [ OK RULES ] [ FIREWALL CUSTOM ] [$second_option]"
 exit ; else $nada ; fi
 ####
 ####
