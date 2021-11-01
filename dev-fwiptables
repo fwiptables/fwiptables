@@ -97,7 +97,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.66-Fernando" ;                                                   
+fversion="1.67" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;          
 ####  #### english: default variable version whithout update for config cfg
@@ -5753,8 +5753,8 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$cinco Fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then $nada
- config_variable_two="$(cat $directory_config/$second_option | grep -i config_variable_version=2 | wc -l)"; fi
-if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi
+ config_variable_two="$(cat $directory_config/$second_option | grep -i config_variable_version=2 | wc -l)"
+if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi ; fi
 ####
 ####
 ####      #### english: config variable version

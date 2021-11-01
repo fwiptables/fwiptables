@@ -5753,8 +5753,8 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$cinco Fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then $nada
- config_variable_two="$(cat $directory_config/$second_option | grep -i config_variable_version=2 | wc -l)"; fi
-if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi
+ config_variable_two="$(cat $directory_config/$second_option | grep -i config_variable_version=2 | wc -l)"
+if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi ; fi
 ####
 ####
 ####      #### english: config variable version
