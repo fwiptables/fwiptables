@@ -5738,31 +5738,35 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ###############################################################################################################
 ####
 ####
-##############################      english: compatibility with old variables, backward compatibility      #####################
-##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
-####
-####
-#### if [ $variables_version = "uno" ]; then
-#### config_input_state="$input_state" ;
-#### config_output_state="$output_state" ;
-#### config_input_bandwidth="$bandwidth_input" ;
-#### config_output_bandwidth="$bandwidth_output" ;
-#### config_input_maxconnect="$maxconnect_input" ; 
-#### config_output_maxconnect="$maxconect_output" ;
-#### config_net_vpn="$vpn" ;
-#### config_net_blacklist="$blacklist" ;
-#### config_output_uid="$output_uid" ;
-#### config_output_gid="$output_gid" ;
-#### config_others_protocols="$others_protocols" ;
-#### fi
-####
-####
 ##############################       english: overwrite system varibles for files variables configured or defaultcfg
 ##############################       spanish: sobreescribe las variables por la de los archivos de configuracion o defaultcfg
 ####
 ####
 if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
 then source $directory_config/$second_option &> /dev/null ; else echo "$cinco File do not exits"; exit ; fi ; fi
+####
+####
+##############################      english: compatibility with old variables, backward compatibility      #####################
+##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
+####
+####
+if [ $variables_version = "uno" ]; then
+ config_input_state="$input_state" ;
+ config_output_state="$output_state" ;
+ config_input_bandwidth="$bandwidth_input" ;
+ config_output_bandwidth="$bandwidth_output" ;
+ config_input_maxconnect="$maxconnect_input" ; 
+ config_output_maxconnect="$maxconect_output" ;
+ config_net_vpn="$vpn" ;
+ config_net_blacklist="$blacklist" ;
+ config_output_uid="$output_uid" ;
+ config_output_gid="$output_gid" ;
+ config_others_protocols="$others_protocols" ;
+fi
+####
+####
+if [ $variables_version = "dos" ]; then $nada
+fi 
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
@@ -5778,8 +5782,8 @@ if [ "$allow_output_state" = "$NULL" ] ; then config_output_state="-m state --st
 ####
 ####
 uid_gid=no
-if [ "$allow_output_uid" = "$NULL" ]; then uid_gid= ; else $nada ; fi
-if [ "$allow_output_gid" = "$NULL" ]; then uid_gid= ; else $nada ; fi
+if [ "$allow_output_uid" = "$NULL" ]; then config_uid_gid= ; else $nada ; fi
+if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid= ; else $nada ; fi
 ####
 ####
 ############################       english: iptables rules ipv4  iptables-legacy
