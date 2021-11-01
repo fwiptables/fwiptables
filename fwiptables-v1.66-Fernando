@@ -5778,9 +5778,9 @@ if [ "$allow_output_state" = "$NULL" ] ; then config_output_state="-m state --st
 ##############################      spanish: usuario o grupo para establecidos de entrada de estado        #####################
 ####
 ####
-uid_gid=no
-if [ "$allow_output_uid" = "$NULL" ]; then config_uid_gid= ; else $nada ; fi
-if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid= ; else $nada ; fi
+config_uid_gid=no
+if [ "$allow_output_uid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
+if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 ####
 ####
 ############################       english: iptables rules ipv4  iptables-legacy
@@ -5842,22 +5842,22 @@ $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
 $allow_ipv4 $allow_legacy $allow_input_bandwidth $which_iptables_legacy     -A  INPUT \
--m hashlimit --hashlimit-above   "$bandwidth_input"kb/sec \
+-m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
 --hashlimit-name maxinputlegacy  -j DROP &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_output_bandwidth $which_iptables_legacy    -A OUTPUT \
--m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec \
+-m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_input_bandwidth $which_iptables_nft           -A INPUT \
--m hashlimit    --hashlimit-above "$bandwidth_input"kb/sec  \
+-m hashlimit    --hashlimit-above "$config_input_bandwidth"kb/sec  \
 --hashlimit-name maxinputnft  -j DROP &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_output_bandwidth $which_iptables_nft          -A OUTPUT \
--m hashlimit  --hashlimit-above "$bandwidth_output"kb/sec \
+-m hashlimit  --hashlimit-above "$config_output_bandwidth"kb/sec \
 --hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP &> /dev/null
 ####
 ####
@@ -5866,19 +5866,19 @@ $allow_ipv4 $allow_nft $allow_output_bandwidth $which_iptables_nft          -A O
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_bandwidth $which_ip6tables_legacy -A  INPUT \
--m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_output_bandwidth $which_ip6tables_legacy -A OUTPUT \
--m hashlimit --hashlimit-above  "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+-m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_input_bandwidth $which_ip6tables_nft -A  INPUT \
--m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_output_bandwidth $which_ip6tables_nft -A OUTPUT \
--m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
 ####
 ####
 #######################################        english: limit number of all connections
@@ -5888,19 +5888,19 @@ $allow_ipv6 $allow_nft $allow_output_bandwidth $which_ip6tables_nft -A OUTPUT \
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
 $allow_ipv4 $allow_legacy $allow_input_maxconnect  $which_iptables_legacy -A INPUT  \
--m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect   -j DROP  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_output_maxconnect $which_iptables_legacy -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect  -j DROP &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_input_maxconnect $which_iptables_nft   -A INPUT  \
--m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect       -j DROP &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_output_maxconnect $which_iptables_nft  -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect      -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
@@ -5908,26 +5908,26 @@ $allow_ipv4 $allow_nft $allow_output_maxconnect $which_iptables_nft  -A OUTPUT \
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_maxconnect  $which_ip6tables_legacy -A INPUT  \
--m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect  -j DROP &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_output_maxconnect $which_ip6tables_legacy -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect -j DROP &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_input_maxconnect $which_ip6tables_nft   -A INPUT  \
--m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect       -j DROP &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_output_maxconnect $which_ip6tables_nft  -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output      -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect      -j DROP &> /dev/null
 ####
 ####
 ####################################### english: Drop rules for blacklist
 ####################################### spanish: reglas de denegar para lista negra
 ####
 ####
-for one_blacklist in $(echo $blacklist | sed 's/,/ /g')
+for one_blacklist in $(echo $config_net_blacklist | sed 's/,/ /g')
 ####
 ####
 #### ipv4
@@ -5974,7 +5974,7 @@ done
 ####################################### spanish: reglas de aceptar para vpn
 ####
 ####
-for one_vpn in $(echo $vpn | sed 's/,/ /g') 
+for one_vpn in $(echo $config_net_vpn | sed 's/,/ /g') 
 #### ipv4
 ####
 do
@@ -6207,11 +6207,11 @@ $allow_legacy  $allow_ipv4 $allow_input_ping $which_iptables_legacy -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $uid_gid $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4 $config_uid_gid $which_iptables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols $which_iptables_legacy -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6230,14 +6230,14 @@ $allow_legacy  $allow_ipv4 $allow_input_ping  $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_output_uid $which_iptables_legacy   -A OUTPUT \
--m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+-m owner --uid-owner $config_output_uid -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_output_gid $which_iptables_legacy   -A OUTPUT \
--m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+-m owner --gid-owner $config_output_gid -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols      $which_iptables_legacy -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6259,7 +6259,7 @@ $allow_legacy  $allow_ipv6 $allow_input_ping    $which_ip6tables_legacy -A INPUT
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $uid_gid $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6 $config_uid_gid $which_ip6tables_legacy -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
 ####
 ####
@@ -6267,7 +6267,7 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT \
 -p ipv6-icmp -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_others_protocols      $which_ip6tables_legacy -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6286,11 +6286,11 @@ $allow_legacy  $allow_ipv6 $allow_input_ping  $which_ip6tables_legacy -A OUTPUT 
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_output_uid $which_ip6tables_legacy   -A OUTPUT \
--m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+-m owner --uid-owner $config_output_uid -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_output_gid $which_ip6tables_legacy   -A OUTPUT \
--m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+-m owner --gid-owner $config_output_gid -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
@@ -6318,11 +6318,11 @@ $allow_nft $allow_ipv4 $allow_input_ping   $which_iptables_nft -A INPUT \
 -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv4 $uid_gid $which_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $config_uid_gid $which_iptables_nft -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols       $which_iptables_nft -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6341,14 +6341,14 @@ $allow_nft $allow_ipv4 $allow_input_ping  $which_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv4 $allow_output_uid $which_iptables_nft   -A OUTPUT \
--m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+-m owner --uid-owner $config_output_uid -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv4 $allow_output_gid $which_iptables_nft   -A OUTPUT \
--m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+-m owner --gid-owner $config_output_gid -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols      $which_iptables_nft -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6370,7 +6370,7 @@ $allow_nft $allow_ipv6 $allow_input_ping    $which_ip6tables_nft -A INPUT \
 -p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv6 $uid_gid $which_ip6tables_nft -A INPUT \
+$allow_nft $allow_ipv6 $config_uid_gid $which_ip6tables_nft -A INPUT \
 -m state --state related,established -j ACCEPT &> /dev/null
 ####
 ####
@@ -6378,7 +6378,7 @@ $allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT \
 -p ipv6-icmp -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A INPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6397,17 +6397,17 @@ $allow_nft $allow_ipv6 $allow_input_ping    $which_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv6 $allow_output_uid     $which_ip6tables_nft -A OUTPUT \
--m owner --uid-owner $output_uid -j ACCEPT &> /dev/null
+-m owner --uid-owner $config_output_uid -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv6 $allow_output_gid     $which_ip6tables_nft -A OUTPUT \
--m owner --gid-owner $output_gid -j ACCEPT &> /dev/null
+-m owner --gid-owner $config_output_gid -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $which_ip6tables_nft -A OUTPUT \
 -p $one_protocol -j ACCEPT &> /dev/null
 done
@@ -6782,9 +6782,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $which_ip6tables_legac
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_input_bandwidth iptables-legacy -A  INPUT \
--m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_bandwidth ip6tables-legacy -A  INPUT \
--m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 #### english: nft4 INPUT limit bandwidth
@@ -6792,9 +6792,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_bandwidth
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_bandwidth iptables-nft -A  INPUT \
--m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_bandwidth ip6tables-nft -A  INPUT \
--m hashlimit --hashlimit-above "$bandwidth_input"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
 ####
 ####
 #### english: ipv4  limit conections numbers
@@ -6802,9 +6802,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_bandwidth ip
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_input_maxconnect  $which_iptables_legacy -A INPUT \
--m connlimit --connlimit-above $maxconnect_input  -j DROP  &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect  -j DROP  &> /dev/null
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_maxconnect $which_iptables_nft   -A INPUT \
--m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect       -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 limit conections numbers
@@ -6812,9 +6812,9 @@ $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_maxconnect $
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_maxconnect  $which_ip6tables_legacy -A INPUT \
--m connlimit --connlimit-above $maxconnect_input  -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect  -j DROP &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_maxconnect $which_ip6tables_nft   -A INPUT \
--m connlimit --connlimit-above $maxconnect_input       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect       -j DROP &> /dev/null
 ####
 ####
 #### english: nft INPUT ACCEPT all or input_state
@@ -6822,9 +6822,9 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_maxconnect $
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $which_iptables_nft -t filter -A INPUT \
-$input_state -j ACCEPT &> /dev/null
+$config_input_state -j ACCEPT &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $which_ip6tables_nft -t filter -A INPUT \
-$input_state -j ACCEPT &> /dev/null
+$config_input_state -j ACCEPT &> /dev/null
 ####
 ####
 #### english: legacy INPUT ACCEPT all or input_state
@@ -6832,9 +6832,9 @@ $input_state -j ACCEPT &> /dev/null
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $which_iptables_legacy -t filter -A INPUT \
-$input_state -j ACCEPT &> /dev/null
+$config_input_state -j ACCEPT &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $which_ip6tables_legacy -t filter -A INPUT \
-$input_state -j ACCEPT &> /dev/null
+$config_input_state -j ACCEPT &> /dev/null
 ####
 ####
 #### english: nft INPUT DROP all
@@ -6904,9 +6904,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $which_ip6tables_lega
 ####
 #### 
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_output_bandwidth iptables-legacy -A OUTPUT \
--m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
--m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
 ####
 ####
 #### english: nft4 OUTPUT limit bandwidth
@@ -6914,9 +6914,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_bandwid
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_bandwidth iptables-nft -A OUTPUT \
--m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_bandwidth ip6tables-nft -A OUTPUT \
--m hashlimit --hashlimit-above "$bandwidth_output"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP &> /dev/null
 ####
 ####
 #### english: ipv4  limit conections numbers
@@ -6924,9 +6924,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_bandwidth 
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_output_maxconnect  $which_iptables_legacy -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output  -j DROP  &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect  -j DROP  &> /dev/null
 $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_maxconnect $which_iptables_nft   -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect  -j DROP &> /dev/null
 ####
 ####
 #### english: ipv6 limit conections numbers
@@ -6934,9 +6934,9 @@ $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_maxconnect
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_maxconnect  $which_ip6tables_legacy -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output  -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect  -j DROP &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_maxconnect $which_ip6tables_nft   -A OUTPUT \
--m connlimit --connlimit-above $maxconnect_output       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect  -j DROP &> /dev/null
 ####
 ####
 #### english: nft OUTPUT ACCEPT all or input_state
