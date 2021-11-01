@@ -99,7 +99,9 @@ fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fversion="1.66-Fernando" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
-directory_config="/etc/fwiptables" ;                                
+directory_config="/etc/fwiptables" ;          
+#### #### english: version de variables  #### spanish: version de variables
+variables_version="uno" ;                                                                         
 #### #### english: path to config files  #### spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"             
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -616,7 +618,7 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $me
+echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos "&> $me
 echo $var1  $tabz $eng1  &>> $me
 echo $var2  $tabz $eng2  &>> $me
 echo $var3  $tabz $eng3  &>> $me
@@ -648,7 +650,7 @@ echo $var26 $tabz $eng26 &>> $me
 #### wizard mini-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $ms
+echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos " &> $ms
 echo $var1  $tabz $spa1  &>> $ms
 echo $var2  $tabz $spa2  &>> $ms
 echo $var3  $tabz $spa3  &>> $ms
@@ -680,7 +682,7 @@ echo $var26 $tabz $spa26 &>> $ms
 #### wizard full-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $fe
+echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos " &> $fe
 echo $var1  $tabz $eng1  &>> $fe
 echo $var2  $tabz $eng2  &>> $fe
 echo $var3  $tabz $eng3  &>> $fe
@@ -750,7 +752,7 @@ echo $var66 $tabz $eng66 &>> $fe
 #### wizard full-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $fs
+echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos" &> $fs
 echo $var1  $tabz $spa1 &>> $fs
 echo $var2  $tabz $spa2 &>> $fs
 echo $var3  $tabz $spa3 &>> $fs
@@ -5736,17 +5738,19 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
 ####
 ####
-config_input_state="$input_state" ;
-config_output_state="$output_state" ;
-config_input_bandwidth="$bandwidth_input" ;
-config_output_bandwidth="$bandwidth_output" ;
-config_input_maxconnect="$maxconnect_input" ; 
-config_output_maxconnect="$maxconect_output" ;
-config_net_vpn="$vpn" ;
-config_net_blacklist="$blacklist" ;
-config_output_uid="$output_uid" ;
-config_output_gid="$output_gid" ;
-config_others_protocols="$others_protocols" ;
+#### if [ $variables_version = "uno" ]; then
+#### config_input_state="$input_state" ;
+#### config_output_state="$output_state" ;
+#### config_input_bandwidth="$bandwidth_input" ;
+#### config_output_bandwidth="$bandwidth_output" ;
+#### config_input_maxconnect="$maxconnect_input" ; 
+#### config_output_maxconnect="$maxconect_output" ;
+#### config_net_vpn="$vpn" ;
+#### config_net_blacklist="$blacklist" ;
+#### config_output_uid="$output_uid" ;
+#### config_output_gid="$output_gid" ;
+#### config_others_protocols="$others_protocols" ;
+#### fi
 ####
 ####
 ##############################       english: overwrite system varibles for files variables configured or defaultcfg
@@ -5761,8 +5765,8 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$cinco Fi
 ##############################      spanish: estado selectivo de entrada/salida        #####################
 ####
 ####
-if [ "$allow_input_state" = "$NULL" ]  ; then input_state="-m state --state $input_state"   ; else input_state="$NULL"  ; fi
-if [ "$allow_output_state" = "$NULL" ] ; then output_state="-m state --state $output_state" ; else output_state="$NULL" ; fi
+if [ "$allow_input_state" = "$NULL" ]  ; then config_input_state="-m state --state $input_state"   ; else config_input_state="$NULL"  ; fi
+if [ "$allow_output_state" = "$NULL" ] ; then config_output_state="-m state --state $output_state" ; else config_output_state="$NULL" ; fi
 ####
 ####
 ##############################      english: output_uid or output_gid for input established status        #####################
