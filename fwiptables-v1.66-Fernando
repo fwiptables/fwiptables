@@ -100,8 +100,9 @@ fprogram="Fran FireWall FWiptables Generator" ;
 fversion="1.66-Fernando" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;          
-#### #### english: version de variables  #### spanish: version de variables
-variables_version="uno" ;                                                                         
+####  #### english: default variable version whithout update for config cfg
+####  #### spanish: default version de variables sin actualizar por config cfg
+config_variable_version="1" ;                                                                         
 #### #### english: path to config files  #### spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"             
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -402,6 +403,7 @@ if [ "$first_option" = "regeneration-default" ]; then $nada
 #### spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
+var0=$(echo "config_variable_version=2" "configured $cinco $fprogram from $fiptables config file for version $fversion" )
 var1=$(echo "$cinco BEGIN NECESARY #" )
 eng1=$(echo "$cinco  .......... BEGIN Necesary options .......... .......... #")
 spa1=$(echo "$cinco INICIO .......... Opciones Necesarias .......... .......... #")
@@ -618,8 +620,7 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos " &> $me
-echo "variables=dos # config variables_version updater " &> me
+echo $var0  &> $me
 echo $var1  $tabz $eng1  &>> $me
 echo $var2  $tabz $eng2  &>> $me
 echo $var3  $tabz $eng3  &>> $me
@@ -651,8 +652,7 @@ echo $var26 $tabz $eng26 &>> $me
 #### wizard mini-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos " &> $ms
-echo "variables=dos # config variables_version updater " &> me
+echo $var0  &> $ms
 echo $var1  $tabz $spa1  &>> $ms
 echo $var2  $tabz $spa2  &>> $ms
 echo $var3  $tabz $spa3  &>> $ms
@@ -684,8 +684,7 @@ echo $var26 $tabz $spa26 &>> $ms
 #### wizard full-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos " &> $fe
-echo "variables=dos # config variables_version updater " &> me
+echo $var0  &> $fe
 echo $var1  $tabz $eng1  &>> $fe
 echo $var2  $tabz $eng2  &>> $fe
 echo $var3  $tabz $eng3  &>> $fe
@@ -755,8 +754,7 @@ echo $var66 $tabz $eng66 &>> $fe
 #### wizard full-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version=$fversion variables=dos" &> $fs
-echo "variables=dos # config variables_version updater " &> me
+echo $var0  &> $fs
 echo $var1  $tabz $spa1 &>> $fs
 echo $var2  $tabz $spa2 &>> $fs
 echo $var3  $tabz $spa3 &>> $fs
@@ -3817,7 +3815,7 @@ echo "$cinco Use: $fiptables new-full-config config-new"
 exit; fi
 ####
 ####
-if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
+if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -3848,7 +3846,7 @@ echo "$cinco Use: $fiptables nueva-completa-config config-nueva"
 exit; fi
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
+if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -3879,7 +3877,7 @@ echo "$cinco Use: $fiptables new-mini-config config-new"
 exit; fi
 ####
 ####
-if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
+if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -3910,7 +3908,7 @@ echo "$cinco Use: $fiptables nueva-mini-config config-nueva"
 exit; fi
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfile ; $give_cover
+if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
