@@ -403,7 +403,7 @@ if [ "$first_option" = "regeneration-default" ]; then $nada
 #### spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0=$(echo "config_variable_version=2" "configured $cinco $fprogram from $fiptables config file for version $fversion" )
+var0=$(echo "config_variable_version=2" $cinco "configured for $fprogram from $fiptables version $fversion" )
 var1=$(echo "$cinco BEGIN NECESARY #" )
 eng1=$(echo "$cinco  .......... BEGIN Necesary options .......... .......... #")
 spa1=$(echo "$cinco INICIO .......... Opciones Necesarias .......... .......... #")
