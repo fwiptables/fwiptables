@@ -374,7 +374,7 @@ allow_input_state="no" ; allow_output_state="no" ;
 allow_input_bandwidth="no" ; allow_output_bandwidth="no" ;
 allow_input_maxconnect="no" ; allow_output_maxconnect="no" ;
 allow_input_ping="no" ; allow_output_ping="no" ;
-allow_vpn="no" ; allow_blacklist="no" ;
+allow_net_vpn="no" ; allow_net_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
 config_input_state="new,related,stablished" ;
@@ -524,10 +524,10 @@ spa41=$(echo "$cinco vacio para permitir recivir ping o no")
 var42=$(echo "allow_output_ping=no" )
 eng42=$(echo "$cinco void to allow send pings or no" )
 spa42=$(echo "$cinco vacio para permitir enviar ping o no" )
-var43=$(echo "allow_vpn=no" )
+var43=$(echo "allow_net_vpn=no" )
 eng43=$(echo "$cinco void to allow some exceptional host or no")
 spa43=$(echo "$cinco vacio para permitir hosts excepcionales o no")
-var44=$(echo "allow_blacklist=no")
+var44=$(echo "allow_net_blacklist=no")
 eng44=$(echo "$cinco void to drop some excepcional host or no")
 spa44=$(echo "$cinco vacio para denegar hosts excepcionales o no")
 var45=$(echo "allow_output_uid=no" )
@@ -870,10 +870,10 @@ case "$NULL" in
 *)allow_input_ping="no";;
 "$allow_output_ping");; 
 *)allow_output_ping="no";;
-"$allow_vpn");; 
-*)allow_vpn="no";;
-"$allow_blacklist");; 
-*)allow_blacklist="no";;
+"$allow_net_vpn");; 
+*)allow_net_vpn="no";;
+"$allow_net_blacklist");; 
+*)allow_net_blacklist="no";;
 "$allow_output_uid");; 
 *)allow_output_uid="no";;
 "$allow_output_gid");; 
@@ -3128,7 +3128,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo
  echo "# config vpn example #"
  echo "allow_forward= ; "
- echo "allow_vpn= ; "
+ echo "allow_net_vpn= ; "
  echo "vpn=wesnoth.org,sourceforge.net"
 ####
 ####
@@ -5748,7 +5748,7 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$cinco Fi
 ##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
 ####
 ####
-if [ $variables_version = "1" ]; then
+if [ $config_variable_version = "1" ]; then
  config_input_state="$input_state" ;
  config_output_state="$output_state" ;
  config_input_bandwidth="$bandwidth_input" ;
@@ -5763,7 +5763,7 @@ if [ $variables_version = "1" ]; then
 fi
 ####
 ####
-if [ $variables_version = "2" ]; then $nada; fi 
+if [ $config_variable_version = "2" ]; then $nada; fi 
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
@@ -5934,38 +5934,38 @@ for one_blacklist in $(echo $config_net_blacklist | sed 's/,/ /g')
 ####
 ####
 do
-$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A INPUT  \
+$allow_ipv4 $allow_legacy $allow_net_blacklist $which_iptables_legacy  -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
 ####
 ####
-$allow_ipv4 $allow_legacy $allow_blacklist $which_iptables_legacy  -A OUTPUT \
+$allow_ipv4 $allow_legacy $allow_net_blacklist $which_iptables_legacy  -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
 ####
 ####
-$allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A INPUT  \
+$allow_ipv4 $allow_nft    $allow_net_blacklist $which_iptables_nft     -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
 ####
 ####
-$allow_ipv4 $allow_nft    $allow_blacklist $which_iptables_nft     -A OUTPUT \
+$allow_ipv4 $allow_nft    $allow_net_blacklist $which_iptables_nft     -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A INPUT  \
+$allow_ipv6 $allow_legacy $allow_net_blacklist $which_ip6tables_legacy -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
 ####
 ####
-$allow_ipv6 $allow_legacy $allow_blacklist $which_ip6tables_legacy -A OUTPUT \
+$allow_ipv6 $allow_legacy $allow_net_blacklist $which_ip6tables_legacy -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
 ####
 ####
-$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A INPUT  \
+$allow_ipv6 $allow_nft    $allow_net_blacklist $which_ip6tables_nft    -A INPUT  \
 -s $one_blacklist -j DROP &> /dev/null
 ####
 ####
-$allow_ipv6 $allow_nft    $allow_blacklist $which_ip6tables_nft    -A OUTPUT \
+$allow_ipv6 $allow_nft    $allow_net_blacklist $which_ip6tables_nft    -A OUTPUT \
 -d $one_blacklist -j DROP &> /dev/null
 done
 #### 
@@ -5978,38 +5978,38 @@ for one_vpn in $(echo $config_net_vpn | sed 's/,/ /g')
 #### ipv4
 ####
 do
-$allow_ipv4 $allow_legacy $allow_vpn $which_iptables_legacy  -A  INPUT  \
+$allow_ipv4 $allow_legacy $allow_net_vpn $which_iptables_legacy  -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
-$allow_ipv4 $allow_legacy $allow_vpn $which_iptables_legacy  -A  OUTPUT \
+$allow_ipv4 $allow_legacy $allow_net_vpn $which_iptables_legacy  -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
-$allow_ipv4 $allow_nft    $allow_vpn $which_iptables_nft     -A  INPUT  \
+$allow_ipv4 $allow_nft    $allow_net_vpn $which_iptables_nft     -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
-$allow_ipv4 $allow_nft    $allow_vpn $which_iptables_nft     -A  OUTPUT \
+$allow_ipv4 $allow_nft    $allow_net_vpn $which_iptables_nft     -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
-$allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  INPUT  \
+$allow_ipv6 $allow_legacy $allow_net_vpn $which_ip6tables_legacy -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
-$allow_ipv6 $allow_legacy $allow_vpn $which_ip6tables_legacy -A  OUTPUT \
+$allow_ipv6 $allow_legacy $allow_net_vpn $which_ip6tables_legacy -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
-$allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  INPUT  \
+$allow_ipv6 $allow_nft    $allow_net_vpn $which_ip6tables_nft    -A  INPUT  \
 -s $one_vpn -j ACCEPT &> /dev/null
 ####
 ####
-$allow_ipv6 $allow_nft    $allow_vpn $which_ip6tables_nft    -A  OUTPUT \
+$allow_ipv6 $allow_nft    $allow_net_vpn $which_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT &> /dev/null
 done
 ####
