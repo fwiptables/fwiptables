@@ -4189,7 +4189,7 @@ exit; fi
 ############################       spanish: load: carga las reglas en formato iptables
 ####
 ####
- if [ "$first_option" = "load" ]; then $give_cover
+ if [ "$first_option" = "load" ]; then $give_cover ; $fiptables autosave
 ####
 ####
 #### English: Void in second option
