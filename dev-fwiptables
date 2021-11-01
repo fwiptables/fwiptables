@@ -5760,10 +5760,13 @@ if [ $config_variable_version = "1" ]; then
  config_output_uid="$output_uid" ;
  config_output_gid="$output_gid" ;
  config_others_protocols="$others_protocols" ;
+ echo "$cinco [ Runing rules with old variables version $config_variable_version ]"
 fi
 ####
 ####
-if [ $config_variable_version = "2" ]; then $nada; fi 
+if [ $config_variable_version = "2" ]; then $nada
+ echo "$cinco [ Runing rules with the actual variables version $config_variable_version ]"
+fi 
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
