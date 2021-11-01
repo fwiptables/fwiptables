@@ -124,7 +124,7 @@ prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal="$prehead_principal [ $first_option ] $cinco" ;                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_normal="$cinco [ Usage in $fiptables ] [ Use: $fiptables options ]"
+head_normal="$cinco [ List usage: ] [ Use: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$cinco $ralla   $ralla   $ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
