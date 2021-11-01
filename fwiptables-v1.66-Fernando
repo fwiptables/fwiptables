@@ -374,13 +374,13 @@ allow_input_ping="no" ; allow_output_ping="no" ;
 allow_vpn="no" ; allow_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
-input_state="new,related,stablished" ;
-output_state="new,related,stablished" ;
-bandwidth_input="12512" ; bandwidth_output="512" ;
-maxconnect_input="72" ; maxconnect_output="72" ;
-vpn="wesnoth.org" ; blacklist="yandex.com" ;
-output_uid="root" ; output_gid="root" ;
-others_protocols="icmp,igmp" ;
+config_input_state="new,related,stablished" ;
+config_output_state="new,related,stablished" ;
+config_input_bandwidth="12512" ; config_output_bandwidth="512" ;
+config_input_maxconnect="72" ; config_output_maxconnect="72" ;
+config_net_vpn="wesnoth.org" ; config_net_blacklist="yandex.com" ;
+config_output_uid="root" ; config_output_gid="root" ;
+config_others_protocols="icmp,igmp" ;
 net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
@@ -547,37 +547,37 @@ spa48=$(echo "$cinco Rellena Variables #" )
 var49=$(echo "$cinco Options" )
 eng49=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa49=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-var50=$(echo "input_state=new,related,established")
+var50=$(echo "config_input_state=new,related,established")
 eng50=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa50=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var51=$(echo "output_state=new,related,established")
+var51=$(echo "config_output_state=new,related,established")
 eng51=$(echo "$cinco void for all or new,related,established,untracked,invalid")
 spa51=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var52=$(echo "bandwidth_input=12512" )
+var52=$(echo "config_input_bandwidth=12512" )
 eng52=$(echo "$cinco max input bandwidth in kbits/sec for all" )
 spa52=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
-var53=$(echo "bandwidth_output=512" )
+var53=$(echo "config_output_bandwidth=512" )
 eng53=$(echo "$cinco max output bandwidth in kbits/sec for each ip" )
 spa53=$(echo "$cinco maximo salida de ancho de banda en kbits/sec para cada ip" )
-var54=$(echo "maxconnect_input=72" )
+var54=$(echo "config_input_maxconnect=72" )
 eng54=$(echo "$cinco max number for input simultaneous connections" )
 spa54=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
-var55=$(echo "maxconnect_output=72" )
+var55=$(echo "config_output_maxconnect=72" )
 eng55=$(echo "$cinco max number for output simultaneous connections" )
 spa55=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
-var56=$(echo "vpn=wesnoth.org,sf.net" )
+var56=$(echo "config_net_vpn=wesnoth.org,sf.net" )
 eng56=$(echo "$cinco allow this excepcitonal host" )
 spa56=$(echo "$cinco permitir estos host excepcionales" )
-var57=$(echo "blacklist=facebook.com,www.facebook.com" )
+var57=$(echo "config_net_blacklist=facebook.com,www.facebook.com" )
 eng57=$(echo "$cinco drop this excepcional host" )
 spa57=$(echo "$cinco deniega estos host excepcionales" )
-var58=$(echo "output_uid=root" )
+var58=$(echo "config_output_uid=root" )
 eng58=$(echo "$cinco allow out packages excepcional from this user excepcional" )
 spa58=$(echo "$cinco permite salida de paquetes de este usuario excepcional" )
-var59=$(echo "output_gid=root" )
+var59=$(echo "config_output_gid=root" )
 eng59=$(echo "$cinco allow out packages excepcional from this group excepcional" )
 spa59=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
-var60=$(echo "others_protocols=icmp,igmp" )
+var60=$(echo "config_others_protocols=icmp,igmp" )
 eng60=$(echo "$cinco allow others protocols from /etc/protocolos" )
 spa60=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
 var61=$(echo "$cinco NET CLIENT AND NET SERVER #" )
@@ -5732,6 +5732,21 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ###############################################################################################################
 ####
 ####
+##############################      english: compatibility with old variables, backward compatibility      #####################
+##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
+####
+####
+config_input_state="$input_state" ;
+config_output_state="$output_state" ;
+config_input_bandwidth="$bandwidth_input" ;
+config_output_bandwidth="$bandwidth_output" ;
+config_input_maxconnect="$maxconnect_input" ; 
+config_output_maxconnect="$maxconect_output" ;
+config_net_vpn="$vpn" ;
+config_net_blacklist="$blacklist" ;
+config_output_uid="$output_uid" ;
+config_output_gid="$output_gid" ;
+config_others_protocols="$others_protocols" ;
 ####
 ####
 ##############################       english: overwrite system varibles for files variables configured or defaultcfg
@@ -5759,14 +5774,6 @@ if [ "$allow_output_uid" = "$NULL" ]; then uid_gid= ; else $nada ; fi
 if [ "$allow_output_gid" = "$NULL" ]; then uid_gid= ; else $nada ; fi
 ####
 ####
-##############################      english: compatibility with old variables, backward compatibility      #####################
-##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
-#### execnft="$which_iptables_nft"
-#### execlegacy="$which_iptables_legacy"
-#### iptables_nft="$allow_nft"
-#### iptables_legacy="$allow_legacy"
-#### log_tcp=$logserver_tcp
-#### log_udp=$logserver_udp
 ############################       english: iptables rules ipv4  iptables-legacy
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
