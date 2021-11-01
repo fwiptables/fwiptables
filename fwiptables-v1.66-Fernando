@@ -403,7 +403,7 @@ if [ "$first_option" = "regeneration-default" ]; then $nada
 #### spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0=$(echo "config_variable_version=2" $cinco "configured for $fprogram from $fiptables version $fversion" )
+var0=$(echo "$cinco $fprogram from $fiptables version $fversion whith config_variable_version=2 " )
 var1=$(echo "$cinco BEGIN NECESARY #" )
 eng1=$(echo "$cinco  .......... BEGIN Necesary options .......... .......... #")
 spa1=$(echo "$cinco INICIO .......... Opciones Necesarias .......... .......... #")
@@ -5746,6 +5746,19 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$cinco Fi
 ####
 ##############################      english: compatibility with old variables, backward compatibility      #####################
 ##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
+####
+####
+####      #### english: probe version config_variable_version
+####      #### spanish: prueba version config_variable_version
+####
+####
+if [ "$first_option" = "custom" ]; then $nada
+ config_variable_two="$(cat $directory_config/$second_option | grep -i config_variable_version=2 | wc -l)"; fi
+if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi
+####
+####
+####      #### english: config variable version
+####      #### spanish: configura variable version
 ####
 ####
 if [ $config_variable_version = "1" ]; then
