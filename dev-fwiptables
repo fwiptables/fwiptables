@@ -97,7 +97,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.66" ;                                                   
+fversion="1.66-Fernando" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -616,7 +616,7 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $me
+echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $me
 echo $var1  $tabz $eng1  &>> $me
 echo $var2  $tabz $eng2  &>> $me
 echo $var3  $tabz $eng3  &>> $me
@@ -648,7 +648,7 @@ echo $var26 $tabz $eng26 &>> $me
 #### wizard mini-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $ms
+echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $ms
 echo $var1  $tabz $spa1  &>> $ms
 echo $var2  $tabz $spa2  &>> $ms
 echo $var3  $tabz $spa3  &>> $ms
@@ -680,7 +680,7 @@ echo $var26 $tabz $spa26 &>> $ms
 #### wizard full-english
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $fe
+echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $fe
 echo $var1  $tabz $eng1  &>> $fe
 echo $var2  $tabz $eng2  &>> $fe
 echo $var3  $tabz $eng3  &>> $fe
@@ -750,7 +750,7 @@ echo $var66 $tabz $eng66 &>> $fe
 #### wizard full-spanish
 ####
 ####
-echo "$cinco $fprogram from $fiptables config file with version $fversion" &> $fs
+echo "$cinco $fprogram from $fiptables config file with version: $fversion" &> $fs
 echo $var1  $tabz $spa1 &>> $fs
 echo $var2  $tabz $spa2 &>> $fs
 echo $var3  $tabz $spa3 &>> $fs
