@@ -66,13 +66,16 @@ server_waiting="9"                       ## fwiptables-default ## choose seconds
 favorite_iptables="legacy"               ## fwiptables-default ## legacy or nft or both 
 ####       #### english: ping server for default         #####
 ####       #### spanish: servidor de ping por defecto    #####
-server_ping="fast.com"                   ## fwiptables-default ## default fast.com
+server_ping_ipv4="fast.com"                   ## fwiptables-default ## default fast.com
+server_ping_ipv6="fast.com"                   ## fwiptables-default ## default fast.com
 ####       #### english: traceroute server for default         #####
 ####       #### spanish: servidor de traceroute por defecto    #####
-server_trace="fast.com"                  ## fwiptables-default ## default fast.com
+server_traceroute_ipv4="fast.com"                  ## fwiptables-default ## default fast.com
+server_traceroute_ipv6="fast.com"                  ## fwiptables-default ## default fast.com
 ####       #### english: iperf server for default for test speed                 #####
 ####       #### spanish: servidor de iperf por defecto para testear velocidad    #####
-server_iperf="ping.online.net"           ## fwiptables-default ## default ping.online.net
+server_iperf_ipv4="ping.online.net"           ## fwiptables-default ## default ping.online.net
+server_iperf_ipv6="ping.online.net"           ## fwiptables-default ## default ping.online.net
 ####       #### english: zenity graphic redimension        #####
 ####       #### spanish: redimensiones graficas de zenity  #####
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
@@ -4438,8 +4441,8 @@ exit; fi
 ####
  $fiptables stop
  echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
- echo "$cinco ping -4 -c 5 -A $server_ping"
- timeout -s SIGINT -v $server_waiting $which_ping -4 -c 5 -A $server_ping
+ echo "$cinco ping -4 -c 5 -A $server_ping_ipv4"
+ timeout -s SIGINT -v $server_waiting $which_ping -4 -c 5 -A $server_ping_ipv4
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4468,8 +4471,8 @@ exit; fi
 ####
  $fiptables stop
  echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
- echo "$cinco ping -6 -c 5 -A $server_ping"
- timeout -s SIGINT -v $server_waiting $which_ping -6 -c 5 -A $server_ping
+ echo "$cinco ping -6 -c 5 -A $server_ping_ipv6"
+ timeout -s SIGINT -v $server_waiting $which_ping -6 -c 5 -A $server_ping_ipv6
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -4500,8 +4503,8 @@ exit; fi
 ####
  $fiptables stop
  echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
- echo "$cinco traceroute -4 -T $server_trace"
- timeout -s SIGINT -v $server_waiting $which_traceroute -4 -T $server_trace
+ echo "$cinco traceroute -4 -T $server_traceroute_ipv4"
+ timeout -s SIGINT -v $server_waiting $which_traceroute -4 -T $server_traceroute_ipv4
  echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
  $fiptables continue
  echo $footer_lineal
@@ -4533,8 +4536,8 @@ exit; fi
 ####
  $fiptables stop
  echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
- echo "$cinco traceroute -6 -T $trazador"
- timeout -s SIGINT -v $server_waiting $which_traceroute -6 -T $server_trace
+ echo "$cinco traceroute -6 -T $server_traceroute_ipv6"
+ timeout -s SIGINT -v $server_waiting $which_traceroute -6 -T $server_traceroute_ipv6
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5219,9 +5222,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ Doing bandwidth in ipv4 to $server_iperf ] [ with max $server_waiting seconds ]"
+ echo "$cinco [ Doing bandwidth in ipv4 to $server_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $which_iperf -t 4 -c $server_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $which_iperf -c $server_iperf_ipv4 -t 4 -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5248,9 +5251,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ Doing bandwidth in ipv6 to $server_iperf ] [ with max $server_waiting seconds ]"
+ echo "$cinco [ Doing bandwidth in ipv6 to $server_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $which_iperf -V -t 4 -c $server_iperf -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $which_iperf -c $server_iperf_ipv6 -V -t 4 -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
