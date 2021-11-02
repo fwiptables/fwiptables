@@ -61,8 +61,8 @@ autosave_fwrecover="" ;                  ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
-####       #### english: favorite iptables  for offline, allpermisive, onlyweb
-####       #### spanish: favorito iptables para offline, allpermisive, onlyweb
+####       #### english: favorite iptables  for offline, allpermisive, allweb
+####       #### spanish: favorito iptables para offline, allpermisive, allweb
 favorite_iptables="legacy"               ## fwiptables-default ## legacy or nft or both 
 ####       #### english: ping server for default         
 ####       #### spanish: servidor de ping por defecto    
@@ -172,7 +172,7 @@ mensage_timeout="Closing gui menu in $close_graphicall seconds"
 launch_iptables="no" ;   #  autoconfigure with launch iptables rules
 launch_offline="no" ;    #  autoconfigure with offline rules
 launch_permisive="no" ;  #  autoconfigure with permisive rules
-launch_onlyweb="no" ;    #  autoconfigure with easyrules
+launch_allweb="no" ;    #  autoconfigure with easyrules
 launch_custom="no";      #  autoconfigure with custom rules
 choosed_iptables="no";   #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
@@ -1097,7 +1097,7 @@ exit ; fi
 ##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
 ####
 ####
-####   #### english: The first option: offline, allpermisive, onlyweb or custom           ----  semi silent
+####   #### english: The first option: offline, allpermisive, allweb or custom           ----  semi silent
 ####   #### spanish: El primero:       desconectado, todopermisivo, soloweb o modificado  ----  semi silencioso
 ####
 ####
@@ -1105,14 +1105,14 @@ if [ "$first_option" = "offline" ];      then $give_cover; echo "$cinco  FIREWAL
 launch_iptables=""; launch_offline=""    ; choosed_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allpermisive" ]; then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
 launch_iptables="";  launch_permisive="" ; choosed_iptables="" ; config_variable_version="2"  ;  fi
-if [ "$first_option" = "onlyweb" ];      then $give_cover; echo "$cinco  FIREWALL ONLYWEB" ;
-launch_iptables=""; launch_onlyweb=""    ; choosed_iptables="" ; config_variable_version="2"  ;  fi
+if [ "$first_option" = "allweb" ];      then $give_cover; echo "$cinco  FIREWALL ALLWEB" ;
+launch_iptables=""; launch_allweb=""     ; choosed_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables=""; launch_custom=""     ;  fi
 ####
 ####
-####   #### english: choosed iptables for offline or allpermisive or onlyweb
-####   #### spanish: elegido iptables para offline o allpermisive o onlyweb
+####   #### english: choosed iptables for offline or allpermisive or allweb
+####   #### spanish: elegido iptables para offline o allpermisive o allweb
 ####
 if [ "$choosed_iptables" = "$NULL" ]; then $nada
 case $favorite_iptables in 
@@ -1145,7 +1145,7 @@ echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 n
 echo "$tab" "$tab"  "    use-interface      cli-menu gui-menu gui-shell -text -log -gui           "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                       "
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive onlyweb ..            "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive allweb ..            "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
@@ -1185,7 +1185,7 @@ echo "$tab" "$tab"  "    use-interface      cli-menu gui-menu gui-shell -text -l
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo
 echo "$tab" "$tab"  "______________________                | config options |                     " 
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive onlyweb custom        "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive allweb custom        "
 echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
@@ -5361,7 +5361,7 @@ echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
 echo " allpermisive: Configure a firewall very permisive"
-echo "      onlyweb: Configure a firewall like cliente web"
+echo "      allweb: Configure a firewall like cliente web"
 echo "       custom: Configure one custom firewall, made for you with file.cfg"
 echo
 echo "$cinco         [tool config]"
@@ -5602,7 +5602,7 @@ echo "$cinco         [Lanza reglas de iptables]"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
-echo "      onlyweb: Configura el cortafuegos como cliente web"
+echo "      allweb: Configura el cortafuegos como cliente web"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
 echo
@@ -6593,107 +6593,107 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD \
 ####
 ####
 ####
-########################################     english: ipv4 iptables onlyweb
+########################################     english: ipv4 iptables allweb
 ########################################     spanish: ipv4 iptables soloweb
 ####
 ####
 #### legacy ip4
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
--p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A INPUT \
--p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -A INPUT \
+-p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_onlyweb  $which_iptables_legacy -A OUTPUT \
--p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4 $launch_allweb  $which_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4 $launch_onlyweb  $which_iptables_nft -F &> /dev/null
+$allow_nft $allow_ipv4 $launch_allweb  $which_iptables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4 $launch_allweb  $which_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4 $launch_allweb  $which_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A INPUT \
--p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A INPUT \
--p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4 $launch_allweb  $which_iptables_nft -A INPUT \
+-p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4 $launch_allweb  $which_iptables_nft -A INPUT \
+-p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A OUTPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_onlyweb  $which_iptables_nft -A OUTPUT \
--p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4 $launch_allweb  $which_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4 $launch_allweb  $which_iptables_nft -A OUTPUT \
+-p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables onlyweb
+########################################     english: ipv6 iptables allweb
 ########################################     spanish: ipv6 iptables soloweb
 ####
 ####
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_onlyweb  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6 $launch_allweb  $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6 $launch_allweb  $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6 $launch_allweb  $which_ip6tables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6 $launch_allweb  $which_ip6tables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6 $launch_allweb  $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6 $launch_allweb  $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6 $launch_allweb  $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_onlyweb  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6 $launch_allweb  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
@@ -7067,8 +7067,8 @@ exit ; else $nada ; fi
 if [ "$first_option" = "allpermisive" ]; then $nada
 echo "$cinco [ OK RULES ] [ FIREWALL ALLPERMISIVE ]"
 exit ; else $nada ; fi
-if [ "$first_option" = "onlyweb" ]; then $nada
-echo "$cinco [ OK RULES ] [ FIREWALL ONLYWEB ]"
+if [ "$first_option" = "allweb" ]; then $nada
+echo "$cinco [ OK RULES ] [ FIREWALL ALLWEB ]"
 exit ; else $nada ; fi
 if [ -f "$directory_config/$second_option" ]; then $nada
 echo "$cinco [ OK RULES ] [ FIREWALL CUSTOM ] [$second_option]"
