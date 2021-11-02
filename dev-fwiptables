@@ -128,7 +128,9 @@ ralla="______________________"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$prehead_principal [ $first_option ] $cinco" ;                
+head_principal="$prehead_principal [ $first_option ] $cinco" ;
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+head_default="$cinco [ For default option: $fiptables show-default ]"                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ List usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -191,17 +193,6 @@ license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.tx
 ####
 ####
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
-####
-####
-##############################     english: header_actual: update         ###################################
-##############################     spanish: header_actual: actualizado    ###################################
-####
-####
-####     #### english update option for default in header
-####     #### spanish actualiza la opcion por defecto en la cabecera
-####
-####
-head_default="$cinco [ Option for default: $default_option ] [ See: $fiptables show-default ]"
 ####
 ####
 ##############################       english: Notice Installer            ###################################
