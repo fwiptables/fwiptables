@@ -88,11 +88,11 @@ first_option="$(echo $1 | sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 second_option="$(echo $2 | sed s/\\///g -)" ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-third_option="$(echo $3 | sed s/\\///g -)"  ; 
+third_option="$(echo $3 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-quarter_option="$(echo $4 | sed s/\\///g -)"  ; 
+quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-genfiles="$zero_option regeneration-default"
+genfiles="$zero_option regeneration-default"                        
 #### #### english: whereis path          #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;                                    
 #### #### english: whereis path          #### spanish: donde esta el path
@@ -100,12 +100,12 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.67-Gonzalo" ;                                           
+fversion="1.68" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
-directory_config="/etc/fwiptables" ;          
+directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
 ####  #### spanish: default version de variables sin actualizar por config cfg
-config_variable_version="1" ;                                                                         
+config_variable_version="1" ;                                       
 #### #### english: path to config files  #### spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"             
 #### #### english: path to config files  #### spanish: archivos de configuracion
