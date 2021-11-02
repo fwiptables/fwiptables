@@ -48,7 +48,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
-default_option="basic-options"           ## fwiptables-default ## default: full-options
+default_option="full-options"            ## fwiptables-default ## default: full-options
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
 allow_question="no" ;                    ## fwiptables-default ## void or no
@@ -57,7 +57,7 @@ allow_question="no" ;                    ## fwiptables-default ## void or no
 allow_header="" ;                        ## fwiptables-default ## void or no
 ####       #### english: void to autosave fwrecover or no 
 ####       #### spanish: autoguardar fwrecover o no
-autosave_fwrecover="" ;                ## fwiptables-default ## void or no
+autosave_fwrecover="" ;                  ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds #####
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    #####
 server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
@@ -126,9 +126,9 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] $cinco"
+prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$prehead_principal [ $first_option ] $cinco" ;
+head_principal="$prehead_principal [ $first_option ] " ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ For default option: $fiptables show-default ]"                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1168,7 +1168,8 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List full options ]"
-echo "$tab" "$tab"  "______________________                | Principal options |                  "
+echo "$tab" "$tab"  "   | Group options|                | Principal options |                     "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
@@ -1178,12 +1179,14 @@ echo "$tab" "$tab"  "                       raw-ip4 raw-ip6 mangle-ip4 mangle-ip
 echo "$tab" "$tab"  "                       security-ip4 security-ip6 ebtables arptables          "
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "______________________                | Secondary options |                  " 
+echo
+echo "$tab" "$tab"  "______________________                | config options |                     " 
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive onlyweb custom        "
 echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
-echo "$tab" "$tab"  "______________________                | Third options |                      " 
+echo
+echo "$tab" "$tab"  "______________________                | tool options |                       " 
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
@@ -1192,6 +1195,8 @@ echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp 
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions howto-upgrade            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
+echo
+echo "$tab" "$tab"  "______________________                | show options |                       " 
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
 echo "$tab" "$tab"  "                       resolv.conf show-default modify-default               "
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
@@ -1199,6 +1204,7 @@ echo "$tab" "$tab"  "    show-about         about version depends examples      
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options                    "
 echo "$tab" "$tab"  "                       basic-options full-options                            "
+echo
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
