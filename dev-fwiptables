@@ -48,7 +48,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
-default_option="full-options"            ## fwiptables-default ## default: full-options
+default_option="basic-options"           ## fwiptables-default ## default: full-options
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
 allow_question="no" ;                    ## fwiptables-default ## void or no
@@ -132,7 +132,7 @@ head_principal="$prehead_principal [ $first_option ] $cinco" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ For default option: $fiptables show-default ]"                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_normal="$cinco [ For list usage: $fiptables options ]"
+head_normal="$cinco [ For the list usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$cinco $ralla   $ralla   $ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
