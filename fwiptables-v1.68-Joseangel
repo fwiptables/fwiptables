@@ -48,7 +48,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
-default_option="basic-options"           ## fwiptables-default ## default: full-options
+default_option="full-options"            ## fwiptables-default ## default: full-options
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
 allow_question="no" ;                    ## fwiptables-default ## void or no
@@ -66,16 +66,16 @@ server_waiting="9"                       ## fwiptables-default ## choose seconds
 favorite_iptables="legacy"               ## fwiptables-default ## legacy or nft or both 
 ####       #### english: ping server for default         #####
 ####       #### spanish: servidor de ping por defecto    #####
-server_ping_ipv4="fast.com"                   ## fwiptables-default ## default fast.com
-server_ping_ipv6="fast.com"                   ## fwiptables-default ## default fast.com
+server_ping_ipv4="fast.com"              ## fwiptables-default ## default fast.com
+server_ping_ipv6="fast.com"              ## fwiptables-default ## default fast.com
 ####       #### english: traceroute server for default         #####
 ####       #### spanish: servidor de traceroute por defecto    #####
-server_traceroute_ipv4="fast.com"                  ## fwiptables-default ## default fast.com
-server_traceroute_ipv6="fast.com"                  ## fwiptables-default ## default fast.com
+server_traceroute_ipv4="fast.com"        ## fwiptables-default ## default fast.com
+server_traceroute_ipv6="fast.com"        ## fwiptables-default ## default fast.com
 ####       #### english: iperf server for default for test speed                 #####
 ####       #### spanish: servidor de iperf por defecto para testear velocidad    #####
-server_iperf_ipv4="ping.online.net"           ## fwiptables-default ## default ping.online.net
-server_iperf_ipv6="ping.online.net"           ## fwiptables-default ## default ping.online.net
+server_iperf_ipv4="ping.online.net"      ## fwiptables-default ## default ping.online.net
+server_iperf_ipv6="ping.online.net"      ## fwiptables-default ## default ping.online.net
 ####       #### english: zenity graphic redimension        #####
 ####       #### spanish: redimensiones graficas de zenity  #####
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
@@ -135,7 +135,7 @@ head_principal="$prehead_principal [ $first_option ] " ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ For default option: $fiptables show-default ]"                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_normal="$cinco [ For the list usage: $fiptables options ]"
+head_normal="$cinco [ For the usage list: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$cinco $ralla   $ralla   $ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1145,6 +1145,7 @@ echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 n
 echo "$tab" "$tab"  "    interface          cli-menu gui-menu gui-shell -text -log -gui           "
 echo
 echo "$tab" "$tab"  "______________________               | Other options |                       "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive onlyweb ..            "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
