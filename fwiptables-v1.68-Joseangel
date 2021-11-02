@@ -5264,7 +5264,7 @@ exit; fi
 ############################       spanish: config-eng: varias opciones para configurar en ingles
 ####
 ####
-if [ "$first_option" = "config-eng" ]; then $gefiles
+if [ "$first_option" = "config-eng" ]; then $gefiles; $give_cover
  echo "$cinco [ $first_option ] [ show variables cfg from english configuration ]"
  echo $header_lineal
  cat  $defaultfullcfg_eng
@@ -5276,7 +5276,7 @@ if [ "$first_option" = "config-eng" ]; then $gefiles
 ############################       spanish: config-spa: varias opciones para configurar en spanish
 ####
 ####
- if [ "$first_option" = "config-spa" ]; then $genfiles
+ if [ "$first_option" = "config-spa" ]; then $genfiles; $give_cover
  echo "$cinco [ $first_option ] [ show variables cfg from spanish configuration ]"
  echo $header_lineal
  cat $defaultfullcfg_spa
@@ -5288,7 +5288,7 @@ if [ "$first_option" = "config-eng" ]; then $gefiles
 ############################       spanish: help: la opcion de ayuda en ingles
 ####
 ####
-if [ "$first_option" = "help" ]; then $genfiles
+if [ "$first_option" = "help" ]; then $genfiles ; $give_cover
 echo "$cinco [ $first_option ]  [ Principal options ] $cinco"
 echo
 echo
@@ -5531,7 +5531,7 @@ exit; fi
 ############################       spanish: ayuda: la opcion de ayuda en español
 ####
 ####
-if [ "$first_option" = "ayuda" ]; then $genfiles
+if [ "$first_option" = "ayuda" ]; then $genfiles; $give_cover
 echo "$cinco [ $first_option ] [ Opciones principales ] $cinco"
 echo
 echo "$cinco         [Lanzar guia]"
