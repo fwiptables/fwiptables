@@ -61,6 +61,9 @@ autosave_fwrecover="" ;                ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds #####
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    #####
 server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
+####       #### english: favorite iptables  for offline, allpermisive, onlyweb
+####       #### spanish: favorito iptables para offline, allpermisive, onlyweb
+favorite_iptables="legacy"               ## fwiptables-default ## legacy or nft or both 
 ####       #### english: ping server for default         #####
 ####       #### spanish: servidor de ping por defecto    #####
 server_ping="fast.com"                   ## fwiptables-default ## default fast.com
@@ -166,6 +169,7 @@ launch_offline="no" ;    #  autoconfigure with offline rules
 launch_permisive="no" ;  #  autoconfigure with permisive rules
 launch_onlyweb="no" ;    #  autoconfigure with easyrules
 launch_custom="no";      #  autoconfigure with custom rules
+choosed_iptables="no";   #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
@@ -882,6 +886,8 @@ case "$NULL" in
 *)allow_other_protocols="no";;
 "$autosave_fwrecover");;
 *)autosave_fwrecover="no";;
+"$choosed_iptables");;
+*)choosed_iptables="no";;
 esac
 ####
 ####
@@ -1102,13 +1108,23 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "offline" ];      then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
-launch_iptables=""; launch_offline=""    ;  fi
+launch_iptables=""; launch_offline=""    ; choosed_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allpermisive" ]; then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
-launch_iptables="";  launch_permisive="" ;  fi
+launch_iptables="";  launch_permisive="" ; choosed_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "onlyweb" ];      then $give_cover; echo "$cinco  FIREWALL ONLYWEB" ;
-launch_iptables=""; launch_onlyweb=""    ;  fi
+launch_iptables=""; launch_onlyweb=""    ; choosed_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables=""; launch_custom=""     ;  fi
+####
+####
+####   #### english: choosed iptables for offline or allpermisive or onlyweb
+####   #### spanish: elegido iptables para offline o allpermisive o onlyweb
+####
+if [ "$choosed_iptables" = "$NULL" ]; then $nada
+case $favorite_iptables in 
+"legacy") allow_legacy="" ; allow_nft="no"     ;;
+"nft") allow_nft=""       ; allow_legacy="no"  ;;
+esac; fi
 ####
 ####
 ##############################   english: custom without valid config cfg
@@ -3379,7 +3395,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  case $legacycuatro in
  "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-legacy ]"
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ]"
  $which_iptables_legacy -t filter -v -L
  ;;
  esac
