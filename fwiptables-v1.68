@@ -132,7 +132,7 @@ head_principal="$prehead_principal [ $first_option ] $cinco" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ For default option: $fiptables show-default ]"                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_normal="$cinco [ List usage: $fiptables options ]"
+head_normal="$cinco [ For list usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$cinco $ralla   $ralla   $ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
