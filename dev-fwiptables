@@ -2891,10 +2891,13 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   143  "services" \
   144  "hosts.allow" \
   145  "hosts.deny" \
+  146  "show-default" \
+  147  "modify-default" \
   0150 "$cinco [ Show log registry ] $cinco" \
   151  "log-sudo" \
   152  "log-sshd" \
   153  "log-search" \
+  154  "log-fwiptables" \
   0160 "$cinco [ Show about global options ] $cinco" \
   161  "about" \
   162  "depends" \
@@ -2989,16 +2992,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  87) clear ; $fiptables "ipforward-list" | less ;;
  88) clear ; $fiptables "ipforward-on" | less ;;
  89) clear ; $fiptables "ipforward-off" | less ;;
- 91) resolve="$(dialog --stdout --title "type host to ping" --inputbox "example: fast.com" 0 0)"
- clear ; $fiptables ping-ip4 $resolve ;;
- 92) resolve="$(dialog --stdout --title "type host to ping ipv6" --inputbox "example: fast.com" 0 0)"
- clear ; $fiptables ping-ip6 $resolve ;;
+ 91) clear ; $fiptables ping-ip4 ;;
+ 92) clear ; $fiptables ping-ip6 ;;
  93) clear ; $fiptables speed-ip4 ;;
  94) clear ; $fiptables speed-ip6 ;;
- 101) resolve="$(dialog --stdout --title "type host to traceroute" --inputbox "example: fast.com" 0 0)"
- clear ; $fiptables trace-ip4 $resolve ;;
- 102) resolve="$(dialog --stdout --title "type host to traceroute ipv6" --inputbox "example: fast.com" 0 0)"
- clear ; $fiptables trace-ip6 $resolve;;
+ 101) clear ; $fiptables trace-ip4 ;;
+ 102) clear ; $fiptables trace-ip6 ;;
  103) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables host $resolve ;;
  104) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
@@ -3025,10 +3024,13 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  143) clear ; $fiptables "services" | less ;;
  144) clear ; $fiptables "hosts.allow" | less ;;
  145) clear ; $fiptables "hosts.deny" | less ;;
+ 146) clear ; $fiptables "show-default" 
+ 147) clear ; $fiptables "modify-default"
  151) clear ; $fiptables "log-sudo" | less ;;
  152) clear ; $fiptables "log-sshd" | less ;;
  153) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fiptables "log-search" "$pattern" | less ;;
+ 154) clear ; $fiptables "log-fwiptables" | less ;;
  161) clear ; $fiptables "about" | less ;;
  162) clear ; $fiptables "depends" | less ;;
  163) clear ; $fiptables "examples" | less ;;
