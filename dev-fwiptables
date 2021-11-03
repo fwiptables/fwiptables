@@ -133,7 +133,7 @@ prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal="$prehead_principal [ $first_option ] " ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_default="$cinco [ For default option: $fiptables show-default ]"                
+head_default="$cinco [ For default option: $fiptables show-default ] [ default: $default_option ]"                
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ For the usage list: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -5838,7 +5838,7 @@ fi
 ####
 ####
 if [ $config_variable_version = "2" ]; then $nada
- echo "$cinco [ Runing rules with the actual variables version $config_variable_version ]"
+#### echo "$cinco [ Runing rules with the actual variables version $config_variable_version ]"
 fi 
 ####
 ####
