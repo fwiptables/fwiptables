@@ -3435,11 +3435,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #############################  spanish: filter-ip4: script de sistema, la opcion lista
 ####
 ####
- if [ "$first_option" = "filter-ip4" ]; then $give_cover
+ if [ "$first_option" = "filter-ip4" ]; then $give_cover 
  legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
  "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter ipv4 ]"
  echo $header_lineal
  echo $ralla
@@ -3469,6 +3470,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "forward" ]; then  $give_cover
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1 ) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1 ) &> /dev/null
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 ]"
  echo $header_lineal
  echo $ralla
@@ -3501,6 +3503,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  "$which_ip6tables_legacy" -t filter -L OUTPUT 1 )
  nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
  "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter ipv6 ]"
  echo $header_lineal
  echo $ralla
@@ -3532,6 +3535,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  "$which_ip6tables_legacy" -t filter -L FORWARD 1 ) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1 && \
  "$which_ip6tables_nft" -t filter -L FORWARD 1 ) &> /dev/null
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 ]"
  echo $header_lineal
  echo $ralla
@@ -3562,6 +3566,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "nat-ip4" ]; then  $give_cover
  legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
  nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
  echo $header_lineal
  echo $ralla
@@ -3591,6 +3596,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "nat-ip6" ]; then $give_cover
  legacyseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables nat ipv6 ]"
  echo $header_lineal
  echo $ralla
@@ -3617,11 +3623,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ############################# spanish: listnum: lista numeral filter ipv4
 ####
 ####
-if [ "$first_option" = "listnum" ]; then  $give_cover
-legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
-"$which_iptables_legacy" -t filter -L OUTPUT 1)
-nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
-"$which_iptables_nft" -t filter -L OUTPUT 1 )
+ if [ "$first_option" = "listnum" ]; then  $give_cover
+ legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
+ "$which_iptables_legacy" -t filter -L OUTPUT 1)
+ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
+ "$which_iptables_nft" -t filter -L OUTPUT 1 )
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter ipv4 in numerical ]"
  echo $header_lineal
  echo $ralla
@@ -3651,6 +3658,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  if [ "$first_option" = "forwardnum" ]; then  $give_cover
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 in numerical ]"
  echo $header_lineal
  echo $ralla
@@ -3683,6 +3691,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  "$which_ip6tables_legacy" -t filter -L OUTPUT 1 )
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1 && \
  "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter ipv6 in numerical ]"
  echo $header_lineal
  echo $ralla
@@ -3712,6 +3721,7 @@ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  if [ "$first_option" = "forwardnum6" ]; then  $give_cover
  legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
+ echo $header_ender
  echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 in numerical ]"
  echo $header_lineal
  echo $ralla
