@@ -2837,7 +2837,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   61  "eraserules" \
   62  "offline" \
   63  "allpermisive" \
-  64  "custom cfg" \
+  64  "allweb" \
+  65  "custom cfg" \
   070 "$cinco [ Tool configurations cfg ] $cinco" \
   71  "new-full-config" \
   72  "nueva-completa-config" \
@@ -2904,6 +2905,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   163  "examples" \
   164  "config-eng" \
   165  "config-spa" \
+  166  "license" \
   0170 "$cinco [ Show help global options ] $cinco" \
   171  "basic-options" \
   172  "full-options" \
@@ -2958,7 +2960,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  61) clear ; $fiptables "eraserules" ;;
  62) clear ; $fiptables "offline";;
  63) clear ; $fiptables "allpermisive" ;;
- 64) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 64) clear ; $fiptables "allweb" ;;
+ 65) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fiptables custom $archivo ;;
  71) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
@@ -3024,8 +3027,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  143) clear ; $fiptables "services" | less ;;
  144) clear ; $fiptables "hosts.allow" | less ;;
  145) clear ; $fiptables "hosts.deny" | less ;;
- 146) clear ; $fiptables "show-default" 
- 147) clear ; $fiptables "modify-default"
+ 146) clear ; $fiptables "show-default"   ;;
+ 147) clear ; $fiptables "modify-default" ;;
  151) clear ; $fiptables "log-sudo" | less ;;
  152) clear ; $fiptables "log-sshd" | less ;;
  153) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
@@ -3036,6 +3039,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  163) clear ; $fiptables "examples" | less ;;
  164) clear ; $fiptables "config-eng" | less ;;
  165) clear ; $fiptables "config-spa" | less ;;
+ 166) clear ; $fiptables "license" ;;
  171) clear ; $fiptables "basic-options" ;;
  172) clear ; $fiptables "full-options" | less ;;
  173) clear ; $fiptables "help" | less ;;
