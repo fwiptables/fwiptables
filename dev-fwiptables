@@ -2206,8 +2206,8 @@ echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool config" \
-"06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool install" "11 Show etc" \
-"12 Show log" "13 Show about" "14 Show help" \
+"06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool install" "11 Tool system" \
+ "12 Show etc" "13 Show log" "14 Show about" "15 Show help" \
 --column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
 #### 
 #### 
@@ -2223,10 +2223,11 @@ case "$selection" in
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
 "09 Tool sudo")$fiptables gui-menu-tool-sudo;;
 "10 Tool install")$fiptables gui-menu-tool-install;;
-"11 Show etc")$fiptables gui-menu-show-etc;;
-"12 Show log")$fiptables gui-menu-show-log;;
-"13 Show about")$fiptables gui-menu-show-about;;
-"14 Show help")$fiptables gui-menu-show-help;;
+"11 Tool system")$fiptables gui-menu-tool-system;;
+"12 Show etc")$fiptables gui-menu-show-etc;;
+"13 Show log")$fiptables gui-menu-show-log;;
+"14 Show about")$fiptables gui-menu-show-about;;
+"15 Show help")$fiptables gui-menu-show-help;;
 #### 
 #### 
 *)
@@ -2552,6 +2553,33 @@ case $selection in
 "howto-upgrade")$fiptables -gui howto-upgrade ;;
 "upgrade")$fiptables -gui upgrade ;;
 "new-versions")$fiptables -gui new-versions ;;
+*)
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+esac
+#### 
+#### 
+$fiptables gui-menu
+exit; fi
+####
+####
+############################## english: gui-menu-tool-system: gui with menu ##############################
+############################## spanish: gui-menu-tool-system: gui con menu  ##############################
+####
+####
+if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "ram-free" "ram-speed" "disc-speed" "gl-speed" "radio" \
+--column="Option list $fiptables" --text="Select one option" --title="[Tool System] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu")$fiptables gui-menu ;;
+"ram-free")   $fiptables -gui ram-free ;;
+"ram-speed")  $fiptables -gui ram-speed ;;
+"disc-speed") $fiptables -gui disc-speed ;;
+"gl-speed")   $fiptables -gui gl-speed ;;
+"radio")      $fiptables -gui radio ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -4942,7 +4970,7 @@ $fiptables stop
  echo "$cinco [ $first_option ] [ test gl mesa3D speed ]"
  echo $header_lineal
  case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
- vblank_mode=0 $which_glxgears
+ vblank_mode=0  timeout -s SIGINT -v $server_waiting $which_glxgears
  echo $footer_lineal
  exit; fi
 ####
