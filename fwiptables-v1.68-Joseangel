@@ -48,7 +48,7 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
-default_option="basic-options"           ## fwiptables-default ## default: full-options
+default_option="list"                    ## fwiptables-default ## default: full-options
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
 allow_question="no" ;                    ## fwiptables-default ## void or no
