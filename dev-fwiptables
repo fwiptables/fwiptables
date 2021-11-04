@@ -157,8 +157,9 @@ case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip
 case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$which_ip" -6 route show | grep -i default | head -1) ]" ;; esac
 ####       #### english: to know if there is mac rules #### spanish: saber si hay reglas mac
-rules_filter_ebtables=""; rules_filter_ebtables="$(ebtables -L -t filter | grep -- "-j" | wc -l)"
-rules_nat_ebtables=""   ; rules_nat_ebtables="$(ebtables -L -t nat    | grep -- "-j" | wc -l)"
+which_ebtables="$(which ebtables| cut -d " " -f 1)"
+rules_filter_ebtables=""; rules_filter_ebtables="$($which_ebtables -L -t filter | grep -- "-j" | wc -l)"
+rules_nat_ebtables=""   ; rules_nat_ebtables="$($which_ebtables -L -t nat       | grep -- "-j" | wc -l)"
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
@@ -584,10 +585,10 @@ spa56=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
 var57=$(echo "config_output_maxconnect=72" )
 eng57=$(echo "$cinco max number for output simultaneous connections" )
 spa57=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
-var58=$(echo "config_mac_whitelist=fe80::d611:43fe:fe01:363e,fe80::d610:43fe:fe01:363e" )
+var58=$(echo "config_mac_whitelist=d4:12:43:01:36:2e" )
 eng58=$(echo "$cinco allow this excepcitonal MAC-ADRESS" )
 spa58=$(echo "$cinco permitir estos MAC-ADDRESS excepcionales" )
-var59=$(echo "config_mac_blacklist=fe79::d611:43fe:fe01:363e,fe79::d610:43fe:fe01:362e" )
+var59=$(echo "config_mac_blacklist=d4:12:43:01:36:2e" )
 eng59=$(echo "$cinco drop this excepcional MAC-ADDRESS" )
 spa59=$(echo "$cinco deniega estos MAC-ADDRESS excepcionales" )
 var60=$(echo "config_net_vpn=wesnoth.org,sf.net" )
@@ -3330,6 +3331,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "eraserules" ]; then $give_cover 
  echo $head_principal
  echo $header_lineal
+ $which_ebtables-t filter -F
+ $which_ebtables -t nat -F
  $which_iptables_nft -t filter -F
  $which_ip6tables_nft -t filter  -F
  $which_iptables_legacy -t filter -F
