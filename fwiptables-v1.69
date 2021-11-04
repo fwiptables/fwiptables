@@ -4365,6 +4365,7 @@ $fiptables eraserules &> /dev/null
 #### English: Load all rules
 ####
 ####
+ $which_ebtables-restore $directory_fwrecover/$second_option-ebtables &>> /dev/null
  $which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4 &>> /dev/null
  $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4 &>> /dev/null
  $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 &>> /dev/null
@@ -4389,11 +4390,13 @@ $fiptables eraserules &> /dev/null
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
+ $which_ebtables-save &> $directory_fwrecover/$archivofin-ebtables
  $which_iptables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv4
  $which_iptables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv4
  $which_ip6tables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv6
  $which_ip6tables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv6
  echo "$cinco [ OK FIREWALL SAVED ] [ $archivofin ]"
+ ls -l $directory_fwrecover/$archivofin-ebtables
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
@@ -4414,11 +4417,14 @@ $fiptables eraserules &> /dev/null
  "$NULL") $fiptables names; echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
  *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
  esac
+ ls -l $directory_fwrecover/$archivofin-ebtables
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
  echo "$cinco [ OK FIREWALL LISTED ] [ $archivofin ]"
+ echo "$cincuenta $archivofin-ebtables"
+ cat $directory_fwrecover/$archivofin-ebtables
  echo "$cincuenta $archivofin-nft-ipv4"
  cat $directory_fwrecover/$archivofin-nft-ipv4
  echo "$cincuenta $archivofin-legacy-ipv4"
@@ -4439,10 +4445,13 @@ $fiptables eraserules &> /dev/null
  if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
  echo "$cinco [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
+ $which_ebtables-save &> $directory_fwrecover/last-ebtables
  $which_iptables_nft-save &> $directory_fwrecover/last-nft-ipv4
  $which_iptables_legacy-save &> $directory_fwrecover/last-legacy-ipv4
  $which_ip6tables_nft-save &> $directory_fwrecover/last-nft-ipv6
  $which_ip6tables_legacy-save &> $directory_fwrecover/last-legacy-ipv6
+ echo "$cincuenta ebtables $cinco"
+ cat $directory_fwrecover/last-ebtables
  echo "$cincuenta nft with ipv4 $cinco"
  cat $directory_fwrecover/last-nft-ipv4
  echo "$cincuenta legacy with ipv4 $cinco"
@@ -4469,6 +4478,7 @@ echo $header_lineal
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
+$which_ebtables-save &> $directory_fwrecover/stoped-ebtables
 $which_iptables_nft-save &> $directory_fwrecover/stoped-nft-ipv4
 $which_iptables_legacy-save &> $directory_fwrecover/stoped-legacy-ipv4
 $which_ip6tables_nft-save &> $directory_fwrecover/stoped-nft-ipv6
