@@ -4484,11 +4484,11 @@ echo $header_lineal
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$which_ebtables-save > $directory_fwrecover/fiptables-stoped-ebtables             
-$which_iptables_nft-save > $directory_fwrecover/fiptables-stoped-nft-ipv4         
-$which_iptables_legacy-save > $directory_fwrecover/fiptables-stoped-legacy-ipv4   
-$which_ip6tables_nft-save > $directory_fwrecover/fiptables-stoped-nft-ipv6        
-$which_ip6tables_legacy-save > $directory_fwrecover/fiptables-stoped-legacy-ipv6  
+$which_ebtables-save &> $directory_fwrecover/fiptables-stoped-ebtables             
+$which_iptables_nft-save &> $directory_fwrecover/fiptables-stoped-nft-ipv4         
+$which_iptables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-ipv4   
+$which_ip6tables_nft-save &> $directory_fwrecover/fiptables-stoped-nft-ipv6        
+$which_ip6tables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
