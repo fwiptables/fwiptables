@@ -1049,7 +1049,7 @@ echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/default/fwiptables ]"
 #### 
 #### 
 echo "$cinco [ Launch $fiptables to run / TYPE :] [ $fiptables ]" 
-echo "$cinco [ OK FIREWALL INSTALLED ] [ $directory_fiptables/$fiptables ]"
+echo "$rallica [ OK FIREWALL INSTALLED ] [ $directory_fiptables/$fiptables ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -1060,8 +1060,8 @@ exit; fi
 ####
 if [ "$first_option" = "upgrade" ]; then $nada
 $give_cover
-echo "$cinco [ Upgrade $fiptables in $directory_fiptables ]"
-echo "$cincuenta [ Web upgrade ] $cinco"
+echo "$cinco [ upgrade ] [ upgrade $fiptables at last version for web ]"
+echo "$cinco [ upgrade $fiptables in $directory_fiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$cinco [ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
@@ -1077,8 +1077,8 @@ echo "$cinco [ Waiting several seconds .. ]"
 download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
  | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
  | cut -d "(" -f 1 | sed s/" "//g)"
-download_ruta="$fweb_files/$download_version/download/"
-echo $download_ruta
+download_ruta="$fweb_files$download_version/download/"
+echo "$rallica [ Downloading.. $download_ruta ]"
 echo "$cinco [ Waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_files"/"$download_version"/download &> "/tmp/$fiptables"
 #### $favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
@@ -1089,11 +1089,7 @@ chmod ugo+rx /tmp/$fiptables &> /dev/null
 #### Spanish: lanza instalacion
 ####
 ####
-installer_now=0; /tmp/$fiptables install && installer_now=1
-if [ "installer_now" = "1" ]; then
-echo "$cinco [ $fprogram ] [ Version $fversion ] [ Upgraded: OK ]"
-echo "$cinco [ OK FIREWALL UPGRADED ] [ $directory_fiptables/$fiptables ]"
-else echo "$cinco [ FAIL: ] [ FIREWALL NOT UPGRADED ]"; fi
+/tmp/$fiptables install
 echo $footer_lineal
 exit ; fi
 ####
