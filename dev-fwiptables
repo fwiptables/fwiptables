@@ -3331,7 +3331,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "eraserules" ]; then $give_cover 
  echo $head_principal
  echo $header_lineal
- $which_ebtables-t filter -F
+ $which_ebtables -t filter -F
  $which_ebtables -t nat -F
  $which_iptables_nft -t filter -F
  $which_ip6tables_nft -t filter  -F
@@ -4365,17 +4365,18 @@ exit; fi
 #### English: Load all rules mac
 ####
 ####
- if [ -f $directory_fwrecover/$second_option-ebtables ]; then $nada
- $which_ebtables-restore $directory_fwrecover/$second_option-ebtables &>> /dev/null ; fi
+####  if [ -f $directory_fwrecover/$second_option-ebtables ]; then $nada
+#### $which_ebtables-restore $directory_fwrecover/$second_option-ebtables &>> /dev/null ; fi
 ####
 ####
 #### English: Load all rules ip
 ####
 ####
- $which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4 &>> /dev/null
- $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4 &>> /dev/null
- $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 &>> /dev/null
- $which_ip6tables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv6 &>> /dev/null
+ cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore            &>> /dev/null
+ cat $directory_fwrecover/$second_option-nft-ipv4 |  $which_iptables_nft-restore       &>> /dev/null
+ cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  &>> /dev/null
+ cat $directory_fwrecover/$second_option-nft-ipv6 | $which_ip6tables_nft-restore       &>> /dev/null
+ cat $directory_fwrecover/$second_option-legacy-ipv6 | $which_ip6tables_legacy-restore &>> /dev/null
  echo "$cinco [ OK FIREWALL LOADED ] [ $second_option ]"
  else
  $fiptables names
@@ -4396,11 +4397,11 @@ exit; fi
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
- $which_ebtables-save &> $directory_fwrecover/$archivofin-ebtables
- $which_iptables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv4
- $which_iptables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv4
- $which_ip6tables_nft-save &> $directory_fwrecover/$archivofin-nft-ipv6
- $which_ip6tables_legacy-save &> $directory_fwrecover/$archivofin-legacy-ipv6
+ $which_ebtables-save           > $directory_fwrecover/$archivofin-ebtables      &>> /dev/null
+ $which_iptables_nft-save       > $directory_fwrecover/$archivofin-nft-ipv4      &>> /dev/null
+ $which_iptables_legacy-save    > $directory_fwrecover/$archivofin-legacy-ipv4   &>> /dev/null
+ $which_ip6tables_nft-save      > $directory_fwrecover/$archivofin-nft-ipv6      &>> /dev/null
+ $which_ip6tables_legacy-save   > $directory_fwrecover/$archivofin-legacy-ipv6   &>> /dev/null
  echo "$cinco [ OK FIREWALL SAVED ] [ $archivofin ]"
  ls -l $directory_fwrecover/$archivofin-ebtables
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
