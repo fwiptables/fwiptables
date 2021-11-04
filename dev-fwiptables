@@ -156,7 +156,9 @@ case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip
 #### english: default route ipv6 #### english: routa por defecto ipv6
 case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$which_ip" -6 route show | grep -i default | head -1) ]" ;; esac
-####       #### english: zenity dimensions    #### spanish: dimensiones de zenity
+####       #### english: to know if there is mac rules #### spanish: saber si hay reglas mac
+rules_ebtables=""; rules_ebtables="$(ebtables -L | grep -- "-j" | wc -l)"
+####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
 close_graphicall="1"
@@ -329,15 +331,19 @@ if [ "$first_option" = "options" ]; then first_option="full-options"; fi
 ##############################     spanish: header_actual cabeceras  ###################################
 ####
 ####
+
+####
+####
 #### clear
 if [ "$first_option" = "header" ] ; then
 if [ "$allow_header" = "no" ]   ; then echo "$head_normal" 
 else 
-echo $head_principal 
-echo $head_default 
-echo $head_normal 
-echo $default_route_cuatro 
-echo $default_route_seis 
+echo $head_principal
+echo $head_default
+echo $head_normal
+echo $default_route_cuatro
+echo $default_route_seis
+if [ "$rules_ebtables" != "0" ]; then echo "$cinco [ whith ebtables configured mac rules ]"; fi
 echo $header_ender
 fi ; exit ; fi
 ####
