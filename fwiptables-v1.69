@@ -381,6 +381,7 @@ config_input_state="new,related,stablished" ;
 config_output_state="new,related,stablished" ;
 config_input_bandwidth="12512" ; config_output_bandwidth="512" ;
 config_input_maxconnect="72" ; config_output_maxconnect="72" ;
+config_mac_whitelist="" ; config_mac_blacklist=""
 config_net_vpn="wesnoth.org" ; config_net_blacklist="yandex.com" ;
 config_output_uid="root" ; config_output_gid="root" ;
 config_others_protocols="icmp,igmp" ;
@@ -575,39 +576,45 @@ spa56=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
 var57=$(echo "config_output_maxconnect=72" )
 eng57=$(echo "$cinco max number for output simultaneous connections" )
 spa57=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
-var58=$(echo "config_net_vpn=wesnoth.org,sf.net" )
-eng58=$(echo "$cinco allow this excepcitonal host" )
-spa58=$(echo "$cinco permitir estos host excepcionales" )
-var59=$(echo "config_net_blacklist=facebook.com,www.facebook.com" )
-eng59=$(echo "$cinco drop this excepcional host" )
-spa59=$(echo "$cinco deniega estos host excepcionales" )
-var60=$(echo "config_output_uid=root" )
-eng60=$(echo "$cinco allow out packages excepcional from this user excepcional" )
-spa60=$(echo "$cinco permite salida de paquetes de este usuario excepcional" )
-var61=$(echo "config_output_gid=root" )
-eng61=$(echo "$cinco allow out packages excepcional from this group excepcional" )
-spa61=$(echo "$cinco permite salida de paquetes de este grupo excepcional" )
-var62=$(echo "config_others_protocols=icmp,igmp" )
-eng62=$(echo "$cinco allow others protocols from /etc/protocolos" )
-spa62=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
-var63=$(echo "$cinco NET CLIENT AND NET SERVER #" )
-eng63=$(echo "$cinco Net to connect like client or server" )
-spa63=$(echo "$cinco Red para conectar como cliente o server" )
-var64=$(echo "net_ipv4_client=0/0" )
-eng64=$(echo "$cinco the net to client ipv4, all is 0/0" )
-spa64=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
-var65=$(echo "net_ipv4_server=0/0" )
-eng65=$(echo "$cinco the net to server ipv4, all is 0/0" )
-spa65=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
-var66=$(echo "net_ipv6_client=::/0" )
-eng66=$(echo "$cinco the net to client ipv6, all is ::/0" )
-spa66=$(echo "$cinco la red cual cliente ipv6, todos es ::/0" )
-var67=$(echo "net_ipv6_server=::/0" )
-eng67=$(echo "$cinco the net to server ipv6, all is ::/0" )
-spa67=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
-var68=$(echo "$cinco #" )
-eng68=$(echo "$cinco .......... END Optional options .......... .......... #")
-spa68=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
+var58=$(echo "config_mac_whitelist=fe80::d611:43fe:fe01:363e,fe80::d610:43fe:fe01:363e" )
+eng58=$(echo "$cinco allow this excepcitonal MAC-ADRESS" )
+spa58=$(echo "$cinco permitir estos MAC-ADDRESS excepcionales" )
+var59=$(echo "config_mac_blacklist=fe79::d611:43fe:fe01:363e,fe79::d610:43fe:fe01:362e" )
+eng59=$(echo "$cinco drop this excepcional MAC-ADDRESS" )
+spa59=$(echo "$cinco deniega estos MAC-ADDRESS excepcionales" )
+var60=$(echo "config_net_vpn=wesnoth.org,sf.net" )
+eng60=$(echo "$cinco allow this excepcitonal HOST/IP" )
+spa60=$(echo "$cinco permitir estos HOST/IP excepcionales" )
+var61=$(echo "config_net_blacklist=facebook.com,www.facebook.com" )
+eng61=$(echo "$cinco drop this excepcional HOST/IP" )
+spa61=$(echo "$cinco deniega estos HOST/IP excepcionales" )
+var62=$(echo "config_output_uid=root" )
+eng62=$(echo "$cinco allow out packages excepcional from this USER excepcional" )
+spa62=$(echo "$cinco permite salida de paquetes de este USUARIO excepcional" )
+var63=$(echo "config_output_gid=root" )
+eng63=$(echo "$cinco allow out packages excepcional from this GROUP excepcional" )
+spa63=$(echo "$cinco permite salida de paquetes de este GRUPO excepcional" )
+var64=$(echo "config_others_protocols=icmp,igmp" )
+eng64=$(echo "$cinco allow others protocols from /etc/protocolos" )
+spa64=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
+var65=$(echo "$cinco NET CLIENT AND NET SERVER #" )
+eng65=$(echo "$cinco Net to connect like client or server" )
+spa65=$(echo "$cinco Red para conectar como cliente o server" )
+var66=$(echo "net_ipv4_client=0/0" )
+eng66=$(echo "$cinco the net to client ipv4, all is 0/0" )
+spa66=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
+var67=$(echo "net_ipv4_server=0/0" )
+eng67=$(echo "$cinco the net to server ipv4, all is 0/0" )
+spa67=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
+var68=$(echo "net_ipv6_client=::/0" )
+eng68=$(echo "$cinco the net to client ipv6, all is ::/0" )
+spa68=$(echo "$cinco la red cual cliente ipv6, todos es ::/0" )
+var69=$(echo "net_ipv6_server=::/0" )
+eng69=$(echo "$cinco the net to server ipv6, all is ::/0" )
+spa69=$(echo "$cinco la red cual servidor ipv6, todos es ::/0" )
+var70=$(echo "$cinco #" )
+eng70=$(echo "$cinco .......... END Optional options .......... .......... #")
+spa70=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
 ####
 ####
 ##############################   english: continue with autogen defaults configs cfg
@@ -757,6 +764,8 @@ echo $var65 $tabz $eng65 &>> $fe
 echo $var66 $tabz $eng66 &>> $fe
 echo $var67 $tabz $eng67 &>> $fe
 echo $var68 $tabz $eng68 &>> $fe
+echo $var69 $tabz $eng69 &>> $fe
+echo $var70 $tabz $eng70 &>> $fe
 ####
 ####
 #### wizard full-spanish
@@ -829,6 +838,8 @@ echo $var65 $tabz $eng65 &>> $fs
 echo $var66 $tabz $eng66 &>> $fs
 echo $var67 $tabz $eng67 &>> $fs
 echo $var68 $tabz $eng68 &>> $fs
+echo $var69 $tabz $eng69 &>> $fs
+echo $var70 $tabz $eng70 &>> $fs
 exit 0
 fi
 ####
@@ -5331,7 +5342,7 @@ exit; fi
 ############################       spanish: config-eng: varias opciones para configurar en ingles
 ####
 ####
-if [ "$first_option" = "config-eng" ]; then $gefiles; $give_cover
+if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo "$cinco [ $first_option ] [ show variables cfg from english configuration ]"
  echo $header_lineal
  cat  $defaultfullcfg_eng
