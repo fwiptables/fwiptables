@@ -6,7 +6,7 @@
 ####
 ####
 ####     #### english: whereis path     #### spanish: donde esta el path
-directory_fiptables="/usr/bin" ;
+directory_fiptables="/usr/bin" ; 
 ####
 ####
 ####     #### english: program name     #### spanish: nombre de el programa
