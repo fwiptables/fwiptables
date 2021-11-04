@@ -4365,18 +4365,17 @@ exit; fi
 #### English: Load all rules mac
 ####
 ####
-####  if [ -f $directory_fwrecover/$second_option-ebtables ]; then $nada
-#### $which_ebtables-restore $directory_fwrecover/$second_option-ebtables &>> /dev/null ; fi
+ if [ -f $directory_fwrecover/$second_option-ebtables ]; then $nada
+ cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore  ; fi
 ####
 ####
 #### English: Load all rules ip
 ####
 ####
- cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore            &>> /dev/null
- cat $directory_fwrecover/$second_option-nft-ipv4 |  $which_iptables_nft-restore       &>> /dev/null
- cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  &>> /dev/null
- cat $directory_fwrecover/$second_option-nft-ipv6 | $which_ip6tables_nft-restore       &>> /dev/null
- cat $directory_fwrecover/$second_option-legacy-ipv6 | $which_ip6tables_legacy-restore &>> /dev/null
+ cat $directory_fwrecover/$second_option-nft-ipv4 |  $which_iptables_nft-restore       
+ cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  
+ cat $directory_fwrecover/$second_option-nft-ipv6 | $which_ip6tables_nft-restore       
+ cat $directory_fwrecover/$second_option-legacy-ipv6 | $which_ip6tables_legacy-restore 
  echo "$cinco [ OK FIREWALL LOADED ] [ $second_option ]"
  else
  $fiptables names
@@ -4397,11 +4396,11 @@ exit; fi
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
- $which_ebtables-save           > $directory_fwrecover/$archivofin-ebtables      &>> /dev/null
- $which_iptables_nft-save       > $directory_fwrecover/$archivofin-nft-ipv4      &>> /dev/null
- $which_iptables_legacy-save    > $directory_fwrecover/$archivofin-legacy-ipv4   &>> /dev/null
- $which_ip6tables_nft-save      > $directory_fwrecover/$archivofin-nft-ipv6      &>> /dev/null
- $which_ip6tables_legacy-save   > $directory_fwrecover/$archivofin-legacy-ipv6   &>> /dev/null
+ $which_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables     
+ $which_iptables_nft-save       &> $directory_fwrecover/$archivofin-nft-ipv4     
+ $which_iptables_legacy-save    &> $directory_fwrecover/$archivofin-legacy-ipv4  
+ $which_ip6tables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv6     
+ $which_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6  
  echo "$cinco [ OK FIREWALL SAVED ] [ $archivofin ]"
  ls -l $directory_fwrecover/$archivofin-ebtables
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
@@ -4452,21 +4451,21 @@ exit; fi
  if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
  echo "$cinco [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
- $which_ebtables-save           > $directory_fwrecover/$last-ebtables      &>> /dev/null
- $which_iptables_nft-save       > $directory_fwrecover/$last-nft-ipv4      &>> /dev/null
- $which_iptables_legacy-save    > $directory_fwrecover/$last-legacy-ipv4   &>> /dev/null
- $which_ip6tables_nft-save      > $directory_fwrecover/$last-nft-ipv6      &>> /dev/null
- $which_ip6tables_legacy-save   > $directory_fwrecover/$last-legacy-ipv6   &>> /dev/null
+ $which_ebtables-save           &> $directory_fwrecover/fiptables-actual-ebtables   
+ $which_iptables_nft-save       &> $directory_fwrecover/fiptables-actual-nft-ipv4   
+ $which_iptables_legacy-save    &> $directory_fwrecover/fiptables-actual-legacy-ipv4
+ $which_ip6tables_nft-save      &> $directory_fwrecover/fiptables-actual-nft-ipv6   
+ $which_ip6tables_legacy-save   &> $directory_fwrecover/fiptables-actual-legacy-ipv6
  echo "$cincuenta ebtables $cinco"
- cat $directory_fwrecover/last-ebtables
+ cat $directory_fwrecover/fiptables-actual-ebtables
  echo "$cincuenta nft with ipv4 $cinco"
- cat $directory_fwrecover/last-nft-ipv4
+ cat $directory_fwrecover/fiptables-actual-nft-ipv4
  echo "$cincuenta legacy with ipv4 $cinco"
- cat $directory_fwrecover/last-legacy-ipv4
+ cat $directory_fwrecover/fiptables-actual-legacy-ipv4
  echo "$cincuenta nft with ipv6 $cinco"
- cat $directory_fwrecover/last-nft-ipv6
+ cat $directory_fwrecover/fiptables-actual-nft-ipv6
  echo "$cincuenta legacy with ipv6 $cinco"
- cat $directory_fwrecover/last-legacy-ipv6
+ cat $directory_fwrecover/fiptables-actual-legacy-ipv6
  echo "$cinco  [ OK FIREWALL READED ACTUAL ]"
  echo $footer_lineal
  exit; fi
@@ -4485,11 +4484,11 @@ echo $header_lineal
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$which_ebtables-save &> $directory_fwrecover/stoped-ebtables
-$which_iptables_nft-save &> $directory_fwrecover/stoped-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/stoped-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/stoped-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/stoped-legacy-ipv6
+$which_ebtables-save > $directory_fwrecover/fiptables-stoped-ebtables             
+$which_iptables_nft-save > $directory_fwrecover/fiptables-stoped-nft-ipv4         
+$which_iptables_legacy-save > $directory_fwrecover/fiptables-stoped-legacy-ipv4   
+$which_ip6tables_nft-save > $directory_fwrecover/fiptables-stoped-nft-ipv6        
+$which_ip6tables_legacy-save > $directory_fwrecover/fiptables-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -4505,22 +4504,23 @@ exit; fi
 ##############################       spanish: continue: continua el firewall
 ####
 ####
-if [ "$first_option" = "continue" ]; then $nada
-echo $head_principal
-echo "$cinco [ $first_option ] [ Continue the stoped firewall ]"
-echo $header_lineal
+ if [ "$first_option" = "continue" ]; then $nada
+ echo $head_principal
+ echo "$cinco [ $first_option ] [ Continue the stoped firewall ]"
+ echo $header_lineal
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-$which_iptables_nft-restore  $directory_fwrecover/stoped-nft-ipv4
-$which_iptables_legacy-restore  $directory_fwrecover/stoped-legacy-ipv4
-$which_ip6tables_nft-restore  $directory_fwrecover/stoped-nft-ipv6
-$which_ip6tables_legacy-restore $directory_fwrecover/stoped-legacy-ipv6
-echo "$cinco [ OK FIREWALL CONTINUED ]"
-echo $footer_lineal
-exit; fi
+ cat $directory_fwrecover/fiptables-stoped-ebtables | $which_ebtables-restore
+ cat $directory_fwrecover/fiptables-stoped-nft-ipv4 | $which_iptables_nft-restore  
+ cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $which_iptables_legacy-restore  
+ cat $directory_fwrecover/fiptables-stoped-nft-ipv6 | $which_ip6tables_nft-restore  
+ cat $directory_fwrecover/fiptables-stoped-legacy-ipv6 | $which_ip6tables_legacy-restore  
+ echo "$cinco [ OK FIREWALL CONTINUED ]"
+ echo $footer_lineal
+ exit; fi
 ####
 ####
 ############################       english: ping-ip4: ping icmp with ipv4
