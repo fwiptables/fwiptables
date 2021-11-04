@@ -3488,6 +3488,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_iptables_nft -t filter -v -L
  ;;
  esac
+####
+####
+ if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
+ echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
+ if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
+ echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
+####
+####
  echo $footer_lineal
  exit; fi
 ####
@@ -3551,6 +3559,16 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ip6tables_nft -v -L
  ;;
  esac
+####
+####
+####
+####
+ if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
+ echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
+ if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
+ echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
+####
+####
  echo $footer_lineal
  exit; fi
 ####
@@ -3614,6 +3632,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_iptables_nft -t nat -v -L 
  ;;
  esac
+####
+####
+ if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
+ echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
+ if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
+ echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
+####
+####
  echo $footer_lineal
  exit; fi
 ####
@@ -3644,6 +3670,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ip6tables_nft -t nat -v -L 
  ;;
  esac
+####
+####
+ if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
+ echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
+ if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
+ echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
+####
+####
  echo $footer_lineal
  exit; fi
 ####
@@ -3676,6 +3710,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_iptables_nft -v -n -L
  ;;
  esac
+####
+####
+ if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
+ echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
+ if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
+ echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
+####
+####
  echo $footer_lineal
  exit; fi
 ####
@@ -3739,6 +3781,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ip6tables_nft -v -n -L
  ;;
  esac
+####
+####
+ if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
+ echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
+ if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
+ echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
+####
+####
  echo $footer_lineal
  exit; fi
 ####
