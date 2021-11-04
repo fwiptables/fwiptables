@@ -4346,26 +4346,32 @@ exit; fi
 #### English: Void in second option
 ####
 ####
-if [ "second_option" = "$NULL" ]; then
-$fiptables names; echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]" ; exit ; fi
+ if [ "second_option" = "$NULL" ]; then
+ $fiptables names; echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
 ####
 ####
-if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
+ if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 ####
 ####
 #### English: Remove all rules
 ####
 ####
-$fiptables eraserules &> /dev/null
+ $fiptables eraserules &> /dev/null
 ####
 ####
-#### English: Load all rules
+#### English: Load all rules mac
 ####
 ####
- $which_ebtables-restore $directory_fwrecover/$second_option-ebtables &>> /dev/null
+ if [ -f $directory_fwrecover/$second_option-ebtables ]; then $nada
+ $which_ebtables-restore $directory_fwrecover/$second_option-ebtables &>> /dev/null ; fi
+####
+####
+#### English: Load all rules ip
+####
+####
  $which_iptables_nft-restore $directory_fwrecover/$second_option-nft-ipv4 &>> /dev/null
  $which_iptables_legacy-restore $directory_fwrecover/$second_option-legacy-ipv4 &>> /dev/null
  $which_ip6tables_nft-restore $directory_fwrecover/$second_option-nft-ipv6 &>> /dev/null
@@ -5879,16 +5885,19 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####           Knowed now sure that:         launch_iptables=""                               ###############
+####           Knowed now sure that:         launch_iptables=""                                 ###############
+####                                                                                            ###############
+###############################################################################################################
+###############################################################################################################
+####                                                                                            ###############
+####          ready to launch rules ..                                                          ###############
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
 ####                                                                                            ###############
-####  english:                               only for:                                          ###############
-####  spanish:                               solo para:                                         ###############
-####  english: Options for launch rules:     offline or allpermisive or custom or [config.cfg ] ###############
-####  spanish: Opciones para lanzar reglas:  offline o allpermisive o custom o [config.cfg ]    ###############
+####  english: Options for launch rules:     offline allpermisive allweb custom                 ###############
+####  spanish: Opciones para lanzar reglas:  offline allpermisive allweb custom                 ###############
 ####                                                                                            ###############
 ####                                                                                            ###############
 ###############################################################################################################
@@ -5958,6 +5967,15 @@ if [ "$allow_output_uid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 ####
 ####
+###############################################################################################################
+###############################################################################################################
+####                                                                                            ###############
+####          launching rules ..                                                                ###############
+####                                                                                            ###############
+###############################################################################################################
+###############################################################################################################
+####
+####
 ############################       english: iptables rules ipv4  iptables-legacy
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
@@ -5998,7 +6016,19 @@ $which_iptables_nft -t filter -F
 $which_ip6tables_nft -t filter -F
 ####
 ####
-#######################################        english: Accept localhost rules
+#######################################        english: ebtables mac rules
+#######################################        spanish: ebtables mac rules
+####
+####
+$allow_mac_whitelist $which_ebtables -A INPUT  -s $config_mac_whitelist  -j ACCEPT &> /dev/null
+$allow_mac_whitelist $which_ebtables -A OUTPUT -d $config_mac_whitelist  -j ACCEPT &> /dev/null
+####
+####
+$allow_mac_blacklist $which_ebtables -A INPUT  -s $config_mac_blacklist  -j DROP   &> /dev/null
+$allow_mac_blacklist $which_ebtables -A OUTPUT -d $config_mac_blacklist  -j DROP   &> /dev/null
+####
+####
+#######################################        english: Accept  localhost rules
 #######################################        spanish: aceptar reglas localhost
 ####
 ####
