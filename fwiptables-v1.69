@@ -5962,8 +5962,16 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
 ####
+#### english: ebtables mac filter and mac nat erased
+#### spanish: ebtables mac filtros y mac nat borrados
+####
+####
 #### english:  Ipv4 filter legacy rules erased
 #### spanish:  Borrardo de filtros ipv4
+####
+####
+$which_ebtables -t filter -F
+$which_ebtables -t nat -F
 ####
 ####
 #### english: Erase nft rules ipv4
