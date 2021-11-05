@@ -52,7 +52,7 @@ default_option="basic-options"           ## fwiptables-default ## default: full-
 ####       #### english: allow for all predefined firewall except cfg y wizard
 ####       #### spanish: permitir para todos los predefinidos cortafuegos excepto cfg y wizard
 allow_legacy=""                          ## fwiptables-default ## void or no
-allow_nft=""                             ## fwiptables-default ## void or no
+allow_nft="no"                           ## fwiptables-default ## void or no
 allow_ipv4=""                            ## fwiptables-default ## void or no
 allow_ipv6=""                            ## fwiptables-default ## void or no
 ####       #### english: allow questions to answer: yes
