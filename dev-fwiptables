@@ -49,22 +49,26 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
 default_option="basic-options"           ## fwiptables-default ## default: full-options
+####       #### english: allow netfilter legacy and nft for all firewall
+####       #### spanish: permitir netfilter legacy and nft para todos los cortafuegos
+allow_legacy=""                          ## fwiptables-default ## void or no
+allow_nft=""                             ## fwiptables-default ## void or no
+####       #### english: allow ipv4 and ipv6 for all firewall
+####       #### spanish: permitir ipv4 and ipv6 para todos los cortafuegos
+allow_ipv4=""                            ## fwiptables-default ## void or no
+allow_ipv6=""                            ## fwiptables-default ## void or no
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
-allow_question="no" ;                    ## fwiptables-default ## void or no
+allow_question="no"                      ## fwiptables-default ## void or no
 ####       #### english: allow info header in each option    
 ####       #### spanish: permitir informacion de cabecera en cada opcion
-allow_header="" ;                        ## fwiptables-default ## void or no
+allow_header=""                          ## fwiptables-default ## void or no
 ####       #### english: void to autosave fwrecover or no 
 ####       #### spanish: autoguardar fwrecover o no
-autosave_fwrecover="" ;                  ## fwiptables-default ## void or no
+autosave_fwrecover=""                    ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
-####       #### english: favorite iptables  for system firewall
-####       #### spanish: favorito iptables para firewall del sistema
-favorite_iptables_netfilter="nft"        ## fwiptables-default ## legacy or nft or both 
-favorite_iptables_protocol="ip4"         ## fwiptables-default ## ip4 or ip6 or both
 ####       #### english: ping server for default         
 ####       #### spanish: servidor de ping por defecto    
 server_ping_ipv4="fast.com"              ## fwiptables-default ## default fast.com
@@ -181,7 +185,6 @@ launch_allweb="no" ;    #  autoconfigure with web rules
 launch_custom="no";      #  autoconfigure with custom rules
 launch_allssh="no" ;    #  autoconfigure with web and ssh rules
 launch_gamesudp="no" ;    #  autoconfigure with games udp non-root rules
-favorite_iptables_elect="no";   #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
@@ -193,6 +196,39 @@ fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 ####       #### english: [Program license] #### spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+####
+####
+############################## english: variables: variables to declare     ##############################
+############################## spanish: variables: variables para declarar  ##############################
+####
+####
+allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
+client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
+server_tcp="" ; server_udp="" ; 
+logserver_tcp="no" ; logserver_udp="no" ;
+logserver_prefix_input="fwlog-input::" ; 
+logserver_prefix_output="fwlog-output::" ;
+allow_gateway_ip4="no" ; allow_gateway_ip6="no" ;
+allow_forward_ip4="no" ; allow_forward_ip6="no" ; 
+allow_input_all="no" ; allow_output_all="no" ; 
+allow_input_state="no" ; allow_output_state="no" ;
+allow_input_bandwidth="no" ; allow_output_bandwidth="no" ;
+allow_input_maxconnect="no" ; allow_output_maxconnect="no" ;
+allow_input_ping="no" ; allow_output_ping="no" ;
+allow_mac_whitelist="no" ; allow_mac_blacklist="no" ; 
+allow_net_vpn="no" ; allow_net_blacklist="no" ;
+allow_output_uid="no" ; allow_output_gid="no" ;
+allow_others_protocols="no" ;
+config_input_state="new,related,stablished" ;
+config_output_state="new,related,stablished" ;
+config_input_bandwidth="12512" ; config_output_bandwidth="512" ;
+config_input_maxconnect="72" ; config_output_maxconnect="72" ;
+config_mac_whitelist="" ; config_mac_blacklist=""
+config_net_vpn="wesnoth.org" ; config_net_blacklist="yandex.com" ;
+config_output_uid="root" ; config_output_gid="root" ;
+config_others_protocols="icmp,igmp" ;
+net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
+net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
 ##############################       english: Update variables             ################################### 
@@ -366,39 +402,6 @@ echo "$ralla"
 echo "$cincuenta  Be root to work $fiptables"
 echo $footer_lineal
 exit ; fi
-####
-####
-############################## english: variables: variables to declare     ##############################
-############################## spanish: variables: variables para declarar  ##############################
-####
-####
-allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
-client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
-server_tcp="" ; server_udp="" ; 
-logserver_tcp="no" ; logserver_udp="no" ;
-logserver_prefix_input="fwlog-input::" ; 
-logserver_prefix_output="fwlog-output::" ;
-allow_gateway_ip4="no" ; allow_gateway_ip6="no" ;
-allow_forward_ip4="no" ; allow_forward_ip6="no" ; 
-allow_input_all="no" ; allow_output_all="no" ; 
-allow_input_state="no" ; allow_output_state="no" ;
-allow_input_bandwidth="no" ; allow_output_bandwidth="no" ;
-allow_input_maxconnect="no" ; allow_output_maxconnect="no" ;
-allow_input_ping="no" ; allow_output_ping="no" ;
-allow_mac_whitelist="no" ; allow_mac_blacklist="no" ; 
-allow_net_vpn="no" ; allow_net_blacklist="no" ;
-allow_output_uid="no" ; allow_output_gid="no" ;
-allow_others_protocols="no" ;
-config_input_state="new,related,stablished" ;
-config_output_state="new,related,stablished" ;
-config_input_bandwidth="12512" ; config_output_bandwidth="512" ;
-config_input_maxconnect="72" ; config_output_maxconnect="72" ;
-config_mac_whitelist="" ; config_mac_blacklist=""
-config_net_vpn="wesnoth.org" ; config_net_blacklist="yandex.com" ;
-config_output_uid="root" ; config_output_gid="root" ;
-config_others_protocols="icmp,igmp" ;
-net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
-net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
 ##################################### english: regeneration-default: regen files       #####################################
@@ -1137,37 +1140,17 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "offline" ];      then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
-launch_iptables=""; launch_offline=""    ; favorite_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables="" ; launch_offline=""    ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allpermisive" ]; then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
-launch_iptables="";  launch_permisive="" ; favorite_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables="" ;  launch_permisive="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allweb" ];      then $give_cover; echo "$cinco  FIREWALL ALLWEB" ;
-launch_iptables=""; launch_allweb=""     ; favorite_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables="" ; launch_allweb=""     ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allssh" ];      then $give_cover; echo "$cinco  FIREWALL ALLSSH" ;
-launch_iptables=""; launch_allssh=""     ; favorite_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables="" ; launch_allssh=""     ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "gamesudp" ];      then $give_cover; echo "$cinco  FIREWALL GAMESUDP" ;
-launch_iptables=""; launch_gamesudp=""   ; favorite_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables="" ; launch_gamesudp=""   ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
-launch_iptables=""; launch_custom=""     ;  fi
-####
-####
-####   #### english: choosed iptables for firewall of system
-####   #### spanish: elegido iptables para cortafuegos del sistema
-####
-if [ "$favorite_iptables" = "" ]; then $nada
-case "$favorite_iptables_netfilter" in 
-"legacy") allow_legacy="" ; allow_nft="no"     ;;
-"nft") allow_nft=""       ; allow_legacy="no"  ;;
-else) allow_legacy="" ; allow_nft="" ;; esac ; fi
-####
-####
-####   #### english: choosed iptables for firewall of system
-####   #### spanish: elegido iptables para cortafuegos del sistema
-####
-if [ "$choosed_iptables" = "" ]; then $nada
-case "$favorite_iptables_protocol" in 
-"ip4") allow_ipv4="" ; allow_ipv6="no"     ;;
-"ip6") allow_ipv6="" ; allow_ipv4="no"  ;;
-else) allow_legacy="" ; allow_nft="" ;; esac ; fi
+launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 ####
 ####
 ##############################   english: custom without valid config cfg
@@ -5555,7 +5538,7 @@ echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "      offline: Disconected for all servers and clients except localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "       allweb: Configure a firewall like web client"
-echo "    allssh: Configure a firewall like web client and ssh client"
+echo "       allssh: Configure a firewall like web client and ssh client"
 echo "     gamesudp: Configure a firewall like games udp non-root games"
 echo "       custom: Configure one custom firewall, made for you with file.cfg"
 echo
@@ -5798,7 +5781,7 @@ echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
 echo "       allweb: Configura el cortafuegos como cliente web"
-echo "    allssh: Configura el cortafuegos como cliente web y cliente ssh"
+echo "       allssh: Configura el cortafuegos como cliente web y cliente ssh"
 echo "    games-udp: Configura el cortafuegos como cliente juegos udp no-root"
 echo " allpermisive: Configura el cortafuegos muy permisivo"
 echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
@@ -6012,32 +5995,32 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ####
 ####
 if [ "$first_option" = "allpermisive" ]; then 
-$allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -F &> /dev/null
+$which_iptables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 $input_state  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -A FORWARD \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -F &> /dev/null
+$which_iptables_nft -F &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4   $which_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4   $which_iptables_nft -A INPUT \
 $input_state -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A FORWARD \
+$allow_nft $allow_ipv4   $which_iptables_nft -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
@@ -6048,32 +6031,32 @@ $allow_nft $allow_ipv4 $launch_permisive  $which_iptables_nft -A FORWARD \
 #### legacy ip6
 ####
 ####
-$allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -F &> /dev/null
+$which_ip6tables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT  \
+$allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A INPUT \
+$allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 $input_state -j ACCEPT &> /dev/null
-$allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -j ACCEPT &> /dev/null
-$allow_legacy $allow_ipv6 $launch_permisive  $which_ip6tables_legacy -A FORWARD \
+$allow_legacy $allow_ipv6   $which_ip6tables_legacy -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6   $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT   \
+$allow_nft $allow_ipv6   $which_ip6tables_nft -A INPUT   \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A INPUT   \
+$allow_nft $allow_ipv6   $which_ip6tables_nft -A INPUT   \
 $input_state -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A OUTPUT  \
+$allow_nft $allow_ipv6   $which_ip6tables_nft -A OUTPUT  \
 -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD \
+$allow_nft $allow_ipv6   $which_ip6tables_nft -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
@@ -6103,7 +6086,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "allweb" ]; then 
-$allow_legacy  $allow_ipv4   $which_iptables_legacy -F &> /dev/null
+$which_iptables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6127,7 +6110,7 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4   $which_iptables_nft -F &> /dev/null
+$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6155,7 +6138,7 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -F &> /dev/null
+$which_ip6tables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
@@ -6179,7 +6162,7 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT \
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6   $which_ip6tables_nft -F &> /dev/null
+$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
@@ -6225,7 +6208,7 @@ echo "$cinco [ OK RULES ] [ FIREWALL ALLWEB ]" ; exit ; fi
 ####
 ####
 if [ "$first_option" = "allssh" ]; then 
-$allow_legacy  $allow_ipv4   $which_iptables_legacy -F &> /dev/null
+$which_iptables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6249,7 +6232,7 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4   $which_iptables_nft -F &> /dev/null
+$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6277,7 +6260,7 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -F &> /dev/null
+$which_ip6tables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
@@ -6301,7 +6284,7 @@ $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6  $which_ip6tables_nft -F &> /dev/null
+$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
@@ -6334,7 +6317,7 @@ $allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> 
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
 $allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
-$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OUTPUT -j DROP        &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
@@ -6351,7 +6334,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gamesudp" ]; then 
-$allow_legacy  $allow_ipv4  $which_iptables_legacy -F &> /dev/null
+$which_iptables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
@@ -6361,27 +6344,27 @@ $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
--p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p udp -m multiport --sports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
--p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
--p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
+-p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4   $which_iptables_nft -F &> /dev/null
+$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6390,22 +6373,22 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
--p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p udp -m multiport --sports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
--p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
--p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
+-p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables gamesudp
@@ -6415,7 +6398,7 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -F &> /dev/null
+$which_ip6tables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
@@ -6424,28 +6407,28 @@ $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
--p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
+-p udp -m multiport --sports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
+-p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6  $which_ip6tables_nft -F &> /dev/null
+$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
@@ -6454,22 +6437,22 @@ $allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
--p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
+-p udp -m multiport --sports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --dports domain,bootpc,ntp,https,1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 #### english: close #### spanish cierra 
@@ -6501,7 +6484,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "offline" ]; then
-$allow_legacy $allow_ipv4  $which_iptables_legacy -F &> /dev/null
+$which_iptables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy $allow_ipv4  $which_iptables_legacy -A INPUT  \
@@ -6513,7 +6496,7 @@ $allow_legacy $allow_ipv4  $which_iptables_legacy -A OUTPUT \
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -F &> /dev/null
+$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv4   $which_iptables_nft -A INPUT   \
@@ -6529,7 +6512,7 @@ $allow_nft $allow_ipv4   $which_iptables_nft -A OUTPUT  \
 #### legacy ip6
 ####
 ####
-$allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -F &> /dev/null
+$which_ip6tables_legacy -F &> /dev/null
 ####
 ####
 $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT  \
@@ -6541,7 +6524,7 @@ $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -F &> /dev/null
+$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv6   $which_ip6tables_nft -A INPUT  \
