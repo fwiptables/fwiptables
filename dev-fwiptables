@@ -6,7 +6,7 @@
 ####
 ####
 ####     #### english: whereis path     #### spanish: donde esta el path
-directory_fiptables="/usr/bin" ; 
+directory_fiptables="/usr/bin" ;
 ####
 ####
 ####     #### english: program name     #### spanish: nombre de el programa
@@ -106,7 +106,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.69-Jaime" ;                                             
+fversion="1.70" ;                                                   
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
