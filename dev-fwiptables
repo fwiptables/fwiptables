@@ -6817,6 +6817,7 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD \
 #### legacy ip4
 ####
 ####
+if [ "$first_option" = "gamesudp" ]; then 
 $allow_legacy  $allow_ipv4 "$launch_allweb"  $which_iptables_legacy -F &> /dev/null
 ####
 ####
@@ -6914,6 +6915,17 @@ $allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
+fi
+####
+####
 ########################################     english: ipv4 iptables allssh
 ########################################     spanish: ipv4 iptables todossh
 ####
@@ -6921,6 +6933,7 @@ $allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
 #### legacy ip4
 ####
 ####
+if [ "$first_option" = "allssh" ]; then 
 $allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -F &> /dev/null
 ####
 ####
@@ -7016,6 +7029,20 @@ $allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
+####
+####
+#### english: close #### spanish cierra 
+####
+####
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
+fi
 ####
 ####
 ########################################     english: ipv4 iptables gamesudp
@@ -7147,17 +7174,17 @@ $allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-#### english: close #### spanish cierra
+#### english: close #### spanish cierra 
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A INPUT -j DROP         &> /dev/null
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
 fi
 ########################################     english: ipv4 iptables offline
 ########################################     spanish: ipv4 iptables desconectado
