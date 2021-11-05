@@ -6745,6 +6745,7 @@ $allow_legacy $allow_ipv6 $allow_gateway_ipv6 $which_ip6tables_legacy -t nat \
 #### legacy ip4
 ####
 ####
+if [ "$first_option" = "allpermisive" ]; then 
 $allow_legacy  $allow_ipv4 $launch_permisive  $which_iptables_legacy -F &> /dev/null
 ####
 ####
@@ -6810,6 +6811,17 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+exit; fi
+####
+####
 ########################################     english: ipv4 iptables allweb
 ########################################     spanish: ipv4 iptables todoweb
 ####
@@ -6817,7 +6829,7 @@ $allow_nft $allow_ipv6 $launch_permisive  $which_ip6tables_nft -A FORWARD \
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "gamesudp" ]; then 
+if [ "$first_option" = "allweb" ]; then 
 $allow_legacy  $allow_ipv4 "$launch_allweb"  $which_iptables_legacy -F &> /dev/null
 ####
 ####
@@ -6870,48 +6882,48 @@ $allow_nft  $allow_ipv4 "$launch_allweb"  $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6   $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
 ####
@@ -6922,8 +6934,8 @@ $allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
-fi
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+exit; fi
 ####
 ####
 ########################################     english: ipv4 iptables allssh
@@ -6934,48 +6946,48 @@ fi
 ####
 ####
 if [ "$first_option" = "allssh" ]; then 
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 "$launch_allssh"  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4 "$launch_allssh"  $which_iptables_nft -F &> /dev/null
+$allow_nft $allow_ipv4   $which_iptables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
@@ -6986,48 +6998,48 @@ $allow_nft  $allow_ipv4 "$launch_allssh"  $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 "$launch_allssh"  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6  $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 "$launch_allssh"  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
@@ -7041,8 +7053,8 @@ $allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
-fi
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+exit; fi
 ####
 ####
 ########################################     english: ipv4 iptables gamesudp
@@ -7053,60 +7065,60 @@ fi
 ####
 ####
 if [ "$first_option" = "gamesudp" ]; then 
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A INPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4 $launch_gamesudp  $which_iptables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
 ####
 ####
-$allow_nft $allow_ipv4 $launch_gamesudp  $which_iptables_nft -F &> /dev/null
+$allow_nft $allow_ipv4   $which_iptables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A INPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A OUTPUT \
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
@@ -7117,60 +7129,60 @@ $allow_nft  $allow_ipv4 $launch_gamesudp  $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -F &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A INPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
 ####
 ####
-$allow_nft $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -F &> /dev/null
+$allow_nft $allow_ipv6  $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
 -p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6 $launch_gamesudp  $which_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
@@ -7184,8 +7196,10 @@ $allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OTUPUT -j DROP       &> /dev/null
-fi
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+exit; fi
+####
+####
 ########################################     english: ipv4 iptables offline
 ########################################     spanish: ipv4 iptables desconectado
 ####
@@ -7193,12 +7207,13 @@ fi
 #### legacy ip4
 ####
 ####
-$allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -F &> /dev/null
+if [ "$first_option" = "offline" ]; then
+$allow_legacy $allow_ipv4  $which_iptables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A INPUT  \
+$allow_legacy $allow_ipv4  $which_iptables_legacy -A INPUT  \
 -s 127.0.0.1 -d 127.0.0.1   -j ACCEPT &> /dev/null
-$allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A OUTPUT \
+$allow_legacy $allow_ipv4  $which_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
@@ -7208,9 +7223,9 @@ $allow_legacy $allow_ipv4 $launch_offline  $which_iptables_legacy -A OUTPUT \
 $allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -F &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A INPUT   \
+$allow_nft $allow_ipv4   $which_iptables_nft -A INPUT   \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A OUTPUT  \
+$allow_nft $allow_ipv4   $which_iptables_nft -A OUTPUT  \
 -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 ####
 ####
@@ -7224,9 +7239,9 @@ $allow_nft $allow_ipv4 $launch_offline  $which_iptables_nft -A OUTPUT  \
 $allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -F &> /dev/null
 ####
 ####
-$allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A INPUT  \
+$allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A OUTPUT \
+$allow_legacy $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
@@ -7236,10 +7251,21 @@ $allow_legacy $allow_ipv6 $launch_offline  $which_ip6tables_legacy -A OUTPUT \
 $allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -F &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A INPUT  \
+$allow_nft $allow_ipv6   $which_ip6tables_nft -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $launch_offline  $which_ip6tables_nft -A OUTPUT \
+$allow_nft $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+exit; fi
 ####
 ####
 ######################################## english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
