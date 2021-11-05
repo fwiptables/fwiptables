@@ -3197,6 +3197,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "examples" ]; then $give_cover
  echo "$cinco [ $first_option ] [ Show examples for $fiptables ]"
  echo $header_lineal
+ echo "[ examples ] [ examples for some services in client mode ]"
+ echo
 ####
 ####
 #### config: web example ####
@@ -3204,8 +3206,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  echo
  echo "# config web example #" 
- echo "client_tcp=http,https ;"
- echo "client_udp=domain,ntp,bootpc,http ;"
+ echo "config_client_tcp=http,https ;"
+ echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  games example  ####
@@ -3213,8 +3215,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  echo
  echo "# config games example #"
- echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
- echo "client_tcp=http,https"
+ echo "config_client_udp=domain,bootpc,ntp,https,1025:65499; "
+ echo "config_client_tcp=http,https"
 ####
 ####
 #### config: wesnoth game example ####
@@ -3222,94 +3224,102 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  echo
  echo "# config web example #" 
- echo "client_tcp=http,https,14995:15000 ;"
- echo "client_udp=domain,ntp,bootpc,http ;"
+ echo "config_client_tcp=http,https,14995:15000 ;"
+ echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 ####
-#### config:  torrent-example1.cfg ####
+#### config:  torrent-example1 ####
 ####
 ####
  echo
  echo "# config torrent example #"
- echo "client_udp=domain,bootpc,ntp,https,1025:65499; "
- echo "client_tcp=http,https"
+ echo "config_client_udp=domain,bootpc,ntp,https,1025:65499; "
+ echo "config_client_tcp=http,https"
 ####
 ####
-#### config: samba-example1.cfg ####
+#### config: samba-example1 ####
 ####
 ####
  echo
  echo "# config samba example #"
- echo "client_udp=domain,bootpc,ntp,https,137:139 ; "
- echo "client_tcp=http,https,ipp,microsoft-ds"
+ echo "config_client_udp=domain,bootpc,ntp,https,137:139 ; "
+ echo "config_client_tcp=http,https,ipp,microsoft-ds"
  echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
-#### config: vpn-sample1.cfg ##
+#### config: server gateway masquerade ##
 ####
 ####
  echo
  echo "# config vpn example #"
- echo "allow_forward= ; "
+ echo "allow_gateway_ip4= ; "
+####
+####
+#### config: vpn-sample1 ##
+####
+####
+ echo
+ echo "# config vpn example #"
+ echo "allow_forward_ip4= ; "
  echo "allow_net_vpn= ; "
- echo "vpn=wesnoth.org,sourceforge.net"
+ echo "config_net_vpn=wesnoth.org,sourceforge.net"
 ####
 ####
-#### config: email-example1.cfg ####
+#### config: email-example1 ####
 ####
 ####
  echo
  echo "# config email example #"
- echo "client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
+ echo "config_client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 ####
 ####
-#### config: ssh-example1.cfg ####
+#### config: ssh-example1 ####
 ####
 ####
  echo
  echo "# config ssh example #"
- echo "client_tcp=http,https,printer,ipp,ssh,rsync,git"
+ echo "config_client_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 ####
-#### config: vnc-example1.cfg ####
+#### config: vnc-example1 ####
 ####
 ####
  echo
  echo "# config vnc example #"
- echo "client_tcp=http,https,ssh,5900:5910"
+ echo "config_client_tcp=http,https,ssh,5900:5910"
 ####
 ####
-#### config: ftp-example1.cfg ##
+#### config: ftp-example1 ####
 ####
 ####
  echo
  echo "# config ftp example #"
- echo "client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
- echo "client_udp=domain,bootpc,ntp,https,tftp"
+ echo "config_client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
+ echo "config_client_udp=domain,bootpc,ntp,https,tftp"
 ####
 ####
-#### config: printer-example1.cfg ####
+#### config: printer-example1 ####
 ####
 ####
  echo
  echo "# config printer example #"
- echo "client_tcp=http,https,ipp,printer"
+ echo "config_client_tcp=http,https,ipp,printer"
 ####
 ####
-#### config: irc-example1.cfg ####
+#### config: irc-example1 ####
 ####
 ####
  echo
  echo "# config irc example #"
- echo "client_tcp=http,https,ircd,ircs-u"
+ echo "config_client_tcp=http,https,ircd,ircs-u"
 ####
 ####
-#### config: sql-example1.cfg ####
+#### config: sql-example1 ####
 ####
 ####
  echo
  echo "# config sql example #"
- echo "client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
+ echo "config_client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 ####
  echo $footer_lineal
