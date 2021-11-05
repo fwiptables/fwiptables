@@ -1237,7 +1237,7 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo
 echo "$tab" "$tab"  "______________________                | config options |                     " 
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
-echo "$tab" "$tab"  "                       allweb allshh gamesudp                                "
+echo "$tab" "$tab"  "                       allweb allssh gamesudp                                "
 echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
