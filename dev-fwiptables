@@ -63,8 +63,8 @@ autosave_fwrecover="" ;                  ## fwiptables-default ## void or no
 server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
 ####       #### english: favorite iptables  for system firewall
 ####       #### spanish: favorito iptables para firewall del sistema
-favorite_iptables_netfilter="both"     ## fwiptables-default ## legacy or nft or both 
-favorite_iptables_protocol="both"         ## fwiptables-default ## ip4 or ip6 or both
+favorite_iptables_netfilter="nft"        ## fwiptables-default ## legacy or nft or both 
+favorite_iptables_protocol="ip4"         ## fwiptables-default ## ip4 or ip6 or both
 ####       #### english: ping server for default         
 ####       #### spanish: servidor de ping por defecto    
 server_ping_ipv4="fast.com"              ## fwiptables-default ## default fast.com
@@ -104,7 +104,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.70" ;                                                   
+fversion="1.69-Jaime" ;                                             
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -179,9 +179,9 @@ launch_offline="no" ;    #  autoconfigure with offline rules
 launch_permisive="no" ;  #  autoconfigure with permisive rules
 launch_allweb="no" ;    #  autoconfigure with web rules
 launch_custom="no";      #  autoconfigure with custom rules
-choosed_iptables="no";   #  autoconfigure with custom rules
 launch_allssh="no" ;    #  autoconfigure with web and ssh rules
 launch_gamesudp="no" ;    #  autoconfigure with games udp non-root rules
+favorite_iptables_elect="no";   #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
@@ -1137,15 +1137,15 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "offline" ];      then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
-launch_iptables=""; launch_offline=""    ; choosed_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables=""; launch_offline=""    ; favorite_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allpermisive" ]; then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
-launch_iptables="";  launch_permisive="" ; choosed_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables="";  launch_permisive="" ; favorite_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allweb" ];      then $give_cover; echo "$cinco  FIREWALL ALLWEB" ;
-launch_iptables=""; launch_allweb=""     ; choosed_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables=""; launch_allweb=""     ; favorite_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "allssh" ];      then $give_cover; echo "$cinco  FIREWALL ALLSSH" ;
-launch_iptables=""; launch_allssh=""     ; choosed_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables=""; launch_allssh=""     ; favorite_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "gamesudp" ];      then $give_cover; echo "$cinco  FIREWALL GAMESUDP" ;
-launch_iptables=""; launch_gamesudp=""     ; choosed_iptables="" ; config_variable_version="2"  ;  fi
+launch_iptables=""; launch_gamesudp=""   ; favorite_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables=""; launch_custom=""     ;  fi
 ####
@@ -1153,21 +1153,21 @@ launch_iptables=""; launch_custom=""     ;  fi
 ####   #### english: choosed iptables for firewall of system
 ####   #### spanish: elegido iptables para cortafuegos del sistema
 ####
-if [ "$choosed_iptables" = "$NULL" ]; then $nada
-case $favorite_iptables_netfilter in 
+if [ "$favorite_iptables" = "" ]; then $nada
+case "$favorite_iptables_netfilter" in 
 "legacy") allow_legacy="" ; allow_nft="no"     ;;
 "nft") allow_nft=""       ; allow_legacy="no"  ;;
-*) allow_legacy="" ; allow_nft="" ;; esac ; fi
+else) allow_legacy="" ; allow_nft="" ;; esac ; fi
 ####
 ####
 ####   #### english: choosed iptables for firewall of system
 ####   #### spanish: elegido iptables para cortafuegos del sistema
 ####
-if [ "$choosed_iptables" = "$NULL" ]; then $nada
-case $favorite_iptables_protocol in 
+if [ "$choosed_iptables" = "" ]; then $nada
+case "$favorite_iptables_protocol" in 
 "ip4") allow_ipv4="" ; allow_ipv6="no"     ;;
 "ip6") allow_ipv6="" ; allow_ipv4="no"  ;;
-*) allow_legacy="" ; allow_nft="" ;; esac ; fi
+else) allow_legacy="" ; allow_nft="" ;; esac ; fi
 ####
 ####
 ##############################   english: custom without valid config cfg
