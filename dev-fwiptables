@@ -140,7 +140,7 @@ head_default="$cinco [ For default option: $fiptables show-default ] [ default: 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ For the usage list:  $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_ender="$ralla $ralla   $ralla   $ralla"      
+header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_lineal="$ralla   $ralla   $ralla"                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -3662,7 +3662,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  case $legacycuatro in
  "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ NAT ] $ralla  "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] $ralla  "
  $which_iptables_legacy -t nat -v -L
  ;;
  esac
@@ -3670,7 +3670,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  case $nftcuatro in 
  "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] [ NAT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] $ralla "
  $which_iptables_nft -t nat -v -L 
  ;;
  esac
@@ -3700,7 +3700,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  case $legacyseis in
  "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ]  [ NAT ] $ralla "
+ echo "$rallica [ With rules xtables ] [ iptables-legacy ] $ralla "
  $which_ip6tables_legacy -t nat -v -L 
  ;;
  esac
@@ -3708,7 +3708,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  case $nftseis in
  "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ]  [ NAT ] $ralla "
+ echo "$rallica [ With rules nftables ] [ iptables-nft ] $ralla "
  $which_ip6tables_nft -t nat -v -L 
  ;;
  esac
