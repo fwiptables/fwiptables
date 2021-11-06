@@ -1129,8 +1129,8 @@ echo $footer_lineal
 exit ; fi
 ####
 ####
-##############################      english: launch-rules: The first options: offline, custom or allpermisive     #####################
-##############################      spanish: launch-rules: Primeras opciones: offline, custom or allpermisive     #####################
+##############################      english: ready system rules con its option               #####################
+##############################      spanish: preprara reglas del sistema con sus opciones    #####################
 ####
 ####
 ####   #### english: The first option: firewall of system  
@@ -1168,15 +1168,15 @@ echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$cinco [ $first_option ] [ List basic options ]"
-echo "$tab" "$tab" "______________________                | Principal options |                   "
+echo "$tab" "$tab"  "                       ______________| Principal options |___________________"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4  ..        "
 echo "$tab" "$tab"  "    use-interface      cli-menu gui-menu gui-shell -text -log -gui           "
 echo
-echo "$tab" "$tab"  "______________________               | Other options |                       "
+echo "$tab" "$tab"  "                       ______________| Other options |_______________________"
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
-echo "$tab" "$tab"  "                       allweb allssh gamesudp                             "
+echo "$tab" "$tab"  "                       allweb allssh gamesudp                                "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
@@ -1184,9 +1184,11 @@ echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alia
 echo "$tab" "$tab"  "    show-etc           show-default modify-default ..                        "
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          full-options long-help help ayuda options  ..         "
+echo "$tab" "$tab"  
+echo "$tab" "$tab"  "And too: tool-cfg tool-forward tool-nmap tool-install tool-system show-log   " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
-echo 
+echo "$tab" "$tab"  
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :#      $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
@@ -1434,9 +1436,13 @@ echo "      offline: Firewall disconected for all servers and clients except loc
 echo "             : Firewall desconectado para todo servidores y clientes excepto localhost"
 echo " allpermisive: Configure a firewall very permisive"
 echo "             : Configura un firewall muy permisivo"
-echo "     only-web: Configure a firewall like cliente web"
-echo "             : Configura un firewall cliente web"
-echo "   cfg-custom: Alias a custom"
+echo "       allweb: Configure a firewall like client web"
+echo "             : Configura un firewall como cliente web"
+echo "       allssh: Configure a firewall like client ssh"
+echo "             : Configura un firewall como cliente ssh"
+echo "     gamesudp: Configure a firewall like client games for udp non-root"
+echo "             : Configura un firewall como cliente juegos udp no-root"
+echo "          cfg: Alias a custom"
 echo "             : Apodo a custom"
 echo "       custom: Configure one custom firewall with one file cfg"
 echo "             : Configura un modificado firewall con un archivo cfg"
