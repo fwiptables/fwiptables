@@ -140,7 +140,7 @@ head_default="$cinco [ For default option: $fiptables show-default ] [ default: 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ For the usage list:  $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_ender="$cinco $ralla   $ralla   $ralla"      
+header_ender="$ralla $ralla   $ralla   $ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_lineal="$ralla   $ralla   $ralla"                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -375,7 +375,10 @@ if [ "$first_option" = "options" ]; then first_option="full-options"; fi
 ####
 #### clear
 if [ "$first_option" = "header" ] ; then
-if [ "$allow_header" = "no" ]   ; then echo "$head_normal" 
+if [ "$allow_header" = "no" ]   ; then 
+echo "$head_normal" 
+if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
+if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 else 
 echo $head_principal
 echo $head_default
@@ -1167,7 +1170,7 @@ echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ####
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List basic options ]"
+echo "$ralla [ $first_option ] [ List basic options ]"
 echo "$tab" "$tab"  "                       ______________| Principal options |___________________"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
@@ -1205,7 +1208,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List full options ]"
+echo "$ralla [ $first_option ] [ List full options ]"
 echo "$tab" "$tab"  "   | Group options|                | Principal options |                     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -1343,7 +1346,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-config" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List configs cfg ]"
+echo "$ralla [ $first_option ] [ List configs cfg ]"
 echo "$cinco $tab [English:] [list configs files in cfg format]"
 echo "$cinco $tab [Spanish:] [Lista de archivos de configuraciones en cfg formato]"
 ls -1 $directory_config/
@@ -1357,7 +1360,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "some-example" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List examples ]"
+echo "$ralla [ $first_option ] [ List examples ]"
 echo "$cinco         [list examples]"
 echo "$cinco         [Lista ejemplos]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1376,7 +1379,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "group-options" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List options ]"
+echo "$ralla [ $first_option ] [ List options ]"
 echo "$cinco         [List option]"
 echo "$cinco         [Lista opcion]"
 echo
@@ -1430,7 +1433,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "launch-rules" ]; then $give_cover
-echo "$cinco [ $first_option ] [ launch rules ]"
+echo "$ralla [ $first_option ] [ launch rules ]"
 echo "$cinco         [Launch iptables rules]"
 echo "$cinco         [Lanza reglas de iptables]"
 echo
@@ -1459,7 +1462,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "control-rules" ]; then $give_cover
-echo "$cinco [ $first_option ] [ control rules ]"
+echo "$ralla [ $first_option ] [ control rules ]"
 echo "$cinco         [Control iptables rules]"
 echo "$cinco         [Controla reglas de iptables]"
 echo
@@ -1490,7 +1493,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-rules" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List rules ]"
+echo "$ralla [ $first_option ] [ List rules ]"
 echo "$cinco         [List filter iptables rules]"
 echo "$cinco         [Lista reglas de iptables filtros]"
 echo
@@ -1554,7 +1557,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-numrules" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List rules in numerical ]"
+echo "$ralla [ $first_option ] [ List rules in numerical ]"
 echo "$cinco         [List iptables numerical rules]"
 echo "$cinco         [Lista reglas numericas de iptables]"
 echo
@@ -1576,7 +1579,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-cfg" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool config ]"
+echo "$ralla [ $first_option ] [ tool config ]"
 echo "$cinco         [Tool configs]"
 echo "$cinco         [Herramienta de configuraciones]"
 echo
@@ -1605,7 +1608,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "control-guide" ]; then $give_cover
-echo "$cinco [ $first_option ] [ control guide ]"
+echo "$ralla [ $first_option ] [ control guide ]"
 echo "$cinco         [Control guide]" 
 echo "$cinco         [Control guia]"
 echo
@@ -1626,7 +1629,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "use-interface" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool interface ]"
+echo "$ralla [ $first_option ] [ tool interface ]"
 echo "$cinco         [control interface]" 
 echo "$cinco         [control de interfaz]"
 echo
@@ -1657,7 +1660,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool sockets ]"
+echo "$ralla [ $first_option ] [ tool sockets ]"
 echo "$cinco         [Tool sockets]"
 echo "$cinco         [Herramienta de sockets]"
 echo
@@ -1684,7 +1687,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool forward ]"
+echo "$ralla [ $first_option ] [ tool forward ]"
 echo "$cinco         [Tool forward]"
 echo "$cinco         [Herramienta de ipforwading]"
 echo
@@ -1703,7 +1706,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool icmp ]"
+echo "$ralla [ $first_option ] [ tool icmp ]"
 echo "$cinco         [Tool icmp]"
 echo "$cinco         [Herramienta icmp]"
 echo
@@ -1725,7 +1728,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool tcp ]"
+echo "$ralla [ $first_option ] [ tool tcp ]"
 echo "$cinco         [Tool tcp]"
 echo "$cinco         [Herramienta tcp]"
 echo
@@ -1750,7 +1753,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool nmap ]"
+echo "$ralla [ $first_option ] [ tool nmap ]"
 echo "$cinco         [Tool nmap]"
 echo "$cinco         [Herramienta nmap]"
 echo
@@ -1773,7 +1776,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool sudo $fiptables ]"
+echo "$ralla [ $first_option ] [ tool sudo $fiptables ]"
 echo "$cinco         [Tool sudo]"
 echo "$cinco         [Herramienta sudo]"
 echo
@@ -1794,7 +1797,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool install $fiptables ]"
+echo "$ralla [ $first_option ] [ tool install $fiptables ]"
 echo "$cinco         [Tool install]"
 echo "$cinco         [Herramienta instalar]"
 echo
@@ -1815,7 +1818,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
-echo "$cinco [ $first_option ] [ tool system ]"
+echo "$ralla [ $first_option ] [ tool system ]"
 echo "$cinco         [Tool system]"
 echo "$cinco         [Herramienta systema]"
 echo
@@ -1838,7 +1841,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
-echo "$cinco [ $first_option ] [ show etc files ]"
+echo "$ralla [ $first_option ] [ show etc files ]"
 echo "$cinco         [Show etc]"
 echo "$cinco         [Mostrar etc]"
 echo
@@ -1867,7 +1870,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
-echo "$cinco [ $first_option ] [ show log files ]"
+echo "$ralla [ $first_option ] [ show log files ]"
 echo "$cinco         [Show log]"
 echo "$cinco         [Mostrar log]"
 echo
@@ -1890,7 +1893,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
-echo "$cinco [ $first_option ] [ show about $fiptables ]"
+echo "$ralla [ $first_option ] [ show about $fiptables ]"
 echo "$cinco         [Show about]"
 echo "$cinco         [Mostrar acerca de]"
 echo
@@ -1917,7 +1920,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
-echo "$cinco [ $first_option ] [ show help ]"
+echo "$ralla [ $first_option ] [ show help ]"
 echo "$cinco         [Show help]"
 echo "$cinco         [Mostrar ayuda]"
 echo
@@ -1946,7 +1949,7 @@ echo $footer_lineal
 ####
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List notes about $fiptables ]"
+echo "$ralla [ $first_option ] [ List notes about $fiptables ]"
 echo
 echo "$cinco [ net vpn ]  [ virtual private network ] [ whitelist ]"
 echo "$cinco [ net vpnn ] [ red privada virtual ]     [ lista blanca ]"
@@ -2007,7 +2010,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
-echo "$cinco [ $first_option ] [ List programs depends about $fiptables ]"
+echo "$ralla [ $first_option ] [ List programs depends about $fiptables ]"
 echo $ralla
 echo "$cinco It are all the depends to full work in $fiptables $fversion"
 echo $ralla
@@ -3159,7 +3162,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "version" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show version about $fiptables ]"
+ echo "$ralla [ $first_option ] [ Show version about $fiptables ]"
  echo $header_lineal
  echo
  echo "$tab [Name program]"
@@ -3196,7 +3199,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "examples" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show examples for $fiptables ]"
+ echo "$ralla [ $first_option ] [ Show examples for $fiptables ]"
  echo $header_lineal
  echo "[ examples ] [ examples for some services in client mode ]"
  echo
@@ -3332,7 +3335,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "license" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show license from git sourceforge for $fiptables ]"
+ echo "$ralla [ $first_option ] [ Show license from git sourceforge for $fiptables ]"
  echo $header_lineal
  echo "license text for gpl v2 downloading .."
  echo "$ralla" "$ralla" "$ralla"
@@ -3346,7 +3349,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show howto upgrade $fiptables ]"
+ echo "$ralla [ $first_option ] [ Show howto upgrade $fiptables ]"
  echo $header_lineal
  echo "The actually version is: $fiptables $fversion actual"
  echo "  The latest version is:"
@@ -3392,7 +3395,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "route" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ Show route tables ]"
+ echo "$ralla [ $first_option ] [ Show route tables ]"
  echo $header_lineal
  case $which_ip in  $NULL) echo "$tab [ Install ip command ]" ; exit ;; esac
  echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
@@ -3417,7 +3420,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "ss" ]; then  $give_cover
  case $which_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
- echo "$cinco [ $first_option ] [ Show sockets with ss ]"
+ echo "$ralla [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
  echo "$tab [ The ipv6 sockets ]"
  $which_ss -a6
@@ -3434,7 +3437,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "lsof" ]; then $give_cover
  case $which_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
- echo "$cinco [ $first_option ] [ Show sockets with lsof ]"
+ echo "$ralla [ $first_option ] [ Show sockets with lsof ]"
  echo $header_lineal
  echo "$tab [The sockets with lsof ipv4 ]"
  $which_lsof -i 4
@@ -3449,7 +3452,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "netstat" ]; then  $give_cover
  case $which_netstat in
  "$NULL") echo "$tab [Install netstat]" ; exit ;; esac
- echo "$cinco [ $first_option ] [ Show sockets with netstat ]"
+ echo "$ralla [ $first_option ] [ Show sockets with netstat ]"
  echo $header_lineal
  echo "$tab [The sockets list with netstat ]"
  $which_netstat -a -4 -6
@@ -3464,7 +3467,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
  case $which_netstat_nat in
  "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
- echo "$cinco [ $first_option ] [ Show sockets with netstat-nat ]"
+ echo "$ralla [ $first_option ] [ Show sockets with netstat-nat ]"
  echo $header_lineal
  echo "$tab [The devices list with netstat]"
  $which_netstat_nat -x
@@ -3477,7 +3480,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "ipforward-on" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ Active ip forwading in kernel ]"
+ echo "$ralla [ $first_option ] [ Active ip forwading in kernel ]"
  echo $header_lineal
  for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
  do $which_sysctl -w $a=1 ; done
@@ -3490,7 +3493,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "ipforward-off" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ Deactive ip forwading in kernel ]"
+ echo "$ralla [ $first_option ] [ Deactive ip forwading in kernel ]"
  echo $header_lineal
  for a in $($which_sysctl -a | grep -i forwarding | cut -d " " -f 1)
  do $which_sysctl -w $a=0 ; done
@@ -3508,7 +3511,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter ipv4 ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv4 ]"
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
@@ -3546,7 +3549,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1 ) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1 ) &> /dev/null
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3579,7 +3582,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
  "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter ipv6 ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv6 ]"
  echo $header_lineal
  echo $ralla
  case $legacyseis in
@@ -3621,7 +3624,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1 && \
  "$which_ip6tables_nft" -t filter -L FORWARD 1 ) &> /dev/null
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3652,7 +3655,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
  nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables nat ipv4 ]"
+ echo "$ralla [ $first_option ] [ List iptables nat ipv4 ]"
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
@@ -3690,7 +3693,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  legacyseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
  nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables nat ipv6 ]"
+ echo "$ralla [ $first_option ] [ List iptables nat ipv6 ]"
  echo $header_lineal
  echo $ralla
  case $legacyseis in
@@ -3730,7 +3733,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  "$which_iptables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter ipv4 in numerical ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv4 in numerical ]"
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
@@ -3768,7 +3771,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter forward ipv4 in numerical ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 in numerical ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3801,7 +3804,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1 && \
  "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter ipv6 in numerical ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv6 in numerical ]"
  echo $header_lineal
  echo $ralla
  case $legacyseis in
@@ -3839,7 +3842,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
  nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $header_ender
- echo "$cinco [ $first_option ] [ List iptables filter forward ipv6 in numerical ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 in numerical ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3867,7 +3870,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "mangle-ip4" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List iptables mangle ipv4 ]"
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables mangle ipv4 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3885,7 +3889,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "mangle-ip6" ]; then $give_cover
- echo "$cinco [ $first_option ] [ List iptables mangle ipv6 ]"
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables mangle ipv6 ]"
  echo $header_lineal
  echo $ralla
  echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
@@ -3902,7 +3907,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "raw-ip4" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List iptables raw ipv4 ]"
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables raw ipv4 ]"
  echo $header_lineal
  echo $ralla
  echo "$rallica  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
@@ -3919,7 +3925,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "raw-ip6" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List iptables raw ipv6 ]"
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables raw ipv6 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3937,7 +3944,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "security-ip4" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List iptables security ipv4 ]"
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables security ipv4 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3955,7 +3963,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "security-ip6" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List iptables security ipv6 ]"
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables security ipv6 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3973,7 +3982,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "ebtables" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List ebtables ]"
+ echo "$ralla [ $first_option ] [ List ebtables ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3993,7 +4002,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "arptables" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ List arptables ipv4 ]"
+ echo "$ralla [ $first_option ] [ List arptables ipv4 ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -4232,7 +4241,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fiptables ] ; then $give_cover
-echo "$cinco [ $first_option ] [ list users with root auth for launch $fiptables ]"
+echo "$ralla [ $first_option ] [ list users with root auth for launch $fiptables ]"
 echo "$cinco With root sudo for $fiptables from some user"
 echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
 cat /etc/sudoers.d/$fiptables
@@ -4253,7 +4262,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "alias-list" ]; then $give_cover
-echo "$cinco [ $first_option ] [ list alias and autocomplete for $fiptables ]"
+echo "$ralla [ $first_option ] [ list alias and autocomplete for $fiptables ]"
 echo $header_lineal
 echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
 cat /etc/bash_completion.d/$fiptables
@@ -4266,7 +4275,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-list" ]; then $give_cover
- echo "$cinco [ $first_option ] [ Show ip forwading in kernel ]"
+ echo "$ralla [ $first_option ] [ Show ip forwading in kernel ]"
  echo $header_lineal
  echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
  $which_sysctl -a | grep -i forwarding
@@ -4299,7 +4308,7 @@ exit; fi
  if [ "$first_option" = "arp" ]; then  $give_cover
  case $which_arp in "$NULL") echo "install arp" ;;
  *)
- echo "$cinco [ $first_option ] [ Show cache arp ]"
+ echo "$ralla [ $first_option ] [ Show cache arp ]"
  echo $header_lineal
  $which_arp -a
  ;;
@@ -4313,7 +4322,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "show-default" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the /etc/default/fwiptables ]"
+ echo "$ralla [ $first_option ] [ show the /etc/default/fwiptables ]"
  echo $header_lineal
  cat /etc/default/fwiptables
  echo $footer_lineal
@@ -4327,7 +4336,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "modify-default" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ modify the /etc/default/fwiptables ]"
+ echo "$ralla [ $first_option ] [ modify the /etc/default/fwiptables ]"
  echo $header_lineal
  echo $footer_lineal
  echo "$cinco edit file /etc/default/fwiptables to change variables"
@@ -4366,7 +4375,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "names" ]; then $genfiles ; $give_cover
- echo "$cinco [ $first_option ] [ List names from firewall saved ]"
+ echo "$ralla [ $first_option ] [ List names from firewall saved ]"
  echo $header_lineal
  echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
  echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
@@ -4381,7 +4390,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
-echo "$cinco [ $first_option ] [ Reset the firewall ]"
+echo "$ralla [ $first_option ] [ Reset the firewall ]"
 echo $header_lineal
 $fiptables stop &> /dev/null
 $fiptables continue &> /dev/null
@@ -4505,7 +4514,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "show" ]; then $genfiles ; $give_cover
- echo "$cinco [ $first_option ] [ show one firewall saved ]"
+ echo "$ralla [ $first_option ] [ show one firewall saved ]"
  echo $header_lineal
  case "$second_option" in
  "$NULL") $fiptables names; echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
@@ -4537,7 +4546,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
- echo "$cinco [ $first_option ] [ show the last firewall saved ]"
+ echo "$ralla [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
  $which_ebtables-save           &> $directory_fwrecover/fiptables-actual-ebtables   
  $which_iptables_nft-save       &> $directory_fwrecover/fiptables-actual-nft-ipv4   
@@ -4565,7 +4574,7 @@ exit; fi
 ####
 if [ "$first_option" = "stop" ]; then $nada
 echo $head_principal
-echo "$cinco [ $first_option ] [ Stop the firewall ]"
+echo "$ralla [ $first_option ] [ Stop the firewall ]"
 echo $header_lineal
 ####
 ####
@@ -4594,7 +4603,7 @@ exit; fi
 ####
  if [ "$first_option" = "continue" ]; then $nada
  echo $head_principal
- echo "$cinco [ $first_option ] [ Continue the stoped firewall ]"
+ echo "$ralla [ $first_option ] [ Continue the stoped firewall ]"
  echo $header_lineal
 ####
 ####
@@ -4616,7 +4625,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ping-ip4" ]; then $give_cover
- echo "$cinco [ $first_option ]  [ ping ip or host with ipv4 ]"
+ echo "$ralla [ $first_option ]  [ ping ip or host with ipv4 ]"
  echo $header_lineal
  case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 ####
@@ -4646,7 +4655,7 @@ exit; fi
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
  if [ "$first_option" = "ping-ip6" ]; then $give_cover
- echo "$cinco [ $first_option ] [ ping one ip or host with ipv6 ]"
+ echo "$ralla [ $first_option ] [ ping one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 ####
@@ -4678,7 +4687,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "trace-ip4" ]; then $give_cover
- echo "$cinco [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
 ####
@@ -4711,7 +4720,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "trace-ip6" ]; then $give_cover
- echo "$cinco [ $first_option ] [ trace one ip or host with ipv6 ]"
+ echo "$ralla [ $first_option ] [ trace one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
 ####
@@ -4743,7 +4752,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "host" ]; then $give_cover
- echo "$cinco [ $first_option ] [ resolve one ip or host ]"
+ echo "$ralla [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
  case $which_host in "$NULL") echo " Install host" ; exit ;; esac
  case "$second_option" in
@@ -4760,7 +4769,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "resolveip" ]; then $give_cover
- echo "$cinco [ $first_option ] [ resolve one ip or host ]"
+ echo "$ralla [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
  case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
  case "$second_option" in
@@ -4777,7 +4786,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "geoip" ]; then $give_cover
- echo "$cinco [ $first_option ] [ resolve the location to one ip or host ]"
+ echo "$ralla [ $first_option ] [ resolve the location to one ip or host ]"
  echo $header_lineal
  case $which_geoiplookup in "$NULL") echo " Install geoip-bin" ; exit  ;; esac
  case "$second_option" in
@@ -4794,7 +4803,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ntpdate" ]; then $nada
- echo "$cinco [ $first_option ] [ update the computer time and date from internet ]"
+ echo "$ralla [ $first_option ] [ update the computer time and date from internet ]"
  echo $header_lineal
  echo "$rallica [ Updating the time and the date .. ]"
  pool0=0.debian.pool.ntp.org
@@ -4812,7 +4821,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "scan-tcp" ]; then $give_cover
- echo "$cinco [ $first_option ] [ scan with nmap tcp ]"
+ echo "$ralla [ $first_option ] [ scan with nmap tcp ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
@@ -4859,7 +4868,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-syn" ]; then $give_cover
- echo "$cinco [ $first_option ] [ scan with nmap syn ]"
+ echo "$ralla [ $first_option ] [ scan with nmap syn ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4904,7 +4913,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-fin" ]; then $give_cover
- echo "$cinco [ $first_option ] [ scan with nmap fin ]"
+ echo "$ralla [ $first_option ] [ scan with nmap fin ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4951,7 +4960,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-udp" ]; then $give_cover
- echo "$cinco [ $first_option ] [ scan with nmap udp ]"
+ echo "$ralla [ $first_option ] [ scan with nmap udp ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -4998,7 +5007,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-ping" ]; then $give_cover
- echo "$cinco [ $first_option ] [ scan with nmap ping ]"
+ echo "$ralla [ $first_option ] [ scan with nmap ping ]"
  echo $header_lineal
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
@@ -5043,7 +5052,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "ram-free" ]; then $give_cover
- echo "$cinco [ $first_option ] [ freedom from innecesary ram ]"
+ echo "$ralla [ $first_option ] [ freedom from innecesary ram ]"
  echo $header_lineal
  case $which_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
  echo " Actual Memory"
@@ -5060,7 +5069,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "disc-speed" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ test the disc speed ]"
+ echo "$ralla [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
  case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
  echo "$rallica Testing speed with the temporal file /root/borrame.img.img about 100Mb"
@@ -5085,7 +5094,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "ram-speed" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ test the ram speed ]"
+ echo "$ralla [ $first_option ] [ test the ram speed ]"
  echo $header_lineal
  case $which_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
  case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
@@ -5112,7 +5121,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "gl-speed" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ test gl mesa3D speed ]"
+ echo "$ralla [ $first_option ] [ test gl mesa3D speed ]"
  echo $header_lineal
  case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
  vblank_mode=0  timeout -s SIGINT -v $server_waiting $which_glxgears
@@ -5125,7 +5134,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "radio" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ Listen radio online ]"
+ echo "$ralla [ $first_option ] [ Listen radio online ]"
  echo "$rallica [ for choose radio see: ] [ $fiptables default ]"
  echo "$rallica [ Usually it do not working like root, probe as user ]"
  echo "$rallica [ mpg123 -@ $radio ]"
@@ -5140,7 +5149,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "log-fwiptables" ] ; then  $give_cover
- echo "$cinco [ $first_option ] [ show /var/log/fwiptables ]"
+ echo "$ralla [ $first_option ] [ show /var/log/fwiptables ]"
  cat /var/log/fwiptables
  echo "$cinco this file is /var/log/fwiptables"
  echo $footer_lineal
@@ -5152,7 +5161,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "log-sudo" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ search sudo in logs ]"
+ echo "$ralla [ $first_option ] [ search sudo in logs ]"
  echo $header_lineal
  find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
  echo $footer_lineal
@@ -5164,7 +5173,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "log-sshd" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ search sshd in logs ]"
+ echo "$ralla [ $first_option ] [ search sshd in logs ]"
  echo $header_lineal
  find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sshd"
  echo $footer_lineal
@@ -5191,7 +5200,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "dev-versions" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the link to dev version from git repository ]"
+ echo "$ralla [ $first_option ] [ show the link to dev version from git repository ]"
  echo $header_lineal
  echo $fweb_development
  echo $footer_lineal
@@ -5203,7 +5212,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "new-versions" ]; then $give_cover
- echo "$cinco [ $first_option ] [ show the new versions in sourceforge page ]"
+ echo "$ralla [ $first_option ] [ show the new versions in sourceforge page ]"
  echo $header_lineal
  case $favorite_text_browser in 
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -5219,7 +5228,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "hosts" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the file /etc/hosts ]"
+ echo "$ralla [ $first_option ] [ show the file /etc/hosts ]"
  echo $header_lineal
  cat /etc/hosts
  echo $ralla
@@ -5233,7 +5242,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "protocols" ]; then  $give_cover
-  echo "$cinco [ $first_option ] [ show the file /etc/protocols ]"
+  echo "$ralla [ $first_option ] [ show the file /etc/protocols ]"
  echo $header_lineal
  cat /etc/protocols  | sed s/\&//g 
  echo $ralla
@@ -5247,7 +5256,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "services" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the file /etc/services ]"
+ echo "$ralla [ $first_option ] [ show the file /etc/services ]"
  echo $header_lineal
  cat /etc/services | sed s/\&//g 
  echo $ralla
@@ -5261,7 +5270,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "hosts.allow" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the file /etc/allow ]"
+ echo "$ralla [ $first_option ] [ show the file /etc/allow ]"
  echo $header_lineal
  cat /etc/hosts.allow
  echo $ralla
@@ -5275,7 +5284,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "hosts.deny" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the file /etc/deny ]"
+ echo "$ralla [ $first_option ] [ show the file /etc/deny ]"
  echo $header_lineal
  cat /etc/hosts.deny
  echo $ralla
@@ -5289,7 +5298,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "resolv.conf" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show the file /resolv.conf ]"
+ echo "$ralla [ $first_option ] [ show the file /resolv.conf ]"
  echo $header_lineal
  cat /etc/resolv.conf
  echo $ralla
@@ -5303,7 +5312,7 @@ $fiptables stop
 ####
 ####
 if [ "$first_option" = "about" ]; then  $give_cover
-echo "$cinco [ $first_option ] [ about $fiptables ]"
+echo "$ralla [ $first_option ] [ about $fiptables ]"
 echo $header_lineal
 echo
 echo "$tab [Fran FireWall iptables Generator]"
@@ -5357,7 +5366,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-system" ]; then  $give_cover
- echo "$cinco [ $first_option ] [ show info about system ]"
+ echo "$ralla [ $first_option ] [ show info about system ]"
  echo $header_lineal
  echo "$tab [ System info ] [ Distro ] "
  cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
@@ -5382,7 +5391,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-net" ]; then $give_cover
- echo "$cinco [ $first_option ] [ show info about net ]"
+ echo "$ralla [ $first_option ] [ show info about net ]"
  echo $header_lineal
  echo "$tab [ Net Info Route ] [ Route ipv4 ]"
  $which_ip route 
@@ -5401,7 +5410,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ip4" ]; then $give_cover
- echo "$cinco [ $first_option ] [ test speed ipv4 with internet ]"
+ echo "$ralla [ $first_option ] [ test speed ipv4 with internet ]"
  echo $header_lineal
  case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
@@ -5430,7 +5439,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ip6" ]; then $give_cover
- echo "$cinco [ $first_option ] [ test speed ipv6 with internet ]"
+ echo "$ralla [ $first_option ] [ test speed ipv6 with internet ]"
  echo $header_lineal
  case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
@@ -5459,7 +5468,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
- echo "$cinco [ $first_option ] [ show variables cfg from english configuration ]"
+ echo "$ralla [ $first_option ] [ show variables cfg from english configuration ]"
  echo $header_lineal
  cat  $defaultfullcfg_eng
  echo $footer_lineal
@@ -5471,7 +5480,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 ####
 ####
  if [ "$first_option" = "config-spa" ]; then $genfiles; $give_cover
- echo "$cinco [ $first_option ] [ show variables cfg from spanish configuration ]"
+ echo "$ralla [ $first_option ] [ show variables cfg from spanish configuration ]"
  echo $header_lineal
  cat $defaultfullcfg_spa
  echo $footer_lineal
@@ -5483,7 +5492,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 ####
 ####
 if [ "$first_option" = "help" ]; then $genfiles ; $give_cover
-echo "$cinco [ $first_option ]  [ Principal options ] $cinco"
+echo "$ralla [ $first_option ]  [ Principal options ] $cinco"
 echo
 echo
 echo "$cinco         [Launch guide]"
@@ -5728,7 +5737,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then $genfiles; $give_cover
-echo "$cinco [ $first_option ] [ Opciones principales ] $cinco"
+echo "$ralla [ $first_option ] [ Opciones principales ] $cinco"
 echo
 echo "$cinco         [Lanzar guia]"
 echo
