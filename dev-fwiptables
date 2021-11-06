@@ -1705,8 +1705,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool icmp ]"
-echo "$cinco         [Tool icmp]"
-echo "$cinco         [Herramienta icmp]"
+echo "$rallica [ Tool icmp ]"
+echo "$rallica [ Herramienta icmp ]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "             : Hace un ping con una direccion con ipv4 icmp"
@@ -1727,8 +1727,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool tcp ]"
-echo "$cinco         [Tool tcp]"
-echo "$cinco         [Herramienta tcp]"
+echo "$rallica [ Tool tcp ]"
+echo "$rallica [ Herramienta tcp ]"
 echo
 echo "    trace-ip4: Trace route a one host with ipv4 tcp"
 echo "             : Traza la routa a una direccion con ipv4 tcp"
@@ -1752,8 +1752,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool nmap ]"
-echo "$cinco         [Tool nmap]"
-echo "$cinco         [Herramienta nmap]"
+echo "$rallica [ Tool nmap ]"
+echo "$rallica [ Herramienta nmap ]"
 echo
 echo "     scan-tcp: Scan a host/mask per tcp protocol"
 echo "             : Escanea una host/mascara por tcp protocolo"
@@ -1775,8 +1775,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool sudo $fiptables ]"
-echo "$cinco         [Tool sudo]"
-echo "$cinco         [Herramienta sudo]"
+echo "$rallica [ Tool sudo ]"
+echo "$rallica [ Herramienta sudo ]"
 echo
 echo "    sudo-auth: Allow sudo $fiptables to other choosed users"
 echo "             : Permite sudo $fiptables a otros elegidos usuarios"
@@ -1796,8 +1796,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool install $fiptables ]"
-echo "$cinco         [Tool install]"
-echo "$cinco         [Herramienta instalar]"
+echo "$rallica [ Tool install ]"
+echo "$rallica [ Herramienta instalar ]"
 echo
 echo "       install: Install this version actual"
 echo "              : Instala esta version actual"
@@ -1817,8 +1817,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool system ]"
-echo "$cinco         [Tool system]"
-echo "$cinco         [Herramienta systema]"
+echo "$rallica [ Tool system ]"
+echo "$rallica [ Herramienta systema ]"
 echo
 echo "      ram-free: Clean for innecesary memory"
 echo "              : Libera la memoria innecesaria"
@@ -1840,8 +1840,8 @@ exit; fi
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
 echo "$ralla [ $first_option ] [ show etc files ]"
-echo "$cinco         [Show etc]"
-echo "$cinco         [Mostrar etc]"
+echo "$rallica [ Show configs files from etc ]"
+echo "$rallica [ Mostrar configuraciones de archivos de etc ]"
 echo
 echo "           hosts: Show /etc/hosts, hosts local and statics host"
 echo "                : Muestra /etc/hosts, hosts locales y hosts estaticos"
@@ -1869,8 +1869,8 @@ exit; fi
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
 echo "$ralla [ $first_option ] [ show log files ]"
-echo "$cinco         [Show log]"
-echo "$cinco         [Mostrar log]"
+echo "$rallica [ Show log ]"
+echo "$rallica [ Mostrar log ]"
 echo
 echo " log-fwiptables: Show /var/log/fwiptables"
 echo "               : Muestra /var/log/fwiptables"
@@ -1892,8 +1892,8 @@ exit; fi
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
 echo "$ralla [ $first_option ] [ show about $fiptables ]"
-echo "$cinco         [Show about]"
-echo "$cinco         [Mostrar acerca de]"
+echo "$rallica [ Show about ]"
+echo "$rallica [ Mostrar acerca de ]"
 echo
 echo "          about: About"
 echo "               : Acerca"
@@ -1919,8 +1919,8 @@ exit; fi
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
 echo "$ralla [ $first_option ] [ show help ]"
-echo "$cinco         [Show help]"
-echo "$cinco         [Mostrar ayuda]"
+echo "$rallica [ Show help ]"
+echo "$rallica [ Mostrar ayuda ]"
 echo
 echo "        long-help: Show help in english and spanish"
 echo "                 : Muestra la ayuda en ingles y en español"
