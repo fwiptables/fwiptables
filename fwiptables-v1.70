@@ -1399,6 +1399,8 @@ echo "      tool-cfg:  Create, modify and show configurations"
 echo "              :  Crea, modifica y muestra configuraciones"
 echo "  tool-sockets:  List net sockets ip in system"
 echo "              :  Lista sockets de red ip en el sistema"
+echo "  tool-forward:  list, active and desactive ipforward in linux"
+echo "              :  lista, activa y desactiva ipforward en linux"
 echo "     tool-icmp:  Tool icmp to ping at other hosts"
 echo "              :  Herramienta icmp para hacer ping a otros"
 echo "      tool-tcp:  Several tools tcp"
@@ -1409,6 +1411,8 @@ echo "     tool-sudo:  Tool to auth sudo a users for $fiptables"
 echo "              :  Herramienta de autorizacion a usuarios para $fiptables"
 echo "  tool-install:  Tool to install and upgrade $fiptables"
 echo "              :  Herramienta para instalar y actualizar $fiptables"
+echo "   tool-system:  Several tools for the system"
+echo "              :  Varias herramientas para el sistema"
 echo "      show-etc:  Show net files in /etc/"
 echo "              :  Muestra archivos de red de /etc/"
 echo "      show-log:  Show logs systems"
@@ -1421,6 +1425,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+echo "$tab" "$tab"  "And too: tool-cfg tool-forward tool-nmap tool-install tool-system show-log   " 
 ##############################       english: launch-rules: options
 ##############################       spanish: launch-rules: opciones
 ####
