@@ -1425,7 +1425,6 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-echo "$tab" "$tab"  "And too: tool-cfg tool-forward tool-nmap tool-install tool-system show-log   " 
 ##############################       english: launch-rules: options
 ##############################       spanish: launch-rules: opciones
 ####
