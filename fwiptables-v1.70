@@ -1973,8 +1973,8 @@ echo
 echo "$tab iptables-legacy   is    support for xtables "
 echo "$tab iptables-nft      is    support for nftables "
 echo
-echo "$cinco [ Notes ] [necesary ports to connect with ipv4 and ipv6 in udp protocol]"
-echo "$cinco [ Notas ] [puertos necesarios para conectar con ipv4 y ipv6 en udp protocolo]"
+echo "$cinco [ Notes ] [necesary ports to connect with ipv4 and ipv6 in UDP protocol]"
+echo "$cinco [ Notas ] [puertos necesarios para conectar con ipv4 y ipv6 en UDP protocolo]"
 echo
 echo "    ntp : Port necesary to update the time and date"
 echo "        : Puerto necesario para actualizar la hora y fecha"
@@ -1982,11 +1982,11 @@ echo " bootpc : Port necesary to dhcp and get ip"
 echo "        : Puerto necesario para actualizar y conseguir la ip"
 echo " domain : This port is necesary to domain resolver"
 echo "        : Puerto necesario para resolver dominios"
-echo "  https : This port is necesary to http udp named web 2.0"
-echo "        : Puerto necesario para http udp llamado web 2.0"
+echo "  https : This port is necesary for udp named web html5"
+echo "        : Puerto necesario para udp llamado web html5"
 echo
-echo "$cinco [ Notes ] [necesary protocols for ipv6]"
-echo "$cinco [ Notas ] [protocolos necesarios para ipv6]"
+echo "$cinco [ Notes ] [necesary protocols for ip v6]"
+echo "$cinco [ Notas ] [protocolos necesarios para ip v6]"
 echo
 echo "      ipv6-icmp : Necesary protocol in ipv6"
 echo "                : Protocolo necesario en ipv6"
@@ -6167,13 +6167,13 @@ $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
@@ -6191,13 +6191,13 @@ $allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports http,https -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https -j ACCEPT &> /dev/null
 ####
@@ -6289,13 +6289,13 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
@@ -6313,13 +6313,13 @@ $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
--p udp -m multiport --dports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports http,https,ssh -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports domain,bootpc,ntp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports domain,bootpc,ntp,https -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports http,https,ssh -j ACCEPT &> /dev/null
 ####
