@@ -1171,6 +1171,7 @@ echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ]"
+echo 
 echo "$tab" "$tab"  "                       ______________| Principal options |___________________"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
