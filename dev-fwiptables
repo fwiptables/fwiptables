@@ -49,36 +49,36 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
 default_option="basic-options"           ## fwiptables-default ## default: full-options
-####       #### english: allow for all predefined firewall except cfg y wizard
-####       #### spanish: permitir para todos los predefinidos cortafuegos excepto cfg y wizard
-allow_legacy=""                          ## fwiptables-default ## void or no
-allow_nft="no"                           ## fwiptables-default ## void or no
-allow_ipv4=""                            ## fwiptables-default ## void or no
-allow_ipv6=""                            ## fwiptables-default ## void or no
+####       #### english: for all predefined system firewall except cfg y wizard
+####       #### spanish: para todos los predefinidos cortafuegos de sistema excepto cfg y wizard
+allow_legacy=""                       ## fwiptables-default ## void or no
+allow_nft="no"                        ## fwiptables-default ## void or no
+allow_ipv4=""                         ## fwiptables-default ## void or no
+allow_ipv6=""                         ## fwiptables-default ## void or no
 ####       #### english: allow questions to answer: yes
 ####       #### spanish: permitir preguntas con respuesta: yes
-allow_question="no"                      ## fwiptables-default ## void or no
+allow_question="no"                   ## fwiptables-default ## void or no
 ####       #### english: allow info header in each option    
 ####       #### spanish: permitir informacion de cabecera en cada opcion
-allow_header=""                          ## fwiptables-default ## void or no
+allow_header=""                       ## fwiptables-default ## void or no
 ####       #### english: void to autosave fwrecover or no 
 ####       #### spanish: autoguardar fwrecover o no
-autosave_fwrecover=""                    ## fwiptables-default ## void or no
+autosave_fwrecover=""                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="9"                       ## fwiptables-default ## choose seconds: 1..,9..30
+server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
 ####       #### english: ping server for default         
 ####       #### spanish: servidor de ping por defecto    
-server_ping_ipv4="fast.com"              ## fwiptables-default ## default fast.com
-server_ping_ipv6="fast.com"              ## fwiptables-default ## default fast.com
+server_ping_ipv4="fast.com"           ## fwiptables-default ## default fast.com
+server_ping_ipv6="fast.com"           ## fwiptables-default ## default fast.com
 ####       #### english: traceroute server for default         
 ####       #### spanish: servidor de traceroute por defecto    
-server_traceroute_ipv4="fast.com"        ## fwiptables-default ## default fast.com
-server_traceroute_ipv6="fast.com"        ## fwiptables-default ## default fast.com
+server_traceroute_ipv4="fast.com"     ## fwiptables-default ## default fast.com
+server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
 ####       #### english: iperf server for default for test speed                 
 ####       #### spanish: servidor de iperf por defecto para testear velocidad    
-server_iperf_ipv4="ping.online.net"      ## fwiptables-default ## default ping.online.net
-server_iperf_ipv6="ping.online.net"      ## fwiptables-default ## default ping.online.net
+server_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
+server_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
 ####       #### english: zenity graphic redimension        
 ####       #### spanish: redimensiones graficas de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
@@ -933,8 +933,8 @@ if [ -f "$directory_fwrecover/last-nft-ipv6" ]; then $nada ; else touch $directo
 if [ -f "$directory_fwrecover/last-legacy-ipv6" ]; then $nada ; else touch $directory_fwrecover/last-legacy-ipv6 &> /dev/null ; fi
 ####
 ####
-########################################       english: autosave of firewall to restore standard rules
-########################################       english: autoguardado de firewall para recuperador de reglas estandar
+########################################       english: autosave: autosave of firewall to restore standard rules
+########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
 ####
 ####
 #### english: iptables saved
@@ -4408,7 +4408,7 @@ exit; fi
 ############################       spanish: load: carga las reglas en formato iptables
 ####
 ####
- if [ "$first_option" = "load" ]; then $give_cover ; $fiptables autosave
+ if [ "$first_option" = "load" ]; then $give_cover ; $give_autosave
 ####
 ####
 #### English: Void in second option
@@ -5970,7 +5970,7 @@ echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; 
 ####
 ####
 #### english: autosave #### spanish: autoguarda
-#### $fiptables autosave
+$give_autosave
 ####
 ####
 ###############################################################################################################
