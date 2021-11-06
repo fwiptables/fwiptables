@@ -1041,8 +1041,8 @@ echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 case "$allow_question" in "no");; *)
 read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
 if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
-then echo "$cinco [ OK. ACCEPTED LICENSE ] [ Continue install ]"
-else echo "$cinco [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
+then echo "$ralla [ OK. ACCEPTED LICENSE ] [ Continue install ]"
+else echo "$ralla [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
 #### 
 #### 
 ####  english: copy the file
@@ -3370,7 +3370,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 ####
 ####
- if [ "$first_option" = "eraserules" ]; then $give_cover 
+ if [ "$first_option" = "eraserules" ]; then $nada 
  echo $head_principal
  echo $header_lineal
  $which_ebtables -t filter -F
@@ -3383,7 +3383,19 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ip6tables_nft -t nat  -F
  $which_iptables_legacy -t nat -F
  $which_ip6tables_legacy -t nat -F
- echo "$cinco [OK FIREWALL ERASED]"
+ $which_iptables_nft -t mangle -F
+ $which_ip6tables_nft -t mangle  -F
+ $which_iptables_legacy -t mangle -F
+ $which_ip6tables_legacy -t mangle -F
+ $which_iptables_nft -t raw -F
+ $which_ip6tables_nft -t raw  -F
+ $which_iptables_legacy -t raw -F
+ $which_ip6tables_legacy -t raw -F
+ $which_iptables_nft -t security -F
+ $which_ip6tables_nft -t security -F
+ $which_iptables_legacy -t security -F
+ $which_ip6tables_legacy -t security -F
+ echo "$rallica [ OK FIREWALL ERASED ] [ DELETED RULES ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4474,7 +4486,7 @@ exit; fi
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  
  cat $directory_fwrecover/$second_option-nft-ipv6 | $which_ip6tables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv6 | $which_ip6tables_legacy-restore 
- echo "$cinco [ OK FIREWALL LOADED ] [ $second_option ]"
+ echo "$rallica [ OK FIREWALL LOADED ] [ $second_option ]"
  else
  $fiptables names
  echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"
@@ -4499,13 +4511,13 @@ exit; fi
  $which_iptables_legacy-save    &> $directory_fwrecover/$archivofin-legacy-ipv4  
  $which_ip6tables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv6     
  $which_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6  
- echo "$cinco [ OK FIREWALL SAVED ] [ $archivofin ]"
+ echo "$rallica [ OK FIREWALL SAVED ] [ $archivofin ]"
  ls -l $directory_fwrecover/$archivofin-ebtables
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$cinco [ OK FIREWALL LISTED ] [ $archivofin ]"
+ echo "$rallica [ OK FIREWALL LISTED ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4526,7 +4538,7 @@ exit; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$cinco [ OK FIREWALL LISTED ] [ $archivofin ]"
+ echo "$rallica [ OK FIREWALL LISTED ] [ $archivofin ]"
  echo "$cincuenta $archivofin-ebtables"
  cat $directory_fwrecover/$archivofin-ebtables
  echo "$cincuenta $archivofin-nft-ipv4"
@@ -4537,7 +4549,7 @@ exit; fi
  cat $directory_fwrecover/$archivofin-nft-ipv6
  echo "$cincuenta archivofin-legacy-ipv6"
  cat $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$cinco [ OK FIREWALL READED ] [ $archivofin ]"
+ echo "$rallica [ OK FIREWALL READED ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4593,7 +4605,7 @@ $which_ip6tables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-ipv
 ####
 ####
 $fiptables eraserules &> /dev/null
-echo "$cinco [ OK FIREWALL STOPED ]"
+echo "$rallica [ OK FIREWALL STOPED ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -4616,7 +4628,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $which_iptables_legacy-restore  
  cat $directory_fwrecover/fiptables-stoped-nft-ipv6 | $which_ip6tables_nft-restore  
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv6 | $which_ip6tables_legacy-restore  
- echo "$cinco [ OK FIREWALL CONTINUED ]"
+ echo "$rallica [ OK FIREWALL CONTINUED ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6022,8 +6034,7 @@ $give_autosave
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allpermisive" ]; then 
-$which_iptables_legacy -F &> /dev/null
+if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6037,9 +6048,6 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A FORWARD \
 ####
 ####
 #### nft ip4
-####
-####
-$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6059,9 +6067,6 @@ $allow_nft $allow_ipv4   $which_iptables_nft -A FORWARD \
 #### legacy ip6
 ####
 ####
-$which_ip6tables_legacy -F &> /dev/null
-####
-####
 $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT \
@@ -6073,9 +6078,6 @@ $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A FORWARD \
 ####
 ####
 #### nft ip6
-####
-####
-$allow_nft $allow_ipv6   $which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv6   $which_ip6tables_nft -A INPUT   \
@@ -6102,7 +6104,7 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/nu
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$cinco [ OK RULES ] [ FIREWALL ALLPERMISIVE ]"
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL ALLPERMISIVE ]"
 exit; fi
 ####
 ####
@@ -6113,8 +6115,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allweb" ]; then 
-$which_iptables_legacy -F &> /dev/null
+if [ "$first_option" = "allweb" ]; then $fiptables eraserules
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6136,9 +6137,6 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip4
-####
-####
-$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6166,9 +6164,6 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$which_ip6tables_legacy -F &> /dev/null
-####
-####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
@@ -6188,9 +6183,6 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip6
-####
-####
-$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
@@ -6225,7 +6217,7 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/nu
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$cinco [ OK RULES ] [ FIREWALL ALLWEB ]" ; exit ; fi
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL ALLWEB ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables allssh:
@@ -6235,8 +6227,7 @@ echo "$cinco [ OK RULES ] [ FIREWALL ALLWEB ]" ; exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allssh" ]; then 
-$which_iptables_legacy -F &> /dev/null
+if [ "$first_option" = "allssh" ]; then $fiptables eraserules
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6258,9 +6249,6 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip4
-####
-####
-$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6288,9 +6276,6 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$which_ip6tables_legacy -F &> /dev/null
-####
-####
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
@@ -6310,9 +6295,6 @@ $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip6
-####
-####
-$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
@@ -6350,7 +6332,7 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/nu
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$cinco [ OK RULES ] [ FIREWALL ALLSSH ]"
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL ALLSSH ]"
 exit; fi
 ####
 ####
@@ -6361,8 +6343,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "gamesudp" ]; then 
-$which_iptables_legacy -F &> /dev/null
+if [ "$first_option" = "gamesudp" ]; then $fiptables eraserules
 ####
 ####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
@@ -6390,9 +6371,6 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip4
-####
-####
-$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
@@ -6426,9 +6404,6 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 #### legacy ip6
 ####
 ####
-$which_ip6tables_legacy -F &> /dev/null
-####
-####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
@@ -6454,9 +6429,6 @@ $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip6
-####
-####
-$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6   $which_ip6tables_nft -A INPUT \
@@ -6500,19 +6472,18 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/nu
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$cinco [ OK RULES ] [ FIREWALL GAMESUDP ]"
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL GAMESUDP ]"
 exit; fi
 ####
 ####
-########################################     english: ipv4 iptables offline
+########################################     english: ipv4 iptables offline:
 ########################################     spanish: ipv4 iptables desconectado
 ####
 ####
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "offline" ]; then
-$which_iptables_legacy -F &> /dev/null
+if [ "$first_option" = "offline" ]; then $fiptables eraserules
 ####
 ####
 $allow_legacy $allow_ipv4  $which_iptables_legacy -A INPUT  \
@@ -6522,9 +6493,6 @@ $allow_legacy $allow_ipv4  $which_iptables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip4
-####
-####
-$which_iptables_nft -F &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv4   $which_iptables_nft -A INPUT   \
@@ -6540,9 +6508,6 @@ $allow_nft $allow_ipv4   $which_iptables_nft -A OUTPUT  \
 #### legacy ip6
 ####
 ####
-$which_ip6tables_legacy -F &> /dev/null
-####
-####
 $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
@@ -6550,9 +6515,6 @@ $allow_legacy $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 #### nft ip6
-####
-####
-$which_ip6tables_nft -F &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv6   $which_ip6tables_nft -A INPUT  \
@@ -6569,7 +6531,7 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/nu
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$cinco [ OK RULES ] [ FIREWALL OFFLINE ]"
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL OFFLINE ]"
 exit; fi
 ###############################################################################################################
 ###############################################################################################################
@@ -6668,40 +6630,11 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 ############################       spanish: reglas de iptables ipv4   iptables-legacy
 ####
 ####
-#### english: ebtables mac filter and mac nat erased
-#### spanish: ebtables mac filtros y mac nat borrados
+#### english: erase all rules
+#### spanish: borra todas las reglas
 ####
 ####
-#### english:  Ipv4 filter legacy rules erased
-#### spanish:  Borrardo de filtros ipv4
-####
-####
-$which_ebtables -t filter -F
-$which_ebtables -t nat -F
-####
-####
-#### english: Erase nft rules ipv4
-#### spanish: Borra nft reglas ipv4
-$which_iptables_legacy -t filter -F
-####
-####
-#### english: Erase legacy rules ipv6
-#### spanish: Borra legacy reglas ipv6
-$which_ip6tables_legacy -t filter -F
-####
-####
-######### english:  ipv4 filter nft rules erased
-######### spanish:  borrardo de filtros nft ipv4
-####
-####
-#### english: Erase nft rules ipv4
-#### spanish: Borra nft reglas ipv4
-$which_iptables_nft -t filter -F
-####
-####
-#### english: Erase nft rules ipv4
-#### spanish: Borra nft reglas ipv4
-$which_ip6tables_nft -t filter -F
+$fiptables eraserules
 ####
 ####
 #######################################        english: ebtables mac rules
@@ -7649,7 +7582,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $which_ip6tables_lega
 ####  
 echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo "$cinco [ OK RULES ] [ FIREWALL CUSTOM ] [$second_option]"
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL CUSTOM ] [$second_option]"
 exit ; else $nada ; fi
 ####
 ####
