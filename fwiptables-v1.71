@@ -930,32 +930,6 @@ esac
 ####
 if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-if [ -f "$directory_fwrecover/last-nft-ipv4" ]; then $nada ; else touch $directory_fwrecover/last-nft-ipv4 &> /dev/null ; fi
-if [ -f "$directory_fwrecover/last-legacy-ipv4" ]; then $nada ; else touch $directory_fwrecover/last-legacy-ipv4 &> /dev/null ; fi
-if [ -f "$directory_fwrecover/last-nft-ipv6" ]; then $nada ; else touch $directory_fwrecover/last-nft-ipv6 &> /dev/null ; fi
-if [ -f "$directory_fwrecover/last-legacy-ipv6" ]; then $nada ; else touch $directory_fwrecover/last-legacy-ipv6 &> /dev/null ; fi
-####
-####
-########################################       english: autosave: autosave of firewall to restore standard rules
-########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
-####
-####
-#### english: iptables saved
-#### spanish: iptables guardado
-####
-####
-#### english: autosave with name autosave
-#### spanish: autoguardado con nombre autosave
-####
-####
-if [ "$first_option" = "autosave" ]; then
-if [ "$autosave_fwrecover" = "$NULL" ] ; then $nada ;
-echo "$cinco [ autosave ] [ previus firewall saved ]"
-$$which_iptables_nft-save &> $directory_fwrecover/autosave-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/autosave-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/autosave-legacy-ipv6
-fi; exit; fi
 ####
 ####
 ##############################      english: search programs: programs path           #####################
@@ -1003,6 +977,29 @@ which_iperf="$(which iperf | cut -d " " -f 1)"
 which_tee="$(which tee | cut -d " " -f 1)"
 which_dd="$(which dd | cut -d " " -f 1)"
 which_glxgears="$(which glxgears | cut -d " " -f 1)"
+####
+####
+########################################       english: autosave: autosave of firewall to restore standard rules
+########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
+####
+####
+#### english: iptables saved
+#### spanish: iptables guardado
+####
+####
+#### english: autosave with name autosave
+#### spanish: autoguardado con nombre autosave
+####
+####
+if [ "$first_option" = "autosave" ]; then
+if [ "$autosave_fwrecover" = "$NULL" ] ; then $nada ;
+echo "$cinco [ autosave ] [ previus firewall saved ] [ autosave-fiptables ]"
+$which_ebtables-save &> $directory_fwrecover/autosave-fiptables-ebtables
+$which_iptables_nft-save &> $directory_fwrecover/autosave-fiptables-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/autosave-fiptables-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/autosave-fiptables-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/autosave-fiptables-legacy-ipv6
+fi; exit; fi
 ####
 ####
 ##############################      english: search favorite browser: favorite browser     #####################
@@ -1160,7 +1157,7 @@ launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 ####
 if [ "$first_option" = "custom" ]; then
 if [ -f $directory_config/$second_option ]; then $nada
-else  $fiptables cfg ;
+else  $fiptables cfg 
 echo "$cinco Usage: $fiptables custom existent-file-cfg"
 echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
 ####
@@ -1189,7 +1186,7 @@ echo "$tab" "$tab"  "    show-etc           show-default modify-default ..      
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda group-options basic-options ..   "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  "And too: tool-cfg tool-forward tool-nmap tool-install tool-system show-log   " 
+echo "$tab" "$tab"  "    Too: tool-cfg tool-forward tool-nmap tool-install tool-system show-log   " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo "$tab" "$tab"  
@@ -1267,8 +1264,8 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
-echo "$cinco         [Long-help]"
-echo "$cinco         [Larga-ayuda]"
+echo "$ralla [Long-help]"
+echo "$ralla [Larga-ayuda]"
 echo
 echo "--------------------------------------------------------------------------"
 echo "  FRAN INTRO "
@@ -1348,10 +1345,10 @@ exit; fi
 ####
 if [ "$first_option" = "list-config" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List configs cfg ]"
-echo "$cinco $tab [English:] [list configs files in cfg format]"
-echo "$cinco $tab [Spanish:] [Lista de archivos de configuraciones en cfg formato]"
+echo "$rallica $tab [English:] [list configs files in cfg format]"
+echo "$rallica $tab [Spanish:] [Lista de archivos de configuraciones en cfg formato]"
 ls -1 $directory_config/
-echo "$cinco [OK CFG FILES NAMES]"
+echo "$rallica [OK CFG FILES NAMES]"
 echo $footer_lineal
 exit; fi
 ####
@@ -1362,8 +1359,8 @@ exit; fi
 ####
 if [ "$first_option" = "some-example" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List examples ]"
-echo "$cinco         [list examples]"
-echo "$cinco         [Lista ejemplos]"
+echo "$rallica [ list examples ]"
+echo "$rallica [ Lista ejemplos ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "$tab example           | -text for default output, or -log or -gui |       "
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini         "
@@ -1381,8 +1378,8 @@ exit; fi
 ####
 if [ "$first_option" = "group-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List options ]"
-echo "$cinco         [List option]"
-echo "$cinco         [Lista opcion]"
+echo "$rallica [ List option ]"
+echo "$rallica [ Lista opcion ]"
 echo
 echo "                  [ Principal options ]"
 echo
@@ -1435,8 +1432,8 @@ exit; fi
 ####
 if [ "$first_option" = "launch-rules" ]; then $give_cover
 echo "$ralla [ $first_option ] [ launch rules ]"
-echo "$cinco         [Launch iptables rules]"
-echo "$cinco         [Lanza reglas de iptables]"
+echo "$rallica [ Launch iptables rules ]"
+echo "$rallica [ Lanza reglas de iptables ]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "             : Borra las reglas de iptables en ipv4 y ipv6"
@@ -1464,8 +1461,8 @@ exit; fi
 ####
 if [ "$first_option" = "control-rules" ]; then $give_cover
 echo "$ralla [ $first_option ] [ control rules ]"
-echo "$cinco         [Control iptables rules]"
-echo "$cinco         [Controla reglas de iptables]"
+echo "$rallica [ Control iptables rules ]"
+echo "$rallica [ Controla reglas de iptables ]"
 echo
 echo "          stop: Save and stop the rules"
 echo "              : Guarda y para las reglas"
@@ -1495,8 +1492,8 @@ exit; fi
 ####
 if [ "$first_option" = "list-rules" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List rules ]"
-echo "$cinco         [List filter iptables rules]"
-echo "$cinco         [Lista reglas de iptables filtros]"
+echo "$rallica [ List filter iptables rules ]"
+echo "$rallica [ Lista reglas de iptables filtros ]"
 echo
 echo "               [The filter table with names]"
 echo "               [Lista tabla filtros con nombres]"
@@ -1559,8 +1556,8 @@ exit; fi
 ####
 if [ "$first_option" = "list-numrules" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List rules in numerical ]"
-echo "$cinco         [List iptables numerical rules]"
-echo "$cinco         [Lista reglas numericas de iptables]"
+echo "$rallica [ List iptables numerical rules ]"
+echo "$rallica [ Lista reglas numericas de iptables ]"
 echo
 echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
 echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
@@ -1581,8 +1578,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-cfg" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool config ]"
-echo "$cinco         [Tool configs]"
-echo "$cinco         [Herramienta de configuraciones]"
+echo "$rallica [ Tool configs ]"
+echo "$rallica [ Herramienta de configuraciones ]"
 echo
 echo "       new-full-config: Create a new advance configfile.cfg in english"
 echo "                      : Crea una nueva avanzada configfile.cfg en ingles"
@@ -1610,8 +1607,8 @@ exit; fi
 ####
 if [ "$first_option" = "control-guide" ]; then $give_cover
 echo "$ralla [ $first_option ] [ control guide ]"
-echo "$cinco         [Control guide]" 
-echo "$cinco         [Control guia]"
+echo "$rallica [ Control guide ]" 
+echo "$rallica [ Control guia ]"
 echo
 echo "  info-system: Show info system"
 echo "             : Muestra informacion del sistema"
@@ -1631,8 +1628,8 @@ exit; fi
 ####
 if [ "$first_option" = "use-interface" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool interface ]"
-echo "$cinco         [control interface]" 
-echo "$cinco         [control de interfaz]"
+echo "$rallica [ control interface ]" 
+echo "$rallica [ control de interfaz ]"
 echo
 echo "     cli-menu: Text cli interface from menus"
 echo "             : Interfaz de menus desde texto"
@@ -1662,8 +1659,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool sockets ]"
-echo "$cinco         [Tool sockets]"
-echo "$cinco         [Herramienta de sockets]"
+echo "$rallica [ Tool sockets ]"
+echo "$rallica [ Herramienta de sockets ]"
 echo
 echo "             route: Show net devices and ip route tables"
 echo "                  : Muestra los dispositivos de red y la tabla de rutas"
@@ -1689,8 +1686,8 @@ exit; fi
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool forward ]"
-echo "$cinco         [Tool forward]"
-echo "$cinco         [Herramienta de ipforwading]"
+echo "$rallica [ Tool forward ]"
+echo "$rallica [ Herramienta de ipforwading ]"
 echo
 echo "    ipforward-list: Show kernel config about forward"
 echo "                  : Muestra configuracion del kernel sobre reenvios"
