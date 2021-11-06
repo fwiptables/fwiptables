@@ -1939,7 +1939,6 @@ echo "                 : Apodo a full-options"
 echo "            notes: Several notes"
 echo "                 : Varias notas"
 exit; fi
-echo $footer_lineal
 ####
 ####
 ##############################       english: notes: notes to configure iptables
@@ -2754,7 +2753,6 @@ $fiptables gui-menu
 exit; fi
 ####
 ####
-
 ############################## english: gui-shell: graphic enviroment          ##############################
 ############################## spanish: gui-shell: entorno de comandos grafico ##############################
 ####
