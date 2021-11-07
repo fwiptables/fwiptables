@@ -993,7 +993,7 @@ which_glxgears="$(which glxgears | cut -d " " -f 1)"
 ####
 if [ "$first_option" = "autosave" ]; then
 if [ "$autosave_fwrecover" = "$NULL" ] ; then $nada ;
-echo "$cinco [ autosave ] [ previus firewall saved ] [ autosave-fiptables ]"
+echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fiptables ]"
 $which_ebtables-save &> $directory_fwrecover/autosave-fiptables-ebtables
 $which_iptables_nft-save &> $directory_fwrecover/autosave-fiptables-nft-ipv4
 $which_iptables_legacy-save &> $directory_fwrecover/autosave-fiptables-legacy-ipv4
@@ -4469,7 +4469,9 @@ exit; fi
 #### English: Load all rules 
 ####
 ####
- cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore
+if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
+ cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore &> /dev/null; fi
+#### 
  cat $directory_fwrecover/$second_option-nft-ipv4 |  $which_iptables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  
  cat $directory_fwrecover/$second_option-nft-ipv6 | $which_ip6tables_nft-restore       
