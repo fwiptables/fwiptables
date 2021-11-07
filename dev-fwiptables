@@ -3522,17 +3522,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ]"
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ]"
  $which_iptables_legacy -t filter -v -L
  ;;
  esac
  echo "$ralla"
  case $nftcuatro in
- "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ]" 
+ echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
  $which_iptables_nft -t filter -v -L
  ;;
  esac
