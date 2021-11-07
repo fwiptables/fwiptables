@@ -3561,17 +3561,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $ralla
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -t filter -v -L FORWARD
  ;;
  esac
  echo $ralla
  case $nftcuatro in
- "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_iptables_nft -t filter -v -L FORWARD
  ;;
  esac
@@ -3593,17 +3593,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  case $legacyseis in
- "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ]" 
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_legacy -v -L
  ;;
  esac
  echo $ralla
  case $nftseis in
- "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ]" 
+ echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
  $which_ip6tables_nft -v -L
  ;;
  esac
@@ -3636,17 +3636,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $ralla
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla[ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_ip6tables_legacy -t filter -v -L FORWARD
  ;;
  esac
  echo $ralla
  case $nftcuatro in
- "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_ip6tables_nft -t filter -v -L FORWARD
  ;;
  esac
@@ -3666,17 +3666,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] $ralla  "
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ] $ralla  "
  $which_iptables_legacy -t nat -v -L
  ;;
  esac
  echo $ralla
  case $nftcuatro in 
- "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] $ralla "
+ echo "$ralla [ With rules nftables ] [ iptables-nft ] $ralla "
  $which_iptables_nft -t nat -v -L 
  ;;
  esac
@@ -3704,17 +3704,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  case $legacyseis in
- "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] $ralla "
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ] $ralla "
  $which_ip6tables_legacy -t nat -v -L 
  ;;
  esac
  echo $ralla
  case $nftseis in
- "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] $ralla "
+ echo "$ralla [ With rules nftables ] [ iptables-nft ] $ralla "
  $which_ip6tables_nft -t nat -v -L 
  ;;
  esac
@@ -3744,17 +3744,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$rallica [Without rules netfilter] [iptables-nft]" ;;
+ "$NULL") echo "$ralla [Without rules netfilter] [iptables-nft]" ;;
  *)
- echo "$rallica [With rules netfilter] [iptables-nft]"  
+ echo "$ralla [With rules netfilter] [iptables-nft]"  
  $which_iptables_legacy -v -n -L 
  ;;
  esac
  echo $ralla
  case $nftcuatro in
- "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ]"  
+ echo "$ralla [ With rules nftables ] [ iptables-nft ]"  
  $which_iptables_nft -v -n -L
  ;;
  esac
@@ -3783,17 +3783,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $ralla
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$cinco [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -t filter -v -n -L FORWARD
  ;;
  esac
  echo $ralla
  case $nftcuatro in
- "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_iptables_nft -t filter -v -n -L FORWARD
  ;;
  esac
@@ -3815,17 +3815,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  case $legacyseis in
- "$NULL") echo "$rallica [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
-  echo "$cinco [ With rules xtables ] [ iptables-legacy ]" 
+  echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_legacy -v -n -L 
  ;;
  esac
  echo $ralla
  case $nftseis in
- "$NULL") echo "$rallica [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
-  echo "$cinco [ With rules xtables ] [ iptables-legacy ]" 
+  echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_nft -v -n -L
  ;;
  esac
@@ -3854,17 +3854,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $ralla
  echo $ralla
  case $legacycuatro in
- "$NULL") echo "$cinco [ Without rules in xtables ] [ iptables-legacy ] " ;;
+ "$NULL") echo "$ralla [ Without rules in xtables ] [ iptables-legacy ] " ;;
  *)
- echo "$rallica [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_ip6tables_legacy -t filter -v -n -L FORWARD
  ;;
  esac
  echo $ralla
  case $nftcuatro in
- "$NULL") echo "$cinco [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$rallica [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_ip6tables_nft -t filter -v -n -L FORWARD
  ;;
  esac
@@ -3882,10 +3882,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
- echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
+ echo "$ralla [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
  $which_iptables_legacy -t mangle -v -L
  echo $ralla
- echo "$rallica [ The nftables ] [ iptables-nft ] [ MANGLE ] $ralla "
+ echo "$ralla [ The nftables ] [ iptables-nft ] [ MANGLE ] $ralla "
  $which_iptables_nft -t mangle -v -L
  echo $footer_lineal
  exit; fi
@@ -3900,10 +3900,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "$ralla [ $first_option ] [ List iptables mangle ipv6 ]"
  echo $header_lineal
  echo $ralla
- echo "$rallica [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
+ echo "$ralla [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
  $which_ip6tables_legacy -t mangle -v -L
  echo $ralla
- echo "$rallica [ The nftables ] [iptables-nft ] [ MANGLE ] $ralla "
+ echo "$ralla [ The nftables ] [iptables-nft ] [ MANGLE ] $ralla "
  $which_ip6tables_nft -t mangle -v -L
  echo $footer_lineal
  exit; fi
@@ -3918,10 +3918,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "$ralla [ $first_option ] [ List iptables raw ipv4 ]"
  echo $header_lineal
  echo $ralla
- echo "$rallica  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
+ echo "$ralla  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
  $which_iptables_legacy -t raw -v -L
  echo $ralla
- echo "$rallica [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
+ echo "$ralla [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
  $which_iptables_nft -t raw -v -L
  echo $footer_lineal
  exit; fi
@@ -3937,10 +3937,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
- echo "$rallica [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
+ echo "$ralla [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
  $which_ip6tables_legacy -t raw -v -L
  echo $ralla
- echo "$rallica [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
+ echo "$ralla [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
  $which_ip6tables_nft -t raw -v -L
  echo $footer_lineal
  exit; fi
@@ -3956,10 +3956,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
- echo "$rallica [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
+ echo "$ralla [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
  $which_iptables_legacy -t security -v -L
  echo $ralla
- echo "$rallica [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
+ echo "$ralla [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
  $which_iptables_nft -t security -v -L
  echo $footer_lineal
  exit; fi
@@ -3975,10 +3975,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
- echo "$rallica [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
+ echo "$ralla [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
  $which_ip6tables_legacy -t security -v -L
  echo $ralla
- echo "$rallica [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
+ echo "$ralla [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
  $which_ip6tables_nft -t security -v -L
  echo $footer_lineal
  exit; fi
@@ -3993,10 +3993,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
- echo "$rallica [ ebtables: filter ethernet nft ] [ EBTABLES ] $ralla "
+ echo "$ralla [ ebtables: filter ethernet nft ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t filter
  echo $ralla
- echo "$rallica [ ebtables: nat ethernet nft ] [ EBTABLES ] $ralla "
+ echo "$ralla [ ebtables: nat ethernet nft ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t nat
  echo $footer_lineal
  exit; fi
