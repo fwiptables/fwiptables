@@ -2009,7 +2009,7 @@ exit; fi
 if [ "$first_option" = "depends" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List programs depends about $fiptables ]"
 echo $ralla
-echo "$cinco It are all the depends to full work in $fiptables $fversion"
+echo "$rallica [ It are all the depends to full work in $fiptables $fversion ]"
 echo $ralla
 echo "$tab [Configuration directory]"
 echo "list cfg:            $directory_config"
@@ -2026,7 +2026,6 @@ echo $ralla
 echo "$tab [$fiptables util]"
 echo "sed:       $which_sed"
 echo "fmt:       $which_fmt"
-#### echo "shc:       $which_shc"
 echo $ralla
 echo "$tab [$fiptables cli]"
 echo "dialog:    $which_dialog"
@@ -3197,7 +3196,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "examples" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show examples for $fiptables ]"
  echo $header_lineal
- echo "[ examples ] [ examples for some services in client mode ]"
+ echo $rallica "[ examples ] [ examples for some services in client mode ]"
  echo
 ####
 ####
@@ -3333,7 +3332,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "license" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show license from git sourceforge for $fiptables ]"
  echo $header_lineal
- echo "license text for gpl v2 downloading .."
+ echo $rallica "license text for gpl v2 downloading .."
  echo "$ralla" "$ralla" "$ralla"
  $favorite_text_browser -dump "$license_gpl" | more
  echo $footer_lineal
@@ -4226,7 +4225,7 @@ echo "$cinco $cinco"
 echo "$cinco    Ok. $autorizados will use:     $fiptables"
 echo "$cinco    Ok. $fiptables will use alias with sudo "
 echo "$cinco $cinco"
-echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
+echo "$rallica [ sudoer file:   /etc/sudoers.d/$fiptables ]"
 cat /etc/sudoers.d/$fiptables
 echo $footer_lineal
 exit; fi
@@ -4238,8 +4237,8 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-remove" ]; then $give_cover
 rm /etc/sudoers.d/$fiptables
-echo "$cinco deleted auth sudo"
-echo "deleted /etc/sudoers.d/$fiptables"
+echo "$cinco [ deleted auth sudo ]"
+echo "$rallica [ deleted /etc/sudoers.d/$fiptables ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -4250,8 +4249,8 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fiptables ] ; then $give_cover
 echo "$ralla [ $first_option ] [ list users with root auth for launch $fiptables ]"
-echo "$cinco With root sudo for $fiptables from some user"
-echo "$cinco sudoer file:   /etc/sudoers.d/$fiptables"
+echo "$rallica [ With root sudo for $fiptables from some user ]"
+echo "$rallica [ sudoer file:   /etc/sudoers.d/$fiptables ]"
 cat /etc/sudoers.d/$fiptables
 echo $footer_lineal
 exit; fi
@@ -4260,7 +4259,7 @@ exit; fi
 if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fiptables ] ; then $give_cover
 echo "$cinco [ list users with root auth for launch $fiptables ]"
 echo $header_lineal
-echo "$cinco Wihtout root sudo from users"
+echo "$rallica [ Wihtout root sudo from users ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -4272,7 +4271,7 @@ exit; fi
 if [ "$first_option" = "alias-list" ]; then $give_cover
 echo "$ralla [ $first_option ] [ list alias and autocomplete for $fiptables ]"
 echo $header_lineal
-echo "$cinco alias file:   /etc/bash_completion.d/$fiptables"
+echo "$rallica [ alias file:   /etc/bash_completion.d/$fiptables ]"
 cat /etc/bash_completion.d/$fiptables
 echo $footer_lineal
 exit; fi
@@ -4285,7 +4284,7 @@ exit; fi
  if [ "$first_option" = "ipforward-list" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show ip forwading in kernel ]"
  echo $header_lineal
- echo "$cinco  Active 1 or deactive 0 for ipforwading with sysctl:     $cinco"
+ echo "$rallica [ Active 1 or deactive 0 for ipforwading with sysctl:     $cinco ]"
  $which_sysctl -a | grep -i forwarding
  echo $footer_lineal
  exit; fi
@@ -4334,7 +4333,7 @@ exit; fi
  echo $header_lineal
  cat /etc/default/fwiptables
  echo $footer_lineal
- echo "$cinco edit file /etc/default/fwiptables to change variables with: $fiptables modify-default"
+ echo "$rallica [ edit file /etc/default/fwiptables to change variables with: $fiptables modify-default ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4388,7 +4387,7 @@ exit; fi
  echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
  echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
  ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | sort -u
- echo "$cinco  [OK FIREWALL NAMES]"
+ echo "$rallica [OK FIREWALL NAMES]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4402,7 +4401,7 @@ echo "$ralla [ $first_option ] [ Reset the firewall ]"
 echo $header_lineal
 $fiptables stop &> /dev/null
 $fiptables continue &> /dev/null
-echo "$cinco [OK FIREWALL RESETED]"
+echo "$rallica [OK FIREWALL RESETED]"
 echo $footer_lineal
 exit; fi
 ####
@@ -4467,24 +4466,23 @@ exit; fi
  $fiptables eraserules &> /dev/null
 ####
 ####
-#### English: Load all rules mac
+#### English: Load all rules 
 ####
 ####
- if [ -f $directory_fwrecover/$second_option-ebtables ]; then $nada
- cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore  ; fi
-####
-####
-#### English: Load all rules ip
-####
-####
+ cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore
  cat $directory_fwrecover/$second_option-nft-ipv4 |  $which_iptables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  
  cat $directory_fwrecover/$second_option-nft-ipv6 | $which_ip6tables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv6 | $which_ip6tables_legacy-restore 
  echo "$rallica [ OK FIREWALL LOADED ] [ $second_option ]"
+####
+####
+#### english: if not exists #### spanish: si no existe
+####
+####
  else
  $fiptables names
- echo "$cinco [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"
+ echo "$rallica [ usage: $fiptables load fw-to-load ] [ See: $fiptables names ]"
  fi 
 ####
 ####
@@ -4571,7 +4569,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-actual-nft-ipv6
  echo "$cincuenta legacy with ipv6 $cinco"
  cat $directory_fwrecover/fiptables-actual-legacy-ipv6
- echo "$cinco  [ OK FIREWALL READED ACTUAL ]"
+ echo "$rallica  [ OK ACTUAL FIREWALL READED ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5066,7 +5064,7 @@ $fiptables stop
  echo " Actual Memory"
  free -hw && sync
  echo 3 | $which_tee /proc/sys/vm/drop_caches &> /dev/null
- echo " Memory ram freedom .. Actual memory"
+ echo " Memory ram freedom .. Actual memory now"
  free -hw
  echo $footer_lineal
  exit; fi
@@ -5159,7 +5157,7 @@ $fiptables stop
  if [ "$first_option" = "log-fwiptables" ] ; then  $give_cover
  echo "$ralla [ $first_option ] [ show /var/log/fwiptables ]"
  cat /var/log/fwiptables
- echo "$cinco this file is /var/log/fwiptables"
+ echo "$rallica this file is /var/log/fwiptables"
  echo $footer_lineal
  exit; fi
 ####
@@ -5240,7 +5238,7 @@ $fiptables stop
  echo $header_lineal
  cat /etc/hosts
  echo $ralla
- echo "$cinco This file is /etc/hosts"
+ echo "$rallica This file is /etc/hosts"
  echo $footer_lineal
  exit; fi
 ####
@@ -5254,7 +5252,7 @@ $fiptables stop
  echo $header_lineal
  cat /etc/protocols  | sed s/\&//g 
  echo $ralla
- echo "$cinco This file is /etc/protocols"
+ echo "$rallica This file is /etc/protocols"
  echo $footer_lineal
  exit; fi
 ####
@@ -5268,7 +5266,7 @@ $fiptables stop
  echo $header_lineal
  cat /etc/services | sed s/\&//g 
  echo $ralla
- echo "$cinco This file is /etc/services"
+ echo "$rallica This file is /etc/services"
  echo $footer_lineal
  exit; fi
 ####
@@ -5282,7 +5280,7 @@ $fiptables stop
  echo $header_lineal
  cat /etc/hosts.allow
  echo $ralla
- echo "$cinco This file is /etc/hosts.allow"
+ echo "$rallica This file is /etc/hosts.allow"
  echo $footer_lineal
  exit; fi
 ####
@@ -5296,7 +5294,7 @@ $fiptables stop
  echo $header_lineal
  cat /etc/hosts.deny
  echo $ralla
- echo "$cinco This file is /etc/hosts.deny"
+ echo "$rallica This file is /etc/hosts.deny"
  echo $footer_lineal
  exit; fi
 ####
@@ -5310,7 +5308,7 @@ $fiptables stop
  echo $header_lineal
  cat /etc/resolv.conf
  echo $ralla
- echo "$cinco This file is /etc/resolv.conf"
+ echo "$rallica This file is /etc/resolv.conf"
  echo $footer_lineal
  exit; fi
 ####
@@ -5434,7 +5432,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ Doing bandwidth in ipv4 to $server_iperf_ipv4 ] [ with max $server_waiting seconds ]"
+ echo "$rallica [ Doing bandwidth in ipv4 to $server_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
  $which_iperf -c $server_iperf_ipv4 -t 4 -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
@@ -5463,7 +5461,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ Doing bandwidth in ipv6 to $server_iperf_ipv6 ] [ with max $server_waiting seconds ]"
+ echo "$rallica [ Doing bandwidth in ipv6 to $server_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
  $which_iperf -c $server_iperf_ipv6 -V -t 4 -P 4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
@@ -5989,7 +5987,7 @@ exit; fi
 ####
 ####
 if [ "$launch_iptables" = "" ] ; then $nada ; else 
-echo "$cinco Selecting default option"; "$fiptables" "$default_option" ; exit ; fi
+echo "$rallica Selecting default option .. "; "$fiptables" "$default_option" ; exit ; fi
 ####
 ####
 ###############################################################################################################
