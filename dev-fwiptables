@@ -52,7 +52,7 @@ default_option="full-options"         ## fwiptables-default ## default: full-opt
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy=""                       ## fwiptables-default ## void or no
-allow_nft=""                        ## fwiptables-default ## void or no
+allow_nft="no"                        ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
 ####       #### english: allow QUESTIONS to answer: yes
@@ -1156,7 +1156,7 @@ if [ "$first_option" = "custom" ]; then
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fiptables cfg 
 echo "$cinco Usage: $fiptables custom existent-file-cfg"
-echo "$cinco See:   $fiptables tool-cfg"; fi ; fi
+echo "$cinco See:   $fiptables tool-custom"; fi ; fi
 ####
 ####
 ##############################       english: basic-options: wellcome with semi help
@@ -1183,7 +1183,7 @@ echo "$tab" "$tab"  "    show-etc           show-default modify-default ..      
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda group-options basic-options ..   "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  "    Too: tool-cfg tool-forward tool-nmap tool-install tool-system show-log   " 
+echo "$tab" "$tab"  "    Too: tool-custom tool-forward tool-nmap tool-install tool-system show-log" 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo "$tab" "$tab"  
@@ -1219,7 +1219,7 @@ echo
 echo "$tab" "$tab"  "______________________                | config options |                     " 
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "                       clientweb serverweb gamesudp samba                    "
-echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "    tool-custom        new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo
@@ -1297,7 +1297,7 @@ echo "$cinco [ Secondary options ] $cinco"
 echo 
 $fiptables launch-rules
 echo
-$fiptables tool-cfg
+$fiptables tool-custom
 echo
 $fiptables tool-sockets
 echo
@@ -1393,7 +1393,7 @@ echo "                  [ Secondary options ]"
 echo
 echo "  launch-rules:  Launch the iptables firewall rules"
 echo "              :  Lanza las reglas de iptables"
-echo "      tool-cfg:  Create, modify and show configurations"
+echo "   tool-custom:  Create, modify and show configurations"
 echo "              :  Crea, modifica y muestra configuraciones"
 echo "  tool-sockets:  List net sockets ip in system"
 echo "              :  Lista sockets de red ip en el sistema"
@@ -1569,12 +1569,12 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-##############################       english: tool-cfg: options
-##############################       spanish: tool-cfg: opciones
+##############################       english: tool-custom: options
+##############################       spanish: tool-custom: opciones
 ####
 ####
-if [ "$first_option" = "tool-cfg" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool config ]"
+if [ "$first_option" = "tool-custom" ]; then $give_cover
+echo "$ralla [ $first_option ] [ tool custom config ]"
 echo "$rallica [ Tool configs ]"
 echo "$rallica [ Herramienta de configuraciones ]"
 echo
@@ -2249,7 +2249,7 @@ if [ "$first_option" = "gui-menu" ] ; then $genfiles
 echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool config" \
+ --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool custom" \
 "06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool install" "11 Tool system" \
  "12 Show etc" "13 Show log" "14 Show about" "15 Show help" \
 --column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
@@ -2261,7 +2261,7 @@ case "$selection" in
 "02 Control rules")$fiptables gui-menu-control-rules;;
 "03 List rules")$fiptables gui-menu-list-rules;;
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
-"05 Tool config")$fiptables gui-menu-tool-config;;
+"05 Tool custom")$fiptables gui-menu-tool-config;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
 "07 Tool icmp")$fiptables gui-menu-tool-icmp;;
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
@@ -2313,7 +2313,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-launch-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "eraserules" "offline" "allpermisive" \
-"clientweb" "serverweb" "gamesudp" "custom cfg" \
+"clientweb" "serverweb" "gamesudp" "samba" "custom cfg" \
 --column="Option list $fiptables" --text="Select one option" \
 --title="[Launch Rules] [$fiptables]")
 #### 
@@ -2327,6 +2327,7 @@ case "$selection" in
 "clientweb") $fiptables -gui clientweb ; $fiptables gui list ;;
 "serverweb") $fiptables -gui serverweb ; $fiptables gui list ;;
 "gamesudp") $fiptables -gui gamesudp ; $fiptables gui list ;;
+"samba") $fiptables -gui samba ; $fiptables gui list ;;
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fiptables -gui custom $archivo ; $fiptables gui list ;;
 #### 
@@ -2931,8 +2932,9 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   64  "clientweb" \
   65  "serverweb" \
   66  "gamesudp" \
-  65  "custom cfg" \
-  070 "$cinco [ Tool configurations cfg ] $cinco" \
+  67  "samba" \
+  68  "custom cfg" \
+  070 "$cinco [ Tool custom configurations cfg ] $cinco" \
   71  "new-full-config" \
   72  "nueva-completa-config" \
   73  "new-mini-config" \
@@ -3051,13 +3053,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  56) clear ; $fiptables "security-ip6" | less ;;
  57) clear ; $fiptables "ebtables" | less ;;
  58) clear ; $fiptables "arptables" | less ;;
- 61) clear ; $fiptables "eraserules" ;;
- 62) clear ; $fiptables "offline";;
- 63) clear ; $fiptables "allpermisive" ;;
- 64) clear ; $fiptables "clientweb" ;;
- 65) clear ; $fiptables "serverweb" ;;
- 66) clear ; $fiptables "gamesudp" ;; 
- 67) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 61) clear ; $fiptables "eraserules" ; $fiptables list  ;;
+ 62) clear ; $fiptables "offline" ; $fiptables list ;;
+ 63) clear ; $fiptables "allpermisive" ; $fiptables list  ;;
+ 64) clear ; $fiptables "clientweb" ; $fiptables list  ;;
+ 65) clear ; $fiptables "serverweb" ; $fiptables list  ;;
+ 66) clear ; $fiptables "gamesudp" ; $fiptables list  ;; 
+ 67) clear ; $fiptables "samba" ; $fiptables list ;;
+ 68) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fiptables custom $archivo ;;
  71) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
