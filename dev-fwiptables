@@ -106,7 +106,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.72" ;                                                   
+fversion="1.72-Azuzena" ;                                           
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -1132,17 +1132,19 @@ exit ; fi
 ####   #### spanish: El primero       cortafuego del sistema
 ####
 ####
-if [ "$first_option" = "offline" ];      then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
+if [ "$first_option" = "offline" ];       then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "allpermisive" ]; then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
+if [ "$first_option" = "allpermisive" ];  then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "clientweb" ];      then $give_cover; echo "$cinco  FIREWALL CLIENTWEB" ;
+if [ "$first_option" = "clientweb" ];     then $give_cover; echo "$cinco  FIREWALL CLIENTWEB" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverweb" ];      then $give_cover; echo "$cinco  FIREWALL SERVERWEB" ;
+if [ "$first_option" = "serverweb" ];     then $give_cover; echo "$cinco  FIREWALL SERVERWEB" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "gamesudp" ];      then $give_cover; echo "$cinco  FIREWALL GAMESUDP" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "custom" ];       then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
+if [ "$first_option" = "samba" ];         then $give_cover; echo "$cinco  FIREWALL SAMBA" ;
+launch_iptables="" ;     config_variable_version="2"  ;  fi
+if [ "$first_option" = "custom" ];        then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
 launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 ####
 ####
@@ -1215,8 +1217,8 @@ echo "$tab" "$tab"  "                       security-ip4 security-ip6 ebtables a
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo
 echo "$tab" "$tab"  "______________________                | config options |                     " 
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
-echo "$tab" "$tab"  "                       clientweb serverweb                                   "
+echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
+echo "$tab" "$tab"  "                       clientweb serverweb gamesudp samba                    "
 echo "$tab" "$tab"  "    tool-cfg           new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
@@ -6236,7 +6238,7 @@ echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL CLIENTWEB ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables serverweb:
-########################################     spanish: ipv4 iptables serverweb:
+########################################     spanish: ipv4 iptables serverweb
 ####
 ####
 #### legacy ip4
@@ -6293,8 +6295,8 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables allssh
-########################################     spanish: ipv6 iptables todossh
+########################################     english: ipv6 iptables serverweb:
+########################################     spanish: ipv6 iptables serverweb 
 ####
 ####
 #### legacy ip6
@@ -6365,6 +6367,158 @@ $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/nu
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
 echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL SERVERWEB ]"
+exit; fi
+####
+####
+########################################     english: ipv4 iptables samba:
+########################################     spanish: ipv4 iptables samba
+####
+####
+#### legacy ip4
+####
+####
+if [ "$first_option" = "samba" ]; then $fiptables eraserules ; echo $head_principal
+client_tcp="http,https,ssh,microsoft-ds" ;
+client_udp="domain,bootpc,ntp,https,137:139" ;
+server_tcp="ssh,microsoft-ds" ; 
+server_udp="ntp,domain,137:139" ; 
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p udp -m multiport --sports $client_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip4
+####
+####
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p udp -m multiport --sports $client_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p tcp -m multiport --sports $client_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports $client_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p tcp -m multiport --dports $client_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+########################################     english: ipv6 iptables serversamba:
+########################################     spanish: ipv6 iptables serversamba 
+####
+####
+#### legacy ip6
+####
+####
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
+-p udp -m multiport --sports $client_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports $server_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip6
+####
+####
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
+-p udp -m multiport --sports $client_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
+-p udp -m multiport --dports $server_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
+-p tcp -m multiport --sports $client_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --dports $client_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --dports $client_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_tcp -j ACCEPT &> /dev/null
+####
+####
+#### english: close #### spanish cierra 
+####
+####
+$allow_legacy $allow_ipv6 $which_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $which_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $which_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OUTPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $which_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL SERVERSAMBA ]"
 exit; fi
 ####
 ####
