@@ -6029,7 +6029,7 @@ $give_autosave
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules
+if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules ; echo $head_principal
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6110,7 +6110,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allweb" ]; then $fiptables eraserules
+if [ "$first_option" = "allweb" ]; then $fiptables eraserules ; echo $head_principal
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6222,7 +6222,7 @@ echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL ALLWEB ]" ; exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allssh" ]; then $fiptables eraserules
+if [ "$first_option" = "allssh" ]; then $fiptables eraserules ; echo $head_principal
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6338,7 +6338,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "gamesudp" ]; then $fiptables eraserules
+if [ "$first_option" = "gamesudp" ]; then $fiptables eraserules ; echo $head_principal
 ####
 ####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
@@ -6478,7 +6478,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "offline" ]; then $fiptables eraserules
+if [ "$first_option" = "offline" ]; then $fiptables eraserules ; echo $head_principal
 ####
 ####
 $allow_legacy $allow_ipv4  $which_iptables_legacy -A INPUT  \
