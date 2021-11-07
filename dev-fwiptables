@@ -52,7 +52,7 @@ default_option="full-options"         ## fwiptables-default ## default: full-opt
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy=""                       ## fwiptables-default ## void or no
-allow_nft="no"                        ## fwiptables-default ## void or no
+allow_nft=""                        ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
 ####       #### english: allow QUESTIONS to answer: yes
@@ -6349,6 +6349,30 @@ $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
 ####
 ####
+#### english: allow ping 
+#### spanish: permite ping
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy   -A INPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft   -A INPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy   -A OUTPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft   -A OUTPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
 #### english: close #### spanish cierra 
 ####
 ####
@@ -6501,7 +6525,32 @@ $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_tcp -j ACCEPT &> /dev/null
 ####
 ####
-#### english: close #### spanish cierra 
+#### english: allow ping 
+#### spanish: permite ping
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy   -A INPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft   -A INPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $which_iptables_legacy   -A OUTPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft   -A OUTPUT \
+-p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
+-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+####
+####
+#### english: close 
+#### spanish cierra 
 ####
 ####
 $allow_legacy $allow_ipv6 $which_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
