@@ -48,42 +48,42 @@ sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: option for default when there is an invalid option
 ####       #### spanish: opcion por defecto cuando no hay una valida opcion
-default_option="basic-options"           ## fwiptables-default ## default: full-options
-####       #### english: for all predefined system firewall except cfg y wizard
-####       #### spanish: para todos los predefinidos cortafuegos de sistema excepto cfg y wizard
+default_option="full-options"         ## fwiptables-default ## default: full-options
+####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
+####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy=""                       ## fwiptables-default ## void or no
 allow_nft="no"                        ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
-####       #### english: allow questions to answer: yes
-####       #### spanish: permitir preguntas con respuesta: yes
+####       #### english: allow QUESTIONS to answer: yes
+####       #### spanish: permitir PREGUNTAS con respuesta: yes
 allow_question="no"                   ## fwiptables-default ## void or no
-####       #### english: allow info header in each option    
-####       #### spanish: permitir informacion de cabecera en cada opcion
+####       #### english: allow info HEADER in each option    
+####       #### spanish: permitir informacion de CABECERA en cada opcion
 allow_header=""                       ## fwiptables-default ## void or no
-####       #### english: void to autosave fwrecover or no 
-####       #### spanish: autoguardar fwrecover o no
+####       #### english: void to AUTOSAVE fwrecover or no 
+####       #### spanish: AUTOGUARDAR fwrecover o no
 autosave_fwrecover=""                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
-####       #### english: ping server for default         
-####       #### spanish: servidor de ping por defecto    
+####       #### english: PING server for default         
+####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-default ## default fast.com
 server_ping_ipv6="fast.com"           ## fwiptables-default ## default fast.com
-####       #### english: traceroute server for default         
-####       #### spanish: servidor de traceroute por defecto    
+####       #### english: TRACEROUTE server for default         
+####       #### spanish: servidor de TRACEROUTE por defecto    
 server_traceroute_ipv4="fast.com"     ## fwiptables-default ## default fast.com
 server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
-####       #### english: iperf server for default for test speed                 
-####       #### spanish: servidor de iperf por defecto para testear velocidad    
+####       #### english: iperf server for default for test net SPEED                 
+####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 server_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
 server_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
-####       #### english: zenity graphic redimension        
-####       #### spanish: redimensiones graficas de zenity  
+####       #### english: zenity GRAPHIC DIMENSIONS        
+####       #### spanish: DIMESIONES GRAFICAS de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
-####       #### english: url streaming audio for default
-####       #### spanish: direccion de audio de internet por defecto
+####       #### english: RADIO URL streaming audio for default
+####       #### spanish: direccion de RADIO DE INTERNET por defecto
 radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   ## fwiptables-default ## streaming url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" 
@@ -5224,7 +5224,7 @@ $fiptables stop
  echo $header_lineal
  case $favorite_text_browser in 
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
- echo "$cinco list new-versions in the last week with browser $favorite_text_browser"
+ echo "$rallica list new-versions in the last week with browser $favorite_text_browser"
  echo $ralla
  $favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
  echo $footer_lineal
