@@ -881,9 +881,9 @@ case "$NULL" in
 "$allow_forward_ip6");; 
 *)allow_forward_ip6="no";;
 "$allow_gateway_ip4");; 
-*)allow_gateway="no";;
+*)allow_gateway_ip4="no";;
 "$allow_gateway_ip6");; 
-*)allow_gateway="no";;
+*)allow_gateway_ip6="no";;
 "$allow_only_output");; 
 *)allow_only_output="no";;
 "$allow_input_all");; 
@@ -6881,7 +6881,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$fiptables eraserules
+"$fiptables" eraserules
 ####
 ####
 #######################################        english: ebtables mac rules
@@ -7512,17 +7512,46 @@ $which_ip6tables_legacy -t nat -F
 #### spanish: hace nat masquerade ip4 y ip6 PERMITIR GATEWAY
 ####
 ####
-$allow_nft $allow_ipv4 $allow_gateway_ipv4 $which_iptables_nft -t nat \
--A POSTROUTING -j MASQUERADE      &>/dev/null
-$allow_legacy $allow_ipv4 $allow_gateway_ipv4 $which_iptables_legacy -t nat \
--A POSTROUTING -j MASQUERADE   &>/dev/null
+ $allow_nft    $allow_ipv4    $allow_gateway_ip4 $which_iptables_nft -t nat \
+ -A POSTROUTING -j MASQUERADE &>/dev/null
+ $allow_legacy $allow_ipv4 $allow_gateway_ip4 $which_iptables_legacy -t nat \
+ -A POSTROUTING -j MASQUERADE &>/dev/null
 ####
 ####
-$allow_nft $allow_ipv6 $allow_gateway_ipv6 $which_ip6tables_nft -t nat \
+$allow_nft $allow_ipv6 $allow_gateway_ip6 $which_ip6tables_nft -t nat \
 -A POSTROUTING -j MASQUERADE     &>/dev/null
-$allow_legacy $allow_ipv6 $allow_gateway_ipv6 $which_ip6tables_legacy -t nat \
--A POSTROUTING -j MASQUERADE  &>/dev/null
-
+$allow_legacy $allow_ipv6 $allow_gateway_ip6 $which_ip6tables_legacy -t nat \
+-A POSTROUTING -j MASQUERADE     &>/dev/null
+####
+####
+ $allow_nft $allow_ipv4    $allow_gateway_ip4 $which_iptables_nft -t nat \
+ -A PREROUTING -j ACCEPT      &>/dev/null
+ $allow_legacy $allow_ipv4     $allow_gateway_ip4 $which_iptables_legacy -t nat \
+ -A PREROUTING -j ACCEPT   &>/dev/null
+####
+####
+$allow_nft $allow_ipv6 $allow_gateway_ip6 $which_ip6tables_nft -t nat \
+-A PREROUTING -j ACCEPT     &>/dev/null
+$allow_legacy $allow_ipv6 $allow_gateway_ip6 $which_ip6tables_legacy -t nat \
+-A PREROUTING -j ACCEPT  &>/dev/null
+####
+####
+####
+####
+#### english: do DMZ nat ip4 and ip6 ALLOW GATEWAY SERVER IN LAN
+#### spanish: hace nat DMZ ip4 y ip6 PERMITIR GATEWAY SERVER IN LAN
+####
+####
+$allow_nft    $allow_ipv4    $allow_dmz_ip4 $which_iptables_nft -t nat \
+-A PREROUTING -j DNAT --to-destination $config_dmz_ip4   &>/dev/null
+$allow_legacy $allow_ipv4    $allow_dmz_ip4 $which_iptables_legacy -t nat \
+-A PREROUTING -j DNAT --to-destination $config_dmz_ip4   &>/dev/null
+####
+####
+$allow_nft $allow_ipv6    $allow_dmz_ip6 $which_ip6tables_nft -t nat \
+-A PREROUTING -j DNAT --to-destination $config_dmz_ip6      &>/dev/null
+$allow_legacy $allow_ipv6 $allow_dmz_ip6 $which_ip6tables_legacy -t nat \
+-A PERROUTING -j DNAT --to-destination $config_dmz_ip6   &>/dev/null
 ####
 ####
 ######################################## english: iptables ipv4 and ipv6 with forward rules ALLOW FORWARD
