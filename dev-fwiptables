@@ -1444,8 +1444,8 @@ echo "    serverweb: Launch a firewall like server web and ssh"
 echo "             : Lanza un firewall como servidor web y ssh"
 echo "     gamesudp: Launch a firewall like client games for udp non-root"
 echo "             : Lanza un firewall como cliente juegos udp no-root"
-echo "        samba: Launch a firewall samba client and server"
-echo "             : Lanza un firewall sambla cliente y servidor"
+echo "        samba: Launch a firewall samba and ssh like client and server"
+echo "             : Lanza un firewall sambla y ssh como cliente y servidor"
 echo "          cfg: Alias a custom"
 echo "             : Apodo a custom"
 echo "       custom: Configure one custom firewall with one file cfg"
@@ -5596,11 +5596,12 @@ echo
 echo "$cinco         [Launch iptables rules]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
-echo "      offline: Disconected for all servers and clients except localhost"
-echo " allpermisive: Configure a firewall very permisive"
-echo "    clientweb: Configure a firewall like web and ssh client"
-echo "    serverweb: Configure a firewall like web and ssh server"
-echo "     gamesudp: Configure a firewall like games udp non-root games"
+echo "      offline: Launch disconected firewall for all servers and clients except localhost"
+echo " allpermisive: Launch a firewall very permisive"
+echo "    clientweb: Launch a firewall like web client and ssh client"
+echo "    serverweb: Launch a firewall like web server and ssh server"
+echo "     gamesudp: Launch a firewall like games udp non-root games"
+echo "        samba: Launch a firewall like server and client for samba and ssh"
 echo "       custom: Configure one custom firewall, made for you with file.cfg"
 echo
 echo "$cinco         [tool config]"
@@ -5840,12 +5841,13 @@ echo
 echo "$cinco         [Lanza reglas de iptables]"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
-echo "      offline: Desconecta el cortafuegos de todo excepto localhost"
-echo "    clientweb: Configura el cortafuegos como cliente web y ssh"
-echo "    serverweb: Configura el cortafuegos como servidor web y ssh"
-echo "    games-udp: Configura el cortafuegos como cliente juegos udp no-root"
-echo " allpermisive: Configura el cortafuegos muy permisivo"
-echo "       custom: Configura el cortafuegos especificando un archivo.cfg"
+echo "      offline: Lanza un desconectado cortafuegos de todo excepto localhost"
+echo " allpermisive: Lanza el cortafuegos muy permisivo"
+echo "    clientweb: Lanza el cortafuegos como cliente web y ssh"
+echo "    serverweb: Lanza el cortafuegos como servidor web y ssh"
+echo "     gamesudp: Lanza el cortafuegos como cliente de juegos udp no-root"
+echo "        samba: Lanza un cortafuegos como servidor y cliente samba y ssh"
+echo "       custom: lanza el cortafuegos especificando un archivo.cfg"
 echo
 echo "$cinco         [Herramienta de configuraciones]"
 echo
@@ -6409,7 +6411,7 @@ exit; fi
 if [ "$first_option" = "samba" ]; then $fiptables eraserules ; echo $head_principal
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
 client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
-server_tcp="ssh,microsoft-ds,ldap,ldaps" ; 
+server_tcp="ssh,ldap,ldaps,microsoft-ds" ; 
 server_udp="ntp,domain,ldap,ldaps,137:139" ; 
 ####
 ####
