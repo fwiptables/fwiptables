@@ -1165,14 +1165,14 @@ echo "$cinco See:   $fiptables tool-custom"; fi ; fi
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ]"
-echo 
-echo "$tab" "$tab"  "                       ______________| Principal options |___________________"
+echo "$tab" "$tab"  "   | Group options|                | Principal options |                     "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4  ..        "
-echo
-echo "$tab" "$tab"  "                       ______________| Other options |_______________________"
+echo "$tab" "$tab"  "                                   | Other options |                         "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "                       clientweb serverweb gamesudp samba                    "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
@@ -1183,7 +1183,8 @@ echo "$tab" "$tab"  "    show-etc           show-default modify-default ..      
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda group-options basic-options ..   "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  "    Too: tool-custom tool-forward tool-nmap tool-install tool-system show-log" 
+echo "$tab" "$tab"  "    Too other groups:  tool-custom tool-forward tool-nmap                    " 
+echo "$tab" "$tab"  "                       tool-install tool-system show-log                     " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo "$tab" "$tab"  
