@@ -6407,10 +6407,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "samba" ]; then $fiptables eraserules ; echo $head_principal
-client_tcp="http,https,ssh,microsoft-ds" ;
-client_udp="domain,bootpc,ntp,https,137:139" ;
-server_tcp="ssh,microsoft-ds" ; 
-server_udp="ntp,domain,137:139" ; 
+client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
+client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
+server_tcp="ssh,microsoft-ds,ldap,ldaps" ; 
+server_udp="ntp,domain,ldap,ldaps,137:139" ; 
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
