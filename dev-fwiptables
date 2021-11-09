@@ -54,7 +54,7 @@ default_option="full-options"         ## fwiptables-default ## default: full-opt
 allow_legacy=""                       ## fwiptables-default ## void or no
 allow_nft="no"                        ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
-allow_ipv6=""                         ## fwiptables-default ## void or no
+allow_ipv6="no"                         ## fwiptables-default ## void or no
 ####       #### english: allow QUESTIONS to answer: yes
 ####       #### spanish: permitir PREGUNTAS con respuesta: yes
 allow_question="no"                   ## fwiptables-default ## void or no
@@ -6851,8 +6851,10 @@ fi
 ##############################      spanish: estado selectivo de entrada/salida        #####################
 ####
 ####
-if [ "$allow_input_state" = "$NULL" ]  ; then config_input_state="-m state --state $input_state"   ; else config_input_state="$NULL"  ; fi
-if [ "$allow_output_state" = "$NULL" ] ; then config_output_state="-m state --state $output_state" ; else config_output_state="$NULL" ; fi
+if [ "$allow_input_state" = "$NULL" ]  ; then config_input_state="-m state --state $config_input_state"   ;
+else config_input_state="$NULL"  ; fi
+if [ "$allow_output_state" = "$NULL" ] ; then config_output_state="-m state --state $config_output_state" ;
+else config_output_state="$NULL" ; fi
 ####
 ####
 ##############################      english: output_uid or output_gid for input established status        #####################
@@ -7102,58 +7104,58 @@ done
 #### ipv4 legacy
 ####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
--p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A INPUT \
--p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
--p udp -m multiport $output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
--p tcp -m multiport $output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_nft $allow_ipv4     $which_iptables_nft -A INPUT \
--p udp -m multiport $input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv4     $which_iptables_nft -A INPUT \
--p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv     $which_iptables_nft -A OUTPUT \
--p udp -m multiport $output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv     $which_iptables_nft -A OUTPUT \
--p tcp -m multiport $output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT \
--p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A INPUT \
--p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport $output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport $output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT \
--p udp -m multiport $input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A INPUT \
--p tcp -m multiport $input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv6_client -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport $output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT &> /dev/null
+-p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv6_client -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
--p tcp -m multiport $output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT &> /dev/null
+-p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv6_client -j ACCEPT &> /dev/null
 ####
 ####
 ####################################### english: rules to log servers
