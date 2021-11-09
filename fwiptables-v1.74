@@ -3517,12 +3517,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-#############################      english: list-allrules: active ip forward
-#############################      spanish: list-allrules: activa ip forward
+#############################      english: list-allrules: list all rules
+#############################      spanish: list-allrules: list all rules 
 ####
 ####
- if [ "$first_option" = "list-allrules" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Deactive ip forwading in kernel ]"
+ if [ "$first_option" = "list-allrules" ]; then  $nada
+ echo "$ralla [ $first_option ] [ List all rules ]"
  echo $header_lineal
  $fiptables ebtables
  $fiptables filter-ip4
