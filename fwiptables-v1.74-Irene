@@ -23,7 +23,7 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####  #### code for add xhost to root for graphicall use
 which_id="$(which id)"
 ####
-if [ "$($which_id -u)" = "0" ]; then
+if [ -n "$($which_id -u)" ] && [ "$($which_id -u)" = "0" ]; then
 sudo -u "$(logname)" xhost +SI:localuser:root &> /dev/null
 sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
 fi
