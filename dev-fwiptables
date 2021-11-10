@@ -5211,7 +5211,7 @@ $fiptables stop
  if [ "$first_option" = "log-fwiptables" ] ; then  $give_cover
  echo "$ralla [ $first_option ] [ show /var/log/fwiptables ]"
  cat /var/log/fwiptables
- echo "$rallica this file is /var/log/fwiptables"
+ echo "$ralla [ this file is /var/log/fwiptables ]"
  echo $footer_lineal
  exit; fi
 ####
