@@ -63,6 +63,9 @@ allow_question="no"                   ## fwiptables-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
 allow_header=""                       ## fwiptables-default ## void or no
+####       #### english: void to AUTOLOG one line from command launched
+####       #### spanish: vacio para AUTOLOG del comando lanzado o no
+allow_autolog=""                 ## fwiptables-default ## void or no
 ####       #### english: void to AUTOSAVE fwrecover or no 
 ####       #### spanish: AUTOGUARDAR fwrecover o no
 autosave_fwrecover=""                 ## fwiptables-default ## void or no
@@ -138,9 +141,11 @@ prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal="$prehead_principal [ $first_option ] " ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_default="$cinco [ For default option: $fiptables show-default ] [ default: $default_option ]"                
+head_default="$cinco [ For default option: $fiptables show-default ] [ default: $default_option ]"             
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ For the usage list:  $fiptables options ]"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+head_autolog="[ $fiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -365,14 +370,25 @@ if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 if [ "$first_option" = "options" ]; then first_option="full-options"; fi
 ####
 ####
-##############################     english: header_actual headers       ###################################
-##############################     spanish: header_actual cabeceras  ###################################
+##############################     english: autolog:         ###################################
+##############################     spanish: autoguardado     ###################################
 ####
 ####
-
+####   english: autolog  #### spanish: autoguardado
 ####
 ####
-#### clear
+if [ "$first_option" != "header" ] ; then
+if [ "$allow_autolog" = "no" ]   ; then echo $nada
+else echo $head_autolog >> /var/log/fwiptables ; fi; fi
+####
+####
+##############################     english: allow header          ###################################
+##############################     spanish: permite cabeceras     ###################################
+####
+####
+#### english:  allow_header: #### spanish permitir cabecera
+####
+####
 if [ "$first_option" = "header" ] ; then
 if [ "$allow_header" = "no" ]   ; then 
 echo "$head_normal" 
@@ -3377,6 +3393,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "eraserules" ]; then $nada 
+ #### give_cover to null, so you can head_autolog.
+ $give_cover &> /dev/null
  echo $head_principal
  echo $header_lineal
  $which_ebtables -t filter -F
