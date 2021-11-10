@@ -588,9 +588,9 @@ spa57=$(echo "$cinco vacio para permitir otro PROTOCOLO-IP excepcional o no" )
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var58=$(echo "$cinco Begin Variables #" )
-eng58=$(echo "$cinco Fill Variables#" )
-spa58=$(echo "$cinco Rellena Variables #" )
+var58=$(echo "$cinco Begin Variables #.......... .......... #.........." )
+eng58=$(echo "$cinco Fill Variables" )
+spa58=$(echo "$cinco Rellena Variables" )
 var59=$(echo "$cinco Options" )
 eng59=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
