@@ -1125,7 +1125,8 @@ chmod ugo+rx /tmp/$fiptables &> /dev/null
 #### Spanish: lanza instalacion
 ####
 ####
-/tmp/$fiptables install
+if [ -s "/tmp/$fiptables" ]; then /tmp/$fiptables install; rm /tmp/$fiptables
+else "$rallica Install fail"; fi
 echo $footer_lineal
 exit ; fi
 ####
