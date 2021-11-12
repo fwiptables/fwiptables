@@ -5191,7 +5191,7 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "gl-speed" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ test gl mesa3D speed ]"
+ echo "$ralla [ $first_option ] [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
  echo $header_lineal
  case $which_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
  vblank_mode=0  timeout -s SIGINT -v $server_waiting $which_glxgears
