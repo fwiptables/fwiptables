@@ -6915,7 +6915,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-"$fiptables" eraserules
+$fiptables eraserules
 ####
 ####
 #######################################        english: ebtables mac rules
@@ -6956,6 +6956,8 @@ $allow_nft  $which_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT &> /dev/null
 ####
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
+####
+####
 $allow_ipv4 $allow_legacy $allow_input_bandwidth $which_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
 --hashlimit-name maxinputlegacy  -j DROP &> /dev/null
@@ -7195,10 +7197,6 @@ $allow_nft  $allow_ipv6 $which_ip6tables_nft -A OUTPUT \
 ####
 ####
 #### ipv4
-####
-####
-
-
 ####
 ####
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT  \
@@ -7574,10 +7572,10 @@ done
 #### spanish: borrado nat
 ####
 ####
-$which_iptables_nft -t nat -F
-$which_iptables_legacy -t nat -F
-$which_ip6tables_nft -t nat -F
-$which_ip6tables_legacy -t nat -F
+#### $which_iptables_nft -t nat -F
+#### $which_iptables_legacy -t nat -F
+#### $which_ip6tables_nft -t nat -F
+#### $which_ip6tables_legacy -t nat -F
 ####
 ####
 #### english: do masquerade nat ip4 and ip6 ALLOW GATEWAY
