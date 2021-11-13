@@ -111,7 +111,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.76" ;                                            
+fversion="1.76-Laura" ;                                            
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -1221,13 +1221,13 @@ echo "$tab" "$tab"  "                       tool-install tool-system show-log   
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini           "
-echo "$tab" "$tab"  "  Save iptables rules with one name :#      $fiptables save name             "
-echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
-echo "$tab" "$tab"  "  List iptables rules :#                    $fiptables list                  "
-echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
-echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
-echo "$tab" "$tab"  "  For more options:#                        $fiptables full-options          "
+echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
+echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
+echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
+echo "$tab" "$tab"  "  List iptables rules :                     $fiptables list                  "
+echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
+echo "$tab" "$tab"  "  Load iptables rules to output gui :       $fiptables -gui load name        "
+echo "$tab" "$tab"  "  For more options :                        $fiptables full-options          "
 echo $footer_lineal
 exit ; fi
 ####
@@ -1279,13 +1279,13 @@ echo
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
-echo "$tab" "$tab"  "  Generate new iptables rules :#            $fiptables wizard-mini           "
-echo "$tab" "$tab"  "  Save iptables rules with one name :#      $fiptables save name             "
-echo "$tab" "$tab"  "  List names from all firewall saved :#     $fiptables names                 "
-echo "$tab" "$tab"  "  List iptables rules :#                    $fiptables list                  "
-echo "$tab" "$tab"  "  Load iptables rules to output log :#      $fiptables -log load name        "
-echo "$tab" "$tab"  "  Load iptables rules to output gui :#      $fiptables -gui load name        "
-echo "$tab" "$tab"  "  For less options:#                        $fiptables basic-options         "
+echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
+echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
+echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
+echo "$tab" "$tab"  "  List iptables rules :                     $fiptables list                  "
+echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
+echo "$tab" "$tab"  "  Load iptables rules to output gui :       $fiptables -gui load name        "
+echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
 echo $footer_lineal
 exit ; fi
 ####
