@@ -3452,6 +3452,18 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ebtables -t nat -P PREROUTING ACCEPT
  $which_ebtables -t nat -P OUTPUT ACCEPT 
  $which_ebtables -t nat -P POSTROUTING ACCEPT
+ $which_iptables_nft -t filter -A INPUT ACCEPT
+ $which_iptables_nft -t filter -A FORWARD ACCEPT
+ $which_iptables_nft -t filter -A OUTPUT ACCEPT
+ $which_ip6tables_nft -t filter -A INPUT ACCEPT
+ $which_ip6tables_nft -t filter -A FORWARD ACCEPT
+ $which_ip6tables_nft -t filter -A OUTPUT ACCEPT
+ $which_iptables_legacy -t filter -A INPUT ACCEPT
+ $which_iptables_legacy -t filter -A FORWARD ACCEPT
+ $which_iptables_legacy -t filter -A OUTPUT ACCEPT
+ $which_ip6tables_legacy -t filter -A INPUT ACCEPT
+ $which_ip6tables_legacy -t filter -A FORWARD ACCEPT
+ $which_ip6tables_legacy -t filter -A OUTPUT ACCEPT
 ####
 ####
  echo "$rallica [ OK FIREWALL ERASED ] [ DELETED RULES ]"
