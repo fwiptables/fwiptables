@@ -143,7 +143,7 @@ head_principal="$prehead_principal [ $first_option ] " ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ For default option: $fiptables show-default ] [ default: $default_option ]"             
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_normal="$cinco [ For the usage list:  $fiptables options ]"
+head_normal="$cinco [ For the usage list:  $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -246,6 +246,28 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ####
 ####
+##############################       english: list-config: list some config
+##############################       spanish: list-config: lista alguna config
+####
+####
+if [ "$first_option" = "intro" ]; then $nada
+echo
+echo "--------------------------------------------------------------------------"
+echo "  FRAN INTRO "
+echo 
+echo "  Fran Firewall use to configure both iptables netfilter. "
+echo "  With xtables and/or nftables. with ipv4 and/or ipv6.    "
+echo "  Create one firewall with a wizard and save it.          "
+echo "  Configure one firewall with your own config files.      "
+echo "  Manage the firewall with the standard iptables files.   "
+echo "  Too, use this firewall with some utilities for ip.      "
+echo
+echo "  See web page project in $fweb_main"
+echo "--------------------------------------------------------------------------"
+echo
+exit; fi
+####
+####
 ##############################       english: Notice Installer            ###################################
 ##############################       spanish: noticia de Instalador       ###################################
 ####
@@ -253,7 +275,7 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-*) echo "$cinco [to install / TYPE:] $zero_option install" ; exit ;;
+*) ./$zero_option intro ; echo "$cinco [ to install fwiptables / TYPE: ] $zero_option install" ; exit ;;
 esac; fi
 ####
 ####
@@ -1298,20 +1320,8 @@ if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
 echo "$ralla [Long-help]"
 echo "$ralla [Larga-ayuda]"
 echo
-echo "--------------------------------------------------------------------------"
-echo "  FRAN INTRO "
-echo 
-echo "  Fran Firewall use to configure both iptables netfilter. "
-echo "  With xtables and/or nftables. with ipv4 and/or ipv6.    "
-echo "  Create one firewall with a wizard and save it.          "
-echo "  Configure one firewall with your own config files.      "
-echo "  Manage the firewall with the standard iptables files.   "
-echo "  Too, use this firewall with some utilities for ip.      "
 echo
-echo "  See web page project in $fweb_main"
-echo "--------------------------------------------------------------------------"
-echo
-echo 
+$fiptables intro 
 echo
 $fiptables full-options
 echo
@@ -6635,9 +6645,9 @@ $allow_legacy  $allow_ipv4 $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
--p udp -m multiport --dports 1025:65000 -j RETURN &> /dev/null
+-p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports 1025:65000 -j RETURN &> /dev/null
+-p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6662,9 +6672,9 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
--p udp -m multiport --dports 1025:65000 -j RETURN &> /dev/null
+-p udp -m multiport --dports 1025:65000 -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
--p udp -m multiport --sports 1025:65000 -j RETURN &> /dev/null
+-p udp -m multiport --sports 1025:65000 -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
