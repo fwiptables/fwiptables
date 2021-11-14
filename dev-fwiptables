@@ -253,7 +253,7 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-*) echo "$cinco [to install / TYPE:] $zero_option install" ;;
+*) echo "$cinco [to install / TYPE:] $zero_option install" ; first_option="basic-options";;
 esac; fi
 ####
 ####
@@ -3584,7 +3584,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  #### nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  #### "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv4 ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv4 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  #### case $legacycuatro in
@@ -3622,7 +3622,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1 ) &> /dev/null
 #### nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1 ) &> /dev/null
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3655,7 +3655,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
 #### "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv6 ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv6 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
 #### case $legacyseis in
@@ -3697,7 +3697,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1 && \
 #### "$which_ip6tables_nft" -t filter -L FORWARD 1 ) &> /dev/null
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3728,7 +3728,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
 #### nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables nat ipv4 ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables nat ipv4 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
 #### case $legacycuatro in
@@ -3766,7 +3766,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### legacyseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
 #### nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables nat ipv6 ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables nat ipv6] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
 #### case $legacyseis in
@@ -3806,7 +3806,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
 #### "$which_iptables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv4 in numerical ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv4 in numerical ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
 #### case $legacycuatro in
@@ -3844,7 +3844,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1) &> /dev/null
 #### nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 in numerical ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 in numerical ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3877,7 +3877,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### nftseis=$("$which_ip6tables_nft" -t filter -L OUTPUT 1 && \
 #### "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv6 in numerical ][ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter ipv6 in numerical ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
 #### case $legacyseis in
@@ -3915,7 +3915,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### legacycuatro=$("$which_ip6tables_legacy" -t filter -L FORWARD 1) &> /dev/null
 #### nftcuatro=$("$which_ip6tables_nft" -t filter -L FORWARD 1) &> /dev/null
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 in numerical ] [ sufficent with legacy or nft ]"
+ echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 in numerical ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3944,7 +3944,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "mangle-ip4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables mangle ipv4 ]"
+ echo "$ralla [ $first_option ] [ List iptables mangle ipv4 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -3963,7 +3963,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "mangle-ip6" ]; then $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables mangle ipv6 ]"
+ echo "$ralla [ $first_option ] [ List iptables mangle ipv6 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo "$ralla [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
@@ -3981,7 +3981,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "raw-ip4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables raw ipv4 ]"
+ echo "$ralla [ $first_option ] [ List iptables raw ipv4 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo "$ralla  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
@@ -3999,7 +3999,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "raw-ip6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables raw ipv6 ]"
+ echo "$ralla [ $first_option ] [ List iptables raw ipv6 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -4018,7 +4018,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "security-ip4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables security ipv4 ]"
+ echo "$ralla [ $first_option ] [ List iptables security ipv4 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
@@ -4037,7 +4037,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  if [ "$first_option" = "security-ip6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables security ipv6 ]"
+ echo "$ralla [ $first_option ] [ List iptables security ipv6 ] [ sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
