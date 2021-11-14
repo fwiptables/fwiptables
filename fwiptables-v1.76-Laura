@@ -262,6 +262,7 @@ echo "  Configure one firewall with your own config files.      "
 echo "  Manage the firewall with the standard iptables files.   "
 echo "  Too, use this firewall with some utilities for ip.      "
 echo
+echo "  LICENSE GNU / GPL v2."
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
 echo
@@ -275,7 +276,7 @@ exit; fi
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-*) ./$zero_option intro ; echo "$cinco [ to install fwiptables / TYPE: ] $zero_option install" ; exit ;;
+*) ./$zero_option intro ; echo "$cinco [ to install fwiptables in /usr/bin  TYPE: ] $zero_option install" ; exit ;;
 esac; fi
 ####
 ####
@@ -3443,6 +3444,16 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ip6tables_nft -t security -F
  $which_iptables_legacy -t security -F
  $which_ip6tables_legacy -t security -F
+####
+####
+ $which_ebtables -t filter -P INPUT ACCEPT
+ $which_ebtables -t filter -P FORWARD ACCEPT 
+ $which_ebtables -t filter -P OUTPUT ACCEPT
+ $which_ebtables -t nat -P PREROUTING ACCEPT
+ $which_ebtables -t nat -P OUTPUT ACCEPT 
+ $which_ebtables -t nat -P POSTROUTING ACCEPT
+####
+####
  echo "$rallica [ OK FIREWALL ERASED ] [ DELETED RULES ]"
  echo $footer_lineal
  exit; fi
