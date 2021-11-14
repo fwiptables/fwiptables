@@ -246,8 +246,22 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ####
 ####
-##############################       english: list-config: list some config
-##############################       spanish: list-config: lista alguna config
+############################## english: are you root: uid 0 ?                ############################## 
+############################## spanish: eres admnistrador: identificador 0 ? ##############################
+####
+####
+if [ "$(id -u)" = "0" ]; then $nada
+else
+echo $head_principal
+echo "$cincuenta need to be root to work"
+echo "$ralla"
+echo "$cincuenta  Be root to work $fiptables"
+echo $footer_lineal
+exit ; fi
+####
+####
+##############################       english: intro: show intro
+##############################       spanish: intro: show intro
 ####
 ####
 if [ "$first_option" = "intro" ]; then $nada
@@ -269,8 +283,8 @@ echo
 exit; fi
 ####
 ####
-##############################       english: Notice Installer            ###################################
-##############################       spanish: noticia de Instalador       ###################################
+##############################       english: Notice Installer with intro      ###################################
+##############################       spanish: noticia de Instalador con intro  ###################################
 ####
 ####
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
@@ -429,20 +443,6 @@ if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filt
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 echo $header_ender
 fi ; exit ; fi
-####
-####
-############################## english: are you root: uid 0 ?                ############################## 
-############################## spanish: eres admnistrador: identificador 0 ? ##############################
-####
-####
-if [ "$(id -u)" = "0" ]; then $nada
-else
-echo $head_principal
-echo "$cincuenta need to be root to work"
-echo "$ralla"
-echo "$cincuenta  Be root to work $fiptables"
-echo $footer_lineal
-exit ; fi
 ####
 ####
 ##################################### english: regeneration-default: regen files       #####################################
@@ -3422,6 +3422,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $give_cover &> /dev/null
  echo $head_principal
  echo $header_lineal
+ ####
+ ####
+ #### english: erase the rules
+ #### spanish: borra las reglas
+ ####
+ ####
  $which_ebtables -t filter -F
  $which_ebtables -t nat -F
  $which_iptables_nft -t filter -F
@@ -3464,6 +3470,42 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_ip6tables_legacy -t filter -A INPUT ACCEPT
  $which_ip6tables_legacy -t filter -A FORWARD ACCEPT
  $which_ip6tables_legacy -t filter -A OUTPUT ACCEPT
+ $which_iptables_nft -t nat -A INPUT ACCEPT
+ $which_iptables_nft -t nat -A OUTPUT ACCEPT
+ $which_iptables_nft -t nat -A PREROUTING ACCEPT
+ $which_iptables_nft -t nat -A POSTROUTING ACCEPT
+ $which_ip6tables_nft -t nat -A INPUT ACCEPT
+ $which_ip6tables_nft -t nat -A OUTPUT ACCEPT
+ $which_ip6tables_nft -t nat -A PREROUTING ACCEPT
+ $which_ip6tables_nft -t nat -A POSTROUTING ACCEPT
+ $which_iptables_legacy -t nat -A INPUT ACCEPT
+ $which_iptables_legacy -t nat -A OUTPUT ACCEPT
+ $which_iptables_legacy -t nat -A PREROUTING ACCEPT
+ $which_iptables_legacy -t nat -A POSTROUTING ACCEPT
+ $which_ip6tables_legacy -t nat -A INPUT ACCEPT
+ $which_ip6tables_legacy -t nat -A OUTPUT ACCEPT
+ $which_ip6tables_legacy -t nat -A PREROUTING ACCEPT
+ $which_ip6tables_legacy -t nat -A POSTROUTING ACCEPT
+ $which_iptables_nft -t mangle -A INPUT ACCEPT
+ $which_iptables_nft -t mangle -A FORWARD ACCEPT
+ $which_iptables_nft -t mangle -A OUTPUT ACCEPT
+ $which_iptables_nft -t mangle -A PREROUTING ACCEPT
+ $which_iptables_nft -t mangle -A POSTROUTING ACCEPT
+ $which_ip6tables_nft -t mangle -A INPUT ACCEPT
+ $which_ip6tables_nft -t mangle -A FORWARD ACCEPT
+ $which_ip6tables_nft -t mangle -A OUTPUT ACCEPT
+ $which_ip6tables_nft -t mangle -A PREROUTING ACCEPT
+ $which_ip6tables_nft -t mangle -A POSTROUTING ACCEPT
+ $which_iptables_legacy -t mangle -A INPUT ACCEPT
+ $which_iptables_legacy -t mangle -A FORWARD ACCEPT
+ $which_iptables_legacy -t mangle -A OUTPUT ACCEPT
+ $which_iptables_legacy -t mangle -A PREROUTING ACCEPT
+ $which_iptables_legacy -t mangle -A POSTROUTING ACCEPT
+ $which_ip6tables_legacy -t mangle -A INPUT ACCEPT
+ $which_ip6tables_legacy -t mangle -A FORWARD ACCEPT
+ $which_ip6tables_legacy -t mangle -A OUTPUT ACCEPT
+ $which_ip6tables_legacy -t mangle -A PREROUTING ACCEPT
+ $which_ip6tables_legacy -t mangle -A POSTROUTING ACCEPT
 ####
 ####
  echo "$rallica [ OK FIREWALL ERASED ] [ DELETED RULES ]"
