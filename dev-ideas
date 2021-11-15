@@ -5,10 +5,10 @@
 # inside program :  filter-ip4 copy filter-ip4-hide if voidtables is ""
 #                :  tha same with other tables
 #
-# dos:
+# dos: -text ok
 # salida del listado de reglas a un archivo y luego carga el archivo
 # asi se evita que se vean los warnings de itables
 #
-# tres:
+# tres: -text ok
 # usar una variable para archivos temporales
 #
