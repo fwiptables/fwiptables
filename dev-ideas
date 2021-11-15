@@ -1,0 +1,5 @@
+# ideas working now
+#
+# allow_hide_voidtables="no" # allow hide void tables
+# inside program :  filter-ip4 copy filter-ip4-hide if voidtables is ""
+#                :  tha same with other tables
