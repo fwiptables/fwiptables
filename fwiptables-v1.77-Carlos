@@ -322,7 +322,9 @@ first_option=$second_option ; second_option=$third_option ; exit ; fi
 ####
 ####
 if [ "$first_option" = "text" ] ; then 
-first_option=$second_option ; second_option=$third_option ; exit ; fi
+$fiptables $second_option $third_option | grep -iv "Warning" &> /tmp/fwiptables-$second_option-$third_option
+####first_option=$second_option ; second_option=$third_option ;
+cat /tmp/fwiptables-$second_option-$third_option ; exit ; fi
 ####
 ####
 ##############################    english: gui: alias to -gui  
@@ -407,6 +409,13 @@ if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
 if [ "$first_option" = "options" ]; then first_option="full-options"; fi
+####
+####
+############################       english: list rules in cache
+############################       spanish: lista reglas en cache
+####
+####
+
 ####
 ####
 ##############################     english: autolog:         ###################################
