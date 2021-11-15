@@ -283,6 +283,73 @@ echo
 exit; fi
 ####
 ####
+##############################       english: Install:    $fiptables           ###########################################
+##############################       spanish: Instalador: $fiptables           ###########################################
+####
+####
+if [ "$first_option" = "install" ]; then 
+echo "$cinco [ Install $fiptables in $directory_fiptables ]"
+#### 
+#### 
+####  english: accept the license 
+####  spanish: acepta la licencia
+#### 
+#### 
+case "$allow_question" in "no");; *)
+read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
+if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
+then echo "$ralla [ OK. ACCEPTED LICENSE ] [ Continue install ]"
+else echo "$ralla [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
+#### 
+#### 
+####  english: copy the file
+####  spanish: copia el archivo
+#### 
+#### 
+echo "$cinco [ Runing.. ] [ $zero_option install ]"
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null
+#### 
+#### 
+####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
+####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
+#### 
+#### 
+####  english: Install new bash_completion/fwiptables
+####  spanish: instala nuevo bash_completion/fwiptables
+#### 
+#### 
+if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
+echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 basic-options \
+full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
+info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
+echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
+#### 
+#### 
+####  english: probe sane dir /etc/bash_completion.d
+####  spanish: comprueba directorio sano /etc/bash_completion.d
+#### 
+#### 
+chmod ugo+rx /etc/bash_completion.d/$fiptables &> /dev/null
+chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
+####
+####
+echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
+echo "$cinco [ Files in: ] [ /etc/fwiptables | /etc/fwrecover ]"
+echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/default/fwiptables ]"
+#### 
+#### 
+####  english: modes of file 
+####  spanish: modos de archivo
+#### 
+#### 
+echo "$cinco [ Launch $fiptables to run / TYPE :] [ $fiptables ]" 
+echo "$rallica [ OK FIREWALL INSTALLED ] [ $directory_fiptables/$fiptables ]"
+echo $footer_lineal
+exit; fi
+####
+####
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
@@ -290,7 +357,9 @@ exit; fi
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-*) ./$zero_option intro ; echo "$cinco [ to install fwiptables in /usr/bin  TYPE: ] $zero_option install" ; exit ;;
+*) ./$zero_option intro ; 
+echo "$cinco [ to install fwiptables in /usr/bin  TYPE: ] zero_option install" ;
+echo "$cinco [ firewall fwiptables netfilter license general public gpl 2. ]";  exit ;;
 esac; fi
 ####
 ####
@@ -298,68 +367,36 @@ esac; fi
 ##############################       apodos de fwiptables      ##############################
 ####
 ####
-##############################       english: $NULL: fwiptables launch .. for default
-##############################       spanish: $NULL: fwiptables lanza .. por defecto
-####
-####
-############################       english: default: without other valid options
-############################	   spanish: default: sin otra valida opcion
-####
-####
-if [ "$first_option" = "$NULL" ] ; then  first_option="$default_option" ;  fi
-####
-####
-############################## english -text: Manage in console
-############################## spanish -text: Manage in console
-####
-####
-if [ "$first_option" = "-text" ] ; then 
-first_option=$second_option ; second_option=$third_option ; exit ; fi
-####
-####
-############################## english text: Manage in console
-############################## spanish text: Manage in console
-####
-####
-if [ "$first_option" = "text" ] ; then 
-$fiptables $second_option $third_option | grep -iv "Warning" &> /tmp/fwiptables-$second_option-$third_option
-####first_option=$second_option ; second_option=$third_option ;
-cat /tmp/fwiptables-$second_option-$third_option ; exit ; fi
-####
-####
-##############################    english: gui: alias to -gui  
-##############################    spanish: gui: apodo a -gui 
-####
-####
-if [ "$first_option" = "gui" ] ; then first_option="-gui" ; fi
-####
-####
-##############################    english log: Send to log
-##############################    spanish log: Send to log
-####
-####
-if [ "$first_option" = "log" ] ; then $nada
-case "fwiptables" in
-"$second_option") echo "Do not recursive" ;;
-"$third_option") echo "Do not recursive";;
-*) $fiptables $second_option $third_option &>> /var/log/fwiptables
-echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" ;;
+case "$first_option" in 
+"$NULL") first_option="$default_option" ;;
+"gui") first_option="-gui" ;;
+"cli") first_option="cli-menu" ;;
+"gui-menu") first_option="gui-menu" ;;
+"gui-shell") first_option="gui-shell" ;;
+"log")
+$fiptables $second_option $third_option &>> /var/log/fwiptables
+echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" 
+exit ;;
+"-log") 
+$fiptables $second_option $third_option &>> /var/log/fwiptables
+echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" 
+exit ;;
+"text")
+mkdir /tmp/fwiptables-$fversion/ &> /dev/null
+$fiptables $second_option $third_option | grep -iv "Warning" &> /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option
+cat /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option 
+exit ;;
+"-text")
+mkdir /tmp/fwiptables-$fversion/ &> /dev/null
+$fiptables $second_option $third_option | grep -iv "Warning" &> /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option
+cat /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option 
+exit ;;
+else) echo "sale"; exit ;;
 esac
-exit; fi
 ####
 ####
-##############################     english -log: Send to log
-##############################     spanish -log: Send to log
-####
-####
-if [ "$first_option" = "-log" ] ; then $nada
-case "fwiptables" in
-"$second_option") echo "Do not recursive" ;;
-"$third_option") echo "Do not recursive";;
-*) $fiptables $second_option $third_option &>> /var/log/fwiptables
-echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" ;;
-esac
-exit; fi
+############################       english: default: without other valid options ############################
+############################	   spanish: default: sin otra valida opcion      ############################
 ####
 ####
 ##############################     english: cfg: list: some config, alias to list-config
@@ -367,13 +404,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
-####
-####
-##############################     english: cli: Manage list rules with one text menu
-##############################     spanish: cli: Maneja lista de reglas con un menu de texto
-####
-####
-if [ "$first_option" = "cli" ]; then $nada ; first_option="cli-menu" ; fi
 ####
 ####
 #############################     english: list: alias list to filter ip4
@@ -415,7 +445,8 @@ if [ "$first_option" = "options" ]; then first_option="full-options"; fi
 ############################       spanish: lista reglas en cache
 ####
 ####
-
+#### if [ "$first_option" != "gui" ] && [ "$first_option" != "log" ]; then mkdir /tmp/fwiptables-$fversion/
+#### $fiptables text $second_option $third_option; exit
 ####
 ####
 ##############################     english: autolog:         ###################################
@@ -6162,7 +6193,7 @@ exit; fi
 ####
 ####
 if [ "$launch_iptables" = "" ] ; then $nada ; else 
-echo "$rallica Selecting default option .. "; "$fiptables" "$default_option" ; exit ; fi
+echo "$rallica Selecting default option .. "; $fiptables full-options ; exit ; fi
 ####
 ####
 ###############################################################################################################
