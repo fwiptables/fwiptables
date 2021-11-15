@@ -291,13 +291,17 @@ if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
 *) ./$zero_option intro ; 
-echo "$cinco [ to install fwiptables in /usr/bin  TYPE: ] zero_option install" ;
+echo "$cinco [ INSTALL fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
 echo "$cinco [ firewall fwiptables netfilter license general public gpl 2. ]";  exit ;;
 esac; fi
 ####
 ####
 ##############################       alias for fwiptables       ##############################
 ##############################       apodos de fwiptables      ##############################
+####
+####
+mkdir /tmp/fwiptables-$version/ &> /dev/null
+file_temporal_text="/tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option"
 ####
 ####
 case "$first_option" in 
@@ -315,15 +319,11 @@ $fiptables $second_option $third_option &>> /var/log/fwiptables
 echo "$cinco Output $fiptables $second_option $third_option sended to /var/log/fwiptables" 
 exit ;;
 "text")
-mkdir /tmp/fwiptables-$fversion/ &> /dev/null
-$fiptables $second_option $third_option | grep -iv "Warning" &> /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option
-cat /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option 
-exit ;;
+$fiptables $second_option $third_option | grep -iv "Warning" &> $file_temporal_text
+cat $file_temporal_text ; exit ;;
 "-text")
-mkdir /tmp/fwiptables-$fversion/ &> /dev/null
-$fiptables $second_option $third_option | grep -iv "Warning" &> /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option
-cat /tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option 
-exit ;;
+$fiptables $second_option $third_option | grep -iv "Warning" &> $file_temporal_text
+cat $file_temporal_text ; exit ;;
 else) echo "sale"; exit ;;
 esac
 ####
@@ -2184,8 +2184,10 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 #### 
 #### 
 *)
-fecha_temporal=$(date | sed s/\ //g) ; $fiptables $second_option $third_option &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+fecha_temporal=$(date | sed s/\ //g) ;
+$fiptables $second_option $third_option &> /tmp/fwiptables-$fecha_temporal
+zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" \
+--filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 #### 

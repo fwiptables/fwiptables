@@ -9,5 +9,6 @@
 # salida del listado de reglas a un archivo y luego carga el archivo
 # asi se evita que se vean los warnings de itables
 #
-#
+# tres:
+# usar una variable para archivos temporales
 #
