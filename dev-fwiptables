@@ -283,73 +283,6 @@ echo
 exit; fi
 ####
 ####
-##############################       english: Install:    $fiptables           ###########################################
-##############################       spanish: Instalador: $fiptables           ###########################################
-####
-####
-if [ "$first_option" = "install" ]; then 
-echo "$cinco [ Install $fiptables in $directory_fiptables ]"
-#### 
-#### 
-####  english: accept the license 
-####  spanish: acepta la licencia
-#### 
-#### 
-case "$allow_question" in "no");; *)
-read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
-if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
-then echo "$ralla [ OK. ACCEPTED LICENSE ] [ Continue install ]"
-else echo "$ralla [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
-#### 
-#### 
-####  english: copy the file
-####  spanish: copia el archivo
-#### 
-#### 
-echo "$cinco [ Runing.. ] [ $zero_option install ]"
-cp $zero_option $directory_fiptables/$fiptables &> /dev/null
-#### 
-#### 
-####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
-####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
-#### 
-#### 
-####  english: Install new bash_completion/fwiptables
-####  spanish: instala nuevo bash_completion/fwiptables
-#### 
-#### 
-if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
-echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 basic-options \
-full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
-info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
-echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
-#### 
-#### 
-####  english: probe sane dir /etc/bash_completion.d
-####  spanish: comprueba directorio sano /etc/bash_completion.d
-#### 
-#### 
-chmod ugo+rx /etc/bash_completion.d/$fiptables &> /dev/null
-chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
-####
-####
-echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
-echo "$cinco [ Files in: ] [ /etc/fwiptables | /etc/fwrecover ]"
-echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/default/fwiptables ]"
-#### 
-#### 
-####  english: modes of file 
-####  spanish: modos de archivo
-#### 
-#### 
-echo "$cinco [ Launch $fiptables to run / TYPE :] [ $fiptables ]" 
-echo "$rallica [ OK FIREWALL INSTALLED ] [ $directory_fiptables/$fiptables ]"
-echo $footer_lineal
-exit; fi
-####
-####
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
@@ -1118,7 +1051,7 @@ if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="
 ##############################       spanish: Instalador: $fiptables           ###########################################
 ####
 ####
-if [ "$first_option" = "install" ] ; then $give_cover
+if [ "$first_option" = "install" ] ; then $zero_option intro
 echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 #### 
 #### 
