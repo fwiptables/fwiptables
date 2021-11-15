@@ -1098,7 +1098,7 @@ else echo "$ralla [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
 #### 
 #### 
 echo "$cinco [ Runing.. ] [ $zero_option install ]"
-cp $zero_option $directory_fiptables/$fiptables ;
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 #### 
 ####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
@@ -1111,7 +1111,8 @@ cp $zero_option $directory_fiptables/$fiptables ;
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
-echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 full-options long-help cli-menu gui-menu gui-shell \
+echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 basic-options \
+full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
 eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
 echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
