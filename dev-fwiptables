@@ -300,7 +300,7 @@ esac; fi
 ##############################       apodos de fwiptables      ##############################
 ####
 ####
-mkdir /tmp/fwiptables-$version/ &> /dev/null
+mkdir /tmp/fwiptables-$fversion/ &> /dev/null
 file_temporal_text="/tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option"
 ####
 ####
