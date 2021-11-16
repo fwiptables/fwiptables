@@ -68,7 +68,7 @@ allow_header=""                       ## fwiptables-default ## void or no
 allow_autolog=""                 ## fwiptables-default ## void or no
 ####       #### english: void to AUTOSAVE fwrecover or no 
 ####       #### spanish: AUTOGUARDAR fwrecover o no
-autosave_fwrecover=""                 ## fwiptables-default ## void or no
+allow_autosave=""                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
@@ -941,8 +941,8 @@ case "$NULL" in
 *)allow_output_gid="no";;
 "$allow_other_protocols");; 
 *)allow_other_protocols="no";;
-"$autosave_fwrecover");;
-*)autosave_fwrecover="no";;
+"$allow_autosave");;
+*)allow_autosave="no";;
 "$choosed_iptables");;
 *)choosed_iptables="no";;
 esac
@@ -1016,13 +1016,13 @@ which_glxgears="$(which glxgears | cut -d " " -f 1)"
 ####
 ####
 if [ "$first_option" = "autosave" ]; then
-if [ "$autosave_fwrecover" = "$NULL" ] ; then $nada ;
-echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fiptables ]"
-$which_ebtables-save &> $directory_fwrecover/autosave-fiptables-ebtables
-$which_iptables_nft-save &> $directory_fwrecover/autosave-fiptables-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/autosave-fiptables-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/autosave-fiptables-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/autosave-fiptables-legacy-ipv6
+if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
+echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
+$which_ebtables-save &> $directory_fwrecover/autosave-fwiptables-ebtables
+$which_iptables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv4
+$which_iptables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv4
+$which_ip6tables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv6
+$which_ip6tables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv6
 fi; exit; fi
 ####
 ####
@@ -3502,7 +3502,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  $which_iptables_legacy -t security -P OUTPUT ACCEPT
  $which_ip6tables_legacy -t security -P INPUT ACCEPT
  $which_ip6tables_legacy -t security -P FORWARD ACCEPT
- $which_ip6tables_legacy -t security -P OUTPUT ACCEP
+ $which_ip6tables_legacy -t security -P OUTPUT ACCEPT
 ####
 ####
  echo "$rallica [ OK FIREWALL ERASED ] [ DELETED RULES ]"
