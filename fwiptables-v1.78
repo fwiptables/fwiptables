@@ -56,7 +56,7 @@ default_option="full-options"         ## fwiptables-default ## default: full-opt
 allow_legacy="no"                       ## fwiptables-default ## void or no
 allow_nft=""                          ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
-allow_ipv6="no"                         ## fwiptables-default ## void or no
+allow_ipv6=""                         ## fwiptables-default ## void or no
 ####       #### english: allow QUESTIONS to answer: yes
 ####       #### spanish: permitir PREGUNTAS con respuesta: yes
 allow_question="no"                   ## fwiptables-default ## void or no
@@ -5533,6 +5533,10 @@ exit; fi
  echo "$tab [ System info ][ Kernel Linux ]"
  $which_uname -srom
  echo $ralla
+ echo "$tab [ Boot init system ] [ with pid 1 ]"
+ ps -p1 
+ echo "   Your init system is : $(cat /proc/1/comm)"
+ echo $ralla
  echo "$tab [ System info ] [ Processor ]"
  lscpu | egrep -i "socket|Model name|cpu max"
  echo $ralla
@@ -5553,13 +5557,20 @@ exit; fi
  echo "$ralla [ $first_option ] [ show info about net ]"
  echo $header_lineal
  echo "$tab [ Net Info Route ] [ Route ipv4 ]"
- $which_ip route 
+ $which_ip -4 route 
+ echo $ralla
+ echo "$tab [ Net Info Route ] [ Route ipv6 ]"
+ $which_ip -6 route 
  echo $ralla
  echo "$tab [ Net Info Listen ] [ Listen ipv4 ]"
  $which_ss -l4 | sed 's/   / /g'
  echo $ralla
  echo "$tab [ Net Info Listen ] [ Listen ipv6 ]"
  $which_ss -l6 | sed 's/   / /g'
+ echo $ralla
+ echo "$tab [ public ip ]"
+ echo "your public ip is $(curl -s http:/ifconfig.me -w "\n")"
+ echo $ralla
  echo $footer_lineal
  exit; fi
 ####
