@@ -1,27 +1,28 @@
 # ideas working now
 #
-# uno:
+# uno: NO HACER
 # allow_hide_voidtables="no" # allow hide void tables
 # inside program :  filter-ip4 copy filter-ip4-hide if voidtables is ""
 #                :  tha same with other tables
 #
-# dos:  -text ok
+# dos:  -text ok done
 # salida del listado de reglas a un archivo y luego carga el archivo
 # asi se evita que se vean los warnings de itables
 #
-# tres: -text ok
+# tres: -text ok done
 # usar una variable para archivos temporales
 #
-# cuatro: 
+# cuatro: ok done
 # cambiar los nombres para listar las reglas
 # ejemplo filter-ip4 list-filter, filter-ip6 list-filter6
 # ejemplo nat-ip4 list-nat, nat-ip6 list-nat6
 # ejemplo mangle-ip6 list-mangle6
 #
-# cinco:
+# cinco: dude
 # eliminar listar reglas: forward forward6 forwardnum forwardnum6
 #
 # seis: 
-# usar list y list6 escondiendo reglas no usadas, como hacia antes
+# usar list y list6 escondiendo reglas no usadas sin ser alias,
+# tal y como hacia antes pero sin alias.
 #
 #
