@@ -343,14 +343,14 @@ if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 #############################     spanish: list6: apodo list a filtros de ip4
 ####
 ####
-if [ "$first_option" = "list" ];  then first_option="list-filter4" ; fi
+#### if [ "$first_option" = "list" ];  then first_option="list-filter4" ; fi
 ####
 ####
 #############################     english: list: alias list6 to filter ip6
 #############################     spanish: list6: apodo list6 a filtros de ip6
 ####
 ####
-if [ "$first_option" = "list6" ]; then first_option="list-filter6" ; fi
+#### if [ "$first_option" = "list6" ]; then first_option="list-filter6" ; fi
 ####
 ####
 #############################     english: alias for cfg-custom to custom  
@@ -1517,10 +1517,10 @@ echo
 echo "               [The filter table with names]"
 echo "               [Lista tabla filtros con nombres]"
 echo
-echo "         list: List iptables filter rules from ipv4"
-echo "             : Lista reglas de tabla filtros desde ipv4"
-echo "        list6: List iptables filter rules from ipv6"
-echo "             : Lista reglas de tabla filtros desde ipv6"
+echo "         list: List iptables filter rules from ipv4 with hide no used"
+echo "             : Lista reglas de tabla filtros desde ipv4 esconde no usadas"
+echo "        list6: List iptables filter rules from ipv6 with hide no used"
+echo "             : Lista reglas de tabla filtros desde ipv6 esconde no usadas"
 echo "      forward: List iptables filter rules foward"
 echo "             : Lista tabla de iptables de reenvio ipv4"
 echo "     forward6: List iptables filter rules forward ipv6"
@@ -3647,40 +3647,86 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
+#############################  english: list: system script, the list option
+#############################  spanish: list: script de sistema, la opcion lista
+####
+####
+ if [ "$first_option" = "list" ]; then $give_cover 
+ legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
+ "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
+ nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
+ "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo $header_lineal
+ echo $ralla
+ case $legacycuatro in
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
+ *)
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ]"
+ $which_iptables_legacy -t filter -v -L
+ ;;
+ esac
+ echo "$ralla"
+ case $nftcuatro in
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
+ *)
+ echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
+ $which_iptables_nft -t filter -v -L
+ ;;
+ esac
+ echo $footer_lineal
+ exit; fi
+####
+####
+############################ english: list6: list ipv6 rules filter
+############################ spanish: list6: lista reglas de filtros de ipv6
+####
+####
+ if [ "$first_option" = "list6" ]; then  $give_cover
+ legacyseis=$("$which_ip6tables_legacy" -t filter -L INPUT 1 && \
+ "$which_ip6tables_legacy" -t filter -L OUTPUT 1 )
+ nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
+"$which_ip6tables_nft" -t filter -L OUTPUT 1 )
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo $header_lineal
+ echo $ralla
+ case $legacyseis in
+ "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
+ *)
+ echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
+ $which_ip6tables_legacy -v -L
+ ;;
+ esac
+ echo $ralla
+ case $nftseis in
+ "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
+ *)
+ echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
+ $which_ip6tables_nft -v -L
+ ;;
+ esac
+####
+####
+ echo $footer_lineal
+ exit; fi
+####
+####
 #############################  english: list-filter4: system script, the list option
 #############################  spanish: list-filter4: script de sistema, la opcion lista
 ####
 ####
  if [ "$first_option" = "list-filter4" ]; then $give_cover 
- #### legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
- #### "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
- #### nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
- #### "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
- #### case $legacycuatro in
- #### "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
- #### *)
  echo "$ralla [ With rules xtables ] [ iptables-legacy ]"
  $which_iptables_legacy -t filter -v -L
- #### ;;
- #### esac
  echo "$ralla"
- #### case $nftcuatro in
- #### "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
- #### *)
  echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
  $which_iptables_nft -t filter -v -L
- #### ;;
- #### esac
-####
-####
-#### if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
-#### echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
-#### if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
-#### echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
 ####
 ####
  echo $footer_lineal
@@ -3692,28 +3738,16 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "forward" ]; then  $give_cover
-#### legacycuatro=$("$which_iptables_legacy" -t filter -L FORWARD 1 ) &> /dev/null
-#### nftcuatro=$("$which_iptables_nft" -t filter -L FORWARD 1 ) &> /dev/null
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  echo $ralla
-#### case $legacycuatro in
-#### "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
-#### *)
  echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
  $which_iptables_legacy -t filter -v -L FORWARD
-#### ;;
-#### esac
  echo $ralla
-#### case $nftcuatro in
-#### "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
-#### *)
  echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $which_iptables_nft -t filter -v -L FORWARD
-#### ;;
-#### esac
  echo $footer_lineal
  exit; fi
 ####
@@ -3723,37 +3757,15 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
  if [ "$first_option" = "list-filter6" ]; then  $give_cover
-#### legacyseis=$("$which_ip6tables_legacy" -t filter -L INPUT 1 && \
-#### "$which_ip6tables_legacy" -t filter -L OUTPUT 1 )
-#### nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
-#### "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
-#### case $legacyseis in
-#### "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
-#### *)
  echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
  $which_ip6tables_legacy -v -L
-#### ;;
-#### esac
  echo $ralla
-#### case $nftseis in
-#### "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
-#### *)
  echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
  $which_ip6tables_nft -v -L
-#### ;;
-#### esac
-####
-####
-####
-####
-#### if [ "$rules_filter_ebtables" != "0" ] ; then echo $ralla ; 
-#### echo $ralla ebtables filter ;  $which_ebtables -L -t filter ; fi
-#### if [ "$rules_nat_ebtables" != "0" ]    ; then echo $ralla ;
-#### echo $ralla ebtables nat    ;  $which_ebtables -L -t nat    ; fi
 ####
 ####
  echo $footer_lineal
@@ -5664,8 +5676,8 @@ echo
 echo "$cinco         [List iptables rules]"
 echo
 echo "               [The filter table with names]"
-echo "         list: Alias to list-filter4"
-echo "      forward: Alias to list-filter6"
+echo "         list: like list-filter4 but hiding rules no used"
+echo "        list6: like list-filter6 but hiding rules not used"
 echo
 echo "$cinco         [List the others tables]"
 echo
@@ -5673,7 +5685,7 @@ echo "      listnum: List iptables filter rules from ipv4 in numbers"
 echo "   forwardnum: List iptables filter rules foward in numbers"
 echo "     listnum6: List iptables filter rules from ipv6 in numbers"
 echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
-echo "        list6: List iptables filter rules from ipv6"
+echo "      forward: List iptables filter rules forward ipv4"
 echo "     forward6: List iptables filter rules forward ipv6"
 echo
 echo "     list-filter4: List iptables filter rules from ipv4"
@@ -5909,8 +5921,8 @@ echo
 echo "$cinco         [Lista las reglas de tablas de iptables]"
 echo
 echo "               La tabla de filtros con nombres"
-echo "         list: apodo para list-filter4" 
-echo "        list6: apodo para list-filter6"
+echo "         list: similar a list-filter4 pero esconde reglas no usadas" 
+echo "        list6: similar a list-filter6 pero esconde reglas no usadas"
 echo
 echo "$cinco         [Lista Las otras tablas de iptables]"
 echo
