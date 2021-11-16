@@ -1195,14 +1195,14 @@ echo "$cinco See:   $fiptables tool-custom"; fi ; fi
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ]"
-echo "$tab" "$tab"  "   | Group options|                | Principal options |                     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "                                   | Principal options |                     "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    list-rules         list listnum list-filter4 list-filter6 list-nat4  ..  "
-echo "$tab" "$tab"  "                                   | Other options |                         "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "                                   | Other options |                         "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba gamesudp              "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
@@ -1217,7 +1217,7 @@ echo "$tab" "$tab"  "    Too other groups:  tool-custom tool-forward tool-nmap  
 echo "$tab" "$tab"  "                       tool-install tool-system show-log                     " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
-echo "$tab" "$tab"  
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
@@ -1235,8 +1235,8 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ]"
-echo "$tab" "$tab"  "   | Group options|                | Principal options |                     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "                                     | Principal options |                   "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
