@@ -1212,7 +1212,7 @@ echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alia
 echo "$tab" "$tab"  "    show-etc           show-default modify-default ..                        "
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda group-options basic-options ..   "
-echo "$tab" "$tab"  
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    Too other groups:  tool-custom tool-forward tool-nmap                    " 
 echo "$tab" "$tab"  "                       tool-install tool-system show-log                     " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1247,14 +1247,13 @@ echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 lis
 echo "$tab" "$tab"  "                       list-security4 list-security6                         "
 echo "$tab" "$tab"  "                       list-ebtables list-arptables                          "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo
 echo "$tab" "$tab"  "______________________                | config options |                     " 
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba gamesudp              "
 echo "$tab" "$tab"  "    tool-custom        new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
-echo
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "______________________                | tool options |                       " 
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
@@ -1264,7 +1263,7 @@ echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp 
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-install       install upgrade new-versions howto-upgrade            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
-echo
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "______________________                | show options |                       " 
 echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
