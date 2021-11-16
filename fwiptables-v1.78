@@ -5569,7 +5569,7 @@ exit; fi
  $which_ss -l6 | sed 's/   / /g'
  echo $ralla
  echo "$tab [ public ip ]"
- echo "your public ip is $(curl -s http:/ifconfig.me -w "\n")"
+ timeout 5s curl -s http:/ifconfig.me -w "\n"
  echo $ralla
  echo $footer_lineal
  exit; fi
