@@ -343,14 +343,14 @@ if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 #############################     spanish: list6: apodo list a filtros de ip4
 ####
 ####
-if [ "$first_option" = "list" ];  then first_option="filter-ip4" ; fi
+if [ "$first_option" = "list" ];  then first_option="list-filter4" ; fi
 ####
 ####
 #############################     english: list: alias list6 to filter ip6
 #############################     spanish: list6: apodo list6 a filtros de ip6
 ####
 ####
-if [ "$first_option" = "list6" ]; then first_option="filter-ip6" ; fi
+if [ "$first_option" = "list6" ]; then first_option="list-filter6" ; fi
 ####
 ####
 #############################     english: alias for cfg-custom to custom  
@@ -1084,7 +1084,7 @@ cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
-echo "complete -W 'list list6 filter-ip4 filter-ip6 nat-ip4 nat-ip6 basic-options \
+echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
 full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
 info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
 eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
@@ -1200,7 +1200,7 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
-echo "$tab" "$tab"  "    list-rules         list listnum filter-ip4 filter-ip6 nat-ip4  ..        "
+echo "$tab" "$tab"  "    list-rules         list listnum list-filter4 list-filter6 list-nat4  ..  "
 echo "$tab" "$tab"  "                                   | Other options |                         "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
@@ -1242,9 +1242,10 @@ echo "$tab" "$tab"  "    control-rules      stop continue reset names actual sho
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6 list-allrules             "
 echo "$tab" "$tab"  "                       forward forwardnum forward6 fowardnum6                "
-echo "$tab" "$tab"  "                       filter-ip4 filter-ip6 nat-ip4 nat-ip6                 "
-echo "$tab" "$tab"  "                       raw-ip4 raw-ip6 mangle-ip4 mangle-ip6                 "
-echo "$tab" "$tab"  "                       security-ip4 security-ip6 ebtables arptables          "
+echo "$tab" "$tab"  "                       list-filter4 list-filter6 list-nat4 list-nat6                 "
+echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$tab" "$tab"  "                       list-security4 list-security6                         "
+echo "$tab" "$tab"  "                       list-ebtables list-arptables                          "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo
 echo "$tab" "$tab"  "______________________                | config options |                     " 
@@ -1540,30 +1541,30 @@ echo
 echo "$cinco         [The others tables]"
 echo "$cinco         [Las otras tablas]"
 echo
-echo "   filter-ip4: List iptables filter rules from ipv4"
-echo "             : Lista iptables reglas de filtros desde ipv4"
-echo "   filter-ip6: List iptables filter rules from ipv6"
-echo "             : Lista iptables reglas de filtros desde ipv6"
-echo "      nat-ip4: List iptables nat rules from ipv4"
-echo "             : Lista iptables nat reglas de ipv4"
-echo "      nat-ip6: List iptables nat rules from ipv6"
-echo "             : Lista iptables nat reglas de ipv6"
-echo "   mangle-ip4: List iptables mangle rules from ipv4"
-echo "             : Lista reglas de manipulacion ipv4"
-echo "   mangle-ip6: List iptables mangle rules from ipv6"
-echo "             : Lista reglas de manipulacion ipv6"
-echo "      raw-ip4: List iptables raw rules from ipv4"
-echo "             : Lista reglas directas de ipv4"
-echo "      raw-ip6: List iptables raw rules from ipv6"
-echo "             : Lista reglas directas de ipv6"
-echo " security-ip4: List iptables security rules from ipv4"
-echo "             : lista reglas de seguridad de ipv4"
-echo " security-ip6: List iptables security rules from ipv6"
-echo "             : lista reglas de seguridad de ipv6"
-echo "     ebtables: List rules mac ethernet"
-echo "             : Lista reglas mac de ethernet"
-echo "    arptables: List rules arptables arp"
-echo "             : Lista reglas de tabla de arpanet"
+echo "  list-ebtables: List rules mac ethernet"
+echo "               : Lista reglas mac de ethernet"
+echo " list-arptables: List rules arptables arp"
+echo "               : Lista reglas de tabla de arpanet"
+echo "   list-filter4: List iptables filter rules from ipv4"
+echo "               : Lista iptables reglas de filtros desde ipv4"
+echo "   list-filter6: List iptables filter rules from ipv6"
+echo "               : Lista iptables reglas de filtros desde ipv6"
+echo "      list-nat4: List iptables nat rules from ipv4"
+echo "               : Lista iptables nat reglas de ipv4"
+echo "      list-nat6: List iptables nat rules from ipv6"
+echo "               : Lista iptables nat reglas de ipv6"
+echo "   list-mangle4: List iptables mangle rules from ipv4"
+echo "               : Lista reglas de manipulacion ipv4"
+echo "   list-mangle6: List iptables mangle rules from ipv6"
+echo "               : Lista reglas de manipulacion ipv6"
+echo "      list-raw4: List iptables raw rules from ipv4"
+echo "               : Lista reglas directas de ipv4"
+echo "      list-raw6: List iptables raw rules from ipv6"
+echo "               : Lista reglas directas de ipv6"
+echo " list-security4: List iptables security rules from ipv4"
+echo "               : lista reglas de seguridad de ipv4"
+echo " list-security6: List iptables security rules from ipv6"
+echo "               : lista reglas de seguridad de ipv6"
 echo $footer_lineal
 exit; fi
 ####
@@ -2404,10 +2405,10 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "list" "list6" "list-allrules" "filter-ip4" "filter-ip6" \
+--list "Gui Principal Menu" "list" "list6" "list-allrules" "list-filter4" "list-filter6" \
 "forward" "forward6" "listnum" "forwardnum" "listnum6" "forwardnum6" \
-"nat-ip4" "nat-ip6" "mangle-ip4" "mangle-ip6" "raw-ip4" "raw-ip6" \
-"security-ip4" "security-ip6" "ebtables" "arptables" \
+"list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
+"list-security4" "list-security6" "list-ebtables" "list-arptables" \
 --column="Option list $fiptables" --text="Select one option" --title="[List Rules] [$fiptables]" )
 #### 
 #### 
@@ -2417,24 +2418,24 @@ case $selection in
 "list") $fiptables -gui list ;;
 "list6") $fiptables -gui list6 ;;
 "list-allrules") $fiptables -gui list-allrules ;;
-"filter-ip4") $fiptables -gui filter-ip4 ;;
-"filter-ip6") $fiptables -gui filter-ip6 ;;
+"list-filter4") $fiptables -gui list-filter4 ;;
+"list-filter6") $fiptables -gui list-filter6 ;;
 "forward") $fiptables -gui forward ;;
 "forward6") $fiptables -gui forward6 ;;
 "listnum") $fiptables -gui listnum ;;
 "forwardnum") $fiptables -gui forwardnum ;;
 "listnum6") $fiptables -gui listnum6 ;;
 "forwardnum6") $fiptables -gui forwardnum6 ;;
-"nat-ip4") $fiptables -gui nat-ip4 ;;
-"nat-ip6") $fiptables -gui nat-ip6 ;;
-"mangle-ip4") $fiptables -gui mangle-ip4 ;;
-"mangle-ip6") $fiptables -gui mangle-ip6 ;;
-"raw-ip4") $fiptables -gui raw-ip4 ;;
-"raw-ip6") $fiptables -gui raw-ip6 ;;
-"security-ip4") $fiptables -gui security-ip4 ;;
-"security-ip6") $fiptables -gui security-ip6 ;;
-"ebtables") $fiptables -gui ebtables ;;
-"arptables") $fiptables -gui arptables ;;
+"list-nat4") $fiptables -gui list-nat4 ;;
+"list-nat6") $fiptables -gui list-nat6 ;;
+"list-mangle4") $fiptables -gui list-mangle4 ;;
+"list-mangle6") $fiptables -gui list-mangle6 ;;
+"list-raw4") $fiptables -gui list-raw4 ;;
+"list-raw6") $fiptables -gui list-raw6 ;;
+"list-security4") $fiptables -gui list-security4 ;;
+"list-security6") $fiptables -gui list-security6 ;;
+"list-ebtables") $fiptables -gui list-ebtables ;;
+"list-arptables") $fiptables -gui list-arptables ;;
 *)
 #### 
 #### 
@@ -2933,10 +2934,10 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   030 "$cinco [ List rules alphabetical ] $cinco" \
   31  "list" \
   32  "forward" \
-  33  "nat-ip4" \
+  33  "list-nat4" \
   34  "list6"  \
   35  "forward6" \
-  36  "nat-ip6" \
+  36  "list-nat6" \
   37  "list-allrules" \
   040 "$cinco [ List rules numerical ] $cinco" \
   41  "listnum" \
@@ -2944,14 +2945,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   43  "listnum6" \
   44  "forwardnum6" \
   050 "$cinco [ List other tables ] $cinco"  \
-  51  "raw-ip4" \
-  52  "raw-ip6" \
-  53  "mangle-ip4" \
-  54  "mangle-ip6" \
-  55  "security-ip4" \
-  56  "security-ip6" \
-  57  "ebtables" \
-  58  "arptables" \
+  51  "list-raw4" \
+  52  "list-raw6" \
+  53  "list-mangle4" \
+  54  "list-mangle6" \
+  55  "list-security4" \
+  56  "list-security6" \
+  57  "list-ebtables" \
+  58  "list-arptables" \
   060 "$cinco [ Launch rules iptables ] $cinco" \
   61  "eraserules" \
   62  "offline" \
@@ -3063,23 +3064,23 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  28) clear ; $fiptables "actual" ;;
  31) clear ; $fiptables "list" | less ;;
  32) clear ; $fiptables "forward" | less ;;
- 33) clear ; $fiptables "nat-ip4" | less ;;
+ 33) clear ; $fiptables "list-nat4" | less ;;
  34) clear ; $fiptables "list6" | less ;;
  35) clear ; $fiptables "forward6" | less ;;
- 36) clear ; $fiptables "nat-ip6" | less ;;
+ 36) clear ; $fiptables "list-nat6" | less ;;
  37) clear ; $fiptables "list-allrules" | less ;;
  41) clear ; $fiptables "listnum" | less ;;
  42) clear ; $fiptables "forwardnum" | less ;;
  43) clear ; $fiptables "listnum6" | less ;;
  44) clear ; $fiptables "forwardnum6" | less ;;
- 51) clear ; $fiptables "raw-ip4" | less ;;
- 52) clear ; $fiptables "raw-ip6" | less ;;
- 53) clear ; $fiptables "mangle-ip4" | less ;; 
- 54) clear ; $fiptables "mangle-ip6" | less ;;
- 55) clear ; $fiptables "security-ip4" | less ;;
- 56) clear ; $fiptables "security-ip6" | less ;;
- 57) clear ; $fiptables "ebtables" | less ;;
- 58) clear ; $fiptables "arptables" | less ;;
+ 51) clear ; $fiptables "list-raw4" | less ;;
+ 52) clear ; $fiptables "list-raw6" | less ;;
+ 53) clear ; $fiptables "list-mangle4" | less ;; 
+ 54) clear ; $fiptables "list-mangle6" | less ;;
+ 55) clear ; $fiptables "list-security4" | less ;;
+ 56) clear ; $fiptables "list-security6" | less ;;
+ 57) clear ; $fiptables "list-ebtables" | less ;;
+ 58) clear ; $fiptables "list-arptables" | less ;;
  61) clear ; $fiptables "eraserules" ; $fiptables list  ;;
  62) clear ; $fiptables "offline" ; $fiptables list ;;
  63) clear ; $fiptables "allpermisive" ; $fiptables list  ;;
@@ -3630,26 +3631,27 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  if [ "$first_option" = "list-allrules" ]; then  $nada
  echo "$ralla [ $first_option ] [ List all rules ]"
  echo $header_lineal
- $fiptables ebtables
- $fiptables filter-ip4
- $fiptables filter-ip6
- $fiptables nat-ip4
- $fiptables nat-ip6
- $fiptables security-ip4
- $fiptables security-ip6
- $fiptables raw-ip4
- $fiptables raw-ip6
- $fiptables mangle-ip4
- $fiptables mangle-ip6
+ $fiptables list-arptables
+ $fiptables list-ebtables
+ $fiptables list-filter4
+ $fiptables list-filter6
+ $fiptables list-nat4
+ $fiptables list-nat6
+ $fiptables list-security4
+ $fiptables list-security6
+ $fiptables list-raw4
+ $fiptables list-raw6
+ $fiptables list-mangle4
+ $fiptables list-mangle6
  echo $footer_lineal
  exit; fi
 ####
 ####
-#############################  english: filter-ip4: system script, the list option
-#############################  spanish: filter-ip4: script de sistema, la opcion lista
+#############################  english: list-filter4: system script, the list option
+#############################  spanish: list-filter4: script de sistema, la opcion lista
 ####
 ####
- if [ "$first_option" = "filter-ip4" ]; then $give_cover 
+ if [ "$first_option" = "list-filter4" ]; then $give_cover 
  #### legacycuatro=$("$which_iptables_legacy" -t filter -L INPUT 1 && \
  #### "$which_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  #### nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
@@ -3716,11 +3718,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################ english: filter-ip6: list ipv6 rules filter
-############################ spanish: filter-ip6: lista reglas de filtros de ipv6
+############################ english: list-filter6: list ipv6 rules filter
+############################ spanish: list-filter6: lista reglas de filtros de ipv6
 ####
 ####
- if [ "$first_option" = "filter-ip6" ]; then  $give_cover
+ if [ "$first_option" = "list-filter6" ]; then  $give_cover
 #### legacyseis=$("$which_ip6tables_legacy" -t filter -L INPUT 1 && \
 #### "$which_ip6tables_legacy" -t filter -L OUTPUT 1 )
 #### nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -3791,11 +3793,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################ english: nat-ip4: list NAT rules of ipv4
-############################ spanish: nat-ip4: lista reglas de NAT de ipv4
+############################ english: list-nat4: list NAT rules of ipv4
+############################ spanish: list-nat4: lista reglas de NAT de ipv4
 ####
 ####
- if [ "$first_option" = "nat-ip4" ]; then  $give_cover
+ if [ "$first_option" = "list-nat4" ]; then  $give_cover
 #### legacycuatro=$("$which_iptables_legacy" -t nat -L POSTROUTING 1)
 #### nftcuatro=$("$which_iptables_nft" -t nat -L POSTROUTING 1)
  echo $header_ender
@@ -3829,11 +3831,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################ english: nat-ip6: list NAT rules of ipv6
-############################ spanish: nat-ip6: lista reglas de NAT de ipv6
+############################ english: list-nat6: list NAT rules of ipv6
+############################ spanish: list-nat6: lista reglas de NAT de ipv6
 ####
 ####
- if [ "$first_option" = "nat-ip6" ]; then $give_cover
+ if [ "$first_option" = "list-nat6" ]; then $give_cover
 #### legacyseis=$("$which_ip6tables_legacy" -t nat -L POSTROUTING 1)
 #### nftseis=$("$which_ip6tables_nft" -t nat -L POSTROUTING 1)
  echo $header_ender
@@ -4009,11 +4011,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: mangle-ip4: list mangle rules from ipv4
-############################       spanish: mangle-ip4: lista reglas de mangle de ipv4
+############################       english: list-mangle4: list mangle rules from ipv4
+############################       spanish: list-mangle4: lista reglas de mangle de ipv4
 ####
 ####
- if [ "$first_option" = "mangle-ip4" ]; then  $give_cover
+ if [ "$first_option" = "list-mangle4" ]; then  $give_cover
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
@@ -4028,11 +4030,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: mangle-ip6: list mangle rules from ipv6
-############################       spanish: mangle-ip6: lista reglas de mangle de ipv6
+############################       english: list-mangle6: list mangle rules from ipv6
+############################       spanish: list-mangle6: lista reglas de mangle de ipv6
 ####
 ####
- if [ "$first_option" = "mangle-ip6" ]; then $give_cover
+ if [ "$first_option" = "list-mangle6" ]; then $give_cover
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
@@ -4046,11 +4048,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: raw-ip4: list raw rules from ipv4
-############################       spanish: raw-ip4: lista reglas raw de ipv4
+############################       english: list-raw4: list raw rules from ipv4
+############################       spanish: list-raw4: lista reglas raw de ipv4
 ####
 ####
- if [ "$first_option" = "raw-ip4" ]; then  $give_cover
+ if [ "$first_option" = "list-raw4" ]; then  $give_cover
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
@@ -4064,11 +4066,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: raw-ip6: list raw rules from ipv6
-############################       spanish: raw-ip6: lista reglas raw de ipv6
+############################       english: list-raw6: list raw rules from ipv6
+############################       spanish: list-raw6: lista reglas raw de ipv6
 ####
 ####
- if [ "$first_option" = "raw-ip6" ]; then  $give_cover
+ if [ "$first_option" = "list-raw6" ]; then  $give_cover
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
@@ -4083,11 +4085,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: security-ip4: list security rules from ipv4
-############################       spanish: security-ip4: lista reglas de security de ipv4
+############################       english: list-security4: list security rules from ipv4
+############################       spanish: list-security4: lista reglas de security de ipv4
 ####
 ####
- if [ "$first_option" = "security-ip4" ]; then  $give_cover
+ if [ "$first_option" = "list-security4" ]; then  $give_cover
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
@@ -4102,11 +4104,11 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: security-ip6: list security rules from ipv6
-############################       spanish: security-ip6: lista reglas de security de ipv6
+############################       english: list-security6: list security rules from ipv6
+############################       spanish: list-security6: lista reglas de security de ipv6
 ####
 ####
- if [ "$first_option" = "security-ip6" ]; then  $give_cover
+ if [ "$first_option" = "list-security6" ]; then  $give_cover
  echo $header_ender
  echo "$ralla [ $first_option ] [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
@@ -4125,7 +4127,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ############################       spanish: ebtables: lista reglas de ebtables with mac
 ####
 ####
- if [ "$first_option" = "ebtables" ]; then  $give_cover
+ if [ "$first_option" = "list-ebtables" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ List ebtables ]"
  echo $header_lineal
  echo $ralla
@@ -4145,7 +4147,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
 ####
- if [ "$first_option" = "arptables" ]; then  $give_cover
+ if [ "$first_option" = "list-arptables" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ List arptables ipv4 ]"
  echo $header_lineal
  echo $ralla
@@ -5662,8 +5664,8 @@ echo
 echo "$cinco         [List iptables rules]"
 echo
 echo "               [The filter table with names]"
-echo "         list: Alias to filter-ip4"
-echo "      forward: Alias to filter-ip6"
+echo "         list: Alias to list-filter4"
+echo "      forward: Alias to list-filter6"
 echo
 echo "$cinco         [List the others tables]"
 echo
@@ -5674,18 +5676,18 @@ echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
 echo "        list6: List iptables filter rules from ipv6"
 echo "     forward6: List iptables filter rules forward ipv6"
 echo
-echo "   filter-ip4: List iptables filter rules from ipv4"
-echo "   filter-ip6: List iptables filter rules from ipv6"
-echo "      nat-ip4: List iptables nat rules from ipv4"
-echo "      nat-ip6: List iptables nat rules from ipv6"
-echo "   mangle-ip4: List iptables mangle rules from ipv4"
-echo "   mangle-ip6: List iptables mangle rules from ipv6"
-echo "      raw-ip4: List iptables raw rules from ipv4"
-echo "      raw-ip6: List iptables raw rules from ipv4"
-echo " security-ip4: List iptables security rules from ipv4"
-echo " security-ip6: List iptables security rules from ipv6"
-echo "     ebtables: List rules ebtables mac of ethernet"
-echo "    arptables: List rules arptables arp"
+echo "     list-filter4: List iptables filter rules from ipv4"
+echo "     list-filter6: List iptables filter rules from ipv6"
+echo "        list-nat4: List iptables nat rules from ipv4"
+echo "        list-nat6: List iptables nat rules from ipv6"
+echo "   list-mangle4: List iptables mangle rules from ipv4"
+echo "   list-mangle6: List iptables mangle rules from ipv6"
+echo "      list-raw4: List iptables raw rules from ipv4"
+echo "      list-raw6: List iptables raw rules from ipv4"
+echo " list-security4: List iptables security rules from ipv4"
+echo " list-security6: List iptables security rules from ipv6"
+echo "  list-ebtables: List rules ebtables mac of ethernet"
+echo " list-arptables: List rules arptables arp"
 echo
 echo "$cinco         [Launch interface]"
 echo
@@ -5907,8 +5909,8 @@ echo
 echo "$cinco         [Lista las reglas de tablas de iptables]"
 echo
 echo "               La tabla de filtros con nombres"
-echo "         list: apodo para filter-ip4" 
-echo "        list6: apodo para filter-ip6"
+echo "         list: apodo para list-filter4" 
+echo "        list6: apodo para list-filter6"
 echo
 echo "$cinco         [Lista Las otras tablas de iptables]"
 echo
@@ -5919,18 +5921,18 @@ echo "  forward6num: Lista las reglas de ipv6 de filtros de reenvio en numeros"
 echo "      forward: Lista las reglas de ipv4 de filtros de reenvio"
 echo "     forward6: Lista las reglas de ipv6 de filtros de reenvio"
 echo
-echo "   filter-ip4: Lista las reglas de ipv4 de filtros iptables"
-echo "   filter-ip6: Lista las reglas de ipv6 de filtros iptables"
-echo "      nat-ip4: Lista las reglas de ipv4 de nat iptables"
-echo "      nat-ip6: Lista las reglas de ipv6 de nat iptables"
-echo "   mangle-ip4: Lista las reglas de ipv4 de mangle iptables"
-echo "   mangle-ip6: Lista las reglas de ipv6 de mangle iptables"
-echo "      raw-ip4: Lista las reglas de ipv4 de raw iptables"
-echo "      raw-ip6: Lista las reglas de ipv6 de raw iptables"
-echo " security-ip4: lista las reglas de ip4 de security iptables"
-echo " security-ip6: Lista las reglas de ip6 de security iptables"
-echo "     ebtables: Lista las reglas mac de ethernet"
-echo "    arptables: Lista las reglas de arp arptables"
+echo "   list-filter4: Lista las reglas de ipv4 de filtros iptables"
+echo "   list-filter6: Lista las reglas de ipv6 de filtros iptables"
+echo "      list-nat4: Lista las reglas de ipv4 de nat iptables"
+echo "      list-nat6: Lista las reglas de ipv6 de nat iptables"
+echo "   list-mangle4: Lista las reglas de ipv4 de mangle iptables"
+echo "   list-mangle6: Lista las reglas de ipv6 de mangle iptables"
+echo "      list-raw4: Lista las reglas de ipv4 de raw iptables"
+echo "      list-raw6: Lista las reglas de ipv6 de raw iptables"
+echo " list-security4: lista las reglas de ip4 de security iptables"
+echo " list-security6: Lista las reglas de ip6 de security iptables"
+echo "  list-ebtables: Lista las reglas mac de ethernet"
+echo " list-arptables: Lista las reglas de arp arptables"
 echo
 echo "$cinco         [Lanza interfaz]"
 echo
