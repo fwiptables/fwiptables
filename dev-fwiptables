@@ -1273,7 +1273,6 @@ echo "$tab" "$tab"  "    show-about         about version depends examples      
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options                    "
 echo "$tab" "$tab"  "                       group-options basic-options full-options              "
-echo
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
 echo 
