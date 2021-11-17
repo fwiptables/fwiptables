@@ -111,7 +111,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.78-Daniel" ;                                            
+fversion="1.79" ;                                            
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
