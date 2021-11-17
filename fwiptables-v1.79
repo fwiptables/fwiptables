@@ -89,7 +89,7 @@ server_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.onli
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio="http://cope.stream.flumotion.com/cope/cadena100.mp3.m3u" ;   ## fwiptables-default ## streaming url
+radio="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" 
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -5292,12 +5292,12 @@ $fiptables stop
 ####
  if [ "$first_option" = "radio" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Listen radio online ]"
- echo "$rallica [ for choose radio see: ] [ $fiptables default ]"
+ echo "$rallica [ for choose radio see: $fiptables show-default ] [ only protocol http ]"
  echo "$rallica [ Usually it do not working like root, probe as user ]"
  echo "$rallica [ mpg123 -@ $radio ]"
  echo $header_lineal
  echo $footer_lineal
- mpg123 -@ $radio
+ sudo -u $(logname) mpg123 -@ $radio
  exit; fi
 ####
 ####
