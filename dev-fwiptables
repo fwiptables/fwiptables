@@ -6256,7 +6256,7 @@ $allow_nft $allow_ipv6 $which_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> 
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
 $allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
-$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OUTPUT -j DROP        &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
@@ -6902,7 +6902,7 @@ $allow_nft $allow_ipv6   $which_ip6tables_nft -A OUTPUT \
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A INPUT -j DROP   &> /dev/null
 $allow_legacy  $allow_ipv4  $which_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
 $allow_nft  $allow_ipv4     $which_iptables_nft -A INPUT -j DROP         &> /dev/null
-$allow_nft  $allow_ipv4     $which_iptables_nft -A OTUPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv4     $which_iptables_nft -A OUTPUT -j DROP        &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $which_ip6tables_nft -A INPUT -j DROP        &> /dev/null
