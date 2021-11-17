@@ -68,7 +68,7 @@ allow_header=""                       ## fwiptables-default ## void or no
 allow_autolog=""                 ## fwiptables-default ## void or no
 ####       #### english: void to AUTOSAVE fwrecover or no 
 ####       #### spanish: AUTOGUARDAR fwrecover o no
-allow_autosave=""                 ## fwiptables-default ## void or no
+allow_autosave="no"                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
