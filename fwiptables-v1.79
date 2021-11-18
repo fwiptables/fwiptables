@@ -5531,9 +5531,9 @@ exit; fi
  echo "$tab [ System info ][ Kernel Linux ]"
  $which_uname -srom
  echo $ralla
- echo "$tab [ Boot init system ] [ with pid 1 ]"
+ echo "$tab [ Boot system ] [ it works with pid number 1 ]"
  ps -p1 
- echo "   Your init system is : $(cat /proc/1/comm)"
+ echo "   Your boot system is : $(cat /proc/1/comm)"
  echo $ralla
  echo "$tab [ System info ] [ Processor ]"
  lscpu | egrep -i "socket|Model name|cpu max"
