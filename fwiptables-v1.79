@@ -972,6 +972,7 @@ which_uname="$(which uname | cut -d " " -f 1)"
 which_sed="$(which sed | cut -d " " -f 1)"
 which_xrandr="$(which xrandr | cut -d " " -f 1)"
 which_ip="$(which ip | cut -d " " -f 1)"
+which_curl="$(which curl | cut -d " " -f 1)"
 which_host="$(which host | cut -d " " -f 1)"
 which_resolveip="$(which resolveip | cut -d " " -f 1)"
 which_geoiplookup="$(which geoiplookup | cut -d " " -f 1)"
@@ -2076,6 +2077,7 @@ echo $ralla
 echo "$tab [$fiptables tool]"
 echo "uname:      $which_uname"
 echo "ip:         $which_ip"
+echo "curl:       $which_curl"
 echo "route:      $which_route"
 echo "ss:         $which_ss"
 echo "netstat:    $which_netstat"
@@ -5566,8 +5568,14 @@ exit; fi
  echo "$tab [ Net Info Listen ] [ Listen ipv6 ]"
  $which_ss -l6 | sed 's/   / /g'
  echo $ralla
+ echo "$tab [ private ip address ipv4 ]"
+ $which_ip -4 address | grep -i inet | grep -iv "127.0.0.1"
+ echo $ralla
+ echo "$tab [ private ip address ipv6 ]"
+ $which_ip -6 address | grep -i inet | grep -iv "::1/128"
+ echo $ralla
  echo "$tab [ public ip ]"
- timeout 5s curl -s http:/ifconfig.me -w "\n"
+ timeout 7s $which_curl -s http:/ifconfig.me -w "\n"
  echo $ralla
  echo $footer_lineal
  exit; fi
