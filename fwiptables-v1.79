@@ -1223,15 +1223,15 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    Too other groups:  tool-custom tool-forward tool-nmap                    " 
 echo "$tab" "$tab"  "                       tool-install tool-system show-log                     " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
+echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  List iptables rules :                     $fiptables list                  "
+echo "$tab" "$tab"  "  List iptables rules whithout warnings :   $fiptables -text list            "
 echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
-echo "$tab" "$tab"  "  Load iptables rules to output gui :       $fiptables -gui load name        "
-echo "$tab" "$tab"  "  For more options :                        $fiptables full-options          "
+echo "$tab" "$tab"  "  Save iptables rules to output gui :       $fiptables -gui save name        "
+echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
 echo $footer_lineal
 exit ; fi
 ####
@@ -1280,14 +1280,14 @@ echo "$tab" "$tab"  "                       config-eng config-spa license       
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options                    "
 echo "$tab" "$tab"  "                       group-options basic-options full-options              "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    some-example       | -text for default output, or -log or -gui |         "
+echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo 
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  List iptables rules :                     $fiptables list                  "
+echo "$tab" "$tab"  "  List iptables rules whithout warnings :   $fiptables -text list            "
 echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
-echo "$tab" "$tab"  "  Load iptables rules to output gui :       $fiptables -gui load name        "
+echo "$tab" "$tab"  "  Save iptables rules to output gui :       $fiptables -gui save name        "
 echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
 echo $footer_lineal
 exit ; fi
