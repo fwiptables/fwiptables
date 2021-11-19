@@ -318,12 +318,12 @@ case "$first_option" in
 "gui-shell") first_option="gui-shell" ;;
 "log")
 $fiptables $second_option $third_option &>> $file_output_log
-cat $file_output_log &>> $file_output_logfinal
+cat $file_output_log | grep -v Warning: &>> $file_output_logfinal
 echo "$cinco Output $fiptables $second_option $third_option sended to $file_output_logfinal" 
 exit ;;
 "-log") 
 $fiptables $second_option $third_option &>> $file_output_log
-cat $file_output_log &>> $file_output_logfinal
+cat $file_output_log | grep -v Warding: &>> $file_output_logfinal
 echo "$cinco Output $fiptables $second_option $third_option sended to $file_output_logfinal" 
 exit ;;
 "text")
