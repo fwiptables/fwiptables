@@ -5535,6 +5535,7 @@ exit; fi
  echo $ralla
  echo "$tab [ Boot system ] [ it works with pid number 1 ]"
  ps -p1 
+ echo "$tab Over /proc/1/com CMD"
  echo "   Your boot system is : $(cat /proc/1/comm)"
  echo $ralla
  echo "$tab [ System info ] [ Processor ]"
