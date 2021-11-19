@@ -303,10 +303,11 @@ esac; fi
 mkdir /tmp/fwiptables-$fversion/ &> /dev/null
 #### file_temporal_null="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
 file_temporal_text="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
-file_temporal_text_dos="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
+file_temporal_textfinal="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
 file_temporal_gui="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
-file_temporal_gui_dos="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
-file_output_log="/var/log/fwiptables"
+file_temporal_guifinal="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
+file_output_log="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
+file_output_logfinal="/var/log/fwiptables"
 ####
 ####
 case "$first_option" in 
@@ -317,20 +318,22 @@ case "$first_option" in
 "gui-shell") first_option="gui-shell" ;;
 "log")
 $fiptables $second_option $third_option &>> $file_output_log
-echo "$cinco Output $fiptables $second_option $third_option sended to $file_output_log" 
+cat $file_output_log &>> $file_output_logfinal
+echo "$cinco Output $fiptables $second_option $third_option sended to $file_output_logfinal" 
 exit ;;
 "-log") 
 $fiptables $second_option $third_option &>> $file_output_log
-echo "$cinco Output $fiptables $second_option $third_option sended to $file_output_log" 
+cat $file_output_log &>> $file_output_logfinal
+echo "$cinco Output $fiptables $second_option $third_option sended to $file_output_logfinal" 
 exit ;;
 "text")
 $fiptables $second_option $third_option &> $file_temporal_text
-cat $file_temporal_text | grep -v Warning:  &> $file_temporal_text_dos
-cat $file_temporal_text_dos ; exit ;;
+cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
+cat $file_temporal_textfinal ; exit ;;
 "-text")
 $fiptables $second_option $third_option &> $file_temporal_text
-cat $file_temporal_text | grep -v Warning: ; exit ;;
-else) echo "sale"; exit ;;
+cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
+cat $file_temporal_textfinal ; exit ;;
 esac
 ####
 ####
@@ -2193,10 +2196,10 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 *)
 #### fecha_temporal=$(date | sed s/\ //g) ;
 $fiptables $second_option $third_option &> $file_temporal_gui
-cat $file_temporal_gui | grep -v Warning: &> $file_temporal_gui_dos
+cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
 zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" \
---filename=$file_temporal_gui_dos --auto-scroll
-#### rm $file_temporal_gui
+--filename=$file_temporal_guifinal --auto-scroll
+#### rm $file_temporal_guifinal
 ;;
 #### 
 #### 
@@ -2254,9 +2257,9 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 *)
 #### fecha_temporal=$(date | sed s/\ //g)
 $fiptables $second_option &> $file_temporal_gui
-cat $file_temporal_gui | grep -v Warning: &> $file_temporal_gui_dos
+cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
 zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" \
---filename=$file_temporal_gui_dos --auto-scroll
+--filename=$file_temporal_guifinal --auto-scroll
 #### rm /tmp/fwiptables-$fecha_temporal
 ;;
 #### 
