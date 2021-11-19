@@ -301,7 +301,9 @@ esac; fi
 ####
 ####
 mkdir /tmp/fwiptables-$fversion/ &> /dev/null
-file_temporal_text="/tmp/fwiptables-$fversion/fwiptables-$second_option-$third_option"
+file_temporal_null="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
+file_temporal_text="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
+file_temporal_gui="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
 ####
 ####
 case "$first_option" in 
@@ -2185,11 +2187,11 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 #### 
 #### 
 *)
-fecha_temporal=$(date | sed s/\ //g) ;
-$fiptables $second_option $third_option &> /tmp/fwiptables-$fecha_temporal
+#### fecha_temporal=$(date | sed s/\ //g) ;
+$fiptables $second_option $third_option &> $file_temporal_gui
 zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" \
---filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
-rm /tmp/fwiptables-$fecha_temporal
+--filename=$file_temporal_gui --auto-scroll
+#### rm $file_temporal_gui
 ;;
 #### 
 #### 
@@ -2245,10 +2247,10 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 #### 
 *)
-fecha_temporal=$(date | sed s/\ //g)
-$fiptables $second_option &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
-rm /tmp/fwiptables-$fecha_temporal
+#### fecha_temporal=$(date | sed s/\ //g)
+$fiptables $second_option &> $file_temporal_gui
+zenity --text-info $graphic_dimension --title "[$fiptables gui] [$second_option]" --filename=$file_temporal_gui --auto-scroll
+#### rm /tmp/fwiptables-$fecha_temporal
 ;;
 #### 
 #### 
