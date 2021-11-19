@@ -53,7 +53,7 @@ fi
 default_option="full-options"         ## fwiptables-default ## default: full-options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy="no"                       ## fwiptables-default ## void or no
+allow_legacy="no"                     ## fwiptables-default ## void or no
 allow_nft=""                          ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
@@ -461,7 +461,7 @@ spa5=$(echo "$cinco procolo ip, modificar con vacio o no")
 var6=$(echo "allow_ipv4=" )
 eng6=$(echo "$cinco void to config firewall with ipv4 or no to dont configure ipv4")
 spa6=$(echo "$cinco varcio para ejecutar el firewall con ipv4 o no para no")
-var7=$(echo "allow_ipv6=no" )
+var7=$(echo "allow_ipv6=" )
 eng7=$(echo "$cinco void to config firewall with ipv6 or no to dont configure ipv6")
 spa7=$(echo "$cinco varcio para ejecutar el firewall con ipv6 o no para no")
 var8=$(echo "$cinco CLIENT PORTS #")
@@ -974,8 +974,9 @@ which_iptables_legacy="$(which iptables-legacy | cut -d " " -f 1)"
 which_iptables_nft="$(which iptables-nft | cut -d " " -f 1)"
 which_ip6tables_legacy="$(which ip6tables-legacy | cut -d " " -f 1)"
 which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
-which_arptables="$(which arptables|cut -d " " -f 1)"
-which_ebtables="$(which ebtables| cut -d " " -f 1)"
+which_arptables="$(which arptables |cut -d " " -f 1)"
+which_ebtables="$(which ebtables | cut -d " " -f 1)"
+which_arptables="$(which arptables | cut -d " " -f 1)"
 which_fmt="$(which fmt | cut -d " " -f 1)"
 which_uname="$(which uname | cut -d " " -f 1)"
 which_sed="$(which sed | cut -d " " -f 1)"
@@ -1028,6 +1029,7 @@ which_glxgears="$(which glxgears | cut -d " " -f 1)"
 if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
 echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
+$which_arptables-save &> $directory_fwrecover/autosave-fwiptables-arptables
 $which_ebtables-save &> $directory_fwrecover/autosave-fwiptables-ebtables
 $which_iptables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv4
 $which_iptables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv4
@@ -4632,8 +4634,13 @@ exit; fi
 #### English: Load all rules 
 ####
 ####
-if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
+ if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
  cat $directory_fwrecover/$second_option-ebtables | $which_ebtables-restore &> /dev/null; fi
+####
+####
+ if [ -f "$directory_fwrecover/$second_option-arptables" ]; then
+ cat $directory_fwrecover/$second_option-arptables | $which_arptables-restore &> /dev/null; fi
+####
 #### 
  cat $directory_fwrecover/$second_option-nft-ipv4 |  $which_iptables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $which_iptables_legacy-restore  
