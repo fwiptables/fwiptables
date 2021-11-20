@@ -313,6 +313,37 @@ file_output_log="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_o
 file_output_logfinal="/var/log/fwiptables"
 ####
 ####
+#### english: Exceptions in -text
+#### english: Excepciones en -text
+####
+####
+if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
+case "$second_option" in 
+wizard-mini) $fiptables $second_option $third_option ; exit ;;
+wizard-full) $fiptables $second_option $third_option ; exit ;;
+nueva-mini-config) $fiptables $second_option $third_option ; exit ;;
+nueva-completa-config) $fiptables $second_option $third_option ; exit ;;
+new-mini-config) $fiptables $second_option $third_option ; exit ;;
+new-full-config) $fiptables $second_option $third_option ; exit ;;
+ping-ip4) $fiptables $second_option $third_option ; exit ;;
+ping-ip6) $fiptables $second_option $third_option ; exit ;;
+speed-ip4) $fiptables $second_option $third_option ; exit ;;
+speed-ip6) $fiptables $second_option $third_option ; exit ;;
+scan-*) $fiptables $second_option $third_option ; exit ;;
+"install") $fiptables $second_option $third_option ; exit ;;
+uprade) $fiptables $second_option $third_option ; exit ;;
+ram-speed) $fiptables $second_option $third_option ; exit ;;
+disc-speed) $fiptables $second_option $third_option ; exit ;;
+gl-speed) $fiptables $second_option $third_option ; exit ;;
+radio) $fiptables $second_option $third_option ; exit ;;
+log-*) $fiptables $second_option $third_option ; exit ;;
+license-*) $fiptables $second_option $third_option ; exit ;;
+ipforward-*) $fiptables $second_option $third_option ; exit ;;
+*config) $fiptables $second_option $third_option ; exit ;;
+esac
+fi
+####
+####
 case "$first_option" in 
 "$NULL") first_option="$default_option" ;;
 "gui") first_option="-gui" ;;
