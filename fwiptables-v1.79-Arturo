@@ -170,6 +170,9 @@ case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip c
 which_ebtables="$(which ebtables| cut -d " " -f 1)"
 rules_filter_ebtables=""; rules_filter_ebtables="$($which_ebtables -L -t filter | grep -- "-j" | wc -l)"
 rules_nat_ebtables=""   ; rules_nat_ebtables="$($which_ebtables -L -t nat       | grep -- "-j" | wc -l)"
+####       #### english: to know if there is arptables rules #### spanish: saber si hay reglas arptables
+which_arptables="$(which ebtables| cut -d " " -f 1)"
+rules_arptables="" ; rules_arptables="$($which_arptables -L | grep -- "-j" | wc -l)"
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
@@ -413,6 +416,7 @@ else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 if [ "$first_option" = "header" ] ; then
 if [ "$allow_header" = "no" ]   ; then 
 echo "$head_normal" 
+if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
 if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 else 
@@ -421,6 +425,7 @@ echo $head_default
 echo $head_normal
 echo $default_route_cuatro
 echo $default_route_seis
+if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
 if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 echo $header_ender
@@ -1029,12 +1034,13 @@ which_glxgears="$(which glxgears | cut -d " " -f 1)"
 if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
 echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
-$which_arptables-save &> $directory_fwrecover/autosave-fwiptables-arptables
-$which_ebtables-save &> $directory_fwrecover/autosave-fwiptables-ebtables
-$which_iptables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv4
-$which_iptables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv4
-$which_ip6tables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv6
-$which_ip6tables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv6
+$fiptables save autosave-fwiptables
+#### $which_arptables-save &> $directory_fwrecover/autosave-fwiptables-arptables
+#### $which_ebtables-save &> $directory_fwrecover/autosave-fwiptables-ebtables
+#### $which_iptables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv4
+#### $which_iptables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv4
+#### $which_ip6tables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv6
+#### $which_ip6tables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv6
 fi; exit; fi
 ####
 ####
@@ -1309,7 +1315,11 @@ echo
 echo
 $fiptables intro 
 echo
+echo "$cinco [ full-options ] $cinco"
+echo
 $fiptables full-options
+echo
+echo "$cinco [ group-options ] $cinco"
 echo
 $fiptables group-options
 echo
@@ -1464,7 +1474,7 @@ echo "$rallica [ Lanza reglas de iptables ]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "             : Borra las reglas de iptables en ipv4 y ipv6"
-echo "      offline: Launnch a firewall disconected for all servers and clients except localhost"
+echo "      offline: Launch a firewall disconected for all servers and clients except localhost"
 echo "             : Lanza un Firewall desconectado para todo servidores y clientes excepto localhost"
 echo " allpermisive: Launch a firewall very permisive"
 echo "             : Lanza un firewall muy permisivo"
@@ -1472,8 +1482,8 @@ echo "    clientweb: Launch a firewall like client web and ssh"
 echo "             : Lanza un firewall como cliente web y ssh"
 echo "    serverweb: Launch a firewall like server web and ssh"
 echo "             : Lanza un firewall como servidor web y ssh"
-echo "  serversamba: Launch a firewall samba and ssh like client and server"
-echo "             : Lanza un firewall sambla y ssh como cliente y servidor"
+echo "  serversamba: Launch a firewall samba and ssh like client and server both"
+echo "             : Lanza un firewall sambla y ssh como cliente y servidor ambos"
 echo "     gamesudp: Launch a firewall like client games for udp non-root"
 echo "             : Lanza un firewall como cliente juegos udp no-root"
 echo "          cfg: Alias a custom"
@@ -1979,6 +1989,9 @@ echo "$ralla [ $first_option ] [ List notes about $fiptables ]"
 echo
 echo "$cinco [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo "$cinco [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
+echo
+echo "$cinco [ allow_maxtries_ssh ] [ limit a attack per bruteforce to us ssh server] "
+echo "$cinco [ allow_maxtries_ssh ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
 echo
 echo "$cinco [ net vpn ]  [ virtual private network ] [ whitelist ]"
 echo "$cinco [ net vpnn ] [ red privada virtual ]     [ lista blanca ]"
