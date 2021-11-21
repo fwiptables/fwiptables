@@ -5,7 +5,7 @@
 ####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
 ####
 ####
-####     #### english: whereis path     #### spanish: donde esta el path
+####     #### english: whereis path     #### spanish: donde esta el path 
 directory_fiptables="/usr/bin" ;
 ####
 ####
