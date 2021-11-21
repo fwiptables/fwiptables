@@ -166,13 +166,29 @@ case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip
 #### english: default route ipv6 #### english: routa por defecto ipv6
 case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$which_ip" -6 route show | grep -i default | head -1) ]" ;; esac
+####  english: notice install iptables if necesary
+####  spanish: noticia instala iptables en caso necesario
+which_iptables_legacy="$(which iptables-legacy | cut -d " " -f 1)"
+which_iptables_nft="$(which iptables-nft | cut -d " " -f 1)"
+which_ip6tables_legacy="$(which ip6tables-legacy | cut -d " " -f 1)"
+which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
+if [ "$which_iptables_legacy" = "$NULL" ]; then echo "install iptables-legacy"; fi
+if [ "$which_ip6tables_legacy" = "$NULL" ]; then echo "install ip6tables-legacy"; fi
+if [ "$which_iptables_nft" = "$NULL" ]; then echo "install iptables-nft"; fi
+if [ "$which_ip6tables_nft" = "$NULL" ]; then echo "install ip6tables-nft"; fi
 ####       #### english: to know if there is mac rules #### spanish: saber si hay reglas mac
-which_ebtables="$(which ebtables| cut -d " " -f 1)"
-rules_filter_ebtables=""; rules_filter_ebtables="$($which_ebtables -L -t filter | grep -- "-j" | wc -l)"
-rules_nat_ebtables=""   ; rules_nat_ebtables="$($which_ebtables -L -t nat       | grep -- "-j" | wc -l)"
+which_ebtables="$(which ebtables | cut -d " " -f 1)"
+if [ "$which_ebtables" = "$NULL" ]; then rules_filter_ebtables="0" ; rules_nat_ebtables="0" ; 
+else
+rules_filter_ebtables="$($which_ebtables -L -t filter | grep -- "-j" | wc -l)"
+rules_nat_ebtables="$($which_ebtables -L -t nat       | grep -- "-j" | wc -l)"
+fi
 ####       #### english: to know if there is arptables rules #### spanish: saber si hay reglas arptables
-which_arptables="$(which ebtables| cut -d " " -f 1)"
-rules_arptables="" ; rules_arptables="$($which_arptables -L | grep -- "-j" | wc -l)"
+which_arptables="$(which arptables | cut -d " " -f 1 )"
+if [ "$which_arptables" = "$NULL" ]; then rules_arptables="0" ;
+else rules_arptables="$($which_arptables -L | grep -- "-j" | wc -l)" ; fi
+####
+####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
@@ -1012,7 +1028,6 @@ which_ip6tables_legacy="$(which ip6tables-legacy | cut -d " " -f 1)"
 which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
 which_arptables="$(which arptables |cut -d " " -f 1)"
 which_ebtables="$(which ebtables | cut -d " " -f 1)"
-which_arptables="$(which arptables | cut -d " " -f 1)"
 which_fmt="$(which fmt | cut -d " " -f 1)"
 which_uname="$(which uname | cut -d " " -f 1)"
 which_sed="$(which sed | cut -d " " -f 1)"
