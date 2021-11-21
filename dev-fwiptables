@@ -401,20 +401,6 @@ esac
 if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 ####
 ####
-#############################     english: list: alias list to filter ip4
-#############################     spanish: list6: apodo list a filtros de ip4
-####
-####
-#### if [ "$first_option" = "list" ];  then first_option="list-filter4" ; fi
-####
-####
-#############################     english: list: alias list6 to filter ip6
-#############################     spanish: list6: apodo list6 a filtros de ip6
-####
-####
-#### if [ "$first_option" = "list6" ]; then first_option="list-filter6" ; fi
-####
-####
 #############################     english: alias for cfg-custom to custom  
 #############################     spanish: apodo de cfg-custom para custom
 ####
@@ -1076,12 +1062,6 @@ if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
 echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
 $fiptables save autosave-fwiptables &> /dev/null
-#### $which_arptables-save &> $directory_fwrecover/autosave-fwiptables-arptables
-#### $which_ebtables-save &> $directory_fwrecover/autosave-fwiptables-ebtables
-#### $which_iptables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv4
-#### $which_iptables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv4
-#### $which_ip6tables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv6
-#### $which_ip6tables_legacy-save &> $directory_fwrecover/autosave-fwiptables-legacy-ipv6
 fi; exit; fi
 ####
 ####
@@ -4725,6 +4705,7 @@ exit; fi
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
+ $which_arptables-save          &> $directory_fwrecover/$archivofin-arptables
  $which_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables     
  $which_iptables_nft-save       &> $directory_fwrecover/$archivofin-nft-ipv4     
  $which_iptables_legacy-save    &> $directory_fwrecover/$archivofin-legacy-ipv4  
@@ -4752,12 +4733,15 @@ exit; fi
  "$NULL") $fiptables names; echo "$cinco Use in the command line: $fiptables show file-to-show" ; exit ;;
  *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
  esac
+ ls -l $directory_fwrecover/$archivofin-arptables
  ls -l $directory_fwrecover/$archivofin-ebtables
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
  echo "$rallica [ OK FIREWALL LISTED ] [ $archivofin ]"
+ echo "$cincuenta $archivofin-arptables"
+ cat $directory_fwrecover/$archivofin-arptables
  echo "$cincuenta $archivofin-ebtables"
  cat $directory_fwrecover/$archivofin-ebtables
  echo "$cincuenta $archivofin-nft-ipv4"
@@ -4780,11 +4764,14 @@ exit; fi
  if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
  echo "$ralla [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
+ $which_arptables-save          &> $directory_fwrecover/fiptables-actual-arptables
  $which_ebtables-save           &> $directory_fwrecover/fiptables-actual-ebtables   
  $which_iptables_nft-save       &> $directory_fwrecover/fiptables-actual-nft-ipv4   
  $which_iptables_legacy-save    &> $directory_fwrecover/fiptables-actual-legacy-ipv4
  $which_ip6tables_nft-save      &> $directory_fwrecover/fiptables-actual-nft-ipv6   
  $which_ip6tables_legacy-save   &> $directory_fwrecover/fiptables-actual-legacy-ipv6
+ echo "$cincuenta arptables $cinco"
+ cat $directory_fwrecover/fiptables-actual-arptables
  echo "$cincuenta ebtables $cinco"
  cat $directory_fwrecover/fiptables-actual-ebtables
  echo "$cincuenta nft with ipv4 $cinco"
@@ -4813,6 +4800,7 @@ echo $header_lineal
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
+$which_arptables-save &> $directory_fwrecover/fiptables-stoped-arptables
 $which_ebtables-save &> $directory_fwrecover/fiptables-stoped-ebtables             
 $which_iptables_nft-save &> $directory_fwrecover/fiptables-stoped-nft-ipv4         
 $which_iptables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-ipv4   
@@ -4842,6 +4830,7 @@ exit; fi
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
+ cat $directory_fwrecover/fiptables-stoped-arptables | $which_arptables-restore
  cat $directory_fwrecover/fiptables-stoped-ebtables | $which_ebtables-restore
  cat $directory_fwrecover/fiptables-stoped-nft-ipv4 | $which_iptables_nft-restore  
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $which_iptables_legacy-restore  
