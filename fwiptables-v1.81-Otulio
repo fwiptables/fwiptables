@@ -48,8 +48,8 @@ fi
 ####
 ####
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
-####       #### english: option for default when there is an invalid option
-####       #### spanish: opcion por defecto cuando no hay una valida opcion
+####       #### english: new option for default
+####       #### spanish: nueva opcion por defecto
 default_option="full-options"         ## fwiptables-default ## default: full-options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
@@ -57,9 +57,6 @@ allow_legacy="no"                     ## fwiptables-default ## void or no
 allow_nft=""                          ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
-####       #### english: allow QUESTIONS to answer: yes
-####       #### spanish: permitir PREGUNTAS con respuesta: yes
-allow_question="no"                   ## fwiptables-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
 allow_header=""                       ## fwiptables-default ## void or no
@@ -156,6 +153,9 @@ footer_lineal="$ralla   $ralla   $ralla"
 give_cover="$fiptables header"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_autosave="$fiptables autosave"
+####       #### english: allow QUESTIONS to answer: yes
+####       #### spanish: permitir PREGUNTAS con respuesta: yes
+allow_question="no"             
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
