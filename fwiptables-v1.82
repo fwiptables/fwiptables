@@ -1244,10 +1244,9 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  List iptables rules whithout warnings :   $fiptables -text list            "
 echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
 echo "$tab" "$tab"  "  Save iptables rules to output gui :       $fiptables -gui save name        "
-echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
+echo "$tab" "$tab"  "  For more options :                        $fiptables full-options          "
 echo $footer_lineal
 exit ; fi
 ####
