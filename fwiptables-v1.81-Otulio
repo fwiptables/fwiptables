@@ -153,9 +153,6 @@ footer_lineal="$ralla   $ralla   $ralla"
 give_cover="$fiptables header"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_autosave="$fiptables autosave"
-####       #### english: allow QUESTIONS to answer: yes
-####       #### spanish: permitir PREGUNTAS con respuesta: yes
-allow_question="no"             
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
@@ -931,8 +928,6 @@ exit ; fi
 ####
 ####
 case "$NULL" in
-"$allow_question");;
-*)allow_question="no";;
 "$allow_header");;
 *)allow_header="no";;
 "$allow_legacy");; 
@@ -1092,17 +1087,6 @@ if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
 echo "$cinco [ Install $fiptables in $directory_fiptables ]"
-#### 
-#### 
-####  english: accept the license 
-####  spanish: acepta la licencia
-#### 
-#### 
-case "$allow_question" in "no");; *)
-read -t 15 -p "$rallica ¿ Do you want ACCEPT the license GNU GPL v2 ?. Type YES to ACCEPT  # " decision
-if [ "$decision" = "yes" ] || [ "$decision" = "YES" ]
-then echo "$ralla [ OK. ACCEPTED LICENSE ] [ Continue install ]"
-else echo "$ralla [ OK. DECLINED LICENSE ] [ Stop install ]"; exit; fi ;; esac
 #### 
 #### 
 ####  english: copy the file
@@ -4851,16 +4835,6 @@ exit; fi
  case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
 ####
 ####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac; fi
-####
-####
 #### english: launch #### spanish: lanza
 ####
 ####
@@ -4879,16 +4853,6 @@ exit; fi
  echo "$ralla [ $first_option ] [ ping one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_ping in "$NULL") echo " Install ping" ; exit ;; esac
-####
-####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac ; fi
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -4913,16 +4877,6 @@ exit; fi
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
 ####
 ####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac ; fi
-####
-####
 #### english: launch #### spanish: lanza
 ####
 ####
@@ -4944,16 +4898,6 @@ exit; fi
  echo "$ralla [ $first_option ] [ trace one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
-####
-####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac;  fi
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -5049,17 +4993,6 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  case $which_nmap in $NULL) echo install nmap ; exit ;; esac
 ####
 ####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
-####
-####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
@@ -5096,17 +5029,6 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 ####
 ####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
-####
-####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
@@ -5139,17 +5061,6 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
  case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
-####
-####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -5188,17 +5099,6 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
 ####
 ####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
-####
-####
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
@@ -5233,17 +5133,6 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
  case $which_nmap in "$NULL") echo install nmap ; exit ;; esac
-####
-####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -5296,14 +5185,6 @@ $fiptables stop
  echo "$rallica Testing speed with the temporal file /root/borrame.img.img about 100Mb"
 ####
 ####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
-####
-####
  $which_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
  rm /root/borrame.img.img &> /dev/null
  echo $footer_lineal
@@ -5321,14 +5202,6 @@ $fiptables stop
  case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
  in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
  echo "$rallica Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac
- fi
 ####
 ####
  $which_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
@@ -5654,16 +5527,6 @@ exit; fi
  case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
 ####
 ####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac ; fi
-####
-####
  $fiptables stop
  echo "$rallica [ Doing bandwidth in ipv4 to $server_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
@@ -5681,16 +5544,6 @@ exit; fi
  echo "$ralla [ $first_option ] [ test speed ipv6 with internet ]"
  echo $header_lineal
  case "$which_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
-####
-####
-#### english: ask for continue #### spanish: pregunta para continuar
-####
-####
- if [ "$allow_question" = "no" ]; then $nada ; else
- read -p "$rallica First stop the firewall and then continue the firewall. Type YES to continue # " continuar
- case "$continuar" in "YES") echo " [ OK. ACCEPTED ] ";; 
- "yes") echo " [ OK. ACCEPTED ] ";; 
- *) echo " [ OK. DECLINE ] "; exit ;; esac;  fi
 ####
 ####
  $fiptables stop
