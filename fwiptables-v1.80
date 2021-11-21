@@ -335,16 +335,14 @@ file_output_logfinal="/var/log/fwiptables"
 ####
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
 case "$second_option" in 
-wizard-mini) $fiptables $second_option $third_option ; exit ;;
-wizard-full) $fiptables $second_option $third_option ; exit ;;
+wizard-*) $fiptables $second_option $third_option ; exit ;;
 nueva-mini-config) $fiptables $second_option $third_option ; exit ;;
 nueva-completa-config) $fiptables $second_option $third_option ; exit ;;
 new-mini-config) $fiptables $second_option $third_option ; exit ;;
 new-full-config) $fiptables $second_option $third_option ; exit ;;
-ping-ip4) $fiptables $second_option $third_option ; exit ;;
-ping-ip6) $fiptables $second_option $third_option ; exit ;;
-speed-ip4) $fiptables $second_option $third_option ; exit ;;
-speed-ip6) $fiptables $second_option $third_option ; exit ;;
+modify-config) $fiptables $second_option $third_option ; exit ;;
+ping-*) $fiptables $second_option $third_option ; exit ;;
+speed-*) $fiptables $second_option $third_option ; exit ;;
 scan-*) $fiptables $second_option $third_option ; exit ;;
 "install") $fiptables $second_option $third_option ; exit ;;
 uprade) $fiptables $second_option $third_option ; exit ;;
@@ -355,7 +353,6 @@ radio) $fiptables $second_option $third_option ; exit ;;
 log-*) $fiptables $second_option $third_option ; exit ;;
 license-*) $fiptables $second_option $third_option ; exit ;;
 ipforward-*) $fiptables $second_option $third_option ; exit ;;
-*config) $fiptables $second_option $third_option ; exit ;;
 esac
 fi
 ####
@@ -431,14 +428,6 @@ if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
 if [ "$first_option" = "options" ]; then first_option="full-options"; fi
-####
-####
-############################       english: list rules in cache
-############################       spanish: lista reglas en cache
-####
-####
-#### if [ "$first_option" != "gui" ] && [ "$first_option" != "log" ]; then mkdir /tmp/fwiptables-$fversion/
-#### $fiptables text $second_option $third_option; exit
 ####
 ####
 ##############################     english: autolog:         ###################################
@@ -1080,7 +1069,7 @@ which_glxgears="$(which glxgears | cut -d " " -f 1)"
 if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
 echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
-$fiptables save autosave-fwiptables
+$fiptables save autosave-fwiptables &> /dev/null
 #### $which_arptables-save &> $directory_fwrecover/autosave-fwiptables-arptables
 #### $which_ebtables-save &> $directory_fwrecover/autosave-fwiptables-ebtables
 #### $which_iptables_nft-save &> $directory_fwrecover/autosave-fwiptables-nft-ipv4
