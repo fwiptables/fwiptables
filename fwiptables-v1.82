@@ -1301,7 +1301,6 @@ echo
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  List iptables rules whithout warnings :   $fiptables -text list            "
 echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
 echo "$tab" "$tab"  "  Save iptables rules to output gui :       $fiptables -gui save name        "
 echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
@@ -3689,7 +3688,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftcuatro=$("$which_iptables_nft" -t filter -L INPUT 1 && \
  "$which_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$ralla [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  case $legacycuatro in
@@ -3721,7 +3720,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  nftseis=$("$which_ip6tables_nft" -t filter -L INPUT 1 && \
 "$which_ip6tables_nft" -t filter -L OUTPUT 1 )
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$ralla [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $ralla
  case $legacyseis in
