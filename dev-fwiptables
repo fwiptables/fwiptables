@@ -1243,8 +1243,7 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
-echo "$tab" "$tab"  "  Save iptables rules to output gui :       $fiptables -gui save name        "
+echo "$tab" "$tab"  "  Save iptables rules with output gui :     $fiptables -gui save name        "
 echo "$tab" "$tab"  "  For more options :                        $fiptables full-options          "
 echo $footer_lineal
 exit ; fi
@@ -1295,12 +1294,11 @@ echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options  
 echo "$tab" "$tab"  "                       group-options basic-options full-options              "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
-echo 
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  Load iptables rules to output log :       $fiptables -log load name        "
-echo "$tab" "$tab"  "  Save iptables rules to output gui :       $fiptables -gui save name        "
+echo "$tab" "$tab"  "  Save iptables rules with output gui :     $fiptables -gui save name        "
 echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
 echo $footer_lineal
 exit ; fi
