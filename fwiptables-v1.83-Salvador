@@ -317,7 +317,6 @@ esac; fi
 ####
 ####
 mkdir /tmp/fwiptables-$fversion/ &> /dev/null
-#### file_temporal_null="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
 file_temporal_text="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
 file_temporal_textfinal="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
 file_temporal_gui="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
@@ -4043,8 +4042,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit; fi
 ####
 ####
-############################       english: ebtables: list ebtables rules with mac
-############################       spanish: ebtables: lista reglas de ebtables with mac
+############################       english: list-ebtables: list ebtables rules with mac
+############################       spanish: list-ebtables: lista reglas de ebtables with mac
 ####
 ####
  if [ "$first_option" = "list-ebtables" ]; then  $give_cover
@@ -4052,17 +4051,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
- echo "$ralla [ ebtables: filter ethernet nft ] [ EBTABLES ] $ralla "
+ echo "$ralla [ ebtables: filter ethernet ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t filter
  echo $ralla
- echo "$ralla [ ebtables: nat ethernet nft ] [ EBTABLES ] $ralla "
+ echo "$ralla [ ebtables: nat ethernet ] [ EBTABLES ] $ralla "
  $which_ebtables -L -t nat
  echo $footer_lineal
  exit; fi
 ####
 ####
-############################       english: ebtables: list rules arptables with arp
-############################       spanish: ebtables: lista reglas de arptables with arp
+############################       english: list-arptables: list rules arptables with arp
+############################       spanish: list-arptables: lista reglas de arptables with arp
 ####
 ####
 ####
@@ -4072,6 +4071,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo $header_lineal
  echo $ralla
  echo $ralla
+ echo "$ralla [ arptables: filter arptables ] [ ARPTABLES ] $ralla "
+ echo $rala
  $which_arptables -L
  echo $footer_lineal
  exit; fi
