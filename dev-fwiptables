@@ -1025,6 +1025,7 @@ which_lsof="$(which lsof | cut -d " " -f 1)"
 which_sysctl="$(which sysctl | cut -d " " -f 1)"
 which_tcpdump="$(which tcpdump | cut -d " " -f 1)"
 which_arp="$(which arp | cut -d " " -f 1)"
+which_arp_scan="$(which arp-scan | cut -d " " -f 1)"
 which_ping="$(which ping | cut -d " " -f 1)"
 which_traceroute="$(which traceroute | cut -d " " -f 1)"
 which_dialog="$(which dialog | cut -d " " -f 1)"
@@ -1718,8 +1719,8 @@ echo "       netstat-nat: Show net sockets wiht command netstat-nat"
 echo "                  : Muestra las conexiones con netstat-nat"
 echo "           tcpdump: Listen the connections"
 echo "                  : Escucha las conexiones"
-echo "               arp: List the last conentions arp"
-echo "                  : Lista las ultimas conexiones arp"
+echo "          arp-scan: List the conentions arp in the lan"
+echo "                  : Lista las conexiones arp en la red local"
 echo $footer_lineal
 exit; fi
 ####
@@ -2115,6 +2116,7 @@ echo "lsof:       $which_lsof"
 echo "sysctl:     $which_sysctl"
 echo "tcpdump:    $which_tcpdump"
 echo "arp:        $which_arp"
+echo "arp-scan:   $which_arp_scan"
 echo "ping:       $which_ping"
 echo "ntpdate:    $which_ntpdate"
 echo "rdate:      $which_rdate"
@@ -4371,16 +4373,16 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: arp: listen at dump from conexiones
-############################       spanish: arp: escucha al volcado de conexiones
+############################       english: arp-scan: listen at dump from conexiones
+############################       spanish: arp-scan: escucha al volcado de conexiones
 ####
 ####
- if [ "$first_option" = "arp" ]; then  $give_cover
- case $which_arp in "$NULL") echo "install arp" ;;
+ if [ "$first_option" = "arp-scan" ]; then  $give_cover
+ case $which_arp_scan in "$NULL") echo "install arp-scan" ;;
  *)
- echo "$ralla [ $first_option ] [ Show cache arp ]"
+ echo "$ralla [ $first_option ] [ Show the list arp-scan in the lan ]"
  echo $header_lineal
- $which_arp -a
+ $which_arp-scan -l -x 
  ;;
  esac
  echo $footer_lineal
@@ -5561,7 +5563,7 @@ echo "             lsof: Show net sockets with command lsof"
 echo "          netstat: Show net sockets with command netstat"
 echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
-echo "              arp: List the last conentions arp"
+echo "         arp-scan: List the conentions arp in lan"
 echo
 echo "$cinco         [Tool forward]"
 echo
@@ -5806,7 +5808,7 @@ echo "           netstat: Muestra las conexiones con comando netstat"
 echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
 echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
-echo "               arp: Lista las ultimas conexiones arp"
+echo "          arp-scan: Lista las conexiones arp in lan"
 echo
 echo "$cinco         [Herramienta de ip forwading]"
 echo
