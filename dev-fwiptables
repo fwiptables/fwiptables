@@ -5,7 +5,7 @@
 ####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
 ####
 ####
-####     #### english: whereis path     #### spanish: donde esta el path 
+####     #### english: whereis path     #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;
 ####
 ####
@@ -20,12 +20,17 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####
 ####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
-####  #### code for add xhost to root for graphicall use
+####     #### code for add xhost to root for graphicall use
 which_id="$(which id)"
 ####
 if [ -n "$($which_id -u)" ] && [ "$($which_id -u)" = "0" ]; then
-sudo -u "$(logname)" xhost +SI:localuser:root &> /dev/null
 sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" xhost +INET:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" xhost +INET6:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" xhost +DNET:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" xhost +KRB:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" xhost +SI:localuser:root &> /dev/null
+sudo -u "$(logname)" xhost +NIS:root@127.0.0.1 &> /dev/null
 fi
 ####  ####
 ####
@@ -1227,7 +1232,7 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Other options |                         "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba gamesudp              "
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-scan    "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
@@ -1275,7 +1280,7 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "______________________                | tool options |                       " 
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump             "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-scan    "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
