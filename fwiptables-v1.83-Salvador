@@ -4382,6 +4382,11 @@ exit; fi
  *)
  echo "$ralla [ $first_option ] [ Show the list arp-scan in the lan ]"
  echo $header_lineal
+ echo $rallica
+ echo local net: ip lan
+ $which_ip -4 route ls | grep -iv default
+ echo $rallica
+ echo local scan: arp lan
  $which_arp-scan -l -x 
  ;;
  esac
