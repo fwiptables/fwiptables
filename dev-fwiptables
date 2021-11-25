@@ -1108,16 +1108,34 @@ cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 ####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
 #### 
 #### 
-####  english: Install new bash_completion/fwiptables
-####  spanish: instala nuevo bash_completion/fwiptables
+####  english: Install new /etc/bash_completion/fwiptables
+####  spanish: instala nuevo /etc/bash_completion/fwiptables
 #### 
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
 echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
 full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
-info-net stop continue reset names save load ss lsof wizard-mini wizard-full \
+info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
 eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
+####
+####
+####  english: Install new /etc/profile.d/fwiptables
+####  spanish: instala nuevo /etc/profile.d/fwiptables
+#### 
+#### 
+if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables
+echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
+full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
+info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables
+####
+####
+#### english: generate /etc/default/fwiptables
+#### spanish: genera /etc/default/fwiptables
+####
+####
 echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
 #### 
 #### 
@@ -1130,8 +1148,8 @@ chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
 ####
 ####
 echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
-echo "$cinco [ Files in: ] [ /etc/fwiptables | /etc/fwrecover ]"
-echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/default/fwiptables ]"
+echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
+echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 #### 
 #### 
 ####  english: modes of file 
