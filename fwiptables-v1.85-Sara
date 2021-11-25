@@ -291,7 +291,7 @@ echo
 echo "--------------------------------------------------------------------------"
 echo "  FRAN INTRO "
 echo 
-echo "  Fran Firewall use to configure both iptables netfilter. "
+echo "  Use Fran Firewall to configure both iptables netfilter. "
 echo "  With xtables and/or nftables. with ipv4 and/or ipv6.    "
 echo "  Create one firewall with a wizard and save it.          "
 echo "  Configure one firewall with your own config files.      "
@@ -323,6 +323,10 @@ esac; fi
 ##############################       apodos de fwiptables      ##############################
 ####
 ####
+#### english: temporal files
+#### spanish: archivos temporales
+####
+####
 mkdir /tmp/fwiptables-$fversion/ &> /dev/null
 file_temporal_text="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
 file_temporal_textfinal="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
@@ -332,8 +336,8 @@ file_output_log="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_o
 file_output_logfinal="/var/log/fwiptables"
 ####
 ####
-#### english: Exceptions begin with -text
-#### english: Excepciones empiezan en -text
+#### english: Exceptions when begin with -text
+#### english: Excepciones cuando empiezan con -text
 ####
 ####
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
@@ -391,10 +395,6 @@ cat $file_temporal_textfinal ; exit ;;
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
 esac
-####
-####
-############################       english: default: without other valid options ############################
-############################	   spanish: default: sin otra valida opcion      ############################
 ####
 ####
 ##############################     english: cfg: list: some config, alias to list-config
@@ -1073,8 +1073,8 @@ fi; exit; fi
 ####
 ####
 favorite_text_browser=""
-if [ "$which_elinks" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$which_elinks"    ; fi
 if [ "$which_lynx" = "$NULL"   ]    ; then $nada ; else favorite_text_browser="$which_lynx"      ; fi
+if [ "$which_elinks" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$which_elinks"    ; fi
 if [ "$which_links" = "$NULL"  ]    ; then $nada ; else favorite_text_browser="$which_links"     ; fi
 if [ "$which_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$which_links2"    ; fi
 ####
@@ -1625,14 +1625,14 @@ echo "$ralla [ $first_option ] [ List rules in numerical ]"
 echo "$rallica [ List iptables numerical rules ]"
 echo "$rallica [ Lista reglas numericas de iptables ]"
 echo
-echo "      listnum: List iptables filter rules input and output ipv4 in numbers"
-echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
-echo "   forwardnum: List iptables filter rules foward in numbers"
-echo "             : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
-echo "     listnum6: List iptables filter rules input and output ipv6 in numbers"
-echo "             : Lista la tabla de reglas de filtros de entrada y salida ipv6 in numeros"
-echo "  forwardnum6: List iptables filter rules forward ipv6 in numbers"
-echo "             : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
+echo "           listnum: List iptables filter rules input and output ipv4 in numbers"
+echo "                  : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
+echo "  list- forwardnum: List iptables filter rules foward in numbers"
+echo "                  : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
+echo "          listnum6: List iptables filter rules input and output ipv6 in numbers"
+echo "                  : Lista la tabla de reglas de filtros de entrada y salida ipv6 in numeros"
+echo "  list-forwardnum6: List iptables filter rules forward ipv6 in numbers"
+echo "                  : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo
 echo $footer_lineal
 exit; fi
