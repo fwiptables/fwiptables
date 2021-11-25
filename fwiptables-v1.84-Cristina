@@ -5211,7 +5211,7 @@ $fiptables stop
  if [ "$first_option" = "dev-changes" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ show the link to dev-changes from git repository ]"
  echo $header_lineal
- link -dump $fweb_changes
+ $favorite_text_browser -source $fweb_changes
  echo $footer_lineal
  exit; fi
 ####
