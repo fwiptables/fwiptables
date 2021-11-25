@@ -210,6 +210,7 @@ launch_custom="no";      #  autoconfigure with custom rules
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
 fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
@@ -5201,6 +5202,16 @@ $fiptables stop
  echo "$ralla [ $first_option ] [ show the link to dev version from git repository ]"
  echo $header_lineal
  echo $fweb_development
+ echo $footer_lineal
+ exit; fi
+############################       english: dev-changes: changes in the program
+############################       spanish: dev-changes: cambios en el programa
+####
+#### 
+ if [ "$first_option" = "dev-changes" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ show the link to dev-changes from git repository ]"
+ echo $header_lineal
+ link -dump $fweb_changes
  echo $footer_lineal
  exit; fi
 ####
