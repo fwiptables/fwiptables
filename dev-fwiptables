@@ -397,6 +397,13 @@ cat $file_temporal_textfinal ; exit ;;
 esac
 ####
 ####
+##############################     english: info: show options group
+##############################     spanish: info: muestra grupo de opciones
+####
+####
+if [ "$first_option" = "info" ]; then first_option="group-options" ; fi
+####
+####
 ##############################     english: cfg: list: some config, alias to list-config
 ##############################     spanish: cfg: lista alguna config, apodo a list-config
 ####
@@ -1451,6 +1458,8 @@ if [ "$first_option" = "group-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List options ]"
 echo "$rallica [ List option ]"
 echo "$rallica [ Lista opcion ]"
+echo
+echo "[ type fwiptables for help in one group ] [ example: fwiptable control-guide ]"
 echo
 echo "                  [ Principal options ]"
 echo
