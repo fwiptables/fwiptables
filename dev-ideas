@@ -1,8 +1,9 @@
 # ideas working now
 #
-# 1. change the arp-scan arp-lan
-# 2. add upgrade to wellcome mensagge install
-# 3- aclarar los forward
-# 4- comprimir cabeceras
+# 1. cambiar arp-scan por arp-lan
+# 2. añadir upgrade a mensaje de  install
+# 3- aclarar los forward y ponerles list-forward
+# 4- comprimir cabeceras en caso posible
+# 5- al igual que /etc/bash_completon.d/ /etc/profile.d/
 #
 #
