@@ -1,4 +1,4 @@
-	############################################################################
+##########################################################################
 # CHANGES LIST from version v1.84
 #
 # ideas working in versions
@@ -19,5 +19,6 @@
 # 4. poner la palabra info en basic-options y full-options. HECHO
 # 5. poner info de grupo en cli-menu
 # 6. poner info de grupo en gui-menu
+# 7. modificar gamesudp para que tenga acceso a ping
 #
 #
