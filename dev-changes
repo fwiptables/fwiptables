@@ -9,6 +9,6 @@
 # 2. añadir upgrade a mensaje de  install. HECHO
 # 3- aclarar los forward y ponerles prefijo list, ejemplo: list-forward. HECHO
 # 4- comprimir cabeceras en caso posible. HECHO
-# 5- al igual que /etc/bash_completon.d/ /etc/profile.d/fwiptables. HECHO
+# 5- al igual que /etc/bash_completon.d/ hacer /etc/profile.d/fwiptables. HECHO
 #
 #
