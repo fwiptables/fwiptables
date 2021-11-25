@@ -13,7 +13,7 @@
 #
 # changes fwiptables-v1.85
 #
-# 1. añadir serverssh, serverprint, a launch-rules.
+# 1. rediseñar serverweb, y añadir serverssh, serverprint, a launch-rules. HECHO
 # 2. añadir dev-versions, dev-changes a full-options. HECHO
 # 3. mover dev-versions, dev-changes, new-versions al grupo tool-dev. HECHO
 # 4. poner la palabra info en basic-options y full-options. HECHO
