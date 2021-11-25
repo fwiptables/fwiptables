@@ -58,7 +58,7 @@ fi
 default_option="full-options"         ## fwiptables-default ## default: full-options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy="no"                     ## fwiptables-default ## void or no
+allow_legacy=""                     ## fwiptables-default ## void or no
 allow_nft=""                          ## fwiptables-default ## void or no
 allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
@@ -6270,7 +6270,9 @@ echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL CLIENTWEB ]" ; exit ; fi
 ####
 ####
 if [ "$first_option" = "serverweb" ]; then $fiptables eraserules ; echo $head_principal
-port_udp="domain,bootpc,ntp,https" ; port_tcp="http,https,ssh" ;
+client_port_udp="domain,bootpc,ntp,https" ;
+client_port_tcp="http,https,ssh" ;
+server_port_tcp="http,https,ssh" ;
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
@@ -6280,19 +6282,19 @@ $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
--p udp -m multiport --sports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
--p udp -m multiport --dports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $which_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip4
@@ -6305,19 +6307,19 @@ $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
--p udp -m multiport --sports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A INPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
--p udp -m multiport --dports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $which_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables serverweb:
@@ -6334,19 +6336,19 @@ $allow_legacy  $allow_ipv6 $which_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv6  $which_ip6tables_legacy -A INPUT \
--p udp -m multiport --dports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A INPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6   $which_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 #### nft ip6
@@ -6359,19 +6361,19 @@ $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
--p udp -m multiport --dports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A INPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $which_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --dports $port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
 #### english: allow ping 
