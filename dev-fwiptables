@@ -2486,7 +2486,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "list" "list6" "list-allrules" "list-filter4" "list-filter6" \
+--list "Gui Principal Menu" "list" "list6" "list-filter4" "list-filter6" "list-allrules" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
 --column="Option list $fiptables" --text="Select one option" --title="[List Rules] [$fiptables]" )
@@ -3011,12 +3011,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   28  "actual" \
   030 "$cinco [ List rules alphabetical ] $cinco" \
   31  "list" \
-  32  "list-forward" \
-  33  "list-nat4" \
-  34  "list6"  \
-  35  "list-forward6" \
-  36  "list-nat6" \
-  37  "list-allrules" \
+  32  "list6"  \
+  33  "list-filter4" \
+  34  "list-filter6" \
+  35  "list-forward" \
+  36  "list-forward6" \
+  37  "list-nat4" \
+  38  "list-nat6" \
+  39  "list-allrules" \
   040 "$cinco [ List rules numerical ] $cinco" \
   41  "listnum" \
   42  "list-forwardnum" \
@@ -3140,13 +3142,16 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  read -p "Type the firewall name to restore   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fiptables load $nombrecillo ;;
  28) clear ; $fiptables "actual" ;;
+ 
  31) clear ; $fiptables "list" | less ;;
- 32) clear ; $fiptables "list-forward" | less ;;
- 33) clear ; $fiptables "list-nat4" | less ;;
- 34) clear ; $fiptables "list6" | less ;;
- 35) clear ; $fiptables "list-forward6" | less ;;
- 36) clear ; $fiptables "list-nat6" | less ;;
- 37) clear ; $fiptables "list-allrules" | less ;;
+ 32) clear ; $fiptables "list6" | less ;;
+ 33) clear ; $fiptables "list-filter4" | less ;;
+ 34) clear ; $fiptables "list-filter6" | less ;;
+ 35) clear ; $fiptables "list-forward" | less ;;
+ 36) clear ; $fiptables "list-forward6" | less ;;
+ 37) clear ; $fiptables "list-nat4" | less ;;
+ 38) clear ; $fiptables "list-nat6" | less ;;
+ 39) clear ; $fiptables "list-allrules" | less ;;
  41) clear ; $fiptables "listnum" | less ;;
  42) clear ; $fiptables "list-forwardnum" | less ;;
  43) clear ; $fiptables "listnum6" | less ;;
