@@ -1,9 +1,11 @@
 # ideas working now
 #
-# 1. cambiar arp-scan por arp-lan
-# 2. añadir upgrade a mensaje de  install
+# changes fwiptables-v1.84
+#
+# 1. cambiar arp-scan por arp-lan. HECHO
+# 2. añadir upgrade a mensaje de  install. HECHO
 # 3- aclarar los forward y ponerles list-forward
-# 4- comprimir cabeceras en caso posible
+# 4- comprimir cabeceras en caso posible. HECHO
 # 5- al igual que /etc/bash_completon.d/ /etc/profile.d/
 #
 #

@@ -143,7 +143,7 @@ prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal="$prehead_principal [ $first_option ] " ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_default="$cinco [ For default option: $fiptables show-default ]"
+head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ For the usage list:  $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -312,7 +312,8 @@ if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
 *) ./$zero_option intro ; 
-echo "$cinco [ INSTALL fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
+echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
+echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option upgrade ]" ;
 echo "$cinco [ firewall fwiptables netfilter license general public gpl 2. ]";  exit ;;
 esac; fi
 ####
@@ -444,14 +445,15 @@ else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 ####
 if [ "$first_option" = "header" ] ; then
 if [ "$allow_header" = "no" ]   ; then 
-echo "$head_normal" 
+echo $head_default
+#### echo "$head_normal" 
 if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
 if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 else 
 echo $head_principal
 echo $head_default
-echo $head_normal
+#### echo $head_normal
 echo $default_route_cuatro
 echo $default_route_seis
 if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
@@ -1233,7 +1235,7 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Other options |                         "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive custom                "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba gamesudp              "
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-scan    "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
@@ -1281,7 +1283,7 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "______________________                | tool options |                       " 
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-scan    "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           host geoip ntpdate trace-ip4 trace-ip6                "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
@@ -1719,7 +1721,7 @@ echo "       netstat-nat: Show net sockets wiht command netstat-nat"
 echo "                  : Muestra las conexiones con netstat-nat"
 echo "           tcpdump: Listen the connections"
 echo "                  : Escucha las conexiones"
-echo "          arp-scan: List the conentions arp in the lan"
+echo "           arp-lan: List the conentions arp in the lan"
 echo "                  : Lista las conexiones arp en la red local"
 echo $footer_lineal
 exit; fi
@@ -4373,11 +4375,11 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: arp-scan: listen at dump from conexiones
-############################       spanish: arp-scan: escucha al volcado de conexiones
+############################       english: arp-lan: listen at dump from conexiones
+############################       spanish: arp-lan: escucha al volcado de conexiones
 ####
 ####
- if [ "$first_option" = "arp-scan" ]; then  $give_cover
+ if [ "$first_option" = "arp-lan" ]; then  $give_cover
  case $which_arp_scan in "$NULL") echo "install arp-scan" ;;
  *)
  echo "$ralla [ $first_option ] [ Show the list arp-scan in the lan ]"
@@ -5568,7 +5570,7 @@ echo "             lsof: Show net sockets with command lsof"
 echo "          netstat: Show net sockets with command netstat"
 echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
-echo "         arp-scan: List the conentions arp in lan"
+echo "          arp-lan: List the conentions arp in lan"
 echo
 echo "$cinco         [Tool forward]"
 echo
@@ -5813,7 +5815,7 @@ echo "           netstat: Muestra las conexiones con comando netstat"
 echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
 echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
-echo "          arp-scan: Lista las conexiones arp in lan"
+echo "           arp-lan: Lista las conexiones arp in lan"
 echo
 echo "$cinco         [Herramienta de ip forwading]"
 echo
