@@ -17,4 +17,7 @@
 # 2. añadir dev-versions, dev-changes a full-options. HECHO
 # 3. mover dev-versions, dev-changes, new-versions al grupo tool-dev. HECHO
 # 4. poner la palabra info en basic-options y full-options. HECHO
+# 5. poner info de grupo en cli-menu
+# 6. poner info de grupo en gui-menu
+#
 #
