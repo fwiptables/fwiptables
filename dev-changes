@@ -14,6 +14,6 @@
 # changes fwiptables-v1.85
 #
 # 1. añadir serverssh, serveripp, a launch-rules
-# 2. añadir dev-versions, dev-changes a full-options
+# 2. añadir dev-versions, dev-changes a full-options. HECHO
 #
 #
