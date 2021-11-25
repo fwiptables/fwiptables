@@ -1,4 +1,4 @@
-############################################################################
+	############################################################################
 # CHANGES LIST from version v1.84
 #
 # ideas working in versions
@@ -13,8 +13,8 @@
 #
 # changes fwiptables-v1.85
 #
-# 1. añadir serverssh, serveripp, a launch-rules.
+# 1. añadir serverssh, serverprint, a launch-rules.
 # 2. añadir dev-versions, dev-changes a full-options. HECHO
-# 3. mover dev-versions, dev-changes, new-versions al grupo tool-dev.
+# 3. mover dev-versions, dev-changes, new-versions al grupo tool-dev. HECHO
 #
 #
