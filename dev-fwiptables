@@ -1263,7 +1263,7 @@ echo "$tab" "$tab"  "    show-about         about version depends examples  ..  
 echo "$tab" "$tab"  "    show-help          long-help help ayuda group-options basic-options ..   "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    Too other groups:  tool-custom tool-forward tool-nmap                    " 
-echo "$tab" "$tab"  "                       tool-install tool-system show-log                     " 
+echo "$tab" "$tab"  "                       tool-system tool-install show-log                     " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1379,9 +1379,9 @@ $fiptables tool-nmap
 echo
 $fiptables tool-sudo
 echo
-$fiptables tool-install
-echo
 $fiptables tool-system
+echo
+$fiptables tool-install
 echo
 $fiptables show-etc
 echo
@@ -1878,6 +1878,10 @@ echo "       upgrade: Upgrade at the latest version"
 echo "              : Actualiza a la ultima version"
 echo "  new-versions: Show the list of the last versions"
 echo "              : Muestra el listado de las ultivas versiones"
+echo "   dev-version: Show the link at developer version"
+echo "              : Muestra en enlace a la version de desarrollo"
+echo "   dev-changes: Show the last changes"
+echo "              : Muestra los ultimos cambios"
 echo $footer_lineal
 exit; fi
 ####
@@ -5641,12 +5645,6 @@ echo "    sudo-auth: Allow sudo to other choosed users"
 echo "  sudo-remove: Remove sudo to other choosed users"
 echo "    sudo-list: List sudo to other choosed users"
 echo
-echo "$cinco         [Tool Install]"
-echo
-echo "      install: Install this program actual"
-echo "howto-upgrade: Howto install the latest version"
-echo "      upgrade: Upgrade at the latest version"
-echo
 echo "$cinco         [Tool system]"
 echo
 echo "      ram-free: Clean for innecesary memory"
@@ -5655,6 +5653,14 @@ echo "    disc-speed: Show the speed of disc"
 echo "      gl-speed: Show frammes for seconds with mesa graphicall"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo
+echo "$cinco         [Tool Install]"
+echo
+echo "      install: Install this program actual"
+echo "howto-upgrade: Howto install the latest version"
+echo "      upgrade: Upgrade at the latest version"
+echo " new-versions: Show the last versions"
+echo "  dev-version: Show the link at the developer version"
+echo "  dev-changes: Show the last changes"
 echo
 echo "$cinco         [Show etc]"
 echo
@@ -5888,12 +5894,6 @@ echo "    sudo-auth: Permite autorizacion de usuarios elegidos"
 echo "  sudo-remove: Borra la autorizacion otorgada"
 echo "    sudo-list: Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [Herramienta de instalacion]"
-echo
-echo "      install: Instala este programa actual"
-echo "howto-upgrade: Indicacion para actualizar"
-echo "      upgrade: Actualiza a la ultima version"
-echo
 echo "$cinco         [Herramienta de sistema]"
 echo
 echo "      ram-free: Libera la memoria innecesaria"
@@ -5902,6 +5902,14 @@ echo "    disc-speed: Muestra la velocidad de el disco"
 echo "      gl-speed: Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connecta a on servidor mp3, see $fiptables default"
 echo
+echo "$cinco         [Herramienta de instalacion]"
+echo
+echo "      install: Instala este programa actual"
+echo "      upgrade: Actualiza a la ultima version"
+echo "howto-upgrade: Indicacion para actualizar"
+echo " new-versions: Muestra las ultimas versiones"
+echo "  dev-version: Muestra en enlace a la version de desarrollo"
+echo "  dev-changes: Muestra los ultimos cambios"
 echo
 echo "$cinco         [Mostrar etc]"
 echo
