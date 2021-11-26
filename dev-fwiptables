@@ -3180,7 +3180,24 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### 
 #### 
  case "$menuprincipal" in
- 0*) reset ;  clear ; dialog --msgbox "Program Menu" 0 0 ; clear ; $fiptables cli-men ;;
+ 000) clear ; $fiptables info ;;
+ 010) clear ; $fiptables control-guide ;;
+ 020) clear ; $fiptables control-rules ;;
+ 030) clear ; $fiptables list-rules ;;
+ 040) clear ; $fiptables list-rules ;;
+ 050) clear ; $fiptables list-rules ;;
+ 060) clear ; $fiptables launch-rules ;;
+ 070) clear ; $fiptables tool-custom ;;
+ 080) clear ; $fiptables tool-socket ;;
+ 090) clear ; $fiptables tool-icmp ;;
+ 0100) clear ; $fiptables tool-tcp ;;
+ 0110) clear ; $fiptables tool-sudo ;;
+ 0120) clear ; $fiptables tool-install ;;
+ 0130) clear ; $fiptables tool-system ;;
+ 0140) clear ; $fiptables show-etc ;;
+ 0150) clear ; $fiptables show-log ;;
+ 0160) clear ; $fiptables show-about ;;
+ 0170) clear ; $fiptables show-help ;;
  11) clear ; $fiptables "info-system" | less ;;
  12) clear ; $fiptables "info-net" | less ;;
  13) clear ; $fiptables "wizard-mini" ;;
