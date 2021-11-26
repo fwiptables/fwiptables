@@ -5294,11 +5294,11 @@ $fiptables stop
  exit; fi
 ####
 ####
-############################       english: dev-versions: about of program
-############################       spanish: dev-versions: acerca del programa
+############################       english: dev-version: about of program
+############################       spanish: dev-version: acerca del programa
 ####
 ####
- if [ "$first_option" = "dev-versions" ]; then  $give_cover
+ if [ "$first_option" = "dev-version" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ show the link to dev version from git repository ]"
  echo $header_lineal
  echo $fweb_development
