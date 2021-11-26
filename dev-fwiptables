@@ -2372,8 +2372,8 @@ echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool custom" \
-"06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool install" "11 Tool system" \
- "12 Show etc" "13 Show log" "14 Show about" "15 Show help" \
+"06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool system" "11 Tool install" \
+"12 Tool dev" "13 Show etc" "14 Show log" "15 Show about" "16 Show help" \
 --column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
 #### 
 #### 
@@ -2388,12 +2388,14 @@ case "$selection" in
 "07 Tool icmp")$fiptables gui-menu-tool-icmp;;
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
 "09 Tool sudo")$fiptables gui-menu-tool-sudo;;
-"10 Tool install")$fiptables gui-menu-tool-install;;
-"11 Tool system")$fiptables gui-menu-tool-system;;
-"12 Show etc")$fiptables gui-menu-show-etc;;
-"13 Show log")$fiptables gui-menu-show-log;;
-"14 Show about")$fiptables gui-menu-show-about;;
-"15 Show help")$fiptables gui-menu-show-help;;
+"10 Tool system")$fiptables gui-menu-tool-system;;
+"11 Tool install")$fiptables gui-menu-tool-install;;
+"12 Tool dev")$fiptables gui-menu-tool-dev;;
+
+"13 Show etc")$fiptables gui-menu-show-etc;;
+"14 Show log")$fiptables gui-menu-show-log;;
+"15 Show about")$fiptables gui-menu-show-about;;
+"16 Show help")$fiptables gui-menu-show-help;;
 #### 
 #### 
 *)
@@ -2408,13 +2410,14 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-control-guide" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "info-net" "info-system" "wizard-full" "wizard-mini" \
+--list "Gui Principal Menu" "Gui Info Menu" "info-net" "info-system" "wizard-full" "wizard-mini" \
 --column="Option list $fiptables" --text="Select one option" --title="[Control Guide] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui control-guide ;;
 "info-net") $fiptables -gui info-net ;;
 "info-system")$fiptables -gui info-system ;;
 "wizard-full")$fiptables -gui wizard-full ;;
@@ -2434,7 +2437,7 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-launch-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "eraserules" "offline" "allpermisive" \
+--list "Gui Principal Menu" "Gui Info Menu" "eraserules" "offline" "allpermisive" \
 "clientweb" "serverweb" "gamesudp" "serversamba" "custom cfg" \
 --column="Option list $fiptables" --text="Select one option" \
 --title="[Launch Rules] [$fiptables]")
@@ -2443,6 +2446,7 @@ selection=$(zenity $graphic_dimension \
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui launch-rules ;;
 "eraserules") $fiptables -gui eraserules ; $fiptables gui list ;;
 "offline") $fiptables -gui offline ; $fiptables gui list ;;
 "allpermisive") $fiptables -gui allpermisive ; $fiptables gui list ;;
@@ -2467,13 +2471,14 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-control-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
+--list "Gui Principal Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $fiptables" --text="Select one option" --title="[Control Rules] [$fiptables]")
 #### 
 #### 
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui control-rules ;;
 "stop") $fiptables -gui stop ; $fiptables -gui list ;;
 "continue") $fiptables -gui continue ; $fiptables -gui list ;;
 "reset") $fiptables -gui reset ; $fiptables -gui list ;;
@@ -2500,7 +2505,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "list" "list6" "list-filter4" "list-filter6" "list-allrules" \
+--list "Gui Principal Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-allrules" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
 --column="Option list $fiptables" --text="Select one option" --title="[List Rules] [$fiptables]" )
@@ -2509,6 +2514,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui list-rules ;;
 "list") $fiptables -gui list ;;
 "list6") $fiptables -gui list6 ;;
 "list-allrules") $fiptables -gui list-allrules ;;
@@ -2543,7 +2549,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-config" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
+--list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "list-config" "show-config" "modify-config" "del-config" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Config] [$fiptables]" )
 #### 
@@ -2551,6 +2557,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-config;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $fiptables -gui new-full-config $archivo ;;
@@ -2591,7 +2598,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
+--list "Gui Principal Menu" "Gui Info Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
 "ipforward-list" "ipforward-on" "ipforward-off" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
@@ -2599,6 +2606,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu") $fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-sockets ;;
 "route") $fiptables -gui route ;;
 "ss") $fiptables -gui ss ;;
 "lsof") $fiptables -gui lsof ;;
@@ -2625,13 +2633,14 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "ping-ip4" "ping-ip6" "speed-ip4" "speed-ip6" \
+--list "Gui Principal Menu" "Gui Info Menu" "ping-ip4" "ping-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Icmp] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-icmp ;;
 "ping-ip4")  $fiptables -gui ping-ip4  ;;
 "ping-ip6")  $fiptables -gui ping-ip6  ;;
 "speed-ip4") $fiptables -gui speed-ip4 ;;
@@ -2651,13 +2660,14 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "trace-ip4" "trace-ip6" "host" "resolveip" "geoip" "ntpdate" \
+--list "Gui Principal Menu" "Gui Info Menu" "trace-ip4" "trace-ip6" "host" "resolveip" "geoip" "ntpdate" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool tcp] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-tcp ;;
 "trace-ip4") $fiptables -gui trace-ip4   ;;
 "trace-ip6") $fiptables -gui trace-ip6   ;;
 "host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
@@ -2684,44 +2694,19 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "sudo-auth" "sudo-remove" "sudo-list" "alias-list" \
+--list "Gui Principal Menu" "Gui Info Menu" "sudo-auth" "sudo-remove" "sudo-list" "alias-list" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sudo] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"sudo-auth")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo, username1,username2 ]")" ;
+"Gui Info Menu") $fiptables -gui tool-sudo ;;
+"sudo-auth")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $fiptables -gui sudo-auth $archivo ;;
 "sudo-remove")$fiptables -gui sudo-remove ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "alias-list")$fiptables -gui alias-list ;;
-*)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
-esac
-#### 
-#### 
-$fiptables gui-menu
-exit; fi
-####
-####
-############################## english: gui-menu-tool-install: gui with menu ##############################
-############################## spanish: gui-menu-tool-install: gui con menu  ##############################
-####
-####
-if [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "install" "howto-upgrade" "upgrade" "new-versions" \
---column="Option list $fiptables" --text="Select one option" --title="[Tool Install] [$fiptables]" )
-#### 
-#### 
-case $selection in
-1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
-"Gui Principal Menu")$fiptables gui-menu ;;
-"install")$fiptables -gui install ;;
-"howto-upgrade")$fiptables -gui howto-upgrade ;;
-"upgrade")$fiptables -gui upgrade ;;
-"new-versions")$fiptables -gui new-versions ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -2737,18 +2722,71 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "ram-free" "ram-speed" "disc-speed" "gl-speed" "radio" \
+--list "Gui Principal Menu" "Gui Info Menu" "ram-free" "ram-speed" "disc-speed" "gl-speed" "radio" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool System] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-system ;;
 "ram-free")   $fiptables -gui ram-free ;;
 "ram-speed")  $fiptables -gui ram-speed ;;
 "disc-speed") $fiptables -gui disc-speed ;;
 "gl-speed")   $fiptables -gui gl-speed ;;
 "radio")      $fiptables -gui radio ;;
+*)
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+esac
+#### 
+#### 
+$fiptables gui-menu
+exit; fi
+####
+####
+############################## english: gui-menu-tool-install: gui with menu ##############################
+############################## spanish: gui-menu-tool-install: gui con menu  ##############################
+####
+####
+if [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" \
+--column="Option list $fiptables" --text="Select one option" --title="[Tool Install] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-install ;;
+"install")$fiptables -gui install ;;
+"howto-upgrade")$fiptables -gui howto-upgrade ;;
+"upgrade")$fiptables -gui upgrade ;;
+*)
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+esac
+#### 
+#### 
+$fiptables gui-menu
+exit; fi
+####
+####
+############################## english: gui-menu-tool-dev: gui with menu ##############################
+############################## spanish: gui-menu-tool-dev: gui con menu  ##############################
+####
+####
+if [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" \
+--column="Option list $fiptables" --text="Select one option" --title="[Tool Install] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu")$fiptables gui-menu  ;;
+"Gui Info Menu") $fiptables -gui tool-dev ;;
+"new-versions")$fiptables -gui new-versions ;;
+"dev-version") $fiptables -gui dev-version  ;;
+"dev-changes") $fiptables -gui dev-changes  ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -2764,7 +2802,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" "default" \
+--list "Gui Principal Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" "default" \
  "show-default" "modify-default" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show etc] [$fiptables]" )
 #### 
@@ -2772,6 +2810,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui show-etc ;;
 "hosts") $fiptables -gui hosts ;;
 "protocols") $fiptables -gui protocols ;;
 "services") $fiptables -gui services ;;
@@ -2794,13 +2833,14 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "log-sudo" "log-sshd" "log-search" \
+--list "Gui Principal Menu" "Gui Info Menu" "log-sudo" "log-sshd" "log-search" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show log] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui show-log ;;
 "log-sudo")   $fiptables -gui log-sudo ;;
 "log-sshd")   $fiptables -gui log-sshd ;;
 "log-search")
@@ -2821,13 +2861,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "about" "version" "depends" "examples" "config-eng" "config-spa" \
+--list "Gui Principal Menu" "Gui Info Menu" "about" "version" \
+"depends" "examples" "config-eng" "config-spa" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show about] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui show-about ;;
 "about")$fiptables -gui about ;;
 "version")$fiptables -gui version ;;
 "depends")$fiptables -gui depends ;;
@@ -2849,13 +2891,14 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "full-options" "long-help" "help" "ayuda" "notes" \
+--list "Gui Principal Menu" "Gui Info Menu" "full-options" "long-help" "help" "ayuda" "notes" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show help] [$fiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui show-help ;;
 "full-options")$fiptables -gui full-options ;;
 "long-help") $fiptables -gui long-help ;;
 "help") $fiptables -gui help ;;

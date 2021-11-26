@@ -24,7 +24,7 @@
 # 2. poner info de grupo en gui-menu
 # 3. modificar gamesudp para que tenga acceso a ping
 # 4. añadir grupo tool-dev a gui-menu
-# 5. arreglos en "save" y "load". HECHO
-# 6. arreglos en bash_completion y profile.d pasando la extension a .sh. HECHO
+# 5. pequeños arreglos en "save" y "load". HECHO
+# 6. arreglo en bash_completion y profile.d pasando la extension a .sh. HECHO
 # 
 #
