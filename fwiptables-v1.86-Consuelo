@@ -3216,7 +3216,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  read -p "Type the firewall name to restore   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fiptables load $nombrecillo ;;
  28) clear ; $fiptables "actual" ;;
- 
  31) clear ; $fiptables "list" | less ;;
  32) clear ; $fiptables "list6" | less ;;
  33) clear ; $fiptables "list-filter4" | less ;;
@@ -3334,7 +3333,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  esac 
  echo "press [enter] to continue with the $fiptables cli-menu"
  read -s
- clear
+ clear ; 
  $fiptables cli-menu
  exit; fi
 ####
