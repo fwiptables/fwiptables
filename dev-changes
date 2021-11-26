@@ -23,5 +23,6 @@
 # 1. poner info de grupo en cli-menu
 # 2. poner info de grupo en gui-menu
 # 3. modificar gamesudp para que tenga acceso a ping
+# 4. añadir grupo tool-dev a gui-menu
 #
 #

@@ -3304,6 +3304,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "$directory_fwrecover"
  echo "$tab [Config files]"
  echo "variables:    /etc/default/fwiptables"
+ echo "completion:   /etc/profile.d/fwiptables"
  echo "completion:   /etc/bash_completion.d/fwiptables"
  echo "auth users:   /etc/sudoers/fwiptables"
  echo "$tab [Output log]"
