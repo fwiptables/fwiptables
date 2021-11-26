@@ -26,9 +26,8 @@
 # 4. añadir grupo tool-dev a gui-menu. HECHO
 # 5. pequeños arreglos de arptables y ebtables en "save" y "load". HECHO
 # 6. arreglo en bash_completion y profile.d pasando la extension a .sh. HECHO
-# 
-# changes fwiptables-v1.87
+# 7. pequeño arreglo en "names". HECHO
 #
-# 1. pequeño arreglo en "names". HECHO
+# changes fwiptables-1.87
 #
 #
