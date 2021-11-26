@@ -1121,11 +1121,11 @@ cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables.sh
 echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
 full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
 info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables.sh
 ####
 ####
 ####  english: Install new /etc/profile.d/fwiptables
@@ -1133,11 +1133,11 @@ eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" 
 #### 
 #### 
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables.sh
 echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
 full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
 info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables.sh
 ####
 ####
 #### english: generate /etc/default/fwiptables
@@ -2128,7 +2128,8 @@ echo "names fw:            $directory_fwrecover"
 echo $ralla
 echo "$tab [Configuration file]"
 echo "default variables:   /etc/default/fwiptables"
-echo "shell completions:   /etc/completion.d/fwiptables"
+echo "shell completions:   /etc/completion.d/fwiptables.sh"
+echo "                     /etc/profile.d/fwiptables.sh"
 echo "auth users:          /etc/sudoers.d/fwiptables"
 echo $ralla
 echo "$tab [output log]"
@@ -3304,8 +3305,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  echo "$directory_fwrecover"
  echo "$tab [Config files]"
  echo "variables:    /etc/default/fwiptables"
- echo "completion:   /etc/profile.d/fwiptables"
- echo "completion:   /etc/bash_completion.d/fwiptables"
+ echo "completion:   /etc/profile.d/fwiptables.sh"
+ echo "completion:   /etc/bash_completion.d/fwiptables.sh"
  echo "auth users:   /etc/sudoers/fwiptables"
  echo "$tab [Output log]"
  echo "output log:   /var/log/fwiptables"
@@ -4639,14 +4640,25 @@ exit; fi
  "$NULL") echo "$cinco Use in the command line: $fiptables save fw-to-save" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
- $which_arptables-save          &> $directory_fwrecover/$archivofin-arptables
- $which_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables     
- $which_iptables_nft-save       &> $directory_fwrecover/$archivofin-nft-ipv4     
+####
+####
+  if [ "$which_arptables" = "$NULL"  ]; then $nada ; else
+  $which_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
+  if [ "$which_ebtables"  = "$NULL"  ]; then $nada ; else
+ $which_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables; fi
+####
+####
+ $which_iptables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv4     
  $which_iptables_legacy-save    &> $directory_fwrecover/$archivofin-legacy-ipv4  
  $which_ip6tables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv6     
  $which_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6  
+####
+####
  echo "$rallica [ OK FIREWALL SAVED ] [ $archivofin ]"
- ls -l $directory_fwrecover/$archivofin-ebtables
+ if [ "$which_arptables" = "$NULL"  ]; then $nada ; else
+ ls -l $directory_fwrecover/$archivofin-arptables; fi
+ if [ "$which_ebtables"  = "$NULL"  ]; then $nada ; else
+ ls -l $directory_fwrecover/$archivofin-ebtables; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv4
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
