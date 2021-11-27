@@ -1091,9 +1091,9 @@ if [ "$which_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$
 ####
 ####
 favorite_date_command=""
-if [ "$which_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="$which_ntpdate"         ; fi
-if [ "$which_sntp" = "$NULL"  ]    ; then $nada ; else favorite_date_command="$which_sntp"              ; fi
 if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="$which_rdate -4 -a -n"  ; fi
+if [ "$which_sntp" = "$NULL"  ]    ; then $nada ; else favorite_date_command="$which_sntp"              ; fi
+if [ "$which_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="$which_ntpdate"         ; fi
 ####
 ####
 ##############################       english: Install:    $fiptables           ###########################################
