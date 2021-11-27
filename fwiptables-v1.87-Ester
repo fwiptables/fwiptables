@@ -3134,12 +3134,13 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   111  "sudo-auth" \
   112  "sudo-remove" \
   113  "sudo-list" \
-  0120 "$cinco [ tool install program ] $cinco" \
+  0120 "$cinco [ tool install AND tool dev ] $cinco" \
   121  "install" \
   122  "howto-upgrade" \
   123  "upgrade" \
   124  "new-versions" \
-  125  "license" \
+  125  "dev-version" \
+  126  "dev-changes" \
   0130 "$cinco [ tool system program ] $cinco" \
   131  "ram-free" \
   132  "ram-speed" \
@@ -3173,6 +3174,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   174  "ayuda" \
   175  "long-help" \
   176  "notes" \
+  177  "license" \
  )"  
 #### 
 #### 
@@ -3192,7 +3194,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  090) clear ; $fiptables tool-icmp ;;
  0100) clear ; $fiptables tool-tcp ;;
  0110) clear ; $fiptables tool-sudo ;;
- 0120) clear ; $fiptables tool-install ;;
+ 0120) clear ; $fiptables tool-install ; $fiptables tool-dev ;;
  0130) clear ; $fiptables tool-system ;;
  0140) clear ; $fiptables show-etc ;;
  0150) clear ; $fiptables show-log ;;
@@ -3299,7 +3301,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  122) clear ; $fiptables "howto-upgrade" | less ;;
  123) clear ; $fiptables "upgrade" ;;
  124) clear ; $fiptables "new-versions" | less ;;
- 125) clear ; $fiptables "license" | less ;;
+ 125) clear ; $fiptables "dev-version" | less ;;
+ 126) clear ; $fiptables "dev-changes" | less ;; 
  131) clear ; $fiptables "ram-free" ;;
  132) clear ; $fiptables "ram-speed" ;;
  133) clear ; $fiptables "disc-speed" ;;
@@ -3329,6 +3332,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  174) clear ; $fiptables "ayuda" | less ;;
  175) clear ; $fiptables "long-help" | less ;;
  176) clear ; $fiptables "notes" | less ;;
+ 177) clear ; $fiptables "license" | less ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  echo "press [enter] to continue with the $fiptables cli-menu"
