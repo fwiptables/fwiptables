@@ -1054,6 +1054,8 @@ which_iperf="$(which iperf | cut -d " " -f 1)"
 which_tee="$(which tee | cut -d " " -f 1)"
 which_dd="$(which dd | cut -d " " -f 1)"
 which_glxgears="$(which glxgears | cut -d " " -f 1)"
+which_mpg123="$(which mpg123 | cut -d " " -f 1)"
+which_mpg321="$(which mpg321 | cut -d " " -f 1)"
 ####
 ####
 ########################################       english: autosave: autosave of firewall to restore standard rules
@@ -1094,6 +1096,11 @@ favorite_date_command=""
 if [ "$which_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="$which_rdate -4 -a -n"  ; fi
 if [ "$which_sntp" = "$NULL"  ]    ; then $nada ; else favorite_date_command="$which_sntp"              ; fi
 if [ "$which_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="$which_ntpdate"         ; fi
+####
+####
+favoite_music_command=""
+if [ "$which_mpg321" = "$NULL" ]   ; then $nada ; else favorite_music_command="$which_mpg321"   ; fi
+if [ "$which_mpg123" = "$NULL" ]   ; then $nada ; else favorite_music_command="$which_mpg123"   ; fi
 ####
 ####
 ##############################       english: Install:    $fiptables           ###########################################
@@ -2145,17 +2152,17 @@ echo $ralla
 echo "$tab [$fiptables gui]"
 echo "zenity:      $which_zenity"
 echo $ralla
-echo "$tab [$fiptables text browser]"
-echo "one: elinks or lynx or links or links2 "
-echo $ralla
 echo "$tab [$fiptables auto text browser]"
+echo "automatic: elinks or lynx or links or links2 "
 echo "auto text browser: $favorite_text_browser"
 echo $ralla
-echo "$tab [$fiptables date command]"
-echo "one: ntp or rdate or sntp"
-echo $ralla
 echo "$tab [$fiptables auto date command]"
+echo "automatic: rdate or sntp or ntpdate"
 echo "auto text browser: $favorite_date_command"
+echo $ralla
+echo "$tab [$fiptables auto music browser]"
+echo "automatic: mpg321 or mpg123"
+echo "auto text browser: $favorite_music_command"
 echo $ralla
 echo "$tab [the iptables]"
 echo "iptables legacy:   $which_iptables_legacy"
@@ -2891,7 +2898,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "full-options" "long-help" "help" "ayuda" "notes" \
+--list "Gui Principal Menu" "Gui Info Menu" "full-options" "long-help" "help" "ayuda" "notes" "license" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show help] [$fiptables]" )
 #### 
 #### 
@@ -2904,6 +2911,7 @@ case $selection in
 "help") $fiptables -gui help ;;
 "ayuda") $fiptables -gui ayuda ;;
 "notes") $fiptables -gui notes ;;
+"license") $fiptables -gui license ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -3166,7 +3174,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   163  "examples" \
   164  "config-eng" \
   165  "config-spa" \
-  166  "license" \
   0170 "$cinco [ Show help global options ] $cinco" \
   171  "basic-options" \
   172  "full-options" \
@@ -3325,7 +3332,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  163) clear ; $fiptables "examples" | less ;;
  164) clear ; $fiptables "config-eng" | less ;;
  165) clear ; $fiptables "config-spa" | less ;;
- 166) clear ; $fiptables "license" ;;
  171) clear ; $fiptables "basic-options" ;;
  172) clear ; $fiptables "full-options" | less ;;
  173) clear ; $fiptables "help" | less ;;
@@ -5258,10 +5264,10 @@ $fiptables stop
  echo "$ralla [ $first_option ] [ Listen radio online ]"
  echo "$rallica [ for choose radio see: $fiptables show-default ] [ only protocol http ]"
  echo "$rallica [ Usually it do not working like root, probe as user ]"
- echo "$rallica [ mpg123 -@ $radio ]"
+ echo "$rallica [ $favorite_music_command $radio ]"
  echo $header_lineal
  echo $footer_lineal
- sudo -u $(logname) mpg123 -@ $radio
+ sudo -u $(logname) $favorite_music_command $radio
  exit; fi
 ####
 ####
