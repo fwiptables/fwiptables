@@ -31,5 +31,6 @@
 # changes fwiptables-1.87
 #
 # 1. añadir tool-dev a cli-menu. HECHO
+# 2. repasar variable auto_music_command y depends. HECHO
 #
 #
