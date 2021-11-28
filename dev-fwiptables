@@ -1466,7 +1466,8 @@ echo "$ralla [ $first_option ] [ List options ]"
 echo "$rallica [ List option ]"
 echo "$rallica [ Lista opcion ]"
 echo
-echo "[ type fwiptables for help in one group ] [ example: fwiptables control-guide ]"
+echo "[ info ] [ Help to one group. For Example: fwiptables control-guide ]"
+echo "[ info ] [ Ayuda a un grupo.  Por ejemplo: fwiptables control-guide ]"
 echo
 echo "                  [ Principal options ]"
 echo
