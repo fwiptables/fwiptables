@@ -31,7 +31,7 @@
 # changes fwiptables-1.87
 #
 # 1. añadir tool-dev a cli-menu. HECHO
-# 2. repasar variable favorite_music_command, ahora favorite_radio_command. HECHO
-# 3
+# 2. añadir variable favorite_radio_command. HECHO
+# 3. modificar cabecera de info. HECHO
 #
 #
