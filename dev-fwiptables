@@ -1099,8 +1099,8 @@ if [ "$which_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="
 ####
 ####
 favoite_music_command=""
-if [ "$which_mpg321" = "$NULL" ]   ; then $nada ; else favorite_music_command="$which_mpg321"   ; fi
-if [ "$which_mpg123" = "$NULL" ]   ; then $nada ; else favorite_music_command="$which_mpg123"   ; fi
+if [ "$which_mpg321" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$which_mpg321"   ; fi
+if [ "$which_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$which_mpg123"   ; fi
 ####
 ####
 ##############################       english: Install:    $fiptables           ###########################################
@@ -2162,7 +2162,7 @@ echo "auto text browser: $favorite_date_command"
 echo $ralla
 echo "$tab [$fiptables auto music browser]"
 echo "automatic: mpg321 or mpg123"
-echo "auto text browser: $favorite_music_command"
+echo "auto text browser: $favorite_radio_command"
 echo $ralla
 echo "$tab [the iptables]"
 echo "iptables legacy:   $which_iptables_legacy"
@@ -5264,10 +5264,10 @@ $fiptables stop
  echo "$ralla [ $first_option ] [ Listen radio online ]"
  echo "$rallica [ for choose radio see: $fiptables show-default ] [ only protocol http ]"
  echo "$rallica [ Usually it do not working like root, probe as user ]"
- echo "$rallica [ $favorite_music_command $radio ]"
+ echo "$rallica [ $favorite_radio_command $radio ]"
  echo $header_lineal
  echo $footer_lineal
- sudo -u $(logname) $favorite_music_command $radio
+ sudo -u $(logname) $favorite_radio_command $radio
  exit; fi
 ####
 ####
