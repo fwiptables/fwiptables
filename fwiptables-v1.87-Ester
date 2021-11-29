@@ -5540,6 +5540,11 @@ exit; fi
  echo "$ralla [ $first_option ] [ show info about net ]"
  echo $header_lineal
  if [ "$which_curl" = "$NULL" ]; then echo "install curl to work fine"; fi
+ echo $ralla
+ echo "$rallica [ NETWORK DEFAULT ] [ ROUTE TO INTERNET]"
+ $which_ip -4 route | grep -i default
+ $which_ip -6 route | grep -i default
+ echo $ralla
  echo "$tab [ Net Info Route ] [ Route ipv4 ]"
  $which_ip -4 route 
  echo $ralla
@@ -5559,10 +5564,10 @@ exit; fi
  $which_ip -6 address | grep -i inet | grep -iv "::1/128"
  echo $ralla
  echo "$tab [ public ip address ipv4 ]"
- timeout 7s $which_curl -4 https://ifconfig.co -w "\n"
+ timeout 7s $which_curl -4 http://ifconfig.co 
  echo $ralla
  echo "$tab [ public ip address ipv6 ]"
- timeout 7s $which_curl -6 https://ifconfig.co -w "\n"
+ timeout 7s $which_curl -6 http://ifconfig.co
  echo $footer_lineal
  exit; fi
 ####
