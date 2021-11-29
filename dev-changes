@@ -33,5 +33,6 @@
 # 1. añadir tool-dev a cli-menu. HECHO
 # 2. añadir variable favorite_radio_command. HECHO
 # 3. modificar cabecera de info. HECHO
+# 4. ntpdate muestra vieja y nueva fecha ademas de actualizar fecha. HECHO
 #
 #
