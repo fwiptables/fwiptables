@@ -1019,6 +1019,7 @@ which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
 which_arptables="$(which arptables |cut -d " " -f 1)"
 which_ebtables="$(which ebtables | cut -d " " -f 1)"
 which_fmt="$(which fmt | cut -d " " -f 1)"
+which_date="$(which date | cut -d " " -f 1)"
 which_uname="$(which uname | cut -d " " -f 1)"
 which_sed="$(which sed | cut -d " " -f 1)"
 which_xrandr="$(which xrandr | cut -d " " -f 1)"
@@ -2174,6 +2175,7 @@ echo "arptables:         $which_arptables"
 echo "ebtables:          $which_ebtables"
 echo $ralla
 echo "$tab [$fiptables tool]"
+echo "date:       $which_date"
 echo "uname:      $which_uname"
 echo "ip:         $which_ip"
 echo "curl:       $which_curl"
@@ -5004,13 +5006,14 @@ exit; fi
  if [ "$first_option" = "ntpdate" ]; then $nada
  echo "$ralla [ $first_option ] [ update the computer time and date from internet ]"
  echo $header_lineal
+ echo "$rallica Old date: $($which_date)"
  echo "$rallica [ Updating the time and the date .. ]"
  pool0=0.debian.pool.ntp.org
  pool1=1.debian.pool.ntp.org
  pool2=2.debian.pool.ntp.org
  pool3=3.debian.pool.ntp.org
  $favorite_date_command $pool0
- date
+ echo "$rallica New date: $($which_date)"
  echo $footer_lineal
  exit; fi
 ####
