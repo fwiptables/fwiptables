@@ -5539,6 +5539,7 @@ exit; fi
  if [ "$first_option" = "info-net" ]; then $give_cover
  echo "$ralla [ $first_option ] [ show info about net ]"
  echo $header_lineal
+ if [ "$which_curl" = "$NULL" ]; then echo "install curl to work fine"; fi
  echo "$tab [ Net Info Route ] [ Route ipv4 ]"
  $which_ip -4 route 
  echo $ralla
@@ -5557,9 +5558,11 @@ exit; fi
  echo "$tab [ private ip address ipv6 ]"
  $which_ip -6 address | grep -i inet | grep -iv "::1/128"
  echo $ralla
- echo "$tab [ public ip ]"
- timeout 7s $which_curl -s http:/ifconfig.me -w "\n"
+ echo "$tab [ public ip address ipv4 ]"
+ timeout 7s $which_curl -4 https://ifconfig.co -w "\n"
  echo $ralla
+ echo "$tab [ public ip address ipv6 ]"
+ timeout 7s $which_curl -6 https://ifconfig.co -w "\n"
  echo $footer_lineal
  exit; fi
 ####
