@@ -5541,20 +5541,20 @@ exit; fi
  echo $header_lineal
  if [ "$which_curl" = "$NULL" ]; then echo "install curl to work fine"; fi
  echo $ralla
- echo "$rallica [ NETWORK DEFAULT ] [ ROUTE TO INTERNET]"
+ echo "$rallica [ DEFAULT NETWORK ] [ INTERNET ROUTE ]"
  $which_ip -4 route | grep -i default
  $which_ip -6 route | grep -i default
  echo $ralla
- echo "$tab [ Net Info Route ] [ Route ipv4 ]"
+ echo "$tab [ Network Route ] [ Route ipv4 ]"
  $which_ip -4 route 
  echo $ralla
- echo "$tab [ Net Info Route ] [ Route ipv6 ]"
+ echo "$tab [ Network Route ] [ Route ipv6 ]"
  $which_ip -6 route 
  echo $ralla
- echo "$tab [ Net Info Listen ] [ Listen ipv4 ]"
+ echo "$tab [ Network Listen ] [ Listen ipv4 ]"
  $which_ss -l4 | sed 's/   / /g'
  echo $ralla
- echo "$tab [ Net Info Listen ] [ Listen ipv6 ]"
+ echo "$tab [ Network Listen ] [ Listen ipv6 ]"
  $which_ss -l6 | sed 's/   / /g'
  echo $ralla
  echo "$tab [ private ip ] [ address ipv4 ]"
