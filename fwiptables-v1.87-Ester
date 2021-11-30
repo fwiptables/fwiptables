@@ -5557,16 +5557,16 @@ exit; fi
  echo "$tab [ Net Info Listen ] [ Listen ipv6 ]"
  $which_ss -l6 | sed 's/   / /g'
  echo $ralla
- echo "$tab [ private ip address ipv4 ]"
+ echo "$tab [ private ip ] [ address ipv4 ]"
  $which_ip -4 address | grep -i inet | grep -iv "127.0.0.1"
  echo $ralla
- echo "$tab [ private ip address ipv6 ]"
+ echo "$tab [ private ip ] [ address ipv6 ]"
  $which_ip -6 address | grep -i inet | grep -iv "::1/128"
  echo $ralla
- echo "$tab [ public ip address ipv4 ]"
+ echo "$tab [ public ip ] [ address ipv4 ]"
  timeout 7s $which_curl -4 http://ifconfig.co 
  echo $ralla
- echo "$tab [ public ip address ipv6 ]"
+ echo "$tab [ public ip ] [ address ipv6 ]"
  timeout 7s $which_curl -6 http://ifconfig.co
  echo $footer_lineal
  exit; fi
