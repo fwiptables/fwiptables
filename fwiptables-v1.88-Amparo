@@ -2437,8 +2437,7 @@ case $selection in
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-control-guide; exit; fi
 ####
 ####
 ############################## english: gui-menu-launch-rules: gui with menu ##############################
@@ -2471,8 +2470,7 @@ $fiptables -gui custom $archivo ; $fiptables gui list ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-launch-rules; exit; fi
 ####
 ####
 ############################## english: gui-menu-control-rules: gui with menu ##############################
@@ -2505,8 +2503,7 @@ $fiptables -gui load $archivo ; $fiptables -gui list ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-control-rules; exit; fi
 ####
 ####
 ############################## english: gui-menu-list-rules: gui with menu ##############################
@@ -2549,8 +2546,7 @@ case $selection in
 #### 
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-list-rules; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-config: gui with menu ##############################
@@ -2598,8 +2594,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-config; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
@@ -2633,8 +2628,7 @@ zenity --progress -$graphic_dimension --timeout=$close_graphicall --text="$mensa
 esac
 #### 
 #### 
-$fiptables gui-menu 
-exit; fi
+$fiptables gui-menu-tool-sockets; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-icmp: gui with menu ##############################
@@ -2660,8 +2654,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-icmp; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-tcp: gui with menu ##############################
@@ -2694,8 +2687,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-tcp; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-sudo: gui with menu ##############################
@@ -2722,8 +2714,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-sudo; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-system: gui with menu ##############################
@@ -2750,8 +2741,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-system; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-install: gui with menu ##############################
@@ -2776,8 +2766,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-install; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-dev: gui with menu ##############################
@@ -2802,8 +2791,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-tool-dev; exit; fi
 ####
 ####
 ############################## english: gui-menu-show-etc: gui with menu ##############################
@@ -2833,8 +2821,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-show-etc; exit; fi
 ####
 ####
 ############################## english: gui-menu-show-log: gui with menu ##############################
@@ -2861,8 +2848,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-show-log; exit; fi
 ####
 ####
 ############################## english: gui-menu-show-about: gui with menu ##############################
@@ -2891,8 +2877,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-show-about; exit; fi
 ####
 ####
 ############################## english: gui-menu-show-help: gui with menu ##############################
@@ -2920,8 +2905,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu
-exit; fi
+$fiptables gui-menu-show-help; exit; fi
 ####
 ####
 ############################## english: gui-shell: graphic enviroment          ##############################
