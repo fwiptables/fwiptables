@@ -38,7 +38,7 @@
 #
 # changes fwiptables-1.88 en desarrollo
 #
-# 1. net-info: modificar obtencion de ip.
-# 2. gui-menu: despues de una opcion mantener en el mismo submenu.
+# 1. net-info: modificar obtencion de ip para aclarar en gui. HECHO
+# 2. gui-menu: despues de una opcion volver a el mismo submenu.
 #
 #
