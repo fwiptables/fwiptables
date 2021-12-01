@@ -28,12 +28,14 @@
 # 6. arreglo en bash_completion y profile.d pasando la extension a .sh. HECHO
 # 7. pequeño arreglo en "names". HECHO
 #
-# changes fwiptables-1.87 en desarrollo
+# changes fwiptables-1.87
 #
 # 1. añadir tool-dev a cli-menu. HECHO
 # 2. añadir variable favorite_radio_command. HECHO
 # 3. modificar cabecera de info. HECHO
 # 4. ntpdate muestra vieja y nueva fecha ademas de actualizar fecha. HECHO
 # 5. cambios en info-net. HECHO
+#
+# changes fwiptables-1.88 en desarrollo
 #
 #
