@@ -5564,10 +5564,12 @@ exit; fi
  $which_ip -6 address | grep -i inet | grep -iv "::1/128"
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
- timeout 7s $which_curl -4 http://ifconfig.co 
+ ip4="$(timeout 5s $which_curl -s -4 http://ifconfig.co/ip -w "\n")"
+ echo "$tab $ip4"
  echo $ralla
  echo "$tab [ public ip ] [ address ipv6 ]"
- timeout 7s $which_curl -6 http://ifconfig.co
+ ip4="$(timeout 5s $which_curl -s -6 http://ifconfig.co/ip -w "\n")"
+ echo "$tab $ip6"
  echo $footer_lineal
  exit; fi
 ####
