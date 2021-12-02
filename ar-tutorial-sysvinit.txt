@@ -1,12 +1,8 @@
 #!/bin/sh
 ####                               #### file /etc/rc.service ####
 ####
-####
  for parada in $(ls -1 /etc/rc$1.d/K* | sort -r | cut -d "/" -f 4- | cut -c 4- )
  do  /etc/init.d/$parada stop; done;
-####
-####
-####
 ####
 for arranca in $(ls -1 /etc/rc$1.d/S* | sort  | cut -d "/" -f 4- | cut -c 4- )
 do  /etc/init.d/$arranca stop;  /etc/init.d/$arranca start; done; exit
@@ -42,7 +38,7 @@ si::sysinit:/etc/init.d/rcS
 # l5:5:wait:/etc/init.d/rc 5
 # l6:6:wait:/etc/init.d/rc 6
 
-#### with rc.servicios
+#### with rc.service
 l0:0:wait:/etc/rc.service 0
 l1:1:wait:/etc/rc.service 1
 l2:2:wait:/etc/rc.service 2
@@ -61,7 +57,7 @@ z6:6:respawn:/sbin/sulogin --force
 # ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 ca:12345:ctrlaltdel:/etc/rc.service 6
 # ce:12345:XF86Sleep:/etc/rc.service 0
-#ci:12345:XF86Power:/etc/rc.service 0
+# ci:12345:XF86Power:/etc/rc.service 0
 # co:12345:XF86Standby:/etc/rc.service 0
 
 # Action on special keypress (ALT-UpArrow).

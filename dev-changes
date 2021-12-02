@@ -40,5 +40,7 @@
 #
 # 1. net-info: modificar obtencion de ip para aclarar en gui. HECHO
 # 2. gui-menu: despues de una opcion volver a el mismo submenu. HECHO
+# 3. dig: añadido. HECHO
+# 4. resolveip: incluido en basic-options y full-options. HECHO
 #
 #
