@@ -4949,7 +4949,8 @@ exit; fi
  echo $header_lineal
  case $which_host in "$NULL") echo " Install host" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$cinco Selecting host resolve to fast.com for default" ; trazador="fast.com" ;;
+ "$NULL") echo "$cinco Please select a one host to launch host"
+ echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo "$cinco host $trazador"
  $which_host $trazador
@@ -4966,7 +4967,8 @@ exit; fi
  echo $header_lineal
  case $which_dig in "$NULL") echo " Install dig" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$cinco Selecting host resolve to fast.com for default" ; trazador="fast.com" ;;
+ "$NULL") echo "$cinco Please select a one host to launch dig"
+ echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo "$cinco dig $trazador"
  $which_dig $trazador | grep ^$trazador
@@ -4983,7 +4985,8 @@ exit; fi
  echo $header_lineal
  case $which_resolveip in "$NULL") echo " Install resolveip" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$cinco Selecting host resolveip to fast.com for default" ; trazador="fast.com" ;;
+ "$NULL") echo "$cinco Please select a one host to launch resolveip"
+ echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo "$cinco resolveip $trazador"
  $which_resolveip $trazador
