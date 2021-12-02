@@ -2401,7 +2401,7 @@ case "$selection" in
 "02 Control rules")$fiptables gui-menu-control-rules;;
 "03 List rules")$fiptables gui-menu-list-rules;;
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
-"05 Tool custom")$fiptables gui-menu-tool-config;;
+"05 Tool custom")$fiptables gui-menu-tool-custom;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
 "07 Tool icmp")$fiptables gui-menu-tool-icmp;;
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
@@ -2557,11 +2557,11 @@ esac
 $fiptables gui-menu-list-rules; exit; fi
 ####
 ####
-############################## english: gui-menu-tool-config: gui with menu ##############################
-############################## spanish: gui-menu-tool-config: gui con menu  ##############################
+############################## english: gui-menu-tool-custom: gui with menu ##############################
+############################## spanish: gui-menu-tool-custom: gui con menu  ##############################
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-config" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "list-config" "show-config" "modify-config" "del-config" \
@@ -2571,7 +2571,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"Gui Info Menu") $fiptables -gui tool-config;;
+"Gui Info Menu") $fiptables -gui tool-custom;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $fiptables -gui new-full-config $archivo ;;
@@ -2602,7 +2602,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 esac
 #### 
 #### 
-$fiptables gui-menu-tool-config; exit; fi
+$fiptables gui-menu-tool-custom; exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
