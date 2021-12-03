@@ -36,7 +36,7 @@
 # 4. ntpdate muestra vieja y nueva fecha ademas de actualizar fecha. HECHO
 # 5. cambios en info-net. HECHO
 #
-# changes fwiptables-1.88 en desarrollo
+# changes fwiptables-1.88
 #
 # 1. net-info: modificar obtencion de ip para aclarar en gui. HECHO
 # 2. gui-menu: despues de una opcion volver a el mismo submenu. HECHO
@@ -48,5 +48,7 @@
 # 8. cambio en tool:udp/tcp/icmp para cli-menu. HECHO
 # 9. eliminacion de "[ head ]" en la cabecera. HECHO.
 # 10. eliminacion de log-sudo. HECHO
+#
+# changes fwiptables-1.89 en desarrollo
 #
 #
