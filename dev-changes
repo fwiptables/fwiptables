@@ -47,5 +47,6 @@
 # 7. cambio en trace-ip4 a tracetcp-ip4 y trace-ip6 a tracetcp-ip6. HECHO
 # 8. cambio en tool:udp/tcp/icmp para cli-menu. HECHO
 # 9. eliminacion de "[ head ]" en la cabecera. HECHO.
+# 10. eliminacion de log-sudo. HECHO
 #
 #

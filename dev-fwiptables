@@ -139,9 +139,6 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-#### prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-#### head_principal="$prehead_principal [ $first_option ] " ;
 head_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables full-options ]"
@@ -1339,7 +1336,7 @@ echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade       
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes                  "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
-echo "$tab" "$tab"  "    show-log           log-search log-sudo log-sshd log-fwiptables           "
+echo "$tab" "$tab"  "    show-log           log-search log-sshd log-fwiptables                    "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
 echo "$tab" "$tab"  "                       resolv.conf show-default modify-default               "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
@@ -2008,10 +2005,8 @@ echo "$ralla [ $first_option ] [ show log files ]"
 echo "$rallica [ Show log ]"
 echo "$rallica [ Mostrar log ]"
 echo
-echo " log-fwiptables: Show /var/log/fwiptables"
-echo "               : Muestra /var/log/fwiptables"
-echo "       log-sudo: Search logs with sudo in /var/log"
-echo "               : Busca logs con sudo en /var/log"
+echo " log-fwiptables: Show /var/log/fwiptables history"
+echo "               : Muestra /var/log/fwiptables historia"
 echo "       log-sshd: Search logs for sshd in /var/log"
 echo "               : Busca logs con sshd en /var/log"
 echo "     log-search: Search logs whith a prefix in /var/log"
@@ -2879,7 +2874,7 @@ $fiptables gui-menu-show-etc; exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "log-sudo" "log-sshd" "log-search" \
+--list "Gui Principal Menu" "Gui Info Menu" "log-sshd" "log-fwiptables" "log-search" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show log] [$fiptables]" )
 #### 
 #### 
@@ -2887,8 +2882,8 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "Gui Info Menu") $fiptables -gui show-log ;;
-"log-sudo")   $fiptables -gui log-sudo ;;
 "log-sshd")   $fiptables -gui log-sshd ;;
+"log-fwiptables") $fiptables -gui log-fwiptables ;;
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
@@ -3201,7 +3196,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   146  "show-default" \
   147  "modify-default" \
   0150 "$cinco [ Show log registry ] $cinco" \
-  151  "log-sudo" \
   152  "log-sshd" \
   153  "log-search" \
   154  "log-fwiptables" \
@@ -3361,7 +3355,6 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  145) clear ; $fiptables "hosts.deny" | less ;;
  146) clear ; $fiptables "show-default"   ;;
  147) clear ; $fiptables "modify-default" ;;
- 151) clear ; $fiptables "log-sudo" | less ;;
  152) clear ; $fiptables "log-sshd" | less ;;
  153) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fiptables "log-search" "$pattern" | less ;;
@@ -5343,18 +5336,6 @@ $fiptables stop
  exit; fi
 ####
 ####
-############################       english: log-sudo: log from sudo
-############################       spanish: log-sudo: log desde sudo
-####
-####
- if [ "$first_option" = "log-sudo" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ search sudo in logs ]"
- echo $header_lineal
- find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "sudo:"
- echo $footer_lineal
- exit; fi
-####
-####
 ############################       english: log-sshd: log from ssh server
 ############################       spanish: log-sshd: log desde el servidor de ssh
 ####
@@ -5872,7 +5853,6 @@ echo
 echo "$cinco         [Show log]"
 echo
 echo " log-fwiptables: Show /var/log/fwiptables"
-echo "       log-sudo: Search the logs from sudo for /var/log"
 echo "       log-sshd: Search the logs from sshd for /var/log"
 echo "     log-search: Search the logs from a input pattern for /var/log"
 echo
@@ -6128,7 +6108,6 @@ echo
 echo "$cinco         [Mostrar log]"
 echo
 echo " log-fwiptables: Muestra /var/log/fwiptables"
-echo "       log-sudo: Busca los logs de sudo en /var/log"
 echo "       log-sshd: Busca los logs de sshd en /var/log"
 echo "     log-search: Busca los logs dando un patron para /var/log"
 echo
