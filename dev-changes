@@ -43,5 +43,7 @@
 # 3. dig: añadido. HECHO
 # 4. resolveip: incluido en basic-options y full-options. HECHO
 # 5. arreglo en gui-menu-tool-custom. HECHO
+# 6. cambio en tool:udp/tcp/icmp para shell y para gui. HECHO
+# 7. cambio en trace-ip4 a tracetcp-ip4 y trace-ip6 a tracetcp-ip6. HECHO
 #
 #

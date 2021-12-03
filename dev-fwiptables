@@ -1279,7 +1279,7 @@ echo "$tab" "$tab"  "     | info |                      | Other options |       
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
-echo "$tab" "$tab"  "    tool-tcp           host dig resolveip geoip ntpdate trace-ip4 trace-ip6  "
+echo "$tab" "$tab"  "    tool-tcp           host dig resolveip geoip ntpdate tracetcp-ip4 tracetcp-ip6  "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    show-etc           show-default modify-default ..                        "
@@ -1328,8 +1328,9 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | tool options |                          " 
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
-echo "$tab" "$tab"  "    tool-tcp           host dig resolveip geoip ntpdate trace-ip4 trace-ip6  "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
+echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6               "
+echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
+echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6                                     "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
@@ -1814,10 +1815,6 @@ echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "             : Hace un ping con una direccion con ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
 echo "             : Hace un ping con una direccion con ipv6 icmp"
-echo "    speed-ip4: test bandwith with ipv4"
-echo "             : Testea la velocidad de conexion con ipv4"
-echo "    speed-ip6: Test net bandwith with ipv6"
-echo "             : Testea la velocidad de conexion con ipv6"
 echo
 echo $footer_lineal
 exit; fi
@@ -1832,10 +1829,27 @@ echo "$ralla [ $first_option ] [ tool tcp ]"
 echo "$rallica [ Tool tcp ]"
 echo "$rallica [ Herramienta tcp ]"
 echo
-echo "    trace-ip4: Trace route a one host with ipv4 tcp"
+echo "  racetcp-ip4: Trace route a one host with ipv4 tcp"
 echo "             : Traza la routa a una direccion con ipv4 tcp"
-echo "    trace-ip6: Trace route a one host with ipv6 tcp"
+echo "  racetcp-ip6: Trace route a one host with ipv6 tcp"
 echo "             : Traza la routa a una direccion con ipv6 tcp"
+echo "    speed-ip4: test bandwith with ipv4"
+echo "             : Testea la velocidad de conexion con ipv4"
+echo "    speed-ip6: Test net bandwith with ipv6"
+echo "             : Testea la velocidad de conexion con ipv6"
+echo $footer_lineal
+exit; fi
+####
+####
+##############################       english: tool-udp: options
+##############################       spanish: tool-udp: opciones
+####
+####
+if [ "$first_option" = "tool-udp" ]; then $give_cover
+echo "$ralla [ $first_option ] [ tool tcp ]"
+echo "$rallica [ Tool tcp ]"
+echo "$rallica [ Herramienta tcp ]"
+echo
 echo "         host: Resolve one host"
 echo "             : Resuelve una direccion a ip"
 echo "          dig: Resolve one host"
@@ -2390,8 +2404,8 @@ echo "Graphics: Wait several seconds.." ;
 case "$which_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool custom" \
-"06 Tool sockets" "07 Tool icmp" "08 Tool tcp"  "09 Tool sudo" "10 Tool system" "11 Tool install" \
-"12 Tool dev" "13 Show etc" "14 Show log" "15 Show about" "16 Show help" \
+"06 Tool sockets" "07 Tool tcp" "08 Tool udp" "09 Tool icmp"  "10 Tool sudo" "11 Tool system" "12 Tool install" \
+"13 Tool dev" "14 Show etc" "15 Show log" "16 Show about" "17 Show help" \
 --column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
 #### 
 #### 
@@ -2403,17 +2417,17 @@ case "$selection" in
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
 "05 Tool custom")$fiptables gui-menu-tool-custom;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
-"07 Tool icmp")$fiptables gui-menu-tool-icmp;;
-"08 Tool tcp")$fiptables gui-menu-tool-tcp;;
-"09 Tool sudo")$fiptables gui-menu-tool-sudo;;
-"10 Tool system")$fiptables gui-menu-tool-system;;
-"11 Tool install")$fiptables gui-menu-tool-install;;
-"12 Tool dev")$fiptables gui-menu-tool-dev;;
-
-"13 Show etc")$fiptables gui-menu-show-etc;;
-"14 Show log")$fiptables gui-menu-show-log;;
-"15 Show about")$fiptables gui-menu-show-about;;
-"16 Show help")$fiptables gui-menu-show-help;;
+"07 Tool tcp")$fiptables gui-menu-tool-tcp;;
+"08 Tool udp")$fiptables gui-menu-tool-udp;;
+"09 Tool icmp")$fiptables gui-menu-tool-icmp;;
+"10 Tool sudo")$fiptables gui-menu-tool-sudo;;
+"11 Tool system")$fiptables gui-menu-tool-system;;
+"12 Tool install")$fiptables gui-menu-tool-install;;
+"13 Tool dev")$fiptables gui-menu-tool-dev;;
+"14 Show etc")$fiptables gui-menu-show-etc;;
+"15 Show log")$fiptables gui-menu-show-log;;
+"16 Show about")$fiptables gui-menu-show-about;;
+"17 Show help")$fiptables gui-menu-show-help;;
 #### 
 #### 
 *)
@@ -2645,7 +2659,7 @@ $fiptables gui-menu-tool-sockets; exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ping-ip4" "ping-ip6" "speed-ip4" "speed-ip6" \
+--list "Gui Principal Menu" "Gui Info Menu" "ping-ip4" "ping-ip6" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Icmp] [$fiptables]" )
 #### 
 #### 
@@ -2655,8 +2669,6 @@ case $selection in
 "Gui Info Menu") $fiptables -gui tool-icmp ;;
 "ping-ip4")  $fiptables -gui ping-ip4  ;;
 "ping-ip6")  $fiptables -gui ping-ip6  ;;
-"speed-ip4") $fiptables -gui speed-ip4 ;;
-"speed-ip6") $fiptables -gui speed-ip6 ;;
 *)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -2665,13 +2677,46 @@ esac
 $fiptables gui-menu-tool-icmp; exit; fi
 ####
 ####
+############################## english: gui-menu-tool-udp: gui with menu ##############################
+############################## spanish: gui-menu-tool-udp: gui con menu  ##############################
+####
+####
+if [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate" \
+--column="Option list $fiptables" --text="Select one option" --title="[Tool tcp] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-udp ;;
+"host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+$fiptables -gui host $archivo ;;
+"dig")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+$fiptables -gui dig $archivo ;;
+"resolveip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
+$fiptables -gui resolveip $archivo ;;
+"geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+$fiptables -gui geoip $archivo ;;
+"ntpdate")$fiptables -gui ntpdate ;;
+#### 
+#### 
+*)
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+esac
+#### 
+#### 
+$fiptables gui-menu-tool-tcp; exit; fi
+####
+####
 ############################## english: gui-menu-tool-tcp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-tcp: gui con menu  ##############################
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "trace-ip4" "trace-ip6" "host" "resolveip" "geoip" "ntpdate" \
+--list "Gui Principal Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool tcp] [$fiptables]" )
 #### 
 #### 
@@ -2679,15 +2724,10 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "Gui Info Menu") $fiptables -gui tool-tcp ;;
-"trace-ip4") $fiptables -gui trace-ip4   ;;
-"trace-ip6") $fiptables -gui trace-ip6   ;;
-"host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
-$fiptables -gui host $archivo ;;
-"resolveip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
-$fiptables -gui resolveip $archivo ;;
-"geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
-$fiptables -gui geoip $archivo ;;
-"ntpdate")$fiptables -gui ntpdate ;;
+"tracetcp-ip4") $fiptables -gui tracetcp-ip4   ;;
+"tracetcp-ip6") $fiptables -gui tracetcp-ip6   ;;
+"speed-ip4") $fiptables -gui speed-ip4 ;;
+"speed-ip6") $fiptables -gui speed-ip6 ;;
 #### 
 #### 
 *)
@@ -3127,8 +3167,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   93   "speed-ip4" \
   94   "speed-ip6" \
   0100 "$cinco [ Tool tcp test ] $cinco"  \
-  101  "trace-ip4" \
-  102  "trace-ip6" \
+  101  "tracetcp-ip4" \
+  102  "tracetcp-ip6" \
   103  "host" \
   104  "resolveip" \
   106  "ntpdate" \
@@ -3286,8 +3326,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  92) clear ; $fiptables ping-ip6 ;;
  93) clear ; $fiptables speed-ip4 ;;
  94) clear ; $fiptables speed-ip6 ;;
- 101) clear ; $fiptables trace-ip4 ;;
- 102) clear ; $fiptables trace-ip6 ;;
+ 101) clear ; $fiptables tracetcp-ip4 ;;
+ 102) clear ; $fiptables tracetcp-ip6 ;;
  103) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables host $resolve ;;
  104) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
@@ -4895,11 +4935,11 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: trace-ip4: traceroute with tcp and ipv6
-############################       spanish: trace-ip4: traceroute con tcp y ipv4
+############################       english: tracetcp-ip4: traceroute with tcp and ipv6
+############################       spanish: tracetcp-ip4: traceroute con tcp y ipv4
 ####
 ####
- if [ "$first_option" = "trace-ip4" ]; then $give_cover
+ if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
  echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
@@ -4918,11 +4958,11 @@ exit; fi
  exit; fi
 ####
 ####
-############################       english: trace-ip6: traceroute with tcp and ipv6
-############################       spanish: trace-ip6: traceroute con tcp e ipv6
+############################       english: tracetcp-ip6: traceroute with tcp and ipv6
+############################       spanish: tracetcp-ip6: traceroute con tcp e ipv6
 ####
 ####
- if [ "$first_option" = "trace-ip6" ]; then $give_cover
+ if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
  echo "$ralla [ $first_option ] [ trace one ip or host with ipv6 ]"
  echo $header_lineal
  case $which_traceroute in "$NULL") echo " Install traceroute" ; exit ;; esac
@@ -5760,23 +5800,26 @@ echo " ipforward-list: Show kernel config about forward"
 echo "   ipforward-on: Active kernel config about forward"
 echo "  ipforward-off: Deactive kernel config about forward"
 echo
-echo "$cinco         [Tool icmp]"
+echo "$cinco         [Tool tcp]"
 echo
-echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
-echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
+echo " tracetcp-ip4: Trace route a one host with ipv4 tcp"
+echo " tracetcp-ip6: Trace route a one host with ipv6 tcp"
 echo "    speed-ip4: Test the bandwidth with ipv4"
 echo "    speed-ip6: Test the bandwidth with ipv6"
 echo
-echo "$cinco         [Tool tcp]"
+echo "$cinco         [Tool udp]"
 echo
-echo "    trace-ip4: Trace route a one host with ipv4 tcp"
-echo "    trace-ip6: Trace route a one host with ipv6 tcp"
 echo "         host: Resolve one host"
 echo "          dig: Resolve one host"
 echo "    resolveip: Resolve one host and viceversa"
 echo "        geoip: Locate a one host or ip"
 echo "      ntpdate: Update the date from ntp server"
 echo 
+echo "$cinco         [Tool icmp]"
+echo
+echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
+echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
+echo
 echo "$cinco         [Tool nmap]"
 echo 
 echo "     scan-tcp: Scan a host/mask per tcp protocol"
@@ -6013,23 +6056,26 @@ echo "  ipforward-list: Muestra la configuracion del kernel sobre reenvios ip"
 echo "    ipforward-on: Activa la configuracion del kernel sobre reenvios ip"
 echo "   ipforward-off: Desactiva la configuracion del kernel sobre reenvios ip"
 echo
-echo "$cinco         [Herramienta icmp]"
+echo "$cinco         [Herramienta tcp]"
 echo
-echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
-echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
+echo " tracetcp-ip4: Traza ruta a una host con ipv4 tcp"
+echo " tracetcp-ip6: Traza ruta a una host con ipv6 tcp"
 echo "    speed-ip4: Testea el ancho de banda con ipv4"
 echo "    speed-ip6: Testea el ancho de banda con ipv6"
 echo
-echo "$cinco         [Herramienta tcp]"
+echo "$cinco         [Herramienta udp]"
 echo
-echo "    trace-ip4: Traza ruta a una host con ipv4 tcp"
-echo "    trace-ip6: Traza ruta a una host con ipv6 tcp"
 echo "         host: Resuelve la ip de un host"
 echo "          dig: Resuelve la ip de un host"
 echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo "        geoip: Localiza una ip o host"
 echo "      ntpdate: Actualiza la fecha desde un ntp server"
 echo 
+echo "$cinco         [Herramienta icmp]"
+echo
+echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
+echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
+echo
 echo "$cinco         [Herramienta nmap]"
 echo 
 echo "     scan-tcp: Rastrea una host/mask por tcp protocolo"
