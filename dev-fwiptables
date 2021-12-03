@@ -139,9 +139,10 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
+#### prehead_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$prehead_principal [ $first_option ] " ;
+#### head_principal="$prehead_principal [ $first_option ] " ;
+head_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
