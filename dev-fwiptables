@@ -1279,14 +1279,14 @@ echo "$tab" "$tab"  "     | info |                      | Other options |       
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
 echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
-echo "$tab" "$tab"  "    tool-tcp           host dig resolveip geoip ntpdate tracetcp-ip4 tracetcp-ip6  "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6 speed-ip4 speed-ip6                 "
+echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
+echo "$tab" "$tab"  "    tool-tcp           speed-ip4 speed-ip6                                   "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    show-etc           show-default modify-default ..                        "
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda info basic-options ..            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Too other groups info:  tool-custom tool-forward tool-nmap               " 
+echo "$tab" "$tab"  "    Too other groups info:  tool-custom tool-forward tool-icmp tool-nmap     " 
 echo "$tab" "$tab"  "                            tool-system tool-install tool-dev show-log       " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
@@ -3151,7 +3151,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   76  "modify-config" \
   77  "del-config" \
   78  "list-config" \
-  080 "$cinco [ Tool net sockets and forward ] $cinco" \
+  080 "$cinco [ Tool net sockets AND forward ] $cinco" \
   81  "route" \
   82  "ss" \
   83  "netstat" \
@@ -3161,18 +3161,19 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   87  "ipforward-list" \
   88  "ipforward-on" \
   89  "ipforward-off" \
-  090 "$cinco [ Tool icmp test ] $cinco" \
+  090 "$cinco [ Tool tcp AND tool icmp ] $cinco" \
   91   "ping-ip4" \
   92   "ping-ip6" \
   93   "speed-ip4" \
   94   "speed-ip6" \
-  0100 "$cinco [ Tool tcp test ] $cinco"  \
-  101  "tracetcp-ip4" \
-  102  "tracetcp-ip6" \
-  103  "host" \
-  104  "resolveip" \
-  106  "ntpdate" \
-  105  "geoip" \
+  95   "tracetcp-ip4" \
+  96   "tracetcp-ip6" \
+  0100 "$cinco [ Tool tcp ] $cinco"  \
+  101  "host" \
+  102  "dig" \
+  103  "resolveip" \
+  104  "geoip" \
+  105  "ntpdate" \
   0110 "$cinco [ tool sudo operations ] $cinco"  \
   111  "sudo-auth" \
   112  "sudo-remove" \
@@ -3233,7 +3234,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  060) clear ; $fiptables launch-rules ;;
  070) clear ; $fiptables tool-custom ;;
  080) clear ; $fiptables tool-socket ;;
- 090) clear ; $fiptables tool-icmp ;;
+ 090) clear ; $fiptables tool-tcp ; $fiptables tool-icmp ;;
  0100) clear ; $fiptables tool-tcp ;;
  0110) clear ; $fiptables tool-sudo ;;
  0120) clear ; $fiptables tool-install ; $fiptables tool-dev ;;
@@ -3326,15 +3327,17 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  92) clear ; $fiptables ping-ip6 ;;
  93) clear ; $fiptables speed-ip4 ;;
  94) clear ; $fiptables speed-ip6 ;;
- 101) clear ; $fiptables tracetcp-ip4 ;;
- 102) clear ; $fiptables tracetcp-ip6 ;;
- 103) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 95) clear ; $fiptables tracetcp-ip4 ;;
+ 96) clear ; $fiptables tracetcp-ip6 ;;
+ 101) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables host $resolve ;;
- 104) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 102) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ clear ; $fiptables dig $resolve ;;
+ 103) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables resolveip $resolve ;;
- 105) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 104) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables geoip $resolve ;;
- 106) clear ; $fiptables "ntpdate" ;;
+ 105) clear ; $fiptables "ntpdate" ;;
  111) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $fiptables sudo-auth $resolve ;;
  112) clear ; $fiptables "sudo-remove" ;;
