@@ -218,6 +218,13 @@ flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####
+#### english: if wrong in default_option
+#### spanish: si esta mal definidad definida default_option
+####
+####
+default_security="basic-options"
+####
+####
 ############################## english: variables: variables to declare     ##############################
 ############################## spanish: variables: variables para declarar  ##############################
 ####
@@ -264,6 +271,13 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
+####
+####
+#### english: if default_option is void return default to basic-options
+#### spanish: si la opcion por defecto esta vacia vuelve a basic-options
+####
+####
+if [ "$default_option" = "$NULL" ] ; then default_option="$default_security" ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
@@ -6189,7 +6203,7 @@ exit; fi
 ####
 ####
 if [ "$launch_iptables" = "" ] ; then $nada ; else 
-echo "$rallica Selecting default option .. "; $fiptables full-options ; exit ; fi
+echo "$rallica Selecting default option .. "; $fiptables $default_security ; exit ; fi
 ####
 ####
 ###############################################################################################################
