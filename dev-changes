@@ -51,4 +51,6 @@
 #
 # changes fwiptables-1.89 en desarrollo
 #
+# 1. cambio en default-option para permitir list o list6 por ejemplo. HECHO
+#
 #
