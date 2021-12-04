@@ -363,7 +363,7 @@ fi
 ####
 ####
 case "$first_option" in 
-"$NULL") first_option="$default_option" ;;
+"$NULL") $fiptables "$default_option" ; exit ;;
 "gui") first_option="-gui" ;;
 "cli") first_option="cli-menu" ;;
 "gui-menu") first_option="gui-menu" ;;
