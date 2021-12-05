@@ -417,7 +417,7 @@ esac
 ##############################     spanish: info: muestra grupo de opciones
 ####
 ####
-if [ "$first_option" = "info" ]; then first_option="group-options" ; fi
+#### if [ "$first_option" = "info" ]; then first_option="group-options" ; fi
 ####
 ####
 ##############################     english: cfg: list: some config, alias to list-config
@@ -1513,10 +1513,12 @@ echo "  tool-sockets:  List net sockets ip in system"
 echo "              :  Lista sockets de red ip en el sistema"
 echo "  tool-forward:  list, active and desactive ipforward in linux"
 echo "              :  lista, activa y desactiva ipforward en linux"
-echo "     tool-icmp:  Tool icmp to ping at other hosts"
-echo "              :  Herramienta icmp para hacer ping a otros"
 echo "      tool-tcp:  Several tools tcp"
 echo "              :  Varias herramientas tcp"
+echo "      tool-tcp:  Several tools udp"
+echo "              :  Varias herramientas udp"
+echo "      tool-tcp:  Several tools icmp"
+echo "              :  Varias herramientas icmp"
 echo "     tool-nmap:  Port scan"
 echo "              :  Escaneo de puertos"
 echo "     tool-sudo:  Tool to auth sudo a users for $fiptables"
@@ -5695,6 +5697,44 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo "$ralla [ $first_option ] [ show variables cfg from spanish configuration ]"
  echo $header_lineal
  cat $defaultfullcfg_spa
+ echo $footer_lineal
+ exit; fi
+####
+####
+############################       english: info: information of one utility group
+############################       spanish: info: informacion de un grupo de utilidades
+####
+####
+ if [ "$first_option" = "info" ]; then $nada
+ if [ "$second_option" = "control-guide" ]; then $fiptables control-guide ; exit ; fi
+ if [ "$second_option" = "control-rules" ]; then $fiptables control-rules ; exit ; fi
+ if [ "$second_option" = "list-rules" ]; then $fiptables list-rules ; exit ; fi
+ if [ "$second_option" = "user-interface" ]; then $fiptables user-interface ; exit ; fi
+ if [ "$second_option" = "launch-rules" ]; then $fiptables launch-rules ; exit ; fi
+ if [ "$second_option" = "tool-custom" ]; then $fiptables tool-custom ; exit ; fi
+ if [ "$second_option" = "tool-sockets" ]; then $fiptables tool-sockets ; exit ; fi
+ if [ "$second_option" = "tool-forward" ]; then $fiptables tool-forward ; exit ; fi
+ if [ "$second_option" = "tool-tcp" ]; then $fiptables tool-tcp ; exit ; fi
+ if [ "$second_option" = "tool-udp" ]; then $fiptables tool-udp ; exit ; fi
+ if [ "$second_option" = "tool-icmp" ]; then $fiptables tool-icmp ; exit ; fi
+ if [ "$second_option" = "tool-nmap" ]; then $fiptables tool-nmap ; exit ; fi
+ if [ "$second_option" = "tool-sudo" ]; then $fiptables tool-sudo ; exit ; fi
+ if [ "$second_option" = "tool-install" ]; then $fiptables tool-install ; exit ; fi
+ if [ "$second_option" = "tool-dev" ]; then $fiptables tool-dev ; exit ; fi
+ if [ "$second_option" = "tool-system" ]; then $fiptables tool-system ; exit ; fi
+ if [ "$second_option" = "show-etc" ]; then $fiptables show-etc ; exit ; fi
+ if [ "$second_option" = "show-log" ]; then $fiptables show-log ; exit ; fi
+ if [ "$second_option" = "show-about" ]; then $fiptables show-about ; exit ; fi
+ if [ "$second_option" = "show-help" ]; then $fiptables show-help ; exit ; fi
+ echo $header_lineal
+ echo
+ echo " launch: $fiptables info group"
+ echo
+ echo " group list:"
+ echo " control-guide, control-rules, list-rules, user-interface"
+ echo " launch-rules, tool-custom, tool-sockets, tool-forward"
+ echo " tool-icmp, tool-tcp, tool-nmap, tool-sudo, tool-install"
+ echo " tool-dev, tool-system, show-etc, show-log, show-about, show-help"
  echo $footer_lineal
  exit; fi
 ####
