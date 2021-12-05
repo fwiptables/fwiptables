@@ -1412,6 +1412,8 @@ $fiptables tool-sockets
 echo
 $fiptables tool-forward
 echo
+$fiptables tool-udp
+echo
 $fiptables tool-tcp
 echo
 $fiptables tool-icmp
