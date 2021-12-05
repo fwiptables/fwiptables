@@ -2450,6 +2450,7 @@ zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
 ####
 ####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -2472,7 +2473,7 @@ case $selection in
 "wizard-full")$fiptables -gui wizard-full ;;
 "wizard-mini")$fiptables -gui wizard-mini ;;
 #### 
-#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
@@ -2482,6 +2483,7 @@ zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
 ####
 ####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -2511,11 +2513,18 @@ case "$selection" in
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fiptables -gui custom $archivo ; $fiptables gui list ;;
 #### 
-#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu-launch-rules; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-control-rules: gui with menu ##############################
@@ -2544,11 +2553,18 @@ $fiptables -gui save $archivo ;;
 $fiptables -gui load $archivo ; $fiptables -gui list ;;
 "actual") $fiptables -gui actual ;;
 #### 
-#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu-control-rules; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-list-rules: gui with menu ##############################
@@ -2586,12 +2602,19 @@ case $selection in
 "list-security6") $fiptables -gui list-security6 ;;
 "list-ebtables") $fiptables -gui list-ebtables ;;
 "list-arptables") $fiptables -gui list-arptables ;;
+#### 
+####
 else)
-#### 
-#### 
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-$fiptables gui-menu-list-rules; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-custom: gui with menu ##############################
@@ -2632,14 +2655,19 @@ $fiptables -gui modify-config $archivo ;;
 "del-config")
 archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($fiptables cfg)")" ;
 $fiptables -gui del-config $archivo;;
+#### 
+####
 else)
-#### 
-#### 
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-custom; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
@@ -2667,13 +2695,18 @@ case $selection in
 "ipforward-on") $fiptables -gui ipforward-on ;;
 "ipforward-off") $fiptables -gui ipforward-off ;;
 #### 
-#### 
+####
 else)
-zenity --progress -$graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-sockets; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-icmp: gui with menu ##############################
@@ -2692,12 +2725,19 @@ case $selection in
 "Gui Info Menu") $fiptables -gui tool-icmp ;;
 "ping-ip4")  $fiptables -gui ping-ip4  ;;
 "ping-ip6")  $fiptables -gui ping-ip6  ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-icmp; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-udp: gui with menu ##############################
@@ -2724,13 +2764,18 @@ $fiptables -gui resolveip $archivo ;;
 $fiptables -gui geoip $archivo ;;
 "ntpdate")$fiptables -gui ntpdate ;;
 #### 
-#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-tcp; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-tcp: gui with menu ##############################
@@ -2752,13 +2797,18 @@ case $selection in
 "speed-ip4") $fiptables -gui speed-ip4 ;;
 "speed-ip6") $fiptables -gui speed-ip6 ;;
 #### 
-#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-tcp; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-sudo: gui with menu ##############################
@@ -2780,12 +2830,19 @@ $fiptables -gui sudo-auth $archivo ;;
 "sudo-remove")$fiptables -gui sudo-remove ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "alias-list")$fiptables -gui alias-list ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-sudo; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-system: gui with menu ##############################
@@ -2807,12 +2864,19 @@ case $selection in
 "disc-speed") $fiptables -gui disc-speed ;;
 "gl-speed")   $fiptables -gui gl-speed ;;
 "radio")      $fiptables -gui radio ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-system; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-install: gui with menu ##############################
@@ -2832,12 +2896,19 @@ case $selection in
 "install")$fiptables -gui install ;;
 "howto-upgrade")$fiptables -gui howto-upgrade ;;
 "upgrade")$fiptables -gui upgrade ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-install; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-tool-dev: gui with menu ##############################
@@ -2857,12 +2928,19 @@ case $selection in
 "new-versions")$fiptables -gui new-versions ;;
 "dev-version") $fiptables -gui dev-version  ;;
 "dev-changes") $fiptables -gui dev-changes  ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-tool-dev; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-show-etc: gui with menu ##############################
@@ -2887,12 +2965,19 @@ case $selection in
 "hosts.deny") $fiptables -gui hosts.deny ;;
 "show-default") $fiptables -gui show-default ;;
 "modify-default") $fiptables -gui modify-default ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-show-etc; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-show-log: gui with menu ##############################
@@ -2914,12 +2999,19 @@ case $selection in
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-show-log; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-show-about: gui with menu ##############################
@@ -2943,12 +3035,19 @@ case $selection in
 "examples")$fiptables -gui examples ;;
 "config-eng")$fiptables -gui config-eng ;;
 "config-spa")$fiptables -gui config-spa ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-show-about; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-menu-show-help: gui with menu ##############################
@@ -2971,12 +3070,19 @@ case $selection in
 "ayuda") $fiptables -gui ayuda ;;
 "notes") $fiptables -gui notes ;;
 "license") $fiptables -gui license ;;
+#### 
+####
 else)
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
-#### 
-#### 
-$fiptables gui-menu-show-help; exit; fi
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
 ####
 ####
 ############################## english: gui-shell: graphic enviroment          ##############################
