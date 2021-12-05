@@ -59,5 +59,6 @@
 # 1. ACTUALIZACION IMPORTANTE: cambia which por "command -v". HECHO
 # 2. ACTUALIZACION IMPORTANTE: PATH para fwiptables. HECHO
 # 3. otros cambios en info-net. HECHO
+# 4. actualizacion info.
 #
 #
