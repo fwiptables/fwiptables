@@ -49,9 +49,11 @@
 # 9. eliminacion de "[ head ]" en la cabecera. HECHO.
 # 10. eliminacion de log-sudo. HECHO
 #
-# changes fwiptables-1.89 en desarrollo
+# changes fwiptables-1.89
 #
 # 1. cambio en default-option para permitir list o list6 por ejemplo. HECHO
 # 2. new default_security en caso de fallo de definicion de default-option. HECHO
+#
+# changes fwiptables-1.90 en desarrollo
 #
 #
