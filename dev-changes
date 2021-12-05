@@ -57,7 +57,7 @@
 # changes fwiptables-1.90 en desarrollo
 #
 # 1. ACTUALIZACION IMPORTANTE: cambia which por "command -v". HECHO
-# 2. ACTUALIZACION IMPORTANTE: PATH para fwiptables. HECHO
+# 2. path de directorios  mas completo para fwiptables. HECHO
 # 3. info-net: otros cambios en info-net. HECHO
 # 4. info: actualizacion. HECHO
 #
