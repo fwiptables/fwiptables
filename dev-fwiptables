@@ -21,22 +21,25 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####
 ####     #### english: stablished the path    #### spanish: establece el path
-PATH="$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 ####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
 ####     #### code for add xhost to root for graphicall use
-command_id="$(command -v id)"
+####
+####
+command_id="$(command -v id)" &> /dev/null
+command_xhost="$(command -v xhost)" &> /dev/null
+####
 ####
 if [ -n "$($command_id -u)" ] && [ "$($command_id -u)" = "0" ]; then
-sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" xhost +INET:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" xhost +INET6:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" xhost +DNET:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" xhost +KRB:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" xhost +SI:localuser:root &> /dev/null
-sudo -u "$(logname)" xhost +NIS:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
+sudo -u "$(logname)" command_xhost +SI:localuser:root &> /dev/null
+sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 fi
-####  ####
 ####
 ####
 ################################################   english: begin the script
@@ -89,7 +92,9 @@ server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 server_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
+port_iperf_ipv4="4"                   ## fwiptables-default ## default 4
 server_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
+port_iperf_ipv6="4"                   ## fwiptables-default ## default 4
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
@@ -200,11 +205,6 @@ close_graphicall="1"
 ####       #### english: message to close graphicall with timeout in seconds #####
 ####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
 mensage_timeout="Closing gui menu in $close_graphicall seconds"
-####       #### english: zenity graphic automatic redimension    
-####       #### spanish: redimensiones graficas automaticas de zenity
-#### pantallatotal="$(xrandr | grep -- \* | tail -1 \
-#### sed 's/x/\ /g' | awk '{print "--width="$1-150 " --height="$2-150}')"
-#### case $($which xrandr) in "$NULL") ;; *) graphic_dimension=$pantallatotal ;; esac
 ####       #### english: autovariables        #### spanish: autovariables
 launch_iptables="no" ;   #  autoconfigure with launch iptables rules
 launch_custom="no";      #  autoconfigure with custom rules
@@ -328,7 +328,7 @@ exit; fi
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-*) ./$zero_option intro ; 
+else) $($zero_option intro) ; 
 echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
 echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option upgrade ]" ;
 echo "$cinco [ firewall fwiptables netfilter license general public gpl 2. ]";  exit ;;
@@ -5654,7 +5654,7 @@ exit; fi
  $fiptables stop
  echo "$rallica [ Doing bandwidth in ipv4 to $server_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $server_iperf_ipv4 -t 4 -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $server_iperf_ipv4 -t 4 -P $port_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5673,7 +5673,7 @@ exit; fi
  $fiptables stop
  echo "$rallica [ Doing bandwidth in ipv6 to $server_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $server_iperf_ipv6 -V -t 4 -P 4 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $server_iperf_ipv6 -V -t 4 -P $port_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
