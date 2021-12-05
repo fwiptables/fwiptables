@@ -91,10 +91,10 @@ server_traceroute_ipv4="fast.com"     ## fwiptables-default ## default fast.com
 server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
-server_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
-port_iperf_ipv4="4"                   ## fwiptables-default ## default 4
-server_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
-port_iperf_ipv6="4"                   ## fwiptables-default ## default 4
+serverip_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
+serverport_iperf_ipv4="5201"            ## fwiptables-default ## default 5201
+serverip_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
+serverport_iperf_ipv6="5201"            ## fwiptables-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
@@ -5652,9 +5652,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$rallica [ Doing bandwidth in ipv4 to $server_iperf_ipv4 ] [ with max $server_waiting seconds ]"
+ echo "$rallica [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $server_iperf_ipv4 -t 4 -P $port_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 4 -p $serverport_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5671,9 +5671,9 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$rallica [ Doing bandwidth in ipv6 to $server_iperf_ipv6 ] [ with max $server_waiting seconds ]"
+ echo "$rallica [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $server_iperf_ipv6 -V -t 4 -P $port_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 4 -p $serverport_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
  $fiptables continue
  echo $footer_lineal
  exit; fi
