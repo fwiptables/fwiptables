@@ -56,4 +56,5 @@
 #
 # changes fwiptables-1.90 en desarrollo
 #
+# 1. cambiar which por "command -v". HECHO
 #

@@ -21,7 +21,7 @@ if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fip
 ####
 ####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
 ####     #### code for add xhost to root for graphicall use
-which_id="$(which id)"
+which_id="$(command -v id)"
 ####
 if [ -n "$($which_id -u)" ] && [ "$($which_id -u)" = "0" ]; then
 sudo -u "$(logname)" xhost +root@127.0.0.1 &> /dev/null
@@ -159,7 +159,7 @@ give_autosave="$fiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
-which_ip="$(which ip | cut -d " " -f 1)"                                                
+which_ip="$(command -v ip | cut -d " " -f 1)"                                                
 #### english: default route ipv4        #### english: routa por defecto ipv4
 case "$which_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
 *)default_route_cuatro="$cinco [ default route ip.v4 ] [ $("$which_ip" -4 route show | grep -i default | head -1) ]" ;; esac
@@ -168,23 +168,23 @@ case "$which_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip c
 *)default_route_seis="$cinco [ default route ip.v6 ]   [ $("$which_ip" -6 route show | grep -i default | head -1) ]" ;; esac
 ####  english: notice install iptables if necesary
 ####  spanish: noticia instala iptables en caso necesario
-which_iptables_legacy="$(which iptables-legacy | cut -d " " -f 1)"
-which_iptables_nft="$(which iptables-nft | cut -d " " -f 1)"
-which_ip6tables_legacy="$(which ip6tables-legacy | cut -d " " -f 1)"
-which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
+which_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
+which_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
+which_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
+which_ip6tables_nft="$(command -v ip6tables-nft | cut -d " " -f 1)"
 if [ "$which_iptables_legacy" = "$NULL" ]; then echo "install iptables-legacy"; fi
 if [ "$which_ip6tables_legacy" = "$NULL" ]; then echo "install ip6tables-legacy"; fi
 if [ "$which_iptables_nft" = "$NULL" ]; then echo "install iptables-nft"; fi
 if [ "$which_ip6tables_nft" = "$NULL" ]; then echo "install ip6tables-nft"; fi
 ####       #### english: to know if there is mac rules #### spanish: saber si hay reglas mac
-which_ebtables="$(which ebtables | cut -d " " -f 1)"
+which_ebtables="$(command -v ebtables | cut -d " " -f 1)"
 if [ "$which_ebtables" = "$NULL" ]; then rules_filter_ebtables="0" ; rules_nat_ebtables="0" ; 
 else
 rules_filter_ebtables="$($which_ebtables -L -t filter | grep -- "-j" | wc -l)"
 rules_nat_ebtables="$($which_ebtables -L -t nat       | grep -- "-j" | wc -l)"
 fi
 ####       #### english: to know if there is arptables rules #### spanish: saber si hay reglas arptables
-which_arptables="$(which arptables | cut -d " " -f 1 )"
+which_arptables="$(command -v arptables | cut -d " " -f 1 )"
 if [ "$which_arptables" = "$NULL" ]; then rules_arptables="0" ;
 else rules_arptables="$($which_arptables -L | grep -- "-j" | wc -l)" ; fi
 ####
@@ -1023,53 +1023,53 @@ if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &>
 ##############################      spanish: busca los programas: ruta de programas   #####################
 ####
 ####
-which_bash="$(which bash | cut -d " " -f 1)"
-which_iptables_legacy="$(which iptables-legacy | cut -d " " -f 1)"
-which_iptables_nft="$(which iptables-nft | cut -d " " -f 1)"
-which_ip6tables_legacy="$(which ip6tables-legacy | cut -d " " -f 1)"
-which_ip6tables_nft="$(which ip6tables-nft | cut -d " " -f 1)"
-which_arptables="$(which arptables |cut -d " " -f 1)"
-which_ebtables="$(which ebtables | cut -d " " -f 1)"
-which_fmt="$(which fmt | cut -d " " -f 1)"
-which_date="$(which date | cut -d " " -f 1)"
-which_uname="$(which uname | cut -d " " -f 1)"
-which_sed="$(which sed | cut -d " " -f 1)"
-which_xrandr="$(which xrandr | cut -d " " -f 1)"
-which_ip="$(which ip | cut -d " " -f 1)"
-which_curl="$(which curl | cut -d " " -f 1)"
-which_host="$(which host | cut -d " " -f 1)"
-which_dig="$(which dig | cut -d " " -f 1)"
-which_resolveip="$(which resolveip | cut -d " " -f 1)"
-which_geoiplookup="$(which geoiplookup | cut -d " " -f 1)"
-which_route="$(which route | cut -d " " -f 1)"
-which_ss="$(which ss| cut -d " " -f 1)"
-which_netstat="$(which netstat | cut -d " " -f 1)"
-which_netstat_nat="$(which netstat-nat | cut -d " " -f 1)"
-which_lsof="$(which lsof | cut -d " " -f 1)"
-which_sysctl="$(which sysctl | cut -d " " -f 1)"
-which_tcpdump="$(which tcpdump | cut -d " " -f 1)"
-which_arp="$(which arp | cut -d " " -f 1)"
-which_arp_scan="$(which arp-scan | cut -d " " -f 1)"
-which_ping="$(which ping | cut -d " " -f 1)"
-which_traceroute="$(which traceroute | cut -d " " -f 1)"
-which_dialog="$(which dialog | cut -d " " -f 1)"
-which_zenity="$(which zenity | cut -d " " -f 1)"
-which_lynx="$(which lynx | cut -d " " -f 1)"
-which_links="$(which links | cut -d " " -f 1)"
-which_links2="$(which links2 | cut -d " " -f 1)"
-which_elinks="$(which elinks | cut -d " " -f 1)"
-which_shc="$(which shc | cut -d " " -f 1)"
-which_nmap="$(which nmap | cut -d " " -f 1)"
-which_ntpdate="$(which ntpdate | cut -d " " -f 1)"
-which_sntp="$(which sntp | cut -d "" -f 1)"
-which_rdate="$(which rdate | cut -d "" -f 1)"
-which_wget="$(which wget | cut -d " " -f 1)"
-which_iperf="$(which iperf | cut -d " " -f 1)"
-which_tee="$(which tee | cut -d " " -f 1)"
-which_dd="$(which dd | cut -d " " -f 1)"
-which_glxgears="$(which glxgears | cut -d " " -f 1)"
-which_mpg123="$(which mpg123 | cut -d " " -f 1)"
-which_mpg321="$(which mpg321 | cut -d " " -f 1)"
+which_bash="$(command -v bash | cut -d " " -f 1)"
+which_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
+which_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
+which_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
+which_ip6tables_nft="$(command -v ip6tables-nft | cut -d " " -f 1)"
+which_arptables="$(command -v arptables |cut -d " " -f 1)"
+which_ebtables="$(command -v ebtables | cut -d " " -f 1)"
+which_fmt="$(command -v fmt | cut -d " " -f 1)"
+which_date="$(command -v date | cut -d " " -f 1)"
+which_uname="$(command -v uname | cut -d " " -f 1)"
+which_sed="$(command -v sed | cut -d " " -f 1)"
+which_xrandr="$(command -v xrandr | cut -d " " -f 1)"
+which_ip="$(command -v ip | cut -d " " -f 1)"
+which_curl="$(command -v curl | cut -d " " -f 1)"
+which_host="$(command -v host | cut -d " " -f 1)"
+which_dig="$(command -v dig | cut -d " " -f 1)"
+which_resolveip="$(command -v resolveip | cut -d " " -f 1)"
+which_geoiplookup="$(command -v geoiplookup | cut -d " " -f 1)"
+which_route="$(command -v route | cut -d " " -f 1)"
+which_ss="$(command -v ss| cut -d " " -f 1)"
+which_netstat="$(command -v netstat | cut -d " " -f 1)"
+which_netstat_nat="$(command -v netstat-nat | cut -d " " -f 1)"
+which_lsof="$(command -v lsof | cut -d " " -f 1)"
+which_sysctl="$(command -v sysctl | cut -d " " -f 1)"
+which_tcpdump="$(command -v tcpdump | cut -d " " -f 1)"
+which_arp="$(command -v arp | cut -d " " -f 1)"
+which_arp_scan="$(command -v arp-scan | cut -d " " -f 1)"
+which_ping="$(command -v ping | cut -d " " -f 1)"
+which_traceroute="$(command -v traceroute | cut -d " " -f 1)"
+which_dialog="$(command -v dialog | cut -d " " -f 1)"
+which_zenity="$(command -v zenity | cut -d " " -f 1)"
+which_lynx="$(command -v lynx | cut -d " " -f 1)"
+which_links="$(command -v links | cut -d " " -f 1)"
+which_links2="$(command -v links2 | cut -d " " -f 1)"
+which_elinks="$(command -v elinks | cut -d " " -f 1)"
+which_shc="$(command -v shc | cut -d " " -f 1)"
+which_nmap="$(command -v nmap | cut -d " " -f 1)"
+which_ntpdate="$(command -v ntpdate | cut -d " " -f 1)"
+which_sntp="$(command -v sntp | cut -d "" -f 1)"
+which_rdate="$(command -v rdate | cut -d "" -f 1)"
+which_wget="$(command -v wget | cut -d " " -f 1)"
+which_iperf="$(command -v iperf | cut -d " " -f 1)"
+which_tee="$(command -v tee | cut -d " " -f 1)"
+which_dd="$(command -v dd | cut -d " " -f 1)"
+which_glxgears="$(command -v glxgears | cut -d " " -f 1)"
+which_mpg123="$(command -v mpg123 | cut -d " " -f 1)"
+which_mpg321="$(command -v mpg321 | cut -d " " -f 1)"
 ####
 ####
 ########################################       english: autosave: autosave of firewall to restore standard rules
