@@ -54,11 +54,17 @@
 # 1. cambio en default-option para permitir list o list6 por ejemplo. HECHO
 # 2. new default_security en caso de fallo de definicion de default-option. HECHO
 #
-# changes fwiptables-1.90 en desarrollo
+# changes fwiptables-1.90
 #
 # 1. ACTUALIZACION IMPORTANTE: cambia which por "command -v". HECHO
 # 2. path de directorios  mas completo para fwiptables. HECHO
 # 3. info-net: otros cambios en info-net. HECHO
 # 4. info: actualizacion. HECHO
+#
+# changes fwiptables-1.91 en desarrollo
+#
+# 1. speed-ip4 y speed-ip6: variable para el puerto y comprobarlo para un futuro.
+# 2. info: cabecera en info.
+# 3. source: habilitar para ver codigo fuente de las rutinas.
 #
 #
