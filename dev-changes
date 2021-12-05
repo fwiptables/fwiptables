@@ -56,7 +56,7 @@
 #
 # changes fwiptables-1.90 en desarrollo
 #
-# 1. cambiar which por "command -v". HECHO
+# 1. ACTUALIZACION IMPORTANTE: cambia which por "command -v". HECHO
 # 2. otros cambios en info-net. HECHO
 #
 #
