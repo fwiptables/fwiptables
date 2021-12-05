@@ -413,13 +413,6 @@ cat $file_temporal_textfinal ; exit ;;
 esac
 ####
 ####
-##############################     english: info: show options group
-##############################     spanish: info: muestra grupo de opciones
-####
-####
-#### if [ "$first_option" = "info" ]; then first_option="group-options" ; fi
-####
-####
 ##############################     english: cfg: list: some config, alias to list-config
 ##############################     spanish: cfg: lista alguna config, apodo a list-config
 ####
@@ -5728,7 +5721,13 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$second_option" = "show-log" ]; then $fiptables show-log ; exit ; fi
  if [ "$second_option" = "show-about" ]; then $fiptables show-about ; exit ; fi
  if [ "$second_option" = "show-help" ]; then $fiptables show-help ; exit ; fi
+####
+####
+ $give_cover
+ echo $header_ender
+ echo "$ralla [ $first_option ] [ info group ]"
  echo $header_lineal
+ echo $ralla
  echo
  echo " launch: $fiptables info group"
  echo
