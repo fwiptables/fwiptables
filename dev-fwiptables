@@ -15,9 +15,13 @@ fiptables="fwiptables" ;
 ####
 ####     #### english: launch profile         #### spanish: lanza profile
 if [ -f /etc/profile ] ; then . /etc/profile ; fi
+####
 ####     #### english: launch completion      #### spanish: lanza autocompletar
 if [ -f /etc/bash_completion.d/$fiptables ] ; then . /etc/bash_completion.d/$fiptables ; fi
 ####
+####
+####     #### english: stablished the path    #### spanish: establece el path
+PATH="$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
 ####
 ####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
 ####     #### code for add xhost to root for graphicall use
