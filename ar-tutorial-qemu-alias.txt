@@ -1,0 +1,2 @@
+alias qemu_amd64='qemu-system-x86_64 -m 2000m  -machine type=pc,accel=kvm -k es -smp 4 -rtc base=localtime -name '\''Windows7 64bits'\''  '
+alias qemu_intel32='qemu-system-i386 -m 2000m  -machine type=pc,accel=kvm -k es -smp 4 -rtc base=localtime -name '\''Windows7 32bits'\''  '
