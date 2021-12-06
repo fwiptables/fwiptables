@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ -f  $1 ] ; then echo "obteniendo deb de un fwiptables.."
+if [ "$1" != "$NULL" ] && [ -f  $1 ] ; then echo "obteniendo deb de un fwiptables.."
 else echo "launch $0 file-location-of-fwiptables" ; exit ; fi
 programa="$1"
 version="$( cat $1  | grep -i fversion= | cut -d "\"" -f 2 )"
@@ -21,6 +21,7 @@ echo " One simple FRONT-END for iptables linux, which COMMAND-LINE with CLI-MENU
 #### empaqueta el archivo
 chown root:root $ruta -R
 echo "file write in /tmp/$programa.deb"
+rm /tmp/$programa.deb &> /dev/null
 $(which dpkg) -b $ruta /tmp/$programa.deb
 rm $ruta -R
 exit
