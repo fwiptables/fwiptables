@@ -61,12 +61,15 @@
 # 3. info-net: otros cambios en info-net. HECHO
 # 4. info: actualizacion. HECHO
 #
-# changes fwiptables-1.91 en desarrollo
+# changes fwiptables-1.91
 #
 # 1. speed-ip4 y speed-ip6: variable para el puerto y comprobarlo para un futuro. HECHO
 # 2. info: cabecera en info. HECHO
 # 3. arreglo en install. HECHO
 # 4. arreglo para intentar cerrar gui-menu al terminar. HECHO
-# 4. source: habilitar para ver codigo fuente de las rutinas.
+#
+# changes fwiptables 1.92 en desarrollo
+#
+# 1. source: habilitar para ver codigo fuente de las rutinas.
 #
 #
