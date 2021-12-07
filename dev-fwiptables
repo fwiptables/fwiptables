@@ -328,7 +328,7 @@ exit; fi
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
 ####
-cmp -s $0 /usr/bin/fwiptables || echo "[ fwiptables no updated ] [ launch: $0 install ]"
+cmp -s $0 $directory_fiptables/$fiptables || echo $0 install
 ####
 ####
 ##############################       alias for fwiptables       ##############################
