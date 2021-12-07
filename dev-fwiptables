@@ -120,7 +120,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.91-Julia" ;                                             
+fversion="1.92-Beatriz" ;                                           
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -324,11 +324,124 @@ echo
 exit; fi
 ####
 ####
+##############################       english: Install:    $fiptables           ###########################################
+##############################       spanish: Instalador: $fiptables           ###########################################
+####
+####
+if [ "$first_option" = "install" ] ; then $zero_option intro
+echo "$cinco [ Install $fiptables in $directory_fiptables ]"
+#### 
+#### 
+####  english: copy the file
+####  spanish: copia el archivo
+#### 
+#### 
+echo "$cinco [ Runing.. ] [ $zero_option install ]"
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null
+#### 
+#### 
+####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
+####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
+#### 
+#### 
+####  english: Install new /etc/bash_completion/fwiptables
+####  spanish: instala nuevo /etc/bash_completion/fwiptables
+#### 
+#### 
+if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables.sh
+echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
+full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
+info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables.sh
+####
+####
+####  english: Install new /etc/profile.d/fwiptables
+####  spanish: instala nuevo /etc/profile.d/fwiptables
+#### 
+#### 
+if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
+echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables.sh
+echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
+full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
+info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
+eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables.sh
+####
+####
+#### english: generate /etc/default/fwiptables
+#### spanish: genera /etc/default/fwiptables
+####
+####
+echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
+#### 
+#### 
+####  english: probe sane dir /etc/bash_completion.d
+####  spanish: comprueba directorio sano /etc/bash_completion.d
+#### 
+#### 
+chmod ugo+rx /etc/bash_completion.d/$fiptables &> /dev/null
+chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
+####
+####
+echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
+echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
+echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+#### 
+#### 
+####  english: modes of file 
+####  spanish: modos de archivo
+#### 
+#### 
+echo "$cinco [ Launch $fiptables to run / TYPE :] [ $fiptables ]" 
+echo "$rallica [ OK FIREWALL INSTALLED ] [ $directory_fiptables/$fiptables ]"
+echo $footer_lineal
+exit; fi
+####
+####
+##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
+##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
+####
+####
+if [ "$first_option" = "upgrade" ]; then $give_cover
+echo "$cinco [ upgrade ] [ upgrade $fiptables at last version for web ]"
+echo "$cinco [ upgrade $fiptables in $directory_fiptables ]"
+case "$favorite_text_browser" in
+"$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
+echo "$cinco [ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
+echo "$cinco [ Downloading $fiptables with the comand $favorite_text_browser browser ]"
+rm /tmp/$fiptables &> /dev/null
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "$cinco [ Waiting several seconds .. ]"
+download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
+ | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
+ | cut -d "(" -f 1 | sed s/" "//g)"
+download_ruta="$fweb_files$download_version/download/"
+echo "$rallica [ Downloading.. $download_ruta ]"
+echo "$cinco [ Waiting several seconds .. ]"
+$favorite_text_browser -source "$fweb_files"/"$download_version"/download &> "/tmp/$fiptables"
+#### $favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
+chmod ugo+rx /tmp/$fiptables &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "/tmp/$fiptables" ]; then /tmp/$fiptables install; rm /tmp/$fiptables
+else "$rallica Install fail"; fi
+echo $footer_lineal
+exit ; fi
+
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
 ####
-cmp -s $0 $directory_fiptables/$fiptables || echo $0 install
+cmp -s $0 $directory_fiptables/$fiptables || . $0 intro
 ####
 ####
 ##############################       alias for fwiptables       ##############################
@@ -1112,120 +1225,6 @@ if [ "$command_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command
 favoite_music_command=""
 if [ "$command_mpg321" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
 if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
-####
-####
-##############################       english: Install:    $fiptables           ###########################################
-##############################       spanish: Instalador: $fiptables           ###########################################
-####
-####
-if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$cinco [ Install $fiptables in $directory_fiptables ]"
-#### 
-#### 
-####  english: copy the file
-####  spanish: copia el archivo
-#### 
-#### 
-echo "$cinco [ Runing.. ] [ $zero_option install ]"
-cp $zero_option $directory_fiptables/$fiptables &> /dev/null
-#### 
-#### 
-####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
-####  spanish: crea  /etc/bash_completion.d/$fiptables y   /etc/default/fwiptables
-#### 
-#### 
-####  english: Install new /etc/bash_completion/fwiptables
-####  spanish: instala nuevo /etc/bash_completion/fwiptables
-#### 
-#### 
-if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables.sh
-echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
-full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
-info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables.sh
-####
-####
-####  english: Install new /etc/profile.d/fwiptables
-####  spanish: instala nuevo /etc/profile.d/fwiptables
-#### 
-#### 
-if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
-echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables.sh
-echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
-full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
-info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables.sh
-####
-####
-#### english: generate /etc/default/fwiptables
-#### spanish: genera /etc/default/fwiptables
-####
-####
-echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
-#### 
-#### 
-####  english: probe sane dir /etc/bash_completion.d
-####  spanish: comprueba directorio sano /etc/bash_completion.d
-#### 
-#### 
-chmod ugo+rx /etc/bash_completion.d/$fiptables &> /dev/null
-chmod ugo+rx $directory_fiptables/$fiptables &> /dev/null
-####
-####
-echo "$cinco [ $fiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fiptables ]" 
-echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
-echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-#### 
-#### 
-####  english: modes of file 
-####  spanish: modos de archivo
-#### 
-#### 
-echo "$cinco [ Launch $fiptables to run / TYPE :] [ $fiptables ]" 
-echo "$rallica [ OK FIREWALL INSTALLED ] [ $directory_fiptables/$fiptables ]"
-echo $footer_lineal
-exit; fi
-####
-####
-##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
-##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
-####
-####
-if [ "$first_option" = "upgrade" ]; then $give_cover
-echo "$cinco [ upgrade ] [ upgrade $fiptables at last version for web ]"
-echo "$cinco [ upgrade $fiptables in $directory_fiptables ]"
-case "$favorite_text_browser" in
-"$NULL")echo " [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$cinco [ Upgrade The $fiptables in file $directory_fiptables/$fiptables with $favorite_text_browser command ]"
-echo "$cinco [ Downloading $fiptables with the comand $favorite_text_browser browser ]"
-rm /tmp/$fiptables &> /dev/null
-####
-####
-####  English: download fwiptables
-####  Spanish: descarga fwiptables
-####
-####
-echo "$cinco [ Waiting several seconds .. ]"
-download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
- | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
- | cut -d "(" -f 1 | sed s/" "//g)"
-download_ruta="$fweb_files$download_version/download/"
-echo "$rallica [ Downloading.. $download_ruta ]"
-echo "$cinco [ Waiting several seconds .. ]"
-$favorite_text_browser -source "$fweb_files"/"$download_version"/download &> "/tmp/$fiptables"
-#### $favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
-chmod ugo+rx /tmp/$fiptables &> /dev/null
-####
-####
-#### English: launch install
-#### Spanish: lanza instalacion
-####
-####
-if [ -s "/tmp/$fiptables" ]; then /tmp/$fiptables install; rm /tmp/$fiptables
-else "$rallica Install fail"; fi
-echo $footer_lineal
-exit ; fi
 ####
 ####
 ##############################      english: ready system rules con its option               #####################
@@ -2246,7 +2245,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $genfiles ;
 echo "Graphics: Wait several seconds.." ;
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
+case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -2337,7 +2336,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $genfiles
 echo "Graphics: Wait several seconds.." ;
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
+case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -2397,7 +2396,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo "Graphics: Wait several seconds.." ;
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
+case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fiptables user-interface)"
 exit; fi
 ####
@@ -2408,7 +2407,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu" ] ; then $genfiles 
 echo "Graphics: Wait several seconds.." ;
-case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; else) ;; esac
+case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool custom" \
 "06 Tool sockets" "07 Tool tcp" "08 Tool udp" "09 Tool icmp"  "10 Tool sudo" "11 Tool system" "12 Tool install" \
@@ -2435,15 +2434,11 @@ case "$selection" in
 "15 Show log")$fiptables gui-menu-show-log;;
 "16 Show about")$fiptables gui-menu-show-about;;
 "17 Show help")$fiptables gui-menu-show-help;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2468,15 +2463,11 @@ case $selection in
 "info-system")$fiptables -gui info-system ;;
 "wizard-full")$fiptables -gui wizard-full ;;
 "wizard-mini")$fiptables -gui wizard-mini ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2508,15 +2499,11 @@ case "$selection" in
 "serversamba") $fiptables -gui serversamba ; $fiptables gui list ;;
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fiptables -gui custom $archivo ; $fiptables gui list ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2548,15 +2535,11 @@ $fiptables -gui save $archivo ;;
 "load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($fiptables list-fw)")" ;
 $fiptables -gui load $archivo ; $fiptables -gui list ;;
 "actual") $fiptables -gui actual ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2598,15 +2581,11 @@ case $selection in
 "list-security6") $fiptables -gui list-security6 ;;
 "list-ebtables") $fiptables -gui list-ebtables ;;
 "list-arptables") $fiptables -gui list-arptables ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2651,15 +2630,11 @@ $fiptables -gui modify-config $archivo ;;
 "del-config")
 archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($fiptables cfg)")" ;
 $fiptables -gui del-config $archivo;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2690,15 +2665,11 @@ case $selection in
 "ipforward-list") $fiptables -gui ipforward-list ;;
 "ipforward-on") $fiptables -gui ipforward-on ;;
 "ipforward-off") $fiptables -gui ipforward-off ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2721,15 +2692,11 @@ case $selection in
 "Gui Info Menu") $fiptables -gui tool-icmp ;;
 "ping-ip4")  $fiptables -gui ping-ip4  ;;
 "ping-ip6")  $fiptables -gui ping-ip6  ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2759,15 +2726,11 @@ $fiptables -gui resolveip $archivo ;;
 "geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $fiptables -gui geoip $archivo ;;
 "ntpdate")$fiptables -gui ntpdate ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2792,15 +2755,11 @@ case $selection in
 "tracetcp-ip6") $fiptables -gui tracetcp-ip6   ;;
 "speed-ip4") $fiptables -gui speed-ip4 ;;
 "speed-ip6") $fiptables -gui speed-ip6 ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2826,15 +2785,11 @@ $fiptables -gui sudo-auth $archivo ;;
 "sudo-remove")$fiptables -gui sudo-remove ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "alias-list")$fiptables -gui alias-list ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2860,15 +2815,11 @@ case $selection in
 "disc-speed") $fiptables -gui disc-speed ;;
 "gl-speed")   $fiptables -gui gl-speed ;;
 "radio")      $fiptables -gui radio ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2892,15 +2843,11 @@ case $selection in
 "install")$fiptables -gui install ;;
 "howto-upgrade")$fiptables -gui howto-upgrade ;;
 "upgrade")$fiptables -gui upgrade ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2924,15 +2871,11 @@ case $selection in
 "new-versions")$fiptables -gui new-versions ;;
 "dev-version") $fiptables -gui dev-version  ;;
 "dev-changes") $fiptables -gui dev-changes  ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2961,15 +2904,11 @@ case $selection in
 "hosts.deny") $fiptables -gui hosts.deny ;;
 "show-default") $fiptables -gui show-default ;;
 "modify-default") $fiptables -gui modify-default ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -2995,15 +2934,11 @@ case $selection in
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3031,15 +2966,11 @@ case $selection in
 "examples")$fiptables -gui examples ;;
 "config-eng")$fiptables -gui config-eng ;;
 "config-spa")$fiptables -gui config-spa ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3066,15 +2997,11 @@ case $selection in
 "ayuda") $fiptables -gui ayuda ;;
 "notes") $fiptables -gui notes ;;
 "license") $fiptables -gui license ;;
-#### 
-####
-else)
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill ; exit;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; else $nada ; fi
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3087,7 +3014,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-shell" ] ; then $genfiles
 echo "Graphics: Wait several seconds.."  ;
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; else) ;; esac
+case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -3216,7 +3143,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "cli-menu" ]; then $nada
-case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; else) ;; esac
+case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
   000 "$cinco $tab [$fiptables cli-menu] $tab $cinco" \
