@@ -298,6 +298,7 @@ exit ; fi
 ####
 ##############################       english: intro: show intro
 ##############################       spanish: intro: show intro
+#### :source-rutina:intro:25
 ####
 ####
 if [ "$first_option" = "intro" ]; then $nada
@@ -3608,6 +3609,23 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
  echo $footer_lineal
  exit ; fi
+####
+####
+##############################       english: source: source from loop
+##############################       spanish: source: fuente de la rutina
+####
+####
+if [ "$first_option" = "source" ]; then $give_cover
+if [ "$second_option" = "$NULL" ]; then echo "Use $0 source option"; fi
+busqueda="$(cat -n $directory_fiptables/$fiptables | grep source-rutina  | head -1 )"
+value_first="$(echo $busqueda | cut -d " " -f 1)"
+value_count="$(echo $busqueda | cut -d ":" -f 4)"
+value_sum="$(("$value_first"+"$value_count"))"
+# echo $busqueda 
+# echo $value_first $value_count $value_sum
+echo "[ source ] [ "$second_option" ] [ show the "$value_count" lines for "$second_option" ]"
+cat -n $directory_fiptables/$fiptables | head -"$value_sum" | tail -"$value_count"
+exit; fi
 ####
 ####
 ##############################       english: license: license gpl v2
@@ -8554,4 +8572,4 @@ exit ; else $nada ; fi
 #######################
 ####
 ####
-exit urce 
+exit
