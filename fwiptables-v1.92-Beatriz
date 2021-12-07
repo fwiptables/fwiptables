@@ -116,8 +116,6 @@ quarter_option="$(echo $4 | sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 genfiles="$zero_option regeneration-default"                        
 #### #### english: whereis path          #### spanish: donde esta el path
-directory_fiptables="/usr/bin" ;                                    
-#### #### english: whereis path          #### spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
@@ -330,10 +328,7 @@ exit; fi
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
 ####
-case "$0" in 
-!"$fiptables"|!"$directory_fiptables/$fiptables")
-if [ "$1" != "install" ] || [ "$1" != "upgrade" ]; then
-source $0 intro ; fi ;; esac
+cmp -s $0 /usr/bin/fwiptables || echo "[ fwiptables no updated ] [ launch: $0 install ]"
 ####
 ####
 ##############################       alias for fwiptables       ##############################
