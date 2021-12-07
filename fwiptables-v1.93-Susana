@@ -298,7 +298,7 @@ exit ; fi
 ####
 ##############################       english: intro: show intro
 ##############################       spanish: intro: show intro
-#### :source-rutina:intro:25
+#### :source-rutina-intro:26
 ####
 ####
 if [ "$first_option" = "intro" ]; then $nada
@@ -3616,11 +3616,14 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
 if [ "$first_option" = "source" ]; then $give_cover
-if [ "$second_option" = "$NULL" ]; then echo "Use $0 source option"; fi
-busqueda="$(cat -n $directory_fiptables/$fiptables | grep source-rutina  | head -1 )"
+if [ "$second_option" = "$NULL" ]; then echo "$rallica Usage: $fiptables source option"; exit 0 ; fi
+busqueda="$(cat -n $directory_fiptables/$fiptables | grep source-rutina-$2  | head -1 )"
 value_first="$(echo $busqueda | cut -d " " -f 1)"
-value_count="$(echo $busqueda | cut -d ":" -f 4)"
+value_count="$(echo $busqueda | cut -d ":" -f 3)"
+if [ ! -n "$value_first" ]; then exit 0 ; fi
+if [ ! -n "$value_count" ]; then exit 0 ; fi
 value_sum="$(("$value_first"+"$value_count"))"
+if [ ! -n "$value_sum" ]; then exit 0 ; fi
 # echo $busqueda 
 # echo $value_first $value_count $value_sum
 echo "[ source ] [ "$second_option" ] [ show the "$value_count" lines for "$second_option" ]"
@@ -5615,6 +5618,7 @@ exit; fi
 ####
 ############################       english: info-system: get info system
 ############################       spanish: info-system: da informacion del sistema
+#### :source-rutina-info-system:28
 ####
 ####
  if [ "$first_option" = "info-system" ]; then  $give_cover
@@ -5645,6 +5649,7 @@ exit; fi
 ####
 ############################       english: info-net: get net info
 ############################       spanish: info-net: da informacion de la red
+#### :source-rutina-info-net:48
 ####
 ####
  if [ "$first_option" = "info-net" ]; then $give_cover
