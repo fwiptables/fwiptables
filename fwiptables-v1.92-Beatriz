@@ -318,6 +318,11 @@ echo "  LICENSE GNU / GPL v2."
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
 echo
+echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
+echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option upgrade ]" ;
+echo
+echo "--------------------------------------------------------------------------"
+echo
 exit; fi
 ####
 ####
@@ -325,14 +330,8 @@ exit; fi
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
 ####
-if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
-case "$zero_option" in
-"$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-else) $($zero_option intro) ; 
-echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
-echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option upgrade ]" ;
-echo "$cinco [ firewall fwiptables netfilter license general public gpl 2. ]";  exit ;;
-esac; fi
+if [ "$0" != "$fiptables" ] || [ "$0" != "$directory_fiptables/$fiptables" ]; then 
+source $0 intro; fi
 ####
 ####
 ##############################       alias for fwiptables       ##############################
