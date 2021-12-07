@@ -330,9 +330,10 @@ exit; fi
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
 ####
-if [ "$0" != "$fiptables" ] || [ "$0" != "$directory_fiptables/$fiptables" ]; then 
-if [ "$1" != "install" ] && [ "$1" != "upgrade" ]; then 
-source $0 intro; fi; fi
+case "$0" in 
+!"$fiptables"|!"$directory_fiptables/$fiptables")
+if [ "$1" != "install" ] || [ "$1" != "upgrade" ]; then
+source $0 intro ; fi ;; esac
 ####
 ####
 ##############################       alias for fwiptables       ##############################
@@ -8631,4 +8632,4 @@ exit ; else $nada ; fi
 #######################
 ####
 ####
-exit 
+exit urce 
