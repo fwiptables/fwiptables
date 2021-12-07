@@ -331,7 +331,8 @@ exit; fi
 ####
 ####
 if [ "$0" != "$fiptables" ] || [ "$0" != "$directory_fiptables/$fiptables" ]; then 
-source $0 intro; fi
+if [ "$1" != "install" ] && [ "$1" != "upgrade" ]; then 
+source $0 intro; fi; fi
 ####
 ####
 ##############################       alias for fwiptables       ##############################
