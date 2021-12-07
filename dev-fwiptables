@@ -5685,9 +5685,9 @@ exit; fi
  echo "$tab [ System info ][ Kernel Linux ]"
  $command_uname -srom
  echo $ralla
- echo "$tab [ Boot system ] [ it works with pid number 1 ]"
+ echo "$tab [ Boot system ] [ it works with pid one ]"
  ps -p1 
- echo "$tab Over /proc/1/com CMD"
+ echo "$tab Over cat /proc/1/comm"
  echo "   Your boot system is : $(cat /proc/1/comm)"
  echo $ralla
  echo "$tab [ System info ] [ Processor ]"
