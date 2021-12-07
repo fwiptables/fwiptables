@@ -68,11 +68,14 @@
 # 3. arreglo en install. HECHO
 # 4. arreglo para intentar cerrar gui-menu al terminar. HECHO
 #
-# changes fwiptables 1.92 en desarrollo
+# changes fwiptables 1.92
 #
 # 1. limpieza de codigo. HECHO
 # 2. manejo de si esta actualizado o no con cmp. HECHO
 # 2. funcionamiento de intro e install. HECHO
-# 3. source: habilitar para ver codigo fuente de las rutinas.
+# 3. source: habilitar para ver codigo fuente de las rutinas. HECHO
 #
+# changes fwiptables 1.93 en desarrollo
+#
+# 1 source: queda trabajo por delante.....
 #
