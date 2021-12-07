@@ -122,7 +122,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.92-Beatriz" ;                                           
+fversion="1.91-Julia" ;                                             
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -303,7 +303,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "intro" ]; then $nada
-echo ""
+echo
 echo "--------------------------------------------------------------------------"
 echo "  FRAN INTRO "
 echo 
@@ -317,7 +317,7 @@ echo
 echo "  LICENSE GNU / GPL v2."
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
-echo ""
+echo
 exit; fi
 ####
 ####
@@ -328,8 +328,9 @@ exit; fi
 if [ "$first_option" != "install" ] && [ "$first_option" != "upgrade" ]; then
 case "$zero_option" in
 "$directory_fiptables/$fiptables") ;; "./$fiptables") ;; "$fiptables") ;;
-*) . $zero_option intro ; 
-echo "$cinco [ INSTALL fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
+else) $($zero_option intro) ; 
+echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
+echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option upgrade ]" ;
 echo "$cinco [ firewall fwiptables netfilter license general public gpl 2. ]";  exit ;;
 esac; fi
 ####
@@ -1121,7 +1122,7 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ##############################       spanish: Instalador: $fiptables           ###########################################
 ####
 ####
-if [ "$first_option" = "install" ] ; then . $zero_option intro
+if [ "$first_option" = "install" ] ; then $zero_option intro
 echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 #### 
 #### 
@@ -1129,8 +1130,8 @@ echo "$cinco [ Install $fiptables in $directory_fiptables ]"
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$cinco [ Runing.. ] [ . $zero_option install ]"
-cp . $zero_option $directory_fiptables/$fiptables &> /dev/null
+echo "$cinco [ Runing.. ] [ $zero_option install ]"
+cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 #### 
 ####  english: create /etc/bash_completion.d/$fiptables and /etc/default/fwiptables
@@ -5684,9 +5685,9 @@ exit; fi
  echo "$tab [ System info ][ Kernel Linux ]"
  $command_uname -srom
  echo $ralla
- echo "$tab [ Boot system ] [ it works with pid one ]"
+ echo "$tab [ Boot system ] [ it works with pid number 1 ]"
  ps -p1 
- echo "$tab Over cat /proc/1/comm"
+ echo "$tab Over /proc/1/com CMD"
  echo "   Your boot system is : $(cat /proc/1/comm)"
  echo $ralla
  echo "$tab [ System info ] [ Processor ]"
