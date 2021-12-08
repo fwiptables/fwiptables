@@ -3675,15 +3675,15 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
 if [ "$first_option" = "code" ]; then $give_cover
-if [ "$second_option" = "$NULL" ]; then echo "$rallica Usage: $fiptables source option"; exit ; fi
+if [ "$second_option" = "$NULL" ]; then echo; echo "$rallica Usage: $fiptables code option"; exit ; fi
 value_first="$(cat -n $directory_fiptables/$fiptables | grep  :rutina-inicio-$2: | cut -d "#" -f 1 )"
 value_second="$(cat -n $directory_fiptables/$fiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 )"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then exit ; fi
 if [ ! -n "$value_second" ];  then exit ; fi
 if [ ! -n "$value_count" ];   then exit ; fi
-echo "$rallica [ source ] [ option: "$second_option" ] \
-[ show $value_count lines from the "$value_first" line to "$value_second" line ]"
+echo "$rallica [ source ] [ option: "$second_option" ] [ show $value_count lines ] \
+[ from the "$value_first" line to "$value_second" line ]"
 echo "$ralla"
 cat $directory_fiptables/$fiptables | head -n $value_second | tail -n $value_count
 exit; fi
