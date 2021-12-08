@@ -3669,26 +3669,26 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit ; fi
 ####
 ####
-##############################       english: source: source from loop
-##############################       spanish: source: fuente de la rutina
-#### :source-rutina-inicio-source:
+##############################       english: code: source from loop
+##############################       spanish: code: fuente de la rutina
+#### :rutina-inicio-code:
 ####
 ####
-if [ "$first_option" = "source" ]; then $give_cover
+if [ "$first_option" = "code" ]; then $give_cover
 if [ "$second_option" = "$NULL" ]; then echo "$rallica Usage: $fiptables source option"; exit ; fi
-value_first="$(cat -n $directory_fiptables/$fiptables | grep  :source-rutina-inicio-$2: | cut -d "#" -f 1 )"
-value_second="$(cat -n $directory_fiptables/$fiptables | grep :source-rutina-final-$2:  | cut -d "#" -f 1 )"
+value_first="$(cat -n $directory_fiptables/$fiptables | grep  :rutina-inicio-$2: | cut -d "#" -f 1 )"
+value_second="$(cat -n $directory_fiptables/$fiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 )"
 echo " Count from line $value_first at $value_second"
 if [ ! -n "$value_first" ]; then exit 0 ; fi
 if [ ! -n "$value_second" ]; then exit 0 ; fi
-value_count="$(("$value_second"-"$value_first"))"
+value_count="$(("$value_second"-"$value_first+1"))"
 echo "[ source ] [ "$second_option" ] [ show $value_count lines from the "$value_first" at "$value_second" ]"
 refile="$directory_fiptables/$fiptables"
 cat $refile | head -n $value_second | tail -n $value_count
 exit; fi
 ####
 ####
-#### :source-rutina-final-source:
+#### :rutina-final-code:
 ##############################       english: license: license gpl v2
 ##############################       spanish: license: license gpl v2
 ####
