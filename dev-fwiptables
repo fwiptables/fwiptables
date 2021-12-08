@@ -490,20 +490,20 @@ download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwipt
 download_ruta="$fweb_files$download_version/download/"
 echo "$rallica [ Downloading.. $download_ruta ]"
 echo "$cinco [ Waiting several seconds .. ]"
-$favorite_text_browser -source "$fweb_files"/"$download_version"/download &> "/tmp/$fiptables"
-#### $favorite_text_browser -source "$fweb_latest" &> "/tmp/$fiptables"
-chmod ugo+rx /tmp/$fiptables &> /dev/null
+$favorite_text_browser -source "$fweb_files"/"$download_version"/download &> "/tmp/$fiptables-installer"
+chmod ugo+rx /tmp/$fiptables-installer &> /dev/null
 ####
 ####
 #### English: launch install
 #### Spanish: lanza instalacion
 ####
 ####
-if [ -s "/tmp/$fiptables" ]; then /tmp/$fiptables install; rm /tmp/$fiptables
+if [ -s "/tmp/$fiptables-installer" ]; then /tmp/$fiptables-installer install; rm /tmp/$fiptables-installer
 else "$rallica Install fail"; fi
 echo $footer_lineal
 exit ; fi
-
+####
+####
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
 ####
@@ -519,12 +519,12 @@ cmp -s $0 $directory_fiptables/$fiptables || . $0 intro
 #### spanish: archivos temporales
 ####
 ####
-mkdir /tmp/fwiptables-$fversion/ &> /dev/null
-file_temporal_text="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
-file_temporal_textfinal="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
-file_temporal_gui="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
-file_temporal_guifinal="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option-2"
-file_output_log="/tmp/fwiptables-$fversion/$first_option-$second_option-$third_option"
+mkdir /tmp/fwiptables-$fversion-data/ &> /dev/null
+file_temporal_text="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
+file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
+file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
+file_temporal_guifinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
+file_output_log="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
 file_output_logfinal="/var/log/fwiptables"
 ####
 ####

@@ -75,11 +75,14 @@
 # 2. funcionamiento de intro e install. HECHO
 # 3. source: habilitar para ver codigo fuente de las rutinas. HECHO
 #
-# changes fwiptables 1.92
+# changes fwiptables 1.93
 #
-# 1. arreglo en upgrade
+# 1. arreglo en upgrade. HECHO
+# 2. arreglo en install. HECHO
 #
-# changes fwiptables 1.93 en desarrollo
+# changes fwiptables 1.94 en desarrollo
 #
-# 1 source: queda trabajo por delante.....
+# code: inicialmente source, cambia nombre a code. HECHO
+# 1 code: queda trabajo por delante.....
+#
 #
