@@ -298,7 +298,7 @@ exit ; fi
 ####
 ##############################       english: intro: show intro
 ##############################       spanish: intro: show intro
-#### :source-rutina-inicio-intro:
+#### :rutina-inicio-intro:
 ####
 ####
 if [ "$first_option" = "intro" ]; then $nada
@@ -317,17 +317,18 @@ echo "  LICENSE GNU / GPL v2."
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
 echo
-echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option install ]" ;
-echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ $zero_option upgrade ]" ;
+echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ "$zero_option" install ]" ;
+echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ "$zero_option" upgrade ]" ;
 echo
 echo "--------------------------------------------------------------------------"
 echo
 exit; fi
 ####
 ####
-#### :source-rutina-final-intro:
+#### :rutina-inicio-final-intro:
 ##############################      english: search programs: programs path           #####################
 ##############################      spanish: busca los programas: ruta de programas   #####################
+#### :rutina-inicio-command:
 ####
 ####
 command_bash="$(command -v bash | cut -d " " -f 1)"
@@ -392,7 +393,7 @@ if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser=
 ####
 ##############################       english: Install:    $fiptables           ###########################################
 ##############################       spanish: Instalador: $fiptables           ###########################################
-#### :source-rutina-install:
+#### :rutina-inicio-install:
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
@@ -467,6 +468,7 @@ exit; fi
 ####
 ##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
+#### :rutina-inicio-upgrade:
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then $give_cover
@@ -506,6 +508,7 @@ exit ; fi
 ####
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
+#### :rutina-inicio-notice:
 ####
 ####
 cmp -s $0 $directory_fiptables/$fiptables || . $0 intro
@@ -619,6 +622,7 @@ if [ "$first_option" = "options" ]; then first_option="full-options"; fi
 ####
 ##############################     english: autolog:         ###################################
 ##############################     spanish: autoguardado     ###################################
+#### :rutina-inicio-autolog:
 ####
 ####
 ####   english: autolog  #### spanish: autoguardado
@@ -631,7 +635,7 @@ else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 ####
 ##############################     english: allow header          ###################################
 ##############################     spanish: permite cabeceras     ###################################
-#### :source-rutina-header:
+#### :rutina-inicio-header:
 ####
 ####
 #### english:  allow_header: #### spanish permitir cabecera
@@ -659,7 +663,7 @@ fi ; exit ; fi
 ####
 ##################################### english: regeneration-default: regen files       #####################################
 ##################################### spanish: regeneration-default: regenera archivos #####################################
-#### :source-rutina-regeneration-default:
+#### :rutina-inicio-regeneration-default:
 ####
 ####
 if [ "$first_option" = "regeneration-default" ]; then $nada
@@ -1126,6 +1130,7 @@ exit ; fi
 ####
 ##############################  english:  sane variables: for working sane         ############################## 
 ##############################  spanish:  sana variables: para funcionamiento sano ##############################
+#### :rutina-inicio-sane:
 ####
 ####
 case "$NULL" in
@@ -1196,7 +1201,7 @@ if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &>
 ####
 ########################################       english: autosave: autosave of firewall to restore standard rules
 ########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
-#### :source-rutina-autosave:
+#### :rutina-inicio-autosave:
 ####
 ####
 #### english: iptables saved
@@ -1263,7 +1268,7 @@ launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 ####
 ##############################   english: custom without valid config cfg
 ##############################   spanish: custom sin valido configuracion cfg
-#### :source-rutina-custom:
+#### :rutina-inicio-custom:
 ####
 ####
 if [ "$first_option" = "custom" ]; then
@@ -1275,7 +1280,7 @@ echo "$cinco See:   $fiptables tool-custom"; fi ; fi
 ####
 ##############################       english: basic-options: wellcome with semi help
 ##############################       spanish: basic-options: bienvenida con semi ayuda
-#### :source-rutina-basic-options:
+#### :rutina-inicio-basic-options:
 ####
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
@@ -1314,7 +1319,7 @@ exit ; fi
 ####
 ##############################       english: full-options: wellcome with semi help
 ##############################       spanish: full-options: bienvenida con semi ayuda
-#### :source-rutina-full-options:
+#### :rutina-inicio-full-options:
 ####
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
@@ -1372,7 +1377,7 @@ exit ; fi
 ####
 ##############################       english: long-help: long help        ##############################
 ##############################       spanish: larga-opcion: larga ayuda   ##############################
-#### :source-rutina-long-help:
+#### :rutina-inicio-long-help:
 ####
 ####
 if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
@@ -1449,7 +1454,7 @@ exit; fi
 ####
 ##############################       english: list-config: list some config
 ##############################       spanish: list-config: lista alguna config
-#### :source-rutina-list-config:
+#### :rutina-inicio-list-config:
 ####
 ####
 if [ "$first_option" = "list-config" ]; then $give_cover
@@ -1464,7 +1469,7 @@ exit; fi
 ####
 ##############################       english: some-example: some example
 ##############################       spanish: some-example: algun ejemplo
-#### :source-rutina-some-example:
+#### :rutina-inicio-some-example:
 ####
 ####
 if [ "$first_option" = "some-example" ]; then $give_cover
@@ -1484,7 +1489,7 @@ exit; fi
 ####
 ##############################       english: group-options: some option
 ##############################       spanish: group-options: alguna opcion
-#### :source-rutina-group-options:
+#### :rutina-inicio-group-options:
 ####
 ####
 if [ "$first_option" = "group-options" ]; then $give_cover
@@ -1546,7 +1551,7 @@ exit; fi
 ####
 ##############################       english: launch-rules: options
 ##############################       spanish: launch-rules: opciones
-#### :source-rutina-launch-rules:
+#### :rutina-inicio-launch-rules:
 ####
 ####
 if [ "$first_option" = "launch-rules" ]; then $give_cover
@@ -1582,7 +1587,7 @@ exit; fi
 ####
 ##############################       english: control-rules: options
 ##############################       spanish: control-rules: opciones
-#### :source-rutina-control-rules:
+#### :rutina-inicio-control-rules:
 ####
 ####
 if [ "$first_option" = "control-rules" ]; then $give_cover
@@ -1614,7 +1619,7 @@ exit; fi
 ####
 ##############################       english: list-rules: options
 ##############################       spanish: list-rules: opciones
-#### :source-rutina-list-rules:
+#### :rutina-inicio-list-rules:
 ####
 ####
 if [ "$first_option" = "list-rules" ]; then $give_cover
@@ -1679,7 +1684,7 @@ exit; fi
 ####
 ##############################       english: list-numrules: options
 ##############################       spanish: list-numrules: opciones
-#### :source-rutina-list-numrules:
+#### :rutina-inicio-list-numrules:
 ####
 ####
 if [ "$first_option" = "list-numrules" ]; then $give_cover
@@ -1702,7 +1707,7 @@ exit; fi
 ####
 ##############################       english: tool-custom: options
 ##############################       spanish: tool-custom: opciones
-#### :source-rutina-tool-custom:
+#### :rutina-inicio-tool-custom:
 ####
 ####
 if [ "$first_option" = "tool-custom" ]; then $give_cover
@@ -1732,7 +1737,7 @@ exit; fi
 ####
 ##############################       english: control-guide: options
 ##############################       spanish: control-guide: opciones
-#### :source-rutina-control-guide:
+#### :rutina-inicio-control-guide:
 ####
 ####
 if [ "$first_option" = "control-guide" ]; then $give_cover
@@ -1754,7 +1759,7 @@ exit; fi
 ####
 ##############################       english: user-interface: options
 ##############################       spanish: user-intarface: opciones
-#### :source-rutina-user-interface:
+#### :rutina-inicio-user-interface:
 ####
 ####
 if [ "$first_option" = "user-interface" ]; then $give_cover
@@ -1786,7 +1791,7 @@ exit; fi
 ####
 ##############################       english: tool-sockets: options sockets
 ##############################       spanish: tool-sockets: opciones sockets
-#### :source-rutina-tool-sockets:
+#### :rutina-inicio-tool-sockets:
 ####
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
@@ -1814,7 +1819,7 @@ exit; fi
 ####
 ##############################       english: tool-forward: options ipforwading
 ##############################       spanish: tool-forward: opciones ipforwading
-#### :source-rutina-tool-forward:
+#### :rutina-inicio-tool-forward:
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
@@ -1834,7 +1839,7 @@ exit; fi
 ####
 ##############################       english: tool-icmp: options
 ##############################       spanish: tool-cimp: opciones
-#### :source-rutina-tool-icmp:
+#### :rutina-inicio-tool-icmp:
 ####
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
@@ -1853,7 +1858,7 @@ exit; fi
 ####
 ##############################       english: tool-tcp: options
 ##############################       spanish: tool-tcp: opciones
-#### :source-rutina-tool-tcp:
+#### :rutina-inicio-tool-tcp:
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
@@ -1875,7 +1880,7 @@ exit; fi
 ####
 ##############################       english: tool-udp: options
 ##############################       spanish: tool-udp: opciones
-#### :source-rutina-tool-udp:
+#### :rutina-inicio-tool-udp:
 ####
 ####
 if [ "$first_option" = "tool-udp" ]; then $give_cover
@@ -1899,7 +1904,7 @@ exit; fi
 ####
 ##############################       english: tool-nmap: options
 ##############################       spanish: tool-nmap: opciones
-#### :source-rutina-tool-nmap:
+#### :rutina-inicio-tool-nmap:
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
@@ -1923,7 +1928,7 @@ exit; fi
 ####
 ##############################       english: tool-sudo: options
 ##############################       spanish: tool-sudo: opciones
-#### :source-rutina-tool-sudo:
+#### :rutina-inicio-tool-sudo:
 ####
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
@@ -1945,7 +1950,7 @@ exit; fi
 ####
 ##############################       english: tool-install: options
 ##############################       spanish: tool-install: opciones
-#### :source-rutina-tool-install:
+#### :rutina-inicio-tool-install:
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
@@ -1965,7 +1970,7 @@ exit; fi
 ####
 ##############################       english: tool-dev: options
 ##############################       spanish: tool-dev: opciones
-#### :source-rutina-tool-dev:
+#### :rutina-inicio-tool-dev:
 ####
 ####
 if [ "$first_option" = "tool-dev" ]; then $give_cover
@@ -1985,7 +1990,7 @@ exit; fi
 ####
 ##############################       english: tool-system: options
 ##############################       spanish: tool-system: opciones
-#### :source-rutina-tool-system:
+#### :rutina-inicio-tool-system:
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
@@ -2009,7 +2014,7 @@ exit; fi
 ####
 ##############################       english: show-etc: options
 ##############################       spanish: show-ver: opciones
-#### :source-rutina-show-etc:
+#### :rutina-inicio-show-etc:
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
@@ -2039,7 +2044,7 @@ exit; fi
 ####
 ##############################       english: show-log: options
 ##############################       spanish: show-log: opciones
-#### :source-rutina-show-log:
+#### :rutina-inicio-show-log:
 ####
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
@@ -2061,7 +2066,7 @@ exit; fi
 ####
 ##############################       english: show-about: options
 ##############################       spanish: show-about: opciones
-#### :source-rutina-show-about:
+#### :rutina-inicio-show-about:
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
@@ -2089,7 +2094,7 @@ exit; fi
 ####
 ##############################       english: show-help: options
 ##############################       spanish: show-help: opciones
-#### :source-rutina-show-help:
+#### :rutina-inicio-show-help:
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
@@ -2118,7 +2123,7 @@ exit; fi
 ####
 ##############################       english: notes: notes to configure iptables
 ##############################       spanish: notes: notas para configurar iptables
-#### :source-rutina-notes:
+#### :rutina-inicio-notes:
 ####
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
@@ -2186,7 +2191,7 @@ exit; fi
 ####
 ##############################       english: depends: depends for $fiptables
 ##############################       spanish: dependencias: dependencias para $fiptables
-#### :source-rutina-depends:
+#### :rutina-inicio-depends:
 ####
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
@@ -2273,7 +2278,7 @@ exit; fi
 ####
 ############################## english: -gui: Manage gui con three options  ##############################
 ############################## spanish: -gui: Maneja gui con tres opciones  ##############################
-#### :source-rutina-gui:
+#### :rutina-inicio-gui:
 ####
 ####
 #### english: with third option
@@ -2440,7 +2445,7 @@ exit; fi
 ####
 ############################## english: gui-menu: gui menu general: gui con menu  ##############################
 ############################## spanish: gui-menu: gui menu general: gui con menu  ##############################
-#### :source-rutina-gui-menu:
+#### :rutina-inicio-gui-menu:
 ####
 ####
 if [ "$first_option" = "gui-menu" ] ; then $genfiles 
@@ -2485,7 +2490,7 @@ exit; fi
 ####
 ############################## english: gui-menu-control-guide: gui with menu ##############################
 ############################## spanish: gui-menu-control-guide: gui con menu  ##############################
-#### :source-rutina-gui-menu-control-guide:
+#### :rutina-inicio-gui-menu-control-guide:
 ####
 ####
 if [ "$first_option" = "gui-menu-control-guide" ] ; then $nada ;
@@ -2515,7 +2520,7 @@ exit; fi
 ####
 ############################## english: gui-menu-launch-rules: gui with menu ##############################
 ############################## spanish: gui-menu-launch-rules: gui con menu  ##############################
-#### :source-rutina-gui-menu-launch-rules:
+#### :rutina-inicio-gui-menu-launch-rules:
 ####
 ####  
 if [ "$first_option" = "gui-menu-launch-rules" ] ; then $nada ;
@@ -2552,7 +2557,7 @@ exit; fi
 ####
 ############################## english: gui-menu-control-rules: gui with menu ##############################
 ############################## spanish: gui-menu-control-rules: gui con menu  ##############################
-#### :source-rutina-gui-menu-control-rules:
+#### :rutina-inicio-gui-menu-control-rules:
 ####
 ####
 if [ "$first_option" = "gui-menu-control-rules" ] ; then $nada ;
@@ -2589,7 +2594,7 @@ exit; fi
 ####
 ############################## english: gui-menu-list-rules: gui with menu ##############################
 ############################## spanish: gui-menu-list-rules: gui con menu  ##############################
-#### :source-rutina-gui-menu-list-rules:
+#### :rutina-inicio-gui-menu-list-rules:
 ####
 ####
 if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
@@ -2636,7 +2641,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-custom: gui with menu ##############################
 ############################## spanish: gui-menu-tool-custom: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-custom:
+#### :rutina-inicio-gui-menu-tool-custom:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-custom" ] ; then $nada ;
@@ -2686,7 +2691,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-sockets:
+#### :rutina-inicio-gui-menu-tool-sockets:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
@@ -2722,7 +2727,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-icmp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-icmp: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-icmp:
+#### :rutina-inicio-gui-menu-tool-icmp:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
@@ -2750,7 +2755,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-udp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-udp: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-udp:
+#### :rutina-inicio-gui-menu-tool-udp:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
@@ -2785,7 +2790,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-tcp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-tcp: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-tcp:
+#### :rutina-inicio-gui-menu-tool-tcp:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
@@ -2815,7 +2820,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-sudo: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sudo: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-sudo:
+#### :rutina-inicio-gui-menu-tool-sudo:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
@@ -2846,7 +2851,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-system: gui with menu ##############################
 ############################## spanish: gui-menu-tool-system: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-system:
+#### :rutina-inicio-gui-menu-tool-system:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
@@ -2877,7 +2882,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-install: gui with menu ##############################
 ############################## spanish: gui-menu-tool-install: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-install:
+#### :rutina-inicio-gui-menu-tool-install:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
@@ -2906,7 +2911,7 @@ exit; fi
 ####
 ############################## english: gui-menu-tool-dev: gui with menu ##############################
 ############################## spanish: gui-menu-tool-dev: gui con menu  ##############################
-#### :source-rutina-gui-menu-tool-dev:
+#### :rutina-inicio-gui-menu-tool-dev:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
@@ -2935,7 +2940,7 @@ exit; fi
 ####
 ############################## english: gui-menu-show-etc: gui with menu ##############################
 ############################## spanish: gui-menu-show-etc: gui con menu  ##############################
-#### :source-rutina-gui-menu-show-etc:
+#### :rutina-inicio-gui-menu-show-etc:
 ####
 ####
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
@@ -2969,7 +2974,7 @@ exit; fi
 ####
 ############################## english: gui-menu-show-log: gui with menu ##############################
 ############################## spanish: gui-menu-show-log: gui con menu  ##############################
-#### :source-rutina-gui-menu-show-log:
+#### :rutina-inicio-gui-menu-show-log:
 ####
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
@@ -3000,7 +3005,7 @@ exit; fi
 ####
 ############################## english: gui-menu-show-about: gui with menu ##############################
 ############################## spanish: gui-menu-show-about: gui con menu  ##############################
-#### :source-rutina-gui-menu-show-about:
+#### :rutina-inicio-gui-menu-show-about:
 ####
 ####
 if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
@@ -3033,7 +3038,7 @@ exit; fi
 ####
 ############################## english: gui-menu-show-help: gui with menu ##############################
 ############################## spanish: gui-menu-show-help: gui con menu  ##############################
-#### :source-rutina-gui-menu-show-help:
+#### :rutina-inicio-gui-menu-show-help:
 ####
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
@@ -3065,7 +3070,7 @@ exit; fi
 ####
 ############################## english: gui-shell: graphic enviroment          ##############################
 ############################## spanish: gui-shell: entorno de comandos grafico ##############################
-#### :source-rutina-gui-shell:
+#### :rutina-inicio-gui-shell:
 ####
 ####
 if [ "$first_option" = "gui-shell" ] ; then $genfiles
@@ -3196,7 +3201,7 @@ exit ; fi
 ####
 ##############################       english: cli-menu: Manage list rules with one text menu
 ##############################       spanish: cli-menu: Maneja lista de reglas con un menu de texto
-#### :source-rutina-cli-menu:
+#### :rutina-inicio-cli-menu:
 ####
 ####
 if [ "$first_option" = "cli-menu" ]; then $nada
@@ -3495,7 +3500,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ##############################       english: version: system script, the version option
 ##############################       spanish: version: script de sistema, la opcion mostrar version
-#### :source-rutina-version:
+#### :rutina-inicio-version:
 ####
 ####
  if [ "$first_option" = "version" ]; then $give_cover
@@ -3534,7 +3539,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ##############################       english: examples: system script to show config files examples
 ##############################       spanish: examples: script de sistema para mostrar ejemplos de configuraciones
-#### :source-rutina-examples:
+#### :rutina-inicio-examples:
 ####
 ####
  if [ "$first_option" = "examples" ]; then $give_cover
@@ -5677,7 +5682,7 @@ exit; fi
 ####
 ############################       english: info-system: get info system
 ############################       spanish: info-system: da informacion del sistema
-#### :source-rutina-info-system:28
+#### :rutina-inicio-info-system:28
 ####
 ####
  if [ "$first_option" = "info-system" ]; then  $give_cover
@@ -5708,7 +5713,7 @@ exit; fi
 ####
 ############################       english: info-net: get net info
 ############################       spanish: info-net: da informacion de la red
-#### :source-rutina-info-net:48
+#### :rutina-inicio-info-net:48
 ####
 ####
  if [ "$first_option" = "info-net" ]; then $give_cover
@@ -5759,7 +5764,7 @@ exit; fi
 ####
 ############################       english: speed-ip4: speed from internet
 ############################       spanish: speed-ip4: velocidad desde internet
-#### :source-rutina-speed-ip4:
+#### :rutina-inicio-speed-ip4:
 ####
 ####
  if [ "$first_option" = "speed-ip4" ]; then $give_cover
@@ -5779,7 +5784,7 @@ exit; fi
 ####
 ############################       english: speed-ip6: speed from internet
 ############################       spanish: speed-ip6: velocidad desde internet
-#### :source-rutina-speed-ip6:
+#### :rutina-inicio-speed-ip6:
 ####
 ####
  if [ "$first_option" = "speed-ip6" ]; then $give_cover
@@ -5799,7 +5804,7 @@ exit; fi
 ####
 ############################       english: config-eng: several options to config in english
 ############################       spanish: config-eng: varias opciones para configurar en ingles
-#### :source-rutina-config-eng:
+#### :rutina-inicio-config-eng:
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
@@ -5812,7 +5817,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 ####
 ############################       english: config-spa: several options to config in spanish
 ############################       spanish: config-spa: varias opciones para configurar en spanish
-#### :source-rutina-config-spa:
+#### :rutina-inicio-config-spa:
 ####
 ####
  if [ "$first_option" = "config-spa" ]; then $genfiles; $give_cover
@@ -5825,7 +5830,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 ####
 ############################       english: info: information of one utility group
 ############################       spanish: info: informacion de un grupo de utilidades
-#### :source-rutina-info:
+#### :rutina-inicio-info:
 ####
 ####
  if [ "$first_option" = "info" ]; then $nada
@@ -5870,7 +5875,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 ####
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
-#### :source-rutina-help:
+#### :rutina-inicio-help:
 ####
 ####
 if [ "$first_option" = "help" ]; then $genfiles ; $give_cover
@@ -6127,7 +6132,7 @@ exit; fi
 ####
 ############################       english: ayuda: the help option in spanish
 ############################       spanish: ayuda: la opcion de ayuda en español
-#### :source-rutina-ayuda:
+#### :rutina-inicio-ayuda:
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then $genfiles; $give_cover
