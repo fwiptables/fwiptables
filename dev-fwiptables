@@ -120,7 +120,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.93-Susana" ;                                            
+fversion="1.94-Nerea" ;                                            
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -5691,7 +5691,7 @@ exit; fi
  echo $ralla
  echo "$tab [ Boot system ] [ it works with pid number 1 ]"
  ps -p1 
- echo "$tab Over /proc/1/com CMD"
+ echo "$tab Over /proc/1/com"
  echo "   Your boot system is : $(cat /proc/1/comm)"
  echo $ralla
  echo "$tab [ System info ] [ Processor ]"
