@@ -325,7 +325,7 @@ echo
 exit; fi
 ####
 ####
-#### :rutina-inicio-final-intro:
+#### :rutina-final-intro:
 ##############################      english: search programs: programs path           #####################
 ##############################      spanish: busca los programas: ruta de programas   #####################
 #### :rutina-inicio-command:
@@ -380,6 +380,7 @@ command_mpg123="$(command -v mpg123 | cut -d " " -f 1)"
 command_mpg321="$(command -v mpg321 | cut -d " " -f 1)"
 ####
 ####
+#### :rutina-final-command:
 ##############################      english: search favorite browser: favorite browser     #####################
 ##############################      spanish: busca preferido navegador: favorite browser   #####################
 ####
@@ -466,6 +467,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-install:
 ##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
 #### :rutina-inicio-upgrade:
@@ -506,6 +508,7 @@ echo $footer_lineal
 exit ; fi
 ####
 ####
+#### :rutina-final-upgrade:
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
 #### :rutina-inicio-notice:
@@ -514,6 +517,7 @@ exit ; fi
 cmp -s $0 $directory_fiptables/$fiptables || . $0 intro
 ####
 ####
+#### :rutina-final-notice:
 ##############################       alias for fwiptables       ##############################
 ##############################       apodos de fwiptables      ##############################
 ####
@@ -633,6 +637,7 @@ if [ "$allow_autolog" = "no" ]   ; then echo $nada
 else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 ####
 ####
+#### :rutina-final-autolog:
 ##############################     english: allow header          ###################################
 ##############################     spanish: permite cabeceras     ###################################
 #### :rutina-inicio-header:
@@ -661,6 +666,7 @@ echo $header_ender
 fi ; exit ; fi
 ####
 ####
+#### :rutina-final-header:
 ##################################### english: regeneration-default: regen files       #####################################
 ##################################### spanish: regeneration-default: regenera archivos #####################################
 #### :rutina-inicio-regeneration-default:
@@ -1128,6 +1134,7 @@ echo $var81 $tabz $eng81 &>> $fs
 exit ; fi
 ####
 ####
+#### :rutina-final-regeneration-default:
 ##############################  english:  sane variables: for working sane         ############################## 
 ##############################  spanish:  sana variables: para funcionamiento sano ##############################
 #### :rutina-inicio-sane:
@@ -1199,6 +1206,7 @@ if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/
 if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
 ####
 ####
+#### :rutina-final-sane:
 ########################################       english: autosave: autosave of firewall to restore standard rules
 ########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
 #### :rutina-inicio-autosave:
@@ -1219,6 +1227,7 @@ $fiptables save autosave-fwiptables &> /dev/null
 fi; exit; fi
 ####
 ####
+#### :rutina-final-autosave:
 ##############################      english: search favorite date: favorite date command        #####################
 ##############################      spanish: busca preferida fecha: favorita comando de fecha   #####################
 ####
@@ -1278,6 +1287,7 @@ echo "$cinco Usage: $fiptables custom existent-file-cfg"
 echo "$cinco See:   $fiptables tool-custom"; fi ; fi
 ####
 ####
+#### :rutina-final-custom:
 ##############################       english: basic-options: wellcome with semi help
 ##############################       spanish: basic-options: bienvenida con semi ayuda
 #### :rutina-inicio-basic-options:
@@ -1317,6 +1327,7 @@ echo $footer_lineal
 exit ; fi
 ####
 ####
+#### :rutina-final-basic-options:
 ##############################       english: full-options: wellcome with semi help
 ##############################       spanish: full-options: bienvenida con semi ayuda
 #### :rutina-inicio-full-options:
@@ -1375,6 +1386,7 @@ echo $footer_lineal
 exit ; fi
 ####
 ####
+#### :rutina-final-full-options:
 ##############################       english: long-help: long help        ##############################
 ##############################       spanish: larga-opcion: larga ayuda   ##############################
 #### :rutina-inicio-long-help:
@@ -1452,6 +1464,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-long-help:
 ##############################       english: list-config: list some config
 ##############################       spanish: list-config: lista alguna config
 #### :rutina-inicio-list-config:
@@ -1467,6 +1480,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-list-config:
 ##############################       english: some-example: some example
 ##############################       spanish: some-example: algun ejemplo
 #### :rutina-inicio-some-example:
@@ -1487,6 +1501,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-some-example:
 ##############################       english: group-options: some option
 ##############################       spanish: group-options: alguna opcion
 #### :rutina-inicio-group-options:
@@ -1549,6 +1564,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-group-options:
 ##############################       english: launch-rules: options
 ##############################       spanish: launch-rules: opciones
 #### :rutina-inicio-launch-rules:
@@ -1585,6 +1601,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-launch-rules:
 ##############################       english: control-rules: options
 ##############################       spanish: control-rules: opciones
 #### :rutina-inicio-control-rules:
@@ -1617,6 +1634,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-control-rules:
 ##############################       english: list-rules: options
 ##############################       spanish: list-rules: opciones
 #### :rutina-inicio-list-rules:
@@ -1682,6 +1700,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-list-rules:
 ##############################       english: list-numrules: options
 ##############################       spanish: list-numrules: opciones
 #### :rutina-inicio-list-numrules:
@@ -1705,6 +1724,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-list-numrules:
 ##############################       english: tool-custom: options
 ##############################       spanish: tool-custom: opciones
 #### :rutina-inicio-tool-custom:
@@ -1735,6 +1755,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-custom:
 ##############################       english: control-guide: options
 ##############################       spanish: control-guide: opciones
 #### :rutina-inicio-control-guide:
@@ -1757,6 +1778,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-control-guide:
 ##############################       english: user-interface: options
 ##############################       spanish: user-intarface: opciones
 #### :rutina-inicio-user-interface:
@@ -1789,6 +1811,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-user-interface:
 ##############################       english: tool-sockets: options sockets
 ##############################       spanish: tool-sockets: opciones sockets
 #### :rutina-inicio-tool-sockets:
@@ -1817,6 +1840,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-sockets:
 ##############################       english: tool-forward: options ipforwading
 ##############################       spanish: tool-forward: opciones ipforwading
 #### :rutina-inicio-tool-forward:
@@ -1837,6 +1861,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-forward:
 ##############################       english: tool-icmp: options
 ##############################       spanish: tool-cimp: opciones
 #### :rutina-inicio-tool-icmp:
@@ -1856,6 +1881,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-icmp:
 ##############################       english: tool-tcp: options
 ##############################       spanish: tool-tcp: opciones
 #### :rutina-inicio-tool-tcp:
@@ -1878,6 +1904,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-tcp:
 ##############################       english: tool-udp: options
 ##############################       spanish: tool-udp: opciones
 #### :rutina-inicio-tool-udp:
@@ -1902,6 +1929,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-udp:
 ##############################       english: tool-nmap: options
 ##############################       spanish: tool-nmap: opciones
 #### :rutina-inicio-tool-nmap:
@@ -1926,6 +1954,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-nmap:
 ##############################       english: tool-sudo: options
 ##############################       spanish: tool-sudo: opciones
 #### :rutina-inicio-tool-sudo:
@@ -1948,6 +1977,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-sudo:
 ##############################       english: tool-install: options
 ##############################       spanish: tool-install: opciones
 #### :rutina-inicio-tool-install:
@@ -1968,6 +1998,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-install:
 ##############################       english: tool-dev: options
 ##############################       spanish: tool-dev: opciones
 #### :rutina-inicio-tool-dev:
@@ -1988,6 +2019,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-dev:
 ##############################       english: tool-system: options
 ##############################       spanish: tool-system: opciones
 #### :rutina-inicio-tool-system:
@@ -2012,6 +2044,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-tool-system:
 ##############################       english: show-etc: options
 ##############################       spanish: show-ver: opciones
 #### :rutina-inicio-show-etc:
@@ -2042,6 +2075,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-show-etc:
 ##############################       english: show-log: options
 ##############################       spanish: show-log: opciones
 #### :rutina-inicio-show-log:
@@ -2062,8 +2096,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-####
-####
+#### :rutina-final-show-log:
 ##############################       english: show-about: options
 ##############################       spanish: show-about: opciones
 #### :rutina-inicio-show-about:
@@ -2092,6 +2125,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-show-about:
 ##############################       english: show-help: options
 ##############################       spanish: show-help: opciones
 #### :rutina-inicio-show-help:
@@ -2121,6 +2155,7 @@ echo "                 : Varias notas"
 exit; fi
 ####
 ####
+#### :rutina-final-show-help:
 ##############################       english: notes: notes to configure iptables
 ##############################       spanish: notes: notas para configurar iptables
 #### :rutina-inicio-notes:
@@ -2189,6 +2224,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-notes:
 ##############################       english: depends: depends for $fiptables
 ##############################       spanish: dependencias: dependencias para $fiptables
 #### :rutina-inicio-depends:
@@ -2276,9 +2312,9 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-depends:
 ############################## english: -gui: Manage gui con three options  ##############################
 ############################## spanish: -gui: Maneja gui con tres opciones  ##############################
-#### :rutina-inicio-gui:
 ####
 ####
 #### english: with third option
@@ -3201,7 +3237,6 @@ exit ; fi
 ####
 ##############################       english: cli-menu: Manage list rules with one text menu
 ##############################       spanish: cli-menu: Maneja lista de reglas con un menu de texto
-#### :rutina-inicio-cli-menu:
 ####
 ####
 if [ "$first_option" = "cli-menu" ]; then $nada
@@ -3537,6 +3572,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit ; fi
 ####
 ####
+#### :rutina-final-version:
 ##############################       english: examples: system script to show config files examples
 ##############################       spanish: examples: script de sistema para mostrar ejemplos de configuraciones
 #### :rutina-inicio-examples:
@@ -3674,6 +3710,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  exit ; fi
 ####
 ####
+#### :rutina-final-examples:
 ##############################       english: code: source from loop
 ##############################       spanish: code: fuente de la rutina
 #### :rutina-inicio-code:
