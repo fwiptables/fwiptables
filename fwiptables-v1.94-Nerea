@@ -1198,6 +1198,7 @@ case "$NULL" in
 esac
 ####
 ####
+#### :rutina-final-sane:
 ##############################       english: if sane config dir                       #############################
 ##############################       spanish: comprobar sanos directorios              #############################
 ####
@@ -1206,7 +1207,6 @@ if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/
 if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
 ####
 ####
-#### :rutina-final-sane:
 ########################################       english: autosave: autosave of firewall to restore standard rules
 ########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
 #### :rutina-inicio-autosave:
@@ -3747,6 +3747,7 @@ exit; fi
  exit;  fi
 ####
 ####
+#### :rutina-final-license:
 ##############################       english: howto-upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: howto-upgrade: actualiza en el archivo /usr/bin/fwiptables
 #### :rutina-inicio-howto-upgrade:
@@ -3769,6 +3770,7 @@ exit; fi
  exit;  fi
 ####
 ####
+#### :rutina-final-howto-upgrade:
 #############################       english: eraserules: system script, the erase rules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 #### :rutina-inicio-eraserules:
@@ -3890,6 +3892,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-eraserules:
 #############################       english: route: system script, the route option
 #############################       spanish: route: script de sistema, la opcion route
 #### :rutina-inicio-route:
@@ -3918,6 +3921,7 @@ exit; fi
  exit ; fi
 ####
 ####
+#### :rutina-final-route:
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
 #### :rutina-inicio-ss:
@@ -3936,6 +3940,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ss:
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
 #### :rutina-inicio-lsof:
@@ -3951,6 +3956,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-lsof:
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat sockets
 #### :rutina-inicio-netstat:
@@ -3967,6 +3973,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-netstat:
 #############################      english: netstat-nat: system script, the netstat sockets
 #############################      spanish: netstat-nat: script de sistema, el netstat sockets
 #### :rutina-inicio-netstat-nat:
@@ -3983,6 +3990,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-netstat-nat:
 #############################      english: ipforward-on: active ip forward
 #############################      spanish: ipforward-on: activa ip forward
 #### :rutina-inicio-ipforward-on:
@@ -3997,6 +4005,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ipforward-on:
 #############################      english: ipforward-off: active ip forward
 #############################      spanish: ipforward-off: activa ip forward
 #### :rutina-inicio-ipforward-off:
@@ -4011,6 +4020,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ipforward-off
 #############################      english: list-allrules: list all rules
 #############################      spanish: list-allrules: list all rules 
 #### :rutina-inicio-list-allrules:
@@ -4035,6 +4045,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-allrules:
 #############################  english: list4-ip: system script, the list option
 #############################  spanish: list4-ip: script de sistema, la opcion lista
 #### :rutina-inicio-list4-ip:
@@ -4068,6 +4079,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list4-ip:
 ############################ english: list6-ip: list ipv6 rules filter
 ############################ spanish: list6-ip: lista reglas de filtros de ipv6
 #### :rutina-inicio-list6-ip:
@@ -4103,6 +4115,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list6-ip:
 #############################  english: list-filter4: system script, the list option
 #############################  spanish: list-filter4: script de sistema, la opcion lista
 #### :rutina-inicio-list-filter4:
@@ -4124,6 +4137,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-filter4:
 ############################  english: list-forward: list iptables filter forward rules
 ############################  spanish: list-forward: lista reglas de iptables filter forward
 #### :rutina-inicio-list-forward:
@@ -4144,6 +4158,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-forward:
 ############################ english: list-filter6: list ipv6 rules filter
 ############################ spanish: list-filter6: lista reglas de filtros de ipv6
 #### :rutina-inicio-list-filter6:
@@ -4165,6 +4180,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-filter6:
 ############################  english: list-forward6: list iptables filter forward rules ipv6
 ############################  spanish: list-forward6: lista reglas de iptables filter forward ipv6
 #### :rutina-inicio-list-forward6:
@@ -4185,6 +4201,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-forward6:
 ############################ english: list-nat4: list NAT rules of ipv4
 ############################ spanish: list-nat4: lista reglas de NAT de ipv4
 #### :rutina-inicio-list-nat-4:
@@ -4204,9 +4221,10 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-nat-4:
 ############################ english: list-nat6: list NAT rules of ipv6
 ############################ spanish: list-nat6: lista reglas de NAT de ipv6
-#### :rutina-inicio-list-nat6
+#### :rutina-inicio-list-nat6:
 ####
 ####
  if [ "$first_option" = "list-nat6" ]; then $give_cover
@@ -4223,6 +4241,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-nat6:
 ############################# english: listnum: list option numerical filter ipv4
 ############################# spanish: listnum: lista numeral filter ipv4
 #### :rutina-inicio-listnum:
@@ -4242,6 +4261,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-listnum:
 ############################  english: list-forwardnum: list iptables filter forward rules in numerical
 ############################  spanish: list-forwardnum: lista reglas de iptables filter forward in numeros
 #### :rutina-inicio-list-forwardnum:
@@ -4262,6 +4282,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-forwardnum:
 ############################# english: listnum6: list option numerical filter ipv6
 ############################# spanish: listnum6: lista numeral filter ipv6
 #### :rutina-inicio-listnum6:
@@ -4281,6 +4302,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-listnum6:
 ############################  english: list-forwardnum6: list iptables filter forward rules in numerical ipv6
 ############################  spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6
 #### :rutina-inicio-list-forwardnum6:
@@ -4301,6 +4323,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-forwardnum6:
 ############################       english: list-mangle4: list mangle rules from ipv4
 ############################       spanish: list-mangle4: lista reglas de mangle de ipv4
 #### :rutina-inicio-list-mangle4:
@@ -4321,6 +4344,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-mangle4:
 ############################       english: list-mangle6: list mangle rules from ipv6
 ############################       spanish: list-mangle6: lista reglas de mangle de ipv6
 #### :rutina-inicio-list-mangle6:
@@ -4340,6 +4364,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-mangle6:
 ############################       english: list-raw4: list raw rules from ipv4
 ############################       spanish: list-raw4: lista reglas raw de ipv4
 #### :rutina-inicio-list-raw4:
@@ -4359,6 +4384,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-raw4:
 ############################       english: list-raw6: list raw rules from ipv6
 ############################       spanish: list-raw6: lista reglas raw de ipv6
 #### :rutina-inicio-list-raw6:
@@ -4379,6 +4405,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-raw6:
 ############################       english: list-security4: list security rules from ipv4
 ############################       spanish: list-security4: lista reglas de security de ipv4
 #### :rutina-inicio-list-security4:
@@ -4399,6 +4426,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-security4:
 ############################       english: list-security6: list security rules from ipv6
 ############################       spanish: list-security6: lista reglas de security de ipv6
 #### :rutina-inicio-list-security6:
@@ -4419,6 +4447,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-security6:
 ############################       english: list-ebtables: list ebtables rules with mac
 ############################       spanish: list-ebtables: lista reglas de ebtables with mac
 #### :rutina-inicio-list-ebtables:
@@ -4438,6 +4467,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-ebtables:
 ############################       english: list-arptables: list rules arptables with arp
 ############################       spanish: list-arptables: lista reglas de arptables with arp
 #### :rutina-inicio-list-arptables:
@@ -4455,6 +4485,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-list-arptables:
 ############################       english: new-full-config: new-full-config option to create new configs
 ############################       spanish: new-full-config: new-full-config para cear nuevas config
 #### :rutina-inicio-new-full-config:
@@ -4487,6 +4518,7 @@ fi
 exit; fi
 ####
 ####
+#### :rutina-final-new-full-config:
 ############################       english: nueva-completa-config: create new configs
 ############################       spanish: nueva-completa-config: nueva-completa-config para cear nuevas config
 #### :rutina-inicio-nueva-completa-config:
@@ -4519,9 +4551,10 @@ fi
 exit; fi
 ####
 ####
+#### :rutina-final-nueva-completa-config:
 ############################       english: new-mini-config: create new configs
 ############################       spanish: new--mini config: cea nuevas config
-#### :rutina-inicio-nueva-mini-config:
+#### :rutina-inicio-new-mini-config:
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
@@ -4551,6 +4584,7 @@ fi
 exit; fi
 ####
 ####
+#### :rutina-final-new-mini-config:
 ############################       english: nueva-mini-config: create new configs
 ############################       spanish: nueva-mini-config: crea nuevas config
 #### :rutina-inicio-nueva-mini-config:
@@ -4583,6 +4617,7 @@ fi
 exit; fi
 ####
 ####
+#### :rutina-final-nueva-mini-config:
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
 #### :rutina-inicio-modify-config:
@@ -4615,6 +4650,7 @@ clear ; exit ; fi
 clear ; exit ; fi
 ####
 ####
+#### :rutina-final-modify-config:
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
 #### :rutina-inicio-show-config:
@@ -4633,6 +4669,9 @@ echo $footer_lineal ; exit ; fi
 ####
 ####
 exit; fi
+####
+####
+#### :rutina-final-show-config:
 ############################       english: del-config: delete a old config
 ############################       spanish: del-config: elimina una vieja configuracion
 #### :rutina-inicio-del-config:
@@ -4654,6 +4693,7 @@ echo $footer_lineal ; exit ; fi
 exit ; fi
 ####
 ####
+#### :rutina-final-del-config:
 ############################       english: sudo-auth: the sudo-auth option en english
 ############################       spanish: sudo-auth: la opcion de sudo-auth en ingles
 #### :rutina-inicio-sudo-auth:
@@ -4675,6 +4715,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-sudo-auth:
 ############################       english: sudo-remove: the sudo-remove option en english
 ############################       spanish: sudo-remove: la opcion de sudo-remove en ingles
 #### :rutina-inicio-sudo-remove:
@@ -4688,6 +4729,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-sudo-remove:
 ############################       english: sudo-list: the sudo-auth option en english
 ############################       spanish: sudo-list: la opcion de sudo-auth en ingles
 #### :rutina-inicio-sudo-list:
@@ -4710,6 +4752,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-sudo-list:
 ############################       english: alias-list: the sudo-auth option en english
 ############################       spanish: alias-list: la opcion de sudo-auth en ingles
 #### :rutina-inicio-alias-list:
@@ -4724,6 +4767,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-alias-list:
 ############################       english: ipforward-list: the ipforwading option en english
 ############################       spanish: ipforward-list: la opcion de reenvios  en ingles
 #### :rutina-inicio-ipforward-list:
@@ -4738,6 +4782,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ipforward-list:
 ############################       english: tcpdump: listen at dump from conexiones
 ############################       spanish: tcpdump: escucha al volcado de conexiones
 #### :rutina-inicio-tcpdump:
@@ -4757,6 +4802,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-tcpdump:
 ############################       english: arp-lan: listen at dump from conexiones
 ############################       spanish: arp-lan: escucha al volcado de conexiones
 #### :rutina-inicio-arp-lan:
@@ -4779,6 +4825,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-arp-lan:
 ############################       english: show-default: show /etc/default/fwiptables
 ############################       spanish: show-default: show /etc/default/fwiptables
 #### :rutina-inicio-show-default:
@@ -4794,6 +4841,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-show-default:
 ############################       english: modify-default: modify /etc/default/fwiptables
 ############################       spanish: modify-default: modify /etc/default/fwiptables
 #### :rutina-inicio-modify-default:
@@ -4834,6 +4882,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-modify-default:
 ############################       english: names: file list whith rules in iptables format
 ############################       spanish: names: lista de archivos con reglas en formato iptables
 #### :rutina-inicio-names:
@@ -4852,6 +4901,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-names:
 ##############################       english: reset: reset counter rules
 ##############################       spanish: reset: resetea contadores de reglas
 #### :rutina-inicio-reset:
@@ -4867,6 +4917,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-reset:
 ##############################       english: wizard-mini: wizard-mini
 ##############################       spanish: wizard-mini: mini-asistente 
 #### :rutina-inicio-wizard-mini:
@@ -4885,6 +4936,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-wizard-mini:
 ##############################       english: wizard-full: wizard-full
 ##############################       spanish: wizard-full: asistente 
 #### :rutina-inicio-wizard-full:
@@ -4903,6 +4955,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-wizard-full:
 ############################       english: load: load the rules in iptables format
 ############################       spanish: load: carga las reglas en formato iptables
 #### :rutina-inicio-load:
@@ -4961,6 +5014,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-load:
 ############################       english: save: save the rules in iptables format
 ############################       spanish: save: guarda las reglas en formato iptables
 #### :rutina-inicio-save:
@@ -4999,6 +5053,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-save:
 ############################       english: show: show the rules from one firewall in iptables format
 ############################       spanish: show: muestra las reglas de un firewall en formato iptables
 #### :rutina-inicio-show:
@@ -5035,6 +5090,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-show:
 ############################       english: actual: show actuall firewall
 ############################       spanish: actual: muestra las reglas actuales
 #### :rutina-inicio-actual:
@@ -5066,6 +5122,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-actual:
 ##############################       english: stop: stop firewall
 ##############################       spanish: stop: para el firewall
 #### :rutina-inicio-stop:
@@ -5097,6 +5154,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-stop:
 ##############################       english: continue: continue the firewall
 ##############################       spanish: continue: continua el firewall
 #### :rutina-inicio-continue:
@@ -5122,6 +5180,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-continue:
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
 #### :rutina-inicio-ping-ip4:
@@ -5145,6 +5204,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ping-ip4:
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
 #### :rutina-inicio-ping-ip6:
@@ -5168,6 +5228,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ping-ip6:
 ############################       english: tracetcp-ip4: traceroute with tcp and ipv6
 ############################       spanish: tracetcp-ip4: traceroute con tcp y ipv4
 #### :rutina-inicio-tracetcp-ip4:
@@ -5192,6 +5253,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-tracetcp-ip4:
 ############################       english: tracetcp-ip6: traceroute with tcp and ipv6
 ############################       spanish: tracetcp-ip6: traceroute con tcp e ipv6
 #### :rutina-inicio-tracetcp-ip6:
@@ -5215,6 +5277,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-tracetcp-ip6:
 ############################       english: host: host to resolve ip
 ############################       spanish: host: host to resolve ip
 #### :rutina-inicio-host:
@@ -5234,6 +5297,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-host:
 ############################       english: dig: host to resolve ip
 ############################       spanish: dig: host to resolve ip
 #### :rutina-inicio-dig:
@@ -5253,6 +5317,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-dig:
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
 #### :rutina-inicio-resolveip:
@@ -5272,6 +5337,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-resolveip:
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
 #### :rutina-inicio-geoip:
@@ -5290,6 +5356,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-geoip:
 ############################       english: ntpdate: update the date and time
 ############################       spanish: ntpdate: actualiza la fecha y hora
 #### :rutina-inicio-ntpdate:
@@ -5310,6 +5377,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-ntpdate:
 ############################       english: scan-tcp: scan one net per tcp
 ############################       spanish: scan-tcp: rastrea una red por tcp
 #### :rutina-inicio-scan-tcp:
@@ -5347,8 +5415,10 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-scan-tcp:
 ############################       english: scan-syn: scan one net per syn
 ############################       spanish: scan-syn: rastrea una por peticiones
+#### :rutina-inicio-scan-syn:
 ####
 ####
  if [ "$first_option" = "scan-syn" ]; then $give_cover
@@ -5381,6 +5451,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-scan-tcp:
 ############################       english: scan-fin: scan one net per conexiones
 ############################       spanish: scan-fin: rastrea una red por conexiones
 #### :rutina-inicio-scan-fin:
@@ -5418,6 +5489,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-scan-fin:
 ############################       english: scan-udp: scan one net per udp
 ############################       spanish: scan-udp: rastrea una red por udp
 #### :rutina-inicio-scan-udp:
@@ -5455,6 +5527,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-scan-udp:
 ############################       english: scan-ping: scan one net per ping
 ############################       spanish: scan-ping: rastrea una red por ping
 #### :rutina-inicio-scan-ping:
@@ -5490,6 +5563,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-scan-ping:
 ############################       english: ram-free: give one freedom to ram innecesary
 ############################       spanish: ram-free: limpia la memoria ram
 #### :rutina-inicio-ram-free:
@@ -5508,6 +5582,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-ram-free:
 ############################       english: disc-speed: Show the speed of disc
 ############################       spanish: disc-speed: Muestra la velocidad de el disco
 #### :rutina-inicio-disc-speed:
@@ -5526,6 +5601,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-disc-speed:
 ############################       english: ram-speed: Show the speed of ram
 ############################       spanish: ram-speed: Muestra la velocidad de la ram
 #### :rutina-inicio-ram-speed:
@@ -5546,6 +5622,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-ram-speed:
 ############################       english: gl-speed: show frammes por seconds with mesa graphicall 
 ############################       spanish: gl-speed: muestra los fotogramas por segundo con graphicos mesa
 #### :rutina-inicio-gl-speed:
@@ -5560,6 +5637,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-gl-speed:
 ############################       english: radio: url from one radio mp3
 ############################       spanish: radio: url de una radio en mp3
 #### :rutina-inicio-radio:
@@ -5576,6 +5654,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-radio:
 ############################## english: log-fwiptables: Read log /var/log/fwiptables  ##############################
 ############################## spanish: log-fwiptables: Lee log  /var/log/fwiptables  ##############################
 #### :rutina-inicio-log-fwiptables:
@@ -5589,6 +5668,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-log-fwiptables:
 ############################       english: log-sshd: log from ssh server
 ############################       spanish: log-sshd: log desde el servidor de ssh
 #### :rutina-inicio-log-sshd:
@@ -5602,6 +5682,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-log-sshd:
 ############################       english: log-search: log from a one search
 ############################       spanish: log-search: log desde una busqueda
 #### :rutina-inicio-log-search:
@@ -5618,6 +5699,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-log-search:
 ############################       english: dev-version: about of program
 ############################       spanish: dev-version: acerca del programa
 #### :rutina-inicio-dev-version:
@@ -5629,6 +5711,9 @@ $fiptables stop
  echo $fweb_development
  echo $footer_lineal
  exit; fi
+####
+####
+#### :rutina-final-dev-version:
 ############################       english: dev-changes: changes in the program
 ############################       spanish: dev-changes: cambios en el programa
 #### :rutina-inicio-dev-changes:
@@ -5642,6 +5727,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-dev-changes:
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
 #### :rutina-inicio-new-versions:
@@ -5659,6 +5745,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-new-versions:
 ############################       english: hosts: show /etc/hosts
 ############################       spanish: hosts: muestra /etc/hosts
 #### :rutina-inicio-hosts:
@@ -5674,6 +5761,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-hosts:
 ############################       english: protocols: show /etc/protocols
 ############################       spanish: protocols: muestra /etc/protocols
 #### :rutina-inicio-protocols:
@@ -5689,6 +5777,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-protocols:
 ############################       english: services: show /etc/services
 ############################       spanish: services: muestra /etc/services
 #### :rutina-inicio-services:
@@ -5704,6 +5793,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-services:
 ############################       english: host.allow: show /etc/host.allow
 ############################       spanish: host.allow: muestra /etc/host.allow
 #### :rutina-inicio-host.allow:
@@ -5719,6 +5809,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-host.allow:
 ############################       english: hosts.deny: show /etc/host.deny
 ############################       spanish: hosts.deny: muestra /etc/host.deny
 #### :rutina-inicio-hosts.deny:
@@ -5734,6 +5825,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-hosts.deny:
 ############################       english: resolv.conf: show /etc/resolv.conf
 ############################       spanish: resolv.conf: muestra /etc/resolv.conf
 #### :rutina-inicio-resolv.conf:
@@ -5749,6 +5841,7 @@ $fiptables stop
  exit; fi
 ####
 ####
+#### :rutina-final-resolv.conf:
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
 #### :rutina-inicio-about:
@@ -5804,6 +5897,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-about:
 ############################       english: info-system: get info system
 ############################       spanish: info-system: da informacion del sistema
 #### :rutina-inicio-info-system:
@@ -5835,6 +5929,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-info-system:
 ############################       english: info-net: get net info
 ############################       spanish: info-net: da informacion de la red
 #### :rutina-inicio-info-net:
@@ -5886,6 +5981,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-info-net:
 ############################       english: speed-ip4: speed from internet
 ############################       spanish: speed-ip4: velocidad desde internet
 #### :rutina-inicio-speed-ip4:
@@ -5906,6 +6002,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-speed-ip4:
 ############################       english: speed-ip6: speed from internet
 ############################       spanish: speed-ip6: velocidad desde internet
 #### :rutina-inicio-speed-ip6:
@@ -5926,6 +6023,7 @@ exit; fi
  exit; fi
 ####
 ####
+#### :rutina-final-speed-ip6:
 ############################       english: config-eng: several options to config in english
 ############################       spanish: config-eng: varias opciones para configurar en ingles
 #### :rutina-inicio-config-eng:
@@ -5939,6 +6037,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-config-eng:
 ############################       english: config-spa: several options to config in spanish
 ############################       spanish: config-spa: varias opciones para configurar en spanish
 #### :rutina-inicio-config-spa:
@@ -5952,6 +6051,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-config-spa:
 ############################       english: info: information of one utility group
 ############################       spanish: info: informacion de un grupo de utilidades
 #### :rutina-inicio-info:
@@ -5997,6 +6097,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  exit; fi
 ####
 ####
+#### :rutina-final-info:
 ############################       english: help: the help option en english
 ############################       spanish: help: la opcion de ayuda en ingles
 #### :rutina-inicio-help:
@@ -6254,6 +6355,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-help:
 ############################       english: ayuda: the help option in spanish
 ############################       spanish: ayuda: la opcion de ayuda en español
 #### :rutina-inicio-ayuda:
@@ -6510,6 +6612,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
+#### :rutina-final-ayuda:
 ############################       english: default: without other valid options
 ############################	   spanish: default: sin otra valida opcion
 ####
