@@ -3734,6 +3734,7 @@ exit; fi
 #### :rutina-final-code:
 ##############################       english: license: license gpl v2
 ##############################       spanish: license: license gpl v2
+#### :rutina-inicio-license:
 ####
 ####
  if [ "$first_option" = "license" ]; then $give_cover
@@ -3748,6 +3749,7 @@ exit; fi
 ####
 ##############################       english: howto-upgrade: upgrade in the file /usr/bin/fwiptables
 ##############################       spanish: howto-upgrade: actualiza en el archivo /usr/bin/fwiptables
+#### :rutina-inicio-howto-upgrade:
 ####
 ####
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
@@ -3769,6 +3771,7 @@ exit; fi
 ####
 #############################       english: eraserules: system script, the erase rules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
+#### :rutina-inicio-eraserules:
 ####
 ####
  if [ "$first_option" = "eraserules" ]; then $nada 
@@ -3889,6 +3892,7 @@ exit; fi
 ####
 #############################       english: route: system script, the route option
 #############################       spanish: route: script de sistema, la opcion route
+#### :rutina-inicio-route:
 ####
 ####
 #### comments: sed is necesary to full work in graphicall
@@ -3916,6 +3920,7 @@ exit; fi
 ####
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
+#### :rutina-inicio-ss:
 ####
 ####
  if [ "$first_option" = "ss" ]; then  $give_cover
@@ -3933,6 +3938,7 @@ exit; fi
 ####
 #############################       english: lsof: system script, the lsof option
 #############################       spanish: lsof: script de sistema, la lsof sockets
+#### :rutina-inicio-lsof:
 ####
 ####
  if [ "$first_option" = "lsof" ]; then $give_cover
@@ -3947,6 +3953,7 @@ exit; fi
 ####
 #############################      english: netstat: system script, the netstat sockets
 #############################      spanish: netstat: script de sistema, el netstat sockets
+#### :rutina-inicio-netstat:
 ####
 ####
  if [ "$first_option" = "netstat" ]; then  $give_cover
@@ -3962,6 +3969,7 @@ exit; fi
 ####
 #############################      english: netstat-nat: system script, the netstat sockets
 #############################      spanish: netstat-nat: script de sistema, el netstat sockets
+#### :rutina-inicio-netstat-nat:
 ####
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
@@ -3977,6 +3985,7 @@ exit; fi
 ####
 #############################      english: ipforward-on: active ip forward
 #############################      spanish: ipforward-on: activa ip forward
+#### :rutina-inicio-ipforward-on:
 ####
 ####
  if [ "$first_option" = "ipforward-on" ]; then  $give_cover
@@ -3990,6 +3999,7 @@ exit; fi
 ####
 #############################      english: ipforward-off: active ip forward
 #############################      spanish: ipforward-off: activa ip forward
+#### :rutina-inicio-ipforward-off:
 ####
 ####
  if [ "$first_option" = "ipforward-off" ]; then  $give_cover
@@ -4003,6 +4013,7 @@ exit; fi
 ####
 #############################      english: list-allrules: list all rules
 #############################      spanish: list-allrules: list all rules 
+#### :rutina-inicio-list-allrules:
 ####
 ####
  if [ "$first_option" = "list-allrules" ]; then  $nada
@@ -4026,6 +4037,7 @@ exit; fi
 ####
 #############################  english: list4-ip: system script, the list option
 #############################  spanish: list4-ip: script de sistema, la opcion lista
+#### :rutina-inicio-list4-ip:
 ####
 ####
  if [ "$first_option" = "list4-ip" ]; then $give_cover 
@@ -4058,6 +4070,7 @@ exit; fi
 ####
 ############################ english: list6-ip: list ipv6 rules filter
 ############################ spanish: list6-ip: lista reglas de filtros de ipv6
+#### :rutina-inicio-list6-ip:
 ####
 ####
  if [ "$first_option" = "list6-ip" ]; then  $give_cover
@@ -4092,6 +4105,7 @@ exit; fi
 ####
 #############################  english: list-filter4: system script, the list option
 #############################  spanish: list-filter4: script de sistema, la opcion lista
+#### :rutina-inicio-list-filter4:
 ####
 ####
  if [ "$first_option" = "list-filter4" ]; then $give_cover 
@@ -4112,6 +4126,7 @@ exit; fi
 ####
 ############################  english: list-forward: list iptables filter forward rules
 ############################  spanish: list-forward: lista reglas de iptables filter forward
+#### :rutina-inicio-list-forward:
 ####
 ####
  if [ "$first_option" = "list-forward" ]; then  $give_cover
@@ -4131,6 +4146,7 @@ exit; fi
 ####
 ############################ english: list-filter6: list ipv6 rules filter
 ############################ spanish: list-filter6: lista reglas de filtros de ipv6
+#### :rutina-inicio-list-filter6:
 ####
 ####
  if [ "$first_option" = "list-filter6" ]; then  $give_cover
@@ -4151,6 +4167,7 @@ exit; fi
 ####
 ############################  english: list-forward6: list iptables filter forward rules ipv6
 ############################  spanish: list-forward6: lista reglas de iptables filter forward ipv6
+#### :rutina-inicio-list-forward6:
 ####
 ####
  if [ "$first_option" = "list-forward6" ]; then  $give_cover
@@ -4170,6 +4187,7 @@ exit; fi
 ####
 ############################ english: list-nat4: list NAT rules of ipv4
 ############################ spanish: list-nat4: lista reglas de NAT de ipv4
+#### :rutina-inicio-list-nat-4:
 ####
 ####
  if [ "$first_option" = "list-nat4" ]; then  $give_cover
@@ -4188,6 +4206,7 @@ exit; fi
 ####
 ############################ english: list-nat6: list NAT rules of ipv6
 ############################ spanish: list-nat6: lista reglas de NAT de ipv6
+#### :rutina-inicio-list-nat6
 ####
 ####
  if [ "$first_option" = "list-nat6" ]; then $give_cover
@@ -4206,6 +4225,7 @@ exit; fi
 ####
 ############################# english: listnum: list option numerical filter ipv4
 ############################# spanish: listnum: lista numeral filter ipv4
+#### :rutina-inicio-listnum:
 ####
 ####
  if [ "$first_option" = "listnum" ]; then  $give_cover
@@ -4224,6 +4244,7 @@ exit; fi
 ####
 ############################  english: list-forwardnum: list iptables filter forward rules in numerical
 ############################  spanish: list-forwardnum: lista reglas de iptables filter forward in numeros
+#### :rutina-inicio-list-forwardnum:
 ####
 ####
  if [ "$first_option" = "list-forwardnum" ]; then  $give_cover
@@ -4243,6 +4264,7 @@ exit; fi
 ####
 ############################# english: listnum6: list option numerical filter ipv6
 ############################# spanish: listnum6: lista numeral filter ipv6
+#### :rutina-inicio-listnum6:
 ####
 ####
  if [ "$first_option" = "listnum6" ]; then  $give_cover
@@ -4261,6 +4283,7 @@ exit; fi
 ####
 ############################  english: list-forwardnum6: list iptables filter forward rules in numerical ipv6
 ############################  spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6
+#### :rutina-inicio-list-forwardnum6:
 ####
 ####
  if [ "$first_option" = "list-forwardnum6" ]; then  $give_cover
@@ -4280,6 +4303,7 @@ exit; fi
 ####
 ############################       english: list-mangle4: list mangle rules from ipv4
 ############################       spanish: list-mangle4: lista reglas de mangle de ipv4
+#### :rutina-inicio-list-mangle4:
 ####
 ####
  if [ "$first_option" = "list-mangle4" ]; then  $give_cover
@@ -4299,6 +4323,7 @@ exit; fi
 ####
 ############################       english: list-mangle6: list mangle rules from ipv6
 ############################       spanish: list-mangle6: lista reglas de mangle de ipv6
+#### :rutina-inicio-list-mangle6:
 ####
 ####
  if [ "$first_option" = "list-mangle6" ]; then $give_cover
@@ -4317,6 +4342,7 @@ exit; fi
 ####
 ############################       english: list-raw4: list raw rules from ipv4
 ############################       spanish: list-raw4: lista reglas raw de ipv4
+#### :rutina-inicio-list-raw4:
 ####
 ####
  if [ "$first_option" = "list-raw4" ]; then  $give_cover
@@ -4335,6 +4361,7 @@ exit; fi
 ####
 ############################       english: list-raw6: list raw rules from ipv6
 ############################       spanish: list-raw6: lista reglas raw de ipv6
+#### :rutina-inicio-list-raw6:
 ####
 ####
  if [ "$first_option" = "list-raw6" ]; then  $give_cover
@@ -4354,6 +4381,7 @@ exit; fi
 ####
 ############################       english: list-security4: list security rules from ipv4
 ############################       spanish: list-security4: lista reglas de security de ipv4
+#### :rutina-inicio-list-security4:
 ####
 ####
  if [ "$first_option" = "list-security4" ]; then  $give_cover
@@ -4373,6 +4401,7 @@ exit; fi
 ####
 ############################       english: list-security6: list security rules from ipv6
 ############################       spanish: list-security6: lista reglas de security de ipv6
+#### :rutina-inicio-list-security6:
 ####
 ####
  if [ "$first_option" = "list-security6" ]; then  $give_cover
@@ -4392,6 +4421,7 @@ exit; fi
 ####
 ############################       english: list-ebtables: list ebtables rules with mac
 ############################       spanish: list-ebtables: lista reglas de ebtables with mac
+#### :rutina-inicio-list-ebtables:
 ####
 ####
  if [ "$first_option" = "list-ebtables" ]; then  $give_cover
@@ -4410,8 +4440,7 @@ exit; fi
 ####
 ############################       english: list-arptables: list rules arptables with arp
 ############################       spanish: list-arptables: lista reglas de arptables with arp
-####
-####
+#### :rutina-inicio-list-arptables:
 ####
 ####
  if [ "$first_option" = "list-arptables" ]; then  $give_cover
@@ -4428,6 +4457,7 @@ exit; fi
 ####
 ############################       english: new-full-config: new-full-config option to create new configs
 ############################       spanish: new-full-config: new-full-config para cear nuevas config
+#### :rutina-inicio-new-full-config:
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
@@ -4459,6 +4489,7 @@ exit; fi
 ####
 ############################       english: nueva-completa-config: create new configs
 ############################       spanish: nueva-completa-config: nueva-completa-config para cear nuevas config
+#### :rutina-inicio-nueva-completa-config:
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
@@ -4490,6 +4521,7 @@ exit; fi
 ####
 ############################       english: new-mini-config: create new configs
 ############################       spanish: new--mini config: cea nuevas config
+#### :rutina-inicio-nueva-mini-config:
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
@@ -4521,6 +4553,7 @@ exit; fi
 ####
 ############################       english: nueva-mini-config: create new configs
 ############################       spanish: nueva-mini-config: crea nuevas config
+#### :rutina-inicio-nueva-mini-config:
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
@@ -4550,9 +4583,9 @@ fi
 exit; fi
 ####
 ####
-
 ############################       english: modify-config: modify a one config.cfg
 ############################       spanish: modify-config: modify una configuracion.cfg
+#### :rutina-inicio-modify-config:
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then $genfiles ; $give_cover
@@ -4584,6 +4617,7 @@ clear ; exit ; fi
 ####
 ############################       english: show-config: show a one config
 ############################       spanish: show-config: muestra una configuracion
+#### :rutina-inicio-show-config:
 ####
 ####
 if [ "$first_option" = "show-config" ] ; then echo $genfiles ; $give_cover
@@ -4601,6 +4635,7 @@ echo $footer_lineal ; exit ; fi
 exit; fi
 ############################       english: del-config: delete a old config
 ############################       spanish: del-config: elimina una vieja configuracion
+#### :rutina-inicio-del-config:
 ####
 ####
 if [ "$first_option" = "del-config" ]; then $give_cover
@@ -4621,6 +4656,7 @@ exit ; fi
 ####
 ############################       english: sudo-auth: the sudo-auth option en english
 ############################       spanish: sudo-auth: la opcion de sudo-auth en ingles
+#### :rutina-inicio-sudo-auth:
 ####
 ####
 if [ "$first_option" = "sudo-auth" ]; then $give_cover
@@ -4641,6 +4677,7 @@ exit; fi
 ####
 ############################       english: sudo-remove: the sudo-remove option en english
 ############################       spanish: sudo-remove: la opcion de sudo-remove en ingles
+#### :rutina-inicio-sudo-remove:
 ####
 ####
 if [ "$first_option" = "sudo-remove" ]; then $give_cover
@@ -4653,6 +4690,7 @@ exit; fi
 ####
 ############################       english: sudo-list: the sudo-auth option en english
 ############################       spanish: sudo-list: la opcion de sudo-auth en ingles
+#### :rutina-inicio-sudo-list:
 ####
 ####
 if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fiptables ] ; then $give_cover
@@ -4674,6 +4712,7 @@ exit; fi
 ####
 ############################       english: alias-list: the sudo-auth option en english
 ############################       spanish: alias-list: la opcion de sudo-auth en ingles
+#### :rutina-inicio-alias-list:
 ####
 ####
 if [ "$first_option" = "alias-list" ]; then $give_cover
@@ -4687,6 +4726,7 @@ exit; fi
 ####
 ############################       english: ipforward-list: the ipforwading option en english
 ############################       spanish: ipforward-list: la opcion de reenvios  en ingles
+#### :rutina-inicio-ipforward-list:
 ####
 ####
  if [ "$first_option" = "ipforward-list" ]; then $give_cover
@@ -4700,6 +4740,7 @@ exit; fi
 ####
 ############################       english: tcpdump: listen at dump from conexiones
 ############################       spanish: tcpdump: escucha al volcado de conexiones
+#### :rutina-inicio-tcpdump:
 ####
 ####
  if [ "$first_option" = "tcpdump" ]; then $give_cover
@@ -4718,6 +4759,7 @@ exit; fi
 ####
 ############################       english: arp-lan: listen at dump from conexiones
 ############################       spanish: arp-lan: escucha al volcado de conexiones
+#### :rutina-inicio-arp-lan:
 ####
 ####
  if [ "$first_option" = "arp-lan" ]; then  $give_cover
@@ -4739,6 +4781,7 @@ exit; fi
 ####
 ############################       english: show-default: show /etc/default/fwiptables
 ############################       spanish: show-default: show /etc/default/fwiptables
+#### :rutina-inicio-show-default:
 ####
 ####
  if [ "$first_option" = "show-default" ]; then  $give_cover
@@ -4753,6 +4796,7 @@ exit; fi
 ####
 ############################       english: modify-default: modify /etc/default/fwiptables
 ############################       spanish: modify-default: modify /etc/default/fwiptables
+#### :rutina-inicio-modify-default:
 ####
 ####
  if [ "$first_option" = "modify-default" ]; then  $give_cover
@@ -4792,6 +4836,7 @@ exit; fi
 ####
 ############################       english: names: file list whith rules in iptables format
 ############################       spanish: names: lista de archivos con reglas en formato iptables
+#### :rutina-inicio-names:
 ####
 ####
  if [ "$first_option" = "names" ]; then $genfiles ; $give_cover
@@ -4809,6 +4854,7 @@ exit; fi
 ####
 ##############################       english: reset: reset counter rules
 ##############################       spanish: reset: resetea contadores de reglas
+#### :rutina-inicio-reset:
 ####
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
@@ -4823,6 +4869,7 @@ exit; fi
 ####
 ##############################       english: wizard-mini: wizard-mini
 ##############################       spanish: wizard-mini: mini-asistente 
+#### :rutina-inicio-wizard-mini:
 ####
 ####
 if [ "$first_option" = "wizard-mini" ]; then $genfiles
@@ -4840,6 +4887,7 @@ exit; fi
 ####
 ##############################       english: wizard-full: wizard-full
 ##############################       spanish: wizard-full: asistente 
+#### :rutina-inicio-wizard-full:
 ####
 ####
 if [ "$first_option" = "wizard-full" ]; then $genfiles
@@ -4857,6 +4905,7 @@ exit; fi
 ####
 ############################       english: load: load the rules in iptables format
 ############################       spanish: load: carga las reglas en formato iptables
+#### :rutina-inicio-load:
 ####
 ####
  if [ "$first_option" = "load" ]; then $give_cover ; $give_autosave
@@ -4914,6 +4963,7 @@ exit; fi
 ####
 ############################       english: save: save the rules in iptables format
 ############################       spanish: save: guarda las reglas en formato iptables
+#### :rutina-inicio-save:
 ####
 ####
  if [ "$first_option" = "save" ]; then $give_cover
@@ -4951,6 +5001,7 @@ exit; fi
 ####
 ############################       english: show: show the rules from one firewall in iptables format
 ############################       spanish: show: muestra las reglas de un firewall en formato iptables
+#### :rutina-inicio-show:
 ####
 ####
  if [ "$first_option" = "show" ]; then $genfiles ; $give_cover
@@ -4986,6 +5037,7 @@ exit; fi
 ####
 ############################       english: actual: show actuall firewall
 ############################       spanish: actual: muestra las reglas actuales
+#### :rutina-inicio-actual:
 ####
 ####
  if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
@@ -5016,6 +5068,7 @@ exit; fi
 ####
 ##############################       english: stop: stop firewall
 ##############################       spanish: stop: para el firewall
+#### :rutina-inicio-stop:
 ####
 ####
 if [ "$first_option" = "stop" ]; then $nada
@@ -5046,6 +5099,7 @@ exit; fi
 ####
 ##############################       english: continue: continue the firewall
 ##############################       spanish: continue: continua el firewall
+#### :rutina-inicio-continue:
 ####
 ####
  if [ "$first_option" = "continue" ]; then $nada
@@ -5070,6 +5124,7 @@ exit; fi
 ####
 ############################       english: ping-ip4: ping icmp with ipv4
 ############################       spanish: ping-ip4: ping icmp with ipv6
+#### :rutina-inicio-ping-ip4:
 ####
 ####
  if [ "$first_option" = "ping-ip4" ]; then $give_cover
@@ -5092,6 +5147,9 @@ exit; fi
 ####
 ############################       english: ping-ip6: ping icmp with ipv6
 ############################       spanish: ping-ip6: ping icmp con ipv6
+#### :rutina-inicio-ping-ip6:
+####
+####
  if [ "$first_option" = "ping-ip6" ]; then $give_cover
  echo "$ralla [ $first_option ] [ ping one ip or host with ipv6 ]"
  echo $header_lineal
@@ -5112,6 +5170,7 @@ exit; fi
 ####
 ############################       english: tracetcp-ip4: traceroute with tcp and ipv6
 ############################       spanish: tracetcp-ip4: traceroute con tcp y ipv4
+#### :rutina-inicio-tracetcp-ip4:
 ####
 ####
  if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
@@ -5135,6 +5194,7 @@ exit; fi
 ####
 ############################       english: tracetcp-ip6: traceroute with tcp and ipv6
 ############################       spanish: tracetcp-ip6: traceroute con tcp e ipv6
+#### :rutina-inicio-tracetcp-ip6:
 ####
 ####
  if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
@@ -5157,6 +5217,7 @@ exit; fi
 ####
 ############################       english: host: host to resolve ip
 ############################       spanish: host: host to resolve ip
+#### :rutina-inicio-host:
 ####
 ####
  if [ "$first_option" = "host" ]; then $give_cover
@@ -5175,6 +5236,7 @@ exit; fi
 ####
 ############################       english: dig: host to resolve ip
 ############################       spanish: dig: host to resolve ip
+#### :rutina-inicio-dig:
 ####
 ####
  if [ "$first_option" = "dig" ]; then $give_cover
@@ -5193,6 +5255,7 @@ exit; fi
 ####
 ############################       english: resolveip: host to resolve ip and viceversa
 ############################       spanish: resolveip: host to resolve ip and viceversa
+#### :rutina-inicio-resolveip:
 ####
 ####
  if [ "$first_option" = "resolveip" ]; then $give_cover
@@ -5211,6 +5274,7 @@ exit; fi
 ####
 ############################       english: geoip: host to resolve and locate
 ############################       spanish: geoip: host to resolve and locate
+#### :rutina-inicio-geoip:
 ####
 ####
  if [ "$first_option" = "geoip" ]; then $give_cover
@@ -5228,6 +5292,7 @@ exit; fi
 ####
 ############################       english: ntpdate: update the date and time
 ############################       spanish: ntpdate: actualiza la fecha y hora
+#### :rutina-inicio-ntpdate:
 ####
 ####
  if [ "$first_option" = "ntpdate" ]; then $nada
@@ -5247,6 +5312,7 @@ exit; fi
 ####
 ############################       english: scan-tcp: scan one net per tcp
 ############################       spanish: scan-tcp: rastrea una red por tcp
+#### :rutina-inicio-scan-tcp:
 ####
 ####
 if [ "$first_option" = "scan-tcp" ]; then $give_cover
@@ -5317,6 +5383,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ############################       english: scan-fin: scan one net per conexiones
 ############################       spanish: scan-fin: rastrea una red por conexiones
+#### :rutina-inicio-scan-fin:
 ####
 ####
  if [ "$first_option" = "scan-fin" ]; then $give_cover
@@ -5353,6 +5420,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ############################       english: scan-udp: scan one net per udp
 ############################       spanish: scan-udp: rastrea una red por udp
+#### :rutina-inicio-scan-udp:
 ####
 ####
  if [ "$first_option" = "scan-udp" ]; then $give_cover
@@ -5389,6 +5457,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ############################       english: scan-ping: scan one net per ping
 ############################       spanish: scan-ping: rastrea una red por ping
+#### :rutina-inicio-scan-ping:
 ####
 ####
  if [ "$first_option" = "scan-ping" ]; then $give_cover
@@ -5423,6 +5492,7 @@ $fiptables stop
 ####
 ############################       english: ram-free: give one freedom to ram innecesary
 ############################       spanish: ram-free: limpia la memoria ram
+#### :rutina-inicio-ram-free:
 ####
 ####
  if [ "$first_option" = "ram-free" ]; then $give_cover
@@ -5440,6 +5510,7 @@ $fiptables stop
 ####
 ############################       english: disc-speed: Show the speed of disc
 ############################       spanish: disc-speed: Muestra la velocidad de el disco
+#### :rutina-inicio-disc-speed:
 ####
 ####
  if [ "$first_option" = "disc-speed" ]; then  $give_cover
@@ -5457,6 +5528,7 @@ $fiptables stop
 ####
 ############################       english: ram-speed: Show the speed of ram
 ############################       spanish: ram-speed: Muestra la velocidad de la ram
+#### :rutina-inicio-ram-speed:
 ####
 ####
  if [ "$first_option" = "ram-speed" ]; then  $give_cover
@@ -5476,6 +5548,7 @@ $fiptables stop
 ####
 ############################       english: gl-speed: show frammes por seconds with mesa graphicall 
 ############################       spanish: gl-speed: muestra los fotogramas por segundo con graphicos mesa
+#### :rutina-inicio-gl-speed:
 ####
 ####
  if [ "$first_option" = "gl-speed" ]; then  $give_cover
@@ -5489,6 +5562,7 @@ $fiptables stop
 ####
 ############################       english: radio: url from one radio mp3
 ############################       spanish: radio: url de una radio en mp3
+#### :rutina-inicio-radio:
 ####
 ####
  if [ "$first_option" = "radio" ]; then  $give_cover
@@ -5502,8 +5576,9 @@ $fiptables stop
  exit; fi
 ####
 ####
-############################## english: read-fwiptables: Read log /var/log/fwiptables  ##############################
-############################## spanish: read-fwiptables: Lee log  /var/log/fwiptables  ##############################
+############################## english: log-fwiptables: Read log /var/log/fwiptables  ##############################
+############################## spanish: log-fwiptables: Lee log  /var/log/fwiptables  ##############################
+#### :rutina-inicio-log-fwiptables:
 ####
 ####
  if [ "$first_option" = "log-fwiptables" ] ; then  $give_cover
@@ -5516,6 +5591,7 @@ $fiptables stop
 ####
 ############################       english: log-sshd: log from ssh server
 ############################       spanish: log-sshd: log desde el servidor de ssh
+#### :rutina-inicio-log-sshd:
 ####
 ####
  if [ "$first_option" = "log-sshd" ]; then  $give_cover
@@ -5528,6 +5604,7 @@ $fiptables stop
 ####
 ############################       english: log-search: log from a one search
 ############################       spanish: log-search: log desde una busqueda
+#### :rutina-inicio-log-search:
 ####
 ####
  if [ "$first_option" = "log-search" ]; then $give_cover
@@ -5543,6 +5620,7 @@ $fiptables stop
 ####
 ############################       english: dev-version: about of program
 ############################       spanish: dev-version: acerca del programa
+#### :rutina-inicio-dev-version:
 ####
 ####
  if [ "$first_option" = "dev-version" ]; then  $give_cover
@@ -5553,6 +5631,7 @@ $fiptables stop
  exit; fi
 ############################       english: dev-changes: changes in the program
 ############################       spanish: dev-changes: cambios en el programa
+#### :rutina-inicio-dev-changes:
 ####
 #### 
  if [ "$first_option" = "dev-changes" ]; then  $give_cover
@@ -5565,6 +5644,7 @@ $fiptables stop
 ####
 ############################       english: new-versions: about of program
 ############################       spanish: new-versions: acerca del programa
+#### :rutina-inicio-new-versions:
 ####
 ####
  if [ "$first_option" = "new-versions" ]; then $give_cover
@@ -5581,6 +5661,7 @@ $fiptables stop
 ####
 ############################       english: hosts: show /etc/hosts
 ############################       spanish: hosts: muestra /etc/hosts
+#### :rutina-inicio-hosts:
 ####
 ####
  if [ "$first_option" = "hosts" ]; then  $give_cover
@@ -5595,6 +5676,7 @@ $fiptables stop
 ####
 ############################       english: protocols: show /etc/protocols
 ############################       spanish: protocols: muestra /etc/protocols
+#### :rutina-inicio-protocols:
 ####
 ####
  if [ "$first_option" = "protocols" ]; then  $give_cover
@@ -5609,6 +5691,7 @@ $fiptables stop
 ####
 ############################       english: services: show /etc/services
 ############################       spanish: services: muestra /etc/services
+#### :rutina-inicio-services:
 ####
 ####
  if [ "$first_option" = "services" ]; then  $give_cover
@@ -5623,6 +5706,7 @@ $fiptables stop
 ####
 ############################       english: host.allow: show /etc/host.allow
 ############################       spanish: host.allow: muestra /etc/host.allow
+#### :rutina-inicio-host.allow:
 ####
 ####
  if [ "$first_option" = "hosts.allow" ]; then  $give_cover
@@ -5637,6 +5721,7 @@ $fiptables stop
 ####
 ############################       english: hosts.deny: show /etc/host.deny
 ############################       spanish: hosts.deny: muestra /etc/host.deny
+#### :rutina-inicio-hosts.deny:
 ####
 ####
  if [ "$first_option" = "hosts.deny" ]; then  $give_cover
@@ -5651,6 +5736,7 @@ $fiptables stop
 ####
 ############################       english: resolv.conf: show /etc/resolv.conf
 ############################       spanish: resolv.conf: muestra /etc/resolv.conf
+#### :rutina-inicio-resolv.conf:
 ####
 ####
  if [ "$first_option" = "resolv.conf" ]; then  $give_cover
@@ -5665,6 +5751,7 @@ $fiptables stop
 ####
 ############################       english: about: about of program
 ############################       spanish: about: acerca del programa
+#### :rutina-inicio-about:
 ####
 ####
 if [ "$first_option" = "about" ]; then  $give_cover
@@ -5719,7 +5806,7 @@ exit; fi
 ####
 ############################       english: info-system: get info system
 ############################       spanish: info-system: da informacion del sistema
-#### :rutina-inicio-info-system:28
+#### :rutina-inicio-info-system:
 ####
 ####
  if [ "$first_option" = "info-system" ]; then  $give_cover
@@ -5750,7 +5837,7 @@ exit; fi
 ####
 ############################       english: info-net: get net info
 ############################       spanish: info-net: da informacion de la red
-#### :rutina-inicio-info-net:48
+#### :rutina-inicio-info-net:
 ####
 ####
  if [ "$first_option" = "info-net" ]; then $give_cover
