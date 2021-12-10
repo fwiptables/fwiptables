@@ -1364,7 +1364,7 @@ echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp 
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
 echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade                         "
-echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes                  "
+echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
 echo "$tab" "$tab"  "    show-log           log-search log-sshd log-fwiptables                    "
@@ -2015,6 +2015,8 @@ echo "   dev-version: Show the link at developer version"
 echo "              : Muestra en enlace a la version de desarrollo"
 echo "   dev-changes: Show the last changes"
 echo "              : Muestra los ultimos cambios"
+echo "          code: Show code source from one option"
+echo "              : Muestra el codigo fuente de una opcion"
 echo $footer_lineal
 exit; fi
 ####
@@ -6284,6 +6286,7 @@ echo
 echo " new-versions: Show the last versions"
 echo "  dev-version: Show the link at the developer version"
 echo "  dev-changes: Show the last changes"
+echo "         code: Show the source code for one option"
 echo
 echo "$cinco         [Show etc]"
 echo
@@ -6541,6 +6544,7 @@ echo
 echo " new-versions: Muestra las ultimas versiones"
 echo "  dev-version: Muestra en enlace a la version de desarrollo"
 echo "  dev-changes: Muestra los ultimos cambios"
+echo "         code: Muestra el codigo fuente para una opcion"
 echo
 echo "$cinco         [Mostrar etc]"
 echo
