@@ -2524,6 +2524,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu:
 ############################## english: gui-menu-control-guide: gui with menu ##############################
 ############################## spanish: gui-menu-control-guide: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-control-guide:
@@ -2554,6 +2555,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-control-guide:
 ############################## english: gui-menu-launch-rules: gui with menu ##############################
 ############################## spanish: gui-menu-launch-rules: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-launch-rules:
@@ -2591,6 +2593,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-launch-rules:
 ############################## english: gui-menu-control-rules: gui with menu ##############################
 ############################## spanish: gui-menu-control-rules: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-control-rules:
@@ -2628,6 +2631,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-control-rules:
 ############################## english: gui-menu-list-rules: gui with menu ##############################
 ############################## spanish: gui-menu-list-rules: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-list-rules:
@@ -2675,6 +2679,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-list-rules:
 ############################## english: gui-menu-tool-custom: gui with menu ##############################
 ############################## spanish: gui-menu-tool-custom: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-custom:
@@ -2725,6 +2730,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-custom:
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-sockets:
@@ -2761,6 +2767,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-sockets:
 ############################## english: gui-menu-tool-icmp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-icmp: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-icmp:
@@ -2789,6 +2796,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-icmp:
 ############################## english: gui-menu-tool-udp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-udp: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-udp:
@@ -2824,6 +2832,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-udp:
 ############################## english: gui-menu-tool-tcp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-tcp: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-tcp:
@@ -2854,6 +2863,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-tcp:
 ############################## english: gui-menu-tool-sudo: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sudo: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-sudo:
@@ -2885,6 +2895,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-sudo:
 ############################## english: gui-menu-tool-system: gui with menu ##############################
 ############################## spanish: gui-menu-tool-system: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-system:
@@ -2916,6 +2927,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-system:
 ############################## english: gui-menu-tool-install: gui with menu ##############################
 ############################## spanish: gui-menu-tool-install: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-install:
@@ -2945,6 +2957,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-install:
 ############################## english: gui-menu-tool-dev: gui with menu ##############################
 ############################## spanish: gui-menu-tool-dev: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-tool-dev:
@@ -2974,6 +2987,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-tool-dev:
 ############################## english: gui-menu-show-etc: gui with menu ##############################
 ############################## spanish: gui-menu-show-etc: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-show-etc:
@@ -3008,6 +3022,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-show-etc:
 ############################## english: gui-menu-show-log: gui with menu ##############################
 ############################## spanish: gui-menu-show-log: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-show-log:
@@ -3039,6 +3054,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-show-log:
 ############################## english: gui-menu-show-about: gui with menu ##############################
 ############################## spanish: gui-menu-show-about: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-show-about:
@@ -3072,6 +3088,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-show-about:
 ############################## english: gui-menu-show-help: gui with menu ##############################
 ############################## spanish: gui-menu-show-help: gui con menu  ##############################
 #### :rutina-inicio-gui-menu-show-help:
@@ -3104,6 +3121,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
+#### :rutina-final-gui-menu-show-help:
 ############################## english: gui-shell: graphic enviroment          ##############################
 ############################## spanish: gui-shell: entorno de comandos grafico ##############################
 #### :rutina-inicio-gui-shell:
@@ -3235,6 +3253,7 @@ $fiptables gui-shell
 exit ; fi
 ####
 ####
+#### :rutina-final-gui-shell:
 ##############################       english: cli-menu: Manage list rules with one text menu
 ##############################       spanish: cli-menu: Maneja lista de reglas con un menu de texto
 ####
@@ -3725,7 +3744,7 @@ if [ ! -n "$value_first" ];   then exit ; fi
 if [ ! -n "$value_second" ];  then exit ; fi
 if [ ! -n "$value_count" ];   then exit ; fi
 echo "$rallica [ source ] [ option: "$second_option" ] [ show $value_count lines ] \
-[ from the "$value_first" line to "$value_second" line ]"
+[ from the "$value_first" line number to "$value_second" line number ]"
 echo "$ralla"
 cat $directory_fiptables/$fiptables | head -n $value_second | tail -n $value_count
 exit; fi
