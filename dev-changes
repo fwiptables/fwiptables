@@ -83,6 +83,6 @@
 # changes fwiptables 1.94 en desarrollo
 #
 # 1. code: inicialmente source, cambia nombre a code. HECHO
-# 2  code: queda trabajo por delante..
+# 2  code: muestra el codigo fuente de una opcion. HECHO
 #
 #
