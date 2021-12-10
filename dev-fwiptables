@@ -3796,8 +3796,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
-#############################      english: blacklist-server
-#############################      spanish: blacklist-server
+#############################      english: blacklist-server:
+#############################      spanish: blacklist-server:
 #### :rutina-inicial-blacklist-server:
 ####
 ####
@@ -3818,6 +3818,7 @@ blacklist_server_smed="https://opensourcelibs.com/lib/smed79-blacklist"
 blacklist_comment_yoyo=""
 blacklist_server_yoyo="https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts"
 echo "$rallica [ blacklist en /etc/hosts ] [ Choose a one blacklist ]"
+echo "$rallica [ launch: ] [ $iptables blacklist-server info ]"
 echo "$rallica [ launch: ] [ $fiptables blacklist-on name-bl ] OR [ $fiptables blacklist-off ]" 
 echo "$ralla"
 echo "$tab  name-bl       link-bl"
@@ -3829,6 +3830,33 @@ echo "$tab stevenblack: $blacklist_server_stevenblack"
 echo "$tab smed:        $blacklist_server_smed"
 echo "$tab yoyo:        $blacklist_server_yoyo"
 echo "$ralla"
+####
+####
+if [ "$second_option" = "info" ]; then echo "info"
+$favorite_text_browser -dump "$blacklist_server_fademind" > $file_temporal_rute/hosts.fademind 
+$favorite_text_browser -dump "$blacklist_server_adaway" > $file_temporal_rute/hosts.adaway 
+$favorite_text_browser -dump "$blacklist_server_kadhosts" > $file_temporal_rute/hosts.kadhosts 
+$favorite_text_browser -dump "$blacklist_server_mvps" > $file_temporal_rute/hosts.mvps 
+$favorite_text_browser -dump "$blacklist_server_stevenblack" > $file_temporal_rute/hosts.stevenblack 
+$favorite_text_browser -dump "$blacklist_server_smed" > $file_temporal_rute/hosts.smed
+$favorite_text_browser -source "$blacklist_server_hosts" > $file_temporal_rute/hosts.yoyo 
+blacklist_lines_fademind="$(cat $file_temporal_rute/hosts.fademind | wc -l)"
+blacklist_lines_adaway="$(cat $file_temporal_rute/hosts.adaway | wc -l)"
+blacklist_lines_kadhosts="$(cat $file_temporal_rute/hosts.kadhosts | wc -l)"
+blacklist_lines_mvps="$(cat $file_temporal_rute/hosts.mvps | wc -l)"
+blacklist_lines_stevenblack="$(cat $file_temporal_rute/hosts.stevenblack | wc -l)"
+blacklist_lines_smed="$(cat $file_temporal_rute/hosts.smed | wc -l)"
+blacklist_lines_yoyo="$(cat $file_temporal_rute/hosts.yoyo | wc -l)"
+echo "$tab fademind:    $blacklist_lines_fademind"
+echo "$tab adaway:      $blacklist_lines_adaway"
+echo "$tab kadhosts:    $blacklist_lines_kadhosts"
+echo "$tab blacklist:   $blacklist_lines_mvps"
+echo "$tab stevenblack: $blacklist_lines_stevenblack"
+echo "$tab smed:        $blacklist_lines_smed"
+echo "$tab yoyo:        $blacklist_lines_yoyo"
+echo "$ralla"; fi
+####
+####
 echo "$footer_lineal"
 exit; fi
 ####
