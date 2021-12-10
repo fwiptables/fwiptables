@@ -84,5 +84,8 @@
 #
 # 1. code: inicialmente source, cambia nombre a code. HECHO
 # 2  code: muestra el codigo fuente de una opcion. HECHO
+# 3. blacklist-on: activa una blacklist de /etc/hosts. HECHO
+# 4. blacklist-off: activa el basico /etc/hosts. HECHO
+# 5. blacklist-server: lista los blacklist a elegir. HECHO
 #
 #
