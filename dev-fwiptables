@@ -527,6 +527,7 @@ cmp -s $0 $directory_fiptables/$fiptables || . $0 intro
 ####
 ####
 mkdir /tmp/fwiptables-$fversion-data/ &> /dev/null
+file_temporal_rute="/tmp/fwiptables-$fversion-data/"
 file_temporal_text="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
 file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
 file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
@@ -3795,6 +3796,49 @@ exit; fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
+#############################      english: blacklist-servers
+#############################      spanish: blacklist-servers
+#### :rutina-inicial-blacklist-servers:
+####
+####
+
+
+
+####
+####
+#### :rutina-final-blacklist-servers:
+#############################      english: blacklist-on
+#############################      spanish: blacklist-on
+#### :rutina-inicial-blacklist-on
+####
+####
+
+
+
+####
+####
+#### :rutina-final-blacklist-on
+#############################      english: blacklist-off
+#############################      spanish: blacklist-off
+#### :rutina-inicial-blacklist-off
+####
+####
+if [ "$first_option" = "blacklist-off" ]; then $give_cover
+echo $rallica
+echo "## ip v4 loopback ##" > $file_temporal_rute/hosts
+echo 127.0.0.1	localhost localhost.localdomain >> $file_temporal_rute/hosts
+echo "## ip v6 loopback ##" >> $file_temporal_rute/hosts
+echo ::1     ip6-localhost ip6-loopback >> $file_temporal_rute/hosts
+echo ff02::1 ip6-allnodes >> $file_temporal_rute/hosts
+echo ff02::2 ip6-allrouters >> $file_temporal_rute/hosts
+cp $file_temporal_rute/hosts /etc/hosts
+echo "$rallica [ OK HOST RESTAURED ] [ FILE HOSTS BASIC FOR DEFAULT ]"
+echo $footer_lineal
+$directory_fiptables/$fiptables hosts
+exit; fi
+####
+####
+#### :rutina-final-blacklist-off
 #############################       english: eraserules: system script, the erase rules option
 #############################       spanish: eraserules: script de sistema, la opcion borra reglas
 #### :rutina-inicial-eraserules:
