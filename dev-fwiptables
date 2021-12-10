@@ -3741,6 +3741,9 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 ####
 ####
 if [ "$first_option" = "code" ]; then $give_cover
+echo $header_lineal
+echo $rallica "[ code ] [ show source code for options from $fiptables ]"
+echo $ralla
 code_error="$rallica Usage: $fiptables code option"
 if [ "$second_option" = "$NULL" ]; then echo; echo "$code_error" ; exit ; fi
 value_first="$(cat -n $directory_fiptables/$fiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
