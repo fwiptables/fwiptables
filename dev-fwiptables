@@ -1366,7 +1366,7 @@ echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp 
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
 echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade                         "
-echo "$tab" "$tab"  "    tool-blacklist     blacklist-servers blacklist-off blacklist-on          "
+echo "$tab" "$tab"  "    tool-blacklist     blacklist-server blacklist-off blacklist-on          "
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
@@ -3796,14 +3796,41 @@ exit; fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
-#############################      english: blacklist-servers
-#############################      spanish: blacklist-servers
-#### :rutina-inicial-blacklist-servers:
+#############################      english: blacklist-server
+#############################      spanish: blacklist-server
+#### :rutina-inicial-blacklist-server:
 ####
 ####
-
-
-
+if [ "$first_option" = "blacklist-server" ]; then $give_cover
+echo $rallica
+blacklist_comment_fademind=""
+blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
+blacklist_comment_adaway=""
+blacklist_server_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
+blacklist_comment_kadhosts=""
+blacklist_server_kadhosts="https://raw.githubusercontent.com/PolishFiltersTeam/KADhosts/master/KADhosts_without_controversies.txt"
+blacklist_comment_mvps=""
+blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
+blacklist_comment_stevenblack=""
+blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
+blacklist_comment_smed=""
+blacklist_server_smed="https://opensourcelibs.com/lib/smed79-blacklist"
+blacklist_comment_yoyo=""
+blacklist_server_yoyo="https://pgl.yoyo.org/adservers/serverlist.php?showintro=0;hostformat=hosts"
+echo "$rallica [ blacklist en /etc/hosts ] [ Choose a one blacklist ]"
+echo "$rallica [ launch: ] [ $fiptables blacklist-on name-bl ] OR [ $fiptables blacklist-off ]" 
+echo "$ralla"
+echo "$tab  name-bl       link-bl"
+echo "$tab fademind:    $blacklist_server_fademind"
+echo "$tab adaway:      $blacklist_server_adaway"
+echo "$tab kadhosts:    $blacklist_server_kadhosts"
+echo "$tab blacklist:   $blacklist_server_mvps"
+echo "$tab stevenblack: $blacklist_server_stevenblack"
+echo "$tab smed:        $blacklist_server_smed"
+echo "$tab yoyo:        $blacklist_server_yoyo"
+echo "$ralla"
+echo "$footer_lineal"
+exit; fi
 ####
 ####
 #### :rutina-final-blacklist-servers:
