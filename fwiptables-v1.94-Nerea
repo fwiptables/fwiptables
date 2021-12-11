@@ -6220,6 +6220,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$second_option" = "tool-nmap" ]; then $fiptables tool-nmap ; exit ; fi
  if [ "$second_option" = "tool-sudo" ]; then $fiptables tool-sudo ; exit ; fi
  if [ "$second_option" = "tool-install" ]; then $fiptables tool-install ; exit ; fi
+ if [ "$second_option" = "tool-blacklist" ]; then $fiptables tool-blacklist ; exit ; fi
  if [ "$second_option" = "tool-dev" ]; then $fiptables tool-dev ; exit ; fi
  if [ "$second_option" = "tool-system" ]; then $fiptables tool-system ; exit ; fi
  if [ "$second_option" = "show-etc" ]; then $fiptables show-etc ; exit ; fi
@@ -6234,13 +6235,17 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo $header_lineal
  echo $ralla
  echo
- echo " launch: $fiptables info group"
+ echo "$tab [ launch: ] [ $fiptables info group ]"
  echo
- echo " group list:"
- echo " control-guide, control-rules, list-rules, user-interface"
- echo " launch-rules, tool-custom, tool-sockets, tool-forward"
- echo " tool-icmp, tool-tcp, tool-nmap, tool-sudo, tool-install"
- echo " tool-dev, tool-system, show-etc, show-log, show-about, show-help"
+ echo "$tab group list:"
+ echo
+ echo " control-guide , control-rules , list-rules , user-interface ,"
+ echo " launch-rules , tool-custom , tool-sockets , tool-forward ,"
+ echo " tool-icmp , tool-tcp , tool-nmap , tool-sudo , tool-install ,"
+ echo " tool-blacklist , tool-dev , tool-system , show-etc ,"
+ echo " show-log , show-about , show-help ."
+ echo
+ echo "$tab Example: $fiptables info user-interface"
  echo $footer_lineal
  exit; fi
 ####
