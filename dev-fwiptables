@@ -3894,28 +3894,28 @@ if [ "$second_option" = "fademind" ]; then
 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_rute/hosts.fademind 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_rute/hosts.fademind >> /etc/hosts
-echo "$tab New file /etc/hosts hast alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
+echo "$tab New file /etc/hosts has its alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_rute/hosts.adaway 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_rute/hosts.adaway >> /etc/hosts
-echo "$tab New file /etc/hosts hast alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
+echo "$tab New file /etc/hosts has its alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_rute/hosts.mvps 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_rute/hosts.mvps >> /etc/hosts
-echo "$tab New file /etc/hosts hast alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
+echo "$tab New file /etc/hosts has its alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_rute/hosts.stevenblack 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_rute/hosts.stevenblack >> /etc/hosts
-echo "$tab New file /etc/hosts hast alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
+echo "$tab New file /etc/hosts has its alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
 ####
 ####
 echo "$tab [ Invalid option ] [ See: $fiptables blacklist-list ]"
