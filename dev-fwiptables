@@ -486,7 +486,7 @@ rm /tmp/$fiptables &> /dev/null
 ####
 ####
 echo "$cinco [ Waiting several seconds .. ]"
-download_version="$($favorite_text_browser -source $fweb_newfiles  | grep -i fwiptables \
+download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
  | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
  | cut -d "(" -f 1 | sed s/" "//g)"
 download_ruta="$fweb_files$download_version/download/"
