@@ -365,7 +365,6 @@ command_zenity="$(command -v zenity | cut -d " " -f 1)"
 command_lynx="$(command -v lynx | cut -d " " -f 1)"
 command_links="$(command -v links | cut -d " " -f 1)"
 command_links2="$(command -v links2 | cut -d " " -f 1)"
-command_elinks="$(command -v elinks | cut -d " " -f 1)"
 command_shc="$(command -v shc | cut -d " " -f 1)"
 command_nmap="$(command -v nmap | cut -d " " -f 1)"
 command_ntpdate="$(command -v ntpdate | cut -d " " -f 1)"
@@ -387,7 +386,6 @@ command_mpg321="$(command -v mpg321 | cut -d " " -f 1)"
 ####
 favorite_text_browser=""
 if [ "$command_lynx" = "$NULL"   ]    ; then $nada ; else favorite_text_browser="$command_lynx"      ; fi
-if [ "$command_elinks" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_elinks"    ; fi
 if [ "$command_links" = "$NULL"  ]    ; then $nada ; else favorite_text_browser="$command_links"     ; fi
 if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_links2"    ; fi
 ####
@@ -488,7 +486,7 @@ rm /tmp/$fiptables &> /dev/null
 ####
 ####
 echo "$cinco [ Waiting several seconds .. ]"
-download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
+download_version="$($favorite_text_browser -source $fweb_newfiles  | grep -i fwiptables \
  | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
  | cut -d "(" -f 1 | sed s/" "//g)"
 download_ruta="$fweb_files$download_version/download/"
@@ -2264,7 +2262,7 @@ echo "$tab [$fiptables gui]"
 echo "zenity:      $command_zenity"
 echo $ralla
 echo "$tab [$fiptables auto text browser]"
-echo "automatic: elinks or lynx or links or links2 "
+echo "automatic: lynx or links or links2 "
 echo "auto text browser: $favorite_text_browser"
 echo $ralla
 echo "$tab [$fiptables auto date command]"
@@ -3770,7 +3768,7 @@ exit; fi
  echo $header_lineal
  echo $rallica "license text for gpl v2 downloading .."
  echo "$ralla" "$ralla" "$ralla"
- $favorite_text_browser -dump "$license_gpl" | more
+ $favorite_text_browser -source "$license_gpl" | more
  echo $footer_lineal
  exit;  fi
 ####
@@ -3786,7 +3784,7 @@ exit; fi
  echo $header_lineal
  echo "The actually version is: $fiptables $fversion actual"
  echo "  The latest version is:"
- $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+ $favorite_text_browser -source $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
  echo "$cinco"
  echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
  echo "$cinco    OR download manually   || OR $fiptables upgrade || OR look down: "
@@ -5889,7 +5887,7 @@ $fiptables stop
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
  echo "$rallica list new-versions in the last week with browser $favorite_text_browser"
  echo $ralla
- $favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
+ $favorite_text_browser -source $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
  echo $footer_lineal
  exit; fi
 ####
