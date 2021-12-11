@@ -5916,7 +5916,7 @@ $fiptables stop
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
  echo "$rallica list new-versions in the last week with browser $favorite_text_browser"
  echo $ralla
- $favorite_text_browser -source $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
+ $favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
  echo $footer_lineal
  exit; fi
 ####
