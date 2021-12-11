@@ -3807,15 +3807,15 @@ exit; fi
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show howto upgrade $fiptables ]"
  echo $header_lineal
- echo "The actually version is: $fiptables $fversion actual"
- echo "  The latest version is:"
+ echo "$cinco The actually version is: $fiptables $fversion actual"
+ echo "$cinco   The latest version is:"
  $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
  echo "$cinco"
- echo "Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
+ echo "$cinco Upgrade The fwiptables in file $directory_fiptables/$fiptables with $favorite_text_browser"
  echo "$cinco    OR download manually   || OR $fiptables upgrade || OR look down: "
- echo "$favorite_text_browser -source $fweb_latest &> /tmp/$fiptables"
- echo "chmod ugo+x /tmp/$fiptables"
- echo "/tmp/$fiptables install"
+ echo "launch: $favorite_text_browser -source $fweb_latest &> /tmp/$fiptables"
+ echo "launch: chmod ugo+x /tmp/$fiptables"
+ echo "launch: /tmp/$fiptables install"
  echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fiptables"
  echo $footer_lineal
  exit;  fi
