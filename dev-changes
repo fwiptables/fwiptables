@@ -89,5 +89,6 @@
 # 5. blacklist-list: lista las opciones y los blacklist a elegir. HECHO
 # 6. favorite_text_browser sin elinks, alugnos de -dump pasado a -source. HECHO
 # 7. blacklist documentado en fwiptables. HECHO
+# 8. info-proxy: informa del uso del proxy, tambien en info-net. HECHO
 #
 #
