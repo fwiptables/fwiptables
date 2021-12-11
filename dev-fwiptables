@@ -2014,8 +2014,8 @@ echo "$ralla [ $first_option ] [ tool blacklist in /etc/hosts ]"
 echo "$rallica [ Tool blacklist ]"
 echo "$rallica [ Herramienta de lista negra ]"
 echo
-echo " blacklist-list: Meta list to block at dangerous sites from /etc/hosts"
-echo "                 Meta lista para bloqueos a peligrosos sitios desde /etc/hosts"
+echo " blacklist-list: Options list to block at dangerous sites from /etc/hosts"
+echo "                 Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
 echo "   blacklist-on: Active a list to block dangerous sites in /etc/hosts"
 echo "                 Activa una lista para bloquear sitios peligrosos in /etc/hosts"
 echo "  blacklist-off: Return to default /etc/hosts"
@@ -6285,14 +6285,14 @@ if [ "$first_option" = "help" ]; then $genfiles ; $give_cover
 echo "$ralla [ $first_option ]  [ Principal options ] $cinco"
 echo
 echo
-echo "$cinco         [Launch guide]"
+echo "$cinco         [ Launch guide ]"
 echo
 echo "  info-system: Show info system"
 echo "     info-net: Show net info"
 echo "  wizard-full: Asistant y launch complete firewall"
 echo "  wizard-mini: Asistant y Launch simple firewall"
 echo
-echo "$cinco         [Control the iptables rules]"
+echo "$cinco         [ Control the iptables rules ]"
 echo
 echo "         stop: Save and stop firewall iptables"
 echo "     continue: Restore the firewall iptables stopped"
@@ -6304,13 +6304,13 @@ echo "         save: Save one firewall iptables"
 echo "         load: Restore a one firewall iptables"
 echo "       actual: show the firewall standard actual"
 echo
-echo "$cinco         [List iptables rules]"
+echo "$cinco         [ List iptables rules] "
 echo
 echo "               [The filter table with names]"
 echo "         list: like list-filter4 but hiding rules no used"
 echo "        list6: like list-filter6 but hiding rules not used"
 echo
-echo "$cinco         [List the others tables]"
+echo "$cinco         [ List the others tables ]"
 echo
 echo "           listnum: List iptables filter rules from ipv4 in numbers"
 echo "   list-forwardnum: List iptables filter rules foward in numbers"
@@ -6332,7 +6332,7 @@ echo "    list-security6: List iptables security rules from ipv6"
 echo "     list-ebtables: List rules ebtables mac of ethernet"
 echo "    list-arptables: List rules arptables arp"
 echo
-echo "$cinco         [Launch interface]"
+echo "$cinco         [ Launch interface ]"
 echo
 echo "          cli: alias to cli-menu"
 echo "          gui: alias to gui-menu"
@@ -6349,7 +6349,7 @@ echo
 echo "               [ Secondary options ] $cinco"
 echo
 echo
-echo "$cinco         [Launch iptables rules]"
+echo "$cinco         [ Launch iptables rules ]"
 echo
 echo "   eraserules: Remove the iptables rules in ipv4 and ipv6"
 echo "      offline: Launch disconected firewall for all servers and clients except localhost"
@@ -6362,7 +6362,7 @@ echo "  serversamba: Launch a firewall like server and client for samba and ssh"
 echo "  serverprint: Launch a firewall like server ipp, printer and ssh"
 echo "    serverssh: Launch a firewall like server ssh"
 echo
-echo "$cinco         [tool config]"
+echo "$cinco         [ tool config ]"
 echo
 echo "       new-full-config: Create a new configfile.cfg in english"
 echo " nueva-completa-config: Create a new configfile.cfg in spanish"
@@ -6373,7 +6373,7 @@ echo "         modify-config: Edit one config.cfg"
 echo "           show-config: Show one config.cfg"
 echo "            del-config: Delete one configuration file"
 echo
-echo "$cinco         [List sockets]"
+echo "$cinco         [ List sockets ]"
 echo
 echo "            route: Show net devices and ip route tables"
 echo "               ss: Show net sockets with command ss"
@@ -6383,20 +6383,20 @@ echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
 echo "          arp-lan: List the conentions arp in lan"
 echo
-echo "$cinco         [Tool forward]"
+echo "$cinco         [ Tool forward ]"
 echo
 echo " ipforward-list: Show kernel config about forward"
 echo "   ipforward-on: Active kernel config about forward"
 echo "  ipforward-off: Deactive kernel config about forward"
 echo
-echo "$cinco         [Tool tcp]"
+echo "$cinco         [ Tool tcp ]"
 echo
 echo " tracetcp-ip4: Trace route a one host with ipv4 tcp"
 echo " tracetcp-ip6: Trace route a one host with ipv6 tcp"
 echo "    speed-ip4: Test the bandwidth with ipv4"
 echo "    speed-ip6: Test the bandwidth with ipv6"
 echo
-echo "$cinco         [Tool udp]"
+echo "$cinco         [ Tool udp ]"
 echo
 echo "         host: Resolve one host"
 echo "          dig: Resolve one host"
@@ -6404,12 +6404,12 @@ echo "    resolveip: Resolve one host and viceversa"
 echo "        geoip: Locate a one host or ip"
 echo "      ntpdate: Update the date from ntp server"
 echo 
-echo "$cinco         [Tool icmp]"
+echo "$cinco         [ Tool icmp ]"
 echo
 echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
 echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
 echo
-echo "$cinco         [Tool nmap]"
+echo "$cinco         [ Tool nmap ]"
 echo 
 echo "     scan-tcp: Scan a host/mask per tcp protocol"
 echo "     scan-syn: Scan a host/mask per syn socket"
@@ -6417,13 +6417,13 @@ echo "     scan-fin: Scan a host/mask per fin socket"
 echo "     scan-udp: Scan a host/mask per udp protocol"
 echo "    scan-ping: Scan a host/mask per ping udp"
 echo
-echo "$cinco         [Tool sudo]"
+echo "$cinco         [ Tool sudo ]"
 echo
 echo "    sudo-auth: Allow sudo to other choosed users"
 echo "  sudo-remove: Remove sudo to other choosed users"
 echo "    sudo-list: List sudo to other choosed users"
 echo
-echo "$cinco         [Tool system]"
+echo "$cinco         [ Tool system ]"
 echo
 echo "      ram-free: Clean for innecesary memory"
 echo "     ram-speed: Show the speed of ram"
@@ -6431,20 +6431,26 @@ echo "    disc-speed: Show the speed of disc"
 echo "      gl-speed: Show frammes for seconds with mesa graphicall"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo
-echo "$cinco         [Tool Install]"
+echo "$cinco         [ Tool Install ]"
 echo
 echo "      install: Install this program actual"
 echo "howto-upgrade: Howto install the latest version"
 echo "      upgrade: Upgrade at the latest version"
 echo
-echo "$cinco         [Tool dev]"
+echo "$cinco         [ Tool blacklist ]"
+echo
+echo " blacklist-list: List options to block dangerous hosts"
+echo "   blacklist-on: Write one /etc/hosts with block a dangerous sites"
+echo "  blacklist-off: Return to /etc/hosts for default"
+echo
+echo "$cinco         [ Tool dev ]"
 echo
 echo " new-versions: Show the last versions"
 echo "  dev-version: Show the link at the developer version"
 echo "  dev-changes: Show the last changes"
 echo "         code: Show the source code for one option"
 echo
-echo "$cinco         [Show etc]"
+echo "$cinco         [ Show etc ]"
 echo
 echo "           hosts: Show /etc/hosts, hosts local and statics host"
 echo "      protocolos: Show /etc/protocols, protocols names"
@@ -6455,13 +6461,13 @@ echo "     resolv.conf: Show /etc/resolv.conf, it are the dns configured"
 echo "    show-default: Show /etc/default/fwiptables, show variables for fwiptables"
 echo "  modify-default: Modify /etc/default/fwiptables, modify variables for fwiptables"
 echo
-echo "$cinco         [Show log]"
+echo "$cinco         [ Show log ]"
 echo
 echo " log-fwiptables: Show /var/log/fwiptables"
 echo "       log-sshd: Search the logs from sshd for /var/log"
 echo "     log-search: Search the logs from a input pattern for /var/log"
 echo
-echo "$cinco         [Show about]"
+echo "$cinco         [ Show about ]"
 echo
 echo "          about: About info"
 echo "        version: Info version program actual"
@@ -6471,7 +6477,7 @@ echo "   new-versions: Show the last versions"
 echo "     config-eng: config example with comments in english"
 echo "     config-spa: config example with comments in spanish"
 echo
-echo "$cinco         [Show help]"
+echo "$cinco         [ Show help ]"
 echo
 echo "   full-options: Show full options"
 echo "           help: Show help in english"
@@ -6543,14 +6549,14 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then $genfiles; $give_cover
 echo "$ralla [ $first_option ] [ Opciones principales ] $cinco"
 echo
-echo "$cinco         [Lanzar guia]"
+echo "$cinco         [ Lanzar guia ]"
 echo
 echo "  info-system: Muestra la informacion del sistema"
 echo "     info-net: Muestra informacion de la red"
 echo "  wizard-full: Asistente y lanza completo cortafuegos"
 echo "  wizard-mini: Asistente y lanza simple cortafuegos"
 echo
-echo "$cinco         [Controla las reglas de iptables]"
+echo "$cinco         [ Controla las reglas de iptables ]"
 echo
 echo "         stop: Para las reglas del firewall"
 echo "     continue: Continua las reglas del firewall"
@@ -6562,13 +6568,13 @@ echo "         save: Guarda las reglas de firewall estandard especificado"
 echo "         load: Reculpera firewall estandard especificado"
 echo "       actual: Muestra el contenido del firewall estandard actual"
 echo
-echo "$cinco         [Lista las reglas de tablas de iptables]"
+echo "$cinco         [ Lista las reglas de tablas de iptables ]"
 echo
 echo "               La tabla de filtros con nombres"
 echo "         list: similar a list-filter4 pero esconde reglas no usadas" 
 echo "        list6: similar a list-filter6 pero esconde reglas no usadas"
 echo
-echo "$cinco         [Lista Las otras tablas de iptables]"
+echo "$cinco         [ Lista Las otras tablas de iptables ]"
 echo
 echo "           listnum: Lista las reglas de ipv4 de filtros en numeros"
 echo "   list-forwardnum: Lista las reglas de ipv4 de filtros de reenvio en numeros"
@@ -6590,7 +6596,7 @@ echo " list-security6: Lista las reglas de ip6 de security iptables"
 echo "  list-ebtables: Lista las reglas mac de ethernet"
 echo " list-arptables: Lista las reglas de arp arptables"
 echo
-echo "$cinco         [Lanza interfaz]"
+echo "$cinco         [ Lanza interfaz ]"
 echo
 echo "          cli: apodo de cli-menu"
 echo "          gui: apodo de gui-menu"
@@ -6607,7 +6613,7 @@ echo
 echo
 echo "               [ Opciones secundarias ] $cinco"
 echo
-echo "$cinco         [Lanza reglas de iptables]"
+echo "$cinco         [ Lanza reglas de iptables ]"
 echo
 echo "   eraserules: Borra las reglas de iptables de ipv4 y de ipv6"
 echo "      offline: Lanza un desconectado cortafuegos de todo excepto localhost"
@@ -6620,7 +6626,7 @@ echo "  serverprint: Lanza un firewall como servidor ipp, printer y ssh"
 echo "    serverssh: Lanza un firewall como servidor ssh"
 echo "       custom: lanza el cortafuegos especificando un archivo.cfg"
 echo
-echo "$cinco         [Herramienta de configuraciones]"
+echo "$cinco         [ Herramienta de configuraciones ]"
 echo
 echo "       new-full-config: Crea una nueva configuracion.cfg en ingles"
 echo " nueva-completa-config: Crea una nueva configuracion.cfg en español"
@@ -6631,7 +6637,7 @@ echo "         modify-config: Edita una existente configuracion.cfg"
 echo "           show-config: Muestra una existente configuracion.cfg"
 echo "            del-config: Borra unaa existente configuracion.cfg"
 echo
-echo "$cinco         [Lista las conexiones abiertas]"
+echo "$cinco         [ Lista las conexiones abiertas ]"
 echo
 echo "             route: Muestra los dispositivos de red y la tabla de rutas"
 echo "                ss: Muestra las conexiones con comando ss"
@@ -6641,20 +6647,20 @@ echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
 echo "           arp-lan: Lista las conexiones arp in lan"
 echo
-echo "$cinco         [Herramienta de ip forwading]"
+echo "$cinco         [ Herramienta de ip forwading ]"
 echo
 echo "  ipforward-list: Muestra la configuracion del kernel sobre reenvios ip"
 echo "    ipforward-on: Activa la configuracion del kernel sobre reenvios ip"
 echo "   ipforward-off: Desactiva la configuracion del kernel sobre reenvios ip"
 echo
-echo "$cinco         [Herramienta tcp]"
+echo "$cinco         [ Herramienta tcp ]"
 echo
 echo " tracetcp-ip4: Traza ruta a una host con ipv4 tcp"
 echo " tracetcp-ip6: Traza ruta a una host con ipv6 tcp"
 echo "    speed-ip4: Testea el ancho de banda con ipv4"
 echo "    speed-ip6: Testea el ancho de banda con ipv6"
 echo
-echo "$cinco         [Herramienta udp]"
+echo "$cinco         [ Herramienta udp ]"
 echo
 echo "         host: Resuelve la ip de un host"
 echo "          dig: Resuelve la ip de un host"
@@ -6662,12 +6668,12 @@ echo "    resolveip: Resuelve la ip de un host y viceversa"
 echo "        geoip: Localiza una ip o host"
 echo "      ntpdate: Actualiza la fecha desde un ntp server"
 echo 
-echo "$cinco         [Herramienta icmp]"
+echo "$cinco         [ Herramienta icmp ]"
 echo
 echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
 echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
 echo
-echo "$cinco         [Herramienta nmap]"
+echo "$cinco         [ Herramienta nmap ]"
 echo 
 echo "     scan-tcp: Rastrea una host/mask por tcp protocolo"
 echo "     scan-syn: Rastrea una host/mask por syn socket"
@@ -6675,13 +6681,13 @@ echo "     scan-fin: Rastrea una host/mask por fin socket"
 echo "     scan-udp: Rastrea una host/mask por udp protocolo"
 echo "    scan-ping: Rastrea una host/mask por ping udp"
 echo
-echo "$cinco         [Herramienta de autorizacion]"
+echo "$cinco         [ Herramienta de autorizacion ]"
 echo
 echo "    sudo-auth: Permite autorizacion de usuarios elegidos"
 echo "  sudo-remove: Borra la autorizacion otorgada"
 echo "    sudo-list: Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [Herramienta de sistema]"
+echo "$cinco         [ Herramienta de sistema ]"
 echo
 echo "      ram-free: Libera la memoria innecesaria"
 echo "     ram-speed: Muestra la velocidad de la ram"
@@ -6689,20 +6695,26 @@ echo "    disc-speed: Muestra la velocidad de el disco"
 echo "      gl-speed: Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connecta a on servidor mp3, see $fiptables default"
 echo
-echo "$cinco         [Herramienta de instalacion]"
+echo "$cinco         [ Herramienta de instalacion ]"
 echo
 echo "      install: Instala este programa actual"
 echo "      upgrade: Actualiza a la ultima version"
 echo "howto-upgrade: Indicacion para actualizar"
 echo
-echo "$cinco         [Herramienta de desarrollador]"
+echo "$cinco         [ Herramienta de lista de bloqueo ]"
+echo
+echo " blacklist-list: Lista de opciones para bloquear hosts peligrosas"
+echo "   blacklist-on: Escribe un /etc/hosts con bloqueo a hosts peligrosas"
+echo "  blacklist-off: Vuelve a /etc/hosts por defecto"
+echo
+echo "$cinco         [ Herramienta de desarrollador ]"
 echo
 echo " new-versions: Muestra las ultimas versiones"
 echo "  dev-version: Muestra en enlace a la version de desarrollo"
 echo "  dev-changes: Muestra los ultimos cambios"
 echo "         code: Muestra el codigo fuente para una opcion"
 echo
-echo "$cinco         [Mostrar etc]"
+echo "$cinco         [ Mostrar etc ]"
 echo
 echo "           hosts: Muestra /etc/hosts, hosts locales y hosts estaticos"
 echo "      protocolos: Muestra /etc/protocols, nombres de protocolos"
@@ -6713,13 +6725,13 @@ echo "     resolv.conf: Muestra /etc/resolv.conf, este es el dns configurado"
 echo "    show-default: Muestra /etc/default/fwiptables, muestra variables en fwiptables"
 echo "  modify-default: Modifica /etc/default/fwiptables, modifica variables en fwiptables"
 echo
-echo "$cinco         [Mostrar log]"
+echo "$cinco         [ Mostrar log ]"
 echo
 echo " log-fwiptables: Muestra /var/log/fwiptables"
 echo "       log-sshd: Busca los logs de sshd en /var/log"
 echo "     log-search: Busca los logs dando un patron para /var/log"
 echo
-echo "$cinco         [Mostrar acerca]"
+echo "$cinco         [ Mostrar acerca ]"
 echo
 echo "          About: Acerca de "
 echo "        version: Informacion de la actual version"
@@ -6729,7 +6741,7 @@ echo "   new-versions: Muestra las ultimas versiones"
 echo "     config-eng: Ejemplo de config con comentarios en ingles"
 echo "     config-spa: Ejemplo de config con comentarios en castellano"
 echo
-echo "$cinco         [Mostrar ayuda]"
+echo "$cinco         [ Mostrar ayuda ]"
 echo
 echo "   full-options: Muestra las opciones"
 echo "           help: Muestra la ayuda en ingles"
