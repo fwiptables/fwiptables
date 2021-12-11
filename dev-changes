@@ -86,7 +86,8 @@
 # 2  code: muestra el codigo fuente de una opcion. HECHO
 # 3. blacklist-on: activa una blacklist de /etc/hosts. HECHO
 # 4. blacklist-off: activa el basico /etc/hosts. HECHO
-# 5. blacklist-list: lista los blacklist a elegir. HECHO
+# 5. blacklist-list: lista las opciones y los blacklist a elegir. HECHO
 # 6. favorite_text_browser sin elinks, alugnos de -dump pasado a -source. HECHO
+# 7. blacklist documentado en fwiptables. HECHO
 #
 #
