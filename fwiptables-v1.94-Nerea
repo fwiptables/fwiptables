@@ -1304,7 +1304,8 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Other options |                         "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof tcpdump arp-lan info-proxy              "
+echo "$tab" "$tab"  "                       netstat netstat-nat                                   "
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
 echo "$tab" "$tab"  "    tool-tcp           speed-ip4 speed-ip6                                   "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
@@ -1312,9 +1313,9 @@ echo "$tab" "$tab"  "    show-etc           show-default modify-default ..      
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda info basic-options ..            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Too other groups info:  tool-custom tool-forward tool-icmp tool-nmap     " 
-echo "$tab" "$tab"  "                            tool-system tool-install tool-blacklist          "
-echo "$tab" "$tab"  "                            tool-dev show-log                                " 
+echo "$tab" "$tab"  "    Too other groups info:  tool-custom tool-forward tool-icmp               " 
+echo "$tab" "$tab"  "                            tool-nmap  tool-system tool-install              "
+echo "$tab" "$tab"  "                            tool-blacklist tool-dev show-log                 " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1355,7 +1356,8 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | tool options |                          " 
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof netstat netstat-nat tcpdump arp-lan     "
+echo "$tab" "$tab"  "    tool-sockets       route ss lsof tcpdump arp-lan info-proxy              "
+echo "$tab" "$tab"  "                       netstat netstat-nat                                   "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
@@ -4150,23 +4152,42 @@ exit; fi
 ####
 ####
 #### :rutina-final-netstat:
-#############################      english: netstat-nat: system script, the netstat sockets
-#############################      spanish: netstat-nat: script de sistema, el netstat sockets
-#### :rutina-inicial-netstat-nat:
+#############################      english: info-proxy: system script, the netstat sockets
+#############################      spanish: info-proxy: script de sistema, el netstat sockets
+#### :rutina-inicial-info-proxy:
 ####
 ####
- if [ "$first_option" = "netstat-nat" ]; then  $give_cover
+ if [ "$first_option" = "info-proxy" ]; then  $give_cover
  case $command_netstat_nat in
  "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
  echo "$ralla [ $first_option ] [ Show sockets with netstat-nat ]"
  echo $header_lineal
- echo "$tab [The devices list with netstat]"
- $command_netstat_nat -x
+ echo "$tab [ The devices list with netstat ]"
+ echo "$tab [ netstat -an | grep ESTABLISHED | grep PROXY_PORT ]"
+ echo "Proxy http:    $http_proxy"
+ echo "Proxy https:   $https_proxy"
  echo $footer_lineal
  exit; fi
 ####
 ####
-#### :rutina-final-netstat-nat:
+#### :rutina-final-info-proxy:
+#############################      english: netstat-proxy: system script, the netstat sockets
+#############################      spanish: netstat-proxy: script de sistema, el netstat sockets
+#### :rutina-inicial-netstat-proxy:
+####
+####
+ if [ "$first_option" = "netstat-proxy" ]; then  $give_cover
+ case $command_netstat_nat in
+ "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
+ echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
+ echo $header_lineal
+ echo "$tab [ The devices list with netstat for proxy ]"
+
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-netstat-proxy:
 #############################      english: ipforward-on: active ip forward
 #############################      spanish: ipforward-on: activa ip forward
 #### :rutina-inicial-ipforward-on:
@@ -6153,6 +6174,10 @@ exit; fi
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; fi
  public_ip6="$(timeout 5s $command_curl -s -6 http://ifconfig.co/ip -w "\n")"
  echo "$tab $public_ip6"
+ echo $ralla
+ echo "$tab [ proxy ip ] [ address proxy ]"
+ echo "Proxy http:    $http_proxy"
+ echo "Proxy https:   $https_proxy"
  echo $footer_lineal
  exit; fi
 ####
