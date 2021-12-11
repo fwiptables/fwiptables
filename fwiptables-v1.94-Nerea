@@ -1364,7 +1364,7 @@ echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp 
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
 echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade                         "
-echo "$tab" "$tab"  "    tool-blacklist     blacklist-server blacklist-off blacklist-on          "
+echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-off blacklist-on             "
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
@@ -3797,12 +3797,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
-#############################      english: blacklist-server:
-#############################      spanish: blacklist-server:
-#### :rutina-inicial-blacklist-server:
+#############################      english: blacklist-list:
+#############################      spanish: blacklist-list:
+#### :rutina-inicial-blacklist-list:
 ####
 ####
-if [ "$first_option" = "blacklist-server" ]; then $give_cover
+if [ "$first_option" = "blacklist-list" ]; then $give_cover
 echo $rallica
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
@@ -3811,9 +3811,10 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 echo "$rallica"
-echo "$rallica [   info: ] [ Get lines numbers total ] [ $fiptables blacklist-server info ]"
+echo "$rallica [   info: ] [ Get lines numbers total ] [ $fiptables blacklist-list info ]"
 echo "$rallica [ change: ] [ $fiptables blacklist-on name-bl ] OR [ $fiptables blacklist-off ]" 
 echo "$ralla"
+echo "$rallica"
 echo "$tab  name-bl          link-bl"
 echo "$tab fademind        $blacklist_server_fademind"
 echo "$tab adaway          $blacklist_server_adaway"
@@ -3843,7 +3844,7 @@ echo "$footer_lineal"
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-server:
+#### :rutina-final-blacklist-list:
 #############################      english: blacklist-on
 #############################      spanish: blacklist-on
 #### :rutina-inicial-blacklist-on:
@@ -3854,7 +3855,7 @@ echo $rallica
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched wihtout options ] [ See: $fiptables blacklist-server ]"
+echo "$tab [ Launched wihtout options ] [ See: $fiptables blacklist-list ]"
 echo $rallica; exit; fi
 ####
 ####
@@ -3892,7 +3893,7 @@ cat $file_temporal_rute/hosts.stevenblack >> /etc/hosts
 echo "$tab New file /etc/hosts hast alias localhost, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like local"; exit; fi
 ####
 ####
-echo "$tab [ Invalid option ] [ See: $fiptables blacklist-server ]"
+echo "$tab [ Invalid option ] [ See: $fiptables blacklist-list ]"
 echo $rallica; exit; fi
 ####
 ####
