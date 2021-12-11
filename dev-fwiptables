@@ -1442,6 +1442,8 @@ $fiptables tool-system
 echo
 $fiptables tool-install
 echo
+$fiptables tool-blacklist
+echo
 $fiptables tool-dev
 echo
 $fiptables show-etc
@@ -1549,6 +1551,8 @@ echo "     tool-sudo:  Tool to auth sudo a users for $fiptables"
 echo "              :  Herramienta de autorizacion a usuarios para $fiptables"
 echo "  tool-install:  Tool to install and upgrade $fiptables"
 echo "              :  Herramienta para instalar y actualizar $fiptables"
+echo "tool-blacklist:  Tool for block dangerous sites"
+echo "              :  Herramienta para bloquear peligrosos sitios"
 echo "      tool-dev:  Tool to develop $fiptables"
 echo "              :  Herramienta de desarrollo $fiptables"
 echo "   tool-system:  Several tools for the system"
@@ -2000,6 +2004,27 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-install:
+##############################       english: tool-blacklist: options
+##############################       spanish: tool-blacklist: opciones
+#### :rutina-inicial-tool-blacklist:
+####
+####
+if [ "$first_option" = "tool-blacklist" ]; then $give_cover
+echo "$ralla [ $first_option ] [ tool blacklist in /etc/hosts ]"
+echo "$rallica [ Tool blacklist ]"
+echo "$rallica [ Herramienta de lista negra ]"
+echo
+echo " blacklist-list: Meta list to block at dangerous sites from /etc/hosts"
+echo "                 Meta lista para bloqueos a peligrosos sitios desde /etc/hosts"
+echo "   blacklist-on: Active a list to block dangerous sites in /etc/hosts"
+echo "                 Activa una lista para bloquear sitios peligrosos in /etc/hosts"
+echo "  blacklist-off: Return to default /etc/hosts"
+echo "                 Vuelve al archivo por defecto /etc/hosts"
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-tool-blacklist:
 ##############################       english: tool-dev: options
 ##############################       spanish: tool-dev: opciones
 #### :rutina-inicial-tool-dev:
@@ -6237,7 +6262,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo
  echo "$tab [ launch: ] [ $fiptables info group ]"
  echo
- echo "$tab group list:"
+ echo "$tab [ group list: ]"
  echo
  echo " control-guide , control-rules , list-rules , user-interface ,"
  echo " launch-rules , tool-custom , tool-sockets , tool-forward ,"
@@ -6245,7 +6270,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo " tool-blacklist , tool-dev , tool-system , show-etc ,"
  echo " show-log , show-about , show-help ."
  echo
- echo "$tab Example: $fiptables info user-interface"
+ echo "$tab [ Example: ] [ $fiptables info user-interface ]"
  echo $footer_lineal
  exit; fi
 ####
