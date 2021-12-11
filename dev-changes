@@ -87,5 +87,6 @@
 # 3. blacklist-on: activa una blacklist de /etc/hosts. HECHO
 # 4. blacklist-off: activa el basico /etc/hosts. HECHO
 # 5. blacklist-server: lista los blacklist a elegir. HECHO
+# 6. favorite_text_browser sin elinks, -dump pasado a -source. HECHO
 #
 #
