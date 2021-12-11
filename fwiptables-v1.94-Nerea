@@ -3923,19 +3923,22 @@ echo $rallica; exit; fi
 ####
 ####
 #### :rutina-final-blacklist-on:
-#############################      english: blacklist-off
-#############################      spanish: blacklist-off
+#############################      english: blacklist-off:
+#############################      spanish: blacklist-off:
 #### :rutina-inicial-blacklist-off:
 ####
 ####
 if [ "$first_option" = "blacklist-off" ]; then $give_cover
 echo $rallica
-echo "## ip v4 loopback ##" > "$file_temporal_rute/hosts"
-echo "127.0.0.1	localhost localhost.localdomain" >> "$file_temporal_rute/hosts"
+echo "$cinco" > "$file_temporal_rute/hosts"
+echo "## ip v4 loopback ##" >> "$file_temporal_rute/hosts"
+echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> "$file_temporal_rute/hosts"
 echo "## ip v6 loopback ##" >> "$file_temporal_rute/hosts"
-echo "::1     ip6-localhost ip6-loopback" >> "$file_temporal_rute/hosts"
+echo "::1      localhost-ip6 localhost loopback-ip6" >> "$file_temporal_rute/hosts"
 echo "ff02::1 ip6-allnodes" >> "$file_temporal_rute/hosts"
 echo "ff02::2 ip6-allrouters" >> "$file_temporal_rute/hosts"
+echo "$cinco" >> "$file_temporal_rute/hosts"
+echo "$cincuenta" >> "$file_temporal_rute/hosts"
 cp "$file_temporal_rute/hosts" /etc/hosts
 echo "$rallica [ OK HOST RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT ]"
 echo $footer_lineal
