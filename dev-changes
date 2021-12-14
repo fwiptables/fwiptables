@@ -80,7 +80,7 @@
 # 1. arreglo en upgrade. HECHO
 # 2. arreglo en install. HECHO
 #
-# changes fwiptables 1.94 en desarrollo
+# changes fwiptables 1.94
 #
 # 1. code: inicialmente source, cambia nombre a code. HECHO
 # 2  code: muestra el codigo fuente de una opcion. HECHO
@@ -93,7 +93,7 @@
 #
 # changes fwiptables 1.95 en desarollo
 #
-# 1. group system-ls: lsblk lsusb lspci lscpu lsgpu.
+# 1. group tool-hardware: lsblk lsusb lspci lscpu lsgpu lshw.
 # 2. 
 #
 #
