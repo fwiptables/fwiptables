@@ -91,4 +91,9 @@
 # 7. blacklist documentado en fwiptables. HECHO
 # 8. info-proxy: informa del uso del proxy, tambien informa en info-net. HECHO
 #
+# changes fwiptables 1.95 en desarollo
+#
+# 1. group system-ls: lsblk lsusb lspci lscpu lsgpu.
+# 2. 
+#
 #
