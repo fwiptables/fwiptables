@@ -94,6 +94,6 @@
 # changes fwiptables 1.95 en desarollo
 #
 # 1. group tool-hardware: lsblk lsusb lspci lscpu lsgpu lshw.
-# 2. 
+# 2. info-proxy: doc.
 #
 #
