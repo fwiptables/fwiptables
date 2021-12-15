@@ -6110,8 +6110,7 @@ exit; fi
  echo $ralla
  echo "$tab [ Boot system ] [ it works with pid number 1 ]"
  ps -p1 
- echo "$tab Over /proc/1/com"
- echo "   Your boot system is : $(cat /proc/1/comm)"
+ echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
  echo $ralla
  echo "$tab [ System info ] [ Processor ]"
  lscpu | egrep -i "socket|Model name|cpu max"
