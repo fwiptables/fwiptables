@@ -1371,7 +1371,7 @@ echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklis
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
-echo "$tab" "$tab"  "    show-hardware      lsblk lsusb lspci lscpu lsgpu lshw                    "
+echo "$tab" "$tab"  "    show-hardware      lsblk lsusb lscpu lspci lsgpu lshw                    "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
 echo "$tab" "$tab"  "    show-log           log-search log-ssh log-fwiptables                     "
 echo "$tab" "$tab"  "                       resolv.conf show-default modify-default               "
@@ -5959,6 +5959,81 @@ $fiptables stop
 ####
 ####
 #### :rutina-final-lsblk:
+############################       english: lsusb: list disks
+############################       spanish: lsusb: lista discos
+#### :rutina-inicial-lsusb:
+####
+####
+ if [ "$first_option" = "lsusb" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list usb ]"
+ echo $header_lineal
+ lsusb
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lsusb:
+############################       english: lscpu: list cpu
+############################       spanish: lscpu: lista cpu
+#### :rutina-inicial-lscpu:
+####
+####
+ if [ "$first_option" = "lscpu" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list cpu ]"
+ echo $header_lineal
+ lscpu
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lscpu:
+############################       english: lspci: list disks
+############################       spanish: lspci: lista discos
+#### :rutina-inicial-lspci:
+####
+####
+ if [ "$first_option" = "lspci" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list cpi hardware sockets ]"
+ echo $header_lineal
+ lspci
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lspci:
+############################       english: lsgpu: list gpu
+############################       spanish: lsgpu: lista gpu
+#### :rutina-inicial-lsgpu:
+####
+####
+ if [ "$first_option" = "lsgpu" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list gpu ]"
+ echo $header_lineal
+ lsgpu
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lsgpu:
+############################       english: lsusb: list hardware
+############################       spanish: lsusb: lista hardware
+#### :rutina-inicial-lshw:
+####
+####
+ if [ "$first_option" = "lshw" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list hardware ]"
+ echo $header_lineal
+ lshw
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lshw:
 ############################       english: hosts: show /etc/hosts
 ############################       spanish: hosts: muestra /etc/hosts
 #### :rutina-inicial-hosts:
