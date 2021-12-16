@@ -97,7 +97,7 @@
 # 2. info-proxy: documentarlo. HECHO
 # 3. log-sshd: cambiado a log-ssh. HECHO
 # 4. launch-custom: sustituye a tool-custom. HECHO
-# 5- show-hardware: introducir grupo y en las ayudas.
+# 5- show-hardware: introducir grupo y en las ayudas. HECHO
 # 6- show-hardware: introducir en gui-menu.
 # 7- blacklist: introducir en gui-menu.
 # 8- tool-forward: introducir en gui-menu.
