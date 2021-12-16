@@ -1450,6 +1450,8 @@ $fiptables tool-blacklist
 echo
 $fiptables tool-dev
 echo
+$fiptables show-hardware
+echo
 $fiptables show-etc
 echo
 $fiptables show-log
@@ -2110,6 +2112,33 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-etc:
+##############################       english: show-hardware: options
+##############################       spanish: show-hardware: opciones
+#### :rutina-inicial-show-hardware:
+####
+####
+if [ "$first_option" = "show-hardware" ]; then $give_cover
+echo "$ralla [ $first_option ] [ show hardware info ]"
+echo "$rallica [ Show hardware info ]"
+echo "$rallica [ Muestra informacion del hardware ]"
+echo
+echo "           lsblk: Show the device disks"
+echo "                : Muestra los dispositivos de disco"
+echo "           lsusb: Show the devices usb"
+echo "                : Muestra los dispositivos de usb"
+echo "           lscpu: Show the devices cpu"
+echo "                : Muestra los dispositivos cpu"
+echo "           lsgpu: Show the devices gpu"
+echo "                : Muestra los dispositivos gpu"
+echo "           lspci: Show the devices pci"
+echo "                : Muestra los dispositivos pci"
+echo "            lshw: Show the hardware devices"
+echo "                : Muestra los dispositivos de hardware"
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-show-hardware:
 ##############################       english: show-log: options
 ##############################       spanish: show-log: opciones
 #### :rutina-inicial-show-log:
@@ -6578,6 +6607,15 @@ echo "  dev-version: Show the link at the developer version"
 echo "  dev-changes: Show the last changes"
 echo "         code: Show the source code for one option"
 echo
+echo "$cinco         [ Show hardware ]"
+echo
+echo "           lsblk: Show the device disks"
+echo "           lsusb: Show the devices usb"
+echo "           lscpu: Show the devices cpu"
+echo "           lsgpu: Show the devices gpu"
+echo "           lspci: Show the devices pci"
+echo "            lshw: Show the hardware devices"
+echo
 echo "$cinco         [ Show etc ]"
 echo
 echo "           hosts: Show /etc/hosts, hosts local and statics host"
@@ -6842,6 +6880,15 @@ echo " new-versions: Muestra las ultimas versiones"
 echo "  dev-version: Muestra en enlace a la version de desarrollo"
 echo "  dev-changes: Muestra los ultimos cambios"
 echo "         code: Muestra el codigo fuente para una opcion"
+echo
+echo "$cinco        [ Herramienta de informacion del hardware ]"
+echo
+echo "               lsblk : Muestra los dispositivos de disco"
+echo "               lsusb : Muestra los dispositivos de usb"
+echo "               lscpu : Muestra los dispositivos cpu"
+echo "               lsgpu : Muestra los dispositivos gpu"
+echo "               lspci : Muestra los dispositivos pci"
+echo "                lshw : Muestra los dispositivos de hardware"
 echo
 echo "$cinco         [ Mostrar etc ]"
 echo
