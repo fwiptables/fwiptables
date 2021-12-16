@@ -3841,9 +3841,13 @@ blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
 ####
-echo "$rallica"
-echo "$rallica [   info: ] [ Get lines numbers total ] [ $fiptables blacklist-list info ]"
+echo
+echo "$rallica [   info: ] [ Get server lines numbers total ] [ $fiptables blacklist-list info ]"
 echo "$rallica [ change: ] [ $fiptables blacklist-on name-bl ] OR [ $fiptables blacklist-off ]" 
+echo
+echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
+echo "$rallica [ actually ] [ Show the file: $fiptables hosts ]"
+echo
 echo "$ralla"
 echo "$rallica"
 echo "$tab  name-bl          link-bl"
@@ -3863,6 +3867,10 @@ blacklist_lines_fademind="$(cat $file_temporal_rute/hosts.fademind | wc -l)"
 blacklist_lines_adaway="$(cat $file_temporal_rute/hosts.adaway | wc -l)"
 blacklist_lines_mvps="$(cat $file_temporal_rute/hosts.mvps | wc -l)"
 blacklist_lines_stevenblack="$(cat $file_temporal_rute/hosts.stevenblack | wc -l)"
+echo
+echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
+echo "$rallica [ actually ] [ Show the file: $fiptables hosts ]"
+echo
 echo "$tab [ info ] [ total numbers lines for those servers ]"
 echo "$tab fademind:    $blacklist_lines_fademind"
 echo "$tab adaway:      $blacklist_lines_adaway"
