@@ -2773,7 +2773,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
-"ipforward-list" "ipforward-on" "ipforward-off" \
+"ipforward-list" "ipforward-on" "ipforward-off" "info-proxy" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
 #### 
@@ -2787,6 +2787,7 @@ case $selection in
 "netstat") $fiptables -gui netstat ;;
 "netstat-nat") $fiptables -gui netstat-nat ;;
 "tcpdump") $fiptables -gui tcpdump ;;
+"info-proxy") $fiptables -gui info-proxy ;;
 "ipforward-list") $fiptables -gui ipforward-list ;;
 "ipforward-on") $fiptables -gui ipforward-on ;;
 "ipforward-off") $fiptables -gui ipforward-off ;;
