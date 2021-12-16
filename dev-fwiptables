@@ -1315,7 +1315,8 @@ echo "$tab" "$tab"  "    show-help          long-help help ayuda info basic-opti
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    Too other groups info:  tool-custom tool-forward tool-icmp               " 
 echo "$tab" "$tab"  "                            tool-nmap  tool-system tool-install              "
-echo "$tab" "$tab"  "                            tool-blacklist tool-dev show-log                 " 
+echo "$tab" "$tab"  "                            tool-blacklist tool-dev                          "
+echo "$tab" "$tab"  "                            show-hardware show-log                           " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1370,8 +1371,9 @@ echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklis
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
-echo "$tab" "$tab"  "    show-log           log-search log-ssh log-fwiptables                    "
+echo "$tab" "$tab"  "    show-hardware      lsblk lsusb lspci lscpu lsgpu lshw                    "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
+echo "$tab" "$tab"  "    show-log           log-search log-ssh log-fwiptables                     "
 echo "$tab" "$tab"  "                       resolv.conf show-default modify-default               "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
@@ -5942,6 +5944,21 @@ $fiptables stop
 ####
 ####
 #### :rutina-final-new-versions:
+############################       english: lsblk: list disks
+############################       spanish: lsblk: lista discos
+#### :rutina-inicial-lsblk:
+####
+####
+ if [ "$first_option" = "lsblk" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list disks ]"
+ echo $header_lineal
+ lsblk
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lsblk:
 ############################       english: hosts: show /etc/hosts
 ############################       spanish: hosts: muestra /etc/hosts
 #### :rutina-inicial-hosts:
