@@ -97,5 +97,7 @@
 # 2. info-proxy: documentarlo. HECHO
 # 3. log-sshd: cambiado a log-ssh. HECHO
 # 4. launch-custom: sustituye a tool-custom. HECHO
-# 5- show-hardware: documentar
+# 5- show-hardware: documentar.
+# 6- show-hardware: fucionar en gui-menu.
+#
 #
