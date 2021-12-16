@@ -101,4 +101,7 @@
 # 6- show-hardware: introducir en gui-menu.
 # 7- blacklist: introducir en gui-menu.
 # 8- tool-forward: introducir en gui-menu.
+# 9- blacklist: introducir en cli-menu.
+# 10- show-hardware: introducir en cli-menu.
+#
 #
