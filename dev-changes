@@ -91,17 +91,20 @@
 # 7. blacklist documentado en fwiptables. HECHO
 # 8. info-proxy: informa del uso del proxy, tambien informa en info-net. HECHO
 #
-# changes fwiptables 1.95 en desarollo
+# changes fwiptables 1.95
 #
 # 1. show-hardware: lsblk lsusb lspci lscpu lsgpu lshw. HECHO.
 # 2. info-proxy: documentarlo. HECHO
 # 3. log-sshd: cambiado a log-ssh. HECHO
 # 4. launch-custom: sustituye a tool-custom. HECHO
 # 5- show-hardware: introducir grupo y en las ayudas. HECHO
-# 6- show-hardware: introducir en gui-menu.
-# 7- blacklist: introducir en gui-menu.
-# 8- tool-forward: introducir en gui-menu.
-# 9- blacklist: introducir en cli-menu.
-# 10- show-hardware: introducir en cli-menu.
+#
+# changes fwiptables 1.96 en desarrollo
+#
+# 1- show-hardware: introducir en gui-menu.
+# 2- blacklist: introducir en gui-menu.
+# 3- tool-forward: introducir en gui-menu.
+# 4- blacklist: introducir en cli-menu.
+# 5- show-hardware: introducir en cli-menu.
 #
 #
