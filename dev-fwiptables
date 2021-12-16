@@ -6404,6 +6404,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$second_option" = "tool-blacklist" ]; then $fiptables tool-blacklist ; exit ; fi
  if [ "$second_option" = "tool-dev" ]; then $fiptables tool-dev ; exit ; fi
  if [ "$second_option" = "tool-system" ]; then $fiptables tool-system ; exit ; fi
+ if [ "$second_option" = "show-hardware" ]; then $fiptables show-hardware ; exit ; fi
  if [ "$second_option" = "show-etc" ]; then $fiptables show-etc ; exit ; fi
  if [ "$second_option" = "show-log" ]; then $fiptables show-log ; exit ; fi
  if [ "$second_option" = "show-about" ]; then $fiptables show-about ; exit ; fi
@@ -6423,8 +6424,8 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo " control-guide , control-rules , list-rules , user-interface ,"
  echo " launch-rules , launch-custom , tool-sockets , tool-forward ,"
  echo " tool-icmp , tool-tcp , tool-nmap , tool-sudo , tool-install ,"
- echo " tool-blacklist , tool-dev , tool-system , show-etc ,"
- echo " show-log , show-about , show-help ."
+ echo " tool-blacklist , tool-dev , tool-system , show-hardware ,"
+ echo " show-etc, show-log , show-about , show-help ."
  echo
  echo "$tab [ Example: ] [ $fiptables info user-interface ]"
  echo $footer_lineal
