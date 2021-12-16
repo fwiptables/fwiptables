@@ -93,9 +93,9 @@
 #
 # changes fwiptables 1.95 en desarollo
 #
-# 1. grupo tool-hardware: lsblk lsusb lspci lscpu lsgpu lshw.
+# 1. show-hardware: lsblk lsusb lspci lscpu lsgpu lshw.
 # 2. info-proxy: documentarlo. HECHO
 # 3. log-sshd: cambiado a log-ssh. HECHO
-# 4. launch-custom: sustituye a tool-custom
+# 4. launch-custom: sustituye a tool-custom. HECHO
 #
 #
