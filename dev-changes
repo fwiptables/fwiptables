@@ -93,9 +93,9 @@
 #
 # changes fwiptables 1.95 en desarollo
 #
-# 1. show-hardware: lsblk lsusb lspci lscpu lsgpu lshw.
+# 1. show-hardware: lsblk lsusb lspci lscpu lsgpu lshw. HECHO.
 # 2. info-proxy: documentarlo. HECHO
 # 3. log-sshd: cambiado a log-ssh. HECHO
 # 4. launch-custom: sustituye a tool-custom. HECHO
-#
+# 5- show-hardware: documentar
 #
