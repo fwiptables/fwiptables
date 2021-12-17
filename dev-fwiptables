@@ -4252,9 +4252,9 @@ exit; fi
  if [ "$first_option" = "info-proxy" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
- echo "$tab info address proxy"
- echo "$tab  http_proxy:    $http_proxy"
- echo "$tab  https_proxy:   $https_proxy"
+ echo "$tab Info address proxy"
+ echo "$tab Web http_proxy:    $http_proxy"
+ echo "$tab Web https_proxy:   $https_proxy"
  echo $footer_lineal
  exit; fi
 ####
