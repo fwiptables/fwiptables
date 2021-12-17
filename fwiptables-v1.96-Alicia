@@ -4239,6 +4239,15 @@ exit; fi
  echo "$ralla [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
  echo "$tab info socket list:"
+ echo $ralla
+ echo "$tab [ Network Listen ] [ Listen ipv4 ]"
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"; fi
+ $command_ss -l4 | sed 's/   / /g'
+ echo $ralla
+ echo "$tab [ Network Listen ] [ Listen ipv6 ]"
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"; fi
+ $command_ss -l6 | sed 's/   / /g'
+ echo $ralla
  echo $footer_lineal
  exit; fi
 ####
