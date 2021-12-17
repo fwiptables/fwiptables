@@ -1304,8 +1304,6 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Other options |                         "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof tcpdump info-proxy arp-lan              "
-echo "$tab" "$tab"  "                       netstat netstat-nat                                   "
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
 echo "$tab" "$tab"  "    tool-tcp           speed-ip4 speed-ip6                                   "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
@@ -1313,10 +1311,10 @@ echo "$tab" "$tab"  "    show-etc           show-default modify-default ..      
 echo "$tab" "$tab"  "    show-about         about version depends examples  ..                    "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda info basic-options ..            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Too other groups info:  launch-custom tool-forward tool-icmp             " 
-echo "$tab" "$tab"  "                            tool-nmap  tool-system tool-install              "
-echo "$tab" "$tab"  "                            tool-blacklist tool-dev                          "
-echo "$tab" "$tab"  "                            show-hardware show-log                           " 
+echo "$tab" "$tab"  "    Too other groups info:  launch-custom , tool-forward , tool-sockets ,    " 
+echo "$tab" "$tab"  "                            tool-icmp , tool-nmap , tool-system ,            "
+echo "$tab" "$tab"  "                            tool-install , tool-blacklist , tool-dev ,       "
+echo "$tab" "$tab"  "                            show-hardware , show-log .                       " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1357,8 +1355,8 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | tool options |                          " 
-echo "$tab" "$tab"  "    tool-sockets       route ss lsof tcpdump info-proxy arp-lan              "
-echo "$tab" "$tab"  "                       netstat netstat-nat                                   "
+echo "$tab" "$tab"  "    tool-sockets       info-listen info-proxy route ss lsof arp-lan          "
+echo "$tab" "$tab"  "                       tcpdump netstat netstat-nat                           "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
@@ -1833,6 +1831,10 @@ echo "$ralla [ $first_option ] [ tool sockets ]"
 echo "$rallica [ Tool sockets ]"
 echo "$rallica [ Herramienta de sockets ]"
 echo
+echo "      info-sockets: List system listen sockets"
+echo "                    Lista sockets a la escuha del sistema"
+echo "        info-proxy: List system proxy"
+echo "                    Lista proxy del sistema"
 echo "             route: Show net devices and ip route tables"
 echo "                  : Muestra los dispositivos de red y la tabla de rutas"
 echo "                ss: Show net sockets with command ss"
@@ -1847,8 +1849,6 @@ echo "           tcpdump: Listen the connections"
 echo "                  : Escucha las conexiones"
 echo "           arp-lan: List the conentions arp in the lan"
 echo "                  : Lista las conexiones arp en la red local"
-echo "        info-proxy: List system proxy"
-echo "                    Lista proxy del systema"
 echo $footer_lineal
 exit; fi
 ####
@@ -2802,7 +2802,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
-"ipforward-list" "ipforward-on" "ipforward-off" "info-proxy" \
+"ipforward-list" "ipforward-on" "ipforward-off" "info-proxy" "info-listen" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
 #### 
@@ -2817,6 +2817,7 @@ case $selection in
 "netstat-nat") $fiptables -gui netstat-nat ;;
 "tcpdump") $fiptables -gui tcpdump ;;
 "info-proxy") $fiptables -gui info-proxy ;;
+"info-listen") $fiptables -gui info-listen ;;
 "ipforward-list") $fiptables -gui ipforward-list ;;
 "ipforward-on") $fiptables -gui ipforward-on ;;
 "ipforward-off") $fiptables -gui ipforward-off ;;
@@ -3326,22 +3327,22 @@ if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
-  000 "$cinco $tab [$fiptables cli-menu] $tab $cinco" \
-  010 "$cinco [ Tool guide to begin ] $cinco" \
+  0000 "$cinco $tab [$fiptables cli-menu] $tab $cinco" \
+  0100 "$cinco [ Tool guide to begin ] $cinco" \
   11  "info-system" \
   12  "info-net" \
   13  "wizard-mini" \
   14  "wizard-full" \
-  020 "$cinco [ Control rules with firewall standard ] $cinco" \
+  0020 "$cinco [ Control rules with firewall standard ] $cinco" \
   21  "stop" \
   22  "continue" \
   23  "reset" \
   24  "list-fw"  \
   25  "show" \
-  26  "save"  \
-  27  "load"  \
+  26  "save" \
+  27  "load" \
   28  "actual" \
-  030 "$cinco [ List rules alphabetical ] $cinco" \
+  0030 "$cinco [ List rules alphabetical ] $cinco" \
   31  "list" \
   32  "list6"  \
   33  "list-filter4" \
@@ -3351,12 +3352,12 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   37  "list-nat4" \
   38  "list-nat6" \
   39  "list-allrules" \
-  040 "$cinco [ List rules numerical ] $cinco" \
+  0040 "$cinco [ List rules numerical ] $cinco" \
   41  "listnum" \
   42  "list-forwardnum" \
   43  "listnum6" \
   44  "list-forwardnum6" \
-  050 "$cinco [ List other tables ] $cinco"  \
+  0050 "$cinco [ List other tables ] $cinco"  \
   51  "list-raw4" \
   52  "list-raw6" \
   53  "list-mangle4" \
@@ -3365,7 +3366,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   56  "list-security6" \
   57  "list-ebtables" \
   58  "list-arptables" \
-  060 "$cinco [ Launch rules iptables ] $cinco" \
+  0060 "$cinco [ Launch rules iptables ] $cinco" \
   61  "eraserules" \
   62  "offline" \
   63  "allpermisive" \
@@ -3374,7 +3375,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   66  "gamesudp" \
   67  "serversamba" \
   68  "custom cfg" \
-  070 "$cinco [ Tool custom configurations cfg ] $cinco" \
+  0070 "$cinco [ Tool custom configurations cfg ] $cinco" \
   71  "new-full-config" \
   72  "nueva-completa-config" \
   73  "new-mini-config" \
@@ -3383,72 +3384,89 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   76  "modify-config" \
   77  "del-config" \
   78  "list-config" \
-  080 "$cinco [ Tool net sockets AND forward ] $cinco" \
+  0080 "$cinco [ Tool net sockets ] $cinco" \
   81  "route" \
   82  "ss" \
   83  "netstat" \
   84  "lsof" \
   85  "tcpdump" \
   86  "arp" \
-  87  "ipforward-list" \
-  88  "ipforward-on" \
-  89  "ipforward-off" \
-  090 "$cinco [ Tool tcp AND tool icmp ] $cinco" \
-  91   "ping-ip4" \
-  92   "ping-ip6" \
-  93   "speed-ip4" \
-  94   "speed-ip6" \
-  95   "tracetcp-ip4" \
-  96   "tracetcp-ip6" \
-  0100 "$cinco [ Tool tcp ] $cinco"  \
-  101  "host" \
-  102  "dig" \
-  103  "resolveip" \
-  104  "geoip" \
-  105  "ntpdate" \
-  0110 "$cinco [ tool sudo operations ] $cinco"  \
-  111  "sudo-auth" \
-  112  "sudo-remove" \
-  113  "sudo-list" \
-  0120 "$cinco [ tool install AND tool dev ] $cinco" \
-  121  "install" \
-  122  "howto-upgrade" \
-  123  "upgrade" \
-  124  "new-versions" \
-  125  "dev-version" \
-  126  "dev-changes" \
-  0130 "$cinco [ tool system program ] $cinco" \
-  131  "ram-free" \
-  132  "ram-speed" \
-  133  "disc-speed" \
-  134  "gl-speed" \
-  135  "radio" \
-  0140 "$cinco [ Show etc configurations ] $cinco" \
-  141  "hosts" \
-  142  "protocols" \
-  143  "services" \
-  144  "hosts.allow" \
-  145  "hosts.deny" \
-  146  "show-default" \
-  147  "modify-default" \
-  0150 "$cinco [ Show log registry ] $cinco" \
-  152  "log-ssh" \
-  153  "log-search" \
-  154  "log-fwiptables" \
-  0160 "$cinco [ Show about global options ] $cinco" \
-  161  "about" \
-  162  "depends" \
-  163  "examples" \
-  164  "config-eng" \
-  165  "config-spa" \
-  0170 "$cinco [ Show help global options ] $cinco" \
-  171  "basic-options" \
-  172  "full-options" \
-  173  "help" \
-  174  "ayuda" \
-  175  "long-help" \
-  176  "notes" \
-  177  "license" \
+  87  "info-listen" \
+  88  "info-proxy" \
+  0090 "$cinco [ Tool for ipfwarding ] $cinco" \
+  91  "ipforward-list" \
+  92  "ipforward-on" \
+  93  "ipforward-off" \
+  0100 "$cinco [ Tool tcp ] $cinco " \
+  101   "speed-ip4" \
+  102   "speed-ip6" \
+  103   "tracetcp-ip4" \
+  104   "tracetcp-ip6" \
+  0110 "$cinco [ Tool icmp ] $cinco" \
+  111   "ping-ip4" \
+  112   "ping-ip6" \
+  0120 "$cinco [ Tool udp ] $cinco"  \
+  121  "host" \
+  122  "dig" \
+  123  "resolveip" \
+  124  "geoip" \
+  125  "ntpdate" \
+  0130 "$cinco [ Tool sudo operations ] $cinco"  \
+  131  "sudo-auth" \
+  132  "sudo-remove" \
+  133  "sudo-list" \
+  0140 "$cinco [ Tool install ] $cinco" \
+  141  "install" \
+  142  "howto-upgrade" \
+  143  "upgrade" \
+  0150 "$cinco [ Tool blacklist ] $cinco" \
+  151  "blacklist-list" \
+  152  "blacklist-list info" \
+  153  "blacklist-on" \
+  154  "blacklist-off" \
+  0160 "$cinco [ Tool dev ] $cinco" \
+  161  "new-versions" \
+  162  "dev-version" \
+  163  "dev-changes" \
+  0170 "$cinco [ Tool system program ] $cinco" \
+  171  "ram-free" \
+  172  "ram-speed" \
+  173  "disc-speed" \
+  174  "gl-speed" \
+  175  "radio" \
+  0180 "$cinco [ Show hardware system ] $cinco" \
+  181  "lsblk" \
+  182  "lsusb" \
+  183  "lscpu" \
+  184  "lspci" \
+  185  "lsgpu" \
+  186  "lshw" \
+  0190 "$cinco [ Show etc configurations ] $cinco" \
+  191  "hosts" \
+  192  "protocols" \
+  193  "services" \
+  194  "hosts.allow" \
+  195  "hosts.deny" \
+  196  "show-default" \
+  197  "modify-default" \
+  0200 "$cinco [ Show log registry ] $cinco" \
+  201  "log-ssh" \
+  202  "log-search" \
+  203  "log-fwiptables" \
+  0210 "$cinco [ Show about ] $cinco" \
+  211  "about" \
+  212  "depends" \
+  213  "examples" \
+  214  "config-eng" \
+  215  "config-spa" \
+  0220 "$cinco [ Show help global options ] $cinco" \
+  221  "basic-options" \
+  222  "full-options" \
+  223  "help" \
+  224  "ayuda" \
+  225  "long-help" \
+  226  "notes" \
+  227  "license" \
  )"  
 #### 
 #### 
@@ -3456,24 +3474,29 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
 #### 
 #### 
  case "$menuprincipal" in
- 000) clear ; $fiptables info ;;
- 010) clear ; $fiptables control-guide ;;
- 020) clear ; $fiptables control-rules ;;
- 030) clear ; $fiptables list-rules ;;
- 040) clear ; $fiptables list-rules ;;
- 050) clear ; $fiptables list-rules ;;
- 060) clear ; $fiptables launch-rules ;;
- 070) clear ; $fiptables launch-custom ;;
- 080) clear ; $fiptables tool-socket ;;
- 090) clear ; $fiptables tool-tcp ; $fiptables tool-icmp ;;
+ 0000) clear ; $fiptables info ;;
+ 0010) clear ; $fiptables control-guide ;;
+ 0020) clear ; $fiptables control-rules ;;
+ 0030) clear ; $fiptables list-rules ;;
+ 0040) clear ; $fiptables list-rules ;;
+ 0050) clear ; $fiptables list-rules ;;
+ 0060) clear ; $fiptables launch-rules ;;
+ 0070) clear ; $fiptables launch-custom ;;
+ 0080) clear ; $fiptables tool-socket ;;
+ 0090) clear ; $fiptables tool-ipforward ;;
  0100) clear ; $fiptables tool-tcp ;;
- 0110) clear ; $fiptables tool-sudo ;;
- 0120) clear ; $fiptables tool-install ; $fiptables tool-dev ;;
- 0130) clear ; $fiptables tool-system ;;
- 0140) clear ; $fiptables show-etc ;;
- 0150) clear ; $fiptables show-log ;;
- 0160) clear ; $fiptables show-about ;;
- 0170) clear ; $fiptables show-help ;;
+ 0110) clear ; $fiptables tool-icmp ;;
+ 0120) clear ; $fiptables tool-udp ;;
+ 0130) clear ; $fiptables tool-sudo ;;
+ 0140) clear ; $fiptables tool-install ;;
+ 0150) clear ; $fiptables tool-blacklist ;;
+ 0160) clear ; $fiptables tool-dev ;;
+ 0170) clear ; $fiptables tool-system ;;
+ 0180) clear ; $fiptables show-hardware ;;
+ 0190) clear ; $fiptables show-etc ;;
+ 0200) clear ; $fiptables show-log ;;
+ 0210) clear ; $fiptables show-about ;;
+ 0220) clear ; $fiptables show-help ;; 
  11) clear ; $fiptables "info-system" | less ;;
  12) clear ; $fiptables "info-net" | less ;;
  13) clear ; $fiptables "wizard-mini" ;;
@@ -3551,62 +3574,75 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  84) clear ; $fiptables "lsof" | less ;;
  85) clear ; $fiptables "tcpdump" | less ;;
  86) clear ; $fiptables arp -a | less ;;
- 87) clear ; $fiptables "ipforward-list" | less ;;
- 88) clear ; $fiptables "ipforward-on" | less ;;
- 89) clear ; $fiptables "ipforward-off" | less ;;
- 91) clear ; $fiptables ping-ip4 ;;
- 92) clear ; $fiptables ping-ip6 ;;
- 93) clear ; $fiptables speed-ip4 ;;
- 94) clear ; $fiptables speed-ip6 ;;
- 95) clear ; $fiptables tracetcp-ip4 ;;
- 96) clear ; $fiptables tracetcp-ip6 ;;
- 101) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 87) clear ; $fiptables info-listen ;;
+ 88) clear ; $fiptables info-proxy ;;
+ 91) clear ; $fiptables "ipforward-list" | less ;;
+ 92) clear ; $fiptables "ipforward-on" | less ;;
+ 93) clear ; $fiptables "ipforward-off" | less ;;
+ 101) clear ; $fiptables speed-ip4 ;;
+ 102) clear ; $fiptables speed-ip6 ;;
+ 103) clear ; $fiptables tracetcp-ip4 ;;
+ 104) clear ; $fiptables tracetcp-ip6 ;;
+ 111) clear ; $fiptables ping-ip4 ;;
+ 112) clear ; $fiptables ping-ip6 ;;
+ 121) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables host $resolve ;;
- 102) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 122) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables dig $resolve ;;
- 103) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 123) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables resolveip $resolve ;;
- 104) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 124) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables geoip $resolve ;;
- 105) clear ; $fiptables "ntpdate" ;;
- 111) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+ 125) clear ; $fiptables "ntpdate" ;;
+ 131) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $fiptables sudo-auth $resolve ;;
- 112) clear ; $fiptables "sudo-remove" ;;
- 113) clear ; $fiptables "sudo-list" ;;
- 121) clear ; $zero_option "install";;
- 122) clear ; $fiptables "howto-upgrade" | less ;;
- 123) clear ; $fiptables "upgrade" ;;
- 124) clear ; $fiptables "new-versions" | less ;;
- 125) clear ; $fiptables "dev-version" | less ;;
- 126) clear ; $fiptables "dev-changes" | less ;; 
- 131) clear ; $fiptables "ram-free" ;;
- 132) clear ; $fiptables "ram-speed" ;;
- 133) clear ; $fiptables "disc-speed" ;;
- 134) clear ; $fiptables "gl-speed" ;;
- 135) clear ; $fiptables "radio" ;;
- 141) clear ; $fiptables "hosts" | less ;;
- 142) clear ; $fiptables "protocols" | less ;;
- 143) clear ; $fiptables "services" | less ;;
- 144) clear ; $fiptables "hosts.allow" | less ;;
- 145) clear ; $fiptables "hosts.deny" | less ;;
- 146) clear ; $fiptables "show-default"   ;;
- 147) clear ; $fiptables "modify-default" ;;
- 152) clear ; $fiptables "log-ssh" | less ;;
- 153) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ 132) clear ; $fiptables "sudo-remove" ;;
+ 133) clear ; $fiptables "sudo-list" ;;
+ 141) clear ; $zero_option "install";;
+ 142) clear ; $fiptables "howto-upgrade" | less ;;
+ 143) clear ; $fiptables "upgrade" ;;
+ 151) clear ; $fiptables blacklist-list ;;
+ 152) clear ; $fiptables blacklist-list info ;;
+ 153) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
+ clear ; $fiptables blacklist-on $resolve ;;
+ 154) clear ; $fiptables blacklist-off ;;
+ 161) clear ; $fiptables "new-versions" | less ;;
+ 162) clear ; $fiptables "dev-version" | less ;;
+ 163) clear ; $fiptables "dev-changes" | less ;; 
+ 171) clear ; $fiptables "ram-free" ;;
+ 172) clear ; $fiptables "ram-speed" ;;
+ 173) clear ; $fiptables "disc-speed" ;;
+ 174) clear ; $fiptables "gl-speed" ;;
+ 175) clear ; $fiptables "radio" ;;
+ 181) clear ; $fiptables "lsblk" ;;
+ 182) clear ; $fiptables "lsusb" ;; 
+ 183) clear ; $fiptables "lscpu" ;;
+ 184) clear ; $fiptables "lspci" ;;  
+ 185) clear ; $fiptables "lsgpu" ;;
+ 186) clear ; $fiptables "lshw" | less ;;
+ 191) clear ; $fiptables "hosts" | less ;;
+ 192) clear ; $fiptables "protocols" | less ;;
+ 193) clear ; $fiptables "services" | less ;;
+ 194) clear ; $fiptables "hosts.allow" | less ;;
+ 195) clear ; $fiptables "hosts.deny" | less ;;
+ 196) clear ; $fiptables "show-default"   ;;
+ 197) clear ; $fiptables "modify-default" ;;
+ 201) clear ; $fiptables "log-ssh" | less ;;
+ 202) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fiptables "log-search" "$pattern" | less ;;
- 154) clear ; $fiptables "log-fwiptables" | less ;;
- 161) clear ; $fiptables "about" | less ;;
- 162) clear ; $fiptables "depends" | less ;;
- 163) clear ; $fiptables "examples" | less ;;
- 164) clear ; $fiptables "config-eng" | less ;;
- 165) clear ; $fiptables "config-spa" | less ;;
- 171) clear ; $fiptables "basic-options" ;;
- 172) clear ; $fiptables "full-options" | less ;;
- 173) clear ; $fiptables "help" | less ;;
- 174) clear ; $fiptables "ayuda" | less ;;
- 175) clear ; $fiptables "long-help" | less ;;
- 176) clear ; $fiptables "notes" | less ;;
- 177) clear ; $fiptables "license" | less ;;
+ 203) clear ; $fiptables "log-fwiptables" | less ;;
+ 211) clear ; $fiptables "about" | less ;;
+ 212) clear ; $fiptables "depends" | less ;;
+ 213) clear ; $fiptables "examples" | less ;;
+ 214) clear ; $fiptables "config-eng" | less ;;
+ 215) clear ; $fiptables "config-spa" | less ;;
+ 221) clear ; $fiptables "basic-options" ;;
+ 222) clear ; $fiptables "full-options" | less ;;
+ 223) clear ; $fiptables "help" | less ;;
+ 224) clear ; $fiptables "ayuda" | less ;;
+ 225) clear ; $fiptables "long-help" | less ;;
+ 226) clear ; $fiptables "notes" | less ;;
+ 227) clear ; $fiptables "license" | less ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  echo "press [enter] to continue with the $fiptables cli-menu"
@@ -4194,6 +4230,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-netstat:
+#############################      english: info-listen: system script, the netstat sockets
+#############################      spanish: info-listen: script de sistema, el netstat sockets
+#### :rutina-inicial-info-listen:
+####
+####
+ if [ "$first_option" = "info-listen" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ Show info address proxy ]"
+ echo $header_lineal
+ echo "$tab info socket list:"
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-info-listen:
 #############################      english: info-proxy: system script, the netstat sockets
 #############################      spanish: info-proxy: script de sistema, el netstat sockets
 #### :rutina-inicial-info-proxy:
@@ -4203,8 +4253,8 @@ exit; fi
  echo "$ralla [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
  echo "$tab info address proxy"
- echo "$tab Proxy http:    $http_proxy"
- echo "$tab Proxy https:   $https_proxy"
+ echo "$tab  http_proxy:    $http_proxy"
+ echo "$tab  https_proxy:   $https_proxy"
  echo $footer_lineal
  exit; fi
 ####
@@ -6540,6 +6590,7 @@ echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
 echo "          arp-lan: List the conentions arp in lan"
 echo "       info-proxy: List system proxy"
+echo "      info-listen: List system listen socket list"
 echo
 echo "$cinco         [ Tool forward ]"
 echo
@@ -6813,7 +6864,8 @@ echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
 echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
 echo "           arp-lan: Lista las conexiones arp in lan"
-echo "        info-proxy: Lista proxy del systema"
+echo "        info-proxy: Lista proxy del sistema"
+echo "       info-listen: Lista sockets a la escucha del sistema"
 echo
 echo "$cinco         [ Herramienta de ip forwading ]"
 echo

@@ -101,10 +101,12 @@
 #
 # changes fwiptables 1.96 en desarrollo
 #
-# 1- show-hardware: introducir en gui-menu.
-# 2- blacklist: introducir en gui-menu.
-# 3- tool-forward: introducir en gui-menu.
-# 4- blacklist: introducir en cli-menu.
-# 5- show-hardware: introducir en cli-menu.
+# 1- info-liste: introducir en text cli and gui. HECHO
+# 2- tool-forward: ordenador en cli-menu. HECHO
+# 3- blacklist: introducir en cli-menu. HECHO
+# 4- show-hardware: introducir en cli-menu. HECHO
+# 5- tool-forward: reordenar en gui-menu.
+# 6- show-hardware: introducir en gui-menu.
+# 7- blacklist: introducir en gui-menu.
 #
 #
