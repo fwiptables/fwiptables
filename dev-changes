@@ -101,7 +101,7 @@
 #
 # changes fwiptables 1.96 en desarrollo
 #
-# 1- info-liste: introducir en text cli and gui. HECHO
+# 1- info-listen: introducir en text cli and gui. HECHO
 # 2- tool-forward: ordenador en cli-menu. HECHO
 # 3- blacklist: introducir en cli-menu. HECHO
 # 4- show-hardware: introducir en cli-menu. HECHO
