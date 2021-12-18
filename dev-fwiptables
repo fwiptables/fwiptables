@@ -1369,7 +1369,7 @@ echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklis
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
-echo "$tab" "$tab"  "    show-hardware      lsblk lsusb lscpu lspci lsgpu lshw                    "
+echo "$tab" "$tab"  "    show-hardware      lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
 echo "$tab" "$tab"  "    show-log           log-search log-ssh log-fwiptables                     "
 echo "$tab" "$tab"  "                       resolv.conf show-default modify-default               "
@@ -2122,6 +2122,8 @@ echo "$ralla [ $first_option ] [ show hardware info ]"
 echo "$rallica [ Show hardware info ]"
 echo "$rallica [ Muestra informacion del hardware ]"
 echo
+echo "          lpinfo: Show the device printers"
+echo "                : Muestra los dispositivos de impresora"
 echo "           lsblk: Show the device disks"
 echo "                : Muestra los dispositivos de disco"
 echo "           lsusb: Show the devices usb"
@@ -3435,12 +3437,13 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   174  "gl-speed" \
   175  "radio" \
   0180 "$cinco [ Show hardware system ] $cinco" \
-  181  "lsblk" \
-  182  "lsusb" \
-  183  "lscpu" \
-  184  "lspci" \
-  185  "lsgpu" \
-  186  "lshw" \
+  181  "lpinfo" \
+  182  "lsblk" \
+  183  "lsusb" \
+  184  "lscpu" \
+  185  "lspci" \
+  186  "lsgpu" \
+  187  "lshw" \
   0190 "$cinco [ Show etc configurations ] $cinco" \
   191  "hosts" \
   192  "protocols" \
@@ -3614,12 +3617,13 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  173) clear ; $fiptables "disc-speed" ;;
  174) clear ; $fiptables "gl-speed" ;;
  175) clear ; $fiptables "radio" ;;
- 181) clear ; $fiptables "lsblk" ;;
- 182) clear ; $fiptables "lsusb" ;; 
- 183) clear ; $fiptables "lscpu" ;;
- 184) clear ; $fiptables "lspci" ;;  
- 185) clear ; $fiptables "lsgpu" ;;
- 186) clear ; $fiptables "lshw" | less ;;
+ 181) clear ; $fiptables "lpinfo" ;; 
+ 182) clear ; $fiptables "lsblk" ;;
+ 183) clear ; $fiptables "lsusb" ;; 
+ 184) clear ; $fiptables "lscpu" ;;
+ 185) clear ; $fiptables "lspci" ;;  
+ 186) clear ; $fiptables "lsgpu" ;;
+ 187) clear ; $fiptables "lshw" | less ;;
  191) clear ; $fiptables "hosts" | less ;;
  192) clear ; $fiptables "protocols" | less ;;
  193) clear ; $fiptables "services" | less ;;
@@ -6041,6 +6045,22 @@ $fiptables stop
 ####
 ####
 #### :rutina-final-new-versions:
+############################       english: lpinfo: list printers
+############################       spanish: lpinfo: lista impresoras
+#### :rutina-inicial-lpinfo:
+####
+####
+ if [ "$first_option" = "lpinfo" ]; then  $give_cover
+ echo "$ralla [ $first_option ] [ list printers ]"
+ echo $header_lineal
+ echo $ralla
+ lpinfo -v -l
+ echo $ralla
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-lpinfo:
 ############################       english: lsblk: list disks
 ############################       spanish: lsblk: lista discos
 #### :rutina-inicial-lsblk:
@@ -6670,6 +6690,7 @@ echo "         code: Show the source code for one option"
 echo
 echo "$cinco         [ Show hardware ]"
 echo
+echo "          lpinfo: Show the device printers"
 echo "           lsblk: Show the device disks"
 echo "           lsusb: Show the devices usb"
 echo "           lscpu: Show the devices cpu"
@@ -6945,12 +6966,13 @@ echo "         code: Muestra el codigo fuente para una opcion"
 echo
 echo "$cinco        [ Herramienta de informacion del hardware ]"
 echo
-echo "               lsblk : Muestra los dispositivos de disco"
-echo "               lsusb : Muestra los dispositivos de usb"
-echo "               lscpu : Muestra los dispositivos cpu"
-echo "               lsgpu : Muestra los dispositivos gpu"
-echo "               lspci : Muestra los dispositivos pci"
-echo "                lshw : Muestra los dispositivos de hardware"
+echo "              lpinfo: Muestra los dispositivos de impresora"
+echo "               lsblk: Muestra los dispositivos de disco"
+echo "               lsusb: Muestra los dispositivos de usb"
+echo "               lscpu: Muestra los dispositivos cpu"
+echo "               lsgpu: Muestra los dispositivos gpu"
+echo "               lspci: Muestra los dispositivos pci"
+echo "                lshw: Muestra los dispositivos de hardware"
 echo
 echo "$cinco         [ Mostrar etc ]"
 echo

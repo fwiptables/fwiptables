@@ -105,6 +105,7 @@
 # 2- tool-forward: ordenador en cli-menu. HECHO
 # 3- blacklist: introducir en cli-menu. HECHO
 # 4- show-hardware: introducir en cli-menu. HECHO
+# 5- lpinfo: introducir en text cli and gui. 
 # 5- tool-forward: reordenar en gui-menu.
 # 6- show-hardware: introducir en gui-menu.
 # 7- blacklist: introducir en gui-menu.
