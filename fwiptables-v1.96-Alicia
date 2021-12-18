@@ -2553,9 +2553,9 @@ if [ "$first_option" = "gui-menu" ] ; then $genfiles
 echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool custom" \
-"06 Tool sockets" "07 Tool Forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
-"12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show-hardware" \
+ --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Launch custom" \
+"06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
+"12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show hardware" \
 "17 Show etc" "18 Show log" "19 Show about" "20 Show help" \
 --column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
 #### 
@@ -2566,9 +2566,9 @@ case "$selection" in
 "02 Control rules")$fiptables gui-menu-control-rules;;
 "03 List rules")$fiptables gui-menu-list-rules;;
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
-"05 Tool custom")$fiptables gui-menu-launch-custom;;
+"05 Launch custom")$fiptables gui-menu-launch-custom;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
-"07 Tool Forward")$fiptables gui menu-tool-forward ;;
+"07 Tool forward")$fiptables gui-menu-tool-forward ;;
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
 "09 Tool udp")$fiptables gui-menu-tool-udp;;
 "10 Tool icmp")$fiptables gui-menu-tool-icmp;;
@@ -2577,7 +2577,7 @@ case "$selection" in
 "13 Tool install")$fiptables gui-menu-tool-install;;
 "14 Tool blacklist")$fiptables gui-menu-tool-blacklist;;
 "15 Tool dev")$fiptables gui-menu-tool-dev;;
-"16 Show-hardware")$fiptables gui-menu-show-hardware;;
+"16 Show hardware")$fiptables gui-menu-show-hardware;;
 "17 Show etc")$fiptables gui-menu-show-etc;;
 "18 Show log")$fiptables gui-menu-show-log;;
 "19 Show about")$fiptables gui-menu-show-about;;
@@ -3074,7 +3074,9 @@ case $selection in
 "Gui Info Menu") $fiptables -gui tool-blacklist;;
 "blacklist-list")$fiptables -gui blacklist-list;;
 "blacklist-list info")$fiptables -gui blacklist-list info ;;
-"blacklist-on") $fiptables -gui blacklist-on;;
+"blacklist-on")
+ archivo="$(zenity $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
+ $fiptables -gui blacklist-on $archivo;;
 "blacklist-off") $fiptables -gui blacklist-off;;
 esac
 ####
