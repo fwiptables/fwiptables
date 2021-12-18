@@ -2554,8 +2554,9 @@ echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool custom" \
-"06 Tool sockets" "07 Tool tcp" "08 Tool udp" "09 Tool icmp"  "10 Tool sudo" "11 Tool system" "12 Tool install" \
-"13 Tool dev" "14 Show etc" "15 Show log" "16 Show about" "17 Show help" \
+"06 Tool sockets" "07 Tool Forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
+"12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show-hardware" \
+"17 Show etc" "18 Show log" "19 Show about" "20 Show help" \
 --column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
 #### 
 #### 
@@ -2567,17 +2568,20 @@ case "$selection" in
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
 "05 Tool custom")$fiptables gui-menu-launch-custom;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
-"07 Tool tcp")$fiptables gui-menu-tool-tcp;;
-"08 Tool udp")$fiptables gui-menu-tool-udp;;
-"09 Tool icmp")$fiptables gui-menu-tool-icmp;;
-"10 Tool sudo")$fiptables gui-menu-tool-sudo;;
-"11 Tool system")$fiptables gui-menu-tool-system;;
-"12 Tool install")$fiptables gui-menu-tool-install;;
-"13 Tool dev")$fiptables gui-menu-tool-dev;;
-"14 Show etc")$fiptables gui-menu-show-etc;;
-"15 Show log")$fiptables gui-menu-show-log;;
-"16 Show about")$fiptables gui-menu-show-about;;
-"17 Show help")$fiptables gui-menu-show-help;;
+"07 Tool Forward")$fiptables gui menu-tool-forward ;;
+"08 Tool tcp")$fiptables gui-menu-tool-tcp;;
+"09 Tool udp")$fiptables gui-menu-tool-udp;;
+"10 Tool icmp")$fiptables gui-menu-tool-icmp;;
+"11 Tool sudo")$fiptables gui-menu-tool-sudo;;
+"12 Tool system")$fiptables gui-menu-tool-system;;
+"13 Tool install")$fiptables gui-menu-tool-install;;
+"14 Tool blacklist")$fiptables gui-menu-tool-blacklist;;
+"15 Tool dev")$fiptables gui-menu-tool-dev;;
+"16 Show-hardware")$fiptables gui-menu-show-hardware;;
+"17 Show etc")$fiptables gui-menu-show-etc;;
+"18 Show log")$fiptables gui-menu-show-log;;
+"19 Show about")$fiptables gui-menu-show-about;;
+"20 Show help")$fiptables gui-menu-show-help;;
 esac
 ####
 ####
@@ -2803,8 +2807,8 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "route" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
-"ipforward-list" "ipforward-on" "ipforward-off" "info-proxy" "info-listen" \
+--list "Gui Principal Menu" "Gui Info Menu" "route" "ss" "lsof" \
+"netstat" "netstat-nat" "tcpdump" "info-proxy" "info-listen" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
 #### 
@@ -2820,9 +2824,6 @@ case $selection in
 "tcpdump") $fiptables -gui tcpdump ;;
 "info-proxy") $fiptables -gui info-proxy ;;
 "info-listen") $fiptables -gui info-listen ;;
-"ipforward-list") $fiptables -gui ipforward-list ;;
-"ipforward-on") $fiptables -gui ipforward-on ;;
-"ipforward-off") $fiptables -gui ipforward-off ;;
 esac
 ####
 ####
@@ -2835,6 +2836,36 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-sockets:
+############################## english: gui-menu-tool-forward: gui with menu ##############################
+############################## spanish: gui-menu-tool-forward: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-forward:
+####
+####
+if [ "$first_option" = "gui-menu-tool-forward" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off" \
+--column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu") $fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui tool-forward;;
+"ipforward-list") $fiptables -gui ipforward-list;;
+"ipforward-on") $fiptables -gui ipforward-on;;
+"ipforward-off") $fiptables -gui ipforward-off;;
+esac
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-forward:
 ############################## english: gui-menu-tool-icmp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-icmp: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-icmp:
@@ -3025,6 +3056,38 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-install:
+############################## english: gui-menu-tool-blacklist: gui with menu ##############################
+############################## spanish: gui-menu-tool-blacklist: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-blacklist:
+####
+####
+if [ "$first_option" = "gui-menu-tool-blacklist" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "blacklist-list" "blacklist-list info" \
+"blacklist-on" "blacklist-off" \
+--column="Option list $fiptables" --text="Select one option" --title="[Tool Install] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu")$fiptables gui-menu;;
+"Gui Info Menu") $fiptables -gui tool-blacklist;;
+"blacklist-list")$fiptables -gui blacklist-list;;
+"blacklist-list info")$fiptables -gui blacklist-list info ;;
+"blacklist-on") $fiptables -gui blacklist-on;;
+"blacklist-off") $fiptables -gui blacklist-off;;
+esac
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-blacklist:
 ############################## english: gui-menu-tool-dev: gui with menu ##############################
 ############################## spanish: gui-menu-tool-dev: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-dev:
@@ -3055,6 +3118,40 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-dev:
+############################## english: gui-menu-show-hardware: gui with menu ##############################
+############################## spanish: gui-menu-show-hardware: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-show-hardware:
+####
+####
+if [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
+--column="Option list $fiptables" --text="Select one option" --title="[Show etc] [$fiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
+"Gui Principal Menu")$fiptables gui-menu ;;
+"Gui Info Menu") $fiptables -gui show-hardware;;
+"lpinfo")$fiptables -gui lpinfo;;
+"lsblk")$fiptables -gui lsblk;;
+"lpusb")$fiptables -gui lsusb;;
+"lscpu")$fiptables -gui lscpu;;
+"lspci")$fiptables -gui lspci;;
+"lsgpu")$fiptables -gui lsgpu;;
+"lshw")$fiptables -gui lshw;;
+esac
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-show-hardware:
 ############################## english: gui-menu-show-etc: gui with menu ##############################
 ############################## spanish: gui-menu-show-etc: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-show-etc:
