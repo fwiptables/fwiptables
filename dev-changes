@@ -99,7 +99,7 @@
 # 4. launch-custom: sustituye a tool-custom. HECHO
 # 5- show-hardware: introducir grupo y en las ayudas. HECHO
 #
-# changes fwiptables 1.96 en desarrollo
+# changes fwiptables 1.96
 #
 # 1- info-listen: introducir en text cli and gui. HECHO
 # 2- tool-forward: ordenador en cli-menu. HECHO
@@ -109,5 +109,7 @@
 # 5- tool-forward: reordenar en gui-menu. HECHO
 # 6- show-hardware: introducir en gui-menu. HECHO
 # 7- blacklist: introducir en gui-menu. HECHO
+#
+# changes fwiptables 1.97 en desarrollo
 #
 #
