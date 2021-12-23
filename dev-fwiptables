@@ -120,7 +120,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.98-Lucas" ;                                             
+fversion="1.97-Remedios" ;                                          
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -6600,12 +6600,13 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo
  echo "$tab [ group list: ]"
  echo
-echo "$tab" "$tab"  "control-guide , control-rules , user-interface , list-rules ,       " 
-echo "$tab" "$tab"  "launch-rules ,  launch-custom , tool-sockets ,   tool-forward ,     " 
-echo "$tab" "$tab"  "tool-tcp ,      tool-udp ,      tool-icmp ,      tool-nmap ,        "
-echo "$tab" "$tab"  "tool-sudo ,     tool-system ,   tool-install ,   tool-blacklist ,   "
-echo "$tab" "$tab"  "tool-dev ,      show-hardware , show-etc ,       show-log ,         "
-echo "$tab" "$tab"  "tool-about ,    show-help ,     show-example ,                      "
+echo "$tab" "$tab"  "     | info |                      | Group options |                         "
+echo "$tab" "$tab"  "         control-guide   control-rules   user-interface   list-rules         " 
+echo "$tab" "$tab"  "         launch-rules    launch-custom   tool-sockets     tool-forward       " 
+echo "$tab" "$tab"  "         tool-tcp        tool-udp        tool-icmp        tool-nmap          "
+echo "$tab" "$tab"  "         tool-sudo       tool-system     tool-install     tool-blacklist     "
+echo "$tab" "$tab"  "         tool-dev        show-hardware   show-etc         show-log           "
+echo "$tab" "$tab"  "         tool-about      show-help       show-example                        "
  echo
  echo "$tab [ Example: ] [ $fiptables info user-interface ]"
  echo $footer_lineal
