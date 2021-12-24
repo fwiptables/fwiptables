@@ -110,8 +110,11 @@
 # 6- show-hardware: introducir en gui-menu. HECHO
 # 7- blacklist: introducir en gui-menu. HECHO
 #
-# changes fwiptables 1.97 en desarrollo
+# changes fwiptables 1.97
 #
-# 1.basic-options: remodelada
-# 2.info: remodelada
+# 1- basic-options: remodelada
+# 2- info: remodelada
 #
+# changes fwiptables-1.98 en desarrollo
+#
+
