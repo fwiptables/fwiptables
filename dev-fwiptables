@@ -62,7 +62,7 @@ fi
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: new option for default
 ####       #### spanish: nueva opcion por defecto
-default_option="full-options"        ## fwiptables-default ## default: full-options
+null_option="full-options"        ## fwiptables-default ## default for null option: full-options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy="no"                     ## fwiptables-default ## void or no
@@ -120,7 +120,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="1.97-Remedios" ;                                          
+fversion="1.98-Lucas" ;                                          
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -220,8 +220,8 @@ flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####
-#### english: if wrong in default_option
-#### spanish: si esta mal definidad definida default_option
+#### english: if wrong in null_option
+#### spanish: si esta mal definidad definida null_option
 ####
 ####
 default_security="basic-options"
@@ -275,11 +275,11 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ####
 ####
-#### english: if default_option is void return default to basic-options
+#### english: if null option is void return default to basic-options
 #### spanish: si la opcion por defecto esta vacia vuelve a basic-options
 ####
 ####
-if [ "$default_option" = "$NULL" ] ; then default_option="$default_security" ; fi
+if [ "$null_option" = "$NULL" ] ; then null_option="$default_security" ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
@@ -563,7 +563,7 @@ fi
 ####
 ####
 case "$first_option" in 
-"$NULL") $fiptables "$default_option" ; exit ;;
+"$NULL") $fiptables "$null_option" ; exit ;;
 "gui") first_option="-gui" ;;
 "cli") first_option="cli-menu" ;;
 "gui-menu") first_option="gui-menu" ;;
@@ -1321,7 +1321,7 @@ echo "$tab" "$tab"  "  Generate new iptables rules :           $fiptables wizard
 echo "$tab" "$tab"  "  Save iptables rules with one name :     $fiptables save name               "
 echo "$tab" "$tab"  "  List names from all firewall saved :    $fiptables names                   "
 echo "$tab" "$tab"  "  Show control-guide with output gui :    $fiptables -gui control-guide      "
-echo "$tab" "$tab"  "  For more options :                      $fiptables full-options            "
+echo "$tab" "$tab"  "  For more options :                      $fiptables options                 "
 echo $footer_lineal
 exit ; fi
 ####
@@ -7172,7 +7172,7 @@ exit; fi
 ####
 ####
 if [ "$launch_iptables" = "" ] ; then $nada ; else 
-echo "$rallica Selecting default option .. "; $fiptables $default_security ; exit ; fi
+echo "$rallica Choose a one valid option .. "; $fiptables $default_security ; exit ; fi
 ####
 ####
 ###############################################################################################################
