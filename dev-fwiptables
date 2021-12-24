@@ -1317,11 +1317,11 @@ echo "$tab" "$tab"  "         tool-about      show-help       show-example      
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
-echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
-echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  Show group tool-tcp with output gui :     $fiptables -gui info tool-tcp    "
-echo "$tab" "$tab"  "  For more options :                        $fiptables full-options          "
+echo "$tab" "$tab"  "  Generate new iptables rules :           $fiptables wizard-mini             "
+echo "$tab" "$tab"  "  Save iptables rules with one name :     $fiptables save name               "
+echo "$tab" "$tab"  "  List names from all firewall saved :    $fiptables names                   "
+echo "$tab" "$tab"  "  Show control-guide with output gui :    $fiptables -gui control-guide      "
+echo "$tab" "$tab"  "  For more options :                      $fiptables full-options            "
 echo $footer_lineal
 exit ; fi
 ####
@@ -1382,7 +1382,7 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
-echo "$tab" "$tab"  "  Save iptables rules with output gui :     $fiptables -gui save name        "
+echo "$tab" "$tab"  "  Show control-guide with output gui :      $fiptables -gui control-guide    "
 echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
 echo $footer_lineal
 exit ; fi
@@ -6608,7 +6608,7 @@ echo "$tab" "$tab"  "         tool-sudo       tool-system     tool-install     t
 echo "$tab" "$tab"  "         tool-dev        show-hardware   show-etc         show-log           "
 echo "$tab" "$tab"  "         tool-about      show-help       show-example                        "
  echo
- echo "$tab [ Example: ] [ $fiptables info user-interface ]"
+ echo "$tab [ Example: ] [ $fiptables info user-interface ] [ OR ] [ $fiptables user-interface ]"
  echo $footer_lineal
  exit; fi
 ####
