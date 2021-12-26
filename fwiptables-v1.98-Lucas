@@ -62,7 +62,7 @@ fi
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: new option for default
 ####       #### spanish: nueva opcion por defecto
-null_option="full-options"        ## fwiptables-default ## default for null option: full-options
+null_option="basic-options"        ## fwiptables-default ## default for null option: full-options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy="no"                     ## fwiptables-default ## void or no
@@ -5215,7 +5215,7 @@ exit; fi
  $command_ip -4 route ls | grep -iv default
  echo $rallica
  echo local scan: arp lan
- $command_arp-scan -l -x 
+ $command_arp_scan -l -x 
  ;;
  esac
  echo $footer_lineal
