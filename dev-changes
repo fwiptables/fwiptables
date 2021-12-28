@@ -118,5 +118,7 @@
 # changes fwiptables-1.98 en desarrollo
 #
 # 1- arp-scan: corregido
+# 2- arp-scan: cambiado a info-nodes
+# 3- default_option: cambiada a whithout_option
 #
 
