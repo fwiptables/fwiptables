@@ -62,7 +62,7 @@ fi
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: new option for default
 ####       #### spanish: nueva opcion por defecto
-null_option="basic-options"        ## fwiptables-default ## default for null option: full-options
+whithout_option="basic-options"        ## fwiptables-default ## default for null option: full-options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy="no"                     ## fwiptables-default ## void or no
@@ -220,8 +220,8 @@ flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####
-#### english: if wrong in null_option
-#### spanish: si esta mal definidad definida null_option
+#### english: if wrong in whithout_option
+#### spanish: si esta mal definidad definida whithout_option
 ####
 ####
 default_security="basic-options"
@@ -279,7 +279,7 @@ if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 #### spanish: si la opcion por defecto esta vacia vuelve a basic-options
 ####
 ####
-if [ "$null_option" = "$NULL" ] ; then null_option="$default_security" ; fi
+if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
 ############################## english: are you root: uid 0 ?                ############################## 
@@ -563,7 +563,7 @@ fi
 ####
 ####
 case "$first_option" in 
-"$NULL") $fiptables "$null_option" ; exit ;;
+"$NULL") $fiptables "$whithout_option" ; exit ;;
 "gui") first_option="-gui" ;;
 "cli") first_option="cli-menu" ;;
 "gui-menu") first_option="gui-menu" ;;
@@ -1354,7 +1354,7 @@ echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config   
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | tool options |                          " 
-echo "$tab" "$tab"  "    tool-sockets       info-listen info-proxy route ss lsof arp-lan          "
+echo "$tab" "$tab"  "    tool-sockets       info-listen info-nodes info-proxy route ss lsof       "
 echo "$tab" "$tab"  "                       tcpdump netstat netstat-nat                           "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
@@ -1846,7 +1846,7 @@ echo "       netstat-nat: Show net sockets wiht command netstat-nat"
 echo "                  : Muestra las conexiones con netstat-nat"
 echo "           tcpdump: Listen the connections"
 echo "                  : Escucha las conexiones"
-echo "           arp-lan: List the conentions arp in the lan"
+echo "        info-nodes: List the conentions arp in the lan"
 echo "                  : Lista las conexiones arp en la red local"
 echo $footer_lineal
 exit; fi
@@ -5200,12 +5200,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-tcpdump:
-############################       english: arp-lan: listen at dump from conexiones
-############################       spanish: arp-lan: escucha al volcado de conexiones
-#### :rutina-inicial-arp-lan:
+############################       english: info-nodes: listen at dump from conexiones
+############################       spanish: info-nodes: escucha al volcado de conexiones
+#### :rutina-inicial-info-nodes:
 ####
 ####
- if [ "$first_option" = "arp-lan" ]; then  $give_cover
+ if [ "$first_option" = "info-nodes" ]; then  $give_cover
  case $command_arp_scan in "$NULL") echo "install arp-scan" ;;
  *)
  echo "$ralla [ $first_option ] [ Show the list arp-scan in the lan ]"
@@ -5222,7 +5222,7 @@ exit; fi
  exit; fi
 ####
 ####
-#### :rutina-final-arp-lan:
+#### :rutina-final-info-nodes:
 ############################       english: show-default: show /etc/default/fwiptables
 ############################       spanish: show-default: show /etc/default/fwiptables
 #### :rutina-inicial-show-default:
@@ -6719,7 +6719,7 @@ echo "             lsof: Show net sockets with command lsof"
 echo "          netstat: Show net sockets with command netstat"
 echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
-echo "          arp-lan: List the conentions arp in lan"
+echo "       info-nodes: List the conentions arp in lan"
 echo "       info-proxy: List system proxy"
 echo "      info-listen: List system listen socket list"
 echo
@@ -6995,7 +6995,7 @@ echo "           netstat: Muestra las conexiones con comando netstat"
 echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
 echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
-echo "           arp-lan: Lista las conexiones arp in lan"
+echo "        info-nodes: Lista las conexiones arp in lan"
 echo "        info-proxy: Lista proxy del sistema"
 echo "       info-listen: Lista sockets a la escucha del sistema"
 echo

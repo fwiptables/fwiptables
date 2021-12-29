@@ -112,13 +112,13 @@
 #
 # changes fwiptables 1.97
 #
-# 1- basic-options: remodelada
-# 2- info: remodelada
+# 1- basic-options: remodelada. HECHO
+# 2- info: remodelada. HECHO
 #
 # changes fwiptables-1.98 en desarrollo
 #
-# 1- arp-scan: corregido
+# 1- arp-scan: corregido. HECHO
 # 2- arp-scan: cambiado a info-nodes
-# 3- default_option: cambiada a whithout_option
+# 3- default_option: cambiada a whithout_option. HECHO
 #
 
