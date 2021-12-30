@@ -2390,7 +2390,6 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $genfiles ;
 echo $head_waiting
-#### echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
@@ -2482,7 +2481,6 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $genfiles
 echo $head_waiting
-#### echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
@@ -2543,7 +2541,6 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting
-#### then echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fiptables user-interface)"
 exit; fi
@@ -2554,8 +2551,7 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" = "gui-menu" ] ; then $genfiles 
-echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
+if [ "$first_option" = "gui-menu" ] ; then $genfiles ; echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Launch custom" \
@@ -3298,8 +3294,7 @@ exit; fi
 #### :rutina-inicial-gui-shell:
 ####
 ####
-if [ "$first_option" = "gui-shell" ] ; then $genfiles
-echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
+if [ "$first_option" = "gui-shell" ] ; then $genfiles ; echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 ####
 ####
@@ -5197,7 +5192,7 @@ exit; fi
  echo $header_lineal
 ####
 ####
- echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
+ echo $head_waiting
  echo "$ralla" "$ralla" "$ralla"
  timeout -s SIGINT -v $server_waiting tcpdump -v
  echo "$ralla" "$ralla" "$ralla"
@@ -5221,7 +5216,7 @@ exit; fi
  $command_ip -4 route ls | grep -iv default
  echo $rallica
  echo local scan: arp lan
- echo "$tab Waiting $server_waiting seconds .."
+ echo $head_waiting
  $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan 
  ;;
  esac
@@ -5600,7 +5595,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
+ echo $head_waiting
  echo "$cinco ping -4 -c 5 -A $server_ping_ipv4"
  timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
  $fiptables continue
@@ -5624,7 +5619,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
+ echo $head_waiting
  echo "$cinco ping -6 -c 5 -A $server_ping_ipv6"
  timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
  $fiptables continue
@@ -5648,10 +5643,10 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
+ echo $head_waiting
  echo "$cinco traceroute -4 -T $server_traceroute_ipv4"
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
- echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
+ echo $head_waiting
  $fiptables continue
  echo $footer_lineal
  exit; fi
@@ -5673,7 +5668,7 @@ exit; fi
 ####
 ####
  $fiptables stop
- echo "$cinco [ $first_option: ] [ for default max $server_waiting seconds ]"
+ echo $head_waiting
  echo "$cinco traceroute -6 -T $server_traceroute_ipv6"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
  $fiptables continue
