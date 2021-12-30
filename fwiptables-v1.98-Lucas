@@ -5217,8 +5217,8 @@ exit; fi
  $command_ip -4 route ls | grep -iv default
  echo $rallica
  echo local scan: arp lan
- echo "$tab Waiting 15 seconds .."
- $command_arp_scan -l -x & sleep 15 && kill -9 $command_arp_scan 
+ echo "$tab Waiting $server_waiting seconds .."
+ $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan 
  ;;
  esac
  echo $footer_lineal
