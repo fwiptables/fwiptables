@@ -140,7 +140,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
-cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____"
+cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -153,6 +153,8 @@ head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables fu
 head_normal="$cinco [ For the usage list:  $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+head_waiting="$rallica [ Graphics: ] [ Wait several seconds.. ] [ with max $server_waiting seconds ]" 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2387,7 +2389,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $genfiles ;
-echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
+echo $head_waiting
+#### echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
@@ -2478,7 +2481,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $genfiles
-echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
+echo $head_waiting
+#### echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
@@ -2538,8 +2542,8 @@ exit; fi
 ############################## spanish: -gui: sin mas opcion       ##############################
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; 
-then echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
+if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting
+#### then echo "Graphics: Wait several seconds.. with max $server_waiting seconds" ;
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fiptables user-interface)"
 exit; fi
