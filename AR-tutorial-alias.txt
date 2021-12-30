@@ -1,3 +1,4 @@
+#!/bin/sh
 alias apt='sudo apt'
 alias apt-get='sudo apt-get'
 alias fwiptables='sudo /usr/bin/fwiptables'

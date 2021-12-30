@@ -319,8 +319,8 @@ echo "  LICENSE GNU / GPL v2."
 echo "  See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
 echo
-echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ "$zero_option" install ]" ;
-echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ "$zero_option" upgrade ]" ;
+echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" ;
+echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" ;
 echo
 echo "--------------------------------------------------------------------------"
 echo
