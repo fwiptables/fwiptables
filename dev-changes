@@ -123,4 +123,7 @@
 # 4- basic-options: actualizada. HECHO
 # 5- head_wiating: variable insertada. HECHO
 #
-
+# changes fwiptables-1.99 en desarrollo
+#
+# 1. blacklist:  /etc/hosts toma "$(hostname)
+#
