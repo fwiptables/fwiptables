@@ -115,7 +115,7 @@
 # 1- basic-options: remodelada. HECHO
 # 2- info: remodelada. HECHO
 #
-# changes fwiptables-1.98 en desarrollo
+# changes fwiptables-1.98
 #
 # 1- arp-scan: corregido. HECHO
 # 2- arp-scan: cambiado a info-nodes. HECHO
@@ -123,7 +123,10 @@
 # 4- basic-options: actualizada. HECHO
 # 5- head_wiating: variable insertada. HECHO
 #
-# changes fwiptables-1.99 en desarrollo
+# changes fwiptables-1.99
 #
-# 1. blacklist:  /etc/hosts toma "$(hostname)
+# 1. blacklist-off: hostname a localhost.localdomain to work
+#
+# changes fwiptables 2.00 en desarrollo
+#
 #
