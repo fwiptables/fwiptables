@@ -4113,12 +4113,12 @@ echo $rallica; exit; fi
 ####
 if [ "$first_option" = "blacklist-off" ]; then $give_cover
 echo $rallica
-hostname localhost
+hostname localhost.localdomain
 echo "$cinco" > "$file_temporal_path/hosts"
 echo "## ip v4 loopback ##" >> "$file_temporal_path/hosts"
-echo "127.0.0.1	localhost-ip4 localhost " >> "$file_temporal_path/hosts"
+echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> "$file_temporal_path/hosts"
 echo "## ip v6 loopback ##" >> "$file_temporal_path/hosts"
-echo "::1      localhost-ip6 localhost " >> "$file_temporal_path/hosts"
+echo "::1      localhost-ip6 localhost localhost.localdomain" >> "$file_temporal_path/hosts"
 echo "ff02::1 ip6-allnodes " >> "$file_temporal_path/hosts"
 echo "ff02::2 ip6-allrouters " >> "$file_temporal_path/hosts"
 echo "$cinco" >> "$file_temporal_path/hosts"
