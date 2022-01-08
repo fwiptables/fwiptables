@@ -62,7 +62,7 @@ fi
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: new option for default
 ####       #### spanish: nueva opcion por defecto
-whithout_option="basic-options"        ## fwiptables-default ## default for null option: full-options
+whithout_option="basic-options"        ## fwiptables-default ## default for null option: options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy="no"                     ## fwiptables-default ## void or no
@@ -148,7 +148,7 @@ ralla="______________________"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables full-options ]"
+head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_normal="$cinco [ For the usage list:  $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
