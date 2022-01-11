@@ -125,7 +125,7 @@
 #
 # changes fwiptables-1.99
 #
-# 1. blacklist-off: hostname a localhost.localdomain to work
+# 1. blacklist-off: hostname to localhost.localdomain to work
 #
 # changes fwiptables 2.00 en desarrollo
 #
