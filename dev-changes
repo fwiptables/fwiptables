@@ -127,9 +127,11 @@
 #
 # 1. blacklist-off: hostname configurada a localhost.localdomain para trabajar
 #
-# changes fwiptables 2.00 en desarrollo
+# changes fwiptables 2.00
 #
 # 1. custom-rules: renombrado a tool-rules
 # 2. simplicada cabecera
+#
+# changes fwiptables 2.01
 #
 #
