@@ -125,9 +125,9 @@
 #
 # changes fwiptables-1.99
 #
-# 1. blacklist-off: hostname to localhost.localdomain to work
+# 1. blacklist-off: hostname configurada a localhost.localdomain para trabajar
 #
 # changes fwiptables 2.00 en desarrollo
 #
-# 1. custom-rules: renombrado launch-custom
+# 1. custom-rules: renombrado a tool-rules
 #
