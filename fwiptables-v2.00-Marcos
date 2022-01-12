@@ -146,7 +146,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" $cinco [ $fiptables ] [ $fversion ] [ $(date) ] "
+head_principal=" $cinco [ Use: $fiptables options ] [ $fversion ] [ $(date) ] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -649,14 +649,15 @@ else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 ####
 if [ "$first_option" = "header" ] ; then
 if [ "$allow_header" = "no" ]   ; then 
-echo $head_default
+echo $head_principal
+#### echo $head_default
 #### echo "$head_normal" 
 if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
 if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 else 
 echo $head_principal
-echo $head_default
+#### echo $head_default
 #### echo $head_normal
 echo $default_route_cuatro
 echo $default_route_seis
