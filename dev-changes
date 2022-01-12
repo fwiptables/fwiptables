@@ -130,4 +130,6 @@
 # changes fwiptables 2.00 en desarrollo
 #
 # 1. custom-rules: renombrado a tool-rules
+# 2. simplicada cabecera
+#
 #
