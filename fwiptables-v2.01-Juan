@@ -1740,7 +1740,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-rules" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool custom config ]"
+echo "$ralla [ $first_option ] [ tool custom rules config ]"
 echo "$rallica [ Tool configs ]"
 echo "$rallica [ Herramienta de configuraciones ]"
 echo
@@ -2552,7 +2552,7 @@ exit; fi
 if [ "$first_option" = "gui-menu" ] ; then $genfiles ; echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Launch custom" \
+ --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool rules" \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
 "12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show hardware" \
 "17 Show etc" "18 Show log" "19 Show about" "20 Show help" \
@@ -2565,7 +2565,7 @@ case "$selection" in
 "02 Control rules")$fiptables gui-menu-control-rules;;
 "03 List rules")$fiptables gui-menu-list-rules;;
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
-"05 Launch custom")$fiptables gui-menu-tool-rules;;
+"05 Tool rules")$fiptables gui-menu-tool-rules;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
 "07 Tool forward")$fiptables gui-menu-tool-forward ;;
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
@@ -3474,7 +3474,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   66  "gamesudp" \
   67  "serversamba" \
   68  "custom cfg" \
-  0070 "$cinco [ Tool custom configurations cfg ] $cinco" \
+  0070 "$cinco [ Tool custom rules configurations cfg ] $cinco" \
   71  "new-full-config" \
   72  "nueva-completa-config" \
   73  "new-mini-config" \
