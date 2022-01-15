@@ -6132,11 +6132,11 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "new-versions" ]; then $give_cover
- echo "$ralla [ $first_option ] [ show the new versions in sourceforge page ]"
+ echo "$ralla [ $first_option ] [ show the new versions in $fweb_main ]"
  echo $header_lineal
  case $favorite_text_browser in 
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
- echo "$rallica list new-versions in the last week with browser $favorite_text_browser"
+ echo "$rallica list new-versions in the last week (the last seven days) with a browser $favorite_text_browser"
  echo $ralla
  $favorite_text_browser -dump $fweb_newfiles | egrep fwiptables-v | sed s/\<//g |sed s/\>//g 
  echo $footer_lineal
