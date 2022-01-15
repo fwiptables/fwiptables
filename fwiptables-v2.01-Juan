@@ -2584,8 +2584,8 @@ case "$selection" in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
+#### zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+#### if [ "$?" -eq 0 ]; then $fiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3096,7 +3096,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" \
+--list "Gui Principal Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Install] [$fiptables]" )
 #### 
 #### 
@@ -3106,7 +3106,9 @@ case $selection in
 "Gui Info Menu") $fiptables -gui tool-dev ;;
 "new-versions")$fiptables -gui new-versions ;;
 "dev-version") $fiptables -gui dev-version  ;;
-"dev-changes") $fiptables -gui dev-changes  ;;
+"dev-changes") $fiptables -gui dev-changes ;;
+"code") archivo="$(zenity $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
+$fiptables -gui code $archivo
 esac
 ####
 ####
