@@ -134,6 +134,6 @@
 #
 # changes fwiptables 2.01
 #
-# 1.code in gui-menu, secction tool-dev
-#
+# 1. code: ahora esta en gui-menu, secction tool-dev
+# 2. info-route: cambia el nombre route a info-route
 #
