@@ -1355,7 +1355,7 @@ echo "$tab" "$tab"  "     | info |                      | tool options |        
 echo "$tab" "$tab"  "    tool-rules         new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
-echo "$tab" "$tab"  "    tool-sockets       info-listen info-nodes info-proxy route ss lsof       "
+echo "$tab" "$tab"  "    tool-sockets       info-listen info-nodes info-proxy info-route ss lsof  "
 echo "$tab" "$tab"  "                       tcpdump netstat netstat-nat                           "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
@@ -1832,10 +1832,12 @@ echo "$rallica [ Tool sockets ]"
 echo "$rallica [ Herramienta de sockets ]"
 echo
 echo "      info-sockets: List system listen sockets"
-echo "                    Lista sockets a la escuha del sistema"
+echo "                  :  Lista sockets a la escuha del sistema"
+echo "        info-nodes: List the conentions arp in the lan"
+echo "                  : Lista las conexiones arp en la red local"
 echo "        info-proxy: List system proxy"
-echo "                    Lista proxy del sistema"
-echo "             route: Show net devices and ip route tables"
+echo "                  :  Lista proxy del sistema"
+echo "        info-route: Show net devices and ip route tables"
 echo "                  : Muestra los dispositivos de red y la tabla de rutas"
 echo "                ss: Show net sockets with command ss"
 echo "                  : Muestra las conexiones de red con ss"
@@ -1847,8 +1849,6 @@ echo "       netstat-nat: Show net sockets wiht command netstat-nat"
 echo "                  : Muestra las conexiones con netstat-nat"
 echo "           tcpdump: Listen the connections"
 echo "                  : Escucha las conexiones"
-echo "        info-nodes: List the conentions arp in the lan"
-echo "                  : Lista las conexiones arp en la red local"
 echo $footer_lineal
 exit; fi
 ####
@@ -4253,9 +4253,9 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules:
-#############################       english: route: system script, the route option
-#############################       spanish: route: script de sistema, la opcion route
-#### :rutina-inicial-route:
+#############################       english: info-route: system script, the route option
+#############################       spanish: info-route: script de sistema, la opcion route
+#### :rutina-inicial-info-route:
 ####
 ####
 #### comments: sed is necesary to full work in graphicall
@@ -4265,10 +4265,10 @@ exit; fi
  echo "$ralla [ $first_option ] [ Show route tables ]"
  echo $header_lineal
  case $command_ip in  $NULL) echo "$tab [ Install ip command ]" ; exit ;; esac
- echo "$rallica [ ip route ipv4 ] [ mode simplify ]"
+ echo "$rallica [ ip route ipv4 ]"
  echo "$($command_ip -4 route)"
  echo $ralla
- echo "$rallica [ ip route ipv6 ] [ mode simplify ]"
+ echo "$rallica [ ip route ipv6 ]"
  echo "$($command_ip -6 route)"
 #### case $($command_route) in $NULL) echo "$tab [ Install route command ]" ; exit ;; esac
 #### echo $ralla
@@ -4281,7 +4281,7 @@ exit; fi
  exit ; fi
 ####
 ####
-#### :rutina-final-route:
+#### :rutina-final-info-route:
 #############################       english: ss: system script, the sockets option
 #############################       spanish: ss: script de sistema, la opcion sockets
 #### :rutina-inicial-ss:
@@ -6715,15 +6715,15 @@ echo "            del-config: Delete one configuration file"
 echo
 echo "$cinco         [ List sockets ]"
 echo
-echo "            route: Show net devices and ip route tables"
+echo "       info-nodes: List the conentions arp in lan"
+echo "       info-proxy: List system proxy"
+echo "      info-listen: List system listen socket list"
+echo "       info-route: Show net devices and ip route tables"
 echo "               ss: Show net sockets with command ss"
 echo "             lsof: Show net sockets with command lsof"
 echo "          netstat: Show net sockets with command netstat"
 echo "      netstat-nat: Show net sockets with command netstat-nat"
 echo "          tcpdump: Listen the connections"
-echo "       info-nodes: List the conentions arp in lan"
-echo "       info-proxy: List system proxy"
-echo "      info-listen: List system listen socket list"
 echo
 echo "$cinco         [ Tool forward ]"
 echo
@@ -6991,15 +6991,15 @@ echo "            del-config: Borra unaa existente configuracion.cfg"
 echo
 echo "$cinco         [ Lista las conexiones abiertas ]"
 echo
-echo "             route: Muestra los dispositivos de red y la tabla de rutas"
+echo "        info-nodes: Lista las conexiones arp in lan"
+echo "        info-proxy: Lista proxy del sistema"
+echo "       info-listen: Lista sockets a la escucha del sistema"
+echo "        info-route: Muestra los dispositivos de red y la tabla de rutas"
 echo "                ss: Muestra las conexiones con comando ss"
 echo "           netstat: Muestra las conexiones con comando netstat"
 echo "       netstat-nat: Muestra las conexiones con comando netstat-nat"
 echo "              lsof: Muestra las conexiones con command lsof"
 echo "           tcpdump: Escuchar las conexiones ip"
-echo "        info-nodes: Lista las conexiones arp in lan"
-echo "        info-proxy: Lista proxy del sistema"
-echo "       info-listen: Lista sockets a la escucha del sistema"
 echo
 echo "$cinco         [ Herramienta de ip forwading ]"
 echo
