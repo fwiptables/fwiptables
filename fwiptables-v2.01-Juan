@@ -2806,8 +2806,8 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "route" "ss" "lsof" \
-"netstat" "netstat-nat" "tcpdump" "info-proxy" "info-listen" \
+--list "Gui Principal Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
+"ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sockets] [$fiptables]" )
 #### 
 #### 
@@ -2815,7 +2815,8 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu") $fiptables gui-menu ;;
 "Gui Info Menu") $fiptables -gui tool-sockets ;;
-"route") $fiptables -gui route ;;
+"info-route") $fiptables -gui route ;;
+"info-nodes") $fiptables -gui info-nodes ;;
 "ss") $fiptables -gui ss ;;
 "lsof") $fiptables -gui lsof ;;
 "netstat") $fiptables -gui netstat ;;
