@@ -136,4 +136,6 @@
 #
 # 1. code: ahora esta en gui-menu, secction tool-dev
 # 2. info-route: cambia el nombre route a info-route
+# 3. info-nodes: ahora esta en gui-menu 
+#
 #
