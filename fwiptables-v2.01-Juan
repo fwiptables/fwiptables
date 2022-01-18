@@ -1285,7 +1285,7 @@ launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ]; then
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fiptables cfg 
-echo "$cinco Usage: $fiptables custom existent-file-cfg"
+echo "$cinco Usage: $fiptables custom file-cfg"
 echo "$cinco See:   $fiptables tool-rules"; fi ; fi
 ####
 ####
@@ -2446,7 +2446,7 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else zenity --forms $graphic_dimension --text="file do not exist: $third_option" ; exit ; fi 
+else zenity --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "/tmp/fiptables-$third_option"
 zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option"
@@ -5395,7 +5395,7 @@ exit; fi
  echo "$rallica [ OK FIREWALL LOADED ] [ $second_option ]"
 ####
 ####
-#### english: if not exists #### spanish: si no existe
+#### english: if no found #### spanish: si no encuentra
 ####
 ####
  else
@@ -8298,7 +8298,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
-then source $directory_config/$second_option &> /dev/null ; else echo "$cinco File do not exits"; exit ; fi ; fi
+then source $directory_config/$second_option &> /dev/null ; else echo "$cinco File not found"; exit ; fi ; fi
 ####
 ####
 ##############################      english: compatibility with old variables, backward compatibility      #####################
