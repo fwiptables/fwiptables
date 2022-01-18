@@ -4271,13 +4271,6 @@ exit; fi
  echo $ralla
  echo "$rallica [ ip route ipv6 ]"
  echo "$($command_ip -6 route)"
-#### case $($command_route) in $NULL) echo "$tab [ Install route command ]" ; exit ;; esac
-#### echo $ralla
-#### echo "$rallica [ ip route ipv4 ] [ mode lineal ]"
-#### echo "$($command_route -4)"
-#### echo $ralla
-#### echo "$rallica [ ip route ipv6 ] [ mode lineal]"
-#### echo "$($command_route -6)"
  echo $footer_lineal
  exit ; fi
 ####
