@@ -154,7 +154,7 @@ head_normal="$cinco [ For the usage list:  $fiptables full-options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting="$rallica [ Graphics: ] [ Wait several seconds.. ] [ with max $server_waiting seconds ]" 
+head_waiting="$rallica [ Graphics: ] [ Wait several seconds.. ] [ with max $server_waiting seconds ] $rallica" 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
