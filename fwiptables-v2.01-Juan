@@ -1299,9 +1299,9 @@ if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Basic options |                         "
+echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                       list-allrules list-forward list-forward6              "
 echo "$tab" "$tab"  "                       list-filter4 list-filter6 list-nat4 list-nat6         "
@@ -1312,7 +1312,7 @@ echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive game
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Group options |                           "
-echo "$tab" "$tab"  " control-guide   control-rules   user-interface    list-rules     launch-rules "
+echo "$tab" "$tab"  " user-interface  control-guide   control-rules     list-rules     launch-rules "
 echo "$tab" "$tab"  " tool-rules      tool-sockets    tool-forward      tool-tcp       tool-udp     "
 echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-system    tool-install " 
 echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
@@ -6603,14 +6603,14 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo "$tab [ launch: ] [ $fiptables info group ]"
  echo
  echo "$tab [ group list: ]"
- echo
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Group options |                           "
-echo "$tab" "$tab"  " control-guide   control-rules   user-interface    list-rules     launch-rules "
+echo "$tab" "$tab"  " user-interface  control-guide   control-rules     list-rules     launch-rules "
 echo "$tab" "$tab"  " tool-rules      tool-sockets    tool-forward      tool-tcp       tool-udp     "
 echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-system    tool-install " 
 echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
 echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
- echo
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
  echo "$tab [ Example: ] [ $fiptables info user-interface ] [ OR ] [ $fiptables user-interface ]"
  echo $footer_lineal
  exit; fi
