@@ -1325,7 +1325,7 @@ echo "$tab" "$tab"  "  Save iptables rules with one name :     $fiptables save n
 echo "$tab" "$tab"  "  List names from all firewall saved :    $fiptables names                   "
 echo "$tab" "$tab"  "  Show control-guide with output gui :    $fiptables -gui control-guide      "
 echo "$tab" "$tab"  "  For more options :                      $fiptables options                 "
-echo $footer_lineal
+#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -1385,7 +1385,7 @@ echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
 echo "$tab" "$tab"  "  Show control-guide with output gui :      $fiptables -gui control-guide    "
 echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
-echo $footer_lineal
+#### echo $footer_lineal
 exit ; fi
 ####
 ####
