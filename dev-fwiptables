@@ -4262,7 +4262,7 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 ####
- if [ "$first_option" = "route" ]; then  $give_cover
+ if [ "$first_option" = "info-route" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show route tables ]"
  echo $header_lineal
  case $command_ip in  $NULL) echo "$tab [ Install ip command ]" ; exit ;; esac
