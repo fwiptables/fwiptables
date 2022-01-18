@@ -650,21 +650,17 @@ else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 if [ "$first_option" = "header" ] ; then
 if [ "$allow_header" = "no" ]   ; then 
 echo $head_principal
-#### echo $head_default
-#### echo "$head_normal" 
 if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
 if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
 else 
 echo $head_principal
-#### echo $head_default
-#### echo $head_normal
 echo $default_route_cuatro
 echo $default_route_seis
 if [ "$rules_arptables" != "0" ]       ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
 if [ "$rules_filter_ebtables" != "0" ] ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
 if [ "$rules_nat_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
-echo $header_ender
+#### echo $header_ender
 fi ; exit ; fi
 ####
 ####
@@ -1297,7 +1293,7 @@ echo "$cinco See:   $fiptables tool-rules"; fi ; fi
 ####
 if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ]"
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
+#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Basic options |                         "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
@@ -1337,7 +1333,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ]"
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
+#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Principal options |                     "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
