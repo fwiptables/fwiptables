@@ -125,17 +125,16 @@
 #
 # changes fwiptables-1.99
 #
-# 1. blacklist-off: hostname configurada a localhost.localdomain para trabajar
+# 1. blacklist-off: hostname configurada a localhost.localdomain para trabajar. HECHO
 #
 # changes fwiptables 2.00
 #
-# 1. custom-rules: renombrado a tool-rules
-# 2. simplicada cabecera
+# 1. custom-rules: renombrado a tool-rules. HECHO
+# 2. simplicada cabecera. HECHO
 #
-# changes fwiptables 2.01
+# changes fwiptables 2.01 en desarrollo
 #
-# 1. code: ahora esta en gui-menu, secction tool-dev
-# 2. info-route: cambia el nombre route a info-route
-# 3. info-nodes: ahora esta en gui-menu 
-#
+# 1. code: ahora esta en gui-menu, secction tool-dev. HECHO
+# 2. info-route: cambia el nombre route a info-route. HECHO
+# 3. info-nodes: ahora esta en gui-menu. HECHO
 #
