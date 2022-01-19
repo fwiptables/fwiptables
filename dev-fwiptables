@@ -526,8 +526,8 @@ cmp -s $0 $directory_fiptables/$fiptables || . $0 intro
 #### spanish: archivos temporales
 ####
 ####
-mkdir /tmp/fwiptables-$fversion-data/ &> /dev/null
-file_temporal_path="/tmp/fwiptables-$fversion-data"
+mkdir -p /tmp/fwiptables-$fversion-data/ &> /dev/null
+file_temporal_path="/tmp/fwiptables-$fversion-data/"
 file_temporal_text="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
 file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
 file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
@@ -4074,28 +4074,28 @@ if [ "$second_option" = "fademind" ]; then
 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.fademind >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname localhost.localdomain, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.adaway >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname localhost.localdomain, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.mvps >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname localhost.localdomain, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
 $fiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.stevenblack >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname localhost.localdomain, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
 ####
 echo "$tab [ Invalid option ] [ See: $fiptables blacklist-list ]"
@@ -4108,22 +4108,21 @@ echo $rallica; exit; fi
 #### :rutina-inicial-blacklist-off:
 ####
 ####
-if [ "$first_option" = "blacklist-off" ]; then $give_cover
+if [ "$first_option" = "blacklist-off" ]; then 
 echo $rallica
-hostname localhost.localdomain
-echo "$cinco" > "$file_temporal_path/hosts"
-echo "## ip v4 loopback ##" >> "$file_temporal_path/hosts"
-echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> "$file_temporal_path/hosts"
-echo "## ip v6 loopback ##" >> "$file_temporal_path/hosts"
-echo "::1      localhost-ip6 localhost localhost.localdomain" >> "$file_temporal_path/hosts"
-echo "ff02::1 ip6-allnodes " >> "$file_temporal_path/hosts"
-echo "ff02::2 ip6-allrouters " >> "$file_temporal_path/hosts"
-echo "$cinco" >> "$file_temporal_path/hosts"
-echo "$cincuenta" >> "$file_temporal_path/hosts"
-cp "$file_temporal_path/hosts" /etc/hosts
-echo "$rallica [ OK HOST RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, HOSTNAME localhost.localdomain ]"
+echo $file_temporal_path
+echo $cincuenta > $file_temporal_path/$first_option-hosts
+echo "## ip v4 loopback ##" >> $file_temporal_path/$first_option-hosts
+echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> $file_temporal_path/$first_option-hosts
+echo "## ip v6 loopback ##" >> $file_temporal_path/$first_option-hosts
+echo "::1      localhost-ip6 localhost localhost.localdomain" >> $file_temporal_path/$first_option-hosts
+echo "ff02::1 ip6-allnodes" >> $file_temporal_path/$first_option-hosts
+echo "ff02::2 ip6-allrouters"  >> $file_temporal_path/$first_option-hosts
+echo $cincuenta >> $file_temporal_path/$first_option-hosts
+cat  $file_temporal_path/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
+echo "$rallica [ OK HOST RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
 echo $footer_lineal
-$directory_fiptables/$fiptables hosts
+cat  /etc/hosts
 exit; fi
 ####
 ####
