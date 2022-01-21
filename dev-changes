@@ -137,4 +137,6 @@
 # 1. code: ahora esta en gui-menu, secction tool-dev. HECHO
 # 2. info-route: cambia el nombre route a info-route. HECHO
 # 3. info-nodes: ahora esta en gui-menu. HECHO
+# 4- blacklist-off: No cambia el hosntame
 #
+

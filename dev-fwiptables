@@ -4060,8 +4060,11 @@ echo $rallica
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched wihtout options ] [ See: $fiptables blacklist-list ]"
-echo $rallica; exit; fi
+echo "$tab [ Launched wihtout options ] [ $fiptables blacklist-list ]"
+echo $rallica
+$fiptables blacklist-list
+echo $rallica
+exit; fi
 ####
 ####
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
