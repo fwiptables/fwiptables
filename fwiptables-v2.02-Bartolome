@@ -1320,7 +1320,7 @@ echo "$tab" "$tab"  "  Generate new iptables rules :           $fiptables wizard
 echo "$tab" "$tab"  "  Save iptables rules with one name :     $fiptables save name               "
 echo "$tab" "$tab"  "  List names from all firewall saved :    $fiptables names                   "
 echo "$tab" "$tab"  "  Show control-guide with output gui :    $fiptables -gui control-guide      "
-echo "$tab" "$tab"  "  For more options :                      $fiptables options                 "
+echo "$tab" "$tab"  "  Show more options :                     $fiptables options                 "
 #### echo $footer_lineal
 exit ; fi
 ####
@@ -1380,7 +1380,7 @@ echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wiza
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
 echo "$tab" "$tab"  "  Show control-guide with output gui :      $fiptables -gui control-guide    "
-echo "$tab" "$tab"  "  For less options :                        $fiptables basic-options         "
+echo "$tab" "$tab"  "  Show less options :                       $fiptables basic-options         "
 #### echo $footer_lineal
 exit ; fi
 ####
