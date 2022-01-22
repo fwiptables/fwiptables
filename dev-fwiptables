@@ -4466,7 +4466,7 @@ exit; fi
  $command_iptables_nft -t filter -v -L
  ;;
  esac
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4502,7 +4502,7 @@ exit; fi
  esac
 ####
 ####
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
