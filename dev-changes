@@ -144,4 +144,6 @@
 # 1. disk-speed: antes llamado disc-speed
 # 2. netstat-nat: arreglo
 # 3. info-system: muestra los discos con lsblk
-# 4.
+# 4. list-alias: actualizado
+#
+#
