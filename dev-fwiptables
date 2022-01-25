@@ -418,6 +418,8 @@ cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
+/etc/bash_completion.d/$fiptables &> /dev/null
+/etc/bash_completion.d/$fiptables.sh &> /dev/null
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
 
 all_group="user-interface control-guide control-rules list-rules launch-rules \
@@ -438,6 +440,8 @@ echo "complete -W $all_group $fiptables" &>> /etc/bash_completion.d/$fiptables
 #### 
 #### 
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
+/etc/profilie.d/$fiptables &> /dev/null
+/etc/profile.d/$fiptables.sh &> /dev/null
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables
 echo "complete -W $all_group $fiptables" &>> /etc/profile.d/$fiptables
 
