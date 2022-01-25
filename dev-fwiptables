@@ -4648,7 +4648,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ]"  
  $command_iptables_nft -v -n -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4689,7 +4689,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
  $command_ip6tables_nft -v -n -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
