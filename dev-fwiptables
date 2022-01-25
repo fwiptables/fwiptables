@@ -555,7 +555,7 @@ scan-*) $fiptables $second_option $third_option ; exit ;;
 uprade) $fiptables $second_option $third_option ; exit ;;
 ram-speed) $fiptables $second_option $third_option ; exit ;;
 disk-speed) $fiptables $second_option $third_option ; exit ;;
-gl-speed) $fiptables $second_option $third_option ; exit ;;
+glx-speed) $fiptables $second_option $third_option ; exit ;;
 radio) $fiptables $second_option $third_option ; exit ;;
 log-*) $fiptables $second_option $third_option ; exit ;;
 license-*) $fiptables $second_option $third_option ; exit ;;
@@ -1358,8 +1358,8 @@ echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6                                     "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
-echo "$tab" "$tab"  "    tool-sudo          sudo-adduser sudo-deluser sudo-list alias-list            "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disk-speed gl-speed radio          "
+echo "$tab" "$tab"  "    tool-sudo          sudo-adduser sudo-deluser sudo-list alias-list        "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
@@ -2068,7 +2068,7 @@ echo "     ram-speed: Show the speed of ram"
 echo "              : Muestra la velocidad de la ram"
 echo "    disk-speed: Show the speed of disc"
 echo "              : Muestra la velocidad de el disco"
-echo "      gl-speed: Show frammes for seconds with mesa graphicall"
+echo "     glx-speed: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo "              : connecta a on servidor mp3, see $fiptables default"
@@ -2997,7 +2997,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ram-free" "ram-speed" "disk-speed" "gl-speed" "radio" \
+--list "Gui Principal Menu" "Gui Info Menu" "ram-free" "ram-speed" "disk-speed" "glx-speed" "radio" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool System] [$fiptables]" )
 #### 
 #### 
@@ -3008,7 +3008,7 @@ case $selection in
 "ram-free")   $fiptables -gui ram-free ;;
 "ram-speed")  $fiptables -gui ram-speed ;;
 "disk-speed") $fiptables -gui disk-speed ;;
-"gl-speed")   $fiptables -gui gl-speed ;;
+"glx-speed")   $fiptables -gui glx-speed ;;
 "radio")      $fiptables -gui radio ;;
 esac
 ####
@@ -3530,7 +3530,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   171  "ram-free" \
   172  "ram-speed" \
   173  "disk-speed" \
-  174  "gl-speed" \
+  174  "glx-speed" \
   175  "radio" \
   0180 "$cinco [ Show hardware system ] $cinco" \
   181  "lpinfo" \
@@ -3711,7 +3711,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  171) clear ; $fiptables "ram-free" ;;
  172) clear ; $fiptables "ram-speed" ;;
  173) clear ; $fiptables "disk-speed" ;;
- 174) clear ; $fiptables "gl-speed" ;;
+ 174) clear ; $fiptables "glx-speed" ;;
  175) clear ; $fiptables "radio" ;;
  181) clear ; $fiptables "lpinfo" ;; 
  182) clear ; $fiptables "lsblk" ;;
@@ -6015,12 +6015,12 @@ $fiptables stop
 ####
 ####
 #### :rutina-final-ram-speed:
-############################       english: gl-speed: show frammes por seconds with mesa graphicall 
-############################       spanish: gl-speed: muestra los fotogramas por segundo con graphicos mesa
-#### :rutina-inicial-gl-speed:
+############################       english: glx-speed: show frammes por seconds with mesa graphicall 
+############################       spanish: glx-speed: muestra los fotogramas por segundo con graphicos mesa
+#### :rutina-inicial-glx-speed:
 ####
 ####
- if [ "$first_option" = "gl-speed" ]; then  $give_cover
+ if [ "$first_option" = "glx-speed" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
  echo $header_lineal
  case $command_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
@@ -6029,7 +6029,7 @@ $fiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-gl-speed:
+#### :rutina-final-glx-speed:
 ############################       english: radio: url from one radio mp3
 ############################       spanish: radio: url de una radio en mp3
 #### :rutina-inicial-radio:
@@ -6768,7 +6768,7 @@ echo
 echo "      ram-free: Clean for innecesary memory"
 echo "     ram-speed: Show the speed of ram"
 echo "    disk-speed: Show the speed of disc"
-echo "      gl-speed: Show frammes for seconds with mesa graphicall"
+echo "     glx-speed: Show frammes for seconds with mesa graphicall"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo
 echo "$cinco         [ Tool Install ]"
@@ -7044,7 +7044,7 @@ echo
 echo "      ram-free: Libera la memoria innecesaria"
 echo "     ram-speed: Muestra la velocidad de la ram"
 echo "    disk-speed: Muestra la velocidad de el disco"
-echo "      gl-speed: Muestra fotogramas por segundo con graficos mesa"
+echo "     glx-speed: Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connecta a on servidor mp3, see $fiptables default"
 echo
 echo "$cinco         [ Herramienta de instalacion ]"
