@@ -4365,23 +4365,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-proxy:
-#############################      english: netstat-proxy: system script, the netstat sockets
-#############################      spanish: netstat-proxy: script de sistema, el netstat sockets
-#### :rutina-inicial-netstat-proxy:
+#############################      english: netstat-nat: system script, the netstat sockets
+#############################      spanish: netstat-nat: script de sistema, el netstat sockets
+#### :rutina-inicial-netstat-nat:
 ####
 ####
- if [ "$first_option" = "netstat-proxy" ]; then  $give_cover
+ if [ "$first_option" = "netstat-nat" ]; then  $give_cover
  case $command_netstat_nat in
  "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
  echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
  echo $header_lineal
- echo "$tab [ The devices list with netstat for proxy ]"
-
+ echo "$tab [ The devices list with netstat for nat ]"
+ $command_netstat_nat
  echo $footer_lineal
  exit; fi
 ####
 ####
-#### :rutina-final-netstat-proxy:
+#### :rutina-final-netstat-nat:
 #############################      english: ipforward-on: active ip forward
 #############################      spanish: ipforward-on: activa ip forward
 #### :rutina-inicial-ipforward-on:
