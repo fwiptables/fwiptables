@@ -6423,7 +6423,7 @@ exit; fi
  free -h
  echo $ralla
  echo "$tab [ System info ] [ Disks ]"
- df -h -x tmpfs
+ lsblk
  echo $footer_lineal
  exit; fi
 ####
