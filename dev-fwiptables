@@ -1358,7 +1358,7 @@ echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6                                     "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
-echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
+echo "$tab" "$tab"  "    tool-sudo          sudo-adduser sudo-deluser sudo-list alias-list            "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disk-speed gl-speed radio          "
 echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklist-off             "
@@ -1974,9 +1974,9 @@ echo "$ralla [ $first_option ] [ tool sudo $fiptables ]"
 echo "$rallica [ Tool sudo ]"
 echo "$rallica [ Herramienta sudo ]"
 echo
-echo "    sudo-auth: Allow sudo $fiptables to other choosed users"
+echo " sudo-adduser: Allow sudo $fiptables to other choosed users"
 echo "             : Permite sudo $fiptables a otros elegidos usuarios"
-echo "  sudo-remove: Remove sudo $fiptables to other choosed users"
+echo " sudo-deluser: Remove sudo $fiptables to other choosed users"
 echo "             : Borra sudo $fiptables a otros elegidos usuarios"
 echo "    sudo-list: List sudo $fiptables to other choosed users"
 echo "             : Lista sudo $fiptables a otros elegidos usuarios"
@@ -2965,7 +2965,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "sudo-auth" "sudo-remove" "sudo-list" "alias-list" \
+--list "Gui Principal Menu" "Gui Info Menu" "sudo-adduser" "sudo-deluser" "sudo-list" "alias-list" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Sudo] [$fiptables]" )
 #### 
 #### 
@@ -2973,9 +2973,9 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "Gui Info Menu") $fiptables -gui tool-sudo ;;
-"sudo-auth")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
-$fiptables -gui sudo-auth $archivo ;;
-"sudo-remove")$fiptables -gui sudo-remove ;;
+"sudo-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
+$fiptables -gui sudo-adduser $archivo ;;
+"sudo-deluser")$fiptables -gui sudo-deluser ;;
 "sudo-list")$fiptables -gui sudo-list ;;
 "alias-list")$fiptables -gui alias-list ;;
 esac
@@ -3510,8 +3510,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   124  "geoip" \
   125  "ntpdate" \
   0130 "$cinco [ Tool sudo operations ] $cinco"  \
-  131  "sudo-auth" \
-  132  "sudo-remove" \
+  131  "sudo-adduser" \
+  132  "sudo-deluser" \
   133  "sudo-list" \
   0140 "$cinco [ Tool install ] $cinco" \
   141  "install" \
@@ -3694,8 +3694,8 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  clear ; $fiptables geoip $resolve ;;
  125) clear ; $fiptables "ntpdate" ;;
  131) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
- clear ; $fiptables sudo-auth $resolve ;;
- 132) clear ; $fiptables "sudo-remove" ;;
+ clear ; $fiptables sudo-adduser $resolve ;;
+ 132) clear ; $fiptables "sudo-deluser" ;;
  133) clear ; $fiptables "sudo-list" ;;
  141) clear ; $zero_option "install";;
  142) clear ; $fiptables "howto-upgrade" | less ;;
@@ -5085,14 +5085,14 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-config:
-############################       english: sudo-auth: the sudo-auth option en english
-############################       spanish: sudo-auth: la opcion de sudo-auth en ingles
-#### :rutina-inicial-sudo-auth:
+############################       english: sudo-adduser: the sudo-adduser option en english
+############################       spanish: sudo-adduser: la opcion de sudo-adduser en ingles
+#### :rutina-inicial-sudo-adduser:
 ####
 ####
-if [ "$first_option" = "sudo-auth" ]; then $give_cover
+if [ "$first_option" = "sudo-adduser" ]; then $give_cover
 case $second_option in
-"$NULL") echo $head_principal ; echo $header_lineal ; echo "$cinco Use: $fiptables sudo-auth user" ; exit ;;
+"$NULL") echo $head_principal ; echo $header_lineal ; echo "$cinco Use: $fiptables sudo-adduser user" ; exit ;;
 *) autorizados="$second_option" ;; esac
 echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fiptables " &> /etc/sudoers.d/$fiptables
 echo "alias $fiptables='sudo $fiptables'" &>  /etc/bash_completion.d/$fiptables
@@ -5106,13 +5106,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-sudo-auth:
-############################       english: sudo-remove: the sudo-remove option en english
-############################       spanish: sudo-remove: la opcion de sudo-remove en ingles
-#### :rutina-inicial-sudo-remove:
+#### :rutina-final-sudo-adduser:
+############################       english: sudo-deluser: the sudo-deluser option en english
+############################       spanish: sudo-deluser: la opcion de sudo-deluser en ingles
+#### :rutina-inicial-sudo-deluser:
 ####
 ####
-if [ "$first_option" = "sudo-remove" ]; then $give_cover
+if [ "$first_option" = "sudo-deluser" ]; then $give_cover
 rm /etc/sudoers.d/$fiptables
 echo "$cinco [ deleted auth sudo ]"
 echo "$rallica [ deleted /etc/sudoers.d/$fiptables ]"
@@ -5120,9 +5120,9 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-sudo-remove:
-############################       english: sudo-list: the sudo-auth option en english
-############################       spanish: sudo-list: la opcion de sudo-auth en ingles
+#### :rutina-final-sudo-deluser:
+############################       english: sudo-list: the sudo-adduser option en english
+############################       spanish: sudo-list: la opcion de sudo-adduser en ingles
 #### :rutina-inicial-sudo-list:
 ####
 ####
@@ -5144,8 +5144,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sudo-list:
-############################       english: alias-list: the sudo-auth option en english
-############################       spanish: alias-list: la opcion de sudo-auth en ingles
+############################       english: alias-list: the sudo-adduser option en english
+############################       spanish: alias-list: la opcion de sudo-adduser en ingles
 #### :rutina-inicial-alias-list:
 ####
 ####
@@ -6759,8 +6759,8 @@ echo "    scan-ping: Scan a host/mask per ping udp"
 echo
 echo "$cinco         [ Tool sudo ]"
 echo
-echo "    sudo-auth: Allow sudo to other choosed users"
-echo "  sudo-remove: Remove sudo to other choosed users"
+echo " sudo-adduser: Allow sudo to other choosed users"
+echo " sudo-deluser: Remove sudo to other choosed users"
 echo "    sudo-list: List sudo to other choosed users"
 echo
 echo "$cinco         [ Tool system ]"
@@ -7035,8 +7035,8 @@ echo "    scan-ping: Rastrea una host/mask por ping udp"
 echo
 echo "$cinco         [ Herramienta de autorizacion ]"
 echo
-echo "    sudo-auth: Permite autorizacion de usuarios elegidos"
-echo "  sudo-remove: Borra la autorizacion otorgada"
+echo " sudo-adduser: Permite autorizacion de usuarios elegidos"
+echo " sudo-deluser: Borra la autorizacion otorgada"
 echo "    sudo-list: Lista autorizacion de usuarios elegidos"
 echo
 echo "$cinco         [ Herramienta de sistema ]"
