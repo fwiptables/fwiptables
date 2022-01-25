@@ -419,10 +419,18 @@ cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
-echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
-full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
-info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
+
+all_group="user-interface control-guide control-rules list-rules launch-rules \
+tool-rules tool-sockets tool-forward tool-tcp tool-udp \
+tool-icmp tool-nmap tool-sudo tool-system tool-install tool-blacklist tool-dev \
+show-hardware show-etc show-log show-about show-help show-example "
+echo "complete -W $all_group $fiptables" &>> /etc/bash_completion.d/$fiptables
+
+
+#### echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
+#### full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
+#### info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
+#### eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/bash_completion.d/$fiptables
 ####
 ####
 ####  english: Install new /etc/profile.d/fwiptables
@@ -431,10 +439,12 @@ eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" 
 #### 
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables
-echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
-full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
-info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
-eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables
+echo "complete -W $all_group $fiptables" &>> /etc/profile.d/$fiptables
+
+#### echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
+#### full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
+#### info-net info-system stop continue reset names save load ss lsof wizard-mini wizard-full \
+#### eraserules offline allpermisive custom actual sudo-list alias-list' $fiptables" &>>  /etc/profile.d/$fiptables
 ####
 ####
 #### english: generate /etc/default/fwiptables
