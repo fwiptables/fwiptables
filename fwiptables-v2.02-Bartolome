@@ -4355,7 +4355,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-proxy" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Show info address proxy ]"
+ echo "$ralla [ $first_option ] [ Show info address proxy whith its system variable ]"
  echo $header_lineal
  echo "$tab Info address proxy"
  echo "$tab Web http_proxy:    $http_proxy"
