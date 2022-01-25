@@ -4524,7 +4524,7 @@ exit; fi
  $command_iptables_nft -t filter -v -L
 ####
 ####
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4545,7 +4545,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $command_iptables_nft -t filter -v -L FORWARD
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4567,7 +4567,7 @@ exit; fi
  $command_ip6tables_nft -v -L
 ####
 ####
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4588,7 +4588,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $command_ip6tables_nft -t filter -v -L FORWARD
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4608,7 +4608,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ] $ralla "
  $command_iptables_nft -t nat -v -L 
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4628,7 +4628,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ] $ralla "
  $command_ip6tables_nft -t nat -v -L 
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4669,7 +4669,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $command_iptables_nft -t filter -v -n -L FORWARD
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4710,7 +4710,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
  $command_ip6tables_nft -t filter -v -n -L FORWARD
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4751,7 +4751,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ The nftables ] [iptables-nft ] [ MANGLE ] $ralla "
  $command_ip6tables_nft -t mangle -v -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4771,7 +4771,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
  $command_iptables_nft -t raw -v -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4792,7 +4792,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
  $command_ip6tables_nft -t raw -v -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4813,7 +4813,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
  $command_iptables_nft -t security -v -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4834,7 +4834,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
  $command_ip6tables_nft -t security -v -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4854,7 +4854,7 @@ exit; fi
  echo $ralla
  echo "$ralla [ ebtables: nat ethernet ] [ EBTABLES ] $ralla "
  $command_ebtables -L -t nat
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -4872,7 +4872,7 @@ exit; fi
  echo "$ralla [ arptables: filter arptables ] [ ARPTABLES ] $ralla "
  echo $rala
  $command_arptables -L
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
