@@ -6144,13 +6144,19 @@ $fiptables stop
 ####
 ####
  if [ "$first_option" = "lpinfo" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list printers ]"
+ echo "$ralla [ $first_option ] [ list printers with lpinfo and lpstat ]"
  echo $header_lineal
- echo $ralla
+ echo $ralla "lpinfo -v -l"
+ echo $rallica
  lpinfo -v -l
  echo $ralla
- echo " Use lp or lpr to print with those printers, or lpadmin to admin."
+ echo $header_lineal
+ echo $ralla "lpstat -v"
+ echo $rallica
+ lpstat -v
+ echo $header_lineal
  echo $ralla
+ echo " Use lp or lpr to print with those printers, or lpadmin to admin."
  echo $footer_lineal
  exit; fi
 ####
