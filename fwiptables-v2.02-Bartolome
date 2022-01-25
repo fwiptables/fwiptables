@@ -554,7 +554,7 @@ scan-*) $fiptables $second_option $third_option ; exit ;;
 "install") $fiptables $second_option $third_option ; exit ;;
 uprade) $fiptables $second_option $third_option ; exit ;;
 ram-speed) $fiptables $second_option $third_option ; exit ;;
-disc-speed) $fiptables $second_option $third_option ; exit ;;
+disk-speed) $fiptables $second_option $third_option ; exit ;;
 gl-speed) $fiptables $second_option $third_option ; exit ;;
 radio) $fiptables $second_option $third_option ; exit ;;
 log-*) $fiptables $second_option $third_option ; exit ;;
@@ -1359,7 +1359,7 @@ echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate    
 echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6                                     "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          sudo-auth sudo-remove sudo-list alias-list            "
-echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disc-speed gl-speed radio          "
+echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disk-speed gl-speed radio          "
 echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
@@ -2066,7 +2066,7 @@ echo "      ram-free: Clean for innecesary memory"
 echo "              : Libera la memoria innecesaria"
 echo "     ram-speed: Show the speed of ram"
 echo "              : Muestra la velocidad de la ram"
-echo "    disc-speed: Show the speed of disc"
+echo "    disk-speed: Show the speed of disc"
 echo "              : Muestra la velocidad de el disco"
 echo "      gl-speed: Show frammes for seconds with mesa graphicall"
 echo "              : Muestra fotogramas por segundo con graficos mesa"
@@ -2997,7 +2997,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ram-free" "ram-speed" "disc-speed" "gl-speed" "radio" \
+--list "Gui Principal Menu" "Gui Info Menu" "ram-free" "ram-speed" "disk-speed" "gl-speed" "radio" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool System] [$fiptables]" )
 #### 
 #### 
@@ -3007,7 +3007,7 @@ case $selection in
 "Gui Info Menu") $fiptables -gui tool-system ;;
 "ram-free")   $fiptables -gui ram-free ;;
 "ram-speed")  $fiptables -gui ram-speed ;;
-"disc-speed") $fiptables -gui disc-speed ;;
+"disk-speed") $fiptables -gui disk-speed ;;
 "gl-speed")   $fiptables -gui gl-speed ;;
 "radio")      $fiptables -gui radio ;;
 esac
@@ -3529,7 +3529,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
   0170 "$cinco [ Tool system program ] $cinco" \
   171  "ram-free" \
   172  "ram-speed" \
-  173  "disc-speed" \
+  173  "disk-speed" \
   174  "gl-speed" \
   175  "radio" \
   0180 "$cinco [ Show hardware system ] $cinco" \
@@ -3710,7 +3710,7 @@ menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --men
  163) clear ; $fiptables "dev-changes" | less ;; 
  171) clear ; $fiptables "ram-free" ;;
  172) clear ; $fiptables "ram-speed" ;;
- 173) clear ; $fiptables "disc-speed" ;;
+ 173) clear ; $fiptables "disk-speed" ;;
  174) clear ; $fiptables "gl-speed" ;;
  175) clear ; $fiptables "radio" ;;
  181) clear ; $fiptables "lpinfo" ;; 
@@ -5975,12 +5975,12 @@ $fiptables stop
 ####
 ####
 #### :rutina-final-ram-free:
-############################       english: disc-speed: Show the speed of disc
-############################       spanish: disc-speed: Muestra la velocidad de el disco
-#### :rutina-inicial-disc-speed:
+############################       english: disk-speed: Show the speed of disc
+############################       spanish: disk-speed: Muestra la velocidad de el disco
+#### :rutina-inicial-disk-speed:
 ####
 ####
- if [ "$first_option" = "disc-speed" ]; then  $give_cover
+ if [ "$first_option" = "disk-speed" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
  case $command_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
@@ -5993,7 +5993,7 @@ $fiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-disc-speed:
+#### :rutina-final-disk-speed:
 ############################       english: ram-speed: Show the speed of ram
 ############################       spanish: ram-speed: Muestra la velocidad de la ram
 #### :rutina-inicial-ram-speed:
@@ -6761,7 +6761,7 @@ echo "$cinco         [ Tool system ]"
 echo
 echo "      ram-free: Clean for innecesary memory"
 echo "     ram-speed: Show the speed of ram"
-echo "    disc-speed: Show the speed of disc"
+echo "    disk-speed: Show the speed of disc"
 echo "      gl-speed: Show frammes for seconds with mesa graphicall"
 echo "         radio: connect to one server mp3, see $fiptables default"
 echo
@@ -7037,7 +7037,7 @@ echo "$cinco         [ Herramienta de sistema ]"
 echo
 echo "      ram-free: Libera la memoria innecesaria"
 echo "     ram-speed: Muestra la velocidad de la ram"
-echo "    disc-speed: Muestra la velocidad de el disco"
+echo "    disk-speed: Muestra la velocidad de el disco"
 echo "      gl-speed: Muestra fotogramas por segundo con graficos mesa"
 echo "         radio: connecta a on servidor mp3, see $fiptables default"
 echo
