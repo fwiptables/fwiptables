@@ -418,15 +418,15 @@ cp $zero_option $directory_fiptables/$fiptables &> /dev/null
 #### 
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-/etc/bash_completion.d/$fiptables &> /dev/null
-/etc/bash_completion.d/$fiptables.sh &> /dev/null
+rm /etc/bash_completion.d/$fiptables &> /dev/null
+rm /etc/bash_completion.d/$fiptables.sh &> /dev/null
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
 
-all_group="user-interface control-guide control-rules list-rules launch-rules \
+all_group='user-interface control-guide control-rules list-rules launch-rules \
 tool-rules tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-system tool-install tool-blacklist tool-dev \
-show-hardware show-etc show-log show-about show-help show-example "
-echo "complete -W $all_group $fiptables" &>> /etc/bash_completion.d/$fiptables
+show-hardware show-etc show-log show-about show-help show-example'
+echo complete -W $all_group $fiptables &>> /etc/bash_completion.d/$fiptables
 
 
 #### echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
@@ -440,10 +440,10 @@ echo "complete -W $all_group $fiptables" &>> /etc/bash_completion.d/$fiptables
 #### 
 #### 
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
-/etc/profilie.d/$fiptables &> /dev/null
-/etc/profile.d/$fiptables.sh &> /dev/null
+rm /etc/profile.d/$fiptables &> /dev/null
+rm /etc/profile.d/$fiptables.sh &> /dev/null
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/profile.d/$fiptables
-echo "complete -W $all_group $fiptables" &>> /etc/profile.d/$fiptables
+echo complete -W $all_group $fiptables &>> /etc/profile.d/$fiptables
 
 #### echo "complete -W 'list list6 list-filter4 list-filter6 list-nat4 list-nat6 basic-options \
 #### full-options long-help help ayuda  version cli-menu gui-menu gui-shell \
