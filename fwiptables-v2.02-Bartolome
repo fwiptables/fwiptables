@@ -5194,8 +5194,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tcpdump:
-############################       english: info-nodes: listen at dump from conexiones
-############################       spanish: info-nodes: escucha al volcado de conexiones
+############################       english: info-nodes: listen at dump from conexiones arp
+############################       spanish: info-nodes: escucha al volcado de conexiones arp
 #### :rutina-inicial-info-nodes:
 ####
 ####
@@ -5210,7 +5210,7 @@ exit; fi
  echo $rallica
  echo local scan: arp lan
  echo $head_waiting
- $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan 
+ $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan &> /dev/null
  ;;
  esac
  echo $footer_lineal
