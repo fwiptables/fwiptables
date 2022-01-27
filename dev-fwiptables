@@ -4324,6 +4324,7 @@ exit; fi
  echo $header_lineal
  echo "$tab [The sockets with lsof ipv6 ]"
  $command_lsof -i | grep -i ipv6
+ echo $ralla
  echo "$tab [The sockets with lsof ipv4 ]"
  $command_lsof -i | grep -i ipv4
  echo $footer_lineal
