@@ -4322,8 +4322,10 @@ exit; fi
  case $command_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
  echo "$ralla [ $first_option ] [ Show sockets with lsof ]"
  echo $header_lineal
+ echo "$tab [The sockets with lsof ipv6 ]"
+ $command_lsof -i | grep -i ipv6
  echo "$tab [The sockets with lsof ipv4 ]"
- $command_lsof -i 4
+ $command_lsof -i | grep -i ipv4
  echo $footer_lineal
  exit; fi
 ####
