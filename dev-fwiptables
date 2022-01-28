@@ -6195,7 +6195,7 @@ $fiptables stop
  if [ "$first_option" = "lsblk" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ list disks ]"
  echo $header_lineal
- lsblk
+ lsblk -o name,size,label,mountpoints
  echo $ralla
  echo $footer_lineal
  exit; fi
@@ -6454,7 +6454,7 @@ exit; fi
  free -h
  echo $ralla
  echo "$tab [ System info ] [ Disks ]"
- lsblk
+ lsblk -o name,size,label,mountpoints
  echo $footer_lineal
  exit; fi
 ####
