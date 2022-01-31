@@ -2572,7 +2572,7 @@ selection=$(zenity $graphic_dimension  \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
 "12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show hardware" \
 "17 Show etc" "18 Show log" "19 Show about" "20 Show help" \
---column="Option list $fiptables" --text="Select one option" --title="[Gui Menu]  [$fiptables]")
+--column="Option list $fiptables" --text="Select one option" --title="Gui Menu  $fiptables || $(date) ")
 #### 
 #### 
 case "$selection" in
@@ -3325,7 +3325,7 @@ untexto="$fiptables gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms $graphic_dimension --title="[gui shell]  [$fiptables]" \
+menugtk=$(zenity --forms $graphic_dimension --title="gui shell $fiptables || $(date) " \
 --text="$($fiptables basic-options)" --add-entry="$fiptables " )
 case $? in
 1)
@@ -3444,7 +3444,7 @@ exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --title "[$fprogram] [version $fversion]" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --title "$fprogram version $fversion || $(date)" --menu "Select:" 0 0 0\
   0000 "$cinco $tab [$fiptables cli-menu] $tab $cinco" \
   0100 "$cinco [ Tool guide to begin ] $cinco" \
   11  "info-system" \
