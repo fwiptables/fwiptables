@@ -139,11 +139,14 @@
 # 3. info-nodes: ahora esta en gui-menu. HECHO
 # 4- blacklist-off: No cambia el hosntame
 #
-# changes fwiptables 2.02 en desarrollo 
+# changes fwiptables 2.02
 #
 # 1. disk-speed: antes llamado disc-speed
 # 2. netstat-nat: arreglo
 # 3. info-system: muestra los discos con lsblk
 # 4. list-alias: actualizado
 #
+# changes fwiptables 2.03 en desarrollo
 #
+#
+
