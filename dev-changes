@@ -148,5 +148,6 @@
 #
 # changes fwiptables 2.03 en desarrollo
 #
+# 1. simplificacion de cabeceras en texto, cli y gui
 #
 
