@@ -146,7 +146,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" $cinco [ Use: $fiptables options ] [ $fversion ] [ $(date) ] "
+head_principal=" $cinco [ Use: $fiptables options ] [ $fversion ]  $(date)  [/] "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
