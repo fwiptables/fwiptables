@@ -146,7 +146,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" $cinco $fversion || Use: $fiptables options ||  $(date)  "
+head_principal=" $cinco version $fversion || Use: $fiptables options ||  $(date)  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -171,10 +171,10 @@ nada="$(echo -n)" ;
 command_ip="$(command -v ip | cut -d " " -f 1)"                                                
 #### english: default route ipv4        #### english: routa por defecto ipv4
 case "$command_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_cuatro="$cinco [ default route ip.v4 ]  $("$command_ip" -4 route show | grep -i default | head -1) " ;; esac
+*)default_route_cuatro="$cinco default route ip.v4 ||  $("$command_ip" -4 route show | grep -i default | head -1) " ;; esac
 #### english: default route ipv6 #### english: routa por defecto ipv6
 case "$command_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_seis="$cinco [ default route ip.v6 ]  $("$command_ip" -6 route show | grep -i default | head -1) " ;; esac
+*)default_route_seis="$cinco default route ip.v6 || $("$command_ip" -6 route show | grep -i default | head -1) " ;; esac
 ####  english: notice install iptables if necesary
 ####  spanish: noticia instala iptables en caso necesario
 command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
