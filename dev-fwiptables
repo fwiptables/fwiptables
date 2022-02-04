@@ -3444,7 +3444,7 @@ exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --title "$fprogram version $fversion || $(date)" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion || $(date)" --menu "Select:" 0 0 0\
   0000 "$cinco $tab [$fiptables cli-menu] $tab $cinco" \
   0100 "$cinco [ Tool guide to begin ] $cinco" \
   11  "info-system" \
@@ -5343,7 +5343,7 @@ exit; fi
 if [ "$first_option" = "wizard-mini" ]; then $genfiles
 archivo="$first_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -5362,7 +5362,7 @@ exit; fi
 if [ "$first_option" = "wizard-full" ]; then $genfiles
 archivo="$first_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
