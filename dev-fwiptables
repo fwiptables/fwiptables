@@ -239,7 +239,7 @@ server_tcp="" ; server_udp="" ;
 logserver_tcp="no" ; logserver_udp="no" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
-separate_rules="" ; allow_maxtries_ssh="no"
+separate_port_rules="no" ; allow_maxtries_ssh="no"
 allow_forward_ip4="no" ; allow_forward_ip6="no" ; 
 allow_gateway_ip4="no" ; allow_gateway_ip6="no" ;
 allow_dmz_ip4="no" ; allow_dmz_ip6="no" ;
@@ -8359,7 +8359,7 @@ if [ $config_variable_version = "1" ]; then
  config_output_uid="$output_uid" ;
  config_output_gid="$output_gid" ;
  config_others_protocols="$others_protocols" ;
- separate_rules="no" ;
+ separate_port_rules="no" ;
  echo "$cinco [ Runing rules with old variables version $config_variable_version ]"
 fi
 ####
@@ -8625,7 +8625,7 @@ done
 ####################################### spanish: reglas para permitir puertos cliente without separate rules
 ####
 ####
-if [ "$separate_rules" = "no" ]; then 
+if [ "$separate_port_rules" = "no" ]; then 
 ####
 ####
 ####    CLIENT  UDP
@@ -8703,7 +8703,7 @@ $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 fi
-if [ "$separate_rules" = "" ]; then 
+if [ "$separate_port_rules" = "" ]; then 
 for one_udp in $(echo $client_udp | sed 's/,/ /g') ;
 do
 ####
@@ -8744,7 +8744,7 @@ $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 done; fi
-if [ "$separate_rules" = "" ]; then 
+if [ "$separate_port_rules" = "" ]; then 
 for one_tcp in $(echo $client_tcp | sed 's/,/ /g') ;
 do
 ####
