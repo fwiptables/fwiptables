@@ -1299,7 +1299,7 @@ echo "$cinco RUNNING FIREWALL GAMESUDP" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover ;  echo $footer_lineal ; 
 echo "$cinco RUNNING FIREWALL CUSTOM" ;
-launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
+launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 ####
 ##############################   english: custom without valid config cfg
@@ -1307,7 +1307,7 @@ launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 #### :rutina-inicial-custom:
 ####
 ####
-if [ "$first_option" = "custom" ]; then
+if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fiptables cfg 
 echo "$cinco Usage: $fiptables custom file-cfg"
@@ -8356,7 +8356,7 @@ if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi ; fi
 ####      #### spanish: configura variable version
 ####
 ####
-if [ $config_variable_version = "1" ]; then
+if [ $config_variable_version = "1" ]; then $nada
  config_input_state="$input_state" ;
  config_output_state="$output_state" ;
  config_input_bandwidth="$bandwidth_input" ;
