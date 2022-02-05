@@ -1273,23 +1273,32 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####   #### spanish: El primero       cortafuego del sistema
 ####
 ####
-if [ "$first_option" = "offline" ];       then $give_cover; echo "$cinco  FIREWALL OFFLINE" ; 
+if [ "$first_option" = "offline" ];       then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL OFFLINE" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "allpermisive" ];  then $give_cover; echo "$cinco  FIREWALL ALLPERMISIVE" ; 
+if [ "$first_option" = "allpermisive" ];  then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL ALLPERMISIVE" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "clientweb" ];     then $give_cover; echo "$cinco  FIREWALL CLIENTWEB" ;
+if [ "$first_option" = "clientweb" ];     then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL CLIENTWEB" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverweb" ];     then $give_cover; echo "$cinco  FIREWALL SERVERWEB" ;
+if [ "$first_option" = "serverweb" ];     then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL SERVERWEB" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serversamba" ];         then $give_cover; echo "$cinco  FIREWALL SERVERSAMBA" ;
+if [ "$first_option" = "serversamba" ];   then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL SERVERSAMBA" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverprint" ];         then $give_cover; echo "$cinco  FIREWALL SERVERPRINT" ;
+if [ "$first_option" = "serverprint" ];   then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL SERVERPRINT" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverssh" ];         then $give_cover; echo "$cinco  FIREWALL SERVERSSH" ;
+if [ "$first_option" = "serverssh" ];     then $give_cover ; echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL SERVERSSH" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "gamesudp" ];      then $give_cover; echo "$cinco  FIREWALL GAMESUDP" ;
+if [ "$first_option" = "gamesudp" ];     then $give_cover ;  echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL GAMESUDP" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "custom" ];        then $give_cover; echo "$cinco  FIREWALL CUSTOM" ;
+if [ "$first_option" = "custom" ];       then $give_cover ;  echo $footer_lineal ; 
+echo "$cinco RUNNING FIREWALL CUSTOM" ;
 launch_iptables="" ; launch_custom=""     ; config_variable_version="2"  ;  fi
 ####
 ####
@@ -7237,7 +7246,7 @@ $give_autosave
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules ;
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -7318,7 +7327,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "clientweb" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "clientweb" ]; then $fiptables eraserules ; 
 port_udp="domain,bootpc,ntp,https" ; port_tcp="http,https,ssh" ;
 ####
 ####
@@ -7431,7 +7440,7 @@ echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL CLIENTWEB ]" ; exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serverweb" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "serverweb" ]; then $fiptables eraserules ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ;
@@ -7590,7 +7599,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serversamba" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "serversamba" ]; then $fiptables eraserules ; 
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
 client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
 server_tcp="ssh,ldap,ldaps,microsoft-ds" ; 
@@ -7767,7 +7776,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serverprint" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "serverprint" ]; then $fiptables eraserules ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
@@ -7926,7 +7935,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serverssh" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "serverssh" ]; then $fiptables eraserules ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
@@ -8087,7 +8096,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "gamesudp" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "gamesudp" ]; then $fiptables eraserules ; 
 ####
 ####
 $allow_legacy  $allow_ipv4 $command_iptables_legacy -A INPUT \
@@ -8251,7 +8260,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "offline" ]; then $fiptables eraserules ; echo $head_principal
+if [ "$first_option" = "offline" ]; then $fiptables eraserules ; 
 ####
 ####
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A INPUT  \
