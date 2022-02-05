@@ -768,12 +768,15 @@ spa20=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... 
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var32=$(echo "$cinco BEGIN OPTIONAL #" )
-eng32=$(echo "$cinco .......... BEGIN Optional options .......... .......... #")
-spa32=$(echo "$cinco INICIO .......... Opciones opcionales .......... .......... #")
-var33=$(echo "$cinco choose void or no #" )
-eng33=$(echo "$cinco Allow Other Options,  modify with void, or no")
-spa33=$(echo "$cinco Permitir Otras Opciones, modificar con vacio o no")
+var31=$(echo "$cinco BEGIN OPTIONAL #" )
+eng31=$(echo "$cinco .......... BEGIN Optional options .......... .......... #")
+spa31=$(echo "$cinco INICIO .......... Opciones opcionales .......... .......... #")
+var32=$(echo "$cinco choose void or no #" )
+eng32=$(echo "$cinco Allow Other Options,  modify with void, or no")
+spa32=$(echo "$cinco Permitir Otras Opciones, modificar con vacio o no")
+var33=$(echo "separate_port_rules=no" )
+eng33=$(echo "$cinco Separate the rules for each port or no")
+spa33=$(echo "$cinco separar reglas por cada puerto o no")
 var34=$(echo "allow_maxtries_ssh=no" )
 eng34=$(echo "$cinco void to allow max tries login in ssh for hour or no")
 spa34=$(echo "$cinco vacio para permitir maximos intentos de logins in ssh por hora o no")
