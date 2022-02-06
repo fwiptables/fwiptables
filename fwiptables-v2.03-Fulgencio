@@ -305,22 +305,24 @@ exit ; fi
 ####
 if [ "$first_option" = "intro" ]; then $nada
 echo
-echo "--------------------------------------------------------------------------"
-echo "   FRAN FWIPTABLES INTRO "
+echo "---------------------------------------------------------------------------"
+echo
+echo "     FRAN FWIPTABLES INTRO "
 echo 
-echo "   Use << Fran Firewall >> to configure both iptables netfilter.         "
-echo "   With support in <xtables> and/or <nftables> in ipv4 and/or ipv6.      "
-echo "   Create one firewall custom with a wizard and save it in stadard file. "
-echo "   Control the firewall with the standard iptables files for all tables. "
-echo "   Run rules of one firewall with your own config files.                 "
-echo "   And too, use this firewall with some utilities for ipv4 and ipv6.     "
+echo "     Use << Fran Firewall >> to configure both iptables netfilter.         "
+echo "     With support in <xtables> and/or <nftables> in ipv4 and/or ipv6.      "
+echo "     Create one firewall custom with a wizard and save it in stadard file. "
+echo "     Control the firewall with the standard iptables files for all tables. "
+echo "     Run rules of one firewall with your own config files.                 "
+echo "     And too, use this firewall with some utilities for ipv4 and ipv6.     "
 echo
-echo "   LICENSE GNU / GPL v2."
-echo "   See web page project in $fweb_main"
-echo "--------------------------------------------------------------------------"
+echo "     LICENSE GNU / GPL v2."
+echo "     See web page project in $fweb_main"
 echo
-echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" ;
-echo "$cinco [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" ;
+echo "---------------------------------------------------------------------------"
+echo
+echo "   [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" ;
+echo "   [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" ;
 echo
 echo "--------------------------------------------------------------------------"
 echo
