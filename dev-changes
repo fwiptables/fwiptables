@@ -153,5 +153,7 @@
 # 3. simplifica salida del comando de load y lanzar cortafuegos. HECHO
 # 4. log-last: ultimas 50 lineas de /var/log/fwiptables. HECHO
 # 5. añadir traceicmp-ip4 traceicmp-ip6.  HECHO
+# 6. basic-options cambiado a mini-options. HECHO
+# 7. mini-options por defecto al lanzar fwiptables. HECHO
 # 6. añadir algunos code mas que puedan faltar.
 #
