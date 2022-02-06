@@ -1128,19 +1128,19 @@ echo $var54 $tabz $spa54 &>> $fs
 echo $var55 $tabz $spa55 &>> $fs
 echo $var56 $tabz $spa56 &>> $fs
 echo $var57 $tabz $spa57 &>> $fs
-echo $var58 $tabz $eng58 &>> $fs
-echo $var59 $tabz $eng59 &>> $fs
-echo $var60 $tabz $eng60 &>> $fs
-echo $var61 $tabz $eng61 &>> $fs
-echo $var62 $tabz $eng62 &>> $fs
-echo $var63 $tabz $eng63 &>> $fs
-echo $var64 $tabz $eng64 &>> $fs
-echo $var65 $tabz $eng65 &>> $fs
-echo $var66 $tabz $eng66 &>> $fs
-echo $var67 $tabz $eng67 &>> $fs
-echo $var68 $tabz $eng68 &>> $fs
-echo $var69 $tabz $eng69 &>> $fs
-echo $var70 $tabz $eng70 &>> $fs
+echo $var58 $tabz $spa58 &>> $fs
+echo $var59 $tabz $spa59 &>> $fs
+echo $var60 $tabz $spa60 &>> $fs
+echo $var61 $tabz $spa61 &>> $fs
+echo $var62 $tabz $spa62 &>> $fs
+echo $var63 $tabz $spa63 &>> $fs
+echo $var64 $tabz $spa64 &>> $fs
+echo $var65 $tabz $spa65 &>> $fs
+echo $var66 $tabz $spa66 &>> $fs
+echo $var67 $tabz $spa67 &>> $fs
+echo $var68 $tabz $spa68 &>> $fs
+echo $var69 $tabz $spa69 &>> $fs
+echo $var70 $tabz $spa70 &>> $fs
 echo $var71 $tabz $spa71 &>> $fs
 echo $var72 $tabz $spa72 &>> $fs
 echo $var73 $tabz $spa73 &>> $fs
@@ -1148,10 +1148,10 @@ echo $var74 $tabz $spa74 &>> $fs
 echo $var75 $tabz $spa75 &>> $fs
 echo $var76 $tabz $spa76 &>> $fs
 echo $var77 $tabz $spa77 &>> $fs
-echo $var78 $tabz $eng78 &>> $fs
-echo $var79 $tabz $eng79 &>> $fs
-echo $var80 $tabz $eng80 &>> $fs
-echo $var81 $tabz $eng81 &>> $fs
+echo $var78 $tabz $spa78 &>> $fs
+echo $var79 $tabz $spa79 &>> $fs
+echo $var80 $tabz $spa80 &>> $fs
+echo $var81 $tabz $spa81 &>> $fs
 exit ; fi
 ####
 ####
