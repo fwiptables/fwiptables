@@ -1326,7 +1326,7 @@ echo "$cinco See:   $fiptables tool-rules"; fi ; fi
 if [ "$first_option" = "basic-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | info |                      | Basic options |                         "
+echo "$tab" "$tab"  "     | info |                      | firewall options |                         "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
@@ -1366,7 +1366,7 @@ exit ; fi
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | info |                      | Principal options |                     "
+echo "$tab" "$tab"  "     | info |                      | firewall options |                      "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
