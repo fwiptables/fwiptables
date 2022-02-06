@@ -5406,6 +5406,12 @@ exit; fi
  if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 ####
 ####
+#### English: show message
+####
+####
+ echo "$cinco RUNNING LOAD RULES"
+####
+####
 #### English: Remove all rules
 ####
 ####
@@ -5439,7 +5445,7 @@ exit; fi
  fi 
 ####
 ####
- echo $footer_lineal
+#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -7249,7 +7255,7 @@ $give_autosave
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules ;
+if [ "$first_option" = "allpermisive" ]; then $fiptables eraserules &> /dev/null ;
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -7330,7 +7336,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "clientweb" ]; then $fiptables eraserules ; 
+if [ "$first_option" = "clientweb" ]; then $fiptables eraserules &> /dev/null ; 
 port_udp="domain,bootpc,ntp,https" ; port_tcp="http,https,ssh" ;
 ####
 ####
@@ -7443,7 +7449,7 @@ echo "$rallica [ OK LAUNCH RULES ] [ LAUNCHED FIREWALL CLIENTWEB ]" ; exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serverweb" ]; then $fiptables eraserules ; 
+if [ "$first_option" = "serverweb" ];  then $fiptables eraserules &> /dev/null ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ;
@@ -7602,7 +7608,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serversamba" ]; then $fiptables eraserules ; 
+if [ "$first_option" = "serversamba" ];  then $fiptables eraserules &> /dev/null ;
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
 client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
 server_tcp="ssh,ldap,ldaps,microsoft-ds" ; 
@@ -7779,7 +7785,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serverprint" ]; then $fiptables eraserules ;
+if [ "$first_option" = "serverprint" ]; then $fiptables eraserules &> /dev/null ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
@@ -7938,7 +7944,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "serverssh" ]; then $fiptables eraserules ; 
+if [ "$first_option" = "serverssh" ]; then $fiptables eraserules &> /dev/null ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
@@ -8099,7 +8105,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "gamesudp" ]; then $fiptables eraserules ; 
+if [ "$first_option" = "gamesudp" ];  then $fiptables eraserules &> /dev/null ;
 ####
 ####
 $allow_legacy  $allow_ipv4 $command_iptables_legacy -A INPUT \
@@ -8263,7 +8269,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "offline" ]; then $fiptables eraserules ; 
+if [ "$first_option" = "offline" ];  then $fiptables eraserules &> /dev/null ;
 ####
 ####
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A INPUT  \
@@ -8417,7 +8423,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$fiptables eraserules
+$fiptables eraserules &> /dev/null
 ####
 ####
 #######################################        english: ebtables mac rules
