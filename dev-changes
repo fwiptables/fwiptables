@@ -155,5 +155,6 @@
 # 5. añadir traceicmp-ip4 traceicmp-ip6.  HECHO
 # 6. basic-options cambiado a mini-options. HECHO
 # 7. mini-options por defecto al lanzar fwiptables. HECHO
+# 8. seguir traduciendo nueva-completa-config. 
 # 6. añadir algunos code mas que puedan faltar.
 #
