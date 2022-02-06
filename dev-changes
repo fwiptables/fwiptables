@@ -146,7 +146,7 @@
 # 3. info-system: muestra los discos con lsblk. HECHO
 # 4. list-alias: actualizado. HECHO
 #
-# changes fwiptables 2.03 en desarrollo
+# changes fwiptables 2.03
 #
 # 1. simplificacion de cabeceras en texto, cli y gui. HECHO
 # 2. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config. HECHO
@@ -156,5 +156,8 @@
 # 6. basic-options cambiado a mini-options. HECHO
 # 7. mini-options por defecto al lanzar fwiptables. HECHO
 # 8. seguir traduciendo nueva-completa-config. HECHO
-# 6. añadir algunos code mas que puedan faltar.
+#
+# changes fwiptables 2.04 en desarrollo
+#
+# 1. añadir algunos code mas que puedan faltar ejemplo de alias.
 #
