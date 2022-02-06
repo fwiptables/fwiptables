@@ -427,12 +427,12 @@ rm /etc/bash_completion.d/$fiptables &> /dev/null
 rm /etc/bash_completion.d/$fiptables.sh &> /dev/null
 ####
 ####
-#### english: new file generated  ##### spanish: genera el nuevo viejo archivo
+#### english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
 echo "alias $fiptables='sudo $directory_fiptables/$fiptables'"       &>  /etc/bash_completion.d/$fiptables
 echo "complete -W 'user-interface control-guide control-rules list-rules launch-rules \
-tool-rules tool-sockets tool-forward tool-tcp tool-udp \
+custom-rules tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
 show-help show-example' $fiptables"  &>> /etc/bash_completion.d/$fiptables
@@ -452,7 +452,7 @@ rm /etc/profile.d/$fiptables &> /dev/null
 rm /etc/profile.d/$fiptables.sh &> /dev/null
 ####
 ####
-#### english: new file generated  ##### spanish: genera el nuevo viejo archivo
+#### english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
 cp /etc/bash_completion.d/$fiptables /etc/profile.d/$fiptables &> /dev/null
@@ -1314,7 +1314,7 @@ if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fiptables cfg 
 echo "$cinco Usage: $fiptables custom file-cfg"
-echo "$cinco See:   $fiptables tool-rules"; fi ; fi
+echo "$cinco See:   $fiptables custom-rules"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
@@ -1326,7 +1326,7 @@ echo "$cinco See:   $fiptables tool-rules"; fi ; fi
 if [ "$first_option" = "mini-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | info |                      | firewall options |                         "
+echo "$tab" "$tab"  "     | info |                      | firewall options |                      "
 echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
@@ -1338,10 +1338,13 @@ echo "$tab" "$tab"  "                       list-security4 list-security6       
 echo "$tab" "$tab"  "                       list-ebtables list-arptables                          "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
+echo "$tab" "$tab"  "    custom-rules       new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Group options |                           "
 echo "$tab" "$tab"  " user-interface  control-guide   control-rules     list-rules     launch-rules "
-echo "$tab" "$tab"  " tool-rules      tool-sockets    tool-forward      tool-tcp       tool-udp     "
+echo "$tab" "$tab"  " custom-rules    tool-sockets    tool-forward      tool-tcp       tool-udp     "
 echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-system    tool-install " 
 echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
 echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
@@ -1378,11 +1381,11 @@ echo "$tab" "$tab"  "                       list-security4 list-security6       
 echo "$tab" "$tab"  "                       list-ebtables list-arptables                          "
 echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | info |                      | tool options |                          " 
-echo "$tab" "$tab"  "    tool-rules         new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "    custom-rules       new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "     | info |                      | tool options |                          " 
 echo "$tab" "$tab"  "    tool-sockets       info-listen info-nodes info-proxy info-route          "
 echo "$tab" "$tab"  "                       ss lsof tcpdump netstat netstat-nat                   "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
@@ -1451,9 +1454,9 @@ $fiptables list-rules
 echo 
 $fiptables launch-rules
 echo
-echo "$cinco [ Secondary options ] $cinco"
+$fiptables custom-rules
 echo
-$fiptables tool-rules
+echo "$cinco [ Secondary options ] $cinco"
 echo
 $fiptables tool-sockets
 echo
@@ -1563,11 +1566,11 @@ echo "user-interface :  Manage the interface with text or log or gui"
 echo "               :  Manage el interfaz con text o log o gui"
 echo "  launch-rules :  Launch the iptables firewall rules"
 echo "               :  Lanza las reglas de iptables"
+echo "  custom-rules :  Create, modify and show configurations"
+echo "               :  Crea, modifica y muestra configuraciones"
 echo
 echo "                  [ Secondary options ]"
 echo
-echo "    tool-rules :  Create, modify and show configurations"
-echo "               :  Crea, modifica y muestra configuraciones"
 echo "  tool-sockets :  List net sockets ip in system"
 echo "               :  Lista sockets de red ip en el sistema"
 echo "  tool-forward :  list, active and desactive ipforward in linux"
@@ -1763,15 +1766,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-numrules:
-##############################       english: tool-rules: options
-##############################       spanish: tool-rules: opciones
-#### :rutina-inicial-tool-rules:
+##############################       english: custom-rules: options
+##############################       spanish: custom-rules: opciones
+#### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" = "tool-rules" ]; then $give_cover
+if [ "$first_option" = "custom-rules" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool custom rules config ]"
-echo "$rallica [ Tool configs ]"
-echo "$rallica [ Herramienta de configuraciones ]"
+echo "$rallica [ custom configs ]"
+echo "$rallica [ Herramienta de configuraciones de reglas ]"
 echo
 echo "       new-full-config : Create a new advance configfile.cfg in english"
 echo "                       : Crea una nueva avanzada configfile.cfg en ingles"
@@ -1793,7 +1796,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-tool-rules:
+#### :rutina-final-custom-rules:
 ##############################       english: control-guide: options
 ##############################       spanish: control-guide: opciones
 #### :rutina-inicial-control-guide:
@@ -2600,7 +2603,7 @@ case "$selection" in
 "02 Control rules")$fiptables gui-menu-control-rules;;
 "03 List rules")$fiptables gui-menu-list-rules;;
 "04 Launch rules")$fiptables gui-menu-launch-rules;;
-"05 Tool rules")$fiptables gui-menu-tool-rules;;
+"05 Tool rules")$fiptables gui-menu-custom-rules;;
 "06 Tool sockets")$fiptables gui-menu-tool-sockets;;
 "07 Tool forward")$fiptables gui-menu-tool-forward ;;
 "08 Tool tcp")$fiptables gui-menu-tool-tcp;;
@@ -2783,12 +2786,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-list-rules:
-############################## english: gui-menu-tool-rules: gui with menu ##############################
-############################## spanish: gui-menu-tool-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-tool-rules:
+############################## english: gui-menu-custom-rules: gui with menu ##############################
+############################## spanish: gui-menu-custom-rules: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-custom-rules:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-custom-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "list-config" "show-config" "modify-config" "del-config" \
@@ -2798,7 +2801,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
-"Gui Info Menu") $fiptables -gui tool-rules;;
+"Gui Info Menu") $fiptables -gui custom-rules;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $fiptables -gui new-full-config $archivo ;;
@@ -2833,7 +2836,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-tool-rules:
+#### :rutina-final-gui-menu-custom-rules:
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-sockets:
@@ -3627,7 +3630,7 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
  0040) clear ; $fiptables list-rules ;;
  0050) clear ; $fiptables list-rules ;;
  0060) clear ; $fiptables launch-rules ;;
- 0070) clear ; $fiptables tool-rules ;;
+ 0070) clear ; $fiptables custom-rules ;;
  0080) clear ; $fiptables tool-socket ;;
  0090) clear ; $fiptables tool-ipforward ;;
  0100) clear ; $fiptables tool-tcp ;;
@@ -6697,7 +6700,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$second_option" = "list-rules" ]; then $fiptables list-rules ; exit ; fi
  if [ "$second_option" = "user-interface" ]; then $fiptables user-interface ; exit ; fi
  if [ "$second_option" = "launch-rules" ]; then $fiptables launch-rules ; exit ; fi
- if [ "$second_option" = "tool-rules" ]; then $fiptables tool-rules ; exit ; fi
+ if [ "$second_option" = "custom-rules" ]; then $fiptables custom-rules ; exit ; fi
  if [ "$second_option" = "tool-sockets" ]; then $fiptables tool-sockets ; exit ; fi
  if [ "$second_option" = "tool-forward" ]; then $fiptables tool-forward ; exit ; fi
  if [ "$second_option" = "tool-tcp" ]; then $fiptables tool-tcp ; exit ; fi
@@ -6728,7 +6731,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | Group options |                           "
 echo "$tab" "$tab"  " user-interface  control-guide   control-rules     list-rules     launch-rules "
-echo "$tab" "$tab"  " tool-rules      tool-sockets    tool-forward      tool-tcp       tool-udp     "
+echo "$tab" "$tab"  " custom-rules    tool-sockets    tool-forward      tool-tcp       tool-udp     "
 echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-system    tool-install " 
 echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
 echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
