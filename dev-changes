@@ -137,18 +137,20 @@
 # 1. code: ahora esta en gui-menu, secction tool-dev. HECHO
 # 2. info-route: cambia el nombre route a info-route. HECHO
 # 3. info-nodes: ahora esta en gui-menu. HECHO
-# 4- blacklist-off: No cambia el hosntame
+# 4- blacklist-off: No cambia el hosntame. HECHO
 #
 # changes fwiptables 2.02
 #
-# 1. disk-speed: antes llamado disc-speed
-# 2. netstat-nat: arreglo
-# 3. info-system: muestra los discos con lsblk
-# 4. list-alias: actualizado
+# 1. disk-speed: antes llamado disc-speed. HECHO
+# 2. netstat-nat: arreglo. HECHO
+# 3. info-system: muestra los discos con lsblk. HECHO
+# 4. list-alias: actualizado. HECHO
 #
 # changes fwiptables 2.03 en desarrollo
 #
-# 1. simplificacion de cabeceras en texto, cli y gui
-# 2. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config
-# 3. simplifica salida del comando de load y lanzar cortafuegos 
+# 1. simplificacion de cabeceras en texto, cli y gui. HECHO
+# 2. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config. HECHO
+# 3. simplifica salida del comando de load y lanzar cortafuegos. HECHO
+# 4. log-last: ultimas 50 lineas de /var/log/fwiptables
+# 5. añadir algunos code mas que puedan faltar
 #
