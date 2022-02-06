@@ -62,7 +62,7 @@ fi
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: new option for default
 ####       #### spanish: nueva opcion por defecto
-whithout_option="options"            ## fwiptables-default ## default for null option: options
+whithout_option="mini-options"            ## fwiptables-default ## default for null option: options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy="no"                     ## fwiptables-default ## void or no
@@ -226,7 +226,7 @@ license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.tx
 #### spanish: si esta mal definidad definida whithout_option
 ####
 ####
-default_security="basic-options"
+default_security="mini-options"
 ####
 ####
 ############################## english: variables: variables to declare     ##############################
@@ -277,8 +277,8 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
 ####
 ####
-#### english: if null option is void return default to basic-options
-#### spanish: si la opcion por defecto esta vacia vuelve a basic-options
+#### english: if null option is void return default to mini-options
+#### spanish: si la opcion por defecto esta vacia vuelve a mini-options
 ####
 ####
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
@@ -1318,12 +1318,12 @@ echo "$cinco See:   $fiptables tool-rules"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
-##############################       english: basic-options: wellcome with semi help
-##############################       spanish: basic-options: bienvenida con semi ayuda
-#### :rutina-inicial-basic-options:
+##############################       english: mini-options: wellcome with semi help
+##############################       spanish: mini-options: bienvenida con semi ayuda
+#### :rutina-inicial-mini-options:
 ####
 ####
-if [ "$first_option" = "basic-options" ]; then $give_cover
+if [ "$first_option" = "mini-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                      | firewall options |                         "
@@ -1357,7 +1357,7 @@ echo "$tab" "$tab"  "  Show more options :                     $fiptables option
 exit ; fi
 ####
 ####
-#### :rutina-final-basic-options:
+#### :rutina-final-mini-options:
 ##############################       english: full-options: wellcome with semi help
 ##############################       spanish: full-options: bienvenida con semi ayuda
 #### :rutina-inicial-full-options:
@@ -1405,7 +1405,7 @@ echo "$tab" "$tab"  "                       show-default modify-default         
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options info               "
-echo "$tab" "$tab"  "                       group-options basic-options full-options              "
+echo "$tab" "$tab"  "                       group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "    some-example       | whith default output or -text or -log or -gui |     "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1413,7 +1413,7 @@ echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wiza
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
 echo "$tab" "$tab"  "  Show control-guide with output gui :      $fiptables -gui control-guide    "
-echo "$tab" "$tab"  "  Show less options :                       $fiptables basic-options         "
+echo "$tab" "$tab"  "  Show less options :                       $fiptables mini-options          "
 #### echo $footer_lineal
 exit ; fi
 ####
@@ -2244,7 +2244,7 @@ echo "            ayuda : Show help in spanish"
 echo "                  : Muestra la ayuda en español"
 echo "    group-options : show the options groups"
 echo "                  : show los grupos de opciones"
-echo "    basic-options : Show basic options"
+echo "     mini-options : Show basic options"
 echo "                  : Muestra lista de opciones"
 echo "     full-options : Show full options"
 echo "                  : Muestra lista de opciones"
@@ -3302,7 +3302,8 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "full-options" "long-help" "help" "ayuda" "notes" "license" \
+--list "Gui Principal Menu" "Gui Info Menu" "mini-options" "full-options" \
+"long-help" "help" "ayuda" "notes" "license" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show help] [$fiptables]" )
 #### 
 #### 
@@ -3310,6 +3311,7 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "Gui Info Menu") $fiptables -gui show-help ;;
+"mini-options")$fiptables -gui mini-options ;;
 "full-options")$fiptables -gui full-options ;;
 "long-help") $fiptables -gui long-help ;;
 "help") $fiptables -gui help ;;
@@ -3348,7 +3350,7 @@ untexto="$fiptables gui-shell"
 ####
 ####
 menugtk=$(zenity --forms $graphic_dimension --title="gui shell $fiptables || $(date) " \
---text="$($fiptables basic-options)" --add-entry="$fiptables " )
+--text="$($fiptables mini-options)" --add-entry="$fiptables " )
 case $? in
 1)
 ####
@@ -3604,7 +3606,7 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
   214  "config-eng" \
   215  "config-spa" \
   0220 "$cinco [ Show help global options ] $cinco" \
-  221  "basic-options" \
+  221  "mini-options" \
   222  "full-options" \
   223  "help" \
   224  "ayuda" \
@@ -3784,7 +3786,7 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
  213) clear ; $fiptables "examples" | less ;;
  214) clear ; $fiptables "config-eng" | less ;;
  215) clear ; $fiptables "config-spa" | less ;;
- 221) clear ; $fiptables "basic-options" ;;
+ 221) clear ; $fiptables "mini-options" ;;
  222) clear ; $fiptables "full-options" | less ;;
  223) clear ; $fiptables "help" | less ;;
  224) clear ; $fiptables "ayuda" | less ;;
