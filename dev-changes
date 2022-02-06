@@ -151,6 +151,7 @@
 # 1. simplificacion de cabeceras en texto, cli y gui. HECHO
 # 2. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config. HECHO
 # 3. simplifica salida del comando de load y lanzar cortafuegos. HECHO
-# 4. log-last: ultimas 50 lineas de /var/log/fwiptables
-# 5. añadir algunos code mas que puedan faltar
+# 4. log-last: ultimas 50 lineas de /var/log/fwiptables. HECHO
+# 5. traceicmp-ip4 traceicmp-ip6.
+# 6. añadir algunos code mas que puedan faltar.
 #
