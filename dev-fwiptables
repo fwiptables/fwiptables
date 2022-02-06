@@ -1388,7 +1388,7 @@ echo "$tab" "$tab"  "                       ss lsof tcpdump netstat netstat-nat 
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp           host dig resolveip geoip ntpdate                      "
-echo "$tab" "$tab"  "    tool-icmp          ping-ip4 ping-ip6                                     "
+echo "$tab" "$tab"  "    tool-icmp          traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap          scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          sudo-adduser sudo-deluser sudo-list alias-list        "
 echo "$tab" "$tab"  "    tool-system        ram-free ram-speed disk-speed glx-speed radio         "
@@ -1914,10 +1914,14 @@ echo "$ralla [ $first_option ] [ tool icmp ]"
 echo "$rallica [ Tool icmp ]"
 echo "$rallica [ Herramienta icmp ]"
 echo
-echo "     ping-ip4 : Do a one ping with to one host with ipv4 icmp"
-echo "              : Hace un ping con una direccion con ipv4 icmp"
-echo "     ping-ip6 : Do a one ping with to one host with ipv6 icmp"
-echo "              : Hace un ping con una direccion con ipv6 icmp"
+echo " traceicmp-ip4 : Trace route a one host with ipv4 icmp"
+echo "               : Traza la routa a una direccion con ipv4 icmp"
+echo " traceicmp-ip6 : Trace route a one host with ipv6 icmp"
+echo "               : Traza la routa a una direccion con ipv6 icmp"
+echo "     ping-ip4  : Do a one ping with to one host with ipv4 icmp"
+echo "               : Hace un ping con una direccion con ipv4 icmp"
+echo "     ping-ip6  : Do a one ping with to one host with ipv6 icmp"
+echo "               : Hace un ping con una direccion con ipv6 icmp"
 echo
 echo $footer_lineal
 exit; fi
@@ -2904,7 +2908,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ping-ip4" "ping-ip6" \
+--list "Gui Principal Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
 --column="Option list $fiptables" --text="Select one option" --title="[Tool Icmp] [$fiptables]" )
 #### 
 #### 
@@ -2912,6 +2916,8 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fiptables good bye"; exit ;;
 "Gui Principal Menu")$fiptables gui-menu ;;
 "Gui Info Menu") $fiptables -gui tool-icmp ;;
+"traceicmp-ip4") $fiptables -gui traceicmp-ip4 ;;
+"traceicmp-ip6") $fiptables -gui traceicmp-ip6 ;;
 "ping-ip4")  $fiptables -gui ping-ip4  ;;
 "ping-ip6")  $fiptables -gui ping-ip6  ;;
 esac
@@ -3537,8 +3543,10 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
   103   "tracetcp-ip4" \
   104   "tracetcp-ip6" \
   0110 "$cinco [ Tool icmp ] $cinco" \
-  111   "ping-ip4" \
-  112   "ping-ip6" \
+  111   "traceicmp-ip4" \
+  112   "traceicmp-ip6" \
+  113   "ping-ip4" \
+  114   "ping-ip6" \
   0120 "$cinco [ Tool udp ] $cinco"  \
   121  "host" \
   122  "dig" \
@@ -3719,8 +3727,10 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
  102) clear ; $fiptables speed-ip6 ;;
  103) clear ; $fiptables tracetcp-ip4 ;;
  104) clear ; $fiptables tracetcp-ip6 ;;
- 111) clear ; $fiptables ping-ip4 ;;
- 112) clear ; $fiptables ping-ip6 ;;
+ 111) clear ; $fiptables traceicmp-ip4 ;;
+ 112) clear ; $fiptables traceicmp-ip6 ;;
+ 113) clear ; $fiptables ping-ip4 ;;
+ 114) clear ; $fiptables ping-ip6 ;;
  121) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fiptables host $resolve ;;
  122) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
@@ -5670,7 +5680,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-ping-ip6:
-############################       english: tracetcp-ip4: traceroute with tcp and ipv6
+############################       english: tracetcp-ip4: traceroute with tcp and ipv4
 ############################       spanish: tracetcp-ip4: traceroute con tcp y ipv4
 #### :rutina-inicial-tracetcp-ip4:
 ####
@@ -5719,6 +5729,56 @@ exit; fi
 ####
 ####
 #### :rutina-final-tracetcp-ip6:
+############################       english: traceicmp-ip4: traceroute with tcp and ipv4
+############################       spanish: traceicmp-ip4: traceroute con tcp y ipv4
+#### :rutina-inicial-traceicmp-ip4:
+####
+####
+ if [ "$first_option" = "traceicmp-ip4" ]; then $give_cover
+ echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo $header_lineal
+ case $command_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
+ $fiptables stop
+ echo $head_waiting
+ echo "$cinco traceroute -4 -I $server_traceroute_ipv4"
+ timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
+ echo $head_waiting
+ $fiptables continue
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-traceicmp-ip4:
+############################       english: traceicmp-ip6: traceroute with tcp and ipv6
+############################       spanish: traceicmp-ip6: traceroute con tcp y ipv6
+#### :rutina-inicial-traceicmp-ip6:
+####
+####
+ if [ "$first_option" = "traceicmp-ip6" ]; then $give_cover
+ echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo $header_lineal
+ case $command_traceroute in "$NULL") echo " Install traceroute" ; exit ;;  esac
+####
+####
+#### english: launch #### spanish: lanza
+####
+####
+ $fiptables stop
+ echo $head_waiting
+ echo "$cinco traceroute -6 -I $server_traceroute_ipv6"
+ timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
+ echo $head_waiting
+ $fiptables continue
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-traceicmp-ip6:
 ############################       english: host: host to resolve ip
 ############################       spanish: host: host to resolve ip
 #### :rutina-inicial-host:
@@ -6809,8 +6869,10 @@ echo "      ntpdate: Update the date from ntp server"
 echo 
 echo "$cinco         [ Tool icmp ]"
 echo
-echo "     ping-ip4: Do a one ping with to one host with ipv4 icmp"
-echo "     ping-ip6: Do a one ping with to one host with ipv6 icmp"
+echo " traceicmp-ip4: Trace route a one host with ipv4 icmp"
+echo " traceicmp-ip6: Trace route a one host with ipv6 icmp"
+echo "      ping-ip4: Do a one ping with to one host with ipv4 icmp"
+echo "      ping-ip6: Do a one ping with to one host with ipv6 icmp"
 echo
 echo "$cinco         [ Tool nmap ]"
 echo 
@@ -7086,8 +7148,10 @@ echo "      ntpdate: Actualiza la fecha desde un ntp server"
 echo 
 echo "$cinco         [ Herramienta icmp ]"
 echo
-echo "     ping-ip4: Hace un ping a una host con ipv4 icmp"
-echo "     ping-ip6: Hace un ping a una host con ipv6 icmp"
+echo " traceicmp-ip4: Traza ruta a una host con ipv4 icmp"
+echo " traceicmp-ip6: Traza ruta a una host con ipv6 icmp"
+echo "      ping-ip4: Hace un ping a una host con ipv4 icmp"
+echo "      ping-ip6: Hace un ping a una host con ipv6 icmp"
 echo
 echo "$cinco         [ Herramienta nmap ]"
 echo 
