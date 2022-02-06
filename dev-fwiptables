@@ -1398,9 +1398,10 @@ echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | info |                     | show options |                           " 
 echo "$tab" "$tab"  "    show-hardware      lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-etc           hosts protocols services hosts.allow hosts.deny       "
-echo "$tab" "$tab"  "    show-log           log-search log-ssh log-fwiptables                     "
-echo "$tab" "$tab"  "                       resolv.conf show-default modify-default               "
+echo "$tab" "$tab"  "    show-etc           hosts resolv.conf  protocols services                 "
+echo "$tab" "$tab"  "                       hosts.allow hosts.deny                                "
+echo "$tab" "$tab"  "    show-log           log-search log-ssh log-fwiptables log-last            "
+echo "$tab" "$tab"  "                       show-default modify-default                           "
 echo "$tab" "$tab"  "    show-about         about version depends examples                        "
 echo "$tab" "$tab"  "                       config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options info               "
@@ -2181,6 +2182,8 @@ echo "$rallica [ Mostrar log ]"
 echo
 echo " log-fwiptables : Show /var/log/fwiptables history"
 echo "                : Muestra /var/log/fwiptables historia"
+echo " log-fwiptables : Show /var/log/fwiptables history last 50 lines"
+echo "                : Muestra /var/log/fwiptables historia ultimas 50 lineas "
 echo "        log-ssh : Search logs for ssh in /var/log"
 echo "                : Busca logs con sshd en /var/log"
 echo "     log-search : Search logs whith a prefix in /var/log"
@@ -3226,7 +3229,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "log-fwiptables" "log-search" \
+--list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "log-fwiptables" "log-last" "log-search" \
 --column="Option list $fiptables" --text="Select one option" --title="[Show log] [$fiptables]" )
 #### 
 #### 
@@ -3236,6 +3239,7 @@ case $selection in
 "Gui Info Menu") $fiptables -gui show-log ;;
 "log-ssh")   $fiptables -gui log-ssh ;;
 "log-fwiptables") $fiptables -gui log-fwiptables ;;
+"log-last") $fiptables -gui log-last ;;
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fiptables -gui log-search $pattern;;
@@ -3584,6 +3588,7 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
   201  "log-ssh" \
   202  "log-search" \
   203  "log-fwiptables" \
+  204  "log-last" \
   0210 "$cinco [ Show about ] $cinco" \
   211  "about" \
   212  "depends" \
@@ -3763,6 +3768,7 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
  202) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fiptables "log-search" "$pattern" | less ;;
  203) clear ; $fiptables "log-fwiptables" | less ;;
+ 204) clear ; $fiptables "log-last" | less ;;
  211) clear ; $fiptables "about" | less ;;
  212) clear ; $fiptables "depends" | less ;;
  213) clear ; $fiptables "examples" | less ;;
@@ -6104,6 +6110,20 @@ $fiptables stop
 ####
 ####
 #### :rutina-final-log-fwiptables:
+############################## english: log-last: Read log /var/log/fwiptables last 50 lines     ##############################
+############################## spanish: log-last: Lee log  /var/log/fwiptables ultimas 50 lineas ##############################
+#### :rutina-inicial-log-last:
+####
+####
+ if [ "$first_option" = "log-last" ] ; then  $give_cover
+ echo "$ralla [ $first_option ] [ show /var/log/fwiptables ]"
+ cat /var/log/fwiptables | tail -50
+ echo "$ralla [ last end of file from /var/log/fwiptables ]"
+ echo $footer_lineal
+ exit; fi
+####
+####
+#### :rutina-final-log-last:
 ############################       english: log-ssh: log from ssh server
 ############################       spanish: log-ssh: log desde el servidor de ssh
 #### :rutina-inicial-log-ssh:
@@ -6857,6 +6877,7 @@ echo
 echo "$cinco         [ Show log ]"
 echo
 echo " log-fwiptables: Show /var/log/fwiptables"
+echo "       log-last: Show /var/log/fwiptables, the last 50 lines"
 echo "        log-ssh: Search the logs from sshd for /var/log"
 echo "     log-search: Search the logs from a input pattern for /var/log"
 echo
@@ -7133,6 +7154,7 @@ echo
 echo "$cinco         [ Mostrar log ]"
 echo
 echo " log-fwiptables: Muestra /var/log/fwiptables"
+echo "       log-last: Muestra /var/log/fwiptables, las ultimas 50 lineas"
 echo "        log-ssh: Busca los logs de sshd en /var/log"
 echo "     log-search: Busca los logs dando un patron para /var/log"
 echo
