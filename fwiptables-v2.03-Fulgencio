@@ -146,7 +146,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" $cinco version $fversion || Use: $fiptables options ||  $(date)  "
+head_principal=" $cinco Version $fversion || Use: $fiptables options ||  $(date)  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### head_default="$cinco [ Default: $fiptables show-default ] [ Usage: $fiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -154,7 +154,7 @@ head_principal=" $cinco version $fversion || Use: $fiptables options ||  $(date)
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting="$rallica [ Graphics: ] [ Wait several seconds.. ] [ with max $server_waiting seconds ] $rallica" 
+head_waiting="$rallica [ Graphics: ] [ Wait several seconds.. ] [ With max $server_waiting seconds ] $rallica" 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -171,10 +171,10 @@ nada="$(echo -n)" ;
 command_ip="$(command -v ip | cut -d " " -f 1)"                                                
 #### english: default route ipv4        #### english: routa por defecto ipv4
 case "$command_ip" in "$NULL")default_route_cuatro="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_cuatro="$cinco default route ip.v4 ||  $("$command_ip" -4 route show | grep -i default | head -1) " ;; esac
+*)default_route_cuatro="$cinco Default route ip.v4 ||  $("$command_ip" -4 route show | grep -i default | head -1) " ;; esac
 #### english: default route ipv6 #### english: routa por defecto ipv6
 case "$command_ip" in "$NULL")default_route_seis="$cinco [ Route ip.v4 ] [ No ip command ]" ;;
-*)default_route_seis="$cinco default route ip.v6 || $("$command_ip" -6 route show | grep -i default | head -1) " ;; esac
+*)default_route_seis="$cinco Default route ip.v6 || $("$command_ip" -6 route show | grep -i default | head -1) " ;; esac
 ####  english: notice install iptables if necesary
 ####  spanish: noticia instala iptables en caso necesario
 command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
@@ -306,17 +306,17 @@ exit ; fi
 if [ "$first_option" = "intro" ]; then $nada
 echo
 echo "--------------------------------------------------------------------------"
-echo "  FRAN INTRO "
+echo "   FRAN FWIPTABLES INTRO "
 echo 
-echo "  Use Fran Firewall to configure both iptables netfilter. "
-echo "  With xtables and/or nftables. with ipv4 and/or ipv6.    "
-echo "  Create one firewall with a wizard and save it.          "
-echo "  Configure one firewall with your own config files.      "
-echo "  Manage the firewall with the standard iptables files.   "
-echo "  Too, use this firewall with some utilities for ip.      "
+echo "   Use << Fran Firewall >> to configure both iptables netfilter.         "
+echo "   With support in <xtables> and/or <nftables> in ipv4 and/or ipv6.      "
+echo "   Create one firewall custom with a wizard and save it in stadard file. "
+echo "   Control the firewall with the standard iptables files for all tables. "
+echo "   Run rules of one firewall with your own config files.                 "
+echo "   And too, use this firewall with some utilities for ipv4 and ipv6.     "
 echo
-echo "  LICENSE GNU / GPL v2."
-echo "  See web page project in $fweb_main"
+echo "   LICENSE GNU / GPL v2."
+echo "   See web page project in $fweb_main"
 echo "--------------------------------------------------------------------------"
 echo
 echo "$cinco [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" ;
