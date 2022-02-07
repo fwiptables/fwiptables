@@ -159,5 +159,6 @@
 #
 # changes fwiptables 2.04 en desarrollo
 #
-# 1. añadir algunos code mas que puedan faltar ejemplo de alias.
+# 1. mini-options simplificado. HECHO
+# 2. añadir algunos code mas que puedan faltar ejemplo de alias.
 #
