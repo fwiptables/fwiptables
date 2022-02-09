@@ -654,6 +654,7 @@ if [ "$first_option" = "header" ] ; then
 ############################  dont allow header
 if [ "$allow_header" = "no" ]   ; then 
 echo $head_principal
+exit
 ############################  allow header
 else 
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
@@ -4204,6 +4205,7 @@ exit; fi
  #### spanish: borra las reglas
  ####
  ####
+ $command_arptables -F
  $command_ebtables -t filter -F
  $command_ebtables -t nat -F
  $command_iptables_nft -t filter -F
