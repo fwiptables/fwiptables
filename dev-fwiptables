@@ -77,7 +77,7 @@ allow_header_notice="no"                       ## fwiptables-default ## void or 
 allow_autolog=""                 ## fwiptables-default ## void or no
 ####       #### english: void to AUTOSAVE fwrecover or no 
 ####       #### spanish: AUTOGUARDAR fwrecover o no
-allow_autosave=""                 ## fwiptables-default ## void or no
+allow_autosave="no"                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
@@ -1361,7 +1361,7 @@ echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-sys
 echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
 echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                      | Examples |                           "
+echo "$tab" "$tab"  "                                    | Examples |                             "
 echo "$tab" "$tab"  "  List iptables rules :                   $fiptables list                    "
 echo "$tab" "$tab"  "  Generate new iptables rules :           $fiptables wizard-mini             "
 echo "$tab" "$tab"  "  Save iptables rules with one name :     $fiptables save name               "
@@ -1422,7 +1422,7 @@ echo "$tab" "$tab"  "                       config-eng config-spa license       
 echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options info               "
 echo "$tab" "$tab"  "                       group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | Info |                        | Examples |                            " 
+echo "$tab" "$tab"  "     | Info |                      | Examples |                              " 
 echo "$tab" "$tab"  "  Generate new iptables rules :             $fiptables wizard-mini           "
 echo "$tab" "$tab"  "  Save iptables rules with one name :       $fiptables save name             "
 echo "$tab" "$tab"  "  List names from all firewall saved :      $fiptables names                 "
