@@ -690,6 +690,13 @@ fi ; exit ; fi
 ####
 ####
 #### :rutina-final-header:
+##################################### english: fwiptables with null option
+##################################### spanish: fwiptables con vacia opcion
+####
+####
+if [ "$first_option" = "$NULL" ]; then $fiptables $whithout_option ; exit; fi
+####
+####
 ##################################### english: regeneration-default: regen files       #####################################
 ##################################### spanish: regeneration-default: regenera archivos #####################################
 #### :rutina-inicial-regeneration-default:
