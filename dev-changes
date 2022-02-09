@@ -161,5 +161,6 @@
 #
 # 1. mini-options simplificado. HECHO
 # 2. allow_header_notice siplificada, reunificada y desactivada por defecto. HECHO
+# 3. añadir arptables a eraserules. HECHO
 # 3. añadir algunos code mas que puedan faltar ejemplo de alias.
 #
