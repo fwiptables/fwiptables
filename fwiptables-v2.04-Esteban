@@ -71,13 +71,13 @@ allow_ipv4=""                         ## fwiptables-default ## void or no
 allow_ipv6=""                         ## fwiptables-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
-allow_header="no"                       ## fwiptables-default ## void or no
+allow_header_notice="no"                       ## fwiptables-default ## void or no
 ####       #### english: void to AUTOLOG one line from command launched
 ####       #### spanish: vacio para AUTOLOG del comando lanzado o no
 allow_autolog=""                 ## fwiptables-default ## void or no
 ####       #### english: void to AUTOSAVE fwrecover or no 
 ####       #### spanish: AUTOGUARDAR fwrecover o no
-allow_autosave="no"                 ## fwiptables-default ## void or no
+allow_autosave=""                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
@@ -167,16 +167,6 @@ give_cover="$fiptables header"
 give_autosave="$fiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
-####  english: notice install iptables if necesary
-####  spanish: noticia instala iptables en caso necesario
-command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
-command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
-command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
-command_ip6tables_nft="$(command -v ip6tables-nft | cut -d " " -f 1)"
-if [ "$command_iptables_legacy" = "$NULL" ]; then echo "install iptables-legacy"; fi
-if [ "$command_ip6tables_legacy" = "$NULL" ]; then echo "install ip6tables-legacy"; fi
-if [ "$command_iptables_nft" = "$NULL" ]; then echo "install iptables-nft"; fi
-if [ "$command_ip6tables_nft" = "$NULL" ]; then echo "install ip6tables-nft"; fi
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -647,16 +637,25 @@ else echo $head_autolog >> /var/log/fwiptables ; fi; fi
 #### :rutina-inicial-header:
 ####
 ####
-#### english:  allow_header  #### spanish: permitir cabecera
+#### english:  allow_header_notice  #### spanish: permitir cabecera
 ####
 ####
 if [ "$first_option" = "header" ] ; then
-############################  dont allow header
-if [ "$allow_header" = "no" ]   ; then 
-echo $head_principal
-exit
-############################  allow header
+############################  dont allow header notice, allow_header_notice="no"
+if [ "$allow_header_notice" = "no" ]   ; then 
+echo $head_principal ; exit 0
+############################  allow header notice, allow_header_notice=""
 else 
+####  english: notice install iptables if necesary
+####  spanish: noticia instala iptables en caso necesario
+command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
+command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
+command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
+command_ip6tables_nft="$(command -v ip6tables-nft | cut -d " " -f 1)"
+if [ "$command_iptables_legacy" = "$NULL" ]; then echo "install iptables-legacy"; fi
+if [ "$command_ip6tables_legacy" = "$NULL" ]; then echo "install ip6tables-legacy"; fi
+if [ "$command_iptables_nft" = "$NULL" ]; then echo "install iptables-nft"; fi
+if [ "$command_ip6tables_nft" = "$NULL" ]; then echo "install ip6tables-nft"; fi
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
 command_ip="$(command -v ip | cut -d " " -f 1)"                                                
 #### english: default route ipv4        #### english: routa por defecto ipv4
@@ -687,7 +686,6 @@ if [ "$default_route_seis" != "$NULL" ]   ; then echo "$default_route_seis"   ; 
 if [ "$rules_arptables" != "0" ]          ; then echo "$sinco Whith ebtables arp rules"        ; fi
 if [ "$rules_filter_ebtables" != "0" ]    ; then echo "$sinco Whith ebtables filter mac rules" ; fi
 if [ "$rules_nat_ebtables" != "0" ]       ; then echo "$sinco Whith ebtables nat mac rules"    ; fi
-#### echo $header_ender
 fi ; exit ; fi
 ####
 ####
@@ -1169,8 +1167,8 @@ exit ; fi
 ####
 ####
 case "$NULL" in
-"$allow_header");;
-*)allow_header="no";;
+"$allow_header_notice");;
+*)allow_header_notice="no";;
 "$allow_legacy");; 
 *)allow_legacy="no";;
 "$allow_nft");; 
