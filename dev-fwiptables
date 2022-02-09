@@ -683,9 +683,9 @@ else rules_arptables="$($command_arptables -L | grep -- "-j" | wc -l)" ; fi
 echo $head_principal
 if [ "$default_route_cuatro" != "$NULL" ] ; then echo "$default_route_cuatro" ; fi
 if [ "$default_route_seis" != "$NULL" ]   ; then echo "$default_route_seis"   ; fi
-if [ "$rules_arptables" != "0" ]          ; then echo "$cinco [ whith ebtables arp rules ]"        ; fi
-if [ "$rules_filter_ebtables" != "0" ]    ; then echo "$cinco [ whith ebtables filter mac rules ]" ; fi
-if [ "$rules_nat_ebtables" != "0" ]       ; then echo "$cinco [ whith ebtables nat mac rules ]"    ; fi
+if [ "$rules_arptables" != "0" ]          ; then echo "$sinco Whith ebtables arp rules"        ; fi
+if [ "$rules_filter_ebtables" != "0" ]    ; then echo "$sinco Whith ebtables filter mac rules" ; fi
+if [ "$rules_nat_ebtables" != "0" ]       ; then echo "$sinco Whith ebtables nat mac rules"    ; fi
 #### echo $header_ender
 fi ; exit ; fi
 ####
