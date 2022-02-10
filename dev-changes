@@ -159,8 +159,8 @@
 #
 # changes fwiptables 2.04 en desarrollo
 #
-# 1. mini-options simplificado. HECHO
+# 1. mini-options y options simplificado. HECHO
 # 2. allow_header_notice siplificada, reunificada y desactivada por defecto. HECHO
-# 3. añadir arptables a eraserules. HECHO
-# 3. añadir algunos code mas que puedan faltar ejemplo de alias.
+# 3. añadido arptables a eraserules. HECHO
+# 3. añadido algunos code mas que puedan faltar, ejemplo code de los apodos.
 #
