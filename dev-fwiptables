@@ -1361,7 +1361,7 @@ echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-sys
 echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
 echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                   | Examples |                             "
+echo "$tab" "$tab"  "     | Description |                             | Examples |                " 
 echo "$tab" "$tab"  "  List iptables rules :                   $fiptables list                    "
 echo "$tab" "$tab"  "  Generate new iptables rules :           $fiptables wizard-mini             "
 echo "$tab" "$tab"  "  Save iptables rules with one name :     $fiptables save name               "
