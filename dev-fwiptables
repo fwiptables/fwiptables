@@ -204,7 +204,7 @@ default_security="mini-options"
 ############################## spanish: variables: variables para declarar  ##############################
 ####
 ####
-allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
+#### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="" ; server_udp="" ; 
 logserver_tcp="no" ; logserver_udp="no" ;
