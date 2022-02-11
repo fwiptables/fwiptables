@@ -7440,7 +7440,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "clientweb" ]; then $fiptables eraserules &> /dev/null ; 
-port_udp="domain,bootpc,ntp,https" ; port_tcp="http,https,ssh" ;
+port_udp="domain,bootpc,ntp,https" ; 
+port_tcp="http,https,ssh" ;
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
