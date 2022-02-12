@@ -157,12 +157,15 @@
 # 7. mini-options por defecto al lanzar fwiptables. HECHO
 # 8. seguir traduciendo nueva-completa-config. HECHO
 #
-# changes fwiptables 2.04 en desarrollo
+# changes fwiptables 2.04
 #
 # 1. mini-options y options simplificado. HECHO
 # 2. allow_header_notice siplificada, reunificada y desactivada por defecto. HECHO
 # 3. añadido arptables a eraserules. HECHO
 # 4. gamesudp: añade cliente para ftp,ftp-data,ftps,ftps-data. HECHO
 # 5. help y ayuda simplificados. HECHO
-# 5. añadido algunos code mas que puedan faltar, ejemplo code de los apodos.
+#
+# changes fwiptables 2.05 en desarrollo
+#
+# 1. añadido algunos code mas que puedan faltar, ejemplo code de los apodos.
 #
