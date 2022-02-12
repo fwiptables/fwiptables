@@ -1439,11 +1439,18 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
-echo "$ralla [Long-help]"
-echo "$ralla [Larga-ayuda]"
 echo
+echo "[ English and Spanish ]"
+echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
 echo
-$fiptables intro 
+echo "[ English or spanish ]"
+echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
+echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo
+$fiptables intro
+echo
+$fiptables options
 echo
 echo "$cinco [ full-options ] $cinco"
 echo
@@ -6759,7 +6766,20 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 #### :rutina-inicial-help:
 ####
 ####
-if [ "$first_option" = "help" ]; then $genfiles ; $give_cover
+if [ "$first_option" = "help" ]; then 
+echo
+echo "[ English and Spanish ]"
+echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo
+echo "[ English or spanish ]"
+echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
+echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo
+$fiptables intro
+echo
+$fiptables options
+echo 
 echo "$ralla [ $first_option ]  [ Principal options ] $cinco"
 echo
 echo
@@ -7036,7 +7056,20 @@ exit; fi
 #### :rutina-inicial-ayuda:
 ####
 ####
-if [ "$first_option" = "ayuda" ]; then $genfiles; $give_cover
+if [ "$first_option" = "ayuda" ]; then 
+echo
+echo "[ English and Spanish ]"
+echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo
+echo "[ English or spanish ]"
+echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
+echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo
+$fiptables intro
+echo
+$fiptables options
+echo 
 echo "$ralla [ $first_option ] [ Opciones principales ] $cinco"
 echo
 echo "$cinco         [ Lanzar guia ]"
