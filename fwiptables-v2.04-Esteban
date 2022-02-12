@@ -6977,10 +6977,6 @@ echo "   full-options : Show full options"
 echo "           help : Show help in english"
 echo "          ayuda : Show help in spanish"
 echo ""
-echo "$cincuenta The second option: (optional)"
-echo ""
-echo "    if launch without specific the config it takes $defaultcfg"
-echo "    you can  modify and create the files in the folder $directory_config"
 echo ""
 echo "$cincuenta Examples"
 echo ""
@@ -6989,9 +6985,9 @@ echo " $fiptables eraserules                     [Remove iptables rules]"
 echo " $fiptables list                           [List iptables rules]"
 echo " $fiptables help                           [Show this help in english]"
 echo ""
-echo "$cincuenta Examples of variables to the configs files $cinco"
-echo
-cat $defaultfullcfg_eng
+#### echo "$cincuenta Examples of variables to the configs files $cinco"
+#### echo
+#### cat $defaultfullcfg_eng
 echo
 echo " $fiptables notes:"
 echo
@@ -7257,11 +7253,6 @@ echo "   full-options : Muestra las opciones"
 echo "           help : Muestra la ayuda en ingles"
 echo "          ayuda : Muestra la ayuda en español"
 echo
-echo "$cincuenta La segunda opcion (opcional)"
-echo ""
-echo "    si lanzas sin especificar una config tomara por defecto $defaultcfg"
-echo "    Puedes modificar y crear archivos en la carpeta $directory_config"
-echo
 echo "$cincuenta Ejemplos"
 echo
 echo "   $fiptables custom games-example1.cfg    [lanza un firewall modificado]"
@@ -7269,9 +7260,9 @@ echo "   $fiptables eraserules                   [Borra las reglas de iptables] 
 echo "   $fiptables list                         [Lista las reglas de iptables] "
 echo "   $fiptables help                         [Muestra la ayuda en ingles] "
 echo
-echo "$cincuenta  Ejemplos de las variables de configuración $cinco"
-echo
-cat $defaultfullcfg_spa
+#### echo "$cincuenta  Ejemplos de las variables de configuración $cinco"
+#### echo
+#### cat $defaultfullcfg_spa
 echo
 echo " Notas de $fiptables :"
 echo
