@@ -5571,7 +5571,7 @@ exit; fi
 #### :rutina-inicial-actual:
 ####
 ####
- if [ "$first_option" = "actual" ]; then $genfiles ; $give_cover
+ if [ "$first_option" = "actual" ]; then $give_cover
  echo "$ralla [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
  $command_arptables-save          &> $directory_fwrecover/fiptables-actual-arptables
