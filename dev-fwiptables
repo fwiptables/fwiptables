@@ -1441,12 +1441,12 @@ exit ; fi
 if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
 echo
 echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fiptables long-help ]"
 echo
 echo "[ English or spanish ]"
-echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo "$rallica [ Choose only help in english    ]     [ Type:     $fiptables help ]"
+echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fiptables ayuda ]"
 echo
 $fiptables intro
 echo
@@ -6769,12 +6769,12 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 if [ "$first_option" = "help" ]; then 
 echo
 echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fiptables long-help ]"
 echo
 echo "[ English or spanish ]"
-echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo "$rallica [ Choose only help in english    ]     [ Type:     $fiptables help ]"
+echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fiptables ayuda ]"
 echo
 $fiptables intro
 echo
@@ -7059,12 +7059,12 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then 
 echo
 echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fiptables long-help ]"
 echo
 echo "[ English or spanish ]"
-echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo "$rallica [ Choose only help in english    ]     [ Type:     $fiptables help ]"
+echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fiptables ayuda ]"
 echo
 $fiptables intro
 echo
