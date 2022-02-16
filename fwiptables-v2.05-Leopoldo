@@ -4072,6 +4072,7 @@ exit; fi
 ####
 if [ "$first_option" = "blacklist-list" ]; then $give_cover
 echo $rallica
+ echo "$ralla [ $first_option ] [ Show blacklist servers ]"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_server_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
@@ -4127,6 +4128,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-on" ]; then $give_cover
+echo "$ralla [ $first_option ] [ Configure blacklist server ]"
 echo $rallica
 ####
 ####
@@ -4187,6 +4189,7 @@ echo $rallica; exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-off" ]; then 
+echo "$ralla [ $first_option ] [ Remove blacklist server ]"
 echo $rallica
 echo $file_temporal_path
 echo $cincuenta > $file_temporal_path/$first_option-hosts
