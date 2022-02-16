@@ -6591,11 +6591,11 @@ exit; fi
  echo "$ralla [ $first_option ] [ show info about net ]"
  echo $header_lineal
  echo $ralla
- echo "$rallica [ DEFAULT NETWORK ] [ INTERNET ROUTE ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -4 route | grep -i default
- $command_ip -6 route | grep -i default
- echo $ralla
+#### echo "$tab [ Network Route ] [ Default network ]"
+####  if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
+####  $command_ip -4 route | grep -i default
+####  $command_ip -6 route | grep -i default
+####  echo $ralla
  echo "$tab [ Network Route ] [ Route ipv4 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
  $command_ip -4 route 
@@ -6622,12 +6622,12 @@ exit; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; fi
- public_ip4="$(timeout 5s $command_curl -s -4 http://ifconfig.co/ip -w "\n")"
+ public_ip4="$(timeout 7s $command_curl -s -4 http://ifconfig.co/ip -w "\n")"
  echo "$tab $public_ip4"
  echo $ralla
  echo "$tab [ public ip ] [ address ipv6 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; fi
- public_ip6="$(timeout 5s $command_curl -s -6 http://ifconfig.co/ip -w "\n")"
+ public_ip6="$(timeout 7s $command_curl -s -6 http://ifconfig.co/ip -w "\n")"
  echo "$tab $public_ip6"
  echo $ralla
  echo "$tab [ proxy ip ] [ address proxy ]"
