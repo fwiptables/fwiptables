@@ -1380,7 +1380,6 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
-#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Info |                      | Firewall Options |                      "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
@@ -1439,14 +1438,15 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "long-help" ]; then $genfiles ; $give_cover
-echo
-echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ $first_option ] [ help in english and spanish ] $ralla"
 echo
 echo "[ English or spanish ]"
-echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help ]"
+echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
+echo
+echo "[ English and Spanish ]"
+echo "$ralla [ Long-help in english and spanish   ] [ Type:     $fwiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ] [ Escribe:  $fwiptables long-help ]"
 echo
 $fwiptables intro
 echo
@@ -6767,14 +6767,15 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 ####
 ####
 if [ "$first_option" = "help" ]; then 
-echo
-echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ $first_option ] [ help in english ] $ralla"
 echo
 echo "[ English or spanish ]"
-echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help ]"
+echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
+echo
+echo "[ English and Spanish ]"
+echo "$ralla [ Long-help in english and spanish   ] [ Type:     $fwiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ] [ Escribe:  $fwiptables long-help ]"
 echo
 $fwiptables intro
 echo
@@ -7057,14 +7058,15 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then 
-echo
-echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish ]     [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ]   [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ $first_option ] [ ayuda en español ] $ralla"
 echo
 echo "[ English or spanish ]"
-echo "$rallica [ Choose only help in english    ]     [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español    ]     [ Escribe:  $fwiptables ayuda ]"
+echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help ]"
+echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
+echo
+echo "[ English and Spanish ]"
+echo "$ralla [ Long-help in english and spanish   ] [ Type:     $fwiptables long-help ]"
+echo "$ralla [ Larga-ayuda en ingles y en español ] [ Escribe:  $fwiptables long-help ]"
 echo
 $fwiptables intro
 echo
