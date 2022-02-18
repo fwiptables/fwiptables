@@ -404,7 +404,7 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
 echo "alias $fwiptables='sudo $directory_fiptables/$fwiptables'"       &>  /etc/bash_completion.d/$fwiptables
-echo "complete -W 'user-interface control-guide control-rules list-rules launch-rules \
+echo "complete -W 'control-interface control-guide control-rules list-rules launch-rules \
 custom-rules tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
@@ -1339,7 +1339,7 @@ if [ "$first_option" = "mini-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List basic options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Info |                      | Firewall Options |                      "
-echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
+echo "$tab" "$tab"  "    control-interface  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
@@ -1354,20 +1354,22 @@ echo "$tab" "$tab"  "    custom-rules       new-full-config nueva-completa-confi
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                   | Group Options |                           "
-echo "$tab" "$tab"  " user-interface  control-guide   control-rules     list-rules     launch-rules "
-echo "$tab" "$tab"  " custom-rules    tool-sockets    tool-forward      tool-tcp       tool-udp     "
-echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-system    tool-install " 
-echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
-echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
+echo "$tab" "$tab"  "                                   | Group Options |                         "
+echo "$tab" "$tab"  " |firewall|       control-interface  control-guide   control-rules           "
+echo "$tab" "$tab"  " list-rules       launch-rules       custom-rules                            "
+echo "$tab" "$tab"  " tool-sockets     tool-forward       tool-tcp        tool-udp                "
+echo "$tab" "$tab"  " |tool|           tool-icmp          tool-nmap       tool-sudo               " 
+echo "$tab" "$tab"  " tool-system      tool-install       tool-blacklist  tool-dev                "
+echo "$tab" "$tab"  " |show|           show-hardware      show-etc        show-log                "
+echo "$tab" "$tab"  " show-about       show-help          show-example" 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Description |                             | Examples |                " 
-echo "$tab" "$tab"  "  List iptables rules :                   $fwiptables list                    "
-echo "$tab" "$tab"  "  Generate new iptables rules :           $fwiptables wizard-mini             "
-echo "$tab" "$tab"  "  Save iptables rules with one name :     $fwiptables save name               "
-echo "$tab" "$tab"  "  List names from all firewall saved :    $fwiptables names                   "
-echo "$tab" "$tab"  "  Show control-guide with output gui :    $fwiptables -gui control-guide      "
-echo "$tab" "$tab"  "  Show more options :                     $fwiptables options                 "
+echo "$tab" "$tab"  "  List iptables rules :                   $fwiptables list                   "
+echo "$tab" "$tab"  "  Generate new iptables rules :           $fwiptables wizard-mini            "
+echo "$tab" "$tab"  "  Save iptables rules with one name :     $fwiptables save name              "
+echo "$tab" "$tab"  "  List names from all firewall saved :    $fwiptables names                  "
+echo "$tab" "$tab"  "  Show control-guide with output gui :    $fwiptables -gui control-guide     "
+echo "$tab" "$tab"  "  Show more options :                     $fwiptables options                "
 #### echo $footer_lineal
 exit ; fi
 ####
@@ -1381,9 +1383,9 @@ exit ; fi
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
 echo "$tab" "$tab"  "     | Info |                      | Firewall Options |                      "
+echo "$tab" "$tab"  "    control-interface  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    user-interface     cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                       list-allrules list-forward list-forward6              "
 echo "$tab" "$tab"  "                       list-filter4 list-filter6 list-nat4 list-nat6         "
@@ -1466,7 +1468,7 @@ $fwiptables control-guide
 echo
 $fwiptables control-rules
 echo
-$fwiptables user-interface
+$fwiptables control-interface
 echo
 $fwiptables list-rules
 echo 
@@ -1574,18 +1576,18 @@ echo "[ info ] [ Ayuda a un grupo.  Por ejemplo: fwiptables control-guide ]"
 echo
 echo "                  [ Principal options ]"
 echo
-echo " control-guide :  Guide to beginners"
-echo "               :  Guia para empezar"
-echo " control-rules :  Control the iptables firewall rules"
-echo "               :  Controla las reglas de iptables"
-echo "    list-rules :  List the iptables firewall rules"
-echo "               :  Lista las reglas de iptables"
-echo "user-interface :  Manage the interface with text or log or gui"
-echo "               :  Manage el interfaz con text o log o gui"
-echo "  launch-rules :  Launch the iptables firewall rules"
-echo "               :  Lanza las reglas de iptables"
-echo "  custom-rules :  Create, modify and show configurations"
-echo "               :  Crea, modifica y muestra configuraciones"
+echo "     control-guide :  Guide to beginners"
+echo "                   :  Guia para empezar"
+echo "     control-rules :  Control the iptables firewall rules"
+echo "                   :  Controla las reglas de iptables"
+echo "        list-rules :  List the iptables firewall rules"
+echo "                   :  Lista las reglas de iptables"
+echo " control-interface :  Manage the interface with text or log or gui"
+echo "                   :  Manage el interfaz con text o log o gui"
+echo "      launch-rules :  Launch the iptables firewall rules"
+echo "                   :  Lanza las reglas de iptables"
+echo "      custom-rules :  Create, modify and show configurations"
+echo "                   :  Crea, modifica y muestra configuraciones"
 echo
 echo "                  [ Secondary options ]"
 echo
@@ -1838,13 +1840,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-control-guide:
-##############################       english: user-interface: options
+##############################       english: control-interface: options
 ##############################       spanish: user-intarface: opciones
-#### :rutina-inicial-user-interface:
+#### :rutina-inicial-control-interface:
 ####
 ####
-if [ "$first_option" = "user-interface" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool interface ]"
+if [ "$first_option" = "control-interface" ]; then $give_cover
+echo "$ralla [ $first_option ] [ control interface ]"
 echo "$rallica [ control interface ]" 
 echo "$rallica [ control de interfaz ]"
 echo
@@ -1870,7 +1872,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-user-interface:
+#### :rutina-final-control-interface:
 ##############################       english: tool-sockets: options sockets
 ##############################       spanish: tool-sockets: opciones sockets
 #### :rutina-inicial-tool-sockets:
@@ -2596,7 +2598,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
-zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fwiptables user-interface)"
+zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fwiptables control-interface)"
 exit; fi
 ####
 ####
@@ -6724,7 +6726,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$second_option" = "control-guide" ]; then $fwiptables control-guide ; exit ; fi
  if [ "$second_option" = "control-rules" ]; then $fwiptables control-rules ; exit ; fi
  if [ "$second_option" = "list-rules" ]; then $fwiptables list-rules ; exit ; fi
- if [ "$second_option" = "user-interface" ]; then $fwiptables user-interface ; exit ; fi
+ if [ "$second_option" = "control-interface" ]; then $fwiptables control-interface ; exit ; fi
  if [ "$second_option" = "launch-rules" ]; then $fwiptables launch-rules ; exit ; fi
  if [ "$second_option" = "custom-rules" ]; then $fwiptables custom-rules ; exit ; fi
  if [ "$second_option" = "tool-sockets" ]; then $fwiptables tool-sockets ; exit ; fi
@@ -6755,14 +6757,14 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  echo
  echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | info |                      | Group options |                           "
-echo "$tab" "$tab"  " user-interface  control-guide   control-rules     list-rules     launch-rules "
-echo "$tab" "$tab"  " custom-rules    tool-sockets    tool-forward      tool-tcp       tool-udp     "
-echo "$tab" "$tab"  " tool-icmp       tool-nmap       tool-sudo         tool-system    tool-install " 
-echo "$tab" "$tab"  " tool-blacklist  tool-dev       "
-echo "$tab" "$tab"  " show-hardware   show-etc    show-log    show-about    show-help   show-example" 
+echo "$tab" "$tab"  "     | info |                      | Group options |                              "
+echo "$tab" "$tab"  " control-interface  control-guide   control-rules     list-rules     launch-rules "
+echo "$tab" "$tab"  " custom-rules       tool-sockets    tool-forward      tool-tcp       tool-udp     "
+echo "$tab" "$tab"  " tool-icmp          tool-nmap       tool-sudo         tool-system    tool-install " 
+echo "$tab" "$tab"  " tool-blacklist     tool-dev       "
+echo "$tab" "$tab"  " show-hardware      show-etc    show-log    show-about    show-help   show-example" 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
- echo "$tab [ Example: ] [ $fwiptables info user-interface ] [ OR ] [ $fwiptables user-interface ]"
+ echo "$tab [ Example: ] [ $fwiptables info control-interface ] [ OR ] [ $fwiptables control-interface ]"
  echo $footer_lineal
  exit; fi
 ####
