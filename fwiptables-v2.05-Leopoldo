@@ -1338,7 +1338,7 @@ echo "$cinco See:   $fwiptables custom-rules"; fi ; fi
 if [ "$first_option" = "mini-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | Info |                      | Firewall Options |                      "
+echo "$tab" "$tab"  "                                   | Firewall Options |                      "
 echo "$tab" "$tab"  "    control-interface  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
@@ -1357,8 +1357,8 @@ echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Group Options |                         "
 echo "$tab" "$tab"  " <firewall> control-interface  control-guide   control-rules                 "
 echo "$tab" "$tab"  "            list-rules         launch-rules    custom-rules                  "
-echo "$tab" "$tab"  "   <tool>   tool-sockets       tool-forward    tool-tcp        tool-udp      "
-echo "$tab" "$tab"  "            tool-icmp          tool-nmap       tool-sudo                     " 
+echo "$tab" "$tab"  "   <tool>   tool-sockets       tool-forward    tool-tcp                      "
+echo "$tab" "$tab"  "            tool-udp           tool-icmp       tool-nmap       tool-sudo     " 
 echo "$tab" "$tab"  "            tool-system        tool-install    tool-blacklist  tool-dev      "
 echo "$tab" "$tab"  "   <show>   show-hardware      show-etc        show-log                      "
 echo "$tab" "$tab"  "            show-about         show-help       show-example                  " 
@@ -6747,26 +6747,28 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$second_option" = "show-help" ]; then $fwiptables show-help ; exit ; fi
 ####
 ####
- $give_cover
- echo $header_ender
- echo "$ralla [ $first_option ] [ info group ]"
- echo $header_lineal
- echo $ralla
- echo
- echo "$tab [ launch: ] [ $fwiptables info group ]"
- echo
- echo "$tab [ group list: ]"
+$give_cover
+echo $header_ender
+echo "$ralla [ $first_option ] [ info group ]"
+echo $header_lineal
+echo $ralla
+echo
+echo "$tab [ launch: ] [ $fwiptables info group ]"
+echo
+echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | info |                      | Group options |                              "
-echo "$tab" "$tab"  " control-interface  control-guide   control-rules     list-rules     launch-rules "
-echo "$tab" "$tab"  " custom-rules       tool-sockets    tool-forward      tool-tcp       tool-udp     "
-echo "$tab" "$tab"  " tool-icmp          tool-nmap       tool-sudo         tool-system    tool-install " 
-echo "$tab" "$tab"  " tool-blacklist     tool-dev       "
-echo "$tab" "$tab"  " show-hardware      show-etc    show-log    show-about    show-help   show-example" 
+echo "$tab" "$tab"  "                                   | Group Options |                         "
+echo "$tab" "$tab"  " <firewall> control-interface  control-guide   control-rules                 "
+echo "$tab" "$tab"  "            list-rules         launch-rules    custom-rules                  "
+echo "$tab" "$tab"  "   <tool>   tool-sockets       tool-forward    tool-tcp                      "
+echo "$tab" "$tab"  "            tool-udp           tool-icmp       tool-nmap       tool-sudo     " 
+echo "$tab" "$tab"  "            tool-system        tool-install    tool-blacklist  tool-dev      "
+echo "$tab" "$tab"  "   <show>   show-hardware      show-etc        show-log                      "
+echo "$tab" "$tab"  "            show-about         show-help       show-example                  " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
- echo "$tab [ Example: ] [ $fwiptables info control-interface ] [ OR ] [ $fwiptables control-interface ]"
- echo $footer_lineal
- exit; fi
+echo "$tab [ Example: ] [ $fwiptables control-interface ]"
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-info:
