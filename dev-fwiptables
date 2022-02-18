@@ -1382,7 +1382,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
-echo "$tab" "$tab"  "     | Info |                      | Firewall Options |                      "
+echo "$tab" "$tab"  "                                   | Firewall Options |                      "
 echo "$tab" "$tab"  "    control-interface  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
@@ -1398,7 +1398,7 @@ echo "$tab" "$tab"  "    rules-custom       new-full-config nueva-completa-confi
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | Info |                      | Tool Options |                          " 
+echo "$tab" "$tab"  "                                   | Tool Options |                          " 
 echo "$tab" "$tab"  "    tool-sockets       info-listen info-nodes info-proxy info-route          "
 echo "$tab" "$tab"  "                       ss lsof tcpdump netstat netstat-nat                   "
 echo "$tab" "$tab"  "    tool-forward       ipforward-list ipforward-on ipforward-off             "
@@ -1412,7 +1412,7 @@ echo "$tab" "$tab"  "    tool-install       install upgrade howto-upgrade       
 echo "$tab" "$tab"  "    tool-blacklist     blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev           new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "     | Info |                     | Show Options |                           " 
+echo "$tab" "$tab"  "                                  | Show Options |                           " 
 echo "$tab" "$tab"  "    show-hardware      lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc           hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                       hosts.allow hosts.deny                                "
@@ -1424,11 +1424,11 @@ echo "$tab" "$tab"  "    show-help          long-help help ayuda notes options i
 echo "$tab" "$tab"  "                       group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Description |                             | Examples |                " 
-echo "$tab" "$tab"  "  Generate new iptables rules :             $fwiptables wizard-mini           "
-echo "$tab" "$tab"  "  Save iptables rules with one name :       $fwiptables save name             "
-echo "$tab" "$tab"  "  List names from all firewall saved :      $fwiptables names                 "
-echo "$tab" "$tab"  "  Show control-guide with output gui :      $fwiptables -gui control-guide    "
-echo "$tab" "$tab"  "  Show less options :                       $fwiptables mini-options          "
+echo "$tab" "$tab"  "  Generate new iptables rules :             $fwiptables wizard-mini          "
+echo "$tab" "$tab"  "  Save iptables rules with one name :       $fwiptables save name            "
+echo "$tab" "$tab"  "  List names from all firewall saved :      $fwiptables names                "
+echo "$tab" "$tab"  "  Show control-guide with output gui :      $fwiptables -gui control-guide   "
+echo "$tab" "$tab"  "  Show less options :                       $fwiptables mini-options         "
 #### echo $footer_lineal
 exit ; fi
 ####
