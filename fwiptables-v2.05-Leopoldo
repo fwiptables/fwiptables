@@ -404,8 +404,8 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
 echo "alias $fwiptables='sudo $directory_fiptables/$fwiptables'"       &>  /etc/bash_completion.d/$fwiptables
-echo "complete -W 'control-interface control-guide control-rules list-rules launch-rules \
-custom-rules tool-sockets tool-forward tool-tcp tool-udp \
+echo "complete -W 'control-interface control-guide control-rules rules-list rules-launch \
+rules-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
 show-help show-example' $fwiptables"  &>> /etc/bash_completion.d/$fwiptables
@@ -1326,7 +1326,7 @@ if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fwiptables cfg 
 echo "$cinco Usage: $fwiptables custom file-cfg"
-echo "$cinco See:   $fwiptables custom-rules"; fi ; fi
+echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
@@ -1342,21 +1342,21 @@ echo "$tab" "$tab"  "                                   | Firewall Options |    
 echo "$tab" "$tab"  "    control-interface  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "    rules-list         list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                       list-allrules list-forward list-forward6              "
 echo "$tab" "$tab"  "                       list-filter4 list-filter6 list-nat4 list-nat6         "
 echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6         "
 echo "$tab" "$tab"  "                       list-security4 list-security6                         "
 echo "$tab" "$tab"  "                       list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
+echo "$tab" "$tab"  "    rules-launch       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
-echo "$tab" "$tab"  "    custom-rules       new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "    rules-custom       new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Group Options |                         "
 echo "$tab" "$tab"  " <firewall> control-interface  control-guide   control-rules                 "
-echo "$tab" "$tab"  "            list-rules         launch-rules    custom-rules                  "
+echo "$tab" "$tab"  "            rules-list         rules-launch    rules-custom                  "
 echo "$tab" "$tab"  "   <tool>   tool-sockets       tool-forward    tool-tcp                      "
 echo "$tab" "$tab"  "            tool-udp           tool-icmp       tool-nmap       tool-sudo     " 
 echo "$tab" "$tab"  "            tool-system        tool-install    tool-blacklist  tool-dev      "
@@ -1386,15 +1386,15 @@ echo "$tab" "$tab"  "     | Info |                      | Firewall Options |    
 echo "$tab" "$tab"  "    control-interface  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide      info-net info-system wizard-full wizard-mini          "
 echo "$tab" "$tab"  "    control-rules      stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    list-rules         list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "    rules-list         list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                       list-allrules list-forward list-forward6              "
 echo "$tab" "$tab"  "                       list-filter4 list-filter6 list-nat4 list-nat6         "
 echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6         "
 echo "$tab" "$tab"  "                       list-security4 list-security6                         "
 echo "$tab" "$tab"  "                       list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "    launch-rules       eraserules offline allpermisive gamesudp custom       "
+echo "$tab" "$tab"  "    rules-launch       eraserules offline allpermisive gamesudp custom       "
 echo "$tab" "$tab"  "                       clientweb serverweb serversamba serverprint serverssh "
-echo "$tab" "$tab"  "    custom-rules       new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "    rules-custom       new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                       list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
@@ -1470,11 +1470,11 @@ $fwiptables control-rules
 echo
 $fwiptables control-interface
 echo
-$fwiptables list-rules
+$fwiptables rules-list
 echo 
-$fwiptables launch-rules
+$fwiptables rules-launch
 echo
-$fwiptables custom-rules
+$fwiptables rules-custom
 echo
 echo "$cinco [ Secondary options ] $cinco"
 echo
@@ -1580,13 +1580,13 @@ echo "     control-guide :  Guide to beginners"
 echo "                   :  Guia para empezar"
 echo "     control-rules :  Control the iptables firewall rules"
 echo "                   :  Controla las reglas de iptables"
-echo "        list-rules :  List the iptables firewall rules"
+echo "        rules-list :  List the iptables firewall rules"
 echo "                   :  Lista las reglas de iptables"
 echo " control-interface :  Manage the interface with text or log or gui"
 echo "                   :  Manage el interfaz con text o log o gui"
-echo "      launch-rules :  Launch the iptables firewall rules"
+echo "      rules-launch :  Launch the iptables firewall rules"
 echo "                   :  Lanza las reglas de iptables"
-echo "      custom-rules :  Create, modify and show configurations"
+echo "      rules-custom :  Create, modify and show configurations"
 echo "                   :  Crea, modifica y muestra configuraciones"
 echo
 echo "                  [ Secondary options ]"
@@ -1626,12 +1626,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-group-options:
-##############################       english: launch-rules: options
-##############################       spanish: launch-rules: opciones
-#### :rutina-inicial-launch-rules:
+##############################       english: rules-launch: options
+##############################       spanish: rules-launch: opciones
+#### :rutina-inicial-rules-launch:
 ####
 ####
-if [ "$first_option" = "launch-rules" ]; then $give_cover
+if [ "$first_option" = "rules-launch" ]; then $give_cover
 echo "$ralla [ $first_option ] [ launch rules ]"
 echo "$rallica [ Launch iptables rules ]"
 echo "$rallica [ Lanza reglas de iptables ]"
@@ -1662,7 +1662,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-launch-rules:
+#### :rutina-final-rules-launch:
 ##############################       english: control-rules: options
 ##############################       spanish: control-rules: opciones
 #### :rutina-inicial-control-rules:
@@ -1696,12 +1696,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-control-rules:
-##############################       english: list-rules: options
-##############################       spanish: list-rules: opciones
-#### :rutina-inicial-list-rules:
+##############################       english: rules-list: options
+##############################       spanish: rules-list: opciones
+#### :rutina-inicial-rules-list:
 ####
 ####
-if [ "$first_option" = "list-rules" ]; then $give_cover
+if [ "$first_option" = "rules-list" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List rules ]"
 echo "$rallica [ List filter iptables rules ]"
 echo "$rallica [ Lista reglas de iptables filtros ]"
@@ -1761,7 +1761,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-list-rules:
+#### :rutina-final-rules-list:
 ##############################       english: list-numrules: options
 ##############################       spanish: list-numrules: opciones
 #### :rutina-inicial-list-numrules:
@@ -1786,12 +1786,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-numrules:
-##############################       english: custom-rules: options
-##############################       spanish: custom-rules: opciones
-#### :rutina-inicial-custom-rules:
+##############################       english: rules-custom: options
+##############################       spanish: rules-custom: opciones
+#### :rutina-inicial-rules-custom:
 ####
 ####
-if [ "$first_option" = "custom-rules" ]; then $give_cover
+if [ "$first_option" = "rules-custom" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool custom rules config ]"
 echo "$rallica [ custom configs ]"
 echo "$rallica [ Herramienta de configuraciones de reglas ]"
@@ -1816,7 +1816,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-custom-rules:
+#### :rutina-final-rules-custom:
 ##############################       english: control-guide: options
 ##############################       spanish: control-guide: opciones
 #### :rutina-inicial-control-guide:
@@ -2621,9 +2621,9 @@ case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "01 Control guide")$fwiptables gui-menu-control-guide;;
 "02 Control rules")$fwiptables gui-menu-control-rules;;
-"03 List rules")$fwiptables gui-menu-list-rules;;
-"04 Launch rules")$fwiptables gui-menu-launch-rules;;
-"05 Tool rules")$fwiptables gui-menu-custom-rules;;
+"03 List rules")$fwiptables gui-menu-rules-list;;
+"04 Launch rules")$fwiptables gui-menu-rules-launch;;
+"05 Tool rules")$fwiptables gui-menu-rules-custom;;
 "06 Tool sockets")$fwiptables gui-menu-tool-sockets;;
 "07 Tool forward")$fwiptables gui-menu-tool-forward ;;
 "08 Tool tcp")$fwiptables gui-menu-tool-tcp;;
@@ -2682,12 +2682,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-control-guide:
-############################## english: gui-menu-launch-rules: gui with menu ##############################
-############################## spanish: gui-menu-launch-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-launch-rules:
+############################## english: gui-menu-rules-launch: gui with menu ##############################
+############################## spanish: gui-menu-rules-launch: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-rules-launch:
 ####
 ####  
-if [ "$first_option" = "gui-menu-launch-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-rules-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "offline" "allpermisive" \
 "clientweb" "serverweb" "gamesudp" "serversamba" "custom cfg" \
@@ -2698,7 +2698,7 @@ selection=$(zenity $graphic_dimension \
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui launch-rules ;;
+"Gui Info Menu") $fwiptables -gui rules-launch ;;
 "eraserules") $fwiptables -gui eraserules ; $fwiptables gui list ;;
 "offline") $fwiptables -gui offline ; $fwiptables gui list ;;
 "allpermisive") $fwiptables -gui allpermisive ; $fwiptables gui list ;;
@@ -2719,7 +2719,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-launch-rules:
+#### :rutina-final-gui-menu-rules-launch:
 ############################## english: gui-menu-control-rules: gui with menu ##############################
 ############################## spanish: gui-menu-control-rules: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-control-rules:
@@ -2758,12 +2758,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-control-rules:
-############################## english: gui-menu-list-rules: gui with menu ##############################
-############################## spanish: gui-menu-list-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-list-rules:
+############################## english: gui-menu-rules-list: gui with menu ##############################
+############################## spanish: gui-menu-rules-list: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-rules-list:
 ####
 ####
-if [ "$first_option" = "gui-menu-list-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-rules-list" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-allrules" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
@@ -2774,7 +2774,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui list-rules ;;
+"Gui Info Menu") $fwiptables -gui rules-list ;;
 "list") $fwiptables -gui list ;;
 "list6") $fwiptables -gui list6 ;;
 "list-allrules") $fwiptables -gui list-allrules ;;
@@ -2805,13 +2805,13 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-list-rules:
-############################## english: gui-menu-custom-rules: gui with menu ##############################
-############################## spanish: gui-menu-custom-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-custom-rules:
+#### :rutina-final-gui-menu-rules-list:
+############################## english: gui-menu-rules-custom: gui with menu ##############################
+############################## spanish: gui-menu-rules-custom: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-rules-custom:
 ####
 ####
-if [ "$first_option" = "gui-menu-custom-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-rules-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "list-config" "show-config" "modify-config" "del-config" \
@@ -2821,7 +2821,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui custom-rules;;
+"Gui Info Menu") $fwiptables -gui rules-custom;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $fwiptables -gui new-full-config $archivo ;;
@@ -2856,7 +2856,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-custom-rules:
+#### :rutina-final-gui-menu-rules-custom:
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-sockets:
@@ -3646,11 +3646,11 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
  0000) clear ; $fwiptables info ;;
  0010) clear ; $fwiptables control-guide ;;
  0020) clear ; $fwiptables control-rules ;;
- 0030) clear ; $fwiptables list-rules ;;
- 0040) clear ; $fwiptables list-rules ;;
- 0050) clear ; $fwiptables list-rules ;;
- 0060) clear ; $fwiptables launch-rules ;;
- 0070) clear ; $fwiptables custom-rules ;;
+ 0030) clear ; $fwiptables rules-list ;;
+ 0040) clear ; $fwiptables rules-list ;;
+ 0050) clear ; $fwiptables rules-list ;;
+ 0060) clear ; $fwiptables rules-launch ;;
+ 0070) clear ; $fwiptables rules-custom ;;
  0080) clear ; $fwiptables tool-socket ;;
  0090) clear ; $fwiptables tool-ipforward ;;
  0100) clear ; $fwiptables tool-tcp ;;
@@ -6725,10 +6725,10 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
  if [ "$first_option" = "info" ]; then $nada
  if [ "$second_option" = "control-guide" ]; then $fwiptables control-guide ; exit ; fi
  if [ "$second_option" = "control-rules" ]; then $fwiptables control-rules ; exit ; fi
- if [ "$second_option" = "list-rules" ]; then $fwiptables list-rules ; exit ; fi
+ if [ "$second_option" = "rules-list" ]; then $fwiptables rules-list ; exit ; fi
  if [ "$second_option" = "control-interface" ]; then $fwiptables control-interface ; exit ; fi
- if [ "$second_option" = "launch-rules" ]; then $fwiptables launch-rules ; exit ; fi
- if [ "$second_option" = "custom-rules" ]; then $fwiptables custom-rules ; exit ; fi
+ if [ "$second_option" = "rules-launch" ]; then $fwiptables rules-launch ; exit ; fi
+ if [ "$second_option" = "rules-custom" ]; then $fwiptables rules-custom ; exit ; fi
  if [ "$second_option" = "tool-sockets" ]; then $fwiptables tool-sockets ; exit ; fi
  if [ "$second_option" = "tool-forward" ]; then $fwiptables tool-forward ; exit ; fi
  if [ "$second_option" = "tool-tcp" ]; then $fwiptables tool-tcp ; exit ; fi
@@ -6759,7 +6759,7 @@ echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Group Options |                         "
 echo "$tab" "$tab"  " <firewall> control-interface  control-guide   control-rules                 "
-echo "$tab" "$tab"  "            list-rules         launch-rules    custom-rules                  "
+echo "$tab" "$tab"  "            rules-list         rules-launch    rules-custom                  "
 echo "$tab" "$tab"  "   <tool>   tool-sockets       tool-forward    tool-tcp                      "
 echo "$tab" "$tab"  "            tool-udp           tool-icmp       tool-nmap       tool-sudo     " 
 echo "$tab" "$tab"  "            tool-system        tool-install    tool-blacklist  tool-dev      "
