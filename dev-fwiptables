@@ -62,7 +62,7 @@ fi
 ####       #### english: [the variables names and the path] #### spanish: [nombres de variables y rutas]
 ####       #### english: new option for default
 ####       #### spanish: nueva opcion por defecto
-whithout_option="mini-options"            ## fwiptables-default ## default for null option: options
+#### whithout_option="mini-options"            ## fwiptables-default ## default for null option: options
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy="no"                     ## fwiptables-default ## void or no
@@ -114,7 +114,7 @@ third_option="$(echo $3 | sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-genfiles="$zero_option regeneration-default"                        
+genfiles="$zero_option regen"                        
 #### #### english: whereis path          #### spanish: donde esta el path
 fdescription="One Script in bash for iptables firewall"             
 #### #### english: program description   #### spanish: descripcion del programa
@@ -443,7 +443,7 @@ echo "$(head -120 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
 #### 
 chmod ugo+rx /etc/bash_completion.d/$fwiptables &> /dev/null
 chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
-$fwiptables regeneration-default &> /dev/null
+$fwiptables regen &> /dev/null
 ####
 ####
 echo "$cinco [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
@@ -613,13 +613,6 @@ if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
-############################       english: options: alias options to full-options
-############################       spanish: options: apodo options a full-options
-####
-####
-if [ "$first_option" = "options" ]; then first_option="full-options"; fi
-####
-####
 ##############################     english: autolog:         ###################################
 ##############################     spanish: autoguardado     ###################################
 #### :rutina-inicial-autolog:
@@ -692,19 +685,12 @@ fi ; exit ; fi
 ####
 ####
 #### :rutina-final-header:
-##################################### english: fwiptables with null option
-##################################### spanish: fwiptables con vacia opcion
+##################################### english: regen: regen wizard files       #####################################
+##################################### spanish: regen: regenera wizard archivos #####################################
+#### :rutina-inicial-regen:
 ####
 ####
-if [ "$first_option" = "$NULL" ]; then $fwiptables $whithout_option ; exit; fi
-####
-####
-##################################### english: regeneration-default: regen files       #####################################
-##################################### spanish: regeneration-default: regenera archivos #####################################
-#### :rutina-inicial-regeneration-default:
-####
-####
-if [ "$first_option" = "regeneration-default" ]; then $nada
+if [ "$first_option" = "regen" ]; then echo "$cinco [ Regenering wizard ]"
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -1166,10 +1152,13 @@ echo $var78 $tabz $spa78 &>> $fs
 echo $var79 $tabz $spa79 &>> $fs
 echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
+####
+####
+echo "$rallica [ OK ] [ Wizard regenerated ]"
 exit ; fi
 ####
 ####
-#### :rutina-final-regeneration-default:
+#### :rutina-final-regen:
 ##############################  english:  sane variables: for working sane         ############################## 
 ##############################  spanish:  sana variables: para funcionamiento sano ##############################
 #### :rutina-inicial-sane:
@@ -1337,12 +1326,12 @@ echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 #### :rutina-inicial-mini-options:
 ####
 ####
-if [ "$first_option" = "mini-options" ]; then $give_cover
+if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | Firewall Options |                      "
 echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -log -gui           "
-echo "$tab" "$tab"  "  control-guide      |  info-net info-system wizard-full wizard-mini          "
+echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "  rules-list         |  list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
@@ -1382,11 +1371,11 @@ exit ; fi
 #### :rutina-inicial-full-options:
 ####
 ####
-if [ "$first_option" = "full-options" ]; then $give_cover
+if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
 echo "$tab" "$tab"  "                                    | Firewall Options |                      "
 echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -text -log -gui           "
-echo "$tab" "$tab"  "    control-guide     | info-net info-system wizard-full wizard-mini          "
+echo "$tab" "$tab"  "    control-guide     | info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "    control-rules     | stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    rules-list        | list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
@@ -1834,6 +1823,8 @@ echo "  info-system : Show info system"
 echo "              : Muestra informacion del sistema"
 echo "     info-net : Show net info"
 echo "              : Muestra informacion del sistema"
+echo "        regen : Regen wizard files"
+echo "              : Regenera wizard files"
 echo "  wizard-full : Asistant y launch complete firewall"
 echo "              : Asiste y lanza un completo firewall"
 echo "  wizard-mini : Asistant y Launch simple firewall"
@@ -1900,7 +1891,7 @@ echo "              lsof : Show net sockets with command lsof"
 echo "                   : Muestra las conexiones con lsof"
 echo "           netstat : Show net sockets with command netstat"
 echo "                   : Muestra las conexiones con netstat"
-echo "       netstat-nat : Show net sockets wiht command netstat-nat"
+echo "       netstat-nat : Show net sockets with command netstat-nat"
 echo "                   : Muestra las conexiones con netstat-nat"
 echo "           tcpdump : Listen the connections"
 echo "                   : Escucha las conexiones"
@@ -2447,7 +2438,7 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $genfiles ;
+if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
@@ -2538,7 +2529,7 @@ exit; fi
 ############################## spanish: -gui: con segunda opcion ##############################
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $genfiles
+if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $nada
 echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
@@ -2595,7 +2586,7 @@ esac
 exit; fi
 ####
 ####
-############################## english: -gui: wihtout more options ##############################
+############################## english: -gui: without more options ##############################
 ############################## spanish: -gui: sin mas opcion       ##############################
 ####
 ####
@@ -2610,7 +2601,7 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" = "gui-menu" ] ; then $genfiles ; echo $head_waiting
+if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool rules" \
@@ -3361,7 +3352,7 @@ exit; fi
 #### :rutina-inicial-gui-shell:
 ####
 ####
-if [ "$first_option" = "gui-shell" ] ; then $genfiles ; echo $head_waiting
+if [ "$first_option" = "gui-shell" ] ; then echo $head_waiting
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 ####
 ####
@@ -4138,7 +4129,7 @@ echo $rallica
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched wihtout options ] [ $fwiptables blacklist-list ]"
+echo "$tab [ Launched without options ] [ $fwiptables blacklist-list ]"
 echo $rallica
 $fwiptables blacklist-list
 echo $rallica
@@ -4969,12 +4960,12 @@ exit; fi
 #### :rutina-inicial-new-full-config:
 ####
 ####
-if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
+if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
 echo "$cinco Use: $fwiptables new-full-config config-new"
 exit; fi
 ####
 ####
-if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
+if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -5002,12 +4993,12 @@ exit; fi
 #### :rutina-inicial-nueva-completa-config:
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
+if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
 echo "$cinco Use: $fwiptables nueva-completa-config config-nueva"
 exit; fi
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
+if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -5035,12 +5026,12 @@ exit; fi
 #### :rutina-inicial-new-mini-config:
 ####
 ####
-if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
+if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
 echo "$cinco Use: $fwiptables new-mini-config config-new"
 exit; fi
 ####
 ####
-if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
+if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -5068,12 +5059,12 @@ exit; fi
 #### :rutina-inicial-nueva-mini-config:
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $genfiles ; $give_cover
+if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  $give_cover
 echo "$cinco Use: $fwiptables nueva-mini-config config-nueva"
 exit; fi
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $genfiles ; $give_cover
+if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "/tmp/fiptables-$archivo"
 dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
@@ -5101,7 +5092,7 @@ exit; fi
 #### :rutina-inicial-modify-config:
 ####
 ####
-if [ "$first_option" = "modify-config" ]; then $genfiles ; $give_cover
+if [ "$first_option" = "modify-config" ]; then  $give_cover
 cp "$directory_config/$second_option" "/tmp/fiptables-$second_option" &> /dev/null
 ####
 ###
@@ -5134,7 +5125,7 @@ clear ; exit ; fi
 #### :rutina-inicial-show-config:
 ####
 ####
-if [ "$first_option" = "show-config" ] ; then echo $genfiles ; $give_cover
+if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
@@ -5225,7 +5216,7 @@ exit; fi
 if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
 echo "$cinco [ list users with root auth for launch $fwiptables ]"
 echo $header_lineal
-echo "$rallica [ Wihtout root sudo from users ]"
+echo "$rallica [ Without root sudo from users ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5404,7 +5395,7 @@ exit; fi
 #### :rutina-inicial-wizard-mini:
 ####
 ####
-if [ "$first_option" = "wizard-mini" ]; then $genfiles
+if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option"
 cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
 dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
@@ -5423,7 +5414,7 @@ exit; fi
 #### :rutina-inicial-wizard-full:
 ####
 ####
-if [ "$first_option" = "wizard-full" ]; then $genfiles
+if [ "$first_option" = "wizard-full" ]; then echo
 archivo="$first_option"
 cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
 dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
@@ -6697,7 +6688,7 @@ exit; fi
 #### :rutina-inicial-config-eng:
 ####
 ####
-if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
+if [ "$first_option" = "config-eng" ]; then $give_cover
  echo "$ralla [ $first_option ] [ show variables cfg from english configuration ]"
  echo $header_lineal
  cat  $defaultfullcfg_eng
@@ -6711,7 +6702,7 @@ if [ "$first_option" = "config-eng" ]; then $genfiles; $give_cover
 #### :rutina-inicial-config-spa:
 ####
 ####
- if [ "$first_option" = "config-spa" ]; then $genfiles; $give_cover
+ if [ "$first_option" = "config-spa" ]; then $give_cover
  echo "$ralla [ $first_option ] [ show variables cfg from spanish configuration ]"
  echo $header_lineal
  cat $defaultfullcfg_spa
@@ -6816,6 +6807,7 @@ echo "$cinco         [ Launch guide ]"
 echo
 echo "       info-system : Show info system"
 echo "          info-net : Show net info"
+echo "             regen : Regen wizard files"
 echo "       wizard-full : Asistant y launch complete firewall"
 echo "       wizard-mini : Asistant y Launch simple firewall"
 echo
@@ -7092,6 +7084,7 @@ echo "$cinco         [ Lanzar guia ]"
 echo
 echo "     info-system : Muestra la informacion del sistema"
 echo "        info-net : Muestra informacion de la red"
+echo "           regen : Regenera wizard files"
 echo "     wizard-full : Asistente y lanza completo cortafuegos"
 echo "     wizard-mini : Asistente y lanza simple cortafuegos"
 echo
