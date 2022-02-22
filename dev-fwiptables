@@ -4102,23 +4102,23 @@ echo "$ralla"
 ####
 ####
 if [ "$second_option" = "info" ]; then echo "$tab Getting lines numbers total.."; echo 
-$favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
-$favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
-$favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
-$favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
-blacklist_lines_fademind="$(cat $file_temporal_path/hosts.fademind | wc -l)"
-blacklist_lines_mvps="$(cat $file_temporal_path/hosts.mvps | wc -l)"
-blacklist_lines_adaway="$(cat $file_temporal_path/hosts.adaway | wc -l)"
-blacklist_lines_stevenblack="$(cat $file_temporal_path/hosts.stevenblack | wc -l)"
 echo
 echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
 echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
-echo "$tab [ info ] [ total numbers lines for those servers ]"
-echo "$tab fademind:    $blacklist_lines_fademind"
-echo "$tab mvps:        $blacklist_lines_mvps"
-echo "$tab adaway:      $blacklist_lines_adaway"
-echo "$tab stevenblack: $blacklist_lines_stevenblack"
+echo "$tab [ info ] [ total addblocker hosts for those servers ] [ 10 seconds for timeout each one ]"
+timeout 10 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
+blacklist_lines_fademind="$(cat $file_temporal_path/hosts.fademind | wc -l)"
+echo "$tab fademind:    $blacklist_lines_fademind hosts"
+timeout 10 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
+blacklist_lines_mvps="$(cat $file_temporal_path/hosts.mvps | wc -l)"
+echo "$tab mvps:        $blacklist_lines_mvps hosts"
+timeout 10 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
+blacklist_lines_adaway="$(cat $file_temporal_path/hosts.adaway | wc -l)"
+echo "$tab adaway:      $blacklist_lines_adaway hosts"
+timeout 10 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
+blacklist_lines_stevenblack="$(cat $file_temporal_path/hosts.stevenblack | wc -l)"
+echo "$tab stevenblack: $blacklist_lines_stevenblack hosts"
 echo "$ralla"; fi
 ####
 ####
