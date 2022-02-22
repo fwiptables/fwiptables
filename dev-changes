@@ -165,9 +165,14 @@
 # 4. gamesudp: añade cliente para ftp,ftp-data,ftps,ftps-data. HECHO
 # 5. help y ayuda simplificados. HECHO
 #
-# changes fwiptables 2.05 en desarrollo
+# changes fwiptables 2.05
 #
 # 1. cambio de apariencia en help, ayuda y long-help. HECHO
 # 2. cabeceras en blacklist. HECHO
-# 3. cambio de apariencia en mini-options y options/full-otpions. HECHO.
+# 3. cambio de apariencia en mini-options y options/full-otpions. HECHO
+#
+# changes fwiptables 2.06 en desarrollo
+#
+# 1. simplificacion de genfiles para mucha mas velocidad de ejecucion. HECHO
+# 2.
 #
