@@ -173,6 +173,6 @@
 #
 # changes fwiptables 2.06 en desarrollo
 #
-# 1. simplificacion de genfiles para mucha mas velocidad de ejecucion. HECHO
-# 2. rediseñado blacklist-list info para mas fluida carga. HECHO
+# 1. simplificacion de genfiles para mas velocidad de ejecucion. HECHO
+# 2. rediseñado blacklist-list info para carga mas fluida. HECHO
 #
