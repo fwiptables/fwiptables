@@ -2652,7 +2652,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-control-guide" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "info-net" "info-system" "wizard-full" "wizard-mini" \
+--list "Gui Principal Menu" "Gui Info Menu" "info-net" "info-system" "regen" "wizard-full" "wizard-mini" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Control Guide] [$fwiptables]" )
 #### 
 #### 
@@ -2662,6 +2662,7 @@ case $selection in
 "Gui Info Menu") $fwiptables -gui control-guide ;;
 "info-net") $fwiptables -gui info-net ;;
 "info-system")$fwiptables -gui info-system ;;
+"regen")$fwiptables -gui regen ;;
 "wizard-full")$fwiptables -gui wizard-full ;;
 "wizard-mini")$fwiptables -gui wizard-mini ;;
 esac
@@ -3490,8 +3491,9 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
   0100 "$cinco [ Tool guide to begin ] $cinco" \
   11  "info-system" \
   12  "info-net" \
-  13  "wizard-mini" \
-  14  "wizard-full" \
+  13  "regen" \
+  14  "wizard-mini" \
+  15  "wizard-full" \
   0020 "$cinco [ Control rules with firewall standard ] $cinco" \
   21  "stop" \
   22  "continue" \
@@ -3662,8 +3664,9 @@ menuprincipal="$(dialog --stdout --clear --title "$fprogram version $fversion ||
  0220) clear ; $fwiptables show-help ;; 
  11) clear ; $fwiptables "info-system" | less ;;
  12) clear ; $fwiptables "info-net" | less ;;
- 13) clear ; $fwiptables "wizard-mini" ;;
- 14) clear ; $fwiptables "wizard-full" ;;
+ 13) clear ; $fwiptables "regen"  ;;
+ 14) clear ; $fwiptables "wizard-mini" ;;
+ 15) clear ; $fwiptables "wizard-full" ;;
  21) clear ; $fwiptables stop ;;
  22) clear ; $fwiptables continue ;;
  23) clear ; $fwiptables reset ;;
