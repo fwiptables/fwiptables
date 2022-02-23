@@ -1485,6 +1485,8 @@ $fwiptables tool-nmap
 echo
 $fwiptables tool-sudo
 echo
+$fwiptables tool-util
+echo
 $fwiptables tool-system
 echo
 $fwiptables tool-install
@@ -1901,6 +1903,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-sockets:
+##############################       english: tool-util: options utils
+##############################       spanish: tool-forward: opciones utiles
+#### :rutina-inicial-tool-util:
+####
+####
+if [ "$first_option" = "tool-util" ]; then $give_cover
+echo "$ralla [ $first_option ] [ tool util ]"
+echo "$rallica [ Tool util ]"
+echo "$rallica [ Herramienta de utilidades ]"
+echo
+echo "working.."
+echo
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-tool-util:
 ##############################       english: tool-forward: options ipforwading
 ##############################       spanish: tool-forward: opciones ipforwading
 #### :rutina-inicial-tool-forward:

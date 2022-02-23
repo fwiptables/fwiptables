@@ -175,4 +175,6 @@
 #
 # 1. simplificacion de genfiles para mas velocidad de ejecucion. HECHO
 # 2. rediseñado blacklist-list info para carga mas fluida. HECHO
+# 3. traducir al ingles titulos de long-help.
+# 4. nuevo grupo de herramientas tool-util. 
 #
