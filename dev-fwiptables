@@ -2529,6 +2529,13 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 #### 
+"word-ole")
+echo
+echo "$cinco sorry, word-ole without gui, run: $fwiptables word-ole"
+echo
+;;
+#### 
+#### 
 *)
 #### fecha_temporal=$(date | sed s/\ //g) ;
 $fwiptables $second_option $third_option &> $file_temporal_gui
@@ -2587,6 +2594,13 @@ if [  -s "/etc/default/fwiptables" ]; then $nada ;
 $fwiptables -gui show-default ;
 else cp /tmp/fiptables-modify-default /etc/default/fwiptables;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
+;;
+#### 
+#### 
+"word-ole")
+echo
+echo "$cinco sorry, word-ole without gui, run: $fwiptables word-ole"
+echo
 ;;
 #### 
 #### 
