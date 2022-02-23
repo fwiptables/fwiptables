@@ -175,7 +175,6 @@
 #
 # 1. simplificacion de genfiles para mas velocidad de ejecucion. HECHO
 # 2. rediseñado blacklist-list info para carga mas fluida. HECHO
-# 4. nuevo grupo de herramientas tool-util. HECHO
-# 5. juego wordle con el nombre word-ole. HECHO
+# 4. nuevo grupo de herramientas tool-game. HECHO
+# 5. juego wordle con el nombre word-ole para tool-game. HECHO
 #
-

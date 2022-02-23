@@ -1910,9 +1910,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-game" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool util ]"
-echo "$rallica [ Tool util ]"
-echo "$rallica [ Herramienta de utilidades ]"
+echo "$ralla [ $first_option ] [ tool game ]"
+echo "$rallica [ Tool game ]"
+echo "$rallica [ Herramienta de juego ]"
 echo
 echo "         word-ole : Play game clon for wordle in text mode"
 echo "                  : Juega a un clon del juego wordle in text mode"
