@@ -1913,8 +1913,8 @@ echo "$ralla [ $first_option ] [ tool util ]"
 echo "$rallica [ Tool util ]"
 echo "$rallica [ Herramienta de utilidades ]"
 echo
-echo "working.."
-echo
+echo "         word-ole : Play to a game clon for wordle"
+echo "                  : Juega a un clon del juego wordle"
 echo $footer_lineal
 exit; fi
 ####
