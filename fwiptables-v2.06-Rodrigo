@@ -2614,7 +2614,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 #### 
 "word-ole")
 echo
-echo "$cinco sorry, word-ole without gui, run: $fwiptables word-ole"
+echo "$cinco word-ole is only in text mode, Run word-ole without gui, run: $fwiptables word-ole"
 echo
 ;;
 #### 
@@ -2682,7 +2682,7 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 "word-ole")
 echo
-echo "$cinco sorry, word-ole without gui, run: $fwiptables word-ole"
+echo "$cinco word-ole is only in text mode, Run word-ole without gui, run: $fwiptables word-ole"
 echo
 ;;
 #### 
