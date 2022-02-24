@@ -1329,7 +1329,7 @@ echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                    | Firewall Options |                      "
+echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
@@ -1345,14 +1345,14 @@ echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-conf
 echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                    | Group Options |                         "
-echo "$tab" "$tab"  " firewall |  control-interface    control-guide       control-rules           "
+echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  " Firewall |  control-interface    control-guide       control-rules           "
 echo "$tab" "$tab"  "             rules-list           rules-launch        rules-custom            "
-echo "$tab" "$tab"  "     tool |  tool-sockets         tool-forward        tool-tcp                "
+echo "$tab" "$tab"  "     Tool |  tool-sockets         tool-forward        tool-tcp                "
 echo "$tab" "$tab"  "             tool-udp             tool-icmp           tool-nmap               "
 echo "$tab" "$tab"  "             tool-sudo            tool-game           tool-system             "
 echo "$tab" "$tab"  "             tool-install         tool-blacklist      tool-dev                "
-echo "$tab" "$tab"  "     show |  show-hardware        show-etc            show-log                "
+echo "$tab" "$tab"  "     Show |  show-hardware        show-etc            show-log                "
 echo "$tab" "$tab"  "             show-about           show-help           show-example            " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Description |                             | Examples |                " 
@@ -1374,7 +1374,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
-echo "$tab" "$tab"  "                                    | Firewall Options |                      "
+echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide     | info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "    control-rules     | stop continue reset names actual show save load       "
@@ -1390,7 +1390,7 @@ echo "$tab" "$tab"  "    rules-custom      | new-full-config nueva-completa-conf
 echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                    | Tool Options |                          " 
+echo "$tab" "$tab"  "                                    | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
 echo "$tab" "$tab"  "                        ss lsof tcpdump netstat netstat-nat                   "
 echo "$tab" "$tab"  "    tool-forward      | ipforward-list ipforward-on ipforward-off             "
@@ -1405,7 +1405,7 @@ echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade      
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                   | Show Options |                           " 
+echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny                                "
@@ -1428,6 +1428,90 @@ exit ; fi
 ####
 ####
 #### :rutina-final-full-options:
+##############################       english: firewall-options: firewall options       ##############################
+##############################       spanish: firewall-options: opciones de firewall   ##############################
+#### :rutina-final-firewall-options:
+####
+####
+if [ "$first_option" = "firewall-options" ] ; then $give_cover
+echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
+#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "                                    | firewall-options |                      "
+echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -log -gui           "
+echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
+echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "  rules-list         |  list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
+echo "$tab" "$tab"  "                        list-filter4 list-filter6 list-nat4 list-nat6         "
+echo "$tab" "$tab"  "                        list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$tab" "$tab"  "                        list-security4 list-security6                         "
+echo "$tab" "$tab"  "                        list-ebtables list-arptables                          "
+echo "$tab" "$tab"  "  rules-launch       |  eraserules offline allpermisive gamesudp custom       "
+echo "$tab" "$tab"  "                        clientweb serverweb serversamba serverprint serverssh "
+echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
+#### echo $footer_lineal
+exit ; fi
+####
+####
+#### :rutina-final-firewall-options:
+##############################       english: tool-options: firewall options       ##############################
+##############################       spanish: tool-options: opciones de firewall   ##############################
+#### :rutina-final-tool-options:
+####
+####
+if [ "$first_option" = "tool-options" ] ; then $give_cover
+echo "$ralla [ $first_option ] [ Tool options ] $ralla"
+#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "                                    | tool-options |                          " 
+echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
+echo "$tab" "$tab"  "                        ss lsof tcpdump netstat netstat-nat                   "
+echo "$tab" "$tab"  "    tool-forward      | ipforward-list ipforward-on ipforward-off             "
+echo "$tab" "$tab"  "    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
+echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate                      "
+echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
+echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
+echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
+echo "$tab" "$tab"  "    tool-game         | word-ole                                              "
+echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
+echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
+echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
+echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-changes code             "
+#### echo $footer_lineal
+exit ; fi
+####
+####
+#### :rutina-final-tool-options:
+##############################       english: show-options: options show           ##############################
+##############################       spanish: show-options: opciones de mostrar    ##############################
+#### :rutina-final-show-options:
+####
+####
+if [ "$first_option" = "show-options" ] ; then $give_cover
+echo "$ralla [ $first_option ] [ Show options ] $ralla"
+#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "                                   | show-options |                           " 
+echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
+echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
+echo "$tab" "$tab"  "                        hosts.allow hosts.deny                                "
+echo "$tab" "$tab"  "    show-log          | log-search log-ssh log-fwiptables log-last            "
+echo "$tab" "$tab"  "                        show-default modify-default                           "
+echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
+echo "$tab" "$tab"  "                        config-eng config-spa license                         "
+echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
+echo "$tab" "$tab"  "                        group-options mini-options full-options               "
+#### echo $footer_lineal
+exit ; fi
+####
+####
+#### :rutina-final-show-options:
 ##############################       english: long-help: long help        ##############################
 ##############################       spanish: larga-opcion: larga ayuda   ##############################
 #### :rutina-inicial-long-help:
