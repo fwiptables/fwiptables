@@ -1341,7 +1341,7 @@ echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-conf
 echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  " Firewall |  control-interface    control-guide       control-rules           "
 echo "$tab" "$tab"  "             rules-list           rules-launch        rules-custom            "
 echo "$tab" "$tab"  "     Tool |  tool-sockets         tool-forward        tool-tcp                "
@@ -1432,7 +1432,7 @@ exit ; fi
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -log -gui           "
@@ -1462,7 +1462,7 @@ exit ; fi
 if [ "$first_option" = "tool-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Tool options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
@@ -1491,7 +1491,7 @@ exit ; fi
 if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Show options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "    Group | firewall-options      tool-options        show-options            "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
