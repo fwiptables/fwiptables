@@ -6240,16 +6240,17 @@ read -p " ##### 1 or 2 #  " language_number
 echo; done
 #### Dicctionary english if download
 if [ "$language_number" -eq "1" ]; then dictionary="$language_english"
-if [ -s "$language_english" ]; then echo; else echo " [ Descargando el diccionario ingles por primera vez ] "
-links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
+if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
+#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
+links -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
 grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-english
-echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
+echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" -eq "2" ]; then dictionary="$language_spanish" 
-if [ -s "$language_spanish" ]; then echo; else echo " [ Descargando el diccionario español por primera vez ] "
+if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 links -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
 grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-spanish
-echo " [ ok ] [ diccionario ingles descargado ]" ; fi ; fi
+echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
 text_1=" ##### [ OK ] Awasome, the random word is : "
