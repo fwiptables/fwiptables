@@ -1370,6 +1370,8 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "    control-guide     | info-net info-system regen wizard-full wizard-mini    "
