@@ -1784,9 +1784,6 @@ echo "$ralla [ $first_option ] [ List rules ]"
 echo "$rallica [ List filter iptables rules ]"
 echo "$rallica [ Lista reglas de iptables filtros ]"
 echo
-echo "               [The filter table with names]"
-echo "               [Lista tabla filtros con nombres]"
-echo
 echo "              list : List iptables filter rules from ipv4 with hide no used"
 echo "                   : Lista reglas de tabla filtros desde ipv4 esconde no usadas"
 echo "             list6 : List iptables filter rules from ipv6 with hide no used"
@@ -1795,9 +1792,6 @@ echo "      list-forward : List iptables filter rules foward"
 echo "                   : Lista tabla de iptables de reenvio ipv4"
 echo "     list-forward6 : List iptables filter rules forward ipv6"
 echo "                   : Lista tabla de iptables de reenvio ipv6"
-echo
-echo "               [List filter table with numbers]"
-echo "               [Lista tabla filtros con numeros]"
 echo
 echo "           listnum : List iptables filter rules from ipv4 in numbers"
 echo "                   : Lista la tabla de reglas de filtros desde ipv4 in numeros"
@@ -7067,13 +7061,15 @@ echo "              load : Restore a one firewall iptables"
 echo "            actual : Show the firewall standard actual"
 echo
 echo "$cinco         [ List iptables rules] "
-echo
-echo "               [The filter table with names]"
+#### echo
+#### echo "               [The filter table with names]"
 echo
 echo "              list : Like list-filter4 but hiding rules no used"
 echo "             list6 : Like list-filter6 but hiding rules not used"
 echo
 echo "$cinco         [ List the others tables ]"
+#### echo
+#### echo "               [The filter table with numerical]"
 echo
 echo "           listnum : List iptables filter rules from ipv4 in numbers"
 echo "   list-forwardnum : List iptables filter rules foward in numbers"
@@ -7081,6 +7077,8 @@ echo "          listnum6 : List iptables filter rules from ipv6 in numbers"
 echo "  list-forwardnum6 : List iptables filter rules forward ipv6 in numbers"
 echo "      list-forward : List iptables filter rules forward ipv4"
 echo "     list-forward6 : List iptables filter rules forward ipv6"
+#### echo
+#### echo "               [All tables]"
 echo
 echo "      list-filter4 : List iptables filter rules from ipv4"
 echo "      list-filter6 : List iptables filter rules from ipv6"
@@ -7094,8 +7092,8 @@ echo "    list-security4 : List iptables security rules from ipv4"
 echo "    list-security6 : List iptables security rules from ipv6"
 echo "     list-ebtables : List rules ebtables mac of ethernet"
 echo "    list-arptables : List rules arptables arp"
-echo
-echo "               [ Secondary options ] $cinco"
+#### echo
+#### echo "               [ Secondary options ] $cinco"
 echo
 echo "$cinco         [ Launch iptables rules ]"
 echo
@@ -7348,8 +7346,8 @@ echo "            load : Reculpera firewall estandard especificado"
 echo "          actual : Muestra el contenido del firewall estandard actual"
 echo
 echo "$cinco         [ Lista las reglas de tablas de iptables ]"
-echo
-echo "               La tabla de filtros con nombres"
+#### echo
+#### echo "               La tabla de filtros con nombres"
 echo
 echo "              list : similar a list-filter4 pero esconde reglas no usadas" 
 echo "             list6 : similar a list-filter6 pero esconde reglas no usadas"
@@ -7389,9 +7387,9 @@ echo "               log : apodo de -log"
 echo "             -text : Salida a consola, por defecto en linea de comandos"
 echo "              -gui : Salida a graficos"
 echo "              -log : Salida a archivo log en /var/log/fwiptables"
-echo
-echo
-echo "               [ Opciones secundarias ] $cinco"
+#### echo
+#### echo
+#### echo "               [ Opciones secundarias ] $cinco"
 echo
 echo "$cinco         [ Lanza reglas de iptables ]"
 echo
