@@ -1434,8 +1434,6 @@ exit ; fi
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -log -gui           "
 echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
@@ -1451,6 +1449,8 @@ echo "$tab" "$tab"  "                        clientweb serverweb serversamba ser
 echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 #### echo $footer_lineal
 exit ; fi
 ####
@@ -1464,8 +1464,6 @@ exit ; fi
 if [ "$first_option" = "tool-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Tool options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
 echo "$tab" "$tab"  "                        ss lsof tcpdump netstat netstat-nat                   "
@@ -1480,6 +1478,8 @@ echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-s
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-changes code             "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 #### echo $footer_lineal
 exit ; fi
 ####
@@ -1493,8 +1493,6 @@ exit ; fi
 if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Show options ] $ralla"
 #### echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
@@ -1505,6 +1503,8 @@ echo "$tab" "$tab"  "    show-about        | about version depends examples     
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
 echo "$tab" "$tab"  "                        group-options mini-options full-options               "
+echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 #### echo $footer_lineal
 exit ; fi
 ####
