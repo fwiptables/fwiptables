@@ -448,16 +448,16 @@ $fwiptables regen &> /dev/null
 echo "$cinco [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
 echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
 echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$cinco [ OK ] [ new config files ]"
+echo "$rallica [ OK ] [ new config files ]"
 #### 
 #### 
 ####  english: modes of file 
 ####  spanish: modos de archivo
 #### 
 #### 
-echo "$cinco [ Launch $fwiptables to run / TYPE :] [ $fwiptables ]" 
 echo "$rallica [ OK ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
-echo $footer_lineal
+echo "$cinco [ Launch $fwiptables to run / TYPE :] [ $fwiptables ]" 
+echo "$footer_lineal"
 exit; fi
 ####
 ####
@@ -533,7 +533,7 @@ file_output_logfinal="/var/log/fwiptables"
 #### english: Exceptions when begin with -text
 #### english: Excepciones cuando empiezan con -text
 ####
-#### remove the -text
+#### english: remove the -text y go to default output
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
 case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
@@ -558,15 +558,15 @@ ipforward-*) $fwiptables $second_option $third_option ; exit ;;
 esac ; fi
 ####
 ####
-#### remove the -cli
+#### english: remove the -cli y go to default output
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then
 case "$second_option" in 
 wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"nueva-mini-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"nueva-completa-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"new-mini-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"new-full-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"modify-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"nueva-mini-config")  $fwiptables $second_option $third_option ; exit ;;
+"nueva-completa-config") $fwiptables $second_option $third_option ; exit ;;
+"new-mini-config") $fwiptables $second_option $third_option ; exit ;;
+"new-full-config") $fwiptables $second_option $third_option ; exit ;;
+"modify-config") $fwiptables $second_option $third_option ; exit ;;
 ping-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 speed-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
@@ -582,6 +582,14 @@ ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; e
 esac ; fi
 ####
 ####
+#### english: remove the -gui y go to default output
+if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then
+case "$second_option" in 
+"word-ole") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+esac ; fi
+####
+####
+#### 
 case "$first_option" in 
 "$NULL") first_option="mini-options" ;;
 ####
@@ -2623,13 +2631,6 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 #### 
-"word-ole")
-echo
-echo "$cinco word-ole is only in text mode, Run word-ole without gui, run: $fwiptables word-ole"
-echo
-;;
-#### 
-#### 
 *)
 #### fecha_temporal=$(date | sed s/\ //g) ;
 $fwiptables $second_option $third_option &> $file_temporal_gui
@@ -2688,13 +2689,6 @@ if [  -s "/etc/default/fwiptables" ]; then $nada ;
 $fwiptables -gui show-default ;
 else cp /tmp/fiptables-modify-default /etc/default/fwiptables;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
-;;
-#### 
-#### 
-"word-ole")
-echo
-echo "$cinco word-ole is only in text mode, Run word-ole without gui, run: $fwiptables word-ole"
-echo
 ;;
 #### 
 #### 
