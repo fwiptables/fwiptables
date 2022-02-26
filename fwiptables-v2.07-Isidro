@@ -556,7 +556,7 @@ fi
 ####
 ####
 case "$first_option" in 
-"$NULL") $fwiptables "$whithout_option" ; exit ;;
+"$NULL") first_option="mini-options" ;;
 "gui") first_option="-gui" ;;
 "cli") first_option="cli-menu" ;;
 "gui-menu") first_option="gui-menu" ;;
