@@ -2719,7 +2719,7 @@ selection=$(zenity $graphic_dimension  \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
 "12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show hardware" \
 "17 Show etc" "18 Show log" "19 Show about" "20 Show help" \
---column="Option list $fwiptables" --text="Select one option" --title="Gui Menu  $fwiptables || $(date) ")
+--column="Option list $fwiptables" --text="Select one option" --title="Gui Menu || $fwiptables || $(date) ")
 #### 
 #### 
 case "$selection" in
@@ -3478,7 +3478,7 @@ untexto="$fwiptables gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms $graphic_dimension --title="gui shell $fwiptables || $(date) " \
+menugtk=$(zenity --forms $graphic_dimension --title="Gui Shell || $fwiptables || $(date) " \
 --text="$($fwiptables mini-options)" --add-entry="$fwiptables " )
 case $? in
 1)
