@@ -548,6 +548,7 @@ ram-speed) $fwiptables $second_option $third_option ; exit ;;
 disk-speed) $fwiptables $second_option $third_option ; exit ;;
 glx-speed) $fwiptables $second_option $third_option ; exit ;;
 radio) $fwiptables $second_option $third_option ; exit ;;
+word-ole) $fwiptables $second_option $third_option ; exit ;;
 log-*) $fwiptables $second_option $third_option ; exit ;;
 license-*) $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $fwiptables $second_option $third_option ; exit ;;
@@ -562,12 +563,12 @@ case "$first_option" in
 "gui-menu") first_option="gui-menu" ;;
 "gui-shell") first_option="gui-shell" ;;
 "log")
-$fwiptables $second_option $third_option &>> $file_output_log
+$fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_logfinal
 echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_logfinal" 
 exit ;;
 "-log") 
-$fwiptables $second_option $third_option &>> $file_output_log
+$fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warding: &>> $file_output_logfinal
 echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_logfinal" 
 exit ;;
