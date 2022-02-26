@@ -448,15 +448,15 @@ $fwiptables regen &> /dev/null
 echo "$cinco [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
 echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
 echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$rallica [ OK ] [ New config files ]"
+echo "$tab [ OK ] [ New config files installed ]"
 #### 
 #### 
 ####  english: modes of file 
 ####  spanish: modos de archivo
 #### 
 #### 
-echo "$rallica [ OK ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
-echo "$cinco [ Launch $fwiptables to run / TYPE :] [ $fwiptables ]" 
+echo "$tab [ OK ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
+echo "$tab [ OK ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
 echo "$footer_lineal"
 exit; fi
 ####
@@ -1640,7 +1640,14 @@ if [ "$first_option" = "list-config" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List configs cfg ]"
 echo "$rallica $tab [English:] [list configs files in cfg format]"
 echo "$rallica $tab [Spanish:] [Lista de archivos de configuraciones en cfg formato]"
-ls -1 $directory_config/
+default_files_cfg="default-full-english.cfg|default-full-spanish.cfg|default-mini-english|default-mini-spanish|wizard-full|wizard-mini"
+echo "$rallica"
+echo "$tab [ System files ]"
+ls -1 $directory_config/ | egrep -i $default_files_cfg
+echo "$rallica"
+echo "$tab [ User files ]"
+ls -1 $directory_config/ | egrep -iv $default_files_cfg
+echo "$rallica"
 echo "$rallica [OK CFG FILES NAMES]"
 echo $footer_lineal
 exit; fi
