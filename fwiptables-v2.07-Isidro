@@ -530,7 +530,7 @@ file_output_logfinal="/var/log/fwiptables"
 #### english: Exceptions when begin with -text
 #### english: Excepciones cuando empiezan con -text
 ####
-####
+#### remove the -text
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
 case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
@@ -552,8 +552,31 @@ scan-*) $fwiptables $second_option $third_option ; exit ;;
 log-*) $fwiptables $second_option $third_option ; exit ;;
 license-*) $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $fwiptables $second_option $third_option ; exit ;;
-esac
-fi
+esac ; fi
+####
+####
+#### remove the -cli
+if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then
+case "$second_option" in 
+wizard-*) $fwiptables $second_option $third_option ; exit ;;
+nueva-mini-config) $fwiptables $second_option $third_option ; exit ;;
+nueva-completa-config) $fwiptables $second_option $third_option ; exit ;;
+new-mini-config) $fwiptables $second_option $third_option ; exit ;;
+new-full-config) $fwiptables $second_option $third_option ; exit ;;
+modify-config) $fwiptables $second_option $third_option ; exit ;;
+ping-*) $fwiptables $second_option $third_option ; exit ;;
+speed-*) $fwiptables $second_option $third_option ; exit ;;
+scan-*) $fwiptables $second_option $third_option ; exit ;;
+"install") $fwiptables $second_option $third_option ; exit ;;
+"uprade") $fwiptables $second_option $third_option ; exit ;;
+"ram-speed") $fwiptables $second_option $third_option ; exit ;;
+"disk-speed") $fwiptables $second_option $third_option ; exit ;;
+"glx-speed") $fwiptables $second_option $third_option ; exit ;;
+"radio") $fwiptables $second_option $third_option ; exit ;;
+"word-ole") $fwiptables $second_option $third_option ; exit ;;
+log-*) $fwiptables $second_option $third_option ; exit ;;
+ipforward-*) $fwiptables $second_option $third_option ; exit ;;
+esac ; fi
 ####
 ####
 case "$first_option" in 
@@ -3592,7 +3615,7 @@ exit ; fi
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then $nada
 dialog --title " Cli Output || $fwiptables || $(date)" --msgbox "$($fwiptables $second_option $third_option)" 0 0
-exit ; fi
+clear; exit ; fi
 ####
 ####
 #### :rutina-final-cli:
