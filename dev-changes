@@ -186,4 +186,4 @@
 #
 # 1. añadir -cli opcion. HECHO
 # 2. politica de firewall predefinidos para forward es drop. HECHO
-#
+# 3. cambios en list-config.
