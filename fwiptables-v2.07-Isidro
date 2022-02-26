@@ -7757,6 +7757,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1    -j ACCEPT &> /dev/null
 ####
 ####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
+-j DROP &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -7776,6 +7780,10 @@ $allow_nft  $allow_ipv4    $command_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4    $command_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A FORWARD \
+-j DROP &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4       $command_iptables_nft -A INPUT \
@@ -7803,6 +7811,10 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
+-j DROP &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6    $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports  $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6    $command_ip6tables_legacy -A INPUT \
@@ -7822,6 +7834,10 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6   $command_ip6tables_nft -A FORWARD \
+-j DROP &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
