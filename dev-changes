@@ -184,6 +184,6 @@
 #
 # changes fwiptables 2.07 en desarrollo
 #
-# 1. añadir -cli opcion
-# 2.
+# 1. añadir -cli opcion. HECHO
+# 2. politica de firewall predefinidos para forward es drop. HECHO
 #
