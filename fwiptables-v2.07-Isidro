@@ -448,7 +448,7 @@ $fwiptables regen &> /dev/null
 echo "$cinco [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
 echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
 echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$rallica [ OK ] [ new config files ]"
+echo "$rallica [ OK ] [ New config files ]"
 #### 
 #### 
 ####  english: modes of file 
