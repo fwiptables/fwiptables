@@ -163,6 +163,9 @@ give_cover="$fwiptables header"
 give_autosave="$fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
+#### #### english: without cli or gui   #### spanish: sin cli o gui
+message_without_cli="echo $cinco Still Without support for CLI in this option $cinco"
+message_without_gui="echo $cinco Still Without support for GUI in this option $cinco"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -534,11 +537,11 @@ file_output_logfinal="/var/log/fwiptables"
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
 case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
-nueva-mini-config) $fwiptables $second_option $third_option ; exit ;;
-nueva-completa-config) $fwiptables $second_option $third_option ; exit ;;
-new-mini-config) $fwiptables $second_option $third_option ; exit ;;
-new-full-config) $fwiptables $second_option $third_option ; exit ;;
-modify-config) $fwiptables $second_option $third_option ; exit ;;
+"nueva-mini-config") $fwiptables $second_option $third_option ; exit ;;
+"nueva-completa-config") $fwiptables $second_option $third_option ; exit ;;
+"new-mini-config") $fwiptables $second_option $third_option ; exit ;;
+"new-full-config") $fwiptables $second_option $third_option ; exit ;;
+"modify-config") $fwiptables $second_option $third_option ; exit ;;
 ping-*) $fwiptables $second_option $third_option ; exit ;;
 speed-*) $fwiptables $second_option $third_option ; exit ;;
 scan-*) $fwiptables $second_option $third_option ; exit ;;
@@ -558,24 +561,24 @@ esac ; fi
 #### remove the -cli
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then
 case "$second_option" in 
-wizard-*) $fwiptables $second_option $third_option ; exit ;;
-nueva-mini-config) $fwiptables $second_option $third_option ; exit ;;
-nueva-completa-config) $fwiptables $second_option $third_option ; exit ;;
-new-mini-config) $fwiptables $second_option $third_option ; exit ;;
-new-full-config) $fwiptables $second_option $third_option ; exit ;;
-modify-config) $fwiptables $second_option $third_option ; exit ;;
-ping-*) $fwiptables $second_option $third_option ; exit ;;
-speed-*) $fwiptables $second_option $third_option ; exit ;;
-scan-*) $fwiptables $second_option $third_option ; exit ;;
-"install") $fwiptables $second_option $third_option ; exit ;;
-"uprade") $fwiptables $second_option $third_option ; exit ;;
-"ram-speed") $fwiptables $second_option $third_option ; exit ;;
-"disk-speed") $fwiptables $second_option $third_option ; exit ;;
-"glx-speed") $fwiptables $second_option $third_option ; exit ;;
-"radio") $fwiptables $second_option $third_option ; exit ;;
-"word-ole") $fwiptables $second_option $third_option ; exit ;;
-log-*) $fwiptables $second_option $third_option ; exit ;;
-ipforward-*) $fwiptables $second_option $third_option ; exit ;;
+wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"nueva-mini-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"nueva-completa-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"new-mini-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"new-full-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"modify-config") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+ping-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+speed-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"install") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"uprade") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"ram-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"disk-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"glx-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"radio") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"word-ole") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+log-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 esac ; fi
 ####
 ####
