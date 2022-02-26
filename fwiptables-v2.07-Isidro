@@ -142,7 +142,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" $sinco Version $fversion || Use: $fwiptables options ||  $(date)  "
+head_principal="$sinco Version $fversion || Use: $fwiptables options ||  $(date)  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### head_default="$cinco [ Default: $fwiptables show-default ] [ Usage: $fwiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -3619,7 +3619,7 @@ clear; exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --clear --title "Cli Menu || $fprogram || $(date)" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
   0000 "$cinco $tab [$fwiptables cli-menu] $tab $cinco" \
   0100 "$cinco [ Tool guide to begin ] $cinco" \
   11  "info-system" \
