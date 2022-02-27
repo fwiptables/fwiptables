@@ -527,7 +527,7 @@ file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_op
 file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
 file_temporal_guifinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
 file_output_log="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
-file_output_sendedlog="/var/log/fwiptables-sendedlog"
+file_output_filelog="/var/log/fwiptables-sendedlog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
@@ -600,8 +600,8 @@ case "$first_option" in
 ####
 "log"|"-log") first_option="-log" 
 $fwiptables $second_option $third_option &> $file_output_log
-cat $file_output_log | grep -v Warning: &>> $file_output_sendedlog
-echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_sendedlog" ; exit ;;
+cat $file_output_log | grep -v Warning: &>> $file_output_filelog
+echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_filelog" ; exit ;;
 ####
 "txt"|"-txt") first_option="-txt"
 $fwiptables $second_option $third_option &> $file_temporal_text
@@ -1962,8 +1962,8 @@ echo "   cli OR -cli : Output to text menu"
 echo "               : Salida a menu de texto"
 echo "   gui OR -gui : Output to graphicall window"
 echo "               : Salida a ventana grafica"
-echo "   log OR -log : Save the output to /var/log/fwiptables"
-echo "               : Guarda la salida a /var/log/fwiptables"
+echo "   log OR -log : Save the output to $file_output_filelog"
+echo "               : Guarda la salida a $file_output_filelog"
 echo $footer_lineal
 exit; fi
 ####
@@ -2482,7 +2482,8 @@ echo "                     /etc/profile.d/fwiptables"
 echo "auth users:          /etc/sudoers.d/fwiptables"
 echo $ralla
 echo "$tab [output log]"
-echo "destination log:     /var/log/fwiptables"
+echo "destination filelog: $file_output_filelog"
+echo "destination autolog: $file_output_autolog"
 echo $ralla
 echo "$tab [$fwiptables util]"
 echo "sed:       $command_sed"
@@ -3979,7 +3980,8 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  echo "completion:   /etc/bash_completion.d/fwiptables"
  echo "auth users:   /etc/sudoers/fwiptables"
  echo "$tab [Output log]"
- echo "output log:   /var/log/fwiptables"
+ echo "output filelog: $file_output_filelog"
+ echo "output autolog: $file_output_autolog"
  echo
  echo "$tab [Version program]"
  echo "$fversion"
@@ -6447,9 +6449,9 @@ echo "$text_8" "$palabra_aleatoria"
 ####
 ####
  if [ "$first_option" = "fw-sendedlog" ] ; then  $give_cover
- echo "$ralla [ $first_option ] [ show $file_output_sendedlog ]"
- cat  "$file_output_sendedlog"
- echo "$ralla [ this file is $file_output_sendedlog ]"
+ echo "$ralla [ $first_option ] [ show $file_output_filelog ]"
+ cat  "$file_output_filelog"
+ echo "$ralla [ this file is $file_output_filelog ]"
  echo "$footer_lineal"
  exit; fi
 ####
@@ -7057,7 +7059,7 @@ echo "         gui-shell : Graphicall interface with shell"
 echo "       txt OR -txt : Output at text line"
 echo "       cli OR -cli : Output at text menu"
 echo "       gui OR -gui : Output at graphicall window"
-echo "       log OR -log : Output in logfile /var/log/fwiptables"
+echo "       log OR -log : Output in logfile "
 echo
 echo "$cinco         [ Launch guide ]"
 echo
@@ -7249,8 +7251,8 @@ echo "$cinco         [ Show log ]"
 echo
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
-echo "   fw-sendedlog : Show $file_output_sendedlog , over -log"
-echo "     fw-autolog : Show $file_output_autolog , headers"
+echo "   fw-sendedlog : Show $file_output_filelog , over -log"
+echo "     fw-autolog : Show $file_output_autolog , only headers"
 echo
 echo "$cinco         [ Show about ]"
 echo
@@ -7403,7 +7405,7 @@ echo "         gui-shell : Graficos con entorno de comandos"
 echo "       txt OR -txt : Salida a linea de texto"
 echo "       cli OR -cli : Salida a menu de texto"
 echo "       gui OR -gui : Salida a ventana grafica"
-echo "       log OR -log : Salida a archivo log en /var/log/fwiptables"
+echo "       log OR -log : Salida a archivo log"
 #### echo
 #### echo
 #### echo "               [ Opciones secundarias ] $cinco"
@@ -7540,7 +7542,7 @@ echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en
 echo
 echo "$cinco         [ Mostrar log ]"
 echo
-echo "   fw-sendedlog : Muestra $file_output_sendedlog , volcados con -log"
+echo "   fw-sendedlog : Muestra $file_output_filelog , volcados con -log"
 echo "     fw-autolog : Muestra $file_output_autolog , cabeceras"
 echo "        log-ssh : Busca los logs de sshd en /var/log"
 echo "     log-search : Busca los logs dando un patron para /var/log"
