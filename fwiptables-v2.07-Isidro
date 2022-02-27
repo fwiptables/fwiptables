@@ -585,7 +585,7 @@ esac ; fi
 #### english: remove the -gui y go to default output
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then
 case "$second_option" in 
-"word-ole") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"word-ole") $message_without_gui ; $fwiptables $second_option $third_option ; exit ;;
 esac ; fi
 ####
 ####
