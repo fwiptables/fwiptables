@@ -6328,8 +6328,8 @@ language_english="/etc/default/fwiptables-english"
 language_spanish="/etc/default/fwiptables-spanish"
 language_number="0"
 until [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; do echo
-echo "$tab $tab $tab ##### Choose 1 for english or 2 for spanish"
-read -p "$tab $tab $tab ##### choose nomber: # 1 or 2 #  " language_number
+echo "$tab $tab $tab ##### Play in your language: Choose 1 for english or 2 for spanish"
+read -p "$tab $tab $tab ##### Choose one number: # 1 or 2 #  " language_number
 if [ ! -n "$language_number" ]; then language_number="3"; fi
 echo; done
 #### Dicctionary english if download
