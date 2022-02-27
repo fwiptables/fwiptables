@@ -1433,10 +1433,9 @@ echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-change
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
-echo "$tab" "$tab"  "                        hosts.allow hosts.deny                                "
 echo "$tab" "$tab"  "    show-log          | log-search log-ssh fw-sendedlog fw-autolog            "
-echo "$tab" "$tab"  "                        show-default modify-default                           "
+echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
+echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
@@ -1517,13 +1516,13 @@ if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Show options ] $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
-echo "$tab" "$tab"  "                        hosts.allow hosts.deny                                "
 echo "$tab" "$tab"  "    show-log          | log-search log-ssh fw-sendedlog fw-autolog            "
-echo "$tab" "$tab"  "                        show-default modify-default                           "
+echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
+echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
+echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
@@ -1601,9 +1600,9 @@ $fwiptables tool-dev
 echo
 $fwiptables show-hardware
 echo
-$fwiptables show-etc
-echo
 $fwiptables show-log
+echo
+$fwiptables show-etc
 echo
 $fwiptables show-about
 echo
@@ -2274,10 +2273,10 @@ echo "      hosts.deny : Show /etc/hosts.deny, hosts drops in some own server"
 echo "                 : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores"
 echo "     resolv.conf : Show /etc/resolv.conf, it are the dns configured"
 echo "                 : Muestra /etc/resolv.conf, este es el dns configurado"
-echo "    show-default : Show /etc/default/fwiptables, show variables for fwiptables"
-echo "                 : Muestra /etc/default/fwiptables, muestra variables para fwiptables"
-echo "  modify-default : Modify /etc/default/fwiptables, modify variables for fwiptables"
-echo "                 : Modifica /etc/default/fwiptables, modifica variables para fwiptables"
+echo "    show-default : Show variables for default"
+echo "                 : Muestra variables por defecto"
+echo "  modify-default : Change variables for default"
+echo "                 : Cambia variables por defecto"
 echo $footer_lineal
 exit; fi
 ####
@@ -2330,10 +2329,6 @@ echo "   fw-sendedlog : Show over launches with -log "
 echo "                : Muestra volcados con -log"
 echo "     fw-autolog : Show the headers from autolog"
 echo "                : Muestra las cabeceras autolog"
-echo "   show-default : Show variables for default"
-echo "                : Muestra variables por defecto"
-echo " modify-default : Change variables for default"
-echo "                : Cambia variables por defecto"
 echo $footer_lineal
 exit; fi
 ####
@@ -7248,15 +7243,15 @@ echo "        services : Show /etc/services, ports names"
 echo "     hosts.allow : Show /etc/hosts.allow, hosts allowed in some own server"
 echo "      hosts.deny : Show /etc/hosts.deny, hosts drops in some own server"
 echo "     resolv.conf : Show /etc/resolv.conf, it are the dns configured"
-echo "    show-default : Show /etc/default/fwiptables, show variables for fwiptables"
-echo "  modify-default : Modify /etc/default/fwiptables, modify variables for fwiptables"
+echo "    show-default : Show show variables for fwiptables"
+echo "  modify-default : Modify variables for fwiptables"
 echo
 echo "$cinco         [ Show log ]"
 echo
-echo "   fw-sendedlog : Show $file_output_sendedlog , over -log"
-echo "     fw-autolog : Show $file_output_autolog , headers"
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
+echo "   fw-sendedlog : Show $file_output_sendedlog , over -log"
+echo "     fw-autolog : Show $file_output_autolog , headers"
 echo
 echo "$cinco         [ Show about ]"
 echo
