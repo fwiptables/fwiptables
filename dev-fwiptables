@@ -6443,34 +6443,34 @@ echo "$text_8" "$palabra_aleatoria"
 ####
 ####
 #### :rutina-final-word-ole:
-############################## english: log-fwiptables: Read log /var/log/fwiptables  ##############################
-############################## spanish: log-fwiptables: Lee log  /var/log/fwiptables  ##############################
-#### :rutina-inicial-log-fwiptables:
+############################## english: log-fwiptables: Read log /var/log/fwiptables-sendedlog  ##############################
+############################## spanish: log-fwiptables: Lee log  /var/log/fwiptables-sendedlog  ##############################
+#### :rutina-inicial-fw-sendedlog:
 ####
 ####
- if [ "$first_option" = "log-fwiptables" ] ; then  $give_cover
- echo "$ralla [ $first_option ] [ show /var/log/fwiptables ]"
- cat /var/log/fwiptables
- echo "$ralla [ this file is /var/log/fwiptables ]"
- echo $footer_lineal
+ if [ "$first_option" = "fw-sendedlog" ] ; then  $give_cover
+ echo "$ralla [ $first_option ] [ show $file_output_sendedlog ]"
+ cat  "$file_output_sendedlog"
+ echo "$ralla [ this file is $file_output_sendedlog ]"
+ echo "$footer_lineal"
  exit; fi
 ####
 ####
-#### :rutina-final-log-fwiptables:
-############################## english: log-last: Read log /var/log/fwiptables last 50 lines     ##############################
-############################## spanish: log-last: Lee log  /var/log/fwiptables ultimas 50 lineas ##############################
-#### :rutina-inicial-log-last:
+#### :rutina-final-fw-sendedlog:
+############################## english: fw-autolog: Read log /var/log/fwiptables-autolog   ##############################
+############################## spanish: fw-autolog: Lee log  /var/log/fwiptables-autolog   ##############################
+#### :rutina-inicial-fw-autolog:
 ####
 ####
- if [ "$first_option" = "log-last" ] ; then  $give_cover
- echo "$ralla [ $first_option ] [ show /var/log/fwiptables ]"
- cat /var/log/fwiptables | tail -50
- echo "$ralla [ last end of file from /var/log/fwiptables ]"
- echo $footer_lineal
+ if [ "$first_option" = "fw-autolog" ] ; then  $give_cover
+ echo "$ralla [ $first_option ] [ show /var/log/fwiptables-autolog ]"
+ cat  "$file_output_autolog"
+ echo "$ralla [ last end of file from /var/log/fwiptables-autolog ]"
+ echo "$footer_lineal"
  exit; fi
 ####
 ####
-#### :rutina-final-log-last:
+#### :rutina-final-fw-autolog:
 ############################       english: log-ssh: log from ssh server
 ############################       spanish: log-ssh: log desde el servidor de ssh
 #### :rutina-inicial-log-ssh:
