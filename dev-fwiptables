@@ -3701,60 +3701,62 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   131  "sudo-adduser" \
   132  "sudo-deluser" \
   133  "sudo-list" \
-  0140 "$cinco [ Tool install ] $cinco" \
-  141  "install" \
-  142  "howto-upgrade" \
-  143  "upgrade" \
-  0150 "$cinco [ Tool blacklist ] $cinco" \
-  151  "blacklist-list" \
-  152  "blacklist-list info" \
-  153  "blacklist-on" \
-  154  "blacklist-off" \
-  0160 "$cinco [ Tool dev ] $cinco" \
-  161  "new-versions" \
-  162  "dev-version" \
-  163  "dev-changes" \
-  0170 "$cinco [ Tool system program ] $cinco" \
-  171  "ram-free" \
-  172  "ram-speed" \
-  173  "disk-speed" \
-  174  "glx-speed" \
-  175  "radio" \
-  0180 "$cinco [ Show hardware system ] $cinco" \
-  181  "lpinfo" \
-  182  "lsblk" \
-  183  "lsusb" \
-  184  "lscpu" \
-  185  "lspci" \
-  186  "lsgpu" \
-  187  "lshw" \
-  0190 "$cinco [ Show etc configurations ] $cinco" \
-  191  "hosts" \
-  192  "protocols" \
-  193  "services" \
-  194  "hosts.allow" \
-  195  "hosts.deny" \
-  196  "show-default" \
-  197  "modify-default" \
-  0200 "$cinco [ Show log registry ] $cinco" \
-  201  "log-ssh" \
-  202  "log-search" \
-  203  "log-fwiptables" \
-  204  "log-last" \
-  0210 "$cinco [ Show about ] $cinco" \
-  211  "about" \
-  212  "depends" \
-  213  "examples" \
-  214  "config-eng" \
-  215  "config-spa" \
-  0220 "$cinco [ Show help global options ] $cinco" \
-  221  "mini-options" \
-  222  "full-options" \
-  223  "help" \
-  224  "ayuda" \
-  225  "long-help" \
-  226  "notes" \
-  227  "license" \
+  0140 "$cinco [ Tool game option ] $cinco" \
+  141  "word-ole" \
+  0150 "$cinco [ Tool install ] $cinco" \
+  151  "install" \
+  152  "howto-upgrade" \
+  153  "upgrade" \
+  0160 "$cinco [ Tool blacklist ] $cinco" \
+  161  "blacklist-list" \
+  162  "blacklist-list info" \
+  163  "blacklist-on" \
+  164  "blacklist-off" \
+  0170 "$cinco [ Tool dev ] $cinco" \
+  171  "new-versions" \
+  172  "dev-version" \
+  173  "dev-changes" \
+  0180 "$cinco [ Tool system program ] $cinco" \
+  181  "ram-free" \
+  182  "ram-speed" \
+  183  "disk-speed" \
+  184  "glx-speed" \
+  185  "radio" \
+  0190 "$cinco [ Show hardware system ] $cinco" \
+  191  "lpinfo" \
+  192  "lsblk" \
+  193  "lsusb" \
+  194  "lscpu" \
+  195  "lspci" \
+  196  "lsgpu" \
+  197  "lshw" \
+  0200 "$cinco [ Show etc configurations ] $cinco" \
+  201  "hosts" \
+  202  "protocols" \
+  203  "services" \
+  204  "hosts.allow" \
+  205  "hosts.deny" \
+  206  "show-default" \
+  207  "modify-default" \
+  0210 "$cinco [ Show log registry ] $cinco" \
+  211  "log-ssh" \
+  212  "log-search" \
+  213  "log-fwiptables" \
+  214  "log-last" \
+  0220 "$cinco [ Show about ] $cinco" \
+  221  "about" \
+  222  "depends" \
+  223  "examples" \
+  224  "config-eng" \
+  225  "config-spa" \
+  0230 "$cinco [ Show help global options ] $cinco" \
+  231  "mini-options" \
+  232  "full-options" \
+  233  "help" \
+  234  "ayuda" \
+  235  "long-help" \
+  236  "notes" \
+  237  "license" \
  )"  
 #### 
 #### 
@@ -3776,15 +3778,16 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  0110) clear ; $fwiptables tool-icmp ;;
  0120) clear ; $fwiptables tool-udp ;;
  0130) clear ; $fwiptables tool-sudo ;;
- 0140) clear ; $fwiptables tool-install ;;
- 0150) clear ; $fwiptables tool-blacklist ;;
- 0160) clear ; $fwiptables tool-dev ;;
- 0170) clear ; $fwiptables tool-system ;;
- 0180) clear ; $fwiptables show-hardware ;;
- 0190) clear ; $fwiptables show-etc ;;
- 0200) clear ; $fwiptables show-log ;;
- 0210) clear ; $fwiptables show-about ;;
- 0220) clear ; $fwiptables show-help ;; 
+ 0140) clear ; $fwiptables tool-game ;;
+ 0150) clear ; $fwiptables tool-install ;;
+ 0160) clear ; $fwiptables tool-blacklist ;;
+ 0170) clear ; $fwiptables tool-dev ;;
+ 0180) clear ; $fwiptables tool-system ;;
+ 0190) clear ; $fwiptables show-hardware ;;
+ 0200) clear ; $fwiptables show-etc ;;
+ 0210) clear ; $fwiptables show-log ;;
+ 0220) clear ; $fwiptables show-about ;;
+ 0230) clear ; $fwiptables show-help ;; 
  11) clear ; $fwiptables "info-system" | less ;;
  12) clear ; $fwiptables "info-net" | less ;;
  13) clear ; $fwiptables "regen"  ;;
@@ -3889,53 +3892,54 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  clear ; $fwiptables sudo-adduser $resolve ;;
  132) clear ; $fwiptables "sudo-deluser" ;;
  133) clear ; $fwiptables "sudo-list" ;;
- 141) clear ; $zero_option "install";;
- 142) clear ; $fwiptables "howto-upgrade" | less ;;
- 143) clear ; $fwiptables "upgrade" ;;
- 151) clear ; $fwiptables blacklist-list ;;
- 152) clear ; $fwiptables blacklist-list info ;;
- 153) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
+ 141) clear ; $fwiptables "word-ole" ;;
+ 151) clear ; $zero_option "install" ;;
+ 152) clear ; $fwiptables "howto-upgrade" | less ;;
+ 153) clear ; $fwiptables "upgrade" ;;
+ 161) clear ; $fwiptables blacklist-list ;;
+ 162) clear ; $fwiptables blacklist-list info ;;
+ 163) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
  clear ; $fwiptables blacklist-on $resolve ;;
- 154) clear ; $fwiptables blacklist-off ;;
- 161) clear ; $fwiptables "new-versions" | less ;;
- 162) clear ; $fwiptables "dev-version" | less ;;
- 163) clear ; $fwiptables "dev-changes" | less ;; 
- 171) clear ; $fwiptables "ram-free" ;;
- 172) clear ; $fwiptables "ram-speed" ;;
- 173) clear ; $fwiptables "disk-speed" ;;
- 174) clear ; $fwiptables "glx-speed" ;;
- 175) clear ; $fwiptables "radio" ;;
- 181) clear ; $fwiptables "lpinfo" ;; 
- 182) clear ; $fwiptables "lsblk" ;;
- 183) clear ; $fwiptables "lsusb" ;; 
- 184) clear ; $fwiptables "lscpu" ;;
- 185) clear ; $fwiptables "lspci" ;;  
- 186) clear ; $fwiptables "lsgpu" ;;
- 187) clear ; $fwiptables "lshw" | less ;;
- 191) clear ; $fwiptables "hosts" | less ;;
- 192) clear ; $fwiptables "protocols" | less ;;
- 193) clear ; $fwiptables "services" | less ;;
- 194) clear ; $fwiptables "hosts.allow" | less ;;
- 195) clear ; $fwiptables "hosts.deny" | less ;;
- 196) clear ; $fwiptables "show-default"   ;;
- 197) clear ; $fwiptables "modify-default" ;;
- 201) clear ; $fwiptables "log-ssh" | less ;;
- 202) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ 164) clear ; $fwiptables blacklist-off ;;
+ 171) clear ; $fwiptables "new-versions" | less ;;
+ 172) clear ; $fwiptables "dev-version" | less ;;
+ 173) clear ; $fwiptables "dev-changes" | less ;; 
+ 181) clear ; $fwiptables "ram-free" ;;
+ 182) clear ; $fwiptables "ram-speed" ;;
+ 183) clear ; $fwiptables "disk-speed" ;;
+ 184) clear ; $fwiptables "glx-speed" ;;
+ 185) clear ; $fwiptables "radio" ;;
+ 191) clear ; $fwiptables "lpinfo" ;; 
+ 192) clear ; $fwiptables "lsblk" ;;
+ 193) clear ; $fwiptables "lsusb" ;; 
+ 194) clear ; $fwiptables "lscpu" ;;
+ 195) clear ; $fwiptables "lspci" ;;  
+ 196) clear ; $fwiptables "lsgpu" ;;
+ 197) clear ; $fwiptables "lshw" | less ;;
+ 201) clear ; $fwiptables "hosts" | less ;;
+ 202) clear ; $fwiptables "protocols" | less ;;
+ 203) clear ; $fwiptables "services" | less ;;
+ 204) clear ; $fwiptables "hosts.allow" | less ;;
+ 205) clear ; $fwiptables "hosts.deny" | less ;;
+ 206) clear ; $fwiptables "show-default"   ;;
+ 207) clear ; $fwiptables "modify-default" ;;
+ 211) clear ; $fwiptables "log-ssh" | less ;;
+ 212) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fwiptables "log-search" "$pattern" | less ;;
- 203) clear ; $fwiptables "log-fwiptables" | less ;;
- 204) clear ; $fwiptables "log-last" | less ;;
- 211) clear ; $fwiptables "about" | less ;;
- 212) clear ; $fwiptables "depends" | less ;;
- 213) clear ; $fwiptables "examples" | less ;;
- 214) clear ; $fwiptables "config-eng" | less ;;
- 215) clear ; $fwiptables "config-spa" | less ;;
- 221) clear ; $fwiptables "mini-options" ;;
- 222) clear ; $fwiptables "full-options" | less ;;
- 223) clear ; $fwiptables "help" | less ;;
- 224) clear ; $fwiptables "ayuda" | less ;;
- 225) clear ; $fwiptables "long-help" | less ;;
- 226) clear ; $fwiptables "notes" | less ;;
- 227) clear ; $fwiptables "license" | less ;;
+ 213) clear ; $fwiptables "log-fwiptables" | less ;;
+ 214) clear ; $fwiptables "log-last" | less ;;
+ 221) clear ; $fwiptables "about" | less ;;
+ 222) clear ; $fwiptables "depends" | less ;;
+ 223) clear ; $fwiptables "examples" | less ;;
+ 224) clear ; $fwiptables "config-eng" | less ;;
+ 225) clear ; $fwiptables "config-spa" | less ;;
+ 231) clear ; $fwiptables "mini-options" ;;
+ 232) clear ; $fwiptables "full-options" | less ;;
+ 233) clear ; $fwiptables "help" | less ;;
+ 234) clear ; $fwiptables "ayuda" | less ;;
+ 235) clear ; $fwiptables "long-help" | less ;;
+ 236) clear ; $fwiptables "notes" | less ;;
+ 237) clear ; $fwiptables "license" | less ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  echo "press [enter] to continue with the $fwiptables cli-menu"
