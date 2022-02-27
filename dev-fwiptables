@@ -531,11 +531,11 @@ file_output_sendedlog="/var/log/fwiptables-sendedlog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
-#### english: Exceptions when begin with -text
-#### english: Excepciones cuando empiezan con -text
+#### english: Exceptions when begin with -txt
+#### english: Excepciones cuando empiezan con -txt
 ####
-#### english: remove the -text y go to default output
-if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then
+#### english: remove the -txt y go to default output
+if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then
 case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
 "nueva-mini-config") $fwiptables $second_option $third_option ; exit ;;
@@ -603,7 +603,7 @@ $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_sendedlog
 echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_sendedlog" ; exit ;;
 ####
-"text"|"-text") first_option="-text"
+"txt"|"-txt") first_option="-txt"
 $fwiptables $second_option $third_option &> $file_temporal_text
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
@@ -1355,7 +1355,7 @@ echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -cli -gui -log      "
+echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "  rules-list         |  list listnum list6 listnum6                           "
@@ -1401,7 +1401,7 @@ echo "$ralla [ $first_option ] [ List full options ] $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -text -cli -gui -log      "
+echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "    control-guide     | info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "    control-rules     | stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    rules-list        | list listnum list6 listnum6                           "
@@ -1460,7 +1460,7 @@ exit ; fi
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -cli -gui -log      "
+echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
 echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "  rules-list         |  list listnum list6 listnum6                           "
@@ -1655,7 +1655,6 @@ echo "$ralla [ $first_option ] [ List examples ]"
 echo "$rallica [ list examples ]"
 echo "$rallica [ Lista ejemplos ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "$tab example           | -text for default output, or -log or -gui |       "
 echo "$tab" "$tab"  "  Generate new iptables rules :#            $fwiptables wizard-mini         "
 echo "$tab" "$tab"  "  Save iptables rules in name :#            $fwiptables save name           "
 echo "$tab" "$tab"  "  Load iptables rules :#                    $fwiptables load name           "
@@ -1687,8 +1686,8 @@ echo "     control-rules :  Control the iptables firewall rules"
 echo "                   :  Controla las reglas de iptables"
 echo "        rules-list :  List the iptables firewall rules"
 echo "                   :  Lista las reglas de iptables"
-echo " control-interface :  Manage the interface with text or log or gui"
-echo "                   :  Manage el interfaz con text o log o gui"
+echo " control-interface :  Manage the interface with txt or cli or gui or log"
+echo "                   :  Manage el interfaz con txt o cli o gui or log"
 echo "      rules-launch :  Launch the iptables firewall rules"
 echo "                   :  Lanza las reglas de iptables"
 echo "      rules-custom :  Create, modify and show configurations"
@@ -1957,7 +1956,7 @@ echo "      gui-menu : Gui interface from menu"
 echo "               : Interfaz grafica desde menu"
 echo "     gui-shell : Gui with comand line interface"
 echo "               : Gui con interfaz desde linea de comandos"
-echo " text OR -text : Output to Text line"
+echo "   txt OR -txt : Output to Text line"
 echo "               : Salida a linea de texto"
 echo "   cli OR -cli : Output to text menu"
 echo "               : Salida a menu de texto"
@@ -7055,7 +7054,7 @@ echo "               gui : alias to gui-menu"
 echo "          cli-menu : Comand line interface with menus"
 echo "          gui-menu : Graphicall interface with menus"
 echo "         gui-shell : Graphicall interface with shell"
-echo "     text OR -text : Output at text line"
+echo "       txt OR -txt : Output at text line"
 echo "       cli OR -cli : Output at text menu"
 echo "       gui OR -gui : Output at graphicall window"
 echo "       log OR -log : Output in logfile /var/log/fwiptables"
@@ -7401,7 +7400,7 @@ echo "               gui : apodo de gui-menu"
 echo "          cli-menu : modo texto with menus"
 echo "          gui-menu : Graficos con menus"
 echo "         gui-shell : Graficos con entorno de comandos"
-echo "     text OR -text : Salida a linea de texto"
+echo "       txt OR -txt : Salida a linea de texto"
 echo "       cli OR -cli : Salida a menu de texto"
 echo "       gui OR -gui : Salida a ventana grafica"
 echo "       log OR -log : Salida a archivo log en /var/log/fwiptables"
