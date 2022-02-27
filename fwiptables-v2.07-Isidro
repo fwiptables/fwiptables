@@ -1435,7 +1435,7 @@ echo "$tab" "$tab"  "                                   | show-options |        
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny                                "
-echo "$tab" "$tab"  "    show-log          | log-search log-ssh log-fwiptables log-last            "
+echo "$tab" "$tab"  "    show-log          | log-search log-ssh fw-sendedlog fw-autolog            "
 echo "$tab" "$tab"  "                        show-default modify-default                           "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
@@ -1519,7 +1519,7 @@ echo "$tab" "$tab"  "                                   | show-options |        
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny                                "
-echo "$tab" "$tab"  "    show-log          | log-search log-ssh log-fwiptables log-last            "
+echo "$tab" "$tab"  "    show-log          | log-search log-ssh fw-sendedlog fw-autolog            "
 echo "$tab" "$tab"  "                        show-default modify-default                           "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
@@ -2322,9 +2322,9 @@ echo "$ralla [ $first_option ] [ show log files ]"
 echo "$rallica [ Show log ]"
 echo "$rallica [ Mostrar log ]"
 echo
-echo " log-fwiptables : Show /var/log/fwiptables history"
+echo " fw-sendedlog : Show /var/log/fwiptables history"
 echo "                : Muestra /var/log/fwiptables historia"
-echo " log-fwiptables : Show /var/log/fwiptables history last 50 lines"
+echo " fw-sendedlog : Show /var/log/fwiptables history last 50 lines"
 echo "                : Muestra /var/log/fwiptables historia ultimas 50 lineas "
 echo "        log-ssh : Search logs for ssh in /var/log"
 echo "                : Busca logs con sshd en /var/log"
@@ -3366,7 +3366,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "log-fwiptables" "log-last" "log-search" \
+--list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "fw-sendedlog" "fw-autolog" "log-search" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show log] [$fwiptables]" )
 #### 
 #### 
@@ -3375,8 +3375,8 @@ case $selection in
 "Gui Principal Menu")$fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui show-log ;;
 "log-ssh")   $fwiptables -gui log-ssh ;;
-"log-fwiptables") $fwiptables -gui log-fwiptables ;;
-"log-last") $fwiptables -gui log-last ;;
+"fw-sendedlog") $fwiptables -gui fw-sendedlog ;;
+"fw-autolog") $fwiptables -gui fw-autolog ;;
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fwiptables -gui log-search $pattern;;
@@ -3742,8 +3742,8 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0210 "$cinco [ Show log registry ] $cinco" \
   211  "log-ssh" \
   212  "log-search" \
-  213  "log-fwiptables" \
-  214  "log-last" \
+  213  "fw-sendedlog" \
+  214  "fw-autolog" \
   0220 "$cinco [ Show about ] $cinco" \
   221  "about" \
   222  "depends" \
@@ -3927,8 +3927,8 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  211) clear ; $fwiptables "log-ssh" | less ;;
  212) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fwiptables "log-search" "$pattern" | less ;;
- 213) clear ; $fwiptables "log-fwiptables" | less ;;
- 214) clear ; $fwiptables "log-last" | less ;;
+ 213) clear ; $fwiptables "fw-sendedlog" | less ;;
+ 214) clear ; $fwiptables "fw-autolog" | less ;;
  221) clear ; $fwiptables "about" | less ;;
  222) clear ; $fwiptables "depends" | less ;;
  223) clear ; $fwiptables "examples" | less ;;
@@ -6443,8 +6443,8 @@ echo "$text_8" "$palabra_aleatoria"
 ####
 ####
 #### :rutina-final-word-ole:
-############################## english: log-fwiptables: Read log /var/log/fwiptables-sendedlog  ##############################
-############################## spanish: log-fwiptables: Lee log  /var/log/fwiptables-sendedlog  ##############################
+############################## english: fw-sendedlog: Read log /var/log/fwiptables-sendedlog  ##############################
+############################## spanish: fw-sendedlog: Lee log  /var/log/fwiptables-sendedlog  ##############################
 #### :rutina-inicial-fw-sendedlog:
 ####
 ####
@@ -7249,8 +7249,8 @@ echo "  modify-default : Modify /etc/default/fwiptables, modify variables for fw
 echo
 echo "$cinco         [ Show log ]"
 echo
-echo " log-fwiptables : Show /var/log/fwiptables"
-echo "       log-last : Show /var/log/fwiptables, the last 50 lines"
+echo " fw-sendedlog : Show /var/log/fwiptables"
+echo "       fw-autolog : Show /var/log/fwiptables, the last 50 lines"
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
 echo
@@ -7542,8 +7542,8 @@ echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en
 echo
 echo "$cinco         [ Mostrar log ]"
 echo
-echo " log-fwiptables : Muestra /var/log/fwiptables"
-echo "       log-last : Muestra /var/log/fwiptables, las ultimas 50 lineas"
+echo " fw-sendedlog : Muestra /var/log/fwiptables"
+echo "       fw-autolog : Muestra /var/log/fwiptables, las ultimas 50 lineas"
 echo "        log-ssh : Busca los logs de sshd en /var/log"
 echo "     log-search : Busca los logs dando un patron para /var/log"
 echo
