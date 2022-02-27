@@ -188,5 +188,6 @@
 # 2. politica de firewall predefinidos para forward es drop. HECHO
 # 3. cambios en list-config. HECHO
 # 4. cambios en names. HECHO
-# 4. cambiar -text por -txt.
-#
+# 5. eliminacion de comentarios sobrantes en el codigo fuente. HECHO
+# 6. cambiar -text por -txt.
+# 
