@@ -188,7 +188,9 @@
 # 2. politica de firewall predefinidos para forward es drop. HECHO
 # 3. cambios en list-config. HECHO
 # 4. cambios en names. HECHO
-# 5. eliminacion de comentarios sobrantes en el codigo fuente. HECHO
-# 6. cambiar -text por -txt.
-# 7. dos archivos logs. uno registra cabecera, y el otro para -log.
-#
+# 5. eliminacion de comentarios sobrantes de el codigo fuente. HECHO
+# 6. mejorar word-ole. HECHO
+# 7. añadir word-ole a cli-menu. HECHO
+# 8. cambiar -text por -txt.
+# 9. dos archivos logs. uno registra cabecera, y el otro para -log.
+# 
