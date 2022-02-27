@@ -192,5 +192,6 @@
 # 6. mejorar word-ole. HECHO
 # 7. añadir word-ole a cli-menu. HECHO
 # 8. cambiar -text por -txt.
-# 9. dos archivos logs. uno registra cabecera, y el otro para -log.
+# 9. dos archivos logs. uno registra cabecera, y el otro para -log. HECHO
+# 10. show-default y modify-default movidos a tool-etc.
 # 

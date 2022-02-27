@@ -2322,14 +2322,18 @@ echo "$ralla [ $first_option ] [ show log files ]"
 echo "$rallica [ Show log ]"
 echo "$rallica [ Mostrar log ]"
 echo
-echo " fw-sendedlog : Show /var/log/fwiptables history"
-echo "                : Muestra /var/log/fwiptables historia"
-echo " fw-sendedlog : Show /var/log/fwiptables history last 50 lines"
-echo "                : Muestra /var/log/fwiptables historia ultimas 50 lineas "
 echo "        log-ssh : Search logs for ssh in /var/log"
 echo "                : Busca logs con sshd en /var/log"
 echo "     log-search : Search logs whith a prefix in /var/log"
 echo "                : Busca logs con patron en /var/log"
+echo "   fw-sendedlog : Show over launches with -log "
+echo "                : Muestra volcados con -log"
+echo "     fw-autolog : Show the headers from autolog"
+echo "                : Muestra las cabeceras autolog"
+echo "   show-default : Show variables for default"
+echo "                : Muestra variables por defecto"
+echo " modify-default : Change variables for default"
+echo "                : Cambia variables por defecto"
 echo $footer_lineal
 exit; fi
 ####
@@ -7249,8 +7253,8 @@ echo "  modify-default : Modify /etc/default/fwiptables, modify variables for fw
 echo
 echo "$cinco         [ Show log ]"
 echo
-echo " fw-sendedlog : Show /var/log/fwiptables"
-echo "       fw-autolog : Show /var/log/fwiptables, the last 50 lines"
+echo "   fw-sendedlog : Show $file_output_sendedlog , over -log"
+echo "     fw-autolog : Show $file_output_autolog , headers"
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
 echo
@@ -7542,8 +7546,8 @@ echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en
 echo
 echo "$cinco         [ Mostrar log ]"
 echo
-echo " fw-sendedlog : Muestra /var/log/fwiptables"
-echo "       fw-autolog : Muestra /var/log/fwiptables, las ultimas 50 lineas"
+echo "   fw-sendedlog : Muestra $file_output_sendedlog , volcados con -log"
+echo "     fw-autolog : Muestra $file_output_autolog , cabeceras"
 echo "        log-ssh : Busca los logs de sshd en /var/log"
 echo "     log-search : Busca los logs dando un patron para /var/log"
 echo
