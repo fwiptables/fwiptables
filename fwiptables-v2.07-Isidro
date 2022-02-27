@@ -5506,12 +5506,16 @@ exit; fi
  if [ "$first_option" = "names" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ List names from firewall saved ]"
  echo $header_lineal
- echo "$cinco $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
- echo "$cinco $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+ echo "$rallica $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
+ echo "$rallica $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+ echo "$rallica"
+ echo "$rallica $tab [ Firewall saved ]"
+ echo "$rallica"
  ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | \
  sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
  sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
- echo "$rallica [OK FIREWALL NAMES]"
+ echo "$rallica"
+ echo "$rallica $tab [OK FIREWALL NAMES]"
  echo $footer_lineal
  exit; fi
 ####
