@@ -190,4 +190,5 @@
 # 4. cambios en names. HECHO
 # 5. eliminacion de comentarios sobrantes en el codigo fuente. HECHO
 # 6. cambiar -text por -txt.
-# 
+# 7. dos archivos logs. uno registra cabecera, y el otro para -log.
+#
