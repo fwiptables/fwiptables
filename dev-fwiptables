@@ -527,7 +527,8 @@ file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_op
 file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
 file_temporal_guifinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
 file_output_log="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
-file_output_logfinal="/var/log/fwiptables"
+file_output_sendedlog="/var/log/fwiptables-sendedlog"
+file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
 #### english: Exceptions when begin with -text
@@ -599,8 +600,8 @@ case "$first_option" in
 ####
 "log"|"-log") first_option="-log" 
 $fwiptables $second_option $third_option &> $file_output_log
-cat $file_output_log | grep -v Warning: &>> $file_output_logfinal
-echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_logfinal" ; exit ;;
+cat $file_output_log | grep -v Warning: &>> $file_output_sendedlog
+echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_sendedlog" ; exit ;;
 ####
 "text"|"-text") first_option="-text"
 $fwiptables $second_option $third_option &> $file_temporal_text
@@ -648,7 +649,7 @@ if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 if [ "$first_option" != "header" ] ; then
 if [ "$allow_autolog" = "no" ]   ; then echo $nada
-else echo $head_autolog >> /var/log/fwiptables ; fi; fi
+else echo $head_autolog >> "$file_output_autolog" ; fi; fi
 ####
 ####
 #### :rutina-final-autolog:
