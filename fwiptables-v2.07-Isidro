@@ -1353,7 +1353,6 @@ echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
-#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -cli -gui -log      "
 echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
@@ -1387,7 +1386,6 @@ echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save 
 echo "$tab" "$tab"  "  List names from all firewall saved  |   $fwiptables names                  "
 echo "$tab" "$tab"  "  Show control-guide with output gui  |   $fwiptables -gui control-guide     "
 echo "$tab" "$tab"  "  Show more options                   |   $fwiptables options                "
-#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -1450,7 +1448,6 @@ echo "$tab" "$tab"  "  Save iptables rules with one name    |   $fwiptables save
 echo "$tab" "$tab"  "  List names from all firewall saved   |   $fwiptables names                  "
 echo "$tab" "$tab"  "  Show control-guide with output gui   |   $fwiptables -gui control-guide     "
 echo "$tab" "$tab"  "  Show less options                    |   $fwiptables mini-options           "
-#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -1462,7 +1459,6 @@ exit ; fi
 ####
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
-#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
 echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -text -cli -gui -log      "
 echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
@@ -1480,7 +1476,6 @@ echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config  
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -1492,7 +1487,6 @@ exit ; fi
 ####
 if [ "$first_option" = "tool-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Tool options ] $ralla"
-#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
 echo "$tab" "$tab"  "                        ss lsof tcpdump netstat netstat-nat                   "
@@ -1509,7 +1503,6 @@ echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blackli
 echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-changes code             "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -1521,7 +1514,6 @@ exit ; fi
 ####
 if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Show options ] $ralla"
-#### echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
@@ -1534,7 +1526,6 @@ echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options 
 echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -2639,12 +2630,10 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 #### 
 #### 
 *)
-#### fecha_temporal=$(date | sed s/\ //g) ;
 $fwiptables $second_option $third_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
 zenity --text-info $graphic_dimension --title "[$fwiptables gui] [$second_option]" \
 --filename=$file_temporal_guifinal --auto-scroll
-#### rm $file_temporal_guifinal
 ;;
 #### 
 #### 
@@ -2700,12 +2689,10 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 #### 
 *)
-#### fecha_temporal=$(date | sed s/\ //g)
 $fwiptables $second_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
 zenity --text-info $graphic_dimension --title "[$fwiptables gui] [$second_option]" \
 --filename=$file_temporal_guifinal --auto-scroll
-#### rm /tmp/fwiptables-$fecha_temporal
 ;;
 #### 
 #### 
@@ -2763,10 +2750,6 @@ case "$selection" in
 "19 Show about")$fwiptables gui-menu-show-about;;
 "20 Show help")$fwiptables gui-menu-show-help;;
 esac
-####
-####
-#### zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-#### if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
