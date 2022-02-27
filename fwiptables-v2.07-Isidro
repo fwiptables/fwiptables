@@ -527,7 +527,7 @@ file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_op
 file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
 file_temporal_guifinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
 file_output_log="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
-file_output_filelog="/var/log/fwiptables-sendedlog"
+file_output_filelog="/var/log/fwiptables-filelog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
