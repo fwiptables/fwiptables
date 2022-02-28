@@ -32,14 +32,15 @@ command_xhost="$(command -v xhost)" &> /dev/null
 ####
 ####
 if [ -n "$($command_id -u)" ] && [ "$($command_id -u)" = "0" ]; then
-sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
-sudo -u "$(logname)" command_xhost +SI:localuser:root &> /dev/null
-sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
-fi
+sudo -u "$(logname)" command_xhost +SI:localuser:root &> /dev/null; fi
+####
+#### deprecated
+## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
 ################################################   english: begin the script
