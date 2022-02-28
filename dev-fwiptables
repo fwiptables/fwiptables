@@ -3915,7 +3915,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  clear ; $fwiptables sudo-adduser $resolve ;;
  132) clear ; $fwiptables "sudo-deluser" ;;
  133) clear ; $fwiptables "sudo-list" ;;
- 141) clear ; $fwiptables "word-ole" ;;
+ 141) clear ; $fwiptables cli word-ole ;;
  151) clear ; $zero_option "install" ;;
  152) clear ; $fwiptables "howto-upgrade" | less ;;
  153) clear ; $fwiptables "upgrade" ;;
