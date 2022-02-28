@@ -6337,8 +6337,36 @@ $fwiptables stop
 if [ "$first_option" = "word-ole" ]; then  $nada
 ####
 ####
+#### variables shared
+####
+####
+language_english="/etc/default/fwiptables-english"
+language_spanish="/etc/default/fwiptables-spanish"
+language_number="0"
+caracteres="" ; cinco_caracteres="" ; intento="0" ; intento_maximo="12"
+seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
+texten_1=" ##### [ OK ] Awasome, the random word is : "
+texten_2=" ##### Clon of wordle: discover a radom word of five letters "
+texten_3=" Letters in its site  " 
+texten_4=" Letters in the word  "
+texten_5=" ##### Type a word with five letters_  #  "
+texten_5=" ##### Type actual Word         :  "
+texten_6=" ##### Actual tried numbers     :  "
+texten_7=" ##### The last answered        :  "
+texten_8=" ##### The correct answerd is   :  "
+textes_1=" ##### [ OK ] Lo has conseguido, la palabra aleatoria es "
+textes_2=" ##### Clon de wordle: Acierta con una palabra aleatoria de cinco caracteres. "
+textes_3=" Letras en su sitio   " 
+textes_4=" Letras en la palabra "
+textes_5=" ##### Escribe una palabra de cinco caracteres_  #  "
+textes_5=" ##### Introduce palabra actual        :  "
+textes_6=" ##### Numero de intentos actuales     :  "
+textes_7=" ##### La ultima respuesta             :  "
+textes_8=" ##### La respuesta correcta           :  "
+####
+####
 #############################################
-#############################################
+############################################# word-ole in txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ]; then $nada
@@ -6348,9 +6376,6 @@ echo "$ralla [ $first_option ] [ play game clone word-ole ]"
 echo $header_lineal
 ##### INICIO ####
 #### Choose language english or spanish
-language_english="/etc/default/fwiptables-english"
-language_spanish="/etc/default/fwiptables-spanish"
-language_number="0"
 until [ "$language_number" == "1" ] || [ "$language_number" == "2" ] || [ "$language_number" == "q" ] ; do echo
 echo "$tab $tab ##### Play in your language: Choose 1 for english or 2 for spanish or q for quit"
 read -p "$tab $tab ##### Choose one number: # 1 or 2 or q #  " language_number
@@ -6373,30 +6398,27 @@ grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃ�
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
-text_1=" ##### [ OK ] Awasome, the random word is : "
-text_2=" ##### Clon of wordle: discover a radom word of five letters "
-text_3=" Letters in its site  " 
-text_4=" Letters in the word  "
-text_5=" ##### Type a word with five letters_  #  "
-text_5=" ##### Type actual Word         :  "
-text_6=" ##### Actual tried numbers     :  "
-text_7=" ##### The last answered        :  "
-text_8=" ##### The correct answerd is   :  "
+text_1="$texten_1"
+text_2="$texten_2"
+text_3="$texten_3"
+text_4="$texten_4"
+text_5="$texten_5"
+text_6="$texten_6"
+text_7="$texten_7"
+text_8="$texten_8"
 fi
 ##### language of interface spanish
 if [ "$language_number" -eq "2" ]; then
-text_1=" ##### [ OK ] Lo has conseguido, la palabra aleatoria es "
-text_2=" ##### Clon de wordle: Acierta con una palabra aleatoria de cinco caracteres. "
-text_3=" Letras en su sitio   " 
-text_4=" Letras en la palabra "
-text_5=" ##### Escribe una palabra de cinco caracteres_  #  "
-text_5=" ##### Introduce palabra actual        :  "
-text_6=" ##### Numero de intentos actuales     :  "
-text_7=" ##### La ultima respuesta             :  "
-text_8=" ##### La respuesta correcta           :  "
+text_1="$textes_1"
+text_2="$textes_2"
+text_3="$textes_3"
+text_4="$textes_4"
+text_5="$textes_5"
+text_6="$textes_6"
+text_7="$textes_7"
+text_8="$textes_8"
 fi
 ##### word of game
-caracteres="" ; cinco_caracteres="" ; intento="0" ; intento_maximo="12"
 numero_palabra="$(wc -l $dictionary | cut -d " "  -f 1)"
 numero_aleatorio="$(($RANDOM%$numero_palabra))"
 palabra_aleatoria="$(tail -$numero_aleatorio $dictionary | head -1)"
@@ -6405,7 +6427,6 @@ aleatoria_2="$(echo $palabra_aleatoria | cut -c 2)"
 aleatoria_3="$(echo $palabra_aleatoria | cut -c 3)"
 aleatoria_4="$(echo $palabra_aleatoria | cut -c 4)"
 aleatoria_5="$(echo $palabra_aleatoria | cut -c 5)"
-seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do intento="$(($intento+1))"
 if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then  echo "$text_1 $palabra_aleatoria" ; exit; fi
@@ -6459,21 +6480,17 @@ echo
 echo "$text_7" "$cinco_caracteres"
 echo "$text_8" "$palabra_aleatoria"
 ####
- echo $footer_lineal
- exit; fi
+echo $footer_lineal
+exit; fi
 ####
 #############################################
-#############################################
+############################################# word-ole in cli
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
 ####
 ####
-cinco="#####"
 ##### INICIO ####
 #### Choose language english or spanish
-language_english="/etc/default/fwiptables-english"
-language_spanish="/etc/default/fwiptables-spanish"
-language_number="0"
 ####
 ####
 menuprincipal="$(dialog --stdout --clear --title "  Play game word ole" --menu "Select:" 0 0 0\
@@ -6505,27 +6522,25 @@ grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃ�
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
-text_1=" #### [ OK ] Awasome, the random word is : "
-text_2=" #### Clon of wordle: discover a radom word of five letters "
-text_3=" Letters in its site  "
-text_4=" Letters in the word  "
-text_5=" #### Type a word with five letters_  #  "
-text_5=" #### Type actual Word         :  "
-text_6=" #### Actual tried numbers     :  "
-text_7=" #### The last answered        :  "
-text_8=" #### The correct answerd is   :  "
+text_1="$texten_1"
+text_2="$texten_2"
+text_3="$texten_3"
+text_4="$texten_4"
+text_5="$texten_5"
+text_6="$texten_6"
+text_7="$texten_7"
+text_8="$texten_8"
 fi
 ##### language of interface spanish
 if [ "$language_number" -eq "2" ]; then
-text_1=" #### [ OK ] Lo has conseguido, la palabra aleatoria es "
-text_2=" #### Clon de wordle: Acierta con una palabra aleatoria de cinco caracteres. "
-text_3=" Letras en su sitio   " 
-text_4=" Letras en la palabra "
-text_5=" #### Escribe una palabra de cinco caracteres_  #  "
-text_5=" #### Introduce palabra actual        :  "
-text_6=" #### Numero de intentos actuales     :  "
-text_7=" #### La ultima respuesta             :  "
-text_8=" #### La respuesta correcta           :  "
+text_1="$textes_1"
+text_2="$textes_2"
+text_3="$textes_3"
+text_4="$textes_4"
+text_5="$textes_5"
+text_6="$textes_6"
+text_7="$textes_7"
+text_8="$textes_8"
 fi
 ##### word of game
 caracteres="" ; cinco_caracteres="" ; intento="0" ; intento_maximo="12"
