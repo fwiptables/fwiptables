@@ -195,4 +195,5 @@
 # 09. dos archivos logs. uno registra cabecera, y el otro para -log. HECHO
 # 10. show-default y modify-default movidos a tool-etc. HECHO
 # 11. unicamente autorizacion server interpretado en xhost +SI:localuser:root resto deprecados. HECHO
+# 12. cli para word-ole. HECHO
 #
