@@ -6636,7 +6636,7 @@ if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
 ####
 ####
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
-selection=$(zenity --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
+selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
 --title="Play word ole game")
 case $selection in
 "01 english") language_number="1" ;;
@@ -6700,15 +6700,15 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do intento="$(($intento+1))"
 ####
 if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear 
-acierto="$(zenity --info --title="gui word-ole" --text="$text_1 $palabra_aleatoria")"
+acierto="$(zenity $graphic_dimension --info --title="gui word-ole" --text="$text_1 $palabra_aleatoria")"
 clear; exit; fi
 ####
 if [ "$intento" = "$intento_maximo" ]; then clear
-fallo="$(zenity --info --title="gui word-ole" --text="$text_8 $palabra_aleatoria")"
+fallo="$(zenity $graphic_dimension --info --title="gui word-ole" --text="$text_8 $palabra_aleatoria")"
 clear ; exit ; fi
 ####
-bucle="$(zenity --entry --title "Play game word ole" --text " $text_6 $intento /// $intento_maximo \n \
-$text_2 \n # $text_3 # \n \
+bucle="$(zenity $graphic_dimension --entry --title "Play game word ole" \
+--text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
 ####
 caracteres="$bucle"
