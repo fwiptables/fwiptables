@@ -184,14 +184,14 @@
 #
 # changes fwiptables 2.07 en desarrollo
 #
-# 1. añadir -cli opcion. HECHO
-# 2. politica de firewall predefinidos para forward es drop. HECHO
-# 3. cambios en list-config. HECHO
-# 4. cambios en names. HECHO
-# 5. eliminacion de comentarios sobrantes de el codigo fuente. HECHO
-# 6. mejorar word-ole. HECHO
-# 7. añadir word-ole a cli-menu. HECHO
-# 8. cambiar -text por -txt. HECHO
-# 9. dos archivos logs. uno registra cabecera, y el otro para -log. HECHO
+# 01. añadir -cli opcion. HECHO
+# 02. politica de firewall predefinidos para forward es denegar. HECHO
+# 03. cambios en list-config. HECHO
+# 04. cambios en names. HECHO
+# 05. eliminacion de comentarios sobrantes de el codigo fuente. HECHO
+# 06. mejorar word-ole. HECHO
+# 07. añadir word-ole a cli-menu. HECHO
+# 08. cambiar -text por -txt. HECHO
+# 09. dos archivos logs. uno registra cabecera, y el otro para -log. HECHO
 # 10. show-default y modify-default movidos a tool-etc. HECHO
 # 
