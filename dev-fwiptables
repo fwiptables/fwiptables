@@ -6884,14 +6884,14 @@ exit; fi
  $command_ip -6 address | grep -i inet | grep -iv "::1/128"
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; fi
+ if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
  public_ip4="$(timeout 7s $command_curl -s -4 http://ifconfig.co/ip -w "\n")"
- echo "$tab $public_ip4"
+ echo "$tab $public_ip4"; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv6 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; fi
+ if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
  public_ip6="$(timeout 7s $command_curl -s -6 http://ifconfig.co/ip -w "\n")"
- echo "$tab $public_ip6"
+ echo "$tab $public_ip6"; fi
  echo $ralla
  echo "$tab [ proxy ip ] [ address proxy ]"
  echo "$tab Proxy http:    $http_proxy"
