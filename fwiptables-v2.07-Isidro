@@ -31,7 +31,7 @@ command_id="$(command -v id)" &> /dev/null
 command_xhost="$(command -v xhost)" &> /dev/null
 ####
 ####
-if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ]; then echo -n
+if [ "$(logname)" == "$NULL" ] || [ "$(logname)" = "root" ]; then echo -n
 else sudo -u "$(logname)" command_xhost +SI:localuser:root &> /dev/null; fi
 ####
 ####
