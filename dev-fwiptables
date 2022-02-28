@@ -2751,26 +2751,27 @@ selection=$(zenity $graphic_dimension  \
 #### 
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"01 Control guide")$fwiptables gui-menu-control-guide;;
-"02 Control rules")$fwiptables gui-menu-control-rules;;
-"03 List rules")$fwiptables gui-menu-rules-list;;
-"04 Launch rules")$fwiptables gui-menu-rules-launch;;
-"05 Tool rules")$fwiptables gui-menu-rules-custom;;
-"06 Tool sockets")$fwiptables gui-menu-tool-sockets;;
+"01 Control guide")$fwiptables gui-menu-control-guide ;;
+"02 Control rules")$fwiptables gui-menu-control-rules ;;
+"03 List rules")$fwiptables gui-menu-rules-list ;;
+"04 Launch rules")$fwiptables gui-menu-rules-launch ;;
+"05 Tool rules")$fwiptables gui-menu-rules-custom ;;
+"06 Tool sockets")$fwiptables gui-menu-tool-sockets ;;
 "07 Tool forward")$fwiptables gui-menu-tool-forward ;;
-"08 Tool tcp")$fwiptables gui-menu-tool-tcp;;
-"09 Tool udp")$fwiptables gui-menu-tool-udp;;
-"10 Tool icmp")$fwiptables gui-menu-tool-icmp;;
-"11 Tool sudo")$fwiptables gui-menu-tool-sudo;;
-"12 Tool system")$fwiptables gui-menu-tool-system;;
-"13 Tool install")$fwiptables gui-menu-tool-install;;
-"14 Tool blacklist")$fwiptables gui-menu-tool-blacklist;;
-"15 Tool dev")$fwiptables gui-menu-tool-dev;;
-"16 Show hardware")$fwiptables gui-menu-show-hardware;;
-"17 Show etc")$fwiptables gui-menu-show-etc;;
-"18 Show log")$fwiptables gui-menu-show-log;;
-"19 Show about")$fwiptables gui-menu-show-about;;
-"20 Show help")$fwiptables gui-menu-show-help;;
+"08 Tool tcp")$fwiptables gui-menu-tool-tcp ;;
+"09 Tool udp")$fwiptables gui-menu-tool-udp ;;
+"10 Tool icmp")$fwiptables gui-menu-tool-icmp ;;
+"11 Tool sudo")$fwiptables gui-menu-tool-sudo ;;
+"12 Tool system")$fwiptables gui-menu-tool-system ;;
+"13 Tool install")$fwiptables gui-menu-tool-install ;;
+"14 Tool blacklist")$fwiptables gui-menu-tool-blacklist ;;
+"15 Tool dev")$fwiptables gui-menu-tool-dev ;;
+"16 Show hardware")$fwiptables gui-menu-show-hardware ;;
+"17 Show etc")$fwiptables gui-menu-show-etc ;;
+"18 Show log")$fwiptables gui-menu-show-log ;;
+"19 Show about")$fwiptables gui-menu-show-about ;;
+"20 Show help")$fwiptables gui-menu-show-help ;;
+#### "21 tool game") $fwiptables gui-menu-show-help ;;
 esac
 ####
 ####

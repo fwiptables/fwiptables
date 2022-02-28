@@ -196,4 +196,7 @@
 # 10. show-default y modify-default movidos a tool-etc. HECHO
 # 11. unicamente autorizacion server interpretado en xhost +SI:localuser:root resto deprecados. HECHO
 # 12. cli para word-ole. HECHO
+# 13. gui para word-ole. HECHO
+# 14. word-ole en cli-menu.
+# 15. word-ole en gui-menu.
 #
