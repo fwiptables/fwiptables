@@ -533,11 +533,19 @@ file_output_filelog="/var/log/fwiptables-filelog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
+#### english: apodo -text a -txt
+#### english: alias -text to -txt
+####
+####
+if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then $nada
+first_option="-txt"; fi
+####
+####
 #### english: Exceptions when begin with -txt
 #### english: Excepciones cuando empiezan con -txt
 ####
-#### english: remove the -txt y go to default output
-if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then
+####
+if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
 case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
 "nueva-mini-config") $fwiptables $second_option $third_option ; exit ;;
@@ -561,7 +569,10 @@ ipforward-*) $fwiptables $second_option $third_option ; exit ;;
 esac ; fi
 ####
 ####
-#### english: remove the -cli y go to default output
+#### english: remove the -cli and go to default output
+#### spanish: borra el -cli va a salida por defecto
+####
+####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then
 case "$second_option" in 
 wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
@@ -586,13 +597,15 @@ esac ; fi
 ####
 ####
 #### english: remove the -gui y go to default output
+#### spanish: borra el -gui va a salida por defecto
+####
+####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then
 case "$second_option" in 
 "word-ole") $message_without_gui ; $fwiptables $second_option $third_option ; exit ;;
 esac ; fi
 ####
 ####
-#### 
 case "$first_option" in 
 "$NULL") first_option="mini-options" ;;
 ####
@@ -624,7 +637,7 @@ esac
 ##############################     spanish: cfg: lista alguna config, apodo a list-config
 ####
 ####
-if [ "$first_option" = "word-ole" ] && [ "$second_option" = "$NULL" ]; then $fwiptables txt word-ole ; exit; fi
+if [ "$first_option" = "word-ole" ] && [ "$second_option" = "$NULL" ]; then $fwiptables -txt word-ole ; exit; fi
 ####
 ####
 ##############################     english: cfg: list: some config, alias to list-config
