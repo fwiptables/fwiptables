@@ -182,7 +182,7 @@
 # 8. show-options añadido. HECHO
 # 9. algunos cambios de apariencia. HECHO
 #
-# changes fwiptables 2.07 en desarrollo
+# changes fwiptables 2.07
 #
 # 01. añadir -cli opcion. HECHO
 # 02. politica de firewall predefinidos para forward es denegar. HECHO
@@ -200,4 +200,8 @@
 # 14. word-ole en cli-menu. HECHO
 # 15. word-ole en gui-menu. HECHO
 # 16. gui-menu ahora menos recursivo. HECHO
+#
+# changes fwiptables 2.08 en desarrollo
+#
+# 1.
 #
