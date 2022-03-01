@@ -547,7 +547,6 @@ first_option="-txt"; fi
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
-case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
 "nueva-mini-config") $fwiptables $second_option $third_option ; exit ;;
 "nueva-completa-config") $fwiptables $second_option $third_option ; exit ;;
@@ -613,11 +612,6 @@ esac ; fi
 ####
 case "$first_option" in 
 "$NULL") first_option="mini-options" ;;
-####
-"gui"|"-gui") first_option="-gui" ;;
-####
-"cli"|"-cli") first_option="-cli" ;;
-####
 "log"|"-log") first_option="-log" 
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
