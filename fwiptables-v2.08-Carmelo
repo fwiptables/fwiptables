@@ -4010,7 +4010,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
 ####
  if [ "$first_option" = "version" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show version about $fwiptables ]"
- echo $header_lineal
+#### echo $header_lineal
  echo
  echo "$tab [Name program]"
  echo "$fprogram"
@@ -4039,7 +4039,8 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  echo
  echo "$tab [Version program]"
  echo "$fversion"
- echo $footer_lineal
+ echo
+#### echo $footer_lineal
  exit ; fi
 ####
 ####
