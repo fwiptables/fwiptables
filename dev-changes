@@ -197,6 +197,7 @@
 # 11. unicamente autorizacion server interpretado en xhost +SI:localuser:root resto deprecados. HECHO
 # 12. cli para word-ole. HECHO
 # 13. gui para word-ole. HECHO
-# 14. word-ole en cli-menu.
-# 15. word-ole en gui-menu.
+# 14. word-ole en cli-menu. HECHO
+# 15. word-ole en gui-menu. HECHO
+# 16. gui-menu ahora menos recursivo. HECHO
 #
