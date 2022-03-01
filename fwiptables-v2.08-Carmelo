@@ -78,7 +78,7 @@ allow_autolog=""                 ## fwiptables-default ## void or no
 allow_autosave="no"                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="9"                    ## fwiptables-default ## choose seconds: 1..,9..30
+server_waiting="7"                    ## fwiptables-default ## choose seconds: 1..,9..30
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-default ## default fast.com
@@ -152,7 +152,8 @@ head_principal="$sinco Version $fversion || Use: $fwiptables options ||  $(date)
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting="$rallica [ Graphics: ] [ Wait several seconds.. ] [ With max $server_waiting seconds ] $rallica" 
+head_waiting_cli="$rallica [ CLI ] [ Wait several seconds.. ] [ With max $server_waiting seconds ] $rallica" 
+head_waiting_gui="$rallica [ GUI ] [ Wait several seconds.. ] [ With max $server_waiting seconds ] $rallica" 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -166,8 +167,8 @@ give_autosave="$fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="echo $cinco Still Without support for CLI in this option $cinco"
-message_without_gui="echo $cinco Still Without support for GUI in this option $cinco"
+message_without_cli="echo $rallica [ CLI ] [ Without support CLI for this option ] $rallica"
+message_without_gui="echo $rallica [ GUI ] [ Without support GUI for this option ] $rallica"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -573,7 +574,7 @@ esac ; fi
 #### spanish: borra el -cli va a salida por defecto
 ####
 ####
-if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then
+if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
 case "$second_option" in 
 wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "nueva-mini-config")  $fwiptables $second_option $third_option ; exit ;;
@@ -593,6 +594,10 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;
 "word-ole") $fwiptables word-ole cli ; exit ;;
 log-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+*)
+dialog --title " Cli Output || $(date)" --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
+####
+####
 esac ; fi
 ####
 ####
@@ -2581,7 +2586,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
-echo $head_waiting
+echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
@@ -2670,7 +2675,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $nada
-echo $head_waiting
+echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 case $second_option in
 #### 
@@ -2728,7 +2733,7 @@ exit; fi
 ############################## spanish: -gui: sin mas opcion       ##############################
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting
+if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fwiptables mini-options)"
 exit; fi
@@ -2739,7 +2744,7 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting
+if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool rules" \
@@ -3517,7 +3522,7 @@ exit; fi
 #### :rutina-inicial-gui-shell:
 ####
 ####
-if [ "$first_option" = "gui-shell" ] ; then echo $head_waiting
+if [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
 ####
 ####
@@ -3643,17 +3648,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-shell:
-##############################       english: cli: show output in cli text
-##############################       spanish: cli: muestra la salida en la salida cli de texto
-#### :rutina-inicial-cli:
-####
-####
-if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then $nada
-dialog --title " Cli Output || $fwiptables || $(date)" --msgbox "$($fwiptables $second_option $third_option)" 0 0
-clear; exit ; fi
-####
-####
-#### :rutina-final-cli:
 ##############################       english: cli-menu: Manage list rules with one text menu
 ##############################       spanish: cli-menu: Maneja lista de reglas con un menu de texto
 #### :rutina-inicial-cli-menu:
@@ -4283,17 +4277,17 @@ echo
 echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
 echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
-echo "$tab [ info ] [ total addblocker hosts for those servers ] [ 10 seconds for timeout each one ]"
+echo "$tab [ info ] [ total addblocker hosts ] [ waiting until $server_waiting seconds for max timeout each one ]"
 timeout 10 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
 blacklist_lines_fademind="$(cat $file_temporal_path/hosts.fademind | wc -l)"
 echo "$tab fademind:    $blacklist_lines_fademind hosts"
-timeout 10 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
+timeout $server_waiting $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
 blacklist_lines_mvps="$(cat $file_temporal_path/hosts.mvps | wc -l)"
 echo "$tab mvps:        $blacklist_lines_mvps hosts"
-timeout 10 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
+timeout $server_waiting $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
 blacklist_lines_adaway="$(cat $file_temporal_path/hosts.adaway | wc -l)"
 echo "$tab adaway:      $blacklist_lines_adaway hosts"
-timeout 10 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
+timeout $server_waiting $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
 blacklist_lines_stevenblack="$(cat $file_temporal_path/hosts.stevenblack | wc -l)"
 echo "$tab stevenblack: $blacklist_lines_stevenblack hosts"
 echo "$ralla"; fi
@@ -5451,7 +5445,7 @@ exit; fi
  echo $header_lineal
 ####
 ####
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$ralla" "$ralla" "$ralla"
  timeout -s SIGINT -v $server_waiting tcpdump -v
  echo "$ralla" "$ralla" "$ralla"
@@ -5475,7 +5469,7 @@ exit; fi
  $command_ip -4 route ls | grep -iv default
  echo $rallica
  echo local scan: arp lan
- echo $head_waiting
+ echo $head_waiting_gui
  $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan &> /dev/null
  ;;
  esac
@@ -5864,7 +5858,7 @@ exit; fi
 ####
 ####
  $fwiptables stop
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$cinco ping -4 -c 5 -A $server_ping_ipv4"
  timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
  $fwiptables continue
@@ -5888,7 +5882,7 @@ exit; fi
 ####
 ####
  $fwiptables stop
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$cinco ping -6 -c 5 -A $server_ping_ipv6"
  timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
  $fwiptables continue
@@ -5912,10 +5906,10 @@ exit; fi
 ####
 ####
  $fwiptables stop
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$cinco traceroute -4 -T $server_traceroute_ipv4"
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
- echo $head_waiting
+ echo $head_waiting_gui
  $fwiptables continue
  echo $footer_lineal
  exit; fi
@@ -5937,7 +5931,7 @@ exit; fi
 ####
 ####
  $fwiptables stop
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$cinco traceroute -6 -T $server_traceroute_ipv6"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
  $fwiptables continue
@@ -5961,10 +5955,10 @@ exit; fi
 ####
 ####
  $fwiptables stop
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$cinco traceroute -4 -I $server_traceroute_ipv4"
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
- echo $head_waiting
+ echo $head_waiting_gui
  $fwiptables continue
  echo $footer_lineal
  exit; fi
@@ -5986,10 +5980,10 @@ exit; fi
 ####
 ####
  $fwiptables stop
- echo $head_waiting
+ echo $head_waiting_gui
  echo "$cinco traceroute -6 -I $server_traceroute_ipv6"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
- echo $head_waiting
+ echo $head_waiting_gui
  $fwiptables continue
  echo $footer_lineal
  exit; fi
