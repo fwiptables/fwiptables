@@ -2034,8 +2034,8 @@ echo "$ralla [ $first_option ] [ tool game ]"
 echo "$rallica [ Tool game ]"
 echo "$rallica [ Herramienta de juego ]"
 echo
-echo "         word-ole : Play game clon for wordle in text mode"
-echo "                  : Juega a un clon del juego wordle in text mode"
+echo "         word-ole : Play game clon for wordle"
+echo "                  : Juega a un clon del juego wordle"
 echo $footer_lineal
 exit; fi
 ####
@@ -7536,7 +7536,7 @@ echo "      alias-list : List alias $fwiptables and its autocomplete"
 echo
 echo "$cinco         [ Tool util ]"
 echo
-echo "      word-ole : clon wordle game in text mode "
+echo "      word-ole : clon wordle game"
 echo
 echo "$cinco         [ Tool system ]"
 echo
@@ -7829,7 +7829,7 @@ echo "     sudo-list : Lista autorizacion de usuarios elegidos"
 echo
 echo "$cinco         [ Herramienta de utilidad ]"
 echo
-echo "      word-ole : Permite juegar a un clon de texto de wordle"
+echo "      word-ole : Permite juegar a un clon wordle"
 echo
 echo "$cinco         [ Herramienta de sistema ]"
 echo
