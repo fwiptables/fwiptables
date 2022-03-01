@@ -2744,34 +2744,35 @@ case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool rules" \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
-"12 Tool system" "13 Tool install" "14 Tool blacklist" "15 Tool dev" "16 Show hardware" \
-"17 Show etc" "18 Show log" "19 Show about" "20 Show help" \
+"12 Tool game" "13 Tool system" "14 Tool install" "15 Tool blacklist" "16 Tool dev" \
+"17 Show hardware" "18 Show etc" "19 Show log" "20 Show about" "21 Show help" \
 --column="Option list $fwiptables" --text="Select one option" --title="Gui Menu || $fwiptables || $(date) ")
 #### 
 #### 
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"01 Control guide")$fwiptables gui-menu-control-guide ;;
-"02 Control rules")$fwiptables gui-menu-control-rules ;;
-"03 List rules")$fwiptables gui-menu-rules-list ;;
-"04 Launch rules")$fwiptables gui-menu-rules-launch ;;
-"05 Tool rules")$fwiptables gui-menu-rules-custom ;;
-"06 Tool sockets")$fwiptables gui-menu-tool-sockets ;;
-"07 Tool forward")$fwiptables gui-menu-tool-forward ;;
-"08 Tool tcp")$fwiptables gui-menu-tool-tcp ;;
-"09 Tool udp")$fwiptables gui-menu-tool-udp ;;
-"10 Tool icmp")$fwiptables gui-menu-tool-icmp ;;
-"11 Tool sudo")$fwiptables gui-menu-tool-sudo ;;
-"12 Tool system")$fwiptables gui-menu-tool-system ;;
-"13 Tool install")$fwiptables gui-menu-tool-install ;;
-"14 Tool blacklist")$fwiptables gui-menu-tool-blacklist ;;
-"15 Tool dev")$fwiptables gui-menu-tool-dev ;;
-"16 Show hardware")$fwiptables gui-menu-show-hardware ;;
-"17 Show etc")$fwiptables gui-menu-show-etc ;;
-"18 Show log")$fwiptables gui-menu-show-log ;;
-"19 Show about")$fwiptables gui-menu-show-about ;;
-"20 Show help")$fwiptables gui-menu-show-help ;;
-#### "21 tool game") $fwiptables gui-menu-show-help ;;
+"01 Control guide")$fwiptables gui-menu-control-guide ; exit ;;
+"02 Control rules")$fwiptables gui-menu-control-rules ; exit ;;
+"03 List rules")$fwiptables gui-menu-rules-list ; exit ;;
+"04 Launch rules")$fwiptables gui-menu-rules-launch ; exit ;;
+"05 Tool rules")$fwiptables gui-menu-rules-custom ; exit ;;
+"06 Tool sockets")$fwiptables gui-menu-tool-sockets ; exit ;;
+"07 Tool forward")$fwiptables gui-menu-tool-forward ; exit ;;
+"08 Tool tcp")$fwiptables gui-menu-tool-tcp ; exit ;;
+"09 Tool udp")$fwiptables gui-menu-tool-udp ; exit ;;
+"10 Tool icmp")$fwiptables gui-menu-tool-icmp ; exit ;;
+"11 Tool sudo")$fwiptables gui-menu-tool-sudo ; exit ;;
+"12 Tool game") $fwiptables gui-menu-tool-game ; exit ;;
+"13 Tool system")$fwiptables gui-menu-tool-system ; exit ;;
+"14 Tool install")$fwiptables gui-menu-tool-install ; exit ;;
+"15 Tool blacklist")$fwiptables gui-menu-tool-blacklist ; exit ;;
+"16 Tool dev")$fwiptables gui-menu-tool-dev ; exit ;;
+"17 Show hardware")$fwiptables gui-menu-show-hardware ; exit ;;
+"18 Show etc")$fwiptables gui-menu-show-etc ; exit ;;
+"19 Show log")$fwiptables gui-menu-show-log ; exit ;;
+"20 Show about")$fwiptables gui-menu-show-about ; exit ;;
+"21 Show help")$fwiptables gui-menu-show-help ; exit ;;
+#### 
 esac
 ####
 ####
@@ -3184,6 +3185,34 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-sudo:
+############################## english: gui-menu-tool-game: gui with menu ##############################
+############################## spanish: gui-menu-tool-game: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-game:
+####
+####
+if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Info Menu" "word-ole" --column="Option list $fwiptables" \
+--text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
+"Gui Principal Menu") $fwiptables gui-menu ;;
+"Gui Info Menu") $fwiptables -gui tool-game ;;
+"word-ole")$fwiptables -gui word-ole ;;
+esac
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-game:
 ############################## english: gui-menu-tool-system: gui with menu ##############################
 ############################## spanish: gui-menu-tool-system: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-system:
