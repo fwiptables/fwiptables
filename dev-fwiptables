@@ -547,6 +547,7 @@ first_option="-txt"; fi
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
+case "$second_option" in 
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
 "nueva-mini-config") $fwiptables $second_option $third_option ; exit ;;
 "nueva-completa-config") $fwiptables $second_option $third_option ; exit ;;
@@ -566,7 +567,7 @@ scan-*) $fwiptables $second_option $third_option ; exit ;;
 log-*) $fwiptables $second_option $third_option ; exit ;;
 license-*) $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $fwiptables $second_option $third_option ; exit ;;
-esac ; fi
+esac; fi
 ####
 ####
 #### english: remove the -cli and go to default output
@@ -616,6 +617,8 @@ case "$first_option" in
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
 echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_filelog" ; exit ;;
+####
+"gui"|"-gui") first_option="-gui" ;;
 ####
 "txt"|"-txt") first_option="-txt"
 $fwiptables $second_option $third_option &> $file_temporal_text
@@ -2710,7 +2713,7 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 #### 
 *)
-$fwiptables $second_option &> $file_temporal_gui
+$fwiptables $second_option $third_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
 zenity --text-info $graphic_dimension --title "[$fwiptables gui] [$second_option]" \
 --filename=$file_temporal_guifinal --auto-scroll
@@ -7208,11 +7211,11 @@ exit; fi
  echo $ralla
  echo "$tab [ private ip ] [ address ipv4 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -4 address | grep -i inet | grep -iv "127.0.0.1"
+ $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1
  echo $ralla
  echo "$tab [ private ip ] [ address ipv6 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -6 address | grep -i inet | grep -iv "::1/128"
+ $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
