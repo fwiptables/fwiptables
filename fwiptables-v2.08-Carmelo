@@ -152,8 +152,8 @@ head_principal="$sinco Version $fversion || Use: $fwiptables options ||  $(date)
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$rallica [ CLI ] [ Wait several seconds.. ] [ With max $server_waiting seconds ] $rallica" 
-head_waiting_gui="$rallica [ GUI ] [ Wait several seconds.. ] [ With max $server_waiting seconds ] $rallica" 
+head_waiting_cli="$rallica [ CLI ] [ Wait several seconds.. ] [ With aprox $server_waiting seconds ] $rallica" 
+head_waiting_gui="$rallica [ GUI ] [ Wait several seconds.. ] [ With aprox $server_waiting seconds ] $rallica" 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -570,8 +570,8 @@ ipforward-*) $fwiptables $second_option $third_option ; exit ;;
 esac; fi
 ####
 ####
-#### english: remove the -cli and go to default output
-#### spanish: borra el -cli va a salida por defecto
+#### english: change the -cli and go to default output
+#### spanish: cambia el -cli va a salida por defecto
 ####
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
@@ -582,8 +582,8 @@ wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit
 "new-mini-config") $fwiptables $second_option $third_option ; exit ;;
 "new-full-config") $fwiptables $second_option $third_option ; exit ;;
 "modify-config") $fwiptables $second_option $third_option ; exit ;;
-ping-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-speed-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+#### ping-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+#### speed-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "install") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "uprade") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
@@ -592,8 +592,9 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;
 "glx-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "radio") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "word-ole") $fwiptables word-ole cli ; exit ;;
+blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 log-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+#### ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 *)
 dialog --title " Cli Output || $(date)" --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
 ####
@@ -1546,7 +1547,6 @@ echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
 echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
-echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
@@ -4256,8 +4256,8 @@ echo
 echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
 echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
-echo "$rallica [   info: ] [ Get server lines numbers total ] [ $fwiptables blacklist-list info ]"
-echo "$rallica [ change: ] [ $fwiptables blacklist-on name-bl ] OR [ $fwiptables blacklist-off ]" 
+echo "$rallica [   info:  ] [ Get server lines numbers total ] [ $fwiptables blacklist-list info ]"
+echo "$rallica [ change:  ] [ $fwiptables blacklist-on name-bl ] OR [ $fwiptables blacklist-off ]" 
 echo
 echo "$ralla"
 echo "$rallica"
@@ -7346,6 +7346,9 @@ echo
 echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Group Options |                         "
+echo
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options           "
+echo
 echo "$tab" "$tab"  " firewall|  control-interface  control-guide   control-rules                 "
 echo "$tab" "$tab"  "            rules-list         rules-launch    rules-custom                  "
 echo "$tab" "$tab"  "     tool|  tool-sockets       tool-forward    tool-tcp                      "
@@ -7353,6 +7356,7 @@ echo "$tab" "$tab"  "            tool-udp           tool-icmp       tool-nmap   
 echo "$tab" "$tab"  "            tool-system        tool-install    tool-blacklist  tool-dev      "
 echo "$tab" "$tab"  "     show|  show-hardware      show-etc        show-log                      "
 echo "$tab" "$tab"  "            show-about         show-help       show-example                  " 
+echo
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab [ Example: ] [ $fwiptables control-interface ]"
 echo $footer_lineal
