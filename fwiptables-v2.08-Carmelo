@@ -7909,7 +7909,7 @@ echo "    sudo-deluser : Remove sudo to other choosed users"
 echo "       sudo-list : List sudo to other choosed users"
 echo "      alias-list : List alias $fwiptables and its autocomplete"
 echo
-echo "$cinco         [ Tool util ]"
+echo "$cinco         [ Tool game ]"
 echo
 echo "         ole-word : Play game to discover a random word with five digits"
 echo "       ole-number : Play game to discover a random number with five digits"
@@ -8201,7 +8201,7 @@ echo "  sudo-adduser : Permite autorizacion de usuarios elegidos"
 echo "  sudo-deluser : Borra la autorizacion otorgada"
 echo "     sudo-list : Lista autorizacion de usuarios elegidos"
 echo
-echo "$cinco         [ Herramienta de utilidad ]"
+echo "$cinco         [ Herramienta de juego ]"
 echo
 echo "   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres"
 echo "   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos"
