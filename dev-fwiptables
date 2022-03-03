@@ -563,8 +563,8 @@ scan-*) $fwiptables $second_option $third_option ; exit ;;
 "disk-speed") $fwiptables $second_option $third_option ; exit ;;
 "glx-speed") $fwiptables $second_option $third_option ; exit ;;
 "radio") $fwiptables $second_option $third_option ; exit ;;
-"word-ole") $fwiptables word-ole txt ; exit ;;
-"number-ole") $fwiptables number-ole txt ; exit ;;
+"ole-word") $fwiptables ole-word txt ; exit ;;
+"ole-number") $fwiptables ole-number txt ; exit ;;
 log-*) $fwiptables $second_option $third_option ; exit ;;
 license-*) $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $fwiptables $second_option $third_option ; exit ;;
@@ -592,8 +592,8 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;
 "disk-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "glx-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "radio") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"word-ole") $fwiptables word-ole cli ; exit ;;
-"number-ole") $fwiptables number-ole cli ; exit ;;
+"ole-word") $fwiptables ole-word cli ; exit ;;
+"ole-number") $fwiptables ole-number cli ; exit ;;
 blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 log-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 #### ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
@@ -610,8 +610,8 @@ esac ; fi
 ####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
 case "$second_option" in 
-"word-ole") $fwiptables word-ole gui ; exit ;;
-"number-ole") $fwiptables number-ole gui ; exit ;;
+"ole-word") $fwiptables ole-word gui ; exit ;;
+"ole-number") $fwiptables ole-number gui ; exit ;;
 esac ; fi
 ####
 ####
@@ -643,7 +643,7 @@ esac
 ##############################     spanish: cfg: lista alguna config, apodo a list-config
 ####
 ####
-if [ "$first_option" = "word-ole" ] && [ "$second_option" = "$NULL" ]; then $fwiptables -txt word-ole ; exit; fi
+if [ "$first_option" = "ole-word" ] && [ "$second_option" = "$NULL" ]; then $fwiptables -txt ole-word ; exit; fi
 ####
 ####
 ##############################     english: cfg: list: some config, alias to list-config
@@ -1453,7 +1453,7 @@ echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate   
 echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$tab" "$tab"  "    tool-game         | word-ole                                              "
+echo "$tab" "$tab"  "    tool-game         | ole-word                                              "
 echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
@@ -1524,7 +1524,7 @@ echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate   
 echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$tab" "$tab"  "    tool-game         | word-ole                                              "
+echo "$tab" "$tab"  "    tool-game         | ole-word                                              "
 echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
@@ -2039,7 +2039,7 @@ echo "$ralla [ $first_option ] [ tool game ]"
 echo "$rallica [ Tool game ]"
 echo "$rallica [ Herramienta de juego ]"
 echo
-echo "         word-ole : Play game clon for wordle"
+echo "         ole-word : Play game clon for wordle"
 echo "                  : Juega a un clon del juego wordle"
 echo $footer_lineal
 exit; fi
@@ -3197,7 +3197,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "word-ole" --column="Option list $fwiptables" \
+--list "Gui Principal Menu" "Gui Info Menu" "ole-word" --column="Option list $fwiptables" \
 --text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
 #### 
 #### 
@@ -3205,7 +3205,7 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu") $fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui tool-game ;;
-"word-ole")$fwiptables -gui word-ole ;;
+"ole-word")$fwiptables -gui ole-word ;;
 esac
 ####
 ####
@@ -3749,7 +3749,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   132  "sudo-deluser" \
   133  "sudo-list" \
   0140 "$cinco [ Tool game option ] $cinco" \
-  141  "word-ole" \
+  141  "ole-word" \
   0150 "$cinco [ Tool install ] $cinco" \
   151  "install" \
   152  "howto-upgrade" \
@@ -3939,7 +3939,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  clear ; $fwiptables sudo-adduser $resolve ;;
  132) clear ; $fwiptables "sudo-deluser" ;;
  133) clear ; $fwiptables "sudo-list" ;;
- 141) clear ; $fwiptables cli word-ole ;;
+ 141) clear ; $fwiptables cli ole-word ;;
  151) clear ; $zero_option "install" ;;
  152) clear ; $fwiptables "howto-upgrade" | less ;;
  153) clear ; $fwiptables "upgrade" ;;
@@ -6367,12 +6367,12 @@ $fwiptables stop
 ####
 ####
 #### :rutina-final-radio:
-############################       english: word-ole: play game word-ole
-############################       spanish: word-ole: juega al juego word-ole
-#### :rutina-inicial-word-ole:
+############################       english: ole-word: play game ole-word
+############################       spanish: ole-word: juega al juego ole-word
+#### :rutina-inicial-ole-word:
 ####
 ####
-if [ "$first_option" = "word-ole" ]; then  $nada
+if [ "$first_option" = "ole-word" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -6404,13 +6404,13 @@ textes_8=" ##### La respuesta correcta         es:  "
 ####
 ####
 #############################################
-############################################# word-ole in txt
+############################################# ole-word in txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ]; then $nada
 $give_cover
 echo "$ralla $ralla $ralla"
-echo "$ralla [ $first_option ] [ play game clone word-ole ]"
+echo "$ralla [ $first_option ] [ play game clone ole-word ]"
 echo $header_lineal
 ##### INICIO ####
 #### Choose language english or spanish
@@ -6524,7 +6524,7 @@ exit; fi
 ####
 ####
 #############################################
-############################################# word-ole in cli
+############################################# ole-word in cli
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
@@ -6652,7 +6652,7 @@ clear; exit; fi ; fi
 ####
 ####
 #############################################
-############################################# word-ole in gui
+############################################# ole-word in gui
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
@@ -6727,11 +6727,11 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 ####
 if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear 
-acierto="$(zenity $graphic_dimension --info --title="gui word-ole" --text="$text_1 $palabra_aleatoria")"
+acierto="$(zenity $graphic_dimension --info --title="gui ole-word" --text="$text_1 $palabra_aleatoria")"
 clear; exit; fi
 ####
 if [ "$intento" = "$intento_maximo" ]; then clear
-fallo="$(zenity $graphic_dimension --info --title="gui word-ole" --text="$text_8 $palabra_aleatoria")"
+fallo="$(zenity $graphic_dimension --info --title="gui ole-word" --text="$text_8 $palabra_aleatoria")"
 clear ; exit ; fi
 ####
 bucle="$(zenity $graphic_dimension --entry --title "Play game word ole" \
@@ -6780,20 +6780,24 @@ if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
-#### :rutina-final-word-ole:
-############################       english: number-ole: play game number-ole
-############################       spanish: number-ole: juega al juego number-ole
-#### :rutina-inicial-number-ole:
+fi
 ####
 ####
-if [ "$first_option" = "number-ole" ]; then  $nada
+#### :rutina-final-ole-word:
+############################       english: ole-number: play game ole-number
+############################       spanish: ole-number: juega al juego ole-number
+#### :rutina-inicial-ole-number:
+####
+####
+if [ "$first_option" = "ole-number" ]; then  $nada
 ####
 ####
 #### variables shared
 ####
 ####
 language_number="0"
-digitos="" ; cinco_digitos="" ; intento="0" ; intento_maximo="12"
+digitos="" ; cinco_digitos="" ; caracteres="" ; cinco_caracteres=""
+intento="0" ; intento_maximo="12"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 texten_1=" ##### [ OK ] Awasome, the random number is : "
 texten_2=" ##### Clon of numberle: discover a radom number of five digits "
@@ -6816,13 +6820,13 @@ textes_8=" ##### La respuesta correcta           es:  "
 ####
 ####
 #############################################
-############################################# number-ole in txt
+############################################# ole-number in txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ]; then $nada
 $give_cover
 echo "$ralla $ralla $ralla"
-echo "$ralla [ $first_option ] [ play game clone number-ole ]"
+echo "$ralla [ $first_option ] [ play game clone ole-number ]"
 echo $header_lineal
 ##### INICIO ####
 #### Choose language english or spanish
@@ -6865,7 +6869,7 @@ aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 if [ "$cinco_digitos" = "$numero_aleatorio" ]; then  echo "$text_1 $numero_aleatorio" ; exit; fi
-if [ "$intento" -gt "$intento_maximo" ]; then
+if [ "$intento" -gt "$intento_maximo" ]; then $nada
 echo "$text_1" "  " " || $numero_aleatorio ||" ; exit ; fi
 echo "$text_2"
 echo "$text_3" " || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 ||"
@@ -6917,11 +6921,11 @@ echo "$text_7" "$cinco_digitos"
 echo "$text_8" "$numero_aleatorio"
 ####
 echo $footer_lineal
-exit; fi
+clear ; exit ; fi
 ####
 ####
 #############################################
-############################################# number-ole in cli
+############################################# ole-number in cli
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
@@ -7029,11 +7033,11 @@ done
 #### when fail the answer
 clear
 acierto="$(dialog --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0)"
-clear; exit; fi ; fi
+clear ; exit ; fi
 ####
 ####
 #############################################
-############################################# number-ole in gui
+############################################# ole-number in gui
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
@@ -7044,7 +7048,7 @@ if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
 ####
 ####
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
-selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
+selection=$(zenity  --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
 --title="Play number ole game")
 case $selection in
 "01 english") language_number="1" ;;
@@ -7055,7 +7059,8 @@ if [ "$?" -eq "1" ]; then exit; fi
 ####
 #### Quit game
 if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
-if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
+if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then $nada 
+else "$cinco [ OK ] [ Exit game ]" ; exit ; fi
 ##### language of interface english
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -7091,11 +7096,11 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 ####
 if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear 
-acierto="$(zenity $graphic_dimension --info --title="gui number-ole" --text="$text_1 $numero_aleatorio")"
+acierto="$(zenity $graphic_dimension --info --title="gui ole-number" --text="$text_1 $numero_aleatorio")"
 clear; exit; fi
 ####
 if [ "$intento" = "$intento_maximo" ]; then clear
-fallo="$(zenity $graphic_dimension --info --title="gui number-ole" --text="$text_8 $numero_aleatorio")"
+fallo="$(zenity $graphic_dimension --info --title="gui ole-number" --text="$text_8 $numero_aleatorio")"
 clear ; exit ; fi
 ####
 bucle="$(zenity $graphic_dimension --entry --title "Play game number ole" \
@@ -7144,7 +7149,10 @@ if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
-#### :rutina-final-number-ole:
+fi
+####
+####
+#### :rutina-final-ole-number:
 ############################## english: fw-sendedlog: Read log /var/log/fwiptables-sendedlog  ##############################
 ############################## spanish: fw-sendedlog: Lee log  /var/log/fwiptables-sendedlog  ##############################
 #### :rutina-inicial-fw-sendedlog:
@@ -7901,7 +7909,7 @@ echo "      alias-list : List alias $fwiptables and its autocomplete"
 echo
 echo "$cinco         [ Tool util ]"
 echo
-echo "      word-ole : clon wordle game"
+echo "      ole-word : clon wordle game"
 echo
 echo "$cinco         [ Tool system ]"
 echo
@@ -8192,7 +8200,7 @@ echo "     sudo-list : Lista autorizacion de usuarios elegidos"
 echo
 echo "$cinco         [ Herramienta de utilidad ]"
 echo
-echo "      word-ole : Permite juegar a un clon wordle"
+echo "      ole-word : Permite juegar a un clon wordle"
 echo
 echo "$cinco         [ Herramienta de sistema ]"
 echo
