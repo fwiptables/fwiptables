@@ -608,7 +608,7 @@ esac ; fi
 #### spanish: borra el -gui va a salida por defecto
 ####
 ####
-if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then
+if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
 case "$second_option" in 
 "word-ole") $fwiptables word-ole gui ; exit ;;
 "number-ole") $fwiptables number-ole gui ; exit ;;
@@ -6786,7 +6786,7 @@ done ; clear ; exit ; fi
 #### :rutina-inicial-number-ole:
 ####
 ####
-if [ "$first_option" = "number-ole" ]; then  echo -n
+if [ "$first_option" = "number-ole" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -6819,7 +6819,7 @@ textes_8=" ##### La respuesta correcta           es:  "
 ############################################# number-ole in txt
 ####
 ####
-if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ]; then echo -n
+if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ]; then $nada
 $give_cover
 echo "$ralla $ralla $ralla"
 echo "$ralla [ $first_option ] [ play game clone number-ole ]"
@@ -6924,7 +6924,7 @@ exit; fi
 ############################################# number-ole in cli
 ####
 ####
-if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then echo -n
+if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
 ####
 ####
 ##### INICIO ####
