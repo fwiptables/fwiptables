@@ -1974,20 +1974,20 @@ echo "$ralla [ $first_option ] [ control interface ]"
 echo "$rallica [ control interface ]" 
 echo "$rallica [ control de interfaz ]"
 echo
-echo "      cli-menu : Text cli interface from menus"
-echo "               : Interfaz de menus desde texto"
-echo "      gui-menu : Gui interface from menu"
-echo "               : Interfaz grafica desde menu"
-echo "     gui-shell : Gui with comand line interface"
-echo "               : Gui con interfaz desde linea de comandos"
 echo "   txt OR -txt : Output to Text line"
 echo "               : Salida a linea de texto"
 echo "   cli OR -cli : Output to text menu"
 echo "               : Salida a menu de texto"
 echo "   gui OR -gui : Output to graphicall window"
 echo "               : Salida a ventana grafica"
-echo "   log OR -log : Save the output to $file_output_filelog"
-echo "               : Guarda la salida a $file_output_filelog"
+echo "   log OR -log : Save the output"
+echo "               : Guarda la salida"
+echo "      cli-menu : Text cli interface from menus"
+echo "               : Interfaz de menus desde texto"
+echo "      gui-menu : Gui interface from menu"
+echo "               : Interfaz grafica desde menu"
+echo "     gui-shell : Gui with comand line interface"
+echo "               : Gui con interfaz desde linea de comandos"
 echo $footer_lineal
 exit; fi
 ####
@@ -7389,15 +7389,13 @@ echo
 echo
 echo "$cinco         [ Launch interface ]"
 echo
-echo "               cli : alias to cli-menu"
-echo "               gui : alias to gui-menu"
-echo "          cli-menu : Comand line interface with menus"
-echo "          gui-menu : Graphicall interface with menus"
-echo "         gui-shell : Graphicall interface with shell"
 echo "       txt OR -txt : Output at text line"
 echo "       cli OR -cli : Output at text menu"
 echo "       gui OR -gui : Output at graphicall window"
 echo "       log OR -log : Output in logfile "
+echo "          cli-menu : Comand line interface with menus"
+echo "          gui-menu : Graphicall interface with menus"
+echo "         gui-shell : Graphicall interface with shell"
 echo
 echo "$cinco         [ Launch guide ]"
 echo
@@ -7735,15 +7733,13 @@ echo "    list-arptables : Lista las reglas de arp arptables"
 echo
 echo "$cinco         [ Lanza interfaz ]"
 echo
-echo "               cli : apodo de cli-menu"
-echo "               gui : apodo de gui-menu"
-echo "          cli-menu : modo texto with menus"
-echo "          gui-menu : Graficos con menus"
-echo "         gui-shell : Graficos con entorno de comandos"
 echo "       txt OR -txt : Salida a linea de texto"
 echo "       cli OR -cli : Salida a menu de texto"
 echo "       gui OR -gui : Salida a ventana grafica"
 echo "       log OR -log : Salida a archivo log"
+echo "          cli-menu : modo texto with menus"
+echo "          gui-menu : Graficos con menus"
+echo "         gui-shell : Graficos con entorno de comandos"
 #### echo
 #### echo
 #### echo "               [ Opciones secundarias ] $cinco"
