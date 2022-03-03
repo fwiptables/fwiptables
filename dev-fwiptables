@@ -6648,7 +6648,7 @@ done
 #### when fail the answer
 clear
 acierto="$(dialog --stdout --title "Play game word ole" --msgbox "$text_8 $palabra_aleatoria"  0 0)"
-clear; exit; fi ; fi
+clear; exit; fi
 ####
 ####
 #############################################
@@ -7048,7 +7048,7 @@ if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
 ####
 ####
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
-selection=$(zenity  --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
+selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
 --title="Play number ole game")
 case $selection in
 "01 english") language_number="1" ;;
@@ -7094,7 +7094,7 @@ aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
-####
+#### 
 if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear 
 acierto="$(zenity $graphic_dimension --info --title="gui ole-number" --text="$text_1 $numero_aleatorio")"
 clear; exit; fi
