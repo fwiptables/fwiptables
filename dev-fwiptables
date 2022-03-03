@@ -6734,6 +6734,7 @@ clear ; exit ; fi
 bucle="$(zenity $graphic_dimension --entry --title "Play game word ole" \
 --text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
+if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
 ####
 intento="$(($intento+1))"
 caracteres="$bucle"
