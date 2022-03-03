@@ -1453,7 +1453,7 @@ echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate   
 echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$tab" "$tab"  "    tool-game         | ole-word                                              "
+echo "$tab" "$tab"  "    tool-game         | ole-word ole-number                                             "
 echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
@@ -1524,7 +1524,7 @@ echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate   
 echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$tab" "$tab"  "    tool-game         | ole-word                                              "
+echo "$tab" "$tab"  "    tool-game         | ole-word ole-number                                             "
 echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
@@ -2039,8 +2039,10 @@ echo "$ralla [ $first_option ] [ tool game ]"
 echo "$rallica [ Tool game ]"
 echo "$rallica [ Herramienta de juego ]"
 echo
-echo "         ole-word : Play game clon for wordle"
-echo "                  : Juega a un clon del juego wordle"
+echo "         ole-word : Play game to discover a random word with five digits"
+echo "                  : Juega a descubrir una palabra aleatoria de cinco caracteres"
+echo "       ole-number : Play game to discover a random number with five digits"
+echo "                  : Juega a descubrir un numero aleatorio de cinco digitos"
 echo $footer_lineal
 exit; fi
 ####
@@ -7909,7 +7911,8 @@ echo "      alias-list : List alias $fwiptables and its autocomplete"
 echo
 echo "$cinco         [ Tool util ]"
 echo
-echo "      ole-word : clon wordle game"
+echo "         ole-word : Play game to discover a random word with five digits"
+echo "       ole-number : Play game to discover a random number with five digits"
 echo
 echo "$cinco         [ Tool system ]"
 echo
@@ -8200,7 +8203,8 @@ echo "     sudo-list : Lista autorizacion de usuarios elegidos"
 echo
 echo "$cinco         [ Herramienta de utilidad ]"
 echo
-echo "      ole-word : Permite juegar a un clon wordle"
+echo "   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres"
+echo "   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos"
 echo
 echo "$cinco         [ Herramienta de sistema ]"
 echo
