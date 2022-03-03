@@ -564,6 +564,7 @@ scan-*) $fwiptables $second_option $third_option ; exit ;;
 "glx-speed") $fwiptables $second_option $third_option ; exit ;;
 "radio") $fwiptables $second_option $third_option ; exit ;;
 "word-ole") $fwiptables word-ole txt ; exit ;;
+"number-ole") $fwiptables number-ole txt ; exit ;;
 log-*) $fwiptables $second_option $third_option ; exit ;;
 license-*) $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $fwiptables $second_option $third_option ; exit ;;
@@ -592,6 +593,7 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;
 "glx-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "radio") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "word-ole") $fwiptables word-ole cli ; exit ;;
+"number-ole") $fwiptables number-ole cli ; exit ;;
 blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 log-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 #### ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
@@ -609,6 +611,7 @@ esac ; fi
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then
 case "$second_option" in 
 "word-ole") $fwiptables word-ole gui ; exit ;;
+"number-ole") $fwiptables number-ole gui ; exit ;;
 esac ; fi
 ####
 ####
@@ -6778,6 +6781,370 @@ done ; clear ; exit ; fi
 ####
 ####
 #### :rutina-final-word-ole:
+############################       english: number-ole: play game number-ole
+############################       spanish: number-ole: juega al juego number-ole
+#### :rutina-inicial-number-ole:
+####
+####
+if [ "$first_option" = "number-ole" ]; then  echo -n
+####
+####
+#### variables shared
+####
+####
+language_number="0"
+digitos="" ; cinco_digitos="" ; intento="0" ; intento_maximo="12"
+seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
+texten_1=" ##### [ OK ] Awasome, the random number is : "
+texten_2=" ##### Clon of numberle: discover a radom number of five digits "
+texten_3=" Digits in its site     " 
+texten_4=" Digits in the number   "
+texten_5=" ##### Type a number with five digits_  #  "
+texten_5=" ##### Type actual number          :  "
+texten_6=" ##### Actual tried numbers        :  "
+texten_7=" ##### The last answered         is:  "
+texten_8=" ##### The correct answerd       is:  "
+textes_1=" ##### [ OK ] Lo has conseguido, el numero aleatorio es "
+textes_2=" ##### Clon de numberle: Acierta con un numero aleatorio de cinco digitos. "
+textes_3=" Digitos en su sitio   " 
+textes_4=" Digitos en el numero  "
+textes_5=" ##### Escribe un numero de cinco digitos_  #  "
+textes_5=" ##### Introduce el numero actual        :  "
+textes_6=" ##### Numero de intentos actuales       :  "
+textes_7=" ##### La ultima respuesta             es:  "
+textes_8=" ##### La respuesta correcta           es:  "
+####
+####
+#############################################
+############################################# number-ole in txt
+####
+####
+if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ]; then echo -n
+$give_cover
+echo "$ralla $ralla $ralla"
+echo "$ralla [ $first_option ] [ play game clone number-ole ]"
+echo $header_lineal
+##### INICIO ####
+#### Choose language english or spanish
+until [ "$language_number" == "1" ] || [ "$language_number" == "2" ] || [ "$language_number" == "q" ] ; do echo
+echo "$tab $tab ##### Play in your language: Choose 1 for english or 2 for spanish or q for quit"
+read -p "$tab $tab ##### Choose one number: # 1 or 2 or q #  " language_number
+if [ ! -n "$language_number" ]; then language_number="5"; fi
+echo; done
+#### Quit game
+if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+##### language of interface english
+if [ "$language_number" -eq "1" ]; then
+text_1="$texten_1"
+text_2="$texten_2"
+text_3="$texten_3"
+text_4="$texten_4"
+text_5="$texten_5"
+text_6="$texten_6"
+text_7="$texten_7"
+text_8="$texten_8"
+fi
+##### language of interface spanish
+if [ "$language_number" -eq "2" ]; then
+text_1="$textes_1"
+text_2="$textes_2"
+text_3="$textes_3"
+text_4="$textes_4"
+text_5="$textes_5"
+text_6="$textes_6"
+text_7="$textes_7"
+text_8="$textes_8"
+fi
+##### number of game
+numero_aleatorio="$(($(($RANDOM%25000))+$(($RANDOM%25000))+$(($RANDOM%25000))+$(($RANDOM%25000))))"
+aleatoria_1="$(echo $numero_aleatorio | cut -c 1)"
+aleatoria_2="$(echo $numero_aleatorio | cut -c 2)"
+aleatoria_3="$(echo $numero_aleatorio | cut -c 3)"
+aleatoria_4="$(echo $numero_aleatorio | cut -c 4)"
+aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
+#### loop of game
+until [ "$intento" -eq "$intento_maximo" ]; do $nada
+if [ "$cinco_digitos" = "$numero_aleatorio" ]; then  echo "$text_1 $numero_aleatorio" ; exit; fi
+if [ "$intento" -gt "$intento_maximo" ]; then
+echo "$text_1" "  " " || $numero_aleatorio ||" ; exit ; fi
+echo "$text_2"
+echo "$text_3" " || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 ||"
+echo "$text_4" " || $contenido ||"
+read -p "$text_5  #  " digitos
+intento="$(($intento+1))"
+cinco_digitos="$(echo $digitos | cut -c 1-5)"
+digito_1="$(echo $digitos | cut -c 1)"
+digito_2="$(echo $digitos | cut -c 2)"
+digito_3="$(echo $digitos | cut -c 3)"
+digito_4="$(echo $digitos | cut -c 4)"
+digito_5="$(echo $digitos | cut -c 5)"
+echo "$Text_5" "$cinco_digitos"
+echo "$text_6" "$intento /// $intento_maximo"
+if [ "$aleatoria_1" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_1" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_1" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_1" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_1" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_2" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_2" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_2" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_2" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_2" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_3" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_3" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_3" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_3" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_3" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_4" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_4" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_4" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_4" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_4" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_5" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_5" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_5" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_5" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_5" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_1" = "$digito_1" ]; then seat_1="$digito_1"; fi
+if [ "$aleatoria_2" = "$digito_2" ]; then seat_2="$digito_2"; fi
+if [ "$aleatoria_3" = "$digito_3" ]; then seat_3="$digito_3"; fi
+if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
+if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
+done
+#### when fail the answer
+echo
+echo "$text_7" "$cinco_digitos"
+echo "$text_8" "$numero_aleatorio"
+####
+echo $footer_lineal
+exit; fi
+####
+####
+#############################################
+############################################# number-ole in cli
+####
+####
+if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then echo -n
+####
+####
+##### INICIO ####
+#### Choose language english or spanish
+####
+####
+menuprincipal="$(dialog --stdout --clear --title "  Play game number ole" --menu "Select:" 0 0 0\
+  01 "    Play number ole in english" \
+  02 "    Play number ole in spanish" \
+  03 "    quit number ole" \
+)"
+if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+case "$menuprincipal" in
+  01) clear ; language_number="1" ; clear ;;
+  02) clear ; language_number="2" ; clear ;;
+  03) clear ; language_number="q" ; clear ;;
+esac
+####
+#### Quit game
+if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+##### language of interface english
+if [ "$language_number" -eq "1" ]; then
+text_1="$texten_1"
+text_2="$texten_2"
+text_3="$texten_3"
+text_4="$texten_4"
+text_5="$texten_5"
+text_6="$texten_6"
+text_7="$texten_7"
+text_8="$texten_8"
+fi
+##### language of interface spanish
+if [ "$language_number" -eq "2" ]; then
+text_1="$textes_1"
+text_2="$textes_2"
+text_3="$textes_3"
+text_4="$textes_4"
+text_5="$textes_5"
+text_6="$textes_6"
+text_7="$textes_7"
+text_8="$textes_8"
+fi
+##### number of game
+numero_aleatorio="$(($(($RANDOM%25000))+$(($RANDOM%25000))+$(($RANDOM%25000))+$(($RANDOM%25000))))"
+aleatoria_1="$(echo $numero_aleatorio | cut -c 1)"
+aleatoria_2="$(echo $numero_aleatorio | cut -c 2)"
+aleatoria_3="$(echo $numero_aleatorio | cut -c 3)"
+aleatoria_4="$(echo $numero_aleatorio | cut -c 4)"
+aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
+seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
+#### loop of game
+until [ "$intento" -eq "$intento_maximo" ]; do $nada
+if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear ; 
+acierto="$(dialog --stdout --title "  Play game number ole" --msgbox "$text_1 $numero_aleatorio"  0 0)" ; clear ; exit ; fi
+if [ "$intento" -gt "$intento_maximo" ]; then clear
+echo "$text_1" "  " " || $numero_aleatorio ||" ; clear ; exit ; fi
+bucle="$(dialog --stdout --title "Play game number ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
+$text_2 \n # $text_3 # \n \
+|| $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
+intento="$(($intento+1))"
+if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+digitos="$bucle"
+cinco_digitos="$(echo $digitos | cut -c 1-5)"
+digito_1="$(echo $digitos | cut -c 1)"
+digito_2="$(echo $digitos | cut -c 2)"
+digito_3="$(echo $digitos | cut -c 3)"
+digito_4="$(echo $digitos | cut -c 4)"
+digito_5="$(echo $digitos | cut -c 5)"
+echo "$Text_5" "$cinco_digitos"
+echo "$text_6" "$intento /// $intento_maximo"
+if [ "$aleatoria_1" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_1" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_1" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_1" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_1" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_2" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_2" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_2" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_2" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_2" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_3" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_3" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_3" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_3" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_3" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_4" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_4" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_4" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_4" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_4" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_5" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_5" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_5" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_5" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_5" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_1" = "$digito_1" ]; then seat_1="$digito_1"; fi
+if [ "$aleatoria_2" = "$digito_2" ]; then seat_2="$digito_2"; fi
+if [ "$aleatoria_3" = "$digito_3" ]; then seat_3="$digito_3"; fi
+if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
+if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
+done
+#### when fail the answer
+clear
+acierto="$(dialog --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0)"
+clear; exit; fi ; fi
+####
+####
+#############################################
+############################################# number-ole in gui
+####
+####
+if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
+####
+####
+##### INICIO ####
+#### Choose language english or spanish
+####
+####
+case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
+selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
+--title="Play number ole game")
+case $selection in
+"01 english") language_number="1" ;;
+"02 spanish") language_number="2" ;;
+"03 quit")    language_number="q" ;;
+esac
+if [ "$?" -eq "1" ]; then exit; fi 
+####
+#### Quit game
+if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
+##### language of interface english
+##### language of interface english
+if [ "$language_number" -eq "1" ]; then
+text_1="$texten_1"
+text_2="$texten_2"
+text_3="$texten_3"
+text_4="$texten_4"
+text_5="$texten_5"
+text_6="$texten_6"
+text_7="$texten_7"
+text_8="$texten_8"
+fi
+##### language of interface spanish
+if [ "$language_number" -eq "2" ]; then
+text_1="$textes_1"
+text_2="$textes_2"
+text_3="$textes_3"
+text_4="$textes_4"
+text_5="$textes_5"
+text_6="$textes_6"
+text_7="$textes_7"
+text_8="$textes_8"
+fi
+##### number of game
+numero_aleatorio="$(($(($RANDOM%25000))+$(($RANDOM%25000))+$(($RANDOM%25000))+$(($RANDOM%25000))))"
+aleatoria_1="$(echo $numero_aleatorio | cut -c 1)"
+aleatoria_2="$(echo $numero_aleatorio | cut -c 2)"
+aleatoria_3="$(echo $numero_aleatorio | cut -c 3)"
+aleatoria_4="$(echo $numero_aleatorio | cut -c 4)"
+aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
+seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
+#### loop of game
+until [ "$intento" -eq "$intento_maximo" ]; do $nada
+####
+if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear 
+acierto="$(zenity $graphic_dimension --info --title="gui number-ole" --text="$text_1 $numero_aleatorio")"
+clear; exit; fi
+####
+if [ "$intento" = "$intento_maximo" ]; then clear
+fallo="$(zenity $graphic_dimension --info --title="gui number-ole" --text="$text_8 $numero_aleatorio")"
+clear ; exit ; fi
+####
+bucle="$(zenity $graphic_dimension --entry --title "Play game number ole" \
+--text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
+|| $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
+if [ "$?" -eq "0" ]; then echo -n ; else exit; fi
+####
+intento="$(($intento+1))"
+digitos="$bucle"
+cinco_digitos="$(echo $digitos | cut -c 1-5)"
+digito_1="$(echo $digitos | cut -c 1)"
+digito_2="$(echo $digitos | cut -c 2)"
+digito_3="$(echo $digitos | cut -c 3)"
+digito_4="$(echo $digitos | cut -c 4)"
+digito_5="$(echo $digitos | cut -c 5)"
+if [ "$aleatoria_1" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_1" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_1" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_1" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_1" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_2" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_2" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_2" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_2" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_2" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_3" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_3" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_3" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_3" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_3" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_4" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_4" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_4" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_4" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_4" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_5" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_5" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_5" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_5" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_5" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_1" = "$digito_1" ]; then seat_1="$digito_1"; fi
+if [ "$aleatoria_2" = "$digito_2" ]; then seat_2="$digito_2"; fi
+if [ "$aleatoria_3" = "$digito_3" ]; then seat_3="$digito_3"; fi
+if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
+if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
+done ; clear ; exit ; fi
+####
+####
+#### :rutina-final-number-ole:
 ############################## english: fw-sendedlog: Read log /var/log/fwiptables-sendedlog  ##############################
 ############################## spanish: fw-sendedlog: Lee log  /var/log/fwiptables-sendedlog  ##############################
 #### :rutina-inicial-fw-sendedlog:
