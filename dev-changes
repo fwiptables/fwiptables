@@ -204,5 +204,6 @@
 # changes fwiptables 2.08 en desarrollo
 #
 # 1. algunos arreglos menores
-# 2. number-ole similar a word-ole
+# 2. word-ole renombrado a ole-word
+# 3. añadido number-ole con txt con cli y con gui
 #
