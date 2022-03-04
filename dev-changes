@@ -201,10 +201,14 @@
 # 15. word-ole en gui-menu. HECHO
 # 16. gui-menu ahora menos recursivo. HECHO
 #
-# changes fwiptables 2.08 en desarrollo
+# changes fwiptables 2.08
 #
 # 1. algunos arreglos menores. HECHO
 # 2. word-ole renombrado a ole-word. HECHO
 # 3. añadido ole-number con txt con cli y con gui. HECHO
-# 4. ole-number en cli-menu y en gui-menu
+#
+# changes fwiptables 2.09 en desarrollo
+# 
+# 1. añadir ole-number en cli-menu y en gui-menu
+#
 #
