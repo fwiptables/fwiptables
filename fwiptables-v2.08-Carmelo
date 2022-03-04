@@ -5567,11 +5567,10 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
 echo "$ralla [ $first_option ] [ Reset the firewall ]"
-echo $header_lineal
+echo "$cinco Reseting the firewall"
 $fwiptables stop &> /dev/null
 $fwiptables continue &> /dev/null
-echo "$rallica [OK FIREWALL RESETED]"
-echo $footer_lineal
+echo "$rallica [ OK ] [ FIREWALL RESETED]"
 exit; fi
 ####
 ####
