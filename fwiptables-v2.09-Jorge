@@ -551,6 +551,9 @@ first_option="-txt"; fi
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
 case "$second_option" in 
+cli-menu) $fwiptables $second_option $third_option ;  exit ;;
+gui-menu) $fwiptables $second_option $third_option ;  exit ;;
+gui-shell) $fwiptables $second_option $third_option ;  exit ;;
 wizard-*) $fwiptables $second_option $third_option ; exit ;;
 "nueva-mini-config") $fwiptables $second_option $third_option ; exit ;;
 "nueva-completa-config") $fwiptables $second_option $third_option ; exit ;;
@@ -580,6 +583,9 @@ esac; fi
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
 case "$second_option" in 
+cli-menu) $fwiptables $second_option $third_option ;  exit ;;
+gui-menu) $fwiptables $second_option $third_option ;  exit ;;
+gui-shell) $fwiptables $second_option $third_option ;  exit ;;
 wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $fwiptables $second_option $third_option ;  exit ;;
 "nueva-completa-config") $fwiptables $second_option $third_option ;  exit ;;
@@ -612,6 +618,9 @@ esac ; fi
 ####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
 case "$second_option" in 
+cli-menu) $fwiptables $second_option $third_option ;  exit ;;
+gui-menu) $fwiptables $second_option $third_option ;  exit ;;
+gui-shell) $fwiptables $second_option $third_option ;  exit ;;
 "ole-word") $fwiptables ole-word gui ; exit ;;
 "ole-number") $fwiptables ole-number gui ; exit ;;
 esac ; fi
