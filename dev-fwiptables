@@ -3942,18 +3942,18 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  125) clear ; $fwiptables "ntpdate" ;;
  131) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $fwiptables sudo-adduser $resolve ;;
- 132) clear ; $fwiptables "sudo-deluser" ;;
- 133) clear ; $fwiptables cli "sudo-list" ;;
- 141) clear ; $fwiptables cli "ole-word" ;;
- 141) clear ; $fwiptables cli "ole-number" ;;
- 151) clear ; $zero_option "install" ;;
- 152) clear ; $fwiptables cli "howto-upgrade" | less ;;
- 153) clear ; $fwiptables "upgrade" ;;
- 161) clear ; $fwiptables blacklist-list ;;
- 162) clear ; $fwiptables blacklist-list info ;;
+ 132) clear ; $fwiptables cli sudo-deluser ;;
+ 133) clear ; $fwiptables cli sudo-list ;;
+ 141) clear ; $fwiptables cli ole-word ;;
+ 142) clear ; $fwiptables cli ole-number ;;
+ 151) clear ; $zero_option install ;;
+ 152) clear ; $fwiptables cli howto-upgrade ;;
+ 153) clear ; $fwiptables cli upgrade ;;
+ 161) clear ; $fwiptables cli blacklist-list ;;
+ 162) clear ; $fwiptables cli blacklist-list info ;;
  163) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
  clear ; $fwiptables blacklist-on $resolve ;;
- 164) clear ; $fwiptables blacklist-off ;;
+ 164) clear ; $fwiptables cli blacklist-off ;;
  171) clear ; $fwiptables "new-versions" | less ;;
  172) clear ; $fwiptables "dev-version" | less ;;
  173) clear ; $fwiptables "dev-changes" | less ;; 
@@ -3995,8 +3995,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  237) clear ; $fwiptables "license" | less ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
- echo "press [enter] to continue with the $fwiptables cli-menu"
- read -s
+#### echo "press [enter] to continue with the $fwiptables cli-menu";  read -s
  clear ; 
  $fwiptables cli-menu
  exit; fi
