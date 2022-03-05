@@ -195,7 +195,7 @@ flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
 ####  english: pause, spanish: pausa
-#### do_pause="read -p 'press [enter] to continue with the $fwiptables cli-menu'"
+####  do_pause="read -p 'press [enter] to continue with the $fwiptables cli-menu'"
 ####
 ####
 #### english: if wrong in whithout_option
@@ -604,6 +604,9 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit
 "ole-word") $fwiptables ole-word cli ; exit ;;
 "ole-number") $fwiptables ole-number cli ; exit ;;
 blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+log-search) 
+pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
+clear; $fwiptables log-search $pattern ; exit ;; 
 log-*) $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 fw-*)  $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
 *) dialog --title " Cli Output || $(date)" --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
@@ -3862,11 +3865,11 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  25) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
  read -p "Type the firewall name to read   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables show $nombrecillo ;; 
- 26)archivo="$(dialog --stdout --title "save the firewall format standar" --inputbox "New name" 0 0)"
+ 26)archivo="$(dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ;  echo "$cincuenta saved $archivo" ; $fwiptables save $archivo ;;
  27) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
- read -p "Type the firewall name to restore   " nombrecillo
+ read -p "| Type the firewall name to restore |   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables load $nombrecillo ;;
  28) clear ; $fwiptables cli actual ;;
  31) clear ; $fwiptables cli list ;;
