@@ -518,8 +518,8 @@ cmp -s $0 $directory_fiptables/$fwiptables || . $0 intro
 ####
 ####
 #### :rutina-final-notice:
-##############################       alias for fwiptables       ##############################
-##############################       apodos de fwiptables      ##############################
+##############################       temporal files for fwiptables       ##############################
+##############################       archivos temporales de fwiptables      ##############################
 ####
 ####
 #### english: temporal files
@@ -537,56 +537,22 @@ file_output_filelog="/var/log/fwiptables-filelog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
-##############################     ALIAS
-##############################     ALIAS
+##############################       alias for fwiptables       ##############################
+##############################       apodos de fwiptables      ##############################
 ####
 ####
-##############################     english: list: list iptables rules
-##############################     spanish: list: lista reglas de iptables
-####
-####
+##############################     ALIAS simple y campus
+##############################     ALIAS simple y campo
 
-####
-####
-##############################     english: cfg: list: some config, alias to list-config
-##############################     spanish: cfg: lista alguna config, apodo a list-config
-####
-####
-
-####
-####
-##############################     english: cfg: list: some config, alias to list-config
-##############################     spanish: cfg: lista alguna config, apodo a list-config
-####
-####
-
-####
-####
-#############################     english: alias for cfg-custom to custom  
-#############################     spanish: apodo de cfg-custom para custom
-####
-####
-
-####
-####
-############################       english: list-fw: alias to names
-############################       spanish: list-fw: apodo a names
-####
-####
-if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
 ##############################     ALIAS SIMPLE
 ##############################     ALIAS SIMPLE
 ####
 ####
-#### english: apodo -text a -txt
-#### english: alias -text to -txt
-####
-####
+if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
 if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
 if [ "$first_option" = "list6" ]  ; then first_option="txt" ; second_option="list6" ; fi
-#### if [ "$first_option" = "ole-word" ] && [ "$second_option" = "$NULL" ]; then $fwiptables -txt ole-word ; exit; fi
 if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
@@ -604,8 +570,8 @@ if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ]; then first_opt
 ####
 ####
 ####
-#### english: Exceptions when begin with -txt
-#### english: Excepciones cuando empiezan con -txt
+#### english: change the -txt and go to default output
+#### spanish: cambia el -txt va a salida por defecto
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
@@ -663,8 +629,8 @@ fw-*)  $message_without_cli ; $fwiptables $second_option $third_option  ;  exit 
 esac ; fi
 ####
 ####
-#### english: remove the -gui y go to default output
-#### spanish: borra el -gui va a salida por defecto
+#### english: change the -gui and go to default output
+#### spanish: cambia el -gui y va a salida por defecto
 ####
 ####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
@@ -677,15 +643,11 @@ gui-shell) gui-shell ;  exit ;;
 esac ; fi
 ####
 ####
+#### english: change the -log and save the file
+#### spanish: cambia el -log y guarda el archivo
+####
+####
 case "$first_option" in 
-####
-####
-"$NULL") first_option="mini-options" ;;
-####
-####
-"gui"|"-gui") first_option="-gui" ;;
-####
-####
 "log"|"-log") first_option="-log" 
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
