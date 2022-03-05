@@ -152,8 +152,8 @@ head_principal="$sinco Version $fversion || Use: $fwiptables options ||  $(date)
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$rallica [ CLI ] [ Wait several seconds.. ] [ With aprox $server_waiting seconds ] $rallica" 
-head_waiting_gui="$rallica [ GUI ] [ Wait several seconds.. ] [ With aprox $server_waiting seconds ] $rallica" 
+head_waiting_cli="$rallica [ CLI ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica" 
+head_waiting_gui="$rallica [ GUI ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica" 
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -167,8 +167,8 @@ give_autosave="$fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="echo $rallica [ CLI ] [ Without support CLI for this option ] $rallica"
-message_without_gui="echo $rallica [ GUI ] [ Without support GUI for this option ] $rallica"
+message_without_cli="echo $rallica [ CLI ] [ Without support for CLI for this option ] $rallica"
+message_without_gui="echo $rallica [ GUI ] [ Without support for GUI for this option ] $rallica"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
