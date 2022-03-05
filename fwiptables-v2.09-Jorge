@@ -543,7 +543,6 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ##############################     ALIAS simple y campus
 ##############################     ALIAS simple y campo
-
 ####
 ####
 ##############################     ALIAS SIMPLE
@@ -558,10 +557,15 @@ if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
+#### english:  also txt or cli or gui 
+####
+####
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then first_option="-txt"; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ]; then first_option="-txt"; fi
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ]; then first_option="-cli"; fi
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ]; then first_option="-gui"; fi
+####
+####
 ####
 ####
 ##############################     ALIAS CAMPUS
