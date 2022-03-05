@@ -574,6 +574,7 @@ scan-*) $fwiptables $second_option $third_option ; exit ;;
 log-*) $fwiptables $second_option $third_option ; exit ;;
 license-*) $fwiptables $second_option $third_option ; exit ;;
 ipforward-*) $fwiptables $second_option $third_option ; exit ;;
+*) $fwiptables $second_option $third_option ; exit ;;
 esac; fi
 ####
 ####
@@ -603,8 +604,8 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit
 "radio") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "ole-word") $fwiptables ole-word cli ; exit ;;
 "ole-number") $fwiptables ole-number cli ; exit ;;
-blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-log-search) 
+"blacklist-on") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $fwiptables log-search $pattern ; exit ;; 
 log-*) $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
