@@ -587,6 +587,7 @@ wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit
 #### speed-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "install") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+"howto-uprade") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "uprade") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "ram-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
 "disk-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
@@ -3199,7 +3200,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ole-word" --column="Option list $fwiptables" \
+--list "Gui Principal Menu" "Gui Info Menu" "ole-word" "ole-number" --column="Option list $fwiptables" \
 --text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
 #### 
 #### 
@@ -3208,6 +3209,7 @@ case $selection in
 "Gui Principal Menu") $fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui tool-game ;;
 "ole-word")$fwiptables -gui ole-word ;;
+"ole-number")$fwiptables -gui ole-number ;;
 esac
 ####
 ####
@@ -3752,6 +3754,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   133  "sudo-list" \
   0140 "$cinco [ Tool game option ] $cinco" \
   141  "ole-word" \
+  142  "ole-number" \
   0150 "$cinco [ Tool install ] $cinco" \
   151  "install" \
   152  "howto-upgrade" \
@@ -3814,38 +3817,38 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
 #### 
  case "$menuprincipal" in
  0000) clear ; $fwiptables info ;;
- 0010) clear ; $fwiptables control-guide ;;
- 0020) clear ; $fwiptables control-rules ;;
- 0030) clear ; $fwiptables rules-list ;;
- 0040) clear ; $fwiptables rules-list ;;
- 0050) clear ; $fwiptables rules-list ;;
- 0060) clear ; $fwiptables rules-launch ;;
- 0070) clear ; $fwiptables rules-custom ;;
- 0080) clear ; $fwiptables tool-socket ;;
- 0090) clear ; $fwiptables tool-ipforward ;;
- 0100) clear ; $fwiptables tool-tcp ;;
- 0110) clear ; $fwiptables tool-icmp ;;
- 0120) clear ; $fwiptables tool-udp ;;
- 0130) clear ; $fwiptables tool-sudo ;;
- 0140) clear ; $fwiptables tool-game ;;
- 0150) clear ; $fwiptables tool-install ;;
- 0160) clear ; $fwiptables tool-blacklist ;;
- 0170) clear ; $fwiptables tool-dev ;;
- 0180) clear ; $fwiptables tool-system ;;
- 0190) clear ; $fwiptables show-hardware ;;
- 0200) clear ; $fwiptables show-etc ;;
- 0210) clear ; $fwiptables show-log ;;
- 0220) clear ; $fwiptables show-about ;;
- 0230) clear ; $fwiptables show-help ;; 
- 11) clear ; $fwiptables "info-system" | less ;;
- 12) clear ; $fwiptables "info-net" | less ;;
- 13) clear ; $fwiptables "regen"  ;;
- 14) clear ; $fwiptables "wizard-mini" ;;
- 15) clear ; $fwiptables "wizard-full" ;;
- 21) clear ; $fwiptables stop ;;
- 22) clear ; $fwiptables continue ;;
- 23) clear ; $fwiptables reset ;;
- 24) clear ; $fwiptables list-fw ;;
+ 0010) clear ; $fwiptables cli control-guide ;;
+ 0020) clear ; $fwiptables cli control-rules ;;
+ 0030) clear ; $fwiptables cli rules-list ;;
+ 0040) clear ; $fwiptables cli rules-list ;;
+ 0050) clear ; $fwiptables cli rules-list ;;
+ 0060) clear ; $fwiptables cli rules-launch ;;
+ 0070) clear ; $fwiptables cli rules-custom ;;
+ 0080) clear ; $fwiptables cli tool-socket ;;
+ 0090) clear ; $fwiptables cli tool-ipforward ;;
+ 0100) clear ; $fwiptables cli tool-tcp ;;
+ 0110) clear ; $fwiptables cli tool-icmp ;;
+ 0120) clear ; $fwiptables cli tool-udp ;;
+ 0130) clear ; $fwiptables cli tool-sudo ;;
+ 0140) clear ; $fwiptables cli tool-game ;;
+ 0150) clear ; $fwiptables cli tool-install ;;
+ 0160) clear ; $fwiptables cli tool-blacklist ;;
+ 0170) clear ; $fwiptables cli tool-dev ;;
+ 0180) clear ; $fwiptables cli tool-system ;;
+ 0190) clear ; $fwiptables cli show-hardware ;;
+ 0200) clear ; $fwiptables cli show-etc ;;
+ 0210) clear ; $fwiptables cli show-log ;;
+ 0220) clear ; $fwiptables cli show-about ;;
+ 0230) clear ; $fwiptables cli show-help ;; 
+ 11) clear ; $fwiptables cli info-system  ;;
+ 12) clear ; $fwiptables cli info-net ;;
+ 13) clear ; $fwiptables cli regen  ;;
+ 14) clear ; $fwiptables cli wizard-mini ;;
+ 15) clear ; $fwiptables cli wizard-full ;;
+ 21) clear ; $fwiptables cli stop ;;
+ 22) clear ; $fwiptables cli continue ;;
+ 23) clear ; $fwiptables cli reset ;;
+ 24) clear ; $fwiptables cli list-fw ;;
  25) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
  read -p "Type the firewall name to read   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables show $nombrecillo ;; 
@@ -3855,35 +3858,35 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  27) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
  read -p "Type the firewall name to restore   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables load $nombrecillo ;;
- 28) clear ; $fwiptables "actual" ;;
- 31) clear ; $fwiptables "list" | less ;;
- 32) clear ; $fwiptables "list6" | less ;;
- 33) clear ; $fwiptables "list-filter4" | less ;;
- 34) clear ; $fwiptables "list-filter6" | less ;;
- 35) clear ; $fwiptables "list-forward" | less ;;
- 36) clear ; $fwiptables "list-forward6" | less ;;
- 37) clear ; $fwiptables "list-nat4" | less ;;
- 38) clear ; $fwiptables "list-nat6" | less ;;
- 39) clear ; $fwiptables "list-allrules" | less ;;
- 41) clear ; $fwiptables "listnum" | less ;;
- 42) clear ; $fwiptables "list-forwardnum" | less ;;
- 43) clear ; $fwiptables "listnum6" | less ;;
- 44) clear ; $fwiptables "list-forwardnum6" | less ;;
- 51) clear ; $fwiptables "list-raw4" | less ;;
- 52) clear ; $fwiptables "list-raw6" | less ;;
- 53) clear ; $fwiptables "list-mangle4" | less ;; 
- 54) clear ; $fwiptables "list-mangle6" | less ;;
- 55) clear ; $fwiptables "list-security4" | less ;;
- 56) clear ; $fwiptables "list-security6" | less ;;
- 57) clear ; $fwiptables "list-ebtables" | less ;;
- 58) clear ; $fwiptables "list-arptables" | less ;;
- 61) clear ; $fwiptables "eraserules" ; $fwiptables list  ;;
- 62) clear ; $fwiptables "offline" ; $fwiptables list ;;
- 63) clear ; $fwiptables "allpermisive" ; $fwiptables list  ;;
- 64) clear ; $fwiptables "clientweb" ; $fwiptables list  ;;
- 65) clear ; $fwiptables "serverweb" ; $fwiptables list  ;;
- 66) clear ; $fwiptables "gamesudp" ; $fwiptables list  ;; 
- 67) clear ; $fwiptables "serversamba" ; $fwiptables list ;;
+ 28) clear ; $fwiptables cli actual ;;
+ 31) clear ; $fwiptables cli list ;;
+ 32) clear ; $fwiptables cli list6 ;;
+ 33) clear ; $fwiptables cli list-filter4 ;;
+ 34) clear ; $fwiptables cli list-filter6 ;;
+ 35) clear ; $fwiptables cli list-forward ;;
+ 36) clear ; $fwiptables cli list-forward6 ;;
+ 37) clear ; $fwiptables cli list-nat4 ;;
+ 38) clear ; $fwiptables cli list-nat6 ;;
+ 39) clear ; $fwiptables cli list-allrules ;;
+ 41) clear ; $fwiptables cli listnum ;;
+ 42) clear ; $fwiptables cli list-forwardnum ;;
+ 43) clear ; $fwiptables cli listnum6 ;;
+ 44) clear ; $fwiptables cli list-forwardnum6 ;;
+ 51) clear ; $fwiptables cli list-raw4 ;;
+ 52) clear ; $fwiptables cli list-raw6 ;;
+ 53) clear ; $fwiptables cli list-mangle4 ;; 
+ 54) clear ; $fwiptables cli list-mangle6 ;;
+ 55) clear ; $fwiptables cli list-security4 ;;
+ 56) clear ; $fwiptables cli list-security6 ;;
+ 57) clear ; $fwiptables cli list-ebtables ;;
+ 58) clear ; $fwiptables cli list-arptables ;;
+ 61) clear ; $fwiptables cli eraserules ; $fwiptables cli list  ;;
+ 62) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
+ 63) clear ; $fwiptables cli allpermisive ; $fwiptables cli list  ;;
+ 64) clear ; $fwiptables cli clientweb ; $fwiptables cli list  ;;
+ 65) clear ; $fwiptables cli serverweb ; $fwiptables cli list  ;;
+ 66) clear ; $fwiptables cli gamesudp ; $fwiptables cli list  ;; 
+ 67) clear ; $fwiptables cli serversamba ; $fwiptables cli list ;;
  68) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables custom $archivo ;;
@@ -3940,10 +3943,11 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  131) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $fwiptables sudo-adduser $resolve ;;
  132) clear ; $fwiptables "sudo-deluser" ;;
- 133) clear ; $fwiptables "sudo-list" ;;
- 141) clear ; $fwiptables cli ole-word ;;
+ 133) clear ; $fwiptables cli "sudo-list" ;;
+ 141) clear ; $fwiptables cli "ole-word" ;;
+ 141) clear ; $fwiptables cli "ole-number" ;;
  151) clear ; $zero_option "install" ;;
- 152) clear ; $fwiptables "howto-upgrade" | less ;;
+ 152) clear ; $fwiptables cli "howto-upgrade" | less ;;
  153) clear ; $fwiptables "upgrade" ;;
  161) clear ; $fwiptables blacklist-list ;;
  162) clear ; $fwiptables blacklist-list info ;;
