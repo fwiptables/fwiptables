@@ -194,6 +194,9 @@ fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 ####
+####  english: pause, spanish: pausa
+#### do_pause="read -p 'press [enter] to continue with the $fwiptables cli-menu'"
+####
 ####
 #### english: if wrong in whithout_option
 #### spanish: si esta mal definidad definida whithout_option
@@ -577,28 +580,27 @@ esac; fi
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
 case "$second_option" in 
-wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"nueva-mini-config")  $fwiptables $second_option $third_option ; exit ;;
-"nueva-completa-config") $fwiptables $second_option $third_option ; exit ;;
-"new-mini-config") $fwiptables $second_option $third_option ; exit ;;
-"new-full-config") $fwiptables $second_option $third_option ; exit ;;
-"modify-config") $fwiptables $second_option $third_option ; exit ;;
-"modify-default") $fwiptables $second_option $third_option ; exit ;;
-scan-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"install") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"howto-uprade") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"uprade") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"ram-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"disk-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"glx-speed") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-"radio") $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
+wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ; $fwiptables text-pause ; exit ;;
+"nueva-mini-config")  $fwiptables $second_option $third_option ; $fwiptables text-pause ; exit ;;
+"nueva-completa-config") $fwiptables $second_option $third_option ; $fwiptables text-pause ; exit ;;
+"new-mini-config") $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"new-full-config") $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"modify-config") $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"modify-default") $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+scan-*) $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"install") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"howto-uprade") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"uprade") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"ram-speed") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"disk-speed") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"glx-speed") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+"radio") $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
 "ole-word") $fwiptables ole-word cli ; exit ;;
 "ole-number") $fwiptables ole-number cli ; exit ;;
-blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-log-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-#### ipforward-*) $message_without_cli ; $fwiptables $second_option $third_option ; exit ;;
-*)
-dialog --title " Cli Output || $(date)" --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
+blacklist-*) $message_without_cli ; $fwiptables $second_option $third_option  ; $fwiptables text-pause ; exit ;;
+log-*) $message_without_cli ; $fwiptables $second_option $third_option ; $fwiptables text-pause ; exit ;;
+fw-*)  $message_without_cli ; $fwiptables $second_option $third_option ; $fwiptables text-pause ; exit ;;
+*) dialog --title " Cli Output || $(date)" --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
 ####
 ####
 esac ; fi
@@ -3994,13 +3996,24 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  237) clear ; $fwiptables cli license ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
-#### echo "press [enter] to continue with the $fwiptables cli-menu";  read -s
+ $fwiptables text-pause
  clear ; 
  $fwiptables cli-menu
  exit; fi
 ####
 ####
 #### :rutina-final-cli-menu:
+##############################       english: text-pause: do pause 
+##############################       spanish: text-pause: hace pausa
+#### :rutina-inicial-text-pause:
+####
+####
+if [ "$first_option" = "text-pause" ]; then $nada
+read -p 'press [enter] to continue with the $fwiptables cli-menu'
+fi
+####
+####
+#### :rutina-final-text-pause:
 ##############################       english: version: system script, the version option
 ##############################       spanish: version: script de sistema, la opcion mostrar version
 #### :rutina-inicial-version:
