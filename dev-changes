@@ -207,11 +207,15 @@
 # 2. word-ole renombrado a ole-word. HECHO
 # 3. añadido ole-number con txt con cli y con gui. HECHO
 #
-# changes fwiptables 2.09 en desarrollo
+# changes fwiptables 2.09
 # 
 # 1. añadir ole-number en cli-menu y en gui-menu. HECHO
 # 2. rediseño de cli. HECHO
 # 3. rediseño de cli-menu. HECHO
 # 4. simplificacion de codigo. HECHO
 # 5. varios arreglos. HECHO
+#
+# changes fwiptables 2.10 en desarrollo
+#
+# 1.
 #
