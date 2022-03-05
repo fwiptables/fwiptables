@@ -537,12 +537,8 @@ file_output_filelog="/var/log/fwiptables-filelog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
-##############################       alias for fwiptables       ##############################
-##############################       apodos de fwiptables      ##############################
-####
-####
-##############################     ALIAS simple y campus
-##############################     ALIAS simple y campo
+##############################     ALIAS simple y campus    ##############################
+##############################     ALIAS simple y campo     ##############################
 ####
 ####
 ##############################     ALIAS SIMPLE
