@@ -4022,7 +4022,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
 ####
 ####
 if [ "$first_option" = "text-pause" ]; then $nada
-read -p 'press [enter] to continue with the cli-menu'
+read -p '# [ OK ] press [enter] to continue with the cli-menu    #'
 exit; fi
 ####
 ####
