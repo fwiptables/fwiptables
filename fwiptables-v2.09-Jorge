@@ -3720,12 +3720,12 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   77  "del-config" \
   78  "list-config" \
   0080 "$cinco [ Tool net sockets ] $cinco" \
-  81  "route" \
-  82  "ss" \
-  83  "netstat" \
-  84  "lsof" \
-  85  "tcpdump" \
-  86  "arp" \
+  81  "ss" \
+  82  "netstat" \
+  83  "lsof" \
+  84  "tcpdump" \
+  85  "info-route" \
+  86  "info-nodes" \
   87  "info-listen" \
   88  "info-proxy" \
   0090 "$cinco [ Tool for ipfwarding ] $cinco" \
@@ -3911,26 +3911,26 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  77) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables del-config $archivo ; echo "deleted $archivo" ;;
- 78) clear ; $fwiptables list-config ;;
- 81) clear ; $fwiptables "route" | less ;;
- 82) clear ; $fwiptables "ss"  | less ;;
- 83) clear ; $fwiptables "netstat" | less ;;
- 84) clear ; $fwiptables "lsof" | less ;;
- 85) clear ; $fwiptables "tcpdump" | less ;;
- 86) clear ; $fwiptables arp -a | less ;;
- 87) clear ; $fwiptables info-listen ;;
- 88) clear ; $fwiptables info-proxy ;;
- 91) clear ; $fwiptables "ipforward-list" | less ;;
- 92) clear ; $fwiptables "ipforward-on" | less ;;
- 93) clear ; $fwiptables "ipforward-off" | less ;;
- 101) clear ; $fwiptables speed-ip4 ;;
- 102) clear ; $fwiptables speed-ip6 ;;
- 103) clear ; $fwiptables tracetcp-ip4 ;;
- 104) clear ; $fwiptables tracetcp-ip6 ;;
- 111) clear ; $fwiptables traceicmp-ip4 ;;
- 112) clear ; $fwiptables traceicmp-ip6 ;;
- 113) clear ; $fwiptables ping-ip4 ;;
- 114) clear ; $fwiptables ping-ip6 ;;
+ 78) clear ; $fwiptables cli list-config ;;
+ 81) clear ; $fwiptables cli ss ;;
+ 82) clear ; $fwiptables cli netstat ;;
+ 83) clear ; $fwiptables cli lsof ;;
+ 84) clear ; $fwiptables cli tcpdump ;;
+ 85) clear ; $fwiptables cli info-route ;;
+ 86) clear ; $fwiptables cli info-nodes ;;
+ 87) clear ; $fwiptables cli info-listen ;;
+ 88) clear ; $fwiptables cli info-proxy ;;
+ 91) clear ; $fwiptables cli ipforward-list ;;
+ 92) clear ; $fwiptables cli ipforward-on ;;
+ 93) clear ; $fwiptables cli ipforward-off ;;
+ 101) clear ; $fwiptables cli speed-ip4 ;;
+ 102) clear ; $fwiptables cli speed-ip6 ;;
+ 103) clear ; $fwiptables cli tracetcp-ip4 ;;
+ 104) clear ; $fwiptables cli tracetcp-ip6 ;;
+ 111) clear ; $fwiptables cli traceicmp-ip4 ;;
+ 112) clear ; $fwiptables cli traceicmp-ip6 ;;
+ 113) clear ; $fwiptables cli ping-ip4 ;;
+ 114) clear ; $fwiptables cli ping-ip6 ;;
  121) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fwiptables host $resolve ;;
  122) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
