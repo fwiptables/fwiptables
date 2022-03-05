@@ -209,6 +209,7 @@
 #
 # changes fwiptables 2.09 en desarrollo
 # 
-# 1. añadir ole-number en cli-menu y en gui-menu
-#
+# 1. añadir ole-number en cli-menu y en gui-menu. HECHO
+# 2. rediseño de cli. HECHO
+# 3 rediseño de cli-menu. HECHO
 #
