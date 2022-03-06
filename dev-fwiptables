@@ -120,7 +120,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="2.08-Jorge" ;                                             
+fversion="2.10-Pablo" ;
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
@@ -7573,28 +7573,28 @@ exit; fi
 ####  $command_ip -6 route | grep -i default
 ####  echo $ralla
  echo "$tab [ Network Route ] [ Route ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -4 route 
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ else $command_ip -4 route ; fi
  echo $ralla
  echo "$tab [ Network Route ] [ Route ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -6 route 
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ else $command_ip -6 route ; fi
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"; fi
- $command_ss -l4 | sed 's/   / /g'
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"
+ else $command_ss -l4 | sed 's/   / /g' ; fi
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv6 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"; fi
- $command_ss -l6 | sed 's/   / /g'
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"
+ else $command_ss -l6 | sed 's/   / /g' ; fi
  echo $ralla
  echo "$tab [ private ip ] [ address ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
  echo $ralla
  echo "$tab [ private ip ] [ address ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
- $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
