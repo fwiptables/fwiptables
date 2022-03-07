@@ -217,5 +217,6 @@
 #
 # changes fwiptables 2.10 en desarrollo
 #
-# 1.
+# 1. cambio rules-list por control-rules. HECHO
+# 2. 
 #
