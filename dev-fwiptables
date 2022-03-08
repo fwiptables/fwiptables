@@ -577,10 +577,10 @@ if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ]; then first_opt
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
-case "$second_option" in 
-cli-menu) $fwiptables cli-menu ;  exit ;;
-gui-menu) $fwiptables gui-menu ;  exit ;;
-gui-shell) $fwiptables gui-shell ;  exit ;;
+case "$second_option" in
+cli-menu) first_option="cli-menu"   ;;
+gui-menu) first_option="gui-menu"   ;;
+gui-shell) first_option="gui-shell" ;;
 "ole-word") $fwiptables ole-word txt ; exit ;;
 "ole-number") $fwiptables ole-number txt ; exit ;;
 "list") $fwiptables list4-ip &> $file_temporal_text 
@@ -599,9 +599,9 @@ esac; fi
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
 case "$second_option" in 
-cli-menu) $fwiptables cli-menu ;  exit ;;
-gui-menu) $fwiptables gui-menu ;  exit ;;
-gui-shell) $fwiptables gui-shell ;  exit ;;
+cli-menu) first_option="cli-menu"   ;;
+gui-menu) first_option="gui-menu"   ;;
+gui-shell) first_option="gui-shell" ;;
 wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $fwiptables $second_option $third_option ;  exit ;;
 "nueva-completa-config") $fwiptables $second_option $third_option ;  exit ;;
@@ -637,11 +637,11 @@ esac ; fi
 ####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
 case "$second_option" in 
-cli-menu) cli-menu ;  exit ;;
-gui-menu) gui-menu ;  exit ;;
-gui-shell) gui-shell ;  exit ;;
-"ole-word") $fwiptables ole-word gui ; exit ;;
-"ole-number") $fwiptables ole-number gui ; exit ;;
+cli-menu) first_option="cli-menu"   ;;
+gui-menu) first_option="gui-menu"   ;;
+gui-shell) first_option="gui-shell" ;;
+#### "ole-word") $fwiptables ole-word gui ; exit ;;
+####"ole-number") $fwiptables ole-number gui ; exit ;;
 esac ; fi
 ####
 ####
@@ -1392,7 +1392,7 @@ echo "$tab" "$tab"  "                        list-config show-config modify-conf
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  " Firewall |  control-interface    control-guide       control-rules           "
-echo "$tab" "$tab"  "             rcontrol-list        rules-launch        rules-custom            "
+echo "$tab" "$tab"  "             control-list        rules-launch        rules-custom            "
 echo "$tab" "$tab"  "     Tool |  tool-sockets         tool-forward        tool-tcp                "
 echo "$tab" "$tab"  "             tool-udp             tool-icmp           tool-nmap               "
 echo "$tab" "$tab"  "             tool-sudo            tool-game           tool-system             "
@@ -2649,7 +2649,11 @@ else cp "/tmp/fiptables-$third_option" "$directory_config/$third_option"
 zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
-#### 
+####
+"ole-word") $fwiptables ole-word gui ; exit ;;
+"ole-number") $fwiptables ole-number gui ; exit ;;
+####
+####
 *)
 $fwiptables $second_option $third_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
@@ -2708,7 +2712,11 @@ else cp /tmp/fiptables-modify-default /etc/default/fwiptables;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
-#### 
+####
+"ole-word") $fwiptables ole-word gui ; exit ;;
+"ole-number") $fwiptables ole-number gui ; exit ;;
+####
+####
 *)
 $fwiptables $second_option $third_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
