@@ -1392,7 +1392,7 @@ echo "$tab" "$tab"  "                        list-config show-config modify-conf
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  " Firewall |  control-interface    control-guide       control-rules           "
-echo "$tab" "$tab"  "             control-list        rules-launch        rules-custom            "
+echo "$tab" "$tab"  "             control-list         rules-launch        rules-custom            "
 echo "$tab" "$tab"  "     Tool |  tool-sockets         tool-forward        tool-tcp                "
 echo "$tab" "$tab"  "             tool-udp             tool-icmp           tool-nmap               "
 echo "$tab" "$tab"  "             tool-sudo            tool-game           tool-system             "

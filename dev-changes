@@ -218,5 +218,5 @@
 # changes fwiptables 2.10 en desarrollo
 #
 # 1. cambio rules-list por control-rules. HECHO
-# 2. 
+# 2. arreglo al aviso de xhost en consola tty. HECHO 
 #
