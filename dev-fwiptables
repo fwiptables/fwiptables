@@ -640,8 +640,6 @@ case "$second_option" in
 cli-menu) first_option="cli-menu"   ;;
 gui-menu) first_option="gui-menu"   ;;
 gui-shell) first_option="gui-shell" ;;
-#### "ole-word") $fwiptables ole-word gui ; exit ;;
-####"ole-number") $fwiptables ole-number gui ; exit ;;
 esac ; fi
 ####
 ####
@@ -1325,31 +1323,31 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####   #### spanish: El primero       cortafuego del sistema
 ####
 ####
-if [ "$first_option" = "offline" ];       then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "offline" ];       then $give_cover ;
 echo "$cinco RUNNING FIREWALL OFFLINE" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "allpermisive" ];  then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "allpermisive" ];  then $give_cover ;
 echo "$cinco RUNNING FIREWALL ALLPERMISIVE" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "clientweb" ];     then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "clientweb" ];     then $give_cover ;
 echo "$cinco RUNNING FIREWALL CLIENTWEB" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverweb" ];     then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "serverweb" ];     then $give_cover ;
 echo "$cinco RUNNING FIREWALL SERVERWEB" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serversamba" ];   then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "serversamba" ];   then $give_cover ;
 echo "$cinco RUNNING FIREWALL SERVERSAMBA" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverprint" ];   then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "serverprint" ];   then $give_cover ;
 echo "$cinco RUNNING FIREWALL SERVERPRINT" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "serverssh" ];     then $give_cover ; echo $footer_lineal ; 
+if [ "$first_option" = "serverssh" ];     then $give_cover ;
 echo "$cinco RUNNING FIREWALL SERVERSSH" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "gamesudp" ];     then $give_cover ;  echo $footer_lineal ; 
+if [ "$first_option" = "gamesudp" ];     then $give_cover  ;
 echo "$cinco RUNNING FIREWALL GAMESUDP" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "custom" ];       then $give_cover ;  echo $footer_lineal ; 
+if [ "$first_option" = "custom" ];       then $give_cover  ;
 echo "$cinco RUNNING FIREWALL CUSTOM" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
@@ -8451,7 +8449,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL ALLPERMISIVE ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ allpermisive ]"
 exit; fi
 ####
 ####
@@ -8587,7 +8585,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL CLIENTWEB ]" ; exit ; fi
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ clientweb ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables serverweb:
@@ -8767,7 +8765,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL SERVERWEB ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ serverweb ]"
 exit; fi
 ####
 ####
@@ -8965,7 +8963,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL SERVERSAMBA ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ serversamba ]"
 exit; fi
 ####
 ####
@@ -9146,7 +9144,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL SERVERPRINT ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ serverprint ]"
 exit; fi
 ####
 ####
@@ -9327,7 +9325,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL SERVERSSH ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ serverssh ]"
 exit; fi
 ####
 ####
@@ -9516,7 +9514,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL GAMESUDP ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ gamesudp ]"
 exit; fi
 ####
 ####
@@ -9575,7 +9573,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL OFFLINE ]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ offline ]"
 exit; fi
 ###############################################################################################################
 ###############################################################################################################
@@ -10797,7 +10795,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo "$rallica [ OK ] [ LAUNCH RULES ] [ LAUNCHED FIREWALL CUSTOM ] [$second_option]"
+echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ custom ] [$second_option]"
 exit ; else $nada ; fi
 ####
 ####
