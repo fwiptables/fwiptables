@@ -7871,15 +7871,11 @@ echo "              load : Restore a one firewall iptables"
 echo "            actual : Show the firewall standard actual"
 echo
 echo "$cinco         [ List iptables rules] "
-#### echo
-#### echo "               [The filter table with names]"
 echo
 echo "              list : Like list-filter4 but hiding rules no used"
 echo "             list6 : Like list-filter6 but hiding rules not used"
 echo
 echo "$cinco         [ List the others tables ]"
-#### echo
-#### echo "               [The filter table with numerical]"
 echo
 echo "           listnum : List iptables filter rules from ipv4 in numbers"
 echo "   list-forwardnum : List iptables filter rules foward in numbers"
@@ -7887,8 +7883,6 @@ echo "          listnum6 : List iptables filter rules from ipv6 in numbers"
 echo "  list-forwardnum6 : List iptables filter rules forward ipv6 in numbers"
 echo "      list-forward : List iptables filter rules forward ipv4"
 echo "     list-forward6 : List iptables filter rules forward ipv6"
-#### echo
-#### echo "               [All tables]"
 echo
 echo "      list-filter4 : List iptables filter rules from ipv4"
 echo "      list-filter6 : List iptables filter rules from ipv6"
@@ -7902,8 +7896,6 @@ echo "    list-security4 : List iptables security rules from ipv4"
 echo "    list-security6 : List iptables security rules from ipv6"
 echo "     list-ebtables : List rules ebtables mac of ethernet"
 echo "    list-arptables : List rules arptables arp"
-#### echo
-#### echo "               [ Secondary options ] $cinco"
 echo
 echo "$cinco         [ Launch iptables rules ]"
 echo
@@ -8062,17 +8054,6 @@ echo "   full-options : Show full options"
 echo "           help : Show help in english"
 echo "          ayuda : Show help in spanish"
 echo ""
-echo ""
-echo "$cincuenta Examples"
-echo ""
-echo " $fwiptables custom server-example1.cfg     [Configure firewall custom]"
-echo " $fwiptables eraserules                     [Remove iptables rules]"
-echo " $fwiptables list                           [List iptables rules]"
-echo " $fwiptables help                           [Show this help in english]"
-echo ""
-#### echo "$cincuenta Examples of variables to the configs files $cinco"
-#### echo
-#### cat $defaultfullcfg_eng
 echo
 echo " $fwiptables notes:"
 echo
@@ -8353,16 +8334,6 @@ echo "   full-options : Muestra las opciones"
 echo "           help : Muestra la ayuda en ingles"
 echo "          ayuda : Muestra la ayuda en español"
 echo
-echo "$cincuenta Ejemplos"
-echo
-echo "   $fwiptables custom games-example1.cfg    [lanza un firewall modificado]"
-echo "   $fwiptables eraserules                   [Borra las reglas de iptables] "
-echo "   $fwiptables list                         [Lista las reglas de iptables] "
-echo "   $fwiptables help                         [Muestra la ayuda en ingles] "
-echo
-#### echo "$cincuenta  Ejemplos de las variables de configuración $cinco"
-#### echo
-#### cat $defaultfullcfg_spa
 echo
 echo " Notas de $fwiptables :"
 echo
