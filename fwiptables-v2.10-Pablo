@@ -1456,7 +1456,7 @@ echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols servic
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
-echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
+echo "$tab" "$tab"  "    show-help         | all-help help ayuda notes options info                "
 echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Description |                          | Examples |                    " 
@@ -1539,7 +1539,7 @@ echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols servic
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
 echo "$tab" "$tab"  "                        config-eng config-spa license                         "
-echo "$tab" "$tab"  "    show-help         | long-help help ayuda notes options info               "
+echo "$tab" "$tab"  "    show-help         | all-help help ayuda notes options info                "
 echo "$tab" "$tab"  "                        group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
@@ -1547,12 +1547,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-show-options:
-##############################       english: long-help: long help        ##############################
-##############################       spanish: larga-opcion: larga ayuda   ##############################
-#### :rutina-inicial-long-help:
+##############################       english: all-help: long help        ##############################
+##############################       spanish: toda-opcion: larga ayuda   ##############################
+#### :rutina-inicial-all-help:
 ####
 ####
-if [ "$first_option" = "long-help" ]; then $give_cover
+if [ "$first_option" = "all-help" ]; then $give_cover
 echo "$ralla [ $first_option ] [ help in english and spanish ] $ralla"
 echo
 echo "[ English or spanish ]"
@@ -1560,8 +1560,8 @@ echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help
 echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
 echo
 echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish   ] [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ] [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ all-help in english and spanish   ] [ Type:     $fwiptables all-help ]"
+echo "$ralla [ toda-ayuda en ingles y en español ] [ Escribe:  $fwiptables all-help ]"
 echo
 $fwiptables intro
 echo
@@ -1638,7 +1638,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-long-help:
+#### :rutina-final-all-help:
 ##############################       english: list-config: list some config
 ##############################       spanish: list-config: lista alguna config
 #### :rutina-inicial-list-config:
@@ -2395,7 +2395,7 @@ echo "$ralla [ $first_option ] [ show help ]"
 echo "$rallica [ Show help ]"
 echo "$rallica [ Mostrar ayuda ]"
 echo
-echo "        long-help : Show help in english and spanish"
+echo "         all-help : Show help in english and spanish"
 echo "                  : Muestra la ayuda en ingles y en español"
 echo "             help : Show help in english"
 echo "                  : Muestra la ayuda en ingles"
@@ -3495,7 +3495,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "mini-options" "full-options" \
-"long-help" "help" "ayuda" "notes" "license" \
+"all-help" "help" "ayuda" "notes" "license" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show help] [$fwiptables]" )
 #### 
 #### 
@@ -3505,7 +3505,7 @@ case $selection in
 "Gui Info Menu") $fwiptables -gui show-help ;;
 "mini-options")$fwiptables -gui mini-options ;;
 "full-options")$fwiptables -gui full-options ;;
-"long-help") $fwiptables -gui long-help ;;
+"all-help") $fwiptables -gui all-help ;;
 "help") $fwiptables -gui help ;;
 "ayuda") $fwiptables -gui ayuda ;;
 "notes") $fwiptables -gui notes ;;
@@ -3807,7 +3807,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   232  "full-options" \
   233  "help" \
   234  "ayuda" \
-  235  "long-help" \
+  235  "all-help" \
   236  "notes" \
   237  "license" \
  )"  
@@ -3991,7 +3991,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  232) clear ; $fwiptables cli full-options ;;
  233) clear ; $fwiptables cli help ;;
  234) clear ; $fwiptables cli ayuda ;;
- 235) clear ; $fwiptables cli long-help ;;
+ 235) clear ; $fwiptables cli all-help ;;
  236) clear ; $fwiptables cli notes ;;
  237) clear ; $fwiptables cli license ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
@@ -7830,8 +7830,8 @@ echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help
 echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
 echo
 echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish   ] [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ] [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ all-help in english and spanish   ] [ Type:     $fwiptables all-help ]"
+echo "$ralla [ toda-ayuda en ingles y en español ] [ Escribe:  $fwiptables all-help ]"
 echo
 $fwiptables intro
 echo
@@ -8055,7 +8055,7 @@ echo "           help : Show help in english"
 echo "          ayuda : Show help in spanish"
 echo ""
 echo
-echo "$ralla $fwiptables notes:"
+echo "$ralla firewall notes $ralla"
 echo
 echo
 echo "$cincuenta  [vpn]"
@@ -8110,8 +8110,8 @@ echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help
 echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
 echo
 echo "[ English and Spanish ]"
-echo "$ralla [ Long-help in english and spanish   ] [ Type:     $fwiptables long-help ]"
-echo "$ralla [ Larga-ayuda en ingles y en español ] [ Escribe:  $fwiptables long-help ]"
+echo "$ralla [ all-help in english and spanish   ] [ Type:     $fwiptables all-help ]"
+echo "$ralla [ toda-ayuda en ingles y en español ] [ Escribe:  $fwiptables all-help ]"
 echo
 $fwiptables intro
 echo
@@ -8335,7 +8335,7 @@ echo "           help : Muestra la ayuda en ingles"
 echo "          ayuda : Muestra la ayuda en español"
 echo
 echo
-echo "$ralla Notas de $fwiptables :"
+echo "$ralla Notas de firewall $ralla"
 echo
 echo
 echo "$cincuenta  [vpn]"
