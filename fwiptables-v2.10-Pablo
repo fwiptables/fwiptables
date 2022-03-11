@@ -8055,7 +8055,7 @@ echo "           help : Show help in english"
 echo "          ayuda : Show help in spanish"
 echo ""
 echo
-echo " $fwiptables notes:"
+echo "$ralla $fwiptables notes:"
 echo
 echo
 echo "$cincuenta  [vpn]"
@@ -8335,7 +8335,7 @@ echo "           help : Muestra la ayuda en ingles"
 echo "          ayuda : Muestra la ayuda en español"
 echo
 echo
-echo " Notas de $fwiptables :"
+echo "$ralla Notas de $fwiptables :"
 echo
 echo
 echo "$cincuenta  [vpn]"
