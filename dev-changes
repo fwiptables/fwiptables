@@ -219,4 +219,7 @@
 #
 # 1. cambio rules-list por control-rules. HECHO
 # 2. arreglo al aviso de xhost en consola tty. HECHO 
+# 3. añadido colour-rgb convierte a hex. HECHO
+# 4. añaiddo colour-hex convierte a rgb. HECHO
 #
+
