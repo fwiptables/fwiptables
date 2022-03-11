@@ -221,5 +221,6 @@
 # 2. arreglo al aviso de xhost en consola tty. HECHO 
 # 3. añadido colour-rgb convierte a hex. HECHO
 # 4. añaiddo colour-hex convierte a rgb. HECHO
+# 5. long-help cambiado a all-help. HECHO
 #
 
