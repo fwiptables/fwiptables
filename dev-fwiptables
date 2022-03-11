@@ -1443,7 +1443,7 @@ echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate   
 echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$tab" "$tab"  "    tool-game         | ole-word ole-number                                             "
+echo "$tab" "$tab"  "    tool-game         | ole-word ole-number colour-rgb colour-hex             "
 echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
@@ -1514,7 +1514,7 @@ echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate   
 echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$tab" "$tab"  "    tool-game         | ole-word ole-number                                             "
+echo "$tab" "$tab"  "    tool-game         | ole-word ole-number colour-rgb colour-hex             "
 echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
@@ -2033,6 +2033,10 @@ echo "         ole-word : Play game to discover a random word with five digits"
 echo "                  : Juega a descubrir una palabra aleatoria de cinco caracteres"
 echo "       ole-number : Play game to discover a random number with five digits"
 echo "                  : Juega a descubrir un numero aleatorio de cinco digitos"
+echo "       colour-hex : Convert one number hexadecimal in rgb"
+echo "                  : Convierte un numero hexadecimal en rgb"
+echo "       colour-rgb : Convert one number rgb in hexadecimal"
+echo "                  : Convierte un numero rgb en hexadecimal"
 echo $footer_lineal
 exit; fi
 ####
@@ -7984,6 +7988,8 @@ echo "$cinco         [ Tool game ]"
 echo
 echo "         ole-word : Play game to discover a random word with five digits"
 echo "       ole-number : Play game to discover a random number with five digits"
+echo "      colour-hex  : convert one number hexadecimal in rgb"
+echo "      colour-rgb  : convert one number rgb in hexadecimal"
 echo
 echo "$cinco         [ Tool system ]"
 echo
@@ -8273,6 +8279,8 @@ echo "$cinco         [ Herramienta de juego ]"
 echo
 echo "   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres"
 echo "   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos"
+echo "   colour-hex  : convierte un numero hexadecimal en rgb"
+echo "   colour-rgb  : convierte un numero rgb en hexadecimal"
 echo
 echo "$cinco         [ Herramienta de sistema ]"
 echo
