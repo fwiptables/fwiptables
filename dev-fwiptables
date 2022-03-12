@@ -4644,7 +4644,6 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
- case $command_netstat_nat in
  if [ "$command_netstat_nat" = "$NULL" ]; then echo "$cinco Install netstat-nat"; exit; fi
  echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
  echo $header_lineal
