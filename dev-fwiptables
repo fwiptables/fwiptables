@@ -8042,10 +8042,16 @@ echo "     config-spa : config example with comments in spanish"
 echo
 echo "$cinco         [ Show help ]"
 echo
-echo "   full-options : Show full options"
+echo "       all-help : Show help in spanish and in english"
+echo "           info : Show group options"
+echo "  group-options : show group options"
+echo "   mini-options : Show necesary options for firewall"
+echo "   full-options : Show the full options"
+echo "        options : Show the full options"
 echo "           help : Show help in english"
 echo "          ayuda : Show help in spanish"
-echo ""
+echo "          notes : Show firewall notes"
+echo
 echo
 echo "$ralla firewall notes $ralla"
 echo
@@ -8321,10 +8327,16 @@ echo "     config-eng : Ejemplo de config con comentarios en ingles"
 echo "     config-spa : Ejemplo de config con comentarios en castellano"
 echo
 echo "$cinco         [ Mostrar ayuda ]"
-echo
+echo 
+echo "       all-help : Muestra la ayuda en español y en ingles"
+echo "           info : Muestra las opciones de grupo"
+echo "  group-options : Muestra las opciones de grupo"
+echo "   mini-options : Muestra las opciones necesarias"
 echo "   full-options : Muestra las opciones"
+echo "        options : Muestra las opciones"
 echo "           help : Muestra la ayuda en ingles"
 echo "          ayuda : Muestra la ayuda en español"
+echo "          notes : Muestra notas de firewall"
 echo
 echo
 echo "$ralla Notas de firewall $ralla"
