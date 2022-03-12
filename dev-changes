@@ -215,7 +215,7 @@
 # 4. simplificacion de codigo. HECHO
 # 5. varios arreglos. HECHO
 #
-# changes fwiptables 2.10 en desarrollo
+# changes fwiptables 2.10
 #
 # 1. cambio rules-list por control-rules. HECHO
 # 2. arreglo al aviso de xhost en consola tty. HECHO 
@@ -223,4 +223,7 @@
 # 4. añaiddo colour-hex convierte a rgb. HECHO
 # 5. long-help cambiado a all-help. HECHO
 #
-
+# changes fwiptables 2.11 en desarrollo
+#
+# 1.
+#
