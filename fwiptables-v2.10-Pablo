@@ -6387,7 +6387,7 @@ $fwiptables stop
 ####
 if [ "$first_option" = "colour-rgb" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
-echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: 255000255 ]"
+echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: fwiptables colour-rgb 255000255 ]"
 else
 rgb="$(echo "$second_option" | cut -c -9)"
 ##
@@ -6419,7 +6419,7 @@ fi; exit ; fi
 ####
 if [ "$first_option" = "colour-hex" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
-echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: FF00FF ]"
+echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: fwiptables colour-hex FF00FF ]"
 else
 hexadecimal="$(echo $second_option | tr '[:lower:]' '[:upper:]'| cut -c 1-6)"
 ##
