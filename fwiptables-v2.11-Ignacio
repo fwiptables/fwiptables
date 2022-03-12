@@ -456,15 +456,15 @@ $fwiptables regen &> /dev/null
 echo "$cinco [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
 echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
 echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$tab [ OK ] [ New config files installed ]"
+echo "$rallica [ OK ] [ New config files installed ]"
 #### 
 #### 
 ####  english: modes of file 
 ####  spanish: modos de archivo
 #### 
 #### 
-echo "$tab [ OK ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
-echo "$tab [ OK ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
+echo "$rallica [ OK ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
+echo "$rallica [ OK ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
 echo "$footer_lineal"
 exit; fi
 ####
