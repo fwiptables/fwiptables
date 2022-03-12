@@ -225,5 +225,6 @@
 #
 # changes fwiptables 2.11 en desarrollo
 #
-# 1. change in examples
+# 1. cambio de ejemplos en options. HECHO
+# 2. añade mas informacion en help y ayuda. HECHO
 #
