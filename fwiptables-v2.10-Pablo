@@ -4535,7 +4535,7 @@ exit; fi
  if [ "$first_option" = "info-route" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show route tables ]"
  echo $header_lineal
- case $command_ip in  $NULL) echo "$tab [ Install ip command ]" ; exit ;; esac
+ if [ "$command_ip" = "$NULL" ]; then echo "$cinco Install ip"; exit; fi
  echo "$rallica [ ip route ipv4 ]"
  echo "$($command_ip -4 route)"
  echo $ralla
@@ -4552,9 +4552,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ss" ]; then  $give_cover
- case $command_ss in "$NULL") echo "$tab [ Install ss command ]" ; exit ;; esac
  echo "$ralla [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
+ if [ "$command_ss" = "$NULL" ]; then echo "$cinco Install ss"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
  $command_ss -a6
  echo "$ralla"
@@ -4571,9 +4571,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "lsof" ]; then $give_cover
- case $command_lsof in "$NULL") echo "$tab [Install lsof]" ; exit ;; esac
  echo "$ralla [ $first_option ] [ Show sockets with lsof ]"
  echo $header_lineal
+ if [ "command_lsof" = "$NULL" ]; then echo "$cinco Install lsof"; exit; fi
  echo "$tab [The sockets with lsof ipv6 ]"
  $command_lsof -i | grep -i ipv6
  echo $ralla
@@ -4590,10 +4590,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat" ]; then  $give_cover
- case $command_netstat in
- "$NULL") echo "$tab [Install netstat]" ; exit ;; esac
  echo "$ralla [ $first_option ] [ Show sockets with netstat ]"
  echo $header_lineal
+ if [ "$command_netstat" = "$NULL" ]; then echo "$cinco Install netstat"; exit; fi
  echo "$tab [The sockets list with netstat ]"
  $command_netstat -a -4 -6
  echo $footer_lineal
@@ -4609,14 +4608,13 @@ exit; fi
  if [ "$first_option" = "info-listen" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
+ if [ "$command_ss" = "$NULL" ]; then echo "$cinco Install ss"; exit; fi
  echo "$tab info socket list:"
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"; fi
  $command_ss -l4 | sed 's/   / /g'
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv6 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"; fi
  $command_ss -l6 | sed 's/   / /g'
  echo $ralla
  echo $footer_lineal
@@ -4647,7 +4645,7 @@ exit; fi
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
  case $command_netstat_nat in
- "$NULL") echo "$tab [Install netstat-nat]" ; exit ;; esac
+ if [ "$command_netstat_nat" = "$NULL" ]; then echo "$cinco Install netstat-nat"; exit; fi
  echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
  echo $header_lineal
  echo "$tab [ The devices list with netstat for nat ]"
@@ -5483,7 +5481,7 @@ exit; fi
  echo $header_lineal
  echo $rallica
  echo local net: ip lan
- $command_ip -4 route ls | grep -iv default
+ $command_ip -4 route | grep -iv default
  echo $rallica
  echo local scan: arp lan
  echo $head_waiting_gui
@@ -7641,11 +7639,6 @@ exit; fi
  echo "$ralla [ $first_option ] [ show info about net ]"
  echo $header_lineal
  echo $ralla
-#### echo "$tab [ Network Route ] [ Default network ]"
-####  if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"; fi
-####  $command_ip -4 route | grep -i default
-####  $command_ip -6 route | grep -i default
-####  echo $ralla
  echo "$tab [ Network Route ] [ Route ipv4 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
  else $command_ip -4 route ; fi
