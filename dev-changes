@@ -223,7 +223,7 @@
 # 4. añaiddo colour-hex convierte a rgb. HECHO
 # 5. long-help cambiado a all-help. HECHO
 #
-# changes fwiptables 2.11 en desarrollo
+# changes fwiptables 2.11
 #
 # 1. cambio de ejemplos en options. HECHO
 # 2. añade mas informacion en help y ayuda. HECHO
@@ -240,4 +240,8 @@
 # 13. actualizacion de cli-menu. HECHO
 # 14. actualizacion de gui-menu. HECHO
 # 15. resolv.conf incluye a resolv.conf a resolv.conf.head y a resolv.conf.tail
+#
+# changes fwiptables 2.12 en desarrollo
+#
+# 1.
 #
