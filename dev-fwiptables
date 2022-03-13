@@ -3181,8 +3181,8 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ole-word" "ole-number" --column="Option list $fwiptables" \
---text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
+--list "Gui Principal Menu" "Gui Info Menu" "ole-word" "ole-number" "colour-rgb" "colour-hex" \
+--column="Option list $fwiptables" --text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
 #### 
 #### 
 case $selection in
@@ -3191,6 +3191,12 @@ case $selection in
 "Gui Info Menu") $fwiptables -gui tool-game ;;
 "ole-word")$fwiptables -gui ole-word ;;
 "ole-number")$fwiptables -gui ole-number ;;
+"colour-rgb")
+onecolour="$(zenity $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
+$fwiptables gui colour-rgb $onecolour ;;
+"colour-hex") 
+onecolour="$(zenity $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
+$fwiptables gui colour-hex $onecolour ;;
 esac
 ####
 ####
