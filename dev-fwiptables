@@ -3622,155 +3622,152 @@ case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
   0000 "$cinco $tab [$fwiptables cli-menu] $tab $cinco" \
-  0100 "$cinco [ Tool guide to begin ] $cinco" \
-  11  "info-system" \
-  12  "info-net" \
-  13  "regen" \
-  14  "wizard-mini" \
-  15  "wizard-full" \
-  0020 "$cinco [ Control rules with firewall standard ] $cinco" \
-  21  "stop" \
-  22  "continue" \
-  23  "reset" \
-  24  "list-fw"  \
-  25  "show" \
-  26  "save" \
-  27  "load" \
-  28  "actual" \
-  0030 "$cinco [ List rules alphabetical ] $cinco" \
-  31  "list" \
-  32  "list6"  \
-  33  "list-filter4" \
-  34  "list-filter6" \
-  35  "list-forward" \
-  36  "list-forward6" \
-  37  "list-nat4" \
-  38  "list-nat6" \
-  39  "list-allrules" \
-  0040 "$cinco [ List rules numerical ] $cinco" \
-  41  "listnum" \
-  42  "list-forwardnum" \
-  43  "listnum6" \
-  44  "list-forwardnum6" \
-  0050 "$cinco [ List other tables ] $cinco"  \
-  51  "list-raw4" \
-  52  "list-raw6" \
-  53  "list-mangle4" \
-  54  "list-mangle6" \
-  55  "list-security4" \
-  56  "list-security6" \
-  57  "list-ebtables" \
-  58  "list-arptables" \
-  0060 "$cinco [ Launch rules iptables ] $cinco" \
-  61  "eraserules" \
-  62  "offline" \
-  63  "allpermisive" \
-  64  "clientweb" \
-  65  "serverweb" \
-  66  "gamesudp" \
-  67  "serversamba" \
-  68  "custom cfg" \
-  0070 "$cinco [ Tool custom rules configurations cfg ] $cinco" \
-  71  "new-full-config" \
-  72  "nueva-completa-config" \
-  73  "new-mini-config" \
-  74  "nueva-mini-config" \
-  75  "show-config" \
-  76  "modify-config" \
-  77  "del-config" \
-  78  "list-config" \
-  0080 "$cinco [ Tool net sockets ] $cinco" \
-  81  "ss" \
-  82  "netstat" \
-  83  "lsof" \
-  84  "tcpdump" \
-  85  "info-route" \
-  86  "info-nodes" \
-  87  "info-listen" \
-  88  "info-proxy" \
-  0090 "$cinco [ Tool for ipfwarding ] $cinco" \
-  91  "ipforward-list" \
-  92  "ipforward-on" \
-  93  "ipforward-off" \
-  0100 "$cinco [ Tool tcp ] $cinco " \
-  101   "speed-ip4" \
-  102   "speed-ip6" \
-  103   "tracetcp-ip4" \
-  104   "tracetcp-ip6" \
-  0110 "$cinco [ Tool icmp ] $cinco" \
-  111   "traceicmp-ip4" \
-  112   "traceicmp-ip6" \
-  113   "ping-ip4" \
-  114   "ping-ip6" \
-  0120 "$cinco [ Tool udp ] $cinco"  \
-  121  "host" \
-  122  "dig" \
-  123  "resolveip" \
-  124  "geoip" \
-  125  "ntpdate" \
-  0130 "$cinco [ Tool sudo operations ] $cinco"  \
-  131  "sudo-adduser" \
-  132  "sudo-deluser" \
-  133  "sudo-list" \
-  0140 "$cinco [ Tool game option ] $cinco" \
-  141  "ole-word" \
-  142  "ole-number" \
-  143  "colour-rgb" \
-  144  "colour-hex" \
-  0150 "$cinco [ Tool install ] $cinco" \
-  151  "install" \
-  152  "howto-upgrade" \
-  153  "upgrade" \
-  0160 "$cinco [ Tool blacklist ] $cinco" \
-  161  "blacklist-list" \
-  162  "blacklist-list info" \
-  163  "blacklist-on" \
-  164  "blacklist-off" \
-  0170 "$cinco [ Tool dev ] $cinco" \
-  171  "new-versions" \
-  172  "dev-version" \
-  173  "dev-changes" \
-  0180 "$cinco [ Tool system program ] $cinco" \
-  181  "free-ram" \
-  182  "speed-ram" \
-  183  "speed-disk" \
-  184  "speed-glx" \
-  185  "radio" \
-  0190 "$cinco [ Show hardware system ] $cinco" \
-  191  "lpinfo" \
-  192  "lsblk" \
-  193  "lsusb" \
-  194  "lscpu" \
-  195  "lspci" \
-  196  "lsgpu" \
-  197  "lshw" \
-  0200 "$cinco [ Show etc configurations ] $cinco" \
-  201  "hosts" \
-  202  "protocols" \
-  203  "services" \
-  204  "hosts.allow" \
-  205  "hosts.deny" \
-  206  "show-default" \
-  207  "modify-default" \
-  0210 "$cinco [ Show log registry ] $cinco" \
-  211  "log-ssh" \
-  212  "log-search" \
-  213  "fw-sendedlog" \
-  214  "fw-autolog" \
-  0220 "$cinco [ Show about ] $cinco" \
-  221  "about" \
-  222  "depends" \
-  223  "examples" \
-  224  "config-eng" \
-  225  "config-spa" \
-  0230 "$cinco [ Show help global options ] $cinco" \
-  231  "mini-options" \
-  232  "full-options" \
-  233  "help" \
-  234  "ayuda" \
-  235  "all-help" \
-  236  "notes" \
-  237  "license" \
+  0100 "$cinco [ Full Options ] $cinco" \
+  0200 "$cinco [ Firewall Rules ] $cinco" \
+  0201  "stop" \
+  0202  "continue" \
+  0203  "reset" \
+  0204  "list-fw"  \
+  0205  "show" \
+  0206  "save" \
+  0207  "load" \
+  0208  "actual" \
+  0300 "$cinco [ Firewall List	 ] $cinco" \
+  0301  "list" \
+  0302  "list6"  \
+  0303  "list-filter4" \
+  0304  "list-filter6" \
+  0305  "list-forward" \
+  0306  "list-forward6" \
+  0307  "list-nat4" \
+  0308  "list-nat6" \
+  0309  "list-allrules" \
+  0310  "listnum" \
+  0311  "list-forwardnum" \
+  0312  "listnum6" \
+  0313  "list-forwardnum6" \
+  0314  "list-raw4" \
+  0315  "list-raw6" \
+  0316  "list-mangle4" \
+  0317  "list-mangle6" \
+  0318  "list-security4" \
+  0319  "list-security6" \
+  0320  "list-ebtables" \
+  0321  "list-arptables" \
+  0400 "$cinco [ Firewall Launch ] $cinco" \
+  0401  "eraserules" \
+  0402  "wizard-mini" \
+  0403  "wizard-full" \
+  0404  "offline" \
+  0405  "allpermisive" \
+  0406  "clientweb" \
+  0407  "serverweb" \
+  0408  "gamesudp" \
+  0409  "serversamba" \
+  0410  "custom cfg" \
+  0500 "$cinco [ Firewall Custom ] $cinco" \
+  0501  "new-full-config" \
+  0502  "nueva-completa-config" \
+  0503  "new-mini-config" \
+  0504  "nueva-mini-config" \
+  0505  "show-config" \
+  0506  "modify-config" \
+  0507  "del-config" \
+  0508  "list-config" \
+  0600 "$cinco [ Tool Sockets ] $cinco" \
+  0601  "ss" \
+  0602  "netstat" \
+  0603  "lsof" \
+  0604  "tcpdump" \
+  0605  "info-route" \
+  0606  "info-nodes" \
+  0607  "info-listen" \
+  0608  "info-proxy" \
+  0609  "info-net" \
+  0610  "info-system" \
+  0700 "$cinco [ Tool Ipfwarding ] $cinco" \
+  0701  "ipforward-list" \
+  0702  "ipforward-on" \
+  0703  "ipforward-off" \
+  0800 "$cinco [ Tool Tcp ] $cinco " \
+  0801   "speed-ip4" \
+  0802   "speed-ip6" \
+  0803   "tracetcp-ip4" \
+  0804   "tracetcp-ip6" \
+  0900 "$cinco [ Tool Icmp ] $cinco" \
+  0901   "traceicmp-ip4" \
+  0902   "traceicmp-ip6" \
+  0903   "ping-ip4" \
+  0904   "ping-ip6" \
+  1000 "$cinco [ Tool Udp ] $cinco"  \
+  1001  "host" \
+  1002 "dig" \
+  1003  "resolveip" \
+  1004  "geoip" \
+  1005  "ntpdate" \
+  1100 "$cinco [ Tool Sudo ] $cinco"  \
+  1101  "sudo-adduser" \
+  1002  "sudo-deluser" \
+  1003  "sudo-list" \
+  1200 "$cinco [ Tool Game ] $cinco" \
+  1201  "ole-word" \
+  1202  "ole-number" \
+  1203  "colour-rgb" \
+  1204  "colour-hex" \
+  1300 "$cinco [ Tool Install ] $cinco" \
+  1301  "install" \
+  1302  "howto-upgrade" \
+  1303  "upgrade" \
+  1400 "$cinco [ Tool Blacklist ] $cinco" \
+  1401  "blacklist-list" \
+  1402  "blacklist-list info" \
+  1403  "blacklist-on" \
+  1404  "blacklist-off" \
+  1500 "$cinco [ Tool Dev ] $cinco" \
+  1501  "new-versions" \
+  1502  "dev-version" \
+  1502  "dev-changes" \
+  1600 "$cinco [ Tool System ] $cinco" \
+  1601  "free-ram" \
+  1602  "speed-ram" \
+  1603  "speed-disk" \
+  1604  "speed-glx" \
+  1605  "radio" \
+  1700 "$cinco [ Show Hardware ] $cinco" \
+  1701  "lpinfo" \
+  1702  "lsblk" \
+  1703  "lsusb" \
+  1704  "lscpu" \
+  1705  "lspci" \
+  1706  "lsgpu" \
+  1707  "lshw" \
+  1800 "$cinco [ Show Etc ] $cinco" \
+  1801  "hosts" \
+  1802  "protocols" \
+  1803  "services" \
+  1804  "hosts.allow" \
+  1805  "hosts.deny" \
+  1806  "show-default" \
+  1807  "modify-default" \
+  1900 "$cinco [ Show Log ] $cinco" \
+  1901  "log-ssh" \
+  1902  "log-search" \
+  1903  "fw-sendedlog" \
+  1904  "fw-autolog" \
+  2000 "$cinco [ Show About ] $cinco" \
+  2001  "about" \
+  2002  "depends" \
+  2003  "examples" \
+  2004  "config-eng" \
+  2005  "config-spa" \
+  2100 "$cinco [ Show Help ] $cinco" \
+  2101  "mini-options" \
+  2102  "full-options" \
+  2103  "help" \
+  2104  "ayuda" \
+  2105  "all-help" \
+  2106  "notes" \
+  2107  "license" \
  )"  
 #### 
 #### 
@@ -3778,187 +3775,186 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
 #### 
 #### 
  case "$menuprincipal" in
+################################
  0000) clear ; $fwiptables info ;;
- 0010) clear ; $fwiptables cli control-guide ;;
- 0020) clear ; $fwiptables cli firewall-rules ;;
- 0030) clear ; $fwiptables cli firewall-list ;;
- 0040) clear ; $fwiptables cli firewall-list ;;
- 0050) clear ; $fwiptables cli firewall-list ;;
- 0060) clear ; $fwiptables cli firewall-launch ;;
- 0070) clear ; $fwiptables cli firewall-custom ;;
- 0080) clear ; $fwiptables cli tool-socket ;;
- 0090) clear ; $fwiptables cli tool-ipforward ;;
- 0100) clear ; $fwiptables cli tool-tcp ;;
- 0110) clear ; $fwiptables cli tool-icmp ;;
- 0120) clear ; $fwiptables cli tool-udp ;;
- 0130) clear ; $fwiptables cli tool-sudo ;;
- 0140) clear ; $fwiptables cli tool-game ;;
- 0150) clear ; $fwiptables cli tool-install ;;
- 0160) clear ; $fwiptables cli tool-blacklist ;;
- 0170) clear ; $fwiptables cli tool-dev ;;
- 0180) clear ; $fwiptables cli tool-system ;;
- 0190) clear ; $fwiptables cli show-hardware ;;
- 0200) clear ; $fwiptables cli show-etc ;;
- 0210) clear ; $fwiptables cli show-log ;;
- 0220) clear ; $fwiptables cli show-about ;;
- 0230) clear ; $fwiptables cli show-help ;; 
- 11) clear ; $fwiptables cli info-system  ;;
- 12) clear ; $fwiptables cli info-net ;;
- 13) clear ; $fwiptables cli regen  ;;
- 14) clear ; $fwiptables cli wizard-mini ;;
- 15) clear ; $fwiptables cli wizard-full ;;
- 21) clear ; $fwiptables cli stop ;;
- 22) clear ; $fwiptables cli continue ;;
- 23) clear ; $fwiptables cli reset ;;
- 24) clear ; $fwiptables cli list-fw ;;
- 25) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
+ 0100) clear ; $fwiptables cli options ;;
+ 0200) clear ; $fwiptables cli firewall-rules ;;
+ 0300) clear ; $fwiptables cli firewall-list ;;
+ 0400) clear ; $fwiptables cli firewall-launch ;;
+ 0500) clear ; $fwiptables cli firewall-custom ;;
+ 0600) clear ; $fwiptables cli tool-socket ;;
+ 0700) clear ; $fwiptables cli tool-ipforward ;;
+ 0800) clear ; $fwiptables cli tool-tcp ;;
+ 0900) clear ; $fwiptables cli tool-icmp ;;
+ 1000) clear ; $fwiptables cli tool-udp ;;
+ 1100) clear ; $fwiptables cli tool-sudo ;;
+ 1200) clear ; $fwiptables cli tool-game ;;
+ 1300) clear ; $fwiptables cli tool-install ;;
+ 1400) clear ; $fwiptables cli tool-blacklist ;;
+ 1500) clear ; $fwiptables cli tool-dev ;;
+ 1600) clear ; $fwiptables cli tool-system ;;
+ 1700) clear ; $fwiptables cli show-hardware ;;
+ 1800) clear ; $fwiptables cli show-etc ;;
+ 1900) clear ; $fwiptables cli show-log ;;
+ 1000) clear ; $fwiptables cli show-about ;;
+ 2100) clear ; $fwiptables cli show-help ;;
+################################
+ 0201) clear ; $fwiptables cli stop ;;
+ 0202) clear ; $fwiptables cli continue ;;
+ 0203) clear ; $fwiptables cli reset ;;
+ 0204) clear ; $fwiptables cli list-fw ;;
+ 0205) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
  read -p "Type the firewall name to read   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables show $nombrecillo ;; 
- 26)archivo="$(dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+ 0206)archivo="$(dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ;  echo "$cincuenta saved $archivo" ; $fwiptables save $archivo ;;
- 27) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
+ 0207) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
  read -p "| Type the firewall name to restore |   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables load $nombrecillo ;;
- 28) clear ; $fwiptables cli actual ;;
- 31) clear ; $fwiptables cli list ;;
- 32) clear ; $fwiptables cli list6 ;;
- 33) clear ; $fwiptables cli list-filter4 ;;
- 34) clear ; $fwiptables cli list-filter6 ;;
- 35) clear ; $fwiptables cli list-forward ;;
- 36) clear ; $fwiptables cli list-forward6 ;;
- 37) clear ; $fwiptables cli list-nat4 ;;
- 38) clear ; $fwiptables cli list-nat6 ;;
- 39) clear ; $fwiptables cli list-allrules ;;
- 41) clear ; $fwiptables cli listnum ;;
- 42) clear ; $fwiptables cli list-forwardnum ;;
- 43) clear ; $fwiptables cli listnum6 ;;
- 44) clear ; $fwiptables cli list-forwardnum6 ;;
- 51) clear ; $fwiptables cli list-raw4 ;;
- 52) clear ; $fwiptables cli list-raw6 ;;
- 53) clear ; $fwiptables cli list-mangle4 ;; 
- 54) clear ; $fwiptables cli list-mangle6 ;;
- 55) clear ; $fwiptables cli list-security4 ;;
- 56) clear ; $fwiptables cli list-security6 ;;
- 57) clear ; $fwiptables cli list-ebtables ;;
- 58) clear ; $fwiptables cli list-arptables ;;
- 61) clear ; $fwiptables cli eraserules ; $fwiptables cli list  ;;
- 62) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
- 63) clear ; $fwiptables cli allpermisive ; $fwiptables cli list  ;;
- 64) clear ; $fwiptables cli clientweb ; $fwiptables cli list  ;;
- 65) clear ; $fwiptables cli serverweb ; $fwiptables cli list  ;;
- 66) clear ; $fwiptables cli gamesudp ; $fwiptables cli list  ;; 
- 67) clear ; $fwiptables cli serversamba ; $fwiptables cli list ;;
- 68) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables custom $archivo ;;
- 71) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0208) clear ; $fwiptables cli actual ;;
+ 0301) clear ; $fwiptables cli list ;;
+ 0302) clear ; $fwiptables cli list6 ;;
+ 0303) clear ; $fwiptables cli list-filter4 ;;
+ 0304) clear ; $fwiptables cli list-filter6 ;;
+ 0305) clear ; $fwiptables cli list-forward ;;
+ 0306) clear ; $fwiptables cli list-forward6 ;;
+ 0307) clear ; $fwiptables cli list-nat4 ;;
+ 0308) clear ; $fwiptables cli list-nat6 ;;
+ 0309) clear ; $fwiptables cli list-allrules ;;
+ 0310) clear ; $fwiptables cli listnum ;;
+ 0311) clear ; $fwiptables cli list-forwardnum ;;
+ 0312) clear ; $fwiptables cli listnum6 ;;
+ 0313) clear ; $fwiptables cli list-forwardnum6 ;;
+ 0314) clear ; $fwiptables cli list-raw4 ;;
+ 0315) clear ; $fwiptables cli list-raw6 ;;
+ 0316) clear ; $fwiptables cli list-mangle4 ;; 
+ 0317) clear ; $fwiptables cli list-mangle6 ;;
+ 0318) clear ; $fwiptables cli list-security4 ;;
+ 0319) clear ; $fwiptables cli list-security6 ;;
+ 0320) clear ; $fwiptables cli list-ebtables ;;
+ 0321) clear ; $fwiptables cli list-arptables ;;
+ 0401) clear ; $fwiptables cli eraserules ; $fwiptables cli list  ;;
+ 0402) clear ; $fwiptables cli wizard-mini ; $fwiptables cli list ;;
+ 0403) clear ; $fwiptables cli wizard-full ; $fwiptables cli list ;;
+ 0404) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
+ 0405) clear ; $fwiptables cli allpermisive ; $fwiptables cli list  ;;
+ 0406) clear ; $fwiptables cli clientweb ; $fwiptables cli list  ;;
+ 0407) clear ; $fwiptables cli serverweb ; $fwiptables cli list  ;;
+ 0408) clear ; $fwiptables cli gamesudp ; $fwiptables cli list  ;; 
+ 0409) clear ; $fwiptables cli serversamba ; $fwiptables cli list ;;
+ 0410) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
+ 
+ 0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables new-full-config $archivo ;;
- 72) archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0502) archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables nueva-completa-config $archivo ;;
- 73) archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0503) archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables new-mini-config $archivo ;;
- 74) archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0504) archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables nueva-mini-config $archivo ;;
- 75) archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0505) archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables show-config $archivo ; echo "$cinco Launch: $fwiptables custom $archivo";;
- 76) archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0506) archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables modify-config $archivo ;;
- 77) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
+ 0507) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables del-config $archivo ; echo "deleted $archivo" ;;
- 78) clear ; $fwiptables cli list-config ;;
- 81) clear ; $fwiptables cli ss ;;
- 82) clear ; $fwiptables cli netstat ;;
- 83) clear ; $fwiptables cli lsof ;;
- 84) clear ; $fwiptables cli tcpdump ;;
- 85) clear ; $fwiptables cli info-route ;;
- 86) clear ; $fwiptables cli info-nodes ;;
- 87) clear ; $fwiptables cli info-listen ;;
- 88) clear ; $fwiptables cli info-proxy ;;
- 91) clear ; $fwiptables cli ipforward-list ;;
- 92) clear ; $fwiptables cli ipforward-on ;;
- 93) clear ; $fwiptables cli ipforward-off ;;
- 101) clear ; $fwiptables cli speed-ip4 ;;
- 102) clear ; $fwiptables cli speed-ip6 ;;
- 103) clear ; $fwiptables cli tracetcp-ip4 ;;
- 104) clear ; $fwiptables cli tracetcp-ip6 ;;
- 111) clear ; $fwiptables cli traceicmp-ip4 ;;
- 112) clear ; $fwiptables cli traceicmp-ip6 ;;
- 113) clear ; $fwiptables cli ping-ip4 ;;
- 114) clear ; $fwiptables cli ping-ip6 ;;
- 121) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 0508) clear ; $fwiptables cli list-config ;;
+ 0601) clear ; $fwiptables cli ss ;;
+ 0602) clear ; $fwiptables cli netstat ;;
+ 0603) clear ; $fwiptables cli lsof ;;
+ 0604) clear ; $fwiptables cli tcpdump ;;
+ 0605) clear ; $fwiptables cli info-route ;;
+ 0606) clear ; $fwiptables cli info-nodes ;;
+ 0607) clear ; $fwiptables cli info-listen ;;
+ 0608) clear ; $fwiptables cli info-proxy ;;
+ 0609) clear ; $fwiptables cli info-net ;;
+ 0610) clear ; $fwiptables cli info-system ;;
+ 0701) clear ; $fwiptables cli ipforward-list ;;
+ 0702) clear ; $fwiptables cli ipforward-on ;;
+ 0703) clear ; $fwiptables cli ipforward-off ;;
+ 0801) clear ; $fwiptables cli speed-ip4 ;;
+ 0802) clear ; $fwiptables cli speed-ip6 ;;
+ 0803) clear ; $fwiptables cli tracetcp-ip4 ;;
+ 0804) clear ; $fwiptables cli tracetcp-ip6 ;;
+ 0901) clear ; $fwiptables cli traceicmp-ip4 ;;
+ 0902) clear ; $fwiptables cli traceicmp-ip6 ;;
+ 0903) clear ; $fwiptables cli ping-ip4 ;;
+ 0904) clear ; $fwiptables cli ping-ip6 ;;
+ 1001) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fwiptables host $resolve ;;
- 122) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 1002) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fwiptables dig $resolve ;;
- 123) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 1003) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fwiptables resolveip $resolve ;;
- 124) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 1004) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $fwiptables geoip $resolve ;;
- 125) clear ; $fwiptables "ntpdate" ;;
- 131) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+ 1005) clear ; $fwiptables "ntpdate" ;;
+  1101) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $fwiptables sudo-adduser $resolve ;;
- 132) clear ; $fwiptables cli sudo-deluser ;;
- 133) clear ; $fwiptables cli sudo-list ;;
- 141) clear ; $fwiptables cli ole-word  ;;
- 142) clear ; $fwiptables cli ole-number ;;
- 143) resolve="$(dialog --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+ 1102) clear ; $fwiptables cli sudo-deluser ;;
+ 1103) clear ; $fwiptables cli sudo-list ;;
+ 1201) clear ; $fwiptables cli ole-word  ;;
+ 1202) clear ; $fwiptables cli ole-number ;;
+ 1203) resolve="$(dialog --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
  $fwiptables cli colour-rgb $resolve ;;
- 144) resolve="$(dialog --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+ 1204) resolve="$(dialog --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
  $fwiptables cli colour-hex $resolve ;;
- 151) clear ; $zero_option install ;;
- 152) clear ; $fwiptables cli howto-upgrade ;;
- 153) clear ; $fwiptables cli upgrade ;;
- 161) clear ; $fwiptables cli blacklist-list ;;
- 162) clear ; $fwiptables cli blacklist-list info ;;
- 163) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
+ 1301) clear ; $zero_option install ;;
+ 1302) clear ; $fwiptables cli howto-upgrade ;;
+ 1303) clear ; $fwiptables cli upgrade ;;
+ 1401) clear ; $fwiptables cli blacklist-list ;;
+ 1402) clear ; $fwiptables cli blacklist-list info ;;
+ 1403) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
  clear ; $fwiptables blacklist-on $resolve ;;
- 164) clear ; $fwiptables cli blacklist-off ;;
- 171) clear ; $fwiptables cli new-versions ;;
- 172) clear ; $fwiptables cli dev-version ;;
- 173) clear ; $fwiptables cli dev-changes ;; 
- 181) clear ; $fwiptables cli free-ram ;;
- 182) clear ; $fwiptables cli speed-ram ;;
- 183) clear ; $fwiptables cli speed-disk ;;
- 184) clear ; $fwiptables txt speed-glx ;;
- 185) clear ; $fwiptables txt radio ;;
- 191) clear ; $fwiptables cli lpinfo ;; 
- 192) clear ; $fwiptables cli lsblk ;;
- 193) clear ; $fwiptables cli lsusb ;; 
- 194) clear ; $fwiptables cli lscpu ;;
- 195) clear ; $fwiptables cli lspci ;;  
- 196) clear ; $fwiptables cli lsgpu ;;
- 197) clear ; $fwiptables cli lshw ;;
- 201) clear ; $fwiptables cli hosts ;;
- 202) clear ; $fwiptables cli protocols ;;
- 203) clear ; $fwiptables cli services ;;
- 204) clear ; $fwiptables cli hosts.allow ;;
- 205) clear ; $fwiptables cli hosts.deny ;;
- 206) clear ; $fwiptables cli show-default ;;
- 207) clear ; $fwiptables cli modify-default ;;
- 211) clear ; $fwiptables cli log-ssh ;;
- 212) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ 1404) clear ; $fwiptables cli blacklist-off ;;
+ 1501) clear ; $fwiptables cli new-versions ;;
+ 1502) clear ; $fwiptables cli dev-version ;;
+ 1503) clear ; $fwiptables cli dev-changes ;; 
+ 1601) clear ; $fwiptables cli free-ram ;;
+ 1602) clear ; $fwiptables cli speed-ram ;;
+ 1603) clear ; $fwiptables cli speed-disk ;;
+ 1604) clear ; $fwiptables txt speed-glx ;;
+ 1605) clear ; $fwiptables txt radio ;;
+ 1701) clear ; $fwiptables cli lpinfo ;; 
+ 1702) clear ; $fwiptables cli lsblk ;;
+ 1703) clear ; $fwiptables cli lsusb ;; 
+ 1704) clear ; $fwiptables cli lscpu ;;
+ 1705) clear ; $fwiptables cli lspci ;;  
+ 1706) clear ; $fwiptables cli lsgpu ;;
+ 1707) clear ; $fwiptables cli lshw ;;
+ 1708) clear ; $fwiptables cli hosts ;;
+ 1709) clear ; $fwiptables cli protocols ;;
+ 1801) clear ; $fwiptables cli services ;;
+ 1802) clear ; $fwiptables cli hosts.allow ;;
+ 1803) clear ; $fwiptables cli hosts.deny ;;
+ 1804) clear ; $fwiptables cli show-default ;;
+ 1805) clear ; $fwiptables cli modify-default ;;
+ 1901) clear ; $fwiptables cli log-ssh ;;
+ 1902) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fwiptables "log-search" "$pattern" | less ;;
- 213) clear ; $fwiptables cli fw-sendedlog ;;
- 214) clear ; $fwiptables cli fw-autolog ;;
- 221) clear ; $fwiptables cli about ;;
- 222) clear ; $fwiptables cli depends ;;
- 223) clear ; $fwiptables cli examples ;;
- 224) clear ; $fwiptables cli config-eng ;;
- 225) clear ; $fwiptables cli config-spa ;;
- 231) clear ; $fwiptables cli mini-options ;;
- 232) clear ; $fwiptables cli full-options ;;
- 233) clear ; $fwiptables cli help ;;
- 234) clear ; $fwiptables cli ayuda ;;
- 235) clear ; $fwiptables cli all-help ;;
- 236) clear ; $fwiptables cli notes ;;
- 237) clear ; $fwiptables cli license ;;
+ 1903) clear ; $fwiptables cli fw-sendedlog ;;
+ 1904) clear ; $fwiptables cli fw-autolog ;;
+ 2001) clear ; $fwiptables cli about ;;
+ 2002) clear ; $fwiptables cli depends ;;
+ 2003) clear ; $fwiptables cli examples ;;
+ 2004) clear ; $fwiptables cli config-eng ;;
+ 2005) clear ; $fwiptables cli config-spa ;;
+ 2101) clear ; $fwiptables cli mini-options ;;
+ 2102) clear ; $fwiptables cli full-options ;;
+ 2103) clear ; $fwiptables cli help ;;
+ 2104) clear ; $fwiptables cli ayuda ;;
+ 2105) clear ; $fwiptables cli all-help ;;
+ 2106) clear ; $fwiptables cli notes ;;
+ 2107) clear ; $fwiptables cli license ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  $fwiptables text-pause
