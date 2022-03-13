@@ -2410,7 +2410,7 @@ echo "$cinco [ allow_maxtries_ssh ] [ limit a attack per bruteforce to us ssh se
 echo "$cinco [ allow_maxtries_ssh ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
 echo
 echo "$cinco [ net vpn ]  [ virtual private network ] [ whitelist ]"
-echo "$cinco [ net vpnn ] [ red privada virtual ]     [ lista blanca ]"
+echo "$cinco [ net vpn ] [ red privada virtual ]     [ lista blanca ]"
 echo
 echo "$tab Host [net vpn] excepcionals hosts has conection allowed in firewall"
 echo "$tab Host [net vpn] excepcionales hosts tienen la conexion permitida en el firewall"
