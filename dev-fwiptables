@@ -411,7 +411,7 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
 echo "alias $fwiptables='sudo $directory_fiptables/$fwiptables'"       &>  /etc/bash_completion.d/$fwiptables
-echo "complete -W 'control-interface control-guide control-rules control-list rules-launch \
+echo "complete -W 'control-interface control-rules control-list rules-launch \
 rules-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
@@ -1373,8 +1373,7 @@ echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
-echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
+echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
 echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "  control-list       |  list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
@@ -1382,15 +1381,16 @@ echo "$tab" "$tab"  "                        list-filter4 list-filter6 list-nat4
 echo "$tab" "$tab"  "                        list-raw4 list-raw6 list-mangle4 list-mangle6         "
 echo "$tab" "$tab"  "                        list-security4 list-security6                         "
 echo "$tab" "$tab"  "                        list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "  rules-launch       |  eraserules offline allpermisive gamesudp custom       "
-echo "$tab" "$tab"  "                        clientweb serverweb serversamba serverprint serverssh "
+echo "$tab" "$tab"  "  rules-launch       |  eraserules wizard-mini wizard-full offline custom     "
+echo "$tab" "$tab"  "                        clientweb serverweb serverssh gamesudp allpermisive   "
+echo "$tab" "$tab"  "                        serversamba serverprint                               "
 echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-echo "$tab" "$tab"  " Firewall |  control-interface    control-guide       control-rules           "
-echo "$tab" "$tab"  "             control-list         rules-launch        rules-custom            "
+echo "$tab" "$tab"  " Firewall |  control-interface    control-rules       control-list            "
+echo "$tab" "$tab"  "             rules-launch         rules-custom                                "
 echo "$tab" "$tab"  "     Tool |  tool-sockets         tool-forward        tool-tcp                "
 echo "$tab" "$tab"  "             tool-udp             tool-icmp           tool-nmap               "
 echo "$tab" "$tab"  "             tool-sudo            tool-game           tool-system             "
@@ -1419,8 +1419,7 @@ echo "$ralla [ $first_option ] [ List full options ] $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -txt -cli -gui -log       "
-echo "$tab" "$tab"  "    control-guide     | info-net info-system regen wizard-full wizard-mini    "
+echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
 echo "$tab" "$tab"  "    control-rules     | stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    control-list      | list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
@@ -1428,15 +1427,16 @@ echo "$tab" "$tab"  "                        list-filter4 list-filter6 list-nat4
 echo "$tab" "$tab"  "                        list-raw4 list-raw6 list-mangle4 list-mangle6         "
 echo "$tab" "$tab"  "                        list-security4 list-security6                         "
 echo "$tab" "$tab"  "                        list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "    rules-launch      | eraserules offline allpermisive gamesudp custom       "
-echo "$tab" "$tab"  "                        clientweb serverweb serversamba serverprint serverssh "
+echo "$tab" "$tab"  "    rules-launch      | eraserules wizard-mini wizard-full offline custom     "
+echo "$tab" "$tab"  "                        clientweb serverweb serverssh gamesudp allpermisive   "
+echo "$tab" "$tab"  "                        serversamba serverprint                               "
 echo "$tab" "$tab"  "    rules-custom      | new-full-config nueva-completa-config                 "
 echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
 echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
-echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
-echo "$tab" "$tab"  "                        ss lsof tcpdump netstat netstat-nat                   "
+echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-route info-net info-proxy "
+echo "$tab" "$tab"  "                        info-systems lsof tcpdump netstat netstat-nat         "
 echo "$tab" "$tab"  "    tool-forward      | ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate                      "
@@ -1477,23 +1477,23 @@ exit ; fi
 ####
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
-echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
-echo "$tab" "$tab"  "  control-guide      |  info-net info-system regen wizard-full wizard-mini    "
-echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "  control-list       |  list listnum list6 listnum6                           "
-echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
-echo "$tab" "$tab"  "                        list-filter4 list-filter6 list-nat4 list-nat6         "
-echo "$tab" "$tab"  "                        list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$tab" "$tab"  "                        list-security4 list-security6                         "
-echo "$tab" "$tab"  "                        list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "  rules-launch       |  eraserules offline allpermisive gamesudp custom       "
-echo "$tab" "$tab"  "                        clientweb serverweb serversamba serverprint serverssh "
-echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "                                    | firewall-options |                       "
+echo "$tab" "$tab"  "   control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "   control-rules      |  stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "   control-list       |  list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "                         list-allrules list-forward list-forward6              "
+echo "$tab" "$tab"  "                         list-filter4 list-filter6 list-nat4 list-nat6         "
+echo "$tab" "$tab"  "                         list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$tab" "$tab"  "                         list-security4 list-security6                         "
+echo "$tab" "$tab"  "                         list-ebtables list-arptables                          "
+echo "$tab" "$tab"  "   rules-launch       |  eraserules wizard-mini wizard-full offline custom     "
+echo "$tab" "$tab"  "                         clientweb serverweb serverssh gamesudp allpermisive   "
+echo "$tab" "$tab"  "                         serversamba serverprint regen                         "
+echo "$tab" "$tab"  "   rules-custom       |  new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                         new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                         list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options             "
 exit ; fi
 ####
 ####
@@ -1506,8 +1506,8 @@ exit ; fi
 if [ "$first_option" = "tool-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Tool options ] $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
-echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-proxy info-route          "
-echo "$tab" "$tab"  "                        ss lsof tcpdump netstat netstat-nat                   "
+echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-route info-net info-proxy "
+echo "$tab" "$tab"  "                        info-systems lsof tcpdump netstat netstat-nat         "
 echo "$tab" "$tab"  "    tool-forward      | ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate                      "
@@ -1932,31 +1932,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-rules-custom:
-##############################       english: control-guide: options
-##############################       spanish: control-guide: opciones
-#### :rutina-inicial-control-guide:
-####
-####
-if [ "$first_option" = "control-guide" ]; then $give_cover
-echo "$ralla [ $first_option ] [ control guide ]"
-echo "$rallica [ Control guide ]" 
-echo "$rallica [ Control guia ]"
-echo
-echo "  info-system : Show info system"
-echo "              : Muestra informacion del sistema"
-echo "     info-net : Show net info"
-echo "              : Muestra informacion del sistema"
-echo "        regen : Regen wizard files"
-echo "              : Regenera wizard files"
-echo "  wizard-full : Asistant y launch complete firewall"
-echo "              : Asiste y lanza un completo firewall"
-echo "  wizard-mini : Asistant y Launch simple firewall"
-echo "              : Asiste y lanza un simple firewall"
-echo $footer_lineal
-exit; fi
-####
-####
-#### :rutina-final-control-guide:
 ##############################       english: control-interface: options
 ##############################       spanish: user-intarface: opciones
 #### :rutina-inicial-control-interface:
@@ -1981,6 +1956,8 @@ echo "      gui-menu : Gui interface from menu"
 echo "               : Interfaz grafica desde menu"
 echo "     gui-shell : Gui with comand line interface"
 echo "               : Gui con interfaz desde linea de comandos"
+echo "         regen : Regen wizard files"
+echo "               : Regenera wizard files"
 echo $footer_lineal
 exit; fi
 ####
@@ -7841,14 +7818,7 @@ echo "       log OR -log : Output in logfile "
 echo "          cli-menu : Comand line interface with menus"
 echo "          gui-menu : Graphicall interface with menus"
 echo "         gui-shell : Graphicall interface with shell"
-echo
-echo "$cinco         [ Launch guide ]"
-echo
-echo "       info-system : Show info system"
-echo "          info-net : Show net info"
 echo "             regen : Regen wizard files"
-echo "       wizard-full : Asistant y launch complete firewall"
-echo "       wizard-mini : Asistant y Launch simple firewall"
 echo
 echo "$cinco         [ Control the iptables rules ]"
 echo
@@ -7892,6 +7862,8 @@ echo
 echo "$cinco         [ Launch iptables rules ]"
 echo
 echo "        eraserules : Remove the iptables rules in ipv4 and ipv6"
+echo "       info-system : Show info system"
+echo "          info-net : Show net info"
 echo "           offline : Launch disconected firewall for all servers and clients except localhost"
 echo "      allpermisive : Launch a firewall very permisive"
 echo "          gamesudp : Launch a firewall like games udp non-root games"
@@ -7919,6 +7891,8 @@ echo "      info-nodes : List the conentions arp in lan"
 echo "      info-proxy : List system proxy"
 echo "     info-listen : List system listen socket list"
 echo "      info-route : Show net devices and ip route tables"
+echo "     wizard-full : Asistant y launch complete firewall"
+echo "     wizard-mini : Asistant y Launch simple firewall"
 echo "              ss : Show net sockets with command ss"
 echo "            lsof : Show net sockets with command lsof"
 echo "         netstat : Show net sockets with command netstat"
@@ -8126,14 +8100,7 @@ echo "       log OR -log : Salida a archivo log"
 echo "          cli-menu : modo texto with menus"
 echo "          gui-menu : Graficos con menus"
 echo "         gui-shell : Graficos con entorno de comandos"
-echo
-echo "$cinco         [ Lanzar guia ]"
-echo
-echo "     info-system : Muestra la informacion del sistema"
-echo "        info-net : Muestra informacion de la red"
-echo "           regen : Regenera wizard files"
-echo "     wizard-full : Asistente y lanza completo cortafuegos"
-echo "     wizard-mini : Asistente y lanza simple cortafuegos"
+echo "             regen : Regenera wizard files"
 echo
 echo "$cinco         [ Controla las reglas de iptables ]"
 echo
@@ -8188,6 +8155,8 @@ echo
 echo "$cinco         [ Lanza reglas de iptables ]"
 echo
 echo "          eraserules : Borra las reglas de iptables de ipv4 y de ipv6"
+echo "         wizard-full : Asistente y lanza completo cortafuegos"
+echo "         wizard-mini : Asistente y lanza simple cortafuegos"
 echo "             offline : Lanza un desconectado cortafuegos de todo excepto localhost"
 echo "        allpermisive : Lanza el cortafuegos muy permisivo"
 echo "           clientweb : Lanza el cortafuegos como cliente web y ssh"
@@ -8206,6 +8175,8 @@ echo "      info-nodes : Lista las conexiones arp in lan"
 echo "      info-proxy : Lista proxy del sistema"
 echo "     info-listen : Lista sockets a la escucha del sistema"
 echo "      info-route : Muestra los dispositivos de red y la tabla de rutas"
+echo "     info-system : Muestra la informacion del sistema"
+echo "        info-net : Muestra informacion de la red"
 echo "              ss : Muestra las conexiones con comando ss"
 echo "            lsof : Muestra las conexiones con command lsof"
 echo "         netstat : Muestra las conexiones con comando netstat"
