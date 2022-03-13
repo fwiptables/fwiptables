@@ -613,9 +613,9 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit
 "install") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "howto-uprade") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "uprade") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"ram-speed") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"disk-speed") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"glx-speed") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"speed-ram") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
+"speed-disk") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"speed-glx") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
 "radio") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "ole-word") $fwiptables ole-word cli ; exit ;;
 "ole-number") $fwiptables ole-number cli ; exit ;;
@@ -1443,7 +1443,7 @@ echo "$tab" "$tab"  "    tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-
 echo "$tab" "$tab"  "    tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          |  sudo-adduser sudo-deluser sudo-list alias-list        "
 echo "$tab" "$tab"  "    tool-game          |  ole-word ole-number colour-rgb colour-hex             "
-echo "$tab" "$tab"  "    tool-system        |  ram-free ram-speed disk-speed glx-speed radio         "
+echo "$tab" "$tab"  "    tool-system        |  ram-free speed-ram speed-disk speed-glx radio         "
 echo "$tab" "$tab"  "    tool-install       |  install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist     |  blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev           |  new-versions dev-version dev-changes code             "
@@ -1514,7 +1514,7 @@ echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
 echo "$tab" "$tab"  "    tool-game         | ole-word ole-number colour-rgb colour-hex             "
-echo "$tab" "$tab"  "    tool-system       | ram-free ram-speed disk-speed glx-speed radio         "
+echo "$tab" "$tab"  "    tool-system       | ram-free speed-ram speed-disk speed-glx radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-changes code             "
@@ -2238,11 +2238,11 @@ echo "$rallica [ Herramienta systema ]"
 echo
 echo "      ram-free : Clean for innecesary memory"
 echo "               : Libera la memoria innecesaria"
-echo "     ram-speed : Show the speed of ram"
+echo "     speed-ram : Show the speed of ram"
 echo "               : Muestra la velocidad de la ram"
-echo "    disk-speed : Show the speed of disc"
+echo "    speed-disk : Show the speed of disc"
 echo "               : Muestra la velocidad de el disco"
-echo "     glx-speed : Show frammes for seconds with mesa graphicall"
+echo "     speed-glx : Show frammes for seconds with mesa graphicall"
 echo "               : Muestra fotogramas por segundo con graficos mesa"
 echo "         radio : connect to one server mp3, see $fwiptables default"
 echo "               : connecta a on servidor mp3, see $fwiptables default"
@@ -3208,7 +3208,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ram-free" "ram-speed" "disk-speed" "glx-speed" "radio" \
+--list "Gui Principal Menu" "Gui Info Menu" "ram-free" "speed-ram" "speed-disk" "speed-glx" "radio" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool System] [$fwiptables]" )
 #### 
 #### 
@@ -3217,9 +3217,9 @@ case $selection in
 "Gui Principal Menu")$fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui tool-system ;;
 "ram-free")   $fwiptables -gui ram-free ;;
-"ram-speed")  $fwiptables -gui ram-speed ;;
-"disk-speed") $fwiptables -gui disk-speed ;;
-"glx-speed")   $fwiptables -gui glx-speed ;;
+"speed-ram")  $fwiptables -gui speed-ram ;;
+"speed-disk") $fwiptables -gui speed-disk ;;
+"speed-glx")   $fwiptables -gui speed-glx ;;
 "radio")      $fwiptables -gui radio ;;
 esac
 ####
@@ -3749,9 +3749,9 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   173  "dev-changes" \
   0180 "$cinco [ Tool system program ] $cinco" \
   181  "ram-free" \
-  182  "ram-speed" \
-  183  "disk-speed" \
-  184  "glx-speed" \
+  182  "speed-ram" \
+  183  "speed-disk" \
+  184  "speed-glx" \
   185  "radio" \
   0190 "$cinco [ Show hardware system ] $cinco" \
   191  "lpinfo" \
@@ -3937,9 +3937,9 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  172) clear ; $fwiptables cli dev-version ;;
  173) clear ; $fwiptables cli dev-changes ;; 
  181) clear ; $fwiptables cli ram-free ;;
- 182) clear ; $fwiptables cli ram-speed ;;
- 183) clear ; $fwiptables cli disk-speed ;;
- 184) clear ; $fwiptables txt glx-speed ;;
+ 182) clear ; $fwiptables cli speed-ram ;;
+ 183) clear ; $fwiptables cli speed-disk ;;
+ 184) clear ; $fwiptables txt speed-glx ;;
  185) clear ; $fwiptables txt radio ;;
  191) clear ; $fwiptables cli lpinfo ;; 
  192) clear ; $fwiptables cli lsblk ;;
@@ -6286,12 +6286,12 @@ $fwiptables stop
 ####
 ####
 #### :rutina-final-ram-free:
-############################       english: disk-speed: Show the speed of disc
-############################       spanish: disk-speed: Muestra la velocidad de el disco
-#### :rutina-inicial-disk-speed:
+############################       english: speed-disk: Show the speed of disc
+############################       spanish: speed-disk: Muestra la velocidad de el disco
+#### :rutina-inicial-speed-disk:
 ####
 ####
- if [ "$first_option" = "disk-speed" ]; then  $give_cover
+ if [ "$first_option" = "speed-disk" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
  case $command_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
@@ -6304,13 +6304,13 @@ $fwiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-disk-speed:
-############################       english: ram-speed: Show the speed of ram
-############################       spanish: ram-speed: Muestra la velocidad de la ram
-#### :rutina-inicial-ram-speed:
+#### :rutina-final-speed-disk:
+############################       english: speed-ram: Show the speed of ram
+############################       spanish: speed-ram: Muestra la velocidad de la ram
+#### :rutina-inicial-speed-ram:
 ####
 ####
- if [ "$first_option" = "ram-speed" ]; then  $give_cover
+ if [ "$first_option" = "speed-ram" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test the ram speed ]"
  echo $header_lineal
  case $command_dd in "$NULL") echo "$cinco Install dd command"; exit ;; esac
@@ -6325,13 +6325,13 @@ $fwiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-ram-speed:
-############################       english: glx-speed: show frammes por seconds with mesa graphicall 
-############################       spanish: glx-speed: muestra los fotogramas por segundo con graphicos mesa
-#### :rutina-inicial-glx-speed:
+#### :rutina-final-speed-ram:
+############################       english: speed-glx: show frammes por seconds with mesa graphicall 
+############################       spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa
+#### :rutina-inicial-speed-glx:
 ####
 ####
- if [ "$first_option" = "glx-speed" ]; then  $give_cover
+ if [ "$first_option" = "speed-glx" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
  echo $header_lineal
  case $command_glxgears in "$NULL") echo "$cinco Install mesa utils"; exit ;; esac
@@ -6340,7 +6340,7 @@ $fwiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-glx-speed:
+#### :rutina-final-speed-glx:
 ############################       english: radio: url from one radio mp3
 ############################       spanish: radio: url de una radio en mp3
 #### :rutina-inicial-radio:
@@ -7863,8 +7863,8 @@ echo
 echo "$cinco         [ Launch iptables rules ]"
 echo
 echo "        eraserules : Remove the iptables rules in ipv4 and ipv6"
-echo "       info-system : Show info system"
-echo "          info-net : Show net info"
+echo "       wizard-full : Asistant y launch complete firewall"
+echo "       wizard-mini : Asistant y Launch simple firewall"
 echo "           offline : Launch disconected firewall for all servers and clients except localhost"
 echo "      allpermisive : Launch a firewall very permisive"
 echo "          gamesudp : Launch a firewall like games udp non-root games"
@@ -7892,8 +7892,8 @@ echo "      info-nodes : List the conentions arp in lan"
 echo "      info-proxy : List system proxy"
 echo "     info-listen : List system listen socket list"
 echo "      info-route : Show net devices and ip route tables"
-echo "     wizard-full : Asistant y launch complete firewall"
-echo "     wizard-mini : Asistant y Launch simple firewall"
+echo "     info-system : Show info system"
+echo "        info-net : Show net info"
 echo "              ss : Show net sockets with command ss"
 echo "            lsof : Show net sockets with command lsof"
 echo "         netstat : Show net sockets with command netstat"
@@ -7953,9 +7953,9 @@ echo
 echo "$cinco         [ Tool system ]"
 echo
 echo "         ram-free : Clean for innecesary memory"
-echo "        ram-speed : Show the speed of ram"
-echo "       disk-speed : Show the speed of disc"
-echo "        glx-speed : Show frammes for seconds with mesa graphicall"
+echo "        speed-ram : Show the speed of ram"
+echo "       speed-disk : Show the speed of disc"
+echo "        speed-glx : Show frammes for seconds with mesa graphicall"
 echo "            radio : connect to one server mp3, see $fwiptables default"
 echo
 echo "$cinco         [ Tool Install ]"
@@ -8236,9 +8236,9 @@ echo
 echo "$cinco         [ Herramienta de sistema ]"
 echo
 echo "      ram-free : Libera la memoria innecesaria"
-echo "     ram-speed : Muestra la velocidad de la ram"
-echo "    disk-speed : Muestra la velocidad de el disco"
-echo "     glx-speed : Muestra fotogramas por segundo con graficos mesa"
+echo "     speed-ram : Muestra la velocidad de la ram"
+echo "    speed-disk : Muestra la velocidad de el disco"
+echo "     speed-glx : Muestra fotogramas por segundo con graficos mesa"
 echo "         radio : connecta a on servidor mp3, see $fwiptables default"
 echo
 echo "$cinco         [ Herramienta de instalacion ]"
