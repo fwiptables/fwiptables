@@ -3736,6 +3736,8 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0140 "$cinco [ Tool game option ] $cinco" \
   141  "ole-word" \
   142  "ole-number" \
+  143  "colour-rgb" \
+  144  "colour-hex" \
   0150 "$cinco [ Tool install ] $cinco" \
   151  "install" \
   152  "howto-upgrade" \
@@ -3925,8 +3927,12 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  clear ; $fwiptables sudo-adduser $resolve ;;
  132) clear ; $fwiptables cli sudo-deluser ;;
  133) clear ; $fwiptables cli sudo-list ;;
- 141) clear ; $fwiptables cli ole-word ;;
+ 141) clear ; $fwiptables cli ole-word  ;;
  142) clear ; $fwiptables cli ole-number ;;
+ 143) resolve="$(dialog --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+ $fwiptables cli colour-rgb $resolve ;;
+ 144) resolve="$(dialog --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+ $fwiptables cli colour-hex $resolve ;;
  151) clear ; $zero_option install ;;
  152) clear ; $fwiptables cli howto-upgrade ;;
  153) clear ; $fwiptables cli upgrade ;;
