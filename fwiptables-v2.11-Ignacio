@@ -3624,150 +3624,150 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0000 "$cinco $tab [$fwiptables cli-menu] $tab $cinco" \
   0100 "$cinco [ Full Options ] $cinco" \
   0200 "$cinco [ Firewall Rules ] $cinco" \
-  0201  "stop" \
-  0202  "continue" \
-  0203  "reset" \
-  0204  "list-fw"  \
-  0205  "show" \
-  0206  "save" \
-  0207  "load" \
-  0208  "actual" \
+  0201  "$tab stop" \
+  0202  "$tab continue" \
+  0203  "$tab reset" \
+  0204  "$tab list-fw"  \
+  0205  "$tab show" \
+  0206  "$tab save" \
+  0207  "$tab load" \
+  0208  "$tab actual" \
   0300 "$cinco [ Firewall List	 ] $cinco" \
-  0301  "list" \
-  0302  "list6"  \
-  0303  "list-filter4" \
-  0304  "list-filter6" \
-  0305  "list-forward" \
-  0306  "list-forward6" \
-  0307  "list-nat4" \
-  0308  "list-nat6" \
-  0309  "list-allrules" \
-  0310  "listnum" \
-  0311  "list-forwardnum" \
-  0312  "listnum6" \
-  0313  "list-forwardnum6" \
-  0314  "list-raw4" \
-  0315  "list-raw6" \
-  0316  "list-mangle4" \
-  0317  "list-mangle6" \
-  0318  "list-security4" \
-  0319  "list-security6" \
-  0320  "list-ebtables" \
-  0321  "list-arptables" \
+  0301  "$tab list" \
+  0302  "$tab list6"  \
+  0303  "$tab list-filter4" \
+  0304  "$tab list-filter6" \
+  0305  "$tab list-forward" \
+  0306  "$tab list-forward6" \
+  0307  "$tab list-nat4" \
+  0308  "$tab list-nat6" \
+  0309  "$tab list-allrules" \
+  0310  "$tab listnum" \
+  0311  "$tab list-forwardnum" \
+  0312  "$tab listnum6" \
+  0313  "$tab list-forwardnum6" \
+  0314  "$tab list-raw4" \
+  0315  "$tab list-raw6" \
+  0316  "$tab list-mangle4" \
+  0317  "$tab list-mangle6" \
+  0318  "$tab list-security4" \
+  0319  "$tab list-security6" \
+  0320  "$tab list-ebtables" \
+  0321  "$tab list-arptables" \
   0400 "$cinco [ Firewall Launch ] $cinco" \
-  0401  "eraserules" \
-  0402  "wizard-mini" \
-  0403  "wizard-full" \
-  0404  "offline" \
-  0405  "allpermisive" \
-  0406  "clientweb" \
-  0407  "serverweb" \
-  0408  "gamesudp" \
-  0409  "serversamba" \
-  0410  "custom cfg" \
+  0401  "$tab eraserules" \
+  0402  "$tab wizard-mini" \
+  0403  "$tab wizard-full" \
+  0404  "$tab offline" \
+  0405  "$tab allpermisive" \
+  0406  "$tab clientweb" \
+  0407  "$tab serverweb" \
+  0408  "$tab gamesudp" \
+  0409  "$tab serversamba" \
+  0410  "$tab custom cfg" \
   0500 "$cinco [ Firewall Custom ] $cinco" \
-  0501  "new-full-config" \
-  0502  "nueva-completa-config" \
-  0503  "new-mini-config" \
-  0504  "nueva-mini-config" \
-  0505  "show-config" \
-  0506  "modify-config" \
-  0507  "del-config" \
-  0508  "list-config" \
+  0501  "$tab new-full-config" \
+  0502  "$tab nueva-completa-config" \
+  0503  "$tab new-mini-config" \
+  0504  "$tab nueva-mini-config" \
+  0505  "$tab show-config" \
+  0506  "$tab modify-config" \
+  0507  "$tab del-config" \
+  0508  "$tab list-config" \
   0600 "$cinco [ Tool Sockets ] $cinco" \
-  0601  "ss" \
-  0602  "netstat" \
-  0603  "lsof" \
-  0604  "tcpdump" \
-  0605  "info-route" \
-  0606  "info-nodes" \
-  0607  "info-listen" \
-  0608  "info-proxy" \
-  0609  "info-net" \
-  0610  "info-system" \
+  0601  "$tab ss" \
+  0602  "$tab netstat" \
+  0603  "$tab lsof" \
+  0604  "$tab tcpdump" \
+  0605  "$tab info-route" \
+  0606  "$tab info-nodes" \
+  0607  "$tab info-listen" \
+  0608  "$tab info-proxy" \
+  0609  "$tab info-net" \
+  0610  "$tab info-system" \
   0700 "$cinco [ Tool Ipfwarding ] $cinco" \
-  0701  "ipforward-list" \
-  0702  "ipforward-on" \
-  0703  "ipforward-off" \
+  0701  "$tab ipforward-list" \
+  0702  "$tab ipforward-on" \
+  0703  "$tab ipforward-off" \
   0800 "$cinco [ Tool Tcp ] $cinco " \
-  0801   "speed-ip4" \
-  0802   "speed-ip6" \
-  0803   "tracetcp-ip4" \
-  0804   "tracetcp-ip6" \
+  0801  "$tab speed-ip4" \
+  0802  "$tab speed-ip6" \
+  0803  "$tab tracetcp-ip4" \
+  0804  "$tab tracetcp-ip6" \
   0900 "$cinco [ Tool Icmp ] $cinco" \
-  0901   "traceicmp-ip4" \
-  0902   "traceicmp-ip6" \
-  0903   "ping-ip4" \
-  0904   "ping-ip6" \
+  0901  "$tab traceicmp-ip4" \
+  0902  "$tab traceicmp-ip6" \
+  0903  "$tab ping-ip4" \
+  0904  "$tab ping-ip6" \
   1000 "$cinco [ Tool Udp ] $cinco"  \
-  1001  "host" \
-  1002 "dig" \
-  1003  "resolveip" \
-  1004  "geoip" \
-  1005  "ntpdate" \
+  1001  "$tab host" \
+  1002  "$tab dig" \
+  1003  "$tab resolveip" \
+  1004  "$tab geoip" \
+  1005  "$tab ntpdate" \
   1100 "$cinco [ Tool Sudo ] $cinco"  \
-  1101  "sudo-adduser" \
-  1002  "sudo-deluser" \
-  1003  "sudo-list" \
+  1101  "$tab sudo-adduser" \
+  1002  "$tab sudo-deluser" \
+  1003  "$tab sudo-list" \
   1200 "$cinco [ Tool Game ] $cinco" \
-  1201  "ole-word" \
-  1202  "ole-number" \
-  1203  "colour-rgb" \
-  1204  "colour-hex" \
+  1201  "$tab ole-word" \
+  1202  "$tab ole-number" \
+  1203  "$tab colour-rgb" \
+  1204  "$tab colour-hex" \
   1300 "$cinco [ Tool Install ] $cinco" \
-  1301  "install" \
-  1302  "howto-upgrade" \
-  1303  "upgrade" \
+  1301  "$tab install" \
+  1302  "$tab howto-upgrade" \
+  1303  "$tab upgrade" \
   1400 "$cinco [ Tool Blacklist ] $cinco" \
-  1401  "blacklist-list" \
-  1402  "blacklist-list info" \
-  1403  "blacklist-on" \
-  1404  "blacklist-off" \
+  1401  "$tab blacklist-list" \
+  1402  "$tab blacklist-list info" \
+  1403  "$tab blacklist-on" \
+  1404  "$tab blacklist-off" \
   1500 "$cinco [ Tool Dev ] $cinco" \
-  1501  "new-versions" \
-  1502  "dev-version" \
-  1502  "dev-changes" \
+  1501  "$tab new-versions" \
+  1502  "$tab dev-version" \
+  1502  "$tab dev-changes" \
   1600 "$cinco [ Tool System ] $cinco" \
-  1601  "free-ram" \
-  1602  "speed-ram" \
-  1603  "speed-disk" \
-  1604  "speed-glx" \
-  1605  "radio" \
+  1601  "$tab free-ram" \
+  1602  "$tab speed-ram" \
+  1603  "$tab speed-disk" \
+  1604  "$tab speed-glx" \
+  1605  "$tab radio" \
   1700 "$cinco [ Show Hardware ] $cinco" \
-  1701  "lpinfo" \
-  1702  "lsblk" \
-  1703  "lsusb" \
-  1704  "lscpu" \
-  1705  "lspci" \
-  1706  "lsgpu" \
-  1707  "lshw" \
+  1701  "$tab lpinfo" \
+  1702  "$tab lsblk" \
+  1703  "$tab lsusb" \
+  1704  "$tab lscpu" \
+  1705  "$tab lspci" \
+  1706  "$tab lsgpu" \
+  1707  "$tab lshw" \
   1800 "$cinco [ Show Etc ] $cinco" \
-  1801  "hosts" \
-  1802  "protocols" \
-  1803  "services" \
-  1804  "hosts.allow" \
-  1805  "hosts.deny" \
-  1806  "show-default" \
-  1807  "modify-default" \
+  1801  "$tab hosts" \
+  1802  "$tab protocols" \
+  1803  "$tab services" \
+  1804  "$tab hosts.allow" \
+  1805  "$tab hosts.deny" \
+  1806  "$tab show-default" \
+  1807  "$tab modify-default" \
   1900 "$cinco [ Show Log ] $cinco" \
-  1901  "log-ssh" \
-  1902  "log-search" \
-  1903  "fw-sendedlog" \
-  1904  "fw-autolog" \
+  1901  "$tab log-ssh" \
+  1902  "$tab log-search" \
+  1903  "$tab fw-sendedlog" \
+  1904  "$tab fw-autolog" \
   2000 "$cinco [ Show About ] $cinco" \
-  2001  "about" \
-  2002  "depends" \
-  2003  "examples" \
-  2004  "config-eng" \
-  2005  "config-spa" \
+  2001  "$tab about" \
+  2002  "$tab depends" \
+  2003  "$tab examples" \
+  2004  "$tab config-eng" \
+  2005  "$tab config-spa" \
   2100 "$cinco [ Show Help ] $cinco" \
-  2101  "mini-options" \
-  2102  "full-options" \
-  2103  "help" \
-  2104  "ayuda" \
-  2105  "all-help" \
-  2106  "notes" \
-  2107  "license" \
+  2101  "$tab mini-options" \
+  2102  "$tab full-options" \
+  2103  "$tab help" \
+  2104  "$tab ayuda" \
+  2105  "$tab all-help" \
+  2106  "$tab notes" \
+  2107  "$tab license" \
  )"  
 #### 
 #### 
