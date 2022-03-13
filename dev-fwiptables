@@ -3744,8 +3744,9 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   1803  "$tab services" \
   1804  "$tab hosts.allow" \
   1805  "$tab hosts.deny" \
-  1806  "$tab show-default" \
-  1807  "$tab modify-default" \
+  1806  "$tab resolv.conf" \
+  1807  "$tab show-default" \
+  1808  "$tab modify-default" \
   1900 "$quad [ Show Log ] $cinco" \
   1901  "$tab log-ssh" \
   1902  "$tab log-search" \
@@ -3920,8 +3921,8 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  1601) clear ; $fwiptables cli free-ram ;;
  1602) clear ; $fwiptables cli speed-ram ;;
  1603) clear ; $fwiptables cli speed-disk ;;
- 1604) clear ; $fwiptables txt speed-glx ;;
- 1605) clear ; $fwiptables txt radio ;;
+ 1604) clear ; $fwiptables cli speed-glx ;;
+ 1605) clear ; $fwiptables cli radio ;;
  1701) clear ; $fwiptables cli lpinfo ;; 
  1702) clear ; $fwiptables cli lsblk ;;
  1703) clear ; $fwiptables cli lsusb ;; 
@@ -3929,13 +3930,14 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  1705) clear ; $fwiptables cli lspci ;;  
  1706) clear ; $fwiptables cli lsgpu ;;
  1707) clear ; $fwiptables cli lshw ;;
- 1708) clear ; $fwiptables cli hosts ;;
- 1709) clear ; $fwiptables cli protocols ;;
- 1801) clear ; $fwiptables cli services ;;
- 1802) clear ; $fwiptables cli hosts.allow ;;
- 1803) clear ; $fwiptables cli hosts.deny ;;
- 1804) clear ; $fwiptables cli show-default ;;
- 1805) clear ; $fwiptables cli modify-default ;;
+ 1801) clear ; $fwiptables cli hosts ;;
+ 1802) clear ; $fwiptables cli protocols ;;
+ 1803) clear ; $fwiptables cli services ;;
+ 1804) clear ; $fwiptables cli hosts.allow ;;
+ 1805) clear ; $fwiptables cli hosts.deny ;;
+ 1806) clear ; $fwiptables cli resolv.conf ;;
+ 1807) clear ; $fwiptables cli show-default ;;
+ 1808) clear ; $fwiptables cli modify-default ;;
  1901) clear ; $fwiptables cli log-ssh ;;
  1902) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fwiptables "log-search" "$pattern" | less ;;
