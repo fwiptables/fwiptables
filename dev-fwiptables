@@ -616,6 +616,8 @@ scan-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit
 "speed-ram") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "speed-disk") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
 "speed-glx") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"speed-ip4") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"speed-ip6") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
 "radio") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "ole-word") $fwiptables ole-word cli ; exit ;;
 "ole-number") $fwiptables ole-number cli ; exit ;;
