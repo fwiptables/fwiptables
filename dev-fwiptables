@@ -140,7 +140,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
-cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || "
+quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -3621,9 +3621,9 @@ if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
-  0000 "$cinco $tab [$fwiptables cli-menu] $tab $cinco" \
-  0100 "$cinco [ Full Options ] $cinco" \
-  0200 "$cinco [ Firewall Rules ] $cinco" \
+  0000 "$quad $tab [$fwiptables cli-menu] $tab $cinco" \
+  0100 "$quad [ Full Options ] $cinco" \
+  0200 "$quad [ Firewall Rules ] $cinco" \
   0201  "$tab stop" \
   0202  "$tab continue" \
   0203  "$tab reset" \
@@ -3632,7 +3632,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0206  "$tab save" \
   0207  "$tab load" \
   0208  "$tab actual" \
-  0300 "$cinco [ Firewall List	 ] $cinco" \
+  0300 "$quad [ Firewall List	 ] $cinco" \
   0301  "$tab list" \
   0302  "$tab list6"  \
   0303  "$tab list-filter4" \
@@ -3654,7 +3654,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0319  "$tab list-security6" \
   0320  "$tab list-ebtables" \
   0321  "$tab list-arptables" \
-  0400 "$cinco [ Firewall Launch ] $cinco" \
+  0400 "$quad [ Firewall Launch ] $cinco" \
   0401  "$tab eraserules" \
   0402  "$tab wizard-mini" \
   0403  "$tab wizard-full" \
@@ -3665,7 +3665,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0408  "$tab gamesudp" \
   0409  "$tab serversamba" \
   0410  "$tab custom cfg" \
-  0500 "$cinco [ Firewall Custom ] $cinco" \
+  0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
   0503  "$tab new-mini-config" \
@@ -3674,7 +3674,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0506  "$tab modify-config" \
   0507  "$tab del-config" \
   0508  "$tab list-config" \
-  0600 "$cinco [ Tool Sockets ] $cinco" \
+  0600 "$quad [ Tool Sockets ] $cinco" \
   0601  "$tab ss" \
   0602  "$tab netstat" \
   0603  "$tab lsof" \
@@ -3685,55 +3685,55 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0608  "$tab info-proxy" \
   0609  "$tab info-net" \
   0610  "$tab info-system" \
-  0700 "$cinco [ Tool Ipfwarding ] $cinco" \
+  0700 "$quad [ Tool Ipfwarding ] $cinco" \
   0701  "$tab ipforward-list" \
   0702  "$tab ipforward-on" \
   0703  "$tab ipforward-off" \
-  0800 "$cinco [ Tool Tcp ] $cinco " \
+  0800 "$quad [ Tool Tcp ] $cinco " \
   0801  "$tab speed-ip4" \
   0802  "$tab speed-ip6" \
   0803  "$tab tracetcp-ip4" \
   0804  "$tab tracetcp-ip6" \
-  0900 "$cinco [ Tool Icmp ] $cinco" \
+  0900 "$quad [ Tool Icmp ] $cinco" \
   0901  "$tab traceicmp-ip4" \
   0902  "$tab traceicmp-ip6" \
   0903  "$tab ping-ip4" \
   0904  "$tab ping-ip6" \
-  1000 "$cinco [ Tool Udp ] $cinco"  \
+  1000 "$quad [ Tool Udp ] $cinco"  \
   1001  "$tab host" \
   1002  "$tab dig" \
   1003  "$tab resolveip" \
   1004  "$tab geoip" \
   1005  "$tab ntpdate" \
-  1100 "$cinco [ Tool Sudo ] $cinco"  \
+  1100 "$quad [ Tool Sudo ] $cinco"  \
   1101  "$tab sudo-adduser" \
   1002  "$tab sudo-deluser" \
   1003  "$tab sudo-list" \
-  1200 "$cinco [ Tool Game ] $cinco" \
+  1200 "$quad [ Tool Game ] $cinco" \
   1201  "$tab ole-word" \
   1202  "$tab ole-number" \
   1203  "$tab colour-rgb" \
   1204  "$tab colour-hex" \
-  1300 "$cinco [ Tool Install ] $cinco" \
+  1300 "$quad [ Tool Install ] $cinco" \
   1301  "$tab install" \
   1302  "$tab howto-upgrade" \
   1303  "$tab upgrade" \
-  1400 "$cinco [ Tool Blacklist ] $cinco" \
+  1400 "$quad [ Tool Blacklist ] $cinco" \
   1401  "$tab blacklist-list" \
   1402  "$tab blacklist-list info" \
   1403  "$tab blacklist-on" \
   1404  "$tab blacklist-off" \
-  1500 "$cinco [ Tool Dev ] $cinco" \
+  1500 "$quad [ Tool Dev ] $cinco" \
   1501  "$tab new-versions" \
   1502  "$tab dev-version" \
   1502  "$tab dev-changes" \
-  1600 "$cinco [ Tool System ] $cinco" \
+  1600 "$quad [ Tool System ] $cinco" \
   1601  "$tab free-ram" \
   1602  "$tab speed-ram" \
   1603  "$tab speed-disk" \
   1604  "$tab speed-glx" \
   1605  "$tab radio" \
-  1700 "$cinco [ Show Hardware ] $cinco" \
+  1700 "$quad [ Show Hardware ] $cinco" \
   1701  "$tab lpinfo" \
   1702  "$tab lsblk" \
   1703  "$tab lsusb" \
@@ -3741,7 +3741,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   1705  "$tab lspci" \
   1706  "$tab lsgpu" \
   1707  "$tab lshw" \
-  1800 "$cinco [ Show Etc ] $cinco" \
+  1800 "$quad [ Show Etc ] $cinco" \
   1801  "$tab hosts" \
   1802  "$tab protocols" \
   1803  "$tab services" \
@@ -3749,18 +3749,18 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   1805  "$tab hosts.deny" \
   1806  "$tab show-default" \
   1807  "$tab modify-default" \
-  1900 "$cinco [ Show Log ] $cinco" \
+  1900 "$quad [ Show Log ] $cinco" \
   1901  "$tab log-ssh" \
   1902  "$tab log-search" \
   1903  "$tab fw-sendedlog" \
   1904  "$tab fw-autolog" \
-  2000 "$cinco [ Show About ] $cinco" \
+  2000 "$quad [ Show About ] $cinco" \
   2001  "$tab about" \
   2002  "$tab depends" \
   2003  "$tab examples" \
   2004  "$tab config-eng" \
   2005  "$tab config-spa" \
-  2100 "$cinco [ Show Help ] $cinco" \
+  2100 "$quad [ Show Help ] $cinco" \
   2101  "$tab mini-options" \
   2102  "$tab full-options" \
   2103  "$tab help" \
