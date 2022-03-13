@@ -729,12 +729,12 @@ fi ; exit ; fi
 ####
 ####
 #### :rutina-final-header:
-##################################### english: regen: regen wizard files       #####################################
-##################################### spanish: regen: regenera wizard archivos #####################################
+##################################### english: regen: regen template wizard files       #####################################
+##################################### spanish: regen: regenera template wizard archivos #####################################
 #### :rutina-inicial-regen:
 ####
 ####
-if [ "$first_option" = "regen" ]; then echo "$cinco [ Regenering wizard ]"
+if [ "$first_option" = "regen" ]; then echo "$cinco [ Regenering template wizard and template cfg ]"
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -1198,7 +1198,7 @@ echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
 ####
 ####
-echo "$rallica [ OK ] [ Wizard regenerated ]"
+echo "$rallica [ OK ] [ Wizard and configs cfg templates regenerated ]"
 exit ; fi
 ####
 ####
@@ -1373,7 +1373,7 @@ echo "$cinco See:   $fwiptables firewall-custom"; fi ; fi
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                       "
-echo "$tab" "$tab"  "  firewall-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "  firewall-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "  firewall-rules      |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "  firewall-list       |  list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                         list-allrules list-forward list-forward6              "
@@ -1384,9 +1384,9 @@ echo "$tab" "$tab"  "                         list-ebtables list-arptables      
 echo "$tab" "$tab"  "  firewall-launch     |  eraserules wizard-mini wizard-full offline custom     "
 echo "$tab" "$tab"  "                         clientweb serverweb serverssh gamesudp allpermisive   "
 echo "$tab" "$tab"  "                         serversamba serverprint                               "
-echo "$tab" "$tab"  "  firewall-custom     |  new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                         new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                         list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "  firewall-custom     |  new-full-config nueva-completa-config regen           "
+echo "$tab" "$tab"  "                         new-mini-config nueva-mini-config list-config         "
+echo "$tab" "$tab"  "                         show-config modify-config del-config                  "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "firewall-options | firewall-interface   firewall-rules      firewall-list      "
 echo "$tab" "$tab"  "                   firewall-launch      firewall-custom                        "
@@ -1418,7 +1418,7 @@ echo "$ralla [ $first_option ] [ List full options ] $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options              "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                        "
-echo "$tab" "$tab"  "    firewall-interface |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "    firewall-interface |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "    firewall-rules     |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "    firewall-list      |  list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
@@ -1429,9 +1429,9 @@ echo "$tab" "$tab"  "                          list-ebtables list-arptables     
 echo "$tab" "$tab"  "    firewall-launch    |  eraserules wizard-mini wizard-full offline custom     "
 echo "$tab" "$tab"  "                          clientweb serverweb serverssh gamesudp allpermisive   "
 echo "$tab" "$tab"  "                          serversamba serverprint                               "
-echo "$tab" "$tab"  "    firewall-custom    |  new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                          list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "  firewall-custom      |  new-full-config nueva-completa-config regen           "
+echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config         "
+echo "$tab" "$tab"  "                          show-config modify-config del-config                  "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                      | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy "
@@ -1477,7 +1477,7 @@ exit ; fi
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                        "
-echo "$tab" "$tab"  "   firewall-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "   firewall-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "   firewall-rules      |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "   firewall-list       |  list listnum list6 listnum6                           "
 echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
@@ -1487,10 +1487,10 @@ echo "$tab" "$tab"  "                          list-security4 list-security6    
 echo "$tab" "$tab"  "                          list-ebtables list-arptables                          "
 echo "$tab" "$tab"  "   firewall-launch     |  eraserules wizard-mini wizard-full offline custom     "
 echo "$tab" "$tab"  "                          clientweb serverweb serverssh gamesudp allpermisive   "
-echo "$tab" "$tab"  "                          serversamba serverprint regen                         "
-echo "$tab" "$tab"  "   firewall-custom     |  new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                          list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "                          serversamba serverprint                          "
+echo "$tab" "$tab"  "  firewall-custom      |  new-full-config nueva-completa-config regen           "
+echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config         "
+echo "$tab" "$tab"  "                          show-config modify-config del-config                  "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options              "
 exit ; fi
@@ -1920,6 +1920,8 @@ echo "       new-mini-config : Create a new basic configfile.cfg in english"
 echo "                       : Crea una nueva basica configfile.cfg en ingles"
 echo "     nueva-mini-config : Create a new basic configfile.cfg in spanish"
 echo "                       : Crea una nueva basica configfile.cfg en español"
+echo "                 regen : Regen wizard templates y cfg templates files"
+echo "                       : Regenera plantillas wizard y plantillas cfg"
 echo "           list-config : List config files cfg"
 echo "                       : Lista las configuraciones de archivo cfg"
 echo "         modify-config : Edit one configfile.cfg"
@@ -1957,8 +1959,6 @@ echo "      gui-menu : Gui interface from menu"
 echo "               : Interfaz grafica desde menu"
 echo "     gui-shell : Gui with comand line interface"
 echo "               : Gui con interfaz desde linea de comandos"
-echo "         regen : Regen wizard files"
-echo "               : Regenera wizard files"
 echo $footer_lineal
 exit; fi
 ####
@@ -7819,7 +7819,6 @@ echo "       log OR -log : Output in logfile "
 echo "          cli-menu : Comand line interface with menus"
 echo "          gui-menu : Graphicall interface with menus"
 echo "         gui-shell : Graphicall interface with shell"
-echo "             regen : Regen wizard files"
 echo
 echo "$cinco         [ Control the iptables rules ]"
 echo
@@ -7881,6 +7880,7 @@ echo "       new-full-config : Create a new configfile.cfg in english"
 echo " nueva-completa-config : Create a new configfile.cfg in spanish"
 echo "       new-mini-config : Create a new basic configfile.cfg in english"
 echo "     nueva-mini-config : Create a new basic configfile.cfg in spanish"
+echo "                 regen : Regen wizard files and templates cfg"
 echo "           list-config : List config files cfg"
 echo "         modify-config : Edit one config.cfg"
 echo "           show-config : Show one config.cfg"
@@ -8101,7 +8101,6 @@ echo "       log OR -log : Salida a archivo log"
 echo "          cli-menu : modo texto with menus"
 echo "          gui-menu : Graficos con menus"
 echo "         gui-shell : Graficos con entorno de comandos"
-echo "             regen : Regenera wizard files"
 echo
 echo "$cinco         [ Controla las reglas de iptables ]"
 echo
@@ -8148,6 +8147,7 @@ echo "       new-full-config : Crea una nueva configuracion.cfg en ingles"
 echo " nueva-completa-config : Crea una nueva configuracion.cfg en español"
 echo "       new-mini-config : Crea una nueva basica configuracion.cfg en ingles"
 echo "     nueva-mini-config : Crea una nueva basica configuracion.cfg en español"
+echo "                 regen : Regenera wizard files y plantillas cfg"
 echo "           list-config : Lista los archivos de configuracion cfg"
 echo "         modify-config : Edita una existente configuracion.cfg"
 echo "           show-config : Muestra una existente configuracion.cfg"
