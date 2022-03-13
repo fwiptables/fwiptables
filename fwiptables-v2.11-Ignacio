@@ -411,8 +411,8 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
 echo "alias $fwiptables='sudo $directory_fiptables/$fwiptables'"       &>  /etc/bash_completion.d/$fwiptables
-echo "complete -W 'control-interface control-rules control-list rules-launch \
-rules-custom tool-sockets tool-forward tool-tcp tool-udp \
+echo "complete -W 'firewall-interface firewall-rules firewall-list firewall-launch \
+firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
 show-help show-example' $fwiptables"  &>> /etc/bash_completion.d/$fwiptables
@@ -1361,7 +1361,7 @@ if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fwiptables cfg 
 echo "$cinco Usage: $fwiptables custom file-cfg"
-echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
+echo "$cinco See:   $fwiptables firewall-custom"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
@@ -1373,24 +1373,24 @@ echo "$cinco See:   $fwiptables rules-custom"; fi ; fi
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List mini options ] $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "  control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
-echo "$tab" "$tab"  "  control-rules      |  stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "  control-list       |  list listnum list6 listnum6                           "
-echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
-echo "$tab" "$tab"  "                        list-filter4 list-filter6 list-nat4 list-nat6         "
-echo "$tab" "$tab"  "                        list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$tab" "$tab"  "                        list-security4 list-security6                         "
-echo "$tab" "$tab"  "                        list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "  rules-launch       |  eraserules wizard-mini wizard-full offline custom     "
-echo "$tab" "$tab"  "                        clientweb serverweb serverssh gamesudp allpermisive   "
-echo "$tab" "$tab"  "                        serversamba serverprint                               "
-echo "$tab" "$tab"  "  rules-custom       |  new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "  firewall-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "  firewall-rules      |  stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "  firewall-list       |  list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "                         list-allrules list-forward list-forward6              "
+echo "$tab" "$tab"  "                         list-filter4 list-filter6 list-nat4 list-nat6         "
+echo "$tab" "$tab"  "                         list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$tab" "$tab"  "                         list-security4 list-security6                         "
+echo "$tab" "$tab"  "                         list-ebtables list-arptables                          "
+echo "$tab" "$tab"  "  firewall-launch    |   eraserules wizard-mini wizard-full offline custom     "
+echo "$tab" "$tab"  "                         clientweb serverweb serverssh gamesudp allpermisive   "
+echo "$tab" "$tab"  "                         serversamba serverprint                               "
+echo "$tab" "$tab"  "  firewall-custom    |   new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                         new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                         list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
-echo "$tab" "$tab"  " Firewall |  control-interface    control-rules       control-list            "
-echo "$tab" "$tab"  "             rules-launch         rules-custom                                "
+echo "$tab" "$tab"  " Firewall |  firewall-interface   firewall-rules      firewall-list           "
+echo "$tab" "$tab"  "             firewall-launch      firewall-custom                             "
 echo "$tab" "$tab"  "     Tool |  tool-sockets         tool-forward        tool-tcp                "
 echo "$tab" "$tab"  "             tool-udp             tool-icmp           tool-nmap               "
 echo "$tab" "$tab"  "             tool-sudo            tool-game           tool-system             "
@@ -1416,23 +1416,23 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List full options ] $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options              "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                    | firewall-options |                      "
-echo "$tab" "$tab"  "    control-interface | cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
-echo "$tab" "$tab"  "    control-rules     | stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    control-list      | list listnum list6 listnum6                           "
-echo "$tab" "$tab"  "                        list-allrules list-forward list-forward6              "
-echo "$tab" "$tab"  "                        list-filter4 list-filter6 list-nat4 list-nat6         "
-echo "$tab" "$tab"  "                        list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$tab" "$tab"  "                        list-security4 list-security6                         "
-echo "$tab" "$tab"  "                        list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "    rules-launch      | eraserules wizard-mini wizard-full offline custom     "
-echo "$tab" "$tab"  "                        clientweb serverweb serverssh gamesudp allpermisive   "
-echo "$tab" "$tab"  "                        serversamba serverprint                               "
-echo "$tab" "$tab"  "    rules-custom      | new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                        new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                        list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "                                    | firewall-options |                        "
+echo "$tab" "$tab"  "    firewall-interface |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "    firewall-rules     |  stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "    firewall-list      |  list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
+echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6         "
+echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$tab" "$tab"  "                          list-security4 list-security6                         "
+echo "$tab" "$tab"  "                          list-ebtables list-arptables                          "
+echo "$tab" "$tab"  "    firewall-launch    |  eraserules wizard-mini wizard-full offline custom     "
+echo "$tab" "$tab"  "                          clientweb serverweb serverssh gamesudp allpermisive   "
+echo "$tab" "$tab"  "                          serversamba serverprint                               "
+echo "$tab" "$tab"  "    firewall-custom    |  new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                          list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-route info-net info-proxy "
@@ -1477,23 +1477,23 @@ exit ; fi
 ####
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
-echo "$tab" "$tab"  "                                    | firewall-options |                       "
-echo "$tab" "$tab"  "   control-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
-echo "$tab" "$tab"  "   control-rules      |  stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "   control-list       |  list listnum list6 listnum6                           "
-echo "$tab" "$tab"  "                         list-allrules list-forward list-forward6              "
-echo "$tab" "$tab"  "                         list-filter4 list-filter6 list-nat4 list-nat6         "
-echo "$tab" "$tab"  "                         list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$tab" "$tab"  "                         list-security4 list-security6                         "
-echo "$tab" "$tab"  "                         list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "   rules-launch       |  eraserules wizard-mini wizard-full offline custom     "
-echo "$tab" "$tab"  "                         clientweb serverweb serverssh gamesudp allpermisive   "
-echo "$tab" "$tab"  "                         serversamba serverprint regen                         "
-echo "$tab" "$tab"  "   rules-custom       |  new-full-config nueva-completa-config                 "
-echo "$tab" "$tab"  "                         new-mini-config nueva-mini-config                     "
-echo "$tab" "$tab"  "                         list-config show-config modify-config del-config      "
+echo "$tab" "$tab"  "                                    | firewall-options |                        "
+echo "$tab" "$tab"  "   firewall-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log regen "
+echo "$tab" "$tab"  "   firewall-rules      |  stop continue reset names actual show save load       "
+echo "$tab" "$tab"  "   firewall-list       |  list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
+echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6         "
+echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$tab" "$tab"  "                          list-security4 list-security6                         "
+echo "$tab" "$tab"  "                          list-ebtables list-arptables                          "
+echo "$tab" "$tab"  "   firewall-launch     |  eraserules wizard-mini wizard-full offline custom     "
+echo "$tab" "$tab"  "                          clientweb serverweb serverssh gamesudp allpermisive   "
+echo "$tab" "$tab"  "                          serversamba serverprint regen                         "
+echo "$tab" "$tab"  "   firewall-custom     |  new-full-config nueva-completa-config                 "
+echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config                     "
+echo "$tab" "$tab"  "                          list-config show-config modify-config del-config      "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options             "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options              "
 exit ; fi
 ####
 ####
@@ -1579,15 +1579,15 @@ echo "$cinco [ Principal options ] $cinco"
 echo
 $fwiptables control-guide
 echo
-$fwiptables control-rules
+$fwiptables firewall-rules
 echo
-$fwiptables control-interface
+$fwiptables firewall-interface
 echo
-$fwiptables control-list
+$fwiptables firewall-list
 echo 
-$fwiptables rules-launch
+$fwiptables firewall-launch
 echo
-$fwiptables rules-custom
+$fwiptables firewall-custom
 echo
 echo "$cinco [ Secondary options ] $cinco"
 echo
@@ -1697,17 +1697,15 @@ echo "[ info ] [ Ayuda a un grupo.  Por ejemplo: fwiptables control-guide ]"
 echo
 echo "                  [ Principal options ]"
 echo
-echo " control-interface :  Manage the interface with txt or cli or gui or log"
+echo "firewall-interface :  Manage the interface with txt or cli or gui or log"
 echo "                   :  Manage el interfaz con txt o cli o gui or log"
-echo "     control-guide :  Guide to beginners"
-echo "                   :  Guia para empezar"
-echo "     control-rules :  Control the iptables firewall rules"
+echo "    firewall-rules :  Control the iptables firewall rules"
 echo "                   :  Controla las reglas de iptables"
-echo "      control-list :  List the iptables firewall rules"
+echo "     firewall-list :  List the iptables firewall rules"
 echo "                   :  Lista las reglas de iptables"
-echo "      rules-launch :  Launch the iptables firewall rules"
+echo "   firewall-launch :  Launch the iptables firewall rules"
 echo "                   :  Lanza las reglas de iptables"
-echo "      rules-custom :  Create, modify and show configurations"
+echo "   firewall-custom :  Create, modify and show configurations"
 echo "                   :  Crea, modifica y muestra configuraciones"
 echo
 echo "                  [ Secondary options ]"
@@ -1747,12 +1745,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-group-options:
-##############################       english: rules-launch: options
-##############################       spanish: rules-launch: opciones
-#### :rutina-inicial-rules-launch:
+##############################       english: firewall-launch: options
+##############################       spanish: firewall-launch: opciones
+#### :rutina-inicial-firewall-launch:
 ####
 ####
-if [ "$first_option" = "rules-launch" ]; then $give_cover
+if [ "$first_option" = "firewall-launch" ]; then $give_cover
 echo "$ralla [ $first_option ] [ launch rules ]"
 echo "$rallica [ Launch iptables rules ]"
 echo "$rallica [ Lanza reglas de iptables ]"
@@ -1783,13 +1781,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-rules-launch:
-##############################       english: control-rules: options
-##############################       spanish: control-rules: opciones
-#### :rutina-inicial-control-rules:
+#### :rutina-final-firewall-launch:
+##############################       english: firewall-rules: options
+##############################       spanish: firewall-rules: opciones
+#### :rutina-inicial-firewall-rules:
 ####
 ####
-if [ "$first_option" = "control-rules" ]; then $give_cover
+if [ "$first_option" = "firewall-rules" ]; then $give_cover
 echo "$ralla [ $first_option ] [ control rules ]"
 echo "$rallica [ Control iptables rules ]"
 echo "$rallica [ Controla reglas de iptables ]"
@@ -1816,13 +1814,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-control-rules:
-##############################       english: control-list: options
-##############################       spanish: control-list: opciones
-#### :rutina-inicial-control-list:
+#### :rutina-final-firewall-rules:
+##############################       english: firewall-list: options
+##############################       spanish: firewall-list: opciones
+#### :rutina-inicial-firewall-list:
 ####
 ####
-if [ "$first_option" = "control-list" ]; then $give_cover
+if [ "$first_option" = "firewall-list" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List rules ]"
 echo "$rallica [ List filter iptables rules ]"
 echo "$rallica [ Lista reglas de iptables filtros ]"
@@ -1876,7 +1874,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-control-list:
+#### :rutina-final-firewall-list:
 ##############################       english: list-numrules: options
 ##############################       spanish: list-numrules: opciones
 #### :rutina-inicial-list-numrules:
@@ -1901,12 +1899,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-numrules:
-##############################       english: rules-custom: options
-##############################       spanish: rules-custom: opciones
-#### :rutina-inicial-rules-custom:
+##############################       english: firewall-custom: options
+##############################       spanish: firewall-custom: opciones
+#### :rutina-inicial-firewall-custom:
 ####
 ####
-if [ "$first_option" = "rules-custom" ]; then $give_cover
+if [ "$first_option" = "firewall-custom" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool custom rules config ]"
 echo "$rallica [ custom configs ]"
 echo "$rallica [ Herramienta de configuraciones de reglas ]"
@@ -1931,13 +1929,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-rules-custom:
-##############################       english: control-interface: options
+#### :rutina-final-firewall-custom:
+##############################       english: firewall-interface: options
 ##############################       spanish: user-intarface: opciones
-#### :rutina-inicial-control-interface:
+#### :rutina-inicial-firewall-interface:
 ####
 ####
-if [ "$first_option" = "control-interface" ]; then $give_cover
+if [ "$first_option" = "firewall-interface" ]; then $give_cover
 echo "$ralla [ $first_option ] [ control interface ]"
 echo "$rallica [ control interface ]" 
 echo "$rallica [ control de interfaz ]"
@@ -1962,7 +1960,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-control-interface:
+#### :rutina-final-firewall-interface:
 ##############################       english: tool-sockets: options sockets
 ##############################       spanish: tool-sockets: opciones sockets
 #### :rutina-inicial-tool-sockets:
@@ -2738,10 +2736,10 @@ selection=$(zenity $graphic_dimension  \
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "01 Control guide")$fwiptables gui-menu-control-guide ; exit ;;
-"02 Control rules")$fwiptables gui-menu-control-rules ; exit ;;
-"03 List rules")$fwiptables gui-menu-control-list ; exit ;;
-"04 Launch rules")$fwiptables gui-menu-rules-launch ; exit ;;
-"05 Tool rules")$fwiptables gui-menu-rules-custom ; exit ;;
+"02 Control rules")$fwiptables gui-menu-firewall-rules ; exit ;;
+"03 List rules")$fwiptables gui-menu-firewall-list ; exit ;;
+"04 Launch rules")$fwiptables gui-menu-firewall-launch ; exit ;;
+"05 Tool rules")$fwiptables gui-menu-firewall-custom ; exit ;;
 "06 Tool sockets")$fwiptables gui-menu-tool-sockets ; exit ;;
 "07 Tool forward")$fwiptables gui-menu-tool-forward ; exit ;;
 "08 Tool tcp")$fwiptables gui-menu-tool-tcp ; exit ;;
@@ -2799,12 +2797,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-control-guide:
-############################## english: gui-menu-rules-launch: gui with menu ##############################
-############################## spanish: gui-menu-rules-launch: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-rules-launch:
+############################## english: gui-menu-firewall-launch: gui with menu ##############################
+############################## spanish: gui-menu-firewall-launch: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-firewall-launch:
 ####
 ####  
-if [ "$first_option" = "gui-menu-rules-launch" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "offline" "allpermisive" \
 "clientweb" "serverweb" "gamesudp" "serversamba" "custom cfg" \
@@ -2815,7 +2813,7 @@ selection=$(zenity $graphic_dimension \
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui rules-launch ;;
+"Gui Info Menu") $fwiptables -gui firewall-launch ;;
 "eraserules") $fwiptables -gui eraserules ; $fwiptables gui list ;;
 "offline") $fwiptables -gui offline ; $fwiptables gui list ;;
 "allpermisive") $fwiptables -gui allpermisive ; $fwiptables gui list ;;
@@ -2836,13 +2834,13 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-rules-launch:
-############################## english: gui-menu-control-rules: gui with menu ##############################
-############################## spanish: gui-menu-control-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-control-rules:
+#### :rutina-final-gui-menu-firewall-launch:
+############################## english: gui-menu-firewall-rules: gui with menu ##############################
+############################## spanish: gui-menu-firewall-rules: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-firewall-rules:
 ####
 ####
-if [ "$first_option" = "gui-menu-control-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-firewall-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Control Rules] [$fwiptables]")
@@ -2851,7 +2849,7 @@ selection=$(zenity $graphic_dimension \
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui control-rules ;;
+"Gui Info Menu") $fwiptables -gui firewall-rules ;;
 "stop") $fwiptables -gui stop ; $fwiptables -gui list ;;
 "continue") $fwiptables -gui continue ; $fwiptables -gui list ;;
 "reset") $fwiptables -gui reset ; $fwiptables -gui list ;;
@@ -2874,13 +2872,13 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-control-rules:
-############################## english: gui-menu-control-list: gui with menu ##############################
-############################## spanish: gui-menu-control-list: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-control-list:
+#### :rutina-final-gui-menu-firewall-rules:
+############################## english: gui-menu-firewall-list: gui with menu ##############################
+############################## spanish: gui-menu-firewall-list: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-firewall-list:
 ####
 ####
-if [ "$first_option" = "gui-menu-control-list" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-firewall-list" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-allrules" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
@@ -2891,7 +2889,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui control-list ;;
+"Gui Info Menu") $fwiptables -gui firewall-list ;;
 "list") $fwiptables -gui list ;;
 "list6") $fwiptables -gui list6 ;;
 "list-allrules") $fwiptables -gui list-allrules ;;
@@ -2922,13 +2920,13 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-control-list:
-############################## english: gui-menu-rules-custom: gui with menu ##############################
-############################## spanish: gui-menu-rules-custom: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-rules-custom:
+#### :rutina-final-gui-menu-firewall-list:
+############################## english: gui-menu-firewall-custom: gui with menu ##############################
+############################## spanish: gui-menu-firewall-custom: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-firewall-custom:
 ####
 ####
-if [ "$first_option" = "gui-menu-rules-custom" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "list-config" "show-config" "modify-config" "del-config" \
@@ -2938,7 +2936,7 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui rules-custom;;
+"Gui Info Menu") $fwiptables -gui firewall-custom;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $fwiptables -gui new-full-config $archivo ;;
@@ -2973,7 +2971,7 @@ zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensag
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-rules-custom:
+#### :rutina-final-gui-menu-firewall-custom:
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-sockets:
@@ -3796,12 +3794,12 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  case "$menuprincipal" in
  0000) clear ; $fwiptables info ;;
  0010) clear ; $fwiptables cli control-guide ;;
- 0020) clear ; $fwiptables cli control-rules ;;
- 0030) clear ; $fwiptables cli control-list ;;
- 0040) clear ; $fwiptables cli control-list ;;
- 0050) clear ; $fwiptables cli control-list ;;
- 0060) clear ; $fwiptables cli rules-launch ;;
- 0070) clear ; $fwiptables cli rules-custom ;;
+ 0020) clear ; $fwiptables cli firewall-rules ;;
+ 0030) clear ; $fwiptables cli firewall-list ;;
+ 0040) clear ; $fwiptables cli firewall-list ;;
+ 0050) clear ; $fwiptables cli firewall-list ;;
+ 0060) clear ; $fwiptables cli firewall-launch ;;
+ 0070) clear ; $fwiptables cli firewall-custom ;;
  0080) clear ; $fwiptables cli tool-socket ;;
  0090) clear ; $fwiptables cli tool-ipforward ;;
  0100) clear ; $fwiptables cli tool-tcp ;;
@@ -7734,11 +7732,11 @@ if [ "$first_option" = "config-eng" ]; then $give_cover
 ####
  if [ "$first_option" = "info" ]; then $nada
  if [ "$second_option" = "control-guide" ]; then $fwiptables control-guide ; exit ; fi
- if [ "$second_option" = "control-rules" ]; then $fwiptables control-rules ; exit ; fi
- if [ "$second_option" = "control-list" ]; then $fwiptables control-list ; exit ; fi
- if [ "$second_option" = "control-interface" ]; then $fwiptables control-interface ; exit ; fi
- if [ "$second_option" = "rules-launch" ]; then $fwiptables rules-launch ; exit ; fi
- if [ "$second_option" = "rules-custom" ]; then $fwiptables rules-custom ; exit ; fi
+ if [ "$second_option" = "firewall-rules" ]; then $fwiptables firewall-rules ; exit ; fi
+ if [ "$second_option" = "firewall-list" ]; then $fwiptables firewall-list ; exit ; fi
+ if [ "$second_option" = "firewall-interface" ]; then $fwiptables firewall-interface ; exit ; fi
+ if [ "$second_option" = "firewall-launch" ]; then $fwiptables firewall-launch ; exit ; fi
+ if [ "$second_option" = "firewall-custom" ]; then $fwiptables firewall-custom ; exit ; fi
  if [ "$second_option" = "tool-sockets" ]; then $fwiptables tool-sockets ; exit ; fi
  if [ "$second_option" = "tool-forward" ]; then $fwiptables tool-forward ; exit ; fi
  if [ "$second_option" = "tool-tcp" ]; then $fwiptables tool-tcp ; exit ; fi
@@ -7767,20 +7765,20 @@ echo "$tab [ launch: ] [ $fwiptables info group ]"
 echo
 echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "                                   | Group Options |                         "
+echo "$tab" "$tab"  "                                   | Group Options |                          "
 echo
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options           "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
 echo
-echo "$tab" "$tab"  " firewall|  control-interface  control-guide   control-rules                 "
-echo "$tab" "$tab"  "            control-list       rules-launch    rules-custom                  "
-echo "$tab" "$tab"  "     tool|  tool-sockets       tool-forward    tool-tcp                      "
-echo "$tab" "$tab"  "            tool-udp           tool-icmp       tool-nmap       tool-sudo     " 
-echo "$tab" "$tab"  "            tool-system        tool-install    tool-blacklist  tool-dev      "
-echo "$tab" "$tab"  "     show|  show-hardware      show-etc        show-log                      "
-echo "$tab" "$tab"  "            show-about         show-help       show-example                  " 
+echo "$tab" "$tab"  " firewall|  firewall-interface  firewall-rules  firewall-list                 "
+echo "$tab" "$tab"  "            firewall-launch     firewall-custom               "
+echo "$tab" "$tab"  "     tool|  tool-sockets        tool-forward    tool-tcp                      "
+echo "$tab" "$tab"  "            tool-udp            tool-icmp       tool-nmap       tool-sudo     " 
+echo "$tab" "$tab"  "            tool-system         tool-install    tool-blacklist  tool-dev      "
+echo "$tab" "$tab"  "     show|  show-hardware       show-etc        show-log                      "
+echo "$tab" "$tab"  "            show-about          show-help       show-example                  " 
 echo
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab [ Example: ] [ $fwiptables control-interface ]"
+echo "$tab [ Example: ] [ $fwiptables firewall-interface ]"
 echo $footer_lineal
 exit; fi
 ####
