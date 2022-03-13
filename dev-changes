@@ -224,7 +224,6 @@
 # 5. long-help cambiado a all-help. HECHO
 #
 # changes fwiptables 2.11 en desarrollo
-# fecha prevista de publicación: primera semana de abril
 #
 # 1. cambio de ejemplos en options. HECHO
 # 2. añade mas informacion en help y ayuda. HECHO
@@ -238,7 +237,6 @@
 # 10. cambio de nombre en glx-speed a speed-glx, en ram-speed a speed-ram, en disk-speed a speed-disk. HECHO
 # 11. añadir colour-rgb y colour-hex a gui-menu. HECHO
 # 12. añadir colour-rgb y colour-hex a cli-menu. HECHO
-# 13. actualizacion de cli-menu.
-# 14. actualizacion de gui-menu.
+# 13. actualizacion de cli-menu. HECHO
+# 14. actualizacion de gui-menu. HECHO
 #
-
