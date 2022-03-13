@@ -3670,6 +3670,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   0506  "$tab modify-config" \
   0507  "$tab del-config" \
   0508  "$tab list-config" \
+  0509  "$tab regen" \
   0600 "$quad [ Tool Sockets ] $cinco" \
   0601  "$tab ss" \
   0602  "$tab netstat" \
@@ -3864,6 +3865,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables del-config $archivo ; echo "deleted $archivo" ;;
  0508) clear ; $fwiptables cli list-config ;;
+ 0509) clear ; $fwiptables cli regen ;;
  0601) clear ; $fwiptables cli ss ;;
  0602) clear ; $fwiptables cli netstat ;;
  0603) clear ; $fwiptables cli lsof ;;
@@ -7491,9 +7493,12 @@ fi
  if [ "$first_option" = "resolv.conf" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ show the file /resolv.conf ]"
  echo $header_lineal
- cat /etc/resolv.conf
- echo $ralla
- echo "$rallica This file is /etc/resolv.conf"
+ if [ -f /etc/resolv.conf.head ]; then cat /etc/resolv.conf.head  ; echo $ralla
+ echo $ralla ; echo "$rallica This file is /etc/resolv.conf.head" ; fi
+ if [ -f /etc/resolv.conf ];      then cat /etc/resolv.conf       ; echo $ralla
+ echo $ralla ; echo "$rallica This file is /etc/resolv.conf"      ; fi
+ if [ -f /etc/resolv.conf.tail ]; then cat /etc/resolv.conf.tail  ; echo $ralla
+ echo $ralla ; echo "$rallica This file is /etc/resolv.conf.tail" ; fi
  echo $footer_lineal
  exit; fi
 ####
