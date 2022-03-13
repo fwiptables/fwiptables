@@ -2731,7 +2731,7 @@ exit; fi
 if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Control guide" "02 Control rules" "03 List rules" "04 Launch rules" "05 Tool rules" \
+ --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Launch" "04 Firewall Custom" "05 Tool rules" \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
 "12 Tool game" "13 Tool system" "14 Tool install" "15 Tool blacklist" "16 Tool dev" \
 "17 Show hardware" "18 Show etc" "19 Show log" "20 Show about" "21 Show help" \
@@ -2740,10 +2740,10 @@ selection=$(zenity $graphic_dimension  \
 #### 
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"01 Control guide")$fwiptables gui-menu-control-guide ; exit ;;
-"02 Control rules")$fwiptables gui-menu-firewall-rules ; exit ;;
-"03 List rules")$fwiptables gui-menu-firewall-list ; exit ;;
-"04 Launch rules")$fwiptables gui-menu-firewall-launch ; exit ;;
+"01 Firewall Rules")$fwiptables gui-menu-firewall-rules ; exit ;;
+"02 Firewall List")$fwiptables gui-menu-firewall-list ; exit ;;
+"03 Firewall Launch")$fwiptables gui-menu-firewall-launch ; exit ;;
+"04 Firewall Custom")$fwiptables gui-menu-firewall-custom ; exit ;;
 "05 Tool rules")$fwiptables gui-menu-firewall-custom ; exit ;;
 "06 Tool sockets")$fwiptables gui-menu-tool-sockets ; exit ;;
 "07 Tool forward")$fwiptables gui-menu-tool-forward ; exit ;;
@@ -2770,38 +2770,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu:
-############################## english: gui-menu-control-guide: gui with menu ##############################
-############################## spanish: gui-menu-control-guide: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-control-guide:
-####
-####
-if [ "$first_option" = "gui-menu-control-guide" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "info-net" "info-system" "regen" "wizard-full" "wizard-mini" \
---column="Option list $fwiptables" --text="Select one option" --title="[Control Guide] [$fwiptables]" )
-#### 
-#### 
-case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui control-guide ;;
-"info-net") $fwiptables -gui info-net ;;
-"info-system")$fwiptables -gui info-system ;;
-"regen")$fwiptables -gui regen ;;
-"wizard-full")$fwiptables -gui wizard-full ;;
-"wizard-mini")$fwiptables -gui wizard-mini ;;
-esac
-####
-####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
-####
-####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
-exit; fi
-####
-####
-#### :rutina-final-gui-menu-control-guide:
 ############################## english: gui-menu-firewall-launch: gui with menu ##############################
 ############################## spanish: gui-menu-firewall-launch: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-firewall-launch:
@@ -2809,7 +2777,7 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "eraserules" "offline" "allpermisive" \
+--list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "offline" "allpermisive" \
 "clientweb" "serverweb" "gamesudp" "serversamba" "custom cfg" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
@@ -2820,6 +2788,8 @@ case "$selection" in
 "Gui Principal Menu")$fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui firewall-launch ;;
 "eraserules") $fwiptables -gui eraserules ; $fwiptables gui list ;;
+"wizard-full")$fwiptables -gui wizard-full ;;
+"wizard-mini")$fwiptables -gui wizard-mini ;;
 "offline") $fwiptables -gui offline ; $fwiptables gui list ;;
 "allpermisive") $fwiptables -gui allpermisive ; $fwiptables gui list ;;
 "clientweb") $fwiptables -gui clientweb ; $fwiptables gui list ;;
@@ -2934,7 +2904,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
-"list-config" "show-config" "modify-config" "del-config" \
+"list-config" "show-config" "modify-config" "del-config" "regen" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Config] [$fwiptables]" )
 #### 
 #### 
@@ -2965,6 +2935,7 @@ $fwiptables -gui modify-config $archivo ;;
 "del-config")
 archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($fwiptables cfg)")" ;
 $fwiptables -gui del-config $archivo;;
+"regen")$fwiptables -gui regen ;;
 esac
 ####
 ####
@@ -2985,7 +2956,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
-"ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
+"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Sockets] [$fwiptables]" )
 #### 
 #### 
@@ -2995,6 +2966,8 @@ case $selection in
 "Gui Info Menu") $fwiptables -gui tool-sockets ;;
 "info-route") $fwiptables -gui route ;;
 "info-nodes") $fwiptables -gui info-nodes ;;
+"info-net") $fwiptables -gui info-net ;;
+"info-system")$fwiptables -gui info-system ;;
 "ss") $fwiptables -gui ss ;;
 "lsof") $fwiptables -gui lsof ;;
 "netstat") $fwiptables -gui netstat ;;
@@ -3028,10 +3001,10 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu") $fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-forward;;
-"ipforward-list") $fwiptables -gui ipforward-list;;
-"ipforward-on") $fwiptables -gui ipforward-on;;
-"ipforward-off") $fwiptables -gui ipforward-off;;
+"Gui Info Menu") $fwiptables -gui tool-forward    ;;
+"ipforward-list") $fwiptables -gui ipforward-list ;;
+"ipforward-on") $fwiptables -gui ipforward-on     ;;
+"ipforward-off") $fwiptables -gui ipforward-off   ;;
 esac
 ####
 ####
