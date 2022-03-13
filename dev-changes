@@ -236,6 +236,9 @@
 # 8. cambio de nombre de rules-custom por firewall-custom. HECHO.
 # 9. cambios en la ayuda help y all-help para los nuevos firewall. HECHO
 # 10. cambio de nombre en glx-speed a speed-glx, en ram-speed a speed-ram, en disk-speed a speed-disk. HECHO
-# 11. añadir colour-rgb y colour-hex a cli-menu. HECHO
-# 12. añadir colour-rgb y colour-hex a gui-menu
+# 11. añadir colour-rgb y colour-hex a gui-menu. HECHO
+# 12. añadir colour-rgb y colour-hex a cli-menu. HECHO
+# 13. actualizacion de cli-menu.
+# 14. actualizacion de gui-menu.
+#
 #
