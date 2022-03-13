@@ -228,4 +228,13 @@
 #
 # 1. cambio de ejemplos en options. HECHO
 # 2. añade mas informacion en help y ayuda. HECHO
+# 3. cambio de seccion a las opciones de control-guide, eliminada la seccion contro-guide. HECHO
+# 4. cambio de nombre de control-interface por firewall-interface. HECHO
+# 5. cambio de nombre de control-rules por firewall-rules. HECHO
+# 6. cambio de nombre de control-list por firewall-list. HECHO
+# 7. cambio de nombre de rules-launch por firewall-launch. HECHO
+# 8. cambio de nombre de rules-custom por firewall-custom. HECHO.
+# 9. cambios en la ayuda help y all-help para los nuevos firewall. HECHO
+# 10.
 #
+
