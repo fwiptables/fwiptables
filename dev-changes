@@ -239,4 +239,5 @@
 # 12. añadir colour-rgb y colour-hex a cli-menu. HECHO
 # 13. actualizacion de cli-menu. HECHO
 # 14. actualizacion de gui-menu. HECHO
+# 15. resolv.conf incluye a resolv.conf a resolv.conf.head y a resolv.conf.tail
 #
