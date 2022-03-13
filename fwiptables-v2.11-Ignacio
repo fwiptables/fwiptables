@@ -1443,7 +1443,7 @@ echo "$tab" "$tab"  "    tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-
 echo "$tab" "$tab"  "    tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          |  sudo-adduser sudo-deluser sudo-list alias-list        "
 echo "$tab" "$tab"  "    tool-game          |  ole-word ole-number colour-rgb colour-hex             "
-echo "$tab" "$tab"  "    tool-system        |  ram-free speed-ram speed-disk speed-glx radio         "
+echo "$tab" "$tab"  "    tool-system        |  free-ram speed-ram speed-disk speed-glx radio         "
 echo "$tab" "$tab"  "    tool-install       |  install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist     |  blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev           |  new-versions dev-version dev-changes code             "
@@ -1514,7 +1514,7 @@ echo "$tab" "$tab"  "    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip
 echo "$tab" "$tab"  "    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
 echo "$tab" "$tab"  "    tool-game         | ole-word ole-number colour-rgb colour-hex             "
-echo "$tab" "$tab"  "    tool-system       | ram-free speed-ram speed-disk speed-glx radio         "
+echo "$tab" "$tab"  "    tool-system       | free-ram speed-ram speed-disk speed-glx radio         "
 echo "$tab" "$tab"  "    tool-install      | install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev          | new-versions dev-version dev-changes code             "
@@ -2236,7 +2236,7 @@ echo "$ralla [ $first_option ] [ tool system ]"
 echo "$rallica [ Tool system ]"
 echo "$rallica [ Herramienta systema ]"
 echo
-echo "      ram-free : Clean for innecesary memory"
+echo "      free-ram : Clean for innecesary memory"
 echo "               : Libera la memoria innecesaria"
 echo "     speed-ram : Show the speed of ram"
 echo "               : Muestra la velocidad de la ram"
@@ -3208,7 +3208,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ram-free" "speed-ram" "speed-disk" "speed-glx" "radio" \
+--list "Gui Principal Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool System] [$fwiptables]" )
 #### 
 #### 
@@ -3216,7 +3216,7 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
 "Gui Principal Menu")$fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui tool-system ;;
-"ram-free")   $fwiptables -gui ram-free ;;
+"free-ram")   $fwiptables -gui free-ram ;;
 "speed-ram")  $fwiptables -gui speed-ram ;;
 "speed-disk") $fwiptables -gui speed-disk ;;
 "speed-glx")   $fwiptables -gui speed-glx ;;
@@ -3748,7 +3748,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
   172  "dev-version" \
   173  "dev-changes" \
   0180 "$cinco [ Tool system program ] $cinco" \
-  181  "ram-free" \
+  181  "free-ram" \
   182  "speed-ram" \
   183  "speed-disk" \
   184  "speed-glx" \
@@ -3936,7 +3936,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
  171) clear ; $fwiptables cli new-versions ;;
  172) clear ; $fwiptables cli dev-version ;;
  173) clear ; $fwiptables cli dev-changes ;; 
- 181) clear ; $fwiptables cli ram-free ;;
+ 181) clear ; $fwiptables cli free-ram ;;
  182) clear ; $fwiptables cli speed-ram ;;
  183) clear ; $fwiptables cli speed-disk ;;
  184) clear ; $fwiptables txt speed-glx ;;
@@ -6267,12 +6267,12 @@ $fwiptables stop
 ####
 ####
 #### :rutina-final-scan-ping:
-############################       english: ram-free: give one freedom to ram innecesary
-############################       spanish: ram-free: limpia la memoria ram
-#### :rutina-inicial-ram-free:
+############################       english: free-ram: give one freedom to ram innecesary
+############################       spanish: free-ram: limpia la memoria ram
+#### :rutina-inicial-free-ram:
 ####
 ####
- if [ "$first_option" = "ram-free" ]; then $give_cover
+ if [ "$first_option" = "free-ram" ]; then $give_cover
  echo "$ralla [ $first_option ] [ freedom from innecesary ram ]"
  echo $header_lineal
  case $command_tee in "$NULL") echo "$cinco Install dd command"; exit ;; esac
@@ -6285,7 +6285,7 @@ $fwiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-ram-free:
+#### :rutina-final-free-ram:
 ############################       english: speed-disk: Show the speed of disc
 ############################       spanish: speed-disk: Muestra la velocidad de el disco
 #### :rutina-inicial-speed-disk:
@@ -7952,7 +7952,7 @@ echo "      colour-rgb  : convert one number rgb in hexadecimal"
 echo
 echo "$cinco         [ Tool system ]"
 echo
-echo "         ram-free : Clean for innecesary memory"
+echo "         free-ram : Clean for innecesary memory"
 echo "        speed-ram : Show the speed of ram"
 echo "       speed-disk : Show the speed of disc"
 echo "        speed-glx : Show frammes for seconds with mesa graphicall"
@@ -8235,7 +8235,7 @@ echo "   colour-rgb  : convierte un numero rgb en hexadecimal"
 echo
 echo "$cinco         [ Herramienta de sistema ]"
 echo
-echo "      ram-free : Libera la memoria innecesaria"
+echo "      free-ram : Libera la memoria innecesaria"
 echo "     speed-ram : Muestra la velocidad de la ram"
 echo "    speed-disk : Muestra la velocidad de el disco"
 echo "     speed-glx : Muestra fotogramas por segundo con graficos mesa"
