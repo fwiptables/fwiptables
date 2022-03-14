@@ -539,8 +539,21 @@ file_output_filelog="/var/log/fwiptables-filelog"
 file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
-##############################     ALIAS simple y campus    ##############################
+##############################     ALIAS  simple y campus    ##############################
 ##############################     ALIAS simple y campo     ##############################
+####
+####
+#### english: if default output is in second option, change priority
+#### spanish: si salida por defecto esta en segunda opcion, cambia prioridad
+####
+####
+#### case $second_option in
+#### "txt"|"-txt") $fwiptables $second_option $first_option $third_option ; exit;;
+#### "text"|"-text") $fwiptables $second_option $first_option $third_option ; exit;;
+#### "log"|"-log") $fwiptables $second_option $first_option $third_option ; exit;;
+#### "cli"|"-cli") $fwiptables $second_option $first_option $third_option ; exit;;
+#### "gui"|"-gui") $fwiptables $second_option $first_option $third_option ; exit;;
+#### esac
 ####
 ####
 ##############################     ALIAS SIMPLE
@@ -649,14 +662,12 @@ esac ; fi
 #### spanish: cambia el -log y guarda el archivo
 ####
 ####
-case "$first_option" in 
-"log"|"-log") first_option="-log" 
+if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
+then first_option="-log" 
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
-echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_filelog" ; exit ;;
-####
-####
-esac
+echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_filelog" ;
+exit ; fi
 ####
 ####
 ##############################     english: autolog:         ###################################
