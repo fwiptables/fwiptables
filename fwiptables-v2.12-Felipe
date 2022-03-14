@@ -1373,7 +1373,7 @@ echo "$cinco See:   $fwiptables firewall-custom"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$tab" "$tab"  "$ralla [ $first_option ] [ List mini options ] $ralla"
+echo "$tab" "$tab"  "$ralla [ $first_option ] [ List mini options ] $rallica $ralla"
 echo "$tab" "$tab"  "  output-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "  firewall-rules    |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "  firewall-list     |  list listnum list6 listnum6                           "
@@ -1456,7 +1456,7 @@ echo "$tab" "$tab"  "                          config-eng config-spa license    
 echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options info                "
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "      | Description |                         | Examples |                    " 
+echo "$tab" "$tab"  "      | Description |                         | Examples |                     " 
 echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizard-mini              "
 echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save one-name            "
 echo "$tab" "$tab"  "  List iptables rules                 |   $fwiptables -txt list                "
