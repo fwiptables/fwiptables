@@ -3615,7 +3615,7 @@ exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
   0000 "$quad $tab [$fwiptables cli-menu] $tab $cinco" \
   0100 "$quad [ Full Options ] $cinco" \
   0200 "$quad [ Firewall Rules ] $cinco" \
@@ -3969,7 +3969,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Cli Menu || $fwiptables || $
 ####
 ####
 if [ "$first_option" = "text-pause" ]; then $nada
-read -p '# [ OK ] press [enter] to continue with the cli-menu    #'
+read -p '##### [ OK ] ##### Press [enter] to continue now with the cli-menu ##### '
 exit; fi
 ####
 ####

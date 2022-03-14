@@ -243,5 +243,5 @@
 #
 # changes fwiptables 2.12 en desarrollo
 #
-# 1.
+# 1. no muestra los numeros en cli-menu. HECHO
 #
