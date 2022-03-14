@@ -1373,7 +1373,7 @@ echo "$cinco See:   $fwiptables firewall-custom"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$ralla [ $first_option ] [ List mini options ] $ralla"
+echo "$tab" "$tab"  "$ralla [ $first_option ] [ List mini options ] $ralla"
 echo "$tab" "$tab"  "  output-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "  firewall-rules    |  stop continue reset names actual show save load       "
@@ -1398,9 +1398,9 @@ echo "$tab" "$tab"  "    show-options    | show-hardware   show-etc       show-l
 echo "$tab" "$tab"  "                      show-help       show-example                                     " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "     | Description |                         | Examples |                      " 
-echo "$tab" "$tab"  "  List iptables rules                 |   $fwiptables list                     "
 echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizard-mini              "
 echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save one-name            "
+echo "$tab" "$tab"  "  List iptables rules                 |   $fwiptables -txt list                "
 echo "$tab" "$tab"  "  List firewall saved with output cli |   $fwiptables -cli names               "
 echo "$tab" "$tab"  "  Show control-guide with output cli  |   $fwiptables -cli control-guide       "
 echo "$tab" "$tab"  "  Show more options with output gui   |   $fwiptables -gui options             "
@@ -1414,7 +1414,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$ralla [ $first_option ] [ List full options ] $ralla"
+echo "$tab" "$tab"  "$ralla [ $first_option ] [ List full options ] $ralla"
 echo "$tab" "$tab"  "    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log       "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                    | firewall-options |                        "
@@ -1458,12 +1458,12 @@ echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "      | Description |                         | Examples |                    " 
-echo "$tab" "$tab"  "   List iptables rules                 |   $fwiptables list                   "
-echo "$tab" "$tab"  "   Generate new iptables rules         |   $fwiptables wizard-mini            "
-echo "$tab" "$tab"  "   Save iptables rules with one name   |   $fwiptables save one-name          "
-echo "$tab" "$tab"  "   List firewall saved with output cli |   $fwiptables -cli names             "
-echo "$tab" "$tab"  "   Show control-guide with output cli  |   $fwiptables -cli control-guide     "
-echo "$tab" "$tab"  "   Show more options with output gui   |   $fwiptables -gui options           "
+echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizard-mini              "
+echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save one-name            "
+echo "$tab" "$tab"  "  List iptables rules                 |   $fwiptables -txt list                "
+echo "$tab" "$tab"  "  List firewall saved with output cli |   $fwiptables -cli names               "
+echo "$tab" "$tab"  "  Show control-guide with output cli  |   $fwiptables -cli control-guide       "
+echo "$tab" "$tab"  "  Show more options with output gui   |   $fwiptables -gui options             "
 exit ; fi
 ####
 ####
