@@ -244,4 +244,8 @@
 # changes fwiptables 2.12 en desarrollo
 #
 # 1. no muestra los numeros en cli-menu. HECHO
+# 2. clientvpn añadido al firewall. HECHO
+# 3. arreglo de info-system en options y mini-options. HECHO
+# 4. cambio de nombre en fw-autolog y fw-sendedlog.
+#
 #
