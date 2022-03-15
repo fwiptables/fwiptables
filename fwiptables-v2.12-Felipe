@@ -543,19 +543,6 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ##############################     ALIAS simple y campo     ##############################
 ####
 ####
-#### english: if default output is in second option, change priority
-#### spanish: si salida por defecto esta en segunda opcion, cambia prioridad
-####
-####
-#### case $second_option in
-#### "txt"|"-txt") $fwiptables $second_option $first_option $third_option ; exit;;
-#### "text"|"-text") $fwiptables $second_option $first_option $third_option ; exit;;
-#### "log"|"-log") $fwiptables $second_option $first_option $third_option ; exit;;
-#### "cli"|"-cli") $fwiptables $second_option $first_option $third_option ; exit;;
-#### "gui"|"-gui") $fwiptables $second_option $first_option $third_option ; exit;;
-#### esac
-####
-####
 ##############################     ALIAS SIMPLE
 ##############################     ALIAS SIMPLE
 ####
