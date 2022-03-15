@@ -1400,7 +1400,7 @@ echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizar
 echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save one-name                    "
 echo "$tab" "$tab"  "  List iptables rules with output txt |   $fwiptables -txt list                        "
 echo "$tab" "$tab"  "  List firewall saved with output cli |   $fwiptables -cli names                       "
-echo "$tab" "$tab"  "  Show control-guide with output cli  |   $fwiptables -cli control-guide               "
+echo "$tab" "$tab"  "  Show firewall-list with output cli  |   $fwiptables -cli firewall-list               "
 echo "$tab" "$tab"  "  Show more options with output gui   |   $fwiptables -gui options                     "
 exit ; fi
 ####
@@ -1455,13 +1455,13 @@ echo "$tab" "$tab"  "                          config-eng config-spa license    
 echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options info                "
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
-echo "$tab" "$tab"  "   [ Example Description ]                 [ Example ]                         " 
-echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizard-mini              "
-echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save one-name            "
-echo "$tab" "$tab"  "  List iptables rules with output txt |   $fwiptables -txt list                "
-echo "$tab" "$tab"  "  List firewall saved with output cli |   $fwiptables -cli names               "
-echo "$tab" "$tab"  "  Show control-guide with output cli  |   $fwiptables -cli control-guide       "
-echo "$tab" "$tab"  "  Show more options with output gui   |   $fwiptables -gui options             "
+echo "$tab" "$tab"  "   [ Example Description ]                 [ Example ]                          " 
+echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizard-mini               "
+echo "$tab" "$tab"  "  Save iptables rules with one name   |   $fwiptables save one-name             "
+echo "$tab" "$tab"  "  List iptables rules with output txt |   $fwiptables -txt list                 " 
+echo "$tab" "$tab"  "  List firewall saved with output cli |   $fwiptables -cli names                "
+echo "$tab" "$tab"  "  Show firewall-list with output cli  |   $fwiptables -cli firewall-list        "
+echo "$tab" "$tab"  "  Show more options with output gui   |   $fwiptables -gui options              "
 exit ; fi
 ####
 ####
