@@ -7638,12 +7638,12 @@ exit; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
- public_ip4="$(timeout 7s $command_curl -s -4 http://ifconfig.co/ip -w "\n")"
+ public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n")"
  echo "$tab $public_ip4"; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv6 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
- public_ip6="$(timeout 7s $command_curl -s -6 http://ifconfig.co/ip -w "\n")"
+ public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n")"
  echo "$tab $public_ip6"; fi
  echo $ralla
  echo "$tab [ proxy ip ] [ address proxy ]"
@@ -7668,7 +7668,7 @@ exit; fi
  $fwiptables stop
  echo "$rallica [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 4 -p $serverport_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $serverip_iperf_ipv4 -t 7 -P 4 -p $serverport_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
  $fwiptables continue
  echo $footer_lineal
  exit; fi
@@ -7689,7 +7689,7 @@ exit; fi
  $fwiptables stop
  echo "$rallica [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 4 -p $serverport_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $serverip_iperf_ipv6 -V -t 7 -P 4 -p $serverport_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
  $fwiptables continue
  echo $footer_lineal
  exit; fi
@@ -7710,7 +7710,7 @@ exit; fi
  if [ "$second_option" = "$NULL" ]; then echo $ralla $ralla $ralla
  echo "[ get one web certifcate ] [ Example: $fwiptables web-cert www.fast.com ]"; exit; fi
  echo $ralla
- echo | $command_openssl s_client -connect $second_option:443
+ echo | timeout -s SIGINT -v $server_waiting $command_openssl s_client -connect $second_option:443
  echo $footer_lineal
  exit; fi
 ####
