@@ -659,7 +659,7 @@ exit ; fi
 ####
 ##############################     english: autolog:         ###################################
 ##############################     spanish: autoguardado     ###################################
-#### :rutina-inicial-autolog:
+#### :rutina-inicial-allow-autolog:
 ####
 ####
 ####   english: autolog  #### spanish: autoguardado
@@ -670,7 +670,7 @@ if [ "$allow_autolog" = "no" ]   ; then echo $nada
 else echo $head_autolog >> "$file_output_autolog" ; fi; fi
 ####
 ####
-#### :rutina-final-autolog:
+#### :rutina-final-allow-autolog:
 ##############################     english: allow header          ###################################
 ##############################     spanish: permite cabeceras     ###################################
 #### :rutina-inicial-header:
@@ -1447,7 +1447,7 @@ echo "$tab" "$tab"  "    tool-dev           |  new-versions dev-version dev-chan
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                     [ show-options ]                           " 
 echo "$tab" "$tab"  "    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-log           |  log-search log-ssh fw-sendedlog fw-autolog            "
+echo "$tab" "$tab"  "    show-log           |  log-search log-ssh sendedlog fautolog                 "
 echo "$tab" "$tab"  "    show-etc           |  hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                          hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about         |  about version depends examples                        "
@@ -1529,7 +1529,7 @@ if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Show options ] $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-log          | log-search log-ssh fw-sendedlog fw-autolog            "
+echo "$tab" "$tab"  "    show-log          | log-search log-ssh sendedlog autolog                  "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
@@ -2323,9 +2323,9 @@ echo "        log-ssh : Search logs for ssh in /var/log"
 echo "                : Busca logs con sshd en /var/log"
 echo "     log-search : Search logs whith a prefix in /var/log"
 echo "                : Busca logs con patron en /var/log"
-echo "   fw-sendedlog : Show over launches with -log "
+echo "      sendedlog : Show over launches with -log "
 echo "                : Muestra volcados con -log"
-echo "     fw-autolog : Show the headers from autolog"
+echo "        autolog : Show the headers from autolog"
 echo "                : Muestra las cabeceras autolog"
 echo $footer_lineal
 exit; fi
@@ -3383,7 +3383,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "fw-sendedlog" "fw-autolog" "log-search" \
+--list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "sendedlog" "autolog" "log-search" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show log] [$fwiptables]" )
 #### 
 #### 
@@ -3392,8 +3392,8 @@ case $selection in
 "Gui Principal Menu")$fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui show-log ;;
 "log-ssh")   $fwiptables -gui log-ssh ;;
-"fw-sendedlog") $fwiptables -gui fw-sendedlog ;;
-"fw-autolog") $fwiptables -gui fw-autolog ;;
+"sendedlog") $fwiptables -gui sendedlog ;;
+"autolog") $fwiptables -gui autolog ;;
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $fwiptables -gui log-search $pattern;;
@@ -3752,8 +3752,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   1900 "$quad [ Show Log ] $cinco" \
   1901  "$tab log-ssh" \
   1902  "$tab log-search" \
-  1903  "$tab fw-sendedlog" \
-  1904  "$tab fw-autolog" \
+  1903  "$tab sendedlog" \
+  1904  "$tab autolog" \
   2000 "$quad [ Show About ] $cinco" \
   2001  "$tab about" \
   2002  "$tab depends" \
@@ -3943,8 +3943,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  1901) clear ; $fwiptables cli log-ssh ;;
  1902) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fwiptables "log-search" "$pattern" | less ;;
- 1903) clear ; $fwiptables cli fw-sendedlog ;;
- 1904) clear ; $fwiptables cli fw-autolog ;;
+ 1903) clear ; $fwiptables cli sendedlog ;;
+ 1904) clear ; $fwiptables cli autolog ;;
  2001) clear ; $fwiptables cli about ;;
  2002) clear ; $fwiptables cli depends ;;
  2003) clear ; $fwiptables cli examples ;;
@@ -4166,8 +4166,12 @@ if [ "$first_option" = "code" ]; then $give_cover
 echo $header_lineal
 echo $rallica "[ code ] [ show source code for options from $fwiptables ]"
 echo $ralla
-code_error="$rallica Usage: $fwiptables code option"
-if [ "$second_option" = "$NULL" ]; then echo; echo "$code_error" ; exit ; fi
+code_error="$rallica [ Usage: ] [ $fwiptables code option ]"
+if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $ralla $ralla $ralla
+salida_code="$(cat $directory_fiptables/$fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
+sort | sed -s s/://g )"
+echo $salida_code
+exit ; fi
 value_first="$(cat -n $directory_fiptables/$fwiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
 value_second="$(cat -n $directory_fiptables/$fwiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
@@ -7204,20 +7208,20 @@ fi
 ####
 ####
 #### :rutina-final-fw-sendedlog:
-############################## english: fw-autolog: Read log /var/log/fwiptables-autolog   ##############################
-############################## spanish: fw-autolog: Lee log  /var/log/fwiptables-autolog   ##############################
-#### :rutina-inicial-fw-autolog:
+############################## english: autolog: Read log /var/log/fwiptables-autolog   ##############################
+############################## spanish: autolog: Lee log  /var/log/fwiptables-autolog   ##############################
+#### :rutina-inicial-autolog:
 ####
 ####
- if [ "$first_option" = "fw-autolog" ] ; then  $give_cover
- echo "$ralla [ $first_option ] [ show /var/log/fwiptables-autolog ]"
+ if [ "$first_option" = "autolog" ] ; then  $give_cover
+ echo "$ralla [ $first_option ] [  show "$file_output_autolog" ]"
  cat  "$file_output_autolog"
- echo "$ralla [ last end of file from /var/log/fwiptables-autolog ]"
+ echo "$ralla [ last end of file showed "$file_output_autolog" ]"
  echo "$footer_lineal"
  exit; fi
 ####
 ####
-#### :rutina-final-fw-autolog:
+#### :rutina-final-autolog:
 ############################       english: log-ssh: log from ssh server
 ############################       spanish: log-ssh: log desde el servidor de ssh
 #### :rutina-inicial-log-ssh:
@@ -7990,8 +7994,8 @@ echo "$cinco         [ Show log ]"
 echo
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
-echo "   fw-sendedlog : Show $file_output_filelog , over -log"
-echo "     fw-autolog : Show $file_output_autolog , only headers"
+echo "      sendedlog : Show $file_output_filelog , over -log"
+echo "        autolog : Show $file_output_autolog , only headers"
 echo
 echo "$cinco         [ Show about ]"
 echo
@@ -8272,8 +8276,8 @@ echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en
 echo
 echo "$cinco         [ Mostrar log ]"
 echo
-echo "   fw-sendedlog : Muestra $file_output_filelog , volcados con -log"
-echo "     fw-autolog : Muestra $file_output_autolog , cabeceras"
+echo "       endedlog : Muestra $file_output_filelog , volcados con -log"
+echo "        autolog : Muestra $file_output_autolog , cabeceras"
 echo "        log-ssh : Busca los logs de sshd en /var/log"
 echo "     log-search : Busca los logs dando un patron para /var/log"
 echo
