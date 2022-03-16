@@ -1388,12 +1388,12 @@ echo "$tab" "$tab"  "  firewall-custom   |  new-full-config nueva-completa-confi
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config list-config                   "
 echo "$tab" "$tab"  "                       show-config modify-config del-config                            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
-echo "$tab" "$tab"  "firewall-options    | firewall-rules  firewall-list  firewall-launch  firewall-custom  "
-echo "$tab" "$tab"  "    tool-options    | tool-sockets    tool-forward   tool-tcp         tool-udp         "
-echo "$tab" "$tab"  "                      tool-icmp       tool-nmap      tool-sudo        tool-game        "
-echo "$tab" "$tab"  "                      tool-system     tool-install   tool-blacklist   tool-dev         "
-echo "$tab" "$tab"  "    show-options    | show-hardware   show-etc       show-log         show-about       "
-echo "$tab" "$tab"  "                      show-help       show-example                                     " 
+echo "$tab" "$tab"  "firewall-options    |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
+echo "$tab" "$tab"  "    tool-options    |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
+echo "$tab" "$tab"  "                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
+echo "$tab" "$tab"  "                       tool-system     tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "    show-options    |  show-hardware   show-etc       show-log         show-about      "
+echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "   [ Example Description ]                  [ Example ]                                " 
 echo "$tab" "$tab"  "  Generate new iptables rules         |   $fwiptables wizard-mini                      "
@@ -1447,7 +1447,7 @@ echo "$tab" "$tab"  "    tool-dev           |  new-versions dev-version dev-chan
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                     [ show-options ]                           " 
 echo "$tab" "$tab"  "    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-log           |  log-search log-ssh sendedlog fautolog                 "
+echo "$tab" "$tab"  "    show-log           |  log-search log-ssh sentlog autolog                    "
 echo "$tab" "$tab"  "    show-etc           |  hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                          hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about         |  about version depends examples                        "
@@ -1529,7 +1529,7 @@ if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Show options ] $ralla"
 echo "$tab" "$tab"  "                                   | show-options |                           " 
 echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-log          | log-search log-ssh sendedlog autolog                  "
+echo "$tab" "$tab"  "    show-log          | log-search log-ssh sentlog autolog                    "
 echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
 echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
@@ -2323,7 +2323,7 @@ echo "        log-ssh : Search logs for ssh in /var/log"
 echo "                : Busca logs con sshd en /var/log"
 echo "     log-search : Search logs whith a prefix in /var/log"
 echo "                : Busca logs con patron en /var/log"
-echo "      sendedlog : Show over launches with -log "
+echo "        sentlog : Show over launches with -log "
 echo "                : Muestra volcados con -log"
 echo "        autolog : Show the headers from autolog"
 echo "                : Muestra las cabeceras autolog"
@@ -3383,7 +3383,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "sendedlog" "autolog" "log-search" \
+--list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "sentlog" "autolog" "log-search" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show log] [$fwiptables]" )
 #### 
 #### 
@@ -3392,7 +3392,7 @@ case $selection in
 "Gui Principal Menu")$fwiptables gui-menu ;;
 "Gui Info Menu") $fwiptables -gui show-log ;;
 "log-ssh")   $fwiptables -gui log-ssh ;;
-"sendedlog") $fwiptables -gui sendedlog ;;
+"sentlog") $fwiptables -gui sentlog ;;
 "autolog") $fwiptables -gui autolog ;;
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
@@ -3752,7 +3752,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   1900 "$quad [ Show Log ] $cinco" \
   1901  "$tab log-ssh" \
   1902  "$tab log-search" \
-  1903  "$tab sendedlog" \
+  1903  "$tab sentlog" \
   1904  "$tab autolog" \
   2000 "$quad [ Show About ] $cinco" \
   2001  "$tab about" \
@@ -3943,7 +3943,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  1901) clear ; $fwiptables cli log-ssh ;;
  1902) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $fwiptables "log-search" "$pattern" | less ;;
- 1903) clear ; $fwiptables cli sendedlog ;;
+ 1903) clear ; $fwiptables cli sentlog ;;
  1904) clear ; $fwiptables cli autolog ;;
  2001) clear ; $fwiptables cli about ;;
  2002) clear ; $fwiptables cli depends ;;
@@ -7194,12 +7194,12 @@ fi
 ####
 ####
 #### :rutina-final-ole-number:
-############################## english: fw-sendedlog: Read log /var/log/fwiptables-sendedlog  ##############################
-############################## spanish: fw-sendedlog: Lee log  /var/log/fwiptables-sendedlog  ##############################
-#### :rutina-inicial-fw-sendedlog:
+############################## english: sentlog: Read log /var/log/fwiptables-filelog  ##############################
+############################## spanish: sentlog: Lee log  /var/log/fwiptables-filelog  ##############################
+#### :rutina-inicial-sentlog:
 ####
 ####
- if [ "$first_option" = "fw-sendedlog" ] ; then  $give_cover
+ if [ "$first_option" = "sentlog" ] ; then  $give_cover
  echo "$ralla [ $first_option ] [ show $file_output_filelog ]"
  cat  "$file_output_filelog"
  echo "$ralla [ this file is $file_output_filelog ]"
@@ -7207,7 +7207,7 @@ fi
  exit; fi
 ####
 ####
-#### :rutina-final-fw-sendedlog:
+#### :rutina-final-fw-sentlog:
 ############################## english: autolog: Read log /var/log/fwiptables-autolog   ##############################
 ############################## spanish: autolog: Lee log  /var/log/fwiptables-autolog   ##############################
 #### :rutina-inicial-autolog:
@@ -7994,7 +7994,7 @@ echo "$cinco         [ Show log ]"
 echo
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
-echo "      sendedlog : Show $file_output_filelog , over -log"
+echo "        sentlog : Show $file_output_filelog , over -log"
 echo "        autolog : Show $file_output_autolog , only headers"
 echo
 echo "$cinco         [ Show about ]"
