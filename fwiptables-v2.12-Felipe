@@ -1433,7 +1433,7 @@ echo "$tab" "$tab"  "                          show-config modify-config del-con
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                      [ tool-options ]                          " 
 echo "$tab" "$tab"  "    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy "
-echo "$tab" "$tab"  "                          info-system lsof tcpdump netstat netstat-nat cert-web "
+echo "$tab" "$tab"  "                          info-system lsof tcpdump netstat netstat-nat web-cert "
 echo "$tab" "$tab"  "    tool-forward       |  ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp           |  host dig resolveip geoip ntpdate                      "
@@ -1503,7 +1503,7 @@ if [ "$first_option" = "tool-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ Tool options ] $ralla"
 echo "$tab" "$tab"  "                                    | tool-options |                          " 
 echo "$tab" "$tab"  "    tool-sockets      | info-listen info-nodes info-route info-net info-proxy "
-echo "$tab" "$tab"  "                        info-system lsof tcpdump netstat netstat-nat cert-web "
+echo "$tab" "$tab"  "                        info-system lsof tcpdump netstat netstat-nat web-cert "
 echo "$tab" "$tab"  "    tool-forward      | ipforward-list ipforward-on ipforward-off             "
 echo "$tab" "$tab"  "    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
 echo "$tab" "$tab"  "    tool-udp          | host dig resolveip geoip ntpdate                      "
@@ -1989,7 +1989,7 @@ echo "           netstat : Show net sockets with command netstat"
 echo "                   : Muestra las conexiones con netstat"
 echo "       netstat-nat : Show net sockets with command netstat-nat"
 echo "                   : Muestra las conexiones con netstat-nat"
-echo "          cert-web : Get one ssl certificated to one web with port https(443)"
+echo "          web-cert : Get one ssl certificated to one web with port https(443)"
 echo "                   : Obtiene un certificado ssl a una web con puerto https(443)" 
 echo "           tcpdump : Listen the connections"
 echo "                   : Escucha las conexiones"
@@ -7696,26 +7696,26 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip6:
-############################       english: cert-web: speed from internet
-############################       spanish: cert-web: velocidad desde internet
-#### :rutina-inicial-cert-web:
+############################       english: web-cert: speed from internet
+############################       spanish: web-cert: velocidad desde internet
+#### :rutina-inicial-web-cert:
 ####
 ####
- if [ "$first_option" = "cert-web" ] ; then $give_cover
+ if [ "$first_option" = "web-cert" ] ; then $give_cover
  echo "$ralla [ $first_option ] [ get one web certifcate from one server with port 443]"
  echo $header_lineal
  case "$command_openssl"  in  $NULL) echo "Install openssl"; exit ;; esac
 ####
 ####
  if [ "$second_option" = "$NULL" ]; then echo $ralla $ralla $ralla
- echo "[ get one web certifcate ] [ Example: $fwiptables cert-web www.fast.com ]"; exit; fi
+ echo "[ get one web certifcate ] [ Example: $fwiptables web-cert www.fast.com ]"; exit; fi
  echo $ralla
  echo | $command_openssl s_client -connect $second_option:443
  echo $footer_lineal
  exit; fi
 ####
 ####
-#### :rutina-final-cert-web:
+#### :rutina-final-web-cert:
 ############################       english: config-eng: several options to config in english
 ############################       spanish: config-eng: varias opciones para configurar en ingles
 #### :rutina-inicial-config-eng:
@@ -7914,7 +7914,7 @@ echo "              ss : Show net sockets with command ss"
 echo "            lsof : Show net sockets with command lsof"
 echo "         netstat : Show net sockets with command netstat"
 echo "     netstat-nat : Show net sockets with command netstat-nat"
-echo "        cert-web : Download one ssl certificated to one web with port https(443)"
+echo "        web-cert : Download one ssl certificated to one web with port https(443)"
 echo "         tcpdump : Listen the connections"
 echo
 echo "$cinco         [ Tool forward ]"
@@ -8200,7 +8200,7 @@ echo "              ss : Muestra las conexiones con comando ss"
 echo "            lsof : Muestra las conexiones con command lsof"
 echo "         netstat : Muestra las conexiones con comando netstat"
 echo "     netstat-nat : Muestra las conexiones con comando netstat-nat"
-echo "        cert-web : Obtiene un certificado ssl a una web con puerto https(443)" 
+echo "        web-cert : Obtiene un certificado ssl a una web con puerto https(443)" 
 echo "         tcpdump : Escuchar las conexiones ip"
 echo
 echo "$cinco         [ Herramienta de ip forwading ]"
