@@ -246,6 +246,6 @@
 # 1. no muestra los numeros en cli-menu. HECHO
 # 2. clientvpn añadido al firewall. HECHO
 # 3. arreglo de info-system en options y mini-options. HECHO
-# 4. cambio de nombre en fw-autolog a autolog  y fw-sendedlog a sendedlog.
-#
+# 4. cambio de nombre en fw-autolog a autolog  y fw-sendedlog a sendedlog. HECHO
+# 5. la opcion code muestra ahora las posibles subopciones. HECHO
 #
