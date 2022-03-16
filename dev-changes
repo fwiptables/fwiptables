@@ -241,7 +241,7 @@
 # 14. actualizacion de gui-menu. HECHO
 # 15. resolv.conf incluye a resolv.conf a resolv.conf.head y a resolv.conf.tail. HECHO
 #
-# changes fwiptables 2.12 en desarrollo
+# changes fwiptables 2.12
 #
 # 1. no muestra los numeros en cli-menu. HECHO
 # 2. clientvpn añadido al firewall. HECHO
@@ -249,4 +249,8 @@
 # 4. cambio de nombre en fw-autolog a autolog  y fw-sendedlog a sentlog. HECHO
 # 5. la opcion code muestra ahora las posibles subopciones. HECHO
 # 6. web-cert obtiene el certificado web ssl de una web con puerto 443. HECHO
+#
+# changes fwiptables 2.13 en desarrollo
+#
+# 1. 
 #
