@@ -4166,7 +4166,7 @@ if [ "$first_option" = "code" ]; then $give_cover
 echo $header_lineal
 echo $rallica "[ code ] [ show source code for options from $fwiptables ]"
 echo $ralla
-code_error="$rallica [ Usage: ] [ $fwiptables code option ]"
+code_error="$rallica [ Usage: ] [ $fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $ralla $ralla $ralla
 salida_code="$(cat $directory_fiptables/$fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
 sort | sed -s s/://g )"
