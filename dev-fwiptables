@@ -146,7 +146,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$sinco $sinco Version $fversion || Use: $fwiptables options ||  $(date) $sinco $sinco"
+head_principal=" Version $fversion || Use: $fwiptables options ||  $(date)"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### head_default="$cinco [ Default: $fwiptables show-default ] [ Usage: $fwiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
