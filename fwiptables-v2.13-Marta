@@ -80,7 +80,7 @@ allow_autolog=""                 ## fwiptables-default ## void or no
 allow_autosave="no"                 ## fwiptables-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="7"                    ## fwiptables-default ## choose seconds: 1..,9..30
+server_waiting="7s"                    ## fwiptables-default ## choose seconds: 1..,9..30
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-default ## default fast.com
@@ -146,7 +146,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$sinco Version $fversion || Use: $fwiptables options ||  $(date)  "
+head_principal="$sinco $sinco Version $fversion || Use: $fwiptables options ||  $(date) $sinco $sinco"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### head_default="$cinco [ Default: $fwiptables show-default ] [ Usage: $fwiptables options ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -7668,7 +7668,7 @@ exit; fi
  $fwiptables stop
  echo "$rallica [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $serverip_iperf_ipv4 -t 7 -P 4 -p $serverport_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $serverip_iperf_ipv4 -t $server_waiting -P 4 -p $serverport_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
  $fwiptables continue
  echo $footer_lineal
  exit; fi
@@ -7689,7 +7689,7 @@ exit; fi
  $fwiptables stop
  echo "$rallica [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $serverip_iperf_ipv6 -V -t 7 -P 4 -p $serverport_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
+ $command_iperf -c $serverip_iperf_ipv6 -V -t $server_waiting -P 4 -p $serverport_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
  $fwiptables continue
  echo $footer_lineal
  exit; fi
