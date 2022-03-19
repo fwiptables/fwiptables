@@ -379,14 +379,14 @@ if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser=
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$cinco [ Install $fwiptables in $directory_fiptables ]"
+echo "$rallica [ STATUS ] [ Install $fwiptables in $directory_fiptables ]"
 #### 
 #### 
 ####  english: copy the file
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$cinco [ Runing.. ] [ $zero_option install ]"
+echo "$rallica [ Runing.. ] [ $zero_option install ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 #### 
 #### 
@@ -454,9 +454,9 @@ chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
 $fwiptables regen &> /dev/null
 ####
 ####
-echo "$cinco [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
-echo "$cinco [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
-echo "$cinco [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$rallica [ STATUS ] [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
+echo "$rallica [ STATUS ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
+echo "$rallica [ STATUS ]  [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 echo "$rallica [ OK ] [ New config files installed ]"
 #### 
 #### 
