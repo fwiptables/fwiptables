@@ -1397,13 +1397,13 @@ echo "$tab" "$tab"  "                       tool-system     tool-install   tool-
 echo "$tab" "$tab"  "    show-options    |  show-hardware   show-etc       show-log         show-about      "
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
-echo "$tab" "$tab" "$tab"  "   [ Example Description ]                      [ Example ]                      "
-echo "$tab" "$tab" "$tab" "  Show more options with output txt    |   $fwiptables options                    "
-echo "$tab" "$tab" "$tab" "  List iptables rules with output txt  |   $fwiptables -txt list                  "
-echo "$tab" "$tab" "$tab" "  Save rules with output cli           |   $fwiptables -cli save one-name         "
-echo "$tab" "$tab" "$tab" "  List firewall saved with output cli  |   $fwiptables -cli names                 "
-echo "$tab" "$tab" "$tab" "  Show firewall-list with output cli   |   $fwiptables -cli firewall-list         "
-echo "$tab" "$tab" "$tab" "  Generate rules with output gui       |   $fwiptables -gui wizard-mini           "
+echo "$tab" "$tab" "$sinco"  "    [ Example Description ]                      [ Example ]                      "
+echo "$tab" "$tab" "$sinco"  "Show more options with output txt    |   $fwiptables options                    "
+echo "$tab" "$tab" "$sinco"  "List iptables rules with output txt  |   $fwiptables -txt list                  "
+echo "$tab" "$tab" "$sinco"  "Save rules with output cli           |   $fwiptables -cli save one-name         "
+echo "$tab" "$tab" "$sinco"  "List firewall saved with output cli  |   $fwiptables -cli names                 "
+echo "$tab" "$tab" "$sinco"  "Show firewall-list with output cli   |   $fwiptables -cli firewall-list         "
+echo "$tab" "$tab" "$sinco"  "Generate rules with output gui       |   $fwiptables -gui wizard-mini           "
 exit ; fi
 ####
 ####
