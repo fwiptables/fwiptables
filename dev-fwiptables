@@ -386,7 +386,7 @@ echo "$rallica [ STATUS ] [ Install $fwiptables in $directory_fiptables ]"
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$rallica [ Runing.. ] [ $zero_option install ]"
+echo "$rallica [ Running.. ] [ $zero_option install ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 #### 
 #### 
@@ -1325,34 +1325,34 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ####
 if [ "$first_option" = "offline" ];       then $give_cover ;
-echo "$cinco RUNNING FIREWALL OFFLINE" ; 
+echo "$rallica [ RUNNING ] [ FIREWALL offline ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "allpermisive" ];  then $give_cover ;
-echo "$cinco RUNNING FIREWALL ALLPERMISIVE" ; 
+echo "$rallica [ RUNNING ] [ FIREWALL allpermisive ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "clientweb" ];     then $give_cover ;
-echo "$cinco RUNNING FIREWALL CLIENTWEB" ;
+echo "$rallica [ RUNNING ] [ FIREWALL clientweb ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "clientvpn" ];     then $give_cover ;
-echo "$cinco RUNNING FIREWALL CLIENTVPN" ;
+echo "$rallica [ RUNNING ] [ FIREWALL clientvpn ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serverweb" ];     then $give_cover ;
-echo "$cinco RUNNING FIREWALL SERVERWEB" ;
+echo "$rallica [ RUNNING ] [ FIREWALL serverweb ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serversamba" ];   then $give_cover ;
-echo "$cinco RUNNING FIREWALL SERVERSAMBA" ;
+echo "$rallica [ RUNNING ] [ FIREWALL serversamba ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serverprint" ];   then $give_cover ;
-echo "$cinco RUNNING FIREWALL SERVERPRINT" ;
+echo "$rallica [ RUNNING ] [ FIREWALL serverprint ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serverssh" ];     then $give_cover ;
-echo "$cinco RUNNING FIREWALL SERVERSSH" ;
+echo "$rallica [ RUNNING ] [ FIREWALL serverssh ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "gamesudp" ];     then $give_cover  ;
-echo "$cinco RUNNING FIREWALL GAMESUDP" ;
+echo "$rallica [ RUNNING ] [ FIREWALL gamesudp ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover  ;
-echo "$cinco RUNNING FIREWALL CUSTOM" ;
+echo "$rallica [ RUNNING ] [ FIREWALL custom ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 ####
@@ -5620,7 +5620,7 @@ exit; fi
 #### English: show message
 ####
 ####
- echo "$cinco RUNNING LOAD RULES"
+ echo "$rallica [ RUNNING ] [ LOAD RULES ]"
 ####
 ####
 #### English: Remove all rules
