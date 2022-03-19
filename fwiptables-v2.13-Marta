@@ -289,7 +289,7 @@ echo "     FRAN FWIPTABLES INTRO "
 echo 
 echo "     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
 echo "     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
-echo "     Create one firewall custom with a wizard and save it in stadard file.    "
+echo "     Create one firewall custom with a wizard and save it in standard file.   "
 echo "     Control the firewall with the standard iptables files for all tables.    "
 echo "     Run rules of one firewall with your own config files.                    "
 echo "     And too, use this firewall with some utilities for ipv4 and ipv6.        "
@@ -1364,8 +1364,8 @@ launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fwiptables cfg 
-echo "$cinco Usage: $fwiptables custom file-cfg"
-echo "$cinco See:   $fwiptables firewall-custom"; fi ; fi
+echo "$rallica [ Usage ] [ $fwiptables custom file-cfg ]"
+echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
@@ -1642,8 +1642,8 @@ exit; fi
 ####
 if [ "$first_option" = "list-config" ]; then $give_cover
 echo "$ralla [ $first_option ] [ List configs cfg ]"
-echo "$rallica $tab [English:] [list configs files in cfg format]"
-echo "$rallica $tab [Spanish:] [Lista de archivos de configuraciones en cfg formato]"
+echo "$rallica $tab [ English ] [ list configs files in cfg format ]"
+echo "$rallica $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg|default-mini-english|default-mini-spanish|wizard-full|wizard-mini"
 echo "$rallica"
 echo "$tab [ System files ]"
@@ -8395,7 +8395,7 @@ echo "$rallica Choose a one valid option .. "; $fwiptables $default_security ; e
 ####
 ####
 #### english: autosave #### spanish: autoguarda
-$give_autosave
+$give_autosave &> /dev/null
 ####
 ####
 ###############################################################################################################
@@ -9814,13 +9814,11 @@ if [ $config_variable_version = "1" ]; then $nada
  config_output_gid="$output_gid" ;
  config_others_protocols="$others_protocols" ;
  separate_port_rules="no" ;
- echo "$cinco [ Runing rules with old variables version $config_variable_version ]"
+ echo "$rallica [ status ] [ Runing rules with old variables version $config_variable_version ]"
 fi
 ####
 ####
-if [ $config_variable_version = "2" ]; then $nada
-#### echo "$cinco [ Runing rules with the actual variables version $config_variable_version ]"
-fi 
+if [ $config_variable_version = "2" ]; then $nada; fi 
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
@@ -10973,7 +10971,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ########################################       spanish: muestra texto cuando activas las custom reglas
 ####
 ####  
-echo $head_principal
+#### echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
 echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ custom ] [$second_option]"
 exit ; else $nada ; fi
