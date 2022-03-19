@@ -386,7 +386,7 @@ echo "$rallica [ STATUS ] [ Install $fwiptables in $directory_fiptables ]"
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$rallica [ Running.. ] [ $zero_option install ]"
+echo "$rallica [ RUNNING ] [ $zero_option install ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 #### 
 #### 
