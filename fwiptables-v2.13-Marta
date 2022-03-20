@@ -92,9 +92,9 @@ server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
-serverport_iperf_ipv4="5201"            ## fwiptables-default ## default 5201
+serverport_iperf_ipv4="5001"            ## fwiptables-default ## default 5201
 serverip_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
-serverport_iperf_ipv6="5201"            ## fwiptables-default ## default 5201
+serverport_iperf_ipv6="5001"            ## fwiptables-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
@@ -7668,7 +7668,9 @@ exit; fi
  $fwiptables stop
  echo "$rallica [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $serverip_iperf_ipv4 -t $server_waiting -P 4 -p $serverport_iperf_ipv4 | grep SUM | sed s/SUM/net-speed/g
+ echo
+ $command_iperf -c $serverip_iperf_ipv4 -t $server_waiting -P 1 -p $serverport_iperf_ipv4 |tail -3
+ echo
  $fwiptables continue
  echo $footer_lineal
  exit; fi
@@ -7689,7 +7691,9 @@ exit; fi
  $fwiptables stop
  echo "$rallica [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
- $command_iperf -c $serverip_iperf_ipv6 -V -t $server_waiting -P 4 -p $serverport_iperf_ipv6 | grep SUM | sed s/SUM/net-speed/g
+ echo
+ $command_iperf -c $serverip_iperf_ipv6 -V -t $server_waiting -P 1 -p $serverport_iperf_ipv6 | tail -3
+ echo
  $fwiptables continue
  echo $footer_lineal
  exit; fi
