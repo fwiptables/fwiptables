@@ -7669,7 +7669,7 @@ exit; fi
  echo "$rallica [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $ralla
  echo
- $command_iperf -c $serverip_iperf_ipv4 -t $server_waiting -P 1 -p $serverport_iperf_ipv4 |tail -3
+ $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
  echo
  $fwiptables continue
  echo $footer_lineal
@@ -7692,7 +7692,7 @@ exit; fi
  echo "$rallica [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $ralla
  echo
- $command_iperf -c $serverip_iperf_ipv6 -V -t $server_waiting -P 1 -p $serverport_iperf_ipv6 | tail -3
+ $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
  echo
  $fwiptables continue
  echo $footer_lineal
