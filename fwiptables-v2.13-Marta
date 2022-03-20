@@ -7505,12 +7505,12 @@ fi
  if [ "$first_option" = "resolv.conf" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ show the file /resolv.conf ]"
  echo $header_lineal
- if [ -f /etc/resolv.conf.head ]; then cat /etc/resolv.conf.head  ; echo $ralla
- echo $ralla ; echo "$rallica This file is /etc/resolv.conf.head" ; fi
- if [ -f /etc/resolv.conf ];      then cat /etc/resolv.conf       ; echo $ralla
- echo $ralla ; echo "$rallica This file is /etc/resolv.conf"      ; fi
- if [ -f /etc/resolv.conf.tail ]; then cat /etc/resolv.conf.tail  ; echo $ralla
- echo $ralla ; echo "$rallica This file is /etc/resolv.conf.tail" ; fi
+ if [ -f /etc/resolv.conf.head ]; then cat /etc/resolv.conf.head
+ echo $ralla ; echo "$rallica This file is /etc/resolv.conf.head" ; echo $ralla ; fi
+ if [ -f /etc/resolv.conf ];      then cat /etc/resolv.conf     
+ echo $ralla ; echo "$rallica This file is /etc/resolv.conf"      ; echo $ralla ; fi
+ if [ -f /etc/resolv.conf.tail ]; then cat /etc/resolv.conf.tail
+ echo $ralla ; echo "$rallica This file is /etc/resolv.conf.tail" ; echo $ralla ; fi
  echo $footer_lineal
  exit; fi
 ####
