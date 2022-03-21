@@ -102,9 +102,9 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default:
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
 radio="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
 #### #### english: option for default    #### spanish: opcion por defecto
-zero_dir="$(pwd)" 
+zero_dir="$(pwd)"
 #### #### english: option for default    #### spanish: opcion por defecto
-zero_option="$0" 
+zero_option="$0"
 #### #### english: variables to launch   #### spanish: variables a lanzar
 first_option="$(echo $1 | sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
@@ -120,7 +120,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="2.13-Marta" ;
+fversion="2.14-Bego" ;
 #### #### english: program version       #### spanish: Version del programa
 directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
