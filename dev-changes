@@ -250,11 +250,16 @@
 # 5. la opcion code muestra ahora las posibles subopciones. HECHO
 # 6. web-cert obtiene el certificado web ssl de una web con puerto 443. HECHO
 #
-# changes fwiptables 2.13 en desarrollo
+# changes fwiptables 2.13
 #
 # 1. pequeños cambios de apariencia. HECHO
 # 2. speed-ip4 y speed-ip6 cambiado el puerto para que funcione bien. HECHO
 # 3. speed-ip4 y speed-ip6 pequeños cambios mas. HECHO 
 # 4. resolv.conf pequeños cambios. HECHO
 # 5. torbrowser es un nuevo firewall predefinido. HECHO 
+# 6. cambio de nombre de firewall predifinidos. HECHO
+#
+# changes fwiptables 2.14 en desarrollo
+#
+# 1.
 #
