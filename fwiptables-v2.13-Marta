@@ -1325,37 +1325,37 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ####
 if [ "$first_option" = "offline" ];       then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL offline ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL offline ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "allpermisive" ];  then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL allpermisive ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL allpermisive ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "clientweb" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL clientweb ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL clientweb ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "clientvpn" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL clientvpn ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL clientvpn ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "torbrowser" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL torbrowser ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL torbrowser ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serverweb" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL serverweb ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL serverweb ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serversamba" ];   then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL serversamba ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL serversamba ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serverprint" ];   then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL serverprint ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL serverprint ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "serverssh" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ FIREWALL serverssh ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL serverssh ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "gamesudp" ];     then $give_cover  ;
-echo "$rallica [ RUNNING ] [ FIREWALL gamesudp ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL gamesudp ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover  ;
-echo "$rallica [ RUNNING ] [ FIREWALL custom ]" ; 
+echo "$rallica [ RUNNING ] [ LOADING FIREWALL custom ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 ####
@@ -2783,7 +2783,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "offline" "allpermisive" \
-"clientweb" "clientvpn" "serverweb" "gamesudp" "serversamba" "custom cfg" \
+"clientweb" "clientvpn" "serverweb" "gamesudp" "torbrowser" "serversamba" "custom cfg" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
 #### 
@@ -2801,6 +2801,7 @@ case "$selection" in
 "clientvpn") $fwiptables -gui clientvpn ; $fwiptables gui list ;;
 "serverweb") $fwiptables -gui serverweb ; $fwiptables gui list ;;
 "gamesudp") $fwiptables -gui gamesudp ; $fwiptables gui list ;;
+"torbrowser") $fwiptables -gui torbrowser ; $fwiptables gui list ;;
 "serversamba") $fwiptables -gui serversamba ; $fwiptables gui list ;;
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fwiptables -gui custom $archivo ; $fwiptables gui list ;;
