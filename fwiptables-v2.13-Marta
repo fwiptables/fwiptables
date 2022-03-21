@@ -8650,7 +8650,7 @@ if [ "$first_option" = "torbrowser" ]; then $fwiptables eraserules &> /dev/null 
 client_port_udp="domain,bootpc,ntp,https" ;
 #### server_port_udp=""
 client_port_tcp="http,https,ssh,9000:9100" ;
-server_port_tcp="9000:9100" ;
+server_port_tcp="" ;
 ####
 ####
 #### legacy ip4
@@ -8777,24 +8777,24 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 #### spanish: permite ping
 ####
 ####
-$allow_legacy  $allow_ipv4   $command_iptables_legacy   -A INPUT \
--p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft   -A INPUT \
--p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+#### $allow_legacy  $allow_ipv4   $command_iptables_legacy   -A INPUT \
+#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+#### $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+#### -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+#### $allow_nft  $allow_ipv4   $command_iptables_nft   -A INPUT \
+#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+#### $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+#### -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4   $command_iptables_legacy   -A OUTPUT \
--p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft   -A OUTPUT \
--p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+#### $allow_legacy  $allow_ipv4   $command_iptables_legacy   -A OUTPUT \
+#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+#### $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+####-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+#### $allow_nft  $allow_ipv4   $command_iptables_nft   -A OUTPUT \
+#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+#### $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+#### -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 ####
 ####
 #### english: close #### spanish cierra 
