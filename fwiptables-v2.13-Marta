@@ -8652,7 +8652,7 @@ if [ "$first_option" = "torbrowser" ]; then $fwiptables eraserules &> /dev/null 
 ####
 client_port_udp="domain,bootpc,ntp,https" ;
 #### server_port_udp=""
-client_port_tcp="http,https,ssh,9000:9100" ;
+client_port_tcp="http,https,ssh,9000:9150" ;
 server_port_tcp="" ;
 ####
 ####
