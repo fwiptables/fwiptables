@@ -3672,7 +3672,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0408  "$tab serverweb" \
   0409  "$tab gamesudp" \
   0410  "$tab serversamba" \
-  0411  "$tab custom cfg" \
+  0411  "$tab torbrowser" \
+  0412  "$tab custom cfg" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -3854,7 +3855,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0408) clear ; $fwiptables cli serverweb ; $fwiptables cli list  ;;
  0409) clear ; $fwiptables cli gamesudp ; $fwiptables cli list  ;; 
  0410) clear ; $fwiptables cli serversamba ; $fwiptables cli list ;;
- 0411) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0411) clear ; $fwiptables cli torbrowser ; $fwiptables cli list ;;
+ 0412) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
@@ -8772,30 +8774,6 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
-####
-####
-#### english: allow ping 
-#### spanish: permite ping
-####
-####
-#### $allow_legacy  $allow_ipv4   $command_iptables_legacy   -A INPUT \
-#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-#### $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
-#### -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-#### $allow_nft  $allow_ipv4   $command_iptables_nft   -A INPUT \
-#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-#### $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
-#### -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-####
-####
-#### $allow_legacy  $allow_ipv4   $command_iptables_legacy   -A OUTPUT \
-#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-#### $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
-####-p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
-#### $allow_nft  $allow_ipv4   $command_iptables_nft   -A OUTPUT \
-#### -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
-#### $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
-#### -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
 ####
 ####
 #### english: close #### spanish cierra 
