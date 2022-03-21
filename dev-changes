@@ -256,5 +256,5 @@
 # 2. speed-ip4 y speed-ip6 cambiado el puerto para que funcione bien. HECHO
 # 3. speed-ip4 y speed-ip6 pequeños cambios mas. HECHO 
 # 4. resolv.conf pequeños cambios. HECHO
-# 5. torbrorser es un nuevo firewall predefinido. HECHO 
+# 5. torbrowser es un nuevo firewall predefinido. HECHO 
 #
