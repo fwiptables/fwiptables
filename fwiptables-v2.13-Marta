@@ -1458,9 +1458,9 @@ echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab" "$sinco"  "     [ Example Description ]         |            [ Example ]            $sinco"
-echo "$tab" "$tab" "$sinco"  "List iptables rules with output txt  |   $fwiptables -txt list            $sinco"
+echo "$tab" "$tab" "$sinco"  "List iptables rules with output txt  |   $fwiptables list                 $sinco"
+echo "$tab" "$tab" "$sinco"  "List firewall saved with output txt  |   $fwiptables -txt names           $sinco"
 echo "$tab" "$tab" "$sinco"  "Save rules with output cli           |   $fwiptables -cli save one-name   $sinco"
-echo "$tab" "$tab" "$sinco"  "List firewall saved with output cli  |   $fwiptables -cli names           $sinco"
 echo "$tab" "$tab" "$sinco"  "Show firewall-list with output cli   |   $fwiptables -cli firewall-list   $sinco"
 echo "$tab" "$tab" "$sinco"  "Generate rules with output gui       |   $fwiptables -gui wizard-mini     $sinco"
 exit ; fi
