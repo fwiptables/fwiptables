@@ -544,8 +544,7 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ##############################     ALIAS simple y campo     ##############################
 ####
 ####
-##############################     ALIAS SIMPLE
-##############################     ALIAS SIMPLE
+#### english: alias simple
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
@@ -556,15 +555,27 @@ if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 ####
 ####
-#### english:  also txt or cli or gui 
+#### english:  alias firewall names 
+####
+####
+if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
+if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
+if [ "$first_option" = "gamesudp" ] ; then first_option="games-udp" ; fi
+if [ "$first_option" = "allpermisive" ] ; then first_option="all-permisive" ; fi
+if [ "$first_option" = "torbrowser" ] ; then first_option="tor-browser" ; fi
+if [ "$first_option" = "serversamba" ] ; then first_option="server-samba" ; fi
+if [ "$first_option" = "serverprint" ] ; then first_option="server-print" ; fi
+if [ "$first_option" = "serverweb" ] ; then first_option="server-web" ; fi
+if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
+####
+####
+#### english:  alias -txt or -cli or -gui 
 ####
 ####
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]; then first_option="-txt"; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ]; then first_option="-txt"; fi
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ]; then first_option="-cli"; fi
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ]; then first_option="-gui"; fi
-####
-####
 ####
 ####
 ##############################     ALIAS CAMPUS
