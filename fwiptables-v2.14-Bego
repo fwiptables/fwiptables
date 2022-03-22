@@ -379,14 +379,14 @@ if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser=
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$rallica [ STATUS ] [ Install $fwiptables in $directory_fiptables ]"
+echo "$rallica [ status ] [ Install $fwiptables in $directory_fiptables ]"
 #### 
 #### 
 ####  english: copy the file
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$rallica [ RUNNING ] [ $zero_option install ]"
+echo "$rallica [ running ] [ $zero_option install ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 #### 
 #### 
@@ -454,19 +454,19 @@ chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
 $fwiptables regen &> /dev/null
 ####
 ####
-echo "$rallica [ STATUS ] [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
-echo "$rallica [ STATUS ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
-echo "$rallica [ STATUS ]  [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$rallica [ OK ] [ New config files installed ]"
+echo "$rallica [ status ] [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
+echo "$rallica [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
+echo "$rallica [ status ]  [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$rallica [ ok ] [ New config files installed ]"
 #### 
 #### 
 ####  english: modes of file 
 ####  spanish: modos de archivo
 #### 
 #### 
-echo "$rallica [ OK ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
-echo "$rallica [ OK ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
-echo "$footer_lineal"
+echo "$rallica [ ok ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
+echo "$rallica [ ok ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
+#### echo "$footer_lineal"
 exit; fi
 ####
 ####
@@ -507,7 +507,7 @@ chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
 ####
 if [ -s "/tmp/$fwiptables-installer" ]; then /tmp/$fwiptables-installer install; rm /tmp/$fwiptables-installer
 else "$rallica [ fail ] [ Install fail ]"; fi
-echo $footer_lineal
+#### echo $footer_lineal
 exit ; fi
 ####
 ####
@@ -1199,7 +1199,7 @@ echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
 ####
 ####
-echo "$rallica [ OK ] [ Wizard and configs cfg templates regenerated ]"
+echo "$rallica [ ok ] [ Wizard and configs cfg templates regenerated ]"
 exit ; fi
 ####
 ####
@@ -1325,37 +1325,37 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ####
 if [ "$first_option" = "offline" ];       then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL offline ]" ; 
+echo "$rallica [ running ] [ loading firewall offline ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL all-permisive ]" ; 
+echo "$rallica [ running ] [ loading firewall all-permisive ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "client-web" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL client-web ]" ; 
+echo "$rallica [ running ] [ loading firewall client-web ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "client-vpn" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL client-vpn ]" ; 
+echo "$rallica [ running ] [ loading firewall client-vpn ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "tor-browser" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL tor-browser ]" ; 
+echo "$rallica [ running ] [ loading firewall tor-browser ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-web" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL server-web ]" ; 
+echo "$rallica [ running ] [ loading firewall server-web ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL server-samba ]" ; 
+echo "$rallica [ running ] [ loading firewall server-samba ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-print" ];   then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL server-print ]" ; 
+echo "$rallica [ running ] [ loading firewall server-print ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL server-ssh ]" ; 
+echo "$rallica [ running ] [ loading firewall server-ssh ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "games-udp" ];     then $give_cover  ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL games-udp ]" ; 
+echo "$rallica [ running ] [ loading firewall games-udp ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover  ;
-echo "$rallica [ RUNNING ] [ LOADING FIREWALL custom ]" ; 
+echo "$rallica [ running ] [ loading firewall custom ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 ####
@@ -3984,7 +3984,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
 ####
 ####
 if [ "$first_option" = "text-pause" ]; then $nada
-read -p '##### [ OK ] ##### Press [enter] to continue now with the cli-menu ##### '
+read -p '##### [ ok ] ##### Press [enter] to continue now with the cli-menu ##### '
 exit; fi
 ####
 ####
@@ -4373,7 +4373,7 @@ echo "ff02::1 ip6-allnodes" >> $file_temporal_path/$first_option-hosts
 echo "ff02::2 ip6-allrouters"  >> $file_temporal_path/$first_option-hosts
 echo $cincuenta >> $file_temporal_path/$first_option-hosts
 cat  $file_temporal_path/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
-echo "$rallica [ OK ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
+echo "$rallica [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
 echo $footer_lineal
 cat  /etc/hosts
 exit; fi
@@ -4497,7 +4497,7 @@ exit; fi
  $command_ip6tables_legacy -t security -P OUTPUT ACCEPT
 ####
 ####
- echo "$rallica [ OK ] [ FIREWALL ERASED ] [ DELETED RULES ]"
+ echo "$rallica [ ok ] [ FIREWALL ERASED ] [ DELETED RULES ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5561,7 +5561,7 @@ echo "$ralla [ $first_option ] [ Reset the firewall ]"
 echo "$cinco Reseting the firewall"
 $fwiptables stop &> /dev/null
 $fwiptables continue &> /dev/null
-echo "$rallica [ OK ] [ FIREWALL RESETED]"
+echo "$rallica [ ok ] [ FIREWALL RESETED]"
 exit; fi
 ####
 ####
@@ -5628,7 +5628,7 @@ exit; fi
 #### English: show message
 ####
 ####
- echo "$rallica [ RUNNING ] [ LOADING RULES ]"
+ echo "$rallica [ running ] [ LOADING RULES ]"
 ####
 ####
 #### English: Remove all rules
@@ -5652,7 +5652,7 @@ exit; fi
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
  cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
- echo "$rallica [ OK ] [ FIREWALL LOADED ] [ $second_option ]"
+ echo "$rallica [ ok ] [ FIREWALL LOADED ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
@@ -5693,7 +5693,7 @@ exit; fi
  $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6  
 ####
 ####
- echo "$rallica [ OK ] [ FIREWALL SAVED ] [ $archivofin ]"
+ echo "$rallica [ ok ] [ FIREWALL SAVED ] [ $archivofin ]"
  if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
  ls -l $directory_fwrecover/$archivofin-arptables; fi
  if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -5702,7 +5702,7 @@ exit; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ OK ] [ FIREWALL LISTED ] [ $archivofin ]"
+ echo "$rallica [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5726,7 +5726,7 @@ exit; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ OK ] [ FIREWALL LISTED ] [ $archivofin ]"
+ echo "$rallica [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
  echo "$cincuenta $archivofin-arptables"
  cat $directory_fwrecover/$archivofin-arptables
  echo "$cincuenta $archivofin-ebtables"
@@ -5739,7 +5739,7 @@ exit; fi
  cat $directory_fwrecover/$archivofin-nft-ipv6
  echo "$cincuenta archivofin-legacy-ipv6"
  cat $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ OK ] [ FIREWALL READED ] [ $archivofin ]"
+ echo "$rallica [ ok ] [ FIREWALL READED ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5771,7 +5771,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-actual-nft-ipv6
  echo "$cincuenta legacy with ipv6 $cinco"
  cat $directory_fwrecover/fiptables-actual-legacy-ipv6
- echo "$rallica  [ OK ] [ READED ACTUAL FIREWALL ]"
+ echo "$rallica  [ ok ] [ READED ACTUAL FIREWALL ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5803,7 +5803,7 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-i
 ####
 ####
 $fwiptables eraserules &> /dev/null
-echo "$rallica [ OK ] [ FIREWALL STOPED ]"
+echo "$rallica [ ok ] [ FIREWALL STOPED ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5829,7 +5829,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
  cat $directory_fwrecover/fiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
- echo "$rallica [ OK ] [ FIREWALL CONTINUED ]"
+ echo "$rallica [ ok ] [ FIREWALL CONTINUED ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6386,7 +6386,7 @@ echo " [ Colour RGB ________:  $number_a $number_b $number_c ]"
 echo " [ Getting colours ] [ binary and hexadecimal ]"
 echo " Number binary________:  $binary_red $binary_green $binary_blue"
 echo " Colour HEXADECIMAL___:  $hexa_red $hexa_green $hexa_blue"
-echo " [ OK ] [ Colour converted ]"
+echo " [ ok ] [ Colour converted ]"
 fi; exit ; fi
 ####
 ####
@@ -6418,7 +6418,7 @@ echo " [ Colour HEXADECIMAL_:  $hexa_a  $hexa_b  $hexa_c ]"
 echo " [ Getting colours ] [ binary and RGB ]"
 echo " Number binary________:  $binary_red  $binary_green  $binary_blue "
 echo " Colour RGB __________:  $rgb_red  $rgb_green  $rgb_blue "
-echo " [ OK ] [ Colour converted ]"
+echo " [ ok ] [ Colour converted ]"
 fi ; exit; fi
 ####
 ####
@@ -6439,7 +6439,7 @@ language_spanish="/etc/default/fwiptables-spanish"
 language_number="0"
 caracteres="" ; cinco_caracteres="" ; intento="0" ; intento_maximo="12"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
-texten_1=" ##### [ OK ] Awasome, the random word is : "
+texten_1=" ##### [ ok ] Awasome, the random word is : "
 texten_2=" ##### Clon of wordle: discover a radom word of five letters "
 texten_3=" Letters in its site  " 
 texten_4=" Letters in the word  "
@@ -6448,7 +6448,7 @@ texten_5=" ##### Type actual Word         :  "
 texten_6=" ##### Actual tried numbers     :  "
 texten_7=" ##### The last answered      is:  "
 texten_8=" ##### The correct answerd    is:  "
-textes_1=" ##### [ OK ] Lo has conseguido, la palabra aleatoria es "
+textes_1=" ##### [ ok ] Lo has conseguido, la palabra aleatoria es "
 textes_2=" ##### Clon de wordle: Acierta con una palabra aleatoria de cinco caracteres. "
 textes_3=" Letras en su sitio   " 
 textes_4=" Letras en la palabra "
@@ -6475,7 +6475,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Play game word ole" --menu "
   02 "    Play word ole in spanish" \
   03 "    quit word ole" \
 )"
-if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
 case "$menuprincipal" in
   01) clear ; language_number="1" ; clear ;;
   02) clear ; language_number="2" ; clear ;;
@@ -6483,7 +6483,7 @@ case "$menuprincipal" in
 esac
 ####
 #### Quit game
-if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
@@ -6540,7 +6540,7 @@ bucle="$(dialog --stdout --title "Play game word ole" --inputbox " $text_6 $inte
 $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
 intento="$(($intento+1))"
-if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
 caracteres="$bucle"
 cinco_caracteres="$(echo $caracteres | cut -c 1-5)"
 caracter_1="$(echo $caracteres | cut -c 1)"
@@ -6609,7 +6609,7 @@ esac
 if [ "$?" -eq "1" ]; then exit; fi 
 ####
 #### Quit game
-if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
@@ -6673,7 +6673,7 @@ clear ; exit ; fi
 bucle="$(zenity $graphic_dimension --entry --title "Play game word ole" \
 --text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
-if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
 ####
 intento="$(($intento+1))"
 caracteres="$bucle"
@@ -6732,7 +6732,7 @@ read -p "$tab $tab ##### Choose one number: # 1 or 2 or q #  " language_number
 if [ ! -n "$language_number" ]; then language_number="5"; fi
 echo; done
 #### Quit game
-if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
@@ -6854,7 +6854,7 @@ language_number="0"
 digitos="" ; cinco_digitos="" ; caracteres="" ; cinco_caracteres=""
 intento="0" ; intento_maximo="12"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
-texten_1=" ##### [ OK ] Awasome, the random number is : "
+texten_1=" ##### [ ok ] Awasome, the random number is : "
 texten_2=" ##### Clon of numberle: discover a radom number of five digits "
 texten_3=" Digits in its site     " 
 texten_4=" Digits in the number   "
@@ -6863,7 +6863,7 @@ texten_5=" ##### Type actual number          :  "
 texten_6=" ##### Actual tried numbers        :  "
 texten_7=" ##### The last answered         is:  "
 texten_8=" ##### The correct answerd       is:  "
-textes_1=" ##### [ OK ] Lo has conseguido, el numero aleatorio es "
+textes_1=" ##### [ ok ] Lo has conseguido, el numero aleatorio es "
 textes_2=" ##### Clon de numberle: Acierta con un numero aleatorio de cinco digitos. "
 textes_3=" Digitos en su sitio   " 
 textes_4=" Digitos en el numero  "
@@ -6890,7 +6890,7 @@ menuprincipal="$(dialog --stdout --clear --title "  Play game number ole" --menu
   02 "    Play number ole in spanish" \
   03 "    quit number ole" \
 )"
-if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
 case "$menuprincipal" in
   01) clear ; language_number="1" ; clear ;;
   02) clear ; language_number="2" ; clear ;;
@@ -6898,7 +6898,7 @@ case "$menuprincipal" in
 esac
 ####
 #### Quit game
-if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
 text_1="$texten_1"
@@ -6939,7 +6939,7 @@ bucle="$(dialog --stdout --title "Play game number ole" --inputbox " $text_6 $in
 $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
 intento="$(($intento+1))"
-if [ "$?" != 0 ]; then clear; echo "$cinco [ OK ] [ Exit game ]" ; exit; fi
+if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
 digitos="$bucle"
 cinco_digitos="$(echo $digitos | cut -c 1-5)"
 digito_1="$(echo $digitos | cut -c 1)"
@@ -7007,9 +7007,9 @@ esac
 if [ "$?" -eq "1" ]; then exit; fi 
 ####
 #### Quit game
-if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then $nada 
-else "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+else "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 ##### language of interface english
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -7114,7 +7114,7 @@ read -p "$tab $tab ##### Choose one number: # 1 or 2 or q #  " language_number
 if [ ! -n "$language_number" ]; then language_number="5"; fi
 echo; done
 #### Quit game
-if [ "$language_number" == "q" ]; then echo "$cinco [ OK ] [ Exit game ]" ; exit ; fi
+if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
 text_1="$texten_1"
@@ -8501,7 +8501,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ all-permisive ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ all-permisive ]"
 exit; fi
 ####
 ####
@@ -8637,7 +8637,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ client-web ]" ; exit ; fi
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-web ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables tor-browser:
@@ -8793,7 +8793,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ tor-browser ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ tor-browser ]"
 exit; fi
 ####
 ####
@@ -8936,7 +8936,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ client-vpn ]" ; exit ; fi
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-vpn ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables server-web:
@@ -9116,7 +9116,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ server-web ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-web ]"
 exit; fi
 ####
 ####
@@ -9314,7 +9314,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ server-samba ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-samba ]"
 exit; fi
 ####
 ####
@@ -9495,7 +9495,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ server-print ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-print ]"
 exit; fi
 ####
 ####
@@ -9676,7 +9676,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ server-ssh ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-ssh ]"
 exit; fi
 ####
 ####
@@ -9865,7 +9865,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ games-udp ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ games-udp ]"
 exit; fi
 ####
 ####
@@ -9924,7 +9924,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ offline ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ offline ]"
 exit; fi
 ###############################################################################################################
 ###############################################################################################################
@@ -11144,7 +11144,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 #### echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo "$rallica [ OK ] [ LAUNCHED RULES ] [ LAUNCHED FIREWALL ] [ custom ] [$second_option]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ custom ] [$second_option]"
 exit ; else $nada ; fi
 ####
 ####
