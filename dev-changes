@@ -261,5 +261,7 @@
 #
 # changes fwiptables 2.14 en desarrollo
 #
-# 1.
+# 1. alias a los viejos firewall predefinidos. HECHO
+# 2. pasa mayusculas a minisculas en la informacion ofrecida. HECHO
+# 3. 
 #
