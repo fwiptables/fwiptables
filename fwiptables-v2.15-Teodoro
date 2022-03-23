@@ -549,7 +549,6 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
-if [ "$first_option" = "status" ]  ; then first_option="txt" ; second_option="list" ; fi
 if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
 if [ "$first_option" = "list6" ]  ; then first_option="txt" ; second_option="list6" ; fi
 if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
@@ -1400,7 +1399,7 @@ echo "$tab" "$tab"  "$ralla [ $first_option ] [ List mini options ] $rallica $ra
 echo "$tab" "$tab"  "  output-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log                 "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "  firewall-rules    |  stop continue reset names actual show save load                 "
-echo "$tab" "$tab"  "  firewall-list     |  list listnum list6 listnum6 list-allrules list-forward          "
+echo "$tab" "$tab"  "  firewall-list     |  status list listnum list6 listnum6 list-allrules list-forward   "
 echo "$tab" "$tab"  "                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
 echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$tab" "$tab"  "                       list-security4 list-security6 list-ebtables list-arptables      "
@@ -1440,7 +1439,7 @@ echo "$tab" "$tab"  "    output-interface   |  cli-menu gui-menu gui-shell -txt 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                    [ firewall-options ]                        "
 echo "$tab" "$tab"  "    firewall-rules     |  stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    firewall-list      |  list listnum list6 listnum6                           "
+echo "$tab" "$tab"  "    firewall-list      |  status list listnum list6 listnum6                    "
 echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
 echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6         "
 echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6         "
@@ -4778,6 +4777,32 @@ exit; fi
 ####
 ####
 #### :rutina-final-list6:
+#############################  english: status: system script, the list option
+#############################  spanish: status: script de sistema, la opcion lista
+#### :rutina-inicial-status:
+####
+####
+ if [ "$first_option" = "status" ]; then $nada
+####
+####
+ if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
+ echo "$ralla IPTABLES WITH DEFAULT ROUTE IPv4 $ralla SHOW RULES in status "
+ # $($command_ip -4 route | grep -i default | head -1)
+ $fwiptables list
+ else echo "$ralla IPTABLES WITHOUT DEFAULT ROUTE IPv4 $ralla HIDE RULES in status" ; fi
+####
+####
+ if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
+ echo "$ralla IPTABLES WITH DEFAULT ROUTE IPv6 $ralla SHOW RULES in status"
+ # $($command_ip -6 route | grep -i default | head -1)
+ $fwiptables list6
+ else echo "$ralla IPTABLES WITHOUT DEFAULT ROUTE IPv6 $ralla HIDE RULES in status" ;  fi
+####
+####
+ exit; fi
+####
+####
+#### :rutina-final-satus:
 #############################  english: list-filter4: system script, the list option
 #############################  spanish: list-filter4: script de sistema, la opcion lista
 #### :rutina-inicial-list-filter4:
