@@ -492,7 +492,7 @@ rm /tmp/$fwiptables &> /dev/null
 ####
 ####
 echo "$rallica [ status ] [ Waiting several seconds .. ]"
-download_version="$($favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables \
+download_version="$($favorite_text_browser -dump $fweb_newfiles | grep -i fwiptables \
  | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
  | cut -d "(" -f 1 | sed s/" "//g)"
 download_ruta="$fweb_files$download_version/download"
@@ -574,7 +574,7 @@ if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
 #### english:  alias -txt or -cli or -gui 
 ####
 ####-i
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then torify -i fwiptables $second_option $third_option ; exit ; fi
+if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then torify -i $fwiptables $second_option $third_option ; exit ; fi
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_option="-txt"; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_option="-txt"; fi
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_option="-cli"; fi
