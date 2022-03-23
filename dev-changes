@@ -267,7 +267,7 @@
 # changes fwiptables 2.15 en desarrollo
 #
 # 1. firewall tor-browser cambiado a client-tor. HECHO
-# 2. firewall only-tor añadido. HECHO
+# 2. firewall webonly-tor añadido. HECHO
 # 3. opcional salida -tor añadido. HECHO
 # 4. pequeño cambio en info-net. HECHO
 #
