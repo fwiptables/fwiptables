@@ -270,4 +270,5 @@
 # 2. firewall webonly-tor añadido. HECHO
 # 3. opcional salida -tor añadido. HECHO
 # 4. pequeño cambio en info-net. HECHO
+# 5  status: lista ip4 si hay y lista ip6 si hay con sus ip cada uno.
 #
