@@ -259,9 +259,15 @@
 # 5. torbrowser es un nuevo firewall predefinido. HECHO 
 # 6. cambio de nombre de firewall predifinidos. HECHO
 #
-# changes fwiptables 2.14 en desarrollo
+# changes fwiptables 2.14
 #
 # 1. alias a los viejos firewall predefinidos. HECHO
 # 2. pasa mayusculas a minisculas en la informacion ofrecida. HECHO
-# 3. 
+#
+# changes fwiptables 2.15 en desarrollo
+#
+# 1. firewall tor-browser cambiado a client-tor. HECHO
+# 2. firewall only-tor añadido. HECHO
+# 3. opcional salida -tor añadido. HECHO
+# 4. pequeño cambio en info-net. HECHO
 #
