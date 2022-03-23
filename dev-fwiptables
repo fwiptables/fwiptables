@@ -562,7 +562,8 @@ if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
 if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
 if [ "$first_option" = "gamesudp" ] ; then first_option="games-udp" ; fi
 if [ "$first_option" = "allpermisive" ] ; then first_option="all-permisive" ; fi
-if [ "$first_option" = "torbrowser" ] ; then first_option="tor-browser" ; fi
+if [ "$first_option" = "torbrowser" ] ; then first_option="client-tor" ; fi
+if [ "$first_option" = "tor-browser" ] ; then first_option="client-tor" ; fi
 if [ "$first_option" = "serversamba" ] ; then first_option="server-samba" ; fi
 if [ "$first_option" = "serverprint" ] ; then first_option="server-print" ; fi
 if [ "$first_option" = "serverweb" ] ; then first_option="server-web" ; fi
@@ -1347,8 +1348,11 @@ launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "client-vpn" ];     then $give_cover ;
 echo "$rallica [ running ] [ loading firewall client-vpn ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
-if [ "$first_option" = "tor-browser" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall tor-browser ]" ; 
+if [ "$first_option" = "client-tor" ];     then $give_cover ;
+echo "$rallica [ running ] [ loading firewall client-tor ]" ; 
+launch_iptables="" ;     config_variable_version="2"  ;  fi
+if [ "$first_option" = "only-tor" ];     then $give_cover ;
+echo "$rallica [ running ] [ loading firewall only-tor ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-web" ];     then $give_cover ;
 echo "$rallica [ running ] [ loading firewall server-web ]" ; 
@@ -1397,8 +1401,8 @@ echo "$tab" "$tab"  "  firewall-list     |  list listnum list6 listnum6 list-all
 echo "$tab" "$tab"  "                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
 echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$tab" "$tab"  "                       list-security4 list-security6 list-ebtables list-arptables      "
-echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline custom               "
-echo "$tab" "$tab"  "                       client-web client-vpn games-udp tor-browser all-permisive       "
+echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline custom games-udp     "
+echo "$tab" "$tab"  "                       client-web client-vpn client-tor only-tor all-permisive         "
 echo "$tab" "$tab"  "                       server-samba server-print server-web server-ssh                 "
 echo "$tab" "$tab"  "  firewall-custom   |  new-full-config nueva-completa-config regen                     "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config list-config                   "
@@ -1440,7 +1444,8 @@ echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 
 echo "$tab" "$tab"  "                          list-security4 list-security6                         "
 echo "$tab" "$tab"  "                          list-ebtables list-arptables                          "
 echo "$tab" "$tab"  "    firewall-launch    |  eraserules wizard-mini wizard-full offline custom     "
-echo "$tab" "$tab"  "                          client-web client-vpn games-udp tor-browser all-permisive  "
+echo "$tab" "$tab"  "                          client-web client-vpn games-udp                       "
+echo "$tab" "$tab"  "                          client-tor only-tor all-permisive                     "
 echo "$tab" "$tab"  "                          server-samba server-print server-web server-ssh       "
 echo "$tab" "$tab"  "    firewall-custom    |  new-full-config nueva-completa-config regen           "
 echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config         "
@@ -1775,8 +1780,10 @@ echo "    client-web : Launch one firewall like client web and ssh"
 echo "               : Lanza un firewall como cliente web y ssh"
 echo "    client-vpn : Launch one firewall like client web and ssh and vpn"
 echo "               : Lanza un firewall como cliente web y ssh y vpn"
-echo "   tor-browser : Launch one firewall to browser with tor"
+echo "    client-tor : Launch one firewall to browser with tor"
 echo "               : Lanza un firewall para nevagar con tor"
+echo "      only-tor : Launch one firewall only to browser with tor"
+echo "               : Lanza un firewall solo para nevagar con tor"
 echo "    server-web : Launch one firewall like server web and ssh"
 echo "               : Lanza un firewall como servidor web y ssh"
 echo "  server-samba : Launch one firewall samba and ssh like client and server both"
@@ -2790,7 +2797,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "offline" "all-permisive" \
-"client-web" "client-vpn" "server-web" "games-udp" "tor-browser" "server-samba" "custom cfg" \
+"client-web" "client-vpn" "server-web" "games-udp" "client-tor" "only-tor" "server-samba" "custom cfg" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
 #### 
@@ -2808,7 +2815,8 @@ case "$selection" in
 "client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
 "server-web") $fwiptables -gui server-web ; $fwiptables gui list ;;
 "games-udp") $fwiptables -gui games-udp ; $fwiptables gui list ;;
-"tor-browser") $fwiptables -gui tor-browser ; $fwiptables gui list ;;
+"client-tor") $fwiptables -gui client-tor ; $fwiptables gui list ;;
+"only-tor") $fwiptables -gui only-tor ; $fwiptables gui list ;;
 "server-samba") $fwiptables -gui server-samba ; $fwiptables gui list ;;
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fwiptables -gui custom $archivo ; $fwiptables gui list ;;
@@ -3679,8 +3687,9 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0408  "$tab server-web" \
   0409  "$tab games-udp" \
   0410  "$tab server-samba" \
-  0411  "$tab tor-browser" \
-  0412  "$tab custom cfg" \
+  0411  "$tab client-tor" \
+  0412  "$tab only-tor" \
+  0413  "$tab custom cfg" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -3862,8 +3871,9 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0408) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
  0409) clear ; $fwiptables cli games-udp ; $fwiptables cli list  ;; 
  0410) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
- 0411) clear ; $fwiptables cli tor-browser ; $fwiptables cli list ;;
- 0412) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0411) clear ; $fwiptables cli client-tor ; $fwiptables cli list ;;
+ 0412) clear ; $fwiptables cli only-tor ; $fwiptables cli list ;;
+ 0413) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
@@ -7896,7 +7906,8 @@ echo "        wizard-full : Asistant y launch complete firewall"
 echo "        wizard-mini : Asistant y Launch simple firewall"
 echo "            offline : Launch disconected firewall for all servers and clients except localhost"
 echo "      all-permisive : Launch a firewall very permisive"
-echo "        tor-browser : Launch a firewall to brwoser with tor"
+echo "         client-tor : Launch a firewall to brwoser with tor"
+echo "           only-tor : Launch a firewall only to browser with tor"
 echo "          games-udp : Launch a firewall like games udp non-root games"
 echo "             custom : Configure one custom firewall, made for you with file.cfg"
 echo "         client-web : Launch a firewall like web client and ssh client"
@@ -8189,7 +8200,8 @@ echo "          wizard-full : Asistente y lanza completo cortafuegos"
 echo "          wizard-mini : Asistente y lanza simple cortafuegos"
 echo "              offline : Lanza un desconectado cortafuegos de todo excepto localhost"
 echo "        all-permisive : Lanza el cortafuegos muy permisivo"
-echo "          tor-browser : Lanza el cortafuegos para navegar con tor"
+echo "           client-tor : Lanza el cortafuegos para navegar con tor"
+echo "             only-tor : Lanza el cortafuegos solo para navegar con tor"
 echo "           client-web : Lanza el cortafuegos como cliente web y ssh"
 echo "           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn"
 echo "           server-web : Lanza el cortafuegos como servidor web y ssh"
@@ -8639,11 +8651,11 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /d
 echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-web ]" ; exit ; fi
 ####
 ####
-########################################     english: ipv4 iptables tor-browser:
-########################################     spanish: ipv4 iptables tor-browser:
+########################################     english: ipv4 iptables client-tor:
+########################################     spanish: ipv4 iptables client-tor:
 ####
 ####
-if [ "$first_option" = "tor-browser" ]; then $fwiptables eraserules &> /dev/null ;
+if [ "$first_option" = "client-tor" ]; then $fwiptables eraserules &> /dev/null ;
 ####
 ####
 #### ports defined in this firewall
@@ -8713,8 +8725,8 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables tor-browser:
-########################################     spanish: ipv6 iptables tor-browser: 
+########################################     english: ipv6 iptables client-tor:
+########################################     spanish: ipv6 iptables client-tor: 
 ####
 ####
 #### legacy ip6
@@ -8792,7 +8804,164 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ tor-browser ]"
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-tor ]"
+exit; fi
+####
+####
+########################################     english: ipv4 iptables only-tor:
+########################################     spanish: ipv4 iptables only-tor:
+####
+####
+if [ "$first_option" = "only-tor" ]; then $fwiptables eraserules &> /dev/null ;
+####
+####
+#### ports defined in this firewall
+####
+####
+client_port_udp="bootpc,domain,ntp" ;
+#### server_port_udp=""
+client_port_tcp="9000:9150" ;
+server_port_tcp="" ;
+####
+####
+#### legacy ip4
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip4
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+########################################     english: ipv6 iptables only-tor:
+########################################     spanish: ipv6 iptables only-tor: 
+####
+####
+#### legacy ip6
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip6
+####
+####
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6   $command_ip6tables_nft -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### english: close #### spanish cierra 
+####
+####
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ only-tor ]"
 exit; fi
 ####
 ####
