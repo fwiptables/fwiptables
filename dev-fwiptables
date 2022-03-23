@@ -4786,17 +4786,17 @@ exit; fi
 ####
 ####
  if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$ralla IPTABLES WITH DEFAULT ROUTE IPv4 $ralla SHOW RULES in status "
+ echo "$ralla the ipv4 has default route $ralla showing rules ipv4 in status"
  # $($command_ip -4 route | grep -i default | head -1)
  $fwiptables list
- else echo "$ralla IPTABLES WITHOUT DEFAULT ROUTE IPv4 $ralla HIDE RULES in status" ; fi
+ else echo "$ralla the ipv4 has no default route $ralla hidding rules ipv4 in status" ; fi
 ####
 ####
  if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$ralla IPTABLES WITH DEFAULT ROUTE IPv6 $ralla SHOW RULES in status"
+ echo "$ralla the ipv6 has default route $ralla showing rules ipv6 in status"
  # $($command_ip -6 route | grep -i default | head -1)
  $fwiptables list6
- else echo "$ralla IPTABLES WITHOUT DEFAULT ROUTE IPv6 $ralla HIDE RULES in status" ;  fi
+ else echo "$ralla the ipv6 has no default route $ralla hidding rules ipv6 in status" ;  fi
 ####
 ####
  exit; fi
