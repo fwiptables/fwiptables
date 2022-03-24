@@ -4783,7 +4783,7 @@ exit; fi
 ####
 ####
  if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$ralla When its ipv4 has default route $ralla show filter rules ipv4 in status"
+ echo "$ralla When its ipv4 has default route $ralla so it show filter rules ipv4 in status"
  $fwiptables list
  else echo "$ralla When its ipv4 has no default route $ralla hide filter rules ipv4 in status" ; fi
 ####
@@ -4791,7 +4791,7 @@ exit; fi
  if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
  echo "$ralla When its ipv6 has default route $ralla show filter rules ipv6 in status"
  $fwiptables list6
- else echo "$ralla When its ipv6 has no default route $ralla hide filter rules ipv6 in status" ;  fi
+ else echo "$ralla When its ipv6 has no default route $ralla so it hide filter rules ipv6 in status" ;  fi
 ####
 ####
  exit; fi
@@ -5598,10 +5598,10 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
 echo "$ralla [ $first_option ] [ Reset the firewall ]"
-echo "$cinco Reseting the firewall"
+echo "$rallica [ status ] [ Reseting the firewall ]"
 $fwiptables stop &> /dev/null
 $fwiptables continue &> /dev/null
-echo "$rallica [ ok ] [ FIREWALL RESETED]"
+echo "$rallica [ ok ] [ firewall reseted ]"
 exit; fi
 ####
 ####
@@ -5843,7 +5843,7 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-i
 ####
 ####
 $fwiptables eraserules &> /dev/null
-echo "$rallica [ ok ] [ FIREWALL STOPED ]"
+echo "$rallica [ ok ] [ firewall stopped ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5869,7 +5869,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
  cat $directory_fwrecover/fiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
- echo "$rallica [ ok ] [ FIREWALL CONTINUED ]"
+ echo "$rallica [ ok ] [ firewall continued ]"
  echo $footer_lineal
  exit; fi
 ####
