@@ -347,6 +347,7 @@ command_zenity="$(command -v zenity | cut -d " " -f 1)"
 command_lynx="$(command -v lynx | cut -d " " -f 1)"
 command_links="$(command -v links | cut -d " " -f 1)"
 command_links2="$(command -v links2 | cut -d " " -f 1)"
+command_elinks="$(command -v elinks | cut -d " " -f 1)"
 command_shc="$(command -v shc | cut -d " " -f 1)"
 command_nmap="$(command -v nmap | cut -d " " -f 1)"
 command_ntpdate="$(command -v ntpdate | cut -d " " -f 1)"
@@ -369,9 +370,10 @@ command_torify="$(command -v torify | cut -d " " -f 1)"
 ####
 ####
 favorite_text_browser=""
-if [ "$command_lynx" = "$NULL"   ]    ; then $nada ; else favorite_text_browser="$command_lynx"      ; fi
-if [ "$command_links" = "$NULL"  ]    ; then $nada ; else favorite_text_browser="$command_links"     ; fi
-if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_links2"    ; fi
+if [ "$command_lynx" = "$NULL"   ]    ; then $nada ; else favorite_text_browser="$command_lynx"     ; fi
+if [ "$command_links" = "$NULL"  ]    ; then $nada ; else favorite_text_browser="$command_links"    ; fi
+if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_links2"   ; fi
+if [ "$command_elinks" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_elinks"   ; fi
 ####
 ####
 ##############################       english: Install:    $fwiptables           ###########################################
@@ -467,7 +469,6 @@ echo "$rallica [ ok ] [ New config files installed ]"
 #### 
 echo "$rallica [ ok ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
 echo "$rallica [ ok ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
-#### echo "$footer_lineal"
 exit; fi
 ####
 ####
@@ -492,13 +493,9 @@ rm /tmp/$fwiptables &> /dev/null
 ####
 ####
 echo "$rallica [ status ] [ Waiting several seconds .. ]"
-download_version="$($favorite_text_browser -dump $fweb_newfiles | grep -i fwiptables \
- | grep -i download | egrep -iv "deb" | head -1 | sed s/"Download Latest Version"//g \
- | cut -d "(" -f 1 | sed s/" "//g)"
-download_ruta="$fweb_files$download_version/download"
 echo "$rallica [ downloading ] [ $download_ruta ]"
 echo "$rallica [ status ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source "$fweb_files""$download_version"/download &> "/tmp/$fwiptables-installer"
+$favorite_text_browser -source $fweb_latest &> "/tmp/$fwiptables-installer"
 chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
 ####
 ####
@@ -508,7 +505,6 @@ chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
 ####
 if [ -s "/tmp/$fwiptables-installer" ]; then /tmp/$fwiptables-installer install; rm /tmp/$fwiptables-installer
 else "$rallica [ fail ] [ Install fail ]"; fi
-#### echo $footer_lineal
 exit ; fi
 ####
 ####
