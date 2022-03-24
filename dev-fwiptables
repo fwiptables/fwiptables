@@ -492,8 +492,7 @@ rm /tmp/$fwiptables &> /dev/null
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$rallica [ status ] [ Waiting several seconds .. ]"
-echo "$rallica [ downloading ] [ $download_ruta ]"
+echo "$rallica [ downloading ] [ $fweb_latest ]"
 echo "$rallica [ status ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_latest &> "/tmp/$fwiptables-installer"
 chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
