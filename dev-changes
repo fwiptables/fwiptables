@@ -275,4 +275,6 @@
 # changes fwiptables 2.16 en desarrollo
 #
 # 1. ayuda y help para status. HECHO
+# 2. simplifacion de upgrade. HECHO
 #
+
