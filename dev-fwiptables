@@ -93,7 +93,7 @@ server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
 serverip_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
 serverport_iperf_ipv4="5001"            ## fwiptables-default ## default 5201
-serverip_iperf_ipv6="ping.online.net"   ## fwiptables-default ## default ping.online.net
+serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-default ## default ping.online.net
 serverport_iperf_ipv6="5001"            ## fwiptables-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
