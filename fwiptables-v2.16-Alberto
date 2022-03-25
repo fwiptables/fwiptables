@@ -2802,7 +2802,8 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "offline" "all-permisive" \
-"client-web" "client-vpn" "server-web" "games-udp" "client-tor" "lan-tor" "server-samba" "custom cfg" \
+"games-udp" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" "custom cfg" \
+"server-ssh" "server-print" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
 #### 
@@ -2818,11 +2819,14 @@ case "$selection" in
 "all-permisive") $fwiptables -gui all-permisive ; $fwiptables gui list ;;
 "client-web") $fwiptables -gui client-web ; $fwiptables gui list ;;
 "client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
-"server-web") $fwiptables -gui server-web ; $fwiptables gui list ;;
 "games-udp") $fwiptables -gui games-udp ; $fwiptables gui list ;;
 "client-tor") $fwiptables -gui client-tor ; $fwiptables gui list ;;
 "lan-tor") $fwiptables -gui lan-tor ; $fwiptables gui list ;;
+"lan-vpn") $fwiptables -gui lan-vpn ; $fwiptables gui list ;;
+"server-web") $fwiptables -gui server-web ; $fwiptables gui list ;;
 "server-samba") $fwiptables -gui server-samba ; $fwiptables gui list ;;
+"server-ssh") $fwiptables -gui server-ssh ; $fwiptables gui list ;;
+"server-print") $fwiptables -gui server-print ; $fwiptables gui list ;;
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fwiptables -gui custom $archivo ; $fwiptables gui list ;;
 esac
