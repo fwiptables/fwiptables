@@ -266,15 +266,20 @@
 #
 # changes fwiptables 2.15
 #
-# 1. firewall tor-browser cambiado a client-tor. HECHO
-# 2. firewall webonly-tor añadido. HECHO
-# 3. opcional salida -tor añadido. HECHO
-# 4. pequeño cambio en info-net. HECHO
-# 5  status: lista ip4 y/o ip6 cuando hay default ruta a un dispositivo. HECHO
+# 1.  firewall tor-browser cambiado a client-tor. HECHO
+# 2.  firewall webonly-tor añadido. HECHO
+# 3.  opcional salida -tor añadido. HECHO
+# 4.  pequeño cambio en info-net. HECHO
+# 6.  status: lista ip4 y/o ip6 cuando hay default ruta a un dispositivo. HECHO
+# 7.  ayuda y help para status. HECHO
+# 8.  simplifacion de upgrade. HECHO
+# 9.  webonly-tor ahora es lan-tor. HECHO
+# 10. tor-browser es ahora client-tor. HECHO
+# 11. añadido lan-vpn. HECHO
+# 12. Actualizado  los firewall gui y cli añadiendo los que faltaban. HECHO
+# 13. algunos alias de firewall predefinidos para viejos nombres. HECHO
 #
 # changes fwiptables 2.16 en desarrollo
 #
-# 1. ayuda y help para status. HECHO
-# 2. simplifacion de upgrade. HECHO
+# 1.
 #
-
