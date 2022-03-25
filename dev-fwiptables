@@ -298,9 +298,10 @@ echo "     LICENSE GNU / GPL v2.                                                
 echo "     See web page project in $fweb_main                                       "
 echo
 echo "---------------------------------------------------------------------------"
+echo
 echo "   [ Actually is posible what $fwiptables is not installed ]"
-echo "   [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" ;
-echo "   [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" ;
+echo "   [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" 
+echo "   [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" 
 echo
 echo "--------------------------------------------------------------------------"
 echo
@@ -7872,12 +7873,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help" ]; then 
-echo "$ralla [ $first_option ] [ help in english ] $ralla"
+echo "$ralla [ $first_option ] [ help in english ] $ralla $ralla"
 echo
-echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help ]"
-echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
-echo "$ralla [ all-help in english and spanish ]    [ Type:     $fwiptables all-help ]"
-echo
+echo "$rallica [ Choose only help in english ]  [ Type:     $fwiptables help ]"
+echo "$rallica [ Elige solo ayuda en español ]  [ Escribe:  $fwiptables ayuda ]"
+echo "$rallica [ help in english and spanish ]  [ Type:     $fwiptables all-help ]"
 $fwiptables intro
 echo
 $fwiptables options
@@ -8157,12 +8157,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then 
-echo "$ralla [ $first_option ] [ ayuda en español ] $ralla"
+echo "$ralla [ $first_option ] [ ayuda en español ] $ralla $ralla"
 echo
-echo "$ralla [ Choose only help in english ]        [ Type:     $fwiptables help ]"
-echo "$ralla [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
-echo "$ralla [ all-help in english and spanish ]    [ Type:     $fwiptables all-help ]"
-echo
+echo "$rallica [ Choose only help in english ]  [ Type:     $fwiptables help ]"
+echo "$rallica [ Elige solo ayuda en español ]  [ Escribe:  $fwiptables ayuda ]"
+echo "$rallica [ help in english and spanish ]  [ Type:     $fwiptables all-help ]"
 $fwiptables intro
 echo
 $fwiptables options
