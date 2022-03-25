@@ -550,6 +550,7 @@ if [ "$first_option" = "list6" ]  ; then first_option="txt" ; second_option="lis
 if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
+if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
 ####
 ####
 #### english:  alias firewall names 
@@ -1403,8 +1404,8 @@ echo "$tab" "$tab"  "  firewall-list     |  status list listnum list6 listnum6 l
 echo "$tab" "$tab"  "                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
 echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$tab" "$tab"  "                       list-security4 list-security6 list-ebtables list-arptables      "
-echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline custom client-web    "
-echo "$tab" "$tab"  "                       games-udp client-vpn client-tor lan-tor lan-vpn all-permisive   "
+echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline custom games-udp     "
+echo "$tab" "$tab"  "                       client-web client-vpn client-tor lan-tor lan-vpn all-permisive  "
 echo "$tab" "$tab"  "                       server-samba server-print server-web server-ssh                 "
 echo "$tab" "$tab"  "  firewall-custom   |  new-full-config nueva-completa-config regen                     "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config list-config                   "
@@ -1418,7 +1419,7 @@ echo "$tab" "$tab"  "    show-options    |  show-hardware   show-etc       show-
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"  "     Show more options with output txt    |   $fwiptables options              "
+echo "$tab" "$tab"  "     Show more options like output txt    |   $fwiptables options              "
 echo "$tab" "$tab"  "     List iptables rules with output txt  |   $fwiptables -txt list            "
 echo "$tab" "$tab"  "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"  "     List firewall saved with output cli  |   $fwiptables -cli names           "
@@ -1479,7 +1480,7 @@ echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"   "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"   "     List iptables rules with output txt  |   $fwiptables list                 "
+echo "$tab" "$tab"   "     List iptables rules like output txt  |   $fwiptables list                 "
 echo "$tab" "$tab"   "     List firewall saved with output txt  |   $fwiptables -txt names           "
 echo "$tab" "$tab"   "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"   "     Show firewall-list with output cli   |   $fwiptables -cli firewall-list   "
