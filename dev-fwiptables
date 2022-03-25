@@ -1781,10 +1781,12 @@ echo "    client-web : Launch one firewall like client web and ssh"
 echo "               : Lanza un firewall como cliente web y ssh"
 echo "    client-vpn : Launch one firewall like client web and ssh and vpn"
 echo "               : Lanza un firewall como cliente web y ssh y vpn"
-echo "    client-tor : Launch one firewall to browser with tor"
+echo "    client-tor : Launch one firewall with browser with tor"
 echo "               : Lanza un firewall para nevagar con tor"
-echo "    lan-tor : Launch one firewall only to browser with tor"
+echo "       lan-tor : Launch one firewall only to browser with tor"
 echo "               : Lanza un firewall solo para nevagar con tor"
+echo "       lan-vpn : Launch one firewall only to browser with vpn"
+echo "               : Lanza un firewall solo para nevagar con vpn"
 echo "    server-web : Launch one firewall like server web and ssh"
 echo "               : Lanza un firewall como servidor web y ssh"
 echo "  server-samba : Launch one firewall samba and ssh like client and server both"
@@ -3692,7 +3694,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0410  "$tab server-samba" \
   0411  "$tab client-tor" \
   0412  "$tab lan-tor" \
-  0413  "$tab custom cfg" \
+  0413  "$tab lan-vpn" \
+  0414  "$tab custom cfg" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -3876,7 +3879,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0410) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
  0411) clear ; $fwiptables cli client-tor ; $fwiptables cli list ;;
  0412) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
- 0413) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0413) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
+ 0414) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
@@ -7934,10 +7938,11 @@ echo "        wizard-full : Asistant y launch complete firewall"
 echo "        wizard-mini : Asistant y Launch simple firewall"
 echo "            offline : Launch disconected firewall for all servers and clients except localhost"
 echo "      all-permisive : Launch a firewall very permisive"
-echo "         client-tor : Launch a firewall to brwoser with tor"
-echo "         lan-tor : Launch a firewall only to browser with tor"
+echo "         client-tor : Launch a firewall with brwoser with tor"
 echo "          games-udp : Launch a firewall like games udp non-root games"
 echo "             custom : Configure one custom firewall, made for you with file.cfg"
+echo "            lan-tor : Launch a firewall only to browser with tor"
+echo "            lan-vpn : Launch a firewall only to browser with vpn"
 echo "         client-web : Launch a firewall like web client and ssh client"
 echo "         client-vpn : Launch a firewall like web client and ssh client and vpn client"
 echo "         server-web : Launch a firewall like web server and ssh server"
@@ -8229,10 +8234,11 @@ echo "          wizard-full : Asistente y lanza completo cortafuegos"
 echo "          wizard-mini : Asistente y lanza simple cortafuegos"
 echo "              offline : Lanza un desconectado cortafuegos de todo excepto localhost"
 echo "        all-permisive : Lanza el cortafuegos muy permisivo"
-echo "           client-tor : Lanza el cortafuegos para navegar con tor"
-echo "           lan-tor : Lanza el cortafuegos solo para navegar con tor"
+echo "           client-tor : Lanza el cortafuegos con navegacion con tor"
 echo "           client-web : Lanza el cortafuegos como cliente web y ssh"
 echo "           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn"
+echo "              lan-tor : Lanza el cortafuegos solo para navegar con tor"
+echo "              lan-vpn : Lanza el cortafuegos solo para navegar con vpn"
 echo "           server-web : Lanza el cortafuegos como servidor web y ssh"
 echo "         server-samba : Lanza un cortafuegos como servidor y cliente samba y ssh"
 echo "            games-udp : Lanza el cortafuegos como cliente de juegos udp non-root"
