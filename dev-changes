@@ -284,4 +284,6 @@
 # 1. radio cambiado a radio-mp3, se le puede indicar otra host directamente. HECHO
 # 2. gui para radio con otro enlcae. HECHO
 # 3. cli para radio con otro enlace. HECHO
+# 4. corregido ntpdate. HECHO
+# 5. añadido -tor en output-interface. HECHO
 #
