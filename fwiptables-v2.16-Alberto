@@ -371,10 +371,10 @@ command_torify="$(command -v torify | cut -d " " -f 1)"
 ####
 ####
 favorite_text_browser=""
-if [ "$command_lynx" = "$NULL"   ]    ; then $nada ; else favorite_text_browser="$command_lynx"     ; fi
-if [ "$command_links" = "$NULL"  ]    ; then $nada ; else favorite_text_browser="$command_links"    ; fi
-if [ "$command_links2" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_links2"   ; fi
-if [ "$command_elinks" = "$NULL" ]    ; then $nada ; else favorite_text_browser="$command_elinks"   ; fi
+if [ "$command_links"  = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_links"   ; fi
+if [ "$command_links2" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_links2"  ; fi
+if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_lynx"    ; fi
+if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
 ##############################       english: Install:    $fwiptables           ###########################################
