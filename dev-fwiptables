@@ -3239,7 +3239,7 @@ case $selection in
 "speed-glx")  $fwiptables -gui speed-glx ;;
 "radio-mp3-default")  $fwiptables -gui radio-mp3 ;;
 "radio-mp3-link") 
-radio_enlace="$(zenity $graphic_dimension --entry --text="[ type one link mp3 ] [ example: $radio ]")" ;
+radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio ]")" ;
 $fwiptables -gui radio-mp3 $radio_enlace ;;
 esac
 ####
@@ -3776,7 +3776,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   1602  "$tab speed-ram" \
   1603  "$tab speed-disk" \
   1604  "$tab speed-glx" \
-  1605  "$tab radio-mp3" \
+  1605  "$tab radio-mp3-default" \
+  1606  "$tab radio-mp3-link" \
   1700 "$quad [ Show Hardware ] $cinco" \
   1701  "$tab lpinfo" \
   1702  "$tab lsblk" \
@@ -3973,7 +3974,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  1603) clear ; $fwiptables cli speed-disk ;;
  1604) clear ; $fwiptables cli speed-glx ;;
  1605) clear ; $fwiptables cli radio-mp3 ;;
- 1701) clear ; $fwiptables cli lpinfo ;; 
+ 1606) clear ; emisora_mp3="$(dialog --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"; $fwiptables cli radio-mp3 $emisora_mp3 ;;
+ 1701) clear ; $fwiptables cli lpinfo ;;
  1702) clear ; $fwiptables cli lsblk ;;
  1703) clear ; $fwiptables cli lsusb ;; 
  1704) clear ; $fwiptables cli lscpu ;;
