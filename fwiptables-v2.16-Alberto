@@ -3225,7 +3225,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio" \
+--list "Gui Principal Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio-mp3-default" "radio-mp3-link" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool System] [$fwiptables]" )
 #### 
 #### 
@@ -3237,7 +3237,10 @@ case $selection in
 "speed-ram")  $fwiptables -gui speed-ram ;;
 "speed-disk") $fwiptables -gui speed-disk ;;
 "speed-glx")  $fwiptables -gui speed-glx ;;
-"radio-mp3")  $fwiptables -gui radio-mp3 ;;
+"radio-mp3-default")  $fwiptables -gui radio-mp3 ;;
+"radio-mp3-link") 
+radio_enlace="$(zenity $graphic_dimension --entry --text="[ type one link mp3 ] [ example: $radio ]")" ;
+$fwiptables -gui radio-mp3 $radio_enlace ;;
 esac
 ####
 ####
@@ -6406,8 +6409,8 @@ $fwiptables stop
 ####
  if [ "$first_option" = "radio-mp3" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Listen radio online ]"
- echo "$rallica [ for choose radio see: $fwiptables show-default ] [ only protocol http ]"
- echo "$rallica [ Usually it do not working like root, probe as user ]"
+ echo "$rallica [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+ echo "$rallica [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
  if [ "$second_option" = "$NULL" ]; then $nada
@@ -6415,7 +6418,7 @@ $fwiptables stop
  else radio="$second_option"; fi
 ####
 ####
- echo "$rallica [ $favorite_radio_command $radio ]"
+ echo "$rallica [ ok ] [ $favorite_radio_command $radio ]"
  echo $header_lineal
  echo $footer_lineal
  sudo -u $(logname) $favorite_radio_command $emisora
