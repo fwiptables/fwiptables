@@ -545,6 +545,7 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
+if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
 if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
 if [ "$first_option" = "list6" ]  ; then first_option="txt" ; second_option="list6" ; fi
@@ -1466,7 +1467,7 @@ echo "$tab" "$tab"  "    tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-
 echo "$tab" "$tab"  "    tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping         "
 echo "$tab" "$tab"  "    tool-sudo          |  sudo-adduser sudo-deluser sudo-list alias-list        "
 echo "$tab" "$tab"  "    tool-game          |  ole-word ole-number colour-rgb colour-hex             "
-echo "$tab" "$tab"  "    tool-system        |  free-ram speed-ram speed-disk speed-glx radio         "
+echo "$tab" "$tab"  "    tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3     "
 echo "$tab" "$tab"  "    tool-install       |  install upgrade howto-upgrade                         "
 echo "$tab" "$tab"  "    tool-blacklist     |  blacklist-list blacklist-on blacklist-off             "
 echo "$tab" "$tab"  "    tool-dev           |  new-versions dev-version dev-changes code             "
@@ -2273,7 +2274,7 @@ echo "    speed-disk : Show the speed of disc"
 echo "               : Muestra la velocidad de el disco"
 echo "     speed-glx : Show frammes for seconds with mesa graphicall"
 echo "               : Muestra fotogramas por segundo con graficos mesa"
-echo "         radio : connect to one server mp3, see $fwiptables default"
+echo "     radio-mp3 : connect to one server mp3, see $fwiptables default"
 echo "               : connecta a on servidor mp3, see $fwiptables default"
 echo $footer_lineal
 exit; fi
@@ -3235,8 +3236,8 @@ case $selection in
 "free-ram")   $fwiptables -gui free-ram ;;
 "speed-ram")  $fwiptables -gui speed-ram ;;
 "speed-disk") $fwiptables -gui speed-disk ;;
-"speed-glx")   $fwiptables -gui speed-glx ;;
-"radio")      $fwiptables -gui radio ;;
+"speed-glx")  $fwiptables -gui speed-glx ;;
+"radio-mp3")  $fwiptables -gui radio-mp3 ;;
 esac
 ####
 ####
@@ -3772,7 +3773,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   1602  "$tab speed-ram" \
   1603  "$tab speed-disk" \
   1604  "$tab speed-glx" \
-  1605  "$tab radio" \
+  1605  "$tab radio-mp3" \
   1700 "$quad [ Show Hardware ] $cinco" \
   1701  "$tab lpinfo" \
   1702  "$tab lsblk" \
@@ -3968,7 +3969,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  1602) clear ; $fwiptables cli speed-ram ;;
  1603) clear ; $fwiptables cli speed-disk ;;
  1604) clear ; $fwiptables cli speed-glx ;;
- 1605) clear ; $fwiptables cli radio ;;
+ 1605) clear ; $fwiptables cli radio-mp3 ;;
  1701) clear ; $fwiptables cli lpinfo ;; 
  1702) clear ; $fwiptables cli lsblk ;;
  1703) clear ; $fwiptables cli lsusb ;; 
@@ -6398,23 +6399,30 @@ $fwiptables stop
 ####
 ####
 #### :rutina-final-speed-glx:
-############################       english: radio: url from one radio mp3
-############################       spanish: radio: url de una radio en mp3
-#### :rutina-inicial-radio:
+############################       english: radio-mp3: url from one radio mp3
+############################       spanish: radio-mp3: url de una radio en mp3
+#### :rutina-inicial-radio-mp3:
 ####
 ####
- if [ "$first_option" = "radio" ]; then  $give_cover
+ if [ "$first_option" = "radio-mp3" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Listen radio online ]"
  echo "$rallica [ for choose radio see: $fwiptables show-default ] [ only protocol http ]"
  echo "$rallica [ Usually it do not working like root, probe as user ]"
+####
+####
+ if [ "$second_option" = "$NULL" ]; then $nada
+ emisora="$radio"
+ else radio="$second_option"; fi
+####
+####
  echo "$rallica [ $favorite_radio_command $radio ]"
  echo $header_lineal
  echo $footer_lineal
- sudo -u $(logname) $favorite_radio_command $radio
+ sudo -u $(logname) $favorite_radio_command $emisora
  exit; fi
 ####
 ####
-#### :rutina-final-radio:
+#### :rutina-final-radio-mp3:
 ############################       english: colour-rgb: convert colour rgb to hex
 ############################       spanish: colour-rgb: convert colour rgb to hex
 #### :rutina-inicial-colour-rgb:
@@ -8040,7 +8048,7 @@ echo "         free-ram : Clean for innecesary memory"
 echo "        speed-ram : Show the speed of ram"
 echo "       speed-disk : Show the speed of disc"
 echo "        speed-glx : Show frammes for seconds with mesa graphicall"
-echo "            radio : connect to one server mp3, see $fwiptables default"
+echo "        radio-mp3 : connect to one server mp3, see $fwiptables default"
 echo
 echo "$cinco         [ Tool Install ]"
 echo
@@ -8324,7 +8332,7 @@ echo "      free-ram : Libera la memoria innecesaria"
 echo "     speed-ram : Muestra la velocidad de la ram"
 echo "    speed-disk : Muestra la velocidad de el disco"
 echo "     speed-glx : Muestra fotogramas por segundo con graficos mesa"
-echo "         radio : connecta a on servidor mp3, see $fwiptables default"
+echo "     radio-mp3 : connecta a on servidor mp3, see $fwiptables default"
 echo
 echo "$cinco         [ Herramienta de instalacion ]"
 echo
