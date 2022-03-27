@@ -667,7 +667,7 @@ if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ;
 then first_option="-log" 
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
-echo "$cinco Output $fwiptables $second_option $third_option sended to $file_output_filelog" ;
+echo "$rallica [ ok ] [ Output $fwiptables $second_option $third_option sended to $file_output_filelog ]" ;
 exit ; fi
 ####
 ####
@@ -748,7 +748,8 @@ fi ; exit ; fi
 #### :rutina-inicial-regen-config:
 ####
 ####
-if [ "$first_option" = "regen-config" ]; then echo "$cinco [ regen template wizard and template cfg ]"
+if [ "$first_option" = "regen-config" ]; then $nada
+echo "$rallica [ status]  [ regen template wizard and template cfg ]"
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -5357,7 +5358,7 @@ if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$cinco Use: $fwiptables show-config config-old" ; exit; fi
+echo "$rallica [ status ] [ Use: $fwiptables show-config config-old ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -5420,8 +5421,8 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-deluser" ]; then $give_cover
 rm /etc/sudoers.d/$fwiptables
-echo "$cinco [ deleted auth sudo ]"
-echo "$rallica [ deleted /etc/sudoers.d/$fwiptables ]"
+echo "$rallica [ ok ] [ deleted auth sudo ]"
+echo "$rallica [ ok ] [ deleted /etc/sudoers.d/$fwiptables ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5442,9 +5443,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$cinco [ list users with root auth for launch $fwiptables ]"
+echo "$rallica [ status ] [ list users with root auth for launch $fwiptables ]"
 echo $header_lineal
-echo "$rallica [ Without root sudo from users ]"
+echo "$rallica [ status ] [ Without root sudo from users ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5536,7 +5537,7 @@ exit; fi
  echo $header_lineal
  cat /etc/default/fwiptables
  echo $footer_lineal
- echo "$rallica [ edit file /etc/default/fwiptables to change variables with: $fwiptables modify-default ]"
+ echo "$rallica [ status ] [ edit file /etc/default/fwiptables to change variables with: $fwiptables modify-default ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5551,7 +5552,7 @@ exit; fi
  echo "$ralla [ $first_option ] [ modify the /etc/default/fwiptables ]"
  echo $header_lineal
  echo $footer_lineal
- echo "$cinco edit file /etc/default/fwiptables to change variables"
+ echo "$rallica [ status ] [ edit file /etc/default/fwiptables to change variables ]"
 ####
 ####
 #### english: make security copy file
@@ -5671,7 +5672,7 @@ exit; fi
 ####
 ####
  if [ "second_option" = "$NULL" ]; then
- $fwiptables names; echo "$cinco [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]" ; exit ; fi
+ $fwiptables names; echo "$rallica [ status ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -5683,7 +5684,7 @@ exit; fi
 #### English: show message
 ####
 ####
- echo "$rallica [ running ] [ LOADING RULES ]"
+ echo "$rallica [ running ] [ Loading rules ]"
 ####
 ####
 #### English: Remove all rules
@@ -5906,7 +5907,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$cinco ping -4 -c 5 -A $server_ping_ipv4"
+ echo "$rallica [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
  timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
  $fwiptables continue
  echo $footer_lineal
@@ -5930,7 +5931,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$cinco ping -6 -c 5 -A $server_ping_ipv6"
+ echo "$rallica [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
  $fwiptables continue
  echo $footer_lineal
@@ -5954,7 +5955,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$cinco traceroute -4 -T $server_traceroute_ipv4"
+ echo "$rallica [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
  echo $head_waiting_gui
  $fwiptables continue
@@ -5979,7 +5980,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$cinco traceroute -6 -T $server_traceroute_ipv6"
+ echo "$rallica [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
  $fwiptables continue
  echo $footer_lineal
@@ -6003,7 +6004,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$cinco traceroute -4 -I $server_traceroute_ipv4"
+ echo "$rallica [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
  echo $head_waiting_gui
  $fwiptables continue
@@ -6028,7 +6029,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$cinco traceroute -6 -I $server_traceroute_ipv6"
+ echo "$rallica [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
  echo $head_waiting_gui
  $fwiptables continue
@@ -6050,7 +6051,7 @@ exit; fi
  "$NULL") echo "$cinco Please select a one host to launch host"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$cinco host $trazador"
+ echo "$rallica [ ok ] [ host $trazador ]"
  $command_host $trazador
  echo $footer_lineal
  exit; fi
@@ -6070,7 +6071,7 @@ exit; fi
  "$NULL") echo "$cinco Please select a one host to launch dig"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$cinco dig $trazador"
+ echo "$rallica [ ok ] [ dig $trazador ]"
  $command_dig $trazador | grep ^$trazador
  echo $footer_lineal
  exit; fi
@@ -6090,7 +6091,7 @@ exit; fi
  "$NULL") echo "$cinco Please select a one host to launch resolveip"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$cinco resolveip $trazador"
+ echo "$rallica [ ok ] [ resolveip $trazador ]"
  $command_resolveip $trazador
  echo $footer_lineal
  exit; fi
@@ -6109,7 +6110,7 @@ exit; fi
  case "$second_option" in
  "$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$cinco geoiplookup -i $trazador"
+ echo "$rallica [ ok ] [ geoiplookup -i $trazador ]"
  $command_geoiplookup -i $trazador
  echo $footer_lineal
  exit; fi
@@ -6145,9 +6146,9 @@ exit; fi
 if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap tcp ]"
  echo $header_lineal
- echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
- echo "$cinco [ Notice:] [ Stoped firewall while launching nmap ]"
  case $command_nmap in $NULL) echo install nmap ; exit ;; esac
+ echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
+ echo "$rallica [ ok ] [ Stoped firewall while launching nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6159,7 +6160,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$cincuenta [ Doing nmap ]"
+ echo "$rallica [ ok ] [ Doing nmap ]"
  $command_nmap -sT $2
 ####
 ####
@@ -6169,7 +6170,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  $fwiptables continue
 ####
 ####
- echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6183,9 +6184,9 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  if [ "$first_option" = "scan-syn" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap syn ]"
  echo $header_lineal
- echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
- echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
  case $command_nmap in "$NULL") echo install nmap ; exit ;; esac
+ echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
+ echo "$rallica [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6197,7 +6198,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$cincuenta [ Doing nmap ]"
+ echo "$rallica [ ok ] [ Doing nmap ]"
  $command_nmap -sF $2
 ####
 ####
@@ -6205,7 +6206,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  $fwiptables continue
- echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6219,9 +6220,9 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  if [ "$first_option" = "scan-fin" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap fin ]"
  echo $header_lineal
- echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
- echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
  case $command_nmap in "$NULL") echo install nmap ; exit ;; esac
+ echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
+ echo "$rallica [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6233,7 +6234,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$cincuenta [ Doing nmap ]"
+ echo "$rallica [ ok ] [ Doing nmap ]"
  $command_nmap -sF $2
 ####
 ####
@@ -6243,7 +6244,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  $fwiptables continue
 ####
 ####
- echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6257,9 +6258,9 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  if [ "$first_option" = "scan-udp" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap udp ]"
  echo $header_lineal
- echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
- echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
  case $command_nmap in "$NULL") echo install nmap ; exit ;; esac
+ echo "$cinco [ status ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6271,7 +6272,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$cincuenta [ Doing nmap ]"
+ echo "$rallica [ ok ] [ Doing nmap ]"
  $command_nmap -sU $2
 ####
 ####
@@ -6281,7 +6282,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  $fwiptables continue
 ####
 ####
- echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6295,9 +6296,9 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  if [ "$first_option" = "scan-ping" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap ping ]"
  echo $header_lineal
- echo "$cinco [ Usage: ] [ nmap $first_option ip/mask ]"
- echo "$cinco [ Notice: ] [ Stoped firewall while launch nmap ]"
  case $command_nmap in "$NULL") echo install nmap ; exit ;; esac
+ echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
+ echo "$rallica [ ok ] [ Stopped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6309,7 +6310,7 @@ $fwiptables stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$cincuenta [ Doing nmap ]"
+ echo "$rallica [ ok ] [ Doing nmap ]"
  $command_nmap -sn $2
 ####
 ####
@@ -6317,7 +6318,7 @@ $fwiptables stop
 ####
 ####
  $fwiptables continue
- echo "$cinco [ Notice: ] [ Reloaded firewall rules after run nmap ]"
+ echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -7312,7 +7313,7 @@ fi
  echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
  echo $header_lineal
  case "$second_option" in
- $NULL) echo "$cinco use: $fwiptables $first_option pattern" ;;
+ $NULL) echo "$rallica [ fail ] [ use: $fwiptables $first_option pattern ]" ;;
  *) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
  esac
  echo $footer_lineal
@@ -10302,7 +10303,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
-then source $directory_config/$second_option &> /dev/null ; else echo "$cinco File not found"; exit ; fi ; fi
+then source $directory_config/$second_option &> /dev/null ; else echo "$rallica [ fail ] [ File not found ]"; exit ; fi ; fi
 ####
 ####
 ##############################      english: compatibility with old variables, backward compatibility      #####################
