@@ -7377,7 +7377,7 @@ fi
  echo $header_lineal
  case $favorite_text_browser in 
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
- echo "$rallica list new-versions in the last week (the last seven days) with a browser $favorite_text_browser"
+ echo "$ralla list new-versions and downloaded in the last seven days with a browser $favorite_text_browser"
  echo $ralla
  $favorite_text_browser -dump $fweb_newfiles | egrep "[0123456789]-[0123456789][0123456789]-[0123456789]" | sed s/\<//g |sed s/\>//g 
  echo $footer_lineal
@@ -7908,14 +7908,14 @@ echo
 echo
 echo "$cinco         [ Launch interface ]"
 echo
-echo "       txt OR -txt : Output at text line"
-echo "       cli OR -cli : Output at text menu"
-echo "       gui OR -gui : Output at graphicall window"
-echo "       log OR -log : Output in logfile "
-echo "       tor OR -tor : Run in tor, necesary daemon tor and torify command"
-echo "          cli-menu : Comand line interface with menus"
-echo "          gui-menu : Graphicall interface with menus"
-echo "         gui-shell : Graphicall interface with shell"
+echo "       txt OR -txt : Output at text line || whith bash backend"
+echo "       cli OR -cli : Output at text menu || whith dialog backend"
+echo "       gui OR -gui : Output at graphicall window || whith zenity backend"
+echo "       log OR -log : Output in logfile || whith bash backend"
+echo "       tor OR -tor : Run in tor, necesary daemon tor and torify command || whith tor backend"
+echo "          cli-menu : Comand line interface with menus || whith dialog backend"
+echo "          gui-menu : Graphicall interface with menus || whith zenity backend"
+echo "         gui-shell : Graphicall interface with shell || whith zenity backend"
 echo
 echo "$cinco         [ Control the iptables rules ]"
 echo
