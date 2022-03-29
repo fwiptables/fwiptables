@@ -279,11 +279,15 @@
 # 12. Actualizado  los firewall gui y cli añadiendo los que faltaban. HECHO
 # 13. algunos alias de firewall predefinidos para viejos nombres. HECHO
 #
-# changes fwiptables 2.16 en desarrollo
+# changes fwiptables 2.16
 #
 # 1. radio cambiado a radio-mp3, se le puede indicar otra host directamente. HECHO
 # 2. gui para radio con otro enlcae. HECHO
 # 3. cli para radio con otro enlace. HECHO
 # 4. corregido ntpdate. HECHO
 # 5. añadido -tor en output-interface. HECHO
+#
+# changes fwiptables 2.17 en desarrollo
+#
+# 1.
 #
