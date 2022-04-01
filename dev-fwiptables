@@ -772,7 +772,7 @@ fi ; exit ; fi
 ####
 ####
 if [ "$first_option" = "regen-config" ]; then $nada
-echo "$rallica [ status]  [ regen template wizard and template cfg ]"
+echo "$rallica [ status]  [ regenerate template wizard and template cfg ]"
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -1236,7 +1236,7 @@ echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
 ####
 ####
-echo "$rallica [ ok ] [ Wizard and configs cfg templates regen-configerated ]"
+echo "$rallica [ ok ] [ Wizard and configs cfg templates regenerated ]"
 exit ; fi
 ####
 ####
@@ -1444,7 +1444,7 @@ echo "$tab" "$tab"  "    show-options    |  show-hardware   show-etc       show-
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"  "     Show more options like output txt    |   $fwiptables options              "
+echo "$tab" "$tab"  "     Show more options whith output txt   |   $fwiptables options              "
 echo "$tab" "$tab"  "     List iptables rules with output txt  |   $fwiptables -txt list            "
 echo "$tab" "$tab"  "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"  "     List firewall saved with output cli  |   $fwiptables -cli names           "
@@ -1505,7 +1505,7 @@ echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"   "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"   "     List iptables rules like output txt  |   $fwiptables list                 "
+echo "$tab" "$tab"   "     List iptables rules whith output txt |   $fwiptables list                 "
 echo "$tab" "$tab"   "     List firewall saved with output txt  |   $fwiptables -txt names           "
 echo "$tab" "$tab"   "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"   "     Show firewall-list with output cli   |   $fwiptables -cli firewall-list   "
