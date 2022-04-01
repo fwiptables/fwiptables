@@ -168,10 +168,6 @@ ralla="______________________"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal=" || $fwiptables || Version $fversion || Use: $fwiptables options ||  $(date)"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-#### head_default="$cinco [ Default: $fwiptables show-default ] [ Usage: $fwiptables options ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-#### head_normal="$cinco [ For the usage list:  $fwiptables full-options ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_cli="$rallica [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica" 
@@ -4286,16 +4282,16 @@ exit; fi
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show howto upgrade $fwiptables ]"
  echo $header_lineal
- echo "$cinco The actually version is: $fwiptables $fversion actual"
- echo "$cinco   The latest version is:"
+ echo "$rallica [ status ] [ The actually version is: $fwiptables $fversion actual ]"
+ echo "$rallica [ status ] [ The latest version is: ]"
  $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
- echo "$cinco"
- echo "$cinco Upgrade The fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser"
- echo "$cinco    OR download manually   || OR $fwiptables upgrade || OR look down: "
- echo "launch: $favorite_text_browser -source $fweb_latest &> /tmp/$fwiptables"
- echo "launch: chmod ugo+x /tmp/$fwiptables"
- echo "launch: /tmp/$fwiptables install"
- echo "$cinco ok and it will be upgrade with the name $directory_fiptables/$fwiptables"
+ echo 
+ echo "$rallica [ status ] [ Upgrade The fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser ]"
+ echo "$rallica [ status ] [ OR download manually   || OR $fwiptables upgrade || OR look down: ]"
+ echo "$rallica [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$fwiptables ]"
+ echo "$rallica [ info ] [ launch: chmod ugo+x /tmp/$fwiptables ]"
+ echo "$rallica [ info ] [ launch: /tmp/$fwiptables install ]"
+ echo "$rallica [ info ] [ ok and it will be upgrade with the name $directory_fiptables/$fwiptables ]"
  echo $footer_lineal
  exit;  fi
 ####
@@ -4383,7 +4379,7 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 if [ "$second_option" = "fademind" ]; then 
-echo "$cinco [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.fademind >> /etc/hosts
@@ -4391,7 +4387,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
-echo "$cinco [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.adaway >> /etc/hosts
@@ -4399,7 +4395,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
-echo "$cinco [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.mvps >> /etc/hosts
@@ -4407,7 +4403,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
-echo "$cinco [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.stevenblack >> /etc/hosts
@@ -4578,7 +4574,7 @@ exit; fi
  if [ "$first_option" = "info-route" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show route tables ]"
  echo $header_lineal
- if [ "$command_ip" = "$NULL" ]; then echo "$cinco Install ip"; exit; fi
+ if [ "$command_ip" = "$NULL" ]; then echo "$rallica [ info ] [ Install ip command ]"; exit; fi
  echo "$rallica [ ip route ipv4 ]"
  echo "$($command_ip -4 route)"
  echo $ralla
@@ -4597,7 +4593,7 @@ exit; fi
  if [ "$first_option" = "ss" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$cinco Install ss"; exit; fi
+ if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ info ] [ Install ss command ]"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
  $command_ss -a6
  echo "$ralla"
@@ -4616,7 +4612,7 @@ exit; fi
  if [ "$first_option" = "lsof" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show sockets with lsof ]"
  echo $header_lineal
- if [ "command_lsof" = "$NULL" ]; then echo "$cinco Install lsof"; exit; fi
+ if [ "command_lsof" = "$NULL" ]; then echo "$rallica [ status ] [ Install lsof command ]"; exit; fi
  echo "$tab [The sockets with lsof ipv6 ]"
  $command_lsof -i | grep -i ipv6
  echo $ralla
@@ -4635,7 +4631,7 @@ exit; fi
  if [ "$first_option" = "netstat" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show sockets with netstat ]"
  echo $header_lineal
- if [ "$command_netstat" = "$NULL" ]; then echo "$cinco Install netstat"; exit; fi
+ if [ "$command_netstat" = "$NULL" ]; then echo "$rallica [ status ] [ Install netstat command ]"; exit; fi
  echo "$tab [The sockets list with netstat ]"
  $command_netstat -a -4 -6
  echo $footer_lineal
@@ -4651,7 +4647,7 @@ exit; fi
  if [ "$first_option" = "info-listen" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$cinco Install ss"; exit; fi
+ if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ status ] [ Install ss command ]"; exit; fi
  echo "$tab info socket list:"
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
@@ -4687,7 +4683,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
- if [ "$command_netstat_nat" = "$NULL" ]; then echo "$cinco Install netstat-nat"; exit; fi
+ if [ "$command_netstat_nat" = "$NULL" ]; then echo "$rallica [ status ] [ Install netstat-nat command ]"; exit; fi
  echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
  echo $header_lineal
  echo "$tab [ The devices list with netstat for nat ]"
@@ -5222,7 +5218,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$cinco Use: $fwiptables new-full-config config-new"
+echo "$rallica [ info ] [ usage: ] [ $fwiptables new-full-config config-new ]"
 exit; fi
 ####
 ####
@@ -5255,7 +5251,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$cinco Use: $fwiptables nueva-completa-config config-nueva"
+echo "$rallica [ info ] [ usage: ] [ $fwiptables nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -5288,7 +5284,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$cinco Use: $fwiptables new-mini-config config-new"
+echo "$rallica [ info ] [ usage: ] [ $fwiptables new-mini-config config-new ]"
 exit; fi
 ####
 ####
@@ -5321,7 +5317,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  $give_cover
-echo "$cinco Use: $fwiptables nueva-mini-config config-nueva"
+echo "$rallica [ info ] [ usage: ] [ $fwiptables nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -5358,7 +5354,7 @@ cp "$directory_config/$second_option" "/tmp/fiptables-$second_option" &> /dev/nu
 ####
 ###
 if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
-echo "$cinco Use: $fwiptables modify-config config-existent" ; exit; fi
+echo "$rallica [ info ] [ usage: ] [ $fwiptables modify-config config-existent ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then $nada
@@ -5411,7 +5407,7 @@ if [ "$first_option" = "del-config" ]; then $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$cinco Use: $fwiptables del-config config-old" ; exit ; fi
+echo "$rallica [ info ] [ usage: ] [ $fwiptables del-config config-old ]" ; exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -5431,13 +5427,13 @@ exit ; fi
 ####
 if [ "$first_option" = "sudo-adduser" ]; then $give_cover
 case $second_option in
-"$NULL") echo $head_principal ; echo $header_lineal ; echo "$cinco Use: $fwiptables sudo-adduser user" ; exit ;;
+"$NULL") echo $head_principal ; echo $header_lineal ; echo "$rallica [ info ] [ usage: ] [ $fwiptables sudo-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
 echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fwiptables " &> /etc/sudoers.d/$fwiptables
 echo "alias $fwiptables='sudo $fwiptables'" &>  /etc/bash_completion.d/$fwiptables
 echo "$cinco $cinco"
-echo "$cinco    Ok. $autorizados will use:     $fwiptables"
-echo "$cinco    Ok. $fwiptables will use alias with sudo "
+echo "$rallica [ ok ] [ $autorizados will use:     $fwiptables ]"
+echo "$rallica [ Ok ] [ $fwiptables will use alias with sudo ]"
 echo "$cinco $cinco"
 echo "$rallica [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
