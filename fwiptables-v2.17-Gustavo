@@ -319,8 +319,8 @@ echo "     See web page project in $fweb_main                                   
 echo
 echo "---------------------------------------------------------------------------"
 echo
-cmp -s $0 $directory_fiptables/$fwiptables || echo "   [ status ] [ This version actually is not installed ]"
-cmp -s $0 $directory_fiptables/$fwiptables && echo "   [ status ] [ This version actually is installed ]"
+cmp -s $0 $directory_fiptables/$fwiptables || echo "   [ status ] [ $fwiptables $fversion ] [ This version actually is not installed ]"
+cmp -s $0 $directory_fiptables/$fwiptables && echo "   [ status ] [ $fwiptables $fversion ] [ This version actually is installed ]"
 #### echo "   [ Actually is posible what $fwiptables is not installed ]"
 echo "   [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" 
 echo "   [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" 
