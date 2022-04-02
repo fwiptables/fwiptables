@@ -315,8 +315,8 @@ echo "     See web page project in $fweb_main                                   
 echo
 echo "---------------------------------------------------------------------------"
 echo
-cmp -s $0 $directory_fiptables/$fwiptables || echo "  $fwiptables $fversion [ This version actually is not installed ]"
-cmp -s $0 $directory_fiptables/$fwiptables && echo "  $fwiptables $fversion [ This version actually is installed ]"
+cmp -s $0 $directory_fiptables/$fwiptables || echo "     $fwiptables $fversion [ This version actually is not installed ]"
+cmp -s $0 $directory_fiptables/$fwiptables && echo "     $fwiptables $fversion [ This version actually is installed ]"
 echo
 echo "     Install this version, fwiptables in /usr/bin |   TYPE:  ./fwiptables-$fversion install" 
 echo "     Install last version, fwiptables in /usr/bin |   TYPE:  ./fwiptables-$fversion upgrade" 
@@ -476,7 +476,7 @@ chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
 $fwiptables regen-config &> /dev/null
 ####
 ####
-echo "$rallica [ status ] [ $fwiptables $fversion / SCRIPT INSTALLED IN: ] [ $directory_fiptables/$fwiptables ]" 
+echo "$rallica [ status ] [ $fwiptables $fversion / script installed in: ] [ $directory_fiptables/$fwiptables ]" 
 echo "$rallica [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
 echo "$rallica [ status ]  [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 echo "$rallica [ ok ] [ New config files installed ]"
@@ -487,7 +487,7 @@ echo "$rallica [ ok ] [ New config files installed ]"
 #### 
 #### 
 echo "$rallica [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
-echo "$rallica [ ok ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
+echo "$rallica [ ok ] [ Launch $fwiptables to run /  type:  ] [ $fwiptables ]" 
 exit; fi
 ####
 ####
@@ -7914,9 +7914,10 @@ exit; fi
 if [ "$first_option" = "help" ]; then 
 echo "$ralla [ $first_option ] [ help in english ] $ralla $ralla"
 echo
-echo "$rallica [ Choose only help in english ]  [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español ]  [ Escribe:  $fwiptables ayuda ]"
-echo "$rallica [ help in english and spanish ]  [ Type:     $fwiptables all-help ]"
+echo "$tab  Choose only help in english   [ Type:     $fwiptables help     ]"
+echo "$tab  Elige solo ayuda en español   [ Teclea:   $fwiptables ayuda    ]"
+echo "$tab  help in english and spanish   [ Type:     $fwiptables all-help ]"
+echo
 $fwiptables intro
 echo
 $fwiptables options
@@ -8199,8 +8200,8 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then 
 echo "$ralla [ $first_option ] [ ayuda en español ] $ralla $ralla"
 echo
-echo "$tab  Choose only help in english   [ Type:     $fwiptables help ]"
-echo "$tab  Elige solo ayuda en español   [ Escribe:  $fwiptables ayuda ]"
+echo "$tab  Choose only help in english   [ Type:     $fwiptables help     ]"
+echo "$tab  Elige solo ayuda en español   [ Teclea:   $fwiptables ayuda    ]"
 echo "$tab  help in english and spanish   [ Type:     $fwiptables all-help ]"
 echo
 $fwiptables intro
