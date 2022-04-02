@@ -486,7 +486,7 @@ echo "$rallica [ ok ] [ New config files installed ]"
 ####  spanish: modos de archivo
 #### 
 #### 
-echo "$rallica [ ok ] [ FIREWALL INSTALLED ] [ $directory_fiptables/$fwiptables ]"
+echo "$rallica [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
 echo "$rallica [ ok ] [ Launch $fwiptables to run /  TYPE:  ] [ $fwiptables ]" 
 exit; fi
 ####
@@ -3587,19 +3587,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables new-full-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables new-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables nueva-completa-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables nueva-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables modify-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -3608,19 +3608,19 @@ zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables modify-config 
 ####
 ####
 "new-full-config ")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables new-full-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables new-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables nueva-completa-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables nueva-mini-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-zenity --forms $graphic_dimension --text="$cinco Use: $fwiptables modify-config config.cfg"
+zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -3931,7 +3931,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  clear ; $fwiptables nueva-mini-config $archivo ;;
  0505) archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables show-config $archivo ; echo "$cinco Launch: $fwiptables custom $archivo";;
+ clear ; $fwiptables show-config $archivo ; echo "$rallica [ info ] [ Use: Launch: $fwiptables custom $archivo ]";;
  0506) archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables modify-config $archivo ;;
@@ -5431,10 +5431,10 @@ case $second_option in
 *) autorizados="$second_option" ;; esac
 echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fwiptables " &> /etc/sudoers.d/$fwiptables
 echo "alias $fwiptables='sudo $fwiptables'" &>  /etc/bash_completion.d/$fwiptables
-echo "$cinco $cinco"
+echo $rallica
 echo "$rallica [ ok ] [ $autorizados will use:     $fwiptables ]"
 echo "$rallica [ Ok ] [ $fwiptables will use alias with sudo ]"
-echo "$cinco $cinco"
+echo $rallica
 echo "$rallica [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
@@ -5518,7 +5518,7 @@ exit; fi
 ####
  if [ "$first_option" = "tcpdump" ]; then $give_cover
  case $command_tcpdump in "$NULL") echo " Install tcpdump" ; exit ;; esac
- echo "$cinco [ launch several seconds tcpdump ]"
+ echo "$rallica [ info ] [ launch several seconds tcpdump ]"
  echo $header_lineal
 ####
 ####
@@ -5760,7 +5760,7 @@ exit; fi
 ####
  if [ "$first_option" = "save" ]; then $give_cover
  case "$second_option" in
- "$NULL") echo "$cinco Use in the command line: $fwiptables save fw-to-save" ; exit ;;
+ "$NULL") echo "$rallica [ info ] [ Use: $fwiptables save fw-to-save ]" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
 ####
@@ -5801,7 +5801,7 @@ exit; fi
  echo "$ralla [ $first_option ] [ show one firewall saved ]"
  echo $header_lineal
  case "$second_option" in
- "$NULL") $fwiptables names; echo "$cinco Use in the command line: $fwiptables show file-to-show" ; exit ;;
+ "$NULL") $fwiptables names; echo "$rallica [ info ] [ Use: $fwiptables show file-to-show ]" ; exit ;;
  *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
  esac
  ls -l $directory_fwrecover/$archivofin-arptables
@@ -6076,7 +6076,7 @@ exit; fi
  echo $header_lineal
  case $command_host in "$NULL") echo " Install host" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$cinco Please select a one host to launch host"
+ "$NULL") echo "$$rallica [ info ] [ Please select a one host to launch host ]"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo "$rallica [ ok ] [ host $trazador ]"
@@ -6096,7 +6096,7 @@ exit; fi
  echo $header_lineal
  case $command_dig in "$NULL") echo " Install dig" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$cinco Please select a one host to launch dig"
+ "$NULL") echo "$rallica [ info ] [ Use: Please select a one host to launch dig ]"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo "$rallica [ ok ] [ dig $trazador ]"
