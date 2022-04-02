@@ -315,11 +315,11 @@ echo "     See web page project in $fweb_main                                   
 echo
 echo "---------------------------------------------------------------------------"
 echo
-cmp -s $0 $directory_fiptables/$fwiptables || echo "   [ status ] [ $fwiptables $fversion ] [ This version actually is not installed ]"
-cmp -s $0 $directory_fiptables/$fwiptables && echo "   [ status ] [ $fwiptables $fversion ] [ This version actually is installed ]"
-#### echo "   [ Actually is posible what $fwiptables is not installed ]"
-echo "   [ INSTALL THIS VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion install ]" 
-echo "   [ INSTALL LAST VERSION: fwiptables in /usr/bin ] [ TYPE: ] [ ./fwiptables-$fversion upgrade ]" 
+cmp -s $0 $directory_fiptables/$fwiptables || echo "  $fwiptables $fversion [ This version actually is not installed ]"
+cmp -s $0 $directory_fiptables/$fwiptables && echo "  $fwiptables $fversion [ This version actually is installed ]"
+echo
+echo "     Install this version, fwiptables in /usr/bin |   TYPE:  ./fwiptables-$fversion install" 
+echo "     Install last version, fwiptables in /usr/bin |   TYPE:  ./fwiptables-$fversion upgrade" 
 echo
 echo "--------------------------------------------------------------------------"
 echo
@@ -1419,9 +1419,9 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$tab" "$tab"  "$ralla [ $first_option ] [ List mini options ] $rallica $ralla"
+echo "$tab" "$tab"  " $rallica [ $first_option ] [ List mini options ];"
 echo "$tab" "$tab"  "  output-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor            "
-echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
+echo "$tab" "$tab"  " $ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "  firewall-rules    |  stop continue reset names actual show save load                 "
 echo "$tab" "$tab"  "  firewall-list     |  list list6 listnum listnum6 status list-allrules list-forward   "
 echo "$tab" "$tab"  "                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
@@ -1458,9 +1458,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$tab" "$tab"  "$ralla [ $first_option ] [ List full options ] $ralla"
+echo "$tab" "$tab"  " $rallica [ $first_option ] [ List full options ];"
 echo "$tab" "$tab"  "    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor  "
-echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
+echo "$tab" "$tab"  " $ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                    [ firewall-options ]                        "
 echo "$tab" "$tab"  "    firewall-rules     |  stop continue reset names actual show save load       "
 echo "$tab" "$tab"  "     firewall-list     |  list list6 listnum listnum6 status                    "
@@ -8199,9 +8199,10 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then 
 echo "$ralla [ $first_option ] [ ayuda en español ] $ralla $ralla"
 echo
-echo "$rallica [ Choose only help in english ]  [ Type:     $fwiptables help ]"
-echo "$rallica [ Elige solo ayuda en español ]  [ Escribe:  $fwiptables ayuda ]"
-echo "$rallica [ help in english and spanish ]  [ Type:     $fwiptables all-help ]"
+echo "$tab  Choose only help in english   [ Type:     $fwiptables help ]"
+echo "$tab  Elige solo ayuda en español   [ Escribe:  $fwiptables ayuda ]"
+echo "$tab  help in english and spanish   [ Type:     $fwiptables all-help ]"
+echo
 $fwiptables intro
 echo
 $fwiptables options
