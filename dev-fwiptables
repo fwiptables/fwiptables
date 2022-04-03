@@ -2615,7 +2615,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -2708,7 +2708,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -2770,7 +2770,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
 zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fwiptables mini-options)"
 exit; fi
 ####
@@ -2781,7 +2781,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
+case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Launch" "04 Firewall Custom" "05 Tool rules" \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
@@ -3549,7 +3549,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo " Install zenity to work" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -3680,7 +3680,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "cli-menu" ]; then $nada
-case "$command_dialog" in "$NULL") echo " Install dialog to work" ; exit ;; esac
+case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
   0000 "$quad $tab [$fwiptables cli-menu] $tab $cinco" \
