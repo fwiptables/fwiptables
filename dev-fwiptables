@@ -8210,7 +8210,7 @@ $fwiptables options
 echo 
 echo "$ralla [ $first_option ] [ Opciones principales ]"
 echo
-echo "#         [ Lanza interfaz ]"
+echo "# [ Lanza interfaz ]"
 echo
 echo "       txt OR -txt : Salida a linea de texto"
 echo "       cli OR -cli : Salida a menu de texto"
@@ -8221,7 +8221,7 @@ echo "          cli-menu : modo texto with menus"
 echo "          gui-menu : Graficos con menus"
 echo "         gui-shell : Graficos con entorno de comandos"
 echo
-echo "#         [ Controla las reglas de iptables ]"
+echo "# [ Controla las reglas de iptables ]"
 echo
 echo "            stop : Para las reglas del firewall"
 echo "        continue : Continua las reglas del firewall"
@@ -8233,13 +8233,13 @@ echo "            save : Guarda las reglas de firewall estandard especificado"
 echo "            load : Reculpera firewall estandard especificado"
 echo "          actual : Muestra el contenido del firewall estandard actual"
 echo
-echo "#         [ Lista las reglas de tablas de iptables ]"
+echo "# [ Lista las reglas de tablas de iptables ]"
 echo
 echo "            status : similar a list y list6 cuando hay ruta por defecto"
 echo "              list : similar a list-filter4 pero esconde reglas no usadas" 
 echo "             list6 : similar a list-filter6 pero esconde reglas no usadas"
 echo
-echo "#         [ Lista Las otras tablas de iptables ]  "
+echo "# [ Lista Las otras tablas de iptables ]  "
 echo
 echo "           listnum : Lista las reglas de ipv4 de filtros en numeros  "
 echo "   list-forwardnum : Lista las reglas de ipv4 de filtros de reenvio en numeros  "
@@ -8261,7 +8261,7 @@ echo "    list-security6 : Lista las reglas de ip6 de security iptables  "
 echo "     list-ebtables : Lista las reglas mac de ethernet  "
 echo "    list-arptables : Lista las reglas de arp arptables  "
 echo
-echo "#               [ reglas modificables de iptables ]  "
+echo "# [ reglas modificables de iptables ]  "
 echo
 echo "       new-full-config : Crea una nueva configuracion.cfg en ingles  "
 echo " nueva-completa-config : Crea una nueva configuracion.cfg en español  "
@@ -8273,7 +8273,7 @@ echo "         modify-config : Edita una existente configuracion.cfg  "
 echo "           show-config : Muestra una existente configuracion.cfg  "
 echo "            del-config : Borra unaa existente configuracion.cfg  "
 echo
-echo "#         [ Lanza reglas de iptables ]  "
+echo "# [ Lanza reglas de iptables ]  "
 echo
 echo "           eraserules : Borra las reglas de iptables de ipv4 y de ipv6"
 echo "          wizard-full : Asistente y lanza completo cortafuegos"
@@ -8292,9 +8292,9 @@ echo "         server-print : Lanza un firewall como servidor ipp, printer y ssh
 echo "           server-ssh : Lanza un firewall como servidor ssh"
 echo "               custom : lanza el cortafuegos especificando un archivo.cfg"
 echo
-echo "#         [ Herramienta de configuraciones ]  "
+echo "# [ Herramienta de configuraciones ]  "
 echo
-echo "#         [ Lista las conexiones abiertas ]  "
+echo "# [ Lista las conexiones abiertas ]  "
 echo
 echo "      info-nodes : Lista las conexiones arp in lan  "
 echo "      info-proxy : Lista proxy del sistema  "
@@ -8309,20 +8309,20 @@ echo "     netstat-nat : Muestra las conexiones con comando netstat-nat  "
 echo "        web-cert : Obtiene un certificado ssl a una web con puerto https(443)  " 
 echo "         tcpdump : Escuchar las conexiones ip  "
 echo
-echo "#         [ Herramienta de ip forwading ]  "
+echo "# [ Herramienta de ip forwading ]  "
 echo
 echo "  ipforward-list : Muestra la configuracion del kernel sobre reenvios ip  "
 echo "    ipforward-on : Activa la configuracion del kernel sobre reenvios ip  "
 echo "   ipforward-off : Desactiva la configuracion del kernel sobre reenvios ip  "
 echo
-echo "#         [ Herramienta tcp ]  "
+echo "# [ Herramienta tcp ]  "
 echo
 echo "  tracetcp-ip4 : Traza ruta a una host con ipv4 tcp  "
 echo "  tracetcp-ip6 : Traza ruta a una host con ipv6 tcp  "
 echo "     speed-ip4 : Testea el ancho de banda con ipv4  "
 echo "     speed-ip6 : Testea el ancho de banda con ipv6  "
 echo
-echo "#         [ Herramienta udp ]  "
+echo "# [ Herramienta udp ]  "
 echo
 echo "          host : Resuelve la ip de un host  "
 echo "           dig : Resuelve la ip de un host  "
@@ -8330,14 +8330,14 @@ echo "     resolveip : Resuelve la ip de un host y viceversa  "
 echo "         geoip : Localiza una ip o host  "
 echo "       ntpdate : Actualiza la fecha desde un ntp server  "
 echo 
-echo "#         [ Herramienta icmp ]  "
+echo "# [ Herramienta icmp ]  "
 echo
 echo " traceicmp-ip4 : Traza ruta a una host con ipv4 icmp  "
 echo " traceicmp-ip6 : Traza ruta a una host con ipv6 icmp  "
 echo "      ping-ip4 : Hace un ping a una host con ipv4 icmp  "
 echo "      ping-ip6 : Hace un ping a una host con ipv6 icmp  "
 echo
-echo "#         [ Herramienta nmap ]  "
+echo "# [ Herramienta nmap ]  "
 echo 
 echo "      scan-tcp : Rastrea una host/mask por tcp protocolo  "
 echo "      scan-syn : Rastrea una host/mask por syn socket  "
@@ -8345,20 +8345,20 @@ echo "      scan-fin : Rastrea una host/mask por fin socket  "
 echo "      scan-udp : Rastrea una host/mask por udp protocolo  "
 echo "     scan-ping : Rastrea una host/mask por ping udp  "
 echo
-echo "#         [ Herramienta de autorizacion ]  "
+echo "# [ Herramienta de autorizacion ]  "
 echo
 echo "  sudo-adduser : Permite autorizacion de usuarios elegidos  "
 echo "  sudo-deluser : Borra la autorizacion otorgada  "
 echo "     sudo-list : Lista autorizacion de usuarios elegidos  "
 echo
-echo "#         [ Herramienta de juego ]  "
+echo "# [ Herramienta de juego ]  "
 echo
 echo "   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres  "
 echo "   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos  "
 echo "   colour-hex  : convierte un numero hexadecimal en rgb  "
 echo "   colour-rgb  : convierte un numero rgb en hexadecimal  "
 echo
-echo "#         [ Herramienta de sistema ]  "
+echo "# [ Herramienta de sistema ]  "
 echo
 echo "      free-ram : Libera la memoria innecesaria  "
 echo "     speed-ram : Muestra la velocidad de la ram  "
@@ -8366,26 +8366,26 @@ echo "    speed-disk : Muestra la velocidad de el disco  "
 echo "     speed-glx : Muestra fotogramas por segundo con graficos mesa  "
 echo "     radio-mp3 : connecta a on servidor mp3, see $fwiptables default  "
 echo
-echo "#         [ Herramienta de instalacion ]  "
+echo "# [ Herramienta de instalacion ]  "
 echo
 echo "        install : Instala este programa actual  "
 echo "        upgrade : Actualiza a la ultima version  "
 echo "  howto-upgrade : Indicacion para actualizar  "
 echo
-echo "#         [ Herramienta de lista de bloqueo ]  "
+echo "# [ Herramienta de lista de bloqueo ]  "
 echo
 echo "  blacklist-list : Lista de opciones para bloquear hosts peligrosas  "
 echo "    blacklist-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas  "
 echo "   blacklist-off : Vuelve a /etc/hosts por defecto  "
 echo
-echo "#         [ Herramienta de desarrollador ]  "
+echo "# [ Herramienta de desarrollador ]  "
 echo
 echo "    new-versions : Muestra las ultimas versiones  "
 echo "     dev-version : Muestra en enlace a la version de desarrollo  "
 echo "     dev-changes : Muestra los ultimos cambios  "
 echo "            code : Muestra el codigo fuente para una opcion  "
 echo
-echo "#        [ Herramienta de informacion del hardware ]  "
+echo "# [ Herramienta de informacion del hardware ]  "
 echo
 echo "          lpinfo : Muestra los dispositivos de impresora  "
 echo "           lsblk : Muestra los dispositivos de disco  "
@@ -8395,7 +8395,7 @@ echo "           lsgpu : Muestra los dispositivos gpu  "
 echo "           lspci : Muestra los dispositivos pci  "
 echo "            lshw : Muestra los dispositivos de hardware  "
 echo
-echo "#         [ Mostrar etc ]  "
+echo "# [ Mostrar etc ]  "
 echo
 echo "           hosts : Muestra /etc/hosts, hosts locales y hosts estaticos  "
 echo "      protocolos : Muestra /etc/protocols, nombres de protocolos  "
@@ -8406,14 +8406,14 @@ echo "     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado  "
 echo "    show-default : Muestra /etc/default/fwiptables, muestra variables en fwiptables  "
 echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en fwiptables  "
 echo
-echo "#         [ Mostrar log ]  "
+echo "# [ Mostrar log ]  "
 echo
 echo "       endedlog : Muestra $file_output_filelog , volcados con -log  "
 echo "        autolog : Muestra $file_output_autolog , cabeceras  "
 echo "        log-ssh : Busca los logs de sshd en /var/log  "
 echo "     log-search : Busca los logs dando un patron para /var/log  "
 echo
-echo "#         [ Mostrar acerca ]  "
+echo "# [ Mostrar acerca ]  "
 echo
 echo "          About : Acerca de   "
 echo "        version : Informacion de la actual version  "
@@ -8423,7 +8423,7 @@ echo "   new-versions : Muestra las ultimas versiones  "
 echo "     config-eng : Ejemplo de config con comentarios en ingles  "
 echo "     config-spa : Ejemplo de config con comentarios en castellano  "
 echo
-echo "#         [ Mostrar ayuda ]  "
+echo "# [ Mostrar ayuda ]  "
 echo 
 echo "       all-help : Muestra la ayuda en español y en ingles  "
 echo "           info : Muestra las opciones de grupo  "
@@ -8439,35 +8439,35 @@ echo
 echo "$ralla Notas de firewall $ralla"
 echo
 echo
-echo "#  [vpn]"
+echo "# [vpn]"
 echo
 echo "     Host [vpn] excepcionales tienen conexion permitida en el firewall"
 echo
-echo "#  [blacklist]"
+echo "# [blacklist]"
 echo
 echo "     Host [blacklist] excepcionales tienen conexion denegada en el firewall"
 echo
-echo "#  [uid y/o gid excepcional]"
+echo "# [uid y/o gid excepcional]"
 echo
 echo "     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall"
 echo
-echo "#  [iptables netftilter]"
+echo "# [iptables netftilter]"
 echo
 echo "     iptables-legacy   es    soporte para xtables "
 echo "     iptables-nft      es    soporte para nftables "
 echo
-echo "#  [Puertos cliente udp necesarios]"
+echo "# [Puertos cliente udp necesarios]"
 echo
 echo "     necesario para actualizar la fecha :   ntp"
 echo "     necesario para dhcp y conseguir ip :   bootpc"
 echo "     necesario para resolver dominios   :   domain"
 echo
-echo "#  [Protocolos necesarios para ipv6]"
+echo "# [Protocolos necesarios para ipv6]"
 echo
 echo "     Necesario protocolo: ipv6-icmp"
 echo "     Ipv6 funciona tambien con: ipv4 procolos"
 echo
-echo "#  [Licencia]"
+echo "# [Licencia]"
 echo
 echo "  Descarga la ultima version de $fprogram desde la web de sourceforge "
 echo "  $fweb_latest"
