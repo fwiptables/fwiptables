@@ -10307,14 +10307,26 @@ $allow_nft $allow_ipv6   $command_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
+########################################     english: close in offline
+########################################     spanish: cierra en offline
+####
+####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A FORWARD -j DROP  &> /dev/null
+####
 $allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
 $allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A FORWARD -j DROP        &> /dev/null
+####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A FORWARD -j DROP &> /dev/null
+####
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP       &> /dev/null
+####
 echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ offline ]"
 exit; fi
 ###############################################################################################################
