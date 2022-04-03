@@ -301,7 +301,7 @@ if [ "$first_option" = "intro" ]; then $nada
 echo
 echo "---------------------------------------------------------------------------"
 echo
-echo "     FRAN FWIPTABLES INTRO "
+echo "     Fran fwiptables intro "
 echo 
 echo "     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
 echo "     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
@@ -310,7 +310,8 @@ echo "     Control the firewall with the standard iptables files for all tables.
 echo "     Run rules of one firewall with your own config files.                    "
 echo "     And too, use this firewall with some utilities for ipv4 and ipv6.        "
 echo
-echo "     LICENSE GNU / GPL v2.                                                    "
+echo "     license gnu / gpl v2.                                                    "
+echo
 echo "     See web page project in $fweb_main                                       "
 echo
 echo "---------------------------------------------------------------------------"
