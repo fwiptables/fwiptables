@@ -4558,7 +4558,7 @@ exit; fi
  $command_ip6tables_legacy -t security -P OUTPUT ACCEPT
 ####
 ####
- echo "$rallica [ ok ] [ FIREWALL ERASED ] [ DELETED RULES ]"
+ echo "$rallica [ ok ] [ firewall erased ] [ deleted ruse ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4575,7 +4575,7 @@ exit; fi
  if [ "$first_option" = "info-route" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show route tables ]"
  echo $header_lineal
- if [ "$command_ip" = "$NULL" ]; then echo "$rallica [ info ] [ Install ip command ]"; exit; fi
+ if [ "$command_ip" = "$NULL" ]; then echo "$rallica [ fail ] [ Install ip command ]"; exit; fi
  echo "$rallica [ ip route ipv4 ]"
  echo "$($command_ip -4 route)"
  echo $ralla
@@ -4594,7 +4594,7 @@ exit; fi
  if [ "$first_option" = "ss" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ info ] [ Install ss command ]"; exit; fi
+ if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
  $command_ss -a6
  echo "$ralla"
@@ -4613,7 +4613,7 @@ exit; fi
  if [ "$first_option" = "lsof" ]; then $give_cover
  echo "$ralla [ $first_option ] [ Show sockets with lsof ]"
  echo $header_lineal
- if [ "command_lsof" = "$NULL" ]; then echo "$rallica [ status ] [ Install lsof command ]"; exit; fi
+ if [ "command_lsof" = "$NULL" ]; then echo "$rallica [ fail ] [ Install lsof command ]"; exit; fi
  echo "$tab [The sockets with lsof ipv6 ]"
  $command_lsof -i | grep -i ipv6
  echo $ralla
@@ -4632,7 +4632,7 @@ exit; fi
  if [ "$first_option" = "netstat" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show sockets with netstat ]"
  echo $header_lineal
- if [ "$command_netstat" = "$NULL" ]; then echo "$rallica [ status ] [ Install netstat command ]"; exit; fi
+ if [ "$command_netstat" = "$NULL" ]; then echo "$rallica [ fail ] [ Install netstat command ]"; exit; fi
  echo "$tab [The sockets list with netstat ]"
  $command_netstat -a -4 -6
  echo $footer_lineal
@@ -4648,7 +4648,7 @@ exit; fi
  if [ "$first_option" = "info-listen" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ status ] [ Install ss command ]"; exit; fi
+ if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab info socket list:"
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
@@ -4684,7 +4684,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
- if [ "$command_netstat_nat" = "$NULL" ]; then echo "$rallica [ status ] [ Install netstat-nat command ]"; exit; fi
+ if [ "$command_netstat_nat" = "$NULL" ]; then echo "$rallica [ fail ] [ Install netstat-nat command ]"; exit; fi
  echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
  echo $header_lineal
  echo "$tab [ The devices list with netstat for nat ]"
@@ -5387,7 +5387,7 @@ if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$rallica [ status ] [ Use: $fwiptables show-config config-old ]" ; exit; fi
+echo "$rallica [ status ] [ Usage: $fwiptables show-config config-old ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -5518,7 +5518,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "tcpdump" ]; then $give_cover
- case $command_tcpdump in "$NULL") echo "$rallica [ info ] [ Install tcpdump command ]" ; exit ;; esac
+ case $command_tcpdump in "$NULL") echo "$rallica [ fail ] [ Install tcpdump command ]" ; exit ;; esac
  echo "$rallica [ info ] [ launch several seconds tcpdump ]"
  echo $header_lineal
 ####
@@ -5538,7 +5538,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-nodes" ]; then  $give_cover
- case $command_arp_scan in "$NULL") echo "$rallica [ info ] [ install arp-scan command ]" ;;
+ case $command_arp_scan in "$NULL") echo "$rallica [ fail ] [ install arp-scan command ]" ;;
  *)
  echo "$ralla [ $first_option ] [ Show the list arp-scan in the lan ]"
  echo $header_lineal
@@ -5630,7 +5630,7 @@ exit; fi
  sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
  sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
  echo "$rallica"
- echo "$rallica $tab [OK FIREWALL NAMES]"
+ echo "$rallica $tab [ ok ] [ firewall names ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5745,7 +5745,7 @@ exit; fi
 ####
  else
  $fwiptables names
- echo "$rallica [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]"
+ echo "$rallica [ info ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]"
  fi 
 ####
 ####
@@ -5761,7 +5761,7 @@ exit; fi
 ####
  if [ "$first_option" = "save" ]; then $give_cover
  case "$second_option" in
- "$NULL") echo "$rallica [ info ] [ Use: $fwiptables save fw-to-save ]" ; exit ;;
+ "$NULL") echo "$rallica [ info ] [ Usage: $fwiptables save fw-to-save ]" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
 ####
@@ -5787,7 +5787,7 @@ exit; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
+ echo "$rallica [ ok ] [ firewall listed ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5824,7 +5824,7 @@ exit; fi
  cat $directory_fwrecover/$archivofin-nft-ipv6
  echo "$cincuenta archivofin-legacy-ipv6"
  cat $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ ok ] [ FIREWALL READED ] [ $archivofin ]"
+ echo "$rallica [ ok ] [ firewall readed ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5856,7 +5856,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-actual-nft-ipv6
  echo "$cincuenta legacy with ipv6 $cinco"
  cat $directory_fwrecover/fiptables-actual-legacy-ipv6
- echo "$rallica  [ ok ] [ READED ACTUAL FIREWALL ]"
+ echo "$rallica  [ ok ] [ readed firewall actual ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5928,7 +5928,7 @@ exit; fi
  if [ "$first_option" = "ping-ip4" ]; then $give_cover
  echo "$ralla [ $first_option ]  [ ping ip or host with ipv4 ]"
  echo $header_lineal
- case $command_ping in "$NULL") echo "$rallica [ info ] [ Install ping command ]" ; exit ;; esac
+ case $command_ping in "$NULL") echo "$rallica [ fail ] [ Install ping command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -5952,7 +5952,7 @@ exit; fi
  if [ "$first_option" = "ping-ip6" ]; then $give_cover
  echo "$ralla [ $first_option ] [ ping one ip or host with ipv6 ]"
  echo $header_lineal
- case $command_ping in "$NULL") echo "$rallica [ info ] [ Install ping command ]" ; exit ;; esac
+ case $command_ping in "$NULL") echo "$rallica [ fail ] [ Install ping command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -5976,7 +5976,7 @@ exit; fi
  if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
  echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ info ] [ Install traceroute command ]" ; exit ;;  esac
+ case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6001,7 +6001,7 @@ exit; fi
  if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
  echo "$ralla [ $first_option ] [ trace one ip or host with ipv6 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ info ] [ Install traceroute command ]" ; exit ;; esac
+ case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6025,7 +6025,7 @@ exit; fi
  if [ "$first_option" = "traceicmp-ip4" ]; then $give_cover
  echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ info ] [ Install traceroute command ]" ; exit ;;  esac
+ case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6050,7 +6050,7 @@ exit; fi
  if [ "$first_option" = "traceicmp-ip6" ]; then $give_cover
  echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ info ] [ Install traceroute command ]" ; exit ;;  esac
+ case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6075,7 +6075,7 @@ exit; fi
  if [ "$first_option" = "host" ]; then $give_cover
  echo "$ralla [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
- case $command_host in "$NULL") echo "$rallica [ info ] [ Install host command ]" ; exit ;; esac
+ case $command_host in "$NULL") echo "$rallica [ fail ] [ Install host command ]" ; exit ;; esac
  case "$second_option" in
  "$NULL") echo "$$rallica [ info ] [ Please select a one host to launch host ]"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
@@ -6095,7 +6095,7 @@ exit; fi
  if [ "$first_option" = "dig" ]; then $give_cover
  echo "$ralla [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
- case $command_dig in "$NULL") echo "$rallica [ info ] [ Install dig command ]" ; exit ;; esac
+ case $command_dig in "$NULL") echo "$rallica [ fail ] [ Install dig command ]" ; exit ;; esac
  case "$second_option" in
  "$NULL") echo "$rallica [ info ] [ Use: Please select a one host to launch dig ]"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
@@ -6115,7 +6115,7 @@ exit; fi
  if [ "$first_option" = "resolveip" ]; then $give_cover
  echo "$ralla [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
- case $command_resolveip in "$NULL") echo "$rallica [ info ] [ Install resolveip command ]" ; exit ;; esac
+ case $command_resolveip in "$NULL") echo "$rallica [ fail ] [ Install resolveip command ]" ; exit ;; esac
  case "$second_option" in
  "$NULL") echo "$cinco Please select a one host to launch resolveip"
  echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
@@ -6135,7 +6135,7 @@ exit; fi
  if [ "$first_option" = "geoip" ]; then $give_cover
  echo "$ralla [ $first_option ] [ resolve the location to one ip or host ]"
  echo $header_lineal
- case $command_geoiplookup in "$NULL") echo "$rallica [ info ] [ Install geoiplookup command ]" ; exit  ;; esac
+ case $command_geoiplookup in "$NULL") echo "$rallica [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
  case "$second_option" in
  "$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
@@ -6154,7 +6154,7 @@ exit; fi
  if [ "$first_option" = "ntpdate" ]; then $nada
  echo "$ralla [ $first_option ] [ update the computer time and date from internet ]"
  echo $header_lineal
- if [ "$favorite_date_command" = "$NULL" ]; then echo "$rallica [ fail ] [ Install a ntp client ]" ; fi
+ if [ "$favorite_date_command" = "$NULL" ]; then echo "$rallica [ fail ] [ Install one ntp client ]" ; fi
  echo "$rallica Old date: $($command_date)"
  echo "$rallica [ Updating the time and the date .. ]"
  pool0="0.debian.pool.ntp.org"
@@ -6288,7 +6288,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  if [ "$first_option" = "scan-udp" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap udp ]"
  echo $header_lineal
- case $command_nmap in "$NULL") echo "$rallica [ info ] [ Install nmap command ]" ; exit ;; esac
+ case $command_nmap in "$NULL") echo "$rallica [ fail ] [ Install nmap command ]" ; exit ;; esac
  echo "$cinco [ status ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ ok ] [ Stoped firewall while launch nmap ]"
 ####
@@ -6326,7 +6326,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  if [ "$first_option" = "scan-ping" ]; then $give_cover
  echo "$ralla [ $first_option ] [ scan with nmap ping ]"
  echo $header_lineal
- case $command_nmap in "$NULL") echo "$rallica [ info ] [ Install nmap command ]" ; exit ;; esac
+ case $command_nmap in "$NULL") echo "$rallica [ fail ] [ Install nmap command ]" ; exit ;; esac
  echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
  echo "$rallica [ ok ] [ Stopped firewall while launch nmap ]"
 ####
@@ -6362,7 +6362,7 @@ $fwiptables stop
  if [ "$first_option" = "free-ram" ]; then $give_cover
  echo "$ralla [ $first_option ] [ freedom from innecesary ram ]"
  echo $header_lineal
- case $command_tee in "$NULL") echo "$rallica [ info ] [ Install tee command ]"; exit ;; esac
+ case $command_tee in "$NULL") echo "$rallica [ fail ] [ Install tee command ]"; exit ;; esac
  echo " Actual Memory"
  free -hw && sync
  echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
@@ -6381,7 +6381,7 @@ $fwiptables stop
  if [ "$first_option" = "speed-disk" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
- case $command_dd in "$NULL") echo "$rallica [ info ] [ Install dd command ]"; exit ;; esac
+ case $command_dd in "$NULL") echo "$rallica [ fail ] [ Install dd command ]"; exit ;; esac
  echo "$rallica Testing speed with the temporal file /root/borrame.img.img about 100Mb"
 ####
 ####
@@ -6400,7 +6400,7 @@ $fwiptables stop
  if [ "$first_option" = "speed-ram" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test the ram speed ]"
  echo $header_lineal
- case $command_dd in "$NULL") echo "$rallica [ info ] [ Install dd command ]"; exit ;; esac
+ case $command_dd in "$NULL") echo "$rallica [ fail ] [ Install dd command ]"; exit ;; esac
  case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
  in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
  echo "$rallica Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
@@ -6421,7 +6421,7 @@ $fwiptables stop
  if [ "$first_option" = "speed-glx" ]; then  $give_cover
  echo "$ralla [ $first_option ] [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
  echo $header_lineal
- case $command_glxgears in "$NULL") echo "$rallica [ info ] [ Install mesa utils ]"; exit ;; esac
+ case $command_glxgears in "$NULL") echo "$rallica [ fail ] [ Install mesa utils ]"; exit ;; esac
  vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
  echo $footer_lineal
  exit; fi
@@ -7714,36 +7714,36 @@ exit; fi
  echo $header_lineal
  echo $ralla
  echo "$tab [ Network Route ] [ Route ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -4 route ; fi
  echo $ralla
  echo "$tab [ Network Route ] [ Route ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -6 route ; fi
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
  else $command_ss -l4 | sed 's/   / /g' ; fi
  echo $ralla
  echo "$tab [ Network Listen ] [ Listen ipv6 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab install ss"
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
  else $command_ss -l6 | sed 's/   / /g' ; fi
  echo $ralla
  echo "$tab [ private ip ] [ address ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
  echo $ralla
  echo "$tab [ private ip ] [ address ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab install ip"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv4 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
+ if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
  public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip4"; fi
  echo $ralla
  echo "$tab [ public ip ] [ address ipv6 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab install curl"; else
+ if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
  public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip6"; fi
  echo $ralla
@@ -7763,7 +7763,7 @@ exit; fi
  if [ "$first_option" = "speed-ip4" ]; then $give_cover
  echo "$ralla [ $first_option ] [ test speed ipv4 with internet ]"
  echo $header_lineal
- case "$command_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
+ case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
  $fwiptables stop
@@ -7786,7 +7786,7 @@ exit; fi
  if [ "$first_option" = "speed-ip6" ]; then $give_cover
  echo "$ralla [ $first_option ] [ test speed ipv6 with internet ]"
  echo $header_lineal
- case "$command_iperf"  in  $NULL) echo "Install Iperf"; exit ;; esac
+ case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
  $fwiptables stop
@@ -7809,7 +7809,7 @@ exit; fi
  if [ "$first_option" = "web-cert" ] ; then $give_cover
  echo "$ralla [ $first_option ] [ get one web certifcate from one server with port 443]"
  echo $header_lineal
- case "$command_openssl"  in  $NULL) echo "Install openssl"; exit ;; esac
+ case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
 ####
  if [ "$second_option" = "$NULL" ]; then echo $ralla $ralla $ralla
