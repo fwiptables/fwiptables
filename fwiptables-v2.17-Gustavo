@@ -1420,7 +1420,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$tab" "$tab"  " $rallica [ $first_option ] [ List mini options ] $rallica  "
+echo "$tab" "$tab"  " $rallica [ $first_option ] [ List mini options ]   "
 echo "$tab" "$tab"  "  output-interface  |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor            "
 echo "$tab" "$tab"  " $ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "  firewall-rules    |  stop continue reset names actual show save load                 "
@@ -1443,7 +1443,7 @@ echo "$tab" "$tab"  "    show-options    |  show-hardware   show-etc       show-
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"  "     Show more options like output txt    |   $fwiptables options              "
+echo "$tab" "$tab"  "     Show more options likes output txt   |   $fwiptables options              "
 echo "$tab" "$tab"  "     List iptables rules with output txt  |   $fwiptables -txt list            "
 echo "$tab" "$tab"  "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"  "     List firewall saved with output cli  |   $fwiptables -cli names           "
@@ -1459,7 +1459,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$tab" "$tab"  " $rallica [ $first_option ] [ List full options ] $rallica  "
+echo "$tab" "$tab"  " $rallica [ $first_option ] [ List full options ]   "
 echo "$tab" "$tab"  "    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor  "
 echo "$tab" "$tab"  " $ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                    [ firewall-options ]                        "
@@ -1504,7 +1504,7 @@ echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"   "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"   "     List iptables rules like output txt  |   $fwiptables list                 "
+echo "$tab" "$tab"   "     List iptables rules likes output txt |   $fwiptables list                 "
 echo "$tab" "$tab"   "     List firewall saved with output txt  |   $fwiptables -txt names           "
 echo "$tab" "$tab"   "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"   "     Show firewall-list with output cli   |   $fwiptables -cli firewall-list   "
