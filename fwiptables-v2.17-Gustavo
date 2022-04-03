@@ -314,8 +314,8 @@ echo "     Fran fwiptables installer. "
 echo
 cmp -s $0 $directory_fiptables/$fwiptables || echo "     $fwiptables $fversion | Actually, this version is not installed  "
 cmp -s $0 $directory_fiptables/$fwiptables && echo "     $fwiptables $fversion | Actually, this version is installed  "
-echo "     Install this version, fwiptables in /usr/bin   |   TYPE:  ./fwiptables-$fversion install" 
-echo "     Install last version, fwiptables in /usr/bin   |   TYPE:  ./fwiptables-$fversion upgrade" 
+echo "     Install this version, fwiptables in /usr/bin   ||   TYPE:  ./fwiptables-$fversion install" 
+echo "     Install last version, fwiptables in /usr/bin   ||   TYPE:  ./fwiptables-$fversion upgrade" 
 echo
 echo "     License gnu / gpl v2.                                                    "
 echo
@@ -7916,15 +7916,14 @@ exit; fi
 if [ "$first_option" = "help" ]; then 
 echo "$ralla [ $first_option ] [ help in english ] $ralla $ralla"
 echo
-echo "$tab  Choose only help in english   [ Type:     $fwiptables help     ]"
-echo "$tab  Elige solo ayuda en español   [ Teclea:   $fwiptables ayuda    ]"
-echo "$tab  help in english and spanish   [ Type:     $fwiptables all-help ]"
-echo
+echo "$tab  ||  Choose only help in english   ||  Type:     $fwiptables help     "
+echo "$tab  ||  Elige solo ayuda en español   ||  Teclea:   $fwiptables ayuda    "
+echo "$tab  ||  help in english and spanish   ||  Type:     $fwiptables all-help "
 $fwiptables intro
 echo
 $fwiptables options
 echo 
-echo "$ralla [ $first_option ]  [ Principal options ]"
+echo "#      $rallica [ $first_option ]  [ Principal options ]"
 echo
 echo
 echo "#         [ Launch interface ]"
@@ -8202,10 +8201,9 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then 
 echo "$ralla [ $first_option ] [ ayuda en español ] $ralla $ralla"
 echo
-echo "$tab  Choose only help in english   [ Type:     $fwiptables help     ]"
-echo "$tab  Elige solo ayuda en español   [ Teclea:   $fwiptables ayuda    ]"
-echo "$tab  help in english and spanish   [ Type:     $fwiptables all-help ]"
-echo
+echo "$tab  ||  Choose only help in english   ||   Type:     $fwiptables help     "
+echo "$tab  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    "
+echo "$tab  ||  help in english and spanish   ||   Type:     $fwiptables all-help "
 $fwiptables intro
 echo
 $fwiptables options
