@@ -301,7 +301,7 @@ if [ "$first_option" = "intro" ]; then $nada
 echo
 echo "---------------------------------------------------------------------------"
 echo
-echo "     Fran fwiptables intro "
+echo "     Fran fwiptables intro. "
 echo 
 echo "     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
 echo "     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
@@ -314,13 +314,12 @@ echo "     license gnu / gpl v2.                                                
 echo
 echo "     See web page project in $fweb_main                                       "
 echo
-echo "---------------------------------------------------------------------------"
+echo "     Fran fwiptables installer. "
 echo
-cmp -s $0 $directory_fiptables/$fwiptables || echo "     $fwiptables $fversion [ Actually, this version is not installed ]"
-cmp -s $0 $directory_fiptables/$fwiptables && echo "     $fwiptables $fversion [ Actually, this version is installed ]"
-echo
-echo "     Install this version, fwiptables in /usr/bin |   TYPE:  ./fwiptables-$fversion install" 
-echo "     Install last version, fwiptables in /usr/bin |   TYPE:  ./fwiptables-$fversion upgrade" 
+cmp -s $0 $directory_fiptables/$fwiptables || echo "      $fwiptables $fversion | Actually, this version is not installed  "
+cmp -s $0 $directory_fiptables/$fwiptables && echo "      $fwiptables $fversion | Actually, this version is installed  "
+echo "     Install this version, fwiptables in /usr/bin   |   TYPE:  ./fwiptables-$fversion install" 
+echo "     Install last version, fwiptables in /usr/bin   |   TYPE:  ./fwiptables-$fversion upgrade" 
 echo
 echo "--------------------------------------------------------------------------"
 echo
