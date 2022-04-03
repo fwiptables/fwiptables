@@ -310,16 +310,16 @@ echo "     Control the firewall with the standard iptables files for all tables.
 echo "     Run rules of one firewall with your own config files.                    "
 echo "     And too, use this firewall with some utilities for ipv4 and ipv6.        "
 echo
-echo "     license gnu / gpl v2.                                                    "
-echo
-echo "     See web page project in $fweb_main                                       "
-echo
 echo "     Fran fwiptables installer. "
 echo
-cmp -s $0 $directory_fiptables/$fwiptables || echo "      $fwiptables $fversion | Actually, this version is not installed  "
-cmp -s $0 $directory_fiptables/$fwiptables && echo "      $fwiptables $fversion | Actually, this version is installed  "
+cmp -s $0 $directory_fiptables/$fwiptables || echo "     $fwiptables $fversion | Actually, this version is not installed  "
+cmp -s $0 $directory_fiptables/$fwiptables && echo "     $fwiptables $fversion | Actually, this version is installed  "
 echo "     Install this version, fwiptables in /usr/bin   |   TYPE:  ./fwiptables-$fversion install" 
 echo "     Install last version, fwiptables in /usr/bin   |   TYPE:  ./fwiptables-$fversion upgrade" 
+echo
+echo "     License gnu / gpl v2.                                                    "
+echo
+echo "     See web page project in $fweb_main                                       "
 echo
 echo "--------------------------------------------------------------------------"
 echo
