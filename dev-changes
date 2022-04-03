@@ -287,9 +287,12 @@
 # 4. corregido ntpdate. HECHO
 # 5. añadido -tor en output-interface. HECHO
 #
-# changes fwiptables 2.17 en desarrollo
+# changes fwiptables 2.17
 #
 # 1. pequeños cambios visuales pasando a minusuculas y simpliflicando. HECHO
 # 2. algun alias nuevo mas: off-line y erase-rules. HECHO
 # 3. offline tiene ahora DROP en FORWARD. HECHO
 #
+# changes fwiptables 2.18 en desarrollo
+#
+# 1.
