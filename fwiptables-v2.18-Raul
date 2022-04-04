@@ -317,8 +317,9 @@ cmp -s $0 $directory_fiptables/$fwiptables && echo "     $fwiptables $fversion  
 echo "     Install this version whith this file of fwiptables     ||   TYPE:  ./fwiptables-$fversion install" 
 echo "     Install lastest version from the web sourceforge.net   ||   TYPE:  ./fwiptables-$fversion upgrade" 
 echo
-echo "     License gnu / gpl v2.                                                    "
+echo "     Fran fwiptables project.  "
 echo
+echo "     License gnu / gpl v2.                                                    "
 echo "     See web page project in $fweb_main                                       "
 echo
 echo "--------------------------------------------------------------------------"
