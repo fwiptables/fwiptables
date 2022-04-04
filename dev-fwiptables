@@ -2692,6 +2692,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ####
 "ole-word") $fwiptables ole-word gui ; exit ;;
 "ole-number") $fwiptables ole-number gui ; exit ;;
+"ole-domain") $fwiptables ole-domain gui ; exit ;;
 ####
 ####
 *)
@@ -7249,7 +7250,7 @@ done ; clear ; exit ; fi
 ############################################# ole-number in txt
 ####
 ####
-if [ "$second_option" = "txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
 echo "$ralla $ralla $ralla"
 echo "$ralla [ $first_option ] [ play game clone ole-number ]"
 echo "$header_lineal"
