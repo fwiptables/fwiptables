@@ -297,5 +297,7 @@
 #
 # 1. pequeños cambios en intro. HECHO
 # 2. cambio en ole-word para su funcionalidad con cualquier browser. HECHO
-# 3.
+# 3. cambios en games modificado ole-word y ole-number para conseguir diccionario con otro navegador. HECHO
+# 4. añadido ole-domain en games. HECHO
+#
 #
