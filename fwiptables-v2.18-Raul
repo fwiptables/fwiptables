@@ -2837,7 +2837,7 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom" "offline" "all-permisive" \
+--list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
 "games-udp" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
 "server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
@@ -2864,7 +2864,7 @@ case "$selection" in
 "server-ssh") $fwiptables -gui server-ssh ; $fwiptables gui list ;;
 "server-print") $fwiptables -gui server-print ; $fwiptables gui list ;;
 "server-lamp") $fwiptables -gui server-lamp ; $fwiptables gui list ;;
-"custom")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
+"custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fwiptables -gui custom $archivo ; $fwiptables gui list ;;
 esac
 ####
@@ -3745,9 +3745,10 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0411  "$tab server-ssh" \
   0412  "$tab server-print" \
   0413  "$tab server-samba" \
-  0414  "$tab lan-tor" \
-  0415  "$tab lan-vpn" \
-  0416  "$tab custom cfg" \
+  0414  "$tab server-lamp" \
+  0415  "$tab lan-tor" \
+  0416  "$tab lan-vpn" \
+  0417  "$tab custom cfg" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -3933,9 +3934,10 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0411) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
  0412) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
  0413) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
- 0414) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
- 0415) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
- 0416) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0414) clear ; $fwiptables cli server-lamp ; $fwiptables cli list ;;
+ 0415) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
+ 0416) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
+ 0417) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
