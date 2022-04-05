@@ -1436,7 +1436,7 @@ echo "$tab" "$tab"  "    firewall-list   |  list list6 listnum listnum6 status l
 echo "$tab" "$tab"  "                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
 echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$tab" "$tab"  "                       list-security4 list-security6 list-ebtables list-arptables      "
-echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline custom games-udp     "
+echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline games-udp custom     "
 echo "$tab" "$tab"  "                       client-web client-vpn client-tor lan-tor lan-vpn all-permisive  "
 echo "$tab" "$tab"  "                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$tab" "$tab"  "  firewall-custom   |  new-full-config nueva-completa-config regen-config              "

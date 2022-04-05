@@ -300,5 +300,5 @@
 # 3. cambios en games modificado ole-word y ole-number y actualizados. HECHO
 # 4. añadido ole-domain en games. HECHO
 # 5- añadido server-lamp. HECHO
-# 6- server https por udp (html5) añadido a server-web y a server lamp. HECHO
+# 6- server https por udp (http 2) añadido a server-web y a server lamp. HECHO
 #
