@@ -1434,15 +1434,15 @@ echo "$tab" "$tab"  "                       list-raw4 list-raw6 list-mangle4 lis
 echo "$tab" "$tab"  "                       list-security4 list-security6 list-ebtables list-arptables      "
 echo "$tab" "$tab"  "  firewall-launch   |  eraserules wizard-mini wizard-full offline custom games-udp     "
 echo "$tab" "$tab"  "                       client-web client-vpn client-tor lan-tor lan-vpn all-permisive  "
-echo "$tab" "$tab"  "                       server-samba server-print server-web server-ssh                 "
+echo "$tab" "$tab"  "                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$tab" "$tab"  "  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$tab" "$tab"  "                       new-mini-config nueva-mini-config list-config                   "
 echo "$tab" "$tab"  "                       show-config modify-config del-config                            "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
 echo "$tab" "$tab"  " firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
 echo "$tab" "$tab"  "     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
-echo "$tab" "$tab"  "                        tool-icmp       tool-nmap      tool-sudo        tool-game       "
-echo "$tab" "$tab"  "                        tool-system     tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
+echo "$tab" "$tab"  "                       tool-system     tool-install   tool-blacklist   tool-dev        "
 echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-log         show-about      "
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo "$tab" "$tab"  "$ralla $ralla $ralla $ralla"
@@ -1464,23 +1464,21 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$tab" "$tab"  " $rallica [ $first_option ] [ List full options ]   "
-echo "$tab" "$tab"  "    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor  "
+echo "$tab" "$tab"  "    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor           "
 echo "$tab" "$tab"  " $ralla $ralla $ralla $rallica $rallica"
-echo "$tab" "$tab"  "                                    [ firewall-options ]                        "
-echo "$tab" "$tab"  "    firewall-rules     |  stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "    firewall-list      |  list list6 listnum listnum6 status                    "
-echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
-echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6         "
-echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$tab" "$tab"  "                          list-security4 list-security6                         "
-echo "$tab" "$tab"  "                          list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "    firewall-launch    |  eraserules wizard-mini wizard-full offline games-udp  "
-echo "$tab" "$tab"  "                          custom client-web client-vpn client-tor               "
-echo "$tab" "$tab"  "                          lan-vpn lan-tor all-permisive                         "
-echo "$tab" "$tab"  "                          server-samba server-print server-web server-ssh       "
-echo "$tab" "$tab"  "    firewall-custom    |  new-full-config nueva-completa-config regen-config    "
-echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config         "
-echo "$tab" "$tab"  "                          show-config modify-config del-config                  "
+echo "$tab" "$tab"  "                                    [ firewall-options ]                                 "
+echo "$tab" "$tab"  "    firewall-rules     |  stop continue reset names actual show save load                "
+echo "$tab" "$tab"  "    firewall-list      |  list list6 listnum listnum6 status                             "
+echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6                       "
+echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6                  "
+echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6                  "
+echo "$tab" "$tab"  "                          list-security4 list-security6 list-ebtables list-arptables     "
+echo "$tab" "$tab"  "    firewall-launch    |  eraserules wizard-mini wizard-full offline games-udp custom    "
+echo "$tab" "$tab"  "                          client-web client-vpn client-tor lan-vpn lan-tor all-permisive "
+echo "$tab" "$tab"  "                          server-samba server-print server-web server-ssh server-lamp    "
+echo "$tab" "$tab"  "    firewall-custom    |  new-full-config nueva-completa-config regen-config             "
+echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config                  "
+echo "$tab" "$tab"  "                          show-config modify-config del-config                           "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
 echo "$tab" "$tab"  "                                      [ tool-options ]                          " 
 echo "$tab" "$tab"  "    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy "
@@ -1524,22 +1522,22 @@ exit ; fi
 ####
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$ralla [ $first_option ] [ List firewall options ] $ralla"
-echo "$tab" "$tab"  "                                    | firewall-options |                        "
-echo "$tab" "$tab"  "   firewall-rules      |  stop continue reset names actual show save load       "
-echo "$tab" "$tab"  "   firewall-list       |  list listnum list6 listnum6                           "
-echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6              "
-echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6         "
-echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$tab" "$tab"  "                          list-security4 list-security6                         "
-echo "$tab" "$tab"  "                          list-ebtables list-arptables                          "
-echo "$tab" "$tab"  "  firewall-launch      |  eraserules wizard-mini wizard-full offline custom     "
-echo "$tab" "$tab"  "                          client-web client-vpn games-udp all-permisive         "
-echo "$tab" "$tab"  "                          server-samba server-print server-web server-ssh       "
-echo "$tab" "$tab"  "  firewall-custom      |  new-full-config nueva-completa-config regen-config    "
-echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config         "
-echo "$tab" "$tab"  "                          show-config modify-config del-config                  "
+echo "$tab" "$tab"  "                                    | firewall-options |                                "
+echo "$tab" "$tab"  "   firewall-rules      |  stop continue reset names actual show save load               "
+echo "$tab" "$tab"  "   firewall-list       |  list listnum list6 listnum6                                   "  
+echo "$tab" "$tab"  "                          list-allrules list-forward list-forward6                      "
+echo "$tab" "$tab"  "                          list-filter4 list-filter6 list-nat4 list-nat6                 "
+echo "$tab" "$tab"  "                          list-raw4 list-raw6 list-mangle4 list-mangle6                 "
+echo "$tab" "$tab"  "                          list-security4 list-security6                                 "
+echo "$tab" "$tab"  "                          list-ebtables list-arptables                                  "
+echo "$tab" "$tab"  "  firewall-launch      |  eraserules wizard-mini wizard-full offline custom             "
+echo "$tab" "$tab"  "                          client-web client-vpn games-udp all-permisive lan-tor lan-vpn "
+echo "$tab" "$tab"  "                          server-samba server-print server-web server-ssh server-lamp   "
+echo "$tab" "$tab"  "  firewall-custom      |  new-full-config nueva-completa-config regen-config            "
+echo "$tab" "$tab"  "                          new-mini-config nueva-mini-config list-config                 "
+echo "$tab" "$tab"  "                          show-config modify-config del-config                          "
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options              "
+echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options                      "
 exit ; fi
 ####
 ####
@@ -1807,6 +1805,10 @@ echo "           offline : Launch one firewall disconected for all servers and c
 echo "                   : Lanza un Firewall desconectado para todo servidores y clientes excepto localhost"
 echo "     all-permisive : Launch one firewall very permisive"
 echo "                   : Lanza un firewall muy permisivo"
+echo "         games-udp : Launch one firewall like client games for udp non-root"
+echo "                   : Lanza un firewall como cliente juegos udp no-root"
+echo "            custom : Launch one custom firewall with one file cfg"
+echo "                   : Lanza un modificado firewall con un archivo cfg"
 echo "        client-web : Launch one firewall like client web and ssh"
 echo "                   : Lanza un firewall como cliente web y ssh"
 echo "        client-vpn : Launch one firewall like client web and ssh and vpn"
@@ -1821,16 +1823,14 @@ echo "        server-web : Launch one firewall like server web and ssh"
 echo "                   : Lanza un firewall como servidor web y ssh"
 echo "      server-samba : Launch one firewall samba and ssh like client and server both"
 echo "                   : Lanza un firewall sambla y ssh como cliente y servidor ambos"
-echo "         games-udp : Launch one firewall like client games for udp non-root"
-echo "                   : Lanza un firewall como cliente juegos udp no-root"
 echo "      server-print : Launch one firewall like server ipp, printer and ssh"
 echo "                   : Lanza un firewall como servidor ipp, printer y ssh"
 echo "        server-ssh : Launch one firewall like server ssh"
 echo "                   : Lanza un firewall como servidor ssh"
+echo "       server-lamp : Launch one firewall like server LAMP"
+echo "                   : Lanza un firewall como servidor LAMP"
 echo "               cfg : Alias to custom"
 echo "                   : Apodo to custom"
-echo "            custom : Launch one custom firewall with one file cfg"
-echo "                   : Lanza un modificado firewall con un archivo cfg"
 echo $footer_lineal
 exit; fi
 ####
@@ -2837,9 +2837,9 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "offline" "all-permisive" \
-"games-udp" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" "custom cfg" \
-"server-ssh" "server-print" \
+--list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom" "offline" "all-permisive" \
+"games-udp" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
+"server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
 #### 
@@ -2863,7 +2863,8 @@ case "$selection" in
 "server-samba") $fwiptables -gui server-samba ; $fwiptables gui list ;;
 "server-ssh") $fwiptables -gui server-ssh ; $fwiptables gui list ;;
 "server-print") $fwiptables -gui server-print ; $fwiptables gui list ;;
-"custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
+"server-lamp") $fwiptables -gui server-lamp ; $fwiptables gui list ;;
+"custom")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $fwiptables -gui custom $archivo ; $fwiptables gui list ;;
 esac
 ####
@@ -3736,15 +3737,17 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0403  "$tab wizard-full" \
   0404  "$tab offline" \
   0405  "$tab all-permisive" \
-  0406  "$tab client-web" \
-  0407  "$tab client-vpn" \
-  0408  "$tab server-web" \
-  0409  "$tab games-udp" \
-  0410  "$tab server-samba" \
-  0411  "$tab client-tor" \
-  0412  "$tab lan-tor" \
-  0413  "$tab lan-vpn" \
-  0414  "$tab custom cfg" \
+  0406  "$tab games-udp" \
+  0407  "$tab client-web" \
+  0408  "$tab client-vpn" \
+  0409  "$tab client-tor" \
+  0410  "$tab server-web" \
+  0411  "$tab server-ssh" \
+  0412  "$tab server-print" \
+  0413  "$tab server-samba" \
+  0414  "$tab lan-tor" \
+  0415  "$tab lan-vpn" \
+  0416  "$tab custom cfg" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -3922,15 +3925,17 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0403) clear ; $fwiptables cli wizard-full ; $fwiptables cli list ;;
  0404) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
  0405) clear ; $fwiptables cli all-permisive ; $fwiptables cli list  ;;
- 0406) clear ; $fwiptables cli client-web ; $fwiptables cli list  ;;
- 0407) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;; 
- 0408) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
- 0409) clear ; $fwiptables cli games-udp ; $fwiptables cli list  ;; 
- 0410) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
- 0411) clear ; $fwiptables cli client-tor ; $fwiptables cli list ;;
- 0412) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
- 0413) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
- 0414) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0406) clear ; $fwiptables cli games-udp ; $fwiptables cli list  ;; 
+ 0407) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
+ 0408) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
+ 0409) clear ; $fwiptables cli client-tor ; $fwiptables cli list  ;; 
+ 0410) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
+ 0411) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
+ 0412) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
+ 0413) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
+ 0414) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
+ 0415) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
+ 0416) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
@@ -7946,14 +7951,12 @@ echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  " | Group |  output-interface firewall-options  tool-options     show-options      "
-echo "$tab" "$tab"  " firewall|  firewall-rules   firewall-list     firewall-launch  firewall-custom   "
-echo "$tab" "$tab"  
-echo "$tab" "$tab"  "     tool|  tool-sockets     tool-forward      tool-tcp                           "
-echo "$tab" "$tab"  "            tool-udp         tool-icmp         tool-nmap        tool-sudo         " 
-echo "$tab" "$tab"  "            tool-system      tool-install      tool-blacklist   tool-dev          "
-echo "$tab" "$tab"  "     show|  show-hardware    show-etc          show-log                           "
-echo "$tab" "$tab"  "            show-about       show-help         show-example                       " 
+echo "$tab" "$tab"  " firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
+echo "$tab" "$tab"  "     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
+echo "$tab" "$tab"  "                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
+echo "$tab" "$tab"  "                       tool-system     tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-log         show-about      "
+echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo
 echo "$tab" "$tab"  "$ralla $ralla $ralla"
 echo "$tab [ Example: ] [ $fwiptables output-interface ]"
@@ -8036,11 +8039,11 @@ echo
 echo "         eraserules : Remove the iptables rules in ipv4 and ipv6"
 echo "        wizard-full : Asistant y launch complete firewall"
 echo "        wizard-mini : Asistant y Launch simple firewall"
+echo "             custom : Configure one custom firewall, made for you with file.cfg"
 echo "            offline : Launch disconected firewall for all servers and clients except localhost"
+echo "          games-udp : Launch a firewall like games udp non-root games"
 echo "      all-permisive : Launch a firewall very permisive"
 echo "         client-tor : Launch a firewall with brwoser with tor"
-echo "          games-udp : Launch a firewall like games udp non-root games"
-echo "             custom : Configure one custom firewall, made for you with file.cfg"
 echo "            lan-tor : Launch a firewall only to browser with tor"
 echo "            lan-vpn : Launch a firewall only to browser with vpn"
 echo "         client-web : Launch a firewall like web client and ssh client"
@@ -8049,6 +8052,7 @@ echo "         server-web : Launch a firewall like web server and ssh server"
 echo "       server-samba : Launch a firewall like server and client for samba and ssh"
 echo "       server-print : Launch a firewall like server ipp, printer and ssh"
 echo "         server-ssh : Launch a firewall like server ssh"
+echo "        server-lamp : Launch a firewall like server LAMP"
 echo
 echo "#         [ tool config ]"
 echo
@@ -8329,8 +8333,10 @@ echo
 echo "           eraserules : Borra las reglas de iptables de ipv4 y de ipv6"
 echo "          wizard-full : Asistente y lanza completo cortafuegos"
 echo "          wizard-mini : Asistente y lanza simple cortafuegos"
+echo "               custom : lanza el cortafuegos especificando un archivo.cfg"
 echo "              offline : Lanza un desconectado cortafuegos de todo excepto localhost"
 echo "        all-permisive : Lanza el cortafuegos muy permisivo"
+echo "            games-udp : Lanza el cortafuegos como cliente de juegos udp non-root"
 echo "           client-tor : Lanza el cortafuegos con navegacion con tor"
 echo "           client-web : Lanza el cortafuegos como cliente web y ssh"
 echo "           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn"
@@ -8338,10 +8344,9 @@ echo "              lan-tor : Lanza el cortafuegos solo para navegar con tor"
 echo "              lan-vpn : Lanza el cortafuegos solo para navegar con vpn"
 echo "           server-web : Lanza el cortafuegos como servidor web y ssh"
 echo "         server-samba : Lanza un cortafuegos como servidor y cliente samba y ssh"
-echo "            games-udp : Lanza el cortafuegos como cliente de juegos udp non-root"
 echo "         server-print : Lanza un firewall como servidor ipp, printer y ssh"
 echo "           server-ssh : Lanza un firewall como servidor ssh"
-echo "               custom : lanza el cortafuegos especificando un archivo.cfg"
+echo "          server-lamp : Lanza un firewall como servidor LAMP"
 echo
 echo "# [ Herramienta de configuraciones ]  "
 echo
