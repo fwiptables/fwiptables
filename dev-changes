@@ -293,7 +293,7 @@
 # 2. algun alias nuevo mas: off-line y erase-rules. HECHO
 # 3. offline tiene ahora DROP en FORWARD. HECHO
 #
-# changes fwiptables 2.18 en desarrollo
+# changes fwiptables 2.18
 #
 # 1. pequeños cambios en intro. HECHO
 # 2. cambio en ole-word para su funcionalidad con cualquier browser. HECHO
@@ -301,4 +301,8 @@
 # 4. añadido ole-domain en games. HECHO
 # 5- añadido server-lamp. HECHO
 # 6- server https por udp (http 2) añadido a server-web y a server lamp. HECHO
+#
+# changes fwiptables 2.19 en desarrollo
+#
+# 1.
 #
