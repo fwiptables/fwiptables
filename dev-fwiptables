@@ -1460,7 +1460,7 @@ echo "$tab" "$tab"  "     Show more options likes output txt   |   $fwiptables o
 echo "$tab" "$tab"  "     List iptables rules with output txt  |   $fwiptables -txt list            "
 echo "$tab" "$tab"  "     Save rules with output cli           |   $fwiptables -cli save one-name   "
 echo "$tab" "$tab"  "     List firewall saved with output cli  |   $fwiptables -cli names           "
-echo "$tab" "$tab"  "     Show firewall-list with output cli   |   $fwiptables -cli firewall-list   "
+echo "$tab" "$tab"  "     List sockets ip with output gui      |   $fwiptables -gui ss              "
 echo "$tab" "$tab"  "     Generate rules with output gui       |   $fwiptables -gui wizard-mini     "
 exit ; fi
 ####
@@ -1514,12 +1514,13 @@ echo "$tab" "$tab"  "                          config-eng config-spa license    
 echo "$tab" "$tab"  "    show-help          |  all-help help ayuda notes options info                "
 echo "$tab" "$tab"  "                          group-options mini-options full-options               "
 echo "$tab" "$tab"  "$ralla $ralla $ralla $rallica $rallica"
-echo "$tab" "$tab"   "          [ Example Description ]         |            [ Example ]             "
-echo "$tab" "$tab"   "     List iptables rules likes output txt |   $fwiptables list                 "
-echo "$tab" "$tab"   "     List firewall saved with output txt  |   $fwiptables -txt names           "
-echo "$tab" "$tab"   "     Save rules with output cli           |   $fwiptables -cli save one-name   "
-echo "$tab" "$tab"   "     Show firewall-list with output cli   |   $fwiptables -cli firewall-list   "
-echo "$tab" "$tab"   "     Generate rules with output gui       |   $fwiptables -gui wizard-mini     "
+echo "$tab" "$tab"  "          [ Example Description ]         |            [ Example ]             "
+echo "$tab" "$tab"  "     Show more options likes output txt   |   $fwiptables options              "
+echo "$tab" "$tab"  "     List iptables rules with output txt  |   $fwiptables -txt list            "
+echo "$tab" "$tab"  "     Save rules with output cli           |   $fwiptables -cli save one-name   "
+echo "$tab" "$tab"  "     List firewall saved with output cli  |   $fwiptables -cli names           "
+echo "$tab" "$tab"  "     List sockets ip with output gui      |   $fwiptables -gui ss              "
+echo "$tab" "$tab"  "     Generate rules with output gui       |   $fwiptables -gui wizard-mini     "
 exit ; fi
 ####
 ####
