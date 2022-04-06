@@ -477,9 +477,9 @@ chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
 $fwiptables regen-config &> /dev/null
 ####
 ####
-echo "$rallica [ status ] [ $fwiptables $fversion / script installed in: ] [ $directory_fiptables/$fwiptables ]" 
-echo "$rallica [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ] ]"
-echo "$rallica [ status ]  [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$rallica [ status ] [ $fwiptables $fversion installing ]" 
+echo "$rallica [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
+echo "$rallica [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 echo "$rallica [ ok ] [ New config files installed ]"
 #### 
 #### 
