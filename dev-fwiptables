@@ -6470,6 +6470,9 @@ $fwiptables stop
  echo "$rallica [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
+ case $favorite_radio_command in "$NULL") echo "$rallica [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+####
+####
  if [ "$second_option" = "$NULL" ]; then $nada
  emisora="$radio"
  else radio="$second_option"; fi
