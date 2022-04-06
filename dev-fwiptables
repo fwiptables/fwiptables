@@ -4338,7 +4338,7 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 echo
-echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
+echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
 echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
 echo "$rallica [   info:  ] [ Get server lines numbers total ] [ $fwiptables blacklist-list info ]"
@@ -4356,7 +4356,7 @@ echo "$ralla"
 ####
 if [ "$second_option" = "info" ]; then echo "$tab Getting lines numbers total.."; echo 
 echo
-echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers line]"
+echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
 echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
 echo "$tab [ info ] [ total addblocker hosts ] [ waiting until $server_waiting seconds for max timeout each one ]"
