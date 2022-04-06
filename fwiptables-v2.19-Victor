@@ -170,8 +170,9 @@ head_principal=" || $fwiptables || Version $fversion || Use: $fwiptables options
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$rallica [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica" 
-head_waiting_gui="$rallica [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica" 
+head_waiting_cli="$rallica [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
+head_waiting_gui="$rallica [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
+head_waiting_log="$rallica [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -564,6 +565,7 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
+if [ "$first_option" = "filelog" ]; then first_option="sentlog"; fi
 if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
 if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
@@ -692,9 +694,12 @@ esac ; fi
 ####
 if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
 then first_option="-log" 
+echo $head_waiting_log
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
-echo "$rallica [ ok ] [ Output $fwiptables $second_option $third_option sended to $file_output_filelog ]" ;
+echo "$rallica [ ok ] \
+[ Output $fwiptables $second_option $third_option sended to $file_output_filelog ] \
+[ show: fwiptables filelog ]" ;
 exit ; fi
 ####
 ####
