@@ -166,7 +166,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" || $fwiptables || Version $fversion || Use: $fwiptables options ||  $(date)"
+head_principal=" || $fwiptables || Version $fversion || Use: $fwiptables options ||  $(date)  ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
