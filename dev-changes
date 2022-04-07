@@ -304,5 +304,8 @@
 #
 # changes fwiptables 2.19 en desarrollo
 #
-# 1.
+# 1. sentlog ahora tiene de alias filelog. HECHO
+# 2. pequeños cambios de codigo. HECHO
+# 3. ahora aparece ss en tool-sockets. HECHO
+# 4.
 #
