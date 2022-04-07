@@ -2396,6 +2396,8 @@ echo "     log-search : Search logs whith a prefix in /var/log"
 echo "                : Busca logs con patron en /var/log"
 echo "        sentlog : Show over launches with -log "
 echo "                : Muestra volcados con -log"
+echo "        filelog : Alias a sentlog"
+echo "                : Apodo a sentlog"
 echo "        autolog : Show the headers from autolog"
 echo "                : Muestra las cabeceras autolog"
 echo $footer_lineal
@@ -8200,6 +8202,7 @@ echo
 echo "        log-ssh : Search the logs from sshd for /var/log"
 echo "     log-search : Search the logs from a input pattern for /var/log"
 echo "        sentlog : Show $file_output_filelog , over -log"
+echo "        filelog : Alias to sentlog"
 echo "        autolog : Show $file_output_autolog , only headers"
 echo
 echo "#         [ Show about ]"
@@ -8480,7 +8483,8 @@ echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en
 echo
 echo "# [ Mostrar log ]  "
 echo
-echo "       endedlog : Muestra $file_output_filelog , volcados con -log  "
+echo "        sentlog : Muestra $file_output_filelog , volcados con -log  "
+echo "        filelog : alias a sentlog  "
 echo "        autolog : Muestra $file_output_autolog , cabeceras  "
 echo "        log-ssh : Busca los logs de sshd en /var/log  "
 echo "     log-search : Busca los logs dando un patron para /var/log  "
