@@ -307,6 +307,8 @@
 # 1. sentlog ahora tiene de alias filelog. HECHO
 # 2. pequeños cambios de codigo. HECHO
 # 3. ahora aparece ss en tool-sockets. HECHO
-# 4. preparando ayuda para soporte de markdown.
+# 4. preparando ayuda para soporte de markdown. HECHO
 # 5. preparando help  para soporte de markdown.
+# 6. preparando options para soporte de markdown. HECHO
 #
+
