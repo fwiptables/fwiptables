@@ -160,7 +160,9 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
-quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || "
+quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
+#### #### english: look markdown  #### spanish: apariencia con markdown
+title_md="#  "; text_md="   "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -8276,278 +8278,276 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then 
-echo "$ralla [ $first_option ] [ ayuda en español ] $ralla $ralla ."
+echo "$title_md $ralla [ $first_option ] [ ayuda en español ] $ralla $ralla ."
 echo
-echo "$tab  ||  Choose only help in english   ||   Type:     $fwiptables help     ."
-echo "$tab  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    ."
-echo "$tab  ||  help in english and spanish   ||   Type:     $fwiptables all-help ."
+echo "$text_md  ||  Choose only help in english   ||   Type:     $fwiptables help     ."
+echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    ."
+echo "$text_md  ||  help in english and spanish   ||   Type:     $fwiptables all-help ."
 $fwiptables intro
 echo
 $fwiptables options
 echo 
-echo "$ralla [ $first_option ] [ Opciones principales ] ."
+echo "$title_md $ralla [ $first_option ] [ Opciones principales ]."
 echo
-echo "# [ Lanza interfaz ]  "
+echo "$title_md [ Lanza interfaz ]."
 echo
-echo "       txt OR -txt : Salida a linea de texto."
-echo "       cli OR -cli : Salida a menu de texto."
-echo "       gui OR -gui : Salida a ventana grafica."
-echo "       log OR -log : Salida a archivo log."
-echo "       tor OR -tor : Ejecuta en tor, necesario daemon tor y comando torify."
-echo "          cli-menu : modo texto with menus."
-echo "          gui-menu : Graficos con menus."
-echo "         gui-shell : Graficos con entorno de comandos."
+echo "$text_md       txt OR -txt : Salida a linea de texto."
+echo "$text_md       cli OR -cli : Salida a menu de texto."
+echo "$text_md       gui OR -gui : Salida a ventana grafica."
+echo "$text_md       log OR -log : Salida a archivo log."
+echo "$text_md       tor OR -tor : Ejecuta en tor, necesario daemon tor y comando torify."
+echo "$text_md          cli-menu : modo texto with menus."
+echo "$text_md          gui-menu : Graficos con menus."
+echo "$text_md         gui-shell : Graficos con entorno de comandos."
 echo
-echo "# [ Controla las reglas de iptables ]  "
+echo "$title_md [ Controla las reglas de iptables ]."
 echo
-echo "            stop : Para las reglas del firewall."
-echo "        continue : Continua las reglas del firewall."
-echo "           reset : Resetea las reglas del firewall."
-echo "         list-fw : Apodo a names."
-echo "           names : Lista los archivos de firewall estandard."
-echo "            show : Muestra las reglas del firewall estandard especificado." 
-echo "            save : Guarda las reglas de firewall estandard especificado."
-echo "            load : Reculpera firewall estandard especificado."
-echo "          actual : Muestra el contenido del firewall estandard actual."
+echo "$text_md            stop : Para las reglas del firewall."
+echo "$text_md        continue : Continua las reglas del firewall."
+echo "$text_md           reset : Resetea las reglas del firewall."
+echo "$text_md         list-fw : Apodo a names."
+echo "$text_md           names : Lista los archivos de firewall estandard."
+echo "$text_md            show : Muestra las reglas del firewall estandard especificado." 
+echo "$text_md            save : Guarda las reglas de firewall estandard especificado."
+echo "$text_md            load : Reculpera firewall estandard especificado."
+echo "$text_md          actual : Muestra el contenido del firewall estandard actual."
 echo
-echo "# [ Lista las reglas de tablas de iptables ]  "
+echo "$title_md [ Lista las reglas de tablas de iptables ]."
 echo
-echo "            status : similar a list y list6 cuando hay ruta por defecto."
-echo "              list : similar a list-filter4 pero esconde reglas no usadas." 
-echo "             list6 : similar a list-filter6 pero esconde reglas no usadas."
-echo "           listnum : Lista las reglas de ipv4 de filtros en numeros."
-echo "   list-forwardnum : Lista las reglas de ipv4 de filtros de reenvio en numeros."
-echo "          list6num : Lista las reglas de ipv6 de filtros en numeros  "
-echo "  list-forward6num : Lista las reglas de ipv6 de filtros de reenvio en numeros."
-echo "      list-forward : Lista las reglas de ipv4 de filtros de reenvio."
-echo "     list-forward6 : Lista las reglas de ipv6 de filtros de reenvio."
-echo "      list-filter4 : Lista las reglas de ipv4 de filtros iptables."
-echo "      list-filter6 : Lista las reglas de ipv6 de filtros iptables."
-echo "         list-nat4 : Lista las reglas de ipv4 de nat iptables."
-echo "         list-nat6 : Lista las reglas de ipv6 de nat iptables."
-echo "      list-mangle4 : Lista las reglas de ipv4 de mangle iptables."
-echo "      list-mangle6 : Lista las reglas de ipv6 de mangle iptables."
-echo "         list-raw4 : Lista las reglas de ipv4 de raw iptables."
-echo "         list-raw6 : Lista las reglas de ipv6 de raw iptables."
-echo "    list-security4 : lista las reglas de ip4 de security iptables."
-echo "    list-security6 : Lista las reglas de ip6 de security iptables."
-echo "     list-ebtables : Lista las reglas mac de ethernet."
-echo "    list-arptables : Lista las reglas de arp arptables."
+echo "$text_md            status : similar a list y list6 cuando hay ruta por defecto."
+echo "$text_md              list : similar a list-filter4 pero esconde reglas no usadas." 
+echo "$text_md             list6 : similar a list-filter6 pero esconde reglas no usadas."
+echo "$text_md           listnum : Lista las reglas de ipv4 de filtros en numeros."
+echo "$text_md   list-forwardnum : Lista las reglas de ipv4 de filtros de reenvio en numeros."
+echo "$text_md          list6num : Lista las reglas de ipv6 de filtros en numeros."
+echo "$text_md  list-forward6num : Lista las reglas de ipv6 de filtros de reenvio en numeros."
+echo "$text_md      list-forward : Lista las reglas de ipv4 de filtros de reenvio."
+echo "$text_md     list-forward6 : Lista las reglas de ipv6 de filtros de reenvio."
+echo "$text_md      list-filter4 : Lista las reglas de ipv4 de filtros iptables."
+echo "$text_md      list-filter6 : Lista las reglas de ipv6 de filtros iptables."
+echo "$text_md         list-nat4 : Lista las reglas de ipv4 de nat iptables."
+echo "$text_md         list-nat6 : Lista las reglas de ipv6 de nat iptables."
+echo "$text_md      list-mangle4 : Lista las reglas de ipv4 de mangle iptables."
+echo "$text_md      list-mangle6 : Lista las reglas de ipv6 de mangle iptables."
+echo "$text_md         list-raw4 : Lista las reglas de ipv4 de raw iptables."
+echo "$text_md         list-raw6 : Lista las reglas de ipv6 de raw iptables."
+echo "$text_md    list-security4 : lista las reglas de ip4 de security iptables."
+echo "$text_md    list-security6 : Lista las reglas de ip6 de security iptables."
+echo "$text_md     list-ebtables : Lista las reglas mac de ethernet."
+echo "$text_md    list-arptables : Lista las reglas de arp arptables."
 echo
-echo "# [ Reglas modificables de iptables ]  "
-echo "  "
-echo "        new-full-config : Crea una nueva configuracion.cfg en ingles."
-echo "  nueva-completa-config : Crea una nueva configuracion.cfg en español."
-echo "        new-mini-config : Crea una nueva basica configuracion.cfg en ingles."
-echo "      nueva-mini-config : Crea una nueva basica configuracion.cfg en español."
-echo "           regen-config : regenera wizard files y plantillas cfg ."
-echo "            list-config : Lista los archivos de configuracion cfg ." 
-echo "          modify-config : Edita una existente configuracion.cfg ."
-echo "            show-config : Muestra una existente configuracion.cfg ."
-echo "             del-config : Borra unaa existente configuracion.cfg ."
-echo
-echo "# [ Lanza reglas de iptables ]  "
-echo
-echo "           eraserules : Borra las reglas de iptables de ipv4 y de ipv6."
-echo "          wizard-full : Asistente y lanza completo cortafuegos."
-echo "          wizard-mini : Asistente y lanza simple cortafuegos."
-echo "               custom : lanza el cortafuegos especificando un archivo.cfg."
-echo "              offline : Lanza un desconectado cortafuegos de todo excepto localhost."
-echo "        all-permisive : Lanza el cortafuegos muy permisivo."
-echo "            games-udp : Lanza el cortafuegos como cliente de juegos udp non-root."
-echo "           client-tor : Lanza el cortafuegos con navegacion con tor."
-echo "           client-web : Lanza el cortafuegos como cliente web y ssh."
-echo "           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn."
-echo "              lan-tor : Lanza el cortafuegos solo para navegar con tor."
-echo "              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
-echo "           server-web : Lanza el cortafuegos como servidor web y ssh."
-echo "         server-samba : Lanza un cortafuegos como servidor y cliente samba y ssh."
-echo "         server-print : Lanza un firewall como servidor ipp, printer y ssh."
-echo "           server-ssh : Lanza un firewall como servidor ssh."
-echo "          server-lamp : Lanza un firewall como servidor LAMP."
-echo
-echo "# [ Herramienta de configuraciones ]  "
-echo
-echo "# [ Lista las conexiones abiertas ]  "
-echo
-echo "      info-nodes : Lista las conexiones arp in lan."
-echo "      info-proxy : Lista proxy del sistema."
-echo "     info-listen : Lista sockets a la escucha del sistema."
-echo "      info-route : Muestra los dispositivos de red y la tabla de rutas."
-echo "     info-system : Muestra la informacion del sistema."
-echo "        info-net : Muestra informacion de la red."
-echo "              ss : Muestra las conexiones con comando ss."
-echo "            lsof : Muestra las conexiones con command lsof."
-echo "         netstat : Muestra las conexiones con comando netstat."
-echo "     netstat-nat : Muestra las conexiones con comando netstat-nat."
-echo "        web-cert : Obtiene un certificado ssl a una web con puerto https(443)."
-echo "         tcpdump : Escuchar las conexiones ip."
-echo
-echo "# [ Herramienta de ip forwading ]  "
-echo
-echo "  ipforward-list : Muestra la configuracion del kernel sobre reenvios ip."
-echo "    ipforward-on : Activa la configuracion del kernel sobre reenvios ip."
-echo "   ipforward-off : Desactiva la configuracion del kernel sobre reenvios ip."
-echo
-echo "# [ Herramienta tcp ]  "
-echo
-echo "  tracetcp-ip4 : Traza ruta a una host con ipv4 tcp."
-echo "  tracetcp-ip6 : Traza ruta a una host con ipv6 tcp."
-echo "     speed-ip4 : Testea el ancho de banda con ipv4."
-echo "     speed-ip6 : Testea el ancho de banda con ipv6."
-echo
-echo "# [ Herramienta udp ]  "
-echo
-echo "          host : Resuelve la ip de un host ."
-echo "           dig : Resuelve la ip de un host ."
-echo "     resolveip : Resuelve la ip de un host y viceversa."
-echo "         geoip : Localiza una ip o host ."
-echo "       ntpdate : Actualiza la fecha desde un ntp server."
+echo "$title_md [ Reglas modificables de iptables ]."
 echo 
-echo "# [ Herramienta icmp ]  "
+echo "$text_md        new-full-config : Crea una nueva configuracion.cfg en ingles."
+echo "$text_md  nueva-completa-config : Crea una nueva configuracion.cfg en español."
+echo "$text_md        new-mini-config : Crea una nueva basica configuracion.cfg en ingles."
+echo "$text_md      nueva-mini-config : Crea una nueva basica configuracion.cfg en español."
+echo "$text_md           regen-config : regenera wizard files y plantillas cfg ."
+echo "$text_md            list-config : Lista los archivos de configuracion cfg ." 
+echo "$text_md          modify-config : Edita una existente configuracion.cfg ."
+echo "$text_md            show-config : Muestra una existente configuracion.cfg ."
+echo "$text_md             del-config : Borra unaa existente configuracion.cfg ."
 echo
-echo " traceicmp-ip4 : Traza ruta a una host con ipv4 icmp."
-echo " traceicmp-ip6 : Traza ruta a una host con ipv6 icmp."
-echo "      ping-ip4 : Hace un ping a una host con ipv4 icmp."
-echo "      ping-ip6 : Hace un ping a una host con ipv6 icmp."
+echo "$title_md [ Lanza reglas de iptables ]."
 echo
-echo "# [ Herramienta nmap ]  "
+echo "$text_md           eraserules : Borra las reglas de iptables de ipv4 y de ipv6."
+echo "$text_md          wizard-full : Asistente y lanza completo cortafuegos."
+echo "$text_md          wizard-mini : Asistente y lanza simple cortafuegos."
+echo "$text_md               custom : lanza el cortafuegos especificando un archivo.cfg."
+echo "$text_md              offline : Lanza un desconectado cortafuegos de todo excepto localhost."
+echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
+echo "$text_md            games-udp : Lanza el cortafuegos como cliente de juegos udp non-root."
+echo "$text_md           client-tor : Lanza el cortafuegos con navegacion con tor."
+echo "$text_md           client-web : Lanza el cortafuegos como cliente web y ssh."
+echo "$text_md           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn."
+echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
+echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
+echo "$text_md           server-web : Lanza el cortafuegos como servidor web y ssh."
+echo "$text_md         server-samba : Lanza un cortafuegos como servidor y cliente samba y ssh."
+echo "$text_md         server-print : Lanza un firewall como servidor ipp, printer y ssh."
+echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
+echo "$text_md          server-lamp : Lanza un firewall como servidor LAMP."
+echo
+echo "$title_md [ Lista las conexiones abiertas ]."
+echo
+echo "$text_md      info-nodes : Lista las conexiones arp in lan."
+echo "$text_md      info-proxy : Lista proxy del sistema."
+echo "$text_md     info-listen : Lista sockets a la escucha del sistema."
+echo "$text_md      info-route : Muestra los dispositivos de red y la tabla de rutas."
+echo "$text_md     info-system : Muestra la informacion del sistema."
+echo "$text_md        info-net : Muestra informacion de la red."
+echo "$text_md              ss : Muestra las conexiones con comando ss."
+echo "$text_md            lsof : Muestra las conexiones con command lsof."
+echo "$text_md         netstat : Muestra las conexiones con comando netstat."
+echo "$text_md     netstat-nat : Muestra las conexiones con comando netstat-nat."
+echo "$text_md        web-cert : Obtiene un certificado ssl a una web con puerto https(443)."
+echo "$text_md         tcpdump : Escuchar las conexiones ip."
+echo
+echo "$title_md [ Herramienta de ip forwading ]."
+echo
+echo "$text_md  ipforward-list : Muestra la configuracion del kernel sobre reenvios ip."
+echo "$text_md    ipforward-on : Activa la configuracion del kernel sobre reenvios ip."
+echo "$text_md   ipforward-off : Desactiva la configuracion del kernel sobre reenvios ip."
+echo
+echo "$title_md [ Herramienta tcp ]."
+echo
+echo "$text_md  tracetcp-ip4 : Traza ruta a una host con ipv4 tcp."
+echo "$text_md  tracetcp-ip6 : Traza ruta a una host con ipv6 tcp."
+echo "$text_md     speed-ip4 : Testea el ancho de banda con ipv4."
+echo "$text_md     speed-ip6 : Testea el ancho de banda con ipv6."
+echo
+echo "$title_md [ Herramienta udp ]."
+echo
+echo "$text_md          host : Resuelve la ip de un host ."
+echo "$text_md           dig : Resuelve la ip de un host ."
+echo "$text_md     resolveip : Resuelve la ip de un host y viceversa."
+echo "$text_md         geoip : Localiza una ip o host ."
+echo "$text_md       ntpdate : Actualiza la fecha desde un ntp server."
 echo 
-echo "      scan-tcp : Rastrea una host/mask por tcp protocolo."
-echo "      scan-syn : Rastrea una host/mask por syn socket."
-echo "      scan-fin : Rastrea una host/mask por fin socket."
-echo "      scan-udp : Rastrea una host/mask por udp protocolo."
-echo "     scan-ping : Rastrea una host/mask por ping udp."
+echo "$title_md [ Herramienta icmp ]."
 echo
-echo "# [ Herramienta de autorizacion ]"
+echo "$text_md traceicmp-ip4 : Traza ruta a una host con ipv4 icmp."
+echo "$text_md traceicmp-ip6 : Traza ruta a una host con ipv6 icmp."
+echo "$text_md      ping-ip4 : Hace un ping a una host con ipv4 icmp."
+echo "$text_md      ping-ip6 : Hace un ping a una host con ipv6 icmp."
 echo
-echo "  sudo-adduser : Permite autorizacion de usuarios elegidos."
-echo "  sudo-deluser : Borra la autorizacion otorgada."
-echo "     sudo-list : Lista autorizacion de usuarios elegidos."
-echo
-echo "# [ Herramienta de juego ]"
-echo
-echo "   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres."
-echo "   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos."
-echo "   ole-domain  : Descubre un dominio si es generico o si es de un pais."
-echo "   colour-hex  : convierte un numero hexadecimal en rgb ."
-echo "   colour-rgb  : convierte un numero rgb en hexadecimal ."
-echo
-echo "# [ Herramienta de sistema ]  "
-echo
-echo "      free-ram : Libera la memoria ram innecesaria."
-echo "     speed-ram : Muestra la velocidad de la memoria ram."
-echo "    speed-disk : Muestra la velocidad de el disco duro raiz."
-echo "     speed-glx : Muestra fotogramas por segundo con graficos mesa."
-echo "     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default."
-echo
-echo "# [ Herramienta de instalacion ]  "
-echo
-echo "        install : Instala este programa actual."
-echo "        upgrade : Actualiza a la ultima version."
-echo "  howto-upgrade : Indicacion para actualizar."
-echo
-echo "# [ Herramienta de lista de bloqueo ]"
-echo
-echo "  blacklist-list : Lista de opciones para bloquear hosts peligrosas."
-echo "    blacklist-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
-echo "   blacklist-off : Vuelve a /etc/hosts por defecto."
-echo
-echo "# [ Herramienta de desarrollador ]  "
-echo
-echo "    new-versions : Muestra las ultimas versiones."
-echo "     dev-version : Muestra en enlace a la version de desarrollo."
-echo "     dev-changes : Muestra los ultimos cambios."
-echo "            code : Muestra el codigo fuente para una opcion."
-echo
-echo "# [ Herramienta de informacion del hardware ]"
-echo
-echo "          lpinfo : Muestra los dispositivos de impresora."
-echo "           lsblk : Muestra los dispositivos de disco."
-echo "           lsusb : Muestra los dispositivos de usb."
-echo "           lscpu : Muestra los dispositivos cpu."
-echo "           lsgpu : Muestra los dispositivos gpu."
-echo "           lspci : Muestra los dispositivos pci."
-echo "            lshw : Muestra los dispositivos de hardware."
-echo
-echo "# [ Mostrar etc ]  "
-echo
-echo "           hosts : Muestra /etc/hosts, hosts locales y hosts estaticos."
-echo "      protocolos : Muestra /etc/protocols, nombres de protocolos."
-echo "        services : Muestra /etc/services, nombres de puertos y servicios."
-echo "     hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores."
-echo "      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
-echo "     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
-echo "    show-default : Muestra /etc/default/fwiptables, muestra variables en fwiptables."
-echo "  modify-default : Modifica /etc/default/fwiptables, modifica variables en fwiptables."
-echo
-echo "# [ Mostrar log ]  "
-echo
-echo "        sentlog : Muestra los volcados con -log ."
-echo "        filelog : alias a sentlog ."
-echo "        autolog : Muestra las cabeceras de fwiptables lanzados."
-echo "        log-ssh : Busca los logs de sshd en /var/log ."
-echo "     log-search : Busca los logs dando un patron para /var/log ."
-echo
-echo "# [ Mostrar acerca ]  "
-echo
-echo "          About : Acerca de."
-echo "        version : Informacion de la actual version."
-echo "        Depends : Muestra las dependencias." 
-echo "       examples : Muestra ejemplos."
-echo "   new-versions : Muestra las ultimas versiones."
-echo "     config-eng : Ejemplo de config con comentarios en ingles."
-echo "     config-spa : Ejemplo de config con comentarios en castellano."
-echo
-echo "# [ Mostrar ayuda ]  "
+echo "$title_md [ Herramienta nmap ]."
 echo 
-echo "       all-help : Muestra la ayuda en español y en ingles."
-echo "           info : Muestra las opciones de grupo."
-echo "  group-options : Muestra las opciones de grupo."
-echo "   mini-options : Muestra las opciones necesarias."
-echo "   full-options : Muestra las opciones."
-echo "        options : Muestra las opciones."
-echo "           help : Muestra la ayuda en ingles."
-echo "          ayuda : Muestra la ayuda en español."
-echo "          notes : Muestra notas de Fran firewall."
+echo "$text_md      scan-tcp : Rastrea una host/mask por tcp protocolo."
+echo "$text_md      scan-syn : Rastrea una host/mask por syn socket."
+echo "$text_md      scan-fin : Rastrea una host/mask por fin socket."
+echo "$text_md      scan-udp : Rastrea una host/mask por udp protocolo."
+echo "$text_md     scan-ping : Rastrea una host/mask por ping udp."
+echo
+echo "$title_md [ Herramienta de autorizacion ]."
+echo
+echo "$text_md  sudo-adduser : Permite autorizacion de usuarios elegidos."
+echo "$text_md  sudo-deluser : Borra la autorizacion otorgada."
+echo "$text_md     sudo-list : Lista autorizacion de usuarios elegidos."
+echo
+echo "$title_md [ Herramienta de juego ]."
+echo
+echo "$text_md   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres."
+echo "$text_md   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos."
+echo "$text_md   ole-domain  : Descubre un dominio si es generico o si es de un pais."
+echo "$text_md   colour-hex  : convierte un numero hexadecimal en rgb ."
+echo "$text_md   colour-rgb  : convierte un numero rgb en hexadecimal ."
+echo
+echo "$title_md [ Herramienta de sistema ]."
+echo
+echo "$text_md      free-ram : Libera la memoria ram innecesaria."
+echo "$text_md     speed-ram : Muestra la velocidad de la memoria ram."
+echo "$text_md    speed-disk : Muestra la velocidad de el disco duro raiz."
+echo "$text_md     speed-glx : Muestra fotogramas por segundo con graficos mesa."
+echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default."
+echo
+echo "$title_md [ Herramienta de instalacion ]."
+echo
+echo "$text_md        install : Instala este programa actual."
+echo "$text_md        upgrade : Actualiza a la ultima version."
+echo "$text_md  howto-upgrade : Indicacion para actualizar."
+echo
+echo "$title_md [ Herramienta de lista de bloqueo ]."
+echo
+echo "$text_md  blacklist-list : Lista de opciones para bloquear hosts peligrosas."
+echo "$text_md    blacklist-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
+echo "$text_md   blacklist-off : Vuelve a /etc/hosts por defecto."
+echo
+echo "$title_md [ Herramienta de desarrollador ]."
+echo
+echo "$text_md    new-versions : Muestra las ultimas versiones."
+echo "$text_md     dev-version : Muestra en enlace a la version de desarrollo."
+echo "$text_md     dev-changes : Muestra los ultimos cambios."
+echo "$text_md            code : Muestra el codigo fuente para una opcion."
+echo
+echo "$title_md [ Herramienta de informacion del hardware ]."
+echo
+echo "$text_md          lpinfo : Muestra los dispositivos de impresora."
+echo "$text_md           lsblk : Muestra los dispositivos de disco."
+echo "$text_md           lsusb : Muestra los dispositivos de usb."
+echo "$text_md           lscpu : Muestra los dispositivos cpu."
+echo "$text_md           lsgpu : Muestra los dispositivos gpu."
+echo "$text_md           lspci : Muestra los dispositivos pci."
+echo "$text_md            lshw : Muestra los dispositivos de hardware."
+echo
+echo "$title_md [ Mostrar etc ]."
+echo
+echo "$text_md           hosts : Muestra /etc/hosts, hosts locales y hosts estaticos."
+echo "$text_md      protocolos : Muestra /etc/protocols, nombres de protocolos."
+echo "$text_md        services : Muestra /etc/services, nombres de puertos y servicios."
+echo "$text_md     hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores."
+echo "$text_md      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
+echo "$text_md     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
+echo "$text_md    show-default : Muestra /etc/default/fwiptables, muestra variables en fwiptables."
+echo "$text_md  modify-default : Modifica /etc/default/fwiptables, modifica variables en fwiptables."
+echo
+echo "$title_md [ Mostrar log ]."
+echo
+echo "$text_md        sentlog : Muestra los volcados con -log ."
+echo "$text_md        filelog : alias a sentlog ."
+echo "$text_md        autolog : Muestra las cabeceras de fwiptables lanzados."
+echo "$text_md        log-ssh : Busca los logs de sshd en /var/log ."
+echo "$text_md     log-search : Busca los logs dando un patron para /var/log ."
+echo
+echo "$title_md [ Mostrar acerca ]."
+echo
+echo "$text_md          About : Acerca de."
+echo "$text_md        version : Informacion de la actual version."
+echo "$text_md        Depends : Muestra las dependencias." 
+echo "$text_md       examples : Muestra ejemplos."
+echo "$text_md   new-versions : Muestra las ultimas versiones."
+echo "$text_md     config-eng : Ejemplo de config con comentarios en ingles."
+echo "$text_md     config-spa : Ejemplo de config con comentarios en castellano."
+echo
+echo "$title_md [ Mostrar ayuda ]."
+echo 
+echo "$text_md       all-help : Muestra la ayuda en español y en ingles."
+echo "$text_md           info : Muestra las opciones de grupo."
+echo "$text_md  group-options : Muestra las opciones de grupo."
+echo "$text_md   mini-options : Muestra las opciones necesarias."
+echo "$text_md   full-options : Muestra las opciones."
+echo "$text_md        options : Muestra las opciones."
+echo "$text_md           help : Muestra la ayuda en ingles."
+echo "$text_md          ayuda : Muestra la ayuda en español."
+echo "$text_md          notes : Muestra notas de Fran firewall."
 echo
 echo
-echo "$ralla Notas de firewall $ralla"
+echo "$title_md $ralla Notas de firewall $ralla"
 echo
 echo
-echo "# [vpn]"
+echo "$title_md [vpn]."
 echo
-echo "     Host [vpn] excepcionales tienen conexion permitida en el firewall."
+echo "$text_md     Host [vpn] excepcionales tienen conexion permitida en el firewall."
 echo
-echo "# [blacklist]"
+echo "$title_md [blacklist]."
 echo
-echo "     Host [blacklist] excepcionales tienen conexion denegada en el firewall."
+echo "$text_md     Host [blacklist] excepcionales tienen conexion denegada en el firewall."
 echo
-echo "# [uid y/o gid excepcional]"
+echo "$title_md [uid y/o gid excepcional]."
 echo
-echo "     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall."
+echo "$text_md     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall."
 echo
-echo "# [iptables netftilter]"
+echo "$title_md [iptables netftilter]."
 echo
-echo "     iptables-legacy   es    soporte para xtables."
-echo "     iptables-nft      es    soporte para nftables."
+echo "$text_md     iptables-legacy   es    soporte para xtables."
+echo "$text_md     iptables-nft      es    soporte para nftables."
 echo
-echo "# [Puertos cliente udp necesarios]"
+echo "$title_md [Puertos cliente udp necesarios]."
 echo
-echo "     necesario para actualizar la fecha :   ntp ."
-echo "     necesario para dhcp y conseguir ip :   bootpc . "
-echo "     necesario para resolver dominios   :   domain ."
+echo "$text_md     necesario para actualizar la fecha :   ntp ."
+echo "$text_md     necesario para dhcp y conseguir ip :   bootpc . "
+echo "$text_md     necesario para resolver dominios   :   domain ."
 echo
-echo "# [Protocolos necesarios para ipv6]"
+echo "$title_md [Protocolos necesarios para ipv6]."
 echo
-echo "     Necesario protocolo: ipv6-icmp ."
-echo "     Ipv6 funciona tambien con: ipv4 procolos ."
+echo "$text_md     Necesario protocolo: ipv6-icmp."
+echo "$text_md     Ipv6 funciona tambien con: ipv4 procolos."
 echo
-echo "# [Licencia]"
+echo "$title_md [Licencia]."
 echo
-echo "  Descarga la ultima version de $fprogram desde la web de sourceforge. "
-echo "  $fweb_latest"
-echo "  $flicense ."
+echo "$text_md  Descarga la ultima version de $fprogram desde la web de sourceforge. "
+echo "$text_md  $fweb_latest ."
+echo "$text_md  $flicense ."
 echo
 echo $footer_lineal
 exit; fi
