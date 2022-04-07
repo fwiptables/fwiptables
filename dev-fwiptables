@@ -162,7 +162,7 @@ directory_fwrecover="/etc/fwrecover" ;
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
 #### #### english: look markdown  #### spanish: apariencia con markdown
-title_md="#  "; text_md="   "; center_in_md="<-"; center_out_md="->"
+title_md="###  "; text_md="   "; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -507,7 +507,7 @@ echo "$rallica [ status ] [ upgrade $fwiptables in $directory_fiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$rallica [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$rallica [ status ] [ Upgrade The $fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser command ]"
-echo "$rallica [ status ] [ Downloading $fwiptables with the comand $favorite_text_browser browser ]"
+echo "$rallica [ status ] [ Downloading $fwiptables with the command $favorite_text_browser browser ]"
 rm /tmp/$fwiptables &> /dev/null
 ####
 ####
@@ -1436,7 +1436,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$text_md $rallica [ $first_option ] [ List mini options ]   "
-echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor            "
+echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor            "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
@@ -1475,7 +1475,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$text_md    $rallica [ $first_option ] [ List full options ] .  "
-echo "$text_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor             "
+echo "$title_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor             "
 echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
@@ -2024,7 +2024,7 @@ echo "          cli-menu : Text cli interface from menus"
 echo "                   : Interfaz de menus desde texto"
 echo "          gui-menu : Gui interface from menu"
 echo "                   : Interfaz grafica desde menu"
-echo "         gui-shell : Gui with comand line interface"
+echo "         gui-shell : Gui with command line interface"
 echo "                   : Gui con interfaz desde linea de comandos"
 echo $footer_lineal
 exit; fi
@@ -7999,21 +7999,21 @@ $fwiptables intro
 echo  $text_md
 $fwiptables options
 echo  $text_md
-echo "$title_md      $rallica [ $first_option ]  [ Principal options ]."
+echo "$title_md      $ralla [ $first_option ]  [ Principal options ]"
 echo  $text_md
 echo  $text_md
-echo "$title_md         [ Launch interface ]."
+echo "$title_md         [ Launch interface ]"
 echo  $text_md
 echo "$text_md       txt OR -txt : Output at text line || whith bash backend."
 echo "$text_md       cli OR -cli : Output at text menu || whith dialog backend."
 echo "$text_md       gui OR -gui : Output at graphicall window || whith zenity backend."
 echo "$text_md       log OR -log : Output in logfile || whith bash backend."
 echo "$text_md       tor OR -tor : Run in tor, necesary daemon tor and torify command || whith tor backend."
-echo "$text_md          cli-menu : Comand line interface with menus || whith dialog backend."
+echo "$text_md          cli-menu : Command line interface with menus || whith dialog backend."
 echo "$text_md          gui-menu : Graphicall interface with menus || whith zenity backend."
 echo "$text_md         gui-shell : Graphicall interface with shell || whith zenity backend."
 echo $text_md
-echo "$title_md        [ Control the iptables rules ]."
+echo "$title_md        [ Control the iptables rules ]"
 echo $text_md
 echo "$text_md          stop : Save and stop firewall iptables."
 echo "$text_md      continue : Restore the firewall iptables stopped."
@@ -8025,7 +8025,7 @@ echo "$text_md          save : Save one firewall iptables."
 echo "$text_md          load : Restore a one firewall iptables."
 echo "$text_md        actual : Show the firewall standard actual."
 echo  $text_md
-echo "$title_md         [ List iptables rules] "
+echo "$title_md         [ List iptables rules]"
 echo  $text_md
 echo "$text_md             list : Like list-filter4 but hiding rules no used."
 echo "$text_md            list6 : Like list-filter6 but hiding rules not used."
@@ -8049,7 +8049,7 @@ echo "$text_md   list-security6 : List iptables security rules from ipv6"
 echo "$text_md    list-ebtables : List rules ebtables mac of ethernet."
 echo "$text_md    ist-arptables : List rules arptables arp."
 echo $text_md    
-echo "$title_md        [ Launch iptables rules ]."
+echo "$title_md        [ Launch iptables rules ]"
 echo  $text_md
 echo "$text_md         eraserules : Remove the iptables rules in ipv4 and ipv6."
 echo "$text_md        wizard-full : Asistant y launch complete firewall."
@@ -8069,200 +8069,200 @@ echo "$text_md       server-print : Launch a firewall like server ipp, printer a
 echo "$text_md         server-ssh : Launch a firewall like server ssh."
 echo "$text_md        server-lamp : Launch a firewall like server LAMP."
 echo  $text_md
-echo "$title_md         [ tool config ]."
+echo "$title_md         [ tool config ]"
 echo  $text_md
-echo "       new-full-config : Create a new configfile.cfg in english"
-echo " nueva-completa-config : Create a new configfile.cfg in spanish"
-echo "       new-mini-config : Create a new basic configfile.cfg in english"
-echo "     nueva-mini-config : Create a new basic configfile.cfg in spanish"
-echo "          regen-config : regen wizard files and templates cfg"
-echo "           list-config : List config files cfg"
-echo "         modify-config : Edit one config.cfg"
-echo "           show-config : Show one config.cfg"
-echo "            del-config : Delete one configuration file"
-echo
-echo "#         [ List sockets ]"
-echo
-echo "      info-nodes : List the conentions arp in lan"
-echo "      info-proxy : List system proxy"
-echo "     info-listen : List system listen socket list"
-echo "      info-route : Show net devices and ip route tables"
-echo "     info-system : Show info system"
-echo "        info-net : Show net info"
-echo "              ss : Show net sockets with command ss"
-echo "            lsof : Show net sockets with command lsof"
-echo "         netstat : Show net sockets with command netstat"
-echo "     netstat-nat : Show net sockets with command netstat-nat"
-echo "        web-cert : Download one ssl certificated to one web with port https(443)"
-echo "         tcpdump : Listen the connections"
-echo
-echo "#         [ Tool forward ]"
-echo
-echo "  ipforward-list : Show kernel config about forward"
-echo "    ipforward-on : Active kernel config about forward"
-echo "   ipforward-off : Deactive kernel config about forward"
-echo
-echo "#         [ Tool tcp ]"
-echo
-echo "    tracetcp-ip4 : Trace route a one host with ipv4 tcp"
-echo "    tracetcp-ip6 : Trace route a one host with ipv6 tcp"
-echo "       speed-ip4 : Test the bandwidth with ipv4"
-echo "       speed-ip6 : Test the bandwidth with ipv6"
-echo
-echo "#         [ Tool udp ]"
-echo
-echo "           host : Resolve one host"
-echo "            dig : Resolve one host"
-echo "      resolveip : Resolve one host and viceversa"
-echo "          geoip : Locate a one host or ip"
-echo "        ntpdate : Update the date from ntp server"
-echo 
-echo "#         [ Tool icmp ]"
-echo
-echo "  traceicmp-ip4 : Trace route a one host with ipv4 icmp"
-echo "  traceicmp-ip6 : Trace route a one host with ipv6 icmp"
-echo "       ping-ip4 : Do a one ping with to one host with ipv4 icmp"
-echo "       ping-ip6 : Do a one ping with to one host with ipv6 icmp"
-echo
-echo "#         [ Tool nmap ]"
-echo 
-echo "       scan-tcp : Scan a host/mask per tcp protocol"
-echo "       scan-syn : Scan a host/mask per syn socket"
-echo "       scan-fin : Scan a host/mask per fin socket"
-echo "       scan-udp : Scan a host/mask per udp protocol"
-echo "      scan-ping : Scan a host/mask per ping udp"
-echo
-echo "#         [ Tool sudo ]"
-echo
-echo "    sudo-adduser : Allow sudo to other choosed users"
-echo "    sudo-deluser : Remove sudo to other choosed users"
-echo "       sudo-list : List sudo to other choosed users"
-echo "      alias-list : List alias $fwiptables and its autocomplete"
-echo
-echo "#         [ Tool game ]"
-echo
-echo "         ole-word : Play game to discover a random word with five digits"
-echo "       ole-number : Play game to discover a random number with five digits"
-echo "       ole-domain : Discover one domain if generic or if country"
-echo "       colour-hex : convert one number hexadecimal in rgb"
-echo "       colour-rgb : convert one number rgb in hexadecimal"
-echo
-echo "#         [ Tool system ]"
-echo
-echo "         free-ram : Clean for innecesary ram memory"
-echo "        speed-ram : Show the speed of ram memory"
-echo "       speed-disk : Show the speed of root hard disc "
-echo "        speed-glx : Show frammes for seconds with mesa graphicall"
-echo "        radio-mp3 : connect to one server mp3, see show-default modify-default"
-echo
-echo "#         [ Tool Install ]"
-echo
-echo "         install : Install this program actual"
-echo "   howto-upgrade : Howto install the latest version"
-echo "         upgrade : Upgrade at the latest version"
-echo
-echo "#         [ Tool blacklist ]"
-echo
-echo "  blacklist-list : List options to block dangerous hosts"
-echo "    blacklist-on : Write one /etc/hosts with block a dangerous sites"
-echo "   blacklist-off : Return to /etc/hosts for default"
-echo
-echo "#         [ Tool dev ]"
-echo
-echo "    new-versions : Show the last versions"
-echo "     dev-version : Show the link at the developer version"
-echo "     dev-changes : Show the last changes"
-echo "            code : Show the source code for one option"
-echo
-echo "#         [ Show hardware ]"
-echo
-echo "          lpinfo : Show the device printers"
-echo "           lsblk : Show the device disks"
-echo "           lsusb : Show the devices usb"
-echo "           lscpu : Show the devices cpu"
-echo "           lsgpu : Show the devices gpu"
-echo "           lspci : Show the devices pci"
-echo "            lshw : Show the hardware devices"
-echo
-echo "#         [ Show etc ]"
-echo
-echo "           hosts : Show /etc/hosts, hosts local and statics host"
-echo "      protocolos : Show /etc/protocols, protocols names"
-echo "        services : Show /etc/services, ports names"
-echo "     hosts.allow : Show /etc/hosts.allow, hosts allowed in some own server"
-echo "      hosts.deny : Show /etc/hosts.deny, hosts drops in some own server"
-echo "     resolv.conf : Show /etc/resolv.conf, it are the dns configured"
-echo "    show-default : Show show variables for fwiptables"
-echo "  modify-default : Modify variables for fwiptables"
-echo
-echo "#         [ Show log ]"
-echo
-echo "        log-ssh : Search the logs from sshd for /var/log"
-echo "     log-search : Search the logs from a input pattern for /var/log"
-echo "        sentlog : Show $file_output_filelog , over -log"
-echo "        filelog : Alias to sentlog"
-echo "        autolog : Show $file_output_autolog , only headers"
-echo
-echo "#         [ Show about ]"
-echo
-echo "          about : About info"
-echo "        version : Info version program actual"
-echo "        depends : Show depends"
-echo "       examples : Show examples"
-echo "   new-versions : Show the last versions"
-echo "     config-eng : config example with comments in english"
-echo "     config-spa : config example with comments in spanish"
-echo
-echo "#         [ Show help ]"
-echo
-echo "       all-help : Show help in spanish and in english"
-echo "           info : Show group options"
-echo "  group-options : show group options"
-echo "   mini-options : Show necesary options for firewall"
-echo "   full-options : Show the full options"
-echo "        options : Show the full options"
-echo "           help : Show help in english"
-echo "          ayuda : Show help in spanish"
-echo "          notes : Show firewall notes"
-echo
-echo
-echo "$ralla firewall notes $ralla"
-echo
-echo
-echo "#  [vpn]"
-echo
-echo "     Host [vpn] excepcionals hosts has conection allowed in firewall"
-echo 
-echo "#  [blacklist]"
-echo
-echo "     Host [blacklist] excepcionals hosts has conection dropped in firewall"
-echo 
-echo "#  [uid and/or gid excepcional]"
-echo
-echo "     User and/or group excepcional have output conection allowed in firewall"
-echo
-echo "#  [iptables netftilter]"
-echo
-echo "     iptables-legacy   is    support for xtables "
-echo "     iptables-nft      is    support for nftables "
-echo
-echo "#  [client firewall needs in udp ports]"
-echo
-echo "     This port is necesary to update the date  : ntp"
-echo "     This port is necesary to dhcp and get ip  : bootpc"
-echo "     This port is necesary to domain resolver  : domain"
-echo
-echo "#  [Ipv6 needs protocols]"
-echo
-echo "     Necesary protocol: ipv6-icmp"
-echo "     Ipv6 works too with: ipv4 procotols"
-echo
-echo "#  [License]"
-echo 
-echo "  Download the latest version $fprogram from sourceforge"
-echo "  $fweb_latest"
-echo "  $flicense"
-echo
+echo "$text_md       new-full-config : Create a new configfile.cfg in english"
+echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish"
+echo "$text_md       new-mini-config : Create a new basic configfile.cfg in english"
+echo "$text_md     nueva-mini-config : Create a new basic configfile.cfg in spanish"
+echo "$text_md          regen-config : regen wizard files and templates cfg"
+echo "$text_md           list-config : List config files cfg"
+echo "$text_md         modify-config : Edit one config.cfg"
+echo "$text_md           show-config : Show one config.cfg"
+echo "$text_md            del-config : Delete one configuration file"
+echo  $text_md
+echo "$title_md         [ List sockets ]"
+echo  $text_md
+echo "$text_md      info-nodes : List the conentions arp in lan"
+echo "$text_md      info-proxy : List system proxy"
+echo "$text_md     info-listen : List system listen socket list"
+echo "$text_md      info-route : Show net devices and ip route tables"
+echo "$text_md     info-system : Show info system"
+echo "$text_md        info-net : Show net info"
+echo "$text_md              ss : Show net sockets with command ss"
+echo "$text_md            lsof : Show net sockets with command lsof"
+echo "$text_md         netstat : Show net sockets with command netstat"
+echo "$text_md     netstat-nat : Show net sockets with command netstat-nat"
+echo "$text_md        web-cert : Download one ssl certificated to one web with port https(443)"
+echo "$text_md         tcpdump : Listen the connections"
+echo  $text_md
+echo "$title_md         [ Tool forward ]"
+echo  $text_md
+echo "$text_md  ipforward-list : Show kernel config about forward"
+echo "$text_md    ipforward-on : Active kernel config about forward"
+echo "$text_md   ipforward-off : Deactive kernel config about forward"
+echo  $text_md
+echo "$title_md         [ Tool tcp ]"
+echo  $text_md
+echo "$text_md    tracetcp-ip4 : Trace route a one host with ipv4 tcp"
+echo "$text_md    tracetcp-ip6 : Trace route a one host with ipv6 tcp"
+echo "$text_md       speed-ip4 : Test the bandwidth with ipv4"
+echo "$text_md       speed-ip6 : Test the bandwidth with ipv6"
+echo  $text_md
+echo "$title_md         [ Tool udp ]"
+echo  $text_md
+echo "$text_md           host : Resolve one host"
+echo "$text_md            dig : Resolve one host"
+echo "$text_md      resolveip : Resolve one host and viceversa"
+echo "$text_md          geoip : Locate a one host or ip"
+echo "$text_md        ntpdate : Update the date from ntp server"
+echo  $text_md
+echo "$title_md         [ Tool icmp ]"
+echo  $text_md
+echo "$text_md  traceicmp-ip4 : Trace route a one host with ipv4 icmp"
+echo "$text_md  traceicmp-ip6 : Trace route a one host with ipv6 icmp"
+echo "$text_md       ping-ip4 : Do a one ping with to one host with ipv4 icmp"
+echo "$text_md       ping-ip6 : Do a one ping with to one host with ipv6 icmp"
+echo  $text_md
+echo "$title_md         [ Tool nmap ]"
+echo $text_md
+echo "$text_md       scan-tcp : Scan a host/mask per tcp protocol"
+echo "$text_md       scan-syn : Scan a host/mask per syn socket"
+echo "$text_md       scan-fin : Scan a host/mask per fin socket"
+echo "$text_md       scan-udp : Scan a host/mask per udp protocol"
+echo "$text_md      scan-ping : Scan a host/mask per ping udp"
+echo  $text_md
+echo "$title_md         [ Tool sudo ]"
+echo  $text_md
+echo "$text_md    sudo-adduser : Allow sudo to other choosed users"
+echo "$text_md    sudo-deluser : Remove sudo to other choosed users"
+echo "$text_md       sudo-list : List sudo to other choosed users"
+echo "$text_md      alias-list : List alias $fwiptables and its autocomplete"
+echo  $text_md
+echo "$title_md         [ Tool game ]"
+echo  $text_md
+echo "$text_md         ole-word : Play game to discover a random word with five digits"
+echo "$text_md       ole-number : Play game to discover a random number with five digits"
+echo "$text_md       ole-domain : Discover one domain if generic or if country"
+echo "$text_md       colour-hex : convert one number hexadecimal in rgb"
+echo "$text_md       colour-rgb : convert one number rgb in hexadecimal"
+echo $text_md
+echo "$title_md         [ Tool system ]"
+echo $text_md
+echo "$text_md         free-ram : Clean for innecesary ram memory"
+echo "$text_md        speed-ram : Show the speed of ram memory"
+echo "$text_md       speed-disk : Show the speed of root hard disc "
+echo "$text_md        speed-glx : Show frammes for seconds with mesa graphicall"
+echo "$text_md        radio-mp3 : connect to one server mp3, see show-default modify-default"
+echo  $text_md
+echo "$title_md         [ Tool Install ]"
+echo  $text_md
+echo "$text_md         install : Install this program actual"
+echo "$text_md   howto-upgrade : Howto install the latest version"
+echo "$text_md         upgrade : Upgrade at the latest version"
+echo  $text_md
+echo "$title_md         [ Tool blacklist ]"
+echo  $text_md
+echo "$text_md  blacklist-list : List options to block dangerous hosts"
+echo "$text_md    blacklist-on : Write one /etc/hosts with block a dangerous sites"
+echo "$text_md   blacklist-off : Return to /etc/hosts for default"
+echo $text_md
+echo "$title_md         [ Tool dev ]"
+echo  $text_md
+echo "$text_md    new-versions : Show the last versions"
+echo "$text_md     dev-version : Show the link at the developer version"
+echo "$text_md     dev-changes : Show the last changes"
+echo "$text_md            code : Show the source code for one option"
+echo  $text_md
+echo "$title_md         [ Show hardware ]"
+echo  $text_md
+echo "$text_md          lpinfo : Show the device printers"
+echo "$text_md           lsblk : Show the device disks"
+echo "$text_md           lsusb : Show the devices usb"
+echo "$text_md           lscpu : Show the devices cpu"
+echo "$text_md           lsgpu : Show the devices gpu"
+echo "$text_md           lspci : Show the devices pci"
+echo "$text_md            lshw : Show the hardware devices"
+echo  $text_md
+echo "$title_md         [ Show etc ]"
+echo  $text_md
+echo "$text_md           hosts : Show /etc/hosts, hosts local and statics host"
+echo "$text_md      protocolos : Show /etc/protocols, protocols names"
+echo "$text_md        services : Show /etc/services, ports names"
+echo "$text_md     hosts.allow : Show /etc/hosts.allow, hosts allowed in some own server"
+echo "$text_md      hosts.deny : Show /etc/hosts.deny, hosts drops in some own server"
+echo "$text_md     resolv.conf : Show /etc/resolv.conf, it are the dns configured"
+echo "$text_md    show-default : Show show variables for fwiptables"
+echo "$text_md  modify-default : Modify variables for fwiptables"
+echo  $text_md
+echo "$title_md         [ Show log ]"
+echo  $text_md
+echo "$text_md        log-ssh : Search the logs from sshd for /var/log"
+echo "$text_md     log-search : Search the logs from a input pattern for /var/log"
+echo "$text_md        sentlog : Show $file_output_filelog , over -log"
+echo "$text_md        filelog : Alias to sentlog"
+echo "$text_md        autolog : Show $file_output_autolog , only headers"
+echo  $text_md
+echo "$title_md         [ Show about ]"
+echo  $text_md
+echo "$text_md          about : About info"
+echo "$text_md        version : Info version program actual"
+echo "$text_md        depends : Show depends"
+echo "$text_md       examples : Show examples"
+echo "$text_md   new-versions : Show the last versions"
+echo "$text_md     config-eng : config example with comments in english"
+echo "$text_md     config-spa : config example with comments in spanish"
+echo  $text_md
+echo "$title_md         [ Show help ]"
+echo $text_md
+echo "$text_md       all-help : Show help in spanish and in english"
+echo "$text_md           info : Show group options"
+echo "$text_md  group-options : show group options"
+echo "$text_md   mini-options : Show necesary options for firewall"
+echo "$text_md   full-options : Show the full options"
+echo "$text_md        options : Show the full options"
+echo "$text_md           help : Show help in english"
+echo "$text_md          ayuda : Show help in spanish"
+echo "$text_md          notes : Show firewall notes"
+echo  $text_md
+echo  $text_md
+echo "$title_md $ralla firewall notes $ralla"
+echo  $text_md
+echo  $text_md
+echo "$title_md  [vpn]"
+echo  $text_md
+echo "$text_md     Host [vpn] excepcionals hosts has conection allowed in firewall"
+echo  $text_md
+echo "$title_md  [blacklist]"
+echo  $text_md
+echo "$text_md     Host [blacklist] excepcionals hosts has conection dropped in firewall"
+echo  $text_md
+echo "$title_md  [uid and/or gid excepcional]"
+echo  $text_md
+echo "$text_md     User and/or group excepcional have output conection allowed in firewall"
+echo  $text_md
+echo "$title_md  [iptables netftilter]"
+echo  $text_md
+echo "$text_md     iptables-legacy   is    support for xtables "
+echo "$text_md     iptables-nft      is    support for nftables "
+echo  $text_md
+echo "$title_md  [client firewall needs in udp ports]"
+echo  $text_md
+echo "$text_md     This port is necesary to update the date  : ntp"
+echo "$text_md     This port is necesary to dhcp and get ip  : bootpc"
+echo "$text_md     This port is necesary to domain resolver  : domain"
+echo  $text_md
+echo "$title_md  [Ipv6 needs protocols]"
+echo  $text_md
+echo "$text_md     Necesary protocol: ipv6-icmp"
+echo "$text_md     Ipv6 works too with: ipv4 procotols"
+echo  $text_md
+echo "$title_md  [License]"
+echo  $text_md
+echo "$text_md  Download the latest version $fprogram from sourceforge"
+echo "$text_md  $fweb_latest"
+echo "$text_md  $flicense"
+echo $text_md
 echo $footer_lineal
 exit; fi
 ####
