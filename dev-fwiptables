@@ -317,7 +317,7 @@ echo "$title_md    Fran fwiptables installer. "
 echo  $text_md
 cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md     $fwiptables $fversion   ||   Actually, this version is installed  "
-echo "$text_md     Install this version whith this file of fwiptables     ||   TYPE:  ./fwiptables-$fversion install" 
+echo "$text_md     Install this version with this file of fwiptables      ||   TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web sourceforge.net   ||   TYPE:  ./fwiptables-$fversion upgrade" 
 echo  $text_md
 echo "$title_md    Fran fwiptables project.  "
