@@ -161,14 +161,14 @@ directory_fwrecover="/etc/fwrecover" ;
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
-#### #### english: look markdown  #### spanish: apariencia con markdown
+#### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
 title_md="###  "; text_md="   "; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal=" || $fwiptables || Version $fversion || Use: $fwiptables options ||  $(date)  ||"
+head_principal="$text_md || $fwiptables || Version $fversion || Use: $fwiptables options ||  $(date)  ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -301,32 +301,32 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "intro" ]; then $nada
-echo
-echo "---------------------------------------------------------------------------"
-echo
-echo "     Fran fwiptables intro. "
-echo 
-echo "     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
-echo "     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
-echo "     Create one firewall custom with a wizard and save it in standard file.   "
-echo "     Control the firewall with the standard iptables files for all tables.    "
-echo "     Run rules of one firewall with your own config files.                    "
-echo "     And too, use this firewall with some utilities for ipv4 and ipv6.        "
-echo
-echo "     Fran fwiptables installer. "
-echo
-cmp -s $0 $directory_fiptables/$fwiptables || echo "     $fwiptables $fversion   ||   Actually, this version is not installed  "
-cmp -s $0 $directory_fiptables/$fwiptables && echo "     $fwiptables $fversion   ||   Actually, this version is installed  "
-echo "     Install this version whith this file of fwiptables     ||   TYPE:  ./fwiptables-$fversion install" 
-echo "     Install lastest version from the web sourceforge.net   ||   TYPE:  ./fwiptables-$fversion upgrade" 
-echo
-echo "     Fran fwiptables project.  "
-echo
-echo "     License gnu / gpl v2.                                                    "
-echo "     See web page project in $fweb_main                                       "
-echo
-echo "--------------------------------------------------------------------------"
-echo
+echo  $text_md
+echo "$text_md ---------------------------------------------------------------------------"
+echo  $text_md
+echo "$title_md     Fran fwiptables intro. "
+echo  $text_md
+echo "$text_md     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
+echo "$text_md     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
+echo "$text_md     Create one firewall custom with a wizard and save it in standard file.   "
+echo "$text_md     Control the firewall with the standard iptables files for all tables.    "
+echo "$text_md     Run rules of one firewall with your own config files.                    "
+echo "$text_md     And too, use this firewall with some utilities for ipv4 and ipv6.        "
+echo  $text_md
+echo "$title_md     Fran fwiptables installer. "
+echo  $text_md
+cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
+cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md     $fwiptables $fversion   ||   Actually, this version is installed  "
+echo "$text_md     Install this version whith this file of fwiptables     ||   TYPE:  ./fwiptables-$fversion install" 
+echo "$text_md     Install lastest version from the web sourceforge.net   ||   TYPE:  ./fwiptables-$fversion upgrade" 
+echo  $text_md
+echo "$title_md     Fran fwiptables project.  "
+echo  $text_md
+echo "$text_md     License gnu / gpl v2.                                                    "
+echo "$text_md     See web page project in $fweb_main                                       "
+echo  $text_md
+echo "$text_md --------------------------------------------------------------------------"
+echo  $text_md
 exit; fi
 ####
 ####
@@ -7990,7 +7990,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help" ]; then 
-echo "$text_md $ralla [ $first_option ] [ help in english ] $ralla $ralla"
+echo "$text_md $ralla [ $first_option ] [ help in english ] [ help.md ] $ralla $ralla"
 echo  $text_md
 echo "$text_md  ||  Choose only help in english   ||  Type:     $fwiptables help     ."
 echo "$text_md  ||  Elige solo ayuda en español   ||  Teclea:   $fwiptables ayuda    ."
@@ -8274,8 +8274,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then 
-echo "$title_md $ralla [ $first_option ] [ ayuda en español ] $ralla $ralla ."
-echo
+echo "$title_md $ralla [ $first_option ] [ ayuda en español ] [ ayuda.md ]$ralla $ralla ."
+echo  $text_md
 echo "$text_md  ||  Choose only help in english   ||   Type:     $fwiptables help     ."
 echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    ."
 echo "$text_md  ||  help in english and spanish   ||   Type:     $fwiptables all-help ."
