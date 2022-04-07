@@ -1435,7 +1435,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$text_md $rallica [ $first_option ] [ List mini options ]   "
+echo "$text_md $rallica [ $first_option ] [ List mini options ]"
 echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor            "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
@@ -1457,13 +1457,13 @@ echo "$text_md                       tool-system     tool-install   tool-blackli
 echo "$text_md     show-options   |  show-hardware   show-etc       show-log         show-about      "
 echo "$text_md                       show-help       show-example                                    " 
 echo "$text_md  $ralla $ralla $ralla $ralla"
-echo "$text_md          [ Example Description ]         |            [ Example ]             "
-echo "$text_md     Show more options likes output txt   |   $fwiptables options              "
-echo "$text_md     List iptables rules with output txt  |   $fwiptables -txt list            "
-echo "$text_md     Save rules with output cli           |   $fwiptables -cli save one-name   "
-echo "$text_md     List firewall saved with output cli  |   $fwiptables -cli names           "
-echo "$text_md     List sockets ip with output gui      |   $fwiptables -gui ss              "
-echo "$text_md     Generate rules with output gui       |   $fwiptables -gui wizard-mini     "
+echo "$title_md       [ Example command ]                       [ Example Description ]                  "
+echo "$text_md    $fwiptables options                  |  Show more options likes output txt             "
+echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt            "
+echo "$text_md    $fwiptables -cli save one-name       |  Save rules with output cli                     "
+echo "$text_md    $fwiptables -cli names               |  List firewall saved with output cli            "
+echo "$text_md    $fwiptables -gui ss                  |  List sockets ip with output gui                "
+echo "$text_md    $fwiptables -gui wizard-mini         |  Generate rules with output gui                 "
 exit ; fi
 ####
 ####
@@ -1474,7 +1474,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$text_md    $rallica [ $first_option ] [ List full options ] .  "
+echo "$text_md    $rallica [ $first_option ] [ List full options ]"
 echo "$title_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor             "
 echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
@@ -1516,7 +1516,7 @@ echo "$text_md                          config-eng config-spa license           
 echo "$text_md    show-help          |  all-help help ayuda notes options info                           "
 echo "$text_md                          group-options mini-options full-options                          "
 echo "$text_md    $ralla $ralla $ralla $rallica $rallica   "
-echo "$title_md       [ Example command ]               |        [ Example Description ]                 "
+echo "$title_md       [ Example command ]                       [ Example Description ]                  "
 echo "$text_md    $fwiptables options                  |  Show more options likes output txt             "
 echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt            "
 echo "$text_md    $fwiptables -cli save one-name       |  Save rules with output cli                     "
