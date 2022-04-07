@@ -304,7 +304,7 @@ if [ "$first_option" = "intro" ]; then $nada
 echo  $text_md
 echo "$text_md ---------------------------------------------------------------------------"
 echo  $text_md
-echo "$title_md     Fran fwiptables intro. "
+echo "$title_md    Fran fwiptables intro. "
 echo  $text_md
 echo "$text_md     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
 echo "$text_md     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
@@ -313,14 +313,14 @@ echo "$text_md     Control the firewall with the standard iptables files for all
 echo "$text_md     Run rules of one firewall with your own config files.                    "
 echo "$text_md     And too, use this firewall with some utilities for ipv4 and ipv6.        "
 echo  $text_md
-echo "$title_md     Fran fwiptables installer. "
+echo "$title_md    Fran fwiptables installer. "
 echo  $text_md
 cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md     $fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version whith this file of fwiptables     ||   TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web sourceforge.net   ||   TYPE:  ./fwiptables-$fversion upgrade" 
 echo  $text_md
-echo "$title_md     Fran fwiptables project.  "
+echo "$title_md    Fran fwiptables project.  "
 echo  $text_md
 echo "$text_md     License gnu / gpl v2.                                                    "
 echo "$text_md     See web page project in $fweb_main                                       "
