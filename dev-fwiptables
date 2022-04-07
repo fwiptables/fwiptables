@@ -2303,18 +2303,18 @@ exit; fi
 if [ "$first_option" = "tool-system" ]; then $give_cover
 echo "$ralla [ $first_option ] [ tool system ]"
 echo "$rallica [ Tool system ]"
-echo "$rallica [ Herramienta systema ]"
+echo "$rallica [ Herramienta sistema ]"
 echo
-echo "      free-ram : Clean for innecesary memory"
-echo "               : Libera la memoria innecesaria"
-echo "     speed-ram : Show the speed of ram"
-echo "               : Muestra la velocidad de la ram"
-echo "    speed-disk : Show the speed of disc"
-echo "               : Muestra la velocidad de el disco"
+echo "      free-ram : Clean for innecesary memory ram"
+echo "               : Libera la memoria ram innecesaria"
+echo "     speed-ram : Show the speed of ram memory"
+echo "               : Muestra la velocidad de la memoria ram"
+echo "    speed-disk : Show the speed of root hard disk"
+echo "               : Muestra la velocidad de el disco duro raiz"
 echo "     speed-glx : Show frammes for seconds with mesa graphicall"
 echo "               : Muestra fotogramas por segundo con graficos mesa"
-echo "     radio-mp3 : connect to one server mp3, see $fwiptables default"
-echo "               : connecta a on servidor mp3, see $fwiptables default"
+echo "     radio-mp3 : connect to one server mp3, see show-default or modify-default"
+echo "               : connecta a on servidor mp3, mira show-default o modify-default"
 echo $footer_lineal
 exit; fi
 ####
@@ -8151,11 +8151,11 @@ echo "       colour-rgb : convert one number rgb in hexadecimal"
 echo
 echo "#         [ Tool system ]"
 echo
-echo "         free-ram : Clean for innecesary memory"
-echo "        speed-ram : Show the speed of ram"
-echo "       speed-disk : Show the speed of disc"
+echo "         free-ram : Clean for innecesary ram memory"
+echo "        speed-ram : Show the speed of ram memory"
+echo "       speed-disk : Show the speed of root hard disc "
 echo "        speed-glx : Show frammes for seconds with mesa graphicall"
-echo "        radio-mp3 : connect to one server mp3, see $fwiptables default"
+echo "        radio-mp3 : connect to one server mp3, see show-default modify-default"
 echo
 echo "#         [ Tool Install ]"
 echo
@@ -8435,11 +8435,11 @@ echo "   colour-rgb  : convierte un numero rgb en hexadecimal  "
 echo
 echo "# [ Herramienta de sistema ]  "
 echo
-echo "      free-ram : Libera la memoria innecesaria  "
-echo "     speed-ram : Muestra la velocidad de la ram  "
-echo "    speed-disk : Muestra la velocidad de el disco  "
+echo "      free-ram : Libera la memoria ram innecesaria  "
+echo "     speed-ram : Muestra la velocidad de la memoria ram  "
+echo "    speed-disk : Muestra la velocidad de el disco duro raiz  "
 echo "     speed-glx : Muestra fotogramas por segundo con graficos mesa  "
-echo "     radio-mp3 : connecta a on servidor mp3, see $fwiptables default  "
+echo "     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default  "
 echo
 echo "# [ Herramienta de instalacion ]  "
 echo
