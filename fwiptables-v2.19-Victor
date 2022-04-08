@@ -1587,18 +1587,18 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "show-options" ] ; then $give_cover
-echo "$ralla [ $first_option ] [ Show options ] $ralla"
-echo "$tab" "$tab"  "                                   | show-options |                           " 
-echo "$tab" "$tab"  "    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$tab" "$tab"  "    show-log          | log-search log-ssh sentlog autolog                    "
-echo "$tab" "$tab"  "    show-etc          | hosts resolv.conf  protocols services                 "
-echo "$tab" "$tab"  "                        hosts.allow hosts.deny show-default modify-default    "
-echo "$tab" "$tab"  "    show-about        | about version depends examples                        "
-echo "$tab" "$tab"  "                        config-eng config-spa license                         "
-echo "$tab" "$tab"  "    show-help         | all-help help ayuda notes options info                "
-echo "$tab" "$tab"  "                        group-options mini-options full-options               "
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
-echo "$tab" "$tab"  "  | Group |  firewall-options     tool-options        show-options            "
+echo "$text_md $ralla [ $first_option ] [ Show options ] [ show-options.md ]"
+echo "$title_md                                   | show-options |                           " 
+echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
+echo "$text_md    show-log          | log-search log-ssh sentlog autolog                    "
+echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
+echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
+echo "$text_md    show-about        | about version depends examples                        "
+echo "$text_md                        config-eng config-spa license                         "
+echo "$text_md    show-help         | all-help help ayuda notes options info                "
+echo "$text_md                        group-options mini-options full-options               "
+echo "$text_md  $ralla $ralla $ralla"
+echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
 ####
