@@ -405,14 +405,15 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$rallica [ status ] [ Install $fwiptables in $directory_fiptables ]"
+echo "$title_md [ $first_option ] [ $fwiptables installer ] [ install.md ]"
+echo "$text_md [ status ] [ Install $fwiptables in $directory_fiptables ]"
 #### 
 #### 
 ####  english: copy the file
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$rallica [ running ] [ $zero_option install ]"
+echo "$text_md [ running ] [ $zero_option install ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 #### 
 #### 
@@ -480,18 +481,18 @@ chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
 $fwiptables regen-config &> /dev/null
 ####
 ####
-echo "$rallica [ status ] [ $fwiptables $fversion installing ]" 
-echo "$rallica [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
-echo "$rallica [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$rallica [ ok ] [ New config files installed ]"
+echo "$text_md [ status ] [ $fwiptables $fversion installing ]" 
+echo "$text_md [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
+echo "$text_md [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$text_md [ ok ] [ New config files installed ]"
 #### 
 #### 
 ####  english: modes of file 
 ####  spanish: modos de archivo
 #### 
 #### 
-echo "$rallica [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
-echo "$rallica [ ok ] [ Launch $fwiptables to run /  type:  ] [ $fwiptables ]" 
+echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
+echo "$text_md [ ok ] [ Launch $fwiptables to run /  type:  ] [ $fwiptables ]" 
 exit; fi
 ####
 ####
@@ -502,12 +503,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then $give_cover
-echo "$rallica [ status ] [ upgrade $fwiptables at last version for web ]"
-echo "$rallica [ status ] [ upgrade $fwiptables in $directory_fiptables ]"
+echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
+echo "$text_md [ status ] [ upgrade $fwiptables at latest version from sourceforge.net web ]"
+echo "$text_md [ status ] [ upgrade $fwiptables in $directory_fiptables ]"
 case "$favorite_text_browser" in
-"$NULL")echo "$rallica [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$rallica [ status ] [ Upgrade The $fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser command ]"
-echo "$rallica [ status ] [ Downloading $fwiptables with the command $favorite_text_browser browser ]"
+"$NULL")echo "$text_md $rallica [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
+echo "$text_md [ status ] [ Upgrade The $fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ status ] [ Downloading $fwiptables with the command $favorite_text_browser browser ]"
 rm /tmp/$fwiptables &> /dev/null
 ####
 ####
@@ -515,8 +517,8 @@ rm /tmp/$fwiptables &> /dev/null
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$rallica [ downloading ] [ $fweb_latest ]"
-echo "$rallica [ status ] [ Waiting several seconds .. ]"
+echo "$text_md [ downloading ] [ $fweb_latest ]"
+echo "$text_md [ status ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_latest &> "/tmp/$fwiptables-installer"
 chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
 ####
@@ -526,7 +528,7 @@ chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
 ####
 ####
 if [ -s "/tmp/$fwiptables-installer" ]; then /tmp/$fwiptables-installer install; rm /tmp/$fwiptables-installer
-else "$rallica [ fail ] [ Install fail ]"; fi
+else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
 ####
