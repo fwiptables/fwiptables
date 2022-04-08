@@ -1435,7 +1435,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$text_md $rallica [ $first_option ] [ List mini options ]"
+echo "$text_md $rallica [ $first_option ] [ List mini options ] [ mini-options.md ]"
 echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor            "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
@@ -1474,7 +1474,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$text_md    $rallica [ $first_option ] [ List full options ]"
+echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ]"
 echo "$title_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -tor             "
 echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
