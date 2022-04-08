@@ -1816,10 +1816,10 @@ echo "$title_md $ralla [ $first_option ] [ launch rules ] [ firewall-launch.md ]
 echo "$text_md $rallica [ eng ] [ Launch iptables rules ]"
 echo "$text_md $rallica [ spa ] [ Lanza reglas de iptables ]"
 echo  $text_md
-echo "$text_md     eraserules"
+echo "$text_md      $rallica eraserules $rallica" 
 echo "$text_md eng           : Remove the iptables rules in ipv4 and ipv6"
 echo "$text_md spa           : Borra las reglas de iptables en ipv4 y ipv6"
-echo "$text_md    wizard-mini"
+echo "$text_md      $rallica wizard-mini $rallica"
 echo "$text_md eng           : Launch one wizard mini to launch iptables rules"
 echo "$text_md spa           : Lanza un wizard mini para lanzar reglas de iptables"
 echo "$text_md    wizard-full"
