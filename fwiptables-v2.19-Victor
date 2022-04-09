@@ -162,7 +162,7 @@ directory_fwrecover="/etc/fwrecover" ;
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
-title_md="###  "; text_md="   "; center_in_md="<-"; center_out_md="->"
+title_md="###  "; text_md="     "; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -304,7 +304,7 @@ if [ "$first_option" = "intro" ]; then $nada
 echo  $text_md
 echo "$text_md ---------------------------------------------------------------------------"
 echo  $text_md
-echo "$title_md    Fran fwiptables intro. "
+echo "$title_md     Fran fwiptables intro. "
 echo  $text_md
 echo "$text_md     Use || Fran Firewall || to configure both iptables netfilter for linux.  "
 echo "$text_md     With support in || xtables || and/or || nftables || in ipv4 and/or ipv6. "
@@ -313,14 +313,14 @@ echo "$text_md     Control the firewall with the standard iptables files for all
 echo "$text_md     Run rules of one firewall with your own config files.                    "
 echo "$text_md     And too, use this firewall with some utilities for ipv4 and ipv6.        "
 echo  $text_md
-echo "$title_md    Fran fwiptables installer. "
+echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
 cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md     $fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version with this file of fwiptables      ||   TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web sourceforge.net   ||   TYPE:  ./fwiptables-$fversion upgrade" 
 echo  $text_md
-echo "$title_md    Fran fwiptables project.  "
+echo "$title_md     Fran fwiptables project.  "
 echo  $text_md
 echo "$text_md     License gnu / gpl v2.                                                    "
 echo "$text_md     See web page project in $fweb_main                                       "
@@ -1768,28 +1768,39 @@ echo "$text_md eng                   Crea, modifica y muestra configuraciones"
 echo  $text_md 
 echo "$title_md                   [ tool options ]"
 echo  $text_md 
-echo "$text_md       tool-sockets :  List net sockets ip in system"
-echo "$text_md                    :  Lista sockets de red ip en el sistema"
-echo "$text_md       tool-forward :  list, active and desactive ipforward in linux"
-echo "$text_md                    :  lista, activa y desactiva ipforward en linux"
-echo "$text_md           tool-tcp :  Several tools tcp"
-echo "$text_md                    :  Varias herramientas tcp"
-echo "$text_md           tool-udp :  Several tools udp"
-echo "$text_md                    :  Varias herramientas udp"
-echo "$text_md          tool-icmp :  Several tools icmp"
-echo "$text_md                    :  Varias herramientas icmp"
-echo "$text_md          tool-nmap :  Port scan"
-echo "$text_md                    :  Escaneo de puertos"
-echo "$text_md          tool-sudo :  Tool to auth sudo a users for fwiptables"
-echo "$text_md                    :  Herramienta de autorizacion a usuarios para fwiptables"
-echo "$text_md       tool-install :  Tool to install and upgrade fwiptables"
-echo "$text_md                    :  Herramienta para instalar y actualizar fwiptables"
-echo "$text_md     tool-blacklist :  Tool for block dangerous sites"
-echo "$text_md                    :  Herramienta para bloquear peligrosos sitios"
-echo "$text_md           tool-dev :  Tool to developer"
-echo "$text_md                    :  Herramienta de desarrollo"
-echo "$text_md        tool-system :  Several tools for the system"
-echo "$text_md                    :  Varias herramientas para el sistema"
+echo "$text_md       tool-sockets $ralla"
+echo "$text_md eng                   List net sockets ip in system"
+echo "$text_md spa                   Lista sockets de red ip en el sistema"
+echo "$text_md       tool-forward $ralla"
+echo "$text_md eng                   list, active and desactive ipforward in linux"
+echo "$text_md spa                   lista, activa y desactiva ipforward en linux"
+echo "$text_md           tool-tcp $ralla"
+echo "$text_md eng                   Several tools tcp"
+echo "$text_md spa                   Varias herramientas tcp"
+echo "$text_md           tool-udp $ralla"
+echo "$text_md eng                   Several tools udp"
+echo "$text_md spa                   Varias herramientas udp"
+echo "$text_md          tool-icmp $ralla"
+echo "$text_md eng                   Several tools icmp"
+echo "$text_md spa                   Varias herramientas icmp"
+echo "$text_md          tool-nmap $ralla"
+echo "$text_md eng                   Port scan"
+echo "$text_md spa                   Escaneo de puertos"
+echo "$text_md          tool-sudo $ralla"
+echo "$text_md eng                   Tool to auth sudo a users for fwiptables"
+echo "$text_md spa                   Herramienta de autorizacion a usuarios para fwiptables"
+echo "$text_md       tool-install $ralla"
+echo "$text_md eng                   Tool to install and upgrade fwiptables"
+echo "$text_md spa                   Herramienta para instalar y actualizar fwiptables"
+echo "$text_md     tool-blacklist $ralla"
+echo "$text_md eng                   Tool for block dangerous sites"
+echo "$text_md spa                   Herramienta para bloquear peligrosos sitios"
+echo "$text_md           tool-dev $ralla"
+echo "$text_md eng                   Tool to developer"
+echo "$text_md spa                   Herramienta de desarrollo"
+echo "$text_md        tool-system $ralla"
+echo "$text_md eng                   Several tools for the system"
+echo "$text_md spa                   Varias herramientas para el sistema"
 echo  $text_md 
 echo "$title_md                   [ show options ]"
 echo  $text_md 
