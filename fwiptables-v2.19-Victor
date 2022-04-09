@@ -1938,7 +1938,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-list" ]; then $give_cover
-echo "$text_md $ralla [ $first_option ] [ List rules ]"
+echo "$title_md $ralla [ $first_option ] [ List rules ]"
 echo  $text_md
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
@@ -2026,7 +2026,7 @@ echo "$rallica [ Lista reglas numericas de iptables ]"
 echo
 echo "               listnum : List iptables filter rules input and output ipv4 in numbers"
 echo "                       : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
-echo "      list- forwardnum : List iptables filter rules foward in numbers"
+echo "       list-forwardnum : List iptables filter rules foward in numbers"
 echo "                       : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
 echo "              listnum6 : List iptables filter rules input and output ipv6 in numbers"
 echo "                       : Lista la tabla de reglas de filtros de entrada y salida ipv6 in numeros"
@@ -2044,28 +2044,38 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-custom" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool custom rules config ]"
-echo "$rallica [ custom configs ]"
-echo "$rallica [ Herramienta de configuraciones de reglas ]"
-echo
-echo "           new-full-config : Create a new advance configfile.cfg in english"
-echo "                           : Crea una nueva avanzada configfile.cfg en ingles"
-echo "     nueva-completa-config : Create a new advance configfile.cfg in spanish"
-echo "                           : Crea una nueva avanzada configfile.cfg en español"
-echo "           new-mini-config : Create a new basic configfile.cfg in english"
-echo "                           : Crea una nueva basica configfile.cfg en ingles"
-echo "         nueva-mini-config : Create a new basic configfile.cfg in spanish"
-echo "                           : Crea una nueva basica configfile.cfg en español"
-echo "              regen-config : regen-config wizard templates y cfg templates files"
-echo "                           : regen-configera plantillas wizard y plantillas cfg"
-echo "               list-config : List config files cfg"
-echo "                           : Lista las configuraciones de archivo cfg"
-echo "             modify-config : Edit one configfile.cfg"
-echo "                           : Edita una configuracion.cfg"
-echo "               show-config : Show one configfile.cfg"
-echo "                           : Muestra una configuracion.cfg"
-echo "                del-config : Delete one configuration file"
-echo "                           : Borra una configuracion.cfg"
+echo "$title_md $ralla [ $first_option ] [ tool custom rules config ]"
+echo  $text_md 
+echo "$text_md [ english info ] [ custom configs ]"
+echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
+echo  $text_md
+echo "$text_md $rallica new-full-config $ralla"
+echo "$text_md eng           : Create a new advance configfile.cfg in english"
+echo "$text_md spa           : Crea una nueva avanzada configfile.cfg en ingles"
+echo "$text_md $rallica nueva-completa-config $ralla"
+echo "$text_md eng           : Create a new advance configfile.cfg in spanish"
+echo "$text_md spa           : Crea una nueva avanzada configfile.cfg en español"
+echo "$text_md $rallica new-mini-config $ralla"
+echo "$text_md eng           : Create a new basic configfile.cfg in english"
+echo "$text_md spa           : Crea una nueva basica configfile.cfg en ingles"
+echo "$text_md $rallica nueva-mini-config $ralla"
+echo "$text_md eng           : Create a new basic configfile.cfg in spanish"
+echo "$text_md spa           : Crea una nueva basica configfile.cfg en español"
+echo "$text_md $rallica regen-config $ralla"
+echo "$text_md eng           : regen-config wizard templates y cfg templates files"
+echo "$text_md spa           : regen-configera plantillas wizard y plantillas cfg"
+echo "$text_md $rallica list-config $ralla"
+echo "$text_md eng           : List config files cfg"
+echo "$text_md spa           : Lista las configuraciones de archivo cfg"
+echo "$text_md $rallica modify-config $ralla"
+echo "$text_md eng           : Edit one configfile.cfg"
+echo "$text_md spa           : Edita una configuracion.cfg"
+echo "$text_md $rallica show-config $ralla"
+echo "$text_md eng           : Show one configfile.cfg"
+echo "$text_md spa           : Muestra una configuracion.cfg"
+echo "$text_md $rallica del-config $ralla"
+echo "$text_md eng           : Delete one configuration file"
+echo "$text_md spa           : Borra una configuracion.cfg"
 echo $footer_lineal
 exit; fi
 ####
