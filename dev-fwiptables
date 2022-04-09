@@ -1742,11 +1742,9 @@ exit; fi
 ####
 if [ "$first_option" = "group-options" ]; then $give_cover
 echo "$text_md $ralla [ $first_option ] [ List group options ] [ group-options.md ]"
-echo "$text_md $rallica [ List option ]"
-echo "$text_md  [ Lista opcion ]"
 echo  $text_md 
-echo "$text_md [ info ] [ Help to one group. For Example: fwiptables control-guide ]"
-echo "$text_md [ info ] [ Ayuda a un grupo.  Por ejemplo: fwiptables control-guide ]"
+echo "$text_md [ eng info ] [ Help to one group. ] [ For Example: fwiptables control-guide ]"
+echo "$text_md [ esp info ] [ Ayuda a un grupo.  ] [ Por ejemplo: fwiptables control-guide ]"
 echo $text_md 
 echo "$title_md                   [ Principal options ]"
 echo  $text_md 
@@ -1804,14 +1802,18 @@ echo "$text_md spa                   Varias herramientas para el sistema"
 echo  $text_md 
 echo "$title_md                   [ show options ]"
 echo  $text_md 
-echo "$text_md           show-etc :  Show net files in /etc/"
-echo "$text_md                    :  Muestra archivos de red de /etc/"
-echo "$text_md           show-log :  Show logs systems"
-echo "$text_md                    :  Muestra logs del sistema"
-echo "$text_md         show-about :  About"
-echo "$text_md                    :  Acerca de"
-echo "$text_md          show-help :  Help"
-echo "$text_md                    :  Ayuda"
+echo "$text_md           show-etc $ralla"
+echo "$text_md eng                   Show net files in /etc/"
+echo "$text_md spa                   Muestra archivos de red de /etc/"
+echo "$text_md           show-log $ralla"
+echo "$text_md eng                   Show logs systems"
+echo "$text_md spa                   Muestra logs del sistema"
+echo "$text_md         show-about $ralla"
+echo "$text_md eng                   About"
+echo "$text_md spa                   Acerca de"
+echo "$text_md          show-help $ralla"
+echo "$text_md eng                   Help"
+echo "$text_md spa                   Ayuda"
 echo $footer_lineal
 exit; fi
 ####
