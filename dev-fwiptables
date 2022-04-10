@@ -162,7 +162,7 @@ directory_fwrecover="/etc/fwrecover" ;
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
-title_md="###  "; text_md="     "; center_in_md="<-"; center_out_md="->"
+title_md="###  "; text_md="     "; brake_md="---  " ; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1743,9 +1743,9 @@ exit; fi
 if [ "$first_option" = "group-options" ]; then $give_cover
 echo "$text_md $ralla [ $first_option ] [ List group options ] [ group-options.md ]"
 echo  $text_md 
-echo "$text_md [ english info ] [ Help to one group. ]"
-echo "$text_md [ spanish info ] [ Ayuda a un grupo.  ]"
-echo $text_md 
+echo "$text_md [ english info ] [ Help to one group ]"
+echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
+echo  $text_md 
 echo "$title_md                   [ Principal options ]"
 echo  $text_md 
 echo "$text_md $rallica output-interface $ralla" 
@@ -1763,7 +1763,8 @@ echo "$text_md spa                   Lanza las reglas de iptables"
 echo "$text_md $rallica firewall-custom $ralla"
 echo "$text_md eng                   Create, modify and show configurations"
 echo "$text_md eng                   Crea, modifica y muestra configuraciones"
-echo  $text_md 
+echo  $text_md
+echo  $brake_md
 echo "$title_md                   [ tool options ]"
 echo  $text_md 
 echo "$text_md $rallica tool-sockets $ralla"
@@ -1800,6 +1801,7 @@ echo "$text_md $rallica tool-system $ralla"
 echo "$text_md eng                   Several tools for the system"
 echo "$text_md spa                   Varias herramientas para el sistema"
 echo  $text_md 
+echo  $brake_md
 echo "$title_md                   [ show options ]"
 echo  $text_md 
 echo "$text_md $rallica show-etc $ralla"
@@ -1937,8 +1939,8 @@ exit; fi
 #### :rutina-inicial-firewall-list:
 ####
 ####
-if [ "$first_option" = "firewall-list" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ List rules ]"
+if [ "$first_option" = "firewall-list" ]; then then $give_cover
+echo "$title_md [ $first_option ] [ List rules ]"
 echo  $text_md
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
