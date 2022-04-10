@@ -714,7 +714,8 @@ exit ; fi
 ####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
 case "$second_option" in
-mini-options|full-options|options) ;; 
+mini-options|full-options|options) ;;
+help|ayuda);; 
 output-interface) ;;
 firewall-*) ;;
 tool-*) ;;
@@ -728,13 +729,18 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "-md" ] || [ "$first_option" = "md" ] ; then
-case "$second_option" in 
-"install") echo "[ fail ] [ md ] [ do not working in this option ]" ; exit ;;
-"upgrade") echo "[ fail ] [ md ] [ do not working in this option ]" ; exit ;;
-list*) echo "[ fail ] [ md ] [ rst do not working in this option ]" ; exit ;; 
+case "$second_option" in
+mini-options|full-options|options) ;;
+help|ayuda);; 
+output-interface) ;;
+firewall-*) ;;
+tool-*) ;;
+show-*) ;;
+*) echo "[ fail ] [ rst ] [ do not working in this option ]" ; exit ;; 
 esac
 echo $head_waiting_md
-$fwiptables -txt $second_option $third_option | $command_mdp -t -e -d ; 
+$fwiptables $second_option $third_option > $file_temporal_text ;
+$command mdp -t $file_temporal_text ;
 exit ; fi
 ####
 ####
@@ -1474,7 +1480,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$text_md $rallica [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -tor      "
+echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -rst -tor  "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
@@ -1513,7 +1519,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ] $rallica"
-echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -tor       "
+echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -rst -tor    "
 # echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
@@ -1567,6 +1573,8 @@ echo "$text_md    $fwiptables -cli save one-name       |  Save rules with output
 echo "$text_md    $fwiptables -cli names               |  List firewall saved with output cli            "
 echo "$text_md    $fwiptables -gui ss                  |  List sockets ip with output gui                "
 echo "$text_md    $fwiptables -gui wizard-mini         |  Generate rules with output gui                 "
+echo  $text_md
+$brake_md
 exit ; fi
 ####
 ####
