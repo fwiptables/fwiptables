@@ -2229,19 +2229,23 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool icmp ]"
-echo "$rallica [ Tool icmp ]"
-echo "$rallica [ Herramienta icmp ]"
-echo
-echo "     traceicmp-ip4 : Trace route a one host with ipv4 icmp"
-echo "                   : Traza la routa a una direccion con ipv4 icmp"
-echo "     traceicmp-ip6 : Trace route a one host with ipv6 icmp"
-echo "                   : Traza la routa a una direccion con ipv6 icmp"
-echo "         ping-ip4  : Do a one ping with to one host with ipv4 icmp"
-echo "                   : Hace un ping con una direccion con ipv4 icmp"
-echo "         ping-ip6  : Do a one ping with to one host with ipv6 icmp"
-echo "                   : Hace un ping con una direccion con ipv6 icmp"
-echo
+echo "$ralla [ $first_option ] [ tool icmp ] [ tool-icmp.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool icmp ]"
+echo "$text_md [ spanish info ] [ Herramienta icmp ]"
+echo  $text_md
+echo "$text_md $rallica traceicmp-ip4 $ralla"
+echo "$text_md eng           : Trace route a one host with ipv4 icmp"
+echo "$text_md spa           : Traza la routa a una direccion con ipv4 icmp"
+echo "$text_md $rallica traceicmp-ip6 $ralla"
+echo "$text_md eng           : Trace route a one host with ipv6 icmp"
+echo "$text_md spa           : Traza la routa a una direccion con ipv6 icmp"
+echo "$text_md $rallica ping-ip4 $ralla"
+echo "$text_md eng           : Do a one ping with to one host with ipv4 icmp"
+echo "$text_md spa           : Hace un ping con una direccion con ipv4 icmp"
+echo "$text_md $rallica ping-ip6 $ralla"
+echo "$text_md eng           : Do a one ping with to one host with ipv6 icmp"
+echo "$text_md spa           : Hace un ping con una direccion con ipv6 icmp"
 echo $footer_lineal
 exit; fi
 ####
@@ -2253,18 +2257,23 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool tcp ]"
-echo "$rallica [ Tool tcp ]"
-echo "$rallica [ Herramienta tcp ]"
-echo
-echo "     tracetcp-ip4 : Trace route a one host with ipv4 tcp"
-echo "                  : Traza la routa a una direccion con ipv4 tcp"
-echo "     tracetcp-ip6 : Trace route a one host with ipv6 tcp"
-echo "                  : Traza la routa a una direccion con ipv6 tcp"
-echo "        speed-ip4 : test bandwith with ipv4"
-echo "                  : Testea la velocidad de conexion con ipv4"
-echo "        speed-ip6 : Test net bandwith with ipv6"
-echo "                  : Testea la velocidad de conexion con ipv6"
+echo "$title_md $ralla [ $first_option ] [ tool tcp ] [ tool-tcp.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool tcp ]"
+echo "$text_md [ spanish info ] [ Herramienta tcp ]"
+echo  $text_md
+echo "$text_md $rallica tracetcp-ip4 $ralla"
+echo "$text_md eng           : Trace route a one host with ipv4 tcp"
+echo "$text_md spa           : Traza la routa a una direccion con ipv4 tcp"
+echo "$text_md $rallica tracetcp-ip6 $ralla"
+echo "$text_md eng           : Trace route a one host with ipv6 tcp"
+echo "$text_md spa           : Traza la routa a una direccion con ipv6 tcp"
+echo "$text_md $rallica speed-ip4 $ralla"
+echo "$text_md eng           : test bandwith with ipv4"
+echo "$text_md spa           : Testea la velocidad de conexion con ipv4"
+echo "$text_md $rallica speed-ip6 $ralla"
+echo "$text_md eng           : Test net bandwith with ipv6"
+echo "$text_md spa           : Testea la velocidad de conexion con ipv6"
 echo $footer_lineal
 exit; fi
 ####
