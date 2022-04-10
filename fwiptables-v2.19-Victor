@@ -168,7 +168,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$text_md - $fwiptables - Version $fversion - Use: $fwiptables options - $(date)"
+head_principal="$text_md || $fwiptables || Version $fversion || Use: $fwiptables options || $(date)"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -720,7 +720,8 @@ output-interface) ;;
 firewall-*) ;;
 tool-*) ;;
 show-*) ;;
-*) echo "[ fail ] [ .rst ] [ do not working in this option ]" ; exit ;; 
+"$NULL") second_option="mini-options" ;;
+*) echo "[ fail ] [ rst format text ] [ do not working in this option ]" ; exit ;; 
 esac
 echo $head_waiting_rst
 $fwiptables $second_option $third_option > $file_temporal_text ;
@@ -728,14 +729,15 @@ $command_m2r $file_temporal_text --dry-run ;
 exit ; fi
 ####
 ####
-if [ "$first_option" = "-md" ] || [ "$first_option" = "md" ] ; then
+if [ "$first_option" = "md" ] || [ "$first_option" = "-md" ] ; then
 case "$second_option" in
 mini-options|full-options|options) ;;
 output-interface) ;;
 firewall-*) ;;
 tool-*) ;;
 show-*) ;;
-*) echo "[ fail ] [ .markdown ] [ do not working in this option ]" ; exit ;; 
+"$NULL") second_option="mini-options" ;;
+*) echo "[ fail ] [ markdown format text ] [ do not working in this option ]" ; exit ;; 
 esac
 echo $head_waiting_md
 $fwiptables $second_option $third_option > $file_temporal_text ;
