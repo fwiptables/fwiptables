@@ -713,16 +713,6 @@ exit ; fi
 ####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
-#case "$second_option" in
-#mini-options|full-options|options) ;;
-#help|ayuda);; 
-#output-interface) ;;
-#firewall-*) ;;
-#tool-*) ;;
-#show-*) ;;
-#"$NULL") second_option="mini-options" ;;
-#*) echo "[ fail ] [ rst format text ] [ do not working in this option ]" ; exit ;; 
-#esac
 echo $head_waiting_rst
 $fwiptables $second_option $third_option &> $file_temporal_text ;
 $command_m2r $file_temporal_text --dry-run &> $file_temporal_text.rst ;
