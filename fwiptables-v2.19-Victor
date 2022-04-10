@@ -732,18 +732,23 @@ exit ; fi
 ####
 if [ "$first_option" = "md" ] || [ "$first_option" = "-md" ] ; then
 if [ "$command_mdp" = "$NULL" ]; then echo [ fail ] [ install mdp command ]; exit; fi
-case "$second_option" in
-mini-options|full-options|options) ;;
-output-interface) ;;
-firewall-*) ;;
-tool-*) ;;
-show-*) ;;
-"$NULL") second_option="mini-options" ;;
-*) echo "[ fail ] [ markdown format text ] [ do not working in this option ]" ; exit ;; 
-esac
+
+#case "$second_option" in
+#mini-options|full-options|options) ;;
+#output-interface) ;;
+#firewall-*) ;;
+#tool-*) ;;
+#show-*) ;;
+#"$NULL") second_option="mini-options" ;;
+#*) echo "[ fail ] [ markdown format text ] [ do not working in this option ]" ; exit ;; 
+#esac
+
 echo $head_waiting_md
-$fwiptables $second_option $third_option > $file_temporal_text ;
-$command mdp -t $file_temporal_text ;
+$fwiptables $second_option $third_option > $file_temporal_text.1 ;
+sed -e 's/^/   /' $file_temporal_text.1 > $file_temporal_text.2  ;
+txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
+$favorite_text_browser -dump $file_temporal_text.html
+# $command mdp -t $file_temporal_text ;
 exit ; fi
 ####
 ####
