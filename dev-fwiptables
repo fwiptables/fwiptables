@@ -2173,20 +2173,26 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-game" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool game ]"
-echo "$rallica [ Tool game ]"
-echo "$rallica [ Herramienta de juego ]"
-echo
-echo "         ole-word : Play game to discover a random word with five digits"
-echo "                  : Juega a descubrir una palabra aleatoria de cinco caracteres"
-echo "       ole-number : Play game to discover a random number with five digits"
-echo "                  : Juega a descubrir un numero aleatorio de cinco digitos"
-echo "       ole-domain : Discover one domain if generic or if country"
-echo "                  : Descubre un dominio si es generico o si es de pais"
-echo "       colour-hex : Convert one number hexadecimal in rgb"
-echo "                  : Convierte un numero hexadecimal en rgb"
-echo "       colour-rgb : Convert one number rgb in hexadecimal"
-echo "                  : Convierte un numero rgb en hexadecimal"
+echo "$title_md $ralla [ $first_option ] [ tool game ] [ tool-game.md ]"
+echo  $text_md
+echo "$text_md [ info english ] [ Tool game ]"
+echo "$text_md [ info spanish ] [ Herramienta de juego ]"
+echo  $text_md
+echo "$text_md $rallica ole-word $ralla"
+echo "$text_md eng           : Play game to discover a random word with five digits"
+echo "$text_md spa           : Juega a descubrir una palabra aleatoria de cinco caracteres"
+echo "$text_md $rallica ole-number $ralla"
+echo "$text_md eng           : Play game to discover a random number with five digits"
+echo "$text_md spa           : Juega a descubrir un numero aleatorio de cinco digitos"
+echo "$text_md $rallica ole-domain $ralla"
+echo "$text_md eng           : Discover one domain if generic or if country"
+echo "$text_md spa           : Descubre un dominio si es generico o si es de pais"
+echo "$text_md $rallica colour-hex $ralla"
+echo "$text_md eng           : Convert one number hexadecimal in rgb"
+echo "$text_md spa           : Convierte un numero hexadecimal en rgb"
+echo "$text_md $rallica colour-rgb $ralla"
+echo "$text_md eng           : Convert one number rgb in hexadecimal"
+echo "$text_md spa           : Convierte un numero rgb en hexadecimal"
 echo $footer_lineal
 exit; fi
 ####
