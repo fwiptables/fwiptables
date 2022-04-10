@@ -352,6 +352,7 @@ command_uname="$(command -v uname | cut -d " " -f 1)"
 command_sed="$(command -v sed | cut -d " " -f 1)"
 command_xrandr="$(command -v xrandr | cut -d " " -f 1)"
 command_mdp="$(command -v mdp | cut -d " " -f 1)"
+command_txt2html="$(command -v txt2html | cut -d " " -f 1)"
 command_m2r="$(command -v m2r | cut -d " " -f 1)"
 command_ip="$(command -v ip | cut -d " " -f 1)"
 command_curl="$(command -v curl | cut -d " " -f 1)"
@@ -612,7 +613,7 @@ if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_op
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_option="-cli"; fi
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
 if [ "$first_option" = "rst"  ] || [ "$first_option" = "-rst"  ] ; then first_option="-rst"; fi
-if [ "$first_option" = "md"  ] || [ "$first_option" = "-md"  ] ; then first_option="-md"; fi
+if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_option="-web"; fi
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
 ####
 ####
@@ -730,25 +731,14 @@ $command_m2r $file_temporal_text --dry-run ;
 exit ; fi
 ####
 ####
-if [ "$first_option" = "md" ] || [ "$first_option" = "-md" ] ; then
-if [ "$command_mdp" = "$NULL" ]; then echo [ fail ] [ install mdp command ]; exit; fi
-
-#case "$second_option" in
-#mini-options|full-options|options) ;;
-#output-interface) ;;
-#firewall-*) ;;
-#tool-*) ;;
-#show-*) ;;
-#"$NULL") second_option="mini-options" ;;
-#*) echo "[ fail ] [ markdown format text ] [ do not working in this option ]" ; exit ;; 
-#esac
-
-echo $head_waiting_md
+if [ "$first_option" = "web" ] || [ "$first_option" = "-web" ] ; then
+if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
+echo $head_waiting_web
 $fwiptables $second_option $third_option > $file_temporal_text.1 ;
 sed -e 's/^/   /' $file_temporal_text.1 > $file_temporal_text.2  ;
-txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
-$favorite_text_browser -dump $file_temporal_text.html
-# $command mdp -t $file_temporal_text ;
+$command_txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
+$favorite_text_browser $file_temporal_text.html
 exit ; fi
 ####
 ####
@@ -1488,7 +1478,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$text_md $rallica [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -rst -tor  "
+echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
@@ -1527,7 +1517,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ] $rallica"
-echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -rst -tor    "
+echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor   "
 echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
@@ -1542,9 +1532,7 @@ echo "$text_md                          server-samba server-print server-web ser
 echo "$text_md    firewall-custom    |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config list-config                    "
 echo "$text_md                          show-config modify-config del-config                             "
-echo  $text_md
-$brake_md
-#### echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ tool-options ]                                    " 
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy            "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert         "
@@ -1569,9 +1557,7 @@ echo "$text_md    show-about         |  about version depends examples          
 echo "$text_md                          config-eng config-spa license                                    "
 echo "$text_md    show-help          |  all-help help ayuda notes options info                           "
 echo "$text_md                          group-options mini-options full-options                          "
-echo  $text_md
-$brake_md
-#### echo "$text_md    $ralla $ralla $ralla $rallica $rallica   "
+echo "$text_md    $ralla $ralla $ralla $rallica $rallica   "
 echo "$title_md       [ Example command ]                       [ Example Description ]                  "
 echo "$text_md    $fwiptables options                  |  Show more options likes output txt             "
 echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt            "
@@ -2190,9 +2176,12 @@ echo "$text_md spa           : Salida a ventana grafica"
 echo "$text_md $rallica log OR -log $ralla"
 echo "$text_md eng           : Save the output"
 echo "$text_md spa           : Guarda la salida"
-echo "$text_md $rallica md OR -md $ralla"
-echo "$text_md eng           : Output in console markdown format, necesary mdp command"
-echo "$text_md spa           : Salida en consola markdown formato, necesario comando mdp"
+echo "$text_md $rallica web OR -web $ralla"
+echo "$text_md eng           : Output in favorite text web browser"
+echo "$text_md spa           : Salida en favorito navegador web de texto"
+echo "$text_md $rallica rst OR -rst $ralla"
+echo "$text_md eng           : Output in format rst file"
+echo "$text_md spa           : Salida en formato de archivo rst"
 echo "$text_md $rallica tor OR -tor $ralla"
 echo "$text_md eng           : Run in tor, necesary tor daemon ant torify command"
 echo "$text_md spa           : Ejecuta en tor, necesario daemon tor y comando torify"
@@ -2834,6 +2823,7 @@ echo "openssl:    $command_openssl"
 echo "dd:         $command_dd"
 echo "tee:        $command_tee"
 echo "glxgears:   $command_glxgears"
+echo "txt2html:   $command_txt2html"
 echo $ralla
 echo $footer_lineal
 exit; fi
