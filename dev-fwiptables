@@ -713,22 +713,26 @@ exit ; fi
 ####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
+if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 echo $head_waiting_rst
-$fwiptables $second_option $third_option &> $file_temporal_text ;
-$command_m2r $file_temporal_text --dry-run &> $file_temporal_text.rst ;
-cat $file_temporal_text.rst 
+fwiptables $second_option $third_option &> $file_temporal_text.1 ;
+sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
+$command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
+$file_temporal_text.2  &> $file_temporal_text.rst ;
+cat $file_temporal_text.rst
 exit ; fi
 ####
 ####
 #### first_option web
 ####
 ####
-if [ "$first_option" = "web" ] || [ "$first_option" = "-web" ] ; then
+if [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 echo $head_waiting_web
+rm  "$file_temporal_text"* &> /dev/null
 $fwiptables $second_option $third_option &> $file_temporal_text.1 ;
-sed -e 's/^/   /' $file_temporal_text.1 &> $file_temporal_text.2  ;
+sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
 $favorite_text_browser $file_temporal_text.html
 exit ; fi
@@ -1473,7 +1477,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$text_md $rallica [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor "
+echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor      "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
@@ -1512,7 +1516,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ] $rallica"
-echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor   "
+echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor        "
 echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
@@ -2174,9 +2178,6 @@ echo "$text_md spa           : Guarda la salida"
 echo "$text_md $rallica web OR -web $ralla"
 echo "$text_md eng           : Output in favorite text web browser"
 echo "$text_md spa           : Salida en favorito navegador web de texto"
-echo "$text_md $rallica rst OR -rst $ralla"
-echo "$text_md eng           : Output in format rst file"
-echo "$text_md spa           : Salida en formato de archivo rst"
 echo "$text_md $rallica tor OR -tor $ralla"
 echo "$text_md eng           : Run in tor, necesary tor daemon ant torify command"
 echo "$text_md spa           : Ejecuta en tor, necesario daemon tor y comando torify"
