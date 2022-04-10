@@ -2285,20 +2285,26 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-udp" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool tcp ]"
-echo "$rallica [ Tool tcp ]"
-echo "$rallica [ Herramienta tcp ]"
-echo
-echo "         host : Resolve one host"
-echo "              : Resuelve una direccion a ip"
-echo "          dig : Resolve one host"
-echo "              : Resuelve una direccion a ip"
-echo "    resolveip : Resolve one host and viceversa"
-echo "              : Resuelve una direccion a ip y a host"
-echo "        geoip : Locate a one host or ip"
-echo "              : Localiza una direccion o ip"
-echo "      ntpdate : Update the system date from ntp server"
-echo "              : Actualiza la fecha del sistema desde un servidor de fecha"
+echo "$title_md $ralla [ $first_option ] [ tool udp ] [ tool-udp.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool udp ]"
+echo "$text_md [ spanish info ] [ Herramienta udp ]"
+echo  $text_md
+echo "$text_md $rallica host $ralla"
+echo "$text_md eng           : Resolve one host"
+echo "$text_md spa           : Resuelve una direccion a ip"
+echo "$text_md $rallica dig $ralla"
+echo "$text_md eng           : Resolve one host"
+echo "$text_md spa           : Resuelve una direccion a ip"
+echo "$text_md $rallica resolveip $ralla"
+echo "$text_md eng           : Resolve one host and viceversa"
+echo "$text_md spa           : Resuelve una direccion a ip y a host"
+echo "$text_md $rallica geip $ralla"
+echo "$text_md eng           : Locate a one host or ip"
+echo "$text_md spa           : Localiza una direccion o ip"
+echo "$text_md $rallica ntpdate $ralla"
+echo "$text_md eng           : Update the system date from ntp server"
+echo "$text_md spa           : Actualiza la fecha del sistema desde un servidor de fecha"
 echo $footer_lineal
 exit; fi
 ####
