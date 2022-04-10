@@ -713,6 +713,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
+if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
 case "$second_option" in
 mini-options|full-options|options) ;;
 help|ayuda);; 
@@ -730,6 +731,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "md" ] || [ "$first_option" = "-md" ] ; then
+if [ "$command_mdp" = "$NULL" ]; then echo [ fail ] [ install mdp command ]; exit; fi
 case "$second_option" in
 mini-options|full-options|options) ;;
 output-interface) ;;
