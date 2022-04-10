@@ -175,7 +175,7 @@ head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_
 head_waiting_cli="$rallica [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 head_waiting_gui="$rallica [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 head_waiting_log="$rallica [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
-head_waiting_md="$rallica [ md ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
+head_waiting_web="$rallica [ web ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 head_waiting_rst="$rallica [ rst ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
@@ -735,8 +735,8 @@ if [ "$first_option" = "web" ] || [ "$first_option" = "-web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 echo $head_waiting_web
-$fwiptables $second_option $third_option > $file_temporal_text.1 ;
-sed -e 's/^/   /' $file_temporal_text.1 > $file_temporal_text.2  ;
+$fwiptables $second_option $third_option &> $file_temporal_text.1 ;
+sed -e 's/^/   /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
 $favorite_text_browser $file_temporal_text.html
 exit ; fi
