@@ -621,10 +621,7 @@ if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_op
 ##############################     ALIAS CAMPUS
 ####
 ####
-####
-####
-#### english: change the -txt and go to default output
-#### spanish: cambia el -txt va a salida por defecto
+#### first_option txt
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
@@ -645,8 +642,7 @@ cat $file_temporal_textfinal ; exit ;;
 esac; fi
 ####
 ####
-#### english: change the -cli and go to default output
-#### spanish: cambia el -cli va a salida por defecto
+#### first_option cli
 ####
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
@@ -698,8 +694,7 @@ gui-shell) first_option="gui-shell" ;;
 esac ; fi
 ####
 ####
-#### english: change the -log and save the file
-#### spanish: cambia el -log y guarda el archivo
+#### first_option log
 ####
 ####
 if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
@@ -713,22 +708,29 @@ echo "$rallica [ ok ] \
 exit ; fi
 ####
 ####
+#### first_option rst
+####
+####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
-case "$second_option" in
-mini-options|full-options|options) ;;
-help|ayuda);; 
-output-interface) ;;
-firewall-*) ;;
-tool-*) ;;
-show-*) ;;
-"$NULL") second_option="mini-options" ;;
-*) echo "[ fail ] [ rst format text ] [ do not working in this option ]" ; exit ;; 
-esac
+#case "$second_option" in
+#mini-options|full-options|options) ;;
+#help|ayuda);; 
+#output-interface) ;;
+#firewall-*) ;;
+#tool-*) ;;
+#show-*) ;;
+#"$NULL") second_option="mini-options" ;;
+#*) echo "[ fail ] [ rst format text ] [ do not working in this option ]" ; exit ;; 
+#esac
 echo $head_waiting_rst
-$fwiptables $second_option $third_option > $file_temporal_text ;
-$command_m2r $file_temporal_text --dry-run ;
+$fwiptables $second_option $third_option &> $file_temporal_text ;
+$command_m2r $file_temporal_text --dry-run &> $file_temporal_text.rst ;
+cat $file_temporal_text.rst 
 exit ; fi
+####
+####
+#### first_option web
 ####
 ####
 if [ "$first_option" = "web" ] || [ "$first_option" = "-web" ] ; then
@@ -740,6 +742,9 @@ sed -e 's/^/   /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
 $favorite_text_browser $file_temporal_text.html
 exit ; fi
+####
+####
+#### first_option tor
 ####
 ####
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
