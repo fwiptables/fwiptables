@@ -2175,8 +2175,8 @@ exit; fi
 if [ "$first_option" = "tool-game" ]; then $give_cover
 echo "$title_md $ralla [ $first_option ] [ tool game ] [ tool-game.md ]"
 echo  $text_md
-echo "$text_md [ info english ] [ Tool game ]"
-echo "$text_md [ info spanish ] [ Herramienta de juego ]"
+echo "$text_md [ english info ] [ Tool game ]"
+echo "$text_md [ spanish info ] [ Herramienta de juego ]"
 echo  $text_md
 echo "$text_md $rallica ole-word $ralla"
 echo "$text_md eng           : Play game to discover a random word with five digits"
@@ -2204,16 +2204,20 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool forward ]"
-echo "$rallica [ Tool forward ]"
-echo "$rallica [ Herramienta de ipforwading ]"
-echo
-echo "    ipforward-list : Show kernel config about forward"
-echo "                   : Muestra configuracion del kernel sobre reenvios"
-echo "      ipforward-on : Active the kernel config about forward"
-echo "                   : Activa la configuracion del kernel sobre reenvios"
-echo "     ipforward-off : Deactive kernel config about forward"
-echo "                   : Desactiva la configuracion del kernel sobre reenvios"
+echo "$title_md $ralla [ $first_option ] [ tool forward ] [ tool-forward.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool forward ]"
+echo "$text_md [ spanish info ] [ Herramienta de ipforwading ]"
+echo  $text_md
+echo "$text_md $rallica ipforward-list $ralla"
+echo "$text_md eng           : Show kernel config about forward"
+echo "$text_md spa           : Muestra configuracion del kernel sobre reenvios"
+echo "$text_md $rallica ipforward-on $ralla"
+echo "$text_md eng           : Active the kernel config about forward"
+echo "$text_md spa           : Activa la configuracion del kernel sobre reenvios"
+echo "$text_md $rallica ipforward-off $ralla"
+echo "$text_md eng           : Deactive kernel config about forward"
+echo "$text_md spa           : Desactiva la configuracion del kernel sobre reenvios"
 echo $footer_lineal
 exit; fi
 ####
