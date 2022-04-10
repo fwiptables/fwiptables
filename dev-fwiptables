@@ -162,7 +162,7 @@ directory_fwrecover="/etc/fwrecover" ;
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
-title_md="###  "; text_md="     "; brake_md="---  " ; center_in_md="<-"; center_out_md="->"
+title_md="###  "; text_md="     "; brake_md="echo -----" ; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1476,9 +1476,11 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ]"
-echo "$title_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -inf -tor       "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ] $rallica"
+echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -inf -tor       "
+echo  $title_md
+$brake_md
+# echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
 echo "$text_md    firewall-list      |  list list6 listnum listnum6 status                               "
@@ -1492,7 +1494,9 @@ echo "$text_md                          server-samba server-print server-web ser
 echo "$text_md    firewall-custom    |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config list-config                    "
 echo "$text_md                          show-config modify-config del-config                             "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo  $text_md
+$brake_md
+#echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ tool-options ]                                    " 
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy            "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert         "
@@ -1507,7 +1511,9 @@ echo "$text_md    tool-system        |  free-ram speed-ram speed-disk speed-glx 
 echo "$text_md    tool-install       |  install upgrade howto-upgrade                                    "
 echo "$text_md    tool-blacklist     |  blacklist-list blacklist-on blacklist-off                        "
 echo "$text_md    tool-dev           |  new-versions dev-version dev-changes code                        "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo  $text_md
+$brake_md
+#echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                     [ show-options ]                                     " 
 echo "$text_md    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                        "
 echo "$text_md    show-log           |  log-search log-ssh sentlog autolog                               "
@@ -1517,7 +1523,9 @@ echo "$text_md    show-about         |  about version depends examples          
 echo "$text_md                          config-eng config-spa license                                    "
 echo "$text_md    show-help          |  all-help help ayuda notes options info                           "
 echo "$text_md                          group-options mini-options full-options                          "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica   "
+echo  $text_md
+$brake_md
+#echo "$text_md    $ralla $ralla $ralla $rallica $rallica   "
 echo "$title_md       [ Example command ]                       [ Example Description ]                  "
 echo "$text_md    $fwiptables options                  |  Show more options likes output txt             "
 echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt            "
@@ -1741,7 +1749,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "group-options" ]; then $give_cover
-echo "$text_md $ralla [ $first_option ] [ List group options ] [ group-options.md ]"
+echo "$text_md [ $first_option ] [ List group options ] [ group-options.md ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ Help to one group ]"
 echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
@@ -1764,7 +1772,7 @@ echo "$text_md $rallica firewall-custom $ralla"
 echo "$text_md eng                   Create, modify and show configurations"
 echo "$text_md eng                   Crea, modifica y muestra configuraciones"
 echo  $text_md
-echo  $brake_md
+$brake_md
 echo "$title_md                   [ tool options ]"
 echo  $text_md 
 echo "$text_md $rallica tool-sockets $ralla"
@@ -1801,7 +1809,7 @@ echo "$text_md $rallica tool-system $ralla"
 echo "$text_md eng                   Several tools for the system"
 echo "$text_md spa                   Varias herramientas para el sistema"
 echo  $text_md 
-echo  $brake_md
+$brake_md
 echo "$title_md                   [ show options ]"
 echo  $text_md 
 echo "$text_md $rallica show-etc $ralla"
