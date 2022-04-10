@@ -175,6 +175,7 @@ head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_
 head_waiting_cli="$rallica [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 head_waiting_gui="$rallica [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 head_waiting_log="$rallica [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
+head_waiting_md="$rallica [ md ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$ralla"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -348,6 +349,7 @@ command_date="$(command -v date | cut -d " " -f 1)"
 command_uname="$(command -v uname | cut -d " " -f 1)"
 command_sed="$(command -v sed | cut -d " " -f 1)"
 command_xrandr="$(command -v xrandr | cut -d " " -f 1)"
+command_mdp="$(command -v mdp | cut -d " " -f 1)"
 command_ip="$(command -v ip | cut -d " " -f 1)"
 command_curl="$(command -v curl | cut -d " " -f 1)"
 command_host="$(command -v host | cut -d " " -f 1)"
@@ -601,14 +603,13 @@ if [ "$first_option" = "serverlamp" ] ; then first_option="server-lamp" ; fi
 ####
 #### english:  alias -txt or -cli or -gui 
 ####
-####-i
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
-echo "$rallica [ message ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
-torify -i $fwiptables $second_option $third_option ; exit ; fi
+####
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_option="-txt"; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_option="-txt"; fi
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_option="-cli"; fi
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
+if [ "$first_option" = "md"  ] || [ "$first_option" = "-md"  ] ; then first_option="-md"; fi
+if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
 ####
 ####
 ##############################     ALIAS CAMPUS
@@ -705,6 +706,16 @@ echo "$rallica [ ok ] \
 [ Output $fwiptables $second_option $third_option sended to $file_output_filelog ] \
 [ show: fwiptables filelog ]" ;
 exit ; fi
+####
+####
+if [ "$first_option" = "-md" ] || [ "$first_option" = "md" ] ; then
+echo $head_waiting_md
+$fwiptables $second_option $third_option | $command_mdp -t ; exit ; fi
+####
+####
+if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
+echo "$rallica [ message ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
+torify -i $fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
 ##############################     english: autolog:         ###################################
@@ -1438,7 +1449,7 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$text_md $rallica [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -inf -tor      "
+echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -tor      "
 echo "$text_md $ralla $ralla $ralla $ralla"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
@@ -1477,9 +1488,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ] $rallica"
-echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -inf -tor       "
-echo  $title_md
-$brake_md
+echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -md -tor       "
 # echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
@@ -2114,9 +2123,9 @@ echo "$text_md spa           : Salida a ventana grafica"
 echo "$text_md $rallica log OR -log $ralla"
 echo "$text_md eng           : Save the output"
 echo "$text_md spa           : Guarda la salida"
-echo "$text_md $rallica inf OR -inf $ralla"
-echo "$text_md eng           : Output in console markdown, necesary mdp command"
-echo "$text_md spa           : Salida en console markdown, necesario comando mdp"
+echo "$text_md $rallica md OR -md $ralla"
+echo "$text_md eng           : Output in console markdown format, necesary mdp command"
+echo "$text_md spa           : Salida en consola markdown formato, necesario comando mdp"
 echo "$text_md $rallica tor OR -tor $ralla"
 echo "$text_md eng           : Run in tor, necesary tor daemon ant torify command"
 echo "$text_md spa           : Ejecuta en tor, necesario daemon tor y comando torify"
