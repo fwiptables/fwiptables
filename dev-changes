@@ -320,5 +320,6 @@
 #
 # 1. todos los tool-* pasados a markdown. HECHO
 # 2. añadido output rst para salidas con rst formato. HECHO
-# 3.
+# 3. todos los show-* pasados a markdown.
+# 4.
 #
