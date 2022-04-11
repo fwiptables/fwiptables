@@ -193,6 +193,7 @@ nada="$(echo -n)" ;
 message_without_cli="$tab [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$tab [ gui ] [ Without support for output gui for this option ]"
 message_without_web="$tab [ web ] [ Without support for output web for this option ]"
+message_without_rst="$tab [ rst ] [ Without support for output rst for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -714,6 +715,12 @@ if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 echo $head_waiting_rst
+case "$second_option" in 
+*-config) echo $message_without_rst ; exit ;;
+ole-*) echo $message_without_rst ; exit ;;
+colour-*) echo $message_without_rst ; exit ;;
+sudo-*) echo $message_without_rst ; exit ;;
+esac
 fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
