@@ -715,11 +715,14 @@ if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 echo $head_waiting_rst
-case "$second_option" in 
-*-config) echo $message_without_rst ; $fwiptables $second_option $third_option ;  exit ;;
-ole-*) echo $message_without_rst ; $fwiptables $second_option $third_option ;  exit ;;
-colour-*) echo $message_without_rst ; $fwiptables $second_option $third_option ;  exit ;;
-list*) echo $message_without_rst ; $fwiptables $second_option $third_option ;  exit ;;
+case "$second_option" in
+group-options);;
+"help"|"ayuda");;
+output-interface) ;;
+firewall-*);;
+tool-*) ;;
+show-*) ;;
+*) echo $message_without_rst ; $fwiptables $second_option $third_option ;  exit ;;
 esac
 fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
