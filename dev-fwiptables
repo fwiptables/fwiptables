@@ -1511,7 +1511,7 @@ echo "$text_md                       tool-icmp       tool-nmap      tool-sudo   
 echo "$text_md                       tool-system     tool-install   tool-blacklist   tool-dev        "
 echo "$text_md     show-options   |  show-hardware   show-etc       show-log         show-about      "
 echo "$text_md                       show-help       show-example                                    " 
-echo "$title_md                                      [ some-examples ]                               "
+echo "$title_md                                      [ some-example ]                               "
 echo "$text_md        [ Example command ]                       [ Example Description ]              "
 echo "$text_md    $fwiptables options                  |  Show more options likes output txt         "
 echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt        "
