@@ -717,7 +717,7 @@ echo $head_waiting_rst
 fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
-$file_temporal_text.2  &> $file_temporal_text.rst ;
+$file_temporal_text.2 | grep -iv "::"  &> $file_temporal_text.rst ;
 cat $file_temporal_text.rst
 exit ; fi
 ####
