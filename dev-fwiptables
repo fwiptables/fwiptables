@@ -524,7 +524,7 @@ rm /tmp/$fwiptables &> /dev/null
 ####
 echo "$text_md [ downloading ] [ $fweb_latest ]"
 echo "$text_md [ status ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $fweb_latest &> "/tmp/$fwiptables-installer"
+$favorite_text_browser -source $fweb_latest &> "/tmp/$fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx /tmp/$fwiptables-installer &> /dev/null
 ####
 ####
@@ -8432,6 +8432,7 @@ echo "$text_md          notes : Show firewall notes."
 echo  $text_md
 echo "$title_md [ firewall notes ]"
 echo  $text_md
+echo "$text_md     Notes in $fwiptables"
 echo  $text_md
 echo "$title_md  [vpn]"
 echo  $text_md
