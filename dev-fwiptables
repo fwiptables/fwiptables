@@ -2398,20 +2398,26 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
-echo "$tab [ $first_option ] [ tool nmap ]"
-echo "$tab [ Tool nmap ]"
-echo "$tab [ Herramienta nmap ]"
-echo
-echo "     scan-tcp : Scan a host/mask per tcp protocol"
-echo "              : Escanea una host/mascara por tcp protocolo"
-echo "     scan-syn : Scan a host/mask per syn socket"
-echo "              : Escanea una host/mascara por syn socket"
-echo "     scan-fin : Scan a host/mask per fin socket"
-echo "              : Escanea una host/mascara por fin socket"
-echo "     scan-udp : Scan a host/mask per udp protocol"
-echo "              : Escanea una host/mascara por udp protocolo"
-echo "    scan-ping : Scan a host/mask per ping udp"
-echo "              : Escanea una host/mascara por ping protocolo"
+echo "$title_md [ $first_option ] [ tool nmap ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool nmap ]"
+echo "$text_md [ spanish info ] [ Herramienta nmap ]"
+echo  $text_md
+echo "$text_md $tab scan-tcp $tab"
+echo "$text_md eng           : Scan a host/mask per tcp protocol"
+echo "$text_md spa           : Escanea una host/mascara por tcp protocolo"
+echo "$text_md $tab scan-syn $tab"
+echo "$text_md eng           : Scan a host/mask per syn socket"
+echo "$text_md spa           : Escanea una host/mascara por syn socket"
+echo "$text_md $tab scan-fin $tab"
+echo "$text_md eng           : Scan a host/mask per fin socket"
+echo "$text_md spa           : Escanea una host/mascara por fin socket"
+echo "$text_md $tab scan-udp $tab"
+echo "$text_md eng           : Scan a host/mask per udp protocol"
+echo "$text_md spa           : Escanea una host/mascara por udp protocolo"
+echo "$text_md $tab scan-ping $tab"
+echo "$text_md eng           : Scan a host/mask per ping udp"
+echo "$text_md spa           : Escanea una host/mascara por ping protocolo"
 echo $footer_lineal
 exit; fi
 ####
@@ -2446,16 +2452,20 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
-echo "$tab [ $first_option ] [ tool install $fwiptables ]"
-echo "$tab [ Tool install ]"
-echo "$tab [ Herramienta instalar ]"
-echo
-echo "           install : Install this version actual"
-echo "                   : Instala esta version actual"
-echo "     howto-upgrade : Show howto upgrade at the latest version"
-echo "                   : Muestra como actualizar a la ultima version"
-echo "           upgrade : Upgrade at the latest version"
-echo "                   : Actualiza a la ultima version"
+echo "$title_md [ $first_option ] [ tool install $fwiptables ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool install ]"
+echo "$text_md [ spanish info ] [ Herramienta instalar ]"
+echo  $text_md
+echo "$text_md $tab install $tab"
+echo "$text_md eng           : Install this version actual"
+echo "$text_md spa           : Instala esta version actual"
+echo "$text_md $tab howto-upgrade $tab"
+echo "$text_md eng           : Show howto upgrade at the latest version"
+echo "$text_md spa           : Muestra como actualizar a la ultima version"
+echo "$text_md $tab upgrade $tab"
+echo "$text_md eng           : Upgrade at the latest version"
+echo "$text_md spa           : Actualiza a la ultima version"
 echo $footer_lineal
 exit; fi
 ####
@@ -2467,16 +2477,20 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-blacklist" ]; then $give_cover
-echo "$tab [ $first_option ] [ tool blacklist in /etc/hosts ]"
-echo "$tab [ Tool blacklist ]"
-echo "$tab [ Herramienta de lista negra ]"
-echo
-echo "     blacklist-list : Options list to block at dangerous sites from /etc/hosts"
-echo "                    : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
-echo "       blacklist-on : Active a list to block dangerous sites in /etc/hosts"
-echo "                    : Activa una lista para bloquear sitios peligrosos in /etc/hosts"
-echo "      blacklist-off : Return to default /etc/hosts"
-echo "                    : Vuelve al archivo por defecto /etc/hosts"
+echo "$title_md [ $first_option ] [ tool blacklist in /etc/hosts ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool blacklist ]"
+echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
+echo  $text_md
+echo "$text_md $tab blacklist-list $tab"
+echo "$text_md eng                : Options list to block at dangerous sites from /etc/hosts"
+echo "$text_md spa                : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
+echo "$text_md $tab blacklist-on $tab"
+echo "$text_md eng                : Active a list to block dangerous sites in /etc/hosts"
+echo "$text_md spa                : Activa una lista para bloquear sitios peligrosos in /etc/hosts"
+echo "$text_md $tab blacklist-off $tab"
+echo "$text_md eng                : Return to default /etc/hosts"
+echo "$text_md spa                : Vuelve al archivo por defecto /etc/hosts"
 echo $footer_lineal
 exit; fi
 ####
@@ -2488,18 +2502,23 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-dev" ]; then $give_cover
-echo "$tab [ $first_option ] [ tool install $fwiptables ]"
-echo "$tab [ Tool install ]"
-echo "$tab [ Herramienta instalar ]"
-echo
-echo "      new-versions : Show the list of the last versions"
-echo "                   : Muestra el listado de las ultivas versiones"
-echo "       dev-version : Show the link at developer version"
-echo "                   : Muestra en enlace a la version de desarrollo"
-echo "       dev-changes : Show the last changes"
-echo "                   : Muestra los ultimos cambios"
-echo "              code : Show code source from one option"
-echo "                   : Muestra el codigo fuente de una opcion"
+echo "$title_md [ $first_option ] [ tool install $fwiptables ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool install ]"
+echo "$text_md [ spanish info ] [ Herramienta instalar ]"
+echo  $text_md
+echo "$text_md $tab new-versions $tab"
+echo "$text_md eng                : Show the list of the last versions"
+echo "$text_md spa                : Muestra el listado de las ultivas versiones"
+echo "$text_md $tab dev-version $tab"
+echo "$text_md eng                : Show the link at developer version"
+echo "$text_md spa                : Muestra en enlace a la version de desarrollo"
+echo "$text_md $tab dev-changes $tab"
+echo "$text_md eng                : Show the last changes"
+echo "$text_md spa                : Muestra los ultimos cambios"
+echo "$text_md $tab code $tab"
+echo "$text_md eng                : Show code source from one option"
+echo "$text_md spa                : Muestra el codigo fuente de una opcion"
 echo $footer_lineal
 exit; fi
 ####
@@ -2511,20 +2530,26 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
-echo "$tab [ $first_option ] [ tool system ]"
-echo "$tab [ Tool system ]"
-echo "$tab [ Herramienta sistema ]"
-echo
-echo "      free-ram : Clean for innecesary memory ram"
-echo "               : Libera la memoria ram innecesaria"
-echo "     speed-ram : Show the speed of ram memory"
-echo "               : Muestra la velocidad de la memoria ram"
-echo "    speed-disk : Show the speed of root hard disk"
-echo "               : Muestra la velocidad de el disco duro raiz"
-echo "     speed-glx : Show frammes for seconds with mesa graphicall"
-echo "               : Muestra fotogramas por segundo con graficos mesa"
-echo "     radio-mp3 : connect to one server mp3, see show-default or modify-default"
-echo "               : connecta a on servidor mp3, mira show-default o modify-default"
+echo "$title_md [ $first_option ] [ tool system ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool system ]"
+echo "$text_md [ spanish info ] [ Herramienta sistema ]"
+echo  $text_md
+echo "$text_md $tab free-ram $tab"
+echo "$text_md eng            : Clean for innecesary memory ram"
+echo "$text_md spa            : Libera la memoria ram innecesaria"
+echo "$text_md $tab speed-ram $tab" 
+echo "$text_md eng            : Show the speed of ram memory"
+echo "$text_md spa            : Muestra la velocidad de la memoria ram"
+echo "$text_md $tab speed-disk $tab"
+echo "$text_md eng            : Show the speed of root hard disk"
+echo "$text_md spa            : Muestra la velocidad de el disco duro raiz"
+echo "$text_md $tab speed-glx $tab"
+echo "$text_md eng            : Show frammes for seconds with mesa graphicall"
+echo "$text_md spa            : Muestra fotogramas por segundo con graficos mesa"
+echo "$text_md $tab radio-mp3 $tab"
+echo "$text_md eng            : connect to one server mp3, see show-default or modify-default"
+echo "$text_md spa            : connecta a on servidor mp3, mira show-default o modify-default"
 echo $footer_lineal
 exit; fi
 ####
