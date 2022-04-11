@@ -172,17 +172,17 @@ head_principal="$text_md || $fwiptables || Version $fversion || Use: $fwiptables
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$rallica [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
-head_waiting_gui="$rallica [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
-head_waiting_log="$rallica [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
-head_waiting_web="$rallica [ web ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
-head_waiting_rst="$rallica [ rst ] [ Wait several seconds.. ] [ With aprox several seconds ] $rallica"
+head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
+head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
+head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
+head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
+head_waiting_rst="$tab [ rst ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_ender="$ralla"      
+header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_lineal="$ralla   $ralla   $ralla"                           
+header_lineal="$tab   $tab   $tab"                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-footer_lineal="$ralla   $ralla   $ralla"                            
+footer_lineal="$tab   $tab   $tab"                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$fwiptables header"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -190,8 +190,8 @@ give_autosave="$fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="echo $rallica [ cli ] [ Without support for CLI for this option ] $rallica"
-message_without_gui="echo $rallica [ gui ] [ Without support for GUI for this option ] $rallica"
+message_without_cli="echo $tab [ cli ] [ Without support for CLI for this option ] $tab"
+message_without_gui="echo $tab [ gui ] [ Without support for GUI for this option ] $tab"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -291,7 +291,7 @@ if [ "$(id -u)" = "0" ]; then $nada
 else
 echo $head_principal
 echo "$cincuenta need to be root to work"
-echo "$ralla"
+echo "$tab"
 echo "$cincuenta  Be root to work $fwiptables"
 echo $footer_lineal
 exit ; fi
@@ -513,7 +513,7 @@ echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
 echo "$text_md [ status ] [ upgrade $fwiptables at latest version from sourceforge.net web ]"
 echo "$text_md [ status ] [ upgrade $fwiptables in $directory_fiptables ]"
 case "$favorite_text_browser" in
-"$NULL")echo "$text_md $rallica [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
+"$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ status ] [ Upgrade The $fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser command ]"
 echo "$text_md [ status ] [ Downloading $fwiptables with the command $favorite_text_browser browser ]"
 rm /tmp/$fwiptables &> /dev/null
@@ -702,7 +702,7 @@ then first_option="-log"
 echo $head_waiting_log
 $fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
-echo "$rallica [ ok ] \
+echo "$tab [ ok ] \
 [ Output $fwiptables $second_option $third_option sended to $file_output_filelog ] \
 [ show: fwiptables filelog ]" ;
 exit ; fi
@@ -742,7 +742,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
-echo "$rallica [ message ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
+echo "$tab [ message ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
 torify -i $fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
@@ -824,7 +824,7 @@ fi ; exit ; fi
 ####
 ####
 if [ "$first_option" = "regen-config" ]; then $nada
-echo "$rallica [ status]  [ regenerate template wizard and template cfg ]"
+echo "$tab [ status]  [ regenerate template wizard and template cfg ]"
 ####
 ####
 ####  english: variables to prepare to gen files
@@ -1288,7 +1288,7 @@ echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
 ####
 ####
-echo "$rallica [ ok ] [ Wizard and configs cfg templates regenerated ]"
+echo "$tab [ ok ] [ Wizard and configs cfg templates regenerated ]"
 exit ; fi
 ####
 ####
@@ -1380,7 +1380,7 @@ if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &>
 ####
 if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
-echo "$rallica [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
+echo "$tab [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
 $fwiptables save autosave-fwiptables &> /dev/null
 fi; exit; fi
 ####
@@ -1465,8 +1465,8 @@ launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $fwiptables cfg 
-echo "$rallica [ Usage ] [ $fwiptables custom file-cfg ]"
-echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
+echo "$tab [ Usage ] [ $fwiptables custom file-cfg ]"
+echo "$tab [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
@@ -1476,9 +1476,9 @@ echo "$rallica [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$text_md $rallica [ $first_option ] [ List mini options ] [ mini-options.md ]"
+echo "$text_md $tab [ $first_option ] [ List mini options ] [ mini-options.md ]"
 echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor      "
-echo "$text_md $ralla $ralla $ralla $ralla"
+echo "$text_md $tab $tab $tab $tab"
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
 echo "$text_md                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
@@ -1490,14 +1490,14 @@ echo "$text_md                       server-samba server-print server-web server
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$text_md                       new-mini-config nueva-mini-config list-config                   "
 echo "$text_md                       show-config modify-config del-config                            "
-echo "$text_md  $ralla $ralla $ralla $ralla"
+echo "$text_md  $tab $tab $tab $tab"
 echo "$text_md firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
 echo "$text_md     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
 echo "$text_md                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
 echo "$text_md                       tool-system     tool-install   tool-blacklist   tool-dev        "
 echo "$text_md     show-options   |  show-hardware   show-etc       show-log         show-about      "
 echo "$text_md                       show-help       show-example                                    " 
-echo "$text_md  $ralla $ralla $ralla $ralla"
+echo "$text_md  $tab $tab $tab $tab"
 echo "$title_md       [ Example command ]                       [ Example Description ]                  "
 echo "$text_md    $fwiptables options                  |  Show more options likes output txt             "
 echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt            "
@@ -1515,9 +1515,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$text_md    $rallica [ $first_option ] [ List full options ] [ options.md ] $rallica"
+echo "$text_md    $tab [ $first_option ] [ List full options ] [ options.md ] $tab"
 echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor        "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo "$text_md    $tab $tab $tab $tab $tab  "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
 echo "$text_md    firewall-list      |  list list6 listnum listnum6 status                               "
@@ -1531,7 +1531,7 @@ echo "$text_md                          server-samba server-print server-web ser
 echo "$text_md    firewall-custom    |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config list-config                    "
 echo "$text_md                          show-config modify-config del-config                             "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo "$text_md    $tab $tab $tab $tab $tab  "
 echo "$title_md                                      [ tool-options ]                                    " 
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy            "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert         "
@@ -1546,7 +1546,7 @@ echo "$text_md    tool-system        |  free-ram speed-ram speed-disk speed-glx 
 echo "$text_md    tool-install       |  install upgrade howto-upgrade                                    "
 echo "$text_md    tool-blacklist     |  blacklist-list blacklist-on blacklist-off                        "
 echo "$text_md    tool-dev           |  new-versions dev-version dev-changes code                        "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica  "
+echo "$text_md    $tab $tab $tab $tab $tab  "
 echo "$title_md                                     [ show-options ]                                     " 
 echo "$text_md    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                        "
 echo "$text_md    show-log           |  log-search log-ssh sentlog autolog                               "
@@ -1556,7 +1556,7 @@ echo "$text_md    show-about         |  about version depends examples          
 echo "$text_md                          config-eng config-spa license                                    "
 echo "$text_md    show-help          |  all-help help ayuda notes options info                           "
 echo "$text_md                          group-options mini-options full-options                          "
-echo "$text_md    $ralla $ralla $ralla $rallica $rallica   "
+echo "$text_md    $tab $tab $tab $tab $tab   "
 echo "$title_md       [ Example command ]                       [ Example Description ]                  "
 echo "$text_md    $fwiptables options                  |  Show more options likes output txt             "
 echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt            "
@@ -1574,7 +1574,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
-echo "$text_md $ralla [ $first_option ] [ List firewall options ] [ firewall-options.md ]"
+echo "$text_md $tab [ $first_option ] [ List firewall options ] [ firewall-options.md ]"
 echo "$title_md                                    | firewall-options |                               "
 echo "$text_md   firewall-rules      |  stop continue reset names actual show save load               "
 echo "$text_md   firewall-list       |  list listnum list6 listnum6                                   "  
@@ -1589,7 +1589,7 @@ echo "$text_md                          server-samba server-print server-web ser
 echo "$text_md  firewall-custom      |  new-full-config nueva-completa-config regen-config            "
 echo "$text_md                          new-mini-config nueva-mini-config list-config                 "
 echo "$text_md                          show-config modify-config del-config                          "
-echo "$text_md  $ralla $ralla $ralla"
+echo "$text_md  $tab $tab $tab"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options                      "
 exit ; fi
 ####
@@ -1601,7 +1601,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "tool-options" ] ; then $give_cover
-echo "$text_md $ralla [ $first_option ] [ Tool options ] [ tool-options.md ]"
+echo "$text_md $tab [ $first_option ] [ Tool options ] [ tool-options.md ]"
 echo "$title_md                                    | tool-options |                         " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy "
 echo "$text_md                        info-system lsof tcpdump netstat netstat-nat web-cert "
@@ -1616,7 +1616,7 @@ echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx ra
 echo "$text_md    tool-install      | install upgrade howto-upgrade                         "
 echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code             "
-echo "$text_md  $ralla $ralla $ralla"
+echo "$text_md  $tab $tab $tab"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
@@ -1628,7 +1628,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "show-options" ] ; then $give_cover
-echo "$text_md $ralla [ $first_option ] [ Show options ] [ show-options.md ]"
+echo "$text_md $tab [ $first_option ] [ Show options ] [ show-options.md ]"
 echo "$title_md                                   | show-options |                           " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$text_md    show-log          | log-search log-ssh sentlog autolog                    "
@@ -1638,7 +1638,7 @@ echo "$text_md    show-about        | about version depends examples            
 echo "$text_md                        config-eng config-spa license                         "
 echo "$text_md    show-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
-echo "$text_md  $ralla $ralla $ralla"
+echo "$text_md  $tab $tab $tab"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
@@ -1650,7 +1650,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "all-help" ]; then $give_cover
-echo "$text_md $ralla [ $first_option ] [ help in english and spanish ] [ all-help.md ]"
+echo "$text_md $tab [ $first_option ] [ help in english and spanish ] [ all-help.md ]"
 echo  $text_md
 echo "$text_md [ Choose only help in english ]        [ Type:     $fwiptables help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
@@ -1767,18 +1767,18 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-config" ]; then $give_cover
-echo "$ralla [ $first_option ] [ List configs cfg ]"
-echo "$rallica $tab [ English ] [ list configs files in cfg format ]"
-echo "$rallica $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
+echo "$tab [ $first_option ] [ List configs cfg ]"
+echo "$tab $tab [ English ] [ list configs files in cfg format ]"
+echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg|default-mini-english|default-mini-spanish|wizard-full|wizard-mini"
-echo "$rallica"
+echo "$tab"
 echo "$tab [ System files ]"
 ls -1 $directory_config/ | egrep -i $default_files_cfg
-echo "$rallica"
+echo "$tab"
 echo "$tab [ User files ]"
 ls -1 $directory_config/ | egrep -iv $default_files_cfg
-echo "$rallica"
-echo "$rallica [OK CFG FILES NAMES]"
+echo "$tab"
+echo "$tab [OK CFG FILES NAMES]"
 echo $footer_lineal
 exit; fi
 ####
@@ -1790,10 +1790,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "some-example" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ List examples ] [ some-examples.md ]"
-echo "$text_md $rallica [ list examples ]"
-echo "$text_md $rallica [ Lista ejemplos ]"
-echo "$text_md $ralla $ralla $ralla"
+echo "$title_md $tab [ $first_option ] [ List examples ] [ some-examples.md ]"
+echo "$text_md $tab [ list examples ]"
+echo "$text_md $tab [ Lista ejemplos ]"
+echo "$text_md $tab $tab $tab"
 echo "$text_md   Generate new iptables rules :#            $fwiptables wizard-mini         "
 echo "$text_md   Save iptables rules in name :#            $fwiptables save name           "
 echo "$text_md   Load iptables rules :#                    $fwiptables load name           "
@@ -1817,72 +1817,72 @@ echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
 echo  $text_md 
 echo "$title_md                   [ Principal options ]"
 echo  $text_md 
-echo "$text_md $rallica output-interface $ralla" 
+echo "$text_md $tab output-interface $tab" 
 echo "$text_md eng                   Manage the interface with txt or cli or gui or log"
 echo "$text_md spa                   Manage el interfaz con txt o cli o gui or log"
-echo "$text_md $rallica firewall-rules $ralla"
+echo "$text_md $tab firewall-rules $tab"
 echo "$text_md eng                   Control the iptables firewall rules"
 echo "$text_md spa                   Controla las reglas de iptables"
-echo "$text_md $rallica firewall-list $ralla"
+echo "$text_md $tab firewall-list $tab"
 echo "$text_md eng                   List the iptables firewall rules"
 echo "$text_md spa                   Lista las reglas de iptables"
-echo "$text_md $rallica firewall-launch $ralla"
+echo "$text_md $tab firewall-launch $tab"
 echo "$text_md eng                   Launch the iptables firewall rules"
 echo "$text_md spa                   Lanza las reglas de iptables"
-echo "$text_md $rallica firewall-custom $ralla"
+echo "$text_md $tab firewall-custom $tab"
 echo "$text_md eng                   Create, modify and show configurations"
 echo "$text_md eng                   Crea, modifica y muestra configuraciones"
 echo  $text_md
 $brake_md
 echo "$title_md                   [ tool options ]"
 echo  $text_md 
-echo "$text_md $rallica tool-sockets $ralla"
+echo "$text_md $tab tool-sockets $tab"
 echo "$text_md eng                   List net sockets ip in system"
 echo "$text_md spa                   Lista sockets de red ip en el sistema"
-echo "$text_md $rallica tool-forward $ralla"
+echo "$text_md $tab tool-forward $tab"
 echo "$text_md eng                   list, active and desactive ipforward in linux"
 echo "$text_md spa                   lista, activa y desactiva ipforward en linux"
-echo "$text_md $rallica tool-tcp $ralla"
+echo "$text_md $tab tool-tcp $tab"
 echo "$text_md eng                   Several tools tcp"
 echo "$text_md spa                   Varias herramientas tcp"
-echo "$text_md $rallica tool-udp $ralla"
+echo "$text_md $tab tool-udp $tab"
 echo "$text_md eng                   Several tools udp"
 echo "$text_md spa                   Varias herramientas udp"
-echo "$text_md $rallica tool-icmp $ralla"
+echo "$text_md $tab tool-icmp $tab"
 echo "$text_md eng                   Several tools icmp"
 echo "$text_md spa                   Varias herramientas icmp"
-echo "$text_md $rallica tool-nmap $ralla"
+echo "$text_md $tab tool-nmap $tab"
 echo "$text_md eng                   Port scan"
 echo "$text_md spa                   Escaneo de puertos"
-echo "$text_md $rallica tool-sudo $ralla"
+echo "$text_md $tab tool-sudo $tab"
 echo "$text_md eng                   Tool to auth sudo a users for fwiptables"
 echo "$text_md spa                   Herramienta de autorizacion a usuarios para fwiptables"
-echo "$text_md $rallica tool-install $ralla"
+echo "$text_md $tab tool-install $tab"
 echo "$text_md eng                   Tool to install and upgrade fwiptables"
 echo "$text_md spa                   Herramienta para instalar y actualizar fwiptables"
-echo "$text_md $rallica tool-blacklist $ralla"
+echo "$text_md $tab tool-blacklist $tab"
 echo "$text_md eng                   Tool for block dangerous sites"
 echo "$text_md spa                   Herramienta para bloquear peligrosos sitios"
-echo "$text_md $rallica tool-dev $ralla"
+echo "$text_md $tab tool-dev $tab"
 echo "$text_md eng                   Tool to developer"
 echo "$text_md spa                   Herramienta de desarrollo"
-echo "$text_md $rallica tool-system $ralla"
+echo "$text_md $tab tool-system $tab"
 echo "$text_md eng                   Several tools for the system"
 echo "$text_md spa                   Varias herramientas para el sistema"
 echo  $text_md 
 $brake_md
 echo "$title_md                   [ show options ]"
 echo  $text_md 
-echo "$text_md $rallica show-etc $ralla"
+echo "$text_md $tab show-etc $tab"
 echo "$text_md eng                   Show net files in /etc/"
 echo "$text_md spa                   Muestra archivos de red de /etc/"
-echo "$text_md $rallica show-log $ralla"
+echo "$text_md $tab show-log $tab"
 echo "$text_md eng                   Show logs systems"
 echo "$text_md spa                   Muestra logs del sistema"
-echo "$text_md $rallica show-about $ralla"
+echo "$text_md $tab show-about $tab"
 echo "$text_md eng                   About"
 echo "$text_md spa                   Acerca de"
-echo "$text_md $rallica show-help $ralla"
+echo "$text_md $tab show-help $tab"
 echo "$text_md eng                   Help"
 echo "$text_md spa                   Ayuda"
 echo $footer_lineal
@@ -1896,63 +1896,63 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-launch" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ launch rules ] [ firewall-launch.md ]"
+echo "$title_md $tab [ $first_option ] [ launch rules ] [ firewall-launch.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Launch iptables rules ]"
 echo "$text_md [ spanish info ] [ Lanza reglas de iptables ]"
 echo  $text_md
-echo "$text_md $rallica eraserules $ralla" 
+echo "$text_md $tab eraserules $tab" 
 echo "$text_md eng           : Remove the iptables rules in ipv4 and ipv6"
 echo "$text_md spa           : Borra las reglas de iptables en ipv4 y ipv6"
-echo "$text_md $rallica wizard-mini $ralla"
+echo "$text_md $tab wizard-mini $tab"
 echo "$text_md eng           : Launch one wizard mini to launch iptables rules"
 echo "$text_md spa           : Lanza un wizard mini para lanzar reglas de iptables"
-echo "$text_md $rallica wizard-full $ralla"
+echo "$text_md $tab wizard-full $tab"
 echo "$text_md eng           : Launch one wizard full to launch rules"
 echo "$text_md spa           : Lanza un wizard completo para lanzar reglas de iptables"
-echo "$text_md $rallica offline $ralla"
+echo "$text_md $tab offline $tab"
 echo "$text_md eng           : Launch one firewall disconected for all servers and clients except localhost"
 echo "$text_md spa           : Lanza un Firewall desconectado para todo servidores y clientes excepto localhost"
-echo "$text_md $rallica all-permisive $ralla"
+echo "$text_md $tab all-permisive $tab"
 echo "$text_md eng           : Launch one firewall very permisive"
 echo "$text_md spa           : Lanza un firewall muy permisivo"
-echo "$text_md $rallica games-udp $ralla"
+echo "$text_md $tab games-udp $tab"
 echo "$text_md eng           : Launch one firewall like client games for udp non-root"
 echo "$text_md spa           : Lanza un firewall como cliente juegos udp no-root"
-echo "$text_md $rallica custom $ralla"
+echo "$text_md $tab custom $tab"
 echo "$text_md eng           : Launch one custom firewall with one file cfg"
 echo "$text_md spa           : Lanza un modificado firewall con un archivo cfg"
-echo "$text_md $rallica client-web $ralla"
+echo "$text_md $tab client-web $tab"
 echo "$text_md eng           : Launch one firewall like client web and ssh"
 echo "$text_md spa           : Lanza un firewall como cliente web y ssh"
-echo "$text_md $rallica client-vpn $ralla"
+echo "$text_md $tab client-vpn $tab"
 echo "$text_md eng           : Launch one firewall like client web and ssh and vpn"
 echo "$text_md spa           : Lanza un firewall como cliente web y ssh y vpn"
-echo "$text_md $rallica client-tor $ralla"
+echo "$text_md $tab client-tor $tab"
 echo "$text_md eng           : Launch one firewall with browser with tor"
 echo "$text_md spa           : Lanza un firewall para nevagar con tor"
-echo "$text_md $rallica lan-tor $ralla"
+echo "$text_md $tab lan-tor $tab"
 echo "$text_md eng           : Launch one firewall only to browser with tor"
 echo "$text_md spa           : Lanza un firewall solo para nevagar con tor"
-echo "$text_md $rallica lan-vpn $ralla"
+echo "$text_md $tab lan-vpn $tab"
 echo "$text_md eng           : Launch one firewall only to browser with vpn"
 echo "$text_md eng           : Lanza un firewall solo para nevagar con vpn"
-echo "$text_md $rallica server-web $ralla" 
+echo "$text_md $tab server-web $tab" 
 echo "$text_md eng           : Launch one firewall like server web and ssh"
 echo "$text_md spa           : Lanza un firewall como servidor web y ssh"
-echo "$text_md $rallica server-samba $ralla"
+echo "$text_md $tab server-samba $tab"
 echo "$text_md eng           : Launch one firewall samba and ssh like client and server both"
 echo "$text_md spa           : Lanza un firewall sambla y ssh como cliente y servidor ambos"
-echo "$text_md $rallica server-print $ralla"
+echo "$text_md $tab server-print $tab"
 echo "$text_md eng           : Launch one firewall like server ipp, printer and ssh"
 echo "$text_md spa           : Lanza un firewall como servidor ipp, printer y ssh"
-echo "$text_md $rallica server-ssh $ralla"
+echo "$text_md $tab server-ssh $tab"
 echo "$text_md eng           : Launch one firewall like server ssh"
 echo "$text_md spa           : Lanza un firewall como servidor ssh"
-echo "$text_md $rallica server-lamp $ralla"
+echo "$text_md $tab server-lamp $tab"
 echo "$text_md eng           : Launch one firewall like server LAMP"
 echo "$text_md spa           : Lanza un firewall como servidor LAMP"
-echo "$text_md $rallica cfg $ralla" 
+echo "$text_md $tab cfg $tab" 
 echo "$text_md eng           : Alias to custom"
 echo "$text_md spa           : Apodo to custom"
 echo $footer_lineal
@@ -1966,36 +1966,36 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-rules" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ control rules ]"
+echo "$title_md $tab [ $first_option ] [ control rules ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
 echo  $text_md
-echo "$text_md $rallica stop $ralla" 
+echo "$text_md $tab stop $tab" 
 echo "$text_md eng           : Save and stop the rules"
 echo "$text_md spa           : Guarda y para las reglas"
-echo "$text_md $rallica continue"
+echo "$text_md $tab continue"
 echo "$text_md eng           : continue with old rules"
 echo "$text_md spa           : Continua con las viejas reglas"
-echo "$text_md $rallica reset $ralla" 
+echo "$text_md $tab reset $tab" 
 echo "$text_md eng           : Reset the rules"
 echo "$text_md spa           : Resetea las reglas"
-echo "$text_md $rallica list-fw $ralla" 
+echo "$text_md $tab list-fw $tab" 
 echo "$text_md eng           : Alias to names"
 echo "$text_md spa           : Apodo a names"
-echo "$text_md $rallica names $ralla" 
+echo "$text_md $tab names $tab" 
 echo "$text_md eng           : Show the files of firewall standard"
 echo "$text_md spa           : Muestra los archivos de firewall estandard guardados"
-echo "$text_md $rallica show $ralla" 
+echo "$text_md $tab show $tab" 
 echo "$text_md eng           : Show the files in firewall standard"
 echo "$text_md spa           : Muestra los archivos de firewall estandard"
-echo "$text_md $rallica save $ralla" 
+echo "$text_md $tab save $tab" 
 echo "$text_md eng           : Save the files in firewall standard"
 echo "$text_md spa           : Guarda los archivos de firewall estandard"
-echo "$text_md $rallica load $ralla" 
+echo "$text_md $tab load $tab" 
 echo "$text_md eng           : Restore files from firewall standard"    
 echo "$text_md spa           : Recupera los archivos de firewall estandard"
-echo "$text_md $rallica actual $ralla" 
+echo "$text_md $tab actual $tab" 
 echo "$text_md eng           : Show the actual iptables standard"
 echo "$text_md spa           : Muestra el actual firewall estandard"
 echo $footer_lineal
@@ -2014,70 +2014,70 @@ echo  $text_md
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
 echo  $text_md
-echo "$text_md $rallica list $ralla"
+echo "$text_md $tab list $tab"
 echo "$text_md eng           : List iptables filter rules from ipv4 with hide no used"
 echo "$text_md spa           : Lista reglas de tabla filtros desde ipv4 esconde no usadas"
-echo "$text_md $rallica list6 $ralla"
+echo "$text_md $tab list6 $tab"
 echo "$text_md eng           : List iptables filter rules from ipv6 with hide no used"
 echo "$text_md spa           : Lista reglas de tabla filtros desde ipv6 esconde no usadas"
 echo  $text_md 
-echo "$text_md $rallica status $ralla"
+echo "$text_md $tab status $tab"
 echo "$text_md eng           : List iptables filter rules ip4 and ipv6 when there are only default route"
 echo "$text_md eng           : Lista filtros de iptables rules ip4 y ip6 solo cuando hay ruta por defecto"
-echo "$text_md $rallica list-forward $ralla"
+echo "$text_md $tab list-forward $tab"
 echo "$text_md eng           : List iptables filter rules foward"
 echo "$text_md spa           : Lista tabla de iptables de reenvio ipv4"
-echo "$text_md $rallica list-forward6 $ralla"
+echo "$text_md $tab list-forward6 $tab"
 echo "$text_md eng           : List iptables filter rules forward ipv6"
 echo "$text_md spa           : Lista tabla de iptables de reenvio ipv6"
-echo "$text_md $rallica listnum $ralla"
+echo "$text_md $tab listnum $tab"
 echo "$text_md eng           : List iptables filter rules from ipv4 in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros desde ipv4 in numeros"
-echo "$text_md $rallica listnum6 $ralla"
+echo "$text_md $tab listnum6 $tab"
 echo "$text_md eng           : List iptables filter rules from ipv6 in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros desde ipv6 in numeros"
-echo "$text_md $rallica list-forwardnum $ralla"
+echo "$text_md $tab list-forwardnum $tab"
 echo "$text_md eng           : List iptables filter rules foward in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
-echo "$text_md $rallica list-forwardnum6 $ralla"
+echo "$text_md $tab list-forwardnum6 $tab"
 echo "$text_md eng           : List iptables filter rules forward ipv6 in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo  $text_md 
-echo "$text_md $rallica list-filter4 $ralla"
+echo "$text_md $tab list-filter4 $tab"
 echo "$text_md eng           : List iptables filter rules from ipv4"
 echo "$text_md spa           : Lista iptables reglas de filtros desde ipv4"
-echo "$text_md $rallica list-filter6 $ralla"
+echo "$text_md $tab list-filter6 $tab"
 echo "$text_md eng           : List iptables filter rules from ipv6"
 echo "$text_md spa           : Lista iptables reglas de filtros desde ipv6"
-echo "$text_md $rallica list-nat4 $ralla"
+echo "$text_md $tab list-nat4 $tab"
 echo "$text_md eng           : List iptables nat rules from ipv4"
 echo "$text_md spa           : Lista iptables nat reglas de ipv4"
-echo "$text_md $rallica list-nat6 $ralla"
+echo "$text_md $tab list-nat6 $tab"
 echo "$text_md eng           : List iptables nat rules from ipv6"
 echo "$text_md spa           : Lista iptables nat reglas de ipv6"
-echo "$text_md $rallica list-mangle4 $ralla"
+echo "$text_md $tab list-mangle4 $tab"
 echo "$text_md eng           : List iptables mangle rules from ipv4"
 echo "$text_md spa           : Lista reglas de manipulacion ipv4"
-echo "$text_md $rallica list-mangle6 $ralla"
+echo "$text_md $tab list-mangle6 $tab"
 echo "$text_md eng           : List iptables mangle rules from ipv6"
 echo "$text_md spa           : Lista reglas de manipulacion ipv6"
-echo "$text_md $rallica list-raw4 $ralla"
+echo "$text_md $tab list-raw4 $tab"
 echo "$text_md eng           : List iptables raw rules from ipv4"
 echo "$text_md spa           : Lista reglas directas de ipv4"
-echo "$text_md $rallica list-raw6 $ralla"
+echo "$text_md $tab list-raw6 $tab"
 echo "$text_md eng           : List iptables raw rules from ipv6"
 echo "$text_md spa           : Lista reglas directas de ipv6"
-echo "$text_md $rallica list-security4 $ralla"
+echo "$text_md $tab list-security4 $tab"
 echo "$text_md eng           : List iptables security rules from ipv4"
 echo "$text_md spa           : lista reglas de seguridad de ipv4"
-echo "$text_md $rallica list-security6 $ralla"
+echo "$text_md $tab list-security6 $tab"
 echo "$text_md eng           : List iptables security rules from ipv6"
 echo "$text_md spa           : lista reglas de seguridad de ipv6"
 echo  $text_md
-echo "$text_md $rallica list-ebtables $ralla"
+echo "$text_md $tab list-ebtables $tab"
 echo "$text_md eng           : List rules mac ethernet"
 echo "$text_md spa           : Lista reglas mac de ethernet"
-echo "$text_md $rallica arp-tables $ralla"
+echo "$text_md $tab arp-tables $tab"
 echo "$text_md eng           : List rules arptables arp"
 echo "$text_md spa           : Lista reglas de tabla de arpanet"
 echo $footer_lineal
@@ -2091,9 +2091,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-numrules" ]; then $give_cover
-echo "$ralla [ $first_option ] [ List rules in numerical ]"
-echo "$rallica [ List iptables numerical rules ]"
-echo "$rallica [ Lista reglas numericas de iptables ]"
+echo "$tab [ $first_option ] [ List rules in numerical ]"
+echo "$tab [ List iptables numerical rules ]"
+echo "$tab [ Lista reglas numericas de iptables ]"
 echo
 echo "               listnum : List iptables filter rules input and output ipv4 in numbers"
 echo "                       : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
@@ -2115,36 +2115,36 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-custom" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ tool custom rules config ]"
+echo "$title_md $tab [ $first_option ] [ tool custom rules config ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ custom configs ]"
 echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
 echo  $text_md
-echo "$text_md $rallica new-full-config $ralla"
+echo "$text_md $tab new-full-config $tab"
 echo "$text_md eng           : Create a new advance configfile.cfg in english"
 echo "$text_md spa           : Crea una nueva avanzada configfile.cfg en ingles"
-echo "$text_md $rallica nueva-completa-config $ralla"
+echo "$text_md $tab nueva-completa-config $tab"
 echo "$text_md eng           : Create a new advance configfile.cfg in spanish"
 echo "$text_md spa           : Crea una nueva avanzada configfile.cfg en español"
-echo "$text_md $rallica new-mini-config $ralla"
+echo "$text_md $tab new-mini-config $tab"
 echo "$text_md eng           : Create a new basic configfile.cfg in english"
 echo "$text_md spa           : Crea una nueva basica configfile.cfg en ingles"
-echo "$text_md $rallica nueva-mini-config $ralla"
+echo "$text_md $tab nueva-mini-config $tab"
 echo "$text_md eng           : Create a new basic configfile.cfg in spanish"
 echo "$text_md spa           : Crea una nueva basica configfile.cfg en español"
-echo "$text_md $rallica regen-config $ralla"
+echo "$text_md $tab regen-config $tab"
 echo "$text_md eng           : regen-config wizard templates y cfg templates files"
 echo "$text_md spa           : regen-configera plantillas wizard y plantillas cfg"
-echo "$text_md $rallica list-config $ralla"
+echo "$text_md $tab list-config $tab"
 echo "$text_md eng           : List config files cfg"
 echo "$text_md spa           : Lista las configuraciones de archivo cfg"
-echo "$text_md $rallica modify-config $ralla"
+echo "$text_md $tab modify-config $tab"
 echo "$text_md eng           : Edit one configfile.cfg"
 echo "$text_md spa           : Edita una configuracion.cfg"
-echo "$text_md $rallica show-config $ralla"
+echo "$text_md $tab show-config $tab"
 echo "$text_md eng           : Show one configfile.cfg"
 echo "$text_md spa           : Muestra una configuracion.cfg"
-echo "$text_md $rallica del-config $ralla"
+echo "$text_md $tab del-config $tab"
 echo "$text_md eng           : Delete one configuration file"
 echo "$text_md spa           : Borra una configuracion.cfg"
 echo $footer_lineal
@@ -2158,36 +2158,36 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "output-interface" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ control interface ] [ output-interface.md ]"
+echo "$title_md $tab [ $first_option ] [ control interface ] [ output-interface.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
 echo  $text_md
-echo "$text_md $rallica txt OR -txt $ralla"
+echo "$text_md $tab txt OR -txt $tab"
 echo "$text_md eng           : Output to Text line"
 echo "$text_md spa           : Salida a linea de texto"
-echo "$text_md $rallica cli OR -cli $ralla"
+echo "$text_md $tab cli OR -cli $tab"
 echo "$text_md eng           : Output to text menu"
 echo "$text_md spa           : Salida a menu de texto"
-echo "$text_md $rallica gui OR -gui $ralla"
+echo "$text_md $tab gui OR -gui $tab"
 echo "$text_md eng           : Output to graphicall window"
 echo "$text_md spa           : Salida a ventana grafica"
-echo "$text_md $rallica log OR -log $ralla"
+echo "$text_md $tab log OR -log $tab"
 echo "$text_md eng           : Save the output"
 echo "$text_md spa           : Guarda la salida"
-echo "$text_md $rallica web OR -web $ralla"
+echo "$text_md $tab web OR -web $tab"
 echo "$text_md eng           : Output in favorite text web browser"
 echo "$text_md spa           : Salida en favorito navegador web de texto"
-echo "$text_md $rallica tor OR -tor $ralla"
+echo "$text_md $tab tor OR -tor $tab"
 echo "$text_md eng           : Run in tor, necesary tor daemon ant torify command"
 echo "$text_md spa           : Ejecuta en tor, necesario daemon tor y comando torify"
-echo "$text_md $rallica cli-menu $ralla"
+echo "$text_md $tab cli-menu $tab"
 echo "$text_md eng           : Text cli interface from menus"
 echo "$text_md spa           : Interfaz de menus desde texto"
-echo "$text_md $rallica gui-menu $ralla"
+echo "$text_md $tab gui-menu $tab"
 echo "$text_md eng           : Gui interface from menu"
 echo "$text_md eng           : Interfaz grafica desde menu"
-echo "$text_md $rallica gui-shell $ralla"
+echo "$text_md $tab gui-shell $tab"
 echo "$text_md eng           : Gui with command line interface"
 echo "$text_md spa           : Gui con interfaz desde linea de comandos"
 echo $footer_lineal
@@ -2201,39 +2201,39 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ tool sockets ] [ tool-sockets.md ]"
+echo "$title_md $tab [ $first_option ] [ tool sockets ] [ tool-sockets.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool sockets ]"
 echo "$text_md [ spanish info ] [ Herramienta de sockets ]"
 echo  $text_md
-echo "$text_md $rallica info-sockets $ralla"
+echo "$text_md $tab info-sockets $tab"
 echo "$text_md eng           : List system listen sockets"
 echo "$text_md spa           : Lista sockets a la escuha del sistema"
-echo "$text_md $rallica info-nodes $ralla"
+echo "$text_md $tab info-nodes $tab"
 echo "$text_md eng           : List the conentions arp in the lan"
 echo "$text_md spa           : Lista las conexiones arp en la red local"
-echo "$text_md $rallica info-proxy $ralla"
+echo "$text_md $tab info-proxy $tab"
 echo "$text_md eng           : List system proxy"
 echo "$text_md spa           : Lista proxy del sistema"
-echo "$text_md $rallica info-route $ralla"
+echo "$text_md $tab info-route $tab"
 echo "$text_md eng           : Show net devices and ip route tables"
 echo "$text_md spa           : Muestra los dispositivos de red y la tabla de rutas"
-echo "$text_md $rallica ss $ralla"
+echo "$text_md $tab ss $tab"
 echo "$text_md eng           : Show net sockets with command ss"
 echo "$text_md spa           : Muestra las conexiones de red con ss"
-echo "$text_md $rallica lsof $ralla"
+echo "$text_md $tab lsof $tab"
 echo "$text_md eng           : Show net sockets with command lsof"
 echo "$text_md spa           : Muestra las conexiones con lsof"
-echo "$text_md $rallica netstat $ralla"
+echo "$text_md $tab netstat $tab"
 echo "$text_md eng           : Show net sockets with command netstat"
 echo "$text_md spa           : Muestra las conexiones con netstat"
-echo "$text_md $rallica netstat-nat $ralla"
+echo "$text_md $tab netstat-nat $tab"
 echo "$text_md eng           : Show net sockets with command netstat-nat"
 echo "$text_md spa           : Muestra las conexiones con netstat-nat"
-echo "$text_md $rallica web-cert $ralla"
+echo "$text_md $tab web-cert $tab"
 echo "$text_md eng           : Get one ssl certificated to one web with port https(443)"
 echo "$text_md spa           : Obtiene un certificado ssl a una web con puerto https(443)" 
-echo "$text_md $rallica tcpdump $ralla"
+echo "$text_md $tab tcpdump $tab"
 echo "$text_md eng           : Listen the connections"
 echo "$text_md spa           : Escucha las conexiones"
 echo $footer_lineal
@@ -2247,24 +2247,24 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-game" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ tool game ] [ tool-game.md ]"
+echo "$title_md $tab [ $first_option ] [ tool game ] [ tool-game.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool game ]"
 echo "$text_md [ spanish info ] [ Herramienta de juego ]"
 echo  $text_md
-echo "$text_md $rallica ole-word $ralla"
+echo "$text_md $tab ole-word $tab"
 echo "$text_md eng           : Play game to discover a random word with five digits"
 echo "$text_md spa           : Juega a descubrir una palabra aleatoria de cinco caracteres"
-echo "$text_md $rallica ole-number $ralla"
+echo "$text_md $tab ole-number $tab"
 echo "$text_md eng           : Play game to discover a random number with five digits"
 echo "$text_md spa           : Juega a descubrir un numero aleatorio de cinco digitos"
-echo "$text_md $rallica ole-domain $ralla"
+echo "$text_md $tab ole-domain $tab"
 echo "$text_md eng           : Discover one domain if generic or if country"
 echo "$text_md spa           : Descubre un dominio si es generico o si es de pais"
-echo "$text_md $rallica colour-hex $ralla"
+echo "$text_md $tab colour-hex $tab"
 echo "$text_md eng           : Convert one number hexadecimal in rgb"
 echo "$text_md spa           : Convierte un numero hexadecimal en rgb"
-echo "$text_md $rallica colour-rgb $ralla"
+echo "$text_md $tab colour-rgb $tab"
 echo "$text_md eng           : Convert one number rgb in hexadecimal"
 echo "$text_md spa           : Convierte un numero rgb en hexadecimal"
 echo $footer_lineal
@@ -2278,18 +2278,18 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ tool forward ] [ tool-forward.md ]"
+echo "$title_md $tab [ $first_option ] [ tool forward ] [ tool-forward.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool forward ]"
 echo "$text_md [ spanish info ] [ Herramienta de ipforwading ]"
 echo  $text_md
-echo "$text_md $rallica ipforward-list $ralla"
+echo "$text_md $tab ipforward-list $tab"
 echo "$text_md eng           : Show kernel config about forward"
 echo "$text_md spa           : Muestra configuracion del kernel sobre reenvios"
-echo "$text_md $rallica ipforward-on $ralla"
+echo "$text_md $tab ipforward-on $tab"
 echo "$text_md eng           : Active the kernel config about forward"
 echo "$text_md spa           : Activa la configuracion del kernel sobre reenvios"
-echo "$text_md $rallica ipforward-off $ralla"
+echo "$text_md $tab ipforward-off $tab"
 echo "$text_md eng           : Deactive kernel config about forward"
 echo "$text_md spa           : Desactiva la configuracion del kernel sobre reenvios"
 echo $footer_lineal
@@ -2303,21 +2303,21 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool icmp ] [ tool-icmp.md ]"
+echo "$tab [ $first_option ] [ tool icmp ] [ tool-icmp.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool icmp ]"
 echo "$text_md [ spanish info ] [ Herramienta icmp ]"
 echo  $text_md
-echo "$text_md $rallica traceicmp-ip4 $ralla"
+echo "$text_md $tab traceicmp-ip4 $tab"
 echo "$text_md eng           : Trace route a one host with ipv4 icmp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv4 icmp"
-echo "$text_md $rallica traceicmp-ip6 $ralla"
+echo "$text_md $tab traceicmp-ip6 $tab"
 echo "$text_md eng           : Trace route a one host with ipv6 icmp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv6 icmp"
-echo "$text_md $rallica ping-ip4 $ralla"
+echo "$text_md $tab ping-ip4 $tab"
 echo "$text_md eng           : Do a one ping with to one host with ipv4 icmp"
 echo "$text_md spa           : Hace un ping con una direccion con ipv4 icmp"
-echo "$text_md $rallica ping-ip6 $ralla"
+echo "$text_md $tab ping-ip6 $tab"
 echo "$text_md eng           : Do a one ping with to one host with ipv6 icmp"
 echo "$text_md spa           : Hace un ping con una direccion con ipv6 icmp"
 echo $footer_lineal
@@ -2331,21 +2331,21 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ tool tcp ] [ tool-tcp.md ]"
+echo "$title_md $tab [ $first_option ] [ tool tcp ] [ tool-tcp.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool tcp ]"
 echo "$text_md [ spanish info ] [ Herramienta tcp ]"
 echo  $text_md
-echo "$text_md $rallica tracetcp-ip4 $ralla"
+echo "$text_md $tab tracetcp-ip4 $tab"
 echo "$text_md eng           : Trace route a one host with ipv4 tcp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv4 tcp"
-echo "$text_md $rallica tracetcp-ip6 $ralla"
+echo "$text_md $tab tracetcp-ip6 $tab"
 echo "$text_md eng           : Trace route a one host with ipv6 tcp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv6 tcp"
-echo "$text_md $rallica speed-ip4 $ralla"
+echo "$text_md $tab speed-ip4 $tab"
 echo "$text_md eng           : test bandwith with ipv4"
 echo "$text_md spa           : Testea la velocidad de conexion con ipv4"
-echo "$text_md $rallica speed-ip6 $ralla"
+echo "$text_md $tab speed-ip6 $tab"
 echo "$text_md eng           : Test net bandwith with ipv6"
 echo "$text_md spa           : Testea la velocidad de conexion con ipv6"
 echo $footer_lineal
@@ -2359,24 +2359,24 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-udp" ]; then $give_cover
-echo "$title_md $ralla [ $first_option ] [ tool udp ] [ tool-udp.md ]"
+echo "$title_md $tab [ $first_option ] [ tool udp ] [ tool-udp.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool udp ]"
 echo "$text_md [ spanish info ] [ Herramienta udp ]"
 echo  $text_md
-echo "$text_md $rallica host $ralla"
+echo "$text_md $tab host $tab"
 echo "$text_md eng           : Resolve one host"
 echo "$text_md spa           : Resuelve una direccion a ip"
-echo "$text_md $rallica dig $ralla"
+echo "$text_md $tab dig $tab"
 echo "$text_md eng           : Resolve one host"
 echo "$text_md spa           : Resuelve una direccion a ip"
-echo "$text_md $rallica resolveip $ralla"
+echo "$text_md $tab resolveip $tab"
 echo "$text_md eng           : Resolve one host and viceversa"
 echo "$text_md spa           : Resuelve una direccion a ip y a host"
-echo "$text_md $rallica geip $ralla"
+echo "$text_md $tab geip $tab"
 echo "$text_md eng           : Locate a one host or ip"
 echo "$text_md spa           : Localiza una direccion o ip"
-echo "$text_md $rallica ntpdate $ralla"
+echo "$text_md $tab ntpdate $tab"
 echo "$text_md eng           : Update the system date from ntp server"
 echo "$text_md spa           : Actualiza la fecha del sistema desde un servidor de fecha"
 echo $footer_lineal
@@ -2390,9 +2390,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool nmap ]"
-echo "$rallica [ Tool nmap ]"
-echo "$rallica [ Herramienta nmap ]"
+echo "$tab [ $first_option ] [ tool nmap ]"
+echo "$tab [ Tool nmap ]"
+echo "$tab [ Herramienta nmap ]"
 echo
 echo "     scan-tcp : Scan a host/mask per tcp protocol"
 echo "              : Escanea una host/mascara por tcp protocolo"
@@ -2415,9 +2415,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool sudo $fwiptables ]"
-echo "$rallica [ Tool sudo ]"
-echo "$rallica [ Herramienta sudo ]"
+echo "$tab [ $first_option ] [ tool sudo $fwiptables ]"
+echo "$tab [ Tool sudo ]"
+echo "$tab [ Herramienta sudo ]"
 echo
 echo "     sudo-adduser : Allow sudo $fwiptables to other choosed users"
 echo "                  : Permite sudo $fwiptables a otros elegidos usuarios"
@@ -2438,9 +2438,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool install $fwiptables ]"
-echo "$rallica [ Tool install ]"
-echo "$rallica [ Herramienta instalar ]"
+echo "$tab [ $first_option ] [ tool install $fwiptables ]"
+echo "$tab [ Tool install ]"
+echo "$tab [ Herramienta instalar ]"
 echo
 echo "           install : Install this version actual"
 echo "                   : Instala esta version actual"
@@ -2459,9 +2459,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-blacklist" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool blacklist in /etc/hosts ]"
-echo "$rallica [ Tool blacklist ]"
-echo "$rallica [ Herramienta de lista negra ]"
+echo "$tab [ $first_option ] [ tool blacklist in /etc/hosts ]"
+echo "$tab [ Tool blacklist ]"
+echo "$tab [ Herramienta de lista negra ]"
 echo
 echo "     blacklist-list : Options list to block at dangerous sites from /etc/hosts"
 echo "                    : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
@@ -2480,9 +2480,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-dev" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool install $fwiptables ]"
-echo "$rallica [ Tool install ]"
-echo "$rallica [ Herramienta instalar ]"
+echo "$tab [ $first_option ] [ tool install $fwiptables ]"
+echo "$tab [ Tool install ]"
+echo "$tab [ Herramienta instalar ]"
 echo
 echo "      new-versions : Show the list of the last versions"
 echo "                   : Muestra el listado de las ultivas versiones"
@@ -2503,9 +2503,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
-echo "$ralla [ $first_option ] [ tool system ]"
-echo "$rallica [ Tool system ]"
-echo "$rallica [ Herramienta sistema ]"
+echo "$tab [ $first_option ] [ tool system ]"
+echo "$tab [ Tool system ]"
+echo "$tab [ Herramienta sistema ]"
 echo
 echo "      free-ram : Clean for innecesary memory ram"
 echo "               : Libera la memoria ram innecesaria"
@@ -2528,9 +2528,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
-echo "$ralla [ $first_option ] [ show etc files ]"
-echo "$rallica [ Show configs files from etc ]"
-echo "$rallica [ Mostrar configuraciones de archivos de etc ]"
+echo "$tab [ $first_option ] [ show etc files ]"
+echo "$tab [ Show configs files from etc ]"
+echo "$tab [ Mostrar configuraciones de archivos de etc ]"
 echo
 echo "               hosts : Show /etc/hosts, hosts local and statics host"
 echo "                     : Muestra /etc/hosts, hosts locales y hosts estaticos"
@@ -2559,9 +2559,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-hardware" ]; then $give_cover
-echo "$ralla [ $first_option ] [ show hardware info ]"
-echo "$rallica [ Show hardware info ]"
-echo "$rallica [ Muestra informacion del hardware ]"
+echo "$tab [ $first_option ] [ show hardware info ]"
+echo "$tab [ Show hardware info ]"
+echo "$tab [ Muestra informacion del hardware ]"
 echo
 echo "          lpinfo : Show the device printers"
 echo "                 : Muestra los dispositivos de impresora"
@@ -2588,9 +2588,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
-echo "$ralla [ $first_option ] [ show log files ]"
-echo "$rallica [ Show log ]"
-echo "$rallica [ Mostrar log ]"
+echo "$tab [ $first_option ] [ show log files ]"
+echo "$tab [ Show log ]"
+echo "$tab [ Mostrar log ]"
 echo
 echo "        log-ssh : Search logs for ssh in /var/log"
 echo "                : Busca logs con sshd en /var/log"
@@ -2613,9 +2613,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
-echo "$ralla [ $first_option ] [ show about $fwiptables ]"
-echo "$rallica [ Show about ]"
-echo "$rallica [ Mostrar acerca de ]"
+echo "$tab [ $first_option ] [ show about $fwiptables ]"
+echo "$tab [ Show about ]"
+echo "$tab [ Mostrar acerca de ]"
 echo
 echo "          about : About"
 echo "                : Acerca"
@@ -2642,9 +2642,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
-echo "$ralla [ $first_option ] [ show help ]"
-echo "$rallica [ Show help ]"
-echo "$rallica [ Mostrar ayuda ]"
+echo "$tab [ $first_option ] [ show help ]"
+echo "$tab [ Show help ]"
+echo "$tab [ Mostrar ayuda ]"
 echo
 echo "         all-help : Show help in english and spanish"
 echo "                  : Muestra la ayuda en ingles y en español"
@@ -2672,7 +2672,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
-echo "$ralla [ $first_option ] [ List notes about $fwiptables ]"
+echo "$tab [ $first_option ] [ List notes about $fwiptables ]"
 echo
 echo " [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo " [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
@@ -2741,46 +2741,46 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
-echo "$ralla [ $first_option ] [ List programs depends about $fwiptables ]"
-echo $ralla
-echo "$rallica [ It are all the depends to full work in $fwiptables $fversion ]"
-echo $ralla
+echo "$tab [ $first_option ] [ List programs depends about $fwiptables ]"
+echo $tab
+echo "$tab [ It are all the depends to full work in $fwiptables $fversion ]"
+echo $tab
 echo "$tab [Configuration directory]"
 echo "list cfg:            $directory_config"
 echo "names fw:            $directory_fwrecover"
-echo $ralla
+echo $tab
 echo "$tab [Configuration file]"
 echo "default variables:   /etc/default/fwiptables"
 echo "shell completions:   /etc/completion.d/fwiptables"
 echo "                     /etc/profile.d/fwiptables"
 echo "auth users:          /etc/sudoers.d/fwiptables"
-echo $ralla
+echo $tab
 echo "$tab [output log]"
 echo "destination filelog: $file_output_filelog"
 echo "destination autolog: $file_output_autolog"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables util]"
 echo "sed:       $command_sed"
 echo "fmt:       $command_fmt"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables cli]"
 echo "dialog:    $command_dialog"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables gui]"
 echo "zenity:      $command_zenity"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables auto text browser]"
 echo "automatic: lynx or links or links2 "
 echo "auto text browser: $favorite_text_browser"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables auto date command]"
 echo "automatic: rdate or sntp or ntpdate"
 echo "auto text browser: $favorite_date_command"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables auto music browser]"
 echo "automatic: mpg321 or mpg123"
 echo "auto text browser: $favorite_radio_command"
-echo $ralla
+echo $tab
 echo "$tab [the iptables]"
 echo "iptables legacy:   $command_iptables_legacy"
 echo "iptables nft:      $command_iptables_nft"
@@ -2788,7 +2788,7 @@ echo "ip6tables legacy:  $command_ip6tables_legacy"
 echo "ip6tables nft:     $command_ip6tables_nft"
 echo "arptables:         $command_arptables"
 echo "ebtables:          $command_ebtables"
-echo $ralla
+echo $tab
 echo "$tab [$fwiptables tool]"
 echo "date:       $command_date"
 echo "uname:      $command_uname"
@@ -2820,7 +2820,7 @@ echo "dd:         $command_dd"
 echo "tee:        $command_tee"
 echo "glxgears:   $command_glxgears"
 echo "txt2html:   $command_txt2html"
-echo $ralla
+echo $tab
 echo $footer_lineal
 exit; fi
 ####
@@ -3818,19 +3818,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables modify-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -3839,19 +3839,19 @@ zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables m
 ####
 ####
 "new-full-config ")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-zenity --forms $graphic_dimension --text="$rallica [ info ] [ Use: $fwiptables modify-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -4168,7 +4168,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  clear ; $fwiptables nueva-mini-config $archivo ;;
  0505) archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables show-config $archivo ; echo "$rallica [ info ] [ Use: Launch: $fwiptables custom $archivo ]";;
+ clear ; $fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $fwiptables custom $archivo ]";;
  0506) archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables modify-config $archivo ;;
@@ -4292,7 +4292,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "version" ]; then $give_cover
- echo "$ralla [ $first_option ] [ Show version about $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show version about $fwiptables ]"
 #### echo $header_lineal
  echo
  echo "$tab [Name program]"
@@ -4334,9 +4334,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "examples" ]; then $give_cover
- echo "$ralla [ $first_option ] [ Show examples for $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show examples for $fwiptables ]"
  echo $header_lineal
- echo $rallica "[ examples ] [ examples for some services in client mode ]"
+ echo $tab "[ examples ] [ examples for some services in client mode ]"
  echo
 ####
 ####
@@ -4473,10 +4473,10 @@ exit; fi
 ####
 if [ "$first_option" = "code" ]; then $give_cover
 echo $header_lineal
-echo $rallica "[ code ] [ show source code for options from $fwiptables ]"
-echo $ralla
-code_error="$rallica [ Usage: ] [ $fwiptables code option_above ]"
-if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $ralla $ralla $ralla
+echo $tab "[ code ] [ show source code for options from $fwiptables ]"
+echo $tab
+code_error="$tab [ Usage: ] [ $fwiptables code option_above ]"
+if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
 salida_code="$(cat $directory_fiptables/$fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
 sort | sed -s s/://g )"
 echo $salida_code
@@ -4487,9 +4487,9 @@ value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
-echo "$rallica [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
+echo "$tab [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
-echo "$ralla"
+echo "$tab"
 cat $directory_fiptables/$fwiptables | head -n $value_second | tail -n $value_count
 exit; fi
 ####
@@ -4501,10 +4501,10 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "license" ]; then $give_cover
- echo "$ralla [ $first_option ] [ Show license from git sourceforge for $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show license from git sourceforge for $fwiptables ]"
  echo $header_lineal
- echo $rallica "license text for gpl v2 downloading .."
- echo "$ralla" "$ralla" "$ralla"
+ echo $tab "license text for gpl v2 downloading .."
+ echo "$tab" "$tab" "$tab"
  $favorite_text_browser -source "$license_gpl" | more
  echo $footer_lineal
  exit;  fi
@@ -4517,18 +4517,18 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
- echo "$ralla [ $first_option ] [ Show howto upgrade $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show howto upgrade $fwiptables ]"
  echo $header_lineal
- echo "$rallica [ status ] [ The actually version is: $fwiptables $fversion actual ]"
- echo "$rallica [ status ] [ The latest version is: ]"
+ echo "$tab [ status ] [ The actually version is: $fwiptables $fversion actual ]"
+ echo "$tab [ status ] [ The latest version is: ]"
  $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
  echo 
- echo "$rallica [ status ] [ Upgrade The fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser ]"
- echo "$rallica [ status ] [ OR download manually   || OR $fwiptables upgrade || OR look down: ]"
- echo "$rallica [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$fwiptables ]"
- echo "$rallica [ info ] [ launch: chmod ugo+x /tmp/$fwiptables ]"
- echo "$rallica [ info ] [ launch: /tmp/$fwiptables install ]"
- echo "$rallica [ info ] [ ok and it will be upgrade with the name $directory_fiptables/$fwiptables ]"
+ echo "$tab [ status ] [ Upgrade The fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser ]"
+ echo "$tab [ status ] [ OR download manually   || OR $fwiptables upgrade || OR look down: ]"
+ echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$fwiptables ]"
+ echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$fwiptables ]"
+ echo "$tab [ info ] [ launch: /tmp/$fwiptables install ]"
+ echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fiptables/$fwiptables ]"
  echo $footer_lineal
  exit;  fi
 ####
@@ -4540,8 +4540,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-list" ]; then $give_cover
-echo $rallica
- echo "$ralla [ $first_option ] [ Show blacklist servers ]"
+echo $tab
+ echo "$tab [ $first_option ] [ Show blacklist servers ]"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_server_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
@@ -4549,26 +4549,26 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 echo
-echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
-echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
+echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
+echo "$tab [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
-echo "$rallica [   info:  ] [ Get server lines numbers total ] [ $fwiptables blacklist-list info ]"
-echo "$rallica [ change:  ] [ $fwiptables blacklist-on name-bl ] OR [ $fwiptables blacklist-off ]" 
+echo "$tab [   info:  ] [ Get server lines numbers total ] [ $fwiptables blacklist-list info ]"
+echo "$tab [ change:  ] [ $fwiptables blacklist-on name-bl ] OR [ $fwiptables blacklist-off ]" 
 echo
-echo "$ralla"
-echo "$rallica"
+echo "$tab"
+echo "$tab"
 echo "$tab  name-bl          link-bl"
 echo "$tab fademind        $blacklist_server_fademind"
 echo "$tab mvps            $blacklist_server_mvps"
 echo "$tab adaway          $blacklist_server_adaway"
 echo "$tab stevenblack     $blacklist_server_stevenblack"
-echo "$ralla"
+echo "$tab"
 ####
 ####
 if [ "$second_option" = "info" ]; then echo "$tab Getting lines numbers total.."; echo 
 echo
-echo "$rallica [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
-echo "$rallica [ actually ] [ Show the file: $fwiptables hosts ]"
+echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
+echo "$tab [ actually ] [ Show the file: $fwiptables hosts ]"
 echo
 echo "$tab [ info ] [ total addblocker hosts ] [ waiting until $server_waiting seconds for max timeout each one ]"
 timeout 10 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
@@ -4583,7 +4583,7 @@ echo "$tab adaway:      $blacklist_lines_adaway hosts"
 timeout $server_waiting $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
 blacklist_lines_stevenblack="$(cat $file_temporal_path/hosts.stevenblack | wc -l)"
 echo "$tab stevenblack: $blacklist_lines_stevenblack hosts"
-echo "$ralla"; fi
+echo "$tab"; fi
 ####
 ####
 echo "$footer_lineal"
@@ -4597,15 +4597,15 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-on" ]; then $give_cover
-echo "$ralla [ $first_option ] [ Configure blacklist server ]"
-echo $rallica
+echo "$tab [ $first_option ] [ Configure blacklist server ]"
+echo $tab
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
 echo "$tab [ Launched without options ] [ $fwiptables blacklist-list ]"
-echo $rallica
+echo $tab
 $fwiptables blacklist-list
-echo $rallica
+echo $tab
 exit; fi
 ####
 ####
@@ -4616,7 +4616,7 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 if [ "$second_option" = "fademind" ]; then 
-echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.fademind >> /etc/hosts
@@ -4624,7 +4624,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
-echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.adaway >> /etc/hosts
@@ -4632,7 +4632,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
-echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.mvps >> /etc/hosts
@@ -4640,7 +4640,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
-echo "$rallica [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
 $fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.stevenblack >> /etc/hosts
@@ -4648,7 +4648,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 echo "$tab [ Invalid option ] [ See: $fwiptables blacklist-list ]"
-echo $rallica; exit; fi
+echo $tab; exit; fi
 ####
 ####
 #### :rutina-final-blacklist-on:
@@ -4658,8 +4658,8 @@ echo $rallica; exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-off" ]; then 
-echo "$ralla [ $first_option ] [ Remove blacklist server ]"
-echo $rallica
+echo "$tab [ $first_option ] [ Remove blacklist server ]"
+echo $tab
 echo $file_temporal_path
 echo $cincuenta > $file_temporal_path/$first_option-hosts
 echo "## ip v4 loopback ##" >> $file_temporal_path/$first_option-hosts
@@ -4670,7 +4670,7 @@ echo "ff02::1 ip6-allnodes" >> $file_temporal_path/$first_option-hosts
 echo "ff02::2 ip6-allrouters"  >> $file_temporal_path/$first_option-hosts
 echo $cincuenta >> $file_temporal_path/$first_option-hosts
 cat  $file_temporal_path/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
-echo "$rallica [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
+echo "$tab [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
 echo $footer_lineal
 cat  /etc/hosts
 exit; fi
@@ -4794,7 +4794,7 @@ exit; fi
  $command_ip6tables_legacy -t security -P OUTPUT ACCEPT
 ####
 ####
- echo "$rallica [ ok ] [ firewall erased ] [ deleted ruse ]"
+ echo "$tab [ ok ] [ firewall erased ] [ deleted ruse ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -4809,13 +4809,13 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-route" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Show route tables ]"
+ echo "$tab [ $first_option ] [ Show route tables ]"
  echo $header_lineal
- if [ "$command_ip" = "$NULL" ]; then echo "$rallica [ fail ] [ Install ip command ]"; exit; fi
- echo "$rallica [ ip route ipv4 ]"
+ if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
+ echo "$tab [ ip route ipv4 ]"
  echo "$($command_ip -4 route)"
- echo $ralla
- echo "$rallica [ ip route ipv6 ]"
+ echo $tab
+ echo "$tab [ ip route ipv6 ]"
  echo "$($command_ip -6 route)"
  echo $footer_lineal
  exit ; fi
@@ -4828,12 +4828,12 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ss" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Show sockets with ss ]"
+ echo "$tab [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ fail ] [ Install ss command ]"; exit; fi
+ if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
  $command_ss -a6
- echo "$ralla"
+ echo "$tab"
  echo "$tab [ The ipv4 sockets ]"
  $command_ss -a4
  echo $footer_lineal
@@ -4847,12 +4847,12 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "lsof" ]; then $give_cover
- echo "$ralla [ $first_option ] [ Show sockets with lsof ]"
+ echo "$tab [ $first_option ] [ Show sockets with lsof ]"
  echo $header_lineal
- if [ "command_lsof" = "$NULL" ]; then echo "$rallica [ fail ] [ Install lsof command ]"; exit; fi
+ if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
  echo "$tab [The sockets with lsof ipv6 ]"
  $command_lsof -i | grep -i ipv6
- echo $ralla
+ echo $tab
  echo "$tab [The sockets with lsof ipv4 ]"
  $command_lsof -i | grep -i ipv4
  echo $footer_lineal
@@ -4866,9 +4866,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Show sockets with netstat ]"
+ echo "$tab [ $first_option ] [ Show sockets with netstat ]"
  echo $header_lineal
- if [ "$command_netstat" = "$NULL" ]; then echo "$rallica [ fail ] [ Install netstat command ]"; exit; fi
+ if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
  echo "$tab [The sockets list with netstat ]"
  $command_netstat -a -4 -6
  echo $footer_lineal
@@ -4882,17 +4882,17 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-listen" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Show info address proxy ]"
+ echo "$tab [ $first_option ] [ Show info address proxy ]"
  echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$rallica [ fail ] [ Install ss command ]"; exit; fi
+ if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab info socket list:"
- echo $ralla
+ echo $tab
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
  $command_ss -l4 | sed 's/   / /g'
- echo $ralla
+ echo $tab
  echo "$tab [ Network Listen ] [ Listen ipv6 ]"
  $command_ss -l6 | sed 's/   / /g'
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -4904,7 +4904,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-proxy" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Show info address proxy whith its system variable ]"
+ echo "$tab [ $first_option ] [ Show info address proxy whith its system variable ]"
  echo $header_lineal
  echo "$tab Info address proxy"
  echo "$tab Web http_proxy:    $http_proxy"
@@ -4920,8 +4920,8 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
- if [ "$command_netstat_nat" = "$NULL" ]; then echo "$rallica [ fail ] [ Install netstat-nat command ]"; exit; fi
- echo "$ralla [ $first_option ] [ Show sockets with netstat for proxy ]"
+ if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
+ echo "$tab [ $first_option ] [ Show sockets with netstat for proxy ]"
  echo $header_lineal
  echo "$tab [ The devices list with netstat for nat ]"
  $command_netstat_nat
@@ -4936,7 +4936,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-on" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Active ip forwading in kernel ]"
+ echo "$tab [ $first_option ] [ Active ip forwading in kernel ]"
  echo $header_lineal
  for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
  do $command_sysctl -w $a=1 ; done
@@ -4951,7 +4951,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-off" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Deactive ip forwading in kernel ]"
+ echo "$tab [ $first_option ] [ Deactive ip forwading in kernel ]"
  echo $header_lineal
  for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
  do $command_sysctl -w $a=0 ; done
@@ -4966,7 +4966,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-allrules" ]; then  $nada
- echo "$ralla [ $first_option ] [ List all rules ]"
+ echo "$tab [ $first_option ] [ List all rules ]"
  echo $header_lineal
  $fwiptables list-arptables
  $fwiptables list-ebtables
@@ -4996,21 +4996,21 @@ exit; fi
  nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
  "$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
 #### echo $header_ender
- echo "$ralla [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
+ echo $tab
  case $legacycuatro in
- "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$ralla [ With rules xtables ] [ iptables-legacy ]"
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]"
  $command_iptables_legacy -t filter -v -L
  ;;
  esac
- echo "$ralla"
+ echo "$tab"
  case $nftcuatro in
- "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
+ echo "$tab [ With rules nftables ] [ iptables-nft ]" 
  $command_iptables_nft -t filter -v -L
  ;;
  esac
@@ -5030,21 +5030,21 @@ exit; fi
  nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 "$command_ip6tables_nft" -t filter -L OUTPUT 1 )
 #### echo $header_ender
- echo "$ralla [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
+ echo $tab
  case $legacyseis in
- "$NULL") echo "$ralla [ Without rules xtables ] [ iptables-legacy ]" ;;
+ "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
  *)
- echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
  $command_ip6tables_legacy -v -L
  ;;
  esac
- echo $ralla
+ echo $tab
  case $nftseis in
- "$NULL") echo "$ralla [ Without rules nftables ] [ iptables-nft ]" ;;
+ "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
  *)
- echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
+ echo "$tab [ With rules nftables ] [ iptables-nft ]" 
  $command_ip6tables_nft -v -L
  ;;
  esac
@@ -5064,15 +5064,15 @@ exit; fi
 ####
 ####
  if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$ralla When its ipv4 has default route $ralla so it show filter rules ipv4 in status"
+ echo "$tab When its ipv4 has default route $tab so it show filter rules ipv4 in status"
  $fwiptables list
- else echo "$ralla When its ipv4 has no default route $ralla hide filter rules ipv4 in status" ; fi
+ else echo "$tab When its ipv4 has no default route $tab hide filter rules ipv4 in status" ; fi
 ####
 ####
  if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$ralla When its ipv6 has default route $ralla show filter rules ipv6 in status"
+ echo "$tab When its ipv6 has default route $tab show filter rules ipv6 in status"
  $fwiptables list6
- else echo "$ralla When its ipv6 has no default route $ralla so it hide filter rules ipv6 in status" ;  fi
+ else echo "$tab When its ipv6 has no default route $tab so it hide filter rules ipv6 in status" ;  fi
 ####
 ####
  exit; fi
@@ -5086,13 +5086,13 @@ exit; fi
 ####
  if [ "$first_option" = "list-filter4" ]; then $give_cover 
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ]"
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]"
  $command_iptables_legacy -t filter -v -L
- echo "$ralla"
- echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
+ echo "$tab"
+ echo "$tab [ With rules nftables ] [ iptables-nft ]" 
  $command_iptables_nft -t filter -v -L
 ####
 ####
@@ -5108,14 +5108,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-forward" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
  $command_iptables_legacy -t filter -v -L FORWARD
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
  $command_iptables_nft -t filter -v -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5129,13 +5129,13 @@ exit; fi
 ####
  if [ "$first_option" = "list-filter6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
  $command_ip6tables_legacy -v -L
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ]" 
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ]" 
  $command_ip6tables_nft -v -L
 ####
 ####
@@ -5151,14 +5151,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-forward6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
  $command_ip6tables_legacy -t filter -v -L FORWARD
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
  $command_ip6tables_nft -t filter -v -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5172,13 +5172,13 @@ exit; fi
 ####
  if [ "$first_option" = "list-nat4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ] $ralla  "
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] $tab  "
  $command_iptables_legacy -t nat -v -L
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ] $ralla "
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ] $tab "
  $command_iptables_nft -t nat -v -L 
 #### echo $footer_lineal
  exit; fi
@@ -5192,13 +5192,13 @@ exit; fi
 ####
  if [ "$first_option" = "list-nat6" ]; then $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ] $ralla "
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] $tab "
  $command_ip6tables_legacy -t nat -v -L 
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ] $ralla "
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ] $tab "
  $command_ip6tables_nft -t nat -v -L 
 #### echo $footer_lineal
  exit; fi
@@ -5212,13 +5212,13 @@ exit; fi
 ####
  if [ "$first_option" = "listnum" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [With rules netfilter] [iptables-nft]"  
+ echo $tab
+ echo "$tab [With rules netfilter] [iptables-nft]"  
  $command_iptables_legacy -v -n -L 
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ]"  
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ]"  
  $command_iptables_nft -v -n -L
 #### echo $footer_lineal
  exit; fi
@@ -5232,14 +5232,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-forwardnum" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
  $command_iptables_legacy -t filter -v -n -L FORWARD
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
  $command_iptables_nft -t filter -v -n -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5253,13 +5253,13 @@ exit; fi
 ####
  if [ "$first_option" = "listnum6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
  $command_ip6tables_legacy -v -n -L 
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ]" 
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
  $command_ip6tables_nft -v -n -L
 #### echo $footer_lineal
  exit; fi
@@ -5273,14 +5273,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-forwardnum6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
  $command_ip6tables_legacy -t filter -v -n -L FORWARD
- echo $ralla
- echo "$ralla [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $ralla "
+ echo $tab
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
  $command_ip6tables_nft -t filter -v -n -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5294,14 +5294,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-mangle4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ] $tab "
  $command_iptables_legacy -t mangle -v -L
- echo $ralla
- echo "$ralla [ The nftables ] [ iptables-nft ] [ MANGLE ] $ralla "
+ echo $tab
+ echo "$tab [ The nftables ] [ iptables-nft ] [ MANGLE ] $tab "
  $command_iptables_nft -t mangle -v -L
  echo $footer_lineal
  exit; fi
@@ -5315,13 +5315,13 @@ exit; fi
 ####
  if [ "$first_option" = "list-mangle6" ]; then $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla [ The xtables ] [ iptables-legacy ] [ MANGLE ] $ralla "
+ echo $tab
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ] $tab "
  $command_ip6tables_legacy -t mangle -v -L
- echo $ralla
- echo "$ralla [ The nftables ] [iptables-nft ] [ MANGLE ] $ralla "
+ echo $tab
+ echo "$tab [ The nftables ] [iptables-nft ] [ MANGLE ] $tab "
  $command_ip6tables_nft -t mangle -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5335,13 +5335,13 @@ exit; fi
 ####
  if [ "$first_option" = "list-raw4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo "$ralla  [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
+ echo $tab
+ echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ] $tab "
  $command_iptables_legacy -t raw -v -L
- echo $ralla
- echo "$ralla [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
+ echo $tab
+ echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ] $tab "
  $command_iptables_nft -t raw -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5355,14 +5355,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-raw6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ The xtables ] [ iptables-legacy ] [ RAW ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ RAW ] $tab "
  $command_ip6tables_legacy -t raw -v -L
- echo $ralla
- echo "$ralla [ The nftables ] [ iptables-nft ] [ RAW ] $ralla "
+ echo $tab
+ echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ] $tab "
  $command_ip6tables_nft -t raw -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5376,14 +5376,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-security4" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ] $tab "
  $command_iptables_legacy -t security -v -L
- echo $ralla
- echo "$ralla [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
+ echo $tab
+ echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ] $tab "
  $command_iptables_nft -t security -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5397,14 +5397,14 @@ exit; fi
 ####
  if [ "$first_option" = "list-security6" ]; then  $give_cover
  echo $header_ender
- echo "$ralla [ $first_option ] [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$tab [ $first_option ] [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ The xtables ] [ iptables-legacy ] [ SECURITY ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ] $tab "
  $command_ip6tables_legacy -t security -v -L
- echo $ralla
- echo "$ralla [ The nftables ] [ iptables-nft ] [ SECURITY ] $ralla "
+ echo $tab
+ echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ] $tab "
  $command_ip6tables_nft -t security -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5417,14 +5417,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-ebtables" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ List ebtables ]"
+ echo "$tab [ $first_option ] [ List ebtables ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ ebtables: filter ethernet ] [ EBTABLES ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ ebtables: filter ethernet ] [ EBTABLES ] $tab "
  $command_ebtables -L -t filter
- echo $ralla
- echo "$ralla [ ebtables: nat ethernet ] [ EBTABLES ] $ralla "
+ echo $tab
+ echo "$tab [ ebtables: nat ethernet ] [ EBTABLES ] $tab "
  $command_ebtables -L -t nat
 #### echo $footer_lineal
  exit; fi
@@ -5437,11 +5437,11 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-arptables" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ List arptables ipv4 ]"
+ echo "$tab [ $first_option ] [ List arptables ipv4 ]"
  echo $header_lineal
- echo $ralla
- echo $ralla
- echo "$ralla [ arptables: filter arptables ] [ ARPTABLES ] $ralla "
+ echo $tab
+ echo $tab
+ echo "$tab [ arptables: filter arptables ] [ ARPTABLES ] $tab "
  echo $rala
  $command_arptables -L
 #### echo $footer_lineal
@@ -5455,7 +5455,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$rallica [ info ] [ usage: ] [ $fwiptables new-full-config config-new ]"
+echo "$tab [ info ] [ usage: ] [ $fwiptables new-full-config config-new ]"
 exit; fi
 ####
 ####
@@ -5488,7 +5488,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$rallica [ info ] [ usage: ] [ $fwiptables nueva-completa-config config-nueva ]"
+echo "$tab [ info ] [ usage: ] [ $fwiptables nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -5521,7 +5521,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$rallica [ info ] [ usage: ] [ $fwiptables new-mini-config config-new ]"
+echo "$tab [ info ] [ usage: ] [ $fwiptables new-mini-config config-new ]"
 exit; fi
 ####
 ####
@@ -5554,7 +5554,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  $give_cover
-echo "$rallica [ info ] [ usage: ] [ $fwiptables nueva-mini-config config-nueva ]"
+echo "$tab [ info ] [ usage: ] [ $fwiptables nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -5591,7 +5591,7 @@ cp "$directory_config/$second_option" "/tmp/fiptables-$second_option" &> /dev/nu
 ####
 ###
 if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
-echo "$rallica [ info ] [ usage: ] [ $fwiptables modify-config config-existent ]" ; exit; fi
+echo "$tab [ info ] [ usage: ] [ $fwiptables modify-config config-existent ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then $nada
@@ -5623,7 +5623,7 @@ if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$rallica [ status ] [ Usage: $fwiptables show-config config-old ]" ; exit; fi
+echo "$tab [ status ] [ Usage: $fwiptables show-config config-old ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -5644,7 +5644,7 @@ if [ "$first_option" = "del-config" ]; then $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$rallica [ info ] [ usage: ] [ $fwiptables del-config config-old ]" ; exit ; fi
+echo "$tab [ info ] [ usage: ] [ $fwiptables del-config config-old ]" ; exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -5664,15 +5664,15 @@ exit ; fi
 ####
 if [ "$first_option" = "sudo-adduser" ]; then $give_cover
 case $second_option in
-"$NULL") echo $head_principal ; echo $header_lineal ; echo "$rallica [ info ] [ usage: ] [ $fwiptables sudo-adduser user ]" ; exit ;;
+"$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $fwiptables sudo-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
 echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fwiptables " &> /etc/sudoers.d/$fwiptables
 echo "alias $fwiptables='sudo $fwiptables'" &>  /etc/bash_completion.d/$fwiptables
-echo $rallica
-echo "$rallica [ ok ] [ $autorizados will use:     $fwiptables ]"
-echo "$rallica [ Ok ] [ $fwiptables will use alias with sudo ]"
-echo $rallica
-echo "$rallica [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
+echo $tab
+echo "$tab [ ok ] [ $autorizados will use:     $fwiptables ]"
+echo "$tab [ Ok ] [ $fwiptables will use alias with sudo ]"
+echo $tab
+echo "$tab [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
 exit; fi
@@ -5686,8 +5686,8 @@ exit; fi
 ####
 if [ "$first_option" = "sudo-deluser" ]; then $give_cover
 rm /etc/sudoers.d/$fwiptables
-echo "$rallica [ ok ] [ deleted auth sudo ]"
-echo "$rallica [ ok ] [ deleted /etc/sudoers.d/$fwiptables ]"
+echo "$tab [ ok ] [ deleted auth sudo ]"
+echo "$tab [ ok ] [ deleted /etc/sudoers.d/$fwiptables ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5699,18 +5699,18 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$ralla [ $first_option ] [ list users with root auth for launch $fwiptables ]"
-echo "$rallica [ With root sudo for $fwiptables from some user ]"
-echo "$rallica [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
+echo "$tab [ $first_option ] [ list users with root auth for launch $fwiptables ]"
+echo "$tab [ With root sudo for $fwiptables from some user ]"
+echo "$tab [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
 exit; fi
 ####
 ####
 if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$rallica [ status ] [ list users with root auth for launch $fwiptables ]"
+echo "$tab [ status ] [ list users with root auth for launch $fwiptables ]"
 echo $header_lineal
-echo "$rallica [ status ] [ Without root sudo from users ]"
+echo "$tab [ status ] [ Without root sudo from users ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -5722,11 +5722,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "alias-list" ]; then $give_cover
-echo "$ralla [ $first_option ] [ list alias and autocomplete for $fwiptables ]"
+echo "$tab [ $first_option ] [ list alias and autocomplete for $fwiptables ]"
 echo $header_lineal
-echo "$rallica [ alias file ] [  /etc/profile.d/$fwiptables ]"
+echo "$tab [ alias file ] [  /etc/profile.d/$fwiptables ]"
 cat /etc/bash_completion.d/$fwiptables
-echo "$rallica [ alias file ] [  /etc/bash_completion.d/$fwiptables ]"
+echo "$tab [ alias file ] [  /etc/bash_completion.d/$fwiptables ]"
 cat /etc/bash_completion.d/$fwiptables
 echo $footer_lineal
 exit; fi
@@ -5739,9 +5739,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-list" ]; then $give_cover
- echo "$ralla [ $first_option ] [ Show ip forwading in kernel ]"
+ echo "$tab [ $first_option ] [ Show ip forwading in kernel ]"
  echo $header_lineal
- echo "$rallica [ Active 1 or deactive 0 for ipforwading with sysctl ]"
+ echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
  $command_sysctl -a | grep -i forwarding
  echo $footer_lineal
  exit; fi
@@ -5754,15 +5754,15 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "tcpdump" ]; then $give_cover
- case $command_tcpdump in "$NULL") echo "$rallica [ fail ] [ Install tcpdump command ]" ; exit ;; esac
- echo "$rallica [ info ] [ launch several seconds tcpdump ]"
+ case $command_tcpdump in "$NULL") echo "$tab [ fail ] [ Install tcpdump command ]" ; exit ;; esac
+ echo "$tab [ info ] [ launch several seconds tcpdump ]"
  echo $header_lineal
 ####
 ####
  echo $head_waiting_gui
- echo "$ralla" "$ralla" "$ralla"
+ echo "$tab" "$tab" "$tab"
  timeout -s SIGINT -v $server_waiting tcpdump -v
- echo "$ralla" "$ralla" "$ralla"
+ echo "$tab" "$tab" "$tab"
  echo $footer_lineal
  exit; fi
 ####
@@ -5774,14 +5774,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-nodes" ]; then  $give_cover
- case $command_arp_scan in "$NULL") echo "$rallica [ fail ] [ install arp-scan command ]" ;;
+ case $command_arp_scan in "$NULL") echo "$tab [ fail ] [ install arp-scan command ]" ;;
  *)
- echo "$ralla [ $first_option ] [ Show the list arp-scan in the lan ]"
+ echo "$tab [ $first_option ] [ Show the list arp-scan in the lan ]"
  echo $header_lineal
- echo $rallica
+ echo $tab
  echo local net: ip lan
  $command_ip -4 route | grep -iv default
- echo $rallica
+ echo $tab
  echo local scan: arp lan
  echo $head_waiting_gui
  $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan &> /dev/null
@@ -5798,11 +5798,11 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "show-default" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the /etc/default/fwiptables ]"
+ echo "$tab [ $first_option ] [ show the /etc/default/fwiptables ]"
  echo $header_lineal
  cat /etc/default/fwiptables
  echo $footer_lineal
- echo "$rallica [ status ] [ edit file /etc/default/fwiptables to change variables with: $fwiptables modify-default ]"
+ echo "$tab [ status ] [ edit file /etc/default/fwiptables to change variables with: $fwiptables modify-default ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5814,10 +5814,10 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "modify-default" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ modify the /etc/default/fwiptables ]"
+ echo "$tab [ $first_option ] [ modify the /etc/default/fwiptables ]"
  echo $header_lineal
  echo $footer_lineal
- echo "$rallica [ status ] [ edit file /etc/default/fwiptables to change variables ]"
+ echo "$tab [ status ] [ edit file /etc/default/fwiptables to change variables ]"
 ####
 ####
 #### english: make security copy file
@@ -5855,18 +5855,18 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "names" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ List names from firewall saved ]"
+ echo "$tab [ $first_option ] [ List names from firewall saved ]"
  echo $header_lineal
- echo "$rallica $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
- echo "$rallica $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
- echo "$rallica"
- echo "$rallica $tab [ Firewall saved ]"
- echo "$rallica"
+ echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
+ echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+ echo "$tab"
+ echo "$tab $tab [ Firewall saved ]"
+ echo "$tab"
  ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | \
  sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
  sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
- echo "$rallica"
- echo "$rallica $tab [ ok ] [ firewall names ]"
+ echo "$tab"
+ echo "$tab $tab [ ok ] [ firewall names ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -5878,11 +5878,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
-echo "$ralla [ $first_option ] [ Reset the firewall ]"
-echo "$rallica [ status ] [ Reseting the firewall ]"
+echo "$tab [ $first_option ] [ Reset the firewall ]"
+echo "$tab [ status ] [ Reseting the firewall ]"
 $fwiptables stop &> /dev/null
 $fwiptables continue &> /dev/null
-echo "$rallica [ ok ] [ firewall reseted ]"
+echo "$tab [ ok ] [ firewall reseted ]"
 exit; fi
 ####
 ####
@@ -5937,7 +5937,7 @@ exit; fi
 ####
 ####
  if [ "second_option" = "$NULL" ]; then
- $fwiptables names; echo "$rallica [ status ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]" ; exit ; fi
+ $fwiptables names; echo "$tab [ status ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -5949,7 +5949,7 @@ exit; fi
 #### English: show message
 ####
 ####
- echo "$rallica [ running ] [ Loading rules ]"
+ echo "$tab [ running ] [ Loading rules ]"
 ####
 ####
 #### English: Remove all rules
@@ -5973,7 +5973,7 @@ exit; fi
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
  cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
- echo "$rallica [ ok ] [ FIREWALL LOADED ] [ $second_option ]"
+ echo "$tab [ ok ] [ FIREWALL LOADED ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
@@ -5981,7 +5981,7 @@ exit; fi
 ####
  else
  $fwiptables names
- echo "$rallica [ info ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]"
+ echo "$tab [ info ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]"
  fi 
 ####
 ####
@@ -5997,7 +5997,7 @@ exit; fi
 ####
  if [ "$first_option" = "save" ]; then $give_cover
  case "$second_option" in
- "$NULL") echo "$rallica [ info ] [ Usage: $fwiptables save fw-to-save ]" ; exit ;;
+ "$NULL") echo "$tab [ info ] [ Usage: $fwiptables save fw-to-save ]" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
 ####
@@ -6014,7 +6014,7 @@ exit; fi
  $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6  
 ####
 ####
- echo "$rallica [ ok ] [ FIREWALL SAVED ] [ $archivofin ]"
+ echo "$tab [ ok ] [ FIREWALL SAVED ] [ $archivofin ]"
  if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
  ls -l $directory_fwrecover/$archivofin-arptables; fi
  if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -6023,7 +6023,7 @@ exit; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ ok ] [ firewall listed ] [ $archivofin ]"
+ echo "$tab [ ok ] [ firewall listed ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6035,10 +6035,10 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "show" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show one firewall saved ]"
+ echo "$tab [ $first_option ] [ show one firewall saved ]"
  echo $header_lineal
  case "$second_option" in
- "$NULL") $fwiptables names; echo "$rallica [ info ] [ Use: $fwiptables show file-to-show ]" ; exit ;;
+ "$NULL") $fwiptables names; echo "$tab [ info ] [ Use: $fwiptables show file-to-show ]" ; exit ;;
  *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
  esac
  ls -l $directory_fwrecover/$archivofin-arptables
@@ -6047,7 +6047,7 @@ exit; fi
  ls -l $directory_fwrecover/$archivofin-nft-ipv6
  ls -l $directory_fwrecover/$archivofin-legacy-ipv4
  ls -l $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
+ echo "$tab [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
  echo "$cincuenta $archivofin-arptables"
  cat $directory_fwrecover/$archivofin-arptables
  echo "$cincuenta $archivofin-ebtables"
@@ -6060,7 +6060,7 @@ exit; fi
  cat $directory_fwrecover/$archivofin-nft-ipv6
  echo "$cincuenta archivofin-legacy-ipv6"
  cat $directory_fwrecover/$archivofin-legacy-ipv6
- echo "$rallica [ ok ] [ firewall readed ] [ $archivofin ]"
+ echo "$tab [ ok ] [ firewall readed ] [ $archivofin ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6072,7 +6072,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "actual" ]; then $give_cover
- echo "$ralla [ $first_option ] [ show the last firewall saved ]"
+ echo "$tab [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
  $command_arptables-save          &> $directory_fwrecover/fiptables-actual-arptables
  $command_ebtables-save           &> $directory_fwrecover/fiptables-actual-ebtables   
@@ -6092,7 +6092,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-actual-nft-ipv6
  echo "$cincuenta legacy with ipv6 $cinco"
  cat $directory_fwrecover/fiptables-actual-legacy-ipv6
- echo "$rallica  [ ok ] [ readed firewall actual ]"
+ echo "$tab  [ ok ] [ readed firewall actual ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6105,7 +6105,7 @@ exit; fi
 ####
 if [ "$first_option" = "stop" ]; then $nada
 echo $head_principal
-echo "$ralla [ $first_option ] [ Stop the firewall ]"
+echo "$tab [ $first_option ] [ Stop the firewall ]"
 echo $header_lineal
 ####
 ####
@@ -6124,7 +6124,7 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-i
 ####
 ####
 $fwiptables eraserules &> /dev/null
-echo "$rallica [ ok ] [ firewall stopped ]"
+echo "$tab [ ok ] [ firewall stopped ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -6137,7 +6137,7 @@ exit; fi
 ####
  if [ "$first_option" = "continue" ]; then $nada
  echo $head_principal
- echo "$ralla [ $first_option ] [ Continue the stoped firewall ]"
+ echo "$tab [ $first_option ] [ Continue the stoped firewall ]"
  echo $header_lineal
 ####
 ####
@@ -6150,7 +6150,7 @@ exit; fi
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
  cat $directory_fwrecover/fiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
  cat $directory_fwrecover/fiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
- echo "$rallica [ ok ] [ firewall continued ]"
+ echo "$tab [ ok ] [ firewall continued ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6162,9 +6162,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ping-ip4" ]; then $give_cover
- echo "$ralla [ $first_option ]  [ ping ip or host with ipv4 ]"
+ echo "$tab [ $first_option ]  [ ping ip or host with ipv4 ]"
  echo $header_lineal
- case $command_ping in "$NULL") echo "$rallica [ fail ] [ Install ping command ]" ; exit ;; esac
+ case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6172,7 +6172,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$rallica [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
+ echo "$tab [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
  timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
  $fwiptables continue
  echo $footer_lineal
@@ -6186,9 +6186,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ping-ip6" ]; then $give_cover
- echo "$ralla [ $first_option ] [ ping one ip or host with ipv6 ]"
+ echo "$tab [ $first_option ] [ ping one ip or host with ipv6 ]"
  echo $header_lineal
- case $command_ping in "$NULL") echo "$rallica [ fail ] [ Install ping command ]" ; exit ;; esac
+ case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6196,7 +6196,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$rallica [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
+ echo "$tab [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
  $fwiptables continue
  echo $footer_lineal
@@ -6210,9 +6210,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
- echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo "$tab [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;;  esac
+ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6220,7 +6220,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$rallica [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
+ echo "$tab [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
  echo $head_waiting_gui
  $fwiptables continue
@@ -6235,9 +6235,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
- echo "$ralla [ $first_option ] [ trace one ip or host with ipv6 ]"
+ echo "$tab [ $first_option ] [ trace one ip or host with ipv6 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;; esac
+ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6245,7 +6245,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$rallica [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
+ echo "$tab [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
  $fwiptables continue
  echo $footer_lineal
@@ -6259,9 +6259,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "traceicmp-ip4" ]; then $give_cover
- echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo "$tab [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;;  esac
+ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6269,7 +6269,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$rallica [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
+ echo "$tab [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
  echo $head_waiting_gui
  $fwiptables continue
@@ -6284,9 +6284,9 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "traceicmp-ip6" ]; then $give_cover
- echo "$ralla [ $first_option ] [ trace ip or host with ipv4 ]"
+ echo "$tab [ $first_option ] [ trace ip or host with ipv4 ]"
  echo $header_lineal
- case $command_traceroute in "$NULL") echo "$rallica [ fail ] [ Install traceroute command ]" ; exit ;;  esac
+ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
@@ -6294,7 +6294,7 @@ exit; fi
 ####
  $fwiptables stop
  echo $head_waiting_gui
- echo "$rallica [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
+ echo "$tab [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
  echo $head_waiting_gui
  $fwiptables continue
@@ -6309,14 +6309,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "host" ]; then $give_cover
- echo "$ralla [ $first_option ] [ resolve one ip or host ]"
+ echo "$tab [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
- case $command_host in "$NULL") echo "$rallica [ fail ] [ Install host command ]" ; exit ;; esac
+ case $command_host in "$NULL") echo "$tab [ fail ] [ Install host command ]" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$$rallica [ info ] [ Please select a one host to launch host ]"
- echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
+ "$NULL") echo "$$tab [ info ] [ Please select a one host to launch host ]"
+ echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$rallica [ ok ] [ host $trazador ]"
+ echo "$tab [ ok ] [ host $trazador ]"
  $command_host $trazador
  echo $footer_lineal
  exit; fi
@@ -6329,14 +6329,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "dig" ]; then $give_cover
- echo "$ralla [ $first_option ] [ resolve one ip or host ]"
+ echo "$tab [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
- case $command_dig in "$NULL") echo "$rallica [ fail ] [ Install dig command ]" ; exit ;; esac
+ case $command_dig in "$NULL") echo "$tab [ fail ] [ Install dig command ]" ; exit ;; esac
  case "$second_option" in
- "$NULL") echo "$rallica [ info ] [ Use: Please select a one host to launch dig ]"
- echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
+ "$NULL") echo "$tab [ info ] [ Use: Please select a one host to launch dig ]"
+ echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$rallica [ ok ] [ dig $trazador ]"
+ echo "$tab [ ok ] [ dig $trazador ]"
  $command_dig $trazador | grep ^$trazador
  echo $footer_lineal
  exit; fi
@@ -6349,14 +6349,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "resolveip" ]; then $give_cover
- echo "$ralla [ $first_option ] [ resolve one ip or host ]"
+ echo "$tab [ $first_option ] [ resolve one ip or host ]"
  echo $header_lineal
- case $command_resolveip in "$NULL") echo "$rallica [ fail ] [ Install resolveip command ]" ; exit ;; esac
+ case $command_resolveip in "$NULL") echo "$tab [ fail ] [ Install resolveip command ]" ; exit ;; esac
  case "$second_option" in
  "$NULL") echo "$cinco Please select a one host to launch resolveip"
- echo "$rallica Selecting host to fast.com for default" ; trazador="fast.com" ;;
+ echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$rallica [ ok ] [ resolveip $trazador ]"
+ echo "$tab [ ok ] [ resolveip $trazador ]"
  $command_resolveip $trazador
  echo $footer_lineal
  exit; fi
@@ -6369,13 +6369,13 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "geoip" ]; then $give_cover
- echo "$ralla [ $first_option ] [ resolve the location to one ip or host ]"
+ echo "$tab [ $first_option ] [ resolve the location to one ip or host ]"
  echo $header_lineal
- case $command_geoiplookup in "$NULL") echo "$rallica [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
+ case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
  case "$second_option" in
  "$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
- echo "$rallica [ ok ] [ geoiplookup -i $trazador ]"
+ echo "$tab [ ok ] [ geoiplookup -i $trazador ]"
  $command_geoiplookup -i $trazador
  echo $footer_lineal
  exit; fi
@@ -6388,17 +6388,17 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ntpdate" ]; then $nada
- echo "$ralla [ $first_option ] [ update the computer time and date from internet ]"
+ echo "$tab [ $first_option ] [ update the computer time and date from internet ]"
  echo $header_lineal
- if [ "$favorite_date_command" = "$NULL" ]; then echo "$rallica [ fail ] [ Install one ntp client ]" ; fi
- echo "$rallica Old date: $($command_date)"
- echo "$rallica [ Updating the time and the date .. ]"
+ if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
+ echo "$tab Old date: $($command_date)"
+ echo "$tab [ Updating the time and the date .. ]"
  pool0="0.debian.pool.ntp.org"
  pool1="1.debian.pool.ntp.org"
  pool2="2.debian.pool.ntp.org"
  pool3="3.debian.pool.ntp.org"
  $favorite_date_command $pool0
- echo "$rallica New date: $($command_date)"
+ echo "$tab New date: $($command_date)"
  echo $footer_lineal
  exit; fi
 ####
@@ -6410,11 +6410,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "scan-tcp" ]; then $give_cover
- echo "$ralla [ $first_option ] [ scan with nmap tcp ]"
+ echo "$tab [ $first_option ] [ scan with nmap tcp ]"
  echo $header_lineal
  case $command_nmap in $NULL) echo install nmap ; exit ;; esac
- echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
- echo "$rallica [ ok ] [ Stoped firewall while launching nmap ]"
+ echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ ok ] [ Stoped firewall while launching nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6426,7 +6426,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$rallica [ ok ] [ Doing nmap ]"
+ echo "$tab [ ok ] [ Doing nmap ]"
  $command_nmap -sT $2
 ####
 ####
@@ -6436,7 +6436,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  $fwiptables continue
 ####
 ####
- echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
+ echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6448,11 +6448,11 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-syn" ]; then $give_cover
- echo "$ralla [ $first_option ] [ scan with nmap syn ]"
+ echo "$tab [ $first_option ] [ scan with nmap syn ]"
  echo $header_lineal
- case $command_nmap in "$NULL") echo "$rallica [ info ] [ Install nmap command ]" ; exit ;; esac
- echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
- echo "$rallica [ ok ] [ Stoped firewall while launch nmap ]"
+ case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
+ echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6464,7 +6464,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$rallica [ ok ] [ Doing nmap ]"
+ echo "$tab [ ok ] [ Doing nmap ]"
  $command_nmap -sF $2
 ####
 ####
@@ -6472,7 +6472,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  $fwiptables continue
- echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
+ echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6484,11 +6484,11 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-fin" ]; then $give_cover
- echo "$ralla [ $first_option ] [ scan with nmap fin ]"
+ echo "$tab [ $first_option ] [ scan with nmap fin ]"
  echo $header_lineal
- case $command_nmap in "$NULL") echo "$rallica [ info ] [ Install nmap command ]" ; exit ;; esac
- echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
- echo "$rallica [ ok ] [ Stoped firewall while launch nmap ]"
+ case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
+ echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6500,7 +6500,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$rallica [ ok ] [ Doing nmap ]"
+ echo "$tab [ ok ] [ Doing nmap ]"
  $command_nmap -sF $2
 ####
 ####
@@ -6510,7 +6510,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  $fwiptables continue
 ####
 ####
- echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
+ echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6522,9 +6522,9 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-udp" ]; then $give_cover
- echo "$ralla [ $first_option ] [ scan with nmap udp ]"
+ echo "$tab [ $first_option ] [ scan with nmap udp ]"
  echo $header_lineal
- case $command_nmap in "$NULL") echo "$rallica [ fail ] [ Install nmap command ]" ; exit ;; esac
+ case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
  echo "$cinco [ status ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ ok ] [ Stoped firewall while launch nmap ]"
 ####
@@ -6538,7 +6538,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$rallica [ ok ] [ Doing nmap ]"
+ echo "$tab [ ok ] [ Doing nmap ]"
  $command_nmap -sU $2
 ####
 ####
@@ -6548,7 +6548,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  $fwiptables continue
 ####
 ####
- echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
+ echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6560,11 +6560,11 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-ping" ]; then $give_cover
- echo "$ralla [ $first_option ] [ scan with nmap ping ]"
+ echo "$tab [ $first_option ] [ scan with nmap ping ]"
  echo $header_lineal
- case $command_nmap in "$NULL") echo "$rallica [ fail ] [ Install nmap command ]" ; exit ;; esac
- echo "$rallica [ status ] [ nmap $first_option ip/mask ]"
- echo "$rallica [ ok ] [ Stopped firewall while launch nmap ]"
+ case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
+ echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ ok ] [ Stopped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -6576,7 +6576,7 @@ $fwiptables stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "$rallica [ ok ] [ Doing nmap ]"
+ echo "$tab [ ok ] [ Doing nmap ]"
  $command_nmap -sn $2
 ####
 ####
@@ -6584,7 +6584,7 @@ $fwiptables stop
 ####
 ####
  $fwiptables continue
- echo "$rallica [ ok ] [ Reloaded firewall rules after run nmap ]"
+ echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
 ####
@@ -6596,9 +6596,9 @@ $fwiptables stop
 ####
 ####
  if [ "$first_option" = "free-ram" ]; then $give_cover
- echo "$ralla [ $first_option ] [ freedom from innecesary ram ]"
+ echo "$tab [ $first_option ] [ freedom from innecesary ram ]"
  echo $header_lineal
- case $command_tee in "$NULL") echo "$rallica [ fail ] [ Install tee command ]"; exit ;; esac
+ case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
  echo " Actual Memory"
  free -hw && sync
  echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
@@ -6615,10 +6615,10 @@ $fwiptables stop
 ####
 ####
  if [ "$first_option" = "speed-disk" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ test the disc speed ]"
+ echo "$tab [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
- case $command_dd in "$NULL") echo "$rallica [ fail ] [ Install dd command ]"; exit ;; esac
- echo "$rallica Testing speed with the temporal file /root/borrame.img.img about 100Mb"
+ case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
+ echo "$tab Testing speed with the temporal file /root/borrame.img.img about 100Mb"
 ####
 ####
  $command_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
@@ -6634,12 +6634,12 @@ $fwiptables stop
 ####
 ####
  if [ "$first_option" = "speed-ram" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ test the ram speed ]"
+ echo "$tab [ $first_option ] [ test the ram speed ]"
  echo $header_lineal
- case $command_dd in "$NULL") echo "$rallica [ fail ] [ Install dd command ]"; exit ;; esac
+ case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
  case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
  in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
- echo "$rallica Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
+ echo "$tab Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
 ####
 ####
  $command_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
@@ -6655,9 +6655,9 @@ $fwiptables stop
 ####
 ####
  if [ "$first_option" = "speed-glx" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
+ echo "$tab [ $first_option ] [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
  echo $header_lineal
- case $command_glxgears in "$NULL") echo "$rallica [ fail ] [ Install mesa utils ]"; exit ;; esac
+ case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
  vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
  echo $footer_lineal
  exit; fi
@@ -6670,12 +6670,12 @@ $fwiptables stop
 ####
 ####
  if [ "$first_option" = "radio-mp3" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ Listen radio online ]"
- echo "$rallica [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
- echo "$rallica [ status ] [ Usually it do not working like root, probe as user ]"
+ echo "$tab [ $first_option ] [ Listen radio online ]"
+ echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+ echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
- case $favorite_radio_command in "$NULL") echo "$rallica [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
 ####
 ####
  if [ "$second_option" = "$NULL" ]; then $nada
@@ -6683,7 +6683,7 @@ $fwiptables stop
  else radio="$second_option"; fi
 ####
 ####
- echo "$rallica [ ok ] [ $favorite_radio_command $radio ]"
+ echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
  echo $header_lineal
  echo $footer_lineal
  sudo -u $(logname) $favorite_radio_command $emisora
@@ -7094,8 +7094,8 @@ done ; clear ; exit ; fi
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
-echo "$ralla $ralla $ralla"
-echo "$ralla [ $first_option ] [ play game clone ole-word ]"
+echo 
+echo "$tab [ $first_option ] [ play game clone ole-word ]"
 echo "$header_lineal"
 ##### INICIO ####
 #### Choose language english or spanish
@@ -7476,8 +7476,8 @@ done ; clear ; exit ; fi
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
-echo "$ralla $ralla $ralla"
-echo "$ralla [ $first_option ] [ play game clone ole-number ]"
+echo
+echo "$tab [ $first_option ] [ play game clone ole-number ]"
 echo "$header_lineal"
 ##### INICIO ####
 #### Choose language english or spanish
@@ -7585,9 +7585,9 @@ fi
 ####
 ####
  if [ "$first_option" = "sentlog" ] ; then  $give_cover
- echo "$ralla [ $first_option ] [ show $file_output_filelog ]"
+ echo "$tab [ $first_option ] [ show $file_output_filelog ]"
  cat  "$file_output_filelog"
- echo "$ralla [ this file is $file_output_filelog ]"
+ echo "$tab [ this file is $file_output_filelog ]"
  echo "$footer_lineal"
  exit; fi
 ####
@@ -7599,9 +7599,9 @@ fi
 ####
 ####
  if [ "$first_option" = "autolog" ] ; then  $give_cover
- echo "$ralla [ $first_option ] [  show "$file_output_autolog" ]"
+ echo "$tab [ $first_option ] [  show "$file_output_autolog" ]"
  cat  "$file_output_autolog"
- echo "$ralla [ last end of file showed "$file_output_autolog" ]"
+ echo "$tab [ last end of file showed "$file_output_autolog" ]"
  echo "$footer_lineal"
  exit; fi
 ####
@@ -7613,7 +7613,7 @@ fi
 ####
 ####
  if [ "$first_option" = "log-ssh" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ search sshd in logs ]"
+ echo "$tab [ $first_option ] [ search sshd in logs ]"
  echo $header_lineal
  find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "ssh"
  echo $footer_lineal
@@ -7630,7 +7630,7 @@ fi
  echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
  echo $header_lineal
  case "$second_option" in
- $NULL) echo "$rallica [ fail ] [ use: $fwiptables $first_option pattern ]" ;;
+ $NULL) echo "$tab [ fail ] [ use: $fwiptables $first_option pattern ]" ;;
  *) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
  esac
  echo $footer_lineal
@@ -7644,7 +7644,7 @@ fi
 ####
 ####
  if [ "$first_option" = "dev-version" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the link to dev version from git repository ]"
+ echo "$tab [ $first_option ] [ show the link to dev version from git repository ]"
  echo $header_lineal
  echo $fweb_development
  echo $footer_lineal
@@ -7658,7 +7658,7 @@ fi
 ####
 #### 
  if [ "$first_option" = "dev-changes" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the link to dev-changes from git repository ]"
+ echo "$tab [ $first_option ] [ show the link to dev-changes from git repository ]"
  echo $header_lineal
  $favorite_text_browser -source $fweb_changes
  echo $footer_lineal
@@ -7672,12 +7672,12 @@ fi
 ####
 ####
  if [ "$first_option" = "new-versions" ]; then $give_cover
- echo "$ralla [ $first_option ] [ show the new versions in $fweb_main ]"
+ echo "$tab [ $first_option ] [ show the new versions in $fweb_main ]"
  echo $header_lineal
  case $favorite_text_browser in 
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
- echo "$ralla list new-versions and downloaded in the last seven days with a browser $favorite_text_browser"
- echo $ralla
+ echo "$tab list new-versions and downloaded in the last seven days with a browser $favorite_text_browser"
+ echo $tab
  $favorite_text_browser -dump $fweb_newfiles | egrep "[0123456789]-[0123456789][0123456789]-[0123456789]" | sed s/\<//g |sed s/\>//g 
  echo $footer_lineal
  exit; fi
@@ -7690,18 +7690,18 @@ fi
 ####
 ####
  if [ "$first_option" = "lpinfo" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list printers with lpinfo and lpstat ]"
+ echo "$tab [ $first_option ] [ list printers with lpinfo and lpstat ]"
  echo $header_lineal
- echo $ralla "lpinfo -v -l"
- echo $rallica
+ echo $tab "lpinfo -v -l"
+ echo $tab
  lpinfo -v -l
- echo $ralla
+ echo $tab
  echo $header_lineal
- echo $ralla "lpstat -v"
- echo $rallica
+ echo $tab "lpstat -v"
+ echo $tab
  lpstat -v
  echo $header_lineal
- echo $ralla
+ echo $tab
  echo " Use lp or lpr to print with those printers, or lpadmin to admin."
  echo $footer_lineal
  exit; fi
@@ -7714,10 +7714,10 @@ fi
 ####
 ####
  if [ "$first_option" = "lsblk" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list disks ]"
+ echo "$tab [ $first_option ] [ list disks ]"
  echo $header_lineal
  lsblk -o name,size,fsuse%,label,mountpoints
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -7729,10 +7729,10 @@ fi
 ####
 ####
  if [ "$first_option" = "lsusb" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list usb ]"
+ echo "$tab [ $first_option ] [ list usb ]"
  echo $header_lineal
  lsusb
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -7744,10 +7744,10 @@ fi
 ####
 ####
  if [ "$first_option" = "lscpu" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list cpu ]"
+ echo "$tab [ $first_option ] [ list cpu ]"
  echo $header_lineal
  lscpu
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -7759,10 +7759,10 @@ fi
 ####
 ####
  if [ "$first_option" = "lspci" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list cpi hardware sockets ]"
+ echo "$tab [ $first_option ] [ list cpi hardware sockets ]"
  echo $header_lineal
  lspci
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -7774,10 +7774,10 @@ fi
 ####
 ####
  if [ "$first_option" = "lsgpu" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list gpu ]"
+ echo "$tab [ $first_option ] [ list gpu ]"
  echo $header_lineal
  lsgpu
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -7789,10 +7789,10 @@ fi
 ####
 ####
  if [ "$first_option" = "lshw" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ list hardware ]"
+ echo "$tab [ $first_option ] [ list hardware ]"
  echo $header_lineal
  lshw
- echo $ralla
+ echo $tab
  echo $footer_lineal
  exit; fi
 ####
@@ -7804,11 +7804,11 @@ fi
 ####
 ####
  if [ "$first_option" = "hosts" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the file /etc/hosts ]"
+ echo "$tab [ $first_option ] [ show the file /etc/hosts ]"
  echo $header_lineal
  cat /etc/hosts
- echo $ralla
- echo "$rallica This file is /etc/hosts"
+ echo $tab
+ echo "$tab This file is /etc/hosts"
  echo $footer_lineal
  exit; fi
 ####
@@ -7820,11 +7820,11 @@ fi
 ####
 ####
  if [ "$first_option" = "protocols" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the file /etc/protocols ]"
+ echo "$tab [ $first_option ] [ show the file /etc/protocols ]"
  echo $header_lineal
  cat /etc/protocols  | sed s/\&//g 
- echo $ralla
- echo "$rallica This file is /etc/protocols"
+ echo $tab
+ echo "$tab This file is /etc/protocols"
  echo $footer_lineal
  exit; fi
 ####
@@ -7836,11 +7836,11 @@ fi
 ####
 ####
  if [ "$first_option" = "services" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the file /etc/services ]"
+ echo "$tab [ $first_option ] [ show the file /etc/services ]"
  echo $header_lineal
  cat /etc/services | sed s/\&//g 
- echo $ralla
- echo "$rallica This file is /etc/services"
+ echo $tab
+ echo "$tab This file is /etc/services"
  echo $footer_lineal
  exit; fi
 ####
@@ -7852,11 +7852,11 @@ fi
 ####
 ####
  if [ "$first_option" = "hosts.allow" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the file /etc/allow ]"
+ echo "$tab [ $first_option ] [ show the file /etc/allow ]"
  echo $header_lineal
  cat /etc/hosts.allow
- echo $ralla
- echo "$rallica This file is /etc/hosts.allow"
+ echo $tab
+ echo "$tab This file is /etc/hosts.allow"
  echo $footer_lineal
  exit; fi
 ####
@@ -7868,11 +7868,11 @@ fi
 ####
 ####
  if [ "$first_option" = "hosts.deny" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the file /etc/deny ]"
+ echo "$tab [ $first_option ] [ show the file /etc/deny ]"
  echo $header_lineal
  cat /etc/hosts.deny
- echo $ralla
- echo "$rallica This file is /etc/hosts.deny"
+ echo $tab
+ echo "$tab This file is /etc/hosts.deny"
  echo $footer_lineal
  exit; fi
 ####
@@ -7884,14 +7884,14 @@ fi
 ####
 ####
  if [ "$first_option" = "resolv.conf" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show the file /resolv.conf ]"
+ echo "$tab [ $first_option ] [ show the file /resolv.conf ]"
  echo $header_lineal
  if [ -f /etc/resolv.conf.head ]; then cat /etc/resolv.conf.head
- echo $ralla ; echo "$rallica This file is /etc/resolv.conf.head" ; echo $ralla ; fi
+ echo $tab ; echo "$tab This file is /etc/resolv.conf.head" ; echo $tab ; fi
  if [ -f /etc/resolv.conf ];      then cat /etc/resolv.conf     
- echo $ralla ; echo "$rallica This file is /etc/resolv.conf"      ; echo $ralla ; fi
+ echo $tab ; echo "$tab This file is /etc/resolv.conf"      ; echo $tab ; fi
  if [ -f /etc/resolv.conf.tail ]; then cat /etc/resolv.conf.tail
- echo $ralla ; echo "$rallica This file is /etc/resolv.conf.tail" ; echo $ralla ; fi
+ echo $tab ; echo "$tab This file is /etc/resolv.conf.tail" ; echo $tab ; fi
  echo $footer_lineal
  exit; fi
 ####
@@ -7903,7 +7903,7 @@ fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  $give_cover
-echo "$ralla [ $first_option ] [ about $fwiptables ]"
+echo "$tab [ $first_option ] [ about $fwiptables ]"
 echo $header_lineal
 echo
 echo "$tab [Fran FireWall iptables Generator]"
@@ -7959,24 +7959,24 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-system" ]; then  $give_cover
- echo "$ralla [ $first_option ] [ show info about system ]"
+ echo "$tab [ $first_option ] [ show info about system ]"
  echo $header_lineal
  echo "$tab [ System info ] [ Distro ] "
  cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
- echo $ralla
+ echo $tab
  echo "$tab [ System info ][ Kernel Linux ]"
  $command_uname -srom
- echo $ralla
+ echo $tab
  echo "$tab [ Boot system ] [ it works with pid number 1 ]"
  ps -p1 
  echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
- echo $ralla
+ echo $tab
  echo "$tab [ System info ] [ Processor ]"
  lscpu | egrep -i "socket|Model name|cpu max"
- echo $ralla
+ echo $tab
  echo "$tab [ System info ] [ Memory RAM ]"
  free -h
- echo $ralla
+ echo $tab
  echo "$tab [ System info ] [ Disks ]"
  lsblk -o name,size,fsuse%,label,mountpoints
  echo $footer_lineal
@@ -7990,43 +7990,43 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-net" ]; then $give_cover
- echo "$ralla [ $first_option ] [ show info about net ]"
+ echo "$tab [ $first_option ] [ show info about net ]"
  echo $header_lineal
- echo $ralla
+ echo $tab
  echo "$tab [ Network Route ] [ Route ipv4 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -4 route ; fi
- echo $ralla
+ echo $tab
  echo "$tab [ Network Route ] [ Route ipv6 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -6 route ; fi
- echo $ralla
+ echo $tab
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
  if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
  else $command_ss -l4 | sed 's/   / /g' ; fi
- echo $ralla
+ echo $tab
  echo "$tab [ Network Listen ] [ Listen ipv6 ]"
  if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
  else $command_ss -l6 | sed 's/   / /g' ; fi
- echo $ralla
+ echo $tab
  echo "$tab [ private ip ] [ address ipv4 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
- echo $ralla
+ echo $tab
  echo "$tab [ private ip ] [ address ipv6 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
- echo $ralla
+ echo $tab
  echo "$tab [ public ip ] [ address ipv4 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
  public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip4"; fi
- echo $ralla
+ echo $tab
  echo "$tab [ public ip ] [ address ipv6 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
  public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip6"; fi
- echo $ralla
+ echo $tab
  echo "$tab [ proxy ip ] [ address proxy ]"
  echo "$tab Proxy http:    $http_proxy"
  echo "$tab Proxy https:   $https_proxy"
@@ -8041,14 +8041,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ip4" ]; then $give_cover
- echo "$ralla [ $first_option ] [ test speed ipv4 with internet ]"
+ echo "$tab [ $first_option ] [ test speed ipv4 with internet ]"
  echo $header_lineal
  case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
  $fwiptables stop
- echo "$rallica [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
- echo $ralla
+ echo "$tab [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
+ echo $tab
  echo
  $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
  echo
@@ -8064,14 +8064,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ip6" ]; then $give_cover
- echo "$ralla [ $first_option ] [ test speed ipv6 with internet ]"
+ echo "$tab [ $first_option ] [ test speed ipv6 with internet ]"
  echo $header_lineal
  case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
  $fwiptables stop
- echo "$rallica [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
- echo $ralla
+ echo "$tab [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
+ echo $tab
  echo
  $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
  echo
@@ -8087,14 +8087,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "web-cert" ] ; then $give_cover
- echo "$ralla [ $first_option ] [ get one web certifcate from one server with port 443]"
+ echo "$tab [ $first_option ] [ get one web certifcate from one server with port 443]"
  echo $header_lineal
  case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
 ####
- if [ "$second_option" = "$NULL" ]; then echo $ralla $ralla $ralla
+ if [ "$second_option" = "$NULL" ]; then echo $tab $tab $tab
  echo "[ get one web certifcate ] [ Example: $fwiptables web-cert www.fast.com ]"; exit; fi
- echo $ralla
+ echo $tab
  echo | timeout -s SIGINT -v $server_waiting $command_openssl s_client -connect $second_option:443
  echo $footer_lineal
  exit; fi
@@ -8107,7 +8107,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then $give_cover
- echo "$ralla [ $first_option ] [ show variables cfg from english configuration ]"
+ echo "$tab [ $first_option ] [ show variables cfg from english configuration ]"
  echo $header_lineal
  cat  $defaultfullcfg_eng
  echo $footer_lineal
@@ -8121,7 +8121,7 @@ if [ "$first_option" = "config-eng" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "config-spa" ]; then $give_cover
- echo "$ralla [ $first_option ] [ show variables cfg from spanish configuration ]"
+ echo "$tab [ $first_option ] [ show variables cfg from spanish configuration ]"
  echo $header_lineal
  cat $defaultfullcfg_spa
  echo $footer_lineal
@@ -8161,14 +8161,14 @@ if [ "$first_option" = "config-eng" ]; then $give_cover
 ####
 $give_cover
 echo $header_ender
-echo "$ralla [ $first_option ] [ info group ]"
+echo "$tab [ $first_option ] [ info group ]"
 echo $header_lineal
-echo $ralla
+echo $tab
 echo
 echo "$tab [ launch: ] [ $fwiptables info group ]"
 echo
 echo "$tab [ group list: ]"
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "$tab $tab $tab"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
 echo "$tab" "$tab"  " firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
@@ -8178,7 +8178,7 @@ echo "$tab" "$tab"  "                       tool-system     tool-install   tool-
 echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-log         show-about      "
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo
-echo "$tab" "$tab"  "$ralla $ralla $ralla"
+echo "$tab" "$tab"  "$tab $tab $tab"
 echo "$tab [ Example: ] [ $fwiptables output-interface ]"
 echo $footer_lineal
 exit; fi
@@ -8501,7 +8501,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then 
-echo "$title_md $ralla [ $first_option ] [ ayuda en español ] [ ayuda.md ]$ralla $ralla "
+echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab $tab "
 echo  $text_md
 echo "$text_md  ||  Choose only help in english   ||   Type:     $fwiptables help     "
 echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    "
@@ -8509,7 +8509,7 @@ $fwiptables intro
 echo $text_md
 $fwiptables options
 echo  $text_md
-echo "$title_md $ralla [ $first_option ] [ Opciones principales ]."
+echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
 echo  $text_md
 echo "$title_md [ Lanza interfaz ]."
 echo  $text_md
@@ -8734,7 +8734,7 @@ echo "$text_md          ayuda : Muestra la ayuda en español."
 echo "$text_md          notes : Muestra notas de Fran firewall."
 echo  $text_md
 echo  $text_md
-echo "$title_md $ralla Notas de firewall $ralla"
+echo "$title_md $tab Notas de firewall $tab"
 echo  $text_md
 echo  $text_md
 echo "$title_md [vpn]."
@@ -8781,7 +8781,7 @@ exit; fi
 ####
 ####
 if [ "$launch_iptables" = "" ] ; then $nada ; else 
-echo "$rallica Choose a one valid option .. "; $fwiptables $default_security ; exit ; fi
+echo "$tab Choose a one valid option .. "; $fwiptables $default_security ; exit ; fi
 ####
 ####
 ###############################################################################################################
@@ -10868,7 +10868,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
-then source $directory_config/$second_option &> /dev/null ; else echo "$rallica [ fail ] [ File not found ]"; exit ; fi ; fi
+then source $directory_config/$second_option &> /dev/null ; else echo "$tab [ fail ] [ File not found ]"; exit ; fi ; fi
 ####
 ####
 ##############################      english: compatibility with old variables, backward compatibility      #####################
@@ -10901,7 +10901,7 @@ if [ $config_variable_version = "1" ]; then $nada
  config_output_gid="$output_gid" ;
  config_others_protocols="$others_protocols" ;
  separate_port_rules="no" ;
- echo "$rallica [ status ] [ Runing rules with old variables version $config_variable_version ]"
+ echo "$tab [ status ] [ Runing rules with old variables version $config_variable_version ]"
 fi
 ####
 ####
