@@ -160,7 +160,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 directory_fwrecover="/etc/fwrecover" ;                              
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
-quad="####" cinco="#####" ; tab="    " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
+quad="####" cinco="#####" ; tab="     " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
 title_md="###  "; text_md="     "; brake_md="echo ---" ; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -621,7 +621,7 @@ if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_op
 ##############################     ALIAS CAMPUS
 ####
 ####
-#### first_option txt
+#### output txt
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
@@ -642,7 +642,7 @@ cat $file_temporal_textfinal ; exit ;;
 esac; fi
 ####
 ####
-#### first_option cli
+#### output cli
 ####
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
@@ -694,7 +694,7 @@ gui-shell) first_option="gui-shell" ;;
 esac ; fi
 ####
 ####
-#### first_option log
+#### output log
 ####
 ####
 if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
@@ -708,7 +708,7 @@ echo "$rallica [ ok ] \
 exit ; fi
 ####
 ####
-#### first_option rst
+#### output rst
 ####
 ####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
@@ -723,7 +723,7 @@ cat $file_temporal_text.rst
 exit ; fi
 ####
 ####
-#### first_option web
+#### output web
 ####
 ####
 if [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
@@ -1414,46 +1414,46 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ####
 if [ "$first_option" = "offline" ];       then $give_cover ;
-echo "$rallica [ running ] [ loading firewall offline ]" ; 
+echo "$tab [ running ] [ loading firewall offline ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
-echo "$rallica [ running ] [ loading firewall all-permisive ]" ; 
+echo "$tab [ running ] [ loading firewall all-permisive ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "client-web" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall client-web ]" ; 
+echo "$tab [ running ] [ loading firewall client-web ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "client-vpn" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall client-vpn ]" ; 
+echo "$tab [ running ] [ loading firewall client-vpn ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "client-tor" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall client-tor ]" ; 
+echo "$tab [ running ] [ loading firewall client-tor ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall lan-vpn ]" ; 
+echo "$tab [ running ] [ loading firewall lan-vpn ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "lan-tor" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall lan-tor ]" ; 
+echo "$tab [ running ] [ loading firewall lan-tor ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-web" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall server-web ]" ; 
+echo "$tab [ running ] [ loading firewall server-web ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
-echo "$rallica [ running ] [ loading firewall server-samba ]" ; 
+echo "$tab [ running ] [ loading firewall server-samba ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-print" ];   then $give_cover ;
-echo "$rallica [ running ] [ loading firewall server-print ]" ; 
+echo "$tab [ running ] [ loading firewall server-print ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall server-ssh ]" ; 
+echo "$tab [ running ] [ loading firewall server-ssh ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "server-lamp" ];     then $give_cover ;
-echo "$rallica [ running ] [ loading firewall server-lamp ]" ; 
+echo "$tab [ running ] [ loading firewall server-lamp ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "games-udp" ];     then $give_cover  ;
-echo "$rallica [ running ] [ loading firewall games-udp ]" ; 
+echo "$tab [ running ] [ loading firewall games-udp ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover  ;
-echo "$rallica [ running ] [ loading firewall custom ]" ; 
+echo "$tab [ running ] [ loading firewall custom ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 ####
@@ -8891,7 +8891,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ all-permisive ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ all-permisive ]"
 exit; fi
 ####
 ####
@@ -9027,7 +9027,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-web ]" ; exit ; fi
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ client-web ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables client-tor:
@@ -9183,7 +9183,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-tor ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ client-tor ]"
 exit; fi
 ####
 ####
@@ -9340,7 +9340,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ lan-tor ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ lan-tor ]"
 exit; fi
 ####
 ####
@@ -9483,7 +9483,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ client-vpn ]" ; exit ; fi
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ client-vpn ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables lan-vpn:
@@ -9625,7 +9625,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ lan-vpn ]" ; exit ; fi
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ lan-vpn ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables server-web:
@@ -9821,7 +9821,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-web ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ server-web ]"
 exit; fi
 ####
 ####
@@ -10020,7 +10020,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-lamp ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ server-lamp ]"
 exit; fi
 ####
 ####
@@ -10218,7 +10218,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-samba ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ server-samba ]"
 exit; fi
 ####
 ####
@@ -10399,7 +10399,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-print ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ server-print ]"
 exit; fi
 ####
 ####
@@ -10580,7 +10580,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ server-ssh ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ server-ssh ]"
 exit; fi
 ####
 ####
@@ -10769,7 +10769,7 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ games-udp ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ games-udp ]"
 exit; fi
 ####
 ####
@@ -10840,7 +10840,7 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /d
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP       &> /dev/null
 ####
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ offline ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ offline ]"
 exit; fi
 ###############################################################################################################
 ###############################################################################################################
@@ -12060,7 +12060,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 #### echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo "$rallica [ ok ] [ launched rules ] [ launched firewall ] [ custom ] [$second_option]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ custom ] [$second_option]"
 exit ; else $nada ; fi
 ####
 ####
