@@ -190,8 +190,9 @@ give_autosave="$fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="echo $tab [ cli ] [ Without support for CLI for this option ] $tab"
-message_without_gui="echo $tab [ gui ] [ Without support for GUI for this option ] $tab"
+message_without_cli="echo $tab [ cli ] [ Without support for output cli for this option ]"
+message_without_gui="echo $tab [ gui ] [ Without support for output gui for this option ]"
+message_without_web="echo $tab [ web ] [ Without support for output web for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -605,7 +606,7 @@ if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
 if [ "$first_option" = "serverlamp" ] ; then first_option="server-lamp" ; fi
 ####
 ####
-#### english:  alias -txt or -cli or -gui 
+#### english:  alias -txt or -cli or -gui and more
 ####
 ####
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_option="-txt"; fi
@@ -621,7 +622,7 @@ if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_op
 ##############################     ALIAS CAMPUS
 ####
 ####
-#### output txt
+#### output txt:
 ####
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
@@ -642,7 +643,7 @@ cat $file_temporal_textfinal ; exit ;;
 esac; fi
 ####
 ####
-#### output cli
+#### output cli:
 ####
 ####
 if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
@@ -708,7 +709,7 @@ echo "$tab [ ok ] \
 exit ; fi
 ####
 ####
-#### output rst
+#### output rst:
 ####
 ####
 if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
@@ -723,14 +724,20 @@ cat $file_temporal_text.rst
 exit ; fi
 ####
 ####
-#### output web
+#### output web:
 ####
 ####
 if [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
+case "$second_option" in 
+*-config) $message_without_web ; exit ;;
+ole-*) $message_without_web ; exit ;;
+colour-*) $message_without_web ; exit ;;
+sudo-*) $message_without_web ; exit ;;
+esac
 echo $head_waiting_web
-rm  "$file_temporal_text"* &> /dev/null
+rm "$file_temporal_text"* &> /dev/null
 $fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
