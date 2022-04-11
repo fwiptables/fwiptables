@@ -310,6 +310,10 @@
 # 4. preparando ayuda para soporte de markdown. HECHO
 # 5. preparando help  para soporte de markdown. HECHO
 # 6. preparando options para soporte de markdown. HECHO
-# 7. Preparando mini-options para soporte de markdown. HECHO
-# 8. group-options y todos los grupos con soporte de markdown.
-#
+# 7. Preparando mini-options y full-options para soporte de markdown. HECHO
+# 8. group-options y todos los grupos principales con markdown.HECHO
+# 9. ntpdate corregido. HECHO
+# 10. web output añadido. HECHO.
+# 11. desaraparecen las rallas y se convierten en espacios. HECHO
+# 
+

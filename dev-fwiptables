@@ -6394,20 +6394,20 @@ exit; fi
 #### :rutina-inicial-ntpdate:
 ####
 ####
- if [ "$first_option" = "ntpdate" ]; then $nada
- echo "$tab [ $first_option ] [ update the computer time and date from internet ]"
- echo $header_lineal
- if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
- echo "$tab Old date: $($command_date)"
- echo "$tab [ Updating the time and the date .. ]"
- pool0="0.debian.pool.ntp.org"
- pool1="1.debian.pool.ntp.org"
- pool2="2.debian.pool.ntp.org"
- pool3="3.debian.pool.ntp.org"
- $favorite_date_command $pool0
- echo "$tab New date: $($command_date)"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "ntpdate" ]; then $nada
+echo "$tab [ $first_option ] [ update the computer time and date from internet ]"
+echo $header_lineal
+if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
+echo "$tab Old date: $($command_date)"
+echo "$tab [ Updating the time and the date .. ]"
+pool0="0.debian.pool.ntp.org"
+pool1="1.debian.pool.ntp.org"
+pool2="2.debian.pool.ntp.org"
+pool3="3.debian.pool.ntp.org"
+$favorite_date_command $pool0
+echo "$tab New date: $($command_date)"
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-ntpdate:
