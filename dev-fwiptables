@@ -305,7 +305,6 @@ exit ; fi
 ####
 if [ "$first_option" = "intro" ]; then $nada
 echo  $text_md
-echo "$text_md ---------------------------------------------------------------------------"
 echo  $text_md
 echo "$title_md     Fran fwiptables intro. "
 echo  $text_md
@@ -316,7 +315,6 @@ echo "$text_md     Control the firewall with the standard iptables files for all
 echo "$text_md     Run rules of one firewall with your own config files.                    "
 echo "$text_md     And too, use this firewall with some utilities for ipv4 and ipv6.        "
 echo  $text_md
-$brake_md
 echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
 cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
@@ -329,7 +327,6 @@ echo  $text_md
 echo "$text_md     License gnu / gpl v2.                                                    "
 echo "$text_md     See web page project in $fweb_main                                       "
 echo  $text_md
-echo "$text_md --------------------------------------------------------------------------"
 echo  $text_md
 exit; fi
 ####
@@ -1484,9 +1481,9 @@ echo "$tab [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$text_md $tab [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$title_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor      "
-echo "$text_md $tab $tab $tab $tab"
+echo "$title_md $tab [ $first_option ] [ List mini options ] [ mini-options.md ]"
+echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor      "
+echo  $text_md
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                 "
 echo "$text_md    firewall-list   |  list list6 listnum listnum6 status list-allrules list-forward   "
 echo "$text_md                       list-forward6 list-filter4 list-filter6 list-nat4 list-nat6     "
@@ -1523,9 +1520,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$text_md    $tab [ $first_option ] [ List full options ] [ options.md ] $tab"
-echo "$title_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor        "
-echo "$text_md    $tab $tab $tab $tab $tab  "
+echo "$title_md    $tab [ $first_option ] [ List full options ] [ options.md ] $tab"
+echo "$text_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -tor        "
+echo  $text_md
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
 echo "$text_md    firewall-list      |  list list6 listnum listnum6 status                               "
@@ -1659,11 +1656,9 @@ exit ; fi
 ####
 if [ "$first_option" = "all-help" ]; then $give_cover
 echo "$text_md $tab [ $first_option ] [ help in english and spanish ] [ all-help.md ]"
-echo  $text_md
 echo "$text_md [ Choose only help in english ]        [ Type:     $fwiptables help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
 echo "$text_md [ all-help in english and spanish ]    [ Type:     $fwiptables all-help ]"
-echo  $text_md
 $brake_md
 $fwiptables intro
 echo  $text_md
@@ -8202,14 +8197,8 @@ if [ "$first_option" = "help" ]; then
 echo "$title_md [ $first_option ] [ help in english ] [ help.md ]"
 echo "$text_md  [ Choose only help in english ] [  Type:     $fwiptables help   ]"
 echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $fwiptables ayuda   ]"
-echo  $text_md
-$break_md
 $fwiptables intro
-echo  $text_md
-$brake_md
 $fwiptables options
-echo  $text_md
-$brake_md
 echo "$title_md         [ Launch interface ]"
 echo  $text_md
 echo "$text_md       txt OR -txt : Output at text line | whith bash backend."
@@ -8220,8 +8209,6 @@ echo "$text_md       tor OR -tor : Run in tor, necesary daemon tor and torify co
 echo "$text_md          cli-menu : Command line interface with menus | whith dialog backend."
 echo "$text_md          gui-menu : Graphicall interface with menus | whith zenity backend."
 echo "$text_md         gui-shell : Graphicall interface with shell | whith zenity backend."
-echo  $text_md
-$break_md
 echo  $text_md
 echo "$title_md        [ Control the iptables rules ]"
 echo  $text_md
@@ -8234,8 +8221,6 @@ echo "$text_md          show : Show one firewall standard."
 echo "$text_md          save : Save one firewall iptables."
 echo "$text_md          load : Restore a one firewall iptables."
 echo "$text_md        actual : Show the firewall standard actual."
-echo  $text_md
-$break_md
 echo  $text_md
 echo "$title_md         [ List iptables rules]"
 echo  $text_md
@@ -8284,7 +8269,6 @@ echo "$text_md       server-print : Launch a firewall like server ipp, printer a
 echo "$text_md         server-ssh : Launch a firewall like server ssh."
 echo "$text_md        server-lamp : Launch a firewall like server LAMP."
 echo  $text_md
-$break_md
 echo "$title_md         [ tool config ]"
 echo  $text_md
 echo "$text_md       new-full-config : Create a new configfile.cfg in english."
@@ -8297,7 +8281,6 @@ echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
 echo  $text_md
-$break_md
 echo "$title_md         [ List sockets ]"
 echo  $text_md
 echo "$text_md      info-nodes : List the conentions arp in lan."
@@ -8313,14 +8296,12 @@ echo "$text_md     netstat-nat : Show net sockets with command netstat-nat."
 echo "$text_md        web-cert : Download one ssl certificated to one web with port https(443)."
 echo "$text_md         tcpdump : Listen the connections."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool forward ]"
 echo  $text_md
 echo "$text_md  ipforward-list : Show kernel config about forward."
 echo "$text_md    ipforward-on : Active kernel config about forward."
 echo "$text_md   ipforward-off : Deactive kernel config about forward."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool tcp ]"
 echo  $text_md
 echo "$text_md    tracetcp-ip4 : Trace route a one host with ipv4 tcp."
@@ -8328,7 +8309,6 @@ echo "$text_md    tracetcp-ip6 : Trace route a one host with ipv6 tcp."
 echo "$text_md       speed-ip4 : Test the bandwidth with ipv4."
 echo "$text_md       speed-ip6 : Test the bandwidth with ipv6."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool udp ]"
 echo  $text_md
 echo "$text_md           host : Resolve one host."
@@ -8337,7 +8317,6 @@ echo "$text_md      resolveip : Resolve one host and viceversa."
 echo "$text_md          geoip : Locate a one host or ip."
 echo "$text_md        ntpdate : Update the date from ntp server."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool icmp ]"
 echo  $text_md
 echo "$text_md  traceicmp-ip4 : Trace route a one host with ipv4 icmp."
@@ -8345,7 +8324,6 @@ echo "$text_md  traceicmp-ip6 : Trace route a one host with ipv6 icmp."
 echo "$text_md       ping-ip4 : Do a one ping with to one host with ipv4 icmp."
 echo "$text_md       ping-ip6 : Do a one ping with to one host with ipv6 icmp."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool nmap ]"
 echo $text_md
 echo "$text_md       scan-tcp : Scan a host/mask per tcp protocol."
@@ -8354,7 +8332,6 @@ echo "$text_md       scan-fin : Scan a host/mask per fin socket."
 echo "$text_md       scan-udp : Scan a host/mask per udp protocol."
 echo "$text_md      scan-ping : Scan a host/mask per ping udp."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool sudo ]"
 echo  $text_md
 echo "$text_md    sudo-adduser : Allow sudo to other choosed users."
@@ -8362,7 +8339,6 @@ echo "$text_md    sudo-deluser : Remove sudo to other choosed users."
 echo "$text_md       sudo-list : List sudo to other choosed users."
 echo "$text_md      alias-list : List alias $fwiptables and its autocomplete."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool game ]"
 echo  $text_md
 echo "$text_md         ole-word : Play game to discover a random word with five digits."
@@ -8371,7 +8347,6 @@ echo "$text_md       ole-domain : Discover one domain if generic or if country."
 echo "$text_md       colour-hex : convert one number hexadecimal in rgb."
 echo "$text_md       colour-rgb : convert one number rgb in hexadecimal."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool system ]"
 echo $text_md
 echo "$text_md         free-ram : Clean for innecesary ram memory."
@@ -8380,21 +8355,18 @@ echo "$text_md       speed-disk : Show the speed of root hard disc."
 echo "$text_md        speed-glx : Show frammes for seconds with mesa graphicall."
 echo "$text_md        radio-mp3 : connect to one server mp3, see show-default modify-default."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool Install ]"
 echo  $text_md
 echo "$text_md         install : Install this program actual."
 echo "$text_md   howto-upgrade : Howto install the latest version."
 echo "$text_md         upgrade : Upgrade at the latest version."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool blacklist ]"
 echo  $text_md
 echo "$text_md  blacklist-list : List options to block dangerous hosts."
 echo "$text_md    blacklist-on : Write one /etc/hosts with block a dangerous sites."
 echo "$text_md   blacklist-off : Return to /etc/hosts for default."
 echo  $text_md
-$break_md
 echo "$title_md         [ Tool dev ]"
 echo  $text_md
 echo "$text_md    new-versions : Show the last versions."
@@ -8402,7 +8374,6 @@ echo "$text_md     dev-version : Show the link at the developer version."
 echo "$text_md     dev-changes : Show the last changes."
 echo "$text_md            code : Show the source code for one option."
 echo  $text_md
-$break_md
 echo "$title_md         [ Show hardware ]"
 echo  $text_md
 echo "$text_md          lpinfo : Show the device printers."
@@ -8413,7 +8384,6 @@ echo "$text_md           lsgpu : Show the devices gpu."
 echo "$text_md           lspci : Show the devices pci."
 echo "$text_md            lshw : Show the hardware devices."
 echo  $text_md
-$break_md
 echo "$title_md         [ Show etc ]"
 echo  $text_md
 echo "$text_md           hosts : Show /etc/hosts, hosts local and statics host."
@@ -8425,7 +8395,6 @@ echo "$text_md     resolv.conf : Show /etc/resolv.conf, it are the dns configure
 echo "$text_md    show-default : Show show variables for fwiptables."
 echo "$text_md  modify-default : Modify variables for fwiptables."
 echo  $text_md
-$break_md
 echo "$title_md         [ Show log ]"
 echo  $text_md
 echo "$text_md        log-ssh : Search the logs from sshd for /var/log."
@@ -8434,7 +8403,6 @@ echo "$text_md        sentlog : Show $file_output_filelog , over -log."
 echo "$text_md        filelog : Alias to sentlog."
 echo "$text_md        autolog : Show $file_output_autolog , only headers."
 echo  $text_md
-$break_md
 echo "$title_md         [ Show about ]"
 echo  $text_md
 echo "$text_md          about : About info."
@@ -8445,7 +8413,6 @@ echo "$text_md   new-versions : Show the last versions."
 echo "$text_md     config-eng : config example with comments in english."
 echo "$text_md     config-spa : config example with comments in spanish."
 echo  $text_md
-$break_md
 echo "$title_md         [ Show help ]"
 echo $text_md
 echo "$text_md       all-help : Show help in spanish and in english."
@@ -8458,7 +8425,6 @@ echo "$text_md           help : Show help in english."
 echo "$text_md          ayuda : Show help in spanish."
 echo "$text_md          notes : Show firewall notes."
 echo  $text_md
-$break_md
 echo "$title_md [ firewall notes ]"
 echo  $text_md
 echo  $text_md
@@ -8470,7 +8436,6 @@ echo "$title_md  [blacklist]"
 echo  $text_md
 echo "$text_md     Host [blacklist] excepcionals hosts has conection dropped in firewall."
 echo  $text_md
-$break_md
 echo "$title_md  [uid and/or gid excepcional]"
 echo  $text_md
 echo "$text_md     User and/or group excepcional have output conection allowed in firewall."
@@ -8480,7 +8445,6 @@ echo  $text_md
 echo "$text_md     iptables-legacy   is    support for xtables."
 echo "$text_md     iptables-nft      is    support for nftables."
 echo  $text_md
-$break_md
 echo "$title_md  [client firewall needs in udp ports]"
 echo  $text_md
 echo "$text_md     This port is necesary to update the date  : ntp"
