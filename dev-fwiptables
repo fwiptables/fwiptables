@@ -172,11 +172,11 @@ head_principal="$text_md || $fwiptables || Version $fversion || Use: $fwiptables
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
-head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
-head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
-head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
-head_waiting_rst="$tab [ rst ] [ Wait several seconds.. ] [ With aprox several seconds ] $tab"
+head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_rst="$tab [ rst ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -190,9 +190,9 @@ give_autosave="$fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="echo $tab [ cli ] [ Without support for output cli for this option ]"
-message_without_gui="echo $tab [ gui ] [ Without support for output gui for this option ]"
-message_without_web="echo $tab [ web ] [ Without support for output web for this option ]"
+message_without_cli="$tab [ cli ] [ Without support for output cli for this option ]"
+message_without_gui="$tab [ gui ] [ Without support for output gui for this option ]"
+message_without_web="$tab [ web ] [ Without support for output web for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -630,16 +630,25 @@ case "$second_option" in
 cli-menu) first_option="cli-menu"   ;;
 gui-menu) first_option="gui-menu"   ;;
 gui-shell) first_option="gui-shell" ;;
+"nueva-mini-config")  $fwiptables $second_option $third_option ;  exit ;;
+"nueva-completa-config") $fwiptables $second_option $third_option ;  exit ;;
+"new-mini-config") $fwiptables $second_option $third_option ;  exit ;;
+"new-full-config") $fwiptables $second_option $third_option ;  exit ;;
+"modify-config") $fwiptables $second_option $third_option ;  exit ;;
+"modify-default") $fwiptables $second_option $third_option  ;  exit ;;
 "ole-domain") $fwiptables ole-domain -txt ; exit ;; 
 "ole-word") $fwiptables ole-word -txt ; exit ;;
 "ole-number") $fwiptables ole-number -txt ; exit ;;
+"colour-hex"|"colour-rgb") $fwiptables $second_option $third_option  ;  exit ;;
+"blacklist-on") $fwiptables $second_option $third_option  ;  exit ;;
 "list") $fwiptables list4-ip &> $file_temporal_text 
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
 "list6") $fwiptables list6-ip &> $file_temporal_text 
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
-*) $fwiptables $second_option $third_option ; exit ;;
+*) $fwiptables $second_option $third_option &> $file_temporal_textfinal
+cat $file_temporal_textfinal ; exit ;;
 esac; fi
 ####
 ####
@@ -651,32 +660,24 @@ case "$second_option" in
 cli-menu) first_option="cli-menu"   ;;
 gui-menu) first_option="gui-menu"   ;;
 gui-shell) first_option="gui-shell" ;;
-wizard-*) $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
+wizard-*) echo $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $fwiptables $second_option $third_option ;  exit ;;
 "nueva-completa-config") $fwiptables $second_option $third_option ;  exit ;;
 "new-mini-config") $fwiptables $second_option $third_option ;  exit ;;
 "new-full-config") $fwiptables $second_option $third_option ;  exit ;;
 "modify-config") $fwiptables $second_option $third_option ;  exit ;;
 "modify-default") $fwiptables $second_option $third_option  ;  exit ;;
-scan-*) $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"install") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"howto-uprade") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"uprade") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"speed-ram") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"speed-disk") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"speed-glx") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"speed-ip4") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"speed-ip6") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"radio") $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
+# scan-*) echo $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"radio") echo $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
 "ole-domain") $fwiptables ole-domain -cli ; exit ;;
 "ole-word") $fwiptables ole-word -cli ; exit ;;
 "ole-number") $fwiptables ole-number -cli ; exit ;;
-"blacklist-on") $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+"blacklist-on") echo $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $fwiptables log-search $pattern ; exit ;; 
-log-*) $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-fw-*)  $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+log-*) echo $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
+fw-*)  echo $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
 *) dialog --title " CLI Output || $(date) " --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
 ####
 ####
@@ -731,10 +732,10 @@ if [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
-*-config) $message_without_web ; exit ;;
-ole-*) $message_without_web ; exit ;;
-colour-*) $message_without_web ; exit ;;
-sudo-*) $message_without_web ; exit ;;
+*-config) echo $message_without_web ; exit ;;
+ole-*) echo $message_without_web ; exit ;;
+colour-*) echo $message_without_web ; exit ;;
+sudo-*) echo $message_without_web ; exit ;;
 esac
 echo $head_waiting_web
 rm "$file_temporal_text"* &> /dev/null
