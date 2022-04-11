@@ -719,7 +719,6 @@ case "$second_option" in
 *-config) echo $message_without_rst ; exit ;;
 ole-*) echo $message_without_rst ; exit ;;
 colour-*) echo $message_without_rst ; exit ;;
-sudo-*) echo $message_without_rst ; exit ;;
 esac
 fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
@@ -739,7 +738,6 @@ case "$second_option" in
 *-config) echo $message_without_web ; exit ;;
 ole-*) echo $message_without_web ; exit ;;
 colour-*) echo $message_without_web ; exit ;;
-sudo-*) echo $message_without_web ; exit ;;
 esac
 echo $head_waiting_web
 rm "$file_temporal_text"* &> /dev/null
