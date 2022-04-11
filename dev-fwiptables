@@ -180,9 +180,9 @@ head_waiting_rst="$tab [ rst ] [ Wait several seconds.. ] [ With aprox several s
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_lineal="$tab   $tab   $tab"                           
+header_lineal="$tab   $tab  "                           
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-footer_lineal="$tab   $tab   $tab"                            
+footer_lineal="$tab   $tab  "                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$fwiptables header"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -1529,7 +1529,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$title_md    $tab [ $first_option ] [ List full options ] [ options.md ] $tab"
+echo "$title_md    $tab [ $first_option ] [ List full options ] [ options.md ]"
 echo "$text_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor    "
 echo "$title_md                                      [ firewall-options ]                                "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                  "
@@ -1563,7 +1563,7 @@ echo "$text_md    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lsh
 echo "$text_md    show-log           |  log-search log-ssh sentlog autolog                               "
 echo "$text_md    show-etc           |  hosts resolv.conf  protocols services                            "
 echo "$text_md                          hosts.allow hosts.deny show-default modify-default               "
-echo "$text_md    show-about         |  about version depends examples                                   "
+echo "$text_md    show-about         |  about version depends config-examples                            "
 echo "$text_md                          config-eng config-spa license                                    "
 echo "$text_md    show-help          |  all-help help ayuda notes options info                           "
 echo "$text_md                          group-options mini-options full-options                          "
@@ -1599,7 +1599,7 @@ echo "$text_md                          server-samba server-print server-web ser
 echo "$text_md  firewall-custom      |  new-full-config nueva-completa-config regen-config            "
 echo "$text_md                          new-mini-config nueva-mini-config list-config                 "
 echo "$text_md                          show-config modify-config del-config                          "
-echo "$text_md  $tab $tab $tab"
+echo "$text_md  $tab $tab"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options                      "
 exit ; fi
 ####
@@ -1626,7 +1626,7 @@ echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx ra
 echo "$text_md    tool-install      | install upgrade howto-upgrade                         "
 echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code             "
-echo "$text_md  $tab $tab $tab"
+echo "$text_md  $tab $tab"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
@@ -1639,16 +1639,16 @@ exit ; fi
 ####
 if [ "$first_option" = "show-options" ] ; then $give_cover
 echo "$text_md $tab [ $first_option ] [ Show options ] [ show-options.md ]"
-echo "$title_md                                   | show-options |                           " 
+echo "$title_md                                   | show-options |                          " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$text_md    show-log          | log-search log-ssh sentlog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
-echo "$text_md    show-about        | about version depends examples                        "
+echo "$text_md    show-about        | about version depends config-examples                 "
 echo "$text_md                        config-eng config-spa license                         "
 echo "$text_md    show-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
-echo "$text_md  $tab $tab $tab"
+echo "$text_md  $tab $tab"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
@@ -1801,7 +1801,7 @@ if [ "$first_option" = "some-example" ]; then $give_cover
 echo "$title_md $tab [ $first_option ] [ List examples ] [ some-examples.md ]"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
-echo "$text_md $tab $tab $tab"
+echo "$text_md $tab $tab"
 echo "$text_md   Generate new iptables rules :#            $fwiptables wizard-mini         "
 echo "$text_md   Save iptables rules in name :#            $fwiptables save name           "
 echo "$text_md   Load iptables rules :#                    $fwiptables load name           "
@@ -1825,72 +1825,72 @@ echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
 echo  $text_md 
 echo "$title_md                   [ Principal options ]"
 echo  $text_md 
-echo "$text_md $tab output-interface $tab" 
+echo "$text_md $tab output-interface" 
 echo "$text_md eng                   Manage the interface with txt or cli or gui or log"
 echo "$text_md spa                   Manage el interfaz con txt o cli o gui or log"
-echo "$text_md $tab firewall-rules $tab"
+echo "$text_md $tab firewall-rules"
 echo "$text_md eng                   Control the iptables firewall rules"
 echo "$text_md spa                   Controla las reglas de iptables"
-echo "$text_md $tab firewall-list $tab"
+echo "$text_md $tab firewall-list"
 echo "$text_md eng                   List the iptables firewall rules"
 echo "$text_md spa                   Lista las reglas de iptables"
-echo "$text_md $tab firewall-launch $tab"
+echo "$text_md $tab firewall-launch"
 echo "$text_md eng                   Launch the iptables firewall rules"
 echo "$text_md spa                   Lanza las reglas de iptables"
-echo "$text_md $tab firewall-custom $tab"
+echo "$text_md $tab firewall-custom"
 echo "$text_md eng                   Create, modify and show configurations"
 echo "$text_md eng                   Crea, modifica y muestra configuraciones"
 echo  $text_md
 $brake_md
 echo "$title_md                   [ tool options ]"
 echo  $text_md 
-echo "$text_md $tab tool-sockets $tab"
+echo "$text_md $tab tool-sockets"
 echo "$text_md eng                   List net sockets ip in system"
 echo "$text_md spa                   Lista sockets de red ip en el sistema"
-echo "$text_md $tab tool-forward $tab"
+echo "$text_md $tab tool-forward"
 echo "$text_md eng                   list, active and desactive ipforward in linux"
 echo "$text_md spa                   lista, activa y desactiva ipforward en linux"
-echo "$text_md $tab tool-tcp $tab"
+echo "$text_md $tab tool-tcp"
 echo "$text_md eng                   Several tools tcp"
 echo "$text_md spa                   Varias herramientas tcp"
-echo "$text_md $tab tool-udp $tab"
+echo "$text_md $tab tool-udp"
 echo "$text_md eng                   Several tools udp"
 echo "$text_md spa                   Varias herramientas udp"
-echo "$text_md $tab tool-icmp $tab"
+echo "$text_md $tab tool-icmp"
 echo "$text_md eng                   Several tools icmp"
 echo "$text_md spa                   Varias herramientas icmp"
-echo "$text_md $tab tool-nmap $tab"
+echo "$text_md $tab tool-nmap"
 echo "$text_md eng                   Port scan"
 echo "$text_md spa                   Escaneo de puertos"
-echo "$text_md $tab tool-sudo $tab"
+echo "$text_md $tab tool-sudo"
 echo "$text_md eng                   Tool to auth sudo a users for fwiptables"
 echo "$text_md spa                   Herramienta de autorizacion a usuarios para fwiptables"
-echo "$text_md $tab tool-install $tab"
+echo "$text_md $tab tool-install"
 echo "$text_md eng                   Tool to install and upgrade fwiptables"
 echo "$text_md spa                   Herramienta para instalar y actualizar fwiptables"
-echo "$text_md $tab tool-blacklist $tab"
+echo "$text_md $tab tool-blacklist"
 echo "$text_md eng                   Tool for block dangerous sites"
 echo "$text_md spa                   Herramienta para bloquear peligrosos sitios"
-echo "$text_md $tab tool-dev $tab"
+echo "$text_md $tab tool-dev"
 echo "$text_md eng                   Tool to developer"
 echo "$text_md spa                   Herramienta de desarrollo"
-echo "$text_md $tab tool-system $tab"
+echo "$text_md $tab tool-system"
 echo "$text_md eng                   Several tools for the system"
 echo "$text_md spa                   Varias herramientas para el sistema"
 echo  $text_md 
 $brake_md
 echo "$title_md                   [ show options ]"
 echo  $text_md 
-echo "$text_md $tab show-etc $tab"
+echo "$text_md $tab show-etc"
 echo "$text_md eng                   Show net files in /etc/"
 echo "$text_md spa                   Muestra archivos de red de /etc/"
-echo "$text_md $tab show-log $tab"
+echo "$text_md $tab show-log"
 echo "$text_md eng                   Show logs systems"
 echo "$text_md spa                   Muestra logs del sistema"
-echo "$text_md $tab show-about $tab"
+echo "$text_md $tab show-about"
 echo "$text_md eng                   About"
 echo "$text_md spa                   Acerca de"
-echo "$text_md $tab show-help $tab"
+echo "$text_md $tab show-help"
 echo "$text_md eng                   Help"
 echo "$text_md spa                   Ayuda"
 echo $footer_lineal
@@ -1909,58 +1909,58 @@ echo  $text_md
 echo "$text_md [ english info ] [ Launch iptables rules ]"
 echo "$text_md [ spanish info ] [ Lanza reglas de iptables ]"
 echo  $text_md
-echo "$text_md $tab eraserules $tab" 
+echo "$text_md $tab eraserules" 
 echo "$text_md eng           : Remove the iptables rules in ipv4 and ipv6"
 echo "$text_md spa           : Borra las reglas de iptables en ipv4 y ipv6"
-echo "$text_md $tab wizard-mini $tab"
+echo "$text_md $tab wizard-mini"
 echo "$text_md eng           : Launch one wizard mini to launch iptables rules"
 echo "$text_md spa           : Lanza un wizard mini para lanzar reglas de iptables"
-echo "$text_md $tab wizard-full $tab"
+echo "$text_md $tab wizard-full"
 echo "$text_md eng           : Launch one wizard full to launch rules"
 echo "$text_md spa           : Lanza un wizard completo para lanzar reglas de iptables"
-echo "$text_md $tab offline $tab"
+echo "$text_md $tab offline"
 echo "$text_md eng           : Launch one firewall disconected for all servers and clients except localhost"
 echo "$text_md spa           : Lanza un Firewall desconectado para todo servidores y clientes excepto localhost"
-echo "$text_md $tab all-permisive $tab"
+echo "$text_md $tab all-permisive"
 echo "$text_md eng           : Launch one firewall very permisive"
 echo "$text_md spa           : Lanza un firewall muy permisivo"
-echo "$text_md $tab games-udp $tab"
+echo "$text_md $tab games-udp"
 echo "$text_md eng           : Launch one firewall like client games for udp non-root"
 echo "$text_md spa           : Lanza un firewall como cliente juegos udp no-root"
-echo "$text_md $tab custom $tab"
+echo "$text_md $tab custom"
 echo "$text_md eng           : Launch one custom firewall with one file cfg"
 echo "$text_md spa           : Lanza un modificado firewall con un archivo cfg"
-echo "$text_md $tab client-web $tab"
+echo "$text_md $tab client-web"
 echo "$text_md eng           : Launch one firewall like client web and ssh"
 echo "$text_md spa           : Lanza un firewall como cliente web y ssh"
-echo "$text_md $tab client-vpn $tab"
+echo "$text_md $tab client-vpn"
 echo "$text_md eng           : Launch one firewall like client web and ssh and vpn"
 echo "$text_md spa           : Lanza un firewall como cliente web y ssh y vpn"
-echo "$text_md $tab client-tor $tab"
+echo "$text_md $tab client-tor"
 echo "$text_md eng           : Launch one firewall with browser with tor"
 echo "$text_md spa           : Lanza un firewall para nevagar con tor"
-echo "$text_md $tab lan-tor $tab"
+echo "$text_md $tab lan-tor"
 echo "$text_md eng           : Launch one firewall only to browser with tor"
 echo "$text_md spa           : Lanza un firewall solo para nevagar con tor"
-echo "$text_md $tab lan-vpn $tab"
+echo "$text_md $tab lan-vpn"
 echo "$text_md eng           : Launch one firewall only to browser with vpn"
 echo "$text_md eng           : Lanza un firewall solo para nevagar con vpn"
-echo "$text_md $tab server-web $tab" 
+echo "$text_md $tab server-web" 
 echo "$text_md eng           : Launch one firewall like server web and ssh"
 echo "$text_md spa           : Lanza un firewall como servidor web y ssh"
-echo "$text_md $tab server-samba $tab"
+echo "$text_md $tab server-samba"
 echo "$text_md eng           : Launch one firewall samba and ssh like client and server both"
 echo "$text_md spa           : Lanza un firewall sambla y ssh como cliente y servidor ambos"
-echo "$text_md $tab server-print $tab"
+echo "$text_md $tab server-print"
 echo "$text_md eng           : Launch one firewall like server ipp, printer and ssh"
 echo "$text_md spa           : Lanza un firewall como servidor ipp, printer y ssh"
-echo "$text_md $tab server-ssh $tab"
+echo "$text_md $tab server-ssh"
 echo "$text_md eng           : Launch one firewall like server ssh"
 echo "$text_md spa           : Lanza un firewall como servidor ssh"
-echo "$text_md $tab server-lamp $tab"
+echo "$text_md $tab server-lamp"
 echo "$text_md eng           : Launch one firewall like server LAMP"
 echo "$text_md spa           : Lanza un firewall como servidor LAMP"
-echo "$text_md $tab cfg $tab" 
+echo "$text_md $tab cfg" 
 echo "$text_md eng           : Alias to custom"
 echo "$text_md spa           : Apodo to custom"
 echo $footer_lineal
@@ -1979,31 +1979,31 @@ echo  $text_md
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
 echo  $text_md
-echo "$text_md $tab stop $tab" 
+echo "$text_md $tab stop" 
 echo "$text_md eng           : Save and stop the rules"
 echo "$text_md spa           : Guarda y para las reglas"
 echo "$text_md $tab continue"
 echo "$text_md eng           : continue with old rules"
 echo "$text_md spa           : Continua con las viejas reglas"
-echo "$text_md $tab reset $tab" 
+echo "$text_md $tab reset" 
 echo "$text_md eng           : Reset the rules"
 echo "$text_md spa           : Resetea las reglas"
-echo "$text_md $tab list-fw $tab" 
+echo "$text_md $tab list-fw" 
 echo "$text_md eng           : Alias to names"
 echo "$text_md spa           : Apodo a names"
-echo "$text_md $tab names $tab" 
+echo "$text_md $tab names" 
 echo "$text_md eng           : Show the files of firewall standard"
 echo "$text_md spa           : Muestra los archivos de firewall estandard guardados"
-echo "$text_md $tab show $tab" 
+echo "$text_md $tab show" 
 echo "$text_md eng           : Show the files in firewall standard"
 echo "$text_md spa           : Muestra los archivos de firewall estandard"
-echo "$text_md $tab save $tab" 
+echo "$text_md $tab save" 
 echo "$text_md eng           : Save the files in firewall standard"
 echo "$text_md spa           : Guarda los archivos de firewall estandard"
-echo "$text_md $tab load $tab" 
+echo "$text_md $tab load" 
 echo "$text_md eng           : Restore files from firewall standard"    
 echo "$text_md spa           : Recupera los archivos de firewall estandard"
-echo "$text_md $tab actual $tab" 
+echo "$text_md $tab actual" 
 echo "$text_md eng           : Show the actual iptables standard"
 echo "$text_md spa           : Muestra el actual firewall estandard"
 echo $footer_lineal
@@ -2022,70 +2022,70 @@ echo  $text_md
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
 echo  $text_md
-echo "$text_md $tab list $tab"
+echo "$text_md $tab list"
 echo "$text_md eng           : List iptables filter rules from ipv4 with hide no used"
 echo "$text_md spa           : Lista reglas de tabla filtros desde ipv4 esconde no usadas"
-echo "$text_md $tab list6 $tab"
+echo "$text_md $tab list6"
 echo "$text_md eng           : List iptables filter rules from ipv6 with hide no used"
 echo "$text_md spa           : Lista reglas de tabla filtros desde ipv6 esconde no usadas"
 echo  $text_md 
-echo "$text_md $tab status $tab"
+echo "$text_md $tab status"
 echo "$text_md eng           : List iptables filter rules ip4 and ipv6 when there are only default route"
 echo "$text_md eng           : Lista filtros de iptables rules ip4 y ip6 solo cuando hay ruta por defecto"
-echo "$text_md $tab list-forward $tab"
+echo "$text_md $tab list-forward"
 echo "$text_md eng           : List iptables filter rules foward"
 echo "$text_md spa           : Lista tabla de iptables de reenvio ipv4"
-echo "$text_md $tab list-forward6 $tab"
+echo "$text_md $tab list-forward6"
 echo "$text_md eng           : List iptables filter rules forward ipv6"
 echo "$text_md spa           : Lista tabla de iptables de reenvio ipv6"
-echo "$text_md $tab listnum $tab"
+echo "$text_md $tab listnum"
 echo "$text_md eng           : List iptables filter rules from ipv4 in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros desde ipv4 in numeros"
-echo "$text_md $tab listnum6 $tab"
+echo "$text_md $tab listnum6"
 echo "$text_md eng           : List iptables filter rules from ipv6 in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros desde ipv6 in numeros"
-echo "$text_md $tab list-forwardnum $tab"
+echo "$text_md $tab list-forwardnum"
 echo "$text_md eng           : List iptables filter rules foward in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
-echo "$text_md $tab list-forwardnum6 $tab"
+echo "$text_md $tab list-forwardnum6"
 echo "$text_md eng           : List iptables filter rules forward ipv6 in numbers"
 echo "$text_md spa           : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo  $text_md 
-echo "$text_md $tab list-filter4 $tab"
+echo "$text_md $tab list-filter4"
 echo "$text_md eng           : List iptables filter rules from ipv4"
 echo "$text_md spa           : Lista iptables reglas de filtros desde ipv4"
-echo "$text_md $tab list-filter6 $tab"
+echo "$text_md $tab list-filter6"
 echo "$text_md eng           : List iptables filter rules from ipv6"
 echo "$text_md spa           : Lista iptables reglas de filtros desde ipv6"
-echo "$text_md $tab list-nat4 $tab"
+echo "$text_md $tab list-nat4"
 echo "$text_md eng           : List iptables nat rules from ipv4"
 echo "$text_md spa           : Lista iptables nat reglas de ipv4"
-echo "$text_md $tab list-nat6 $tab"
+echo "$text_md $tab list-nat6"
 echo "$text_md eng           : List iptables nat rules from ipv6"
 echo "$text_md spa           : Lista iptables nat reglas de ipv6"
-echo "$text_md $tab list-mangle4 $tab"
+echo "$text_md $tab list-mangle4"
 echo "$text_md eng           : List iptables mangle rules from ipv4"
 echo "$text_md spa           : Lista reglas de manipulacion ipv4"
-echo "$text_md $tab list-mangle6 $tab"
+echo "$text_md $tab list-mangle6"
 echo "$text_md eng           : List iptables mangle rules from ipv6"
 echo "$text_md spa           : Lista reglas de manipulacion ipv6"
-echo "$text_md $tab list-raw4 $tab"
+echo "$text_md $tab list-raw4"
 echo "$text_md eng           : List iptables raw rules from ipv4"
 echo "$text_md spa           : Lista reglas directas de ipv4"
-echo "$text_md $tab list-raw6 $tab"
+echo "$text_md $tab list-raw6"
 echo "$text_md eng           : List iptables raw rules from ipv6"
 echo "$text_md spa           : Lista reglas directas de ipv6"
-echo "$text_md $tab list-security4 $tab"
+echo "$text_md $tab list-security4"
 echo "$text_md eng           : List iptables security rules from ipv4"
 echo "$text_md spa           : lista reglas de seguridad de ipv4"
-echo "$text_md $tab list-security6 $tab"
+echo "$text_md $tab list-security6"
 echo "$text_md eng           : List iptables security rules from ipv6"
 echo "$text_md spa           : lista reglas de seguridad de ipv6"
 echo  $text_md
-echo "$text_md $tab list-ebtables $tab"
+echo "$text_md $tab list-ebtables"
 echo "$text_md eng           : List rules mac ethernet"
 echo "$text_md spa           : Lista reglas mac de ethernet"
-echo "$text_md $tab arp-tables $tab"
+echo "$text_md $tab arp-tables"
 echo "$text_md eng           : List rules arptables arp"
 echo "$text_md spa           : Lista reglas de tabla de arpanet"
 echo $footer_lineal
@@ -2128,31 +2128,31 @@ echo  $text_md
 echo "$text_md [ english info ] [ custom configs ]"
 echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
 echo  $text_md
-echo "$text_md $tab new-full-config $tab"
+echo "$text_md $tab new-full-config"
 echo "$text_md eng           : Create a new advance configfile.cfg in english"
 echo "$text_md spa           : Crea una nueva avanzada configfile.cfg en ingles"
-echo "$text_md $tab nueva-completa-config $tab"
+echo "$text_md $tab nueva-completa-config"
 echo "$text_md eng           : Create a new advance configfile.cfg in spanish"
 echo "$text_md spa           : Crea una nueva avanzada configfile.cfg en español"
-echo "$text_md $tab new-mini-config $tab"
+echo "$text_md $tab new-mini-config"
 echo "$text_md eng           : Create a new basic configfile.cfg in english"
 echo "$text_md spa           : Crea una nueva basica configfile.cfg en ingles"
-echo "$text_md $tab nueva-mini-config $tab"
+echo "$text_md $tab nueva-mini-config"
 echo "$text_md eng           : Create a new basic configfile.cfg in spanish"
 echo "$text_md spa           : Crea una nueva basica configfile.cfg en español"
-echo "$text_md $tab regen-config $tab"
+echo "$text_md $tab regen-config"
 echo "$text_md eng           : regen-config wizard templates y cfg templates files"
 echo "$text_md spa           : regen-configera plantillas wizard y plantillas cfg"
-echo "$text_md $tab list-config $tab"
+echo "$text_md $tab list-config"
 echo "$text_md eng           : List config files cfg"
 echo "$text_md spa           : Lista las configuraciones de archivo cfg"
-echo "$text_md $tab modify-config $tab"
+echo "$text_md $tab modify-config"
 echo "$text_md eng           : Edit one configfile.cfg"
 echo "$text_md spa           : Edita una configuracion.cfg"
-echo "$text_md $tab show-config $tab"
+echo "$text_md $tab show-config"
 echo "$text_md eng           : Show one configfile.cfg"
 echo "$text_md spa           : Muestra una configuracion.cfg"
-echo "$text_md $tab del-config $tab"
+echo "$text_md $tab del-config"
 echo "$text_md eng           : Delete one configuration file"
 echo "$text_md spa           : Borra una configuracion.cfg"
 echo $footer_lineal
@@ -2171,34 +2171,34 @@ echo  $text_md
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
 echo  $text_md
-echo "$text_md $tab txt OR -txt $tab"
+echo "$text_md $tab txt OR -txt"
 echo "$text_md eng           : Output to Text line"
 echo "$text_md spa           : Salida a linea de texto"
-echo "$text_md $tab cli OR -cli $tab"
+echo "$text_md $tab cli OR -cli"
 echo "$text_md eng           : Output to text menu"
 echo "$text_md spa           : Salida a menu de texto"
-echo "$text_md $tab gui OR -gui $tab"
+echo "$text_md $tab gui OR -gui"
 echo "$text_md eng           : Output to graphicall window"
 echo "$text_md spa           : Salida a ventana grafica"
-echo "$text_md $tab log OR -log $tab"
+echo "$text_md $tab log OR -log"
 echo "$text_md eng           : Save the output"
 echo "$text_md spa           : Guarda la salida"
-echo "$text_md $tab web OR -web $tab"
+echo "$text_md $tab web OR -web"
 echo "$text_md eng           : Output in favorite text web browser"
 echo "$text_md spa           : Salida en favorito navegador web de texto"
-echo "$text_md $tab rst OR -rst $tab"
+echo "$text_md $tab rst OR -rst"
 echo "$text_md eng           : Output in text with rst format"
 echo "$text_md spa           : Salida en text con formato rst"
-echo "$text_md $tab tor OR -tor $tab"
+echo "$text_md $tab tor OR -tor"
 echo "$text_md eng           : Run in tor, necesary tor daemon ant torify command"
 echo "$text_md spa           : Ejecuta en tor, necesario daemon tor y comando torify"
-echo "$text_md $tab cli-menu $tab"
+echo "$text_md $tab cli-menu"
 echo "$text_md eng           : Text cli interface from menus"
 echo "$text_md spa           : Interfaz de menus desde texto"
-echo "$text_md $tab gui-menu $tab"
+echo "$text_md $tab gui-menu"
 echo "$text_md eng           : Gui interface from menu"
 echo "$text_md eng           : Interfaz grafica desde menu"
-echo "$text_md $tab gui-shell $tab"
+echo "$text_md $tab gui-shell"
 echo "$text_md eng           : Gui with command line interface"
 echo "$text_md spa           : Gui con interfaz desde linea de comandos"
 echo $footer_lineal
@@ -2217,34 +2217,34 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool sockets ]"
 echo "$text_md [ spanish info ] [ Herramienta de sockets ]"
 echo  $text_md
-echo "$text_md $tab info-sockets $tab"
+echo "$text_md $tab info-sockets"
 echo "$text_md eng           : List system listen sockets"
 echo "$text_md spa           : Lista sockets a la escuha del sistema"
-echo "$text_md $tab info-nodes $tab"
+echo "$text_md $tab info-nodes"
 echo "$text_md eng           : List the conentions arp in the lan"
 echo "$text_md spa           : Lista las conexiones arp en la red local"
-echo "$text_md $tab info-proxy $tab"
+echo "$text_md $tab info-proxy"
 echo "$text_md eng           : List system proxy"
 echo "$text_md spa           : Lista proxy del sistema"
-echo "$text_md $tab info-route $tab"
+echo "$text_md $tab info-route"
 echo "$text_md eng           : Show net devices and ip route tables"
 echo "$text_md spa           : Muestra los dispositivos de red y la tabla de rutas"
-echo "$text_md $tab ss $tab"
+echo "$text_md $tab ss"
 echo "$text_md eng           : Show net sockets with command ss"
 echo "$text_md spa           : Muestra las conexiones de red con ss"
-echo "$text_md $tab lsof $tab"
+echo "$text_md $tab lsof"
 echo "$text_md eng           : Show net sockets with command lsof"
 echo "$text_md spa           : Muestra las conexiones con lsof"
-echo "$text_md $tab netstat $tab"
+echo "$text_md $tab netstat"
 echo "$text_md eng           : Show net sockets with command netstat"
 echo "$text_md spa           : Muestra las conexiones con netstat"
-echo "$text_md $tab netstat-nat $tab"
+echo "$text_md $tab netstat-nat"
 echo "$text_md eng           : Show net sockets with command netstat-nat"
 echo "$text_md spa           : Muestra las conexiones con netstat-nat"
-echo "$text_md $tab web-cert $tab"
+echo "$text_md $tab web-cert"
 echo "$text_md eng           : Get one ssl certificated to one web with port https(443)"
 echo "$text_md spa           : Obtiene un certificado ssl a una web con puerto https(443)" 
-echo "$text_md $tab tcpdump $tab"
+echo "$text_md $tab tcpdump"
 echo "$text_md eng           : Listen the connections"
 echo "$text_md spa           : Escucha las conexiones"
 echo $footer_lineal
@@ -2263,19 +2263,19 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool game ]"
 echo "$text_md [ spanish info ] [ Herramienta de juego ]"
 echo  $text_md
-echo "$text_md $tab ole-word $tab"
+echo "$text_md $tab ole-word"
 echo "$text_md eng           : Play game to discover a random word with five digits"
 echo "$text_md spa           : Juega a descubrir una palabra aleatoria de cinco caracteres"
-echo "$text_md $tab ole-number $tab"
+echo "$text_md $tab ole-number"
 echo "$text_md eng           : Play game to discover a random number with five digits"
 echo "$text_md spa           : Juega a descubrir un numero aleatorio de cinco digitos"
-echo "$text_md $tab ole-domain $tab"
+echo "$text_md $tab ole-domain"
 echo "$text_md eng           : Discover one domain if generic or if country"
 echo "$text_md spa           : Descubre un dominio si es generico o si es de pais"
-echo "$text_md $tab colour-hex $tab"
+echo "$text_md $tab colour-hex"
 echo "$text_md eng           : Convert one number hexadecimal in rgb"
 echo "$text_md spa           : Convierte un numero hexadecimal en rgb"
-echo "$text_md $tab colour-rgb $tab"
+echo "$text_md $tab colour-rgb"
 echo "$text_md eng           : Convert one number rgb in hexadecimal"
 echo "$text_md spa           : Convierte un numero rgb en hexadecimal"
 echo $footer_lineal
@@ -2294,13 +2294,13 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool forward ]"
 echo "$text_md [ spanish info ] [ Herramienta de ipforwading ]"
 echo  $text_md
-echo "$text_md $tab ipforward-list $tab"
+echo "$text_md $tab ipforward-list"
 echo "$text_md eng           : Show kernel config about forward"
 echo "$text_md spa           : Muestra configuracion del kernel sobre reenvios"
-echo "$text_md $tab ipforward-on $tab"
+echo "$text_md $tab ipforward-on"
 echo "$text_md eng           : Active the kernel config about forward"
 echo "$text_md spa           : Activa la configuracion del kernel sobre reenvios"
-echo "$text_md $tab ipforward-off $tab"
+echo "$text_md $tab ipforward-off"
 echo "$text_md eng           : Deactive kernel config about forward"
 echo "$text_md spa           : Desactiva la configuracion del kernel sobre reenvios"
 echo $footer_lineal
@@ -2319,16 +2319,16 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool icmp ]"
 echo "$text_md [ spanish info ] [ Herramienta icmp ]"
 echo  $text_md
-echo "$text_md $tab traceicmp-ip4 $tab"
+echo "$text_md $tab traceicmp-ip4"
 echo "$text_md eng           : Trace route a one host with ipv4 icmp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv4 icmp"
-echo "$text_md $tab traceicmp-ip6 $tab"
+echo "$text_md $tab traceicmp-ip6"
 echo "$text_md eng           : Trace route a one host with ipv6 icmp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv6 icmp"
-echo "$text_md $tab ping-ip4 $tab"
+echo "$text_md $tab ping-ip4"
 echo "$text_md eng           : Do a one ping with to one host with ipv4 icmp"
 echo "$text_md spa           : Hace un ping con una direccion con ipv4 icmp"
-echo "$text_md $tab ping-ip6 $tab"
+echo "$text_md $tab ping-ip6"
 echo "$text_md eng           : Do a one ping with to one host with ipv6 icmp"
 echo "$text_md spa           : Hace un ping con una direccion con ipv6 icmp"
 echo $footer_lineal
@@ -2347,16 +2347,16 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool tcp ]"
 echo "$text_md [ spanish info ] [ Herramienta tcp ]"
 echo  $text_md
-echo "$text_md $tab tracetcp-ip4 $tab"
+echo "$text_md $tab tracetcp-ip4"
 echo "$text_md eng           : Trace route a one host with ipv4 tcp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv4 tcp"
-echo "$text_md $tab tracetcp-ip6 $tab"
+echo "$text_md $tab tracetcp-ip6"
 echo "$text_md eng           : Trace route a one host with ipv6 tcp"
 echo "$text_md spa           : Traza la routa a una direccion con ipv6 tcp"
-echo "$text_md $tab speed-ip4 $tab"
+echo "$text_md $tab speed-ip4"
 echo "$text_md eng           : test bandwith with ipv4"
 echo "$text_md spa           : Testea la velocidad de conexion con ipv4"
-echo "$text_md $tab speed-ip6 $tab"
+echo "$text_md $tab speed-ip6"
 echo "$text_md eng           : Test net bandwith with ipv6"
 echo "$text_md spa           : Testea la velocidad de conexion con ipv6"
 echo $footer_lineal
@@ -2375,19 +2375,19 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool udp ]"
 echo "$text_md [ spanish info ] [ Herramienta udp ]"
 echo  $text_md
-echo "$text_md $tab host $tab"
+echo "$text_md $tab host"
 echo "$text_md eng           : Resolve one host"
 echo "$text_md spa           : Resuelve una direccion a ip"
-echo "$text_md $tab dig $tab"
+echo "$text_md $tab dig"
 echo "$text_md eng           : Resolve one host"
 echo "$text_md spa           : Resuelve una direccion a ip"
-echo "$text_md $tab resolveip $tab"
+echo "$text_md $tab resolveip"
 echo "$text_md eng           : Resolve one host and viceversa"
 echo "$text_md spa           : Resuelve una direccion a ip y a host"
-echo "$text_md $tab geip $tab"
+echo "$text_md $tab geip"
 echo "$text_md eng           : Locate a one host or ip"
 echo "$text_md spa           : Localiza una direccion o ip"
-echo "$text_md $tab ntpdate $tab"
+echo "$text_md $tab ntpdate"
 echo "$text_md eng           : Update the system date from ntp server"
 echo "$text_md spa           : Actualiza la fecha del sistema desde un servidor de fecha"
 echo $footer_lineal
@@ -2406,19 +2406,19 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool nmap ]"
 echo "$text_md [ spanish info ] [ Herramienta nmap ]"
 echo  $text_md
-echo "$text_md $tab scan-tcp $tab"
+echo "$text_md $tab scan-tcp"
 echo "$text_md eng           : Scan a host/mask per tcp protocol"
 echo "$text_md spa           : Escanea una host/mascara por tcp protocolo"
-echo "$text_md $tab scan-syn $tab"
+echo "$text_md $tab scan-syn"
 echo "$text_md eng           : Scan a host/mask per syn socket"
 echo "$text_md spa           : Escanea una host/mascara por syn socket"
-echo "$text_md $tab scan-fin $tab"
+echo "$text_md $tab scan-fin"
 echo "$text_md eng           : Scan a host/mask per fin socket"
 echo "$text_md spa           : Escanea una host/mascara por fin socket"
-echo "$text_md $tab scan-udp $tab"
+echo "$text_md $tab scan-udp"
 echo "$text_md eng           : Scan a host/mask per udp protocol"
 echo "$text_md spa           : Escanea una host/mascara por udp protocolo"
-echo "$text_md $tab scan-ping $tab"
+echo "$text_md $tab scan-ping"
 echo "$text_md eng           : Scan a host/mask per ping udp"
 echo "$text_md spa           : Escanea una host/mascara por ping protocolo"
 echo $footer_lineal
@@ -2460,13 +2460,13 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
 echo  $text_md
-echo "$text_md $tab install $tab"
+echo "$text_md $tab install"
 echo "$text_md eng           : Install this version actual"
 echo "$text_md spa           : Instala esta version actual"
-echo "$text_md $tab howto-upgrade $tab"
+echo "$text_md $tab howto-upgrade"
 echo "$text_md eng           : Show howto upgrade at the latest version"
 echo "$text_md spa           : Muestra como actualizar a la ultima version"
-echo "$text_md $tab upgrade $tab"
+echo "$text_md $tab upgrade"
 echo "$text_md eng           : Upgrade at the latest version"
 echo "$text_md spa           : Actualiza a la ultima version"
 echo $footer_lineal
@@ -2485,13 +2485,13 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool blacklist ]"
 echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
 echo  $text_md
-echo "$text_md $tab blacklist-list $tab"
+echo "$text_md $tab blacklist-list"
 echo "$text_md eng                : Options list to block at dangerous sites from /etc/hosts"
 echo "$text_md spa                : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
-echo "$text_md $tab blacklist-on $tab"
+echo "$text_md $tab blacklist-on"
 echo "$text_md eng                : Active a list to block dangerous sites in /etc/hosts"
 echo "$text_md spa                : Activa una lista para bloquear sitios peligrosos in /etc/hosts"
-echo "$text_md $tab blacklist-off $tab"
+echo "$text_md $tab blacklist-off"
 echo "$text_md eng                : Return to default /etc/hosts"
 echo "$text_md spa                : Vuelve al archivo por defecto /etc/hosts"
 echo $footer_lineal
@@ -2510,16 +2510,16 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
 echo  $text_md
-echo "$text_md $tab new-versions $tab"
+echo "$text_md $tab new-versions"
 echo "$text_md eng                : Show the list of the last versions"
 echo "$text_md spa                : Muestra el listado de las ultivas versiones"
-echo "$text_md $tab dev-version $tab"
+echo "$text_md $tab dev-version"
 echo "$text_md eng                : Show the link at developer version"
 echo "$text_md spa                : Muestra en enlace a la version de desarrollo"
-echo "$text_md $tab dev-changes $tab"
+echo "$text_md $tab dev-changes"
 echo "$text_md eng                : Show the last changes"
 echo "$text_md spa                : Muestra los ultimos cambios"
-echo "$text_md $tab code $tab"
+echo "$text_md $tab code"
 echo "$text_md eng                : Show code source from one option"
 echo "$text_md spa                : Muestra el codigo fuente de una opcion"
 echo $footer_lineal
@@ -2538,19 +2538,19 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool system ]"
 echo "$text_md [ spanish info ] [ Herramienta sistema ]"
 echo  $text_md
-echo "$text_md $tab free-ram $tab"
+echo "$text_md $tab free-ram"
 echo "$text_md eng            : Clean for innecesary memory ram"
 echo "$text_md spa            : Libera la memoria ram innecesaria"
-echo "$text_md $tab speed-ram $tab" 
+echo "$text_md $tab speed-ram" 
 echo "$text_md eng            : Show the speed of ram memory"
 echo "$text_md spa            : Muestra la velocidad de la memoria ram"
-echo "$text_md $tab speed-disk $tab"
+echo "$text_md $tab speed-disk"
 echo "$text_md eng            : Show the speed of root hard disk"
 echo "$text_md spa            : Muestra la velocidad de el disco duro raiz"
-echo "$text_md $tab speed-glx $tab"
+echo "$text_md $tab speed-glx"
 echo "$text_md eng            : Show frammes for seconds with mesa graphicall"
 echo "$text_md spa            : Muestra fotogramas por segundo con graficos mesa"
-echo "$text_md $tab radio-mp3 $tab"
+echo "$text_md $tab radio-mp3"
 echo "$text_md eng            : connect to one server mp3, see show-default or modify-default"
 echo "$text_md spa            : connecta a on servidor mp3, mira show-default o modify-default"
 echo $footer_lineal
@@ -2649,24 +2649,32 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
-echo "$tab [ $first_option ] [ show about $fwiptables ]"
-echo "$tab [ Show about ]"
-echo "$tab [ Mostrar acerca de ]"
-echo
-echo "          about : About"
-echo "                : Acerca"
-echo "        version : Info version"
-echo "                : Informacion de version"
-echo "        depends : Show depends"
-echo "                : Muestra dependencias"
-echo "       examples : Show examples"
-echo "                : Muestra ejemplos"
-echo "     config-eng : Config example with comments in english"
-echo "                : Ejemplo de configuracion con comentarios en ingles"
-echo "     config-spa : Config example with comments in spanish"
-echo "                : Ejemplo de configuracion con comentarios en español"
-echo "        license : Show license gpl v2"
-echo "                : Muestra la licencia gpl v2"
+echo "$title [ $first_option ] [ show about $fwiptables ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Show about ]"
+echo "$text_md [ spanish info ] [ Mostrar acerca de ]"
+echo  $text_md
+echo "$text_md $tab about"
+echo "$text_md eng            : About"
+echo "$text_md spa            : Acerca"
+echo "$text_md $tab version"
+echo "$text_md eng            : Info version"
+echo "$text_md spa            : Informacion de version"
+echo "$text_md $tab depends"
+echo "$text_md eng            : Show depends"
+echo "$text_md spa            : Muestra dependencias"
+echo "$text_md $tab examples"
+echo "$text_md eng            : Show examples"
+echo "$text_md spa            : Muestra ejemplos"
+echo "$text_md config-eng"
+echo "$text_md eng            : Config example with comments in english"
+echo "$text_md spa            : Ejemplo de configuracion con comentarios en ingles"
+echo "$text_md config-spa"
+echo "$text_md eng            : Config example with comments in spanish"
+echo "$text_md spa            : Ejemplo de configuracion con comentarios en español"
+echo "$text_md $tab license"
+echo "$text_md eng            : Show license gpl v2"
+echo "$text_md spa            : Muestra la licencia gpl v2"
 echo $footer_lineal
 exit; fi
 ####
@@ -4364,15 +4372,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-version:
-##############################       english: examples: system script to show config files examples
-##############################       spanish: examples: script de sistema para mostrar ejemplos de configuraciones
-#### :rutina-inicial-examples:
+##############################       english: config-examples: system script to show config files examples
+##############################       spanish: config-examples: script de sistema para mostrar ejemplos de configuraciones
+#### :rutina-inicial-config-examples:
 ####
 ####
- if [ "$first_option" = "examples" ]; then $give_cover
+ if [ "$first_option" = "config-examples" ]; then $give_cover
  echo "$tab [ $first_option ] [ Show examples for $fwiptables ]"
  echo $header_lineal
- echo $tab "[ examples ] [ examples for some services in client mode ]"
+ echo"[ examples ] [ examples for some services in client mode ]"
  echo
 ####
 ####
@@ -4501,7 +4509,7 @@ exit; fi
  exit ; fi
 ####
 ####
-#### :rutina-final-examples:
+#### :rutina-final-config-examples:
 ##############################       english: code: source from loop
 ##############################       spanish: code: fuente de la rutina
 #### :rutina-inicial-code:
@@ -4509,7 +4517,7 @@ exit; fi
 ####
 if [ "$first_option" = "code" ]; then $give_cover
 echo $header_lineal
-echo $tab "[ code ] [ show source code for options from $fwiptables ]"
+echo"[ code ] [ show source code for options from $fwiptables ]"
 echo $tab
 code_error="$tab [ Usage: ] [ $fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
@@ -4539,7 +4547,7 @@ exit; fi
  if [ "$first_option" = "license" ]; then $give_cover
  echo "$tab [ $first_option ] [ Show license from git sourceforge for $fwiptables ]"
  echo $header_lineal
- echo $tab "license text for gpl v2 downloading .."
+ echo"license text for gpl v2 downloading .."
  echo "$tab" "$tab" "$tab"
  $favorite_text_browser -source "$license_gpl" | more
  echo $footer_lineal
@@ -5148,10 +5156,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
  $command_iptables_legacy -t filter -v -L FORWARD
  echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
  $command_iptables_nft -t filter -v -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5191,10 +5199,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
  $command_ip6tables_legacy -t filter -v -L FORWARD
  echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
  $command_ip6tables_nft -t filter -v -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5214,7 +5222,7 @@ exit; fi
  echo "$tab [ With rules xtables ] [ iptables-legacy ] $tab  "
  $command_iptables_legacy -t nat -v -L
  echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] $tab "
+ echo "$tab [ With rules nftables ] [ iptables-nft ]"
  $command_iptables_nft -t nat -v -L 
 #### echo $footer_lineal
  exit; fi
@@ -5231,10 +5239,10 @@ exit; fi
  echo "$tab [ $first_option ] [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] $tab "
+ echo "$tab [ With rules xtables ] [ iptables-legacy ]"
  $command_ip6tables_legacy -t nat -v -L 
  echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] $tab "
+ echo "$tab [ With rules nftables ] [ iptables-nft ]"
  $command_ip6tables_nft -t nat -v -L 
 #### echo $footer_lineal
  exit; fi
@@ -5272,10 +5280,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
  $command_iptables_legacy -t filter -v -n -L FORWARD
  echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
  $command_iptables_nft -t filter -v -n -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5313,10 +5321,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ] $tab "
+ echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
  $command_ip6tables_legacy -t filter -v -n -L FORWARD
  echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ] $tab "
+ echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
  $command_ip6tables_nft -t filter -v -n -L FORWARD
 #### echo $footer_lineal
  exit; fi
@@ -5334,10 +5342,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ] $tab "
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
  $command_iptables_legacy -t mangle -v -L
  echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ MANGLE ] $tab "
+ echo "$tab [ The nftables ] [ iptables-nft ] [ MANGLE ]"
  $command_iptables_nft -t mangle -v -L
  echo $footer_lineal
  exit; fi
@@ -5354,10 +5362,10 @@ exit; fi
  echo "$tab [ $first_option ] [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ] $tab "
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
  $command_ip6tables_legacy -t mangle -v -L
  echo $tab
- echo "$tab [ The nftables ] [iptables-nft ] [ MANGLE ] $tab "
+ echo "$tab [ The nftables ] [iptables-nft ] [ MANGLE ]"
  $command_ip6tables_nft -t mangle -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5374,10 +5382,10 @@ exit; fi
  echo "$tab [ $first_option ] [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ] $tab "
+ echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ]"
  $command_iptables_legacy -t raw -v -L
  echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ] $tab "
+ echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ]"
  $command_iptables_nft -t raw -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5395,10 +5403,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ RAW ] $tab "
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ RAW ]"
  $command_ip6tables_legacy -t raw -v -L
  echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ] $tab "
+ echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ]"
  $command_ip6tables_nft -t raw -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5416,10 +5424,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ] $tab "
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ]"
  $command_iptables_legacy -t security -v -L
  echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ] $tab "
+ echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ]"
  $command_iptables_nft -t security -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5437,10 +5445,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ] $tab "
+ echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ]"
  $command_ip6tables_legacy -t security -v -L
  echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ] $tab "
+ echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ]"
  $command_ip6tables_nft -t security -v -L
 #### echo $footer_lineal
  exit; fi
@@ -5457,10 +5465,10 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ ebtables: filter ethernet ] [ EBTABLES ] $tab "
+ echo "$tab [ ebtables: filter ethernet ] [ EBTABLES ]"
  $command_ebtables -L -t filter
  echo $tab
- echo "$tab [ ebtables: nat ethernet ] [ EBTABLES ] $tab "
+ echo "$tab [ ebtables: nat ethernet ] [ EBTABLES ]"
  $command_ebtables -L -t nat
 #### echo $footer_lineal
  exit; fi
@@ -5477,7 +5485,7 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo $tab
- echo "$tab [ arptables: filter arptables ] [ ARPTABLES ] $tab "
+ echo "$tab [ arptables: filter arptables ] [ ARPTABLES ]"
  echo $rala
  $command_arptables -L
 #### echo $footer_lineal
@@ -7728,12 +7736,12 @@ fi
  if [ "$first_option" = "lpinfo" ]; then  $give_cover
  echo "$tab [ $first_option ] [ list printers with lpinfo and lpstat ]"
  echo $header_lineal
- echo $tab "lpinfo -v -l"
+ echo"lpinfo -v -l"
  echo $tab
  lpinfo -v -l
  echo $tab
  echo $header_lineal
- echo $tab "lpstat -v"
+ echo"lpstat -v"
  echo $tab
  lpstat -v
  echo $header_lineal
@@ -8204,7 +8212,7 @@ echo
 echo "$tab [ launch: ] [ $fwiptables info group ]"
 echo
 echo "$tab [ group list: ]"
-echo "$tab" "$tab"  "$tab $tab $tab"
+echo "$tab" "$tab"  "$tab $tab"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
 echo "$tab" "$tab"  " firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
@@ -8214,7 +8222,7 @@ echo "$tab" "$tab"  "                       tool-system     tool-install   tool-
 echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-log         show-about      "
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo
-echo "$tab" "$tab"  "$tab $tab $tab"
+echo "$tab" "$tab"  "$tab $tab"
 echo "$tab [ Example: ] [ $fwiptables output-interface ]"
 echo $footer_lineal
 exit; fi
@@ -8459,6 +8467,9 @@ echo "$text_md        options : Show the full options."
 echo "$text_md           help : Show help in english."
 echo "$text_md          ayuda : Show help in spanish."
 echo "$text_md          notes : Show firewall notes."
+echo "$text_md     config-eng : Show default config in english"
+echo "$text_md     config-spa : Show default config in spanish"
+echo "$text_md  config-examples : Show configs examples"
 echo  $text_md
 echo "$title_md [ firewall notes ]"
 echo  $text_md
@@ -8509,7 +8520,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ayuda" ]; then 
-echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab $tab "
+echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab"
 echo  $text_md
 echo "$text_md  ||  Choose only help in english   ||   Type:     $fwiptables help     "
 echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    "
@@ -8742,9 +8753,11 @@ echo "$text_md        options : Muestra las opciones."
 echo "$text_md           help : Muestra la ayuda en ingles."
 echo "$text_md          ayuda : Muestra la ayuda en español."
 echo "$text_md          notes : Muestra notas de Fran firewall."
-echo  $text_md
-echo  $text_md
-echo "$title_md $tab Notas de firewall $tab"
+echo "$text_md     config-eng : Muestra los valores por defecto de configuracion en ingles"
+echo "$text_md     config-spa : Muestra los valores por defecto de configuracion en español"
+echo "$text_md  config-examples : Muestra ejemplos de configuraciones"
+echo $text_md
+echo "$title_md $tab Notas de firewall"
 echo  $text_md
 echo  $text_md
 echo "$title_md [vpn]."
