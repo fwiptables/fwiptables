@@ -302,7 +302,7 @@
 # 5- añadido server-lamp. HECHO
 # 6- server https por udp (http 2) añadido a server-web y a server lamp. HECHO
 #
-# changes fwiptables 2.19 en desarrollo
+# changes fwiptables 2.19
 #
 # 1. sentlog ahora tiene de alias filelog. HECHO
 # 2. pequeños cambios de codigo. HECHO
@@ -316,3 +316,9 @@
 # 10. web output añadido. HECHO.
 # 11. desaraparecen las rallas y se convierten en espacios. HECHO
 # 
+# changes fwiptables 2.20 en desarrollo
+#
+# 1. todos los tool-* pasados a markdown. HECHO
+# 2. añadido output rst para salidas con rst formato. HECHO
+# 3.
+#
