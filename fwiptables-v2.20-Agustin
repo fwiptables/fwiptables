@@ -1974,7 +1974,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-rules" ]; then $give_cover
-echo "$title_md $tab [ $first_option ] [ control rules ]"
+echo "$title_md $tab [ $first_option ] [ control rules ] [ firewall-rules.md ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
@@ -2017,7 +2017,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-list" ]; then $give_cover
-echo "$title_md [ $first_option ] [ List rules ]"
+echo "$title_md [ $first_option ] [ List rules ] [ firewall-list.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
@@ -2123,7 +2123,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-custom" ]; then $give_cover
-echo "$title_md $tab [ $first_option ] [ tool custom rules config ]"
+echo "$title_md $tab [ $first_option ] [ tool custom rules config ] [ firewall-custom.md ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ custom configs ]"
 echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
@@ -2401,7 +2401,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
-echo "$title_md [ $first_option ] [ tool nmap ]"
+echo "$title_md [ $first_option ] [ tool nmap ] [ tool-nmap.md]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool nmap ]"
 echo "$text_md [ spanish info ] [ Herramienta nmap ]"
@@ -2432,18 +2432,23 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
-echo "$tab [ $first_option ] [ tool sudo $fwiptables ]"
-echo "$tab [ Tool sudo ]"
-echo "$tab [ Herramienta sudo ]"
-echo
-echo "     sudo-adduser : Allow sudo $fwiptables to other choosed users"
-echo "                  : Permite sudo $fwiptables a otros elegidos usuarios"
-echo "     sudo-deluser : Remove sudo $fwiptables to other choosed users"
-echo "                  : Borra sudo $fwiptables a otros elegidos usuarios"
-echo "        sudo-list : List sudo $fwiptables to other choosed users"
-echo "                  : Lista sudo $fwiptables a otros elegidos usuarios"
-echo "       alias-list : List the autocompletion alias for $fwiptables"
-echo "                  : Lista los alias de autocompletar para $fwiptables"
+echo "$title_md [ $first_option ] [ tool sudo ] [ tool-sudo.md ]"
+echo  $text_md
+echo "$text_md [ Tool sudo ]"
+echo "$text_md [ Herramienta sudo ]"
+echo  $text_md
+echo "$text_md $tab sudo-adduser" 
+echo "$text_md eng           : Allow sudo $fwiptables to other choosed users"
+echo "$text_md spa           : Permite sudo $fwiptables a otros elegidos usuarios"
+echo "$text_md $tab sudo-deluser" 
+echo "$text_md eng           : Remove sudo $fwiptables to other choosed users"
+echo "$text_md spa           : Borra sudo $fwiptables a otros elegidos usuarios"
+echo "$text_md $tab sudo-list" 
+echo "$text_md eng           : List sudo $fwiptables to other choosed users"
+echo "$text_md spa           : Lista sudo $fwiptables a otros elegidos usuarios"
+echo "$text_md $tab alias-list" 
+echo "$text_md eng           : List the autocompletion alias for $fwiptables"
+echo "$text_md spa           : Lista los alias de autocompletar para $fwiptables"
 echo $footer_lineal
 exit; fi
 ####
@@ -2455,7 +2460,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
-echo "$title_md [ $first_option ] [ tool install $fwiptables ]"
+echo "$title_md [ $first_option ] [ tool install ] [ tool-install.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
@@ -2480,7 +2485,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-blacklist" ]; then $give_cover
-echo "$title_md [ $first_option ] [ tool blacklist in /etc/hosts ]"
+echo "$title_md [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-blacklist.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool blacklist ]"
 echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
@@ -2505,7 +2510,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-dev" ]; then $give_cover
-echo "$title_md [ $first_option ] [ tool install $fwiptables ]"
+echo "$title_md [ $first_option ] [ tool install ] [ tool-dev.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
@@ -2533,7 +2538,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
-echo "$title_md [ $first_option ] [ tool system ]"
+echo "$title_md [ $first_option ] [ tool system ] [ tool-system.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool system ]"
 echo "$text_md [ spanish info ] [ Herramienta sistema ]"
@@ -2564,26 +2569,35 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
-echo "$tab [ $first_option ] [ show etc files ]"
-echo "$tab [ Show configs files from etc ]"
-echo "$tab [ Mostrar configuraciones de archivos de etc ]"
-echo
-echo "               hosts : Show /etc/hosts, hosts local and statics host"
-echo "                     : Muestra /etc/hosts, hosts locales y hosts estaticos"
-echo "          protocolos : Show /etc/protocols, protocols names"
-echo "                     : Muestra /etc/protocols, nombres de protocolos"
-echo "            services : Show /etc/services, ports names"
-echo "                     : Muestra /etc/services, nombres de los puertos"
-echo "         hosts.allow : Show /etc/hosts.allow, hosts allowed in some own server"
-echo "                     : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores"
-echo "          hosts.deny : Show /etc/hosts.deny, hosts drops in some own server"
-echo "                     : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores"
-echo "         resolv.conf : Show /etc/resolv.conf, it are the dns configured"
-echo "                     : Muestra /etc/resolv.conf, este es el dns configurado"
-echo "        show-default : Show variables for default"
-echo "                     : Muestra variables por defecto"
-echo "      modify-default : Change variables for default"
-echo "                     : Cambia variables por defecto"
+echo "$title_md [ $first_option ] [ show etc files ] [ show-etc.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Show configs files from etc ]"
+echo "$text_md [ spanish info ] [ Mostrar configuraciones de archivos de etc ]"
+echo  $text_md
+echo "$text_md $tab hosts"
+echo "$text_md eng            : Show /etc/hosts, hosts local and statics host"
+echo "$text_md spa            : Muestra /etc/hosts, hosts locales y hosts estaticos"
+echo "$text_md $tab protocols"
+echo "$text_md eng            : Show /etc/protocols, protocols names"
+echo "$text_md spa            : Muestra /etc/protocols, nombres de protocolos"
+echo "$text_md $tab services"
+echo "$text_md eng            : Show /etc/services, ports names"
+echo "$text_md spa            : Muestra /etc/services, nombres de los puertos"
+echo "$text_md $tab hosts.allow" 
+echo "$text_md eng            : Show /etc/hosts.allow, hosts allowed in some own server"
+echo "$text_md spa            : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores"
+echo "$text_md $tab hosts.deny"
+echo "$text_md eng            : Show /etc/hosts.deny, hosts drops in some own server"
+echo "$text_md spa            : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores"
+echo "$text_md $tab resolv.conf"
+echo "$text_md eng            : Show /etc/resolv.conf, it are the dns configured"
+echo "$text_md spa            : Muestra /etc/resolv.conf, este es el dns configurado"
+echo "$text_md $tab show-default"
+echo "$text_md eng            : Show variables for default"
+echo "$text_md spa            : Muestra variables por defecto"
+echo "$text_md $tab modify-default"
+echo "$text_md eng            : Change variables for default"
+echo "$text_md spa            : Cambia variables por defecto"
 echo $footer_lineal
 exit; fi
 ####
@@ -2595,24 +2609,32 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-hardware" ]; then $give_cover
-echo "$tab [ $first_option ] [ show hardware info ]"
-echo "$tab [ Show hardware info ]"
-echo "$tab [ Muestra informacion del hardware ]"
-echo
-echo "          lpinfo : Show the device printers"
-echo "                 : Muestra los dispositivos de impresora"
-echo "           lsblk : Show the device disks"
-echo "                 : Muestra los dispositivos de disco"
-echo "           lsusb : Show the devices usb"
-echo "                 : Muestra los dispositivos de usb"
-echo "           lscpu : Show the devices cpu"
-echo "                 : Muestra los dispositivos cpu"
-echo "           lsgpu : Show the devices gpu"
-echo "                 : Muestra los dispositivos gpu"
-echo "           lspci : Show the devices pci"
-echo "                 : Muestra los dispositivos pci"
-echo "            lshw : Show the hardware devices"
-echo "                 : Muestra los dispositivos de hardware"
+echo "$title_md [ $first_option ] [ show hardware info ] [ show-hardware.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Show hardware info ]"
+echo "$text_md [ spanish info ] [ Muestra informacion del hardware ]"
+echo  $text_md
+echo "$text_md $tab lpinfo"
+echo "$text_md eng            : Show the device printers"
+echo "$text_md spa            : Muestra los dispositivos de impresora"
+echo "$text_md $tab lsblk"
+echo "$text_md eng            : Show the device disks"
+echo "$text_md spa            : Muestra los dispositivos de disco"
+echo "$text_md $tab lsusb"
+echo "$text_md eng            : Show the devices usb"
+echo "$text_md spa            : Muestra los dispositivos de usb"
+echo "$text_md $tab lscpu"
+echo "$text_md eng            : Show the devices cpu"
+echo "$text_md spa            : Muestra los dispositivos cpu"
+echo "$text_md $tab lsgpu"
+echo "$text_md eng            : Show the devices gpu"
+echo "$text_md spa            : Muestra los dispositivos gpu"
+echo "$text_md $tab lspci"
+echo "$text_md eng            : Show the devices pci"
+echo "$text_md spa            : Muestra los dispositivos pci"
+echo "$text_md $tab lshw"
+echo "$text_md eng            : Show the hardware devices"
+echo "$text_md spa            : Muestra los dispositivos de hardware"
 echo $footer_lineal
 exit; fi
 ####
@@ -2624,20 +2646,26 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
-echo "$tab [ $first_option ] [ show log files ]"
-echo "$tab [ Show log ]"
-echo "$tab [ Mostrar log ]"
-echo
-echo "        log-ssh : Search logs for ssh in /var/log"
-echo "                : Busca logs con sshd en /var/log"
-echo "     log-search : Search logs whith a prefix in /var/log"
-echo "                : Busca logs con patron en /var/log"
-echo "        sentlog : Show over launches with -log "
-echo "                : Muestra volcados con -log"
-echo "        filelog : Alias a sentlog"
-echo "                : Apodo a sentlog"
-echo "        autolog : Show the headers from autolog"
-echo "                : Muestra las cabeceras autolog"
+echo "$title_md [ $first_option ] [ show log files ] [ show-log.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Show log ]"
+echo "$text_md [ spanish info ] [ Mostrar log ]"
+echo  $text_md
+echo "$text_md $tab log-ssh"
+echo "$text_md eng            : Search logs for ssh in /var/log"
+echo "$text_md spa            : Busca logs con sshd en /var/log"
+echo "$text_md $tab log-search"
+echo "$text_md eng            : Search logs whith a prefix in /var/log"
+echo "$text_md spa            : Busca logs con patron en /var/log"
+echo "$text_md $tab sentlog"
+echo "$text_md eng            : Show over launches with -log"
+echo "$text_md spa            : Muestra volcados con -log"
+echo "$text_md $tab filelog"
+echo "$text_md eng            : Alias a sentlog"
+echo "$text_md spa            : Apodo a sentlog"
+echo "$text_md $tab autolog"
+echo "$text_md eng            : Show the headers from autolog"
+echo "$text_md spa            : Muestra las cabeceras autolog"
 echo $footer_lineal
 exit; fi
 ####
@@ -2649,7 +2677,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
-echo "$title [ $first_option ] [ show about $fwiptables ]"
+echo "$title_md [ $first_option ] [ show about ] [ show-about.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show about ]"
 echo "$text_md [ spanish info ] [ Mostrar acerca de ]"
@@ -2686,26 +2714,35 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
-echo "$tab [ $first_option ] [ show help ]"
-echo "$tab [ Show help ]"
-echo "$tab [ Mostrar ayuda ]"
-echo
-echo "         all-help : Show help in english and spanish"
-echo "                  : Muestra la ayuda en ingles y en español"
-echo "             help : Show help in english"
-echo "                  : Muestra la ayuda en ingles"
-echo "            ayuda : Show help in spanish"
-echo "                  : Muestra la ayuda en español"
-echo "    group-options : show the options groups"
-echo "                  : show los grupos de opciones"
-echo "     mini-options : Show basic options"
-echo "                  : Muestra lista de opciones"
-echo "     full-options : Show full options"
-echo "                  : Muestra lista de opciones"
-echo "          options : Alias to full options"
-echo "                  : Apodo a full-options"
-echo "            notes : Several notes"
-echo "                  : Varias notas"
+echo "$title_md [ $first_option ] [ show help ] [ show-help.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Show help ]"
+echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
+echo  $text_md
+echo "$text_md $tab all-help"
+echo "$text_md eng            : Show help in english and spanish"
+echo "$text_md spa            : Muestra la ayuda en ingles y en español"
+echo "$text_md $tab help"
+echo "$text_md eng            : Show help in english"
+echo "$text_md spa            : Muestra la ayuda en ingles"
+echo "$text_md $tab ayuda"
+echo "$text_md eng            : Show help in spanish"
+echo "$text_md spa            : Muestra la ayuda en español"
+echo "$text_md $tab group-options" 
+echo "$text_md eng            : Show the options groups"
+echo "$text_md spa            : Muestra los grupos de opciones"
+echo "$text_md $tab mini-options"
+echo "$text_md eng            : Show basic options"
+echo "$text_md spa            : Muestra lista de opciones"
+echo "$text_md $tab full-options"
+echo "$text_md eng            : Show full options"
+echo "$text_md spa            : Muestra lista de opciones"
+echo "$text_md $tab  options"
+echo "$text_md eng            : Alias to full options"
+echo "$text_md spa            : Apodo a full-options"
+echo "$text_md $tab notes"
+echo "$text_md eng            : Several notes"
+echo "$text_md spa            : Varias notas"
 exit; fi
 ####
 ####
