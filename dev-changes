@@ -316,13 +316,15 @@
 # 10. web output añadido. HECHO.
 # 11. desaraparecen las rallas y se convierten en espacios. HECHO
 # 
-# changes fwiptables 2.20 en desarrollo
+# changes fwiptables 2.20
 #
 # 1. todos los tool-* pasados a markdown. HECHO
 # 2. añadido output rst para salidas con rst formato. HECHO
-# 3. todos los show-* pasados a markdown.
+# 3. todos los show-* pasados a markdown. HECHO
 # 4. añadir las informaciones relativas a -web y a .rst a las ayudas y los grupos. HECHO
-# 5. some-example ampliar. 
-# 6. cambia some-examples por config-examples. HECHO
-# 7. readaptar el final de ayuda y de help. HECHO
+# 5. cambia some-examples por config-examples. HECHO
+# 6. readaptar el final de ayuda y de help. HECHO
+#
+# changes fwiptables 2.21 en desarrollo
+#
 #
