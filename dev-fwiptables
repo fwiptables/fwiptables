@@ -4554,7 +4554,7 @@ exit; fi
 ####
 if [ "$first_option" = "code" ]; then $give_cover
 echo $header_lineal
-echo"[ code ] [ show source code for options from $fwiptables ]"
+echo " [ code ] [ show source code for options from $fwiptables ]"
 echo $tab
 code_error="$tab [ Usage: ] [ $fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
