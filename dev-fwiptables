@@ -1466,6 +1466,9 @@ launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "games-udp" ];     then $give_cover  ;
 echo "$tab [ running ] [ loading firewall games-udp ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
+if [ "$first_option" = "game-westnoth" ]; then $give_cover  ;
+echo "$tab [ running ] [ loading firewall game-westnoth ]" ; 
+launch_iptables="" ;     config_variable_version="2"  ;  fi
 if [ "$first_option" = "custom" ];       then $give_cover  ;
 echo "$tab [ running ] [ loading firewall custom ]" ; 
 launch_iptables="" ;     config_variable_version="2"  ;  fi
@@ -10637,6 +10640,141 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /d
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
 echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ server-ssh ]"
 exit; fi
+####
+####
+########################################     english: ipv4 iptables game-westnoth:
+########################################     spanish: ipv4 iptables game-westnoth:
+####
+####
+if [ "$first_option" = "game-westnoth" ]; then $fwiptables eraserules &> /dev/null ; 
+####
+####
+#### ports defined in this firewall
+####
+####
+client_port_udp="domain,bootpc,ntp,https" ; 
+client_port_tcp="http,https,ssh,14950:15050" ;
+####
+####
+#### legacy ip4
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1    -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1    -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip4
+####
+####
+$allow_nft  $allow_ipv4    $command_iptables_nft -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4    $command_iptables_nft -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4       $command_iptables_nft -A INPUT \
+-p udp -m multiport --sports  $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4       $command_iptables_nft -A INPUT \
+-p tcp -m multiport --sports  $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4      $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4      $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+########################################     english: ipv6 iptables game-westnoth:
+########################################     spanish: ipv6 iptables game-westnoth
+####
+####
+#### legacy ip6
+####
+####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6    $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports  $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6    $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports  $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6    $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports  $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6    $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports  $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip6
+####
+####
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6   $command_ip6tables_nft -A FORWARD \
+-j DROP &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ game-westnoth ]" ; exit ; fi
 ####
 ####
 ########################################     english: ipv4 iptables games-udp:
