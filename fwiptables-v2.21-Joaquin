@@ -9234,26 +9234,32 @@ $allow_nft  $allow_ipv6   $command_ip6tables_nft -A FORWARD \
 -j DROP &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
 echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ $first_option ]"
 exit; fi
 ####
