@@ -1444,6 +1444,10 @@ echo "$tab [ running ] [ loading firewall all-permisive ]" ;
 launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 ####
+####   #### english: The first        firewall of system  
+####   #### spanish: El primero       cortafuego del sistema
+####
+####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-web ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
@@ -1537,14 +1541,16 @@ echo "$tab [ running ] [ loading firewall games-udp ]" ;
 launch_iptables="default" ;     config_variable_version="2"  ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
-client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
+client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "game-westnoth" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-westnoth ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
 client_port_udp="domain,bootpc,ntp,https" ; 
-client_port_tcp="http,https,ssh,14950:15050" ; fi
+client_port_tcp="http,https,ssh,14950:15050" ;
+server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
 ##############################   english: custom without valid config cfg
