@@ -328,6 +328,6 @@
 # changes fwiptables 2.21 en desarrollo
 #
 # 1. firewall para la batalla por Westnoth añadido en cli-menu y gui-menu tambien. HECHO.
-# 2. alias ls y ls4 para list y list4 añadido. HECHO
+# 2. alias ls, ls4  y ls6 para list y list6 añadido. HECHO
 #
 
