@@ -1752,9 +1752,6 @@ $brake_md
 $fwiptables intro
 echo  $text_md
 $brake_md
-$fwiptables options
-echo  $text_md
-$brake_md
 echo "$title_md [ full-options ]"
 echo  $text_md
 $fwiptables full-options
@@ -1762,18 +1759,15 @@ $brake_md
 echo  $text_md
 echo "$title_md [ group-options ]"
 echo  $text_md
-$fwiptables group-options
-$brake_md
 echo  $text_md
 echo "$title_md [ Principal options ]"
 echo  $text_md
-$fwiptables control-guide
-$brake_md
-echo  $text_md
-$fwiptables firewall-rules
 $brake_md
 echo  $text_md
 $fwiptables output-interface
+$brake_md
+echo  $text_md
+$fwiptables firewall-rules
 $brake_md
 echo  $text_md
 $fwiptables firewall-list
