@@ -1587,7 +1587,7 @@ echo "$text_md                       server-samba server-print server-web server
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$text_md                       new-mini-config nueva-mini-config list-config                   "
 echo "$text_md                       show-config modify-config del-config                            "
-echo "$title_md                                      [ all-options ]                                "
+echo "$title_md                                      [ help-options ]                                "
 echo "$text_md firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
 echo "$text_md     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
 echo "$text_md                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
@@ -1849,10 +1849,10 @@ exit; fi
 #### :rutina-final-all-help:
 ##############################       english: all-options: all options
 ##############################       spanish: all-options: todas las opciones
-#### :rutina-inicial-all-options:
+#### :rutina-inicial-help-options:
 ####
 ####
-if [ "$first_option" = "all-options" ]; then $give_cover
+if [ "$first_option" = "help-options" ]; then $give_cover
 echo "$text_md [ $first_option ] [ List group options help ]"
 $fwiptables output-interface
 $fwiptables firewall-options
@@ -1862,7 +1862,7 @@ echo $text_md $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-all-options:
+#### :rutina-final-help-options:
 ##############################       english: list-config: list some config
 ##############################       spanish: list-config: lista alguna config
 #### :rutina-inicial-list-config:
