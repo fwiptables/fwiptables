@@ -329,7 +329,7 @@
 #
 # 1. firewall para la batalla por Westnoth añadido en cli-menu y gui-menu tambien. HECHO.
 # 2. alias ls, ls4  y ls6 para list y list6 añadido. HECHO
-# 3. añadido help-options. 
+# 3. añadido help-options. HECHO 
 # 4. firewall por defecto, simplificando su codigo, ahorrando codigo. HECHO
 #
 
