@@ -574,6 +574,7 @@ file_output_autolog="/var/log/fwiptables-autolog"
 ####
 ####
 if [ "$first_option" = "ls" ]; then first_option="list"; fi
+if [ "$first_option" = "ls4" ]; then first_option="list"; fi
 if [ "$first_option" = "ls6" ]; then first_option="list6"; fi
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
 if [ "$first_option" = "filelog" ]; then first_option="sentlog"; fi
