@@ -1560,8 +1560,8 @@ server_port_tcp="" ; server_port_udp="" ; fi
 if [ "$first_option" = "game-minecraft" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-minecraft ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
-client_port_udp="domain,bootpc,ntp,https" ; 
-client_port_tcp="http,https,ssh,25000:50000" ;
+client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
+client_port_tcp="http,https,ssh,25000:35000" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
