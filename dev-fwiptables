@@ -598,10 +598,11 @@ if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
 ####
 ####
 if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
+if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
 if [ "$first_option" = "off-line" ] ; then first_option="offline" ; fi
 if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
 if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
-if [ "$first_option" = "gamesudp" ] ; then first_option="games-udp" ; fi
+if [ "$first_option" = "gamesudp" ] ; then first_option="games-shooter" ; fi
 if [ "$first_option" = "allpermisive" ] ; then first_option="all-permisive" ; fi
 if [ "$first_option" = "torbrowser" ] ; then first_option="client-tor" ; fi
 if [ "$first_option" = "tor-browser" ] ; then first_option="client-tor" ; fi
@@ -1539,8 +1540,8 @@ client_port_tcp="http,https,ssh,20,21,989,990" ;
 server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
 ####
 ####
-if [ "$first_option" = "games-udp" ];     then $give_cover  ;
-echo "$tab [ running ] [ loading firewall games-udp ]" ; 
+if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
+echo "$tab [ running ] [ loading firewall games-shooter ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1584,12 +1585,12 @@ echo "$text_md                       list-forward6 list-filter4 list-filter6 lis
 echo "$text_md                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables      "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                       "
-echo "$text_md                       offline all-permisive games-udp game-westnoth                   "
+echo "$text_md                       offline all-permisive games-shooter game-westnoth               "
 echo "$text_md                       client-web client-vpn client-tor lan-tor lan-vpn                "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config               "
-echo "$text_md                       show-config modify-config del-config names-config                "
+echo "$text_md                       show-config modify-config del-config names-config               "
 echo "$title_md                                      [ help-options ]                                "
 echo "$text_md firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
 echo "$text_md     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
@@ -1625,7 +1626,7 @@ echo "$text_md                          list-filter4 list-filter6 list-nat4 list
 echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables       "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
-echo "$text_md                          offline all-permisive games-udp game-westnoth                    "
+echo "$text_md                          offline all-permisive games-shooter game-westnoth                "
 echo "$text_md                          client-web client-vpn client-tor lan-tor lan-vpn                 "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
@@ -1680,7 +1681,7 @@ echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-ma
 echo "$text_md                          list-security4 list-security6                                 "
 echo "$text_md                          list-ebtables list-arptables                                  "
 echo "$text_md  firewall-launch      |  eraserules wizard-mini wizard-full offline custom             "
-echo "$text_md                          client-web client-vpn games-udp all-permisive lan-tor lan-vpn "
+echo "$text_md                          client-web client-vpn games-shooter all-permisive lan-tor lan-vpn "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp   "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config            "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config             "
@@ -2020,7 +2021,7 @@ echo "$text_md $tab_lang_spanish          : Lanza un Firewall desconectado para 
 echo "$text_md $tab all-permisive"
 echo "$text_md $tab_lang_english          : Launch one firewall very permisive"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall muy permisivo"
-echo "$text_md $tab games-udp"
+echo "$text_md $tab games-shooter"
 echo "$text_md $tab_lang_english          : Launch one firewall like client games for udp non-root"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente juegos udp no-root"
 echo "$text_md $tab game-westnoth"
@@ -3233,7 +3234,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
-"games-udp" "game-westnoth" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
+"games-shooter" "game-westnoth" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
 "server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
@@ -3250,7 +3251,7 @@ case "$selection" in
 "all-permisive") $fwiptables -gui all-permisive ; $fwiptables gui list ;;
 "client-web") $fwiptables -gui client-web ; $fwiptables gui list ;;
 "client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
-"games-udp") $fwiptables -gui games-udp ; $fwiptables gui list ;;
+"games-shooter") $fwiptables -gui games-shooter ; $fwiptables gui list ;;
 "game-westnoth") $fwiptables -gui game-westnoth ; $fwiptables gui list ;;
 "client-tor") $fwiptables -gui client-tor ; $fwiptables gui list ;;
 "lan-tor") $fwiptables -gui lan-tor ; $fwiptables gui list ;;
@@ -4133,7 +4134,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0403  "$tab wizard-full" \
   0404  "$tab offline" \
   0405  "$tab all-permisive" \
-  0406  "$tab games-udp" \
+  0406  "$tab games-shooter" \
   0407  "$tab game-westnoth" \
   0408  "$tab client-web" \
   0409  "$tab client-vpn" \
@@ -4323,7 +4324,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0403) clear ; $fwiptables cli wizard-full ; $fwiptables cli list ;;
  0404) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
  0405) clear ; $fwiptables cli all-permisive ; $fwiptables cli list  ;;
- 0406) clear ; $fwiptables cli games-udp ; $fwiptables cli list  ;; 
+ 0406) clear ; $fwiptables cli games-shooter ; $fwiptables cli list  ;; 
  0407) clear ; $fwiptables cli game-westnoth ; $fwiptables cli list ;;
  0408) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
  0409) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
@@ -8439,7 +8440,7 @@ echo "$text_md        wizard-mini : Asistant y Launch simple firewall."
 echo "$text_md             custom : Configure one custom firewall, made for you with file.cfg."
 echo "$text_md            offline : Launch disconected firewall for all servers and clients except localhost."
 echo "$text_md      game-westnoth : Launch a firewall like game of the battle for wesnoth."
-echo "$text_md          games-udp : Launch a firewall like games udp non-root games."
+echo "$text_md          games-shooter : Launch a firewall like games udp non-root games."
 echo "$text_md      all-permisive : Launch a firewall very permisive."
 echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md            lan-tor : Launch a firewall only to browser with tor."
@@ -8736,7 +8737,7 @@ echo "$text_md          wizard-mini : Asistente y lanza simple cortafuegos."
 echo "$text_md               custom : lanza el cortafuegos especificando un archivo.cfg."
 echo "$text_md              offline : Lanza un desconectado cortafuegos de todo excepto localhost."
 echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
-echo "$text_md            games-udp : Lanza el cortafuegos como cliente de juegos udp non-root."
+echo "$text_md            games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
 echo "$text_md        game-westnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
 echo "$text_md           client-tor : Lanza el cortafuegos con navegacion con tor."
 echo "$text_md           client-web : Lanza el cortafuegos como cliente web y ssh."
