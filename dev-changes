@@ -335,4 +335,5 @@
 # changes fwiptables 2.22 en desarrollo
 #
 # 1- examples-config cambiado de nombre a config-examples
+# 2- list-config cambiado a names-config
 #

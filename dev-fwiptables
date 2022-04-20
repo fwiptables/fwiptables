@@ -585,7 +585,7 @@ if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
 if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
 if [ "$first_option" = "list6" ]  ; then first_option="txt" ; second_option="list6" ; fi
-if [ "$first_option" = "cfg" ]; then first_option="list-config" ; fi
+if [ "$first_option" = "cfg" ]; then first_option="names-config" ; fi
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
@@ -1586,7 +1586,7 @@ echo "$text_md                       client-web client-vpn client-tor lan-tor la
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config               "
-echo "$text_md                       show-config modify-config del-config list-config                "
+echo "$text_md                       show-config modify-config del-config names-config                "
 echo "$title_md                                      [ help-options ]                                "
 echo "$text_md firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
 echo "$text_md     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
@@ -1627,7 +1627,7 @@ echo "$text_md                          client-web client-vpn client-tor lan-tor
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
-echo "$text_md                          show-config modify-config del-config list-config                 "
+echo "$text_md                          show-config modify-config del-config names-config                 "
 echo "$title_md                                      [ tool-options ]                                    " 
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy            "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert         "
@@ -1681,7 +1681,7 @@ echo "$text_md                          client-web client-vpn games-udp all-perm
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp   "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config            "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config             "
-echo "$text_md                          show-config modify-config del-config list-config              "
+echo "$text_md                          show-config modify-config del-config names-config              "
 echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options                      "
 exit ; fi
@@ -1862,12 +1862,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-help-options:
-##############################       english: list-config: list some config
-##############################       spanish: list-config: lista alguna config
-#### :rutina-inicial-list-config:
+##############################       english: names-config: list some config
+##############################       spanish: names-config: lista alguna config
+#### :rutina-inicial-names-config:
 ####
 ####
-if [ "$first_option" = "list-config" ]; then $give_cover
+if [ "$first_option" = "names-config" ]; then $give_cover
 echo "$tab [ $first_option ] [ List configs cfg ]"
 echo "$tab $tab [ English ] [ list configs files in cfg format ]"
 echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
@@ -1884,7 +1884,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-list-config:
+#### :rutina-final-names-config:
 ##############################       english: some-example: some example
 ##############################       spanish: some-example: algun ejemplo
 #### :rutina-inicial-some-example:
@@ -2239,7 +2239,7 @@ echo "$text_md $show_lang_spanish          : Crea una nueva basica configfile.cf
 echo "$text_md $tab regen-config"
 echo "$text_md $show_lang_english          : regen-config wizard templates y cfg templates files"
 echo "$text_md $show_lang_spanish          : regen-configera plantillas wizard y plantillas cfg"
-echo "$text_md $tab list-config"
+echo "$text_md $tab names-config"
 echo "$text_md $show_lang_english          : List config files cfg"
 echo "$text_md $show_lang_spanish          : Lista las configuraciones de archivo cfg"
 echo "$text_md $tab modify-config"
@@ -3365,7 +3365,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
-"list-config" "show-config" "modify-config" "del-config" "regen-config" \
+"names-config" "show-config" "modify-config" "del-config" "regen-config" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Config] [$fwiptables]" )
 #### 
 #### 
@@ -3385,8 +3385,8 @@ $fwiptables -gui new-mini-config $archivo ;;
 "nueva-mini-config")
 archivo="$(zenity $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $fwiptables -gui nueva-mini-config $archivo ;;
-"list-config")
-$fwiptables -gui list-config ;;
+"names-config")
+$fwiptables -gui names-config ;;
 "show-config")
 archivo="$(zenity $graphic_dimension --entry --title "[show-config]" --text="$($fwiptables cfg)")" ;
 $fwiptables -gui show-config $archivo ;;
@@ -4151,7 +4151,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0505  "$tab show-config" \
   0506  "$tab modify-config" \
   0507  "$tab del-config" \
-  0508  "$tab list-config" \
+  0508  "$tab names-config" \
   0509  "$tab regen-config" \
   0600 "$quad [ Tool Sockets ] $cinco" \
   0601  "$tab ss" \
@@ -4355,7 +4355,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0507) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables del-config $archivo ; echo "deleted $archivo" ;;
- 0508) clear ; $fwiptables cli list-config ;;
+ 0508) clear ; $fwiptables cli names-config ;;
  0509) clear ; $fwiptables cli regen-config ;;
  0601) clear ; $fwiptables cli ss ;;
  0602) clear ; $fwiptables cli netstat ;;
@@ -8456,7 +8456,7 @@ echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish."
 echo "$text_md       new-mini-config : Create a new basic configfile.cfg in english."
 echo "$text_md     nueva-mini-config : Create a new basic configfile.cfg in spanish."
 echo "$text_md          regen-config : regen wizard files and templates cfg."
-echo "$text_md           list-config : List config files cfg."
+echo "$text_md           names-config : List config files cfg."
 echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
@@ -8720,7 +8720,7 @@ echo "$text_md  nueva-completa-config : Crea una nueva configuracion.cfg en espa
 echo "$text_md        new-mini-config : Crea una nueva basica configuracion.cfg en ingles."
 echo "$text_md      nueva-mini-config : Crea una nueva basica configuracion.cfg en español."
 echo "$text_md           regen-config : regenera wizard files y plantillas cfg ."
-echo "$text_md            list-config : Lista los archivos de configuracion cfg ." 
+echo "$text_md            names-config : Lista los archivos de configuracion cfg ." 
 echo "$text_md          modify-config : Edita una existente configuracion.cfg ."
 echo "$text_md            show-config : Muestra una existente configuracion.cfg ."
 echo "$text_md             del-config : Borra unaa existente configuracion.cfg ."
