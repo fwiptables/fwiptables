@@ -1581,12 +1581,12 @@ echo "$text_md                       list-forward6 list-filter4 list-filter6 lis
 echo "$text_md                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables      "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                       "
-echo "$text_md                       offline all-permisive games-udp game-westnoth                    "
+echo "$text_md                       offline all-permisive games-udp game-westnoth                   "
 echo "$text_md                       client-web client-vpn client-tor lan-tor lan-vpn                "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
-echo "$text_md                       new-mini-config nueva-mini-config list-config                   "
-echo "$text_md                       show-config modify-config del-config                            "
+echo "$text_md                       new-mini-config nueva-mini-config examples-config               "
+echo "$text_md                       show-config modify-config del-config list-config                "
 echo "$title_md                                      [ help-options ]                                "
 echo "$text_md firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
 echo "$text_md     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
@@ -1622,12 +1622,12 @@ echo "$text_md                          list-filter4 list-filter6 list-nat4 list
 echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables       "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
-echo "$text_md                          offline all-permisive games-udp game-westnoth                     "
+echo "$text_md                          offline all-permisive games-udp game-westnoth                    "
 echo "$text_md                          client-web client-vpn client-tor lan-tor lan-vpn                 "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
-echo "$text_md                          new-mini-config nueva-mini-config list-config                    "
-echo "$text_md                          show-config modify-config del-config                             "
+echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
+echo "$text_md                          show-config modify-config del-config list-config                 "
 echo "$title_md                                      [ tool-options ]                                    " 
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy            "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert         "
@@ -1647,8 +1647,7 @@ echo "$text_md    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lsh
 echo "$text_md    show-log           |  log-search log-ssh sentlog autolog                               "
 echo "$text_md    show-etc           |  hosts resolv.conf  protocols services                            "
 echo "$text_md                          hosts.allow hosts.deny show-default modify-default               "
-echo "$text_md    show-about         |  about version depends config-examples                            "
-echo "$text_md                          config-eng config-spa license                                    "
+echo "$text_md    show-about         |  about version depends config-eng config-spa license              "
 echo "$text_md    show-help          |  all-help help ayuda notes options info                           "
 echo "$text_md                          group-options mini-options full-options                          "
 echo "$title_md       [ Example command ]                       [ Example Description ]                  "
@@ -1680,10 +1679,10 @@ echo "$text_md                          list-ebtables list-arptables            
 echo "$text_md  firewall-launch      |  eraserules wizard-mini wizard-full offline custom             "
 echo "$text_md                          client-web client-vpn games-udp all-permisive lan-tor lan-vpn "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp   "
-echo "$text_md  firewall-custom      |  new-full-config nueva-completa-config regen-config            "
-echo "$text_md                          new-mini-config nueva-mini-config list-config                 "
-echo "$text_md                          show-config modify-config del-config                          "
-echo "$text_md  $tab $tab"
+echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config            "
+echo "$text_md                          new-mini-config nueva-mini-config examples-config             "
+echo "$text_md                          show-config modify-config del-config list-config              "
+echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options                      "
 exit ; fi
 ####
@@ -1710,7 +1709,7 @@ echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx ra
 echo "$text_md    tool-install      | install upgrade howto-upgrade                         "
 echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code             "
-echo "$text_md  $tab $tab"
+echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
@@ -1728,11 +1727,11 @@ echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw 
 echo "$text_md    show-log          | log-search log-ssh sentlog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
-echo "$text_md    show-about        | about version depends config-examples                 "
+echo "$text_md    show-about        | about version depends examples-config                 "
 echo "$text_md                        config-eng config-spa license                         "
 echo "$text_md    show-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
-echo "$text_md  $tab $tab"
+echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
 ####
@@ -4509,12 +4508,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-version:
-##############################       english: config-examples: system script to show config files examples
-##############################       spanish: config-examples: script de sistema para mostrar ejemplos de configuraciones
-#### :rutina-inicial-config-examples:
+##############################       english: examples-config: system script to show config files examples
+##############################       spanish: examples-config: script de sistema para mostrar ejemplos de configuraciones
+#### :rutina-inicial-examples-config:
 ####
 ####
- if [ "$first_option" = "config-examples" ]; then $give_cover
+ if [ "$first_option" = "examples-config" ]; then $give_cover
  echo "$tab [ $first_option ] [ Show examples for $fwiptables ]"
  echo $header_lineal
  echo"[ examples ] [ examples for some services in client mode ]"
@@ -4646,7 +4645,7 @@ exit; fi
  exit ; fi
 ####
 ####
-#### :rutina-final-config-examples:
+#### :rutina-final-examples-config:
 ##############################       english: code: source from loop
 ##############################       spanish: code: fuente de la rutina
 #### :rutina-inicial-code:
@@ -8591,7 +8590,7 @@ echo "$text_md         version : Info version program actual."
 echo "$text_md         depends : Show depends."
 echo "$text_md      config-eng : config example with comments in english."
 echo "$text_md      config-spa : config example with comments in spanish."
-echo "$text_md config-examples : Show configs examples."
+echo "$text_md examples-config : Show configs examples."
 echo  $text_md
 echo "$title_md         [ Show help ]"
 echo $text_md
@@ -8876,7 +8875,7 @@ echo "$text_md         Depends : Muestra las dependencias."
 echo "$text_md    new-versions : Muestra las ultimas versiones."
 echo "$text_md      config-eng : Ejemplo de custom config con comentarios en ingles."
 echo "$text_md      config-spa : Ejemplo de custom config con comentarios en castellano."
-echo "$text_md config-examples : Muestra ejemplos de configuraciones"
+echo "$text_md examples-config : Muestra ejemplos de configuraciones"
 echo  $text_md
 echo "$title_md [ Mostrar ayuda ]."
 echo  $text_md
