@@ -1557,6 +1557,14 @@ client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
+if [ "$first_option" = "game-minecraft" ]; then $give_cover  ;
+echo "$tab [ running ] [ loading firewall game-minecraft ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ;
+client_port_udp="domain,bootpc,ntp,https" ; 
+client_port_tcp="http,https,ssh,25000:50000" ;
+server_port_tcp="" ; server_port_udp="" ; fi
+####
+####
 ##############################   english: custom without valid config cfg
 ##############################   spanish: custom sin valido configuracion cfg
 #### :rutina-inicial-custom:
@@ -1585,8 +1593,8 @@ echo "$text_md                       list-forward6 list-filter4 list-filter6 lis
 echo "$text_md                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables      "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                       "
-echo "$text_md                       offline all-permisive games-shooter game-westnoth               "
 echo "$text_md                       client-web client-vpn client-tor lan-tor lan-vpn                "
+echo "$text_md                       offline all-permisive games-shooter game-westnoth game-minecraft"
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config               "
@@ -1626,12 +1634,12 @@ echo "$text_md                          list-filter4 list-filter6 list-nat4 list
 echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables       "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
-echo "$text_md                          offline all-permisive games-shooter game-westnoth                "
 echo "$text_md                          client-web client-vpn client-tor lan-tor lan-vpn                 "
+echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minecraft "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
-echo "$text_md                          show-config modify-config del-config names-config                 "
+echo "$text_md                          show-config modify-config del-config names-config                "
 echo "$title_md                                      [ tool-options ]                                    " 
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy            "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert         "
