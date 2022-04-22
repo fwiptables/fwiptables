@@ -337,6 +337,8 @@
 # 1- option examples-config cambiado de nombre a config-examples. HECHO
 # 2- option list-config cambiado a names-config. HECHO
 # 3- firewall games-udp cambiado a games-shooter. HECHO
-# 4- firewall game-minecraft añadido. HECHO
+# 4- firewall game-minetest añadido. HECHO
 # 5- firewall client-torrent añadido. HECHO
-#
+# 6- pequeños cambios de apariencia. HECHO
+# 7- instalador instala fwiptables-gui-menu fwiptables-gui-shell y fwiptables-gui-cli. HECHO
+# 8- almohadillas para el titulo al listar cada tabla de reglas. 
