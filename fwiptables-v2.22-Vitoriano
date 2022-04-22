@@ -5207,17 +5207,29 @@ exit; fi
  if [ "$first_option" = "list-allrules" ]; then  $nada
  echo "$tab [ $first_option ] [ List all rules ]"
  echo $header_lineal
+ echo; echo; echo "### LIST ARPTABLES ###"
  $fwiptables list-arptables
+ echo; echo; echo "### LIST EBTABLES ###"
  $fwiptables list-ebtables
+ echo; echo; echo "### LIST FILTER IP4 TABLE ###"
  $fwiptables list-filter4
+ echo; echo; echo "### LIST FILTER IP6 TABLE ###"
  $fwiptables list-filter6
+ echo; echo; echo "### LIST NAT IP4 TABLE ###"
  $fwiptables list-nat4
+ echo; echo; echo "### LIST NAT IP4 TABLE ###"
  $fwiptables list-nat6
+ echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
  $fwiptables list-security4
+ echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
  $fwiptables list-security6
+ echo; echo; echo "### LIST RAW IP4 TABLE ###"
  $fwiptables list-raw4
+ echo; echo; echo "### LIST RAW IP6 TABLE ###"
  $fwiptables list-raw6
+ echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
  $fwiptables list-mangle4
+ echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
  $fwiptables list-mangle6
  echo $footer_lineal
  exit; fi
