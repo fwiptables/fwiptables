@@ -315,19 +315,19 @@ echo  $text_md
 echo  $text_md
 echo "$title_md     Fran fwiptables intro. "
 echo  $text_md
-echo "$text_md       Use Fran Firewall to configure both iptables netfilter for linux.  "
-echo "$text_md     With support in || xtables and/or nftables || in ipv4 and/or ipv6. "
+echo "$text_md       Use Fran Firewall to configure both iptables netfilter for linux.        "
+echo "$text_md     With support in || xtables and/or nftables || in ipv4 and/or ipv6.         "
 echo  $text_md
-echo "$text_md       Create one firewall custom with a wizard and save it in standard file.   "
-echo "$text_md     Control the firewall with the standard iptables files for all tables.    "
-echo "$text_md     Run rules of one firewall with your own config files.                    "
-echo "$text_md     And too, use this firewall with some utilities for ipv4 and ipv6.        "
+echo "$text_md       Create one firewall custom with one wizard and save it in standard file. "
+echo "$text_md     Control the firewall with the standard iptables files for all tables.      "
+echo "$text_md     Choose run iptables rules of one firewall with your own config files.      "
+echo "$text_md     And too, use this firewall with some utilities for ipv4 and ipv6.          "
 echo  $text_md
 echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
 cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md     $fwiptables $fversion   ||   Actually, this version is installed  "
-echo "$text_md     Install this version with this file   ||  TYPE:  ./fwiptables-$fversion install" 
+echo "$text_md     Install this version from this file   ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web  ||  TYPE:  ./fwiptables-$fversion upgrade" 
 echo  $text_md
 echo "$title_md     Fran fwiptables project.  "
