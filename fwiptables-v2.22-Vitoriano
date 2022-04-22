@@ -2034,6 +2034,9 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente juego
 echo "$text_md $tab game-westnoth"
 echo "$text_md $tab_lang_english          : Launch one firewall like client game of battle for westnoth"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente del juego la batalla por westnoth"
+echo "$text_md $tab game-minecraft"
+echo "$text_md $tab_lang_english          : Launch one firewall like client game of minecraft or minetest"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente de juego minecraft or minetest"
 echo "$text_md $tab custom"
 echo "$text_md $tab_lang_english          : Launch one custom firewall with one file cfg"
 echo "$text_md $tab_lang_spanish          : Lanza un modificado firewall con un archivo cfg"
@@ -3241,7 +3244,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
-"games-shooter" "game-westnoth" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
+"games-shooter" "game-westnoth" "game-minecraft" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
 "server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
@@ -3260,6 +3263,7 @@ case "$selection" in
 "client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
 "games-shooter") $fwiptables -gui games-shooter ; $fwiptables gui list ;;
 "game-westnoth") $fwiptables -gui game-westnoth ; $fwiptables gui list ;;
+"game-minecraft") $fwiptables -gui game-minecraft ; $fwiptables gui list ;;
 "client-tor") $fwiptables -gui client-tor ; $fwiptables gui list ;;
 "lan-tor") $fwiptables -gui lan-tor ; $fwiptables gui list ;;
 "lan-vpn") $fwiptables -gui lan-vpn ; $fwiptables gui list ;;
@@ -4141,19 +4145,20 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0403  "$tab wizard-full" \
   0404  "$tab offline" \
   0405  "$tab all-permisive" \
-  0406  "$tab games-shooter" \
-  0407  "$tab game-westnoth" \
-  0408  "$tab client-web" \
-  0409  "$tab client-vpn" \
-  0410  "$tab client-tor" \
-  0411  "$tab server-web" \
-  0412  "$tab server-ssh" \
-  0413  "$tab server-print" \
-  0414  "$tab server-samba" \
-  0415  "$tab server-lamp" \
-  0416  "$tab lan-tor" \
-  0417  "$tab lan-vpn" \
-  0418  "$tab custom cfg" \
+  0406  "$tab custom cfg" \
+  0407  "$tab games-shooter" \
+  0408  "$tab game-westnoth" \
+  0409  "$tab game-minecraft" \
+  0410  "$tab client-web" \
+  0411  "$tab client-vpn" \
+  0412  "$tab client-tor" \
+  0413  "$tab server-web" \
+  0414  "$tab server-ssh" \
+  0415  "$tab server-print" \
+  0416  "$tab server-samba" \
+  0417  "$tab server-lamp" \
+  0418  "$tab lan-tor" \
+  0419  "$tab lan-vpn" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -4331,20 +4336,21 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0403) clear ; $fwiptables cli wizard-full ; $fwiptables cli list ;;
  0404) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
  0405) clear ; $fwiptables cli all-permisive ; $fwiptables cli list  ;;
- 0406) clear ; $fwiptables cli games-shooter ; $fwiptables cli list  ;; 
- 0407) clear ; $fwiptables cli game-westnoth ; $fwiptables cli list ;;
- 0408) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
- 0409) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
- 0410) clear ; $fwiptables cli client-tor ; $fwiptables cli list  ;; 
- 0411) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
- 0412) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
- 0413) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
- 0414) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
- 0415) clear ; $fwiptables cli server-lamp ; $fwiptables cli list ;;
- 0416) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
- 0417) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
- 0418) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0406) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
+ 0407) clear ; $fwiptables cli games-shooter ; $fwiptables cli list  ;; 
+ 0408) clear ; $fwiptables cli game-westnoth ; $fwiptables cli list ;;
+ 0409) clear ; $fwiptables cli game-minecraft ; $fwiptables cli list ;;
+ 0410) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
+ 0411) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
+ 0412) clear ; $fwiptables cli client-tor ; $fwiptables cli list  ;; 
+ 0413) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
+ 0414) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
+ 0415) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
+ 0416) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
+ 0417) clear ; $fwiptables cli server-lamp ; $fwiptables cli list ;;
+ 0418) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
+ 0419) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables new-full-config $archivo ;;
@@ -8446,9 +8452,10 @@ echo "$text_md        wizard-full : Asistant y launch complete firewall."
 echo "$text_md        wizard-mini : Asistant y Launch simple firewall."
 echo "$text_md             custom : Configure one custom firewall, made for you with file.cfg."
 echo "$text_md            offline : Launch disconected firewall for all servers and clients except localhost."
-echo "$text_md      game-westnoth : Launch a firewall like game of the battle for wesnoth."
-echo "$text_md          games-shooter : Launch a firewall like games udp non-root games."
 echo "$text_md      all-permisive : Launch a firewall very permisive."
+echo "$text_md      games-shooter : Launch a firewall like games udp non-root games."
+echo "$text_md      game-westnoth : Launch a firewall like game of the battle for wesnoth."
+echo "$text_md     game-minecraft : Launch a firewall like game minecraft or minetest."
 echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md            lan-tor : Launch a firewall only to browser with tor."
 echo "$text_md            lan-vpn : Launch a firewall only to browser with vpn."
@@ -8744,8 +8751,9 @@ echo "$text_md          wizard-mini : Asistente y lanza simple cortafuegos."
 echo "$text_md               custom : lanza el cortafuegos especificando un archivo.cfg."
 echo "$text_md              offline : Lanza un desconectado cortafuegos de todo excepto localhost."
 echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
-echo "$text_md            games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
+echo "$text_md        games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
 echo "$text_md        game-westnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
+echo "$text_md       game-minecraft : Lanza el cortafuegos como cliente de juego minecraft o minetest."
 echo "$text_md           client-tor : Lanza el cortafuegos con navegacion con tor."
 echo "$text_md           client-web : Lanza el cortafuegos como cliente web y ssh."
 echo "$text_md           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn."
