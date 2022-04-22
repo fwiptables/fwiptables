@@ -1465,8 +1465,8 @@ echo "$tab [ running ] [ loading firewall client-torrent ]" ;
 launch_iptables="default" ;     config_variable_version="2"  ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
-client_port_tcp="http,https,ssh" ;
-server_port_tcp="" ; fi
+client_port_tcp="http,https,ssh,9091,51413" ;
+server_port_tcp="9091,51413" ; fi
 ####
 ####
 if [ "$first_option" = "client-vpn" ];     then $give_cover ;
@@ -3254,8 +3254,8 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
-"games-shooter" "game-westnoth" "game-minecraft" "client-web" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "server-web" "server-samba" \
-"server-ssh" "server-print" "server-lamp" \
+"games-shooter" "game-westnoth" "game-minecraft" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
+"server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
 #### 
@@ -3270,6 +3270,7 @@ case "$selection" in
 "offline") $fwiptables -gui offline ; $fwiptables gui list ;;
 "all-permisive") $fwiptables -gui all-permisive ; $fwiptables gui list ;;
 "client-web") $fwiptables -gui client-web ; $fwiptables gui list ;;
+"client-torrent") $fwiptables -gui client-torrent ; $fwiptables gui list ;;
 "client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
 "games-shooter") $fwiptables -gui games-shooter ; $fwiptables gui list ;;
 "game-westnoth") $fwiptables -gui game-westnoth ; $fwiptables gui list ;;
@@ -4160,15 +4161,16 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0408  "$tab game-westnoth" \
   0409  "$tab game-minecraft" \
   0410  "$tab client-web" \
-  0411  "$tab client-vpn" \
-  0412  "$tab client-tor" \
-  0413  "$tab server-web" \
-  0414  "$tab server-ssh" \
-  0415  "$tab server-print" \
-  0416  "$tab server-samba" \
-  0417  "$tab server-lamp" \
-  0418  "$tab lan-tor" \
-  0419  "$tab lan-vpn" \
+  0411  "$tab client-torrent" \
+  0412  "$tab client-vpn" \
+  0413  "$tab client-tor" \
+  0414  "$tab server-web" \
+  0415  "$tab server-ssh" \
+  0416  "$tab server-print" \
+  0417  "$tab server-samba" \
+  0418  "$tab server-lamp" \
+  0419  "$tab lan-tor" \
+  0420  "$tab lan-vpn" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -4352,15 +4354,16 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0408) clear ; $fwiptables cli game-westnoth ; $fwiptables cli list ;;
  0409) clear ; $fwiptables cli game-minecraft ; $fwiptables cli list ;;
  0410) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
- 0411) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
- 0412) clear ; $fwiptables cli client-tor ; $fwiptables cli list  ;; 
- 0413) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
- 0414) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
- 0415) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
- 0416) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
- 0417) clear ; $fwiptables cli server-lamp ; $fwiptables cli list ;;
- 0418) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
- 0419) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
+ 0411) clear ; $fwiptables cli client-torrent ; $fwiptables cli list ;;
+ 0412) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
+ 0413) clear ; $fwiptables cli client-tor ; $fwiptables cli list  ;; 
+ 0414) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
+ 0415) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
+ 0416) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
+ 0417) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
+ 0418) clear ; $fwiptables cli server-lamp ; $fwiptables cli list ;;
+ 0419) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
+ 0420) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $fwiptables new-full-config $archivo ;;
