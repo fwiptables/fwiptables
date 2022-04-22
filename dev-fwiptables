@@ -325,8 +325,8 @@ echo "$text_md     And too, use this firewall with some utilities for ipv4 and i
 echo  $text_md
 echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
-cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md     $fwiptables $fversion   ||   Actually, this version is not installed  "
-cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md     $fwiptables $fversion   ||   Actually, this version is installed  "
+cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md          $fwiptables $fversion   ||   Actually, this version is not installed  "
+cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md          $fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file   ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web  ||  TYPE:  ./fwiptables-$fversion upgrade" 
 echo  $text_md
