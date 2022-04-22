@@ -334,8 +334,9 @@
 #
 # changes fwiptables 2.22 en desarrollo
 #
-# 1- option examples-config cambiado de nombre a config-examples
-# 2- option list-config cambiado a names-config
-# 3- firewall games-udp cambiado a games-shooter
-# 4- firewall game-minecraft añadido
+# 1- option examples-config cambiado de nombre a config-examples. HECHO
+# 2- option list-config cambiado a names-config. HECHO
+# 3- firewall games-udp cambiado a games-shoter. HECHO
+# 4- firewall game-minecraft añadido. HECHO
+# 5- firewall client-torrent añadido. HECHO
 #
