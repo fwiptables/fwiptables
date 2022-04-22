@@ -336,7 +336,7 @@
 #
 # 1- option examples-config cambiado de nombre a config-examples. HECHO
 # 2- option list-config cambiado a names-config. HECHO
-# 3- firewall games-udp cambiado a games-shoter. HECHO
+# 3- firewall games-udp cambiado a games-shooter. HECHO
 # 4- firewall game-minecraft añadido. HECHO
 # 5- firewall client-torrent añadido. HECHO
 #
