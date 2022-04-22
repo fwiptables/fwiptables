@@ -618,6 +618,7 @@ if [ "$first_option" = "cfg" ]; then first_option="names-config" ; fi
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
 if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
+if [ "$first_option" = "list-allrules" ]; then first_option="list-alltables"; fi
 ####
 ####
 #### english:  alias firewall names 
@@ -1624,7 +1625,7 @@ echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui 
 echo "$title_md                                      [ firewall-options ]                              "
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                   "
 echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 status                     "
-echo "$text_md                       list-allrules list-filter4 list-filter6                           "
+echo "$text_md                       list-alltables list-filter4 list-filter6                           "
 echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6 "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables        "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                         "
@@ -1664,7 +1665,7 @@ echo "$text_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gu
 echo "$title_md                                      [ firewall-options ]                                  "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                    "
 echo "$text_md    firewall-list      |  ls ls4 ls6 list list6 listnum listnum6 status                      "
-echo "$text_md                          list-allrules list-filter4 list-filter6                            "
+echo "$text_md                          list-alltables list-filter4 list-filter6                            "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6  " 
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables         "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                          "
@@ -1717,7 +1718,7 @@ echo "$text_md $tab [ $first_option ] [ List firewall options ] [ firewall-optio
 echo "$title_md                                    | firewall-options |                                  "
 echo "$text_md   firewall-rules      |  stop continue reset names actual show save load                  "
 echo "$text_md   firewall-list       |  list listnum list6 listnum6                                      "  
-echo "$text_md                          list-allrules list-forward list-forward6                         "
+echo "$text_md                          list-alltables list-forward list-forward6                         "
 echo "$text_md                          list-filter4 list-filter6 list-nat4 list-nat6                    "
 echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md                          list-security4 list-security6                                    "
@@ -3371,7 +3372,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-firewall-list" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-allrules" \
+--list "Gui Principal Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-alltables" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
 --column="Option list $fwiptables" --text="Select one option" --title="[List Rules] [$fwiptables]" )
@@ -3383,7 +3384,7 @@ case $selection in
 "Gui Info Menu") $fwiptables -gui firewall-list ;;
 "list") $fwiptables -gui list ;;
 "list6") $fwiptables -gui list6 ;;
-"list-allrules") $fwiptables -gui list-allrules ;;
+"list-alltables") $fwiptables -gui list-alltables ;;
 "list-filter4") $fwiptables -gui list-filter4 ;;
 "list-filter6") $fwiptables -gui list-filter6 ;;
 "list-forward") $fwiptables -gui forward ;;
@@ -4166,7 +4167,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0306  "$tab list-forward6" \
   0307  "$tab list-nat4" \
   0308  "$tab list-nat6" \
-  0309  "$tab list-allrules" \
+  0309  "$tab list-alltables" \
   0310  "$tab listnum" \
   0311  "$tab list-forwardnum" \
   0312  "$tab listnum6" \
@@ -4359,7 +4360,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  0306) clear ; $fwiptables cli list-forward6 ;;
  0307) clear ; $fwiptables cli list-nat4 ;;
  0308) clear ; $fwiptables cli list-nat6 ;;
- 0309) clear ; $fwiptables cli list-allrules ;;
+ 0309) clear ; $fwiptables cli list-alltables ;;
  0310) clear ; $fwiptables cli listnum ;;
  0311) clear ; $fwiptables cli list-forwardnum ;;
  0312) clear ; $fwiptables cli listnum6 ;;
@@ -5199,12 +5200,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-ipforward-off
-#############################      english: list-allrules: list all rules
-#############################      spanish: list-allrules: list all rules 
-#### :rutina-inicial-list-allrules:
+#############################      english: list-alltables: list all rules
+#############################      spanish: list-alltables: list all rules 
+#### :rutina-inicial-list-alltables:
 ####
 ####
- if [ "$first_option" = "list-allrules" ]; then  $nada
+ if [ "$first_option" = "list-alltables" ]; then  $nada
  echo "$tab [ $first_option ] [ List all rules ]"
  echo $header_lineal
  echo; echo; echo "### LIST ARPTABLES ###"
@@ -5235,7 +5236,7 @@ exit; fi
  exit; fi
 ####
 ####
-#### :rutina-final-list-allrules:
+#### :rutina-final-list-alltables:
 #############################  english: list4-ip: system script, the list option
 #############################  spanish: list4-ip: script de sistema, la opcion lista
 #### :rutina-inicial-list:

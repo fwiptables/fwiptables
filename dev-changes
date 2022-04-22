@@ -341,4 +341,4 @@
 # 5- firewall client-torrent añadido. HECHO
 # 6- pequeños cambios de apariencia. HECHO
 # 7- instalador instala fwiptables-gui-menu fwiptables-gui-shell y fwiptables-gui-cli. HECHO
-# 8- almohadillas para el titulo al listar cada tabla de reglas. 
+# 8- list-allrules almohadillas para el titulo al listar cada tabla de reglas. HECHO
