@@ -440,14 +440,14 @@ cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 ####
 ####
-#### english: remove old file ##### spanish: borra el viejo archivo
+####  english: remove old file ##### spanish: borra el viejo archivo
 ####
 ####
 rm /etc/bash_completion.d/$fwiptables &> /dev/null
 rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
-#### english: new file generated  ##### spanish: genera el nuevo archivo
+####  english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
 echo "alias $fwiptables='sudo $directory_fiptables/$fwiptables'"       &>  /etc/bash_completion.d/$fwiptables
@@ -465,20 +465,22 @@ show-help show-example' $fwiptables"  &>> /etc/bash_completion.d/$fwiptables
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
 ####
 ####
-#### english: remove old file ##### spanish: borra el viejo archivo
+####  english: remove old file 
+####  spanish: borra el viejo archivo
 ####
 ####
 rm /etc/profile.d/$fwiptables &> /dev/null
 rm /etc/profile.d/$fwiptables.sh &> /dev/null
 ####
 ####
-#### english: new file generated  ##### spanish: genera el nuevo archivo
+####  english: new file generated  
+####  spanish: genera el nuevo archivo
 ####
 ####
 cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
 ####
-#### english: generate /etc/default/fwiptables
-#### spanish: genera /etc/default/fwiptables
+####  english: generate /etc/default/fwiptables
+####  spanish: genera /etc/default/fwiptables
 ####
 ####
 echo "$(head -200 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
@@ -493,14 +495,37 @@ chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
 $fwiptables regen-config &> /dev/null
 ####
 ####
+####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
+####  spanish: genera fwiptables-gui-menu fwiptables-gui-shell y fwiptables-cli-menu en /usr/bin
+####
+####
+echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-menu
+echo "sudo $fwiptables gui-menu" &>> $directory_fiptables/$fwiptables-gui-menu
+chmod ugo+rx $directory_fiptables/$fwiptables-gui-menu &> /dev/null
+####
+####
+echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-shell
+echo "sudo $fwiptables gui-shell" &>> $directory_fiptables/$fwiptables-gui-shell
+chmod ugo+rx $directory_fiptables/$fwiptables-gui-shell &> /dev/null
+####
+####
+echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-cli-menu
+echo "sudo $fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
+chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
+####
+####
+####   english: Show final status from installer
+####   spanish: Muestra el estatus final desde el instalador
+####
+####
 echo "$text_md [ status ] [ $fwiptables $fversion installing ]" 
 echo "$text_md [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
 echo "$text_md [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 echo "$text_md [ ok ] [ New config files installed ]"
 #### 
 #### 
-####  english: modes of file 
-####  spanish: modos de archivo
+####  english: site of the file installed
+####  spanish: Lugar del archivo instalado
 #### 
 #### 
 echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
