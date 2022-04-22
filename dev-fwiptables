@@ -1592,8 +1592,8 @@ client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
-if [ "$first_option" = "game-minecraft" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-minecraft ]" ; 
+if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
+echo "$tab [ running ] [ loading firewall game-minetest ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
 client_port_tcp="http,https,ssh,25000:35000" ;
@@ -1629,7 +1629,7 @@ echo "$text_md                       list-raw4 list-raw6 list-mangle4 list-mangl
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables      "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                       "
 echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn "
-echo "$text_md                       offline all-permisive games-shooter game-westnoth game-minecraft"
+echo "$text_md                       offline all-permisive games-shooter game-westnoth game-minetest"
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config               "
@@ -1669,7 +1669,7 @@ echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-ma
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables       "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn  "
-echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minecraft "
+echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minetest "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
@@ -1724,7 +1724,7 @@ echo "$text_md                          list-security4 list-security6           
 echo "$text_md                          list-ebtables list-arptables                                     "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn  "
-echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minecraft "
+echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minetest "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
@@ -2070,7 +2070,7 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente juego
 echo "$text_md $tab game-westnoth"
 echo "$text_md $tab_lang_english          : Launch one firewall like client game of battle for westnoth"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente del juego la batalla por westnoth"
-echo "$text_md $tab game-minecraft"
+echo "$text_md $tab game-minetest"
 echo "$text_md $tab_lang_english          : Launch one firewall like client game of minecraft or minetest"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente de juego minecraft or minetest"
 echo "$text_md $tab custom"
@@ -3283,7 +3283,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
-"games-shooter" "game-westnoth" "game-minecraft" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
+"games-shooter" "game-westnoth" "game-minetest" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
 "server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[Launch Rules] [$fwiptables]")
@@ -3303,7 +3303,7 @@ case "$selection" in
 "client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
 "games-shooter") $fwiptables -gui games-shooter ; $fwiptables gui list ;;
 "game-westnoth") $fwiptables -gui game-westnoth ; $fwiptables gui list ;;
-"game-minecraft") $fwiptables -gui game-minecraft ; $fwiptables gui list ;;
+"game-minetest") $fwiptables -gui game-minetest ; $fwiptables gui list ;;
 "client-tor") $fwiptables -gui client-tor ; $fwiptables gui list ;;
 "lan-tor") $fwiptables -gui lan-tor ; $fwiptables gui list ;;
 "lan-vpn") $fwiptables -gui lan-vpn ; $fwiptables gui list ;;
@@ -4188,7 +4188,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
   0406  "$tab custom cfg" \
   0407  "$tab games-shooter" \
   0408  "$tab game-westnoth" \
-  0409  "$tab game-minecraft" \
+  0409  "$tab game-minetest" \
   0410  "$tab client-web" \
   0411  "$tab client-torrent" \
   0412  "$tab client-vpn" \
@@ -4381,7 +4381,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
  0407) clear ; $fwiptables cli games-shooter ; $fwiptables cli list  ;; 
  0408) clear ; $fwiptables cli game-westnoth ; $fwiptables cli list ;;
- 0409) clear ; $fwiptables cli game-minecraft ; $fwiptables cli list ;;
+ 0409) clear ; $fwiptables cli game-minetest ; $fwiptables cli list ;;
  0410) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
  0411) clear ; $fwiptables cli client-torrent ; $fwiptables cli list ;;
  0412) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
@@ -8497,7 +8497,7 @@ echo "$text_md            offline : Launch disconected firewall for all servers 
 echo "$text_md      all-permisive : Launch a firewall very permisive."
 echo "$text_md      games-shooter : Launch a firewall like games udp non-root games."
 echo "$text_md      game-westnoth : Launch a firewall like game of the battle for wesnoth."
-echo "$text_md     game-minecraft : Launch a firewall like game minecraft or minetest."
+echo "$text_md     game-minetest : Launch a firewall like game minecraft or minetest."
 echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md            lan-tor : Launch a firewall only to browser with tor."
 echo "$text_md            lan-vpn : Launch a firewall only to browser with vpn."
@@ -8796,7 +8796,7 @@ echo "$text_md              offline : Lanza un desconectado cortafuegos de todo 
 echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
 echo "$text_md        games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
 echo "$text_md        game-westnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
-echo "$text_md       game-minecraft : Lanza el cortafuegos como cliente de juego minecraft o minetest."
+echo "$text_md       game-minetest : Lanza el cortafuegos como cliente de juego minecraft o minetest."
 echo "$text_md           client-web : Lanza el cortafuegos como cliente web y ssh."
 echo "$text_md       client-torrent : Lanza el cortafuegos como cliente web y ssh y torrent."
 echo "$text_md           client-tor : Lanza el cortafuegos con navegacion con tor."
