@@ -1460,6 +1460,15 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
+if [ "$first_option" = "client-torrent" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall client-torrent ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ; 
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,ssh" ;
+server_port_tcp="" ; fi
+####
+####
 if [ "$first_option" = "client-vpn" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-vpn ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
@@ -1593,7 +1602,7 @@ echo "$text_md                       list-filter4 list-filter6 list-nat4 list-na
 echo "$text_md                       list-raw4 list-raw6 list-mangle4 list-mangle6                   "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables      "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                       "
-echo "$text_md                       client-web client-vpn client-tor lan-tor lan-vpn                "
+echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn "
 echo "$text_md                       offline all-permisive games-shooter game-westnoth game-minecraft"
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp     "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config              "
@@ -1633,7 +1642,7 @@ echo "$text_md                          list-filter4 list-filter6 list-nat4 list
 echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables       "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
-echo "$text_md                          client-web client-vpn client-tor lan-tor lan-vpn                 "
+echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn  "
 echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minecraft "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
@@ -1679,22 +1688,23 @@ exit ; fi
 ####
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$text_md $tab [ $first_option ] [ List firewall options ] [ firewall-options.md ]"
-echo "$title_md                                    | firewall-options |                               "
-echo "$text_md   firewall-rules      |  stop continue reset names actual show save load               "
-echo "$text_md   firewall-list       |  list listnum list6 listnum6                                   "  
-echo "$text_md                          list-allrules list-forward list-forward6                      "
-echo "$text_md                          list-filter4 list-filter6 list-nat4 list-nat6                 "
-echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                 "
-echo "$text_md                          list-security4 list-security6                                 "
-echo "$text_md                          list-ebtables list-arptables                                  "
-echo "$text_md  firewall-launch      |  eraserules wizard-mini wizard-full offline custom             "
-echo "$text_md                          client-web client-vpn games-shooter all-permisive lan-tor lan-vpn "
-echo "$text_md                          server-samba server-print server-web server-ssh server-lamp   "
-echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config            "
-echo "$text_md                          new-mini-config nueva-mini-config examples-config             "
-echo "$text_md                          show-config modify-config del-config names-config              "
+echo "$title_md                                    | firewall-options |                                  "
+echo "$text_md   firewall-rules      |  stop continue reset names actual show save load                  "
+echo "$text_md   firewall-list       |  list listnum list6 listnum6                                      "  
+echo "$text_md                          list-allrules list-forward list-forward6                         "
+echo "$text_md                          list-filter4 list-filter6 list-nat4 list-nat6                    "
+echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
+echo "$text_md                          list-security4 list-security6                                    "
+echo "$text_md                          list-ebtables list-arptables                                     "
+echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
+echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn  "
+echo "$text_md                          offline all-permisive games-shooter game-westnoth game-minecraft "
+echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
+echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
+echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
+echo "$text_md                          show-config modify-config del-config names-config                "
 echo "$text_md"
-echo "$text_md  | Group |  firewall-options     tool-options        show-options                      "
+echo "$text_md  | Group |  firewall-options     tool-options        show-options                         "
 exit ; fi
 ####
 ####
