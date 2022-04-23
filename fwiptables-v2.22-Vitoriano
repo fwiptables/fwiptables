@@ -120,7 +120,9 @@ serverport_iperf_ipv6="5001"            ## fwiptables-default ## default 5201
 graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
+radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
+radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
+radio_dial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-default ## streaming url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)"
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -6921,28 +6923,82 @@ $fwiptables stop
 #### :rutina-inicial-radio-mp3:
 ####
 ####
- if [ "$first_option" = "radio-mp3" ]; then  $give_cover
- echo "$tab [ $first_option ] [ Listen radio online ]"
- echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
- echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
+if [ "$first_option" = "radio-mp3" ]; then  $give_cover
+echo "$tab [ $first_option ] [ Listen radio online ]"
+echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
- case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
 ####
 ####
- if [ "$second_option" = "$NULL" ]; then $nada
- emisora="$radio"
- else radio="$second_option"; fi
+if [ "$second_option" = "$NULL" ]; then $nada
+emisora="$radio_mp3"
+else radio="$second_option"; fi
 ####
 ####
- echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
- echo $header_lineal
- echo $footer_lineal
- sudo -u $(logname) $favorite_radio_command $emisora
- exit; fi
+echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
+echo $header_lineal
+echo $footer_lineal
+sudo -u $(logname) $favorite_radio_command $emisora
+exit; fi
 ####
 ####
 #### :rutina-final-radio-mp3:
+############################       english: radio-cadena100: url from one radio mp3
+############################       spanish: radio-cadena100: url de una radio en mp3
+#### :rutina-inicial-radio-cadena100:
+####
+####
+if [ "$first_option" = "radio-cadena100" ]; then  $give_cover
+echo "$tab [ $first_option ] [ Listen radio online ]"
+echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
+####
+####
+case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+####
+####
+if [ "$second_option" = "$NULL" ]; then $nada
+emisora="$radio_cadena100"
+else radio="$second_option"; fi
+####
+####
+echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
+echo $header_lineal
+echo $footer_lineal
+sudo -u $(logname) $favorite_radio_command $emisora
+exit; fi
+####
+####
+#### :rutina-final-radio-cadena100:
+############################       english: radio-dial: url from one radio mp3
+############################       spanish: radio-dial: url de una radio en mp3
+#### :rutina-inicial-radio-dial:
+####
+####
+if [ "$first_option" = "radio-dial" ]; then  $give_cover
+echo "$tab [ $first_option ] [ Listen radio online ]"
+echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
+####
+####
+case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+####
+####
+if [ "$second_option" = "$NULL" ]; then $nada
+emisora="$radio_dial"
+else radio="$second_option"; fi
+####
+####
+echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
+echo $header_lineal
+echo $footer_lineal
+sudo -u $(logname) $favorite_radio_command $emisora
+exit; fi
+####
+####
+#### :rutina-final-radio-dial:
 ############################       english: colour-rgb: convert colour rgb to hex
 ############################       spanish: colour-rgb: convert colour rgb to hex
 #### :rutina-inicial-colour-rgb:
