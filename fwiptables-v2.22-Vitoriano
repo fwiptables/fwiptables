@@ -1592,7 +1592,7 @@ echo "$tab [ running ] [ loading firewall game-westnoth ]" ;
 launch_iptables="default" ;     config_variable_version="2"  ;
 client_port_udp="domain,bootpc,ntp,https" ; 
 client_port_tcp="http,https,ssh,14950:15050" ;
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="14950:15050" ; server_port_udp="" ; fi
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
@@ -1600,7 +1600,7 @@ echo "$tab [ running ] [ loading firewall game-minetest ]" ;
 launch_iptables="default" ;     config_variable_version="2"  ;
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
 client_port_tcp="http,https,ssh,25000:35000" ;
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="25000:35000" ; server_port_udp="" ; fi
 ####
 ####
 ##############################   english: custom without valid config cfg
