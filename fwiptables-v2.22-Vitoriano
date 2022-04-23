@@ -122,7 +122,7 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default:
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
 radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
-radio_dial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-default ## streaming url
+radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-default ## streaming url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)"
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -3723,7 +3723,7 @@ case $selection in
 "speed-glx")  $fwiptables -gui speed-glx ;;
 "radio-mp3-default")  $fwiptables -gui radio-mp3 ;;
 "radio-mp3-link") 
-radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio ]")" ;
+radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio-mp3 ]")" ;
 $fwiptables -gui radio-mp3 $radio_enlace ;;
 esac
 ####
@@ -6933,11 +6933,15 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
-emisora="$radio_mp3"
-else radio="$second_option"; fi
+#### emisora="$radio_mp3"
+echo "[ info ] [ launch $fwiptables radio-cadena100 ] [ for cadena 100 ]"
+echo "[ info ] [ launch $fwiptables radio-cadenadial ] [ for cadena dial ]"
+echo "[ info ] [ launch $fwiptables radio-mp3 link-mp3 ] [ for one link from internet ]"
+exit
+else emisora="$second_option"; fi
 ####
 ####
-echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
+echo "$tab [ ok ] [ $favorite_radio_command $emisora ]"
 echo $header_lineal
 echo $footer_lineal
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -6961,10 +6965,10 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
 emisora="$radio_cadena100"
-else radio="$second_option"; fi
+else emisora="$second_option"; fi
 ####
 ####
-echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
+echo "$tab [ ok ] [ $favorite_radio_command $emisora ]"
 echo $header_lineal
 echo $footer_lineal
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -6972,12 +6976,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadena100:
-############################       english: radio-dial: url from one radio mp3
-############################       spanish: radio-dial: url de una radio en mp3
-#### :rutina-inicial-radio-dial:
+############################       english: radio-cadenadial: url from one radio mp3
+############################       spanish: radio-cadenadial: url de una radio en mp3
+#### :rutina-inicial-radio-cadenadial:
 ####
 ####
-if [ "$first_option" = "radio-dial" ]; then  $give_cover
+if [ "$first_option" = "radio-cadenadial" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
@@ -6987,18 +6991,18 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
-emisora="$radio_dial"
-else radio="$second_option"; fi
+emisora="$radio_cadenadial"
+else emisora="$second_option"; fi
 ####
 ####
-echo "$tab [ ok ] [ $favorite_radio_command $radio ]"
+echo "$tab [ ok ] [ $favorite_radio_command $emisora ]"
 echo $header_lineal
 echo $footer_lineal
 sudo -u $(logname) $favorite_radio_command $emisora
 exit; fi
 ####
 ####
-#### :rutina-final-radio-dial:
+#### :rutina-final-radio-cadenadial:
 ############################       english: colour-rgb: convert colour rgb to hex
 ############################       spanish: colour-rgb: convert colour rgb to hex
 #### :rutina-inicial-colour-rgb:
