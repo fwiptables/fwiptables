@@ -3709,7 +3709,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio-mp3-default" "radio-mp3-link" \
+--list "Gui Principal Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio-mp3 link" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool System] [$fwiptables]" )
 #### 
 #### 
@@ -3721,9 +3721,8 @@ case $selection in
 "speed-ram")  $fwiptables -gui speed-ram ;;
 "speed-disk") $fwiptables -gui speed-disk ;;
 "speed-glx")  $fwiptables -gui speed-glx ;;
-"radio-mp3-default")  $fwiptables -gui radio-mp3 ;;
-"radio-mp3-link") 
-radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio-mp3 ]")" ;
+"radio-mp3 link") 
+radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
 $fwiptables -gui radio-mp3 $radio_enlace ;;
 esac
 ####
