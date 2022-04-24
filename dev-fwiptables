@@ -420,7 +420,7 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
 echo "$title_md [ $first_option ] [ $fwiptables installer ] [ install.md ]"
-echo "$text_md [ status ] [ Install $fwiptables in $directory_fiptables ]"
+#### echo "$text_md [ status ] [ Install $fwiptables in $directory_fiptables ]"
 #### 
 #### 
 ####  english: copy the file
@@ -526,18 +526,25 @@ fwiptables_icon="/usr/share/zenity/zenity.png"
 ####
 if [ -d "$desktop_directory" ] ;
 then echo "$text_md [ status ] [ $fwiptables $fversion Regenering icon desktop ]"
+echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Terminal=true" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Terminal=true" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Terminal=true" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Type=Application" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Categories=Network" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Categories=Network" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Categories=System" &>> $desktop_directory/$fwiptables-cli-menu.desktop
+echo "Categories=System" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Categories=System" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Name=$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Name=$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Name=$fwiptables cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
+echo "Name=$fwiptables gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Name=$fwiptables gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Exec=$directory_fiptables/$fwiptables-cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Exec=$directory_fiptables/$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Exec=$directory_fiptables/$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 chmod ugo+rx $desktop_directory/$fwiptables-* &>> /dev/null
@@ -548,9 +555,9 @@ else $nada ; fi
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
-echo "$text_md [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$text_md [ status ] [ Programs: ] [ $fwiptables ] [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwiptables-gui-shell ]"
+echo "$text_md [ status ] [ Configuration folder: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
+echo "$text_md [ status ] [ Completion files: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$text_md [ status ] [ Menu entry desktop: ]   [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwiptables-gui-shell ]"
 #### 
 #### 
 ####  english: site of the file installed
@@ -558,7 +565,7 @@ echo "$text_md [ status ] [ Programs: ] [ $fwiptables ] [ $fwiptables-cli-menu ]
 #### 
 #### 
 echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
-echo "$text_md [ ok ] [ Launch $fwiptables to run /  type:  ] [ $fwiptables ]" 
+echo "$text_md [ ok ] [ Launch command $fwiptables to run /  type:  ] [ $fwiptables ]" 
 exit; fi
 ####
 ####
