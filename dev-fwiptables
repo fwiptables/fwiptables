@@ -528,12 +528,12 @@ if [ -d "$desktop_directory" ] ;
 then echo "$text_md [ status ] [ $fwiptables $fversion Regenering icon desktop ]"
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Terminal=true" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Terminal=true" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Categories=Internet" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Categories=Internet" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Categories=Network" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Categories=Network" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Name=$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
