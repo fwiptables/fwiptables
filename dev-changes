@@ -342,6 +342,5 @@
 # 6- pequeños cambios de apariencia. HECHO
 # 7- instalador instala fwiptables-gui-menu fwiptables-gui-shell y fwiptables-gui-cli. HECHO
 # 8- list-allrules almohadillas para el titulo al listar cada tabla de reglas. HECHO
-# 9- añadidos iconos .desktop para fwiptables-gui-shell y fwiptables-gui-cli en /usr/share/applications categoria Network. HECHO
+# 9- añadidos iconos .desktop para fwiptables gui-shell y gui-menu y gui-cli en /usr/share/applications categoria System. HECHO
 # 
-
