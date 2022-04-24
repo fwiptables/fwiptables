@@ -528,15 +528,19 @@ if [ -d "$desktop_directory" ] ;
 then echo "$text_md [ status ] [ $fwiptables $fversion Regenering icon desktop ]"
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Categories=Internet" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Categories=Internet" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Name=$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Name=$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Exec=$directory_fiptables/$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Exec=$directory_fiptables/$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-chmod ugo+rx $desktop_directory/$fwiptables-* &> /dev/null
+chmod ugo+rx $desktop_directory/$fwiptables-* &>> /dev/null
 else $nada ; fi
 ####
 ####
@@ -546,7 +550,7 @@ else $nada ; fi
 ####
 echo "$text_md [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
 echo "$text_md [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$text_md [ ok ] [ New config files installed ]"
+echo "$text_md [ status ] [ Programs: ] [ $fwiptables ] [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwiptables-gui-shell ]"
 #### 
 #### 
 ####  english: site of the file installed
