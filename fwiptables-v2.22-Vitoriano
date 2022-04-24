@@ -427,7 +427,7 @@ echo "$text_md [ status ] [ Install $fwiptables in $directory_fiptables ]"
 ####  spanish: copia el archivo
 #### 
 #### 
-echo "$text_md [ running ] [ $zero_option install ]"
+echo "$text_md [ running ] [ $zero_option installing ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
 #### 
 #### 
@@ -516,34 +516,34 @@ echo "sudo $fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
 chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 ####
 ####
-####  english: regenerate graphicall icons
-####  spanish: regenerate iconos graficos
+####  english: assing graphicall icons if desktop_directory
+####  spanish: asigna iconos graficos si hay desktop_direcoty
 ####
 ####
 desktop_directory="/usr/share/applications"
 fwiptables_icon="/usr/share/zenity/zenity.png"
 ####
 ####
-if [ -d $desktop_directory ]; then echo "$text_md [ status ] [ $fwiptables $fversion icons ]" 
-else echo "[Desktop Entry]" &> $desktop_directory/$fwiptables.desktop
-echo "Type=Application" &>> $desktop_directory/$fwiptables.desktop
-echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables.desktop
-echo "Name=$fwiptables" &>> $desktop_directory/$fwiptables.desktop
-cp $desktop_directory/$fwiptables.desktop $desktop_directory/$fwiptables-gui-menu.desktop &> /dev/null
-cp $desktop_directory/$fwiptables.desktop $desktop_directory/$fwiptables-gui-shell.desktop &> /dev/null
-cp $desktop_directory/$fwiptables.desktop $desktop_directory/$fwiptables-cli-menu.desktop &> /dev/null
-echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables.desktop
-echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-fi
+if [ -d "$desktop_directory" ] ;
+then echo "$text_md [ status ] [ $fwiptables $fversion Regenering icon desktop ]"
+echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Name=$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Name=$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Exec=$directory_fiptables/$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Exec=$directory_fiptables/$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+chmod ugo+rx $desktop_directory/$fwiptables-* &> /dev/null
+else $nada ; fi
 ####
 ####
 ####   english: Show final status from installer
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ status ] [ $fwiptables $fversion installing ]" 
 echo "$text_md [ status ] [ Configurations files in: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
 echo "$text_md [ status ] [ Completion files in: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 echo "$text_md [ ok ] [ New config files installed ]"
