@@ -7113,11 +7113,11 @@ if [ "$first_option" = "ole-domain" ] ; then
 file_domain="/etc/default/fwiptables-domain"
 if [ -s $file_domain ]; then $nada 
 else echo " [ status ] [ Downloading txt file to play with $favorite_text_browser ]"
-$favorite_text_browser  $fweb_domain &> $file_domain ; fi
+$favorite_text_browser -source $fweb_domain &> $file_domain ; fi
 numero_maximo="$(cat $file_domain | wc -l)"
 numero_aleatorio_one="$(($RANDOM%"$numero_maximo"))"
-domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 1)"
-type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 2)"
+domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 2)"
+type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 1)"
 ###########
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]"; exit ;; esac
