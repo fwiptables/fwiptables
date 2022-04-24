@@ -345,4 +345,5 @@
 # 9- añadidos iconos .desktop para fwiptables gui-shell y gui-menu y gui-cli en /usr/share/applications categoria System. HECHO
 # 10- rehecho opcion resolv.conf para monstrar mas claro los tres resolv.conf incluyendo a head y tail. HECHO
 # 11- arreglos en ole-domain. HECHO
+# 13- modificacion de examples en gui-menu.
 #
