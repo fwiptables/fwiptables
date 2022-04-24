@@ -226,6 +226,7 @@ fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 ####       #### english: [Program license] #### spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
 ####
 ####  english: pause, spanish: pausa
 ####  do_pause="read -p 'press [enter] to continue with the $fwiptables cli-menu'"
@@ -7110,8 +7111,9 @@ fi ; exit; fi
 ####
 if [ "$first_option" = "ole-domain" ] ; then
 file_domain="/etc/default/fwiptables-domain"
-if [ ! -f $file_domain ]; then echo " [ status ] [ downloading txt file to play ]"
-$favorite_text_browser -source $fweb_domain > $file_domain ; fi
+if [ -s $file_domain ]; then $nada 
+else echo " [ status ] [ Downloading txt file to play with $favorite_text_browser ]"
+$favorite_text_browser  $fweb_domain &> $file_domain ; fi
 numero_maximo="$(cat $file_domain | wc -l)"
 numero_aleatorio_one="$(($RANDOM%"$numero_maximo"))"
 domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 1)"
