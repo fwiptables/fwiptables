@@ -790,12 +790,15 @@ if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html comm
 echo $head_waiting_rst
 case "$second_option" in
 group-options);;
-"help"|"ayuda");;
-output-interface) ;;
+"help");;
+"ayuda");;
+"help-options");;
+"all-help");;
+"output-interface") ;;
 firewall-*);;
 tool-*) ;;
 show-*) ;;
-*) echo $message_without_rst ; $fwiptables $second_option $third_option ;  exit ;;
+*) echo $message_without_rst ;  exit ;;
 esac
 fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
