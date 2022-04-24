@@ -516,6 +516,23 @@ echo "sudo $fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
 chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 ####
 ####
+####  english: graphicall icons
+####  spanish: iconos graficos
+####
+####
+echo "[Desktop Entry]" &> /usr/share/applications/$fwiptables.desktop
+echo "Type=Application" &>> /usr/share/applications/$fwiptables.desktop
+echo "Icon=/usr/share/zenity/zenity.png" &>> /usr/share/applications/$fwiptables.desktop
+echo "Name=$fwiptables" &>> /usr/share/applications/$fwiptables.desktop
+cp /usr/share/applications/$fwiptables.desktop /usr/share/applications/$fwiptables-gui-menu.desktop
+cp /usr/share/applications/$fwiptables.desktop /usr/share/applications/$fwiptables-gui-shell.desktop
+cp /usr/share/applications/$fwiptables.desktop /usr/share/applications/$fwiptables-cli-menu.desktop
+echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables.desktop
+echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables-gui-menu.desktop
+echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables-gui-shell.desktop
+echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables-cli-menu.desktop
+####
+####
 ####   english: Show final status from installer
 ####   spanish: Muestra el estatus final desde el instalador
 ####
