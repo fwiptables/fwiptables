@@ -516,21 +516,27 @@ echo "sudo $fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
 chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 ####
 ####
-####  english: graphicall icons
-####  spanish: iconos graficos
+####  english: regenerate graphicall icons
+####  spanish: regenerate iconos graficos
 ####
 ####
-echo "[Desktop Entry]" &> /usr/share/applications/$fwiptables.desktop
-echo "Type=Application" &>> /usr/share/applications/$fwiptables.desktop
-echo "Icon=/usr/share/zenity/zenity.png" &>> /usr/share/applications/$fwiptables.desktop
-echo "Name=$fwiptables" &>> /usr/share/applications/$fwiptables.desktop
-cp /usr/share/applications/$fwiptables.desktop /usr/share/applications/$fwiptables-gui-menu.desktop
-cp /usr/share/applications/$fwiptables.desktop /usr/share/applications/$fwiptables-gui-shell.desktop
-cp /usr/share/applications/$fwiptables.desktop /usr/share/applications/$fwiptables-cli-menu.desktop
-echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables.desktop
-echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables-gui-menu.desktop
-echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables-gui-shell.desktop
-echo "Exec=$directory_fiptables/$fwiptables"&>> /usr/share/applications/$fwiptables-cli-menu.desktop
+desktop_directory="/usr/share/applications"
+fwiptables_icon="/usr/share/zenity/zenity.png"
+####
+####
+if [ -d $desktop_directory ]; then echo "$text_md [ status ] [ $fwiptables $fversion icons ]" 
+else echo "[Desktop Entry]" &> $desktop_directory/$fwiptables.desktop
+echo "Type=Application" &>> $desktop_directory/$fwiptables.desktop
+echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables.desktop
+echo "Name=$fwiptables" &>> $desktop_directory/$fwiptables.desktop
+cp $desktop_directory/$fwiptables.desktop $desktop_directory/$fwiptables-gui-menu.desktop &> /dev/null
+cp $desktop_directory/$fwiptables.desktop $desktop_directory/$fwiptables-gui-shell.desktop &> /dev/null
+cp $desktop_directory/$fwiptables.desktop $desktop_directory/$fwiptables-cli-menu.desktop &> /dev/null
+echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables.desktop
+echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Exec=$directory_fiptables/$fwiptables" &>> $desktop_directory/$fwiptables-cli-menu.desktop
+fi
 ####
 ####
 ####   english: Show final status from installer
