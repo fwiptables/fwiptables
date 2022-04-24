@@ -8228,17 +8228,23 @@ fi
 #### :rutina-inicial-resolv.conf:
 ####
 ####
- if [ "$first_option" = "resolv.conf" ]; then  $give_cover
- echo "$tab [ $first_option ] [ show the file /resolv.conf ]"
- echo $header_lineal
- if [ -f /etc/resolv.conf.head ]; then cat /etc/resolv.conf.head
- echo $tab ; echo "$tab This file is /etc/resolv.conf.head" ; echo $tab ; fi
- if [ -f /etc/resolv.conf ];      then cat /etc/resolv.conf     
- echo $tab ; echo "$tab This file is /etc/resolv.conf"      ; echo $tab ; fi
- if [ -f /etc/resolv.conf.tail ]; then cat /etc/resolv.conf.tail
- echo $tab ; echo "$tab This file is /etc/resolv.conf.tail" ; echo $tab ; fi
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "resolv.conf" ]; then  $give_cover
+echo "$tab [ $first_option ] [ show resolv.conf ]"
+echo $header_lineal
+if [ -f /etc/resolv.conf.head ]; then
+echo "$tab  [ with resolv.conf.head ]"
+cat /etc/resolv.conf.head ; 
+else echo "$tab  [ without resolv.conf.head ]"; fi
+if [ -f /etc/resolv.conf ]; then
+echo "$tab  [ with resolv.conf ]"
+cat /etc/resolv.conf ; 
+else echo "$tab  [ without resolv.conf ]"; fi
+if [ -f /etc/resolv.conf.tail ]; then
+echo "$tab  [ with resolv.conf.tail ]"
+cat /etc/resolv.conf.tail ; 
+else echo "$tab  [ without resolv.conf.tail ]"; fi
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-resolv.conf:
