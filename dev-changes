@@ -346,5 +346,5 @@
 # 10- rehecho opcion resolv.conf para monstrar mas claro los tres resolv.conf incluyendo a head y tail. HECHO
 # 11- arreglos en ole-domain. HECHO
 # 13- modificacion de examples en gui-menu.
-# 14- añadido desistalador. HECHO
+# 14- añadido desinstalador. HECHO
 #
