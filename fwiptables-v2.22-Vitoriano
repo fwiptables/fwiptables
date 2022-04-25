@@ -330,8 +330,9 @@ echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
 cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md          $fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md          $fwiptables $fversion   ||   Actually, this version is installed  "
-echo "$text_md     Install this version from this file   ||  TYPE:  ./fwiptables-$fversion install" 
-echo "$text_md     Install lastest version from the web  ||  TYPE:  ./fwiptables-$fversion upgrade" 
+echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
+echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
+echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
 echo  $text_md
 echo "$title_md     Fran fwiptables project.  "
 echo  $text_md
@@ -414,8 +415,28 @@ if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
-##############################       english: Install:    $fwiptables           ###########################################
-##############################       spanish: Instalador: $fwiptables           ###########################################
+##############################       english: uninstall:    $fwiptables           ###########################################
+##############################       spanish: desinstalador: $fwiptables           ###########################################
+#### :rutina-inicial-uninstall:
+####
+####
+if [ "$first_option" = "uninstall" ] ; then $zero_option intro
+echo "$title_md [ $first_option ] [ $fwiptables uninstaller ] [ uninstall.md ]"
+echo "$text_md [ running ] [ $fwiptables uninstalling ]"
+if  [ -f $directory_fiptables/$fwiptables ]; then
+rm $directory_fiptables/$fwiptables &> /dev/null
+rm $directory_fiptables/$fwiptables-cli-menu &> /dev/null
+rm $directory_fiptables/$fwiptables-gui-menu &> /dev/null
+rm $directory_fiptables/$fwiptables-gui-shell &> /dev/null
+echo "$text_md [ status ] [ deleted binaries ]"
+echo "$text_md [ ok ] [ $fwiptables uninstalled ]" ;
+else echo "$text_md [ status ] [ $fwiptables is not installed ]"; fi
+exit; fi
+####
+####
+#### :rutina-final-uninstall:
+##############################       english: install:    $fwiptables           ###########################################
+##############################       spanish: instalador: $fwiptables           ###########################################
 #### :rutina-inicial-install:
 ####
 ####
