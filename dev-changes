@@ -332,7 +332,7 @@
 # 3. añadido help-options. HECHO 
 # 4. firewall por defecto, simplificando su codigo, ahorrando codigo. HECHO
 #
-# changes fwiptables 2.22 en desarrollo
+# changes fwiptables 2.22
 #
 # 1- option examples-config cambiado de nombre a config-examples. HECHO
 # 2- option list-config cambiado a names-config. HECHO
@@ -345,6 +345,9 @@
 # 9- añadidos iconos .desktop para fwiptables gui-shell y gui-menu y gui-cli en /usr/share/applications categoria System. HECHO
 # 10- rehecho opcion resolv.conf para monstrar mas claro los tres resolv.conf incluyendo a head y tail. HECHO
 # 11- arreglos en ole-domain. HECHO
-# 13- modificacion de examples en gui-menu.
-# 14- añadido desinstalador. HECHO
+# 12- añadido desinstalador. HECHO
+#
+# changes fwiptables 2.23 en desarrollo
+#
+# 1- comprobar examples en gui menu.
 #
