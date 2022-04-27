@@ -525,11 +525,13 @@ $fwiptables regen-config &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-menu
+echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-gui-menu
 echo "sudo $fwiptables gui-menu" &>> $directory_fiptables/$fwiptables-gui-menu
 chmod ugo+rx $directory_fiptables/$fwiptables-gui-menu &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-shell
+echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-gui-shell
 echo "sudo $fwiptables gui-shell" &>> $directory_fiptables/$fwiptables-gui-shell
 chmod ugo+rx $directory_fiptables/$fwiptables-gui-shell &> /dev/null
 ####
@@ -552,9 +554,9 @@ then echo "$text_md [ status ] [ $fwiptables $fversion Regenering icon desktop ]
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Terminal=true" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Terminal=true" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Terminal=true" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Terminal=false" &>> $desktop_directory/$fwiptables-cli-menu.desktop
+echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-menu.desktop
