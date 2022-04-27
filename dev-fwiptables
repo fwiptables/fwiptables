@@ -158,7 +158,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program description   #### spanish: descripcion del programa
 fprogram="Fran FireWall FWiptables Generator" ;                     
 #### #### english: program name          #### spanish: nombre del porgrama
-fversion="2.23-Luisa" ;
+fversion="3.00-Luisa" ;
 #### #### english: program version       #### spanish: Version del programa
 ####  #### english: default variable version whithout update for config cfg
 ####  #### spanish: default version de variables sin actualizar por config cfg
@@ -565,8 +565,7 @@ chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 ####  spanish: asigna iconos graficos si hay desktop_direcoty
 ####
 ####
-if [ -d "$desktop_directory" ] ;
-then echo "$text_md [ status ] [ $cmd_fwiptables $fversion Regenering icon desktop ]"
+if [ -d "$desktop_directory" ] ; then $nada
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
