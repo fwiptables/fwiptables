@@ -27,10 +27,20 @@
 ####
 ####     #### english: whereis path     #### spanish: donde esta el path
 directory_fiptables="/usr/bin" ;
-####
+####   
 ####
 ####     #### english: program name     #### spanish: nombre de el programa
 fwiptables="fwiptables" ;
+####
+####
+#### #### english: path to config files  #### spanish: archivos de configuracion
+####
+####
+#### english: Path directory config files
+#### spanish: Ruta de directorios de los archivos de configuracion
+directory_fwrecover="/etc/fwiptables-fwrecover"
+directory_default="/etc/fwiptables-default"
+directory_config="/etc/fwiptables-config"
 ####
 ####
 ####     #### english: launch profile         #### spanish: lanza profile
@@ -144,7 +154,6 @@ fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fversion="2.23-Luisa" ;
 #### #### english: program version       #### spanish: Version del programa
-directory_config="/etc/fwiptables" ;                                
 ####  #### english: default variable version whithout update for config cfg
 ####  #### spanish: default version de variables sin actualizar por config cfg
 config_variable_version="1" ;                                       
@@ -158,8 +167,7 @@ defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"
 defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
 #### #### english: path to config files  #### spanish: archivos de configuracion
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"     
-#### #### english: path to config files  #### spanish: archivos de configuracion
-directory_fwrecover="/etc/fwrecover" ;                              
+                    
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="     " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
@@ -228,9 +236,6 @@ flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
 ####
-####  english: pause, spanish: pausa
-####  do_pause="read -p 'press [enter] to continue with the $fwiptables cli-menu'"
-####
 ####
 #### english: if wrong in whithout_option
 #### spanish: si esta mal definidad definida whithout_option
@@ -280,11 +285,11 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ##############################       spanish: Actualiza variables          ###################################
 ####
 ####
-####     #### english: launch /etc/default/fwiptables for update variables
-####     #### spanish: lanza /etc/default/fwiptables para actualizar variables
+####     #### english: launch default for update variables
+####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f /etc/default/fwiptables ] ; then . /etc/default/fwiptables ; fi
+if [ -f $directory_default/fwiptables ] ; then . $directory_default/fwiptables ; fi
 ####
 ####
 #### english: if null option is void return default to mini-options
@@ -446,16 +451,12 @@ echo "$title_md [ $first_option ] [ $fwiptables installer ] [ install.md ]"
 #### echo "$text_md [ status ] [ Install $fwiptables in $directory_fiptables ]"
 #### 
 #### 
-####  english: copy the file
-####  spanish: copia el archivo
+####  english: copy the file to temporal folder
+####  spanish: copia el archivo a carpeta temporal
 #### 
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
 cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
-#### 
-#### 
-####  english: create /etc/bash_completion.d/$fwiptables and /etc/default/fwiptables
-####  spanish: crea  /etc/bash_completion.d/$fwiptables y   /etc/default/fwiptables
 #### 
 #### 
 ####  english: Install new /etc/bash_completion/fwiptables
@@ -504,11 +505,12 @@ rm /etc/profile.d/$fwiptables.sh &> /dev/null
 ####
 cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
 ####
-####  english: generate /etc/default/fwiptables
-####  spanish: genera /etc/default/fwiptables
+####
+####  english: generate fwiptables default
+####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -200 $0 | grep -B 2 fwiptables-default)" &> /etc/default/fwiptables
+echo "$(head -200 $0 | grep -B 2 fwiptables-default)" &> $directory_default/fwiptables
 #### 
 #### 
 ####  english: probe sane dir /etc/bash_completion.d
@@ -580,7 +582,7 @@ else $nada ; fi
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ status ] [ Configuration folder: ] [ /etc/fwiptables | /etc/fwrecover | /etc/default/fwiptables ]"
+echo "$text_md [ status ] [ Configuration folder: ] [ $directory_config | $directory_fwrecover | $directory_default ]"
 echo "$text_md [ status ] [ Completion files: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
 echo "$text_md [ status ] [ Menu entry desktop: ]   [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwiptables-gui-shell ]"
 #### 
@@ -1472,12 +1474,13 @@ esac
 ####
 ####
 #### :rutina-final-sane:
-##############################       english: if sane config dir                       #############################
-##############################       spanish: comprobar sanos directorios              #############################
+##############################       english: if sane config directory                       #############################
+##############################       spanish: comprobar sanos directorios de configuracion   #############################
 ####
 ####
 if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
 if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
+if [ -d "$directory_default" ]; then $nada ; else rm "$directory_default" &> /dev/null ; mkdir "$directory_default" &> /dev/null ; fi
 ####
 ####
 ########################################       english: autosave: autosave of firewall to restore standard rules
@@ -3043,9 +3046,9 @@ echo $tab
 echo "$tab [Configuration directory]"
 echo "list cfg:            $directory_config"
 echo "names fw:            $directory_fwrecover"
+echo "default:             $directory_default"
 echo $tab
 echo "$tab [Configuration file]"
-echo "default variables:   /etc/default/fwiptables"
 echo "shell completions:   /etc/completion.d/fwiptables"
 echo "                     /etc/profile.d/fwiptables"
 echo "auth users:          /etc/sudoers.d/fwiptables"
@@ -3136,10 +3139,10 @@ case $second_option in
 #### 
 #### 
 "new-mini-config")
-cp "$defaultminicfg_eng" "/tmp/fiptables-$third_option"
+cp "$defaultminicfg_eng" "/tmp/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3149,10 +3152,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "new-full-config")
-cp "$defaultfullcfg_eng" "/tmp/fiptables-$third_option"
+cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3162,10 +3165,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "nueva-mini-config")
-cp "$defaultminicfg_spa" "/tmp/fiptables-$third_option"
+cp "$defaultminicfg_spa" "/tmp/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3175,10 +3178,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "nueva-completa-config")
-cp "$defaultfullcfg_spa" "/tmp/fiptables-$third_option"
+cp "$defaultfullcfg_spa" "/tmp/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3190,12 +3193,12 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
 else zenity --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "/tmp/fiptables-$third_option"
-zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$third_option" \
+cp "$directory_config/$third_option" "/tmp/$fwiptables-$third_option"
+zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 zenity --forms $graphic_dimension --text="OK. file: $third_option"
-else cp "/tmp/fiptables-$third_option" "$directory_config/$third_option"
+else cp "/tmp/$fwiptables-$third_option" "$directory_config/$third_option"
 zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
@@ -3231,8 +3234,8 @@ case $second_option in
 #### 
 wizard-mini)
 archivo=wizard-mini
-cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$archivo" \
+cp "$defaultminicfg_eng" "/tmp/$fwiptables-$archivo"
+zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fwiptables -gui custom $second_option ; $fwiptables -gui list ;
@@ -3243,8 +3246,8 @@ zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 #### 
 wizard-full)
 archivo=wizard-full
-cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="/tmp/fiptables-$archivo" \
+cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$archivo"
+zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $fwiptables -gui custom $second_option ; $fwiptables -gui list ;
@@ -3254,12 +3257,12 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 ####
 modify-default)
-cp /etc/default/fwiptables /tmp/fiptables-modify-default
-zenity --text-info $graphic_dimension --filename="/tmp/fiptables-modify-default" \
---editable --title="MODIFY FILE" &> /etc/default/fwiptables
-if [  -s "/etc/default/fwiptables" ]; then $nada ; 
+cp $directory_default/fwiptables /tmp/$fwiptables-modify-default
+zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-modify-default" \
+--editable --title="MODIFY FILE" &> $directorfy_default/$fwiptables
+if [  -s "$directory_default/fwiptables" ]; then $nada ; 
 $fwiptables -gui show-default ;
-else cp /tmp/fiptables-modify-default /etc/default/fwiptables;
+else cp /tmp/$fwiptables-modify-default directory_default/fwiptables;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
@@ -4614,8 +4617,9 @@ exit; fi
  echo "$directory_config"
  echo "$tab [Firewall standard directory]"
  echo "$directory_fwrecover"
+ echo "$tab [default directory]"
+ echo "$directory_default"
  echo "$tab [Config files]"
- echo "variables:    /etc/default/fwiptables"
  echo "completion:   /etc/profile.d/fwiptables"
  echo "completion:   /etc/bash_completion.d/fwiptables"
  echo "auth users:   /etc/sudoers/fwiptables"
@@ -5776,8 +5780,8 @@ exit; fi
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -5788,7 +5792,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "/tmp/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -5809,8 +5813,8 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "/tmp/fiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultfullcfg_spa" "/tmp/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -5821,7 +5825,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "/tmp/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -5842,8 +5846,8 @@ exit; fi
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultminicfg_eng" "/tmp/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -5854,7 +5858,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "/tmp/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -5875,8 +5879,8 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "/tmp/fiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultminicfg_spa" "/tmp/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -5887,7 +5891,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "/tmp/fiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "/tmp/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -5902,7 +5906,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then  $give_cover
-cp "$directory_config/$second_option" "/tmp/fiptables-$second_option" &> /dev/null
+cp "$directory_config/$second_option" "/tmp/$fwiptables-$second_option" &> /dev/null
 ####
 ###
 if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
@@ -5910,7 +5914,7 @@ echo "$tab [ info ] [ usage: ] [ $fwiptables modify-config config-existent ]" ; 
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then $nada
-dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$second_option" 0 0 2> "$directory_config/$second_option"
+dialog --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$second_option" 0 0 2> "$directory_config/$second_option"
 clear; fi
 ####
 ####
@@ -5920,7 +5924,7 @@ clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "/tmp/fiptables-$second_option" "$directory_config/$second_option" &> /dev/null
+cp "/tmp/$fwiptables-$second_option" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
@@ -6107,47 +6111,47 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-nodes:
-############################       english: show-default: show /etc/default/fwiptables
-############################       spanish: show-default: show /etc/default/fwiptables
+############################       english: show-default: show $directorfy_default/$fwiptables
+############################       spanish: show-default: show $directorfy_default/$fwiptables
 #### :rutina-inicial-show-default:
 ####
 ####
  if [ "$first_option" = "show-default" ]; then  $give_cover
- echo "$tab [ $first_option ] [ show the /etc/default/fwiptables ]"
+ echo "$tab [ $first_option ] [ show the default fwiptables ]"
  echo $header_lineal
- cat /etc/default/fwiptables
+ cat $directory_default/$fwiptables
  echo $footer_lineal
- echo "$tab [ status ] [ edit file /etc/default/fwiptables to change variables with: $fwiptables modify-default ]"
+ echo "$tab [ status ] [ edit file $directory_default/$fwiptables to change variables with: $fwiptables modify-default ]"
  echo $footer_lineal
  exit; fi
 ####
 ####
 #### :rutina-final-show-default:
-############################       english: modify-default: modify /etc/default/fwiptables
-############################       spanish: modify-default: modify /etc/default/fwiptables
+############################       english: modify-default: modify $directorfy_default/$fwiptables
+############################       spanish: modify-default: modify $directorfy_default/$fwiptables
 #### :rutina-inicial-modify-default:
 ####
 ####
  if [ "$first_option" = "modify-default" ]; then  $give_cover
- echo "$tab [ $first_option ] [ modify the /etc/default/fwiptables ]"
+ echo "$tab [ $first_option ] [ modify the default fwiptables ]"
  echo $header_lineal
  echo $footer_lineal
- echo "$tab [ status ] [ edit file /etc/default/fwiptables to change variables ]"
+ echo "$tab [ status ] [ edit file $directory_default/$fwiptables to change variables ]"
 ####
 ####
 #### english: make security copy file
 #### spanish: hace copia de seguridad
 ####
 ####
- cp /etc/default/fwiptables /tmp/fiptables-modify-default
+ cp $directory-default/$fwiptables /tmp/$fwiptables-modify-default
 ####
 ####
 #### english: edit file
 #### spanish: edita el archivo
 ####
 ####
- dialog --no-cancel --title "MODIFY FILE /etc/default/fwiptables" \
- --editbox /tmp/fiptables-modify-default 0 0 2> /etc/default/fwiptables
+ dialog --no-cancel --title "MODIFY FILE $directorfy_default/$fwiptables" \
+ --editbox /tmp/$fwiptables-modify-default 0 0 2> $directorfy_default/$fwiptables
  clear
 ####
 ####
@@ -6155,8 +6159,8 @@ exit; fi
 #### spanish: prueba que todo es correcto o lo recupera
 ####
 ####
- if [ ! -s "/etc/default/fwiptables" ] ; then $nada
- cp /tmp/fiptables-modify-default /etc/default/fwiptables; fi
+ if [ ! -s "$directorfy_default/$fwiptables" ] ; then $nada
+ cp /tmp/$fwiptables-modify-default $directorfy_default/$fwiptables; fi
 ####
 ####
  echo $footer_lineal
@@ -6209,8 +6213,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option"
-cp "$defaultminicfg_eng" "/tmp/fiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
+cp "$defaultminicfg_eng" "/tmp/$fwiptables-$archivo"
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -6228,8 +6232,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-full" ]; then echo
 archivo="$first_option"
-cp "$defaultfullcfg_eng" "/tmp/fiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/fiptables-$archivo" \
+cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$archivo"
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -6389,24 +6393,24 @@ exit; fi
  if [ "$first_option" = "actual" ]; then $give_cover
  echo "$tab [ $first_option ] [ show the last firewall saved ]"
  echo $header_lineal
- $command_arptables-save          &> $directory_fwrecover/fiptables-actual-arptables
- $command_ebtables-save           &> $directory_fwrecover/fiptables-actual-ebtables   
- $command_iptables_nft-save       &> $directory_fwrecover/fiptables-actual-nft-ipv4   
- $command_iptables_legacy-save    &> $directory_fwrecover/fiptables-actual-legacy-ipv4
- $command_ip6tables_nft-save      &> $directory_fwrecover/fiptables-actual-nft-ipv6   
- $command_ip6tables_legacy-save   &> $directory_fwrecover/fiptables-actual-legacy-ipv6
+ $command_arptables-save          &> $directory_fwrecover/$fwiptables-actual-arptables
+ $command_ebtables-save           &> $directory_fwrecover/$fwiptables-actual-ebtables   
+ $command_iptables_nft-save       &> $directory_fwrecover/$fwiptables-actual-nft-ipv4   
+ $command_iptables_legacy-save    &> $directory_fwrecover/$fwiptables-actual-legacy-ipv4
+ $command_ip6tables_nft-save      &> $directory_fwrecover/$fwiptables-actual-nft-ipv6   
+ $command_ip6tables_legacy-save   &> $directory_fwrecover/$fwiptables-actual-legacy-ipv6
  echo "$cincuenta arptables $cinco"
- cat $directory_fwrecover/fiptables-actual-arptables
+ cat $directory_fwrecover/$fwiptables-actual-arptables
  echo "$cincuenta ebtables $cinco"
- cat $directory_fwrecover/fiptables-actual-ebtables
+ cat $directory_fwrecover/$fwiptables-actual-ebtables
  echo "$cincuenta nft with ipv4 $cinco"
- cat $directory_fwrecover/fiptables-actual-nft-ipv4
+ cat $directory_fwrecover/$fwiptables-actual-nft-ipv4
  echo "$cincuenta legacy with ipv4 $cinco"
- cat $directory_fwrecover/fiptables-actual-legacy-ipv4
+ cat $directory_fwrecover/$fwiptables-actual-legacy-ipv4
  echo "$cincuenta nft with ipv6 $cinco"
- cat $directory_fwrecover/fiptables-actual-nft-ipv6
+ cat $directory_fwrecover/$fwiptables-actual-nft-ipv6
  echo "$cincuenta legacy with ipv6 $cinco"
- cat $directory_fwrecover/fiptables-actual-legacy-ipv6
+ cat $directory_fwrecover/$fwiptables-actual-legacy-ipv6
  echo "$tab  [ ok ] [ readed firewall actual ]"
  echo $footer_lineal
  exit; fi
@@ -6427,12 +6431,12 @@ echo $header_lineal
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$command_arptables-save &> $directory_fwrecover/fiptables-stoped-arptables
-$command_ebtables-save &> $directory_fwrecover/fiptables-stoped-ebtables             
-$command_iptables_nft-save &> $directory_fwrecover/fiptables-stoped-nft-ipv4         
-$command_iptables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-ipv4   
-$command_ip6tables_nft-save &> $directory_fwrecover/fiptables-stoped-nft-ipv6        
-$command_ip6tables_legacy-save &> $directory_fwrecover/fiptables-stoped-legacy-ipv6  
+$command_arptables-save &> $directory_fwrecover/$fwiptables-stoped-arptables
+$command_ebtables-save &> $directory_fwrecover/$fwiptables-stoped-ebtables             
+$command_iptables_nft-save &> $directory_fwrecover/$fwiptables-stoped-nft-ipv4         
+$command_iptables_legacy-save &> $directory_fwrecover/$fwiptables-stoped-legacy-ipv4   
+$command_ip6tables_nft-save &> $directory_fwrecover/$fwiptables-stoped-nft-ipv6        
+$command_ip6tables_legacy-save &> $directory_fwrecover/$fwiptables-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -6459,12 +6463,12 @@ exit; fi
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
- cat $directory_fwrecover/fiptables-stoped-arptables | $command_arptables-restore
- cat $directory_fwrecover/fiptables-stoped-ebtables | $command_ebtables-restore
- cat $directory_fwrecover/fiptables-stoped-nft-ipv4 | $command_iptables_nft-restore  
- cat $directory_fwrecover/fiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
- cat $directory_fwrecover/fiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
- cat $directory_fwrecover/fiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
+ cat $directory_fwrecover/$fwiptables-stoped-arptables | $command_arptables-restore
+ cat $directory_fwrecover/$fwiptables-stoped-ebtables | $command_ebtables-restore
+ cat $directory_fwrecover/$fwiptables-stoped-nft-ipv4 | $command_iptables_nft-restore  
+ cat $directory_fwrecover/$fwiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
+ cat $directory_fwrecover/$fwiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
+ cat $directory_fwrecover/$fwiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
  echo "$tab [ ok ] [ firewall continued ]"
  echo $footer_lineal
  exit; fi
@@ -7134,7 +7138,7 @@ fi ; exit; fi
 ####
 ####
 if [ "$first_option" = "ole-domain" ] ; then
-file_domain="/etc/default/fwiptables-domain"
+file_domain="$directorfy_default/$fwiptables-domain"
 if [ -s $file_domain ]; then $nada 
 else echo " [ status ] [ Downloading txt file to play with $favorite_text_browser ]"
 $favorite_text_browser -source $fweb_domain &> $file_domain ; fi
@@ -7181,8 +7185,8 @@ if [ "$first_option" = "ole-word" ]; then  $nada
 #### variables shared
 ####
 ####
-language_english="/etc/default/fwiptables-english"
-language_spanish="/etc/default/fwiptables-spanish"
+language_english="$directorfy_default/$fwiptables-english"
+language_spanish="$directorfy_default/$fwiptables-spanish"
 language_number="0"
 caracteres="" ; cinco_caracteres="" ; intento="0" ; intento_maximo="12"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
@@ -7236,13 +7240,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-english
+grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directorfy_default/$fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-spanish
+grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directorfy_default/$fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -7362,13 +7366,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-english
+grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directorfy_default/$fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-spanish
+grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directorfy_default/$fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 #####
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
@@ -7485,13 +7489,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-english
+grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directorfy_default/$fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish" 
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > /etc/default/fwiptables-spanish
+grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directorfy_default/$fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -9060,8 +9064,8 @@ echo "$text_md        services : Muestra /etc/services, nombres de puertos y ser
 echo "$text_md     hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores."
 echo "$text_md      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
 echo "$text_md     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
-echo "$text_md    show-default : Muestra /etc/default/fwiptables, muestra variables en fwiptables."
-echo "$text_md  modify-default : Modifica /etc/default/fwiptables, modifica variables en fwiptables."
+echo "$text_md    show-default : Muestra $directorfy_default/$fwiptables, muestra variables en fwiptables."
+echo "$text_md  modify-default : Modifica $directorfy_default/$fwiptables, modifica variables en fwiptables."
 echo  $text_md
 echo "$title_md [ Mostrar log ]."
 echo  $text_md
