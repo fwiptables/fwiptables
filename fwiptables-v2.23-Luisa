@@ -530,7 +530,7 @@ echo "$(head -200 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default
 #### 
 #### 
 chmod ugo+rx /etc/bash_completion.d/fwiptables &> /dev/null
-chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
+chmod ugo+rx $directory_fiptables/$cmd_fwiptables &> /dev/null
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -595,9 +595,12 @@ else $nada ; fi
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ status ] [ Configuration folder: ] [ $directory_config | $directory_fwrecover | $directory_default ]"
-echo "$text_md [ status ] [ Completion files: ]     [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
-echo "$text_md [ status ] [ Menu entry desktop: ]   [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwiptables-gui-shell ]"
+echo "$text_md [ status ] [ Configuration folder: ]"
+echo "$text_md [ info ] [ $directory_config | $directory_fwrecover | $directory_default ]"
+echo "$text_md [ status ] [ Completion files: ]"
+echo "$text_md [ info ] [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$text_md [ status ] [ Menu entry desktop: ]"
+echo "$text_md [ info ] [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwiptables-gui-shell ]"
 #### 
 #### 
 ####  english: site of the file installed
