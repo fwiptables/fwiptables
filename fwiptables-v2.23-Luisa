@@ -30,18 +30,23 @@ directory_fiptables="/usr/bin" ;
 ####   
 ####
 ####     #### english: program name     #### spanish: nombre de el programa
+####
+####
 fwiptables="fwiptables"
 cmd_fwiptables="fwiptables-cmd"
 ####
 ####
-#### #### english: path to config files  #### spanish: archivos de configuracion
-####
-####
 #### english: Path directory config files
 #### spanish: Ruta de directorios de los archivos de configuracion
+####
+####
 directory_fwrecover="/etc/fwiptables-fwrecover"
 directory_default="/etc/fwiptables-default"
 directory_config="/etc/fwiptables-config"
+####
+####
+desktop_directory="/usr/share/applications"
+fwiptables_icon="/usr/share/zenity/zenity.png"
 ####
 ####
 ####     #### english: launch profile         #### spanish: lanza profile
@@ -560,10 +565,6 @@ chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 ####  spanish: asigna iconos graficos si hay desktop_direcoty
 ####
 ####
-desktop_directory="/usr/share/applications"
-fwiptables_icon="/usr/share/zenity/zenity.png"
-####
-####
 if [ -d "$desktop_directory" ] ;
 then echo "$text_md [ status ] [ $cmd_fwiptables $fversion Regenering icon desktop ]"
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-cli-menu.desktop
@@ -608,7 +609,10 @@ echo "$text_md [ info ] [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwi
 #### 
 #### 
 echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$cmd_fwiptables ]"
-echo "$text_md [ ok ] [ Launch command $cmd_fwiptables to run /  type:  ] [ $cmd_fwiptables ]" 
+echo "$text_md [ ok ] [ Launch command $cmd_fwiptables to run /  type: ] [ $cmd_fwiptables ]" 
+echo "$text_md [ status ] [ grant privileges to user for $fwiptables with: ]"
+echo "$text_md [ info ] [ $cmd_fwiptables sudo-adduser user ]" 
+echo "$text_md [ ok ] [ ready to run $fwiptables ]"
 exit; fi
 ####
 ####
