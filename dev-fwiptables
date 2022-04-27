@@ -95,44 +95,44 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy="no"                     ## fwiptables-default ## void or no
-allow_nft=""                          ## fwiptables-default ## void or no
-allow_ipv4=""                         ## fwiptables-default ## void or no
-allow_ipv6=""                         ## fwiptables-default ## void or no
+allow_legacy="no"                     ## fwiptables-file--default ## void or no
+allow_nft=""                          ## fwiptables-file-default ## void or no
+allow_ipv4=""                         ## fwiptables-file-default ## void or no
+allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
-allow_header_notice="no"                       ## fwiptables-default ## void or no
+allow_header_notice="no"                       ## fwiptables-file-default ## void or no
 ####       #### english: void to AUTOLOG one line from command launched
 ####       #### spanish: vacio para AUTOLOG del comando lanzado o no
-allow_autolog=""                 ## fwiptables-default ## void or no
+allow_autolog=""                 ## fwiptables-file-default ## void or no
 ####       #### english: void to AUTOSAVE fwrecover or no 
 ####       #### spanish: AUTOGUARDAR fwrecover o no
-allow_autosave="no"                 ## fwiptables-default ## void or no
+allow_autosave="no"                 ## fwiptables-file-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="7s"                    ## fwiptables-default ## choose seconds: 1..,9..30
+server_waiting="7s"                    ## fwiptables-file-default ## choose seconds: 1..,9..30
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
-server_ping_ipv4="fast.com"           ## fwiptables-default ## default fast.com
-server_ping_ipv6="fast.com"           ## fwiptables-default ## default fast.com
+server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
+server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast.com
 ####       #### english: TRACEROUTE server for default         
 ####       #### spanish: servidor de TRACEROUTE por defecto    
-server_traceroute_ipv4="fast.com"     ## fwiptables-default ## default fast.com
-server_traceroute_ipv6="fast.com"     ## fwiptables-default ## default fast.com
+server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
+server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
-serverip_iperf_ipv4="ping.online.net"   ## fwiptables-default ## default ping.online.net
-serverport_iperf_ipv4="5001"            ## fwiptables-default ## default 5201
-serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-default ## default ping.online.net
-serverport_iperf_ipv6="5001"            ## fwiptables-default ## default 5201
+serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
+serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
-graphic_dimension="--width=950 --height=650"   ## fwiptables-default ## default: "--width=950 --height=650"
+graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
-radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-default ## streaming url
-radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-default ## streaming url
+radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-file-default ## streaming url
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)"
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -279,6 +279,15 @@ config_output_uid="root" ; config_output_gid="root" ;
 config_others_protocols="icmp,igmp" ;
 net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
+####
+####
+##############################       english: if sane config directory                       #############################
+##############################       spanish: comprobar sanos directorios de configuracion   #############################
+####
+####
+if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
+if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
+if [ -d "$directory_default" ]; then $nada ; else rm "$directory_default" &> /dev/null ; mkdir "$directory_default" &> /dev/null ; fi
 ####
 ####
 ##############################       english: Update variables             ################################### 
@@ -510,7 +519,7 @@ cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -200 $0 | grep -B 2 fwiptables-default)" &> $directory_default/fwiptables
+echo "$(head -200 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default/fwiptables
 #### 
 #### 
 ####  english: probe sane dir /etc/bash_completion.d
@@ -1474,15 +1483,6 @@ esac
 ####
 ####
 #### :rutina-final-sane:
-##############################       english: if sane config directory                       #############################
-##############################       spanish: comprobar sanos directorios de configuracion   #############################
-####
-####
-if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
-if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-if [ -d "$directory_default" ]; then $nada ; else rm "$directory_default" &> /dev/null ; mkdir "$directory_default" &> /dev/null ; fi
-####
-####
 ########################################       english: autosave: autosave of firewall to restore standard rules
 ########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
 #### :rutina-inicial-autosave:
@@ -5314,7 +5314,6 @@ exit; fi
  "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
  "$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
-#### echo $header_ender
  echo "$tab [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
@@ -5333,7 +5332,6 @@ exit; fi
  $command_iptables_nft -t filter -v -L
  ;;
  esac
-#### echo $footer_lineal
  exit; fi
 ####
 ####
@@ -6116,14 +6114,14 @@ exit; fi
 #### :rutina-inicial-show-default:
 ####
 ####
- if [ "$first_option" = "show-default" ]; then  $give_cover
- echo "$tab [ $first_option ] [ show the default fwiptables ]"
- echo $header_lineal
- cat $directory_default/$fwiptables
- echo $footer_lineal
- echo "$tab [ status ] [ edit file $directory_default/$fwiptables to change variables with: $fwiptables modify-default ]"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "show-default" ]; then  $give_cover
+echo "$tab [ $first_option ] [ show the default fwiptables ]"
+echo $header_lineal
+cat $directory_default/$fwiptables
+echo $footer_lineal
+echo "$tab [ status ] [ edit file $directory_default/$fwiptables to change variables with: $fwiptables modify-default ]"
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-show-default:
