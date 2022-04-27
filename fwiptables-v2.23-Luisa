@@ -30,7 +30,8 @@ directory_fiptables="/usr/bin" ;
 ####   
 ####
 ####     #### english: program name     #### spanish: nombre de el programa
-fwiptables="fwiptables" ;
+fwiptables="fwiptables"
+cmd_fwiptables="fwiptables-cmd"
 ####
 ####
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -47,7 +48,7 @@ directory_config="/etc/fwiptables-config"
 if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####
 ####     #### english: launch completion      #### spanish: lanza autocompletar
-if [ -f /etc/bash_completion.d/$fwiptables ] ; then . /etc/bash_completion.d/$fwiptables ; fi
+if [ -f /etc/bash_completion.d/$cmd_fwiptables ] ; then . /etc/bash_completion.d/$cmd_fwiptables ; fi
 ####
 ####
 ####     #### english: stablished the path    #### spanish: establece el path
@@ -178,9 +179,9 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$text_md || $tab || $fwiptables || Version $fversion || Use: $fwiptables options || $(date) ||"
+head_principal="$text_md || $tab || $cmd_fwiptables || Version $fversion || Use: $cmd_fwiptables options || $(date) ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_autolog="[ $fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
@@ -194,9 +195,9 @@ header_lineal="$tab   $tab  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 footer_lineal="$tab   $tab  "                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$fwiptables header"
+give_cover="$cmd_fwiptables header"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_autosave="$fwiptables autosave"
+give_autosave="$cmd_fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### several languages 
@@ -343,11 +344,11 @@ echo "$text_md     And too, use this firewall with some utilities for ipv4 and i
 echo  $text_md
 echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
-cmp -s $0 $directory_fiptables/$fwiptables || echo "$text_md          $fwiptables $fversion   ||   Actually, this version is not installed  "
-cmp -s $0 $directory_fiptables/$fwiptables && echo "$text_md          $fwiptables $fversion   ||   Actually, this version is installed  "
+cmp -s $0 $directory_fiptables/$cmd_fwiptables || echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is not installed  "
+cmp -s $0 $directory_fiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
-echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
+echo "$text_md     Uninstall $cmd_fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
 echo  $text_md
 echo "$title_md     Fran fwiptables project.  "
 echo  $text_md
@@ -430,34 +431,34 @@ if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
-##############################       english: uninstall:    $fwiptables           ###########################################
-##############################       spanish: desinstalador: $fwiptables           ###########################################
+##############################       english: uninstall:    $cmd_fwiptables           ###########################################
+##############################       spanish: desinstalador: $cmd_fwiptables           ###########################################
 #### :rutina-inicial-uninstall:
 ####
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
-echo "$title_md [ $first_option ] [ $fwiptables uninstaller ] [ uninstall.md ]"
-echo "$text_md [ running ] [ $fwiptables uninstalling ]"
-if  [ -f $directory_fiptables/$fwiptables ]; then
+echo "$title_md [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
+echo "$text_md [ running ] [ $cmd_fwiptables uninstalling ]"
+if  [ -f $directory_fiptables/$cmd_fwiptables ]; then
 rm $directory_fiptables/$fwiptables &> /dev/null
+rm $directory_fiptables/$cmd_fwiptables &> /dev/null
 rm $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 rm $directory_fiptables/$fwiptables-gui-menu &> /dev/null
 rm $directory_fiptables/$fwiptables-gui-shell &> /dev/null
 echo "$text_md [ status ] [ deleted binaries ]"
-echo "$text_md [ ok ] [ $fwiptables uninstalled ]" ;
-else echo "$text_md [ status ] [ $fwiptables is not installed ]"; fi
+echo "$text_md [ ok ] [ $cmd_fwiptables uninstalled ]" ;
+else echo "$text_md [ status ] [ $cmd_fwiptables is not installed ]"; fi
 exit; fi
 ####
 ####
 #### :rutina-final-uninstall:
-##############################       english: install:    $fwiptables           ###########################################
-##############################       spanish: instalador: $fwiptables           ###########################################
+##############################       english: install:    $cmd_fwiptables           ###########################################
+##############################       spanish: instalador: $cmd_fwiptables           ###########################################
 #### :rutina-inicial-install:
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$title_md [ $first_option ] [ $fwiptables installer ] [ install.md ]"
-#### echo "$text_md [ status ] [ Install $fwiptables in $directory_fiptables ]"
+echo "$title_md [ $first_option ] [ $cmd_fwiptables installer ] [ install.md ]"
 #### 
 #### 
 ####  english: copy the file to temporal folder
@@ -465,7 +466,7 @@ echo "$title_md [ $first_option ] [ $fwiptables installer ] [ install.md ]"
 #### 
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
-cp $zero_option $directory_fiptables/$fwiptables &> /dev/null
+cp $zero_option $directory_fiptables/$cmd_fwiptables &> /dev/null
 #### 
 #### 
 ####  english: Install new /etc/bash_completion/fwiptables
@@ -479,18 +480,19 @@ if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion
 ####
 ####
 rm /etc/bash_completion.d/$fwiptables &> /dev/null
+rm /etc/bash_completion.d/$cmd_fwiptables &> /dev/null
 rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
 ####  english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
-echo "alias $fwiptables='sudo $directory_fiptables/$fwiptables'"       &>  /etc/bash_completion.d/$fwiptables
+echo "alias $fwiptables='sudo $directory_fiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
 echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch \
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
-show-help show-example' $fwiptables"  &>> /etc/bash_completion.d/$fwiptables
+show-help show-example' $fwiptables"  &>> /etc/bash_completion.d/$cmd_fwiptables
 ####
 ####
 ####  english: Install new /etc/profile.d/fwiptables
@@ -505,6 +507,7 @@ if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null
 ####
 ####
 rm /etc/profile.d/$fwiptables &> /dev/null
+rm /etc/profile.d/$cmd_fwiptables &> /dev/null
 rm /etc/profile.d/$fwiptables.sh &> /dev/null
 ####
 ####
@@ -519,16 +522,16 @@ cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -200 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default/fwiptables
+echo "$(head -200 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default/$fwiptables
 #### 
 #### 
 ####  english: probe sane dir /etc/bash_completion.d
 ####  spanish: comprueba directorio sano /etc/bash_completion.d
 #### 
 #### 
-chmod ugo+rx /etc/bash_completion.d/$fwiptables &> /dev/null
+chmod ugo+rx /etc/bash_completion.d/fwiptables &> /dev/null
 chmod ugo+rx $directory_fiptables/$fwiptables &> /dev/null
-$fwiptables regen-config &> /dev/null
+$cmd_fwiptables regen-config &> /dev/null
 ####
 ####
 ####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
@@ -537,18 +540,19 @@ $fwiptables regen-config &> /dev/null
 ####
 echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-menu
 echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-gui-menu
-echo "sudo $fwiptables gui-menu" &>> $directory_fiptables/$fwiptables-gui-menu
+echo "sudo $cmd_fwiptables gui-menu" &>> $directory_fiptables/$fwiptables-gui-menu
 chmod ugo+rx $directory_fiptables/$fwiptables-gui-menu &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-shell
 echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-gui-shell
-echo "sudo $fwiptables gui-shell" &>> $directory_fiptables/$fwiptables-gui-shell
+echo "sudo $cmd_fwiptables gui-shell" &>> $directory_fiptables/$fwiptables-gui-shell
 chmod ugo+rx $directory_fiptables/$fwiptables-gui-shell &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-cli-menu
-echo "sudo $fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
+echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-cli-menu
+echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
 chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
 ####
 ####
@@ -561,11 +565,11 @@ fwiptables_icon="/usr/share/zenity/zenity.png"
 ####
 ####
 if [ -d "$desktop_directory" ] ;
-then echo "$text_md [ status ] [ $fwiptables $fversion Regenering icon desktop ]"
+then echo "$text_md [ status ] [ $cmd_fwiptables $fversion Regenering icon desktop ]"
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Terminal=false" &>> $desktop_directory/$fwiptables-cli-menu.desktop
+echo "Terminal=true" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Type=Application" &>> $desktop_directory/$fwiptables-cli-menu.desktop
@@ -577,9 +581,9 @@ echo "Categories=System" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Name=$fwiptables cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Name=$fwiptables gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Name=$fwiptables gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
+echo "Name=$cmd_fwiptables cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
+echo "Name=$cmd_fwiptables gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
+echo "Name=$cmd_fwiptables gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
 echo "Exec=$directory_fiptables/$fwiptables-cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
 echo "Exec=$directory_fiptables/$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
 echo "Exec=$directory_fiptables/$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
@@ -600,8 +604,8 @@ echo "$text_md [ status ] [ Menu entry desktop: ]   [ $fwiptables-cli-menu ] [ $
 ####  spanish: Lugar del archivo instalado
 #### 
 #### 
-echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$fwiptables ]"
-echo "$text_md [ ok ] [ Launch command $fwiptables to run /  type:  ] [ $fwiptables ]" 
+echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$cmd_fwiptables ]"
+echo "$text_md [ ok ] [ Launch command $cmd_fwiptables to run /  type:  ] [ $cmd_fwiptables ]" 
 exit; fi
 ####
 ####
@@ -613,13 +617,13 @@ exit; fi
 ####
 if [ "$first_option" = "upgrade" ]; then $give_cover
 echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
-echo "$text_md [ status ] [ upgrade $fwiptables at latest version from sourceforge.net web ]"
-echo "$text_md [ status ] [ upgrade $fwiptables in $directory_fiptables ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ status ] [ Upgrade The $fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ status ] [ Downloading $fwiptables with the command $favorite_text_browser browser ]"
-rm /tmp/$fwiptables &> /dev/null
+echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fiptables/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+rm /tmp/$cmd_fwiptables &> /dev/null
 ####
 ####
 ####  English: download fwiptables
@@ -647,7 +651,7 @@ exit ; fi
 #### :rutina-inicial-notice:
 ####
 ####
-cmp -s $0 $directory_fiptables/$fwiptables || . $0 intro
+cmp -s $0 $directory_fiptables/$cmd_fwiptables || . $0 intro
 ####
 ####
 #### :rutina-final-notice:
@@ -737,24 +741,24 @@ case "$second_option" in
 cli-menu) first_option="cli-menu"   ;;
 gui-menu) first_option="gui-menu"   ;;
 gui-shell) first_option="gui-shell" ;;
-"nueva-mini-config")  $fwiptables $second_option $third_option ;  exit ;;
-"nueva-completa-config") $fwiptables $second_option $third_option ;  exit ;;
-"new-mini-config") $fwiptables $second_option $third_option ;  exit ;;
-"new-full-config") $fwiptables $second_option $third_option ;  exit ;;
-"modify-config") $fwiptables $second_option $third_option ;  exit ;;
-"modify-default") $fwiptables $second_option $third_option  ;  exit ;;
-"ole-domain") $fwiptables ole-domain -txt ; exit ;; 
-"ole-word") $fwiptables ole-word -txt ; exit ;;
-"ole-number") $fwiptables ole-number -txt ; exit ;;
-"colour-hex"|"colour-rgb") $fwiptables $second_option $third_option  ;  exit ;;
-"blacklist-on") $fwiptables $second_option $third_option  ;  exit ;;
-"list") $fwiptables list4-ip &> $file_temporal_text 
+"nueva-mini-config")  $cmd_fwiptables $second_option $third_option ;  exit ;;
+"nueva-completa-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"ole-domain") $cmd_fwiptables ole-domain -txt ; exit ;; 
+"ole-word") $cmd_fwiptables ole-word -txt ; exit ;;
+"ole-number") $cmd_fwiptables ole-number -txt ; exit ;;
+"colour-hex"|"colour-rgb") $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"blacklist-on") $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"list") $cmd_fwiptables list4-ip &> $file_temporal_text 
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
-"list6") $fwiptables list6-ip &> $file_temporal_text 
+"list6") $cmd_fwiptables list6-ip &> $file_temporal_text 
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
-*) $fwiptables $second_option $third_option &> $file_temporal_textfinal
+*) $cmd_fwiptables $second_option $third_option &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
 esac; fi
 ####
@@ -767,25 +771,25 @@ case "$second_option" in
 cli-menu) first_option="cli-menu"   ;;
 gui-menu) first_option="gui-menu"   ;;
 gui-shell) first_option="gui-shell" ;;
-wizard-*) echo $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"nueva-mini-config")  $fwiptables $second_option $third_option ;  exit ;;
-"nueva-completa-config") $fwiptables $second_option $third_option ;  exit ;;
-"new-mini-config") $fwiptables $second_option $third_option ;  exit ;;
-"new-full-config") $fwiptables $second_option $third_option ;  exit ;;
-"modify-config") $fwiptables $second_option $third_option ;  exit ;;
-"modify-default") $fwiptables $second_option $third_option  ;  exit ;;
-# scan-*) echo $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-"radio") echo $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-"ole-domain") $fwiptables ole-domain -cli ; exit ;;
-"ole-word") $fwiptables ole-word -cli ; exit ;;
-"ole-number") $fwiptables ole-number -cli ; exit ;;
-"blacklist-on") echo $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
+wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+"nueva-mini-config")  $cmd_fwiptables $second_option $third_option ;  exit ;;
+"nueva-completa-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
+# scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"radio") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+"ole-domain") $cmd_fwiptables ole-domain -cli ; exit ;;
+"ole-word") $cmd_fwiptables ole-word -cli ; exit ;;
+"ole-number") $cmd_fwiptables ole-number -cli ; exit ;;
+"blacklist-on") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
-clear; $fwiptables log-search $pattern ; exit ;; 
-log-*) echo $message_without_cli ; $fwiptables $second_option $third_option ;  exit ;;
-fw-*)  echo $message_without_cli ; $fwiptables $second_option $third_option  ;  exit ;;
-*) dialog --title " CLI Output || $(date) " --msgbox "$($fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
+clear; $cmd_fwiptables log-search $pattern ; exit ;; 
+log-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+fw-*)  echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+*) dialog --title " CLI Output || $(date) " --msgbox "$($cmd_fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
 ####
 ####
 esac ; fi
@@ -809,10 +813,10 @@ esac ; fi
 if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
 then first_option="-log" 
 echo $head_waiting_log
-$fwiptables $second_option $third_option &> $file_output_log
+$cmd_fwiptables $second_option $third_option &> $file_output_log
 cat $file_output_log | grep -v Warning: &>> $file_output_filelog
 echo "$tab [ ok ] \
-[ Output $fwiptables $second_option $third_option sended to $file_output_filelog ] \
+[ Output $cmd_fwiptables $second_option $third_option sended to $file_output_filelog ] \
 [ show: fwiptables filelog ]" ;
 exit ; fi
 ####
@@ -857,7 +861,7 @@ colour-*) echo $message_without_web ; exit ;;
 esac
 echo $head_waiting_web
 rm "$file_temporal_text"* &> /dev/null
-$fwiptables $second_option $third_option &> $file_temporal_text.1 ;
+$cmd_fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_txt2html --outfile $file_temporal_text.html $file_temporal_text.2 ;
 $favorite_text_browser $file_temporal_text.html
@@ -869,7 +873,7 @@ exit ; fi
 ####
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
 echo "$tab [ message ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
-torify -i $fwiptables $second_option $third_option ; exit ; fi
+torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
 ##############################     english: autolog:         ###################################
@@ -961,7 +965,7 @@ echo "$tab [ status]  [ regenerate template wizard and template cfg ]"
 #### spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0=$(echo "$cinco $fprogram from $fwiptables version $fversion whith config_variable_version=2 " )
+var0=$(echo "$cinco $fprogram from $cmd_fwiptables version $fversion whith config_variable_version=2 " )
 var1=$(echo "$cinco BEGIN NECESARY #" )
 eng1=$(echo "$cinco  .......... BEGIN Necesary options .......... .......... #")
 spa1=$(echo "$cinco INICIO .......... Opciones Necesarias .......... .......... #")
@@ -1499,7 +1503,7 @@ esac
 if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
 echo "$tab [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
-$fwiptables save autosave-fwiptables &> /dev/null
+$cmd_fwiptables save autosave-fwiptables &> /dev/null
 fi; exit; fi
 ####
 ####
@@ -1675,9 +1679,9 @@ server_port_tcp="25000:35000" ; server_port_udp="" ; fi
 ####
 if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
-else  $fwiptables cfg 
-echo "$tab [ Usage ] [ $fwiptables custom file-cfg ]"
-echo "$tab [ See ]   [ $fwiptables firewall-custom ]"; fi ; fi
+else  $cmd_fwiptables cfg 
+echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
+echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
 #### :rutina-final-custom:
@@ -1711,12 +1715,12 @@ echo "$text_md     show-options   |  show-hardware   show-etc       show-log    
 echo "$text_md                       show-help       show-example                                      "
 echo "$title_md                                      [ some-example ]                                  "
 echo "$text_md        [ Example command ]                       [ Example Description ]                "
-echo "$text_md    $fwiptables options                  |  Show more options likes output txt           "
-echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt          "
-echo "$text_md    $fwiptables -cli save one-name       |  Save rules with output cli                   "
-echo "$text_md    $fwiptables -cli names               |  List firewall saved with output cli          "
-echo "$text_md    $fwiptables -gui ss                  |  List sockets ip with output gui              "
-echo "$text_md    $fwiptables -gui wizard-mini         |  Generate rules with output gui               "
+echo "$text_md    $cmd_fwiptables options                  |  Show more options likes output txt           "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
+echo "$text_md    $cmd_fwiptables -cli save one-name       |  Save rules with output cli                   "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui              "
+echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
 exit ; fi
 ####
 ####
@@ -1765,12 +1769,12 @@ echo "$text_md    show-about         |  about version depends config-eng config-
 echo "$text_md    show-help          |  all-help help ayuda notes options info                             "
 echo "$text_md                          group-options mini-options full-options                            "
 echo "$title_md       [ Example command ]                       [ Example Description ]                    "
-echo "$text_md    $fwiptables options                  |  Show more options likes output txt               "
-echo "$text_md    $fwiptables -txt list                |  List iptables rules with output txt              "
-echo "$text_md    $fwiptables -cli save one-name       |  Save rules with output cli                       "
-echo "$text_md    $fwiptables -cli names               |  List firewall saved with output cli              "
-echo "$text_md    $fwiptables -gui ss                  |  List sockets ip with output gui                  "
-echo "$text_md    $fwiptables -gui wizard-mini         |  Generate rules with output gui                   "
+echo "$text_md    $cmd_fwiptables options                  |  Show more options likes output txt               "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt              "
+echo "$text_md    $cmd_fwiptables -cli save one-name       |  Save rules with output cli                       "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli              "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui                  "
+echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                   "
 exit ; fi
 ####
 ####
@@ -1859,16 +1863,16 @@ exit ; fi
 ####
 if [ "$first_option" = "all-help" ]; then $give_cover
 echo "$text_md $tab [ $first_option ] [ help in english and spanish ] [ all-help.md ]"
-echo "$text_md [ Choose only help in english ]        [ Type:     $fwiptables help ]"
-echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $fwiptables ayuda ]"
-echo "$text_md [ all-help in english and spanish ]    [ Type:     $fwiptables all-help ]"
+echo "$text_md [ Choose only help in english ]        [ Type:     $cmd_fwiptables help ]"
+echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $cmd_fwiptables ayuda ]"
+echo "$text_md [ all-help in english and spanish ]    [ Type:     $cmd_fwiptables all-help ]"
 $brake_md
-$fwiptables intro
+$cmd_fwiptables intro
 echo  $text_md
 $brake_md
 echo "$title_md [ full-options ]"
 echo  $text_md
-$fwiptables full-options
+$cmd_fwiptables full-options
 $brake_md
 echo  $text_md
 echo "$title_md [ group-options ]"
@@ -1878,75 +1882,75 @@ echo "$title_md [ Principal options ]"
 echo  $text_md
 $brake_md
 echo  $text_md
-$fwiptables output-interface
+$cmd_fwiptables output-interface
 $brake_md
 echo  $text_md
-$fwiptables firewall-rules
+$cmd_fwiptables firewall-rules
 $brake_md
 echo  $text_md
-$fwiptables firewall-list
+$cmd_fwiptables firewall-list
 $brake_md
 echo  $text_md
-$fwiptables firewall-launch
+$cmd_fwiptables firewall-launch
 echo  $text_md
 $brake_md
-$fwiptables firewall-custom
+$cmd_fwiptables firewall-custom
 echo  $text_md
 echo "$title_md [ Secondary options ]"
 echo  $text_md
 $brake_md
-$fwiptables tool-sockets
+$cmd_fwiptables tool-sockets
 echo  $text_md
 $brake_md
-$fwiptables tool-forward
+$cmd_fwiptables tool-forward
 echo  $text_md
 $brake_md
-$fwiptables tool-udp
+$cmd_fwiptables tool-udp
 echo  $text_md
 $brake_md
-$fwiptables tool-tcp
+$cmd_fwiptables tool-tcp
 echo  $text_md
 $brake_md
-$fwiptables tool-icmp
+$cmd_fwiptables tool-icmp
 echo  $text_md
 $brake_md
-$fwiptables tool-nmap
+$cmd_fwiptables tool-nmap
 echo  $text_md
 $brake_md
-$fwiptables tool-sudo
+$cmd_fwiptables tool-sudo
 echo  $text_md
 $brake_md
-$fwiptables tool-game
+$cmd_fwiptables tool-game
 echo  $text_md
 $brake_md
-$fwiptables tool-system
+$cmd_fwiptables tool-system
 echo  $text_md
 $brake_md
-$fwiptables tool-install
+$cmd_fwiptables tool-install
 echo  $text_md
 $brake_md
-$fwiptables tool-blacklist
+$cmd_fwiptables tool-blacklist
 echo  $text_md
 $brake_md
-$fwiptables tool-dev
+$cmd_fwiptables tool-dev
 echo  $text_md
 $brake_md
-$fwiptables show-hardware
+$cmd_fwiptables show-hardware
 echo  $text_md
 $brake_md
-$fwiptables show-log
+$cmd_fwiptables show-log
 echo  $text_md
 $brake_md
-$fwiptables show-etc
+$cmd_fwiptables show-etc
 echo  $text_md
 $brake_md
-$fwiptables show-about
+$cmd_fwiptables show-about
 echo  $text_md
 $brake_md
-$fwiptables show-help
+$cmd_fwiptables show-help
 echo  $text_md
 $brake_md
-$fwiptables notes
+$cmd_fwiptables notes
 echo  $text_md
 echo "$title_md  [Config cfg example] [Configuracion cfg ejemplo]"
 echo  $text_md
@@ -1954,7 +1958,7 @@ $brake_md
 cat $defaultcfg
 echo  $text_md
 $brake_md
-$fwiptables version
+$cmd_fwiptables version
 echo  $text_md
 echo $footer_lineal
 exit; fi
@@ -1968,10 +1972,10 @@ exit; fi
 ####
 if [ "$first_option" = "help-options" ]; then $give_cover
 echo "$text_md [ $first_option ] [ List group options help ]"
-$fwiptables output-interface
-$fwiptables firewall-options
-$fwiptables tool-options
-$fwiptables show-options
+$cmd_fwiptables output-interface
+$cmd_fwiptables firewall-options
+$cmd_fwiptables tool-options
+$cmd_fwiptables show-options
 echo $text_md $footer_lineal
 exit; fi
 ####
@@ -2010,11 +2014,11 @@ echo "$title_md $tab [ $first_option ] [ List examples ] [ some-examples.md ]"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
 echo "$text_md $tab $tab"
-echo "$text_md   Generate new iptables rules :#            $fwiptables wizard-mini         "
-echo "$text_md   Save iptables rules in name :#            $fwiptables save name           "
-echo "$text_md   Load iptables rules :#                    $fwiptables load name           "
-echo "$text_md   Load iptables rules to output log :#      $fwiptables -log load name      "
-echo "$text_md   Load iptables rules to output gui :#      $fwiptables -gui load name      "
+echo "$text_md   Generate new iptables rules :#            $cmd_fwiptables wizard-mini         "
+echo "$text_md   Save iptables rules in name :#            $cmd_fwiptables save name           "
+echo "$text_md   Load iptables rules :#                    $cmd_fwiptables load name           "
+echo "$text_md   Load iptables rules to output log :#      $cmd_fwiptables -log load name      "
+echo "$text_md   Load iptables rules to output gui :#      $cmd_fwiptables -gui load name      "
 echo $footer_lineal
 exit; fi
 ####
@@ -2655,14 +2659,14 @@ echo "$text_md [ Tool sudo ]"
 echo "$text_md [ Herramienta sudo ]"
 echo  $text_md
 echo "$text_md $tab sudo-adduser" 
-echo "$text_md $tab_lang_english          : Allow sudo $fwiptables to other choosed users"
-echo "$text_md $tab_lang_spanish          : Permite sudo $fwiptables a otros elegidos usuarios"
+echo "$text_md $tab_lang_english          : Allow sudo $cmd_fwiptables to other choosed users"
+echo "$text_md $tab_lang_spanish          : Permite sudo $cmd_fwiptables a otros elegidos usuarios"
 echo "$text_md $tab sudo-deluser" 
-echo "$text_md $tab_lang_english          : Remove sudo $fwiptables to other choosed users"
-echo "$text_md $tab_lang_spanish          : Borra sudo $fwiptables a otros elegidos usuarios"
+echo "$text_md $tab_lang_english          : Remove sudo $cmd_fwiptables to other choosed users"
+echo "$text_md $tab_lang_spanish          : Borra sudo $cmd_fwiptables a otros elegidos usuarios"
 echo "$text_md $tab sudo-list" 
-echo "$text_md $tab_lang_english          : List sudo $fwiptables to other choosed users"
-echo "$text_md $tab_lang_spanish          : Lista sudo $fwiptables a otros elegidos usuarios"
+echo "$text_md $tab_lang_english          : List sudo $cmd_fwiptables to other choosed users"
+echo "$text_md $tab_lang_spanish          : Lista sudo $cmd_fwiptables a otros elegidos usuarios"
 echo "$text_md $tab alias-list" 
 echo "$text_md $tab_lang_english          : List the autocompletion alias for $fwiptables"
 echo "$text_md $tab_lang_spanish          : Lista los alias de autocompletar para $fwiptables"
@@ -2970,7 +2974,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
-echo "$tab [ $first_option ] [ List notes about $fwiptables ]"
+echo "$tab [ $first_option ] [ List notes about $cmd_fwiptables ]"
 echo
 echo " [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo " [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
@@ -3039,9 +3043,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
-echo "$tab [ $first_option ] [ List programs depends about $fwiptables ]"
+echo "$tab [ $first_option ] [ List programs depends about $cmd_fwiptables ]"
 echo $tab
-echo "$tab [ It are all the depends to full work in $fwiptables $fversion ]"
+echo "$tab [ It are all the depends to full work in $cmd_fwiptables $fversion ]"
 echo $tab
 echo "$tab [Configuration directory]"
 echo "list cfg:            $directory_config"
@@ -3057,25 +3061,25 @@ echo "$tab [output log]"
 echo "destination filelog: $file_output_filelog"
 echo "destination autolog: $file_output_autolog"
 echo $tab
-echo "$tab [$fwiptables util]"
+echo "$tab [$cmd_fwiptables util]"
 echo "sed:       $command_sed"
 echo "fmt:       $command_fmt"
 echo $tab
-echo "$tab [$fwiptables cli]"
+echo "$tab [$cmd_fwiptables cli]"
 echo "dialog:    $command_dialog"
 echo $tab
-echo "$tab [$fwiptables gui]"
+echo "$tab [$cmd_fwiptables gui]"
 echo "zenity:      $command_zenity"
 echo $tab
-echo "$tab [$fwiptables auto text browser]"
+echo "$tab [$cmd_fwiptables auto text browser]"
 echo "automatic: lynx or links or links2 "
 echo "auto text browser: $favorite_text_browser"
 echo $tab
-echo "$tab [$fwiptables auto date command]"
+echo "$tab [$cmd_fwiptables auto date command]"
 echo "automatic: rdate or sntp or ntpdate"
 echo "auto text browser: $favorite_date_command"
 echo $tab
-echo "$tab [$fwiptables auto music browser]"
+echo "$tab [$cmd_fwiptables auto music browser]"
 echo "automatic: mpg321 or mpg123"
 echo "auto text browser: $favorite_radio_command"
 echo $tab
@@ -3087,7 +3091,7 @@ echo "ip6tables nft:     $command_ip6tables_nft"
 echo "arptables:         $command_arptables"
 echo "ebtables:          $command_ebtables"
 echo $tab
-echo "$tab [$fwiptables tool]"
+echo "$tab [$cmd_fwiptables tool]"
 echo "date:       $command_date"
 echo "uname:      $command_uname"
 echo "ip:         $command_ip"
@@ -3203,15 +3207,15 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
-"ole-word") $fwiptables ole-word gui ; exit ;;
-"ole-number") $fwiptables ole-number gui ; exit ;;
-"ole-domain") $fwiptables ole-domain gui ; exit ;;
+"ole-word") $cmd_fwiptables ole-word gui ; exit ;;
+"ole-number") $cmd_fwiptables ole-number gui ; exit ;;
+"ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
 ####
 ####
 *)
-$fwiptables $second_option $third_option &> $file_temporal_gui
+$cmd_fwiptables $second_option $third_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
-zenity --text-info $graphic_dimension --title "[$fwiptables gui] [$second_option]" \
+zenity --text-info $graphic_dimension --title "[$cmd_fwiptables gui] [$second_option]" \
 --filename=$file_temporal_guifinal --auto-scroll
 ;;
 #### 
@@ -3238,7 +3242,7 @@ cp "$defaultminicfg_eng" "/tmp/$fwiptables-$archivo"
 zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$fwiptables -gui custom $second_option ; $fwiptables -gui list ;
+$cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
 else rm "$directory_config/$second_option" ;
 zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
@@ -3250,7 +3254,7 @@ cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$archivo"
 zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$fwiptables -gui custom $second_option ; $fwiptables -gui list ;
+$cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
 else rm "$directory_config/$second_option" ;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -3261,21 +3265,21 @@ cp $directory_default/fwiptables /tmp/$fwiptables-modify-default
 zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-modify-default" \
 --editable --title="MODIFY FILE" &> $directorfy_default/$fwiptables
 if [  -s "$directory_default/fwiptables" ]; then $nada ; 
-$fwiptables -gui show-default ;
+$cmd_fwiptables -gui show-default ;
 else cp /tmp/$fwiptables-modify-default directory_default/fwiptables;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
-"ole-word") $fwiptables ole-word gui ; exit ;;
-"ole-number") $fwiptables ole-number gui ; exit ;;
-"ole-domain") $fwiptables ole-domain gui ; exit ;;
+"ole-word") $cmd_fwiptables ole-word gui ; exit ;;
+"ole-number") $cmd_fwiptables ole-number gui ; exit ;;
+"ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
 ####
 ####
 *)
-$fwiptables $second_option $third_option &> $file_temporal_gui
+$cmd_fwiptables $second_option $third_option &> $file_temporal_gui
 cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
-zenity --text-info $graphic_dimension --title "[$fwiptables gui] [$second_option]" \
+zenity --text-info $graphic_dimension --title "[$cmd_fwiptables gui] [$second_option]" \
 --filename=$file_temporal_guifinal --auto-scroll
 ;;
 #### 
@@ -3292,7 +3296,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
-zenity --forms $graphic_dimension --title="Type of Interface" --text="$($fwiptables mini-options)"
+zenity --forms $graphic_dimension --title="Type of Interface" --text="$($cmd_fwiptables mini-options)"
 exit; fi
 ####
 ####
@@ -3308,32 +3312,32 @@ selection=$(zenity $graphic_dimension  \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
 "12 Tool game" "13 Tool system" "14 Tool install" "15 Tool blacklist" "16 Tool dev" \
 "17 Show hardware" "18 Show etc" "19 Show log" "20 Show about" "21 Show help" \
---column="Option list $fwiptables" --text="Select one option" --title="Gui Menu || $fwiptables || $(date) ")
+--column="Option list $fwiptables" --text="Select one option" --title="Gui Menu || $cmd_fwiptables || $(date) ")
 #### 
 #### 
 case "$selection" in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"01 Firewall Rules")$fwiptables gui-menu-firewall-rules ; exit ;;
-"02 Firewall List")$fwiptables gui-menu-firewall-list ; exit ;;
-"03 Firewall Launch")$fwiptables gui-menu-firewall-launch ; exit ;;
-"04 Firewall Custom")$fwiptables gui-menu-firewall-custom ; exit ;;
-"05 Tool rules")$fwiptables gui-menu-firewall-custom ; exit ;;
-"06 Tool sockets")$fwiptables gui-menu-tool-sockets ; exit ;;
-"07 Tool forward")$fwiptables gui-menu-tool-forward ; exit ;;
-"08 Tool tcp")$fwiptables gui-menu-tool-tcp ; exit ;;
-"09 Tool udp")$fwiptables gui-menu-tool-udp ; exit ;;
-"10 Tool icmp")$fwiptables gui-menu-tool-icmp ; exit ;;
-"11 Tool sudo")$fwiptables gui-menu-tool-sudo ; exit ;;
-"12 Tool game") $fwiptables gui-menu-tool-game ; exit ;;
-"13 Tool system")$fwiptables gui-menu-tool-system ; exit ;;
-"14 Tool install")$fwiptables gui-menu-tool-install ; exit ;;
-"15 Tool blacklist")$fwiptables gui-menu-tool-blacklist ; exit ;;
-"16 Tool dev")$fwiptables gui-menu-tool-dev ; exit ;;
-"17 Show hardware")$fwiptables gui-menu-show-hardware ; exit ;;
-"18 Show etc")$fwiptables gui-menu-show-etc ; exit ;;
-"19 Show log")$fwiptables gui-menu-show-log ; exit ;;
-"20 Show about")$fwiptables gui-menu-show-about ; exit ;;
-"21 Show help")$fwiptables gui-menu-show-help ; exit ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"01 Firewall Rules")$cmd_fwiptables gui-menu-firewall-rules ; exit ;;
+"02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
+"03 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
+"04 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
+"05 Tool rules")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
+"06 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
+"07 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
+"08 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
+"09 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
+"10 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
+"11 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
+"12 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
+"13 Tool system")$cmd_fwiptables gui-menu-tool-system ; exit ;;
+"14 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
+"15 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
+"16 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
+"17 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
+"18 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
+"19 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
+"20 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
+"21 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
 #### 
 esac
 ####
@@ -3358,35 +3362,35 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case "$selection" in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui firewall-launch ;;
-"eraserules") $fwiptables -gui eraserules ; $fwiptables gui list ;;
-"wizard-full")$fwiptables -gui wizard-full ;;
-"wizard-mini")$fwiptables -gui wizard-mini ;;
-"offline") $fwiptables -gui offline ; $fwiptables gui list ;;
-"all-permisive") $fwiptables -gui all-permisive ; $fwiptables gui list ;;
-"client-web") $fwiptables -gui client-web ; $fwiptables gui list ;;
-"client-torrent") $fwiptables -gui client-torrent ; $fwiptables gui list ;;
-"client-vpn") $fwiptables -gui client-vpn ; $fwiptables gui list ;;
-"games-shooter") $fwiptables -gui games-shooter ; $fwiptables gui list ;;
-"game-westnoth") $fwiptables -gui game-westnoth ; $fwiptables gui list ;;
-"game-minetest") $fwiptables -gui game-minetest ; $fwiptables gui list ;;
-"client-tor") $fwiptables -gui client-tor ; $fwiptables gui list ;;
-"lan-tor") $fwiptables -gui lan-tor ; $fwiptables gui list ;;
-"lan-vpn") $fwiptables -gui lan-vpn ; $fwiptables gui list ;;
-"server-web") $fwiptables -gui server-web ; $fwiptables gui list ;;
-"server-samba") $fwiptables -gui server-samba ; $fwiptables gui list ;;
-"server-ssh") $fwiptables -gui server-ssh ; $fwiptables gui list ;;
-"server-print") $fwiptables -gui server-print ; $fwiptables gui list ;;
-"server-lamp") $fwiptables -gui server-lamp ; $fwiptables gui list ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui firewall-launch ;;
+"eraserules") $cmd_fwiptables -gui eraserules ; $cmd_fwiptables gui list ;;
+"wizard-full")$cmd_fwiptables -gui wizard-full ;;
+"wizard-mini")$cmd_fwiptables -gui wizard-mini ;;
+"offline") $cmd_fwiptables -gui offline ; $cmd_fwiptables gui list ;;
+"all-permisive") $cmd_fwiptables -gui all-permisive ; $cmd_fwiptables gui list ;;
+"client-web") $cmd_fwiptables -gui client-web ; $cmd_fwiptables gui list ;;
+"client-torrent") $cmd_fwiptables -gui client-torrent ; $cmd_fwiptables gui list ;;
+"client-vpn") $cmd_fwiptables -gui client-vpn ; $cmd_fwiptables gui list ;;
+"games-shooter") $cmd_fwiptables -gui games-shooter ; $cmd_fwiptables gui list ;;
+"game-westnoth") $cmd_fwiptables -gui game-westnoth ; $cmd_fwiptables gui list ;;
+"game-minetest") $cmd_fwiptables -gui game-minetest ; $cmd_fwiptables gui list ;;
+"client-tor") $cmd_fwiptables -gui client-tor ; $cmd_fwiptables gui list ;;
+"lan-tor") $cmd_fwiptables -gui lan-tor ; $cmd_fwiptables gui list ;;
+"lan-vpn") $cmd_fwiptables -gui lan-vpn ; $cmd_fwiptables gui list ;;
+"server-web") $cmd_fwiptables -gui server-web ; $cmd_fwiptables gui list ;;
+"server-samba") $cmd_fwiptables -gui server-samba ; $cmd_fwiptables gui list ;;
+"server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
+"server-print") $cmd_fwiptables -gui server-print ; $cmd_fwiptables gui list ;;
+"server-lamp") $cmd_fwiptables -gui server-lamp ; $cmd_fwiptables gui list ;;
 "custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
-$fwiptables -gui custom $archivo ; $fwiptables gui list ;;
+$cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables gui list ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3406,25 +3410,25 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case "$selection" in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui firewall-rules ;;
-"stop") $fwiptables -gui stop ; $fwiptables -gui list ;;
-"continue") $fwiptables -gui continue ; $fwiptables -gui list ;;
-"reset") $fwiptables -gui reset ; $fwiptables -gui list ;;
-"names") $fwiptables -gui list-fw ;;
-"show")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($fwiptables list-fw)")" ; 
-$fwiptables -gui show $archivo ;;
-"save")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($fwiptables list-fw)")" ; 
-$fwiptables -gui save $archivo ;;
-"load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($fwiptables list-fw)")" ;
-$fwiptables -gui load $archivo ; $fwiptables -gui list ;;
-"actual") $fwiptables -gui actual ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui firewall-rules ;;
+"stop") $cmd_fwiptables -gui stop ; $cmd_fwiptables -gui list ;;
+"continue") $cmd_fwiptables -gui continue ; $cmd_fwiptables -gui list ;;
+"reset") $cmd_fwiptables -gui reset ; $cmd_fwiptables -gui list ;;
+"names") $cmd_fwiptables -gui list-fw ;;
+"show")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables list-fw)")" ; 
+$cmd_fwiptables -gui show $archivo ;;
+"save")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables list-fw)")" ; 
+$cmd_fwiptables -gui save $archivo ;;
+"load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_fwiptables list-fw)")" ;
+$cmd_fwiptables -gui load $archivo ; $cmd_fwiptables -gui list ;;
+"actual") $cmd_fwiptables -gui actual ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3446,33 +3450,33 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui firewall-list ;;
-"list") $fwiptables -gui list ;;
-"list6") $fwiptables -gui list6 ;;
-"list-alltables") $fwiptables -gui list-alltables ;;
-"list-filter4") $fwiptables -gui list-filter4 ;;
-"list-filter6") $fwiptables -gui list-filter6 ;;
-"list-forward") $fwiptables -gui forward ;;
-"list-forward6") $fwiptables -gui forward6 ;;
-"listnum") $fwiptables -gui listnum ;;
-"listnum6") $fwiptables -gui listnum6 ;;
-"list-nat4") $fwiptables -gui list-nat4 ;;
-"list-nat6") $fwiptables -gui list-nat6 ;;
-"list-mangle4") $fwiptables -gui list-mangle4 ;;
-"list-mangle6") $fwiptables -gui list-mangle6 ;;
-"list-raw4") $fwiptables -gui list-raw4 ;;
-"list-raw6") $fwiptables -gui list-raw6 ;;
-"list-security4") $fwiptables -gui list-security4 ;;
-"list-security6") $fwiptables -gui list-security6 ;;
-"list-ebtables") $fwiptables -gui list-ebtables ;;
-"list-arptables") $fwiptables -gui list-arptables ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui firewall-list ;;
+"list") $cmd_fwiptables -gui list ;;
+"list6") $cmd_fwiptables -gui list6 ;;
+"list-alltables") $cmd_fwiptables -gui list-alltables ;;
+"list-filter4") $cmd_fwiptables -gui list-filter4 ;;
+"list-filter6") $cmd_fwiptables -gui list-filter6 ;;
+"list-forward") $cmd_fwiptables -gui forward ;;
+"list-forward6") $cmd_fwiptables -gui forward6 ;;
+"listnum") $cmd_fwiptables -gui listnum ;;
+"listnum6") $cmd_fwiptables -gui listnum6 ;;
+"list-nat4") $cmd_fwiptables -gui list-nat4 ;;
+"list-nat6") $cmd_fwiptables -gui list-nat6 ;;
+"list-mangle4") $cmd_fwiptables -gui list-mangle4 ;;
+"list-mangle6") $cmd_fwiptables -gui list-mangle6 ;;
+"list-raw4") $cmd_fwiptables -gui list-raw4 ;;
+"list-raw6") $cmd_fwiptables -gui list-raw6 ;;
+"list-security4") $cmd_fwiptables -gui list-security4 ;;
+"list-security6") $cmd_fwiptables -gui list-security6 ;;
+"list-ebtables") $cmd_fwiptables -gui list-ebtables ;;
+"list-arptables") $cmd_fwiptables -gui list-arptables ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3493,38 +3497,38 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui firewall-custom;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui firewall-custom;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
-$fwiptables -gui new-full-config $archivo ;;
+$cmd_fwiptables -gui new-full-config $archivo ;;
 "nueva-completa-config")
 archivo="$(zenity $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
-$fwiptables -gui nueva-completa-config $archivo ;;
+$cmd_fwiptables -gui nueva-completa-config $archivo ;;
 "new-mini-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
-$fwiptables -gui new-mini-config $archivo ;;
+$cmd_fwiptables -gui new-mini-config $archivo ;;
 "nueva-mini-config")
 archivo="$(zenity $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
-$fwiptables -gui nueva-mini-config $archivo ;;
+$cmd_fwiptables -gui nueva-mini-config $archivo ;;
 "names-config")
-$fwiptables -gui names-config ;;
+$cmd_fwiptables -gui names-config ;;
 "show-config")
-archivo="$(zenity $graphic_dimension --entry --title "[show-config]" --text="$($fwiptables cfg)")" ;
-$fwiptables -gui show-config $archivo ;;
+archivo="$(zenity $graphic_dimension --entry --title "[show-config]" --text="$($cmd_fwiptables cfg)")" ;
+$cmd_fwiptables -gui show-config $archivo ;;
 "modify-config")
-archivo="$(zenity $graphic_dimension --entry --title "[modify-config]" --text="$($fwiptables cfg)")" ;
-$fwiptables -gui modify-config $archivo ;;
+archivo="$(zenity $graphic_dimension --entry --title "[modify-config]" --text="$($cmd_fwiptables cfg)")" ;
+$cmd_fwiptables -gui modify-config $archivo ;;
 "del-config")
-archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($fwiptables cfg)")" ;
-$fwiptables -gui del-config $archivo;;
-"regen-config")$fwiptables -gui regen-config ;;
+archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($cmd_fwiptables cfg)")" ;
+$cmd_fwiptables -gui del-config $archivo;;
+"regen-config")$cmd_fwiptables -gui regen-config ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3545,25 +3549,25 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu") $fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-sockets ;;
-"info-route") $fwiptables -gui route ;;
-"info-nodes") $fwiptables -gui info-nodes ;;
-"info-net") $fwiptables -gui info-net ;;
-"info-system")$fwiptables -gui info-system ;;
-"ss") $fwiptables -gui ss ;;
-"lsof") $fwiptables -gui lsof ;;
-"netstat") $fwiptables -gui netstat ;;
-"netstat-nat") $fwiptables -gui netstat-nat ;;
-"tcpdump") $fwiptables -gui tcpdump ;;
-"info-proxy") $fwiptables -gui info-proxy ;;
-"info-listen") $fwiptables -gui info-listen ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-sockets ;;
+"info-route") $cmd_fwiptables -gui route ;;
+"info-nodes") $cmd_fwiptables -gui info-nodes ;;
+"info-net") $cmd_fwiptables -gui info-net ;;
+"info-system")$cmd_fwiptables -gui info-system ;;
+"ss") $cmd_fwiptables -gui ss ;;
+"lsof") $cmd_fwiptables -gui lsof ;;
+"netstat") $cmd_fwiptables -gui netstat ;;
+"netstat-nat") $cmd_fwiptables -gui netstat-nat ;;
+"tcpdump") $cmd_fwiptables -gui tcpdump ;;
+"info-proxy") $cmd_fwiptables -gui info-proxy ;;
+"info-listen") $cmd_fwiptables -gui info-listen ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3583,17 +3587,17 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu") $fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-forward    ;;
-"ipforward-list") $fwiptables -gui ipforward-list ;;
-"ipforward-on") $fwiptables -gui ipforward-on     ;;
-"ipforward-off") $fwiptables -gui ipforward-off   ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-forward    ;;
+"ipforward-list") $cmd_fwiptables -gui ipforward-list ;;
+"ipforward-on") $cmd_fwiptables -gui ipforward-on     ;;
+"ipforward-off") $cmd_fwiptables -gui ipforward-off   ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3613,18 +3617,18 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-icmp ;;
-"traceicmp-ip4") $fwiptables -gui traceicmp-ip4 ;;
-"traceicmp-ip6") $fwiptables -gui traceicmp-ip6 ;;
-"ping-ip4")  $fwiptables -gui ping-ip4  ;;
-"ping-ip6")  $fwiptables -gui ping-ip6  ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-icmp ;;
+"traceicmp-ip4") $cmd_fwiptables -gui traceicmp-ip4 ;;
+"traceicmp-ip6") $cmd_fwiptables -gui traceicmp-ip6 ;;
+"ping-ip4")  $cmd_fwiptables -gui ping-ip4  ;;
+"ping-ip6")  $cmd_fwiptables -gui ping-ip6  ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3644,23 +3648,23 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-udp ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-udp ;;
 "host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
-$fwiptables -gui host $archivo ;;
+$cmd_fwiptables -gui host $archivo ;;
 "dig")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
-$fwiptables -gui dig $archivo ;;
+$cmd_fwiptables -gui dig $archivo ;;
 "resolveip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
-$fwiptables -gui resolveip $archivo ;;
+$cmd_fwiptables -gui resolveip $archivo ;;
 "geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
-$fwiptables -gui geoip $archivo ;;
-"ntpdate")$fwiptables -gui ntpdate ;;
+$cmd_fwiptables -gui geoip $archivo ;;
+"ntpdate")$cmd_fwiptables -gui ntpdate ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3680,18 +3684,18 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-tcp ;;
-"tracetcp-ip4") $fwiptables -gui tracetcp-ip4   ;;
-"tracetcp-ip6") $fwiptables -gui tracetcp-ip6   ;;
-"speed-ip4") $fwiptables -gui speed-ip4 ;;
-"speed-ip6") $fwiptables -gui speed-ip6 ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-tcp ;;
+"tracetcp-ip4") $cmd_fwiptables -gui tracetcp-ip4   ;;
+"tracetcp-ip6") $cmd_fwiptables -gui tracetcp-ip6   ;;
+"speed-ip4") $cmd_fwiptables -gui speed-ip4 ;;
+"speed-ip6") $cmd_fwiptables -gui speed-ip6 ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3711,19 +3715,19 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-sudo ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-sudo ;;
 "sudo-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
-$fwiptables -gui sudo-adduser $archivo ;;
-"sudo-deluser")$fwiptables -gui sudo-deluser ;;
-"sudo-list")$fwiptables -gui sudo-list ;;
-"alias-list")$fwiptables -gui alias-list ;;
+$cmd_fwiptables -gui sudo-adduser $archivo ;;
+"sudo-deluser")$cmd_fwiptables -gui sudo-deluser ;;
+"sudo-list")$cmd_fwiptables -gui sudo-list ;;
+"alias-list")$cmd_fwiptables -gui alias-list ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3743,23 +3747,23 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu") $fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-game ;;
-"ole-word")$fwiptables -gui ole-word ;;
-"ole-number")$fwiptables -gui ole-number ;;
-"ole-domain")$fwiptables -gui ole-domain ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-game ;;
+"ole-word")$cmd_fwiptables -gui ole-word ;;
+"ole-number")$cmd_fwiptables -gui ole-number ;;
+"ole-domain")$cmd_fwiptables -gui ole-domain ;;
 "colour-rgb")
 onecolour="$(zenity $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
-$fwiptables gui colour-rgb $onecolour ;;
+$cmd_fwiptables gui colour-rgb $onecolour ;;
 "colour-hex") 
 onecolour="$(zenity $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
-$fwiptables gui colour-hex $onecolour ;;
+$cmd_fwiptables gui colour-hex $onecolour ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3779,21 +3783,21 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-system ;;
-"free-ram")   $fwiptables -gui free-ram ;;
-"speed-ram")  $fwiptables -gui speed-ram ;;
-"speed-disk") $fwiptables -gui speed-disk ;;
-"speed-glx")  $fwiptables -gui speed-glx ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-system ;;
+"free-ram")   $cmd_fwiptables -gui free-ram ;;
+"speed-ram")  $cmd_fwiptables -gui speed-ram ;;
+"speed-disk") $cmd_fwiptables -gui speed-disk ;;
+"speed-glx")  $cmd_fwiptables -gui speed-glx ;;
 "radio-mp3 link") 
 radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
-$fwiptables -gui radio-mp3 $radio_enlace ;;
+$cmd_fwiptables -gui radio-mp3 $radio_enlace ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3813,17 +3817,17 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui tool-install ;;
-"install")$fwiptables -gui install ;;
-"howto-upgrade")$fwiptables -gui howto-upgrade ;;
-"upgrade")$fwiptables -gui upgrade ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-install ;;
+"install")$cmd_fwiptables -gui install ;;
+"howto-upgrade")$cmd_fwiptables -gui howto-upgrade ;;
+"upgrade")$cmd_fwiptables -gui upgrade ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3844,20 +3848,20 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu;;
-"Gui Info Menu") $fwiptables -gui tool-blacklist;;
-"blacklist-list")$fwiptables -gui blacklist-list;;
-"blacklist-list info")$fwiptables -gui blacklist-list info ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-blacklist;;
+"blacklist-list")$cmd_fwiptables -gui blacklist-list;;
+"blacklist-list info")$cmd_fwiptables -gui blacklist-list info ;;
 "blacklist-on")
  archivo="$(zenity $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
- $fwiptables -gui blacklist-on $archivo;;
-"blacklist-off") $fwiptables -gui blacklist-off;;
+ $cmd_fwiptables -gui blacklist-on $archivo;;
+"blacklist-off") $cmd_fwiptables -gui blacklist-off;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3877,19 +3881,19 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu  ;;
-"Gui Info Menu") $fwiptables -gui tool-dev ;;
-"new-versions")$fwiptables -gui new-versions ;;
-"dev-version") $fwiptables -gui dev-version  ;;
-"dev-changes") $fwiptables -gui dev-changes ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu  ;;
+"Gui Info Menu") $cmd_fwiptables -gui tool-dev ;;
+"new-versions")$cmd_fwiptables -gui new-versions ;;
+"dev-version") $cmd_fwiptables -gui dev-version  ;;
+"dev-changes") $cmd_fwiptables -gui dev-changes ;;
 "code") archivo="$(zenity $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
-$fwiptables -gui code $archivo
+$cmd_fwiptables -gui code $archivo
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3909,21 +3913,21 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui show-hardware;;
-"lpinfo")$fwiptables -gui lpinfo;;
-"lsblk")$fwiptables -gui lsblk;;
-"lpusb")$fwiptables -gui lsusb;;
-"lscpu")$fwiptables -gui lscpu;;
-"lspci")$fwiptables -gui lspci;;
-"lsgpu")$fwiptables -gui lsgpu;;
-"lshw")$fwiptables -gui lshw;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui show-hardware;;
+"lpinfo")$cmd_fwiptables -gui lpinfo;;
+"lsblk")$cmd_fwiptables -gui lsblk;;
+"lpusb")$cmd_fwiptables -gui lsusb;;
+"lscpu")$cmd_fwiptables -gui lscpu;;
+"lspci")$cmd_fwiptables -gui lspci;;
+"lsgpu")$cmd_fwiptables -gui lsgpu;;
+"lshw")$cmd_fwiptables -gui lshw;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3944,21 +3948,21 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui show-etc ;;
-"hosts") $fwiptables -gui hosts ;;
-"protocols") $fwiptables -gui protocols ;;
-"services") $fwiptables -gui services ;;
-"hosts.allow") $fwiptables -gui hosts.allow ;;
-"hosts.deny") $fwiptables -gui hosts.deny ;;
-"show-default") $fwiptables -gui show-default ;;
-"modify-default") $fwiptables -gui modify-default ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui show-etc ;;
+"hosts") $cmd_fwiptables -gui hosts ;;
+"protocols") $cmd_fwiptables -gui protocols ;;
+"services") $cmd_fwiptables -gui services ;;
+"hosts.allow") $cmd_fwiptables -gui hosts.allow ;;
+"hosts.deny") $cmd_fwiptables -gui hosts.deny ;;
+"show-default") $cmd_fwiptables -gui show-default ;;
+"modify-default") $cmd_fwiptables -gui modify-default ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -3978,20 +3982,20 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui show-log ;;
-"log-ssh")   $fwiptables -gui log-ssh ;;
-"sentlog") $fwiptables -gui sentlog ;;
-"autolog") $fwiptables -gui autolog ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui show-log ;;
+"log-ssh")   $cmd_fwiptables -gui log-ssh ;;
+"sentlog") $cmd_fwiptables -gui sentlog ;;
+"autolog") $cmd_fwiptables -gui autolog ;;
 "log-search")
 pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
-$fwiptables -gui log-search $pattern;;
+$cmd_fwiptables -gui log-search $pattern;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -4012,20 +4016,20 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui show-about ;;
-"about")$fwiptables -gui about ;;
-"version")$fwiptables -gui version ;;
-"depends")$fwiptables -gui depends ;;
-"examples")$fwiptables -gui examples ;;
-"config-eng")$fwiptables -gui config-eng ;;
-"config-spa")$fwiptables -gui config-spa ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui show-about ;;
+"about")$cmd_fwiptables -gui about ;;
+"version")$cmd_fwiptables -gui version ;;
+"depends")$cmd_fwiptables -gui depends ;;
+"examples")$cmd_fwiptables -gui examples ;;
+"config-eng")$cmd_fwiptables -gui config-eng ;;
+"config-spa")$cmd_fwiptables -gui config-spa ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -4046,21 +4050,21 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$fwiptables good bye"; exit ;;
-"Gui Principal Menu")$fwiptables gui-menu ;;
-"Gui Info Menu") $fwiptables -gui show-help ;;
-"mini-options")$fwiptables -gui mini-options ;;
-"full-options")$fwiptables -gui full-options ;;
-"all-help") $fwiptables -gui all-help ;;
-"help") $fwiptables -gui help ;;
-"ayuda") $fwiptables -gui ayuda ;;
-"notes") $fwiptables -gui notes ;;
-"license") $fwiptables -gui license ;;
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Info Menu") $cmd_fwiptables -gui show-help ;;
+"mini-options")$cmd_fwiptables -gui mini-options ;;
+"full-options")$cmd_fwiptables -gui full-options ;;
+"all-help") $cmd_fwiptables -gui all-help ;;
+"help") $cmd_fwiptables -gui help ;;
+"ayuda") $cmd_fwiptables -gui ayuda ;;
+"notes") $cmd_fwiptables -gui notes ;;
+"license") $cmd_fwiptables -gui license ;;
 esac
 ####
 ####
 zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
-if [ "$?" -eq 0 ]; then $fwiptables gui-menu ; exit ; fi
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -4080,20 +4084,20 @@ case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ;
 ####  english: principal gui  #### spanish: principal gui
 ####
 ####
-titulo="$fwiptables gui-shell"
-untexto="$fwiptables gui-shell"
+titulo="$cmd_fwiptables gui-shell"
+untexto="$cmd_fwiptables gui-shell"
 ####
 ####
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms $graphic_dimension --title="Gui Shell || $fwiptables || $(date) " \
---text="$($fwiptables mini-options)" --add-entry="$fwiptables " )
+menugtk=$(zenity --forms $graphic_dimension --title="Gui Shell || $cmd_fwiptables || $(date) " \
+--text="$($cmd_fwiptables mini-options)" --add-entry="$cmd_fwiptables " )
 case $? in
 1)
 ####
 ####
-#### zenity --info $graphic_dimension --text="$fwiptables good bye";
+#### zenity --info $graphic_dimension --text="$cmd_fwiptables good bye";
 ####
 ####
 zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
@@ -4108,9 +4112,9 @@ esac
 case $menugtk in
 ####
 ####
-"ole-word") $fwiptables ole-word -gui ;;
-"ole-number") $fwiptables ole-number -gui ;;
-"ole-domain") $fwiptables ole-domain -gui ;;
+"ole-word") $cmd_fwiptables ole-word -gui ;;
+"ole-number") $cmd_fwiptables ole-number -gui ;;
+"ole-domain") $cmd_fwiptables ole-domain -gui ;;
 ####
 ####
 #### english: new-full-config and nueva-completa-config whithout parameters ####
@@ -4118,19 +4122,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables modify-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -4139,19 +4143,19 @@ zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables modif
 ####
 ####
 "new-full-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-full-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables new-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-completa-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables nueva-mini-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables modify-config config.cfg ]"
+zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -4161,30 +4165,30 @@ zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $fwiptables modif
 ####
 new-full-config*)
 unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
-$fwiptables -gui new-full-config $unarchivo
+$cmd_fwiptables -gui new-full-config $unarchivo
 ;;
 nueva-completa-config*)
 unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
-$fwiptables -gui nueva-completa-config $unarchivo
+$cmd_fwiptables -gui nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
 unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
-$fwiptables -gui new-mini-config $unarchivo
+$cmd_fwiptables -gui new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
 unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
-$fwiptables -gui nueva-mini-config $unarchivo
+$cmd_fwiptables -gui nueva-mini-config $unarchivo
 ;;
 modify-config*)
 unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
-$fwiptables -gui modify-config $unarchivo
+$cmd_fwiptables -gui modify-config $unarchivo
 ;;
 show-config*)
 unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
-$fwiptables -gui show-config $unarchivo
+$cmd_fwiptables -gui show-config $unarchivo
 ;;
-wizard-full*) $fwiptables gui wizard-full ;;
-wizard-mini*) $fwiptables gui wizard-mini ;;
+wizard-full*) $cmd_fwiptables gui wizard-full ;;
+wizard-mini*) $cmd_fwiptables gui wizard-mini ;;
 ####
 ####
 #### english: all other otpions    ####
@@ -4192,14 +4196,14 @@ wizard-mini*) $fwiptables gui wizard-mini ;;
 ####
 ####
 "$NULL")
-zenity --info $graphic_dimension --text="$fwiptables good bye";
+zenity --info $graphic_dimension --text="$cmd_fwiptables good bye";
 zenity --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
-*) fecha_temporal=$(date | sed s/\ //g) ; $fwiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $graphic_dimension --title "[$fwiptables gui-shell] [$menugtk]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+*) fecha_temporal=$(date | sed s/\ //g) ; $cmd_fwiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
+zenity --text-info $graphic_dimension --title "[$cmd_fwiptables gui-shell] [$menugtk]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
-$fwiptables gui-shell
+$cmd_fwiptables gui-shell
 exit ; fi
 ####
 ####
@@ -4212,8 +4216,8 @@ exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwiptables || $(date)" --menu "Select:" 0 0 0\
-  0000 "$quad $tab [$fwiptables cli-menu] $tab $cinco" \
+menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_fwiptables || $(date)" --menu "Select:" 0 0 0\
+  0000 "$quad $tab [$cmd_fwiptables cli-menu] $tab $cinco" \
   0100 "$quad [ Full Options ] $cinco" \
   0200 "$quad [ Firewall Rules ] $cinco" \
   0201  "$tab stop" \
@@ -4381,202 +4385,202 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $fwipt
 #### 
  case "$menuprincipal" in
 ################################
- 0000) clear ; $fwiptables info ;;
- 0100) clear ; $fwiptables cli options ;;
- 0200) clear ; $fwiptables cli firewall-rules ;;
- 0300) clear ; $fwiptables cli firewall-list ;;
- 0400) clear ; $fwiptables cli firewall-launch ;;
- 0500) clear ; $fwiptables cli firewall-custom ;;
- 0600) clear ; $fwiptables cli tool-socket ;;
- 0700) clear ; $fwiptables cli tool-ipforward ;;
- 0800) clear ; $fwiptables cli tool-tcp ;;
- 0900) clear ; $fwiptables cli tool-icmp ;;
- 1000) clear ; $fwiptables cli tool-udp ;;
- 1100) clear ; $fwiptables cli tool-sudo ;;
- 1200) clear ; $fwiptables cli tool-game ;;
- 1300) clear ; $fwiptables cli tool-install ;;
- 1400) clear ; $fwiptables cli tool-blacklist ;;
- 1500) clear ; $fwiptables cli tool-dev ;;
- 1600) clear ; $fwiptables cli tool-system ;;
- 1700) clear ; $fwiptables cli show-hardware ;;
- 1800) clear ; $fwiptables cli show-etc ;;
- 1900) clear ; $fwiptables cli show-log ;;
- 1000) clear ; $fwiptables cli show-about ;;
- 2100) clear ; $fwiptables cli show-help ;;
+ 0000) clear ; $cmd_fwiptables info ;;
+ 0100) clear ; $cmd_fwiptables cli options ;;
+ 0200) clear ; $cmd_fwiptables cli firewall-rules ;;
+ 0300) clear ; $cmd_fwiptables cli firewall-list ;;
+ 0400) clear ; $cmd_fwiptables cli firewall-launch ;;
+ 0500) clear ; $cmd_fwiptables cli firewall-custom ;;
+ 0600) clear ; $cmd_fwiptables cli tool-socket ;;
+ 0700) clear ; $cmd_fwiptables cli tool-ipforward ;;
+ 0800) clear ; $cmd_fwiptables cli tool-tcp ;;
+ 0900) clear ; $cmd_fwiptables cli tool-icmp ;;
+ 1000) clear ; $cmd_fwiptables cli tool-udp ;;
+ 1100) clear ; $cmd_fwiptables cli tool-sudo ;;
+ 1200) clear ; $cmd_fwiptables cli tool-game ;;
+ 1300) clear ; $cmd_fwiptables cli tool-install ;;
+ 1400) clear ; $cmd_fwiptables cli tool-blacklist ;;
+ 1500) clear ; $cmd_fwiptables cli tool-dev ;;
+ 1600) clear ; $cmd_fwiptables cli tool-system ;;
+ 1700) clear ; $cmd_fwiptables cli show-hardware ;;
+ 1800) clear ; $cmd_fwiptables cli show-etc ;;
+ 1900) clear ; $cmd_fwiptables cli show-log ;;
+ 1000) clear ; $cmd_fwiptables cli show-about ;;
+ 2100) clear ; $cmd_fwiptables cli show-help ;;
 ################################
- 0201) clear ; $fwiptables cli stop ;;
- 0202) clear ; $fwiptables cli continue ;;
- 0203) clear ; $fwiptables cli reset ;;
- 0204) clear ; $fwiptables cli list-fw ;;
- 0205) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
+ 0201) clear ; $cmd_fwiptables cli stop ;;
+ 0202) clear ; $cmd_fwiptables cli continue ;;
+ 0203) clear ; $cmd_fwiptables cli reset ;;
+ 0204) clear ; $cmd_fwiptables cli list-fw ;;
+ 0205) clear ; $cmd_fwiptables "list-fw" ; echo "$cincuenta"
  read -p "Type the firewall name to read   " nombrecillo
- nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables show $nombrecillo ;; 
+ nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
  0206)archivo="$(dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ;  echo "$cincuenta saved $archivo" ; $fwiptables save $archivo ;;
- 0207) clear ; $fwiptables "list-fw" ; echo "$cincuenta"
+ clear ;  echo "$cincuenta saved $archivo" ; $cmd_fwiptables save $archivo ;;
+ 0207) clear ; $cmd_fwiptables "list-fw" ; echo "$cincuenta"
  read -p "| Type the firewall name to restore |   " nombrecillo
- nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $fwiptables load $nombrecillo ;;
- 0208) clear ; $fwiptables cli actual ;;
- 0301) clear ; $fwiptables cli list ;;
- 0302) clear ; $fwiptables cli list6 ;;
- 0303) clear ; $fwiptables cli list-filter4 ;;
- 0304) clear ; $fwiptables cli list-filter6 ;;
- 0305) clear ; $fwiptables cli list-forward ;;
- 0306) clear ; $fwiptables cli list-forward6 ;;
- 0307) clear ; $fwiptables cli list-nat4 ;;
- 0308) clear ; $fwiptables cli list-nat6 ;;
- 0309) clear ; $fwiptables cli list-alltables ;;
- 0310) clear ; $fwiptables cli listnum ;;
- 0311) clear ; $fwiptables cli list-forwardnum ;;
- 0312) clear ; $fwiptables cli listnum6 ;;
- 0313) clear ; $fwiptables cli list-forwardnum6 ;;
- 0314) clear ; $fwiptables cli list-raw4 ;;
- 0315) clear ; $fwiptables cli list-raw6 ;;
- 0316) clear ; $fwiptables cli list-mangle4 ;; 
- 0317) clear ; $fwiptables cli list-mangle6 ;;
- 0318) clear ; $fwiptables cli list-security4 ;;
- 0319) clear ; $fwiptables cli list-security6 ;;
- 0320) clear ; $fwiptables cli list-ebtables ;;
- 0321) clear ; $fwiptables cli list-arptables ;;
- 0401) clear ; $fwiptables cli eraserules ; $fwiptables cli list  ;;
- 0402) clear ; $fwiptables cli wizard-mini ; $fwiptables cli list ;;
- 0403) clear ; $fwiptables cli wizard-full ; $fwiptables cli list ;;
- 0404) clear ; $fwiptables cli offline ; $fwiptables cli list ;;
- 0405) clear ; $fwiptables cli all-permisive ; $fwiptables cli list  ;;
+ nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables load $nombrecillo ;;
+ 0208) clear ; $cmd_fwiptables cli actual ;;
+ 0301) clear ; $cmd_fwiptables cli list ;;
+ 0302) clear ; $cmd_fwiptables cli list6 ;;
+ 0303) clear ; $cmd_fwiptables cli list-filter4 ;;
+ 0304) clear ; $cmd_fwiptables cli list-filter6 ;;
+ 0305) clear ; $cmd_fwiptables cli list-forward ;;
+ 0306) clear ; $cmd_fwiptables cli list-forward6 ;;
+ 0307) clear ; $cmd_fwiptables cli list-nat4 ;;
+ 0308) clear ; $cmd_fwiptables cli list-nat6 ;;
+ 0309) clear ; $cmd_fwiptables cli list-alltables ;;
+ 0310) clear ; $cmd_fwiptables cli listnum ;;
+ 0311) clear ; $cmd_fwiptables cli list-forwardnum ;;
+ 0312) clear ; $cmd_fwiptables cli listnum6 ;;
+ 0313) clear ; $cmd_fwiptables cli list-forwardnum6 ;;
+ 0314) clear ; $cmd_fwiptables cli list-raw4 ;;
+ 0315) clear ; $cmd_fwiptables cli list-raw6 ;;
+ 0316) clear ; $cmd_fwiptables cli list-mangle4 ;; 
+ 0317) clear ; $cmd_fwiptables cli list-mangle6 ;;
+ 0318) clear ; $cmd_fwiptables cli list-security4 ;;
+ 0319) clear ; $cmd_fwiptables cli list-security6 ;;
+ 0320) clear ; $cmd_fwiptables cli list-ebtables ;;
+ 0321) clear ; $cmd_fwiptables cli list-arptables ;;
+ 0401) clear ; $cmd_fwiptables cli eraserules ; $cmd_fwiptables cli list  ;;
+ 0402) clear ; $cmd_fwiptables cli wizard-mini ; $cmd_fwiptables cli list ;;
+ 0403) clear ; $cmd_fwiptables cli wizard-full ; $cmd_fwiptables cli list ;;
+ 0404) clear ; $cmd_fwiptables cli offline ; $cmd_fwiptables cli list ;;
+ 0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables cli list  ;;
  0406) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $fwiptables custom $archivo ;;
- 0407) clear ; $fwiptables cli games-shooter ; $fwiptables cli list  ;; 
- 0408) clear ; $fwiptables cli game-westnoth ; $fwiptables cli list ;;
- 0409) clear ; $fwiptables cli game-minetest ; $fwiptables cli list ;;
- 0410) clear ; $fwiptables cli client-web ; $fwiptables cli list ;;
- 0411) clear ; $fwiptables cli client-torrent ; $fwiptables cli list ;;
- 0412) clear ; $fwiptables cli client-vpn ; $fwiptables cli list  ;;
- 0413) clear ; $fwiptables cli client-tor ; $fwiptables cli list  ;; 
- 0414) clear ; $fwiptables cli server-web ; $fwiptables cli list  ;;
- 0415) clear ; $fwiptables cli server-ssh ; $fwiptables cli list ;;
- 0416) clear ; $fwiptables cli server-print ; $fwiptables cli list ;;
- 0417) clear ; $fwiptables cli server-samba ; $fwiptables cli list ;;
- 0418) clear ; $fwiptables cli server-lamp ; $fwiptables cli list ;;
- 0419) clear ; $fwiptables cli lan-tor ; $fwiptables cli list ;;
- 0420) clear ; $fwiptables cli lan-vpn ; $fwiptables cli list ;;
+ archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
+ 0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables cli list  ;; 
+ 0408) clear ; $cmd_fwiptables cli game-westnoth ; $cmd_fwiptables cli list ;;
+ 0409) clear ; $cmd_fwiptables cli game-minetest ; $cmd_fwiptables cli list ;;
+ 0410) clear ; $cmd_fwiptables cli client-web ; $cmd_fwiptables cli list ;;
+ 0411) clear ; $cmd_fwiptables cli client-torrent ; $cmd_fwiptables cli list ;;
+ 0412) clear ; $cmd_fwiptables cli client-vpn ; $cmd_fwiptables cli list  ;;
+ 0413) clear ; $cmd_fwiptables cli client-tor ; $cmd_fwiptables cli list  ;; 
+ 0414) clear ; $cmd_fwiptables cli server-web ; $cmd_fwiptables cli list  ;;
+ 0415) clear ; $cmd_fwiptables cli server-ssh ; $cmd_fwiptables cli list ;;
+ 0416) clear ; $cmd_fwiptables cli server-print ; $cmd_fwiptables cli list ;;
+ 0417) clear ; $cmd_fwiptables cli server-samba ; $cmd_fwiptables cli list ;;
+ 0418) clear ; $cmd_fwiptables cli server-lamp ; $cmd_fwiptables cli list ;;
+ 0419) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables cli list ;;
+ 0420) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables cli list ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables new-full-config $archivo ;;
+ clear ; $cmd_fwiptables new-full-config $archivo ;;
  0502) archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables nueva-completa-config $archivo ;;
+ clear ; $cmd_fwiptables nueva-completa-config $archivo ;;
  0503) archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables new-mini-config $archivo ;;
+ clear ; $cmd_fwiptables new-mini-config $archivo ;;
  0504) archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables nueva-mini-config $archivo ;;
+ clear ; $cmd_fwiptables nueva-mini-config $archivo ;;
  0505) archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $fwiptables custom $archivo ]";;
+ clear ; $cmd_fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_fwiptables custom $archivo ]";;
  0506) archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables modify-config $archivo ;;
+ clear ; $cmd_fwiptables modify-config $archivo ;;
  0507) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
- clear ; $fwiptables del-config $archivo ; echo "deleted $archivo" ;;
- 0508) clear ; $fwiptables cli names-config ;;
- 0509) clear ; $fwiptables cli regen-config ;;
- 0601) clear ; $fwiptables cli ss ;;
- 0602) clear ; $fwiptables cli netstat ;;
- 0603) clear ; $fwiptables cli lsof ;;
- 0604) clear ; $fwiptables cli tcpdump ;;
- 0605) clear ; $fwiptables cli info-route ;;
- 0606) clear ; $fwiptables cli info-nodes ;;
- 0607) clear ; $fwiptables cli info-listen ;;
- 0608) clear ; $fwiptables cli info-proxy ;;
- 0609) clear ; $fwiptables cli info-net ;;
- 0610) clear ; $fwiptables cli info-system ;;
- 0701) clear ; $fwiptables cli ipforward-list ;;
- 0702) clear ; $fwiptables cli ipforward-on ;;
- 0703) clear ; $fwiptables cli ipforward-off ;;
- 0801) clear ; $fwiptables cli speed-ip4 ;;
- 0802) clear ; $fwiptables cli speed-ip6 ;;
- 0803) clear ; $fwiptables cli tracetcp-ip4 ;;
- 0804) clear ; $fwiptables cli tracetcp-ip6 ;;
- 0901) clear ; $fwiptables cli traceicmp-ip4 ;;
- 0902) clear ; $fwiptables cli traceicmp-ip6 ;;
- 0903) clear ; $fwiptables cli ping-ip4 ;;
- 0904) clear ; $fwiptables cli ping-ip6 ;;
+ clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
+ 0508) clear ; $cmd_fwiptables cli names-config ;;
+ 0509) clear ; $cmd_fwiptables cli regen-config ;;
+ 0601) clear ; $cmd_fwiptables cli ss ;;
+ 0602) clear ; $cmd_fwiptables cli netstat ;;
+ 0603) clear ; $cmd_fwiptables cli lsof ;;
+ 0604) clear ; $cmd_fwiptables cli tcpdump ;;
+ 0605) clear ; $cmd_fwiptables cli info-route ;;
+ 0606) clear ; $cmd_fwiptables cli info-nodes ;;
+ 0607) clear ; $cmd_fwiptables cli info-listen ;;
+ 0608) clear ; $cmd_fwiptables cli info-proxy ;;
+ 0609) clear ; $cmd_fwiptables cli info-net ;;
+ 0610) clear ; $cmd_fwiptables cli info-system ;;
+ 0701) clear ; $cmd_fwiptables cli ipforward-list ;;
+ 0702) clear ; $cmd_fwiptables cli ipforward-on ;;
+ 0703) clear ; $cmd_fwiptables cli ipforward-off ;;
+ 0801) clear ; $cmd_fwiptables cli speed-ip4 ;;
+ 0802) clear ; $cmd_fwiptables cli speed-ip6 ;;
+ 0803) clear ; $cmd_fwiptables cli tracetcp-ip4 ;;
+ 0804) clear ; $cmd_fwiptables cli tracetcp-ip6 ;;
+ 0901) clear ; $cmd_fwiptables cli traceicmp-ip4 ;;
+ 0902) clear ; $cmd_fwiptables cli traceicmp-ip6 ;;
+ 0903) clear ; $cmd_fwiptables cli ping-ip4 ;;
+ 0904) clear ; $cmd_fwiptables cli ping-ip6 ;;
  1001) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $fwiptables host $resolve ;;
+ clear ; $cmd_fwiptables host $resolve ;;
  1002) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $fwiptables dig $resolve ;;
+ clear ; $cmd_fwiptables dig $resolve ;;
  1003) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $fwiptables resolveip $resolve ;;
+ clear ; $cmd_fwiptables resolveip $resolve ;;
  1004) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $fwiptables geoip $resolve ;;
- 1005) clear ; $fwiptables "ntpdate" ;;
+ clear ; $cmd_fwiptables geoip $resolve ;;
+ 1005) clear ; $cmd_fwiptables "ntpdate" ;;
   1101) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
- clear ; $fwiptables sudo-adduser $resolve ;;
- 1102) clear ; $fwiptables cli sudo-deluser ;;
- 1103) clear ; $fwiptables cli sudo-list ;;
- 1201) clear ; $fwiptables cli ole-word  ;;
- 1202) clear ; $fwiptables cli ole-number ;;
+ clear ; $cmd_fwiptables sudo-adduser $resolve ;;
+ 1102) clear ; $cmd_fwiptables cli sudo-deluser ;;
+ 1103) clear ; $cmd_fwiptables cli sudo-list ;;
+ 1201) clear ; $cmd_fwiptables cli ole-word  ;;
+ 1202) clear ; $cmd_fwiptables cli ole-number ;;
  1203) resolve="$(dialog --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
- $fwiptables cli colour-rgb $resolve ;;
+ $cmd_fwiptables cli colour-rgb $resolve ;;
  1204) resolve="$(dialog --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
- $fwiptables cli colour-hex $resolve ;;
+ $cmd_fwiptables cli colour-hex $resolve ;;
  1301) clear ; $zero_option install ;;
- 1302) clear ; $fwiptables cli howto-upgrade ;;
- 1303) clear ; $fwiptables cli upgrade ;;
- 1401) clear ; $fwiptables cli blacklist-list ;;
- 1402) clear ; $fwiptables cli blacklist-list info ;;
+ 1302) clear ; $cmd_fwiptables cli howto-upgrade ;;
+ 1303) clear ; $cmd_fwiptables cli upgrade ;;
+ 1401) clear ; $cmd_fwiptables cli blacklist-list ;;
+ 1402) clear ; $cmd_fwiptables cli blacklist-list info ;;
  1403) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
- clear ; $fwiptables blacklist-on $resolve ;;
- 1404) clear ; $fwiptables cli blacklist-off ;;
- 1501) clear ; $fwiptables cli new-versions ;;
- 1502) clear ; $fwiptables cli dev-version ;;
- 1503) clear ; $fwiptables cli dev-changes ;; 
- 1601) clear ; $fwiptables cli free-ram ;;
- 1602) clear ; $fwiptables cli speed-ram ;;
- 1603) clear ; $fwiptables cli speed-disk ;;
- 1604) clear ; $fwiptables cli speed-glx ;;
- 1605) clear ; $fwiptables cli radio-mp3 ;;
- 1606) clear ; emisora_mp3="$(dialog --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"; $fwiptables cli radio-mp3 $emisora_mp3 ;;
- 1701) clear ; $fwiptables cli lpinfo ;;
- 1702) clear ; $fwiptables cli lsblk ;;
- 1703) clear ; $fwiptables cli lsusb ;; 
- 1704) clear ; $fwiptables cli lscpu ;;
- 1705) clear ; $fwiptables cli lspci ;;  
- 1706) clear ; $fwiptables cli lsgpu ;;
- 1707) clear ; $fwiptables cli lshw ;;
- 1801) clear ; $fwiptables cli hosts ;;
- 1802) clear ; $fwiptables cli protocols ;;
- 1803) clear ; $fwiptables cli services ;;
- 1804) clear ; $fwiptables cli hosts.allow ;;
- 1805) clear ; $fwiptables cli hosts.deny ;;
- 1806) clear ; $fwiptables cli resolv.conf ;;
- 1807) clear ; $fwiptables cli show-default ;;
- 1808) clear ; $fwiptables cli modify-default ;;
- 1901) clear ; $fwiptables cli log-ssh ;;
+ clear ; $cmd_fwiptables blacklist-on $resolve ;;
+ 1404) clear ; $cmd_fwiptables cli blacklist-off ;;
+ 1501) clear ; $cmd_fwiptables cli new-versions ;;
+ 1502) clear ; $cmd_fwiptables cli dev-version ;;
+ 1503) clear ; $cmd_fwiptables cli dev-changes ;; 
+ 1601) clear ; $cmd_fwiptables cli free-ram ;;
+ 1602) clear ; $cmd_fwiptables cli speed-ram ;;
+ 1603) clear ; $cmd_fwiptables cli speed-disk ;;
+ 1604) clear ; $cmd_fwiptables cli speed-glx ;;
+ 1605) clear ; $cmd_fwiptables cli radio-mp3 ;;
+ 1606) clear ; emisora_mp3="$(dialog --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"; $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
+ 1701) clear ; $cmd_fwiptables cli lpinfo ;;
+ 1702) clear ; $cmd_fwiptables cli lsblk ;;
+ 1703) clear ; $cmd_fwiptables cli lsusb ;; 
+ 1704) clear ; $cmd_fwiptables cli lscpu ;;
+ 1705) clear ; $cmd_fwiptables cli lspci ;;  
+ 1706) clear ; $cmd_fwiptables cli lsgpu ;;
+ 1707) clear ; $cmd_fwiptables cli lshw ;;
+ 1801) clear ; $cmd_fwiptables cli hosts ;;
+ 1802) clear ; $cmd_fwiptables cli protocols ;;
+ 1803) clear ; $cmd_fwiptables cli services ;;
+ 1804) clear ; $cmd_fwiptables cli hosts.allow ;;
+ 1805) clear ; $cmd_fwiptables cli hosts.deny ;;
+ 1806) clear ; $cmd_fwiptables cli resolv.conf ;;
+ 1807) clear ; $cmd_fwiptables cli show-default ;;
+ 1808) clear ; $cmd_fwiptables cli modify-default ;;
+ 1901) clear ; $cmd_fwiptables cli log-ssh ;;
  1902) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
- clear ; $fwiptables "log-search" "$pattern" | less ;;
- 1903) clear ; $fwiptables cli sentlog ;;
- 1904) clear ; $fwiptables cli autolog ;;
- 2001) clear ; $fwiptables cli about ;;
- 2002) clear ; $fwiptables cli depends ;;
- 2003) clear ; $fwiptables cli examples ;;
- 2004) clear ; $fwiptables cli config-eng ;;
- 2005) clear ; $fwiptables cli config-spa ;;
- 2101) clear ; $fwiptables cli mini-options ;;
- 2102) clear ; $fwiptables cli full-options ;;
- 2103) clear ; $fwiptables cli help ;;
- 2104) clear ; $fwiptables cli ayuda ;;
- 2105) clear ; $fwiptables cli all-help ;;
- 2106) clear ; $fwiptables cli notes ;;
- 2107) clear ; $fwiptables cli license ;;
+ clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
+ 1903) clear ; $cmd_fwiptables cli sentlog ;;
+ 1904) clear ; $cmd_fwiptables cli autolog ;;
+ 2001) clear ; $cmd_fwiptables cli about ;;
+ 2002) clear ; $cmd_fwiptables cli depends ;;
+ 2003) clear ; $cmd_fwiptables cli examples ;;
+ 2004) clear ; $cmd_fwiptables cli config-eng ;;
+ 2005) clear ; $cmd_fwiptables cli config-spa ;;
+ 2101) clear ; $cmd_fwiptables cli mini-options ;;
+ 2102) clear ; $cmd_fwiptables cli full-options ;;
+ 2103) clear ; $cmd_fwiptables cli help ;;
+ 2104) clear ; $cmd_fwiptables cli ayuda ;;
+ 2105) clear ; $cmd_fwiptables cli all-help ;;
+ 2106) clear ; $cmd_fwiptables cli notes ;;
+ 2107) clear ; $cmd_fwiptables cli license ;;
  *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
- $fwiptables text-pause
+ $cmd_fwiptables text-pause
  clear ; 
- $fwiptables cli-menu
+ $cmd_fwiptables cli-menu
  exit; fi
 ####
 ####
@@ -4598,7 +4602,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "version" ]; then $give_cover
- echo "$tab [ $first_option ] [ Show version about $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show version about $cmd_fwiptables ]"
 #### echo $header_lineal
  echo
  echo "$tab [Name program]"
@@ -4611,7 +4615,7 @@ exit; fi
  echo "$directory_fiptables/$fwiptables"
  echo
  echo "$tab [File format]"
- file $directory_fiptables/$fwiptables | cut -d "," -f 1-2
+ file $directory_fiptables/$cmd_fwiptables | cut -d "," -f 1-2
  echo
  echo "$tab [Config cfg directory]"
  echo "$directory_config"
@@ -4641,7 +4645,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "examples-config" ]; then $give_cover
- echo "$tab [ $first_option ] [ Show examples for $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show examples for $cmd_fwiptables ]"
  echo $header_lineal
  echo"[ examples ] [ examples for some services in client mode ]"
  echo
@@ -4780,16 +4784,16 @@ exit; fi
 ####
 if [ "$first_option" = "code" ]; then $give_cover
 echo $header_lineal
-echo " [ code ] [ show source code for options from $fwiptables ]"
+echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
 echo $tab
-code_error="$tab [ Usage: ] [ $fwiptables code option_above ]"
+code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
-salida_code="$(cat $directory_fiptables/$fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
+salida_code="$(cat $directory_fiptables/$cmd_fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
 sort | sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $directory_fiptables/$fwiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $directory_fiptables/$fwiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $directory_fiptables/$cmd_fwiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $directory_fiptables/$cmd_fwiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
@@ -4797,7 +4801,7 @@ if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$tab [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 echo "$tab"
-cat $directory_fiptables/$fwiptables | head -n $value_second | tail -n $value_count
+cat $directory_fiptables/$cmd_fwiptables | head -n $value_second | tail -n $value_count
 exit; fi
 ####
 ####
@@ -4808,7 +4812,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "license" ]; then $give_cover
- echo "$tab [ $first_option ] [ Show license from git sourceforge for $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show license from git sourceforge for $cmd_fwiptables ]"
  echo $header_lineal
  echo"license text for gpl v2 downloading .."
  echo "$tab" "$tab" "$tab"
@@ -4824,18 +4828,18 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
- echo "$tab [ $first_option ] [ Show howto upgrade $fwiptables ]"
+ echo "$tab [ $first_option ] [ Show howto upgrade $cmd_fwiptables ]"
  echo $header_lineal
- echo "$tab [ status ] [ The actually version is: $fwiptables $fversion actual ]"
+ echo "$tab [ status ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
  echo "$tab [ status ] [ The latest version is: ]"
  $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
  echo 
- echo "$tab [ status ] [ Upgrade The fwiptables in file $directory_fiptables/$fwiptables with $favorite_text_browser ]"
- echo "$tab [ status ] [ OR download manually   || OR $fwiptables upgrade || OR look down: ]"
- echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$fwiptables ]"
- echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$fwiptables ]"
- echo "$tab [ info ] [ launch: /tmp/$fwiptables install ]"
- echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fiptables/$fwiptables ]"
+ echo "$tab [ status ] [ Upgrade The fwiptables in file $directory_fiptables/$cmd_fwiptables with $favorite_text_browser ]"
+ echo "$tab [ status ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
+ echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$cmd_fwiptables ]"
+ echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_fwiptables ]"
+ echo "$tab [ info ] [ launch: /tmp/$cmd_fwiptables install ]"
+ echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fiptables/$cmd_fwiptables ]"
  echo $footer_lineal
  exit;  fi
 ####
@@ -4857,10 +4861,10 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 echo
 echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
-echo "$tab [ actually ] [ Show the file: $fwiptables hosts ]"
+echo "$tab [ actually ] [ Show the file: $cmd_fwiptables hosts ]"
 echo
-echo "$tab [   info:  ] [ Get server lines numbers total ] [ $fwiptables blacklist-list info ]"
-echo "$tab [ change:  ] [ $fwiptables blacklist-on name-bl ] OR [ $fwiptables blacklist-off ]" 
+echo "$tab [   info:  ] [ Get server lines numbers total ] [ $cmd_fwiptables blacklist-list info ]"
+echo "$tab [ change:  ] [ $cmd_fwiptables blacklist-on name-bl ] OR [ $cmd_fwiptables blacklist-off ]" 
 echo
 echo "$tab"
 echo "$tab"
@@ -4875,7 +4879,7 @@ echo "$tab"
 if [ "$second_option" = "info" ]; then echo "$tab Getting lines numbers total.."; echo 
 echo
 echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
-echo "$tab [ actually ] [ Show the file: $fwiptables hosts ]"
+echo "$tab [ actually ] [ Show the file: $cmd_fwiptables hosts ]"
 echo
 echo "$tab [ info ] [ total addblocker hosts ] [ waiting until $server_waiting seconds for max timeout each one ]"
 timeout 10 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
@@ -4909,9 +4913,9 @@ echo $tab
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched without options ] [ $fwiptables blacklist-list ]"
+echo "$tab [ Launched without options ] [ $cmd_fwiptables blacklist-list ]"
 echo $tab
-$fwiptables blacklist-list
+$cmd_fwiptables blacklist-list
 echo $tab
 exit; fi
 ####
@@ -4925,7 +4929,7 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 if [ "$second_option" = "fademind" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $file_temporal_path/hosts.fademind 
-$fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.fademind >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
@@ -4933,7 +4937,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 if [ "$second_option" = "adaway" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $file_temporal_path/hosts.adaway 
-$fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.adaway >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
@@ -4941,7 +4945,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 if [ "$second_option" = "mvps" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $file_temporal_path/hosts.mvps 
-$fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.mvps >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
@@ -4949,12 +4953,12 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 if [ "$second_option" = "stevenblack" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $file_temporal_path/hosts.stevenblack 
-$fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables blacklist-off &> /dev/null
 cat $file_temporal_path/hosts.stevenblack >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
 ####
 ####
-echo "$tab [ Invalid option ] [ See: $fwiptables blacklist-list ]"
+echo "$tab [ Invalid option ] [ See: $cmd_fwiptables blacklist-list ]"
 echo $tab; exit; fi
 ####
 ####
@@ -5276,29 +5280,29 @@ exit; fi
  echo "$tab [ $first_option ] [ List all rules ]"
  echo $header_lineal
  echo; echo; echo "### LIST ARPTABLES ###"
- $fwiptables list-arptables
+ $cmd_fwiptables list-arptables
  echo; echo; echo "### LIST EBTABLES ###"
- $fwiptables list-ebtables
+ $cmd_fwiptables list-ebtables
  echo; echo; echo "### LIST FILTER IP4 TABLE ###"
- $fwiptables list-filter4
+ $cmd_fwiptables list-filter4
  echo; echo; echo "### LIST FILTER IP6 TABLE ###"
- $fwiptables list-filter6
+ $cmd_fwiptables list-filter6
  echo; echo; echo "### LIST NAT IP4 TABLE ###"
- $fwiptables list-nat4
+ $cmd_fwiptables list-nat4
  echo; echo; echo "### LIST NAT IP4 TABLE ###"
- $fwiptables list-nat6
+ $cmd_fwiptables list-nat6
  echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
- $fwiptables list-security4
+ $cmd_fwiptables list-security4
  echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
- $fwiptables list-security6
+ $cmd_fwiptables list-security6
  echo; echo; echo "### LIST RAW IP4 TABLE ###"
- $fwiptables list-raw4
+ $cmd_fwiptables list-raw4
  echo; echo; echo "### LIST RAW IP6 TABLE ###"
- $fwiptables list-raw6
+ $cmd_fwiptables list-raw6
  echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
- $fwiptables list-mangle4
+ $cmd_fwiptables list-mangle4
  echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
- $fwiptables list-mangle6
+ $cmd_fwiptables list-mangle6
  echo $footer_lineal
  exit; fi
 ####
@@ -5382,13 +5386,13 @@ exit; fi
 ####
  if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
  echo "$tab When its ipv4 has default route $tab so it show filter rules ipv4 in status"
- $fwiptables list
+ $cmd_fwiptables list
  else echo "$tab When its ipv4 has no default route $tab hide filter rules ipv4 in status" ; fi
 ####
 ####
  if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
  echo "$tab When its ipv6 has default route $tab show filter rules ipv6 in status"
- $fwiptables list6
+ $cmd_fwiptables list6
  else echo "$tab When its ipv6 has no default route $tab so it hide filter rules ipv6 in status" ;  fi
 ####
 ####
@@ -5772,7 +5776,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$tab [ info ] [ usage: ] [ $fwiptables new-full-config config-new ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables new-full-config config-new ]"
 exit; fi
 ####
 ####
@@ -5805,7 +5809,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$tab [ info ] [ usage: ] [ $fwiptables nueva-completa-config config-nueva ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -5838,7 +5842,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then $give_cover
-echo "$tab [ info ] [ usage: ] [ $fwiptables new-mini-config config-new ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables new-mini-config config-new ]"
 exit; fi
 ####
 ####
@@ -5871,7 +5875,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  $give_cover
-echo "$tab [ info ] [ usage: ] [ $fwiptables nueva-mini-config config-nueva ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
@@ -5908,7 +5912,7 @@ cp "$directory_config/$second_option" "/tmp/$fwiptables-$second_option" &> /dev/
 ####
 ###
 if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
-echo "$tab [ info ] [ usage: ] [ $fwiptables modify-config config-existent ]" ; exit; fi
+echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables modify-config config-existent ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then $nada
@@ -5940,7 +5944,7 @@ if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$tab [ status ] [ Usage: $fwiptables show-config config-old ]" ; exit; fi
+echo "$tab [ status ] [ Usage: $cmd_fwiptables show-config config-old ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -5961,7 +5965,7 @@ if [ "$first_option" = "del-config" ]; then $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$tab [ info ] [ usage: ] [ $fwiptables del-config config-old ]" ; exit ; fi
+echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables del-config config-old ]" ; exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -5981,15 +5985,15 @@ exit ; fi
 ####
 if [ "$first_option" = "sudo-adduser" ]; then $give_cover
 case $second_option in
-"$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $fwiptables sudo-adduser user ]" ; exit ;;
+"$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables sudo-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$fwiptables " &> /etc/sudoers.d/$fwiptables
+echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$cmd_fwiptables " &> /etc/sudoers.d/$fwiptables
 echo "alias $fwiptables='sudo $fwiptables'" &>  /etc/bash_completion.d/$fwiptables
 echo $tab
-echo "$tab [ ok ] [ $autorizados will use:     $fwiptables ]"
-echo "$tab [ Ok ] [ $fwiptables will use alias with sudo ]"
+echo "$tab [ ok ] [ $autorizados will use:     $cmd_fwiptables ]"
+echo "$tab [ Ok ] [ $cmd_fwiptables will use alias with sudo ]"
 echo $tab
-echo "$tab [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
+echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
 exit; fi
@@ -6004,7 +6008,7 @@ exit; fi
 if [ "$first_option" = "sudo-deluser" ]; then $give_cover
 rm /etc/sudoers.d/$fwiptables
 echo "$tab [ ok ] [ deleted auth sudo ]"
-echo "$tab [ ok ] [ deleted /etc/sudoers.d/$fwiptables ]"
+echo "$tab [ ok ] [ deleted /etc/sudoers.d/$cmd_fwiptables ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -6015,17 +6019,17 @@ exit; fi
 #### :rutina-inicial-sudo-list:
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$tab [ $first_option ] [ list users with root auth for launch $fwiptables ]"
-echo "$tab [ With root sudo for $fwiptables from some user ]"
-echo "$tab [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
+if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
+echo "$tab [ $first_option ] [ list users with root auth for launch $cmd_fwiptables ]"
+echo "$tab [ With root sudo for $cmd_fwiptables from some user ]"
+echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
 exit; fi
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$tab [ status ] [ list users with root auth for launch $fwiptables ]"
+if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
+echo "$tab [ status ] [ list users with root auth for launch $cmd_fwiptables ]"
 echo $header_lineal
 echo "$tab [ status ] [ Without root sudo from users ]"
 echo $footer_lineal
@@ -6039,11 +6043,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "alias-list" ]; then $give_cover
-echo "$tab [ $first_option ] [ list alias and autocomplete for $fwiptables ]"
+echo "$tab [ $first_option ] [ list alias and autocomplete for $cmd_fwiptables ]"
 echo $header_lineal
-echo "$tab [ alias file ] [  /etc/profile.d/$fwiptables ]"
+echo "$tab [ alias file ] [  /etc/profile.d/$cmd_fwiptables ]"
 cat /etc/bash_completion.d/$fwiptables
-echo "$tab [ alias file ] [  /etc/bash_completion.d/$fwiptables ]"
+echo "$tab [ alias file ] [  /etc/bash_completion.d/$cmd_fwiptables ]"
 cat /etc/bash_completion.d/$fwiptables
 echo $footer_lineal
 exit; fi
@@ -6119,7 +6123,7 @@ echo "$tab [ $first_option ] [ show the default fwiptables ]"
 echo $header_lineal
 cat $directory_default/$fwiptables
 echo $footer_lineal
-echo "$tab [ status ] [ edit file $directory_default/$fwiptables to change variables with: $fwiptables modify-default ]"
+echo "$tab [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables with: $cmd_fwiptables modify-default ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -6134,14 +6138,14 @@ exit; fi
  echo "$tab [ $first_option ] [ modify the default fwiptables ]"
  echo $header_lineal
  echo $footer_lineal
- echo "$tab [ status ] [ edit file $directory_default/$fwiptables to change variables ]"
+ echo "$tab [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
 ####
 ####
 #### english: make security copy file
 #### spanish: hace copia de seguridad
 ####
 ####
- cp $directory-default/$fwiptables /tmp/$fwiptables-modify-default
+ cp $directory-default/$cmd_fwiptables /tmp/$fwiptables-modify-default
 ####
 ####
 #### english: edit file
@@ -6197,8 +6201,8 @@ exit; fi
 if [ "$first_option" = "reset" ]; then $give_cover
 echo "$tab [ $first_option ] [ Reset the firewall ]"
 echo "$tab [ status ] [ Reseting the firewall ]"
-$fwiptables stop &> /dev/null
-$fwiptables continue &> /dev/null
+$cmd_fwiptables stop &> /dev/null
+$cmd_fwiptables continue &> /dev/null
 echo "$tab [ ok ] [ firewall reseted ]"
 exit; fi
 ####
@@ -6216,7 +6220,7 @@ dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$ar
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-dialog --msgbox "wizard full ready" 0 0 ; clear ; $fwiptables custom "$archivo" ; $fwiptables listnum ;
+dialog --msgbox "wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" ; $cmd_fwiptables listnum ;
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 echo $footer_lineal
 exit; fi
@@ -6235,7 +6239,7 @@ dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$ar
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$dialog --msgbox "Wizard full ready" 0 0 ; clear ; $fwiptables custom "$archivo" ; $fwiptables listnum ;
+$dialog --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" ; $cmd_fwiptables listnum ;
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 echo $footer_lineal
 exit; fi
@@ -6254,7 +6258,7 @@ exit; fi
 ####
 ####
  if [ "second_option" = "$NULL" ]; then
- $fwiptables names; echo "$tab [ status ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]" ; exit ; fi
+ $cmd_fwiptables names; echo "$tab [ status ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -6272,7 +6276,7 @@ exit; fi
 #### English: Remove all rules
 ####
 ####
- $fwiptables eraserules &> /dev/null
+ $cmd_fwiptables eraserules &> /dev/null
 ####
 ####
 #### English: Load all rules 
@@ -6297,8 +6301,8 @@ exit; fi
 ####
 ####
  else
- $fwiptables names
- echo "$tab [ info ] [ usage: $fwiptables load fw-to-load ] [ See: $fwiptables names ]"
+ $cmd_fwiptables names
+ echo "$tab [ info ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]"
  fi 
 ####
 ####
@@ -6314,7 +6318,7 @@ exit; fi
 ####
  if [ "$first_option" = "save" ]; then $give_cover
  case "$second_option" in
- "$NULL") echo "$tab [ info ] [ Usage: $fwiptables save fw-to-save ]" ; exit ;;
+ "$NULL") echo "$tab [ info ] [ Usage: $cmd_fwiptables save fw-to-save ]" ; exit ;;
  *) archivofin="$second_option" ;; 
  esac
 ####
@@ -6355,7 +6359,7 @@ exit; fi
  echo "$tab [ $first_option ] [ show one firewall saved ]"
  echo $header_lineal
  case "$second_option" in
- "$NULL") $fwiptables names; echo "$tab [ info ] [ Use: $fwiptables show file-to-show ]" ; exit ;;
+ "$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
  *) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
  esac
  ls -l $directory_fwrecover/$archivofin-arptables
@@ -6440,7 +6444,7 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/$fwiptables-stoped-legacy
 #### english: erase the rules #### spanish: borra las reglas
 ####
 ####
-$fwiptables eraserules &> /dev/null
+$cmd_fwiptables eraserules &> /dev/null
 echo "$tab [ ok ] [ firewall stopped ]"
 echo $footer_lineal
 exit; fi
@@ -6487,11 +6491,11 @@ exit; fi
 #### english: launch #### spanish: lanza
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo $head_waiting_gui
  echo "$tab [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
  timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -6511,11 +6515,11 @@ exit; fi
 #### english: launch #### spanish: lanza
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo $head_waiting_gui
  echo "$tab [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -6535,12 +6539,12 @@ exit; fi
 #### english: launch #### spanish: lanza
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo $head_waiting_gui
  echo "$tab [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
  echo $head_waiting_gui
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -6560,11 +6564,11 @@ exit; fi
 #### english: launch #### spanish: lanza
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo $head_waiting_gui
  echo "$tab [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -6584,12 +6588,12 @@ exit; fi
 #### english: launch #### spanish: lanza
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo $head_waiting_gui
  echo "$tab [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
  echo $head_waiting_gui
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -6609,12 +6613,12 @@ exit; fi
 #### english: launch #### spanish: lanza
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo $head_waiting_gui
  echo "$tab [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
  timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
  echo $head_waiting_gui
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -6737,7 +6741,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
@@ -6750,7 +6754,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
- $fwiptables continue
+ $cmd_fwiptables continue
 ####
 ####
  echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
@@ -6775,7 +6779,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
@@ -6788,7 +6792,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
- $fwiptables continue
+ $cmd_fwiptables continue
  echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
@@ -6811,7 +6815,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
@@ -6824,7 +6828,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
- $fwiptables continue
+ $cmd_fwiptables continue
 ####
 ####
  echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
@@ -6849,7 +6853,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
@@ -6862,7 +6866,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
- $fwiptables continue
+ $cmd_fwiptables continue
 ####
 ####
  echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
@@ -6887,7 +6891,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 #### english: stop the firewall #### spanish: para el firewall
 ####
 ####
-$fwiptables stop
+$cmd_fwiptables stop
 ####
 ####
 #### english: launch nmap #### spanish: lanza nmap
@@ -6900,7 +6904,7 @@ $fwiptables stop
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
- $fwiptables continue
+ $cmd_fwiptables continue
  echo "$tab [ ok ] [ Reloaded firewall rules after run nmap ]"
  echo $footer_lineal
  exit; fi
@@ -6988,7 +6992,7 @@ $fwiptables stop
 ####
 if [ "$first_option" = "radio-mp3" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
-echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
@@ -6997,9 +7001,9 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
 #### emisora="$radio_mp3"
-echo "[ info ] [ launch $fwiptables radio-cadena100 ] [ for cadena 100 ]"
-echo "[ info ] [ launch $fwiptables radio-cadenadial ] [ for cadena dial ]"
-echo "[ info ] [ launch $fwiptables radio-mp3 link-mp3 ] [ for one link from internet ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-cadena100 ] [ for cadena 100 ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-cadenadial ] [ for cadena dial ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-mp3 link-mp3 ] [ for one link from internet ]"
 exit
 else emisora="$second_option"; fi
 ####
@@ -7019,7 +7023,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadena100" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
-echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
@@ -7046,7 +7050,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadenadial" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
-echo "$tab [ status ] [ for choose default radio see: $fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
 ####
 ####
@@ -8006,7 +8010,7 @@ fi
  echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
  echo $header_lineal
  case "$second_option" in
- $NULL) echo "$tab [ fail ] [ use: $fwiptables $first_option pattern ]" ;;
+ $NULL) echo "$tab [ fail ] [ use: $cmd_fwiptables $first_option pattern ]" ;;
  *) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
  esac
  echo $footer_lineal
@@ -8285,7 +8289,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  $give_cover
-echo "$tab [ $first_option ] [ about $fwiptables ]"
+echo "$tab [ $first_option ] [ about $cmd_fwiptables ]"
 echo $header_lineal
 echo
 echo "$tab [Fran FireWall iptables Generator]"
@@ -8302,7 +8306,7 @@ echo "  $fdescription"
 echo ""
 echo "$tab [Program Install]"
 echo "  chmod ugo+x $fwiptables"
-echo "  ./$fwiptables install"
+echo "  ./$cmd_fwiptables install"
 echo "  And then fwiptables is in $directory_fiptables/$fwiptables"
 echo
 echo "$tab [Devevelopments version program]"
@@ -8428,13 +8432,13 @@ exit; fi
  case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo "$tab [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
  echo $tab
  echo
  $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
  echo
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -8451,13 +8455,13 @@ exit; fi
  case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
- $fwiptables stop
+ $cmd_fwiptables stop
  echo "$tab [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
  echo $tab
  echo
  $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
  echo
- $fwiptables continue
+ $cmd_fwiptables continue
  echo $footer_lineal
  exit; fi
 ####
@@ -8475,7 +8479,7 @@ exit; fi
 ####
 ####
  if [ "$second_option" = "$NULL" ]; then echo $tab $tab $tab
- echo "[ get one web certifcate ] [ Example: $fwiptables web-cert www.fast.com ]"; exit; fi
+ echo "[ get one web certifcate ] [ Example: $cmd_fwiptables web-cert www.fast.com ]"; exit; fi
  echo $tab
  echo | timeout -s SIGINT -v $server_waiting $command_openssl s_client -connect $second_option:443
  echo $footer_lineal
@@ -8517,28 +8521,28 @@ if [ "$first_option" = "config-eng" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "info" ]; then $nada
- if [ "$second_option" = "control-guide" ]; then $fwiptables control-guide ; exit ; fi
- if [ "$second_option" = "firewall-rules" ]; then $fwiptables firewall-rules ; exit ; fi
- if [ "$second_option" = "firewall-list" ]; then $fwiptables firewall-list ; exit ; fi
- if [ "$second_option" = "output-interface" ]; then $fwiptables output-interface ; exit ; fi
- if [ "$second_option" = "firewall-launch" ]; then $fwiptables firewall-launch ; exit ; fi
- if [ "$second_option" = "firewall-custom" ]; then $fwiptables firewall-custom ; exit ; fi
- if [ "$second_option" = "tool-sockets" ]; then $fwiptables tool-sockets ; exit ; fi
- if [ "$second_option" = "tool-forward" ]; then $fwiptables tool-forward ; exit ; fi
- if [ "$second_option" = "tool-tcp" ]; then $fwiptables tool-tcp ; exit ; fi
- if [ "$second_option" = "tool-udp" ]; then $fwiptables tool-udp ; exit ; fi
- if [ "$second_option" = "tool-icmp" ]; then $fwiptables tool-icmp ; exit ; fi
- if [ "$second_option" = "tool-nmap" ]; then $fwiptables tool-nmap ; exit ; fi
- if [ "$second_option" = "tool-sudo" ]; then $fwiptables tool-sudo ; exit ; fi
- if [ "$second_option" = "tool-install" ]; then $fwiptables tool-install ; exit ; fi
- if [ "$second_option" = "tool-blacklist" ]; then $fwiptables tool-blacklist ; exit ; fi
- if [ "$second_option" = "tool-dev" ]; then $fwiptables tool-dev ; exit ; fi
- if [ "$second_option" = "tool-system" ]; then $fwiptables tool-system ; exit ; fi
- if [ "$second_option" = "show-hardware" ]; then $fwiptables show-hardware ; exit ; fi
- if [ "$second_option" = "show-etc" ]; then $fwiptables show-etc ; exit ; fi
- if [ "$second_option" = "show-log" ]; then $fwiptables show-log ; exit ; fi
- if [ "$second_option" = "show-about" ]; then $fwiptables show-about ; exit ; fi
- if [ "$second_option" = "show-help" ]; then $fwiptables show-help ; exit ; fi
+ if [ "$second_option" = "control-guide" ]; then $cmd_fwiptables control-guide ; exit ; fi
+ if [ "$second_option" = "firewall-rules" ]; then $cmd_fwiptables firewall-rules ; exit ; fi
+ if [ "$second_option" = "firewall-list" ]; then $cmd_fwiptables firewall-list ; exit ; fi
+ if [ "$second_option" = "output-interface" ]; then $cmd_fwiptables output-interface ; exit ; fi
+ if [ "$second_option" = "firewall-launch" ]; then $cmd_fwiptables firewall-launch ; exit ; fi
+ if [ "$second_option" = "firewall-custom" ]; then $cmd_fwiptables firewall-custom ; exit ; fi
+ if [ "$second_option" = "tool-sockets" ]; then $cmd_fwiptables tool-sockets ; exit ; fi
+ if [ "$second_option" = "tool-forward" ]; then $cmd_fwiptables tool-forward ; exit ; fi
+ if [ "$second_option" = "tool-tcp" ]; then $cmd_fwiptables tool-tcp ; exit ; fi
+ if [ "$second_option" = "tool-udp" ]; then $cmd_fwiptables tool-udp ; exit ; fi
+ if [ "$second_option" = "tool-icmp" ]; then $cmd_fwiptables tool-icmp ; exit ; fi
+ if [ "$second_option" = "tool-nmap" ]; then $cmd_fwiptables tool-nmap ; exit ; fi
+ if [ "$second_option" = "tool-sudo" ]; then $cmd_fwiptables tool-sudo ; exit ; fi
+ if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
+ if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
+ if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
+ if [ "$second_option" = "tool-system" ]; then $cmd_fwiptables tool-system ; exit ; fi
+ if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
+ if [ "$second_option" = "show-etc" ]; then $cmd_fwiptables show-etc ; exit ; fi
+ if [ "$second_option" = "show-log" ]; then $cmd_fwiptables show-log ; exit ; fi
+ if [ "$second_option" = "show-about" ]; then $cmd_fwiptables show-about ; exit ; fi
+ if [ "$second_option" = "show-help" ]; then $cmd_fwiptables show-help ; exit ; fi
 ####
 ####
 $give_cover
@@ -8547,7 +8551,7 @@ echo "$tab [ $first_option ] [ info group ]"
 echo $header_lineal
 echo $tab
 echo
-echo "$tab [ launch: ] [ $fwiptables info group ]"
+echo "$tab [ launch: ] [ $cmd_fwiptables info group ]"
 echo
 echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$tab $tab"
@@ -8561,7 +8565,7 @@ echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-
 echo "$tab" "$tab"  "                       show-help       show-example                                    " 
 echo
 echo "$tab" "$tab"  "$tab $tab"
-echo "$tab [ Example: ] [ $fwiptables output-interface ]"
+echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -8574,10 +8578,10 @@ exit; fi
 ####
 if [ "$first_option" = "help" ]; then 
 echo "$title_md [ $first_option ] [ help in english ] [ help.md ]"
-echo "$text_md  [ Choose only help in english ] [  Type:     $fwiptables help   ]"
-echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $fwiptables ayuda   ]"
-$fwiptables intro
-$fwiptables options
+echo "$text_md  [ Choose only help in english ] [  Type:     $cmd_fwiptables help   ]"
+echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables ayuda   ]"
+$cmd_fwiptables intro
+$cmd_fwiptables options
 echo "$title_md         [ Launch interface ]"
 echo  $text_md
 echo "$text_md       txt OR -txt : Output at text line | whith bash backend."
@@ -8721,7 +8725,7 @@ echo  $text_md
 echo "$text_md    sudo-adduser : Allow sudo to other choosed users."
 echo "$text_md    sudo-deluser : Remove sudo to other choosed users."
 echo "$text_md       sudo-list : List sudo to other choosed users."
-echo "$text_md      alias-list : List alias $fwiptables and its autocomplete."
+echo "$text_md      alias-list : List alias $cmd_fwiptables and its autocomplete."
 echo  $text_md
 echo "$title_md         [ Tool game ]"
 echo  $text_md
@@ -8860,11 +8864,11 @@ exit; fi
 if [ "$first_option" = "ayuda" ]; then 
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab"
 echo  $text_md
-echo "$text_md  ||  Choose only help in english   ||   Type:     $fwiptables help     "
-echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $fwiptables ayuda    "
-$fwiptables intro
+echo "$text_md  ||  Choose only help in english   ||   Type:     $cmd_fwiptables help     "
+echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $cmd_fwiptables ayuda    "
+$cmd_fwiptables intro
 echo $text_md
-$fwiptables options
+$cmd_fwiptables options
 echo  $text_md
 echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
 echo  $text_md
@@ -9143,7 +9147,7 @@ exit; fi
 ####
 ####
 if [ "$launch_iptables" = "" ] || [ "$launch_iptables" = "default" ] ; then $nada ; else 
-echo "$tab Choose a one valid option .. "; $fwiptables $default_security ; exit ; fi
+echo "$tab Choose a one valid option .. "; $cmd_fwiptables $default_security ; exit ; fi
 ####
 ####
 ###############################################################################################################
@@ -9183,7 +9187,7 @@ $give_autosave &> /dev/null
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "all-permisive" ]; then $fwiptables eraserules &> /dev/null ;
+if [ "$first_option" = "all-permisive" ]; then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -9268,7 +9272,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "offline" ];  then $fwiptables eraserules &> /dev/null ;
+if [ "$first_option" = "offline" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A INPUT  \
@@ -9334,7 +9338,7 @@ exit; fi
 ########################################     spanish: ipv4 iptables por defecto
 ####
 ####
-if [ "$launch_iptables" = "default" ];  then $fwiptables eraserules &> /dev/null ;
+if [ "$launch_iptables" = "default" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 ####
@@ -9587,7 +9591,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$fwiptables eraserules &> /dev/null
+$cmd_fwiptables eraserules &> /dev/null
 ####
 ####
 #######################################        english: ebtables mac rules
