@@ -350,4 +350,6 @@
 # changes fwiptables 2.23 en desarrollo
 #
 # 1- comprobar examples en gui menu.
+# 2- no necesita consola gui-shell gui-menu y gui-cli para xhost en sus ejecutables. HECHO
+# 3-
 #
