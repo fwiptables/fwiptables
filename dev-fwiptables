@@ -26,27 +26,20 @@
 ####
 ####
 ####     #### english: whereis path     #### spanish: donde esta el path
-directory_fiptables="/usr/bin" ;
-####   
-####
-####     #### english: program name     #### spanish: nombre de el programa
-####
-####
 fwiptables="fwiptables"
 cmd_fwiptables="fwiptables-cmd"
+icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 ####
 #### english: Path directory config files
 #### spanish: Ruta de directorios de los archivos de configuracion
 ####
 ####
+directory_fwiptables="/usr/bin"
 directory_fwrecover="/etc/fwiptables-fwrecover"
 directory_default="/etc/fwiptables-default"
 directory_config="/etc/fwiptables-config"
-####
-####
-desktop_directory="/usr/share/applications"
-fwiptables_icon="/usr/share/zenity/zenity.png"
+directory_desktop="/usr/share/applications"
 ####
 ####
 ####     #### english: launch profile         #### spanish: lanza profile
@@ -349,8 +342,8 @@ echo "$text_md     And too, use this firewall with some utilities for ipv4 and i
 echo  $text_md
 echo "$title_md     Fran fwiptables installer. "
 echo  $text_md
-cmp -s $0 $directory_fiptables/$cmd_fwiptables || echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is not installed  "
-cmp -s $0 $directory_fiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
+cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is not installed  "
+cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
 echo "$text_md     Uninstall $cmd_fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
@@ -444,12 +437,12 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$title_md [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
 echo "$text_md [ running ] [ $cmd_fwiptables uninstalling ]"
-if  [ -f $directory_fiptables/$cmd_fwiptables ]; then
-rm $directory_fiptables/$fwiptables &> /dev/null
-rm $directory_fiptables/$cmd_fwiptables &> /dev/null
-rm $directory_fiptables/$fwiptables-cli-menu &> /dev/null
-rm $directory_fiptables/$fwiptables-gui-menu &> /dev/null
-rm $directory_fiptables/$fwiptables-gui-shell &> /dev/null
+if  [ -f $directory_fwiptables/$cmd_fwiptables ]; then
+rm $directory_fwiptables/$fwiptables &> /dev/null
+rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
+rm $directory_fwiptables/$fwiptables-cli-menu &> /dev/null
+rm $directory_fwiptables/$fwiptables-gui-menu &> /dev/null
+rm $directory_fwiptables/$fwiptables-gui-shell &> /dev/null
 echo "$text_md [ status ] [ deleted binaries ]"
 echo "$text_md [ ok ] [ $cmd_fwiptables uninstalled ]" ;
 else echo "$text_md [ status ] [ $cmd_fwiptables is not installed ]"; fi
@@ -471,7 +464,7 @@ echo "$title_md [ $first_option ] [ $cmd_fwiptables installer ] [ install.md ]"
 #### 
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
-cp $zero_option $directory_fiptables/$cmd_fwiptables &> /dev/null
+cp $zero_option $directory_fwiptables/$cmd_fwiptables &> /dev/null
 #### 
 #### 
 ####  english: Install new /etc/bash_completion/fwiptables
@@ -492,7 +485,7 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####  english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
-echo "alias $fwiptables='sudo $directory_fiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
+echo "alias $fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
 echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch \
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
@@ -535,7 +528,7 @@ echo "$(head -200 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default
 #### 
 #### 
 chmod ugo+rx /etc/bash_completion.d/fwiptables &> /dev/null
-chmod ugo+rx $directory_fiptables/$cmd_fwiptables &> /dev/null
+chmod ugo+rx $directory_fwiptables/$cmd_fwiptables &> /dev/null
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -543,51 +536,51 @@ $cmd_fwiptables regen-config &> /dev/null
 ####  spanish: genera fwiptables-gui-menu fwiptables-gui-shell y fwiptables-cli-menu en /usr/bin
 ####
 ####
-echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-menu
-echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-gui-menu
-echo "sudo $cmd_fwiptables gui-menu" &>> $directory_fiptables/$fwiptables-gui-menu
-chmod ugo+rx $directory_fiptables/$fwiptables-gui-menu &> /dev/null
+echo "#!/bin/bash" &> $directory_fwiptables/$fwiptables-gui-menu
+echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$fwiptables-gui-menu
+echo "sudo $cmd_fwiptables gui-menu" &>> $directory_fwiptables/$fwiptables-gui-menu
+chmod ugo+rx $directory_fwiptables/$fwiptables-gui-menu &> /dev/null
 ####
 ####
-echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-gui-shell
-echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-gui-shell
-echo "sudo $cmd_fwiptables gui-shell" &>> $directory_fiptables/$fwiptables-gui-shell
-chmod ugo+rx $directory_fiptables/$fwiptables-gui-shell &> /dev/null
+echo "#!/bin/bash" &> $directory_fwiptables/$fwiptables-gui-shell
+echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$fwiptables-gui-shell
+echo "sudo $cmd_fwiptables gui-shell" &>> $directory_fwiptables/$fwiptables-gui-shell
+chmod ugo+rx $directory_fwiptables/$fwiptables-gui-shell &> /dev/null
 ####
 ####
-echo "#!/bin/bash" &> $directory_fiptables/$fwiptables-cli-menu
-echo "$command_xhost +SI:localuser:root" &>> $directory_fiptables/$fwiptables-cli-menu
-echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fiptables/$fwiptables-cli-menu
-chmod ugo+rx $directory_fiptables/$fwiptables-cli-menu &> /dev/null
+echo "#!/bin/bash" &> $directory_fwiptables/$fwiptables-cli-menu
+echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$fwiptables-cli-menu
+echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fwiptables/$fwiptables-cli-menu
+chmod ugo+rx $directory_fwiptables/$fwiptables-cli-menu &> /dev/null
 ####
 ####
 ####  english: assing graphicall icons if desktop_directory
 ####  spanish: asigna iconos graficos si hay desktop_direcoty
 ####
 ####
-if [ -d "$desktop_directory" ] ; then $nada
-echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "[Desktop Entry]" &> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Terminal=true" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Terminal=false" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Type=Application" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Type=Application" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Categories=System" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Categories=System" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Categories=System" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Icon=$fwiptables_icon" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Name=$cmd_fwiptables cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Name=$cmd_fwiptables gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Name=$cmd_fwiptables gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-echo "Exec=$directory_fiptables/$fwiptables-cli-menu" &>> $desktop_directory/$fwiptables-cli-menu.desktop
-echo "Exec=$directory_fiptables/$fwiptables-gui-menu" &>> $desktop_directory/$fwiptables-gui-menu.desktop
-echo "Exec=$directory_fiptables/$fwiptables-gui-shell" &>> $desktop_directory/$fwiptables-gui-shell.desktop
-chmod ugo+rx $desktop_directory/$fwiptables-* &>> /dev/null
+if [ -d "$directory_desktop" ] ; then $nada
+echo "[Desktop Entry]" &> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "[Desktop Entry]" &> $directory_desktop/$fwiptables-gui-shell.desktop
+echo "[Desktop Entry]" &> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Terminal=true" &>> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "Terminal=false" &>> $directory_desktop/$fwiptables-gui-shell.desktop
+echo "Terminal=false" &>> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Type=Application" &>> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "Type=Application" &>> $directory_desktop/$fwiptables-gui-shell.desktop
+echo "Type=Application" &>> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Categories=System" &>> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "Categories=System" &>> $directory_desktop/$fwiptables-gui-shell.desktop
+echo "Categories=System" &>> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Icon=$icon_fwiptables" &>> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "Icon=$icon_fwiptables" &>> $directory_desktop/$fwiptables-gui-shell.desktop
+echo "Icon=$icon_fwiptables" &>> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Name=$fwiptables cli-menu" &>> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "Name=$fwiptables gui-menu" &>> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Name=$fwiptables gui-shell" &>> $directory_desktop/$fwiptables-gui-shell.desktop
+echo "Exec=$directory_fwiptables/$fwiptables-cli-menu" &>> $directory_desktop/$fwiptables-cli-menu.desktop
+echo "Exec=$directory_fwiptables/$fwiptables-gui-menu" &>> $directory_desktop/$fwiptables-gui-menu.desktop
+echo "Exec=$directory_fwiptables/$fwiptables-gui-shell" &>> $directory_desktop/$fwiptables-gui-shell.desktop
+chmod ugo+rx $directory_desktop/$fwiptables-* &>> /dev/null
 else $nada ; fi
 ####
 ####
@@ -607,7 +600,7 @@ echo "$text_md [ info ] [ $fwiptables-cli-menu ] [ $fwiptables-gui-menu ] [ $fwi
 ####  spanish: Lugar del archivo instalado
 #### 
 #### 
-echo "$text_md [ ok ] [ firewall installed ] [ $directory_fiptables/$cmd_fwiptables ]"
+echo "$text_md [ ok ] [ firewall installed ] [ $directory_fwiptables/$cmd_fwiptables ]"
 echo "$text_md [ ok ] [ Launch command $cmd_fwiptables to run /  type: ] [ $cmd_fwiptables ]" 
 echo "$text_md [ status ] [ grant privileges to user for $fwiptables with: ]"
 echo "$text_md [ info ] [ $cmd_fwiptables sudo-adduser user ]" 
@@ -624,10 +617,10 @@ exit; fi
 if [ "$first_option" = "upgrade" ]; then $give_cover
 echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fiptables ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fiptables/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
 echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 rm /tmp/$cmd_fwiptables &> /dev/null
 ####
@@ -657,7 +650,7 @@ exit ; fi
 #### :rutina-inicial-notice:
 ####
 ####
-cmp -s $0 $directory_fiptables/$cmd_fwiptables || . $0 intro
+cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
 ####
 ####
 #### :rutina-final-notice:
@@ -4612,10 +4605,10 @@ exit; fi
  echo "$fdescription"
  echo
  echo "$tab [Exec program]"
- echo "$directory_fiptables/$fwiptables"
+ echo "$directory_fwiptables/$fwiptables"
  echo
  echo "$tab [File format]"
- file $directory_fiptables/$cmd_fwiptables | cut -d "," -f 1-2
+ file $directory_fwiptables/$cmd_fwiptables | cut -d "," -f 1-2
  echo
  echo "$tab [Config cfg directory]"
  echo "$directory_config"
@@ -4788,12 +4781,12 @@ echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
 echo $tab
 code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
-salida_code="$(cat $directory_fiptables/$cmd_fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
+salida_code="$(cat $directory_fwiptables/$cmd_fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
 sort | sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $directory_fiptables/$cmd_fwiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $directory_fiptables/$cmd_fwiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $directory_fwiptables/$cmd_fwiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $directory_fwiptables/$cmd_fwiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
@@ -4801,7 +4794,7 @@ if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$tab [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 echo "$tab"
-cat $directory_fiptables/$cmd_fwiptables | head -n $value_second | tail -n $value_count
+cat $directory_fwiptables/$cmd_fwiptables | head -n $value_second | tail -n $value_count
 exit; fi
 ####
 ####
@@ -4834,12 +4827,12 @@ exit; fi
  echo "$tab [ status ] [ The latest version is: ]"
  $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
  echo 
- echo "$tab [ status ] [ Upgrade The fwiptables in file $directory_fiptables/$cmd_fwiptables with $favorite_text_browser ]"
+ echo "$tab [ status ] [ Upgrade The fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser ]"
  echo "$tab [ status ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
  echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$cmd_fwiptables ]"
  echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_fwiptables ]"
  echo "$tab [ info ] [ launch: /tmp/$cmd_fwiptables install ]"
- echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fiptables/$cmd_fwiptables ]"
+ echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fwiptables/$cmd_fwiptables ]"
  echo $footer_lineal
  exit;  fi
 ####
@@ -5987,7 +5980,7 @@ if [ "$first_option" = "sudo-adduser" ]; then $give_cover
 case $second_option in
 "$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables sudo-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $directory_fiptables/$cmd_fwiptables " &> /etc/sudoers.d/$fwiptables
+echo "$autorizados ALL=(root) NOPASSWD: $directory_fwiptables/$cmd_fwiptables " &> /etc/sudoers.d/$fwiptables
 echo "alias $fwiptables='sudo $fwiptables'" &>  /etc/bash_completion.d/$fwiptables
 echo $tab
 echo "$tab [ ok ] [ $autorizados will use:     $cmd_fwiptables ]"
@@ -8307,7 +8300,7 @@ echo ""
 echo "$tab [Program Install]"
 echo "  chmod ugo+x $fwiptables"
 echo "  ./$cmd_fwiptables install"
-echo "  And then fwiptables is in $directory_fiptables/$fwiptables"
+echo "  And then fwiptables is in $directory_fwiptables/$fwiptables"
 echo
 echo "$tab [Devevelopments version program]"
 echo "  The fran iptables ver in development in git code at sourceforge:"
