@@ -3359,8 +3359,8 @@ case "$selection" in
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui firewall-launch ;;
 "eraserules") $cmd_fwiptables -gui eraserules ; $cmd_fwiptables gui list ;;
-"wizard-full")$cmd_fwiptables -gui wizard-full ;;
-"wizard-mini")$cmd_fwiptables -gui wizard-mini ;;
+"wizard-full")$cmd_fwiptables -gui wizard-full ; $cmd_fwiptables gui list ;;
+"wizard-mini")$cmd_fwiptables -gui wizard-mini ; $cmd_fwiptables gui list ;;
 "offline") $cmd_fwiptables -gui offline ; $cmd_fwiptables gui list ;;
 "all-permisive") $cmd_fwiptables -gui all-permisive ; $cmd_fwiptables gui list ;;
 "client-web") $cmd_fwiptables -gui client-web ; $cmd_fwiptables gui list ;;
@@ -3485,7 +3485,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
-"names-config" "show-config" "modify-config" "del-config" "regen-config" \
+"names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Config] [$fwiptables]" )
 #### 
 #### 
@@ -3515,8 +3515,9 @@ archivo="$(zenity $graphic_dimension --entry --title "[modify-config]" --text="$
 $cmd_fwiptables -gui modify-config $archivo ;;
 "del-config")
 archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($cmd_fwiptables cfg)")" ;
-$cmd_fwiptables -gui del-config $archivo;;
-"regen-config")$cmd_fwiptables -gui regen-config ;;
+$cmd_fwiptables -gui del-config $archivo ;;
+"regen-config") $cmd_fwiptables -gui regen-config ;;
+"examples-config") $cmd_fwiptables gui examples-config ;;
 esac
 ####
 ####
@@ -4004,7 +4005,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "about" "version" \
-"depends" "examples" "config-eng" "config-spa" \
+"depends" "config-eng" "config-spa" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show about] [$fwiptables]" )
 #### 
 #### 
@@ -4015,7 +4016,6 @@ case $selection in
 "about")$cmd_fwiptables -gui about ;;
 "version")$cmd_fwiptables -gui version ;;
 "depends")$cmd_fwiptables -gui depends ;;
-"examples")$cmd_fwiptables -gui examples ;;
 "config-eng")$cmd_fwiptables -gui config-eng ;;
 "config-spa")$cmd_fwiptables -gui config-spa ;;
 esac
@@ -4274,6 +4274,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0507  "$tab del-config" \
   0508  "$tab names-config" \
   0509  "$tab regen-config" \
+  0510  "$tab examples-config" \
   0600 "$quad [ Tool Sockets ] $cinco" \
   0601  "$tab ss" \
   0602  "$tab netstat" \
@@ -4359,9 +4360,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   2000 "$quad [ Show About ] $cinco" \
   2001  "$tab about" \
   2002  "$tab depends" \
-  2003  "$tab examples" \
-  2004  "$tab config-eng" \
-  2005  "$tab config-spa" \
+  2003  "$tab config-eng" \
+  2004  "$tab config-spa" \
   2100 "$quad [ Show Help ] $cinco" \
   2101  "$tab mini-options" \
   2102  "$tab full-options" \
@@ -4480,6 +4480,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
  0508) clear ; $cmd_fwiptables cli names-config ;;
  0509) clear ; $cmd_fwiptables cli regen-config ;;
+ 0510) clear ; $cmd_fwiptables cli examples-config ;;
  0601) clear ; $cmd_fwiptables cli ss ;;
  0602) clear ; $cmd_fwiptables cli netstat ;;
  0603) clear ; $cmd_fwiptables cli lsof ;;
@@ -4559,9 +4560,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  1904) clear ; $cmd_fwiptables cli autolog ;;
  2001) clear ; $cmd_fwiptables cli about ;;
  2002) clear ; $cmd_fwiptables cli depends ;;
- 2003) clear ; $cmd_fwiptables cli examples ;;
- 2004) clear ; $cmd_fwiptables cli config-eng ;;
- 2005) clear ; $cmd_fwiptables cli config-spa ;;
+ 2003) clear ; $cmd_fwiptables cli config-eng ;;
+ 2004) clear ; $cmd_fwiptables cli config-spa ;;
  2101) clear ; $cmd_fwiptables cli mini-options ;;
  2102) clear ; $cmd_fwiptables cli full-options ;;
  2103) clear ; $cmd_fwiptables cli help ;;
