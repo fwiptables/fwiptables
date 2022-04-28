@@ -6012,17 +6012,17 @@ exit; fi
 #### :rutina-inicial-sudo-list:
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
-echo "$tab [ $first_option ] [ list users with root auth for launch $cmd_fwiptables ]"
-echo "$tab [ With root sudo for $cmd_fwiptables from some user ]"
-echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
+if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
+echo "$tab [ $first_option ] [ list users with root auth for launch $fwiptables ]"
+echo "$tab [ With root sudo for $fwiptables from some user ]"
+echo "$tab [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
 cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
 exit; fi
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
-echo "$tab [ status ] [ list users with root auth for launch $cmd_fwiptables ]"
+if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
+echo "$tab [ status ] [ list users with root auth for launch $fwiptables ]"
 echo $header_lineal
 echo "$tab [ status ] [ Without root sudo from users ]"
 echo $footer_lineal
