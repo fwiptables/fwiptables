@@ -350,8 +350,8 @@
 # changes fwiptables 2.23 en desarrollo
 #
 # 1- comprobar examples en gui menu.
-# 2- no necesita consola gui-shell gui-menu y cli-menu al tener xhost en sus ejecutables. HECHO
+# 2- no necesita consola gui-shell gui-menu y cli-menu al tener xhost en sus ejecutables desktop. HECHO
 # 3- cambio de archivos de configuracion a /etc/fwiptables-default /etc/fwiptables-config /etc/fwiptables-fwrecover. HECHO
 # 4. arreglos para funcionar en -txt  como wizard, ole y colour. HECHO
-# 5. cambio de variables internas $fwiptables pasa ser nombre solo, y hay $cmd_fwiptables. HECHO
+# 5. cambio de variables internas de $fwiptables y similares. HECHO
 #
