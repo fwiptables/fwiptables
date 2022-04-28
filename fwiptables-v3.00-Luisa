@@ -485,7 +485,7 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####  english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
-echo "alias $fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
+echo "alias $cmd_fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
 echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch \
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \

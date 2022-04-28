@@ -42,6 +42,15 @@ directory_config="/etc/fwiptables-config"
 directory_desktop="/usr/share/applications"
 ####
 ####
+#### #### english: program description   #### spanish: descripcion del programa
+fdescription="One Script in bash for iptables firewall"             
+#### #### english: program name          #### spanish: nombre del porgrama
+fprogram="Fran FireWall FWiptables Generator" ;                     
+#### #### english: version program name          #### spanish: version del porgrama
+fversion="3.01-Juana" ;
+####
+####
+#### #### english: program version       #### spanish: Version del programa
 ####     #### english: launch profile         #### spanish: lanza profile
 if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####
@@ -147,12 +156,6 @@ quarter_option="$(echo $4 | sed s/\\///g -)"  ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 genfiles="$zero_option regen-config"                        
 #### #### english: whereis path          #### spanish: donde esta el path
-fdescription="One Script in bash for iptables firewall"             
-#### #### english: program description   #### spanish: descripcion del programa
-fprogram="Fran FireWall FWiptables Generator" ;                     
-#### #### english: program name          #### spanish: nombre del porgrama
-fversion="3.00-Luisa" ;
-#### #### english: program version       #### spanish: Version del programa
 ####  #### english: default variable version whithout update for config cfg
 ####  #### spanish: default version de variables sin actualizar por config cfg
 config_variable_version="1" ;                                       
@@ -333,7 +336,7 @@ echo "$title_md     Fran fwiptables intro. "
 echo  $text_md
 echo "$text_md       Use Fran Firewall to configure both iptables netfilter for linux.        "
 echo "$text_md     Done with support in xtables and/or nftables and ipv4 and/or ipv6.         "
-echo "$text_md     Done to running in command shell, cli text, and gui graphicall.            "
+echo "$text_md     Done to run in command shell, cli text, gui menu and guishell.             "
 echo  $text_md
 echo "$text_md       Create one firewall custom with one wizard and save it in standard file. "
 echo "$text_md     Control the firewall with the standard iptables files for all tables.      "
@@ -346,7 +349,7 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
-echo "$text_md     Uninstall $cmd_fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
+echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
 echo  $text_md
 echo "$title_md     Fran fwiptables project.  "
 echo  $text_md
@@ -485,7 +488,7 @@ rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####  english: new file generated  ##### spanish: genera el nuevo archivo
 ####
 ####
-echo "alias $fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
+echo "alias $cmd_fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
 echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch \
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
