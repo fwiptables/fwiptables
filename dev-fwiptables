@@ -5986,14 +5986,14 @@ if [ "$first_option" = "sudo-adduser" ]; then $give_cover
 case $second_option in
 "$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables sudo-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $directory_fwiptables/$cmd_fwiptables " &> /etc/sudoers.d/$fwiptables
-echo "alias $fwiptables='sudo $fwiptables'" &>  /etc/bash_completion.d/$fwiptables
+echo "$autorizados ALL=(root) NOPASSWD: $directory_fwiptables/$cmd_fwiptables " &> /etc/sudoers.d/$cmd_fwiptables
+echo "alias $cmd_fwiptables='sudo $cmd_fwiptables'" &>  /etc/bash_completion.d/$cmd_fwiptables
 echo $tab
 echo "$tab [ ok ] [ $autorizados will use:     $cmd_fwiptables ]"
 echo "$tab [ Ok ] [ $cmd_fwiptables will use alias with sudo ]"
 echo $tab
 echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
-cat /etc/sudoers.d/$fwiptables
+cat /etc/sudoers.d/$cmd_fwiptables
 echo $footer_lineal
 exit; fi
 ####
@@ -6005,7 +6005,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "sudo-deluser" ]; then $give_cover
-rm /etc/sudoers.d/$fwiptables
+rm /etc/sudoers.d/$cmd_fwiptables
 echo "$tab [ ok ] [ deleted auth sudo ]"
 echo "$tab [ ok ] [ deleted /etc/sudoers.d/$cmd_fwiptables ]"
 echo $footer_lineal
@@ -6018,17 +6018,17 @@ exit; fi
 #### :rutina-inicial-sudo-list:
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$tab [ $first_option ] [ list users with root auth for launch $fwiptables ]"
-echo "$tab [ With root sudo for $fwiptables from some user ]"
-echo "$tab [ sudoer file:   /etc/sudoers.d/$fwiptables ]"
-cat /etc/sudoers.d/$fwiptables
+if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
+echo "$tab [ $first_option ] [ list users with root auth for launch $cmd_fwiptables ]"
+echo "$tab [ With root sudo for $cmd_fwiptables from some user ]"
+echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
+cat /etc/sudoers.d/$cmd_fwiptables
 echo $footer_lineal
 exit; fi
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$fwiptables ] ; then $give_cover
-echo "$tab [ status ] [ list users with root auth for launch $fwiptables ]"
+if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
+echo "$tab [ status ] [ list users with root auth for launch $cmd_fwiptables ]"
 echo $header_lineal
 echo "$tab [ status ] [ Without root sudo from users ]"
 echo $footer_lineal
@@ -6045,9 +6045,9 @@ if [ "$first_option" = "alias-list" ]; then $give_cover
 echo "$tab [ $first_option ] [ list alias and autocomplete for $cmd_fwiptables ]"
 echo $header_lineal
 echo "$tab [ alias file ] [  /etc/profile.d/$cmd_fwiptables ]"
-cat /etc/bash_completion.d/$fwiptables
+cat /etc/bash_completion.d/$cmd_fwiptables
 echo "$tab [ alias file ] [  /etc/bash_completion.d/$cmd_fwiptables ]"
-cat /etc/bash_completion.d/$fwiptables
+cat /etc/bash_completion.d/$cmd_fwiptables
 echo $footer_lineal
 exit; fi
 ####
