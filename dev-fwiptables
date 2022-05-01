@@ -25,7 +25,10 @@
 ####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
 ####
 ####
-####     #### english: whereis path     #### spanish: donde esta el path
+#### english: whereis file path
+#### spanish: donde esta el file path
+####
+####
 fwiptables="fwiptables"
 cmd_fwiptables="fwiptables-cmd"
 icon_fwiptables="/usr/share/zenity/zenity.png"
@@ -43,11 +46,11 @@ directory_desktop="/usr/share/applications"
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
-fdescription="One Script in bash for iptables firewall"             
+fdescription="One Script in bash for iptables firewall"
 #### #### english: program name          #### spanish: nombre del porgrama
-fprogram="Fran FireWall FWiptables Generator" ;                     
+fprogram="Fran FireWall FWiptables Generator"
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="3.01-Juana" ;
+fversion="3.02-Sofia" ;
 ####
 ####
 #### #### english: program version       #### spanish: Version del programa
