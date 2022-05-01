@@ -355,3 +355,16 @@
 # 4. arreglos para funcionar en -txt  como wizard, ole y colour. HECHO
 # 5. cambio de variables internas de $fwiptables y similares. HECHO
 #
+# chagnes fwiptables 3.00 
+#
+# cambios de codigos de variables
+# cambios para 3.00
+#
+# changes fwiptables 3.01
+#
+# pequeños arreglos varios
+# arreglos en /etc/sudoers.d/fwiptables-cmd
+#
+# changes fwiptables 3.02 en desarrollo
+#
+
