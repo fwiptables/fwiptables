@@ -558,7 +558,6 @@ chmod ugo+rx $directory_fwiptables/$fwiptables-gui-shell &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fwiptables/$fwiptables-cli-menu
-echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$fwiptables-cli-menu
 echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fwiptables/$fwiptables-cli-menu
 chmod ugo+rx $directory_fwiptables/$fwiptables-cli-menu &> /dev/null
 ####
