@@ -369,5 +369,6 @@
 #
 # 1. añadido intro en cli-menu y gui-menu
 # 2. cambios en sudo-list.
-# 3.
+# 3. añadido ntpdate a cli-menu y gui-menu
+# 4.
 #

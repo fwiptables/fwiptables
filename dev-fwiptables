@@ -3548,7 +3548,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
-"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" \
+"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Sockets] [$fwiptables]" )
 #### 
 #### 
@@ -3567,6 +3567,7 @@ case $selection in
 "tcpdump") $cmd_fwiptables -gui tcpdump ;;
 "info-proxy") $cmd_fwiptables -gui info-proxy ;;
 "info-listen") $cmd_fwiptables -gui info-listen ;;
+"ntpdate") $cmd_fwiptables -gui ntpdate ;;
 esac
 ####
 ####
@@ -4297,6 +4298,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0608  "$tab info-proxy" \
   0609  "$tab info-net" \
   0610  "$tab info-system" \
+  0611  "$tab ntpdate" \
   0700 "$quad [ Tool Ipfwarding ] $cinco" \
   0701  "$tab ipforward-list" \
   0702  "$tab ipforward-on" \
@@ -4503,6 +4505,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0608) clear ; $cmd_fwiptables cli info-proxy ;;
  0609) clear ; $cmd_fwiptables cli info-net ;;
  0610) clear ; $cmd_fwiptables cli info-system ;;
+ 0611) clear ; $cmd_fwiptables cli ntpdate ;;
  0701) clear ; $cmd_fwiptables cli ipforward-list ;;
  0702) clear ; $cmd_fwiptables cli ipforward-on ;;
  0703) clear ; $cmd_fwiptables cli ipforward-off ;;
