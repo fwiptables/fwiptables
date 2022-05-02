@@ -6737,8 +6737,7 @@ pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0
-echo "$tab New date: $($command_date)"
+$favorite_date_command $pool0 && echo "$tab New date: $($command_date)"
 echo $footer_lineal
 exit; fi
 ####
