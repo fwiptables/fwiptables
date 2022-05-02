@@ -1760,7 +1760,7 @@ echo "$text_md    tool-game          |  ole-word ole-number ole-domain colour-rg
 echo "$text_md    tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3                  "
 echo "$text_md    tool-install       |  install upgrade howto-upgrade                                      "
 echo "$text_md    tool-blacklist     |  blacklist-list blacklist-on blacklist-off                          "
-echo "$text_md    tool-dev           |  new-versions dev-version dev-changes code                          "
+echo "$text_md    tool-dev           |  new-versions dev-version dev-changes code intro                    "
 echo "$title_md                                     [ show-options ]                                       " 
 echo "$text_md    show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                          "
 echo "$text_md    show-log           |  log-search log-ssh sentlog autolog                                 "
@@ -2749,6 +2749,9 @@ echo "$text_md $tab_lang_spanish               : Muestra los ultimos cambios"
 echo "$text_md $tab code"
 echo "$text_md $tab_lang_english               : Show code source from one option"
 echo "$text_md $tab_lang_spanish               : Muestra el codigo fuente de una opcion"
+echo "$text_md $tab intro"
+echo "$text_md $tab_lang_english               : Show intro $fwiptables"
+echo "$text_md $tab_lang_spanish               : Muestra la intro de $fwiptables"
 echo $footer_lineal
 exit; fi
 ####
@@ -3878,7 +3881,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" \
+--list "Gui Principal Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Install] [$fwiptables]" )
 #### 
 #### 
@@ -3889,6 +3892,7 @@ case $selection in
 "new-versions")$cmd_fwiptables -gui new-versions ;;
 "dev-version") $cmd_fwiptables -gui dev-version  ;;
 "dev-changes") $cmd_fwiptables -gui dev-changes ;;
+"intro") $cmd_fwiptables -gui intro ;;
 "code") archivo="$(zenity $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
 $cmd_fwiptables -gui code $archivo
 esac
@@ -4335,7 +4339,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   1500 "$quad [ Tool Dev ] $cinco" \
   1501  "$tab new-versions" \
   1502  "$tab dev-version" \
-  1502  "$tab dev-changes" \
+  1503  "$tab dev-changes" \
+  1504  "$tab intro" \
   1600 "$quad [ Tool System ] $cinco" \
   1601  "$tab free-ram" \
   1602  "$tab speed-ram" \
@@ -4539,7 +4544,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  1404) clear ; $cmd_fwiptables cli blacklist-off ;;
  1501) clear ; $cmd_fwiptables cli new-versions ;;
  1502) clear ; $cmd_fwiptables cli dev-version ;;
- 1503) clear ; $cmd_fwiptables cli dev-changes ;; 
+ 1503) clear ; $cmd_fwiptables cli dev-changes ;;
+ 1504) clear ; $cmd_fwiptables cli intro ;;
  1601) clear ; $cmd_fwiptables cli free-ram ;;
  1602) clear ; $cmd_fwiptables cli speed-ram ;;
  1603) clear ; $cmd_fwiptables cli speed-disk ;;
