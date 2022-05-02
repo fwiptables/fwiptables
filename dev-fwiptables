@@ -6025,20 +6025,33 @@ exit; fi
 #### :rutina-inicial-sudo-list:
 ####
 ####
-if [ "$first_option" = "sudo-list" ] && [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
-echo "$tab [ $first_option ] [ list users with root auth for launch $cmd_fwiptables ]"
-echo "$tab [ With root sudo for $cmd_fwiptables from some user ]"
-echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
+if [ "$first_option" = "sudo-list" ]; then $give_cover
+if [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
+echo "$tab [ status ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
+echo "$tab [ ok ] [ With root sudo for $cmd_fwiptables from some user ]"
 cat /etc/sudoers.d/$cmd_fwiptables
 echo $footer_lineal
-exit; fi
-####
-####
-if [ "$first_option" = "sudo-list" ] && [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $give_cover
-echo "$tab [ status ] [ list users with root auth for launch $cmd_fwiptables ]"
-echo $header_lineal
-echo "$tab [ status ] [ Without root sudo from users ]"
+fi
+if [ -f /etc/sudoers.d/$fwiptables ] ; then $nada
+echo "$tab [ status ][ old version sudoer file:   /etc/sudoers.d/$fwiptables ]"
+echo "$tab [ ok ] [ With root sudo for $fwiptables from some user ]"
+cat /etc/sudoers.d/$fwiptables
 echo $footer_lineal
+fi
+####
+####
+if [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
+echo "$tab [ status ] [ list users with root auth for launch $cmd_fwiptables ]"
+echo "$tab [ fail ] [ actual version $cmd_fwiptables Without root sudo from users ]"
+echo $footer_lineal
+fi
+####
+####
+if [ ! -f /etc/sudoers.d/$fwiptables ] ; then $nada
+echo "$tab [ status ] [ list users with root auth for launch $fwiptables ]"
+echo "$tab [ fail ] [ old version $fwiptables Without root sudo from users ]"
+echo $footer_lineal
+fi
 exit; fi
 ####
 ####
