@@ -368,5 +368,6 @@
 # changes fwiptables 3.02 en desarrollo
 #
 # 1. añadido intro en cli-menu y gui-menu
-# 2.
+# 2. cambios en sudo-list.
+# 3.
 #
