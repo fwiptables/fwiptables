@@ -374,6 +374,6 @@
 # 5. mini-options mas resumido. HECHO
 # 6. se pueden espificar ahora host para ping y traceroute. HECHO
 # 7. resolv.conf añadido a gui-menu. HECHO
-# 8. rediseño de -rst, ahora es -help completa la ayuda. 
+# 8. rediseño de -rst para todas las opciones y ahora es convertido a -help. HECHO
 # 9.
 # 
