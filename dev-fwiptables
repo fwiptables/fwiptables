@@ -3626,10 +3626,14 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-icmp ;;
-"traceicmp-ip4") $cmd_fwiptables -gui traceicmp-ip4 ;;
-"traceicmp-ip6") $cmd_fwiptables -gui traceicmp-ip6 ;;
-"ping-ip4")  $cmd_fwiptables -gui ping-ip4  ;;
-"ping-ip6")  $cmd_fwiptables -gui ping-ip6  ;;
+"traceicmp-ip4") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+$cmd_fwiptables -gui traceicmp-ip4 $archivo ;;
+"traceicmp-ip6") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+$cmd_fwiptables -gui traceicmp-ip6 $archivo ;;
+"ping-ip4") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+$cmd_fwiptables -gui ping-ip4 $archivo ;;
+"ping-ip6") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ; 
+$cmd_fwiptables -gui ping-ip6 $archivo ;;
 esac
 ####
 ####
