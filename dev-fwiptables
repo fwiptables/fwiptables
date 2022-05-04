@@ -830,17 +830,12 @@ if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html comm
 echo $head_waiting_rst
 case "$second_option" in
 group-options);;
-"help");;
-"ayuda");;
-"help-options");;
-"all-help");;
-"output-interface") ;;
-firewall-*);;
-tool-*) ;;
-show-*) ;;
+"help"|"ayuda"|"help-options"|"all-help"|"output-interface");;
+firewall-*) ;; tool-*) ;; show-*) ;;
+#### continuar con todas las opciones ####
 *) echo $message_without_rst ;  exit ;;
 esac
-fwiptables $second_option $third_option &> $file_temporal_text.1 ;
+$cmd_fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
 $file_temporal_text.2 | grep -iv "::"  &> $file_temporal_text.rst ;
