@@ -372,5 +372,6 @@
 # 3. añadido ntpdate a cli-menu y gui-menu
 # 4. arreglos en sudo-list
 # 5. mini-options mas resumido
-# 6.
+# 6. se pueden espificar ahora host para ping y traceroute
+# 7.
 # 
