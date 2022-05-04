@@ -4032,11 +4032,11 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui show-about ;;
-"about")$cmd_fwiptables -gui about ;;
-"version")$cmd_fwiptables -gui version ;;
-"depends")$cmd_fwiptables -gui depends ;;
-"config-eng")$cmd_fwiptables -gui config-eng ;;
-"config-spa")$cmd_fwiptables -gui config-spa ;;
+"about") $cmd_fwiptables -gui about ;;
+"version") $cmd_fwiptables -gui version ;;
+"depends") $cmd_fwiptables -gui depends ;;
+"config-eng") $cmd_fwiptables -gui config-eng ;;
+"config-spa") $cmd_fwiptables -gui config-spa ;;
 esac
 ####
 ####
