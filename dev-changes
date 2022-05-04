@@ -367,12 +367,13 @@
 #
 # changes fwiptables 3.02 en desarrollo
 #
-# 1. añadido intro en cli-menu y gui-menu
-# 2. cambios en sudo-list.
-# 3. añadido ntpdate a cli-menu y gui-menu
-# 4. arreglos en sudo-list
-# 5. mini-options mas resumido
-# 6. se pueden espificar ahora host para ping y traceroute
-# 7. resolv.conf añadido a gui-menu
-# 8.
+# 1. añadido intro en cli-menu y gui-menu. HECHO
+# 2. cambios en sudo-list. HECHO
+# 3. añadido ntpdate a cli-menu y gui-menu. HECHO
+# 4. arreglos en sudo-list. HECHO
+# 5. mini-options mas resumido. HECHO
+# 6. se pueden espificar ahora host para ping y traceroute. HECHO
+# 7. resolv.conf añadido a gui-menu. HECHO
+# 8. rediseño de -rst, ahora es -help completa la ayuda. 
+# 9.
 # 
