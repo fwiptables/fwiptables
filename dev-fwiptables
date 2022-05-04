@@ -822,7 +822,7 @@ echo "$tab [ ok ] \
 exit ; fi
 ####
 ####
-#### output rst:
+#### output help:
 ####
 ####
 if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
@@ -837,6 +837,24 @@ list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option=""
 "eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
+info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
+ipforward-*) second_option="tool-forward"; third_option="" ;;
+tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
+host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
+traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
+scan-*)  second_option="tool-nmap"; third_option="" ;;
+sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
+ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
+"install"|upgrade|howto-upgrade)  second_option="tool-install"; third_option="" ;;
+blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
+new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
+lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
+log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
+hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
+about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
+all-help|help|ayuda|notes|options|info|mini-options|full-options|group-options)
+ second_option="show-help"; third_option="" ;;
 #### continuar con todas las opciones ####
 *) echo $message_without_rst ;  exit ;;
 esac
@@ -1815,22 +1833,22 @@ exit ; fi
 ####
 if [ "$first_option" = "tool-options" ] ; then $give_cover
 echo "$text_md $tab [ $first_option ] [ Tool options ] [ tool-options.md ]"
-echo "$title_md                                    | tool-options |                         " 
-echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy "
-echo "$text_md                        info-system lsof tcpdump netstat netstat-nat web-cert "
-echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off             "
-echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6         "
-echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate                      "
-echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6         "
-echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping         "
-echo "$text_md    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list        "
-echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex             "
-echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx radio         "
-echo "$text_md    tool-install      | install upgrade howto-upgrade                         "
-echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off             "
-echo "$text_md    tool-dev          | new-versions dev-version dev-changes code             "
+echo "$title_md                                    | tool-options |                            " 
+echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy    "
+echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert "
+echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                "
+echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6            "
+echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate                         "
+echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6            "
+echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping            "
+echo "$text_md    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list           "
+echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex                "
+echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx radio            "
+echo "$text_md    tool-install      | install upgrade howto-upgrade                            "
+echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                "
+echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                "
 echo "$text_md"
-echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
+echo "$text_md  | Group |  firewall-options     tool-options        show-options               "
 exit ; fi
 ####
 ####
