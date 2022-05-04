@@ -3951,7 +3951,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
- "show-default" "modify-default" \
+"resolv.conf" "show-default" "modify-default" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show etc] [$fwiptables]" )
 #### 
 #### 
@@ -3964,6 +3964,7 @@ case $selection in
 "services") $cmd_fwiptables -gui services ;;
 "hosts.allow") $cmd_fwiptables -gui hosts.allow ;;
 "hosts.deny") $cmd_fwiptables -gui hosts.deny ;;
+"resolv.conf") $cmd_fwiptables -gui resolv.conf ;;
 "show-default") $cmd_fwiptables -gui show-default ;;
 "modify-default") $cmd_fwiptables -gui modify-default ;;
 esac
