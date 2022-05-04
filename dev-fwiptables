@@ -855,7 +855,6 @@ hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc
 about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
 all-help|help|ayuda|notes|options|info|mini-options|full-options|group-options)
  second_option="show-help"; third_option="" ;;
-#### continuar con todas las opciones ####
 *) echo $message_without_rst ;  exit ;;
 esac
 $cmd_fwiptables $second_option $third_option &> $file_temporal_text.1 ;
