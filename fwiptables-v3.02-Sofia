@@ -731,9 +731,10 @@ if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_op
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_option="-txt"; fi
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_option="-cli"; fi
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
-if [ "$first_option" = "rst"  ] || [ "$first_option" = "-rst"  ] ; then first_option="-rst"; fi
+if [ "$first_option" = "rst"  ] || [ "$first_option" = "-rst"  ] ; then first_option="-help"; fi
 if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_option="-web"; fi
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
+
 ####
 ####
 ##############################     ALIAS CAMPUS
@@ -824,7 +825,7 @@ exit ; fi
 #### output rst:
 ####
 ####
-if [ "$first_option" = "-rst" ] || [ "$first_option" = "rst" ] ; then
+if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 echo $head_waiting_rst
@@ -1691,11 +1692,11 @@ echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$title_md $tab [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor    "
+echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -log -web -tor   "
 echo "$title_md                                      [ firewall-options ]                              "
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                   "
 echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 status                     "
-echo "$text_md                       list-alltables list-filter4 list-filter6                           "
+echo "$text_md                       list-alltables list-filter4 list-filter6                          "
 echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6 "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables        "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                         "
@@ -1732,11 +1733,11 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$title_md    $tab [ $first_option ] [ List full options ] [ options.md ]"
-echo "$text_md   output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -log -web -rst -tor      " 
+echo "$text_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -log -web -tor    "
 echo "$title_md                                      [ firewall-options ]                                  "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                    "
 echo "$text_md    firewall-list      |  ls ls4 ls6 list list6 listnum listnum6 status                      "
-echo "$text_md                          list-alltables list-filter4 list-filter6                            "
+echo "$text_md                          list-alltables list-filter4 list-filter6                           "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6  " 
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables         "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                          "
