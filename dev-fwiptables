@@ -829,9 +829,13 @@ if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exi
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 echo $head_waiting_rst
 case "$second_option" in
-group-options);;
-"help"|"ayuda"|"help-options"|"all-help"|"output-interface");;
-firewall-*) ;; tool-*) ;; show-*) ;;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
+"help"|"ayuda"|"help-options"|"all-help"|"output-interface") ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option=" firewall-rules"; third_option="" ;;
+list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
+"eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
+second_option=" firewall-launch"; third_option="" ;;
+*-config) second_option=" firewall-custom"; third_option="" ;;
 #### continuar con todas las opciones ####
 *) echo $message_without_rst ;  exit ;;
 esac
@@ -2302,8 +2306,8 @@ echo  $text_md
 echo "$text_md $tab list-ebtables"
 echo "$text_md $tab_lang_english          : List rules mac ethernet"
 echo "$text_md $tab_lang_spanish          : Lista reglas mac de ethernet"
-echo "$text_md $tab arp-tables"
-echo "$text_md $tab_lang_english          : List rules arptables arp"
+echo "$text_md $tab list-arptables"
+echo "$text_md $tab_lang_english          : List rules arp tables arp from arpanet"
 echo "$text_md $tab_lang_spanish          : Lista reglas de tabla de arpanet"
 echo $footer_lineal
 exit; fi
