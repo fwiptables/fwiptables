@@ -3697,10 +3697,12 @@ case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-tcp ;;
-"tracetcp-ip4") $cmd_fwiptables -gui tracetcp-ip4   ;;
-"tracetcp-ip6") $cmd_fwiptables -gui tracetcp-ip6   ;;
-"speed-ip4") $cmd_fwiptables -gui speed-ip4 ;;
-"speed-ip6") $cmd_fwiptables -gui speed-ip6 ;;
+"tracetcp-ip4")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+$cmd_fwiptables -gui tracetcp-ip4 $archivo  ;;
+"tracetcp-ip6")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+$cmd_fwiptables -gui tracetcp-ip6 $archivo  ;;
+"speed-ip4") $cmd_fwiptables -gui speed-ip4  ;;
+"speed-ip6") $cmd_fwiptables -gui speed-ip6  ;;
 esac
 ####
 ####
@@ -6559,23 +6561,24 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip4:
 ####
 ####
- if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
- echo "$tab [ $first_option ] [ trace ip or host with ipv4 ]"
- echo $header_lineal
- case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
+if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
+echo "$tab [ $first_option ] [ trace ip or host with ipv4 ]"
+echo $header_lineal
+case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
- $cmd_fwiptables stop
- echo $head_waiting_gui
- echo "$tab [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
- timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
- echo $head_waiting_gui
- $cmd_fwiptables continue
- echo $footer_lineal
- exit; fi
+$cmd_fwiptables stop
+echo $head_waiting_gui
+if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
+echo "$tab [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
+timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
+echo $head_waiting_gui
+$cmd_fwiptables continue
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-tracetcp-ip4:
@@ -6584,22 +6587,23 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip6:
 ####
 ####
- if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
- echo "$tab [ $first_option ] [ trace one ip or host with ipv6 ]"
- echo $header_lineal
- case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
+if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
+echo "$tab [ $first_option ] [ trace one ip or host with ipv6 ]"
+echo $header_lineal
+case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
 ####
 ####
 #### english: launch #### spanish: lanza
 ####
 ####
- $cmd_fwiptables stop
- echo $head_waiting_gui
- echo "$tab [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
- timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
- $cmd_fwiptables continue
- echo $footer_lineal
- exit; fi
+$cmd_fwiptables stop
+echo $head_waiting_gui
+if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
+echo "$tab [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
+timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
+$cmd_fwiptables continue
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-tracetcp-ip6:
