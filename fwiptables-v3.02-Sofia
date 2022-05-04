@@ -3367,11 +3367,11 @@ selection=$(zenity $graphic_dimension \
 #### 
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui firewall-launch ;;
 "eraserules") $cmd_fwiptables -gui eraserules ; $cmd_fwiptables gui list ;;
-"wizard-full")$cmd_fwiptables -gui wizard-full ; $cmd_fwiptables gui list ;;
-"wizard-mini")$cmd_fwiptables -gui wizard-mini ; $cmd_fwiptables gui list ;;
+"wizard-full") $cmd_fwiptables -gui wizard-full ; $cmd_fwiptables gui list ;;
+"wizard-mini") $cmd_fwiptables -gui wizard-mini ; $cmd_fwiptables gui list ;;
 "offline") $cmd_fwiptables -gui offline ; $cmd_fwiptables gui list ;;
 "all-permisive") $cmd_fwiptables -gui all-permisive ; $cmd_fwiptables gui list ;;
 "client-web") $cmd_fwiptables -gui client-web ; $cmd_fwiptables gui list ;;
@@ -3388,7 +3388,7 @@ case "$selection" in
 "server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
 "server-print") $cmd_fwiptables -gui server-print ; $cmd_fwiptables gui list ;;
 "server-lamp") $cmd_fwiptables -gui server-lamp ; $cmd_fwiptables gui list ;;
-"custom cfg")archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
+"custom cfg") archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables gui list ;;
 esac
 ####
@@ -3624,7 +3624,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-icmp ;;
 "traceicmp-ip4") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_fwiptables -gui traceicmp-ip4 $archivo ;;
@@ -3695,7 +3695,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-tcp ;;
 "tracetcp-ip4")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_fwiptables -gui tracetcp-ip4 $archivo  ;;
@@ -3728,7 +3728,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-sudo ;;
 "sudo-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_fwiptables -gui sudo-adduser $archivo ;;
@@ -3796,7 +3796,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-system ;;
 "free-ram")   $cmd_fwiptables -gui free-ram ;;
 "speed-ram")  $cmd_fwiptables -gui speed-ram ;;
@@ -3830,7 +3830,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-install ;;
 "install")$cmd_fwiptables -gui install ;;
 "howto-upgrade")$cmd_fwiptables -gui howto-upgrade ;;
@@ -3861,7 +3861,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-blacklist;;
 "blacklist-list")$cmd_fwiptables -gui blacklist-list;;
 "blacklist-list info")$cmd_fwiptables -gui blacklist-list info ;;
@@ -3894,7 +3894,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu  ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu  ;;
 "Gui Info Menu") $cmd_fwiptables -gui tool-dev ;;
 "new-versions")$cmd_fwiptables -gui new-versions ;;
 "dev-version") $cmd_fwiptables -gui dev-version  ;;
@@ -3927,7 +3927,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui show-hardware;;
 "lpinfo")$cmd_fwiptables -gui lpinfo;;
 "lsblk")$cmd_fwiptables -gui lsblk;;
@@ -3962,7 +3962,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui show-etc ;;
 "hosts") $cmd_fwiptables -gui hosts ;;
 "protocols") $cmd_fwiptables -gui protocols ;;
@@ -3996,7 +3996,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui show-log ;;
 "log-ssh")   $cmd_fwiptables -gui log-ssh ;;
 "sentlog") $cmd_fwiptables -gui sentlog ;;
@@ -4030,7 +4030,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui show-about ;;
 "about") $cmd_fwiptables -gui about ;;
 "version") $cmd_fwiptables -gui version ;;
@@ -4063,7 +4063,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"Gui Principal Menu")$cmd_fwiptables gui-menu ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Info Menu") $cmd_fwiptables -gui show-help ;;
 "mini-options")$cmd_fwiptables -gui mini-options ;;
 "full-options")$cmd_fwiptables -gui full-options ;;
