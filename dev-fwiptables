@@ -191,7 +191,8 @@ head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_rst="$tab [ help ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_help="$tab [ help in rst ] [ Loading.. ]"
+head_waiting_info="$tab [ info in txt ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -213,8 +214,9 @@ show_lang_spanish="##"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$tab [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$tab [ gui ] [ Without support for output gui for this option ]"
-message_without_web="$tab [ web ] [ Without support for output web for this option ]"
-message_without_rst="$tab [ help ] [ Without support for output rst for this option ]"
+message_without_web="$tab [ web.txt ] [ Without support for output web for this option ]"
+message_without_help="$tab [ help in rst ] [ Without support for output rst for this option ]"
+message_without_info="$tab [ info in txt ] [ Without support for output info for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -733,9 +735,9 @@ if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_op
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
 if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_option="-web"; fi
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
-if [ "$first_option" = "h"      ] || [ "$first_option" = "-h"  ] ; then first_option="-help"; fi
 if [ "$first_option" = "rst"    ] || [ "$first_option" = "-rst"  ] ; then first_option="-help"; fi
-if [ "$first_option" = "-help"  ] || [ "$first_option" = "--help"  ] ; then first_option="-help"; fi
+if [ "$first_option" = "-h"     ]  || [ "$first_option" = "--h"  ] ; then first_option="-help"; fi
+if [ "$first_option" = "help"  ] || [ "$first_option" = "-help"  ] ; then first_option="-help"; fi
 ####
 ####
 ##############################     ALIAS CAMPUS
@@ -815,13 +817,13 @@ echo "$tab [ ok ] \
 exit ; fi
 ####
 ####
-#### output help:
+#### output info:
 ####
 ####
-if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
-if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
-if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
-echo $head_waiting_rst
+if [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
+#### if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
+#### if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+#### echo $head_waiting_info
 case "$second_option" in
 "$NULL") second_option="options"; third_option="" ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
@@ -847,9 +849,49 @@ lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third
 log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
 about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
-all-help|help|ayuda|notes|options|info|mini-options|full-options|group-options)
+all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
  second_option="show-help"; third_option="" ;;
-*) echo $message_without_rst ;  exit ;;
+*) echo $message_without_info ;  exit ;;
+esac
+$cmd_fwiptables $second_option
+exit ; fi
+####
+####
+#### output help:
+####
+####
+if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
+if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
+if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+echo $head_waiting_info
+case "$second_option" in
+"$NULL") second_option="options"; third_option="" ;;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
+"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
+list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
+"eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
+second_option=" firewall-launch"; third_option="" ;;
+*-config) second_option=" firewall-custom"; third_option="" ;;
+info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
+ipforward-*) second_option="tool-forward"; third_option="" ;;
+tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
+host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
+traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
+scan-*)  second_option="tool-nmap"; third_option="" ;;
+sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
+ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
+"install"|upgrade|howto-upgrade)  second_option="tool-install"; third_option="" ;;
+blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
+new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
+lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
+log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
+hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
+about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
+all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
+ second_option="show-help"; third_option="" ;;
+*) echo $message_without_help ;  exit ;;
 esac
 $cmd_fwiptables $second_option $third_option &> $file_temporal_text.1 ;
 sed -e 's/^/ /' $file_temporal_text.1 &> $file_temporal_text.2  ;
@@ -1703,7 +1745,7 @@ echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$title_md $tab [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -log -web -tor   "
+echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log -tor   "
 echo "$title_md                                      [ firewall-options ]                              "
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                   "
 echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 status                     "
@@ -1740,7 +1782,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$title_md    $tab [ $first_option ] [ List full options ] [ options.md ]"
-echo "$text_md    output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -log -web -tor    "
+echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log -tor   "
 echo "$title_md                                      [ firewall-options ]                                  "
 echo "$text_md    firewall-rules     |  stop continue reset names actual show save load                    "
 echo "$text_md    firewall-list      |  ls ls4 ls6 list list6 listnum listnum6 status                      "
@@ -2412,12 +2454,15 @@ echo "$text_md $tab_lang_spanish          : Salida a ventana grafica"
 echo "$text_md $tab log OR -log"
 echo "$text_md $tab_lang_english          : Save the output"
 echo "$text_md $tab_lang_spanish          : Guarda la salida"
-echo "$text_md $tab web OR -web"
-echo "$text_md $tab_lang_english          : Output in favorite text web browser"
-echo "$text_md $tab_lang_spanish          : Salida en favorito navegador web de texto"
+echo "$text_md $tab info OR -info"
+echo "$text_md $tab_lang_english          : Output in text plain format"
+echo "$text_md $tab_lang_spanish          : Salida en text con formato plano"
 echo "$text_md $tab help OR -help"
 echo "$text_md $tab_lang_english          : Output in text with rst format"
 echo "$text_md $tab_lang_spanish          : Salida en text con formato rst"
+echo "$text_md $tab web OR -web"
+echo "$text_md $tab_lang_english          : Output in favorite text web browser"
+echo "$text_md $tab_lang_spanish          : Salida en favorito navegador web de texto"
 echo "$text_md $tab tor OR -tor"
 echo "$text_md $tab_lang_english          : Run in tor, necesary tor daemon ant torify command"
 echo "$text_md $tab_lang_spanish          : Ejecuta en tor, necesario daemon tor y comando torify"
