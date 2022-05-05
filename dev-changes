@@ -378,5 +378,7 @@
 # 
 # changes fwiptables 3.03 en desarrollo
 #
-# 1.
+# 1. arreglos en help output.
+# 2. arreglos en info output.
+# 3.
 #
