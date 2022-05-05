@@ -191,8 +191,8 @@ head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_help="$tab [ help in rst ] [ Loading.. ]"
-head_waiting_info="$tab [ info in txt ] [ loading.. ]"
+head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
+head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -823,11 +823,13 @@ exit ; fi
 if [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
 #### if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
 #### if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
-#### echo $head_waiting_info
+echo $head_waiting_info
 case "$second_option" in
 "$NULL") second_option="options"; third_option="" ;;
-firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
@@ -863,10 +865,10 @@ exit ; fi
 if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
 if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
-echo $head_waiting_info
+echo $head_waiting_help
 case "$second_option" in
 "$NULL") second_option="options"; third_option="" ;;
-firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
@@ -2455,11 +2457,11 @@ echo "$text_md $tab log OR -log"
 echo "$text_md $tab_lang_english          : Save the output"
 echo "$text_md $tab_lang_spanish          : Guarda la salida"
 echo "$text_md $tab info OR -info"
-echo "$text_md $tab_lang_english          : Output in text plain format"
-echo "$text_md $tab_lang_spanish          : Salida en text con formato plano"
+echo "$text_md $tab_lang_english          : Output help in text plain format"
+echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato plano"
 echo "$text_md $tab help OR -help"
-echo "$text_md $tab_lang_english          : Output in text with rst format"
-echo "$text_md $tab_lang_spanish          : Salida en text con formato rst"
+echo "$text_md $tab_lang_english          : Output help in text with rst format"
+echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato rst"
 echo "$text_md $tab web OR -web"
 echo "$text_md $tab_lang_english          : Output in favorite text web browser"
 echo "$text_md $tab_lang_spanish          : Salida en favorito navegador web de texto"
@@ -2491,6 +2493,12 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool sockets ]"
 echo "$text_md [ spanish info ] [ Herramienta de sockets ]"
 echo  $text_md
+echo "$text_md $tab info-system"
+echo "$text_md $tab_lang_english          : List system info"
+echo "$text_md $tab_lang_spanish          : Lista informacion del sistema"
+echo "$text_md $tab info-net"
+echo "$text_md $tab_lang_english          : List system net info"
+echo "$text_md $tab_lang_spanish          : Lista informacion de red del sistema"
 echo "$text_md $tab info-sockets"
 echo "$text_md $tab_lang_english          : List system listen sockets"
 echo "$text_md $tab_lang_spanish          : Lista sockets a la escuha del sistema"
