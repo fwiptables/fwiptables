@@ -50,7 +50,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator"
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="3.03-Antonia" ;
+fversion="3.02-Sofia" ;
 ####
 ####
 #### #### english: program version       #### spanish: Version del programa
@@ -191,7 +191,7 @@ head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_rst="$tab [ rst ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_rst="$tab [ help ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -214,7 +214,7 @@ show_lang_spanish="##"
 message_without_cli="$tab [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$tab [ gui ] [ Without support for output gui for this option ]"
 message_without_web="$tab [ web ] [ Without support for output web for this option ]"
-message_without_rst="$tab [ rst ] [ Without support for output rst for this option ]"
+message_without_rst="$tab [ help ] [ Without support for output rst for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
@@ -731,10 +731,11 @@ if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_op
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_option="-txt"; fi
 if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_option="-cli"; fi
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
-if [ "$first_option" = "rst"  ] || [ "$first_option" = "-rst"  ] ; then first_option="-help"; fi
 if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_option="-web"; fi
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
-
+if [ "$first_option" = "h"      ] || [ "$first_option" = "-h"  ] ; then first_option="-help"; fi
+if [ "$first_option" = "rst"    ] || [ "$first_option" = "-rst"  ] ; then first_option="-help"; fi
+if [ "$first_option" = "-help"  ] || [ "$first_option" = "--help"  ] ; then first_option="-help"; fi
 ####
 ####
 ##############################     ALIAS CAMPUS
@@ -830,9 +831,10 @@ if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exi
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 echo $head_waiting_rst
 case "$second_option" in
+"$NULL") second_option="options"; third_option="" ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
-"help"|"ayuda"|"help-options"|"all-help"|"output-interface") ;;
-"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option=" firewall-rules"; third_option="" ;;
+"help"|"ayuda"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
