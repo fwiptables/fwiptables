@@ -365,7 +365,7 @@
 # pequeños arreglos varios
 # arreglos en /etc/sudoers.d/fwiptables-cmd
 #
-# changes fwiptables 3.02 en desarrollo
+# changes fwiptables 3.02
 #
 # 1. añadido intro en cli-menu y gui-menu. HECHO
 # 2. cambios en sudo-list. HECHO
@@ -375,5 +375,8 @@
 # 6. se pueden espificar ahora host para ping y traceroute. HECHO
 # 7. resolv.conf añadido a gui-menu. HECHO
 # 8. rediseño de -rst para todas las opciones y ahora es convertido a -help. HECHO
-# 9.
 # 
+# changes fwiptables 3.03 en desarrollo
+#
+# 1.
+#
