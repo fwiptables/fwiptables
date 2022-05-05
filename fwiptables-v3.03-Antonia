@@ -50,7 +50,7 @@ fdescription="One Script in bash for iptables firewall"
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator"
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="3.02-Sofia" ;
+fversion="3.03-Antonia" ;
 ####
 ####
 #### #### english: program version       #### spanish: Version del programa
@@ -747,14 +747,6 @@ if [ "$first_option" = "-help"  ] || [ "$first_option" = "--help"  ] ; then firs
 ####
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
 case "$second_option" in
-#### cli-menu) first_option="cli-menu"   ;;
-#### gui-menu) first_option="gui-menu"   ;;
-#### gui-shell) first_option="gui-shell" ;;
-#### *-config)  $cmd_fwiptables $second_option $third_option ;  exit ;;
-#### wizard-*) $cmd_fwiptables $second_option  ; exit ;;
-#### ole-*) $cmd_fwiptables $second_option -txt ; exit ;; 
-#### "colour-hex"|"colour-rgb") $cmd_fwiptables $second_option $third_option -txt ; exit ;;
-#### "blacklist-*") $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "list") $cmd_fwiptables list4-ip &> $file_temporal_text 
 cat $file_temporal_text | grep -v Warning:  &> $file_temporal_textfinal
 cat $file_temporal_textfinal ; exit ;;
@@ -780,7 +772,7 @@ wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_opti
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
-# scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "ole-domain") $cmd_fwiptables ole-domain -cli ; exit ;;
 "ole-word") $cmd_fwiptables ole-word -cli ; exit ;;
@@ -833,7 +825,7 @@ echo $head_waiting_rst
 case "$second_option" in
 "$NULL") second_option="options"; third_option="" ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options);;
-"help"|"ayuda"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
@@ -1727,18 +1719,14 @@ echo "$text_md                       new-mini-config nueva-mini-config examples-
 echo "$text_md                       show-config modify-config del-config names-config                 "
 echo "$title_md                                      [ help-options ]                                  "
 echo "$text_md                       See all options with:   $cmd_fwiptables options                   "
-#echo "$text_md firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom   "
-#echo "$text_md     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp          "
-#echo "$text_md                       tool-icmp       tool-nmap      tool-sudo        tool-game         "
-#echo "$text_md                       tool-system     tool-install   tool-blacklist   tool-dev          "
-#echo "$text_md     show-options   |  show-hardware   show-etc       show-log         show-about        "
-#echo "$text_md                       show-help       show-example                                      "
 echo "$title_md                                      [ some-example ]                                  "
-echo "$text_md        [ Example command ]                       [ Example Description ]                "
-echo "$text_md    $cmd_fwiptables options                  |  Show more options likes output txt       "
+echo "$text_md        [ Whitout optional output ]               [ Example Description ]                "
+echo "$text_md    $cmd_fwiptables options                  |  Show more options                        "
+echo "$text_md        [ with optional output ]                  [ Example Description ]                "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_fwiptables -cli save one-name       |  Save rules with output cli               "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
+echo "$text_md    $cmd_fwiptables -help readme             |  show help of readme likes output rst     "
+echo "$text_md    $cmd_fwiptables -web info-net            |  show info likes output text browser      "
 echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui           "
 exit ; fi
@@ -1786,7 +1774,7 @@ echo "$text_md    show-log           |  log-search log-ssh sentlog autolog      
 echo "$text_md    show-etc           |  hosts resolv.conf  protocols services                              "
 echo "$text_md                          hosts.allow hosts.deny show-default modify-default                 "
 echo "$text_md    show-about         |  about version depends config-eng config-spa license                "
-echo "$text_md    show-help          |  all-help help ayuda notes options info                             "
+echo "$text_md    show-help          |  all-help readme leeme notes options info                           "
 echo "$text_md                          group-options mini-options full-options                            "
 echo "$title_md       [ Example command ]                       [ Example Description ]                    "
 echo "$text_md    $cmd_fwiptables options                  |  Show more options likes output txt               "
@@ -2966,10 +2954,10 @@ echo  $text_md
 echo "$text_md $tab all-help"
 echo "$text_md $tab_lang_english           : Show help in english and spanish"
 echo "$text_md $tab_lang_spanish           : Muestra la ayuda en ingles y en español"
-echo "$text_md $tab help"
+echo "$text_md $tab readme"
 echo "$text_md $tab_lang_english           : Show help in english"
 echo "$text_md $tab_lang_spanish           : Muestra la ayuda en ingles"
-echo "$text_md $tab ayuda"
+echo "$text_md $tab leeme"
 echo "$text_md $tab_lang_english           : Show help in spanish"
 echo "$text_md $tab_lang_spanish           : Muestra la ayuda en español"
 echo "$text_md $tab group-options" 
@@ -2981,7 +2969,7 @@ echo "$text_md $tab_lang_spanish           : Muestra lista de opciones"
 echo "$text_md $tab full-options"
 echo "$text_md $tab_lang_english           : Show full options"
 echo "$text_md $tab_lang_spanish           : Muestra lista de opciones"
-echo "$text_md $tab  options"
+echo "$text_md $tab options"
 echo "$text_md $tab_lang_english           : Alias to full options"
 echo "$text_md $tab_lang_spanish           : Apodo a full-options"
 echo "$text_md $tab notes"
@@ -4077,7 +4065,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Info Menu" "mini-options" "full-options" \
-"all-help" "help" "ayuda" "notes" "license" \
+"all-help" "readme" "leeme" "notes" "license" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show help] [$fwiptables]" )
 #### 
 #### 
@@ -4088,8 +4076,8 @@ case $selection in
 "mini-options")$cmd_fwiptables -gui mini-options ;;
 "full-options")$cmd_fwiptables -gui full-options ;;
 "all-help") $cmd_fwiptables -gui all-help ;;
-"help") $cmd_fwiptables -gui help ;;
-"ayuda") $cmd_fwiptables -gui ayuda ;;
+"readme") $cmd_fwiptables -gui readme ;;
+"leeme") $cmd_fwiptables -gui leeme ;;
 "notes") $cmd_fwiptables -gui notes ;;
 "license") $cmd_fwiptables -gui license ;;
 esac
@@ -4406,8 +4394,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   2100 "$quad [ Show Help ] $cinco" \
   2101  "$tab mini-options" \
   2102  "$tab full-options" \
-  2103  "$tab help" \
-  2104  "$tab ayuda" \
+  2103  "$tab readme" \
+  2104  "$tab leeme" \
   2105  "$tab all-help" \
   2106  "$tab notes" \
   2107  "$tab license" \
@@ -4607,8 +4595,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  2004) clear ; $cmd_fwiptables cli config-spa ;;
  2101) clear ; $cmd_fwiptables cli mini-options ;;
  2102) clear ; $cmd_fwiptables cli full-options ;;
- 2103) clear ; $cmd_fwiptables cli help ;;
- 2104) clear ; $cmd_fwiptables cli ayuda ;;
+ 2103) clear ; $cmd_fwiptables cli readme ;;
+ 2104) clear ; $cmd_fwiptables cli leeme ;;
  2105) clear ; $cmd_fwiptables cli all-help ;;
  2106) clear ; $cmd_fwiptables cli notes ;;
  2107) clear ; $cmd_fwiptables cli license ;;
@@ -8625,12 +8613,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-info:
-############################       english: help: the help option en english
-############################       spanish: help: la opcion de ayuda en ingles
-#### :rutina-inicial-help:
+############################       english: readme: the help option en english
+############################       spanish: readme: la opcion de ayuda en ingles
+#### :rutina-inicial-readme:
 ####
 ####
-if [ "$first_option" = "help" ]; then 
+if [ "$first_option" = "readme" ]; then 
 echo "$title_md [ $first_option ] [ help in english ] [ help.md ]"
 echo "$text_md  [ Choose only help in english ] [  Type:     $cmd_fwiptables help   ]"
 echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables ayuda   ]"
@@ -8909,13 +8897,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-help:
-############################       english: ayuda: the help option in spanish
-############################       spanish: ayuda: la opcion de ayuda en español
-#### :rutina-inicial-ayuda:
+#### :rutina-final-readme:
+############################       english: leeme: the help option in spanish
+############################       spanish: leeme: la opcion de ayuda en español
+#### :rutina-inicial-leeme:
 ####
 ####
-if [ "$first_option" = "ayuda" ]; then 
+if [ "$first_option" = "leeme" ]; then 
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab"
 echo  $text_md
 echo "$text_md  ||  Choose only help in english   ||   Type:     $cmd_fwiptables help     "
@@ -9195,7 +9183,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-ayuda:
+#### :rutina-final-leeme:
 ############################       english: default: without other valid options
 ############################	   spanish: default: sin otra valida opcion
 ####

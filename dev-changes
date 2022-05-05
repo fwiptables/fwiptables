@@ -374,7 +374,7 @@
 # 5. mini-options mas resumido. HECHO
 # 6. se pueden espificar ahora host para ping y traceroute. HECHO
 # 7. resolv.conf añadido a gui-menu. HECHO
-# 8. rediseño de -rst para todas las opciones y ahora es convertido a -help. HECHO
+# 8. rediseño de -rst para todas las opciones especificadas y ahora es convertido a -help. HECHO
 # 
 # changes fwiptables 3.03 en desarrollo
 #
