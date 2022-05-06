@@ -25,6 +25,35 @@
 ####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
 ####
 ####
+################################################   english: begin the script
+################################################   spanish: empieza el script
+####
+####
+####   license
+####   english: This program has gpl license GPL v2, this program is copyleft, it is free.
+####   spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
+####
+####   comments
+####   english: The comments are in english language and spanish language
+####   spanish: Los comentarios estan en idioma ingles y en idioma español
+####
+####
+############################## 
+############################## 
+####
+####
+#### #### english: program description   #### spanish: descripcion del programa
+fdescription="One Script in bash for iptables firewall"
+#### #### english: program name          #### spanish: nombre del porgrama
+fprogram="Fran FireWall FWiptables Generator"
+#### #### english: version program name          #### spanish: version del porgrama
+fversion="3.04-Adela" ;
+####
+####
+##############################       permanent files and folders from fwiptables           ##############################
+##############################       permanentes archivos y carpetas desde fwiptables      ##############################
+####
+####
 #### english: whereis file path
 #### spanish: donde esta el file path
 ####
@@ -45,15 +74,30 @@ directory_config="/etc/fwiptables-config"
 directory_desktop="/usr/share/applications"
 ####
 ####
-#### #### english: program description   #### spanish: descripcion del programa
-fdescription="One Script in bash for iptables firewall"
-#### #### english: program name          #### spanish: nombre del porgrama
-fprogram="Fran FireWall FWiptables Generator"
-#### #### english: version program name          #### spanish: version del porgrama
-fversion="3.04-Adela" ;
+##############################       temporal files for fwiptables       ##############################
+##############################       archivos temporales de fwiptables      ##############################
 ####
 ####
-#### #### english: program version       #### spanish: Version del programa
+#### english: temporal files
+#### spanish: archivos temporales
+####
+####
+mkdir -p /tmp/fwiptables-$fversion-data/ &> /dev/null
+file_temporal_path="/tmp/fwiptables-$fversion-data/"
+file_temporal_text="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
+file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
+file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
+file_temporal_guifinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
+file_output_log="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
+file_output_filelog="/var/log/fwiptables-filelog"
+file_output_autolog="/var/log/fwiptables-autolog"
+####
+####
+################################################   english: basic system variables
+################################################   spanish: las variables basicas del sistema
+####
+####
+####     #### english: program version       #### spanish: Version del programa
 ####     #### english: launch profile         #### spanish: lanza profile
 if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####
@@ -85,23 +129,6 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
-####
-####
-################################################   english: begin the script
-################################################   spanish: empieza el script
-####
-####
-####   license
-####   english: This program has gpl license GPL v2, this program is copyleft, it is free.
-####   spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
-####
-####   comments
-####   english: The comments are in english language and spanish language
-####   spanish: Los comentarios estan en idioma ingles y en idioma español
-####
-####
-################################################   english: basic system variables
-################################################   spanish: las variables basicas del sistema
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -535,7 +562,7 @@ cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -200 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default/$fwiptables
+echo "$(head -300 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default/$fwiptables
 #### 
 #### 
 ####  english: probe sane dir /etc/bash_completion.d
@@ -668,25 +695,6 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
 ####
 ####
 #### :rutina-final-notice:
-##############################       temporal files for fwiptables       ##############################
-##############################       archivos temporales de fwiptables      ##############################
-####
-####
-#### english: temporal files
-#### spanish: archivos temporales
-####
-####
-mkdir -p /tmp/fwiptables-$fversion-data/ &> /dev/null
-file_temporal_path="/tmp/fwiptables-$fversion-data/"
-file_temporal_text="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
-file_temporal_textfinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
-file_temporal_gui="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
-file_temporal_guifinal="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option-2"
-file_output_log="/tmp/fwiptables-$fversion-data/$first_option-$second_option-$third_option"
-file_output_filelog="/var/log/fwiptables-filelog"
-file_output_autolog="/var/log/fwiptables-autolog"
-####
-####
 ##############################     ALIAS  simple y campus    ##############################
 ##############################     ALIAS simple y campo     ##############################
 ####
