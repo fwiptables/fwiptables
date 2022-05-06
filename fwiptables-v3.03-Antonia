@@ -501,7 +501,7 @@ echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
-show-help show-example' $fwiptables"  &>> /etc/bash_completion.d/$cmd_fwiptables
+show-help' $fwiptables"  &>> /etc/bash_completion.d/$cmd_fwiptables
 ####
 ####
 ####  english: Install new /etc/profile.d/fwiptables
@@ -2077,12 +2077,18 @@ if [ "$first_option" = "some-example" ]; then $give_cover
 echo "$title_md $tab [ $first_option ] [ List examples ] [ some-examples.md ]"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
-echo "$text_md $tab $tab"
-echo "$text_md   Generate new iptables rules :#            $cmd_fwiptables wizard-mini         "
-echo "$text_md   Save iptables rules in name :#            $cmd_fwiptables save name           "
-echo "$text_md   Load iptables rules :#                    $cmd_fwiptables load name           "
-echo "$text_md   Load iptables rules to output log :#      $cmd_fwiptables -log load name      "
-echo "$text_md   Load iptables rules to output gui :#      $cmd_fwiptables -gui load name      "
+echo "$title_md                                      [ some-example ]                                  "
+echo "$text_md        [ Whitout optional output ]               [ Example Description ]                "
+echo "$text_md    $cmd_fwiptables options                  |  Show more options                        "
+echo "$text_md        [ with optional output ]                  [ Example Description ]                "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of lsof likes output txt plain "
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show lsof of readme likes output rst     "
+echo "$text_md    $cmd_fwiptables -web info-net            |  Show info likes output text browser      "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
+echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui           "
 echo $footer_lineal
 exit; fi
 ####
@@ -8669,7 +8675,7 @@ echo "$tab" "$tab"  "     tool-options   |  tool-sockets    tool-forward   tool-
 echo "$tab" "$tab"  "                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
 echo "$tab" "$tab"  "                       tool-system     tool-install   tool-blacklist   tool-dev        "
 echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-log         show-about      "
-echo "$tab" "$tab"  "                       show-help       show-example                                    " 
+echo "$tab" "$tab"  "                       show-help                                                       " 
 echo
 echo "$tab" "$tab"  "$tab $tab"
 echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
