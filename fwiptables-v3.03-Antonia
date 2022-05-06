@@ -817,12 +817,10 @@ echo "$tab [ ok ] \
 exit ; fi
 ####
 ####
-#### output info:
+#### output help:
 ####
 ####
-if [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
-#### if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
-#### if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
 echo $head_waiting_info
 case "$second_option" in
 "$NULL") second_option="options"; third_option="" ;;
@@ -859,12 +857,19 @@ $cmd_fwiptables $second_option
 exit ; fi
 ####
 ####
-#### output help:
+#### output info:
 ####
 ####
-if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
-if [ "$command_m2r" = "$NULL" ]; then echo [ fail ] [ install m2r command ]; exit; fi
-if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+if [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
+####
+if [ "$command_m2r" = "$NULL" ]; then $nada ;
+echo "[ fail ] [ install m2r command ] [ or launch $fwiptables -help option ]" ;
+exit; fi
+####
+if [ "$command_txt2html" = "$NULL" ]; then $nada
+echo "[ fail ] [ install txt2html command ] [ or launch $fwiptables -help option ]" ;
+exit; fi
+####
 echo $head_waiting_help
 case "$second_option" in
 "$NULL") second_option="options"; third_option="" ;;
@@ -1769,8 +1774,8 @@ echo "$text_md    $cmd_fwiptables options                  |  Show more options 
 echo "$text_md        [ with optional output ]                  [ Example Description ]                "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show help of lsof likes output txt plain "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme likes output rst     "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of lsof likes output txt plain "
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show lsof of readme likes output rst     "
 echo "$text_md    $cmd_fwiptables -web info-net            |  Show info likes output text browser      "
 echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
 echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
@@ -1828,8 +1833,8 @@ echo "$text_md    $cmd_fwiptables options                  |  Show more options 
 echo "$text_md        [ with optional output ]                  [ Example Description ]                "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show help of lsof likes output txt plain "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme likes output rst     "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of lsof likes output txt plain "
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show lsof of readme likes output rst     "
 echo "$text_md    $cmd_fwiptables -web info-net            |  Show info likes output text browser      "
 echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
 echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
@@ -2463,10 +2468,10 @@ echo "$text_md $tab_lang_spanish          : Salida a ventana grafica"
 echo "$text_md $tab log OR -log"
 echo "$text_md $tab_lang_english          : Save the output"
 echo "$text_md $tab_lang_spanish          : Guarda la salida"
-echo "$text_md $tab info OR -info"
+echo "$text_md $tab help OR -help"
 echo "$text_md $tab_lang_english          : Output help in text plain format"
 echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato plano"
-echo "$text_md $tab help OR -help"
+echo "$text_md $tab info OR -info"
 echo "$text_md $tab_lang_english          : Output help in text with rst format"
 echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato rst"
 echo "$text_md $tab web OR -web"
@@ -8686,16 +8691,18 @@ $cmd_fwiptables intro
 $cmd_fwiptables options
 echo "$title_md         [ Launch interface ]"
 echo  $text_md
-echo "$text_md       txt OR -txt : Output at text line | whith bash backend."
-echo "$text_md       cli OR -cli : Output at text menu | whith dialog backend."
-echo "$text_md       gui OR -gui : Output at graphicall window || whith zenity backend."
-echo "$text_md       log OR -log : Output in logfile | whith bash backend."
-echo "$text_md       web OR -web : Output to text web browser."
-echo "$text_md       rst OR -rst : Output to text in rst format."
-echo "$text_md       tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
-echo "$text_md          cli-menu : Command line interface with menus | whith dialog backend."
-echo "$text_md          gui-menu : Graphicall interface with menus | whith zenity backend."
-echo "$text_md         gui-shell : Graphicall interface with shell | whith zenity backend."
+echo "$text_md         txt OR -txt : Output at text line | whith bash backend."
+echo "$text_md         cli OR -cli : Output at text menu | whith dialog backend."
+echo "$text_md         gui OR -gui : Output at graphicall window || whith zenity backend."
+echo "$text_md         log OR -log : Output in logfile | whith bash backend."
+echo "$text_md         web OR -web : Output to text web browser."
+echo "$text_md       help OR -help : Output help to text in text plain format."
+echo "$text_md       info OR -info : Output help to text in text rst format."
+echo "$text_md         tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
+echo  $text_md
+echo "$text_md            cli-menu : Command line interface with menus | whith dialog backend."
+echo "$text_md            gui-menu : Graphicall interface with menus | whith zenity backend."
+echo "$text_md           gui-shell : Graphicall interface with shell | whith zenity backend."
 echo  $text_md
 echo "$title_md        [ Control the iptables rules ]"
 echo  $text_md
@@ -8976,16 +8983,18 @@ echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
 echo  $text_md
 echo "$title_md [ Lanza interfaz ]."
 echo  $text_md
-echo "$text_md       txt OR -txt : Salida a linea de texto."
-echo "$text_md       cli OR -cli : Salida a menu de texto."
-echo "$text_md       gui OR -gui : Salida a ventana grafica."
-echo "$text_md       log OR -log : Salida a archivo log."
-echo "$text_md       web OR -web : Salida a navegador web de texto"
-echo "$text_md       rst OR -rst : Salida a formato rst en texto."
-echo "$text_md       tor OR -tor : Ejecuta en tor, necesario daemon tor y comando torify."
-echo "$text_md          cli-menu : modo texto with menus."
-echo "$text_md          gui-menu : Graficos con menus."
-echo "$text_md         gui-shell : Graficos con entorno de comandos."
+echo "$text_md         txt OR -txt : Salida a linea de texto."
+echo "$text_md         cli OR -cli : Salida a menu de texto."
+echo "$text_md         gui OR -gui : Salida a ventana grafica."
+echo "$text_md         log OR -log : Salida a archivo log."
+echo "$text_md         web OR -web : Salida a navegador web de texto"
+echo "$text_md       help OR -help : Salida con ayuda a formato de texto plano."
+echo "$text_md       info OR -info : Salida con ayuda a formato de texto rst."
+echo "$text_md         tor OR -tor : Ejecuta en tor, necesario daemon tor y comando torify."
+echo  $text_md
+echo "$text_md            cli-menu : modo texto with menus."
+echo "$text_md            gui-menu : Graficos con menus."
+echo "$text_md           gui-shell : Graficos con entorno de comandos."
 echo  $text_md
 echo "$title_md [ Controla las reglas de iptables ]."
 echo  $text_md
