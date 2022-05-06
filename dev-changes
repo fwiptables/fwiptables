@@ -376,9 +376,14 @@
 # 7. resolv.conf añadido a gui-menu. HECHO
 # 8. rediseño de -rst para todas las opciones especificadas y ahora es convertido a -help. HECHO
 # 
-# changes fwiptables 3.03 en desarrollo
+# changes fwiptables 3.03
 #
-# 1. arreglos en help output.
-# 2. arreglos en info output.
-# 3.
+# 1. arreglos en help output ayuda con salida texto plano.
+# 2. arreglos en info output ayuda con salida texto rst.
+# 3. cambios en uninstall.
+# 4. cambios en los ejemplos.
+#
+# changes fwiptables 3.04 en desarrollo
+#
+# 1.
 #
