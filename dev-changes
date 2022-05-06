@@ -378,14 +378,15 @@
 # 
 # changes fwiptables 3.03
 #
-# 1. arreglos en help output ayuda con salida texto plano.
-# 2. arreglos en info output ayuda con salida texto rst.
-# 3. cambios en uninstall.
-# 4. cambios en los ejemplos.
+# 1. arreglos en help output ayuda con salida texto plano. HECHO
+# 2. arreglos en info output ayuda con salida texto rst. HECHO
+# 3. cambios en uninstall. HECHO
+# 4. cambios en los ejemplos. HECHO
 #
 # changes fwiptables 3.04 en desarrollo
 #
-# 1. arreglo en los ejemplos some-examples
-# 2. eliminar funcionalidad exclusiva de rst
-# 3.
+# 1. arreglo en los ejemplos some-examples.  HECHO
+# 2. eliminar funcionalidad exclusiva de rst. HECHO
+# 3. ordenar al principio las variabes de archivos y directorios. HECHO
+# 4. arreglo de cambios en los ejemplos otra vez mas. HECHO
 #
