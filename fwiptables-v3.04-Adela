@@ -835,7 +835,7 @@ exit ; fi
 if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
 echo $head_waiting_info
 case "$second_option" in
-"$NULL") second_option="options"; third_option="" ;;
+"$NULL") echo "[ info ] [ use: $cmd_fwiptables -help option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
@@ -884,7 +884,7 @@ exit; fi
 ####
 echo $head_waiting_help
 case "$second_option" in
-"$NULL") second_option="options"; third_option="" ;;
+"$NULL") echo "[ info ] [ use: $cmd_fwiptables -info option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
