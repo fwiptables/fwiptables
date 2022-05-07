@@ -383,10 +383,13 @@
 # 3. cambios en uninstall. HECHO
 # 4. cambios en los ejemplos. HECHO
 #
-# changes fwiptables 3.04 en desarrollo
+# changes fwiptables 3.04
 #
 # 1. arreglo en los ejemplos some-examples.  HECHO
 # 2. eliminar funcionalidad exclusiva de rst. HECHO
 # 3. ordenar al principio las variabes de archivos y directorios. HECHO
 # 4. arreglo de cambios en los ejemplos otra vez mas. HECHO
+#
+# changes fwiptables 3.05 en desarrollo
+#
 #
