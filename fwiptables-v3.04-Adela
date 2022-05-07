@@ -495,10 +495,24 @@ exit; fi
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
 echo "$title_md [ $first_option ] [ $cmd_fwiptables installer ] [ install.md ]"
+####
+####
+####  english: remove old file 
+####  spanish: borra el viejo archivo
+####
+####
+rm $directory_fwiptables/$fwiptables &> /dev/null
+rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
+rm $directory_fwiptables/$fwiptables-cli-menu &> /dev/null
+rm $directory_fwiptables/$fwiptables-gui-menu &> /dev/null
+rm $directory_fwiptables/$fwiptables-gui-shell &> /dev/null
+rm $directory_desktop/$fwiptables-cli-menu.desktop &> /dev/null
+rm $directory_desktop/$fwiptables-gui-menu.desktop &> /dev/null
+rm $directory_desktop/$fwiptables-gui-shell.desktop &> /dev/null
 #### 
 #### 
-####  english: copy the file to temporal folder
-####  spanish: copia el archivo a carpeta temporal
+####  english: copy the file to temporal folder and install
+####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
@@ -510,14 +524,6 @@ cp $zero_option $directory_fwiptables/$cmd_fwiptables &> /dev/null
 #### 
 #### 
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-####
-####
-####  english: remove old file ##### spanish: borra el viejo archivo
-####
-####
-rm /etc/bash_completion.d/$fwiptables &> /dev/null
-rm /etc/bash_completion.d/$cmd_fwiptables &> /dev/null
-rm /etc/bash_completion.d/$fwiptables.sh &> /dev/null
 ####
 ####
 ####  english: new file generated  ##### spanish: genera el nuevo archivo
@@ -536,20 +542,6 @@ show-help' $fwiptables"  &>> /etc/bash_completion.d/$cmd_fwiptables
 #### 
 #### 
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
-####
-####
-####  english: remove old file 
-####  spanish: borra el viejo archivo
-####
-####
-rm $directory_fwiptables/$fwiptables &> /dev/null
-rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
-rm $directory_fwiptables/$fwiptables-cli-menu &> /dev/null
-rm $directory_fwiptables/$fwiptables-gui-menu &> /dev/null
-rm $directory_fwiptables/$fwiptables-gui-shell &> /dev/null
-rm $directory_desktop/$fwiptables-cli-menu.desktop &> /dev/null
-rm $directory_desktop/$fwiptables-gui-menu.desktop &> /dev/null
-rm $directory_desktop/$fwiptables-gui-shell.desktop &> /dev/null
 ####
 ####
 ####  english: new file generated  
