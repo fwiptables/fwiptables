@@ -21,10 +21,6 @@
 #### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
 ####
 ####
-####   #### english: necesary to find several PATH and auth xhost to root
-####   #### spanish: necesario para encontrar varios PATH y autorizar xhost para root
-####
-####
 ################################################   english: begin the script
 ################################################   spanish: empieza el script
 ####
@@ -492,8 +488,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-uninstall:
-##############################       english: install:    $cmd_fwiptables           ###########################################
-##############################       spanish: instalador: $cmd_fwiptables           ###########################################
+##############################       english: install:    fwiptables           ###########################################
+##############################       spanish: instalador: fwiptables           ###########################################
 #### :rutina-inicial-install:
 ####
 ####
@@ -546,9 +542,14 @@ if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null
 ####  spanish: borra el viejo archivo
 ####
 ####
-rm /etc/profile.d/$fwiptables &> /dev/null
-rm /etc/profile.d/$cmd_fwiptables &> /dev/null
-rm /etc/profile.d/$fwiptables.sh &> /dev/null
+rm $directory_fwiptables/$fwiptables &> /dev/null
+rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
+rm $directory_fwiptables/$fwiptables-cli-menu &> /dev/null
+rm $directory_fwiptables/$fwiptables-gui-menu &> /dev/null
+rm $directory_fwiptables/$fwiptables-gui-shell &> /dev/null
+rm $directory_desktop/$fwiptables-cli-menu.desktop &> /dev/null
+rm $directory_desktop/$fwiptables-gui-menu.desktop &> /dev/null
+rm $directory_desktop/$fwiptables-gui-shell.desktop &> /dev/null
 ####
 ####
 ####  english: new file generated  
