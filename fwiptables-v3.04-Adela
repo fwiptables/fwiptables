@@ -210,7 +210,7 @@ cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$text_md || $tab || $cmd_fwiptables || Version $fversion || $(date) ||"
+head_principal="$text_md || || $cmd_fwiptables || Version $fversion || $(date) || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
