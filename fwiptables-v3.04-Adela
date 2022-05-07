@@ -688,8 +688,8 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
 ####
 ####
 #### :rutina-final-notice:
-##############################     ALIAS  simple y campus    ##############################
-##############################     ALIAS simple y campo     ##############################
+##############################     ALIAS  simple y firewall y campus       ##############################
+##############################     ALIAS  simple y cortafuegos y campo     ##############################
 ####
 ####
 #### english: alias simple
