@@ -463,8 +463,8 @@ if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
-##############################       english: uninstall:    $cmd_fwiptables           ###########################################
-##############################       spanish: desinstalador: $cmd_fwiptables           ###########################################
+##############################       english: uninstall:      fwiptables           ###########################################
+##############################       spanish: desinstalador:  fwiptables           ###########################################
 #### :rutina-inicial-uninstall:
 ####
 ####
@@ -748,9 +748,8 @@ if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_op
 if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
 if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_option="-web"; fi
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
-#### if [ "$first_option" = "rst"    ] || [ "$first_option" = "-rst"  ] ; then first_option="-help"; fi
-if [ "$first_option" = "-h"     ]  || [ "$first_option" = "--h"  ] ; then first_option="-help"; fi
 if [ "$first_option" = "help"  ] || [ "$first_option" = "-help"  ] ; then first_option="-help"; fi
+if [ "$first_option" = "-h"     ]  || [ "$first_option" = "--help"  ] ; then first_option="-help"; fi
 ####
 ####
 ##############################     ALIAS CAMPUS
