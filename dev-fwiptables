@@ -494,7 +494,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$title_md [ $first_option ] [ $cmd_fwiptables installer ] [ install.md ]"
+echo "$title_md [ $first_option ] [ $fwiptables $fversion installer ] [ install.md ]"
 ####
 ####
 ####  english: remove old file 
@@ -638,7 +638,7 @@ echo "$text_md [ info ] [ command installed ] [ $directory_fwiptables/$cmd_fwipt
 echo "$text_md [ info ] [ Launch command $cmd_fwiptables to run /  type: ] [ $cmd_fwiptables ]" 
 echo "$text_md [ info ] [ grant privileges to user for $fwiptables with: ]"
 echo "$text_md [ info ] [ $cmd_fwiptables sudo-adduser user ]" 
-echo "$text_md [ ok ]   [ ready to run $fwiptables $fversion ]"
+echo "$text_md [ ok ]   [ ready to run $fwiptables ]"
 exit; fi
 ####
 ####
