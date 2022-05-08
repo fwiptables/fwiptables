@@ -5484,15 +5484,15 @@ exit; fi
 ####
 ####
  if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$tab When its ipv4 has default route $tab so it show filter rules ipv4 in status"
+#### echo "$tab When its ipv4 has default route $tab so it show filter rules ipv4 in status"
  $cmd_fwiptables list
- else echo "$tab When its ipv4 has no default route $tab hide filter rules ipv4 in status" ; fi
+ else echo ; echo "$tab [ When its ipv4 has no default route ] $tab [ hide filter rules ipv4 in status ]" ; fi
 ####
 ####
  if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
- echo "$tab When its ipv6 has default route $tab show filter rules ipv6 in status"
+#### echo "$tab When its ipv6 has default route $tab show filter rules ipv6 in status"
  $cmd_fwiptables list6
- else echo "$tab When its ipv6 has no default route $tab so it hide filter rules ipv6 in status" ;  fi
+ else echo ; echo "$tab [ When its ipv6 has no default route ] $tab [ so it hide filter rules ipv6 in status ]" ;  fi
 ####
 ####
  exit; fi
