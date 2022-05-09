@@ -690,6 +690,7 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
 #### :rutina-final-notice:
 ##############################     ALIAS  simple y firewall y campus       ##############################
 ##############################     ALIAS  simple y cortafuegos y campo     ##############################
+#### :rutina-inicial-alias-simple:
 ####
 ####
 #### english: alias simple
@@ -746,8 +747,10 @@ if [ "$first_option" = "help"  ] || [ "$first_option" = "-help"  ] ; then first_
 if [ "$first_option" = "-h"     ]  || [ "$first_option" = "--help"  ] ; then first_option="-help"; fi
 ####
 ####
+#### :rutina-final-alias-simple:
 ##############################     ALIAS CAMPUS
 ##############################     ALIAS CAMPUS
+#### :rutina-inicial-alias-campus:
 ####
 ####
 #### output txt:
@@ -942,6 +945,7 @@ echo "$tab [ message ] [ to connect web is necessary tor configured and browser 
 torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
+#### :rutina-final-alias-campus:
 ##############################     english: autolog:         ###################################
 ##############################     spanish: autoguardado     ###################################
 #### :rutina-inicial-allow-autolog:
