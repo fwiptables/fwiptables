@@ -719,6 +719,7 @@ if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
 if [ "$first_option" = "off-line" ] ; then first_option="offline" ; fi
 if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
 if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
+if [ "$first_option" = "game-minecraft" ] ; then first_option="game-minetest" ; fi
 if [ "$first_option" = "game-westnoth" ] ; then first_option="game-wesnoth" ; fi
 if [ "$first_option" = "gamesudp" ] ; then first_option="games-shooter" ; fi
 if [ "$first_option" = "allpermisive" ] ; then first_option="all-permisive" ; fi
