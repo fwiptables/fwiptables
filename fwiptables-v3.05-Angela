@@ -1654,7 +1654,7 @@ if [ "$first_option" = "client-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-tor ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
 client_port_udp="domain,bootpc,ntp,https" ;
-client_port_tcp="http,https,ssh,9000:9150" ;
+client_port_tcp="http,https,ssh,9000:9170" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
@@ -1670,7 +1670,7 @@ if [ "$first_option" = "lan-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall lan-tor ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
 client_port_udp="bootpc,domain,ntp" ;
-client_port_tcp="9000:9150" ;
+client_port_tcp="9000:9170" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
