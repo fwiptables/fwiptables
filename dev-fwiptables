@@ -79,7 +79,7 @@ directory_log="/var/log"
 #### spanish: archivos y carpetas temporales
 ####
 ####
-directory_temporal_path="/tmp/$fwiptables-$fversion-data"
+directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
 ####
 ####
 file_temporal_text="$directory_temporal_path/$first_option-$second_option-$third_option"
