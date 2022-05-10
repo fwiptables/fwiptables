@@ -6338,8 +6338,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option"
-cp "$defaultminicfg_eng" "/tmp/$fwiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -6357,8 +6357,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-full" ]; then echo
 archivo="$first_option"
-cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "/tmp/$fwiptables-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
