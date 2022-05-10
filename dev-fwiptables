@@ -34,8 +34,8 @@
 ####   spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
 ####
-##############################
-##############################
+##############################       english name, desciprition and version
+##############################       spanish: nombre, descripcion y version
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
@@ -46,8 +46,8 @@ fprogram="Fran FireWall FWiptables Generator"
 fversion="3.05-Angela" ;
 ####
 ####
-##############################       permanent files and folders from fwiptables           ##############################
-##############################       permanentes archivos y carpetas desde fwiptables      ##############################
+##############################       english: permanent files and folders from fwiptables           ##############################
+##############################       spanish: permanentes archivos y carpetas desde fwiptables      ##############################
 ####
 ####
 #### english: whereis file path
@@ -71,8 +71,8 @@ directory_desktop="/usr/share/applications"
 directory_log="/var/log"
 ####
 ####
-##############################       temporal files for fwiptables       ##############################
-##############################       archivos temporales de fwiptables      ##############################
+##############################       english: temporal files for fwiptables       ##############################
+##############################       spanish: archivos temporales de fwiptables      ##############################
 ####
 ####
 #### english: temporal files and folders
@@ -279,8 +279,8 @@ fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-lis
 default_security="mini-options"
 ####
 ####
-############################## english: variables: variables to declare     ##############################
-############################## spanish: variables: variables para declarar  ##############################
+##############################     english: variables: variables to declare     ##############################
+##############################     spanish: variables: variables para declarar  ##############################
 ####
 ####
 #### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
@@ -343,8 +343,8 @@ if [ -f $directory_default/fwiptables ] ; then . $directory_default/fwiptables ;
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
-############################## english: are you root: uid 0 ?                ############################## 
-############################## spanish: eres admnistrador: identificador 0 ? ##############################
+##############################       english: are you root: uid 0 ?                ############################## 
+##############################       spanish: eres admnistrador: identificador 0 ? ##############################
 ####
 ####
 if [ "$(id -u)" = "0" ]; then $nada
@@ -3240,10 +3240,10 @@ case $second_option in
 #### 
 #### 
 "new-mini-config")
-cp "$defaultminicfg_eng" "/tmp/$fwiptables-$third_option"
+cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3253,10 +3253,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "new-full-config")
-cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$third_option"
+cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3266,10 +3266,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "nueva-mini-config")
-cp "$defaultminicfg_spa" "/tmp/$fwiptables-$third_option"
+cp "$defaultminicfg_spa" "$directory_temporal_path/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3279,10 +3279,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "nueva-completa-config")
-cp "$defaultfullcfg_spa" "/tmp/$fwiptables-$third_option"
+cp "$defaultfullcfg_spa" "$directory_temporal_path/$fwiptables-$third_option"
 if [ -f "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
+else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new file: $third_option" ; exit
@@ -3294,12 +3294,12 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
 else zenity --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "/tmp/$fwiptables-$third_option"
-zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$third_option" \
+cp "$directory_config/$third_option" "$directory_temporal_path/$fwiptables-$third_option"
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 zenity --forms $graphic_dimension --text="OK. file: $third_option"
-else cp "/tmp/$fwiptables-$third_option" "$directory_config/$third_option"
+else cp "$directory_temporal_path/$fwiptables-$third_option" "$directory_config/$third_option"
 zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
@@ -3335,8 +3335,8 @@ case $second_option in
 #### 
 wizard-mini)
 archivo=wizard-mini
-cp "$defaultminicfg_eng" "/tmp/$fwiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
@@ -3347,8 +3347,8 @@ zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 #### 
 wizard-full)
 archivo=wizard-full
-cp "$defaultfullcfg_eng" "/tmp/$fwiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$second_option"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
@@ -3358,8 +3358,8 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 ####
 modify-default)
-cp $directory_default/fwiptables /tmp/$fwiptables-modify-default
-zenity --text-info $graphic_dimension --filename="/tmp/$fwiptables-modify-default" \
+cp $directory_default/fwiptables $directory_temporal_path/$fwiptables-modify-default
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-modify-default" \
 --editable --title="MODIFY FILE" &> $directory_default/$fwiptables
 if [  -s "$directory_default/fwiptables" ]; then $nada ; 
 $cmd_fwiptables -gui show-default ;
