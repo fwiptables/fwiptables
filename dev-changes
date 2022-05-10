@@ -392,9 +392,8 @@
 #
 # changes fwiptables 3.05 en desarrollo
 #
-# 1. game-westnoth cambiado a game-wesnoth, corrigiendo el nombre a correcto. HECHO
-# 2. cambios de codigo para organizar los path y esten mas claros. HECHO
-# 3. salida -tor sigue estando pero se oculta en el mini-options. HECHO
+# 1. game-westnoth cambiado a game-wesnoth, corrigiendo el nombre a su correcto. HECHO
+# 2. cambios de codigo para organizar los path y esten mas claros, los fijos y temporales. HECHO
+# 3. salida -tor sigue estando pero se oculta en el mini-options y en full-options(options). HECHO
 # 4. 
-# 
- 
+#
