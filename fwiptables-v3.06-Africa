@@ -3334,36 +3334,37 @@ case $second_option in
 #### 
 #### 
 wizard-mini)
-archivo=wizard-mini
+archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
 zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$archivo" \
---editable --title="MODIFY FILE" &> "$directory_config/$second_option"
+--editable --title="MODIFY FILE" &> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
-else rm "$directory_config/$second_option" ;
+$cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
+else rm "$directory_config/$archivo" ;
 zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
 wizard-full)
-archivo=wizard-full
+archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
 zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$archivo" \
---editable --title="MODIFY FILE" &> "$directory_config/$second_option"
+--editable --title="MODIFY FILE" &> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
-else rm "$directory_config/$second_option" ;
+else rm "$directory_config/$archivo" ;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
 modify-default)
-cp $directory_default/fwiptables $directory_temporal_path/$fwiptables-modify-default
+archivo="$third_option"
+cp "$directory_default/$archivo" "$directory_temporal_path/$fwiptables-modify-default"
 zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-modify-default" \
---editable --title="MODIFY FILE" &> $directory_default/$fwiptables
-if [  -s "$directory_default/fwiptables" ]; then $nada ; 
+--editable --title="MODIFY FILE" &> $directory_default/$archivo
+if [  -s "$directory_default/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui show-default ;
-else cp /tmp/$fwiptables-modify-default directory_default/fwiptables;
+else cp "/tmp/$fwiptables-modify-default" "$directory_default/$archivo" ;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
