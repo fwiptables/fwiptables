@@ -79,19 +79,19 @@ directory_log="/var/log"
 #### spanish: archivos y carpetas temporales
 ####
 ####
-directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
-####
-####
-file_temporal_text="$directory_temporal_path/$first_option-$second_option-$third_option"
-file_temporal_textfinal="$directory_temporal_path/$first_option-$second_option-$third_option-2"
-file_temporal_gui="$directory_temporal_path/$first_option-$second_option-$third_option"
-file_temporal_guifinal="$directory_temporal_path/$first_option-$second_option-$third_option-2"
-file_output_log="$directory_temporal_path/$first_option-$second_option-$third_option"
 file_output_filelog="$directory_log/$fwiptables-filelog"
 file_output_autolog="$directory_log/$fwiptables-autolog"
 ####
 ####
+directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
 mkdir -p $directory_temporal_path &> /dev/null
+####
+####
+file_temporal_text="$directory_temporal_path/$first_option-$second_option-$third_option"
+file_temporal_textfinal="$directory_temporal_path/$first_option-$second_option-$third_option-textfinal"
+file_temporal_gui="$directory_temporal_path/$first_option-$second_option-$third_option"
+file_temporal_guifinal="$directory_temporal_path/$first_option-$second_option-$third_option-guifinal"
+file_output_log="$directory_temporal_path/$first_option-$second_option-$third_option"
 ####
 ####
 ################################################   english: basic system variables
@@ -3309,7 +3309,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 "ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
 ####
 ####
-*) $cmd_fwiptables "$second_option" "$third_option" &> "$file_temporal_guifinal"
+*)$cmd_fwiptables "$second_option" "$third_option" &> "$file_temporal_guifinal"
 zenity --text-info $graphic_dimension --title="[ $cmd_fwiptables gui ] [ $second_option ]" \
 --filename="$file_temporal_guifinal" --auto-scroll ;;
 #### 
@@ -3371,10 +3371,10 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 "ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
 ####
 ####
-*) $cmd_fwiptables $second_option $third_option &> $file_temporal_guifinal
+*)$cmd_fwiptables $second_option $third_option &> $file_temporal_guifinal
 #### cat $file_temporal_gui | grep -v Warning: &> $file_temporal_guifinal
 zenity --text-info $graphic_dimension --title="[ $cmd_fwiptables gui ] [ $second_option ]" \
---filename=$file_temporal_guifinal --auto-scroll ;;
+--filename="$file_temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
 esac
