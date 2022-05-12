@@ -398,8 +398,8 @@
 #
 # changes fwiptables 3.06 en desarrollo
 #
-# 1. arreglo de anomalia en gui list
-# 2. arreglo en modify-config
-# 3.
+# 1. arreglo de anomalia en gui list. HECHO
+# 2. arreglo en modify-config. HECHO
+# 3. corregidos los code opciones. HECHO
 #
 #
