@@ -389,9 +389,10 @@ echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptab
 echo  $text_md
 echo "$title_md     Fran fwiptables project.  "
 echo  $text_md
-echo "$text_md     License gnu / gpl v2.                                                    "
-echo "$text_md     See web page project in $fweb_main                                       "
-echo  $text_md
+echo "$text_md  Download the latest version $fprogram from sourceforge"
+echo "$text_md  $fweb_latest"
+echo "$text_md  $flicense"
+echo "$text_md  $license_gpl"
 echo  $text_md
 exit; fi
 ####
