@@ -1,7 +1,7 @@
 #!/bin/bash
 ####
 ####
-#### File:        fwiptables
+#### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
 #### Copyright:   (c) 2020-2022 Francisco Garcia <fwiptables@gmx.com>
@@ -71,16 +71,16 @@ directory_desktop="/usr/share/applications"
 directory_log="/var/log"
 ####
 ####
-##############################       english: temporal files for fwiptables       ##############################
-##############################       spanish: archivos temporales de fwiptables      ##############################
-####
-####
-#### english: temporal files and folders
-#### spanish: archivos y carpetas temporales
+#### english: Path files config files
+#### spanish: Ruta de los archivos de configuracion
 ####
 ####
 file_output_filelog="$directory_log/$fwiptables-filelog"
 file_output_autolog="$directory_log/$fwiptables-autolog"
+####
+####
+##############################       english: temporal files for fwiptables       ##############################
+##############################       spanish: archivos temporales de fwiptables      ##############################
 ####
 ####
 directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
@@ -1604,6 +1604,7 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ##############################      english: ready system rules con its option               #####################
 ##############################      spanish: preprara reglas del sistema con sus opciones    #####################
+#### :rutina-inicial-custom-rules:
 ####
 ####
 ####   #### english: The first        firewall of system  
@@ -1747,6 +1748,7 @@ client_port_tcp="http,https,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ; server_port_udp="" ; fi
 ####
 ####
+#### :rutina-final-custom-rules:
 ##############################   english: custom without valid config cfg
 ##############################   spanish: custom sin valido configuracion cfg
 #### :rutina-inicial-custom:
@@ -1759,7 +1761,7 @@ echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
 echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
 ####
 ####
-#### :rutina-final-custom:
+#### :rutina-f-custom-rules:
 ##############################       english: mini-options: wellcome with semi help
 ##############################       spanish: mini-options: bienvenida con semi ayuda
 #### :rutina-inicial-mini-options:
@@ -6014,7 +6016,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then  $give_cover
-cp "$directory_config/$second_option" "/tmp/$fwiptables-$second_option" &> /dev/null
+cp "$directory_config/$second_option" "directory_temporal_path/$fwiptables-$second_option" &> /dev/null
 ####
 ###
 if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
@@ -9310,6 +9312,7 @@ $give_autosave &> /dev/null
 ####
 ########################################     english: ipv4 iptables allpermisisive:
 ########################################     spanish: ipv4 iptables todo permisivo
+#### :rutina-inicial-code-allpermisive:
 ####
 ####
 #### legacy ip4
@@ -9393,8 +9396,10 @@ echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ all-permisive ]"
 exit; fi
 ####
 ####
+#### :rutina-final-code-allpermisive:
 ########################################     english: ipv4 iptables offline:
 ########################################     spanish: ipv4 iptables desconectado
+#### :rutina-inicial-code-offline:
 ####
 ####
 #### legacy ip4
@@ -9462,8 +9467,12 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP       &> /
 ####
 echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ offline ]"
 exit; fi
+####
+####
+#### :rutina-final-code-offline:
 ########################################     english: ipv4 iptables default:
 ########################################     spanish: ipv4 iptables por defecto
+#### :rutina-inicial-code-rulesdefault:
 ####
 ####
 if [ "$launch_iptables" = "default" ];  then $cmd_fwiptables eraserules &> /dev/null ;
@@ -9617,6 +9626,7 @@ echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ $first_option ]"
 exit; fi
 ####
 ####
+#### :rutina-final-code-rulesdefault:
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
@@ -9636,6 +9646,7 @@ exit; fi
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
+#### :rutina-inicial-code-wizard:
 ####
 ####
 ##############################       english: overwrite system varibles with the config cfg
@@ -10839,6 +10850,7 @@ echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ custom ] [$second_o
 exit ; else $nada ; fi
 ####
 ####
+#### :rutina-final-code-wizard:
 #######################
 ####     left script
 #######################
