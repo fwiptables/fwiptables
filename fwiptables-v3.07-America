@@ -3127,11 +3127,12 @@ echo "                : ipv6 funciona tambien con viejos ipv4 protocolos"
 echo
 echo " [ License ]"
 echo 
-echo "  Download the latest version $fprogram from sourceforge"
-echo "  $fweb_latest"
-echo "  $flicense"
-echo
-echo $footer_lineal
+echo "$text_md  Download the latest version $fprogram from sourceforge"
+echo "$text_md  $fweb_latest"
+echo "$text_md  $flicense"
+echo "$text_md  $license_gpl"
+echo  $text_md
+echo  $footer_lineal
 exit; fi
 ####
 ####
@@ -8979,6 +8980,7 @@ echo  $text_md
 echo "$text_md  Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
+echo "$text_md  $license_gpl"
 echo $text_md
 echo $footer_lineal
 exit; fi
@@ -9267,6 +9269,7 @@ echo  $text_md
 echo "$text_md  Descarga la ultima version de $fprogram desde la web de sourceforge."
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
+echo "$text_md  $license_gpl"
 echo  $text_md
 echo $footer_lineal
 exit; fi
