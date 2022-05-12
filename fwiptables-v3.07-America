@@ -3074,60 +3074,60 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
-echo "$tab [ $first_option ] [ List notes about $cmd_fwiptables ]"
-echo
-echo " [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
-echo " [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
-echo
-echo " [ allow_maxtries_ssh ] [ limit a attack per bruteforce to us ssh server] "
-echo " [ allow_maxtries_ssh ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
-echo
-echo " [ net vpn ]  [ virtual private network ] [ whitelist ]"
-echo " [ net vpn ] [ red privada virtual ]     [ lista blanca ]"
-echo
-echo "$tab Host [net vpn] excepcionals hosts has conection allowed in firewall"
-echo "$tab Host [net vpn] excepcionales hosts tienen la conexion permitida en el firewall"
-echo
-echo " [net blacklist] [deny host]"
-echo " [net blacklist] [Lista negra]"
-echo
-echo "$tab Host [ net blacklist ] excepcionals hosts has conection dropped in firewall"
-echo "$tab Host [ net blacklist ] expcecionales hosts tienen la conexion denegada en firewall"
-echo
-echo " [ allow output uid ] [user and group]"
-echo " [ allow output uid ] [usuario y grupo]"
-echo
-echo "$tab User and/or group excepcional have output conection allowed in firewall"
-echo "$tab Usuario y/o grupo excepcional tienen la salida permitida en firewall"
-echo
-echo " [ Notes ] [ Two iptables netfilter ]"
-echo " [ Notas ] [ Dos iptables netfilter ]"
-echo
-echo "$tab iptables-legacy   is    support for xtables "
-echo "$tab iptables-nft      is    support for nftables "
-echo
-echo " [ Notes ] [necesary ports to connect with ipv4 and ipv6 in UDP protocol]"
-echo " [ Notas ] [puertos necesarios para conectar con ipv4 y ipv6 en UDP protocolo]"
-echo
-echo "    ntp : Port necesary to update the time and date"
-echo "        : Puerto necesario para actualizar la hora y fecha"
-echo " bootpc : Port necesary to dhcp and get ip"
-echo "        : Puerto necesario para actualizar y conseguir la ip"
-echo " domain : This port is necesary to domain resolver"
-echo "        : Puerto necesario para resolver dominios"
-echo "  https : This port is necesary for udp named web html5"
-echo "        : Puerto necesario para udp llamado web html5"
-echo
-echo " [ Notes ] [necesary protocols for ip v6]"
-echo " [ Notas ] [protocolos necesarios para ip v6]"
-echo
-echo "      ipv6-icmp : Necesary protocol in ipv6"
-echo "                : Protocolo necesario en ipv6"
-echo " ipv4 protocols : ipv6 works too with old ipv4 procotols"
-echo "                : ipv6 funciona tambien con viejos ipv4 protocolos"
-echo
-echo " [ License ]"
-echo 
+echo "$text_md   [ $first_option ] [ List notes about $cmd_fwiptables ] [ notes.md ]"
+echo  $text_md
+echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
+echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
+echo  $text_md
+echo "$text_md  [ allow_maxtries_ssh ] [ limit a attack per bruteforce to us ssh server] "
+echo "$text_md  [ allow_maxtries_ssh ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
+echo  $text_md
+echo "$text_md  [ net vpn ]  [ virtual private network ] [ whitelist ]"
+echo "$text_md  [ net vpn ] [ red privada virtual ]     [ lista blanca ]"
+echo  $text_md
+echo "$text_md  Host [net vpn] excepcionals hosts has conection allowed in firewall"
+echo "$text_md  Host [net vpn] excepcionales hosts tienen la conexion permitida en el firewall"
+echo  $text_md
+echo "$text_md  [net blacklist] [deny host]"
+echo "$text_md  [net blacklist] [Lista negra]"
+echo  $text_md  
+echo "$text_md  Host [ net blacklist ] excepcionals hosts has conection dropped in firewall"
+echo "$text_md  Host [ net blacklist ] expcecionales hosts tienen la conexion denegada en firewall"
+echo  $text_md
+echo "$text_md  [ allow output uid ] [user and group]"
+echo "$text_md  [ allow output uid ] [usuario y grupo]"
+echo  $text_md
+echo "$text_md  User and/or group excepcional have output conection allowed in firewall"
+echo "$text_md  Usuario y/o grupo excepcional tienen la salida permitida en firewall"
+echo  $text_md
+echo "$text_md  [ Notes ] [ Two iptables netfilter ]"
+echo "$text_md  [ Notas ] [ Dos iptables netfilter ]"
+echo  $text_md
+echo "$text_md  iptables-legacy   is    support for xtables "
+echo "$text_md  iptables-nft      is    support for nftables "
+echo  $text_md
+echo "$text_md  [ Notes ] [necesary ports to connect with ipv4 and ipv6 in UDP protocol]"
+echo "$text_md  [ Notas ] [puertos necesarios para conectar con ipv4 y ipv6 en UDP protocolo]"
+echo  $text_md
+echo "$text_md  ntp    : Port necesary to update the time and date"
+echo "$text_md         : Puerto necesario para actualizar la hora y fecha"
+echo "$text_md  bootpc : Port necesary to dhcp and get ip"
+echo "$text_md         : Puerto necesario para actualizar y conseguir la ip"
+echo "$text_md  domain : This port is necesary to domain resolver"
+echo "$text_md         : Puerto necesario para resolver dominios"
+echo "$text_md  https  : This port is necesary for udp named web html5"
+echo "$text_md         : Puerto necesario para udp llamado web html5"
+echo  $text_md
+echo "$text_md  [ Notes ] [necesary protocols for ip v6]"
+echo "$text_md  [ Notas ] [protocolos necesarios para ip v6]"
+echo  $text_md
+echo "$text_md  ipv6-icmp : Necesary protocol in ipv6"
+echo "$text_md        : Protocolo necesario en ipv6"
+echo "$text_md  ipv4 protocols : ipv6 works too with old ipv4 procotols"
+echo "$text_md        : ipv6 funciona tambien con viejos ipv4 protocolos"
+echo  $text_md
+echo "$text_md  [ License ]"
+echo  $text_md
 echo "$text_md  Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
