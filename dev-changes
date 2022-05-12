@@ -404,5 +404,7 @@
 #
 # changes fwiptables 3.07 en desarrollo
 #
-# 1.
+# 1. arreglo y vuelta a modificar modify-config. HECHO
+# 2. pequeño cambio en intro. HECHO
+# 3. pequeños cambios en readme, leeme, y notes. 
 #
