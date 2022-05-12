@@ -6016,15 +6016,16 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then  $give_cover
-cp "$directory_config/$second_option" "directory_temporal_path/$fwiptables-$second_option" &> /dev/null
 ####
 ###
-if [ ! -f "$directory_config"/"$second_option" ] ; then $nada
+if [ ! -f "$directory_config/$second_option" ] ; then $nada
+$cmd_fwiptables names-config
 echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables modify-config config-existent ]" ; exit; fi
 ####
 ####
-if [ -f "$directory_config"/"$second_option" ] ; then $nada
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$second_option" 0 0 2> "$directory_config/$second_option"
+if [ -f "$directory_config/$second_option" ] ; then $nada
+cp "$directory_config/$second_option" "$directory_temporal_path/$second_option" &> /dev/null
+dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$second_option" 0 0 2> "$directory_config/$second_option"
 clear; fi
 ####
 ####
