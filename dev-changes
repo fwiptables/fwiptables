@@ -402,9 +402,13 @@
 # 2. arreglo en modify-config. HECHO
 # 3. corregidos los code opciones. HECHO
 #
-# changes fwiptables 3.07 en desarrollo
+# changes fwiptables 3.07
 #
-# 1. arreglo y vuelta a modificar modify-config. HECHO
+# 1. arreglo y vuelta a modificar modify-config, corregido. HECHO
 # 2. pequeño cambio en intro. HECHO
-# 3. pequeños cambios en readme, leeme, y notes. HECHO
+# 3. pequeños cambios en readme, leeme, y notes, para markdown. HECHO
+#
+# changes fwiptables 3.08 en desarrollo
+#
+# 1. 
 #
