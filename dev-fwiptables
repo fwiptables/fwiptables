@@ -6122,7 +6122,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "sudo-deluser" ]; then $give_cover
-rm /etc/sudoers.d/$cmd_fwiptables
+rm /etc/sudoers.d/$cmd_fwiptables &> /dev/null
+rm /etc/sudoers.d/$fwiptables &> /dev/null
 echo "$tab [ ok ] [ deleted auth sudo ]"
 echo "$tab [ ok ] [ deleted /etc/sudoers.d/$cmd_fwiptables ]"
 echo $footer_lineal
