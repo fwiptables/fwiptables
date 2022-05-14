@@ -410,9 +410,9 @@
 #
 # changes fwiptables 3.08 en desarrollo
 #
-# 1. mejorado sistema de privilegio de root. HECHO 
+# 1. mejorado sistema de privilegio de administrador root. HECHO 
 # 2. cambiado el directorio de temporal de /tmp/fwiptables-tmp a  /root/.fwiptables-tmp, facil de cambiar si es necesario. HECHO
-# 3.
+# 3. cambio de orden en la prioridad de las variables al principio del script, mas ordenado. HECHO
 #
 #
 

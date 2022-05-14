@@ -25,11 +25,11 @@
 ################################################   spanish: empieza el script
 ####
 ####
-####   license
+####   fwiptables license
 ####   english: This program has gpl license GPL v2, this program is copyleft, it is free.
 ####   spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
 ####
-####   comments
+####   fwiptables comments
 ####   english: The comments are in english language and spanish language
 ####   spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
@@ -111,7 +111,7 @@ file_output_autolog="$directory_log/$fwiptables-autolog"
 ####
 ####
 ##############################       english: temporal files for fwiptables       ##############################
-##############################       spanish: archivos temporales de fwiptables      ##############################
+##############################       spanish: archivos temporales de fwiptables   ##############################
 ####
 ####
 #### for /tmp then directory_temporal_path="/tmp/.$fwiptables-$fversion-tmp"
@@ -128,7 +128,7 @@ file_temporal_guifinal="$directory_temporal_path/$first_option-$second_option-$t
 file_output_log="$directory_temporal_path/$first_option-$second_option-$third_option"
 ####
 ####
-################################################   english: basic system variables
+################################################   english: the basic system variables
 ################################################   spanish: las variables basicas del sistema
 ####
 ####
@@ -303,7 +303,7 @@ default_security="mini-options"
 ##############################     spanish: variables: variables para declarar  ##############################
 ####
 ####
-#### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ;
+#### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; #### before declared variables
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="" ; server_udp="" ; 
 logserver_tcp="no" ; logserver_udp="no" ;
