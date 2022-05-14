@@ -114,11 +114,10 @@ file_output_autolog="$directory_log/$fwiptables-autolog"
 ##############################       spanish: archivos temporales de fwiptables   ##############################
 ####
 ####
-#### for /tmp then directory_temporal_path="/tmp/.$fwiptables-$fversion-tmp"
-#### for /root then directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
+#### for tmp in /tmp  ,  then directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
+#### for tmp in /root ,  then directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
 ####
-directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
-mkdir -p $directory_temporal_path &> /dev/null
+directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp" ; mkdir -p $directory_temporal_path &> /dev/null
 ####
 ####
 file_temporal_text="$directory_temporal_path/$first_option-$second_option-$third_option"
@@ -1500,6 +1499,14 @@ echo $var78 $tabz $spa78 &>> $fs
 echo $var79 $tabz $spa79 &>> $fs
 echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
+####
+####
+####    english: remove temporal files
+####    spanish: borra archivos temporales
+####
+####
+rm -rf "/tmp/fwiptables-*"
+rm -rf "/$HOME/.fwiptables-*"
 ####
 ####
 echo "$tab [ ok ] [ Wizard and configs cfg templates regenerated ]"
