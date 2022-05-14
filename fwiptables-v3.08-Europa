@@ -34,6 +34,20 @@
 ####   spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
 ####
+##############################       english: are you root: uid 0 ?                ############################## 
+##############################       spanish: eres admnistrador: identificador 0 ? ##############################
+####
+####
+if [ "$(id -u)" = "0" ]; then $nada
+else
+echo $head_principal
+echo "$cincuenta need to be root to work"
+echo "$tab"
+echo "$cincuenta  Be root to work fwiptables"
+echo $footer_lineal
+exit ; fi
+####
+####
 ##############################       english name, desciprition and version
 ##############################       spanish: nombre, descripcion y version
 ####
@@ -83,7 +97,10 @@ file_output_autolog="$directory_log/$fwiptables-autolog"
 ##############################       spanish: archivos temporales de fwiptables      ##############################
 ####
 ####
-directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
+#### for /tmp then directory_temporal_path="/tmp/.$fwiptables-$fversion-tmp"
+#### for /root then directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
+####
+directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
 mkdir -p $directory_temporal_path &> /dev/null
 ####
 ####
@@ -341,20 +358,6 @@ if [ -f $directory_default/fwiptables ] ; then . $directory_default/fwiptables ;
 ####
 ####
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
-####
-####
-##############################       english: are you root: uid 0 ?                ############################## 
-##############################       spanish: eres admnistrador: identificador 0 ? ##############################
-####
-####
-if [ "$(id -u)" = "0" ]; then $nada
-else
-echo $head_principal
-echo "$cincuenta need to be root to work"
-echo "$tab"
-echo "$cincuenta  Be root to work $fwiptables"
-echo $footer_lineal
-exit ; fi
 ####
 ####
 ##############################       english: intro: show intro
@@ -644,7 +647,7 @@ echo "$text_md [ info ] [ command installed ] [ $directory_fwiptables/$cmd_fwipt
 echo "$text_md [ info ] [ Launch command $cmd_fwiptables to run /  type: ] [ $cmd_fwiptables ]" 
 echo "$text_md [ info ] [ grant privileges to user for $fwiptables with: ]"
 echo "$text_md [ info ] [ $cmd_fwiptables sudo-adduser user ]" 
-echo "$text_md [ ok ]   [ ready to run $fwiptables ]"
+echo "$text_md  [ ok ]   [ ready to run $fwiptables ]"
 exit; fi
 ####
 ####
