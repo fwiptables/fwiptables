@@ -38,13 +38,12 @@
 ##############################       spanish: eres admnistrador: identificador 0 ? ##############################
 ####
 ####
-if [ "$(id -u)" = "0" ]; then $nada
-else
-echo $head_principal
-echo "$cincuenta need to be root to work"
-echo "$tab"
-echo "$cincuenta  Be root to work fwiptables"
-echo $footer_lineal
+if [ "$(id -u)" = "0" ] ; then echo -n ; else
+echo ""
+echo "  Need to be root to work"
+echo ""
+echo "  Be root to work with fwiptables"
+echo ""
 exit ; fi
 ####
 ####
@@ -53,11 +52,29 @@ exit ; fi
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
-fdescription="One Script in bash for iptables firewall"
+fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
-fprogram="Fran FireWall FWiptables Generator"
+fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
 fversion="3.08-Europa" ;
+####
+####
+##############################    english: options priority
+##############################    spanish: priorida de opciones
+####
+####
+#### #### english: option for default    #### spanish: opcion por defecto
+zero_dir="$(pwd)" ;
+#### #### english: option for default    #### spanish: opcion por defecto
+zero_option="$0" ;
+#### #### english: variables to launch   #### spanish: variables a lanzar
+first_option="$(echo $1 | sed s/\\///g -)"  ;                       
+#### #### english: variable without "/"  #### spanish: variable sin "/"
+second_option="$(echo $2 | sed s/\\///g -)" ;                       
+#### #### english: variable without "/"  #### spanish: variable sin "/"
+third_option="$(echo $3 | sed s/\\///g -)"  ;                       
+#### #### english: variable without "/"  #### spanish: variable sin "/"
+quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
 ####
 ####
 ##############################       english: permanent files and folders from fwiptables           ##############################
@@ -189,24 +206,11 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## def
 radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-file-default ## streaming url
-#### #### english: option for default    #### spanish: opcion por defecto
-zero_dir="$(pwd)"
-#### #### english: option for default    #### spanish: opcion por defecto
-zero_option="$0"
-#### #### english: variables to launch   #### spanish: variables a lanzar
-first_option="$(echo $1 | sed s/\\///g -)"  ;                       
-#### #### english: variable without "/"  #### spanish: variable sin "/"
-second_option="$(echo $2 | sed s/\\///g -)" ;                       
-#### #### english: variable without "/"  #### spanish: variable sin "/"
-third_option="$(echo $3 | sed s/\\///g -)"  ;                       
-#### #### english: variable without "/"  #### spanish: variable sin "/"
-quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
-#### #### english: variable without "/"  #### spanish: variable sin "/"
-genfiles="$zero_option regen-config"                        
-#### #### english: whereis path          #### spanish: donde esta el path
+#### #### english: regen the config and templates          #### spanish: regenera la configuracion y plantillas
+genfiles="$zero_option regen-config"                      
 ####  #### english: default variable version whithout update for config cfg
 ####  #### spanish: default version de variables sin actualizar por config cfg
-config_variable_version="1" ;                                       
+#### config_variable_version="1" ;                                       
 #### #### english: path to config files  #### spanish: archivos de configuracion
 defaultcfg="$directory_config/default-full-english.cfg"             
 #### #### english: path to config files  #### spanish: archivos de configuracion
@@ -217,7 +221,6 @@ defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"
 defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
 #### #### english: path to config files  #### spanish: archivos de configuracion
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"     
-                    
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="     " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
