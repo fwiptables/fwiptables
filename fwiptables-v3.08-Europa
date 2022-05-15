@@ -3461,7 +3461,7 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
 "server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
 --column="Option list $fwiptables" --text="Select one option" \
@@ -3471,7 +3471,8 @@ selection=$(zenity $graphic_dimension \
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui firewall-launch ;;
+"Gui Help Menu") $cmd_fwiptables -gui help firewall-launch ;;
+"Gui Info Menu") $cmd_fwiptables -gui info firewall-launch ;;
 "eraserules") $cmd_fwiptables -gui eraserules ; $cmd_fwiptables gui list ;;
 "wizard-full") $cmd_fwiptables -gui wizard-full ; $cmd_fwiptables gui list ;;
 "wizard-mini") $cmd_fwiptables -gui wizard-mini ; $cmd_fwiptables gui list ;;
@@ -3512,14 +3513,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-firewall-rules" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Control Rules] [$fwiptables]")
 #### 
 #### 
 case "$selection" in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui firewall-rules ;;
+"Gui Help Menu") $cmd_fwiptables -gui help firewall-rules ;;
+"Gui Info Menu") $cmd_fwiptables -gui info firewall-rules ;;
 "stop") $cmd_fwiptables -gui stop ; $cmd_fwiptables -gui list ;;
 "continue") $cmd_fwiptables -gui continue ; $cmd_fwiptables -gui list ;;
 "reset") $cmd_fwiptables -gui reset ; $cmd_fwiptables -gui list ;;
@@ -3550,7 +3552,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-firewall-list" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-alltables" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-alltables" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
 --column="Option list $fwiptables" --text="Select one option" --title="[List Rules] [$fwiptables]" )
@@ -3559,7 +3561,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui firewall-list ;;
+"Gui Help Menu") $cmd_fwiptables -gui help firewall-list ;;
+"Gui Info Menu") $cmd_fwiptables -gui info firewall-list ;;
 "list") $cmd_fwiptables -gui list ;;
 "list6") $cmd_fwiptables -gui list6 ;;
 "list-alltables") $cmd_fwiptables -gui list-alltables ;;
@@ -3598,7 +3601,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Config] [$fwiptables]" )
 #### 
@@ -3606,7 +3609,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui firewall-custom;;
+"Gui Help Menu") $cmd_fwiptables -gui help firewall-custom ;;
+"Gui Info Menu") $cmd_fwiptables -gui info firewall-custom ;;
 "new-full-config")
 archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_fwiptables -gui new-full-config $archivo ;;
@@ -3651,7 +3655,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Sockets] [$fwiptables]" )
 #### 
@@ -3659,7 +3663,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-sockets ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
 "info-route") $cmd_fwiptables -gui route ;;
 "info-nodes") $cmd_fwiptables -gui info-nodes ;;
 "info-net") $cmd_fwiptables -gui info-net ;;
@@ -3691,14 +3696,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-forward" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Sockets] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-forward    ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-forward ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-forward ;;
 "ipforward-list") $cmd_fwiptables -gui ipforward-list ;;
 "ipforward-on") $cmd_fwiptables -gui ipforward-on     ;;
 "ipforward-off") $cmd_fwiptables -gui ipforward-off   ;;
@@ -3721,14 +3727,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Icmp] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-icmp ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-icmp ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-icmp ;;
 "traceicmp-ip4") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_fwiptables -gui traceicmp-ip4 $archivo ;;
 "traceicmp-ip6") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
@@ -3756,14 +3763,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool tcp] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-udp ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-udp ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-udp ;;
 "host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_fwiptables -gui host $archivo ;;
 "dig")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
@@ -3792,14 +3800,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool tcp] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-tcp ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-tcp ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-tcp ;;
 "tracetcp-ip4")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_fwiptables -gui tracetcp-ip4 $archivo  ;;
 "tracetcp-ip6")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
@@ -3825,14 +3834,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "sudo-adduser" "sudo-deluser" "sudo-list" "alias-list" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudo-adduser" "sudo-deluser" "sudo-list" "alias-list" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-sudo ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-sudo ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-sudo ;;
 "sudo-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_fwiptables -gui sudo-adduser $archivo ;;
 "sudo-deluser")$cmd_fwiptables -gui sudo-deluser ;;
@@ -3857,14 +3867,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "ole-word" "ole-number" "ole-domain" "colour-rgb" "colour-hex" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ole-word" "ole-number" "ole-domain" "colour-rgb" "colour-hex" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Sudo] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-game ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-game ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-game ;;
 "ole-word")$cmd_fwiptables -gui ole-word ;;
 "ole-number")$cmd_fwiptables -gui ole-number ;;
 "ole-domain")$cmd_fwiptables -gui ole-domain ;;
@@ -3893,14 +3904,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio-mp3 link" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio-mp3 link" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool System] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-system ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-system ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-system ;;
 "free-ram")   $cmd_fwiptables -gui free-ram ;;
 "speed-ram")  $cmd_fwiptables -gui speed-ram ;;
 "speed-disk") $cmd_fwiptables -gui speed-disk ;;
@@ -3927,17 +3939,19 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Install] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-install ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-install ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-install ;;
 "install")$cmd_fwiptables -gui install ;;
 "howto-upgrade")$cmd_fwiptables -gui howto-upgrade ;;
 "upgrade")$cmd_fwiptables -gui upgrade ;;
+"clean-tmp")$cmd_fwiptables -gui clean-tmp ;;
 esac
 ####
 ####
@@ -3957,7 +3971,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-blacklist" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "blacklist-list" "blacklist-list info" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "blacklist-list" "blacklist-list info" \
 "blacklist-on" "blacklist-off" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Install] [$fwiptables]" )
 #### 
@@ -3965,7 +3979,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-blacklist;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-blacklist ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-blacklist ;;
 "blacklist-list")$cmd_fwiptables -gui blacklist-list;;
 "blacklist-list info")$cmd_fwiptables -gui blacklist-list info ;;
 "blacklist-on")
@@ -3991,14 +4006,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Tool Install] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu  ;;
-"Gui Info Menu") $cmd_fwiptables -gui tool-dev ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-dev ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-dev ;;
 "new-versions")$cmd_fwiptables -gui new-versions ;;
 "dev-version") $cmd_fwiptables -gui dev-version  ;;
 "dev-changes") $cmd_fwiptables -gui dev-changes ;;
@@ -4024,14 +4040,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show etc] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui show-hardware;;
+"Gui Help Menu") $cmd_fwiptables -gui help show-hardware ;;
+"Gui Info Menu") $cmd_fwiptables -gui info show-hardware ;;
 "lpinfo")$cmd_fwiptables -gui lpinfo;;
 "lsblk")$cmd_fwiptables -gui lsblk;;
 "lpusb")$cmd_fwiptables -gui lsusb;;
@@ -4058,7 +4075,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "show-default" "modify-default" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show etc] [$fwiptables]" )
 #### 
@@ -4066,7 +4083,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui show-etc ;;
+"Gui Help Menu") $cmd_fwiptables -gui help show-etc ;;
+"Gui Info Menu") $cmd_fwiptables -gui info show-etc ;;
 "hosts") $cmd_fwiptables -gui hosts ;;
 "protocols") $cmd_fwiptables -gui protocols ;;
 "services") $cmd_fwiptables -gui services ;;
@@ -4094,14 +4112,15 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "log-ssh" "sentlog" "autolog" "log-search" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "sentlog" "autolog" "log-search" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show log] [$fwiptables]" )
 #### 
 #### 
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui show-log ;;
+"Gui Help Menu") $cmd_fwiptables -gui help show-log ;;
+"Gui Info Menu") $cmd_fwiptables -gui info show-log ;;
 "log-ssh")   $cmd_fwiptables -gui log-ssh ;;
 "sentlog") $cmd_fwiptables -gui sentlog ;;
 "autolog") $cmd_fwiptables -gui autolog ;;
@@ -4127,7 +4146,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "about" "version" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" \
 "depends" "config-eng" "config-spa" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show about] [$fwiptables]" )
 #### 
@@ -4135,7 +4154,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui show-about ;;
+"Gui Help Menu") $cmd_fwiptables -gui help show-about ;;
+"Gui Info Menu") $cmd_fwiptables -gui info show-about ;;
 "about") $cmd_fwiptables -gui about ;;
 "version") $cmd_fwiptables -gui version ;;
 "depends") $cmd_fwiptables -gui depends ;;
@@ -4160,7 +4180,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Info Menu" "mini-options" "full-options" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" \
 "all-help" "readme" "leeme" "notes" "license" \
 --column="Option list $fwiptables" --text="Select one option" --title="[Show help] [$fwiptables]" )
 #### 
@@ -4168,7 +4188,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Info Menu") $cmd_fwiptables -gui show-help ;;
+"Gui Help Menu") $cmd_fwiptables -gui help show-help ;;
+"Gui Info Menu") $cmd_fwiptables -gui info show-help ;;
 "mini-options")$cmd_fwiptables -gui mini-options ;;
 "full-options")$cmd_fwiptables -gui full-options ;;
 "all-help") $cmd_fwiptables -gui all-help ;;
