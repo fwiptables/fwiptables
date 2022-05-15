@@ -413,6 +413,9 @@
 # 1. mejorado sistema de privilegio de administrador root. HECHO 
 # 2. cambiado el directorio de temporal de /tmp/fwiptables-tmp a  /root/.fwiptables-tmp, facil de cambiar si es necesario. HECHO
 # 3. cambio de orden en la prioridad de las variables al principio del script, mas ordenado. HECHO
+# 4. arreglos de caberceras en gui-menu. HECHO
+# 5. arreglos de help e info en gui-menu. HECHO
+# 6. arreglo de acbecera en gui-shell. HECHO
+# 7. añadido clean-tmp para limpiar los archivos temporales. HECHO
+# 8. pequeño reordenamieto del script. HECHO
 #
-#
-
