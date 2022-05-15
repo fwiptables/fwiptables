@@ -864,7 +864,7 @@ scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
 ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
-"install"|upgrade|howto-upgrade)  second_option="tool-install"; third_option="" ;;
+"install"|upgrade|howto-upgrade|clean-tmp)  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
@@ -911,7 +911,7 @@ scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
 ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
-"install"|upgrade|howto-upgrade)  second_option="tool-install"; third_option="" ;;
+"install"|upgrade|howto-upgrade|clean-tmp)  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
@@ -2800,8 +2800,8 @@ echo "$text_md $tab upgrade"
 echo "$text_md $tab_lang_english          : Upgrade at the latest version"
 echo "$text_md $tab_lang_spanish          : Actualiza a la ultima version"
 echo "$text_md $tab clean-tmp"
-echo "$text_md $tab_lang_english          : Remove temporal files"
-echo "$text_md $tab_lang_spanish          : Borra archivos temporales"
+echo "$text_md $tab_lang_english          : Remove temporal files of $fwiptables"
+echo "$text_md $tab_lang_spanish          : Borra archivos temporales of $fwiptables"
 echo $footer_lineal
 exit; fi
 ####
