@@ -81,8 +81,8 @@ quarter_option="$(echo $4 | sed s/\\///g -)"  ;
 ##############################       spanish: permanentes archivos y carpetas desde fwiptables      ##############################
 ####
 ####
-#### english: whereis file path
-#### spanish: donde esta el file path
+#### english: permanent files and where are file path
+#### spanish: archivos permanentes y donde estan las rutas de archivo
 ####
 ####
 fwiptables="fwiptables"
@@ -90,8 +90,8 @@ cmd_fwiptables="fwiptables-cmd"
 icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 ####
-#### english: Path directory config files
-#### spanish: Ruta de directorios de los archivos de configuracion
+#### english: permanent directory and path directory config files
+#### spanish: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
 directory_fwiptables="/usr/bin"
@@ -102,8 +102,8 @@ directory_desktop="/usr/share/applications"
 directory_log="/var/log"
 ####
 ####
-#### english: Path files config files
-#### spanish: Ruta de los archivos de configuracion
+#### english: log files and path files config files
+#### spanish: archivos log y ruta de los archivos de configuracion
 ####
 ####
 file_output_filelog="$directory_log/$fwiptables-filelog"
@@ -114,8 +114,8 @@ file_output_autolog="$directory_log/$fwiptables-autolog"
 ##############################       spanish: archivos temporales de fwiptables   ##############################
 ####
 ####
-#### for tmp in /tmp  ,  then directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
-#### for tmp in /root ,  then directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
+#### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
+#### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
 ####
 directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp" ; mkdir -p $directory_temporal_path &> /dev/null
 ####
@@ -1499,14 +1499,6 @@ echo $var78 $tabz $spa78 &>> $fs
 echo $var79 $tabz $spa79 &>> $fs
 echo $var80 $tabz $spa80 &>> $fs
 echo $var81 $tabz $spa81 &>> $fs
-####
-####
-####    english: remove temporal files
-####    spanish: borra archivos temporales
-####
-####
-rm -rf "/tmp/fwiptables-*"
-rm -rf "/$HOME/.fwiptables-*"
 ####
 ####
 echo "$tab [ ok ] [ Wizard and configs cfg templates regenerated ]"
@@ -8632,17 +8624,40 @@ exit; fi
 ####
 ####
 #### :rutina-final-web-cert:
+############################       english: clean-tmp: clean temporal files
+############################       spanish: clean-tmp: limpia de archivos temporales
+#### :rutina-inicial-clean-tmp:
+####
+####
+if [ "$first_option" = "clean-tmp" ] ; then $give_cover
+echo "$tab [ $first_option ] [ clean $fwiptables temporal files]"
+echo $header_lineal
+####
+####
+####    english: remove temporal files
+####    spanish: borra archivos temporales
+####
+####
+echo "[ status ] [ cleaning $fwiptables temporal files ]"
+rm -rf "/tmp/fwiptables-*-tmp" &> /dev/null
+rm -rf "/$HOME/.fwiptables-*-tmp" &> /dev/null
+echo "  [ ok ] [ cleaned $fwiptables temporal files ]"
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-clean-tmp:
 ############################       english: config-eng: several options to config in english
 ############################       spanish: config-eng: varias opciones para configurar en ingles
 #### :rutina-inicial-config-eng:
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then $give_cover
- echo "$tab [ $first_option ] [ show variables cfg from english configuration ]"
- echo $header_lineal
- cat  $defaultfullcfg_eng
- echo $footer_lineal
- exit; fi
+echo "$tab [ $first_option ] [ show variables cfg from english configuration ]"
+echo $header_lineal
+cat  $defaultfullcfg_eng
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-config-eng:
