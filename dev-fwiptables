@@ -4372,7 +4372,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0201  "$tab stop" \
   0202  "$tab continue" \
   0203  "$tab reset" \
-  0204  "$tab list-fw"  \
+  0204  "$tab names"  \
   0205  "$tab show" \
   0206  "$tab save" \
   0207  "$tab load" \
@@ -4476,6 +4476,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   1301  "$tab install" \
   1302  "$tab howto-upgrade" \
   1303  "$tab upgrade" \
+  1304  "$tab intro" \
   1400 "$quad [ Tool Blacklist ] $cinco" \
   1401  "$tab blacklist-list" \
   1402  "$tab blacklist-list info" \
@@ -4683,6 +4684,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  1301) clear ; $zero_option install ;;
  1302) clear ; $cmd_fwiptables cli howto-upgrade ;;
  1303) clear ; $cmd_fwiptables cli upgrade ;;
+ 1304) clear ; $cmd_fwiptables cli intro ;;
  1401) clear ; $cmd_fwiptables cli blacklist-list ;;
  1402) clear ; $cmd_fwiptables cli blacklist-list info ;;
  1403) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
