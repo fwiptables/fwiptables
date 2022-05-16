@@ -134,8 +134,8 @@ file_temporal_guifinal="$directory_temporal_path/$first_option-$second_option-$t
 file_output_log="$directory_temporal_path/$first_option-$second_option-$third_option"
 ####
 ####
-################################################   english: the basic system variables
-################################################   spanish: las variables basicas del sistema
+################################################   english: profile y support X11
+################################################   spanish: profile y soporte de X11
 ####
 ####
 ####     #### english: program version       #### spanish: Version del programa
@@ -161,6 +161,10 @@ terminal_tty="$(tty | grep -i tty | tail -1)"
 if [ "$terminal_tty" = "$NULL" ] ; then
 if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ]    ; then echo -n
 else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; fi
+####
+####
+################################################   english: the basic system variables
+################################################   spanish: las variables basicas del sistema
 ####
 ####
 #### deprecated
@@ -309,7 +313,10 @@ default_security="mini-options"
 ##############################     spanish: variables: variables para declarar  ##############################
 ####
 ####
-#### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; #### before declared variables
+#### # english: before declared variables # spanish: variables declaradas antes
+#### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; 
+####
+####
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
 server_tcp="" ; server_udp="" ; 
 logserver_tcp="no" ; logserver_udp="no" ;
@@ -370,7 +377,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 ##############################       english: intro: show intro
-##############################       spanish: intro: show intro
+##############################       spanish: intro: muestra intro
 #### :rutina-inicial-intro:
 ####
 ####
@@ -481,8 +488,8 @@ if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
-##############################       english: uninstall:      fwiptables           ###########################################
-##############################       spanish: desinstalador:  fwiptables           ###########################################
+##############################       english: uninstall:      fwiptables uninstall           ###########################################
+##############################       spanish: desinstalador:  fwiptables desistalador        ###########################################
 #### :rutina-inicial-uninstall:
 ####
 ####
@@ -506,8 +513,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-uninstall:
-##############################       english: install:    fwiptables           ###########################################
-##############################       spanish: instalador: fwiptables           ###########################################
+##############################       english: install:    fwiptables install          ###########################################
+##############################       spanish: instalador: fwiptables instalador       ###########################################
 #### :rutina-inicial-install:
 ####
 ####
@@ -661,8 +668,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables
-##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables
+##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables        ##############################
+##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables    ##############################
 #### :rutina-inicial-upgrade:
 ####
 ####
@@ -971,7 +978,8 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 #### :rutina-inicial-allow-autolog:
 ####
 ####
-####   english: autolog  #### spanish: autoguardado
+####   english: autolog  
+####   spanish: autoguardado
 ####
 ####
 if [ "$first_option" != "header" ] ; then
@@ -985,7 +993,8 @@ else echo $head_autolog >> "$file_output_autolog" ; fi; fi
 #### :rutina-inicial-header:
 ####
 ####
-#### english:  allow_header_notice  #### spanish: permitir cabecera
+####    english:  allow_header_notice  
+####    spanish: permitir cabecera
 ####
 ####
 if [ "$first_option" = "header" ] ; then
@@ -1047,12 +1056,12 @@ if [ "$first_option" = "regen-config" ]; then $nada
 echo "$tab [ status]  [ regenerate template wizard and template cfg ]"
 ####
 ####
-####  english: variables to prepare to gen files
-####  spanish: variables para preparar para generar archivos
+####    english: variables to prepare to gen files
+####    spanish: variables para preparar para generar archivos
 ####
 ####
-#### english: basic options in configuration file cfg
-#### spanish: opciones basicas en configuracion de archivo cfg
+####    english: basic options in configuration file cfg
+####    spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
 var0=$(echo "$cinco $fprogram from $cmd_fwiptables version $fversion whith config_variable_version=2 " )
