@@ -3271,10 +3271,10 @@ case $second_option in
 #### 
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
---editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
+#### if [ -f "$directory_config/$third_option" ]; then $nada ;
+#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -3284,10 +3284,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
---editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
+#### if [ -f "$directory_config/$third_option" ]; then $nada ;
+#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -3297,10 +3297,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal_path/$fwiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
---editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
+#### if [ -f "$directory_config/$third_option" ]; then $nada ;
+#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -3310,10 +3310,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal_path/$fwiptables-$third_option"
-if [ -f "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-else zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
---editable --title="MODIFY FILE" &> "$directory_config/$third_option" ; fi
+#### if [ -f "$directory_config/$third_option" ]; then $nada ;
+#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
+zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+--editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
