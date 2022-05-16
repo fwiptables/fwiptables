@@ -1,6 +1,10 @@
 #!/bin/bash
 ####
 ####
+################################################  english: program license
+################################################  english: licencia del programa
+####
+####
 #### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
@@ -21,24 +25,16 @@
 #### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
 ####
 ####
-################################################  report bugs and sum ideas
-################################################  reporta errores y suma ideas
-####
-####
-####   report bugs and sum ideas at fwiptables@gmx.com
-####
-####
-################################################   english: begin the script
-################################################   spanish: empieza el script
-####
-####
-####   fwiptables license
+####                 fwiptables license in source program
 ####   english: This program has gpl license GPL v2, this program is copyleft, it is free.
 ####   spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
 ####
-####   fwiptables comments
+####                 fwiptables comments in source program
 ####   english: The comments are in english language and spanish language
 ####   spanish: Los comentarios estan en idioma ingles y en idioma español
+####
+####
+####   report bugs and sum ideas at fwiptables@gmx.com
 ####
 ####
 ##############################       english: are you root: uid 0 ?                ############################## 
