@@ -8778,8 +8778,8 @@ exit; fi
 ####
 if [ "$first_option" = "readme" ]; then 
 echo "$title_md [ $first_option ] [ help in english ] [ help.md ]"
-echo "$text_md  [ Choose only help in english ] [  Type:     $cmd_fwiptables help   ]"
-echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables ayuda   ]"
+echo "$text_md  [ Choose only help in english ] [  Type:    $cmd_fwiptables readme   ]"
+echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables leeme    ]"
 $cmd_fwiptables intro
 $cmd_fwiptables options
 echo "$title_md         [ Launch interface ]"
@@ -9068,8 +9068,8 @@ exit; fi
 if [ "$first_option" = "leeme" ]; then 
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab"
 echo  $text_md
-echo "$text_md  ||  Choose only help in english   ||   Type:     $cmd_fwiptables help     "
-echo "$text_md  ||  Elige solo ayuda en español   ||   Teclea:   $cmd_fwiptables ayuda    "
+echo "$text_md  [ Choose only help in english ] [  Type:    $cmd_fwiptables readme   ]"
+echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables leeme    ]"
 $cmd_fwiptables intro
 echo $text_md
 $cmd_fwiptables options
