@@ -8676,9 +8676,11 @@ echo $header_lineal
 ####    spanish: borra archivos temporales
 ####
 ####
-echo "[ status ] [ cleaning $fwiptables temporal files ]"
-rm -rf "/tmp/fwiptables-*-tmp" &> /dev/null
-rm -rf "/$HOME/.fwiptables-*-tmp" &> /dev/null
+echo " [ info ] [ cleaning $fwiptables temporal files ]"
+echo "[ status ] deleting temporal fwiptables-*-tmp in /tmp for old versions"
+rm -r -f /tmp/fwiptables-*-tmp &> /dev/null
+echo "[ status ] deleting temporal hidden .fwiptables-*-tmp in home for actual version"
+rm -r -f /$HOME/.fwiptables-*-tmp &> /dev/null
 echo "  [ ok ] [ cleaned $fwiptables temporal files ]"
 echo $footer_lineal
 exit; fi
