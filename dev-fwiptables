@@ -134,15 +134,15 @@ file_output_log="$directory_temporal_path/$first_option-$second_option-$third_op
 ################################################   spanish: profile y soporte de X11
 ####
 ####
-####     #### english: program version       #### spanish: Version del programa
-####     #### english: launch profile         #### spanish: lanza profile
+####     #### english: program version            #### spanish: Version del programa
+####     #### english: launch profile             #### spanish: lanza profile
 if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####
-####     #### english: launch completion      #### spanish: lanza autocompletar
+####     #### english: launch completion          #### spanish: lanza autocompletar
 if [ -f /etc/bash_completion.d/$cmd_fwiptables ] ; then . /etc/bash_completion.d/$cmd_fwiptables ; fi
 ####
 ####
-####     #### english: stablished the path    #### spanish: establece el path
+####     #### english: stablished the path        #### spanish: establece el path
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 ####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
