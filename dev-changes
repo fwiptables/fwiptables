@@ -408,7 +408,7 @@
 # 2. pequeño cambio en intro. HECHO
 # 3. pequeños cambios en readme, leeme, y notes, para markdown. HECHO
 #
-# changes fwiptables 3.08 en desarrollo
+# changes fwiptables 3.08
 #
 # 1. mejorado sistema de privilegio de administrador root. HECHO 
 # 2. cambiado el directorio de temporal de /tmp/fwiptables-tmp a  /root/.fwiptables-tmp, facil de cambiar si es necesario. HECHO
@@ -418,4 +418,8 @@
 # 6. arreglo de acbecera en gui-shell. HECHO
 # 7. añadido clean-tmp para limpiar los archivos temporales. HECHO
 # 8. pequeño reordenamieto del script. HECHO
+#
+# changes fwiptables 3.09 en desarrollo
+#
+# 1.
 #
