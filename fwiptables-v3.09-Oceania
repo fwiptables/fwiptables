@@ -1752,6 +1752,7 @@ server_port_tcp="ssh,printer,ipp" ; fi
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ssh ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ; 
+#### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
@@ -1784,6 +1785,7 @@ server_port_tcp="ssh,5060" ; fi
 if [ "$first_option" = "server-mumble" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mumble ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ; 
+#### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738"
 client_port_tcp="http,https,ssh,64738" ;
@@ -1804,6 +1806,21 @@ client_port_tcp="http,https,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ; fi
 ####
 ####
+if [ "$first_option" = "server-sql" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-ssh ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ;
+####  POSTGRESQL 5432/tcp and 5432/udp
+####  Technology	Default Port	Required
+####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
+####  MySQL Client to Server – New X Protocol – 33060	33060/tcp	Optional - pick at least 1
+####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
+client_port_udp="domain,bootpc,ntp,https,5432" ;
+server_port_udp=",5432"
+client_port_tcp="http,https,ssh,5432,3306,3360" ;
+server_port_tcp="ssh,5432,3306,3360" ; fi
+####
+####
+
 #### :rutina-final-custom-rules:
 ##############################   english: custom without valid config cfg
 ##############################   spanish: custom sin valido configuracion cfg
@@ -1836,7 +1853,7 @@ echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom  
 echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn       "
 echo "$text_md                       offline all-permisive games-shooter game-wesnoth game-minetest        "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp           "
-echo "$text_md                       server-asterisk server-mumble server-teamspeak                        "
+echo "$text_md                       server-asterisk server-mumble server-teamspeak server-sql             "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                    "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
 echo "$text_md                       show-config modify-config del-config names-config                     "
@@ -1875,7 +1892,7 @@ echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custo
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn    "
 echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest     "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp        "
-echo "$text_md                          server-asterisk server-mumble server-teamspeak                     "
+echo "$text_md                          server-asterisk server-mumble server-teamspeak server-sql          "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config                 "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                  "
 echo "$text_md                          show-config modify-config del-config names-config                  "

@@ -421,5 +421,7 @@
 #
 # changes fwiptables 3.09 en desarrollo
 #
-# 1.
+# 1. añadido server-teamspeak.
+# 2. añadido server-mumble.
+# 3. añadido server-asterisk.
 #
