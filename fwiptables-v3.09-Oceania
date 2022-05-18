@@ -1853,7 +1853,7 @@ echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom  
 echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn       "
 echo "$text_md                       offline all-permisive games-shooter game-wesnoth game-minetest        "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp           "
-echo "$text_md                       server-asterisk server-mumble server-teamspeak server-sql             "
+echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk             "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                    "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
 echo "$text_md                       show-config modify-config del-config names-config                     "
@@ -1892,7 +1892,7 @@ echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custo
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn    "
 echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest     "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp        "
-echo "$text_md                          server-asterisk server-mumble server-teamspeak server-sql          "
+echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk          "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config                 "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                  "
 echo "$text_md                          show-config modify-config del-config names-config                  "
@@ -3528,7 +3528,7 @@ if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
-"server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
+"server-web" "server-samba" "server-ssh" "server-print" "server-lamp" "server-teamspeak" "server-mumble" "server-sql" "server-asterisk" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[ firewall launch ] [ $fwiptables ]")
 #### 
@@ -3557,6 +3557,10 @@ case "$selection" in
 "server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
 "server-print") $cmd_fwiptables -gui server-print ; $cmd_fwiptables gui list ;;
 "server-lamp") $cmd_fwiptables -gui server-lamp ; $cmd_fwiptables gui list ;;
+"server-teamspeak") $cmd_fwiptables -gui server-teamspeak ; $cmd_fwiptables gui list ;;
+"server-mumble") $cmd_fwiptables -gui server-mumble ; $cmd_fwiptables gui list ;;
+"server-sql") $cmd_fwiptables -gui server-sql ; $cmd_fwiptables gui list ;;
+"server-asterisk") $cmd_fwiptables -gui server-asterisk ; $cmd_fwiptables gui list ;;
 "custom cfg") archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables gui list ;;
 esac
