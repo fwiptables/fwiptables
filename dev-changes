@@ -424,4 +424,6 @@
 # 1. añadido server-teamspeak.
 # 2. añadido server-mumble.
 # 3. añadido server-asterisk.
+# 4. añadido server-sql.
+# 5. Los nuevos server insertar en ayudas, en cli-menu y en gui-menu.
 #
