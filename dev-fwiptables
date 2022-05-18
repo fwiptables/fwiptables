@@ -2359,6 +2359,18 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor ssh"
 echo "$text_md $tab server-lamp"
 echo "$text_md $tab_lang_english          : Launch one firewall like server LAMP"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor LAMP"
+echo "$text_md $tab server-teamspeak"
+echo "$text_md $tab_lang_english          : Launch one firewall like server teamspeak"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor teamspeak"
+echo "$text_md $tab server-mumble"
+echo "$text_md $tab_lang_english          : Launch one firewall like server mumble"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor mumble"
+echo "$text_md $tab server-sql"
+echo "$text_md $tab_lang_english          : Launch one firewall like server sql"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor sql"
+echo "$text_md $tab server-asterisk"
+echo "$text_md $tab_lang_english          : Launch one firewall like server asterisk"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor asterisk"
 echo "$text_md $tab cfg" 
 echo "$text_md $tab_lang_english          : Alias to custom"
 echo "$text_md $tab_lang_spanish          : Apodo to custom"
@@ -8919,7 +8931,7 @@ echo "$text_md    list-ebtables : List rules ebtables mac of ethernet."
 echo "$text_md    ist-arptables : List rules arptables arp."
 echo  $text_md
 $break_md
-echo "$title_md        [ Launch iptables rules ]"
+echo "$title_md        [ Launch firewall iptables rules ]"
 echo  $text_md
 echo "$text_md         eraserules : Remove the iptables rules in ipv4 and ipv6."
 echo "$text_md        wizard-full : Asistant y launch complete firewall."
@@ -8941,6 +8953,10 @@ echo "$text_md       server-samba : Launch a firewall like server and client for
 echo "$text_md       server-print : Launch a firewall like server ipp, printer and ssh."
 echo "$text_md         server-ssh : Launch a firewall like server ssh."
 echo "$text_md        server-lamp : Launch a firewall like server LAMP."
+echo "$text_md   server-teamspeak : Launch a firewall like server teamspeak."
+echo "$text_md      server-mumble : Launch a firewall like server mumble."
+echo "$text_md         server-sql : Launch a firewall like server sql."
+echo "$text_md    server-asterisk : Launch a firewall like server asterisk."
 echo  $text_md
 echo "$title_md         [ tool config ]"
 echo  $text_md
@@ -9222,7 +9238,7 @@ echo "$text_md          modify-config : Edita una existente configuracion.cfg ."
 echo "$text_md            show-config : Muestra una existente configuracion.cfg ."
 echo "$text_md             del-config : Borra unaa existente configuracion.cfg ."
 echo  $text_md
-echo "$title_md [ Lanza reglas de iptables ]."
+echo "$title_md [ Lanza reglas de firewall iptables ]."
 echo  $text_md
 echo "$text_md           eraserules : Borra las reglas de iptables de ipv4 y de ipv6."
 echo "$text_md          wizard-full : Asistente y lanza completo cortafuegos."
@@ -9244,6 +9260,10 @@ echo "$text_md         server-samba : Lanza un cortafuegos como servidor y clien
 echo "$text_md         server-print : Lanza un firewall como servidor ipp, printer y ssh."
 echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
 echo "$text_md          server-lamp : Lanza un firewall como servidor LAMP."
+echo "$text_md     server-teamspeak : Lanza un firewall como servidor teamspeak."
+echo "$text_md        server-mumble : Lanza un firewall como servidor mumble."
+echo "$text_md           server-sql : Lanza un firewall como servidor sql."
+echo "$text_md      server-asterisk : Lanza un firewall como servidor asterisk."
 echo  $text_md
 echo "$title_md [ Lista las conexiones abiertas ]."
 echo  $text_md
