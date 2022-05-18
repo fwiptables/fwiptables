@@ -1633,14 +1633,11 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ####
 if [ "$first_option" = "custom" ];       then $give_cover  ;
-echo "$tab [ running ] [ loading firewall custom ]" ; 
-launch_iptables="" ;     config_variable_version="2"  ;  fi
+echo "$tab [ running ] [ loading firewall custom ]" ; launch_iptables="" ; config_variable_version="2"  ;  fi
 if [ "$first_option" = "offline" ];       then $give_cover ;
-echo "$tab [ running ] [ loading firewall offline ]" ; 
-launch_iptables="" ;     config_variable_version="2"  ;  fi
+echo "$tab [ running ] [ loading firewall offline ]" ; launch_iptables="" ; fi
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
-echo "$tab [ running ] [ loading firewall all-permisive ]" ; 
-launch_iptables="" ;     config_variable_version="2"  ;  fi
+echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
 ####
 ####
 ####   #### english: The first        firewall of system  
@@ -1649,15 +1646,18 @@ launch_iptables="" ;     config_variable_version="2"  ;  fi
 ####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-web ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
+launch_iptables="default" ;
+#### you can connect web normal
+server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-torrent" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-torrent ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default" ;
+#### you can connect web normal and bittorrent too
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,9091,51413" ;
@@ -1666,39 +1666,50 @@ server_port_tcp="9091,51413" ; fi
 ####
 if [ "$first_option" = "client-vpn" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-vpn ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
+launch_iptables="default" ;
+#### you can connect web normal and web vpn
+server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https,500,1194,1701,4500" ; 
 client_port_tcp="http,https,ssh,443,1701,1723" ; 
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-tor ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
+#### you can connect web normal and web tor
+server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,9000:9170" ;
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall lan-vpn ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;  
+launch_iptables="default" ;
+#### vpn ports to connects ports vpn
+#### with necesary ports to connect gatway and date, domain for your ip
+server_port_udp=""
 client_port_udp="domain,bootpc,ntp,500,1194,1701,4500" ; 
 client_port_tcp="1701,1723" ; 
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "lan-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall lan-tor ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
+launch_iptables="default" ;
+#### lan tor, 9000:9170 for connect to tor
+#### with necesary ports to connect gatway and date, domain for your ip
+; server_port_udp=""
 client_port_udp="bootpc,domain,ntp" ;
 client_port_tcp="9000:9170" ;
-server_port_tcp="" ; server_port_udp="" ; fi
+server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
 echo "$tab [ running ] [ loading firewall games-shooter ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default" ;
+#### games shooter 3D all udp without the root ports 1:1024 
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
@@ -1707,23 +1718,28 @@ server_port_tcp="" ; fi
 ####
 if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
+launch_iptables="default"
+#### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,bootpc,ntp,https" ; 
+ server_port_udp=""
 client_port_tcp="http,https,ssh,14950:15050" ;
-server_port_tcp="14950:15050" ; server_port_udp="" ; fi
+server_port_tcp="14950:15050" ; fi
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-minetest ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
+launch_iptables="default"
+#### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
+server_port_udp=""
 client_port_tcp="http,https,ssh,25000:35000" ;
-server_port_tcp="25000:35000" ; server_port_udp="" ; fi
+server_port_tcp="25000:35000" ; fi
 ####
 ####
 if [ "$first_option" = "server-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-web ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
+#### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
 client_port_tcp="http,https,ssh" ;
@@ -1732,7 +1748,8 @@ server_port_tcp="http,https,ssh" ; fi
 ####
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-samba ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
+#### server samba and active directory
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
 client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
 server_tcp="ssh,ldap,ldaps,microsoft-ds" ; 
@@ -1742,7 +1759,8 @@ fi
 ####
 if [ "$first_option" = "server-print" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-print ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
+#### server ipp and printer
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
@@ -1751,7 +1769,7 @@ server_port_tcp="ssh,printer,ipp" ; fi
 ####
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ssh ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
 #### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -1761,7 +1779,7 @@ server_port_tcp="ssh" ; fi
 ####
 if [ "$first_option" = "server-lamp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-lamp ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1772,7 +1790,7 @@ server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
 ####
 if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-asterisk ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -1784,7 +1802,7 @@ server_port_tcp="ssh,5060" ; fi
 ####
 if [ "$first_option" = "server-mumble" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mumble ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ; 
+launch_iptables="default"
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738"
@@ -1794,12 +1812,12 @@ server_port_tcp="ssh,64738" ; fi
 ####
 if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; 
+launch_iptables="default"
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
 #### ServerQuery (raw)	TCP	10011
 #### ServerQuery (SSH)	TCP	10022
-launch_iptables="default" ;     config_variable_version="2"  ; 
 client_port_udp="domain,bootpc,ntp,https,9987" ;
 server_port_udp="9987"
 client_port_tcp="http,https,ssh,30033,10011,10022" ;
@@ -1807,8 +1825,8 @@ server_port_tcp="ssh,30033,10011,10022" ; fi
 ####
 ####
 if [ "$first_option" = "server-sql" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-ssh ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
+echo "$tab [ running ] [ loading firewall server-sql ]" ; 
+launch_iptables="default"
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
