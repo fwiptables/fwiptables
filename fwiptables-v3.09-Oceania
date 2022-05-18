@@ -1833,7 +1833,7 @@ launch_iptables="default"
 ####  MySQL Client to Server – New X Protocol – 33060	33060/tcp	Optional - pick at least 1
 ####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
 client_port_udp="domain,bootpc,ntp,https,5432" ;
-server_port_udp=",5432"
+server_port_udp="5432"
 client_port_tcp="http,https,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ; fi
 ####
@@ -4495,6 +4495,10 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0418  "$tab server-lamp" \
   0419  "$tab lan-tor" \
   0420  "$tab lan-vpn" \
+  0421  "$tab server-teamspeak" \
+  0422  "$tab server-mumble" \
+  0423  "$tab server-sql" \
+  0424  "$tab server-asterisk" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -4691,6 +4695,10 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0418) clear ; $cmd_fwiptables cli server-lamp ; $cmd_fwiptables cli list ;;
  0419) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables cli list ;;
  0420) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables cli list ;;
+ 0421) clear ; $cmd_fwiptables cli server-teamspeak ; $cmd_fwiptables cli list ;;
+ 0422) clear ; $cmd_fwiptables cli server-mumble ; $cmd_fwiptables cli list ;;
+ 0423) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables cli list ;;
+ 0424) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables cli list ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables new-full-config $archivo ;;
