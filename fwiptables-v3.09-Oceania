@@ -755,6 +755,7 @@ if [ "$first_option" = "serverprint" ] ; then first_option="server-print" ; fi
 if [ "$first_option" = "serverweb" ] ; then first_option="server-web" ; fi
 if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
 if [ "$first_option" = "serverlamp" ] ; then first_option="server-lamp" ; fi
+if [ "$first_option" = "server-ts" ] ; then first_option="server-teamspeak" ; fi
 ####
 ####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
@@ -1695,6 +1696,31 @@ client_port_tcp="9000:9170" ;
 server_port_tcp="" ; server_port_udp="" ; fi
 ####
 ####
+if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
+echo "$tab [ running ] [ loading firewall games-shooter ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ; 
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ; fi
+####
+####
+if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
+echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ;
+client_port_udp="domain,bootpc,ntp,https" ; 
+client_port_tcp="http,https,ssh,14950:15050" ;
+server_port_tcp="14950:15050" ; server_port_udp="" ; fi
+####
+####
+if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
+echo "$tab [ running ] [ loading firewall game-minetest ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ;
+client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
+client_port_tcp="http,https,ssh,25000:35000" ;
+server_port_tcp="25000:35000" ; server_port_udp="" ; fi
+####
+####
 if [ "$first_option" = "server-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-web ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ; 
@@ -1735,37 +1761,47 @@ server_port_tcp="ssh" ; fi
 if [ "$first_option" = "server-lamp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-lamp ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ; 
+####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
+####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
-####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 client_port_tcp="http,https,ssh,20,21,989,990" ;
-####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
 ####
 ####
-if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
-echo "$tab [ running ] [ loading firewall games-shooter ]" ; 
+if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-asterisk ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ; 
-client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp="1025:65000" ;
-client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="" ; fi
+####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
+####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
+####    UDP:5036 IAX2
+client_port_udp="domain,bootpc,ntp,https,5060,10000:20000,5036" ;
+server_port_udp="5060,10000:20000,5036"
+client_port_tcp="http,https,ssh,5060" ;
+server_port_tcp="ssh,5060" ; fi
 ####
 ####
-if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
-client_port_udp="domain,bootpc,ntp,https" ; 
-client_port_tcp="http,https,ssh,14950:15050" ;
-server_port_tcp="14950:15050" ; server_port_udp="" ; fi
+if [ "$first_option" = "server-mumble" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-mumble ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ; 
+client_port_udp="domain,bootpc,ntp,https,64738" ;
+server_port_udp="64738"
+client_port_tcp="http,https,ssh,64738" ;
+server_port_tcp="ssh,64738" ; fi
 ####
 ####
-if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-minetest ]" ; 
-launch_iptables="default" ;     config_variable_version="2"  ;
-client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
-client_port_tcp="http,https,ssh,25000:35000" ;
-server_port_tcp="25000:35000" ; server_port_udp="" ; fi
+if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; 
+#### Service	        Protocol	Local Port (Server)
+#### Voice	        UDP	9987
+#### Filetransfer	TCP	30033
+#### ServerQuery (raw)	TCP	10011
+#### ServerQuery (SSH)	TCP	10022
+launch_iptables="default" ;     config_variable_version="2"  ; 
+client_port_udp="domain,bootpc,ntp,https,9987" ;
+server_port_udp="9987"
+client_port_tcp="http,https,ssh,30033,10011,10022" ;
+server_port_tcp="ssh,30033,10011,10022" ; fi
 ####
 ####
 #### :rutina-final-custom-rules:
@@ -1800,6 +1836,7 @@ echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom  
 echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn       "
 echo "$text_md                       offline all-permisive games-shooter game-wesnoth game-minetest        "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp           "
+echo "$text_md                       server-asterisk server-mumble server-teamspeak                        "
 echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                    "
 echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
 echo "$text_md                       show-config modify-config del-config names-config                     "
@@ -1838,6 +1875,7 @@ echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custo
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn    "
 echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest     "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp        "
+echo "$text_md                          server-asterisk server-mumble server-teamspeak                     "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config                 "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                  "
 echo "$text_md                          show-config modify-config del-config names-config                  "
