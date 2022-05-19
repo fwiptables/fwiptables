@@ -1867,14 +1867,14 @@ echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 stat
 echo "$text_md                       list-alltables list-filter4 list-filter6                              "
 echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6     "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables            "
+echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                    "
+echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
+echo "$text_md                       show-config modify-config del-config names-config                     "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                             "
 echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn       "
 echo "$text_md                       offline all-permisive games-shooter game-wesnoth game-minetest        "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp           "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk             "
-echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                    "
-echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
-echo "$text_md                       show-config modify-config del-config names-config                     "
 echo "$title_md                                      [ full-options ]                                      "
 echo "$text_md                       See all options with:   $cmd_fwiptables options                       "
 echo "$title_md                                      [ some-example ]                                      "
@@ -1906,14 +1906,14 @@ echo "$text_md    firewall-list      |  ls ls4 ls6 list list6 listnum listnum6 s
 echo "$text_md                          list-alltables list-filter4 list-filter6                           "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6  " 
 echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables         "
+echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config                 "
+echo "$text_md                          new-mini-config nueva-mini-config examples-config                  "
+echo "$text_md                          show-config modify-config del-config names-config                  "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                          "
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn    "
 echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest     "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp        "
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk          "
-echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config                 "
-echo "$text_md                          new-mini-config nueva-mini-config examples-config                  "
-echo "$text_md                          show-config modify-config del-config names-config                  "
 echo "$title_md                                      [ tool-options ]                                      "   
 echo "$text_md    tool-sockets       |  info-listen info-nodes info-route info-net info-proxy              "
 echo "$text_md                          info-system ss lsof tcpdump netstat netstat-nat web-cert           "
@@ -3510,7 +3510,7 @@ exit; fi
 if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Launch" "04 Firewall Custom" "05 Tool rules" \
+ --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool rules" \
 "06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
 "12 Tool game" "13 Tool system" "14 Tool install" "15 Tool blacklist" "16 Tool dev" \
 "17 Show hardware" "18 Show etc" "19 Show log" "20 Show about" "21 Show help" \
@@ -3521,8 +3521,8 @@ case "$selection" in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "01 Firewall Rules")$cmd_fwiptables gui-menu-firewall-rules ; exit ;;
 "02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
-"03 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
-"04 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
+"03 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
+"04 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
 "05 Tool rules")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
 "06 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
 "07 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
