@@ -740,7 +740,7 @@ if [ "$first_option" = "list-allrules" ]; then first_option="list-alltables"; fi
 ####
 if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
 if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
-if [ "$first_option" = "off-line" ] ; then first_option="offline" ; fi
+if [ "$first_option" = "offline" ] ; then first_option="off-line" ; fi
 if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
 if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
 if [ "$first_option" = "game-minecraft" ] ; then first_option="game-minetest" ; fi
@@ -863,7 +863,7 @@ txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
-"eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
+"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game*|server-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
@@ -1634,8 +1634,8 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 if [ "$first_option" = "custom" ];       then $give_cover  ;
 echo "$tab [ running ] [ loading firewall custom ]" ; launch_iptables="" ; config_variable_version="2"  ;  fi
-if [ "$first_option" = "offline" ];       then $give_cover ;
-echo "$tab [ running ] [ loading firewall offline ]" ; launch_iptables="" ; fi
+if [ "$first_option" = "off-line" ];       then $give_cover ;
+echo "$tab [ running ] [ loading firewall off-line ]" ; launch_iptables="" ; fi
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
 ####
@@ -1871,7 +1871,7 @@ echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen
 echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
 echo "$text_md                       show-config modify-config del-config names-config                     "
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom                             "
-echo "$text_md                       offline all-permisive games-shooter game-wesnoth game-minetest        "
+echo "$text_md                       off-line all-permisive games-shooter game-wesnoth game-minetest       "
 echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn       "
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp           "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk             "
@@ -1910,7 +1910,7 @@ echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config re
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                  "
 echo "$text_md                          show-config modify-config del-config names-config                  "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                          "
-echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest     "
+echo "$text_md                          off-line all-permisive games-shooter game-wesnoth game-minetest    "
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn    "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp        "
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk          "
@@ -1967,7 +1967,7 @@ echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-ma
 echo "$text_md                          list-security4 list-security6                                    "
 echo "$text_md                          list-ebtables list-arptables                                     "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
-echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest   "
+echo "$text_md                          off-line all-permisive games-shooter game-wesnoth game-minetest  "
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn  "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk        "
@@ -2309,7 +2309,7 @@ echo "$text_md $tab_lang_spanish          : Lanza un wizard mini para lanzar reg
 echo "$text_md $tab wizard-full"
 echo "$text_md $tab_lang_english          : Launch one wizard full to launch rules"
 echo "$text_md $tab_lang_spanish          : Lanza un wizard completo para lanzar reglas de iptables"
-echo "$text_md $tab offline"
+echo "$text_md $tab off-line"
 echo "$text_md $tab_lang_english          : Launch one firewall disconected for all servers and clients except localhost"
 echo "$text_md $tab_lang_spanish          : Lanza un Firewall desconectado para todo servidores y clientes excepto localhost"
 echo "$text_md $tab all-permisive"
@@ -3557,7 +3557,7 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "offline" "all-permisive" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
 "server-web" "server-samba" "server-ssh" "server-print" "server-lamp" "server-teamspeak" "server-mumble" "server-sql" "server-asterisk" \
 --column="Option list $fwiptables" --text="Select one option" \
@@ -3572,7 +3572,7 @@ case "$selection" in
 "eraserules") $cmd_fwiptables -gui eraserules ; $cmd_fwiptables gui list ;;
 "wizard-full") $cmd_fwiptables -gui wizard-full ; $cmd_fwiptables gui list ;;
 "wizard-mini") $cmd_fwiptables -gui wizard-mini ; $cmd_fwiptables gui list ;;
-"offline") $cmd_fwiptables -gui offline ; $cmd_fwiptables gui list ;;
+"off-line") $cmd_fwiptables -gui off-line ; $cmd_fwiptables gui list ;;
 "all-permisive") $cmd_fwiptables -gui all-permisive ; $cmd_fwiptables gui list ;;
 "client-web") $cmd_fwiptables -gui client-web ; $cmd_fwiptables gui list ;;
 "client-torrent") $cmd_fwiptables -gui client-torrent ; $cmd_fwiptables gui list ;;
@@ -4491,7 +4491,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0401  "$tab eraserules" \
   0402  "$tab wizard-mini" \
   0403  "$tab wizard-full" \
-  0404  "$tab offline" \
+  0404  "$tab off-line" \
   0405  "$tab all-permisive" \
   0406  "$tab custom cfg" \
   0407  "$tab games-shooter" \
@@ -4690,7 +4690,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0401) clear ; $cmd_fwiptables cli eraserules ; $cmd_fwiptables cli list  ;;
  0402) clear ; $cmd_fwiptables cli wizard-mini ; $cmd_fwiptables cli list ;;
  0403) clear ; $cmd_fwiptables cli wizard-full ; $cmd_fwiptables cli list ;;
- 0404) clear ; $cmd_fwiptables cli offline ; $cmd_fwiptables cli list ;;
+ 0404) clear ; $cmd_fwiptables cli off-line ; $cmd_fwiptables cli list ;;
  0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables cli list  ;;
  0406) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
@@ -8938,11 +8938,11 @@ echo "$text_md         eraserules : Remove the iptables rules in ipv4 and ipv6."
 echo "$text_md        wizard-full : Asistant y launch complete firewall."
 echo "$text_md        wizard-mini : Asistant y Launch simple firewall."
 echo "$text_md             custom : Configure one custom firewall, made for you with file.cfg."
-echo "$text_md            offline : Launch disconected firewall for all servers and clients except localhost."
+echo "$text_md           off-line : Launch disconected firewall for all servers and clients except localhost."
 echo "$text_md      all-permisive : Launch a firewall very permisive."
 echo "$text_md      games-shooter : Launch a firewall likes games udp non-root games."
-echo "$text_md      game-wesnoth : Launch a firewall likes game of the battle for wesnoth."
-echo "$text_md     game-minetest : Launch a firewall likes game minecraft or minetest."
+echo "$text_md       game-wesnoth : Launch a firewall likes game of the battle for wesnoth."
+echo "$text_md      game-minetest : Launch a firewall likes game minecraft or minetest."
 echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md            lan-tor : Launch a firewall only to browser with tor."
 echo "$text_md            lan-vpn : Launch a firewall only to browser with vpn."
@@ -8966,7 +8966,7 @@ echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish."
 echo "$text_md       new-mini-config : Create a new basic configfile.cfg in english."
 echo "$text_md     nueva-mini-config : Create a new basic configfile.cfg in spanish."
 echo "$text_md          regen-config : regen wizard files and templates cfg."
-echo "$text_md           names-config : List config files cfg."
+echo "$text_md          names-config : List config files cfg."
 echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
@@ -9245,11 +9245,11 @@ echo "$text_md           eraserules : Borra las reglas de iptables de ipv4 y de 
 echo "$text_md          wizard-full : Asistente y lanza completo cortafuegos."
 echo "$text_md          wizard-mini : Asistente y lanza simple cortafuegos."
 echo "$text_md               custom : lanza el cortafuegos especificando un archivo.cfg."
-echo "$text_md              offline : Lanza un desconectado cortafuegos de todo excepto localhost."
+echo "$text_md             off-line : Lanza un desconectado cortafuegos de todo excepto localhost."
 echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
 echo "$text_md        games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
-echo "$text_md        game-wesnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
-echo "$text_md       game-minetest : Lanza el cortafuegos como cliente de juego minecraft o minetest."
+echo "$text_md         game-wesnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
+echo "$text_md        game-minetest : Lanza el cortafuegos como cliente de juego minecraft o minetest."
 echo "$text_md           client-web : Lanza el cortafuegos como cliente web y ssh."
 echo "$text_md       client-torrent : Lanza el cortafuegos como cliente web y ssh y torrent."
 echo "$text_md           client-tor : Lanza el cortafuegos con navegacion con tor."
@@ -9579,15 +9579,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-allpermisive:
-########################################     english: ipv4 iptables offline:
+########################################     english: ipv4 iptables off-line:
 ########################################     spanish: ipv4 iptables desconectado
-#### :rutina-inicial-code-offline:
+#### :rutina-inicial-code-off-line:
 ####
 ####
 #### legacy ip4
 ####
 ####
-if [ "$first_option" = "offline" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$first_option" = "off-line" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A INPUT  \
@@ -9605,7 +9605,7 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT  \
 -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables offline
+########################################     english: ipv6 iptables off-line
 ########################################     spanish: ipv6 iptables desconectado
 ####
 ####
@@ -9627,8 +9627,8 @@ $allow_nft $allow_ipv6   $command_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: close in offline
-########################################     spanish: cierra en offline
+########################################     english: close in off-line
+########################################     spanish: cierra en off-line
 ####
 ####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
@@ -9647,11 +9647,11 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /d
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP       &> /dev/null
 ####
-echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ offline ]"
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ off-line ]"
 exit; fi
 ####
 ####
-#### :rutina-final-code-offline:
+#### :rutina-final-code-off-line:
 ########################################     english: ipv4 iptables default:
 ########################################     spanish: ipv4 iptables por defecto
 #### :rutina-inicial-code-rulesdefault:
