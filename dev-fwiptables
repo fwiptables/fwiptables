@@ -1270,7 +1270,7 @@ var75=$(echo "config_others_protocols=icmp,igmp" )
 eng75=$(echo "$cinco allow others protocols from /etc/protocolos" )
 spa75=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
 var76=$(echo "$cinco NET CLIENT AND NET SERVER #" )
-eng76=$(echo "$cinco Net to connect like client or server" )
+eng76=$(echo "$cinco Net to connect likes client or server" )
 spa76=$(echo "$cinco Red para conectar como cliente o server" )
 var77=$(echo "net_ipv4_client=0/0" )
 eng77=$(echo "$cinco the net to client ipv4, all is 0/0" )
@@ -1640,8 +1640,8 @@ if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
 ####
 ####
-####   #### english: The first        firewall of system  
-####   #### spanish: El primero       cortafuego del sistema
+####   #### english: the first        firewall of system  
+####   #### spanish: primero       cortafuego del sistema
 ####
 ####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
@@ -1961,15 +1961,16 @@ echo "$text_md $tab [ $first_option ] [ List firewall options ] [ firewall-optio
 echo "$title_md                                    | firewall-options |                                  "
 echo "$text_md   firewall-rules      |  stop continue reset names actual show save load                  "
 echo "$text_md   firewall-list       |  list listnum list6 listnum6                                      "  
-echo "$text_md                          list-alltables list-forward list-forward6                         "
+echo "$text_md                          list-alltables list-forward list-forward6                        "
 echo "$text_md                          list-filter4 list-filter6 list-nat4 list-nat6                    "
 echo "$text_md                          list-raw4 list-raw6 list-mangle4 list-mangle6                    "
 echo "$text_md                          list-security4 list-security6                                    "
 echo "$text_md                          list-ebtables list-arptables                                     "
 echo "$text_md   firewall-launch     |  eraserules wizard-mini wizard-full custom                        "
+echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest   "
 echo "$text_md                          client-web client-torrent client-vpn client-tor lan-tor lan-vpn  "
-echo "$text_md                          offline all-permisive games-shooter game-wesnoth game-minetest "
 echo "$text_md                          server-samba server-print server-web server-ssh server-lamp      "
+echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk        "
 echo "$text_md   firewall-custom     |  new-full-config nueva-completa-config regen-config               "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                "
 echo "$text_md                          show-config modify-config del-config names-config                "
@@ -2315,25 +2316,25 @@ echo "$text_md $tab all-permisive"
 echo "$text_md $tab_lang_english          : Launch one firewall very permisive"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall muy permisivo"
 echo "$text_md $tab games-shooter"
-echo "$text_md $tab_lang_english          : Launch one firewall like client games for udp non-root"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client games for udp non-root"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente juegos udp no-root"
 echo "$text_md $tab game-wesnoth"
-echo "$text_md $tab_lang_english          : Launch one firewall like client game of battle for westnoth"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client game of battle for westnoth"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente del juego la batalla por westnoth"
 echo "$text_md $tab game-minetest"
-echo "$text_md $tab_lang_english          : Launch one firewall like client game of minecraft or minetest"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client game of minecraft or minetest"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente de juego minecraft or minetest"
 echo "$text_md $tab custom"
 echo "$text_md $tab_lang_english          : Launch one custom firewall with one file cfg"
 echo "$text_md $tab_lang_spanish          : Lanza un modificado firewall con un archivo cfg"
 echo "$text_md $tab client-web"
-echo "$text_md $tab_lang_english          : Launch one firewall like client web and ssh"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client web and ssh"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y ssh"
 echo "$text_md $tab client-torrent"
-echo "$text_md $tab_lang_english          : Launch one firewall like client web and ssh and torrent"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client web and ssh and torrent"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y ssh y torrent"
 echo "$text_md $tab client-vpn"
-echo "$text_md $tab_lang_english          : Launch one firewall like client web and ssh and vpn"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client web and ssh and vpn"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y ssh y vpn"
 echo "$text_md $tab client-tor"
 echo "$text_md $tab_lang_english          : Launch one firewall with browser with tor"
@@ -2345,31 +2346,31 @@ echo "$text_md $tab lan-vpn"
 echo "$text_md $tab_lang_english          : Launch one firewall only to browser with vpn"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall solo para nevagar con vpn"
 echo "$text_md $tab server-web" 
-echo "$text_md $tab_lang_english          : Launch one firewall like server web and ssh"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server web and ssh"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor web y ssh"
 echo "$text_md $tab server-samba"
-echo "$text_md $tab_lang_english          : Launch one firewall samba and ssh like client and server both"
+echo "$text_md $tab_lang_english          : Launch one firewall samba and ssh likes client and server both"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall sambla y ssh como cliente y servidor ambos"
 echo "$text_md $tab server-print"
-echo "$text_md $tab_lang_english          : Launch one firewall like server ipp, printer and ssh"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server ipp, printer and ssh"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor ipp, printer y ssh"
 echo "$text_md $tab server-ssh"
-echo "$text_md $tab_lang_english          : Launch one firewall like server ssh"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server ssh"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor ssh"
 echo "$text_md $tab server-lamp"
-echo "$text_md $tab_lang_english          : Launch one firewall like server LAMP"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server LAMP"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor LAMP"
 echo "$text_md $tab server-teamspeak"
-echo "$text_md $tab_lang_english          : Launch one firewall like server teamspeak"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server teamspeak"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor teamspeak"
 echo "$text_md $tab server-mumble"
-echo "$text_md $tab_lang_english          : Launch one firewall like server mumble"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server mumble"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor mumble"
 echo "$text_md $tab server-sql"
-echo "$text_md $tab_lang_english          : Launch one firewall like server sql"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server sql"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor sql"
 echo "$text_md $tab server-asterisk"
-echo "$text_md $tab_lang_english          : Launch one firewall like server asterisk"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server asterisk"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor asterisk"
 echo "$text_md $tab cfg" 
 echo "$text_md $tab_lang_english          : Alias to custom"
@@ -5181,7 +5182,7 @@ echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]
 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal_path/hosts.fademind 
 $cmd_fwiptables blacklist-off &> /dev/null
 cat $directory_temporal_path/hosts.fademind >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
@@ -5189,7 +5190,7 @@ echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]
 $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal_path/hosts.adaway 
 $cmd_fwiptables blacklist-off &> /dev/null
 cat $directory_temporal_path/hosts.adaway >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
@@ -5197,7 +5198,7 @@ echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]
 $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal_path/hosts.mvps 
 $cmd_fwiptables blacklist-off &> /dev/null
 cat $directory_temporal_path/hosts.mvps >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
@@ -5205,7 +5206,7 @@ echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal_path/hosts.stevenblack 
 $cmd_fwiptables blacklist-off &> /dev/null
 cat $directory_temporal_path/hosts.stevenblack >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds like localhost"; exit; fi
+echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 echo "$tab [ Invalid option ] [ See: $cmd_fwiptables blacklist-list ]"
@@ -7263,7 +7264,7 @@ $cmd_fwiptables stop
 if [ "$first_option" = "radio-mp3" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
-echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
+echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -7294,7 +7295,7 @@ exit; fi
 if [ "$first_option" = "radio-cadena100" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
-echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
+echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -7321,7 +7322,7 @@ exit; fi
 if [ "$first_option" = "radio-cadenadial" ]; then  $give_cover
 echo "$tab [ $first_option ] [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
-echo "$tab [ status ] [ Usually it do not working like root, probe as user ]"
+echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8906,9 +8907,9 @@ echo "$text_md        actual : Show the firewall standard actual."
 echo  $text_md
 echo "$title_md         [ List iptables rules]"
 echo  $text_md
-echo "$text_md             list : Like list-filter4 but hiding rules no used."
-echo "$text_md            list6 : Like list-filter6 but hiding rules not used."
-echo "$text_md           status : Like list and list6 when there are default route."
+echo "$text_md             list : likes list-filter4 but hiding rules no used."
+echo "$text_md            list6 : likes list-filter6 but hiding rules not used."
+echo "$text_md           status : likes list and list6 when there are default route."
 echo "$text_md          listnum : List iptables filter rules from ipv4 in numbers."
 echo "$text_md  list-forwardnum : List iptables filter rules foward in numbers."
 echo "$text_md         listnum6 : List iptables filter rules from ipv6 in numbers."
@@ -8939,24 +8940,24 @@ echo "$text_md        wizard-mini : Asistant y Launch simple firewall."
 echo "$text_md             custom : Configure one custom firewall, made for you with file.cfg."
 echo "$text_md            offline : Launch disconected firewall for all servers and clients except localhost."
 echo "$text_md      all-permisive : Launch a firewall very permisive."
-echo "$text_md      games-shooter : Launch a firewall like games udp non-root games."
-echo "$text_md      game-wesnoth : Launch a firewall like game of the battle for wesnoth."
-echo "$text_md     game-minetest : Launch a firewall like game minecraft or minetest."
+echo "$text_md      games-shooter : Launch a firewall likes games udp non-root games."
+echo "$text_md      game-wesnoth : Launch a firewall likes game of the battle for wesnoth."
+echo "$text_md     game-minetest : Launch a firewall likes game minecraft or minetest."
 echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md            lan-tor : Launch a firewall only to browser with tor."
 echo "$text_md            lan-vpn : Launch a firewall only to browser with vpn."
-echo "$text_md         client-web : Launch a firewall like web client and ssh client."
-echo "$text_md     client-torrent : Launch a firewall like web client and ssh client and torrent."
-echo "$text_md         client-vpn : Launch a firewall like web client and ssh client and vpn client."
-echo "$text_md         server-web : Launch a firewall like web server and ssh server."
-echo "$text_md       server-samba : Launch a firewall like server and client for samba and ssh."
-echo "$text_md       server-print : Launch a firewall like server ipp, printer and ssh."
-echo "$text_md         server-ssh : Launch a firewall like server ssh."
-echo "$text_md        server-lamp : Launch a firewall like server LAMP."
-echo "$text_md   server-teamspeak : Launch a firewall like server teamspeak."
-echo "$text_md      server-mumble : Launch a firewall like server mumble."
-echo "$text_md         server-sql : Launch a firewall like server sql."
-echo "$text_md    server-asterisk : Launch a firewall like server asterisk."
+echo "$text_md         client-web : Launch a firewall likes web client and ssh client."
+echo "$text_md     client-torrent : Launch a firewall likes web client and ssh client and torrent."
+echo "$text_md         client-vpn : Launch a firewall likes web client and ssh client and vpn client."
+echo "$text_md         server-web : Launch a firewall likes web server and ssh server."
+echo "$text_md       server-samba : Launch a firewall likes server and client for samba and ssh."
+echo "$text_md       server-print : Launch a firewall likes server ipp, printer and ssh."
+echo "$text_md         server-ssh : Launch a firewall likes server ssh."
+echo "$text_md        server-lamp : Launch a firewall likes server LAMP."
+echo "$text_md   server-teamspeak : Launch a firewall likes server teamspeak."
+echo "$text_md      server-mumble : Launch a firewall likes server mumble."
+echo "$text_md         server-sql : Launch a firewall likes server sql."
+echo "$text_md    server-asterisk : Launch a firewall likes server asterisk."
 echo  $text_md
 echo "$title_md         [ tool config ]"
 echo  $text_md
