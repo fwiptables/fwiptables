@@ -1,4 +1,8 @@
 
+11. nuevos añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
+10. nuevos añadidos a cli-menu y a gui-menu.
+ 9. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
+ 8. pequeños cambios de apariencia. HECHO
  7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
  6. Los nuevos server añadir a la opcion fwiptables-launch a la opcion readme y a la opcion leeme. HECHO
  5. Los nuevos server insertar en cli-menu y en gui-menu. HECHO
