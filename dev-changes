@@ -1,4 +1,5 @@
 
+ 7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
  6. Los nuevos server añadir a la opcion fwiptables-launch a la opcion readme y a la opcion leeme. HECHO
  5. Los nuevos server insertar en cli-menu y en gui-menu. HECHO
  4. añadido server-sql. HECHO
@@ -6,7 +7,7 @@
  2. añadido server-mumble. HECHO
  1. añadido server-teamspeak. HECHO
 
- changes fwiptables 3.09 # lines=6 # en desarrollo
+ changes fwiptables 3.09 # lines= # en desarrollo
 
  8. pequeño reordenamieto del script. HECHO
  7. añadido clean-tmp para limpiar los archivos temporales. HECHO
