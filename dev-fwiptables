@@ -5065,7 +5065,7 @@ exit; fi
  if [ "$first_option" = "license" ]; then $give_cover
  echo "$tab [ $first_option ] [ Show license from git sourceforge for $cmd_fwiptables ]"
  echo $header_lineal
- echo"license text for gpl v2 downloading .."
+ echo "license text for gpl v2 downloading from .. $license_gpl "
  echo "$tab" "$tab" "$tab"
  $favorite_text_browser -source "$license_gpl" | more
  echo $footer_lineal
