@@ -6990,7 +6990,7 @@ pool0="0.debian.pool.ntp.org"
 pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
-$favorite_date_command $pool0 && echo "$tab New date: $($command_date)"
+$favorite_date_command $pool0 && echo -e "\n With New date: $($command_date)"
 echo $footer_lineal
 exit; fi
 ####
@@ -7187,17 +7187,18 @@ $cmd_fwiptables stop
 #### :rutina-inicial-free-ram:
 ####
 ####
- if [ "$first_option" = "free-ram" ]; then $give_cover
- echo "$tab [ $first_option ] [ freedom from innecesary ram ]"
- echo $header_lineal
- case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
- echo " Actual Memory"
- free -hw && sync
- echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
- echo " Memory ram freedom .. Actual memory now"
- free -hw
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "free-ram" ]; then $give_cover
+echo "$tab [ $first_option ] [ freedom from innecesary ram ]"
+echo $header_lineal
+case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
+echo " Actual Memory"
+free -hw 
+echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
+sync
+echo -e "\n With New Memory ram freedom .. Actual memory now .."
+free -hw
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-free-ram:
