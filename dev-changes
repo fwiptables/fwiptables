@@ -3,7 +3,7 @@
  2. nuevos añadidos a cli-menu y a gui-menu.
  1. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
 
- version en desarrollo: cambios fwiptables 3.10 lines=
+ la version en desarrollo: cambios fwiptables 3.10 lines=
 
  8. pequeños cambios de apariencia. HECHO
  7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
