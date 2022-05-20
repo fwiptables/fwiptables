@@ -1869,15 +1869,13 @@ echo "$text_md                       server-teamspeak server-mumble server-sql s
 echo "$title_md                                      [ full-options ]                                      "
 echo "$text_md                       See all options with:   $cmd_fwiptables options                       "
 echo "$title_md                                      [ some-example ]                                      "
-#### echo "$text_md        [ Whitout optional output ]               [ Example Description ]                    "
-#### echo "$text_md    $cmd_fwiptables options                  |  Show more options                            "
 echo "$text_md        [ with optional output ]                  [ Example Description ]                    "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
+echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
 echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
 echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
 echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
-echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
 echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 exit ; fi
 ####
@@ -1931,10 +1929,10 @@ echo "$title_md                                      [ some-example ]           
 echo "$text_md        [ with optional output ]                  [ Example Description ]                    "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
+echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
 echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
 echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
 echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
-echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
 echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 exit ; fi
 ####
@@ -2181,12 +2179,11 @@ echo "$text_md    $cmd_fwiptables options                  |  Show more options 
 echo "$text_md        [ with optional output ]                  [ Example Description ]                "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
 echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain"
 echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst        "
 echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser   "
 echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
-echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
-echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui           "
 echo $footer_lineal
 exit; fi
 ####
