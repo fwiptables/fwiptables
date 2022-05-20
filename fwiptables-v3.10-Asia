@@ -76,8 +76,8 @@ third_option="$(echo $3 | sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
 ####
 ####
-##############################    english: permanent: files and folders from fwiptables           ##############################
-##############################    spanish: permanentes: archivos y carpetas desde fwiptables      ##############################
+##############################  english: permanent: files and folders from fwiptables       ##############################
+##############################  spanish: permanentes: archivos y carpetas desde fwiptables  ##############################
 ####
 ####
 #### english: permanent files and where are file path
