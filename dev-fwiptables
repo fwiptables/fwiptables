@@ -1886,8 +1886,8 @@ echo "$text_md    $cmd_fwiptables -cli names               |  List firewall save
 echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
 echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
 echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 exit ; fi
 ####
 ####
@@ -1945,8 +1945,8 @@ echo "$text_md    $cmd_fwiptables -cli names               |  List firewall save
 echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
 echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
 echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 exit ; fi
 ####
 ####
