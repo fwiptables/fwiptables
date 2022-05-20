@@ -375,7 +375,6 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 if [ "$first_option" = "intro" ]; then $nada
 echo "$title_md     Fran fwiptables intro. "
-echo  $text_md
 echo "$text_md       # Use Fran Firewall # configure both iptables netfilter for linux.             "
 echo "$text_md     Done with support in xtables and/or nftables and ipv4 and/or ipv6.               "
 echo "$text_md     Done to run in command shell cmd, cli-menu, gui-menu and gui-shell.              "
@@ -394,7 +393,6 @@ echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptabl
 echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
 echo  $text_md
 echo "$title_md     Fran fwiptables project.  "
-echo  $text_md
 echo "$text_md    # Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md    # $flicense"
@@ -8894,8 +8892,10 @@ echo "$text_md        actual : Show the firewall standard actual."
 echo  $text_md
 echo "$title_md         [ List iptables rules]"
 echo  $text_md
-echo "$text_md             list : likes list-filter4 but hiding rules no used."
-echo "$text_md            list6 : likes list-filter6 but hiding rules not used."
+echo "$text_md               ls : likes list-filter4."
+echo "$text_md              ls6 : likes list-filter6."
+echo "$text_md             list : likes list-filter4."
+echo "$text_md            list6 : likes list-filter6."
 echo "$text_md           status : likes list and list6 when there are default route."
 echo "$text_md          listnum : List iptables filter rules from ipv4 in numbers."
 echo "$text_md  list-forwardnum : List iptables filter rules foward in numbers."
@@ -9192,9 +9192,11 @@ echo "$text_md          actual : Muestra el contenido del firewall estandard act
 echo  $text_md
 echo "$title_md [ Lista las reglas de tablas de iptables ]."
 echo  $text_md
+echo "$text_md                ls : similar a list-filter4." 
+echo "$text_md               ls6 : similar a list-filter6."
+echo "$text_md              list : similar a list-filter4." 
+echo "$text_md             list6 : similar a list-filter6."
 echo "$text_md            status : similar a list y list6 cuando hay ruta por defecto."
-echo "$text_md              list : similar a list-filter4 pero esconde reglas no usadas." 
-echo "$text_md             list6 : similar a list-filter6 pero esconde reglas no usadas."
 echo "$text_md           listnum : Lista las reglas de ipv4 de filtros en numeros."
 echo "$text_md   list-forwardnum : Lista las reglas de ipv4 de filtros de reenvio en numeros."
 echo "$text_md          list6num : Lista las reglas de ipv6 de filtros en numeros."
