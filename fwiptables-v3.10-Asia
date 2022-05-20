@@ -2386,7 +2386,7 @@ echo "$text_md $tab_lang_spanish          : Continua con las viejas reglas"
 echo "$text_md $tab reset" 
 echo "$text_md $tab_lang_english          : Reset the rules"
 echo "$text_md $tab_lang_spanish          : Resetea las reglas"
-echo "$text_md $tab list-fw" 
+echo "$text_md $tab names" 
 echo "$text_md $tab_lang_english          : Alias to names"
 echo "$text_md $tab_lang_spanish          : Apodo a names"
 echo "$text_md $tab names" 
@@ -3611,12 +3611,12 @@ case "$selection" in
 "stop") $cmd_fwiptables -gui stop ; $cmd_fwiptables -gui list ;;
 "continue") $cmd_fwiptables -gui continue ; $cmd_fwiptables -gui list ;;
 "reset") $cmd_fwiptables -gui reset ; $cmd_fwiptables -gui list ;;
-"names") $cmd_fwiptables -gui list-fw ;;
-"show")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables list-fw)")" ; 
+"names") $cmd_fwiptables -gui names ;;
+"show")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables names)")" ; 
 $cmd_fwiptables -gui show $archivo ;;
-"save")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables list-fw)")" ; 
+"save")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables names)")" ; 
 $cmd_fwiptables -gui save $archivo ;;
-"load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_fwiptables list-fw)")" ;
+"load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_fwiptables names)")" ;
 $cmd_fwiptables -gui load $archivo ; $cmd_fwiptables -gui list ;;
 "actual") $cmd_fwiptables -gui actual ;;
 esac
@@ -4641,14 +4641,14 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0201) clear ; $cmd_fwiptables cli stop ;;
  0202) clear ; $cmd_fwiptables cli continue ;;
  0203) clear ; $cmd_fwiptables cli reset ;;
- 0204) clear ; $cmd_fwiptables cli list-fw ;;
- 0205) clear ; $cmd_fwiptables "list-fw" ; echo "$cincuenta"
+ 0204) clear ; $cmd_fwiptables cli names ;;
+ 0205) clear ; $cmd_fwiptables names ; echo "$cincuenta"
  read -p "Type the firewall name to read   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
  0206)archivo="$(dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ;  echo "$cincuenta saved $archivo" ; $cmd_fwiptables save $archivo ;;
- 0207) clear ; $cmd_fwiptables "list-fw" ; echo "$cincuenta"
+ 0207) clear ; $cmd_fwiptables names ; echo "$cincuenta"
  read -p "| Type the firewall name to restore |   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables load $nombrecillo ;;
  0208) clear ; $cmd_fwiptables cli actual ;;
@@ -8885,7 +8885,7 @@ echo  $text_md
 echo "$text_md          stop : Save and stop firewall iptables."
 echo "$text_md      continue : Restore the firewall iptables stopped."
 echo "$text_md         reset : Reset the firewall iptables."
-echo "$text_md       list-fw : Alias to names."
+echo "$text_md       names : Alias to names."
 echo "$text_md         names : List the firewall iptables saved."
 echo "$text_md          show : Show one firewall standard."
 echo "$text_md          save : Save one firewall iptables."
@@ -9183,7 +9183,7 @@ echo  $text_md
 echo "$text_md            stop : Para las reglas del firewall."
 echo "$text_md        continue : Continua las reglas del firewall."
 echo "$text_md           reset : Resetea las reglas del firewall."
-echo "$text_md         list-fw : Apodo a names."
+echo "$text_md         names : Apodo a names."
 echo "$text_md           names : Lista los archivos de firewall estandard."
 echo "$text_md            show : Muestra las reglas del firewall estandard especificado." 
 echo "$text_md            save : Guarda las reglas de firewall estandard especificado."
