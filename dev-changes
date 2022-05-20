@@ -1,7 +1,10 @@
 
-11. nuevos añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
-10. nuevos añadidos a cli-menu y a gui-menu.
- 9. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
+ 3. nuevos añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
+ 2. nuevos añadidos a cli-menu y a gui-menu.
+ 1. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
+
+ changes fwiptables 3.10 lines= # en desarrollo
+
  8. pequeños cambios de apariencia. HECHO
  7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
  6. Los nuevos server añadir a la opcion fwiptables-launch a la opcion readme y a la opcion leeme. HECHO
@@ -11,7 +14,7 @@
  2. añadido server-mumble. HECHO
  1. añadido server-teamspeak. HECHO
 
- changes fwiptables 3.09 # lines= # en desarrollo
+ changes fwiptables 3.09 # lines=8 # en desarrollo
 
  8. pequeño reordenamieto del script. HECHO
  7. añadido clean-tmp para limpiar los archivos temporales. HECHO

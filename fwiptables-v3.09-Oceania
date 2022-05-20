@@ -34,7 +34,7 @@
 ####   spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
 ####
-####   report bugs and sum ideas at fwiptables@gmx.com
+####   Report bugs and Sum ideas at fwiptables@gmx.com
 ####
 ####
 ##############################       english: are you root: uid 0 ?                ############################## 
@@ -159,10 +159,6 @@ if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ]    ; then echo -n
 else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; fi
 ####
 ####
-################################################   english: the basic system variables
-################################################   spanish: las variables basicas del sistema
-####
-####
 #### deprecated
 ## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
@@ -170,6 +166,10 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
+####
+####
+################################################   english: the basic system variables
+################################################   spanish: las variables basicas del sistema
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
