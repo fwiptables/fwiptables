@@ -1,7 +1,8 @@
 
- 3. nuevos añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
- 2. nuevos añadidos a cli-menu y a gui-menu.
- 1. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
+ 4. nuevos firewall añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
+ 3. nuevos firewall añadidos a cli-menu y a gui-menu.
+ 2. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
+ 1. pequeños cambios de apariencia en intro y en mini-options y en options. HECHO
 
  la version en desarrollo: cambios fwiptables 3.10 lines=
 
