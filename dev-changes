@@ -1,7 +1,9 @@
 
- 5. nuevos firewall añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
- 4. nuevos firewall añadidos a cli-menu y a gui-menu.
- 3. añadidos server-ftp server-mail server-news client-ftp client-mail client-news.
+ 6. nuevos firewall añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
+ 5. nuevos firewall añadidos a cli-menu y a gui-menu.
+ 4. añadidos server-ftp server-mail server-news client-ftp client-mail client-news.
+
+ 3. añade firewall client-mail, and firewall client-news, and firewall client-ftp.
  2. añade firewall game-freeciv and firewall game-widelands.
  1. pequeños cambios de apariencia en intro y en mini-options y en options y en install. HECHO
 

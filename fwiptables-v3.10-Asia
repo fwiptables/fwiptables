@@ -1674,6 +1674,7 @@ server_port_tcp="" ; fi
 if [ "$first_option" = "client-news" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-news ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
+#### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
 #### server to another. When clients connect to a news server with Transport Layer Security (TLS),
@@ -1681,7 +1682,29 @@ launch_iptables="default" ;     config_variable_version="2"  ;
 #### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
-client_port_tcp="http,https,ssh,9000:9170" ;
+client_port_tcp="http,https,ssh,119,433,563" ;
+server_port_tcp="" ; fi
+####
+####
+if [ "$first_option" = "client-mail" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall client-news ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ;
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+#### client mail:
+#### SMTP (sending mail)	Unencrypted	25* (or 26)
+#### POP3 (receiving mail)	Encrypted - TLS	995
+#### POP3 (receiving mail)	Encrypted - SSL	995
+#### POP3 (receiving mail)	Unencrypted	110
+#### negotiation tls 465 and 587
+#### 
+server_port_udp="" ; 
+client_port_udp="domain,bootpc,ntp,https" ;
+client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587," ;
 server_port_tcp="" ; fi
 ####
 ####
@@ -1881,32 +1904,33 @@ echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$title_md     [ $first_option ] [ List mini options ] [ mini-options.md ]"
-echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log      "
-echo "$title_md                                      [ firewall-options ]                                  "
-echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                       "
-echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 status                         "
-echo "$text_md                       list-alltables list-filter4 list-filter6                              "
-echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6     "
-echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables            "
-echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                    "
-echo "$text_md                       new-mini-config nueva-mini-config examples-config                     "
-echo "$text_md                       show-config modify-config del-config names-config                     "
-echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom off-line all-permisive      "
-echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands  "
-echo "$text_md                       client-web client-torrent client-vpn client-tor lan-tor lan-vpn       "
-echo "$text_md                       server-samba server-print server-web server-ssh server-lamp           "
-echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk             "
-echo "$title_md                                      [ full-options ]                                      "
-echo "$text_md                       See all options with:   $cmd_fwiptables options                       "
-echo "$title_md                                      [ some-example ]                                      "
-echo "$text_md        [ with optional output ]                  [ Example Description ]                    "
-echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
-echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
-echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
-echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
+echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
+echo "$title_md                                      [ firewall-options ]                                     "
+echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                          "
+echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 status                            "
+echo "$text_md                       list-alltables list-filter4 list-filter6                                 "
+echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        "
+echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables               "
+echo "$text_md  firewall-custom   |  new-full-config nueva-completa-config regen-config                       "
+echo "$text_md                       new-mini-config nueva-mini-config examples-config                        "
+echo "$text_md                       show-config modify-config del-config names-config                        "
+echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
+echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
+echo "$text_md                       client-web client-email client-news client-torrent client-vpn client-tor "
+echo "$text_md                       server-samba server-print server-web server-ssh server-lamp              "
+echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
+echo "$text_md                       lan-tor lan-vpn          "
+echo "$title_md                                      [ full-options ]                                         "
+echo "$text_md                       See all options with:   $cmd_fwiptables options                          "
+echo "$title_md                                      [ some-example ]                                         "
+echo "$text_md        [ with optional output ]                  [ Example Description ]                       "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
+echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
+echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser                "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain      "
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst          "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain      "
 exit ; fi
 ####
 ####
