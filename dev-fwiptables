@@ -1797,8 +1797,8 @@ client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
 ####
 ####
-if [ "$first_option" = "server-ntp" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-ntp ]" ; launch_iptables="default"
+if [ "$first_option" = "server-news" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-news ]" ; launch_iptables="default"
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
