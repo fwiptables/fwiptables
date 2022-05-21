@@ -1627,7 +1627,14 @@ echo "$tab [ running ] [ loading firewall off-line ]" ; launch_iptables="" ; fi
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
 if [ "$first_option" = "secure-ssh" ];  then $give_cover ;
-echo "$tab [ running ] [ loading firewall secure-ssh ]" ; launch_iptables="" ;  fi
+echo "$tab [ running ] [ loading firewall secure-ssh ]" ; launch_iptables="" ; 
+#### max tries for each hour 
+config_maxtries_ssh="10" ;
+#### ports client and ports server
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp=""
+client_port_tcp="http,https,ssh" ;
+server_port_tcp="ssh" ; fi
 ####
 ####
 ####   #### english: the first        firewall of system  
@@ -9732,6 +9739,203 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-off-line:
+########################################     english: ipv4 iptables secure-ssh:
+########################################     spanish: ipv4 iptables secure-ssh:
+#### :rutina-inicial-code-secure-ssh:
+####
+####
+if [ "$launch_iptables" = "secure-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+####
+####
+####
+####
+#### legacy ip4
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+#### secure ssh ipv4
+#### seguro ssh ipv4 
+####
+####
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name count-tries-ssh &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
+####
+####
+#### rules ssh ipv4
+#### reglas ssh ipv4 
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip4
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name count-tries-ssh &> /dev/null
+$allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+########################################     english: ipv6 iptables secure-ssh:
+########################################     spanish: ipv6 iptables secure-ssh:
+####
+####
+#### legacy ip6
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+#### secure ssh ipv4
+#### seguro ssh ipv4 
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name count-tries-ssh &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
+####
+####
+#### rules ssh ipv4
+#### reglas ssh ipv4 
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+####
+####
+#### nft ip6
+####
+####
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+-s ::1 -d ::1  -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name count-tries-ssh &> /dev/null
+$allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A FORWARD -j DROP &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD -j DROP &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP &> /dev/null
+####
+####
+echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ $first_option ]"
+exit; fi
+####
+####
+#### :rutina-final-code-secure-ssh:
 ########################################     english: ipv4 iptables default:
 ########################################     spanish: ipv4 iptables por defecto
 #### :rutina-inicial-code-rulesdefault:
