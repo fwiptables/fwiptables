@@ -1628,9 +1628,9 @@ if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
 if [ "$first_option" = "secure-ssh" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall secure-ssh ]" ; launch_iptables="" ; 
-#### max tries for each hour 
+#### english: max tries for each hour 
 config_maxtries_ssh="10" ;
-#### ports client and ports server
+#### english: ports client and ports server
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
@@ -9744,7 +9744,7 @@ exit; fi
 #### :rutina-inicial-code-secure-ssh:
 ####
 ####
-if [ "$launch_iptables" = "secure-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$first_option" = "secure-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 ####
