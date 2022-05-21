@@ -1635,8 +1635,7 @@ echo "$tab [ running ] [ loading firewall secure-ssh ]" ; launch_iptables="" ;  
 ####
 ####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-web ]" ; 
-launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall client-web ]" ; launch_iptables="default" ;
 #### you can connect web normal
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
@@ -1645,8 +1644,7 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-torrent" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-torrent ]" ; 
-launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall client-torrent ]" ; launch_iptables="default" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1654,9 +1652,8 @@ client_port_tcp="http,https,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ; fi
 ####
 ####
-if [ "$first_option" = "client-vpn" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-vpn ]" ; 
-launch_iptables="default" ;
+if [ "$first_option" = "client-vpn" ];     then $give_cover ; 
+echo "$tab [ running ] [ loading firewall client-vpn ]" ; launch_iptables="default" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https,500,1194,1701,4500" ; 
@@ -1665,8 +1662,7 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-tor" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-tor ]" ; 
-launch_iptables="default" 
+echo "$tab [ running ] [ loading firewall client-tor ]" ; launch_iptables="default" 
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1675,8 +1671,7 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-news" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-news ]" ; 
-launch_iptables="default" 
+echo "$tab [ running ] [ loading firewall client-news ]" ; launch_iptables="default" 
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1690,8 +1685,7 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-mail" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-mail ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall client-mail ]" ; launch_iptables="default"
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1712,17 +1706,16 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-ftp" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-ftp ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall client-ftp ]" ; launch_iptables="default"
 #### client ftp:
 client_port_udp="domain,bootpc,ntp,https" ;
-client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587," ;
+server_port_udp=""
+client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall lan-vpn ]" ; 
-launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall lan-vpn ]" ; launch_iptables="default" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp=""
@@ -1732,8 +1725,7 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "lan-tor" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall lan-tor ]" ; 
-launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall lan-tor ]" ; launch_iptables="default" ;
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -1743,9 +1735,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
-echo "$tab [ running ] [ loading firewall games-shooter ]" ; 
-launch_iptables="default" ;
-#### games shooter 3D all udp without the root ports 1:1024 
+echo "$tab [ running ] [ loading firewall games-shooter ]" ; launch_iptables="default" ;
+#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
@@ -1753,18 +1744,16 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; launch_iptables="default"
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,bootpc,ntp,https" ; 
- server_port_udp=""
+server_port_udp=""
 client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ; fi
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-minetest ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-minetest ]" ; launch_iptables="default"
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
 server_port_udp=""
@@ -1773,8 +1762,7 @@ server_port_tcp="25000:35000" ; fi
 ####
 ####
 if [ "$first_option" = "game-freeciv" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-freeciv ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-freeciv ]" ; launch_iptables="default"
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp=""
@@ -1783,8 +1771,7 @@ server_port_tcp="5555:5556" ; fi
 ####
 ####
 if [ "$first_option" = "game-widelands" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-widelands ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-widelands ]" ; launch_iptables="default"
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,bootpc,ntp,https,7396" ; 
 server_port_udp="7396"
@@ -1793,8 +1780,7 @@ server_port_tcp="7396" ; fi
 ####
 ####
 if [ "$first_option" = "server-web" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-web ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-web ]" ; launch_iptables="default"
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
@@ -1802,9 +1788,52 @@ client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ; fi
 ####
 ####
+if [ "$first_option" = "server-ftp" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-ftp ]" ; launch_iptables="default"
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp=""
+client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
+####
+####
+if [ "$first_option" = "server-ntp" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-ntp ]" ; launch_iptables="default"
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+server_port_udp="" ; 
+client_port_udp="domain,bootpc,ntp,https" ;
+client_port_tcp="http,https,ssh,119,433,563" ;
+server_port_tcp="http,https,ssh,119,433,563" ; fi
+####
+####
+if [ "$first_option" = "server-mail" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall server-mail ]" ; launch_iptables="default"
+#### client news:
+#### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
+#### may be used when doing a bulk transfer of articles from one 
+#### server to another. When clients connect to a news server with Transport Layer Security (TLS),
+#### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
+#### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
+#### client mail:
+#### SMTP (sending mail)	Unencrypted	25* (or 26)
+#### POP3 (receiving mail)	Encrypted - TLS	995
+#### POP3 (receiving mail)	Encrypted - SSL	995
+#### POP3 (receiving mail)	Unencrypted	110
+#### negotiation submission     tls             465 and 587
+#### 
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp="https"
+client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
+server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;  fi
+####
+####
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-samba ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-samba ]" ; launch_iptables="default"
 #### server samba and active directory
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
 client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
@@ -1814,8 +1843,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-print" ];   then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-print ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-print ]" ; launch_iptables="default"
 #### server ipp and printer
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -1824,8 +1852,7 @@ server_port_tcp="ssh,printer,ipp" ; fi
 ####
 ####
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-ssh ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-ssh ]" ; launch_iptables="default"
 #### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -1833,9 +1860,8 @@ client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ; fi
 ####
 ####
-if [ "$first_option" = "server-lamp" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-lamp ]" ; 
-launch_iptables="default"
+if [ "$first_option" = "server-lamp" ];     then $give_cover ; 
+echo "$tab [ running ] [ loading firewall server-lamp ]" ; launch_iptables="default"
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1845,8 +1871,7 @@ server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
 ####
 ####
 if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-asterisk ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-asterisk ]" ; launch_iptables="default"
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -1857,8 +1882,7 @@ server_port_tcp="ssh,5060" ; fi
 ####
 ####
 if [ "$first_option" = "server-mumble" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-mumble ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-mumble ]" ; launch_iptables="default"
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738"
@@ -1867,8 +1891,7 @@ server_port_tcp="ssh,64738" ; fi
 ####
 ####
 if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; launch_iptables="default"
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -1881,8 +1904,7 @@ server_port_tcp="ssh,30033,10011,10022" ; fi
 ####
 ####
 if [ "$first_option" = "server-sql" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-sql ]" ; 
-launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-sql ]" ; launch_iptables="default"
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
