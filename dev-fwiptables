@@ -1687,7 +1687,7 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-mail" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-news ]" ; 
+echo "$tab [ running ] [ loading firewall client-mail ]" ; 
 launch_iptables="default" ;     config_variable_version="2"  ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -1703,6 +1703,15 @@ launch_iptables="default" ;     config_variable_version="2"  ;
 #### negotiation tls 465 and 587
 #### 
 server_port_udp="" ; 
+client_port_udp="domain,bootpc,ntp,https" ;
+client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587," ;
+server_port_tcp="" ; fi
+####
+####
+if [ "$first_option" = "client-ftp" ];     then $give_cover ;
+echo "$tab [ running ] [ loading firewall client-ftp ]" ; 
+launch_iptables="default" ;     config_variable_version="2"  ;
+#### client ftp:
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587," ;
 server_port_tcp="" ; fi
@@ -1917,9 +1926,9 @@ echo "$text_md                       show-config modify-config del-config names-
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                       client-web client-email client-news client-torrent client-vpn client-tor "
+echo "$text_md                       client-ftp lan-tor lan-vpn"
 echo "$text_md                       server-samba server-print server-web server-ssh server-lamp              "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
-echo "$text_md                       lan-tor lan-vpn          "
 echo "$title_md                                      [ full-options ]                                         "
 echo "$text_md                       See all options with:   $cmd_fwiptables options                          "
 echo "$title_md                                      [ some-example ]                                         "
