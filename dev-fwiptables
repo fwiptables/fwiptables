@@ -5522,7 +5522,7 @@ exit; fi
  $cmd_fwiptables list-filter6
  echo; echo; echo "### LIST NAT IP4 TABLE ###"
  $cmd_fwiptables list-nat4
- echo; echo; echo "### LIST NAT IP4 TABLE ###"
+ echo; echo; echo "### LIST NAT IP6 TABLE ###"
  $cmd_fwiptables list-nat6
  echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
  $cmd_fwiptables list-security4
