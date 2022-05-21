@@ -2,7 +2,7 @@
  7. pasa nuevos firewall añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
  6. pasa nuevos firewall añadidos a cli-menu y a gui-menu.
  5. añade firewall secure-ssh. 
- 4. añade firewall server-ftp, y firewall server-mail y firewall server-news.
+ 4. añade firewall server-ftp, y firewall server-mail y firewall server-news. HECHO
  3. añade firewall client-mail, and firewall client-news, and firewall client-ftp. HECHO
  2. añade firewall game-freeciv and firewall game-widelands. HECHO
  1. pequeños cambios de apariencia en intro y en mini-options y en options y en install. HECHO
