@@ -540,7 +540,8 @@ $directory_fwiptables/$cmd_fwiptables regen-config &> /dev/null
 if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
 ####
 ####
-####  english: new file generated  ##### spanish: genera el nuevo archivo
+####   english: new file generated alias
+####   spanish: genera el nuevo archivo alias
 ####
 ####
 echo "alias $cmd_fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
@@ -558,8 +559,8 @@ show-help' $fwiptables"  &>> /etc/bash_completion.d/$cmd_fwiptables
 if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
 ####
 ####
-####  english: new file generated  
-####  spanish: genera el nuevo archivo
+####  english: new file profile generated  
+####  spanish: genera el nuevo  profile archivo
 ####
 ####
 cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
