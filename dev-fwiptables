@@ -1948,7 +1948,7 @@ echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
 echo "$title_md     [ $first_option ]  [ List mini options ] [ mini-options.md ]"
-echo "$title_md     [ full-options ]   [ See all options with: $cmd_fwiptables options ]                      "
+echo "$title_md     [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
 echo "$text_md output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
 echo "$text_md   firewall-rules   |  stop continue reset names actual show save load                          "
 echo "$text_md    firewall-list   |  ls ls4 ls6 list list6 listnum listnum6 status                            "
