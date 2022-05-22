@@ -31,11 +31,11 @@
 ####   Spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
 ####
-####                 ## Report bugs and Sum ideas 
+####                 ## Report bugs and Sum ideas
 ####   Email fwiptables@gmx.com
 ####
 ####
-##############################       english: are you root: uid 0 ?                ############################## 
+##############################       english: are you root: uid 0 ?                ##############################
 ##############################       spanish: eres admnistrador: identificador 0 ? ##############################
 ####
 ####
@@ -57,7 +57,7 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="3.10-Asia" ;
+fversion="3.11-Jeremias" ;
 ####
 ####
 ##############################    english: options priority       ##############################

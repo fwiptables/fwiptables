@@ -1,5 +1,8 @@
 
- 9. añadir mas comentarios al codigo en cada firewall. 
+ 1. añadir mas comentarios al codigo en cada firewall. 
+
+ la version en desarrollo: cambios fwiptables 3.11 #
+
  8. pasa nuevos firewall añadidos a opcion fwiptables-launch, y a info y a help HECHO
  7. pasa nuevos firewall añadidos a opcion readme y a opcion leeme. HECHO
  6. pasa nuevos firewall añadidos a cli-menu y a gui-menu. HECHO
@@ -9,7 +12,7 @@
  2. añade firewall game-freeciv and firewall game-widelands. HECHO
  1. pequeños cambios de apariencia en intro y en mini-options y en options y en install. HECHO
 
- la version en desarrollo: cambios fwiptables 3.10 lines=
+ cambios fwiptables 3.10 # lines=8
 
  8. pequeños cambios de apariencia. HECHO
  7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
