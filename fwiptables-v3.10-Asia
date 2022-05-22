@@ -852,7 +852,7 @@ txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
-"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|secure-*|client-*)
+"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
@@ -1627,8 +1627,8 @@ if [ "$first_option" = "off-line" ];       then $give_cover ;
 echo "$tab [ running ] [ loading firewall off-line ]" ; launch_iptables="" ; fi
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
-if [ "$first_option" = "secure-ssh" ];  then $give_cover ;
-echo "$tab [ running ] [ loading firewall secure-ssh ]" ; launch_iptables="" ; 
+if [ "$first_option" = "shield-ssh" ];  then $give_cover ;
+echo "$tab [ running ] [ loading firewall shield-ssh ]" ; launch_iptables="" ; 
 #### english: max tries for each hour 
 config_maxtries_ssh="10" ;
 #### english: ports client and ports server
@@ -1959,7 +1959,7 @@ echo "$text_md                       show-config modify-config del-config names-
 echo "$text_md  firewall-launch   |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                       client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                       client-ftp lan-tor lan-vpn secure-ssh server-ssh server-web server-samba "
+echo "$text_md                       client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
 echo "$text_md                       server-print server-lamp server-news server-mail server-ftp              "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$title_md                                      [ full-options ]                                         "
@@ -1997,7 +1997,7 @@ echo "$text_md                        show-config modify-config del-config names
 echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                        client-ftp lan-tor lan-vpn secure-ssh server-ssh server-web server-samba "
+echo "$text_md                        client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
 echo "$text_md                        server-print server-lamp server-news server-mail server-ftp              "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$title_md                                      [ tool-options ]                                          "   
@@ -2056,7 +2056,7 @@ echo "$text_md                        show-config modify-config del-config names
 echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                        client-ftp lan-tor lan-vpn secure-ssh server-ssh server-web server-samba "
+echo "$text_md                        client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
 echo "$text_md                        server-print server-lamp server-news server-mail server-ftp              "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$text_md"
@@ -2435,7 +2435,7 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall solo para nevagar 
 echo "$text_md $tab lan-vpn"
 echo "$text_md $tab_lang_english          : Launch one firewall only to browser with vpn"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall solo para nevagar con vpn"
-echo "$text_md $tab secure-ssh"
+echo "$text_md $tab shield-ssh"
 echo "$text_md $tab_lang_english          : Launch one firewall likes server ssh with SHIELD: max 10-new-connectios/each-ip/each-hour"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor ssh con escudo: maximo 10-nuevas-conexiones/cada-ip/cada-hora"
 echo "$text_md $tab server-ssh"
@@ -3659,7 +3659,7 @@ selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
-"client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "secure-ssh" \
+"client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "shield-ssh" \
 "server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
 "server-news" "server-mail" "server-ftp" "server-teamspeak" "server-mumble" \
 "server-sql" "server-asterisk" \
@@ -3688,7 +3688,7 @@ case "$selection" in
 "game-widelands") $cmd_fwiptables -gui game-widelands ; $cmd_fwiptables gui list ;;
 "lan-tor") $cmd_fwiptables -gui lan-tor ; $cmd_fwiptables gui list ;;
 "lan-vpn") $cmd_fwiptables -gui lan-vpn ; $cmd_fwiptables gui list ;;
-"secure-ssh") $cmd_fwiptables -gui secure-ssh ; $cmd_fwiptables gui list ;;
+"shield-ssh") $cmd_fwiptables -gui shield-ssh ; $cmd_fwiptables gui list ;;
 "server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
 "server-web") $cmd_fwiptables -gui server-web ; $cmd_fwiptables gui list ;;
 "server-samba") $cmd_fwiptables -gui server-samba ; $cmd_fwiptables gui list ;;
@@ -4614,7 +4614,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0415  "$tab client-tor" \
   0416  "$tab lan-tor" \
   0417  "$tab lan-vpn" \
-  0418  "$tab secure-ssh" \
+  0418  "$tab shield-ssh" \
   0419  "$tab server-ssh" \
   0420  "$tab server-web" \
   0421  "$tab server-print" \
@@ -4820,7 +4820,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0415) clear ; $cmd_fwiptables cli client-torrent ; $cmd_fwiptables cli list ;;
  0416) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables cli list ;;
  0417) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables cli list ;; 
- 0418) clear ; $cmd_fwiptables cli secure-ssh ; $cmd_fwiptables cli list  ;; 
+ 0418) clear ; $cmd_fwiptables cli shield-ssh ; $cmd_fwiptables cli list  ;; 
  0419) clear ; $cmd_fwiptables cli server-ssh ; $cmd_fwiptables cli list  ;;
  0420) clear ; $cmd_fwiptables cli server-web ; $cmd_fwiptables cli list ;;
  0421) clear ; $cmd_fwiptables cli server-print ; $cmd_fwiptables cli list ;;
@@ -9778,12 +9778,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-off-line:
-########################################     english: ipv4 iptables secure-ssh:
-########################################     spanish: ipv4 iptables secure-ssh:
-#### :rutina-inicial-code-secure-ssh:
+########################################     english: ipv4 iptables shield-ssh:
+########################################     spanish: ipv4 iptables shield-ssh:
+#### :rutina-inicial-code-shield-ssh:
 ####
 ####
-if [ "$first_option" = "secure-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$first_option" = "shield-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 ####
@@ -9870,8 +9870,8 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables secure-ssh:
-########################################     spanish: ipv6 iptables secure-ssh:
+########################################     english: ipv6 iptables shield-ssh:
+########################################     spanish: ipv6 iptables shield-ssh:
 ####
 ####
 #### legacy ip6
@@ -9974,7 +9974,7 @@ echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ $first_option ]"
 exit; fi
 ####
 ####
-#### :rutina-final-code-secure-ssh:
+#### :rutina-final-code-shield-ssh:
 ########################################     english: ipv4 iptables default:
 ########################################     spanish: ipv4 iptables por defecto
 #### :rutina-inicial-code-rulesdefault:
