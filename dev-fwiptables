@@ -744,6 +744,7 @@ if [ "$first_option" = "serverweb" ] ; then first_option="server-web" ; fi
 if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
 if [ "$first_option" = "serverlamp" ] ; then first_option="server-lamp" ; fi
 if [ "$first_option" = "server-ts" ] ; then first_option="server-teamspeak" ; fi
+if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
 ####
 ####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
@@ -3639,9 +3640,13 @@ exit; fi
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
-"games-shooter" "game-wesnoth" "game-minetest" "client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" \
-"server-web" "server-samba" "server-ssh" "server-print" "server-lamp" "server-teamspeak" "server-mumble" "server-sql" "server-asterisk" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
+"wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
+"games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
+"client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "secure-ssh" \
+"server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
+"server-news" "server-mail" "server-ftp" "server-teamspeak" "server-mumble" \
+"server-sql" "server-asterisk" \
 --column="Option list $fwiptables" --text="Select one option" \
 --title="[ firewall launch ] [ $fwiptables ]")
 #### 
@@ -3659,15 +3664,21 @@ case "$selection" in
 "client-web") $cmd_fwiptables -gui client-web ; $cmd_fwiptables gui list ;;
 "client-torrent") $cmd_fwiptables -gui client-torrent ; $cmd_fwiptables gui list ;;
 "client-vpn") $cmd_fwiptables -gui client-vpn ; $cmd_fwiptables gui list ;;
+"client-tor") $cmd_fwiptables -gui client-tor ; $cmd_fwiptables gui list ;;
 "games-shooter") $cmd_fwiptables -gui games-shooter ; $cmd_fwiptables gui list ;;
 "game-wesnoth") $cmd_fwiptables -gui game-wesnoth ; $cmd_fwiptables gui list ;;
 "game-minetest") $cmd_fwiptables -gui game-minetest ; $cmd_fwiptables gui list ;;
-"client-tor") $cmd_fwiptables -gui client-tor ; $cmd_fwiptables gui list ;;
+"game-freeciv") $cmd_fwiptables -gui game-freeciv ; $cmd_fwiptables gui list ;;
+"game-widelands") $cmd_fwiptables -gui game-widelands ; $cmd_fwiptables gui list ;;
 "lan-tor") $cmd_fwiptables -gui lan-tor ; $cmd_fwiptables gui list ;;
 "lan-vpn") $cmd_fwiptables -gui lan-vpn ; $cmd_fwiptables gui list ;;
+"secure-ssh") $cmd_fwiptables -gui secure-ssh ; $cmd_fwiptables gui list ;;
+"server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
 "server-web") $cmd_fwiptables -gui server-web ; $cmd_fwiptables gui list ;;
 "server-samba") $cmd_fwiptables -gui server-samba ; $cmd_fwiptables gui list ;;
-"server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
+"server-news")  $cmd_fwiptables -gui server-news ; $cmd_fwiptables gui list ;;
+"server-mail")  $cmd_fwiptables -gui server-mail ; $cmd_fwiptables gui list ;;
+"server-ftp")  $cmd_fwiptables -gui server-ftp ; $cmd_fwiptables gui list ;;
 "server-print") $cmd_fwiptables -gui server-print ; $cmd_fwiptables gui list ;;
 "server-lamp") $cmd_fwiptables -gui server-lamp ; $cmd_fwiptables gui list ;;
 "server-teamspeak") $cmd_fwiptables -gui server-teamspeak ; $cmd_fwiptables gui list ;;
@@ -4575,25 +4586,31 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0403  "$tab wizard-full" \
   0404  "$tab off-line" \
   0405  "$tab all-permisive" \
-  0406  "$tab custom cfg" \
+  0406  "$tab custom" \
   0407  "$tab games-shooter" \
   0408  "$tab game-wesnoth" \
   0409  "$tab game-minetest" \
-  0410  "$tab client-web" \
-  0411  "$tab client-torrent" \
-  0412  "$tab client-vpn" \
-  0413  "$tab client-tor" \
-  0414  "$tab server-web" \
-  0415  "$tab server-ssh" \
-  0416  "$tab server-print" \
-  0417  "$tab server-samba" \
-  0418  "$tab server-lamp" \
-  0419  "$tab lan-tor" \
-  0420  "$tab lan-vpn" \
-  0421  "$tab server-teamspeak" \
-  0422  "$tab server-mumble" \
-  0423  "$tab server-sql" \
-  0424  "$tab server-asterisk" \
+  0410  "$tab game-freeciv" \
+  0411  "$tab game-widelands" \
+  0412  "$tab client-web" \
+  0413  "$tab client-torrent" \
+  0414  "$tab client-vpn" \
+  0415  "$tab client-tor" \
+  0416  "$tab lan-tor" \
+  0417  "$tab lan-vpn" \
+  0418  "$tab secure-ssh" \
+  0419  "$tab server-ssh" \
+  0420  "$tab server-web" \
+  0421  "$tab server-print" \
+  0422  "$tab server-samba" \
+  0423  "$tab server-lamp" \
+  0424  "$tab server-mail" \
+  0425  "$tab server-ftp" \
+  0426  "$tab server-news" \
+  0427  "$tab server-teamspeak" \
+  0428  "$tab server-mumble" \
+  0429  "$tab server-sql" \
+  0430  "$tab server-asterisk" \
   0500 "$quad [ Firewall Custom ] $cinco" \
   0501  "$tab new-full-config" \
   0502  "$tab nueva-completa-config" \
@@ -4779,21 +4796,27 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables cli list  ;; 
  0408) clear ; $cmd_fwiptables cli game-wesnoth ; $cmd_fwiptables cli list ;;
  0409) clear ; $cmd_fwiptables cli game-minetest ; $cmd_fwiptables cli list ;;
- 0410) clear ; $cmd_fwiptables cli client-web ; $cmd_fwiptables cli list ;;
- 0411) clear ; $cmd_fwiptables cli client-torrent ; $cmd_fwiptables cli list ;;
+ 0410) clear ; $cmd_fwiptables cli game-freeciv ; $cmd_fwiptables cli list ;;
+ 0411) clear ; $cmd_fwiptables cli game-widelands ; $cmd_fwiptables cli list ;;
  0412) clear ; $cmd_fwiptables cli client-vpn ; $cmd_fwiptables cli list  ;;
- 0413) clear ; $cmd_fwiptables cli client-tor ; $cmd_fwiptables cli list  ;; 
- 0414) clear ; $cmd_fwiptables cli server-web ; $cmd_fwiptables cli list  ;;
- 0415) clear ; $cmd_fwiptables cli server-ssh ; $cmd_fwiptables cli list ;;
- 0416) clear ; $cmd_fwiptables cli server-print ; $cmd_fwiptables cli list ;;
- 0417) clear ; $cmd_fwiptables cli server-samba ; $cmd_fwiptables cli list ;;
- 0418) clear ; $cmd_fwiptables cli server-lamp ; $cmd_fwiptables cli list ;;
- 0419) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables cli list ;;
- 0420) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables cli list ;;
- 0421) clear ; $cmd_fwiptables cli server-teamspeak ; $cmd_fwiptables cli list ;;
- 0422) clear ; $cmd_fwiptables cli server-mumble ; $cmd_fwiptables cli list ;;
- 0423) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables cli list ;;
- 0424) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables cli list ;;
+ 0413) clear ; $cmd_fwiptables cli client-tor ; $cmd_fwiptables cli list  ;;
+ 0414) clear ; $cmd_fwiptables cli client-web ; $cmd_fwiptables cli list ;;
+ 0415) clear ; $cmd_fwiptables cli client-torrent ; $cmd_fwiptables cli list ;;
+ 0416) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables cli list ;;
+ 0417) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables cli list ;; 
+ 0418) clear ; $cmd_fwiptables cli secure-ssh ; $cmd_fwiptables cli list  ;; 
+ 0419) clear ; $cmd_fwiptables cli server-ssh ; $cmd_fwiptables cli list  ;;
+ 0420) clear ; $cmd_fwiptables cli server-web ; $cmd_fwiptables cli list ;;
+ 0421) clear ; $cmd_fwiptables cli server-print ; $cmd_fwiptables cli list ;;
+ 0422) clear ; $cmd_fwiptables cli server-samba ; $cmd_fwiptables cli list ;;
+ 0423) clear ; $cmd_fwiptables cli server-lamp ; $cmd_fwiptables cli list ;;
+ 0424) clear ; $cmd_fwiptables cli server-mail ; $cmd_fwiptables cli list ;;
+ 0425) clear ; $cmd_fwiptables cli server-ftp ; $cmd_fwiptables cli list ;;
+ 0426) clear ; $cmd_fwiptables cli server-news ; $cmd_fwiptables cli list ;;
+ 0427) clear ; $cmd_fwiptables cli server-teamspeak ; $cmd_fwiptables cli list ;;
+ 0428) clear ; $cmd_fwiptables cli server-mumble ; $cmd_fwiptables cli list ;;
+ 0429) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables cli list ;;
+ 0430) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables cli list ;;
  0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables new-full-config $archivo ;;
