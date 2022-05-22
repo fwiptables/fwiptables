@@ -1,6 +1,6 @@
 
  7. pasa nuevos firewall añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
- 6. pasa nuevos firewall añadidos a cli-menu y a gui-menu.
+ 6. pasa nuevos firewall añadidos a cli-menu y a gui-menu. HECHO
  6. añadir mas comentarios al codigo en cada firewall. 
  5. añade firewall secure-ssh. HECHO
  4. añade firewall server-ftp, y firewall server-mail y firewall server-news. HECHO
