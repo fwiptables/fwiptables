@@ -852,7 +852,7 @@ txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
-"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game*|server-*|client-*)
+"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|secure-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
@@ -899,7 +899,7 @@ firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
-"eraserules"|wizard-*|"custom"|"offline"|"all-permisive"|lan-*|game*|server-*|client-*)
+"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|secure-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
