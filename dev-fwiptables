@@ -30,7 +30,7 @@
 ####   spanish: Los comentarios estan en idioma ingles y en idioma español
 ####
 ####
-####   Report bugs and Sum ideas at fwiptables@gmx.com
+####   Report bugs and Sum ideas at email fwiptables@gmx.com
 ####
 ####
 ##############################       english: are you root: uid 0 ?                ############################## 
@@ -392,7 +392,7 @@ echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptabl
 echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
 echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
 echo  $text_md
-echo "$title_md   ###  Fran fwiptables project.  "
+echo "$title_md    ###  Fran fwiptables project.  "
 echo "$text_md     Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md     $flicense"
