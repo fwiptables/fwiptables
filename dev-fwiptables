@@ -9022,7 +9022,6 @@ echo  $text_md
 echo "$text_md          stop : Save and stop firewall iptables."
 echo "$text_md      continue : Restore the firewall iptables stopped."
 echo "$text_md         reset : Reset the firewall iptables."
-echo "$text_md       names : Alias to names."
 echo "$text_md         names : List the firewall iptables saved."
 echo "$text_md          show : Show one firewall standard."
 echo "$text_md          save : Save one firewall iptables."
