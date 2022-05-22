@@ -1,7 +1,8 @@
 
- 1. añadir mas comentarios al codigo en cada firewall. 
+ 1. añadir mas comentarios al codigo de cada firewall. 
+ 1. pequeños cambios de apariencia. HECHO
 
- la version en desarrollo: cambios fwiptables 3.11 #
+ # la version en desarrollo: cambios fwiptables 3.11 #
 
  8. pasa nuevos firewall añadidos a opcion fwiptables-launch, y a info y a help HECHO
  7. pasa nuevos firewall añadidos a opcion readme y a opcion leeme. HECHO
