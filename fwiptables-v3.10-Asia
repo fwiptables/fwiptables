@@ -21,16 +21,18 @@
 #### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
 ####
 ####
-####                 fwiptables license in source program
-####   english: This program has gpl license GPL v2, this program is copyleft, it is free.
-####   spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
-####
-####                 fwiptables comments in source program
-####   english: The comments are in english language and spanish language
-####   spanish: Los comentarios estan en idioma ingles y en idioma español
+####                 ## fwiptables license in source program
+####   English: This program has gpl license GPL v2, this program is copyleft, it is free.
+####   Spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
 ####
 ####
-####   Report bugs and Sum ideas at email fwiptables@gmx.com
+####                 ## fwiptables comments in source program
+####   English: The comments are in english language and spanish language
+####   Spanish: Los comentarios estan en idioma ingles y en idioma español
+####
+####
+####                 ## Report bugs and Sum ideas 
+####   Email fwiptables@gmx.com
 ####
 ####
 ##############################       english: are you root: uid 0 ?                ############################## 
@@ -305,8 +307,8 @@ default_security="mini-options"
 ##############################  spanish: variables: variables para declarar  ##############################
 ####
 ####
-#### # english: before declared variables # spanish: variables declaradas antes
-#### allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; 
+####    # english: before declared variables # spanish: variables declaradas antes
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; 
 ####
 ####
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
@@ -899,7 +901,7 @@ firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
-"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|secure-*|client-*)
+"eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
@@ -1127,8 +1129,8 @@ var33=$(echo "separate_port_rules=no" )
 eng33=$(echo "$cinco Separate the rules for each port or no")
 spa33=$(echo "$cinco separar reglas por cada puerto o no")
 var34=$(echo "allow_maxtries_ssh=no" )
-eng34=$(echo "$cinco void to allow max tries login in ssh for hour or no")
-spa34=$(echo "$cinco vacio para permitir maximos intentos de logins in ssh por hora o no")
+eng34=$(echo "$cinco void to allow one shield with max tries login in ssh for ip to each hour or no")
+spa34=$(echo "$cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no")
 var35=$(echo "allow_forward_ip4=no" )
 eng35=$(echo "$cinco void to yes to forward ip4, or no to no")
 spa35=$(echo "$cinco vacio para reenvios ip4, o no para no")
@@ -1211,8 +1213,8 @@ var59=$(echo "$cinco Options" )
 eng59=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
 var60=$(echo "config_maxtries_ssh=20")
-eng60=$(echo "$cinco modify with number max of tries to log in us ssh server for hour")
-spa60=$(echo "$cinco modificar con los maximos intentos de logeo a nuestro servidor ssh por hora")
+eng60=$(echo "$cinco modify shield with number max of tries to log in us ssh server for ip at each hour")
+spa60=$(echo "$cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora")
 var61=$(echo "config_dmz_ip4=192.168.1.7")
 eng61=$(echo "$cinco ip server ip lan to other external nets, nat prerouting")
 spa61=$(echo "$cinco servidor ip lan para otras redes esternas, nat prerouting")
