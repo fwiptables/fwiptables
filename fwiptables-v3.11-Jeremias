@@ -1982,7 +1982,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$title_md         [ $first_option ] [ List full options ] [ options.md ]"
+echo "$title_md                     [ $first_option ] [ List full options ] [ options.md ]"
 echo "$text_md  output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
 echo "$title_md                                      [ firewall-options ]                                      "
 echo "$text_md  firewall-rules     |  stop continue reset names actual show save load                          "
@@ -2021,8 +2021,7 @@ echo "$text_md                        hosts.allow hosts.deny show-default modify
 echo "$text_md  show-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  show-help          |  all-help readme leeme notes options info                                 "
 echo "$text_md                        group-options mini-options full-options                                  "
-echo "$title_md                                      [ some-example ]                                      "
-echo "$text_md        [ with optional output ]                  [ Example Description ]                    "
+echo "$title_md       [ with optional output ]                  [ Example Description ]                    "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
