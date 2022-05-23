@@ -2024,7 +2024,7 @@ echo "$text_md                        hosts.allow hosts.deny show-default modify
 echo "$text_md  show-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  show-help          |  all-help readme leeme notes options info                                 "
 echo "$text_md                        group-options mini-options full-options                                  "
-echo "$title_md       [ with optional output ]                  [ Example Description ]                    "
+echo "$title_md       [ Example with optional output ]             [ Example Description ]                    "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
