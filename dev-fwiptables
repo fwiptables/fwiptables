@@ -379,7 +379,7 @@ if [ "$first_option" = "intro" ]; then $nada
 echo "$title_md    ### Fran fwiptables intro. "
 echo "$text_md       # Use Fran Firewall # configure both iptables netfilter for linux.             "
 echo "$text_md     Done with support in xtables and/or nftables and ipv4 and/or ipv6.               "
-echo "$text_md     Done to run in command shell cmd, cli-menu, gui-menu and gui-shell.              "
+echo "$text_md     Done to run in command shell cmd, cli-menu, gui-menu, and gui-shell.             "
 $brake_md
 echo "$text_md       # Standard firewall # Create one firewall with one wizard and save it in standard file. "
 echo "$text_md     Control the firewall with the standard iptables files for all tables.            "
