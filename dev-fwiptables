@@ -529,8 +529,8 @@ rm $directory_desktop/$fwiptables-gui-shell.desktop &> /dev/null
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
 cp $zero_option $directory_fwiptables/$cmd_fwiptables &> /dev/null 
-$directory_fwiptables/$cmd_fwiptables clean-tmp &> /dev/null 
-$directory_fwiptables/$cmd_fwiptables regen-config &> /dev/null 
+$cmd_fwiptables regen-config &> /dev/null
+#### $directory_fwiptables/$cmd_fwiptables clean-tmp &> /dev/null
 ####
 ####
 ####  english: Install new /etc/bash_completion/fwiptables
@@ -579,7 +579,6 @@ echo "$(head -300 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default
 #### 
 chmod ugo+rx /etc/bash_completion.d/fwiptables &> /dev/null
 chmod ugo+rx $directory_fwiptables/$cmd_fwiptables &> /dev/null
-$cmd_fwiptables regen-config &> /dev/null
 ####
 ####
 ####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
@@ -9241,8 +9240,8 @@ echo "$text_md   group-options : show group options."
 echo "$text_md    mini-options : Show necesary options for firewall."
 echo "$text_md    full-options : Show the full options."
 echo "$text_md         options : Show the full options."
-echo "$text_md            help : Show help in english."
-echo "$text_md           ayuda : Show help in spanish."
+echo "$text_md          readme : Show help in english."
+echo "$text_md           leeme : Show help in spanish."
 echo "$text_md           notes : Show firewall notes."
 echo "$text_md   some-examples : Show examples to launch."
 echo  $text_md
@@ -9545,8 +9544,8 @@ echo "$text_md   group-options : Muestra las opciones de grupo."
 echo "$text_md    mini-options : Muestra las opciones necesarias."
 echo "$text_md    full-options : Muestra las opciones."
 echo "$text_md         options : Muestra las opciones."
-echo "$text_md            help : Muestra la ayuda en ingles."
-echo "$text_md           ayuda : Muestra la ayuda en español."
+echo "$text_md          readme : Muestra la ayuda en ingles."
+echo "$text_md           leeme : Muestra la ayuda en español."
 echo "$text_md           notes : Muestra notas de Fran firewall."
 echo "$text_md   some-examples : Muestra ejemplos para lanzar."
 echo $text_md
