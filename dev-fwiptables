@@ -528,7 +528,8 @@ rm $directory_desktop/$fwiptables-gui-shell.desktop &> /dev/null
 #### 
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
-cp $zero_option $directory_fwiptables/$cmd_fwiptables &> /dev/null 
+cp $zero_option $directory_temporal_path/fwiptables-tmp.sh &> /dev/null
+cp $directory_temporal_path/fwiptables-tmp.sh $directory_fwiptables/$cmd_fwiptables &> /dev/null 
 $cmd_fwiptables regen-config &> /dev/null
 #### $directory_fwiptables/$cmd_fwiptables clean-tmp &> /dev/null
 ####
