@@ -1,8 +1,12 @@
 
+ 1. mas comentarios en ingles y español
+
+ # la version en desarrollo: cambios fwiptables 3.12 #
+
  2. añadir mas comentarios al codigo de cada firewall. 
  1. pequeños cambios de apariencia. HECHO
 
- # la version en desarrollo: cambios fwiptables 3.11 #
+ cambios fwiptables 3.11 # lines =2
 
  8. pasa nuevos firewall añadidos a opcion fwiptables-launch, y a info y a help HECHO
  7. pasa nuevos firewall añadidos a opcion readme y a opcion leeme. HECHO
