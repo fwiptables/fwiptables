@@ -1649,7 +1649,7 @@ server_port_tcp="ssh" ; fi
 ####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-web ]" ; launch_iptables="default" ;
-#### you can connect web normal
+#### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -9642,6 +9642,10 @@ $give_autosave &> /dev/null
 if [ "$first_option" = "all-permisive" ]; then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
+#### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
+#### spanish: legacy ipv4 127.0.0.1 acepta y los otros legacy ipv4 acepta tambien
+####
+####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -9654,7 +9658,8 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
-#### nft ip4
+#### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
+#### spanish: nft ipv4 127.0.0.1 acepta y los otros nft ipv4 acepta tambien
 ####
 ####
 $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
@@ -9673,7 +9678,8 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A FORWARD \
 ########################################     spanish: ipv6 iptables todo permisivo
 ####
 ####
-#### legacy ip6
+#### english: legacy ipv6 127.0.0.1 acept and the others legacy ipv6 accept too
+#### spanish: legacy ipv6 127.0.0.1 acepta y los otros legacy ipv6 acepta tambien
 ####
 ####
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT  \
@@ -9686,7 +9692,8 @@ $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
-#### nft ip6
+#### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
+#### spanish: nft ipv6 127.0.0.1 acepta y los otros nft ipv6 acepta tambien
 ####
 ####
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
@@ -9699,10 +9706,18 @@ $allow_nft $allow_ipv6   $command_ip6tables_nft -A FORWARD \
 -j ACCEPT &> /dev/null
 ####
 ####
+#### english: ipv6-icmp accept in legacy and accept in nft
+#### spanish: ipv6-icmp acepta en legacy y acepta en nft
+####
+####
 $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
 $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+####
+####
+#### english: close with drop legacy and close with drop nft
+#### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
@@ -9729,13 +9744,18 @@ exit; fi
 if [ "$first_option" = "off-line" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
+#### english: legacy ipv4 127.0.0.1 acept
+#### spanish: legacy ipv4 127.0.0.1 acepta
+####
+####
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A INPUT  \
 -s 127.0.0.1 -d 127.0.0.1   -j ACCEPT &> /dev/null
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
-#### nft ip4
+#### english: legacy ipv4 127.0.0.1 acept
+#### spanish: nft ipv4 127.0.0.1 acepta
 ####
 ####
 $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT   \
@@ -9748,7 +9768,8 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT  \
 ########################################     spanish: ipv6 iptables desconectado
 ####
 ####
-#### legacy ip6
+#### english: legacy ipv6 127.0.0.1 acept
+#### spanish: legacy ipv6 127.0.0.1 acepta
 ####
 ####
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT  \
@@ -9757,7 +9778,8 @@ $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
-#### nft ip6
+#### english: nft ipv6 127.0.0.1 acept
+#### spanish: nft ipv6 127.0.0.1 acepta
 ####
 ####
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT  \
