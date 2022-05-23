@@ -380,26 +380,26 @@ echo "$title_md    ### Fran fwiptables intro. "
 echo "$text_md       # Use Fran Firewall # configure both iptables netfilter for linux.             "
 echo "$text_md     Done with support in xtables and/or nftables and ipv4 and/or ipv6.               "
 echo "$text_md     Done to run in command shell cmd, cli-menu, gui-menu and gui-shell.              "
-echo  $text_md
+$brake_md
 echo "$text_md       # Standard firewall # Create one firewall with one wizard and save it in standard file. "
 echo "$text_md     Control the firewall with the standard iptables files for all tables.            "
 echo "$text_md       # Custom firewall # Create one firewall custom and launch your custom config firewall.  "
 echo "$text_md     Choose run iptables rules of one firewall with your own config files.            "
 echo "$text_md       # Network tools # Use this firewall with some utilities for ipv4 and ipv6.           "
-echo  $text_md
+#### echo  $text_md
 echo "$title_md    ### Fran fwiptables installer.                                                      "
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
 echo "$text_md     Uninstall $fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
-echo  $text_md
+#### echo  $text_md
 echo "$title_md    ###  Fran fwiptables project.  "
 echo "$text_md     Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md     $flicense"
 echo "$text_md  $license_gpl"
-echo  $text_md
+#### echo  $text_md
 exit; fi
 ####
 ####
@@ -8995,9 +8995,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "readme" ]; then 
-echo "$title_md [ $first_option ] [ help in english ] [ help.md ]"
-echo "$text_md  [ Choose only help in english ] [  Type:    $cmd_fwiptables readme   ]"
-echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables leeme    ]"
+echo "$title_md [ $first_option ] [ help in english ] [ readme.md ]"
 $cmd_fwiptables intro
 $cmd_fwiptables options
 echo "$title_md         [ Launch interface ]"
@@ -9295,12 +9293,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "leeme" ]; then 
-echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ ayuda.md ]$tab"
-echo  $text_md
-echo "$text_md  [ Choose only help in english ] [  Type:    $cmd_fwiptables readme   ]"
-echo "$text_md  [ Elige solo ayuda en español ] [ Teclea:   $cmd_fwiptables leeme    ]"
+echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme.md ]"
 $cmd_fwiptables intro
-echo $text_md
 $cmd_fwiptables options
 echo  $text_md
 echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
