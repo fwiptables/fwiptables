@@ -172,7 +172,7 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy="no"                     ## fwiptables-file--default ## void or no
+allow_legacy="no"                     ## fwiptables-file-default ## void or no
 allow_nft=""                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
@@ -360,7 +360,7 @@ if [ -d "$directory_default" ]; then $nada ; else rm "$directory_default" &> /de
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f $directory_default/fwiptables ] ; then . $directory_default/fwiptables ; fi
+if [ -f $directory_default/fwiptables-default ] ; then . $directory_default/fwiptables-default ; fi
 ####
 ####
 #### english: if null option is void return default to mini-options
