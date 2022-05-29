@@ -137,7 +137,7 @@ file_output_log="$directory_temporal/$first_option-$second_option-$third_option"
 if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####
 ####     #### english: launch completion          #### spanish: lanza autocompletar
-if [ -f /etc/bash_completion.d/$cmd_fwiptables ] ; then . /etc/bash_completion.d/$cmd_fwiptables ; fi
+if [ -f "/etc/bash_completion.d/$cmd_fwiptables" ] ; then . /etc/bash_completion.d/$cmd_fwiptables ; fi
 ####
 ####
 ####     #### english: stablished the path        #### spanish: establece el path
