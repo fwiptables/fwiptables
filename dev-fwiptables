@@ -118,14 +118,14 @@ file_output_autolog="$directory_log/$fwiptables-autolog"
 #### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$fwiptables-$fversion-tmp"
 #### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp"
 ####
-directory_temporal_path="$HOME/.$fwiptables-$fversion-tmp" ; mkdir -p $directory_temporal_path &> /dev/null
+directory_temporal="$HOME/.$fwiptables-$fversion-tmp" ; mkdir -p $directory_temporal &> /dev/null
 ####
 ####
-file_temporal_text="$directory_temporal_path/$first_option-$second_option-$third_option"
-file_temporal_textfinal="$directory_temporal_path/$first_option-$second_option-$third_option-textfinal"
-file_temporal_gui="$directory_temporal_path/$first_option-$second_option-$third_option"
-file_temporal_guifinal="$directory_temporal_path/$first_option-$second_option-$third_option-guifinal"
-file_output_log="$directory_temporal_path/$first_option-$second_option-$third_option"
+file_temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
+file_temporal_textfinal="$directory_temporal/$first_option-$second_option-$third_option-textfinal"
+file_temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
+file_temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
+file_output_log="$directory_temporal/$first_option-$second_option-$third_option"
 ####
 ####
 ##############################   english: profile y support X11       ##############################
@@ -528,8 +528,8 @@ rm $directory_desktop/$fwiptables-gui-shell.desktop &> /dev/null
 #### 
 #### 
 echo "$text_md [ running ] [ $zero_option installing ]"
-cp $zero_option $directory_temporal_path/fwiptables-tmp.sh &> /dev/null
-cp $directory_temporal_path/fwiptables-tmp.sh $directory_fwiptables/$cmd_fwiptables &> /dev/null 
+cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
+cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
 $cmd_fwiptables regen-config &> /dev/null
 #### $directory_fwiptables/$cmd_fwiptables clean-tmp &> /dev/null
 ####
@@ -571,7 +571,7 @@ cp /etc/bash_completion.d/$fwiptables /etc/profile.d/$fwiptables &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -300 $0 | grep -B 2 fwiptables-file-default)" &> $directory_default/$fwiptables
+echo "$(head -310 $0 | grep -B 2 fwiptables-file-default)" &> "$directory_default/$fwiptables-default"
 #### 
 #### 
 ####  english: probe sane dir /etc/bash_completion.d
@@ -3450,10 +3450,10 @@ case $second_option in
 #### 
 #### 
 "new-mini-config")
-cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$third_option"
+cp "$defaultminicfg_eng" "$directory_temporal/$fwiptables-$third_option"
 #### if [ -f "$directory_config/$third_option" ]; then $nada ;
 #### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
@@ -3463,10 +3463,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "new-full-config")
-cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$third_option"
+cp "$defaultfullcfg_eng" "$directory_temporal/$fwiptables-$third_option"
 #### if [ -f "$directory_config/$third_option" ]; then $nada ;
 #### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
@@ -3476,10 +3476,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "nueva-mini-config")
-cp "$defaultminicfg_spa" "$directory_temporal_path/$fwiptables-$third_option"
+cp "$defaultminicfg_spa" "$directory_temporal/$fwiptables-$third_option"
 #### if [ -f "$directory_config/$third_option" ]; then $nada ;
 #### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
@@ -3489,10 +3489,10 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 #### 
 #### 
 "nueva-completa-config")
-cp "$defaultfullcfg_spa" "$directory_temporal_path/$fwiptables-$third_option"
+cp "$defaultfullcfg_spa" "$directory_temporal/$fwiptables-$third_option"
 #### if [ -f "$directory_config/$third_option" ]; then $nada ;
 #### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $fwiptables custom $third_option" ; exit
@@ -3504,12 +3504,12 @@ zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; ex
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
 else zenity --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "$directory_temporal_path/$fwiptables-$third_option"
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$third_option" \
+cp "$directory_config/$third_option" "$directory_temporal/$fwiptables-$third_option"
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 zenity --forms $graphic_dimension --text="OK. file: $third_option"
-else cp "$directory_temporal_path/$fwiptables-$third_option" "$directory_config/$third_option"
+else cp "$directory_temporal/$fwiptables-$third_option" "$directory_config/$third_option"
 zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
@@ -3542,8 +3542,8 @@ case $second_option in
 #### 
 wizard-mini)
 archivo="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal/$fwiptables-$archivo"
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
@@ -3554,8 +3554,8 @@ zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 #### 
 wizard-full)
 archivo="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$fwiptables-$archivo"
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
@@ -3565,13 +3565,11 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 ####
 modify-default)
-archivo="$third_option"
-cp "$directory_default/$archivo" "$directory_temporal_path/$fwiptables-modify-default"
-zenity --text-info $graphic_dimension --filename="$directory_temporal_path/$fwiptables-modify-default" \
---editable --title="MODIFY FILE" &> $directory_default/$archivo
+cp "$directory_default/$fwiptables-default" "$directory_temporal/$fwiptables-default"
+zenity --text-info $graphic_dimension --filename="$directory_temporal/$fwiptables-default" \
+--editable --title="MODIFY FILE" &> "$directory_default/$fwiptables-default"
 if [  -s "$directory_default/$archivo" ]; then $nada ; 
-$cmd_fwiptables -gui show-default ;
-else cp "/tmp/$fwiptables-modify-default" "$directory_default/$archivo" ;
+else cp "$directory_temporal/$fwiptables-default" "$directory_default/$fwiptables-default" ;
 zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
@@ -5255,17 +5253,17 @@ echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" number
 echo "$tab [ actually ] [ Show the file: $cmd_fwiptables hosts ]"
 echo
 echo "$tab [ info ] [ total addblocker hosts ] [ waiting until $server_waiting seconds for max timeout each one ]"
-timeout 10 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal_path/hosts.fademind 
-blacklist_lines_fademind="$(cat $directory_temporal_path/hosts.fademind | wc -l)"
+timeout 10 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
+blacklist_lines_fademind="$(cat $directory_temporal/hosts.fademind | wc -l)"
 echo "$tab fademind:    $blacklist_lines_fademind hosts"
-timeout $server_waiting $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal_path/hosts.mvps 
-blacklist_lines_mvps="$(cat $directory_temporal_path/hosts.mvps | wc -l)"
+timeout $server_waiting $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
+blacklist_lines_mvps="$(cat $directory_temporal/hosts.mvps | wc -l)"
 echo "$tab mvps:        $blacklist_lines_mvps hosts"
-timeout $server_waiting $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal_path/hosts.adaway 
-blacklist_lines_adaway="$(cat $directory_temporal_path/hosts.adaway | wc -l)"
+timeout $server_waiting $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
+blacklist_lines_adaway="$(cat $directory_temporal/hosts.adaway | wc -l)"
 echo "$tab adaway:      $blacklist_lines_adaway hosts"
-timeout $server_waiting $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal_path/hosts.stevenblack 
-blacklist_lines_stevenblack="$(cat $directory_temporal_path/hosts.stevenblack | wc -l)"
+timeout $server_waiting $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
+blacklist_lines_stevenblack="$(cat $directory_temporal/hosts.stevenblack | wc -l)"
 echo "$tab stevenblack: $blacklist_lines_stevenblack hosts"
 echo "$tab"; fi
 ####
@@ -5301,33 +5299,33 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 if [ "$second_option" = "fademind" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
-$favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal_path/hosts.fademind 
+$favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal_path/hosts.fademind >> /etc/hosts
+cat $directory_temporal/hosts.fademind >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
-$favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal_path/hosts.adaway 
+$favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal_path/hosts.adaway >> /etc/hosts
+cat $directory_temporal/hosts.adaway >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
-$favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal_path/hosts.mvps 
+$favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal_path/hosts.mvps >> /etc/hosts
+cat $directory_temporal/hosts.mvps >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
-$favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal_path/hosts.stevenblack 
+$favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal_path/hosts.stevenblack >> /etc/hosts
+cat $directory_temporal/hosts.stevenblack >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
@@ -5344,16 +5342,16 @@ echo $tab; exit; fi
 if [ "$first_option" = "blacklist-off" ]; then 
 echo "$tab [ $first_option ] [ Remove blacklist server ]"
 echo $tab
-echo $directory_temporal_path
-echo $cincuenta > $directory_temporal_path/$first_option-hosts
-echo "## ip v4 loopback ##" >> $directory_temporal_path/$first_option-hosts
-echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> $directory_temporal_path/$first_option-hosts
-echo "## ip v6 loopback ##" >> $directory_temporal_path/$first_option-hosts
-echo "::1      localhost-ip6 localhost localhost.localdomain" >> $directory_temporal_path/$first_option-hosts
-echo "ff02::1 ip6-allnodes" >> $directory_temporal_path/$first_option-hosts
-echo "ff02::2 ip6-allrouters"  >> $directory_temporal_path/$first_option-hosts
-echo $cincuenta >> $directory_temporal_path/$first_option-hosts
-cat  $directory_temporal_path/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
+echo $directory_temporal
+echo $cincuenta > $directory_temporal/$first_option-hosts
+echo "## ip v4 loopback ##" >> $directory_temporal/$first_option-hosts
+echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> $directory_temporal/$first_option-hosts
+echo "## ip v6 loopback ##" >> $directory_temporal/$first_option-hosts
+echo "::1      localhost-ip6 localhost localhost.localdomain" >> $directory_temporal/$first_option-hosts
+echo "ff02::1 ip6-allnodes" >> $directory_temporal/$first_option-hosts
+echo "ff02::2 ip6-allrouters"  >> $directory_temporal/$first_option-hosts
+echo $cincuenta >> $directory_temporal/$first_option-hosts
+cat  $directory_temporal/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
 echo "$tab [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
 echo $footer_lineal
 cat  /etc/hosts
@@ -6155,8 +6153,8 @@ exit; fi
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultfullcfg_eng" "$directory_temporal/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -6167,7 +6165,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal_path/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -6188,8 +6186,8 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_temporal_path/$fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultfullcfg_spa" "$directory_temporal/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -6200,7 +6198,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal_path/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -6221,8 +6219,8 @@ exit; fi
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultminicfg_eng" "$directory_temporal/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -6233,7 +6231,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal_path/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -6254,8 +6252,8 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_temporal_path/$fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+cp "$defaultminicfg_spa" "$directory_temporal/$fwiptables-$archivo"
+dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -6266,7 +6264,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal_path/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -6289,8 +6287,8 @@ echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables modify-config config-existent ]
 ####
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
-cp "$directory_config/$second_option" "$directory_temporal_path/$second_option" &> /dev/null
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$second_option" 0 0 2> "$directory_config/$second_option"
+cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
+dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$second_option" 0 0 2> "$directory_config/$second_option"
 clear; fi
 ####
 ####
@@ -6300,7 +6298,7 @@ clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "$directory_temporal_path/$fwiptables-$second_option" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$fwiptables-$second_option" "$directory_config/$second_option" &> /dev/null
 dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
@@ -6318,7 +6316,7 @@ if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$tab [ status ] [ Usage: $cmd_fwiptables show-config config-old ]" ; exit; fi
+echo "$tab [ status ] [ Usage: $cmd_fwiptables show-config config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -6511,7 +6509,7 @@ echo "$tab [ $first_option ] [ show the default fwiptables ]"
 echo $header_lineal
 cat $directory_default/$fwiptables
 echo $footer_lineal
-echo "$tab [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables with: $cmd_fwiptables modify-default ]"
+echo "$tab [ status ] [ edit file $directory_default/$fwiptables-default to change variables with: $cmd_fwiptables modify-default ]"
 echo $footer_lineal
 exit; fi
 ####
@@ -6533,15 +6531,15 @@ echo "$tab [ status ] [ edit file $directory_default/$cmd_fwiptables to change v
 #### spanish: hace copia de seguridad
 ####
 ####
-cp $directory_default/$cmd_fwiptables $directory_temporal_path/fwiptables-default
+cp "$directory_default/$fwiptables-default" "$directory_temporal/$fwiptables-default"
 ####
 ####
 #### english: edit file
 #### spanish: edita el archivo
 ####
 ####
-dialog --no-cancel --title "MODIFY FILE $directory_default/$cmd_fwiptables" \
---editbox $directory_temporal_path/$fwiptables-default 0 0 2> $directory_default/$cmd_fwiptables
+dialog --no-cancel --title "MODIFY FILE: $directory_default/$fwiptables-default" \
+--editbox "$directory_temporal/$fwiptables-default" 0 0 2> "$directory_default/$fwiptables-default"
 clear
 ####
 ####
@@ -6549,8 +6547,8 @@ clear
 #### spanish: prueba que todo es correcto o lo recupera
 ####
 ####
-if [ ! -s "$directory_default/$cmd_fwiptables" ] ; then $nada
-cp $directory_temporal_path/$fwiptables-default $directory_default/$cmd_fwiptables; fi
+if [ ! -s "$directory_default/$fwiptables-default" ] ; then $nada
+cp "$directory_temporal/$fwiptables-default" "$directory_default/$fwiptables-default"; fi
 ####
 ####
 echo $footer_lineal
@@ -6603,8 +6601,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option"
-cp "$defaultminicfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal/$fwiptables-$archivo"
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -6622,8 +6620,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-full" ]; then echo
 archivo="$first_option"
-cp "$defaultfullcfg_eng" "$directory_temporal_path/$fwiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal_path/$fwiptables-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$fwiptables-$archivo"
+dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
