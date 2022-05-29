@@ -1,16 +1,19 @@
 
 
- 4.
+ 1.Mas comentarios en ingles y en español. 
+
+ #### la version en desarrollo: cambios fwiptables dev-fwiptables
+
  3. modificado fwiptables-modify. HECHO
  2. modificado shield-ssh. HECHO
  1. mas comentarios en ingles y español. HECHO
 
- #### la version en desarrollo: cambios fwiptables 3.12 #
+ cambios fwiptables 3.12 # lines=3
 
- 2. añadir mas comentarios al codigo de cada firewall. 
+ 2. añadir mas comentarios al codigo de cada firewall. HECHO
  1. pequeños cambios de apariencia. HECHO
 
- cambios fwiptables 3.11 # lines =2
+ cambios fwiptables 3.11 # lines=2
 
  8. pasa nuevos firewall añadidos a opcion fwiptables-launch, y a info y a help HECHO
  7. pasa nuevos firewall añadidos a opcion readme y a opcion leeme. HECHO
