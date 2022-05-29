@@ -6522,39 +6522,39 @@ exit; fi
 #### :rutina-inicial-modify-default:
 ####
 ####
- if [ "$first_option" = "modify-default" ]; then  $give_cover
- echo "$tab [ $first_option ] [ modify the default fwiptables ]"
- echo $header_lineal
- echo $footer_lineal
- echo "$tab [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
+if [ "$first_option" = "modify-default" ]; then  $give_cover
+echo "$tab [ $first_option ] [ modify the default fwiptables ]"
+echo $header_lineal
+echo $footer_lineal
+echo "$tab [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
 ####
 ####
 #### english: make security copy file
 #### spanish: hace copia de seguridad
 ####
 ####
- cp $directory-default/$cmd_fwiptables /tmp/$fwiptables-modify-default
+cp $directory_default/$cmd_fwiptables $directory_temporal_path/fwiptables-default
 ####
 ####
 #### english: edit file
 #### spanish: edita el archivo
 ####
 ####
- dialog --no-cancel --title "MODIFY FILE $directory_default/$fwiptables" \
- --editbox /tmp/$fwiptables-modify-default 0 0 2> $directory_default/$fwiptables
- clear
+dialog --no-cancel --title "MODIFY FILE $directory_default/$cmd_fwiptables" \
+--editbox $directory_temporal_path/$fwiptables-default 0 0 2> $directory_default/$cmd_fwiptables
+clear
 ####
 ####
 #### english: probe all that is correct or recover
 #### spanish: prueba que todo es correcto o lo recupera
 ####
 ####
- if [ ! -s "$directory_default/$fwiptables" ] ; then $nada
- cp /tmp/$fwiptables-modify-default $directory_default/$fwiptables; fi
+if [ ! -s "$directory_default/$cmd_fwiptables" ] ; then $nada
+cp $directory_temporal_path/$fwiptables-default $directory_default/$cmd_fwiptables; fi
 ####
 ####
- echo $footer_lineal
- exit; fi
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-modify-default:
