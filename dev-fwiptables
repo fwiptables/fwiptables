@@ -1993,7 +1993,7 @@ echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status 
 echo "$text_md                        list-alltables list-filter4 list-filter6                                 "
 echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        " 
 echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables               "
-echo "$text_md firewall-custom     |  new-full-config nueva-completa-config regen-config                       "
+echo "$text_md  firewall-custom    |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
 echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
