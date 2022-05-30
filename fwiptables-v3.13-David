@@ -11656,18 +11656,20 @@ exit ; else $nada ; fi
 #######################         spanish: Fin del script
 ####    
 ####
-####    Git mini tutorial:
+####    ### Git mini tutorial:
 ####
 ####
-####    Download repository: Repository git.code.sf.net/p/f-iptables/code
+####    # Download repository: Repository git.code.sf.net/p/f-iptables/code
 ####
-####    Download f-iptables repository to folder user       :     git clone https://git.code.sf.net/p/f-iptables/code
-####    Recover f-iptables repository to folder user        :     git fetch
+####    Download f-iptables repository to folder user             :  git clone https://git.code.sf.net/p/f-iptables/code
+####    Recover from server f-iptables repository to folder user  :  git fetch
 ####
-####    upload repository: Repository git.code.sf.net/p/f-iptables/code
-####    Upload f-iptables repository from local repository  :     git commit -a ; git push ;
+####    # upload repository: Repository git.code.sf.net/p/f-iptables/code
 ####
-####    Create repository local: /var/git/repository.localhost
+####    Upload f-iptables repository from local repository        :  git commit -a ; git push ;
+####
+####
+####    # Create repository local: /var/git/repository.localhost
 ####
 ####    mkdir /var/git/repository.localhost
 ####    cd /var/git/repository.localhost
