@@ -1,7 +1,10 @@
 
 
- 2. installer poner la ruta correcta del instalador temporal.
- 1. Mas comentarios en ingles y en español. 
+ 5. en todos los servidores por defecto con ssh, shield ssh funciona a 12 intentos por hora por defecto. HECHO
+ 4. variables añadida config_maxtries_ssh a default con 12 intentos por hora por defecto. HECHO
+ 3. show-default cambiado. HECHO
+ 2. installer poner la ruta correcta del instalador temporal. 
+ 1. Mas comentarios en ingles y en español en los firewall por defecto. HECHO
 
  #### la version en desarrollo: cambios fwiptables dev-fwiptables
 
