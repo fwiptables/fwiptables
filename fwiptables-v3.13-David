@@ -176,6 +176,9 @@ allow_legacy="no"                     ## fwiptables-file-default ## void or no
 allow_nft=""                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
+####       #### english: ssh shield configured for tries ssh connect for hour
+####       #### spanish: ssh escudo configurado para intentos ssh connect por hora
+config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
 allow_header_notice="no"                       ## fwiptables-file-default ## void or no
@@ -209,7 +212,7 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## def
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
 radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
 #### #### english: regen the config and templates          #### spanish: regenera la configuracion y plantillas
 genfiles="$zero_option regen-config"                      
 ####  #### english: default variable version whithout update for config cfg
@@ -308,7 +311,7 @@ default_security="mini-options"
 ####
 ####
 ####    # english: before declared variables # spanish: variables declaradas antes
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; 
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_ssh="20"
 ####
 ####
 client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
@@ -329,7 +332,6 @@ allow_mac_whitelist="no" ; allow_mac_blacklist="no" ;
 allow_net_vpn="no" ; allow_net_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
-config_maxtries_ssh="20"
 config_dmz_ip4="" ; config_dmz_ip6="" ;
 config_input_state="new,related,stablished" ;
 config_output_state="new,related,stablished" ;
@@ -1575,8 +1577,6 @@ case "$NULL" in
 *)choosed_iptables="no";;
 "$shield_ssh");;
 *)shield_ssh="no";;
-"$config_maxtries_ssh");;
-*)config_maxtries_ssh="no";;
 esac
 ####
 ####
@@ -1656,7 +1656,6 @@ if [ "$first_option" = "client-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-web ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="20" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
@@ -1672,7 +1671,6 @@ if [ "$first_option" = "client-torrent" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-torrent ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="20" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1688,7 +1686,6 @@ if [ "$first_option" = "client-vpn" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-vpn ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="20" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https,500,1194,1701,4500" ; 
@@ -1704,7 +1701,6 @@ if [ "$first_option" = "client-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-tor ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1720,7 +1716,6 @@ if [ "$first_option" = "client-news" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-news ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ; 
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1741,7 +1736,6 @@ if [ "$first_option" = "client-mail" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-mail ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1769,7 +1763,6 @@ if [ "$first_option" = "client-ftp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-ftp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### client ftp:
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -1785,7 +1778,6 @@ if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall lan-vpn ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp=""
@@ -1802,7 +1794,6 @@ if [ "$first_option" = "lan-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall lan-tor ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -1819,7 +1810,6 @@ if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
 echo "$tab [ running ] [ loading firewall games-shooter ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1835,7 +1825,6 @@ if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp=""
@@ -1851,7 +1840,6 @@ if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-minetest ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
 server_port_udp=""
@@ -1867,7 +1855,6 @@ if [ "$first_option" = "game-freeciv" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-freeciv ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp=""
@@ -1883,7 +1870,6 @@ if [ "$first_option" = "game-widelands" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-widelands ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,bootpc,ntp,https,7396" ; 
 server_port_udp="7396"
@@ -1899,7 +1885,6 @@ if [ "$first_option" = "server-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-web ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
@@ -1915,7 +1900,6 @@ if [ "$first_option" = "server-ftp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ftp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -1931,7 +1915,6 @@ if [ "$first_option" = "server-news" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-news ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1952,7 +1935,6 @@ if [ "$first_option" = "server-mail" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mail ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1980,7 +1962,6 @@ if [ "$first_option" = "server-samba" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-samba ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### server samba and active directory
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
 client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
@@ -1997,7 +1978,6 @@ if [ "$first_option" = "server-print" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-print ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### server ipp and printer
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -2013,7 +1993,6 @@ if [ "$first_option" = "server-ssh" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ssh ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -2029,7 +2008,6 @@ if [ "$first_option" = "server-lamp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-lamp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -2046,7 +2024,6 @@ if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-asterisk ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -2064,7 +2041,6 @@ if [ "$first_option" = "server-mumble" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mumble ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738"
@@ -2080,7 +2056,6 @@ if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -2100,7 +2075,6 @@ if [ "$first_option" = "server-sql" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-sql ]" ; launch_iptables="default"
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
