@@ -1,10 +1,9 @@
 
  
- 6. shield-ssh funciona con 6 intentos por hora por defecto. HECHO
- 5. en todos los servidores por defecto con ssh, por defecto, shield ssh funciona a 12 intentos por hora. HECHO
- 4. variables añadida config_maxtries_ssh a default con 12 intentos por hora por defecto. HECHO
- 3. show-default cambiado. HECHO
- 2. installer poner la ruta correcta del instalador temporal. 
+ 5. shield-ssh funciona con 6 intentos por hora por defecto. HECHO
+ 4. en todos los servidores por defecto con ssh, por defecto, shield ssh funciona a 12 intentos por hora. HECHO
+ 3. variables añadida config_maxtries_ssh a default con 12 intentos por hora por defecto. HECHO
+ 2. show-default cambiado. HECHO
  1. Mas comentarios en ingles y en español en los firewall por defecto. HECHO
 
  #### la version en desarrollo: cambios fwiptables dev-fwiptables
