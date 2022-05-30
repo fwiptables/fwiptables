@@ -1640,7 +1640,7 @@ if [ "$first_option" = "shield-ssh" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall shield-ssh ]" ; launch_iptables="" ; 
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="10" ;
+config_maxtries_ssh="5" ;
 #### english: ports client and ports server
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
@@ -1648,15 +1648,15 @@ client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ; fi
 ####
 ####
-####   #### english: the first        firewall of system  
-####   #### spanish: primero       cortafuego del sistema
+####   #### english: firewall of system client-web:
+####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-web ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
+config_maxtries_ssh="20" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
@@ -1664,11 +1664,15 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_tcp="" ; fi
 ####
 ####
+####   #### english: firewall of system client-torrent:
+####   #### spanish: cortafuego del sistema client-torrent:
+####
+####
 if [ "$first_option" = "client-torrent" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-torrent ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
+config_maxtries_ssh="20" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1676,16 +1680,24 @@ client_port_tcp="http,https,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ; fi
 ####
 ####
+####   #### english: firewall of system client-vpn:
+####   #### spanish: cortafuego del sistema client-vpn:
+####
+####
 if [ "$first_option" = "client-vpn" ];     then $give_cover ; 
 echo "$tab [ running ] [ loading firewall client-vpn ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
-config_maxtries_ssh="10" ;
+config_maxtries_ssh="20" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https,500,1194,1701,4500" ; 
 client_port_tcp="http,https,ssh,443,1701,1723" ; 
 server_port_tcp="" ; fi
+####
+####
+####   #### english: firewall of system client-tor:
+####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
 if [ "$first_option" = "client-tor" ];     then $give_cover ;
@@ -1698,6 +1710,10 @@ server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,9000:9170" ;
 server_port_tcp="" ; fi
+####
+####
+####   #### english: firewall of system client-news:
+####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
 if [ "$first_option" = "client-news" ];     then $give_cover ;
@@ -1715,6 +1731,10 @@ server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
 server_port_tcp="" ; fi
+####
+####
+####   #### english: firewall of system client-mail:
+####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
 if [ "$first_option" = "client-mail" ];     then $give_cover ;
@@ -1741,6 +1761,10 @@ client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
 server_port_tcp="" ; fi
 ####
 ####
+####   #### english: firewall of system client-ftp:
+####   #### spanish: cortafuego del sistema client-ftp:
+####
+####
 if [ "$first_option" = "client-ftp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall client-ftp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1751,6 +1775,10 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ; fi
+####
+####
+####   #### english: firewall of system lan-vpn:
+####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
 if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
@@ -1766,6 +1794,10 @@ client_port_tcp="1701,1723" ;
 server_port_tcp="" ; fi
 ####
 ####
+####   #### english: firewall of system lan-tor:
+####   #### spanish: cortafuego del sistema lan-tor:
+####
+####
 if [ "$first_option" = "lan-tor" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall lan-tor ]" ; launch_iptables="default" ;
 #### english: max tries for each hour 
@@ -1777,6 +1809,10 @@ server_port_udp="" ;
 client_port_udp="bootpc,domain,ntp" ;
 client_port_tcp="9000:9170" ;
 server_port_tcp="" ; fi
+####
+####
+####   #### english: firewall of system games-shooter:
+####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
 if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
@@ -1791,6 +1827,10 @@ client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ; fi
 ####
 ####
+####   #### english: firewall of system game-wesnoth:
+####   #### spanish: cortafuego del sistema game-wesnoth:
+####
+####
 if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1801,6 +1841,10 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ; fi
+####
+####
+####   #### english: firewall of system game-minetest:
+####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
@@ -1815,6 +1859,10 @@ client_port_tcp="http,https,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ; fi
 ####
 ####
+####   #### english: firewall of system game-freeciv:
+####   #### spanish: cortafuego del sistema game-freeciv:
+####
+####
 if [ "$first_option" = "game-freeciv" ]; then $give_cover  ;
 echo "$tab [ running ] [ loading firewall game-freeciv ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1825,6 +1873,10 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ; fi
+####
+####
+####   #### english: firewall of system game-widelands:
+####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
 if [ "$first_option" = "game-widelands" ]; then $give_cover  ;
@@ -1839,6 +1891,10 @@ client_port_tcp="http,https,ssh,7396" ;
 server_port_tcp="7396" ; fi
 ####
 ####
+####   #### english: firewall of system server-web:
+####   #### spanish: cortafuego del sistema server-web:
+####
+####
 if [ "$first_option" = "server-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-web ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1851,6 +1907,10 @@ client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ; fi
 ####
 ####
+####   #### english: firewall of system server-ftp:
+####   #### spanish: cortafuego del sistema server-ftp:
+####
+####
 if [ "$first_option" = "server-ftp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ftp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1861,6 +1921,10 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
+####
+####
+####   #### english: firewall of system server-news:
+####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
 if [ "$first_option" = "server-news" ];     then $give_cover ;
@@ -1878,6 +1942,10 @@ server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
 server_port_tcp="http,https,ssh,119,433,563" ; fi
+####
+####
+####   #### english: firewall of system server-mail:
+####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
 if [ "$first_option" = "server-mail" ];     then $give_cover ;
@@ -1904,6 +1972,10 @@ client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
 server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;  fi
 ####
 ####
+####   #### english: firewall of system server-samba:
+####   #### spanish: cortafuego del sistema server-samba:
+####
+####
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-samba ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1915,6 +1987,10 @@ client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
 server_tcp="ssh,ldap,ldaps,microsoft-ds" ; 
 server_udp="ntp,domain,ldap,ldaps,137:139" ; 
 fi
+####
+####
+####   #### english: firewall of system server-print:
+####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
 if [ "$first_option" = "server-print" ];   then $give_cover ;
@@ -1929,6 +2005,10 @@ client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh,printer,ipp" ; fi
 ####
 ####
+####   #### english: firewall of system server-ssh:
+####   #### spanish: cortafuego del sistema server-ssh:
+####
+####
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ssh ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1939,6 +2019,10 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ; fi
+####
+####
+####   #### english: firewall of system server-lamp:
+####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
 if [ "$first_option" = "server-lamp" ];     then $give_cover ; 
@@ -1952,6 +2036,10 @@ client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
 client_port_tcp="http,https,ssh,20,21,989,990" ;
 server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
+####
+####
+####   #### english: firewall of system server-asterisk:
+####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
 if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
@@ -1968,6 +2056,10 @@ client_port_tcp="http,https,ssh,5060" ;
 server_port_tcp="ssh,5060" ; fi
 ####
 ####
+####   #### english: firewall of system server-mumble:
+####   #### spanish: cortafuego del sistema server-mumble:
+####
+####
 if [ "$first_option" = "server-mumble" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mumble ]" ; launch_iptables="default"
 #### english: max tries for each hour 
@@ -1978,6 +2070,10 @@ client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738"
 client_port_tcp="http,https,ssh,64738" ;
 server_port_tcp="ssh,64738" ; fi
+####
+####
+####   #### english: firewall of system server-teamspeak:
+####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
 if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
@@ -1994,6 +2090,10 @@ client_port_udp="domain,bootpc,ntp,https,9987" ;
 server_port_udp="9987"
 client_port_tcp="http,https,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ; fi
+####
+####
+####   #### english: firewall of system server-sql:
+####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
 if [ "$first_option" = "server-sql" ];     then $give_cover ;
