@@ -1842,7 +1842,7 @@ server_port_tcp="7396" ; fi
 if [ "$first_option" = "server-web" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-web ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1854,7 +1854,7 @@ server_port_tcp="http,https,ssh" ; fi
 if [ "$first_option" = "server-ftp" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ftp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1866,7 +1866,7 @@ server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
 if [ "$first_option" = "server-news" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-news ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
@@ -1882,6 +1882,9 @@ server_port_tcp="http,https,ssh,119,433,563" ; fi
 ####
 if [ "$first_option" = "server-mail" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mail ]" ; launch_iptables="default"
+#### english: max tries for each hour 
+shield_ssh="" ;
+config_maxtries_ssh="10" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1904,7 +1907,7 @@ server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;  fi
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-samba ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### server samba and active directory
 client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
@@ -1917,7 +1920,7 @@ fi
 if [ "$first_option" = "server-print" ];   then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-print ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### server ipp and printer
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1929,7 +1932,7 @@ server_port_tcp="ssh,printer,ipp" ; fi
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-ssh ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1941,7 +1944,7 @@ server_port_tcp="ssh" ; fi
 if [ "$first_option" = "server-lamp" ];     then $give_cover ; 
 echo "$tab [ running ] [ loading firewall server-lamp ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
@@ -1954,7 +1957,7 @@ server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
 if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-asterisk ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
@@ -1968,7 +1971,7 @@ server_port_tcp="ssh,5060" ; fi
 if [ "$first_option" = "server-mumble" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-mumble ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
@@ -1980,7 +1983,7 @@ server_port_tcp="ssh,64738" ; fi
 if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
@@ -1996,7 +1999,7 @@ server_port_tcp="ssh,30033,10011,10022" ; fi
 if [ "$first_option" = "server-sql" ];     then $give_cover ;
 echo "$tab [ running ] [ loading firewall server-sql ]" ; launch_iptables="default"
 #### english: max tries for each hour 
-shield_ssh="no" ;
+shield_ssh="" ;
 config_maxtries_ssh="10" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
@@ -10131,6 +10134,18 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
 -j DROP &> /dev/null
 ####
 ####
+#### shield ssh legacy ipv4
+#### escudo ssh legacy ipv4 
+####
+####
+$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh &> /dev/null
+$shield_shh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -10162,6 +10177,18 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A FORWARD \
 -j DROP &> /dev/null
+####
+####
+#### shield ssh nft ipv4
+#### escudo ssh nft ipv4 
+####
+####
+$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh &> /dev/null
+$shield_ssh $allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
@@ -10201,6 +10228,18 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
 -j DROP &> /dev/null
 ####
 ####
+#### shield ssh legacy ipv6
+#### escudo ssh legacy ipv6 
+####
+####
+$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh &> /dev/null
+$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP &> /dev/null
+####
+####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
@@ -10232,6 +10271,10 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 ####
 $allow_nft  $allow_ipv6   $command_ip6tables_nft -A FORWARD \
 -j DROP &> /dev/null
+####
+####
+#### shield ssh nft ipv6
+#### escudo ssh nft ipv6 
 ####
 ####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
