@@ -176,8 +176,8 @@ allow_legacy="no"                     ## fwiptables-file-default ## void or no
 allow_nft=""                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
-####       #### english: ssh shield configured for tries ssh connect for hour
-####       #### spanish: ssh escudo configurado para intentos ssh connect por hora
+####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
+####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
 config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
@@ -1630,12 +1630,36 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####   #### spanish: El primero       cortafuego del sistema
 ####
 ####
+####
+####
+####   #### english: firewall of system custom:
+####   #### spanish: cortafuego del sistema custom:
+####
+####
 if [ "$first_option" = "custom" ];       then $give_cover  ;
 echo "$tab [ running ] [ loading firewall custom ]" ; launch_iptables="" ; config_variable_version="2"  ;  fi
+####
+####
+####   #### english: firewall of system off-line:
+####   #### spanish: cortafuego del sistema off-line:
+####
+####
 if [ "$first_option" = "off-line" ];       then $give_cover ;
 echo "$tab [ running ] [ loading firewall off-line ]" ; launch_iptables="" ; fi
+####
+####
+####   #### english: firewall of system all-permisive:
+####   #### spanish: cortafuego del sistema all-permisive:
+####
+####
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
+####
+####
+####   #### english: firewall of system shield-ssh:
+####   #### spanish: cortafuego del sistema shield-ssh:
+####
+####
 if [ "$first_option" = "shield-ssh" ];  then $give_cover ;
 echo "$tab [ running ] [ loading firewall shield-ssh ]" ; launch_iptables="" ; 
 #### english: max tries for each hour 
