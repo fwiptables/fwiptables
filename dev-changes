@@ -1,5 +1,5 @@
 
- 
+ 6. acortadas de nombre algunas variables. y cambiadas otras para seguir la misma logica. HECHO 
  5. shield-ssh funciona con 6 intentos por hora por defecto. HECHO
  4. en todos los servidores por defecto con ssh, por defecto, shield ssh funciona a 12 intentos por hora. HECHO
  3. variables añadida config_maxtries_ssh a default con 12 intentos por hora por defecto. HECHO
