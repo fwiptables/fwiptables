@@ -107,8 +107,8 @@ directory_log="/var/log"
 #### spanish: archivos log y ruta de los archivos de configuracion
 ####
 ####
-file_output_filelog="$directory_log/$fwiptables-filelog"
-file_output_autolog="$directory_log/$fwiptables-autolog"
+output_filelog="$directory_log/$fwiptables-filelog"
+output_autolog="$directory_log/$fwiptables-autolog"
 ####
 ####
 ##############################    english: temporal: files for fwiptables       ##############################
@@ -837,9 +837,9 @@ if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ;
 then first_option="-log" 
 echo $head_waiting_log
 $cmd_fwiptables $second_option $third_option &> $file_output_log
-cat $file_output_log | grep -v Warning: &>> $file_output_filelog
+cat $file_output_log | grep -v Warning: &>> $output_filelog
 echo "$tab [ ok ] \
-[ Output $cmd_fwiptables $second_option $third_option sended to $file_output_filelog ] \
+[ Output $cmd_fwiptables $second_option $third_option sended to $output_filelog ] \
 [ show: fwiptables filelog ]" ;
 exit ; fi
 ####
@@ -975,7 +975,7 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 if [ "$first_option" != "header" ] ; then
 if [ "$allow_autolog" = "no" ]   ; then echo $nada
-else echo $head_autolog >> "$file_output_autolog" ; fi; fi
+else echo $head_autolog >> "$output_autolog" ; fi; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
@@ -3365,8 +3365,8 @@ echo "                     /etc/profile.d/fwiptables"
 echo "auth users:          /etc/sudoers.d/fwiptables"
 echo $tab
 echo "$tab [output log]"
-echo "destination filelog: $file_output_filelog"
-echo "destination autolog: $file_output_autolog"
+echo "destination filelog: $output_filelog"
+echo "destination autolog: $output_autolog"
 echo $tab
 echo "$tab [$cmd_fwiptables util]"
 echo "sed:       $command_sed"
@@ -4999,8 +4999,8 @@ exit; fi
  echo "completion:   /etc/bash_completion.d/fwiptables"
  echo "auth users:   /etc/sudoers/fwiptables"
  echo "$tab [Output log]"
- echo "output filelog: $file_output_filelog"
- echo "output autolog: $file_output_autolog"
+ echo "output filelog: $output_filelog"
+ echo "output autolog: $output_autolog"
  echo
  echo "$tab [Version program]"
  echo "$fversion"
@@ -8357,9 +8357,9 @@ fi
 ####
 ####
  if [ "$first_option" = "sentlog" ] ; then  $give_cover
- echo "$tab [ $first_option ] [ show $file_output_filelog ]"
- cat  "$file_output_filelog"
- echo "$tab [ this file is $file_output_filelog ]"
+ echo "$tab [ $first_option ] [ show $output_filelog ]"
+ cat  "$output_filelog"
+ echo "$tab [ this file is $output_filelog ]"
  echo "$footer_lineal"
  exit; fi
 ####
@@ -8371,9 +8371,9 @@ fi
 ####
 ####
  if [ "$first_option" = "autolog" ] ; then  $give_cover
- echo "$tab [ $first_option ] [  show "$file_output_autolog" ]"
- cat  "$file_output_autolog"
- echo "$tab [ last end of file showed "$file_output_autolog" ]"
+ echo "$tab [ $first_option ] [  show "$output_autolog" ]"
+ cat  "$output_autolog"
+ echo "$tab [ last end of file showed "$output_autolog" ]"
  echo "$footer_lineal"
  exit; fi
 ####
