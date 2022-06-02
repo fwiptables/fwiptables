@@ -10020,6 +10020,21 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 ####
 ####
+#### log server legacy ipv4
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j LOG &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j LOG &> /dev/null
+####
+####
 #### shield ssh legacy ipv4
 #### escudo ssh legacy ipv4 
 ####
@@ -10032,8 +10047,8 @@ $shield_shh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 --hitcount $config_maxtries_ssh -j DROP &> /dev/null
 ####
 ####
-#### rules legacy ipv4
-#### reglas legacy ipv4 
+#### filter rules legacy ipv4
+#### filter rules legacy ipv4 
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -10063,6 +10078,22 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+####
+####
+#### log server nft ipv4
+#### log servidor nft ipv4
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j LOG &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j LOG &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j LOG &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j LOG &> /dev/null
 ####
 ####
 #### shield ssh nft ipv4
@@ -10114,6 +10145,22 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
+#### log server legacy ipv6
+#### log servidor legacy ipv6 
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --sports $server_port_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j LOG &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --dports $server_port_udp -j LOG &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $server_port_tcp -j LOG &> /dev/null
+####
+####
 #### shield ssh legacy ipv6
 #### escudo ssh legacy ipv6 
 ####
@@ -10159,6 +10206,22 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT &> /dev/null
 ####
 ####
+#### log server nft ipv6
+#### log servidor nft ipv6
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j LOG &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j LOG &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j LOG &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j LOG &> /dev/null
+####
+####
 #### shield ssh nft ipv6
 #### escudo ssh nft ipv6 
 ####
@@ -10171,8 +10234,8 @@ $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 --hitcount $config_maxtries_ssh -j DROP &> /dev/null
 ####
 ####
-#### rules nft ipv6
-#### reglas nft ipv6 
+#### filter rules nft ipv6
+#### filter reglas nft ipv6 
 ####
 ####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
