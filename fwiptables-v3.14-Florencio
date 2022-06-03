@@ -1603,7 +1603,7 @@ esac
 ####
 if [ "$first_option" = "autosave" ]; then
 if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
-echo "$tab [ autosave ] [ previus firewall saved ] [ autosave-fwiptables ]"
+echo "$tab [ autosave ] [ firewall saved ] [ autosave-fwiptables ]"
 $cmd_fwiptables save autosave-fwiptables &> /dev/null
 fi; exit; fi
 ####
@@ -3547,9 +3547,9 @@ echo "names fw:            $directory_fwrecover"
 echo "default:             $directory_default"
 echo $tab
 echo "$tab [Configuration file]"
-echo "shell completions:   /etc/completion.d/fwiptables"
-echo "                     /etc/profile.d/fwiptables"
-echo "auth users:          /etc/sudoers.d/fwiptables"
+echo "shell completions:   /etc/completion.d/$cmd_fwiptables"
+echo "                     /etc/profile.d/$cmd_fwiptables"
+echo "auth users:          /etc/sudoers.d/$cmd_fwiptables"
 echo $tab
 echo "$tab [output log]"
 echo "destination filelog: $output_filelog"
@@ -5182,9 +5182,9 @@ exit; fi
  echo "$tab [default directory]"
  echo "$directory_default"
  echo "$tab [Config files]"
- echo "completion:   /etc/profile.d/fwiptables"
- echo "completion:   /etc/bash_completion.d/fwiptables"
- echo "auth users:   /etc/sudoers/fwiptables"
+ echo "completion:   /etc/profile.d/$cmd_fwiptables"
+ echo "completion:   /etc/bash_completion.d/$cmd_fwiptables"
+ echo "auth users:   /etc/sudoers/$cmd_fwiptables"
  echo "$tab [Output log]"
  echo "output filelog: $output_filelog"
  echo "output autolog: $output_autolog"
@@ -7521,8 +7521,8 @@ exit; fi
  echo "$tab Testing speed with the temporal file /root/borrame.img.img about 100Mb"
 ####
 ####
- $command_dd if=/dev/zero of=/root/borrame.img.img status=progress bs=1M count=100
- rm /root/borrame.img.img &> /dev/null
+ $command_dd if=/dev/zero of=$directory_temporal/borrame.img.img status=progress bs=1M count=100
+ rm $directory_temporal/borrame.img.img &> /dev/null
  echo $footer_lineal
  exit; fi
 ####
@@ -9263,7 +9263,7 @@ echo "$text_md         client-vpn : Launch a firewall likes web client and ssh c
 $brake_md
 echo "$text_md         shield-ssh : Launch a firewall likes server ssh with shield for new-conecctions until 6-tries each-hour/each-ip."
 $brake_md
-echo "$text_md       ______All server ssh configured with shield ssh server at 12 tries to connect at ip/hour_____"
+echo "$text_md       ______All server ssh configured with shield ssh server at max 12 tries to connect at ip/hour_____"
 $brake_md
 echo "$text_md         server-ssh : Launch a firewall likes server ssh."
 echo "$text_md         server-web : Launch a firewall likes web server and ssh server."
@@ -9577,9 +9577,9 @@ echo "$text_md           client-vpn : Lanza el cortafuegos como cliente web y ss
 echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
 echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
 $brake_md
-echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo 6-intentos/cada-hora/cada-ip."
+echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo 6-intentos cada-hora/cada-ip."
 $brake_md
-echo "$text_md         _____Todos los servidores ssh configurados a 12 intentos de acceso por ip/hora"
+echo "$text_md         _____Todos los servidores ssh configurados a maximo 12 intentos de acceso por ip/hora"
 echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
 echo "$text_md           server-web : Lanza el cortafuegos como servidor web y ssh."
 echo "$text_md         server-samba : Lanza un cortafuegos como servidor y cliente samba y ssh."
