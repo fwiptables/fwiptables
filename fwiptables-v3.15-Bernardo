@@ -401,6 +401,7 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
+echo "$text_md     Install developer version from the web  ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
 echo "$text_md     Uninstall $name_fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
 $brake_md
 echo "$title_md    ###  Fran fwiptables project.  "
@@ -703,6 +704,44 @@ exit ; fi
 ####
 ####
 #### :rutina-final-upgrade:
+##############################       english: dev-upgrade: upgrade in the file /usr/bin/fwiptables        ##############################
+##############################       spanish: dev-upgrade: actualiza en el archivo /usr/bin/fwiptables    ##############################
+#### :rutina-inicial-dev-upgrade:
+####
+####
+if [ "$first_option" = "dev-upgrade" ]; then $give_cover
+echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
+case "$favorite_text_browser" in
+"$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
+echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+rm /tmp/$cmd_fwiptables &> /dev/null
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "$text_md [ downloading ] [ $fweb_latest ]"
+echo "$text_md [ status ] [ Waiting several seconds .. ]"
+$favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
+chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
+then $directory_temporal/$name_fwiptables-installer install ; 
+$cmd_fwiptables clean-tmp &> /dev/null ;
+else echo "$text_md [ fail ] [ Install fail ]"; fi
+exit ; fi
+####
+####
+#### :rutina-final-dev-upgrade:
 ##############################       english: Notice Installer with intro      ###################################
 ##############################       spanish: noticia de Instalador con intro  ###################################
 #### :rutina-inicial-notice:
