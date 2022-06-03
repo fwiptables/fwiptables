@@ -7520,7 +7520,7 @@ exit; fi
  echo "$tab [ $first_option ] [ test the disc speed ]"
  echo $header_lineal
  case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
- echo "$tab Testing speed with the temporal file /root/borrame.img.img about 100Mb"
+ echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
 ####
 ####
  $command_dd if=/dev/zero of=$directory_temporal/borrame.img.img status=progress bs=1M count=100
