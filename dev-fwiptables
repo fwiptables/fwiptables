@@ -491,7 +491,7 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$title_md [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
-echo "$text_md [ running ] [ $cmd_fwiptables uninstalling ]"
+echo "$text_md [ running ] [ $name_fwiptables uninstalling ]"
 if  [ -f $directory_fwiptables/$cmd_fwiptables ]; then
 rm $directory_fwiptables/$name_fwiptables &> /dev/null
 rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
@@ -536,7 +536,7 @@ echo "$title_md [ $first_option ] [ $name_fwiptables $fversion installer ] [ ins
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-#### echo "$text_md [ running ] [ $zero_option installing ]"
+echo "$text_md [ running ] [ $name_fwiptables installing ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
 $cmd_fwiptables regen-config &> /dev/null
@@ -697,7 +697,7 @@ chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
 if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
 then $directory_temporal/$name_fwiptables-installer install ; 
-$cmd_fwiptables clean-tmp ;
+$cmd_fwiptables clean-tmp &> /dev/null ;
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
