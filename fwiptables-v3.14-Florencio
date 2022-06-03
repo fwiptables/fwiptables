@@ -1994,11 +1994,10 @@ echo "$tab [ running ] [ loading firewall server-samba ]" ; launch_iptables="def
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server samba and active directory
-client_tcp="http,https,ssh,ldap,ldaps,microsoft-ds" ;
-client_udp="domain,bootpc,ntp,https,ldap,ldaps,137:139" ;
-server_tcp="ssh,ldap,ldaps,microsoft-ds" ; 
-server_udp="ntp,domain,ldap,ldaps,137:139" ; 
-fi
+client_port_tcp="http,https,ssh,ldap,636,microsoft-ds" ;
+client_port_udp="domain,bootpc,ntp,https,ldap,636,137:139" ;
+server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
+server_port_udp="ntp,domain,ldap,636,137:139" ; fi
 ####
 ####
 ####   #### english: firewall of system server-print:
