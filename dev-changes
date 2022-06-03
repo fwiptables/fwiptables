@@ -1,6 +1,9 @@
 
- 2. shield-ssh guarda los logs de servidor
- 1. mas comentarios en ingles y en español
+
+ 4. corregido server-samba. HECHO
+ 3. los firewall prefefinidos guardan log de sus servidores configurados con tcp y udp. HECHO
+ 2. shield-ssh guarda los logs de servidor. HECHO
+ 1. mas comentarios en ingles y en español. HECHO
 
   #### la version en desarrollo: cambios fwiptables dev-fwiptables
 
