@@ -399,10 +399,10 @@ $brake_md
 echo "$title_md    ### Fran fwiptables installer.                                                      "
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is not installed  "
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
-echo "$text_md     Install this version from this file     ||  TYPE:  ./fwiptables-$fversion install" 
-echo "$text_md     Install lastest version from the web    ||  TYPE:  ./fwiptables-$fversion upgrade" 
-echo "$text_md     Install developer version from the web  ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
-echo "$text_md     Uninstall $name_fwiptables from the computer  ||  TYPE:  ./fwiptables-$fversion uninstall" 
+echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptables-$fversion install" 
+echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
+echo "$text_md     Install development version from the web ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
+echo "$text_md     Uninstall $name_fwiptables from the computer   ||  TYPE:  ./fwiptables-$fversion uninstall" 
 $brake_md
 echo "$title_md    ###  Fran fwiptables project.  "
 echo "$text_md     Download the latest version $fprogram from sourceforge"
@@ -672,7 +672,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then $give_cover
-echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
+echo "$title_md [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
@@ -710,8 +710,8 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "dev-upgrade" ]; then $give_cover
-echo "$title_md [ $first_option ] [ upgrade from web ] [ upgrade.md ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
+echo "$title_md [ $first_option ] [ upgrade development version from web ] [ upgrade.md ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables at development version from sourceforge.net web ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
@@ -724,7 +724,7 @@ rm /tmp/$cmd_fwiptables &> /dev/null
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$text_md [ downloading ] [ $fweb_latest ]"
+echo "$text_md [ downloading ] [ $fweb_development ]"
 echo "$text_md [ status ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
