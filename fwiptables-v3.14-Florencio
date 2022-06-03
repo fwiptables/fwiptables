@@ -10011,7 +10011,7 @@ exit; fi
 if [ "$first_option" = "shield-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
-#### localhost legacy ip4
+#### loopback localhost legacy ip4
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -10021,6 +10021,7 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 #### log server legacy ipv4
+#### log servidor legacy ipv4
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -10048,7 +10049,7 @@ $shield_shh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 ####
 ####
 #### filter rules legacy ipv4
-#### filter rules legacy ipv4 
+#### reglas de filtros legacy ipv4 
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
@@ -10071,7 +10072,7 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-#### localhost nft ip4
+#### loopback localhost nft ip4
 ####
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
@@ -10108,8 +10109,8 @@ $shield_ssh $allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
 --hitcount $config_maxtries_ssh -j DROP &> /dev/null
 ####
 ####
-#### rules nft ipv4
-#### reglas nft ipv4 
+#### filter rules nft ipv4
+#### reglas de filtros nft ipv4 
 ####
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
@@ -10136,7 +10137,7 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ########################################     spanish: ipv6 iptables shield-ssh:
 ####
 ####
-#### localhost legacy ip6
+#### loopback localhost legacy ip6
 ####
 ####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
@@ -10173,8 +10174,8 @@ $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 --hitcount $config_maxtries_ssh -j DROP &> /dev/null
 ####
 ####
-#### rules legacy ipv6
-#### reglas legacy ipv6 
+#### filter rules legacy ipv6
+#### reglas de filtros legacy ipv6 
 ####
 ####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
@@ -10197,7 +10198,8 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-#### localhost nft ip6
+#### loopback localhost nft ip6
+#### loopback localhost nft ipv6
 ####
 ####
 $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
@@ -10235,7 +10237,7 @@ $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 ####
 ####
 #### filter rules nft ipv6
-#### filter reglas nft ipv6 
+#### reglas de filtros nft ipv6 
 ####
 ####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
@@ -10258,8 +10260,8 @@ $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
 ####
 ####
-########################################     english: close iptables shield-ssh:
-########################################     spanish: close iptables shield-ssh:
+########################################     english: close iptables shield-ssh
+########################################     spanish: cierra iptables shield-ssh
 ####
 ####
 $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
