@@ -1,4 +1,8 @@
 
+
+ 1.cambios pendientes
+
+  #### la version en desarrollo: cambios fwiptables dev-fwiptables
  
  5. pequeños cambios. HECHO
  4. corregido server-samba. HECHO
@@ -6,7 +10,7 @@
  2. shield-ssh guarda los logs del servidor. HECHO
  1. mas comentarios en ingles y en español en firewall predefinidos. HECHO
 
-  #### la version en desarrollo: cambios fwiptables dev-fwiptables
+ cambios fwiptables 3.14 # lines=5
 
  6. acortadas de nombre algunas variables. y cambiadas otras para seguir la misma logica. HECHO 
  5. shield-ssh funciona con 6 intentos por hora por defecto. HECHO
