@@ -522,21 +522,21 @@ echo "$title_md [ $first_option ] [ $name_fwiptables $fversion installer ] [ ins
 ####  spanish: borra el viejo archivo
 ####
 ####
-rm $directory_fwiptables/$name_fwiptables &> /dev/null
-rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
-rm $directory_fwiptables/$name_fwiptables-cli-menu &> /dev/null
-rm $directory_fwiptables/$name_fwiptables-gui-menu &> /dev/null
-rm $directory_fwiptables/$name_fwiptables-gui-shell &> /dev/null
-rm $directory_desktop/$name_fwiptables-cli-menu.desktop &> /dev/null
-rm $directory_desktop/$name_fwiptables-gui-menu.desktop &> /dev/null
-rm $directory_desktop/$name_fwiptables-gui-shell.desktop &> /dev/null
+#### rm $directory_fwiptables/$name_fwiptables &> /dev/null
+#### rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
+#### rm $directory_fwiptables/$name_fwiptables-cli-menu &> /dev/null
+#### rm $directory_fwiptables/$name_fwiptables-gui-menu &> /dev/null
+#### rm $directory_fwiptables/$name_fwiptables-gui-shell &> /dev/null
+#### rm $directory_desktop/$name_fwiptables-cli-menu.desktop &> /dev/null
+#### rm $directory_desktop/$name_fwiptables-gui-menu.desktop &> /dev/null
+#### rm $directory_desktop/$name_fwiptables-gui-shell.desktop &> /dev/null
 #### 
 #### 
 ####  english: copy the file to temporal folder and install
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "$text_md [ running ] [ $zero_option installing ]"
+#### echo "$text_md [ running ] [ $zero_option installing ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
 $cmd_fwiptables regen-config &> /dev/null
@@ -687,15 +687,17 @@ rm /tmp/$cmd_fwiptables &> /dev/null
 ####
 echo "$text_md [ downloading ] [ $fweb_latest ]"
 echo "$text_md [ status ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $fweb_latest &> "/tmp/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rx /tmp/$name_fwiptables-installer &> /dev/null
+$favorite_text_browser -source $fweb_latest &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
+chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
 ####
 #### English: launch install
 #### Spanish: lanza instalacion
 ####
 ####
-if [ -s "/tmp/$name_fwiptables-installer" ]; then /tmp/$name_fwiptables-installer install; rm /tmp/$name_fwiptables-installer
+if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
+then $directory_temporal/$name_fwiptables-installer install ; 
+$cmd_fwiptables clean-tmp ;
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
