@@ -3748,7 +3748,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ####
 ####
 *)$cmd_fwiptables "$second_option" "$third_option" &> "$temporal_guifinal"
-zenity --text-info $graphic_dimension --title="[ $cmd_fwiptables gui ] [ $second_option ]" \
+zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -3809,7 +3809,7 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 *)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
 #### cat $temporal_gui | grep -v Warning: &> $temporal_guifinal
-zenity --text-info $graphic_dimension --title="[ $cmd_fwiptables gui ] [ $second_option ]" \
+zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -3825,7 +3825,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
-zenity --forms $graphic_dimension --title="Type of Interface" --text="$($cmd_fwiptables mini-options)"
+zenity --forms $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" --text="$($cmd_fwiptables mini-options)"
 exit; fi
 ####
 ####
