@@ -1,6 +1,6 @@
 
-
- 1. Añadido dev-install para instalar la version de git del repositorio
+ 2.
+ 1. Añadido dev-upgrade para instalar la version de git desde el repositorio
 
   #### la version en desarrollo: cambios fwiptables dev-fwiptables
  
