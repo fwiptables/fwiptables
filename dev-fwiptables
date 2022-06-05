@@ -1,6 +1,4 @@
 #!/bin/bash
-####
-####
 #### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
@@ -197,7 +195,7 @@ allow_autolog=""                 ## fwiptables-file-default ## void or no
 allow_autosave="no"                 ## fwiptables-file-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="7s"                    ## fwiptables-file-default ## choose seconds: 1..,9..30
+server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1..,9..30
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
@@ -276,7 +274,7 @@ show_lang_spanish="##"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$tab [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$tab [ gui ] [ Without support for output gui for this option ]"
-message_without_web="$tab [ web.txt ] [ Without support for output web for this option ]"
+message_without_web="$tab [ web ] [ Without support for output web for this option ]"
 message_without_help="$tab [ help in rst ] [ Without support for output rst for this option ]"
 message_without_info="$tab [ info in txt ] [ Without support for output info for this option ]"
 ####
@@ -317,7 +315,7 @@ default_security="mini-options"
 ##############################  spanish: variables: variables para declarar  ##############################
 ####
 ####
-####    # english: before declared variables # spanish: variables declaradas antes
+####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
 ####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_ssh="20"
 ####
 ####
@@ -356,9 +354,12 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ##############################   spanish: comprobar sanos directorios de configuracion   #############################
 ####
 ####
-if [ -d "$directory_config" ]; then $nada ; else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
-if [ -d "$directory_fwrecover" ]; then $nada ; else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-if [ -d "$directory_default" ]; then $nada ; else rm "$directory_default" &> /dev/null ; mkdir "$directory_default" &> /dev/null ; fi
+if [ -d "$directory_config" ]; then $nada ;
+else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
+if [ -d "$directory_fwrecover" ]; then $nada ;
+else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
+if [ -d "$directory_default" ]; then $nada ;
+else rm "$directory_default" &> /dev/null ; mkdir "$directory_default" &> /dev/null ; fi
 ####
 ####
 ##############################       english: Update variables             ################################### 
@@ -401,7 +402,7 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
 echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
-echo "$text_md     Install development version from the web ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
+echo "$text_md     Install development version from git     ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
 echo "$text_md     Uninstall $name_fwiptables from the computer   ||  TYPE:  ./fwiptables-$fversion uninstall" 
 $brake_md
 echo "$title_md    ###  Fran fwiptables project.  "
@@ -711,7 +712,7 @@ exit ; fi
 ####
 if [ "$first_option" = "dev-upgrade" ]; then $give_cover
 echo "$title_md [ $first_option ] [ upgrade development version from web ] [ upgrade.md ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables at development version from sourceforge.net web ]"
+echo "$text_md [ status ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
@@ -919,7 +920,7 @@ scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
 ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
-"install"|upgrade|howto-upgrade|clean-tmp)  second_option="tool-install"; third_option="" ;;
+"install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
@@ -966,7 +967,7 @@ scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
 ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
-"install"|upgrade|howto-upgrade|clean-tmp)  second_option="tool-install"; third_option="" ;;
+"install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
@@ -1656,7 +1657,7 @@ fi; exit; fi
 ####
 favorite_date_command=""
 if [ "$command_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp" = "$NULL"  ]    ; then $nada ; else favorite_date_command="$command_sntp"              ; fi
+if [ "$command_sntp" = "$NULL"    ]    ; then $nada ; else favorite_date_command="$command_sntp"              ; fi
 if [ "$command_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
 ####
 ####
@@ -2282,14 +2283,14 @@ echo "$text_md                        list-ebtables list-arptables              
 echo "$text_md firewall-custom     |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
-echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
+echo "$text_md firewall-launch     |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
 echo "$text_md                        client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
 echo "$text_md                        server-print server-lamp server-news server-mail server-ftp              "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$text_md"
-echo "$text_md      | Group |  firewall-options     tool-options        show-options                         "
+echo "$text_md      | Group |  firewall-options     tool-options        show-options                           "
 exit ; fi
 ####
 ####
@@ -3221,8 +3222,11 @@ echo "$text_md $tab howto-upgrade"
 echo "$text_md $tab_lang_english          : Show howto upgrade at the latest version"
 echo "$text_md $tab_lang_spanish          : Muestra como actualizar a la ultima version"
 echo "$text_md $tab upgrade"
-echo "$text_md $tab_lang_english          : Upgrade at the latest version"
-echo "$text_md $tab_lang_spanish          : Actualiza a la ultima version"
+echo "$text_md $tab_lang_english          : Upgrade at the latest stable version"
+echo "$text_md $tab_lang_spanish          : Actualiza a la ultima estable version"
+echo "$text_md $tab dev-upgrade"
+echo "$text_md $tab_lang_english          : Upgrade at the latest git version"
+echo "$text_md $tab_lang_spanish          : Actualiza a la ultima git version"
 echo "$text_md $tab clean-tmp"
 echo "$text_md $tab_lang_english          : Remove temporal files of $name_fwiptables"
 echo "$text_md $tab_lang_spanish          : Borra archivos temporales of $name_fwiptables"
@@ -9409,7 +9413,8 @@ echo "$title_md         [ Tool Install ]"
 echo  $text_md
 echo "$text_md         install : Install this program actual."
 echo "$text_md   howto-upgrade : Howto install the latest version."
-echo "$text_md         upgrade : Upgrade at the latest version."
+echo "$text_md         upgrade : Upgrade at the latest stable version."
+echo "$text_md     dev-upgrade : Upgrade at the latest git version."
 echo "$text_md       clean-tmp : Remove temporal files of $name_fwiptables."
 echo  $text_md
 echo "$title_md         [ Tool blacklist ]"
@@ -9711,7 +9716,8 @@ echo  $text_md
 echo "$title_md [ Herramienta de instalacion ]."
 echo  $text_md
 echo "$text_md        install : Instala este programa actual."
-echo "$text_md        upgrade : Actualiza a la ultima version."
+echo "$text_md        upgrade : Actualiza a la ultima estable version."
+echo "$text_md    dev-upgrade : Actualiza a la ultima git version."
 echo "$text_md  howto-upgrade : Indicacion para actualizar."
 echo "$text_md      clean-tmp : borra archivos temporales de $name_fwiptables."
 echo  $text_md
