@@ -10172,7 +10172,7 @@ $shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
 -m comment --comment "shield ssh" &> /dev/null
 $shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield-ssh" &> /dev/null
+-m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules nft ipv4
