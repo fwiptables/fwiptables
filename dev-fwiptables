@@ -177,7 +177,7 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy=""                     ## fwiptables-file-default ## void or no
+allow_legacy="no"                     ## fwiptables-file-default ## void or no
 allow_nft=""                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
@@ -398,11 +398,11 @@ echo "$text_md     Choose run iptables rules of one firewall with your own confi
 echo "$text_md       # Network tools # Use this firewall with some utilities for ipv4 and ipv6.           "
 $brake_md
 echo "$title_md    ### Fran fwiptables installer.                                                      "
-cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is not installed  "
-cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md          $cmd_fwiptables $fversion   ||   Actually, this version is installed  "
+cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md     $cmd_fwiptables $fversion || Actually, this version is not installed"
+cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md     $cmd_fwiptables $fversion || Actually, this version is installed"
 echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
-echo "$text_md     Install development version from git     ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
+echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
 echo "$text_md     Uninstall $name_fwiptables from the computer   ||  TYPE:  ./fwiptables-$fversion uninstall" 
 $brake_md
 echo "$title_md    ###  Fran fwiptables project.  "
