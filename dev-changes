@@ -1,5 +1,7 @@
 
- 2. Las reglas tienen comentarios en iptables para los servidores predefinidos.  
+
+ 3. ordenaor reglas en servidores predefinidos, primero cliente despues servidor.
+ 2. Las reglas tienen comentarios en iptables para los servidores predefinidos. HECHO
  1. Añadido dev-upgrade para instalar la version de git desde el repositorio. HECHO
 
   #### la version en desarrollo: cambios fwiptables dev-fwiptables
