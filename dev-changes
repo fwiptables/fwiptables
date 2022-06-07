@@ -1,6 +1,6 @@
 
- 2.
- 1. Añadido dev-upgrade para instalar la version de git desde el repositorio
+ 2. Las reglas tienen comentarios al listar con iptables: /* comentario */. 
+ 1. Añadido dev-upgrade para instalar la version de git desde el repositorio. HECHO
 
   #### la version en desarrollo: cambios fwiptables dev-fwiptables
  
