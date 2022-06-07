@@ -10180,23 +10180,31 @@ $shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
 ####
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables shield-ssh:
