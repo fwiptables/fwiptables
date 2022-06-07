@@ -10108,25 +10108,25 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp"&> /dev/null
-####
-####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp"&> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -10183,25 +10183,25 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp" &> /dev/null
-####
-####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -10261,31 +10261,31 @@ $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 ####
 ####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p udp -m multiport --dports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport --sports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp" &> /dev/null
-####
-####
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 ####
 ####
 #### loopback localhost nft ip6
@@ -10339,25 +10339,25 @@ $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 ####
 ####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
-####
-####
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
@@ -10435,7 +10435,7 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 #### log server legacy ipv4
 #### log servidor legacy ipv4
 ####
-####
+#### 
 #### $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 #### -p udp -m multiport --dports $server_port_udp -j LOG \
 #### -m comment --comment "logserver udp" &> /dev/null&> /dev/null
@@ -10472,25 +10472,25 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp"&> /dev/null
-####
-####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp"&> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -10547,25 +10547,25 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp" &> /dev/null
-####
-####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT \
--m comment --comment "server udp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
+####
+####
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -10625,31 +10625,31 @@ $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 ####
 ####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p udp -m multiport --dports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport --sports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp" &> /dev/null
-####
-####
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 ####
 ####
 #### loopback localhost nft ip6
@@ -10703,25 +10703,25 @@ $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 ####
 ####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+####
+####
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
-####
-####
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
--m comment --comment "client udp" &> /dev/null
-$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
