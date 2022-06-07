@@ -10095,7 +10095,7 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$shield_shh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
 ####
