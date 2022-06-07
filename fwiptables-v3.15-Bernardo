@@ -10068,6 +10068,18 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh legacy ipv4
+#### escudo ssh legacy ipv4 
+####
+####
+$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server legacy ipv4
 #### log servidor legacy ipv4
 ####
@@ -10086,18 +10098,6 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh legacy ipv4
-#### escudo ssh legacy ipv4 
-####
-####
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules legacy ipv4
@@ -10143,6 +10143,18 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh nft ipv4
+#### escudo ssh nft ipv4 
+####
+####
+$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server nft ipv4
 #### log servidor nft ipv4
 ####
@@ -10161,18 +10173,6 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh nft ipv4
-#### escudo ssh nft ipv4 
-####
-####
-$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules nft ipv4
@@ -10222,6 +10222,20 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh legacy ipv6
+#### escudo ssh legacy ipv6 
+####
+####
+$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server legacy ipv6
 #### log servidor legacy ipv6 
 ####
@@ -10240,20 +10254,6 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh legacy ipv6
-#### escudo ssh legacy ipv6 
-####
-####
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules legacy ipv6
@@ -10300,6 +10300,20 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh nft ipv6
+#### escudo ssh nft ipv6 
+####
+####
+$shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server nft ipv6
 #### log servidor nft ipv6
 ####
@@ -10318,20 +10332,6 @@ $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh nft ipv6
-#### escudo ssh nft ipv6 
-####
-####
-$shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules nft ipv6
@@ -10432,6 +10432,18 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh legacy ipv4
+#### escudo ssh legacy ipv4 
+####
+####
+$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server legacy ipv4
 #### log servidor legacy ipv4
 ####
@@ -10450,18 +10462,6 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh legacy ipv4
-#### escudo ssh legacy ipv4 
-####
-####
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules legacy ipv4
@@ -10507,6 +10507,18 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh nft ipv4
+#### escudo ssh nft ipv4 
+####
+####
+$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server nft ipv4
 #### log servidor nft ipv4
 ####
@@ -10525,18 +10537,6 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh nft ipv4
-#### escudo ssh nft ipv4 
-####
-####
-$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules nft ipv4
@@ -10586,6 +10586,20 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh legacy ipv6
+#### escudo ssh legacy ipv6 
+####
+####
+$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server legacy ipv6
 #### log servidor legacy ipv6 
 ####
@@ -10604,20 +10618,6 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh legacy ipv6
-#### escudo ssh legacy ipv6 
-####
-####
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules legacy ipv6
@@ -10664,6 +10664,20 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+#### shield ssh nft ipv6
+#### escudo ssh nft ipv6 
+####
+####
+$shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent \
+--set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-m recent --name tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+####
+####
 #### log server nft ipv6
 #### log servidor nft ipv6
 ####
@@ -10682,20 +10696,6 @@ $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
-####
-####
-#### shield ssh nft ipv6
-#### escudo ssh nft ipv6 
-####
-####
-$shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules nft ipv6
