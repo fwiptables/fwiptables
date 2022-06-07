@@ -10061,9 +10061,11 @@ if [ "$first_option" = "shield-ssh" ];  then $cmd_fwiptables eraserules &> /dev/
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 ####
 ####
 #### log server legacy ipv4
@@ -10071,15 +10073,19 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p udp -m multiport --dports $server_port_udp -j LOG &> /dev/null
+-p udp -m multiport --dports $server_port_udp -j LOG \
+-m comment --comment "logserver udp" &> /dev/null&> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j LOG &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j LOG \
+-m comment --comment "logserver tcp" &> /dev/null &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j LOG &> /dev/null
+-p udp -m multiport --sports $server_port_udp -j LOG \
+-m comment --comment "logserver udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -j LOG &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j LOG \
+-m comment --comment "logserver tcp" &> /dev/null
 ####
 ####
 #### shield ssh legacy ipv4
@@ -10087,11 +10093,11 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name tries-ssh &> /dev/null
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
 $shield_shh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP &> /dev/null
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 #### filter rules legacy ipv4
@@ -10099,23 +10105,31 @@ $shield_shh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p udp -m multiport --dports $server_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p tcp -m multiport --sports $client_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $server_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp"&> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --dports $client_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_port_udp -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --dports $client_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_port_tcp -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 #### loopback localhost nft ip4
