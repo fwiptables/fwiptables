@@ -10390,7 +10390,7 @@ $allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP \
 -m comment --comment "close" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP 
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP \
 -m comment --comment "close"  &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP \
 -m comment --comment "close"  &> /dev/null
