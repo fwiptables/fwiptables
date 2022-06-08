@@ -1,11 +1,14 @@
 
 
- 4. las reglas de wizard y new-config, llevan sus comentarios. doing..
+ 1. las reglas de wizard y new-config, llevan sus comentarios. doing..
+
+ cambios en la version en desarrollo: cambios en dev-fwiptables
+
  3. ordenar las reglas en servidores predefinidos, primero cliente despues servidor. HECHO
  2. Las reglas tienen comentarios en iptables para los servidores predefinidos. HECHO
  1. Añadido dev-upgrade para instalar la version de git desde el repositorio. HECHO
 
-  #### la version en desarrollo: cambios fwiptables dev-fwiptables
+ cambios fwiptables 3.15 # lineas=3
  
  5. pequeños cambios. HECHO
  4. corregido server-samba. HECHO
