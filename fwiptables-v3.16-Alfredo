@@ -10937,22 +10937,26 @@ $allow_nft  $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
 ####
 $allow_ipv4 $allow_legacy $allow_input_bandwidth $command_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinputlegacy  -j DROP &> /dev/null
+--hashlimit-name maxinputlegacy  -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_output_bandwidth $command_iptables_legacy    -A OUTPUT \
 -m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP &> /dev/null
+--hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_input_bandwidth $command_iptables_nft           -A INPUT \
 -m hashlimit    --hashlimit-above "$config_input_bandwidth"kb/sec  \
---hashlimit-name maxinputnft  -j DROP &> /dev/null
+--hashlimit-name maxinputnft  -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_output_bandwidth $command_iptables_nft          -A OUTPUT \
 -m hashlimit  --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP &> /dev/null
+--hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
@@ -10960,19 +10964,23 @@ $allow_ipv4 $allow_nft $allow_output_bandwidth $command_iptables_nft          -A
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_bandwidth $command_ip6tables_legacy -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_output_bandwidth $command_ip6tables_legacy -A OUTPUT \
--m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+-m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_input_bandwidth $command_ip6tables_nft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_output_bandwidth $command_ip6tables_nft -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP &> /dev/null
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP \
+-m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 #######################################        english: limit number of all connections
@@ -10982,19 +10990,23 @@ $allow_ipv6 $allow_nft $allow_output_bandwidth $command_ip6tables_nft -A OUTPUT 
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
 $allow_ipv4 $allow_legacy $allow_input_maxconnect  $command_iptables_legacy -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect   -j DROP  &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect   -j DROP  \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_output_maxconnect $command_iptables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect  -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_input_maxconnect $command_iptables_nft   -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect       -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_output_maxconnect $command_iptables_nft  -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect      -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect      -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 #### english: ipv6 bandwidth
@@ -11002,19 +11014,23 @@ $allow_ipv4 $allow_nft $allow_output_maxconnect $command_iptables_nft  -A OUTPUT
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_maxconnect  $command_ip6tables_legacy -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect  -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect  -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_output_maxconnect $command_ip6tables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_input_maxconnect $command_ip6tables_nft   -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect       -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_input_maxconnect       -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_output_maxconnect $command_ip6tables_nft  -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect      -j DROP &> /dev/null
+-m connlimit --connlimit-above $config_output_maxconnect      -j DROP \
+-m comment --comment "max connect"  &> /dev/null
 ####
 ####
 ####################################### english: Drop rules for blacklist
@@ -11029,38 +11045,46 @@ for one_blacklist in $(echo $config_net_blacklist | sed 's/,/ /g')
 ####
 do
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A INPUT  \
--s $one_blacklist -j DROP &> /dev/null
+-s $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A OUTPUT \
--d $one_blacklist -j DROP &> /dev/null
+-d $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A INPUT  \
--s $one_blacklist -j DROP &> /dev/null
+-s $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTPUT \
--d $one_blacklist -j DROP &> /dev/null
+-d $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A INPUT  \
--s $one_blacklist -j DROP &> /dev/null
+-s $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A OUTPUT \
--d $one_blacklist -j DROP &> /dev/null
+-d $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A INPUT  \
--s $one_blacklist -j DROP &> /dev/null
+-s $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A OUTPUT \
--d $one_blacklist -j DROP &> /dev/null
+-d $one_blacklist -j DROP \
+-m comment --comment "net blacklist" &> /dev/null
 done
 #### 
 ####
@@ -11073,38 +11097,46 @@ for one_vpn in $(echo $config_net_vpn | sed 's/,/ /g')
 ####
 do
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  INPUT  \
--s $one_vpn -j ACCEPT &> /dev/null
+-s $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  OUTPUT \
--d $one_vpn -j ACCEPT &> /dev/null
+-d $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  INPUT  \
--s $one_vpn -j ACCEPT &> /dev/null
+-s $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
--d $one_vpn -j ACCEPT &> /dev/null
+-d $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 #### ipv6
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  INPUT  \
--s $one_vpn -j ACCEPT &> /dev/null
+-s $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  OUTPUT \
--d $one_vpn -j ACCEPT &> /dev/null
+-d $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  INPUT  \
--s $one_vpn -j ACCEPT &> /dev/null
+-s $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  OUTPUT \
--d $one_vpn -j ACCEPT &> /dev/null
+-d $one_vpn -j ACCEPT \
+-m comment --comment "net vpn" &> /dev/null
 done
 ####
 ####
