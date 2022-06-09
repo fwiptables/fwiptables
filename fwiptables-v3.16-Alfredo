@@ -338,8 +338,8 @@ allow_net_vpn="no" ; allow_net_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
 config_dmz_ip4="" ; config_dmz_ip6="" ;
-config_input_state="new,related,stablished" ;
-config_output_state="new,related,stablished" ;
+config_input_state="new,related,established" ;
+config_output_state="new,related,established" ;
 config_input_bandwidth="12512" ; config_output_bandwidth="512" ;
 config_input_maxconnect="72" ; config_output_maxconnect="72" ;
 config_mac_whitelist="" ; config_mac_blacklist=""
@@ -1714,7 +1714,7 @@ fi
 ####
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
 echo " [ running ] [ loading firewall all-permisive ]" ;
-launch_firewall="yes" ; type_firewall="all-permisive"; name_firewall="$first_option";
+launch_firewall="yes" ; type_firewall="all-permisive" ; name_firewall="$first_option";
 fi
 ####
 ####
@@ -9935,7 +9935,7 @@ $give_autosave &> /dev/null
 ###############################################################################################################
 ####
 ####
-########################################     english: ipv4 iptables allpermisisive:
+########################################     english: ipv4 iptables all-permisisive:
 ########################################     spanish: ipv4 iptables todo permisivo
 #### :rutina-inicial-code-allpermisive:
 ####
@@ -9975,7 +9975,7 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
-$input_state -j ACCEPT \
+-m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment "state input" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
@@ -9988,7 +9988,7 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A FORWARD \
 -m comment --comment "all forward" &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables allpermisisive
+########################################     english: ipv6 iptables all-permisisive:
 ########################################     spanish: ipv6 iptables todo permisivo
 ####
 ####
@@ -10000,7 +10000,7 @@ $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT  \
 -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT \
-$input_state -j ACCEPT \
+-m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment "state input" &> /dev/null
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -j ACCEPT \
@@ -10018,7 +10018,7 @@ $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
 -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
-$input_state -j ACCEPT \
+-m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment "state input" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A OUTPUT  \
 -j ACCEPT \
