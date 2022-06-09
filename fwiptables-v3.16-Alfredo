@@ -1686,7 +1686,10 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####
 ####
 if [ "$first_option" = "custom" ];       then $give_cover  ;
-echo "$tab [ running ] [ loading firewall custom ]" ; launch_iptables="" ; config_variable_version="2"  ;  fi
+echo "$tab [ running ] [ loading firewall custom ]" ;
+launch_iptables="" ; type_firewall="custom"; name_firewall="$second_option";
+config_variable_version="2"  ;
+fi
 ####
 ####
 ####   #### english: firewall of system off-line:
@@ -1694,7 +1697,9 @@ echo "$tab [ running ] [ loading firewall custom ]" ; launch_iptables="" ; confi
 ####
 ####
 if [ "$first_option" = "off-line" ];       then $give_cover ;
-echo "$tab [ running ] [ loading firewall off-line ]" ; launch_iptables="" ; fi
+echo "$tab [ running ] [ loading firewall off-line ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option";
+fi
 ####
 ####
 ####   #### english: firewall of system all-permisive:
@@ -1702,7 +1707,9 @@ echo "$tab [ running ] [ loading firewall off-line ]" ; launch_iptables="" ; fi
 ####
 ####
 if [ "$first_option" = "all-permisive" ];  then $give_cover ;
-echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" ;  fi
+echo "$tab [ running ] [ loading firewall all-permisive ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option";
+fi
 ####
 ####
 ####   #### english: firewall of system shield-ssh:
@@ -1710,7 +1717,8 @@ echo "$tab [ running ] [ loading firewall all-permisive ]" ; launch_iptables="" 
 ####
 ####
 if [ "$first_option" = "shield-ssh" ];  then $give_cover ;
-echo "$tab [ running ] [ loading firewall shield-ssh ]" ; launch_iptables="" ; 
+echo "$tab [ running ] [ loading firewall shield-ssh ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 config_maxtries_ssh="5" ;
@@ -1726,7 +1734,8 @@ server_port_tcp="ssh" ; fi
 ####
 ####
 if [ "$first_option" = "client-web" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-web ]" ; launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall client-web ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect normal web
@@ -1741,7 +1750,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-torrent" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-torrent ]" ; launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall client-torrent ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect web normal and bittorrent too
@@ -1756,7 +1766,8 @@ server_port_tcp="9091,51413" ; fi
 ####
 ####
 if [ "$first_option" = "client-vpn" ];     then $give_cover ; 
-echo "$tab [ running ] [ loading firewall client-vpn ]" ; launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall client-vpn ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect web normal and web vpn
@@ -1771,7 +1782,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-tor" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-tor ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall client-tor ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect web normal and web tor
@@ -1786,7 +1798,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-news" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-news ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall client-news ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### client news:
@@ -1806,7 +1819,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-mail" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-mail ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall client-mail ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### client news:
@@ -1833,7 +1847,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "client-ftp" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall client-ftp ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall client-ftp ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### client ftp:
@@ -1848,7 +1863,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall lan-vpn ]" ; launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall lan-vpn ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### vpn ports to connects ports vpn
@@ -1864,7 +1880,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "lan-tor" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall lan-tor ]" ; launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall lan-tor ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### lan tor, 9000:9170 for connect to tor
@@ -1880,7 +1897,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
-echo "$tab [ running ] [ loading firewall games-shooter ]" ; launch_iptables="default" ;
+echo "$tab [ running ] [ loading firewall games-shooter ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
@@ -1895,7 +1913,8 @@ server_port_tcp="" ; fi
 ####
 ####
 if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-wesnoth ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-wesnoth ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### game wesnoth port 14999 and 15001 usually
@@ -1910,7 +1929,8 @@ server_port_tcp="14950:15050" ; fi
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-minetest ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-minetest ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### game minetest and minecraft porst 25k and 35k /udp
@@ -1925,7 +1945,8 @@ server_port_tcp="25000:35000" ; fi
 ####
 ####
 if [ "$first_option" = "game-freeciv" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-freeciv ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-freeciv ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### for default 5556 port tcp perhaps 5555 too
@@ -1940,7 +1961,8 @@ server_port_tcp="5555:5556" ; fi
 ####
 ####
 if [ "$first_option" = "game-widelands" ]; then $give_cover  ;
-echo "$tab [ running ] [ loading firewall game-widelands ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall game-widelands ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### for default 7396 port tcp and 7396 udp
@@ -1955,7 +1977,8 @@ server_port_tcp="7396" ; fi
 ####
 ####
 if [ "$first_option" = "server-web" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-web ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-web ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server http and https and ssh /tcp and https udp
@@ -1970,7 +1993,8 @@ server_port_tcp="http,https,ssh" ; fi
 ####
 ####
 if [ "$first_option" = "server-ftp" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-ftp ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-ftp ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server http and https and ssh /tcp and https udp
@@ -1985,7 +2009,8 @@ server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
 ####
 ####
 if [ "$first_option" = "server-news" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-news ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-news ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### client news:
@@ -2005,7 +2030,8 @@ server_port_tcp="http,https,ssh,119,433,563" ; fi
 ####
 ####
 if [ "$first_option" = "server-mail" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-mail ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-mail ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### client news:
@@ -2032,7 +2058,8 @@ server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;  fi
 ####
 ####
 if [ "$first_option" = "server-samba" ];   then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-samba ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-samba ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server samba and active directory
@@ -2047,7 +2074,8 @@ server_port_udp="ntp,domain,ldap,636,137:139" ; fi
 ####
 ####
 if [ "$first_option" = "server-print" ];   then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-print ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-print ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server ipp and printer
@@ -2062,7 +2090,8 @@ server_port_tcp="ssh,printer,ipp" ; fi
 ####
 ####
 if [ "$first_option" = "server-ssh" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-ssh ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-ssh ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server ssh 22/tcp
@@ -2077,7 +2106,8 @@ server_port_tcp="ssh" ; fi
 ####
 ####
 if [ "$first_option" = "server-lamp" ];     then $give_cover ; 
-echo "$tab [ running ] [ loading firewall server-lamp ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-lamp ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
@@ -2093,7 +2123,8 @@ server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
 ####
 ####
 if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-asterisk ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-asterisk ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
@@ -2110,7 +2141,8 @@ server_port_tcp="ssh,5060" ; fi
 ####
 ####
 if [ "$first_option" = "server-mumble" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-mumble ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-mumble ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### mumble port 64738 tcp and 64738 udp
@@ -2125,7 +2157,8 @@ server_port_tcp="ssh,64738" ; fi
 ####
 ####
 if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-teamspeak ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-teamspeak ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### Service	        Protocol	Local Port (Server)
@@ -2144,7 +2177,8 @@ server_port_tcp="ssh,30033,10011,10022" ; fi
 ####
 ####
 if [ "$first_option" = "server-sql" ];     then $give_cover ;
-echo "$tab [ running ] [ loading firewall server-sql ]" ; launch_iptables="default"
+echo "$tab [ running ] [ loading firewall server-sql ]" ;
+launch_iptables="" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
@@ -6832,7 +6866,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
-archivo="$first_option"
+archivo="$first_option" ; type_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
 dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
@@ -6851,7 +6885,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "wizard-full" ]; then echo
-archivo="$first_option"
+archivo="$first_option"; type_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
 dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
@@ -12088,7 +12122,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 #### echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ custom ] [$second_option]"
+echo "$tab [ ok ] [ Launched firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
 ####
