@@ -1726,7 +1726,8 @@ config_maxtries_ssh="5" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
-server_port_tcp="ssh" ; fi
+server_port_tcp="ssh" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-web:
@@ -1742,7 +1743,8 @@ shield_ssh="no" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-torrent:
@@ -1758,7 +1760,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,9091,51413" ;
-server_port_tcp="9091,51413" ; fi
+server_port_tcp="9091,51413" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-vpn:
@@ -1774,7 +1777,8 @@ shield_ssh="no" ;
 server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https,500,1194,1701,4500" ; 
 client_port_tcp="http,https,ssh,443,1701,1723" ; 
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-tor:
@@ -1790,7 +1794,8 @@ shield_ssh="no" ;
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,9000:9170" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-news:
@@ -1811,7 +1816,8 @@ shield_ssh="no" ;
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-mail:
@@ -1839,7 +1845,8 @@ shield_ssh="no" ;
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system client-ftp:
@@ -1855,7 +1862,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system lan-vpn:
@@ -1872,7 +1880,8 @@ shield_ssh="no" ;
 server_port_udp=""
 client_port_udp="domain,bootpc,ntp,500,1194,1701,4500" ; 
 client_port_tcp="1701,1723" ; 
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system lan-tor:
@@ -1889,7 +1898,8 @@ shield_ssh="no" ;
 server_port_udp="" ;
 client_port_udp="bootpc,domain,ntp" ;
 client_port_tcp="9000:9170" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system games-shooter:
@@ -1905,7 +1915,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="" ; fi
+server_port_tcp="" ;
+fi
 ####
 ####
 ####   #### english: firewall of system game-wesnoth:
@@ -1921,7 +1932,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp=""
 client_port_tcp="http,https,ssh,14950:15050" ;
-server_port_tcp="14950:15050" ; fi
+server_port_tcp="14950:15050" ;
+fi
 ####
 ####
 ####   #### english: firewall of system game-minetest:
@@ -1937,7 +1949,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
 server_port_udp=""
 client_port_tcp="http,https,ssh,25000:35000" ;
-server_port_tcp="25000:35000" ; fi
+server_port_tcp="25000:35000" ;
+fi
 ####
 ####
 ####   #### english: firewall of system game-freeciv:
@@ -1953,7 +1966,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp=""
 client_port_tcp="http,https,ssh,5555:5556" ;
-server_port_tcp="5555:5556" ; fi
+server_port_tcp="5555:5556" ;
+fi
 ####
 ####
 ####   #### english: firewall of system game-widelands:
@@ -1969,7 +1983,8 @@ shield_ssh="no" ;
 client_port_udp="domain,bootpc,ntp,https,7396" ; 
 server_port_udp="7396"
 client_port_tcp="http,https,ssh,7396" ;
-server_port_tcp="7396" ; fi
+server_port_tcp="7396" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-web:
@@ -1985,7 +2000,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
 client_port_tcp="http,https,ssh" ;
-server_port_tcp="http,https,ssh" ; fi
+server_port_tcp="http,https,ssh" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-ftp:
@@ -2001,7 +2017,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
-server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ; fi
+server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-news:
@@ -2022,7 +2039,8 @@ shield_ssh="" ;
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
-server_port_tcp="http,https,ssh,119,433,563" ; fi
+server_port_tcp="http,https,ssh,119,433,563" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-mail:
@@ -2050,7 +2068,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
-server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;  fi
+server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-samba:
@@ -2066,7 +2085,8 @@ shield_ssh="" ;
 client_port_tcp="http,https,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,bootpc,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
-server_port_udp="ntp,domain,ldap,636,137:139" ; fi
+server_port_udp="ntp,domain,ldap,636,137:139" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-print:
@@ -2082,7 +2102,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
-server_port_tcp="ssh,printer,ipp" ; fi
+server_port_tcp="ssh,printer,ipp" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-ssh:
@@ -2098,7 +2119,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
 client_port_tcp="http,https,ssh" ;
-server_port_tcp="ssh" ; fi
+server_port_tcp="ssh" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-lamp:
@@ -2115,7 +2137,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https"
 client_port_tcp="http,https,ssh,20,21,989,990" ;
-server_port_tcp="http,https,ssh,10000,3306,5432" ;fi
+server_port_tcp="http,https,ssh,10000,3306,5432" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-asterisk:
@@ -2133,7 +2156,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https,5060,10000:20000,5036" ;
 server_port_udp="5060,10000:20000,5036"
 client_port_tcp="http,https,ssh,5060" ;
-server_port_tcp="ssh,5060" ; fi
+server_port_tcp="ssh,5060" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-mumble:
@@ -2149,7 +2173,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738"
 client_port_tcp="http,https,ssh,64738" ;
-server_port_tcp="ssh,64738" ; fi
+server_port_tcp="ssh,64738" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-teamspeak:
@@ -2169,7 +2194,8 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https,9987" ;
 server_port_udp="9987"
 client_port_tcp="http,https,ssh,30033,10011,10022" ;
-server_port_tcp="ssh,30033,10011,10022" ; fi
+server_port_tcp="ssh,30033,10011,10022" ;
+fi
 ####
 ####
 ####   #### english: firewall of system server-sql:
@@ -2189,10 +2215,10 @@ shield_ssh="" ;
 client_port_udp="domain,bootpc,ntp,https,5432" ;
 server_port_udp="5432"
 client_port_tcp="http,https,ssh,5432,3306,3360" ;
-server_port_tcp="ssh,5432,3306,3360" ; fi
+server_port_tcp="ssh,5432,3306,3360" ;
+fi
 ####
 ####
-
 #### :rutina-final-custom-rules:
 ##############################   english: custom without valid config cfg
 ##############################   spanish: custom sin valido configuracion cfg
@@ -2203,7 +2229,8 @@ if [ "$first_option" = "custom" ]; then $nada
 if [ -f $directory_config/$second_option ]; then $nada
 else  $cmd_fwiptables cfg 
 echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
-echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]"; fi ; fi
+echo "$tab [ See ]   [ $cmd_fwiptables firewall-custom ]";
+fi ; fi
 ####
 ####
 #### :rutina-f-custom-rules:
@@ -9998,7 +10025,9 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ all-permisive ]"
+####
+####
+echo "$tab [ ok ] [ Launched firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10078,7 +10107,7 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /d
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP       &> /dev/null
 ####
-echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ off-line ]"
+echo "$tab [ ok ] [ Launched firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10442,7 +10471,7 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ $first_option ]"
+echo "$tab [ ok ] [ Launched firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10806,7 +10835,7 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo "$tab [ ok ] [ launched rules ] [ launched firewall ] [ $first_option ]"
+echo "$tab [ ok ] [ Launched firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
