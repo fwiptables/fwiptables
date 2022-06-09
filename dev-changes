@@ -1,6 +1,6 @@
 
-
- 1. las reglas de wizard y new-config, llevan sus comentarios. doing..
+ 2. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. Trabajando
+ 1. cambio en variables para lanzar iptables. HECHO
 
  cambios en la version en desarrollo: cambios en dev-fwiptables
 
