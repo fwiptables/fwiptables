@@ -5664,121 +5664,120 @@ exit; fi
 #### :rutina-inicial-eraserules:
 ####
 ####
- if [ "$first_option" = "eraserules" ]; then $nada 
- #### give_cover to null, so you can head_autolog.
- $give_cover &> /dev/null
- echo $head_principal
- echo $header_lineal
- ####
- ####
- #### english: erase the rules
- #### spanish: borra las reglas
- ####
- ####
- $command_arptables -F  &> /dev/null
- $command_ebtables -t filter -F &> /dev/null
- $command_ebtables -t nat -F &> /dev/null
- $command_iptables_nft -t filter -F &> /dev/null
- $command_ip6tables_nft -t filter  -F &> /dev/null
- $command_iptables_legacy -t filter -F &> /dev/null
- $command_ip6tables_legacy -t filter -F &> /dev/null
- $command_iptables_nft -t nat -F &> /dev/null
- $command_ip6tables_nft -t nat  -F &> /dev/null
- $command_iptables_legacy -t nat -F &> /dev/null
- $command_ip6tables_legacy -t nat -F &> /dev/null
- $command_iptables_nft -t mangle -F &> /dev/null
- $command_ip6tables_nft -t mangle  -F &> /dev/null
- $command_iptables_legacy -t mangle -F &> /dev/null
- $command_ip6tables_legacy -t mangle -F &> /dev/null
- $command_iptables_nft -t raw -F &> /dev/null
- $command_ip6tables_nft -t raw  -F &> /dev/null
- $command_iptables_legacy -t raw -F &> /dev/null
- $command_ip6tables_legacy -t raw -F &> /dev/null
- $command_iptables_nft -t security -F &> /dev/null
- $command_ip6tables_nft -t security -F &> /dev/null
- $command_iptables_legacy -t security -F &> /dev/null
- $command_ip6tables_legacy -t security -F &> /dev/null
+if [ "$first_option" = "eraserules" ]; then $nada 
+#### give_cover to null, so you can head_autolog.
+$give_cover &> /dev/null
+echo $head_principal
 ####
 ####
- $command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
- $command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
- $command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
- $command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
- $command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
- $command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
- $command_iptables_nft -t filter -P INPUT ACCEPT &> /dev/null
- $command_iptables_nft -t filter -P FORWARD ACCEPT &> /dev/null
- $command_iptables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t filter -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t filter -P FORWARD ACCEPT &> /dev/null
- $command_ip6tables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t filter -P INPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
- $command_iptables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t filter -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
- $command_ip6tables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_nft -t nat -P INPUT ACCEPT &> /dev/null
- $command_iptables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
- $command_iptables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
- $command_ip6tables_nft -t nat -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
- $command_ip6tables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
- $command_iptables_legacy -t nat -P INPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
- $command_iptables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
- $command_ip6tables_legacy -t nat -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
- $command_ip6tables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
- $command_iptables_nft -t mangle -P INPUT ACCEPT &> /dev/null
- $command_iptables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
- $command_iptables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
- $command_iptables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
- $command_ip6tables_nft -t mangle -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
- $command_ip6tables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
- $command_ip6tables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
- $command_iptables_legacy -t mangle -P INPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t mangle -P FORWARD ACCEPT &> /dev/null
- $command_iptables_legacy -t mangle -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t mangle -P PREROUTING ACCEPT &> /dev/null
- $command_iptables_legacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
- $command_ip6tables_legacy -t mangle -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t mangle -P FORWARD ACCEPT &> /dev/null
- $command_ip6tables_legacy -t mangle -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t mangle -P PREROUTING ACCEPT &> /dev/null
- $command_ip6tables_legacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
- $command_iptables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
- $command_ip6tables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
- $command_iptables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
- $command_ip6tables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
- $command_iptables_nft -t security -P INPUT ACCEPT &> /dev/null
- $command_iptables_nft -t security -P FORWARD ACCEPT &> /dev/null
- $command_iptables_nft -t security -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t security -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_nft -t security -P FORWARD ACCEPT &> /dev/null
- $command_ip6tables_nft -t security -P OUTPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t security -P INPUT ACCEPT &> /dev/null
- $command_iptables_legacy -t security -P FORWARD ACCEPT &> /dev/null
- $command_iptables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t security -P INPUT ACCEPT &> /dev/null
- $command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
- $command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
+#### english: erase the rules
+#### spanish: borra las reglas
 ####
 ####
- echo " [ ok ] [ firewall is erased ] [ deleted rules ]"
- echo $footer_lineal
- exit; fi
+$command_arptables -F  &> /dev/null
+$command_ebtables -t filter -F &> /dev/null
+$command_ebtables -t nat -F &> /dev/null
+$command_iptables_nft -t filter -F &> /dev/null
+$command_ip6tables_nft -t filter  -F &> /dev/null
+$command_iptables_legacy -t filter -F &> /dev/null
+$command_ip6tables_legacy -t filter -F &> /dev/null
+$command_iptables_nft -t nat -F &> /dev/null
+$command_ip6tables_nft -t nat  -F &> /dev/null
+$command_iptables_legacy -t nat -F &> /dev/null
+$command_ip6tables_legacy -t nat -F &> /dev/null
+$command_iptables_nft -t mangle -F &> /dev/null
+$command_ip6tables_nft -t mangle  -F &> /dev/null
+$command_iptables_legacy -t mangle -F &> /dev/null
+$command_ip6tables_legacy -t mangle -F &> /dev/null
+$command_iptables_nft -t raw -F &> /dev/null
+$command_ip6tables_nft -t raw  -F &> /dev/null
+$command_iptables_legacy -t raw -F &> /dev/null
+$command_ip6tables_legacy -t raw -F &> /dev/null
+$command_iptables_nft -t security -F &> /dev/null
+$command_ip6tables_nft -t security -F &> /dev/null
+$command_iptables_legacy -t security -F &> /dev/null
+$command_ip6tables_legacy -t security -F &> /dev/null
+####
+####
+$command_ebtables -t filter -P INPUT ACCEPT  &> /dev/null
+$command_ebtables -t filter -P FORWARD ACCEPT &> /dev/null 
+$command_ebtables -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_ebtables -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_ebtables -t nat -P OUTPUT ACCEPT  &> /dev/null
+$command_ebtables -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t filter -P INPUT ACCEPT &> /dev/null
+$command_iptables_nft -t filter -P FORWARD ACCEPT &> /dev/null
+$command_iptables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t filter -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t filter -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_nft -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t filter -P INPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
+$command_iptables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t filter -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t filter -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_legacy -t filter -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_nft -t nat -P INPUT ACCEPT &> /dev/null
+$command_iptables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_iptables_legacy -t nat -P INPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t nat -P POSTROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t mangle -P INPUT ACCEPT &> /dev/null
+$command_iptables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
+$command_iptables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$command_iptables_legacy -t mangle -P INPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t mangle -P FORWARD ACCEPT &> /dev/null
+$command_iptables_legacy -t mangle -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t mangle -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_legacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t mangle -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t mangle -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_legacy -t mangle -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t mangle -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t mangle -P POSTROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_nft -t raw -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t raw -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
+$command_ip6tables_legacy -t raw -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t raw -P PREROUTING ACCEPT &> /dev/null
+$command_iptables_nft -t security -P INPUT ACCEPT &> /dev/null
+$command_iptables_nft -t security -P FORWARD ACCEPT &> /dev/null
+$command_iptables_nft -t security -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t security -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_nft -t security -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_nft -t security -P OUTPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t security -P INPUT ACCEPT &> /dev/null
+$command_iptables_legacy -t security -P FORWARD ACCEPT &> /dev/null
+$command_iptables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t security -P INPUT ACCEPT &> /dev/null
+$command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
+$command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
+####
+####
+echo " [ running ] [ Deleting the iptables rules firewall ]" 
+echo " [ ok ] [ Firewall is erased ] [ Deleted rules ]"
+exit; fi
 ####
 ####
 #### :rutina-final-eraserules:
