@@ -9935,7 +9935,7 @@ $give_autosave &> /dev/null
 ###############################################################################################################
 ####
 ####
-########################################     english: ipv4 iptables all-permisisive:
+########################################     english: ipv4 iptables all-permisive:
 ########################################     spanish: ipv4 iptables todo permisivo
 #### :rutina-inicial-code-allpermisive:
 ####
@@ -9988,7 +9988,7 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A FORWARD \
 -m comment --comment "all forward" &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables all-permisisive:
+########################################     english: ipv6 iptables all-permisive:
 ########################################     spanish: ipv6 iptables todo permisivo
 ####
 ####
@@ -10061,6 +10061,16 @@ $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP \
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP \
 -m comment --comment "close" &> /dev/null
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4     $command_iptables_nft -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
