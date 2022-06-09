@@ -9951,15 +9951,20 @@ if [ "$type_firewall" = "all-permisive" ]; then $cmd_fwiptables eraserules &> /d
 ####
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
-$input_state  -j ACCEPT &> /dev/null
+$input_state  -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all output" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
 ####
 ####
 #### english: nft ipv4 127.0.0.1 acept and the others nft ipv4 accept too
@@ -9967,15 +9972,20 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD \
 ####
 ####
 $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
-$input_state -j ACCEPT &> /dev/null
+$input_state -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all output" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A FORWARD \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables allpermisisive
@@ -9987,13 +9997,17 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A FORWARD \
 ####
 ####
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT  \
--s ::1 -d ::1  -j ACCEPT &> /dev/null
+-s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT \
-$input_state -j ACCEPT &> /dev/null
+$input_state -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all otuput" &> /dev/null
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept and the others nft ipv6 accept too
@@ -10001,37 +10015,53 @@ $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A FORWARD \
 ####
 ####
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
--s ::1 -d ::1  -j ACCEPT &> /dev/null
+-s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
-$input_state -j ACCEPT &> /dev/null
+$input_state -j ACCEPT \
+-m comment --comment "state input" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A OUTPUT  \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all output" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A FORWARD \
--j ACCEPT &> /dev/null
+-j ACCEPT \
+-m comment --comment "all forward" &> /dev/null
 ####
 ####
 #### english: ipv6-icmp accept in legacy and accept in nft
 #### spanish: ipv6-icmp acepta en legacy y acepta en nft
 ####
 ####
-$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
+-m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
 #### english: close with drop legacy and close with drop nft
 #### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
-$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
-$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
 ####
 ####
 echo " [ ok ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
@@ -10055,19 +10085,23 @@ if [ "$type_firewall" = "off-line" ];  then $cmd_fwiptables eraserules &> /dev/n
 ####
 ####
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A INPUT  \
--s 127.0.0.1 -d 127.0.0.1   -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1   -j ACCEPT \
+-m comment --comment "localhost"  &> /dev/null
 $allow_legacy $allow_ipv4  $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
 #### spanish: nft ipv4 127.0.0.1 acepta
 ####
 ####
-$allow_nft $allow_ipv4   $command_iptables_nft -A INPUT   \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
-$allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT  \
--s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
+-s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
+$allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 ####
 ####
 ########################################     english: ipv6 iptables off-line
@@ -10079,9 +10113,11 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT  \
 ####
 ####
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A INPUT  \
--s ::1 -d ::1  -j ACCEPT &> /dev/null
+-s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT &> /dev/null
+-s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 ####
 ####
 #### english: nft ipv6 127.0.0.1 acept
@@ -10089,30 +10125,44 @@ $allow_legacy $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT  \
--s ::1 -d ::1  -j ACCEPT &> /dev/null
+-s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT &> /dev/null
+-s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
 ####
 ####
 ########################################     english: close in off-line
 ########################################     spanish: cierra en off-line
 ####
 ####
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   &> /dev/null
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  &> /dev/null
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A FORWARD -j DROP  &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
 ####
-$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP         &> /dev/null
-$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv4     $command_iptables_nft -A FORWARD -j DROP        &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv4     $command_iptables_nft -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
 ####
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP  &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A FORWARD -j DROP &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP \
+ç-m comment --comment "close" &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
 ####
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP        &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP       &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP       &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP \
+-m comment --comment "close" &> /dev/null
+$allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
+-m comment --comment "close" &> /dev/null
 ####
 echo " [ ok ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
