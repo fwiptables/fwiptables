@@ -11555,30 +11555,38 @@ $allow_nft     $allow_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 if [ "$allow_maxtries_ssh" = "" ]; then $nada
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name count-tries-ssh &> /dev/null
+--set --name count-tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
 $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name count-tries-ssh &> /dev/null
+--set --name count-tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name count-tries-ssh &> /dev/null
+--set --name count-tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
 $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent \
---set --name count-tries-ssh &> /dev/null
+--set --name count-tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP &> /dev/null
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
 $allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP &> /dev/null
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP &> /dev/null
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
 $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP &> /dev/null
+--hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
 fi
 ####
 ####
@@ -11589,59 +11597,75 @@ fi
 #### ipv4 legacy
 ####
 $allow_legacy  $allow_ipv4 $command_iptables_legacy -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv4 $command_iptables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $command_iptables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv4 $command_iptables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 #### 
 #### ipv4 nft
 ####
 $allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
--p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_nft $allow_ipv4 $command_iptables_nft -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft $allow_ipv4 $command_iptables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv4_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 #### ipv6 legacy
 ####
 ####
 $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 #### ipv6 nft
 ####
 ####
 $allow_nft  $allow_ipv6 $command_ip6tables_nft -A INPUT  \
--p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --dports $server_udp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv6 $command_ip6tables_nft -A INPUT  \
--p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --dports $server_tcp -s $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
--p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p udp -m multiport --sports $server_udp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
 $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
--p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT &> /dev/null
+-p tcp -m multiport --sports $server_tcp -d $net_ipv6_server -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 ####
 ####
 ####################################### english: rules from input of legacy ipv4 for ping, uid, gid and protocols
@@ -11649,20 +11673,24 @@ $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_output_ping  $command_iptables_legacy -A INPUT  \
--p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "icmp reply" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_input_ping $command_iptables_legacy -A INPUT \
--p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "icmp resquest" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $config_uid_gid $command_iptables_legacy -A INPUT \
--m state --state related,established -j ACCEPT &> /dev/null
+-m state --state related,established -j ACCEPT \
+-m comment --comment "state uid-gid" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols $command_iptables_legacy -A INPUT \
--p $one_protocol -j ACCEPT &> /dev/null
+-p $one_protocol -j ACCEPT \
+-m comment --comment "other protocols" &> /dev/null
 done
 ####
 ####
@@ -11671,24 +11699,29 @@ done
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_output_ping  $command_iptables_legacy   -A OUTPUT \
--p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+-p icmp --icmp-type echo-request -j ACCEPT \
+-m comment --comment "icmp request" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_input_ping  $command_iptables_legacy -A OUTPUT \
--p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+-p icmp --icmp-type echo-reply -j ACCEPT \
+-m comment --comment "icmp reply" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_output_uid $command_iptables_legacy   -A OUTPUT \
--m owner --uid-owner $config_output_uid -j ACCEPT &> /dev/null
+-m owner --uid-owner $config_output_uid -j ACCEPT \
+-m comment --comment "state uid" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4 $allow_output_gid $command_iptables_legacy   -A OUTPUT \
--m owner --gid-owner $config_output_gid -j ACCEPT &> /dev/null
+-m owner --gid-owner $config_output_gid -j ACCEPT \
+-m comment --comment "state gid" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols      $command_iptables_legacy -A OUTPUT \
--p $one_protocol -j ACCEPT &> /dev/null
+-p $one_protocol -j ACCEPT \
+-m comment --comment "other protocols" &> /dev/null
 done
 ####
 ####
@@ -11701,24 +11734,29 @@ done
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_output_ping      $command_ip6tables_legacy -A INPUT \
--p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
+-p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
+-m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_input_ping    $command_ip6tables_legacy -A INPUT \
--p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
+-p icmpv6 --icmpv6-type echo-request -j ACCEPT \
+-m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $config_uid_gid $command_ip6tables_legacy -A INPUT \
--m state --state related,established -j ACCEPT &> /dev/null
+-m state --state related,established -j ACCEPT \
+-m comment --comment "state uid-gid" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A INPUT \
--p ipv6-icmp -j ACCEPT &> /dev/null
+-p ipv6-icmp -j ACCEPT 
+-m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_others_protocols      $command_ip6tables_legacy -A INPUT \
--p $one_protocol -j ACCEPT &> /dev/null
+-p $one_protocol -j ACCEPT \
+-m comment --comment "other protocols" &> /dev/null
 done
 ####
 ####
@@ -11727,27 +11765,33 @@ done
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_output_ping  $command_ip6tables_legacy   -A OUTPUT \
--p icmpv6 --icmpv6-type echo-request -j ACCEPT &> /dev/null
+-p icmpv6 --icmpv6-type echo-request -j ACCEPT \
+-m comment --comment "icmp request" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_input_ping  $command_ip6tables_legacy -A OUTPUT \
--p icmpv6 --icmpv6-type echo-reply -j ACCEPT &> /dev/null
+-p icmpv6 --icmpv6-type echo-reply -j ACCEPT \
+-m comment --comment "icmp reply" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_output_uid $command_ip6tables_legacy   -A OUTPUT \
--m owner --uid-owner $config_output_uid -j ACCEPT &> /dev/null
+-m owner --uid-owner $config_output_uid -j ACCEPT \
+-m comment --comment "state uid" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv6 $allow_output_gid $command_ip6tables_legacy   -A OUTPUT \
--m owner --gid-owner $config_output_gid -j ACCEPT &> /dev/null
+-m owner --gid-owner $config_output_gid -j ACCEPT \
+-m comment --comment "state gid" &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT &> /dev/null
+$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT 
+-m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
 for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
 do $allow_legacy6  $allow_ipv6 $allow_others_protocols      $command_ip6tables_legacy -A OUTPUT \
--p $one_protocol -j ACCEPT &> /dev/null
+-p $one_protocol -j ACCEPT \
+-m comment --comment "other protocols" &> /dev/null
 done
 ####
 ####
