@@ -6716,11 +6716,11 @@ echo $footer_lineal
 fi
 ####
 ####
-if [ ! -f /etc/sudoers.d/$name_fwiptables ] ; then $nada
-echo "$tab [ status ] [ list users with root auth for launch $name_fwiptables ]"
-echo "$tab [ fail ] [ old version $name_fwiptables Without root sudo from users ]"
-echo $footer_lineal
-fi
+#### if [ ! -f /etc/sudoers.d/$name_fwiptables ] ; then $nada
+#### echo "$tab [ status ] [ list users with root auth for launch $name_fwiptables ]"
+#### echo "$tab [ fail ] [ old version $name_fwiptables Without root sudo from users ]"
+#### echo $footer_lineal
+#### fi
 exit; fi
 ####
 ####
