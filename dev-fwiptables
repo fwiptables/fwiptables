@@ -5816,10 +5816,10 @@ exit; fi
  echo $header_lineal
  if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
- $command_ss -a6
+ $command_ss -a6 | sed 's/   / /g'
  echo "$tab"
  echo "$tab [ The ipv4 sockets ]"
- $command_ss -a4
+ $command_ss -a4 | sed 's/   / /g'
  echo $footer_lineal
  exit; fi
 ####
