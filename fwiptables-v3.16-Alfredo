@@ -9090,25 +9090,25 @@ exit; fi
  if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
  else $command_ss -l6 | sed 's/   / /g' ; fi
  echo $tab
- echo "$tab [ private ip ] [ address ipv4 ]"
+ echo "$tab [ Private ip ] [ Address ipv4 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
  echo $tab
- echo "$tab [ private ip ] [ address ipv6 ]"
+ echo "$tab [ Private ip ] [ Address ipv6 ]"
  if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
  else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
  echo $tab
- echo "$tab [ public ip ] [ address ipv4 ]"
+ echo "$tab [ Public ip ] [ Address ipv4 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
  public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip4"; fi
  echo $tab
- echo "$tab [ public ip ] [ address ipv6 ]"
+ echo "$tab [ Public ip ] [ Address ipv6 ]"
  if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
  public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip6"; fi
  echo $tab
- echo "$tab [ proxy ip ] [ address proxy ]"
+ echo "$tab [ Proxy ip ] [ Address proxy ]"
  echo "$tab Proxy http:    $http_proxy"
  echo "$tab Proxy https:   $https_proxy"
  echo $footer_lineal
