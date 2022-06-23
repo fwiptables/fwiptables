@@ -403,7 +403,7 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md     $cmd_fwipt
 cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md     $cmd_fwiptables $fversion || Actually, this version is installed"
 echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
-echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
+#### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
 echo "$text_md     Uninstall $name_fwiptables from the computer   ||  TYPE:  ./fwiptables-$fversion uninstall" 
 $brake_md
 echo "$title_md    ###  Fran fwiptables project.  "
