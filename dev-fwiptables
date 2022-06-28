@@ -6912,7 +6912,7 @@ clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 dialog --msgbox "wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
-echo $footer_lineal
+#### echo $footer_lineal
 exit; fi
 ####
 ####
@@ -6931,7 +6931,7 @@ clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $dialog --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
 else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
-echo $footer_lineal
+#### echo $footer_lineal
 exit; fi
 ####
 ####
@@ -6984,7 +6984,7 @@ exit; fi
  cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
  cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
  cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
- echo " [ ok ] [ FIREWALL LOADED ] [ $second_option ]"
+ echo " [   ok    ] [ FIREWALL LOADED ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
