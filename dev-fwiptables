@@ -10079,7 +10079,7 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10179,7 +10179,8 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP \
 $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
-echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+####  
+echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10543,7 +10544,7 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10907,7 +10908,7 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -11752,7 +11753,7 @@ $allow_legacy  $allow_ipv6 $config_uid_gid $command_ip6tables_legacy -A INPUT \
 ####
 ####
 $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A INPUT \
--p ipv6-icmp -j ACCEPT 
+-p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
@@ -11787,7 +11788,7 @@ $allow_legacy  $allow_ipv6 $allow_output_gid $command_ip6tables_legacy   -A OUTP
 -m comment --comment "state gid" &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT 
+$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
@@ -12357,7 +12358,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 #### echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
 ####
