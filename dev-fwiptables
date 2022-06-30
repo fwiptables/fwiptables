@@ -5814,7 +5814,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ss" ]; then  $give_cover
- echo "[ ok ] [ $first_option ] [ Show sockets with ss ]"
+ echo "$title_md [ ok ] [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
  if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
