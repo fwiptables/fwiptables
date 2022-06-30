@@ -5993,7 +5993,7 @@ exit; fi
  "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
  "$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
- echo "$tab [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$title_md [ ok ] [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  case $legacycuatro in
@@ -6026,7 +6026,7 @@ exit; fi
  nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 "$command_ip6tables_nft" -t filter -L OUTPUT 1 )
 #### echo $header_ender
- echo "$tab [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$title_md [ ok ] [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  case $legacyseis in
