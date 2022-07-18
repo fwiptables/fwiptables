@@ -1,9 +1,15 @@
+ 
+ 3- añadir reset-shield
+ 2. añadir servidor-squid
+ 1. añadido alias desde -cli a -tui. HECHO
+
+ cambios en la version en desarrollo: cambios en dev-fwiptables
 
  3. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. Trabajando
  2. pequeños cambios en mini-options. HECHO 
  1. cambio en variables para lanzar iptables. HECHO
 
- cambios en la version en desarrollo: cambios en dev-fwiptables
+ cambios fwiptables 3.16 # lineas=3 
 
  3. ordenar las reglas en servidores predefinidos, primero cliente despues servidor. HECHO
  2. Las reglas tienen comentarios en iptables para los servidores predefinidos. HECHO
