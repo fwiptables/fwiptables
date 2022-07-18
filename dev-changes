@@ -1,6 +1,7 @@
  
- 3- añadir reset-shield
- 2. añadir servidor-squid
+ 4- añadir reset-shield
+ 3. añadir servidor-squid
+ 2. añadido alias desde tui-menu a -cli-menu. HECHO
  1. añadido alias desde -cli a -tui. HECHO
 
  cambios en la version en desarrollo: cambios en dev-fwiptables
