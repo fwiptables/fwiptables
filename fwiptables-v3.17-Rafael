@@ -2030,6 +2030,23 @@ server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 fi
 ####
 ####
+####   #### english: firewall of system server-squid:
+####   #### spanish: cortafuego del sistema server-squid:
+####
+####
+if [ "$first_option" = "server-squid" ];     then $give_cover ;
+echo " [ running ] [ loading firewall server-squid ]" ;
+launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+#### english: max tries for each hour 
+shield_ssh="" ;
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp=""
+client_port_tcp="http,https,ssh,8080,3128" ;
+server_port_tcp="http,https,ssh,8080,3128" ;
+fi
+####
+####
 ####   #### english: firewall of system server-news:
 ####   #### spanish: cortafuego del sistema server-news:
 ####
@@ -2263,7 +2280,7 @@ echo "$text_md    firewall-launch |  eraserules wizard-mini wizard-full custom o
 echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                       client-web client-mail client-news client-torrent client-vpn client-tor  "
 echo "$text_md                       client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
-echo "$text_md                       server-print server-lamp server-news server-mail server-ftp              "
+echo "$text_md                       server-print server-lamp server-news server-mail server-ftp server-squid "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$title_md     [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
@@ -2303,7 +2320,7 @@ echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom 
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
 echo "$text_md                        client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
-echo "$text_md                        server-print server-lamp server-news server-mail server-ftp              "
+echo "$text_md                        server-print server-lamp server-news server-mail server-ftp server-squid "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$title_md                                      [ tool-options ]                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
