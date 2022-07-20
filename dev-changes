@@ -1,12 +1,13 @@
  
  4- añadir reset-shield
- 3. añadir servidor-squid
+ 4. alias de -gui-menu a gui menu e igual con -gui-shell y con -cli-menu. HECHO
+ 3. añadir servidor-squid. HECHO
  2. añadido alias desde tui-menu a -cli-menu. HECHO
  1. añadido alias desde -cli a -tui. HECHO
 
  cambios en la version en desarrollo: cambios en dev-fwiptables
 
- 3. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. Trabajando
+ 3. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. HECHO
  2. pequeños cambios en mini-options. HECHO 
  1. cambio en variables para lanzar iptables. HECHO
 
