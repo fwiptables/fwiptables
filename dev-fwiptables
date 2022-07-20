@@ -2327,7 +2327,7 @@ echo "$text_md                        server-teamspeak server-mumble server-sql 
 echo "$title_md                                      [ tool-options ]                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
-echo "$text_md  tool-rules         |  reset-shield            "
+echo "$text_md  tool-rules         |  reset-shield del-rule            "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate                                         "
@@ -2399,7 +2399,7 @@ echo "$title_md [ $first_option ] [ Tool options ] [ tool-options.md ]"
 echo "$title_md                                    | tool-options |                            " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert "
-echo "$text_md    tool-rules        | reset-shield"
+echo "$text_md    tool-rules        | reset-shield del-rule"
 echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                "
 echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6            "
 echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate                         "
@@ -3145,6 +3145,9 @@ echo  $text_md
 echo "$text_md $tab reset-shield"
 echo "$text_md $tab_lang_english          : Change the tries per hour for ssh"
 echo "$text_md $tab_lang_spanish          : Cambia los intentos por hora para ssh"
+echo "$text_md $tab del-rule"
+echo "$text_md $tab_lang_english          : Delete a number rule"
+echo "$text_md $tab_lang_spanish          : Borra un numero de regla"
 echo $footer_lineal
 exit; fi
 ####
@@ -6802,6 +6805,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset-shield:
+############################       english: del-rule: delete a rule number
+############################       spanish: del-rule: borra un numero de regla
+#### :rutina-inicial-del-rule:
+####
+####
+if [ "$first_option" = "del-rule" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ delete a one rule for its number ]"
+echo $header_lineal
+
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-del-rule:
 ############################       english: ipforward-list: the ipforwading option en english
 ############################       spanish: ipforward-list: la opcion de reenvios  en ingles
 #### :rutina-inicial-ipforward-list:
@@ -9469,6 +9486,7 @@ echo  $text_md
 echo "$title_md         [ tool rules ]"
 echo  $text_md
 echo "$text_md    reset-shield : Reset the shield to ssh with max number tries"
+echo "$text_md        del-rule : Delete a rule for its number"
 echo  $text_md
 echo "$title_md         [ List sockets ]"
 echo  $text_md
@@ -9777,7 +9795,8 @@ echo "$text_md      server-asterisk : Lanza un firewall como servidor asterisk."
 echo  $text_md
 echo "$title_md   [ Herramienta de reglas ]."
 echo  $text_md
-echo "$text_md     reset-shield: resetea el escudo para ssh con maximo numero de intentos"
+echo "$text_md    reset-shield : Resetea el escudo para ssh con maximo numero de intentos"
+echo "$text_md        del-rule : Borra una regla por su numero"
 echo  $text_md
 echo "$title_md   [ Lista las conexiones abiertas ]."
 echo  $text_md
