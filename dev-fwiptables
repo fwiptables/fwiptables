@@ -760,7 +760,6 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
 #### english: alias simple for options commons
 ####
 ####
-
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate"; fi
 if [ "$first_option" = "ls" ]; then first_option="list"; fi
 if [ "$first_option" = "ls4" ]; then first_option="list"; fi
@@ -806,7 +805,10 @@ if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
-if [ "$first_option" = "tui-menu"  ] || [ "$first_option" = "-tui-menu" ] ; then first_option="cli-menu"; fi
+if [ "$first_option" = "tui-menu"  ] || [ "$first_option" = "-tui-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" = "cli-menu"  ] || [ "$first_option" = "-cli-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" = "gui-menu"  ] || [ "$first_option" = "-gui-menu"  ] ; then first_option="gui-menu"  ; fi
+if [ "$first_option" = "gui-shell" ] || [ "$first_option" = "-gui-shell" ] ; then first_option="gui-shell" ; fi
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_option="-txt"; fi
 if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ] ; then first_option="-cli"; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_option="-txt"; fi
