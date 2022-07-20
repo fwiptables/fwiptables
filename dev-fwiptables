@@ -2399,6 +2399,7 @@ echo "$title_md [ $first_option ] [ Tool options ] [ tool-options.md ]"
 echo "$title_md                                    | tool-options |                            " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert "
+echo "$text_md    tool-rules        | reset-shield"
 echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                "
 echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6            "
 echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate                         "
@@ -2482,6 +2483,9 @@ echo "$title_md [ Secondary options ]"
 echo  $text_md
 $brake_md
 $cmd_fwiptables tool-sockets
+echo  $text_md
+$brake_md
+$cmd_fwiptables tool-rules
 echo  $text_md
 $brake_md
 $cmd_fwiptables tool-forward
@@ -6784,6 +6788,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-alias-list:
+############################       english: reset-shield: the ipforwading option en english
+############################       spanish: reset-shield: la opcion de reenvios  en ingles
+#### :rutina-inicial-reset-shield:
+####
+####
+if [ "$first_option" = "reset-shield" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Reset shield ssh ]"
+echo $header_lineal
+
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-reset-shield:
 ############################       english: ipforward-list: the ipforwading option en english
 ############################       spanish: ipforward-list: la opcion de reenvios  en ingles
 #### :rutina-inicial-ipforward-list:
@@ -9436,7 +9454,7 @@ echo "$text_md      server-mumble : Launch a firewall likes server mumble."
 echo "$text_md         server-sql : Launch a firewall likes server sql."
 echo "$text_md    server-asterisk : Launch a firewall likes server asterisk."
 echo  $text_md
-echo "$title_md         [ tool config ]"
+echo "$title_md         [ firewall config ]"
 echo  $text_md
 echo "$text_md       new-full-config : Create a new configfile.cfg in english."
 echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish."
@@ -9447,6 +9465,10 @@ echo "$text_md          names-config : List config files cfg."
 echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
+echo  $text_md
+echo "$title_md         [ tool rules ]"
+echo  $text_md
+echo "$text_md    reset-shield : Reset the shield to ssh with max number tries"
 echo  $text_md
 echo "$title_md         [ List sockets ]"
 echo  $text_md
@@ -9753,7 +9775,11 @@ echo "$text_md        server-mumble : Lanza un firewall como servidor mumble."
 echo "$text_md           server-sql : Lanza un firewall como servidor sql."
 echo "$text_md      server-asterisk : Lanza un firewall como servidor asterisk."
 echo  $text_md
-echo "$title_md [ Lista las conexiones abiertas ]."
+echo "$title_md   [ Herramienta de reglas ]."
+echo  $text_md
+echo "$text_md     reset-shield: resetea el escudo para ssh con maximo numero de intentos"
+echo  $text_md
+echo "$title_md   [ Lista las conexiones abiertas ]."
 echo  $text_md
 echo "$text_md      info-nodes : Lista las conexiones arp in lan."
 echo "$text_md      info-proxy : Lista proxy del sistema."
