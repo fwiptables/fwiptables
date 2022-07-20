@@ -6815,7 +6815,29 @@ exit; fi
 if [ "$first_option" = "del-rule" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ delete a one rule for its number ]"
 echo $header_lineal
-
+menudelrule="$(dialog --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0\
+  01 "NETFILTER / filter / INPUT" \
+  02 "NETFILTER / filter / FORWARD" \
+  03 "NETFILTER / filter / OUTPUT" \
+  04 "LEGACY / filter  / INPUT" \
+  05 "LEGACY / filter  / FORWARD" \
+  06 "LEGACY / filter  / OUTPUT" \
+  )"
+case $menudelrule in
+01) fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="INPUT"      ;;
+02) fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
+03) fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT"     ;;
+04) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
+05) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
+06) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
+esac
+$fire_wall -t $table_wall -L $code_wall --line-numbers ;
+read -p "### ### Remove line to $table_wall in $code_wall from $fire_wall ¿ Number line ? ### " deleterule ;
+$fire_wall -t $table_wall -D $code_wall "$deleterule" ; deleterule="" ;
+$fire_wall -t $table_wall -L $code_wall --line-numbers ;
+read -p " press <space to continue> " ; clear ;
+#### programar con un cli menu para borrar netftables input o ....
+#### despues programar para que se listen esas reglas y poder eliminar el numero de regla elegido
 echo $footer_lineal
 exit; fi
 ####
