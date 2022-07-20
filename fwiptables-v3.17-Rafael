@@ -6809,11 +6809,11 @@ case $resetshield in
 01) fire_wall="$command_iptables_nft" ;;
 02) fire_wall="$command_iptables_legacy" ;; 
 esac
-$fire_wall -t filter -L INPUT --line-numbers
-read -p " press yes or other word " ratificar
+$fire_wall -t filter -L INPUT
+read -p " press yes or other for no " ratificar
 if [ "$ratificar" == "yes" ]; then
-$fire_wall -t filter -D INPUT -m comment --comment "shield ssh"
-# $fire_wall
+ratificado="$($fire_wall -t filter -L INPUT --line-numbers | grep -i "shield ssh" | cut -d " " -f 1 | head -1)"
+$fire_wall -t filter -D INPUT "$ratificado" "$(($ratificado+1))"
 else echo " ### aborted ### "; fi ; 
 $fire_wall -t filter -L INPUT --line-numbers
 read -p " press < space > to continue "
