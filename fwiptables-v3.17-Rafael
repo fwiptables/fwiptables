@@ -6801,7 +6801,23 @@ exit; fi
 if [ "$first_option" = "reset-shield" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Reset shield ssh ]"
 echo $header_lineal
-
+resetshield="$(dialog --stdout --clear --no-tags --title " Reset shield ssh " --menu "Select:" 0 0 0\
+  01 "NETFILTER / filter / INPUT" \
+  02 "LEGACY / filter / INPUT" \
+  )"
+case $resetshield in 
+01) fire_wall="$command_iptables_nft" ;;
+02) fire_wall="$command_iptables_legacy" ;; 
+esac
+$fire_wall -t filter -L INPUT --line-numbers
+read -p " press yes or other word " ratificar
+if [ "$ratificar" == "yes" ]; then
+$fire_wall -t filter -D INPUT -m comment --comment "shield ssh"
+# $fire_wall
+else echo " ### aborted ### "; fi ; 
+$fire_wall -t filter -L INPUT --line-numbers
+read -p " press < space > to continue "
+clear
 echo $footer_lineal
 exit; fi
 ####
@@ -6836,8 +6852,6 @@ read -p "### ### Remove line to $table_wall in $code_wall from $fire_wall ¿ Num
 $fire_wall -t $table_wall -D $code_wall "$deleterule" ; deleterule="" ;
 $fire_wall -t $table_wall -L $code_wall --line-numbers ;
 read -p " press <space to continue> " ; clear ;
-#### programar con un cli menu para borrar netftables input o ....
-#### despues programar para que se listen esas reglas y poder eliminar el numero de regla elegido
 echo $footer_lineal
 exit; fi
 ####
