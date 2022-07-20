@@ -916,6 +916,7 @@ list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option=""
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
+reset-shield|del-rule) second_option="tool-rules"; third_option="" ;;
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
@@ -963,6 +964,7 @@ list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option=""
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
+reset-shield|del-rule) second_option="tool-rules"; third_option="" ;;
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
