@@ -2327,6 +2327,7 @@ echo "$text_md                        server-teamspeak server-mumble server-sql 
 echo "$title_md                                      [ tool-options ]                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
+echo "$text_md  tool-rules         |  reset-shield            "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate                                         "
@@ -3126,6 +3127,25 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-game:
+##############################       english: tool-rules: options for rules
+##############################       spanish: tool-rules: opciones de reglas
+#### :rutina-inicial-tool-rules:
+####
+####
+if [ "$first_option" = "tool-rules" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ] [ tool rules ] [ tool-rules.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool rules ]"
+echo "$text_md [ spanish info ] [ Herramienta de reglas ]"
+echo  $text_md
+echo "$text_md $tab reset-shield"
+echo "$text_md $tab_lang_english          : Change the tries per hour for ssh"
+echo "$text_md $tab_lang_spanish          : Cambia los intentos por hora para ssh"
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-tool-rules:
 ##############################       english: tool-forward: options ipforwading
 ##############################       spanish: tool-forward: opciones ipforwading
 #### :rutina-inicial-tool-forward:
