@@ -6831,15 +6831,14 @@ exit; fi
 if [ "$first_option" = "del-rule" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ delete a one rule for its number ]"
 echo $header_lineal
-## menudelrule="$(dialog --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0\
-echo "  01 NETFILTER / filter / INPUT"
-echo "  02 NETFILTER / filter / FORWARD"
-echo "  03 NETFILTER / filter / OUTPUT" \
-echo "  04 LEGACY / filter  / INPUT" \
-echo "  05 LEGACY / filter  / FORWARD" \
-echo "  06 LEGACY / filter  / OUTPUT" \
-##  )"
-read -p "number to choose " menudelrule
+menudelrule="$(dialog --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0\
+ 01 "NETFILTER / filter / INPUT" \
+ 02 "NETFILTER / filter / FORWARD" \
+ 03 "NETFILTER / filter / OUTPUT" \
+ 04 "LEGACY / filter  / INPUT" \
+ 05 "LEGACY / filter  / FORWARD" \
+ 06 "LEGACY / filter  / OUTPUT" \
+ )"
 case $menudelrule in
 01) fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="INPUT"      ;;
 02) fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
@@ -6847,15 +6846,14 @@ case $menudelrule in
 04) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
 05) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
 06) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
-*) exit ;; 
-esac
-$fire_wall -t $table_wall -L $code_wall --line-numbers ;
-read -p "### ### Remove line to $table_wall in $code_wall from $fire_wall ¿ Number line ? ### " deleterule ;
+*) clear ; exit ;; esac ;
+$command_dialog --title " Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 ;
+clear ;
+deleterule="$($command_dialog --stdout --title "type the number rule to delete" --inputbox "example: 2" 0 0)" ;
 $fire_wall -t $table_wall -D $code_wall "$deleterule" ; deleterule="" ;
-$fire_wall -t $table_wall -L $code_wall --line-numbers ;
-read -p " press <space to continue> " ; clear ;
+$command_dialog --title " Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 ;
 echo $footer_lineal
-exit; fi
+clear ; exit; fi
 ####
 ####
 #### :rutina-final-del-rule:
