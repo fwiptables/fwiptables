@@ -6858,13 +6858,10 @@ case $menudelrule in
 05) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
 06) fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
 *) clear ; exit ;; esac ;
-
-"$($command_dialog --infobox --title " Rules " --text "$($fire_wall -t $table_wall -L $code_wall --line-numbers )")" ;
-
-deleterule="$($command_dialog --stdout --title "type the number rule to delete" --inputbox "example: 2" )"
+lalista="$($command_dialog --stdout --title " Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
+deleterule="$($command_dialog --stdout --title "type the number rule to delete" --inputbox "example: 2" 0 0 )"
 "$($fire_wall -t $table_wall -D $code_wall "$deleterule")" ; 
-deleterule="" ;
-"$($command_dialog --title " Rules " --text "$($fire_wall -t $table_wall -L $code_wall --line-numbers )")" ;
+lalista="$($command_dialog --stdout --title " Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
 clear ; exit; fi
 ####
 ####
