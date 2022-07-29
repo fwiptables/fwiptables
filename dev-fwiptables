@@ -6885,11 +6885,31 @@ listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptabl
 deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D INPUT $deleterule)"
 listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
-"02 NFTABLES / filter / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
-"03 NFTABLES / filter / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT"     ;;
-"04 XTABLES / filter  / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
-"05 XTABLES / filter  / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
-"06 XTABLES / filter  / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
+"02 NFTABLES / filter / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+deletedrule="$($command_iptables_nft -t filter -D FORWARD $deleterule)"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )" ;;
+"03 NFTABLES / filter / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT" 
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+deletedrule="$($command_iptables_nft -t filter -D OUTPUT $deleterule)"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
+"04 XTABLES / filter  / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )"
+deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+deletedrule="$($command_iptables_legacy -t filter -D INPUT $deleterule)"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )" ;;
+"05 XTABLES / filter  / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+deletedrule="$($command_iptables_legacy -t filter -D FORWARD $deleterule)"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
+"06 XTABLES / filter  / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+deletedrule="$($command_iptables_legacy -t filter -D OUTPUT $deleterule)"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
 else) exit ;; esac ; exit; fi 
 ####
 ####
