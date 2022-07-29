@@ -2582,7 +2582,8 @@ if [ "$first_option" = "names-config" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ List configs cfg ]"
 echo "$tab $tab [ English ] [ list configs files in cfg format ]"
 echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
-default_files_cfg="default-full-english.cfg|default-full-spanish.cfg|default-mini-english|default-mini-spanish|wizard-full|wizard-mini"
+default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
+|default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
 echo "$tab"
 echo "$tab [ System files ]"
 ls -1 $directory_config/ | egrep -i $default_files_cfg
@@ -6798,6 +6799,22 @@ exit; fi
 ####
 ####
 #### :rutina-final-alias-list:
+############################       english: del-shield: the ipforwading option en english
+############################       spanish: del-shield: la opcion de reenvios  en ingles
+#### :rutina-inicial-del-shield:
+####
+####
+if [ "$first_option" = "del-shield" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Delette shield ssh ]"
+$cmd_fwiptables save no_default_tmp &> /dev/null
+for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | grep -iv less)
+do egrep -v "shield|SHIELD" $shield >> $shield-less
+mv $shield-less $shield &> /dev/null
+done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
+exit ; fi
+####
+####
+#### :rutina-final-del-shield:
 ############################       english: reset-shield: the ipforwading option en english
 ############################       spanish: reset-shield: la opcion de reenvios  en ingles
 #### :rutina-inicial-reset-shield:
@@ -6805,26 +6822,12 @@ exit; fi
 ####
 if [ "$first_option" = "reset-shield" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Reset shield ssh ]"
-echo $header_lineal
-resetshield="$(dialog --stdout --clear --no-tags --title " Reset shield ssh " --menu "Select:" 0 0 0\
-  01 "NETFILTER / filter / INPUT" \
-  02 "LEGACY / filter / INPUT" \
-  )"
-case $resetshield in 
-01) fire_wall="$command_iptables_nft" ;;
-02) fire_wall="$command_iptables_legacy" ;; 
-esac
-$fire_wall -t filter -L INPUT
-read -p " press yes or other for no " ratificar
-if [ "$ratificar" == "yes" ]; then
-ratificado="$($fire_wall -t filter -L INPUT --line-numbers | grep -i "shield ssh" | cut -d " " -f 1 | head -1)"
-$fire_wall -t filter -D INPUT "$ratificado" "$(($ratificado+1))"
-else echo " ### aborted ### "; fi ; 
-$fire_wall -t filter -L INPUT --line-numbers
-read -p " press < space > to continue "
-clear
-echo $footer_lineal
-exit; fi
+$cmd_fwiptables save no_default_tmp &> /dev/null
+for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | grep -iv less)
+do egrep -v "shield|SHIELD" $shield >> $shield-less
+mv $shield-less $shield &> /dev/null
+done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
+exit ; fi
 ####
 ####
 #### :rutina-final-reset-shield:
