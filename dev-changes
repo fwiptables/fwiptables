@@ -1,8 +1,11 @@
 
- 6- añadir un md5sum. working
- 5- añadir un del-rule. working
- 4- añadir reset-shield. working
- 4. alias de -gui-menu a gui menu e igual con -gui-shell y con -cli-menu. HECHO
+
+ 9- añadir un md5sum. working
+ 8- añadir rule-del-num. working
+ 7- añadir rule-add-shield. HECHO
+ 6- añadir rule-del-shield. HECHO
+ 5- añadir tool-rule. HECHO
+ 4. alias de -gui-menu a gui menu y  con -gui-shell y con -cli-menu. HECHO
  3. añadir servidor-squid. HECHO
  2. añadido alias desde tui-menu a -cli-menu. HECHO
  1. añadido alias desde -cli a -tui. HECHO
