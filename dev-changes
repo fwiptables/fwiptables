@@ -1,8 +1,9 @@
 
-
- 9- añadir un md5sum. working
- 8- añadir rule-del-num. working
- 7- añadir rule-add-shield. HECHO
+ 11- añadir iw-scan iw-info iw-connect eth-connect. trabajando
+ 10- añadir tool-connect. trabajando
+ 9- añadir un md5sum. trabajando
+ 7- añadir rule-add-shield. trabajando
+ 8- añadir rule-del-num. HECHO
  6- añadir rule-del-shield. HECHO
  5- añadir tool-rule. HECHO
  4. alias de -gui-menu a gui menu y  con -gui-shell y con -cli-menu. HECHO
