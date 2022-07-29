@@ -6843,12 +6843,12 @@ exit; fi
 ####
 if [ "$first_option" == "del-rule" ] && [ "$second_option" != "-gui" ]; then
 menudelrule="$(dialog --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
- 01 "NETFILTER / filter / INPUT" \
- 02 "NETFILTER / filter / FORWARD" \
- 03 "NETFILTER / filter / OUTPUT" \
- 04 "LEGACY / filter  / INPUT" \
- 05 "LEGACY / filter  / FORWARD" \
- 06 "LEGACY / filter  / OUTPUT" \
+ 01 "NFTABLES / filter / INPUT" \
+ 02 "NFTABLES / filter / FORWARD" \
+ 03 "NFTABLES / filter / OUTPUT" \
+ 04 "XTABLES / filter  / INPUT" \
+ 05 "XTABLES / filter  / FORWARD" \
+ 06 "XTABLES / filter  / OUTPUT" \
  )"
 case "$menudelrule" in
 "01") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="INPUT"      ;;
@@ -6858,10 +6858,10 @@ case "$menudelrule" in
 "05") fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
 "06") fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
 *) clear ; exit ;; esac ;
-lalista="$($command_dialog --stdout --title " Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
-deleterule="$($command_dialog --stdout --title "type the number rule to delete" --inputbox "example: 2" 0 0 )"
+lalista="$($command_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
+deleterule="$($command_dialog --stdout --title " Type the number rule to delete " --inputbox "example: 2" 0 0 )"
 "$($fire_wall -t $table_wall -D $code_wall "$deleterule")" ; 
-lalista="$($command_dialog --stdout --title " Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
+lalista="$($command_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
 clear ; exit; fi
 ####
 ####
@@ -6875,24 +6875,22 @@ clear ; exit; fi
 ####
 if [ "$first_option" == "del-rule" ] && [ "$second_option" == "-gui" ]; then $give_cover
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
-selection="$(zenity $graphic_dimension  \
---list  "01 NETFILTER / filter / INPUT"  "02 NETFILTER / filter / FORWARD"  "03 NETFILTER / filter / OUTPUT" \
- "04 LEGACY / filter  / INPUT" "05 LEGACY / filter  / FORWARD"  "06 LEGACY / filter  / OUTPUT" \
+selection="$($command_zenity $graphic_dimension  \
+--list  "01 NFTABLES / filter / INPUT"  "02 NFTABLES / filter / FORWARD"  "03 NFTABLES / filter / OUTPUT" \
+ "04 XTABLES / filter  / INPUT" "05 XTABLES / filter  / FORWARD"  "06 XTABLES / filter  / OUTPUT" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $(date) ")"
 case "$menudelrule" in
-"01 NETFILTER / filter / INPUT")   fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="INPUT"      ;;
-"02 NETFILTER / filter / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
-"03 NETFILTER / filter / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT"     ;;
-"04 LEGACY / filter  / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
-"05 LEGACY / filter  / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
-"06 LEGACY / filter  / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
-*) exit ;; esac ;
-listrule="$($command_zenity --title " Rules " --info --text-info "$($fire_wall -t $table_wall -L $code_wall --line-numbers )")" 
-deleterule="$($command_zenity $graphic_dimension --entry --title "type the number rule to delete" --text "remove numer rule")"
-$fire_wall -t $table_wall -D $code_wall $deleterule
-listrule="$($command_zenity $graphic_dimension --info --title " Rules $fire_wall $table_wall" \
---text-info "$($fire_wall -t $table_wall -L $code_wall --line-numbers )")" 
-exit; fi 
+"01 NFTABLES / filter / INPUT")   
+"$($command_zenity $graphic_dimension --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
+deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+$fire_wall -t filter -D INPUT $deleterule
+"$($command_zenity $graphic_dimension --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
+"02 NFTABLES / filter / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
+"03 NFTABLES / filter / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT"     ;;
+"04 XTABLES / filter  / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
+"05 XTABLES / filter  / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
+"06 XTABLES / filter  / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
+else) exit ;; esac ; exit; fi 
 ####
 ####
 #### :rutina-final-del-rule:
