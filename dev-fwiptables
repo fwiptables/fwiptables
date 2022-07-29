@@ -6968,6 +6968,34 @@ else) exit ;; esac ; exit; fi
 ####
 ####
 #### :rutina-final-rule-del-num:
+############################       english: iw-list: search essid wireless
+############################       spanish: iw-list: buscar essid wireless
+#### :rutina-inicial-iw-list:
+####
+####
+if [ "$first_option" = "iw-list" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Show SSID from net wifi ]"
+echo $header_lineal
+for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do iw $a scan | egrep -i "on $a|ssid" ; done 
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-iw-list:
+############################       english: iw-info: search essid wireless
+############################       spanish: iw-info: buscar essid wireless
+#### :rutina-inicial-iw-info:
+####
+####
+if [ "$first_option" = "iw-info" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Show SSID from net wifi ]"
+echo $header_lineal
+for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do iw $a info ; done 
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-iw-info:
 ############################       english: ipforward-list: the ipforwading option en english
 ############################       spanish: ipforward-list: la opcion de reenvios  en ingles
 #### :rutina-inicial-ipforward-list:
