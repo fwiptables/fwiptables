@@ -6806,12 +6806,62 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "rule-add-shield" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Delette shield ssh ]"
+echo "$title_md [ ok ] [ $first_option ]  [ Add shield ssh ]"
+####
+####
 $cmd_fwiptables save no_default_tmp &> /dev/null
 for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | grep -iv less)
 do egrep -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
+####
+####
+legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 )
+nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1)
+legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1)
+nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1)
+####
+####
+if [ "$legacycuatro" != "$NULL" ]; then
+$command_iptables_legacy -I INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$command_iptables_legacy -I INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+fi
+####
+####
+if [ "$nftcuatro" != "$NULL" ]; then
+$command_iptables_nft -I INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$command_iptables_nft -I INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+fi
+####
+####
+if [ "$legacyseis" != "$NULL" ]; then
+$command_ip6tables_legacy -I INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$command_ip6tables_legacy -I INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+fi
+####
+####
+if [ "$nftseis" != "$NULL" ]; then
+$command_ip6tables_legacy -I INPUT \
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
+-m comment --comment "shield ssh" &> /dev/null
+$command_ip6tables_legacy -I INPUT \
+-m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield ssh" &> /dev/null
+fi
+####
+####
 exit ; fi
 ####
 ####
