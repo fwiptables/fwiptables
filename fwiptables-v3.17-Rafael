@@ -6876,15 +6876,15 @@ clear ; exit; fi
 if [ "$first_option" == "del-rule" ] && [ "$second_option" == "-gui" ]; then $give_cover
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($command_zenity $graphic_dimension  \
---list  "01 NFTABLES / filter / INPUT"  "02 NFTABLES / filter / FORWARD"  "03 NFTABLES / filter / OUTPUT" \
+--list  "01 NFTABLES filter INPUT"  "02 NFTABLES / filter / FORWARD"  "03 NFTABLES / filter / OUTPUT" \
  "04 XTABLES / filter  / INPUT" "05 XTABLES / filter  / FORWARD"  "06 XTABLES / filter  / OUTPUT" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $(date) ")"
-case "$menudelrule" in
-"01 NFTABLES / filter / INPUT")   
-"$($command_zenity $graphic_dimension --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
+case "$selection" in
+"01 NFTABLES filter INPUT")
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
 deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
-$fire_wall -t filter -D INPUT $deleterule
-"$($command_zenity $graphic_dimension --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
+deletedrule="$($command_iptables_nft -t filter -D INPUT $deleterule)"
+listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
 "02 NFTABLES / filter / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
 "03 NFTABLES / filter / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT"     ;;
 "04 XTABLES / filter  / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
