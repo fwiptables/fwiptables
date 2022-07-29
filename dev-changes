@@ -2,7 +2,7 @@
  11- añadir iw-scan iw-info iw-connect eth-connect. trabajando
  10- añadir tool-connect. trabajando
  9- añadir un md5sum. trabajando
- 7- añadir rule-add-shield. trabajando
+ 7- añadir rule-add-shield. HECHO
  8- añadir rule-del-num. HECHO
  6- añadir rule-del-shield. HECHO
  5- añadir tool-rule. HECHO
