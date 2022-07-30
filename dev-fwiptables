@@ -4023,10 +4023,10 @@ exit; fi
 if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool rules" \
-"06 Tool sockets" "07 Tool forward" "08 Tool tcp" "09 Tool udp" "10 Tool icmp"  "11 Tool sudo" \
-"12 Tool game" "13 Tool system" "14 Tool install" "15 Tool blacklist" "16 Tool dev" \
-"17 Show hardware" "18 Show etc" "19 Show log" "20 Show about" "21 Show help" \
+ --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool connect" "06 Tool rules" \
+"07 tool sockets" "08 Tool forward" "09 Tool tcp" "10 Tool udp" "11 Tool icmp"  "12 Tool sudo" \
+"13 Tool game" "14 Tool system" "15 Tool install" "16 Tool blacklist" "17 Tool dev" \
+"18 Show hardware" "19 Show etc" "20 Show log" "21 Show about" "22 Show help" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $(date) ")
 #### 
 #### 
@@ -4036,23 +4036,24 @@ case "$selection" in
 "02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
 "03 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
 "04 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
-"05 Tool rules")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
-"06 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
-"07 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
-"08 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
-"09 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
-"10 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
-"11 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
-"12 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
-"13 Tool system")$cmd_fwiptables gui-menu-tool-system ; exit ;;
-"14 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
-"15 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
-"16 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
-"17 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
-"18 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
-"19 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
-"20 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
-"21 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
+"05 Tool connect")$cmd_fwiptables gui-menu-tool-connect ; exit ;;
+"06 Tool rules")$cmd_fwiptables gui-menu-tool-rules ; exit ;;
+"07 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
+"08 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
+"09 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
+"10 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
+"11 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
+"12 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
+"13 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
+"14 Tool system")$cmd_fwiptables gui-menu-tool-system ; exit ;;
+"15 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
+"16 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
+"17 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
+"18 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
+"19 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
+"20 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
+"21 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
+"22 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
 #### 
 esac
 ####
@@ -4270,6 +4271,77 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-custom:
+
+
+############################## english: gui-menu-tool-connect: gui with menu ##############################
+############################## spanish: gui-menu-tool-connect: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-connect:
+####
+####
+if [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-list" "iw-info" "iw-connect" "iw-file" "dhcp" \
+--column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Connect ] [ $name_fwiptables ]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
+
+"iw-list") $cmd_fwiptables -gui iw-list ;;
+"iw-info") $cmd_fwiptables -gui iw-info ;;
+"iw-connect") $cmd_fwiptables -gui iw-connect ;;
+"iw-file") $cmd_fwiptables -gui iw-file ;;
+"dhcp") $cmd_fwiptables -gui dhcp ;;
+
+
+esac
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-connect:
+
+
+############################## english: gui-menu-tool-rules: gui with menu ##############################
+############################## spanish: gui-menu-tool-rules: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-rules:
+####
+####
+if [ "$first_option" = "gui-menu-tool-rules" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" \
+--column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool rules ] [ $name_fwiptables ]" )
+#### 
+#### 
+case $selection in
+1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
+"rule-del-num")     $cmd_fwiptables -gui rule-del-num ;;
+"rule-del-shield")  $cmd_fwiptables -gui rule-del-shield ;;
+"rule-add-shield")  $cmd_fwiptables -gui rule-add-shield ;;
+esac
+####
+####
+zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
+####
+####
+zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-rules:
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-sockets:
