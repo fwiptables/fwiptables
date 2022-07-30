@@ -4297,8 +4297,9 @@ case $selection in
 archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]" --text="$(ls $directory_default)" )" ;
 $cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui iw-info ;;
 "iw-connect") 
-name_ssid="$(zenity --entry $graphic_dimension --title "[ Name of ssid ]" --text="$($cmd_fwiptables iw-list)")"   ;
-pass_ssid="$(zenity --entry $graphic_dimension --title "[ Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
+for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
+name_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="$($cmd_fwiptables iw-list)")"   ;
+pass_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
 $cmd_fwiptables iw-connect $name_ssid $pass_ssid ; $cmd_fwiptables -gui iw-info ;;
 "dhcp")       $cmd_fwiptables -gui dhcp ;;
 esac
