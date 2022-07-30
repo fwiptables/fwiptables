@@ -3935,7 +3935,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 "ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
 ####
 ####
-*)$cmd_fwiptables "$second_option" "$third_option" &> "$temporal_guifinal"
+*)$cmd_fwiptables "$second_option" "$third_option" "$quarter_option" &> "$temporal_guifinal"
 zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
@@ -4294,12 +4294,14 @@ case $selection in
 "iw-list")    $cmd_fwiptables -gui iw-list ;;
 "iw-info")    $cmd_fwiptables -gui iw-info ;;
 "iw-file")
-archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]" --text="$(ls $directory_default)" )" ;
+archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]" \
+--text="$(du $directory_default/wpa* | cut -d "/" -f 2- )" )" ;
 $cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui iw-info ;;
 "iw-connect") 
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
-name_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="$($cmd_fwiptables iw-list)")"   ;
-pass_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
+$cmd_fwiptables -gui iw-list
+name_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
+pass_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
 $cmd_fwiptables iw-connect $name_ssid $pass_ssid ; $cmd_fwiptables -gui iw-info ;;
 "dhcp")       $cmd_fwiptables -gui dhcp ;;
 esac
