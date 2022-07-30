@@ -4293,11 +4293,11 @@ case $selection in
 "iw-info")    $cmd_fwiptables -gui iw-info ;;
 "iw-file")
 archivo="$(zenity --entry $graphic_dimension --title "[Load file]" --text="$($cmd_fwiptables iw-file)")" ;
-$cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui list ;;
+$cmd_fwiptables -gui iw-file $archivo ;;
 "iw-connect") 
-name_ssid="$(zenity --entry $graphic_dimension --title "[ Name of ssid ]" --text="$($cmd_fwiptables iw-list)")" ;
-pass_ssid="$(zenity --entry $graphic_dimension --title "[ Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
-$cmd_fwiptables -gui iw-connect $name_ssid $pass_ssid ;;
+name_ssid="$(zenity --entry $graphic_dimension --title "[ Name of ssid and password ]" --text="$($cmd_fwiptables iw-list)")" ;
+#### pass_ssid="$(zenity --entry $graphic_dimension --title "[ Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
+$cmd_fwiptables -gui iw-connect $name_ssid ;;
 "dhcp")       $cmd_fwiptables -gui dhcp ;;
 esac
 ####
