@@ -1,6 +1,7 @@
 
- 11- añadir iw-scan iw-info iw-connect eth-connect. trabajando
- 10- añadir tool-connect. trabajando
+ 12-
+ 11- añadir iw-scan iw-info iw-connect dhcp. HECHO
+ 10- añadir tool-connect. HECHO
  9- añadir un md5sum. trabajando
  7- añadir rule-add-shield. HECHO
  8- añadir rule-del-num. HECHO

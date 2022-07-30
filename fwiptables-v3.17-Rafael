@@ -475,6 +475,8 @@ command_torify="$(command -v torify | cut -d " " -f 1)"
 command_dhcpcd="$(command -v dhcpcd | cut -d " " -f 1)"
 command_dhclient="$(command -v dhclient | cut -d " " -f 1)"
 command_dhclient_script="$(command -v dhclient-script | cut -d " " -f 1)"
+command_wpa_passphrase="$(command -v wpa_passphrase | cut -d " " -f 1)"
+command_wpa_supplicant="$(command -v wpa_supplicant | cut -d " " -f 1)"
 ####
 ####
 #### :rutina-final-command:
@@ -2304,7 +2306,8 @@ echo "$text_md                       client-web client-mail client-news client-t
 echo "$text_md                       client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
 echo "$text_md                       server-print server-lamp server-news server-mail server-ftp server-squid "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
-echo "$title_md     [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
+echo "$title_md    [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
+echo "$text_md       tool-connect |  iw-list iw-info iw-connnect dhcp                                         "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md          tool-sudo |  sudo-adduser sudo-deluser sudo-list alias-list                           "
@@ -7010,6 +7013,28 @@ exit; fi
 ####
 ####
 #### :rutina-final-iw-info:
+############################       english: iw-connect: search essid wireless
+############################       spanish: iw-connect: buscar essid wireless
+#### :rutina-inicial-iw-connect:
+####
+####
+if [ "$first_option" = "iw-connect" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ]"
+echo $header_lineal
+if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo " [ info ] [ Install wpa_passphrase ]" ; exit ; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
+if [ "$2" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd SSID password ]" ; exit ; else ssid="$2"     ; fi
+if [ "$3" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd SSID password ]" ; exit ; else password="$3" ; fi
+for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
+$command_wpa_passphrase $ssid $password > /etc/fwiptables-default/wpa_$dispositivo_$ssid
+$command_wpa_supplicant -B -i $dispositivo -c /etc/fwiptables-default/wpa_$dispositivo_$ssid
+echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c /etc/fwiptables-default/wpa_$dispositivo_$ssid" ; done
+$command_dhcp
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-iw-connect:
 ############################       english: dhcp: search essid wireless
 ############################       spanish: dhcp: buscar essid wireless
 #### :rutina-inicial-dhcp:
