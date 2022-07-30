@@ -2306,7 +2306,7 @@ echo "$text_md                       client-web client-mail client-news client-t
 echo "$text_md                       client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
 echo "$text_md                       server-print server-lamp server-news server-mail server-ftp server-squid "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
-echo "$title_md    [ full-options ]  [ See all options with: $cmd_fwiptables options ]                        "
+echo "$title_md     [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
 echo "$text_md       tool-connect |  iw-list iw-info iw-connnect iw-file dhcp                                 "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
@@ -9734,6 +9734,14 @@ echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
 echo  $text_md
+echo "$title_md         [ tool connect ]"
+echo  $text_md
+echo "$text_md               iw-list : list ssid on wifi"
+echo "$text_md               iw-info : Show the connected wifi"
+echo "$text_md            iw-connect : Connect to ssid in wifi for first time"
+echo "$text_md               iw-file : Connect to ssid in wifi saved"
+echo "$text_md                  dhcp : run dhcp client"
+echo  $text_md
 echo "$title_md         [ tool rules ]"
 echo  $text_md
 echo "$text_md         rule-del-rule : Delete a rule for its number"
@@ -10045,12 +10053,6 @@ echo "$text_md        server-mumble : Lanza un firewall como servidor mumble."
 echo "$text_md           server-sql : Lanza un firewall como servidor sql."
 echo "$text_md      server-asterisk : Lanza un firewall como servidor asterisk."
 echo  $text_md
-echo "$title_md   [ Herramienta de reglas ]."
-echo  $text_md
-echo "$text_md         rule-del-num : Borra una regla por su numero"
-echo "$text_md      rule-del-shield : Borra el escudo para ssh con maximo numero de intentos"
-echo "$text_md      rule-add-shield : Añade el escudo para ssh con maximo numero de intentos"
-echo  $text_md
 echo "$title_md   [ Lista las conexiones abiertas ]."
 echo  $text_md
 echo "$text_md      info-nodes : Lista las conexiones arp in lan."
@@ -10065,6 +10067,20 @@ echo "$text_md         netstat : Muestra las conexiones con comando netstat."
 echo "$text_md     netstat-nat : Muestra las conexiones con comando netstat-nat."
 echo "$text_md        web-cert : Obtiene un certificado ssl a una web con puerto https(443)."
 echo "$text_md         tcpdump : Escuchar las conexiones ip."
+echo  $text_md
+echo "$title_md         [ tool connect ]"
+echo  $text_md
+echo "$text_md               iw-list : lista ssid en wifi"
+echo "$text_md               iw-info : Muestra a que wifi esta conectado"
+echo "$text_md            iw-connect : Conecta a un ssid por primera vez"
+echo "$text_md               iw-file : Conecta a un ssid guardado"
+echo "$text_md                  dhcp : corre un cliente de dhcp"
+echo  $text_md
+echo "$title_md   [ Herramienta de reglas ]."
+echo  $text_md
+echo "$text_md         rule-del-num : Borra una regla por su numero"
+echo "$text_md      rule-del-shield : Borra el escudo para ssh con maximo numero de intentos"
+echo "$text_md      rule-add-shield : Añade el escudo para ssh con maximo numero de intentos"
 echo  $text_md
 echo "$title_md [ Herramienta de ip forwading ]."
 echo  $text_md
