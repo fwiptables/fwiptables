@@ -2365,7 +2365,7 @@ echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb 
 echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3                        "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
-echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
+echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5                      "
 echo "$title_md                                      [ show-options ]                                          " 
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh sentlog autolog                                       "
@@ -6928,6 +6928,21 @@ exit; fi
 ####
 ####
 #### :rutina-final-alias-list:
+############################       english: md5: md5 sum from a one file
+############################       spanish: md5: suma md5 desde un archivo
+#### :rutina-inicial-md5:
+####
+####
+if [ "$first_option" = "md5" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Show sum md5 from one file ]"
+echo $header_lineal
+if [ -f $second_option ]; then $command_md5sum $second_option
+else echo " [ info ] [ Example: $cmd_fwiptables md5 file ]"; fi
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-alias-md5:
 ############################       english: rule-add-shield: the ipforwading option en english
 ############################       spanish: rule-add-shield: la opcion de reenvios  en ingles
 #### :rutina-inicial-rule-add-shield:
