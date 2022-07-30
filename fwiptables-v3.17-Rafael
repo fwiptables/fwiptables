@@ -478,6 +478,8 @@ command_dhclient_script="$(command -v dhclient-script | cut -d " " -f 1)"
 command_wpa_passphrase="$(command -v wpa_passphrase | cut -d " " -f 1)"
 command_wpa_supplicant="$(command -v wpa_supplicant | cut -d " " -f 1)"
 command_md5sum="$(command -v md5sum | cut -d " " -f 1)"
+command_iw="$(command -v iw | cut -d " " -f 1)"
+command_ifconfig="$(command -v ifconfig | cut -d " " -f 1)"
 ####
 ####
 #### :rutina-final-command:
@@ -4292,12 +4294,12 @@ case $selection in
 "iw-list")    $cmd_fwiptables -gui iw-list ;;
 "iw-info")    $cmd_fwiptables -gui iw-info ;;
 "iw-file")
-archivo="$(zenity --entry $graphic_dimension --title "[Load file]" --text="$($cmd_fwiptables iw-file)")" ;
-$cmd_fwiptables -gui iw-file $archivo ;;
+archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]" --text="$(ls $directory_default)" )" ;
+$cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui iw-info ;;
 "iw-connect") 
-name_ssid="$(zenity --entry $graphic_dimension --title "[ Name of ssid and password ]" --text="$($cmd_fwiptables iw-list)")" ;
-#### pass_ssid="$(zenity --entry $graphic_dimension --title "[ Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
-$cmd_fwiptables -gui iw-connect $name_ssid ;;
+name_ssid="$(zenity --entry $graphic_dimension --title "[ Name of ssid ]" --text="$($cmd_fwiptables iw-list)")"   ;
+pass_ssid="$(zenity --entry $graphic_dimension --title "[ Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
+$cmd_fwiptables iw-connect $name_ssid $pass_ssid ; $cmd_fwiptables -gui iw-info ;;
 "dhcp")       $cmd_fwiptables -gui dhcp ;;
 esac
 ####
@@ -7121,7 +7123,9 @@ else) exit ;; esac ; exit; fi
 if [ "$first_option" = "iw-list" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Show SSID from net wifi ]"
 echo $header_lineal
-for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do iw $a scan | egrep -i "on $a|ssid" ; done 
+if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
+for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $a up ;
+$command_iw $a scan | egrep -i "on $a|ssid" ; done 
 echo $footer_lineal
 exit; fi
 ####
@@ -7135,7 +7139,8 @@ exit; fi
 if [ "$first_option" = "iw-info" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Show connected SSID from net wifi ]"
 echo $header_lineal
-for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do iw $a info ; done 
+if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
+for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_iw $a info ; done 
 echo $footer_lineal
 exit; fi
 ####
@@ -7153,10 +7158,10 @@ if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo " [ info ] [ Install wpa
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$2" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd SSID password ]" ; exit ; else ssid="$2"     ; fi
 if [ "$3" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd SSID password ]" ; exit ; else password="$3" ; fi
-for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
-$command_wpa_passphrase $ssid $password > $directory_default/wpa_$dispositivo_$ssid
-$command_wpa_supplicant -B -i $dispositivo -c $directory_default/wpa_$dispositivo_$ssid
-echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/wpa_$dispositivo_$ssid" ; done
+for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ;
+$command_wpa_passphrase $ssid $password > $directory_default/wpa-$dispositivo-$ssid
+$command_wpa_supplicant -B -i $dispositivo -c $directory_default/wpa-$dispositivo-$ssid
+echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/wpa-$dispositivo-$ssid" ; done
 $command_dhcp
 echo $footer_lineal
 exit; fi
@@ -7172,12 +7177,13 @@ if [ "$first_option" = "iw-file" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables iw-file wpa_file1 ]"
 echo $header_lineal
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
-echo " [ wpa saved ]"
-ls -1 $directory_default/wpa_*
+if [ "$(ls -l $directory_default | grep wpa-)" == "$NULL" ]; then
+echo " [ Without old wpa file saved, run: fwiptables iw-connect ]"; 
+else echo " [ wpa old file saved ]" ; ls -l $directory_default | grep ^wpa- ; fi
 if [ -f "$directory_default/$second_option" ]; then
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
 $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$second_option ; done
-else echo "[ Connect to file wpa ] [ For example: fwiptables iw-file wpa_ssid ]"; fi
+else echo "[ Connect to file wpa ] [ For example: $cmd_fwiptables iw-file file ]"; fi
 echo $footer_lineal
 exit; fi
 ####
