@@ -4295,7 +4295,7 @@ case $selection in
 "iw-info")    $cmd_fwiptables -gui iw-info ;;
 "iw-file")
 archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]" \
---text="$(du $directory_default/wpa* | cut -d "/" -f 2- )" )" ;
+--text="$(ls $directory_default)" )" ;
 $cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui iw-info ;;
 "iw-connect") 
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
