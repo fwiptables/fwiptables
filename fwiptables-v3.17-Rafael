@@ -80,7 +80,7 @@ quarter_option="$(echo $4 | sed s/\\///g -)"  ;
 ##############################  spanish: permanentes: archivos y carpetas desde fwiptables  ##############################
 ####
 ####
-#### english: permanent files and where are file path: name, command and icono
+#### english: permanent files and where are file path: name, command and icon
 #### spanish: archivos permanentes y donde estan las rutas de archivo: nombre, comando e icono
 ####
 ####
@@ -472,6 +472,9 @@ command_glxgears="$(command -v glxgears | cut -d " " -f 1)"
 command_mpg123="$(command -v mpg123 | cut -d " " -f 1)"
 command_mpg321="$(command -v mpg321 | cut -d " " -f 1)"
 command_torify="$(command -v torify | cut -d " " -f 1)"
+command_dhcpcd="$(command -v dhcpcd | cut -d " " -f 1)"
+command_dhclient="$(command -v dhclient | cut -d " " -f 1)"
+command_dhclient_script="$(command -v dhclient-script | cut -d " " -f 1)"
 ####
 ####
 #### :rutina-final-command:
@@ -484,6 +487,16 @@ if [ "$command_links"  = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_links2" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_links2"  ; fi
 if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_lynx"    ; fi
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
+####
+####
+##############################      english: search favorite dhcp Discover ip net     #####################
+##############################      spanish: busca preferido dhcp Descubre la ip      #####################
+####
+####
+favorite_dhcp=""
+if [ "$command_dhcpcd"  = "$NULL" ] ; then $nada         ; else favorite_dhcp="$command_dhcpcd"           ; fi
+if [ "$command_dhclient_script" = "$NULL" ] ; then $nada ; else favorite_dhcp="$command_dhclient_script"  ; fi
+if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp="$command_dhclient"         ; fi
 ####
 ####
 ##############################   english: uninstall:      fwiptables uninstall      ###########################################
@@ -6992,6 +7005,21 @@ if [ "$first_option" = "iw-info" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Show SSID from net wifi ]"
 echo $header_lineal
 for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do iw $a info ; done 
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-iw-info:
+############################       english: dhcp: search essid wireless
+############################       spanish: dhcp: buscar essid wireless
+#### :rutina-inicial-dhcp:
+####
+####
+if [ "$first_option" = "dhcp" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp" ]"
+echo $header_lineal
+if [ "$favorite_dhcp" != "$NULL" ]; then $favorite_dhcp ;
+else echo " [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
 echo $footer_lineal
 exit; fi
 ####
