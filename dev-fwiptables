@@ -3156,6 +3156,37 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-game:
+##############################       english: tool-connect: tool wifi
+##############################       spanish: tool-connect: herramienta wifi
+#### :rutina-inicial-tool-connect:
+####
+####
+if [ "$first_option" = "tool-connect" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ] [ tool connect ] [ tool-connect.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool connect ]"
+echo "$text_md [ spanish info ] [ Herramienta de conexion ]"
+echo  $text_md
+echo "$text_md $tab iw-list"
+echo "$text_md $tab_lang_english          : list ssid network wifi"
+echo "$text_md $tab_lang_spanish          : lista redes ssid wifi"
+echo "$text_md $tab iw-info"
+echo "$text_md $tab_lang_english          : list connected ssid network wifi"
+echo "$text_md $tab_lang_spanish          : lista conectado red ssid wifi"
+echo "$text_md $tab iw-connect"
+echo "$text_md $tab_lang_english          : Connect to one ssid network wifi for first time"
+echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi por primera vez"
+echo "$text_md $tab iw-file"
+echo "$text_md $tab_lang_english          : Connect to one ssid network wifi with a saved file"
+echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi usando un archivo guardado"
+echo "$text_md $tab dhcp"
+echo "$text_md $tab_lang_english          : Launch a dhcp client"
+echo "$text_md $tab_lang_spanish          : Lanza un cliente dhcp"
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-tool-connect:
 ##############################       english: tool-rules: options for rules
 ##############################       spanish: tool-rules: opciones de reglas
 #### :rutina-inicial-tool-rules:
@@ -3167,10 +3198,13 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool rules ]"
 echo "$text_md [ spanish info ] [ Herramienta de reglas ]"
 echo  $text_md
-echo "$text_md $tab reset-shield"
-echo "$text_md $tab_lang_english          : Change the tries per hour for ssh"
-echo "$text_md $tab_lang_spanish          : Cambia los intentos por hora para ssh"
-echo "$text_md $tab del-rule"
+echo "$text_md $tab rule-del-shield"
+echo "$text_md $tab_lang_english          : Remove the shield to ssh"
+echo "$text_md $tab_lang_spanish          : Borra el escudo para ssh"
+echo "$text_md $tab rule-del-shield"
+echo "$text_md $tab_lang_english          : Insert the shield to ssh"
+echo "$text_md $tab_lang_spanish          : Inserta el escudo para ssh"
+echo "$text_md $tab rule-de-num"
 echo "$text_md $tab_lang_english          : Delete a number rule"
 echo "$text_md $tab_lang_spanish          : Borra un numero de regla"
 echo $footer_lineal
