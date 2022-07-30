@@ -477,6 +477,7 @@ command_dhclient="$(command -v dhclient | cut -d " " -f 1)"
 command_dhclient_script="$(command -v dhclient-script | cut -d " " -f 1)"
 command_wpa_passphrase="$(command -v wpa_passphrase | cut -d " " -f 1)"
 command_wpa_supplicant="$(command -v wpa_supplicant | cut -d " " -f 1)"
+command_md5sum="$(command -v md5sum | cut -d " " -f 1)"
 ####
 ####
 #### :rutina-final-command:
@@ -938,7 +939,7 @@ info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
-iw-info|iw-list|iw-connect|iw-file|dhcp) second_option="tool-connect"; third_option="";
+iw-info|iw-list|iw-connect|iw-file|dhcp) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
@@ -987,7 +988,7 @@ info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
-iw-info|iw-list|iw-connect|iw-file|dhcp) second_option="tool-connect"; third_option="";
+iw-info|iw-list|iw-connect|iw-file|dhcp) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
@@ -5388,7 +5389,6 @@ exit; fi
 ####
  if [ "$first_option" = "version" ]; then $give_cover
  echo "$title_md [ ok ] [ $first_option ]  [ Show version about $cmd_fwiptables ]"
-#### echo $header_lineal
  echo
  echo "$tab [Name program]"
  echo "$fprogram"
@@ -5401,6 +5401,9 @@ exit; fi
  echo
  echo "$tab [File format]"
  file $directory_fwiptables/$cmd_fwiptables | cut -d "," -f 1-2
+ echo
+ echo "$tab [MD5]"
+ $command_md5sum $0
  echo
  echo "$tab [Config cfg directory]"
  echo "$directory_config"
