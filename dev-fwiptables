@@ -4290,11 +4290,11 @@ case $selection in
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
 
-"iw-list") $cmd_fwiptables -gui iw-list ;;
-"iw-info") $cmd_fwiptables -gui iw-info ;;
+"iw-list")    $cmd_fwiptables -gui iw-list ;;
+"iw-info")    $cmd_fwiptables -gui iw-info ;;
 "iw-connect") $cmd_fwiptables -gui iw-connect ;;
-"iw-file") $cmd_fwiptables -gui iw-file ;;
-"dhcp") $cmd_fwiptables -gui dhcp ;;
+"iw-file")    $cmd_fwiptables -gui iw-file ;;
+"dhcp")       $cmd_fwiptables -gui dhcp ;;
 
 
 esac
@@ -4325,8 +4325,8 @@ selection=$(zenity $graphic_dimension \
 case $selection in
 1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
-"Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
+"Gui Help Menu")    $cmd_fwiptables -gui help tool-sockets ;;
+"Gui Info Menu")    $cmd_fwiptables -gui info tool-sockets ;;
 "rule-del-num")     $cmd_fwiptables -gui rule-del-num ;;
 "rule-del-shield")  $cmd_fwiptables -gui rule-del-shield ;;
 "rule-add-shield")  $cmd_fwiptables -gui rule-add-shield ;;
