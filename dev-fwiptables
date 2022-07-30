@@ -4289,14 +4289,16 @@ case $selection in
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
-
 "iw-list")    $cmd_fwiptables -gui iw-list ;;
 "iw-info")    $cmd_fwiptables -gui iw-info ;;
-"iw-connect") $cmd_fwiptables -gui iw-connect ;;
-"iw-file")    $cmd_fwiptables -gui iw-file ;;
+"iw-file")
+archivo="$(zenity --entry $graphic_dimension --title "[Load file]" --text="$($cmd_fwiptables iw-file)")" ;
+$cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui list ;;
+"iw-connect") 
+name_ssid="$(zenity --entry $graphic_dimension --title "[ Name of ssid ]" --text="$($cmd_fwiptables iw-list)")" ;
+pass_ssid="$(zenity --entry $graphic_dimension --title "[ Pass of ssid ]" --text="PASSWORD OF SSID $name_ssid" )" ;
+$cmd_fwiptables -gui iw-connect $name_ssid $pass_ssid ;;
 "dhcp")       $cmd_fwiptables -gui dhcp ;;
-
-
 esac
 ####
 ####
