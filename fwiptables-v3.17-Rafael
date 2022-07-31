@@ -1690,6 +1690,7 @@ fi; exit; fi
 #### :rutina-final-autosave:
 ##############################      english: search favorite date: favorite date command        #####################
 ##############################      spanish: busca preferida fecha: favorita comando de fecha   #####################
+#### :rutina-inicial-favorite-date-command:
 ####
 ####
 favorite_date_command=""
@@ -1698,8 +1699,10 @@ if [ "$command_sntp" = "$NULL"    ]    ; then $nada ; else favorite_date_command
 if [ "$command_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
 ####
 ####
+#### :rutina-final-favorite-date-command:
 ##############################      english: search favorite music player            #####################
 ##############################      spanish: busca preferida reproductor de musica   #####################
+#### :rutina-inicial-favorite-music-command:
 ####
 ####
 favoite_music_command=""
@@ -1707,6 +1710,7 @@ if [ "$command_mpg321" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
 ####
 ####
+#### :rutina-final-favorite-music-command:
 ##############################      english: ready system rules con its option               #####################
 ##############################      spanish: preprara reglas del sistema con sus opciones    #####################
 #### :rutina-inicial-custom-rules:
@@ -2509,6 +2513,12 @@ $brake_md
 $cmd_fwiptables firewall-custom
 echo  $text_md
 echo "$title_md [ Secondary options ]"
+echo  $text_md
+$brake_md
+$cmd_fwiptables tool-connect
+echo  $text_md
+$brake_md
+$cmd_fwiptables tool-rules
 echo  $text_md
 $brake_md
 $cmd_fwiptables tool-sockets
