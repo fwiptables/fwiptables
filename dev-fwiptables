@@ -941,7 +941,7 @@ info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
-iw-info|iw-list|iw-connect|iw-file|dhcp) second_option="tool-connect"; third_option="";;
+iw-info|iw-scan|wpa-connect|wpa-file|dhcp) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
@@ -990,7 +990,7 @@ info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
-iw-info|iw-list|iw-connect|iw-file|dhcp) second_option="tool-connect"; third_option="";;
+iw-info|iw-scan|wpa-connect|wpa-file|dhcp) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
@@ -2312,7 +2312,7 @@ echo "$text_md                       client-ftp lan-tor lan-vpn shield-ssh serve
 echo "$text_md                       server-print server-lamp server-news server-mail server-ftp server-squid "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
 echo "$title_md     [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
-echo "$text_md       tool-connect |  iw-list iw-info iw-connnect iw-file dhcp                                 "
+echo "$text_md       tool-connect |  iw-scan iw-info wpa-connect wpa-file dhcp                                 "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md          tool-sudo |  sudo-adduser sudo-deluser sudo-list alias-list                           "
@@ -2355,7 +2355,7 @@ echo "$text_md                        server-teamspeak server-mumble server-sql 
 echo "$title_md                                      [ tool-options ]                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
-echo "$text_md  tool-connect       |  iw-list iw-info iw-connnect iw-file dhcp                                 "
+echo "$text_md  tool-connect       |  iw-scan iw-info iw-connnect wpa-file dhcp                                 "
 echo "$text_md  tool-rules         |  rule-del-num rule-del-shield rule-add-shield                             "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
@@ -3172,16 +3172,16 @@ echo  $text_md
 echo "$text_md [ english info ] [ Tool connect ]"
 echo "$text_md [ spanish info ] [ Herramienta de conexion ]"
 echo  $text_md
-echo "$text_md $tab iw-list"
+echo "$text_md $tab iw-scan"
 echo "$text_md $tab_lang_english          : list ssid network wifi"
 echo "$text_md $tab_lang_spanish          : lista redes ssid wifi"
 echo "$text_md $tab iw-info"
 echo "$text_md $tab_lang_english          : list connected ssid network wifi"
 echo "$text_md $tab_lang_spanish          : lista conectado red ssid wifi"
-echo "$text_md $tab iw-connect"
+echo "$text_md $tab wpa-connect"
 echo "$text_md $tab_lang_english          : Connect to one ssid network wifi for first time"
 echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi por primera vez"
-echo "$text_md $tab iw-file"
+echo "$text_md $tab wpa-file"
 echo "$text_md $tab_lang_english          : Connect to one ssid network wifi with a saved file"
 echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi usando un archivo guardado"
 echo "$text_md $tab dhcp"
@@ -4282,7 +4282,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-list" "iw-info" "iw-connect" "iw-file" "dhcp" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-connect" "wpa-file" "dhcp" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Connect ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4291,18 +4291,18 @@ case $selection in
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
-"iw-list")    $cmd_fwiptables -gui iw-list ;;
+"iw-scan")    $cmd_fwiptables -gui iw-scan ;;
 "iw-info")    $cmd_fwiptables -gui iw-info ;;
-"iw-file")
-$cmd_fwiptables -gui iw-file
+"wpa-file")
+$cmd_fwiptables -gui wpa-file
 archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]")" ;
-$cmd_fwiptables -gui iw-file $archivo ; $cmd_fwiptables -gui iw-info ;;
-"iw-connect") 
+$cmd_fwiptables -gui wpa-file $archivo ; $cmd_fwiptables -gui iw-info ;;
+"wpa-connect") 
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
-$cmd_fwiptables -gui iw-list
+$cmd_fwiptables -gui iw-scan
 name_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
 pass_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
-$cmd_fwiptables iw-connect $name_ssid $pass_ssid ; $cmd_fwiptables -gui iw-info ;;
+$cmd_fwiptables wpa-connect $name_ssid $pass_ssid ; $cmd_fwiptables -gui iw-info ;;
 "dhcp")       $cmd_fwiptables -gui dhcp ;;
 esac
 ####
@@ -7118,12 +7118,12 @@ else) exit ;; esac ; exit; fi
 ####
 ####
 #### :rutina-final-rule-del-num:
-############################       english: iw-list: search essid wireless
-############################       spanish: iw-list: buscar essid wireless
-#### :rutina-inicial-iw-list:
+############################       english: iw-scan: search essid wireless
+############################       spanish: iw-scan: buscar essid wireless
+#### :rutina-inicial-iw-scan:
 ####
 ####
-if [ "$first_option" = "iw-list" ]; then $give_cover
+if [ "$first_option" = "iw-scan" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ]  [ Show SSID from net wifi ]"
 echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
@@ -7133,7 +7133,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-iw-list:
+#### :rutina-final-iw-scan:
 ############################       english: iw-info: search essid wireless
 ############################       spanish: iw-info: buscar essid wireless
 #### :rutina-inicial-iw-info:
@@ -7149,12 +7149,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-iw-info:
-############################       english: iw-connect: connect ssid wireless
-############################       spanish: iw-connect: conecta ssid wireless
-#### :rutina-inicial-iw-connect:
+############################       english: wpa-connect: connect ssid wireless
+############################       spanish: wpa-connect: conecta ssid wireless
+#### :rutina-inicial-wpa-connect:
 ####
 ####
-if [ "$first_option" = "iw-connect" ]; then $give_cover
+if [ "$first_option" = "wpa-connect" ]; then $give_cover
 echo "$title_md [ ok ] [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ]"
 echo $header_lineal
 if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo " [ info ] [ Install wpa_passphrase ]" ; exit ; fi
@@ -7170,28 +7170,28 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-iw-connect:
-############################       english: iw-file: launch one ssid wireless
-############################       spanish: iw-file: lanza un ssid wireless
-#### :rutina-inicial-iw-file:
+#### :rutina-final-wpa-connect:
+############################       english: wpa-file: launch one ssid wireless
+############################       spanish: wpa-file: lanza un ssid wireless
+#### :rutina-inicial-wpa-file:
 ####
 ####
-if [ "$first_option" = "iw-file" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables iw-file wpa_file1 ]"
+if [ "$first_option" = "wpa-file" ]; then $give_cover
+echo "$title_md [ ok ] [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-file wpa_file1 ]"
 echo $header_lineal
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$(ls -l $directory_default | grep wpa-)" == "$NULL" ]; then
-echo " [ Without old wpa file saved, run: fwiptables iw-connect ]"; 
+echo " [ Without old wpa file saved, run: fwiptables wpa-connect ]"; 
 else echo " [ wpa old file saved ]" ; ls -l $directory_default | grep wpa- ; fi
 if [ -f "$directory_default/$second_option" ]; then
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
 $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$second_option ; done
-else echo "[ Connect to file wpa ] [ For example: $cmd_fwiptables iw-file file ]"; fi
+else echo "[ Connect to file wpa ] [ For example: $cmd_fwiptables wpa-file file ]"; fi
 echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-iw-file:
+#### :rutina-final-wpa-file:
 ############################       english: dhcp: search essid wireless
 ############################       spanish: dhcp: buscar essid wireless
 #### :rutina-inicial-dhcp:
@@ -9873,10 +9873,10 @@ echo "$text_md            del-config : Delete one configuration file."
 echo  $text_md
 echo "$title_md         [ tool connect ]"
 echo  $text_md
-echo "$text_md               iw-list : list ssid on wifi"
+echo "$text_md               iw-scan : list ssid on wifi"
 echo "$text_md               iw-info : Show the connected wifi"
-echo "$text_md            iw-connect : Connect to ssid in wifi for first time"
-echo "$text_md               iw-file : Connect to ssid in wifi saved"
+echo "$text_md           wpa-connect : Connect to ssid in wifi for first time"
+echo "$text_md              wpa-file : Connect to ssid in wifi saved"
 echo "$text_md                  dhcp : run dhcp client"
 echo  $text_md
 echo "$title_md         [ tool rules ]"
@@ -10207,10 +10207,10 @@ echo "$text_md         tcpdump : Escuchar las conexiones ip."
 echo  $text_md
 echo "$title_md         [ tool connect ]"
 echo  $text_md
-echo "$text_md               iw-list : lista ssid en wifi"
+echo "$text_md               iw-scan : lista ssid en wifi"
 echo "$text_md               iw-info : Muestra a que wifi esta conectado"
-echo "$text_md            iw-connect : Conecta a un ssid por primera vez"
-echo "$text_md               iw-file : Conecta a un ssid guardado"
+echo "$text_md           wpa-connect : Conecta a un ssid por primera vez"
+echo "$text_md              wpa-file : Conecta a un ssid guardado"
 echo "$text_md                  dhcp : corre un cliente de dhcp"
 echo  $text_md
 echo "$title_md   [ Herramienta de reglas ]."
