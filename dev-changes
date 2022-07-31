@@ -1,6 +1,6 @@
 
  12-
- 11- añadir iw-list iw-info iw-connect dhcp. HECHO
+ 11- añadir iw-scan y iw-info y wpa-connect y wpan-file y dhcp. HECHO
  10- añadir tool-connect. HECHO
  9- añadir un md5sum. HECHO
  7- añadir rule-add-shield. HECHO
