@@ -3857,6 +3857,9 @@ echo "dd:         $command_dd"
 echo "tee:        $command_tee"
 echo "glxgears:   $command_glxgears"
 echo "txt2html:   $command_txt2html"
+echo "iw:         $command_iw"
+echo "wpa_passphrase: $command_wpa_passphrase"
+echo "wpa_supplicant: $command_wpa_supplicant"
 echo $tab
 echo $footer_lineal
 exit; fi
