@@ -887,7 +887,10 @@ pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "exam
 clear; $cmd_fwiptables log-search $pattern ; exit ;; 
 log-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 fw-*)  echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
-*) dialog --title "  Cli Output || $cmd_fwiptables || $(date)" --msgbox "$($cmd_fwiptables -txt $second_option $third_option)" 0 0 ; clear ; exit ;;
+"hosts") echo $message_without_cli ; $cmd_fwiptables hosts ; exit ;;
+*) dialog --title "  Cli Output || $cmd_fwiptables || $(date)" \
+--msgbox "$($cmd_fwiptables -txt $second_option $third_option)" 0 0 ; 
+clear ; exit ;;
 ####
 ####
 esac ; fi
