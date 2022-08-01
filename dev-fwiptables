@@ -5149,6 +5149,16 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   0508  "$tab names-config" \
   0509  "$tab regen-config" \
   0510  "$tab examples-config" \
+  0600 "$quad [ Tool Connect ] $cinco" \
+  0601  "$tab iw-scan" \
+  0602  "$tab iw-info" \
+  0603  "$tab wpa-connect" \
+  0604  "$tab wpa-file" \
+  0605  "$tab dhcp" \
+  0700 "$quad [ Tool rules ] $cinco" \
+  0701  "$tab rule-del-num" \
+  0702  "$tab rule-del-shield" \
+  0703  "$tab rule-add-shield" \
   0800 "$quad [ Tool Sockets ] $cinco" \
   0801  "$tab ss" \
   0802  "$tab netstat" \
@@ -5368,6 +5378,14 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0508) clear ; $cmd_fwiptables cli names-config ;;
  0509) clear ; $cmd_fwiptables cli regen-config ;;
  0510) clear ; $cmd_fwiptables cli examples-config ;;
+ 0601) clear ; $cmd_fwiptables iw-scan ;;
+ 0602) clear ; $cmd_fwiptables iw-info ;;
+ 0603) clear ; $cmd_fwiptables wpa-connect ;;
+ 0604) clear ; $cmd_fwiptables wpa_file ;;
+ 0605) clear ; $cmd_fwiptables dhcp ;;
+ 0701) clear ; $cmd_fwiptables rule-del-num ;;
+ 0702) clear ; $cmd_fwiptables rule-del-shield ;;
+ 0703) clear ; $cmd_fwiptables rule-add-shield ;;
  0801) clear ; $cmd_fwiptables cli ss ;;
  0802) clear ; $cmd_fwiptables cli netstat ;;
  0803) clear ; $cmd_fwiptables cli lsof ;;
