@@ -918,7 +918,7 @@ esac ; fi
 if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
 then first_option="-log" 
 echo $head_waiting_log
-echo "### ### $cmd_fwiptables-$fversion-$($command_date): $second_option $third_option $quad_option" &> $output_log
+echo "### ### [ log ] $cmd_fwiptables-$fversion-$($command_date): $second_option $third_option $quad_option" &> $output_log
 $cmd_fwiptables $second_option $third_option &>> $output_log
 cat $output_log | grep -v Warning: &>> $output_filelog
 echo " [ ok ] \
@@ -1033,6 +1033,8 @@ case "$second_option" in
 ole-*) echo $message_without_web ; exit ;;
 colour-*) echo $message_without_web ; exit ;;
 rule-del-number) echo $message_without_web ; exit ;;
+wpa-connect) echo $message_without_web ; exit ;;
+wpa-file)  echo $message_without_web ; exit ;;
 esac
 echo $head_waiting_web
 rm "$temporal_text"* &> /dev/null
@@ -3955,7 +3957,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ####
 ####
 *)$cmd_fwiptables "$second_option" "$third_option" "$quarter_option" &> "$temporal_guifinal"
-zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" \
+zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4016,7 +4018,7 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 *)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
 #### cat $temporal_gui | grep -v Warning: &> $temporal_guifinal
-zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" \
+zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4032,7 +4034,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
-zenity --forms $graphic_dimension --title="Gui Output || $cmd_fwiptables || $(date)" --text="$($cmd_fwiptables mini-options)"
+zenity --forms $graphic_dimension --title="Gui Output || $cmd_fwiptables || " --text="$($cmd_fwiptables mini-options)"
 exit; fi
 ####
 ####
@@ -4048,7 +4050,7 @@ selection=$(zenity $graphic_dimension  \
 "07 tool sockets" "08 Tool forward" "09 Tool tcp" "10 Tool udp" "11 Tool icmp"  "12 Tool sudo" \
 "13 Tool game" "14 Tool system" "15 Tool install" "16 Tool blacklist" "17 Tool dev" \
 "18 Show hardware" "19 Show etc" "20 Show log" "21 Show about" "22 Show help" \
---column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $(date) ")
+--column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || ")
 #### 
 #### 
 case "$selection" in

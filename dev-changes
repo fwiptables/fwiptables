@@ -1,5 +1,6 @@
 
- 15- cambios en el formato -log . HECHO 
+ 16- elimina la fecha y ahora excepto en -log. HECHO
+ 15- cambios en el formato -log. HECHO 
  14- repasar cli-menu de los añadidos. HECHO
  13- repasar gui menu de los añadidos. HECHO
  12- añadir cabeceras "### ### [ ok ]" con variable head_ok. HECHO
