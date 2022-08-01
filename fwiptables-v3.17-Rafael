@@ -237,13 +237,13 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### #### english: look  #### spanish: apariencia
 quad="####" cinco="#####" ; tab="     " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
-title_md="###  "; text_md="     "; brake_md="echo ---" ; center_in_md="<-"; center_out_md="->"
+title_md="### "; text_md="     "; brake_md="echo ---" ; center_in_md="<-"; center_out_md="->"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 ralla="______________________"                                      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$title_md $title_md || || $cmd_fwiptables || Version $fversion || $(date) || || $title_md"
+head_principal="$title_md  $title_md || || $cmd_fwiptables || Version $fversion || $(date) || || $title_md"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -253,6 +253,8 @@ head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+header_ok="### ### [ ok ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -510,7 +512,7 @@ if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp="$
 ####
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
-echo "$title_md [ ok ] [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
+echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
 echo "$text_md [ running ] [ $name_fwiptables uninstalling ]"
 if  [ -f $directory_fwiptables/$cmd_fwiptables ]; then
 rm $directory_fwiptables/$name_fwiptables &> /dev/null
@@ -535,7 +537,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro
-echo "$title_md [ ok ] [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ]"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ]"
 ####
 ####
 ####  english: remove old file 
@@ -691,7 +693,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ]"
+echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
@@ -729,7 +731,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "dev-upgrade" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ upgrade development version from web ] [ upgrade.md ]"
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
@@ -2596,7 +2598,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help-options" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ List group options help ]"
+echo "$header_ok [ $first_option ] [ List group options help ]"
 $cmd_fwiptables output-interface
 $cmd_fwiptables firewall-options
 $cmd_fwiptables tool-options
@@ -2612,7 +2614,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "names-config" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ List configs cfg ]"
+echo "$header_ok [ $first_option ]  [ List configs cfg ]"
 echo "$tab $tab [ English ] [ list configs files in cfg format ]"
 echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
@@ -2636,7 +2638,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "some-example" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ List examples ] [ some-examples.md ]"
+echo "$header_ok [ $first_option ] [ List examples ] [ some-examples.md ]"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
 echo "$title_md                                      [ some-example ]                                  "
@@ -2747,7 +2749,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-launch" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ launch rules ] [ firewall-launch.md ]"
+echo "$header_ok [ $first_option ] [ launch rules ] [ firewall-launch.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Launch iptables rules ]"
 echo "$text_md [ spanish info ] [ Lanza reglas de iptables ]"
@@ -2853,7 +2855,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-rules" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ control rules ] [ firewall-rules.md ]"
+echo "$header_ok [ $first_option ] [ control rules ] [ firewall-rules.md ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
@@ -2896,7 +2898,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-list" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ List rules ] [ firewall-list.md ]"
+echo "$header_ok [ $first_option ] [ List rules ] [ firewall-list.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
@@ -2978,7 +2980,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-numrules" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ List rules in numerical ]"
+echo "$header_ok [ $first_option ]  [ List rules in numerical ]"
 echo " [ List iptables numerical rules ]"
 echo " [ Lista reglas numericas de iptables ]"
 echo
@@ -3002,7 +3004,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-custom" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool custom rules config ] [ firewall-custom.md ]"
+echo "$header_ok [ $first_option ] [ tool custom rules config ] [ firewall-custom.md ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ custom configs ]"
 echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
@@ -3045,7 +3047,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "output-interface" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ control interface ] [ output-interface.md ]"
+echo "$header_ok [ $first_option ] [ control interface ] [ output-interface.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
@@ -3094,7 +3096,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool sockets ] [ tool-sockets.md ]"
+echo "$header_ok [ $first_option ] [ tool sockets ] [ tool-sockets.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool sockets ]"
 echo "$text_md [ spanish info ] [ Herramienta de sockets ]"
@@ -3146,7 +3148,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-game" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool game ] [ tool-game.md ]"
+echo "$header_ok [ $first_option ] [ tool game ] [ tool-game.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool game ]"
 echo "$text_md [ spanish info ] [ Herramienta de juego ]"
@@ -3177,7 +3179,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-connect" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool connect ] [ tool-connect.md ]"
+echo "$header_ok [ $first_option ] [ tool connect ] [ tool-connect.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool connect ]"
 echo "$text_md [ spanish info ] [ Herramienta de conexion ]"
@@ -3208,7 +3210,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-rules" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool rules ] [ tool-rules.md ]"
+echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rules.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool rules ]"
 echo "$text_md [ spanish info ] [ Herramienta de reglas ]"
@@ -3233,7 +3235,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool forward ] [ tool-forward.md ]"
+echo "$header_ok [ $first_option ] [ tool forward ] [ tool-forward.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool forward ]"
 echo "$text_md [ spanish info ] [ Herramienta de ipforwading ]"
@@ -3286,7 +3288,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool tcp ] [ tool-tcp.md ]"
+echo "$header_ok [ $first_option ] [ tool tcp ] [ tool-tcp.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool tcp ]"
 echo "$text_md [ spanish info ] [ Herramienta tcp ]"
@@ -3314,7 +3316,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-udp" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool udp ] [ tool-udp.md ]"
+echo "$header_ok [ $first_option ] [ tool udp ] [ tool-udp.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool udp ]"
 echo "$text_md [ spanish info ] [ Herramienta udp ]"
@@ -3345,7 +3347,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool nmap ] [ tool-nmap.md]"
+echo "$header_ok [ $first_option ] [ tool nmap ] [ tool-nmap.md]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool nmap ]"
 echo "$text_md [ spanish info ] [ Herramienta nmap ]"
@@ -3376,7 +3378,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool sudo ] [ tool-sudo.md ]"
+echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudo.md ]"
 echo  $text_md
 echo "$text_md [ Tool sudo ]"
 echo "$text_md [ Herramienta sudo ]"
@@ -3404,7 +3406,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool install ] [ tool-install.md ]"
+echo "$header_ok [ $first_option ] [ tool install ] [ tool-install.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
@@ -3435,7 +3437,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-blacklist" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-blacklist.md ]"
+echo "$header_ok [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-blacklist.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool blacklist ]"
 echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
@@ -3460,7 +3462,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-dev" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool install ] [ tool-dev.md ]"
+echo "$header_ok [ $first_option ] [ tool install ] [ tool-dev.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
@@ -3491,7 +3493,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ tool system ] [ tool-system.md ]"
+echo "$header_ok [ $first_option ] [ tool system ] [ tool-system.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Tool system ]"
 echo "$text_md [ spanish info ] [ Herramienta sistema ]"
@@ -3522,7 +3524,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ show etc files ] [ show-etc.md ]"
+echo "$header_ok [ $first_option ] [ show etc files ] [ show-etc.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show configs files from etc ]"
 echo "$text_md [ spanish info ] [ Mostrar configuraciones de archivos de etc ]"
@@ -3562,7 +3564,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-hardware" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ show hardware info ] [ show-hardware.md ]"
+echo "$header_ok [ $first_option ] [ show hardware info ] [ show-hardware.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show hardware info ]"
 echo "$text_md [ spanish info ] [ Muestra informacion del hardware ]"
@@ -3599,7 +3601,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ show log files ] [ show-log.md ]"
+echo "$header_ok [ $first_option ] [ show log files ] [ show-log.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show log ]"
 echo "$text_md [ spanish info ] [ Mostrar log ]"
@@ -3630,7 +3632,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ show about ] [ show-about.md ]"
+echo "$header_ok [ $first_option ] [ show about ] [ show-about.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show about ]"
 echo "$text_md [ spanish info ] [ Mostrar acerca de ]"
@@ -3667,7 +3669,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ show help ] [ show-help.md ]"
+echo "$header_ok [ $first_option ] [ show help ] [ show-help.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show help ]"
 echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
@@ -5477,7 +5479,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "version" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show version about $cmd_fwiptables ]"
+ echo "$header_ok [ $first_option ]  [ Show version about $cmd_fwiptables ]"
  echo
  echo "$tab [Name program]"
  echo "$fprogram"
@@ -5522,7 +5524,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "examples-config" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show examples for $cmd_fwiptables ]"
+ echo "$header_ok [ $first_option ]  [ Show examples for $cmd_fwiptables ]"
  echo $header_lineal
  echo"[ examples ] [ examples for some services in client mode ]"
  echo
@@ -5689,7 +5691,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "license" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show license from git sourceforge for $cmd_fwiptables ]"
+ echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_fwiptables ]"
  echo $header_lineal
  echo "license text for gpl v2 downloading from .. $license_gpl "
  echo "$tab" "$tab" "$tab"
@@ -5705,7 +5707,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show howto upgrade $cmd_fwiptables ]"
+ echo "$header_ok [ $first_option ]  [ Show howto upgrade $cmd_fwiptables ]"
  echo $header_lineal
  echo "$tab [ status ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
  echo "$tab [ status ] [ The latest version is: ]"
@@ -5729,7 +5731,7 @@ exit; fi
 ####
 if [ "$first_option" = "blacklist-list" ]; then $give_cover
 echo $tab
- echo "$title_md [ ok ] [ $first_option ]  [ Show blacklist servers ]"
+ echo "$header_ok [ $first_option ]  [ Show blacklist servers ]"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_server_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
@@ -5785,7 +5787,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-on" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Configure blacklist server ]"
+echo "$header_ok [ $first_option ]  [ Configure blacklist server ]"
 echo $tab
 ####
 ####
@@ -5846,7 +5848,7 @@ echo $tab; exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-off" ]; then 
-echo "$title_md [ ok ] [ $first_option ]  [ Remove blacklist server ]"
+echo "$header_ok [ $first_option ]  [ Remove blacklist server ]"
 echo $tab
 echo $directory_temporal
 echo $cincuenta > $directory_temporal/$first_option-hosts
@@ -5996,7 +5998,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-route" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show route tables ]"
+ echo "$header_ok [ $first_option ]  [ Show route tables ]"
  echo $header_lineal
  if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
  echo "$tab [ ip route ipv4 ]"
@@ -6015,7 +6017,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ss" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ] [ Show sockets with ss ]"
+ echo "$header_ok [ $first_option ] [ Show sockets with ss ]"
  echo $header_lineal
  if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab [ The ipv6 sockets ]"
@@ -6034,7 +6036,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "lsof" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show sockets with lsof ]"
+ echo "$header_ok [ $first_option ]  [ Show sockets with lsof ]"
  echo $header_lineal
  if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
  echo "$tab [The sockets with lsof ipv6 ]"
@@ -6053,7 +6055,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "netstat" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show sockets with netstat ]"
+ echo "$header_ok [ $first_option ]  [ Show sockets with netstat ]"
  echo $header_lineal
  if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
  echo "$tab [The sockets list with netstat ]"
@@ -6069,7 +6071,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-listen" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show info address proxy ]"
+ echo "$header_ok [ $first_option ]  [ Show info address proxy ]"
  echo $header_lineal
  if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
  echo "$tab info socket list:"
@@ -6091,7 +6093,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-proxy" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show info address proxy whith its system variable ]"
+ echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ]"
  echo $header_lineal
  echo "$tab Info address proxy"
  echo "$tab Web http_proxy:    $http_proxy"
@@ -6108,7 +6110,7 @@ exit; fi
 ####
  if [ "$first_option" = "netstat-nat" ]; then  $give_cover
  if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
- echo "$title_md [ ok ] [ $first_option ]  [ Show sockets with netstat for proxy ]"
+ echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ]"
  echo $header_lineal
  echo "$tab [ The devices list with netstat for nat ]"
  $command_netstat_nat
@@ -6123,7 +6125,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-on" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Active ip forwading in kernel ]"
+ echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ]"
  echo $header_lineal
  for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
  do $command_sysctl -w $a=1 ; done
@@ -6138,7 +6140,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-off" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Deactive ip forwading in kernel ]"
+ echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ]"
  echo $header_lineal
  for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
  do $command_sysctl -w $a=0 ; done
@@ -6153,7 +6155,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-alltables" ]; then  $nada
- echo "$title_md [ ok ] [ $first_option ]  [ List all rules ]"
+ echo "$header_ok [ $first_option ]  [ List all rules ]"
  echo $header_lineal
  echo; echo; echo "### LIST ARPTABLES ###"
  $cmd_fwiptables list-arptables
@@ -6194,7 +6196,7 @@ exit; fi
  "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
  nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
  "$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
- echo "$title_md [ ok ] [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  case $legacycuatro in
@@ -6227,7 +6229,7 @@ exit; fi
  nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 "$command_ip6tables_nft" -t filter -L OUTPUT 1 )
 #### echo $header_ender
- echo "$title_md [ ok ] [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  case $legacyseis in
@@ -6283,7 +6285,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-filter4" ]; then $give_cover 
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ With rules xtables ] [ iptables-legacy ]"
@@ -6305,7 +6307,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-forward" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6326,7 +6328,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-filter6" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
@@ -6348,7 +6350,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-forward6" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6369,7 +6371,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-nat4" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ With rules xtables ] [ iptables-legacy ] $tab  "
@@ -6389,7 +6391,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-nat6" ]; then $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ With rules xtables ] [ iptables-legacy ]"
@@ -6409,7 +6411,7 @@ exit; fi
 ####
  if [ "$first_option" = "listnum" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [With rules netfilter] [iptables-nft]"  
@@ -6429,7 +6431,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-forwardnum" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6450,7 +6452,7 @@ exit; fi
 ####
  if [ "$first_option" = "listnum6" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
@@ -6470,7 +6472,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-forwardnum6" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6491,7 +6493,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-mangle4" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6512,7 +6514,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-mangle6" ]; then $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
@@ -6532,7 +6534,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-raw4" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ]"
@@ -6552,7 +6554,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-raw6" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6573,7 +6575,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-security4" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6594,7 +6596,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-security6" ]; then  $give_cover
  echo $header_ender
- echo "$title_md [ ok ] [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
+ echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6614,7 +6616,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-ebtables" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ List ebtables ]"
+ echo "$header_ok [ $first_option ]  [ List ebtables ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6634,7 +6636,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-arptables" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ List arptables ipv4 ]"
+ echo "$header_ok [ $first_option ]  [ List arptables ipv4 ]"
  echo $header_lineal
  echo $tab
  echo $tab
@@ -6934,7 +6936,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "alias-list" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ list alias and autocomplete for $cmd_fwiptables ]"
+echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_fwiptables ]"
 echo $header_lineal
 echo "$tab [ alias file ] [  /etc/profile.d/$cmd_fwiptables ]"
 cat /etc/bash_completion.d/$cmd_fwiptables
@@ -6951,7 +6953,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "md5" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Show sum md5 from one file ]"
+echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ]"
 echo $header_lineal
 if [ -f $second_option ]; then $command_md5sum $second_option
 else echo " [ info ] [ Example: $cmd_fwiptables md5 file ]"; fi
@@ -6966,7 +6968,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "rule-add-shield" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Add shield ssh ]"
+echo "$header_ok [ $first_option ]  [ Add shield ssh ]"
 ####
 ####
 $cmd_fwiptables save no_default_tmp &> /dev/null
@@ -7032,7 +7034,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "rule-del-shield" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Reset shield ssh ]"
+echo "$header_ok [ $first_option ]  [ Reset shield ssh ]"
 $cmd_fwiptables save no_default_tmp &> /dev/null
 for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | grep -iv less)
 do egrep -v "shield|SHIELD" $shield >> $shield-less
@@ -7134,7 +7136,7 @@ else) exit ;; esac ; exit; fi
 ####
 ####
 if [ "$first_option" = "iw-scan" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Show SSID from net wifi ]"
+echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ]"
 echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $a up ;
@@ -7150,7 +7152,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "iw-info" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Show connected SSID from net wifi ]"
+echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ]"
 echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_iw $a info ; done 
@@ -7165,7 +7167,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "wpa-connect" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ]"
+echo "$header_ok [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ]"
 echo $header_lineal
 if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo " [ info ] [ Install wpa_passphrase ]" ; exit ; fi
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
@@ -7187,7 +7189,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "wpa-file" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-file wpa_file1 ]"
+echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-file wpa_file1 ]"
 echo $header_lineal
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$(ls -l $directory_default | grep wpa-)" == "$NULL" ]; then
@@ -7208,7 +7210,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "dhcp" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp" ]"
+echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp" ]"
 echo $header_lineal
 if [ "$favorite_dhcp" != "$NULL" ]; then $favorite_dhcp ;
 else echo " [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
@@ -7223,7 +7225,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "ipforward-list" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ Show ip forwading in kernel ]"
+ echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ]"
  echo $header_lineal
  echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
  $command_sysctl -a | grep -i forwarding
@@ -7260,7 +7262,7 @@ exit; fi
  if [ "$first_option" = "info-nodes" ]; then  $give_cover
  case $command_arp_scan in "$NULL") echo "$tab [ fail ] [ install arp-scan command ]" ;;
  *)
- echo "$title_md [ ok ] [ $first_option ]  [ Show the list arp-scan in the lan ]"
+ echo "$header_ok [ $first_option ]  [ Show the list arp-scan in the lan ]"
  echo $header_lineal
  echo $tab
  echo local net: ip lan
@@ -7282,7 +7284,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-default" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ show the default fwiptables ]"
+echo "$header_ok [ $first_option ]  [ show the default fwiptables ]"
 echo $header_lineal
 cat $directory_default/$name_fwiptables-default
 echo $footer_lineal
@@ -7298,7 +7300,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "modify-default" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ modify the default fwiptables ]"
+echo "$header_ok [ $first_option ]  [ modify the default fwiptables ]"
 echo $header_lineal
 echo $footer_lineal
 echo " [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
@@ -7339,7 +7341,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "names" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ List names from firewall saved ]"
+ echo "$header_ok [ $first_option ]  [ List names from firewall saved ]"
  echo $header_lineal
  echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
  echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
@@ -7362,7 +7364,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Reset the firewall ]"
+echo "$header_ok [ $first_option ]  [ Reset the firewall ]"
 echo " [ status ] [ Reseting the firewall ]"
 $cmd_fwiptables stop &> /dev/null
 $cmd_fwiptables continue &> /dev/null
@@ -7519,7 +7521,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "show" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show one firewall saved ]"
+ echo "$header_ok [ $first_option ]  [ show one firewall saved ]"
  echo $header_lineal
  case "$second_option" in
  "$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
@@ -7556,7 +7558,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "actual" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the last firewall saved ]"
+ echo "$header_ok [ $first_option ]  [ show the last firewall saved ]"
  echo $header_lineal
  $command_arptables-save          &> $directory_fwrecover/$name_fwiptables-actual-arptables
  $command_ebtables-save           &> $directory_fwrecover/$name_fwiptables-actual-ebtables   
@@ -7589,7 +7591,7 @@ exit; fi
 ####
 if [ "$first_option" = "stop" ]; then $nada
 echo $head_principal
-echo "$title_md [ ok ] [ $first_option ]  [ Stop the firewall ]"
+echo "$header_ok [ $first_option ]  [ Stop the firewall ]"
 echo $header_lineal
 ####
 ####
@@ -7621,7 +7623,7 @@ exit; fi
 ####
  if [ "$first_option" = "continue" ]; then $nada
  echo $head_principal
- echo "$title_md [ ok ] [ $first_option ]  [ Continue the stoped firewall ]"
+ echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ]"
  echo $header_lineal
 ####
 ####
@@ -7646,7 +7648,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ping-ip4" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]   [ ping ip or host with ipv4 ]"
+echo "$header_ok [ $first_option ]   [ ping ip or host with ipv4 ]"
 echo $header_lineal
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
 ####
@@ -7671,7 +7673,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ping-ip6" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ ping one ip or host with ipv6 ]"
+echo "$header_ok [ $first_option ]  [ ping one ip or host with ipv6 ]"
 echo $header_lineal
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
 ####
@@ -7696,7 +7698,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tracetcp-ip4" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ trace ip or host with ipv4 ]"
+echo "$header_ok [ $first_option ]  [ trace ip or host with ipv4 ]"
 echo $header_lineal
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
@@ -7722,7 +7724,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tracetcp-ip6" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ trace one ip or host with ipv6 ]"
+echo "$header_ok [ $first_option ]  [ trace one ip or host with ipv6 ]"
 echo $header_lineal
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
 ####
@@ -7747,7 +7749,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "traceicmp-ip4" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ trace icmp or host with ipv4 ]"
+echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ]"
 echo $header_lineal
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
@@ -7773,7 +7775,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "traceicmp-ip6" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ trace icmp or host with ipv4 ]"
+echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ]"
 echo $header_lineal
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
 ####
@@ -7799,7 +7801,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "host" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ resolve one ip or host ]"
+ echo "$header_ok [ $first_option ]  [ resolve one ip or host ]"
  echo $header_lineal
  case $command_host in "$NULL") echo "$tab [ fail ] [ Install host command ]" ; exit ;; esac
  case "$second_option" in
@@ -7819,7 +7821,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "dig" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ resolve one ip or host ]"
+ echo "$header_ok [ $first_option ]  [ resolve one ip or host ]"
  echo $header_lineal
  case $command_dig in "$NULL") echo "$tab [ fail ] [ Install dig command ]" ; exit ;; esac
  case "$second_option" in
@@ -7839,7 +7841,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "resolveip" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ resolve one ip or host ]"
+ echo "$header_ok [ $first_option ]  [ resolve one ip or host ]"
  echo $header_lineal
  case $command_resolveip in "$NULL") echo "$tab [ fail ] [ Install resolveip command ]" ; exit ;; esac
  case "$second_option" in
@@ -7859,7 +7861,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "geoip" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ resolve the location to one ip or host ]"
+ echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ]"
  echo $header_lineal
  case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
  case "$second_option" in
@@ -7878,7 +7880,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "ntpdate" ]; then $nada
-echo "$title_md [ ok ] [ $first_option ]  [ update the computer time and date from internet ]"
+echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ]"
 echo $header_lineal
 if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
 echo "$tab Old date: $($command_date)"
@@ -7899,7 +7901,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "scan-tcp" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ scan with nmap tcp ]"
+ echo "$header_ok [ $first_option ]  [ scan with nmap tcp ]"
  echo $header_lineal
  case $command_nmap in $NULL) echo install nmap ; exit ;; esac
  echo "$tab [ status ] [ nmap $first_option ip/mask ]"
@@ -7937,7 +7939,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-syn" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ scan with nmap syn ]"
+ echo "$header_ok [ $first_option ]  [ scan with nmap syn ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
  echo "$tab [ status ] [ nmap $first_option ip/mask ]"
@@ -7973,7 +7975,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-fin" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ scan with nmap fin ]"
+ echo "$header_ok [ $first_option ]  [ scan with nmap fin ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
  echo "$tab [ status ] [ nmap $first_option ip/mask ]"
@@ -8011,7 +8013,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-udp" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ scan with nmap udp ]"
+ echo "$header_ok [ $first_option ]  [ scan with nmap udp ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
  echo "$cinco [ status ] [ nmap $first_option ip/mask ]"
@@ -8049,7 +8051,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
 ####
 ####
  if [ "$first_option" = "scan-ping" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ scan with nmap ping ]"
+ echo "$header_ok [ $first_option ]  [ scan with nmap ping ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
  echo "$tab [ status ] [ nmap $first_option ip/mask ]"
@@ -8085,7 +8087,7 @@ $cmd_fwiptables stop
 ####
 ####
 if [ "$first_option" = "free-ram" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ freedom from innecesary ram ]"
+echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ]"
 echo $header_lineal
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo " Actual Memory"
@@ -8105,7 +8107,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-disk" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ test the disc speed ]"
+ echo "$header_ok [ $first_option ]  [ test the disc speed ]"
  echo $header_lineal
  case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
  echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
@@ -8124,7 +8126,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ram" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ test the ram speed ]"
+ echo "$header_ok [ $first_option ]  [ test the ram speed ]"
  echo $header_lineal
  case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
  case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
@@ -8145,7 +8147,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-glx" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
+ echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
  echo $header_lineal
  case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
  vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
@@ -8160,7 +8162,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "radio-mp3" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Listen radio online ]"
+echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
 ####
@@ -8191,7 +8193,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "radio-cadena100" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Listen radio online ]"
+echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
 ####
@@ -8218,7 +8220,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "radio-cadenadial" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ Listen radio online ]"
+echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
 echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
 ####
@@ -8644,7 +8646,7 @@ done ; clear ; exit ; fi
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
 echo 
-echo "$title_md [ ok ] [ $first_option ]  [ play game clone ole-word ]"
+echo "$header_ok [ $first_option ]  [ play game clone ole-word ]"
 echo "$header_lineal"
 ##### INICIO ####
 #### Choose language english or spanish
@@ -9026,7 +9028,7 @@ done ; clear ; exit ; fi
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
 echo
-echo "$title_md [ ok ] [ $first_option ]  [ play game clone ole-number ]"
+echo "$header_ok [ $first_option ]  [ play game clone ole-number ]"
 echo "$header_lineal"
 ##### INICIO ####
 #### Choose language english or spanish
@@ -9134,7 +9136,7 @@ fi
 ####
 ####
  if [ "$first_option" = "sentlog" ] ; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show $output_filelog ]"
+ echo "$header_ok [ $first_option ]  [ show $output_filelog ]"
  cat  "$output_filelog"
  echo "$tab [ this file is $output_filelog ]"
  echo "$footer_lineal"
@@ -9148,7 +9150,7 @@ fi
 ####
 ####
  if [ "$first_option" = "autolog" ] ; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [  show "$output_autolog" ]"
+ echo "$header_ok [ $first_option ]  [  show "$output_autolog" ]"
  cat  "$output_autolog"
  echo "$tab [ last end of file showed "$output_autolog" ]"
  echo "$footer_lineal"
@@ -9162,7 +9164,7 @@ fi
 ####
 ####
  if [ "$first_option" = "log-ssh" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ search sshd in logs ]"
+ echo "$header_ok [ $first_option ]  [ search sshd in logs ]"
  echo $header_lineal
  find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "ssh"
  echo $footer_lineal
@@ -9193,7 +9195,7 @@ fi
 ####
 ####
  if [ "$first_option" = "dev-version" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the link to dev version from git repository ]"
+ echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ]"
  echo $header_lineal
  echo $fweb_development
  echo $footer_lineal
@@ -9207,7 +9209,7 @@ fi
 ####
 #### 
  if [ "$first_option" = "dev-changes" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the link to dev-changes from git repository ]"
+ echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ]"
  echo $header_lineal
  $favorite_text_browser -source $fweb_changes
  echo $footer_lineal
@@ -9221,7 +9223,7 @@ fi
 ####
 ####
  if [ "$first_option" = "new-versions" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the new versions in $fweb_main ]"
+ echo "$header_ok [ $first_option ]  [ show the new versions in $fweb_main ]"
  echo $header_lineal
  case $favorite_text_browser in 
  "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -9239,7 +9241,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lpinfo" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list printers with lpinfo and lpstat ]"
+ echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ]"
  echo $header_lineal
  echo"lpinfo -v -l"
  echo $tab
@@ -9263,7 +9265,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lsblk" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list disks ]"
+ echo "$header_ok [ $first_option ]  [ list disks ]"
  echo $header_lineal
  lsblk -o name,size,fsuse%,label,mountpoints
  echo $tab
@@ -9278,7 +9280,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lsusb" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list usb ]"
+ echo "$header_ok [ $first_option ]  [ list usb ]"
  echo $header_lineal
  lsusb
  echo $tab
@@ -9293,7 +9295,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lscpu" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list cpu ]"
+ echo "$header_ok [ $first_option ]  [ list cpu ]"
  echo $header_lineal
  lscpu
  echo $tab
@@ -9308,7 +9310,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lspci" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list cpi hardware sockets ]"
+ echo "$header_ok [ $first_option ]  [ list cpi hardware sockets ]"
  echo $header_lineal
  lspci
  echo $tab
@@ -9323,7 +9325,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lsgpu" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list gpu ]"
+ echo "$header_ok [ $first_option ]  [ list gpu ]"
  echo $header_lineal
  lsgpu
  echo $tab
@@ -9338,7 +9340,7 @@ fi
 ####
 ####
  if [ "$first_option" = "lshw" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ list hardware ]"
+ echo "$header_ok [ $first_option ]  [ list hardware ]"
  echo $header_lineal
  lshw
  echo $tab
@@ -9353,7 +9355,7 @@ fi
 ####
 ####
  if [ "$first_option" = "hosts" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the file /etc/hosts ]"
+ echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ]"
  echo $header_lineal
  cat /etc/hosts
  echo $tab
@@ -9369,7 +9371,7 @@ fi
 ####
 ####
  if [ "$first_option" = "protocols" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the file /etc/protocols ]"
+ echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ]"
  echo $header_lineal
  cat /etc/protocols  | sed s/\&//g 
  echo $tab
@@ -9385,7 +9387,7 @@ fi
 ####
 ####
  if [ "$first_option" = "services" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the file /etc/services ]"
+ echo "$header_ok [ $first_option ]  [ show the file /etc/services ]"
  echo $header_lineal
  cat /etc/services | sed s/\&//g 
  echo $tab
@@ -9401,7 +9403,7 @@ fi
 ####
 ####
  if [ "$first_option" = "hosts.allow" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the file /etc/allow ]"
+ echo "$header_ok [ $first_option ]  [ show the file /etc/allow ]"
  echo $header_lineal
  cat /etc/hosts.allow
  echo $tab
@@ -9417,7 +9419,7 @@ fi
 ####
 ####
  if [ "$first_option" = "hosts.deny" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show the file /etc/deny ]"
+ echo "$header_ok [ $first_option ]  [ show the file /etc/deny ]"
  echo $header_lineal
  cat /etc/hosts.deny
  echo $tab
@@ -9433,7 +9435,7 @@ fi
 ####
 ####
 if [ "$first_option" = "resolv.conf" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ show resolv.conf ]"
+echo "$header_ok [ $first_option ]  [ show resolv.conf ]"
 echo $header_lineal
 if [ -f /etc/resolv.conf.head ]; then
 echo "$tab  [ with resolv.conf.head ]"
@@ -9458,7 +9460,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ about $cmd_fwiptables ]"
+echo "$header_ok [ $first_option ]  [ about $cmd_fwiptables ]"
 echo $header_lineal
 echo
 echo "$tab [Fran FireWall iptables Generator]"
@@ -9514,7 +9516,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-system" ]; then  $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show info about system ]"
+ echo "$header_ok [ $first_option ]  [ show info about system ]"
  echo $header_lineal
  echo "$tab [ System info ] [ Distro ] "
  cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
@@ -9545,7 +9547,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "info-net" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show info about net ]"
+ echo "$header_ok [ $first_option ]  [ show info about net ]"
  echo $header_lineal
  echo $tab
  echo "$tab [ Network Route ] [ Route ipv4 ]"
@@ -9597,7 +9599,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ip4" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ test speed ipv4 with internet ]"
+ echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ]"
  echo $header_lineal
  case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
@@ -9620,7 +9622,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "speed-ip6" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ test speed ipv6 with internet ]"
+ echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ]"
  echo $header_lineal
  case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
@@ -9643,7 +9645,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "web-cert" ] ; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ get one web certifcate from one server with port 443]"
+ echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443]"
  echo $header_lineal
  case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
@@ -9663,7 +9665,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "clean-tmp" ] ; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ clean $name_fwiptables temporal files]"
+echo "$header_ok [ $first_option ]  [ clean $name_fwiptables temporal files]"
 echo $header_lineal
 ####
 ####
@@ -9688,7 +9690,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then $give_cover
-echo "$title_md [ ok ] [ $first_option ]  [ show variables cfg from english configuration ]"
+echo "$header_ok [ $first_option ]  [ show variables cfg from english configuration ]"
 echo $header_lineal
 cat  $defaultfullcfg_eng
 echo $footer_lineal
@@ -9702,7 +9704,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "config-spa" ]; then $give_cover
- echo "$title_md [ ok ] [ $first_option ]  [ show variables cfg from spanish configuration ]"
+ echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ]"
  echo $header_lineal
  cat $defaultfullcfg_spa
  echo $footer_lineal
@@ -9742,7 +9744,7 @@ exit; fi
 ####
 $give_cover
 echo $header_ender
-echo "$title_md [ ok ] [ $first_option ]  [ info group ]"
+echo "$header_ok [ $first_option ]  [ info group ]"
 echo $header_lineal
 echo $tab
 echo
@@ -9772,7 +9774,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "readme" ]; then 
-echo "$title_md [ ok ] [ $first_option ] [ help in english ] [ readme.md ]"
+echo "$header_ok [ $first_option ] [ help in english ] [ readme.md ]"
 $cmd_fwiptables intro
 $cmd_fwiptables options
 echo "$title_md         [ Launch interface ]"
