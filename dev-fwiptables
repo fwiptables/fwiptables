@@ -5380,7 +5380,10 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0510) clear ; $cmd_fwiptables cli examples-config ;;
  0601) clear ; $cmd_fwiptables iw-scan ;;
  0602) clear ; $cmd_fwiptables iw-info ;;
- 0603) clear ; $cmd_fwiptables wpa-connect ;;
+ 0603) clear ;
+ archivoa="$(dialog --stdout --title "Type SSID to connect" --inputbox "$($cmd_fwiptables iw-scan)" 0 0)" 
+ archivob="$(dialog --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
+ $cmd_fwiptables wpa-connect archivoa archivob;;
  0604) clear ; 
  archivo="$(dialog --stdout --title "type wpa file to load" --inputbox "$(ls -1 $directory_default | grep -i wpa)" 0 0)"
  $cmd_fwiptables wpa-file $archivo ;;
