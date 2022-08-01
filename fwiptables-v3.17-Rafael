@@ -5381,7 +5381,9 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  0601) clear ; $cmd_fwiptables iw-scan ;;
  0602) clear ; $cmd_fwiptables iw-info ;;
  0603) clear ; $cmd_fwiptables wpa-connect ;;
- 0604) clear ; $cmd_fwiptables wpa_file ;;
+ 0604) clear ; 
+ archivo="$(dialog --stdout --title "type wpa file to load" --inputbox "$(ls -1 $directory_default | grep -i wpa)" 0 0)"
+ $cmd_fwiptables wpa-file $archivo ;;
  0605) clear ; $cmd_fwiptables dhcp ;;
  0701) clear ; $cmd_fwiptables rule-del-num ;;
  0702) clear ; $cmd_fwiptables rule-del-shield ;;
