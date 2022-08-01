@@ -1,5 +1,6 @@
-
- 12-
+ 
+ 13- repasar cli-menu y gui menu de los añadidos. trabajando
+ 12- añadir cabeceras " ### [ ok ] " con variable head_ok. trabajando
  11- añadir iw-scan y iw-info y wpa-connect y wpan-file y dhcp. HECHO
  10- añadir tool-connect. HECHO
  9- añadir un md5sum. HECHO
