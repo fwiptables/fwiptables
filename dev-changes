@@ -1,4 +1,8 @@
 
+ 1. limpieza de codigo
+
+ cambios fwiptables en desarrollo en dev-fwiptables-4.00
+
  16- elimina la fecha y ahora excepto en -log. HECHO
  15- cambios en el formato -log. HECHO 
  14- repasar cli-menu de los añadidos. HECHO
@@ -16,7 +20,7 @@
  2. añadido alias desde tui-menu a -cli-menu. HECHO
  1. añadido alias desde -cli a -tui. HECHO
 
- cambios en la version en desarrollo: cambios en dev-fwiptables
+ cambios fwiptables 3.17 # lienas=16
 
  3. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. HECHO
  2. pequeños cambios en mini-options. HECHO 
