@@ -918,7 +918,8 @@ esac ; fi
 if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
 then first_option="-log" 
 echo $head_waiting_log
-$cmd_fwiptables $second_option $third_option &> $output_log
+echo "### ### $cmd_fwiptables-$fversion-$($command_date): $second_option $third_option $quad_option" &> $output_log
+$cmd_fwiptables $second_option $third_option &>> $output_log
 cat $output_log | grep -v Warning: &>> $output_filelog
 echo " [ ok ] \
 [ Output $cmd_fwiptables $second_option $third_option sended to $output_filelog ] \
