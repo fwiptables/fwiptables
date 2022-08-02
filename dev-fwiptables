@@ -4050,7 +4050,7 @@ selection=$(zenity $graphic_dimension  \
 "07 tool sockets" "08 Tool forward" "09 Tool tcp" "10 Tool udp" "11 Tool icmp"  "12 Tool sudo" \
 "13 Tool game" "14 Tool system" "15 Tool install" "16 Tool blacklist" "17 Tool dev" \
 "18 Show hardware" "19 Show etc" "20 Show log" "21 Show about" "22 Show help" \
---column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || ")
+--column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $fversion ||")
 #### 
 #### 
 case "$selection" in
