@@ -4950,7 +4950,7 @@ untexto="$cmd_fwiptables gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms $graphic_dimension --title="Gui Shell || $name_fwiptables || $(date) " \
+menugtk=$(zenity --forms $graphic_dimension --title="Gui Shell || $name_fwiptables || $fversion ||" \
 --text="$($cmd_fwiptables mini-options)" --add-entry="$cmd_fwiptables " )
 case $? in
 1)
