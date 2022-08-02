@@ -7,7 +7,7 @@ ruta="/tmp/deb-fwiptables"
 #### crea la estructura de directorios
 mkdir -p $ruta/usr/bin
 mkdir -p $ruta/DEBIAN
-cp $1 $ruta//usr/bin/fwiptables
+cp $1 $ruta/usr/bin/fwiptables-cmd
 #### crea el archivo control
 echo "Package: fwiptables" &> $ruta/DEBIAN/control
 echo "Priority: optional" &>> $ruta/DEBIAN/control
