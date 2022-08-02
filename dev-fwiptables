@@ -10442,7 +10442,7 @@ exit; fi
 ####
 ####
 if [ "$launch_firewall" = "yes" ] ; then $nada ;
-else echo "$tab Choose a one valid option .. "; $cmd_fwiptables $default_security ; exit ; fi
+else echo "$tab Choose a one valid option ... "; $cmd_fwiptables $default_security ; exit ; fi
 ####
 ####
 ###############################################################################################################
