@@ -681,7 +681,7 @@ echo "$text_md [ info ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-men
 #### 
 #### 
 echo "$text_md [ info ] [ Command installed ] [ $directory_fwiptables/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ Grant privileges to user for $name_fwiptables with: ] [ $cmd_fwiptables sudo-adduser user ]"
+echo "$text_md [ info ] [ Grant privileges to user for $name_fwiptables with: ] [ $cmd_fwiptables sudofw-adduser user ]"
 echo "$text_md [  ok  ] [ Ready to run $name_fwiptables ]"
 exit; fi
 ####
@@ -2327,7 +2327,7 @@ echo "$title_md     [ full-options ]  [ See all options with: $cmd_fwiptables op
 echo "$text_md       tool-connect |  iw-scan iw-info wpa-connect wpa-file dhcp                                 "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
-echo "$text_md          tool-sudo |  sudo-adduser sudo-deluser sudo-list alias-list                           "
+echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                   "
 echo "$text_md          show-help |  all-help readme leeme notes options                                      "
 echo "$title_md     [ Example with optional output ]             [ Example Description ]                      "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
@@ -2374,7 +2374,7 @@ echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate                                         "
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
 echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
-echo "$text_md  tool-sudo          |  sudo-adduser sudo-deluser sudo-list alias-list                           "
+echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                           "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
 echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3                        "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
@@ -2446,7 +2446,7 @@ echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-
 echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate                         "
 echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6            "
 echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping            "
-echo "$text_md    tool-sudo         | sudo-adduser sudo-deluser sudo-list alias-list           "
+echo "$text_md    tool-sudo         | sudofw-adduser sudofw-deluser sudofw-list aliasfw-list           "
 echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex                "
 echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx radio            "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                "
@@ -3389,16 +3389,16 @@ echo  $text_md
 echo "$text_md [ Tool sudo ]"
 echo "$text_md [ Herramienta sudo ]"
 echo  $text_md
-echo "$text_md $tab sudo-adduser" 
+echo "$text_md $tab sudofw-adduser" 
 echo "$text_md $tab_lang_english          : Allow sudo $cmd_fwiptables to other choosed users"
 echo "$text_md $tab_lang_spanish          : Permite sudo $cmd_fwiptables a otros elegidos usuarios"
-echo "$text_md $tab sudo-deluser" 
+echo "$text_md $tab sudofw-deluser" 
 echo "$text_md $tab_lang_english          : Remove sudo $cmd_fwiptables to other choosed users"
 echo "$text_md $tab_lang_spanish          : Borra sudo $cmd_fwiptables a otros elegidos usuarios"
-echo "$text_md $tab sudo-list" 
+echo "$text_md $tab sudofw-list" 
 echo "$text_md $tab_lang_english          : List sudo $cmd_fwiptables to other choosed users"
 echo "$text_md $tab_lang_spanish          : Lista sudo $cmd_fwiptables a otros elegidos usuarios"
-echo "$text_md $tab alias-list" 
+echo "$text_md $tab aliasfw-list" 
 echo "$text_md $tab_lang_english          : List the autocompletion alias for $name_fwiptables"
 echo "$text_md $tab_lang_spanish          : Lista los alias de autocompletar para $name_fwiptables"
 echo $footer_lineal
@@ -4556,7 +4556,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudo-adduser" "sudo-deluser" "sudo-list" "alias-list" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-list" "aliasfw-list" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Sudo ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4565,11 +4565,11 @@ case $selection in
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sudo ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sudo ;;
-"sudo-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
-$cmd_fwiptables -gui sudo-adduser $archivo ;;
-"sudo-deluser")$cmd_fwiptables -gui sudo-deluser ;;
-"sudo-list")$cmd_fwiptables -gui sudo-list ;;
-"alias-list")$cmd_fwiptables -gui alias-list ;;
+"sudofw-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
+$cmd_fwiptables -gui sudofw-adduser $archivo ;;
+"sudofw-deluser")$cmd_fwiptables -gui sudofw-deluser ;;
+"sudofw-list")$cmd_fwiptables -gui sudofw-list ;;
+"aliasfw-list")$cmd_fwiptables -gui aliasfw-list ;;
 esac
 ####
 ####
@@ -5195,9 +5195,9 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
   1204  "$tab geoip" \
   1205  "$tab ntpdate" \
   1300 "$quad [ Tool Sudo ] $cinco"  \
-  1301  "$tab sudo-adduser" \
-  1302  "$tab sudo-deluser" \
-  1303  "$tab sudo-list" \
+  1301  "$tab sudofw-adduser" \
+  1302  "$tab sudofw-deluser" \
+  1303  "$tab sudofw-list" \
   1400 "$quad [ Tool Game ] $cinco" \
   1401  "$tab ole-word" \
   1402  "$tab ole-number" \
@@ -5426,9 +5426,9 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_f
  clear ; $cmd_fwiptables geoip $resolve ;;
  1205) clear ; $cmd_fwiptables "ntpdate" ;;
  1301) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
- clear ; $cmd_fwiptables sudo-adduser $resolve ;;
- 1302) clear ; $cmd_fwiptables cli sudo-deluser ;;
- 1303) clear ; $cmd_fwiptables cli sudo-list ;;
+ clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
+ 1302) clear ; $cmd_fwiptables cli sudofw-deluser ;;
+ 1303) clear ; $cmd_fwiptables cli sudofw-list ;;
  1401) clear ; $cmd_fwiptables cli ole-word  ;;
  1402) clear ; $cmd_fwiptables cli ole-number ;;
  1403) resolve="$(dialog --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
@@ -6889,14 +6889,14 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-config:
-############################       english: sudo-adduser: the sudo-adduser option en english
-############################       spanish: sudo-adduser: la opcion de sudo-adduser en ingles
-#### :rutina-inicial-sudo-adduser:
+############################       english: sudofw-adduser: the sudofw-adduser option en english
+############################       spanish: sudofw-adduser: la opcion de sudofw-adduser en ingles
+#### :rutina-inicial-sudofw-adduser:
 ####
 ####
-if [ "$first_option" = "sudo-adduser" ]; then $give_cover
+if [ "$first_option" = "sudofw-adduser" ]; then $give_cover
 case $second_option in
-"$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables sudo-adduser user ]" ; exit ;;
+"$NULL") echo $head_principal ; echo $header_lineal ; echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables sudofw-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
 echo "$autorizados ALL=(root) NOPASSWD: $directory_fwiptables/$cmd_fwiptables " &> /etc/sudoers.d/$cmd_fwiptables
 echo "alias $cmd_fwiptables='sudo $cmd_fwiptables'" &>  /etc/bash_completion.d/$cmd_fwiptables
@@ -6910,13 +6910,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-sudo-adduser:
-############################       english: sudo-deluser: the sudo-deluser option en english
-############################       spanish: sudo-deluser: la opcion de sudo-deluser en ingles
-#### :rutina-inicial-sudo-deluser:
+#### :rutina-final-sudofw-adduser:
+############################       english: sudofw-deluser: the sudofw-deluser option en english
+############################       spanish: sudofw-deluser: la opcion de sudofw-deluser en ingles
+#### :rutina-inicial-sudofw-deluser:
 ####
 ####
-if [ "$first_option" = "sudo-deluser" ]; then $give_cover
+if [ "$first_option" = "sudofw-deluser" ]; then $give_cover
 rm /etc/sudoers.d/$cmd_fwiptables &> /dev/null
 rm /etc/sudoers.d/$name_fwiptables &> /dev/null
 echo " [ ok ] [ deleted auth sudo ]"
@@ -6925,13 +6925,13 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-sudo-deluser:
-############################       english: sudo-list: the sudo-adduser option en english
-############################       spanish: sudo-list: la opcion de sudo-adduser en ingles
-#### :rutina-inicial-sudo-list:
+#### :rutina-final-sudofw-deluser:
+############################       english: sudofw-list: the sudofw-adduser option en english
+############################       spanish: sudofw-list: la opcion de sudofw-adduser en ingles
+#### :rutina-inicial-sudofw-list:
 ####
 ####
-if [ "$first_option" = "sudo-list" ]; then $give_cover
+if [ "$first_option" = "sudofw-list" ]; then $give_cover
 if [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
 echo " [ status ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
 echo " [   ok   ] [ With root sudo for $cmd_fwiptables from some user ]"
@@ -6961,13 +6961,13 @@ fi
 exit; fi
 ####
 ####
-#### :rutina-final-sudo-list:
-############################       english: alias-list: the sudo-adduser option en english
-############################       spanish: alias-list: la opcion de sudo-adduser en ingles
-#### :rutina-inicial-alias-list:
+#### :rutina-final-sudofw-list:
+############################       english: aliasfw-list: the sudofw-adduser option en english
+############################       spanish: aliasfw-list: la opcion de sudofw-adduser en ingles
+#### :rutina-inicial-aliasfw-list:
 ####
 ####
-if [ "$first_option" = "alias-list" ]; then $give_cover
+if [ "$first_option" = "aliasfw-list" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_fwiptables ]"
 echo $header_lineal
 echo "$tab [ alias file ] [  /etc/profile.d/$cmd_fwiptables ]"
@@ -6978,7 +6978,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-alias-list:
+#### :rutina-final-aliasfw-list:
 ############################       english: md5: md5 sum from a one file
 ############################       spanish: md5: suma md5 desde un archivo
 #### :rutina-inicial-md5:
@@ -9982,10 +9982,10 @@ echo "$text_md      scan-ping : Scan a host/mask per ping udp."
 echo  $text_md
 echo "$title_md         [ Tool sudo ]"
 echo  $text_md
-echo "$text_md    sudo-adduser : Allow sudo to other choosed users."
-echo "$text_md    sudo-deluser : Remove sudo to other choosed users."
-echo "$text_md       sudo-list : List sudo to other choosed users."
-echo "$text_md      alias-list : List alias $cmd_fwiptables and its autocomplete."
+echo "$text_md    sudofw-adduser : Allow sudo to other choosed users."
+echo "$text_md    sudofw-deluser : Remove sudo to other choosed users."
+echo "$text_md       sudofw-list : List sudo to other choosed users."
+echo "$text_md      aliasfw-list : List alias $cmd_fwiptables and its autocomplete."
 echo  $text_md
 echo "$title_md         [ Tool game ]"
 echo  $text_md
@@ -10301,9 +10301,9 @@ echo "$text_md     scan-ping : Rastrea una host/mask por ping udp."
 echo  $text_md
 echo "$title_md [ Herramienta de autorizacion ]."
 echo  $text_md
-echo "$text_md  sudo-adduser : Permite autorizacion de usuarios elegidos."
-echo "$text_md  sudo-deluser : Borra la autorizacion otorgada."
-echo "$text_md     sudo-list : Lista autorizacion de usuarios elegidos."
+echo "$text_md  sudofw-adduser : Permite autorizacion de usuarios elegidos."
+echo "$text_md  sudofw-deluser : Borra la autorizacion otorgada."
+echo "$text_md     sudofw-list : Lista autorizacion de usuarios elegidos."
 echo  $text_md
 echo "$title_md [ Herramienta de juego ]."
 echo  $text_md
