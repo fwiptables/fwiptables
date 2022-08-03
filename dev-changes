@@ -1,8 +1,11 @@
 
+ 1.
+
+ cambios fwiptables en desarrollo en dev-fwiptables-4.01
  
  1. arreglo en gui-menu-tool-sockects
 
- cambios fwiptables en desarrollo en dev-fwiptables-4.00
+ cambios fwiptables 4.00 # lineas=1
 
  16- elimina la fecha y ahora excepto en -log. HECHO
  15- cambios en el formato -log. HECHO 
