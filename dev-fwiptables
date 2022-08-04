@@ -254,7 +254,7 @@ head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_ok="### ### [ ok ]"
+header_ok="### ### || || [ ok ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
