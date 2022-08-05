@@ -265,7 +265,8 @@ header_lineal="$tab   $tab  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 footer_lineal="$tab   $tab  "                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$zero_option header"
+#### old system: give_cover="$zero_option header"
+give_cover="echo $head_principal"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_autosave="$cmd_fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
