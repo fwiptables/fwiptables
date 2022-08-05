@@ -267,6 +267,7 @@ footer_lineal="$tab   $tab  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### old system: give_cover="$zero_option header"
 give_cover="echo $head_principal"
+give_load="echo ### ### [ ok ] [ Load firewall ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_autosave="$cmd_fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
@@ -1740,7 +1741,7 @@ if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command=
 ####   #### spanish: cortafuego del sistema custom:
 ####
 ####
-if [ "$first_option" = "custom" ];       then $give_cover  ;
+if [ "$first_option" = "custom" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall custom ]" ;
 launch_firewall="yes" ; type_firewall="custom"; name_firewall="$second_option";
 #### config_variable_version="2"  ;
@@ -1751,7 +1752,7 @@ fi
 ####   #### spanish: cortafuego del sistema off-line:
 ####
 ####
-if [ "$first_option" = "off-line" ];       then $give_cover ;
+if [ "$first_option" = "off-line" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall off-line ]" ;
 launch_firewall="yes" ; type_firewall="off-line"; name_firewall="$first_option";
 fi
@@ -1761,7 +1762,7 @@ fi
 ####   #### spanish: cortafuego del sistema all-permisive:
 ####
 ####
-if [ "$first_option" = "all-permisive" ];  then $give_cover ;
+if [ "$first_option" = "all-permisive" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall all-permisive ]" ;
 launch_firewall="yes" ; type_firewall="all-permisive" ; name_firewall="$first_option";
 fi
@@ -1771,7 +1772,7 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" = "shield-ssh" ];  then $give_cover ;
+if [ "$first_option" = "shield-ssh" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ; type_firewall="shield-ssh"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1789,8 +1790,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" = "client-web" ];    
-then $give_cover ;
+if [ "$first_option" = "client-web" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1807,7 +1807,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" = "client-torrent" ];     then $give_cover ;
+if [ "$first_option" = "client-torrent" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1824,7 +1824,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" = "client-vpn" ];     then $give_cover ; 
+if [ "$first_option" = "client-vpn" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1841,7 +1841,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" = "client-tor" ];     then $give_cover ;
+if [ "$first_option" = "client-tor" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1858,7 +1858,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" = "client-news" ];     then $give_cover ;
+if [ "$first_option" = "client-news" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1880,7 +1880,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" = "client-mail" ];     then $give_cover ;
+if [ "$first_option" = "client-mail" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1909,7 +1909,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" = "client-ftp" ];     then $give_cover ;
+if [ "$first_option" = "client-ftp" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1926,7 +1926,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" = "lan-vpn" ];     then $give_cover ;
+if [ "$first_option" = "lan-vpn" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1944,7 +1944,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" = "lan-tor" ];     then $give_cover ;
+if [ "$first_option" = "lan-tor" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1962,7 +1962,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" = "games-shooter" ];     then $give_cover  ;
+if [ "$first_option" = "games-shooter" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1979,7 +1979,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" = "game-wesnoth" ]; then $give_cover  ;
+if [ "$first_option" = "game-wesnoth" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -1996,7 +1996,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" = "game-minetest" ]; then $give_cover  ;
+if [ "$first_option" = "game-minetest" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2013,7 +2013,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" = "game-freeciv" ]; then $give_cover  ;
+if [ "$first_option" = "game-freeciv" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2030,7 +2030,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" = "game-widelands" ]; then $give_cover  ;
+if [ "$first_option" = "game-widelands" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2047,7 +2047,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" = "server-web" ];     then $give_cover ;
+if [ "$first_option" = "server-web" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2064,7 +2064,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" = "server-ftp" ];     then $give_cover ;
+if [ "$first_option" = "server-ftp" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2081,7 +2081,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-squid:
 ####
 ####
-if [ "$first_option" = "server-squid" ];     then $give_cover ;
+if [ "$first_option" = "server-squid" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2098,7 +2098,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" = "server-news" ];     then $give_cover ;
+if [ "$first_option" = "server-news" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2120,7 +2120,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" = "server-mail" ];     then $give_cover ;
+if [ "$first_option" = "server-mail" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2149,7 +2149,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" = "server-samba" ];   then $give_cover ;
+if [ "$first_option" = "server-samba" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2166,7 +2166,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" = "server-print" ];   then $give_cover ;
+if [ "$first_option" = "server-print" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2183,7 +2183,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" = "server-ssh" ];     then $give_cover ;
+if [ "$first_option" = "server-ssh" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2200,7 +2200,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" = "server-lamp" ];     then $give_cover ; 
+if [ "$first_option" = "server-lamp" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2218,7 +2218,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" = "server-asterisk" ];     then $give_cover ;
+if [ "$first_option" = "server-asterisk" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2237,7 +2237,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" = "server-mumble" ];     then $give_cover ;
+if [ "$first_option" = "server-mumble" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2254,7 +2254,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" = "server-teamspeak" ];     then $give_cover ;
+if [ "$first_option" = "server-teamspeak" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
@@ -2275,7 +2275,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" = "server-sql" ];     then $give_cover ;
+if [ "$first_option" = "server-sql" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
