@@ -1930,7 +1930,7 @@ if [ "$first_option" = "client-squid" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
-shield_ssh="" ;
+shield_ssh="no" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp=""
