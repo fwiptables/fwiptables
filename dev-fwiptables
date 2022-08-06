@@ -5105,7 +5105,7 @@ exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $cmd_fwiptables || $fversion" --menu "Select:" 0 0 0\
+menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0\
   0000 "$quad $tab [$cmd_fwiptables cli-menu] $tab $cinco" \
   0100 "$quad [ Full Options ] $cinco" \
   0200 "$quad [ Firewall Rules ] $cinco" \
