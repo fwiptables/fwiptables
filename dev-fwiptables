@@ -1922,6 +1922,23 @@ server_port_tcp="" ;
 fi
 ####
 ####
+####   #### english: firewall of system client-squid:
+####   #### spanish: cortafuego del sistema client-squid:
+####
+####
+if [ "$first_option" = "client-squid" ]; then $give_cover ; $give_load
+echo " [ running ] [ loading firewall client-squid ]" ;
+launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+#### english: max tries for each hour 
+shield_ssh="" ;
+#### server http and https and ssh /tcp and https udp
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_udp=""
+client_port_tcp="http,https,ssh,8080,3128" ;
+server_port_tcp="" ;
+fi
+####
+####
 ####   #### english: firewall of system lan-vpn:
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
@@ -2326,16 +2343,16 @@ echo "$text_md                       show-config modify-config del-config names-
 echo "$text_md    firewall-launch |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                       client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                       client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
-echo "$text_md                       server-print server-lamp server-news server-mail server-ftp server-squid "
-echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk                "
-echo "$duo_md   [ full-options ]  [ See all options with: $cmd_fwiptables options ]                       "
+echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
+echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp "
+echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid   "
+echo "$duo_md   [ full-options ]  [ See all options with: $cmd_fwiptables options ]                           "
 echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-client                            "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                   "
 echo "$text_md          show-help |  all-help readme leeme notes options                                      "
-echo "$duo_md     [ Example with optional output ]             [ Example Description ]                      "
+echo "$duo_md     [ Example with optional output ]             [ Example Description ]                        "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
@@ -2355,7 +2372,7 @@ exit ; fi
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ options.md ]"
 echo "$text_md  output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
-echo "$duo_md                                      [ firewall-options ]                                      "
+echo "$duo_md                                      [ firewall-options ]                                        "
 echo "$text_md  firewall-rules     |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
 echo "$text_md                        list-alltables list-filter4 list-filter6                                 "
@@ -2367,10 +2384,10 @@ echo "$text_md                        show-config modify-config del-config names
 echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                        client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
-echo "$text_md                        server-print server-lamp server-news server-mail server-ftp server-squid "
-echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk                "
-echo "$duo_md                                      [ tool-options ]                                          "   
+echo "$text_md                        client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
+echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
+echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
+echo "$duo_md                                      [ tool-options ]                                            "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md  tool-connect       |  iw-scan iw-info iw-save wpa-load dhcp-client                             "
@@ -2386,15 +2403,15 @@ echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx ra
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5                      "
-echo "$duo_md                                      [ show-options ]                                          " 
+echo "$duo_md                                      [ show-options ]                                            " 
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh sentlog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf  protocols services                                    "
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default                       "
 echo "$text_md  show-about         |  about version depends config-eng config-spa license                      "
-echo "$text_md  show-help          |  all-help readme leeme notes options                                 "
+echo "$text_md  show-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
-echo "$duo_md       [ Example with optional output ]             [ Example Description ]                    "
+echo "$duo_md       [ Example with optional output ]             [ Example Description ]                       "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
@@ -2424,12 +2441,12 @@ echo "$text_md                        list-ebtables list-arptables              
 echo "$text_md firewall-custom     |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
-echo "$text_md firewall-launch     |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
+echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                        client-ftp lan-tor lan-vpn shield-ssh server-ssh server-web server-samba "
-echo "$text_md                        server-print server-lamp server-news server-mail server-ftp              "
-echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk                "
+echo "$text_md                        client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
+echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
+echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
 echo "$text_md"
 echo "$text_md      | Group |  firewall-options     tool-options        show-options                           "
 exit ; fi
@@ -2811,6 +2828,9 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y
 echo "$text_md $tab client-tor"
 echo "$text_md $tab_lang_english          : Launch one firewall with browser with tor"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall para nevagar con tor"
+echo "$text_md $tab client-squid"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client squid"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente squid"
 echo "$text_md $tab lan-tor"
 echo "$text_md $tab_lang_english          : Launch one firewall only to browser with tor"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall solo para nevagar con tor"
@@ -2856,6 +2876,9 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor sql"
 echo "$text_md $tab server-asterisk"
 echo "$text_md $tab_lang_english          : Launch one firewall likes server asterisk"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor asterisk"
+echo "$text_md $tab server-squid"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server squid"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor squid"
 echo $footer_lineal
 exit; fi
 ####
@@ -9882,6 +9905,7 @@ echo "$text_md         client-web : Launch a firewall likes web client and ssh c
 echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md     client-torrent : Launch a firewall likes web client and ssh client and torrent."
 echo "$text_md         client-vpn : Launch a firewall likes web client and ssh client and vpn client."
+echo "$text_md       client-squid : Launch a firewall likes client squid."
 $brake_md
 echo "$text_md         shield-ssh : Launch a firewall likes server ssh with shield for new-conecctions until 6-tries each-hour/each-ip."
 $brake_md
@@ -9899,6 +9923,7 @@ echo "$text_md   server-teamspeak : Launch a firewall likes server teamspeak."
 echo "$text_md      server-mumble : Launch a firewall likes server mumble."
 echo "$text_md         server-sql : Launch a firewall likes server sql."
 echo "$text_md    server-asterisk : Launch a firewall likes server asterisk."
+echo "$text_md       server-squid : Launch a firewall likes server squid."
 echo  $text_md
 echo "$title_md         [ firewall config ]"
 echo  $text_md
@@ -10211,6 +10236,7 @@ echo "$text_md           client-web : Lanza el cortafuegos como cliente web y ss
 echo "$text_md       client-torrent : Lanza el cortafuegos como cliente web y ssh y torrent."
 echo "$text_md           client-tor : Lanza el cortafuegos con navegacion con tor."
 echo "$text_md           client-vpn : Lanza el cortafuegos como cliente web y ssh y vpn."
+echo "$text_md         client-squid : Lanza un firewall como cliente squid."
 echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
 echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
 $brake_md
@@ -10230,6 +10256,7 @@ echo "$text_md     server-teamspeak : Lanza un firewall como servidor teamspeak.
 echo "$text_md        server-mumble : Lanza un firewall como servidor mumble."
 echo "$text_md           server-sql : Lanza un firewall como servidor sql."
 echo "$text_md      server-asterisk : Lanza un firewall como servidor asterisk."
+echo "$text_md         server-squid : Lanza un firewall como servidor squid."
 echo  $text_md
 echo "$title_md   [ Lista las conexiones abiertas ]."
 echo  $text_md
