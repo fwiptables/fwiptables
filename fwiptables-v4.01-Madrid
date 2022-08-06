@@ -1070,9 +1070,9 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####   spanish: autoguardado
 ####
 ####
-if [ "$first_option" != "header" ] ; then
-if [ "$allow_autolog" = "no" ]   ; then echo $nada
-else echo $head_autolog >> "$output_autolog" ; fi; fi
+#### if [ "$first_option" != "header" ] ; then
+#### if [ "$allow_autolog" = "no" ]   ; then echo $nada
+#### else echo $head_autolog >> "$output_autolog" ; fi; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
@@ -1085,53 +1085,53 @@ else echo $head_autolog >> "$output_autolog" ; fi; fi
 ####    spanish: permitir cabecera
 ####
 ####
-if [ "$first_option" = "header" ] ; then
+#### if [ "$first_option" = "header" ] ; then
 ############################  dont allow header notice, allow_header_notice="no"
-if [ "$allow_header_notice" = "no" ]   ; then 
-echo $head_principal ; exit 0
+#### if [ "$allow_header_notice" = "no" ]   ; then 
+#### echo $head_principal ; exit 0
 ############################  allow header notice, allow_header_notice=""
-else 
+#### else 
 ####  english: notice install iptables if necesary
 ####  spanish: noticia instala iptables en caso necesario
-command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
-command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
-command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
-command_ip6tables_nft="$(command -v ip6tables-nft | cut -d " " -f 1)"
-if [ "$command_iptables_legacy" = "$NULL" ]; then echo "install iptables-legacy"; fi
-if [ "$command_ip6tables_legacy" = "$NULL" ]; then echo "install ip6tables-legacy"; fi
-if [ "$command_iptables_nft" = "$NULL" ]; then echo "install iptables-nft"; fi
-if [ "$command_ip6tables_nft" = "$NULL" ]; then echo "install ip6tables-nft"; fi
+#### command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
+#### command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
+#### command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
+#### command_ip6tables_nft="$(command -v ip6tables-nft | cut -d " " -f 1)"
+#### if [ "$command_iptables_legacy" = "$NULL" ]; then echo "install iptables-legacy"; fi
+#### if [ "$command_ip6tables_legacy" = "$NULL" ]; then echo "install ip6tables-legacy"; fi
+#### if [ "$command_iptables_nft" = "$NULL" ]; then echo "install iptables-nft"; fi
+#### if [ "$command_ip6tables_nft" = "$NULL" ]; then echo "install ip6tables-nft"; fi
 #### english: command default route ip  #### spanish: comando de ruta por defecto ip
-command_ip="$(command -v ip | cut -d " " -f 1)"                                                
+#### command_ip="$(command -v ip | cut -d " " -f 1)"                                                
 #### english: default route ipv4        #### english: routa por defecto ipv4
-case "$NULL" in
-"$command_ip") default_route_cuatro="" ;;
-"$($command_ip -4 route show | grep -i default | head -1)") default_route_cuatro="" ;;
-*) default_route_cuatro="$sinco Default route ip.v4 ||  $("$command_ip" -4 route show | grep -i default | head -1) " ;; esac
-#### english: default route ipv6 #### english: routa por defecto ipv6
-case "$NULL" in
-"$command_ip") default_route_seis="" ;;
-"$($command_ip -6 route show | grep -i default | head -1)") default_route_seis="" ;;
-*) default_route_seis="$sinco Default route ip.v6 ||  $("$command_ip" -6 route show | grep -i default | head -1) " ;; esac
+#### case "$NULL" in
+#### "$command_ip") default_route_cuatro="" ;;
+#### "$($command_ip -4 route show | grep -i default | head -1)") default_route_cuatro="" ;;
+#### *) default_route_cuatro="$sinco Default route ip.v4 ||  $("$command_ip" -4 route show | grep -i default | head -1) " ;; esac
+#### #### english: default route ipv6 #### english: routa por defecto ipv6 
+#### case "$NULL" in
+#### "$command_ip") default_route_seis="" ;;
+#### "$($command_ip -6 route show | grep -i default | head -1)") default_route_seis="" ;;
+#### *) default_route_seis="$sinco Default route ip.v6 ||  $("$command_ip" -6 route show | grep -i default | head -1) " ;; esac
 ####       #### english: to know if there is mac rules #### spanish: saber si hay reglas mac
-command_ebtables="$(command -v ebtables | cut -d " " -f 1)"
-if [ "$command_ebtables" = "$NULL" ]; then rules_filter_ebtables="0" ; rules_nat_ebtables="0" ; 
-else
-rules_filter_ebtables="$($command_ebtables -L -t filter | grep -- "-j" | wc -l)"
-rules_nat_ebtables="$($command_ebtables -L -t nat       | grep -- "-j" | wc -l)"
-fi
+#### command_ebtables="$(command -v ebtables | cut -d " " -f 1)"
+#### if [ "$command_ebtables" = "$NULL" ]; then rules_filter_ebtables="0" ; rules_nat_ebtables="0" ; 
+#### else
+#### rules_filter_ebtables="$($command_ebtables -L -t filter | grep -- "-j" | wc -l)"
+#### rules_nat_ebtables="$($command_ebtables -L -t nat       | grep -- "-j" | wc -l)"
+#### fi
 ####       #### english: to know if there is arptables rules #### spanish: saber si hay reglas arptables
-command_arptables="$(command -v arptables | cut -d " " -f 1 )"
-if [ "$command_arptables" = "$NULL" ]; then rules_arptables="0" ;
-else rules_arptables="$($command_arptables -L | grep -- "-j" | wc -l)" ; fi
+#### command_arptables="$(command -v arptables | cut -d " " -f 1 )"
+#### if [ "$command_arptables" = "$NULL" ]; then rules_arptables="0" ;
+#### else rules_arptables="$($command_arptables -L | grep -- "-j" | wc -l)" ; fi
 ####
-echo $head_principal
-if [ "$default_route_cuatro" != "$NULL" ] ; then echo "$default_route_cuatro" ; fi
-if [ "$default_route_seis" != "$NULL" ]   ; then echo "$default_route_seis"   ; fi
-if [ "$rules_arptables" != "0" ]          ; then echo "$sinco Whith ebtables arp rules"        ; fi
-if [ "$rules_filter_ebtables" != "0" ]    ; then echo "$sinco Whith ebtables filter mac rules" ; fi
-if [ "$rules_nat_ebtables" != "0" ]       ; then echo "$sinco Whith ebtables nat mac rules"    ; fi
-fi ; exit ; fi
+#### echo $head_principal
+#### if [ "$default_route_cuatro" != "$NULL" ] ; then echo "$default_route_cuatro" ; fi
+#### if [ "$default_route_seis" != "$NULL" ]   ; then echo "$default_route_seis"   ; fi
+#### if [ "$rules_arptables" != "0" ]          ; then echo "$sinco Whith ebtables arp rules"        ; fi
+#### if [ "$rules_filter_ebtables" != "0" ]    ; then echo "$sinco Whith ebtables filter mac rules" ; fi
+#### if [ "$rules_nat_ebtables" != "0" ]       ; then echo "$sinco Whith ebtables nat mac rules"    ; fi
+#### fi ; exit ; fi
 ####
 ####
 #### :rutina-final-header:
