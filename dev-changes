@@ -1,5 +1,6 @@
 
- 7. 
+
+ 7. añadir pc-reboot pc-halt pc-shudown en la categoria tool-computer.  
  6. borrada el codigo de la cabecera (header) viejo, arreglo que da mucha velocidad. HECHO
  5. simplificado al maximo cabecera, elimina su rutina y lo deja como un echo. HECHO
  4. añadido client-squid. HECHO
