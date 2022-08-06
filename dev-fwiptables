@@ -1070,9 +1070,9 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####   spanish: autoguardado
 ####
 ####
-#### if [ "$first_option" != "header" ] ; then
-#### if [ "$allow_autolog" = "no" ]   ; then echo $nada
-#### else echo $head_autolog >> "$output_autolog" ; fi; fi
+if [ "$first_option" != "header" ] ; then
+if [ "$allow_autolog" = "no" ]   ; then echo $nada
+else echo $head_autolog >> "$output_autolog" ; fi; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
