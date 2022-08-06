@@ -1,9 +1,10 @@
 
-
-
- 3.cambio de nombre dhcp a dhcp-client
- 2.cambio de nombre wpa-file a wpa-load
- 1.cambio de nombre wpa-connect a wpa-save
+ 6. borrada el codigo de la cabecera viejo.
+ 5. simplificado al maximo cabecera, elimina su rutina y lo deja como un echo. HECHO
+ 4. añadido client-squid. HECHO
+ 3. cambio de nombre dhcp a dhcp-client. HECHO
+ 2. cambio de nombre wpa-file a wpa-load. HECHO
+ 1. cambio de nombre wpa-connect a wpa-save. HECHO
 
  cambios fwiptables en desarrollo dev-fwiptables 4.01 # lineas_actuales=3
  
