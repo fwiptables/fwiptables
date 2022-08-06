@@ -2344,6 +2344,7 @@ echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx ra
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5                      "
+echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md                                      [ show-options ]                                            " 
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh sentlog autolog                                       "
@@ -2416,6 +2417,7 @@ echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx ra
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                "
 echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                "
+echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                            "
 echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options               "
 exit ; fi
