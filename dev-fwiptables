@@ -5517,7 +5517,7 @@ exit; fi
  echo "$fdescription"
  echo
  echo "$tab [Exec program]"
- echo "$directory_fwiptables/$name_fwiptables"
+ echo "$directory_fwiptables/$cmd_fwiptables"
  echo
  echo "$tab [File format]"
  file $directory_fwiptables/$cmd_fwiptables | cut -d "," -f 1-2
@@ -9547,8 +9547,8 @@ echo "$tab [Program Description]"
 echo "  $fdescription"
 echo ""
 echo "$tab [Program Install]"
-echo "  chmod ugo+x $name_fwiptables"
-echo "  ./$cmd_fwiptables install"
+echo "  1: chmod ugo+x fwiptables-version"
+echo "  2: ./fwiptables-version install"
 echo "  And then fwiptables is in $directory_fwiptables/$name_fwiptables"
 echo
 echo "$tab [Devevelopments version program]"
