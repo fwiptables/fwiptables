@@ -2292,7 +2292,7 @@ echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-clie
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                   "
-echo "$text_md          show-help |  all-help readme leeme notes options                                      "
+echo "$text_md          show-help |  all-help readme leeme notes about version depends options                "
 echo "$duo_md     [ Example with optional output ]             [ Example Description ]                        "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
@@ -3496,6 +3496,31 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-system:
+##############################       english: tool-computer: options
+##############################       spanish: tool-computer: opciones
+#### :rutina-inicial-tool-computer:
+####
+####
+if [ "$first_option" = "tool-computer" ]; then $give_cover
+echo "$header_ok [ $first_option ] [ tool computer ] [ tool-computer.md ]"
+echo  $text_md
+echo "$text_md [ english info ] [ Tool computer ]"
+echo "$text_md [ spanish info ] [ Herramienta de ordenador ]"
+echo  $text_md
+echo "$text_md $tab pc-halt"
+echo "$text_md $tab_lang_english           : Launch halt to power off the pc"
+echo "$text_md $tab_lang_spanish           : Lanza halt para apagar el pc"
+echo "$text_md $tab pc-shutdown"
+echo "$text_md $tab_lang_english           : Launch shutdown -h now to power off pc"
+echo "$text_md $tab_lang_spanish           : Lanza shutdown -h now para apagar el pc"
+echo "$text_md $tab pc-reboot"
+echo "$text_md $tab_lang_english           : Launch reboot to reboot the pc"
+echo "$text_md $tab_lang_spanish           : Lanza reboot para reiniciar el pc"
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-tool-computer:
 ##############################       english: show-etc: options
 ##############################       spanish: show-etc: opciones
 #### :rutina-inicial-show-etc:
@@ -9230,6 +9255,57 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
+############################       english: pc-halt: power off computer
+############################       spanish: pc-halt: apaga el ordenador
+#### :rutina-inicial-pc-halt:
+####
+####
+if [ "$first_option" = "pc-halt" ]; then $give_cover
+echo "$header_ok [ $first_option ]"
+echo $header_lineal
+demora="3"
+echo "Halt to power off computer ... in $demora seconds"
+$(command -v sleep) $demora
+$(command -v halt)
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-pc-halt:
+############################       english: pc-shutdown: power off computer
+############################       spanish: pc-shutdown: apaga el ordenador
+#### :rutina-inicial-pc-shutdown:
+####
+####
+if [ "$first_option" = "pc-shutdown" ]; then $give_cover
+echo "$header_ok [ $first_option ]"
+echo $header_lineal
+demora="3"
+echo "Halt to power off computer ... in $demora seconds"
+$(command -v sleep) $demora
+$(command -v shutdown)
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-pc-shutdown:
+############################       english: pc-reboot: power off computer
+############################       spanish: pc-reboot: apaga el ordenador
+#### :rutina-inicial-pc-shutdown:
+####
+####
+if [ "$first_option" = "pc-reboot" ]; then $give_cover
+echo "$header_ok [ $first_option ]"
+echo $header_lineal
+demora="3"
+echo "Reboot to power reboot ... in $demora seconds"
+$(command -v sleep) $demora
+$(command -v reboot)
+echo $footer_lineal
+exit; fi
+####
+####
+#### :rutina-final-pc-shutdown:
 ############################       english: lpinfo: list printers
 ############################       spanish: lpinfo: lista impresoras
 #### :rutina-inicial-lpinfo:
@@ -9989,6 +10065,12 @@ echo "$text_md     dev-version : Show the link at the developer version."
 echo "$text_md     dev-changes : Show the last changes."
 echo "$text_md            code : Show the source code for one option."
 echo  $text_md
+echo "$title_md         [ Tool computer ]"
+echo  $text_md
+echo "$text_md         pc-halt : Turn power off computer."
+echo "$text_md     pc-shutdown : Turn power off computer."
+echo "$text_md       pc-reboot : Turn reboot the computer."
+echo  $text_md
 echo "$title_md         [ Show hardware ]"
 echo  $text_md
 echo "$text_md          lpinfo : Show the device printers."
@@ -10309,7 +10391,13 @@ echo "$text_md     dev-version : Muestra en enlace a la version de desarrollo."
 echo "$text_md     dev-changes : Muestra los ultimos cambios."
 echo "$text_md            code : Muestra el codigo fuente para una opcion."
 echo  $text_md
-echo "$title_md [ Herramienta de informacion del hardware ]."
+echo "$title_md [ Herramienta de computador ]."
+echo  $text_md
+echo "$text_md         pc-halt : Apaga el computador."
+echo "$text_md     pc-shutdown : Apaga el computador."
+echo "$text_md       pc-reboot : Reinicia el computador."
+echo  $text_md
+echo "$title_md [ Informacion del hardware ]."
 echo  $text_md
 echo "$text_md          lpinfo : Muestra los dispositivos de impresora."
 echo "$text_md           lsblk : Muestra los dispositivos de disco."
