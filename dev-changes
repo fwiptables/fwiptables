@@ -1,6 +1,9 @@
 
+ 1.
 
- 7. añadir pc-reboot pc-halt pc-shudown en la categoria tool-computer.  
+ cambios fwiptables en desarrollo para dev-fwiptables version 4.02
+
+ 7. añadir pc-reboot pc-halt pc-shudown en la categoria tool-computer. HECHO
  6. borrada el codigo de la cabecera (header) viejo, arreglo que da mucha velocidad. HECHO
  5. simplificado al maximo cabecera, elimina su rutina y lo deja como un echo. HECHO
  4. añadido client-squid. HECHO
@@ -8,7 +11,7 @@
  2. cambio de nombre wpa-file a wpa-load. HECHO
  1. cambio de nombre wpa-connect a wpa-save. HECHO
 
- cambios fwiptables en desarrollo dev-fwiptables 4.01 # lineas_actuales=6
+ cambios fwiptables 4.01 # lineas=7
  
  1. arreglo en gui-menu-tool-sockects
 
