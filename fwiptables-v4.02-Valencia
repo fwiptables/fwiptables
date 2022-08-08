@@ -2287,13 +2287,13 @@ echo "$text_md                       client-web client-mail client-news client-t
 echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
 echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid   "
-echo "$duo_md   [ full-options ]  [ See all options with: $cmd_fwiptables options ]                           "
+echo "$duo_md || ||  [ Options ]  [ See all options with: $cmd_fwiptables options ]                           "
 echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-client                            "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                   "
 echo "$text_md          show-help |  all-help readme leeme notes about version depends options                "
-echo "$duo_md     [ Example with optional output ]             [ Example Description ]                        "
+echo "$duo_md || || [ Examples ]  [ Example with optional output ]             [ Example Description ]        "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
@@ -9282,7 +9282,7 @@ echo "$header_ok [ $first_option ]"
 echo $header_lineal
 demora="3"
 echo "Halt to power off computer ... in $demora seconds"
-$(command -v sleep) $demora
+$(command -v sleep) -r now $demora
 $(command -v shutdown)
 echo $footer_lineal
 exit; fi
