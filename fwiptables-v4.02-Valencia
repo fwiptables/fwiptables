@@ -2353,7 +2353,7 @@ echo "$text_md                        hosts.allow hosts.deny show-default modify
 echo "$text_md  show-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  show-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
-echo "$duo_md       [ Example with optional output ]             [ Example Description ]                       "
+echo "$duo_md || || [ Examples ]  [ Example with optional output ]             [ Example Description ]        "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
@@ -9266,7 +9266,7 @@ echo $header_lineal
 demora="3"
 echo "Halt to power off computer ... in $demora seconds"
 $(command -v sleep) $demora
-$(command -v halt)
+$(command -v halt) -t $demora
 echo $footer_lineal
 exit; fi
 ####
@@ -9282,8 +9282,8 @@ echo "$header_ok [ $first_option ]"
 echo $header_lineal
 demora="3"
 echo "Halt to power off computer ... in $demora seconds"
-$(command -v sleep) -r now $demora
-$(command -v shutdown)
+$(command -v sleep) $demora 
+$(command -v shutdown) -h -t $demora 
 echo $footer_lineal
 exit; fi
 ####
@@ -9300,7 +9300,7 @@ echo $header_lineal
 demora="3"
 echo "Reboot to power reboot ... in $demora seconds"
 $(command -v sleep) $demora
-$(command -v reboot)
+$(command -v reboot) -t $demora
 echo $footer_lineal
 exit; fi
 ####
