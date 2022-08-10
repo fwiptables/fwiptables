@@ -76,39 +76,6 @@ third_option="$(echo $3 | sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
 ####
 ####
-##############################  english: permanent: files and folders from fwiptables       ##############################
-##############################  spanish: permanentes: archivos y carpetas desde fwiptables  ##############################
-####
-####
-#### english: permanent files and where are file path: name, command and icon
-#### spanish: archivos permanentes y donde estan las rutas de archivo: nombre, comando e icono
-####
-####
-name_fwiptables="fwiptables"
-cmd_fwiptables="fwiptables-cmd"
-icon_fwiptables="/usr/share/zenity/zenity.png"
-####
-####
-#### english: permanent directory and path directory config files
-#### spanish: directorios permanentes y ruta de directorios de los archivos de configuracion
-####
-####
-directory_fwiptables="/usr/bin"
-directory_fwrecover="/etc/fwiptables-fwrecover"
-directory_default="/etc/fwiptables-default"
-directory_config="/etc/fwiptables-config"
-directory_desktop="/usr/share/applications"
-directory_log="/var/log"
-####
-####
-#### english: log files and path files config files
-#### spanish: archivos log y ruta de los archivos de configuracion
-####
-####
-output_filelog="$directory_log/$name_fwiptables-filelog"
-output_autolog="$directory_log/$name_fwiptables-autolog"
-####
-####
 ##############################   english: profile y support X11       ##############################
 ##############################   spanish: profile y soporte de X11    ##############################
 ####
@@ -151,6 +118,39 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
+####
+####
+##############################  english: permanent: files and folders from fwiptables       ##############################
+##############################  spanish: permanentes: archivos y carpetas desde fwiptables  ##############################
+####
+####
+#### english: permanent files and where are file path: name, command and icon
+#### spanish: archivos permanentes y donde estan las rutas de archivo: nombre, comando e icono
+####
+####
+name_fwiptables="fwiptables"
+cmd_fwiptables="fwiptables-cmd"
+icon_fwiptables="/usr/share/zenity/zenity.png"
+####
+####
+#### english: permanent directory and path directory config files
+#### spanish: directorios permanentes y ruta de directorios de los archivos de configuracion
+####
+####
+directory_fwiptables="/usr/bin"
+directory_fwrecover="/etc/fwiptables-fwrecover"
+directory_default="/etc/fwiptables-default"
+directory_config="/etc/fwiptables-config"
+directory_desktop="/usr/share/applications"
+directory_log="/var/log"
+####
+####
+#### english: log files and path files config files
+#### spanish: archivos log y ruta de los archivos de configuracion
+####
+####
+output_filelog="$directory_log/$name_fwiptables-filelog"
+output_autolog="$directory_log/$name_fwiptables-autolog"
 ####
 ####
 ##############################    english: temporal: files for fwiptables       ##############################

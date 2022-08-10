@@ -1,5 +1,7 @@
 
-
+ 
+ 7. empezara a funcioar install y upgrade con gui y cli. HECHO
+ 6. rutina profile ahora es anterior a variables de fwiptables. HECHO
  5. cambio de nombre de ntpdate a ntpdate-client. HECHO
  4. simplificacion de codigo. HECHO
  3. pequeño cambio de variable en load_cover. HECHO
