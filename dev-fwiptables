@@ -790,7 +790,7 @@ cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
 #### english: alias simple for options commons
 ####
 ####
-if [ "$first_option" = "ntp" ]; then first_option="ntpdate"; fi
+if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "ls" ]; then first_option="list"; fi
 if [ "$first_option" = "ls4" ]; then first_option="list"; fi
 if [ "$first_option" = "ls6" ]; then first_option="list6"; fi
@@ -956,7 +956,7 @@ second_option=" firewall-launch"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
-host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
+host|dig|resolveip|geoip|ntpdate-client) second_option="tool-udp"; third_option="" ;;
 iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
@@ -1005,7 +1005,7 @@ second_option=" firewall-launch"; third_option="" ;;
 info-*|lsof|ss|tcpdump|netstat|netstat-nat|web-cert) second_option="tool-sockets"; third_option="" ;;
 ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
-host|dig|resolveip|geoip|ntpdate) second_option="tool-udp"; third_option="" ;;
+host|dig|resolveip|geoip|ntpdate-client) second_option="tool-udp"; third_option="" ;;
 iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
@@ -2338,7 +2338,7 @@ echo "$text_md  tool-connect       |  iw-scan iw-info iw-save wpa-load dhcp-clie
 echo "$text_md  tool-rules         |  rule-del-num rule-del-shield rule-add-shield                             "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
-echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate                                         "
+echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client                                  "
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
 echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
 echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                           "
@@ -2411,7 +2411,7 @@ echo "$text_md                        info-system ss lsof tcpdump netstat netsta
 echo "$text_md    tool-rules        | rule-del-num rule-del-shield rule-add-shield      "
 echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                "
 echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6            "
-echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate                         "
+echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                  "
 echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6            "
 echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping            "
 echo "$text_md    tool-sudo         | sudofw-adduser sudofw-deluser sudofw-list aliasfw-list           "
@@ -3311,10 +3311,10 @@ echo "$text_md $tab_lang_spanish          : Resuelve una direccion a ip"
 echo "$text_md $tab resolveip"
 echo "$text_md $tab_lang_english          : Resolve one host and viceversa"
 echo "$text_md $tab_lang_spanish          : Resuelve una direccion a ip y a host"
-echo "$text_md $tab geip"
+echo "$text_md $tab geoip"
 echo "$text_md $tab_lang_english          : Locate a one host or ip"
 echo "$text_md $tab_lang_spanish          : Localiza una direccion o ip"
-echo "$text_md $tab ntpdate"
+echo "$text_md $tab ntpdate-client"
 echo "$text_md $tab_lang_english          : Update the system date from ntp server"
 echo "$text_md $tab_lang_spanish          : Actualiza la fecha del sistema desde un servidor de fecha"
 echo $footer_lineal
@@ -4378,7 +4378,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
-"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate" \
+"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Sockets ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4398,7 +4398,7 @@ case $selection in
 "tcpdump") $cmd_fwiptables -gui tcpdump ;;
 "info-proxy") $cmd_fwiptables -gui info-proxy ;;
 "info-listen") $cmd_fwiptables -gui info-listen ;;
-"ntpdate") $cmd_fwiptables -gui ntpdate ;;
+"ntpdate-client") $cmd_fwiptables -gui ntpdate-client ;;
 esac
 ####
 ####
@@ -4485,7 +4485,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool udp ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4502,7 +4502,7 @@ $cmd_fwiptables -gui dig $archivo ;;
 $cmd_fwiptables -gui resolveip $archivo ;;
 "geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_fwiptables -gui geoip $archivo ;;
-"ntpdate")$cmd_fwiptables -gui ntpdate ;;
+"ntpdate-client")$cmd_fwiptables -gui ntpdate-client ;;
 esac
 ####
 ####
@@ -5173,7 +5173,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
   0808  "$tab info-proxy" \
   0809  "$tab info-net" \
   0810  "$tab info-system" \
-  0811  "$tab ntpdate" \
+  0811  "$tab ntpdate-client" \
   0900 "$quad [ Tool Ipfwarding ] $cinco" \
   0901  "$tab ipforward-list" \
   0902  "$tab ipforward-on" \
@@ -5193,7 +5193,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
   1202  "$tab dig" \
   1203  "$tab resolveip" \
   1204  "$tab geoip" \
-  1205  "$tab ntpdate" \
+  1205  "$tab ntpdate-client" \
   1300 "$quad [ Tool Sudo ] $cinco"  \
   1301  "$tab sudofw-adduser" \
   1302  "$tab sudofw-deluser" \
@@ -5404,7 +5404,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  0808) clear ; $cmd_fwiptables cli info-proxy ;;
  0809) clear ; $cmd_fwiptables cli info-net ;;
  0810) clear ; $cmd_fwiptables cli info-system ;;
- 0811) clear ; $cmd_fwiptables cli ntpdate ;;
+ 0811) clear ; $cmd_fwiptables cli ntpdate-client ;;
  0901) clear ; $cmd_fwiptables cli ipforward-list ;;
  0902) clear ; $cmd_fwiptables cli ipforward-on ;;
  0903) clear ; $cmd_fwiptables cli ipforward-off ;;
@@ -5424,7 +5424,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  clear ; $cmd_fwiptables resolveip $resolve ;;
  1204) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables geoip $resolve ;;
- 1205) clear ; $cmd_fwiptables "ntpdate" ;;
+ 1205) clear ; $cmd_fwiptables "ntpdate-client" ;;
  1301) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
  1302) clear ; $cmd_fwiptables cli sudofw-deluser ;;
@@ -7830,14 +7830,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-geoip:
-############################       english: ntpdate: update the date and time
-############################       spanish: ntpdate: actualiza la fecha y hora
-#### :rutina-inicial-ntpdate:
+############################       english: ntpdate-client: update the date and time
+############################       spanish: ntpdate-client: actualiza la fecha y hora
+#### :rutina-inicial-ntpdate-client:
 ####
 ####
-if [ "$first_option" = "ntpdate" ]; then $give_cover
+if [ "$first_option" = "ntpdate-client" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ]"
-echo $header_lineal
+echo
 if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
 echo "$tab Old date: $($command_date)"
 echo "$tab [ Updating the time and the date .. ]"
@@ -7846,11 +7846,10 @@ pool1="1.debian.pool.ntp.org"
 pool2="2.debian.pool.ntp.org"
 pool3="3.debian.pool.ntp.org"
 $favorite_date_command $pool0 && echo -e "\n With New date: $($command_date)"
-echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-ntpdate:
+#### :rutina-final-ntpdate-client:
 ############################       english: scan-tcp: scan one net per tcp
 ############################       spanish: scan-tcp: rastrea una red por tcp
 #### :rutina-inicial-scan-tcp:
@@ -9938,7 +9937,7 @@ echo "$text_md           host : Resolve one host."
 echo "$text_md            dig : Resolve one host."
 echo "$text_md      resolveip : Resolve one host and viceversa."
 echo "$text_md          geoip : Locate a one host or ip."
-echo "$text_md        ntpdate : Update the date from ntp server."
+echo "$text_md ntpdate-client : Update the date from ntp server."
 echo  $text_md
 echo "$title_md         [ Tool icmp ]"
 echo  $text_md
@@ -10261,11 +10260,11 @@ echo "$text_md     speed-ip6 : Testea el ancho de banda con ipv6."
 echo  $text_md
 echo "$title_md [ Herramienta udp ]."
 echo  $text_md
-echo "$text_md          host : Resuelve la ip de un host ."
-echo "$text_md           dig : Resuelve la ip de un host ."
-echo "$text_md     resolveip : Resuelve la ip de un host y viceversa."
-echo "$text_md         geoip : Localiza una ip o host ."
-echo "$text_md       ntpdate : Actualiza la fecha desde un ntp server."
+echo "$text_md           host : Resuelve la ip de un host ."
+echo "$text_md            dig : Resuelve la ip de un host ."
+echo "$text_md      resolveip : Resuelve la ip de un host y viceversa."
+echo "$text_md          geoip : Localiza una ip o host ."
+echo "$text_md ntpdate-client : Actualiza la fecha desde un ntp server."
 echo  $text_md
 echo "$title_md [ Herramienta icmp ]."
 echo  $text_md
