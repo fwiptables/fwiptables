@@ -6221,30 +6221,29 @@ exit; fi
 #### :rutina-inicial-list:
 ####
 ####
- if [ "$first_option" = "list4-ip" ]; then $give_cover 
- legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
- "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
- nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
- "$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
- echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- case $legacycuatro in
- "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
- *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ]"
- $command_iptables_legacy -t filter -v -L
- ;;
- esac
- echo "$tab"
- case $nftcuatro in
- "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
- *)
- echo "$tab [ With rules nftables ] [ iptables-nft ]" 
- $command_iptables_nft -t filter -v -L
- ;;
- esac
- exit; fi
+if [ "$first_option" = "list4-ip" ]; then $give_cover 
+legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
+"$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
+"$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
+echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+case $legacycuatro in
+"$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+*)
+echo "$tab [ With rules xtables ] [ iptables-legacy ]"
+$command_iptables_legacy -t filter -v -L
+;;
+esac
+echo "$tab"
+case $nftcuatro in
+"$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+*)
+echo "$tab [ With rules nftables ] [ iptables-nft ]" 
+$command_iptables_nft -t filter -v -L
+;;
+esac
+exit; fi
 ####
 ####
 #### :rutina-final-list:
@@ -6259,28 +6258,26 @@ exit; fi
  nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 "$command_ip6tables_nft" -t filter -L OUTPUT 1 )
 #### echo $header_ender
- echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- case $legacyseis in
- "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
- *)
- echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
- $command_ip6tables_legacy -v -L
- ;;
- esac
- echo $tab
- case $nftseis in
- "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
- *)
- echo "$tab [ With rules nftables ] [ iptables-nft ]" 
- $command_ip6tables_nft -v -L
- ;;
- esac
+echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+echo
+case $legacyseis in
+"$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ]" ;;
+*)
+echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
+$command_ip6tables_legacy -v -L
+;;
+esac
+echo $tab
+case $nftseis in
+"$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ]" ;;
+*)
+echo "$tab [ With rules nftables ] [ iptables-nft ]" 
+$command_ip6tables_nft -v -L
+;;
+esac
 ####
 ####
-#### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-list6:
@@ -6289,22 +6286,18 @@ exit; fi
 #### :rutina-inicial-status:
 ####
 ####
- if [ "$first_option" = "status" ]; then $nada
+if [ "$first_option" = "status" ]; then $nada
 ####
 ####
- if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then
-#### echo "$tab When its ipv4 has default route $tab so it show filter rules ipv4 in status"
- $cmd_fwiptables list
- else echo ; echo "$tab [ When its ipv4 has no default route ] $tab [ hide filter rules ipv4 in status ]" ; fi
+if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then $cmd_fwiptables list
+else echo ; echo "$tab [ When its ipv4 has no default route ] $tab [ hide filter rules ipv4 in status ]" ; fi
 ####
 ####
- if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then
-#### echo "$tab When its ipv6 has default route $tab show filter rules ipv6 in status"
- $cmd_fwiptables list6
- else echo ; echo "$tab [ When its ipv6 has no default route ] $tab [ so it hide filter rules ipv6 in status ]" ;  fi
+if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then $cmd_fwiptables list6
+else echo ; echo "$tab [ When its ipv6 has no default route ] $tab [ so it hide filter rules ipv6 in status ]" ;  fi
 ####
 ####
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-satus:
@@ -6313,20 +6306,17 @@ exit; fi
 #### :rutina-inicial-list-filter4:
 ####
 ####
- if [ "$first_option" = "list-filter4" ]; then $give_cover 
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ]"
- $command_iptables_legacy -t filter -v -L
- echo "$tab"
- echo "$tab [ With rules nftables ] [ iptables-nft ]" 
- $command_iptables_nft -t filter -v -L
+if [ "$first_option" = "list-filter4" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ]"
+$command_iptables_legacy -t filter -v -L
+echo
+echo "$tab [ With rules nftables ] [ iptables-nft ]" 
+$command_iptables_nft -t filter -v -L
 ####
 ####
-#### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-list-filter4:
@@ -6335,19 +6325,15 @@ exit; fi
 #### :rutina-inicial-list-forward:
 ####
 ####
- if [ "$first_option" = "list-forward" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
- $command_iptables_legacy -t filter -v -L FORWARD
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
- $command_iptables_nft -t filter -v -L FORWARD
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-forward" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
+$command_iptables_legacy -t filter -v -L FORWARD
+echo $tab
+echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
+$command_iptables_nft -t filter -v -L FORWARD
+exit; fi
 ####
 ####
 #### :rutina-final-list-forward:
@@ -6356,20 +6342,17 @@ exit; fi
 #### :rutina-inicial-list-filter6:
 ####
 ####
- if [ "$first_option" = "list-filter6" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
- $command_ip6tables_legacy -v -L
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ]" 
- $command_ip6tables_nft -v -L
+if [ "$first_option" = "list-filter6" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
+$command_ip6tables_legacy -v -L
+echo $tab
+echo "$tab [ With rules nftables ] [ iptables-nft ]" 
+$command_ip6tables_nft -v -L
 ####
 ####
-#### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-list-filter6:
@@ -6378,19 +6361,15 @@ exit; fi
 #### :rutina-inicial-list-forward6:
 ####
 ####
- if [ "$first_option" = "list-forward6" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
- $command_ip6tables_legacy -t filter -v -L FORWARD
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
- $command_ip6tables_nft -t filter -v -L FORWARD
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-forward6" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
+$command_ip6tables_legacy -t filter -v -L FORWARD
+echo
+echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
+$command_ip6tables_nft -t filter -v -L FORWARD
+exit; fi
 ####
 ####
 #### :rutina-final-list-forward6:
@@ -6400,17 +6379,14 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-nat4" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] $tab  "
- $command_iptables_legacy -t nat -v -L
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ]"
- $command_iptables_nft -t nat -v -L 
-#### echo $footer_lineal
- exit; fi
+echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ]"
+$command_iptables_legacy -t nat -v -L
+echo $tab
+echo "$tab [ With rules nftables ] [ iptables-nft ]"
+$command_iptables_nft -t nat -v -L 
+exit; fi
 ####
 ####
 #### :rutina-final-list-nat-4:
@@ -6419,18 +6395,16 @@ exit; fi
 #### :rutina-inicial-list-nat6:
 ####
 ####
- if [ "$first_option" = "list-nat6" ]; then $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ]"
- $command_ip6tables_legacy -t nat -v -L 
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ]"
- $command_ip6tables_nft -t nat -v -L 
+if [ "$first_option" = "list-nat6" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ]"
+$command_ip6tables_legacy -t nat -v -L 
+echo
+echo "$tab [ With rules nftables ] [ iptables-nft ]"
+$command_ip6tables_nft -t nat -v -L 
 #### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-list-nat6:
@@ -6439,18 +6413,15 @@ exit; fi
 #### :rutina-inicial-listnum:
 ####
 ####
- if [ "$first_option" = "listnum" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [With rules netfilter] [iptables-nft]"  
- $command_iptables_legacy -v -n -L 
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ]"  
- $command_iptables_nft -v -n -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "listnum" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [With rules netfilter] [iptables-nft]"  
+$command_iptables_legacy -v -n -L 
+echo
+echo "$tab [ With rules nftables ] [ iptables-nft ]"  
+$command_iptables_nft -v -n -L
+exit; fi
 ####
 ####
 #### :rutina-final-listnum:
@@ -6459,19 +6430,15 @@ exit; fi
 #### :rutina-inicial-list-forwardnum:
 ####
 ####
- if [ "$first_option" = "list-forwardnum" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
- $command_iptables_legacy -t filter -v -n -L FORWARD
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
- $command_iptables_nft -t filter -v -n -L FORWARD
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-forwardnum" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
+$command_iptables_legacy -t filter -v -n -L FORWARD
+echo
+echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
+$command_iptables_nft -t filter -v -n -L FORWARD
+exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum:
@@ -6480,18 +6447,15 @@ exit; fi
 #### :rutina-inicial-listnum6:
 ####
 ####
- if [ "$first_option" = "listnum6" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
- $command_ip6tables_legacy -v -n -L 
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
- $command_ip6tables_nft -v -n -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "listnum6" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
+$command_ip6tables_legacy -v -n -L 
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ]" 
+$command_ip6tables_nft -v -n -L
+exit; fi
 ####
 ####
 #### :rutina-final-listnum6:
@@ -6500,19 +6464,16 @@ exit; fi
 #### :rutina-inicial-list-forwardnum6:
 ####
 ####
- if [ "$first_option" = "list-forwardnum6" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
- $command_ip6tables_legacy -t filter -v -n -L FORWARD
- echo $tab
- echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
- $command_ip6tables_nft -t filter -v -n -L FORWARD
+if [ "$first_option" = "list-forwardnum6" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ With rules xtables ] [ iptables-legacy ] [ FORWARD ]"
+$command_ip6tables_legacy -t filter -v -n -L FORWARD
+echo
+echo "$tab [ With rules nftables ] [ iptables-nft ] [ FORWARD ]"
+$command_ip6tables_nft -t filter -v -n -L FORWARD
 #### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum6:
@@ -6521,19 +6482,16 @@ exit; fi
 #### :rutina-inicial-list-mangle4:
 ####
 ####
- if [ "$first_option" = "list-mangle4" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
- $command_iptables_legacy -t mangle -v -L
- echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ MANGLE ]"
- $command_iptables_nft -t mangle -v -L
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-mangle4" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
+$command_iptables_legacy -t mangle -v -L
+echo
+echo "$tab [ The nftables ] [ iptables-nft ] [ MANGLE ]"
+$command_iptables_nft -t mangle -v -L
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-list-mangle4:
@@ -6542,18 +6500,16 @@ exit; fi
 #### :rutina-inicial-list-mangle6:
 ####
 ####
- if [ "$first_option" = "list-mangle6" ]; then $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
- $command_ip6tables_legacy -t mangle -v -L
- echo $tab
- echo "$tab [ The nftables ] [iptables-nft ] [ MANGLE ]"
- $command_ip6tables_nft -t mangle -v -L
+if [ "$first_option" = "list-mangle6" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ The xtables ] [ iptables-legacy ] [ MANGLE ]"
+$command_ip6tables_legacy -t mangle -v -L
+echo
+echo "$tab [ The nftables ] [iptables-nft ] [ MANGLE ]"
+$command_ip6tables_nft -t mangle -v -L
 #### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-list-mangle6:
@@ -6562,18 +6518,15 @@ exit; fi
 #### :rutina-inicial-list-raw4:
 ####
 ####
- if [ "$first_option" = "list-raw4" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ]"
- $command_iptables_legacy -t raw -v -L
- echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ]"
- $command_iptables_nft -t raw -v -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-raw4" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab  [ The xtables ] [ iptables-legacy ] [ RAW ]"
+$command_iptables_legacy -t raw -v -L
+echo $tab
+echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ]"
+$command_iptables_nft -t raw -v -L
+exit; fi
 ####
 ####
 #### :rutina-final-list-raw4:
@@ -6582,19 +6535,15 @@ exit; fi
 #### :rutina-inicial-list-raw6:
 ####
 ####
- if [ "$first_option" = "list-raw6" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ RAW ]"
- $command_ip6tables_legacy -t raw -v -L
- echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ]"
- $command_ip6tables_nft -t raw -v -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-raw6" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ The xtables ] [ iptables-legacy ] [ RAW ]"
+$command_ip6tables_legacy -t raw -v -L
+echo
+echo "$tab [ The nftables ] [ iptables-nft ] [ RAW ]"
+$command_ip6tables_nft -t raw -v -L
+exit; fi
 ####
 ####
 #### :rutina-final-list-raw6:
@@ -6603,19 +6552,15 @@ exit; fi
 #### :rutina-inicial-list-security4:
 ####
 ####
- if [ "$first_option" = "list-security4" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ]"
- $command_iptables_legacy -t security -v -L
- echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ]"
- $command_iptables_nft -t security -v -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-security4" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ]"
+$command_iptables_legacy -t security -v -L
+echo
+echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ]"
+$command_iptables_nft -t security -v -L
+exit; fi
 ####
 ####
 #### :rutina-final-list-security4:
@@ -6624,19 +6569,15 @@ exit; fi
 #### :rutina-inicial-list-security6:
 ####
 ####
- if [ "$first_option" = "list-security6" ]; then  $give_cover
- echo $header_ender
- echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ]"
- $command_ip6tables_legacy -t security -v -L
- echo $tab
- echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ]"
- $command_ip6tables_nft -t security -v -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-security6" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ]"
+echo
+echo "$tab [ The xtables ] [ iptables-legacy ] [ SECURITY ]"
+$command_ip6tables_legacy -t security -v -L
+echo $tab
+echo "$tab [ The nftables ] [ iptables-nft ] [ SECURITY ]"
+$command_ip6tables_nft -t security -v -L
+exit; fi
 ####
 ####
 #### :rutina-final-list-security6:
@@ -6645,18 +6586,15 @@ exit; fi
 #### :rutina-inicial-list-ebtables:
 ####
 ####
- if [ "$first_option" = "list-ebtables" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ List ebtables ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ ebtables: filter ethernet ] [ EBTABLES ]"
- $command_ebtables -L -t filter
- echo $tab
- echo "$tab [ ebtables: nat ethernet ] [ EBTABLES ]"
- $command_ebtables -L -t nat
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-ebtables" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List ebtables ]"
+echo
+echo "$tab [ ebtables: filter ethernet ] [ EBTABLES ]"
+$command_ebtables -L -t filter
+echo
+echo "$tab [ ebtables: nat ethernet ] [ EBTABLES ]"
+$command_ebtables -L -t nat
+exit; fi
 ####
 ####
 #### :rutina-final-list-ebtables:
@@ -6665,16 +6603,13 @@ exit; fi
 #### :rutina-inicial-list-arptables:
 ####
 ####
- if [ "$first_option" = "list-arptables" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ List arptables ipv4 ]"
- echo $header_lineal
- echo $tab
- echo $tab
- echo "$tab [ arptables: filter arptables ] [ ARPTABLES ]"
- echo $rala
- $command_arptables -L
-#### echo $footer_lineal
- exit; fi
+if [ "$first_option" = "list-arptables" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List arptables ipv4 ]"
+echo
+echo "$tab [ arptables: filter arptables ] [ ARPTABLES ]"
+echo
+$command_arptables -L
+exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
