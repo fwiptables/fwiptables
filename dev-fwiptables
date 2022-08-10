@@ -265,10 +265,13 @@ header_lineal="$tab   $tab  "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 footer_lineal="$tab   $tab  "                            
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-#### old system: give_cover="$zero_option header"
+#### obsolete old system: give_cover="$zero_option header"
 give_cover="echo $head_principal"
-give_load="echo ### ### [ ok ] [ Load firewall ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+give_load="echo ### ### [ ok ] [ Load firewall ]"
+#### #### english: echo void            #### spanish: impresion vacia
+nada="echo -n" ; 
+#### #### english: echo void            #### spanish: impresion vacia
 give_autosave="$cmd_fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
@@ -5876,7 +5879,7 @@ echo $tab; exit; fi
 #### :rutina-inicial-blacklist-off:
 ####
 ####
-if [ "$first_option" = "blacklist-off" ]; then 
+if [ "$first_option" = "blacklist-off" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ]"
 echo $tab
 echo $directory_temporal
@@ -5901,10 +5904,8 @@ exit; fi
 #### :rutina-inicial-eraserules:
 ####
 ####
-if [ "$first_option" = "eraserules" ]; then $nada 
-#### give_cover to null, so you can head_autolog.
-$give_cover &> /dev/null
-echo $head_principal
+if [ "$first_option" = "eraserules" ]; then $give_cover 
+echo "$header_ok [ $first_option ] [ erase all iptables rules ]"
 ####
 ####
 #### english: erase the rules
@@ -6183,7 +6184,7 @@ exit; fi
 #### :rutina-inicial-list-alltables:
 ####
 ####
- if [ "$first_option" = "list-alltables" ]; then  $nada
+ if [ "$first_option" = "list-alltables" ]; then  $give_cover
  echo "$header_ok [ $first_option ]  [ List all rules ]"
  echo $header_lineal
  echo; echo; echo "### LIST ARPTABLES ###"
@@ -7423,7 +7424,7 @@ exit; fi
 #### :rutina-inicial-wizard-full:
 ####
 ####
-if [ "$first_option" = "wizard-full" ]; then echo
+if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
 dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
@@ -7615,8 +7616,7 @@ exit; fi
 #### :rutina-inicial-stop:
 ####
 ####
-if [ "$first_option" = "stop" ]; then $nada
-echo $head_principal
+if [ "$first_option" = "stop" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Stop the firewall ]"
 ####
 ####
@@ -7645,22 +7645,21 @@ exit; fi
 #### :rutina-inicial-continue:
 ####
 ####
- if [ "$first_option" = "continue" ]; then $nada
- echo $head_principal
- echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ]"
+if [ "$first_option" = "continue" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ]"
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
- cat $directory_fwrecover/$name_fwiptables-stoped-arptables | $command_arptables-restore
- cat $directory_fwrecover/$name_fwiptables-stoped-ebtables | $command_ebtables-restore
- cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv4 | $command_iptables_nft-restore  
- cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
- cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
- cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
- echo " [ ok ] [ firewall continued ]"
- exit; fi
+cat $directory_fwrecover/$name_fwiptables-stoped-arptables | $command_arptables-restore
+cat $directory_fwrecover/$name_fwiptables-stoped-ebtables | $command_ebtables-restore
+cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv4 | $command_iptables_nft-restore  
+cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
+cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
+cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
+echo " [ ok ] [ firewall continued ]"
+exit; fi
 ####
 ####
 #### :rutina-final-continue:
@@ -7901,7 +7900,7 @@ exit; fi
 #### :rutina-inicial-ntpdate:
 ####
 ####
-if [ "$first_option" = "ntpdate" ]; then $nada
+if [ "$first_option" = "ntpdate" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ]"
 echo $header_lineal
 if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
