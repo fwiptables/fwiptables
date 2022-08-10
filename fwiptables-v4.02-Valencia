@@ -30,7 +30,7 @@
 ####
 ####
 ####                 ## Report bugs and Sum ideas
-####   Email fwiptables@gmx.com
+####   Email: fwiptables@gmx.com
 ####
 ####
 ##############################       english: are you root: uid 0 ?                ##############################
@@ -46,7 +46,7 @@ echo ""
 exit ; fi
 ####
 ####
-##############################     english name, desciprition and version   ##############################
+##############################     english name, description and version    ##############################
 ##############################     spanish: nombre, descripcion y version   ##############################
 ####
 ####
@@ -58,8 +58,8 @@ fprogram="Fran FireWall FWiptables Generator" ;
 fversion="4.02-Valencia-dev" ;
 ####
 ####
-##############################    english: options priority       ##############################
-##############################    spanish: priorida de opciones   ##############################
+##############################    english: options priority        ##############################
+##############################    spanish: prioridad de opciones   ##############################
 ####
 ####
 #### #### english: option for default    #### spanish: opcion por defecto
@@ -1079,8 +1079,8 @@ else echo $head_autolog >> "$output_autolog" ; fi; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
-##################################### english: regen-config: regen-config template wizard files       #####################################
-##################################### spanish: regen-config: regen-configera template wizard archivos #####################################
+########################   english: regen-config: regen-config template wizard files       #############################
+########################   spanish: regen-config: regen-configera template wizard archivos #############################
 #### :rutina-inicial-regen-config:
 ####
 ####
@@ -2308,15 +2308,15 @@ exit ; fi
 ####
 ####
 #### :rutina-final-mini-options:
-##############################       english: full-options: wellcome with semi help
-##############################       spanish: full-options: bienvenida con semi ayuda
+##############################       english: options: and full-options: wellcome with semi help
+##############################       spanish: options: and full-options: bienvenida con semi ayuda
 #### :rutina-inicial-full-options:
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ options.md ]"
 echo "$text_md  output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
-echo "$duo_md                                      [ firewall-options ]                                        "
+echo "$duo_md || || [ firewall-options ]                                        "
 echo "$text_md  firewall-rules     |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
 echo "$text_md                        list-alltables list-filter4 list-filter6                                 "
@@ -2331,7 +2331,7 @@ echo "$text_md                        client-web client-mail client-news client-
 echo "$text_md                        client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
-echo "$duo_md                                      [ tool-options ]                                            "   
+echo "$duo_md || || [ tool-options ]                                            "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md  tool-connect       |  iw-scan iw-info iw-save wpa-load dhcp-client                             "
@@ -2348,7 +2348,7 @@ echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade 
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5                      "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
-echo "$duo_md                                      [ show-options ]                                            " 
+echo "$duo_md || || [ show-options ]                                            " 
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh sentlog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf  protocols services                                    "
