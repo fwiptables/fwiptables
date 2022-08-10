@@ -9262,10 +9262,10 @@ exit; fi
 if [ "$first_option" = "pc-halt" ]; then $give_cover
 echo "$header_ok [ $first_option ]"
 echo $header_lineal
-demora="3"
+demora="5"
 echo "Halt to power off computer ... in $demora seconds"
 $(command -v sleep) $demora
-$(command -v halt) -t $demora
+$(command -v halt)
 echo $footer_lineal
 exit; fi
 ####
@@ -9279,10 +9279,10 @@ exit; fi
 if [ "$first_option" = "pc-shutdown" ]; then $give_cover
 echo "$header_ok [ $first_option ]"
 echo $header_lineal
-demora="3"
+demora="5"
 echo "Halt to power off computer ... in $demora seconds"
 $(command -v sleep) $demora 
-$(command -v shutdown) -h -t $demora 
+$(command -v shutdown) -h now 
 echo $footer_lineal
 exit; fi
 ####
@@ -9296,10 +9296,10 @@ exit; fi
 if [ "$first_option" = "pc-reboot" ]; then $give_cover
 echo "$header_ok [ $first_option ]"
 echo $header_lineal
-demora="3"
+demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
 $(command -v sleep) $demora
-$(command -v reboot) -t $demora
+$(command -v reboot)
 echo $footer_lineal
 exit; fi
 ####
