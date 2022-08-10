@@ -1,6 +1,11 @@
 
+
+
+ 1.
+
+ cambios fwiptables en desarrollo para dev-fwiptables
  
- 7. empezara a funcioar install y upgrade con gui y cli. HECHO
+ 7. empezara a funcionar install y upgrade cuando gui y cli. HECHO
  6. rutina profile ahora es anterior a variables de fwiptables. HECHO
  5. cambio de nombre de ntpdate a ntpdate-client. HECHO
  4. simplificacion de codigo. HECHO
@@ -8,7 +13,7 @@
  2. pequeños cambios de apariencia en full-options y mini-options. HECHO
  1. arreglos en pc-halt, pc-shutdown y pc-reboot. HECHO
 
- cambios fwiptables en desarrollo para dev-fwiptables version 4.02
+ cambios fwiptables 4.02 # lineas=7
 
  7. añadir pc-reboot pc-halt pc-shudown en la categoria tool-computer. HECHO
  6. borrada el codigo de la cabecera (header) viejo, arreglo que da mucha velocidad. HECHO
