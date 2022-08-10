@@ -556,10 +556,12 @@ echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ in
 #### 
 #### 
 echo "$text_md [ running ] [ $name_fwiptables installing ]"
+mkdir -p "$directory_temporal" &> /dev/null
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
+####
+####
 $cmd_fwiptables regen-config &> /dev/null
-#### $directory_fwiptables/$cmd_fwiptables clean-tmp &> /dev/null
 ####
 ####
 ####  english: Install new /etc/bash_completion/fwiptables
@@ -578,7 +580,7 @@ echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
-show-help' $name_fwiptables"  &>> /etc/bash_completion.d/$cmd_fwiptables
+show-help' $name_fwiptables"  &>> "/etc/bash_completion.d/$cmd_fwiptables"
 ####
 ####
 ####  english: Install new /etc/profile.d/fwiptables
@@ -592,7 +594,7 @@ if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null
 ####  spanish: genera el nuevo  profile archivo
 ####
 ####
-cp /etc/bash_completion.d/$name_fwiptables /etc/profile.d/$name_fwiptables &> /dev/null
+cp "/etc/bash_completion.d/$name_fwiptables" "/etc/profile.d/$name_fwiptables" &> /dev/null
 ####
 ####
 ####  english: generate fwiptables default
@@ -697,7 +699,6 @@ case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
 echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
-rm /tmp/$cmd_fwiptables &> /dev/null
 ####
 ####
 ####  English: download fwiptables
@@ -706,16 +707,16 @@ rm /tmp/$cmd_fwiptables &> /dev/null
 ####
 echo "$text_md [ downloading ] [ $fweb_latest ]"
 echo "$text_md [ status ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $fweb_latest &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
+$favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
 ####
 #### English: launch install
 #### Spanish: lanza instalacion
 ####
 ####
-if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
-then $directory_temporal/$name_fwiptables-installer install ; 
+if [ -f "$directory_temporal/$name_fwiptables" ] ;
+then "$directory_temporal/$name_fwiptables" install ; 
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
@@ -734,7 +735,6 @@ case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
 echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
-rm /tmp/$cmd_fwiptables &> /dev/null
 ####
 ####
 ####  English: download fwiptables
@@ -753,7 +753,6 @@ chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
 if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
 then $directory_temporal/$name_fwiptables-installer install ; 
-$cmd_fwiptables clean-tmp &> /dev/null ;
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
