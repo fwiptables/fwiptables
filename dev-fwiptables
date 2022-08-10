@@ -716,7 +716,6 @@ chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
 if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
 then $directory_temporal/$name_fwiptables-installer install ; 
-$cmd_fwiptables clean-tmp &> /dev/null ;
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
