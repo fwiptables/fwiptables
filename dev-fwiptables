@@ -109,24 +109,6 @@ output_filelog="$directory_log/$name_fwiptables-filelog"
 output_autolog="$directory_log/$name_fwiptables-autolog"
 ####
 ####
-##############################    english: temporal: files for fwiptables       ##############################
-##############################    spanish: archivos temporales: de fwiptables   ##############################
-####
-####
-#### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$name_fwiptables-$fversion-tmp"
-#### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$name_fwiptables-$fversion-tmp"
-####
-directory_temporal="$HOME/.$name_fwiptables-$fversion-tmp" ; mkdir -p $directory_temporal &> /dev/null
-####
-####
-temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
-temporal_textfinal="$directory_temporal/$first_option-$second_option-$third_option-textfinal"
-temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
-temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
-output_log="$directory_temporal/$first_option-$second_option-$third_option"
-output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
-####
-####
 ##############################   english: profile y support X11       ##############################
 ##############################   spanish: profile y soporte de X11    ##############################
 ####
@@ -169,6 +151,25 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
+####
+####
+##############################    english: temporal: files for fwiptables       ##############################
+##############################    spanish: archivos temporales: de fwiptables   ##############################
+####
+####
+#### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$name_fwiptables-$fversion-tmp"
+#### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$name_fwiptables-$fversion-tmp"
+####
+directory_temporal="$HOME/.$name_fwiptables-$fversion-tmp"
+command -v mkdir -p $directory_temporal &> /dev/null
+####
+####
+temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
+temporal_textfinal="$directory_temporal/$first_option-$second_option-$third_option-textfinal"
+temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
+temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
+output_log="$directory_temporal/$first_option-$second_option-$third_option"
+output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
 ##############################   english: the basic system variables         ##############################
