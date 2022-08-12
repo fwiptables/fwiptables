@@ -9175,13 +9175,81 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
+############################       english: gpg-edit-text: edit file gpg texts
+############################       spanish: gpg-edit-text: edita archivo de gpg text
+#### :rutina-inicial-gpg-list:
+####
+####
+if [ "$first_option" = "gpg-edit" ]; then $give_cover
+echo "$header_ok [ $first_option ] [ edit files from gpg texts ]"
+####
+####
+if [ "$directory_config/$second_option" == "$NULL" ]; then
+ls "$directory_default/*.gpg" ; 
+echo " [ fail ] [ type $cmd_fwiptables gpg-edit name-gpg" ; exit ; fi
+####
+####
+archivo_txt="$directory_temporal/$second_option"
+archivo_gpg="$directory_temporal/$second_option.gpg"
+####
+####
+####  when -cli
+####
+####
+if [ "third_option" == "-cli" ]; then
+echo "trabajando.."
+exit; fi
+####
+####
+####  when -gui
+####
+####
+if [ "third_option" == "-gui" ]; then
+echo "trabajando.."
+exit; fi
+####
+####
+####  when is not cli neir gui
+####
+####
+if [ -f "$directory_default/$second_option.gpg" ]; then
+cp "$directory_default/$second_option.gpg" "$archivo_gpg"
+$(command -v gpg) --yes -o $archivo -d $archivo.gpg 
+$(command -v dialog) --no-cancel --title "MODIFY FILE" --editbox "$archivo_txt" 0 0 2> "$archivo_txt"
+$(command -v gpg) --yes -o $archivo -c $archivo_gpg ;
+cp "$archivo_gpg" "$directory_default/gpg-$second_option.gpg"
+####
+####
+else touch $archivo
+$(command -v dialog) --no-cancel --title "MODIFY FILE" --editbox "$archivo_txt" 0 0 2> "$archivo_txt"
+$(command -v gpg) --yes -o $archivo -c $archivo_gpg ;
+cp "$archivo_gpg" "$directory_default/gpg-$second_option.gpg"
+exit ; fi
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-gpg-list:
+############################       english: gpg-list-names: list files from gpg texts
+############################       spanish: gpg-list-names: lista archivos de gpg texts
+#### :rutina-inicial-gpg-list-names:
+####
+####
+if [ "$first_option" = "gpg-list-names" ]; then $give_cover
+echo "$header_ok [ $first_option ] [ list files from gpg texts ]"
+ls "$directory_default/gpg-*"
+exit; fi
+####
+####
+#### :rutina-final-gpg-list-names:
 ############################       english: pc-halt: power off computer
 ############################       spanish: pc-halt: apaga el ordenador
 #### :rutina-inicial-pc-halt:
 ####
 ####
 if [ "$first_option" = "pc-halt" ]; then $give_cover
-echo "$header_ok [ $first_option ]"
+echo "$header_ok [ $first_option ] [ power off computer ]"
 echo $header_lineal
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -9198,7 +9266,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "pc-shutdown" ]; then $give_cover
-echo "$header_ok [ $first_option ]"
+echo "$header_ok [ $first_option ] [ power off computer ]"
 echo $header_lineal
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -9209,13 +9277,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-############################       english: pc-reboot: power off computer
-############################       spanish: pc-reboot: apaga el ordenador
+############################       english: pc-reboot: reboot computer
+############################       spanish: pc-reboot: reinicia el ordenador
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
 if [ "$first_option" = "pc-reboot" ]; then $give_cover
-echo "$header_ok [ $first_option ]"
+echo "$header_ok [ $first_option ] [ reboot computer ]"
 echo $header_lineal
 demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
