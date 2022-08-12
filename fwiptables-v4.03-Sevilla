@@ -493,6 +493,7 @@ command_wpa_supplicant="$(command -v wpa_supplicant | cut -d " " -f 1)"
 command_md5sum="$(command -v md5sum | cut -d " " -f 1)"
 command_iw="$(command -v iw | cut -d " " -f 1)"
 command_ifconfig="$(command -v ifconfig | cut -d " " -f 1)"
+command_gpg="$(command -v gpg | cut -d " " -f 1)"
 ####
 ####
 #### :rutina-final-command:
@@ -9175,9 +9176,9 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
-############################       english: gpg-edit-text: edit file gpg texts
-############################       spanish: gpg-edit-text: edita archivo de gpg text
-#### :rutina-inicial-gpg-list:
+############################       english: gpg-edit: edit file gpg texts
+############################       spanish: gpg-edit: edita archivo de gpg text
+#### :rutina-inicial-gpg-edit:
 ####
 ####
 if [ "$first_option" = "gpg-edit" ]; then $give_cover
@@ -9186,11 +9187,13 @@ echo "$header_ok [ $first_option ] [ edit files from gpg texts ]"
 ####
 if [ "$directory_config/$second_option" == "$NULL" ]; then
 ls "$directory_default/*.gpg" ; 
-echo " [ fail ] [ type $cmd_fwiptables gpg-edit name-gpg" ; exit ; fi
+echo " [ fail ] [ type $cmd_fwiptables gpg-edit name-of-gpg" ; exit ; fi
 ####
 ####
-archivo_txt="$directory_temporal/$second_option"
-archivo_gpg="$directory_temporal/$second_option.gpg"
+gpg_origen_txt="$directory_default/$second_option"
+gpg_origen_gpg="$directory_default/$second_option.gpg"
+gpg_temporal_txt="$directory_temporal/$second_option"
+gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
 ####
 ####
 ####  when -cli
@@ -9212,25 +9215,23 @@ exit; fi
 ####  when is not cli neir gui
 ####
 ####
-if [ -f "$directory_default/$second_option.gpg" ]; then
-cp "$directory_default/$second_option.gpg" "$archivo_gpg"
-$(command -v gpg) --yes -o $archivo -d $archivo.gpg 
-$(command -v dialog) --no-cancel --title "MODIFY FILE" --editbox "$archivo_txt" 0 0 2> "$archivo_txt"
-$(command -v gpg) --yes -o $archivo -c $archivo_gpg ;
-cp "$archivo_gpg" "$directory_default/gpg-$second_option.gpg"
+if [ -f "origen_gpg" ]; then 
+$command_gpg --yes -o $gpg_temporal_txt -d $gpg_origen_gpg ;
+$command_dialog --no-cancel --title "MODIFY FILE" --editbox "$gpg_temporal_txt" 0 0 2> "$gpg_temporal_txt" ;
+$command_gpg --yes -o $gpg_origen_gpg -c $gpg_temporal_txt ;
+exit ; fi
 ####
 ####
-else touch $archivo
-$(command -v dialog) --no-cancel --title "MODIFY FILE" --editbox "$archivo_txt" 0 0 2> "$archivo_txt"
-$(command -v gpg) --yes -o $archivo -c $archivo_gpg ;
-cp "$archivo_gpg" "$directory_default/gpg-$second_option.gpg"
+if [ ! -f "origen_gpg" ]; then touch "$gpg_origen_gpg"
+$command_dialog --no-cancel --title "MODIFY FILE" --editbox "$gpg_tamporal_txt" 0 0 2> "$gpg_temporal_txt" ;
+$command_gpg --yes -o $gpg_temporal_txt -c $gpg_origen_gpg ;
 exit ; fi
 ####
 ####
 exit ; fi
 ####
 ####
-#### :rutina-final-gpg-list:
+#### :rutina-final-gpg-edit:
 ############################       english: gpg-list-names: list files from gpg texts
 ############################       spanish: gpg-list-names: lista archivos de gpg texts
 #### :rutina-inicial-gpg-list-names:
