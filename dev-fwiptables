@@ -9185,13 +9185,13 @@ if [ "$first_option" = "gpg-edit" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ edit files from gpg texts ]"
 ####
 ####
-if [ "$directory_config/$second_option" == "$NULL" ]; then
+if [ "$second_option" == "$NULL" ]; then
 ls "$directory_default/*.gpg" ; 
-echo " [ fail ] [ type $cmd_fwiptables gpg-edit name-of-gpg" ; exit ; fi
+echo " [ fail ] [ type $cmd_fwiptables gpg-edit name-of-gpg"; exit; fi
 ####
 ####
-gpg_origen_txt="$directory_default/$second_option"
 gpg_origen_gpg="$directory_default/$second_option.gpg"
+gpg_temporalone_txt="$directory_temporal/$second_option-one"
 gpg_temporal_txt="$directory_temporal/$second_option"
 gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
 ####
@@ -9215,16 +9215,16 @@ exit; fi
 ####  when is not cli neir gui
 ####
 ####
-if [ -f "origen_gpg" ]; then 
-$command_gpg --yes -o $gpg_temporal_txt -d $gpg_origen_gpg ;
-$command_dialog --no-cancel --title "MODIFY FILE" --editbox "$gpg_temporal_txt" 0 0 2> "$gpg_temporal_txt" ;
-$command_gpg --yes -o $gpg_origen_gpg -c $gpg_temporal_txt ;
+if [ -s "gpg_origen_gpg" ];  then
+$command_gpg --yes -o "$gpg_temporalone_txt" -d "$gpg_origen_gpg" ;
+$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_temporalone_txt" 0 0 2> $gpg_temporal_txt
+$command_gpg --yes -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 exit ; fi
 ####
 ####
-if [ ! -f "origen_gpg" ]; then touch "$gpg_origen_gpg"
-$command_dialog --no-cancel --title "MODIFY FILE" --editbox "$gpg_tamporal_txt" 0 0 2> "$gpg_temporal_txt" ;
-$command_gpg --yes -o $gpg_temporal_txt -c $gpg_origen_gpg ;
+if [ ! -s "gpg_origen_gpg" ]; then echo "$gpg_temporal_txt file creted" > $gpg_temporalone_txt
+$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_tamporalone_txt" 0 0 2> $gpg_temporal_txt
+$command_gpg --yes -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 exit ; fi
 ####
 ####
