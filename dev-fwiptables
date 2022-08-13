@@ -434,6 +434,7 @@ exit; fi
 ####
 ####
 command_bash="$(command -v bash | cut -d " " -f 1)"
+command_find="$(command -v find | cut -d " " -f 1)"
 command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
 command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
 command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
@@ -7127,9 +7128,9 @@ if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa
 if [ "$2" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else ssid="$2"     ; fi
 if [ "$3" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else password="$3" ; fi
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ;
-$command_wpa_passphrase $ssid $password > $directory_default/wpa-$dispositivo-$ssid
-$command_wpa_supplicant -B -i $dispositivo -c $directory_default/wpa-$dispositivo-$ssid
-echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/wpa-$dispositivo-$ssid" ; done
+$command_wpa_passphrase $ssid $password > $directory_default/$dispositivo-$ssid.wpa
+$command_wpa_supplicant -B -i $dispositivo -c $directory_default/$dispositivo-$ssid.wpa
+echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$dispositivo-$ssid.wpa" ; done
 $command_dhcp
 echo $footer_lineal
 exit; fi
@@ -7145,9 +7146,10 @@ if [ "$first_option" = "wpa-load" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-load wpa_file1 ]"
 echo $header_lineal
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
-if [ "$(ls -l $directory_default | grep wpa-)" == "$NULL" ]; then
+if [ "$($command_find $directory_default | grep $".wpa")" == "$NULL" ]; then
 echo " [ Without old wpa file saved, run: fwiptables wpa-save SSID PASSWORD ]"; 
-else echo " [ wpa old file saved ]" ; ls -l $directory_default | grep wpa- ; fi
+else echo " [ wpa old file saved: ]" 
+$command_find $directory_default | grep $".wpa" | xargs file | cut -d "/" -f 4- ; fi
 if [ -f "$directory_default/$second_option" ]; then
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
 $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$second_option ; done
@@ -9190,7 +9192,7 @@ echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 if [ "$second_option" == "$NULL" ] || [ "$second_option" == "-list" ] ; then
 find "$directory_default" | xargs file | grep ".gpg" | cut -d "/" -f 4- | sed 's/\.gpg//' -
-echo " [ status ] [ type $cmd_fwiptables gpg-edit name-of-gpg" ;
+echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ;
 exit; fi
 ####
 ####
