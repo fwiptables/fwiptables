@@ -9181,7 +9181,7 @@ exit; fi
 #### :rutina-inicial-gpg-notes:
 ####
 ####
-if [ "$first_option" = "gpg-edit" ]; then $give_cover
+if [ "$first_option" = "gpg-notes" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
