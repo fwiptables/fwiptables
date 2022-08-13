@@ -4329,8 +4329,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-connect:
-
-
 ############################## english: gui-menu-tool-rules: gui with menu ##############################
 ############################## spanish: gui-menu-tool-rules: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-rules:
@@ -7146,10 +7144,10 @@ if [ "$first_option" = "wpa-load" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-load wpa_file1 ]"
 echo $header_lineal
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
-if [ "$($command_find $directory_default | grep $".wpa")" == "$NULL" ]; then
+if [ "$($command_find $directory_default | grep \\.wpa)" == "$NULL" ]; then
 echo " [ Without old wpa file saved, run: fwiptables wpa-save SSID PASSWORD ]"; 
 else echo " [ wpa old file saved: ]" 
-$command_find $directory_default | grep $".wpa" | xargs file | cut -d "/" -f 4- ; fi
+$command_find $directory_default | grep \\.wpa | xargs file | cut -d "/" -f 4- ; fi
 if [ -f "$directory_default/$second_option" ]; then
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
 $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$second_option ; done
@@ -9191,7 +9189,7 @@ echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
 if [ "$second_option" == "$NULL" ] || [ "$second_option" == "-list" ] ; then
-find "$directory_default" | xargs file | grep ".gpg" | cut -d "/" -f 4- | sed 's/\.gpg//' -
+find "$directory_default" | xargs file | grep \\.gpg | cut -d "/" -f 4- | sed 's/\.gpg//' -
 echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ;
 exit; fi
 ####
