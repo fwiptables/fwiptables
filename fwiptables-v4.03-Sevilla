@@ -9166,7 +9166,7 @@ fi
 ####
 ####
 if [ "$first_option" = "new-versions" ]; then $give_cover
-echo "$header_ok [ $first_option ]  [ show the new versions in $fweb_main ]"
+echo "$header_ok [ $first_option ]  [ show the new versions hosted in sf.net ]"
 echo $header_lineal
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
