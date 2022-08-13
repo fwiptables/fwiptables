@@ -7126,9 +7126,9 @@ if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo " [ info ] [ Install wpa
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$2" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else ssid="$2"     ; fi
 if [ "$3" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else password="$3" ; fi
-for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ;
-$command_wpa_passphrase $ssid $password > $directory_default/$dispositivo-$ssid.wpa
-$command_wpa_supplicant -B -i $dispositivo -c $directory_default/$dispositivo-$ssid.wpa
+for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig "$dispositivo" up ;
+$command_wpa_passphrase "$ssid" "$password" > "$directory_default/$dispositivo-$ssid.wpa"
+$command_wpa_supplicant -B -i "$dispositivo" -c "$directory_default/$dispositivo-$ssid.wpa"
 echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$dispositivo-$ssid.wpa" ; done
 $command_dhcp
 echo $footer_lineal
