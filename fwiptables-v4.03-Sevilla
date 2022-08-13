@@ -161,7 +161,7 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 #### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$name_fwiptables-$fversion-tmp"
 ####
 directory_temporal="$HOME/.$name_fwiptables-$fversion-tmp"
-$(command -v mkdir) -p $directory_temporal &> /dev/null
+if [ ! -d "$directory_temporal" ]; then $(command -v mkdir) -p $directory_temporal &> /dev/null ; fi
 ####
 ####
 temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
