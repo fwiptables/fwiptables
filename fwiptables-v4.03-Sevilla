@@ -9186,7 +9186,7 @@ echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
 if [ "$second_option" == "$NULL" ]; then
-ls "$directory_default" | grep ".gpg" | sed 's/\.gpg//' -
+find "$directory_default" | xargs file | grep ".gpg" | cut -d "/" -f 4- | sed 's/\.gpg//' -
 echo " [ status ] [ type $cmd_fwiptables gpg-edit name-of-gpg" ;
 exit; fi
 ####
