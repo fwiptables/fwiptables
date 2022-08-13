@@ -2331,7 +2331,7 @@ echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-
 echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
 echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                   "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
-echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3                        "
+echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3 gpg-notes              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5                      "
@@ -9176,16 +9176,16 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
-############################       english: gpg-edit: edit file gpg texts
-############################       spanish: gpg-edit: edita archivo de gpg text
-#### :rutina-inicial-gpg-edit:
+############################       english: gpg-notes: edit file gpg texts
+############################       spanish: gpg-notes: edita archivo de gpg text
+#### :rutina-inicial-gpg-notes:
 ####
 ####
 if [ "$first_option" = "gpg-edit" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then
+if [ "$second_option" == "$NULL" ] || [ "$second_option" == "-list" ] ; then
 find "$directory_default" | xargs file | grep ".gpg" | cut -d "/" -f 4- | sed 's/\.gpg//' -
 echo " [ status ] [ type $cmd_fwiptables gpg-edit name-of-gpg" ;
 exit; fi
@@ -9238,19 +9238,7 @@ $cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
 exit ; fi
 ####
 ####
-#### :rutina-final-gpg-edit:
-############################       english: gpg-list-names: list files from gpg texts
-############################       spanish: gpg-list-names: lista archivos de gpg texts
-#### :rutina-inicial-gpg-list-names:
-####
-####
-if [ "$first_option" = "gpg-list-names" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ list files from gpg texts ]"
-ls "$directory_default/gpg-*"
-exit; fi
-####
-####
-#### :rutina-final-gpg-list-names:
+#### :rutina-final-gpg-notes:
 ############################       english: pc-halt: power off computer
 ############################       spanish: pc-halt: apaga el ordenador
 #### :rutina-inicial-pc-halt:
