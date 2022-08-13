@@ -161,7 +161,7 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 #### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$name_fwiptables-$fversion-tmp"
 ####
 directory_temporal="$HOME/.$name_fwiptables-$fversion-tmp"
-command -v mkdir -p $directory_temporal &> /dev/null
+$(command -v mkdir) -p $directory_temporal &> /dev/null
 ####
 ####
 temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
@@ -9182,17 +9182,19 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gpg-edit" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ edit files from gpg texts ]"
+echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
 if [ "$second_option" == "$NULL" ]; then
-ls "$directory_default/*.gpg" ; 
-echo " [ fail ] [ type $cmd_fwiptables gpg-edit name-of-gpg"; exit; fi
+ls "$directory_default" | grep ".gpg" | sed 's/\.gpg//' -
+echo " [ status ] [ type $cmd_fwiptables gpg-edit name-of-gpg" ;
+exit; fi
 ####
 ####
 gpg_origen_gpg="$directory_default/$second_option.gpg"
-gpg_temporalone_txt="$directory_temporal/$second_option-one"
-gpg_temporal_txt="$directory_temporal/$second_option"
+gpg_firma_gpg="$directory_default/$second_option.sign"
+gpg_modify_txt="$directory_temporal/$second_option.modify"
+gpg_temporal_txt="$directory_temporal/$second_option.txt"
 gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
 ####
 ####
@@ -9215,17 +9217,22 @@ exit; fi
 ####  when is not cli neir gui
 ####
 ####
-if [ -s "gpg_origen_gpg" ];  then
-$command_gpg --yes -o "$gpg_temporalone_txt" -d "$gpg_origen_gpg" ;
-$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_temporalone_txt" 0 0 2> $gpg_temporal_txt
-$command_gpg --yes -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-exit ; fi
+if [ -f "$gpg_origen_gpg" ];  then
+echo "### type password to load: "
+$command_gpg --yes --passphrase-fd 0 --pinentry-mode loopback -v -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
+$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt && 
+clear &&
+echo "### type password to save: " &&
+$command_gpg --yes --passphrase-fd 0 --pinentry-mode loopback -v -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
 ####
 ####
-if [ ! -s "gpg_origen_gpg" ]; then echo "$gpg_temporal_txt file creted" > $gpg_temporalone_txt
-$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_tamporalone_txt" 0 0 2> $gpg_temporal_txt
-$command_gpg --yes -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-exit ; fi
+if [ ! -f "$gpg_origen_gpg" ]; then 
+echo "File created" > "$gpg_modify_txt"
+$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> "$gpg_temporal_txt"
+clear ; echo "### type password to save: "
+$command_gpg --yes --passphrase-fd 0 --pinentry-mode loopback -v -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
 ####
 ####
 exit ; fi
