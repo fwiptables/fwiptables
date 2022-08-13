@@ -5378,7 +5378,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  archivob="$(dialog --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
  $cmd_fwiptables wpa-save archivoa archivob;;
  0604) clear ; 
- archivo="$(dialog --stdout --title "type wpa file to load" --inputbox "$(ls -1 $directory_default | grep -i wpa)" 0 0)"
+ archivo="$(dialog --stdout --title "type wpa file to load" \
+ --inputbox "$(find $directory_default | cut -d "/" -f 4- | grep \\.wpa)" 0 0)"
  $cmd_fwiptables wpa-load $archivo ;;
  0605) clear ; $cmd_fwiptables dhcp-client ;;
  0701) clear ; $cmd_fwiptables rule-del-num ;;
