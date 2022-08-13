@@ -3480,8 +3480,11 @@ echo "$text_md $tab speed-glx"
 echo "$text_md $tab_lang_english           : Show frammes for seconds with mesa graphicall"
 echo "$text_md $tab_lang_spanish           : Muestra fotogramas por segundo con graficos mesa"
 echo "$text_md $tab radio-mp3"
-echo "$text_md $tab_lang_english           : connect to one server mp3, see show-default or modify-default"
-echo "$text_md $tab_lang_spanish           : connecta a on servidor mp3, mira show-default o modify-default"
+echo "$text_md $tab_lang_english           : connect to one server mp3, see: show-default or modify-default"
+echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: show-default o modify-default"
+echo "$text_md $tab gpg-notes"
+echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
+echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
 echo $footer_lineal
 exit; fi
 ####
@@ -10026,7 +10029,8 @@ echo "$text_md         free-ram : Clean for innecesary ram memory."
 echo "$text_md        speed-ram : Show the speed of ram memory."
 echo "$text_md       speed-disk : Show the speed of root hard disc."
 echo "$text_md        speed-glx : Show frammes for seconds with mesa graphicall."
-echo "$text_md        radio-mp3 : connect to one server mp3, see show-default modify-default."
+echo "$text_md        radio-mp3 : Connect to one server mp3, see show-default modify-default."
+echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
 echo  $text_md
 echo "$title_md         [ Tool Install ]"
 echo  $text_md
@@ -10034,7 +10038,7 @@ echo "$text_md         install : Install this program actual."
 echo "$text_md   howto-upgrade : Howto install the latest version."
 echo "$text_md         upgrade : Upgrade at the latest stable version."
 echo "$text_md     dev-upgrade : Upgrade at the latest git version."
-echo "$text_md       clean-tmp : Remove temporal files of $name_fwiptables."
+echo "$text_md       clean-tmp : Remove temporal files of fwiptables."
 echo  $text_md
 echo "$title_md         [ Tool blacklist ]"
 echo  $text_md
@@ -10353,6 +10357,7 @@ echo "$text_md     speed-ram : Muestra la velocidad de la memoria ram."
 echo "$text_md    speed-disk : Muestra la velocidad de el disco duro raiz."
 echo "$text_md     speed-glx : Muestra fotogramas por segundo con graficos mesa."
 echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default."
+echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
 echo  $text_md
 echo "$title_md [ Herramienta de instalacion ]."
 echo  $text_md
