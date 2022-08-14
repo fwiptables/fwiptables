@@ -55,7 +55,7 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="4.03-Sevilla-developer" ;
+fversion="4.03-Sevilla" ;
 ####
 ####
 ##############################    english: options priority        ##############################
@@ -4611,7 +4611,8 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "radio-mp3 link" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" \
+"speed-ram" "speed-disk" "speed-glx" "radio-mp3 link" "gpg-notes" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool System ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4627,6 +4628,7 @@ case $selection in
 "radio-mp3 link") 
 radio_enlace="$($command_zenity  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
 $cmd_fwiptables -gui radio-mp3 $radio_enlace ;;
+"gpg-notes") $cmd_fwiptables -gui gpg-notes ;;
 esac
 ####
 ####

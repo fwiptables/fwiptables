@@ -1,12 +1,16 @@
 
+ 1. 
 
- 7. variable command_zenity y command_dialog recambiada. HECHO
- 6. gpg-notes para gui-menu. 
+ cambios en dev-fwiptables desarrollo 4.04
+
+ 8. variable command_zenity y command_dialog recambiada. HECHO
+ 7. gpg-notes para cli-menu. HECHO
+ 6. gpg-notes para gui-menu. HECHO
  4. gpg-notes para -gui. HECHO
  2. cambio de estructura de archivo, desde wpa-file a file.wpa en wpa-load y wpa-save. HECHO
  1. gpg-notes en tool-system para texto, HECHO
 
- cambios fwiptables en desarrollo para dev-fwiptables
+ cambios fwiptables 4.03 # lineas=8
  
  7. empezara a funcionar install y upgrade cuando gui y cli. HECHO
  6. rutina profile ahora es anterior a variables de fwiptables. HECHO
