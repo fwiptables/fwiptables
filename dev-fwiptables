@@ -883,6 +883,7 @@ scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option
 "ole-word") $cmd_fwiptables ole-word -cli ; exit ;;
 "ole-number") $cmd_fwiptables ole-number -cli ; exit ;;
 "blacklist-on") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $cmd_fwiptables log-search $pattern ; exit ;; 
@@ -910,6 +911,7 @@ ole_word) first_option="ole-word" ; second_option="-gui" ;;
 ole_number) first_option="ole-number" ; second_option="-gui" ;;
 ole_domain) first_option="ole-domain" ; second_option="-gui" ;;
 rule-del-num) first_option="rule-del-num" ; second_option="-gui" ;;
+gpg-notes) first_option="gpg-notes" ; second_option="$third_option" ; third_option="-gui"
 esac ; fi
 ####
 ####
@@ -957,7 +959,7 @@ ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
-new-versions|dev-version|dev-changes|code)  second_option="tool-dev"; third_option="" ;;
+new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
@@ -1006,7 +1008,7 @@ ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
-new-versions|dev-version|dev-changes-code)  second_option="tool-dev"; third_option="" ;;
+new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
@@ -5219,6 +5221,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
   1804  "$tab speed-glx" \
   1805  "$tab radio-mp3-default" \
   1806  "$tab radio-mp3-link" \
+  1807  "$tab gpg-notes" \
   1900 "$quad [ Show Hardware ] $cinco" \
   1901  "$tab lpinfo" \
   1902  "$tab lsblk" \
@@ -5448,7 +5451,11 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  1803) clear ; $cmd_fwiptables cli speed-disk ;;
  1804) clear ; $cmd_fwiptables cli speed-glx ;;
  1805) clear ; $cmd_fwiptables cli radio-mp3 ;;
- 1806) clear ; emisora_mp3="$(dialog --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"; $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
+ 1806) clear ; emisora_mp3="$(dialog --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
+ $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
+ 1807) clear ; archivo="$(dialog --stdout --title "choose name of notes gpg" \
+ --inputbox "$(ls $directory_default/*.gpg| cut -d "." -f 1)" 0 0)"
+ clear ; $cmd_fwiptables cli gpg-notes $archivo ;;
  1901) clear ; $cmd_fwiptables cli lpinfo ;;
  1902) clear ; $cmd_fwiptables cli lsblk ;;
  1903) clear ; $cmd_fwiptables cli lsusb ;; 
@@ -9204,14 +9211,6 @@ gpg_firma_gpg="$directory_default/$second_option.sign"
 gpg_modify_txt="$directory_temporal/$second_option.modify"
 gpg_temporal_txt="$directory_temporal/$second_option.txt"
 gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
-####
-####
-####  when -cli
-####
-####
-if [ "third_option" == "-cli" ]; then
-echo "trabajando.."
-exit; fi
 ####
 ####
 ####  when -gui
