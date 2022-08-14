@@ -3885,66 +3885,58 @@ case $second_option in
 #### 
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal/$name_fwiptables-$third_option"
-#### if [ -f "$directory_config/$third_option" ]; then $nada ;
-#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
+$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
+$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal/$name_fwiptables-$third_option"
-#### if [ -f "$directory_config/$third_option" ]; then $nada ;
-#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
+$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
+$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal/$name_fwiptables-$third_option"
-#### if [ -f "$directory_config/$third_option" ]; then $nada ;
-#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
+$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal/$name_fwiptables-$third_option"
-#### if [ -f "$directory_config/$third_option" ]; then $nada ;
-#### zenity --forms $graphic_dimension --text="file $third_option exists" ; exit 
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
+$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $name_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else zenity --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$name_fwiptables-$third_option"
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$third_option" \
 --editable --title="MODIFY FILE" &> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-zenity --forms $graphic_dimension --text="OK. file: $third_option"
+$command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$name_fwiptables-$third_option" "$directory_config/$third_option"
-zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
@@ -3954,7 +3946,7 @@ zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ####
 ####
 *)$cmd_fwiptables "$second_option" "$third_option" "$quarter_option" &> "$temporal_guifinal"
-zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
+$command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -3977,34 +3969,34 @@ case $second_option in
 wizard-mini)
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$archivo" \
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
 else rm "$directory_config/$archivo" ;
-zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
+$command_zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
 wizard-full)
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$archivo" \
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-$archivo" \
 --editable --title="MODIFY FILE" &> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
 else rm "$directory_config/$archivo" ;
-zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
 modify-default)
 cp "$directory_default/$name_fwiptables-default" "$directory_temporal/$name_fwiptables-default"
-zenity --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-default" \
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-default" \
 --editable --title="MODIFY FILE" &> "$directory_default/$name_fwiptables-default"
 if [  -s "$directory_default/$archivo" ]; then $nada ; 
 else cp "$directory_temporal/$name_fwiptables-default" "$directory_default/$name_fwiptables-default" ;
-zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4015,7 +4007,7 @@ zenity --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 *)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
 #### cat $temporal_gui | grep -v Warning: &> $temporal_guifinal
-zenity --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
+$command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4031,7 +4023,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]" ; exit ;; esac
-zenity --forms $graphic_dimension --title="Gui Output || $cmd_fwiptables || " --text="$($cmd_fwiptables mini-options)"
+$command_zenity  --forms $graphic_dimension --title="Gui Output || $cmd_fwiptables || " --text="$($cmd_fwiptables mini-options)"
 exit; fi
 ####
 ####
@@ -4051,7 +4043,7 @@ selection=$(zenity $graphic_dimension  \
 #### 
 #### 
 case "$selection" in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "01 Firewall Rules")$cmd_fwiptables gui-menu-firewall-rules ; exit ;;
 "02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
 "03 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
@@ -4078,7 +4070,7 @@ case "$selection" in
 esac
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4089,7 +4081,7 @@ exit; fi
 ####
 ####  
 if [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
@@ -4102,7 +4094,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case "$selection" in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1) $command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help firewall-launch ;;
 "Gui Info Menu") $cmd_fwiptables -gui info firewall-launch ;;
@@ -4135,16 +4127,16 @@ case "$selection" in
 "server-mumble") $cmd_fwiptables -gui server-mumble ; $cmd_fwiptables gui list ;;
 "server-sql") $cmd_fwiptables -gui server-sql ; $cmd_fwiptables gui list ;;
 "server-asterisk") $cmd_fwiptables -gui server-asterisk ; $cmd_fwiptables gui list ;;
-"custom cfg") archivo="$(zenity --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
+"custom cfg") archivo="$($command_zenity  --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables gui list ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4155,13 +4147,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-firewall-rules" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Firewall Rules ] [ $name_fwiptables ]")
 #### 
 #### 
 case "$selection" in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help firewall-rules ;;
 "Gui Info Menu") $cmd_fwiptables -gui info firewall-rules ;;
@@ -4169,21 +4161,21 @@ case "$selection" in
 "continue") $cmd_fwiptables -gui continue ; $cmd_fwiptables -gui list ;;
 "reset") $cmd_fwiptables -gui reset ; $cmd_fwiptables -gui list ;;
 "names") $cmd_fwiptables -gui names ;;
-"show")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables names)")" ; 
+"show")archivo="$($command_zenity  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables names)")" ; 
 $cmd_fwiptables -gui show $archivo ;;
-"save")archivo="$(zenity --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables names)")" ; 
+"save")archivo="$($command_zenity  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_fwiptables names)")" ; 
 $cmd_fwiptables -gui save $archivo ;;
-"load")archivo="$(zenity --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_fwiptables names)")" ;
+"load")archivo="$($command_zenity  --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_fwiptables names)")" ;
 $cmd_fwiptables -gui load $archivo ; $cmd_fwiptables -gui list ;;
 "actual") $cmd_fwiptables -gui actual ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4194,7 +4186,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-firewall-list" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-alltables" \
 "listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
@@ -4202,7 +4194,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help firewall-list ;;
 "Gui Info Menu") $cmd_fwiptables -gui info firewall-list ;;
@@ -4228,11 +4220,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4250,62 +4242,60 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help firewall-custom ;;
 "Gui Info Menu") $cmd_fwiptables -gui info firewall-custom ;;
 "new-full-config")
-archivo="$(zenity $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_fwiptables -gui new-full-config $archivo ;;
 "nueva-completa-config")
-archivo="$(zenity $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_fwiptables -gui nueva-completa-config $archivo ;;
 "new-mini-config")
-archivo="$(zenity $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
 $cmd_fwiptables -gui new-mini-config $archivo ;;
 "nueva-mini-config")
-archivo="$(zenity $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_fwiptables -gui nueva-mini-config $archivo ;;
 "names-config")
 $cmd_fwiptables -gui names-config ;;
 "show-config")
-archivo="$(zenity $graphic_dimension --entry --title "[show-config]" --text="$($cmd_fwiptables cfg)")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[show-config]" --text="$($cmd_fwiptables cfg)")" ;
 $cmd_fwiptables -gui show-config $archivo ;;
 "modify-config")
-archivo="$(zenity $graphic_dimension --entry --title "[modify-config]" --text="$($cmd_fwiptables cfg)")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[modify-config]" --text="$($cmd_fwiptables cfg)")" ;
 $cmd_fwiptables -gui modify-config $archivo ;;
 "del-config")
-archivo="$(zenity $graphic_dimension --entry --title "[del-config]" --text="$($cmd_fwiptables cfg)")" ;
+archivo="$($command_zenity  $graphic_dimension --entry --title "[del-config]" --text="$($cmd_fwiptables cfg)")" ;
 $cmd_fwiptables -gui del-config $archivo ;;
 "regen-config") $cmd_fwiptables -gui regen-config ;;
 "examples-config") $cmd_fwiptables gui examples-config ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-custom:
-
-
 ############################## english: gui-menu-tool-connect: gui with menu ##############################
 ############################## spanish: gui-menu-tool-connect: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-connect:
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Connect ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
@@ -4318,18 +4308,18 @@ $cmd_fwiptables -gui wpa-load $archivo ; $cmd_fwiptables -gui iw-info ;;
 "wpa-save") 
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
 $cmd_fwiptables -gui iw-scan
-name_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
-pass_ssid="$(zenity --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
+name_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
+pass_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
 $cmd_fwiptables wpa-save $name_ssid $pass_ssid ; $cmd_fwiptables -gui iw-info ;;
 "dhcp-client")       $cmd_fwiptables -gui dhcp-client ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4340,13 +4330,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-rules" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool rules ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu")    $cmd_fwiptables -gui help tool-sockets ;;
 "Gui Info Menu")    $cmd_fwiptables -gui info tool-sockets ;;
@@ -4356,11 +4346,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4371,14 +4361,14 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Sockets ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sockets ;;
@@ -4397,11 +4387,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4412,13 +4402,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-forward" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool forward ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-forward ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-forward ;;
@@ -4428,11 +4418,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4443,13 +4433,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Icmp ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-icmp ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-icmp ;;
@@ -4464,11 +4454,11 @@ $cmd_fwiptables -gui ping-ip6 $archivo ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4479,33 +4469,33 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool udp ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-udp ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-udp ;;
-"host")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"host")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_fwiptables -gui host $archivo ;;
-"dig")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"dig")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_fwiptables -gui dig $archivo ;;
-"resolveip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
+"resolveip")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
 $cmd_fwiptables -gui resolveip $archivo ;;
-"geoip")archivo="$(zenity $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"geoip")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_fwiptables -gui geoip $archivo ;;
 "ntpdate-client")$cmd_fwiptables -gui ntpdate-client ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4516,30 +4506,30 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool tcp ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-tcp ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-tcp ;;
-"tracetcp-ip4")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"tracetcp-ip4")  archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_fwiptables -gui tracetcp-ip4 $archivo  ;;
-"tracetcp-ip6")  archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"tracetcp-ip6")  archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_fwiptables -gui tracetcp-ip6 $archivo  ;;
 "speed-ip4") $cmd_fwiptables -gui speed-ip4  ;;
 "speed-ip6") $cmd_fwiptables -gui speed-ip6  ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4550,17 +4540,17 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-list" "aliasfw-list" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Sudo ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-sudo ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-sudo ;;
-"sudofw-adduser")archivo="$(zenity $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
+"sudofw-adduser")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_fwiptables -gui sudofw-adduser $archivo ;;
 "sudofw-deluser")$cmd_fwiptables -gui sudofw-deluser ;;
 "sudofw-list")$cmd_fwiptables -gui sudofw-list ;;
@@ -4568,11 +4558,11 @@ $cmd_fwiptables -gui sudofw-adduser $archivo ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4583,13 +4573,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ole-word" "ole-number" "ole-domain" "colour-rgb" "colour-hex" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool game ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-game ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-game ;;
@@ -4597,19 +4587,19 @@ case $selection in
 "ole-number")$cmd_fwiptables -gui ole-number ;;
 "ole-domain")$cmd_fwiptables -gui ole-domain ;;
 "colour-rgb")
-onecolour="$(zenity $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
+onecolour="$($command_zenity  $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
 $cmd_fwiptables gui colour-rgb $onecolour ;;
 "colour-hex") 
-onecolour="$(zenity $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
+onecolour="$($command_zenity  $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
 $cmd_fwiptables gui colour-hex $onecolour ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4626,7 +4616,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-system ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-system ;;
@@ -4635,16 +4625,16 @@ case $selection in
 "speed-disk") $cmd_fwiptables -gui speed-disk ;;
 "speed-glx")  $cmd_fwiptables -gui speed-glx ;;
 "radio-mp3 link") 
-radio_enlace="$(zenity $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
+radio_enlace="$($command_zenity  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
 $cmd_fwiptables -gui radio-mp3 $radio_enlace ;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4655,13 +4645,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Install ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-install ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-install ;;
@@ -4672,11 +4662,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4687,31 +4677,31 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-blacklist" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "blacklist-list" "blacklist-list info" \
 "blacklist-on" "blacklist-off" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool blacklist ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-blacklist ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-blacklist ;;
 "blacklist-list")$cmd_fwiptables -gui blacklist-list;;
 "blacklist-list info")$cmd_fwiptables -gui blacklist-list info ;;
 "blacklist-on")
- archivo="$(zenity $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
+ archivo="$($command_zenity  $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
  $cmd_fwiptables -gui blacklist-on $archivo;;
 "blacklist-off") $cmd_fwiptables -gui blacklist-off;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4728,7 +4718,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu  ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-dev ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-dev ;;
@@ -4736,16 +4726,16 @@ case $selection in
 "dev-version") $cmd_fwiptables -gui dev-version  ;;
 "dev-changes") $cmd_fwiptables -gui dev-changes ;;
 "intro") $cmd_fwiptables -gui intro ;;
-"code") archivo="$(zenity $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
+"code") archivo="$($command_zenity  $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
 $cmd_fwiptables -gui code $archivo
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4756,13 +4746,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Show hardware ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help show-hardware ;;
 "Gui Info Menu") $cmd_fwiptables -gui info show-hardware ;;
@@ -4776,11 +4766,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4791,14 +4781,14 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "show-default" "modify-default" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Show etc ]  [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help show-etc ;;
 "Gui Info Menu") $cmd_fwiptables -gui info show-etc ;;
@@ -4813,11 +4803,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4828,13 +4818,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "sentlog" "autolog" "log-search" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Show log ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help show-log ;;
 "Gui Info Menu") $cmd_fwiptables -gui info show-log ;;
@@ -4842,16 +4832,16 @@ case $selection in
 "sentlog") $cmd_fwiptables -gui sentlog ;;
 "autolog") $cmd_fwiptables -gui autolog ;;
 "log-search")
-pattern="$(zenity $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
+pattern="$($command_zenity  $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $cmd_fwiptables -gui log-search $pattern;;
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4862,14 +4852,14 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" \
 "depends" "config-eng" "config-spa" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Show about ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help show-about ;;
 "Gui Info Menu") $cmd_fwiptables -gui info show-about ;;
@@ -4881,11 +4871,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4896,14 +4886,14 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
+selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" \
 "all-help" "readme" "leeme" "notes" "license" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Show help ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
-1)zenity --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help show-help ;;
 "Gui Info Menu") $cmd_fwiptables -gui info show-help ;;
@@ -4917,11 +4907,11 @@ case $selection in
 esac
 ####
 ####
-zenity --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4945,7 +4935,7 @@ untexto="$cmd_fwiptables gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$(zenity --forms $graphic_dimension --title="Gui Shell || $name_fwiptables || $fversion ||" \
+menugtk=$($command_zenity  --forms $graphic_dimension --title="Gui Shell || $name_fwiptables || $fversion ||" \
 --text="$($cmd_fwiptables mini-options)" --add-entry="$cmd_fwiptables " )
 case $? in
 1)
@@ -4954,7 +4944,7 @@ case $? in
 #### zenity --info $graphic_dimension --text="$cmd_fwiptables good bye";
 ####
 ####
-zenity --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
 --auto-close --auto-kill ; exit;;
 esac
 ####
@@ -4977,19 +4967,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-full-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-mini-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-completa-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-mini-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables modify-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -4998,19 +4988,19 @@ zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables m
 ####
 ####
 "new-full-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-full-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-mini-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-completa-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-mini-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-zenity --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables modify-config config.cfg ]"
+$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fwiptables modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5051,10 +5041,10 @@ wizard-mini*) $cmd_fwiptables gui wizard-mini ;;
 ####
 ####
 "$NULL")
-zenity --info $graphic_dimension --text="$cmd_fwiptables good bye";
-zenity --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye";
+$command_zenity  --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
 *) fecha_temporal=$(date | sed s/\ //g) ; $cmd_fwiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
-zenity --text-info $graphic_dimension --title "[ $name_fwiptables gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+$command_zenity  --text-info $graphic_dimension --title "[ $name_fwiptables gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
@@ -5071,7 +5061,8 @@ exit ; fi
 if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]" ; exit ;; esac
 #### cd "$directory_config"
-menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0\
+menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
+  Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0\
   0000 "$quad $tab [$cmd_fwiptables cli-menu] $tab $cinco" \
   0100 "$quad [ Full Options ] $cinco" \
   0200 "$quad [ Firewall Rules ] $cinco" \
@@ -5294,7 +5285,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  0205) clear ; $cmd_fwiptables names ; echo "$cincuenta"
  read -p "Type the firewall name to read   " nombrecillo
  nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
- 0206)archivo="$(dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+ 0206)archivo="$($command_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ;  echo "$cincuenta saved $archivo" ; $cmd_fwiptables save $archivo ;;
  0207) clear ; $cmd_fwiptables names ; echo "$cincuenta"
@@ -5327,7 +5318,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  0403) clear ; $cmd_fwiptables cli wizard-full ; $cmd_fwiptables txt list ;;
  0404) clear ; $cmd_fwiptables cli off-line ; $cmd_fwiptables txt list ;;
  0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables txt list  ;;
- 0406) archivo="$(dialog --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+ 0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
  0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables txt list  ;; 
  0408) clear ; $cmd_fwiptables cli game-wesnoth ; $cmd_fwiptables txt list ;;
@@ -5353,25 +5344,27 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  0428) clear ; $cmd_fwiptables cli server-mumble ; $cmd_fwiptables txt list ;;
  0429) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables txt list ;;
  0430) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables txt list ;;
- 0501) archivo="$(dialog --stdout --title "new-full-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0501) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
+ --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables new-full-config $archivo ;;
- 0502) archivo="$(dialog --stdout --title "nueva-completa-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0502) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+ --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables nueva-completa-config $archivo ;;
- 0503) archivo="$(dialog --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables new-mini-config $archivo ;;
- 0504) archivo="$(dialog --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables nueva-mini-config $archivo ;;
- 0505) archivo="$(dialog --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_fwiptables custom $archivo ]";;
- 0506) archivo="$(dialog --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+ 0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables modify-config $archivo ;;
- 0507) archivo="$(dialog --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
+ 0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
  archivo=$(echo $archivo | sed s/\\///g)
  clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
  0508) clear ; $cmd_fwiptables cli names-config ;;
@@ -5380,12 +5373,12 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  0601) clear ; $cmd_fwiptables iw-scan ;;
  0602) clear ; $cmd_fwiptables iw-info ;;
  0603) clear ;
- archivoa="$(dialog --stdout --title "Type SSID to connect" --inputbox "$($cmd_fwiptables iw-scan)" 0 0)" 
- archivob="$(dialog --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
+ archivoa="$($command_dialog  --stdout --title "Type SSID to connect" --inputbox "$($cmd_fwiptables iw-scan)" 0 0)" 
+ archivob="$($command_dialog  --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
  $cmd_fwiptables wpa-save archivoa archivob;;
  0604) clear ; 
- archivo="$(dialog --stdout --title "type wpa file to load" \
- --inputbox "$(find $directory_default | cut -d "/" -f 4- | grep \\.wpa)" 0 0)"
+ archivo="$($command_dialog  --stdout --title "type wpa file to load" \
+ --inputbox "$($command_find $directory_default | cut -d "/" -f 4- | grep \\.wpa)" 0 0)"
  $cmd_fwiptables wpa-load $archivo ;;
  0605) clear ; $cmd_fwiptables dhcp-client ;;
  0701) clear ; $cmd_fwiptables rule-del-num ;;
@@ -5413,24 +5406,24 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  1102) clear ; $cmd_fwiptables cli traceicmp-ip6 ;;
  1103) clear ; $cmd_fwiptables cli ping-ip4 ;;
  1104) clear ; $cmd_fwiptables cli ping-ip6 ;;
- 1201) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 1201) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables host $resolve ;;
- 1202) resolve="$(dialog --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 1202) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables dig $resolve ;;
- 1203) resolve="$(dialog --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 1203) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables resolveip $resolve ;;
- 1204) resolve="$(dialog --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 1204) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables geoip $resolve ;;
  1205) clear ; $cmd_fwiptables "ntpdate-client" ;;
- 1301) resolve="$(dialog --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+ 1301) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
  1302) clear ; $cmd_fwiptables cli sudofw-deluser ;;
  1303) clear ; $cmd_fwiptables cli sudofw-list ;;
  1401) clear ; $cmd_fwiptables cli ole-word  ;;
  1402) clear ; $cmd_fwiptables cli ole-number ;;
- 1403) resolve="$(dialog --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+ 1403) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
  $cmd_fwiptables cli colour-rgb $resolve ;;
- 1404) resolve="$(dialog --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+ 1404) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
  $cmd_fwiptables cli colour-hex $resolve ;;
  1501) clear ; $zero_option install ;;
  1502) clear ; $cmd_fwiptables cli howto-upgrade ;;
@@ -5438,7 +5431,8 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  1504) clear ; $cmd_fwiptables cli intro ;;
  1601) clear ; $cmd_fwiptables cli blacklist-list ;;
  1602) clear ; $cmd_fwiptables cli blacklist-list info ;;
- 1603) clear ; resolve="$(dialog --stdout --title "type the blacklist" --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
+ 1603) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
+ --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
  clear ; $cmd_fwiptables blacklist-on $resolve ;;
  1604) clear ; $cmd_fwiptables cli blacklist-off ;;
  1701) clear ; $cmd_fwiptables cli new-versions ;;
@@ -5450,9 +5444,9 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  1803) clear ; $cmd_fwiptables cli speed-disk ;;
  1804) clear ; $cmd_fwiptables cli speed-glx ;;
  1805) clear ; $cmd_fwiptables cli radio-mp3 ;;
- 1806) clear ; emisora_mp3="$(dialog --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
+ 1806) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
  $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
- 1807) clear ; archivo="$(dialog --stdout --title "choose name of notes gpg" \
+ 1807) clear ; archivo="$($command_dialog  --stdout --title "choose name of notes gpg" \
  --inputbox "$(ls $directory_default/*.gpg| cut -d "." -f 1)" 0 0)"
  clear ; $cmd_fwiptables cli gpg-notes $archivo ;;
  1901) clear ; $cmd_fwiptables cli lpinfo ;;
@@ -5471,7 +5465,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  2007) clear ; $cmd_fwiptables cli show-default ;;
  2008) clear ; $cmd_fwiptables cli modify-default ;;
  2101) clear ; $cmd_fwiptables cli log-ssh ;;
- 2102) pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ 2102) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
  2103) clear ; $cmd_fwiptables cli sentlog ;;
  2104) clear ; $cmd_fwiptables cli autolog ;;
@@ -5486,7 +5480,7 @@ menuprincipal="$(dialog --stdout --clear --no-tags --title "  Cli Menu || $name_
  2305) clear ; $cmd_fwiptables cli all-help ;;
  2306) clear ; $cmd_fwiptables cli notes ;;
  2307) clear ; $cmd_fwiptables cli license ;;
- *) clear ; dialog --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
+ *) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  $cmd_fwiptables text-pause
  clear ; 
@@ -6627,11 +6621,11 @@ exit; fi
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+$command_dialog  --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-dialog --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
 echo $footer_lineal
 fi
 ####
@@ -6639,7 +6633,7 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$name_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
-dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
@@ -6660,11 +6654,11 @@ exit; fi
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_temporal/$name_fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+$command_dialog  --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-dialog --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
 echo $footer_lineal
 fi
 ####
@@ -6672,7 +6666,7 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$name_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
-dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
@@ -6693,11 +6687,11 @@ exit; fi
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+$command_dialog  --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-dialog --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
 echo $footer_lineal
 fi
 ####
@@ -6705,7 +6699,7 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$name_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
-dialog --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
@@ -6726,11 +6720,11 @@ exit; fi
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_temporal/$name_fwiptables-$archivo"
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+$command_dialog  --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-dialog --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
 echo $footer_lineal
 fi
 ####
@@ -6738,7 +6732,7 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$name_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
-dialog --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
+$command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
@@ -6761,18 +6755,19 @@ echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables modify-config config-existent ]
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
-dialog --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$second_option" 0 0 2> "$directory_config/$second_option"
+$command_dialog  --no-cancel --title "MODIFY FILE" \
+--editbox "$directory_temporal/$second_option" 0 0 2> "$directory_config/$second_option"
 clear; fi
 ####
 ####
 if [  -s "$directory_config/$second_option" ] ; then
-dialog --msgbox "[OK file modify config file: $second_option]" 0 0 
+$command_dialog  --msgbox "[OK file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
 cp "$directory_temporal/$name_fwiptables-$second_option" "$directory_config/$second_option" &> /dev/null
-dialog --msgbox "[Canceled file modify config file: $second_option]" 0 0 
+$command_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
 ####
@@ -7021,7 +7016,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
-menudelrule="$(dialog --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
+menudelrule="$($command_dialog  --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
  01 "NFTABLES / filter / INPUT" \
  02 "NFTABLES / filter / FORWARD" \
  03 "NFTABLES / filter / OUTPUT" \
@@ -7281,7 +7276,7 @@ cp "$directory_default/$name_fwiptables-default" "$directory_temporal/$name_fwip
 #### spanish: edita el archivo
 ####
 ####
-dialog --no-cancel --title "MODIFY FILE: $directory_default/$name_fwiptables-default" \
+$command_dialog  --no-cancel --title "MODIFY FILE: $directory_default/$name_fwiptables-default" \
 --editbox "$directory_temporal/$name_fwiptables-default" 0 0 2> "$directory_default/$name_fwiptables-default"
 clear
 ####
@@ -7345,12 +7340,12 @@ exit; fi
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-dialog --msgbox "wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
-else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
+$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
+else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo $footer_lineal
 exit; fi
 ####
@@ -7364,12 +7359,12 @@ exit; fi
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$name_fwiptables-$archivo"
-dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$name_fwiptables-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$dialog --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
-else rm "$directory_config/$archivo" ; dialog --msgbox "Wizard full canceled" 0 0 ; clear ; fi
+$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
+else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo $footer_lineal
 exit; fi
 ####
@@ -8279,9 +8274,9 @@ type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d
 ###########
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]"; exit ;; esac
-dialog --stdout --title "Play game domain ole" \
+$command_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Is this a country domain or a generic domain ? :  $domain_one"  0 0
-dialog --stdout --title "Play game domain ole" \
+$command_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Really $domain_one is a $type_domain_one domain."  0 0
 clear ; exit ; fi
 ###########
@@ -8351,7 +8346,7 @@ if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-menuprincipal="$(dialog --stdout --clear --title "  Play game word ole" --menu "Select:" 0 0 0\
+menuprincipal="$($command_dialog --stdout --clear --title "  Play game word ole" --menu "Select:" 0 0 0\
   01 "    Play word ole in english" \
   02 "    Play word ole in spanish" \
   03 "    quit word ole" \
@@ -8414,10 +8409,10 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear ; 
-acierto="$(dialog --stdout --title "  Play game word ole" --msgbox "$text_1 $palabra_aleatoria"  0 0)" ; clear ; exit ; fi
+acierto="$($command_dialog  --stdout --title "  Play game word ole" --msgbox "$text_1 $palabra_aleatoria"  0 0)" ; clear ; exit ; fi
 if [ "$intento" -gt "$intento_maximo" ]; then clear
 echo "$text_1" "  " " || $palabra_aleatoria ||" ; clear ; exit ; fi
-bucle="$(dialog --stdout --title "Play game word ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
+bucle="$($command_dialog  --stdout --title "Play game word ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
 $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
 intento="$(($intento+1))"
@@ -8464,7 +8459,7 @@ if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done
 #### when fail the answer
 clear
-acierto="$(dialog --stdout --title "Play game word ole" --msgbox "$text_8 $palabra_aleatoria"  0 0)"
+acierto="$($command_dialog  --stdout --title "Play game word ole" --msgbox "$text_8 $palabra_aleatoria"  0 0)"
 clear; exit; fi
 ####
 ####
@@ -8766,7 +8761,7 @@ if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-menuprincipal="$(dialog --stdout --clear --title "  Play game number ole" --menu "Select:" 0 0 0\
+menuprincipal="$($command_dialog  --stdout --clear --title "  Play game number ole" --menu "Select:" 0 0 0\
   01 "    Play number ole in english" \
   02 "    Play number ole in spanish" \
   03 "    quit number ole" \
@@ -8813,10 +8808,10 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear ; 
-acierto="$(dialog --stdout --title "  Play game number ole" --msgbox "$text_1 $numero_aleatorio"  0 0)" ; clear ; exit ; fi
+acierto="$($command_dialog  --stdout --title "  Play game number ole" --msgbox "$text_1 $numero_aleatorio"  0 0)" ; clear ; exit ; fi
 if [ "$intento" -gt "$intento_maximo" ]; then clear
 echo "$text_1" "  " " || $numero_aleatorio ||" ; clear ; exit ; fi
-bucle="$(dialog --stdout --title "Play game number ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
+bucle="$($command_dialog  --stdout --title "Play game number ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
 $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
 intento="$(($intento+1))"
@@ -8862,7 +8857,7 @@ if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
 if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
 done
 #### when fail the answer
-dialog --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0
+$command_dialog  --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0
 clear ; exit ; fi
 ####
 ####
