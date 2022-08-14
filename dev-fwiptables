@@ -172,6 +172,18 @@ output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
+##############################   english: if sane config directory                       #############################
+##############################   spanish: comprobar sanos directorios de configuracion   #############################
+####
+####
+if [ -d "$directory_config" ]; then $nada ;
+else rm "$directory_config" &> /dev/null ; mkdir -p "$directory_config" &> /dev/null ; fi
+if [ -d "$directory_fwrecover" ]; then $nada ;
+else rm "$directory_fwrecover" &> /dev/null ; mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ -d "$directory_default" ]; then $nada ;
+else rm "$directory_default" &> /dev/null ; mkdir -p "$directory_default" &> /dev/null ; fi
+####
+####
 ##############################   english: the basic system variables         ##############################
 ##############################   spanish: las variables basicas del sistema  ##############################
 ####
@@ -361,18 +373,6 @@ net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
-##############################   english: if sane config directory                       #############################
-##############################   spanish: comprobar sanos directorios de configuracion   #############################
-####
-####
-if [ -d "$directory_config" ]; then $nada ;
-else rm "$directory_config" &> /dev/null ; mkdir "$directory_config" &> /dev/null ; fi
-if [ -d "$directory_fwrecover" ]; then $nada ;
-else rm "$directory_fwrecover" &> /dev/null ; mkdir "$directory_fwrecover" &> /dev/null ; fi
-if [ -d "$directory_default" ]; then $nada ;
-else rm "$directory_default" &> /dev/null ; mkdir "$directory_default" &> /dev/null ; fi
-####
-####
 ##############################       english: Update variables             ################################### 
 ##############################       spanish: Actualiza variables          ###################################
 ####
@@ -495,6 +495,10 @@ command_md5sum="$(command -v md5sum | cut -d " " -f 1)"
 command_iw="$(command -v iw | cut -d " " -f 1)"
 command_ifconfig="$(command -v ifconfig | cut -d " " -f 1)"
 command_gpg="$(command -v gpg | cut -d " " -f 1)"
+command_sleep="$(command -v sleep | cut -d " " -f 1)"
+command_reboot="$(command -v reboot | cut -d " " -f 1)"
+command_shutdown="$(command -v shutdown | cut -d " " -f 1)"
+command_halt="$(command -v halt | cut -d " " -f 1)"
 ####
 ####
 #### :rutina-final-command:
@@ -9253,8 +9257,8 @@ echo "$header_ok [ $first_option ] [ power off computer ]"
 echo $header_lineal
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
-$(command -v sleep) $demora
-$(command -v halt)
+$command_sleep $demora
+$command_halt
 echo $footer_lineal
 exit; fi
 ####
@@ -9270,8 +9274,8 @@ echo "$header_ok [ $first_option ] [ power off computer ]"
 echo $header_lineal
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
-$(command -v sleep) $demora 
-$(command -v shutdown) -h now 
+$command_sleep $demora
+$command_shutdown -h now
 echo $footer_lineal
 exit; fi
 ####
@@ -9287,8 +9291,8 @@ echo "$header_ok [ $first_option ] [ reboot computer ]"
 echo $header_lineal
 demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
-$(command -v sleep) $demora
-$(command -v reboot)
+$command_sleep $demora
+$command_reboot
 echo $footer_lineal
 exit; fi
 ####
