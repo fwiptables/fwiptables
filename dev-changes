@@ -1,8 +1,8 @@
 
- 6. gpg-notes para gui-menu.
- 5. gpg-notes para cli-menu.
- 4. gpg-notes para -gui.
- 3. gpg-notes para -cli.
+
+ 7. variable command_zenity y command_dialog recambiada. HECHO
+ 6. gpg-notes para gui-menu. 
+ 4. gpg-notes para -gui. HECHO
  2. cambio de estructura de archivo, desde wpa-file a file.wpa en wpa-load y wpa-save. HECHO
  1. gpg-notes en tool-system para texto, HECHO
 
