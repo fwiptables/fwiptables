@@ -898,8 +898,7 @@ clear ; exit ;;
 esac ; fi
 ####
 ####
-#### english: change the -gui and go to default output
-#### spanish: cambia el -gui y va a salida por defecto
+#### output gui:
 ####
 ####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
@@ -911,7 +910,7 @@ ole_word) first_option="ole-word" ; second_option="-gui" ;;
 ole_number) first_option="ole-number" ; second_option="-gui" ;;
 ole_domain) first_option="ole-domain" ; second_option="-gui" ;;
 rule-del-num) first_option="rule-del-num" ; second_option="-gui" ;;
-gpg-notes) first_option="gpg-notes" ; second_option="$third_option" ; third_option="-gui"
+gpg-notes) first_option="gpg-notes" ; second_option="-gui" ;;
 esac ; fi
 ####
 ####
@@ -9206,22 +9205,47 @@ echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ;
 exit; fi
 ####
 ####
+####  when -gui
+####
+####
+if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
+origina="$($command_zenity $graphic_dimension --entry --title "filename gpg to choose" \
+--text "$(ls $directory_default/*.gpg | cut -d "." -f 1)")"
+gpg_origen_gpg="$directory_default/$origina.gpg"
+gpg_firma_gpg="$directory_default/$origina.sign"
+gpg_modify_txt="$directory_temporal/$origina.modify"
+gpg_temporal_txt="$directory_temporal/$origina.txt"
+gpg_temporal_gpg="$directory_temporal/$origina.gpg"
+consigna="$($command_zenity $graphic_dimension --entry --title "filename gpg password" --text "password:")"
+####
+####
+if [ -f "$gpg_origen_gpg" ];  then
+$command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" 
+$command_zenity --text-info $graphic_dimension --filename="$gpg_modify_txt" \
+--editable --title="MODIFY FILE" &> "$gpg_temporal_txt" ;
+$command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
+####
+####
+if [ ! -f "$gpg_origen_gpg" ]; then 
+echo "File created" > "$gpg_modify_txt"
+$command_zenity --text-info $graphic_dimension --filename="$gpg_modify_txt" \
+--editable --title="MODIFY FILE" &> "$gpg_temporal_txt" ;
+$command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
+####
+####
+exit; fi
+####
+####
+####  when is not -gui
+####
+####
 gpg_origen_gpg="$directory_default/$second_option.gpg"
 gpg_firma_gpg="$directory_default/$second_option.sign"
 gpg_modify_txt="$directory_temporal/$second_option.modify"
 gpg_temporal_txt="$directory_temporal/$second_option.txt"
 gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
-####
-####
-####  when -gui
-####
-####
-if [ "third_option" == "-gui" ]; then
-echo "trabajando.."
-exit; fi
-####
-####
-####  when is not cli neir gui
 ####
 ####
 if [ -f "$gpg_origen_gpg" ];  then
