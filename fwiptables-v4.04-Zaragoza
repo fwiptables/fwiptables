@@ -5463,9 +5463,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
  1805) clear ; $cmd_fwiptables cli radio-mp3 ;;
  1806) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
  $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
- 1807) clear ; archivo="$($command_dialog  --stdout --title "choose name of notes gpg" \
- --inputbox "$(ls $directory_default/*.gpg| cut -d "." -f 1)" 0 0)"
- clear ; $cmd_fwiptables cli gpg-notes $archivo ;;
+ 1807) clear ; $cmd_fwiptables cli gpg-notes ;;
  1901) clear ; $cmd_fwiptables cli lpinfo ;;
  1902) clear ; $cmd_fwiptables cli lsblk ;;
  1903) clear ; $cmd_fwiptables cli lsusb ;; 
