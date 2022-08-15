@@ -9236,9 +9236,9 @@ consigna="$($command_zenity $graphic_dimension --entry --title "filename gpg pas
 ####
 ####
 if [ -f "$gpg_origen_gpg" ];  then
-$command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" 
+$command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
 $command_zenity --text-info $graphic_dimension --filename="$gpg_modify_txt" \
---editable --title="MODIFY FILE" &> "$gpg_temporal_txt" ;
+--editable --title="MODIFY FILE" &> "$gpg_temporal_txt" &&
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
 ####
