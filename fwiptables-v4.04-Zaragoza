@@ -1080,9 +1080,8 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####   spanish: autoguardado
 ####
 ####
-if [ "$first_option" != "header" ] ; then
-if [ "$allow_autolog" = "no" ]   ; then echo $nada
-else echo $head_autolog >> "$output_autolog" ; fi; fi
+head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
+if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
@@ -1646,11 +1645,9 @@ esac
 #### spanish: autoguardado con nombre autosave
 ####
 ####
-if [ "$first_option" = "autosave" ]; then
-if [ "$allow_autosave" = "$NULL" ] ; then $nada ;
-echo "$tab [ autosave ] [ firewall saved ] [ autosave-fwiptables ]"
-$cmd_fwiptables save autosave-fwiptables &> /dev/null
-fi; exit; fi
+if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then 
+echo " [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
+$cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 #### :rutina-final-autosave:
@@ -1660,9 +1657,9 @@ fi; exit; fi
 ####
 ####
 favorite_date_command=""
-if [ "$command_rdate" = "$NULL"   ]    ; then $nada ; else favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp" = "$NULL"    ]    ; then $nada ; else favorite_date_command="$command_sntp"              ; fi
-if [ "$command_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
+if [ "$command_rdate"   = "$NULL" ]; then $nada ; else favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    = "$NULL" ]; then $nada ; else favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" = "$NULL" ]; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
@@ -1672,8 +1669,8 @@ if [ "$command_ntpdate" = "$NULL" ]    ; then $nada ; else favorite_date_command
 ####
 ####
 favoite_music_command=""
-if [ "$command_mpg321" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
-if [ "$command_mpg123" = "$NULL" ]   ; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
+if [ "$command_mpg321" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
+if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
 ####
 ####
 #### :rutina-final-favorite-music-command:
@@ -2502,9 +2499,6 @@ echo "$title_md [ Secondary options ]"
 echo  $text_md
 $brake_md
 $cmd_fwiptables tool-connect
-echo  $text_md
-$brake_md
-$cmd_fwiptables tool-rules
 echo  $text_md
 $brake_md
 $cmd_fwiptables tool-sockets
@@ -3801,42 +3795,38 @@ echo $tab
 echo "$tab [ It are all the depends to full work in $cmd_fwiptables $fversion ]"
 echo $tab
 echo "$tab [Configuration directory]"
-echo "list cfg:            $directory_config"
-echo "names fw:            $directory_fwrecover"
-echo "default:             $directory_default"
+echo "list cfg config:            $directory_config"
+echo "names fwrecover:            $directory_fwrecover"
+echo "default configs:            $directory_default"
 echo $tab
 echo "$tab [Configuration file]"
 echo "shell completions:   /etc/completion.d/$cmd_fwiptables"
-echo "                     /etc/profile.d/$cmd_fwiptables"
+echo "shell profile:       /etc/profile.d/$cmd_fwiptables"
 echo "auth users:          /etc/sudoers.d/$cmd_fwiptables"
 echo $tab
 echo "$tab [output log]"
 echo "destination filelog: $output_filelog"
 echo "destination autolog: $output_autolog"
 echo $tab
-echo "$tab [$cmd_fwiptables util]"
-echo "sed:       $command_sed"
-echo "fmt:       $command_fmt"
-echo $tab
-echo "$tab [$cmd_fwiptables cli]"
+echo "$tab [ cli ]"
 echo "dialog:    $command_dialog"
 echo $tab
-echo "$tab [$cmd_fwiptables gui]"
+echo "$tab [ gui ]"
 echo "zenity:      $command_zenity"
 echo $tab
-echo "$tab [$cmd_fwiptables auto text browser]"
+echo "$tab [ auto text browser ]"
 echo "automatic: lynx or links or links2 "
 echo "auto text browser: $favorite_text_browser"
 echo $tab
-echo "$tab [$cmd_fwiptables auto date command]"
+echo "$tab [ auto date command ]"
 echo "automatic: rdate or sntp or ntpdate"
 echo "auto text browser: $favorite_date_command"
 echo $tab
-echo "$tab [$cmd_fwiptables auto music browser]"
+echo "$tab [ auto music browser ]"
 echo "automatic: mpg321 or mpg123"
 echo "auto text browser: $favorite_radio_command"
 echo $tab
-echo "$tab [the iptables]"
+echo "$tab [ the iptables ]"
 echo "iptables legacy:   $command_iptables_legacy"
 echo "iptables nft:      $command_iptables_nft"
 echo "ip6tables legacy:  $command_ip6tables_legacy"
@@ -3844,7 +3834,7 @@ echo "ip6tables nft:     $command_ip6tables_nft"
 echo "arptables:         $command_arptables"
 echo "ebtables:          $command_ebtables"
 echo $tab
-echo "$tab [$cmd_fwiptables tool]"
+echo "$tab [ several tool ]"
 echo "date:       $command_date"
 echo "uname:      $command_uname"
 echo "ip:         $command_ip"
