@@ -9228,7 +9228,7 @@ if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
 original="$($command_zenity $graphic_dimension --entry --title " [ Name gpg to choose ]" \
 --text "$(ls $directory_default/*.gpg | cut -d "." -f 1)")"
 consigna="$($command_zenity $graphic_dimension --entry --title " [ Password gpg ]" --text "password:")"
-origina="$(echo $orginal | sed s/\\///g -)"  ;                       
+origina="$(echo $orginal | sed s/\///g -)"  ;                       
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
@@ -9263,7 +9263,7 @@ original="$($command_dialog --stdout --title " [ Name gpg to choose ] " \
 --inputbox "$(ls $directory_default/*.gpg | cut -d "." -f 1)" 0 0 )"
 consigna="$($command_dialog --stdout --title " [ Passwowrd gpg  ] " \
 --inputbox "Password for $gpg_origen_gpg" 0 0 )"
-origina="$(echo $orginal | sed s/\\///g -)"  ;
+origina="$(echo $orginal | sed s/\///g -)"  ;
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
@@ -10535,8 +10535,10 @@ exit; fi
 ############################	   spanish: default: sin otra valida opcion
 ####
 ####
-if [ "$launch_firewall" = "yes" ] ; then $nada ;
-else echo "$tab Choose a one valid option ... "; $cmd_fwiptables $default_security ; exit ; fi
+if [ "$launch_firewall" != "yes" ] ; then
+echo "### ### [ $first_option ]  [ is not valid option. ]  ###  [ Choose a one valid option ... ]" ;
+$cmd_fwiptables $default_security ;
+exit ; fi
 ####
 ####
 ###############################################################################################################
