@@ -160,8 +160,9 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 #### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$name_fwiptables-$fversion-tmp"
 #### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$name_fwiptables-$fversion-tmp"
 ####
+####
+####
 directory_temporal="$HOME/.$name_fwiptables-$fversion-tmp"
-if [ ! -d "$directory_temporal" ]; then $(command -v mkdir) -p $directory_temporal &> /dev/null ; fi
 ####
 ####
 temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
@@ -176,12 +177,17 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ##############################   spanish: comprobar sanos directorios de configuracion   #############################
 ####
 ####
-if [ -d "$directory_config" ]; then $nada ;
-else rm "$directory_config" &> /dev/null ; mkdir -p "$directory_config" &> /dev/null ; fi
-if [ -d "$directory_fwrecover" ]; then $nada ;
-else rm "$directory_fwrecover" &> /dev/null ; mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ -d "$directory_default" ]; then $nada ;
-else rm "$directory_default" &> /dev/null ; mkdir -p "$directory_default" &> /dev/null ; fi
+command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
+####
+####
+if [ ! -d "$directory_temporal" ]; then rm "$directory_temporal" &> /dev/null ;
+$command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then rm "$directory_config" &> /dev/null ;
+$command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then rm "$directory_fwrecover" &> /dev/null ;
+$command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then rm "$directory_default" &> /dev/null ;
+$command_mkdir -p "$directory_default" &> /dev/null ; fi
 ####
 ####
 ##############################   english: the basic system variables         ##############################
@@ -304,11 +310,11 @@ tab_lang_spanish=" spa "
 show_lang_english=""
 show_lang_spanish="##"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="$tab [ cli ] [ Without support for output cli for this option ]"
-message_without_gui="$tab [ gui ] [ Without support for output gui for this option ]"
-message_without_web="$tab [ web ] [ Without support for output web for this option ]"
-message_without_help="$tab [ help in rst ] [ Without support for output rst for this option ]"
-message_without_info="$tab [ info in txt ] [ Without support for output info for this option ]"
+message_without_cli=" [ cli ] [ Without support for output cli for this option ]"
+message_without_gui=" [ gui ] [ Without support for output gui for this option ]"
+message_without_web=" [ web ] [ Without support for output web for this option ]"
+message_without_help=" [ help in rst ] [ Without support for output rst for this option ]"
+message_without_info=" [ info in txt ] [ Without support for output info for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
