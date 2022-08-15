@@ -8294,7 +8294,7 @@ domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " 
 type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 1)"
 ###########
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
-case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]"; exit ;; esac
+case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog ]"; exit ;; esac
 $command_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Is this a country domain or a generic domain ? :  $domain_one"  0 0
 $command_dialog  --stdout --title "Play game domain ole" \
@@ -8302,7 +8302,7 @@ $command_dialog  --stdout --title "Play game domain ole" \
 clear ; exit ; fi
 ###########
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ] ; then
-case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity ]"; exit ;; esac
 $(zenity $graphic_dimension --info --title="gui ole-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
 $(zenity $graphic_dimension --info --title="gui ole-domain" \
@@ -9221,7 +9221,11 @@ echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ;
 exit; fi
 ####
 ####
-####  when -gui
+if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; fi
+if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
+####
+####
+####  when it is -gui
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
@@ -9254,7 +9258,7 @@ $cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
 exit; fi
 ####
 ####
-####  when is not -gui
+####  when it is not -gui
 ####
 ####
 gpg_origen_gpg="$directory_default/$second_option.gpg"
@@ -9265,21 +9269,19 @@ gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
 ####
 ####
 if [ -f "$gpg_origen_gpg" ];  then
-echo "### type password to load: "
-$command_gpg --yes --passphrase-fd 0 --pinentry-mode loopback -v -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
-$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt && 
-clear &&
-echo "### type password to save: " &&
-$command_gpg --yes --passphrase-fd 0 --pinentry-mode loopback -v -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-$cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
+consigna="$($command_dialog --stdout --title " Passwowrd for $gpg_origen_gpg" --inputbox "Password for $gpg_origen_gpg" 0 0 )" $command_gpg --yes --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
+$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt &&
+$command_gpg --yes --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; $command_sleep 3 ; clear ;  exit ; fi
 ####
 ####
 if [ ! -f "$gpg_origen_gpg" ]; then 
 echo "File created" > "$gpg_modify_txt"
 $command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> "$gpg_temporal_txt"
-clear ; echo "### type password to save: "
-$command_gpg --yes --passphrase-fd 0 --pinentry-mode loopback -v -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-$cmd_fwiptables clean-tmp &> /dev/null ; exit ; fi
+consigna="$($command_dialog --stdout --title " Passwowrd for $gpg_origen_gpg" \
+--inputbox "Password for $gpg_origen_gpg" 0 0 )" 
+$command_gpg --yes --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
 ####
 ####
 exit ; fi
