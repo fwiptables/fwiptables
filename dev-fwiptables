@@ -9211,16 +9211,14 @@ exit; fi
 #### :rutina-inicial-gpg-notes:
 ####
 ####
-if [ "$first_option" = "gpg-notes" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
+if [ "$first_option" = "gpg-notes" ]; then 
+#### $give_cover
+#### echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
-if [ "$second_option" == "$NULL" ] || [ "$second_option" == "-list" ] ; then
+if [ "$second_option" == "-list" ] ; then
 find "$directory_default" | xargs file | grep \\.gpg | cut -d "/" -f 4- | sed 's/\.gpg//' -
-echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ;
-exit; fi
-####
-####
+echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; fi
 if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
 ####
@@ -9264,7 +9262,7 @@ exit; fi
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
 origina="$($command_dialog --stdout --title " [ Name gpg to choose ] " \
 --inputbox "$(ls $directory_default/*.gpg | cut -d "." -f 1)" 0 0 )"
-consigna="$($command_dialog --stdout --title " [ Passwowrd gpg  ] " 
+consigna="$($command_dialog --stdout --title " [ Passwowrd gpg  ] " \
 --inputbox "Password for $gpg_origen_gpg" 0 0 )"
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
