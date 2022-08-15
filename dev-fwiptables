@@ -10536,7 +10536,7 @@ exit; fi
 ####
 ####
 if [ "$launch_firewall" != "yes" ] ; then
-echo "### ### [ $first_option ]  [ is not valid option. ]  ###  [ Choose a one valid option ... ]" ;
+echo "### ### [ $first_option ] [ fail ] [ is not valid option. ]  ###  [ Choose a one valid option ... ]" ;
 $cmd_fwiptables $default_security ;
 exit ; fi
 ####
