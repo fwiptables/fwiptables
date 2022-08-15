@@ -9229,14 +9229,14 @@ if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-origina="$($command_zenity $graphic_dimension --entry --title "filename gpg to choose" \
+origina="$($command_zenity $graphic_dimension --entry --title " [ Name gpg to choose ]" \
 --text "$(ls $directory_default/*.gpg | cut -d "." -f 1)")"
+consigna="$($command_zenity $graphic_dimension --entry --title " [ Password gpg ]" --text "password:")"
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
 gpg_temporal_txt="$directory_temporal/$origina.txt"
 gpg_temporal_gpg="$directory_temporal/$origina.gpg"
-consigna="$($command_zenity $graphic_dimension --entry --title "filename gpg password" --text "password:")"
 ####
 ####
 if [ -f "$gpg_origen_gpg" ];  then
@@ -9261,27 +9261,33 @@ exit; fi
 ####  when it is not -gui
 ####
 ####
-gpg_origen_gpg="$directory_default/$second_option.gpg"
-gpg_firma_gpg="$directory_default/$second_option.sign"
-gpg_modify_txt="$directory_temporal/$second_option.modify"
-gpg_temporal_txt="$directory_temporal/$second_option.txt"
-gpg_temporal_gpg="$directory_temporal/$second_option.gpg"
+if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
+origina="$($command_dialog --stdout --title " [ Name gpg to choose ] " \
+--inputbox "$(ls $directory_default/*.gpg | cut -d "." -f 1)" 0 0 )"
+consigna="$($command_dialog --stdout --title " [ Passwowrd gpg  ] " 
+--inputbox "Password for $gpg_origen_gpg" 0 0 )"
+gpg_origen_gpg="$directory_default/$origina.gpg"
+gpg_firma_gpg="$directory_default/$origina.sign"
+gpg_modify_txt="$directory_temporal/$origina.modify"
+gpg_temporal_txt="$directory_temporal/$origina.txt"
+gpg_temporal_gpg="$directory_temporal/$origina.gpg"
 ####
 ####
 if [ -f "$gpg_origen_gpg" ];  then
-consigna="$($command_dialog --stdout --title " Passwowrd for $gpg_origen_gpg" --inputbox "Password for $gpg_origen_gpg" 0 0 )" $command_gpg --yes --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
+$command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
 $command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt &&
-$command_gpg --yes --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-$cmd_fwiptables clean-tmp &> /dev/null ; $command_sleep 3 ; clear ;  exit ; fi
+$command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$cmd_fwiptables clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
 ####
 ####
 if [ ! -f "$gpg_origen_gpg" ]; then 
 echo "File created" > "$gpg_modify_txt"
-$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> "$gpg_temporal_txt"
-consigna="$($command_dialog --stdout --title " Passwowrd for $gpg_origen_gpg" \
---inputbox "Password for $gpg_origen_gpg" 0 0 )" 
-$command_gpg --yes --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
+$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt
+$command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_fwiptables clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
+####
+####
+exit ; fi
 ####
 ####
 exit ; fi
