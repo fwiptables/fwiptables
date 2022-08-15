@@ -9225,9 +9225,10 @@ if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-origina="$($command_zenity $graphic_dimension --entry --title " [ Name gpg to choose ]" \
+original="$($command_zenity $graphic_dimension --entry --title " [ Name gpg to choose ]" \
 --text "$(ls $directory_default/*.gpg | cut -d "." -f 1)")"
 consigna="$($command_zenity $graphic_dimension --entry --title " [ Password gpg ]" --text "password:")"
+origina="$(echo $orginal | sed s/\\///g -)"  ;                       
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
@@ -9258,10 +9259,11 @@ exit; fi
 ####
 ####
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
-origina="$($command_dialog --stdout --title " [ Name gpg to choose ] " \
+original="$($command_dialog --stdout --title " [ Name gpg to choose ] " \
 --inputbox "$(ls $directory_default/*.gpg | cut -d "." -f 1)" 0 0 )"
 consigna="$($command_dialog --stdout --title " [ Passwowrd gpg  ] " \
 --inputbox "Password for $gpg_origen_gpg" 0 0 )"
+origina="$(echo $orginal | sed s/\\///g -)"  ;
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
