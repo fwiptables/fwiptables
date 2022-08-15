@@ -591,7 +591,7 @@ if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion
 ####
 ####
 echo "alias $cmd_fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
-echo "complete -W 'output-interface firewall-rules firewall-list firewall-launch \
+echo "complete -W 'output-interface firewall-control firewall-list firewall-launch \
 firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
 tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
 show-hardware show-etc show-log show-about \
@@ -949,7 +949,7 @@ firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
-"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
@@ -998,7 +998,7 @@ case "$second_option" in
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -info option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
-"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-rules"; third_option="" ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
@@ -2278,7 +2278,7 @@ if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then 
 echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ]"
 echo "$text_md   output-interface |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
 echo "$duo_md || || [ firewall ]  [  Firewalls and rules to manage the iptables ]                             "
-echo "$text_md     firewall-rules |  stop continue reset names actual show save load                          "
+echo "$text_md   firewall-control |  stop continue reset names actual show save load                          "
 echo "$text_md      firewall-list |  ls ls6 list list6 listnum listnum6 status                                "
 echo "$text_md                       list-alltables list-filter4 list-filter6                                 "
 echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        "
@@ -2320,7 +2320,7 @@ echo "$header_ok [ $first_option ] [ List full options ] [ options.md ]"
 echo "$duo_md  ||  ||  [ output-interface ]  ||                                                                "
 echo "$text_md  output-interface   |  cli-menu gui-menu gui-shell -txt -cli -gui -help -info -web -log         "
 echo "$duo_md  ||  ||  [ firewall-options ]  ||                                                                "
-echo "$text_md  firewall-rules     |  stop continue reset names actual show save load                          "
+echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
 echo "$text_md                        list-alltables list-filter4 list-filter6                                 "
 echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        " 
@@ -2379,7 +2379,7 @@ exit ; fi
 if [ "$first_option" = "firewall-options" ] ; then $give_cover
 echo "$title_md [ $first_option ] [ List firewall options ] [ firewall-options.md ]"
 echo "$title_md                                  | firewall-options |                                          "
-echo "$text_md firewall-rules      |  stop continue reset names actual show save load                          "
+echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
 echo "$text_md firewall-list       |  list listnum list6 listnum6                                              "
 echo "$text_md                        list-alltables list-forward list-forward6                                "
 echo "$text_md                        list-filter4 list-filter6 list-nat4 list-nat6                            "
@@ -2481,7 +2481,7 @@ echo  $text_md
 $cmd_fwiptables output-interface
 $brake_md
 echo  $text_md
-$cmd_fwiptables firewall-rules
+$cmd_fwiptables firewall-control
 $brake_md
 echo  $text_md
 $cmd_fwiptables firewall-list
@@ -2651,7 +2651,7 @@ echo  $text_md
 echo "$text_md $tab output-interface" 
 echo "$text_md $tab_lang_english                  Manage the interface with txt or cli or gui or log"
 echo "$text_md $tab_lang_spanish                  Manage el interfaz con txt o cli o gui or log"
-echo "$text_md $tab firewall-rules"
+echo "$text_md $tab firewall-control"
 echo "$text_md $tab_lang_english                  Control the iptables firewall rules"
 echo "$text_md $tab_lang_spanish                  Controla las reglas de iptables"
 echo "$text_md $tab firewall-list"
@@ -2833,13 +2833,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-launch:
-##############################       english: firewall-rules: options
-##############################       spanish: firewall-rules: opciones
-#### :rutina-inicial-firewall-rules:
+##############################       english: firewall-control: options
+##############################       spanish: firewall-control: opciones
+#### :rutina-inicial-firewall-control:
 ####
 ####
-if [ "$first_option" = "firewall-rules" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ control rules ] [ firewall-rules.md ]"
+if [ "$first_option" = "firewall-control" ]; then $give_cover
+echo "$header_ok [ $first_option ] [ control rules ] [ firewall-control.md ]"
 echo  $text_md 
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
@@ -2875,7 +2875,7 @@ echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-firewall-rules:
+#### :rutina-final-firewall-control:
 ##############################       english: firewall-list: options
 ##############################       spanish: firewall-list: opciones
 #### :rutina-inicial-firewall-list:
@@ -4053,7 +4053,7 @@ selection=$(zenity $graphic_dimension  \
 #### 
 case "$selection" in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"01 Firewall Rules")$cmd_fwiptables gui-menu-firewall-rules ; exit ;;
+"01 Firewall Rules")$cmd_fwiptables gui-menu-firewall-control ; exit ;;
 "02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
 "03 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
 "04 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
@@ -4150,12 +4150,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-launch:
-############################## english: gui-menu-firewall-rules: gui with menu ##############################
-############################## spanish: gui-menu-firewall-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-firewall-rules:
+############################## english: gui-menu-firewall-control: gui with menu ##############################
+############################## spanish: gui-menu-firewall-control: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-firewall-control:
 ####
 ####
-if [ "$first_option" = "gui-menu-firewall-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-firewall-control" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Firewall Rules ] [ $name_fwiptables ]")
@@ -4164,8 +4164,8 @@ selection=$($command_zenity  $graphic_dimension \
 case "$selection" in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu")$cmd_fwiptables gui-menu ;;
-"Gui Help Menu") $cmd_fwiptables -gui help firewall-rules ;;
-"Gui Info Menu") $cmd_fwiptables -gui info firewall-rules ;;
+"Gui Help Menu") $cmd_fwiptables -gui help firewall-control ;;
+"Gui Info Menu") $cmd_fwiptables -gui info firewall-control ;;
 "stop") $cmd_fwiptables -gui stop ; $cmd_fwiptables -gui list ;;
 "continue") $cmd_fwiptables -gui continue ; $cmd_fwiptables -gui list ;;
 "reset") $cmd_fwiptables -gui reset ; $cmd_fwiptables -gui list ;;
@@ -4188,7 +4188,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-rules:
+#### :rutina-final-gui-menu-firewall-control:
 ############################## english: gui-menu-firewall-list: gui with menu ##############################
 ############################## spanish: gui-menu-firewall-list: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-firewall-list:
@@ -5268,7 +5268,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
 ################################
  0000) clear ; $cmd_fwiptables info ;;
  0100) clear ; $cmd_fwiptables cli options ;;
- 0200) clear ; $cmd_fwiptables cli firewall-rules ;;
+ 0200) clear ; $cmd_fwiptables cli firewall-control ;;
  0300) clear ; $cmd_fwiptables cli firewall-list ;;
  0400) clear ; $cmd_fwiptables cli firewall-launch ;;
  0500) clear ; $cmd_fwiptables cli firewall-custom ;;
@@ -9815,7 +9815,7 @@ exit; fi
 ####
  if [ "$first_option" = "info" ]; then $nada
  if [ "$second_option" = "control-guide" ]; then $cmd_fwiptables control-guide ; exit ; fi
- if [ "$second_option" = "firewall-rules" ]; then $cmd_fwiptables firewall-rules ; exit ; fi
+ if [ "$second_option" = "firewall-control" ]; then $cmd_fwiptables firewall-control ; exit ; fi
  if [ "$second_option" = "firewall-list" ]; then $cmd_fwiptables firewall-list ; exit ; fi
  if [ "$second_option" = "output-interface" ]; then $cmd_fwiptables output-interface ; exit ; fi
  if [ "$second_option" = "firewall-launch" ]; then $cmd_fwiptables firewall-launch ; exit ; fi
@@ -9850,14 +9850,14 @@ echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$tab $tab"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  " firewall-options   |  firewall-rules  firewall-list  firewall-launch  firewall-custom "
-echo "$tab" "$tab"  "     tool-options   |  tool-sockets    tool-forward   tool-tcp         tool-udp        "
-echo "$tab" "$tab"  "                       tool-icmp       tool-nmap      tool-sudo        tool-game       "
-echo "$tab" "$tab"  "                       tool-system     tool-install   tool-blacklist   tool-dev        "
-echo "$tab" "$tab"  "     show-options   |  show-hardware   show-etc       show-log         show-about      "
-echo "$tab" "$tab"  "                       show-help                                                       " 
+echo "$tab" "$tab"  " firewall-options   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
+echo "$tab" "$tab"  "     tool-options   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
+echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudo        tool-game       "
+echo "$tab" "$tab"  "                       tool-system       tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "                       tool-connect"
+echo "$tab" "$tab"  "     show-options   |  show-hardware     show-etc       show-log         show-about      "
+echo "$tab" "$tab"  "                       show-help"
 echo
-echo "$tab" "$tab"  "$tab $tab"
 echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
 echo $footer_lineal
 exit; fi
