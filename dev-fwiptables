@@ -248,9 +248,18 @@ defaultminicfg_eng="$directory_config/default-mini-english.cfg"
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"     
 #### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
-quad="####" cinco="#####" ; tab="     " ;  tabz="# _ _ _ _ _ _ _ "  ; rallica="_____" ; sinco=" || " ;
+quad="####" ; 
+cinco="#####" ;
+tab="     " ;
+tabz="# _ _ _ _ _ _ _ " ;
+rallica="_____" ;
+sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
-title_md="### "; text_md="     "; brake_md="echo ---" ; center_in_md="<-"; center_out_md="->"
+title_md="### " ;
+text_md="     " ;
+brake_md="echo ---" ;
+center_in_md="<-" ;
+center_out_md="->" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -261,7 +270,7 @@ duo_md="### ###"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ok="### ### || || [ ok ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$duo_md || || $cmd_fwiptables || Version $fversion || || "
+head_principal="$duo_md || || Program $cmd_fwiptables || Version $fversion || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
