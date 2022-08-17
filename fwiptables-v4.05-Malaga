@@ -1,5 +1,12 @@
-#!/bin/zsh
-emulate -L bash
+#!/bin/bash
+####
+#### #### for bash:
+#### #### #!/bin/bash
+####
+#### #### for zsh:
+#### #### #!/bin/zsh
+#### #### emulate -L bash
+####
 #### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
@@ -34,13 +41,6 @@ emulate -L bash
 ####   Email: fwiptables@gmx.com
 ####
 ####
-##############################  if you choose bash: #### in the first line:    ##############################
-##############################  si tu  eliges bash: #### en la primera linea:  ##############################
-####   #!/bin/bash
-##############################  if you choose zsh: #### in the first line:     ##############################
-##############################  si tu  eliges zsh: #### en la primera linea:   ##############################
-####   #!/bin/zsh
-####   emulate -L bash
 ##############################       english: are you root: uid 0 ?                ##############################
 ##############################       spanish: eres admnistrador: identificador 0 ? ##############################
 ####
