@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
+emulate -L bash
 #### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
@@ -33,6 +34,13 @@
 ####   Email: fwiptables@gmx.com
 ####
 ####
+##############################  if you choose bash: #### in the first line:    ##############################
+##############################  si tu  eliges bash: #### en la primera linea:  ##############################
+####   #!/bin/bash
+##############################  if you choose zsh: #### in the first line:     ##############################
+##############################  si tu  eliges zsh: #### en la primera linea:   ##############################
+####   #!/bin/zsh
+####   emulate -L bash
 ##############################       english: are you root: uid 0 ?                ##############################
 ##############################       spanish: eres admnistrador: identificador 0 ? ##############################
 ####
@@ -7403,63 +7411,63 @@ exit; fi
 #### :rutina-inicial-load:
 ####
 ####
- if [ "$first_option" = "load" ]; then $give_cover ; $give_autosave
+if [ "$first_option" = "load" ]; then $give_cover ; $give_autosave &> /dev/null
 ####
 ####
 #### English: Void in second option
 ####
 ####
- if [ "second_option" = "$NULL" ]; then
- $cmd_fwiptables names; echo "$tab [ status ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
+if [ "second_option" = "$NULL" ]; then
+$cmd_fwiptables names; echo "$tab [ status ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
 ####
 ####
- if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
+if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
 ####
 ####
 #### English: show message
 ####
 ####
- echo " [ running ] [ Loading rules ]"
+echo " [ running ] [ Loading rules ]"
 ####
 ####
 #### English: Remove all rules
 ####
 ####
- $cmd_fwiptables eraserules &> /dev/null
+$cmd_fwiptables eraserules &> /dev/null
 ####
 ####
 #### English: Load all rules 
 ####
 ####
- if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
- cat $directory_fwrecover/$second_option-ebtables | $command_ebtables-restore &> /dev/null; fi
+if [ -f "$directory_fwrecover/$second_option-ebtables" ]; then
+cat $directory_fwrecover/$second_option-ebtables | $command_ebtables-restore &> /dev/null; fi
 ####
 ####
- if [ -f "$directory_fwrecover/$second_option-arptables" ]; then
- cat $directory_fwrecover/$second_option-arptables | $command_arptables-restore &> /dev/null; fi
+if [ -f "$directory_fwrecover/$second_option-arptables" ]; then
+cat $directory_fwrecover/$second_option-arptables | $command_arptables-restore &> /dev/null; fi
 ####
 #### 
- cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restore       
- cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
- cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
- cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
- echo " [   ok    ] [ FIREWALL LOADED ] [ $second_option ]"
+cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restore       
+cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
+cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
+cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
+echo " [   ok    ] [ FIREWALL LOADED ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
 ####
 ####
- else
- $cmd_fwiptables names
- echo "$tab [ info ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]"
- fi 
+else
+$cmd_fwiptables names
+echo "$tab [ info ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]"
+fi 
 ####
 ####
 #### echo $footer_lineal
- exit; fi
+exit; fi
 ####
 ####
 #### :rutina-final-load:
