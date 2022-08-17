@@ -2309,7 +2309,7 @@ echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net 
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-list aliasfw-list                   "
 echo "$text_md          show-help |  all-help readme leeme notes about version depends options                "
-echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its Example Description ] ### || || "
+echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||         "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
 echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
