@@ -902,6 +902,7 @@ wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_opti
 "modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
 scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+"info-nodes") echo $message_without_cli ;  exit ;;
 "ole-domain") $cmd_fwiptables ole-domain -cli ; exit ;;
 "ole-word") $cmd_fwiptables ole-word -cli ; exit ;;
 "ole-number") $cmd_fwiptables ole-number -cli ; exit ;;
@@ -926,14 +927,12 @@ esac ; fi
 ####
 if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
 case "$second_option" in 
-cli-menu) first_option="cli-menu"   ;;
-gui-menu) first_option="gui-menu"   ;;
-gui-shell) first_option="gui-shell" ;;
-ole_word) first_option="ole-word" ; second_option="-gui" ;;
-ole_number) first_option="ole-number" ; second_option="-gui" ;;
-ole_domain) first_option="ole-domain" ; second_option="-gui" ;;
-rule-del-num) first_option="rule-del-num" ; second_option="-gui" ;;
-gpg-notes) first_option="gpg-notes" ; second_option="-gui" ;;
+"ole_word") first_option="ole-word" ; second_option="-gui" ;;
+"ole_number") first_option="ole-number" ; second_option="-gui" ;;
+"ole_domain") first_option="ole-domain" ; second_option="-gui" ;;
+"rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
+"gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
+"info-nodes") echo $message_without_gui ;  exit ;;
 esac ; fi
 ####
 ####
@@ -3728,7 +3727,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
-echo "$text_md [ ok ] [ $first_option ] [ List notes about $cmd_fwiptables ] [ notes.md ]"
+echo "$header_ok [ $first_option ] [ List notes about $cmd_fwiptables ] [ notes.md ]"
 echo  $text_md
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
@@ -3798,7 +3797,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
-echo "[ ok ] [ $first_option ] [ List programs depends about $cmd_fwiptables ]"
+echo "$header_ok [ $first_option ] [ List programs depends about $cmd_fwiptables ]"
 echo $tab
 echo "$tab [ It are all the depends to full work in $cmd_fwiptables $fversion ]"
 echo $tab
@@ -7254,22 +7253,14 @@ exit; fi
 #### :rutina-inicial-info-nodes:
 ####
 ####
- if [ "$first_option" = "info-nodes" ]; then  $give_cover
- case $command_arp_scan in "$NULL") echo "$tab [ fail ] [ install arp-scan command ]" ;;
- *)
- echo "$header_ok [ $first_option ]  [ Show the list arp-scan in the lan ]"
- echo $header_lineal
- echo $tab
- echo local net: ip lan
- $command_ip -4 route | grep -iv default
- echo $tab
- echo local scan: arp lan
- echo $head_waiting_gui
- $command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan &> /dev/null
- ;;
- esac
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "info-nodes" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Show the list arp-scan in the lan ]"
+if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
+echo ; echo local net: ip lan
+$command_ip -4 route | grep -iv default
+echo local scan: arp lan
+$command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan 
+exit; fi
 ####
 ####
 #### :rutina-final-info-nodes:
