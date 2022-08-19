@@ -1,7 +1,9 @@
 
 
+
+ 8. 
  7. modificado ntpdate-client para que funcione sntp. HECHO
- 6. modificar del-num-rule.
+ 6. modificar del-num-rule para ipv6 tambien. HECHO
  5. modificar md5. HECHO
  4. cambio en info-lan. HECHO
  3. cambio en load. HECHO
