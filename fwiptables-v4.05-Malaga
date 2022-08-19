@@ -282,7 +282,7 @@ ralla="______________________"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 duo_md="### ###"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_ok="### ### || || [ ok ]"
+header_ok="### ### || || [ ok ] ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_principal="$duo_md || || [ ok ] || Program $cmd_fwiptables || Version $fversion || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -6950,7 +6950,7 @@ exit; fi
 ####
 if [ "$first_option" = "md5sum" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ]"
-if [ "$second_option" == "$NULL" ]; then  echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; fi
+if [ "$second_option" == "$NULL" ]; then  echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; exit; fi
 if [ -f "$second_option" ]; then $command_md5sum $second_option
 else echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; fi
 exit; fi
@@ -10112,6 +10112,7 @@ echo "$text_md    new-versions : Show the last versions."
 echo "$text_md     dev-version : Show the link at the developer version."
 echo "$text_md     dev-changes : Show the last changes."
 echo "$text_md            code : Show the source code for one option."
+echo "$text_md          md5sum : Show the md5 sum from one file."
 echo  $text_md
 echo "$title_md         [ Tool computer ]"
 echo  $text_md
@@ -10439,6 +10440,7 @@ echo "$text_md    new-versions : Muestra las ultimas versiones."
 echo "$text_md     dev-version : Muestra en enlace a la version de desarrollo."
 echo "$text_md     dev-changes : Muestra los ultimos cambios."
 echo "$text_md            code : Muestra el codigo fuente para una opcion."
+echo "$text_md          md5sum : Muestra la suma md5 de un archivo"
 echo  $text_md
 echo "$title_md [ Herramienta de computador ]."
 echo  $text_md
