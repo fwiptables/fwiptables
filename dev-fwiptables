@@ -7101,8 +7101,8 @@ case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; 
 selection="$($command_zenity $graphic_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
 "04 XTABLES / filter-ip4  / INPUT" "05 XTABLES / filter-ip4 / FORWARD"  "06 XTABLES / filter-ip4 / OUTPUT" \
-"11 NFTABLES filter-ip4 INPUT"  "12 NFTABLES / filter-ip4 / FORWARD"  "13 NFTABLES / filter-ip4 / OUTPUT" \
-"14 XTABLES / filter-ip4  / INPUT" "15 XTABLES / filter-ip4 / FORWARD"  "16 XTABLES / filter-ip4 / OUTPUT" \
+"11 NFTABLES filter-ip6 INPUT"  "12 NFTABLES / filter-ip6 / FORWARD"  "13 NFTABLES / filter-ip6 / OUTPUT" \
+"14 XTABLES / filter-ip6  / INPUT" "15 XTABLES / filter-ip6 / FORWARD"  "16 XTABLES / filter-ip6 / OUTPUT" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $(date) ")"
 case "$selection" in
 "01 NFTABLES filter-ip4 INPUT")
