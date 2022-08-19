@@ -7054,13 +7054,19 @@ exit ; fi
 ####
 if [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
 menudelrule="$($command_dialog  --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
- 01 "NFTABLES / filter / INPUT" \
- 02 "NFTABLES / filter / FORWARD" \
- 03 "NFTABLES / filter / OUTPUT" \
- 04 "XTABLES / filter  / INPUT" \
- 05 "XTABLES / filter  / FORWARD" \
- 06 "XTABLES / filter  / OUTPUT" \
- )"
+01 "NFTABLES / filter-ip4 / INPUT" \
+02 "NFTABLES / filter-ip4 / FORWARD" \
+03 "NFTABLES / filter-ip4 / OUTPUT" \
+04 "XTABLES / filter-ip4  / INPUT" \
+05 "XTABLES / filter-ip4  / FORWARD" \
+06 "XTABLES / filter-ip4  / OUTPUT" \
+11 "NFTABLES / filter-ip6 / INPUT" \
+12 "NFTABLES / filter-ip6 / FORWARD" \
+13 "NFTABLES / filter-ip6 / OUTPUT" \
+14 "XTABLES / filter-ip6  / INPUT" \
+15 "XTABLES / filter-ip6  / FORWARD" \
+16 "XTABLES / filter-ip6  / OUTPUT" \
+)"
 case "$menudelrule" in
 "01") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="INPUT"      ;;
 "02") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
@@ -7068,6 +7074,12 @@ case "$menudelrule" in
 "04") fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
 "05") fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
 "06") fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
+"11") fire_wall="$command_ip6tables_nft" ; table_wall="filter" ; code_wall="INPUT"      ;;
+"12") fire_wall="$command_ip6tables_nft" ; table_wall="filter" ; code_wall="FORWARD"    ;;
+"13") fire_wall="$command_ip6tables_nft" ; table_wall="filter" ; code_wall="OUTPUT"     ;;
+"14") fire_wall="$command_ip6tables_legacy" ; table_wall="filter" ; code_wall="INPUT"   ;;
+"15") fire_wall="$command_ip6tables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
+"16") fire_wall="$command_ip6tables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
 *) clear ; exit ;; esac ;
 lalista="$($command_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
 deleterule="$($command_dialog --stdout --title " Type the number rule to delete " --inputbox "example: 2" 0 0 )"
