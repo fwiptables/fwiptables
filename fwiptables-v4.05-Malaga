@@ -2359,7 +2359,7 @@ echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb 
 echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3 gpg-notes              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
-echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5                      "
+echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5sum                   "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ show-options ]   || ||  ### ###                                                          "
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
@@ -3473,7 +3473,9 @@ echo "$text_md $tab_lang_spanish               : Muestra el codigo fuente de una
 echo "$text_md $tab intro"
 echo "$text_md $tab_lang_english               : Show intro $name_fwiptables"
 echo "$text_md $tab_lang_spanish               : Muestra la intro de $name_fwiptables"
-echo $footer_lineal
+echo "$text_md $tab md5sum"
+echo "$text_md $tab_lang_english               : Show md5sum from one file"
+echo "$text_md $tab_lang_spanish               : Muestra la suma md5sum de un archivo"
 exit; fi
 ####
 ####
@@ -6943,18 +6945,18 @@ exit; fi
 #### :rutina-final-aliasfw-list:
 ############################       english: md5: md5 sum from a one file
 ############################       spanish: md5: suma md5 desde un archivo
-#### :rutina-inicial-md5:
+#### :rutina-inicial-md5sum:
 ####
 ####
-if [ "$first_option" = "md5" ]; then $give_cover
+if [ "$first_option" = "md5sum" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ]"
-echo $header_lineal
-if [ -f $second_option ]; then $command_md5sum $second_option
-else echo " [ info ] [ Example: $cmd_fwiptables md5 file ]"; fi
+if [ "$second_option" == "$NULL" ]; then  echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; fi
+if [ -f "$second_option" ]; then $command_md5sum $second_option
+else echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; fi
 exit; fi
 ####
 ####
-#### :rutina-final-alias-md5:
+#### :rutina-final-alias-md5sum:
 ############################       english: rule-add-shield: the ipforwading option en english
 ############################       spanish: rule-add-shield: la opcion de reenvios  en ingles
 #### :rutina-inicial-rule-add-shield:

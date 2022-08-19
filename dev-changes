@@ -1,8 +1,8 @@
 
 
-
- 6. modificar del-num-rule
- 5. modificar md5
+ 7. modificado ntpdate-client para que funcione sntp. HECHO
+ 6. modificar del-num-rule.
+ 5. modificar md5. HECHO
  4. cambio en info-lan. HECHO
  3. cambio en load. HECHO
  2. opcion de usar el shell zsh. HECHO
