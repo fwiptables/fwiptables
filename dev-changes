@@ -1,6 +1,11 @@
 
 
 
+
+ 1. 
+
+ cambios en dev-fwiptables desarrollo 4.06 
+
  8. sudofw-users cambiado a sudofw-listusers. HECHO 
  7. modificado ntpdate-client para que funcione sntp. HECHO
  6. modificar del-num-rule para ipv6 tambien. HECHO
@@ -10,7 +15,7 @@
  2. opcion de usar el shell zsh. HECHO
  1. pequeño cambio de apariencia en full-options tambien llamado options. HECHO
 
- cambios en dev-fwiptables desarrollo 4.05
+ cambios en fwiptables 4.05 # lineas=8
  
  6. pequeños cambios en la apariencia de mini-options y options o full-options. HECHO
  5. pequeños cambios en la apariencia de lista de reglas. HECHO

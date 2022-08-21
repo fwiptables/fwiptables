@@ -1,5 +1,4 @@
-#!/bin/zsh
-emulate -L bash
+#!/bin/bash
 #### #### for bash:
 #### #### #!/bin/bash
 ####
@@ -63,7 +62,7 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="4.05-Malaga-developer" ;
+fversion="4.05-Malaga" ;
 ####
 ####
 ##############################    english: options priority        ##############################
