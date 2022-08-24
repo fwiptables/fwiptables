@@ -821,11 +821,12 @@ if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_op
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
 if [ "$first_option" = "help" ] || [ "$first_option" = "-help"  ] ; then first_option="-help"; fi
 if [ "$first_option" = "-h"   ] || [ "$first_option" = "--help"  ] ; then first_option="-help"; fi
-if [ "$first_option" = "-t"   ] || [ "$first_option" = "--text"  ] ; then first_option="-text"; fi
+if [ "$first_option" = "-t"   ] || [ "$first_option" = "--txt"  ] ; then first_option="-txt"; fi
 if [ "$first_option" = "-c"   ] || [ "$first_option" = "--cli"  ] ; then first_option="-cli"; fi
 if [ "$first_option" = "-g"   ] || [ "$first_option" = "--gui"  ] ; then first_option="-gui"; fi
 if [ "$first_option" = "-i"   ] || [ "$first_option" = "--info"  ] ; then first_option="-info"; fi
 if [ "$first_option" = "-w"   ] || [ "$first_option" = "--web"  ] ; then first_option="-web"; fi
+if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ] ; then first_option="-log"; fi
 ####
 ####
 #### english: alias simple for options commons
