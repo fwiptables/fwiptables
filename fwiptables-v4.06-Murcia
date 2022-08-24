@@ -149,8 +149,8 @@ directory_fwiptables="/usr/bin"
 directory_fwrecover="/etc/fwiptables-fwrecover"
 directory_default="/etc/fwiptables-default"
 directory_config="/etc/fwiptables-config"
+directory_log="/etc/fwiptables-default"
 directory_desktop="/usr/share/applications"
-directory_log="/var/log"
 ####
 ####
 #### english: log files and path files config files
