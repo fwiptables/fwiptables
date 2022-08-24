@@ -372,7 +372,8 @@ server_tcp="" ; server_udp="" ;
 logserver_tcp="no" ; logserver_udp="no" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
-separate_port_rules="no" ; allow_maxtries_ssh="no"
+separate_port_rules="no" ;
+allow_maxtries_ssh="no"
 allow_forward_ip4="no" ; allow_forward_ip6="no" ; 
 allow_gateway_ip4="no" ; allow_gateway_ip6="no" ;
 allow_dmz_ip4="no" ; allow_dmz_ip6="no" ;
@@ -385,6 +386,7 @@ allow_mac_whitelist="no" ; allow_mac_blacklist="no" ;
 allow_net_vpn="no" ; allow_net_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
+config_maxtries_ssh="20" ; config_ssh_port="22" ;
 config_dmz_ip4="" ; config_dmz_ip6="" ;
 config_input_state="new,related,established" ;
 config_output_state="new,related,established" ;
