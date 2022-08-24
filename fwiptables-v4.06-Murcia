@@ -1,5 +1,4 @@
-#!/bin/zsh
-emulate -L bash
+#!/bin/bash
 #### #### for bash:
 #### #### #!/bin/bash
 ####
