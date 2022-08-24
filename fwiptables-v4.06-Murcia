@@ -5535,43 +5535,31 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
- if [ "$first_option" = "version" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ Show version about $cmd_fwiptables ]"
- echo
- echo "$tab [Name program]"
- echo "$fprogram"
- echo
- echo "$tab [Description program]"
- echo "$fdescription"
- echo
- echo "$tab [Exec program]"
- echo "$directory_fwiptables/$cmd_fwiptables"
- echo
- echo "$tab [File format]"
- file $directory_fwiptables/$cmd_fwiptables | cut -d "," -f 1-2
- echo
- echo "$tab [MD5]"
- $command_md5sum $0
- echo
- echo "$tab [Config cfg directory]"
- echo "$directory_config"
- echo "$tab [Firewall standard directory]"
- echo "$directory_fwrecover"
- echo "$tab [default directory]"
- echo "$directory_default"
- echo "$tab [Config files]"
- echo "completion:   /etc/profile.d/$cmd_fwiptables"
- echo "completion:   /etc/bash_completion.d/$cmd_fwiptables"
- echo "auth users:   /etc/sudoers/$cmd_fwiptables"
- echo "$tab [Output log]"
- echo "output filelog: $output_filelog"
- echo "output autolog: $output_autolog"
- echo
- echo "$tab [Version program]"
- echo "$fversion"
- echo
-#### echo $footer_lineal
- exit ; fi
+if [ "$first_option" = "version" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Show version about $cmd_fwiptables ]"
+echo
+echo "$tab [ Name program ]"
+echo "$tab $fprogram"
+echo
+echo "$tab [ Version program ]"
+echo "$tab $fversion"
+echo
+echo "$tab [ Description program ]"
+echo "$tab $fdescription"
+echo
+echo "$tab [ Exec program ]"
+echo "$tab $directory_fwiptables/$cmd_fwiptables"
+echo
+echo "$tab [ File format ]"
+file $directory_fwiptables/$cmd_fwiptables | cut -d "," -f 1-2
+echo
+echo "$tab [ MD5 ]"
+$command_md5sum $0
+echo
+echo "$tab [ Data files ]"
+echo "$tab $directory_data"
+echo
+exit ; fi
 ####
 ####
 #### :rutina-final-version:
