@@ -9770,21 +9770,20 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
- if [ "$first_option" = "speed-ip4" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ]"
- echo $header_lineal
- case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
+if [ "$first_option" = "speed-ip4" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ]"
+echo $header_lineal
+case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
- $cmd_fwiptables stop
- echo "$tab [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
- echo $tab
- echo
- $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
- echo
- $cmd_fwiptables continue
- echo $footer_lineal
- exit; fi
+$cmd_fwiptables stop
+echo
+echo "$tab [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
+$command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
+echo
+$cmd_fwiptables continue
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-speed-ip4:
@@ -9793,21 +9792,20 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
- if [ "$first_option" = "speed-ip6" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ]"
- echo $header_lineal
- case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
+if [ "$first_option" = "speed-ip6" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ]"
+echo $header_lineal
+case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
- $cmd_fwiptables stop
- echo "$tab [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
- echo $tab
- echo
- $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
- echo
- $cmd_fwiptables continue
- echo $footer_lineal
- exit; fi
+$cmd_fwiptables stop
+echo
+echo "$tab [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
+$command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
+echo
+$cmd_fwiptables continue
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-speed-ip6:
