@@ -7404,7 +7404,7 @@ echo "$header_ok [ $first_option ]  [ Reset the firewall ]"
 echo " [ status ] [ Reseting the firewall ]"
 $cmd_fwiptables stop &> /dev/null
 $cmd_fwiptables continue &> /dev/null
-echo " [ ok ] [ firewall reseted ]"
+echo " [   ok   ] [ firewall reseted ]"
 exit; fi
 ####
 ####
@@ -7593,30 +7593,30 @@ exit; fi
 #### :rutina-inicial-actual:
 ####
 ####
- if [ "$first_option" = "actual" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ show the last firewall saved ]"
- echo $header_lineal
- $command_arptables-save          &> $directory_fwrecover/$name_fwiptables-actual-arptables
- $command_ebtables-save           &> $directory_fwrecover/$name_fwiptables-actual-ebtables   
- $command_iptables_nft-save       &> $directory_fwrecover/$name_fwiptables-actual-nft-ipv4   
- $command_iptables_legacy-save    &> $directory_fwrecover/$name_fwiptables-actual-legacy-ipv4
- $command_ip6tables_nft-save      &> $directory_fwrecover/$name_fwiptables-actual-nft-ipv6   
- $command_ip6tables_legacy-save   &> $directory_fwrecover/$name_fwiptables-actual-legacy-ipv6
- echo "$cincuenta arptables $cinco"
- cat $directory_fwrecover/$name_fwiptables-actual-arptables
- echo "$cincuenta ebtables $cinco"
- cat $directory_fwrecover/$name_fwiptables-actual-ebtables
- echo "$cincuenta nft with ipv4 $cinco"
- cat $directory_fwrecover/$name_fwiptables-actual-nft-ipv4
- echo "$cincuenta legacy with ipv4 $cinco"
- cat $directory_fwrecover/$name_fwiptables-actual-legacy-ipv4
- echo "$cincuenta nft with ipv6 $cinco"
- cat $directory_fwrecover/$name_fwiptables-actual-nft-ipv6
- echo "$cincuenta legacy with ipv6 $cinco"
- cat $directory_fwrecover/$name_fwiptables-actual-legacy-ipv6
- echo "$tab  [ ok ] [ readed firewall actual ]"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "actual" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ show the last firewall saved ]"
+echo $header_lineal
+$command_arptables-save          &> $directory_fwrecover/$name_fwiptables-actual-arptables
+$command_ebtables-save           &> $directory_fwrecover/$name_fwiptables-actual-ebtables   
+$command_iptables_nft-save       &> $directory_fwrecover/$name_fwiptables-actual-nft-ipv4   
+$command_iptables_legacy-save    &> $directory_fwrecover/$name_fwiptables-actual-legacy-ipv4
+$command_ip6tables_nft-save      &> $directory_fwrecover/$name_fwiptables-actual-nft-ipv6   
+$command_ip6tables_legacy-save   &> $directory_fwrecover/$name_fwiptables-actual-legacy-ipv6
+echo "$cincuenta arptables $cinco"
+cat $directory_fwrecover/$name_fwiptables-actual-arptables
+echo "$cincuenta ebtables $cinco"
+cat $directory_fwrecover/$name_fwiptables-actual-ebtables
+echo "$cincuenta nft with ipv4 $cinco"
+cat $directory_fwrecover/$name_fwiptables-actual-nft-ipv4
+echo "$cincuenta legacy with ipv4 $cinco"
+cat $directory_fwrecover/$name_fwiptables-actual-legacy-ipv4
+echo "$cincuenta nft with ipv6 $cinco"
+cat $directory_fwrecover/$name_fwiptables-actual-nft-ipv6
+echo "$cincuenta legacy with ipv6 $cinco"
+cat $directory_fwrecover/$name_fwiptables-actual-legacy-ipv6
+echo
+echo "$tab  [ ok ] [ readed firewall actual ]"
+exit; fi
 ####
 ####
 #### :rutina-final-actual:
@@ -7644,7 +7644,8 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/$name_fwiptables-stoped-l
 ####
 ####
 $cmd_fwiptables eraserules &> /dev/null
-echo " [ ok ] [ firewall stopped ]"
+echo " [ status ] [ stopping firewall ]"
+echo " [   ok   ] [ firewall stopped ]"
 exit; fi
 ####
 ####
@@ -7667,7 +7668,8 @@ cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv4 | $command_iptables_nf
 cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
 cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
-echo " [ ok ] [ firewall continued ]"
+echo " [ status ] [ continue firewall ]"
+echo " [   ok   ] [ firewall continued ]"
 exit; fi
 ####
 ####
@@ -7692,7 +7694,7 @@ if [ "$second_option" = "$NULL" ]; then $nada ; else server_ping_ipv4="$second_o
 echo " [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
 timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
 $cmd_fwiptables continue
-echo $footer_lineal
+echo 
 exit; fi
 ####
 ####
