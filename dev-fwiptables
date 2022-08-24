@@ -145,11 +145,17 @@ icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 ####
 directory_fwiptables="/usr/bin"
-directory_data="$HOME/.fwiptables-configuration"
+directory_data="$HOME/.local/share/fwiptables"
+####
+####
+#### english: directory tree 
+#### spanish: arbol de directorio
+####
+####
 directory_fwrecover="$directory_data/fwiptables-fwrecover"
 directory_default="$directory_data/fwiptables-default"
 directory_config="$directory_data/fwiptables-config"
-directory_log="$directory_data/fwiptables-default"
+directory_log="$directory_data/fwiptables-log"
 directory_desktop="/usr/share/applications"
 ####
 ####
@@ -198,6 +204,8 @@ if [ ! -d "$directory_fwrecover" ]; then rm "$directory_fwrecover" &> /dev/null 
 $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
 if [ ! -d "$directory_default" ]; then rm "$directory_default" &> /dev/null ;
 $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then rm "$directory_log" &> /dev/null ;
+$command_mkdir -p "$directory_log" &> /dev/null ; fi
 ####
 ####
 ##############################   english: the basic system variables         ##############################
@@ -3814,43 +3822,43 @@ exit; fi
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ List programs depends about $cmd_fwiptables ]"
-echo $tab
+echo 
 echo "$tab [ It are all the depends to full work in $cmd_fwiptables $fversion ]"
-echo $tab
+echo 
+echo "$tab [Configuration file]"
+echo "shell completions:   /etc/completion.d/$cmd_fwiptables"
+echo "shell profile:       /etc/profile.d/$cmd_fwiptables"
+echo "auth users:          /etc/sudoers.d/$cmd_fwiptables"
+echo 
 echo "$tab [Configuration directory]"
 echo " Directory data:            $directory_data"
 echo 
 echo "list cfg config:            $directory_config"
 echo "names fwrecover:            $directory_fwrecover"
 echo "default configs:            $directory_default"
-echo $tab
-echo "$tab [Configuration file]"
-echo "shell completions:   /etc/completion.d/$cmd_fwiptables"
-echo "shell profile:       /etc/profile.d/$cmd_fwiptables"
-echo "auth users:          /etc/sudoers.d/$cmd_fwiptables"
-echo $tab
+echo 
 echo "$tab [output log]"
 echo "destination filelog: $output_filelog"
 echo "destination autolog: $output_autolog"
-echo $tab
+echo 
 echo "$tab [ cli ]"
 echo "dialog:    $command_dialog"
-echo $tab
+echo 
 echo "$tab [ gui ]"
 echo "zenity:      $command_zenity"
-echo $tab
+echo 
 echo "$tab [ auto text browser ]"
 echo "automatic: lynx or links or links2 "
 echo "auto text browser: $favorite_text_browser"
-echo $tab
+echo 
 echo "$tab [ auto date command ]"
 echo "automatic: rdate or sntp or ntpdate"
 echo "auto text browser: $favorite_date_command"
-echo $tab
+echo 
 echo "$tab [ auto music browser ]"
 echo "automatic: mpg321 or mpg123"
 echo "auto text browser: $favorite_radio_command"
-echo $tab
+echo 
 echo "$tab [ the iptables ]"
 echo "iptables legacy:   $command_iptables_legacy"
 echo "iptables nft:      $command_iptables_nft"
@@ -3858,7 +3866,7 @@ echo "ip6tables legacy:  $command_ip6tables_legacy"
 echo "ip6tables nft:     $command_ip6tables_nft"
 echo "arptables:         $command_arptables"
 echo "ebtables:          $command_ebtables"
-echo $tab
+echo
 echo "$tab [ several tool ]"
 echo "date:       $command_date"
 echo "uname:      $command_uname"
@@ -3893,8 +3901,6 @@ echo "txt2html:   $command_txt2html"
 echo "iw:         $command_iw"
 echo "wpa_passphrase: $command_wpa_passphrase"
 echo "wpa_supplicant: $command_wpa_supplicant"
-echo $tab
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9171,17 +9177,17 @@ fi
 ####
 ####
 #### :rutina-final-ole-number:
-############################## english: sentlog: Read log /var/log/fwiptables-filelog  ##############################
-############################## spanish: sentlog: Lee log  /var/log/fwiptables-filelog  ##############################
+############################## english: filelog: Read log /var/log/fwiptables-filelog  ##############################
+############################## spanish: filelog: Lee log  /var/log/fwiptables-filelog  ##############################
 #### :rutina-inicial-sentlog:
 ####
 ####
- if [ "$first_option" = "sentlog" ] ; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show $output_filelog ]"
- cat  "$output_filelog"
- echo "$tab [ this file is $output_filelog ]"
- echo "$footer_lineal"
- exit; fi
+if [ "$first_option" = "sentlog" ] ; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show $output_filelog ]"
+cat  "$output_filelog"
+echo 
+echo "$tab [ this file is: ] [ $output_filelog ]"
+exit; fi
 ####
 ####
 #### :rutina-final-fw-sentlog:
@@ -9264,7 +9270,7 @@ fi
 ####
 ####
 if [ "$first_option" = "new-versions" ]; then $give_cover
-echo "$header_ok [ $first_option ]  [ show the new versions hosted in sf.net ]"
+echo "$header_ok [ $first_option ]  [ show the new versions in the web ]"
 echo $header_lineal
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
