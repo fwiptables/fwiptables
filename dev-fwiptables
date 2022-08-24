@@ -141,20 +141,21 @@ cmd_fwiptables="fwiptables-cmd"
 icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 ####
-#### english: permanent directory and path directory config files
-#### spanish: directorios permanentes y ruta de directorios de los archivos de configuracion
+#### english: directory: permanent directory and path directory config files
+#### spanish: directory: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
 directory_fwiptables="/usr/bin"
-directory_fwrecover="/etc/fwiptables-fwrecover"
-directory_default="/etc/fwiptables-default"
-directory_config="/etc/fwiptables-config"
-directory_log="/etc/fwiptables-default"
+directory_data="$HOME/.fwiptables-data"
+directory_fwrecover="$directory_data/fwiptables-fwrecover"
+directory_default="$directory_data/fwiptables-default"
+directory_config="$directory_data/fwiptables-config"
+directory_log="$directory_data/fwiptables-default"
 directory_desktop="/usr/share/applications"
 ####
 ####
-#### english: log files and path files config files
-#### spanish: archivos log y ruta de los archivos de configuracion
+#### english: file: log files and path files config files
+#### spanish: file: archivos log y ruta de los archivos de configuracion
 ####
 ####
 output_filelog="$directory_log/$name_fwiptables-filelog"
@@ -170,7 +171,7 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 ####
 ####
 ####
-directory_temporal="$HOME/.$name_fwiptables-$fversion-tmp"
+directory_temporal="$HOME/.fwiptables-tmp/.$name_fwiptables-$fversion-tmp"
 ####
 ####
 temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
@@ -188,6 +189,8 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
 ####
 ####
+if [ ! -d "$directory_data" ]; then rm "$directory_data" &> /dev/null ;
+$command_mkdir -p $directory_data &> /dev/null ; fi
 if [ ! -d "$directory_temporal" ]; then rm "$directory_temporal" &> /dev/null ;
 $command_mkdir -p $directory_temporal &> /dev/null ; fi
 if [ ! -d "$directory_config" ]; then rm "$directory_config" &> /dev/null ;
@@ -3814,6 +3817,8 @@ echo $tab
 echo "$tab [ It are all the depends to full work in $cmd_fwiptables $fversion ]"
 echo $tab
 echo "$tab [Configuration directory]"
+echo " Directory data:            $directory_data"
+echo 
 echo "list cfg config:            $directory_config"
 echo "names fwrecover:            $directory_fwrecover"
 echo "default configs:            $directory_default"
