@@ -146,7 +146,7 @@ icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 ####
 directory_fwiptables="/usr/bin"
-directory_data="$HOME/.fwiptables-data"
+directory_data="$HOME/.fwiptables-configuration"
 directory_fwrecover="$directory_data/fwiptables-fwrecover"
 directory_default="$directory_data/fwiptables-default"
 directory_config="$directory_data/fwiptables-config"
