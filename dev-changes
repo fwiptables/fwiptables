@@ -1,7 +1,7 @@
 
 
 
- 2. 
+ 2. cambiada la ruta de logs desde /var/log hacia /etc/fwiptables-default/ 
  1. nuevos alias añadidos a los interfaces de salida. HECHO 
 
  cambios en dev-fwiptables desarrollo 4.06 
