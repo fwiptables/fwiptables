@@ -3053,25 +3053,25 @@ echo  $text_md
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
 echo  $text_md
-echo "$text_md $tab txt OR -txt"
+echo "$text_md $tab txt OR -txt OR -t"
 echo "$text_md $tab_lang_english          : Output to Text line"
 echo "$text_md $tab_lang_spanish          : Salida a linea de texto"
-echo "$text_md $tab cli OR -cli"
+echo "$text_md $tab cli OR -cli OR -c"
 echo "$text_md $tab_lang_english          : Output to text menu"
 echo "$text_md $tab_lang_spanish          : Salida a menu de texto"
-echo "$text_md $tab gui OR -gui"
+echo "$text_md $tab gui OR -gui OR -g"
 echo "$text_md $tab_lang_english          : Output to graphicall window"
 echo "$text_md $tab_lang_spanish          : Salida a ventana grafica"
-echo "$text_md $tab log OR -log"
+echo "$text_md $tab log OR -log OR -l"
 echo "$text_md $tab_lang_english          : Save the output"
 echo "$text_md $tab_lang_spanish          : Guarda la salida"
-echo "$text_md $tab help OR -help"
+echo "$text_md $tab help OR -help OR -h"
 echo "$text_md $tab_lang_english          : Output help in text plain format"
 echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato plano"
-echo "$text_md $tab info OR -info"
+echo "$text_md $tab info OR -info OR -i"
 echo "$text_md $tab_lang_english          : Output help in text with rst format"
 echo "$text_md $tab_lang_spanish          : Salida ayuda en text con formato rst"
-echo "$text_md $tab web OR -web"
+echo "$text_md $tab web OR -web OR -w"
 echo "$text_md $tab_lang_english          : Output in favorite text web browser"
 echo "$text_md $tab_lang_spanish          : Salida en favorito navegador web de texto"
 echo "$text_md $tab tor OR -tor"
@@ -9889,29 +9889,28 @@ exit; fi
 #### :rutina-inicial-info:
 ####
 ####
- if [ "$first_option" = "info" ]; then $nada
- if [ "$second_option" = "control-guide" ]; then $cmd_fwiptables control-guide ; exit ; fi
- if [ "$second_option" = "firewall-control" ]; then $cmd_fwiptables firewall-control ; exit ; fi
- if [ "$second_option" = "firewall-list" ]; then $cmd_fwiptables firewall-list ; exit ; fi
- if [ "$second_option" = "output-interface" ]; then $cmd_fwiptables output-interface ; exit ; fi
- if [ "$second_option" = "firewall-launch" ]; then $cmd_fwiptables firewall-launch ; exit ; fi
- if [ "$second_option" = "firewall-custom" ]; then $cmd_fwiptables firewall-custom ; exit ; fi
- if [ "$second_option" = "tool-sockets" ]; then $cmd_fwiptables tool-sockets ; exit ; fi
- if [ "$second_option" = "tool-forward" ]; then $cmd_fwiptables tool-forward ; exit ; fi
- if [ "$second_option" = "tool-tcp" ]; then $cmd_fwiptables tool-tcp ; exit ; fi
- if [ "$second_option" = "tool-udp" ]; then $cmd_fwiptables tool-udp ; exit ; fi
- if [ "$second_option" = "tool-icmp" ]; then $cmd_fwiptables tool-icmp ; exit ; fi
- if [ "$second_option" = "tool-nmap" ]; then $cmd_fwiptables tool-nmap ; exit ; fi
- if [ "$second_option" = "tool-sudo" ]; then $cmd_fwiptables tool-sudo ; exit ; fi
- if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
- if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
- if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
- if [ "$second_option" = "tool-system" ]; then $cmd_fwiptables tool-system ; exit ; fi
- if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
- if [ "$second_option" = "show-etc" ]; then $cmd_fwiptables show-etc ; exit ; fi
- if [ "$second_option" = "show-log" ]; then $cmd_fwiptables show-log ; exit ; fi
- if [ "$second_option" = "show-about" ]; then $cmd_fwiptables show-about ; exit ; fi
- if [ "$second_option" = "show-help" ]; then $cmd_fwiptables show-help ; exit ; fi
+if [ "$first_option" = "info" ]; then $nada
+if [ "$second_option" = "output-interface" ]; then $cmd_fwiptables output-interface ; exit ; fi
+if [ "$second_option" = "firewall-control" ]; then $cmd_fwiptables firewall-control ; exit ; fi
+if [ "$second_option" = "firewall-list" ]; then $cmd_fwiptables firewall-list ; exit ; fi
+if [ "$second_option" = "firewall-launch" ]; then $cmd_fwiptables firewall-launch ; exit ; fi
+if [ "$second_option" = "firewall-custom" ]; then $cmd_fwiptables firewall-custom ; exit ; fi
+if [ "$second_option" = "tool-sockets" ]; then $cmd_fwiptables tool-sockets ; exit ; fi
+if [ "$second_option" = "tool-forward" ]; then $cmd_fwiptables tool-forward ; exit ; fi
+if [ "$second_option" = "tool-tcp" ]; then $cmd_fwiptables tool-tcp ; exit ; fi
+if [ "$second_option" = "tool-udp" ]; then $cmd_fwiptables tool-udp ; exit ; fi
+if [ "$second_option" = "tool-icmp" ]; then $cmd_fwiptables tool-icmp ; exit ; fi
+if [ "$second_option" = "tool-nmap" ]; then $cmd_fwiptables tool-nmap ; exit ; fi
+if [ "$second_option" = "tool-sudo" ]; then $cmd_fwiptables tool-sudo ; exit ; fi
+if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
+if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
+if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
+if [ "$second_option" = "tool-system" ]; then $cmd_fwiptables tool-system ; exit ; fi
+if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
+if [ "$second_option" = "show-etc" ]; then $cmd_fwiptables show-etc ; exit ; fi
+if [ "$second_option" = "show-log" ]; then $cmd_fwiptables show-log ; exit ; fi
+if [ "$second_option" = "show-about" ]; then $cmd_fwiptables show-about ; exit ; fi
+if [ "$second_option" = "show-help" ]; then $cmd_fwiptables show-help ; exit ; fi
 ####
 ####
 $give_cover
@@ -9951,14 +9950,14 @@ $cmd_fwiptables intro
 $cmd_fwiptables options
 echo "$title_md         [ Launch interface ]"
 echo  $text_md
-echo "$text_md         txt OR -txt : Output at text line | whith bash backend."
-echo "$text_md         cli OR -cli : Output at text menu | whith dialog backend."
-echo "$text_md         gui OR -gui : Output at graphicall window || whith zenity backend."
-echo "$text_md         log OR -log : Output in logfile | whith bash backend."
-echo "$text_md         web OR -web : Output to text web browser."
-echo "$text_md       help OR -help : Output help to text in text plain format."
-echo "$text_md       info OR -info : Output help to text in text rst format."
-echo "$text_md         tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
+echo "$text_md         txt OR -txt OR -t : Output at text line | whith bash backend."
+echo "$text_md         cli OR -cli OR -c : Output at text menu | whith dialog backend."
+echo "$text_md         gui OR -gui OR -g : Output at graphicall window || whith zenity backend."
+echo "$text_md         log OR -log OR -l : Output in logfile | whith bash backend."
+echo "$text_md         web OR -web OR -w : Output to text web browser."
+echo "$text_md       help OR -help OR -h : Output help to text in text plain format."
+echo "$text_md       info OR -info OR -i : Output help to text in text rst format."
+echo "$text_md               tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
 echo  $text_md
 $brake_md
 echo "$text_md            cli-menu : Command line interface with menus | whith dialog backend."
@@ -10283,14 +10282,14 @@ echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
 echo  $text_md
 echo "$title_md [ Lanza interfaz ]."
 echo  $text_md
-echo "$text_md         txt OR -txt : Salida a linea de texto."
-echo "$text_md         cli OR -cli : Salida a menu de texto."
-echo "$text_md         gui OR -gui : Salida a ventana grafica."
-echo "$text_md         log OR -log : Salida a archivo log."
-echo "$text_md         web OR -web : Salida a navegador web de texto"
-echo "$text_md       help OR -help : Salida con ayuda a formato de texto plano."
-echo "$text_md       info OR -info : Salida con ayuda a formato de texto rst."
-echo "$text_md         tor OR -tor : Ejecuta en tor, necesario daemon tor y comando torify."
+echo "$text_md         txt O -txt O -t : Salida a linea de texto."
+echo "$text_md         cli O -cli O -c : Salida a menu de texto."
+echo "$text_md         gui O -gui O -g : Salida a ventana grafica."
+echo "$text_md         log O -log O -l : Salida a archivo log."
+echo "$text_md         web O -web O -w : Salida a navegador web de texto"
+echo "$text_md       help O -help O -h : Salida con ayuda a formato de texto plano."
+echo "$text_md       info O -info O -i : Salida con ayuda a formato de texto rst."
+echo "$text_md              tor O -tor : Ejecuta en tor, necesario daemon tor y comando torify."
 echo  $text_md
 echo "$text_md            cli-menu : modo texto with menus."
 echo "$text_md            gui-menu : Graficos con menus."
