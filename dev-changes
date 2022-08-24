@@ -1,7 +1,10 @@
 
- 4. 
- 3  todas las rutas del programa temporales a /root/.fwiptables-tmp
- 2. todas las rutas del programa permamentes a /root/.local/share/fwiptables
+
+
+ 5. 
+ 4. cambios en depends y en version. HECHO
+ 3  todas las rutas del programa temporales a /root/.fwiptables-tmp. HECHO
+ 2. todas las rutas del programa permamentes a /root/.local/share/fwiptables. HECHO
  1. nuevos alias añadidos a los interfaces de salida. HECHO 
 
  cambios en dev-fwiptables desarrollo 4.06 
