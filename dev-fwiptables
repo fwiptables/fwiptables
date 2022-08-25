@@ -3847,46 +3847,40 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "depends" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ List programs depends about $cmd_fwiptables ]"
+echo "$header_ok [ $first_option ] [ List for all programs depends ]"
 echo 
 echo "$tab [ Configuration file from System ]"
-echo "shell completions: /etc/completion.d/$cmd_fwiptables"
-echo "shell profile:     /etc/profile.d/$cmd_fwiptables"
-echo "auth users:        /etc/sudoers.d/$cmd_fwiptables"
+echo "shell completions:       /etc/completion.d/$cmd_fwiptables"
+echo "shell profile:           /etc/profile.d/$cmd_fwiptables"
+echo "auth users:              /etc/sudoers.d/$cmd_fwiptables"
 echo 
-echo "$tab [ Configuration directory from data ]"
-echo "Directory data:    $directory_data"
-echo "List cfg config:   $directory_config"
-echo "Names fwrecover:   $directory_fwrecover"
-echo "Default configs:   $directory_default"
-echo "Output log:        $directory_log"
-echo "Temp directory     $directory_tmp"
+echo "$tab [ Configuration directory ]"
+echo "Directory data:          $directory_data"
+echo "Directory temp:          $directory_tmp"
 echo
-echo "$tab [ cli interface ]"
-echo "dialog:            $command_dialog"
-echo 
-echo "$tab [ gui interface ]"
-echo "zenity:            $command_zenity"
+echo "$tab [ interface  ]"
+echo "interface cli (dialog):  $command_dialog"
+echo "Interface gui (zenity):  $command_zenity"
 echo 
 echo "$tab [ auto text browser ]"
 echo "automatic: lynx or links or links2 "
-echo "auto text browser: $favorite_text_browser"
+echo "auto text browser:       $favorite_text_browser"
 echo 
 echo "$tab [ auto date command ]"
 echo "automatic: rdate or sntp or ntpdate"
-echo "auto text browser: $favorite_date_command"
+echo "auto text browser:       $favorite_date_command"
 echo 
 echo "$tab [ auto music browser ]"
 echo "automatic: mpg321 or mpg123"
-echo "auto text browser: $favorite_radio_command"
+echo "auto text browser:       $favorite_radio_command"
 echo 
 echo "$tab [ the iptables ]"
-echo "iptables legacy:   $command_iptables_legacy"
-echo "iptables nft:      $command_iptables_nft"
-echo "ip6tables legacy:  $command_ip6tables_legacy"
-echo "ip6tables nft:     $command_ip6tables_nft"
-echo "arptables:         $command_arptables"
-echo "ebtables:          $command_ebtables"
+echo "iptables legacy:         $command_iptables_legacy"
+echo "iptables nft:            $command_iptables_nft"
+echo "ip6tables legacy:        $command_ip6tables_legacy"
+echo "ip6tables nft:           $command_ip6tables_nft"
+echo "arptables:               $command_arptables"
+echo "ebtables:                $command_ebtables"
 echo
 echo "$tab [ several tool ]"
 echo "date:           $command_date"
