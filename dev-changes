@@ -1,8 +1,8 @@
 
 
 
-
- 7.
+ 8. 
+ 7. pequeños arreglos para ipv4 en custom cuando desactivados nft y legacy. HECHO
  6. limpieza de codigo, borrando codigo y comentarios obsoletos. HECHO
  5. ahora se puede cambiar el puerto ssh para maxtries ssh o poner varios. HECHO 
  4. cambios en depends y en version. HECHO
