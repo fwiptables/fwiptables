@@ -322,7 +322,7 @@ footer_lineal="$tab   $tab  "
 #### obsolete old system: give_cover="$zero_option header"
 give_cover="echo $head_principal"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_load="echo ### ### [ ok ] [ Load firewall ]"
+give_load="echo ### ### || || [ ok ] || [ Load firewall ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -352,7 +352,6 @@ close_graphicall="1"
 mensage_timeout="Closing gui menu in $close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_firewall="no" ;   #  autoconfigure with launch iptables rules
-#### launch_custom="no";      #  autoconfigure with custom rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
 fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
@@ -1744,16 +1743,26 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 if [ "$first_option" = "custom" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall custom ]" ;
 launch_firewall="yes" ; type_firewall="custom"; name_firewall="$second_option";
-if [ -f "$directory_config/$second_option" ]; then 
-source "$directory_config/$second_option"
-else  $cmd_fwiptables cfg 
+####
+####
+#### english: configure custom variables
+#### spanish: configura variables modificadas
+####
+####
+if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_option"; fi
+####
+####
+if [ ! -f "$directory_config/$second_option" ]; then  $cmd_fwiptables cfg ; 
 echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
 echo "$tab [  See  ] [ $cmd_fwiptables firewall-custom ]"
-exit; fi; fi
+exit; fi
 ####
 ####
-##############################   english: other firewalls
-##############################   spanish: otros cortafuegos
+fi
+####
+####
+##############################   english: system firewall
+##############################   spanish: cortafuegos del sistema
 ####
 ####
 ####   #### english: firewall of system off-line:
