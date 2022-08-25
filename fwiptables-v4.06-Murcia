@@ -3856,11 +3856,12 @@ echo "auth users:        /etc/sudoers.d/$cmd_fwiptables"
 echo 
 echo "$tab [ Configuration directory from data ]"
 echo "Directory data:    $directory_data"
-echo "list cfg config:   $directory_config"
-echo "names fwrecover:   $directory_fwrecover"
-echo "default configs:   $directory_default"
-echo "output log:        $directory_log"
-echo 
+echo "List cfg config:   $directory_config"
+echo "Names fwrecover:   $directory_fwrecover"
+echo "Default configs:   $directory_default"
+echo "Output log:        $directory_log"
+echo "Temp directory     $directory_tmp"
+echo
 echo "$tab [ cli interface ]"
 echo "dialog:            $command_dialog"
 echo 
@@ -5582,9 +5583,11 @@ echo
 echo "$tab [ MD5 ]"
 $command_md5sum $0
 echo
-echo "$tab [ Data files ]"
+echo "$tab [ Data directory ]"
 echo "$tab $directory_data"
 echo
+echo "$tab [ Temp directory ]"
+echo "$tab $directory_tmp"
 exit ; fi
 ####
 ####
