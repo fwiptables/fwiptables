@@ -1293,11 +1293,9 @@ spa58=$(echo "$cinco Rellena Variables" )
 var59=$(echo "$cinco Options" )
 eng59=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-
 var60=$(echo "config_maxtries_ssh=20")
 eng60=$(echo "$cinco modify shield with number max of tries to log in us ssh server for ip at each hour")
 spa60=$(echo "$cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora")
-
 
 
 var61=$(echo "config_ssh_port=22")
@@ -1734,7 +1732,6 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 if [ "$first_option" = "custom" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall custom ]" ;
 launch_firewall="yes" ; type_firewall="custom"; name_firewall="$second_option";
-#### config_variable_version="2"  ;
 fi
 ####
 ####
@@ -2306,7 +2303,8 @@ fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then $nada
-if [ -f $directory_config/$second_option ]; then $nada
+if [ -f "$directory_config/$second_option" ]; then 
+source "$directory_config/$second_option"
 else  $cmd_fwiptables cfg 
 echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
 echo "$tab [  See  ] [ $cmd_fwiptables firewall-custom ]"
@@ -11066,7 +11064,7 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports ssh -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
@@ -11276,7 +11274,7 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent --set --name tries-ssh \
+-p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
@@ -11351,7 +11349,7 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent --set --name tries-ssh \
+-p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
 $shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
@@ -11430,7 +11428,7 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
@@ -11508,7 +11506,7 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
 $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
@@ -11644,43 +11642,6 @@ exit; fi
 ####
 if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
 then source $directory_config/$second_option &> /dev/null ; else echo "$tab [ fail ] [ Config file not found ]"; exit ; fi ; fi
-####
-####
-##############################      english: compatibility with old variables, backward compatibility      #####################
-##############################      spanish: compatibilidad con viejas ariables, retrocompatibilidad       #####################
-####
-####
-####      #### english: probe version config_variable_version
-####      #### spanish: prueba version config_variable_version
-####
-####
-#### if [ "$first_option" = "custom" ]; then $nada
-####  config_variable_two="$(cat $directory_config/$second_option | grep -i config_variable_version=2 | wc -l)"
-#### if [ "$config_variable_two" = "1" ]; then config_variable_version="2" ; fi ; fi
-####
-####
-####      #### english: config variable version
-####      #### spanish: configura variable version
-####
-####
-#### if [ $config_variable_version = "1" ]; then $nada
-####  config_input_state="$input_state" ;
-####  config_output_state="$output_state" ;
-####  config_input_bandwidth="$bandwidth_input" ;
-####  config_output_bandwidth="$bandwidth_output" ;
-####  config_input_maxconnect="$maxconnect_input" ; 
-####  config_output_maxconnect="$maxconect_output" ;
-####  config_net_vpn="$vpn" ;
-####  config_net_blacklist="$blacklist" ;
-####  config_output_uid="$output_uid" ;
-####  config_output_gid="$output_gid" ;
-####  config_others_protocols="$others_protocols" ;
-####  separate_port_rules="no" ;
-####  echo "$tab [ status ] [ Runing rules with old variables version $config_variable_version ]"
-#### fi
-####
-####
-#### if [ $config_variable_version = "2" ]; then $nada; fi 
 ####
 ####
 ##############################      english: selective state of intput/oputut          #####################
