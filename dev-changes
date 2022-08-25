@@ -1,6 +1,8 @@
 
 
- 9. 
+
+
+ 9. poco significativo cambio en cabecera. HECHO 
  8. simplificado instalador. HECHO 
  7. pequeños arreglos para ipv4 en custom cuando estan desactivados ipv4 y ipv6. HECHO
  6. limpieza de codigo, borrando codigo y comentarios obsoletos. HECHO
