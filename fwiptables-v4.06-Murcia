@@ -3862,15 +3862,11 @@ echo "$tab [ interface  ]"
 echo "interface cli (dialog):  $command_dialog"
 echo "Interface gui (zenity):  $command_zenity"
 echo 
-echo "$tab [ auto text browser ]"
+echo "$tab [ auto discover ]"
 echo "automatic: lynx or links or links2 "
 echo "auto text browser:       $favorite_text_browser"
-echo 
-echo "$tab [ auto date command ]"
 echo "automatic: rdate or sntp or ntpdate"
 echo "auto text browser:       $favorite_date_command"
-echo 
-echo "$tab [ auto music browser ]"
 echo "automatic: mpg321 or mpg123"
 echo "auto text browser:       $favorite_radio_command"
 echo 
@@ -9241,12 +9237,12 @@ exit; fi
 #### :rutina-inicial-autolog:
 ####
 ####
- if [ "$first_option" = "autolog" ] ; then  $give_cover
- echo "$header_ok [ $first_option ]  [  show "$output_autolog" ]"
- cat  "$output_autolog"
- echo "$tab [ last end of file showed "$output_autolog" ]"
- echo "$footer_lineal"
- exit; fi
+if [ "$first_option" = "autolog" ] ; then  $give_cover
+echo "$header_ok [ $first_option ]  [  show "$output_autolog" ]"
+cat  "$output_autolog"
+echo
+echo "$tab [ last end of file showed "$output_autolog" ]"
+exit; fi
 ####
 ####
 #### :rutina-final-autolog:
