@@ -6269,6 +6269,7 @@ case $legacycuatro in
 "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t filter -v -L
 ;;
 esac
@@ -6277,6 +6278,7 @@ case $nftcuatro in
 "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo
 $command_iptables_nft -t filter -v -L
 ;;
 esac
@@ -6301,6 +6303,7 @@ case $legacyseis in
 "$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo
 $command_ip6tables_legacy -v -L
 ;;
 esac
@@ -6309,6 +6312,7 @@ case $nftseis in
 "$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo
 $command_ip6tables_nft -v -L
 ;;
 esac
@@ -6352,9 +6356,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is suffic
 fromrules="filter-ip4"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t filter -v -L
 echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo
 $command_iptables_nft -t filter -v -L
 ####
 ####
@@ -6372,9 +6378,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 ] [ it i
 fromrules="filter-forward-ip4"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t filter -v -L FORWARD
 echo $tab
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -t filter -v -L FORWARD
 exit; fi
 ####
@@ -6390,9 +6398,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is suffic
 fromrules="filter-ip6"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo
 $command_ip6tables_legacy -v -L
-echo $tab
+echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo
 $command_ip6tables_nft -v -L
 ####
 ####
@@ -6410,9 +6420,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it i
 fromrules="filter-forward-ip6"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_ip6tables_legacy -t filter -v -L FORWARD
 echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_ip6tables_nft -t filter -v -L FORWARD
 exit; fi
 ####
@@ -6428,9 +6440,11 @@ echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent
 fromrules="nat-ip4"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t nat -v -L
 echo $tab
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -t nat -v -L 
 exit; fi
 ####
@@ -6446,9 +6460,11 @@ echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent 
 fromrules="nat-ip6"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_ip6tables_legacy -t nat -v -L 
 echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_ip6tables_nft -t nat -v -L 
 #### echo $footer_lineal
 exit; fi
@@ -6465,9 +6481,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [
 fromrules="filter-ip4"
 echo
 echo "$tab [With rules netfilter] [iptables-nft] [ $fromrules ]"  
+echo
 $command_iptables_legacy -v -n -L 
 echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -v -n -L
 exit; fi
 ####
@@ -6483,9 +6501,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numer
 fromrules="filter-forward-ip4"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t filter -v -n -L FORWARD
 echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -t filter -v -n -L FORWARD
 exit; fi
 ####
@@ -6501,9 +6521,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [
 fromrules="filter-ip6"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo
 $command_ip6tables_legacy -v -n -L 
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo
 $command_ip6tables_nft -v -n -L
 exit; fi
 ####
@@ -6519,9 +6541,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numer
 fromrules="filter-forward-ip6"
 echo
 echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_ip6tables_legacy -t filter -v -n -L FORWARD
 echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_ip6tables_nft -t filter -v -n -L FORWARD
 #### echo $footer_lineal
 exit; fi
@@ -6538,9 +6562,11 @@ echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is suffic
 fromrules="mangle-ip4"
 echo
 echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t mangle -v -L
 echo
 echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -t mangle -v -L
 echo $footer_lineal
 exit; fi
@@ -6557,9 +6583,11 @@ echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is suffic
 fromrules="mangle-ip6"
 echo
 echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_ip6tables_legacy -t mangle -v -L
 echo
 echo "$tab [ The nftables ] [iptables-nft ] [ $fromrules ]"
+echo
 $command_ip6tables_nft -t mangle -v -L
 #### echo $footer_lineal
 exit; fi
@@ -6576,9 +6604,11 @@ echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent
 fromrules="raw-ip4"
 echo
 echo "$tab  [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t raw -v -L
 echo $tab
 echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -t raw -v -L
 exit; fi
 ####
@@ -6594,9 +6624,11 @@ echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent
 fromrules="raw-ip6"
 echo
 echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_ip6tables_legacy -t raw -v -L
 echo
 echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_ip6tables_nft -t raw -v -L
 exit; fi
 ####
@@ -6612,9 +6644,11 @@ echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is suff
 fromrules="security-ip4"
 echo
 echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_iptables_legacy -t security -v -L
 echo
 echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_iptables_nft -t security -v -L
 exit; fi
 ####
@@ -6630,9 +6664,11 @@ echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is suff
 fromrules="security-ip6"
 echo
 echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
 $command_ip6tables_legacy -t security -v -L
-echo $tab
+echo
 echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
 $command_ip6tables_nft -t security -v -L
 exit; fi
 ####
@@ -6648,9 +6684,11 @@ echo "$header_ok [ $first_option ]  [ List ebtables ]"
 fromrules="ebtables"
 echo
 echo "$tab [ ebtables: filter ethernet ] [ $fromrules ]"
+echo
 $command_ebtables -L -t filter
 echo
 echo "$tab [ ebtables: nat ethernet ] [ $fromrules ]"
+echo
 $command_ebtables -L -t nat
 exit; fi
 ####
@@ -11267,7 +11305,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$type_firewall" = "predesignated" ]; then $cmd_fwiptables eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -11285,10 +11323,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv4 
 ####
 ####
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+$allow_legacy $shield_ssh $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+$allow_legacy $shield_ssh $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
 ####
@@ -11323,7 +11361,7 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+$allow_legacy $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
@@ -11360,10 +11398,10 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 #### escudo ssh nft ipv4 
 ####
 ####
-$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+$allow_nft $shield_ssh $allow_ipv4  $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
+$allow_nft $shield_ssh $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
 ####
@@ -11375,7 +11413,7 @@ $shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
 #### $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
 #### -p udp -m multiport --dports $server_port_udp -j LOG \
 #### -m comment --comment "logserver udp" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports $server_port_tcp -j LOG \
 -m comment --comment "logserver tcp" &> /dev/null
 ####
@@ -11439,11 +11477,11 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv6 
 ####
 ####
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_legacy $shield_ssh $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_legacy $shield_ssh $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
@@ -11517,11 +11555,11 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 #### escudo ssh nft ipv6 
 ####
 ####
-$shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_nft $shield_ssh $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
+ $allow_nft $shield_ssh $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
