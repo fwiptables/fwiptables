@@ -1742,14 +1742,14 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 if [ "$first_option" = "custom" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall custom ]" ;
-launch_firewall="yes" ; type_firewall="custom"; name_firewall="$second_option";
+launch_firewall="yes" ; type_firewall="custom" ; name_firewall="$second_option" ;
 ####
 ####
-#### english: configure custom variables
-#### spanish: configura variables modificadas
+#### english: configure custom variables if there are
+#### spanish: configura variables modificadas si estan ahi
 ####
 ####
-if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_option"; fi
+if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_option" ; fi
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]; then  $cmd_fwiptables cfg ; 
@@ -11323,10 +11323,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv4 
 ####
 ####
-$allow_legacy $shield_ssh $allow_ipv4  $command_iptables_legacy -A INPUT \
+$allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$allow_legacy $shield_ssh $allow_ipv4  $command_iptables_legacy -A INPUT \
+$allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
 ####
@@ -11398,10 +11398,10 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 #### escudo ssh nft ipv4 
 ####
 ####
-$allow_nft $shield_ssh $allow_ipv4  $command_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$allow_nft $shield_ssh $allow_ipv4  $command_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
 ####
@@ -11477,11 +11477,11 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv6 
 ####
 ####
-$allow_legacy $shield_ssh $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
-$allow_legacy $shield_ssh $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
@@ -11555,11 +11555,11 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 #### escudo ssh nft ipv6 
 ####
 ####
-$allow_nft $shield_ssh $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_nft $allow_ipv6 $shield_ssh $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
 --set --name tries-ssh \
 -m comment --comment "shield ssh" &> /dev/null
- $allow_nft $shield_ssh $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_nft $allow_ipv6  $shield_ssh $command_ip6tables_nft -A INPUT \
 -m recent --name tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
 -m comment --comment "shield ssh" &> /dev/null
@@ -11753,27 +11753,27 @@ $allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j DR
 #######################################        spanish: aceptar reglas localhost
 ####
 ####
-$allow_legacy   $command_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $allow_ipv4 $command_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_legacy   $command_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
--m comment --comment "localhost" &> /dev/null
-####
-####
-$allow_legacy   $command_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT \
--m comment --comment "localhost" &> /dev/null
-$allow_legacy   $command_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
+$allow_legacy $allow_ipv4 $command_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
-$allow_nft  $command_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_nft  $command_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
-$allow_nft  $command_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT \
+$allow_nft $allow_ipv4 $command_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_nft  $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
+$allow_nft $allow_ipv4 $command_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
+####
+####
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
+$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
@@ -12011,10 +12011,10 @@ $allow_legacy  $allow_ipv4 $command_iptables_legacy -A OUTPUT \
 #### 
 #### ipv4 nft udp
 ####
-$allow_nft $allow_ipv4     $command_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
 -p udp -m multiport $config_input_state --sports $client_udp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
-$allow_nft $allow_ipv     $command_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4 $command_iptables_nft -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $client_udp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
@@ -12054,10 +12054,10 @@ $allow_legacy  $allow_ipv4 $command_iptables_legacy -A OUTPUT \
 #### 
 #### ipv4 nft tcp
 ####
-$allow_nft $allow_ipv4     $command_iptables_nft -A INPUT \
+$allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $client_tcp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
-$allow_nft $allow_ipv     $command_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4 $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $client_tcp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
@@ -12112,7 +12112,7 @@ $allow_legacy  $allow_ipv4 $command_iptables_legacy -A OUTPUT \
 $allow_nft $allow_ipv4     $command_iptables_nft -A INPUT \
 -p udp -m multiport $config_input_state --sports $one_udp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
-$allow_nft $allow_ipv     $command_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4     $command_iptables_nft -A OUTPUT \
 -p udp -m multiport $config_output_state --dports $one_udp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client udp"  &> /dev/null
 ####
@@ -12163,7 +12163,7 @@ $allow_legacy  $allow_ipv4 $command_iptables_legacy -A OUTPUT \
 $allow_nft $allow_ipv4     $command_iptables_nft -A INPUT \
 -p tcp -m multiport $config_input_state --sports $one_tcp -s $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
-$allow_nft $allow_ipv     $command_iptables_nft -A OUTPUT \
+$allow_nft $allow_ipv4     $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport $config_output_state --dports $one_tcp -d $net_ipv4_client -j ACCEPT \
 -m comment --comment "client tcp"  &> /dev/null
 ####
@@ -12662,12 +12662,12 @@ done
 #### spanish: hace nat masquerade ip4 y ip6 PERMITIR GATEWAY
 ####
 ####
- $allow_nft    $allow_ipv4    $allow_gateway_ip4 $command_iptables_nft -t nat \
- -A POSTROUTING -j MASQUERADE \
- -m comment --comment "ip gateway" &>/dev/null
- $allow_legacy $allow_ipv4 $allow_gateway_ip4 $command_iptables_legacy -t nat \
- -A POSTROUTING -j MASQUERADE \
- -m comment --comment "ip gateway" &>/dev/null
+$allow_nft    $allow_ipv4    $allow_gateway_ip4 $command_iptables_nft -t nat \
+-A POSTROUTING -j MASQUERADE \
+-m comment --comment "ip gateway" &>/dev/null
+$allow_legacy $allow_ipv4 $allow_gateway_ip4 $command_iptables_legacy -t nat \
+-A POSTROUTING -j MASQUERADE \
+-m comment --comment "ip gateway" &>/dev/null
 ####
 ####
 $allow_nft $allow_ipv6 $allow_gateway_ip6 $command_ip6tables_nft -t nat \
@@ -12678,12 +12678,12 @@ $allow_legacy $allow_ipv6 $allow_gateway_ip6 $command_ip6tables_legacy -t nat \
 -m comment --comment "ip gateway" &>/dev/null
 ####
 ####
- $allow_nft $allow_ipv4    $allow_gateway_ip4 $command_iptables_nft -t nat \
- -A PREROUTING -j ACCEPT \
- -m comment --comment "ip gateway"  &>/dev/null
- $allow_legacy $allow_ipv4     $allow_gateway_ip4 $command_iptables_legacy -t nat \
- -A PREROUTING -j ACCEPT \
- -m comment --comment "ip gateway" &>/dev/null
+$allow_nft $allow_ipv4    $allow_gateway_ip4 $command_iptables_nft -t nat \
+-A PREROUTING -j ACCEPT \
+-m comment --comment "ip gateway"  &>/dev/null
+$allow_legacy $allow_ipv4     $allow_gateway_ip4 $command_iptables_legacy -t nat \
+-A PREROUTING -j ACCEPT \
+-m comment --comment "ip gateway" &>/dev/null
 ####
 ####
 $allow_nft $allow_ipv6 $allow_gateway_ip6 $command_ip6tables_nft -t nat \
