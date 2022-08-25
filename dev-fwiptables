@@ -127,8 +127,8 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
-##############################  english: permanent: files and folders from fwiptables       ##############################
-##############################  spanish: permanentes: archivos y carpetas desde fwiptables  ##############################
+#######################  english: permanent files: files and folders from fwiptables          #########################
+#######################  spanish: archivos permanentes: archivos y carpetas desde fwiptables  #########################
 ####
 ####
 #### english: permanent files and where are file path: name, command and icon
@@ -167,7 +167,7 @@ output_filelog="$directory_log/$name_fwiptables-filelog"
 output_autolog="$directory_log/$name_fwiptables-autolog"
 ####
 ####
-##############################    english: temporal: files for fwiptables       ##############################
+##############################    english: temporal files: files for fwiptables ##############################
 ##############################    spanish: archivos temporales: de fwiptables   ##############################
 ####
 ####
@@ -175,8 +175,16 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 #### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$name_fwiptables-$fversion-tmp"
 ####
 ####
+#### english: temporal directory
+#### spanish: directorio temporal
 ####
-directory_temporal="$HOME/.fwiptables-tmp/.$name_fwiptables-$fversion-tmp"
+####
+directory_tmp="$HOME/.fwiptables-tmp"
+directory_temporal="$directory_tmp/.$name_fwiptables-$fversion-tmp"
+####
+####
+#### english: temporal files
+#### spanish: archivos temporales
 ####
 ####
 temporal_text="$directory_temporal/$first_option-$second_option-$third_option"
@@ -1729,10 +1737,23 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####   #### spanish: cortafuego del sistema custom:
 ####
 ####
+##############################   english: custom firewall
+##############################   spanish: custom cortafuegos
+####
+####
 if [ "$first_option" = "custom" ]; then $give_cover ; $give_load
 echo " [ running ] [ loading firewall custom ]" ;
 launch_firewall="yes" ; type_firewall="custom"; name_firewall="$second_option";
-fi
+if [ -f "$directory_config/$second_option" ]; then 
+source "$directory_config/$second_option"
+else  $cmd_fwiptables cfg 
+echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
+echo "$tab [  See  ] [ $cmd_fwiptables firewall-custom ]"
+exit; fi; fi
+####
+####
+##############################   english: other firewalls
+##############################   spanish: otros cortafuegos
 ####
 ####
 ####   #### english: firewall of system off-line:
@@ -2297,21 +2318,6 @@ fi
 ####
 ####
 #### :rutina-final-custom-rules:
-##############################   english: custom without valid config cfg
-##############################   spanish: custom sin valido configuracion cfg
-#### :rutina-inicial-custom:
-####
-####
-if [ "$first_option" = "custom" ]; then $nada
-if [ -f "$directory_config/$second_option" ]; then 
-source "$directory_config/$second_option"
-else  $cmd_fwiptables cfg 
-echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
-echo "$tab [  See  ] [ $cmd_fwiptables firewall-custom ]"
-fi ; fi
-####
-####
-#### :rutina-f-custom-rules:
 ##############################       english: mini-options: wellcome with semi help
 ##############################       spanish: mini-options: bienvenida con semi ayuda
 #### :rutina-inicial-mini-options:
