@@ -716,19 +716,10 @@ else $nada ; fi
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ info ] [ Configuration folder: ]"
-echo "$text_md [ info ] [ $directory_config | $directory_fwrecover | $directory_default ]"
-echo "$text_md [ info ] [ Completion files: ]"
-echo "$text_md [ info ] [ /etc/bash_completion.d/fwiptables | /etc/profile.d/fwiptables ]"
+echo "$text_md [ info ] [ Command installed: ]     [ $directory_fwiptables/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ Configuration folder: ]  [ $directory_data ]"
 echo "$text_md [ info ] [ Menu entry desktop: ]"
 echo "$text_md [ info ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-menu ] [ $name_fwiptables-gui-shell ]"
-#### 
-#### 
-####  english: site of the file installed
-####  spanish: Lugar del archivo instalado
-#### 
-#### 
-echo "$text_md [ info ] [ Command installed ] [ $directory_fwiptables/$cmd_fwiptables ]"
 echo "$text_md [ info ] [ Grant privileges to user for $name_fwiptables with: ] [ $cmd_fwiptables sudofw-adduser user ]"
 echo "$text_md [  ok  ] [ Ready to run $name_fwiptables ]"
 exit; fi
