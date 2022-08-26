@@ -3769,8 +3769,6 @@ if [ "$first_option" = "depends" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ List for all programs depends ]"
 echo 
 echo "$tab [ Configuration file from System ]"
-echo "shell completions:       /etc/completion.d/$cmd_fwiptables"
-echo "shell profile:           /etc/profile.d/$cmd_fwiptables"
 echo "auth users:              /etc/sudoers.d/$cmd_fwiptables"
 echo 
 echo "$tab [ Configuration directory ]"
