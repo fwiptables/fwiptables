@@ -146,6 +146,7 @@ icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 directory_fwiptables="/usr/bin"
 directory_data="$HOME/.config/fwiptables"
+directory_desktop="$HOME/.local/share/applications"
 ####
 ####
 #### english: directory tree 
@@ -156,7 +157,7 @@ directory_fwrecover="$directory_data/fwiptables-fwrecover"
 directory_default="$directory_data/fwiptables-default"
 directory_config="$directory_data/fwiptables-config"
 directory_log="$directory_data/fwiptables-log"
-directory_desktop="/usr/share/applications"
+#### directory_desktop="/usr/share/applications"
 ####
 ####
 #### english: file: log files and path files config files
