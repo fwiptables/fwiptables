@@ -1,8 +1,8 @@
 #!/bin/bash
-#### #### for bash:
+#### #### for shell bash:
 #### #### #!/bin/bash
 ####
-#### #### for zsh:
+#### #### for shell zsh:
 #### #### #!/bin/zsh
 #### #### emulate -L bash
 ####
@@ -302,7 +302,7 @@ duo_md="### ###"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ok="### ### || || [ ok ] ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] || [ Version $fversion ] || || "
+head_principal="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $fversion ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -716,10 +716,9 @@ else $nada ; fi
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ info ] [ Command installed: ]     [ $directory_fwiptables/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ Configuration folder: ]  [ $directory_data ]"
-echo "$text_md [ info ] [ Menu entry desktop: ]"
-echo "$text_md [ info ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-menu ] [ $name_fwiptables-gui-shell ]"
+echo "$text_md [ info ] [ Command installed:    ] [ $directory_fwiptables/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ Configuration folder: ] [ $directory_data ]"
+echo "$text_md [ info ] [ Menu entry desktop:   ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-menu ] [ $name_fwiptables-gui-shell ]"
 echo "$text_md [ info ] [ Grant privileges to user for $name_fwiptables with: ] [ $cmd_fwiptables sudofw-adduser user ]"
 echo "$text_md [  ok  ] [ Ready to run $name_fwiptables ]"
 exit; fi
@@ -9880,20 +9879,10 @@ exit; fi
 ####
 if [ "$first_option" = "clean-tmp" ] ; then $give_cover
 echo "$header_ok [ $first_option ]  [ clean $name_fwiptables temporal files]"
-echo $header_lineal
-####
-####
-####    english: remove temporal files
-####    spanish: borra archivos temporales
-####
-####
-echo " [ info ] [ cleaning $name_fwiptables temporal files ]"
-echo "[ status ] deleting temporal fwiptables-*-tmp in /tmp for old versions"
-rm -r -f /tmp/fwiptables-*-tmp &> /dev/null
-echo "[ status ] deleting temporal hidden .fwiptables-*-tmp in home for actual version"
-rm -r -f $HOME/.fwiptables-*-tmp &> /dev/null
-echo "  [ ok ] [ cleaned $name_fwiptables temporal files ]"
-echo $footer_lineal
+echo "[  info  ] [ cleaning $name_fwiptables temporal files ]"
+echo "[ status ] [ deleting temporal ]"
+rm -r -f $directory_tmp &> /dev/null
+echo "[   ok   ] [ cleaned $name_fwiptables temporal files ]"
 exit; fi
 ####
 ####
