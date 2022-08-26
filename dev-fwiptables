@@ -612,14 +612,12 @@ cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
 ####
 ####
-$cmd_fwiptables regen-config &> /dev/null
-####
-####
 ####  english: generate fwiptables default
 ####  spanish: genera fwiptables default
 ####
 ####
 echo "$(head -310 $0 | grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
+$cmd_fwiptables regen-config &> /dev/null
 ####
 ####
 ####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
