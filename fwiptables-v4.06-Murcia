@@ -45,11 +45,11 @@
 ####
 ####
 if [ "$(id -u)" = "0" ] ; then echo -n ; else
-echo ""
-echo "  Need to be root to work"
-echo ""
-echo "  Be root to work with fwiptables"
-echo ""
+echo
+echo " [ info ] [ fwiptables needs to be root to work ]"
+echo
+echo " [ fail ] [ Be root to work with fwiptables in your system ] "
+echo
 exit ; fi
 ####
 ####
@@ -315,6 +315,9 @@ head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
+#### #### english format text output
+format_rst="Out $first_option.rst"
+format_md="Out $first_option.md"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2248,7 +2251,7 @@ fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ]"
+echo "$header_ok [ $first_option ]  [ List mini options ] [ $format_md ]"
 echo "  output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -h|-help -i|-info -w|-web -l|-log"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||           "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                          "
@@ -2269,8 +2272,8 @@ echo "$duo_md || ||  [ Options ]  ### [  See all options with command: $cmd_fwip
 echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
 echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
-echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-listuser aliasfw-list                   "
-echo "$text_md          show-help |  all-help readme leeme notes about version depends options                "
+echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
+echo "$text_md          show-help |  all-help readme leeme notes license version depends options              "
 echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||         "
 echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
 echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
@@ -2289,7 +2292,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$header_ok [ $first_option ] [ List full options ] [ options.md ]"
+echo "$header_ok [ $first_option ] [ List full options ] [ $format_md ]"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
 echo "  output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -h|-help -i|-info -w|-web -l|-log"
 echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
@@ -2317,7 +2320,7 @@ echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client                                  "
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
 echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
-echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser aliasfw-list                   "
+echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
 echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3 gpg-notes              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
