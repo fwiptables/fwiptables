@@ -137,7 +137,7 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ####
 name_fwiptables="fwiptables"
 cmd_fwiptables="fwiptables-cmd"
-icon_fwiptables="/usr/share/zenity/zenity.png"
+icon_fwiptables="zenity"
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -157,6 +157,7 @@ directory_fwrecover="$directory_data/fwiptables-fwrecover"
 directory_default="$directory_data/fwiptables-default"
 directory_config="$directory_data/fwiptables-config"
 directory_log="$directory_data/fwiptables-log"
+directory_shell="$directory_data/fwiptables-shell"
 ####
 ####
 #### english: file: log files and path files config files
@@ -214,6 +215,8 @@ if [ ! -d "$directory_default" ]; then rm "$directory_default" &> /dev/null ;
 $command_mkdir -p "$directory_default" &> /dev/null ; fi
 if [ ! -d "$directory_log" ]; then rm "$directory_log" &> /dev/null ;
 $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then rm "$directory_shell" &> /dev/null ;
+$command_mkdir -p "$directory_shell" &> /dev/null ; fi
 ####
 ####
 ##############################   english: the basic system variables         ##############################
@@ -605,7 +608,6 @@ echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ in
 #### 
 #### 
 echo "$text_md [ running ] [ $name_fwiptables installing ]"
-mkdir -p "$directory_temporal" &> /dev/null
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
 ####
@@ -613,52 +615,11 @@ cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptable
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
-####  english: Install new /etc/bash_completion/fwiptables
-####  spanish: instala nuevo /etc/bash_completion/fwiptables
-#### 
-#### 
-if [ -d "/etc/bash_completion.d" ]; then $nada ; else mkdir /etc/bash_completion.d/ &> /dev/null ; fi 
-####
-####
-####   english: new file generated alias
-####   spanish: genera el nuevo archivo alias
-####
-####
-echo "alias $cmd_fwiptables='sudo $directory_fwiptables/$cmd_fwiptables'"       &>  /etc/bash_completion.d/$cmd_fwiptables
-echo "complete -W 'output-interface firewall-control firewall-list firewall-launch \
-firewall-custom tool-sockets tool-forward tool-tcp tool-udp \
-tool-icmp tool-nmap tool-sudo tool-game tool-system tool-install tool-blacklist tool-dev \
-show-hardware show-etc show-log show-about \
-show-help' $name_fwiptables"  &>> "/etc/bash_completion.d/$cmd_fwiptables"
-####
-####
-####  english: Install new /etc/profile.d/fwiptables
-####  spanish: instala nuevo /etc/profile.d/fwiptables
-#### 
-#### 
-if [ -d "/etc/profile.d" ]; then $nada ; else mkdir /etc/profile.d/ &> /dev/null ; fi 
-####
-####
-####  english: new file profile generated  
-####  spanish: genera el nuevo  profile archivo
-####
-####
-cp "/etc/bash_completion.d/$name_fwiptables" "/etc/profile.d/$name_fwiptables" &> /dev/null
-####
-####
 ####  english: generate fwiptables default
 ####  spanish: genera fwiptables default
 ####
 ####
 echo "$(head -310 $0 | grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
-#### 
-#### 
-####  english: probe sane dir /etc/bash_completion.d
-####  spanish: comprueba directorio sano /etc/bash_completion.d
-#### 
-#### 
-chmod ugo+rx /etc/bash_completion.d/fwiptables &> /dev/null
-chmod ugo+rx $directory_fwiptables/$cmd_fwiptables &> /dev/null
 ####
 ####
 ####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
@@ -668,48 +629,18 @@ chmod ugo+rx $directory_fwiptables/$cmd_fwiptables &> /dev/null
 echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-gui-menu
 echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$name_fwiptables-gui-menu
 echo "sudo $cmd_fwiptables gui-menu" &>> $directory_fwiptables/$name_fwiptables-gui-menu
-chmod ugo+rx $directory_fwiptables/$name_fwiptables-gui-menu &> /dev/null
+chmod 700 $directory_desktop/$name_fwiptables-gui-menu &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-gui-shell
 echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$name_fwiptables-gui-shell
 echo "sudo $cmd_fwiptables gui-shell" &>> $directory_fwiptables/$name_fwiptables-gui-shell
-chmod ugo+rx $directory_fwiptables/$name_fwiptables-gui-shell &> /dev/null
+chmod 700 $directory_desktop/$name_fwiptables-gui-shell &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-cli-menu
 echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fwiptables/$name_fwiptables-cli-menu
-chmod ugo+rx $directory_fwiptables/$name_fwiptables-cli-menu &> /dev/null
-####
-####
-####  english: assing graphicall icons if desktop_directory
-####  spanish: asigna iconos graficos si hay desktop_direcoty
-####
-####
-if [ -d "$directory_desktop" ] ; then $nada
-echo "[Desktop Entry]" &> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "[Desktop Entry]" &> $directory_desktop/$name_fwiptables-gui-shell.desktop
-echo "[Desktop Entry]" &> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Terminal=true" &>> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "Terminal=false" &>> $directory_desktop/$name_fwiptables-gui-shell.desktop
-echo "Terminal=false" &>> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Type=Application" &>> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "Type=Application" &>> $directory_desktop/$name_fwiptables-gui-shell.desktop
-echo "Type=Application" &>> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Categories=System" &>> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "Categories=System" &>> $directory_desktop/$name_fwiptables-gui-shell.desktop
-echo "Categories=System" &>> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Icon=$icon_fwiptables" &>> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "Icon=$icon_fwiptables" &>> $directory_desktop/$name_fwiptables-gui-shell.desktop
-echo "Icon=$icon_fwiptables" &>> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Name=$name_fwiptables cli-menu" &>> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "Name=$name_fwiptables gui-menu" &>> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Name=$name_fwiptables gui-shell" &>> $directory_desktop/$name_fwiptables-gui-shell.desktop
-echo "Exec=$directory_fwiptables/$name_fwiptables-cli-menu" &>> $directory_desktop/$name_fwiptables-cli-menu.desktop
-echo "Exec=$directory_fwiptables/$name_fwiptables-gui-menu" &>> $directory_desktop/$name_fwiptables-gui-menu.desktop
-echo "Exec=$directory_fwiptables/$name_fwiptables-gui-shell" &>> $directory_desktop/$name_fwiptables-gui-shell.desktop
-chmod ugo+rx $directory_desktop/$name_fwiptables-* &>> /dev/null
-else $nada ; fi
+chmod 700 $directory_desktop/$name_fwiptables-cli-menu &> /dev/null
 ####
 ####
 ####   english: Show final status from installer
