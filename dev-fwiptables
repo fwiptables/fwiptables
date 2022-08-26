@@ -203,20 +203,13 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
 ####
 ####
-if [ ! -d "$directory_data" ]; then rm "$directory_data" &> /dev/null ;
-$command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then rm "$directory_temporal" &> /dev/null ;
-$command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then rm "$directory_config" &> /dev/null ;
-$command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then rm "$directory_fwrecover" &> /dev/null ;
-$command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then rm "$directory_default" &> /dev/null ;
-$command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then rm "$directory_log" &> /dev/null ;
-$command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then rm "$directory_shell" &> /dev/null ;
-$command_mkdir -p "$directory_shell" &> /dev/null ; fi
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
 ####
 ####
 ##############################   english: the basic system variables         ##############################
@@ -315,8 +308,6 @@ head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
-#### #### english format text with output
-format_md="Text $first_option.md"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -2251,7 +2242,7 @@ fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then $give_cover
-echo "$header_ok [ $first_option ]  [ List mini options ] [ $format_md ]"
+echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ]"
 echo "  output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -h|-help -i|-info -w|-web -l|-log"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||           "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                          "
@@ -2292,7 +2283,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then $give_cover
-echo "$header_ok [ $first_option ] [ List full options ] [ $format_md ]"
+echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ]"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
 echo "  output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -h|-help -i|-info -w|-web -l|-log"
 echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
@@ -3656,7 +3647,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ show help ] [ $format_md ]"
+echo "$header_ok [ $first_option ] [ show help ] [ show-help.md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show help ]"
 echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
