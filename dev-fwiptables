@@ -7154,7 +7154,6 @@ echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $a up ;
 $command_iw $a scan | egrep -i "on $a|ssid" ; done 
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7169,7 +7168,6 @@ echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ]"
 echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_iw $a info ; done 
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7191,7 +7189,6 @@ $command_wpa_passphrase "$ssid" "$password" > "$directory_default/$dispositivo-$
 $command_wpa_supplicant -B -i "$dispositivo" -c "$directory_default/$dispositivo-$ssid.wpa"
 echo "Probe: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$dispositivo-$ssid.wpa" ; done
 $command_dhcp
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7213,7 +7210,6 @@ if [ -f "$directory_default/$second_option" ]; then
 for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
 $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$second_option ; done
 else echo "[ Connect with loaded wpa ] [ For example: $cmd_fwiptables wpa-load WPA-FILE ]"; fi
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7228,7 +7224,6 @@ echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_d
 echo $header_lineal
 if [ "$favorite_dhcp" != "$NULL" ]; then $favorite_dhcp ;
 else echo " [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7238,13 +7233,12 @@ exit; fi
 #### :rutina-inicial-ipforward-list:
 ####
 ####
- if [ "$first_option" = "ipforward-list" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ]"
- echo $header_lineal
- echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
- $command_sysctl -a | grep -i forwarding
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "ipforward-list" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ]"
+echo $header_lineal
+echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
+$command_sysctl -a | grep -i forwarding
+exit; fi
 ####
 ####
 #### :rutina-final-ipforward-list:
@@ -7253,18 +7247,17 @@ exit; fi
 #### :rutina-inicial-tcpdump:
 ####
 ####
- if [ "$first_option" = "tcpdump" ]; then $give_cover
- case $command_tcpdump in "$NULL") echo "$tab [ fail ] [ Install tcpdump command ]" ; exit ;; esac
- echo "$tab [ info ] [ launch several seconds tcpdump ]"
- echo $header_lineal
+if [ "$first_option" = "tcpdump" ]; then $give_cover
+case $command_tcpdump in "$NULL") echo "$tab [ fail ] [ Install tcpdump command ]" ; exit ;; esac
+echo "$tab [ info ] [ launch several seconds tcpdump ]"
+echo $header_lineal
 ####
 ####
- echo $head_waiting_gui
- echo "$tab" "$tab" "$tab"
- timeout -s SIGINT -v $server_waiting tcpdump -v
- echo "$tab" "$tab" "$tab"
- echo $footer_lineal
- exit; fi
+echo $head_waiting_gui
+echo "$tab" "$tab" "$tab"
+timeout -s SIGINT -v $server_waiting tcpdump -v
+echo "$tab" "$tab" "$tab"
+exit; fi
 ####
 ####
 #### :rutina-final-tcpdump:
@@ -7295,7 +7288,6 @@ echo $header_lineal
 cat $directory_default/$name_fwiptables-default
 echo $footer_lineal
 echo "$tab [ status ] [ edit file $directory_default/$name_fwiptables-default to change variables with: $cmd_fwiptables modify-default ]"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7336,7 +7328,6 @@ if [ ! -s "$directory_default/$name_fwiptables-default" ] ; then $nada
 cp "$directory_temporal/$name_fwiptables-default" "$directory_default/$name_fwiptables-default"; fi
 ####
 ####
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -7346,21 +7337,19 @@ exit; fi
 #### :rutina-inicial-names:
 ####
 ####
- if [ "$first_option" = "names" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ List names from firewall saved ]"
- echo $header_lineal
- echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
- echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
- echo "$tab"
- echo "$tab $tab [ Firewall saved ]"
- echo "$tab"
- ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | \
- sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
- sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
- echo "$tab"
- echo " [ ok ] [ firewall names ]"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "names" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ List names from firewall saved ]"
+echo
+echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
+echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+echo 
+echo " [ status ] [ Listing firewall names ]"
+ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | \
+sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
+sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
+echo
+echo " [   ok   ] [ Listed firewall names ]"
+exit; fi
 ####
 ####
 #### :rutina-final-names:
@@ -7422,20 +7411,21 @@ exit; fi
 #### :rutina-inicial-load:
 ####
 ####
-if [ "$first_option" = "load" ]; then $give_cover ; $give_autosave &> /dev/null
+if [ "$first_option" = "load" ]; then $give_autosave &> /dev/null
 ####
 ####
 #### English: Void in second option
 ####
 ####
 if [ "second_option" = "$NULL" ]; then
-$cmd_fwiptables names; echo "$tab [ status ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
+$cmd_fwiptables names ; echo "$tab [ status ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
 ####
 ####
-if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then 
+if [ -f $directory_fwrecover/$second_option-nft-ipv4 ] || [ -f $directory_fwrecover/$second_option-legacy-ipv4 ] ; then $give_cover
+$give_load
 ####
 ####
 #### English: show message
@@ -7465,7 +7455,7 @@ cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restor
 cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo " [   ok    ] [ FIREWALL LOADED ] [ $second_option ]"
+echo " [   ok    ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
