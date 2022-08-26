@@ -316,8 +316,8 @@ head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
 #### #### english format text output
-format_rst="Out $first_option.rst"
-format_md="Out $first_option.md"
+format_rst="Text $first_option.rst"
+format_md="Text $first_option.md"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -989,8 +989,9 @@ all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-optio
 esac
 $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
 sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
+sed -e 's/\.md\ \]/\.rst\ \]/' $temporal_text.2 &> $temporal_text.3  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
-$temporal_text.2 | grep -iv "::"  &> $temporal_text.rst ;
+$temporal_text.3 | grep -iv "::"  &> $temporal_text.rst ;
 cat $temporal_text.rst
 exit ; fi
 ####
@@ -3656,7 +3657,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
-echo "$header_ok [ $first_option ] [ show help ] [ show-help.md ]"
+echo "$header_ok [ $first_option ] [ show help ] [ $format_md ]"
 echo  $text_md
 echo "$text_md [ english info ] [ Show help ]"
 echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
