@@ -315,8 +315,7 @@ head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several s
 head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
 head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
-#### #### english format text output
-format_rst="Text $first_option.rst"
+#### #### english format text with output
 format_md="Text $first_option.md"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
