@@ -131,8 +131,8 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 #######################  spanish: archivos permanentes: archivos y carpetas desde fwiptables  #########################
 ####
 ####
-#### english: permanent files and where are file path: name, command and icon
-#### spanish: archivos permanentes y donde estan las rutas de archivo: nombre, comando e icono
+#### english: permanent files: and where are file path: name, command and icon
+#### spanish: archivos permanentes: donde estan las rutas de archivo: nombre, comando e icono
 ####
 ####
 name_fwiptables="fwiptables"
@@ -140,12 +140,12 @@ cmd_fwiptables="fwiptables-cmd"
 icon_fwiptables="/usr/share/zenity/zenity.png"
 ####
 ####
-#### english: directory: permanent directory and path directory config files
-#### spanish: directory: directorios permanentes y ruta de directorios de los archivos de configuracion
+#### english: permanent directory:   permanent directory and path directory config files
+#### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
 directory_fwiptables="/usr/bin"
-directory_data="$HOME/.local/share/fwiptables"
+directory_data="$HOME/.config/fwiptables"
 ####
 ####
 #### english: directory tree 
@@ -179,7 +179,7 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 #### spanish: directorio temporal
 ####
 ####
-directory_tmp="$HOME/.fwiptables-tmp"
+directory_tmp="$HOME/.cache/fwiptables"
 directory_temporal="$directory_tmp/.$name_fwiptables-$fversion-tmp"
 ####
 ####
