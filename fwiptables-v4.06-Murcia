@@ -305,7 +305,7 @@ duo_md="### ###"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ok="### ### || || [ ok ] ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_principal="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL.v2 ] || || "
+head_principal="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
