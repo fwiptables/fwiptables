@@ -576,16 +576,16 @@ if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp="$
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
-echo "$text_md [ running ] [ $name_fwiptables uninstalling ]"
+echo "$text_md [ info ] [ $name_fwiptables uninstalling ]"
 if  [ -f $directory_fwiptables/$cmd_fwiptables ]; then
 rm $directory_fwiptables/$name_fwiptables &> /dev/null
 rm $directory_fwiptables/$cmd_fwiptables &> /dev/null
 rm $directory_fwiptables/$name_fwiptables-cli-menu &> /dev/null
 rm $directory_fwiptables/$name_fwiptables-gui-menu &> /dev/null
 rm $directory_fwiptables/$name_fwiptables-gui-shell &> /dev/null
-echo "$text_md [ status ] [ deleted binaries ]"
-echo "$text_md [   ok   ] [ $name_fwiptables uninstalled ]" ;
-else echo "$text_md [ status ] [ $cmd_fwiptables is not installed ]"; fi
+echo "$text_md [ info ] [ deleted binaries ]"
+echo "$text_md [  ok  ] [ $name_fwiptables uninstalled ]" ;
+else echo "$text_md [ info ] [ $cmd_fwiptables is not installed ]"; fi
 exit; fi
 ####
 ####
@@ -603,7 +603,7 @@ echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ in
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "$text_md [ running ] [ $name_fwiptables installing ]"
+echo "$text_md [ info ] [ $name_fwiptables installing ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_fwiptables/$cmd_fwiptables" &> /dev/null 
 ####
@@ -657,12 +657,12 @@ exit; fi
 ####
 if [ "$first_option" = "upgrade" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
+echo "$text_md [ info ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
+echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+echo "$text_md [ info ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -670,7 +670,7 @@ echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favori
 ####
 ####
 echo "$text_md [ downloading ] [ $fweb_latest ]"
-echo "$text_md [ status ] [ Waiting several seconds .. ]"
+echo "$text_md [ info ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
@@ -693,12 +693,12 @@ exit ; fi
 ####
 if [ "$first_option" = "dev-upgrade" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
-echo "$text_md [ status ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
+echo "$text_md [ info ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
+echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_fwiptables ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ status ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+echo "$text_md [ info ] [ Upgrade The $cmd_fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -706,7 +706,7 @@ echo "$text_md [ status ] [ Downloading $cmd_fwiptables with the command $favori
 ####
 ####
 echo "$text_md [ downloading ] [ $fweb_development ]"
-echo "$text_md [ status ] [ Waiting several seconds .. ]"
+echo "$text_md [ info ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
@@ -1044,7 +1044,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 if [ "$first_option" = "regen-config" ]; then $nada
-echo "$tab [ status ] [ regenerate template wizard and template cfg ]"
+echo "$tab [ info ] [ regenerate template wizard and template cfg ]"
 ####
 ####
 ####    english: variables to prepare to gen files
@@ -1656,7 +1656,7 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 ####
 if [ "$first_option" = "custom" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall custom ]" ;
+echo " [ info ] [ loading firewall custom ]" ;
 launch_firewall="yes" ; type_firewall="custom" ; name_firewall="$second_option" ;
 ####
 ####
@@ -1685,7 +1685,7 @@ fi
 ####
 ####
 if [ "$first_option" = "off-line" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall off-line ]" ;
+echo " [ info ] [ loading firewall off-line ]" ;
 launch_firewall="yes" ; type_firewall="off-line"; name_firewall="$first_option";
 fi
 ####
@@ -1695,7 +1695,7 @@ fi
 ####
 ####
 if [ "$first_option" = "all-permisive" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall all-permisive ]" ;
+echo " [ info ] [ loading firewall all-permisive ]" ;
 launch_firewall="yes" ; type_firewall="all-permisive" ; name_firewall="$first_option";
 fi
 ####
@@ -1705,7 +1705,7 @@ fi
 ####
 ####
 if [ "$first_option" = "shield-ssh" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall shield-ssh ]" ;
+echo " [ info ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ; type_firewall="shield-ssh"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -1723,7 +1723,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-web" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-web ]" ;
+echo " [ info ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1740,7 +1740,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-torrent" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-torrent ]" ;
+echo " [ info ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1757,7 +1757,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-vpn" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-vpn ]" ;
+echo " [ info ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1774,7 +1774,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-tor" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-tor ]" ;
+echo " [ info ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1791,7 +1791,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-news" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-news ]" ;
+echo " [ info ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1813,7 +1813,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-mail" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-mail ]" ;
+echo " [ info ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1842,7 +1842,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-ftp" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-ftp ]" ;
+echo " [ info ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1859,7 +1859,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-squid" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall client-squid ]" ;
+echo " [ info ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1876,7 +1876,7 @@ fi
 ####
 ####
 if [ "$first_option" = "lan-vpn" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall lan-vpn ]" ;
+echo " [ info ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1894,7 +1894,7 @@ fi
 ####
 ####
 if [ "$first_option" = "lan-tor" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall lan-tor ]" ;
+echo " [ info ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1912,7 +1912,7 @@ fi
 ####
 ####
 if [ "$first_option" = "games-shooter" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall games-shooter ]" ;
+echo " [ info ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1929,7 +1929,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-wesnoth" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall game-wesnoth ]" ;
+echo " [ info ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1946,7 +1946,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall game-minetest ]" ;
+echo " [ info ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1963,7 +1963,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-freeciv" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall game-freeciv ]" ;
+echo " [ info ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1980,7 +1980,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-widelands" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall game-widelands ]" ;
+echo " [ info ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="no" ;
@@ -1997,7 +1997,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-web" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-web ]" ;
+echo " [ info ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2014,7 +2014,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-ftp" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-ftp ]" ;
+echo " [ info ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2031,7 +2031,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-squid" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-squid ]" ;
+echo " [ info ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2048,7 +2048,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-news" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-news ]" ;
+echo " [ info ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2070,7 +2070,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-mail" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-mail ]" ;
+echo " [ info ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2099,7 +2099,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-samba" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-samba ]" ;
+echo " [ info ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2116,7 +2116,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-print" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-print ]" ;
+echo " [ info ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2133,7 +2133,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-ssh" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-ssh ]" ;
+echo " [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2150,7 +2150,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-lamp" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-lamp ]" ;
+echo " [ info ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2168,7 +2168,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-asterisk" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-asterisk ]" ;
+echo " [ info ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2187,7 +2187,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-mumble" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-mumble ]" ;
+echo " [ info ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2204,7 +2204,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-teamspeak" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-teamspeak ]" ;
+echo " [ info ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -2225,7 +2225,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-sql" ]; then $give_cover ; $give_load
-echo " [ running ] [ loading firewall server-sql ]" ;
+echo " [ info ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
 #### english: max tries for each hour 
 shield_ssh="" ;
@@ -5686,12 +5686,12 @@ exit; fi
  if [ "$first_option" = "howto-upgrade" ]; then $give_cover
  echo "$header_ok [ $first_option ]  [ Show howto upgrade $cmd_fwiptables ]"
  echo $header_lineal
- echo "$tab [ status ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
- echo "$tab [ status ] [ The latest version is: ]"
+ echo "$tab [ info ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
+ echo "$tab [ info ] [ The latest version is: ]"
  $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
  echo 
- echo "$tab [ status ] [ Upgrade The fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser ]"
- echo "$tab [ status ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
+ echo "$tab [ info ] [ Upgrade The fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser ]"
+ echo "$tab [ info ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
  echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$cmd_fwiptables ]"
  echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_fwiptables ]"
  echo "$tab [ info ] [ launch: /tmp/$cmd_fwiptables install ]"
@@ -5958,8 +5958,8 @@ $command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo " [ running ] [ Deleting the iptables rules firewall ]" 
-echo " [ ok ] [ Firewall is erased ] [ Deleted rules ]"
+echo " [ info ] [ Deleting the iptables rules firewall ]" 
+echo " [  ok  ] [ Firewall is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
@@ -6795,7 +6795,7 @@ if [ "$first_option" = "show-config" ] ; then $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$tab [ status ] [ Usage: $cmd_fwiptables show-config config-cfg ]" ; exit; fi
+echo "$tab [ info ] [ Usage: $cmd_fwiptables show-config config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -6873,13 +6873,13 @@ exit; fi
 ####
 if [ "$first_option" = "sudofw-listuser" ]; then $give_cover
 if [ -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
-echo " [ status ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
-echo " [   ok   ] [ With root sudo for $cmd_fwiptables from some user ]"
+echo " [ info ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_fwiptables ]"
+echo " [  ok  ] [ With root sudo for $cmd_fwiptables from some user ]"
 cat /etc/sudoers.d/$cmd_fwiptables
 echo $footer_lineal
 fi
 if [ -f /etc/sudoers.d/$name_fwiptables ] ; then $nada
-echo "$tab [ status ][ old version sudoer file:   /etc/sudoers.d/$name_fwiptables ]"
+echo "$tab [ info ][ old version sudoer file:   /etc/sudoers.d/$name_fwiptables ]"
 echo " [ ok ] [ With root sudo for $name_fwiptables from some user ]"
 cat /etc/sudoers.d/$name_fwiptables
 echo $footer_lineal
@@ -6887,13 +6887,13 @@ fi
 ####
 ####
 if [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
-echo "$tab [ status ] [ list users with root auth for launch $cmd_fwiptables ]"
+echo "$tab [ info ] [ list users with root auth for launch $cmd_fwiptables ]"
 echo "$tab [ fail ] [ actual version $cmd_fwiptables Without root sudo from users ]"
 fi
 ####
 ####
 #### if [ ! -f /etc/sudoers.d/$name_fwiptables ] ; then $nada
-#### echo "$tab [ status ] [ list users with root auth for launch $name_fwiptables ]"
+#### echo "$tab [ info ] [ list users with root auth for launch $name_fwiptables ]"
 #### echo "$tab [ fail ] [ old version $name_fwiptables Without root sudo from users ]"
 #### echo $footer_lineal
 #### fi
@@ -7287,7 +7287,7 @@ echo "$header_ok [ $first_option ]  [ show the default fwiptables ]"
 echo $header_lineal
 cat $directory_default/$name_fwiptables-default
 echo $footer_lineal
-echo "$tab [ status ] [ edit file $directory_default/$name_fwiptables-default to change variables with: $cmd_fwiptables modify-default ]"
+echo "$tab [ info ] [ edit file $directory_default/$name_fwiptables-default to change variables with: $cmd_fwiptables modify-default ]"
 exit; fi
 ####
 ####
@@ -7301,7 +7301,7 @@ if [ "$first_option" = "modify-default" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ modify the default fwiptables ]"
 echo $header_lineal
 echo $footer_lineal
-echo " [ status ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
+echo " [ info ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
 ####
 ####
 #### english: make security copy file
@@ -7343,12 +7343,12 @@ echo
 echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
 echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
 echo 
-echo " [ status ] [ Listing firewall names ]"
+echo " [ info ] [ Listing firewall names ]"
 ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | \
 sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
 sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
 echo
-echo " [   ok   ] [ Listed firewall names ]"
+echo " [  ok  ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
@@ -7360,10 +7360,10 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Reset the firewall ]"
-echo " [ status ] [ Reseting the firewall ]"
+echo " [ info ] [ Reseting the firewall ]"
 $cmd_fwiptables stop &> /dev/null
 $cmd_fwiptables continue &> /dev/null
-echo " [   ok   ] [ firewall reseted ]"
+echo " [  ok  ] [ firewall reseted ]"
 exit; fi
 ####
 ####
@@ -7418,7 +7418,7 @@ if [ "$first_option" = "load" ]; then $give_autosave &> /dev/null
 ####
 ####
 if [ "second_option" = "$NULL" ]; then
-$cmd_fwiptables names ; echo "$tab [ status ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
+$cmd_fwiptables names ; echo "$tab [ info ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -7431,7 +7431,7 @@ $give_load
 #### English: show message
 ####
 ####
-echo " [ running ] [ Loading rules ]"
+echo " [ info ] [ Loading rules ]"
 ####
 ####
 #### English: Remove all rules
@@ -7455,7 +7455,7 @@ cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restor
 cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo " [   ok    ] [ firewall loaded ] [ $second_option ]"
+echo " [  ok  ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
@@ -7604,8 +7604,8 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/$name_fwiptables-stoped-l
 ####
 ####
 $cmd_fwiptables eraserules &> /dev/null
-echo " [ status ] [ stopping firewall ]"
-echo " [   ok   ] [ firewall stopped ]"
+echo " [ info ] [ stopping firewall ]"
+echo " [  ok  ] [ firewall stopped ]"
 exit; fi
 ####
 ####
@@ -7628,8 +7628,8 @@ cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv4 | $command_iptables_nf
 cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$name_fwiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
 cat $directory_fwrecover/$name_fwiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
-echo " [ status ] [ continue firewall ]"
-echo " [   ok   ] [ firewall continued ]"
+echo " [ info ] [ continue firewall ]"
+echo " [  ok  ] [ firewall continued ]"
 exit; fi
 ####
 ####
@@ -7895,7 +7895,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap tcp ]"
  echo $header_lineal
  case $command_nmap in $NULL) echo install nmap ; exit ;; esac
- echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ info ] [ nmap $first_option ip/mask ]"
  echo " [ ok ] [ Stoped firewall while launching nmap ]"
 ####
 ####
@@ -7933,7 +7933,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap syn ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
- echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ info ] [ nmap $first_option ip/mask ]"
  echo " [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
@@ -7969,7 +7969,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap fin ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
- echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ info ] [ nmap $first_option ip/mask ]"
  echo " [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
@@ -8007,7 +8007,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap udp ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
- echo "$cinco [ status ] [ nmap $first_option ip/mask ]"
+ echo "$cinco [ info ] [ nmap $first_option ip/mask ]"
  echo "$cinco [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
@@ -8045,7 +8045,7 @@ if [ "$first_option" = "scan-tcp" ]; then $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap ping ]"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
- echo "$tab [ status ] [ nmap $first_option ip/mask ]"
+ echo "$tab [ info ] [ nmap $first_option ip/mask ]"
  echo " [ ok ] [ Stopped firewall while launch nmap ]"
 ####
 ####
@@ -8154,8 +8154,8 @@ exit; fi
 ####
 if [ "$first_option" = "radio-mp3" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
-echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
+echo "$tab [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8185,8 +8185,8 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadena100" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
-echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
+echo "$tab [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8212,8 +8212,8 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadenadial" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "$tab [ status ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
-echo "$tab [ status ] [ Usually it do not working likes root, probe as user ]"
+echo "$tab [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ]"
+echo "$tab [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8304,7 +8304,7 @@ fi ; exit; fi
 if [ "$first_option" = "ole-domain" ] ; then
 file_domain="$directory_default/$name_fwiptables-domain"
 if [ -s $file_domain ]; then $nada 
-else echo " [ status ] [ Downloading txt file to play with $favorite_text_browser ]"
+else echo " [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
 $favorite_text_browser -source $fweb_domain &> $file_domain ; fi
 numero_maximo="$(cat $file_domain | wc -l)"
 numero_aleatorio_one="$(($RANDOM%"$numero_maximo"))"
@@ -9236,7 +9236,7 @@ if [ "$first_option" = "gpg-notes" ]; then
 ####
 if [ "$second_option" == "-list" ] ; then
 find "$directory_default" | xargs file | grep \\.gpg | cut -d "/" -f 4- | sed 's/\.gpg//' -
-echo " [ status ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
+echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; fi
 if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
 ####
@@ -9667,37 +9667,37 @@ exit; fi
  echo $header_lineal
  echo $tab
  echo "$tab [ Network Route ] [ Route ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
  else $command_ip -4 route ; fi
  echo $tab
  echo "$tab [ Network Route ] [ Route ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
  else $command_ip -6 route ; fi
  echo $tab
  echo "$tab [ Network Listen ] [ Listen ipv4 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
  else $command_ss -l4 | sed 's/   / /g' ; fi
  echo $tab
  echo "$tab [ Network Listen ] [ Listen ipv6 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ status ] [ install ss command ]"
+ if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
  else $command_ss -l6 | sed 's/   / /g' ; fi
  echo $tab
  echo "$tab [ Private ip ] [ Address ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
  else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
  echo $tab
  echo "$tab [ Private ip ] [ Address ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ status ] [ install ip command ]"
+ if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
  else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
  echo $tab
  echo "$tab [ Public ip ] [ Address ipv4 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
+ if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
  public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
  if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
  else echo "$tab $public_ip4"; fi; fi
  echo $tab
  echo "$tab [ Public ip ] [ Address ipv6 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ status ] [ install curl command ]" ; else
+ if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
  public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
  echo "$tab $public_ip6"; fi
  echo $tab
@@ -9781,9 +9781,9 @@ exit; fi
 if [ "$first_option" = "clean-tmp" ] ; then $give_cover
 echo "$header_ok [ $first_option ]  [ clean $name_fwiptables temporal files]"
 echo "[  info  ] [ cleaning $name_fwiptables temporal files ]"
-echo "[ status ] [ deleting temporal ]"
+echo "[ info ] [ deleting temporal ]"
 rm -r -f $directory_tmp &> /dev/null
-echo "[   ok   ] [ cleaned $name_fwiptables temporal files ]"
+echo "[  ok  ] [ cleaned $name_fwiptables temporal files ]"
 exit; fi
 ####
 ####
@@ -10707,7 +10707,7 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -10808,7 +10808,7 @@ $allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####  
-echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -11172,7 +11172,7 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -11536,7 +11536,7 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit; fi
 ####
 ####
@@ -12949,7 +12949,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 #### echo $head_principal
 if [ -f "$directory_config/$second_option" ]; then $nada
-echo " [   ok    ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo " [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
 ####
