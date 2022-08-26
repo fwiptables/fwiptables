@@ -1,16 +1,16 @@
 
 
 
-
- 9. poco significativo cambio en cabecera. HECHO 
- 8. simplificado instalador. HECHO 
- 7. pequeños arreglos para ipv4 en custom cuando estan desactivados ipv4 y ipv6. HECHO
- 6. limpieza de codigo, borrando codigo y comentarios obsoletos. HECHO
- 5. ahora se puede cambiar el puerto ssh para maxtries ssh o poner varios. HECHO 
- 4. cambios en depends y en version. HECHO
- 3  todas las rutas del programa temporales a /root/.fwiptables-tmp. HECHO
- 2. todas las rutas del programa permamentes a /root/.local/share/fwiptables. HECHO
- 1. nuevos alias añadidos a los interfaces de salida. HECHO 
+ 10. cambio en clean-tmp. HECHO
+ 9.  poco significativo cambio en cabecera. HECHO 
+ 8.  simplificado instalador. HECHO 
+ 7.  pequeños arreglos para ipv4 en custom cuando estan desactivados ipv4 y ipv6. HECHO
+ 6.  limpieza de codigo, borrando codigo y comentarios obsoletos. HECHO
+ 5.  ahora se puede cambiar el puerto ssh para maxtries ssh o poner varios. HECHO 
+ 4.  cambios en depends y en version. HECHO
+ 3   todas las rutas del programa temporales a /root/.fwiptables-tmp. HECHO
+ 2.  todas las rutas del programa permamentes a /root/.local/share/fwiptables. HECHO
+ 1.  nuevos alias añadidos a los interfaces de salida. HECHO 
 
  cambios en dev-fwiptables desarrollo 4.06 
 
