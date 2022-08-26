@@ -584,10 +584,6 @@ rm $directory_fwiptables/$name_fwiptables-cli-menu &> /dev/null
 rm $directory_fwiptables/$name_fwiptables-gui-menu &> /dev/null
 rm $directory_fwiptables/$name_fwiptables-gui-shell &> /dev/null
 echo "$text_md [ status ] [ deleted binaries ]"
-rm $directory_desktop/$name_fwiptables-cli-menu.desktop &> /dev/null
-rm $directory_desktop/$name_fwiptables-gui-menu.desktop &> /dev/null
-rm $directory_desktop/$name_fwiptables-gui-shell.desktop &> /dev/null
-echo "$text_md [ status ] [ deleted desktop lauchers ]"
 echo "$text_md [   ok   ] [ $name_fwiptables uninstalled ]" ;
 else echo "$text_md [ status ] [ $cmd_fwiptables is not installed ]"; fi
 exit; fi
@@ -3768,7 +3764,7 @@ exit; fi
 if [ "$first_option" = "depends" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ List for all programs depends ]"
 echo 
-echo "$tab [ Configuration file from System ]"
+echo "$tab [ auth user file ]"
 echo "auth users:              /etc/sudoers.d/$cmd_fwiptables"
 echo 
 echo "$tab [ Configuration directory ]"
