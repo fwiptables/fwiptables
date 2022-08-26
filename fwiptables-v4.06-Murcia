@@ -9113,7 +9113,6 @@ echo
 echo "$text_7" "$cinco_digitos"
 echo "$text_8" "$numero_aleatorio"
 ####
-echo $footer_lineal
 clear; exit; fi
 ####
 ####
@@ -9144,7 +9143,7 @@ if [ "$first_option" = "autolog" ] ; then  $give_cover
 echo "$header_ok [ $first_option ]  [  show "$output_autolog" ]"
 cat  "$output_autolog"
 echo
-echo "$tab [ last end of file showed "$output_autolog" ]"
+echo " [ info ] [ last end of file showed ] [ $output_autolog ]"
 exit; fi
 ####
 ####
@@ -9154,12 +9153,10 @@ exit; fi
 #### :rutina-inicial-log-ssh:
 ####
 ####
- if [ "$first_option" = "log-ssh" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ search sshd in logs ]"
- echo $header_lineal
- find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "ssh"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "log-ssh" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ search sshd in logs ]"
+find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "ssh"
+exit; fi
 ####
 ####
 #### :rutina-final-log-ssh:
@@ -9168,15 +9165,13 @@ exit; fi
 #### :rutina-inicial-log-search:
 ####
 ####
- if [ "$first_option" = "log-search" ]; then $give_cover
- echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
- echo $header_lineal
- case "$second_option" in
- $NULL) echo "$tab [ fail ] [ use: $cmd_fwiptables $first_option pattern ]" ;;
- *) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
- esac
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "log-search" ]; then $give_cover
+echo "$cinco [ $first_option $second_option ]  [ search a one pattern in logs ]"
+case "$second_option" in
+$NULL) echo "$tab [ fail ] [ use: $cmd_fwiptables $first_option pattern ]" ;;
+*) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
+esac
+exit; fi
 ####
 ####
 #### :rutina-final-log-search:
@@ -9185,12 +9180,10 @@ exit; fi
 #### :rutina-inicial-dev-version:
 ####
 ####
- if [ "$first_option" = "dev-version" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ]"
- echo $header_lineal
- echo $fweb_development
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "dev-version" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ]"
+echo $fweb_development
+exit; fi
 ####
 ####
 #### :rutina-final-dev-version:
@@ -9199,12 +9192,10 @@ exit; fi
 #### :rutina-inicial-dev-changes:
 ####
 #### 
- if [ "$first_option" = "dev-changes" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ]"
- echo $header_lineal
- $favorite_text_browser -source $fweb_changes
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "dev-changes" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ]"
+$favorite_text_browser -source $fweb_changes
+exit; fi
 ####
 ####
 #### :rutina-final-dev-changes:
@@ -9215,11 +9206,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-versions" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ show the new versions in the web ]"
-echo $header_lineal
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
 $favorite_text_browser -dump $fweb_newfiles | egrep "[0123456789]-[0123456789][0123456789]-[0123456789]" | sed s/\<//g |sed s/\>//g 
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9319,12 +9308,10 @@ exit ; fi
 ####
 if [ "$first_option" = "pc-halt" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ]"
-echo $header_lineal
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
 $command_sleep $demora
 $command_halt
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9336,12 +9323,10 @@ exit; fi
 ####
 if [ "$first_option" = "pc-shutdown" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ]"
-echo $header_lineal
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
 $command_sleep $demora
 $command_shutdown -h now
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9353,12 +9338,10 @@ exit; fi
 ####
 if [ "$first_option" = "pc-reboot" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ reboot computer ]"
-echo $header_lineal
 demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
 $command_sleep $demora
 $command_reboot
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9368,22 +9351,18 @@ exit; fi
 #### :rutina-inicial-lpinfo:
 ####
 ####
- if [ "$first_option" = "lpinfo" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ]"
- echo $header_lineal
- echo "lpinfo -v -l"
- echo $tab
- lpinfo -v -l
- echo $tab
- echo $header_lineal
- echo"lpstat -v"
- echo $tab
- lpstat -v
- echo $header_lineal
- echo $tab
- echo " Use lp or lpr to print with those printers, or lpadmin to admin."
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lpinfo" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ]"
+echo "lpinfo -v -l"
+echo
+lpinfo -v -l
+echo
+echo"lpstat -v"
+echo
+lpstat -v
+echo 
+echo " [ info ] [ Use lp or lpr to print with those printers, or lpadmin to admin. ]"
+exit; fi
 ####
 ####
 #### :rutina-final-lpinfo:
@@ -9392,13 +9371,12 @@ exit; fi
 #### :rutina-inicial-lsblk:
 ####
 ####
- if [ "$first_option" = "lsblk" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list disks ]"
- echo $header_lineal
- lsblk -o name,size,fsuse%,label,mountpoints
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lsblk" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list disks ]"
+echo $header_lineal
+lsblk -o name,size,fsuse%,label,mountpoints
+echo
+exit; fi
 ####
 ####
 #### :rutina-final-lsblk:
@@ -9407,13 +9385,11 @@ exit; fi
 #### :rutina-inicial-lsusb:
 ####
 ####
- if [ "$first_option" = "lsusb" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list usb ]"
- echo $header_lineal
- lsusb
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lsusb" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list usb ]"
+lsusb
+echo
+exit; fi
 ####
 ####
 #### :rutina-final-lsusb:
@@ -9422,13 +9398,11 @@ exit; fi
 #### :rutina-inicial-lscpu:
 ####
 ####
- if [ "$first_option" = "lscpu" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list cpu ]"
- echo $header_lineal
- lscpu
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lscpu" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list cpu ]"
+lscpu
+echo
+exit; fi
 ####
 ####
 #### :rutina-final-lscpu:
@@ -9437,13 +9411,11 @@ exit; fi
 #### :rutina-inicial-lspci:
 ####
 ####
- if [ "$first_option" = "lspci" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list cpi hardware sockets ]"
- echo $header_lineal
- lspci
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lspci" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list pci hardware sockets ]"
+lspci
+echo
+exit; fi
 ####
 ####
 #### :rutina-final-lspci:
@@ -9452,13 +9424,12 @@ exit; fi
 #### :rutina-inicial-lsgpu:
 ####
 ####
- if [ "$first_option" = "lsgpu" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list gpu ]"
- echo $header_lineal
- lsgpu
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lsgpu" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list gpu ]"
+echo $header_lineal
+lsgpu
+echo
+exit; fi
 ####
 ####
 #### :rutina-final-lsgpu:
@@ -9467,13 +9438,11 @@ exit; fi
 #### :rutina-inicial-lshw:
 ####
 ####
- if [ "$first_option" = "lshw" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ list hardware ]"
- echo $header_lineal
- lshw
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lshw" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ list hardware ]"
+lshw
+echo
+exit; fi
 ####
 ####
 #### :rutina-final-lshw:
@@ -9482,14 +9451,12 @@ exit; fi
 #### :rutina-inicial-hosts:
 ####
 ####
- if [ "$first_option" = "hosts" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ]"
- echo $header_lineal
- cat /etc/hosts
- echo $tab
- echo "$tab This file is /etc/hosts"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "hosts" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ]"
+cat /etc/hosts
+echo $tab
+echo " [ ok ] [ This file is /etc/hosts ]"
+exit; fi
 ####
 ####
 #### :rutina-final-hosts:
@@ -9499,13 +9466,11 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "protocols" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ]"
- echo $header_lineal
- cat /etc/protocols  | sed s/\&//g 
- echo $tab
- echo "$tab This file is /etc/protocols"
- echo $footer_lineal
- exit; fi
+echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ]"
+cat /etc/protocols  | sed s/\&//g 
+echo
+echo " [ ok ] [ This file is /etc/protocols ]"
+exit; fi
 ####
 ####
 #### :rutina-final-protocols:
@@ -9514,14 +9479,12 @@ exit; fi
 #### :rutina-inicial-services:
 ####
 ####
- if [ "$first_option" = "services" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the file /etc/services ]"
- echo $header_lineal
- cat /etc/services | sed s/\&//g 
- echo $tab
- echo "$tab This file is /etc/services"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "services" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show the file /etc/services ]"
+cat /etc/services | sed s/\&//g 
+echo
+echo " [ ok ] [ This file is /etc/services ]"
+exit; fi
 ####
 ####
 #### :rutina-final-services:
@@ -9530,14 +9493,12 @@ exit; fi
 #### :rutina-inicial-host.allow:
 ####
 ####
- if [ "$first_option" = "hosts.allow" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the file /etc/allow ]"
- echo $header_lineal
- cat /etc/hosts.allow
- echo $tab
- echo "$tab This file is /etc/hosts.allow"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "hosts.allow" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show the file /etc/allow ]"
+cat /etc/hosts.allow
+echo
+echo " [ ok ] [ This file is /etc/hosts.allow ]"
+exit; fi
 ####
 ####
 #### :rutina-final-host.allow:
@@ -9546,14 +9507,12 @@ exit; fi
 #### :rutina-inicial-hosts.deny:
 ####
 ####
- if [ "$first_option" = "hosts.deny" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show the file /etc/deny ]"
- echo $header_lineal
- cat /etc/hosts.deny
- echo $tab
- echo "$tab This file is /etc/hosts.deny"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "hosts.deny" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show the file /etc/deny ]"
+cat /etc/hosts.deny
+echo
+echo " [ ok ] [ This file is /etc/hosts.deny ]"
+exit; fi
 ####
 ####
 #### :rutina-final-hosts.deny:
@@ -9564,7 +9523,6 @@ exit; fi
 ####
 if [ "$first_option" = "resolv.conf" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ show resolv.conf ]"
-echo $header_lineal
 if [ -f /etc/resolv.conf.head ]; then
 echo "$tab  [ with resolv.conf.head ]"
 cat /etc/resolv.conf.head ; 
@@ -9577,7 +9535,6 @@ if [ -f /etc/resolv.conf.tail ]; then
 echo "$tab  [ with resolv.conf.tail ]"
 cat /etc/resolv.conf.tail ; 
 else echo "$tab  [ without resolv.conf.tail ]"; fi
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9631,29 +9588,28 @@ exit; fi
 #### :rutina-inicial-info-system:
 ####
 ####
- if [ "$first_option" = "info-system" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ show info about system ]"
- echo $header_lineal
- echo "$tab [ System info ] [ Distro ] "
- cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
- echo $tab
- echo "$tab [ System info ][ Kernel Linux ]"
- $command_uname -srom
- echo $tab
- echo "$tab [ Boot system ] [ it works with pid number 1 ]"
- ps -p1 
- echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
- echo $tab
- echo "$tab [ System info ] [ Processor ]"
- lscpu | egrep -i "socket|Model name|cpu max"
- echo $tab
- echo "$tab [ System info ] [ Memory RAM ]"
- free -h
- echo $tab
- echo "$tab [ System info ] [ Disks ]"
- lsblk -o name,size,fsuse%,label,mountpoints
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "info-system" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ show info about system ]"
+echo
+echo "$tab [ System info ] [ Distro ] "
+cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
+echo
+echo "$tab [ System info ][ Kernel Linux ]"
+$command_uname -srom
+echo
+echo "$tab [ Boot system ] [ it works with pid number 1 ]"
+ps -p1 
+echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
+echo
+echo "$tab [ System info ] [ Processor ]"
+lscpu | egrep -i "socket|Model name|cpu max"
+echo
+echo "$tab [ System info ] [ Memory RAM ]"
+free -h
+echo
+echo "$tab [ System info ] [ Disks ]"
+lsblk -o name,size,fsuse%,label,mountpoints
+exit; fi
 ####
 ####
 #### :rutina-final-info-system:
@@ -9662,50 +9618,48 @@ exit; fi
 #### :rutina-inicial-info-net:
 ####
 ####
- if [ "$first_option" = "info-net" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ show info about net ]"
- echo $header_lineal
- echo $tab
- echo "$tab [ Network Route ] [ Route ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
- else $command_ip -4 route ; fi
- echo $tab
- echo "$tab [ Network Route ] [ Route ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
- else $command_ip -6 route ; fi
- echo $tab
- echo "$tab [ Network Listen ] [ Listen ipv4 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
- else $command_ss -l4 | sed 's/   / /g' ; fi
- echo $tab
- echo "$tab [ Network Listen ] [ Listen ipv6 ]"
- if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
- else $command_ss -l6 | sed 's/   / /g' ; fi
- echo $tab
- echo "$tab [ Private ip ] [ Address ipv4 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
- else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
- echo $tab
- echo "$tab [ Private ip ] [ Address ipv6 ]"
- if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
- else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
- echo $tab
- echo "$tab [ Public ip ] [ Address ipv4 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
- public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
- if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
- else echo "$tab $public_ip4"; fi; fi
- echo $tab
- echo "$tab [ Public ip ] [ Address ipv6 ]"
- if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
- public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
- echo "$tab $public_ip6"; fi
- echo $tab
- echo "$tab [ Proxy ip ] [ Address proxy ]"
- echo "$tab Proxy http:    $http_proxy"
- echo "$tab Proxy https:   $https_proxy"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "info-net" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ show info about net ]"
+echo
+echo "$tab [ Network Route ] [ Route ipv4 ]"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -4 route ; fi
+echo
+echo "$tab [ Network Route ] [ Route ipv6 ]"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -6 route ; fi
+echo
+echo "$tab [ Network Listen ] [ Listen ipv4 ]"
+if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+else $command_ss -l4 | sed 's/   / /g' ; fi
+echo
+echo "$tab [ Network Listen ] [ Listen ipv6 ]"
+if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+else $command_ss -l6 | sed 's/   / /g' ; fi
+echo
+echo "$tab [ Private ip ] [ Address ipv4 ]"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
+echo
+echo "$tab [ Private ip ] [ Address ipv6 ]"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
+echo
+echo "$tab [ Public ip ] [ Address ipv4 ]"
+if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+else echo "$tab $public_ip4"; fi; fi
+echo
+echo "$tab [ Public ip ] [ Address ipv6 ]"
+if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+echo "$tab $public_ip6"; fi
+echo
+echo "$tab [ Proxy ip ] [ Address proxy ]"
+echo "$tab Proxy http:    $http_proxy"
+echo "$tab Proxy https:   $https_proxy"
+exit; fi
 ####
 ####
 #### :rutina-final-info-net:
@@ -9716,7 +9670,6 @@ exit; fi
 ####
 if [ "$first_option" = "speed-ip4" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ]"
-echo $header_lineal
 case "$command_iperf"  in  $NULL) echo " [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
@@ -9726,7 +9679,6 @@ echo "$tab [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $serve
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
 echo
 $cmd_fwiptables continue
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9738,7 +9690,6 @@ exit; fi
 ####
 if [ "$first_option" = "speed-ip6" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ]"
-echo $header_lineal
 case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
@@ -9748,7 +9699,6 @@ echo "$tab [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $serve
 $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
 echo
 $cmd_fwiptables continue
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9758,18 +9708,16 @@ exit; fi
 #### :rutina-inicial-web-cert:
 ####
 ####
- if [ "$first_option" = "web-cert" ] ; then $give_cover
- echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443]"
- echo $header_lineal
- case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
+if [ "$first_option" = "web-cert" ] ; then $give_cover
+echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443]"
+case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
 ####
- if [ "$second_option" = "$NULL" ]; then echo $tab $tab $tab
- echo "[ get one web certifcate ] [ Example: $cmd_fwiptables web-cert www.fast.com ]"; exit; fi
- echo $tab
- echo | timeout -s SIGINT -v $server_waiting $command_openssl s_client -connect $second_option:443
- echo $footer_lineal
- exit; fi
+if [ "$second_option" = "$NULL" ]; then echo $tab $tab $tab
+echo "[ get one web certifcate ] [ Example: $cmd_fwiptables web-cert www.fast.com ]"; exit; fi
+echo
+echo | timeout -s SIGINT -v $server_waiting $command_openssl s_client -connect $second_option:443
+exit; fi
 ####
 ####
 #### :rutina-final-web-cert:
@@ -9795,9 +9743,7 @@ exit; fi
 ####
 if [ "$first_option" = "config-eng" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from english configuration ]"
-echo $header_lineal
 cat  $defaultfullcfg_eng
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -9807,12 +9753,10 @@ exit; fi
 #### :rutina-inicial-config-spa:
 ####
 ####
- if [ "$first_option" = "config-spa" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ]"
- echo $header_lineal
- cat $defaultfullcfg_spa
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "config-spa" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ]"
+cat $defaultfullcfg_spa
+exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
@@ -9848,8 +9792,6 @@ if [ "$second_option" = "show-help" ]; then $cmd_fwiptables show-help ; exit ; f
 $give_cover
 echo $header_ender
 echo "$header_ok [ $first_option ]  [ info group ]"
-echo $header_lineal
-echo $tab
 echo
 echo "$tab [ launch: ] [ $cmd_fwiptables info group ]"
 echo
@@ -9866,7 +9808,6 @@ echo "$tab" "$tab"  "     show-options   |  show-hardware     show-etc       sho
 echo "$tab" "$tab"  "                       show-help"
 echo
 echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
-echo $footer_lineal
 exit; fi
 ####
 ####
