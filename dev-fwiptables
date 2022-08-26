@@ -5991,17 +5991,15 @@ exit; fi
 #### :rutina-inicial-ss:
 ####
 ####
- if [ "$first_option" = "ss" ]; then  $give_cover
- echo "$header_ok [ $first_option ] [ Show sockets with ss ]"
- echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
- echo "$tab [ The ipv6 sockets ]"
- $command_ss -a6 | sed 's/   / /g'
- echo "$tab"
- echo "$tab [ The ipv4 sockets ]"
- $command_ss -a4 | sed 's/   / /g'
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "ss" ]; then  $give_cover
+echo "$header_ok [ $first_option ] [ Show sockets with ss ]"
+if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+echo "$tab [ The ipv6 sockets ]"
+$command_ss -a6 | sed 's/   / /g'
+echo
+echo "$tab [ The ipv4 sockets ]"
+$command_ss -a4 | sed 's/   / /g'
+exit; fi
 ####
 ####
 #### :rutina-final-ss:
@@ -6010,17 +6008,15 @@ exit; fi
 #### :rutina-inicial-lsof:
 ####
 ####
- if [ "$first_option" = "lsof" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ Show sockets with lsof ]"
- echo $header_lineal
- if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
- echo "$tab [The sockets with lsof ipv6 ]"
- $command_lsof -i | grep -i ipv6
- echo $tab
- echo "$tab [The sockets with lsof ipv4 ]"
- $command_lsof -i | grep -i ipv4
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "lsof" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Show sockets with lsof ]"
+if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
+echo "$tab [The sockets with lsof ipv6 ]"
+$command_lsof -i | grep -i ipv6
+echo
+echo "$tab [The sockets with lsof ipv4 ]"
+$command_lsof -i | grep -i ipv4
+exit; fi
 ####
 ####
 #### :rutina-final-lsof:
@@ -6029,14 +6025,12 @@ exit; fi
 #### :rutina-inicial-netstat:
 ####
 ####
- if [ "$first_option" = "netstat" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ Show sockets with netstat ]"
- echo $header_lineal
- if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
- echo "$tab [The sockets list with netstat ]"
- $command_netstat -a -4 -6
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "netstat" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Show sockets with netstat ]"
+if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
+echo "$tab [The sockets list with netstat ]"
+$command_netstat -a -4 -6
+exit; fi
 ####
 ####
 #### :rutina-final-netstat:
@@ -6045,20 +6039,17 @@ exit; fi
 #### :rutina-inicial-info-listen:
 ####
 ####
- if [ "$first_option" = "info-listen" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ Show info address proxy ]"
- echo $header_lineal
- if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
- echo "$tab info socket list:"
- echo $tab
- echo "$tab [ Network Listen ] [ Listen ipv4 ]"
- $command_ss -l4 | sed 's/   / /g'
- echo $tab
- echo "$tab [ Network Listen ] [ Listen ipv6 ]"
- $command_ss -l6 | sed 's/   / /g'
- echo $tab
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "info-listen" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Show info address proxy ]"
+if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+echo "$tab info socket list:"
+echo $tab
+echo "$tab [ Network Listen ] [ Listen ipv4 ]"
+$command_ss -l4 | sed 's/   / /g'
+echo $tab
+echo "$tab [ Network Listen ] [ Listen ipv6 ]"
+$command_ss -l6 | sed 's/   / /g'
+exit; fi
 ####
 ####
 #### :rutina-final-info-listen:
@@ -6067,14 +6058,12 @@ exit; fi
 #### :rutina-inicial-info-proxy:
 ####
 ####
- if [ "$first_option" = "info-proxy" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ]"
- echo $header_lineal
- echo "$tab Info address proxy"
- echo "$tab Web http_proxy:    $http_proxy"
- echo "$tab Web https_proxy:   $https_proxy"
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "info-proxy" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ]"
+echo "$tab Info address proxy"
+echo "$tab Web http_proxy:    $http_proxy"
+echo "$tab Web https_proxy:   $https_proxy"
+exit; fi
 ####
 ####
 #### :rutina-final-info-proxy:
@@ -6083,14 +6072,12 @@ exit; fi
 #### :rutina-inicial-netstat-nat:
 ####
 ####
- if [ "$first_option" = "netstat-nat" ]; then  $give_cover
- if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
- echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ]"
- echo $header_lineal
- echo "$tab [ The devices list with netstat for nat ]"
- $command_netstat_nat
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "netstat-nat" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ]"
+if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
+echo "$tab [ The devices list with netstat for nat ]"
+$command_netstat_nat
+exit; fi
 ####
 ####
 #### :rutina-final-netstat-nat:
@@ -6099,13 +6086,12 @@ exit; fi
 #### :rutina-inicial-ipforward-on:
 ####
 ####
- if [ "$first_option" = "ipforward-on" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ]"
- echo $header_lineal
- for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
- do $command_sysctl -w $a=1 ; done
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "ipforward-on" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ]"
+echo $header_lineal
+for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+do $command_sysctl -w $a=1 ; done
+exit; fi
 ####
 ####
 #### :rutina-final-ipforward-on:
@@ -6114,13 +6100,11 @@ exit; fi
 #### :rutina-inicial-ipforward-off:
 ####
 ####
- if [ "$first_option" = "ipforward-off" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ]"
- echo $header_lineal
- for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
- do $command_sysctl -w $a=0 ; done
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "ipforward-off" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ]"
+for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+do $command_sysctl -w $a=0 ; done
+exit; fi
 ####
 ####
 #### :rutina-final-ipforward-off
