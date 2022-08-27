@@ -481,7 +481,7 @@ echo "$text_md     $license_gpl"
 if [ "$fwiptables_installed" == "no" ]; then
 $brake_md
 echo "$text_md"
-echo "$text_md     PLEASE, install this version, or copy $0 in $directory_binary/$cmd_fwiptables" ; 
+echo "$text_md     PLEASE, install this version, or copy $0 to $directory_binary/$cmd_fwiptables" ; 
 fi
 #### #### #### 
 exit; fi
