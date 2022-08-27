@@ -162,8 +162,8 @@ directory_log="$directory_data/fwiptables-log"
 directory_shell="$directory_data/fwiptables-shell"
 ####
 ####
-#### english: file: log files and path files config files
-#### spanish: file: archivos log y ruta de los archivos de configuracion
+#### english: file log:     log files and path files config files
+#### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
 output_filelog="$directory_log/$name_fwiptables-filelog"
@@ -287,9 +287,9 @@ sinco=" || " ;
 #### #### english: look .md .markdown  #### spanish: apariencia con .md .markdown
 title_md="### " ;
 text_md="     " ;
-brake_md="echo ---" ;
-center_in_md="<-" ;
-center_out_md="->" ;
+brake_md="---" ;
+#### center_in_md="<-" ;
+#### center_out_md="->" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 cincuenta="##################################################" ;    
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -313,9 +313,9 @@ head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_lineal="$tab   $tab  "                           
+header_lineal=""
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-footer_lineal="$tab   $tab  "                            
+footer_lineal=""
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 #### obsolete old system: give_cover="$zero_option header"
 give_cover="echo $head_principal"
@@ -457,7 +457,7 @@ echo "$text_md       # Custom firewall # Create one firewall custom and launch y
 echo "$text_md     Choose run iptables rules of one firewall with your own config files.                      "
 echo "$text_md       # Network tools # Use this firewall with some utilities for ipv4 and ipv6.               "
 echo "$text_md     With tool-options: Work with network utilities. With show-options: Show config net files.  "
-$brake_md
+echo $brake_md
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     $cmd_fwiptables $fversion"
 #### #### #### 
@@ -471,7 +471,7 @@ echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptab
 echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
 #### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
 echo "$text_md     Uninstall $name_fwiptables from the computer   ||  TYPE:  ./fwiptables-$fversion uninstall" 
-$brake_md
+echo $brake_md
 echo "$title_md    ###  Fran fwiptables project.  ###    "
 echo "$text_md       # Download the latest version $fprogram from sourceforge"
 echo "$text_md     $fweb_latest"
@@ -479,7 +479,7 @@ echo "$text_md       # $flicense"
 echo "$text_md     $license_gpl"
 #### #### #### 
 if [ "$fwiptables_installed" == "no" ]; then
-$brake_md
+echo $brake_md
 echo "$text_md"
 echo "$text_md     PLEASE, install this version, or copy $0 to $directory_binary/$cmd_fwiptables" ; 
 fi
@@ -2451,106 +2451,106 @@ echo "$title_md [ $first_option ] [ help in english and spanish ] [ all-help.md 
 echo "$text_md [ Choose only help in english ]        [ Type:     $cmd_fwiptables help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $cmd_fwiptables ayuda ]"
 echo "$text_md [ all-help in english and spanish ]    [ Type:     $cmd_fwiptables all-help ]"
-$brake_md
+echo $brake_md
 $cmd_fwiptables intro
 echo  $text_md
-$brake_md
+echo $brake_md
 echo "$title_md [ full-options ]"
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables full-options
-$brake_md
+echo $brake_md
 echo  $text_md
 echo "$title_md [ group-options ]"
 echo  $text_md
-$brake_md
+echo $brake_md
 echo  $text_md
 echo "$title_md [ Principal options ]"
 echo  $text_md
-$brake_md
+echo $brake_md
 echo  $text_md
 $cmd_fwiptables output-interface
-$brake_md
+echo $brake_md
 echo  $text_md
 $cmd_fwiptables firewall-control
-$brake_md
+echo $brake_md
 echo  $text_md
 $cmd_fwiptables firewall-list
-$brake_md
+echo $brake_md
 echo  $text_md
 $cmd_fwiptables firewall-launch
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables firewall-custom
 echo  $text_md
 echo "$title_md [ Secondary options ]"
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-connect
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-sockets
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-rules
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-forward
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-udp
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-tcp
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-icmp
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-nmap
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-sudo
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-game
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-system
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-install
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-blacklist
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables tool-dev
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables show-hardware
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables show-log
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables show-etc
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables show-about
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables show-help
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables notes
 echo  $text_md
 echo "$title_md  [Config cfg example] [Configuracion cfg ejemplo]"
 echo  $text_md
-$brake_md
+echo $brake_md
 cat $defaultcfg
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables version
 echo  $text_md
 echo $footer_lineal
@@ -2652,7 +2652,7 @@ echo "$text_md $tab firewall-custom"
 echo "$text_md $tab_lang_english                  Create, modify and show configurations"
 echo "$text_md $tab_lang_spanish                  Crea, modifica y muestra configuraciones"
 echo  $text_md
-$brake_md
+echo $brake_md
 echo "$title_md                   [ tool options ]"
 echo  $text_md 
 echo "$text_md $tab tool-sockets"
@@ -2689,7 +2689,7 @@ echo "$text_md $tab tool-system"
 echo "$text_md $tab_lang_english                  Several tools for the system"
 echo "$text_md $tab_lang_spanish                  Varias herramientas para el sistema"
 echo  $text_md 
-$brake_md
+echo $brake_md
 echo "$title_md                   [ show options ]"
 echo  $text_md 
 echo "$text_md $tab show-etc"
@@ -9810,13 +9810,13 @@ exit; fi
 if [ "$first_option" = "readme" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ help in english ] [ readme.md ]"
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables intro
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables options
 echo  $text_md
-$brake_md
+echo $brake_md
 echo "$title_md         [ Launch interface ]"
 echo  $text_md
 echo "$text_md         txt OR -txt OR -t : Output at text line | whith bash backend."
@@ -9828,7 +9828,7 @@ echo "$text_md       help OR -help OR -h : Output help to text in text plain for
 echo "$text_md       info OR -info OR -i : Output help to text in text rst format."
 echo "$text_md               tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
 echo  $text_md
-$brake_md
+echo $brake_md
 echo "$text_md            cli-menu : Command line interface with menus | whith dialog backend."
 echo "$text_md            gui-menu : Graphicall interface with menus | whith zenity backend."
 echo "$text_md           gui-shell : Graphicall interface with shell | whith zenity backend."
@@ -9858,7 +9858,7 @@ echo "$text_md list-forwardnum6 : List iptables filter rules forward ipv6 in num
 echo "$text_md     list-forward : List iptables filter rules forward ipv4."
 echo "$text_md    list-forward6 : List iptables filter rules forward ipv6."
 echo  $text_md
-$brake_md
+echo $brake_md
 echo "$text_md     list-filter4 : List iptables filter rules from ipv4."
 echo "$text_md     list-filter6 : List iptables filter rules from ipv6."
 echo "$text_md        list-nat4 : List iptables nat rules from ipv4."
@@ -9881,7 +9881,7 @@ echo "$text_md        wizard-mini : Asistant y Launch simple firewall."
 echo "$text_md             custom : Configure one custom firewall, made for you with file.cfg."
 echo "$text_md           off-line : Launch disconected firewall for all servers and clients except localhost."
 echo "$text_md      all-permisive : Launch a firewall very permisive."
-$brake_md
+echo $brake_md
 echo "$text_md      games-shooter : Launch a firewall likes games udp non-root games."
 echo "$text_md       game-wesnoth : Launch a firewall likes game of the battle for wesnoth."
 echo "$text_md      game-minetest : Launch a firewall likes game minecraft or minetest."
@@ -9894,11 +9894,11 @@ echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md     client-torrent : Launch a firewall likes web client and ssh client and torrent."
 echo "$text_md         client-vpn : Launch a firewall likes web client and ssh client and vpn client."
 echo "$text_md       client-squid : Launch a firewall likes client squid."
-$brake_md
+echo $brake_md
 echo "$text_md         shield-ssh : Launch a firewall likes server ssh with shield for new-conecctions until 6-tries each-hour/each-ip."
-$brake_md
+echo $brake_md
 echo "$text_md       ______All server ssh configured with shield ssh server at max 12 tries to connect at ip/hour_____"
-$brake_md
+echo $brake_md
 echo "$text_md         server-ssh : Launch a firewall likes server ssh."
 echo "$text_md         server-web : Launch a firewall likes web server and ssh server."
 echo "$text_md       server-samba : Launch a firewall likes server and client for samba and ssh."
@@ -10145,13 +10145,13 @@ exit; fi
 if [ "$first_option" = "leeme" ]; then $give_cover
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme.md ]"
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables intro
 echo  $text_md
-$brake_md
+echo $brake_md
 $cmd_fwiptables options
 echo  $text_md
-$brake_md
+echo $brake_md
 echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
 echo  $text_md
 echo "$title_md [ Lanza interfaz ]."
@@ -10227,7 +10227,7 @@ echo "$text_md          wizard-mini : Asistente y lanza simple cortafuegos."
 echo "$text_md               custom : lanza el cortafuegos especificando un archivo.cfg."
 echo "$text_md             off-line : Lanza un desconectado cortafuegos de todo excepto localhost."
 echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
-$brake_md
+echo $brake_md
 echo "$text_md        games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
 echo "$text_md         game-wesnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
 echo "$text_md        game-minetest : Lanza el cortafuegos como cliente de juego minecraft o minetest."
@@ -10240,9 +10240,9 @@ echo "$text_md           client-vpn : Lanza el cortafuegos como cliente web y ss
 echo "$text_md         client-squid : Lanza un firewall como cliente squid."
 echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
 echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
-$brake_md
+echo $brake_md
 echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo 6-intentos cada-hora/cada-ip."
-$brake_md
+echo $brake_md
 echo "$text_md         _____Todos los servidores ssh configurados a maximo 12 intentos de acceso por ip/hora"
 echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
 echo "$text_md           server-web : Lanza el cortafuegos como servidor web y ssh."
