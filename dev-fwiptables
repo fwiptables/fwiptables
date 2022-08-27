@@ -3988,7 +3988,7 @@ exit; fi
 if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Firewall Rules" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool connect" "06 Tool rules" \
+ --list "01 Firewall Control" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool connect" "06 Tool rules" \
 "07 Tool sockets" "08 Tool forward" "09 Tool tcp" "10 Tool udp" "11 Tool icmp"  "12 Tool sudo" \
 "13 Tool game" "14 Tool system" "15 Tool install" "16 Tool blacklist" "17 Tool dev" \
 "18 Show hardware" "19 Show etc" "20 Show log" "21 Show about" "22 Show help" \
@@ -3997,7 +3997,7 @@ selection=$(zenity $graphic_dimension  \
 #### 
 case "$selection" in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"01 Firewall Rules")$cmd_fwiptables gui-menu-firewall-control ; exit ;;
+"01 Firewall Control")$cmd_fwiptables gui-menu-firewall-control ; exit ;;
 "02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
 "03 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
 "04 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
