@@ -1,10 +1,10 @@
 #!/bin/bash
-#### #### for shell bash:
-#### #### #!/bin/bash
+#### #### #### #### for shell bash:
+#### #### #### #### #!/bin/bash
 ####
-#### #### for shell zsh:
-#### #### #!/bin/zsh
-#### #### emulate -L bash
+#### #### #### #### for shell zsh:
+#### #### #### #### #!/bin/zsh
+#### #### #### #### emulate -L bash
 ####
 #### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
@@ -137,7 +137,7 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ####
 name_fwiptables="fwiptables"
 cmd_fwiptables="fwiptables-cmd"
-icon_fwiptables="zenity"
+#### icon_fwiptables="zenity"
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -146,7 +146,7 @@ icon_fwiptables="zenity"
 ####
 directory_fwiptables="/usr/bin"
 directory_data="$HOME/.config/fwiptables"
-directory_desktop="$HOME/.local/share/applications"
+#### directory_desktop="$HOME/.local/share/applications"
 ####
 ####
 #### english: directory tree 
@@ -397,8 +397,7 @@ allow_mac_whitelist="no" ; allow_mac_blacklist="no" ;
 allow_net_vpn="no" ; allow_net_blacklist="no" ;
 allow_output_uid="no" ; allow_output_gid="no" ;
 allow_others_protocols="no" ;
-config_maxtries_ssh="20" ;
-config_ssh_port="22" ;
+config_maxtries_ssh="20" ; config_ssh_port="22" ;
 config_dmz_ip4="" ; config_dmz_ip6="" ;
 config_input_state="new,related,established" ;
 config_output_state="new,related,established" ;
@@ -562,6 +561,29 @@ if [ "$command_dhclient_script" = "$NULL" ] ; then $nada ; else favorite_dhcp="$
 if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp="$command_dhclient"         ; fi
 ####
 ####
+##############################      english: search favorite date: favorite date command        #####################
+##############################      spanish: busca preferida fecha: favorita comando de fecha   #####################
+#### :rutina-inicial-favorite-date-command:
+####
+####
+favorite_date_command=""
+if [ "$command_rdate"   = "$NULL" ]; then $nada ; else favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    = "$NULL" ]; then $nada ; else favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" = "$NULL" ]; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
+####
+####
+#### :rutina-final-favorite-date-command:
+##############################      english: search favorite music player            #####################
+##############################      spanish: busca preferida reproductor de musica   #####################
+#### :rutina-inicial-favorite-music-command:
+####
+####
+favoite_music_command=""
+if [ "$command_mpg321" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
+if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
+####
+####
+#### :rutina-final-favorite-music-command:
 ##############################   english: uninstall:      fwiptables uninstall      ###########################################
 ##############################   spanish: desinstalador:  fwiptables desistalador   ###########################################
 #### :rutina-inicial-uninstall:
@@ -613,21 +635,21 @@ $cmd_fwiptables regen-config &> /dev/null
 ####  spanish: genera fwiptables-gui-menu fwiptables-gui-shell y fwiptables-cli-menu en /usr/bin
 ####
 ####
+echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-cli-menu
+echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fwiptables/$name_fwiptables-cli-menu
+chmod 700 $directory_fwiptables/$name_fwiptables-cli-menu &> /dev/null
+####
+####
 echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-gui-menu
 echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$name_fwiptables-gui-menu
 echo "sudo $cmd_fwiptables gui-menu" &>> $directory_fwiptables/$name_fwiptables-gui-menu
-chmod 700 $directory_desktop/$name_fwiptables-gui-menu &> /dev/null
+chmod 700 $directory_fwiptables/$name_fwiptables-gui-menu &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-gui-shell
 echo "$command_xhost +SI:localuser:root" &>> $directory_fwiptables/$name_fwiptables-gui-shell
 echo "sudo $cmd_fwiptables gui-shell" &>> $directory_fwiptables/$name_fwiptables-gui-shell
-chmod 700 $directory_desktop/$name_fwiptables-gui-shell &> /dev/null
-####
-####
-echo "#!/bin/bash" &> $directory_fwiptables/$name_fwiptables-cli-menu
-echo "sudo $cmd_fwiptables cli-menu" &>> $directory_fwiptables/$name_fwiptables-cli-menu
-chmod 700 $directory_desktop/$name_fwiptables-cli-menu &> /dev/null
+chmod 700 $directory_fwiptables/$name_fwiptables-gui-shell &> /dev/null
 ####
 ####
 ####   english: Show final status from installer
@@ -1607,29 +1629,6 @@ $cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 #### :rutina-final-autosave:
-##############################      english: search favorite date: favorite date command        #####################
-##############################      spanish: busca preferida fecha: favorita comando de fecha   #####################
-#### :rutina-inicial-favorite-date-command:
-####
-####
-favorite_date_command=""
-if [ "$command_rdate"   = "$NULL" ]; then $nada ; else favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    = "$NULL" ]; then $nada ; else favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" = "$NULL" ]; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
-####
-####
-#### :rutina-final-favorite-date-command:
-##############################      english: search favorite music player            #####################
-##############################      spanish: busca preferida reproductor de musica   #####################
-#### :rutina-inicial-favorite-music-command:
-####
-####
-favoite_music_command=""
-if [ "$command_mpg321" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
-if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
-####
-####
-#### :rutina-final-favorite-music-command:
 ##############################      english: ready system rules con its option               #####################
 ##############################      spanish: preprara reglas del sistema con sus opciones    #####################
 #### :rutina-inicial-custom-rules:
@@ -1662,8 +1661,8 @@ if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]; then  $cmd_fwiptables cfg ; 
-echo "$tab [ Usage ] [ $cmd_fwiptables custom file-cfg ]"
-echo "$tab [  See  ] [ $cmd_fwiptables firewall-custom ]"
+echo "$tab [ info ] [ $cmd_fwiptables custom file-cfg ]"
+echo "$tab [ info ] [ $cmd_fwiptables firewall-custom ]"
 exit; fi
 ####
 ####
@@ -5471,13 +5470,13 @@ echo
 echo "$tab [ Description program ]"
 echo "$tab $fdescription"
 echo
-echo "$tab [ Exec program ]"
+echo "$tab [ Location program ]"
 echo "$tab $directory_fwiptables/$cmd_fwiptables"
 echo
 echo "$tab [ File format ]"
 file $directory_fwiptables/$cmd_fwiptables | cut -d "," -f 1-2
 echo
-echo "$tab [ MD5 ]"
+echo "$tab [ MD5 sum ]"
 $command_md5sum $0
 echo
 echo "$tab [ Data directory ]"
