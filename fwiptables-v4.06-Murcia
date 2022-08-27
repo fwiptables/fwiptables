@@ -2434,11 +2434,13 @@ echo  $text_md
 $brake_md
 echo "$title_md [ full-options ]"
 echo  $text_md
+$brake_md
 $cmd_fwiptables full-options
 $brake_md
 echo  $text_md
 echo "$title_md [ group-options ]"
 echo  $text_md
+$brake_md
 echo  $text_md
 echo "$title_md [ Principal options ]"
 echo  $text_md
@@ -9786,10 +9788,16 @@ exit; fi
 #### :rutina-inicial-readme:
 ####
 ####
-if [ "$first_option" = "readme" ]; then 
+if [ "$first_option" = "readme" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ help in english ] [ readme.md ]"
+echo  $text_md
+$brake_md
 $cmd_fwiptables intro
+echo  $text_md
+$brake_md
 $cmd_fwiptables options
+echo  $text_md
+$brake_md
 echo "$title_md         [ Launch interface ]"
 echo  $text_md
 echo "$text_md         txt OR -txt OR -t : Output at text line | whith bash backend."
@@ -10115,11 +10123,16 @@ exit; fi
 #### :rutina-inicial-leeme:
 ####
 ####
-if [ "$first_option" = "leeme" ]; then 
+if [ "$first_option" = "leeme" ]; then $give_cover
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme.md ]"
+echo  $text_md
+$brake_md
 $cmd_fwiptables intro
+echo  $text_md
+$brake_md
 $cmd_fwiptables options
 echo  $text_md
+$brake_md
 echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
 echo  $text_md
 echo "$title_md [ Lanza interfaz ]."
