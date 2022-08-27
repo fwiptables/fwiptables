@@ -48,7 +48,7 @@ if [ "$(id -u)" = "0" ] ; then echo -n ; else
 echo
 echo " [ info ] [ fwiptables needs to be root to work ]"
 echo
-echo " [ fail ] [ Be root to work with fwiptables in your system ] "
+echo " [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
 echo
 exit ; fi
 ####
@@ -457,7 +457,7 @@ echo "$text_md       # Custom firewall # Create one firewall custom and launch y
 echo "$text_md     Choose run iptables rules of one firewall with your own config files.                      "
 echo "$text_md       # Network tools # Use this firewall with some utilities for ipv4 and ipv6.               "
 echo "$text_md     With tool-options: Work with network utilities. With show-options: Show config net files.  "
-echo $brake_md
+echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     $cmd_fwiptables $fversion"
 #### #### #### 
@@ -471,7 +471,7 @@ echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptab
 echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
 #### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
 echo "$text_md     Uninstall $name_fwiptables from the computer   ||  TYPE:  ./fwiptables-$fversion uninstall" 
-echo $brake_md
+echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables project.  ###    "
 echo "$text_md       # Download the latest version $fprogram from sourceforge"
 echo "$text_md     $fweb_latest"
@@ -479,9 +479,9 @@ echo "$text_md       # $flicense"
 echo "$text_md     $license_gpl"
 #### #### #### 
 if [ "$fwiptables_installed" == "no" ]; then
-echo $brake_md
+echo "$brake_md"
 echo "$text_md"
-echo "$text_md     PLEASE, install this version, or copy $0 to $directory_binary/$cmd_fwiptables" ; 
+echo "$text_md     PLEASE, install this version, or copy $0 to $directory_binary/$cmd_fwiptables" 
 fi
 #### #### #### 
 exit; fi
@@ -2451,108 +2451,108 @@ echo "$title_md [ $first_option ] [ help in english and spanish ] [ all-help.md 
 echo "$text_md [ Choose only help in english ]        [ Type:     $cmd_fwiptables help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $cmd_fwiptables ayuda ]"
 echo "$text_md [ all-help in english and spanish ]    [ Type:     $cmd_fwiptables all-help ]"
-echo $brake_md
+echo "$brake_md"
 $cmd_fwiptables intro
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 echo "$title_md [ full-options ]"
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables full-options
-echo $brake_md
-echo  $text_md
+echo "$brake_md"
+echo "$text_md"
 echo "$title_md [ group-options ]"
-echo  $text_md
-echo $brake_md
-echo  $text_md
+echo "$text_md"
+echo "$brake_md"
+echo "$text_md"
 echo "$title_md [ Principal options ]"
-echo  $text_md
-echo $brake_md
-echo  $text_md
+echo "$text_md"
+echo "$brake_md"
+echo "$text_md"
 $cmd_fwiptables output-interface
-echo $brake_md
-echo  $text_md
+echo "$brake_md"
+echo "$text_md"
 $cmd_fwiptables firewall-control
-echo $brake_md
-echo  $text_md
+echo "$brake_md"
+echo "$text_md"
 $cmd_fwiptables firewall-list
-echo $brake_md
-echo  $text_md
+echo "$brake_md"
+echo "$text_md"
 $cmd_fwiptables firewall-launch
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables firewall-custom
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Secondary options ]"
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-connect
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-sockets
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-rules
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-forward
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-udp
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-tcp
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-icmp
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-nmap
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-sudo
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-game
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-system
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-install
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-blacklist
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-dev
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables show-hardware
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables show-log
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables show-etc
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables show-about
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables show-help
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables notes
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [Config cfg example] [Configuracion cfg ejemplo]"
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 cat $defaultcfg
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables version
-echo  $text_md
+echo "$text_md"
 echo $footer_lineal
 exit; fi
 ####
@@ -2569,7 +2569,7 @@ $cmd_fwiptables output-interface
 $cmd_fwiptables firewall-options
 $cmd_fwiptables tool-options
 $cmd_fwiptables show-options
-echo $text_md $footer_lineal
+echo "$text_md" $footer_lineal
 exit; fi
 ####
 ####
@@ -2630,12 +2630,12 @@ exit; fi
 ####
 if [ "$first_option" = "group-options" ]; then $give_cover
 echo "$text_md [ ok ] [ $first_option ] [ List group options ] [ group-options.md ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md [ english info ] [ Help to one group ]"
 echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$title_md                   [ Principal options ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md $tab output-interface" 
 echo "$text_md $tab_lang_english                  Manage the interface with txt or cli or gui or log"
 echo "$text_md $tab_lang_spanish                  Manage el interfaz con txt o cli o gui or log"
@@ -2651,10 +2651,10 @@ echo "$text_md $tab_lang_spanish                  Lanza las reglas de iptables"
 echo "$text_md $tab firewall-custom"
 echo "$text_md $tab_lang_english                  Create, modify and show configurations"
 echo "$text_md $tab_lang_spanish                  Crea, modifica y muestra configuraciones"
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 echo "$title_md                   [ tool options ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md $tab tool-sockets"
 echo "$text_md $tab_lang_english                  List net sockets ip in system"
 echo "$text_md $tab_lang_spanish                  Lista sockets de red ip en el sistema"
@@ -2688,10 +2688,10 @@ echo "$text_md $tab_lang_spanish                  Herramienta de desarrollo"
 echo "$text_md $tab tool-system"
 echo "$text_md $tab_lang_english                  Several tools for the system"
 echo "$text_md $tab_lang_spanish                  Varias herramientas para el sistema"
-echo  $text_md 
-echo $brake_md
+echo "$text_md" 
+echo "$brake_md"
 echo "$title_md                   [ show options ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md $tab show-etc"
 echo "$text_md $tab_lang_english                  Show net files in /etc/"
 echo "$text_md $tab_lang_spanish                  Muestra archivos de red de /etc/"
@@ -2716,10 +2716,10 @@ exit; fi
 ####
 if [ "$first_option" = "firewall-launch" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ launch rules ] [ firewall-launch.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Launch iptables rules ]"
 echo "$text_md [ spanish info ] [ Lanza reglas de iptables ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab eraserules" 
 echo "$text_md $tab_lang_english          : Remove the iptables rules in ipv4 and ipv6"
 echo "$text_md $tab_lang_spanish          : Borra las reglas de iptables en ipv4 y ipv6"
@@ -2828,10 +2828,10 @@ exit; fi
 ####
 if [ "$first_option" = "firewall-control" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ control rules ] [ firewall-control.md ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab stop" 
 echo "$text_md $tab_lang_english          : Save and stop the rules"
 echo "$text_md $tab_lang_spanish          : Guarda y para las reglas"
@@ -2871,17 +2871,17 @@ exit; fi
 ####
 if [ "$first_option" = "firewall-list" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ List rules ] [ firewall-list.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab list"
 echo "$text_md $tab_lang_english          : List iptables filter rules from ipv4 with hide no used"
 echo "$text_md $tab_lang_spanish          : Lista reglas de tabla filtros desde ipv4 esconde no usadas"
 echo "$text_md $tab list6"
 echo "$text_md $tab_lang_english          : List iptables filter rules from ipv6 with hide no used"
 echo "$text_md $tab_lang_spanish          : Lista reglas de tabla filtros desde ipv6 esconde no usadas"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md $tab status"
 echo "$text_md $tab_lang_english          : List iptables filter rules ip4 and ipv6 when there are only default route"
 echo "$text_md $tab_lang_spanish          : Lista filtros de iptables rules ip4 y ip6 solo cuando hay ruta por defecto"
@@ -2903,7 +2903,7 @@ echo "$text_md $tab_lang_spanish          : Lista la tabla de reglas de filtros 
 echo "$text_md $tab list-forwardnum6"
 echo "$text_md $tab_lang_english          : List iptables filter rules forward ipv6 in numbers"
 echo "$text_md $tab_lang_spanish          : Lista la tabla de reglas de filtros de reenvio ipv6 en numeros"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md $tab list-filter4"
 echo "$text_md $tab_lang_english          : List iptables filter rules from ipv4"
 echo "$text_md $tab_lang_spanish          : Lista iptables reglas de filtros desde ipv4"
@@ -2934,7 +2934,7 @@ echo "$text_md $tab_lang_spanish          : lista reglas de seguridad de ipv4"
 echo "$text_md $tab list-security6"
 echo "$text_md $tab_lang_english          : List iptables security rules from ipv6"
 echo "$text_md $tab_lang_spanish          : lista reglas de seguridad de ipv6"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab list-ebtables"
 echo "$text_md $tab_lang_english          : List rules mac ethernet"
 echo "$text_md $tab_lang_spanish          : Lista reglas mac de ethernet"
@@ -2977,10 +2977,10 @@ exit; fi
 ####
 if [ "$first_option" = "firewall-custom" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool custom rules config ] [ firewall-custom.md ]"
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md [ english info ] [ custom configs ]"
 echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab new-full-config"
 echo "$text_md $tab_lang_english          : Create a new advance configfile.cfg in english"
 echo "$text_md $tab_lang_spanish          : Crea una nueva avanzada configfile.cfg en ingles"
@@ -3020,10 +3020,10 @@ exit; fi
 ####
 if [ "$first_option" = "output-interface" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ control interface ] [ output-interface.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab txt OR -txt OR -t"
 echo "$text_md $tab_lang_english          : Output to Text line"
 echo "$text_md $tab_lang_spanish          : Salida a linea de texto"
@@ -3069,10 +3069,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-sockets" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool sockets ] [ tool-sockets.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool sockets ]"
 echo "$text_md [ spanish info ] [ Herramienta de sockets ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab info-system"
 echo "$text_md $tab_lang_english          : List system info"
 echo "$text_md $tab_lang_spanish          : Lista informacion del sistema"
@@ -3121,10 +3121,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-game" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool game ] [ tool-game.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool game ]"
 echo "$text_md [ spanish info ] [ Herramienta de juego ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab ole-word"
 echo "$text_md $tab_lang_english          : Play game to discover a random word with five digits"
 echo "$text_md $tab_lang_spanish          : Juega a descubrir una palabra aleatoria de cinco caracteres"
@@ -3152,10 +3152,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-connect" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool connect ] [ tool-connect.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool connect ]"
 echo "$text_md [ spanish info ] [ Herramienta de conexion ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab iw-scan"
 echo "$text_md $tab_lang_english          : list ssid network wifi"
 echo "$text_md $tab_lang_spanish          : lista redes ssid wifi"
@@ -3183,10 +3183,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-rules" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rules.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool rules ]"
 echo "$text_md [ spanish info ] [ Herramienta de reglas ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab rule-del-shield"
 echo "$text_md $tab_lang_english          : Remove the shield to ssh"
 echo "$text_md $tab_lang_spanish          : Borra el escudo para ssh"
@@ -3208,10 +3208,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-forward" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool forward ] [ tool-forward.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool forward ]"
 echo "$text_md [ spanish info ] [ Herramienta de ipforwading ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab ipforward-list"
 echo "$text_md $tab_lang_english          : Show kernel config about forward"
 echo "$text_md $tab_lang_spanish          : Muestra configuracion del kernel sobre reenvios"
@@ -3233,10 +3233,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-icmp" ]; then $give_cover
 echo "$tab [ ok ] [ $first_option ] [ tool icmp ] [ tool-icmp.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool icmp ]"
 echo "$text_md [ spanish info ] [ Herramienta icmp ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab traceicmp-ip4"
 echo "$text_md $tab_lang_english          : Trace route a one host with ipv4 icmp"
 echo "$text_md $tab_lang_spanish          : Traza la routa a una direccion con ipv4 icmp"
@@ -3261,10 +3261,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-tcp" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool tcp ] [ tool-tcp.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool tcp ]"
 echo "$text_md [ spanish info ] [ Herramienta tcp ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab tracetcp-ip4"
 echo "$text_md $tab_lang_english          : Trace route a one host with ipv4 tcp"
 echo "$text_md $tab_lang_spanish          : Traza la routa a una direccion con ipv4 tcp"
@@ -3289,10 +3289,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-udp" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool udp ] [ tool-udp.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool udp ]"
 echo "$text_md [ spanish info ] [ Herramienta udp ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab host"
 echo "$text_md $tab_lang_english          : Resolve one host"
 echo "$text_md $tab_lang_spanish          : Resuelve una direccion a ip"
@@ -3320,10 +3320,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-nmap" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool nmap ] [ tool-nmap.md]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool nmap ]"
 echo "$text_md [ spanish info ] [ Herramienta nmap ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab scan-tcp"
 echo "$text_md $tab_lang_english          : Scan a host/mask per tcp protocol"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por tcp protocolo"
@@ -3351,10 +3351,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-sudo" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudo.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ Tool sudo ]"
 echo "$text_md [ Herramienta sudo ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab sudofw-adduser" 
 echo "$text_md $tab_lang_english          : Allow sudo $cmd_fwiptables to other choosed users"
 echo "$text_md $tab_lang_spanish          : Permite sudo $cmd_fwiptables a otros elegidos usuarios"
@@ -3379,10 +3379,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-install" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool install ] [ tool-install.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab install"
 echo "$text_md $tab_lang_english          : Install this version actual"
 echo "$text_md $tab_lang_spanish          : Instala esta version actual"
@@ -3410,10 +3410,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-blacklist" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-blacklist.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool blacklist ]"
 echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab blacklist-list"
 echo "$text_md $tab_lang_english               : Options list to block at dangerous sites from /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
@@ -3435,10 +3435,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-dev" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool install ] [ tool-dev.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab new-versions"
 echo "$text_md $tab_lang_english               : Show the list of the last versions"
 echo "$text_md $tab_lang_spanish               : Muestra el listado de las ultivas versiones"
@@ -3468,10 +3468,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-system" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool system ] [ tool-system.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool system ]"
 echo "$text_md [ spanish info ] [ Herramienta sistema ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab free-ram"
 echo "$text_md $tab_lang_english           : Clean for innecesary memory ram"
 echo "$text_md $tab_lang_spanish           : Libera la memoria ram innecesaria"
@@ -3502,10 +3502,10 @@ exit; fi
 ####
 if [ "$first_option" = "tool-computer" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ tool computer ] [ tool-computer.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Tool computer ]"
 echo "$text_md [ spanish info ] [ Herramienta de ordenador ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab pc-halt"
 echo "$text_md $tab_lang_english           : Launch halt to power off the pc"
 echo "$text_md $tab_lang_spanish           : Lanza halt para apagar el pc"
@@ -3527,10 +3527,10 @@ exit; fi
 ####
 if [ "$first_option" = "show-etc" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ show etc files ] [ show-etc.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Show configs files from etc ]"
 echo "$text_md [ spanish info ] [ Mostrar configuraciones de archivos de etc ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab hosts"
 echo "$text_md $tab_lang_english           : Show /etc/hosts, hosts local and statics host"
 echo "$text_md $tab_lang_spanish           : Muestra /etc/hosts, hosts locales y hosts estaticos"
@@ -3567,10 +3567,10 @@ exit; fi
 ####
 if [ "$first_option" = "show-hardware" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ show hardware info ] [ show-hardware.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Show hardware info ]"
 echo "$text_md [ spanish info ] [ Muestra informacion del hardware ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab lpinfo"
 echo "$text_md $tab_lang_english           : Show the device printers"
 echo "$text_md $tab_lang_spanish           : Muestra los dispositivos de impresora"
@@ -3604,10 +3604,10 @@ exit; fi
 ####
 if [ "$first_option" = "show-log" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ show log files ] [ show-log.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Show log ]"
 echo "$text_md [ spanish info ] [ Mostrar log ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab log-ssh"
 echo "$text_md $tab_lang_english           : Search logs for ssh in /var/log"
 echo "$text_md $tab_lang_spanish           : Busca logs con sshd en /var/log"
@@ -3635,10 +3635,10 @@ exit; fi
 ####
 if [ "$first_option" = "show-about" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ show about ] [ show-about.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Show about ]"
 echo "$text_md [ spanish info ] [ Mostrar acerca de ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab about"
 echo "$text_md $tab_lang_english           : About"
 echo "$text_md $tab_lang_spanish           : Acerca"
@@ -3651,10 +3651,10 @@ echo "$text_md $tab_lang_spanish           : Muestra dependencias"
 echo "$text_md $tab examples"
 echo "$text_md $tab_lang_english           : Show examples"
 echo "$text_md $tab_lang_spanish           : Muestra ejemplos"
-echo "$text_md config-eng"
+echo "$text_md $tab config-eng"
 echo "$text_md $tab_lang_english           : Config example with comments in english"
 echo "$text_md $tab_lang_spanish           : Ejemplo de configuracion con comentarios en ingles"
-echo "$text_md config-spa"
+echo "$text_md $tab config-spa"
 echo "$text_md $tab_lang_english           : Config example with comments in spanish"
 echo "$text_md $tab_lang_spanish           : Ejemplo de configuracion con comentarios en español"
 echo "$text_md $tab license"
@@ -3672,10 +3672,10 @@ exit; fi
 ####
 if [ "$first_option" = "show-help" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ show help ] [ show-help.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md [ english info ] [ Show help ]"
 echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md $tab all-help"
 echo "$text_md $tab_lang_english           : Show help in english and spanish"
 echo "$text_md $tab_lang_spanish           : Muestra la ayuda en ingles y en español"
@@ -3711,40 +3711,40 @@ exit; fi
 ####
 if [ "$first_option" = "notes" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ List notes about $cmd_fwiptables ] [ notes.md ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ allow_maxtries_ssh ] [ limit a attack per bruteforce to us ssh server] "
 echo "$text_md  [ allow_maxtries_ssh ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ net vpn ]  [ virtual private network ] [ whitelist ]"
 echo "$text_md  [ net vpn ] [ red privada virtual ]     [ lista blanca ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  Host [net vpn] excepcionals hosts has conection allowed in firewall"
 echo "$text_md  Host [net vpn] excepcionales hosts tienen la conexion permitida en el firewall"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [net blacklist] [deny host]"
 echo "$text_md  [net blacklist] [Lista negra]"
-echo  $text_md  
+echo "$text_md"  
 echo "$text_md  Host [ net blacklist ] excepcionals hosts has conection dropped in firewall"
 echo "$text_md  Host [ net blacklist ] expcecionales hosts tienen la conexion denegada en firewall"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ allow output uid ] [user and group]"
 echo "$text_md  [ allow output uid ] [usuario y grupo]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  User and/or group excepcional have output conection allowed in firewall"
 echo "$text_md  Usuario y/o grupo excepcional tienen la salida permitida en firewall"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ Notes ] [ Two iptables netfilter ]"
 echo "$text_md  [ Notas ] [ Dos iptables netfilter ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  iptables-legacy   is    support for xtables "
 echo "$text_md  iptables-nft      is    support for nftables "
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ Notes ] [necesary ports to connect with ipv4 and ipv6 in UDP protocol]"
 echo "$text_md  [ Notas ] [puertos necesarios para conectar con ipv4 y ipv6 en UDP protocolo]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  ntp    : Port necesary to update the time and date"
 echo "$text_md         : Puerto necesario para actualizar la hora y fecha"
 echo "$text_md  bootpc : Port necesary to dhcp and get ip"
@@ -3753,22 +3753,22 @@ echo "$text_md  domain : This port is necesary to domain resolver"
 echo "$text_md         : Puerto necesario para resolver dominios"
 echo "$text_md  https  : This port is necesary for udp named web html5"
 echo "$text_md         : Puerto necesario para udp llamado web html5"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ Notes ] [necesary protocols for ip v6]"
 echo "$text_md  [ Notas ] [protocolos necesarios para ip v6]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  ipv6-icmp : Necesary protocol in ipv6"
 echo "$text_md        : Protocolo necesario en ipv6"
 echo "$text_md  ipv4 protocols : ipv6 works too with old ipv4 procotols"
 echo "$text_md        : ipv6 funciona tambien con viejos ipv4 protocolos"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  [ License ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
-echo  $text_md
+echo "$text_md"
 echo  $footer_lineal
 exit; fi
 ####
@@ -9809,16 +9809,19 @@ exit; fi
 ####
 if [ "$first_option" = "readme" ]; then $give_cover
 echo "$header_ok [ $first_option ] [ help in english ] [ readme.md ]"
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables intro
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables options
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
+echo "$title_md         [ All options per groups ]  [ Options one to one in each group ]"
+echo "$text_md"
+echo "$brake_md"
 echo "$title_md         [ Launch interface ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md         txt OR -txt OR -t : Output at text line | whith bash backend."
 echo "$text_md         cli OR -cli OR -c : Output at text menu | whith dialog backend."
 echo "$text_md         gui OR -gui OR -g : Output at graphicall window || whith zenity backend."
@@ -9827,14 +9830,14 @@ echo "$text_md         web OR -web OR -w : Output to text web browser."
 echo "$text_md       help OR -help OR -h : Output help to text in text plain format."
 echo "$text_md       info OR -info OR -i : Output help to text in text rst format."
 echo "$text_md               tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 echo "$text_md            cli-menu : Command line interface with menus | whith dialog backend."
 echo "$text_md            gui-menu : Graphicall interface with menus | whith zenity backend."
 echo "$text_md           gui-shell : Graphicall interface with shell | whith zenity backend."
-echo  $text_md
+echo "$text_md"
 echo "$title_md        [ Control the iptables rules ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md          stop : Save and stop firewall iptables."
 echo "$text_md      continue : Restore the firewall iptables stopped."
 echo "$text_md         reset : Reset the firewall iptables."
@@ -9843,9 +9846,9 @@ echo "$text_md          show : Show one firewall standard."
 echo "$text_md          save : Save one firewall iptables."
 echo "$text_md          load : Restore a one firewall iptables."
 echo "$text_md        actual : Show the firewall standard actual."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ List iptables rules]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md               ls : likes list-filter4."
 echo "$text_md              ls6 : likes list-filter6."
 echo "$text_md             list : likes list-filter4."
@@ -9857,8 +9860,8 @@ echo "$text_md         listnum6 : List iptables filter rules from ipv6 in number
 echo "$text_md list-forwardnum6 : List iptables filter rules forward ipv6 in numbers."
 echo "$text_md     list-forward : List iptables filter rules forward ipv4."
 echo "$text_md    list-forward6 : List iptables filter rules forward ipv6."
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 echo "$text_md     list-filter4 : List iptables filter rules from ipv4."
 echo "$text_md     list-filter6 : List iptables filter rules from ipv6."
 echo "$text_md        list-nat4 : List iptables nat rules from ipv4."
@@ -9871,17 +9874,17 @@ echo "$text_md   list-security4 : List iptables security rules from ipv4."
 echo "$text_md   list-security6 : List iptables security rules from ipv6"
 echo "$text_md    list-ebtables : List rules ebtables mac of ethernet."
 echo "$text_md    ist-arptables : List rules arptables arp."
-echo  $text_md
+echo "$text_md"
 $break_md
 echo "$title_md        [ Launch firewall iptables rules ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md         eraserules : Remove the iptables rules in ipv4 and ipv6."
 echo "$text_md        wizard-full : Asistant y launch complete firewall."
 echo "$text_md        wizard-mini : Asistant y Launch simple firewall."
 echo "$text_md             custom : Configure one custom firewall, made for you with file.cfg."
 echo "$text_md           off-line : Launch disconected firewall for all servers and clients except localhost."
 echo "$text_md      all-permisive : Launch a firewall very permisive."
-echo $brake_md
+echo "$brake_md"
 echo "$text_md      games-shooter : Launch a firewall likes games udp non-root games."
 echo "$text_md       game-wesnoth : Launch a firewall likes game of the battle for wesnoth."
 echo "$text_md      game-minetest : Launch a firewall likes game minecraft or minetest."
@@ -9894,11 +9897,11 @@ echo "$text_md         client-tor : Launch a firewall with brwoser with tor."
 echo "$text_md     client-torrent : Launch a firewall likes web client and ssh client and torrent."
 echo "$text_md         client-vpn : Launch a firewall likes web client and ssh client and vpn client."
 echo "$text_md       client-squid : Launch a firewall likes client squid."
-echo $brake_md
+echo "$brake_md"
 echo "$text_md         shield-ssh : Launch a firewall likes server ssh with shield for new-conecctions until 6-tries each-hour/each-ip."
-echo $brake_md
+echo "$brake_md"
 echo "$text_md       ______All server ssh configured with shield ssh server at max 12 tries to connect at ip/hour_____"
-echo $brake_md
+echo "$brake_md"
 echo "$text_md         server-ssh : Launch a firewall likes server ssh."
 echo "$text_md         server-web : Launch a firewall likes web server and ssh server."
 echo "$text_md       server-samba : Launch a firewall likes server and client for samba and ssh."
@@ -9912,9 +9915,9 @@ echo "$text_md      server-mumble : Launch a firewall likes server mumble."
 echo "$text_md         server-sql : Launch a firewall likes server sql."
 echo "$text_md    server-asterisk : Launch a firewall likes server asterisk."
 echo "$text_md       server-squid : Launch a firewall likes server squid."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ firewall config ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md       new-full-config : Create a new configfile.cfg in english."
 echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish."
 echo "$text_md       new-mini-config : Create a new basic configfile.cfg in english."
@@ -9924,23 +9927,23 @@ echo "$text_md          names-config : List config files cfg."
 echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ tool connect ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md               iw-scan : list ssid on wifi"
 echo "$text_md               iw-info : Show the connected wifi"
 echo "$text_md              wpa-save : Connect to ssid in wifi for first time"
 echo "$text_md              wpa-load : Connect to ssid in wifi saved"
 echo "$text_md           dhcp-client : run dhcp client"
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ tool rules ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md         rule-del-rule : Delete a rule for its number"
 echo "$text_md       rule-del-shield : Delete the shield to ssh with max number tries"
 echo "$text_md       rule-add-shield : Add the shield to ssh with max number tries"
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ List sockets ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md      info-nodes : List the conentions arp in lan."
 echo "$text_md      info-proxy : List system proxy."
 echo "$text_md     info-listen : List system listen socket list."
@@ -9953,97 +9956,97 @@ echo "$text_md         netstat : Show net sockets with command netstat."
 echo "$text_md     netstat-nat : Show net sockets with command netstat-nat."
 echo "$text_md        web-cert : Download one ssl certificated to one web with port https(443)."
 echo "$text_md         tcpdump : Listen the connections."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool forward ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  ipforward-list : Show kernel config about forward."
 echo "$text_md    ipforward-on : Active kernel config about forward."
 echo "$text_md   ipforward-off : Deactive kernel config about forward."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool tcp ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md    tracetcp-ip4 : Trace route a one host with ipv4 tcp."
 echo "$text_md    tracetcp-ip6 : Trace route a one host with ipv6 tcp."
 echo "$text_md       speed-ip4 : Test the bandwidth with ipv4."
 echo "$text_md       speed-ip6 : Test the bandwidth with ipv6."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool udp ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md           host : Resolve one host."
 echo "$text_md            dig : Resolve one host."
 echo "$text_md      resolveip : Resolve one host and viceversa."
 echo "$text_md          geoip : Locate a one host or ip."
 echo "$text_md ntpdate-client : Update the date from ntp server."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool icmp ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  traceicmp-ip4 : Trace route a one host with ipv4 icmp."
 echo "$text_md  traceicmp-ip6 : Trace route a one host with ipv6 icmp."
 echo "$text_md       ping-ip4 : Do a one ping with to one host with ipv4 icmp."
 echo "$text_md       ping-ip6 : Do a one ping with to one host with ipv6 icmp."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool nmap ]"
-echo $text_md
+echo "$text_md"
 echo "$text_md       scan-tcp : Scan a host/mask per tcp protocol."
 echo "$text_md       scan-syn : Scan a host/mask per syn socket."
 echo "$text_md       scan-fin : Scan a host/mask per fin socket."
 echo "$text_md       scan-udp : Scan a host/mask per udp protocol."
 echo "$text_md      scan-ping : Scan a host/mask per ping udp."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool sudo ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md    sudofw-adduser : Allow sudo to other choosed users."
 echo "$text_md    sudofw-deluser : Remove sudo to other choosed users."
 echo "$text_md   sudofw-listuser : List sudo to other choosed users."
 echo "$text_md      aliasfw-list : List alias fwiptables and its autocomplete."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool game ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md         ole-word : Play game to discover a random word with five digits."
 echo "$text_md       ole-number : Play game to discover a random number with five digits."
 echo "$text_md       ole-domain : Discover one domain if generic or if country."
 echo "$text_md       colour-hex : convert one number hexadecimal in rgb."
 echo "$text_md       colour-rgb : convert one number rgb in hexadecimal."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool system ]"
-echo $text_md
+echo "$text_md"
 echo "$text_md         free-ram : Clean for innecesary ram memory."
 echo "$text_md        speed-ram : Show the speed of ram memory."
 echo "$text_md       speed-disk : Show the speed of root hard disc."
 echo "$text_md        speed-glx : Show frammes for seconds with mesa graphicall."
 echo "$text_md        radio-mp3 : Connect to one server mp3, see show-default modify-default."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool Install ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md         install : Install this program actual."
 echo "$text_md   howto-upgrade : Howto install the latest version."
 echo "$text_md         upgrade : Upgrade at the latest stable version."
 echo "$text_md     dev-upgrade : Upgrade at the latest git version."
 echo "$text_md       clean-tmp : Remove temporal files of fwiptables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool blacklist ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  blacklist-list : List options to block dangerous hosts."
 echo "$text_md    blacklist-on : Write one /etc/hosts with block a dangerous sites."
 echo "$text_md   blacklist-off : Return to /etc/hosts for default."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool dev ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md    new-versions : Show the last versions."
 echo "$text_md     dev-version : Show the link at the developer version."
 echo "$text_md     dev-changes : Show the last changes."
 echo "$text_md            code : Show the source code for one option."
 echo "$text_md          md5sum : Show the md5 sum from one file."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Tool computer ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md         pc-halt : Turn power off computer."
 echo "$text_md     pc-shutdown : Turn power off computer."
 echo "$text_md       pc-reboot : Turn reboot the computer."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Show hardware ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md          lpinfo : Show the device printers."
 echo "$text_md           lsblk : Show the device disks."
 echo "$text_md           lsusb : Show the devices usb."
@@ -10051,9 +10054,9 @@ echo "$text_md           lscpu : Show the devices cpu."
 echo "$text_md           lsgpu : Show the devices gpu."
 echo "$text_md           lspci : Show the devices pci."
 echo "$text_md            lshw : Show the hardware devices."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Show etc ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md           hosts : Show /etc/hosts, hosts local and statics host."
 echo "$text_md      protocolos : Show /etc/protocols, protocols names."
 echo "$text_md        services : Show /etc/services, ports names."
@@ -10062,26 +10065,26 @@ echo "$text_md      hosts.deny : Show /etc/hosts.deny, hosts drops in some own s
 echo "$text_md     resolv.conf : Show /etc/resolv.conf, it are the dns configured."
 echo "$text_md    show-default : Show show variables for fwiptables."
 echo "$text_md  modify-default : Modify variables for fwiptables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Show log ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md        log-ssh : Search the logs from sshd for /var/log."
 echo "$text_md     log-search : Search the logs from a input pattern for /var/log."
 echo "$text_md        sentlog : Show saved with -log."
 echo "$text_md        filelog : Alias to sentlog."
 echo "$text_md        autolog : Show autolog headers."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Show about ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md           about : About info."
 echo "$text_md         version : Info version program actual."
 echo "$text_md         depends : Show depends."
 echo "$text_md      config-eng : config example with comments in english."
 echo "$text_md      config-spa : config example with comments in spanish."
 echo "$text_md examples-config : Show configs examples."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ Show help ]"
-echo $text_md
+echo "$text_md"
 echo "$text_md        all-help : Show help in spanish and in english."
 echo "$text_md            info : Show group options."
 echo "$text_md   group-options : show group options."
@@ -10092,46 +10095,46 @@ echo "$text_md          readme : Show help in english."
 echo "$text_md           leeme : Show help in spanish."
 echo "$text_md           notes : Show firewall notes."
 echo "$text_md   some-examples : Show examples to launch."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ firewall notes ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Notes in fwiptables"
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [vpn]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Host [vpn] excepcionals hosts has conection allowed in firewall."
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [blacklist]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Host [blacklist] excepcionals hosts has conection dropped in firewall."
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [uid and/or gid excepcional]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     User and/or group excepcional have output conection allowed in firewall."
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [iptables netftilter]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     iptables-legacy   is    support for xtables."
 echo "$text_md     iptables-nft      is    support for nftables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [client firewall needs in udp ports]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     This port is necesary to update the date  : ntp"
 echo "$text_md     This port is necesary to dhcp and get ip  : bootpc"
 echo "$text_md     This port is necesary to domain resolver  : domain"
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [Ipv6 needs protocols]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Necesary protocol: ipv6-icmp."
 echo "$text_md     Ipv6 works too with: ipv4 procotols."
-echo  $text_md
+echo "$text_md"
 echo "$title_md  [License]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md  Download the latest version $fprogram from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
-echo $text_md
+echo "$text_md"
 echo $footer_lineal
 exit; fi
 ####
@@ -10144,18 +10147,19 @@ exit; fi
 ####
 if [ "$first_option" = "leeme" ]; then $give_cover
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme.md ]"
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables intro
-echo  $text_md
-echo $brake_md
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables options
-echo  $text_md
-echo $brake_md
-echo "$title_md $tab [ $first_option ] [ Opciones principales ]."
-echo  $text_md
+echo "$text_md"
+echo "$brake_md"
+echo "$title_md         [ Todas las opciones por grupos ]  [ Opciones una a una en cada grupo ]"
+echo "$brake_md"
+echo "$text_md"
 echo "$title_md [ Lanza interfaz ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md         txt O -txt O -t : Salida a linea de texto."
 echo "$text_md         cli O -cli O -c : Salida a menu de texto."
 echo "$text_md         gui O -gui O -g : Salida a ventana grafica."
@@ -10164,13 +10168,13 @@ echo "$text_md         web O -web O -w : Salida a navegador web de texto"
 echo "$text_md       help O -help O -h : Salida con ayuda a formato de texto plano."
 echo "$text_md       info O -info O -i : Salida con ayuda a formato de texto rst."
 echo "$text_md              tor O -tor : Ejecuta en tor, necesario daemon tor y comando torify."
-echo  $text_md
+echo "$text_md"
 echo "$text_md            cli-menu : modo texto with menus."
 echo "$text_md            gui-menu : Graficos con menus."
 echo "$text_md           gui-shell : Graficos con entorno de comandos."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Controla las reglas de iptables ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md            stop : Para las reglas del firewall."
 echo "$text_md        continue : Continua las reglas del firewall."
 echo "$text_md           reset : Resetea las reglas del firewall."
@@ -10180,9 +10184,9 @@ echo "$text_md            show : Muestra las reglas del firewall estandard espec
 echo "$text_md            save : Guarda las reglas de firewall estandard especificado."
 echo "$text_md            load : Reculpera firewall estandard especificado."
 echo "$text_md          actual : Muestra el contenido del firewall estandard actual."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Lista las reglas de tablas de iptables ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md                ls : similar a list-filter4." 
 echo "$text_md               ls6 : similar a list-filter6."
 echo "$text_md              list : similar a list-filter4." 
@@ -10206,9 +10210,9 @@ echo "$text_md    list-security4 : lista las reglas de ip4 de security iptables.
 echo "$text_md    list-security6 : Lista las reglas de ip6 de security iptables."
 echo "$text_md     list-ebtables : Lista las reglas mac de ethernet."
 echo "$text_md    list-arptables : Lista las reglas de arp arptables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Reglas modificables de iptables ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md        new-full-config : Crea una nueva configuracion.cfg en ingles."
 echo "$text_md  nueva-completa-config : Crea una nueva configuracion.cfg en español."
 echo "$text_md        new-mini-config : Crea una nueva basica configuracion.cfg en ingles."
@@ -10218,16 +10222,16 @@ echo "$text_md            names-config : Lista los archivos de configuracion cfg
 echo "$text_md          modify-config : Edita una existente configuracion.cfg ."
 echo "$text_md            show-config : Muestra una existente configuracion.cfg ."
 echo "$text_md             del-config : Borra unaa existente configuracion.cfg ."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Lanza reglas de firewall iptables ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md           eraserules : Borra las reglas de iptables de ipv4 y de ipv6."
 echo "$text_md          wizard-full : Asistente y lanza completo cortafuegos."
 echo "$text_md          wizard-mini : Asistente y lanza simple cortafuegos."
 echo "$text_md               custom : lanza el cortafuegos especificando un archivo.cfg."
 echo "$text_md             off-line : Lanza un desconectado cortafuegos de todo excepto localhost."
 echo "$text_md        all-permisive : Lanza el cortafuegos muy permisivo."
-echo $brake_md
+echo "$brake_md"
 echo "$text_md        games-shooter : Lanza el cortafuegos como cliente de juegos udp non-root."
 echo "$text_md         game-wesnoth : Lanza el cortafuegos como cliente de juego de la batalla por wesnoth."
 echo "$text_md        game-minetest : Lanza el cortafuegos como cliente de juego minecraft o minetest."
@@ -10240,9 +10244,9 @@ echo "$text_md           client-vpn : Lanza el cortafuegos como cliente web y ss
 echo "$text_md         client-squid : Lanza un firewall como cliente squid."
 echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
 echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
-echo $brake_md
+echo "$brake_md"
 echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo 6-intentos cada-hora/cada-ip."
-echo $brake_md
+echo "$brake_md"
 echo "$text_md         _____Todos los servidores ssh configurados a maximo 12 intentos de acceso por ip/hora"
 echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
 echo "$text_md           server-web : Lanza el cortafuegos como servidor web y ssh."
@@ -10258,9 +10262,9 @@ echo "$text_md        server-mumble : Lanza un firewall como servidor mumble."
 echo "$text_md           server-sql : Lanza un firewall como servidor sql."
 echo "$text_md      server-asterisk : Lanza un firewall como servidor asterisk."
 echo "$text_md         server-squid : Lanza un firewall como servidor squid."
-echo  $text_md
+echo "$text_md"
 echo "$title_md   [ Lista las conexiones abiertas ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md      info-nodes : Lista las conexiones arp in lan."
 echo "$text_md      info-proxy : Lista proxy del sistema."
 echo "$text_md     info-listen : Lista sockets a la escucha del sistema."
@@ -10273,110 +10277,110 @@ echo "$text_md         netstat : Muestra las conexiones con comando netstat."
 echo "$text_md     netstat-nat : Muestra las conexiones con comando netstat-nat."
 echo "$text_md        web-cert : Obtiene un certificado ssl a una web con puerto https(443)."
 echo "$text_md         tcpdump : Escuchar las conexiones ip."
-echo  $text_md
+echo "$text_md"
 echo "$title_md         [ tool connect ]"
-echo  $text_md
+echo "$text_md"
 echo "$text_md               iw-scan : lista ssid en wifi"
 echo "$text_md               iw-info : Muestra a que wifi esta conectado"
 echo "$text_md              wpa-save : Conecta a un ssid por primera vez"
 echo "$text_md              wpa-load : Conecta a un ssid guardado"
 echo "$text_md           dhcp-client : corre un cliente de dhcp"
-echo  $text_md
+echo "$text_md"
 echo "$title_md   [ Herramienta de reglas ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md         rule-del-num : Borra una regla por su numero"
 echo "$text_md      rule-del-shield : Borra el escudo para ssh con maximo numero de intentos"
 echo "$text_md      rule-add-shield : Añade el escudo para ssh con maximo numero de intentos"
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de ip forwading ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md  ipforward-list : Muestra la configuracion del kernel sobre reenvios ip."
 echo "$text_md    ipforward-on : Activa la configuracion del kernel sobre reenvios ip."
 echo "$text_md   ipforward-off : Desactiva la configuracion del kernel sobre reenvios ip."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta tcp ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md  tracetcp-ip4 : Traza ruta a una host con ipv4 tcp."
 echo "$text_md  tracetcp-ip6 : Traza ruta a una host con ipv6 tcp."
 echo "$text_md     speed-ip4 : Testea el ancho de banda con ipv4."
 echo "$text_md     speed-ip6 : Testea el ancho de banda con ipv6."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta udp ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md           host : Resuelve la ip de un host ."
 echo "$text_md            dig : Resuelve la ip de un host ."
 echo "$text_md      resolveip : Resuelve la ip de un host y viceversa."
 echo "$text_md          geoip : Localiza una ip o host ."
 echo "$text_md ntpdate-client : Actualiza la fecha desde un ntp server."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta icmp ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md traceicmp-ip4 : Traza ruta a una host con ipv4 icmp."
 echo "$text_md traceicmp-ip6 : Traza ruta a una host con ipv6 icmp."
 echo "$text_md      ping-ip4 : Hace un ping a una host con ipv4 icmp."
 echo "$text_md      ping-ip6 : Hace un ping a una host con ipv6 icmp."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta nmap ]."
-echo  $text_md 
+echo "$text_md" 
 echo "$text_md      scan-tcp : Rastrea una host/mask por tcp protocolo."
 echo "$text_md      scan-syn : Rastrea una host/mask por syn socket."
 echo "$text_md      scan-fin : Rastrea una host/mask por fin socket."
 echo "$text_md      scan-udp : Rastrea una host/mask por udp protocolo."
 echo "$text_md     scan-ping : Rastrea una host/mask por ping udp."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de autorizacion ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md   sudofw-adduser : Permite autorizacion de usuarios elegidos."
 echo "$text_md   sudofw-deluser : Borra la autorizacion otorgada."
 echo "$text_md  sudofw-listuser : Lista autorizacion de usuarios elegidos."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de juego ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres."
 echo "$text_md   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos."
 echo "$text_md   ole-domain  : Descubre un dominio si es generico o si es de un pais."
 echo "$text_md   colour-hex  : convierte un numero hexadecimal en rgb ."
 echo "$text_md   colour-rgb  : convierte un numero rgb en hexadecimal ."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de sistema ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md      free-ram : Libera la memoria ram innecesaria."
 echo "$text_md     speed-ram : Muestra la velocidad de la memoria ram."
 echo "$text_md    speed-disk : Muestra la velocidad de el disco duro raiz."
 echo "$text_md     speed-glx : Muestra fotogramas por segundo con graficos mesa."
 echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de instalacion ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md        install : Instala este programa actual."
 echo "$text_md        upgrade : Actualiza a la ultima estable version."
 echo "$text_md    dev-upgrade : Actualiza a la ultima git version."
 echo "$text_md  howto-upgrade : Indicacion para actualizar."
 echo "$text_md      clean-tmp : borra archivos temporales de $name_fwiptables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de lista de bloqueo ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md  blacklist-list : Lista de opciones para bloquear hosts peligrosas."
 echo "$text_md    blacklist-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
 echo "$text_md   blacklist-off : Vuelve a /etc/hosts por defecto."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de desarrollador ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md    new-versions : Muestra las ultimas versiones."
 echo "$text_md     dev-version : Muestra en enlace a la version de desarrollo."
 echo "$text_md     dev-changes : Muestra los ultimos cambios."
 echo "$text_md            code : Muestra el codigo fuente para una opcion."
 echo "$text_md          md5sum : Muestra la suma md5 de un archivo"
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Herramienta de computador ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md         pc-halt : Apaga el computador."
 echo "$text_md     pc-shutdown : Apaga el computador."
 echo "$text_md       pc-reboot : Reinicia el computador."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Informacion del hardware ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md          lpinfo : Muestra los dispositivos de impresora."
 echo "$text_md           lsblk : Muestra los dispositivos de disco."
 echo "$text_md           lsusb : Muestra los dispositivos de usb."
@@ -10384,9 +10388,9 @@ echo "$text_md           lscpu : Muestra los dispositivos cpu."
 echo "$text_md           lsgpu : Muestra los dispositivos gpu."
 echo "$text_md           lspci : Muestra los dispositivos pci."
 echo "$text_md            lshw : Muestra los dispositivos de hardware."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Mostrar etc ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md           hosts : Muestra /etc/hosts, hosts locales y hosts estaticos."
 echo "$text_md      protocolos : Muestra /etc/protocols, nombres de protocolos."
 echo "$text_md        services : Muestra /etc/services, nombres de puertos y servicios."
@@ -10395,17 +10399,17 @@ echo "$text_md      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en alg
 echo "$text_md     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
 echo "$text_md    show-default : Muestra muestra variables por defecto en fwiptables."
 echo "$text_md  modify-default : Modifica variables por defecto en fwiptables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Mostrar log ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md        sentlog : Muestra los volcados con -log ."
 echo "$text_md        filelog : alias a sentlog ."
 echo "$text_md        autolog : Muestra las cabeceras de fwiptables lanzados."
 echo "$text_md        log-ssh : Busca los logs de sshd en /var/log ."
 echo "$text_md     log-search : Busca los logs dando un patron para /var/log ."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Mostrar acerca ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md           About : Acerca de."
 echo "$text_md         version : Informacion de la actual version."
 echo "$text_md         Depends : Muestra las dependencias." 
@@ -10413,9 +10417,9 @@ echo "$text_md    new-versions : Muestra las ultimas versiones."
 echo "$text_md      config-eng : Ejemplo de custom config con comentarios en ingles."
 echo "$text_md      config-spa : Ejemplo de custom config con comentarios en castellano."
 echo "$text_md examples-config : Muestra ejemplos de configuraciones"
-echo  $text_md
+echo "$text_md"
 echo "$title_md [ Mostrar ayuda ]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md        all-help : Muestra la ayuda en español y en ingles."
 echo "$text_md            info : Muestra las opciones de grupo."
 echo "$text_md   group-options : Muestra las opciones de grupo."
@@ -10426,45 +10430,45 @@ echo "$text_md          readme : Muestra la ayuda en ingles."
 echo "$text_md           leeme : Muestra la ayuda en español."
 echo "$text_md           notes : Muestra notas de Fran firewall."
 echo "$text_md   some-examples : Muestra ejemplos para lanzar."
-echo $text_md
+echo "$text_md"
 echo "$title_md $tab Notas de firewall"
-echo  $text_md
-echo  $text_md
+echo "$text_md"
+echo "$text_md"
 echo "$title_md [vpn]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Host [vpn] excepcionales tienen conexion permitida en el firewall."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [blacklist]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Host [blacklist] excepcionales tienen conexion denegada en el firewall."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [uid y/o gid excepcional]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Usuario y/o grupo excepcional tienen conexion de salida permitida en el firewall."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [iptables netftilter]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md     iptables-legacy   es    soporte para xtables."
 echo "$text_md     iptables-nft      es    soporte para nftables."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [Puertos cliente udp necesarios]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md     necesario para actualizar la fecha :   ntp ."
 echo "$text_md     necesario para dhcp y conseguir ip :   bootpc . "
 echo "$text_md     necesario para resolver dominios   :   domain ."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [Protocolos necesarios para ipv6]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md     Necesario protocolo: ipv6-icmp."
 echo "$text_md     Ipv6 funciona tambien con: ipv4 procolos."
-echo  $text_md
+echo "$text_md"
 echo "$title_md [Licencia]."
-echo  $text_md
+echo "$text_md"
 echo "$text_md  Descarga la ultima version de $fprogram desde la web de sourceforge."
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
-echo  $text_md
+echo "$text_md"
 echo $footer_lineal
 exit; fi
 ####
