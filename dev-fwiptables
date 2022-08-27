@@ -5482,7 +5482,6 @@ exit; fi
 ####
 if [ "$first_option" = "version" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Show version about $cmd_fwiptables ]"
-echo
 echo "$tab [ Name program ]"
 echo "$tab $fprogram"
 echo
