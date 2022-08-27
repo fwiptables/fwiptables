@@ -367,6 +367,7 @@ fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-lis
 #### spanish: si esta mal definidad definida whithout_option
 ####
 ####
+fwiptables_installed=""
 default_security="mini-options"
 ####
 ####
@@ -415,6 +416,13 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ##############################       spanish: Actualiza variables          ###################################
 ####
 ####
+####     #### english: variable to knows if fwiptables is installed
+####     #### spanish: variable para comprobar si fwiptables esta instalado
+####
+####
+cmp -s $0 $directory_fwiptables/$cmd_fwiptables || fwiptables_installed="no" 
+####
+####
 ####     #### english: launch default for update variables
 ####     #### spanish: lanza default para actualizar variables
 ####
@@ -448,9 +456,15 @@ echo "$text_md     Choose run iptables rules of one firewall with your own confi
 echo "$text_md       # Network tools # Use this firewall with some utilities for ipv4 and ipv6.               "
 echo "$text_md     With tool-options: Work with network utilities. With show-options: Show config net files.  "
 $brake_md
-echo "$title_md    ###  Fran fwiptables installer.  ###    "
-cmp -s $0 $directory_fwiptables/$cmd_fwiptables || echo "$text_md     $cmd_fwiptables $fversion || Actually, this version is not installed"
-cmp -s $0 $directory_fwiptables/$cmd_fwiptables && echo "$text_md     $cmd_fwiptables $fversion || Actually, this version is installed"
+echo "$title_md    ###  Fran fwiptables installer.  ###"
+echo "$text_md     $cmd_fwiptables $fversion"
+#### #### #### 
+if [ "$fwiptables_installed" == "no" ]; then
+echo "$text_md     Actually, NO, this version is not installed in $directory_fwiptables/$cmd_fwiptables" ; 
+else
+echo "$text_md     Actually, YES, this version is installed in $directory_fwiptables/$cmd_fwiptables";
+fi
+#### #### #### 
 echo "$text_md     Install this version from this file      ||  TYPE:  ./fwiptables-$fversion install" 
 echo "$text_md     Install lastest version from the web     ||  TYPE:  ./fwiptables-$fversion upgrade" 
 #### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
@@ -461,7 +475,13 @@ echo "$text_md       # Download the latest version $fprogram from sourceforge"
 echo "$text_md     $fweb_latest"
 echo "$text_md       # $flicense"
 echo "$text_md     $license_gpl"
+#### #### #### 
+if [ "$fwiptables_installed" == "no" ]; then
 $brake_md
+echo "$text_md"
+echo "$text_md     PLEASE, install this version, or copy $0 in $directory_fwiptables/$cmd_fwiptables" ; 
+fi
+#### #### #### 
 exit; fi
 ####
 ####
@@ -742,7 +762,8 @@ exit ; fi
 #### :rutina-inicial-notice:
 ####
 ####
-cmp -s $0 $directory_fwiptables/$cmd_fwiptables || . $0 intro
+if [ "$fwiptables_installed" == "no" ] ; then . $0 intro ; echo 
+echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables"; fi
 ####
 ####
 #### :rutina-final-notice:
