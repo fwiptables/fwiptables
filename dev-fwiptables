@@ -678,9 +678,9 @@ chmod 700 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ info ] [ Command installed:    ] [ $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ Configuration folder: ] [ $directory_data ]"
-echo "$text_md [ info ] [ Menu entry desktop:   ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-menu ] [ $name_fwiptables-gui-shell ]"
+echo "$text_md [ info ] [ Command installed: ] [ $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ Configuration :    ] [ $directory_data ]"
+echo "$text_md [ info ] [ Other commands:    ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-menu ] [ $name_fwiptables-gui-shell ]"
 echo "$text_md [ info ] [ Grant privileges to user for $name_fwiptables with: ] [ $cmd_fwiptables sudofw-adduser user ]"
 echo "$text_md [  ok  ] [ Ready to run $name_fwiptables ]"
 exit; fi
