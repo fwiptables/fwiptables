@@ -5493,136 +5493,136 @@ exit ; fi
 #### :rutina-inicial-examples-config:
 ####
 ####
- if [ "$first_option" = "examples-config" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ Show examples for $cmd_fwiptables ]"
- echo $header_lineal
- echo"[ examples ] [ examples for some services in client mode ]"
- echo
+if [ "$first_option" = "examples-config" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Show examples for $cmd_fwiptables ]"
+echo $header_lineal
+echo "[ examples ] [ examples for some services in client mode ]"
+echo
 ####
 ####
 #### config: web example ####
 ####
 ####
- echo
- echo "# config web example #" 
- echo "config_client_tcp=http,https ;"
- echo "config_client_udp=domain,ntp,bootpc,http ;"
+echo
+echo "# config web example #" 
+echo "config_client_tcp=http,https ;"
+echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  games example  ####
 ####
 ####
- echo
- echo "# config games example #"
- echo "config_client_udp=domain,bootpc,ntp,https,1025:65499; "
- echo "config_client_tcp=http,https"
+echo
+echo "# config games example #"
+echo "config_client_udp=domain,bootpc,ntp,https,1025:65499; "
+echo "config_client_tcp=http,https"
 ####
 ####
 #### config: wesnoth game example ####
 ####
 ####
- echo
- echo "# config web example #" 
- echo "config_client_tcp=http,https,14995:15000 ;"
- echo "config_client_udp=domain,ntp,bootpc,http ;"
+echo
+echo "# config web example #" 
+echo "config_client_tcp=http,https,14995:15000 ;"
+echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 ####
 #### config:  torrent-example1 ####
 ####
 ####
- echo
- echo "# config torrent example #"
- echo "config_client_udp=domain,bootpc,ntp,https,1025:65499; "
- echo "config_client_tcp=http,https"
+echo
+echo "# config torrent example #"
+echo "config_client_udp=domain,bootpc,ntp,https,1025:65499; "
+echo "config_client_tcp=http,https"
 ####
 ####
 #### config: samba-example1 ####
 ####
 ####
- echo
- echo "# config samba example #"
- echo "config_client_udp=domain,bootpc,ntp,https,137:139 ; "
- echo "config_client_tcp=http,https,ipp,microsoft-ds"
- echo "allow_output_ping= ; allow_input_ping= ; "
+echo
+echo "# config samba example #"
+echo "config_client_udp=domain,bootpc,ntp,https,137:139 ; "
+echo "config_client_tcp=http,https,ipp,microsoft-ds"
+echo "allow_output_ping= ; allow_input_ping= ; "
 ####
 ####
 #### config: server gateway masquerade ##
 ####
 ####
- echo
- echo "# config vpn example #"
- echo "allow_gateway_ip4= ; "
+echo
+echo "# config vpn example #"
+echo "allow_gateway_ip4= ; "
 ####
 ####
 #### config: vpn-sample1 ##
 ####
 ####
- echo
- echo "# config vpn example #"
- echo "allow_forward_ip4= ; "
- echo "allow_net_vpn= ; "
- echo "config_net_vpn=wesnoth.org,sourceforge.net"
+echo
+echo "# config vpn example #"
+echo "allow_forward_ip4= ; "
+echo "allow_net_vpn= ; "
+echo "config_net_vpn=wesnoth.org,sourceforge.net"
 ####
 ####
 #### config: email-example1 ####
 ####
 ####
- echo
- echo "# config email example #"
- echo "config_client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
+echo
+echo "# config email example #"
+echo "config_client_tcp=http,https,rsync,ssh,pop3,pop3s,poppassd,smtp,imap2,imaps"
 ####
 ####
 #### config: ssh-example1 ####
 ####
 ####
- echo
- echo "# config ssh example #"
- echo "config_client_tcp=http,https,printer,ipp,ssh,rsync,git"
+echo
+echo "# config ssh example #"
+echo "config_client_tcp=http,https,printer,ipp,ssh,rsync,git"
 ####
 ####
 #### config: vnc-example1 ####
 ####
 ####
- echo
- echo "# config vnc example #"
- echo "config_client_tcp=http,https,ssh,5900:5910"
+echo
+echo "# config vnc example #"
+echo "config_client_tcp=http,https,ssh,5900:5910"
 ####
 ####
 #### config: ftp-example1 ####
 ####
 ####
- echo
- echo "# config ftp example #"
- echo "config_client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
- echo "config_client_udp=domain,bootpc,ntp,https,tftp"
+echo
+echo "# config ftp example #"
+echo "config_client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
+echo "config_client_udp=domain,bootpc,ntp,https,tftp"
 ####
 ####
 #### config: printer-example1 ####
 ####
 ####
- echo
- echo "# config printer example #"
- echo "config_client_tcp=http,https,ipp,printer"
+echo
+echo "# config printer example #"
+echo "config_client_tcp=http,https,ipp,printer"
 ####
 ####
 #### config: irc-example1 ####
 ####
 ####
- echo
- echo "# config irc example #"
- echo "config_client_tcp=http,https,ircd,ircs-u"
+echo
+echo "# config irc example #"
+echo "config_client_tcp=http,https,ircd,ircs-u"
 ####
 ####
 #### config: sql-example1 ####
 ####
 ####
- echo
- echo "# config sql example #"
- echo "config_client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
+echo
+echo "# config sql example #"
+echo "config_client_tcp=http,https,mysql,postgresql,mysql-proxy,ms-sql-s"
 ####
 ####
- echo $footer_lineal
- exit ; fi
+echo
+exit ; fi
 ####
 ####
 #### :rutina-final-examples-config:
@@ -5632,9 +5632,9 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "code" ]; then $give_cover
-echo $header_lineal
+echo
 echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
-echo $tab
+echo
 code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
 salida_code="$(cat $directory_fwiptables/$cmd_fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
@@ -5649,7 +5649,7 @@ if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$tab [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
-echo "$tab"
+echo
 cat $directory_fwiptables/$cmd_fwiptables | head -n $value_second | tail -n $value_count
 exit; fi
 ####
@@ -5660,14 +5660,11 @@ exit; fi
 #### :rutina-inicial-license:
 ####
 ####
- if [ "$first_option" = "license" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_fwiptables ]"
- echo $header_lineal
- echo "license text for gpl v2 downloading from .. $license_gpl "
- echo "$tab" "$tab" "$tab"
- $favorite_text_browser -source "$license_gpl" | more
- echo $footer_lineal
- exit;  fi
+if [ "$first_option" = "license" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_fwiptables ]"
+echo "license text for gpl v2 downloading from .. $license_gpl "
+$favorite_text_browser -source "$license_gpl" | more
+exit;  fi
 ####
 ####
 #### :rutina-final-license:
@@ -5676,21 +5673,19 @@ exit; fi
 #### :rutina-inicial-howto-upgrade:
 ####
 ####
- if [ "$first_option" = "howto-upgrade" ]; then $give_cover
- echo "$header_ok [ $first_option ]  [ Show howto upgrade $cmd_fwiptables ]"
- echo $header_lineal
- echo "$tab [ info ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
- echo "$tab [ info ] [ The latest version is: ]"
- $favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
- echo 
- echo "$tab [ info ] [ Upgrade The fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser ]"
- echo "$tab [ info ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
- echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$cmd_fwiptables ]"
- echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_fwiptables ]"
- echo "$tab [ info ] [ launch: /tmp/$cmd_fwiptables install ]"
- echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fwiptables/$cmd_fwiptables ]"
- echo $footer_lineal
- exit;  fi
+if [ "$first_option" = "howto-upgrade" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Show howto upgrade $cmd_fwiptables ]"
+echo "$tab [ info ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
+echo "$tab [ info ] [ The latest version is: ]"
+$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+echo 
+echo "$tab [ info ] [ Upgrade The fwiptables in file $directory_fwiptables/$cmd_fwiptables with $favorite_text_browser ]"
+echo "$tab [ info ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
+echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$cmd_fwiptables ]"
+echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_fwiptables ]"
+echo "$tab [ info ] [ launch: /tmp/$cmd_fwiptables install ]"
+echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_fwiptables/$cmd_fwiptables ]"
+exit;  fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
@@ -5700,8 +5695,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "blacklist-list" ]; then $give_cover
-echo $tab
- echo "$header_ok [ $first_option ]  [ Show blacklist servers ]"
+echo "$header_ok [ $first_option ]  [ Show blacklist servers ]"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_server_adaway="https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt"
@@ -5743,10 +5737,9 @@ echo "$tab adaway:      $blacklist_lines_adaway hosts"
 timeout $server_waiting $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
 blacklist_lines_stevenblack="$(cat $directory_temporal/hosts.stevenblack | wc -l)"
 echo "$tab stevenblack: $blacklist_lines_stevenblack hosts"
-echo "$tab"; fi
+echo ; fi
 ####
 ####
-echo "$footer_lineal"
 exit; fi
 ####
 ####
@@ -5758,14 +5751,14 @@ exit; fi
 ####
 if [ "$first_option" = "blacklist-on" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Configure blacklist server ]"
-echo $tab
+echo
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
 echo "$tab [ Launched without options ] [ $cmd_fwiptables blacklist-list ]"
-echo $tab
+echo
 $cmd_fwiptables blacklist-list
-echo $tab
+echo
 exit; fi
 ####
 ####
@@ -5808,7 +5801,9 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 echo "$tab [ Invalid option ] [ See: $cmd_fwiptables blacklist-list ]"
-echo $tab; exit; fi
+####
+####
+exit; fi
 ####
 ####
 #### :rutina-final-blacklist-on:
@@ -5819,7 +5814,7 @@ echo $tab; exit; fi
 ####
 if [ "$first_option" = "blacklist-off" ]; then $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ]"
-echo $tab
+echo
 echo $directory_temporal
 echo $cincuenta > $directory_temporal/$first_option-hosts
 echo "## ip v4 loopback ##" >> $directory_temporal/$first_option-hosts
@@ -5831,7 +5826,6 @@ echo "ff02::2 ip6-allrouters"  >> $directory_temporal/$first_option-hosts
 echo $cincuenta >> $directory_temporal/$first_option-hosts
 cat  $directory_temporal/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
 echo " [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
-echo $footer_lineal
 cat  /etc/hosts
 exit; fi
 ####
@@ -5965,17 +5959,15 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 ####
- if [ "$first_option" = "info-route" ]; then  $give_cover
- echo "$header_ok [ $first_option ]  [ Show route tables ]"
- echo $header_lineal
- if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
- echo "$tab [ ip route ipv4 ]"
- echo "$($command_ip -4 route)"
- echo $tab
- echo "$tab [ ip route ipv6 ]"
- echo "$($command_ip -6 route)"
- echo $footer_lineal
- exit ; fi
+if [ "$first_option" = "info-route" ]; then  $give_cover
+echo "$header_ok [ $first_option ]  [ Show route tables ]"
+if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
+echo "$tab [ ip route ipv4 ]"
+echo "$($command_ip -4 route)"
+echo
+echo "$tab [ ip route ipv6 ]"
+echo "$($command_ip -6 route)"
+exit ; fi
 ####
 ####
 #### :rutina-final-info-route:
