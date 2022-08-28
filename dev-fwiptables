@@ -9388,7 +9388,6 @@ exit; fi
 if [ "$first_option" = "lsusb" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ list usb ]"
 lsusb
-echo
 exit; fi
 ####
 ####
@@ -9401,7 +9400,6 @@ exit; fi
 if [ "$first_option" = "lscpu" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ list cpu ]"
 lscpu
-echo
 exit; fi
 ####
 ####
@@ -9414,7 +9412,6 @@ exit; fi
 if [ "$first_option" = "lspci" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ list pci hardware sockets ]"
 lspci
-echo
 exit; fi
 ####
 ####
@@ -9428,7 +9425,6 @@ if [ "$first_option" = "lsgpu" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ list gpu ]"
 echo $header_lineal
 lsgpu
-echo
 exit; fi
 ####
 ####
@@ -9454,7 +9450,7 @@ exit; fi
 if [ "$first_option" = "hosts" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ]"
 cat /etc/hosts
-echo $tab
+echo
 echo " [ ok ] [ This file is /etc/hosts ]"
 exit; fi
 ####
@@ -9547,38 +9543,38 @@ exit; fi
 if [ "$first_option" = "about" ]; then  $give_cover
 echo "$header_ok [ $first_option ]  [ about $cmd_fwiptables ]"
 echo 
-echo "$tab [ Exec name ]"
-echo "  $cmd_fwiptables"
-echo ""
-echo "$tab [ Program Name ]"
-echo "  $fprogram"
-echo ""
-echo "$tab [ Program Description] "
-echo "  $fdescription"
-echo ""
-echo "$tab [ Program Install ]"
-echo "  1: chmod ugo+x fwiptables-version"
-echo "  2: ./fwiptables-version install"
-echo "  And then fwiptables is in $directory_binary/$name_fwiptables"
+echo " [ Exec name ]"
+echo " $cmd_fwiptables"
 echo
-echo "$tab [ Devevelopments version program ]"
-echo "  The fran iptables ver in development in git code at sourceforge:"
-echo "  $fweb_development"
-echo ""
-echo "$tab [ New versions program ]"
-echo "  The last versions in files repository at sourceforge:"
-echo "  $fweb_newfiles"
+echo " [ Program Name ]"
+echo " $fprogram"
 echo
-echo "$tab [ Access web with all versions program ]"
-echo "  The fran iptables all versions in code repository at sourceforge:"
-echo "  $fweb_tree"
-echo ""
-echo "$tab [ Git clone with all versions program ]"
-echo "  The fran iptables all versions in code repository at sourceforge:"
-echo "  git clone $fweb_git"
+echo " [ Program Description] "
+echo " $fdescription"
+echo 
+echo " [ Program Install ]"
+echo " 1: chmod ugo+x fwiptables-version"
+echo " 2: ./fwiptables-version install"
+echo " And then fwiptables is in $directory_binary/$name_fwiptables"
 echo
-echo "$tab [ Program License ]"
-echo "  $flicense"
+echo " [ Devevelopments version program ]"
+echo " The fran iptables ver in development in git code at sourceforge:"
+echo " $fweb_development"
+echo 
+echo " [ New versions program ]"
+echo " The last versions in files repository at sourceforge:"
+echo " $fweb_newfiles"
+echo
+echo " [ Access web with all versions program ]"
+echo " The fran iptables all versions in code repository at sourceforge:"
+echo " $fweb_tree"
+echo
+echo " [ Git clone with all versions program ]"
+echo " The fran iptables all versions in code repository at sourceforge:"
+echo " git clone $fweb_git"
+echo
+echo " [ Program License ]"
+echo " $flicense"
 exit; fi
 ####
 ####
@@ -9728,10 +9724,10 @@ exit; fi
 ####
 if [ "$first_option" = "clean-tmp" ] ; then $give_cover
 echo "$header_ok [ $first_option ]  [ clean $name_fwiptables temporal files]"
-echo "[  info  ] [ cleaning $name_fwiptables temporal files ]"
+echo "[ info ] [ cleaning $name_fwiptables temporal files ]"
 echo "[ info ] [ deleting temporal ]"
 rm -r -f $directory_tmp &> /dev/null
-echo "[  ok  ] [ cleaned $name_fwiptables temporal files ]"
+echo "[  ok  ] [ cleaned temporal files ]"
 exit; fi
 ####
 ####
