@@ -3792,7 +3792,6 @@ exit; fi
 ####
 if [ "$first_option" = "depends" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List for all programs depends ]"
-echo 
 echo "$tab [ auth user file ]"
 echo "auth users:              /etc/sudoers.d/$cmd_fwiptables"
 echo 
@@ -9542,8 +9541,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ about $cmd_fwiptables ]"
-echo 
+echo "$header_ok [ $first_option ]  [ about $cmd_fwiptables ]" 
 echo " [ Exec name ]"
 echo " $cmd_fwiptables"
 echo
@@ -9587,7 +9585,6 @@ exit; fi
 ####
 if [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ]"
-echo
 echo "$tab [ System info ] [ Distro ] "
 cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
 echo
@@ -9617,7 +9614,6 @@ exit; fi
 ####
 if [ "$first_option" = "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ]"
-echo
 echo "$tab [ Network Route ] [ Route ipv4 ]"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
