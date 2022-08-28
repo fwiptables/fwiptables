@@ -49,7 +49,6 @@ echo
 echo " [ info ] [ fwiptables needs to be root to work ]"
 echo
 echo " [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
-echo
 exit ; fi
 ####
 ####
@@ -304,12 +303,12 @@ head_principal="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $f
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$tab [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_gui="$tab [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_log="$tab [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_web="$tab [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_help="$tab [ help: help in rst txt format ] [ Loading.. ]"
-head_waiting_info="$tab [ info: info in plain txt format ] [ loading.. ]"
+head_waiting_cli=" [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_gui=" [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_log=" [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_web=" [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_help=" [ info ] [ help: help in rst txt format ] [ Loading.. ]"
+head_waiting_info=" [ info ] [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_ender="$tab"      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -334,11 +333,11 @@ tab_lang_spanish=" spa "
 show_lang_english=""
 show_lang_spanish="##"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli=" [ cli ] [ Without support for output cli for this option ]"
-message_without_gui=" [ gui ] [ Without support for output gui for this option ]"
-message_without_web=" [ web ] [ Without support for output web for this option ]"
-message_without_help=" [ help in rst ] [ Without support for output rst for this option ]"
-message_without_info=" [ info in txt ] [ Without support for output info for this option ]"
+message_without_cli=" [fail ] [ cli ] [ Without support for output cli for this option ]"
+message_without_gui=" [fail ] [ gui ] [ Without support for output gui for this option ]"
+message_without_web=" [fail ] [ web ] [ Without support for output web for this option ]"
+message_without_help=" [fail ] [ help in rst ] [ Without support for output rst for this option ]"
+message_without_info=" [fail ] [ info in txt ] [ Without support for output info for this option ]"
 ####
 ####
 ####       #### english: zenity dimensions     #### spanish: dimensiones de zenity
