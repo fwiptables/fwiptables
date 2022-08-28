@@ -1082,8 +1082,9 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 #### :rutina-inicial-regen-config:
 ####
 ####
-if [ "$first_option" = "regen-config" ]; then $nada
-echo "$tab [ info ] [ regenerate template wizard and template cfg ]"
+if [ "$first_option" = "regen-config" ]; then $give_cover
+echo "$header_ok [ $first_option ]  [ Generate templates wizard and cfg ]"
+echo " [ info ] [ regenerating template wizard and template cfg ]"
 ####
 ####
 ####    english: variables to prepare to gen files
@@ -1556,7 +1557,7 @@ echo $var81 $tabz $spa81 &>> $fs
 echo $var82 $tabz $spa82 &>> $fs
 ####
 ####
-echo " [ ok ] [ Wizard and configs cfg templates regenerated ]"
+echo " [  ok  ] [ Wizard and configs cfg templates regenerated ]"
 exit ; fi
 ####
 ####
