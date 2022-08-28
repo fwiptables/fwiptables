@@ -851,10 +851,10 @@ if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
 ####
 case "$first_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_config regen-config ;; esac
+$cmd_fwiptables regen-config ;; esac
 case "$second_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_config regen-config ;; esac
+$cmd_fwiptables regen-config ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
