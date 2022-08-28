@@ -5492,29 +5492,14 @@ exit; fi
 ####
 if [ "$first_option" = "version" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show version about $cmd_fwiptables ]"
-echo "$tab [ Name program ]"
-echo "$tab $fprogram"
-echo
-echo "$tab [ Version program ]"
-echo "$tab $fversion"
-echo
-echo "$tab [ Description program ]"
-echo "$tab $fdescription"
-echo
-echo "$tab [ Location program ]"
-echo "$tab $directory_binary/$cmd_fwiptables"
-echo
-echo "$tab [ File format ]"
-file $directory_binary/$cmd_fwiptables | cut -d "," -f 1-2
-echo
-echo "$tab [ MD5 sum ]"
-$command_md5sum $0
-echo
-echo "$tab [ Data directory ]"
-echo "$tab $directory_data"
-echo
-echo "$tab [ Temp directory ]"
-echo "$tab $directory_tmp"
+echo " [ Name program ] $fprogram"
+echo " [ Version program ] $fversion"
+echo " [ Description program ] $fdescription"
+echo " [ Location program ] $directory_binary/$cmd_fwiptables"
+echo " [ File format ] $(file $directory_binary/$cmd_fwiptables | cut -d "," -f 1-2)"
+echo " [ MD5 sum ] $($command_md5sum $0)"
+echo " [ Data directory ] $directory_data"
+echo " [ Temp directory ] $directory_tmp"
 exit ; fi
 ####
 ####
@@ -9542,15 +9527,9 @@ exit; fi
 ####
 if [ "$first_option" = "about" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ about $cmd_fwiptables ]" 
-echo " [ Exec name ]"
-echo " $cmd_fwiptables"
-echo
-echo " [ Program Name ]"
-echo " $fprogram"
-echo
-echo " [ Program Description] "
-echo " $fdescription"
-echo 
+echo " [ Exec name ] $cmd_fwiptables"
+echo " [ Program Name ] $fprogram"
+echo " [ Program Description] $fdescription"
 echo " [ Program Install ]"
 echo " 1: chmod ugo+x fwiptables-version"
 echo " 2: ./fwiptables-version install"
@@ -9572,8 +9551,7 @@ echo " [ Git clone with all versions program ]"
 echo " The fran iptables all versions in code repository at sourceforge:"
 echo " git clone $fweb_git"
 echo
-echo " [ Program License ]"
-echo " $flicense"
+echo " [ Program License ] $flicense"
 exit; fi
 ####
 ####
