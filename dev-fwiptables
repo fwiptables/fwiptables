@@ -260,8 +260,6 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## def
 radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
-#### #### english: regen the config and templates          #### spanish: regenera la configuracion y plantillas
-genfiles="$zero_option regen-config"                      
 ####  #### english: default variable version whithout update for config cfg
 ####  #### spanish: default version de variables sin actualizar por config cfg
 #### config_variable_version="1" ;                                       
@@ -846,6 +844,17 @@ if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
 if [ "$first_option" = "serverlamp" ] ; then first_option="server-lamp" ; fi
 if [ "$first_option" = "server-ts" ] ; then first_option="server-teamspeak" ; fi
 if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
+####
+####
+#### english:  alias simple for regenerate configurations templates
+####
+####
+case "$first_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
+$cmd_config regen-config ;; esac
+case "$second_option" in
+"wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
+$cmd_config regen-config ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
