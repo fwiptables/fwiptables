@@ -629,7 +629,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" = "install" ] ; then $zero_option intro
+if [ "$first_option" = "install" ] ; then $zero_option intro ; $give_cover
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ]"
 ####
 ####
@@ -678,9 +678,11 @@ chmod 700 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
 echo "$text_md [ info ] [ Config dir:        ] [ $directory_data ]"
 echo "$text_md [ info ] [ Tmp dir:           ] [ $directory_tmp  ]"
 echo "$text_md [ info ] [ Command installed: ] [ $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ Other commands:    ] [ $name_fwiptables-cli-menu ] [ $name_fwiptables-gui-menu ] [ $name_fwiptables-gui-shell ]"
-echo "$text_md [ info ] [ Grant privileges to user for $name_fwiptables with: ] [ $cmd_fwiptables sudofw-adduser user ]"
-echo "$text_md [  ok  ] [ Ready to run $name_fwiptables ]"
+echo "$text_md [ info ] [ link cli-menu:     ] [ $directory_binary/$name_fwiptables-cli-menu  ]"
+echo "$text_md [ info ] [ link gui-menu:     ] [ $directory_binary/$name_fwiptables-gui-menu  ]"
+echo "$text_md [ info ] [ link gui-shell:    ] [ $directory_binary/$name_fwiptables-gui-shell ]"
+echo "$text_md [ info ] [ Grant privileges to user: ] [ $cmd_fwiptables sudofw-adduser user ]"
+echo "$text_md [  ok  ] [ Now. You are ready to run $name_fwiptables ]"
 exit; fi
 ####
 ####
