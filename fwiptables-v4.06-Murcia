@@ -2299,13 +2299,13 @@ echo "$text_md                       info-system ss lsof tcpdump netstat netstat
 echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md          show-help |  all-help readme leeme notes license version depends options              "
 echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||         "
-echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
-echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
-echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
-echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser                "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain      "
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst          "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain      "
+echo "$text_md      $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
+echo "$text_md      $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
+echo "$text_md      $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
+echo "$text_md      $cmd_fwiptables -web ss                  |  Show ss with output text browser                "
+echo "$text_md      $cmd_fwiptables -help readme             |  Show help of readme with output text plain      "
+echo "$text_md      $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst          "
+echo "$text_md      $cmd_fwiptables -log info-route          |  Save log info-route with output text plain      "
 exit ; fi
 ####
 ####
@@ -2360,13 +2360,13 @@ echo "$text_md  show-about         |  about version depends config-eng config-sp
 echo "$text_md  show-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$duo_md || ||  [ Examples ]  || ||  ### ###                                                              "
-echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
-echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
-echo "$text_md    $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
-echo "$text_md    $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
+echo "$text_md  $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
+echo "$text_md  $cmd_fwiptables -cli names               |  List firewall saved with output cli          "
+echo "$text_md  $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui               "
+echo "$text_md  $cmd_fwiptables -web ss                  |  Show ss with output text browser             "
+echo "$text_md  $cmd_fwiptables -help readme             |  Show help of readme with output text plain   "
+echo "$text_md  $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst       "
+echo "$text_md  $cmd_fwiptables -log info-route          |  Save log info-route with output text plain   "
 exit ; fi
 ####
 ####
