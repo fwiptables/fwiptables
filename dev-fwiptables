@@ -6058,8 +6058,6 @@ exit; fi
 if [ "$first_option" = "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ]"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "$tab info socket list:"
-echo $tab
 echo "$tab [ Network Listen ] [ Listen ipv4 ]"
 $command_ss -l4 | sed 's/   / /g'
 echo $tab
@@ -6104,7 +6102,6 @@ exit; fi
 ####
 if [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ]"
-echo $header_lineal
 for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done
 exit; fi
@@ -7235,7 +7232,6 @@ exit; fi
 ####
 if [ "$first_option" = "ipforward-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ]"
-echo $header_lineal
 echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
 $command_sysctl -a | grep -i forwarding
 exit; fi
@@ -7269,10 +7265,11 @@ exit; fi
 if [ "$first_option" = "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show the list arp-scan in the lan ]"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
-echo ; echo local net: ip lan
+echo " [ info ] [ local net: ip lan .. ]"
 $command_ip -4 route | grep -iv default
-echo local scan: arp lan
-$command_arp_scan -l -x & sleep $server_waiting && kill -9 $command_arp_scan 
+echo " [ info ] [ local scan: arp lan scan .. ]"
+#### $command_arp_scan -l -x & sleep $server_waiting && killall -9 $command_arp_scan
+timeout -s SIGINT -v $server_waiting $command_arp_scan -l -x
 exit; fi
 ####
 ####
@@ -8079,7 +8076,6 @@ $cmd_fwiptables stop
 ####
 if [ "$first_option" = "free-ram" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ]"
-echo $header_lineal
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo " Actual Memory"
 free -hw 
@@ -8087,7 +8083,6 @@ echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
 sync
 echo -e "\n With New Memory ram freedom .. Actual memory now .."
 free -hw
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -8097,17 +8092,15 @@ exit; fi
 #### :rutina-inicial-speed-disk:
 ####
 ####
- if [ "$first_option" = "speed-disk" ]; then  echo $give_cover
- echo "$header_ok [ $first_option ]  [ test the disc speed ]"
- echo $header_lineal
- case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
- echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
+if [ "$first_option" = "speed-disk" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ test the disc speed ]"
+case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
+echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
 ####
 ####
- $command_dd if=/dev/zero of=$directory_temporal/borrame.img.img status=progress bs=1M count=100
- rm $directory_temporal/borrame.img.img &> /dev/null
- echo $footer_lineal
- exit; fi
+$command_dd if=/dev/zero of=$directory_temporal/borrame.img.img status=progress bs=1M count=100
+rm $directory_temporal/borrame.img.img &> /dev/null
+exit; fi
 ####
 ####
 #### :rutina-final-speed-disk:
@@ -8116,19 +8109,17 @@ exit; fi
 #### :rutina-inicial-speed-ram:
 ####
 ####
- if [ "$first_option" = "speed-ram" ]; then  echo $give_cover
- echo "$header_ok [ $first_option ]  [ test the ram speed ]"
- echo $header_lineal
- case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
- case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
- in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
- echo "$tab Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
+if [ "$first_option" = "speed-ram" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ test the ram speed ]"
+case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
+case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
+in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
+echo "$tab Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
 ####
 ####
- $command_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
- rm /tmp/borrame.img.img &> /dev/null
- echo $footer_lineal
- exit; fi
+$command_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
+rm /tmp/borrame.img.img &> /dev/null
+exit; fi
 ####
 ####
 #### :rutina-final-speed-ram:
@@ -8137,13 +8128,12 @@ exit; fi
 #### :rutina-inicial-speed-glx:
 ####
 ####
- if [ "$first_option" = "speed-glx" ]; then  echo $give_cover
- echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
- echo $header_lineal
- case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
- vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
- echo $footer_lineal
- exit; fi
+if [ "$first_option" = "speed-glx" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ]"
+case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
+vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
+echo $footer_lineal
+exit; fi
 ####
 ####
 #### :rutina-final-speed-glx:
