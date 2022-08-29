@@ -1,6 +1,8 @@
 
+ 1.
 
- 17. 
+ cambios en dev-fwiptables desarrollo 4.07
+ 
  16. cambios a la hora de llamar a regen-config. HECHO
  15. cambios en simplificar install y cambios en intro. HECHO
  14. cambios en comprobacion de si esta instalado fwiptables. HECHO
@@ -18,7 +20,7 @@
  2.  cambio todas las rutas del programa permamentes a /root/.config/fwiptables. HECHO
  1.  nuevos alias añadidos a los interfaces de salida. HECHO 
 
- cambios en dev-fwiptables desarrollo 4.06 
+ cambios en fwiptables 4.06 lineas=16
 
  8. sudofw-users cambiado a sudofw-listusers. HECHO 
  7. modificado ntpdate-client para que funcione sntp. HECHO
