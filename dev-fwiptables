@@ -5492,21 +5492,29 @@ exit; fi
 ####
 if [ "$first_option" = "version" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show version about $cmd_fwiptables ]"
-echo " [ Name program ] $fprogram"
+echo " [ Name program ]"
+echo " $fprogram"
 echo
-echo " [ Version program ] $fversion"
+echo " [ Version program ]"
+echo " $fversion"
 echo
-echo " [ Description program ] $fdescription"
+echo " [ Description program ]"
+echo " $fdescription"
 echo
-echo " [ Location program ] $directory_binary/$cmd_fwiptables"
+echo " [ Location program ]"
+echo " $directory_binary/$cmd_fwiptables"
 echo
-echo " [ File format ] $(file $directory_binary/$cmd_fwiptables | cut -d "," -f 1-2)"
+echo " [ File format ]"
+echo " $(file $directory_binary/$cmd_fwiptables | cut -d "," -f 1-2)"
 echo
-echo " [ MD5 sum ] $($command_md5sum $0)"
+echo " [ MD5 sum ]"
+echo " $($command_md5sum $0)"
 echo
-echo " [ Data directory ] $directory_data"
+echo " [ Data directory ]"
+echo " $directory_data"
 echo
-echo " [ Temp directory ] $directory_tmp"
+echo " [ Temp directory ]"
+echo " $directory_tmp"
 exit ; fi
 ####
 ####
