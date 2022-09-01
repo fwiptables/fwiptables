@@ -306,7 +306,7 @@ head_waiting_web=" [ info ] [ web ] [ Wait several seconds.. ] [ With aprox seve
 head_waiting_help=" [ info ] [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info=" [ info ] [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-header_ender="$tab"      
+header_ender=""      
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 header_lineal=""
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -315,7 +315,7 @@ footer_lineal=""
 #### obsolete old system: give_cover="$zero_option header"
 give_cover="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_load=" ### ### || || [ ok ] || [ Load firewall ]"
+give_load=" ### ### || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
