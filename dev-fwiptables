@@ -811,7 +811,7 @@ if [ "$first_option" = "ls" ]; then first_option="list"; fi
 if [ "$first_option" = "ls4" ]; then first_option="list"; fi
 if [ "$first_option" = "ls6" ]; then first_option="list6"; fi
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
-if [ "$first_option" = "filelog" ]; then first_option="sentlog"; fi
+if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
 if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
@@ -977,7 +977,7 @@ free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system";
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
-log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
+log-search|log-ssh|filelog|sentlog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
 about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
 all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
@@ -1026,7 +1026,7 @@ free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system";
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
-log-search|log-ssh|sentlog|autolog)  second_option="show-log"; third_option="" ;;
+log-search|log-ssh|sentlog|filelog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
 about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
 all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
@@ -2354,7 +2354,7 @@ echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code 
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ show-options ]   || ||  ### ###                                                          "
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
-echo "$text_md  show-log           |  log-search log-ssh sentlog autolog                                       "
+echo "$text_md  show-log           |  log-search log-ssh filelog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
 echo "$text_md                        protocols services show-default modify-default                           "
 echo "$text_md  show-about         |  about version depends config-eng config-spa license                      "
@@ -2440,7 +2440,7 @@ if [ "$first_option" = "show-options" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Show options ] [ show-options.md ]"
 echo "$title_md                                   | show-options |                          " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
-echo "$text_md    show-log          | log-search log-ssh sentlog autolog                    "
+echo "$text_md    show-log          | log-search log-ssh filelog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
 echo "$text_md    show-about        | about version depends examples-config                 "
@@ -3626,10 +3626,10 @@ echo "$text_md $tab_lang_spanish           : Busca logs con sshd en /var/log"
 echo "$text_md $tab log-search"
 echo "$text_md $tab_lang_english           : Search logs whith a prefix in /var/log"
 echo "$text_md $tab_lang_spanish           : Busca logs con patron en /var/log"
-echo "$text_md $tab sentlog"
+echo "$text_md $tab filelog"
 echo "$text_md $tab_lang_english           : Show over launches with -log"
 echo "$text_md $tab_lang_spanish           : Muestra volcados con -log"
-echo "$text_md $tab filelog"
+echo "$text_md $tab sentlog"
 echo "$text_md $tab_lang_english           : Alias a sentlog"
 echo "$text_md $tab_lang_spanish           : Apodo a sentlog"
 echo "$text_md $tab autolog"
@@ -4807,7 +4807,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "sentlog" "autolog" "log-search" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Show log ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4817,7 +4817,7 @@ case $selection in
 "Gui Help Menu") $cmd_fwiptables -gui help show-log ;;
 "Gui Info Menu") $cmd_fwiptables -gui info show-log ;;
 "log-ssh")   $cmd_fwiptables -gui log-ssh ;;
-"sentlog") $cmd_fwiptables -gui sentlog ;;
+"filelog") $cmd_fwiptables -gui filelog ;;
 "autolog") $cmd_fwiptables -gui autolog ;;
 "log-search")
 pattern="$($command_zenity  $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
@@ -5220,7 +5220,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
   2100 "$quad [ Show Log ] $cinco" \
   2101  "$tab log-ssh" \
   2102  "$tab log-search" \
-  2103  "$tab sentlog" \
+  2103  "$tab filelog" \
   2104  "$tab autolog" \
   2200 "$quad [ Show About ] $cinco" \
   2201  "$tab about" \
@@ -5453,7 +5453,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
  2101) clear ; $cmd_fwiptables cli log-ssh ;;
  2102) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
- 2103) clear ; $cmd_fwiptables cli sentlog ;;
+ 2103) clear ; $cmd_fwiptables txt filelog ;;
  2104) clear ; $cmd_fwiptables cli autolog ;;
  2201) clear ; $cmd_fwiptables cli about ;;
  2202) clear ; $cmd_fwiptables cli depends ;;
@@ -9111,18 +9111,18 @@ fi
 #### :rutina-final-ole-number:
 ############################## english: filelog: Read log /var/log/fwiptables-filelog  ##############################
 ############################## spanish: filelog: Lee log  /var/log/fwiptables-filelog  ##############################
-#### :rutina-inicial-sentlog:
+#### :rutina-inicial-filelog:
 ####
 ####
-if [ "$first_option" = "sentlog" ] ; then  echo $give_cover
+if [ "$first_option" = "filelog" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show $output_filelog ]"
 cat  "$output_filelog"
 echo 
-echo "$tab [ this file is: ] [ $output_filelog ]"
+echo "### ### [ this file is: ] [ $output_filelog ]"
 exit; fi
 ####
 ####
-#### :rutina-final-fw-sentlog:
+#### :rutina-final-fw-filelog:
 ############################## english: autolog: Read log /var/log/fwiptables-autolog   ##############################
 ############################## spanish: autolog: Lee log  /var/log/fwiptables-autolog   ##############################
 #### :rutina-inicial-autolog:
@@ -10054,8 +10054,8 @@ echo "$title_md         [ Show log ]"
 echo "$text_md"
 echo "$text_md        log-ssh : Search the logs from sshd for /var/log."
 echo "$text_md     log-search : Search the logs from a input pattern for /var/log."
-echo "$text_md        sentlog : Show saved with -log."
-echo "$text_md        filelog : Alias to sentlog."
+echo "$text_md        filelog : Show saved with -log."
+echo "$text_md        filelog : Alias to filelog."
 echo "$text_md        autolog : Show autolog headers."
 echo "$text_md"
 echo "$title_md         [ Show about ]"
@@ -10386,8 +10386,8 @@ echo "$text_md  modify-default : Modifica variables por defecto en fwiptables."
 echo "$text_md"
 echo "$title_md [ Mostrar log ]."
 echo "$text_md"
-echo "$text_md        sentlog : Muestra los volcados con -log ."
-echo "$text_md        filelog : alias a sentlog ."
+echo "$text_md        filelog : Muestra los volcados con -log ."
+echo "$text_md        sentlog : alias a filelog ."
 echo "$text_md        autolog : Muestra las cabeceras de fwiptables lanzados."
 echo "$text_md        log-ssh : Busca los logs de sshd en /var/log ."
 echo "$text_md     log-search : Busca los logs dando un patron para /var/log ."
