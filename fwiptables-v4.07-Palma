@@ -442,7 +442,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 if [ "$first_option" = "intro" ]; then echo "$give_cover"
-echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ]"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
 echo "$text_md       # Use Fran Firewall # configure both iptables netfilter for linux.                       "
 echo "$text_md     Done with support in xtables and/or nftables and ipv4 and/or ipv6.                         "
@@ -608,7 +608,7 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ]"
+echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ] || ||"
 echo "$text_md [ info ] [ $name_fwiptables uninstalling ]"
 if  [ -f $directory_binary/$cmd_fwiptables ]; then
 rm $directory_binary/$name_fwiptables &> /dev/null
@@ -629,7 +629,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "install" ] ; then $zero_option intro ; echo $give_cover
-echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ]"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ] || ||"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -693,7 +693,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ]"
+echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
@@ -729,7 +729,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ]"
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
@@ -1094,7 +1094,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 if [ "$first_option" = "regen-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Generate templates wizard and cfg ]"
+echo "$header_ok [ $first_option ]  [ Generate templates wizard and cfg ] || ||"
 echo " [ info ] [ regenerating template wizard and template cfg ]"
 ####
 ####
@@ -2276,7 +2276,7 @@ fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ]"
+echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ] || ||"
 echo "   output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -h|-help -i|-info -w|-web -l|-log"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||           "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                          "
@@ -2317,7 +2317,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ]"
+echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
 echo "   output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -h|-help -i|-info -w|-web -l|-log"
 echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
