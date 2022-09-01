@@ -6029,7 +6029,6 @@ echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
 if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
 echo "$tab [The sockets with lsof ipv6 ]"
 $command_lsof -i | grep -i ipv6
-echo
 echo "$tab [The sockets with lsof ipv4 ]"
 $command_lsof -i | grep -i ipv4
 exit; fi
