@@ -639,6 +639,7 @@ echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ in
 echo "$text_md [ info ] [ $name_fwiptables installing ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_binary/$cmd_fwiptables" &> /dev/null 
+chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null 
 ####
 ####
 ####  english: generate fwiptables default
@@ -655,19 +656,19 @@ $cmd_fwiptables regen-config &> /dev/null
 ####
 echo "#!/bin/bash" &> $directory_binary/$name_fwiptables-cli-menu
 echo "sudo $cmd_fwiptables cli-menu" &>> $directory_binary/$name_fwiptables-cli-menu
-chmod 700 $directory_binary/$name_fwiptables-cli-menu &> /dev/null
+chmod 555 $directory_binary/$name_fwiptables-cli-menu &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_binary/$name_fwiptables-gui-menu
 echo "$command_xhost +SI:localuser:root" &>> $directory_binary/$name_fwiptables-gui-menu
 echo "sudo $cmd_fwiptables gui-menu" &>> $directory_binary/$name_fwiptables-gui-menu
-chmod 700 $directory_binary/$name_fwiptables-gui-menu &> /dev/null
+chmod 555 $directory_binary/$name_fwiptables-gui-menu &> /dev/null
 ####
 ####
 echo "#!/bin/bash" &> $directory_binary/$name_fwiptables-gui-shell
 echo "$command_xhost +SI:localuser:root" &>> $directory_binary/$name_fwiptables-gui-shell
 echo "sudo $cmd_fwiptables gui-shell" &>> $directory_binary/$name_fwiptables-gui-shell
-chmod 700 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
+chmod 555 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
 ####
 ####
 ####   english: Show final status from installer
