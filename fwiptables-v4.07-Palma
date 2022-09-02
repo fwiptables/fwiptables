@@ -808,11 +808,11 @@ if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ] ; then first_o
 #### english: alias simple for options commons
 ####
 ####
+if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "ls" ]; then first_option="list"; fi
 if [ "$first_option" = "ls4" ]; then first_option="list"; fi
 if [ "$first_option" = "ls6" ]; then first_option="list6"; fi
-if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
 if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
@@ -3802,18 +3802,19 @@ exit; fi
 ####
 if [ "$first_option" = "depends" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List for all programs depends ] || ||"
-echo "$tab [ auth user file ]"
-echo "auth users:              /etc/sudoers.d/$cmd_fwiptables"
+echo "$tab [ Auth file ]"
+echo "Auth file for users:     /etc/sudoers.d/$cmd_fwiptables"
 echo 
 echo "$tab [ Configuration directory ]"
 echo "Directory data:          $directory_data"
 echo "Directory temp:          $directory_tmp"
 echo
-echo "$tab [ interface  ]"
-echo "interface cli (dialog):  $command_dialog"
+echo "$tab [ User interface  ]"
+echo "Interface txt (bash):    $command_bash"
+echo "Interface cli (dialog):  $command_dialog"
 echo "Interface gui (zenity):  $command_zenity"
 echo 
-echo "$tab [ the iptables ]"
+echo "$tab [ The iptables ]"
 echo "iptables legacy:         $command_iptables_legacy"
 echo "iptables nft:            $command_iptables_nft"
 echo "ip6tables legacy:        $command_ip6tables_legacy"
@@ -3821,12 +3822,12 @@ echo "ip6tables nft:           $command_ip6tables_nft"
 echo "arptables:               $command_arptables"
 echo "ebtables:                $command_ebtables"
 echo
-echo "$tab [ auto discover ]"
-echo "automatic: lynx or links or links2  :   $favorite_text_browser"
-echo "automatic: rdate or sntp or ntpdate :   $favorite_date_command"
-echo "automatic: mpg321 or mpg123         :   $favorite_radio_command"
+echo "$tab [ Automatic discover ]"
+echo "Automatic: lynx or links or links2  :   $favorite_text_browser"
+echo "Automatic: rdate or sntp or ntpdate :   $favorite_date_command"
+echo "Automatic: mpg321 or mpg123         :   $favorite_radio_command"
 echo 
-echo "$tab [ several tool ]"
+echo "$tab [ Several tools ]"
 echo "date:                   $command_date"
 echo "uname:                  $command_uname"
 echo "ip:                     $command_ip"
