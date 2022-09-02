@@ -825,6 +825,13 @@ if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ]; then first_option="list-alltables"; fi
 ####
 ####
+####  english: $1 or or $2 or $3 for complete path per file
+####
+####
+if [ "$first_option" = "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
+if [ "$second_option" = "md5sum" ] ; then third_option="$3"  ; quad_option="$4"  ; fi
+####
+####
 #### english:  alias simple for firewall names 
 ####
 ####
@@ -4643,7 +4650,7 @@ case $selection in
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-speed ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-speed ;;
-"md5sum") archivo="$(zenity  $graphic_dimension --entry --title "[ File to calculate md5sum ]")" ;
+"md5sum") archivo="$(zenity --file-selection)" ;
 $cmd_fwiptables -gui md5sum $archivo ;;
 "radio-mp3 link") 
 radio_enlace="$($command_zenity  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
@@ -6947,16 +6954,18 @@ exit; fi
 ####
 ####
 #### :rutina-final-aliasfw-list:
-############################       english: md5: md5 sum from a one file
-############################       spanish: md5: suma md5 desde un archivo
+############################       english: md5sum: md5 sum from a one file
+############################       spanish: md5sum: suma md5 desde un archivo
 #### :rutina-inicial-md5sum:
 ####
 ####
 if [ "$first_option" = "md5sum" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ] || ||"
-if [ "$second_option" == "$NULL" ]; then  echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; exit; fi
-if [ -f "$second_option" ]; then $command_md5sum $second_option
-else echo " [ info ] [ Example: $cmd_fwiptables md5sum file ]"; fi
+if [ "$command_md5sum" == "$NULL" ]; then echo " [ info ] [ Install md5sum ]"; exit ; fi
+if [ "$second_option" == "$NULL" ]; then echo " [ info ] [ $cmd_fwiptables md5sum file ] [ choose file ]"; exit; fi
+file_md5="$2"
+if [ -f "$file_md5" ]; then "$command_md5sum" "$file_md5" ;
+else echo " [ info ] [ $cmd_fwiptables md5sum file ] [ file not found ]"; fi
 exit; fi
 ####
 ####
