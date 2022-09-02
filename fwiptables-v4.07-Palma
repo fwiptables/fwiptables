@@ -562,6 +562,7 @@ command_halt="$(command -v halt | cut -d " " -f 1)"
 #### :rutina-final-command:
 ##############################      english: search favorite browser: favorite browser     #####################
 ##############################      spanish: busca preferido navegador: favorite browser   #####################
+#### :rutina-inicial-favorite-text-browser:
 ####
 ####
 favorite_text_browser=""
@@ -571,16 +572,19 @@ if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
+#### :rutina-inicial-favorite-text-browser:
 ##############################      english: search favorite dhcp Discover ip net     #####################
 ##############################      spanish: busca preferido dhcp Descubre la ip      #####################
+#### :rutina-inicial-favorite-dhcp-command:
 ####
 ####
-favorite_dhcp=""
-if [ "$command_dhcpcd"  = "$NULL" ] ; then $nada         ; else favorite_dhcp="$command_dhcpcd"           ; fi
-if [ "$command_dhclient_script" = "$NULL" ] ; then $nada ; else favorite_dhcp="$command_dhclient_script"  ; fi
-if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp="$command_dhclient"         ; fi
+favorite_dhcp_command=""
+if [ "$command_dhcpcd"  = "$NULL" ] ; then $nada         ; else favorite_dhcp_command="$command_dhcpcd"           ; fi
+if [ "$command_dhclient_script" = "$NULL" ] ; then $nada ; else favorite_dhcp_command="$command_dhclient_script"  ; fi
+if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp_command="$command_dhclient"         ; fi
 ####
 ####
+#### :rutina-final-favorite-dhcp-command:
 ##############################      english: search favorite date: favorite date command        #####################
 ##############################      spanish: busca preferida fecha: favorita comando de fecha   #####################
 #### :rutina-inicial-favorite-date-command:
@@ -3802,12 +3806,10 @@ exit; fi
 ####
 if [ "$first_option" = "depends" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List for all programs depends ] || ||"
-echo "$tab [ Auth file ]"
-echo "Auth file for users:     /etc/sudoers.d/$cmd_fwiptables"
-echo 
 echo "$tab [ Configuration directory ]"
 echo "Directory data:          $directory_data"
 echo "Directory temp:          $directory_tmp"
+echo "Posible auth-users:      /etc/sudoers.d/$cmd_fwiptables"
 echo
 echo "$tab [ User interface  ]"
 echo "Interface txt (bash):    $command_bash"
@@ -3823,9 +3825,10 @@ echo "arptables:               $command_arptables"
 echo "ebtables:                $command_ebtables"
 echo
 echo "$tab [ Automatic discover ]"
-echo "Automatic: lynx or links or links2  :   $favorite_text_browser"
-echo "Automatic: rdate or sntp or ntpdate :   $favorite_date_command"
-echo "Automatic: mpg321 or mpg123         :   $favorite_radio_command"
+echo "Automatic browser: lynx or links or links2  :   $favorite_text_browser"
+echo "Automatic date:    rdate or sntp or ntpdate :   $favorite_date_command"
+echo "Automatic music:   mpg321 or mpg123         :   $favorite_radio_command"
+echo "Automatic dhcp:    dhcpcd or dhclient       :   $favorite_dhcp_command" 
 echo 
 echo "$tab [ Several tools ]"
 echo "date:                   $command_date"
@@ -7260,9 +7263,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "dhcp-client" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp" ] || ||"
+echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp_command" ] || ||"
 echo $header_lineal
-if [ "$favorite_dhcp" != "$NULL" ]; then $favorite_dhcp ;
+if [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ;
 else echo " [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
 exit; fi
 ####
