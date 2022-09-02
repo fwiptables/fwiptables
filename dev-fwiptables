@@ -899,6 +899,7 @@ wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_opti
 "modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
 scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+"speed-cpu") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "info-nodes") echo $message_without_cli ;  exit ;;
 "ole-domain") $cmd_fwiptables ole-domain -cli ; exit ;;
 "ole-word") $cmd_fwiptables ole-word -cli ; exit ;;
@@ -2349,7 +2350,7 @@ echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-
 echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
 echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
-echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx radio-mp3 gpg-notes              "
+echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx speed-cpu radio-mp3 gpg-notes    "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5sum                   "
@@ -8146,8 +8147,9 @@ exit; fi
 if [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
-echo "[ Calculate pi with 2000 digits in only one cpu ] [  Example with 2ghz/cpu is 5 seconds aprox. ] "
-time echo "scale=2000; a(1)*4 " | $command_bc -l | tail -0
+echo " [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
+echo " [ info ] [ For example with 2ghz/cpu is 5 seconds aprox. ] "
+time echo 'scale=2000; a(1)*4' | $command_bc -l | tail -0 
 exit; fi
 ####
 ####
