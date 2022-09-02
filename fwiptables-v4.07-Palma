@@ -491,6 +491,8 @@ exit; fi
 ####
 command_bash="$(command -v bash | cut -d " " -f 1)"
 command_find="$(command -v find | cut -d " " -f 1)"
+command_bc="$(command -v bc | cut -d " " -f 1)"
+command_cut="$(command -v cut | cut -d " " -f 1)"
 command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
 command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
 command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
@@ -8113,7 +8115,7 @@ echo "$header_ok [ $first_option ]  [ test the ram speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
 in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
-echo "$tab Test speed with the temporal file /tmp/borrame.img.img about 100Mb"
+echo " [ Test speed with the temporal file /tmp/borrame.img.img about 100Mb ]"
 ####
 ####
 $command_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
@@ -8136,6 +8138,20 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-glx:
+############################       english: speed-cpu: show frammes por seconds with mesa graphicall 
+############################       spanish: speed-cpu: muestra los fotogramas por segundo con graphicos mesa
+#### :rutina-inicial-speed-cpu:
+####
+####
+if [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
+case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
+echo "[ Calculate pi with 2000 digits in only one cpu ] [  Example with 2ghz/cpu is 5 seconds aprox. ] "
+time echo "scale=2000; a(1)*4 " | $command_bc -l | tail -0
+exit; fi
+####
+####
+#### :rutina-final-speed-cpu:
 ############################       english: radio-mp3: url from one radio mp3
 ############################       spanish: radio-mp3: url de una radio en mp3
 #### :rutina-inicial-radio-mp3:
