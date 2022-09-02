@@ -975,7 +975,7 @@ traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
 ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
-free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
@@ -1024,7 +1024,7 @@ traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
 ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
-free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-system"; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
@@ -2350,10 +2350,11 @@ echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-
 echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
 echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
-echo "$text_md  tool-system        |  free-ram speed-ram speed-disk speed-glx speed-cpu radio-mp3 gpg-notes    "
+echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                         "
+echo "$text_md  Tool-utils         |  md5sum radio-mp3 gpg-notes                                               "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
-echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro md5sum                   "
+echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ show-options ]   || ||  ### ###                                                          "
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
@@ -2423,7 +2424,7 @@ echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-
 echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping            "
 echo "$text_md    tool-sudo         | sudofw-adduser sudofw-deluser sudofw-listuser aliasfw-list           "
 echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex                "
-echo "$text_md    tool-system       | free-ram speed-ram speed-disk speed-glx radio            "
+echo "$text_md    tool-speed       | free-ram speed-ram speed-disk speed-glx radio            "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                "
 echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                "
@@ -2531,7 +2532,7 @@ echo "$brake_md"
 $cmd_fwiptables tool-game
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables tool-system
+$cmd_fwiptables tool-speed
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-install
@@ -2633,7 +2634,6 @@ echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readm
 echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst        "
 echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser   "
 echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -2700,7 +2700,7 @@ echo "$text_md $tab_lang_spanish                  Herramienta para bloquear peli
 echo "$text_md $tab tool-dev"
 echo "$text_md $tab_lang_english                  Tool to developer"
 echo "$text_md $tab_lang_spanish                  Herramienta de desarrollo"
-echo "$text_md $tab tool-system"
+echo "$text_md $tab tool-speed"
 echo "$text_md $tab_lang_english                  Several tools for the system"
 echo "$text_md $tab_lang_spanish                  Varias herramientas para el sistema"
 echo "$text_md" 
@@ -2719,7 +2719,6 @@ echo "$text_md $tab_lang_spanish                  Acerca de"
 echo "$text_md $tab show-help"
 echo "$text_md $tab_lang_english                  Help"
 echo "$text_md $tab_lang_spanish                  Ayuda"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -2831,7 +2830,6 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor aste
 echo "$text_md $tab server-squid"
 echo "$text_md $tab_lang_english          : Launch one firewall likes server squid"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor squid"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -2874,7 +2872,6 @@ echo "$text_md $tab_lang_spanish          : Recupera los archivos de firewall es
 echo "$text_md $tab actual" 
 echo "$text_md $tab_lang_english          : Show the actual iptables standard"
 echo "$text_md $tab_lang_spanish          : Muestra el actual firewall estandard"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -2956,7 +2953,6 @@ echo "$text_md $tab_lang_spanish          : Lista reglas mac de ethernet"
 echo "$text_md $tab list-arptables"
 echo "$text_md $tab_lang_english          : List rules arp tables arp from arpanet"
 echo "$text_md $tab_lang_spanish          : Lista reglas de tabla de arpanet"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -2980,7 +2976,6 @@ echo "                       : Lista la tabla de reglas de filtros de entrada y 
 echo "      list-forwardnum6 : List iptables filter rules forward ipv6 in numbers"
 echo "                       : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
 echo
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3023,7 +3018,6 @@ echo "$text_md $tab_lang_spanish          : Muestra una configuracion.cfg"
 echo "$text_md $tab del-config"
 echo "$text_md $tab_lang_english          : Delete one configuration file"
 echo "$text_md $tab_lang_spanish          : Borra una configuracion.cfg"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3072,7 +3066,6 @@ echo "$text_md $tab_lang_english          : Interfaz grafica desde menu"
 echo "$text_md $tab gui-shell"
 echo "$text_md $tab_lang_english          : Gui with command line interface"
 echo "$text_md $tab_lang_spanish          : Gui con interfaz desde linea de comandos"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3124,7 +3117,6 @@ echo "$text_md $tab_lang_spanish          : Obtiene un certificado ssl a una web
 echo "$text_md $tab tcpdump"
 echo "$text_md $tab_lang_english          : Listen the connections"
 echo "$text_md $tab_lang_spanish          : Escucha las conexiones"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3155,7 +3147,6 @@ echo "$text_md $tab_lang_spanish          : Convierte un numero hexadecimal en r
 echo "$text_md $tab colour-rgb"
 echo "$text_md $tab_lang_english          : Convert one number rgb in hexadecimal"
 echo "$text_md $tab_lang_spanish          : Convierte un numero rgb en hexadecimal"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3186,7 +3177,6 @@ echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi usando u
 echo "$text_md $tab dhcp-client"
 echo "$text_md $tab_lang_english          : Launch a dhcp client"
 echo "$text_md $tab_lang_spanish          : Lanza un cliente dhcp"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3211,7 +3201,6 @@ echo "$text_md $tab_lang_spanish          : Inserta el escudo para ssh"
 echo "$text_md $tab rule-de-num"
 echo "$text_md $tab_lang_english          : Delete a number rule"
 echo "$text_md $tab_lang_spanish          : Borra un numero de regla"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3236,7 +3225,6 @@ echo "$text_md $tab_lang_spanish          : Activa la configuracion del kernel s
 echo "$text_md $tab ipforward-off"
 echo "$text_md $tab_lang_english          : Deactive kernel config about forward"
 echo "$text_md $tab_lang_spanish          : Desactiva la configuracion del kernel sobre reenvios"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3264,7 +3252,6 @@ echo "$text_md $tab_lang_spanish          : Hace un ping con una direccion con i
 echo "$text_md $tab ping-ip6"
 echo "$text_md $tab_lang_english          : Do a one ping with to one host with ipv6 icmp"
 echo "$text_md $tab_lang_spanish          : Hace un ping con una direccion con ipv6 icmp"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3292,7 +3279,6 @@ echo "$text_md $tab_lang_spanish          : Testea la velocidad de conexion con 
 echo "$text_md $tab speed-ip6"
 echo "$text_md $tab_lang_english          : Test net bandwith with ipv6"
 echo "$text_md $tab_lang_spanish          : Testea la velocidad de conexion con ipv6"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3323,7 +3309,6 @@ echo "$text_md $tab_lang_spanish          : Localiza una direccion o ip"
 echo "$text_md $tab ntpdate-client"
 echo "$text_md $tab_lang_english          : Update the system date from ntp server"
 echo "$text_md $tab_lang_spanish          : Actualiza la fecha del sistema desde un servidor de fecha"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3354,7 +3339,6 @@ echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por udp pro
 echo "$text_md $tab scan-ping"
 echo "$text_md $tab_lang_english          : Scan a host/mask per ping udp"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por ping protocolo"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3382,7 +3366,6 @@ echo "$text_md $tab_lang_spanish          : Lista sudo $cmd_fwiptables a otros e
 echo "$text_md $tab aliasfw-list" 
 echo "$text_md $tab_lang_english          : List the autocompletion alias for $name_fwiptables"
 echo "$text_md $tab_lang_spanish          : Lista los alias de autocompletar para $name_fwiptables"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3413,7 +3396,6 @@ echo "$text_md $tab_lang_spanish          : Actualiza a la ultima git version"
 echo "$text_md $tab clean-tmp"
 echo "$text_md $tab_lang_english          : Remove temporal files of $name_fwiptables"
 echo "$text_md $tab_lang_spanish          : Borra archivos temporales of $name_fwiptables"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3438,7 +3420,6 @@ echo "$text_md $tab_lang_spanish               : Activa una lista para bloquear 
 echo "$text_md $tab blacklist-off"
 echo "$text_md $tab_lang_english               : Return to default /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Vuelve al archivo por defecto /etc/hosts"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3469,23 +3450,20 @@ echo "$text_md $tab_lang_spanish               : Muestra el codigo fuente de una
 echo "$text_md $tab intro"
 echo "$text_md $tab_lang_english               : Show intro $name_fwiptables"
 echo "$text_md $tab_lang_spanish               : Muestra la intro de $name_fwiptables"
-echo "$text_md $tab md5sum"
-echo "$text_md $tab_lang_english               : Show md5sum from one file"
-echo "$text_md $tab_lang_spanish               : Muestra la suma md5sum de un archivo"
 exit; fi
 ####
 ####
 #### :rutina-final-tool-dev:
-##############################       english: tool-system: options
-##############################       spanish: tool-system: opciones
-#### :rutina-inicial-tool-system:
+##############################       english: tool-speed: options
+##############################       spanish: tool-speed: opciones
+#### :rutina-inicial-tool-speed:
 ####
 ####
-if [ "$first_option" = "tool-system" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool system ] [ tool-system.md ] || ||"
+if [ "$first_option" = "tool-speed" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool speed ] [ tool-speed.md ] || ||"
 echo "$text_md"
-echo "$text_md [ english info ] [ Tool system ]"
-echo "$text_md [ spanish info ] [ Herramienta sistema ]"
+echo "$text_md [ english info ] [ Tool benchmark speed ]"
+echo "$text_md [ spanish info ] [ Herramienta de medir velocidad ]"
 echo "$text_md"
 echo "$text_md $tab free-ram"
 echo "$text_md $tab_lang_english           : Clean for innecesary memory ram"
@@ -3505,11 +3483,37 @@ echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: s
 echo "$text_md $tab gpg-notes"
 echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
 echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
-echo $footer_lineal
 exit; fi
 ####
 ####
-#### :rutina-final-tool-system:
+#### :rutina-final-tool-speed:
+
+##############################       english: tool-utils: options
+##############################       spanish: tool-utils: opciones
+#### :rutina-inicial-tool-utils:
+####
+####
+if [ "$first_option" = "tool-utils" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool system ] [ tool-speed.md ] || ||"
+echo "$text_md"
+echo "$text_md [ english info ] [ Tool utils ]"
+echo "$text_md [ spanish info ] [ Utilidad de sistema ]"
+echo "$text_md"
+echo "$text_md $tab md5sum"
+echo "$text_md $tab_lang_english           : Show md5sum from one file"
+echo "$text_md $tab_lang_spanish           : Muestra la suma md5sum de un archivo"
+echo "$text_md $tab radio-mp3"
+echo "$text_md $tab_lang_english           : connect to one server mp3, see: show-default or modify-default"
+echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: show-default o modify-default"
+echo "$text_md $tab gpg-notes"
+echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
+echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
+exit; fi
+####
+####
+#### :rutina-final-tool-speed:
+
+
 ##############################       english: tool-computer: options
 ##############################       spanish: tool-computer: opciones
 #### :rutina-inicial-tool-computer:
@@ -3530,7 +3534,6 @@ echo "$text_md $tab_lang_spanish           : Lanza shutdown -h now para apagar e
 echo "$text_md $tab pc-reboot"
 echo "$text_md $tab_lang_english           : Launch reboot to reboot the pc"
 echo "$text_md $tab_lang_spanish           : Lanza reboot para reiniciar el pc"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3570,7 +3573,6 @@ echo "$text_md $tab_lang_spanish           : Muestra variables por defecto"
 echo "$text_md $tab modify-default"
 echo "$text_md $tab_lang_english           : Change variables for default"
 echo "$text_md $tab_lang_spanish           : Cambia variables por defecto"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3607,7 +3609,6 @@ echo "$text_md $tab_lang_spanish           : Muestra los dispositivos pci"
 echo "$text_md $tab lshw"
 echo "$text_md $tab_lang_english           : Show the hardware devices"
 echo "$text_md $tab_lang_spanish           : Muestra los dispositivos de hardware"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3638,7 +3639,6 @@ echo "$text_md $tab_lang_spanish           : Apodo a sentlog"
 echo "$text_md $tab autolog"
 echo "$text_md $tab_lang_english           : Show the headers from autolog"
 echo "$text_md $tab_lang_spanish           : Muestra las cabeceras autolog"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -3675,7 +3675,6 @@ echo "$text_md $tab_lang_spanish           : Ejemplo de configuracion con coment
 echo "$text_md $tab license"
 echo "$text_md $tab_lang_english           : Show license gpl v2"
 echo "$text_md $tab_lang_spanish           : Muestra la licencia gpl v2"
-echo $footer_lineal
 exit; fi
 ####
 ####
@@ -4026,8 +4025,8 @@ case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; 
 selection=$(zenity $graphic_dimension  \
  --list "01 Firewall Control" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool connect" "06 Tool rules" \
 "07 Tool sockets" "08 Tool forward" "09 Tool tcp" "10 Tool udp" "11 Tool icmp"  "12 Tool sudo" \
-"13 Tool game" "14 Tool system" "15 Tool install" "16 Tool blacklist" "17 Tool dev" \
-"18 Show hardware" "19 Show etc" "20 Show log" "21 Show about" "22 Show help" \
+"13 Tool game" "14 Tool speed" "15 Tool utils" "16 Tool install" "17 Tool blacklist" "18 Tool dev" \
+"19 Show hardware" "20 Show etc" "21 Show log" "22 Show about" "23 Show help" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $fversion ||")
 #### 
 #### 
@@ -4046,15 +4045,16 @@ case "$selection" in
 "11 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
 "12 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
 "13 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
-"14 Tool system")$cmd_fwiptables gui-menu-tool-system ; exit ;;
-"15 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
-"16 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
-"17 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
-"18 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
-"19 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
-"20 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
-"21 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
-"22 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
+"14 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
+"15 Tool utils")$cmd_fwiptables gui-menu-tool-utils ; exit ;;
+"16 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
+"17 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
+"18 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
+"19 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
+"20 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
+"21 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
+"22 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
+"23 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
 #### 
 esac
 ####
@@ -4593,27 +4593,58 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-game:
-############################## english: gui-menu-tool-system: gui with menu ##############################
-############################## spanish: gui-menu-tool-system: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-tool-system:
+############################## english: gui-menu-tool-speed: gui with menu ##############################
+############################## spanish: gui-menu-tool-speed: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-speed:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-system" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-speed" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" \
-"speed-ram" "speed-disk" "speed-glx" "radio-mp3 link" "gpg-notes" \
---column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool System ] [ $name_fwiptables ]" )
+"speed-ram" "speed-disk" "speed-glx" "speed-cpu" \
+--column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Speed ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Help Menu") $cmd_fwiptables -gui help tool-system ;;
-"Gui Info Menu") $cmd_fwiptables -gui info tool-system ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-speed ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-speed ;;
 "free-ram")   $cmd_fwiptables -gui free-ram ;;
 "speed-ram")  $cmd_fwiptables -gui speed-ram ;;
 "speed-disk") $cmd_fwiptables -gui speed-disk ;;
 "speed-glx")  $cmd_fwiptables -gui speed-glx ;;
+"speed-cpu")  $cmd_fwiptables -gui speed-cpu ;;
+esac
+####
+####
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
+####
+####
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-speed:
+############################## english: gui-menu-tool-util: gui with menu ##############################
+############################## spanish: gui-menu-tool-util: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-util:
+####
+####
+if [ "$first_option" = "gui-menu-tool-utils" ] ; then $nada ;
+selection=$(zenity $graphic_dimension \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "md5sum" "radio-mp3 link" "gpg-notes" \
+--column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Utils ] [ $name_fwiptables ]" )
+#### 
+#### 
+case $selection in
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-speed ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-speed ;;
+"md5sum") archivo="$(zenity  $graphic_dimension --entry --title "[ File to calculate md5sum ]")" ;
+$cmd_fwiptables -gui md5sum $archivo ;;
 "radio-mp3 link") 
 radio_enlace="$($command_zenity  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
 $cmd_fwiptables -gui radio-mp3 $radio_enlace ;;
@@ -4629,7 +4660,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-tool-system:
+#### :rutina-final-gui-menu-tool-util:
 ############################## english: gui-menu-tool-install: gui with menu ##############################
 ############################## spanish: gui-menu-tool-install: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-install:
@@ -5262,7 +5293,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
  1300) clear ; $cmd_fwiptables cli tool-install ;;
  1400) clear ; $cmd_fwiptables cli tool-blacklist ;;
  1500) clear ; $cmd_fwiptables cli tool-dev ;;
- 1600) clear ; $cmd_fwiptables cli tool-system ;;
+ 1600) clear ; $cmd_fwiptables cli tool-speed ;;
  1700) clear ; $cmd_fwiptables cli show-hardware ;;
  1800) clear ; $cmd_fwiptables cli show-etc ;;
  1900) clear ; $cmd_fwiptables cli show-log ;;
@@ -9773,7 +9804,7 @@ if [ "$second_option" = "tool-sudo" ]; then $cmd_fwiptables tool-sudo ; exit ; f
 if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
 if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
 if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
-if [ "$second_option" = "tool-system" ]; then $cmd_fwiptables tool-system ; exit ; fi
+if [ "$second_option" = "tool-speed" ]; then $cmd_fwiptables tool-speed ; exit ; fi
 if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
 if [ "$second_option" = "show-etc" ]; then $cmd_fwiptables show-etc ; exit ; fi
 if [ "$second_option" = "show-log" ]; then $cmd_fwiptables show-log ; exit ; fi
@@ -9794,7 +9825,7 @@ echo "$tab" "$tab"
 echo "$tab" "$tab"  " firewall-options   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
 echo "$tab" "$tab"  "     tool-options   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
 echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudo        tool-game       "
-echo "$tab" "$tab"  "                       tool-system       tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "                       tool-speed       tool-install   tool-blacklist   tool-dev        "
 echo "$tab" "$tab"  "                       tool-connect"
 echo "$tab" "$tab"  "     show-options   |  show-hardware     show-etc       show-log         show-about      "
 echo "$tab" "$tab"  "                       show-help"
