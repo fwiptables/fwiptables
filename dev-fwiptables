@@ -2355,7 +2355,7 @@ echo "$text_md                        info-system ss lsof tcpdump netstat netsta
 echo "$text_md  tool-connect       |  iw-scan iw-info iw-save wpa-load dhcp-client ntpdate-client              "
 echo "$text_md  tool-rules         |  rule-del-num rule-del-shield rule-add-shield                             "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
-echo "$text_md  tool-sshd          |  sshd-info sshd-tunnel sshd-forward-on sshd-forward-off                   "
+echo "$text_md  tool-sshd          |  sshd-info sshd-tunnel-on sshd-tunnel-off sshd-forward-on sshd-forward-off"
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client                                  "
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
@@ -9219,6 +9219,28 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-forward-off
+############################## english: sshd-tunnel-on: active sshd tunnel   ######################
+############################## spanish: sshd-tunnel-on: activa shhd tunel    ######################
+#### :rutina-inicial-sshd-tunnel-on:
+####
+####
+if [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ tool ssh server for active ssh tunnel ] || ||"
+exit; fi
+####
+####
+#### :rutina-final-sshd-tunnel-on
+############################## english: sshd-tunnel-off: deactive sshd tunnel    ######################
+############################## spanish: sshd-tunnel-off: desactiva shhd tunel    ######################
+#### :rutina-inicial-sshd-tunnel-on:
+####
+####
+if [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
+exit; fi
+####
+####
+#### :rutina-final-sshd-tunnel-off
 ############################## english: filelog: Read log /var/log/fwiptables-filelog  ##############################
 ############################## spanish: filelog: Lee log  /var/log/fwiptables-filelog  ##############################
 #### :rutina-inicial-filelog:
