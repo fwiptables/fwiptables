@@ -2,6 +2,8 @@ ideas: tool-snort, tool-ssh
 
 
 
+
+ 4. cambio de permisos en fwiptables-cli-menu gui-menu gui-shell
  3. simplifica algunas variables
  2. cambios minimos en depends
  1. cambios de apariencia en cabeceras
