@@ -2,6 +2,8 @@ ideas: tool-snort, tool-ssh
 
 
 
+ 3. simplifica algunas variables
+ 2. cambios minimos en depends
  1. cambios de apariencia en cabeceras
 
  cambios en dev-fwiptables desarrollo 4.07
