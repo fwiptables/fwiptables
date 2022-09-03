@@ -1,12 +1,13 @@
 ideas: tool-snort, tool-ssh
 
 
-
-
- 4. cambio de permisos en fwiptables-cli-menu gui-menu gui-shell
- 3. simplifica algunas variables
- 2. cambios minimos en depends
- 1. cambios de apariencia en cabeceras
+ 7. 
+ 6. diminuto cambio en wpa-load. HECHO
+ 5. añadido sshd-info. HECHO 
+ 4. cambio de permisos en fwiptables-cli-menu gui-menu gui-shell a chmod 555. HECHO
+ 3. simplifica algunas variables. HECHO
+ 2. cambios minimos en depends. HECHO
+ 1. cambios diminuto de apariencia en cabeceras. HECHO
 
  cambios en dev-fwiptables desarrollo 4.07
  
