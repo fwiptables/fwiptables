@@ -9171,6 +9171,33 @@ fi
 ####
 ####
 #### :rutina-final-ole-number:
+
+
+############################## english: sshd-info: info over sshd   ##############################
+############################## spanish: sshd-info: info sobre sshd  ##############################
+#### :rutina-inicial-sshd-info:
+####
+####
+if [ "$first_option" = "sshd-info" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ tool ssh server info ]"
+if [ "$command_lsof" == "$NULL" ] ; then echo " [ fail ] [ Install lsof ]" ; exit ; fi
+#### sshd runing
+echo " [ info ] [ Above server sshd ] [ search sshd with lsof ]"
+$command_lsof -i | grep -i sshd
+#### sshd file
+ssh_file="/etc/ssh/sshd_config"
+echo " [ info ] [ Above config file ] [ options: gatewaysports and forwardings ]"
+if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
+else for a in $(ls "$ssh_file"); do cat $a | egrep -i "gatewayports|forwarding"; done ; fi
+#### sshd directory
+ssh_dir="/etc/ssh/sshd_config.d"
+echo " [ info ] [ Above config directory ] [ options: gatewaysports and forwardings ]"
+if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
+else for a in $(ls "$ssh_dir"); do cat $a | egrep -i "gatewayports|forwarding"; done ; fi
+exit; fi
+####
+####
+#### :rutina-final-sshd-info:
 ############################## english: filelog: Read log /var/log/fwiptables-filelog  ##############################
 ############################## spanish: filelog: Lee log  /var/log/fwiptables-filelog  ##############################
 #### :rutina-inicial-filelog:
