@@ -1,9 +1,9 @@
-ideas: tool-snort, tool-ssh
+ideas: tool-snort.
 
 
 
 
- 13. añadido tool-sshd a gui-menu. trabajando
+ 13. añadido tool-sshd a gui-menu. HECHO
  12. añadido tool-sshd a cli-menu. trabajando
  11. añadido tool-sshd. trabajando
  10. añadido sshd-tunel-info. HECHO
