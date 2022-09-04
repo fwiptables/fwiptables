@@ -111,7 +111,7 @@ command_id="$(command -v id)" &> /dev/null
 command_xhost="$(command -v xhost)" &> /dev/null
 ####
 ####
-terminal_tty="$(tty | grep -i tty | tail -1)"
+terminal_tty="$(tty | grep -i  tty | tail -1)"
 if [ "$terminal_tty" = "$NULL" ] ; then
 if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ]    ; then echo -n
 else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; fi
@@ -493,6 +493,8 @@ command_bash="$(command -v bash | cut -d " " -f 1)"
 command_find="$(command -v find | cut -d " " -f 1)"
 command_bc="$(command -v bc | cut -d " " -f 1)"
 command_cut="$(command -v cut | cut -d " " -f 1)"
+command_grep="$(command -v grep | cut -d " " -f 1)"
+command_zgrep="$(command -v zgrep | cut -d " " -f 1)"
 command_iptables_legacy="$(command -v iptables-legacy | cut -d " " -f 1)"
 command_iptables_nft="$(command -v iptables-nft | cut -d " " -f 1)"
 command_ip6tables_legacy="$(command -v ip6tables-legacy | cut -d " " -f 1)"
@@ -652,7 +654,7 @@ chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -310 $0 | grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
+echo "$(head -310 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -884,10 +886,10 @@ $cmd_fwiptables regen-config ;; esac
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
 case "$second_option" in
 "list") $cmd_fwiptables list4-ip &> $temporal_text 
-cat $temporal_text | grep -v Warning:  &> $temporal_textfinal
+cat $temporal_text | $command_grep -E Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 "list6") $cmd_fwiptables list6-ip &> $temporal_text 
-cat $temporal_text | grep -v Warning:  &> $temporal_textfinal
+cat $temporal_text | $command_grep -E Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 *) $cmd_fwiptables $second_option $third_option ; exit ;;
 esac; fi
@@ -953,7 +955,7 @@ then first_option="-log"
 echo $head_waiting_log
 echo "### ### [ log ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_fwiptables $second_option $third_option $quad_option &>> $output_log
-cat $output_log | grep -v Warning: &>> $output_filelog
+cat $output_log | $command_grep -E Warning: &>> $output_filelog
 echo " [ ok ] \
 [ Output $cmd_fwiptables $second_option $third_option $quad_option sended to $output_filelog ] \
 [ show: fwiptables filelog ]" ;
@@ -1051,7 +1053,7 @@ $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
 sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
 sed -e 's/\.md\ \]/\.rst\ \]/' $temporal_text.2 &> $temporal_text.3  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
-$temporal_text.3 | grep -iv "::"  &> $temporal_text.rst ;
+$temporal_text.3 | $command_grep -i v "::"  &> $temporal_text.rst ;
 cat $temporal_text.rst
 exit ; fi
 ####
@@ -2615,10 +2617,10 @@ default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
 echo "$tab"
 echo "$tab [ System files ]"
-ls -1 $directory_config/ | egrep -i $default_files_cfg
+ls -1 $directory_config/ | $command_grep -E -i $default_files_cfg
 echo "$tab"
 echo "$tab [ User files ]"
-ls -1 $directory_config/ | egrep -iv $default_files_cfg
+ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
 echo "$tab"
 echo "$tab [ OK CFG FILES NAMES ]"
 echo $footer_lineal
@@ -4006,7 +4008,7 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 ####
 *)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
-#### cat $temporal_gui | grep -v Warning: &> $temporal_guifinal
+#### cat $temporal_gui | $command_grep -E Warning: &> $temporal_guifinal
 $command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
@@ -4307,7 +4309,7 @@ $cmd_fwiptables -gui wpa-load
 archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]")" ;
 $cmd_fwiptables -gui wpa-load $archivo ; $cmd_fwiptables -gui iw-info ;;
 "wpa-save")
-for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
+for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
 $cmd_fwiptables -gui iw-scan
 name_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
 pass_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
@@ -5412,7 +5414,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
  $cmd_fwiptables wpa-save archivoa archivob;;
  0604) clear ; 
  archivo="$($command_dialog  --stdout --title "type wpa file to load" \
- --inputbox "$($command_find $directory_default | cut -d "/" -f 4- | grep \\.wpa)" 0 0)"
+ --inputbox "$($command_find $directory_default | cut -d "/" -f 4- | $command_grep \\.wpa)" 0 0)"
  $cmd_fwiptables wpa-load $archivo ;;
  0605) clear ; $cmd_fwiptables dhcp-client ;;
  0701) clear ; $cmd_fwiptables rule-del-num ;;
@@ -5715,12 +5717,12 @@ echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
 echo
 code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
-salida_code="$(cat $directory_binary/$cmd_fwiptables | grep -i rutina-inicial | grep -iv cat | sed -s s/####\ :rutina-inicial-//g | \
+salida_code="$(cat $directory_binary/$cmd_fwiptables | $command_grep -i  rutina-inicial | $command_grep -i v cat | sed -s s/####\ :rutina-inicial-//g | \
 sort | sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $directory_binary/$cmd_fwiptables | grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $directory_binary/$cmd_fwiptables | grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $directory_binary/$cmd_fwiptables | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $directory_binary/$cmd_fwiptables | $command_grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
@@ -5755,7 +5757,7 @@ if [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show howto upgrade ] || ||"
 echo "$tab [ info ] [ The actually version is: $cmd_fwiptables $fversion actual ]"
 echo "$tab [ info ] [ The latest version is: ]"
-$favorite_text_browser -dump $fweb_newfiles  | grep -i fwiptables | grep -i download | head -1
+$favorite_text_browser -dump $fweb_newfiles  | $command_grep -i  fwiptables | $command_grep -i  download | head -1
 echo 
 echo "$tab [ info ] [ Upgrade The fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser ]"
 echo "$tab [ info ] [ OR download manually   || OR $cmd_fwiptables upgrade || OR look down: ]"
@@ -6074,9 +6076,9 @@ if [ "$first_option" = "lsof" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
 if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
 echo "$tab [The sockets with lsof ipv6 ]"
-$command_lsof -i | grep -i ipv6
+$command_lsof -i | $command_grep -i  ipv6
 echo "$tab [The sockets with lsof ipv4 ]"
-$command_lsof -i | grep -i ipv4
+$command_lsof -i | $command_grep -i  ipv4
 exit; fi
 ####
 ####
@@ -6147,7 +6149,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ] || ||"
-for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done
 exit; fi
 ####
@@ -6160,7 +6162,7 @@ exit; fi
 ####
 if [ "$first_option" = "ipforward-off" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ] || ||"
-for a in $($command_sysctl -a | grep -i forwarding | cut -d " " -f 1)
+for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done
 exit; fi
 ####
@@ -6282,13 +6284,13 @@ if [ "$first_option" = "status" ]; then $nada
 ####
 ####
 $cmd_fwiptables list
-#### if [ "$($command_ip -4 route | grep -i default | head -1)" != "$NULL" ]; then $cmd_fwiptables list
+#### if [ "$($command_ip -4 route | $command_grep -i  default | head -1)" != "$NULL" ]; then $cmd_fwiptables list
 #### else echo ; echo "$tab [ Without default route for rules xtables ipv4 ] [ iptables-legacy ]" 
 #### echo ; echo "$tab [ Without default route for rules xtables ipv4 ] [ iptables-legacy ]" ; fi
 ####
 ####
 $cmd_fwiptables list6
-#### if [ "$($command_ip -6 route | grep -i default | head -1)" != "$NULL" ]; then $cmd_fwiptables list6
+#### if [ "$($command_ip -6 route | $command_grep -i  default | head -1)" != "$NULL" ]; then $cmd_fwiptables list6
 #### else echo ; echo "$tab [ Without default route for rules xtables ipv6 ] [ ip6tables-legacy ]" 
 #### echo ; echo "$tab [ Without default route for rules xtables ipv6 ] [ ip6tables-legacy ]" ; fi
 ####
@@ -6985,8 +6987,8 @@ echo "$header_ok [ $first_option ]  [ Add shield ssh ] || ||"
 ####
 ####
 $cmd_fwiptables save no_default_tmp &> /dev/null
-for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | grep -iv less)
-do egrep -v "shield|SHIELD" $shield >> $shield-less
+for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i v less)
+do $command_grep -E -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
 ####
@@ -7049,8 +7051,8 @@ exit ; fi
 if [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset shield ssh ] || ||"
 $cmd_fwiptables save no_default_tmp &> /dev/null
-for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | grep -iv less)
-do egrep -v "shield|SHIELD" $shield >> $shield-less
+for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i v less)
+do $command_grep -E -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
 exit ; fi
@@ -7196,8 +7198,8 @@ if [ "$first_option" = "iw-scan" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
 echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
-for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig $a up ;
-$command_iw $a scan | egrep -i "on $a|ssid" ; done 
+for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $a up ;
+$command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done 
 exit; fi
 ####
 ####
@@ -7211,7 +7213,7 @@ if [ "$first_option" = "iw-info" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ] || ||"
 echo $header_lineal
 if [ "$command_iw" == "$NULL" ]; then  echo " [ info ] [ Install iw ]" ; exit ; fi
-for a in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_iw $a info ; done 
+for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_iw $a info ; done 
 exit; fi
 ####
 ####
@@ -7228,7 +7230,7 @@ if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo " [ info ] [ Install wpa
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$2" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else ssid="$2"     ; fi
 if [ "$3" == "$NULL" ]; then  echo " [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else password="$3" ; fi
-for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do $command_ifconfig "$dispositivo" up ;
+for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig "$dispositivo" up ;
 $command_wpa_passphrase "$ssid" "$password" > "$directory_default/$dispositivo-$ssid.wpa"
 $command_wpa_supplicant -B -i "$dispositivo" -c "$directory_default/$dispositivo-$ssid.wpa"
 echo "launched: $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$dispositivo-$ssid.wpa" ; done
@@ -7246,12 +7248,12 @@ if [ "$first_option" = "wpa-load" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-load wpa_file1 ] || ||"
 echo $header_lineal
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo " [ info ] [ Install wpa_supplicant ]" ; exit ; fi
-if [ "$($command_find $directory_default | grep \\.wpa)" == "$NULL" ]; then
+if [ "$($command_find $directory_default | $command_grep \\.wpa)" == "$NULL" ]; then
 echo " [ Without old wpa file saved, run: fwiptables wpa-save SSID PASSWORD ]"; 
 else echo " [ wpa old file saved: ]" 
-$command_find $directory_default | grep \\.wpa | cut -d "/" -f 6- ; fi
+$command_find $directory_default | $command_grep \\.wpa | cut -d "/" -f 6- ; fi
 if [ -f "$directory_default/$second_option" ]; then
-for dispositivo in $(cat /proc/net/dev | grep -i : | cut -d ":" -f 1); do 
+for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do 
 $command_wpa_supplicant -B -i $dispositivo -c $directory_default/$second_option ; done
 else echo "[ Connect with loaded wpa ] [ For example: $cmd_fwiptables wpa-load WPA-FILE ]"; fi
 exit; fi
@@ -7280,7 +7282,7 @@ exit; fi
 if [ "$first_option" = "ipforward-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ] || ||"
 echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
-$command_sysctl -a | grep -i forwarding
+$command_sysctl -a | $command_grep -i  forwarding
 exit; fi
 ####
 ####
@@ -7313,7 +7315,7 @@ if [ "$first_option" = "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
 echo " [ info ] [ local net: ip lan .. ]"
-$command_ip -4 route | grep -iv default
+$command_ip -4 route | $command_grep -i v default
 echo " [ info ] [ local scan: arp lan scan .. ]"
 #### $command_arp_scan -l -x & sleep $server_waiting && killall -9 $command_arp_scan
 timeout -s SIGINT -v $server_waiting $command_arp_scan -l -x
@@ -7865,7 +7867,7 @@ exit; fi
  echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
  *) trazador="$second_option" ;; esac
  echo " [ ok ] [ dig $trazador ]"
- $command_dig $trazador | grep ^$trazador
+ $command_dig $trazador | $command_grep ^$trazador
  echo $footer_lineal
  exit; fi
 ####
@@ -8159,7 +8161,7 @@ exit; fi
 if [ "$first_option" = "speed-ram" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the ram speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
-case "$(mount | grep -i "/tmp type tmpfs" | wc -l)" 
+case "$(mount | $command_grep -i  "/tmp type tmpfs" | wc -l)" 
 in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
 echo " [ Test speed with the temporal file /tmp/borrame.img.img about 100Mb ]"
 ####
@@ -8456,13 +8458,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -8582,13 +8584,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 #####
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
@@ -8705,13 +8707,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish" 
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -9182,17 +9184,17 @@ echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
 if [ "$command_lsof" == "$NULL" ] ; then echo " [ fail ] [ Install lsof ]" ; exit ; fi
 #### sshd runing
 echo " [ info ] [ Above server sshd ] [ search sshd with lsof ]"
-$command_lsof -i | grep -i sshd
+$command_lsof -i | $command_grep -i  sshd
 #### sshd file
 ssh_file="/etc/ssh/sshd_config"
 echo " [ info ] [ Above config file ] [ options: gatewaysports and forwardings ]"
 if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
-else for a in $(ls "$ssh_file"); do cat $a | grep -iv ^# | egrep -i "gatewayports|forwarding"; done ; fi
+else for a in $(ls "$ssh_file"); do cat $a | $command_grep -i v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
 echo " [ info ] [ Above config directory ] [ options: gatewaysports and forwardings ]"
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
-else for a in $(ls "$ssh_dir"); do cat $a | grep -iv ^# | egrep -i "gatewayports|forwarding"; done ; fi
+else for a in $(ls "$ssh_dir"); do cat $a | $command_grep -i v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 exit; fi
 ####
 ####
@@ -9276,7 +9278,8 @@ exit; fi
 ####
 if [ "$first_option" = "log-ssh" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ search sshd in logs ] || ||"
-find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "ssh"
+if [ "$command_zgrep" == "$NULL" ] ; then echo " [ fail ] [ Install zgrep ]"; exit ; fi
+find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
 exit; fi
 ####
 ####
@@ -9290,7 +9293,8 @@ if [ "$first_option" = "log-search" ]; then echo $give_cover
 echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] || ||"
 case "$second_option" in
 $NULL) echo "$tab [ fail ] [ use: $cmd_fwiptables $first_option pattern ]" ;;
-*) find /var/log -maxdepth 5 -type f | xargs zgrep -a -i "$second_option" ;;
+if [ "$command_zgrep" == "$NULL" ] ; then echo " [ fail ] [ Install zgrep ]"; exit ; fi
+*) find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "$second_option" ;;
 esac
 exit; fi
 ####
@@ -9329,7 +9333,7 @@ if [ "$first_option" = "new-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $fweb_newfiles | egrep "[0123456789]-[0123456789][0123456789]-[0123456789]" | sed s/\<//g |sed s/\>//g 
+$favorite_text_browser -dump $fweb_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | sed s/\<//g |sed s/\>//g 
 exit; fi
 ####
 ####
@@ -9345,7 +9349,7 @@ if [ "$first_option" = "gpg-notes" ]; then
 ####
 ####
 if [ "$second_option" == "-list" ] ; then
-find "$directory_default" | xargs file | grep \\.gpg | cut -d "/" -f 4- | sed 's/\.gpg//' -
+find "$directory_default" | xargs file | $command_grep \\.gpg | cut -d "/" -f 4- | sed 's/\.gpg//' -
 echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; fi
 if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
@@ -9700,7 +9704,7 @@ exit; fi
 if [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
 echo "$tab [ System info ] [ Distro ] "
-cat /etc/*-release | grep -i pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
+cat /etc/*-release | $command_grep -i  pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
 echo
 echo "$tab [ System info ][ Kernel Linux ]"
 $command_uname -srom
@@ -9710,7 +9714,7 @@ ps -p1
 echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
 echo
 echo "$tab [ System info ] [ Processor ]"
-lscpu | egrep -i "socket|Model name|cpu max"
+lscpu | $command_grep -E -i "socket|Model name|cpu max"
 echo
 echo "$tab [ System info ] [ Memory RAM ]"
 free -h
@@ -9746,11 +9750,11 @@ else $command_ss -l6 | sed 's/   / /g' ; fi
 echo
 echo "$tab [ Private ip ] [ Address ipv4 ]"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -4 address | grep -i inet | grep -iv 127.0.0.1 | cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i v 127.0.0.1 | cut -d "/" -f 1 ; fi
 echo
 echo "$tab [ Private ip ] [ Address ipv6 ]"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else $command_ip -6 address | grep -i inet | grep -iv ::1/128 | cut -d "/" -f 1 ; fi
+else $command_ip -6 address | $command_grep -i  inet | $command_grep -i v ::1/128 | cut -d "/" -f 1 ; fi
 echo
 echo "$tab [ Public ip ] [ Address ipv4 ]"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
