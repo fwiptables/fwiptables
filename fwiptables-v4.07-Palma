@@ -2369,7 +2369,7 @@ echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-p
 echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  Tool-utils         |  md5sum radio-mp3 gpg-notes                                               "
+echo "$text_md  Tool-utils         |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
