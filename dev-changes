@@ -3,14 +3,19 @@ ideas: tool-snort, tool-ssh
 
 
 
- 8. ahora grep con command -v grep. HECHO
- 7. cambiar egrep por grep -E. HECHO 
- 6. diminuto cambio en wpa-load. HECHO
- 5. añadido sshd-info. HECHO 
- 4. cambio de permisos en fwiptables-cli-menu gui-menu gui-shell a chmod 555. HECHO
- 3. simplifica algunas variables. HECHO
- 2. cambios minimos en depends. HECHO
- 1. cambios diminuto de apariencia en cabeceras. HECHO
+ 13. añadido tool-sshd a gui-menu. trabajando
+ 12. añadido tool-sshd a cli-menu. trabajando
+ 11. añadido tool-sshd. trabajando
+ 10. añadido sshd-tunel-info. HECHO
+ 9.  añadido sshd-tunnel-off. HECHO
+ 8.  añadido sshd-tunnel-on. HECHO
+ 7.  ahora grep con command -v grep. HECHO
+ 6.  cambiar egrep por grep -E. HECHO 
+ 5.  diminuto cambio en wpa-load. HECHO
+ 4.  cambio de permisos en fwiptables-cli-menu gui-menu gui-shell a chmod 555. HECHO
+ 3.  simplifica algunas variables. HECHO
+ 2.  cambios minimos en depends. HECHO
+ 1.  cambios diminuto de apariencia en cabeceras. HECHO
 
  cambios en dev-fwiptables desarrollo 4.07
  

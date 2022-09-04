@@ -2357,7 +2357,7 @@ echo "$text_md                        info-system ss lsof tcpdump netstat netsta
 echo "$text_md  tool-connect       |  iw-scan iw-info iw-save wpa-load dhcp-client ntpdate-client              "
 echo "$text_md  tool-rules         |  rule-del-num rule-del-shield rule-add-shield                             "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
-echo "$text_md  tool-sshd          |  sshd-info sshd-tunnel-on sshd-tunnel-off sshd-forward-on sshd-forward-off"
+echo "$text_md  tool-sshd          |  sshd-tunnel-info sshd-tunnel-on sshd-tunnel-off                          "
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client                                  "
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
@@ -5717,7 +5717,7 @@ echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
 echo
 code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
-salida_code="$(cat $directory_binary/$cmd_fwiptables | $command_grep -i  rutina-inicial | $command_grep -i v cat | sed -s s/####\ :rutina-inicial-//g | \
+salida_code="$(cat $directory_binary/$cmd_fwiptables | $command_grep -i  rutina-inicial | $command_grep -i -v cat | sed -s s/####\ :rutina-inicial-//g | \
 sort | sed -s s/://g )"
 echo $salida_code
 exit ; fi
@@ -6987,7 +6987,7 @@ echo "$header_ok [ $first_option ]  [ Add shield ssh ] || ||"
 ####
 ####
 $cmd_fwiptables save no_default_tmp &> /dev/null
-for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i v less)
+for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
 do $command_grep -E -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
@@ -7051,7 +7051,7 @@ exit ; fi
 if [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset shield ssh ] || ||"
 $cmd_fwiptables save no_default_tmp &> /dev/null
-for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i v less)
+for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
 do $command_grep -E -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
@@ -7315,7 +7315,7 @@ if [ "$first_option" = "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
 echo " [ info ] [ local net: ip lan .. ]"
-$command_ip -4 route | $command_grep -i v default
+$command_ip -4 route | $command_grep -i -v default
 echo " [ info ] [ local scan: arp lan scan .. ]"
 #### $command_arp_scan -l -x & sleep $server_waiting && killall -9 $command_arp_scan
 timeout -s SIGINT -v $server_waiting $command_arp_scan -l -x
@@ -9174,60 +9174,45 @@ fi
 ####
 ####
 #### :rutina-final-ole-number:
-############################## english: sshd-info: info over sshd   ##############################
-############################## spanish: sshd-info: info sobre sshd  ##############################
-#### :rutina-inicial-sshd-info:
+############################## english: sshd-tunnel-info: info over sshd   ##############################
+############################## spanish: sshd-tunnel-info: info sobre sshd  ##############################
+#### :rutina-inicial-sshd-tunnel-info:
 ####
 ####
-if [ "$first_option" = "sshd-info" ] ; then  echo $give_cover
+if [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
 if [ "$command_lsof" == "$NULL" ] ; then echo " [ fail ] [ Install lsof ]" ; exit ; fi
-#### sshd runing
+#### ssh tunnel
+echo " [ info ] [ Above ssh tunnel process ] [ search ssh tunnel with ps ]"
+ps aux | grep "ssh -f -N -D" | grep -iv "grep ssh"
+#### sshd server
 echo " [ info ] [ Above server sshd ] [ search sshd with lsof ]"
 $command_lsof -i | $command_grep -i  sshd
 #### sshd file
 ssh_file="/etc/ssh/sshd_config"
-echo " [ info ] [ Above config file ] [ options: gatewaysports and forwardings ]"
+echo " [ info ] [ Above config file ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
-else for a in $(ls "$ssh_file"); do cat $a | $command_grep -i v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
+else for a in $(ls "$ssh_file"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
-echo " [ info ] [ Above config directory ] [ options: gatewaysports and forwardings ]"
+echo " [ info ] [ Above config directory ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
-else for a in $(ls "$ssh_dir"); do cat $a | $command_grep -i v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
+else for a in $(ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-sshd-info:
-############################## english: sshd-forward-on: active forwarding  #########################
-############################## spanish: sshd-forward-on: active forwarding  #########################
-#### :rutina-inicial-sshd-forward-on:
-####
-####
-if [ "$first_option" = "sshd-forward-on" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ tool ssh server for active sshd-forward ] || ||"
-exit; fi
-####
-####
-#### :rutina-final-sshd-forward-on:
-############################## english: sshd-forward-off: active forwarding   ######################
-############################## spanish: sshd-forward-off: deactive forwarding ######################
-#### :rutina-inicial-sshd-forward-off:
-####
-####
-if [ "$first_option" = "sshd-forward-off" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ tool ssh server for deactive sshd-forward ] || ||"
-exit; fi
-####
-####
-#### :rutina-final-sshd-forward-off
+#### :rutina-final-sshd-tunnel-info:
 ############################## english: sshd-tunnel-on: active sshd tunnel   ######################
 ############################## spanish: sshd-tunnel-on: activa shhd tunel    ######################
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
 if [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ tool ssh server for active ssh tunnel ] || ||"
+echo "$header_ok [ $first_option ]  [ on: ssh server on port 1080 with active ssh tunnel ] || ||"
+if [ "$second_option" == "$NULL" ]; then echo " [ fail ] [ type fwiptables sshd-tunnel-on user@my-localhost ]"; exit ; fi
+echo " [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
+ssh -f -N -D 1080 "$second_option" || echo "error no tunnel"
+echo " [  ok  ] [ Now, tunnel ssh active in port 1080 ] [ $second_option ]"
 exit; fi
 ####
 ####
@@ -9239,6 +9224,10 @@ exit; fi
 ####
 if [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
+echo " [ status ] [ killing procees with: ssh -f -N -D ]"
+for parada in $(ps aux | grep "ssh \-f \-N \-D" | grep -iv "grep ssh" | awk '{print $2}' -);
+do echo  " [ status ] [ kill pid $parada ]"; kill -9 "$parada" ; done
+echo " [  ok  ] [ sshd-tunnel-off finished ]"
 exit; fi
 ####
 ####
@@ -9291,9 +9280,9 @@ exit; fi
 ####
 if [ "$first_option" = "log-search" ]; then echo $give_cover
 echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] || ||"
+if [ "$command_zgrep" == "$NULL" ] ; then echo " [ fail ] [ Install zgrep ]"; exit ; fi
 case "$second_option" in
 $NULL) echo "$tab [ fail ] [ use: $cmd_fwiptables $first_option pattern ]" ;;
-if [ "$command_zgrep" == "$NULL" ] ; then echo " [ fail ] [ Install zgrep ]"; exit ; fi
 *) find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "$second_option" ;;
 esac
 exit; fi
@@ -9750,11 +9739,11 @@ else $command_ss -l6 | sed 's/   / /g' ; fi
 echo
 echo "$tab [ Private ip ] [ Address ipv4 ]"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i v 127.0.0.1 | cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
 echo
 echo "$tab [ Private ip ] [ Address ipv6 ]"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else $command_ip -6 address | $command_grep -i  inet | $command_grep -i v ::1/128 | cut -d "/" -f 1 ; fi
+else $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v ::1/128 | cut -d "/" -f 1 ; fi
 echo
 echo "$tab [ Public ip ] [ Address ipv4 ]"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
