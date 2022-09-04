@@ -109,11 +109,13 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 command_id="$(command -v id)" &> /dev/null
 command_xhost="$(command -v xhost)" &> /dev/null
+command_grep="$(command -v grep)" &> /dev/null
+terminal_tty="$(tty | $command_grep -E -i tty | tail -1)"
 ####
 ####
-terminal_tty="$(tty | grep -i  tty | tail -1)"
 if [ "$terminal_tty" = "$NULL" ] ; then
-if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ]    ; then echo -n
+if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
+then $command_xhost +SI:localuser:"$(logname)" &> /dev/null 
 else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; fi
 ####
 ####
@@ -4054,7 +4056,7 @@ case "$selection" in
 "06 Tool rules")$cmd_fwiptables gui-menu-tool-rules ; exit ;;
 "07 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
 "08 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
-"08 Tool sshd")$cmd_fwiptables gui-menu-tool-sshd ; exit ;;
+"09 Tool sshd")$cmd_fwiptables gui-menu-tool-sshd ; exit ;;
 "10 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
 "11 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
 "12 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
@@ -4448,7 +4450,9 @@ case $selection in
 "Gui Help Menu") $cmd_fwiptables -gui help tool-forward ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-forward ;;
 "sshd-tunnel-info") $cmd_fwiptables -gui sshd-tunnel-info ;;
-"sshd-tunnel-on") $cmd_fwiptables -gui sshd-tunnel-on ;;
+"sshd-tunnel-on")
+archivo="$(zenity  $graphic_dimension --entry --title "[ type: user@my-localhost ]" --text "[ type: user@my-localhost ]")" ;
+$cmd_fwiptables -gui sshd-tunnel-on $archivo ;;
 "sshd-tunnel-off") $cmd_fwiptables -gui sshd-tunnel-off ;;
 esac
 ####
@@ -9241,7 +9245,7 @@ exit; fi
 ####
 if [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ on: ssh server on port 1080 with active ssh tunnel ] || ||"
-if [ "$second_option" == "$NULL" ]; then echo " [ fail ] [ type fwiptables sshd-tunnel-on user@my-localhost ]"; exit ; fi
+if [ "$second_option" == "$NULL" ]; then echo " [ fail ] [ type: $name_fwiptables sshd-tunnel-on user@my-localhost ]"; exit ; fi
 echo " [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
 ssh -f -N -D 1080 "$second_option" || echo "error no tunnel"
 echo " [  ok  ] [ Now, tunnel ssh active in port 1080 ] [ $second_option ]"
