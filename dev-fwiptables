@@ -3247,6 +3247,30 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-forward:
+##############################       english: tool-sshd: options ipforwading
+##############################       spanish: tool-sshd: opciones ipforwading
+#### :rutina-inicial-tool-sshd:
+####
+####
+if [ "$first_option" = "tool-sshd" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool ssh tunnel ] [ tool-sshd.md ] || ||"
+echo "$text_md"
+echo "$text_md [ english info ] [ Tool ssh tunnel ]"
+echo "$text_md [ spanish info ] [ Herramienta de ssh tunnel ]"
+echo "$text_md"
+echo "$text_md $tab sshd-tunnel-info"
+echo "$text_md $tab_lang_english          : Show sshd tunnel info"
+echo "$text_md $tab_lang_spanish          : Muestra configuracion de ssh tunel"
+echo "$text_md $tab sshd-tunnel-on"
+echo "$text_md $tab_lang_english          : Active the ssh tunnel"
+echo "$text_md $tab_lang_spanish          : Activa el tunel ssh"
+echo "$text_md $tab sshd-tunnel-off"
+echo "$text_md $tab_lang_english          : Deactive the ssh tunnel"
+echo "$text_md $tab_lang_spanish          : Desactiva el tunel ssh"
+exit; fi
+####
+####
+#### :rutina-final-tool-sshd:
 ##############################       english: tool-icmp: options
 ##############################       spanish: tool-cimp: opciones
 #### :rutina-inicial-tool-icmp:
