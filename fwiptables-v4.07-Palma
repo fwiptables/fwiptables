@@ -886,10 +886,10 @@ $cmd_fwiptables regen-config ;; esac
 if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
 case "$second_option" in
 "list") $cmd_fwiptables list4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -E Warning:  &> $temporal_textfinal
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 "list6") $cmd_fwiptables list6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -E Warning:  &> $temporal_textfinal
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 *) $cmd_fwiptables $second_option $third_option ; exit ;;
 esac; fi
@@ -955,7 +955,7 @@ then first_option="-log"
 echo $head_waiting_log
 echo "### ### [ log ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_fwiptables $second_option $third_option $quad_option &>> $output_log
-cat $output_log | $command_grep -E Warning: &>> $output_filelog
+cat $output_log | $command_grep -iv Warning: &>> $output_filelog
 echo " [ ok ] \
 [ Output $cmd_fwiptables $second_option $third_option $quad_option sended to $output_filelog ] \
 [ show: fwiptables filelog ]" ;
@@ -1053,7 +1053,7 @@ $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
 sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
 sed -e 's/\.md\ \]/\.rst\ \]/' $temporal_text.2 &> $temporal_text.3  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
-$temporal_text.3 | $command_grep -i v "::"  &> $temporal_text.rst ;
+$temporal_text.3 | $command_grep -iv "::"  &> $temporal_text.rst ;
 cat $temporal_text.rst
 exit ; fi
 ####
@@ -4008,7 +4008,7 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 ####
 *)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
-#### cat $temporal_gui | $command_grep -E Warning: &> $temporal_guifinal
+#### cat $temporal_gui | $command_grep -iv Warning: &> $temporal_guifinal
 $command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 

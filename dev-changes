@@ -1,7 +1,10 @@
 ideas: tool-snort, tool-ssh
 
 
- 7. cambiar egrep por grep -E. TRABAJANDO 
+
+
+ 8. ahora grep con command -v grep. HECHO
+ 7. cambiar egrep por grep -E. HECHO 
  6. diminuto cambio en wpa-load. HECHO
  5. añadido sshd-info. HECHO 
  4. cambio de permisos en fwiptables-cli-menu gui-menu gui-shell a chmod 555. HECHO
