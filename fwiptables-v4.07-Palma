@@ -421,7 +421,9 @@ net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####     #### spanish: variable para comprobar si fwiptables esta instalado
 ####
 ####
+if [ "$1" != "install" ] && [ "$1" != "upgrade" ] ; then
 cmp -s $0 $directory_binary/$cmd_fwiptables || fwiptables_installed="no" 
+fi
 ####
 ####
 ####     #### english: launch default for update variables
@@ -638,7 +640,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" = "install" ] ; then $zero_option intro ; echo $give_cover
+if [ "$first_option" = "install" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ] || ||"
 ####
 ####
