@@ -617,7 +617,7 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ] || ||"
-echo "$text_md [ info ] [ $name_fwiptables uninstalling ]"
+echo "$text_md [ info ] [ $name_fwiptables uninstalling.. ]"
 if  [ -f $directory_binary/$cmd_fwiptables ]; then
 rm $directory_binary/$name_fwiptables &> /dev/null
 rm $directory_binary/$cmd_fwiptables &> /dev/null
@@ -644,7 +644,7 @@ echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ in
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "$text_md [ info ] [ $name_fwiptables installing ]"
+echo "$text_md [ info ] [ $name_fwiptables installing.. ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "$directory_binary/$cmd_fwiptables" &> /dev/null 
 chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null 
@@ -4038,9 +4038,9 @@ if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Firewall Control" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool connect" "06 Tool rules" \
-"07 Tool sockets" "08 Tool forward" "09 Tool tcp" "10 Tool udp" "11 Tool icmp"  "12 Tool sudo" \
-"13 Tool game" "14 Tool speed" "15 Tool utils" "16 Tool install" "17 Tool blacklist" "18 Tool dev" \
-"19 Show hardware" "20 Show etc" "21 Show log" "22 Show about" "23 Show help" \
+"07 Tool sockets" "08 Tool forward" "09 Tool sshd" "10 Tool tcp" "11 Tool udp" "12 Tool icmp"  "13 Tool sudo" \
+"14 Tool game" "15 Tool speed" "16 Tool utils" "17 Tool install" "18 Tool blacklist" "19 Tool dev" \
+"20 Show hardware" "21 Show etc" "22 Show log" "23 Show about" "24 Show help" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $fversion ||")
 #### 
 #### 
@@ -4054,21 +4054,22 @@ case "$selection" in
 "06 Tool rules")$cmd_fwiptables gui-menu-tool-rules ; exit ;;
 "07 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
 "08 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
-"09 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
-"10 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
-"11 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
-"12 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
-"13 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
-"14 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
-"15 Tool utils")$cmd_fwiptables gui-menu-tool-utils ; exit ;;
-"16 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
-"17 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
-"18 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
-"19 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
-"20 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
-"21 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
-"22 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
-"23 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
+"08 Tool sshd")$cmd_fwiptables gui-menu-tool-sshd ; exit ;;
+"10 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
+"11 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
+"12 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
+"13 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
+"14 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
+"15 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
+"16 Tool utils")$cmd_fwiptables gui-menu-tool-utils ; exit ;;
+"17 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
+"18 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
+"19 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
+"20 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
+"21 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
+"22 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
+"23 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
+"24 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
 #### 
 esac
 ####
@@ -4430,6 +4431,37 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-forward:
+############################## english: gui-menu-tool-sshd: gui with menu ##############################
+############################## spanish: gui-menu-tool-sshd: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-sshd:
+####
+####
+if [ "$first_option" = "gui-menu-tool-sshd" ] ; then $nada ;
+selection=$($command_zenity  $graphic_dimension \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" \
+--column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool sshd ] [ $name_fwiptables ]" )
+#### 
+#### 
+case $selection in
+1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
+"Gui Principal Menu") $cmd_fwiptables gui-menu ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-forward ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-forward ;;
+"sshd-tunnel-info") $cmd_fwiptables -gui sshd-tunnel-info ;;
+"sshd-tunnel-on") $cmd_fwiptables -gui sshd-tunnel-on ;;
+"sshd-tunnel-off") $cmd_fwiptables -gui sshd-tunnel-off ;;
+esac
+####
+####
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_fwiptables gui-menu ; exit ; fi
+####
+####
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-tool-sshd:
 ############################## english: gui-menu-tool-icmp: gui with menu ##############################
 ############################## spanish: gui-menu-tool-icmp: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-icmp:
@@ -9224,9 +9256,9 @@ exit; fi
 ####
 if [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
-echo " [ status ] [ killing procees with: ssh -f -N -D ]"
+echo " [ info ] [ killing procees with: ssh -f -N -D ]"
 for parada in $(ps aux | grep "ssh \-f \-N \-D" | grep -iv "grep ssh" | awk '{print $2}' -);
-do echo  " [ status ] [ kill pid $parada ]"; kill -9 "$parada" ; done
+do echo  " [ info ] [ kill pid $parada ]"; kill -9 "$parada" ; done
 echo " [  ok  ] [ sshd-tunnel-off finished ]"
 exit; fi
 ####
