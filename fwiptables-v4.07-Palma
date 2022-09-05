@@ -5163,7 +5163,7 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
 Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 0000 "$quad $tab [$cmd_fwiptables cli-menu] $tab $cinco" \
 0100 "$quad [ Full Options ] $cinco" \
-0200 "$quad [ Firewall Rules ] $cinco" \
+0200 "$quad [ Firewall Control ] $cinco" \
 0201  "$tab stop" \
 0202  "$tab continue" \
 0203  "$tab reset" \
@@ -5172,7 +5172,7 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 0206  "$tab save" \
 0207  "$tab load" \
 0208  "$tab actual" \
-0300 "$quad [ Firewall List	 ] $cinco" \
+0300 "$quad [ Firewall List ] $cinco" \
 0301  "$tab list" \
 0302  "$tab list6"  \
 0303  "$tab list-filter4" \
@@ -5355,240 +5355,246 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 #### english: dialog choosed #### spanish: dialogo elegido
 #### 
 #### 
- case "$menuprincipal" in
+case "$menuprincipal" in
 ################################
- 0000) clear ; $cmd_fwiptables info ;;
- 0100) clear ; $cmd_fwiptables cli options ;;
- 0200) clear ; $cmd_fwiptables cli firewall-control ;;
- 0300) clear ; $cmd_fwiptables cli firewall-list ;;
- 0400) clear ; $cmd_fwiptables cli firewall-launch ;;
- 0500) clear ; $cmd_fwiptables cli firewall-custom ;;
- 0600) clear ; $cmd_fwiptables cli tool-socket ;;
- 0700) clear ; $cmd_fwiptables cli tool-ipforward ;;
- 0800) clear ; $cmd_fwiptables cli tool-tcp ;;
- 0900) clear ; $cmd_fwiptables cli tool-icmp ;;
- 1000) clear ; $cmd_fwiptables cli tool-udp ;;
- 1100) clear ; $cmd_fwiptables cli tool-sudo ;;
- 1200) clear ; $cmd_fwiptables cli tool-game ;;
- 1300) clear ; $cmd_fwiptables cli tool-install ;;
- 1400) clear ; $cmd_fwiptables cli tool-blacklist ;;
- 1500) clear ; $cmd_fwiptables cli tool-dev ;;
- 1600) clear ; $cmd_fwiptables cli tool-speed ;;
- 1700) clear ; $cmd_fwiptables cli show-hardware ;;
- 1800) clear ; $cmd_fwiptables cli show-etc ;;
- 1900) clear ; $cmd_fwiptables cli show-log ;;
- 1000) clear ; $cmd_fwiptables cli show-about ;;
- 2100) clear ; $cmd_fwiptables cli show-help ;;
+0000) clear ; $cmd_fwiptables info ;;
+0100) clear ; $cmd_fwiptables cli options ;;
+0200) clear ; $cmd_fwiptables cli firewall-control ;;
+0300) clear ; $cmd_fwiptables cli firewall-list ;;
+0400) clear ; $cmd_fwiptables cli firewall-launch ;;
+0500) clear ; $cmd_fwiptables cli firewall-custom ;;
+0600) clear ; $cmd_fwiptables cli tool-connect ;;
+0700) clear ; $cmd_fwiptables cli tool-rules ;;
+0800) clear ; $cmd_fwiptables cli tool-sockets ;;
+0900) clear ; $cmd_fwiptables cli tool-forward ;;
+1000) clear ; $cmd_fwiptables cli tool-sshd ;;
+1100) clear ; $cmd_fwiptables cli tool-tcp ;;
+1200) clear ; $cmd_fwiptables cli tool-icmp ;;
+1300) clear ; $cmd_fwiptables cli tool-udp ;;
+1400) clear ; $cmd_fwiptables cli tool-sudo ;;
+1500) clear ; $cmd_fwiptables cli tool-game ;;
+1600) clear ; $cmd_fwiptables cli tool-install ;;
+1700) clear ; $cmd_fwiptables cli tool-blacklist ;;
+1800) clear ; $cmd_fwiptables cli tool-dev ;;
+1900) clear ; $cmd_fwiptables cli tool-speed ;;
+2000) clear ; $cmd_fwiptables cli show-hardware ;;
+2100) clear ; $cmd_fwiptables cli show-etc ;;
+2200) clear ; $cmd_fwiptables cli show-log ;;
+2300) clear ; $cmd_fwiptables cli show-about ;;
+2400) clear ; $cmd_fwiptables cli show-help ;;
 ################################
- 0201) clear ; $cmd_fwiptables cli stop ;;
- 0202) clear ; $cmd_fwiptables cli continue ;;
- 0203) clear ; $cmd_fwiptables cli reset ;;
- 0204) clear ; $cmd_fwiptables cli names ;;
- 0205) clear ; $cmd_fwiptables names ; echo "$cincuenta"
- read -p "Type the firewall name to read   " nombrecillo
- nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
- 0206)archivo="$($command_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ;  echo "$cincuenta saved $archivo" ; $cmd_fwiptables save $archivo ;;
- 0207) clear ; $cmd_fwiptables names ; echo "$cincuenta"
- read -p "| Type the firewall name to restore |   " nombrecillo
- nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables load $nombrecillo ;;
- 0208) clear ; $cmd_fwiptables cli actual ;;
- 0301) clear ; $cmd_fwiptables cli list ;;
- 0302) clear ; $cmd_fwiptables cli list6 ;;
- 0303) clear ; $cmd_fwiptables cli list-filter4 ;;
- 0304) clear ; $cmd_fwiptables cli list-filter6 ;;
- 0305) clear ; $cmd_fwiptables cli list-forward ;;
- 0306) clear ; $cmd_fwiptables cli list-forward6 ;;
- 0307) clear ; $cmd_fwiptables cli list-nat4 ;;
- 0308) clear ; $cmd_fwiptables cli list-nat6 ;;
- 0309) clear ; $cmd_fwiptables cli list-alltables ;;
- 0310) clear ; $cmd_fwiptables cli listnum ;;
- 0311) clear ; $cmd_fwiptables cli list-forwardnum ;;
- 0312) clear ; $cmd_fwiptables cli listnum6 ;;
- 0313) clear ; $cmd_fwiptables cli list-forwardnum6 ;;
- 0314) clear ; $cmd_fwiptables cli list-raw4 ;;
- 0315) clear ; $cmd_fwiptables cli list-raw6 ;;
- 0316) clear ; $cmd_fwiptables cli list-mangle4 ;; 
- 0317) clear ; $cmd_fwiptables cli list-mangle6 ;;
- 0318) clear ; $cmd_fwiptables cli list-security4 ;;
- 0319) clear ; $cmd_fwiptables cli list-security6 ;;
- 0320) clear ; $cmd_fwiptables cli list-ebtables ;;
- 0321) clear ; $cmd_fwiptables cli list-arptables ;;
- 0401) clear ; $cmd_fwiptables cli eraserules ; $cmd_fwiptables txt list  ;;
- 0402) clear ; $cmd_fwiptables cli wizard-mini ; $cmd_fwiptables txt list ;;
- 0403) clear ; $cmd_fwiptables cli wizard-full ; $cmd_fwiptables txt list ;;
- 0404) clear ; $cmd_fwiptables cli off-line ; $cmd_fwiptables txt list ;;
- 0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables txt list  ;;
- 0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
- 0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables txt list  ;; 
- 0408) clear ; $cmd_fwiptables cli game-wesnoth ; $cmd_fwiptables txt list ;;
- 0409) clear ; $cmd_fwiptables cli game-minetest ; $cmd_fwiptables txt list ;;
- 0410) clear ; $cmd_fwiptables cli game-freeciv ; $cmd_fwiptables txt list ;;
- 0411) clear ; $cmd_fwiptables cli game-widelands ; $cmd_fwiptables txt list ;;
- 0412) clear ; $cmd_fwiptables cli client-web ; $cmd_fwiptables txt list  ;;
- 0413) clear ; $cmd_fwiptables cli client-tor ; $cmd_fwiptables txt list  ;;
- 0414) clear ; $cmd_fwiptables cli client-vpn ; $cmd_fwiptables txt list ;;
- 0415) clear ; $cmd_fwiptables cli client-torrent ; $cmd_fwiptables txt list ;;
- 0416) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables txt list ;;
- 0417) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables txt list ;; 
- 0418) clear ; $cmd_fwiptables cli shield-ssh ; $cmd_fwiptables txt list  ;; 
- 0419) clear ; $cmd_fwiptables cli server-ssh ; $cmd_fwiptables txt list  ;;
- 0420) clear ; $cmd_fwiptables cli server-web ; $cmd_fwiptables txt list ;;
- 0421) clear ; $cmd_fwiptables cli server-print ; $cmd_fwiptables txt list ;;
- 0422) clear ; $cmd_fwiptables cli server-samba ; $cmd_fwiptables txt list ;;
- 0423) clear ; $cmd_fwiptables cli server-lamp ; $cmd_fwiptables txt list ;;
- 0424) clear ; $cmd_fwiptables cli server-mail ; $cmd_fwiptables txt list ;;
- 0425) clear ; $cmd_fwiptables cli server-ftp ; $cmd_fwiptables txt list ;;
- 0426) clear ; $cmd_fwiptables cli server-news ; $cmd_fwiptables txt list ;;
- 0427) clear ; $cmd_fwiptables cli server-teamspeak ; $cmd_fwiptables txt list ;;
- 0428) clear ; $cmd_fwiptables cli server-mumble ; $cmd_fwiptables txt list ;;
- 0429) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables txt list ;;
- 0430) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables txt list ;;
- 0501) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
- --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables new-full-config $archivo ;;
- 0502) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
- --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables nueva-completa-config $archivo ;;
- 0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables new-mini-config $archivo ;;
- 0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables nueva-mini-config $archivo ;;
- 0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_fwiptables custom $archivo ]";;
- 0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables modify-config $archivo ;;
- 0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
- archivo=$(echo $archivo | sed s/\\///g)
- clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
- 0508) clear ; $cmd_fwiptables cli names-config ;;
- 0509) clear ; $cmd_fwiptables cli regen-config ;;
- 0510) clear ; $cmd_fwiptables cli examples-config ;;
- 0601) clear ; $cmd_fwiptables iw-scan ;;
- 0602) clear ; $cmd_fwiptables iw-info ;;
- 0603) clear ;
- archivoa="$($command_dialog  --stdout --title "Type SSID to connect" --inputbox "$($cmd_fwiptables iw-scan)" 0 0)" 
- archivob="$($command_dialog  --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
- $cmd_fwiptables wpa-save archivoa archivob;;
- 0604) clear ; 
- archivo="$($command_dialog  --stdout --title "type wpa file to load" \
- --inputbox "$($command_find $directory_default | cut -d "/" -f 4- | $command_grep \\.wpa)" 0 0)"
- $cmd_fwiptables wpa-load $archivo ;;
- 0605) clear ; $cmd_fwiptables dhcp-client ;;
- 0701) clear ; $cmd_fwiptables rule-del-num ;;
- 0702) clear ; $cmd_fwiptables rule-del-shield ;;
- 0703) clear ; $cmd_fwiptables rule-add-shield ;;
- 0801) clear ; $cmd_fwiptables cli ss ;;
- 0802) clear ; $cmd_fwiptables cli netstat ;;
- 0803) clear ; $cmd_fwiptables cli lsof ;;
- 0804) clear ; $cmd_fwiptables cli tcpdump ;;
- 0805) clear ; $cmd_fwiptables cli info-route ;;
- 0806) clear ; $cmd_fwiptables cli info-nodes ;;
- 0807) clear ; $cmd_fwiptables cli info-listen ;;
- 0808) clear ; $cmd_fwiptables cli info-proxy ;;
- 0809) clear ; $cmd_fwiptables cli info-net ;;
- 0810) clear ; $cmd_fwiptables cli info-system ;;
- 0811) clear ; $cmd_fwiptables cli ntpdate-client ;;
- 0901) clear ; $cmd_fwiptables cli ipforward-list ;;
- 0902) clear ; $cmd_fwiptables cli ipforward-on ;;
- 0903) clear ; $cmd_fwiptables cli ipforward-off ;;
- 1001) clear ; $cmd_fwiptables cli sshd-tunnel-info ;;
- 1002) clear ; $cmd_fwiptables cli sshd-tunnel-on ;; 
- 1003) clear ; $cmd_fwiptables cli sshd-tunnel-off ;;
- 1101) clear ; $cmd_fwiptables cli speed-ip4 ;;
- 1102) clear ; $cmd_fwiptables cli speed-ip6 ;;
- 1103) clear ; $cmd_fwiptables cli tracetcp-ip4 ;;
- 1104) clear ; $cmd_fwiptables cli tracetcp-ip6 ;;
- 1201) clear ; $cmd_fwiptables cli traceicmp-ip4 ;;
- 1202) clear ; $cmd_fwiptables cli traceicmp-ip6 ;;
- 1203) clear ; $cmd_fwiptables cli ping-ip4 ;;
- 1204) clear ; $cmd_fwiptables cli ping-ip6 ;;
- 1301) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $cmd_fwiptables host $resolve ;;
- 1302) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $cmd_fwiptables dig $resolve ;;
- 1303) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $cmd_fwiptables resolveip $resolve ;;
- 1304) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
- clear ; $cmd_fwiptables geoip $resolve ;;
- 1305) clear ; $cmd_fwiptables "ntpdate-client" ;;
- 1401) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
- clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
- 1402) clear ; $cmd_fwiptables cli sudofw-deluser ;;
- 1403) clear ; $cmd_fwiptables cli sudofw-listuser ;;
- 1501) clear ; $cmd_fwiptables cli ole-word  ;;
- 1502) clear ; $cmd_fwiptables cli ole-number ;;
- 1503) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
- $cmd_fwiptables cli colour-rgb $resolve ;;
- 1504) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
- $cmd_fwiptables cli colour-hex $resolve ;;
- 1601) clear ; $zero_option install ;;
- 1602) clear ; $cmd_fwiptables cli howto-upgrade ;;
- 1603) clear ; $cmd_fwiptables cli upgrade ;;
- 1604) clear ; $cmd_fwiptables cli intro ;;
- 1701) clear ; $cmd_fwiptables cli blacklist-list ;;
- 1702) clear ; $cmd_fwiptables cli blacklist-list info ;;
- 1703) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
- --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
- clear ; $cmd_fwiptables blacklist-on $resolve ;;
- 1704) clear ; $cmd_fwiptables cli blacklist-off ;;
- 1801) clear ; $cmd_fwiptables cli new-versions ;;
- 1802) clear ; $cmd_fwiptables cli dev-version ;;
- 1803) clear ; $cmd_fwiptables cli dev-changes ;;
- 1804) clear ; $cmd_fwiptables cli intro ;;
- 1901) clear ; $cmd_fwiptables cli free-ram ;;
- 1902) clear ; $cmd_fwiptables cli speed-ram ;;
- 1903) clear ; $cmd_fwiptables cli speed-disk ;;
- 1904) clear ; $cmd_fwiptables cli speed-glx ;;
- 1905) clear ; $cmd_fwiptables cli radio-mp3 ;;
- 1906) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
- $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
- 1907) clear ; $cmd_fwiptables cli gpg-notes ;;
- 2001) clear ; $cmd_fwiptables cli lpinfo ;;
- 2002) clear ; $cmd_fwiptables cli lsblk ;;
- 2003) clear ; $cmd_fwiptables cli lsusb ;; 
- 2004) clear ; $cmd_fwiptables cli lscpu ;;
- 2005) clear ; $cmd_fwiptables cli lspci ;;  
- 2006) clear ; $cmd_fwiptables cli lsgpu ;;
- 2007) clear ; $cmd_fwiptables cli lshw ;;
- 2101) clear ; $cmd_fwiptables cli hosts ;;
- 2102) clear ; $cmd_fwiptables cli protocols ;;
- 2103) clear ; $cmd_fwiptables cli services ;;
- 2104) clear ; $cmd_fwiptables cli hosts.allow ;;
- 2105) clear ; $cmd_fwiptables cli hosts.deny ;;
- 2106) clear ; $cmd_fwiptables cli resolv.conf ;;
- 2107) clear ; $cmd_fwiptables cli show-default ;;
- 2108) clear ; $cmd_fwiptables cli modify-default ;;
- 2201) clear ; $cmd_fwiptables cli log-ssh ;;
- 2202) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
- clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
- 2203) clear ; $cmd_fwiptables txt filelog ;;
- 2204) clear ; $cmd_fwiptables cli autolog ;;
- 2301) clear ; $cmd_fwiptables cli about ;;
- 2302) clear ; $cmd_fwiptables cli depends ;;
- 2303) clear ; $cmd_fwiptables cli config-eng ;;
- 2304) clear ; $cmd_fwiptables cli config-spa ;;
- 2401) clear ; $cmd_fwiptables cli mini-options ;;
- 2402) clear ; $cmd_fwiptables cli full-options ;;
- 2403) clear ; $cmd_fwiptables cli readme ;;
- 2404) clear ; $cmd_fwiptables cli leeme ;;
- 2405) clear ; $cmd_fwiptables cli all-help ;;
- 2406) clear ; $cmd_fwiptables cli notes ;;
- 2407) clear ; $cmd_fwiptables cli license ;;
- *) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
- esac 
- $cmd_fwiptables text-pause
- clear ; 
- $cmd_fwiptables cli-menu
- exit; fi
+0201) clear ; $cmd_fwiptables cli stop ;;
+0202) clear ; $cmd_fwiptables cli continue ;;
+0203) clear ; $cmd_fwiptables cli reset ;;
+0204) clear ; $cmd_fwiptables cli names ;;
+0205) clear ; $cmd_fwiptables names ; echo "$cincuenta"
+read -p "Type the firewall name to read   " nombrecillo
+nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
+0206)archivo="$($command_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ;  echo "$cincuenta saved $archivo" ; $cmd_fwiptables save $archivo ;;
+0207) clear ; $cmd_fwiptables names ; echo "$cincuenta"
+read -p "| Type the firewall name to restore |   " nombrecillo
+nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables load $nombrecillo ;;
+0208) clear ; $cmd_fwiptables cli actual ;;
+0301) clear ; $cmd_fwiptables cli list ;;
+0302) clear ; $cmd_fwiptables cli list6 ;;
+0303) clear ; $cmd_fwiptables cli list-filter4 ;;
+0304) clear ; $cmd_fwiptables cli list-filter6 ;;
+0305) clear ; $cmd_fwiptables cli list-forward ;;
+0306) clear ; $cmd_fwiptables cli list-forward6 ;;
+0307) clear ; $cmd_fwiptables cli list-nat4 ;;
+0308) clear ; $cmd_fwiptables cli list-nat6 ;;
+0309) clear ; $cmd_fwiptables cli list-alltables ;;
+0310) clear ; $cmd_fwiptables cli listnum ;;
+0311) clear ; $cmd_fwiptables cli list-forwardnum ;;
+0312) clear ; $cmd_fwiptables cli listnum6 ;;
+0313) clear ; $cmd_fwiptables cli list-forwardnum6 ;;
+0314) clear ; $cmd_fwiptables cli list-raw4 ;;
+0315) clear ; $cmd_fwiptables cli list-raw6 ;;
+0316) clear ; $cmd_fwiptables cli list-mangle4 ;; 
+0317) clear ; $cmd_fwiptables cli list-mangle6 ;;
+0318) clear ; $cmd_fwiptables cli list-security4 ;;
+0319) clear ; $cmd_fwiptables cli list-security6 ;;
+0320) clear ; $cmd_fwiptables cli list-ebtables ;;
+0321) clear ; $cmd_fwiptables cli list-arptables ;;
+0401) clear ; $cmd_fwiptables cli eraserules ; $cmd_fwiptables txt list  ;;
+0402) clear ; $cmd_fwiptables cli wizard-mini ; $cmd_fwiptables txt list ;;
+0403) clear ; $cmd_fwiptables cli wizard-full ; $cmd_fwiptables txt list ;;
+0404) clear ; $cmd_fwiptables cli off-line ; $cmd_fwiptables txt list ;;
+0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables txt list  ;;
+0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
+0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables txt list  ;; 
+0408) clear ; $cmd_fwiptables cli game-wesnoth ; $cmd_fwiptables txt list ;;
+0409) clear ; $cmd_fwiptables cli game-minetest ; $cmd_fwiptables txt list ;;
+0410) clear ; $cmd_fwiptables cli game-freeciv ; $cmd_fwiptables txt list ;;
+0411) clear ; $cmd_fwiptables cli game-widelands ; $cmd_fwiptables txt list ;;
+0412) clear ; $cmd_fwiptables cli client-web ; $cmd_fwiptables txt list  ;;
+0413) clear ; $cmd_fwiptables cli client-tor ; $cmd_fwiptables txt list  ;;
+0414) clear ; $cmd_fwiptables cli client-vpn ; $cmd_fwiptables txt list ;;
+0415) clear ; $cmd_fwiptables cli client-torrent ; $cmd_fwiptables txt list ;;
+0416) clear ; $cmd_fwiptables cli lan-tor ; $cmd_fwiptables txt list ;;
+0417) clear ; $cmd_fwiptables cli lan-vpn ; $cmd_fwiptables txt list ;; 
+0418) clear ; $cmd_fwiptables cli shield-ssh ; $cmd_fwiptables txt list  ;; 
+0419) clear ; $cmd_fwiptables cli server-ssh ; $cmd_fwiptables txt list  ;;
+0420) clear ; $cmd_fwiptables cli server-web ; $cmd_fwiptables txt list ;;
+0421) clear ; $cmd_fwiptables cli server-print ; $cmd_fwiptables txt list ;;
+0422) clear ; $cmd_fwiptables cli server-samba ; $cmd_fwiptables txt list ;;
+0423) clear ; $cmd_fwiptables cli server-lamp ; $cmd_fwiptables txt list ;;
+0424) clear ; $cmd_fwiptables cli server-mail ; $cmd_fwiptables txt list ;;
+0425) clear ; $cmd_fwiptables cli server-ftp ; $cmd_fwiptables txt list ;;
+0426) clear ; $cmd_fwiptables cli server-news ; $cmd_fwiptables txt list ;;
+0427) clear ; $cmd_fwiptables cli server-teamspeak ; $cmd_fwiptables txt list ;;
+0428) clear ; $cmd_fwiptables cli server-mumble ; $cmd_fwiptables txt list ;;
+0429) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables txt list ;;
+0430) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables txt list ;;
+0501) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
+--inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables new-full-config $archivo ;;
+0502) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+--inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables nueva-completa-config $archivo ;;
+0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables new-mini-config $archivo ;;
+0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables nueva-mini-config $archivo ;;
+0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_fwiptables custom $archivo ]";;
+0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables modify-config $archivo ;;
+0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
+archivo=$(echo $archivo | sed s/\\///g)
+clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
+0508) clear ; $cmd_fwiptables cli names-config ;;
+0509) clear ; $cmd_fwiptables cli regen-config ;;
+0510) clear ; $cmd_fwiptables cli examples-config ;;
+0601) clear ; $cmd_fwiptables iw-scan ;;
+0602) clear ; $cmd_fwiptables iw-info ;;
+0603) clear ;
+archivoa="$($command_dialog  --stdout --title "Type SSID to connect" --inputbox "$($cmd_fwiptables iw-scan)" 0 0)" 
+archivob="$($command_dialog  --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
+$cmd_fwiptables wpa-save archivoa archivob;;
+0604) clear ; 
+archivo="$($command_dialog  --stdout --title "type wpa file to load" \
+--inputbox "$($command_find $directory_default | cut -d "/" -f 4- | $command_grep \\.wpa)" 0 0)"
+$cmd_fwiptables wpa-load $archivo ;;
+0605) clear ; $cmd_fwiptables dhcp-client ;;
+0701) clear ; $cmd_fwiptables rule-del-num ;;
+0702) clear ; $cmd_fwiptables rule-del-shield ;;
+0703) clear ; $cmd_fwiptables rule-add-shield ;;
+0801) clear ; $cmd_fwiptables cli ss ;;
+0802) clear ; $cmd_fwiptables cli netstat ;;
+0803) clear ; $cmd_fwiptables cli lsof ;;
+0804) clear ; $cmd_fwiptables cli tcpdump ;;
+0805) clear ; $cmd_fwiptables cli info-route ;;
+0806) clear ; $cmd_fwiptables cli info-nodes ;;
+0807) clear ; $cmd_fwiptables cli info-listen ;;
+0808) clear ; $cmd_fwiptables cli info-proxy ;;
+0809) clear ; $cmd_fwiptables cli info-net ;;
+0810) clear ; $cmd_fwiptables cli info-system ;;
+0811) clear ; $cmd_fwiptables cli ntpdate-client ;;
+0901) clear ; $cmd_fwiptables cli ipforward-list ;;
+0902) clear ; $cmd_fwiptables cli ipforward-on ;;
+0903) clear ; $cmd_fwiptables cli ipforward-off ;;
+1001) clear ; $cmd_fwiptables cli sshd-tunnel-info ;;
+1002) clear ; 
+archivo="$($command_dialog  --stdout --title "Type: user@my-localhost to connect" \
+--inputbox "Type: user@my-localhost to connect" 0 0)" 
+ $cmd_fwiptables cli sshd-tunnel-on $archivo ;; 
+1003) clear ; $cmd_fwiptables cli sshd-tunnel-off ;;
+1101) clear ; $cmd_fwiptables cli speed-ip4 ;;
+1102) clear ; $cmd_fwiptables cli speed-ip6 ;;
+1103) clear ; $cmd_fwiptables cli tracetcp-ip4 ;;
+1104) clear ; $cmd_fwiptables cli tracetcp-ip6 ;;
+1201) clear ; $cmd_fwiptables cli traceicmp-ip4 ;;
+1202) clear ; $cmd_fwiptables cli traceicmp-ip6 ;;
+1203) clear ; $cmd_fwiptables cli ping-ip4 ;;
+1204) clear ; $cmd_fwiptables cli ping-ip6 ;;
+1301) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+clear ; $cmd_fwiptables host $resolve ;;
+1302) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+clear ; $cmd_fwiptables dig $resolve ;;
+1303) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+clear ; $cmd_fwiptables resolveip $resolve ;;
+1304) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+clear ; $cmd_fwiptables geoip $resolve ;;
+1305) clear ; $cmd_fwiptables "ntpdate-client" ;;
+1401) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
+1402) clear ; $cmd_fwiptables cli sudofw-deluser ;;
+1403) clear ; $cmd_fwiptables cli sudofw-listuser ;;
+1501) clear ; $cmd_fwiptables cli ole-word  ;;
+1502) clear ; $cmd_fwiptables cli ole-number ;;
+1503) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+$cmd_fwiptables cli colour-rgb $resolve ;;
+1504) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+$cmd_fwiptables cli colour-hex $resolve ;;
+1601) clear ; $zero_option install ;;
+1602) clear ; $cmd_fwiptables cli howto-upgrade ;;
+1603) clear ; $cmd_fwiptables cli upgrade ;;
+1604) clear ; $cmd_fwiptables cli intro ;;
+1701) clear ; $cmd_fwiptables cli blacklist-list ;;
+1702) clear ; $cmd_fwiptables cli blacklist-list info ;;
+1703) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
+--inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
+clear ; $cmd_fwiptables blacklist-on $resolve ;;
+1704) clear ; $cmd_fwiptables cli blacklist-off ;;
+1801) clear ; $cmd_fwiptables cli new-versions ;;
+1802) clear ; $cmd_fwiptables cli dev-version ;;
+1803) clear ; $cmd_fwiptables cli dev-changes ;;
+1804) clear ; $cmd_fwiptables cli intro ;;
+1901) clear ; $cmd_fwiptables cli free-ram ;;
+1902) clear ; $cmd_fwiptables cli speed-ram ;;
+1903) clear ; $cmd_fwiptables cli speed-disk ;;
+1904) clear ; $cmd_fwiptables cli speed-glx ;;
+1905) clear ; $cmd_fwiptables cli radio-mp3 ;;
+1906) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
+$cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
+1907) clear ; $cmd_fwiptables cli gpg-notes ;;
+2001) clear ; $cmd_fwiptables cli lpinfo ;;
+2002) clear ; $cmd_fwiptables cli lsblk ;;
+2003) clear ; $cmd_fwiptables cli lsusb ;; 
+2004) clear ; $cmd_fwiptables cli lscpu ;;
+2005) clear ; $cmd_fwiptables cli lspci ;;  
+2006) clear ; $cmd_fwiptables cli lsgpu ;;
+2007) clear ; $cmd_fwiptables cli lshw ;;
+2101) clear ; $cmd_fwiptables cli hosts ;;
+2102) clear ; $cmd_fwiptables cli protocols ;;
+2103) clear ; $cmd_fwiptables cli services ;;
+2104) clear ; $cmd_fwiptables cli hosts.allow ;;
+2105) clear ; $cmd_fwiptables cli hosts.deny ;;
+2106) clear ; $cmd_fwiptables cli resolv.conf ;;
+2107) clear ; $cmd_fwiptables cli show-default ;;
+2108) clear ; $cmd_fwiptables cli modify-default ;;
+2201) clear ; $cmd_fwiptables cli log-ssh ;;
+2202) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
+2203) clear ; $cmd_fwiptables txt filelog ;;
+2204) clear ; $cmd_fwiptables cli autolog ;;
+2301) clear ; $cmd_fwiptables cli about ;;
+2302) clear ; $cmd_fwiptables cli depends ;;
+2303) clear ; $cmd_fwiptables cli config-eng ;;
+2304) clear ; $cmd_fwiptables cli config-spa ;;
+2401) clear ; $cmd_fwiptables cli mini-options ;;
+2402) clear ; $cmd_fwiptables cli full-options ;;
+2403) clear ; $cmd_fwiptables cli readme ;;
+2404) clear ; $cmd_fwiptables cli leeme ;;
+2405) clear ; $cmd_fwiptables cli all-help ;;
+2406) clear ; $cmd_fwiptables cli notes ;;
+2407) clear ; $cmd_fwiptables cli license ;;
+*) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
+esac 
+$cmd_fwiptables text-pause
+clear ; 
+$cmd_fwiptables cli-menu
+exit; fi
 ####
 ####
 #### :rutina-final-cli-menu:
