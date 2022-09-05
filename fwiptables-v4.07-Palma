@@ -5291,64 +5291,70 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 1502  "$tab ole-number" \
 1503  "$tab colour-rgb" \
 1504  "$tab colour-hex" \
-1600 "$quad [ Tool Install ] $cinco" \
-1601  "$tab install" \
-1602  "$tab howto-upgrade" \
-1603  "$tab upgrade" \
-1604  "$tab intro" \
-1700 "$quad [ Tool Blacklist ] $cinco" \
-1701  "$tab blacklist-list" \
-1702  "$tab blacklist-list info" \
-1703  "$tab blacklist-on" \
-1704  "$tab blacklist-off" \
-1800 "$quad [ Tool Dev ] $cinco" \
-1801  "$tab new-versions" \
-1802  "$tab dev-version" \
-1803  "$tab dev-changes" \
-1804  "$tab intro" \
-1900 "$quad [ Tool System ] $cinco" \
-1901  "$tab free-ram" \
-1902  "$tab speed-ram" \
-1903  "$tab speed-disk" \
-1904  "$tab speed-glx" \
-1905  "$tab radio-mp3-default" \
-1906  "$tab radio-mp3-link" \
-1907  "$tab gpg-notes" \
-2000 "$quad [ Show Hardware ] $cinco" \
-2001  "$tab lpinfo" \
-2002  "$tab lsblk" \
-2003  "$tab lsusb" \
-2004  "$tab lscpu" \
-2005  "$tab lspci" \
-2006  "$tab lsgpu" \
-2007  "$tab lshw" \
-2100 "$quad [ Show Etc ] $cinco" \
-2101  "$tab hosts" \
-2102  "$tab protocols" \
-2103  "$tab services" \
-2104  "$tab hosts.allow" \
-2105  "$tab hosts.deny" \
-2106  "$tab resolv.conf" \
-2107  "$tab show-default" \
-2108  "$tab modify-default" \
-2200 "$quad [ Show Log ] $cinco" \
-2201  "$tab log-ssh" \
-2202  "$tab log-search" \
-2203  "$tab filelog" \
-2204  "$tab autolog" \
-2300 "$quad [ Show About ] $cinco" \
-2301  "$tab about" \
-2302  "$tab depends" \
-2303  "$tab config-eng" \
-2304  "$tab config-spa" \
-2400 "$quad [ Show Help ] $cinco" \
-2401  "$tab mini-options" \
-2402  "$tab full-options" \
-2403  "$tab readme" \
-2404  "$tab leeme" \
-2405  "$tab all-help" \
-2406  "$tab notes" \
-2407  "$tab license" \
+1600 "$quad [ Tool utils ]" \
+1601  "$tab md5sum" \
+1602  "$tab gpg-notes" \
+1603  "$tab radio-mp3" \
+1604  "$tab cadena100" \
+1605  "$tab cadenadial" \
+1700 "$quad [ Tool Install ] $cinco" \
+1701  "$tab install" \
+1702  "$tab howto-upgrade" \
+1703  "$tab upgrade" \
+1704  "$tab intro" \
+1800 "$quad [ Tool Blacklist ] $cinco" \
+1801  "$tab blacklist-list" \
+1802  "$tab blacklist-list info" \
+1803  "$tab blacklist-on" \
+1804  "$tab blacklist-off" \
+1900 "$quad [ Tool Dev ] $cinco" \
+1901  "$tab new-versions" \
+1902  "$tab dev-version" \
+1903  "$tab dev-changes" \
+1904  "$tab intro" \
+2000 "$quad [ Tool System ] $cinco" \
+2001  "$tab free-ram" \
+2002  "$tab speed-ram" \
+2003  "$tab speed-disk" \
+2004  "$tab speed-glx" \
+2005  "$tab radio-mp3-default" \
+2006  "$tab radio-mp3-link" \
+2007  "$tab gpg-notes" \
+2100 "$quad [ Show Hardware ] $cinco" \
+2101  "$tab lpinfo" \
+2102  "$tab lsblk" \
+2103  "$tab lsusb" \
+2104  "$tab lscpu" \
+2105  "$tab lspci" \
+2106  "$tab lsgpu" \
+2107  "$tab lshw" \
+2200 "$quad [ Show Etc ] $cinco" \
+2201  "$tab hosts" \
+2202  "$tab protocols" \
+2203  "$tab services" \
+2204  "$tab hosts.allow" \
+2205  "$tab hosts.deny" \
+2206  "$tab resolv.conf" \
+2207  "$tab show-default" \
+2208  "$tab modify-default" \
+2300 "$quad [ Show Log ] $cinco" \
+2301  "$tab log-ssh" \
+2302  "$tab log-search" \
+2303  "$tab filelog" \
+2304  "$tab autolog" \
+2400 "$quad [ Show About ] $cinco" \
+2401  "$tab about" \
+2402  "$tab depends" \
+2403  "$tab config-eng" \
+2404  "$tab config-spa" \
+2500 "$quad [ Show Help ] $cinco" \
+2501  "$tab mini-options" \
+2502  "$tab full-options" \
+2503  "$tab readme" \
+2504  "$tab leeme" \
+2505  "$tab all-help" \
+2506  "$tab notes" \
+2507  "$tab license" \
  )"  
 #### 
 #### 
@@ -5373,15 +5379,16 @@ case "$menuprincipal" in
 1300) clear ; $cmd_fwiptables cli tool-udp ;;
 1400) clear ; $cmd_fwiptables cli tool-sudo ;;
 1500) clear ; $cmd_fwiptables cli tool-game ;;
-1600) clear ; $cmd_fwiptables cli tool-install ;;
-1700) clear ; $cmd_fwiptables cli tool-blacklist ;;
-1800) clear ; $cmd_fwiptables cli tool-dev ;;
-1900) clear ; $cmd_fwiptables cli tool-speed ;;
-2000) clear ; $cmd_fwiptables cli show-hardware ;;
-2100) clear ; $cmd_fwiptables cli show-etc ;;
-2200) clear ; $cmd_fwiptables cli show-log ;;
-2300) clear ; $cmd_fwiptables cli show-about ;;
-2400) clear ; $cmd_fwiptables cli show-help ;;
+1600) clear ; $cmd_fwiptables cli tool-utils ;;
+1700) clear ; $cmd_fwiptables cli tool-install ;;
+1800) clear ; $cmd_fwiptables cli tool-blacklist ;;
+1900) clear ; $cmd_fwiptables cli tool-dev ;;
+2000) clear ; $cmd_fwiptables cli tool-speed ;;
+2100) clear ; $cmd_fwiptables cli show-hardware ;;
+2200) clear ; $cmd_fwiptables cli show-etc ;;
+2300) clear ; $cmd_fwiptables cli show-log ;;
+2400) clear ; $cmd_fwiptables cli show-about ;;
+2500) clear ; $cmd_fwiptables cli show-help ;;
 ################################
 0201) clear ; $cmd_fwiptables cli stop ;;
 0202) clear ; $cmd_fwiptables cli continue ;;
@@ -5536,59 +5543,67 @@ clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
 $cmd_fwiptables cli colour-rgb $resolve ;;
 1504) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
 $cmd_fwiptables cli colour-hex $resolve ;;
-1601) clear ; $zero_option install ;;
-1602) clear ; $cmd_fwiptables cli howto-upgrade ;;
-1603) clear ; $cmd_fwiptables cli upgrade ;;
-1604) clear ; $cmd_fwiptables cli intro ;;
-1701) clear ; $cmd_fwiptables cli blacklist-list ;;
-1702) clear ; $cmd_fwiptables cli blacklist-list info ;;
-1703) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
+1601) archivo="$($command_dialog  --stdout --title "Type location file to mp5sum" \
+--inputbox "Type location file to mp5sum" 0 0)" 
+clear ; $cmd_fwiptables md5sum $archivo ;;
+1602) clear ; $cmd_fwiptables cli gpg-notes ;;
+1603) clear ; archivo="$($command_dialog  --stdout --title "Type link mp3 station" --inputbox "Type link mp3 station" 0 0)"
+$cmd_fwiptables txt radio-mp3 $archivo ;;
+1604) clear ; $cmd_fwiptables txt radio-cadena100 ;;
+1605) clear ; $cmd_fwiptables txt radio-cadenadial ;;
+1701) clear ; $zero_option install ;;
+1702) clear ; $cmd_fwiptables cli howto-upgrade ;;
+1703) clear ; $cmd_fwiptables cli upgrade ;;
+1704) clear ; $cmd_fwiptables cli intro ;;
+1801) clear ; $cmd_fwiptables cli blacklist-list ;;
+1802) clear ; $cmd_fwiptables cli blacklist-list info ;;
+1803) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
 --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
 clear ; $cmd_fwiptables blacklist-on $resolve ;;
-1704) clear ; $cmd_fwiptables cli blacklist-off ;;
-1801) clear ; $cmd_fwiptables cli new-versions ;;
-1802) clear ; $cmd_fwiptables cli dev-version ;;
-1803) clear ; $cmd_fwiptables cli dev-changes ;;
-1804) clear ; $cmd_fwiptables cli intro ;;
-1901) clear ; $cmd_fwiptables cli free-ram ;;
-1902) clear ; $cmd_fwiptables cli speed-ram ;;
-1903) clear ; $cmd_fwiptables cli speed-disk ;;
-1904) clear ; $cmd_fwiptables cli speed-glx ;;
-1905) clear ; $cmd_fwiptables cli radio-mp3 ;;
-1906) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
+1804) clear ; $cmd_fwiptables cli blacklist-off ;;
+1901) clear ; $cmd_fwiptables cli new-versions ;;
+1902) clear ; $cmd_fwiptables cli dev-version ;;
+1903) clear ; $cmd_fwiptables cli dev-changes ;;
+1904) clear ; $cmd_fwiptables cli intro ;;
+2001) clear ; $cmd_fwiptables cli free-ram ;;
+2002) clear ; $cmd_fwiptables cli speed-ram ;;
+2003) clear ; $cmd_fwiptables cli speed-disk ;;
+2004) clear ; $cmd_fwiptables cli speed-glx ;;
+2005) clear ; $cmd_fwiptables cli radio-mp3 ;;
+2006) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
 $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
-1907) clear ; $cmd_fwiptables cli gpg-notes ;;
-2001) clear ; $cmd_fwiptables cli lpinfo ;;
-2002) clear ; $cmd_fwiptables cli lsblk ;;
-2003) clear ; $cmd_fwiptables cli lsusb ;; 
-2004) clear ; $cmd_fwiptables cli lscpu ;;
-2005) clear ; $cmd_fwiptables cli lspci ;;  
-2006) clear ; $cmd_fwiptables cli lsgpu ;;
-2007) clear ; $cmd_fwiptables cli lshw ;;
-2101) clear ; $cmd_fwiptables cli hosts ;;
-2102) clear ; $cmd_fwiptables cli protocols ;;
-2103) clear ; $cmd_fwiptables cli services ;;
-2104) clear ; $cmd_fwiptables cli hosts.allow ;;
-2105) clear ; $cmd_fwiptables cli hosts.deny ;;
-2106) clear ; $cmd_fwiptables cli resolv.conf ;;
-2107) clear ; $cmd_fwiptables cli show-default ;;
-2108) clear ; $cmd_fwiptables cli modify-default ;;
-2201) clear ; $cmd_fwiptables cli log-ssh ;;
-2202) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+2007) clear ; $cmd_fwiptables cli gpg-notes ;;
+2101) clear ; $cmd_fwiptables cli lpinfo ;;
+2102) clear ; $cmd_fwiptables cli lsblk ;;
+2103) clear ; $cmd_fwiptables cli lsusb ;; 
+2104) clear ; $cmd_fwiptables cli lscpu ;;
+2105) clear ; $cmd_fwiptables cli lspci ;;  
+2106) clear ; $cmd_fwiptables cli lsgpu ;;
+2107) clear ; $cmd_fwiptables cli lshw ;;
+2201) clear ; $cmd_fwiptables cli hosts ;;
+2202) clear ; $cmd_fwiptables cli protocols ;;
+2203) clear ; $cmd_fwiptables cli services ;;
+2204) clear ; $cmd_fwiptables cli hosts.allow ;;
+2205) clear ; $cmd_fwiptables cli hosts.deny ;;
+2206) clear ; $cmd_fwiptables cli resolv.conf ;;
+2207) clear ; $cmd_fwiptables cli show-default ;;
+2208) clear ; $cmd_fwiptables cli modify-default ;;
+2301) clear ; $cmd_fwiptables cli log-ssh ;;
+2302) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
 clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
-2203) clear ; $cmd_fwiptables txt filelog ;;
-2204) clear ; $cmd_fwiptables cli autolog ;;
-2301) clear ; $cmd_fwiptables cli about ;;
-2302) clear ; $cmd_fwiptables cli depends ;;
-2303) clear ; $cmd_fwiptables cli config-eng ;;
-2304) clear ; $cmd_fwiptables cli config-spa ;;
-2401) clear ; $cmd_fwiptables cli mini-options ;;
-2402) clear ; $cmd_fwiptables cli full-options ;;
-2403) clear ; $cmd_fwiptables cli readme ;;
-2404) clear ; $cmd_fwiptables cli leeme ;;
-2405) clear ; $cmd_fwiptables cli all-help ;;
-2406) clear ; $cmd_fwiptables cli notes ;;
-2407) clear ; $cmd_fwiptables cli license ;;
+2303) clear ; $cmd_fwiptables txt filelog ;;
+2304) clear ; $cmd_fwiptables cli autolog ;;
+2401) clear ; $cmd_fwiptables cli about ;;
+2402) clear ; $cmd_fwiptables cli depends ;;
+2403) clear ; $cmd_fwiptables cli config-eng ;;
+2404) clear ; $cmd_fwiptables cli config-spa ;;
+2501) clear ; $cmd_fwiptables cli mini-options ;;
+2502) clear ; $cmd_fwiptables cli full-options ;;
+2503) clear ; $cmd_fwiptables cli readme ;;
+2504) clear ; $cmd_fwiptables cli leeme ;;
+2505) clear ; $cmd_fwiptables cli all-help ;;
+2506) clear ; $cmd_fwiptables cli notes ;;
+2507) clear ; $cmd_fwiptables cli license ;;
 *) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
 esac 
 $cmd_fwiptables text-pause
