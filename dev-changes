@@ -1,7 +1,12 @@
-sum ideas: tool-snort.
+sum ideas to fwiptables@gmx.com : tool-snort.
 
-working in..
- 16. correcion de gpg-notes. trabajando
+
+
+ 01. 
+
+ cambios en dev-fwiptables desarrollo 4.08
+
+ 16. correcion de gpg-notes. HECHO
  15. arreglos en cli-menu. HECHO
  14. todos los command -v simplificados. HECHO
  13. añadido tool-sshd a gui-menu. HECHO
@@ -18,7 +23,7 @@ working in..
  2.  cambios minimos en depends. HECHO
  1.  cambios diminuto de apariencia en cabeceras. HECHO
 
- cambios en dev-fwiptables desarrollo 4.07
+ cambios en dev-fwiptables 4.07 lineas=16
  
  16. cambios a la hora de llamar a regen-config. HECHO
  15. cambios en simplificar install y cambios en intro. HECHO
