@@ -5258,7 +5258,7 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 0809  "$tab info-net" \
 0810  "$tab info-system" \
 0811  "$tab ntpdate-client" \
-0900 "$quad [ Tool Ipfwarding ] $cinco" \
+0900 "$quad [ Tool forwarding ] $cinco" \
 0901  "$tab ipforward-list" \
 0902  "$tab ipforward-on" \
 0903  "$tab ipforward-off" \
