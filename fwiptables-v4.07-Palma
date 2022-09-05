@@ -9423,21 +9423,18 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gpg-notes" ]; then 
-#### echo $give_cover
-#### echo "$header_ok [ $first_option ] [ edit files from one gpg text ]"
 ####
 ####
 if [ "$second_option" == "-list" ] ; then
-find "$directory_default" | xargs file | $command_grep \\.gpg | cut -d "/" -f 4- | sed 's/\.gpg//' -
+find "$directory_default" | $command_grep -i .gpg
 echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
-if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; fi
-if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; fi
 ####
 ####
 ####  when it is -gui
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
+if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; exit ; fi
 original="$($command_zenity $graphic_dimension --entry --title " [ Name gpg to choose ]" \
 --text "$(ls $directory_default/*.gpg | cut -d "." -f 1)")"
 origina="$(echo "$original" | sed s/\\///g -)" ;
@@ -9472,8 +9469,9 @@ exit; fi
 ####
 ####
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
-original="$($command_dialog --stdout --title " [ Name gpg to choose ] " \
---inputbox "$(ls $directory_default/*.gpg | cut -d "." -f 1)" 0 0 )"
+if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; exit ; fi
+original="$($command_dialog --stdout --title " [ Name gpg to choose without path] " \
+--inputbox "$(find $directory_default/*.gpg | sed 's/\*\.gpg//g')" 0 0 )"
 origina="$(echo "$original" | sed s/\\///g -)"  ;
 consigna="$($command_dialog --stdout --title " [ Passwowrd ] " \
 --inputbox "[ Passwowrd ]" 0 0 )"
