@@ -5160,191 +5160,195 @@ if [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog to work ]" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
-  Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0\
-  0000 "$quad $tab [$cmd_fwiptables cli-menu] $tab $cinco" \
-  0100 "$quad [ Full Options ] $cinco" \
-  0200 "$quad [ Firewall Rules ] $cinco" \
-  0201  "$tab stop" \
-  0202  "$tab continue" \
-  0203  "$tab reset" \
-  0204  "$tab names"  \
-  0205  "$tab show" \
-  0206  "$tab save" \
-  0207  "$tab load" \
-  0208  "$tab actual" \
-  0300 "$quad [ Firewall List	 ] $cinco" \
-  0301  "$tab list" \
-  0302  "$tab list6"  \
-  0303  "$tab list-filter4" \
-  0304  "$tab list-filter6" \
-  0305  "$tab list-forward" \
-  0306  "$tab list-forward6" \
-  0307  "$tab list-nat4" \
-  0308  "$tab list-nat6" \
-  0309  "$tab list-alltables" \
-  0310  "$tab listnum" \
-  0311  "$tab list-forwardnum" \
-  0312  "$tab listnum6" \
-  0313  "$tab list-forwardnum6" \
-  0314  "$tab list-raw4" \
-  0315  "$tab list-raw6" \
-  0316  "$tab list-mangle4" \
-  0317  "$tab list-mangle6" \
-  0318  "$tab list-security4" \
-  0319  "$tab list-security6" \
-  0320  "$tab list-ebtables" \
-  0321  "$tab list-arptables" \
-  0400 "$quad [ Firewall Launch ] $cinco" \
-  0401  "$tab eraserules" \
-  0402  "$tab wizard-mini" \
-  0403  "$tab wizard-full" \
-  0404  "$tab off-line" \
-  0405  "$tab all-permisive" \
-  0406  "$tab custom" \
-  0407  "$tab games-shooter" \
-  0408  "$tab game-wesnoth" \
-  0409  "$tab game-minetest" \
-  0410  "$tab game-freeciv" \
-  0411  "$tab game-widelands" \
-  0412  "$tab client-web" \
-  0413  "$tab client-tor" \
-  0414  "$tab client-vpn" \
-  0415  "$tab client-torrent" \
-  0416  "$tab lan-tor" \
-  0417  "$tab lan-vpn" \
-  0418  "$tab shield-ssh" \
-  0419  "$tab server-ssh" \
-  0420  "$tab server-web" \
-  0421  "$tab server-print" \
-  0422  "$tab server-samba" \
-  0423  "$tab server-lamp" \
-  0424  "$tab server-mail" \
-  0425  "$tab server-ftp" \
-  0426  "$tab server-news" \
-  0427  "$tab server-teamspeak" \
-  0428  "$tab server-mumble" \
-  0429  "$tab server-sql" \
-  0430  "$tab server-asterisk" \
-  0500 "$quad [ Firewall Custom ] $cinco" \
-  0501  "$tab new-full-config" \
-  0502  "$tab nueva-completa-config" \
-  0503  "$tab new-mini-config" \
-  0504  "$tab nueva-mini-config" \
-  0505  "$tab show-config" \
-  0506  "$tab modify-config" \
-  0507  "$tab del-config" \
-  0508  "$tab names-config" \
-  0509  "$tab regen-config" \
-  0510  "$tab examples-config" \
-  0600 "$quad [ Tool Connect ] $cinco" \
-  0601  "$tab iw-scan" \
-  0602  "$tab iw-info" \
-  0603  "$tab wpa-save" \
-  0604  "$tab wpa-load" \
-  0605  "$tab dhcp-client" \
-  0700 "$quad [ Tool rules ] $cinco" \
-  0701  "$tab rule-del-num" \
-  0702  "$tab rule-del-shield" \
-  0703  "$tab rule-add-shield" \
-  0800 "$quad [ Tool Sockets ] $cinco" \
-  0801  "$tab ss" \
-  0802  "$tab netstat" \
-  0803  "$tab lsof" \
-  0804  "$tab tcpdump" \
-  0805  "$tab info-route" \
-  0806  "$tab info-nodes" \
-  0807  "$tab info-listen" \
-  0808  "$tab info-proxy" \
-  0809  "$tab info-net" \
-  0810  "$tab info-system" \
-  0811  "$tab ntpdate-client" \
-  0900 "$quad [ Tool Ipfwarding ] $cinco" \
-  0901  "$tab ipforward-list" \
-  0902  "$tab ipforward-on" \
-  0903  "$tab ipforward-off" \
-  1000 "$quad [ Tool Tcp ] $cinco " \
-  1001  "$tab speed-ip4" \
-  1002  "$tab speed-ip6" \
-  1003  "$tab tracetcp-ip4" \
-  1004  "$tab tracetcp-ip6" \
-  1100 "$quad [ Tool Icmp ] $cinco" \
-  1101  "$tab traceicmp-ip4" \
-  1102  "$tab traceicmp-ip6" \
-  1103  "$tab ping-ip4" \
-  1104  "$tab ping-ip6" \
-  1200 "$quad [ Tool Udp ] $cinco"  \
-  1201  "$tab host" \
-  1202  "$tab dig" \
-  1203  "$tab resolveip" \
-  1204  "$tab geoip" \
-  1205  "$tab ntpdate-client" \
-  1300 "$quad [ Tool Sudo ] $cinco"  \
-  1301  "$tab sudofw-adduser" \
-  1302  "$tab sudofw-deluser" \
-  1303  "$tab sudofw-listuser" \
-  1400 "$quad [ Tool Game ] $cinco" \
-  1401  "$tab ole-word" \
-  1402  "$tab ole-number" \
-  1403  "$tab colour-rgb" \
-  1404  "$tab colour-hex" \
-  1500 "$quad [ Tool Install ] $cinco" \
-  1501  "$tab install" \
-  1502  "$tab howto-upgrade" \
-  1503  "$tab upgrade" \
-  1504  "$tab intro" \
-  1600 "$quad [ Tool Blacklist ] $cinco" \
-  1601  "$tab blacklist-list" \
-  1602  "$tab blacklist-list info" \
-  1603  "$tab blacklist-on" \
-  1604  "$tab blacklist-off" \
-  1700 "$quad [ Tool Dev ] $cinco" \
-  1701  "$tab new-versions" \
-  1702  "$tab dev-version" \
-  1703  "$tab dev-changes" \
-  1704  "$tab intro" \
-  1800 "$quad [ Tool System ] $cinco" \
-  1801  "$tab free-ram" \
-  1802  "$tab speed-ram" \
-  1803  "$tab speed-disk" \
-  1804  "$tab speed-glx" \
-  1805  "$tab radio-mp3-default" \
-  1806  "$tab radio-mp3-link" \
-  1807  "$tab gpg-notes" \
-  1900 "$quad [ Show Hardware ] $cinco" \
-  1901  "$tab lpinfo" \
-  1902  "$tab lsblk" \
-  1903  "$tab lsusb" \
-  1904  "$tab lscpu" \
-  1905  "$tab lspci" \
-  1906  "$tab lsgpu" \
-  1907  "$tab lshw" \
-  2000 "$quad [ Show Etc ] $cinco" \
-  2001  "$tab hosts" \
-  2002  "$tab protocols" \
-  2003  "$tab services" \
-  2004  "$tab hosts.allow" \
-  2005  "$tab hosts.deny" \
-  2006  "$tab resolv.conf" \
-  2007  "$tab show-default" \
-  2008  "$tab modify-default" \
-  2100 "$quad [ Show Log ] $cinco" \
-  2101  "$tab log-ssh" \
-  2102  "$tab log-search" \
-  2103  "$tab filelog" \
-  2104  "$tab autolog" \
-  2200 "$quad [ Show About ] $cinco" \
-  2201  "$tab about" \
-  2202  "$tab depends" \
-  2203  "$tab config-eng" \
-  2204  "$tab config-spa" \
-  2300 "$quad [ Show Help ] $cinco" \
-  2301  "$tab mini-options" \
-  2302  "$tab full-options" \
-  2303  "$tab readme" \
-  2304  "$tab leeme" \
-  2305  "$tab all-help" \
-  2306  "$tab notes" \
-  2307  "$tab license" \
+Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
+0000 "$quad $tab [$cmd_fwiptables cli-menu] $tab $cinco" \
+0100 "$quad [ Full Options ] $cinco" \
+0200 "$quad [ Firewall Rules ] $cinco" \
+0201  "$tab stop" \
+0202  "$tab continue" \
+0203  "$tab reset" \
+0204  "$tab names"  \
+0205  "$tab show" \
+0206  "$tab save" \
+0207  "$tab load" \
+0208  "$tab actual" \
+0300 "$quad [ Firewall List	 ] $cinco" \
+0301  "$tab list" \
+0302  "$tab list6"  \
+0303  "$tab list-filter4" \
+0304  "$tab list-filter6" \
+0305  "$tab list-forward" \
+0306  "$tab list-forward6" \
+0307  "$tab list-nat4" \
+0308  "$tab list-nat6" \
+0309  "$tab list-alltables" \
+0310  "$tab listnum" \
+0311  "$tab list-forwardnum" \
+0312  "$tab listnum6" \
+0313  "$tab list-forwardnum6" \
+0314  "$tab list-raw4" \
+0315  "$tab list-raw6" \
+0316  "$tab list-mangle4" \
+0317  "$tab list-mangle6" \
+0318  "$tab list-security4" \
+0319  "$tab list-security6" \
+0320  "$tab list-ebtables" \
+0321  "$tab list-arptables" \
+0400 "$quad [ Firewall Launch ] $cinco" \
+0401  "$tab eraserules" \
+0402  "$tab wizard-mini" \
+0403  "$tab wizard-full" \
+0404  "$tab off-line" \
+0405  "$tab all-permisive" \
+0406  "$tab custom" \
+0407  "$tab games-shooter" \
+0408  "$tab game-wesnoth" \
+0409  "$tab game-minetest" \
+0410  "$tab game-freeciv" \
+0411  "$tab game-widelands" \
+0412  "$tab client-web" \
+0413  "$tab client-tor" \
+0414  "$tab client-vpn" \
+0415  "$tab client-torrent" \
+0416  "$tab lan-tor" \
+0417  "$tab lan-vpn" \
+0418  "$tab shield-ssh" \
+0419  "$tab server-ssh" \
+0420  "$tab server-web" \
+0421  "$tab server-print" \
+0422  "$tab server-samba" \
+0423  "$tab server-lamp" \
+0424  "$tab server-mail" \
+0425  "$tab server-ftp" \
+0426  "$tab server-news" \
+0427  "$tab server-teamspeak" \
+0428  "$tab server-mumble" \
+0429  "$tab server-sql" \
+0430  "$tab server-asterisk" \
+0500 "$quad [ Firewall Custom ] $cinco" \
+0501  "$tab new-full-config" \
+0502  "$tab nueva-completa-config" \
+0503  "$tab new-mini-config" \
+0504  "$tab nueva-mini-config" \
+0505  "$tab show-config" \
+0506  "$tab modify-config" \
+0507  "$tab del-config" \
+0508  "$tab names-config" \
+0509  "$tab regen-config" \
+0510  "$tab examples-config" \
+0600 "$quad [ Tool Connect ] $cinco" \
+0601  "$tab iw-scan" \
+0602  "$tab iw-info" \
+0603  "$tab wpa-save" \
+0604  "$tab wpa-load" \
+0605  "$tab dhcp-client" \
+0700 "$quad [ Tool rules ] $cinco" \
+0701  "$tab rule-del-num" \
+0702  "$tab rule-del-shield" \
+0703  "$tab rule-add-shield" \
+0800 "$quad [ Tool Sockets ] $cinco" \
+0801  "$tab ss" \
+0802  "$tab netstat" \
+0803  "$tab lsof" \
+0804  "$tab tcpdump" \
+0805  "$tab info-route" \
+0806  "$tab info-nodes" \
+0807  "$tab info-listen" \
+0808  "$tab info-proxy" \
+0809  "$tab info-net" \
+0810  "$tab info-system" \
+0811  "$tab ntpdate-client" \
+0900 "$quad [ Tool Ipfwarding ] $cinco" \
+0901  "$tab ipforward-list" \
+0902  "$tab ipforward-on" \
+0903  "$tab ipforward-off" \
+1000 "$quad [ Tool ssh tunnel ] $cinco" \
+1001  "$tab sshd-tunnel-info" \
+1002  "$tab sshd-tunnel-on" \
+1003  "$tab sshd-tunnel-off" \
+1100 "$quad [ Tool Tcp ] $cinco " \
+1101  "$tab speed-ip4" \
+1102  "$tab speed-ip6" \
+1103  "$tab tracetcp-ip4" \
+1104  "$tab tracetcp-ip6" \
+1200 "$quad [ Tool Icmp ] $cinco" \
+1201  "$tab traceicmp-ip4" \
+1202  "$tab traceicmp-ip6" \
+1203  "$tab ping-ip4" \
+1204  "$tab ping-ip6" \
+1300 "$quad [ Tool Udp ] $cinco"  \
+1301  "$tab host" \
+1302  "$tab dig" \
+1303  "$tab resolveip" \
+1304  "$tab geoip" \
+1305  "$tab ntpdate-client" \
+1400 "$quad [ Tool Sudo ] $cinco"  \
+1401  "$tab sudofw-adduser" \
+1402  "$tab sudofw-deluser" \
+1403  "$tab sudofw-listuser" \
+1500 "$quad [ Tool Game ] $cinco" \
+1501  "$tab ole-word" \
+1502  "$tab ole-number" \
+1503  "$tab colour-rgb" \
+1504  "$tab colour-hex" \
+1600 "$quad [ Tool Install ] $cinco" \
+1601  "$tab install" \
+1602  "$tab howto-upgrade" \
+1603  "$tab upgrade" \
+1604  "$tab intro" \
+1700 "$quad [ Tool Blacklist ] $cinco" \
+1701  "$tab blacklist-list" \
+1702  "$tab blacklist-list info" \
+1703  "$tab blacklist-on" \
+1704  "$tab blacklist-off" \
+1800 "$quad [ Tool Dev ] $cinco" \
+1801  "$tab new-versions" \
+1802  "$tab dev-version" \
+1803  "$tab dev-changes" \
+1804  "$tab intro" \
+1900 "$quad [ Tool System ] $cinco" \
+1901  "$tab free-ram" \
+1902  "$tab speed-ram" \
+1903  "$tab speed-disk" \
+1904  "$tab speed-glx" \
+1905  "$tab radio-mp3-default" \
+1906  "$tab radio-mp3-link" \
+1907  "$tab gpg-notes" \
+2000 "$quad [ Show Hardware ] $cinco" \
+2001  "$tab lpinfo" \
+2002  "$tab lsblk" \
+2003  "$tab lsusb" \
+2004  "$tab lscpu" \
+2005  "$tab lspci" \
+2006  "$tab lsgpu" \
+2007  "$tab lshw" \
+2100 "$quad [ Show Etc ] $cinco" \
+2101  "$tab hosts" \
+2102  "$tab protocols" \
+2103  "$tab services" \
+2104  "$tab hosts.allow" \
+2105  "$tab hosts.deny" \
+2106  "$tab resolv.conf" \
+2107  "$tab show-default" \
+2108  "$tab modify-default" \
+2200 "$quad [ Show Log ] $cinco" \
+2201  "$tab log-ssh" \
+2202  "$tab log-search" \
+2203  "$tab filelog" \
+2204  "$tab autolog" \
+2300 "$quad [ Show About ] $cinco" \
+2301  "$tab about" \
+2302  "$tab depends" \
+2303  "$tab config-eng" \
+2304  "$tab config-spa" \
+2400 "$quad [ Show Help ] $cinco" \
+2401  "$tab mini-options" \
+2402  "$tab full-options" \
+2403  "$tab readme" \
+2404  "$tab leeme" \
+2405  "$tab all-help" \
+2406  "$tab notes" \
+2407  "$tab license" \
  )"  
 #### 
 #### 
@@ -5496,86 +5500,89 @@ menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
  0901) clear ; $cmd_fwiptables cli ipforward-list ;;
  0902) clear ; $cmd_fwiptables cli ipforward-on ;;
  0903) clear ; $cmd_fwiptables cli ipforward-off ;;
- 1001) clear ; $cmd_fwiptables cli speed-ip4 ;;
- 1002) clear ; $cmd_fwiptables cli speed-ip6 ;;
- 1003) clear ; $cmd_fwiptables cli tracetcp-ip4 ;;
- 1004) clear ; $cmd_fwiptables cli tracetcp-ip6 ;;
- 1101) clear ; $cmd_fwiptables cli traceicmp-ip4 ;;
- 1102) clear ; $cmd_fwiptables cli traceicmp-ip6 ;;
- 1103) clear ; $cmd_fwiptables cli ping-ip4 ;;
- 1104) clear ; $cmd_fwiptables cli ping-ip6 ;;
- 1201) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 1001) clear ; $cmd_fwiptables cli sshd-tunnel-info ;;
+ 1002) clear ; $cmd_fwiptables cli sshd-tunnel-on ;; 
+ 1003) clear ; $cmd_fwiptables cli sshd-tunnel-off ;;
+ 1101) clear ; $cmd_fwiptables cli speed-ip4 ;;
+ 1102) clear ; $cmd_fwiptables cli speed-ip6 ;;
+ 1103) clear ; $cmd_fwiptables cli tracetcp-ip4 ;;
+ 1104) clear ; $cmd_fwiptables cli tracetcp-ip6 ;;
+ 1201) clear ; $cmd_fwiptables cli traceicmp-ip4 ;;
+ 1202) clear ; $cmd_fwiptables cli traceicmp-ip6 ;;
+ 1203) clear ; $cmd_fwiptables cli ping-ip4 ;;
+ 1204) clear ; $cmd_fwiptables cli ping-ip6 ;;
+ 1301) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables host $resolve ;;
- 1202) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+ 1302) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables dig $resolve ;;
- 1203) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 1303) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables resolveip $resolve ;;
- 1204) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+ 1304) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
  clear ; $cmd_fwiptables geoip $resolve ;;
- 1205) clear ; $cmd_fwiptables "ntpdate-client" ;;
- 1301) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+ 1305) clear ; $cmd_fwiptables "ntpdate-client" ;;
+ 1401) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
  clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
- 1302) clear ; $cmd_fwiptables cli sudofw-deluser ;;
- 1303) clear ; $cmd_fwiptables cli sudofw-listuser ;;
- 1401) clear ; $cmd_fwiptables cli ole-word  ;;
- 1402) clear ; $cmd_fwiptables cli ole-number ;;
- 1403) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+ 1402) clear ; $cmd_fwiptables cli sudofw-deluser ;;
+ 1403) clear ; $cmd_fwiptables cli sudofw-listuser ;;
+ 1501) clear ; $cmd_fwiptables cli ole-word  ;;
+ 1502) clear ; $cmd_fwiptables cli ole-number ;;
+ 1503) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
  $cmd_fwiptables cli colour-rgb $resolve ;;
- 1404) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+ 1504) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
  $cmd_fwiptables cli colour-hex $resolve ;;
- 1501) clear ; $zero_option install ;;
- 1502) clear ; $cmd_fwiptables cli howto-upgrade ;;
- 1503) clear ; $cmd_fwiptables cli upgrade ;;
- 1504) clear ; $cmd_fwiptables cli intro ;;
- 1601) clear ; $cmd_fwiptables cli blacklist-list ;;
- 1602) clear ; $cmd_fwiptables cli blacklist-list info ;;
- 1603) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
+ 1601) clear ; $zero_option install ;;
+ 1602) clear ; $cmd_fwiptables cli howto-upgrade ;;
+ 1603) clear ; $cmd_fwiptables cli upgrade ;;
+ 1604) clear ; $cmd_fwiptables cli intro ;;
+ 1701) clear ; $cmd_fwiptables cli blacklist-list ;;
+ 1702) clear ; $cmd_fwiptables cli blacklist-list info ;;
+ 1703) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
  --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
  clear ; $cmd_fwiptables blacklist-on $resolve ;;
- 1604) clear ; $cmd_fwiptables cli blacklist-off ;;
- 1701) clear ; $cmd_fwiptables cli new-versions ;;
- 1702) clear ; $cmd_fwiptables cli dev-version ;;
- 1703) clear ; $cmd_fwiptables cli dev-changes ;;
- 1704) clear ; $cmd_fwiptables cli intro ;;
- 1801) clear ; $cmd_fwiptables cli free-ram ;;
- 1802) clear ; $cmd_fwiptables cli speed-ram ;;
- 1803) clear ; $cmd_fwiptables cli speed-disk ;;
- 1804) clear ; $cmd_fwiptables cli speed-glx ;;
- 1805) clear ; $cmd_fwiptables cli radio-mp3 ;;
- 1806) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
+ 1704) clear ; $cmd_fwiptables cli blacklist-off ;;
+ 1801) clear ; $cmd_fwiptables cli new-versions ;;
+ 1802) clear ; $cmd_fwiptables cli dev-version ;;
+ 1803) clear ; $cmd_fwiptables cli dev-changes ;;
+ 1804) clear ; $cmd_fwiptables cli intro ;;
+ 1901) clear ; $cmd_fwiptables cli free-ram ;;
+ 1902) clear ; $cmd_fwiptables cli speed-ram ;;
+ 1903) clear ; $cmd_fwiptables cli speed-disk ;;
+ 1904) clear ; $cmd_fwiptables cli speed-glx ;;
+ 1905) clear ; $cmd_fwiptables cli radio-mp3 ;;
+ 1906) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
  $cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
- 1807) clear ; $cmd_fwiptables cli gpg-notes ;;
- 1901) clear ; $cmd_fwiptables cli lpinfo ;;
- 1902) clear ; $cmd_fwiptables cli lsblk ;;
- 1903) clear ; $cmd_fwiptables cli lsusb ;; 
- 1904) clear ; $cmd_fwiptables cli lscpu ;;
- 1905) clear ; $cmd_fwiptables cli lspci ;;  
- 1906) clear ; $cmd_fwiptables cli lsgpu ;;
- 1907) clear ; $cmd_fwiptables cli lshw ;;
- 2001) clear ; $cmd_fwiptables cli hosts ;;
- 2002) clear ; $cmd_fwiptables cli protocols ;;
- 2003) clear ; $cmd_fwiptables cli services ;;
- 2004) clear ; $cmd_fwiptables cli hosts.allow ;;
- 2005) clear ; $cmd_fwiptables cli hosts.deny ;;
- 2006) clear ; $cmd_fwiptables cli resolv.conf ;;
- 2007) clear ; $cmd_fwiptables cli show-default ;;
- 2008) clear ; $cmd_fwiptables cli modify-default ;;
- 2101) clear ; $cmd_fwiptables cli log-ssh ;;
- 2102) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+ 1907) clear ; $cmd_fwiptables cli gpg-notes ;;
+ 2001) clear ; $cmd_fwiptables cli lpinfo ;;
+ 2002) clear ; $cmd_fwiptables cli lsblk ;;
+ 2003) clear ; $cmd_fwiptables cli lsusb ;; 
+ 2004) clear ; $cmd_fwiptables cli lscpu ;;
+ 2005) clear ; $cmd_fwiptables cli lspci ;;  
+ 2006) clear ; $cmd_fwiptables cli lsgpu ;;
+ 2007) clear ; $cmd_fwiptables cli lshw ;;
+ 2101) clear ; $cmd_fwiptables cli hosts ;;
+ 2102) clear ; $cmd_fwiptables cli protocols ;;
+ 2103) clear ; $cmd_fwiptables cli services ;;
+ 2104) clear ; $cmd_fwiptables cli hosts.allow ;;
+ 2105) clear ; $cmd_fwiptables cli hosts.deny ;;
+ 2106) clear ; $cmd_fwiptables cli resolv.conf ;;
+ 2107) clear ; $cmd_fwiptables cli show-default ;;
+ 2108) clear ; $cmd_fwiptables cli modify-default ;;
+ 2201) clear ; $cmd_fwiptables cli log-ssh ;;
+ 2202) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
  clear ; $cmd_fwiptables "log-search" "$pattern" | less ;;
- 2103) clear ; $cmd_fwiptables txt filelog ;;
- 2104) clear ; $cmd_fwiptables cli autolog ;;
- 2201) clear ; $cmd_fwiptables cli about ;;
- 2202) clear ; $cmd_fwiptables cli depends ;;
- 2203) clear ; $cmd_fwiptables cli config-eng ;;
- 2204) clear ; $cmd_fwiptables cli config-spa ;;
- 2301) clear ; $cmd_fwiptables cli mini-options ;;
- 2302) clear ; $cmd_fwiptables cli full-options ;;
- 2303) clear ; $cmd_fwiptables cli readme ;;
- 2304) clear ; $cmd_fwiptables cli leeme ;;
- 2305) clear ; $cmd_fwiptables cli all-help ;;
- 2306) clear ; $cmd_fwiptables cli notes ;;
- 2307) clear ; $cmd_fwiptables cli license ;;
+ 2203) clear ; $cmd_fwiptables txt filelog ;;
+ 2204) clear ; $cmd_fwiptables cli autolog ;;
+ 2301) clear ; $cmd_fwiptables cli about ;;
+ 2302) clear ; $cmd_fwiptables cli depends ;;
+ 2303) clear ; $cmd_fwiptables cli config-eng ;;
+ 2304) clear ; $cmd_fwiptables cli config-spa ;;
+ 2401) clear ; $cmd_fwiptables cli mini-options ;;
+ 2402) clear ; $cmd_fwiptables cli full-options ;;
+ 2403) clear ; $cmd_fwiptables cli readme ;;
+ 2404) clear ; $cmd_fwiptables cli leeme ;;
+ 2405) clear ; $cmd_fwiptables cli all-help ;;
+ 2406) clear ; $cmd_fwiptables cli notes ;;
+ 2407) clear ; $cmd_fwiptables cli license ;;
  *) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
  esac 
  $cmd_fwiptables text-pause
