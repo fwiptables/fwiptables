@@ -9425,8 +9425,8 @@ exit; fi
 if [ "$first_option" = "gpg-notes" ]; then 
 ####
 ####
-if [ "$second_option" == "-list" ] ; then
-find "$directory_default" | $command_grep -i .gpg
+if [ "$second_option" == "-list" ] || [ "$second_option" == "$NULL" ] ; then
+find "$directory_default" | $command_grep -i .gpg | sed 's/\.gpg//g'
 echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
@@ -9434,9 +9434,9 @@ echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-if [ "$command_zenity" == "$NULL" ]; then echo "### install zenity"; exit ; fi
-original="$($command_zenity $graphic_dimension --entry --title " [ Name gpg to choose ]" \
---text "$(ls $directory_default/*.gpg | cut -d "." -f 1)")"
+if [ "$command_zenity" == "$NULL" ]; then echo " [ fail ] [ install zenity ]"; exit ; fi
+original="$($command_zenity $graphic_dimension --entry --title " [ NAME file gpg to choose WITHOUT path ]" \
+--text "$(find $directory_default | grep .gpg | sed 's/\.gpg//g' )")"
 origina="$(echo "$original" | sed s/\\///g -)" ;
 consigna="$($command_zenity $graphic_dimension --entry --title "[ Passwowrd ]" --text "[ Passwowrd ]")"
 gpg_origen_gpg="$directory_default/$origina.gpg"
@@ -9469,9 +9469,9 @@ exit; fi
 ####
 ####
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
-if [ "$command_dialog" == "$NULL" ]; then echo "### install dialog"; exit ; fi
-original="$($command_dialog --stdout --title " [ Name gpg to choose without path] " \
---inputbox "$(find $directory_default/*.gpg | sed 's/\*\.gpg//g')" 0 0 )"
+if [ "$command_dialog" == "$NULL" ]; then echo " [ fail ] [ install dialog ]"; exit ; fi
+original="$($command_dialog --stdout --title " [ NAME file gpg to choose WITHOUT path ] " \
+--inputbox "$(find $directory_default/*.gpg | sed 's/\.gpg//g')" 0 0 )"
 origina="$(echo "$original" | sed s/\\///g -)"  ;
 consigna="$($command_dialog --stdout --title " [ Passwowrd ] " \
 --inputbox "[ Passwowrd ]" 0 0 )"
