@@ -1,7 +1,12 @@
-sum ideas to fwiptables@gmx.com : tool-snort.
+sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec
 
 
 
+ 03. 
+ 02. cambios en la ayuda del tunel [ info ]. 
+ 01. cambiar el nombre tool-sshd por el nombre tool-tunnel.
+
+ cambios en dev-fwiptables desarrollo 4.09
 
  09. grupo help-options. HECHO
  08. cambio en full-options. HECHO
@@ -13,7 +18,7 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  02. mas informacion de como conectar un cliente en sshd-tunnel-info. HECHO
  01. command -v para ls y find y grep y sed, cambiarlos. HECHO
 
- cambios en dev-fwiptables desarrollo 4.08
+ cambios en dev-fwiptables 4.08 lineas=9
 
  16. correcion de gpg-notes. HECHO
  15. arreglos en cli-menu. HECHO
@@ -22,15 +27,15 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  12. añadido tool-sshd a cli-menu. HECHO
  11. añadido tool-sshd. HECHO
  10. añadido sshd-tunel-info. HECHO
- 9.  añadido sshd-tunnel-off. HECHO
- 8.  añadido sshd-tunnel-on. HECHO
- 7.  ahora grep con command -v grep. HECHO
- 6.  cambiar egrep por grep -E. HECHO 
- 5.  diminuto cambio en wpa-load. HECHO
- 4.  cambio de permisos en fwiptables-cli-menu gui-menu gui-shell a chmod 555. HECHO
- 3.  simplifica algunas variables. HECHO
- 2.  cambios minimos en depends. HECHO
- 1.  cambios diminuto de apariencia en cabeceras. HECHO
+ 09.  añadido sshd-tunnel-off. HECHO
+ 08.  añadido sshd-tunnel-on. HECHO
+ 07.  ahora grep con command -v grep. HECHO
+ 06.  cambiar egrep por grep -E. HECHO 
+ 05.  diminuto cambio en wpa-load. HECHO
+ 04.  cambio de permisos en fwiptables-cli-menu gui-menu gui-shell a chmod 555. HECHO
+ 03.  simplifica algunas variables. HECHO
+ 02.  cambios minimos en depends. HECHO
+ 01.  cambios diminuto de apariencia en cabeceras. HECHO
 
  cambios en dev-fwiptables 4.07 lineas=16
  
@@ -41,64 +46,64 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  12. ahora carece de iconos de escritorio. HECHO
  11. cambio de codigo en clean-tmp. HECHO
  10. cambio poco significativo cambio en cabecera. HECHO 
- 9.  simplificado el instalador. HECHO 
- 8.  pequeños arreglos para ipv4 en custom cuando estan desactivados ipv4 y ipv6. HECHO
- 7.  limpieza de codigo, borrando codigo y comentarios obsoletos. HECHO
- 6.  ahora se puede cambiar el puerto ssh para maxtries ssh o poner varios. HECHO 
- 5.  cambios en depends y en version. HECHO
- 4.  cambio todos las rutas de iconos del programa a /root/.share/applications. HECHO
- 3   cambio todas las rutas del programa temporales a /root/.cache/fwiptables. HECHO
- 2.  cambio todas las rutas del programa permamentes a /root/.config/fwiptables. HECHO
- 1.  nuevos alias añadidos a los interfaces de salida. HECHO 
+ 09.  simplificado el instalador. HECHO 
+ 08.  pequeños arreglos para ipv4 en custom cuando estan desactivados ipv4 y ipv6. HECHO
+ 07.  limpieza de codigo, borrando codigo y comentarios obsoletos. HECHO
+ 06.  ahora se puede cambiar el puerto ssh para maxtries ssh o poner varios. HECHO 
+ 05.  cambios en depends y en version. HECHO
+ 04.  cambio todos las rutas de iconos del programa a /root/.share/applications. HECHO
+ 03   cambio todas las rutas del programa temporales a /root/.cache/fwiptables. HECHO
+ 02.  cambio todas las rutas del programa permamentes a /root/.config/fwiptables. HECHO
+ 01.  nuevos alias añadidos a los interfaces de salida. HECHO 
 
  cambios en fwiptables 4.06 lineas=16
 
- 8. sudofw-users cambiado a sudofw-listusers. HECHO 
- 7. modificado ntpdate-client para que funcione sntp. HECHO
- 6. modificar del-num-rule para ipv6 tambien. HECHO
- 5. modificar md5. HECHO
- 4. cambio en info-lan. HECHO
- 3. cambio en load. HECHO
- 2. opcion de usar el shell zsh. HECHO
- 1. pequeño cambio de apariencia en full-options tambien llamado options. HECHO
+ 08. sudofw-users cambiado a sudofw-listusers. HECHO 
+ 07. modificado ntpdate-client para que funcione sntp. HECHO
+ 06. modificar del-num-rule para ipv6 tambien. HECHO
+ 05. modificar md5. HECHO
+ 04. cambio en info-lan. HECHO
+ 03. cambio en load. HECHO
+ 02. opcion de usar el shell zsh. HECHO
+ 01. pequeño cambio de apariencia en full-options tambien llamado options. HECHO
 
  cambios en fwiptables 4.05 # lineas=8
  
- 6. pequeños cambios en la apariencia de mini-options y options o full-options. HECHO
- 5. pequeños cambios en la apariencia de lista de reglas. HECHO
- 4. pequeñas actualizaciones de codigo. HECHO
- 3. correccion en gpg-notes . HECHO
- 2. modificar grupo firewall-rules por firewall-control. HECHO
- 1. modificado status. HECHO 
+ 06. pequeños cambios en la apariencia de mini-options y options o full-options. HECHO
+ 05. pequeños cambios en la apariencia de lista de reglas. HECHO
+ 04. pequeñas actualizaciones de codigo. HECHO
+ 03. correccion en gpg-notes . HECHO
+ 02. modificar grupo firewall-rules por firewall-control. HECHO
+ 01. modificado status. HECHO 
 
  cambios en fwiptables 4.04 # lineas=6
 
- 8. variable command_zenity y command_dialog recambiada. HECHO
- 7. gpg-notes para cli-menu. HECHO
- 6. gpg-notes para gui-menu. HECHO
- 4. gpg-notes para -gui. HECHO
- 2. cambio de estructura de archivo, desde wpa-file a file.wpa en wpa-load y wpa-save. HECHO
- 1. gpg-notes en tool-system para texto, HECHO
+ 06. variable command_zenity y command_dialog recambiada. HECHO
+ 05. gpg-notes para cli-menu. HECHO
+ 04. gpg-notes para gui-menu. HECHO
+ 03. gpg-notes para -gui. HECHO
+ 02. cambio de estructura de archivo, desde wpa-file a file.wpa en wpa-load y wpa-save. HECHO
+ 01. gpg-notes en tool-system para texto, HECHO
 
- cambios fwiptables 4.03 # lineas=8
+ cambios fwiptables 4.03 # lineas=6
  
- 7. empezara a funcionar install y upgrade cuando gui y cli. HECHO
- 6. rutina profile ahora es anterior a variables de fwiptables. HECHO
- 5. cambio de nombre de ntpdate a ntpdate-client. HECHO
- 4. simplificacion de codigo. HECHO
- 3. pequeño cambio de variable en load_cover. HECHO
- 2. pequeños cambios de apariencia en full-options y mini-options. HECHO
- 1. arreglos en pc-halt, pc-shutdown y pc-reboot. HECHO
+ 07. empezara a funcionar install y upgrade cuando gui y cli. HECHO
+ 06. rutina profile ahora es anterior a variables de fwiptables. HECHO
+ 05. cambio de nombre de ntpdate a ntpdate-client. HECHO
+ 04. simplificacion de codigo. HECHO
+ 03. pequeño cambio de variable en load_cover. HECHO
+ 02. pequeños cambios de apariencia en full-options y mini-options. HECHO
+ 01. arreglos en pc-halt, pc-shutdown y pc-reboot. HECHO
 
  cambios fwiptables 4.02 # lineas=7
 
- 7. añadir pc-reboot pc-halt pc-shudown en la categoria tool-computer. HECHO
- 6. borrada el codigo de la cabecera (header) viejo, arreglo que da mucha velocidad. HECHO
- 5. simplificado al maximo cabecera, elimina su rutina y lo deja como un echo. HECHO
- 4. añadido client-squid. HECHO
- 3. cambio de nombre dhcp a dhcp-client. HECHO
- 2. cambio de nombre wpa-file a wpa-load. HECHO
- 1. cambio de nombre wpa-connect a wpa-save. HECHO
+ 07. añadir pc-reboot pc-halt pc-shudown en la categoria tool-computer. HECHO
+ 06. borrada el codigo de la cabecera (header) viejo, arreglo que da mucha velocidad. HECHO
+ 05. simplificado al maximo cabecera, elimina su rutina y lo deja como un echo. HECHO
+ 04. añadido client-squid. HECHO
+ 03. cambio de nombre dhcp a dhcp-client. HECHO
+ 02. cambio de nombre wpa-file a wpa-load. HECHO
+ 01. cambio de nombre wpa-connect a wpa-save. HECHO
 
  cambios fwiptables 4.01 # lineas=7
  
@@ -113,217 +118,217 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  12- añadir cabeceras "### ### [ ok ]" con variable head_ok. HECHO
  11- añadir iw-scan y iw-info y wpa-connect y wpan-file y dhcp. HECHO
  10- añadir tool-connect. HECHO
- 9- añadir un md5sum. HECHO
- 7- añadir rule-add-shield. HECHO
- 8- añadir rule-del-num. HECHO
- 6- añadir rule-del-shield. HECHO
- 5- añadir tool-rule. HECHO
- 4. alias de -gui-menu a gui menu y  con -gui-shell y con -cli-menu. HECHO
- 3. añadir servidor-squid. HECHO
- 2. añadido alias desde tui-menu a -cli-menu. HECHO
- 1. añadido alias desde -cli a -tui. HECHO
+ 09- añadir un md5sum. HECHO
+ 07- añadir rule-add-shield. HECHO
+ 08- añadir rule-del-num. HECHO
+ 06- añadir rule-del-shield. HECHO
+ 05- añadir tool-rule. HECHO
+ 04. alias de -gui-menu a gui menu y  con -gui-shell y con -cli-menu. HECHO
+ 03. añadir servidor-squid. HECHO
+ 02. añadido alias desde tui-menu a -cli-menu. HECHO
+ 01. añadido alias desde -cli a -tui. HECHO
 
  cambios fwiptables 3.17 # lienas=16
 
- 3. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. HECHO
- 2. pequeños cambios en mini-options. HECHO 
- 1. cambio en variables para lanzar iptables. HECHO
+ 03. las reglas de firewall custom, para wizard y para config, llevan añadidos comentarios. HECHO
+ 02. pequeños cambios en mini-options. HECHO 
+ 01. cambio en variables para lanzar iptables. HECHO
 
  cambios fwiptables 3.16 # lineas=3 
 
- 3. ordenar las reglas en servidores predefinidos, primero cliente despues servidor. HECHO
- 2. Las reglas tienen comentarios en iptables para los servidores predefinidos. HECHO
- 1. Añadido dev-upgrade para instalar la version de git desde el repositorio. HECHO
+ 03. ordenar las reglas en servidores predefinidos, primero cliente despues servidor. HECHO
+ 02. Las reglas tienen comentarios en iptables para los servidores predefinidos. HECHO
+ 01. Añadido dev-upgrade para instalar la version de git desde el repositorio. HECHO
 
  cambios fwiptables 3.15 # lineas=3
  
- 5. pequeños cambios. HECHO
- 4. corregido server-samba. HECHO
- 3. los firewall prefefinidos guardan log de sus servidores configurados en tcp y udp. HECHO
- 2. shield-ssh guarda los logs del servidor. HECHO
- 1. mas comentarios en ingles y en español en firewall predefinidos. HECHO
+ 05. pequeños cambios. HECHO
+ 04. corregido server-samba. HECHO
+ 03. los firewall prefefinidos guardan log de sus servidores configurados en tcp y udp. HECHO
+ 02. shield-ssh guarda los logs del servidor. HECHO
+ 01. mas comentarios en ingles y en español en firewall predefinidos. HECHO
 
  cambios fwiptables 3.14 # lineas=5
 
- 6. acortadas de nombre algunas variables. y cambiadas otras para seguir la misma logica. HECHO 
- 5. shield-ssh funciona con 6 intentos por hora por defecto. HECHO
- 4. en todos los servidores por defecto con ssh, por defecto, shield ssh funciona a 12 intentos por hora. HECHO
- 3. variables añadida config_maxtries_ssh a default con 12 intentos por hora por defecto. HECHO
- 2. show-default cambiado. HECHO
- 1. Mas comentarios en ingles y en español en el firewall shield-ssh. HECHO
+ 06. acortadas de nombre algunas variables. y cambiadas otras para seguir la misma logica. HECHO 
+ 05. shield-ssh funciona con 6 intentos por hora por defecto. HECHO
+ 04. en todos los servidores por defecto con ssh, por defecto, shield ssh funciona a 12 intentos por hora. HECHO
+ 03. variables añadida config_maxtries_ssh a default con 12 intentos por hora por defecto. HECHO
+ 02. show-default cambiado. HECHO
+ 01. Mas comentarios en ingles y en español en el firewall shield-ssh. HECHO
 
  cambios fwiptables 3.13 # lineas=6
 
- 3. modificado fwiptables-modify. HECHO
- 2. modificado shield-ssh. HECHO
- 1. mas comentarios en ingles y español. HECHO
+ 03. modificado fwiptables-modify. HECHO
+ 02. modificado shield-ssh. HECHO
+ 01. mas comentarios en ingles y español. HECHO
 
  cambios fwiptables 3.12 # lineas=3
 
- 2. añadir mas comentarios al codigo de cada firewall. HECHO
- 1. pequeños cambios de apariencia. HECHO
+ 02. añadir mas comentarios al codigo de cada firewall. HECHO
+ 01. pequeños cambios de apariencia. HECHO
 
  cambios fwiptables 3.11 # lineas=2
 
- 8. pasa nuevos firewall añadidos a opcion fwiptables-launch, y a info y a help HECHO
- 7. pasa nuevos firewall añadidos a opcion readme y a opcion leeme. HECHO
- 6. pasa nuevos firewall añadidos a cli-menu y a gui-menu. HECHO
- 5. añade firewall server: shield-ssh. HECHO
- 4. añade firewall server-ftp, y firewall server-mail y firewall server-news. HECHO
- 3. añade firewall client-mail, and firewall client-news, and firewall client-ftp. HECHO
- 2. añade firewall game-freeciv and firewall game-widelands. HECHO
- 1. pequeños cambios de apariencia en intro y en mini-options y en options y en install. HECHO
+ 08. pasa nuevos firewall añadidos a opcion fwiptables-launch, y a info y a help HECHO
+ 07. pasa nuevos firewall añadidos a opcion readme y a opcion leeme. HECHO
+ 06. pasa nuevos firewall añadidos a cli-menu y a gui-menu. HECHO
+ 05. añade firewall server: shield-ssh. HECHO
+ 04. añade firewall server-ftp, y firewall server-mail y firewall server-news. HECHO
+ 03. añade firewall client-mail, and firewall client-news, and firewall client-ftp. HECHO
+ 02. añade firewall game-freeciv and firewall game-widelands. HECHO
+ 01. pequeños cambios de apariencia en intro y en mini-options y en options y en install. HECHO
 
  cambios fwiptables 3.10 # lineas=8
 
- 8. pequeños cambios de apariencia. HECHO
- 7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
- 6. Los nuevos server añadir a la opcion fwiptables-launch a la opcion readme y a la opcion leeme. HECHO
- 5. Los nuevos server insertar en cli-menu y en gui-menu. HECHO
- 4. añadido server-sql. HECHO
- 3. añadido server-asterisk. HECHO
- 2. añadido server-mumble. HECHO
- 1. añadido server-teamspeak. HECHO
+ 08. pequeños cambios de apariencia. HECHO
+ 07. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
+ 06. Los nuevos server añadir a la opcion fwiptables-launch a la opcion readme y a la opcion leeme. HECHO
+ 05. Los nuevos server insertar en cli-menu y en gui-menu. HECHO
+ 04. añadido server-sql. HECHO
+ 03. añadido server-asterisk. HECHO
+ 02. añadido server-mumble. HECHO
+ 01. añadido server-teamspeak. HECHO
 
  cambios fwiptables 3.09 # lineas=8 
 
- 8. pequeño reordenamieto del script. HECHO
- 7. añadido clean-tmp para limpiar los archivos temporales. HECHO
- 6. arreglo de acbecera en gui-shell. HECHO
- 5. arreglos de help e info en gui-menu. HECHO
- 4. arreglos de caberceras en gui-menu. HECHO
- 3. cambio de orden en la prioridad de las variables al principio del script, mas ordenado. HECHO
- 2. cambiado el directorio de temporal de /tmp/fwiptables-tmp a  /root/.fwiptables-tmp, facil de cambiar si es necesario. HECHO
- 1. mejorado sistema de privilegio de administrador root. HECHO 
+ 08. pequeño reordenamieto del script. HECHO
+ 07. añadido clean-tmp para limpiar los archivos temporales. HECHO
+ 06. arreglo de acbecera en gui-shell. HECHO
+ 05. arreglos de help e info en gui-menu. HECHO
+ 04. arreglos de caberceras en gui-menu. HECHO
+ 03. cambio de orden en la prioridad de las variables al principio del script, mas ordenado. HECHO
+ 02. cambiado el directorio de temporal de /tmp/fwiptables-tmp a  /root/.fwiptables-tmp, facil de cambiar si es necesario. HECHO
+ 01. mejorado sistema de privilegio de administrador root. HECHO 
 
  cambios fwiptables 3.08 # lineas=8
 
- 3. pequeños cambios en readme, leeme, y notes, para markdown. HECHO
- 2. pequeño cambio en intro. HECHO
- 1. arreglo y vuelta a modificar modify-config, corregido. HECHO
+ 03. pequeños cambios en readme, leeme, y notes, para markdown. HECHO
+ 02. pequeño cambio en intro. HECHO
+ 01. arreglo y vuelta a modificar modify-config, corregido. HECHO
 
  cambios fwiptables 3.07 # lineas=3
 
- 3. corregidos los code opciones. HECHO
- 2. arreglo en modify-config. HECHO
- 1. arreglo de anomalia en gui list. HECHO
+ 03. corregidos los code opciones. HECHO
+ 02. arreglo en modify-config. HECHO
+ 01. arreglo de anomalia en gui list. HECHO
 
  cambios fwiptables 3.06 # lineas=3
 
- 3. salida -tor sigue estando pero se oculta en el mini-options y en full-options(options). HECHO
- 2. cambios de codigo para organizar los path y esten mas claros, los fijos y temporales. HECHO
- 1. game-westnoth cambiado a game-wesnoth, corrigiendo el nombre a su correcto. HECHO
+ 03. salida -tor sigue estando pero se oculta en el mini-options y en full-options(options). HECHO
+ 02. cambios de codigo para organizar los path y esten mas claros, los fijos y temporales. HECHO
+ 01. game-westnoth cambiado a game-wesnoth, corrigiendo el nombre a su correcto. HECHO
 
  cambios fwiptables 3.05 # lineas=3
 
- 4. arreglo de cambios en los ejemplos otra vez mas. HECHO
- 3. ordenar al principio las variabes de archivos y directorios. HECHO
- 2. eliminar funcionalidad exclusiva de rst. HECHO
- 1. arreglo en los ejemplos some-examples.  HECHO
+ 04. arreglo de cambios en los ejemplos otra vez mas. HECHO
+ 03. ordenar al principio las variabes de archivos y directorios. HECHO
+ 02. eliminar funcionalidad exclusiva de rst. HECHO
+ 01. arreglo en los ejemplos some-examples.  HECHO
 
  cambios fwiptables 3.04 # lineas=4
 
- 4. cambios en los ejemplos. HECHO
- 3. cambios en uninstall. HECHO
- 2. arreglos en info output ayuda con salida texto rst. HECHO
- 1. arreglos en help output ayuda con salida texto plano. HECHO
+ 04. cambios en los ejemplos. HECHO
+ 03. cambios en uninstall. HECHO
+ 02. arreglos en info output ayuda con salida texto rst. HECHO
+ 01. arreglos en help output ayuda con salida texto plano. HECHO
 
  cambios fwiptables 3.03 # lineas=4
  
- 8. rediseño de -rst para todas las opciones especificadas y ahora es convertido a -help. HECHO
- 7. resolv.conf añadido a gui-menu. HECHO
- 6. se pueden espificar ahora host para ping y traceroute. HECHO
- 5. mini-options mas resumido. HECHO
- 4. arreglos en sudo-list. HECHO
- 3. añadido ntpdate a cli-menu y gui-menu. HECHO
- 2. cambios en sudo-list. HECHO
- 1. añadido intro en cli-menu y gui-menu. HECHO
+ 08. rediseño de -rst para todas las opciones especificadas y ahora es convertido a -help. HECHO
+ 07. resolv.conf añadido a gui-menu. HECHO
+ 06. se pueden espificar ahora host para ping y traceroute. HECHO
+ 05. mini-options mas resumido. HECHO
+ 04. arreglos en sudo-list. HECHO
+ 03. añadido ntpdate a cli-menu y gui-menu. HECHO
+ 02. cambios en sudo-list. HECHO
+ 01. añadido intro en cli-menu y gui-menu. HECHO
 
  cambios fwiptables 3.02 # lineas=8
 
- 2. arreglos en /etc/sudoers.d/fwiptables-cmd
- 1. pequeños arreglos varios
+ 02. arreglos en /etc/sudoers.d/fwiptables-cmd
+ 01. pequeños arreglos varios
 
  cambios fwiptables 3.01 # lineas=2
 
- 2. cambios para 3.00
- 1. cambios de codigos de variables
+ 02. cambios para 3.00
+ 01. cambios de codigos de variables
 
  cambios fwiptables 3.00 # lineas=2
 
- 5. cambio de variables internas de $fwiptables y similares. HECHO
- 4. arreglos para funcionar en -txt  como wizard, ole y colour. HECHO
- 3. cambio de archivos de configuracion a /etc/fwiptables-default /etc/fwiptables-config /etc/fwiptables-fwrecover. HECHO
- 2. no necesita consola gui-shell gui-menu y cli-menu al tener xhost en sus ejecutables desktop. HECHO
- 1. comprobar examples en gui menu.
+ 05. cambio de variables internas de $fwiptables y similares. HECHO
+ 04. arreglos para funcionar en -txt  como wizard, ole y colour. HECHO
+ 03. cambio de archivos de configuracion a /etc/fwiptables-default /etc/fwiptables-config /etc/fwiptables-fwrecover. HECHO
+ 02. no necesita consola gui-shell gui-menu y cli-menu al tener xhost en sus ejecutables desktop. HECHO
+ 01. comprobar examples en gui menu.
 
  cambios fwiptables 2.23 # lineas=5
 
- 12- añadido desinstalador. HECHO
- 11- arreglos en ole-domain. HECHO
- 10- rehecho opcion resolv.conf para monstrar mas claro los tres resolv.conf incluyendo a head y tail. HECHO
- 9- añadidos iconos .desktop para fwiptables gui-shell y gui-menu y gui-cli en /usr/share/applications categoria System. HECHO
- 8- list-allrules almohadillas para el titulo al listar cada tabla de reglas. HECHO
- 7- instalador instala fwiptables-gui-menu fwiptables-gui-shell y fwiptables-gui-cli. HECHO
- 6- pequeños cambios de apariencia. HECHO
- 5- firewall client-torrent añadido. HECHO
- 4- firewall game-minetest añadido. HECHO
- 3- firewall games-udp cambiado a games-shooter. HECHO
- 2- option list-config cambiado a names-config. HECHO
- 1- option examples-config cambiado de nombre a config-examples. HECHO
+ 12. añadido desinstalador. HECHO
+ 11. arreglos en ole-domain. HECHO
+ 10. rehecho opcion resolv.conf para monstrar mas claro los tres resolv.conf incluyendo a head y tail. HECHO
+ 09. añadidos iconos .desktop para fwiptables gui-shell y gui-menu y gui-cli en /usr/share/applications categoria System. HECHO
+ 08. list-allrules almohadillas para el titulo al listar cada tabla de reglas. HECHO
+ 07. instalador instala fwiptables-gui-menu fwiptables-gui-shell y fwiptables-gui-cli. HECHO
+ 06. pequeños cambios de apariencia. HECHO
+ 05. firewall client-torrent añadido. HECHO
+ 04. firewall game-minetest añadido. HECHO
+ 03. firewall games-udp cambiado a games-shooter. HECHO
+ 02. option list-config cambiado a names-config. HECHO
+ 01. option examples-config cambiado de nombre a config-examples. HECHO
 
  cambios fwiptables 2.22 # lineas=12
 
- 4. firewall por defecto, simplificando su codigo, ahorrando codigo. HECHO
- 3. añadido help-options. HECHO 
- 2. alias ls, ls4  y ls6 para list y list6 añadido. HECHO
- 1. firewall para la batalla por Westnoth añadido en cli-menu y gui-menu tambien. HECHO.
+ 04. firewall por defecto, simplificando su codigo, ahorrando codigo. HECHO
+ 03. añadido help-options. HECHO 
+ 02. alias ls, ls4  y ls6 para list y list6 añadido. HECHO
+ 01. firewall para la batalla por Westnoth añadido en cli-menu y gui-menu tambien. HECHO.
 
  cambios fwiptables 2.21 # lineas=4
 
- 6. readaptar el final de ayuda y de help. HECHO
- 5. cambia some-examples por config-examples. HECHO
- 4. añadir las informaciones relativas a -web y a .rst a las ayudas y los grupos. HECHO
- 3. todos los show-* pasados a markdown. HECHO
- 2. añadido output rst para salidas con rst formato. HECHO
- 1. todos los tool-* pasados a markdown. HECHO
+ 06. readaptar el final de ayuda y de help. HECHO
+ 05. cambia some-examples por config-examples. HECHO
+ 04. añadir las informaciones relativas a -web y a .rst a las ayudas y los grupos. HECHO
+ 03. todos los show-* pasados a markdown. HECHO
+ 02. añadido output rst para salidas con rst formato. HECHO
+ 01. todos los tool-* pasados a markdown. HECHO
 
  cambios fwiptables 2.20 # lineas=6
  
  11. desaraparecen las rallas y se convierten en espacios. HECHO
  10. web output añadido. HECHO.
- 9. ntpdate corregido. HECHO
- 8. group-options y todos los grupos principales con markdown.HECHO
- 7. Preparando mini-options y full-options para soporte de markdown. HECHO
- 6. preparando options para soporte de markdown. HECHO
- 5. preparando help  para soporte de markdown. HECHO
- 4. preparando ayuda para soporte de markdown. HECHO
- 3. ahora aparece ss en tool-sockets. HECHO
- 2. pequeños cambios de codigo. HECHO
- 1. sentlog ahora tiene de alias filelog. HECHO
+ 09. ntpdate corregido. HECHO
+ 08. group-options y todos los grupos principales con markdown.HECHO
+ 07. Preparando mini-options y full-options para soporte de markdown. HECHO
+ 06. preparando options para soporte de markdown. HECHO
+ 05. preparando help  para soporte de markdown. HECHO
+ 04. preparando ayuda para soporte de markdown. HECHO
+ 03. ahora aparece ss en tool-sockets. HECHO
+ 02. pequeños cambios de codigo. HECHO
+ 01. sentlog ahora tiene de alias filelog. HECHO
 
  cambios fwiptables 2.19 # lineas=11
 
- 6. server https por udp (http 2) añadido a server-web y a server lamp. HECHO
- 5. añadido server-lamp. HECHO
- 4. añadido ole-domain en games. HECHO
- 3. cambios en games modificado ole-word y ole-number y actualizados. HECHO
- 2. cambio en ole-word para su funcionalidad con cualquier browser. HECHO
- 1. pequeños cambios en intro. HECHO
+ 06. server https por udp (http 2) añadido a server-web y a server lamp. HECHO
+ 05. añadido server-lamp. HECHO
+ 04. añadido ole-domain en games. HECHO
+ 03. cambios en games modificado ole-word y ole-number y actualizados. HECHO
+ 02. cambio en ole-word para su funcionalidad con cualquier browser. HECHO
+ 01. pequeños cambios en intro. HECHO
 
  cambios fwiptables 2.18 # lineas=6
 
- 3. offline tiene ahora DROP en FORWARD. HECHO
- 2. algun alias nuevo mas: off-line y erase-rules. HECHO
- 1. pequeños cambios visuales pasando a minusuculas y simpliflicando. HECHO
+ 03. offline tiene ahora DROP en FORWARD. HECHO
+ 02. algun alias nuevo mas: off-line y erase-rules. HECHO
+ 01. pequeños cambios visuales pasando a minusuculas y simpliflicando. HECHO
 
  cambios fwiptables 2.17 # lineas=3
 
- 5. añadido -tor en output-interface. HECHO
- 4. corregido ntpdate. HECHO
- 3. cli para radio con otro enlace. HECHO
- 2. gui para radio con otro enlcae. HECHO
- 1. radio cambiado a radio-mp3, se le puede indicar otra host directamente. HECHO
+ 05. añadido -tor en output-interface. HECHO
+ 04. corregido ntpdate. HECHO
+ 03. cli para radio con otro enlace. HECHO
+ 02. gui para radio con otro enlcae. HECHO
+ 01. radio cambiado a radio-mp3, se le puede indicar otra host directamente. HECHO
 
  cambios fwiptables 2.16 # lineas=5
 
@@ -331,37 +336,37 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  12. Actualizado  los firewall gui y cli añadiendo los que faltaban. HECHO
  11. añadido lan-vpn. HECHO
  10. tor-browser es ahora client-tor. HECHO
- 9.  webonly-tor ahora es lan-tor. HECHO
- 8.  simplifacion de upgrade. HECHO
- 7.  ayuda y help para status. HECHO
- 6.  status: lista ip4 y/o ip6 cuando hay default ruta a un dispositivo. HECHO
- 4.  pequeño cambio en info-net. HECHO
- 3.  opcional salida -tor añadido. HECHO
- 2.  firewall webonly-tor añadido. HECHO
- 1.  firewall tor-browser cambiado a client-tor. HECHO
+ 09. webonly-tor ahora es lan-tor. HECHO
+ 08. simplifacion de upgrade. HECHO
+ 07. ayuda y help para status. HECHO
+ 06. status: lista ip4 y/o ip6 cuando hay default ruta a un dispositivo. HECHO
+ 04. pequeño cambio en info-net. HECHO
+ 03. opcional salida -tor añadido. HECHO
+ 02. firewall webonly-tor añadido. HECHO
+ 01. firewall tor-browser cambiado a client-tor. HECHO
 
  cambios fwiptables 2.15 # lineas=13
 
- 2. pasa mayusculas a minisculas en la informacion ofrecida. HECHO
- 1. alias a los viejos firewall predefinidos. HECHO
+ 02. pasa mayusculas a minisculas en la informacion ofrecida. HECHO
+ 01. alias a los viejos firewall predefinidos. HECHO
 
  cambios fwiptables 2.14 # lineas=2
 
- 6. cambio de nombre de firewall predifinidos. HECHO
- 5. torbrowser es un nuevo firewall predefinido. HECHO 
- 4. resolv.conf pequeños cambios. HECHO
- 3. speed-ip4 y speed-ip6 pequeños cambios mas. HECHO 
- 2. speed-ip4 y speed-ip6 cambiado el puerto para que funcione bien. HECHO
- 1. pequeños cambios de apariencia. HECHO
+ 06. cambio de nombre de firewall predifinidos. HECHO
+ 05. torbrowser es un nuevo firewall predefinido. HECHO 
+ 04. resolv.conf pequeños cambios. HECHO
+ 03. speed-ip4 y speed-ip6 pequeños cambios mas. HECHO 
+ 02. speed-ip4 y speed-ip6 cambiado el puerto para que funcione bien. HECHO
+ 01. pequeños cambios de apariencia. HECHO
 
  cambios fwiptables 2.13 # lineas=6
 
- 6. web-cert obtiene el certificado web ssl de una web con puerto 443. HECHO
- 5. la opcion code muestra ahora las posibles subopciones. HECHO
- 4. cambio de nombre en fw-autolog a autolog  y fw-sendedlog a sentlog. HECHO
- 3. arreglo de info-system en options y mini-options. HECHO
- 2. clientvpn añadido al firewall. HECHO
- 1. no muestra los numeros en cli-menu. HECHO
+ 06. web-cert obtiene el certificado web ssl de una web con puerto 443. HECHO
+ 05. la opcion code muestra ahora las posibles subopciones. HECHO
+ 04. cambio de nombre en fw-autolog a autolog  y fw-sendedlog a sentlog. HECHO
+ 03. arreglo de info-system en options y mini-options. HECHO
+ 02. clientvpn añadido al firewall. HECHO
+ 01. no muestra los numeros en cli-menu. HECHO
 
  cambios fwiptables 2.12 # lineas=6
 
@@ -371,37 +376,37 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  12. añadir colour-rgb y colour-hex a cli-menu. HECHO
  11. añadir colour-rgb y colour-hex a gui-menu. HECHO
  10. cambio de nombre en glx-speed a speed-glx, en ram-speed a speed-ram, en disk-speed a speed-disk. HECHO
- 9. cambios en la ayuda help y all-help para los nuevos firewall. HECHO
- 8. cambio de nombre de rules-custom por firewall-custom. HECHO.
- 7. cambio de nombre de rules-launch por firewall-launch. HECHO
- 6. cambio de nombre de control-list por firewall-list. HECHO
- 5. cambio de nombre de control-rules por firewall-rules. HECHO
- 4. cambio de nombre de control-interface por firewall-interface. HECHO
- 3. cambio de seccion a las opciones de control-guide, eliminada la seccion contro-guide. HECHO
- 2. añade mas informacion en help y ayuda. HECHO
- 1. cambio de ejemplos en options. HECHO
+ 09. cambios en la ayuda help y all-help para los nuevos firewall. HECHO
+ 08. cambio de nombre de rules-custom por firewall-custom. HECHO.
+ 07. cambio de nombre de rules-launch por firewall-launch. HECHO
+ 06. cambio de nombre de control-list por firewall-list. HECHO
+ 05. cambio de nombre de control-rules por firewall-rules. HECHO
+ 04. cambio de nombre de control-interface por firewall-interface. HECHO
+ 03. cambio de seccion a las opciones de control-guide, eliminada la seccion contro-guide. HECHO
+ 02. añade mas informacion en help y ayuda. HECHO
+ 01. cambio de ejemplos en options. HECHO
 
  cambios fwiptables 2.11 # lineas=15
 
- 5. long-help cambiado a all-help. HECHO
- 4. añaiddo colour-hex convierte a rgb. HECHO
- 3. añadido colour-rgb convierte a hex. HECHO
- 2. arreglo al aviso de xhost en consola tty. HECHO 
- 1. cambio rules-list por control-rules. HECHO
+ 05. long-help cambiado a all-help. HECHO
+ 04. añaiddo colour-hex convierte a rgb. HECHO
+ 03. añadido colour-rgb convierte a hex. HECHO
+ 02. arreglo al aviso de xhost en consola tty. HECHO 
+ 01. cambio rules-list por control-rules. HECHO
 
  cambios fwiptables 2.10 # lineas=5
 
- 5. varios arreglos. HECHO
- 4. simplificacion de codigo. HECHO
- 3. rediseño de cli-menu. HECHO
- 2. rediseño de cli. HECHO
- 1. añadir ole-number en cli-menu y en gui-menu. HECHO
+ 05. varios arreglos. HECHO
+ 04. simplificacion de codigo. HECHO
+ 03. rediseño de cli-menu. HECHO
+ 02. rediseño de cli. HECHO
+ 01. añadir ole-number en cli-menu y en gui-menu. HECHO
  
  cambios fwiptables 2.09 # lineas=5
 
- 3. añadido ole-number con txt con cli y con gui. HECHO
- 2. word-ole renombrado a ole-word. HECHO
- 1. algunos arreglos menores. HECHO
+ 03. añadido ole-number con txt con cli y con gui. HECHO
+ 02. word-ole renombrado a ole-word. HECHO
+ 01. algunos arreglos menores. HECHO
 
  cambios fwiptables 2.08 # lineas=3
 
@@ -424,624 +429,65 @@ sum ideas to fwiptables@gmx.com : tool-snort.
 
  cambios fwiptables 2.07 # lineas=16
 
- 8. algunos cambios de apariencia. HECHO
- 7. show-options añadido. HECHO
- 6. tool-options añadido. HECHO
- 5. firewall-options añadido. HECHO
- 4. juego wordle con el nombre word-ole para tool-game. HECHO
- 3. nuevo grupo de herramientas tool-game. HECHO
- 2. rediseñado blacklist-list info para carga mas fluida. HECHO
- 1. simplificacion de genfiles para mas velocidad de ejecucion. HECHO
+ 08. algunos cambios de apariencia. HECHO
+ 07. show-options añadido. HECHO
+ 06. tool-options añadido. HECHO
+ 05. firewall-options añadido. HECHO
+ 04. juego wordle con el nombre word-ole para tool-game. HECHO
+ 03. nuevo grupo de herramientas tool-game. HECHO
+ 02. rediseñado blacklist-list info para carga mas fluida. HECHO
+ 01. simplificacion de genfiles para mas velocidad de ejecucion. HECHO
 
  cambios fwiptables 2.06 # lineas=8
 
- 3. cambio de apariencia en mini-options y options/full-otpions. HECHO
- 2. cabeceras en blacklist. HECHO
- 1. cambio de apariencia en help, ayuda y long-help. HECHO
+ 03. cambio de apariencia en mini-options y options/full-otpions. HECHO
+ 02. cabeceras en blacklist. HECHO
+ 01. cambio de apariencia en help, ayuda y long-help. HECHO
 
  cambios fwiptables 2.05 # lineas=3
 
- 5. help y ayuda simplificados. HECHO
- 4. gamesudp: añade cliente para ftp,ftp-data,ftps,ftps-data. HECHO
- 3. añadido arptables a eraserules. HECHO
- 2. allow_header_notice siplificada, reunificada y desactivada por defecto. HECHO
- 1. mini-options y options simplificado. HECHO
+ 05. help y ayuda simplificados. HECHO
+ 04. gamesudp: añade cliente para ftp,ftp-data,ftps,ftps-data. HECHO
+ 03. añadido arptables a eraserules. HECHO
+ 02. allow_header_notice siplificada, reunificada y desactivada por defecto. HECHO
+ 01. mini-options y options simplificado. HECHO
 
  cambios fwiptables 2.04 # lineas=5
 
- 8. seguir traduciendo nueva-completa-config. HECHO
- 7. mini-options por defecto al lanzar fwiptables. HECHO
- 6. basic-options cambiado a mini-options. HECHO
- 5. añadir traceicmp-ip4 traceicmp-ip6.  HECHO
- 4. log-last: ultimas 50 lineas de /var/log/fwiptables. HECHO
- 3. simplifica salida del comando de load y lanzar cortafuegos. HECHO
- 2. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config. HECHO
- 1. simplificacion de cabeceras en texto, cli y gui. HECHO
+ 08. seguir traduciendo nueva-completa-config. HECHO
+ 07. mini-options por defecto al lanzar fwiptables. HECHO
+ 06. basic-options cambiado a mini-options. HECHO
+ 05. añadir traceicmp-ip4 traceicmp-ip6.  HECHO
+ 04. log-last: ultimas 50 lineas de /var/log/fwiptables. HECHO
+ 03. simplifica salida del comando de load y lanzar cortafuegos. HECHO
+ 02. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config. HECHO
+ 01. simplificacion de cabeceras en texto, cli y gui. HECHO
 
  cambios fwiptables 2.03 # lineas=8
 
- 4. list-alias: actualizado. HECHO
- 3. info-system: muestra los discos con lsblk. HECHO
- 2. netstat-nat: arreglo. HECHO
- 1. disk-speed: antes llamado disc-speed. HECHO
+ 04. list-alias: actualizado. HECHO
+ 03. info-system: muestra los discos con lsblk. HECHO
+ 02. netstat-nat: arreglo. HECHO
+ 01. disk-speed: antes llamado disc-speed. HECHO
 
  cambios fwiptables 2.02 # lineas=4
 
- 4. blacklist-off: No cambia el hosntame. HECHO
- 3. info-nodes: ahora esta en gui-menu. HECHO
- 2. info-route: cambia el nombre route a info-route. HECHO
- 1. code: ahora esta en gui-menu, secction tool-dev. HECHO
+ 04. blacklist-off: No cambia el hosntame. HECHO
+ 03. info-nodes: ahora esta en gui-menu. HECHO
+ 02. info-route: cambia el nombre route a info-route. HECHO
+ 01. code: ahora esta en gui-menu, secction tool-dev. HECHO
 
  cambios fwiptables 2.01 # lineas=4
 
- 2. simplicada cabecera. HECHO
- 1. custom-rules: renombrado a tool-rules. HECHO
+ 02. simplicada cabecera. HECHO
+ 01. custom-rules: renombrado a tool-rules. HECHO
 
  cambios fwiptables 2.00 # lineas=2
 
- 1. blacklist-off: hostname configurada a localhost.localdomain para trabajar. HECHO
+ 01. blacklist-off: hostname configurada a localhost.localdomain para trabajar. HECHO
 
- cambios fwiptables 1.99 # lineas=1
 
- 5. head_wiating: variable insertada. HECHO
- 4. basic-options: actualizada. HECHO
- 3. default_option: cambiada a whithout_option. HECHO
- 2. arp-scan: cambiado a info-nodes. HECHO
- 1. arp-scan: corregido. HECHO
 
- cambios fwiptables 1.98 # lineas=5
-
- 2. info: remodelada. HECHO
- 1. basic-options: remodelada. HECHO
-
- cambios fwiptables 1.97 # lineas=2
-
- 8. blacklist: introducir en gui-menu. HECHO
- 7. show-hardware: introducir en gui-menu. HECHO
- 6. tool-forward: reordenar en gui-menu. HECHO
- 5. lpinfo: introducir en text cli and gui. HECHO
- 4. show-hardware: introducir en cli-menu. HECHO
- 3. blacklist: introducir en cli-menu. HECHO
- 2. tool-forward: ordenador en cli-menu. HECHO
- 1. info-listen: introducir en text cli and gui. HECHO
-
- cambios fwiptables 1.96 # lineas=8
-
- 5. show-hardware: introducir grupo y en las ayudas. HECHO
- 4. launch-custom: sustituye a tool-custom. HECHO
- 3. log-sshd: cambiado a log-ssh. HECHO
- 2. info-proxy: documentarlo. HECHO
- 1. show-hardware: lsblk lsusb lspci lscpu lsgpu lshw. HECHO.
-
- cambios fwiptables 1.95 # lineas=5
-
- 8. info-proxy: informa del uso del proxy, tambien informa en info-net. HECHO
- 7. blacklist documentado en fwiptables. HECHO
- 6. favorite_text_browser sin elinks, alugnos de -dump pasado a -source. HECHO
- 5. blacklist-list: lista las opciones y los blacklist a elegir. HECHO
- 4. blacklist-off: activa el basico /etc/hosts. HECHO
- 3. blacklist-on: activa una blacklist de /etc/hosts. HECHO
- 2  code: muestra el codigo fuente de una opcion. HECHO
- 1. code: inicialmente source, cambia nombre a code. HECHO
-
- cambios fwiptables 1.94 # lineas=8
-
- 2. arreglo en install. HECHO
- 1. arreglo en upgrade. HECHO
-
- cambios fwiptables 1.93 # lineas=2
-
- 4. source: habilitar para ver codigo fuente de las rutinas. HECHO
- 3. funcionamiento de intro e install. HECHO
- 2. manejo de si esta actualizado o no con cmp. HECHO
- 1. limpieza de codigo. HECHO
-
- cambios fwiptables 1.92 # lineas=4
-
- 4. arreglo para intentar cerrar gui-menu al terminar. HECHO
- 3. arreglo en install. HECHO
- 2. info: cabecera en info. HECHO
- 1. speed-ip4 y speed-ip6: variable para el puerto y comprobarlo para un futuro. HECHO
-
- cambios fwiptables 1.91 # lineas=4
-
- 4. info: actualizacion. HECHO
- 3. info-net: otros cambios en info-net. HECHO
- 2. path de directorios  mas completo para fwiptables. HECHO
- 1. ACTUALIZACION IMPORTANTE: cambia which por "command -v". HECHO
-
- cambios fwiptables 1.90 # lineas=4
-
- 2. new default_security en caso de fallo de definicion de default-option. HECHO
- 1. cambio en default-option para permitir list o list6 por ejemplo. HECHO
-
- cambios fwiptables 1.89 # lineas=2
-
- 10. eliminacion de log-sudo. HECHO
- 9. eliminacion de "[ head ]" en la cabecera. HECHO.
- 8. cambio en tool:udp/tcp/icmp para cli-menu. HECHO
- 7. cambio en trace-ip4 a tracetcp-ip4 y trace-ip6 a tracetcp-ip6. HECHO
- 6. cambio en tool:udp/tcp/icmp para shell y para gui-menu. HECHO
- 5. arreglo en gui-menu-tool-custom. HECHO
- 4. resolveip: incluido en basic-options y full-options. HECHO
- 3. dig: añadido. HECHO
- 2. gui-menu: despues de una opcion volver a el mismo submenu. HECHO
- 1. net-info: modificar obtencion de ip para aclarar en gui. HECHO
-
- cambios fwiptables 1.88 # lineas=10
-
- 5. cambios en info-net. HECHO
- 4. ntpdate muestra vieja y nueva fecha ademas de actualizar fecha. HECHO
- 3. modificar cabecera de info. HECHO
- 2. añadir variable favorite_radio_command. HECHO
- 1. añadir tool-dev a cli-menu. HECHO
-
- cambios fwiptables 1.87 # lineas=5
-
- 7. pequeño arreglo en "names". HECHO
- 6. arreglo en bash_completion y profile.d pasando la extension a .sh. HECHO
- 5. pequeños arreglos de arptables y ebtables en "save" y "load". HECHO
- 4. añadir grupo tool-dev a gui-menu. HECHO
- 3. modificar gamesudp para que tenga acceso a ping y para reordenar reglas. HECHO
- 2. poner info de grupo en gui-menu. HECHO
- 1. poner info de grupo en cli-menu. HECHO
-
- cambios fwiptables 1.86 # lineas=7
-
- 4. poner la palabra info en basic-options y full-options. HECHO
- 3. mover dev-versions, dev-cambios, new-versions al grupo tool-dev. HECHO
- 2. añadir dev-versions, dev-cambios a full-options. HECHO
- 1. rediseñar serverweb, y añadir serverssh, serverprint, a launch-rules. HECHO
-
- cambios fwiptables 1.85 # lineas=4
-
- 5. al igual que /etc/bash_completon.d/ hacer /etc/profile.d/fwiptables. HECHO
- 4. comprimir cabeceras en caso posible. HECHO
- 3. aclarar los forward y ponerles prefijo list, ejemplo: list-forward. HECHO
- 2. añadir upgrade a mensaje de  install. HECHO
- 1. cambiar arp-scan por arp-lan. HECHO
-
- cambios fwiptables 1.84 # lineas=5
-
- cambios and ideas working in versions
-
- CHANGES LIST from version v1.84
+ CHANGES LIST from version v2
 #########################################################################
 
- 3. nuevos añadidos a opcion fwiptables-launch a opcion readme y a opcion leeme.
- 2. nuevos añadidos a cli-menu y a gui-menu.
- 1. añadidos server-ftp server-mail server-news client-ftp client-mail client-news client-freeciv.
-
- cambios en desarrollo: cambios fwiptables 3.10 lineas=
-
- 8. pequeños cambios de apariencia. HECHO
- 7. cambiado el nombre de offline a off-line, mantiene alias a offline. HECHO
- 6. Los nuevos server añadir a la opcion fwiptables-launch a la opcion readme y a la opcion leeme. HECHO
- 5. Los nuevos server insertar en cli-menu y en gui-menu. HECHO
- 4. añadido server-sql. HECHO
- 3. añadido server-asterisk. HECHO
- 2. añadido server-mumble. HECHO
- 1. añadido server-teamspeak. HECHO
-
- cambios fwiptables 3.09 # lineas=8 
-
- 8. pequeño reordenamieto del script. HECHO
- 7. añadido clean-tmp para limpiar los archivos temporales. HECHO
- 6. arreglo de acbecera en gui-shell. HECHO
- 5. arreglos de help e info en gui-menu. HECHO
- 4. arreglos de caberceras en gui-menu. HECHO
- 3. cambio de orden en la prioridad de las variables al principio del script, mas ordenado. HECHO
- 2. cambiado el directorio de temporal de /tmp/fwiptables-tmp a  /root/.fwiptables-tmp, facil de cambiar si es necesario. HECHO
- 1. mejorado sistema de privilegio de administrador root. HECHO 
-
- cambios fwiptables 3.08 # lineas=8
-
- 3. pequeños cambios en readme, leeme, y notes, para markdown. HECHO
- 2. pequeño cambio en intro. HECHO
- 1. arreglo y vuelta a modificar modify-config, corregido. HECHO
-
- cambios fwiptables 3.07 # lineas=3
-
- 3. corregidos los code opciones. HECHO
- 2. arreglo en modify-config. HECHO
- 1. arreglo de anomalia en gui list. HECHO
-
- cambios fwiptables 3.06 # lineas=3
-
- 3. salida -tor sigue estando pero se oculta en el mini-options y en full-options(options). HECHO
- 2. cambios de codigo para organizar los path y esten mas claros, los fijos y temporales. HECHO
- 1. game-westnoth cambiado a game-wesnoth, corrigiendo el nombre a su correcto. HECHO
-
- cambios fwiptables 3.05 # lineas=3
-
- 4. arreglo de cambios en los ejemplos otra vez mas. HECHO
- 3. ordenar al principio las variabes de archivos y directorios. HECHO
- 2. eliminar funcionalidad exclusiva de rst. HECHO
- 1. arreglo en los ejemplos some-examples.  HECHO
-
- cambios fwiptables 3.04 # lineas=4
-
- 4. cambios en los ejemplos. HECHO
- 3. cambios en uninstall. HECHO
- 2. arreglos en info output ayuda con salida texto rst. HECHO
- 1. arreglos en help output ayuda con salida texto plano. HECHO
-
- cambios fwiptables 3.03 # lineas=4
- 
- 8. rediseño de -rst para todas las opciones especificadas y ahora es convertido a -help. HECHO
- 7. resolv.conf añadido a gui-menu. HECHO
- 6. se pueden espificar ahora host para ping y traceroute. HECHO
- 5. mini-options mas resumido. HECHO
- 4. arreglos en sudo-list. HECHO
- 3. añadido ntpdate a cli-menu y gui-menu. HECHO
- 2. cambios en sudo-list. HECHO
- 1. añadido intro en cli-menu y gui-menu. HECHO
-
- cambios fwiptables 3.02 # lineas=8
-
- 2. arreglos en /etc/sudoers.d/fwiptables-cmd
- 1. pequeños arreglos varios
-
- cambios fwiptables 3.01 # lineas=2
-
- 2. cambios para 3.00
- 1. cambios de codigos de variables
-
- cambios fwiptables 3.00 # lineas=2
-
- 5. cambio de variables internas de $fwiptables y similares. HECHO
- 4. arreglos para funcionar en -txt  como wizard, ole y colour. HECHO
- 3. cambio de archivos de configuracion a /etc/fwiptables-default /etc/fwiptables-config /etc/fwiptables-fwrecover. HECHO
- 2. no necesita consola gui-shell gui-menu y cli-menu al tener xhost en sus ejecutables desktop. HECHO
- 1. comprobar examples en gui menu.
-
- cambios fwiptables 2.23 # lineas=5
-
- 12- añadido desinstalador. HECHO
- 11- arreglos en ole-domain. HECHO
- 10- rehecho opcion resolv.conf para monstrar mas claro los tres resolv.conf incluyendo a head y tail. HECHO
- 9- añadidos iconos .desktop para fwiptables gui-shell y gui-menu y gui-cli en /usr/share/applications categoria System. HECHO
- 8- list-allrules almohadillas para el titulo al listar cada tabla de reglas. HECHO
- 7- instalador instala fwiptables-gui-menu fwiptables-gui-shell y fwiptables-gui-cli. HECHO
- 6- pequeños cambios de apariencia. HECHO
- 5- firewall client-torrent añadido. HECHO
- 4- firewall game-minetest añadido. HECHO
- 3- firewall games-udp cambiado a games-shooter. HECHO
- 2- option list-config cambiado a names-config. HECHO
- 1- option examples-config cambiado de nombre a config-examples. HECHO
-
- cambios fwiptables 2.22 # lineas=12
-
- 4. firewall por defecto, simplificando su codigo, ahorrando codigo. HECHO
- 3. añadido help-options. HECHO 
- 2. alias ls, ls4  y ls6 para list y list6 añadido. HECHO
- 1. firewall para la batalla por Westnoth añadido en cli-menu y gui-menu tambien. HECHO.
-
- cambios fwiptables 2.21 # lineas=4
-
- 6. readaptar el final de ayuda y de help. HECHO
- 5. cambia some-examples por config-examples. HECHO
- 4. añadir las informaciones relativas a -web y a .rst a las ayudas y los grupos. HECHO
- 3. todos los show-* pasados a markdown. HECHO
- 2. añadido output rst para salidas con rst formato. HECHO
- 1. todos los tool-* pasados a markdown. HECHO
-
- cambios fwiptables 2.20 # lineas=6
- 
- 11. desaraparecen las rallas y se convierten en espacios. HECHO
- 10. web output añadido. HECHO.
- 9. ntpdate corregido. HECHO
- 8. group-options y todos los grupos principales con markdown.HECHO
- 7. Preparando mini-options y full-options para soporte de markdown. HECHO
- 6. preparando options para soporte de markdown. HECHO
- 5. preparando help  para soporte de markdown. HECHO
- 4. preparando ayuda para soporte de markdown. HECHO
- 3. ahora aparece ss en tool-sockets. HECHO
- 2. pequeños cambios de codigo. HECHO
- 1. sentlog ahora tiene de alias filelog. HECHO
-
- cambios fwiptables 2.19 # lineas=11
-
- 6. server https por udp (http 2) añadido a server-web y a server lamp. HECHO
- 5. añadido server-lamp. HECHO
- 4. añadido ole-domain en games. HECHO
- 3. cambios en games modificado ole-word y ole-number y actualizados. HECHO
- 2. cambio en ole-word para su funcionalidad con cualquier browser. HECHO
- 1. pequeños cambios en intro. HECHO
-
- cambios fwiptables 2.18 # lineas=6
-
- 3. offline tiene ahora DROP en FORWARD. HECHO
- 2. algun alias nuevo mas: off-line y erase-rules. HECHO
- 1. pequeños cambios visuales pasando a minusuculas y simpliflicando. HECHO
-
- cambios fwiptables 2.17 # lineas=3
-
- 5. añadido -tor en output-interface. HECHO
- 4. corregido ntpdate. HECHO
- 3. cli para radio con otro enlace. HECHO
- 2. gui para radio con otro enlcae. HECHO
- 1. radio cambiado a radio-mp3, se le puede indicar otra host directamente. HECHO
-
- cambios fwiptables 2.16 # lineas=5
-
- 13. algunos alias de firewall predefinidos para viejos nombres. HECHO
- 12. Actualizado  los firewall gui y cli añadiendo los que faltaban. HECHO
- 11. añadido lan-vpn. HECHO
- 10. tor-browser es ahora client-tor. HECHO
- 9.  webonly-tor ahora es lan-tor. HECHO
- 8.  simplifacion de upgrade. HECHO
- 7.  ayuda y help para status. HECHO
- 6.  status: lista ip4 y/o ip6 cuando hay default ruta a un dispositivo. HECHO
- 4.  pequeño cambio en info-net. HECHO
- 3.  opcional salida -tor añadido. HECHO
- 2.  firewall webonly-tor añadido. HECHO
- 1.  firewall tor-browser cambiado a client-tor. HECHO
-
- cambios fwiptables 2.15 # lineas=13
-
- 2. pasa mayusculas a minisculas en la informacion ofrecida. HECHO
- 1. alias a los viejos firewall predefinidos. HECHO
-
- cambios fwiptables 2.14 # lineas=2
-
- 6. cambio de nombre de firewall predifinidos. HECHO
- 5. torbrowser es un nuevo firewall predefinido. HECHO 
- 4. resolv.conf pequeños cambios. HECHO
- 3. speed-ip4 y speed-ip6 pequeños cambios mas. HECHO 
- 2. speed-ip4 y speed-ip6 cambiado el puerto para que funcione bien. HECHO
- 1. pequeños cambios de apariencia. HECHO
-
- cambios fwiptables 2.13 # lineas=6
-
- 6. web-cert obtiene el certificado web ssl de una web con puerto 443. HECHO
- 5. la opcion code muestra ahora las posibles subopciones. HECHO
- 4. cambio de nombre en fw-autolog a autolog  y fw-sendedlog a sentlog. HECHO
- 3. arreglo de info-system en options y mini-options. HECHO
- 2. clientvpn añadido al firewall. HECHO
- 1. no muestra los numeros en cli-menu. HECHO
-
- cambios fwiptables 2.12 # lineas=6
-
- 15. resolv.conf incluye a resolv.conf a resolv.conf.head y a resolv.conf.tail. HECHO
- 14. actualizacion de gui-menu. HECHO
- 13. actualizacion de cli-menu. HECHO
- 12. añadir colour-rgb y colour-hex a cli-menu. HECHO
- 11. añadir colour-rgb y colour-hex a gui-menu. HECHO
- 10. cambio de nombre en glx-speed a speed-glx, en ram-speed a speed-ram, en disk-speed a speed-disk. HECHO
- 9. cambios en la ayuda help y all-help para los nuevos firewall. HECHO
- 8. cambio de nombre de rules-custom por firewall-custom. HECHO.
- 7. cambio de nombre de rules-launch por firewall-launch. HECHO
- 6. cambio de nombre de control-list por firewall-list. HECHO
- 5. cambio de nombre de control-rules por firewall-rules. HECHO
- 4. cambio de nombre de control-interface por firewall-interface. HECHO
- 3. cambio de seccion a las opciones de control-guide, eliminada la seccion contro-guide. HECHO
- 2. añade mas informacion en help y ayuda. HECHO
- 1. cambio de ejemplos en options. HECHO
-
- cambios fwiptables 2.11 # lineas=15
-
- 5. long-help cambiado a all-help. HECHO
- 4. añaiddo colour-hex convierte a rgb. HECHO
- 3. añadido colour-rgb convierte a hex. HECHO
- 2. arreglo al aviso de xhost en consola tty. HECHO 
- 1. cambio rules-list por control-rules. HECHO
-
- cambios fwiptables 2.10 # lineas=5
-
- 5. varios arreglos. HECHO
- 4. simplificacion de codigo. HECHO
- 3. rediseño de cli-menu. HECHO
- 2. rediseño de cli. HECHO
- 1. añadir ole-number en cli-menu y en gui-menu. HECHO
- 
- cambios fwiptables 2.09 # lineas=5
-
- 3. añadido ole-number con txt con cli y con gui. HECHO
- 2. word-ole renombrado a ole-word. HECHO
- 1. algunos arreglos menores. HECHO
-
- cambios fwiptables 2.08 # lineas=3
-
- 16. gui-menu ahora menos recursivo. HECHO
- 15. word-ole en gui-menu. HECHO
- 14. word-ole en cli-menu. HECHO
- 13. gui para word-ole. HECHO
- 12. cli para word-ole. HECHO
- 11. unicamente autorizacion server interpretado en xhost +SI:localuser:root resto deprecados. HECHO
- 10. show-default y modify-default movidos a tool-etc. HECHO
- 09. dos archivos logs. uno registra cabecera, y el otro para -log. HECHO
- 08. cambiar -text por -txt. HECHO
- 07. añadir word-ole a cli-menu. HECHO
- 06. mejorar word-ole. HECHO
- 05. eliminacion de comentarios sobrantes de el codigo fuente. HECHO
- 04. cambios en names. HECHO
- 03. cambios en list-config. HECHO
- 02. politica de firewall predefinidos para forward es denegar. HECHO
- 01. añadir -cli opcion. HECHO
-
- cambios fwiptables 2.07 # lineas=16
-
- 8. algunos cambios de apariencia. HECHO
- 7. show-options añadido. HECHO
- 6. tool-options añadido. HECHO
- 5. firewall-options añadido. HECHO
- 4. juego wordle con el nombre word-ole para tool-game. HECHO
- 3. nuevo grupo de herramientas tool-game. HECHO
- 2. rediseñado blacklist-list info para carga mas fluida. HECHO
- 1. simplificacion de genfiles para mas velocidad de ejecucion. HECHO
-
- cambios fwiptables 2.06 # lineas=8
-
- 3. cambio de apariencia en mini-options y options/full-otpions. HECHO
- 2. cabeceras en blacklist. HECHO
- 1. cambio de apariencia en help, ayuda y long-help. HECHO
-
- cambios fwiptables 2.05 # lineas=3
-
- 5. help y ayuda simplificados. HECHO
- 4. gamesudp: añade cliente para ftp,ftp-data,ftps,ftps-data. HECHO
- 3. añadido arptables a eraserules. HECHO
- 2. allow_header_notice siplificada, reunificada y desactivada por defecto. HECHO
- 1. mini-options y options simplificado. HECHO
-
- cambios fwiptables 2.04 # lineas=5
-
- 8. seguir traduciendo nueva-completa-config. HECHO
- 7. mini-options por defecto al lanzar fwiptables. HECHO
- 6. basic-options cambiado a mini-options. HECHO
- 5. añadir traceicmp-ip4 traceicmp-ip6.  HECHO
- 4. log-last: ultimas 50 lineas de /var/log/fwiptables. HECHO
- 3. simplifica salida del comando de load y lanzar cortafuegos. HECHO
- 2. separate_por_rules: posibilita separar reglas en wizard completo y new/nuevo completo config. HECHO
- 1. simplificacion de cabeceras en texto, cli y gui. HECHO
-
- cambios fwiptables 2.03 # lineas=8
-
- 4. list-alias: actualizado. HECHO
- 3. info-system: muestra los discos con lsblk. HECHO
- 2. netstat-nat: arreglo. HECHO
- 1. disk-speed: antes llamado disc-speed. HECHO
-
- cambios fwiptables 2.02 # lineas=4
-
- 4. blacklist-off: No cambia el hosntame. HECHO
- 3. info-nodes: ahora esta en gui-menu. HECHO
- 2. info-route: cambia el nombre route a info-route. HECHO
- 1. code: ahora esta en gui-menu, secction tool-dev. HECHO
-
- cambios fwiptables 2.01 # lineas=4
-
- 2. simplicada cabecera. HECHO
- 1. custom-rules: renombrado a tool-rules. HECHO
-
- cambios fwiptables 2.00 # lineas=2
-
- 1. blacklist-off: hostname configurada a localhost.localdomain para trabajar. HECHO
-
- cambios fwiptables 1.99 # lineas=1
-
- 5. head_wiating: variable insertada. HECHO
- 4. basic-options: actualizada. HECHO
- 3. default_option: cambiada a whithout_option. HECHO
- 2. arp-scan: cambiado a info-nodes. HECHO
- 1. arp-scan: corregido. HECHO
-
- cambios fwiptables 1.98 # lineas=5
-
- 2. info: remodelada. HECHO
- 1. basic-options: remodelada. HECHO
-
- cambios fwiptables 1.97 # lineas=2
-
- 8. blacklist: introducir en gui-menu. HECHO
- 7. show-hardware: introducir en gui-menu. HECHO
- 6. tool-forward: reordenar en gui-menu. HECHO
- 5. lpinfo: introducir en text cli and gui. HECHO
- 4. show-hardware: introducir en cli-menu. HECHO
- 3. blacklist: introducir en cli-menu. HECHO
- 2. tool-forward: ordenador en cli-menu. HECHO
- 1. info-listen: introducir en text cli and gui. HECHO
-
- cambios fwiptables 1.96 # lineas=8
-
- 5. show-hardware: introducir grupo y en las ayudas. HECHO
- 4. launch-custom: sustituye a tool-custom. HECHO
- 3. log-sshd: cambiado a log-ssh. HECHO
- 2. info-proxy: documentarlo. HECHO
- 1. show-hardware: lsblk lsusb lspci lscpu lsgpu lshw. HECHO.
-
- cambios fwiptables 1.95 # lineas=5
-
- 8. info-proxy: informa del uso del proxy, tambien informa en info-net. HECHO
- 7. blacklist documentado en fwiptables. HECHO
- 6. favorite_text_browser sin elinks, alugnos de -dump pasado a -source. HECHO
- 5. blacklist-list: lista las opciones y los blacklist a elegir. HECHO
- 4. blacklist-off: activa el basico /etc/hosts. HECHO
- 3. blacklist-on: activa una blacklist de /etc/hosts. HECHO
- 2  code: muestra el codigo fuente de una opcion. HECHO
- 1. code: inicialmente source, cambia nombre a code. HECHO
-
- cambios fwiptables 1.94 # lineas=8
-
- 2. arreglo en install. HECHO
- 1. arreglo en upgrade. HECHO
-
- cambios fwiptables 1.93 # lineas=2
-
- 4. source: habilitar para ver codigo fuente de las rutinas. HECHO
- 3. funcionamiento de intro e install. HECHO
- 2. manejo de si esta actualizado o no con cmp. HECHO
- 1. limpieza de codigo. HECHO
-
- cambios fwiptables 1.92 # lineas=4
-
- 4. arreglo para intentar cerrar gui-menu al terminar. HECHO
- 3. arreglo en install. HECHO
- 2. info: cabecera en info. HECHO
- 1. speed-ip4 y speed-ip6: variable para el puerto y comprobarlo para un futuro. HECHO
-
- cambios fwiptables 1.91 # lineas=4
-
- 4. info: actualizacion. HECHO
- 3. info-net: otros cambios en info-net. HECHO
- 2. path de directorios  mas completo para fwiptables. HECHO
- 1. ACTUALIZACION IMPORTANTE: cambia which por "command -v". HECHO
-
- cambios fwiptables 1.90 # lineas=4
-
- 2. new default_security en caso de fallo de definicion de default-option. HECHO
- 1. cambio en default-option para permitir list o list6 por ejemplo. HECHO
-
- cambios fwiptables 1.89 # lineas=2
-
- 10. eliminacion de log-sudo. HECHO
- 9. eliminacion de "[ head ]" en la cabecera. HECHO.
- 8. cambio en tool:udp/tcp/icmp para cli-menu. HECHO
- 7. cambio en trace-ip4 a tracetcp-ip4 y trace-ip6 a tracetcp-ip6. HECHO
- 6. cambio en tool:udp/tcp/icmp para shell y para gui-menu. HECHO
- 5. arreglo en gui-menu-tool-custom. HECHO
- 4. resolveip: incluido en basic-options y full-options. HECHO
- 3. dig: añadido. HECHO
- 2. gui-menu: despues de una opcion volver a el mismo submenu. HECHO
- 1. net-info: modificar obtencion de ip para aclarar en gui. HECHO
-
- cambios fwiptables 1.88 # lineas=10
-
- 5. cambios en info-net. HECHO
- 4. ntpdate muestra vieja y nueva fecha ademas de actualizar fecha. HECHO
- 3. modificar cabecera de info. HECHO
- 2. añadir variable favorite_radio_command. HECHO
- 1. añadir tool-dev a cli-menu. HECHO
-
- cambios fwiptables 1.87 # lineas=5
-
- 7. pequeño arreglo en "names". HECHO
- 6. arreglo en bash_completion y profile.d pasando la extension a .sh. HECHO
- 5. pequeños arreglos de arptables y ebtables en "save" y "load". HECHO
- 4. añadir grupo tool-dev a gui-menu. HECHO
- 3. modificar gamesudp para que tenga acceso a ping y para reordenar reglas. HECHO
- 2. poner info de grupo en gui-menu. HECHO
- 1. poner info de grupo en cli-menu. HECHO
-
- cambios fwiptables 1.86 # lineas=7
-
- 4. poner la palabra info en basic-options y full-options. HECHO
- 3. mover dev-versions, dev-cambios, new-versions al grupo tool-dev. HECHO
- 2. añadir dev-versions, dev-cambios a full-options. HECHO
- 1. rediseñar serverweb, y añadir serverssh, serverprint, a launch-rules. HECHO
-
- cambios fwiptables 1.85 # lineas=4
-
- 5. al igual que /etc/bash_completon.d/ hacer /etc/profile.d/fwiptables. HECHO
- 4. comprimir cabeceras en caso posible. HECHO
- 3. aclarar los forward y ponerles prefijo list, ejemplo: list-forward. HECHO
- 2. añadir upgrade a mensaje de  install. HECHO
- 1. cambiar arp-scan por arp-lan. HECHO
-
- cambios fwiptables 1.84 # lineas=5
-
- cambios and ideas working in versions
-
- CHANGES LIST from version v1.84
-#########################################################################
