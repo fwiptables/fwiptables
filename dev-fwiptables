@@ -2420,7 +2420,7 @@ echo "$text_md                        client-ftp client-squid lan-tor lan-vpn sh
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
 echo "$text_md"
-echo "$text_md      | Group |  firewall-options     tool-options        show-options                           "
+echo "$text_md   | Group | output-interface | firewall-options | tool-options | show-options | help-options "
 exit ; fi
 ####
 ####
@@ -2452,7 +2452,7 @@ echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off 
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
-echo "$text_md  | Group |  firewall-options     tool-options        show-options                    "
+echo "$text_md    | Group | output-interface | firewall-options | tool-options | show-options | help-options "
 exit ; fi
 ####
 ####
@@ -2474,7 +2474,7 @@ echo "$text_md                        config-eng config-spa license             
 echo "$text_md    help-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
 echo "$text_md"
-echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
+echo "$text_md      | Group | output-interface | firewall-options | tool-options | show-options | help-options "
 exit ; fi
 ####
 ####
@@ -2491,7 +2491,7 @@ echo "$text_md  help-about         |  about version depends config-eng config-sp
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$text_md"
-echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
+echo "$text_md      | Group | output-interface | firewall-options | tool-options | show-options | help-options "
 exit ; fi
 ####
 ####
