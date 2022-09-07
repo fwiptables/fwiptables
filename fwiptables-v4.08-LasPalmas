@@ -2653,10 +2653,10 @@ default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
 echo "$tab"
 echo "$tab [ System files ]"
-ls -1 $directory_config/ | $command_grep -E -i $default_files_cfg
+$command_ls -1 $directory_config/ | $command_grep -E -i $default_files_cfg
 echo "$tab"
 echo "$tab [ User files ]"
-ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
+$command_ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
 echo "$tab"
 echo "$tab [ OK CFG FILES NAMES ]"
 echo $footer_lineal
@@ -4188,7 +4188,8 @@ case "$selection" in
 "server-mumble") $cmd_fwiptables -gui server-mumble ; $cmd_fwiptables gui list ;;
 "server-sql") $cmd_fwiptables -gui server-sql ; $cmd_fwiptables gui list ;;
 "server-asterisk") $cmd_fwiptables -gui server-asterisk ; $cmd_fwiptables gui list ;;
-"custom cfg") archivo="$($command_zenity  --entry $graphic_dimension --title "[Launch Custom]" --text="$(ls -1 $directory_config)")" ; 
+"custom cfg") archivo="$($command_zenity  --entry $graphic_dimension \
+--title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables gui list ;;
 esac
 ####
@@ -5456,7 +5457,7 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_fwiptables load 
 0403) clear ; $cmd_fwiptables cli wizard-full ; $cmd_fwiptables txt list ;;
 0404) clear ; $cmd_fwiptables cli off-line ; $cmd_fwiptables txt list ;;
 0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables txt list  ;;
-0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
+0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
 0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables txt list  ;; 
 0408) clear ; $cmd_fwiptables cli game-wesnoth ; $cmd_fwiptables txt list ;;
@@ -5483,26 +5484,30 @@ archivo=$(echo $archivo | $command_sed s/\\///g) ;  clear ; $cmd_fwiptables cust
 0429) clear ; $cmd_fwiptables cli server-sql ; $cmd_fwiptables txt list ;;
 0430) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables txt list ;;
 0501) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
---inputbox "$(ls $directory_config)" 0 0)"
+--inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables new-full-config $archivo ;;
 0502) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
---inputbox "$(ls $directory_config)" 0 0)"
+--inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables nueva-completa-config $archivo ;;
-0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables new-mini-config $archivo ;;
-0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables nueva-mini-config $archivo ;;
-0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_fwiptables custom $archivo ]";;
-0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
+0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" \
+--inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables modify-config $archivo ;;
-0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
+0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
 0508) clear ; $cmd_fwiptables cli names-config ;;
@@ -7087,7 +7092,7 @@ echo "$header_ok [ $first_option ]  [ Add shield ssh ] || ||"
 ####
 ####
 $cmd_fwiptables save no_default_tmp &> /dev/null
-for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
+for shield in $($command_ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
 do $command_grep -E -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
@@ -7151,7 +7156,7 @@ exit ; fi
 if [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset shield ssh ] || ||"
 $cmd_fwiptables save no_default_tmp &> /dev/null
-for shield in $(ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
+for shield in $($command_ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
 do $command_grep -E -v "shield|SHIELD" $shield >> $shield-less
 mv $shield-less $shield &> /dev/null
 done ; $cmd_fwiptables load no_default_tmp &> /dev/null ; 
@@ -7490,7 +7495,7 @@ echo "$tab $tab [English:] [File list with iptables format in folder:] [$directo
 echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
 echo 
 echo " [ info ] [ Listing firewall names ]"
-ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
+$command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
 $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
 $command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
 echo
@@ -7645,13 +7650,13 @@ $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6
 ####
 echo " [ ok ] [ FIREWALL SAVED ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
-ls -l $directory_fwrecover/$archivofin-arptables; fi
+$command_ls -l $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
-ls -l $directory_fwrecover/$archivofin-ebtables; fi
-ls -l $directory_fwrecover/$archivofin-nft-ipv4
-ls -l $directory_fwrecover/$archivofin-nft-ipv6
-ls -l $directory_fwrecover/$archivofin-legacy-ipv4
-ls -l $directory_fwrecover/$archivofin-legacy-ipv6
+$command_ls -l $directory_fwrecover/$archivofin-ebtables; fi
+$command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
+$command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
+$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
+$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
 echo " [ ok ] [ firewall listed ] [ $archivofin ]"
 exit; fi
 ####
@@ -7669,12 +7674,12 @@ case "$second_option" in
 "$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
-ls -l $directory_fwrecover/$archivofin-arptables
-ls -l $directory_fwrecover/$archivofin-ebtables
-ls -l $directory_fwrecover/$archivofin-nft-ipv4
-ls -l $directory_fwrecover/$archivofin-nft-ipv6
-ls -l $directory_fwrecover/$archivofin-legacy-ipv4
-ls -l $directory_fwrecover/$archivofin-legacy-ipv6
+$command_ls -l $directory_fwrecover/$archivofin-arptables
+$command_ls -l $directory_fwrecover/$archivofin-ebtables
+$command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
+$command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
+$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
+$command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
 echo " [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
 echo "$cincuenta $archivofin-arptables"
 cat $directory_fwrecover/$archivofin-arptables
@@ -9292,12 +9297,12 @@ $command_lsof -i | $command_grep -i  sshd
 ssh_file="/etc/ssh/sshd_config"
 echo " [ info ] [ Above config file ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
-else for a in $(ls "$ssh_file"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
+else for a in $($command_ls "$ssh_file"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
 echo " [ info ] [ Above config directory ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
-else for a in $(ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
+else for a in $($command_ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 exit; fi
 ####
 ####
