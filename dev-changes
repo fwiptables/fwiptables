@@ -3,7 +3,7 @@ sum ideas to fwiptables@gmx.com : tool-snort.
 
 
  06. cambios en tool-options en readme y en leeme. HECHO
- 05. cambios en fwsudo-list-users
+ 05. cambios en fwsudo-list-users. HECHO
  04. cambiar tool-rules por tool-rule. HECHO
  03. cambiar tool-utils por tool-util. HECHO
  02. mas informacion de como conectar un cliente en sshd-tunnel-info
