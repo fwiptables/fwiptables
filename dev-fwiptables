@@ -9304,7 +9304,7 @@ echo " [ info ] [ Above config directory ] [ if there are files: necesary for tu
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
 else for a in $($command_ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 echo " [ info ] [ If connect from client with socks or proxy ]"
-echo " [ info ] [ socks://server:1080 ] [ http_proxy=1080 ] [ https_proxy=1080 ]"
+echo " [ info ] [ socks://server:1080 ] [ http_proxy=server:1080 ] [ https_proxy=server:1080 ]"
 exit; fi
 ####
 ####
