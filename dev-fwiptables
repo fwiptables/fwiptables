@@ -819,6 +819,7 @@ if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ] ; then first_o
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
+if [ "$first_option" = "output" ]  ; then first_option="output-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "ls" ]; then first_option="list"; fi
 if [ "$first_option" = "ls4" ]; then first_option="list"; fi
@@ -987,7 +988,7 @@ ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate-client) second_option="tool-udp"; third_option="" ;;
 iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; third_option="";;
-rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
+rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rule"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
@@ -1036,7 +1037,7 @@ ipforward-*) second_option="tool-forward"; third_option="" ;;
 tracetcp-*|speed-ip4|speed-ip6)  second_option="tool-tcp"; third_option="" ;;
 host|dig|resolveip|geoip|ntpdate-client) second_option="tool-udp"; third_option="" ;;
 iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; third_option="";;
-rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rules"; third_option="" ;;
+rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rule"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 scan-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
@@ -2297,36 +2298,36 @@ fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ] || ||"
-echo "   output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log"
-echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||           "
-echo "$text_md   firewall-control |  stop continue reset names actual show save load                          "
-echo "$text_md      firewall-list |  ls ls6 list list6 listnum listnum6 status                                "
-echo "$text_md                       list-alltables list-filter4 list-filter6                                 "
-echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        "
-echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables               "
-echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                       "
-echo "$text_md                       new-mini-config nueva-mini-config examples-config                        "
-echo "$text_md                       show-config modify-config del-config names-config                        "
-echo "$text_md    firewall-launch |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
-echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
-echo "$text_md                       client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
-echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp "
-echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid   "
-echo "$duo_md || ||  [ Options ]  ### [  See all options with command: $cmd_fwiptables options ] ### || ||    "
-echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
-echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                    "
-echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
-echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
-echo "$text_md          show-help |  all-help readme leeme notes license version depends options              "
-echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||         "
-echo "$text_md      $cmd_fwiptables -txt list                |  List iptables rules with output txt             "
-echo "$text_md      $cmd_fwiptables -cli names               |  List firewall saved with output cli             "
-echo "$text_md      $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                  "
-echo "$text_md      $cmd_fwiptables -web ss                  |  Show ss with output text browser                "
-echo "$text_md      $cmd_fwiptables -help readme             |  Show help of readme with output text plain      "
-echo "$text_md      $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst          "
-echo "$text_md      $cmd_fwiptables -log info-route          |  Save log info-route with output text plain      "
+echo "$text_md   output | cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log"
+echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
+echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
+echo "$text_md      firewall-list |  ls ls6 list list6 listnum listnum6 status                                 "
+echo "$text_md                       list-alltables list-filter4 list-filter6                                  "
+echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6         "
+echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables                "
+echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                        "
+echo "$text_md                       new-mini-config nueva-mini-config examples-config                         "
+echo "$text_md                       show-config modify-config del-config names-config                         "
+echo "$text_md    firewall-launch |  eraserules wizard-mini wizard-full custom off-line all-permisive          "
+echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands      "
+echo "$text_md                       client-web client-mail client-news client-torrent client-vpn client-tor   "
+echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web  "
+echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp  "
+echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid    "
+echo "$duo_md || ||  [ Options ]  ### [  See all options with command: $cmd_fwiptables options ] ### || ||     "
+echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client              "
+echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                     "
+echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                  "
+echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-listuser                             "
+echo "$text_md          show-help |  all-help readme leeme notes license version depends options               "
+echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||          "
+echo "$text_md      $cmd_fwiptables -txt list                |  List iptables rules with output txt            "
+echo "$text_md      $cmd_fwiptables -cli names               |  List firewall saved with output cli            "
+echo "$text_md      $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui                 "
+echo "$text_md      $cmd_fwiptables -web ss                  |  Show ss with output text browser               "
+echo "$text_md      $cmd_fwiptables -help readme             |  Show help of readme with output text plain     "
+echo "$text_md      $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst         "
+echo "$text_md      $cmd_fwiptables -log info-route          |  Save log info-route with output text plain     "
 exit ; fi
 ####
 ####
@@ -2339,7 +2340,7 @@ exit ; fi
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
-echo "   output-interface : cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log"
+echo "$text_md   output | cli-menu gui-menu gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log"
 echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
@@ -2358,8 +2359,8 @@ echo "$text_md                        server-teamspeak server-mumble server-sql 
 echo "$duo_md || ||  [ tool-options ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
-echo "$text_md  tool-connect       |  iw-scan iw-info iw-save wpa-load dhcp-client ntpdate-client              "
-echo "$text_md  tool-rules         |  rule-del-num rule-del-shield rule-add-shield                             "
+echo "$text_md  tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
+echo "$text_md  tool-rule          |  rule-del-num rule-del-shield rule-add-shield                             "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
 echo "$text_md  tool-sshd          |  sshd-tunnel-info sshd-tunnel-on sshd-tunnel-off                          "
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
@@ -2369,7 +2370,7 @@ echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-p
 echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  Tool-utils         |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
+echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
@@ -2431,24 +2432,27 @@ exit ; fi
 ####
 if [ "$first_option" = "tool-options" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Tool options ] [ tool-options.md ]"
-echo "$title_md                                    | tool-options |                            " 
-echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy    "
-echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert "
-echo "$text_md    tool-rules        | rule-del-num rule-del-shield rule-add-shield      "
-echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                "
-echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6            "
-echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                  "
-echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6            "
-echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping            "
-echo "$text_md    tool-sudo         | sudofw-adduser sudofw-deluser sudofw-listuser aliasfw-list           "
-echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex                "
-echo "$text_md    tool-speed       | free-ram speed-ram speed-disk speed-glx radio            "
-echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                "
-echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                "
-echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                "
-echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                            "
+echo "$title_md                                    | tool-options |                                 " 
+echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy         "
+echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert      "
+echo "$text_md    tool-connect      | iw-scan iw-info spa-save wpa-load dhcp-client ntpdate-client  "
+echo "$text_md    tool-rule         | rule-del-num rule-del-shield rule-add-shield                  "
+echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                     "
+echo "$text_md    tool-sshd         | sshd-tunnel-info sshd-tunnel-on sshd-tunnel-off               "
+echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                 "
+echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                       "
+echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                 "
+echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping                 "
+echo "$text_md    tool-sudo         | sudofw-adduser sudofw-deluser sudofw-listuser                 "
+echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex                     "
+echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
+echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
+echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
+echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                     "
+echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
+echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
-echo "$text_md  | Group |  firewall-options     tool-options        show-options               "
+echo "$text_md  | Group |  firewall-options     tool-options        show-options                    "
 exit ; fi
 ####
 ####
@@ -2520,16 +2524,19 @@ echo "$text_md"
 echo "$title_md [ Secondary options ]"
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables tool-connect
-echo "$text_md"
-echo "$brake_md"
 $cmd_fwiptables tool-sockets
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables tool-rules
+$cmd_fwiptables tool-connect
+echo "$text_md"
+echo "$brake_md"
+$cmd_fwiptables tool-rule
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-forward
+echo "$text_md"
+echo "$brake_md"
+$cmd_fwiptables tool-sshd
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-udp
@@ -2550,6 +2557,9 @@ echo "$brake_md"
 $cmd_fwiptables tool-game
 echo "$text_md"
 echo "$brake_md"
+$cmd_fwiptables tool-util
+echo "$text_md"
+echo "$brake_md"
 $cmd_fwiptables tool-speed
 echo "$text_md"
 echo "$brake_md"
@@ -2560,6 +2570,9 @@ $cmd_fwiptables tool-blacklist
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-dev
+echo "$text_md"
+echo "$brake_md"
+$cmd_fwiptables tool-computer
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables show-hardware
@@ -3199,13 +3212,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-connect:
-##############################       english: tool-rules: options for rules
-##############################       spanish: tool-rules: opciones de reglas
-#### :rutina-inicial-tool-rules:
+##############################       english: tool-rule: options for rules
+##############################       spanish: tool-rule: opciones de reglas
+#### :rutina-inicial-tool-rule:
 ####
 ####
-if [ "$first_option" = "tool-rules" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rules.md ] || ||"
+if [ "$first_option" = "tool-rule" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rule.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool rules ]"
 echo "$text_md [ spanish info ] [ Herramienta de reglas ]"
@@ -3222,7 +3235,7 @@ echo "$text_md $tab_lang_spanish          : Borra un numero de regla"
 exit; fi
 ####
 ####
-#### :rutina-final-tool-rules:
+#### :rutina-final-tool-rule:
 ##############################       english: tool-forward: options ipforwading
 ##############################       spanish: tool-forward: opciones ipforwading
 #### :rutina-inicial-tool-forward:
@@ -3529,14 +3542,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-speed:
-
-##############################       english: tool-utils: options
-##############################       spanish: tool-utils: opciones
-#### :rutina-inicial-tool-utils:
+##############################       english: tool-util: options
+##############################       spanish: tool-util: opciones
+#### :rutina-inicial-tool-util:
 ####
 ####
-if [ "$first_option" = "tool-utils" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool system ] [ tool-speed.md ] || ||"
+if [ "$first_option" = "tool-util" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool util ] [ tool-util.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool utils ]"
 echo "$text_md [ spanish info ] [ Utilidad de sistema ]"
@@ -3554,8 +3566,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-speed:
-
-
 ##############################       english: tool-computer: options
 ##############################       spanish: tool-computer: opciones
 #### :rutina-inicial-tool-computer:
@@ -4080,7 +4090,7 @@ case "$selection" in
 "04 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
 "05 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
 "06 Tool connect")$cmd_fwiptables gui-menu-tool-connect ; exit ;;
-"07 Tool rules")$cmd_fwiptables gui-menu-tool-rules ; exit ;;
+"07 Tool rules")$cmd_fwiptables gui-menu-tool-rule ; exit ;;
 "08 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
 "09 Tool sshd")$cmd_fwiptables gui-menu-tool-sshd ; exit ;;
 "10 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
@@ -4089,7 +4099,7 @@ case "$selection" in
 "13 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
 "14 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
 "15 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
-"16 Tool utils")$cmd_fwiptables gui-menu-tool-utils ; exit ;;
+"16 Tool utils")$cmd_fwiptables gui-menu-tool-util ; exit ;;
 "17 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
 "18 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
 "19 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
@@ -4356,12 +4366,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-connect:
-############################## english: gui-menu-tool-rules: gui with menu ##############################
-############################## spanish: gui-menu-tool-rules: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-tool-rules:
+############################## english: gui-menu-tool-rule: gui with menu ##############################
+############################## spanish: gui-menu-tool-rule: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-tool-rule:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-rules" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-rule" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool rules ] [ $name_fwiptables ]" )
@@ -4386,7 +4396,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-tool-rules:
+#### :rutina-final-gui-menu-tool-rule:
 ############################## english: gui-menu-tool-sockets: gui with menu ##############################
 ############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-sockets:
@@ -4708,7 +4718,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-util:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-utils" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-util" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "md5sum" "radio-mp3 link" "gpg-notes" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Utils ] [ $name_fwiptables ]" )
@@ -5312,14 +5322,11 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 1902  "$tab dev-version" \
 1903  "$tab dev-changes" \
 1904  "$tab intro" \
-2000 "$quad [ Tool System ] $cinco" \
+2000 "$quad [ Tool Speed ] $cinco" \
 2001  "$tab free-ram" \
 2002  "$tab speed-ram" \
 2003  "$tab speed-disk" \
 2004  "$tab speed-glx" \
-2005  "$tab radio-mp3-default" \
-2006  "$tab radio-mp3-link" \
-2007  "$tab gpg-notes" \
 2100 "$quad [ Show Hardware ] $cinco" \
 2101  "$tab lpinfo" \
 2102  "$tab lsblk" \
@@ -5370,7 +5377,7 @@ case "$menuprincipal" in
 0400) clear ; $cmd_fwiptables cli firewall-launch ;;
 0500) clear ; $cmd_fwiptables cli firewall-custom ;;
 0600) clear ; $cmd_fwiptables cli tool-connect ;;
-0700) clear ; $cmd_fwiptables cli tool-rules ;;
+0700) clear ; $cmd_fwiptables cli tool-rule ;;
 0800) clear ; $cmd_fwiptables cli tool-sockets ;;
 0900) clear ; $cmd_fwiptables cli tool-forward ;;
 1000) clear ; $cmd_fwiptables cli tool-sshd ;;
@@ -5379,7 +5386,7 @@ case "$menuprincipal" in
 1300) clear ; $cmd_fwiptables cli tool-udp ;;
 1400) clear ; $cmd_fwiptables cli tool-sudo ;;
 1500) clear ; $cmd_fwiptables cli tool-game ;;
-1600) clear ; $cmd_fwiptables cli tool-utils ;;
+1600) clear ; $cmd_fwiptables cli tool-util ;;
 1700) clear ; $cmd_fwiptables cli tool-install ;;
 1800) clear ; $cmd_fwiptables cli tool-blacklist ;;
 1900) clear ; $cmd_fwiptables cli tool-dev ;;
@@ -5569,10 +5576,6 @@ clear ; $cmd_fwiptables blacklist-on $resolve ;;
 2002) clear ; $cmd_fwiptables cli speed-ram ;;
 2003) clear ; $cmd_fwiptables cli speed-disk ;;
 2004) clear ; $cmd_fwiptables cli speed-glx ;;
-2005) clear ; $cmd_fwiptables cli radio-mp3 ;;
-2006) clear ; emisora_mp3="$($command_dialog  --stdout --title "Type one mp3 link" --inputbox "Type one mp3 link" 0 0)"
-$cmd_fwiptables cli radio-mp3 $emisora_mp3 ;;
-2007) clear ; $cmd_fwiptables cli gpg-notes ;;
 2101) clear ; $cmd_fwiptables cli lpinfo ;;
 2102) clear ; $cmd_fwiptables cli lsblk ;;
 2103) clear ; $cmd_fwiptables cli lsusb ;; 
@@ -7012,25 +7015,12 @@ echo " [  ok  ] [ With root sudo for $cmd_fwiptables from some user ]"
 cat /etc/sudoers.d/$cmd_fwiptables
 echo $footer_lineal
 fi
-if [ -f /etc/sudoers.d/$name_fwiptables ] ; then $nada
-echo "$tab [ info ][ old version sudoer file:   /etc/sudoers.d/$name_fwiptables ]"
-echo " [ ok ] [ With root sudo for $name_fwiptables from some user ]"
-cat /etc/sudoers.d/$name_fwiptables
-echo $footer_lineal
-fi
-####
-####
 if [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
 echo "$tab [ info ] [ list users with root auth for launch $cmd_fwiptables ]"
 echo "$tab [ fail ] [ actual version $cmd_fwiptables Without root sudo from users ]"
 fi
 ####
 ####
-#### if [ ! -f /etc/sudoers.d/$name_fwiptables ] ; then $nada
-#### echo "$tab [ info ] [ list users with root auth for launch $name_fwiptables ]"
-#### echo "$tab [ fail ] [ old version $name_fwiptables Without root sudo from users ]"
-#### echo $footer_lineal
-#### fi
 exit; fi
 ####
 ####
@@ -10125,20 +10115,6 @@ echo "$text_md         modify-config : Edit one config.cfg."
 echo "$text_md           show-config : Show one config.cfg."
 echo "$text_md            del-config : Delete one configuration file."
 echo "$text_md"
-echo "$title_md         [ tool connect ]"
-echo "$text_md"
-echo "$text_md               iw-scan : list ssid on wifi"
-echo "$text_md               iw-info : Show the connected wifi"
-echo "$text_md              wpa-save : Connect to ssid in wifi for first time"
-echo "$text_md              wpa-load : Connect to ssid in wifi saved"
-echo "$text_md           dhcp-client : run dhcp client"
-echo "$text_md"
-echo "$title_md         [ tool rules ]"
-echo "$text_md"
-echo "$text_md         rule-del-rule : Delete a rule for its number"
-echo "$text_md       rule-del-shield : Delete the shield to ssh with max number tries"
-echo "$text_md       rule-add-shield : Add the shield to ssh with max number tries"
-echo "$text_md"
 echo "$title_md         [ List sockets ]"
 echo "$text_md"
 echo "$text_md      info-nodes : List the conentions arp in lan."
@@ -10154,11 +10130,31 @@ echo "$text_md     netstat-nat : Show net sockets with command netstat-nat."
 echo "$text_md        web-cert : Download one ssl certificated to one web with port https(443)."
 echo "$text_md         tcpdump : Listen the connections."
 echo "$text_md"
+echo "$title_md         [ tool connect ]"
+echo "$text_md"
+echo "$text_md               iw-scan : list ssid on wifi"
+echo "$text_md               iw-info : Show the connected wifi"
+echo "$text_md              wpa-save : Connect to ssid in wifi for first time"
+echo "$text_md              wpa-load : Connect to ssid in wifi saved"
+echo "$text_md           dhcp-client : run dhcp client"
+echo "$text_md"
+echo "$title_md         [ tool rules ]"
+echo "$text_md"
+echo "$text_md         rule-del-rule : Delete a rule for its number"
+echo "$text_md       rule-del-shield : Delete the shield to ssh with max number tries"
+echo "$text_md       rule-add-shield : Add the shield to ssh with max number tries"
+echo "$text_md"
 echo "$title_md         [ Tool forward ]"
 echo "$text_md"
 echo "$text_md  ipforward-list : Show kernel config about forward."
 echo "$text_md    ipforward-on : Active kernel config about forward."
 echo "$text_md   ipforward-off : Deactive kernel config about forward."
+echo "$text_md"
+echo "$title_md         [ Tool sshd ]"
+echo "$text_md"
+echo "$text_md  sshd-tunnel-info : Show info about sshd tunnel"
+echo "$text_md    sshd-tunnel-on : Active sshd tunnel."
+echo "$text_md   sshd-tunnel-off : Deactive sshd tunnel."
 echo "$text_md"
 echo "$title_md         [ Tool tcp ]"
 echo "$text_md"
@@ -10205,12 +10201,16 @@ echo "$text_md       ole-domain : Discover one domain if generic or if country."
 echo "$text_md       colour-hex : convert one number hexadecimal in rgb."
 echo "$text_md       colour-rgb : convert one number rgb in hexadecimal."
 echo "$text_md"
-echo "$title_md         [ Tool system ]"
+echo "$title_md         [ Tool speed ]"
 echo "$text_md"
 echo "$text_md         free-ram : Clean for innecesary ram memory."
 echo "$text_md        speed-ram : Show the speed of ram memory."
 echo "$text_md       speed-disk : Show the speed of root hard disc."
 echo "$text_md        speed-glx : Show frammes for seconds with mesa graphicall."
+echo "$text_md"
+echo "$title_md         [ Tool util ]"
+echo "$text_md"
+echo "$text_md           md5sum : Show the one file md5sum."
 echo "$text_md        radio-mp3 : Connect to one server mp3, see show-default modify-default."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
 echo "$text_md"
@@ -10227,6 +10227,12 @@ echo "$text_md"
 echo "$text_md  blacklist-list : List options to block dangerous hosts."
 echo "$text_md    blacklist-on : Write one /etc/hosts with block a dangerous sites."
 echo "$text_md   blacklist-off : Return to /etc/hosts for default."
+echo "$text_md"
+echo "$title_md         [ Tool computer ]"
+echo "$text_md"
+echo "$text_md         reboot : Reboot computer."
+echo "$text_md           halt : Stop computer."
+echo "$text_md       shutdown : Stop computer."
 echo "$text_md"
 echo "$title_md         [ Tool dev ]"
 echo "$text_md"
@@ -10495,6 +10501,12 @@ echo "$text_md  ipforward-list : Muestra la configuracion del kernel sobre reenv
 echo "$text_md    ipforward-on : Activa la configuracion del kernel sobre reenvios ip."
 echo "$text_md   ipforward-off : Desactiva la configuracion del kernel sobre reenvios ip."
 echo "$text_md"
+echo "$title_md [ Herramienta de tunel ssh ]."
+echo "$text_md"
+echo "$text_md  sshd-tunnel-info : Muestra la configuracion del kernel sobre reenvios ip."
+echo "$text_md    sshd-tunnel-on : Activa la configuracion del kernel sobre reenvios ip."
+echo "$text_md   sshd-tunnel-off : Desactiva la configuracion del kernel sobre reenvios ip."
+echo "$text_md"
 echo "$title_md [ Herramienta tcp ]."
 echo "$text_md"
 echo "$text_md  tracetcp-ip4 : Traza ruta a una host con ipv4 tcp."
@@ -10539,12 +10551,16 @@ echo "$text_md   ole-domain  : Descubre un dominio si es generico o si es de un 
 echo "$text_md   colour-hex  : convierte un numero hexadecimal en rgb ."
 echo "$text_md   colour-rgb  : convierte un numero rgb en hexadecimal ."
 echo "$text_md"
-echo "$title_md [ Herramienta de sistema ]."
+echo "$title_md [ Herramienta de velocidad ]."
 echo "$text_md"
 echo "$text_md      free-ram : Libera la memoria ram innecesaria."
 echo "$text_md     speed-ram : Muestra la velocidad de la memoria ram."
 echo "$text_md    speed-disk : Muestra la velocidad de el disco duro raiz."
 echo "$text_md     speed-glx : Muestra fotogramas por segundo con graficos mesa."
+echo "$text_md"
+echo "$title_md [ Herramienta de utilidad ]."
+echo "$text_md"
+echo "$text_md        md5sum : Muestra la huella md5sum de un archivo"
 echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
 echo "$text_md"
