@@ -9300,9 +9300,11 @@ if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
 else for a in $($command_ls "$ssh_file"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
-echo " [ info ] [ Above config directory ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
+echo " [ info ] [ Above config directory ] [ if there are files: necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
 else for a in $($command_ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
+echo " [ info ] [ If connect from client with socks or proxy ]"
+echo " [ info ] [ socks://server:1080 ] [ http_proxy=1080 ] [ https_proxy=1080 ]"
 exit; fi
 ####
 ####
