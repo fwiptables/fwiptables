@@ -975,7 +975,7 @@ echo $head_waiting_info
 case "$second_option" in
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -help option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
-"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
 "ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
@@ -1026,7 +1026,7 @@ echo $head_waiting_help
 case "$second_option" in
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -info option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
-"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
@@ -2315,11 +2315,10 @@ echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shi
 echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp  "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid    "
 echo "$duo_md || ||  [ Options ]  ### [  See all options with command: $cmd_fwiptables options ] ### || ||     "
-echo "$text_md       tool-connect |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client              "
-echo "$text_md       tool-sockets |  info-listen info-nodes info-route info-net info-proxy                     "
-echo "$text_md                       info-system ss lsof tcpdump netstat netstat-nat web-cert                  "
-echo "$text_md          tool-sudo |  sudofw-adduser sudofw-deluser sudofw-listuser                             "
-echo "$text_md          show-help |  all-help readme leeme notes license version depends options               "
+echo "$text_md                       [  See all firewall, with command: $cmd_fwiptables firewall-options ]"
+echo "$text_md                       [  See all tool, with command: $cmd_fwiptables tool-options ]"
+echo "$text_md                       [  See all show, with command: $cmd_fwiptables show-options ]"
+echo "$text_md                       [  See all show, with command: $cmd_fwiptables help-options ]"
 echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||          "
 echo "$text_md      $cmd_fwiptables -txt list                |  List iptables rules with output txt            "
 echo "$text_md      $cmd_fwiptables -cli names               |  List firewall saved with output cli            "
@@ -2435,7 +2434,7 @@ echo "$title_md [ $first_option ] [ Tool options ] [ tool-options.md ]"
 echo "$title_md                                    | tool-options |                                 " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy         "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert      "
-echo "$text_md    tool-connect      | iw-scan iw-info spa-save wpa-load dhcp-client ntpdate-client  "
+echo "$text_md    tool-connect      | iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client  "
 echo "$text_md    tool-rule         | rule-del-num rule-del-shield rule-add-shield                  "
 echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                     "
 echo "$text_md    tool-sshd         | sshd-tunnel-info sshd-tunnel-on sshd-tunnel-off               "
@@ -2471,6 +2470,22 @@ echo "$text_md    show-etc          | hosts resolv.conf  protocols services     
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
 echo "$text_md    show-about        | about version depends examples-config                 "
 echo "$text_md                        config-eng config-spa license                         "
+echo "$text_md    show-help         | all-help help ayuda notes options info                "
+echo "$text_md                        group-options mini-options full-options               "
+echo "$text_md"
+echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
+exit ; fi
+####
+####
+#### :rutina-final-show-options:
+##############################       english: help-options: options show           ##############################
+##############################       spanish: help-options: opciones de mostrar    ##############################
+#### :rutina-final-show-options:
+####
+####
+if [ "$first_option" = "help-options" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ Show help options ] [ help-options.md ]"
+echo "$title_md                                   | help-options |                          " 
 echo "$text_md    show-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
 echo "$text_md"
@@ -2607,20 +2622,20 @@ exit; fi
 #### :rutina-final-all-help:
 ##############################       english: all-options: all options
 ##############################       spanish: all-options: todas las opciones
-#### :rutina-inicial-help-options:
+#### :rutina-inicial-all-options:
 ####
 ####
-if [ "$first_option" = "help-options" ]; then echo $give_cover
+if [ "$first_option" = "all-options" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List group options help ] || ||"
 $cmd_fwiptables output-interface
 $cmd_fwiptables firewall-options
 $cmd_fwiptables tool-options
 $cmd_fwiptables show-options
-echo "$text_md" $footer_lineal
+$cmd_fwiptables help-options
 exit; fi
 ####
 ####
-#### :rutina-final-help-options:
+#### :rutina-final-all-options:
 ##############################       english: names-config: list some config
 ##############################       spanish: names-config: lista alguna config
 #### :rutina-inicial-names-config:
