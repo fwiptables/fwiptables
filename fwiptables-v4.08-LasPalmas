@@ -68,18 +68,19 @@ fversion="4.08-LasPalmasGranCanaria-Dev" ;
 ##############################    spanish: prioridad de opciones   ##############################
 ####
 ####
+command_sed="$(command -v sed)"
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_dir="$(pwd)" ;
 #### #### english: option for default    #### spanish: opcion por defecto
 zero_option="$0" ;
 #### #### english: variables to launch   #### spanish: variables a lanzar
-first_option="$(echo $1 | sed s/\\///g -)"  ;                       
+first_option="$(echo $1 | $command_sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-second_option="$(echo $2 | sed s/\\///g -)" ;                       
+second_option="$(echo $2 | $command_sed s/\\///g -)" ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-third_option="$(echo $3 | sed s/\\///g -)"  ;                       
+third_option="$(echo $3 | $command_sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-quarter_option="$(echo $4 | sed s/\\///g -)"  ;                     
+quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
 ####
 ####
 ##############################   english: profile y support X11       ##############################
@@ -494,9 +495,11 @@ exit; fi
 ####
 ####
 command_bash="$(command -v bash)"
+command_ls="$(command -v ls)"
 command_find="$(command -v find)"
 command_bc="$(command -v bc)"
 command_cut="$(command -v cut)"
+command_sed="$(command -v sed)"
 command_grep="$(command -v grep)"
 command_zgrep="$(command -v zgrep)"
 command_iptables_legacy="$(command -v iptables-legacy)"
@@ -508,7 +511,6 @@ command_ebtables="$(command -v ebtables)"
 command_fmt="$(command -v fmt)"
 command_date="$(command -v date)"
 command_uname="$(command -v uname)"
-command_sed="$(command -v sed)"
 command_xrandr="$(command -v xrandr)"
 command_mdp="$(command -v mdp)"
 command_txt2html="$(command -v txt2html)"
@@ -1055,8 +1057,8 @@ all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-optio
 *) echo $message_without_help ;  exit ;;
 esac
 $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
-sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
-sed -e 's/\.md\ \]/\.rst\ \]/' $temporal_text.2 &> $temporal_text.3  ;
+$command_sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
+$command_sed -e 's/\.md\ \]/\.rst\ \]/' $temporal_text.2 &> $temporal_text.3  ;
 $command_m2r --overwrite --dry-run --no-underscore-emphasis --disable-inline-math \
 $temporal_text.3 | $command_grep -iv "::"  &> $temporal_text.rst ;
 cat $temporal_text.rst
@@ -1080,7 +1082,7 @@ esac
 echo $head_waiting_web
 rm "$temporal_text"* &> /dev/null
 $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
-sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
+$command_sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
 $command_txt2html --outfile $temporal_text.html $temporal_text.2 ;
 $favorite_text_browser $temporal_text.html
 exit ; fi
@@ -5134,27 +5136,27 @@ $command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_fw
 ####
 ####
 new-full-config*)
-unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_fwiptables -gui new-full-config $unarchivo
 ;;
 nueva-completa-config*)
-unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_fwiptables -gui nueva-completa-config $unarchivo
 ;;
 new-mini-config*)
-unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_fwiptables -gui new-mini-config $unarchivo
 ;;
 nueva-mini-config*)
-unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_fwiptables -gui nueva-mini-config $unarchivo
 ;;
 modify-config*)
-unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_fwiptables -gui modify-config $unarchivo
 ;;
 show-config*)
-unarchivo=$(echo $menugtk | sed 's/\///g' | cut -d " " -f 2)
+unarchivo=$(echo $menugtk | $command_sed 's/\///g' | cut -d " " -f 2)
 $cmd_fwiptables -gui show-config $unarchivo
 ;;
 wizard-full*) $cmd_fwiptables gui wizard-full ;;
@@ -5168,7 +5170,7 @@ wizard-mini*) $cmd_fwiptables gui wizard-mini ;;
 "$NULL")
 $command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye";
 $command_zenity  --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
-*) fecha_temporal=$(date | sed s/\ //g) ; $cmd_fwiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
+*) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_fwiptables $menugtk &> /tmp/fwiptables-$fecha_temporal
 $command_zenity  --text-info $graphic_dimension --title "[ $name_fwiptables gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
@@ -5420,13 +5422,13 @@ case "$menuprincipal" in
 0204) clear ; $cmd_fwiptables cli names ;;
 0205) clear ; $cmd_fwiptables names ; echo "$cincuenta"
 read -p "Type the firewall name to read   " nombrecillo
-nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_fwiptables show $nombrecillo ;; 
 0206)archivo="$($command_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ;  echo "$cincuenta saved $archivo" ; $cmd_fwiptables save $archivo ;;
 0207) clear ; $cmd_fwiptables names ; echo "$cincuenta"
 read -p "| Type the firewall name to restore |   " nombrecillo
-nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables load $nombrecillo ;;
+nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_fwiptables load $nombrecillo ;;
 0208) clear ; $cmd_fwiptables cli actual ;;
 0301) clear ; $cmd_fwiptables cli list ;;
 0302) clear ; $cmd_fwiptables cli list6 ;;
@@ -5455,7 +5457,7 @@ nombrecillo=$(echo $nombrecillo | sed s/\\///g) ; $cmd_fwiptables load $nombreci
 0404) clear ; $cmd_fwiptables cli off-line ; $cmd_fwiptables txt list ;;
 0405) clear ; $cmd_fwiptables cli all-permisive ; $cmd_fwiptables txt list  ;;
 0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
+archivo=$(echo $archivo | $command_sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archivo ;;
 0407) clear ; $cmd_fwiptables cli games-shooter ; $cmd_fwiptables txt list  ;; 
 0408) clear ; $cmd_fwiptables cli game-wesnoth ; $cmd_fwiptables txt list ;;
 0409) clear ; $cmd_fwiptables cli game-minetest ; $cmd_fwiptables txt list ;;
@@ -5482,26 +5484,26 @@ archivo=$(echo $archivo | sed s/\\///g) ;  clear ; $cmd_fwiptables custom $archi
 0430) clear ; $cmd_fwiptables cli server-asterisk ; $cmd_fwiptables txt list ;;
 0501) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables new-full-config $archivo ;;
 0502) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
 --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables nueva-completa-config $archivo ;;
 0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables new-mini-config $archivo ;;
 0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables nueva-mini-config $archivo ;;
 0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_fwiptables custom $archivo ]";;
 0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables modify-config $archivo ;;
 0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$(ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | sed s/\\///g)
+archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_fwiptables del-config $archivo ; echo "deleted $archivo" ;;
 0508) clear ; $cmd_fwiptables cli names-config ;;
 0509) clear ; $cmd_fwiptables cli regen-config ;;
@@ -5827,8 +5829,9 @@ echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
 echo
 code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
 if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
-salida_code="$(cat $directory_binary/$cmd_fwiptables | $command_grep -i  rutina-inicial | $command_grep -i -v cat | sed -s s/####\ :rutina-inicial-//g | \
-sort | sed -s s/://g )"
+salida_code="$(cat $directory_binary/$cmd_fwiptables | $command_grep -i  rutina-inicial \
+| $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
+sort | $command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
 value_first="$(cat -n $directory_binary/$cmd_fwiptables | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
@@ -6014,7 +6017,7 @@ echo "::1      localhost-ip6 localhost localhost.localdomain" >> $directory_temp
 echo "ff02::1 ip6-allnodes" >> $directory_temporal/$first_option-hosts
 echo "ff02::2 ip6-allrouters"  >> $directory_temporal/$first_option-hosts
 echo $cincuenta >> $directory_temporal/$first_option-hosts
-cat  $directory_temporal/$first_option-hosts | sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
+cat  $directory_temporal/$first_option-hosts | $command_sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
 echo " [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
 cat  /etc/hosts
 exit; fi
@@ -6170,9 +6173,9 @@ if [ "$first_option" = "ss" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$tab [ The ipv6 sockets ]"
-$command_ss -a6 | sed 's/   / /g'
+$command_ss -a6 | $command_sed 's/   / /g'
 echo "$tab [ The ipv4 sockets ]"
-$command_ss -a4 | sed 's/   / /g'
+$command_ss -a4 | $command_sed 's/   / /g'
 exit; fi
 ####
 ####
@@ -6216,10 +6219,10 @@ if [ "$first_option" = "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$tab [ Network Listen ] [ Listen ipv4 ]"
-$command_ss -l4 | sed 's/   / /g'
+$command_ss -l4 | $command_sed 's/   / /g'
 echo $tab
 echo "$tab [ Network Listen ] [ Listen ipv6 ]"
-$command_ss -l6 | sed 's/   / /g'
+$command_ss -l6 | $command_sed 's/   / /g'
 exit; fi
 ####
 ####
@@ -7487,9 +7490,9 @@ echo "$tab $tab [English:] [File list with iptables format in folder:] [$directo
 echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
 echo 
 echo " [ info ] [ Listing firewall names ]"
-ls -1 $directory_fwrecover | sed s/\-legacy\-ipv6//g | sed s/\-nft\-ipv6//g | \
-sed s/\-legacy\-ipv4//g | sed s/\-nft\-ipv4//g | \
-sed s/\-arptables//g | sed s/\-ebtables//g | sort -u 
+ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
+$command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
+$command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
 echo
 echo " [  ok  ] [ Listed firewall names ]"
 exit; fi
@@ -7664,7 +7667,7 @@ echo "$header_ok [ $first_option ]  [ show one firewall saved ] || ||"
 echo $header_lineal
 case "$second_option" in
 "$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
-*) archivofin=$(sed 's/\///g' <<< "$second_option") ;;
+*) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
 ls -l $directory_fwrecover/$archivofin-arptables
 ls -l $directory_fwrecover/$archivofin-ebtables
@@ -8555,13 +8558,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -8681,13 +8684,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 #####
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
@@ -8804,13 +8807,13 @@ if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo " [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-english
 echo " [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish" 
 if [ -s "$language_spanish" ]; then echo; else echo " [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$name_fwiptables-spanish
 echo " [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -9281,7 +9284,7 @@ echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
 if [ "$command_lsof" == "$NULL" ] ; then echo " [ fail ] [ Install lsof ]" ; exit ; fi
 #### ssh tunnel
 echo " [ info ] [ Above ssh tunnel process ] [ search ssh tunnel with ps ]"
-ps aux | grep "ssh -f -N -D" | grep -iv "grep ssh"
+ps aux | $command_grep "ssh -f -N -D" | $command_grep -iv "grep ssh"
 #### sshd server
 echo " [ info ] [ Above server sshd ] [ search sshd with lsof ]"
 $command_lsof -i | $command_grep -i  sshd
@@ -9322,7 +9325,7 @@ exit; fi
 if [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
 echo " [ info ] [ killing procees with: ssh -f -N -D ]"
-for parada in $(ps aux | grep "ssh \-f \-N \-D" | grep -iv "grep ssh" | awk '{print $2}' -);
+for parada in $(ps aux | $command_grep "ssh \-f \-N \-D" | $command_grep -iv "grep ssh" | awk '{print $2}' -);
 do echo  " [ info ] [ kill pid $parada ]"; kill -9 "$parada" ; done
 echo " [  ok  ] [ sshd-tunnel-off finished ]"
 exit; fi
@@ -9365,7 +9368,7 @@ exit; fi
 if [ "$first_option" = "log-ssh" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ search sshd in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo " [ fail ] [ Install zgrep ]"; exit ; fi
-find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
+$command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
 exit; fi
 ####
 ####
@@ -9380,7 +9383,7 @@ echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] |
 if [ "$command_zgrep" == "$NULL" ] ; then echo " [ fail ] [ Install zgrep ]"; exit ; fi
 case "$second_option" in
 $NULL) echo "$tab [ fail ] [ use: $cmd_fwiptables $first_option pattern ]" ;;
-*) find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "$second_option" ;;
+*) $command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "$second_option" ;;
 esac
 exit; fi
 ####
@@ -9419,7 +9422,7 @@ if [ "$first_option" = "new-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $fweb_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | sed s/\<//g |sed s/\>//g 
+$favorite_text_browser -dump $fweb_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
 exit; fi
 ####
 ####
@@ -9433,7 +9436,7 @@ if [ "$first_option" = "gpg-notes" ]; then
 ####
 ####
 if [ "$second_option" == "-list" ] || [ "$second_option" == "$NULL" ] ; then
-find "$directory_default" | $command_grep -i .gpg | sed 's/\.gpg//g'
+$command_find "$directory_default" | $command_grep -i .gpg | $command_sed 's/\.gpg//g'
 echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
@@ -9443,8 +9446,8 @@ echo " [ info ] [ type $cmd_fwiptables gpg-notes name-of-gpg" ; exit ; fi
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
 if [ "$command_zenity" == "$NULL" ]; then echo " [ fail ] [ install zenity ]"; exit ; fi
 original="$($command_zenity $graphic_dimension --entry --title " [ NAME file gpg to choose WITHOUT path ]" \
---text "$(find $directory_default | grep .gpg | sed 's/\.gpg//g' )")"
-origina="$(echo "$original" | sed s/\\///g -)" ;
+--text "$($command_find $directory_default | $command_grep .gpg | $command_sed 's/\.gpg//g' )")"
+origina="$(echo "$original" | $command_sed s/\\///g -)" ;
 consigna="$($command_zenity $graphic_dimension --entry --title "[ Passwowrd ]" --text "[ Passwowrd ]")"
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
@@ -9478,8 +9481,8 @@ exit; fi
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
 if [ "$command_dialog" == "$NULL" ]; then echo " [ fail ] [ install dialog ]"; exit ; fi
 original="$($command_dialog --stdout --title " [ NAME file gpg to choose WITHOUT path ] " \
---inputbox "$(find $directory_default/*.gpg | sed 's/\.gpg//g')" 0 0 )"
-origina="$(echo "$original" | sed s/\\///g -)"  ;
+--inputbox "$($command_find $directory_default/*.gpg | $command_sed 's/\.gpg//g')" 0 0 )"
+origina="$(echo "$original" | $command_sed s/\\///g -)"  ;
 consigna="$($command_dialog --stdout --title " [ Passwowrd ] " \
 --inputbox "[ Passwowrd ]" 0 0 )"
 gpg_origen_gpg="$directory_default/$origina.gpg"
@@ -9672,7 +9675,7 @@ exit; fi
 ####
  if [ "$first_option" = "protocols" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ] || ||"
-cat /etc/protocols  | sed s/\&//g 
+cat /etc/protocols  | $command_sed s/\&//g 
 echo
 echo " [ ok ] [ This file is /etc/protocols ]"
 exit; fi
@@ -9686,7 +9689,7 @@ exit; fi
 ####
 if [ "$first_option" = "services" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/services ] || ||"
-cat /etc/services | sed s/\&//g 
+cat /etc/services | $command_sed s/\&//g 
 echo
 echo " [ ok ] [ This file is /etc/services ]"
 exit; fi
@@ -9788,7 +9791,7 @@ exit; fi
 if [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
 echo "$tab [ System info ] [ Distro ] "
-cat /etc/*-release | $command_grep -i  pretty_name | cut -d "=" -f 2 | sed 's/\"//g'
+cat /etc/*-release | $command_grep -i  pretty_name | cut -d "=" -f 2 | $command_sed 's/\"//g'
 echo
 echo "$tab [ System info ][ Kernel Linux ]"
 $command_uname -srom
@@ -9826,11 +9829,11 @@ else $command_ip -6 route ; fi
 echo
 echo "$tab [ Network Listen ] [ Listen ipv4 ]"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l4 | sed 's/   / /g' ; fi
+else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
 echo "$tab [ Network Listen ] [ Listen ipv6 ]"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
-else $command_ss -l6 | sed 's/   / /g' ; fi
+else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "$tab [ Private ip ] [ Address ipv4 ]"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
@@ -11940,7 +11943,7 @@ $allow_ipv6 $allow_nft $allow_output_maxconnect $command_ip6tables_nft  -A OUTPU
 ####################################### spanish: reglas de denegar para lista negra
 ####
 ####
-for one_blacklist in $(echo $config_net_blacklist | sed 's/,/ /g')
+for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g')
 ####
 ####
 #### ipv4
@@ -11995,7 +11998,7 @@ done
 ####################################### spanish: reglas de aceptar para vpn
 ####
 ####
-for one_vpn in $(echo $config_net_vpn | sed 's/,/ /g') 
+for one_vpn in $(echo $config_net_vpn | $command_sed 's/,/ /g') 
 #### ipv4
 ####
 do
@@ -12144,7 +12147,7 @@ fi
 ####
 ####
 if [ "$separate_port_rules" = "" ]; then 
-for one_udp in $(echo $client_udp | sed 's/,/ /g') ;
+for one_udp in $(echo $client_udp | $command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -12195,7 +12198,7 @@ done; fi
 ####
 ####
 if [ "$separate_port_rules" = "" ]; then 
-for one_tcp in $(echo $client_tcp | sed 's/,/ /g') ;
+for one_tcp in $(echo $client_tcp | $command_sed 's/,/ /g') ;
 do
 ####
 ####
@@ -12458,7 +12461,7 @@ $allow_legacy  $allow_ipv4 $config_uid_gid $command_iptables_legacy -A INPUT \
 -m comment --comment "state uid-gid" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols $command_iptables_legacy -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12489,7 +12492,7 @@ $allow_legacy  $allow_ipv4 $allow_output_gid $command_iptables_legacy   -A OUTPU
 -m comment --comment "state gid" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv4 $allow_others_protocols      $command_iptables_legacy -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12524,7 +12527,7 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A INPUT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_legacy  $allow_ipv6 $allow_others_protocols      $command_ip6tables_legacy -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12559,7 +12562,7 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -p ipv6-icmp -j A
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $others_protocols | $command_sed 's/,/ /g') ;
 do $allow_legacy6  $allow_ipv6 $allow_others_protocols      $command_ip6tables_legacy -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12589,7 +12592,7 @@ $allow_nft $allow_ipv4 $config_uid_gid $command_iptables_nft -A INPUT \
 -m comment --comment "state uid-gid" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols       $command_iptables_nft -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12620,7 +12623,7 @@ $allow_nft $allow_ipv4 $allow_output_gid $command_iptables_nft   -A OUTPUT \
 -m comment --comment "status gid" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_nft $allow_ipv4 $allow_others_protocols      $command_iptables_nft -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12655,7 +12658,7 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $command_ip6tables_nft -A INPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
@@ -12690,7 +12693,7 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "icmp nexthop" &> /dev/null
 ####
 ####
-for one_protocol in $(echo $config_others_protocols | sed 's/,/ /g') ;
+for one_protocol in $(echo $config_others_protocols | $command_sed 's/,/ /g') ;
 do $allow_nft $allow_ipv6 $allow_others_protocols      $command_ip6tables_nft -A OUTPUT \
 -p $one_protocol -j ACCEPT \
 -m comment --comment "other protocols" &> /dev/null
