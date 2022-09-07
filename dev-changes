@@ -2,9 +2,11 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec
 
 
 
- 03. 
- 02. cambios en la ayuda del tunel [ info ]. 
- 01. cambiar el nombre tool-sshd por el nombre tool-tunnel.
+
+
+
+ 02. revisar tool-speed, quitando los que no son de ahi.  
+ 01. cambios en la ayuda del tunel [ info ]. 
 
  cambios en dev-fwiptables desarrollo 4.09
 
