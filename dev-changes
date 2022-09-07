@@ -10,8 +10,8 @@ sum ideas to fwiptables@gmx.com : tool-snort.
  05. cambios en fwsudo-list-users. HECHO
  04. cambiar tool-rules por tool-rule. HECHO
  03. cambiar tool-utils por tool-util. HECHO
- 02. mas informacion de como conectar un cliente en sshd-tunnel-info
- 01. command -v para ls y find y grep y sed, cambiarlos 
+ 02. mas informacion de como conectar un cliente en sshd-tunnel-info. 
+ 01. command -v para ls y find y grep y sed, cambiarlos. HECHO
 
  cambios en dev-fwiptables desarrollo 4.08
 
