@@ -975,9 +975,9 @@ echo $head_waiting_info
 case "$second_option" in
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -help option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
-"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
-"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="show-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
@@ -1000,9 +1000,9 @@ new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; 
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|filelog|sentlog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
-about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
+about|version|depends|license|config-eng|config-spa)  second_option="help-about"; third_option="" ;;
 all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
- second_option="show-help"; third_option="" ;;
+ second_option="help-help"; third_option="" ;;
 *) echo $message_without_info ;  exit ;;
 esac
 $cmd_fwiptables $second_option
@@ -1026,7 +1026,7 @@ echo $head_waiting_help
 case "$second_option" in
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -info option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
-"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="show-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
@@ -1049,9 +1049,9 @@ new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; 
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|sentlog|filelog|autolog)  second_option="show-log"; third_option="" ;;
 hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc"; third_option="" ;;
-about|version|depends|license|config-eng|config-spa)  second_option="show-about"; third_option="" ;;
+about|version|depends|license|config-eng|config-spa)  second_option="help-about"; third_option="" ;;
 all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
- second_option="show-help"; third_option="" ;;
+ second_option="help-help"; third_option="" ;;
 *) echo $message_without_help ;  exit ;;
 esac
 $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
@@ -2379,8 +2379,9 @@ echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw 
 echo "$text_md  show-log           |  log-search log-ssh filelog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
 echo "$text_md                        protocols services show-default modify-default                           "
-echo "$text_md  show-about         |  about version depends config-eng config-spa license                      "
-echo "$text_md  show-help          |  all-help readme leeme notes options                                      "
+echo "$duo_md || || [ help-options ]   || ||  ### ###                                                          "
+echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
+echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$duo_md || ||  [ Examples ]  || ||  ### ###                                                              "
 echo "$text_md  $cmd_fwiptables -txt list                |  List iptables rules with output txt          "
@@ -2468,9 +2469,9 @@ echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw 
 echo "$text_md    show-log          | log-search log-ssh filelog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
-echo "$text_md    show-about        | about version depends examples-config                 "
+echo "$text_md    help-about        | about version depends examples-config                 "
 echo "$text_md                        config-eng config-spa license                         "
-echo "$text_md    show-help         | all-help help ayuda notes options info                "
+echo "$text_md    help-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
 echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
@@ -2485,9 +2486,10 @@ exit ; fi
 ####
 if [ "$first_option" = "help-options" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Show help options ] [ help-options.md ]"
-echo "$title_md                                   | help-options |                          " 
-echo "$text_md    show-help         | all-help help ayuda notes options info                "
-echo "$text_md                        group-options mini-options full-options               "
+echo "$title_md                                   | help-options |                                             "
+echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
+echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
+echo "$text_md                        group-options mini-options full-options                                  "
 echo "$text_md"
 echo "$text_md  | Group |  firewall-options     tool-options        show-options            "
 exit ; fi
@@ -2599,10 +2601,10 @@ echo "$brake_md"
 $cmd_fwiptables show-etc
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables show-about
+$cmd_fwiptables help-about
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables show-help
+$cmd_fwiptables help-help
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables notes
@@ -2759,10 +2761,10 @@ echo "$text_md $tab_lang_spanish                  Muestra archivos de red de /et
 echo "$text_md $tab show-log"
 echo "$text_md $tab_lang_english                  Show logs systems"
 echo "$text_md $tab_lang_spanish                  Muestra logs del sistema"
-echo "$text_md $tab show-about"
+echo "$text_md $tab help-about"
 echo "$text_md $tab_lang_english                  About"
 echo "$text_md $tab_lang_spanish                  Acerca de"
-echo "$text_md $tab show-help"
+echo "$text_md $tab help-help"
 echo "$text_md $tab_lang_english                  Help"
 echo "$text_md $tab_lang_spanish                  Ayuda"
 exit; fi
@@ -3710,13 +3712,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-log:
-##############################       english: show-about: options
-##############################       spanish: show-about: opciones
-#### :rutina-inicial-show-about:
+##############################       english: help-about: options
+##############################       spanish: help-about: opciones
+#### :rutina-inicial-help-about:
 ####
 ####
-if [ "$first_option" = "show-about" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show about ] [ show-about.md ] || ||"
+if [ "$first_option" = "help-about" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show about ] [ help-about.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show about ]"
 echo "$text_md [ spanish info ] [ Mostrar acerca de ]"
@@ -3745,14 +3747,14 @@ echo "$text_md $tab_lang_spanish           : Muestra la licencia gpl v2"
 exit; fi
 ####
 ####
-#### :rutina-final-show-about:
-##############################       english: show-help: options
-##############################       spanish: show-help: opciones
-#### :rutina-inicial-show-help:
+#### :rutina-final-help-about:
+##############################       english: help-help: options
+##############################       spanish: help-help: opciones
+#### :rutina-inicial-help-help:
 ####
 ####
-if [ "$first_option" = "show-help" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show help ] [ show-help.md ] || ||"
+if [ "$first_option" = "help-help" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show help ] [ help-help.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show help ]"
 echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
@@ -3784,7 +3786,7 @@ echo "$text_md $tab_lang_spanish           : Varias notas"
 exit; fi
 ####
 ####
-#### :rutina-final-show-help:
+#### :rutina-final-help-help:
 ##############################       english: notes: notes to configure iptables
 ##############################       spanish: notes: notas para configurar iptables
 #### :rutina-inicial-notes:
@@ -4121,8 +4123,8 @@ case "$selection" in
 "20 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
 "21 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
 "22 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
-"23 Show about")$cmd_fwiptables gui-menu-show-about ; exit ;;
-"24 Show help")$cmd_fwiptables gui-menu-show-help ; exit ;;
+"23 Show about")$cmd_fwiptables gui-menu-help-about ; exit ;;
+"24 Show help")$cmd_fwiptables gui-menu-help-help ; exit ;;
 #### 
 esac
 ####
@@ -4969,12 +4971,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-show-log:
-############################## english: gui-menu-show-about: gui with menu ##############################
-############################## spanish: gui-menu-show-about: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-show-about:
+############################## english: gui-menu-help-about: gui with menu ##############################
+############################## spanish: gui-menu-help-about: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-help-about:
 ####
 ####
-if [ "$first_option" = "gui-menu-show-about" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-help-about" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" \
 "depends" "config-eng" "config-spa" \
@@ -4984,8 +4986,8 @@ selection=$($command_zenity  $graphic_dimension \
 case $selection in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Help Menu") $cmd_fwiptables -gui help show-about ;;
-"Gui Info Menu") $cmd_fwiptables -gui info show-about ;;
+"Gui Help Menu") $cmd_fwiptables -gui help help-about ;;
+"Gui Info Menu") $cmd_fwiptables -gui info help-about ;;
 "about") $cmd_fwiptables -gui about ;;
 "version") $cmd_fwiptables -gui version ;;
 "depends") $cmd_fwiptables -gui depends ;;
@@ -5002,13 +5004,13 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-show-about:
-############################## english: gui-menu-show-help: gui with menu ##############################
-############################## spanish: gui-menu-show-help: gui con menu  ##############################
-#### :rutina-inicial-gui-menu-show-help:
+#### :rutina-final-gui-menu-help-about:
+############################## english: gui-menu-help-help: gui with menu ##############################
+############################## spanish: gui-menu-help-help: gui con menu  ##############################
+#### :rutina-inicial-gui-menu-help-help:
 ####
 ####
-if [ "$first_option" = "gui-menu-show-help" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-help-help" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" \
 "all-help" "readme" "leeme" "notes" "license" \
@@ -5018,8 +5020,8 @@ selection=$($command_zenity  $graphic_dimension \
 case $selection in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Help Menu") $cmd_fwiptables -gui help show-help ;;
-"Gui Info Menu") $cmd_fwiptables -gui info show-help ;;
+"Gui Help Menu") $cmd_fwiptables -gui help help-help ;;
+"Gui Info Menu") $cmd_fwiptables -gui info help-help ;;
 "mini-options")$cmd_fwiptables -gui mini-options ;;
 "full-options")$cmd_fwiptables -gui full-options ;;
 "all-help") $cmd_fwiptables -gui all-help ;;
@@ -5038,7 +5040,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-show-help:
+#### :rutina-final-gui-menu-help-help:
 ############################## english: gui-shell: graphic enviroment          ##############################
 ############################## spanish: gui-shell: entorno de comandos grafico ##############################
 #### :rutina-inicial-gui-shell:
@@ -5409,8 +5411,8 @@ case "$menuprincipal" in
 2100) clear ; $cmd_fwiptables cli show-hardware ;;
 2200) clear ; $cmd_fwiptables cli show-etc ;;
 2300) clear ; $cmd_fwiptables cli show-log ;;
-2400) clear ; $cmd_fwiptables cli show-about ;;
-2500) clear ; $cmd_fwiptables cli show-help ;;
+2400) clear ; $cmd_fwiptables cli help-about ;;
+2500) clear ; $cmd_fwiptables cli help-help ;;
 ################################
 0201) clear ; $cmd_fwiptables cli stop ;;
 0202) clear ; $cmd_fwiptables cli continue ;;
@@ -9977,8 +9979,8 @@ if [ "$second_option" = "tool-speed" ]; then $cmd_fwiptables tool-speed ; exit ;
 if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
 if [ "$second_option" = "show-etc" ]; then $cmd_fwiptables show-etc ; exit ; fi
 if [ "$second_option" = "show-log" ]; then $cmd_fwiptables show-log ; exit ; fi
-if [ "$second_option" = "show-about" ]; then $cmd_fwiptables show-about ; exit ; fi
-if [ "$second_option" = "show-help" ]; then $cmd_fwiptables show-help ; exit ; fi
+if [ "$second_option" = "help-about" ]; then $cmd_fwiptables help-about ; exit ; fi
+if [ "$second_option" = "help-help" ]; then $cmd_fwiptables help-help ; exit ; fi
 ####
 ####
 echo $give_cover
@@ -9996,8 +9998,8 @@ echo "$tab" "$tab"  "     tool-options   |  tool-sockets      tool-forward   too
 echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudo        tool-game       "
 echo "$tab" "$tab"  "                       tool-speed       tool-install   tool-blacklist   tool-dev        "
 echo "$tab" "$tab"  "                       tool-connect"
-echo "$tab" "$tab"  "     show-options   |  show-hardware     show-etc       show-log         show-about      "
-echo "$tab" "$tab"  "                       show-help"
+echo "$tab" "$tab"  "     show-options   |  show-hardware     show-etc       show-log         help-about      "
+echo "$tab" "$tab"  "                       help-help"
 echo
 echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
 exit; fi
