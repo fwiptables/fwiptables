@@ -9291,14 +9291,14 @@ $command_lsof -i | $command_grep -i  sshd
 ssh_file="/etc/ssh/sshd_config"
 echo " [ info ] [ Above config file ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
-else cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; fi
+else cat $ssh_file | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
 echo " [ info ] [ Above config directory ] [ if there are files: necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
 else for a in $($command_ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
 echo " [ info ] [ If connect from client with socks or proxy ]"
-echo " [ info ] [ socks://server:1080 ] [ http_proxy=server:1080 ] [ https_proxy=server:1080 ]"
+echo " [ info ] [ socks=user@server:1080 ] [ http_proxy=user@server:1080 ] [ https_proxy=user@server:1080 ]"
 exit; fi
 ####
 ####
@@ -9309,8 +9309,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ on: ssh server on port 1080 with active ssh tunnel ] || ||"
-if [ "$second_option" == "$NULL" ]; then echo " [ fail ] [ type: $name_fwiptables sshd-tunnel-on user@my-localhost ]"; exit ; fi
+echo "$header_ok [ $first_option ]  [ on: ssh server socks on port 1080 like active ssh tunnel ] || ||"
+if [ "$second_option" == "$NULL" ]; then echo " [ fail ] [ type: $name_fwiptables sshd-tunnel-on user@server ]"; exit ; fi
 echo " [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
 ssh -f -N -D 1080 "$second_option" || echo "error no tunnel"
 echo " [  ok  ] [ Now, tunnel ssh active in port 1080 ] [ $second_option ]"
