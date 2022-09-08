@@ -4,9 +4,9 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec
 
 
 
-
- 02. revisar tool-speed, quitando los que no son de ahi.  
- 01. cambios en la ayuda del tunel [ info ]. 
+ 03. 
+ 02. revisar tool-speed, quitando los que no son de ahi. HECHO
+ 01. cambios en la ayuda del tunel [ info ]. HECHO
 
  cambios en dev-fwiptables desarrollo 4.09
 

@@ -3551,12 +3551,6 @@ echo "$text_md $tab_lang_spanish           : Muestra la velocidad de el disco du
 echo "$text_md $tab speed-glx"
 echo "$text_md $tab_lang_english           : Show frammes for seconds with mesa graphicall"
 echo "$text_md $tab_lang_spanish           : Muestra fotogramas por segundo con graficos mesa"
-echo "$text_md $tab radio-mp3"
-echo "$text_md $tab_lang_english           : connect to one server mp3, see: show-default or modify-default"
-echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: show-default o modify-default"
-echo "$text_md $tab gpg-notes"
-echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
-echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
 exit; fi
 ####
 ####
@@ -9297,7 +9291,7 @@ $command_lsof -i | $command_grep -i  sshd
 ssh_file="/etc/ssh/sshd_config"
 echo " [ info ] [ Above config file ] [ necesary for tunnels ] [ options: gatewaysports and forwardings ]"
 if [ ! -f "$ssh_file" ] ; then echo " [ without file $ssh_file ]"
-else for a in $($command_ls "$ssh_file"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
+else cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
 echo " [ info ] [ Above config directory ] [ if there are files: necesary for tunnels ] [ options: gatewaysports and forwardings ]"
