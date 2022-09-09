@@ -695,7 +695,7 @@ echo "$text_md [ info ] [ command cli-menu:  ] [ $directory_binary/$name_fwiptab
 echo "$text_md [ info ] [ command gui-menu:  ] [ $directory_binary/$name_fwiptables-gui-menu  ]"
 echo "$text_md [ info ] [ command gui-shell: ] [ $directory_binary/$name_fwiptables-gui-shell ]"
 echo "$text_md [ info ] [ Grant privileges to user: ] [ $cmd_fwiptables sudofw-adduser user ]"
-echo "$text_md [  ok  ] [ Now. You are ready to run $name_fwiptables ]"
+echo "$text_md [  ok  ] [ Now. You are ready to run $cmd_fwiptables ]"
 exit; fi
 ####
 ####
@@ -6283,8 +6283,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ipforward-off
-#############################      english: list-alltables: list all rules
-#############################      spanish: list-alltables: list all rules 
+##########     english: list-alltables: list all rules         ##########
+##########     spanish: list-alltables: list todas las reglas  ##########
 #### :rutina-inicial-list-alltables:
 ####
 ####
@@ -6320,8 +6320,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-alltables:
-#############################  english: list4-ip: system script, the list option
-#############################  spanish: list4-ip: script de sistema, la opcion lista
+##########    english: list4-ip: The list option   ##########
+##########    spanish: list4-ip: La opcion lista   ##########
 #### :rutina-inicial-list:
 ####
 ####
@@ -6354,8 +6354,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list:
-############################ english: list6-ip: list ipv6 rules filter
-############################ spanish: list6-ip: lista reglas de filtros de ipv6
+##########    english: list6-ip: list ipv6 rules filter           ##########
+##########    spanish: list6-ip: lista reglas de filtros de ipv6  ##########
 #### :rutina-inicial-list6:
 ####
 ####
@@ -6390,8 +6390,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list6:
-#############################  english: status: system script, the list option
-#############################  spanish: status: script de sistema, la opcion lista
+##########    english: status: The list option ipv4 and ipv6    ##########
+##########    spanish: status: La opcion lista ipv4 y ipv6      ##########
 #### :rutina-inicial-status:
 ####
 ####
@@ -6414,8 +6414,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-satus:
-#############################  english: list-filter4: system script, the list option
-#############################  spanish: list-filter4: script de sistema, la opcion lista
+##########    english: list-filter4: The list option   ##########
+##########    spanish: list-filter4: La opcion lista   ##########
 #### :rutina-inicial-list-filter4:
 ####
 ####
@@ -6436,8 +6436,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-filter4:
-############################  english: list-forward: list iptables filter forward rules
-############################  spanish: list-forward: lista reglas de iptables filter forward
+##########    english: list-forward: list iptables filter forward rules       ##########
+##########    spanish: list-forward: lista reglas de iptables filter forward  ##########
 #### :rutina-inicial-list-forward:
 ####
 ####
@@ -6456,8 +6456,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forward:
-############################ english: list-filter6: list ipv6 rules filter
-############################ spanish: list-filter6: lista reglas de filtros de ipv6
+##########    english: list-filter6: list ipv6 rules filter           ##########
+##########    spanish: list-filter6: lista reglas de filtros de ipv6  ##########
 #### :rutina-inicial-list-filter6:
 ####
 ####
@@ -6478,8 +6478,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-filter6:
-############################  english: list-forward6: list iptables filter forward rules ipv6
-############################  spanish: list-forward6: lista reglas de iptables filter forward ipv6
+##########    english: list-forward6: list iptables filter forward rules ipv6        ##########
+##########    spanish: list-forward6: lista reglas de iptables filter forward ipv6   ##########
 #### :rutina-inicial-list-forward6:
 ####
 ####
@@ -6498,8 +6498,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forward6:
-############################ english: list-nat4: list NAT rules of ipv4
-############################ spanish: list-nat4: lista reglas de NAT de ipv4
+##########    english: list-nat4: list NAT rules of ipv4       ##########
+##########    spanish: list-nat4: lista reglas de NAT de ipv4  ##########
 #### :rutina-inicial-list-nat-4:
 ####
 ####
@@ -6518,8 +6518,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-nat-4:
-############################ english: list-nat6: list NAT rules of ipv6
-############################ spanish: list-nat6: lista reglas de NAT de ipv6
+##########    english: list-nat6: list NAT rules of ipv6       ##########
+##########    spanish: list-nat6: lista reglas de NAT de ipv6  ##########
 #### :rutina-inicial-list-nat6:
 ####
 ####
@@ -6539,8 +6539,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-nat6:
-############################# english: listnum: list option numerical filter ipv4
-############################# spanish: listnum: lista numeral filter ipv4
+##########    english: listnum: list option numerical filter ipv4   ##########
+##########    spanish: listnum: lista numeral filter ipv4           ##########
 #### :rutina-inicial-listnum:
 ####
 ####
@@ -6559,8 +6559,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-listnum:
-############################  english: list-forwardnum: list iptables filter forward rules in numerical
-############################  spanish: list-forwardnum: lista reglas de iptables filter forward in numeros
+##########    english: list-forwardnum: list iptables filter forward rules in numerical     ##########
+##########    spanish: list-forwardnum: lista reglas de iptables filter forward in numeros  ##########
 #### :rutina-inicial-list-forwardnum:
 ####
 ####
@@ -6579,8 +6579,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum:
-############################# english: listnum6: list option numerical filter ipv6
-############################# spanish: listnum6: lista numeral filter ipv6
+##########    english: listnum6: list option numerical filter ipv6   ##########
+##########    spanish: listnum6: lista numeral filter ipv6           ##########
 #### :rutina-inicial-listnum6:
 ####
 ####
