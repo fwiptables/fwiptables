@@ -708,7 +708,7 @@ exit; fi
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
-echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
+####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ info ] [ Upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
@@ -744,7 +744,7 @@ exit ; fi
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
-echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
+####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ info ] [ Upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
@@ -3121,8 +3121,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-output-interface:
-##############################       english: tool-sockets: options sockets
-##############################       spanish: tool-sockets: opciones sockets
+##########    english: tool-sockets: options sockets    ##########
+##########    spanish: tool-sockets: opciones sockets   ##########
 #### :rutina-inicial-tool-sockets:
 ####
 ####
@@ -3172,8 +3172,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-sockets:
-##############################       english: tool-game: options utils
-##############################       spanish: tool-game: opciones utiles
+##########    english: tool-game: options utils     ##########
+##########    spanish: tool-game: opciones utiles   ##########
 #### :rutina-inicial-tool-game:
 ####
 ####
@@ -3202,8 +3202,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-game:
-##############################       english: tool-connect: tool wifi
-##############################       spanish: tool-connect: herramienta wifi
+##########    english: tool-connect: tool wifi          ##########
+##########    spanish: tool-connect: herramienta wifi   ##########
 #### :rutina-inicial-tool-connect:
 ####
 ####
@@ -3232,8 +3232,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-connect:
-##############################       english: tool-rule: options for rules
-##############################       spanish: tool-rule: opciones de reglas
+##########    english: tool-rule: options for rules   ##########
+##########    spanish: tool-rule: opciones de reglas  ##########
 #### :rutina-inicial-tool-rule:
 ####
 ####
@@ -3256,8 +3256,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-rule:
-##############################       english: tool-forward: options ipforwading
-##############################       spanish: tool-forward: opciones ipforwading
+##########    english: tool-forward: options ipforwading   ##########
+##########    spanish: tool-forward: opciones ipforwading  ##########
 #### :rutina-inicial-tool-forward:
 ####
 ####
@@ -3280,8 +3280,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-forward:
-##############################       english: tool-sshd: options ipforwading
-##############################       spanish: tool-sshd: opciones ipforwading
+##########    english: tool-sshd: options ipforwading    ##########
+##########    spanish: tool-sshd: opciones ipforwading   ##########
 #### :rutina-inicial-tool-sshd:
 ####
 ####
@@ -3304,8 +3304,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-sshd:
-##############################       english: tool-icmp: options
-##############################       spanish: tool-cimp: opciones
+##########    english: tool-icmp: options    ##########
+##########    spanish: tool-cimp: opciones   ##########
 #### :rutina-inicial-tool-icmp:
 ####
 ####
@@ -3331,8 +3331,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-icmp:
-##############################       english: tool-tcp: options
-##############################       spanish: tool-tcp: opciones
+##########    english: tool-tcp: options   ##########
+##########    spanish: tool-tcp: opciones  ##########
 #### :rutina-inicial-tool-tcp:
 ####
 ####
@@ -3358,8 +3358,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-tcp:
-##############################       english: tool-udp: options
-##############################       spanish: tool-udp: opciones
+##########    english: tool-udp: options   ##########
+##########    spanish: tool-udp: opciones  ##########
 #### :rutina-inicial-tool-udp:
 ####
 ####
@@ -3388,8 +3388,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-udp:
-##############################       english: tool-nmap: options
-##############################       spanish: tool-nmap: opciones
+##########    english: tool-nmap: options   ##########
+##########    spanish: tool-nmap: opciones  ##########
 #### :rutina-inicial-tool-nmap:
 ####
 ####
@@ -3418,8 +3418,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-nmap:
-##############################       english: tool-sudo: options
-##############################       spanish: tool-sudo: opciones
+##########    english: tool-sudo: options   ##########
+##########    spanish: tool-sudo: opciones  ##########
 #### :rutina-inicial-tool-sudo:
 ####
 ####
@@ -3445,8 +3445,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-sudo:
-##############################       english: tool-install: options
-##############################       spanish: tool-install: opciones
+##########    english: tool-install: options   ##########
+##########    spanish: tool-install: opciones  ##########
 #### :rutina-inicial-tool-install:
 ####
 ####
@@ -3475,8 +3475,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-install:
-##############################       english: tool-blacklist: options
-##############################       spanish: tool-blacklist: opciones
+##########    english: tool-blacklist: options   ##########
+##########    spanish: tool-blacklist: opciones  ##########
 #### :rutina-inicial-tool-blacklist:
 ####
 ####
@@ -3499,8 +3499,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-blacklist:
-##############################       english: tool-dev: options
-##############################       spanish: tool-dev: opciones
+##########    english: tool-dev: options   ##########
+##########    spanish: tool-dev: opciones  ########## 
 #### :rutina-inicial-tool-dev:
 ####
 ####
@@ -3529,8 +3529,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-dev:
-##############################       english: tool-speed: options
-##############################       spanish: tool-speed: opciones
+##########    english: tool-speed: options    ##########
+##########    spanish: tool-speed: opciones   ##########
 #### :rutina-inicial-tool-speed:
 ####
 ####
@@ -3556,8 +3556,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-speed:
-##############################       english: tool-util: options
-##############################       spanish: tool-util: opciones
+##########    english: tool-util: options   ##########
+##########    spanish: tool-util: opciones  ##########
 #### :rutina-inicial-tool-util:
 ####
 ####
@@ -3580,8 +3580,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-speed:
-##############################       english: tool-computer: options
-##############################       spanish: tool-computer: opciones
+##########    english: tool-computer: options   ##########
+##########    spanish: tool-computer: opciones  ##########
 #### :rutina-inicial-tool-computer:
 ####
 ####
@@ -3604,8 +3604,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-computer:
-##############################       english: show-etc: options
-##############################       spanish: show-etc: opciones
+##########    english: show-etc: options   ##########
+##########    spanish: show-etc: opciones  ##########
 #### :rutina-inicial-show-etc:
 ####
 ####
@@ -3643,8 +3643,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-etc:
-##############################       english: show-hardware: options
-##############################       spanish: show-hardware: opciones
+##########    english: show-hardware: options   ##########
+##########    spanish: show-hardware: opciones  ##########
 #### :rutina-inicial-show-hardware:
 ####
 ####
@@ -3679,8 +3679,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-hardware:
-##############################       english: show-log: options
-##############################       spanish: show-log: opciones
+##########    english: show-log: options    ##########
+##########    spanish: show-log: opciones   ##########
 #### :rutina-inicial-show-log:
 ####
 ####
@@ -3709,8 +3709,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-log:
-##############################       english: help-about: options
-##############################       spanish: help-about: opciones
+##########    english: help-about: options   ##########
+##########    spanish: help-about: opciones  ##########
 #### :rutina-inicial-help-about:
 ####
 ####
@@ -3745,8 +3745,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-help-about:
-##############################       english: help-help: options
-##############################       spanish: help-help: opciones
+##########    english: help-help: options   ##########
+##########    spanish: help-help: opciones  ##########
 #### :rutina-inicial-help-help:
 ####
 ####
@@ -3784,8 +3784,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-help-help:
-##############################       english: notes: notes to configure iptables
-##############################       spanish: notes: notas para configurar iptables
+##########    english: notes: notes to configure iptables      ##########
+##########    spanish: notes: notas para configurar iptables   ##########
 #### :rutina-inicial-notes:
 ####
 ####
@@ -3854,8 +3854,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-notes:
-##############################       english: depends: depends for $name_fwiptables
-##############################       spanish: dependencias: dependencias para $name_fwiptables
+##########    english: depends: depends            ##########
+##########    spanish: dependencias: dependencias  ##########
 #### :rutina-inicial-depends:
 ####
 ####
