@@ -2398,8 +2398,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-full-options:
-##############################       english: firewall-options: firewall options       ##############################
-##############################       spanish: firewall-options: opciones de firewall   ##############################
+##########    english: firewall-options: firewall options       ##########
+##########    spanish: firewall-options: opciones de firewall   ##########
 #### :rutina-final-firewall-options:
 ####
 ####
@@ -2428,8 +2428,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-firewall-options:
-##############################       english: tool-options: firewall options       ##############################
-##############################       spanish: tool-options: opciones de firewall   ##############################
+##########    english: tool-options: firewall options       ##########
+##########    spanish: tool-options: opciones de firewall   ##########
 #### :rutina-final-tool-options:
 ####
 ####
@@ -2460,8 +2460,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-tool-options:
-##############################       english: show-options: options show           ##############################
-##############################       spanish: show-options: opciones de mostrar    ##############################
+##########       english: show-options: options show           ##########
+##########       spanish: show-options: opciones de mostrar    ##########
 #### :rutina-final-show-options:
 ####
 ####
@@ -2482,8 +2482,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-show-options:
-##############################       english: help-options: options show           ##############################
-##############################       spanish: help-options: opciones de mostrar    ##############################
+##########    english: help-options: options show           ##########
+##########    spanish: help-options: opciones de mostrar    ##########
 #### :rutina-final-show-options:
 ####
 ####
@@ -2499,8 +2499,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-show-options:
-##############################       english: all-help: long help        ##############################
-##############################       spanish: toda-opcion: larga ayuda   ##############################
+##########    english: all-help: long help        ##########
+##########    spanish: toda-opcion: larga ayuda   ##########
 #### :rutina-inicial-all-help:
 ####
 ####
@@ -2625,8 +2625,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-all-help:
-##############################       english: all-options: all options
-##############################       spanish: all-options: todas las opciones
+##########    english: all-options: all options          ##########
+##########    spanish: all-options: todas las opciones   ##########
 #### :rutina-inicial-all-options:
 ####
 ####
@@ -2641,8 +2641,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-all-options:
-##############################       english: names-config: list some config
-##############################       spanish: names-config: lista alguna config
+##########    english: names-config: list some config       ##########
+##########    spanish: names-config: lista alguna config    ##########
 #### :rutina-inicial-names-config:
 ####
 ####
@@ -2665,8 +2665,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-names-config:
-##############################       english: some-example: some example
-##############################       spanish: some-example: algun ejemplo
+##########    english: some-example: some example    ##########
+##########    spanish: some-example: algun ejemplo   ##########
 #### :rutina-inicial-some-example:
 ####
 ####
@@ -2689,8 +2689,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-some-example:
-##############################       english: group-options: some option
-##############################       spanish: group-options: alguna opcion
+##########    english: group-options: some option     ##########
+##########    spanish: group-options: alguna opcion   ##########
 #### :rutina-inicial-group-options:
 ####
 ####
@@ -2774,8 +2774,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-group-options:
-##############################       english: firewall-launch: options
-##############################       spanish: firewall-launch: opciones
+##########    english: firewall-launch: options    ##########
+##########    spanish: firewall-launch: opciones   ##########
 #### :rutina-inicial-firewall-launch:
 ####
 ####
@@ -2885,8 +2885,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-launch:
-##############################       english: firewall-control: options
-##############################       spanish: firewall-control: opciones
+##########    english: firewall-control: options    ##########
+##########    spanish: firewall-control: opciones   ##########
 #### :rutina-inicial-firewall-control:
 ####
 ####
@@ -2927,8 +2927,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-control:
-##############################       english: firewall-list: options
-##############################       spanish: firewall-list: opciones
+##########    english: firewall-list: options    ##########
+##########    spanish: firewall-list: opciones   ##########
 #### :rutina-inicial-firewall-list:
 ####
 ####
@@ -3008,8 +3008,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-list:
-##############################       english: list-numrules: options
-##############################       spanish: list-numrules: opciones
+##########    english: list-numrules: options    ##########
+##########    spanish: list-numrules: opciones   ##########
 #### :rutina-inicial-list-numrules:
 ####
 ####
@@ -3031,8 +3031,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-numrules:
-##############################       english: firewall-custom: options
-##############################       spanish: firewall-custom: opciones
+##########    english: firewall-custom: options   ##########
+##########    spanish: firewall-custom: opciones  ##########
 #### :rutina-inicial-firewall-custom:
 ####
 ####
@@ -3073,8 +3073,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-custom:
-##############################       english: output-interface: options
-##############################       spanish: user-intarface: opciones
+##########    english: output-interface: options   ##########
+##########    spanish: user-intarface: opciones    ##########
 #### :rutina-inicial-output-interface:
 ####
 ####
