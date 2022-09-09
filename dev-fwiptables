@@ -40,8 +40,8 @@
 ####   Email: fwiptables@gmx.com
 ####
 ####
-##############################       english: are you root: uid 0 ?                ##############################
-##############################       spanish: eres admnistrador: identificador 0 ? ##############################
+##########    english: are you root: uid 0 ?                ##########
+##########    spanish: eres admnistrador: identificador 0 ? ##########
 ####
 ####
 if [ "$(id -u)" = "0" ] ; then echo -n ; else
@@ -52,8 +52,8 @@ echo " [ fail ] [ Be root to work with fwiptables in your system ] [ Try with ro
 exit ; fi
 ####
 ####
-##############################     english name, description and version    ##############################
-##############################     spanish: nombre, descripcion y version   ##############################
+##########     english name, description and version    ##########
+##########     spanish: nombre, descripcion y version   ##########
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
@@ -64,8 +64,8 @@ fprogram="Fran FireWall FWiptables Generator" ;
 fversion="4.08-Bilbao-Developer-edition" ;
 ####
 ####
-##############################    english: options priority        ##############################
-##############################    spanish: prioridad de opciones   ##############################
+##########    english: options priority        ##########
+##########    spanish: prioridad de opciones   ##########
 ####
 ####
 command_sed="$(command -v sed)"
@@ -83,8 +83,8 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
 ####
 ####
-##############################   english: profile y support X11       ##############################
-##############################   spanish: profile y soporte de X11    ##############################
+##########   english: profile y support X11       ##########
+##########   spanish: profile y soporte de X11    ##########
 ####
 ####
 ####     #### english: program version            #### spanish: Version del programa
@@ -129,8 +129,8 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
-#######################  english: permanent files: files and folders from fwiptables          #########################
-#######################  spanish: archivos permanentes: archivos y carpetas desde fwiptables  #########################
+##########  english: permanent files: files and folders from fwiptables          ##########
+##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 ####
 ####
 #### english: permanent files: and where are file path: name, command and icon
@@ -172,8 +172,8 @@ output_filelog="$directory_log/$name_fwiptables-filelog"
 output_autolog="$directory_log/$name_fwiptables-autolog"
 ####
 ####
-##############################    english: temporal files: files for fwiptables ##############################
-##############################    spanish: archivos temporales: de fwiptables   ##############################
+##########    english: temporal files: files for fwiptables ##########
+##########    spanish: archivos temporales: de fwiptables   ##########
 ####
 ####
 #### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$name_fwiptables-$fversion-tmp"
@@ -200,8 +200,8 @@ output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
-##############################   english: if sane config directory                       #############################
-##############################   spanish: comprobar sanos directorios de configuracion   #############################
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
 ####
 ####
 command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
@@ -216,8 +216,8 @@ if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/nu
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
 ####
 ####
-##############################   english: the basic system variables         ##############################
-##############################   spanish: las variables basicas del sistema  ##############################
+##########   english: the basic system variables         ##########
+##########   spanish: las variables basicas del sistema  ##########
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -373,8 +373,8 @@ default_security="mini-options"
 fwiptables_installed=""
 ####
 ####
-##############################  english: variables: variables to declare     ##############################
-##############################  spanish: variables: variables para declarar  ##############################
+##########  english: variables: variables to declare     ##########
+##########  spanish: variables: variables para declarar  ##########
 ####
 ####
 ####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
@@ -414,8 +414,8 @@ net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
 ####
 ####
-##############################       english: Update variables             ################################### 
-##############################       spanish: Actualiza variables          ###################################
+##########    english: Update variables             ##########
+##########    spanish: Actualiza variables          ##########
 ####
 ####
 ####     #### english: variable to knows if fwiptables is installed
@@ -441,8 +441,8 @@ if [ -f $directory_default/fwiptables-default ] ; then . $directory_default/fwip
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
-##############################   english: intro: show intro      ##############################
-##############################   spanish: intro: muestra intro   ##############################
+##########   english: intro: show intro      ##########
+##########   spanish: intro: muestra intro   ##########
 #### :rutina-inicial-intro:
 ####
 ####
@@ -489,8 +489,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-intro:
-##############################   english: search programs: programs path           #####################
-##############################   spanish: busca los programas: ruta de programas   #####################
+##########   english: search programs: programs path           ##########
+##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
 ####
 ####
@@ -568,8 +568,8 @@ command_halt="$(command -v halt)"
 ####
 ####
 #### :rutina-final-command:
-##############################      english: search favorite browser: favorite browser     #####################
-##############################      spanish: busca preferido navegador: favorite browser   #####################
+##########      english: search favorite browser: favorite browser     ##########
+##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
 ####
 ####
@@ -581,8 +581,8 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 ####
 ####
 #### :rutina-inicial-favorite-text-browser:
-##############################      english: search favorite dhcp Discover ip net     #####################
-##############################      spanish: busca preferido dhcp Descubre la ip      #####################
+##########      english: search favorite dhcp Discover ip net     ##########
+##########      spanish: busca preferido dhcp Descubre la ip      ##########
 #### :rutina-inicial-favorite-dhcp-command:
 ####
 ####
@@ -593,8 +593,8 @@ if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp_co
 ####
 ####
 #### :rutina-final-favorite-dhcp-command:
-##############################      english: search favorite date: favorite date command        #####################
-##############################      spanish: busca preferida fecha: favorita comando de fecha   #####################
+##########      english: search favorite date: favorite date command        ##########
+##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
@@ -605,8 +605,8 @@ if [ "$command_ntpdate" = "$NULL" ]; then $nada ; else favorite_date_command="$c
 ####
 ####
 #### :rutina-final-favorite-date-command:
-##############################      english: search favorite music player            #####################
-##############################      spanish: busca preferida reproductor de musica   #####################
+##########      english: search favorite music player            ##########
+##########      spanish: busca preferida reproductor de musica   ##########
 #### :rutina-inicial-favorite-music-command:
 ####
 ####
@@ -616,8 +616,8 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 ####
 #### :rutina-final-favorite-music-command:
-##############################   english: uninstall:      fwiptables uninstall      ###########################################
-##############################   spanish: desinstalador:  fwiptables desistalador   ###########################################
+##########   english: uninstall:      fwiptables uninstall      ##########
+##########   spanish: desinstalador:  fwiptables desistalador   ##########
 #### :rutina-inicial-uninstall:
 ####
 ####
@@ -625,7 +625,6 @@ if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ] || ||"
 echo "$text_md [ info ] [ $name_fwiptables uninstalling.. ]"
 if  [ -f $directory_binary/$cmd_fwiptables ]; then
-rm $directory_binary/$name_fwiptables &> /dev/null
 rm $directory_binary/$cmd_fwiptables &> /dev/null
 rm $directory_binary/$name_fwiptables-cli-menu &> /dev/null
 rm $directory_binary/$name_fwiptables-gui-menu &> /dev/null
@@ -637,8 +636,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-uninstall:
-##############################       english: install:    fwiptables install          ###########################################
-##############################       spanish: instalador: fwiptables instalador       ###########################################
+##########       english: install:    fwiptables install          ##########
+##########       spanish: instalador: fwiptables instalador       ##########
 #### :rutina-inicial-install:
 ####
 ####
@@ -701,8 +700,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##############################       english: upgrade: upgrade in the file /usr/bin/fwiptables        ##############################
-##############################       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables    ##############################
+##########       english: upgrade: upgrade in the file /usr/bin/fwiptables        ##########
+##########       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables    ##########
 #### :rutina-inicial-upgrade:
 ####
 ####
@@ -737,8 +736,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-upgrade:
-#########################   english: dev-upgrade: upgrade in the file /usr/bin/fwiptables       ##############################
-#########################   spanish: dev-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##############################
+##########    english: dev-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: dev-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
 #### :rutina-inicial-dev-upgrade:
 ####
 ####
@@ -773,8 +772,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-dev-upgrade:
-##############################       english: Notice Installer with intro      ###################################
-##############################       spanish: noticia de Instalador con intro  ###################################
+##########    english: Notice Installer with intro      ##########
+##########    spanish: noticia de Instalador con intro  ##########
 #### :rutina-inicial-notice:
 ####
 ####
@@ -783,13 +782,13 @@ echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables";
 ####
 ####
 #### :rutina-final-notice:
-##############################    english: ALIAS  simple y firewall y campus       ##############################
-##############################    spanish: ALIAS  simple y cortafuegos y campo     ##############################
+##########    english: ALIAS  simple y firewall y campus       ##########
+##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
 ####
 ####
-##############################     ALIAS SIMPLE
-##############################     ALIAS SIMPLE
+##########     ALIAS SIMPLE
+##########     ALIAS SIMPLE
 ####
 ####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
@@ -882,8 +881,8 @@ $cmd_fwiptables regen-config ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
-##############################     ALIAS CAMPUS
-##############################     ALIAS CAMPUS
+##########    ALIAS CAMPUS
+##########    ALIAS CAMPUS
 #### :rutina-inicial-alias-campus:
 ####
 ####
@@ -1097,8 +1096,8 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
 #### :rutina-final-alias-campus:
-##############################     english: autolog:         ###################################
-##############################     spanish: autoguardado     ###################################
+##########     english: autolog:         ##########
+##########     spanish: autoguardado     ##########
 #### :rutina-inicial-allow-autolog:
 ####
 ####
@@ -1111,8 +1110,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 #### :rutina-final-allow-autolog:
-########################   english: regen-config: regen-config template wizard files       #############################
-########################   spanish: regen-config: regen-configera template wizard archivos #############################
+##########   english: regen-config: regen-config template wizard files       ##########
+##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
 ####
 ####
@@ -1364,8 +1363,8 @@ eng82=$(echo "$cinco .......... END Optional options .......... .......... #")
 spa82=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
 ####
 ####
-##############################   english: continue with autogen defaults configs cfg
-##############################   spanish: continua con auto genera configs cfg por defecto
+##########   english: continue with autogen defaults configs cfg
+##########   spanish: continua con auto genera configs cfg por defecto
 ####
 ####
 #### english: where save default files #### spanish: donde se guardan los archivos
@@ -1596,8 +1595,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-regen-config:
-##############################  english:  sane variables: for working sane         ############################## 
-##############################  spanish:  sana variables: para funcionamiento sano ##############################
+##########  english:  sane variables: for working sane         ########## 
+##########  spanish:  sana variables: para funcionamiento sano ##########
 #### :rutina-inicial-sane:
 ####
 ####
@@ -1668,8 +1667,8 @@ esac
 ####
 ####
 #### :rutina-final-sane:
-########################################       english: autosave: autosave of firewall to restore standard rules
-########################################       english: autosave: autoguardado de firewall para recuperador de reglas estandar
+##########    english: autosave: autosave of firewall to restore standard rules                 ##########
+##########    english: autosave: autoguardado de firewall para recuperador de reglas estandar   ##########
 #### :rutina-inicial-autosave:
 ####
 ####
@@ -1687,9 +1686,8 @@ $cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 #### :rutina-final-autosave:
-##############################      english: ready system rules con its option               #####################
-##############################      spanish: preprara reglas del sistema con sus opciones    #####################
-#### :rutina-inicial-custom-rules:
+##########    english: ready system rules con its option               ##########
+##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
 ####
 ####   #### english: The first        firewall of system  
@@ -1702,8 +1700,9 @@ $cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 ####   #### spanish: cortafuego del sistema custom:
 ####
 ####
-##############################   english: custom firewall
-##############################   spanish: custom cortafuegos
+##########   english: custom firewall      ##########
+##########   spanish: custom cortafuegos   ##########
+#### :rutina-inicial-custom-rules:
 ####
 ####
 if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load
@@ -1727,8 +1726,10 @@ exit; fi
 fi
 ####
 ####
-##############################   english: system firewall
-##############################   spanish: cortafuegos del sistema
+#### :rutina-final-custom-rules:
+##########   english: system firewall           ##########
+##########   spanish: cortafuegos del sistema   ##########
+#### :rutina-inicial-system-rules:
 ####
 ####
 ####   #### english: firewall of system off-line:
@@ -2292,9 +2293,9 @@ server_port_tcp="ssh,5432,3306,3360" ;
 fi
 ####
 ####
-#### :rutina-final-custom-rules:
-##############################       english: mini-options: wellcome with semi help
-##############################       spanish: mini-options: bienvenida con semi ayuda
+#### :rutina-final-system-rules:
+##########    english: mini-options: wellcome with semi help    ##########
+##########    spanish: mini-options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-mini-options:
 ####
 ####
@@ -2333,8 +2334,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-mini-options:
-##############################       english: options: and full-options: wellcome with semi help
-##############################       spanish: options: and full-options: bienvenida con semi ayuda
+##########    english: options: and full-options: wellcome with semi help    ##########
+##########    spanish: options: and full-options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-full-options:
 ####
 ####
