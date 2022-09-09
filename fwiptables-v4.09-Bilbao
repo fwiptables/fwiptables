@@ -4553,8 +4553,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-icmp:
-##########    english: gui-menu-tool-udp: gui with menu ##############################
-##########    spanish: gui-menu-tool-udp: gui con menu  ##############################
+##########    english: gui-menu-tool-udp: gui with menu   ##########
+##########    spanish: gui-menu-tool-udp: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-udp:
 ####
 ####
@@ -4694,8 +4694,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-game:
-############################## english: gui-menu-tool-speed: gui with menu ##############################
-############################## spanish: gui-menu-tool-speed: gui con menu  ##############################
+##########    english: gui-menu-tool-speed: gui with menu    ##########
+##########    spanish: gui-menu-tool-speed: gui con menu     ##########
 #### :rutina-inicial-gui-menu-tool-speed:
 ####
 ####
@@ -4728,8 +4728,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-speed:
-############################## english: gui-menu-tool-util: gui with menu ##############################
-############################## spanish: gui-menu-tool-util: gui con menu  ##############################
+##########    english: gui-menu-tool-util: gui with menu   ##########
+##########    spanish: gui-menu-tool-util: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-util:
 ####
 ####
@@ -4762,8 +4762,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-util:
-############################## english: gui-menu-tool-install: gui with menu ##############################
-############################## spanish: gui-menu-tool-install: gui con menu  ##############################
+##########    english: gui-menu-tool-install: gui with menu   ##########
+##########    spanish: gui-menu-tool-install: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-install:
 ####
 ####
@@ -4794,8 +4794,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-install:
-############################## english: gui-menu-tool-blacklist: gui with menu ##############################
-############################## spanish: gui-menu-tool-blacklist: gui con menu  ##############################
+##########    english: gui-menu-tool-blacklist: gui with menu   ##########
+##########    spanish: gui-menu-tool-blacklist: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-blacklist:
 ####
 ####
@@ -4829,8 +4829,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-blacklist:
-############################## english: gui-menu-tool-dev: gui with menu ##############################
-############################## spanish: gui-menu-tool-dev: gui con menu  ##############################
+##########    english: gui-menu-tool-dev: gui with menu   ##########
+##########    spanish: gui-menu-tool-dev: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-dev:
 ####
 ####
@@ -4863,8 +4863,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-dev:
-############################## english: gui-menu-show-hardware: gui with menu ##############################
-############################## spanish: gui-menu-show-hardware: gui con menu  ##############################
+##########    english: gui-menu-show-hardware: gui with menu   ##########
+##########    spanish: gui-menu-show-hardware: gui con menu    ##########
 #### :rutina-inicial-gui-menu-show-hardware:
 ####
 ####
@@ -4898,8 +4898,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-show-hardware:
-############################## english: gui-menu-show-etc: gui with menu ##############################
-############################## spanish: gui-menu-show-etc: gui con menu  ##############################
+##########    english: gui-menu-show-etc: gui with menu   ##########
+##########    spanish: gui-menu-show-etc: gui con menu    ##########
 #### :rutina-inicial-gui-menu-show-etc:
 ####
 ####
@@ -4935,8 +4935,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-show-etc:
-############################## english: gui-menu-show-log: gui with menu ##############################
-############################## spanish: gui-menu-show-log: gui con menu  ##############################
+##########    english: gui-menu-show-log: gui with menu   ##########
+##########    spanish: gui-menu-show-log: gui con menu    ##########
 #### :rutina-inicial-gui-menu-show-log:
 ####
 ####
@@ -4969,8 +4969,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-show-log:
-############################## english: gui-menu-help-about: gui with menu ##############################
-############################## spanish: gui-menu-help-about: gui con menu  ##############################
+##########    english: gui-menu-help-about: gui with menu   ##########
+##########    spanish: gui-menu-help-about: gui con menu    ##########
 #### :rutina-inicial-gui-menu-help-about:
 ####
 ####
@@ -5003,8 +5003,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-help-about:
-############################## english: gui-menu-help-help: gui with menu ##############################
-############################## spanish: gui-menu-help-help: gui con menu  ##############################
+##########    english: gui-menu-help-help: gui with menu    ##########
+##########    spanish: gui-menu-help-help: gui con menu     ##########
 #### :rutina-inicial-gui-menu-help-help:
 ####
 ####
@@ -5039,8 +5039,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-help-help:
-############################## english: gui-shell: graphic enviroment          ##############################
-############################## spanish: gui-shell: entorno de comandos grafico ##############################
+##########    english: gui-shell: graphic enviroment            ##########
+##########    spanish: gui-shell: entorno de comandos grafico   ##########
 #### :rutina-inicial-gui-shell:
 ####
 ####
@@ -5176,8 +5176,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gui-shell:
-##############################       english: cli-menu: Manage list rules with one text menu
-##############################       spanish: cli-menu: Maneja lista de reglas con un menu de texto
+##########    english: cli-menu: Manage list rules with one text menu          ##########
+##########    spanish: cli-menu: Maneja lista de reglas con un menu de texto   ##########
 #### :rutina-inicial-cli-menu:
 ####
 ####
@@ -5384,7 +5384,8 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 #### 
 #### 
 case "$menuprincipal" in
-################################
+##########
+##########
 0000) clear ; $cmd_fwiptables info ;;
 0100) clear ; $cmd_fwiptables cli options ;;
 0200) clear ; $cmd_fwiptables cli firewall-control ;;
@@ -5411,7 +5412,8 @@ case "$menuprincipal" in
 2300) clear ; $cmd_fwiptables cli show-log ;;
 2400) clear ; $cmd_fwiptables cli help-about ;;
 2500) clear ; $cmd_fwiptables cli help-help ;;
-################################
+##########
+##########
 0201) clear ; $cmd_fwiptables cli stop ;;
 0202) clear ; $cmd_fwiptables cli continue ;;
 0203) clear ; $cmd_fwiptables cli reset ;;
@@ -5635,8 +5637,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-cli-menu:
-##############################       english: text-pause: do pause 
-##############################       spanish: text-pause: hace pausa
+##########    english: text-pause: do pause     ##########
+##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
 ####
 ####
@@ -5646,8 +5648,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-text-pause:
-##############################       english: version: system script, the version option
-##############################       spanish: version: script de sistema, la opcion mostrar version
+##########    english: version: system script, the version option              ##########
+##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
 ####
 ####
@@ -5680,8 +5682,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-version:
-##############################       english: examples-config: system script to show config files examples
-##############################       spanish: examples-config: script de sistema para mostrar ejemplos de configuraciones
+##########     english: examples-config: Show config files examples            ##########
+##########     spanish: examples-config: Muestra ejemplos de configuraciones   ##########
 #### :rutina-inicial-examples-config:
 ####
 ####
@@ -5818,8 +5820,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-examples-config:
-##############################       english: code: source from loop
-##############################       spanish: code: fuente de la rutina
+##########     english: code: source from loop     ##########
+##########     spanish: code: fuente de la rutina  ##########
 #### :rutina-inicial-code:
 ####
 ####
@@ -5848,8 +5850,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-code:
-##############################       english: license: license gpl v2
-##############################       spanish: license: license gpl v2
+##########    english: license: license gpl v2   ##########
+##########    spanish: license: license gpl v2   ##########
 #### :rutina-inicial-license:
 ####
 ####
@@ -5861,8 +5863,8 @@ exit;  fi
 ####
 ####
 #### :rutina-final-license:
-##############################       english: howto-upgrade: upgrade in the file /usr/bin/fwiptables
-##############################       spanish: howto-upgrade: actualiza en el archivo /usr/bin/fwiptables
+##########    english: howto-upgrade: upgrade in its file path    ##########
+##########    spanish: howto-upgrade: actualiza en su ruta        ##########
 #### :rutina-inicial-howto-upgrade:
 ####
 ####
@@ -5882,8 +5884,8 @@ exit;  fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
-#############################      english: blacklist-list:
-#############################      spanish: blacklist-list:
+##########      english: blacklist-list: lists for hosts dropped       ##########
+##########      spanish: blacklist-list: listas para hosts denegados   ##########
 #### :rutina-inicial-blacklist-list:
 ####
 ####
@@ -5937,8 +5939,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-blacklist-list:
-#############################      english: blacklist-on
-#############################      spanish: blacklist-on
+##########    english: blacklist-on: Active one list for drop hosts        ##########
+##########    spanish: blacklist-on: Activa una lista para host denegados  ##########
 #### :rutina-inicial-blacklist-on:
 ####
 ####
@@ -6000,8 +6002,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-blacklist-on:
-#############################      english: blacklist-off:
-#############################      spanish: blacklist-off:
+##########    english: blacklist-off: Deactive lists from drop hosts       ##########
+##########    spanish: blacklist-off: Desactiva listas de denegadas hosts  ##########
 #### :rutina-inicial-blacklist-off:
 ####
 ####
@@ -6024,8 +6026,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-blacklist-off:
-#############################       english: eraserules: system script, the erase rules option
-#############################       spanish: eraserules: script de sistema, la opcion borra reglas
+##########    english: eraserules: Erase rules option   ##########
+##########    spanish: eraserules: Opcion borra reglas  ##########
 #### :rutina-inicial-eraserules:
 ####
 ####
@@ -6144,8 +6146,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules:
-#############################       english: info-route: system script, the route option
-#############################       spanish: info-route: script de sistema, la opcion route
+##########     english: info-route: The route option   ##########
+##########     spanish: info-route: La opcion route    ##########
 #### :rutina-inicial-info-route:
 ####
 ####
@@ -6164,8 +6166,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-info-route:
-#############################       english: ss: system script, the sockets option
-#############################       spanish: ss: script de sistema, la opcion sockets
+##########    english: ss: The sockets option  ##########
+##########    spanish: ss: La opcion sockets   ##########
 #### :rutina-inicial-ss:
 ####
 ####
@@ -6180,8 +6182,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ss:
-#############################       english: lsof: system script, the lsof option
-#############################       spanish: lsof: script de sistema, la lsof sockets
+##########     english: lsof: The lsof option  ##########
+##########     spanish: lsof: La lsof sockets  ##########
 #### :rutina-inicial-lsof:
 ####
 ####
@@ -6196,8 +6198,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lsof:
-#############################      english: netstat: system script, the netstat sockets
-#############################      spanish: netstat: script de sistema, el netstat sockets
+##########     english: netstat: The netstat sockets  ##########
+##########     spanish: netstat: El netstat sockets   ##########
 #### :rutina-inicial-netstat:
 ####
 ####
@@ -6210,8 +6212,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-netstat:
-#############################      english: info-listen: system script, the netstat sockets
-#############################      spanish: info-listen: script de sistema, el netstat sockets
+##########     english: info-listen: The netstat sockets to listen    ##########
+##########     spanish: info-listen: El netstat sockets a la escucha  ##########
 #### :rutina-inicial-info-listen:
 ####
 ####
@@ -6227,8 +6229,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-listen:
-#############################      english: info-proxy: system script, the netstat sockets
-#############################      spanish: info-proxy: script de sistema, el netstat sockets
+##########    english: info-proxy: Info about proxy    ##########
+##########    spanish: info-proxy: Informacion proxy   ##########
 #### :rutina-inicial-info-proxy:
 ####
 ####
@@ -6241,8 +6243,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-proxy:
-#############################      english: netstat-nat: system script, the netstat sockets
-#############################      spanish: netstat-nat: script de sistema, el netstat sockets
+##########    english: netstat-nat: netstat nat sockets   ##########
+##########    spanish: netstat-nat: netstat nat sockets   ##########
 #### :rutina-inicial-netstat-nat:
 ####
 ####
@@ -6255,8 +6257,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-netstat-nat:
-#############################      english: ipforward-on: active ip forward
-#############################      spanish: ipforward-on: activa ip forward
+##########      english: ipforward-on: active ip forward  ##########
+##########      spanish: ipforward-on: activa ip forward  ##########
 #### :rutina-inicial-ipforward-on:
 ####
 ####
@@ -6268,8 +6270,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ipforward-on:
-#############################      english: ipforward-off: active ip forward
-#############################      spanish: ipforward-off: activa ip forward
+##########     english: ipforward-off: active ip forward   ##########
+##########     spanish: ipforward-off: activa ip forward   ##########
 #### :rutina-inicial-ipforward-off:
 ####
 ####
