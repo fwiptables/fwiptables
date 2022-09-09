@@ -3923,8 +3923,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-depends:
-############################## english: -gui: Manage gui con three options  ##############################
-############################## spanish: -gui: Maneja gui con tres opciones  ##############################
+##########    english: -gui: Manage gui con three options  ##########
+##########    spanish: -gui: Maneja gui con tres opciones  ##########
 ####
 ####
 #### english: with third option
@@ -4010,8 +4010,8 @@ esac
 exit; fi
 ####
 ####
-############################## english: -gui: with second option ##############################
-############################## spanish: -gui: con segunda opcion ##############################
+##########    english: -gui: with second option    ##########
+##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $nada
@@ -4071,8 +4071,8 @@ esac
 exit; fi
 ####
 ####
-############################## english: -gui: without more options ##############################
-############################## spanish: -gui: sin mas opcion       ##############################
+##########    english: -gui: without more options    ##########
+##########    spanish: -gui: sin mas opcion          ##########
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
@@ -4081,8 +4081,8 @@ $command_zenity  --forms $graphic_dimension --title="Gui Output || $cmd_fwiptabl
 exit; fi
 ####
 ####
-############################## english: gui-menu: gui menu general: gui con menu  ##############################
-############################## spanish: gui-menu: gui menu general: gui con menu  ##############################
+##########    english: gui-menu: gui menu general: gui con menu  ##########
+##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
 ####
 ####
@@ -4131,8 +4131,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu:
-############################## english: gui-menu-firewall-launch: gui with menu ##############################
-############################## spanish: gui-menu-firewall-launch: gui con menu  ##############################
+##########   english: gui-menu-firewall-launch: gui with menu    ##########
+##########   spanish: gui-menu-firewall-launch: gui con menu     ##########
 #### :rutina-inicial-gui-menu-firewall-launch:
 ####
 ####  
@@ -4198,8 +4198,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-launch:
-############################## english: gui-menu-firewall-control: gui with menu ##############################
-############################## spanish: gui-menu-firewall-control: gui con menu  ##############################
+##########    english: gui-menu-firewall-control: gui with menu   ##########
+##########    spanish: gui-menu-firewall-control: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-control:
 ####
 ####
@@ -4237,8 +4237,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-control:
-############################## english: gui-menu-firewall-list: gui with menu ##############################
-############################## spanish: gui-menu-firewall-list: gui con menu  ##############################
+##########    english: gui-menu-firewall-list: gui with menu   ##########
+##########    spanish: gui-menu-firewall-list: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-list:
 ####
 ####
@@ -4286,8 +4286,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-list:
-############################## english: gui-menu-firewall-custom: gui with menu ##############################
-############################## spanish: gui-menu-firewall-custom: gui con menu  ##############################
+##########    english: gui-menu-firewall-custom: gui with menu   ##########
+##########    spanish: gui-menu-firewall-custom: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-custom:
 ####
 ####
@@ -4340,8 +4340,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-custom:
-############################## english: gui-menu-tool-connect: gui with menu ##############################
-############################## spanish: gui-menu-tool-connect: gui con menu  ##############################
+##########    english: gui-menu-tool-connect: gui with menu   ##########
+##########    spanish: gui-menu-tool-connect: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-connect:
 ####
 ####
@@ -4381,8 +4381,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-connect:
-############################## english: gui-menu-tool-rule: gui with menu ##############################
-############################## spanish: gui-menu-tool-rule: gui con menu  ##############################
+##########    english: gui-menu-tool-rule: gui with menu   ##########
+##########    spanish: gui-menu-tool-rule: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-rule:
 ####
 ####
@@ -4412,8 +4412,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-rule:
-############################## english: gui-menu-tool-sockets: gui with menu ##############################
-############################## spanish: gui-menu-tool-sockets: gui con menu  ##############################
+##########    english: gui-menu-tool-sockets: gui with menu   ##########
+##########    spanish: gui-menu-tool-sockets: gui con menu    ########## 
 #### :rutina-inicial-gui-menu-tool-sockets:
 ####
 ####
@@ -4453,8 +4453,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-sockets:
-############################## english: gui-menu-tool-forward: gui with menu ##############################
-############################## spanish: gui-menu-tool-forward: gui con menu  ##############################
+##########    english: gui-menu-tool-forward: gui with menu   ##########
+##########    spanish: gui-menu-tool-forward: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-forward:
 ####
 ####
@@ -4484,8 +4484,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-forward:
-############################## english: gui-menu-tool-sshd: gui with menu ##############################
-############################## spanish: gui-menu-tool-sshd: gui con menu  ##############################
+##########    english: gui-menu-tool-sshd: gui with menu   ##########
+##########    spanish: gui-menu-tool-sshd: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-sshd:
 ####
 ####
@@ -4517,8 +4517,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-sshd:
-############################## english: gui-menu-tool-icmp: gui with menu ##############################
-############################## spanish: gui-menu-tool-icmp: gui con menu  ##############################
+##########    english: gui-menu-tool-icmp: gui with menu   ##########
+##########    spanish: gui-menu-tool-icmp: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-icmp:
 ####
 ####
@@ -4553,8 +4553,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-icmp:
-############################## english: gui-menu-tool-udp: gui with menu ##############################
-############################## spanish: gui-menu-tool-udp: gui con menu  ##############################
+##########    english: gui-menu-tool-udp: gui with menu ##############################
+##########    spanish: gui-menu-tool-udp: gui con menu  ##############################
 #### :rutina-inicial-gui-menu-tool-udp:
 ####
 ####
@@ -4590,8 +4590,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-udp:
-############################## english: gui-menu-tool-tcp: gui with menu ##############################
-############################## spanish: gui-menu-tool-tcp: gui con menu  ##############################
+##########    english: gui-menu-tool-tcp: gui with menu    ##########
+##########    spanish: gui-menu-tool-tcp: gui con menu     ##########
 #### :rutina-inicial-gui-menu-tool-tcp:
 ####
 ####
@@ -4624,8 +4624,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-tcp:
-############################## english: gui-menu-tool-sudo: gui with menu ##############################
-############################## spanish: gui-menu-tool-sudo: gui con menu  ##############################
+##########    english: gui-menu-tool-sudo: gui with menu   ##########
+##########    spanish: gui-menu-tool-sudo: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-sudo:
 ####
 ####
@@ -4657,8 +4657,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-sudo:
-############################## english: gui-menu-tool-game: gui with menu ##############################
-############################## spanish: gui-menu-tool-game: gui con menu  ##############################
+##########    english: gui-menu-tool-game: gui with menu   ##########
+##########    spanish: gui-menu-tool-game: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-game:
 ####
 ####
