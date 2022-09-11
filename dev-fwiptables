@@ -6603,8 +6603,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-listnum6:
-############################  english: list-forwardnum6: list iptables filter forward rules in numerical ipv6
-############################  spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6
+##########    english: list-forwardnum6: list iptables filter forward rules in numerical ipv6      ##########
+##########    spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6   ##########
 #### :rutina-inicial-list-forwardnum6:
 ####
 ####
@@ -6619,13 +6619,12 @@ echo
 echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -n -L FORWARD
-#### echo $footer_lineal
 exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum6:
-############################       english: list-mangle4: list mangle rules from ipv4
-############################       spanish: list-mangle4: lista reglas de mangle de ipv4
+##########    english: list-mangle4: list mangle rules from ipv4      ##########
+##########    spanish: list-mangle4: lista reglas de mangle de ipv4   ##########
 #### :rutina-inicial-list-mangle4:
 ####
 ####
@@ -6645,8 +6644,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-mangle4:
-############################       english: list-mangle6: list mangle rules from ipv6
-############################       spanish: list-mangle6: lista reglas de mangle de ipv6
+##########    english: list-mangle6: list mangle rules from ipv6     ##########
+##########    spanish: list-mangle6: lista reglas de mangle de ipv6  ##########
 #### :rutina-inicial-list-mangle6:
 ####
 ####
@@ -6666,8 +6665,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-mangle6:
-############################       english: list-raw4: list raw rules from ipv4
-############################       spanish: list-raw4: lista reglas raw de ipv4
+##########    english: list-raw4: list raw rules from ipv4  ##########
+##########    spanish: list-raw4: lista reglas raw de ipv4  ##########
 #### :rutina-inicial-list-raw4:
 ####
 ####
@@ -6686,8 +6685,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-raw4:
-############################       english: list-raw6: list raw rules from ipv6
-############################       spanish: list-raw6: lista reglas raw de ipv6
+##########    english: list-raw6: list raw rules from ipv6  ##########
+##########    spanish: list-raw6: lista reglas raw de ipv6  ##########
 #### :rutina-inicial-list-raw6:
 ####
 ####
@@ -6706,8 +6705,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-raw6:
-############################       english: list-security4: list security rules from ipv4
-############################       spanish: list-security4: lista reglas de security de ipv4
+##########    english: list-security4: list security rules from ipv4     ##########
+##########    spanish: list-security4: lista reglas de security de ipv4  ##########
 #### :rutina-inicial-list-security4:
 ####
 ####
@@ -6726,8 +6725,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-security4:
-############################       english: list-security6: list security rules from ipv6
-############################       spanish: list-security6: lista reglas de security de ipv6
+##########    english: list-security6: list security rules from ipv6     ##########
+##########    spanish: list-security6: lista reglas de security de ipv6  ##########
 #### :rutina-inicial-list-security6:
 ####
 ####
@@ -6746,8 +6745,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-security6:
-############################       english: list-ebtables: list ebtables rules with mac
-############################       spanish: list-ebtables: lista reglas de ebtables with mac
+##########    english: list-ebtables: list ebtables rules with mac adress       ##########
+##########    spanish: list-ebtables: lista reglas de ebtables with mac adress  ##########
 #### :rutina-inicial-list-ebtables:
 ####
 ####
@@ -6766,8 +6765,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-ebtables:
-############################       english: list-arptables: list rules arptables with arp
-############################       spanish: list-arptables: lista reglas de arptables with arp
+##########    english: list-arptables: list rules arptables with arp        ##########
+##########    spanish: list-arptables: lista reglas de arptables with arp   ##########
 #### :rutina-inicial-list-arptables:
 ####
 ####
@@ -6782,8 +6781,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
-############################       english: new-full-config: new-full-config option to create new configs
-############################       spanish: new-full-config: new-full-config para cear nuevas config
+##########    english: new-full-config: new-full-config option to create new configs   ##########
+##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
 #### :rutina-inicial-new-full-config:
 ####
 ####
@@ -6815,8 +6814,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-full-config:
-############################       english: nueva-completa-config: create new configs
-############################       spanish: nueva-completa-config: nueva-completa-config para cear nuevas config
+##########    english: nueva-completa-config: create new configs                             ##########
+##########    spanish: nueva-completa-config: nueva-completa-config para cear nuevas config  ##########
 #### :rutina-inicial-nueva-completa-config:
 ####
 ####
@@ -6848,8 +6847,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-nueva-completa-config:
-############################       english: new-mini-config: create new configs
-############################       spanish: new--mini config: cea nuevas config
+##########    english: new-mini-config: create new configs   ##########
+##########    spanish: new--mini config: cea nuevas config   ##########
 #### :rutina-inicial-new-mini-config:
 ####
 ####
@@ -6881,8 +6880,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-mini-config:
-############################       english: nueva-mini-config: create new configs
-############################       spanish: nueva-mini-config: crea nuevas config
+##########    english: nueva-mini-config: create new configs   ##########
+##########    spanish: nueva-mini-config: crea nuevas config   ##########
 #### :rutina-inicial-nueva-mini-config:
 ####
 ####
@@ -6914,8 +6913,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-nueva-mini-config:
-############################       english: modify-config: modify a one config.cfg
-############################       spanish: modify-config: modify una configuracion.cfg
+##########    english: modify-config: modify a one config.cfg        ##########
+##########    spanish: modify-config: modify una configuracion.cfg   ##########
 #### :rutina-inicial-modify-config:
 ####
 ####
@@ -6949,8 +6948,8 @@ clear ; exit ; fi
 ####
 ####
 #### :rutina-final-modify-config:
-############################       english: show-config: show a one config
-############################       spanish: show-config: muestra una configuracion
+##########    english: show-config: show a one config          ##########
+##########    spanish: show-config: muestra una configuracion  ##########
 #### :rutina-inicial-show-config:
 ####
 ####
@@ -6970,8 +6969,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-config:
-############################       english: del-config: delete a old config
-############################       spanish: del-config: elimina una vieja configuracion
+##########    english: del-config: delete a old config               ##########
+##########    spanish: del-config: elimina una vieja configuracion   ##########
 #### :rutina-inicial-del-config:
 ####
 ####
@@ -6992,8 +6991,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-config:
-############################       english: sudofw-adduser: the sudofw-adduser option en english
-############################       spanish: sudofw-adduser: la opcion de sudofw-adduser en ingles
+##########    english: sudofw-adduser: the sudofw-adduser option en english    ##########
+##########    spanish: sudofw-adduser: la opcion de sudofw-adduser en ingles   ##########
 #### :rutina-inicial-sudofw-adduser:
 ####
 ####
@@ -7014,8 +7013,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sudofw-adduser:
-############################       english: sudofw-deluser: the sudofw-deluser option en english
-############################       spanish: sudofw-deluser: la opcion de sudofw-deluser en ingles
+##########    english: sudofw-deluser: the sudofw-deluser option en english    ##########
+##########    spanish: sudofw-deluser: la opcion de sudofw-deluser en ingles   ##########
 #### :rutina-inicial-sudofw-deluser:
 ####
 ####
@@ -7029,8 +7028,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sudofw-deluser:
-############################       english: sudofw-listuser: the sudofw-adduser option en english
-############################       spanish: sudofw-listuser: la opcion de sudofw-adduser en ingles
+##########    english: sudofw-listuser: the sudofw-adduser option en english   ##########
+##########    spanish: sudofw-listuser: la opcion de sudofw-adduser en ingles  ##########
 #### :rutina-inicial-sudofw-listuser:
 ####
 ####
@@ -7051,8 +7050,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sudofw-listuser:
-############################       english: aliasfw-list: the sudofw-adduser option en english
-############################       spanish: aliasfw-list: la opcion de sudofw-adduser en ingles
+##########    english: aliasfw-list: the sudofw-adduser option en english   ##########
+##########    spanish: aliasfw-list: la opcion de sudofw-adduser en ingles  ##########
 #### :rutina-inicial-aliasfw-list:
 ####
 ####
@@ -7067,8 +7066,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-aliasfw-list:
-############################       english: md5sum: md5 sum from a one file
-############################       spanish: md5sum: suma md5 desde un archivo
+##########    english: md5sum: md5 sum from a one file     ##########
+##########    spanish: md5sum: suma md5 desde un archivo   ##########
 #### :rutina-inicial-md5sum:
 ####
 ####
@@ -7083,8 +7082,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-alias-md5sum:
-############################       english: rule-add-shield: the ipforwading option en english
-############################       spanish: rule-add-shield: la opcion de reenvios  en ingles
+##########    english: rule-add-shield: the ipforwading option en english   ##########
+##########    spanish: rule-add-shield: la opcion de reenvios  en ingles    ##########
 #### :rutina-inicial-rule-add-shield:
 ####
 ####
@@ -7149,8 +7148,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-rule-add-shield:
-############################       english: rule-del-shield: the ipforwading option en english
-############################       spanish: rule-del-shield: la opcion de reenvios  en ingles
+##########    english: rule-del-shield: the ipforwading option en english   ##########
+##########    spanish: rule-del-shield: la opcion de reenvios  en ingles    ##########
 #### :rutina-inicial-rule-del-shield:
 ####
 ####
@@ -7165,13 +7164,13 @@ exit ; fi
 ####
 ####
 #### :rutina-final-rule-del-shield:
-############################       english: rule-del-num: delete a rule number
-############################       spanish: rule-del-num: borra un numero de regla
+##########    english: rule-del-num: delete a rule number       ##########
+##########    spanish: rule-del-num: borra un numero de regla   ##########
 #### :rutina-inicial-rule-del-num:
 ####
 ####
-###########################  rule-del-num without -gui
-###########################  rule-del-num cuando viene sin -gui
+##########    rule-del-num without -gui
+##########    rule-del-num cuando viene sin -gui
 ####
 ####
 ####  del-rule when other to -gui
@@ -7214,8 +7213,8 @@ lalista="$($command_dialog --stdout --title " Show Rules " --msgbox "$($fire_wal
 clear ; exit; fi
 ####
 ####
-########################### rule-del-num with -gui
-########################### rule-del-num con -gui
+##########    rule-del-num with -gui
+##########    rule-del-num con -gui
 ####
 ####
 ####  del-rule when -gui
@@ -7295,8 +7294,8 @@ else) exit ;; esac ; exit; fi
 ####
 ####
 #### :rutina-final-rule-del-num:
-############################       english: iw-scan: search essid wireless
-############################       spanish: iw-scan: buscar essid wireless
+##########    english: iw-scan: search essid wireless   ##########
+##########    spanish: iw-scan: buscar essid wireless   ##########
 #### :rutina-inicial-iw-scan:
 ####
 ####
@@ -7310,8 +7309,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-iw-scan:
-############################       english: iw-info: search essid wireless
-############################       spanish: iw-info: buscar essid wireless
+##########    english: iw-info: search essid wireless   ##########
+##########    spanish: iw-info: buscar essid wireless   ##########
 #### :rutina-inicial-iw-info:
 ####
 ####
@@ -7324,8 +7323,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-iw-info:
-############################       english: wpa-save: connect ssid wireless
-############################       spanish: wpa-save: conecta ssid wireless
+##########    english: wpa-save: connect ssid wireless    ##########
+##########    spanish: wpa-save: conecta ssid wireless    ##########
 #### :rutina-inicial-wpa-save:
 ####
 ####
@@ -7345,8 +7344,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-wpa-save:
-############################       english: wpa-load: launch one ssid wireless
-############################       spanish: wpa-load: lanza un ssid wireless
+##########    english: wpa-load: launch one ssid wireless   ##########
+##########    spanish: wpa-load: lanza un ssid wireless     ##########
 #### :rutina-inicial-wpa-load:
 ####
 ####
@@ -7366,8 +7365,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-wpa-load:
-############################       english: dhcp-client: search the configuration from ip net
-############################       spanish: dhcp-client: busca la configuracion de red ip
+##########    english: dhcp-client: search the configuration from ip net   ##########
+##########    spanish: dhcp-client: busca la configuracion de red ip       ##########
 #### :rutina-inicial-dhcp-client:
 ####
 ####
@@ -7380,8 +7379,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-dhcp-client:
-############################       english: ipforward-list: the ipforwading option en english
-############################       spanish: ipforward-list: la opcion de reenvios  en ingles
+##########    english: ipforward-list: the ipforwading option en english   ##########
+##########    spanish: ipforward-list: la opcion de reenvios  en ingles    ##########
 #### :rutina-inicial-ipforward-list:
 ####
 ####
@@ -7393,8 +7392,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ipforward-list:
-############################       english: tcpdump: listen at dump from conexiones
-############################       spanish: tcpdump: escucha al volcado de conexiones
+##########    english: tcpdump: listen at dump from conexiones     ##########
+##########    spanish: tcpdump: escucha al volcado de conexiones   ##########
 #### :rutina-inicial-tcpdump:
 ####
 ####
@@ -7412,8 +7411,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tcpdump:
-############################       english: info-nodes: listen at dump from conexiones arp
-############################       spanish: info-nodes: escucha al volcado de conexiones arp
+##########    english: info-nodes: listen at dump from conexiones arp    ##########
+##########    spanish: info-nodes: escucha al volcado de conexiones arp  ##########
 #### :rutina-inicial-info-nodes:
 ####
 ####
@@ -7429,8 +7428,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-nodes:
-############################       english: show-default: show $directory_default/$name_fwiptables
-############################       spanish: show-default: show $directory_default/$name_fwiptables
+##########    english: show-default: show $directory_default/$name_fwiptables   ##########
+##########    spanish: show-default: show $directory_default/$name_fwiptables   ##########
 #### :rutina-inicial-show-default:
 ####
 ####
@@ -7444,8 +7443,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-show-default:
-############################       english: modify-default: modify $directory_default/$name_fwiptables
-############################       spanish: modify-default: modify $directory_default/$name_fwiptables
+##########    english: modify-default: modify $directory_default/$name_fwiptables   ##########
+##########    spanish: modify-default: modify $directory_default/$name_fwiptables   ##########
 #### :rutina-inicial-modify-default:
 ####
 ####
@@ -7484,8 +7483,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-modify-default:
-############################       english: names: file list whith rules in iptables format
-############################       spanish: names: lista de archivos con reglas en formato iptables
+##########    english: names: file list whith rules in iptables format          ##########
+##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
 #### :rutina-inicial-names:
 ####
 ####
@@ -7505,8 +7504,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-names:
-##############################       english: reset: reset counter rules
-##############################       spanish: reset: resetea contadores de reglas
+##########    english: reset: reset counter rules            ##########
+##########    spanish: reset: resetea contadores de reglas   ##########
 #### :rutina-inicial-reset:
 ####
 ####
@@ -7520,8 +7519,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-reset:
-##############################       english: wizard-mini: wizard-mini
-##############################       spanish: wizard-mini: mini-asistente 
+##########    english: wizard-mini: wizard-mini      ##########
+##########    spanish: wizard-mini: mini-asistente   ##########
 #### :rutina-inicial-wizard-mini:
 ####
 ####
@@ -7539,8 +7538,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard-mini:
-##############################       english: wizard-full: wizard-full
-##############################       spanish: wizard-full: asistente 
+##########    english: wizard-full: wizard-full     ##########
+##########    spanish: wizard-full: asistente       ##########
 #### :rutina-inicial-wizard-full:
 ####
 ####
@@ -7558,8 +7557,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-wizard-full:
-############################       english: load: load the rules in iptables format
-############################       spanish: load: carga las reglas en formato iptables
+##########    english: load: load the rules in iptables format      ##########
+##########    spanish: load: carga las reglas en formato iptables   ##########
 #### :rutina-inicial-load:
 ####
 ####
@@ -7624,8 +7623,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-load:
-############################       english: save: save the rules in iptables format
-############################       spanish: save: guarda las reglas en formato iptables
+##########    english: save: save the rules in iptables format      ##########
+##########    spanish: save: guarda las reglas en formato iptables  ##########
 #### :rutina-inicial-save:
 ####
 ####
@@ -7663,8 +7662,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-save:
-############################       english: show: show the rules from one firewall in iptables format
-############################       spanish: show: muestra las reglas de un firewall en formato iptables
+##########    english: show: show the rules from one firewall in iptables format    ##########
+##########    spanish: show: muestra las reglas de un firewall en formato iptables  ##########
 #### :rutina-inicial-show:
 ####
 ####
@@ -7700,8 +7699,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-show:
-############################       english: actual: show actuall firewall
-############################       spanish: actual: muestra las reglas actuales
+##########    english: actual: show actual firewall          ##########
+##########    spanish: actual: muestra las reglas actuales   ##########
 #### :rutina-inicial-actual:
 ####
 ####
@@ -7732,8 +7731,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-actual:
-##############################       english: stop: stop firewall
-##############################       spanish: stop: para el firewall
+##########    english: stop: stop firewall      ##########
+##########    spanish: stop: para el firewall   ##########
 #### :rutina-inicial-stop:
 ####
 ####
@@ -7762,8 +7761,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-stop:
-##############################       english: continue: continue the firewall
-##############################       spanish: continue: continua el firewall
+##########    english: continue: continue the firewall      ##########
+##########    spanish: continue: continua el cortafuegos    ##########
 #### :rutina-inicial-continue:
 ####
 ####
@@ -7786,8 +7785,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-continue:
-############################       english: ping-ip4: ping icmp with ipv4
-############################       spanish: ping-ip4: ping icmp with ipv6
+##########    english: ping-ip4: ping icmp with ipv4   ##########
+##########    spanish: ping-ip4: ping icmp with ipv4   ##########
 #### :rutina-inicial-ping-ip4:
 ####
 ####
