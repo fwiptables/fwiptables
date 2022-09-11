@@ -974,7 +974,8 @@ exit ; fi
 if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
 echo $head_waiting_info
 case "$second_option" in
-"$NULL") echo "[ info ] [ use: $cmd_fwiptables -help option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
+"$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ;
+$cmd_fwiptables; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
@@ -1025,7 +1026,8 @@ exit; fi
 ####
 echo $head_waiting_help
 case "$second_option" in
-"$NULL") echo "[ info ] [ use: $cmd_fwiptables -info option-choosen, OR use: $cmd_fwiptables options ]" ; exit ;;
+"$NULL") echo "[ fail ] [ use: $cmd_fwiptables -info option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
+$cmd_fwiptables ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
@@ -1071,6 +1073,8 @@ if [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
+"$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
+$cmd_fwiptables ; exit ;;
 *-config) echo $message_without_web ; exit ;;
 ole-*) echo $message_without_web ; exit ;;
 colour-*) echo $message_without_web ; exit ;;
