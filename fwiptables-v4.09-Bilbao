@@ -981,7 +981,7 @@ rule-*) echo $message_without_log ; exit ;;
 esac 
 ####
 ####
-echo $head_waiting_log
+echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_fwiptables $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
