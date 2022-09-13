@@ -896,7 +896,7 @@ $cmd_fwiptables regen-config ;; esac
 ####
 ####
 if [ "$first_option" = "-txt" ]; 
-then first_option="$second_option" second_option="$third_option" third_option="$quad_option"; fi
+then first_option="$second_option"; second_option="$third_option"; third_option="$quad_option"; fi
 
 #### then case "$second_option" in
 #### "list") $cmd_fwiptables list4-ip &> $temporal_text 
