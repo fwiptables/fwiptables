@@ -770,6 +770,8 @@ chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
 then $directory_temporal/$name_fwiptables-installer install ; 
 else echo "$text_md [ fail ] [ Install fail ]"; fi
+####
+####
 exit ; fi
 ####
 ####
@@ -840,9 +842,10 @@ if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ]; then first_option="list-alltables"; fi
 ####
 ####
-####  english: $1 or or $2 or $3 for complete path per file
+####  english: $1 or or $2 or $3 for complete path per file and other excepcions
 ####
 ####
+if [ "$1" = "-n" ] ; then first_option="-null" ; fi
 if [ "$first_option" = "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
 if [ "$second_option" = "md5sum" ] ; then third_option="$3"  ; quad_option="$4"  ; fi
 ####
@@ -960,7 +963,7 @@ esac ; fi
 #### output log
 ####
 ####
-if [ "$first_option" = "-l" ] || [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
+if [ "$first_option" = "-log" ]
 then first_option="-log" 
 case "$second_option" in 
 "wizard") echo $message_without_log ; exit ;;
@@ -992,7 +995,7 @@ exit ; fi
 #### output null
 ####
 ####
-if [ "$first_option" = "-n" ] || [ "$first_option" = "-null" ] || [ "$first_option" = "null" ] ; 
+if [ "$first_option" = "-null" ] ;
 #### then first_option="-null" 
 then case "$second_option" in 
 "wizard") echo $message_without_null ; exit ;;
@@ -1017,7 +1020,7 @@ exit ; fi
 #### output help:
 ####
 ####
-if [ "$first_option" = "-h" ] || [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
+if [ "$first_option" = "-help" ] ; then
 echo $head_waiting_info
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ;
