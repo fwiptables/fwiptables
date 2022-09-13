@@ -2350,7 +2350,7 @@ fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ] || ||"
-echo "$text_md   output: -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
+echo "$text_md [ -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null ]"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
 echo "$text_md      firewall-list |  ls ls6 list list6 listnum listnum6 status                                 "
@@ -2391,7 +2391,7 @@ exit ; fi
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
-echo "$text_md   output: -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
+echo "$text_md [ -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null ]"
 echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
