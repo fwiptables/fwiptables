@@ -895,8 +895,8 @@ $cmd_fwiptables regen-config ;; esac
 #### output txt:
 ####
 ####
-if [ "$first_option" = "-t" ] || [ "$first_option" = "-txt" ] || [ "$first_option" = "txt" ]; then $nada
-case "$second_option" in
+if [ "$first_option" = "-txt" ]
+then case "$second_option" in
 "list") $cmd_fwiptables list4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
@@ -910,7 +910,7 @@ esac; fi
 #### output cli:
 ####
 ####
-if [ "$first_option" = "-c" ] || [ "$first_option" = "-cli" ] || [ "$first_option" = "cli" ];
+if [ "$first_option" = "-cli" ]
 then echo $head_waiting_cli
 case "$second_option" in 
 cli-menu) first_option="cli-menu"   ;;
@@ -949,7 +949,7 @@ esac ; fi
 #### output gui:
 ####
 ####
-if [ "$first_option" = "-g" ] || [ "$first_option" = "-gui" ] || [ "$first_option" = "gui" ];
+if [ "$first_option" = "-gui" ] 
 then case "$second_option" in 
 "ole_word") first_option="ole-word" ; second_option="-gui" ;;
 "ole_number") first_option="ole-number" ; second_option="-gui" ;;
@@ -964,8 +964,7 @@ esac ; fi
 ####
 ####
 if [ "$first_option" = "-log" ]
-then first_option="-log" 
-case "$second_option" in 
+then case "$second_option" in 
 "wizard") echo $message_without_log ; exit ;;
 "wizard-full") echo $message_without_log ; exit ;;
 "new-mini-config") echo $message_without_log ; exit ;;
@@ -983,20 +982,17 @@ esac
 ####
 ####
 echo $head_waiting_log
-echo "### ### [ log ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
+echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_fwiptables $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
-echo " [ ok ] \
-[ Output $cmd_fwiptables $second_option $third_option $quad_option sended to $output_filelog ] \
-[ show: fwiptables filelog ]" ;
+echo " [  ok  ] [ Output sended to $output_filelog ] [ show: fwiptables filelog ]" ;
 exit ; fi
 ####
 ####
 #### output null
 ####
 ####
-if [ "$first_option" = "-null" ] ;
-#### then first_option="-null" 
+if [ "$first_option" = "-null" ]
 then case "$second_option" in 
 "wizard") echo $message_without_null ; exit ;;
 "wizard-full") echo $message_without_null ; exit ;;
@@ -1020,8 +1016,8 @@ exit ; fi
 #### output help:
 ####
 ####
-if [ "$first_option" = "-help" ] ; then
-echo $head_waiting_info
+if [ "$first_option" = "-help" ]
+then echo $head_waiting_info
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ;
 $cmd_fwiptables; exit ;;
@@ -1063,7 +1059,7 @@ exit ; fi
 #### output info:
 ####
 ####
-if [ "$first_option" = "-i" ] || [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
+if [ "$first_option" = "-info" ] ; then
 ####
 if [ "$command_m2r" = "$NULL" ]; then $nada ;
 echo "[ fail ] [ install m2r command ] [ or launch $name_fwiptables -help option ]" ;
@@ -1118,7 +1114,7 @@ exit ; fi
 #### output web:
 ####
 ####
-if [ "$first_option" = "-w" ] || [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
+if [ "$first_option" = "-web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
@@ -1144,7 +1140,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
-echo "$tab [ message ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
+echo "$tab [ info ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
 torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
