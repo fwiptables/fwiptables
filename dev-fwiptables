@@ -946,8 +946,8 @@ esac ; fi
 #### output gui:
 ####
 ####
-if [ "$first_option" = "-g" ] || [ "$first_option" = "-gui" ] || [ "$first_option" = "gui" ]; then $nada
-case "$second_option" in 
+if [ "$first_option" = "-g" ] || [ "$first_option" = "-gui" ] || [ "$first_option" = "gui" ];
+then case "$second_option" in 
 "ole_word") first_option="ole-word" ; second_option="-gui" ;;
 "ole_number") first_option="ole-number" ; second_option="-gui" ;;
 "ole_domain") first_option="ole-domain" ; second_option="-gui" ;;
@@ -960,7 +960,7 @@ esac ; fi
 #### output log
 ####
 ####
-if [ "$first_option" = "-l" ] [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
+if [ "$first_option" = "-l" ] || [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
 then first_option="-log" 
 case "$second_option" in 
 "wizard") echo $message_without_log ; exit ;;
@@ -1016,7 +1016,7 @@ exit ; fi
 #### output help:
 ####
 ####
-if [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
+if [ "$first_option" = "-h" ] || [ "$first_option" = "-help" ] || [ "$first_option" = "help" ] ; then
 echo $head_waiting_info
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ;
@@ -1059,7 +1059,7 @@ exit ; fi
 #### output info:
 ####
 ####
-if [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
+if [ "$first_option" = "-i" ] || [ "$first_option" = "-info" ] || [ "$first_option" = "info" ] ; then
 ####
 if [ "$command_m2r" = "$NULL" ]; then $nada ;
 echo "[ fail ] [ install m2r command ] [ or launch $name_fwiptables -help option ]" ;
@@ -1114,7 +1114,7 @@ exit ; fi
 #### output web:
 ####
 ####
-if [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
+if [ "$first_option" = "-w" ] || [ "$first_option" = "-web" ] || [ "$first_option" = "web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
