@@ -825,13 +825,15 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
-
- if [ "$first_option" = "ls" ]; then first_option="-txt"; second_option="list4"; fi
- if [ "$first_option" = "ls4" ]; then first_option="-txt";  second_option="list4"; fi
- if [ "$first_option" = "list" ]  ; then first_option="-txt";  second_option="list4" ; fi
- if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"; fi
- if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
-
+####
+####
+if [ "$first_option" = "ls" ]; then first_option="-txt"; second_option="list4"; fi
+if [ "$first_option" = "ls4" ]; then first_option="-txt";  second_option="list4"; fi
+if [ "$first_option" = "list" ]  ; then first_option="-txt";  second_option="list4" ; fi
+if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"; fi
+if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
+####
+####
 if [ "$first_option" = "output" ]  ; then first_option="output-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
@@ -922,10 +924,9 @@ esac;  fi
 ####
 if [ "$first_option" = "-cli" ]
 then echo $head_waiting_cli
-case "$second_option" in 
-cli-menu) first_option="cli-menu"   ;;
-gui-menu) first_option="gui-menu"   ;;
-gui-shell) first_option="gui-shell" ;;
+case "$second_option" in
+## "ls6"|"list6") second_option="list-filter4" ; exit ;; 
+## "ls"|"ls4"|"list") second_option="list-filter6" ; exit ;; 
 wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $cmd_fwiptables $second_option $third_option ;  exit ;;
 "nueva-completa-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
@@ -949,8 +950,7 @@ log-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option 
 fw-*)  echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "hosts") echo $message_without_cli ; $cmd_fwiptables hosts ; exit ;;
 *) dialog --title "  Cli Output || $cmd_fwiptables || $(date)" \
---msgbox "$($cmd_fwiptables -txt $second_option $third_option)" 0 0 ; 
-clear ; exit ;;
+--msgbox "$($cmd_fwiptables $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
 esac ; fi
