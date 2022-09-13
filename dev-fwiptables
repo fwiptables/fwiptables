@@ -913,10 +913,11 @@ cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-*)first_option="$second_option"; second_option="$third_option"; third_option="$quad_option"; exit ;;
+esac ; $cmd_fwiptables "$second_option" "$third_option" "$quad_option"
+#### first_option="$second_option"; second_option="$third_option"; third_option="$quad_option" 
 ####
 ####
-esac;  fi
+exit; fi
 ####
 ####
 #### output cli:
