@@ -7810,8 +7810,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ping-ip4:
-############################       english: ping-ip6: ping icmp with ipv6
-############################       spanish: ping-ip6: ping icmp con ipv6
+##########    english: ping-ip6: ping icmp with ipv6   ##########
+##########    spanish: ping-ip6: ping icmp con ipv6    ##########
 #### :rutina-inicial-ping-ip6:
 ####
 ####
@@ -7835,8 +7835,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ping-ip6:
-############################       english: tracetcp-ip4: traceroute with tcp and ipv4
-############################       spanish: tracetcp-ip4: traceroute con tcp y ipv4
+##########    english: tracetcp-ip4: traceroute with tcp and ipv4   ##########
+##########    spanish: tracetcp-ip4: traceroute con tcp y ipv4      ##########
 #### :rutina-inicial-tracetcp-ip4:
 ####
 ####
@@ -7861,8 +7861,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tracetcp-ip4:
-############################       english: tracetcp-ip6: traceroute with tcp and ipv6
-############################       spanish: tracetcp-ip6: traceroute con tcp e ipv6
+##########    english: tracetcp-ip6: traceroute with tcp and ipv6   ##########
+##########    spanish: tracetcp-ip6: traceroute con tcp e ipv6      ##########
 #### :rutina-inicial-tracetcp-ip6:
 ####
 ####
@@ -7886,8 +7886,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-tracetcp-ip6:
-############################       english: traceicmp-ip4: traceroute with tcp and ipv4
-############################       spanish: traceicmp-ip4: traceroute con tcp y ipv4
+##########    english: traceicmp-ip4: traceroute with tcp and ipv4   ##########
+##########    spanish: traceicmp-ip4: traceroute con tcp y ipv4      ##########
 #### :rutina-inicial-traceicmp-ip4:
 ####
 ####
@@ -7912,8 +7912,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-traceicmp-ip4:
-############################       english: traceicmp-ip6: traceroute with tcp and ipv6
-############################       spanish: traceicmp-ip6: traceroute con tcp y ipv6
+##########    english: traceicmp-ip6: traceroute with tcp and ipv6    ##########
+##########    spanish: traceicmp-ip6: traceroute con tcp y ipv6       ##########
 #### :rutina-inicial-traceicmp-ip6:
 ####
 ####
@@ -7938,8 +7938,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-traceicmp-ip6:
-############################       english: host: host to resolve ip
-############################       spanish: host: host to resolve ip
+##########    english: host: host to resolve ip       ##########
+##########    spanish: host: host para resolver ip    ##########
 #### :rutina-inicial-host:
 ####
 ####
@@ -7958,8 +7958,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-host:
-############################       english: dig: host to resolve ip
-############################       spanish: dig: host to resolve ip
+##########    english: dig: host to resolve ip      ##########
+##########    spanish: dig: host para resolver ip   ##########
 #### :rutina-inicial-dig:
 ####
 ####
@@ -7978,8 +7978,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-dig:
-############################       english: resolveip: host to resolve ip and viceversa
-############################       spanish: resolveip: host to resolve ip and viceversa
+##########    english: resolveip: host to resolve ip and viceversa   ##########
+##########    spanish: resolveip: host to resolve ip and viceversa   ##########
 #### :rutina-inicial-resolveip:
 ####
 ####
@@ -7998,8 +7998,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-resolveip:
-############################       english: geoip: host to resolve and locate
-############################       spanish: geoip: host to resolve and locate
+##########    english: geoip: host to resolve and locate       ##########
+##########    spanish: geoip: host para resolver y localizar   ##########
 #### :rutina-inicial-geoip:
 ####
 ####
@@ -8017,8 +8017,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-geoip:
-############################       english: ntpdate-client: update the date and time
-############################       spanish: ntpdate-client: actualiza la fecha y hora
+##########    english: ntpdate-client: update the date and time    ##########
+##########    spanish: ntpdate-client: actualiza la fecha y hora   ##########
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
@@ -8037,8 +8037,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ntpdate-client:
-############################       english: scan-tcp: scan one net per tcp
-############################       spanish: scan-tcp: rastrea una red por tcp
+##########    english: scan-tcp: scan one net per tcp       ##########
+##########    spanish: scan-tcp: rastrea una red por tcp    ##########
 #### :rutina-inicial-scan-tcp:
 ####
 ####
@@ -8075,8 +8075,8 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
 ####
 ####
 #### :rutina-final-scan-tcp:
-############################       english: scan-syn: scan one net per syn
-############################       spanish: scan-syn: rastrea una por peticiones
+##########    english: scan-syn: scan one net per syn         ##########
+##########    spanish: scan-syn: rastrea una por peticiones   ##########
 #### :rutina-inicial-scan-syn:
 ####
 ####
@@ -8111,8 +8111,8 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
 ####
 ####
 #### :rutina-final-scan-syn:
-############################       english: scan-fin: scan one net per conexiones
-############################       spanish: scan-fin: rastrea una red por conexiones
+##########    english: scan-fin: scan one net per conexiones      ##########
+##########    spanish: scan-fin: rastrea una red por conexiones   ##########
 #### :rutina-inicial-scan-fin:
 ####
 ####
@@ -8149,8 +8149,8 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
 ####
 ####
 #### :rutina-final-scan-fin:
-############################       english: scan-udp: scan one net per udp
-############################       spanish: scan-udp: rastrea una red por udp
+##########    english: scan-udp: scan one net per udp       ##########
+##########    spanish: scan-udp: rastrea una red por udp    ##########
 #### :rutina-inicial-scan-udp:
 ####
 ####
@@ -8187,8 +8187,8 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
 ####
 ####
 #### :rutina-final-scan-udp:
-############################       english: scan-ping: scan one net per ping
-############################       spanish: scan-ping: rastrea una red por ping
+##########    english: scan-ping: scan one net per ping     ##########
+##########    spanish: scan-ping: rastrea una red por ping  ##########
 #### :rutina-inicial-scan-ping:
 ####
 ####
@@ -8223,8 +8223,8 @@ $cmd_fwiptables stop
 ####
 ####
 #### :rutina-final-scan-ping:
-############################       english: free-ram: give one freedom to ram innecesary
-############################       spanish: free-ram: limpia la memoria ram
+##########    english: free-ram: give one freedom to ram innecesary     ##########
+##########    spanish: free-ram: limpia la memoria ram                  ##########
 #### :rutina-inicial-free-ram:
 ####
 ####
@@ -8241,8 +8241,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-free-ram:
-############################       english: speed-disk: Show the speed of disc
-############################       spanish: speed-disk: Muestra la velocidad de el disco
+##########    english: speed-disk: Show the speed of disc             ##########
+##########    spanish: speed-disk: Muestra la velocidad de el disco   ##########
 #### :rutina-inicial-speed-disk:
 ####
 ####
@@ -8258,8 +8258,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-disk:
-############################       english: speed-ram: Show the speed of ram
-############################       spanish: speed-ram: Muestra la velocidad de la ram
+##########    english: speed-ram: Show the speed of ram             ##########
+##########    spanish: speed-ram: Muestra la velocidad de la ram    ##########
 #### :rutina-inicial-speed-ram:
 ####
 ####
@@ -8277,8 +8277,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ram:
-############################       english: speed-glx: show frammes por seconds with mesa graphicall 
-############################       spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa
+##########    english: speed-glx: show frammes por seconds with mesa graphicall            ##########
+##########    spanish: speed-glx: muestra los fotogramas por segundo con graphicos mesa    ##########
 #### :rutina-inicial-speed-glx:
 ####
 ####
@@ -8291,8 +8291,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-glx:
-############################       english: speed-cpu: show frammes por seconds with mesa graphicall 
-############################       spanish: speed-cpu: muestra los fotogramas por segundo con graphicos mesa
+##########    english: speed-cpu: show frammes por seconds with mesa graphicall             ##########
+##########    spanish: speed-cpu: muestra los fotogramas por segundo con graphicos mesa     ##########
 #### :rutina-inicial-speed-cpu:
 ####
 ####
@@ -8306,8 +8306,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-cpu:
-############################       english: radio-mp3: url from one radio mp3
-############################       spanish: radio-mp3: url de una radio en mp3
+##########    english: radio-mp3: url from one radio mp3     ##########
+##########    spanish: radio-mp3: url de una radio en mp3    ##########
 #### :rutina-inicial-radio-mp3:
 ####
 ####
@@ -8337,8 +8337,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-mp3:
-############################       english: radio-cadena100: url from one radio mp3
-############################       spanish: radio-cadena100: url de una radio en mp3
+##########    english: radio-cadena100: url from one radio mp3      ##########
+##########    spanish: radio-cadena100: url de una radio en mp3     ##########
 #### :rutina-inicial-radio-cadena100:
 ####
 ####
@@ -8364,8 +8364,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadena100:
-############################       english: radio-cadenadial: url from one radio mp3
-############################       spanish: radio-cadenadial: url de una radio en mp3
+##########    english: radio-cadenadial: url from one radio mp3    ##########
+##########    spanish: radio-cadenadial: url de una radio en mp3   ##########
 #### :rutina-inicial-radio-cadenadial:
 ####
 ####
@@ -8391,8 +8391,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadenadial:
-############################       english: colour-rgb: convert colour rgb to hex
-############################       spanish: colour-rgb: convert colour rgb to hex
+##########    english: colour-rgb: convert colour rgb to hex   ##########
+##########    spanish: colour-rgb: convierte color rgb a hex   ##########
 #### :rutina-inicial-colour-rgb:
 ####
 ####
@@ -8423,8 +8423,8 @@ fi; exit ; fi
 ####
 ####
 #### :rutina-final-colour-rgb:
-############################       english: colour-hex: convert colour hex to rgb
-############################       spanish: colour-hex: convert colour hex to rgb
+##########    english: colour-hex: convert colour hex to rgb  ##########
+##########    spanish: colour-hex: convierte color hex a rgb  ##########
 #### :rutina-inicial-colour-hex:
 ####
 ####
@@ -8455,8 +8455,8 @@ fi ; exit; fi
 ####
 ####
 #### :rutina-final-colour-hex:
-############################       english: ole-domain: discover one domain with ole-domain
-############################       spanish: ole-domain: descubre un dominio con ole-domain
+##########    english: ole-domain: discover one domain with ole-domain   ##########
+##########    spanish: ole-domain: descubre un dominio con ole-domain    ##########
 #### :rutina-inicial-ole-domain:
 ####
 ####
@@ -8469,7 +8469,8 @@ numero_maximo="$(cat $file_domain | wc -l)"
 numero_aleatorio_one="$(($RANDOM%"$numero_maximo"))"
 domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 2)"
 type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 1)"
-###########
+####
+####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
 case "$command_dialog" in "$NULL") echo " [ fail ] [ Install dialog ]"; exit ;; esac
 $command_dialog  --stdout --title "Play game domain ole" \
@@ -8477,7 +8478,8 @@ $command_dialog  --stdout --title "Play game domain ole" \
 $command_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Really $domain_one is a $type_domain_one domain."  0 0
 clear ; exit ; fi
-###########
+####
+####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ] ; then
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity ]"; exit ;; esac
 $(zenity $graphic_dimension --info --title="gui ole-domain" \
@@ -8485,20 +8487,22 @@ $(zenity $graphic_dimension --info --title="gui ole-domain" \
 $(zenity $graphic_dimension --info --title="gui ole-domain" \
 --text=" Really $domain_one is a $type_domain_one domain.")
 exit; fi
-###########
+####
+####
 echo
 echo " # Is this a country domain  or a generic domain ? :  $domain_one"
 echo " # type any key to continue"
 read
 echo " Really $domain_one is a $type_domain_one domain."
 exit
-###########
+####
+####
 exit; fi
 ####
 ####
 #### :rutina-final-ole-domain:
-############################       english: ole-word: play game ole-word
-############################       spanish: ole-word: juega al juego ole-word
+##########    english: ole-word: play game ole-word        ##########
+##########    spanish: ole-word: juega al juego ole-word   ##########
 #### :rutina-inicial-ole-word:
 ####
 ####
@@ -8533,8 +8537,8 @@ textes_7=" ##### La ultima respuesta           es:  "
 textes_8=" ##### La respuesta correcta         es:  "
 ####
 ####
-#############################################
-############################################# ole-word in cli
+#### english: ole-word in cli
+#### spanish: ole-word en cli
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
@@ -8661,8 +8665,8 @@ acierto="$($command_dialog  --stdout --title "Play game word ole" --msgbox "$tex
 clear; exit; fi
 ####
 ####
-#############################################
-############################################# ole-word in gui
+#### english: ole-word in gui
+#### spanish: ole-word en gui
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
@@ -8790,8 +8794,8 @@ if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
-#############################################
-############################################# ole-word in txt
+#### english:  ole-word in text
+#### spanish:  ole-word en txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
@@ -8905,6 +8909,7 @@ echo
 echo "$text_7" "$cinco_caracteres"
 echo "$text_8" "$palabra_aleatoria"
 ####
+####
 echo "$footer_lineal"
 exit; fi
 ####
@@ -8913,8 +8918,8 @@ fi
 ####
 ####
 #### :rutina-final-ole-word:
-############################       english: ole-number: play game ole-number
-############################       spanish: ole-number: juega al juego ole-number
+##########    english: ole-number: play game ole-number         ##########
+##########    spanish: ole-number: juega al juego ole-number    ##########
 #### :rutina-inicial-ole-number:
 ####
 ####
@@ -8948,8 +8953,8 @@ textes_7=" ##### La ultima respuesta             es:  "
 textes_8=" ##### La respuesta correcta           es:  "
 ####
 ####
-#############################################
-############################################# ole-number in cli
+#### english: ole-number in cli
+#### spanish: ole-number en cli
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
@@ -9059,8 +9064,8 @@ $command_dialog  --stdout --title "Play game number ole" --msgbox "$text_8 $nume
 clear ; exit ; fi
 ####
 ####
-#############################################
-############################################# ole-number in gui
+#### english: ole-number in gui
+#### spanish: ole-number en gui
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
@@ -9172,8 +9177,8 @@ if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
-#############################################
-############################################# ole-number in txt
+#### english: ole-number in txt
+#### spanish: ole-number en txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
@@ -9279,8 +9284,8 @@ fi
 ####
 ####
 #### :rutina-final-ole-number:
-############################## english: sshd-tunnel-info: info over sshd   ##############################
-############################## spanish: sshd-tunnel-info: info sobre sshd  ##############################
+##########    english: sshd-tunnel-info: info over sshd   ##########
+##########    spanish: sshd-tunnel-info: info sobre sshd  ##########
 #### :rutina-inicial-sshd-tunnel-info:
 ####
 ####
@@ -9309,8 +9314,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-tunnel-info:
-############################## english: sshd-tunnel-on: active sshd tunnel   ######################
-############################## spanish: sshd-tunnel-on: activa shhd tunel    ######################
+##########    english: sshd-tunnel-on: active sshd tunnel   ##########
+##########    spanish: sshd-tunnel-on: activa shhd tunel    ##########
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
@@ -9324,8 +9329,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-tunnel-on
-############################## english: sshd-tunnel-off: deactive sshd tunnel    ######################
-############################## spanish: sshd-tunnel-off: desactiva shhd tunel    ######################
+##########    english: sshd-tunnel-off: deactive sshd tunnel    ##########
+##########    spanish: sshd-tunnel-off: desactiva shhd tunel    ##########
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
@@ -9339,8 +9344,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-tunnel-off
-############################## english: filelog: Read log /var/log/fwiptables-filelog  ##############################
-############################## spanish: filelog: Lee log  /var/log/fwiptables-filelog  ##############################
+##########   english: filelog: Read log fwiptables-filelog  ##########
+##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
 #### :rutina-inicial-filelog:
 ####
 ####
@@ -9353,8 +9358,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-fw-filelog:
-############################## english: autolog: Read log /var/log/fwiptables-autolog   ##############################
-############################## spanish: autolog: Lee log  /var/log/fwiptables-autolog   ##############################
+##########    english: autolog: Read log fwiptables-autolog   ##########
+##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
 #### :rutina-inicial-autolog:
 ####
 ####
@@ -9367,8 +9372,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-autolog:
-############################       english: log-ssh: log from ssh server
-############################       spanish: log-ssh: log desde el servidor de ssh
+##########    english: log-ssh: log from ssh server           ##########
+##########    spanish: log-ssh: log desde el servidor de ssh  ##########
 #### :rutina-inicial-log-ssh:
 ####
 ####
@@ -9380,8 +9385,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-log-ssh:
-############################       english: log-search: log from a one search
-############################       spanish: log-search: log desde una busqueda
+##########    english: log-search: log from a one search    ##########
+##########    spanish: log-search: log desde una busqueda   ##########
 #### :rutina-inicial-log-search:
 ####
 ####
@@ -9396,8 +9401,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-log-search:
-############################       english: dev-version: about of program
-############################       spanish: dev-version: acerca del programa
+##########    english: dev-version: about of program     ##########
+##########    spanish: dev-version: acerca del programa  ##########
 #### :rutina-inicial-dev-version:
 ####
 ####
@@ -9408,8 +9413,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-dev-version:
-############################       english: dev-changes: changes in the program
-############################       spanish: dev-changes: cambios en el programa
+##########    english: dev-changes: changes in the version program        ##########
+##########    spanish: dev-changes: cambios en la version del programa    ##########
 #### :rutina-inicial-dev-changes:
 ####
 #### 
@@ -9420,8 +9425,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-dev-changes:
-############################       english: new-versions: about of program
-############################       spanish: new-versions: acerca del programa
+##########    english: new-versions: about of program      ##########
+##########    spanish: new-versions: acerca del programa   ##########
 #### :rutina-inicial-new-versions:
 ####
 ####
@@ -9434,8 +9439,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
-############################       english: gpg-notes: edit file gpg texts
-############################       spanish: gpg-notes: edita archivo de gpg text
+##########    english: gpg-notes: edit file gpg texts         ##########
+##########    spanish: gpg-notes: edita archivo de gpg text   ##########
 #### :rutina-inicial-gpg-notes:
 ####
 ####
@@ -9520,8 +9525,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-gpg-notes:
-############################       english: pc-halt: power off computer
-############################       spanish: pc-halt: apaga el ordenador
+##########    english: pc-halt: power off computer   ##########
+##########    spanish: pc-halt: apaga el ordenador   ##########
 #### :rutina-inicial-pc-halt:
 ####
 ####
@@ -9535,8 +9540,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-halt:
-############################       english: pc-shutdown: power off computer
-############################       spanish: pc-shutdown: apaga el ordenador
+##########    english: pc-shutdown: power off computer   ##########
+##########    spanish: pc-shutdown: apaga el ordenador   ##########
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
@@ -9550,8 +9555,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-############################       english: pc-reboot: reboot computer
-############################       spanish: pc-reboot: reinicia el ordenador
+##########    english: pc-reboot: reboot computer         ##########
+##########    spanish: pc-reboot: reinicia el ordenador   ##########
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
@@ -9565,8 +9570,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-pc-shutdown:
-############################       english: lpinfo: list printers
-############################       spanish: lpinfo: lista impresoras
+##########    english: lpinfo: list printers      ##########
+##########    spanish: lpinfo: lista impresoras   ##########
 #### :rutina-inicial-lpinfo:
 ####
 ####
@@ -9585,8 +9590,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lpinfo:
-############################       english: lsblk: list disks
-############################       spanish: lsblk: lista discos
+##########    english: lsblk: list disks     ##########
+##########    spanish: lsblk: lista discos   ##########
 #### :rutina-inicial-lsblk:
 ####
 ####
@@ -9599,8 +9604,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lsblk:
-############################       english: lsusb: list disks
-############################       spanish: lsusb: lista discos
+##########    english: lsusb: list disks    ##########
+##########    spanish: lsusb: lista discos  ##########
 #### :rutina-inicial-lsusb:
 ####
 ####
@@ -9611,8 +9616,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lsusb:
-############################       english: lscpu: list cpu
-############################       spanish: lscpu: lista cpu
+##########    english: lscpu: list cpu   ##########
+##########    spanish: lscpu: lista cpu  ##########
 #### :rutina-inicial-lscpu:
 ####
 ####
@@ -9623,8 +9628,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lscpu:
-############################       english: lspci: list disks
-############################       spanish: lspci: lista discos
+##########    english: lspci: list disks     ##########
+##########    spanish: lspci: lista discos   ##########
 #### :rutina-inicial-lspci:
 ####
 ####
@@ -9635,8 +9640,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lspci:
-############################       english: lsgpu: list gpu
-############################       spanish: lsgpu: lista gpu
+##########    english: lsgpu: list gpu    ##########
+##########    spanish: lsgpu: lista gpu   ##########
 #### :rutina-inicial-lsgpu:
 ####
 ####
@@ -9648,8 +9653,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lsgpu:
-############################       english: lsusb: list hardware
-############################       spanish: lsusb: lista hardware
+##########    english: lsusb: list hardware   ##########
+##########    spanish: lsusb: lista hardware  ##########
 #### :rutina-inicial-lshw:
 ####
 ####
@@ -9661,8 +9666,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-lshw:
-############################       english: hosts: show /etc/hosts
-############################       spanish: hosts: muestra /etc/hosts
+##########    english: hosts: show /etc/hosts     ##########
+##########    spanish: hosts: muestra /etc/hosts  ##########
 #### :rutina-inicial-hosts:
 ####
 ####
@@ -9675,8 +9680,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-hosts:
-############################       english: protocols: show /etc/protocols
-############################       spanish: protocols: muestra /etc/protocols
+##########    english: protocols: show /etc/protocols     ##########
+##########    spanish: protocols: muestra /etc/protocols  ##########
 #### :rutina-inicial-protocols:
 ####
 ####
@@ -9689,8 +9694,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-protocols:
-############################       english: services: show /etc/services
-############################       spanish: services: muestra /etc/services
+##########    english: services: show /etc/services     ##########
+##########    spanish: services: muestra /etc/services  ##########
 #### :rutina-inicial-services:
 ####
 ####
@@ -9703,8 +9708,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-services:
-############################       english: host.allow: show /etc/host.allow
-############################       spanish: host.allow: muestra /etc/host.allow
+##########    english: host.allow: show /etc/host.allow     ##########
+##########    spanish: host.allow: muestra /etc/host.allow  ##########
 #### :rutina-inicial-host.allow:
 ####
 ####
@@ -9717,8 +9722,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-host.allow:
-############################       english: hosts.deny: show /etc/host.deny
-############################       spanish: hosts.deny: muestra /etc/host.deny
+##########    english: hosts.deny: show /etc/host.deny       ##########
+##########    spanish: hosts.deny: muestra /etc/host.deny    ##########
 #### :rutina-inicial-hosts.deny:
 ####
 ####
@@ -9731,8 +9736,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-hosts.deny:
-############################       english: resolv.conf: show /etc/resolv.conf
-############################       spanish: resolv.conf: muestra /etc/resolv.conf
+##########    english: resolv.conf: show /etc/resolv.conf      ##########
+##########    spanish: resolv.conf: muestra /etc/resolv.conf   ##########
 #### :rutina-inicial-resolv.conf:
 ####
 ####
@@ -9753,9 +9758,9 @@ else echo "$tab  [ without resolv.conf.tail ]"; fi
 exit; fi
 ####
 ####
-#### :rutina-final-resolv.conf:
-############################       english: about: about of program
-############################       spanish: about: acerca del programa
+#### :rutina-final-resolv.conf:   
+##########    english: about: about of program       ##########
+##########    spanish: about: acerca del programa    ##########
 #### :rutina-inicial-about:
 ####
 ####
@@ -9790,8 +9795,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-about:
-############################       english: info-system: get info system
-############################       spanish: info-system: da informacion del sistema
+##########    english: info-system: get info system              ##########
+##########    spanish: info-system: da informacion del sistema   ##########
 #### :rutina-inicial-info-system:
 ####
 ####
@@ -9819,8 +9824,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-system:
-############################       english: info-net: get net info
-############################       spanish: info-net: da informacion de la red
+##########    english: info-net: get net info               ##########
+##########    spanish: info-net: da informacion de la red   ##########
 #### :rutina-inicial-info-net:
 ####
 ####
@@ -9868,8 +9873,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-net:
-############################       english: speed-ip4: speed from internet
-############################       spanish: speed-ip4: velocidad desde internet
+##########    english: speed-ip4: speed from internet        ##########
+##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
 ####
 ####
@@ -9888,8 +9893,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip4:
-############################       english: speed-ip6: speed from internet
-############################       spanish: speed-ip6: velocidad desde internet
+##########    english: speed-ip6: speed from internet        ##########
+##########    spanish: speed-ip6: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip6:
 ####
 ####
@@ -9908,8 +9913,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-speed-ip6:
-############################       english: web-cert: speed from internet
-############################       spanish: web-cert: velocidad desde internet
+##########    english: web-cert: speed from internet       ##########
+##########    spanish: web-cert: velocidad desde internet  ##########
 #### :rutina-inicial-web-cert:
 ####
 ####
@@ -9926,8 +9931,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-web-cert:
-############################       english: clean-tmp: clean temporal files
-############################       spanish: clean-tmp: limpia de archivos temporales
+##########    english: clean-tmp: clean temporal files             ##########
+##########    spanish: clean-tmp: limpia de archivos temporales    ##########
 #### :rutina-inicial-clean-tmp:
 ####
 ####
@@ -9940,8 +9945,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-clean-tmp:
-############################       english: config-eng: several options to config in english
-############################       spanish: config-eng: varias opciones para configurar en ingles
+##########    english: config-eng: several options to config in english        ##########
+##########    spanish: config-eng: varias opciones para configurar en ingles   ##########
 #### :rutina-inicial-config-eng:
 ####
 ####
@@ -9952,8 +9957,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-eng:
-############################       english: config-spa: several options to config in spanish
-############################       spanish: config-spa: varias opciones para configurar en spanish
+##########    english: config-spa: several options to config in spanish         ##########
+##########    spanish: config-spa: varias opciones para configurar en spanish   ##########
 #### :rutina-inicial-config-spa:
 ####
 ####
@@ -9964,8 +9969,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-config-spa:
-############################       english: info: information of one utility group
-############################       spanish: info: informacion de un grupo de utilidades
+##########    english: info: information of one utility group         ##########
+##########    spanish: info: informacion de un grupo de utilidades    ##########
 #### :rutina-inicial-info:
 ####
 ####
@@ -10016,8 +10021,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info:
-############################       english: readme: the help option en english
-############################       spanish: readme: la opcion de ayuda en ingles
+##########    english: readme: the help option en english    ##########
+##########    spanish: readme: la opcion de ayuda en ingles  ##########
 #### :rutina-inicial-readme:
 ####
 ####
@@ -10370,8 +10375,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-readme:
-############################       english: leeme: the help option in spanish
-############################       spanish: leeme: la opcion de ayuda en español
+##########    english: leeme: the help option in spanish      ##########
+##########    spanish: leeme: la opcion de ayuda en español   ##########
 #### :rutina-inicial-leeme:
 ####
 ####
@@ -10727,7 +10732,7 @@ exit ; fi
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
-####           Knowed now sure that:         launch_firewall="yes"                                 ###############
+####           Knowed now sure that:         launch_firewall="yes"                              ###############
 ####                                                                                            ###############
 ###############################################################################################################
 ###############################################################################################################
