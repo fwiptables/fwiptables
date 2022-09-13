@@ -801,22 +801,22 @@ if [ "$first_option" = "-tui-menu"  ] || [ "$first_option" = "--tui-menu"  ] ; t
 if [ "$first_option" = "-cli-menu"  ] || [ "$first_option" = "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" = "-gui-menu"  ] || [ "$first_option" = "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
 if [ "$first_option" = "-gui-shell" ] || [ "$first_option" = "--gui-shell" ] ; then first_option="gui-shell" ; fi
-if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ] ; then first_option="-txt"; fi
-if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ] ; then first_option="-cli"; fi
-if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ] ; then first_option="-txt"; fi
-if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ] ; then first_option="-cli"; fi
-if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ] ; then first_option="-gui"; fi
-if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ] ; then first_option="-web"; fi
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then first_option="-tor"; fi
-if [ "$first_option" = "help" ] || [ "$first_option" = "-help"  ] ; then first_option="-help"; fi
-if [ "$first_option" = "-h"   ] || [ "$first_option" = "--help"  ] ; then first_option="-help"; fi
-if [ "$first_option" = "-t"   ] || [ "$first_option" = "--txt"  ] ; then first_option="-txt"; fi
-if [ "$first_option" = "-c"   ] || [ "$first_option" = "--cli"  ] ; then first_option="-cli"; fi
-if [ "$first_option" = "-g"   ] || [ "$first_option" = "--gui"  ] ; then first_option="-gui"; fi
-if [ "$first_option" = "-i"   ] || [ "$first_option" = "--info"  ] ; then first_option="-info"; fi
-if [ "$first_option" = "-w"   ] || [ "$first_option" = "--web"  ] ; then first_option="-web"; fi
-if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ] ; then first_option="-log"; fi
-if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_option="-null"; fi
+if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]   ; then first_option="-txt"  ; fi
+if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ]    ; then first_option="-cli"  ; fi
+if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ]   ; then first_option="-txt"  ; fi
+if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ]   ; then first_option="-cli"  ; fi
+if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ]   ; then first_option="-gui"  ; fi
+if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ]   ; then first_option="-web"  ; fi
+if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ]   ; then first_option="-tor"  ; fi
+if [ "$first_option" = "help" ] || [ "$first_option" = "-help"  ]  ; then first_option="-help" ; fi
+if [ "$first_option" = "-h"   ] || [ "$first_option" = "--help"  ] ; then first_option="-help" ; fi
+if [ "$first_option" = "-t"   ] || [ "$first_option" = "--txt"  ]  ; then first_option="-txt"  ; fi
+if [ "$first_option" = "-c"   ] || [ "$first_option" = "--cli"  ]  ; then first_option="-cli"  ; fi
+if [ "$first_option" = "-g"   ] || [ "$first_option" = "--gui"  ]  ; then first_option="-gui"  ; fi
+if [ "$first_option" = "-i"   ] || [ "$first_option" = "--info"  ] ; then first_option="-info" ; fi
+if [ "$first_option" = "-w"   ] || [ "$first_option" = "--web"  ]  ; then first_option="-web"  ; fi
+if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ]  ; then first_option="-log"  ; fi
+if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_option="-null" ; fi
 ####
 ####
 #### english: alias simple for options commons
@@ -892,7 +892,7 @@ $cmd_fwiptables regen-config ;; esac
 #### output txt:
 ####
 ####
-if [ "$first_option" = "txt" ] || [ "$first_option" = "-txt" ]; then $nada
+if [ "$first_option" = "-t" ] || [ "$first_option" = "-txt" ] || [ "$first_option" = "txt" ]; then $nada
 case "$second_option" in
 "list") $cmd_fwiptables list4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
@@ -907,7 +907,8 @@ esac; fi
 #### output cli:
 ####
 ####
-if [ "$first_option" = "cli" ] || [ "$first_option" = "-cli" ]; then echo $head_waiting_cli
+if [ "$first_option" = "-c" ] || [ "$first_option" = "-cli" ] || [ "$first_option" = "cli" ];
+then echo $head_waiting_cli
 case "$second_option" in 
 cli-menu) first_option="cli-menu"   ;;
 gui-menu) first_option="gui-menu"   ;;
@@ -945,7 +946,7 @@ esac ; fi
 #### output gui:
 ####
 ####
-if [ "$first_option" = "gui" ] || [ "$first_option" = "-gui" ]; then $nada
+if [ "$first_option" = "-g" ] || [ "$first_option" = "-gui" ] || [ "$first_option" = "gui" ]; then $nada
 case "$second_option" in 
 "ole_word") first_option="ole-word" ; second_option="-gui" ;;
 "ole_number") first_option="ole-number" ; second_option="-gui" ;;
@@ -959,7 +960,7 @@ esac ; fi
 #### output log
 ####
 ####
-if [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
+if [ "$first_option" = "-l" ] [ "$first_option" = "-log" ] || [ "$first_option" = "log" ] ; 
 then first_option="-log" 
 case "$second_option" in 
 "wizard") echo $message_without_log ; exit ;;
@@ -990,7 +991,7 @@ exit ; fi
 #### output null
 ####
 ####
-if [ "$first_option" = "-null" ] || [ "$first_option" = "null" ] ; 
+if [ "$first_option" = "-n" ] || [ "$first_option" = "-null" ] || [ "$first_option" = "null" ] ; 
 then first_option="-null" 
 case "$second_option" in 
 "wizard") echo $message_without_null ; exit ;;
@@ -2349,7 +2350,7 @@ fi
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ] || ||"
-echo "$text_md   output: -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log "
+echo "$text_md   output: -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
 echo "$text_md      firewall-list |  ls ls6 list list6 listnum listnum6 status                                 "
@@ -2390,7 +2391,7 @@ exit ; fi
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
-echo "$text_md   output: -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log "
+echo "$text_md   output: -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
