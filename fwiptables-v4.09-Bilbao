@@ -826,11 +826,11 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
 
- if [ "$first_option" = "ls" ]; then first_option="list-filter4"; fi
- if [ "$first_option" = "ls4" ]; then first_option="list-filter4"; fi
- if [ "$first_option" = "ls6" ]; then first_option="list-filter6"; fi
- if [ "$first_option" = "list" ]  ; then first_option="list-filter4" ; fi
- if [ "$first_option" = "list6" ]  ; then first_option="list-filter6" ; fi
+ if [ "$first_option" = "ls" ]; then first_option="-txt"; second_option="list4"; fi
+ if [ "$first_option" = "ls4" ]; then first_option="-txt";  second_option="list4"; fi
+ if [ "$first_option" = "list" ]  ; then first_option="-txt";  second_option="list4" ; fi
+ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"; fi
+ if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 
 if [ "$first_option" = "output" ]  ; then first_option="output-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
@@ -898,17 +898,23 @@ $cmd_fwiptables regen-config ;; esac
 ####
 ####
 if [ "$first_option" = "-txt" ]; 
-then first_option="$second_option"; second_option="$third_option"; third_option="$quad_option"; fi
-
-#### then case "$second_option" in
-#### "list") $cmd_fwiptables list4-ip &> $temporal_text 
-####cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-####cat $temporal_textfinal ; exit ;;
-####"list6") $cmd_fwiptables list6-ip &> $temporal_text 
-####cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-####cat $temporal_textfinal ; exit ;;
-####*) $cmd_fwiptables $second_option $third_option ; exit ;;
-####esac; fi
+then case "$second_option" in
+####
+####
+"list4") $cmd_fwiptables list4-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal ; exit ;;
+####
+####
+"list6") $cmd_fwiptables list6-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal ; exit ;;
+####
+####
+*)first_option="$second_option"; second_option="$third_option"; third_option="$quad_option"; exit ;;
+####
+####
+esac;  fi
 ####
 ####
 #### output cli:
