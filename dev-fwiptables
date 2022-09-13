@@ -825,16 +825,18 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
+
+ if [ "$first_option" = "ls" ]; then first_option="list-filter4"; fi
+ if [ "$first_option" = "ls4" ]; then first_option="list-filter4"; fi
+ if [ "$first_option" = "ls6" ]; then first_option="list-filter6"; fi
+ if [ "$first_option" = "list" ]  ; then first_option="list-filter4" ; fi
+ if [ "$first_option" = "list6" ]  ; then first_option="list-filter6" ; fi
+
 if [ "$first_option" = "output" ]  ; then first_option="output-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
-if [ "$first_option" = "ls" ]; then first_option="list"; fi
-if [ "$first_option" = "ls4" ]; then first_option="list"; fi
-if [ "$first_option" = "ls6" ]; then first_option="list6"; fi
 if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
-if [ "$first_option" = "list" ]  ; then first_option="txt" ; second_option="list" ; fi
-if [ "$first_option" = "list6" ]  ; then first_option="txt" ; second_option="list6" ; fi
 if [ "$first_option" = "cfg" ]; then first_option="names-config" ; fi
 if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
