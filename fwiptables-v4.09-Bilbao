@@ -969,13 +969,14 @@ case "$second_option" in
 "nueva-mini-config") echo $message_without_log ; exit ;;
 "new-full-config") echo $message_without_log ; exit ;;
 "nueva-completa-config") echo $message_without_log ; exit ;;
+"modify-config")  echo $message_without_log ; exit ;;
 "gpg-notes") echo $message_without_log ; exit ;;
 "wpa-save") echo $message_without_log ; exit ;;
 pc-*) echo $message_without_log ; exit ;;
 ole-*) echo $message_without_log ; exit ;;
 radio-*) echo $message_without_log ; exit ;;
 rule-*) echo $message_without_log ; exit ;;
-esac
+esac 
 ####
 ####
 echo $head_waiting_log
@@ -992,8 +993,8 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "-n" ] || [ "$first_option" = "-null" ] || [ "$first_option" = "null" ] ; 
-then first_option="-null" 
-case "$second_option" in 
+#### then first_option="-null" 
+then case "$second_option" in 
 "wizard") echo $message_without_null ; exit ;;
 "wizard-full") echo $message_without_null ; exit ;;
 "new-mini-config") echo $message_without_null ; exit ;;
@@ -1009,7 +1010,7 @@ rule-*) echo $message_without_null ; exit ;;
 esac
 ####
 ####
-$cmd_fwiptables $second_option $third_option &> /dev/null
+$cmd_fwiptables "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
