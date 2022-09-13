@@ -895,16 +895,18 @@ $cmd_fwiptables regen-config ;; esac
 #### output txt:
 ####
 ####
-if [ "$first_option" = "-txt" ]
-then case "$second_option" in
-"list") $cmd_fwiptables list4-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-"list6") $cmd_fwiptables list6-ip &> $temporal_text 
-cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
-cat $temporal_textfinal ; exit ;;
-*) $cmd_fwiptables $second_option $third_option ; exit ;;
-esac; fi
+if [ "$first_option" = "-txt" ]; 
+then first_option="$second_option" second_option="$third_option" third_option="$quad_option"; fi
+
+#### then case "$second_option" in
+#### "list") $cmd_fwiptables list4-ip &> $temporal_text 
+####cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+####cat $temporal_textfinal ; exit ;;
+####"list6") $cmd_fwiptables list6-ip &> $temporal_text 
+####cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+####cat $temporal_textfinal ; exit ;;
+####*) $cmd_fwiptables $second_option $third_option ; exit ;;
+####esac; fi
 ####
 ####
 #### output cli:
