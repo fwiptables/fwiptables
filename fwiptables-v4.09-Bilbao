@@ -6400,7 +6400,7 @@ echo
 case $legacycuatro in
 "$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo " [  ok  ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L
 ;;
@@ -6409,7 +6409,7 @@ echo "$tab"
 case $nftcuatro in
 "$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo " [  ok  ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L
 ;;
@@ -6434,7 +6434,7 @@ echo
 case $legacyseis in
 "$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo " [  ok  ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L
 ;;
@@ -6443,7 +6443,7 @@ echo $tab
 case $nftseis in
 "$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo " [  ok  ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L
 ;;
@@ -6487,11 +6487,11 @@ if [ "$first_option" = "list-filter4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-ip4"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L
 ####
@@ -6509,11 +6509,11 @@ if [ "$first_option" = "list-forward" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-forward-ip4"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L FORWARD
-echo $tab
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t filter -v -L FORWARD
 exit; fi
@@ -6529,11 +6529,11 @@ if [ "$first_option" = "list-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-ip6"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L
 ####
@@ -6551,11 +6551,11 @@ if [ "$first_option" = "list-forward6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-forward-ip6"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t filter -v -L FORWARD
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -L FORWARD
 exit; fi
@@ -6571,11 +6571,11 @@ exit; fi
 echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="nat-ip4"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t nat -v -L
-echo $tab
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t nat -v -L 
 exit; fi
@@ -6591,11 +6591,11 @@ if [ "$first_option" = "list-nat6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="nat-ip6"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t nat -v -L 
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t nat -v -L 
 #### echo $footer_lineal
@@ -6612,11 +6612,11 @@ if [ "$first_option" = "listnum" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-ip4"
 echo
-echo "$tab [With rules netfilter] [iptables-nft] [ $fromrules ]"  
+echo " [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
 echo
 $command_iptables_legacy -v -n -L 
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -v -n -L
 exit; fi
@@ -6632,11 +6632,11 @@ if [ "$first_option" = "list-forwardnum" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-forward-ip4"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -n -L FORWARD
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t filter -v -n -L FORWARD
 exit; fi
@@ -6652,11 +6652,11 @@ if [ "$first_option" = "listnum6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-ip6"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -n -L 
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -n -L
 exit; fi
@@ -6672,11 +6672,11 @@ if [ "$first_option" = "list-forwardnum6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-forward-ip6"
 echo
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t filter -v -n -L FORWARD
 echo
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -n -L FORWARD
 exit; fi
@@ -6692,11 +6692,11 @@ if [ "$first_option" = "list-mangle4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="mangle-ip4"
 echo
-echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t mangle -v -L
 echo
-echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t mangle -v -L
 echo $footer_lineal
@@ -6713,11 +6713,11 @@ if [ "$first_option" = "list-mangle6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="mangle-ip6"
 echo
-echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t mangle -v -L
 echo
-echo "$tab [ The nftables ] [iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t mangle -v -L
 #### echo $footer_lineal
@@ -6734,11 +6734,11 @@ if [ "$first_option" = "list-raw4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="raw-ip4"
 echo
-echo "$tab  [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t raw -v -L
-echo $tab
-echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo
+echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t raw -v -L
 exit; fi
@@ -6754,11 +6754,11 @@ if [ "$first_option" = "list-raw6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="raw-ip6"
 echo
-echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t raw -v -L
 echo
-echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t raw -v -L
 exit; fi
@@ -6774,11 +6774,11 @@ if [ "$first_option" = "list-security4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="security-ip4"
 echo
-echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t security -v -L
 echo
-echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t security -v -L
 exit; fi
@@ -6794,11 +6794,11 @@ if [ "$first_option" = "list-security6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="security-ip6"
 echo
-echo "$tab [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t security -v -L
 echo
-echo "$tab [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t security -v -L
 exit; fi
@@ -6814,11 +6814,11 @@ if [ "$first_option" = "list-ebtables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List ebtables ] || ||"
 fromrules="ebtables"
 echo
-echo "$tab [ ebtables: filter ethernet ] [ $fromrules ]"
+echo " [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t filter
 echo
-echo "$tab [ ebtables: nat ethernet ] [ $fromrules ]"
+echo " [ info ] [ ebtables: nat ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t nat
 exit; fi
@@ -6834,7 +6834,7 @@ if [ "$first_option" = "list-arptables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List arptables ipv4 ] || ||"
 fromrules="arptables"
 echo
-echo "$tab [ arptables: filter arptables ] [ $fromrules ]"
+echo " [ info ] [ arptables: filter arptables ] [ $fromrules ]"
 echo
 $command_arptables -L
 exit; fi
