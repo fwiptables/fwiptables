@@ -2392,6 +2392,7 @@ echo "$text_md      $cmd_fwiptables -web ss                  |  Show ss with out
 echo "$text_md      $cmd_fwiptables -help readme             |  Show help of readme with output text plain     "
 echo "$text_md      $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst         "
 echo "$text_md      $cmd_fwiptables -log info-route          |  Save log info-route with output text plain     "
+echo "$text_md      $cmd_fwiptables -null client-web         |  Launch client web firewall a null output       "
 exit ; fi
 ####
 ####
@@ -2458,6 +2459,7 @@ echo "$text_md  $cmd_fwiptables -web ss                  |  Show ss with output 
 echo "$text_md  $cmd_fwiptables -help readme             |  Show help of readme with output text plain         "
 echo "$text_md  $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst             "
 echo "$text_md  $cmd_fwiptables -log info-route          |  Save log info-route with output text plain         "
+echo "$text_md  $cmd_fwiptables -null client-web         |  Launch client web firewall a null output           "
 exit ; fi
 ####
 ####
@@ -2563,6 +2565,47 @@ exit ; fi
 ####
 ####
 #### :rutina-final-show-options:
+##########    english: some-example: some example    ##########
+##########    spanish: some-example: algun ejemplo   ##########
+#### :rutina-inicial-some-example:
+####
+####
+if [ "$first_option" = "some-example" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ List examples ] [ some-examples.md ] || ||"
+echo "$text_md $tab [ list examples ]"
+echo "$text_md $tab [ Lista ejemplos ]"
+echo "$title_md                                      [ some-example ]                                  "
+echo "$text_md        [ with optional output ]                  [ Example Description ]                "
+echo "$text_md    $cmd_fwiptables -cli-menu                |  All options in text menu                 "
+echo "$text_md    $cmd_fwiptables -gui-menu                |  All options in window menu               "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain"
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst        "
+echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser   "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
+echo "$text_md    $cmd_fwiptables -null client-web         |  Launch client web firewall a null output "
+exit; fi
+####
+####
+#### :rutina-final-some-example:
+##########    english: all-options: all options          ##########
+##########    spanish: all-options: todas las opciones   ##########
+#### :rutina-inicial-all-options:
+####
+####
+if [ "$first_option" = "all-options" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ List group options help ] || ||"
+$cmd_fwiptables output-interface
+$cmd_fwiptables firewall-options
+$cmd_fwiptables tool-options
+$cmd_fwiptables show-options
+$cmd_fwiptables help-options
+exit; fi
+####
+####
+#### :rutina-final-all-options:
 ##########    english: all-help: long help        ##########
 ##########    spanish: toda-opcion: larga ayuda   ##########
 #### :rutina-inicial-all-help:
@@ -2689,22 +2732,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-all-help:
-##########    english: all-options: all options          ##########
-##########    spanish: all-options: todas las opciones   ##########
-#### :rutina-inicial-all-options:
-####
-####
-if [ "$first_option" = "all-options" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List group options help ] || ||"
-$cmd_fwiptables output-interface
-$cmd_fwiptables firewall-options
-$cmd_fwiptables tool-options
-$cmd_fwiptables show-options
-$cmd_fwiptables help-options
-exit; fi
-####
-####
-#### :rutina-final-all-options:
 ##########    english: names-config: list some config       ##########
 ##########    spanish: names-config: lista alguna config    ##########
 #### :rutina-inicial-names-config:
@@ -2729,30 +2756,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-names-config:
-##########    english: some-example: some example    ##########
-##########    spanish: some-example: algun ejemplo   ##########
-#### :rutina-inicial-some-example:
-####
-####
-if [ "$first_option" = "some-example" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List examples ] [ some-examples.md ] || ||"
-echo "$text_md $tab [ list examples ]"
-echo "$text_md $tab [ Lista ejemplos ]"
-echo "$title_md                                      [ some-example ]                                  "
-echo "$text_md        [ Whitout optional output ]               [ Example Description ]                "
-echo "$text_md    $cmd_fwiptables options                  |  Show more options                        "
-echo "$text_md        [ with optional output ]                  [ Example Description ]                "
-echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
-echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain"
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst        "
-echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser   "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
-exit; fi
-####
-####
-#### :rutina-final-some-example:
 ##########    english: group-options: some option     ##########
 ##########    spanish: group-options: alguna opcion   ##########
 #### :rutina-inicial-group-options:
@@ -10104,16 +10107,17 @@ echo "$text_md"
 echo "$text_md         txt OR -txt OR -t : Output at text line | whith bash backend."
 echo "$text_md         cli OR -cli OR -c : Output at text menu | whith dialog backend."
 echo "$text_md         gui OR -gui OR -g : Output at graphicall window || whith zenity backend."
-echo "$text_md         log OR -log OR -l : Output in logfile | whith bash backend."
 echo "$text_md         web OR -web OR -w : Output to text web browser."
+echo "$text_md         log OR -log OR -l : Output in logfile | whith bash backend."
 echo "$text_md       help OR -help OR -h : Output help to text in text plain format."
 echo "$text_md       info OR -info OR -i : Output help to text in text rst format."
+echo "$text_md       null OR -null OR -n : Output in null    | without backend."
 echo "$text_md               tor OR -tor : Run in tor, necesary daemon tor and torify command | whith tor backend."
 echo "$text_md"
 echo "$brake_md"
-echo "$text_md            cli-menu : Command line interface with menus | whith dialog backend."
-echo "$text_md            gui-menu : Graphicall interface with menus | whith zenity backend."
-echo "$text_md           gui-shell : Graphicall interface with shell | whith zenity backend."
+echo "$text_md            cli-menu Or -cli-menu : Command line interface with menus | whith dialog backend."
+echo "$text_md            gui-menu Or -gui-menu : Graphicall interface with menus | whith zenity backend."
+echo "$text_md         gui-shell Or -shell-menu : Graphicall interface with shell | whith zenity backend."
 echo "$text_md"
 echo "$title_md        [ Control the iptables rules ]"
 echo "$text_md"
@@ -10462,18 +10466,19 @@ echo "$text_md         log O -log O -l : Salida a archivo log."
 echo "$text_md         web O -web O -w : Salida a navegador web de texto"
 echo "$text_md       help O -help O -h : Salida con ayuda a formato de texto plano."
 echo "$text_md       info O -info O -i : Salida con ayuda a formato de texto rst."
+echo "$text_md       null O -null O -n : Salida al sunidero | sin salida visual."
 echo "$text_md              tor O -tor : Ejecuta en tor, necesario daemon tor y comando torify."
 echo "$text_md"
-echo "$text_md            cli-menu : modo texto with menus."
-echo "$text_md            gui-menu : Graficos con menus."
-echo "$text_md           gui-shell : Graficos con entorno de comandos."
+echo "$text_md            cli-menu O -cli-menu : modo texto with menus."
+echo "$text_md            gui-menu O -gui-menu : Graficos con menus."
+echo "$text_md         gui-shell O -shell-menu : Graficos con entorno de comandos."
 echo "$text_md"
 echo "$title_md [ Controla las reglas de iptables ]."
 echo "$text_md"
 echo "$text_md            stop : Para las reglas del firewall."
 echo "$text_md        continue : Continua las reglas del firewall."
 echo "$text_md           reset : Resetea las reglas del firewall."
-echo "$text_md         names : Apodo a names."
+echo "$text_md           names : Apodo a names."
 echo "$text_md           names : Lista los archivos de firewall estandard."
 echo "$text_md            show : Muestra las reglas del firewall estandard especificado." 
 echo "$text_md            save : Guarda las reglas de firewall estandard especificado."
