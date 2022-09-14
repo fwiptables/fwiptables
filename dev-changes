@@ -1,10 +1,10 @@
 sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec
 
 
-
- 05. 
- 04. orden alfabetico de command -v . 
- 03. eliminar excesivo numero de almohadillas en los comentarios. 
+ 06. 
+ 05. añadido output -null. HECHO
+ 04. orden alfabetico de command -v. HECHO
+ 03. eliminar excesivo numero de almohadillas en los comentarios. HECHO
  02. revisar tool-speed, quitando los que no son de ahi. HECHO
  01. cambios en la ayuda del tunel [ info ]. HECHO
 
