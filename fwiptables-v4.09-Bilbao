@@ -6221,10 +6221,10 @@ exit; fi
 if [ "$first_option" = "info-route" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show route tables ] || ||"
 if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
-echo "$tab [ ip route ipv4 ]"
+echo " [ info] [ ip route ipv4 ]"
 echo "$($command_ip -4 route)"
 echo
-echo "$tab [ ip route ipv6 ]"
+echo " [ info ] [ ip route ipv6 ]"
 echo "$($command_ip -6 route)"
 exit ; fi
 ####
@@ -6238,9 +6238,9 @@ exit ; fi
 if [ "$first_option" = "ss" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "$tab [ The ipv6 sockets ]"
+echo " [ info ] [ The ipv6 sockets ]"
 $command_ss -a6 | $command_sed 's/   / /g'
-echo "$tab [ The ipv4 sockets ]"
+echo " [ info ] [ The ipv4 sockets ]"
 $command_ss -a4 | $command_sed 's/   / /g'
 exit; fi
 ####
@@ -6254,9 +6254,9 @@ exit; fi
 if [ "$first_option" = "lsof" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
 if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
-echo "$tab [The sockets with lsof ipv6 ]"
+echo " [ info ] [The sockets with lsof ipv6 ]"
 $command_lsof -i | $command_grep -i  ipv6
-echo "$tab [The sockets with lsof ipv4 ]"
+echo " [ info ] [The sockets with lsof ipv4 ]"
 $command_lsof -i | $command_grep -i  ipv4
 exit; fi
 ####
@@ -6270,7 +6270,7 @@ exit; fi
 if [ "$first_option" = "netstat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat ] || ||"
 if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
-echo "$tab [The sockets list with netstat ]"
+echo " [ info ] [The sockets list with netstat ]"
 $command_netstat -a -4 -6
 exit; fi
 ####
@@ -6284,10 +6284,10 @@ exit; fi
 if [ "$first_option" = "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "$tab [ Network Listen ] [ Listen ipv4 ]"
+echo " [ info ] [ Network Listen ] [ Listen ipv4 ]"
 $command_ss -l4 | $command_sed 's/   / /g'
 echo $tab
-echo "$tab [ Network Listen ] [ Listen ipv6 ]"
+echo " [ info ] [ Network Listen ] [ Listen ipv6 ]"
 $command_ss -l6 | $command_sed 's/   / /g'
 exit; fi
 ####
@@ -6300,9 +6300,9 @@ exit; fi
 ####
 if [ "$first_option" = "info-proxy" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ] ||"
-echo "$tab Info address proxy"
-echo "$tab Web http_proxy:    $http_proxy"
-echo "$tab Web https_proxy:   $https_proxy"
+echo " [ info ] [ Info address proxy ]"
+echo " [ info ] [ Web http_proxy:    $http_proxy ]"
+echo " [ info ] [ Web https_proxy:   $https_proxy ]"
 exit; fi
 ####
 ####
@@ -6315,7 +6315,7 @@ exit; fi
 if [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ] || ||"
 if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
-echo "$tab [ The devices list with netstat for nat ]"
+echo "[ info ] [ The devices list with netstat for nat ]"
 $command_netstat_nat
 exit; fi
 ####
@@ -6398,18 +6398,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [  ok  ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [  ok  ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L
 ;;
@@ -6432,18 +6432,18 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "$tab [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo "$tab [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo " [  ok  ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L
 ;;
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo "$tab [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo "$tab [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [  ok  ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L
 ;;
