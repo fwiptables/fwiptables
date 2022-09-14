@@ -2360,7 +2360,7 @@ fi
 ####
 ####
 if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List mini options ] [ mini-options.md ] || ||"
+echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options.md ] || ||"
 echo "$text_md [[ -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null ]]"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
