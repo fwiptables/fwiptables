@@ -1,7 +1,11 @@
 sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec
 
 
- 06. 
+
+
+ 08. 
+ 07. cambiar ole-* y colour-* por game-*.
+ 06. cambiar scan-* por nmap-*.
  05. añadido output -null. HECHO
  04. orden alfabetico de command -v. HECHO
  03. eliminar excesivo numero de almohadillas en los comentarios. HECHO
