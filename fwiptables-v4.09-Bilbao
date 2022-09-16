@@ -459,7 +459,7 @@ echo "$text_md     Control the firewall with the standard iptables files for all
 echo "$text_md       # Custom firewall # Create one firewall custom and launch your custom config firewall.   "
 echo "$text_md     Choose run iptables rules of one firewall with your own config files.                      "
 echo "$text_md       # Network tools # Use this firewall with some utilities for ipv4 and ipv6.               "
-echo "$text_md     With tool-options: Work with network utilities. With show-options: Show config net files.  "
+echo "$text_md     With options-tool: Work with network utilities. With options-show: Show config net files.  "
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     $cmd_fwiptables $fversion"
@@ -1035,7 +1035,7 @@ $cmd_fwiptables; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
-"ayuda"|"help"|"readme"|"leeme"|"help-options"|"all-help") second_option="help-help"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
@@ -2378,10 +2378,10 @@ echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shi
 echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp  "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid    "
 echo "$duo_md || ||  [ Options ]  ### [  See all posible option, with command: $cmd_fwiptables options ] ### || ||     "
-echo "$text_md      [ See all firewall, with command: $cmd_fwiptables firewall-options ]"
-echo "$text_md      [ See all tool,     with command: $cmd_fwiptables tool-options ]"
-echo "$text_md      [ See all show,     with command: $cmd_fwiptables show-options ]"
-echo "$text_md      [ See all help,     with command: $cmd_fwiptables help-options ]"
+echo "$text_md      [ See all firewall, with command: $cmd_fwiptables options-firewall ]"
+echo "$text_md      [ See all tool,     with command: $cmd_fwiptables options-tool ]"
+echo "$text_md      [ See all show,     with command: $cmd_fwiptables options-show ]"
+echo "$text_md      [ See all help,     with command: $cmd_fwiptables options-help ]"
 echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||          "
 echo "$text_md      $cmd_fwiptables -cli-menu                |  All options in text menu                       "
 echo "$text_md      $cmd_fwiptables -gui-menu                |  All options in window menu                     "
@@ -2406,7 +2406,7 @@ if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; the
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
 echo "$text_md [[ -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null ]]"
-echo "$duo_md || ||  [ firewall-options ]  || ||  ### ###                                                      "
+echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
 echo "$text_md                        list-alltables list-filter4 list-filter6                                 "
@@ -2421,7 +2421,7 @@ echo "$text_md                        client-web client-mail client-news client-
 echo "$text_md                        client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
-echo "$duo_md || ||  [ tool-options ]  || ||  ### ###                                                          "   
+echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
 echo "$text_md  tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
@@ -2440,12 +2440,12 @@ echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade 
 echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
-echo "$duo_md || || [ show-options ]   || ||  ### ###                                                          "
+echo "$duo_md || || [ options-show ]   || ||  ### ###                                                          "
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh filelog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
 echo "$text_md                        protocols services show-default modify-default                           "
-echo "$duo_md || || [ help-options ]   || ||  ### ###                                                          "
+echo "$duo_md || || [ options-help ]   || ||  ### ###                                                          "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
@@ -2464,14 +2464,14 @@ exit ; fi
 ####
 ####
 #### :rutina-final-full-options:
-##########    english: firewall-options: firewall options       ##########
-##########    spanish: firewall-options: opciones de firewall   ##########
-#### :rutina-final-firewall-options:
+##########    english: options-firewall: firewall options       ##########
+##########    spanish: options-firewall: opciones de firewall   ##########
+#### :rutina-final-options-firewall:
 ####
 ####
-if [ "$first_option" = "firewall-options" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ List firewall options ] [ firewall-options.md ]"
-echo "$title_md                                  | firewall-options |                                          "
+if [ "$first_option" = "options-firewall" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall.md ]"
+echo "$title_md                                  | options-firewall |                                          "
 echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
 echo "$text_md firewall-list       |  list listnum list6 listnum6                                              "
 echo "$text_md                        list-alltables list-forward list-forward6                                "
@@ -2489,19 +2489,19 @@ echo "$text_md                        client-ftp client-squid lan-tor lan-vpn sh
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
 echo "$text_md"
-echo "$text_md   | Group | output-interface | firewall-options | tool-options | show-options | help-options "
+echo "$text_md   | Group | output-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
-#### :rutina-final-firewall-options:
-##########    english: tool-options: firewall options       ##########
-##########    spanish: tool-options: opciones de firewall   ##########
-#### :rutina-final-tool-options:
+#### :rutina-final-options-firewall:
+##########    english: options-tool: firewall options       ##########
+##########    spanish: options-tool: opciones de firewall   ##########
+#### :rutina-final-options-tool:
 ####
 ####
-if [ "$first_option" = "tool-options" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ Tool options ] [ tool-options.md ]"
-echo "$title_md                                    | tool-options |                                 " 
+if [ "$first_option" = "options-tool" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ Tool options ] [ options-tool.md ]"
+echo "$title_md                                    | options-tool |                                 " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy         "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert      "
 echo "$text_md    tool-connect      | iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client  "
@@ -2521,19 +2521,19 @@ echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off 
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
-echo "$text_md    | Group | output-interface | firewall-options | tool-options | show-options | help-options "
+echo "$text_md    | Group | output-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
-#### :rutina-final-tool-options:
-##########       english: show-options: options show           ##########
-##########       spanish: show-options: opciones de mostrar    ##########
-#### :rutina-final-show-options:
+#### :rutina-final-options-tool:
+##########       english: options-show: options show           ##########
+##########       spanish: options-show: opciones de mostrar    ##########
+#### :rutina-final-options-show:
 ####
 ####
-if [ "$first_option" = "show-options" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ Show options ] [ show-options.md ]"
-echo "$title_md                                   | show-options |                          " 
+if [ "$first_option" = "options-show" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ Show options ] [ options-show.md ]"
+echo "$title_md                                   | options-show |                          " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$text_md    show-log          | log-search log-ssh filelog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
@@ -2543,28 +2543,28 @@ echo "$text_md                        config-eng config-spa license             
 echo "$text_md    help-help         | all-help help ayuda notes options info                "
 echo "$text_md                        group-options mini-options full-options               "
 echo "$text_md"
-echo "$text_md      | Group | output-interface | firewall-options | tool-options | show-options | help-options "
+echo "$text_md      | Group | output-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
-#### :rutina-final-show-options:
-##########    english: help-options: options show           ##########
-##########    spanish: help-options: opciones de mostrar    ##########
-#### :rutina-final-show-options:
+#### :rutina-final-options-show:
+##########    english: options-help: options show           ##########
+##########    spanish: options-help: opciones de mostrar    ##########
+#### :rutina-final-options-show:
 ####
 ####
-if [ "$first_option" = "help-options" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ Show help options ] [ help-options.md ]"
-echo "$title_md                                   | help-options |                                             "
+if [ "$first_option" = "options-help" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ Show help options ] [ options-help.md ]"
+echo "$title_md                                   | options-help |                                             "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$text_md"
-echo "$text_md      | Group | output-interface | firewall-options | tool-options | show-options | help-options "
+echo "$text_md      | Group | output-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
-#### :rutina-final-show-options:
+#### :rutina-final-options-show:
 ##########    english: some-example: some example    ##########
 ##########    spanish: some-example: algun ejemplo   ##########
 #### :rutina-inicial-some-example:
@@ -2598,10 +2598,10 @@ exit; fi
 if [ "$first_option" = "all-options" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List group options help ] || ||"
 $cmd_fwiptables output-interface
-$cmd_fwiptables firewall-options
-$cmd_fwiptables tool-options
-$cmd_fwiptables show-options
-$cmd_fwiptables help-options
+$cmd_fwiptables options-firewall
+$cmd_fwiptables options-tool
+$cmd_fwiptables options-show
+$cmd_fwiptables options-help
 exit; fi
 ####
 ####
@@ -10071,12 +10071,12 @@ echo "$tab [ group list: ]"
 echo "$tab" "$tab"  "$tab $tab"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
-echo "$tab" "$tab"  " firewall-options   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
-echo "$tab" "$tab"  "     tool-options   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
+echo "$tab" "$tab"  " options-firewall   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
+echo "$tab" "$tab"  "     options-tool   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
 echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudo        tool-game       "
 echo "$tab" "$tab"  "                       tool-speed       tool-install   tool-blacklist   tool-dev        "
 echo "$tab" "$tab"  "                       tool-connect"
-echo "$tab" "$tab"  "     show-options   |  show-hardware     show-etc       show-log         help-about      "
+echo "$tab" "$tab"  "     options-show   |  show-hardware     show-etc       show-log         help-about      "
 echo "$tab" "$tab"  "                       help-help"
 echo
 echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
