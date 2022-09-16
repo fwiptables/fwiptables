@@ -935,13 +935,13 @@ wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_opti
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
-scan-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+nmap-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "speed-cpu") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "info-nodes") echo $message_without_cli ;  exit ;;
-"ole-domain") $cmd_fwiptables ole-domain -cli ; exit ;;
-"ole-word") $cmd_fwiptables ole-word -cli ; exit ;;
-"ole-number") $cmd_fwiptables ole-number -cli ; exit ;;
+"game-domain") $cmd_fwiptables game-domain -cli ; exit ;;
+"game-word") $cmd_fwiptables game-word -cli ; exit ;;
+"game-number") $cmd_fwiptables game-number -cli ; exit ;;
 "blacklist-on") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
 "log-search") 
@@ -962,9 +962,9 @@ esac ; fi
 ####
 if [ "$first_option" = "-gui" ] 
 then case "$second_option" in 
-"ole_word") first_option="ole-word" ; second_option="-gui" ;;
-"ole_number") first_option="ole-number" ; second_option="-gui" ;;
-"ole_domain") first_option="ole-domain" ; second_option="-gui" ;;
+"ole_word") first_option="game-word" ; second_option="-gui" ;;
+"ole_number") first_option="game-number" ; second_option="-gui" ;;
+"ole_domain") first_option="game-domain" ; second_option="-gui" ;;
 "rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
 "gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
 "info-nodes") echo $message_without_gui ;  exit ;;
@@ -986,7 +986,7 @@ then case "$second_option" in
 "gpg-notes") echo $message_without_log ; exit ;;
 "wpa-save") echo $message_without_log ; exit ;;
 pc-*) echo $message_without_log ; exit ;;
-ole-*) echo $message_without_log ; exit ;;
+game-*) echo $message_without_log ; exit ;;
 radio-*) echo $message_without_log ; exit ;;
 rule-*) echo $message_without_log ; exit ;;
 esac 
@@ -1014,7 +1014,7 @@ then case "$second_option" in
 "gpg-notes") echo $message_without_null ; exit ;;
 "wpa-save") echo $message_without_null ; exit ;;
 pc-*) echo $message_without_null ; exit ;;
-ole-*) echo $message_without_null ; exit ;;
+game-*) echo $message_without_null ; exit ;;
 radio-*) echo $message_without_null ; exit ;;
 rule-*) echo $message_without_null ; exit ;;
 esac
@@ -1048,9 +1048,9 @@ host|dig|resolveip|geoip|ntpdate-client) second_option="tool-udp"; third_option=
 iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rule"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
-scan-*)  second_option="tool-nmap"; third_option="" ;;
-sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
-ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
+nmap-*)  second_option="tool-nmap"; third_option="" ;;
+sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
+game-*|game-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
@@ -1098,9 +1098,9 @@ host|dig|resolveip|geoip|ntpdate-client) second_option="tool-udp"; third_option=
 iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; third_option="";;
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rule"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
-scan-*)  second_option="tool-nmap"; third_option="" ;;
-sudo-*|alias-*)  second_option="tool-sudo"; third_option="" ;;
-ole-*|colour-*)  second_option="tool-game"; third_option="" ;;
+nmap-*)  second_option="tool-nmap"; third_option="" ;;
+sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
+game-*|game-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
@@ -1132,8 +1132,8 @@ case "$second_option" in
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
 *-config) echo $message_without_web ; exit ;;
-ole-*) echo $message_without_web ; exit ;;
-colour-*) echo $message_without_web ; exit ;;
+game-*) echo $message_without_web ; exit ;;
+game-*) echo $message_without_web ; exit ;;
 rule-del-number) echo $message_without_web ; exit ;;
 wpa-save) echo $message_without_web ; exit ;;
 wpa-load)  echo $message_without_web ; exit ;;
@@ -2431,9 +2431,9 @@ echo "$text_md  tool-sshd          |  sshd-tunnel-info sshd-tunnel-on sshd-tunne
 echo "$text_md  tool-tcp           |  tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                            "
 echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client                                  "
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
-echo "$text_md  tool-nmap          |  scan-tcp scan-syn scan-fin scan-udp scan-ping                            "
-echo "$text_md  tool-sudo          |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
-echo "$text_md  tool-game          |  ole-word ole-number ole-domain colour-rgb colour-hex                     "
+echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                            "
+echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
+echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                     "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
 echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
@@ -2511,9 +2511,9 @@ echo "$text_md    tool-sshd         | sshd-tunnel-info sshd-tunnel-on sshd-tunne
 echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                 "
 echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                       "
 echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                 "
-echo "$text_md    tool-nmap         | scan-tcp scan-syn scan-fin scan-udp scan-ping                 "
-echo "$text_md    tool-sudo         | sudofw-adduser sudofw-deluser sudofw-listuser                 "
-echo "$text_md    tool-game         | ole-word ole-number colour-rgb colour-hex                     "
+echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                 "
+echo "$text_md    tool-sudofw         | sudofw-adduser sudofw-deluser sudofw-listuser                 "
+echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                     "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
 echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
@@ -2678,7 +2678,7 @@ echo "$brake_md"
 $cmd_fwiptables tool-nmap
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables tool-sudo
+$cmd_fwiptables tool-sudofw
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-game
@@ -2806,7 +2806,7 @@ echo "$text_md $tab_lang_spanish                  Varias herramientas icmp"
 echo "$text_md $tab tool-nmap"
 echo "$text_md $tab_lang_english                  Port scan"
 echo "$text_md $tab_lang_spanish                  Escaneo de puertos"
-echo "$text_md $tab tool-sudo"
+echo "$text_md $tab tool-sudofw"
 echo "$text_md $tab_lang_english                  Tool to auth sudo a users for fwiptables"
 echo "$text_md $tab_lang_spanish                  Herramienta de autorizacion a usuarios para fwiptables"
 echo "$text_md $tab tool-install"
@@ -3250,19 +3250,19 @@ echo "$text_md"
 echo "$text_md [ english info ] [ Tool game ]"
 echo "$text_md [ spanish info ] [ Herramienta de juego ]"
 echo "$text_md"
-echo "$text_md $tab ole-word"
+echo "$text_md $tab game-word"
 echo "$text_md $tab_lang_english          : Play game to discover a random word with five digits"
 echo "$text_md $tab_lang_spanish          : Juega a descubrir una palabra aleatoria de cinco caracteres"
-echo "$text_md $tab ole-number"
+echo "$text_md $tab game-number"
 echo "$text_md $tab_lang_english          : Play game to discover a random number with five digits"
 echo "$text_md $tab_lang_spanish          : Juega a descubrir un numero aleatorio de cinco digitos"
-echo "$text_md $tab ole-domain"
+echo "$text_md $tab game-domain"
 echo "$text_md $tab_lang_english          : Discover one domain if generic or if country"
 echo "$text_md $tab_lang_spanish          : Descubre un dominio si es generico o si es de pais"
-echo "$text_md $tab colour-hex"
+echo "$text_md $tab game-hex"
 echo "$text_md $tab_lang_english          : Convert one number hexadecimal in rgb"
 echo "$text_md $tab_lang_spanish          : Convierte un numero hexadecimal en rgb"
-echo "$text_md $tab colour-rgb"
+echo "$text_md $tab game-rgb"
 echo "$text_md $tab_lang_english          : Convert one number rgb in hexadecimal"
 echo "$text_md $tab_lang_spanish          : Convierte un numero rgb en hexadecimal"
 exit; fi
@@ -3466,32 +3466,32 @@ echo "$text_md"
 echo "$text_md [ english info ] [ Tool nmap ]"
 echo "$text_md [ spanish info ] [ Herramienta nmap ]"
 echo "$text_md"
-echo "$text_md $tab scan-tcp"
+echo "$text_md $tab nmap-tcp"
 echo "$text_md $tab_lang_english          : Scan a host/mask per tcp protocol"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por tcp protocolo"
-echo "$text_md $tab scan-syn"
+echo "$text_md $tab nmap-syn"
 echo "$text_md $tab_lang_english          : Scan a host/mask per syn socket"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por syn socket"
-echo "$text_md $tab scan-fin"
+echo "$text_md $tab nmap-fin"
 echo "$text_md $tab_lang_english          : Scan a host/mask per fin socket"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por fin socket"
-echo "$text_md $tab scan-udp"
+echo "$text_md $tab nmap-udp"
 echo "$text_md $tab_lang_english          : Scan a host/mask per udp protocol"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por udp protocolo"
-echo "$text_md $tab scan-ping"
+echo "$text_md $tab nmap-ping"
 echo "$text_md $tab_lang_english          : Scan a host/mask per ping udp"
 echo "$text_md $tab_lang_spanish          : Escanea una host/mascara por ping protocolo"
 exit; fi
 ####
 ####
 #### :rutina-final-tool-nmap:
-##########    english: tool-sudo: options   ##########
-##########    spanish: tool-sudo: opciones  ##########
-#### :rutina-inicial-tool-sudo:
+##########    english: tool-sudofw: options   ##########
+##########    spanish: tool-sudofw: opciones  ##########
+#### :rutina-inicial-tool-sudofw:
 ####
 ####
-if [ "$first_option" = "tool-sudo" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudo.md ] || ||"
+if [ "$first_option" = "tool-sudofw" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudofw.md ] || ||"
 echo "$text_md"
 echo "$text_md [ Tool sudo ]"
 echo "$text_md [ Herramienta sudo ]"
@@ -3511,7 +3511,7 @@ echo "$text_md $tab_lang_spanish          : Lista los alias de autocompletar par
 exit; fi
 ####
 ####
-#### :rutina-final-tool-sudo:
+#### :rutina-final-tool-sudofw:
 ##########    english: tool-install: options   ##########
 ##########    spanish: tool-install: opciones  ##########
 #### :rutina-inicial-tool-install:
@@ -4061,9 +4061,9 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 ;;
 #### 
 ####
-"ole-word") $cmd_fwiptables ole-word gui ; exit ;;
-"ole-number") $cmd_fwiptables ole-number gui ; exit ;;
-"ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
+"game-word") $cmd_fwiptables game-word gui ; exit ;;
+"game-number") $cmd_fwiptables game-number gui ; exit ;;
+"game-domain") $cmd_fwiptables game-domain gui ; exit ;;
 ####
 ####
 *)$cmd_fwiptables "$second_option" "$third_option" "$quarter_option" &> "$temporal_guifinal"
@@ -4121,9 +4121,9 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
-"ole-word") $cmd_fwiptables ole-word gui ; exit ;;
-"ole-number") $cmd_fwiptables ole-number gui ; exit ;;
-"ole-domain") $cmd_fwiptables ole-domain gui ; exit ;;
+"game-word") $cmd_fwiptables game-word gui ; exit ;;
+"game-number") $cmd_fwiptables game-number gui ; exit ;;
+"game-domain") $cmd_fwiptables game-domain gui ; exit ;;
 ####
 ####
 *)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
@@ -4177,7 +4177,7 @@ case "$selection" in
 "10 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
 "11 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
 "12 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
-"13 Tool sudo")$cmd_fwiptables gui-menu-tool-sudo ; exit ;;
+"13 Tool sudo")$cmd_fwiptables gui-menu-tool-sudofw ; exit ;;
 "14 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
 "15 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
 "16 Tool utils")$cmd_fwiptables gui-menu-tool-util ; exit ;;
@@ -4691,12 +4691,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-tcp:
-##########    english: gui-menu-tool-sudo: gui with menu   ##########
-##########    spanish: gui-menu-tool-sudo: gui con menu    ##########
-#### :rutina-inicial-gui-menu-tool-sudo:
+##########    english: gui-menu-tool-sudofw: gui with menu   ##########
+##########    spanish: gui-menu-tool-sudofw: gui con menu    ##########
+#### :rutina-inicial-gui-menu-tool-sudofw:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-sudo" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-sudofw" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Sudo ] [ $name_fwiptables ]" )
@@ -4705,8 +4705,8 @@ selection=$($command_zenity  $graphic_dimension \
 case $selection in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
-"Gui Help Menu") $cmd_fwiptables -gui help tool-sudo ;;
-"Gui Info Menu") $cmd_fwiptables -gui info tool-sudo ;;
+"Gui Help Menu") $cmd_fwiptables -gui help tool-sudofw ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-sudofw ;;
 "sudofw-adduser")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_fwiptables -gui sudofw-adduser $archivo ;;
 "sudofw-deluser")$cmd_fwiptables -gui sudofw-deluser ;;
@@ -4723,7 +4723,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-tool-sudo:
+#### :rutina-final-gui-menu-tool-sudofw:
 ##########    english: gui-menu-tool-game: gui with menu   ##########
 ##########    spanish: gui-menu-tool-game: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-game:
@@ -4731,7 +4731,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ole-word" "ole-number" "ole-domain" "colour-rgb" "colour-hex" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool game ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -4740,15 +4740,15 @@ case $selection in
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-game ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-game ;;
-"ole-word")$cmd_fwiptables -gui ole-word ;;
-"ole-number")$cmd_fwiptables -gui ole-number ;;
-"ole-domain")$cmd_fwiptables -gui ole-domain ;;
-"colour-rgb")
+"game-word")$cmd_fwiptables -gui game-word ;;
+"game-number")$cmd_fwiptables -gui game-number ;;
+"game-domain")$cmd_fwiptables -gui game-domain ;;
+"game-rgb")
 onecolour="$($command_zenity  $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
-$cmd_fwiptables gui colour-rgb $onecolour ;;
-"colour-hex") 
+$cmd_fwiptables gui game-rgb $onecolour ;;
+"game-hex") 
 onecolour="$($command_zenity  $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
-$cmd_fwiptables gui colour-hex $onecolour ;;
+$cmd_fwiptables gui game-hex $onecolour ;;
 esac
 ####
 ####
@@ -5146,9 +5146,9 @@ esac
 case $menugtk in
 ####
 ####
-"ole-word") $cmd_fwiptables ole-word -gui ;;
-"ole-number") $cmd_fwiptables ole-number -gui ;;
-"ole-domain") $cmd_fwiptables ole-domain -gui ;;
+"game-word") $cmd_fwiptables game-word -gui ;;
+"game-number") $cmd_fwiptables game-number -gui ;;
+"game-domain") $cmd_fwiptables game-domain -gui ;;
 "rule-del-num") $cmd_fwiptables rule-del-num -gui ;;
 ####
 ####
@@ -5379,10 +5379,10 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 1402  "$tab sudofw-deluser" \
 1403  "$tab sudofw-listuser" \
 1500 "$quad [ Tool Game ] $cinco" \
-1501  "$tab ole-word" \
-1502  "$tab ole-number" \
-1503  "$tab colour-rgb" \
-1504  "$tab colour-hex" \
+1501  "$tab game-word" \
+1502  "$tab game-number" \
+1503  "$tab game-rgb" \
+1504  "$tab game-hex" \
 1600 "$quad [ Tool utils ]" \
 1601  "$tab md5sum" \
 1602  "$tab gpg-notes" \
@@ -5467,7 +5467,7 @@ case "$menuprincipal" in
 1100) clear ; $cmd_fwiptables cli tool-tcp ;;
 1200) clear ; $cmd_fwiptables cli tool-icmp ;;
 1300) clear ; $cmd_fwiptables cli tool-udp ;;
-1400) clear ; $cmd_fwiptables cli tool-sudo ;;
+1400) clear ; $cmd_fwiptables cli tool-sudofw ;;
 1500) clear ; $cmd_fwiptables cli tool-game ;;
 1600) clear ; $cmd_fwiptables cli tool-util ;;
 1700) clear ; $cmd_fwiptables cli tool-install ;;
@@ -5632,12 +5632,12 @@ clear ; $cmd_fwiptables geoip $resolve ;;
 clear ; $cmd_fwiptables sudofw-adduser $resolve ;;
 1402) clear ; $cmd_fwiptables cli sudofw-deluser ;;
 1403) clear ; $cmd_fwiptables cli sudofw-listuser ;;
-1501) clear ; $cmd_fwiptables cli ole-word  ;;
-1502) clear ; $cmd_fwiptables cli ole-number ;;
+1501) clear ; $cmd_fwiptables cli game-word  ;;
+1502) clear ; $cmd_fwiptables cli game-number ;;
 1503) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
-$cmd_fwiptables cli colour-rgb $resolve ;;
+$cmd_fwiptables cli game-rgb $resolve ;;
 1504) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
-$cmd_fwiptables cli colour-hex $resolve ;;
+$cmd_fwiptables cli game-hex $resolve ;;
 1601) archivo="$($command_dialog  --stdout --title "Type location file to mp5sum" \
 --inputbox "Type location file to mp5sum" 0 0)" 
 clear ; $cmd_fwiptables md5sum $archivo ;;
@@ -8100,12 +8100,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-ntpdate-client:
-##########    english: scan-tcp: scan one net per tcp       ##########
-##########    spanish: scan-tcp: rastrea una red por tcp    ##########
-#### :rutina-inicial-scan-tcp:
+##########    english: nmap-tcp: scan one net per tcp       ##########
+##########    spanish: nmap-tcp: rastrea una red por tcp    ##########
+#### :rutina-inicial-nmap-tcp:
 ####
 ####
-if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
+if [ "$first_option" = "nmap-tcp" ]; then echo $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap tcp ] || ||"
  echo $header_lineal
  case $command_nmap in $NULL) echo install nmap ; exit ;; esac
@@ -8137,13 +8137,13 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
  exit; fi
 ####
 ####
-#### :rutina-final-scan-tcp:
-##########    english: scan-syn: scan one net per syn         ##########
-##########    spanish: scan-syn: rastrea una por peticiones   ##########
-#### :rutina-inicial-scan-syn:
+#### :rutina-final-nmap-tcp:
+##########    english: nmap-syn: scan one net per syn         ##########
+##########    spanish: nmap-syn: rastrea una por peticiones   ##########
+#### :rutina-inicial-nmap-syn:
 ####
 ####
- if [ "$first_option" = "scan-syn" ]; then echo $give_cover
+ if [ "$first_option" = "nmap-syn" ]; then echo $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap syn ] || ||"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
@@ -8173,13 +8173,13 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
  exit; fi
 ####
 ####
-#### :rutina-final-scan-syn:
-##########    english: scan-fin: scan one net per conexiones      ##########
-##########    spanish: scan-fin: rastrea una red por conexiones   ##########
-#### :rutina-inicial-scan-fin:
+#### :rutina-final-nmap-syn:
+##########    english: nmap-fin: scan one net per conexiones      ##########
+##########    spanish: nmap-fin: rastrea una red por conexiones   ##########
+#### :rutina-inicial-nmap-fin:
 ####
 ####
- if [ "$first_option" = "scan-fin" ]; then echo $give_cover
+ if [ "$first_option" = "nmap-fin" ]; then echo $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap fin ] || ||"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
@@ -8211,13 +8211,13 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
  exit; fi
 ####
 ####
-#### :rutina-final-scan-fin:
-##########    english: scan-udp: scan one net per udp       ##########
-##########    spanish: scan-udp: rastrea una red por udp    ##########
-#### :rutina-inicial-scan-udp:
+#### :rutina-final-nmap-fin:
+##########    english: nmap-udp: scan one net per udp       ##########
+##########    spanish: nmap-udp: rastrea una red por udp    ##########
+#### :rutina-inicial-nmap-udp:
 ####
 ####
- if [ "$first_option" = "scan-udp" ]; then echo $give_cover
+ if [ "$first_option" = "nmap-udp" ]; then echo $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap udp ] || ||"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
@@ -8249,13 +8249,13 @@ if [ "$first_option" = "scan-tcp" ]; then echo $give_cover
  exit; fi
 ####
 ####
-#### :rutina-final-scan-udp:
-##########    english: scan-ping: scan one net per ping     ##########
-##########    spanish: scan-ping: rastrea una red por ping  ##########
-#### :rutina-inicial-scan-ping:
+#### :rutina-final-nmap-udp:
+##########    english: nmap-ping: scan one net per ping     ##########
+##########    spanish: nmap-ping: rastrea una red por ping  ##########
+#### :rutina-inicial-nmap-ping:
 ####
 ####
- if [ "$first_option" = "scan-ping" ]; then echo $give_cover
+ if [ "$first_option" = "nmap-ping" ]; then echo $give_cover
  echo "$header_ok [ $first_option ]  [ scan with nmap ping ] || ||"
  echo $header_lineal
  case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
@@ -8285,7 +8285,7 @@ $cmd_fwiptables stop
  exit; fi
 ####
 ####
-#### :rutina-final-scan-ping:
+#### :rutina-final-nmap-ping:
 ##########    english: free-ram: give one freedom to ram innecesary     ##########
 ##########    spanish: free-ram: limpia la memoria ram                  ##########
 #### :rutina-inicial-free-ram:
@@ -8454,14 +8454,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadenadial:
-##########    english: colour-rgb: convert colour rgb to hex   ##########
-##########    spanish: colour-rgb: convierte color rgb a hex   ##########
-#### :rutina-inicial-colour-rgb:
+##########    english: game-rgb: convert colour rgb to hex   ##########
+##########    spanish: game-rgb: convierte color rgb a hex   ##########
+#### :rutina-inicial-game-rgb:
 ####
 ####
-if [ "$first_option" = "colour-rgb" ]; then  $nada
+if [ "$first_option" = "game-rgb" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
-echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: fwiptables colour-rgb 255000255 ]"
+echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: fwiptables game-rgb 255000255 ]"
 else
 rgb="$(echo "$second_option" | cut -c -9)"
 ##
@@ -8485,15 +8485,15 @@ echo " [ ok ] [ Colour converted ]"
 fi; exit ; fi
 ####
 ####
-#### :rutina-final-colour-rgb:
-##########    english: colour-hex: convert colour hex to rgb  ##########
-##########    spanish: colour-hex: convierte color hex a rgb  ##########
-#### :rutina-inicial-colour-hex:
+#### :rutina-final-game-rgb:
+##########    english: game-hex: convert colour hex to rgb  ##########
+##########    spanish: game-hex: convierte color hex a rgb  ##########
+#### :rutina-inicial-game-hex:
 ####
 ####
-if [ "$first_option" = "colour-hex" ]; then  $nada
+if [ "$first_option" = "game-hex" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
-echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: fwiptables colour-hex FF00FF ]"
+echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: fwiptables game-hex FF00FF ]"
 else
 hexadecimal="$(echo $second_option | tr '[:lower:]' '[:upper:]'| cut -c 1-6)"
 ##
@@ -8517,13 +8517,13 @@ echo " [ ok ] [ Colour converted ]"
 fi ; exit; fi
 ####
 ####
-#### :rutina-final-colour-hex:
-##########    english: ole-domain: discover one domain with ole-domain   ##########
-##########    spanish: ole-domain: descubre un dominio con ole-domain    ##########
-#### :rutina-inicial-ole-domain:
+#### :rutina-final-game-hex:
+##########    english: game-domain: discover one domain with game-domain   ##########
+##########    spanish: game-domain: descubre un dominio con game-domain    ##########
+#### :rutina-inicial-game-domain:
 ####
 ####
-if [ "$first_option" = "ole-domain" ] ; then
+if [ "$first_option" = "game-domain" ] ; then
 file_domain="$directory_default/$name_fwiptables-domain"
 if [ -s $file_domain ]; then $nada 
 else echo " [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
@@ -8545,9 +8545,9 @@ clear ; exit ; fi
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ] ; then
 case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity ]"; exit ;; esac
-$(zenity $graphic_dimension --info --title="gui ole-domain" \
+$(zenity $graphic_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
-$(zenity $graphic_dimension --info --title="gui ole-domain" \
+$(zenity $graphic_dimension --info --title="gui game-domain" \
 --text=" Really $domain_one is a $type_domain_one domain.")
 exit; fi
 ####
@@ -8563,13 +8563,13 @@ exit
 exit; fi
 ####
 ####
-#### :rutina-final-ole-domain:
-##########    english: ole-word: play game ole-word        ##########
-##########    spanish: ole-word: juega al juego ole-word   ##########
-#### :rutina-inicial-ole-word:
+#### :rutina-final-game-domain:
+##########    english: game-word: play game game-word        ##########
+##########    spanish: game-word: juega al juego game-word   ##########
+#### :rutina-inicial-game-word:
 ####
 ####
-if [ "$first_option" = "ole-word" ]; then  $nada
+if [ "$first_option" = "game-word" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -8600,8 +8600,8 @@ textes_7=" ##### La ultima respuesta           es:  "
 textes_8=" ##### La respuesta correcta         es:  "
 ####
 ####
-#### english: ole-word in cli
-#### spanish: ole-word en cli
+#### english: game-word in cli
+#### spanish: game-word en cli
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
@@ -8728,8 +8728,8 @@ acierto="$($command_dialog  --stdout --title "Play game word ole" --msgbox "$tex
 clear; exit; fi
 ####
 ####
-#### english: ole-word in gui
-#### spanish: ole-word en gui
+#### english: game-word in gui
+#### spanish: game-word en gui
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
@@ -8804,11 +8804,11 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 ####
 if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear 
-acierto="$(zenity $graphic_dimension --info --title="gui ole-word" --text="$text_1 $palabra_aleatoria")"
+acierto="$(zenity $graphic_dimension --info --title="gui game-word" --text="$text_1 $palabra_aleatoria")"
 clear; exit; fi
 ####
 if [ "$intento" = "$intento_maximo" ]; then clear
-fallo="$(zenity $graphic_dimension --info --title="gui ole-word" --text="$text_8 $palabra_aleatoria")"
+fallo="$(zenity $graphic_dimension --info --title="gui game-word" --text="$text_8 $palabra_aleatoria")"
 clear ; exit ; fi
 ####
 bucle="$(zenity $graphic_dimension --entry --title "Play game word ole" \
@@ -8857,13 +8857,13 @@ if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
-#### english:  ole-word in text
-#### spanish:  ole-word en txt
+#### english:  game-word in text
+#### spanish:  game-word en txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
 echo 
-echo "$header_ok [ $first_option ]  [ play game clone ole-word ]"
+echo "$header_ok [ $first_option ]  [ play game clone game-word ]"
 echo "$header_lineal"
 ##### INICIO ####
 #### Choose language english or spanish
@@ -8980,13 +8980,13 @@ exit; fi
 fi
 ####
 ####
-#### :rutina-final-ole-word:
-##########    english: ole-number: play game ole-number         ##########
-##########    spanish: ole-number: juega al juego ole-number    ##########
-#### :rutina-inicial-ole-number:
+#### :rutina-final-game-word:
+##########    english: game-number: play game game-number         ##########
+##########    spanish: game-number: juega al juego game-number    ##########
+#### :rutina-inicial-game-number:
 ####
 ####
-if [ "$first_option" = "ole-number" ]; then  $nada
+if [ "$first_option" = "game-number" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -9016,8 +9016,8 @@ textes_7=" ##### La ultima respuesta             es:  "
 textes_8=" ##### La respuesta correcta           es:  "
 ####
 ####
-#### english: ole-number in cli
-#### spanish: ole-number en cli
+#### english: game-number in cli
+#### spanish: game-number en cli
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
@@ -9127,8 +9127,8 @@ $command_dialog  --stdout --title "Play game number ole" --msgbox "$text_8 $nume
 clear ; exit ; fi
 ####
 ####
-#### english: ole-number in gui
-#### spanish: ole-number en gui
+#### english: game-number in gui
+#### spanish: game-number en gui
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
@@ -9187,11 +9187,11 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 #### 
 if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear 
-acierto="$(zenity $graphic_dimension --info --title="gui ole-number" --text="$text_1 $numero_aleatorio")"
+acierto="$(zenity $graphic_dimension --info --title="gui game-number" --text="$text_1 $numero_aleatorio")"
 clear; exit; fi
 ####
 if [ "$intento" = "$intento_maximo" ]; then clear
-fallo="$(zenity $graphic_dimension --info --title="gui ole-number" --text="$text_8 $numero_aleatorio")"
+fallo="$(zenity $graphic_dimension --info --title="gui game-number" --text="$text_8 $numero_aleatorio")"
 clear ; exit ; fi
 ####
 bucle="$(zenity $graphic_dimension --entry --title "Play game number ole" \
@@ -9240,13 +9240,13 @@ if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
-#### english: ole-number in txt
-#### spanish: ole-number en txt
+#### english: game-number in txt
+#### spanish: game-number en txt
 ####
 ####
 if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
 echo
-echo "$header_ok [ $first_option ]  [ play game clone ole-number ]"
+echo "$header_ok [ $first_option ]  [ play game clone game-number ]"
 echo "$header_lineal"
 ##### INICIO ####
 #### Choose language english or spanish
@@ -9346,7 +9346,7 @@ clear; exit; fi
 fi
 ####
 ####
-#### :rutina-final-ole-number:
+#### :rutina-final-game-number:
 ##########    english: sshd-tunnel-info: info over sshd   ##########
 ##########    spanish: sshd-tunnel-info: info sobre sshd  ##########
 #### :rutina-inicial-sshd-tunnel-info:
@@ -10049,7 +10049,7 @@ if [ "$second_option" = "tool-tcp" ]; then $cmd_fwiptables tool-tcp ; exit ; fi
 if [ "$second_option" = "tool-udp" ]; then $cmd_fwiptables tool-udp ; exit ; fi
 if [ "$second_option" = "tool-icmp" ]; then $cmd_fwiptables tool-icmp ; exit ; fi
 if [ "$second_option" = "tool-nmap" ]; then $cmd_fwiptables tool-nmap ; exit ; fi
-if [ "$second_option" = "tool-sudo" ]; then $cmd_fwiptables tool-sudo ; exit ; fi
+if [ "$second_option" = "tool-sudofw" ]; then $cmd_fwiptables tool-sudofw ; exit ; fi
 if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
 if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
 if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
@@ -10073,7 +10073,7 @@ echo "$tab" "$tab"  "                                   | Group Options |       
 echo "$tab" "$tab"  
 echo "$tab" "$tab"  " options-firewall   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
 echo "$tab" "$tab"  "     options-tool   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
-echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudo        tool-game       "
+echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudofw        tool-game       "
 echo "$tab" "$tab"  "                       tool-speed       tool-install   tool-blacklist   tool-dev        "
 echo "$tab" "$tab"  "                       tool-connect"
 echo "$tab" "$tab"  "     options-show   |  show-hardware     show-etc       show-log         help-about      "
@@ -10276,11 +10276,11 @@ echo "$text_md       ping-ip6 : Do a one ping with to one host with ipv6 icmp."
 echo "$text_md"
 echo "$title_md         [ Tool nmap ]"
 echo "$text_md"
-echo "$text_md       scan-tcp : Scan a host/mask per tcp protocol."
-echo "$text_md       scan-syn : Scan a host/mask per syn socket."
-echo "$text_md       scan-fin : Scan a host/mask per fin socket."
-echo "$text_md       scan-udp : Scan a host/mask per udp protocol."
-echo "$text_md      scan-ping : Scan a host/mask per ping udp."
+echo "$text_md       nmap-tcp : Scan a host/mask per tcp protocol."
+echo "$text_md       nmap-syn : Scan a host/mask per syn socket."
+echo "$text_md       nmap-fin : Scan a host/mask per fin socket."
+echo "$text_md       nmap-udp : Scan a host/mask per udp protocol."
+echo "$text_md      nmap-ping : Scan a host/mask per ping udp."
 echo "$text_md"
 echo "$title_md         [ Tool sudo ]"
 echo "$text_md"
@@ -10291,11 +10291,11 @@ echo "$text_md      aliasfw-list : List alias fwiptables and its autocomplete."
 echo "$text_md"
 echo "$title_md         [ Tool game ]"
 echo "$text_md"
-echo "$text_md         ole-word : Play game to discover a random word with five digits."
-echo "$text_md       ole-number : Play game to discover a random number with five digits."
-echo "$text_md       ole-domain : Discover one domain if generic or if country."
-echo "$text_md       colour-hex : convert one number hexadecimal in rgb."
-echo "$text_md       colour-rgb : convert one number rgb in hexadecimal."
+echo "$text_md         game-word : Play game to discover a random word with five digits."
+echo "$text_md       game-number : Play game to discover a random number with five digits."
+echo "$text_md       game-domain : Discover one domain if generic or if country."
+echo "$text_md       game-hex : convert one number hexadecimal in rgb."
+echo "$text_md       game-rgb : convert one number rgb in hexadecimal."
 echo "$text_md"
 echo "$title_md         [ Tool speed ]"
 echo "$text_md"
@@ -10628,11 +10628,11 @@ echo "$text_md      ping-ip6 : Hace un ping a una host con ipv6 icmp."
 echo "$text_md"
 echo "$title_md [ Herramienta nmap ]."
 echo "$text_md" 
-echo "$text_md      scan-tcp : Rastrea una host/mask por tcp protocolo."
-echo "$text_md      scan-syn : Rastrea una host/mask por syn socket."
-echo "$text_md      scan-fin : Rastrea una host/mask por fin socket."
-echo "$text_md      scan-udp : Rastrea una host/mask por udp protocolo."
-echo "$text_md     scan-ping : Rastrea una host/mask por ping udp."
+echo "$text_md      nmap-tcp : Rastrea una host/mask por tcp protocolo."
+echo "$text_md      nmap-syn : Rastrea una host/mask por syn socket."
+echo "$text_md      nmap-fin : Rastrea una host/mask por fin socket."
+echo "$text_md      nmap-udp : Rastrea una host/mask por udp protocolo."
+echo "$text_md     nmap-ping : Rastrea una host/mask por ping udp."
 echo "$text_md"
 echo "$title_md [ Herramienta de autorizacion ]."
 echo "$text_md"
@@ -10642,11 +10642,11 @@ echo "$text_md  sudofw-listuser : Lista autorizacion de usuarios elegidos."
 echo "$text_md"
 echo "$title_md [ Herramienta de juego ]."
 echo "$text_md"
-echo "$text_md   ole-word    : Juega a descubrir una palabra aleatoria de cinco caracteres."
-echo "$text_md   ole-number  : Juega a descubrir un numero aleatorio de cinco digitos."
-echo "$text_md   ole-domain  : Descubre un dominio si es generico o si es de un pais."
-echo "$text_md   colour-hex  : convierte un numero hexadecimal en rgb ."
-echo "$text_md   colour-rgb  : convierte un numero rgb en hexadecimal ."
+echo "$text_md   game-word    : Juega a descubrir una palabra aleatoria de cinco caracteres."
+echo "$text_md   game-number  : Juega a descubrir un numero aleatorio de cinco digitos."
+echo "$text_md   game-domain  : Descubre un dominio si es generico o si es de un pais."
+echo "$text_md   game-hex  : convierte un numero hexadecimal en rgb ."
+echo "$text_md   game-rgb  : convierte un numero rgb en hexadecimal ."
 echo "$text_md"
 echo "$title_md [ Herramienta de velocidad ]."
 echo "$text_md"
