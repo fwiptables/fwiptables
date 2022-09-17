@@ -149,7 +149,7 @@ cmd_fwiptables="fwiptables-cmd"
 ####
 ####
 directory_binary="/usr/bin"
-directory_data="$HOME/.config/fwiptables"
+directory_data="$HOME/.config/$cmd_fwiptables"
 #### directory_desktop="$HOME/.local/share/applications"
 ####
 ####
@@ -168,8 +168,8 @@ directory_shell="$directory_data/fwiptables-shell"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/$name_fwiptables-filelog"
-output_autolog="$directory_log/$name_fwiptables-autolog"
+output_filelog="$directory_log/$cmd_fwiptables-filelog"
+output_autolog="$directory_log/$cmd_fwiptables-autolog"
 ####
 ####
 ##########    english: temporal files: files for fwiptables ##########
@@ -184,8 +184,8 @@ output_autolog="$directory_log/$name_fwiptables-autolog"
 #### spanish: directorio temporal
 ####
 ####
-directory_tmp="$HOME/.cache/fwiptables"
-directory_temporal="$directory_tmp/.$name_fwiptables-$fversion-tmp"
+directory_tmp="$HOME/.cache/$cmd_fwiptables"
+directory_temporal="$directory_tmp/.$cmd_fwiptables-$fversion-tmp"
 ####
 ####
 #### english: temporal files
@@ -950,7 +950,7 @@ clear; $cmd_fwiptables log-search $pattern ; exit ;;
 log-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 fw-*)  echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "hosts") echo $message_without_cli ; $cmd_fwiptables hosts ; exit ;;
-*) dialog --title "  Cli Output || $cmd_fwiptables || $(date)" \
+*) dialog --title "  Cli Output || $cmd_fwiptables ||" \
 --msgbox "$($cmd_fwiptables $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
@@ -9832,6 +9832,7 @@ echo "$header_ok [ $first_option ]  [ about ] || ||"
 echo " [ Exec name ] $cmd_fwiptables"
 echo " [ Program Name ] $fprogram"
 echo " [ Program Description] $fdescription"
+echo
 echo " [ Program Install ]"
 echo " 1: chmod ugo+x fwiptables-version"
 echo " 2: ./fwiptables-version install"
