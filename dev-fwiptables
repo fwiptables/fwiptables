@@ -7698,6 +7698,7 @@ case "$second_option" in
 esac
 ####
 ####
+echo " [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
 $command_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -7710,7 +7711,7 @@ $command_ip6tables_nft-save      &> $directory_fwrecover/$archivofin-nft-ipv6
 $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6  
 ####
 ####
-echo " [ ok ] [ FIREWALL SAVED ] [ $archivofin ]"
+echo " [  ok  ] [ firewall saved ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -7719,7 +7720,7 @@ $command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
-echo " [ ok ] [ firewall listed ] [ $archivofin ]"
+echo " [  ok  ] [ firewall listed ] [ $archivofin ]"
 exit; fi
 ####
 ####
