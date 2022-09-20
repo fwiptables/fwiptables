@@ -9828,7 +9828,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ about ] [ about.md ] || ||" 
+echo "$header_ok [ $first_option ] [ about ] [ about.md ] || ||" 
 echo "$title_md [ Exec name ] $cmd_fwiptables"
 echo "$text_md [ Program Name ] $fprogram"
 echo "$text_md [ Program Description] $fdescription"
@@ -9840,7 +9840,7 @@ echo "$text_md And then fwiptables is in $directory_binary/$name_fwiptables"
 echo
 echo "$title_md Sources:"
 echo
-echo "$text_md [ Devevelopments version program ]"
+echo "$text_md [ Developer version program ]"
 echo "$text_md The fran iptables ver in development in git code at sourceforge:"
 echo "$text_md $fweb_development"
 echo 
