@@ -1124,7 +1124,8 @@ chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
 ####
 if [ -f "$directory_temporal/$name_fwiptables" ] ;
-then "$directory_temporal/$name_fwiptables" install ; 
+then echo "$text_md [  ok  ] [ Downloaded fwiptables latest version ]"
+"$directory_temporal/$name_fwiptables" install ; 
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 exit ; fi
 ####
@@ -1160,7 +1161,8 @@ chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
-then $directory_temporal/$name_fwiptables-installer install ; 
+then echo "$text_md [  ok  ] [ Downloaded fwiptables developer version ]"
+"$directory_temporal/$name_fwiptables-installer" install ; 
 else echo "$text_md [ fail ] [ Install fail ]"; fi
 ####
 ####
