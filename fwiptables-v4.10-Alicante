@@ -5720,29 +5720,29 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "version" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Show version about ] || ||"
-echo "$text_md [ Name program ]"
+echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
+echo "$title_md [ Name program ]"
 echo "$text_md $fprogram"
 echo
-echo "$text_md [ Version program ]"
+echo "$title_md [ Version program ]"
 echo "$text_md $fversion"
 echo
-echo "$text_md [ Description program ]"
+echo "$title_md [ Description program ]"
 echo "$text_md $fdescription"
 echo
-echo "$text_md [ Location program ]"
+echo "$title_md [ Location program ]"
 echo "$text_md $directory_binary/$cmd_fwiptables"
 echo
-echo "$text_md [ File format ]"
+echo "$title_md [ File format ]"
 echo "$text_md $(file $directory_binary/$cmd_fwiptables | cut -d "," -f 1-2)"
 echo
-echo "$text_md [ MD5 sum ]"
+echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $0)"
 echo
-echo "$text_md [ Data directory ]"
+echo "$title_md [ Data directory ]"
 echo "$text_md $directory_data"
 echo
-echo "$text_md [ Temp directory ]"
+echo "$title_md [ Temp directory ]"
 echo "$text_md $directory_tmp"
 exit ; fi
 ####
@@ -9828,15 +9828,17 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ about ] || ||" 
-echo "$text_md [ Exec name ] $cmd_fwiptables"
+echo "$header_ok [ $first_option ]  [ about ] [ about.md ] || ||" 
+echo "$title_md [ Exec name ] $cmd_fwiptables"
 echo "$text_md [ Program Name ] $fprogram"
 echo "$text_md [ Program Description] $fdescription"
 echo
-echo "$text_md [ Program Install ]"
+echo "$title_md [ Program Install ]"
 echo "$text_md 1: chmod ugo+x fwiptables-version"
 echo "$text_md 2: ./fwiptables-version install"
 echo "$text_md And then fwiptables is in $directory_binary/$name_fwiptables"
+echo
+echo "$title_md Sources:"
 echo
 echo "$text_md [ Devevelopments version program ]"
 echo "$text_md The fran iptables ver in development in git code at sourceforge:"
@@ -9854,7 +9856,7 @@ echo "$text_md [ Git clone with all versions program ]"
 echo "$text_md The fran iptables all versions in code repository at sourceforge:"
 echo "$text_md git clone $fweb_git"
 echo
-echo "$text_md [ Program License ] $flicense"
+echo "$title_md [ Program License ] $flicense"
 exit; fi
 ####
 ####
