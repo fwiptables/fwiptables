@@ -4,12 +4,11 @@ source /etc/profile
 #### para valor vacio
 if [ "$1" == "$NULL" ]; then echo  "### launch: $0 status|start|stop|restart|mount|umount  imagen-hd [ imagen.iso ]"; exit ; fi
 
-##### variables a a modififcar ####  custom here and modify it ####
+##### variables a modificar
 qemu_name="Qemu VM linux debian"
 architecture="qemu-system-i386"
-qemu_vm="/qemu/debian-i386.qcow2"
+qemu_vm="/qemu/debian-testing-i386.qcow2"
 qemu_cdrom="$NULL"
-###################################################################
 
 #### variables estaticas
 if [ "$qemu_cdrom"  == "$NULL" ]; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $qemu_cdrom -boot d"; fi
@@ -20,30 +19,34 @@ qemu_full="$command_qemu $qemu_options $qemu_vm $qemu_cdrom"
 ##### #### status|stop|start|restart
 
 ##### with status
-if [ "$1" == "status" ]; then
-ps -af | grep -i  $architecture
+if [ "$1" == "status" ]
+then ps -Af | grep -i  "$architecture"
+echo " [  ok  ] [ status ] [ $architecture listed ]"
 exit; fi
 
 ##### with stop
-if [ "$1" = "stop" ]; then killall -9 $architecture &> /dev/null
-echo "[ ok ] [ stopped ] [ La maquina virtual detenida: $qemu_name ]"
+if [ "$1" == "stop" ]
+then killall -9 "$architecture"
+echo " [ ok ] [ stopped ] [ La maquina virtual detenida: $qemu_name ]"
 exit; fi
 
 ##### with start
-if [ "$1" = "start" ]; then $qemu_full &
-echo "[ ok ] [ started ] [ La maquina virtual iniciada: $qemu_name ]"
+if [ "$1" == "start" ]
+then
+$qemu_full &
+echo " [ ok ] [ started ] [ La maquina virtual iniciada: $qemu_name ]"
 exit; fi
 
 ##### with restart
-if [ "$1" = "restart" ] ; then
-$0 stop &> /dev/null
-$0 start & > /dev/null
-echo "[ ok ] [ restarted ] [ La maquina virtual reiniciada: $qemu_name ]"
+if [ "$1" == "restart" ] ; then
+$0 stop
+$0 start
+echo " [ ok ] [ restarted ] [ La maquina virtual reiniciada ] [ $qemu_name ]"
 exit; fi
 
 #### #### mount:
 #### secuencia de montaje de nbd
-if [ "$1" = "mount" ] && [  -f "$2" ]; then
+if [ "$1" == "mount" ] && [  -f "$2" ]; then
 
 #### carga el modulo del kernel
 modprobe nbd max_part=8
