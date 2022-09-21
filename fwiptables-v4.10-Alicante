@@ -473,7 +473,7 @@ fi
 echo "$text_md     [ Install this version from this file    ] [ TYPE: ./fwiptables-$fversion install ]" 
 echo "$text_md     [ Install lastest version from the web   ] [ TYPE:  ./fwiptables-$fversion upgrade ]" 
 #### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
-echo "$text_md     [ Uninstall $name_fwiptables from the computer ] [ TYPE: ./fwiptables-$fversion uninstall" 
+echo "$text_md     [ Uninstall $name_fwiptables from the computer ] [ TYPE: ./fwiptables-$fversion uninstall ]" 
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables project.  ###    "
 echo "$text_md       # Download the latest version $fprogram from sourceforge"
