@@ -677,7 +677,7 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
-if [ "$first_option" = "options-interface" ]  ; then first_option="options-interface" ; fi
+if [ "$first_option" = "output-interface" ]  ; then first_option="options-interface" ; fi
 if [ "$first_option" = "output" ]  ; then first_option="options-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
