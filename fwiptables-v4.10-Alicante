@@ -677,6 +677,7 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
+if [ "$first_option" = "options-interface" ]  ; then first_option="output-interface" ; fi
 if [ "$first_option" = "output" ]  ; then first_option="output-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
@@ -2377,6 +2378,7 @@ echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shi
 echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp  "
 echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid    "
 echo "$duo_md || ||  [ Options ]  ### [  See all posible option with command: $cmd_fwiptables options ] ### || ||"
+echo "$text_md      $cmd_fwiptables options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options to firewall manage            "
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
