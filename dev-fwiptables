@@ -462,18 +462,18 @@ echo "$text_md       # Network tools # Use this firewall with some utilities for
 echo "$text_md     With options-tool works with network utilities. With options-show show config net files.   "
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
-echo "$text_md     $cmd_fwiptables $fversion"
+echo "$text_md     # $cmd_fwiptables $fversion"
 #### #### #### 
 if [ "$fwiptables_installed" == "no" ]; then
-echo "$text_md     # Actually, NO, this version is not installed in $directory_binary/$cmd_fwiptables" ; 
+echo "$text_md     [ info ] Actually, NO, this version is not installed in $directory_binary/$cmd_fwiptables" ; 
 else
-echo "$text_md     # Actually, YES, this version is installed in $directory_binary/$cmd_fwiptables";
+echo "$text_md     [ info ] Actually, YES, this version is installed in $directory_binary/$cmd_fwiptables" ;
 fi
 #### #### #### 
-echo "$text_md     Install this version from this file    # TYPE:  ./fwiptables-$fversion install" 
-echo "$text_md     Install lastest version from the web   # TYPE:  ./fwiptables-$fversion upgrade" 
+echo "$text_md     [ Install this version from this file    ] [ TYPE: ./fwiptables-$fversion install ]" 
+echo "$text_md     [ Install lastest version from the web   ] [ TYPE:  ./fwiptables-$fversion upgrade ]" 
 #### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
-echo "$text_md     Uninstall $name_fwiptables from the computer # TYPE:  ./fwiptables-$fversion uninstall" 
+echo "$text_md     [ Uninstall $name_fwiptables from the computer ] [ TYPE: ./fwiptables-$fversion uninstall" 
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables project.  ###    "
 echo "$text_md       # Download the latest version $fprogram from sourceforge"
