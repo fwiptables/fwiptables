@@ -2383,7 +2383,7 @@ echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_fwiptables options-help             |  Show all options to help informations          "
-echo "$duo_md || || [ Examples ]  ### [  Example with optional output and its description ] ### || ||          "
+echo "$duo_md || || [ Examples ]  ### [  Example with each optional output and its description ] ### || ||     "
 echo "$text_md      $cmd_fwiptables -cli-menu                |  All options in text menu                       "
 echo "$text_md      $cmd_fwiptables -gui-menu                |  All options in window menu                     "
 echo "$text_md      $cmd_fwiptables -gui-shell               |  All options in window shell                    "
@@ -2492,7 +2492,7 @@ echo "$text_md                        client-ftp client-squid lan-tor lan-vpn sh
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
 echo "$text_md"
-echo "$text_md   | Group | options-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md   | Group | options-interface | options-firewall | options-tool | options-show | options-help   "
 exit ; fi
 ####
 ####
@@ -2515,7 +2515,7 @@ echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-
 echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                       "
 echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                 "
 echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                 "
-echo "$text_md    tool-sudofw         | sudofw-adduser sudofw-deluser sudofw-listuser                 "
+echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                 "
 echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                     "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
 echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
