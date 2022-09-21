@@ -677,8 +677,8 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
-if [ "$first_option" = "options-interface" ]  ; then first_option="output-interface" ; fi
-if [ "$first_option" = "output" ]  ; then first_option="output-interface" ; fi
+if [ "$first_option" = "options-interface" ]  ; then first_option="options-interface" ; fi
+if [ "$first_option" = "output" ]  ; then first_option="options-interface" ; fi
 if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
@@ -873,9 +873,9 @@ then echo $head_waiting_info
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ;
 $cmd_fwiptables; exit ;;
-firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface);;
-"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
-txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="output-interface"; third_option="" ;;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface);;
+"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
+txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="options-interface"; third_option="" ;;
 "ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
@@ -925,8 +925,8 @@ echo $head_waiting_help
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -info option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
-firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; output-interface) ;;
-"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"output-interface") second_option="help-help"; third_option="" ;;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface) ;;
+"ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
@@ -2406,7 +2406,7 @@ exit ; fi
 ####
 if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
-echo "$duo_md || ||  [ output-interface ]  || ||  ### ###                                                      "
+echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                      "
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
@@ -2492,7 +2492,7 @@ echo "$text_md                        client-ftp client-squid lan-tor lan-vpn sh
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
 echo "$text_md"
-echo "$text_md   | Group | output-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md   | Group | options-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2524,7 +2524,7 @@ echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off 
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
-echo "$text_md    | Group | output-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md    | Group | options-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2542,7 +2542,7 @@ echo "$text_md    show-log          | log-search log-ssh filelog autolog        
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny show-default modify-default    "
 echo "$text_md"
-echo "$text_md      | Group | output-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md      | Group | options-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2559,7 +2559,7 @@ echo "$text_md  help-about         |  about version depends config-eng config-sp
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$text_md"
-echo "$text_md      | Group | output-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md      | Group | options-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2596,7 +2596,7 @@ exit; fi
 ####
 if [ "$first_option" = "all-options" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List group options help ] || ||"
-$cmd_fwiptables output-interface
+$cmd_fwiptables options-interface
 $cmd_fwiptables options-firewall
 $cmd_fwiptables options-tool
 $cmd_fwiptables options-show
@@ -2633,7 +2633,7 @@ echo "$title_md [ Principal options ]"
 echo "$text_md"
 echo "$brake_md"
 echo "$text_md"
-$cmd_fwiptables output-interface
+$cmd_fwiptables options-interface
 echo "$brake_md"
 echo "$text_md"
 $cmd_fwiptables firewall-control
@@ -2768,7 +2768,7 @@ echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
 echo "$text_md" 
 echo "$title_md                   [ Principal options ]"
 echo "$text_md" 
-echo "$text_md $tab output-interface" 
+echo "$text_md $tab options-interface" 
 echo "$text_md $tab_lang_english                  Manage the interface with txt or cli or gui or log"
 echo "$text_md $tab_lang_spanish                  Manage el interfaz con txt o cli o gui or log"
 echo "$text_md $tab firewall-control"
@@ -3139,13 +3139,13 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-custom:
-##########    english: output-interface: options   ##########
+##########    english: options-interface: options   ##########
 ##########    spanish: user-intarface: opciones    ##########
-#### :rutina-inicial-output-interface:
+#### :rutina-inicial-options-interface:
 ####
 ####
-if [ "$first_option" = "output-interface" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ control interface ] [ output-interface.md ] || ||"
+if [ "$first_option" = "options-interface" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ control interface ] [ options-interface.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
@@ -3189,7 +3189,7 @@ echo "$text_md $tab_lang_spanish          : Gui con interfaz desde linea de coma
 exit; fi
 ####
 ####
-#### :rutina-final-output-interface:
+#### :rutina-final-options-interface:
 ##########    english: tool-sockets: options sockets    ##########
 ##########    spanish: tool-sockets: opciones sockets   ##########
 #### :rutina-inicial-tool-sockets:
@@ -10044,7 +10044,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "info" ]; then $nada
-if [ "$second_option" = "output-interface" ]; then $cmd_fwiptables output-interface ; exit ; fi
+if [ "$second_option" = "options-interface" ]; then $cmd_fwiptables options-interface ; exit ; fi
 if [ "$second_option" = "firewall-control" ]; then $cmd_fwiptables firewall-control ; exit ; fi
 if [ "$second_option" = "firewall-list" ]; then $cmd_fwiptables firewall-list ; exit ; fi
 if [ "$second_option" = "firewall-launch" ]; then $cmd_fwiptables firewall-launch ; exit ; fi
@@ -10085,7 +10085,7 @@ echo "$tab" "$tab"  "                       tool-connect"
 echo "$tab" "$tab"  "     options-show   |  show-hardware     show-etc       show-log         help-about      "
 echo "$tab" "$tab"  "                       help-help"
 echo
-echo "$tab [ Example: ] [ $cmd_fwiptables output-interface ]"
+echo "$tab [ Example: ] [ $cmd_fwiptables options-interface ]"
 exit; fi
 ####
 ####
