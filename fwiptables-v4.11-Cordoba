@@ -9875,18 +9875,18 @@ exit; fi
 ####
 if [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
-echo " [ info ] [ System info ] [ Distro ] "
+echo " [ info ] ### [ System info ] [ Distro ] ###"
 cat /etc/*-release | $command_grep -i  pretty_name | cut -d "=" -f 2 | $command_sed 's/\"//g'
-echo " [ info ] [ System info ][ Kernel Linux ]"
+echo " [ info ] ### [ System info ][ Kernel Linux ] ###"
 $command_uname -srom
-echo " [ info ] [ Boot system ] [ it works with pid number 1 ]"
+echo " [ info ] ### [ Boot system ] [ it works with pid number 1 ] ###"
 ps -p1 
 echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
-echo " [ info ] [ System info ] [ Processor ]"
+echo " [ info ] ### [ System info ] [ Processor ] ###"
 lscpu | $command_grep -E -i "socket|Model name|cpu max"
-echo " [ info ] [ System info ] [ Memory RAM ]"
+echo " [ info ] ### [ System info ] [ Memory RAM ] ###"
 free -h
-echo " [ info ] [ System info ] [ Disks ]"
+echo " [ info ] ### [ System info ] [ Disks ] ###"
 lsblk -o name,size,fsuse%,label,mountpoints
 exit; fi
 ####
@@ -9899,34 +9899,34 @@ exit; fi
 ####
 if [ "$first_option" = "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ] || ||"
-echo " [ info ] [ Network Route ] [ Route ipv4 ]"
+echo " [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
-echo " [ info ] [ Network Route ] [ Route ipv6 ]"
+echo " [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
-echo " [ info ] [ Network Listen ] [ Listen ipv4 ]"
+echo " [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
-echo " [ info ] [ Network Listen ] [ Listen ipv6 ]"
+echo " [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
-echo " [ info ] [ Private ip ] [ Address ipv4 ]"
+echo " [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
-echo " [ info ] [ Private ip ] [ Address ipv6 ]"
+echo " [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v ::1/128 | cut -d "/" -f 1 ; fi
-echo " [ info ] [ Public ip ] [ Address ipv4 ]"
+echo " [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
-echo " [ info ] [ Public ip ] [ Address ipv6 ]"
+echo " [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 echo "$tab $public_ip6"; fi
-echo " [ info ] [ Proxy ip ] [ Address proxy ]"
+echo " [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
 exit; fi
