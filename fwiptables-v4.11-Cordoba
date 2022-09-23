@@ -335,7 +335,7 @@ tab_lang_spanish=" spa "
 show_lang_english=""
 show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="### ### [ info ] [ Configure list rules with names or numbers ] [ Launch: $cmd_fwiptables modify-default ]"
+message_info_rules="### ### [ info ] [ Configure list rules with names or with numbers ] [ Launch: $cmd_fwiptables modify-default ]"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli=" [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui=" [ fail ] [ gui ] [ Without support for output gui for this option ]"
