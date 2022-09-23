@@ -451,15 +451,16 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 if [ "$first_option" = "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux.                       "
-echo "$text_md     Done with support in xtables and/or nftables and ipv4 and/or ipv6.                         "
-echo "$text_md     Done to run in command shell cmd, cli-menu, gui-menu, and gui-shell.                       "
-echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file.  "
-echo "$text_md     Control the firewall with the standard iptables files for all tables.                      "
-echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall.   "
-echo "$text_md     Choose run iptables rules of one firewall with your own config files.                      "
-echo "$text_md     # Network tools # Use this firewall with some utilities for ipv4 and ipv6.               "
-echo "$text_md     With options-tool works with network utilities. With options-show show config net files.   "
+echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux #.                        "
+echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
+echo "$text_md     [ Done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
+echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
+echo "$text_md     [ done ] [Control the firewall with the standard iptables files for all tables ].           "
+echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall #.    "
+echo "$text_md     [ done ] [ Choose run iptables rules of one firewall with your own config files ].          "
+echo "$text_md     # Network tools # Use this firewall with some utilities for ipv4 and ipv6 # .               "
+echo "$text_md     [ done ] [ Gone with options-tool works with network utilities.                             "
+echo "$text_md     [ done ] [ Gone with options-show show config net files ].                                  "
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     # $cmd_fwiptables $fversion"
@@ -9875,17 +9876,23 @@ exit; fi
 ####
 if [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
+echo
 echo " [ info ] ### [ System info ] [ Distro ] ###"
 cat /etc/*-release | $command_grep -i  pretty_name | cut -d "=" -f 2 | $command_sed 's/\"//g'
+echo
 echo " [ info ] ### [ System info ][ Kernel Linux ] ###"
 $command_uname -srom
+echo
 echo " [ info ] ### [ Boot system ] [ it works with pid number 1 ] ###"
 ps -p1 
 echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
+echo
 echo " [ info ] ### [ System info ] [ Processor ] ###"
 lscpu | $command_grep -E -i "socket|Model name|cpu max"
+echo
 echo " [ info ] ### [ System info ] [ Memory RAM ] ###"
 free -h
+echo
 echo " [ info ] ### [ System info ] [ Disks ] ###"
 lsblk -o name,size,fsuse%,label,mountpoints
 exit; fi
@@ -9899,33 +9906,42 @@ exit; fi
 ####
 if [ "$first_option" = "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ] || ||"
+echo
 echo " [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
+echo
 echo " [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
+echo
 echo " [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
+echo
 echo " [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
+echo
 echo " [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+echo
 echo " [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v ::1/128 | cut -d "/" -f 1 ; fi
+echo
 echo " [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
+echo
 echo " [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 echo "$tab $public_ip6"; fi
+echo
 echo " [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo " [ info ] Proxy http:    $http_proxy"
 echo " [ info ] Proxy https:   $https_proxy"
