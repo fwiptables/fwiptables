@@ -332,10 +332,10 @@ nada="$(echo -n)" ;
 tab_lang_english=" eng "
 tab_lang_spanish=" spa "
 #### #### your language 
-show_lang_english=""
-show_lang_spanish="##"
+#### show_lang_english=""
+#### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="### ### [ info ] [ Configure list rules with names or with numbers ] [ Launch: $cmd_fwiptables modify-default ]"
+message_info_rules="### ### || || [ ok ] || [ Configure list rules with names or with numbers ] [ Launch: $cmd_fwiptables modify-default ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli=" [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui=" [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -458,7 +458,7 @@ echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
 echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux #.                        "
 echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
-echo "$text_md     [ Done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
+echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
 echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
 echo "$text_md     [ done ] [Control the firewall with the standard iptables files for all tables ].           "
 echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall #.    "
@@ -1120,8 +1120,8 @@ echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$text_md [ downloading ] [ $fweb_latest ]"
-echo "$text_md [ info ] [ Waiting several seconds .. ]"
+echo "$text_md [ info ] [ downloading ] [ $fweb_latest ]"
+echo "$text_md [ info ] [ downloading ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
@@ -1157,8 +1157,8 @@ echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$text_md [ downloading ] [ $fweb_development ]"
-echo "$text_md [ info ] [ Waiting several seconds .. ]"
+echo "$text_md [ info ] [ downloading ] [ $fweb_development ]"
+echo "$text_md [ info ] [ downloading ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
@@ -2368,7 +2368,7 @@ echo "$text_md      $cmd_fwiptables -web ss                  |  Show ss with out
 echo "$text_md      $cmd_fwiptables -help readme             |  Show help of readme with output text plain     "
 echo "$text_md      $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst         "
 echo "$text_md      $cmd_fwiptables -log info-route          |  Save log info-route with output text plain     "
-echo "$text_md      $cmd_fwiptables -null client-web         |  Launch client web firewall a null output       "
+echo "$text_md      $cmd_fwiptables -null client-web         |  Launch client web firewall with output null    "
 exit ; fi
 ####
 ####
