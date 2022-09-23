@@ -6484,6 +6484,74 @@ exit; fi
 ####
 ####
 #### :rutina-final-satus:
+##########    english: listnum: The list option   ##########
+##########    spanish: listnum: La opcion lista   ##########
+#### :rutina-inicial-listnum:
+####
+####
+if [ "$first_option" = "listnum" ]; then echo $give_cover
+echo "$header_ok [ list ] [ List iptables numerical filter ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
+"$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
+"$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
+fromrules="filter-numerical-ip4"
+echo
+case $legacycuatro in
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+*)
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
+$command_iptables_legacy -t filter -v -L -n
+;;
+esac
+echo "$tab"
+case $nftcuatro in
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+*)
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo
+$command_iptables_nft -t filter -v -L -n
+;;
+esac
+exit; fi
+####
+####
+#### :rutina-final-listnum:
+##########    english: listnum6: The list option   ##########
+##########    spanish: listnum6: La opcion lista   ##########
+#### :rutina-inicial-listnum-filter6:
+####
+####
+if [ "$first_option" = "listnum6" ]; then echo $give_cover
+echo "$header_ok [ list ] [ List iptables numerical filter ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+legacycuatro=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
+"$command_ip6tables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
+"$command_ip6tables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
+fromrules="filter-numerical-ip6"
+echo
+case $legacycuatro in
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+*)
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo
+$command_iptables_legacy -t filter -v -L -n
+;;
+esac
+echo "$tab"
+case $nftcuatro in
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+*)
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo
+$command_iptables_nft -t filter -v -L -n
+;;
+esac
+exit; fi
+####
+####
+#### :rutina-final-listnum6:
 ##########    english: list-filter4: The list option   ##########
 ##########    spanish: list-filter4: La opcion lista   ##########
 #### :rutina-inicial-list-filter4:
@@ -6609,12 +6677,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-nat6:
-##########    english: listnum: list option numerical filter ipv4   ##########
-##########    spanish: listnum: lista numeral filter ipv4           ##########
-#### :rutina-inicial-listnum:
+##########    english: listnum-filter4: list option numerical filter ipv4   ##########
+##########    spanish: listnum-filter4: lista numeral filter ipv4           ##########
+#### :rutina-inicial-listnum-filter4:
 ####
 ####
-if [ "$first_option" = "listnum" ]; then  echo $give_cover
+if [ "$first_option" = "listnum-filter4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-ip4"
 echo
@@ -6628,7 +6696,7 @@ $command_iptables_nft -v -n -L
 exit; fi
 ####
 ####
-#### :rutina-final-listnum:
+#### :rutina-final-listnum-filter4:
 ##########    english: list-forwardnum: list iptables filter forward rules in numerical     ##########
 ##########    spanish: list-forwardnum: lista reglas de iptables filter forward in numeros  ##########
 #### :rutina-inicial-list-forwardnum:
@@ -6649,12 +6717,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-forwardnum:
-##########    english: listnum6: list option numerical filter ipv6   ##########
-##########    spanish: listnum6: lista numeral filter ipv6           ##########
-#### :rutina-inicial-listnum6:
+##########    english: listnum-filter6: list option numerical filter ipv6   ##########
+##########    spanish: listnum-filter6: lista numeral filter ipv6           ##########
+#### :rutina-inicial-listnum-filter6:
 ####
 ####
-if [ "$first_option" = "listnum6" ]; then  echo $give_cover
+if [ "$first_option" = "listnum-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with one: legacy or nft ] || ||"
 fromrules="filter-ip6"
 echo
@@ -6668,7 +6736,7 @@ $command_ip6tables_nft -v -n -L
 exit; fi
 ####
 ####
-#### :rutina-final-listnum6:
+#### :rutina-final-listnum-filter6:
 ##########    english: list-forwardnum6: list iptables filter forward rules in numerical ipv6      ##########
 ##########    spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6   ##########
 #### :rutina-inicial-list-forwardnum6:
