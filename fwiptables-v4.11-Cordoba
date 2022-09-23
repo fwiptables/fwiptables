@@ -229,9 +229,9 @@ allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
 ####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
 config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
-####       #### english: listnum-allrules:  show all rules, void in numeral or no in conceptual
-####       #### spanish: listnum-all-rules: muestra todas las reglas, vacio en numeral o no en conceptual
-listrules_numeral="no"                           ## fwiptables-file-default ## void or no
+####       #### english: list all rules: list all rules, void in conceptual or no in numeral
+####       #### spanish: list all rules: list todas las reglas, vacio en conceptual o no en numeral
+list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
 allow_header_notice="no"                       ## fwiptables-file-default ## void or no
@@ -1729,7 +1729,7 @@ case "$NULL" in
 "$shield_ssh");;
 *)shield_ssh="no";;
 "$lisrules_numeral");;
-*)listrules_numeral="-n";;
+*)list_rules_conceptual="-n";;
 esac
 ####
 ####
@@ -6413,7 +6413,7 @@ case $legacycuatro in
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t filter -v -L
+$command_iptables_legacy -t filter -v -L $list_rules_conceptual
 ;;
 esac
 echo "$tab"
@@ -6422,7 +6422,7 @@ case $nftcuatro in
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_iptables_nft -t filter -v -L
+$command_iptables_nft -t filter -v -L $list_rules_conceptual
 ;;
 esac
 exit; fi
@@ -6447,7 +6447,7 @@ case $legacyseis in
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tables_legacy -v -L
+$command_ip6tables_legacy -v -L $list_rules_conceptual
 ;;
 esac
 echo $tab
@@ -6456,7 +6456,7 @@ case $nftseis in
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_ip6tables_nft -v -L
+$command_ip6tables_nft -v -L $list_rules_conceptual
 ;;
 esac
 ####
@@ -6568,11 +6568,11 @@ fromrules="filter-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t filter -v -L
+$command_iptables_legacy -t filter -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_iptables_nft -t filter -v -L
+$command_iptables_nft -t filter -v -L $list_rules_conceptual
 ####
 ####
 exit; fi
@@ -6590,11 +6590,11 @@ fromrules="filter-forward-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t filter -v -L FORWARD
+$command_iptables_legacy -t filter -v -L FORWARD $list_rules_conceptual
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -t filter -v -L FORWARD
+$command_iptables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
 ####
 ####
@@ -6610,11 +6610,11 @@ fromrules="filter-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tables_legacy -v -L
+$command_ip6tables_legacy -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
-$command_ip6tables_nft -v -L
+$command_ip6tables_nft -v -L $list_rules_conceptual
 ####
 ####
 exit; fi
@@ -6632,11 +6632,11 @@ fromrules="filter-forward-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tables_legacy -t filter -v -L FORWARD
+$command_ip6tables_legacy -t filter -v -L FORWARD $list_rules_conceptual
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tables_nft -t filter -v -L FORWARD
+$command_ip6tables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
 ####
 ####
@@ -6652,11 +6652,11 @@ fromrules="nat-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t nat -v -L
+$command_iptables_legacy -t nat -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -t nat -v -L 
+$command_iptables_nft -t nat -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
@@ -6672,11 +6672,11 @@ fromrules="nat-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tables_legacy -t nat -v -L 
+$command_ip6tables_legacy -t nat -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tables_nft -t nat -v -L 
+$command_ip6tables_nft -t nat -v -L $list_rules_conceptual 
 #### echo $footer_lineal
 exit; fi
 ####
@@ -6693,11 +6693,11 @@ fromrules="filter-ip4"
 echo
 echo " [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
 echo
-$command_iptables_legacy -v -n -L 
+$command_iptables_legacy -v -L -n 
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -v -n -L
+$command_iptables_nft -v -L -n
 exit; fi
 ####
 ####
@@ -6713,11 +6713,11 @@ fromrules="filter-forward-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t filter -v -n -L FORWARD
+$command_iptables_legacy -t filter -v -L FORWARD -n
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -t filter -v -n -L FORWARD
+$command_iptables_nft -t filter -v -L FORWARD -n
 exit; fi
 ####
 ####
@@ -6733,11 +6733,11 @@ fromrules="filter-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tables_legacy -v -n -L 
+$command_ip6tables_legacy -v -L -n
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
-$command_ip6tables_nft -v -n -L
+$command_ip6tables_nft -v -L -n
 exit; fi
 ####
 ####
@@ -6753,11 +6753,11 @@ fromrules="filter-forward-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tables_legacy -t filter -v -n -L FORWARD
+$command_ip6tables_legacy -t filter -v -L FORWARD -n
 echo
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tables_nft -t filter -v -n -L FORWARD
+$command_ip6tables_nft -t filter -v -L FORWARD -n
 exit; fi
 ####
 ####
@@ -6773,11 +6773,11 @@ fromrules="mangle-ip4"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t mangle -v -L
+$command_iptables_legacy -t mangle -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -t mangle -v -L
+$command_iptables_nft -t mangle -v -L $list_rules_conceptual
 echo $footer_lineal
 exit; fi
 ####
@@ -6794,11 +6794,11 @@ fromrules="mangle-ip6"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tables_legacy -t mangle -v -L
+$command_ip6tables_legacy -t mangle -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tables_nft -t mangle -v -L
+$command_ip6tables_nft -t mangle -v -L $list_rules_conceptual
 #### echo $footer_lineal
 exit; fi
 ####
@@ -6815,11 +6815,11 @@ fromrules="raw-ip4"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t raw -v -L
+$command_iptables_legacy -t raw -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -t raw -v -L
+$command_iptables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
@@ -6835,11 +6835,11 @@ fromrules="raw-ip6"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tables_legacy -t raw -v -L
+$command_ip6tables_legacy -t raw -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tables_nft -t raw -v -L
+$command_ip6tables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
@@ -6855,11 +6855,11 @@ fromrules="security-ip4"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_iptables_legacy -t security -v -L
+$command_iptables_legacy -t security -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_iptables_nft -t security -v -L
+$command_iptables_nft -t security -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
@@ -6875,11 +6875,11 @@ fromrules="security-ip6"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
-$command_ip6tables_legacy -t security -v -L
+$command_ip6tables_legacy -t security -v -L $list_rules_conceptual
 echo
 echo " [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
-$command_ip6tables_nft -t security -v -L
+$command_ip6tables_nft -t security -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
