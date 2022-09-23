@@ -229,8 +229,8 @@ allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
 ####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
 config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
-####       #### english: list all rules: list all rules, void in conceptual or no in numeral
-####       #### spanish: list all rules: list todas las reglas, vacio en conceptual o no en numeral
+####       #### english: list all rules: list all rules, void in names or no in numbers
+####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
@@ -334,6 +334,8 @@ tab_lang_spanish=" spa "
 #### #### your language 
 show_lang_english=""
 show_lang_spanish="##"
+#### #### info list rules
+message_info_rules="### ### [ info ] [ Configure list rules with names or numbers ] [ Launch: $cmd_fwiptables modify-default ]"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli=" [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui=" [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -6368,6 +6370,7 @@ exit; fi
 ####
 if [ "$first_option" = "list4-ip" ]; then echo $give_cover
 echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -6402,6 +6405,7 @@ exit; fi
 ####
 if [ "$first_option" = "list6-ip" ]; then  echo $give_cover
 echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
 nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -6530,6 +6534,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-filter4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="filter-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6552,6 +6557,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-forward" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="filter-forward-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6572,6 +6578,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="filter-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -6594,6 +6601,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-forward6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="filter-forward-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6614,6 +6622,7 @@ exit; fi
 ####
  if [ "$first_option" = "list-nat4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="nat-ip4"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6634,6 +6643,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-nat6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="nat-ip6"
 echo
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6735,6 +6745,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-mangle4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="mangle-ip4"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6756,6 +6767,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-mangle6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="mangle-ip6"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6777,6 +6789,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-raw4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="raw-ip4"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6797,6 +6810,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-raw6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="raw-ip6"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6817,6 +6831,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-security4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="security-ip4"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -6837,6 +6852,7 @@ exit; fi
 ####
 if [ "$first_option" = "list-security6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with one: legacy or nft ] || ||"
+echo "$message_info_rules"
 fromrules="security-ip6"
 echo
 echo " [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
