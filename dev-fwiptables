@@ -229,6 +229,9 @@ allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
 ####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
 config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
+####       #### english: listnum-allrules:  show all rules, void in numeral or no in conceptual
+####       #### spanish: listnum-all-rules: muestra todas las reglas, vacio en numeral o no en conceptual
+listrules_numeral="no"                           ## fwiptables-file-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
 allow_header_notice="no"                       ## fwiptables-file-default ## void or no
@@ -1725,6 +1728,8 @@ case "$NULL" in
 *)choosed_iptables="no";;
 "$shield_ssh");;
 *)shield_ssh="no";;
+"$lisrules_numeral");;
+*)listrules_numeral="-n";;
 esac
 ####
 ####
@@ -2411,8 +2416,8 @@ echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                      
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
-echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status                                "
-echo "$text_md                        list-alltables list-filter4 list-filter6                                 "
+echo "$text_md  firewall-list      |  ls ls6 list list6 listnum listnum6 status list-alltables                 "
+echo "$text_md                        list-filter4 list-filter6 listnum-filter4 listnum-filter6                "
 echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        " 
 echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables               "
 echo "$text_md  firewall-custom    |  new-full-config nueva-completa-config regen-config                       "

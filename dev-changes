@@ -3,7 +3,8 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 02. list-num y list-num6 abreviados de list-numfilter y list-numfilter6.
+
+ 02. list-num y list-num6 abreviados de list-numfilter y list-numfilter6. HECHO
  01. variable para listar en conceptual o numeral reglas de iptables.
 
  cambios en dev-fwiptables desarrollo 4.11
