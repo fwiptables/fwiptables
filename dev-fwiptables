@@ -1089,14 +1089,14 @@ chmod 555 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$text_md [ info ] [ Config dir:        ] [ $directory_data ]"
-echo "$text_md [ info ] [ Tmp dir:           ] [ $directory_tmp  ]"
-echo "$text_md [ info ] [ Command shell:     ] [ $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ config dir:        ] [ $directory_data ]"
+echo "$text_md [ info ] [ tmp dir:           ] [ $directory_tmp  ]"
+echo "$text_md [ info ] [ command shell:     ] [ $directory_binary/$cmd_fwiptables ]"
 echo "$text_md [ info ] [ command cli-menu:  ] [ $directory_binary/$name_fwiptables-cli-menu  ]"
 echo "$text_md [ info ] [ command gui-menu:  ] [ $directory_binary/$name_fwiptables-gui-menu  ]"
 echo "$text_md [ info ] [ command gui-shell: ] [ $directory_binary/$name_fwiptables-gui-shell ]"
-echo "$text_md [ info ] [ Grant privileges to user: ] [ $cmd_fwiptables sudofw-adduser user ]"
-echo "$text_md [  ok  ] [ Now. You are ready to run $cmd_fwiptables ]"
+echo "$text_md [ info ] [ grant privileges to user: ] [ $cmd_fwiptables sudofw-adduser user ]"
+echo "$text_md [  ok  ] [ now. You are ready to run $cmd_fwiptables ]"
 exit; fi
 ####
 ####
@@ -1111,9 +1111,9 @@ echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade
 echo "$text_md [ info ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
-"$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ Upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+"$NULL")echo "$text_md $tab [ notice ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
+echo "$text_md [ info ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1121,7 +1121,7 @@ echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite
 ####
 ####
 echo "$text_md [ info ] [ downloading ] [ $fweb_latest ]"
-echo "$text_md [ info ] [ downloading ] [ Waiting several seconds .. ]"
+echo "$text_md [ info ] [ downloading ] [ waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
@@ -1131,9 +1131,9 @@ chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
 ####
 if [ -f "$directory_temporal/$name_fwiptables" ] ;
-then echo "$text_md [  ok  ] [ Downloaded fwiptables latest version ]"
+then echo "$text_md [  ok  ] [ downloaded fwiptables latest version ]"
 "$directory_temporal/$name_fwiptables" install ; 
-else echo "$text_md [ fail ] [ Install fail ]"; fi
+else echo "$text_md [ fail ] [ install fail ]"; fi
 exit ; fi
 ####
 ####
@@ -1149,8 +1149,8 @@ echo "$text_md [ info ] [ upgrade $cmd_fwiptables at development version from so
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ Upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ Downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+echo "$text_md [ info ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1168,9 +1168,9 @@ chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
-then echo "$text_md [  ok  ] [ Downloaded fwiptables developer version ]"
+then echo "$text_md [  ok  ] [ downloaded fwiptables developer version ]"
 "$directory_temporal/$name_fwiptables-installer" install ; 
-else echo "$text_md [ fail ] [ Install fail ]"; fi
+else echo "$text_md [ fail ] [ install fail ]"; fi
 ####
 ####
 exit ; fi
