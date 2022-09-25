@@ -358,37 +358,60 @@ fwiptables_installed=""
 ####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_ssh="20"
 ####
 ####
-client_tcp="ssh,http,https" ; client_udp="domain,bootpc,ntp,https" ;
-server_tcp="" ; server_udp="" ; 
-logserver_tcp="no" ; logserver_udp="no" ;
+allow_dmz_ip4="no" ; 
+allow_dmz_ip6="no" ;
+allow_forward_ip4="no" ; 
+allow_forward_ip6="no" ; 
+allow_gateway_ip4="no" ;
+allow_gateway_ip6="no" ;
+allow_input_all="no" ;
+allow_input_bandwidth="no" ; 
+allow_input_maxconnect="no" ;
+allow_input_ping="no" ;
+allow_input_state="no" ;
+allow_mac_blacklist="no" ; 
+allow_mac_whitelist="no" ;
+allow_maxtries_ssh="no"
+allow_net_blacklist="no" ;
+allow_net_vpn="no" ; 
+allow_others_protocols="no" ;
+allow_output_all="no" ; 
+allow_output_bandwidth="no" ;
+allow_output_gid="no" ;
+allow_output_maxconnect="no" ;
+allow_output_ping="no" ;
+allow_output_state="no" ;
+allow_output_uid="no" ; 
+client_tcp="ssh,http,https" ;
+client_udp="domain,bootpc,ntp,https" ;
+config_dmz_ip4="" ;
+config_dmz_ip6="" ;
+config_input_bandwidth="12512" ; 
+config_input_maxconnect="72" ; 
+config_input_state="new,related,established" ;
+config_mac_blacklist=""
+config_mac_whitelist="" ;
+config_maxtries_ssh="20" ;
+config_net_blacklist="yandex.com" ;
+config_net_vpn="wesnoth.org" ; 
+config_others_protocols="icmp,igmp" ;
+config_output_bandwidth="512" ;
+config_output_gid="root" ;
+config_output_maxconnect="72" ;
+config_output_state="new,related,established" ;
+config_output_uid="root" ; 
+config_ssh_port="22" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
+logserver_tcp="no" ;
+logserver_udp="no" ;
+net_ipv4_client="0/0" ; 
+net_ipv4_server="0/0" ;
+net_ipv6_client="::/0" ;
+net_ipv6_server="::/0" ;
 separate_port_rules="no" ;
-allow_maxtries_ssh="no"
-allow_forward_ip4="no" ; allow_forward_ip6="no" ; 
-allow_gateway_ip4="no" ; allow_gateway_ip6="no" ;
-allow_dmz_ip4="no" ; allow_dmz_ip6="no" ;
-allow_input_all="no" ; allow_output_all="no" ; 
-allow_input_state="no" ; allow_output_state="no" ;
-allow_input_bandwidth="no" ; allow_output_bandwidth="no" ;
-allow_input_maxconnect="no" ; allow_output_maxconnect="no" ;
-allow_input_ping="no" ; allow_output_ping="no" ;
-allow_mac_whitelist="no" ; allow_mac_blacklist="no" ; 
-allow_net_vpn="no" ; allow_net_blacklist="no" ;
-allow_output_uid="no" ; allow_output_gid="no" ;
-allow_others_protocols="no" ;
-config_maxtries_ssh="20" ; config_ssh_port="22" ;
-config_dmz_ip4="" ; config_dmz_ip6="" ;
-config_input_state="new,related,established" ;
-config_output_state="new,related,established" ;
-config_input_bandwidth="12512" ; config_output_bandwidth="512" ;
-config_input_maxconnect="72" ; config_output_maxconnect="72" ;
-config_mac_whitelist="" ; config_mac_blacklist=""
-config_net_vpn="wesnoth.org" ; config_net_blacklist="yandex.com" ;
-config_output_uid="root" ; config_output_gid="root" ;
-config_others_protocols="icmp,igmp" ;
-net_ipv4_client="0/0" ; net_ipv4_server="0/0" ;
-net_ipv6_client="::/0" ; net_ipv6_server="::/0" ;
+server_tcp="" ;
+server_udp="" ; 
 ####
 ####
 ##########    english: Update variables             ##########
