@@ -150,7 +150,6 @@ cmd_fwiptables="fwiptables-cmd"
 ####
 directory_binary="/usr/bin"
 directory_data="$HOME/.config/$cmd_fwiptables"
-#### directory_desktop="$HOME/.local/share/applications"
 ####
 ####
 #### english: directory tree 
@@ -162,6 +161,17 @@ directory_default="$directory_data/fwiptables-default"
 directory_config="$directory_data/fwiptables-config"
 directory_log="$directory_data/fwiptables-log"
 directory_shell="$directory_data/fwiptables-shell"
+####
+####
+#### english: templates cfg
+#### spanish: plantillas cfg
+####
+####
+defaultcfg="$directory_config/default-full-english.cfg"             
+defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
+defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
+defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
+defaultminicfg_spa="$directory_config/default-mini-spanish.cfg" 
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -234,13 +244,10 @@ config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tr
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
 ####       #### english: allow info HEADER in each option    
 ####       #### spanish: permitir informacion de CABECERA en cada opcion
-allow_header_notice="no"                       ## fwiptables-file-default ## void or no
+allow_header_notice="no"              ## fwiptables-file-default ## void or no
 ####       #### english: void to AUTOLOG one line from command launched
 ####       #### spanish: vacio para AUTOLOG del comando lanzado o no
-allow_autolog=""                 ## fwiptables-file-default ## void or no
-####       #### english: void to AUTOSAVE fwrecover or no 
-####       #### spanish: AUTOGUARDAR fwrecover o no
-allow_autosave="no"                 ## fwiptables-file-default ## void or no
+allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1..,9..30
@@ -266,20 +273,6 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## def
 radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
-####  #### english: default variable version whithout update for config cfg
-####  #### spanish: default version de variables sin actualizar por config cfg
-#### config_variable_version="1" ;                                       
-#### #### english: path to config files  #### spanish: archivos de configuracion
-defaultcfg="$directory_config/default-full-english.cfg"             
-#### #### english: path to config files  #### spanish: archivos de configuracion
-defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
-#### #### english: path to config files  #### spanish: archivos de configuracion
-defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
-#### #### english: path to config files  #### spanish: archivos de configuracion
-defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
-#### #### english: path to config files  #### spanish: archivos de configuracion
-defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"     
-#### #### english: path to save firewall #### spanish: ruta de firewall guardado
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -324,8 +317,6 @@ give_cover="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $fvers
 give_load=" ### ### || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
-#### #### english: echo void            #### spanish: impresion vacia
-give_autosave="$cmd_fwiptables autosave"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="$(echo -n)" ; 
 #### #### several languages 
@@ -7687,7 +7678,7 @@ exit; fi
 #### :rutina-inicial-load:
 ####
 ####
-if [ "$first_option" = "load" ]; then $give_autosave &> /dev/null
+if [ "$first_option" = "load" ]; then 
 ####
 ####
 #### English: Void in second option
@@ -10872,14 +10863,6 @@ exit ; fi
 ####                                                                                            ###############
 ####          ready to launch rules ..                                                          ###############
 ####                                                                                            ###############
-###############################################################################################################
-###############################################################################################################
-####
-####
-#### english: autosave #### spanish: autoguarda
-$give_autosave &> /dev/null
-####
-####
 ###############################################################################################################
 ###############################################################################################################
 ####                                                                                            ###############
