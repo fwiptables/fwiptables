@@ -7535,7 +7535,7 @@ echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $directory_default/$name_fwiptables-default
 echo 
-echo "$tab [ info ] [ edit file $directory_default/$name_fwiptables-default to change variables with: $cmd_fwiptables modify-default ]"
+echo " [ info ] [ edit file $directory_default/$name_fwiptables-default to change variables with: $cmd_fwiptables modify-default ]"
 exit; fi
 ####
 ####
