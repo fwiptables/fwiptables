@@ -1637,9 +1637,9 @@ exit ; fi
 #### :rutina-inicial-sane:
 ####
 ####
-case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no";;  esac
-case "$NULL" in "$allow_dmz_ip4"           ;;  *)  allow_dmz_ip4="no" ;; esac
-case "$NULL" in "$allow_dmz_ip6"           ;;  *)  allow_dmz_ip6="no" ;; esac
+case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
+case "$NULL" in "$allow_dmz_ip4")          ;;  *)  allow_dmz_ip4="no" ;; esac
+case "$NULL" in "$allow_dmz_ip6")          ;;  *)  allow_dmz_ip6="no" ;; esac
 case "$NULL" in "$allow_forward_ip4")      ;;  *)  allow_forward_ip4="no" ;; esac
 case "$NULL" in "$allow_forward_ip6")      ;;  *)  allow_forward_ip6="no" ;; esac
 case "$NULL" in "$allow_gateway_ip4")      ;;  *)  allow_gateway_ip4="no" ;; esac
@@ -1652,15 +1652,15 @@ case "$NULL" in "$allow_input_state")      ;;  *)  allow_input_state="no";; esac
 case "$NULL" in "$allow_ipv4")             ;;  *)  allow_ipv4="no" ;; esac
 case "$NULL" in "$allow_ipv6")             ;;  *)  allow_ipv6="no" ;; esac
 case "$NULL" in "$allow_legacy")           ;;  *)  allow_legacy="no" ;; esac
-case "$NULL" in "$allow_mac_blacklist"     ;;  *)  allow_mac_blacklist="no" ;; esac
-case "$NULL" in "$allow_mac_whitelist"     ;;  *)  allow_mac_whitelist="no" ;; esac
-case "$NULL" in "$allow_maxtries_ssh"      ;;  *)  allow_maxtries_ssh="no" ;; esac
+case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
+case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
+case "$NULL" in "$allow_maxtries_ssh")     ;;  *)  allow_maxtries_ssh="no" ;; esac
 case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
 case "$NULL" in "$allow_net_vpn")          ;;  *)  allow_net_vpn="no";; esac
 case "$NULL" in "$allow_nft")              ;;  *)  allow_nft="no" ;; esac
 case "$NULL" in "$allow_only_output")      ;;  *)  allow_only_output="no" ;; esac
 case "$NULL" in "$allow_other_protocols")  ;;  *)  allow_other_protocols="no";; esac
-case "$NULL" in "$allow_others_protocols"  ;;  *)  allow_others_protocols="no" ;; esac
+case "$NULL" in "$allow_others_protocols") ;;  *)  allow_others_protocols="no" ;; esac
 case "$NULL" in "$allow_output_all")       ;;  *)  allow_output_all="no";; esac
 case "$NULL" in "$allow_output_bandwidth") ;;  *)  allow_output_bandwidth="no";; esac
 case "$NULL" in "$allow_output_gid")       ;;  *)  allow_output_gid="no";; esac
