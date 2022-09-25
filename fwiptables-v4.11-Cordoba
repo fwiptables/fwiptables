@@ -242,9 +242,6 @@ config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tr
 ####       #### english: list all rules: list all rules, void in names or no in numbers
 ####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
-####       #### english: allow info HEADER in each option    
-####       #### spanish: permitir informacion de CABECERA en cada opcion
-allow_header_notice="no"              ## fwiptables-file-default ## void or no
 ####       #### english: void to AUTOLOG one line from command launched
 ####       #### spanish: vacio para AUTOLOG del comando lanzado o no
 allow_autolog=""                    ## fwiptables-file-default ## void or no
@@ -1661,7 +1658,6 @@ exit ; fi
 case "$NULL" in "$launch_firewall")        ;;  *)  launch_firewall="no" ;; esac
 case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
-case "$NULL" in "$allow_header_notice")    ;;  *)  allow_header_notice="no" ;; esac
 case "$NULL" in "$allow_legacy")           ;;  *)  allow_legacy="no" ;; esac
 case "$NULL" in "$allow_nft")              ;;  *)  allow_nft="no" ;; esac
 case "$NULL" in "$allow_ipv4")             ;;  *)  allow_ipv4="no" ;; esac
