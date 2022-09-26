@@ -768,28 +768,28 @@ exit; fi
 if [ "$first_option" = "-cli" ]
 then echo "$head_waiting_cli"
 case "$second_option" in
-wizard-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+wizard-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $cmd_fwiptables $second_option $third_option ;  exit ;;
 "nueva-completa-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
-nmap-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
-"radio") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
-"speed-cpu") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
-"info-nodes") echo $message_without_cli ;  exit ;;
+nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"radio") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+"speed-cpu") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+"info-nodes") echo "$message_without_cli" ;  exit ;;
 "game-domain") $cmd_fwiptables game-domain -cli ; exit ;;
 "game-word") $cmd_fwiptables game-word -cli ; exit ;;
 "game-number") $cmd_fwiptables game-number -cli ; exit ;;
-"blacklist-on") echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"blacklist-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $cmd_fwiptables log-search $pattern ; exit ;; 
-log-*) echo $message_without_cli ; $cmd_fwiptables $second_option $third_option ;  exit ;;
-fw-*)  echo $message_without_cli ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
-"hosts") echo $message_without_cli ; $cmd_fwiptables hosts ; exit ;;
+log-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+fw-*)  echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"hosts") echo "$message_without_cli" ; $cmd_fwiptables hosts ; exit ;;
 *) dialog --title "  Cli Output || $cmd_fwiptables ||" \
 --msgbox "$($cmd_fwiptables $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
@@ -807,7 +807,7 @@ then case "$second_option" in
 "ole_domain") first_option="game-domain" ; second_option="-gui" ;;
 "rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
 "gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
-"info-nodes") echo $message_without_gui ;  exit ;;
+"info-nodes") echo "$message_without_gui" ;  exit ;;
 esac ; fi
 ####
 ####
@@ -816,19 +816,19 @@ esac ; fi
 ####
 if [ "$first_option" = "-log" ]
 then case "$second_option" in 
-"wizard") echo $message_without_log ; exit ;;
-"wizard-full") echo $message_without_log ; exit ;;
-"new-mini-config") echo $message_without_log ; exit ;;
-"nueva-mini-config") echo $message_without_log ; exit ;;
-"new-full-config") echo $message_without_log ; exit ;;
-"nueva-completa-config") echo $message_without_log ; exit ;;
-"modify-config")  echo $message_without_log ; exit ;;
-"gpg-notes") echo $message_without_log ; exit ;;
-"wpa-save") echo $message_without_log ; exit ;;
-pc-*) echo $message_without_log ; exit ;;
-game-*) echo $message_without_log ; exit ;;
-radio-*) echo $message_without_log ; exit ;;
-rule-*) echo $message_without_log ; exit ;;
+"wizard") echo "$message_without_log" ; exit ;;
+"wizard-full") echo "$message_without_log" ; exit ;;
+"new-mini-config") echo "$message_without_log" ; exit ;;
+"nueva-mini-config") echo "$message_without_log" ; exit ;;
+"new-full-config") echo "$message_without_log" ; exit ;;
+"nueva-completa-config") echo "$message_without_log" ; exit ;;
+"modify-config")  echo "$message_without_log" ; exit ;;
+"gpg-notes") echo "$message_without_log" ; exit ;;
+"wpa-save") echo "$message_without_log" ; exit ;;
+pc-*) echo "$message_without_log" ; exit ;;
+game-*) echo "$message_without_log" ; exit ;;
+radio-*) echo "$message_without_log" ; exit ;;
+rule-*) echo "$message_without_log" ; exit ;;
 esac 
 ####
 ####
@@ -845,18 +845,18 @@ exit ; fi
 ####
 if [ "$first_option" = "-null" ]
 then case "$second_option" in 
-"wizard") echo $message_without_null ; exit ;;
-"wizard-full") echo $message_without_null ; exit ;;
-"new-mini-config") echo $message_without_null ; exit ;;
-"nueva-mini-config") echo $message_without_null ; exit ;;
-"new-full-config") echo $message_without_null ; exit ;;
-"nueva-completa-config") echo $message_without_null ; exit ;;
-"gpg-notes") echo $message_without_null ; exit ;;
-"wpa-save") echo $message_without_null ; exit ;;
-pc-*) echo $message_without_null ; exit ;;
-game-*) echo $message_without_null ; exit ;;
-radio-*) echo $message_without_null ; exit ;;
-rule-*) echo $message_without_null ; exit ;;
+"wizard") echo "$message_without_null" ; exit ;;
+"wizard-full") echo "$message_without_null" ; exit ;;
+"new-mini-config") echo "$message_without_null" ; exit ;;
+"nueva-mini-config") echo "$message_without_null" ; exit ;;
+"new-full-config") echo "$message_without_null" ; exit ;;
+"nueva-completa-config") echo "$message_without_null" ; exit ;;
+"gpg-notes") echo "$message_without_null" ; exit ;;
+"wpa-save") echo "$message_without_null" ; exit ;;
+pc-*) echo "$message_without_null" ; exit ;;
+game-*) echo "$message_without_null" ; exit ;;
+radio-*) echo "$message_without_null" ; exit ;;
+rule-*) echo "$message_without_null" ; exit ;;
 esac
 ####
 ####
@@ -901,7 +901,7 @@ hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc
 about|version|depends|license|config-eng|config-spa)  second_option="help-about"; third_option="" ;;
 all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
  second_option="help-help"; third_option="" ;;
-*) echo $message_without_info ;  exit ;;
+*) echo "$message_without_info" ;  exit ;;
 esac
 $cmd_fwiptables $second_option
 exit ; fi
@@ -951,7 +951,7 @@ hosts|resolv.conf|protocols|services|hosts.*|*-default)  second_option="show-etc
 about|version|depends|license|config-eng|config-spa)  second_option="help-about"; third_option="" ;;
 all-help|"help"|ayuda|notes|options|"info"|mini-options|full-options|group-options)
  second_option="help-help"; third_option="" ;;
-*) echo $message_without_help ;  exit ;;
+*) echo "$message_without_help" ;  exit ;;
 esac
 $cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
 $command_sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
@@ -971,12 +971,12 @@ if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text
 case "$second_option" in 
 "$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
-*-config) echo $message_without_web ; exit ;;
-game-*) echo $message_without_web ; exit ;;
-game-*) echo $message_without_web ; exit ;;
-rule-del-number) echo $message_without_web ; exit ;;
-wpa-save) echo $message_without_web ; exit ;;
-wpa-load)  echo $message_without_web ; exit ;;
+*-config) echo "$message_without_web" ; exit ;;
+game-*) echo "$message_without_web" ; exit ;;
+game-*) echo "$message_without_web" ; exit ;;
+rule-del-number) echo "$message_without_web" ; exit ;;
+wpa-save) echo "$message_without_web" ; exit ;;
+wpa-load)  echo "$message_without_web" ; exit ;;
 esac
 echo $head_waiting_web
 rm "$temporal_text"* &> /dev/null
