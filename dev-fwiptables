@@ -2412,8 +2412,7 @@ echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_fwiptables options-help             |  Show all options to help informations          "
-echo "$duo_md || || [ Examples ]  ### [  Example description with each optional output ] ### || ||             "
-echo "$text_md      $cmd_fwiptables examples                 |  Show examples                                  "
+echo "$text_md      $cmd_fwiptables examples                 |  Show several examples                          "
 exit ; fi
 ####
 ####
