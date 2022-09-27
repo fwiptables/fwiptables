@@ -238,7 +238,7 @@ allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
 ####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
-config_maxtries_ssh="12"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
+config_maxtries_ssh="10"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
 ####       #### english: list all rules: list all rules, void in names or no in numbers
 ####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
@@ -391,7 +391,7 @@ config_input_maxconnect="72" ;
 config_input_state="new,related,established" ;
 config_mac_blacklist=""
 config_mac_whitelist="" ;
-config_maxtries_ssh="20" ;
+config_maxtries_ssh="12" ;
 config_net_blacklist="yandex.com" ;
 config_net_vpn="wesnoth.org" ; 
 config_others_protocols="icmp,igmp" ;
@@ -441,6 +441,16 @@ if [ -f $directory_default/fwiptables-default ] ; then . $directory_default/fwip
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
+##########    english: Notice Installer with intro      ##########
+##########    spanish: noticia de Instalador con intro  ##########
+#### :rutina-inicial-notice:
+####
+####
+if [ "$fwiptables_installed" == "no" ] ; then . $0 intro ; echo 
+echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables"; fi
+####
+####
+#### :rutina-final-notice:
 ##########   english: intro: show intro      ##########
 ##########   spanish: intro: muestra intro   ##########
 #### :rutina-inicial-intro:
@@ -617,17 +627,6 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 ####
 #### :rutina-final-favorite-music-command:
-
-##########    english: Notice Installer with intro      ##########
-##########    spanish: noticia de Instalador con intro  ##########
-#### :rutina-inicial-notice:
-####
-####
-if [ "$fwiptables_installed" == "no" ] ; then . $0 intro ; echo 
-echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables"; fi
-####
-####
-#### :rutina-final-notice:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -1113,7 +1112,7 @@ echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$text_md [ info ] [ downloading ] [ $fweb_latest ]"
+echo "$text_md [ info ] [ download ] [ $fweb_latest ]"
 echo "$text_md [ info ] [ downloading ] [ waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
@@ -1150,7 +1149,7 @@ echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$text_md [ info ] [ downloading ] [ $fweb_development ]"
+echo "$text_md [ info ] [ download ] [ $fweb_development ]"
 echo "$text_md [ info ] [ downloading ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
@@ -1348,7 +1347,7 @@ spa58=$(echo "$cinco Rellena Variables" )
 var59=$(echo "$cinco Options" )
 eng59=$(echo "$cinco Other Options, add with , and join ranges with :" )
 spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con :" )
-var60=$(echo "config_maxtries_ssh=20")
+var60=$(echo "config_maxtries_ssh=12")
 eng60=$(echo "$cinco modify shield with number max of tries to log in us ssh server for ip at each hour")
 spa60=$(echo "$cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora")
 
@@ -1791,13 +1790,15 @@ fi
 ####
 if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall shield-ssh ]" ;
-launch_firewall="yes" ; type_firewall="shield-ssh"; name_firewall="$first_option"
+launch_firewall="yes" ;
+type_firewall="shield-ssh"    ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 config_maxtries_ssh="5" ;
 #### english: ports client and ports server
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
 fi
@@ -1809,7 +1810,9 @@ fi
 ####
 if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-web ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect normal web
@@ -1826,7 +1829,9 @@ fi
 ####
 if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-torrent ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect web normal and bittorrent too
@@ -1843,7 +1848,9 @@ fi
 ####
 if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-vpn ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect web normal and web vpn
@@ -1860,7 +1867,9 @@ fi
 ####
 if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-tor ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### you can connect web normal and web tor
@@ -1877,7 +1886,9 @@ fi
 ####
 if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-news ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### client news:
@@ -1899,7 +1910,9 @@ fi
 ####
 if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-mail ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### client news:
@@ -1928,12 +1941,14 @@ fi
 ####
 if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-ftp ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### client ftp:
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
 fi
@@ -1945,12 +1960,14 @@ fi
 ####
 if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall client-squid ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="" ;
 fi
@@ -1962,12 +1979,14 @@ fi
 ####
 if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall lan-vpn ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
-server_port_udp=""
+server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,500,1194,1701,4500" ; 
 client_port_tcp="1701,1723" ; 
 server_port_tcp="" ;
@@ -1980,7 +1999,9 @@ fi
 ####
 if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall lan-tor ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### lan tor, 9000:9170 for connect to tor
@@ -1998,7 +2019,9 @@ fi
 ####
 if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall games-shooter ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
@@ -2015,12 +2038,14 @@ fi
 ####
 if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall game-wesnoth ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,bootpc,ntp,https" ; 
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ;
 fi
@@ -2032,12 +2057,14 @@ fi
 ####
 if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall game-minetest ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ;
 fi
@@ -2049,12 +2076,14 @@ fi
 ####
 if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall game-freeciv ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,bootpc,ntp,https" ; 
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ;
 fi
@@ -2066,12 +2095,14 @@ fi
 ####
 if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall game-widelands ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="no" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,bootpc,ntp,https,7396" ; 
-server_port_udp="7396"
+server_port_udp="7396" ;
 client_port_tcp="http,https,ssh,7396" ;
 server_port_tcp="7396" ;
 fi
@@ -2083,12 +2114,14 @@ fi
 ####
 if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-web ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp="https"
+server_port_udp="https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ;
 fi
@@ -2100,12 +2133,14 @@ fi
 ####
 if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-ftp ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 fi
@@ -2117,12 +2152,14 @@ fi
 ####
 if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-squid ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="http,https,ssh,8080,3128" ;
 fi
@@ -2134,7 +2171,9 @@ fi
 ####
 if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-news ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### client news:
@@ -2156,7 +2195,9 @@ fi
 ####
 if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-mail ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### client news:
@@ -2173,7 +2214,7 @@ shield_ssh="" ;
 #### negotiation submission     tls             465 and 587
 #### 
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp="https"
+server_port_udp="https" ;
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
 server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
 fi
@@ -2185,7 +2226,9 @@ fi
 ####
 if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-samba ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server samba and active directory
@@ -2202,12 +2245,14 @@ fi
 ####
 if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-print ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server ipp and printer
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
 fi
@@ -2219,12 +2264,14 @@ fi
 ####
 if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-ssh ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp=""
+server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
 fi
@@ -2236,13 +2283,15 @@ fi
 ####
 if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-lamp ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,bootpc,ntp,https" ;
-server_port_udp="https"
+server_port_udp="https" ;
 client_port_tcp="http,https,ssh,20,21,989,990" ;
 server_port_tcp="http,https,ssh,10000,3306,5432" ;
 fi
@@ -2254,14 +2303,16 @@ fi
 ####
 if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-asterisk ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
 client_port_udp="domain,bootpc,ntp,https,5060,10000:20000,5036" ;
-server_port_udp="5060,10000:20000,5036"
+server_port_udp="5060,10000:20000,5036" ;
 client_port_tcp="http,https,ssh,5060" ;
 server_port_tcp="ssh,5060" ;
 fi
@@ -2273,12 +2324,14 @@ fi
 ####
 if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-mumble ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
-server_port_udp="64738"
+server_port_udp="64738" ;
 client_port_tcp="http,https,ssh,64738" ;
 server_port_tcp="ssh,64738" ;
 fi
@@ -2290,7 +2343,9 @@ fi
 ####
 if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-teamspeak ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 #### Service	        Protocol	Local Port (Server)
@@ -2299,7 +2354,7 @@ shield_ssh="" ;
 #### ServerQuery (raw)	TCP	10011
 #### ServerQuery (SSH)	TCP	10022
 client_port_udp="domain,bootpc,ntp,https,9987" ;
-server_port_udp="9987"
+server_port_udp="9987" ;
 client_port_tcp="http,https,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ;
 fi
@@ -2311,7 +2366,9 @@ fi
 ####
 if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load
 echo " [ info ] [ loading firewall server-sql ]" ;
-launch_firewall="yes" ; type_firewall="predesignated"; name_firewall="$first_option"
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
@@ -2320,7 +2377,7 @@ shield_ssh="" ;
 ####  MySQL Client to Server – New X Protocol – 33060	33060/tcp	Optional - pick at least 1
 ####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
 client_port_udp="domain,bootpc,ntp,https,5432" ;
-server_port_udp="5432"
+server_port_udp="5432" ;
 client_port_tcp="http,https,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ;
 fi
@@ -10288,7 +10345,7 @@ echo "$text_md       client-squid : Launch a firewall likes client squid."
 echo "$brake_md"
 echo "$text_md         shield-ssh : Launch a firewall likes server ssh with shield for new-conecctions until 6-tries each-hour/each-ip."
 echo "$brake_md"
-echo "$text_md       ______All server ssh configured with shield ssh server at max 12 tries to connect at ip/hour_____"
+echo "$text_md       ______All server ssh configured with shield ssh server at max $config_maxtries_ssh tries to connect at ip/hour_____"
 echo "$brake_md"
 echo "$text_md         server-ssh : Launch a firewall likes server ssh."
 echo "$text_md         server-web : Launch a firewall likes web server and ssh server."
@@ -10650,7 +10707,7 @@ echo "$text_md         client-squid : Lanza un firewall como cliente squid."
 echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
 echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
 echo "$brake_md"
-echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo 6-intentos cada-hora/cada-ip."
+echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo $config_maxtries_ssh cada-hora/cada-ip."
 echo "$brake_md"
 echo "$text_md         _____Todos los servidores ssh configurados a maximo 12 intentos de acceso por ip/hora"
 echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
