@@ -2413,17 +2413,7 @@ echo "$text_md      $cmd_fwiptables options-tool             |  Show all options
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_fwiptables options-help             |  Show all options to help informations          "
 echo "$duo_md || || [ Examples ]  ### [  Example description with each optional output ] ### || ||             "
-echo "$text_md      $cmd_fwiptables -cli-menu                |  All options in text menu                       "
-echo "$text_md      $cmd_fwiptables -gui-menu                |  All options in window menu                     "
-echo "$text_md      $cmd_fwiptables -gui-shell               |  All options in window shell                    "
-echo "$text_md      $cmd_fwiptables -txt list                |  List iptables rules with output text plain     "
-echo "$text_md      $cmd_fwiptables -cli names               |  List firewall saved with output text menu      "
-echo "$text_md      $cmd_fwiptables -gui wizard-mini         |  Generate rules with output gui window          "
-echo "$text_md      $cmd_fwiptables -web ss                  |  Show ss with output text browser               "
-echo "$text_md      $cmd_fwiptables -help readme             |  Show help of readme with output text plain     "
-echo "$text_md      $cmd_fwiptables -info lsof               |  Show info of lsof with output text rst         "
-echo "$text_md      $cmd_fwiptables -log info-route          |  Save log info-route with output text plain     "
-echo "$text_md      $cmd_fwiptables -null client-web         |  Launch client web firewall with output null    "
+echo "$text_md      $cmd_fwiptables examples                 |  Show examples                                  "
 exit ; fi
 ####
 ####
@@ -2593,16 +2583,16 @@ exit ; fi
 ####
 ####
 #### :rutina-final-options-show:
-##########    english: some-example: some example    ##########
-##########    spanish: some-example: algun ejemplo   ##########
-#### :rutina-inicial-some-example:
+##########    english: examples: some example    ##########
+##########    spanish: examples: algun ejemplo   ##########
+#### :rutina-inicial-examples:
 ####
 ####
-if [ "$first_option" = "some-example" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List examples ] [ some-examples.md ] || ||"
+if [ "$first_option" = "examples" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ List examples ] [ examples.md ] || ||"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
-echo "$title_md                                      [ some-example ]                                  "
+echo "$title_md                                      [ examples ]                                  "
 echo "$text_md        [ with optional output ]                  [ Example Description ]                "
 echo "$text_md    $cmd_fwiptables -cli-menu                |  All options in text menu                 "
 echo "$text_md    $cmd_fwiptables -gui-menu                |  All options in window menu               "
@@ -2617,7 +2607,7 @@ echo "$text_md    $cmd_fwiptables -null client-web         |  Launch client web 
 exit; fi
 ####
 ####
-#### :rutina-final-some-example:
+#### :rutina-final-examples:
 ##########    english: all-options: all options          ##########
 ##########    spanish: all-options: todas las opciones   ##########
 #### :rutina-inicial-all-options:
@@ -10555,7 +10545,7 @@ echo "$text_md         options : Show the full options."
 echo "$text_md          readme : Show help in english."
 echo "$text_md           leeme : Show help in spanish."
 echo "$text_md           notes : Show firewall notes."
-echo "$text_md   some-examples : Show examples to launch."
+echo "$text_md        examples : Show examples to launch."
 echo "$text_md"
 echo "$title_md [ firewall notes ]"
 echo "$text_md"
@@ -10901,7 +10891,7 @@ echo "$text_md         options : Muestra las opciones."
 echo "$text_md          readme : Muestra la ayuda en ingles."
 echo "$text_md           leeme : Muestra la ayuda en español."
 echo "$text_md           notes : Muestra notas de Fran firewall."
-echo "$text_md   some-examples : Muestra ejemplos para lanzar."
+echo "$text_md        examples : Muestra ejemplos para lanzar."
 echo "$text_md"
 echo "$title_md $tab Notas de firewall"
 echo "$text_md"
