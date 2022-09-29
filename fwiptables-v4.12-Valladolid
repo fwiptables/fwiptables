@@ -6462,7 +6462,7 @@ echo
 case $legacycuatro in
 "$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing.. ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 ;;
@@ -6471,7 +6471,7 @@ echo "$tab"
 case $nftcuatro in
 "$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing.. ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ;;
@@ -6497,7 +6497,7 @@ echo
 case $legacyseis in
 "$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing.. ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 ;;
@@ -6506,7 +6506,7 @@ echo $tab
 case $nftseis in
 "$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing.. ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
 ;;
@@ -6557,7 +6557,7 @@ echo
 case $legacycuatro in
 "$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
 *)
-echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing.. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
@@ -6566,7 +6566,7 @@ echo "$tab"
 case $nftcuatro in
 "$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
 *)
-echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing.. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -6598,7 +6598,7 @@ $command_iptables_legacy -t filter -v -L -n
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing.. ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
