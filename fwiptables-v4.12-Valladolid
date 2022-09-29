@@ -294,7 +294,7 @@ head_waiting_info=" [ info ] [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Name ] [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
