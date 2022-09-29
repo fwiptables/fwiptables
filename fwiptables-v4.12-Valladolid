@@ -1738,9 +1738,12 @@ $cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 #### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall custom ]" ;
-launch_firewall="yes" ; type_firewall="custom" ; name_firewall="$second_option" ;
+launch_firewall="yes" ;
+type_firewall="custom" ;
+name_firewall="$second_option" ;
 ####
 ####
 #### english: configure custom variables if there are
@@ -1769,9 +1772,12 @@ fi
 ####   #### spanish: cortafuego del sistema off-line:
 ####
 ####
-if [ "$first_option" = "off-line" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "off-line" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall off-line ]" ;
-launch_firewall="yes" ; type_firewall="off-line"; name_firewall="$first_option";
+launch_firewall="yes" ;
+type_firewall="off-line";
+name_firewall="$first_option";
 fi
 ####
 ####
@@ -1779,9 +1785,12 @@ fi
 ####   #### spanish: cortafuego del sistema all-permisive:
 ####
 ####
-if [ "$first_option" = "all-permisive" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "all-permisive" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall all-permisive ]" ;
-launch_firewall="yes" ; type_firewall="all-permisive" ; name_firewall="$first_option";
+launch_firewall="yes" ;
+type_firewall="all-permisive" ;
+name_firewall="$first_option";
 fi
 ####
 ####
@@ -1789,7 +1798,8 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
@@ -1809,7 +1819,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -1828,7 +1839,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1847,7 +1859,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1866,7 +1879,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1885,7 +1899,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1909,7 +1924,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1940,7 +1956,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -1959,7 +1976,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-squid:
 ####
 ####
-if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1978,7 +1996,8 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1998,7 +2017,8 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2018,7 +2038,8 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2037,7 +2058,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2056,7 +2078,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2075,7 +2098,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2094,7 +2118,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2113,7 +2138,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2132,7 +2158,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2151,7 +2178,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-squid:
 ####
 ####
-if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2170,7 +2198,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2194,7 +2223,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2225,7 +2255,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2244,7 +2275,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2263,7 +2295,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2282,7 +2315,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2302,7 +2336,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2323,7 +2358,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2342,7 +2378,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2365,7 +2402,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load
+if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
