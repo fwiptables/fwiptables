@@ -294,7 +294,7 @@ head_waiting_info=" [ info ] [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
+give_cover="$duo_md || || [ ok ] || [ Name ] [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
@@ -308,7 +308,8 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="### ### || || [ ok ] || [ Configure list rules with names or with numbers ] [ Launch: $cmd_fwiptables modify-default ] || ||"
+message_info_rules="### ### || || [ ok ] || [ Configure ] [ list rules with names or with numbers ] \
+[ Launch: $cmd_fwiptables modify-default ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli=" [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui=" [ fail ] [ gui ] [ Without support for output gui for this option ]"
