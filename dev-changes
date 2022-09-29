@@ -2,10 +2,14 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 02. 
+ 01. 
+
+ cambios en dev-fwiptables desarrollo 4.13
+
+ 02. cambios esteticos. HECHO
  01. contrae ejemplos en mini-options or default. HECHO 
 
- cambios en dev-fwiptables desarrollo 4.12
+ cambios en dev-fwiptables 4.12 lineas=2
 
  05. simplificacion de variables default. HECHO
  04. cambios en depends. HECHO 
