@@ -7619,7 +7619,7 @@ exit; fi
 if [ "$first_option" = "dhcp-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp_command" ] || ||"
 echo 
-if [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ;
+if [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
 else echo " [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
 exit; fi
 ####
