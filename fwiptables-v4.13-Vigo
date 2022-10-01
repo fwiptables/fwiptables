@@ -2575,7 +2575,7 @@ echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client   
 echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                 "
 echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                 "
 echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                 "
-echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                     "
+echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                       "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
 echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
