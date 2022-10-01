@@ -784,6 +784,7 @@ nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_opti
 "game-number") $cmd_fwiptables game-number -cli ; exit ;;
 "blacklist-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
+"clean-tmp") $cmd_fwiptables $second_option $third_option ; exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $cmd_fwiptables log-search $pattern ; exit ;; 
@@ -807,6 +808,7 @@ then case "$second_option" in
 "ole_domain") first_option="game-domain" ; second_option="-gui" ;;
 "rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
 "gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
+"clean-tmp") $cmd_fwiptables clean-tmp &> /dev/null ; $command_zenity --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
 "info-nodes") echo "$message_without_gui" ;  exit ;;
 esac ; fi
 ####
@@ -4666,7 +4668,7 @@ case $selection in
 "Gui Info Menu") $cmd_fwiptables -gui info tool-forward ;;
 "sshd-tunnel-info") $cmd_fwiptables -gui sshd-tunnel-info ;;
 "sshd-tunnel-on")
-archivo="$(zenity  $graphic_dimension --entry --title "[ type: user@my-localhost ]" --text "[ type: user@my-localhost ]")" ;
+archivo="$(zenity  $graphic_dimension --entry --title "[ type: user@host ]" --text "[ type: user@host ]")" ;
 $cmd_fwiptables -gui sshd-tunnel-on $archivo ;;
 "sshd-tunnel-off") $cmd_fwiptables -gui sshd-tunnel-off ;;
 esac
@@ -9555,8 +9557,8 @@ ssh_dir="/etc/ssh/sshd_config.d"
 echo " [ info ] [ 127.0.0.1 ] [ Above config directory ] [ options: gatewaysports and forwardings ]"
 if [ ! -d "$ssh_dir" ] ; then echo " [ without directory $ssh_dir ]"
 else for a in $($command_ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
-echo " [ info ] [ server ] [ configure: $cmd_fwiptables user@server ] "
-echo " [ info ] [ client ] [ configure: socks=user@server:1080 | http_proxy=user@server:1080 | https_proxy=user@server:1080 ]"
+echo " [ info ] [ server ] [ configure ] [ $cmd_fwiptables sshd-tunnel-on user@server ] "
+echo " [ info ] [ client ] [ configure ] [ socks=user@server:1080 | http_proxy=user@server:1080 | https_proxy=user@server:1080 ]"
 exit; fi
 ####
 ####
@@ -10190,9 +10192,9 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ clean $name_fwiptables temporal files] || ||"
+echo "$header_ok [ $first_option ] [ clean $name_fwiptables temporal files ] || ||"
 echo "[ info ] [ cleaning $name_fwiptables temporal files ]"
-rm -r -f $directory_tmp &> /dev/null
+rm -rf "$directory_tmp" &> /dev/null
 echo "[  ok  ] [ cleaned temporal files ]"
 exit; fi
 ####
