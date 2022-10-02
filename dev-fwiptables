@@ -577,6 +577,14 @@ command_wpa_supplicant="$(command -v wpa_supplicant)"
 command_xrandr="$(command -v xrandr)"
 command_zenity="$(command -v zenity)"
 command_zgrep="$(command -v zgrep)"
+command_lpinfo="$(command -v lpinfo)"
+command_lpstat="$(command -v lpstat)"
+command_lsblk="$(command -v lsblk)"
+command_lsusb="$(command -v lsusb)"
+command_lscpu="$(command -v lscpu)"
+command_lspci="$(command -v lspci)"
+command_lsgpu="$(command -v lsgpu)"
+command_lshw="$(command -v lshw)"
 ####
 ####
 #### :rutina-final-command:
@@ -9826,13 +9834,13 @@ exit; fi
 ####
 if [ "$first_option" = "lpinfo" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ] || ||"
-echo "lpinfo -v -l"
+echo " [ info] [ lpinfo -v -l ]"
 echo
-lpinfo -v -l
+$command_lpinfo -v -l || echo " [ fail ] install lpinfo"
 echo
-echo"lpstat -v"
+echo " [ info ] [ lpstat -v ]"
 echo
-lpstat -v
+$command_lpstat -v || echo " [ fail ] install lpstat"
 echo 
 echo " [ info ] [ Use lp or lpr to print with those printers, or lpadmin to admin. ]"
 exit; fi
@@ -9846,9 +9854,8 @@ exit; fi
 ####
 if [ "$first_option" = "lsblk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list disks ] || ||"
-echo 
-lsblk -o name,size,fsuse%,label,mountpoints
-echo
+echo " [ info ] [ lsblk ]"
+$command_lsblk -o name,size,fsuse%,label,mountpoints || echo " [ fail ] install lsblk"
 exit; fi
 ####
 ####
@@ -9860,7 +9867,8 @@ exit; fi
 ####
 if [ "$first_option" = "lsusb" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list usb ] || ||"
-lsusb
+echo " [ info ] [ lsusb ]"
+$command_lsusb || echo " [ fail ] install lsusb"
 exit; fi
 ####
 ####
@@ -9872,7 +9880,8 @@ exit; fi
 ####
 if [ "$first_option" = "lscpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list cpu ] || ||"
-lscpu
+echo " [ info ] [ lscpu ]"
+$command_lscpu || echo  " [ fail ] install lscpu"
 exit; fi
 ####
 ####
@@ -9884,7 +9893,8 @@ exit; fi
 ####
 if [ "$first_option" = "lspci" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list pci hardware sockets ] || ||"
-lspci
+echo " [ info ] [ lspci ]"
+$command_lspci || echo  " [ fail ] install lspci"
 exit; fi
 ####
 ####
@@ -9896,8 +9906,8 @@ exit; fi
 ####
 if [ "$first_option" = "lsgpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list gpu ] || ||"
-echo 
-lsgpu
+echo " [ info ] [ lsgpu ]"
+$command_lsgpu || echo " [ fail ] install lsgpu"
 exit; fi
 ####
 ####
@@ -9909,8 +9919,8 @@ exit; fi
 ####
 if [ "$first_option" = "lshw" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list hardware ] || ||"
-lshw
-echo
+echo " [ info ] [ lshw ]"
+$command_lshw || echo  " [ fail ] install lshw"
 exit; fi
 ####
 ####
@@ -9923,7 +9933,6 @@ exit; fi
 if [ "$first_option" = "hosts" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ] || ||"
 cat /etc/hosts
-echo
 echo " [ ok ] [ This file is /etc/hosts ]"
 exit; fi
 ####
@@ -9937,7 +9946,6 @@ exit; fi
  if [ "$first_option" = "protocols" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ] || ||"
 cat /etc/protocols  | $command_sed s/\&//g 
-echo
 echo " [ ok ] [ This file is /etc/protocols ]"
 exit; fi
 ####
@@ -9951,7 +9959,6 @@ exit; fi
 if [ "$first_option" = "services" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/services ] || ||"
 cat /etc/services | $command_sed s/\&//g 
-echo
 echo " [ ok ] [ This file is /etc/services ]"
 exit; fi
 ####
@@ -9965,7 +9972,6 @@ exit; fi
 if [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/allow ] || ||"
 cat /etc/hosts.allow
-echo
 echo " [ ok ] [ This file is /etc/hosts.allow ]"
 exit; fi
 ####
@@ -9979,7 +9985,6 @@ exit; fi
 if [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/deny ] || ||"
 cat /etc/hosts.deny
-echo
 echo " [ ok ] [ This file is /etc/hosts.deny ]"
 exit; fi
 ####

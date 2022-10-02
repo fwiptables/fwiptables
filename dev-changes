@@ -3,7 +3,7 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 02. añadir comman -v para todos los show-hardware.
+ 02. añadir command -v para todos los show-hardware.
  01. añadir client-vnc y server-vnc a firewall launch. 
 
  cambios en dev-fwiptables desarrollo 4.13
