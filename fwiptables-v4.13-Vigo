@@ -1361,13 +1361,9 @@ spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con ':'" )
 var60=$(echo "config_maxtries_ssh=12")
 eng60=$(echo "$cinco modify shield with number max of tries to log in us ssh server for ip at each hour")
 spa60=$(echo "$cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora")
-
-
 var61=$(echo "config_ssh_port=22")
 eng61=$(echo "$cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate")
 spa61=$(echo "$cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma")
-
-
 var62=$(echo "config_dmz_ip4=192.168.1.7")
 eng62=$(echo "$cinco ip server ip lan to other external nets, nat prerouting")
 spa62=$(echo "$cinco servidor ip lan para otras redes esternas, nat prerouting")
@@ -2196,6 +2192,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
+config_maxtries_ssh="20" ;
+config_ssh_port="22,5900:5910"
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5900:5910" ;
