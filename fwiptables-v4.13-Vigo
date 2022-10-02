@@ -1845,6 +1845,26 @@ server_port_tcp="" ;
 fi
 ####
 ####
+####   #### english: firewall of system client-vnc:
+####   #### spanish: cortafuego del sistema client-vnc:
+####
+####
+if [ "$first_option" = "client-vnc" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo " [ info ] [ loading firewall client-vnc ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+shield_ssh="no" ;
+#### you can connect normal web and vnc
+server_port_udp="" ;
+client_port_tcp="http,https,ssh,5900:5910" ;
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_tcp="" ;
+fi
+####
+####
 ####   #### english: firewall of system client-torrent:
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
@@ -2164,6 +2184,26 @@ server_port_tcp="http,https,ssh" ;
 fi
 ####
 ####
+####   #### english: firewall of system server-vnc:
+####   #### spanish: cortafuego del sistema server-vnc:
+####
+####
+if [ "$first_option" = "server-vnc" ]; then echo $give_cover ; echo $give_load ;
+echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo " [ info ] [ loading firewall server-vnc ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ;
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+shield_ssh="" ;
+#### you can connect normal web and vnc
+server_port_udp="" ;
+client_port_tcp="http,https,ssh,5900:5910" ;
+client_port_udp="domain,bootpc,ntp,https" ;
+server_port_tcp="ssh,5900:5910" ;
+fi
+####
+####
 ####   #### english: firewall of system server-ftp:
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
@@ -2451,10 +2491,11 @@ echo "$text_md                       new-mini-config nueva-mini-config examples-
 echo "$text_md                       show-config modify-config del-config names-config                         "
 echo "$text_md    firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive          "
 echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands      "
-echo "$text_md                       client-web client-mail client-news client-torrent client-vpn client-tor   "
-echo "$text_md                       client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web  "
-echo "$text_md                       server-samba server-print server-lamp server-news server-mail server-ftp  "
-echo "$text_md                       server-teamspeak server-mumble server-sql server-asterisk server-squid    "
+echo "$text_md                       client-web client-vnc client-mail client-news client-torrent client-vpn   "
+echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh "
+echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
+echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
+echo "$text_md                       server-asterisk server-squid                                              "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options ] ### || ||          "
 echo "$text_md      $cmd_fwiptables options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options to firewall manage            "
@@ -2484,12 +2525,13 @@ echo "$text_md                        list-security4 list-security6 list-ebtable
 echo "$text_md  firewall-custom    |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
-echo "$text_md  firewall-launch    |  eraserules wizard-mini wizard-full custom off-line all-permisive         "
-echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
-echo "$text_md                        client-web client-mail client-news client-torrent client-vpn client-tor  "
-echo "$text_md                        client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh server-web "
-echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
-echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
+echo "$text_md firewall-launch     |  eraserules custom wizard-mini wizard-full off-line all-permisive          "
+echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands      "
+echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn   "
+echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh "
+echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news   "
+echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql          "
+echo "$text_md                        server-asterisk server-squid                                              "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
@@ -2954,6 +2996,9 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente de ju
 echo "$text_md $tab client-web"
 echo "$text_md $tab_lang_english          : Launch one firewall likes client web and ssh"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y ssh"
+echo "$text_md $tab client-vnc"
+echo "$text_md $tab_lang_english          : Launch one firewall likes client web and ssh and vnc"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y ssh y vnc"
 echo "$text_md $tab client-torrent"
 echo "$text_md $tab_lang_english          : Launch one firewall likes client web and ssh and torrent"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como cliente web y ssh y torrent"
@@ -2981,6 +3026,9 @@ echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor ssh"
 echo "$text_md $tab server-web" 
 echo "$text_md $tab_lang_english          : Launch one firewall likes server web and ssh"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor web y ssh"
+echo "$text_md $tab server-vnc"
+echo "$text_md $tab_lang_english          : Launch one firewall likes server ssh and vnc"
+echo "$text_md $tab_lang_spanish          : Lanza un firewall como servidor ssh y vnc"
 echo "$text_md $tab server-samba"
 echo "$text_md $tab_lang_english          : Launch one firewall samba and ssh likes client and server both"
 echo "$text_md $tab_lang_spanish          : Lanza un firewall sambla y ssh como cliente y servidor ambos"
@@ -4315,8 +4363,8 @@ selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
-"client-web" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "shield-ssh" \
-"server-web" "server-samba" "server-ssh" "server-print" "server-lamp" \
+"client-web" "client-vnc" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "shield-ssh" \
+"server-web" "server-vnc" "server-samba" "server-ssh" "server-print" "server-lamp" \
 "server-news" "server-mail" "server-ftp" "server-teamspeak" "server-mumble" \
 "server-sql" "server-asterisk" \
 --column="Option list $name_fwiptables" --text="Select one option" \
@@ -4334,6 +4382,7 @@ case "$selection" in
 "off-line") $cmd_fwiptables -gui off-line ; $cmd_fwiptables gui list ;;
 "all-permisive") $cmd_fwiptables -gui all-permisive ; $cmd_fwiptables gui list ;;
 "client-web") $cmd_fwiptables -gui client-web ; $cmd_fwiptables gui list ;;
+"client-vnc") $cmd_fwiptables -gui client-vnc ; $cmd_fwiptables gui list ;;
 "client-torrent") $cmd_fwiptables -gui client-torrent ; $cmd_fwiptables gui list ;;
 "client-vpn") $cmd_fwiptables -gui client-vpn ; $cmd_fwiptables gui list ;;
 "client-tor") $cmd_fwiptables -gui client-tor ; $cmd_fwiptables gui list ;;
@@ -4347,6 +4396,7 @@ case "$selection" in
 "shield-ssh") $cmd_fwiptables -gui shield-ssh ; $cmd_fwiptables gui list ;;
 "server-ssh") $cmd_fwiptables -gui server-ssh ; $cmd_fwiptables gui list ;;
 "server-web") $cmd_fwiptables -gui server-web ; $cmd_fwiptables gui list ;;
+"server-vnc") $cmd_fwiptables -gui server-vnc ; $cmd_fwiptables gui list ;;
 "server-samba") $cmd_fwiptables -gui server-samba ; $cmd_fwiptables gui list ;;
 "server-news")  $cmd_fwiptables -gui server-news ; $cmd_fwiptables gui list ;;
 "server-mail")  $cmd_fwiptables -gui server-mail ; $cmd_fwiptables gui list ;;
