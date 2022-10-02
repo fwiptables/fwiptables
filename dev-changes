@@ -2,9 +2,9 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 03. añadir a los servicios como vnc en server predesignated el ssh_shield. 
+ 03. añadir a los servicios como vnc y similares de server predesignated en el ssh_shield. 
  02. añadir command -v para todos los show-hardware. HECHO
- 01. añadir client-vnc y server-vnc to firewall launch. HECHO.  -queda: cli-menu
+ 01. añadir client-vnc y server-vnc to firewall launch. HECHO.
 
  cambios en dev-fwiptables desarrollo 4.13
 
