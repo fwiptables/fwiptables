@@ -7414,41 +7414,41 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1)
 ####
 if [ "$legacycuatro" != "$NULL" ]; then
 $command_iptables_legacy -I INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 $command_iptables_legacy -I INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 fi
 ####
 ####
 if [ "$nftcuatro" != "$NULL" ]; then
 $command_iptables_nft -I INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 $command_iptables_nft -I INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 fi
 ####
 ####
 if [ "$legacyseis" != "$NULL" ]; then
 $command_ip6tables_legacy -I INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 $command_ip6tables_legacy -I INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 fi
 ####
 ####
 if [ "$nftseis" != "$NULL" ]; then
 $command_ip6tables_legacy -I INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 $command_ip6tables_legacy -I INPUT \
--p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 fi
 ####
 ####
@@ -11334,11 +11334,11 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server legacy ipv4
@@ -11409,11 +11409,11 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server nft ipv4
@@ -11489,12 +11489,12 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+--set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
+-m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server legacy ipv6
@@ -11567,12 +11567,12 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 ####
 $shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+--set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
+-m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server nft ipv6
@@ -11698,11 +11698,11 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server legacy ipv4
@@ -11773,11 +11773,11 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server nft ipv4
@@ -11853,12 +11853,12 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 $allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+--set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
+-m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server legacy ipv6
@@ -11931,12 +11931,12 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 ####
 $allow_nft $allow_ipv6 $shield_ssh $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
---set --name tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+--set --name shield-tries \
+-m comment --comment "shield tries" &> /dev/null
 $allow_nft $allow_ipv6  $shield_ssh $command_ip6tables_nft -A INPUT \
--m recent --name tries-ssh --update --seconds 3600 \
+-m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 #### log server nft ipv6
@@ -12648,37 +12648,37 @@ if [ "$allow_maxtries_ssh" = "" ]; then $nada
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dport $config_ssh_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 $allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
 --hitcount $config_maxtries_ssh -j DROP \
--m comment --comment "shield ssh" &> /dev/null
+-m comment --comment "shield tries" &> /dev/null
 fi
 ####
 ####
