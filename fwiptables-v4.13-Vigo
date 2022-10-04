@@ -8622,8 +8622,8 @@ exit; fi
 ####
 if [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "$tab [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ] || ||"
-echo "$tab [ info ] [ Usually it do not working likes root, probe as user ]"
+echo " [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ] || ||"
+echo " [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8638,7 +8638,7 @@ exit
 else emisora="$second_option"; fi
 ####
 ####
-echo " [ ok ] [ $favorite_radio_command $emisora ]"
+echo " [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -8653,8 +8653,8 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "$tab [ info ] [ for choose default radio see: show-default ] [ only protocol http ] || ||"
-echo "$tab [ info ] [ Usually it do not working likes root, probe as user ]"
+echo " [ info ] [ for choose default radio see: show-default ] [ only protocol http ] || ||"
+echo " [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8665,7 +8665,7 @@ emisora="$radio_cadena100"
 else emisora="$second_option"; fi
 ####
 ####
-echo " [ ok ] [ $favorite_radio_command $emisora ]"
+echo " [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -8680,8 +8680,8 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadenadial" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "$tab [ info ] [ for choose default radio see: show-default ] [ only protocol http ] || ||"
-echo "$tab [ info ] [ Usually it do not working likes root, probe as user ]"
+echo " [ info ] [ for choose default radio see: show-default ] [ only protocol http ] || ||"
+echo " [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -8692,7 +8692,7 @@ emisora="$radio_cadenadial"
 else emisora="$second_option"; fi
 ####
 ####
-echo " [ ok ] [ $favorite_radio_command $emisora ]"
+echo " [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora

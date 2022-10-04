@@ -3,8 +3,8 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
  05. 
- 04. cambiar tries-ssh por tries-shield, y shield ssh por tries shield. HECHO
- 03. añadir a los servicios vnc servidor predesignado en el ssh_shield. HECHO
+ 04. cambiar comentarios de reglas: tries-ssh por tries-shield, y shield ssh por tries shield. HECHO
+ 03. añadir a vnc como servidor predesignado en el ssh_shield. HECHO
  02. añadir command -v para todos los show-hardware. HECHO
  01. añadir client-vnc y server-vnc to firewall launch. HECHO.
 
