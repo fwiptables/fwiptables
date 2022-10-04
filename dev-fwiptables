@@ -12154,6 +12154,48 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT 
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
+####################################### english: rules for max tries for ssh
+####################################### spanish: reglas for max ties for ssh
+####
+####
+if [ "$allow_maxtries_shield" = "" ]; then $nada
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
+--set --name count-tries-ssh \
+-m comment --comment "shield tries" &> /dev/null
+$allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
+--set --name count-tries-ssh \
+-m comment --comment "shield tries" &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
+--set --name count-tries-ssh \
+-m comment --comment "shield tries" &> /dev/null
+$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dport $config_port_shield -m state --state NEW -m recent \
+--set --name count-tries-ssh \
+-m comment --comment "shield tries" &> /dev/null
+####
+####
+$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_shield -j DROP \
+-m comment --comment "shield tries" &> /dev/null
+$allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_shield -j DROP \
+-m comment --comment "shield tries" &> /dev/null
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_shield -j DROP \
+-m comment --comment "shield tries" &> /dev/null
+$allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
+-m recent --name count-tries-ssh --update --seconds 3600 \
+--hitcount $config_maxtries_shield -j DROP \
+-m comment --comment "shield tries" &> /dev/null
+fi
+####
+####
 #######################################        english: limit bandwidth in kb/s
 #######################################        spanish: limitar ancho de banda en kb/s
 ####
@@ -12186,8 +12228,8 @@ $allow_ipv4 $allow_nft $allow_output_bandwidth $command_iptables_nft          -A
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
-#### english: ipv6 bandwidth
-#### spanish: ipv6 ancho de banda
+#######################################        english: ipv6 bandwidth
+#######################################        spanish: ipv6 ancho de banda
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_bandwidth $command_ip6tables_legacy -A  INPUT \
@@ -12641,48 +12683,6 @@ $allow_nft     $allow_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 $allow_nft     $allow_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 -p udp -m multiport --sports $logserver_udp -j LOG --log-prefix "$logserver_prefix_output" \
 -m comment --comment "logserver udp"  &> /dev/null
-####
-####
-####################################### english: rules for max tries for ssh
-####################################### spanish: reglas for max ties for ssh
-####
-####
-if [ "$allow_maxtries_shield" = "" ]; then $nada
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
---set --name count-tries-ssh \
--m comment --comment "shield tries" &> /dev/null
-$allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
---set --name count-tries-ssh \
--m comment --comment "shield tries" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
---set --name count-tries-ssh \
--m comment --comment "shield tries" &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dport $config_port_shield -m state --state NEW -m recent \
---set --name count-tries-ssh \
--m comment --comment "shield tries" &> /dev/null
-####
-####
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_shield -j DROP \
--m comment --comment "shield tries" &> /dev/null
-$allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
--m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_shield -j DROP \
--m comment --comment "shield tries" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_shield -j DROP \
--m comment --comment "shield tries" &> /dev/null
-$allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
--m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_shield -j DROP \
--m comment --comment "shield tries" &> /dev/null
-fi
 ####
 ####
 ####################################### english: rules allow server ports
