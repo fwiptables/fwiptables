@@ -359,7 +359,7 @@ fwiptables_installed=""
 ####
 ####
 ####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20"
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
 ####
 ####
 allow_dmz_ip4="no" ; 
