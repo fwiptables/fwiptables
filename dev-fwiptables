@@ -289,6 +289,7 @@ if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/nu
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
 ####
 ####
+
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
 ####
