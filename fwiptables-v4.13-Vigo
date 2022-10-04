@@ -236,12 +236,15 @@ allow_legacy="no"                     ## fwiptables-file-default ## void or no
 allow_nft=""                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
-####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
-####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
-config_maxtries_ssh="10"              ## fwiptables-file-default ## number of tries ssh for hour, default 12
 ####       #### english: list all rules: list all rules, void in names or no in numbers
 ####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
+####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
+####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
+config_maxtries_shield="10"              ## fwiptables-file-default ## number of tries pre-shield for hour, default 12
+####       #### english: ssh shield configured for some port or ports
+####       #### spanish: ssh escudo configurado para para algun puerto o puertos
+config_port_shield="22"              ## fwiptables-file-default ## number of port ip to pre-shield, default 22
 ####       #### english: void to AUTOLOG one line from command launched
 ####       #### spanish: vacio para AUTOLOG del comando lanzado o no
 allow_autolog=""                    ## fwiptables-file-default ## void or no
@@ -356,7 +359,7 @@ fwiptables_installed=""
 ####
 ####
 ####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_ssh="20"
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20"
 ####
 ####
 allow_dmz_ip4="no" ; 
@@ -372,7 +375,7 @@ allow_input_ping="no" ;
 allow_input_state="no" ;
 allow_mac_blacklist="no" ; 
 allow_mac_whitelist="no" ;
-allow_maxtries_ssh="no"
+allow_maxtries_shield="no"
 allow_net_blacklist="no" ;
 allow_net_vpn="no" ; 
 allow_others_protocols="no" ;
@@ -392,7 +395,7 @@ config_input_maxconnect="72" ;
 config_input_state="new,related,established" ;
 config_mac_blacklist=""
 config_mac_whitelist="" ;
-config_maxtries_ssh="12" ;
+config_maxtries_shield="12" ;
 config_net_blacklist="yandex.com" ;
 config_net_vpn="wesnoth.org" ; 
 config_others_protocols="icmp,igmp" ;
@@ -401,7 +404,7 @@ config_output_gid="root" ;
 config_output_maxconnect="72" ;
 config_output_state="new,related,established" ;
 config_output_uid="root" ; 
-config_ssh_port="22" ;
+config_port_shield="22" ;
 logserver_prefix_input="fwlog-input::" ; 
 logserver_prefix_output="fwlog-output::" ;
 logserver_tcp="no" ;
@@ -1274,7 +1277,7 @@ spa32=$(echo "$cinco Permitir Otras Opciones, modificar con vacio o no")
 var33=$(echo "separate_port_rules=no" )
 eng33=$(echo "$cinco Separate the rules for each port or no")
 spa33=$(echo "$cinco separar reglas por cada puerto o no")
-var34=$(echo "allow_maxtries_ssh=no" )
+var34=$(echo "allow_maxtries_shield=no" )
 eng34=$(echo "$cinco void to allow one shield with max tries login in ssh for ip to each hour or no")
 spa34=$(echo "$cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no")
 var35=$(echo "allow_forward_ip4=no" )
@@ -1358,10 +1361,10 @@ spa58=$(echo "$cinco Rellena Variables" )
 var59=$(echo "$cinco Options" )
 eng59=$(echo "$cinco Other Options, add with , and join ranges with ':'" )
 spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con ':'" )
-var60=$(echo "config_maxtries_ssh=12")
+var60=$(echo "config_maxtries_shield=12")
 eng60=$(echo "$cinco modify shield with number max of tries to log in us ssh server for ip at each hour")
 spa60=$(echo "$cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora")
-var61=$(echo "config_ssh_port=22")
+var61=$(echo "config_port_shield=22")
 eng61=$(echo "$cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate")
 spa61=$(echo "$cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma")
 var62=$(echo "config_dmz_ip4=192.168.1.7")
@@ -1683,7 +1686,7 @@ case "$NULL" in "$allow_ipv6")             ;;  *)  allow_ipv6="no" ;; esac
 case "$NULL" in "$allow_legacy")           ;;  *)  allow_legacy="no" ;; esac
 case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
 case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
-case "$NULL" in "$allow_maxtries_ssh")     ;;  *)  allow_maxtries_ssh="no" ;; esac
+case "$NULL" in "$allow_maxtries_shield")     ;;  *)  allow_maxtries_shield="no" ;; esac
 case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
 case "$NULL" in "$allow_net_vpn")          ;;  *)  allow_net_vpn="no";; esac
 case "$NULL" in "$allow_nft")              ;;  *)  allow_nft="no" ;; esac
@@ -1812,7 +1815,7 @@ type_firewall="shield-ssh"    ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="5" ;
+config_maxtries_shield="5" ;
 #### english: ports client and ports server
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2192,8 +2195,8 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 shield_ssh="" ;
-config_maxtries_ssh="20" ;
-config_ssh_port="22,5900:5910"
+config_maxtries_shield="20" ;
+config_port_shield="22,5900:5910"
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5900:5910" ;
@@ -3977,8 +3980,8 @@ echo "$text_md"
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
 echo "$text_md"
-echo "$text_md  [ allow_maxtries_ssh ] [ limit a attack per bruteforce to us ssh server] "
-echo "$text_md  [ allow_maxtries_ssh ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
+echo "$text_md  [ allow_maxtries_shield ] [ limit a attack per bruteforce to us ssh server] "
+echo "$text_md  [ allow_maxtries_shield ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
 echo "$text_md"
 echo "$text_md  [ net vpn ]  [ virtual private network ] [ whitelist ]"
 echo "$text_md  [ net vpn ] [ red privada virtual ]     [ lista blanca ]"
@@ -7414,7 +7417,7 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1)
 ####
 if [ "$legacycuatro" != "$NULL" ]; then
 $command_iptables_legacy -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $command_iptables_legacy -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -7424,7 +7427,7 @@ fi
 ####
 if [ "$nftcuatro" != "$NULL" ]; then
 $command_iptables_nft -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $command_iptables_nft -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -7434,7 +7437,7 @@ fi
 ####
 if [ "$legacyseis" != "$NULL" ]; then
 $command_ip6tables_legacy -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $command_ip6tables_legacy -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -7444,7 +7447,7 @@ fi
 ####
 if [ "$nftseis" != "$NULL" ]; then
 $command_ip6tables_legacy -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $command_ip6tables_legacy -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -10432,7 +10435,7 @@ echo "$text_md       client-squid : Launch a firewall likes client squid."
 echo "$brake_md"
 echo "$text_md         shield-ssh : Launch a firewall likes server ssh with shield for new-conecctions until 6-tries each-hour/each-ip."
 echo "$brake_md"
-echo "$text_md       ______All server ssh configured with shield ssh server at max $config_maxtries_ssh tries to connect at ip/hour_____"
+echo "$text_md       ______All server ssh configured with shield ssh server at max $config_maxtries_shield tries to connect at ip/hour_____"
 echo "$brake_md"
 echo "$text_md         server-ssh : Launch a firewall likes server ssh."
 echo "$text_md         server-web : Launch a firewall likes web server and ssh server."
@@ -10794,7 +10797,7 @@ echo "$text_md         client-squid : Lanza un firewall como cliente squid."
 echo "$text_md              lan-tor : Lanza el cortafuegos solo para navegar con tor."
 echo "$text_md              lan-vpn : Lanza el cortafuegos solo para navegar con vpn."
 echo "$brake_md"
-echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo $config_maxtries_ssh cada-hora/cada-ip."
+echo "$text_md           shield-ssh : Lanza un firewall como servidor ssh con escudo maximo $config_maxtries_shield cada-hora/cada-ip."
 echo "$brake_md"
 echo "$text_md         _____Todos los servidores ssh configurados a maximo 12 intentos de acceso por ip/hora"
 echo "$text_md           server-ssh : Lanza un firewall como servidor ssh."
@@ -11337,7 +11340,7 @@ $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11412,7 +11415,7 @@ $shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11493,7 +11496,7 @@ $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11566,12 +11569,12 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 $shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11698,10 +11701,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name shield-tries \
+-p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11773,10 +11776,10 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent --set --name shield-tries \
+-p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_ssh -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11852,12 +11855,12 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
+-p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11930,12 +11933,12 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_nft $allow_ipv6 $shield_ssh $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dports "$config_ssh_port" -m state --state NEW -m recent \
+-p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft $allow_ipv6  $shield_ssh $command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12644,40 +12647,40 @@ $allow_nft     $allow_ipv6   $command_ip6tables_nft    -A OUTPUT  \
 ####################################### spanish: reglas for max ties for ssh
 ####
 ####
-if [ "$allow_maxtries_ssh" = "" ]; then $nada
+if [ "$allow_maxtries_shield" = "" ]; then $nada
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
--p tcp -m multiport --dport $config_ssh_port -m state --state NEW -m recent \
+-p tcp -m multiport --dport $config_port_shield -m state --state NEW -m recent \
 --set --name count-tries-ssh \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_maxtries_ssh -j DROP \
+--hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 fi
 ####
