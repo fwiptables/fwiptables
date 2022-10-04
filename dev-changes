@@ -10,7 +10,7 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
  cambios en dev-fwiptables desarrollo 4.14
 
  07. cambios en los shield, variables, orden, y en modify-default modificables para predesignated. HECHO
- 06. adelantar el shield tras localhost, el asiento en el orden de lista de iptables.
+ 06. adelantar el shield tras localhost, el asiento en el orden de lista de iptables. HECHO
  05. cambiar nombres de variables de shield. HECHO 
  04. cambiar comentarios de reglas: tries-ssh por tries-shield, y shield ssh por tries shield. HECHO
  03. añadir a vnc como servidor predesignado en el ssh_shield. HECHO
