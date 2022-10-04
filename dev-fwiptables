@@ -210,6 +210,69 @@ output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
+##########  english: variables: variables to declare     ##########
+##########  spanish: variables: variables para declarar  ##########
+####
+####
+####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
+####
+####
+allow_dmz_ip4="no" ; 
+allow_dmz_ip6="no" ;
+allow_forward_ip4="no" ; 
+allow_forward_ip6="no" ; 
+allow_gateway_ip4="no" ;
+allow_gateway_ip6="no" ;
+allow_input_all="no" ;
+allow_input_bandwidth="no" ; 
+allow_input_maxconnect="no" ;
+allow_input_ping="no" ;
+allow_input_state="no" ;
+allow_mac_blacklist="no" ; 
+allow_mac_whitelist="no" ;
+allow_maxtries_shield="no"
+allow_net_blacklist="no" ;
+allow_net_vpn="no" ; 
+allow_others_protocols="no" ;
+allow_output_all="no" ; 
+allow_output_bandwidth="no" ;
+allow_output_gid="no" ;
+allow_output_maxconnect="no" ;
+allow_output_ping="no" ;
+allow_output_state="no" ;
+allow_output_uid="no" ; 
+client_tcp="ssh,http,https" ;
+client_udp="domain,bootpc,ntp,https" ;
+config_dmz_ip4="" ;
+config_dmz_ip6="" ;
+config_input_bandwidth="12512" ; 
+config_input_maxconnect="72" ; 
+config_input_state="new,related,established" ;
+config_mac_blacklist=""
+config_mac_whitelist="" ;
+config_maxtries_shield="12" ;
+config_net_blacklist="yandex.com" ;
+config_net_vpn="wesnoth.org" ; 
+config_others_protocols="icmp,igmp" ;
+config_output_bandwidth="512" ;
+config_output_gid="root" ;
+config_output_maxconnect="72" ;
+config_output_state="new,related,established" ;
+config_output_uid="root" ;
+logserver_prefix_input="fwlog-input::" ; 
+logserver_prefix_output="fwlog-output::" ;
+logserver_tcp="no" ;
+logserver_udp="no" ;
+net_ipv4_client="0/0" ; 
+net_ipv4_server="0/0" ;
+net_ipv6_client="::/0" ;
+net_ipv6_server="::/0" ;
+separate_port_rules="no" ;
+server_tcp="" ;
+server_udp="" ; 
+####
+####
 ##########   english: if sane config directory                       ##########
 ##########   spanish: comprobar sanos directorios de configuracion   ##########
 ####
@@ -239,14 +302,14 @@ allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: list all rules: list all rules, void in names or no in numbers
 ####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
-####       #### english: ssh shield configured for maximum tries ssh connect us server for hour
-####       #### spanish: ssh escudo configurado para maximos intentos nuestro servidor ssh conexiones por hora
-config_maxtries_shield="10"              ## fwiptables-file-default ## number of tries pre-shield for hour, default 12
-####       #### english: ssh shield configured for some port or ports
-####       #### spanish: ssh escudo configurado para para algun puerto o puertos
-config_port_shield="22"              ## fwiptables-file-default ## number of port ip to pre-shield, default 22
-####       #### english: void to AUTOLOG one line from command launched
-####       #### spanish: vacio para AUTOLOG del comando lanzado o no
+####       #### english: ssh shield configured to works with ports choose ports tcp
+####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp
+config_port_shield="22"                   ## fwiptables-file-default ##  void o ports
+####       #### english: ssh tries per ip before shield
+####       #### spanish: intentos ssh por ip antes del escudo
+config_maxtries_shield="17"                   ## fwiptables-file-default ## void or no
+####       #### english: auto log from command input
+####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
@@ -352,70 +415,6 @@ default_security="mini-options"
 ####
 ####
 fwiptables_installed=""
-####
-####
-##########  english: variables: variables to declare     ##########
-##########  spanish: variables: variables para declarar  ##########
-####
-####
-####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
-####
-####
-allow_dmz_ip4="no" ; 
-allow_dmz_ip6="no" ;
-allow_forward_ip4="no" ; 
-allow_forward_ip6="no" ; 
-allow_gateway_ip4="no" ;
-allow_gateway_ip6="no" ;
-allow_input_all="no" ;
-allow_input_bandwidth="no" ; 
-allow_input_maxconnect="no" ;
-allow_input_ping="no" ;
-allow_input_state="no" ;
-allow_mac_blacklist="no" ; 
-allow_mac_whitelist="no" ;
-allow_maxtries_shield="no"
-allow_net_blacklist="no" ;
-allow_net_vpn="no" ; 
-allow_others_protocols="no" ;
-allow_output_all="no" ; 
-allow_output_bandwidth="no" ;
-allow_output_gid="no" ;
-allow_output_maxconnect="no" ;
-allow_output_ping="no" ;
-allow_output_state="no" ;
-allow_output_uid="no" ; 
-client_tcp="ssh,http,https" ;
-client_udp="domain,bootpc,ntp,https" ;
-config_dmz_ip4="" ;
-config_dmz_ip6="" ;
-config_input_bandwidth="12512" ; 
-config_input_maxconnect="72" ; 
-config_input_state="new,related,established" ;
-config_mac_blacklist=""
-config_mac_whitelist="" ;
-config_maxtries_shield="12" ;
-config_net_blacklist="yandex.com" ;
-config_net_vpn="wesnoth.org" ; 
-config_others_protocols="icmp,igmp" ;
-config_output_bandwidth="512" ;
-config_output_gid="root" ;
-config_output_maxconnect="72" ;
-config_output_state="new,related,established" ;
-config_output_uid="root" ; 
-config_port_shield="22" ;
-logserver_prefix_input="fwlog-input::" ; 
-logserver_prefix_output="fwlog-output::" ;
-logserver_tcp="no" ;
-logserver_udp="no" ;
-net_ipv4_client="0/0" ; 
-net_ipv4_server="0/0" ;
-net_ipv6_client="::/0" ;
-net_ipv6_server="::/0" ;
-separate_port_rules="no" ;
-server_tcp="" ;
-server_udp="" ; 
 ####
 ####
 ##########    english: Update variables             ##########
@@ -1066,7 +1065,7 @@ chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -310 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
+echo "$(head -420 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -1686,7 +1685,7 @@ case "$NULL" in "$allow_ipv6")             ;;  *)  allow_ipv6="no" ;; esac
 case "$NULL" in "$allow_legacy")           ;;  *)  allow_legacy="no" ;; esac
 case "$NULL" in "$allow_mac_blacklist")    ;;  *)  allow_mac_blacklist="no" ;; esac
 case "$NULL" in "$allow_mac_whitelist")    ;;  *)  allow_mac_whitelist="no" ;; esac
-case "$NULL" in "$allow_maxtries_shield")     ;;  *)  allow_maxtries_shield="no" ;; esac
+case "$NULL" in "$allow_maxtries_shield")  ;;  *)  allow_maxtries_shield="no" ;; esac
 case "$NULL" in "$allow_net_blacklist")    ;;  *)  allow_net_blacklist="no";; esac
 case "$NULL" in "$allow_net_vpn")          ;;  *)  allow_net_vpn="no";; esac
 case "$NULL" in "$allow_nft")              ;;  *)  allow_nft="no" ;; esac
@@ -1704,7 +1703,6 @@ case "$NULL" in "$choosed_iptables")       ;;  *)  choosed_iptables="no";; esac
 case "$NULL" in "$launch_firewall")        ;;  *)  launch_firewall="no" ;; esac
 case "$NULL" in "$list_rules_conceptual")  ;;  *)  list_rules_conceptual="-n";; esac
 case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
-case "$NULL" in "$shield_ssh")             ;;  *)  shield_ssh="no";; esac
 case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
@@ -1814,7 +1812,7 @@ launch_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 config_maxtries_shield="5" ;
 #### english: ports client and ports server
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1835,7 +1833,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
@@ -1855,7 +1853,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5900:5910" ;
@@ -1875,7 +1873,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1895,7 +1893,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,bootpc,ntp,https,500,1194,1701,4500" ; 
@@ -1915,7 +1913,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -1935,7 +1933,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1960,7 +1958,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1992,7 +1990,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### client ftp:
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2012,7 +2010,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2032,7 +2030,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -2053,7 +2051,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -2074,7 +2072,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -2094,7 +2092,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp="" ;
@@ -2114,7 +2112,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,bootpc,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -2134,7 +2132,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+alllow_shield_ssh="no" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,bootpc,ntp,https" ; 
 server_port_udp="" ;
@@ -2154,7 +2152,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="no" ;
+allow_maxtries_shield="no" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,bootpc,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -2174,7 +2172,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="https" ;
@@ -2194,7 +2192,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 config_maxtries_shield="20" ;
 config_port_shield="22,5900:5910"
 #### you can connect normal web and vnc
@@ -2216,7 +2214,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2236,7 +2234,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2256,7 +2254,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -2281,7 +2279,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -2313,7 +2311,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### server samba and active directory
 client_port_tcp="http,https,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,bootpc,ntp,https,ldap,636,137:139" ;
@@ -2333,7 +2331,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### server ipp and printer
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2350,10 +2348,10 @@ if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load ;
 echo " [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
 echo " [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; 
-type_firewall="predesignated" ; 
+type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### server ssh 22/tcp
 client_port_udp="domain,bootpc,ntp,https" ;
 server_port_udp="" ;
@@ -2373,7 +2371,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,bootpc,ntp,https" ;
@@ -2394,7 +2392,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -2416,7 +2414,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,bootpc,ntp,https,64738" ;
 server_port_udp="64738" ;
@@ -2436,7 +2434,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -2460,7 +2458,7 @@ launch_firewall="yes" ;
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
-shield_ssh="" ;
+allow_maxtries_shield="" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
@@ -11336,10 +11334,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv4 
 ####
 ####
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
@@ -11411,10 +11409,10 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 #### escudo ssh nft ipv4 
 ####
 ####
-$shield_ssh $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
+$allow_maxtries_shield $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$shield_ssh $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
+$allow_maxtries_shield $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
@@ -11490,11 +11488,11 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv6 
 ####
 ####
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$shield_ssh $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
@@ -11568,11 +11566,11 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 #### escudo ssh nft ipv6 
 ####
 ####
-$shield_ssh $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_maxtries_shield $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports $config_port_shield -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$shield_ssh $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_maxtries_shield $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
@@ -11677,8 +11675,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-shield-ssh:
-########################################     english: ipv4 iptables 
-########################################     spanish: ipv4 iptables 
+########################################     english: ipv4 iptables legacy
+########################################     spanish: ipv4 iptables legacy
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
@@ -11700,10 +11698,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv4 
 ####
 ####
-$allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy $allow_ipv4 $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_legacy $allow_ipv4 $shield_ssh $command_iptables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy $allow_ipv4 $command_iptables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
 ####
@@ -11760,6 +11758,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
+########################################     english: ipv4 iptables nft
+########################################     spanish: ipv4 iptables nft
+####
+####
 #### loopback localhost nft ip4
 ####
 ####
@@ -11775,13 +11777,13 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 #### escudo ssh nft ipv4 
 ####
 ####
-$allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
--p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent --set --name shield-tries \
+$allow_maxtries_shield $allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent --set --name "shield-tries" \
 -m comment --comment "shield tries" &> /dev/null
-$allow_nft $allow_ipv4 $shield_ssh $command_iptables_nft -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_maxtries_shield -j DROP \
+$allow_maxtries_shield $allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
+-m recent --name "shield-tries" --update --seconds 3600 --hitcount "$config_maxtries_shield" -j DROP \
 -m comment --comment "shield tries" &> /dev/null
-####
+#### 
 ####
 #### log server nft ipv4
 #### log servidor nft ipv4
@@ -11835,8 +11837,8 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -m comment --comment "server tcp" &> /dev/null
 ####
 ####
-########################################     english: ipv6 iptables 
-########################################     spanish: ipv6 iptables 
+########################################     english: ipv6 iptables legacy
+########################################     spanish: ipv6 iptables legacy
 ####
 ####
 #### loopback localhost legacy ip6
@@ -11854,11 +11856,11 @@ $allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
 #### escudo ssh legacy ipv6 
 ####
 ####
-$allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT \
 -p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_legacy $allow_ipv6 $shield_ssh $command_ip6tables_legacy -A INPUT \
+$allow_maxtries_shield $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
@@ -11916,6 +11918,10 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -m comment --comment "client tcp" &> /dev/null
 ####
 ####
+########################################     english: ipv6 iptables nft
+########################################     spanish: ipv6 iptables nft
+####
+####
 #### loopback localhost nft ip6
 #### loopback localhost nft ipv6
 ####
@@ -11932,11 +11938,11 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
 #### escudo ssh nft ipv6 
 ####
 ####
-$allow_nft $allow_ipv6 $shield_ssh $command_ip6tables_nft -A INPUT \
+$allow_maxtries_shield $allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_port_shield" -m state --state NEW -m recent \
 --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
-$allow_nft $allow_ipv6  $shield_ssh $command_ip6tables_nft -A INPUT \
+$allow_maxtries_shield $allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
 --hitcount $config_maxtries_shield -j DROP \
 -m comment --comment "shield tries" &> /dev/null
