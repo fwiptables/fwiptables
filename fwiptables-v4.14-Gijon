@@ -6563,7 +6563,7 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
@@ -6572,7 +6572,7 @@ $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6598,7 +6598,7 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6607,7 +6607,7 @@ $command_ip6tables_legacy -v -L $list_rules_conceptual
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6658,7 +6658,7 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
@@ -6667,7 +6667,7 @@ $command_iptables_legacy -t filter -v -L -n
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6692,7 +6692,7 @@ nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
