@@ -2522,7 +2522,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
 echo "$text_md                       server-asterisk server-squid                                              "
-echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options ] ### || ||          "
+echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options-all ] ### || ||      "
 echo "$text_md      $cmd_fwiptables options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options to firewall manage            "
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
