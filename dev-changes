@@ -3,9 +3,9 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
-
-
- 01.
+ 03. 
+ 02. al generar reglas nuevas con net vpn indica ahora el dominio tambien en el comentario. HECHO
+ 01. pequeños cambios en listar reglas. HECHO
 
  cambios en dev-fwiptables desarrollo 4.14
 

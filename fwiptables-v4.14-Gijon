@@ -220,13 +220,27 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 ####
 #### :rutina-final-files:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
+####
+####
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+####
+####
+#### :rutina-final-dir-sane:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########
-#### :rutina-inicial-variables:
-####
-####
-####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
+#### :rutina-inicial-config-variables:
 ####
 ####
 allow_dmz_ip4="no" ; 
@@ -284,28 +298,22 @@ server_tcp="" ;
 server_udp="" ; 
 ####
 ####
-#### :rutina-final-variables:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-dir-sane:
-####
-####
-command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
-####
-####
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-#### :rutina-final-dir-sane:
+#### :rutina-final-config-variables:
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
 #### :rutina-inicial-system-variables:
+####
+####
+####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
+####
+####
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
+####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
+####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
+####    graphic_dimension="--width=950 --height=650" ; 
+####    radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ; 
+####    radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;
+####    radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ; 
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -12391,22 +12399,22 @@ for one_vpn in $(echo $config_net_vpn | $command_sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12414,22 +12422,22 @@ $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 done
 ####
 ####
