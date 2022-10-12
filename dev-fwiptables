@@ -1178,7 +1178,7 @@ exit ; fi
 ####
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
-echo "$text_md [ info ] [ upgrade ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
+echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md [ notice  ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
