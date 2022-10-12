@@ -42,6 +42,7 @@
 ####
 ##########    english: are you root: uid 0 ?                ##########
 ##########    spanish: eres admnistrador: identificador 0 ? ##########
+#### :rutina-inicial-admin:
 ####
 ####
 if [ "$(id -u)" = "0" ] ; then echo -n ; else
@@ -52,8 +53,10 @@ echo " [ fail ] [ Be root to work with fwiptables in your system ] [ Try with ro
 exit ; fi
 ####
 ####
+#### :rutina-final-admin:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
+#### :rutina-inicial-name:
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
@@ -61,11 +64,13 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="4.13-Vigo" ;
+fversion="4.14-Gijon" ;
 ####
 ####
+#### :rutina-final-name:
 ##########    english: options priority        ##########
 ##########    spanish: prioridad de opciones   ##########
+#### :rutina-inicial-order-options:
 ####
 ####
 command_sed="$(command -v sed)"
@@ -83,8 +88,10 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
 ####
 ####
+#### :rutina-final-order-options:
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
+#### :rutina-inicial-x11:
 ####
 ####
 ####     #### english: program version            #### spanish: Version del programa
@@ -129,8 +136,10 @@ else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; f
 ## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
+#### :rutina-final-x11:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
+#### :rutina-inicial-files:
 ####
 ####
 #### english: permanent files: and where are file path: name, command and icon
@@ -210,12 +219,28 @@ output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
+#### :rutina-final-files:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir)"
+####
+####
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+####
+####
+#### :rutina-final-dir-sane:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########
-####
-####
-####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
+#### :rutina-inicial-config-variables:
 ####
 ####
 allow_dmz_ip4="no" ; 
@@ -273,25 +298,22 @@ server_tcp="" ;
 server_udp="" ; 
 ####
 ####
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-####
-####
-command_mkdir="$(command -v mkdir | cut -d " " -f 1)"
-####
-####
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-
+#### :rutina-final-config-variables:
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
+#### :rutina-inicial-system-variables:
+####
+####
+####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
+####
+####
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_maxtries_shield="20" ; config_port_shield="22" ;
+####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
+####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
+####    graphic_dimension="--width=950 --height=650" ; 
+####    radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ; 
+####    radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;
+####    radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ; 
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -418,8 +440,10 @@ default_security="mini-options"
 fwiptables_installed=""
 ####
 ####
+#### :rutina-final-system-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
+#### :rutina-inicial-update-variables:
 ####
 ####
 ####     #### english: variable to knows if fwiptables is installed
@@ -445,6 +469,7 @@ if [ -f $directory_default/fwiptables-default ] ; then . $directory_default/fwip
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
+#### :rutina-final-update-variables:
 ##########    english: Notice Installer with intro      ##########
 ##########    spanish: noticia de Instalador con intro  ##########
 #### :rutina-inicial-notice:
@@ -687,17 +712,19 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
-if [ "$first_option" = "output-interface" ]  ; then first_option="options-interface" ; fi
-if [ "$first_option" = "output" ]  ; then first_option="options-interface" ; fi
-if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
-if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
-if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
-if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
-if [ "$first_option" = "cfg" ]; then first_option="names-config" ; fi
-if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
-if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
-if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
-if [ "$first_option" = "list-allrules" ]; then first_option="list-alltables"; fi
+if [ "$first_option" = "options-all" ] ; then first_option="full-options" ; fi
+if [ "$first_option" = "options-examples" ] ; then first_option="examples"; fi
+if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
+if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
+if [ "$first_option" = "ntp" ] ; then first_option="ntpdate-client"; fi
+if [ "$first_option" = "sentlog" ] ; then first_option="filelog"; fi
+if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
+if [ "$first_option" = "regen" ] ; then first_option="regen-config"; fi
+if [ "$first_option" = "cfg" ] ; then first_option="names-config" ; fi
+if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
+if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
+if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
 ####
 ####  english: $1 or or $2 or $3 for complete path per file and other excepcions
@@ -1114,12 +1141,12 @@ exit; fi
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
-echo "$text_md [ info ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
+echo "$text_md [ info ] [ upgrade ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
-"$NULL")echo "$text_md $tab [ notice ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+"$NULL")echo "$text_md $tab [ notice  ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
+echo "$text_md [ info ] [ [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ [ download ]downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1127,7 +1154,7 @@ echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite
 ####
 ####
 echo "$text_md [ info ] [ download ] [ $fweb_latest ]"
-echo "$text_md [ info ] [ downloading ] [ waiting several seconds .. ]"
+echo "$text_md [ info ] [ download ] [ waiting several seconds .. ]"
 $favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
@@ -1137,7 +1164,7 @@ chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
 ####
 ####
 if [ -f "$directory_temporal/$name_fwiptables" ] ;
-then echo "$text_md [  ok  ] [ downloaded fwiptables latest version ]"
+then echo "$text_md [  ok  ] [ download ] [ downloaded fwiptables latest version ]"
 "$directory_temporal/$name_fwiptables" install ; 
 else echo "$text_md [ fail ] [ install fail ]"; fi
 exit ; fi
@@ -1151,12 +1178,12 @@ exit ; fi
 ####
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
-echo "$text_md [ info ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
+echo "$text_md [ info ] [ upgrade ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
-"$NULL")echo "$text_md $tab [ notice ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+"$NULL")echo "$text_md [ notice  ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
+echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ download ] [downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1164,7 +1191,7 @@ echo "$text_md [ info ] [ downloading $cmd_fwiptables with the command $favorite
 ####
 ####
 echo "$text_md [ info ] [ download ] [ $fweb_development ]"
-echo "$text_md [ info ] [ downloading ] [ Waiting several seconds .. ]"
+echo "$text_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
 ####
@@ -2496,7 +2523,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
 echo "$text_md                       server-asterisk server-squid                                              "
-echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options ] ### || ||          "
+echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options-all ] ### || ||      "
 echo "$text_md      $cmd_fwiptables options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options to firewall manage            "
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
@@ -2682,18 +2709,35 @@ if [ "$first_option" = "examples" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List examples ] [ examples.md ] || ||"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
-echo "$title_md                                      [ examples ]                                  "
-echo "$text_md        [ with optional output ]                  [ Example Description ]                "
-echo "$text_md    $cmd_fwiptables -cli-menu                |  All options in text menu                 "
-echo "$text_md    $cmd_fwiptables -gui-menu                |  All options in window menu               "
-echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
-echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain"
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst        "
-echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser   "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
-echo "$text_md    $cmd_fwiptables -null client-web         |  Launch client web firewall a null output "
+echo "$title_md                                      [ examples ]                                        "
+echo "$text_md        [ with optional output ]                  [ Example Description ]                  "
+echo "$text_md    $cmd_fwiptables -cli-menu                |  All options in text menu                   "
+echo "$text_md    $cmd_fwiptables -gui-menu                |  All options in window menu                 "
+echo "$text_md    $cmd_fwiptables -gui-shell               |  All options in window shell                "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt        "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli        "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui            "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain  "
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst          "
+echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser     "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt        "
+echo "$text_md    $cmd_fwiptables -null client-web         |  Launch client web firewall a null output   "
+echo
+echo "$title_md                                      [ other examples ]                                  "
+echo "$text_md    $cmd_fwiptables names                    |  List firewall saved                        "
+echo "$text_md    $cmd_fwiptables names-config             |  List configs saved                         "
+echo "$text_md    $cmd_fwiptables speed-ip4                |  get info about speed with internet ipv4    "
+echo "$text_md    $cmd_fwiptables info-listen              |  show info about listen sockets             "
+echo "$text_md    $cmd_fwiptables game-word                |  game with words                            "
+echo "$text_md    $cmd_fwiptables upgrade                  |  upgrade $cmd_fwiptables                    "
+echo "$text_md    $cmd_fwiptables blacklist-list           |  List addblocker to blacklist               "
+echo "$text_md    $cmd_fwiptables names                    |  List firewall saved                        "
+echo "$text_md    $cmd_fwiptables code lsof                |  source code to option lsof                 "
+echo "$text_md    $cmd_fwiptables radio-mp3 url..          |  connect to url:// mp3                      "
+echo "$text_md    $cmd_fwiptables dev-changes              |  show last changes in $cmd_fwiptables       "
+echo "$text_md    $cmd_fwiptables autolog                  |  List last optiosn with $cmd_fwiptables     "
+echo "$text_md    $cmd_fwiptables modify-default           |  modify default variables                   "
+echo "$text_md    $cmd_fwiptables depends                  |  depends to $cmd_fwiptables                 "
 exit; fi
 ####
 ####
@@ -6054,11 +6098,10 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "code" ]; then echo $give_cover
-echo
-echo " [ code ] [ show source code for options from $cmd_fwiptables ]"
-echo
-code_error="$tab [ Usage: ] [ $cmd_fwiptables code option_above ]"
-if [ "$second_option" = "$NULL" ]; then echo ;echo "$code_error" ; echo ; echo $tab $tab $tab
+echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
+echo " [ info ] [ code ] [ show source code for options from $cmd_fwiptables ]"
+code_error=" [ info ] [ Usage ] [ $cmd_fwiptables code option_choosed ]"
+if [ "$second_option" = "$NULL" ]; then echo "$code_error" ; echo
 salida_code="$(cat $directory_binary/$cmd_fwiptables | $command_grep -i  rutina-inicial \
 | $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
 sort | $command_sed -s s/://g )"
@@ -6563,7 +6606,7 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
@@ -6572,7 +6615,7 @@ $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6598,7 +6641,7 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6607,7 +6650,7 @@ $command_ip6tables_legacy -v -L $list_rules_conceptual
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6658,7 +6701,7 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
@@ -6667,7 +6710,7 @@ $command_iptables_legacy -t filter -v -L -n
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ]" ;;
+"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6692,7 +6735,7 @@ nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
-"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ]" ;;
+"$NULL") echo " [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
@@ -12374,22 +12417,22 @@ for one_vpn in $(echo $config_net_vpn | $command_sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12397,22 +12440,22 @@ $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn" &> /dev/null
+-m comment --comment "net vpn $one_vpn" &> /dev/null
 done
 ####
 ####
