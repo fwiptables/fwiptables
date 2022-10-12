@@ -712,18 +712,19 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
-if [ "$first_option" = "options-all" ]  ; then first_option="options" ; fi
-if [ "$first_option" = "output-interface" ]  ; then first_option="options-interface" ; fi
-if [ "$first_option" = "output" ]  ; then first_option="options-interface" ; fi
-if [ "$first_option" = "ntp" ]; then first_option="ntpdate-client"; fi
-if [ "$first_option" = "sentlog" ]; then first_option="filelog"; fi
-if [ "$first_option" = "radio" ]; then first_option="radio-mp3"; fi
-if [ "$first_option" = "regen" ]; then first_option="regen-config"; fi
-if [ "$first_option" = "cfg" ]; then first_option="names-config" ; fi
-if [ "$first_option" = "cfg-custom" ]; then first_option="custom" ; fi
-if [ "$first_option" = "list-fw" ]; then first_option="names"; fi
-if [ "$first_option" = "ram-free" ]; then first_option="free-ram"; fi
-if [ "$first_option" = "list-allrules" ]; then first_option="list-alltables"; fi
+if [ "$first_option" = "options-all" ] ; then first_option="full-options" ; fi
+if [ "$first_option" = "options-examples" ] ; then first_option="examples"; fi
+if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
+if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
+if [ "$first_option" = "ntp" ] ; then first_option="ntpdate-client"; fi
+if [ "$first_option" = "sentlog" ] ; then first_option="filelog"; fi
+if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
+if [ "$first_option" = "regen" ] ; then first_option="regen-config"; fi
+if [ "$first_option" = "cfg" ] ; then first_option="names-config" ; fi
+if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
+if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
+if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
 ####
 ####  english: $1 or or $2 or $3 for complete path per file and other excepcions
@@ -2708,18 +2709,35 @@ if [ "$first_option" = "examples" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List examples ] [ examples.md ] || ||"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
-echo "$title_md                                      [ examples ]                                  "
-echo "$text_md        [ with optional output ]                  [ Example Description ]                "
-echo "$text_md    $cmd_fwiptables -cli-menu                |  All options in text menu                 "
-echo "$text_md    $cmd_fwiptables -gui-menu                |  All options in window menu               "
-echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt      "
-echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli      "
-echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui          "
-echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain"
-echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst        "
-echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser   "
-echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt      "
-echo "$text_md    $cmd_fwiptables -null client-web         |  Launch client web firewall a null output "
+echo "$title_md                                      [ examples ]                                        "
+echo "$text_md        [ with optional output ]                  [ Example Description ]                  "
+echo "$text_md    $cmd_fwiptables -cli-menu                |  All options in text menu                   "
+echo "$text_md    $cmd_fwiptables -gui-menu                |  All options in window menu                 "
+echo "$text_md    $cmd_fwiptables -gui-shell               |  All options in window shell                "
+echo "$text_md    $cmd_fwiptables -txt list                |  List iptables rules with output txt        "
+echo "$text_md    $cmd_fwiptables -cli names               |  List firewall saved with output cli        "
+echo "$text_md    $cmd_fwiptables -gui ss                  |  List sockets ip with output gui            "
+echo "$text_md    $cmd_fwiptables -help readme             |  Show help of readme with output txt plain  "
+echo "$text_md    $cmd_fwiptables -info lsof               |  Show info of lsof with output rst          "
+echo "$text_md    $cmd_fwiptables -web info-net            |  Show info-net with output text browser     "
+echo "$text_md    $cmd_fwiptables -log info-route          |  Save log info-route with output txt        "
+echo "$text_md    $cmd_fwiptables -null client-web         |  Launch client web firewall a null output   "
+echo
+echo "$title_md                                      [ other examples ]                                  "
+echo "$text_md    $cmd_fwiptables names                    |  List firewall saved                        "
+echo "$text_md    $cmd_fwiptables names-config             |  List configs saved                         "
+echo "$text_md    $cmd_fwiptables speed-ip4                |  get info about speed with internet ipv4    "
+echo "$text_md    $cmd_fwiptables info-listen              |  show info about listen sockets             "
+echo "$text_md    $cmd_fwiptables game-word                |  game with words                            "
+echo "$text_md    $cmd_fwiptables upgrade                  |  upgrade $cmd_fwiptables                    "
+echo "$text_md    $cmd_fwiptables blacklist-list           |  List addblocker to blacklist               "
+echo "$text_md    $cmd_fwiptables names                    |  List firewall saved                        "
+echo "$text_md    $cmd_fwiptables code lsof                |  source code to option lsof                 "
+echo "$text_md    $cmd_fwiptables radio-mp3 url..          |  connect to url:// mp3                      "
+echo "$text_md    $cmd_fwiptables dev-changes              |  show last changes in $cmd_fwiptables       "
+echo "$text_md    $cmd_fwiptables autolog                  |  List last optiosn with $cmd_fwiptables     "
+echo "$text_md    $cmd_fwiptables modify-default           |  modify default variables                   "
+echo "$text_md    $cmd_fwiptables depends                  |  depends to $cmd_fwiptables                 "
 exit; fi
 ####
 ####
