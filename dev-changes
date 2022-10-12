@@ -3,11 +3,18 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 03. aumenta el numero de ejemplos en examples. 
+
+ 01. 
+
+ cambios en dev-fwiptables desarrollo 4.15
+
+ 05. pequeño cambio de orden en numeros de lineas para mas coherencia. HECHO
+ 04. algun alias mas en campus. HECHO
+ 03. aumenta el numero de ejemplos en examples. HECHO
  02. al generar reglas nuevas con net vpn indica ahora el dominio tambien en el comentario. HECHO
  01. pequeños cambios en listar reglas. HECHO
 
- cambios en dev-fwiptables desarrollo 4.14
+ cambios en dev-fwiptables 4.14 lineas=5
 
  07. cambios en los shield, variables, orden, y en modify-default modificables para predesignated. HECHO
  06. adelantar el shield tras localhost, el asiento en el orden de lista de iptables. HECHO
