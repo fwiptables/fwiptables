@@ -12364,22 +12364,22 @@ for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12387,22 +12387,22 @@ $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTP
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 done
 #### 
 ####
