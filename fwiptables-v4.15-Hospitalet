@@ -318,8 +318,8 @@ server_udp="" ;
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy="no"                     ## fwiptables-file-default ## void or no
-allow_nft=""                          ## fwiptables-file-default ## void or no
+allow_legacy=""                     ## fwiptables-file-default ## void or no
+allow_nft="no"                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: list all rules: list all rules, void in names or no in numbers
