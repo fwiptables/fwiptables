@@ -330,7 +330,7 @@ list_rules_conceptual=""                           ## fwiptables-file-default ##
 config_port_shield="22"                   ## fwiptables-file-default ##  void o ports
 ####       #### english: ssh tries per ip before shield
 ####       #### spanish: intentos ssh por ip antes del escudo
-config_maxtries_shield="17"                   ## fwiptables-file-default ## void or no
+config_maxtries_shield="10"                   ## fwiptables-file-default ## void or no
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
