@@ -123,11 +123,14 @@ terminal_tty="$(tty | $command_grep -E -i tty | tail -1)"
 ####
 if [ "$terminal_tty" = "$NULL" ] ; then
 if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
-then $command_xhost +SI:localuser:"$(logname)" &> /dev/null 
-else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; fi
+then sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
+sudo -u root $command_xhost +root@127.0.0.1 &> /dev/null ;
+else sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
+sudo -u root $command_xhost +root:localuser:root &> /dev/null ; fi; fi
 ####
 ####
 #### deprecated
+## sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
 ## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
