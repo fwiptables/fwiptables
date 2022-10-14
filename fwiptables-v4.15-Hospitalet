@@ -1215,8 +1215,8 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "regen-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Generate templates wizard and cfg ] || ||"
-echo " [ info ] [ regenerating template wizard and template cfg ]"
+echo "# $header_ok [ $first_option ] [ Generate templates wizard and cfg ] || ||"
+echo "# [ info ] [ regenerating template wizard and template cfg ]"
 ####
 ####
 ####    english: variables to prepare to gen files
