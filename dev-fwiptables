@@ -1227,67 +1227,67 @@ echo " [ info ] [ regenerating template wizard and template cfg ]"
 ####    spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0=$(echo "$cinco $fprogram from $cmd_fwiptables version $fversion")
-var1=$(echo "$cinco BEGIN NECESARY #" )
-eng1=$(echo "$cinco  .......... BEGIN Necesary options .......... .......... #")
-spa1=$(echo "$cinco INICIO .......... Opciones Necesarias .......... .......... #")
-var2=$(echo "$cinco NETFILTER #" )
-eng2=$(echo "$cinco the iptables firewall netfilter, choose one or two")
-spa2=$(echo "$cinco el iptables firewall netfilter, elige uno o dos")
-var3=$(echo "allow_legacy=no" )
-eng3=$(echo "$cinco launch xtables, void to yes or type no")
-spa3=$(echo "$cinco lanza xtables, vacio para si, o escribe no")
-var4=$(echo "allow_nft=" ) 
-eng4=$(echo "$cinco launch nftables, void to yes or type no")
-spa4=$(echo "$cinco lanza nftables, vacio para si, o escribe no")
-var5=$(echo "$cinco PROTOCOL IP #" )
-eng5=$(echo "$cinco ip protocol, modify with void or no")
-spa5=$(echo "$cinco procolo ip, modificar con vacio o no")
-var6=$(echo "allow_ipv4=" )
-eng6=$(echo "$cinco void to config firewall with ipv4 or no to dont configure ipv4")
-spa6=$(echo "$cinco varcio para ejecutar el firewall con ipv4 o no para no")
-var7=$(echo "allow_ipv6=" )
-eng7=$(echo "$cinco void to config firewall with ipv6 or no to dont configure ipv6")
-spa7=$(echo "$cinco varcio para ejecutar el firewall con ipv6 o no para no")
-var8=$(echo "$cinco CLIENT PORTS #")
-eng8=$(echo "$cinco Client ports, add with ',' and join ranges with ':'")
-spa8=$(echo "$cinco puertos Cliente, añadir con ',' y poner rangos con ':' ")
-var9=$(echo "client_tcp=http,https,ssh")
-eng9=$(echo "$cinco tcp ports for client")
-spa9=$(echo "$cinco puertos tcp para ser cliente")
-var10=$(echo "client_udp=domain,bootpc,bootps,ntp,https")
-eng10=$(echo "$cinco udp ports for client")
-spa10=$(echo "$cinco puertos udp para ser cliente")
-var11=$(echo "$cinco SERVER PORTS #" )
-eng11=$(echo "$cinco Server ports, add with ',' and join ranges with ':'")
-spa11=$(echo "$cinco Puertos Servidor, añadir con ',' y poner rangos con ':'")
-var12=$(echo "server_tcp=ssh" )
-eng12=$(echo "$cinco tcp ports for server")
-spa12=$(echo "$cinco puertos tcp para servidor")
-var13=$(echo "server_udp= ")
-eng13=$(echo "$cinco udp ports for server")
-spa13=$(echo "$cinco puertos udp para servidor")
-var14=$(echo "$cinco LOG TO SERVER PORTS #" )
-eng14=$(echo "$cinco Log to server ports, add with ',' and join ranges with ':'")
-spa14=$(echo "$cinco logear para puertos de Servidor, añadir con ',' y poner rangos con ':'")
-var15=$(echo "logserver_tcp= ")
-eng15=$(echo "$cinco the tcp ports to log server")
-spa15=$(echo "$cinco puertos tcp para logear servidor")
-var16=$(echo "logserver_udp= ")
-eng16=$(echo "$cinco the udp ports to log server")
-spa16=$(echo "$cinco puertos udp para logear servidor")
-var17=$(echo "$cinco LOG PREFIX TO SERVER #" )
-eng17=$(echo "$cinco Log to server ports with prefix")
-spa17=$(echo "$cinco logear para puertos de servidor con prefijo")
-var18=$(echo "logserver_prefix_input=fwlog-input'::'")
-eng18=$(echo "$cinco type input prefix for logserver")
-spa18=$(echo "$cinco especifica prefijo de entrada para logserver")
-var19=$(echo "logserver_prefix_output=fwlog-output'::'")
-eng19=$(echo "$cinco type output prefix for logserver")
-spa19=$(echo "$cinco especifica prefijo de salida para logserver")
-var20=$(echo "$cinco END NECESARY #" )
-eng20=$(echo "$cinco .......... END Necesary options .......... .......... #")
-spa20=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
+var0="$(echo $cinco $fprogram from $cmd_fwiptables version $fversion $cinco )"
+var1="$(echo $cinco BEGIN NECESARY $cinco )"
+eng1="$(echo $cinco  .......... BEGIN Necesary options .......... .......... $cinco )"
+spa1="$(echo $cinco INICIO .......... Opciones Necesarias .......... .......... $cinco )"
+var2="$(echo $cinco NETFILTER $cinco )"
+eng2="$(echo $cinco the iptables firewall netfilter, choose one or two )"
+spa2="$(echo $cinco el iptables firewall netfilter, elige uno o dos )"
+var3="$(echo allow_legacy=no )"
+eng3="$(echo $cinco launch xtables, void to yes or type no )"
+spa3="$(echo $cinco lanza xtables, vacio para si, o escribe no )"
+var4="$(echo allow_nft= )"
+eng4="$(echo $cinco launch nftables, void to yes or type no )"
+spa4="$(echo $cinco lanza nftables, vacio para si, o escribe no )"
+var5="$(echo $cinco PROTOCOL IP $cinco )"
+eng5="$(echo $cinco ip protocol, modify with void or no )"
+spa5="$(echo $cinco procolo ip, modificar con vacio o no )"
+var6="$(echo allow_ipv4= )"
+eng6="$(echo $cinco void to config firewall with ipv4 or no to dont configure ipv4 )"
+spa6="$(echo $cinco varcio para ejecutar el firewall con ipv4 o no para no )"
+var7="$(echo allow_ipv6= )"
+eng7="$(echo $cinco void to config firewall with ipv6 or no to dont configure ipv6 )"
+spa7="$(echo $cinco varcio para ejecutar el firewall con ipv6 o no para no )"
+var8="$(echo $cinco CLIENT PORTS $cinco )"
+eng8="$(echo $cinco Client ports, add with ',' and join ranges with  : )"
+spa8="$(echo $cinco puertos Cliente, añadir con ',' y poner rangos con : )"
+var9="$(echo client_tcp=http,https,ssh )"
+eng9="$(echo $cinco tcp ports for client )"
+spa9="$(echo $cinco puertos tcp para ser cliente )"
+var10="$(echo client_udp=domain,bootpc,bootps,ntp,https )"
+eng10="$(echo $cinco udp ports for client )"
+spa10="$(echo $cinco puertos udp para ser cliente )"
+var11="$(echo $cinco SERVER PORTS $cinco )"
+eng11="$(echo $cinco Server ports, add with ',' and join ranges with : )"
+spa11="$(echo $cinco Puertos Servidor, añadir con ',' y poner rangos con  : )"
+var12="$(echo server_tcp=ssh )"
+eng12="$(echo $cinco tcp ports for server )"
+spa12="$(echo $cinco puertos tcp para servidor )"
+var13="$(echo server_udp= )"
+eng13="$(echo $cinco udp ports for server )"
+spa13="$(echo $cinco puertos udp para servidor )"
+var14="$(echo $cinco LOG TO SERVER PORTS $cinco )"
+eng14="$(echo $cinco Log to server ports, add with ',' and join ranges with : )"
+spa14="$(echo $cinco logear para puertos de Servidor, añadir con ',' y poner rangos con : )"
+var15="$(echo logserver_tcp= )"
+eng15="$(echo $cinco the tcp ports to log server )"
+spa15="$(echo $cinco puertos tcp para logear servidor )"
+var16="$(echo logserver_udp= )"
+eng16="$(echo $cinco the udp ports to log server )"
+spa16="$(echo $cinco puertos udp para logear servidor )"
+var17="$(echo $cinco LOG PREFIX TO SERVER $cinco )"
+eng17="$(echo $cinco Log to server ports with prefix )"
+spa17="$(echo $cinco logear para puertos de servidor con prefijo )"
+var18="$(echo logserver_prefix_input=fwlog-input:: )"
+eng18="$(echo $cinco type input prefix for logserver )"
+spa18="$(echo $cinco especifica prefijo de entrada para logserver )"
+var19="$(echo logserver_prefix_output=fwlog-output:: )"
+eng19="$(echo $cinco type output prefix for logserver )"
+spa19="$(echo $cinco especifica prefijo de salida para logserver )"
+var20="$(echo $cinco END NECESARY $cinco )"
+eng20="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
+spa20="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
 ####
 ####
 #### english: advance options in configurations file cfg
@@ -1474,215 +1474,215 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo $var0  &> $me
-echo $var1  $tabz $eng1  &>> $me
-echo $var2  $tabz $eng2  &>> $me
-echo $var3  $tabz $eng3  &>> $me
-echo $var4  $tabz $eng4  &>> $me
-echo $var5  $tabz $eng5  &>> $me
-echo $var6  $tabz $eng6  &>> $me
-echo $var7  $tabz $eng7  &>> $me
-echo $var8  $tabz $eng8  &>> $me
-echo $var9  $tabz $eng9  &>> $me
-echo $var10 $tabz $eng10 &>> $me
-echo $var11 $tabz $eng11 &>> $me
-echo $var12 $tabz $eng12 &>> $me
-echo $var13 $tabz $eng13 &>> $me
-echo $var14 $tabz $eng14 &>> $me
-echo $var15 $tabz $eng15 &>> $me
-echo $var16 $tabz $eng16 &>> $me
-echo $var17 $tabz $eng17 &>> $me
-echo $var18 $tabz $eng18 &>> $me
-echo $var19 $tabz $eng19 &>> $me
-echo $var20 $tabz $eng20 &>> $me
+echo "$var0"  &> $me
+echo "$var1"  "$tabz" "$eng1"  &>> "$me"
+echo "$var2"  "$tabz" "$eng2"  &>> "$me"
+echo "$var3"  "$tabz" "$eng3"  &>> "$me"
+echo "$var4"  "$tabz" "$eng4"  &>> "$me"
+echo "$var5"  "$tabz" "$eng5"  &>> "$me"
+echo "$var6"  "$tabz" "$eng6"  &>> "$me"
+echo "$var7"  "$tabz" "$eng7"  &>> "$me"
+echo "$var8"  "$tabz" "$eng8"  &>> "$me"
+echo "$var9"  "$tabz" "$eng9"  &>> "$me"
+echo "$var10" "$tabz" "$eng10" &>> "$me"
+echo "$var11" "$tabz" "$eng11" &>> "$me"
+echo "$var12" "$tabz" "$eng12" &>> "$me"
+echo "$var13" "$tabz" "$eng13" &>> "$me"
+echo "$var14" "$tabz" "$eng14" &>> "$me"
+echo "$var15" "$tabz" "$eng15" &>> "$me"
+echo "$var16" "$tabz" "$eng16" &>> "$me"
+echo "$var17" "$tabz" "$eng17" &>> "$me"
+echo "$var18" "$tabz" "$eng18" &>> "$me"
+echo "$var19" "$tabz" "$eng19" &>> "$me"
+echo "$var20" "$tabz" "$eng20" &>> "$me"
 ####
 ####
 #### wizard mini-spanish
 ####
 ####
 echo $var0  &> $ms
-echo $var1  $tabz $spa1  &>> $ms
-echo $var2  $tabz $spa2  &>> $ms
-echo $var3  $tabz $spa3  &>> $ms
-echo $var4  $tabz $spa4  &>> $ms
-echo $var5  $tabz $spa5  &>> $ms
-echo $var6  $tabz $spa6  &>> $ms
-echo $var7  $tabz $spa7  &>> $ms
-echo $var8  $tabz $spa8  &>> $ms
-echo $var9  $tabz $spa9  &>> $ms
-echo $var10 $tabz $spa10 &>> $ms
-echo $var11 $tabz $spa11 &>> $ms
-echo $var12 $tabz $spa12 &>> $ms
-echo $var13 $tabz $spa13 &>> $ms
-echo $var14 $tabz $spa14 &>> $ms
-echo $var15 $tabz $spa15 &>> $ms
-echo $var16 $tabz $spa16 &>> $ms
-echo $var17 $tabz $spa17 &>> $ms
-echo $var18 $tabz $spa18 &>> $ms
-echo $var19 $tabz $spa19 &>> $ms
-echo $var20 $tabz $spa20 &>> $ms
+echo $var1  "$tabz" $spa1  &>> $ms
+echo $var2  "$tabz" $spa2  &>> $ms
+echo $var3  "$tabz" $spa3  &>> $ms
+echo $var4  "$tabz" $spa4  &>> $ms
+echo $var5  "$tabz" $spa5  &>> $ms
+echo $var6  "$tabz" $spa6  &>> $ms
+echo $var7  "$tabz" $spa7  &>> $ms
+echo $var8  "$tabz" $spa8  &>> $ms
+echo $var9  "$tabz" $spa9  &>> $ms
+echo $var10 "$tabz" $spa10 &>> $ms
+echo $var11 "$tabz" $spa11 &>> $ms
+echo $var12 "$tabz" $spa12 &>> $ms
+echo $var13 "$tabz" $spa13 &>> $ms
+echo $var14 "$tabz" $spa14 &>> $ms
+echo $var15 "$tabz" $spa15 &>> $ms
+echo $var16 "$tabz" $spa16 &>> $ms
+echo $var17 "$tabz" $spa17 &>> $ms
+echo $var18 "$tabz" $spa18 &>> $ms
+echo $var19 "$tabz" $spa19 &>> $ms
+echo $var20 "$tabz" $spa20 &>> $ms
 ####
 ####
 #### wizard full-english
 ####
 ####
 echo $var0  &> $fe
-echo $var1  $tabz $eng1  &>> $fe
-echo $var2  $tabz $eng2  &>> $fe
-echo $var3  $tabz $eng3  &>> $fe
-echo $var4  $tabz $eng4  &>> $fe
-echo $var5  $tabz $eng5  &>> $fe
-echo $var6  $tabz $eng6  &>> $fe
-echo $var7  $tabz $eng7  &>> $fe
-echo $var8  $tabz $eng8  &>> $fe
-echo $var9  $tabz $eng9  &>> $fe
-echo $var10 $tabz $eng10 &>> $fe
-echo $var11 $tabz $eng11 &>> $fe
-echo $var12 $tabz $eng12 &>> $fe
-echo $var13 $tabz $eng13 &>> $fe
-echo $var14 $tabz $eng14 &>> $fe
-echo $var15 $tabz $eng15 &>> $fe
-echo $var16 $tabz $eng16 &>> $fe
-echo $var17 $tabz $eng17 &>> $fe
-echo $var18 $tabz $eng18 &>> $fe
-echo $var19 $tabz $eng19 &>> $fe
-echo $var20 $tabz $eng20 &>> $fe
+echo $var1  "$tabz" $eng1  &>> $fe
+echo $var2  "$tabz" $eng2  &>> $fe
+echo $var3  "$tabz" $eng3  &>> $fe
+echo $var4  "$tabz" $eng4  &>> $fe
+echo $var5  "$tabz" $eng5  &>> $fe
+echo $var6  "$tabz" $eng6  &>> $fe
+echo $var7  "$tabz" $eng7  &>> $fe
+echo $var8  "$tabz" $eng8  &>> $fe
+echo $var9  "$tabz" $eng9  &>> $fe
+echo $var10 "$tabz" $eng10 &>> $fe
+echo $var11 "$tabz" $eng11 &>> $fe
+echo $var12 "$tabz" $eng12 &>> $fe
+echo $var13 "$tabz" $eng13 &>> $fe
+echo $var14 "$tabz" $eng14 &>> $fe
+echo $var15 "$tabz" $eng15 &>> $fe
+echo $var16 "$tabz" $eng16 &>> $fe
+echo $var17 "$tabz" $eng17 &>> $fe
+echo $var18 "$tabz" $eng18 &>> $fe
+echo $var19 "$tabz" $eng19 &>> $fe
+echo $var20 "$tabz" $eng20 &>> $fe
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo $var30 $tabz $eng30 &>> $fe
-echo $var31 $tabz $eng31 &>> $fe
-echo $var32 $tabz $eng32 &>> $fe
-echo $var33 $tabz $eng33 &>> $fe
-echo $var34 $tabz $eng34 &>> $fe
-echo $var35 $tabz $eng35 &>> $fe
-echo $var36 $tabz $eng36 &>> $fe
-echo $var37 $tabz $eng37 &>> $fe
-echo $var38 $tabz $eng38 &>> $fe
-echo $var39 $tabz $eng39 &>> $fe
-echo $var40 $tabz $eng40 &>> $fe
-echo $var41 $tabz $eng41 &>> $fe
-echo $var42 $tabz $eng42 &>> $fe
-echo $var43 $tabz $eng43 &>> $fe
-echo $var44 $tabz $eng44 &>> $fe
-echo $var45 $tabz $eng45 &>> $fe
-echo $var46 $tabz $eng46 &>> $fe
-echo $var47 $tabz $eng47 &>> $fe
-echo $var48 $tabz $eng48 &>> $fe
-echo $var49 $tabz $eng49 &>> $fe
-echo $var50 $tabz $eng50 &>> $fe
-echo $var51 $tabz $eng51 &>> $fe
-echo $var52 $tabz $eng52 &>> $fe
-echo $var53 $tabz $eng53 &>> $fe
-echo $var54 $tabz $eng54 &>> $fe
-echo $var55 $tabz $eng55 &>> $fe
-echo $var56 $tabz $eng56 &>> $fe
-echo $var57 $tabz $eng57 &>> $fe
-echo $var58 $tabz $eng58 &>> $fe
-echo $var59 $tabz $eng59 &>> $fe
-echo $var60 $tabz $eng60 &>> $fe
-echo $var61 $tabz $eng61 &>> $fe
-echo $var62 $tabz $eng62 &>> $fe
-echo $var63 $tabz $eng63 &>> $fe
-echo $var64 $tabz $eng64 &>> $fe
-echo $var65 $tabz $eng65 &>> $fe
-echo $var66 $tabz $eng66 &>> $fe
-echo $var67 $tabz $eng67 &>> $fe
-echo $var68 $tabz $eng68 &>> $fe
-echo $var69 $tabz $eng69 &>> $fe
-echo $var70 $tabz $eng70 &>> $fe
-echo $var71 $tabz $eng71 &>> $fe
-echo $var72 $tabz $eng72 &>> $fe
-echo $var73 $tabz $eng73 &>> $fe
-echo $var74 $tabz $eng74 &>> $fe
-echo $var75 $tabz $eng75 &>> $fe
-echo $var76 $tabz $eng76 &>> $fe
-echo $var77 $tabz $eng77 &>> $fe
-echo $var78 $tabz $eng78 &>> $fe
-echo $var79 $tabz $eng79 &>> $fe
-echo $var80 $tabz $eng80 &>> $fe
-echo $var81 $tabz $eng81 &>> $fe
-echo $var82 $tabz $eng82 &>> $fe
+echo $var30 "$tabz" $eng30 &>> $fe
+echo $var31 "$tabz" $eng31 &>> $fe
+echo $var32 "$tabz" $eng32 &>> $fe
+echo $var33 "$tabz" $eng33 &>> $fe
+echo $var34 "$tabz" $eng34 &>> $fe
+echo $var35 "$tabz" $eng35 &>> $fe
+echo $var36 "$tabz" $eng36 &>> $fe
+echo $var37 "$tabz" $eng37 &>> $fe
+echo $var38 "$tabz" $eng38 &>> $fe
+echo $var39 "$tabz" $eng39 &>> $fe
+echo $var40 "$tabz" $eng40 &>> $fe
+echo $var41 "$tabz" $eng41 &>> $fe
+echo $var42 "$tabz" $eng42 &>> $fe
+echo $var43 "$tabz" $eng43 &>> $fe
+echo $var44 "$tabz" $eng44 &>> $fe
+echo $var45 "$tabz" $eng45 &>> $fe
+echo $var46 "$tabz" $eng46 &>> $fe
+echo $var47 "$tabz" $eng47 &>> $fe
+echo $var48 "$tabz" $eng48 &>> $fe
+echo $var49 "$tabz" $eng49 &>> $fe
+echo $var50 "$tabz" $eng50 &>> $fe
+echo $var51 "$tabz" $eng51 &>> $fe
+echo $var52 "$tabz" $eng52 &>> $fe
+echo $var53 "$tabz" $eng53 &>> $fe
+echo $var54 "$tabz" $eng54 &>> $fe
+echo $var55 "$tabz" $eng55 &>> $fe
+echo $var56 "$tabz" $eng56 &>> $fe
+echo $var57 "$tabz" $eng57 &>> $fe
+echo $var58 "$tabz" $eng58 &>> $fe
+echo $var59 "$tabz" $eng59 &>> $fe
+echo $var60 "$tabz" $eng60 &>> $fe
+echo $var61 "$tabz" $eng61 &>> $fe
+echo $var62 "$tabz" $eng62 &>> $fe
+echo $var63 "$tabz" $eng63 &>> $fe
+echo $var64 "$tabz" $eng64 &>> $fe
+echo $var65 "$tabz" $eng65 &>> $fe
+echo $var66 "$tabz" $eng66 &>> $fe
+echo $var67 "$tabz" $eng67 &>> $fe
+echo $var68 "$tabz" $eng68 &>> $fe
+echo $var69 "$tabz" $eng69 &>> $fe
+echo $var70 "$tabz" $eng70 &>> $fe
+echo $var71 "$tabz" $eng71 &>> $fe
+echo $var72 "$tabz" $eng72 &>> $fe
+echo $var73 "$tabz" $eng73 &>> $fe
+echo $var74 "$tabz" $eng74 &>> $fe
+echo $var75 "$tabz" $eng75 &>> $fe
+echo $var76 "$tabz" $eng76 &>> $fe
+echo $var77 "$tabz" $eng77 &>> $fe
+echo $var78 "$tabz" $eng78 &>> $fe
+echo $var79 "$tabz" $eng79 &>> $fe
+echo $var80 "$tabz" $eng80 &>> $fe
+echo $var81 "$tabz" $eng81 &>> $fe
+echo $var82 "$tabz" $eng82 &>> $fe
 ####
 ####
 #### wizard full-spanish
 ####
 ####
 echo $var0  &> $fs
-echo $var1  $tabz $spa1 &>> $fs
-echo $var2  $tabz $spa2 &>> $fs
-echo $var3  $tabz $spa3 &>> $fs
-echo $var4  $tabz $spa4 &>> $fs
-echo $var5  $tabz $spa5 &>> $fs
-echo $var6  $tabz $spa6 &>> $fs
-echo $var7  $tabz $spa7 &>> $fs
-echo $var8  $tabz $spa8 &>> $fs
-echo $var9  $tabz $spa9 &>> $fs
-echo $var10 $tabz $spa10 &>> $fs
-echo $var11 $tabz $spa11 &>> $fs
-echo $var12 $tabz $spa12 &>> $fs
-echo $var13 $tabz $spa13 &>> $fs
-echo $var14 $tabz $spa14 &>> $fs
-echo $var15 $tabz $spa15 &>> $fs
-echo $var16 $tabz $spa16 &>> $fs
-echo $var17 $tabz $spa17 &>> $fs
-echo $var18 $tabz $spa18 &>> $fs
-echo $var19 $tabz $spa19 &>> $fs
-echo $var20 $tabz $spa20 &>> $fs
+echo $var1  "$tabz" $spa1 &>> $fs
+echo $var2  "$tabz" $spa2 &>> $fs
+echo $var3  "$tabz" $spa3 &>> $fs
+echo $var4  "$tabz" $spa4 &>> $fs
+echo $var5  "$tabz" $spa5 &>> $fs
+echo $var6  "$tabz" $spa6 &>> $fs
+echo $var7  "$tabz" $spa7 &>> $fs
+echo $var8  "$tabz" $spa8 &>> $fs
+echo $var9  "$tabz" $spa9 &>> $fs
+echo $var10 "$tabz" $spa10 &>> $fs
+echo $var11 "$tabz" $spa11 &>> $fs
+echo $var12 "$tabz" $spa12 &>> $fs
+echo $var13 "$tabz" $spa13 &>> $fs
+echo $var14 "$tabz" $spa14 &>> $fs
+echo $var15 "$tabz" $spa15 &>> $fs
+echo $var16 "$tabz" $spa16 &>> $fs
+echo $var17 "$tabz" $spa17 &>> $fs
+echo $var18 "$tabz" $spa18 &>> $fs
+echo $var19 "$tabz" $spa19 &>> $fs
+echo $var20 "$tabz" $spa20 &>> $fs
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo $var30 $tabz $spa30 &>> $fs
-echo $var31 $tabz $spa31 &>> $fs
-echo $var32 $tabz $spa32 &>> $fs
-echo $var33 $tabz $spa33 &>> $fs
-echo $var34 $tabz $spa34 &>> $fs
-echo $var35 $tabz $spa35 &>> $fs
-echo $var36 $tabz $spa36 &>> $fs
-echo $var37 $tabz $spa37 &>> $fs
-echo $var38 $tabz $spa38 &>> $fs
-echo $var39 $tabz $spa39 &>> $fs
-echo $var40 $tabz $spa40 &>> $fs
-echo $var41 $tabz $spa41 &>> $fs
-echo $var42 $tabz $spa42 &>> $fs
-echo $var43 $tabz $spa43 &>> $fs
-echo $var44 $tabz $spa44 &>> $fs
-echo $var45 $tabz $spa45 &>> $fs
-echo $var46 $tabz $spa46 &>> $fs
-echo $var47 $tabz $spa47 &>> $fs
-echo $var48 $tabz $spa48 &>> $fs
-echo $var49 $tabz $spa49 &>> $fs
-echo $var50 $tabz $spa50 &>> $fs
-echo $var51 $tabz $spa51 &>> $fs
-echo $var52 $tabz $spa52 &>> $fs
-echo $var53 $tabz $spa53 &>> $fs
-echo $var54 $tabz $spa54 &>> $fs
-echo $var55 $tabz $spa55 &>> $fs
-echo $var56 $tabz $spa56 &>> $fs
-echo $var57 $tabz $spa57 &>> $fs
-echo $var58 $tabz $spa58 &>> $fs
-echo $var59 $tabz $spa59 &>> $fs
-echo $var60 $tabz $spa60 &>> $fs
-echo $var61 $tabz $spa61 &>> $fs
-echo $var62 $tabz $spa62 &>> $fs
-echo $var63 $tabz $spa63 &>> $fs
-echo $var64 $tabz $spa64 &>> $fs
-echo $var65 $tabz $spa65 &>> $fs
-echo $var66 $tabz $spa66 &>> $fs
-echo $var67 $tabz $spa67 &>> $fs
-echo $var68 $tabz $spa68 &>> $fs
-echo $var69 $tabz $spa69 &>> $fs
-echo $var70 $tabz $spa70 &>> $fs
-echo $var71 $tabz $spa71 &>> $fs
-echo $var72 $tabz $spa72 &>> $fs
-echo $var73 $tabz $spa73 &>> $fs
-echo $var74 $tabz $spa74 &>> $fs
-echo $var75 $tabz $spa75 &>> $fs
-echo $var76 $tabz $spa76 &>> $fs
-echo $var77 $tabz $spa77 &>> $fs
-echo $var78 $tabz $spa78 &>> $fs
-echo $var79 $tabz $spa79 &>> $fs
-echo $var80 $tabz $spa80 &>> $fs
-echo $var81 $tabz $spa81 &>> $fs
-echo $var82 $tabz $spa82 &>> $fs
+echo $var30 "$tabz" $spa30 &>> $fs
+echo $var31 "$tabz" $spa31 &>> $fs
+echo $var32 "$tabz" $spa32 &>> $fs
+echo $var33 "$tabz" $spa33 &>> $fs
+echo $var34 "$tabz" $spa34 &>> $fs
+echo $var35 "$tabz" $spa35 &>> $fs
+echo $var36 "$tabz" $spa36 &>> $fs
+echo $var37 "$tabz" $spa37 &>> $fs
+echo $var38 "$tabz" $spa38 &>> $fs
+echo $var39 "$tabz" $spa39 &>> $fs
+echo $var40 "$tabz" $spa40 &>> $fs
+echo $var41 "$tabz" $spa41 &>> $fs
+echo $var42 "$tabz" $spa42 &>> $fs
+echo $var43 "$tabz" $spa43 &>> $fs
+echo $var44 "$tabz" $spa44 &>> $fs
+echo $var45 "$tabz" $spa45 &>> $fs
+echo $var46 "$tabz" $spa46 &>> $fs
+echo $var47 "$tabz" $spa47 &>> $fs
+echo $var48 "$tabz" $spa48 &>> $fs
+echo $var49 "$tabz" $spa49 &>> $fs
+echo $var50 "$tabz" $spa50 &>> $fs
+echo $var51 "$tabz" $spa51 &>> $fs
+echo $var52 "$tabz" $spa52 &>> $fs
+echo $var53 "$tabz" $spa53 &>> $fs
+echo $var54 "$tabz" $spa54 &>> $fs
+echo $var55 "$tabz" $spa55 &>> $fs
+echo $var56 "$tabz" $spa56 &>> $fs
+echo $var57 "$tabz" $spa57 &>> $fs
+echo $var58 "$tabz" $spa58 &>> $fs
+echo $var59 "$tabz" $spa59 &>> $fs
+echo $var60 "$tabz" $spa60 &>> $fs
+echo $var61 "$tabz" $spa61 &>> $fs
+echo $var62 "$tabz" $spa62 &>> $fs
+echo $var63 "$tabz" $spa63 &>> $fs
+echo $var64 "$tabz" $spa64 &>> $fs
+echo $var65 "$tabz" $spa65 &>> $fs
+echo $var66 "$tabz" $spa66 &>> $fs
+echo $var67 "$tabz" $spa67 &>> $fs
+echo $var68 "$tabz" $spa68 &>> $fs
+echo $var69 "$tabz" $spa69 &>> $fs
+echo $var70 "$tabz" $spa70 &>> $fs
+echo $var71 "$tabz" $spa71 &>> $fs
+echo $var72 "$tabz" $spa72 &>> $fs
+echo $var73 "$tabz" $spa73 &>> $fs
+echo $var74 "$tabz" $spa74 &>> $fs
+echo $var75 "$tabz" $spa75 &>> $fs
+echo $var76 "$tabz" $spa76 &>> $fs
+echo $var77 "$tabz" $spa77 &>> $fs
+echo $var78 "$tabz" $spa78 &>> $fs
+echo $var79 "$tabz" $spa79 &>> $fs
+echo $var80 "$tabz" $spa80 &>> $fs
+echo $var81 "$tabz" $spa81 &>> $fs
+echo $var82 "$tabz" $spa82 &>> $fs
 ####
 ####
 echo " [  ok  ] [ Wizard and configs cfg templates regenerated ]"
