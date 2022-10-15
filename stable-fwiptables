@@ -64,7 +64,7 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="4.14-Gijon" ;
+fversion="4.15-Hospitalet" ;
 ####
 ####
 #### :rutina-final-name:
@@ -123,11 +123,17 @@ terminal_tty="$(tty | $command_grep -E -i tty | tail -1)"
 ####
 if [ "$terminal_tty" = "$NULL" ] ; then
 if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
-then $command_xhost +SI:localuser:"$(logname)" &> /dev/null 
-else sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null ; fi; fi
+then
+sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
+## sudo -u root $command_xhost +LOCAL &> /dev/null ;
+else
+sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
+## sudo -u root $command_xhost +LOCAL &> /dev/null ;
+fi; fi
 ####
 ####
 #### deprecated
+## sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
 ## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
 ## sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
@@ -318,8 +324,8 @@ server_udp="" ;
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy="no"                     ## fwiptables-file-default ## void or no
-allow_nft=""                          ## fwiptables-file-default ## void or no
+allow_legacy=""                     ## fwiptables-file-default ## void or no
+allow_nft="no"                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
 ####       #### english: list all rules: list all rules, void in names or no in numbers
@@ -330,7 +336,7 @@ list_rules_conceptual=""                           ## fwiptables-file-default ##
 config_port_shield="22"                   ## fwiptables-file-default ##  void o ports
 ####       #### english: ssh tries per ip before shield
 ####       #### spanish: intentos ssh por ip antes del escudo
-config_maxtries_shield="17"                   ## fwiptables-file-default ## void or no
+config_maxtries_shield="10"                   ## fwiptables-file-default ## void or no
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
@@ -368,7 +374,7 @@ sinco=" || " ;
 title_md="### " ;
 text_md="     " ;
 brake_md="---" ;
-tabz="# _ _ _ _ _ _ _ " ;
+tabz="### _ _ _ _ _ _ _ " ;
 ralla="______________________" ;
 duo_md="### ###" ;
 header_ok="### ### || || [ ok ] ||" ;
@@ -488,7 +494,7 @@ echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables";
 if [ "$first_option" = "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux #.                        "
+echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
 echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
 echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
 echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
@@ -702,7 +708,7 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 #### english: alias simple for options commons
 ####
 ####
-if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
+if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
 if [ "$first_option" = "ls" ]; then first_option="-txt"; second_option="list4"; fi
@@ -712,8 +718,11 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
-if [ "$first_option" = "options-all" ] ; then first_option="full-options" ; fi
-if [ "$first_option" = "options-examples" ] ; then first_option="examples"; fi
+if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
+if [ "$first_option" = "mini-options" ] ; then first_option="options-mini" ; fi
+if [ "$first_option" = "options-full" ] ; then first_option="options-all" ; fi
+if [ "$first_option" = "full-options" ] ; then first_option="options-all" ; fi
+if [ "$first_option" = "examples" ] ; then first_option="options-examples"; fi
 if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
 if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
 if [ "$first_option" = "ntp" ] ; then first_option="ntpdate-client"; fi
@@ -738,6 +747,7 @@ if [ "$second_option" = "md5sum" ] ; then third_option="$3"  ; quad_option="$4" 
 #### english:  alias simple for firewall names 
 ####
 ####
+
 if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
 if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
 if [ "$first_option" = "offline" ] ; then first_option="off-line" ; fi
@@ -820,7 +830,7 @@ nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_opti
 "game-domain") $cmd_fwiptables game-domain -cli ; exit ;;
 "game-word") $cmd_fwiptables game-word -cli ; exit ;;
 "game-number") $cmd_fwiptables game-number -cli ; exit ;;
-"blacklist-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"addblock-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
 "clean-tmp") $cmd_fwiptables $second_option $third_option ; exit ;;
 "log-search") 
@@ -933,7 +943,7 @@ sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
-blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
+addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|filelog|sentlog|autolog)  second_option="show-log"; third_option="" ;;
@@ -983,7 +993,7 @@ sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
-blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
+addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|sentlog|filelog|autolog)  second_option="show-log"; third_option="" ;;
@@ -1093,7 +1103,7 @@ chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -420 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -1141,12 +1151,12 @@ exit; fi
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
-echo "$text_md [ info ] [ upgrade ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
+echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md $tab [ notice  ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ [ download ]downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
+echo "$text_md [ info ] [ download ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1178,8 +1188,7 @@ exit ; fi
 ####
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
-echo "$text_md [ info ] [ upgrade ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
-####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
+echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md [ notice  ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
@@ -1215,9 +1224,9 @@ exit ; fi
 #### :rutina-inicial-regen-config:
 ####
 ####
-if [ "$first_option" = "regen-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Generate templates wizard and cfg ] || ||"
-echo " [ info ] [ regenerating template wizard and template cfg ]"
+if [ "$first_option" = "regen-config" ]; then echo "# $give_cover"
+echo "# $header_ok [ $first_option ] [ Generate templates wizard and cfg ] || ||"
+echo "# [ info ] [ regenerating template wizard and template cfg ]"
 ####
 ####
 ####    english: variables to prepare to gen files
@@ -1228,235 +1237,235 @@ echo " [ info ] [ regenerating template wizard and template cfg ]"
 ####    spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0=$(echo "$cinco $fprogram from $cmd_fwiptables version $fversion")
-var1=$(echo "$cinco BEGIN NECESARY #" )
-eng1=$(echo "$cinco  .......... BEGIN Necesary options .......... .......... #")
-spa1=$(echo "$cinco INICIO .......... Opciones Necesarias .......... .......... #")
-var2=$(echo "$cinco NETFILTER #" )
-eng2=$(echo "$cinco the iptables firewall netfilter, choose one or two")
-spa2=$(echo "$cinco el iptables firewall netfilter, elige uno o dos")
-var3=$(echo "allow_legacy=no" )
-eng3=$(echo "$cinco launch xtables, void to yes or type no")
-spa3=$(echo "$cinco lanza xtables, vacio para si, o escribe no")
-var4=$(echo "allow_nft=" ) 
-eng4=$(echo "$cinco launch nftables, void to yes or type no")
-spa4=$(echo "$cinco lanza nftables, vacio para si, o escribe no")
-var5=$(echo "$cinco PROTOCOL IP #" )
-eng5=$(echo "$cinco ip protocol, modify with void or no")
-spa5=$(echo "$cinco procolo ip, modificar con vacio o no")
-var6=$(echo "allow_ipv4=" )
-eng6=$(echo "$cinco void to config firewall with ipv4 or no to dont configure ipv4")
-spa6=$(echo "$cinco varcio para ejecutar el firewall con ipv4 o no para no")
-var7=$(echo "allow_ipv6=" )
-eng7=$(echo "$cinco void to config firewall with ipv6 or no to dont configure ipv6")
-spa7=$(echo "$cinco varcio para ejecutar el firewall con ipv6 o no para no")
-var8=$(echo "$cinco CLIENT PORTS #")
-eng8=$(echo "$cinco Client ports, add with ',' and join ranges with ':'")
-spa8=$(echo "$cinco puertos Cliente, añadir con ',' y poner rangos con ':' ")
-var9=$(echo "client_tcp=http,https,ssh")
-eng9=$(echo "$cinco tcp ports for client")
-spa9=$(echo "$cinco puertos tcp para ser cliente")
-var10=$(echo "client_udp=domain,bootpc,bootps,ntp,https")
-eng10=$(echo "$cinco udp ports for client")
-spa10=$(echo "$cinco puertos udp para ser cliente")
-var11=$(echo "$cinco SERVER PORTS #" )
-eng11=$(echo "$cinco Server ports, add with ',' and join ranges with ':'")
-spa11=$(echo "$cinco Puertos Servidor, añadir con ',' y poner rangos con ':'")
-var12=$(echo "server_tcp=ssh" )
-eng12=$(echo "$cinco tcp ports for server")
-spa12=$(echo "$cinco puertos tcp para servidor")
-var13=$(echo "server_udp= ")
-eng13=$(echo "$cinco udp ports for server")
-spa13=$(echo "$cinco puertos udp para servidor")
-var14=$(echo "$cinco LOG TO SERVER PORTS #" )
-eng14=$(echo "$cinco Log to server ports, add with ',' and join ranges with ':'")
-spa14=$(echo "$cinco logear para puertos de Servidor, añadir con ',' y poner rangos con ':'")
-var15=$(echo "logserver_tcp= ")
-eng15=$(echo "$cinco the tcp ports to log server")
-spa15=$(echo "$cinco puertos tcp para logear servidor")
-var16=$(echo "logserver_udp= ")
-eng16=$(echo "$cinco the udp ports to log server")
-spa16=$(echo "$cinco puertos udp para logear servidor")
-var17=$(echo "$cinco LOG PREFIX TO SERVER #" )
-eng17=$(echo "$cinco Log to server ports with prefix")
-spa17=$(echo "$cinco logear para puertos de servidor con prefijo")
-var18=$(echo "logserver_prefix_input=fwlog-input'::'")
-eng18=$(echo "$cinco type input prefix for logserver")
-spa18=$(echo "$cinco especifica prefijo de entrada para logserver")
-var19=$(echo "logserver_prefix_output=fwlog-output'::'")
-eng19=$(echo "$cinco type output prefix for logserver")
-spa19=$(echo "$cinco especifica prefijo de salida para logserver")
-var20=$(echo "$cinco END NECESARY #" )
-eng20=$(echo "$cinco .......... END Necesary options .......... .......... #")
-spa20=$(echo "$cinco FINAL .......... Opciones Necesarias .......... .......... #")
+var0="$(echo $cinco $fprogram from $cmd_fwiptables version $fversion $cinco )"
+var1="$(echo $cinco BEGIN NECESARY $cinco )"
+eng1="$(echo $cinco  .......... BEGIN Necesary options .......... .......... $cinco )"
+spa1="$(echo $cinco INICIO .......... Opciones Necesarias .......... .......... $cinco )"
+var2="$(echo $cinco NETFILTER $cinco )"
+eng2="$(echo $cinco the iptables firewall netfilter, choose one or two )"
+spa2="$(echo $cinco el iptables firewall netfilter, elige uno o dos )"
+var3="$(echo allow_legacy=no )"
+eng3="$(echo $cinco launch xtables, void to yes or type no )"
+spa3="$(echo $cinco lanza xtables, vacio para si, o escribe no )"
+var4="$(echo allow_nft= )"
+eng4="$(echo $cinco launch nftables, void to yes or type no )"
+spa4="$(echo $cinco lanza nftables, vacio para si, o escribe no )"
+var5="$(echo $cinco PROTOCOL IP $cinco )"
+eng5="$(echo $cinco ip protocol, modify with void or no )"
+spa5="$(echo $cinco procolo ip, modificar con vacio o no )"
+var6="$(echo allow_ipv4= )"
+eng6="$(echo $cinco void to config firewall with ipv4 or no to dont configure ipv4 )"
+spa6="$(echo $cinco varcio para ejecutar el firewall con ipv4 o no para no )"
+var7="$(echo allow_ipv6= )"
+eng7="$(echo $cinco void to config firewall with ipv6 or no to dont configure ipv6 )"
+spa7="$(echo $cinco varcio para ejecutar el firewall con ipv6 o no para no )"
+var8="$(echo $cinco CLIENT PORTS $cinco )"
+eng8="$(echo $cinco Client ports, add with ',' and join ranges with  : )"
+spa8="$(echo $cinco puertos Cliente, añadir con ',' y poner rangos con : )"
+var9="$(echo client_tcp=http,https,ssh )"
+eng9="$(echo $cinco tcp ports for client )"
+spa9="$(echo $cinco puertos tcp para ser cliente )"
+var10="$(echo client_udp=domain,bootpc,bootps,ntp,https )"
+eng10="$(echo $cinco udp ports for client )"
+spa10="$(echo $cinco puertos udp para ser cliente )"
+var11="$(echo $cinco SERVER PORTS $cinco )"
+eng11="$(echo $cinco Server ports, add with ',' and join ranges with : )"
+spa11="$(echo $cinco Puertos Servidor, añadir con ',' y poner rangos con  : )"
+var12="$(echo server_tcp=ssh )"
+eng12="$(echo $cinco tcp ports for server )"
+spa12="$(echo $cinco puertos tcp para servidor )"
+var13="$(echo server_udp= )"
+eng13="$(echo $cinco udp ports for server )"
+spa13="$(echo $cinco puertos udp para servidor )"
+var14="$(echo $cinco LOG TO SERVER PORTS $cinco )"
+eng14="$(echo $cinco Log to server ports, add with ',' and join ranges with : )"
+spa14="$(echo $cinco logear para puertos de Servidor, añadir con ',' y poner rangos con : )"
+var15="$(echo logserver_tcp= )"
+eng15="$(echo $cinco the tcp ports to log server )"
+spa15="$(echo $cinco puertos tcp para logear servidor )"
+var16="$(echo logserver_udp= )"
+eng16="$(echo $cinco the udp ports to log server )"
+spa16="$(echo $cinco puertos udp para logear servidor )"
+var17="$(echo $cinco LOG PREFIX TO SERVER $cinco )"
+eng17="$(echo $cinco Log to server ports with prefix )"
+spa17="$(echo $cinco logear para puertos de servidor con prefijo )"
+var18="$(echo logserver_prefix_input=fwlog-input:: )"
+eng18="$(echo $cinco type input prefix for logserver )"
+spa18="$(echo $cinco especifica prefijo de entrada para logserver )"
+var19="$(echo logserver_prefix_output=fwlog-output:: )"
+eng19="$(echo $cinco type output prefix for logserver )"
+spa19="$(echo $cinco especifica prefijo de salida para logserver )"
+var20="$(echo $cinco END NECESARY $cinco )"
+eng20="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
+spa20="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var31=$(echo "$cinco BEGIN OPTIONAL #" )
-eng31=$(echo "$cinco .......... BEGIN Optional options .......... .......... #")
-spa31=$(echo "$cinco INICIO .......... Opciones opcionales .......... .......... #")
-var32=$(echo "$cinco choose void or no #" )
-eng32=$(echo "$cinco Allow Other Options,  modify with void, or no")
-spa32=$(echo "$cinco Permitir Otras Opciones, modificar con vacio o no")
-var33=$(echo "separate_port_rules=no" )
-eng33=$(echo "$cinco Separate the rules for each port or no")
-spa33=$(echo "$cinco separar reglas por cada puerto o no")
-var34=$(echo "allow_maxtries_shield=no" )
-eng34=$(echo "$cinco void to allow one shield with max tries login in ssh for ip to each hour or no")
-spa34=$(echo "$cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no")
-var35=$(echo "allow_forward_ip4=no" )
-eng35=$(echo "$cinco void to yes to forward ip4, or no to no")
-spa35=$(echo "$cinco vacio para reenvios ip4, o no para no")
-var36=$(echo "allow_forward_ip6=no" )
-eng36=$(echo "$cinco void to allow ip forward ip6 or no")
-spa36=$(echo "$cinco vacio para permitir reenvio ip6, o no")
-var37=$(echo "allow_gateway_ip4=no" )
-eng37=$(echo "$cinco void to allow gateway ip4 to others nets or no")
-spa37=$(echo "$cinco vacio para permitir gateway ip4  a otras redes, o no")
-var38=$(echo "allow_gateway_ip6=no" )
-eng38=$(echo "$cinco void to allow gateway ip6 to other nets or no")
-spa38=$(echo "$cinco vacio para hacer gateway ip6 a otras redes o no")
-var39=$(echo "allow_dmz_ip4=no" )
-eng39=$(echo "$cinco void to allow dmz ip4 to one host local or no")
-spa39=$(echo "$cinco vacio para permitir dmz ip4  a una host local, o no")
-var40=$(echo "allow_dmz_ip6=no" )
-eng40=$(echo "$cinco void to allow dmz ip6 to one host local or no")
-spa40=$(echo "$cinco vacio para hacer dmz ip6 a una host local o no")
-var41=$(echo "allow_input_all=no ")
-eng41=$(echo "$cinco void when the rules are to allow input to all or no")
-spa41=$(echo "$cinco vacio, reglas para permitir toda entrada o no")
-var42=$(echo "allow_output_all=no ")
-eng42=$(echo "$cinco void when the rules are to allow output to all or no")
-spa42=$(echo "$cinco vacio, reglas para permitir toda salida o no")
-var43=$(echo "allow_input_state=no ")
-eng43=$(echo "$cinco Selective Input state with void or no")
-spa43=$(echo "$cinco Estado de entrada selectivo con vacio o no")
-var44=$(echo "allow_output_state=no ")
-eng44=$(echo "$cinco Selective Output state with void or no")
-spa44=$(echo "$cinco Estado de salida selectivo con vacio o no")
-var45=$(echo "allow_input_bandwidth=no ")
-eng45=$(echo "$cinco void to limit bandwidth input in kbits/sec for all sources or no")
-spa45=$(echo "$cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no")
-var46=$(echo "allow_output_bandwidth=no" )
-eng46=$(echo "$cinco void to limit bandwidth output in kbits/sec for each destination or no")
-spa46=$(echo "$cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no")
-var47=$(echo "allow_input_maxconnect=no" )
-eng47=$(echo "$cinco void to limit max number for input simultaneous connections or no" )
-spa47=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de entrada o no" )
-var48=$(echo "allow_output_maxconnect=no" )
-eng48=$(echo "$cinco void to limit max number for output simultaneous connections or no" )
-spa48=$(echo "$cinco vacio para limitar numero de conexiones simultaneas de salida o no" )
-var49=$(echo "allow_input_ping=no" )
-eng49=$(echo "$cinco void to allow RECIVE PING or no" )
-spa49=$(echo "$cinco vacio para permitir RECIVIR PING o no")
-var50=$(echo "allow_output_ping=no" )
-eng50=$(echo "$cinco void to allow SEND PING or no" )
-spa50=$(echo "$cinco vacio para permitir ENVIAR PING o no" )
-var51=$(echo "allow_mac_whitelist=no" )
-eng51=$(echo "$cinco void to allow some exceptional MAC-ADDRESS or no")
-spa51=$(echo "$cinco vacio para permitir DIRECCION-MAC excepcionales o no")
-var52=$(echo "allow_mac_blacklist=no")
-eng52=$(echo "$cinco void to drop some excepcional MAC-ADDRESS or no")
-spa52=$(echo "$cinco vacio para denegar DIRECCION-MAC excepcionales o no")
-var53=$(echo "allow_net_vpn=no" )
-eng53=$(echo "$cinco void to allow some exceptional HOST/IP or no")
-spa53=$(echo "$cinco vacio para permitir HOST/IP excepcionales o no")
-var54=$(echo "allow_net_blacklist=no")
-eng54=$(echo "$cinco void to drop some excepcional HOST/IP or no")
-spa54=$(echo "$cinco vacio para denegar HOST/IP excepcionales o no")
-var55=$(echo "allow_output_uid=no" )
-eng55=$(echo "$cinco void to allow excepcional USER or no" )
-spa55=$(echo "$cinco vacio permite salida de paquetes de un USUARIO excepcional o no" )
-var56=$(echo "allow_output_gid=no" )
-eng56=$(echo "$cinco void to allow excepcional GROUP or no" )
-spa56=$(echo "$cinco vacio permite salida de paquetes de un GRUPO excepcional o no" )
-var57=$(echo "allow_others_protocols=no" )
-eng57=$(echo "$cinco void to allow other PROTOCOL-IP excepcional or no" )
-spa57=$(echo "$cinco vacio para permitir otro PROTOCOLO-IP excepcional o no" )
+var31="$(echo $cinco BEGIN OPTIONAL $cinco )"
+eng31="$(echo $cinco .......... BEGIN Optional options .......... .......... $cinco )"
+spa31="$(echo $cinco INICIO .......... Opciones opcionales .......... .......... $cinco )"
+var32="$(echo $cinco choose void or no $cinco )"
+eng32="$(echo $cinco Allow Other Options,  modify with void, or no )"
+spa32="$(echo $cinco Permitir Otras Opciones, modificar con vacio o no )"
+var33="$(echo separate_port_rules=no )"
+eng33="$(echo $cinco Separate the rules for each port or no )"
+spa33="$(echo $cinco separar reglas por cada puerto o no )"
+var34="$(echo allow_maxtries_shield=no )"
+eng34="$(echo $cinco void to allow one shield with max tries login in ssh for ip to each hour or no )"
+spa34="$(echo $cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
+var35="$(echo allow_forward_ip4=no )"
+eng35="$(echo $cinco void to yes to forward ip4, or no to no )"
+spa35="$(echo $cinco vacio para reenvios ip4, o no para no )"
+var36="$(echo allow_forward_ip6=no )"
+eng36="$(echo $cinco void to allow ip forward ip6 or no )"
+spa36="$(echo $cinco vacio para permitir reenvio ip6, o no )"
+var37="$(echo allow_gateway_ip4=no )"
+eng37="$(echo $cinco void to allow gateway ip4 to others nets or no )"
+spa37="$(echo $cinco vacio para permitir gateway ip4  a otras redes, o no )"
+var38="$(echo allow_gateway_ip6=no )"
+eng38="$(echo $cinco void to allow gateway ip6 to other nets or no )"
+spa38="$(echo $cinco vacio para hacer gateway ip6 a otras redes o no )"
+var39="$(echo allow_dmz_ip4=no )"
+eng39="$(echo $cinco void to allow dmz ip4 to one host local or no )"
+spa39="$(echo $cinco vacio para permitir dmz ip4  a una host local, o no )"
+var40="$(echo allow_dmz_ip6=no )"
+eng40="$(echo $cinco void to allow dmz ip6 to one host local or no )"
+spa40="$(echo $cinco vacio para hacer dmz ip6 a una host local o no )"
+var41="$(echo allow_input_all=no )"
+eng41="$(echo $cinco void when the rules are to allow input to all or no )"
+spa41="$(echo $cinco vacio, reglas para permitir toda entrada o no )"
+var42="$(echo allow_output_all=no )"
+eng42="$(echo $cinco void when the rules are to allow output to all or no )"
+spa42="$(echo $cinco vacio, reglas para permitir toda salida o no )"
+var43="$(echo allow_input_state=no )"
+eng43="$(echo $cinco Selective Input state with void or no )"
+spa43="$(echo $cinco Estado de entrada selectivo con vacio o no )"
+var44="$(echo allow_output_state=no )"
+eng44="$(echo $cinco Selective Output state with void or no )"
+spa44="$(echo $cinco Estado de salida selectivo con vacio o no )"
+var45="$(echo allow_input_bandwidth=no )"
+eng45="$(echo $cinco void to limit bandwidth input in kbits/sec for all sources or no )"
+spa45="$(echo $cinco vacio para limitar ancho de banda de entrada para todas las fuentes en kbits/sec o no )"
+var46="$(echo allow_output_bandwidth=no )"
+eng46="$(echo $cinco void to limit bandwidth output in kbits/sec for each destination or no )"
+spa46="$(echo $cinco vacio limitar ancho de banda de salida en kbits/sec por cada destino o no )"
+var47="$(echo allow_input_maxconnect=no )"
+eng47="$(echo $cinco void to limit max number for input simultaneous connections or no )"
+spa47="$(echo $cinco vacio para limitar numero de conexiones simultaneas de entrada o no )"
+var48="$(echo allow_output_maxconnect=no )"
+eng48="$(echo $cinco void to limit max number for output simultaneous connections or no )"
+spa48="$(echo $cinco vacio para limitar numero de conexiones simultaneas de salida o no )"
+var49="$(echo allow_input_ping=no )"
+eng49="$(echo $cinco void to allow RECIVE PING or no )"
+spa49="$(echo $cinco vacio para permitir RECIVIR PING o no )"
+var50="$(echo allow_output_ping=no )"
+eng50="$(echo $cinco void to allow SEND PING or no )"
+spa50="$(echo $cinco vacio para permitir ENVIAR PING o no )"
+var51="$(echo allow_mac_whitelist=no )"
+eng51="$(echo $cinco void to allow some exceptional MAC-ADDRESS or no )"
+spa51="$(echo $cinco vacio para permitir DIRECCION-MAC excepcionales o no )"
+var52="$(echo allow_mac_blacklist=no )"
+eng52="$(echo $cinco void to drop some excepcional MAC-ADDRESS or no )"
+spa52="$(echo $cinco vacio para denegar DIRECCION-MAC excepcionales o no )"
+var53="$(echo allow_net_vpn=no )"
+eng53="$(echo $cinco void to allow some exceptional HOST/IP or no )"
+spa53="$(echo $cinco vacio para permitir HOST/IP excepcionales o no )"
+var54="$(echo allow_net_blacklist=no )"
+eng54="$(echo $cinco void to drop some excepcional HOST/IP or no )"
+spa54="$(echo $cinco vacio para denegar HOST/IP excepcionales o no )"
+var55="$(echo allow_output_uid=no )"
+eng55="$(echo $cinco void to allow excepcional USER or no )"
+spa55="$(echo $cinco vacio permite salida de paquetes de un USUARIO excepcional o no )"
+var56="$(echo allow_output_gid=no )"
+eng56="$(echo $cinco void to allow excepcional GROUP or no )"
+spa56="$(echo $cinco vacio permite salida de paquetes de un GRUPO excepcional o no )"
+var57="$(echo allow_others_protocols=no )"
+eng57="$(echo $cinco void to allow other POTOCOL-IP excepcional or no )"
+spa57="$(echo $cinco vacio para permitir otro PROTOCOLO-IP excepcional o no )"
 ####
 ####
 #### english: advance options in configurations file cfg
 #### spanish: avanzadas opciones in configuracion de archivo cfg
 ####
 ####
-var58=$(echo "$cinco Begin Variables #.......... .......... #.........." )
-eng58=$(echo "$cinco Fill Variables" )
-spa58=$(echo "$cinco Rellena Variables" )
-var59=$(echo "$cinco Options" )
-eng59=$(echo "$cinco Other Options, add with , and join ranges with ':'" )
-spa59=$(echo "$cinco Otras Opciones, añadir con , y poner rangos con ':'" )
-var60=$(echo "config_maxtries_shield=12")
-eng60=$(echo "$cinco modify shield with number max of tries to log in us ssh server for ip at each hour")
-spa60=$(echo "$cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora")
-var61=$(echo "config_port_shield=22")
-eng61=$(echo "$cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate")
-spa61=$(echo "$cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma")
-var62=$(echo "config_dmz_ip4=192.168.1.7")
-eng62=$(echo "$cinco ip server ip lan to other external nets, nat prerouting")
-spa62=$(echo "$cinco servidor ip lan para otras redes esternas, nat prerouting")
-var63=$(echo "config_dmz_ip6=d4:12:43:01:36:2e")
-eng63=$(echo "$cinco ip server ip lan to other external nets, nat prerouting")
-spa63=$(echo "$cinco servidor ip lan para otras redes esternas, nat prerouting")
-var64=$(echo "config_input_state=new,related,established")
-eng64=$(echo "$cinco void for all or new,related,established,untracked,invalid")
-spa64=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var65=$(echo "config_output_state=new,related,established")
-eng65=$(echo "$cinco void for all or new,related,established,untracked,invalid")
-spa65=$(echo "$cinco modificar con vacio o new,related,established,untracked,invalid")
-var66=$(echo "config_input_bandwidth=12512" )
-eng66=$(echo "$cinco max input bandwidth in kbits/sec for all" )
-spa66=$(echo "$cinco maximo entrada de ancho de banda en kbit/sec para todos" )
-var67=$(echo "config_output_bandwidth=512" )
-eng67=$(echo "$cinco max output bandwidth in kbits/sec for each ip" )
-spa67=$(echo "$cinco maximo salida de ancho de banda en kbits/sec para cada ip" )
-var68=$(echo "config_input_maxconnect=72" )
-eng68=$(echo "$cinco max number for input simultaneous connections" )
-spa68=$(echo "$cinco maximo numero de conexiones simultaneas de entrada" )
-var69=$(echo "config_output_maxconnect=72" )
-eng69=$(echo "$cinco max number for output simultaneous connections" )
-spa69=$(echo "$cinco maximo numero de conexiones simultaneas de salida" )
-var70=$(echo "config_mac_whitelist=d4:12:43:01:36:2e" )
-eng70=$(echo "$cinco allow this excepcitonal MAC-ADRESS" )
-spa70=$(echo "$cinco permitir estos MAC-ADDRESS excepcionales" )
-var71=$(echo "config_mac_blacklist=d4:12:43:01:36:2e" )
-eng71=$(echo "$cinco drop this excepcional MAC-ADDRESS" )
-spa71=$(echo "$cinco deniega estos MAC-ADDRESS excepcionales" )
-var72=$(echo "config_net_vpn=wesnoth.org,sf.net" )
-eng72=$(echo "$cinco allow this excepcitonal HOST/IP" )
-spa72=$(echo "$cinco permitir estos HOST/IP excepcionales" )
-var73=$(echo "config_net_blacklist=facebook.com,www.facebook.com" )
-eng73=$(echo "$cinco drop this excepcional HOST/IP" )
-spa73=$(echo "$cinco deniega estos HOST/IP excepcionales" )
-var74=$(echo "config_output_uid=root" )
-eng74=$(echo "$cinco allow out packages excepcional from this USER excepcional" )
-spa74=$(echo "$cinco permite salida de paquetes de este USUARIO excepcional" )
-var75=$(echo "config_output_gid=root" )
-eng75=$(echo "$cinco allow out packages excepcional from this GROUP excepcional" )
-spa75=$(echo "$cinco permite salida de paquetes de este GRUPO excepcional" )
-var76=$(echo "config_others_protocols=icmp,igmp" )
-eng76=$(echo "$cinco allow others protocols from /etc/protocolos" )
-spa76=$(echo "$cinco permitir otros protocolos desde /etc/protocols" )
-var77=$(echo "$cinco NET CLIENT AND NET SERVER #" )
-eng77=$(echo "$cinco Net to connect likes client or server" )
-spa77=$(echo "$cinco Red para conectar como cliente o server" )
-var78=$(echo "net_ipv4_client=0/0" )
-eng78=$(echo "$cinco the net to client ipv4, all is 0/0" )
-spa78=$(echo "$cinco la red cual cliente ipv4, todos es 0/0" )
-var79=$(echo "net_ipv4_server=0/0" )
-eng79=$(echo "$cinco the net to server ipv4, all is 0/0" )
-spa79=$(echo "$cinco la red cual servidor ipv4, todos es 0/0" )
-var80=$(echo "net_ipv6_client=::/0" )
-eng80=$(echo "$cinco the net to client ipv6, all is '::/0'" )
-spa80=$(echo "$cinco la red cual cliente ipv6, todos es '::/0'" )
-var81=$(echo "net_ipv6_server=::/0" )
-eng81=$(echo "$cinco the net to server ipv6, all is '::/0'" )
-spa81=$(echo "$cinco la red cual servidor ipv6, todos es '::/0'" )
-var82=$(echo "$cinco #" )
-eng82=$(echo "$cinco .......... END Optional options .......... .......... #")
-spa82=$(echo "$cinco FINAL .......... Opciones opcionales .......... .......... #")
+var58="$(echo $cinco Begin Variables $cinco.......... .......... $cinco.......... )"
+eng58="$(echo $cinco Fill Variables )"
+spa58="$(echo $cinco Rellena Variables )"
+var59="$(echo $cinco Options )"
+eng59="$(echo $cinco Other Options, add with , and join ranges with : )"
+spa59="$(echo $cinco Otras Opciones, añadir con , y poner rangos con : )"
+var60="$(echo config_maxtries_shield=12 )"
+eng60="$(echo $cinco modify shield with number max of tries to log in us ssh server for ip at each hour )"
+spa60="$(echo $cinco modificar escudo con los maximos intentos de logeo a nuestro servidor ssh por ip a cada hora )"
+var61="$(echo config_port_shield=22 )"
+eng61="$(echo $cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
+spa61="$(echo $cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
+var62="$(echo config_dmz_ip4=192.168.1.7 )"
+eng62="$(echo $cinco ip server ip lan to other external nets, nat prerouting )"
+spa62="$(echo $cinco servidor ip lan para otras redes esternas, nat prerouting )"
+var63="$(echo config_dmz_ip6=d4:12:43:01:36:2e )"
+eng63="$(echo $cinco ip server ip lan to other external nets, nat prerouting )"
+spa63="$(echo $cinco servidor ip lan para otras redes esternas, nat prerouting )"
+var64="$(echo config_input_state=new,related,established )"
+eng64="$(echo $cinco void for all or new,related,established,untracked,invalid )"
+spa64="$(echo $cinco modificar con vacio o new,related,established,untracked,invalid )"
+var65="$(echo config_output_state=new,related,established )"
+eng65="$(echo $cinco void for all or new,related,established,untracked,invalid )"
+spa65="$(echo $cinco modificar con vacio o new,related,established,untracked,invalid )"
+var66="$(echo config_input_bandwidth=12512 )"
+eng66="$(echo $cinco max input bandwidth in kbits/sec for all )"
+spa66="$(echo $cinco maximo entrada de ancho de banda en kbit/sec para todos )"
+var67="$(echo config_output_bandwidth=512 )"
+eng67="$(echo $cinco max output bandwidth in kbits/sec for each ip )"
+spa67="$(echo $cinco maximo salida de ancho de banda en kbits/sec para cada ip )"
+var68="$(echo config_input_maxconnect=72 )"
+eng68="$(echo $cinco max number for input simultaneous connections )"
+spa68="$(echo $cinco maximo numero de conexiones simultaneas de entrada )"
+var69="$(echo config_output_maxconnect=72 )"
+eng69="$(echo $cinco max number for output simultaneous connections )"
+spa69="$(echo $cinco maximo numero de conexiones simultaneas de salida )"
+var70="$(echo config_mac_whitelist=d4:12:43:01:36:2e )"
+eng70="$(echo $cinco allow this excepcitonal MAC-ADRESS )"
+spa70="$(echo $cinco permitir estos MAC-ADDRESS excepcionales )"
+var71="$(echo config_mac_blacklist=d4:12:43:01:36:2e )"
+eng71="$(echo $cinco drop this excepcional MAC-ADDRESS )"
+spa71="$(echo $cinco deniega estos MAC-ADDRESS excepcionales )"
+var72="$(echo config_net_vpn=wesnoth.org,sf.net )"
+eng72="$(echo $cinco allow this excepcitonal HOST/IP )"
+spa72="$(echo $cinco permitir estos HOST/IP excepcionales )"
+var73="$(echo config_net_blacklist=facebook.com,www.facebook.com )"
+eng73="$(echo $cinco drop this excepcional HOST/IP )"
+spa73="$(echo $cinco deniega estos HOST/IP excepcionales )"
+var74="$(echo config_output_uid=root )"
+eng74="$(echo $cinco allow out packages excepcional from this USER excepcional )"
+spa74="$(echo $cinco permite salida de paquetes de este USUARIO excepcional )"
+var75="$(echo config_output_gid=root )"
+eng75="$(echo $cinco allow out packages excepcional from this GROUP excepcional )"
+spa75="$(echo $cinco permite salida de paquetes de este GRUPO excepcional )"
+var76="$(echo config_others_protocols=icmp,igmp )"
+eng76="$(echo $cinco allow others protocols from /etc/protocolos )"
+spa76="$(echo $cinco permitir otros protocolos desde /etc/protocols )"
+var77="$(echo $cinco NET CLIENT AND NET SERVER $cinco )"
+eng77="$(echo $cinco Net to connect likes client or server )"
+spa77="$(echo $cinco Red para conectar como cliente o server )"
+var78="$(echo net_ipv4_client=0/0 )"
+eng78="$(echo $cinco the net to client ipv4, all is 0/0 )"
+spa78="$(echo $cinco la red cual cliente ipv4, todos es 0/0 )"
+var79="$(echo net_ipv4_server=0/0 )"
+eng79="$(echo $cinco the net to server ipv4, all is 0/0 )"
+spa79="$(echo $cinco la red cual servidor ipv4, todos es 0/0 )"
+var80="$(echo net_ipv6_client=::/0 )"
+eng80="$(echo $cinco the net to client ipv6, all is ::/0 )"
+spa80="$(echo $cinco la red cual cliente ipv6, todos es ::/0 )"
+var81="$(echo net_ipv6_server=::/0 )"
+eng81="$(echo $cinco the net to server ipv6, all is ::/0 )"
+spa81="$(echo $cinco la red cual servidor ipv6, todos es ::/0 )"
+var82="$(echo $cinco $cinco )"
+eng82="$(echo $cinco .......... END Optional options .......... .......... $cinco )"
+spa82="$(echo $cinco FINAL .......... Opciones opcionales .......... .......... $cinco )"
 ####
 ####
 ##########   english: continue with autogen defaults configs cfg
@@ -1475,218 +1484,218 @@ fs="$defaultfullcfg_spa"
 #### wizard mini-english
 ####
 ####
-echo $var0  &> $me
-echo $var1  $tabz $eng1  &>> $me
-echo $var2  $tabz $eng2  &>> $me
-echo $var3  $tabz $eng3  &>> $me
-echo $var4  $tabz $eng4  &>> $me
-echo $var5  $tabz $eng5  &>> $me
-echo $var6  $tabz $eng6  &>> $me
-echo $var7  $tabz $eng7  &>> $me
-echo $var8  $tabz $eng8  &>> $me
-echo $var9  $tabz $eng9  &>> $me
-echo $var10 $tabz $eng10 &>> $me
-echo $var11 $tabz $eng11 &>> $me
-echo $var12 $tabz $eng12 &>> $me
-echo $var13 $tabz $eng13 &>> $me
-echo $var14 $tabz $eng14 &>> $me
-echo $var15 $tabz $eng15 &>> $me
-echo $var16 $tabz $eng16 &>> $me
-echo $var17 $tabz $eng17 &>> $me
-echo $var18 $tabz $eng18 &>> $me
-echo $var19 $tabz $eng19 &>> $me
-echo $var20 $tabz $eng20 &>> $me
+echo -E "$var0"  &> $me
+echo -E "$var1"  "$tabz" "$eng1"  &>> "$me"
+echo -E "$var2"  "$tabz" "$eng2"  &>> "$me"
+echo -E "$var3"  "$tabz" "$eng3"  &>> "$me"
+echo -E "$var4"  "$tabz" "$eng4"  &>> "$me"
+echo -E "$var5"  "$tabz" "$eng5"  &>> "$me"
+echo -E "$var6"  "$tabz" "$eng6"  &>> "$me"
+echo -E "$var7"  "$tabz" "$eng7"  &>> "$me"
+echo -E "$var8"  "$tabz" "$eng8"  &>> "$me"
+echo -E "$var9"  "$tabz" "$eng9"  &>> "$me"
+echo -E "$var10" "$tabz" "$eng10" &>> "$me"
+echo -E "$var11" "$tabz" "$eng11" &>> "$me"
+echo -E "$var12" "$tabz" "$eng12" &>> "$me"
+echo -E "$var13" "$tabz" "$eng13" &>> "$me"
+echo -E "$var14" "$tabz" "$eng14" &>> "$me"
+echo -E "$var15" "$tabz" "$eng15" &>> "$me"
+echo -E "$var16" "$tabz" "$eng16" &>> "$me"
+echo -E "$var17" "$tabz" "$eng17" &>> "$me"
+echo -E "$var18" "$tabz" "$eng18" &>> "$me"
+echo -E "$var19" "$tabz" "$eng19" &>> "$me"
+echo -E "$var20" "$tabz" "$eng20" &>> "$me"
 ####
 ####
 #### wizard mini-spanish
 ####
 ####
-echo $var0  &> $ms
-echo $var1  $tabz $spa1  &>> $ms
-echo $var2  $tabz $spa2  &>> $ms
-echo $var3  $tabz $spa3  &>> $ms
-echo $var4  $tabz $spa4  &>> $ms
-echo $var5  $tabz $spa5  &>> $ms
-echo $var6  $tabz $spa6  &>> $ms
-echo $var7  $tabz $spa7  &>> $ms
-echo $var8  $tabz $spa8  &>> $ms
-echo $var9  $tabz $spa9  &>> $ms
-echo $var10 $tabz $spa10 &>> $ms
-echo $var11 $tabz $spa11 &>> $ms
-echo $var12 $tabz $spa12 &>> $ms
-echo $var13 $tabz $spa13 &>> $ms
-echo $var14 $tabz $spa14 &>> $ms
-echo $var15 $tabz $spa15 &>> $ms
-echo $var16 $tabz $spa16 &>> $ms
-echo $var17 $tabz $spa17 &>> $ms
-echo $var18 $tabz $spa18 &>> $ms
-echo $var19 $tabz $spa19 &>> $ms
-echo $var20 $tabz $spa20 &>> $ms
+echo "$var0"  &> "$ms"
+echo "$var1"  "$tabz" "$spa1"  &>> "$ms"
+echo "$var2"  "$tabz" "$spa2"  &>> "$ms"
+echo "$var3"  "$tabz" "$spa3"  &>> "$ms"
+echo "$var4"  "$tabz" "$spa4"  &>> "$ms"
+echo "$var5"  "$tabz" "$spa5"  &>> "$ms"
+echo "$var6"  "$tabz" "$spa6"  &>> "$ms"
+echo "$var7"  "$tabz" "$spa7"  &>> "$ms"
+echo "$var8"  "$tabz" "$spa8"  &>> "$ms"
+echo "$var9"  "$tabz" "$spa9"  &>> "$ms"
+echo "$var10" "$tabz" "$spa10" &>> "$ms"
+echo "$var11" "$tabz" "$spa11" &>> "$ms"
+echo "$var12" "$tabz" "$spa12" &>> "$ms"
+echo "$var13" "$tabz" "$spa13" &>> "$ms"
+echo "$var14" "$tabz" "$spa14" &>> "$ms"
+echo "$var15" "$tabz" "$spa15" &>> "$ms"
+echo "$var16" "$tabz" "$spa16" &>> "$ms"
+echo "$var17" "$tabz" "$spa17" &>> "$ms"
+echo "$var18" "$tabz" "$spa18" &>> "$ms"
+echo "$var19" "$tabz" "$spa19" &>> "$ms"
+echo "$var20" "$tabz" "$spa20" &>> "$ms"
 ####
 ####
 #### wizard full-english
 ####
 ####
-echo $var0  &> $fe
-echo $var1  $tabz $eng1  &>> $fe
-echo $var2  $tabz $eng2  &>> $fe
-echo $var3  $tabz $eng3  &>> $fe
-echo $var4  $tabz $eng4  &>> $fe
-echo $var5  $tabz $eng5  &>> $fe
-echo $var6  $tabz $eng6  &>> $fe
-echo $var7  $tabz $eng7  &>> $fe
-echo $var8  $tabz $eng8  &>> $fe
-echo $var9  $tabz $eng9  &>> $fe
-echo $var10 $tabz $eng10 &>> $fe
-echo $var11 $tabz $eng11 &>> $fe
-echo $var12 $tabz $eng12 &>> $fe
-echo $var13 $tabz $eng13 &>> $fe
-echo $var14 $tabz $eng14 &>> $fe
-echo $var15 $tabz $eng15 &>> $fe
-echo $var16 $tabz $eng16 &>> $fe
-echo $var17 $tabz $eng17 &>> $fe
-echo $var18 $tabz $eng18 &>> $fe
-echo $var19 $tabz $eng19 &>> $fe
-echo $var20 $tabz $eng20 &>> $fe
+echo -E "$var0"  &> "$fe"
+echo -E "$var1"  "$tabz" "$eng1"  &>> "$fe"
+echo -E "$var2"  "$tabz" "$eng2"  &>> "$fe"
+echo -E "$var3"  "$tabz" "$eng3"  &>> "$fe"
+echo -E "$var4"  "$tabz" "$eng4"  &>> "$fe"
+echo -E "$var5"  "$tabz" "$eng5"  &>> "$fe"
+echo -E "$var6"  "$tabz" "$eng6"  &>> "$fe"
+echo -E "$var7"  "$tabz" "$eng7"  &>> "$fe"
+echo -E "$var8"  "$tabz" "$eng8"  &>> "$fe"
+echo -E "$var9"  "$tabz" "$eng9"  &>> "$fe"
+echo -E "$var10" "$tabz" "$eng10" &>> "$fe"
+echo -E "$var11" "$tabz" "$eng11" &>> "$fe"
+echo -E "$var12" "$tabz" "$eng12" &>> "$fe"
+echo -E "$var13" "$tabz" "$eng13" &>> "$fe"
+echo -E "$var14" "$tabz" "$eng14" &>> "$fe"
+echo -E "$var15" "$tabz" "$eng15" &>> "$fe"
+echo -E "$var16" "$tabz" "$eng16" &>> "$fe"
+echo -E "$var17" "$tabz" "$eng17" &>> "$fe"
+echo -E "$var18" "$tabz" "$eng18" &>> "$fe"
+echo -E "$var19" "$tabz" "$eng19" &>> "$fe"
+echo -E "$var20" "$tabz" "$eng20" &>> "$fe"
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo $var30 $tabz $eng30 &>> $fe
-echo $var31 $tabz $eng31 &>> $fe
-echo $var32 $tabz $eng32 &>> $fe
-echo $var33 $tabz $eng33 &>> $fe
-echo $var34 $tabz $eng34 &>> $fe
-echo $var35 $tabz $eng35 &>> $fe
-echo $var36 $tabz $eng36 &>> $fe
-echo $var37 $tabz $eng37 &>> $fe
-echo $var38 $tabz $eng38 &>> $fe
-echo $var39 $tabz $eng39 &>> $fe
-echo $var40 $tabz $eng40 &>> $fe
-echo $var41 $tabz $eng41 &>> $fe
-echo $var42 $tabz $eng42 &>> $fe
-echo $var43 $tabz $eng43 &>> $fe
-echo $var44 $tabz $eng44 &>> $fe
-echo $var45 $tabz $eng45 &>> $fe
-echo $var46 $tabz $eng46 &>> $fe
-echo $var47 $tabz $eng47 &>> $fe
-echo $var48 $tabz $eng48 &>> $fe
-echo $var49 $tabz $eng49 &>> $fe
-echo $var50 $tabz $eng50 &>> $fe
-echo $var51 $tabz $eng51 &>> $fe
-echo $var52 $tabz $eng52 &>> $fe
-echo $var53 $tabz $eng53 &>> $fe
-echo $var54 $tabz $eng54 &>> $fe
-echo $var55 $tabz $eng55 &>> $fe
-echo $var56 $tabz $eng56 &>> $fe
-echo $var57 $tabz $eng57 &>> $fe
-echo $var58 $tabz $eng58 &>> $fe
-echo $var59 $tabz $eng59 &>> $fe
-echo $var60 $tabz $eng60 &>> $fe
-echo $var61 $tabz $eng61 &>> $fe
-echo $var62 $tabz $eng62 &>> $fe
-echo $var63 $tabz $eng63 &>> $fe
-echo $var64 $tabz $eng64 &>> $fe
-echo $var65 $tabz $eng65 &>> $fe
-echo $var66 $tabz $eng66 &>> $fe
-echo $var67 $tabz $eng67 &>> $fe
-echo $var68 $tabz $eng68 &>> $fe
-echo $var69 $tabz $eng69 &>> $fe
-echo $var70 $tabz $eng70 &>> $fe
-echo $var71 $tabz $eng71 &>> $fe
-echo $var72 $tabz $eng72 &>> $fe
-echo $var73 $tabz $eng73 &>> $fe
-echo $var74 $tabz $eng74 &>> $fe
-echo $var75 $tabz $eng75 &>> $fe
-echo $var76 $tabz $eng76 &>> $fe
-echo $var77 $tabz $eng77 &>> $fe
-echo $var78 $tabz $eng78 &>> $fe
-echo $var79 $tabz $eng79 &>> $fe
-echo $var80 $tabz $eng80 &>> $fe
-echo $var81 $tabz $eng81 &>> $fe
-echo $var82 $tabz $eng82 &>> $fe
+echo -E "$var30" "$tabz" "$eng30" &>> "$fe"
+echo -E "$var31" "$tabz" "$eng31" &>> "$fe"
+echo -E "$var32" "$tabz" "$eng32" &>> "$fe"
+echo -E "$var33" "$tabz" "$eng33" &>> "$fe"
+echo -E "$var34" "$tabz" "$eng34" &>> "$fe"
+echo -E "$var35" "$tabz" "$eng35" &>> "$fe"
+echo -E "$var36" "$tabz" "$eng36" &>> "$fe"
+echo -E "$var37" "$tabz" "$eng37" &>> "$fe"
+echo -E "$var38" "$tabz" "$eng38" &>> "$fe"
+echo -E "$var39" "$tabz" "$eng39" &>> "$fe"
+echo -E "$var40" "$tabz" "$eng40" &>> "$fe"
+echo -E "$var41" "$tabz" "$eng41" &>> "$fe"
+echo -E "$var42" "$tabz" "$eng42" &>> "$fe"
+echo -E "$var43" "$tabz" "$eng43" &>> "$fe"
+echo -E "$var44" "$tabz" "$eng44" &>> "$fe"
+echo -E "$var45" "$tabz" "$eng45" &>> "$fe"
+echo -E "$var46" "$tabz" "$eng46" &>> "$fe"
+echo -E "$var47" "$tabz" "$eng47" &>> "$fe"
+echo -E "$var48" "$tabz" "$eng48" &>> "$fe"
+echo -E "$var49" "$tabz" "$eng49" &>> "$fe"
+echo -E "$var50" "$tabz" "$eng50" &>> "$fe"
+echo -E "$var51" "$tabz" "$eng51" &>> "$fe"
+echo -E "$var52" "$tabz" "$eng52" &>> "$fe"
+echo -E "$var53" "$tabz" "$eng53" &>> "$fe"
+echo -E "$var54" "$tabz" "$eng54" &>> "$fe"
+echo -E "$var55" "$tabz" "$eng55" &>> "$fe"
+echo -E "$var56" "$tabz" "$eng56" &>> "$fe"
+echo -E "$var57" "$tabz" "$eng57" &>> "$fe"
+echo -E "$var58" "$tabz" "$eng58" &>> "$fe"
+echo -E "$var59" "$tabz" "$eng59" &>> "$fe"
+echo -E "$var60" "$tabz" "$eng60" &>> "$fe"
+echo -E "$var61" "$tabz" "$eng61" &>> "$fe"
+echo -E "$var62" "$tabz" "$eng62" &>> "$fe"
+echo -E "$var63" "$tabz" "$eng63" &>> "$fe"
+echo -E "$var64" "$tabz" "$eng64" &>> "$fe"
+echo -E "$var65" "$tabz" "$eng65" &>> "$fe"
+echo -E "$var66" "$tabz" "$eng66" &>> "$fe"
+echo -E "$var67" "$tabz" "$eng67" &>> "$fe"
+echo -E "$var68" "$tabz" "$eng68" &>> "$fe"
+echo -E "$var69" "$tabz" "$eng69" &>> "$fe"
+echo -E "$var70" "$tabz" "$eng70" &>> "$fe"
+echo -E "$var71" "$tabz" "$eng71" &>> "$fe"
+echo -E "$var72" "$tabz" "$eng72" &>> "$fe"
+echo -E "$var73" "$tabz" "$eng73" &>> "$fe"
+echo -E "$var74" "$tabz" "$eng74" &>> "$fe"
+echo -E "$var75" "$tabz" "$eng75" &>> "$fe"
+echo -E "$var76" "$tabz" "$eng76" &>> "$fe"
+echo -E "$var77" "$tabz" "$eng77" &>> "$fe"
+echo -E "$var78" "$tabz" "$eng78" &>> "$fe"
+echo -E "$var79" "$tabz" "$eng79" &>> "$fe"
+echo -E "$var80" "$tabz" "$eng80" &>> "$fe"
+echo -E "$var81" "$tabz" "$eng81" &>> "$fe"
+echo -E "$var82" "$tabz" "$eng82" &>> "$fe"
 ####
 ####
 #### wizard full-spanish
 ####
 ####
-echo $var0  &> $fs
-echo $var1  $tabz $spa1 &>> $fs
-echo $var2  $tabz $spa2 &>> $fs
-echo $var3  $tabz $spa3 &>> $fs
-echo $var4  $tabz $spa4 &>> $fs
-echo $var5  $tabz $spa5 &>> $fs
-echo $var6  $tabz $spa6 &>> $fs
-echo $var7  $tabz $spa7 &>> $fs
-echo $var8  $tabz $spa8 &>> $fs
-echo $var9  $tabz $spa9 &>> $fs
-echo $var10 $tabz $spa10 &>> $fs
-echo $var11 $tabz $spa11 &>> $fs
-echo $var12 $tabz $spa12 &>> $fs
-echo $var13 $tabz $spa13 &>> $fs
-echo $var14 $tabz $spa14 &>> $fs
-echo $var15 $tabz $spa15 &>> $fs
-echo $var16 $tabz $spa16 &>> $fs
-echo $var17 $tabz $spa17 &>> $fs
-echo $var18 $tabz $spa18 &>> $fs
-echo $var19 $tabz $spa19 &>> $fs
-echo $var20 $tabz $spa20 &>> $fs
+echo -E "$var0"  &> "$fs"
+echo -E "$var1"  "$tabz" "$spa1" &>> "$fs"
+echo -E "$var2"  "$tabz" "$spa2" &>> "$fs"
+echo -E "$var3"  "$tabz" "$spa3" &>> "$fs"
+echo -E "$var4"  "$tabz" "$spa4" &>> "$fs"
+echo -E "$var5"  "$tabz" "$spa5" &>> "$fs"
+echo -E "$var6"  "$tabz" "$spa6" &>> "$fs"
+echo -E "$var7"  "$tabz" "$spa7" &>> "$fs"
+echo -E "$var8"  "$tabz" "$spa8" &>> "$fs"
+echo -E "$var9"  "$tabz" "$spa9" &>> "$fs"
+echo -E "$var10" "$tabz" "$spa10" &>> "$fs"
+echo -E "$var11" "$tabz" "$spa11" &>> "$fs"
+echo -E "$var12" "$tabz" "$spa12" &>> "$fs"
+echo -E "$var13" "$tabz" "$spa13" &>> "$fs"
+echo -E "$var14" "$tabz" "$spa14" &>> "$fs"
+echo -E "$var15" "$tabz" "$spa15" &>> "$fs"
+echo -E "$var16" "$tabz" "$spa16" &>> "$fs"
+echo -E "$var17" "$tabz" "$spa17" &>> "$fs"
+echo -E "$var18" "$tabz" "$spa18" &>> "$fs"
+echo -E "$var19" "$tabz" "$spa19" &>> "$fs"
+echo -E "$var20" "$tabz" "$spa20" &>> "$fs"
 ##### english: advance variables
 ##### spanish: avanzadas variables
-echo $var30 $tabz $spa30 &>> $fs
-echo $var31 $tabz $spa31 &>> $fs
-echo $var32 $tabz $spa32 &>> $fs
-echo $var33 $tabz $spa33 &>> $fs
-echo $var34 $tabz $spa34 &>> $fs
-echo $var35 $tabz $spa35 &>> $fs
-echo $var36 $tabz $spa36 &>> $fs
-echo $var37 $tabz $spa37 &>> $fs
-echo $var38 $tabz $spa38 &>> $fs
-echo $var39 $tabz $spa39 &>> $fs
-echo $var40 $tabz $spa40 &>> $fs
-echo $var41 $tabz $spa41 &>> $fs
-echo $var42 $tabz $spa42 &>> $fs
-echo $var43 $tabz $spa43 &>> $fs
-echo $var44 $tabz $spa44 &>> $fs
-echo $var45 $tabz $spa45 &>> $fs
-echo $var46 $tabz $spa46 &>> $fs
-echo $var47 $tabz $spa47 &>> $fs
-echo $var48 $tabz $spa48 &>> $fs
-echo $var49 $tabz $spa49 &>> $fs
-echo $var50 $tabz $spa50 &>> $fs
-echo $var51 $tabz $spa51 &>> $fs
-echo $var52 $tabz $spa52 &>> $fs
-echo $var53 $tabz $spa53 &>> $fs
-echo $var54 $tabz $spa54 &>> $fs
-echo $var55 $tabz $spa55 &>> $fs
-echo $var56 $tabz $spa56 &>> $fs
-echo $var57 $tabz $spa57 &>> $fs
-echo $var58 $tabz $spa58 &>> $fs
-echo $var59 $tabz $spa59 &>> $fs
-echo $var60 $tabz $spa60 &>> $fs
-echo $var61 $tabz $spa61 &>> $fs
-echo $var62 $tabz $spa62 &>> $fs
-echo $var63 $tabz $spa63 &>> $fs
-echo $var64 $tabz $spa64 &>> $fs
-echo $var65 $tabz $spa65 &>> $fs
-echo $var66 $tabz $spa66 &>> $fs
-echo $var67 $tabz $spa67 &>> $fs
-echo $var68 $tabz $spa68 &>> $fs
-echo $var69 $tabz $spa69 &>> $fs
-echo $var70 $tabz $spa70 &>> $fs
-echo $var71 $tabz $spa71 &>> $fs
-echo $var72 $tabz $spa72 &>> $fs
-echo $var73 $tabz $spa73 &>> $fs
-echo $var74 $tabz $spa74 &>> $fs
-echo $var75 $tabz $spa75 &>> $fs
-echo $var76 $tabz $spa76 &>> $fs
-echo $var77 $tabz $spa77 &>> $fs
-echo $var78 $tabz $spa78 &>> $fs
-echo $var79 $tabz $spa79 &>> $fs
-echo $var80 $tabz $spa80 &>> $fs
-echo $var81 $tabz $spa81 &>> $fs
-echo $var82 $tabz $spa82 &>> $fs
+echo -E "$var30" "$tabz" "$spa30" &>> "$fs"
+echo -E "$var31" "$tabz" "$spa31" &>> "$fs"
+echo -E "$var32" "$tabz" "$spa32" &>> "$fs"
+echo -E "$var33" "$tabz" "$spa33" &>> "$fs"
+echo -E "$var34" "$tabz" "$spa34" &>> "$fs"
+echo -E "$var35" "$tabz" "$spa35" &>> "$fs"
+echo -E "$var36" "$tabz" "$spa36" &>> "$fs"
+echo -E "$var37" "$tabz" "$spa37" &>> "$fs"
+echo -E "$var38" "$tabz" "$spa38" &>> "$fs"
+echo -E "$var39" "$tabz" "$spa39" &>> "$fs"
+echo -E "$var40" "$tabz" "$spa40" &>> "$fs"
+echo -E "$var41" "$tabz" "$spa41" &>> "$fs"
+echo -E "$var42" "$tabz" "$spa42" &>> "$fs"
+echo -E "$var43" "$tabz" "$spa43" &>> "$fs"
+echo -E "$var44" "$tabz" "$spa44" &>> "$fs"
+echo -E "$var45" "$tabz" "$spa45" &>> "$fs"
+echo -E "$var46" "$tabz" "$spa46" &>> "$fs"
+echo -E "$var47" "$tabz" "$spa47" &>> "$fs"
+echo -E "$var48" "$tabz" "$spa48" &>> "$fs"
+echo -E "$var49" "$tabz" "$spa49" &>> "$fs"
+echo -E "$var50" "$tabz" "$spa50" &>> "$fs"
+echo -E "$var51" "$tabz" "$spa51" &>> "$fs"
+echo -E "$var52" "$tabz" "$spa52" &>> "$fs"
+echo -E "$var53" "$tabz" "$spa53" &>> "$fs"
+echo -E "$var54" "$tabz" "$spa54" &>> "$fs"
+echo -E "$var55" "$tabz" "$spa55" &>> "$fs"
+echo -E "$var56" "$tabz" "$spa56" &>> "$fs"
+echo -E "$var57" "$tabz" "$spa57" &>> "$fs"
+echo -E "$var58" "$tabz" "$spa58" &>> "$fs"
+echo -E "$var59" "$tabz" "$spa59" &>> "$fs"
+echo -E "$var60" "$tabz" "$spa60" &>> "$fs"
+echo -E "$var61" "$tabz" "$spa61" &>> "$fs"
+echo -E "$var62" "$tabz" "$spa62" &>> "$fs"
+echo -E "$var63" "$tabz" "$spa63" &>> "$fs"
+echo -E "$var64" "$tabz" "$spa64" &>> "$fs"
+echo -E "$var65" "$tabz" "$spa65" &>> "$fs"
+echo -E "$var66" "$tabz" "$spa66" &>> "$fs"
+echo -E "$var67" "$tabz" "$spa67" &>> "$fs"
+echo -E "$var68" "$tabz" "$spa68" &>> "$fs"
+echo -E "$var69" "$tabz" "$spa69" &>> "$fs"
+echo -E "$var70" "$tabz" "$spa70" &>> "$fs"
+echo -E "$var71" "$tabz" "$spa71" &>> "$fs"
+echo -E "$var72" "$tabz" "$spa72" &>> "$fs"
+echo -E "$var73" "$tabz" "$spa73" &>> "$fs"
+echo -E "$var74" "$tabz" "$spa74" &>> "$fs"
+echo -E "$var75" "$tabz" "$spa75" &>> "$fs"
+echo -E "$var76" "$tabz" "$spa76" &>> "$fs"
+echo -E "$var77" "$tabz" "$spa77" &>> "$fs"
+echo -E "$var78" "$tabz" "$spa78" &>> "$fs"
+echo -E "$var79" "$tabz" "$spa79" &>> "$fs"
+echo -E "$var80" "$tabz" "$spa80" &>> "$fs"
+echo -E "$var81" "$tabz" "$spa81" &>> "$fs"
+echo -E "$var82" "$tabz" "$spa82" &>> "$fs"
 ####
 ####
-echo " [  ok  ] [ Wizard and configs cfg templates regenerated ]"
+echo "# [  ok  ] [ Wizard and configs cfg templates regenerated ]"
 exit ; fi
 ####
 ####
@@ -2505,7 +2514,7 @@ fi
 #### :rutina-inicial-mini-options:
 ####
 ####
-if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
+if [ "$first_option" = "options-mini" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options.md ] || ||"
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
@@ -2529,7 +2538,7 @@ echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_fwiptables options-help             |  Show all options to help informations          "
-echo "$text_md      $cmd_fwiptables examples                 |  Show examples                                  "
+echo "$text_md      $cmd_fwiptables options-examples         |  Show examples                                  "
 exit ; fi
 ####
 ####
@@ -2539,7 +2548,7 @@ exit ; fi
 #### :rutina-inicial-full-options:
 ####
 ####
-if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
+if [ "$first_option" = "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                      "
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
@@ -2575,7 +2584,7 @@ echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
 echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
-echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
+echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                          "
@@ -2656,7 +2665,7 @@ echo "$text_md    tool-game         | game-word game-number game-rgb game-hex   
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
 echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
-echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                     "
+echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                     "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
@@ -2700,13 +2709,13 @@ exit ; fi
 ####
 ####
 #### :rutina-final-options-show:
-##########    english: examples: some example    ##########
-##########    spanish: examples: algun ejemplo   ##########
-#### :rutina-inicial-examples:
+##########    english: options-examples: some example    ##########
+##########    spanish: options-examples: algun ejemplo   ##########
+#### :rutina-inicial-options-examples:
 ####
 ####
-if [ "$first_option" = "examples" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List examples ] [ examples.md ] || ||"
+if [ "$first_option" = "options-examples" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ List examples ] [ options-examples.md ] || ||"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
 echo "$title_md                                      [ examples ]                                        "
@@ -2730,7 +2739,7 @@ echo "$text_md    $cmd_fwiptables speed-ip4                |  get info about spe
 echo "$text_md    $cmd_fwiptables info-listen              |  show info about listen sockets             "
 echo "$text_md    $cmd_fwiptables game-word                |  game with words                            "
 echo "$text_md    $cmd_fwiptables upgrade                  |  upgrade $cmd_fwiptables                    "
-echo "$text_md    $cmd_fwiptables blacklist-list           |  List addblocker to blacklist               "
+echo "$text_md    $cmd_fwiptables addblock-list            |  List addblocker to blacklist               "
 echo "$text_md    $cmd_fwiptables names                    |  List firewall saved                        "
 echo "$text_md    $cmd_fwiptables code lsof                |  source code to option lsof                 "
 echo "$text_md    $cmd_fwiptables radio-mp3 url..          |  connect to url:// mp3                      "
@@ -2741,7 +2750,7 @@ echo "$text_md    $cmd_fwiptables depends                  |  depends to $cmd_fw
 exit; fi
 ####
 ####
-#### :rutina-final-examples:
+#### :rutina-final-options-examples:
 ##########    english: all-options: all options          ##########
 ##########    spanish: all-options: todas las opciones   ##########
 #### :rutina-inicial-all-options:
@@ -2845,7 +2854,7 @@ echo "$brake_md"
 $cmd_fwiptables tool-install
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables tool-blacklist
+$cmd_fwiptables tool-addblock
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-dev
@@ -2964,7 +2973,7 @@ echo "$text_md $tab_lang_spanish                  Herramienta de autorizacion a 
 echo "$text_md $tab tool-install"
 echo "$text_md $tab_lang_english                  Tool to install and upgrade fwiptables"
 echo "$text_md $tab_lang_spanish                  Herramienta para instalar y actualizar fwiptables"
-echo "$text_md $tab tool-blacklist"
+echo "$text_md $tab tool-addblock"
 echo "$text_md $tab_lang_english                  Tool for block dangerous sites"
 echo "$text_md $tab_lang_spanish                  Herramienta para bloquear peligrosos sitios"
 echo "$text_md $tab tool-dev"
@@ -3703,30 +3712,30 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-install:
-##########    english: tool-blacklist: options   ##########
-##########    spanish: tool-blacklist: opciones  ##########
-#### :rutina-inicial-tool-blacklist:
+##########    english: tool-addblock: options   ##########
+##########    spanish: tool-addblock: opciones  ##########
+#### :rutina-inicial-tool-addblock:
 ####
 ####
-if [ "$first_option" = "tool-blacklist" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-blacklist.md ] || ||"
+if [ "$first_option" = "tool-addblock" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-addblock.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool blacklist ]"
 echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
 echo "$text_md"
-echo "$text_md $tab blacklist-list"
+echo "$text_md $tab addblock-list"
 echo "$text_md $tab_lang_english               : Options list to block at dangerous sites from /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
-echo "$text_md $tab blacklist-on"
+echo "$text_md $tab addblock-on"
 echo "$text_md $tab_lang_english               : Active a list to block dangerous sites in /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Activa una lista para bloquear sitios peligrosos in /etc/hosts"
-echo "$text_md $tab blacklist-off"
+echo "$text_md $tab addblock-off"
 echo "$text_md $tab_lang_english               : Return to default /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Vuelve al archivo por defecto /etc/hosts"
 exit; fi
 ####
 ####
-#### :rutina-final-tool-blacklist:
+#### :rutina-final-tool-addblock:
 ##########    english: tool-dev: options   ##########
 ##########    spanish: tool-dev: opciones  ########## 
 #### :rutina-inicial-tool-dev:
@@ -4381,7 +4390,7 @@ case "$selection" in
 "15 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
 "16 Tool util")$cmd_fwiptables gui-menu-tool-util ; exit ;;
 "17 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
-"18 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
+"18 Tool blacklist")$cmd_fwiptables gui-menu-tool-addblock ; exit ;;
 "19 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
 "20 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
 "21 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
@@ -5062,29 +5071,29 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-install:
-##########    english: gui-menu-tool-blacklist: gui with menu   ##########
-##########    spanish: gui-menu-tool-blacklist: gui con menu    ##########
-#### :rutina-inicial-gui-menu-tool-blacklist:
+##########    english: gui-menu-tool-addblock: gui with menu   ##########
+##########    spanish: gui-menu-tool-addblock: gui con menu    ##########
+#### :rutina-inicial-gui-menu-tool-addblock:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-blacklist" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "blacklist-list" "blacklist-list info" \
-"blacklist-on" "blacklist-off" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" \
+"addblock-on" "addblock-off" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool blacklist ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu;;
-"Gui Help Menu") $cmd_fwiptables -gui help tool-blacklist ;;
-"Gui Info Menu") $cmd_fwiptables -gui info tool-blacklist ;;
-"blacklist-list")$cmd_fwiptables -gui blacklist-list;;
-"blacklist-list info")$cmd_fwiptables -gui blacklist-list info ;;
-"blacklist-on")
+"Gui Help Menu") $cmd_fwiptables -gui help tool-addblock ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-addblock ;;
+"addblock-list")$cmd_fwiptables -gui addblock-list;;
+"addblock-list info")$cmd_fwiptables -gui addblock-list info ;;
+"addblock-on")
  archivo="$($command_zenity  $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
- $cmd_fwiptables -gui blacklist-on $archivo;;
-"blacklist-off") $cmd_fwiptables -gui blacklist-off;;
+ $cmd_fwiptables -gui addblock-on $archivo;;
+"addblock-off") $cmd_fwiptables -gui addblock-off;;
 esac
 ####
 ####
@@ -5096,7 +5105,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-tool-blacklist:
+#### :rutina-final-gui-menu-tool-addblock:
 ##########    english: gui-menu-tool-dev: gui with menu   ##########
 ##########    spanish: gui-menu-tool-dev: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-dev:
@@ -5598,10 +5607,10 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 1703  "$tab upgrade" \
 1704  "$tab intro" \
 1800 "$quad [ Tool Blacklist ] $cinco" \
-1801  "$tab blacklist-list" \
-1802  "$tab blacklist-list info" \
-1803  "$tab blacklist-on" \
-1804  "$tab blacklist-off" \
+1801  "$tab addblock-list" \
+1802  "$tab addblock-list info" \
+1803  "$tab addblock-on" \
+1804  "$tab addblock-off" \
 1900 "$quad [ Tool Dev ] $cinco" \
 1901  "$tab new-versions" \
 1902  "$tab dev-version" \
@@ -5674,7 +5683,7 @@ case "$menuprincipal" in
 1500) clear ; $cmd_fwiptables cli tool-game ;;
 1600) clear ; $cmd_fwiptables cli tool-util ;;
 1700) clear ; $cmd_fwiptables cli tool-install ;;
-1800) clear ; $cmd_fwiptables cli tool-blacklist ;;
+1800) clear ; $cmd_fwiptables cli tool-addblock ;;
 1900) clear ; $cmd_fwiptables cli tool-dev ;;
 2000) clear ; $cmd_fwiptables cli tool-speed ;;
 2100) clear ; $cmd_fwiptables cli show-hardware ;;
@@ -5855,12 +5864,12 @@ $cmd_fwiptables txt radio-mp3 $archivo ;;
 1702) clear ; $cmd_fwiptables cli howto-upgrade ;;
 1703) clear ; $cmd_fwiptables cli upgrade ;;
 1704) clear ; $cmd_fwiptables cli intro ;;
-1801) clear ; $cmd_fwiptables cli blacklist-list ;;
-1802) clear ; $cmd_fwiptables cli blacklist-list info ;;
+1801) clear ; $cmd_fwiptables cli addblock-list ;;
+1802) clear ; $cmd_fwiptables cli addblock-list info ;;
 1803) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
 --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
-clear ; $cmd_fwiptables blacklist-on $resolve ;;
-1804) clear ; $cmd_fwiptables cli blacklist-off ;;
+clear ; $cmd_fwiptables addblock-on $resolve ;;
+1804) clear ; $cmd_fwiptables cli addblock-off ;;
 1901) clear ; $cmd_fwiptables cli new-versions ;;
 1902) clear ; $cmd_fwiptables cli dev-version ;;
 1903) clear ; $cmd_fwiptables cli dev-changes ;;
@@ -6155,12 +6164,12 @@ exit;  fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
-##########      english: blacklist-list: lists for hosts dropped       ##########
-##########      spanish: blacklist-list: listas para hosts denegados   ##########
-#### :rutina-inicial-blacklist-list:
+##########      english: addblock-list: lists for hosts dropped       ##########
+##########      spanish: addblock-list: listas para hosts denegados   ##########
+#### :rutina-inicial-addblock-list:
 ####
 ####
-if [ "$first_option" = "blacklist-list" ]; then echo $give_cover
+if [ "$first_option" = "addblock-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show blacklist servers ] || ||"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -6172,8 +6181,8 @@ echo
 echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
 echo "$tab [ actually ] [ Show the file: $cmd_fwiptables hosts ]"
 echo
-echo "$tab [   info:  ] [ Get server lines numbers total ] [ $cmd_fwiptables blacklist-list info ]"
-echo "$tab [ change:  ] [ $cmd_fwiptables blacklist-on name-bl ] OR [ $cmd_fwiptables blacklist-off ]" 
+echo "$tab [   info:  ] [ Get server lines numbers total ] [ $cmd_fwiptables addblock-list info ]"
+echo "$tab [ change:  ] [ $cmd_fwiptables addblock-on name-bl ] OR [ $cmd_fwiptables addblock-off ]" 
 echo
 echo "$tab"
 echo "$tab"
@@ -6209,21 +6218,21 @@ echo ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-list:
-##########    english: blacklist-on: Active one list for drop hosts        ##########
-##########    spanish: blacklist-on: Activa una lista para host denegados  ##########
-#### :rutina-inicial-blacklist-on:
+#### :rutina-final-addblock-list:
+##########    english: addblock-on: Active one list for drop hosts        ##########
+##########    spanish: addblock-on: Activa una lista para host denegados  ##########
+#### :rutina-inicial-addblock-on:
 ####
 ####
-if [ "$first_option" = "blacklist-on" ]; then echo $give_cover
+if [ "$first_option" = "addblock-on" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Configure blacklist server ] || ||"
 echo
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched without options ] [ $cmd_fwiptables blacklist-list ]"
+echo "$tab [ Launched without options ] [ $cmd_fwiptables addblock-list ]"
 echo
-$cmd_fwiptables blacklist-list
+$cmd_fwiptables addblock-list
 echo
 exit; fi
 ####
@@ -6237,48 +6246,48 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 if [ "$second_option" = "fademind" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
-$cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.fademind >> /etc/hosts
+$cmd_fwiptables addblock-off &> /dev/null
+cat $directory_temporal/hosts.fademind | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
-$cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.adaway >> /etc/hosts
+$cmd_fwiptables addblock-off &> /dev/null
+cat $directory_temporal/hosts.adaway | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
-$cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.mvps >> /etc/hosts
+$cmd_fwiptables addblock-off &> /dev/null
+cat $directory_temporal/hosts.mvps | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
-$cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.stevenblack >> /etc/hosts
+$cmd_fwiptables addblock-off &> /dev/null
+cat $directory_temporal/hosts.stevenblack | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
-echo "$tab [ Invalid option ] [ See: $cmd_fwiptables blacklist-list ]"
+echo "$tab [ Invalid option ] [ See: $cmd_fwiptables addblock-list ]"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-on:
-##########    english: blacklist-off: Deactive lists from drop hosts       ##########
-##########    spanish: blacklist-off: Desactiva listas de denegadas hosts  ##########
-#### :rutina-inicial-blacklist-off:
+#### :rutina-final-addblock-on:
+##########    english: addblock-off: Deactive lists from drop hosts       ##########
+##########    spanish: addblock-off: Desactiva listas de denegadas hosts  ##########
+#### :rutina-inicial-addblock-off:
 ####
 ####
-if [ "$first_option" = "blacklist-off" ]; then echo $give_cover
+if [ "$first_option" = "addblock-off" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ] || ||"
 echo
 echo $directory_temporal
@@ -6286,7 +6295,7 @@ echo $cincuenta > $directory_temporal/$first_option-hosts
 echo "## ip v4 loopback ##" >> $directory_temporal/$first_option-hosts
 echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> $directory_temporal/$first_option-hosts
 echo "## ip v6 loopback ##" >> $directory_temporal/$first_option-hosts
-echo "::1      localhost-ip6 localhost localhost.localdomain" >> $directory_temporal/$first_option-hosts
+echo "::1      localhost-ip6 localhost.localdomain" >> $directory_temporal/$first_option-hosts
 echo "ff02::1 ip6-allnodes" >> $directory_temporal/$first_option-hosts
 echo "ff02::2 ip6-allrouters"  >> $directory_temporal/$first_option-hosts
 echo $cincuenta >> $directory_temporal/$first_option-hosts
@@ -6296,7 +6305,7 @@ cat  /etc/hosts
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-off:
+#### :rutina-final-addblock-off:
 ##########    english: eraserules: Erase rules option   ##########
 ##########    spanish: eraserules: Opcion borra reglas  ##########
 #### :rutina-inicial-eraserules:
@@ -6615,7 +6624,7 @@ $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6650,7 +6659,7 @@ $command_ip6tables_legacy -v -L $list_rules_conceptual
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6710,7 +6719,7 @@ $command_iptables_legacy -t filter -v -L -n
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo " [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
 echo " [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -10345,7 +10354,7 @@ if [ "$second_option" = "tool-icmp" ]; then $cmd_fwiptables tool-icmp ; exit ; f
 if [ "$second_option" = "tool-nmap" ]; then $cmd_fwiptables tool-nmap ; exit ; fi
 if [ "$second_option" = "tool-sudofw" ]; then $cmd_fwiptables tool-sudofw ; exit ; fi
 if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
-if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
+if [ "$second_option" = "tool-addblock" ]; then $cmd_fwiptables tool-addblock ; exit ; fi
 if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
 if [ "$second_option" = "tool-speed" ]; then $cmd_fwiptables tool-speed ; exit ; fi
 if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
@@ -10366,9 +10375,9 @@ echo "$tab" "$tab"  "$tab $tab"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
 echo "$tab" "$tab"  " options-firewall   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
-echo "$tab" "$tab"  "     options-tool   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
+echo "$tab" "$tab"  "     options-tool   |  tool-sockets      tool-forward   tool-tcp           tool-udp        "
 echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudofw        tool-game       "
-echo "$tab" "$tab"  "                       tool-speed       tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "                       tool-speed        tool-install   tool-addblock      tool-dev        "
 echo "$tab" "$tab"  "                       tool-connect"
 echo "$tab" "$tab"  "     options-show   |  show-hardware     show-etc       show-log         help-about      "
 echo "$tab" "$tab"  "                       help-help"
@@ -10614,9 +10623,9 @@ echo "$text_md       clean-tmp : Remove temporal files of fwiptables."
 echo "$text_md"
 echo "$title_md         [ Tool blacklist ]"
 echo "$text_md"
-echo "$text_md  blacklist-list : List options to block dangerous hosts."
-echo "$text_md    blacklist-on : Write one /etc/hosts with block a dangerous sites."
-echo "$text_md   blacklist-off : Return to /etc/hosts for default."
+echo "$text_md  addblock-list : List options to block dangerous hosts."
+echo "$text_md    addblock-on : Write one /etc/hosts with block a dangerous sites."
+echo "$text_md   addblock-off : Return to /etc/hosts for default."
 echo "$text_md"
 echo "$title_md         [ Tool computer ]"
 echo "$text_md"
@@ -10965,9 +10974,9 @@ echo "$text_md      clean-tmp : borra archivos temporales de $name_fwiptables."
 echo "$text_md"
 echo "$title_md [ Herramienta de lista de bloqueo ]."
 echo "$text_md"
-echo "$text_md  blacklist-list : Lista de opciones para bloquear hosts peligrosas."
-echo "$text_md    blacklist-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
-echo "$text_md   blacklist-off : Vuelve a /etc/hosts por defecto."
+echo "$text_md  addblock-list : Lista de opciones para bloquear hosts peligrosas."
+echo "$text_md    addblock-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
+echo "$text_md   addblock-off : Vuelve a /etc/hosts por defecto."
 echo "$text_md"
 echo "$title_md [ Herramienta de desarrollador ]."
 echo "$text_md"
@@ -12365,22 +12374,22 @@ for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12388,22 +12397,22 @@ $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTP
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A INPUT  \
 -s $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A OUTPUT \
 -d $one_blacklist -j DROP \
--m comment --comment "net blacklist" &> /dev/null
+-m comment --comment "blacklist $one_blacklist" &> /dev/null
 done
 #### 
 ####
@@ -12417,22 +12426,22 @@ for one_vpn in $(echo $config_net_vpn | $command_sed 's/,/ /g')
 do
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_vpn $command_iptables_legacy  -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 #### ipv6
@@ -12440,22 +12449,22 @@ $allow_ipv4 $allow_nft    $allow_net_vpn $command_iptables_nft     -A  OUTPUT \
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_vpn $command_ip6tables_legacy -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  INPUT  \
 -s $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_vpn $command_ip6tables_nft    -A  OUTPUT \
 -d $one_vpn -j ACCEPT \
--m comment --comment "net vpn $one_vpn" &> /dev/null
+-m comment --comment "vpn $one_vpn" &> /dev/null
 done
 ####
 ####

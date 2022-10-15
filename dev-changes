@@ -3,15 +3,17 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
+ 01. 
 
- 06. 
+ cambios en dev-fwiptables desarrollo 4.16
+ 
  05. cambiado los nombres blacklist-* por addblock-*, ahora tool-addblock, algunos arreglos. HECHO
  04. comentarios cambiados para vpn y blacklist, ahora especifican cada host. HECHO
  03. comprobacion de plantillas en algunos casos podian fallar, cambiando comillas. HECHO
  02. ahora examples es options-examples y options es options-all. HECHO
  01. varios arreglos en echo. HECHO
 
- cambios en dev-fwiptables desarrollo 4.15
+ cambios en dev-fwiptables 4.15 lineas=5
 
  05. pequeño cambio de orden en numeros de lineas para mas coherencia. HECHO
  04. algun alias mas en campus. HECHO
