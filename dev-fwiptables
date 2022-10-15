@@ -830,7 +830,7 @@ nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_opti
 "game-domain") $cmd_fwiptables game-domain -cli ; exit ;;
 "game-word") $cmd_fwiptables game-word -cli ; exit ;;
 "game-number") $cmd_fwiptables game-number -cli ; exit ;;
-"blacklist-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"addblock-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
 "clean-tmp") $cmd_fwiptables $second_option $third_option ; exit ;;
 "log-search") 
@@ -943,7 +943,7 @@ sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
-blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
+addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|filelog|sentlog|autolog)  second_option="show-log"; third_option="" ;;
@@ -993,7 +993,7 @@ sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
 free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
-blacklist-*)  second_option="tool-blacklist"; third_option="" ;;
+addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
 log-search|log-ssh|sentlog|filelog|autolog)  second_option="show-log"; third_option="" ;;
@@ -2584,7 +2584,7 @@ echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
 echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
-echo "$text_md  tool-blacklist     |  blacklist-list blacklist-on blacklist-off                                "
+echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                          "
@@ -2665,7 +2665,7 @@ echo "$text_md    tool-game         | game-word game-number game-rgb game-hex   
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
 echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
-echo "$text_md    tool-blacklist    | blacklist-list blacklist-on blacklist-off                     "
+echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                     "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
@@ -2739,7 +2739,7 @@ echo "$text_md    $cmd_fwiptables speed-ip4                |  get info about spe
 echo "$text_md    $cmd_fwiptables info-listen              |  show info about listen sockets             "
 echo "$text_md    $cmd_fwiptables game-word                |  game with words                            "
 echo "$text_md    $cmd_fwiptables upgrade                  |  upgrade $cmd_fwiptables                    "
-echo "$text_md    $cmd_fwiptables blacklist-list           |  List addblocker to blacklist               "
+echo "$text_md    $cmd_fwiptables addblock-list            |  List addblocker to blacklist               "
 echo "$text_md    $cmd_fwiptables names                    |  List firewall saved                        "
 echo "$text_md    $cmd_fwiptables code lsof                |  source code to option lsof                 "
 echo "$text_md    $cmd_fwiptables radio-mp3 url..          |  connect to url:// mp3                      "
@@ -2854,7 +2854,7 @@ echo "$brake_md"
 $cmd_fwiptables tool-install
 echo "$text_md"
 echo "$brake_md"
-$cmd_fwiptables tool-blacklist
+$cmd_fwiptables tool-addblock
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables tool-dev
@@ -2973,7 +2973,7 @@ echo "$text_md $tab_lang_spanish                  Herramienta de autorizacion a 
 echo "$text_md $tab tool-install"
 echo "$text_md $tab_lang_english                  Tool to install and upgrade fwiptables"
 echo "$text_md $tab_lang_spanish                  Herramienta para instalar y actualizar fwiptables"
-echo "$text_md $tab tool-blacklist"
+echo "$text_md $tab tool-addblock"
 echo "$text_md $tab_lang_english                  Tool for block dangerous sites"
 echo "$text_md $tab_lang_spanish                  Herramienta para bloquear peligrosos sitios"
 echo "$text_md $tab tool-dev"
@@ -3712,30 +3712,30 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-install:
-##########    english: tool-blacklist: options   ##########
-##########    spanish: tool-blacklist: opciones  ##########
-#### :rutina-inicial-tool-blacklist:
+##########    english: tool-addblock: options   ##########
+##########    spanish: tool-addblock: opciones  ##########
+#### :rutina-inicial-tool-addblock:
 ####
 ####
-if [ "$first_option" = "tool-blacklist" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-blacklist.md ] || ||"
+if [ "$first_option" = "tool-addblock" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool blacklist in /etc/hosts ] [ tool-addblock.md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool blacklist ]"
 echo "$text_md [ spanish info ] [ Herramienta de lista negra ]"
 echo "$text_md"
-echo "$text_md $tab blacklist-list"
+echo "$text_md $tab addblock-list"
 echo "$text_md $tab_lang_english               : Options list to block at dangerous sites from /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Lista de opciones para bloquear a peligrosos sitios desde /etc/hosts"
-echo "$text_md $tab blacklist-on"
+echo "$text_md $tab addblock-on"
 echo "$text_md $tab_lang_english               : Active a list to block dangerous sites in /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Activa una lista para bloquear sitios peligrosos in /etc/hosts"
-echo "$text_md $tab blacklist-off"
+echo "$text_md $tab addblock-off"
 echo "$text_md $tab_lang_english               : Return to default /etc/hosts"
 echo "$text_md $tab_lang_spanish               : Vuelve al archivo por defecto /etc/hosts"
 exit; fi
 ####
 ####
-#### :rutina-final-tool-blacklist:
+#### :rutina-final-tool-addblock:
 ##########    english: tool-dev: options   ##########
 ##########    spanish: tool-dev: opciones  ########## 
 #### :rutina-inicial-tool-dev:
@@ -4390,7 +4390,7 @@ case "$selection" in
 "15 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
 "16 Tool util")$cmd_fwiptables gui-menu-tool-util ; exit ;;
 "17 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
-"18 Tool blacklist")$cmd_fwiptables gui-menu-tool-blacklist ; exit ;;
+"18 Tool blacklist")$cmd_fwiptables gui-menu-tool-addblock ; exit ;;
 "19 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
 "20 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
 "21 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
@@ -5071,29 +5071,29 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-tool-install:
-##########    english: gui-menu-tool-blacklist: gui with menu   ##########
-##########    spanish: gui-menu-tool-blacklist: gui con menu    ##########
-#### :rutina-inicial-gui-menu-tool-blacklist:
+##########    english: gui-menu-tool-addblock: gui with menu   ##########
+##########    spanish: gui-menu-tool-addblock: gui con menu    ##########
+#### :rutina-inicial-gui-menu-tool-addblock:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-blacklist" ] ; then $nada ;
+if [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "blacklist-list" "blacklist-list info" \
-"blacklist-on" "blacklist-off" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" \
+"addblock-on" "addblock-off" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool blacklist ] [ $name_fwiptables ]" )
 #### 
 #### 
 case $selection in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
 "Gui Principal Menu") $cmd_fwiptables gui-menu;;
-"Gui Help Menu") $cmd_fwiptables -gui help tool-blacklist ;;
-"Gui Info Menu") $cmd_fwiptables -gui info tool-blacklist ;;
-"blacklist-list")$cmd_fwiptables -gui blacklist-list;;
-"blacklist-list info")$cmd_fwiptables -gui blacklist-list info ;;
-"blacklist-on")
+"Gui Help Menu") $cmd_fwiptables -gui help tool-addblock ;;
+"Gui Info Menu") $cmd_fwiptables -gui info tool-addblock ;;
+"addblock-list")$cmd_fwiptables -gui addblock-list;;
+"addblock-list info")$cmd_fwiptables -gui addblock-list info ;;
+"addblock-on")
  archivo="$($command_zenity  $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
- $cmd_fwiptables -gui blacklist-on $archivo;;
-"blacklist-off") $cmd_fwiptables -gui blacklist-off;;
+ $cmd_fwiptables -gui addblock-on $archivo;;
+"addblock-off") $cmd_fwiptables -gui addblock-off;;
 esac
 ####
 ####
@@ -5105,7 +5105,7 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-tool-blacklist:
+#### :rutina-final-gui-menu-tool-addblock:
 ##########    english: gui-menu-tool-dev: gui with menu   ##########
 ##########    spanish: gui-menu-tool-dev: gui con menu    ##########
 #### :rutina-inicial-gui-menu-tool-dev:
@@ -5607,10 +5607,10 @@ Cli Menu || $name_fwiptables || $fversion" --menu "Select:" 0 0 0 \
 1703  "$tab upgrade" \
 1704  "$tab intro" \
 1800 "$quad [ Tool Blacklist ] $cinco" \
-1801  "$tab blacklist-list" \
-1802  "$tab blacklist-list info" \
-1803  "$tab blacklist-on" \
-1804  "$tab blacklist-off" \
+1801  "$tab addblock-list" \
+1802  "$tab addblock-list info" \
+1803  "$tab addblock-on" \
+1804  "$tab addblock-off" \
 1900 "$quad [ Tool Dev ] $cinco" \
 1901  "$tab new-versions" \
 1902  "$tab dev-version" \
@@ -5683,7 +5683,7 @@ case "$menuprincipal" in
 1500) clear ; $cmd_fwiptables cli tool-game ;;
 1600) clear ; $cmd_fwiptables cli tool-util ;;
 1700) clear ; $cmd_fwiptables cli tool-install ;;
-1800) clear ; $cmd_fwiptables cli tool-blacklist ;;
+1800) clear ; $cmd_fwiptables cli tool-addblock ;;
 1900) clear ; $cmd_fwiptables cli tool-dev ;;
 2000) clear ; $cmd_fwiptables cli tool-speed ;;
 2100) clear ; $cmd_fwiptables cli show-hardware ;;
@@ -5864,12 +5864,12 @@ $cmd_fwiptables txt radio-mp3 $archivo ;;
 1702) clear ; $cmd_fwiptables cli howto-upgrade ;;
 1703) clear ; $cmd_fwiptables cli upgrade ;;
 1704) clear ; $cmd_fwiptables cli intro ;;
-1801) clear ; $cmd_fwiptables cli blacklist-list ;;
-1802) clear ; $cmd_fwiptables cli blacklist-list info ;;
+1801) clear ; $cmd_fwiptables cli addblock-list ;;
+1802) clear ; $cmd_fwiptables cli addblock-list info ;;
 1803) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
 --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
-clear ; $cmd_fwiptables blacklist-on $resolve ;;
-1804) clear ; $cmd_fwiptables cli blacklist-off ;;
+clear ; $cmd_fwiptables addblock-on $resolve ;;
+1804) clear ; $cmd_fwiptables cli addblock-off ;;
 1901) clear ; $cmd_fwiptables cli new-versions ;;
 1902) clear ; $cmd_fwiptables cli dev-version ;;
 1903) clear ; $cmd_fwiptables cli dev-changes ;;
@@ -6164,12 +6164,12 @@ exit;  fi
 ####
 ####
 #### :rutina-final-howto-upgrade:
-##########      english: blacklist-list: lists for hosts dropped       ##########
-##########      spanish: blacklist-list: listas para hosts denegados   ##########
-#### :rutina-inicial-blacklist-list:
+##########      english: addblock-list: lists for hosts dropped       ##########
+##########      spanish: addblock-list: listas para hosts denegados   ##########
+#### :rutina-inicial-addblock-list:
 ####
 ####
-if [ "$first_option" = "blacklist-list" ]; then echo $give_cover
+if [ "$first_option" = "addblock-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show blacklist servers ] || ||"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -6181,8 +6181,8 @@ echo
 echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
 echo "$tab [ actually ] [ Show the file: $cmd_fwiptables hosts ]"
 echo
-echo "$tab [   info:  ] [ Get server lines numbers total ] [ $cmd_fwiptables blacklist-list info ]"
-echo "$tab [ change:  ] [ $cmd_fwiptables blacklist-on name-bl ] OR [ $cmd_fwiptables blacklist-off ]" 
+echo "$tab [   info:  ] [ Get server lines numbers total ] [ $cmd_fwiptables addblock-list info ]"
+echo "$tab [ change:  ] [ $cmd_fwiptables addblock-on name-bl ] OR [ $cmd_fwiptables addblock-off ]" 
 echo
 echo "$tab"
 echo "$tab"
@@ -6218,21 +6218,21 @@ echo ; fi
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-list:
-##########    english: blacklist-on: Active one list for drop hosts        ##########
-##########    spanish: blacklist-on: Activa una lista para host denegados  ##########
-#### :rutina-inicial-blacklist-on:
+#### :rutina-final-addblock-list:
+##########    english: addblock-on: Active one list for drop hosts        ##########
+##########    spanish: addblock-on: Activa una lista para host denegados  ##########
+#### :rutina-inicial-addblock-on:
 ####
 ####
-if [ "$first_option" = "blacklist-on" ]; then echo $give_cover
+if [ "$first_option" = "addblock-on" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Configure blacklist server ] || ||"
 echo
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched without options ] [ $cmd_fwiptables blacklist-list ]"
+echo "$tab [ Launched without options ] [ $cmd_fwiptables addblock-list ]"
 echo
-$cmd_fwiptables blacklist-list
+$cmd_fwiptables addblock-list
 echo
 exit; fi
 ####
@@ -6246,7 +6246,7 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 if [ "$second_option" = "fademind" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
-$cmd_fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables addblock-off &> /dev/null
 cat $directory_temporal/hosts.fademind | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
@@ -6254,7 +6254,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 if [ "$second_option" = "adaway" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
-$cmd_fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables addblock-off &> /dev/null
 cat $directory_temporal/hosts.adaway | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
@@ -6262,7 +6262,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 if [ "$second_option" = "mvps" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
-$cmd_fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables addblock-off &> /dev/null
 cat $directory_temporal/hosts.mvps | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
@@ -6270,24 +6270,24 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 if [ "$second_option" = "stevenblack" ]; then 
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
-$cmd_fwiptables blacklist-off &> /dev/null
+$cmd_fwiptables addblock-off &> /dev/null
 cat $directory_temporal/hosts.stevenblack | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
-echo "$tab [ Invalid option ] [ See: $cmd_fwiptables blacklist-list ]"
+echo "$tab [ Invalid option ] [ See: $cmd_fwiptables addblock-list ]"
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-on:
-##########    english: blacklist-off: Deactive lists from drop hosts       ##########
-##########    spanish: blacklist-off: Desactiva listas de denegadas hosts  ##########
-#### :rutina-inicial-blacklist-off:
+#### :rutina-final-addblock-on:
+##########    english: addblock-off: Deactive lists from drop hosts       ##########
+##########    spanish: addblock-off: Desactiva listas de denegadas hosts  ##########
+#### :rutina-inicial-addblock-off:
 ####
 ####
-if [ "$first_option" = "blacklist-off" ]; then echo $give_cover
+if [ "$first_option" = "addblock-off" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ] || ||"
 echo
 echo $directory_temporal
@@ -6305,7 +6305,7 @@ cat  /etc/hosts
 exit; fi
 ####
 ####
-#### :rutina-final-blacklist-off:
+#### :rutina-final-addblock-off:
 ##########    english: eraserules: Erase rules option   ##########
 ##########    spanish: eraserules: Opcion borra reglas  ##########
 #### :rutina-inicial-eraserules:
@@ -10354,7 +10354,7 @@ if [ "$second_option" = "tool-icmp" ]; then $cmd_fwiptables tool-icmp ; exit ; f
 if [ "$second_option" = "tool-nmap" ]; then $cmd_fwiptables tool-nmap ; exit ; fi
 if [ "$second_option" = "tool-sudofw" ]; then $cmd_fwiptables tool-sudofw ; exit ; fi
 if [ "$second_option" = "tool-install" ]; then $cmd_fwiptables tool-install ; exit ; fi
-if [ "$second_option" = "tool-blacklist" ]; then $cmd_fwiptables tool-blacklist ; exit ; fi
+if [ "$second_option" = "tool-addblock" ]; then $cmd_fwiptables tool-addblock ; exit ; fi
 if [ "$second_option" = "tool-dev" ]; then $cmd_fwiptables tool-dev ; exit ; fi
 if [ "$second_option" = "tool-speed" ]; then $cmd_fwiptables tool-speed ; exit ; fi
 if [ "$second_option" = "show-hardware" ]; then $cmd_fwiptables show-hardware ; exit ; fi
@@ -10375,9 +10375,9 @@ echo "$tab" "$tab"  "$tab $tab"
 echo "$tab" "$tab"  "                                   | Group Options |                              "
 echo "$tab" "$tab"  
 echo "$tab" "$tab"  " options-firewall   |  firewall-control  firewall-list  firewall-launch  firewall-custom "
-echo "$tab" "$tab"  "     options-tool   |  tool-sockets      tool-forward   tool-tcp         tool-udp        "
+echo "$tab" "$tab"  "     options-tool   |  tool-sockets      tool-forward   tool-tcp           tool-udp        "
 echo "$tab" "$tab"  "                       tool-icmp         tool-nmap      tool-sudofw        tool-game       "
-echo "$tab" "$tab"  "                       tool-speed       tool-install   tool-blacklist   tool-dev        "
+echo "$tab" "$tab"  "                       tool-speed        tool-install   tool-addblock      tool-dev        "
 echo "$tab" "$tab"  "                       tool-connect"
 echo "$tab" "$tab"  "     options-show   |  show-hardware     show-etc       show-log         help-about      "
 echo "$tab" "$tab"  "                       help-help"
@@ -10623,9 +10623,9 @@ echo "$text_md       clean-tmp : Remove temporal files of fwiptables."
 echo "$text_md"
 echo "$title_md         [ Tool blacklist ]"
 echo "$text_md"
-echo "$text_md  blacklist-list : List options to block dangerous hosts."
-echo "$text_md    blacklist-on : Write one /etc/hosts with block a dangerous sites."
-echo "$text_md   blacklist-off : Return to /etc/hosts for default."
+echo "$text_md  addblock-list : List options to block dangerous hosts."
+echo "$text_md    addblock-on : Write one /etc/hosts with block a dangerous sites."
+echo "$text_md   addblock-off : Return to /etc/hosts for default."
 echo "$text_md"
 echo "$title_md         [ Tool computer ]"
 echo "$text_md"
@@ -10974,9 +10974,9 @@ echo "$text_md      clean-tmp : borra archivos temporales de $name_fwiptables."
 echo "$text_md"
 echo "$title_md [ Herramienta de lista de bloqueo ]."
 echo "$text_md"
-echo "$text_md  blacklist-list : Lista de opciones para bloquear hosts peligrosas."
-echo "$text_md    blacklist-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
-echo "$text_md   blacklist-off : Vuelve a /etc/hosts por defecto."
+echo "$text_md  addblock-list : Lista de opciones para bloquear hosts peligrosas."
+echo "$text_md    addblock-on : Escribe un /etc/hosts con bloqueo a hosts peligrosas."
+echo "$text_md   addblock-off : Vuelve a /etc/hosts por defecto."
 echo "$text_md"
 echo "$title_md [ Herramienta de desarrollador ]."
 echo "$text_md"
