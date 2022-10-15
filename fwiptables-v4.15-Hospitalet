@@ -6247,7 +6247,7 @@ if [ "$second_option" = "fademind" ]; then
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.fademind >> /etc/hosts
+cat $directory_temporal/hosts.fademind | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
@@ -6255,7 +6255,7 @@ if [ "$second_option" = "adaway" ]; then
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.adaway >> /etc/hosts
+cat $directory_temporal/hosts.adaway | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
@@ -6263,7 +6263,7 @@ if [ "$second_option" = "mvps" ]; then
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.mvps >> /etc/hosts
+cat $directory_temporal/hosts.mvps | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
@@ -6271,7 +6271,7 @@ if [ "$second_option" = "stevenblack" ]; then
 echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
 $cmd_fwiptables blacklist-off &> /dev/null
-cat $directory_temporal/hosts.stevenblack >> /etc/hosts
+cat $directory_temporal/hosts.stevenblack | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
@@ -6295,7 +6295,7 @@ echo $cincuenta > $directory_temporal/$first_option-hosts
 echo "## ip v4 loopback ##" >> $directory_temporal/$first_option-hosts
 echo "127.0.0.1	localhost-ip4 localhost localhost.localdomain" >> $directory_temporal/$first_option-hosts
 echo "## ip v6 loopback ##" >> $directory_temporal/$first_option-hosts
-echo "::1      localhost-ip6 localhost localhost.localdomain" >> $directory_temporal/$first_option-hosts
+echo "::1      localhost-ip6 localhost.localdomain" >> $directory_temporal/$first_option-hosts
 echo "ff02::1 ip6-allnodes" >> $directory_temporal/$first_option-hosts
 echo "ff02::2 ip6-allrouters"  >> $directory_temporal/$first_option-hosts
 echo $cincuenta >> $directory_temporal/$first_option-hosts
