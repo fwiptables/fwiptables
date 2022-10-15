@@ -125,10 +125,10 @@ if [ "$terminal_tty" = "$NULL" ] ; then
 if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
 then
 sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-sudo -u root $command_xhost +LOCAL &> /dev/null ;
+## sudo -u root $command_xhost +LOCAL &> /dev/null ;
 else
 sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-sudo -u root $command_xhost +LOCAL &> /dev/null ;
+## sudo -u root $command_xhost +LOCAL &> /dev/null ;
 fi; fi
 ####
 ####
@@ -708,7 +708,7 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 #### english: alias simple for options commons
 ####
 ####
-if [ "$first_option" = "$NULL" ]  ; then first_option="mini-options" ; fi
+if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
 if [ "$first_option" = "ls" ]; then first_option="-txt"; second_option="list4"; fi
@@ -718,7 +718,10 @@ if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"
 if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
 ####
 ####
-if [ "$first_option" = "options-all" ] ; then first_option="full-options" ; fi
+if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
+if [ "$first_option" = "mini-options" ] ; then first_option="options-mini" ; fi
+if [ "$first_option" = "options-full" ] ; then first_option="options-all" ; fi
+if [ "$first_option" = "full-options" ] ; then first_option="options-all" ; fi
 if [ "$first_option" = "examples" ] ; then first_option="options-examples"; fi
 if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
 if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
@@ -744,6 +747,7 @@ if [ "$second_option" = "md5sum" ] ; then third_option="$3"  ; quad_option="$4" 
 #### english:  alias simple for firewall names 
 ####
 ####
+
 if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
 if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
 if [ "$first_option" = "offline" ] ; then first_option="off-line" ; fi
@@ -1099,7 +1103,7 @@ chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null
 ####  spanish: genera fwiptables default
 ####
 ####
-echo "$(head -420 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -1506,27 +1510,27 @@ echo -E "$var20" "$tabz" "$eng20" &>> "$me"
 #### wizard mini-spanish
 ####
 ####
-echo $var0  &> $ms
-echo $var1  "$tabz" $spa1  &>> "$ms"
-echo $var2  "$tabz" $spa2  &>> "$ms"
-echo $var3  "$tabz" $spa3  &>> "$ms"
-echo $var4  "$tabz" $spa4  &>> "$ms"
-echo $var5  "$tabz" $spa5  &>> "$ms"
-echo $var6  "$tabz" $spa6  &>> "$ms"
-echo $var7  "$tabz" $spa7  &>> "$ms"
-echo $var8  "$tabz" $spa8  &>> "$ms"
-echo $var9  "$tabz" $spa9  &>> "$ms"
-echo $var10 "$tabz" $spa10 &>> "$ms"
-echo $var11 "$tabz" $spa11 &>> "$ms"
-echo $var12 "$tabz" $spa12 &>> "$ms"
-echo $var13 "$tabz" $spa13 &>> "$ms"
-echo $var14 "$tabz" $spa14 &>> "$ms"
-echo $var15 "$tabz" $spa15 &>> "$ms"
-echo $var16 "$tabz" $spa16 &>> "$ms"
-echo $var17 "$tabz" $spa17 &>> "$ms"
-echo $var18 "$tabz" $spa18 &>> "$ms"
-echo $var19 "$tabz" $spa19 &>> "$ms"
-echo $var20 "$tabz" $spa20 &>> "$ms"
+echo "$var0"  &> "$ms"
+echo "$var1"  "$tabz" "$spa1"  &>> "$ms"
+echo "$var2"  "$tabz" "$spa2"  &>> "$ms"
+echo "$var3"  "$tabz" "$spa3"  &>> "$ms"
+echo "$var4"  "$tabz" "$spa4"  &>> "$ms"
+echo "$var5"  "$tabz" "$spa5"  &>> "$ms"
+echo "$var6"  "$tabz" "$spa6"  &>> "$ms"
+echo "$var7"  "$tabz" "$spa7"  &>> "$ms"
+echo "$var8"  "$tabz" "$spa8"  &>> "$ms"
+echo "$var9"  "$tabz" "$spa9"  &>> "$ms"
+echo "$var10" "$tabz" "$spa10" &>> "$ms"
+echo "$var11" "$tabz" "$spa11" &>> "$ms"
+echo "$var12" "$tabz" "$spa12" &>> "$ms"
+echo "$var13" "$tabz" "$spa13" &>> "$ms"
+echo "$var14" "$tabz" "$spa14" &>> "$ms"
+echo "$var15" "$tabz" "$spa15" &>> "$ms"
+echo "$var16" "$tabz" "$spa16" &>> "$ms"
+echo "$var17" "$tabz" "$spa17" &>> "$ms"
+echo "$var18" "$tabz" "$spa18" &>> "$ms"
+echo "$var19" "$tabz" "$spa19" &>> "$ms"
+echo "$var20" "$tabz" "$spa20" &>> "$ms"
 ####
 ####
 #### wizard full-english
@@ -2510,7 +2514,7 @@ fi
 #### :rutina-inicial-mini-options:
 ####
 ####
-if [ "$first_option" = "mini-options" ] || [ "$first_option" = "$NULL" ] ; then echo $give_cover
+if [ "$first_option" = "options-mini" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options.md ] || ||"
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
@@ -2544,7 +2548,7 @@ exit ; fi
 #### :rutina-inicial-full-options:
 ####
 ####
-if [ "$first_option" = "full-options" ] || [ "$first_option" = "options" ] ; then echo $give_cover
+if [ "$first_option" = "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                      "
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"

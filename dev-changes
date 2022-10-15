@@ -4,8 +4,8 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
  05. 
  04. comentarios cambiados para vpn y blacklist, ahora especifican cada host. HECHO
- 03. comprobacion de plantillas en algunos casos puede fallar, cambiando comillas. HECHO
- 02. ahora examples es options-examples y optioons es options-all. HECHO
+ 03. comprobacion de plantillas en algunos casos podian fallar, cambiando comillas. HECHO
+ 02. ahora examples es options-examples y options es options-all. HECHO
  01. varios arreglos en echo. HECHO
 
  cambios en dev-fwiptables desarrollo 4.15
