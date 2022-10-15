@@ -494,7 +494,7 @@ echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables";
 if [ "$first_option" = "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux #.                        "
+echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
 echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
 echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
 echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
