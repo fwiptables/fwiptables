@@ -2,7 +2,10 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 05. 
+
+
+ 06. 
+ 05. cambiado los nombres blacklist-* por addblock-*, ahora tool-addblock, algunos arreglos. HECHO
  04. comentarios cambiados para vpn y blacklist, ahora especifican cada host. HECHO
  03. comprobacion de plantillas en algunos casos podian fallar, cambiando comillas. HECHO
  02. ahora examples es options-examples y options es options-all. HECHO
