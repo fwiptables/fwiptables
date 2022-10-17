@@ -13524,20 +13524,22 @@ exit ; else $nada ; fi
 #######################         spanish: Fin del script
 ####    
 ####
-####    ### Git mini tutorial:
+####    ### Git mini tutorial: with fwiptables.
 ####
 ####
-####    # Download repository: Repository git.code.sf.net/p/f-iptables/code
+####    # Download repository: tree methods with clone/pull/fetch https:// or ssh://
 ####
-####    Download f-iptables repository to folder user             :  git clone https://git.code.sf.net/p/f-iptables/code
-####    Recover from server f-iptables repository to folder user  :  git fetch
+####    First time, download repository to folder user            :  git clone https://git.code.sf.net/p/f-iptables/code
+####    Download updates from repository to folder user           :  git pull  https://f-iptables@git.code.sf.net/p/f-iptables/code
+####    Recover repository from server repository to folder user  :  git fetch https://f-iptables@git.code.sf.net/p/f-iptables/code
 ####
-####    # upload repository: Repository git.code.sf.net/p/f-iptables/code
+####    # upload repository: update commit and push
 ####
-####    Upload f-iptables repository from local repository        :  git commit -a ; git push ;
+####    Update files from local repository                        :  git commit -a 
+####    Upload files to repository from local repository          :  git push ssh://f-iptables@git.code.sf.net/p/f-iptables/code
 ####
 ####
-####    # Create repository local: /var/git/repository.localhost
+####    # Create repository local: with folder /var/git/repository.localhost
 ####
 ####    mkdir /var/git/repository.localhost
 ####    cd /var/git/repository.localhost
