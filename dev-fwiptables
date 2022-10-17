@@ -732,6 +732,8 @@ if [ "$first_option" = "regen" ] ; then first_option="regen-config"; fi
 if [ "$first_option" = "cfg" ] ; then first_option="names-config" ; fi
 if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
+if [ "$first_option" = "ram" ] ; then first_option="free-ram"; fi
+if [ "$first_option" = "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
