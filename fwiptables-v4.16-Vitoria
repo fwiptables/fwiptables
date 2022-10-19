@@ -45,7 +45,7 @@
 #### :rutina-inicial-admin:
 ####
 ####
-if [ "$(id -u)" = "0" ] ; then echo -n ; else
+if [ "$(id -u)" == "0" ] ; then echo -n ; else
 echo
 echo " [ info ] [ fwiptables needs to be root to work ]"
 echo
