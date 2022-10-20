@@ -481,60 +481,10 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-if [ "$fwiptables_installed" == "no" ] ; then . $0 intro ; echo 
-echo " [ info ] Install $0 or copy $0 in $fwiptables_directory/$cmd_fwiptables"; fi
+if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; echo ; fi
 ####
 ####
 #### :rutina-final-notice:
-##########   english: intro: show intro      ##########
-##########   spanish: intro: muestra intro   ##########
-#### :rutina-inicial-intro:
-####
-####
-if [ "$first_option" = "intro" ]; then echo "$give_cover"
-echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
-echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
-echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
-echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
-echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
-echo "$text_md     [ done ] [Control the firewall with the standard iptables files for all tables ].           "
-echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall #.    "
-echo "$text_md     [ done ] [ Choose run iptables rules of one firewall with your own config files ].          "
-echo "$text_md     # Network tools # Use this firewall with some utilities for ipv4 and ipv6 # .               "
-echo "$text_md     [ done ] [ Gone with options-tool works with network utilities.                             "
-echo "$text_md     [ done ] [ Gone with options-show show config net files ].                                  "
-echo "$brake_md"
-echo "$title_md    ###  Fran fwiptables installer.  ###"
-echo "$text_md     # $cmd_fwiptables $fversion"
-#### #### #### 
-if [ "$fwiptables_installed" == "no" ]; then
-echo "$text_md     [ info ] [ Actually, NO, ] [ this version is not installed in $directory_binary/$cmd_fwiptables ]" ; 
-else
-echo "$text_md     [ info ] [ Actually, YES, ] [ this version is installed in $directory_binary/$cmd_fwiptables ]" ;
-fi
-#### #### #### 
-echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$fversion install ]" 
-echo "$text_md     [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-$fversion upgrade ]" 
-#### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
-echo "$text_md     [ info ] [ Uninstall $name_fwiptables from the computer ] [ TYPE: ./fwiptables-$fversion uninstall ]" 
-echo "$brake_md"
-echo "$title_md    ###  Fran fwiptables project.  ###    "
-echo "$text_md     # Download the latest version $fprogram from sourceforge"
-echo "$text_md     [ link] [ $fweb_latest ]"
-echo "$text_md     # $flicense"
-echo "$text_md     [ link ] [ $license_gpl ]"
-#### #### #### 
-if [ "$fwiptables_installed" == "no" ]; then
-echo "$brake_md"
-echo "$text_md"
-echo "$text_md   ### PLEASE, install this version, or copy $0 to $directory_binary/$cmd_fwiptables" 
-fi
-#### #### #### 
-exit; fi
-####
-####
-#### :rutina-final-intro:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
@@ -916,6 +866,39 @@ $cmd_fwiptables "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
+#### output web:
+####
+####
+if [ "$first_option" = "-web" ] ; then
+if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
+case "$second_option" in 
+"$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
+$cmd_fwiptables ; exit ;;
+*-config) echo "$message_without_web" ; exit ;;
+game-*) echo "$message_without_web" ; exit ;;
+game-*) echo "$message_without_web" ; exit ;;
+rule-del-number) echo "$message_without_web" ; exit ;;
+wpa-save) echo "$message_without_web" ; exit ;;
+wpa-load)  echo "$message_without_web" ; exit ;;
+esac
+echo $head_waiting_web
+rm "$temporal_text"* &> /dev/null
+$cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
+$command_sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
+$command_txt2html --outfile $temporal_text.html $temporal_text.2 ;
+$favorite_text_browser $temporal_text.html
+exit ; fi
+####
+####
+#### first_option tor
+####
+####
+if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
+echo "$tab [ info ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
+torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
+####
+####
 #### output help:
 ####
 ####
@@ -1014,39 +997,6 @@ cat $temporal_text.rst
 exit ; fi
 ####
 ####
-#### output web:
-####
-####
-if [ "$first_option" = "-web" ] ; then
-if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
-if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
-case "$second_option" in 
-"$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
-$cmd_fwiptables ; exit ;;
-*-config) echo "$message_without_web" ; exit ;;
-game-*) echo "$message_without_web" ; exit ;;
-game-*) echo "$message_without_web" ; exit ;;
-rule-del-number) echo "$message_without_web" ; exit ;;
-wpa-save) echo "$message_without_web" ; exit ;;
-wpa-load)  echo "$message_without_web" ; exit ;;
-esac
-echo $head_waiting_web
-rm "$temporal_text"* &> /dev/null
-$cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
-$command_sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
-$command_txt2html --outfile $temporal_text.html $temporal_text.2 ;
-$favorite_text_browser $temporal_text.html
-exit ; fi
-####
-####
-#### first_option tor
-####
-####
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
-echo "$tab [ info ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
-torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
-####
-####
 #### :rutina-final-alias-campus:
 ##########     english: autolog:         ##########
 ##########     spanish: autoguardado     ##########
@@ -1062,6 +1012,55 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 #### :rutina-final-allow-autolog:
+##########   english: intro: show intro      ##########
+##########   spanish: intro: muestra intro   ##########
+#### :rutina-inicial-intro:
+####
+####
+if [ "$first_option" = "intro" ]; then echo "$give_cover"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
+echo "$title_md    ###  Fran fwiptables intro.  ###   "
+echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
+echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
+echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
+echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
+echo "$text_md     [ done ] [Control the firewall with the standard iptables files for all tables ].           "
+echo "$text_md     # Custom firewall # Create one firewall custom and launch your custom config firewall #.    "
+echo "$text_md     [ done ] [ Choose run iptables rules of one firewall with your own config files ].          "
+echo "$text_md     # Network tools # Use this firewall with some utilities for ipv4 and ipv6 # .               "
+echo "$text_md     [ done ] [ Gone with options-tool works with network utilities.                             "
+echo "$text_md     [ done ] [ Gone with options-show show config net files ].                                  "
+echo "$brake_md"
+echo "$title_md    ###  Fran fwiptables installer.  ###"
+echo "$text_md     # $cmd_fwiptables $fversion"
+#### #### #### 
+if [ "$fwiptables_installed" == "no" ]; then
+echo "$text_md     [ info ] [ Actually, NO, ] [ this version is not installed in $directory_binary/$cmd_fwiptables ]" ; 
+else
+echo "$text_md     [ info ] [ Actually, YES, ] [ this version is installed in $directory_binary/$cmd_fwiptables ]" ;
+fi
+#### #### #### 
+echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$fversion install ]" 
+echo "$text_md     [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-$fversion upgrade ]" 
+#### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$fversion dev-upgrade" 
+echo "$text_md     [ info ] [ Uninstall $name_fwiptables from the computer ] [ TYPE: ./fwiptables-$fversion uninstall ]" 
+echo "$brake_md"
+echo "$title_md    ###  Fran fwiptables project.  ###    "
+echo "$text_md     # Download the latest version $fprogram from sourceforge"
+echo "$text_md     [ link] [ $fweb_latest ]"
+echo "$text_md     # $flicense"
+echo "$text_md     [ link ] [ $license_gpl ]"
+#### #### #### 
+if [ "$fwiptables_installed" == "no" ]; then
+echo "$brake_md"
+echo "$text_md"
+echo "$text_md   ### PLEASE, install this version, or copy $0 to $directory_binary/$cmd_fwiptables" 
+fi
+#### #### #### 
+exit; fi
+####
+####
+#### :rutina-final-intro:
 ##########   english: uninstall:      fwiptables uninstall      ##########
 ##########   spanish: desinstalador:  fwiptables desistalador   ##########
 #### :rutina-inicial-uninstall:
