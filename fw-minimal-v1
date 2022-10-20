@@ -476,6 +476,15 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-update-variables:
+##########    english: Notice Installer with intro      ##########
+##########    spanish: noticia de Instalador con intro  ##########
+#### :rutina-inicial-notice:
+####
+####
+if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
+####
+####
+#### :rutina-final-notice:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:

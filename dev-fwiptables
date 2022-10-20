@@ -481,7 +481,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; echo ; fi
+if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
 ####
 ####
 #### :rutina-final-notice:
