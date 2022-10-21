@@ -426,7 +426,7 @@ fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/unstable-fwiptables?format=raw" ;
+fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
