@@ -64,7 +64,7 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="4.16-Vitoria" ;
+fversion="4.17-Elche-developer-edition" ;
 ####
 ####
 #### :rutina-final-name:
@@ -879,9 +879,9 @@ $cmd_fwiptables ; exit ;;
 game-*) echo "$message_without_web" ; exit ;;
 game-*) echo "$message_without_web" ; exit ;;
 rule-del-number) echo "$message_without_web" ; exit ;;
-wpa-save) echo "$message_without_web" ; exit ;;
+wpa-save)  echo "$message_without_web" ; exit ;;
 wpa-load)  echo "$message_without_web" ; exit ;;
-weather) echo "$message_without_web" ; $cmd_fwiptables $second_option $third_option ; exit ;;
+weather)   echo "$message_without_web" ; $cmd_fwiptables $second_option $third_option ; exit ;;
 esac
 echo $head_waiting_web
 rm "$temporal_text"* &> /dev/null
@@ -2582,11 +2582,11 @@ echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client   
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
 echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                            "
 echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
-echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
+echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                     "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  tool-util          |  md5sum weather gpg-notes radio-mp3 radio-cadena100 radio-cadenadial      "
+echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
-echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
+echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                          "
@@ -8756,6 +8756,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadenadial:
+##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
+##########    spanish: weather: show the weather with wttr.in     ##########
+#### :rutina-inicial-weather:
+if [ "$first_option" = "weather" ]; then 
+case $favorite_text_browser in "$NULL") echo "$tab [ fail ] [ Install a text browser ]"; exit ;; esac
+$favorite_text_browser -dump wttr.in
+exit; fi
+#### :rutina-final-weather:
 ##########    english: game-rgb: convert colour rgb to hex   ##########
 ##########    spanish: game-rgb: convierte color rgb a hex   ##########
 #### :rutina-inicial-game-rgb:
