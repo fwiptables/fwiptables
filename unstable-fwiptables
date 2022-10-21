@@ -879,8 +879,9 @@ $cmd_fwiptables ; exit ;;
 game-*) echo "$message_without_web" ; exit ;;
 game-*) echo "$message_without_web" ; exit ;;
 rule-del-number) echo "$message_without_web" ; exit ;;
-wpa-save) echo "$message_without_web" ; exit ;;
+wpa-save)  echo "$message_without_web" ; exit ;;
 wpa-load)  echo "$message_without_web" ; exit ;;
+weather)   echo "$message_without_web" ; $cmd_fwiptables $second_option $third_option ; exit ;;
 esac
 echo $head_waiting_web
 rm "$temporal_text"* &> /dev/null
@@ -8755,6 +8756,14 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadenadial:
+##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
+##########    spanish: weather: show the weather with wttr.in     ##########
+#### :rutina-inicial-weather:
+if [ "$first_option" = "weather" ]; then 
+case $favorite_text_browser in "$NULL") echo "$tab [ fail ] [ Install a text browser ]"; exit ;; esac
+$favorite_text_browser -dump wttr.in
+exit; fi
+#### :rutina-final-weather:
 ##########    english: game-rgb: convert colour rgb to hex   ##########
 ##########    spanish: game-rgb: convierte color rgb a hex   ##########
 #### :rutina-inicial-game-rgb:

@@ -881,6 +881,7 @@ game-*) echo "$message_without_web" ; exit ;;
 rule-del-number) echo "$message_without_web" ; exit ;;
 wpa-save) echo "$message_without_web" ; exit ;;
 wpa-load)  echo "$message_without_web" ; exit ;;
+weather) echo "$message_without_web" ; $cmd_fwiptables $second_option $third_option ; exit ;;
 esac
 echo $head_waiting_web
 rm "$temporal_text"* &> /dev/null
@@ -2581,11 +2582,11 @@ echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client   
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
 echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                            "
 echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
-echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                     "
+echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
+echo "$text_md  tool-util          |  md5sum weather gpg-notes radio-mp3 radio-cadena100 radio-cadenadial      "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
-echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                "
+echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                          "
