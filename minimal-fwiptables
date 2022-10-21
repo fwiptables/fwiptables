@@ -961,27 +961,6 @@ echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directo
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
-####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
-####  spanish: genera fwiptables-gui-menu fwiptables-gui-shell y fwiptables-cli-menu en /usr/bin
-####
-####
-echo "#!/bin/bash" &> $directory_binary/$name_fwiptables-cli-menu
-echo "sudo $cmd_fwiptables cli-menu" &>> $directory_binary/$name_fwiptables-cli-menu
-chmod 555 $directory_binary/$name_fwiptables-cli-menu &> /dev/null
-####
-####
-echo "#!/bin/bash" &> $directory_binary/$name_fwiptables-gui-menu
-echo "$command_xhost +SI:localuser:root" &>> $directory_binary/$name_fwiptables-gui-menu
-echo "sudo $cmd_fwiptables gui-menu" &>> $directory_binary/$name_fwiptables-gui-menu
-chmod 555 $directory_binary/$name_fwiptables-gui-menu &> /dev/null
-####
-####
-echo "#!/bin/bash" &> $directory_binary/$name_fwiptables-gui-shell
-echo "$command_xhost +SI:localuser:root" &>> $directory_binary/$name_fwiptables-gui-shell
-echo "sudo $cmd_fwiptables gui-shell" &>> $directory_binary/$name_fwiptables-gui-shell
-chmod 555 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
-####
-####
 ####   english: Show final status from installer
 ####   spanish: Muestra el estatus final desde el instalador
 ####
@@ -989,9 +968,6 @@ chmod 555 $directory_binary/$name_fwiptables-gui-shell &> /dev/null
 echo "$text_md [ info ] [ config dir:        ] [ $directory_data ]"
 echo "$text_md [ info ] [ tmp dir:           ] [ $directory_tmp  ]"
 echo "$text_md [ info ] [ command shell:     ] [ $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ command cli-menu:  ] [ $directory_binary/$name_fwiptables-cli-menu  ]"
-echo "$text_md [ info ] [ command gui-menu:  ] [ $directory_binary/$name_fwiptables-gui-menu  ]"
-echo "$text_md [ info ] [ command gui-shell: ] [ $directory_binary/$name_fwiptables-gui-shell ]"
 echo "$text_md [ info ] [ grant privileges to user: ] [ $cmd_fwiptables sudofw-adduser user ]"
 echo "$text_md [  ok  ] [ now. You are ready to run $cmd_fwiptables ]"
 exit; fi
