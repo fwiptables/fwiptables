@@ -6,8 +6,8 @@
 #### #### #### #### #!/bin/zsh
 #### #### #### #### emulate -L bash
 ####
-#### File:        fwiptables-cmd
-#### Description: Fran FireWall fwiptables Generator
+#### File:        fwiptables-mini
+#### Description: Mini Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
 #### Copyright:   (c) 2020-2022 Francisco Garcia <fwiptables@gmx.com>
 ####
