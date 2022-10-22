@@ -125,10 +125,8 @@ if [ "$terminal_tty" = "$NULL" ] ; then
 if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
 then
 sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-## sudo -u root $command_xhost +LOCAL &> /dev/null ;
 else
 sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-## sudo -u root $command_xhost +LOCAL &> /dev/null ;
 fi; fi
 ####
 ####
