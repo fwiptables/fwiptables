@@ -1,0 +1,495 @@
+#!/bin/bash
+#  this program is with gpl license, the program is copyleft, it is free.
+#
+# the comments are in english language and spanish language
+#
+###
+###
+##############################        english:   basic system variables
+##############################        spanish:   las basicas variables del sistema
+mifirewall=$1 ; mivariable=$2 ; yes=""; no="no" ;
+fprogram="Fran iptables" ; fver="1.39" ;
+web="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+tenue="tput dim"; brillo="tput bold"; normal="tput sgr0" ;
+##############################        english:   user variables to modify with $yes or $no
+##############################        spanish:   variables de usuario para modificar con $yes o $no
+ruta="/usr/sbin" ; #english: iptables programs path #spanish: ruta de los ejecutables de iptables
+estado="-m state --state established"; estado= ;  #english: void without packedstate or packectstate #spanish: vacio o estado del paquete establecido
+haypingsend= ; #english: void to allow send pings, and no to drop send pings #spanish: vacio para permitir enviar ping y no para evitar permitirlo
+haypingrecive= ; #english: void to allow recive pings, and no to drop recive pings #spanish: vacio para permitir recivir ping y no para evitar permitirlo
+haylogservertcp=no ; #english: void to tcp log, and no to do not log tcp #spanish: vacio para logear tcp y no para evitar logear tcp
+haylogserverudp=no ; #english: void to udp log, and no to do not log udp #spanish: vacio para logear udp y no para evitar logear udp
+hayvpn=no ; #english: vacio to allow exceptional host, and no to drop exceptional host #spanish: vacio para permitir hosts excepcionales y no para evitar permitirlos
+sinreenvio= ; #english: void to drop forward ip, and no to allow forward ip #spanish: vacio para no permitir reenvios y no para permitir reenvios
+##############################        english:   User variables to modify add with "," and join ranges with ":"
+##############################        spanish:   Variables de usuario para añadir con "," y poner rangos con ":"
+vpn="sourceforge.net,baldras.wesnoth.org,wesnoth.org"; #english: to allow excepcitonal host #spanish: permitir host excepcionales
+logservertcp=ssh,ftp-data,ftp ; #english: the tcp ports to log #spanish: los puertos tcp para logear
+logserverudp=discard ; #english: the udp ports to log #spanish: los puertos udp para logear
+redserver=0/0 ; #english: the net to server #spanish: la red cual servidor
+redcliente=0/0; #english: the net to client #spanish: la red cual cliente
+servidortcp="ssh,http,https" ; #english: tcp ports for server #spanish:  puertos tcp para servir
+servidorudp=discard ; #english: udp ports for server #spanish: puertos udp para servir
+clienteudp=domain,domain-s,ntp,bootpc,bootps ; #english: udp ports for client #spanish: puertos udp para ser cliente
+clientetcp=domain,domain-s,http,https,printer,ipp ; #english: tcp ports for client #spanish: puertos tcp para ser cliente
+##############################	     english:   End from user variables file, overwriter initial values       |||||
+##############################       spanish:   Fin de archivo de variables, sobre escribe valores iniciales  !!!!!
+##
+##
+##
+## This is the line number 40 to then.. flinea="-40" .
+##
+##
+##
+##
+##############################       english: number line to variables y number of customs variables.
+##############################       spanish: numero de linea a las variables y numero de variables modificables
+flinea="-40"; fvariables="-17"
+##############################       english: are you root (uid 0) ?
+##############################       spanish: eres admnistrador (identificador 0) ?;
+if [ "$(id -u)" = "0" ]; then echo -n;
+else echo; echo "  ####################### f-iptables need to be root to work" ; echo ;
+echo "  the $fprogram version $fver "
+echo "  ##########################################"
+echo
+echo "  ######################    The iptables notes: "
+echo ""
+echo "  The First Option:"
+echo ""
+echo "   (To configure iptables):  offline or client or server or allpermisive"
+echo "   (To show sockets):        list or forward or list6 or iproute or sockets"
+echo "   (Other options):          wizard or upgrade or reconfig or eraserules or help or ayuda"
+echo ""
+echo "  The second Option: (Optional):  configs in folder /etc/f-iptables/ : "
+ls /etc/f-iptables/ | sort | fmt -80  ;
+echo ""
+echo "  Examples:"
+echo "   (Example 1):  launch:  $0 list            # to list iptables rules"
+echo "   (Example 2):  launch:  $0 client web1.cfg # to config iptables like client web"
+echo "   (Example 3):  launch:  $0 help            # to show long help in english"
+echo "   (Example 3):  launch:  $0 ayuda           # to show long help in spanish"
+echo ""
+echo "  Notes: Only works with the ports selected in ipv4 in the config file choosed, blocking ipv6"
+echo; echo; exit ; fi
+##############################       english: create the default1.cfg file when it do not exists and the files1.cfg
+##############################       spanish: crea el archivo default1.cfg cuando no existe, y los archivos1.cfg
+if [ -d /etc/f-iptables ]; then echo -n ; else rm /etc/f-iptables; mkdir /etc/f-iptables ; fi
+if [ -f /etc/f-iptables/default1.cfg ]; then echo -n ;
+else echo "" ; cat $0 | head $flinea | grep -iv ^# | tail $fvariables  > /etc/f-iptables/default1.cfg; fi
+if [ -f /etc/f-iptables/web1.cfg ]; then echo -n ;
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https ; haypingsend=no ;  haypingrecive=no ; " > /etc/f-iptables/web1.cfg; fi
+if [ -f /etc/f-iptables/games1.cfg ]; then echo -n ;
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps,12000:60000; clientetcp=domain,domain-s,http,https,14998:15002 ;  haypingsend= ;  haypingrecive= ; "  > /etc/f-iptables/games1.cfg; fi
+if [ -f /etc/f-iptables/server1.cfg ]; then echo -n ;
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https; haypingrecive=""; haypingsend="" haylogserver=; logservertcp=ssh; servidortcp=ssh,http,https" > /etc/f-iptables/server1.cfg; fi
+if [ -f /etc/f-iptables/vpn1.cfg ]; then echo -n ;
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https;  sinreenvio=no; hayvpn=; vpn=baldras.wesnoth.org,wesnoth.org,sourceforge.net" > /etc/f-iptables/vpn1.cfg ; fi
+if [ -f /etc/f-iptables/several1.cfg ]; then echo -n;
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,rsync,ssh,ftp,ftp-data,pop3,pop3s,poppassd,smtp,imap2,imaps ; haypingsend=; haypingrecive=;" > /etc/f-iptables/several1.cfg ; fi
+if [ -f /etc/f-iptables/ssh1.cfg ]; then echo -n
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,printer,ipp,ssh; haypingsend= haypingrecive=" > /etc/f-iptables/ssh1.cfg ; fi
+if [ -f /etc/f-iptables/vnc1.cfg ]; then echo -n
+else echo "clienteudp=domain,domain-s,ntp,bootpc,bootps; clientetcp=domain,domain-s,http,https,5900:5910" > /etc/f-iptables/vnc1.cfg ; fi
+##############################       english: overwrite system varibles for files variables configured
+##############################       spanish: sobreescribe las variables por la de los archivos de configuracion
+if [ -f /etc/f-iptables/$2 ]; then source /etc/f-iptables/$2 ; else source /etc/f-iptables/default1.cfg; fi
+##############################       english: upgrade f-iptables in the file /usr/bin/f-iptables-firewall
+##############################       spanish: actualiza f-iptables en el archivo /usr/bin/f-iptables-firewall
+if [ "$mifirewall" = "upgrade" ]; then $brillo ; echo ; echo "   $fprogram version $fver" ;
+echo "   ##############################################"; echo;
+echo; echo "   Upgrade The f-iptables in file /usr/bin/f-iptables-firewall with links command" ; echo;
+links=""; flinks=$(whereis -b links | cut -d ":" -f 2);
+echo "   Downloading f-iptables with the comand links browser in path: $flinks" ; echo "    Waiting several seconds..."
+links -dump https://sourceforge.net/projects/f-iptables/files/ | grep -i f-iptables-v  && links -source https://sourceforge.net/projects/f-iptables/files/latest/download > /usr/bin/f-iptables-firewall && echo "    $fprogram is upgraded: ok";
+echo; echo; chmod ugo+x /usr/bin/f-iptables-firewall ; /usr/bin/f-iptables-firewall reconfig ;
+exit; fi; echo ""; $normal
+#############################        english: system script, the first options
+#############################        spanish: script the sistema, primeras opciones
+if [ "$mifirewall" = "offline" ]; then echo; echo "  FIREWALL OFFLINE";
+activarservidor="no" activarcliente="no" mojado="no";
+elif [ "$mifirewall" = "client" ];then echo; echo "  FIREWALL CLIENT";
+activarservidor="no" activarcliente="" mojado="no";
+elif [ "$mifirewall" = "server" ]; then echo; echo "  FIREWALL SERVER";
+activarservidor=""  activarcliente="" mojado="no";
+elif [ "$mifirewall" = "allpermisive" ]; then echo; echo "  FIREWALL ALLPERMISIVE";
+activarservidor="no" activarcliente="no" mojado="";
+elif [ "$mifirewall" = "iproute" ]; then $brillo ; echo ; echo "   $fprogram version $fver" ;
+echo "   ##############################################"
+echo; ip route ls; echo;  exit
+elif [ "$mifirewall" = "sockets" ]; then $brillo;  echo;
+echo; $brillo; echo "  SOCKETS LIST : THE $fprogram $fver FIREWALL configure IPV4 AND blocking TO IPV6"; $normal ;
+echo "  ##################################################################################################"
+echo; echo "     THE IPV6 SOCKETS:" ; ss -a6 ; echo ;  echo "     THE IPV4 SOCKETS:" ; ss -a4 ;
+echo ; exit
+elif [ "$mifirewall" = "reconfig" ]; then echo -n;
+rm /etc/f-iptables/*1.cfg; $0 ; echo;
+echo "   ########################### updating default configuration  ######################################"
+echo "   Updating default configurations: /etc/f-iptables/files1.cfg in $fprogram version $fver "; echo; echo; exit
+elif [ "$mifirewall" = "eraserules" ]; then echo -n;
+$ruta/iptables-nft -t filter -F ; $ruta/ip6tables-nft -t filter  -F ; $ruta/iptables-legacy -t filter -F ; $ruta/ip6tables-legacy -t filter -F ;
+echo; echo; echo " Deleting all rules from ipv4 and ipv6 from iptables"; echo; echo
+exit
+#############################       english: system script, the list option
+#############################       spanish: script de sistema, la opcion lista
+elif [ "$mifirewall" = "list" ]; then echo -n
+$brillo  ; echo;  echo "  Fran iptables version $fver for legacy/netfilter filter firewall Linux TO ipv4 and BLOCKING ipv6"
+echo "  #######################################################################################################################"
+ $normal
+ echo "  ##########################   The iptables-legacy:"
+ $ruta/iptables-legacy -v -L INPUT
+ $ruta/iptables-legacy -v -L OUTPUT
+ echo "  ##########################   The iptables-nft:"
+ $ruta/iptables-nft -v -L INPUT
+ $ruta/iptables-nft -v -L OUTPUT
+echo "" ;
+exit
+############################       english: system script, the forward option to list iptables filter forward rules
+############################       spanish: script de sistema, la opcion forward para listar reglas de iptables filter forward
+elif [ "$mifirewall" = "forward" ]; then echo -n
+$brillo  ; echo;  echo "  Fran iptables version $fver for legacy/netfilter filter firewall Linux TO ipv4 and BLOCKING ipv6"
+echo "  #######################################################################################################################"
+$normal
+ echo "  ##########################   The iptables-legacy:"
+ $ruta/iptables-legacy -v -L FORWARD
+ echo "  ##########################   The iptables-nft:"
+ $ruta/iptables-nft -v -L FORWARD
+echo ""
+exit
+############################       english: system script, the list6 option to list ipv6 rules
+############################       spanish: script de sistema, la opcion lista6 para listar reglas de ipv6
+elif [ "$mifirewall" = "list6" ]; then echo -n
+$brillo  ; echo;  echo "  Fran iptables version $fver for legacy/netfilter filter firewall Linux TO ipv4 and BLOCKING ipv6"
+echo "  #######################################################################################################################"
+ $normal
+ echo "  ##########################   The iptables-legacy:"
+ $ruta/ip6tables-legacy -v -L INPUT
+ $ruta/ip6tables-legacy -v -L FORWARD
+ $ruta/ip6tables-legacy -v -L OUTPUT
+ echo "  ##########################   The iptables-nft:"
+ $ruta/ip6tables-nft -v -L INPUT
+ $ruta/ip6tables-nft -v -L FORWARD
+ $ruta/ip6tables-nft -v -L OUTPUT
+echo ""
+exit
+############################       english: system script, the list6 option to list ipv6 rules
+############################       spanish: script de sistema, la opcion lista6 para listar reglas de ipv6
+elif [ "$mifirewall" = "wizard" ]; then echo -n
+$brillo  ; echo;  echo "  Fran iptables version $fver for legacy/netfilter filter firewall Linux TO ipv4 and BLOCKING ipv6"
+echo "  #######################################################################################################################"
+$normal; echo "";
+echo "  type the filename for a one new configuration it will be in path /etc/f-iptables/";
+echo "  or control+c to stop this script"
+read -r -p "          typewrite without path [ filename.cfg ]:  " frespuesta ;
+echo; echo; echo;
+echo "  the new file will be /etc/f-iptables/$frespuesta";
+echo "  edit the file $respuesta"
+echo "" ; cat $0 | head $flinea | grep -iv ^# | tail $fvariables  > /etc/f-iptables/$frespuesta ;
+echo ""; echo ""; editor /etc/f-iptables/$frespuesta; echo "" ;
+echo " |launch: $0 client $frespuesta   |OR launch:  $0 server $frespuesta" ;
+echo ""
+echo ""
+exit
+############################       english: the help option en english
+############################       spanish: la opcion de ayuda en ingles
+elif [ "$mifirewall" = "help" ]; then echo; echo; $normal
+echo "  The $fprogram version $fver"
+echo "  ###########################################"
+echo
+echo "  ######################    The $fprogram notes: "
+echo ""
+echo "  The First Option: "
+echo ""
+echo "   (To configure iptables):  offline or client or server or allpermisive"
+echo "   (To show sockets):        list or forward or list6 or iproute or sockets"
+echo "   (Other options):          wizard or upgrade or reconfig or eraserules or help or ayuda"
+echo ""
+echo "  The second Option (Optional):  configs in folder /etc/f-iptables/ are:"
+ls /etc/f-iptables/ | sort | fmt -80  ;
+echo ""
+echo "  Examples:"
+echo ""
+echo "   (Example 1):  launch:  $0 list             # to list iptables rules"
+echo "   (Example 2):  launch:  $0 client web1.cfg  # to config iptables like client web"
+echo "   (Example 3):  launch:  $0 help             # to show long help in english"
+echo "   (Example 3):  launch:  $0 ayuda            # to show long help in spanish"
+echo ""
+echo "  Notes: Only works with the ports selected in ipv4 in the config file choosed, blocking ipv6"
+echo ""
+echo "  ######################     The first option:"
+echo ""
+echo "     reconfig: to rewrite default files in  /etc/f-iptables/files1.cfg"
+echo "      offline: to disconnect firewall to disconected for all servers and clients except localhost"
+echo "       client: to configure the firewall to be a internet client"
+echo "       server: to configure the firewall to be a internet client and internet server"
+echo " allpermisive: to configure a firewall very very permisive"
+echo "   eraserules: to delete the iptables rules in ipv4 and ipv6"
+echo "         list: to list iptables rules from ipv4"
+echo "      forward: to list iptables rules filter foward"
+echo "        list6: to list iptables rules from ipv6"
+echo "      iproute: to show ip route tables"
+echo "      sockets: to show netsockets"
+echo "         help: to show this help in english"
+echo "        ayuda: to show this help in spanish"
+echo "      upgrade: to upgrade $fprogram at the latest version"
+echo ""
+echo "  #####################     The second option: (optional):"
+echo ""
+echo "    f-iptables client and server takes the config.cfg in the command line"
+echo "    f-iptables without specific config.cfg it takes default1.cfg"
+echo "    you can  modify and create the files in the folder /etc/f-iptables/"
+echo ""
+echo "  #####################     Examples:"
+echo ""
+echo " $0 client games1.cfg  :  to configure firewall to allow connecto to web and games"
+echo " $0 server server1.cfg :  to configure firewall to server somes services"
+echo " $0 eraserules         :  to remove the iptables rules"
+echo " $0 list               :  to list iptables rules"
+echo " $0 help               :  to show this help in english"
+echo ""
+echo "  #####################     Examples of variables to the configs files, default.cfg"
+$brillo; echo "" ; cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,2 | sed "s/#english:/            ### /g"; $normal
+echo ""
+echo "  #####################     It needs this clients ports to works:"
+echo ""
+echo "     it is necesary to update the date  : ntp"
+echo "     it is necesary to dhcp and get ip  : bootpc and/or bootps"
+echo "     it is necesary to domain resolver  : domain and/or domain-s"
+echo ""
+echo "  #####################     License:"
+echo ""
+echo "  Download the latest version $fprogram from sourceforge:"
+echo "  $web"
+echo "  This script is free software with copyleft from licence gpl, it is free, with no warranty"
+echo ""
+exit
+############################       english: the help option en spanish
+############################       spanish: la opcion de ayuda en español
+elif [ "$mifirewall" = "ayuda" ]; then echo; echo; $normal
+echo "  the $fprogram version $fver "
+echo "  #############################################"
+echo
+echo "  ######################   Las notas de $fprogram: "
+echo ""
+echo "  La primera opción:"
+echo "     (Para configurar iptables):  offline or client or server or allpermisive"
+echo "      (Para mostrar conexiones):  list or forward or list6 or iproute or sockets"
+echo "               (Otras opciones):  wizard or upgrade or reconfig or eraserules or help or ayuda"
+echo ""
+echo "   La segunda opción (Opcional):  lasconfiguraciones en /etc/f-iptables/ son:"
+ls /etc/f-iptables/ | sort | fmt -80  ;
+echo ""
+echo "  Ejemplos:"
+echo ""
+echo "   (Ejemplo 1):  lanza:  $0 list             # Para listar las reglas de iptables"
+echo "   (Ejemplo 2):  lanza:  $0 client web1.cfg  # Para configurar iptables como cliente"
+echo "   (Ejemplo 3):  lanza:  $0 help             # para mostrar la ayuda in english"
+echo "   (Example 3):  lanza:  $0 ayuda            # para mostrar la ayuda en spanish"
+echo ""
+echo "  Notes: Solo trabaja con los puertos seleccionados en ipv4 de el archivo elegido, bloquea ipv6"
+echo ""
+echo "  ######################      La primera opción:"
+echo ""
+echo "     reconfig: Para reescribir configs por defecto /etc/f-iptables/archivos1.cfg"
+echo "      offline: Para desconectar el cortafuegos de todo excepto localhost"
+echo "       client: Para configurar el cortafuegos de cliente"
+echo "       server: Para configurar el cortafuegos de servidor"
+echo " allpermisive: Para configurar el cortafuegos muy permisivo"
+echo "   eraserules: Para borrar las reglas de iptables de ipv4 y de ipv6"
+echo "         list: Para listar las reglas de ipv4 de iptables"
+echo "      forward: Para listar las reglas de ipv4 de filter de forward"
+echo "        list6: Para listar las reglas de ipv6 de iptables"
+echo "      iproute: Para mostrar la tabla de rutas"
+echo "      sockets: Para mostrar las conexiones"
+echo "         help: Para mostrar la ayuda en ingles"
+echo "        ayuda: Para mostrar la ayuda en español"
+echo "      upgrade: Para actualizar $fprogram a la ultima version"
+echo ""
+echo "  #####################       La segunda opcion: (opcional)"
+echo ""
+echo "    f-iptables cliente y servidor toman la configuración de un archivo.cfg"
+echo "    f-iptables sin especificar una config.cfg tomara por defect default1.cfg"
+echo "    Puedes modificar y crear archivos en la carpeta /etc/f-iptables/"
+echo ""
+echo "  #####################       Ejemplos:"
+echo ""
+echo " $0 client games1.cfg  :  Para configurar un cliente para web y juegos"
+echo " $0 server server1.cfg :  Para configurar un servidor"
+echo " $0 eraserules         :  Para borrar las reglas de iptables "
+echo " $0 list               :  Para listar las reglas de iptables "
+echo " $0 help               :  Para mostrar la ayuda en ingles "
+echo ""
+echo "  #####################       Ejemplos de las variables de configuración, default.cfg"
+echo ""
+cat $0 | head $(echo $flinea) | grep -iv ^# | tail $fvariables | cut -d "#" -f 1,3 | sed "s/#spanish:/            ### /g"
+echo ""
+echo "  #####################       Puertos cliente necesarios para funcionar:"
+echo ""
+echo "     necesario para actualizar la fecha :   ntp"
+echo "     necesario para dhcp y conseguir ip :   bootpc y/o bootps"
+echo "     necesario para resolver dominios   :   domain y/o domain-s"
+echo ""
+echo "  #####################       Licencia:"
+echo ""
+echo "  Descarga la ultima version de $fprogram desde la web de sourceforge: "
+echo "  $web"
+echo "  Este programa es software libre, licencia gpl, copyleft, libre, gratis y sin garantia"
+echo ""
+exit
+############################       english: The default option, the help option for default
+############################	   spanish: La opcion por defecto, la opcion de ayuda por defecto
+else echo; $brillo
+echo "  The $fprogram version $fver"
+echo "  ###########################################"
+echo
+echo "  ######################    The iptables notes: "
+echo ""
+echo "  The First Option: "
+echo ""
+echo "   (To configure iptables):  offline or client or server or allpermisive"
+echo "   (To show sockets):        list or forward or list6 or iproute or sockets"
+echo "   (Other options):          wizard or upgrade or reconfig or eraserules or help or ayuda"
+echo ""
+echo "  The second Option (Optional):  configs in folder /etc/f-iptables/"
+ls /etc/f-iptables/ | sort | fmt -80  ;
+echo ""
+echo "  Examples: "
+echo ""
+echo "   (Example 1):  launch:  $0 list            # to list iptables rules"
+echo "   (Example 2):  launch:  $0 client web1.cfg # to config iptables like client web"
+echo "   (Example 3):  launch:  $0 help            # to show long help in english"
+echo "   (Example 3):  launch:  $0 ayuda           # to show long help in spanish"
+echo ""
+echo "  Notes: Only works with the ports selected in ipv4 in the config file choosed, blocking ipv6"
+echo; $normal;
+exit; fi
+############################       english: iptables rules
+############################       spanish: reglas de iptables
+######### Config iptables-legacy
+### ipv4 erase rules
+ $ruta/iptables-legacy -t filter -F
+ $ruta/iptables-legacy -t nat -F
+ $ruta/iptables-legacy -t mangle -F
+### ipv6 erase rules
+ $ruta/ip6tables-legacy -t filter -F
+ $ruta/ip6tables-legacy -t nat -F
+ $ruta/ip6tables-legacy -t mangle -F
+### ipv6 drop rules
+ $ruta/ip6tables-legacy -A INPUT -j DROP
+ $ruta/ip6tables-legacy -A OUTPUT -j DROP
+ $ruta/ip6tables-legacy -A FORWARD -j DROP
+### ipv4 filter legacy rules input
+ $ruta/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT > /dev/null
+$haylogservertcp  $ruta/iptables-legacy -A INPUT -p tcp -m multiport --dports $logservertcp -j LOG &> /dev/null
+$haylogserverudp  $ruta/iptables-legacy -A INPUT -p udp -m multiport --dports $logserverudp -j LOG &> /dev/null
+$hayvpn  $ruta/iptables-legacy -A INPUT -s $vpn -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-legacy -A INPUT -p udp -m multiport --dports $servidorudp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-legacy -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-legacy -A INPUT -p udp -m multiport $estado --sports $clienteudp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-legacy -A INPUT -p tcp -m multiport $estado --sports $clientetcp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$haypingsend  $ruta/iptables-legacy -A INPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+$haypingrecive  $ruta/iptables-legacy -A INPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+ $ruta/iptables-legacy -A INPUT -j DROP &> /dev/null
+### ipv4 filter legacy rules output
+ $ruta/iptables-legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$hayvpn  $ruta/iptables-legacy -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-legacy -A OUTPUT -p udp -m multiport --sports $servidorudp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-legacy -A OUTPUT -p tcp -m multiport --sports $servidortcp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarcliente   $ruta/iptables-legacy -A OUTPUT -p udp -m multiport --dports $clienteudp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-legacy -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$haypingsend  $ruta/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-request -j ACCEPT &> /dev/null
+$haypingrecive  $ruta/iptables-legacy -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT &> /dev/null
+ $ruta/iptables-legacy -A OUTPUT -j DROP &> /dev/null &> /dev/null
+### ipv4 filter legacy rules forward
+$sinreenvio $ruta/iptables-legacy -A FORWARD  -j DROP &> /dev/null
+#########      iptables-legacy active
+#########      Config iptables-nft
+###   ipv4 erase rules
+ $ruta/iptables-nft -t filter -F
+ $ruta/iptables-nft -t nat -F
+ $ruta/iptables-nft -t mangle -F
+###   ipv6 erase rules
+ $ruta/ip6tables-nft -t filter -F
+ $ruta/ip6tables-nft -t nat -F
+ $ruta/ip6tables-nft -t mangle -F
+###   ipv6 drop rules
+ $ruta/ip6tables-nft -A INPUT -j DROP
+ $ruta/ip6tables-nft -A OUTPUT -j DROP
+ $ruta/ip6tables-nft -A FORWARD -j DROP &> /dev/null
+###   ip4 filter nft rules input
+ $ruta/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$haylogservertcp  $ruta/iptables-nft -A INPUT -p tcp -m multiport --dports $logservertcp -j LOG &> /dev/null
+$haylogserverudp  $ruta/iptables-nft -A INPUT -p udp -m multiport --dports $logserverudp -j LOG &> /dev/null
+$hayvpn  $ruta/iptables-nft -A INPUT -s $vpn -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-nft -A INPUT -p udp -m multiport --dports $servidorudp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-nft -A INPUT -p tcp -m multiport --dports $servidortcp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-nft -A INPUT -p udp -m multiport $estado --sports $clienteudp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-nft -A INPUT -p tcp -m multiport $estado --sports $clientetcp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$haypingsend  $ruta/iptables-nft -A INPUT -p icmp --icmp-type echo-reply  -j ACCEPT &> /dev/null
+$haypingrecive  $ruta/iptables-nft -A INPUT -p icmp --icmp-type echo-request  -j ACCEPT &> /dev/null
+ $ruta/iptables-nft -A INPUT -j DROP &> /dev/null
+###   ipv4 filter nft rules output
+ $ruta/iptables-nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT &> /dev/null
+$hayvpn  $ruta/iptables-nft -A OUTPUT -d $vpn -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-nft -A OUTPUT -p udp -m multiport --sports $servidorudp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarservidor  $ruta/iptables-nft -A OUTPUT -p tcp -m multiport --sports $servidortcp -s $redserver -d $redserver -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-nft -A OUTPUT -p udp -m multiport --dports $clienteudp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$activarcliente  $ruta/iptables-nft -A OUTPUT -p tcp -m multiport --dports $clientetcp -s $redcliente -d $redcliente -j ACCEPT &> /dev/null
+$haypingsend  $ruta/iptables-nft -A OUTPUT -p icmp --icmp-type echo-request  -j ACCEPT &> /dev/null
+$haypingrecive  $ruta/iptables-nft -A OUTPUT -p icmp --icmp-type echo-reply  -j ACCEPT &> /dev/null
+ $ruta/iptables-nft -A OUTPUT -j DROP &> /dev/null
+###   ipv4 filter nft rules forward
+$sinreenvio $ruta/iptables-nft -A FORWARD -j DROP &> /dev/null
+### iptables-nft active
+### iptables permisisive
+$mojado  $ruta/iptables-legacy -F &> /dev/null
+$mojado  $ruta/iptables-legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-legacy -A INPUT -m state --state established -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-legacy -A INPUT -j DROP &> /dev/null
+$mojado  $ruta/iptables-legacy -A OUTPUT -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-legacy -A FORWARD  -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-nft -F &> /dev/null
+$mojado  $ruta/iptables-nft -A INPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-nft -A INPUT -m state --state established -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-nft -A INPUT -j DROP &> /dev/null
+$mojado  $ruta/iptables-nft -A OUTPUT -j ACCEPT &> /dev/null
+$mojado  $ruta/iptables-nft -A FORWARD -j ACCEPT &> /dev/null
+#### iptables permisive active
+#########################       english: it shows when active rules
+#########################       spanish: muestra esto cuando activas las reglas
+echo; echo "  $fprogram version $fver";
+echo "  ######################################################";
+echo ""
+echo "  launched $0 $1 $2  ";
+if [ "$1" = "offline" ]; then echo; echo "  The iptables configured for disconnected to internet";
+echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
+if [ "$1" = "allpermisive" ]; then echo; echo "  The iptables configured for all permisive to internet";
+echo ; echo "  launch $0 list  # to list iptables rules" ; echo;  exit ; else echo ; fi
+if [ -f /etc/f-iptables/$2 ]; then echo "  $program configured with the configuration: $2" ;
+else echo " $program configured with the default configuration: default1.cfg"; fi ;
+$brillo; echo; echo;
+echo "     ### With Client ports: ###" ;
+echo "  client tcp: $clientetcp"  ;
+echo "  client udp: $clienteudp"  ;
+if [ "$1" = "client" ]; then echo ;
+echo "     ### Without server ports ###" ;
+else echo -n; fi
+if [ "$1" = "server" ]; then echo ;
+echo "     ### With Server ports: ###" ;
+echo "  server tcp: $servidortcp" ;
+echo "  server udp: $servidorudp" ;
+else echo -n; fi ; echo
+echo "     ### And Others configs:  ###"  ;
+# echo "  server: $activarservidor AND ping: $hayping AND vpn: $hayvpn AND logserver: $haylogserver  "
+if [ "$haypingsend" = "no" ]; then echo "  Config to dont allow send ping in iptables"; else echo "  To allow send pings"; fi
+if [ "$haypingrecive" = "no" ]; then echo "  Config to dont allow recive ping in iptables"; else echo "  To allow recive pings" ; fi
+if [ "$haylogservertcp" = "no" ]; then echo "  Config to dont allow log server tcp in iptables"; else  echo "  To allow logservers in port: $logservertcp"; fi
+if [ "$haylogserverudp" = "no" ]; then echo "  Config to dont allow log server udp in iptables"; else  echo "  To allow logservers in port: $logserverudp"; fi
+if [ "$hayvpn" = "no" ]; then echo "  Config to dont allow vpn excepctional in iptables"; else  echo "  To allow vpn servers are $vpn"; fi
+if [ "$sinreenvio" = "no" ]; then echo "  To allow ip forwading iptables"; else echo "  Config to dont allow ip forwading in iptables"; fi
+echo
+echo "  launch $0 list  # to list iptables rules"
+echo ;  $normal
+# left script
+#######################         english: End of script
+#######################         spanish: fin del script
+exit
