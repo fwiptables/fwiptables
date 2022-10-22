@@ -426,7 +426,7 @@ fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/unstable-fwiptables?format=raw" ;
+fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
@@ -2582,11 +2582,11 @@ echo "$text_md  tool-udp           |  host dig resolveip geoip ntpdate-client   
 echo "$text_md  tool-icmp          |  traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                            "
 echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                            "
 echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
-echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                     "
+echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  tool-util          |  md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial              "
+echo "$text_md  tool-util          |  weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial      "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
-echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                "
+echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
 echo "$text_md  tool-computer      |  pc-halt pc-shutdown pc-reboot                                            "
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                          "
@@ -2665,9 +2665,9 @@ echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-p
 echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                 "
 echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                       "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
-echo "$text_md    tool-util         | md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
+echo "$text_md    tool-util         | weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
-echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                     "
+echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                        "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
 echo "$text_md"
@@ -3806,6 +3806,9 @@ echo "$text_md"
 echo "$text_md [ english info ] [ Tool utils ]"
 echo "$text_md [ spanish info ] [ Utilidad de sistema ]"
 echo "$text_md"
+echo "$text_md $tab weather"
+echo "$text_md $tab_lang_english           : Show the weather in your city"
+echo "$text_md $tab_lang_spanish           : Muestra el tiempo en tu ciudad"
 echo "$text_md $tab md5sum"
 echo "$text_md $tab_lang_english           : Show md5sum from one file"
 echo "$text_md $tab_lang_spanish           : Muestra la suma md5sum de un archivo"
@@ -5014,7 +5017,7 @@ exit; fi
 ####
 if [ "$first_option" = "gui-menu-tool-util" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "md5sum" "radio-mp3 link" "gpg-notes" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" \
 --column="Option list $name_fwiptables" --text="Select one option" --title="[ Tool Utils ] [ $name_fwiptables ]" )
 #### 
 #### 
@@ -5023,6 +5026,7 @@ case $selection in
 "Gui Principal Menu") $cmd_fwiptables gui-menu ;;
 "Gui Help Menu") $cmd_fwiptables -gui help tool-speed ;;
 "Gui Info Menu") $cmd_fwiptables -gui info tool-speed ;;
+"weather") $cmd_fwiptables -gui weather ;;
 "md5sum") archivo="$(zenity --file-selection)" ;
 $cmd_fwiptables -gui md5sum $archivo ;;
 "radio-mp3 link") 
@@ -10619,6 +10623,7 @@ echo "$text_md        speed-glx : Show frammes for seconds with mesa graphicall.
 echo "$text_md"
 echo "$title_md         [ Tool util ]"
 echo "$text_md"
+echo "$text_md          weather : Show the weather in your city."
 echo "$text_md           md5sum : Show the one file md5sum."
 echo "$text_md        radio-mp3 : Connect to one server mp3, see show-default modify-default."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
@@ -10970,6 +10975,7 @@ echo "$text_md     speed-glx : Muestra fotogramas por segundo con graficos mesa.
 echo "$text_md"
 echo "$title_md [ Herramienta de utilidad ]."
 echo "$text_md"
+echo "$text_md       weather : Muestra el tiempo en tu ciudad"
 echo "$text_md        md5sum : Muestra la huella md5sum de un archivo"
 echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira show-default o modify-default."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
