@@ -1017,7 +1017,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 if [ "$first_option" = "intro" ]; then echo "$give_cover"
-echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro.md ] || ||"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion intro ] [ intro md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
 echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
 echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
@@ -1066,7 +1066,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
 echo "$text_md [ info ] [ $name_fwiptables uninstalling.. ]"
 if  [ -f $directory_binary/$cmd_fwiptables ]; then
 rm $directory_binary/$cmd_fwiptables &> /dev/null
@@ -1086,7 +1086,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "install" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ] || ||"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install md ] || ||"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -1150,7 +1150,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
+echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
@@ -1187,7 +1187,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
 "$NULL")echo "$text_md [ notice  ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
@@ -2515,7 +2515,7 @@ fi
 ####
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options.md ] || ||"
+echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
@@ -2549,7 +2549,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "options-all" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List full options ] [ full-options.md ] || ||"
+echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                      "
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
@@ -2618,7 +2618,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "options-firewall" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall.md ]"
+echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall md ]"
 echo "$title_md                                  | options-firewall |                                          "
 echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
 echo "$text_md firewall-list       |  list listnum list6 listnum6                                              "
@@ -2648,7 +2648,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "options-tool" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ Tool options ] [ options-tool.md ]"
+echo "$title_md [ $first_option ] [ Tool options ] [ options-tool md ]"
 echo "$title_md                                    | options-tool |                                 " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy         "
 echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert      "
@@ -2680,7 +2680,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "options-show" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ Show options ] [ options-show.md ]"
+echo "$title_md [ $first_option ] [ Show options ] [ options-show md ]"
 echo "$title_md                                   | options-show |                          " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$text_md    show-log          | log-search log-ssh filelog autolog                    "
@@ -2698,7 +2698,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "options-help" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ Show help options ] [ options-help.md ]"
+echo "$title_md [ $first_option ] [ Show help options ] [ options-help md ]"
 echo "$title_md                                   | options-help |                                             "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
@@ -2715,7 +2715,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "options-examples" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List examples ] [ options-examples.md ] || ||"
+echo "$header_ok [ $first_option ] [ List examples ] [ options-examples md ] || ||"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
 echo "$title_md                                      [ examples ]                                        "
@@ -2773,7 +2773,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "all-help" ]; then echo $give_cover
-echo "$title_md [ $first_option ] [ help in english and spanish ] [ all-help.md ]"
+echo "$title_md [ $first_option ] [ help in english and spanish ] [ all-help md ]"
 echo "$text_md [ Choose only help in english ]        [ Type:     $cmd_fwiptables help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $cmd_fwiptables ayuda ]"
 echo "$text_md [ all-help in english and spanish ]    [ Type:     $cmd_fwiptables all-help ]"
@@ -2923,7 +2923,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "group-options" ]; then echo $give_cover
-echo "$text_md [ ok ] [ $first_option ] [ List group options ] [ group-options.md ] || ||"
+echo "$text_md [ ok ] [ $first_option ] [ List group options ] [ group-options md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ Help to one group ]"
 echo "$text_md [ spanish info ] [ Ayuda a un grupo  ]"
@@ -3008,7 +3008,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-launch" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ launch rules ] [ firewall-launch.md ] || ||"
+echo "$header_ok [ $first_option ] [ launch rules ] [ firewall-launch md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Launch iptables rules ]"
 echo "$text_md [ spanish info ] [ Lanza reglas de iptables ]"
@@ -3125,7 +3125,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-control" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ control rules ] [ firewall-control.md ] || ||"
+echo "$header_ok [ $first_option ] [ control rules ] [ firewall-control md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ Control iptables rules ]"
 echo "$text_md [ spanish info ] [ Controla reglas de iptables ]"
@@ -3167,7 +3167,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-list" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List rules ] [ firewall-list.md ] || ||"
+echo "$header_ok [ $first_option ] [ List rules ] [ firewall-list md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ List filter iptables rules ]"
 echo "$text_md [ spanish info ] [ Lista reglas de iptables filtros ]"
@@ -3248,7 +3248,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-numrules" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List rules in numerical ] [ list-numrules.md ] || ||"
+echo "$header_ok [ $first_option ]  [ List rules in numerical ] [ list-numrules md ] || ||"
 echo " [ List iptables numerical rules ]"
 echo " [ Lista reglas numericas de iptables ]"
 echo
@@ -3271,7 +3271,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "firewall-custom" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool custom rules config ] [ firewall-custom.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool custom rules config ] [ firewall-custom md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ custom configs ]"
 echo "$text_md [ spanish info ] [ Herramienta de configuraciones de reglas ]"
@@ -3313,7 +3313,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "options-interface" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ control interface ] [ options-interface.md ] || ||"
+echo "$header_ok [ $first_option ] [ control interface ] [ options-interface md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ control interface ]" 
 echo "$text_md [ spanish info ] [ control de interfaz ]"
@@ -3364,7 +3364,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sockets" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool sockets ] [ tool-sockets.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool sockets ] [ tool-sockets md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool sockets ]"
 echo "$text_md [ spanish info ] [ Herramienta de sockets ]"
@@ -3415,7 +3415,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-game" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool game ] [ tool-game.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool game ] [ tool-game md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool game ]"
 echo "$text_md [ spanish info ] [ Herramienta de juego ]"
@@ -3445,7 +3445,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-connect" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool connect ] [ tool-connect.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool connect ] [ tool-connect md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool connect ]"
 echo "$text_md [ spanish info ] [ Herramienta de conexion ]"
@@ -3475,7 +3475,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-rule" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rule.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rule md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool rules ]"
 echo "$text_md [ spanish info ] [ Herramienta de reglas ]"
@@ -3499,7 +3499,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-forward" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool forward ] [ tool-forward.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool forward ] [ tool-forward md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool forward ]"
 echo "$text_md [ spanish info ] [ Herramienta de ipforwading ]"
@@ -3523,7 +3523,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sshd" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool ssh tunnel ] [ tool-sshd.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool ssh tunnel ] [ tool-sshd md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool ssh tunnel ]"
 echo "$text_md [ spanish info ] [ Herramienta de ssh tunnel ]"
@@ -3547,7 +3547,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-icmp" ]; then echo $give_cover
-echo "$tab [ ok ] [ $first_option ] [ tool icmp ] [ tool-icmp.md ] || ||"
+echo "$tab [ ok ] [ $first_option ] [ tool icmp ] [ tool-icmp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool icmp ]"
 echo "$text_md [ spanish info ] [ Herramienta icmp ]"
@@ -3574,7 +3574,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-tcp" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool tcp ] [ tool-tcp.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool tcp ] [ tool-tcp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool tcp ]"
 echo "$text_md [ spanish info ] [ Herramienta tcp ]"
@@ -3601,7 +3601,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-udp" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool udp ] [ tool-udp.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool udp ] [ tool-udp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool udp ]"
 echo "$text_md [ spanish info ] [ Herramienta udp ]"
@@ -3661,7 +3661,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-sudofw" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudofw.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudofw md ] || ||"
 echo "$text_md"
 echo "$text_md [ Tool sudo ]"
 echo "$text_md [ Herramienta sudo ]"
@@ -3688,7 +3688,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-install" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool install ] [ tool-install.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool install ] [ tool-install md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
@@ -3718,7 +3718,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-addblock" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool addblock in /etc/hosts ] [ tool-addblock.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool addblock in /etc/hosts ] [ tool-addblock md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool addblock ]"
 echo "$text_md [ spanish info ] [ Herramienta de addblock ]"
@@ -3742,7 +3742,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-dev" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool install ] [ tool-dev.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool install ] [ tool-dev md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
 echo "$text_md [ spanish info ] [ Herramienta instalar ]"
@@ -3772,7 +3772,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-speed" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool speed ] [ tool-speed.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool speed ] [ tool-speed md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool benchmark speed ]"
 echo "$text_md [ spanish info ] [ Herramienta de medir velocidad ]"
@@ -3799,7 +3799,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-util" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool util ] [ tool-util.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool util ] [ tool-util md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool utils ]"
 echo "$text_md [ spanish info ] [ Utilidad de sistema ]"
@@ -3826,7 +3826,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "tool-computer" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ tool computer ] [ tool-computer.md ] || ||"
+echo "$header_ok [ $first_option ] [ tool computer ] [ tool-computer md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool computer ]"
 echo "$text_md [ spanish info ] [ Herramienta de ordenador ]"
@@ -3850,7 +3850,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-etc" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show etc files ] [ show-etc.md ] || ||"
+echo "$header_ok [ $first_option ] [ show etc files ] [ show-etc md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show configs files from etc ]"
 echo "$text_md [ spanish info ] [ Mostrar configuraciones de archivos de etc ]"
@@ -3889,7 +3889,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-hardware" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show hardware info ] [ show-hardware.md ] || ||"
+echo "$header_ok [ $first_option ] [ show hardware info ] [ show-hardware md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show hardware info ]"
 echo "$text_md [ spanish info ] [ Muestra informacion del hardware ]"
@@ -3925,7 +3925,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show-log" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show log files ] [ show-log.md ] || ||"
+echo "$header_ok [ $first_option ] [ show log files ] [ show-log md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show log ]"
 echo "$text_md [ spanish info ] [ Mostrar log ]"
@@ -3955,7 +3955,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help-about" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show about ] [ help-about.md ] || ||"
+echo "$header_ok [ $first_option ] [ show about ] [ help-about md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show about ]"
 echo "$text_md [ spanish info ] [ Mostrar acerca de ]"
@@ -3991,7 +3991,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "help-help" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ show help ] [ help-help.md ] || ||"
+echo "$header_ok [ $first_option ] [ show help ] [ help-help md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show help ]"
 echo "$text_md [ spanish info ] [ Mostrar ayuda ]"
@@ -4030,7 +4030,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "notes" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List notes about ] [ notes.md ] || ||"
+echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ] || ||"
 echo "$text_md"
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
 echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
@@ -4100,7 +4100,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "depends" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends.md ] || ||"
+echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] || ||"
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_tmp"
@@ -10137,7 +10137,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "about" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ about ] [ about.md ] || ||" 
+echo "$header_ok [ $first_option ] [ about ] [ about md ] || ||" 
 echo "$title_md [ $name_fwiptables: ]"
 echo "$text_md [ Path Program ] $directory_binary/$cmd_fwiptables"
 echo "$text_md [ Program Name ] $fprogram"
@@ -10405,7 +10405,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "readme" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ help in english ] [ readme.md ] || ||"
+echo "$header_ok [ $first_option ] [ help in english ] [ readme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables intro
@@ -10761,7 +10761,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "leeme" ]; then echo $give_cover
-echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme.md ] || ||"
+echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
 $cmd_fwiptables intro
