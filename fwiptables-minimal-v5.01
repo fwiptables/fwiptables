@@ -460,7 +460,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install to be ready for $cmd_fwiptables config files" ; fi
+if [ "$fwiptables_installed" == "no" ] ; then echo " [ info ] [ type: $0 install ] [ to be ready for $cmd_fwiptables config files ]" ; fi
 ####
 ####
 #### :rutina-final-notice:
