@@ -921,15 +921,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ] || ||"
-echo "$text_md [ info ] [ $name_fwiptables uninstalling.. ]"
-if  [ -f $directory_binary/$cmd_fwiptables ]; then
-rm $directory_binary/$cmd_fwiptables &> /dev/null
-rm $directory_binary/$name_fwiptables-cli-menu &> /dev/null
-rm $directory_binary/$name_fwiptables-gui-menu &> /dev/null
-rm $directory_binary/$name_fwiptables-gui-shell &> /dev/null
-echo "$text_md [ info ] [ deleted binaries ]"
-echo "$text_md [  ok  ] [ $name_fwiptables uninstalled ]" ;
-else echo "$text_md [ info ] [ $cmd_fwiptables is not installed ]"; fi
+echo "$text_md [ info ] [ $name_fwiptables uninstall.. ]"
+echo "[ info ] [ To deinstall fwiptables ] [ delete $directory_binary/$cmd_fwiptables ]"
 exit; fi
 ####
 ####
@@ -941,36 +934,11 @@ exit; fi
 ####
 if [ "$first_option" = "install" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ] || ||"
-####
-####
-####  english: copy the file to temporal folder and install
-####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "$text_md [ info ] [ $name_fwiptables installing.. ]"
-cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
-cp "$directory_temporal/fwiptables-tmp.sh" "$directory_binary/$cmd_fwiptables" &> /dev/null 
-chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null 
-####
-####
-####  english: generate fwiptables default
-####  spanish: genera fwiptables default
-####
-####
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$name_fwiptables-default"
-$cmd_fwiptables regen-config &> /dev/null
-####
-####
-####   english: Show final status from installer
-####   spanish: Muestra el estatus final desde el instalador
-####
-####
-echo "$text_md [ info ] [ config dir:        ] [ $directory_data ]"
-echo "$text_md [ info ] [ tmp dir:           ] [ $directory_tmp  ]"
-echo "$text_md [ info ] [ command shell:     ] [ $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ grant privileges to user: ] [ $cmd_fwiptables sudofw-adduser user ]"
-echo "$text_md [  ok  ] [ now. You are ready to run $cmd_fwiptables ]"
-exit; fi
+echo "$text_md [ info ] [ $name_fwiptables install ]"
+echo "[ info ] [ To install fwiptables ] [ copy this file in $directory_binary/$cmd_fwiptables ]"
+exit ; fi
 ####
 ####
 #### :rutina-final-install:
@@ -983,30 +951,10 @@ if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 ####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
-case "$favorite_text_browser" in
-"$NULL")echo "$text_md $tab [ notice  ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ download ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
+echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ download ] [ download    $cmd_fwiptables from $fweb_latest ]"
 ####
 ####
-####  English: download fwiptables
-####  Spanish: descarga fwiptables
-####
-####
-echo "$text_md [ info ] [ download ] [ $fweb_latest ]"
-echo "$text_md [ info ] [ download ] [ waiting several seconds .. ]"
-$favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$name_fwiptables" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rwx "$directory_temporal/$name_fwiptables" &> /dev/null
-####
-####
-#### English: launch install
-#### Spanish: lanza instalacion
-####
-####
-if [ -f "$directory_temporal/$name_fwiptables" ] ;
-then echo "$text_md [  ok  ] [ download ] [ downloaded fwiptables latest version ]"
-"$directory_temporal/$name_fwiptables" install ; 
-else echo "$text_md [ fail ] [ install fail ]"; fi
 exit ; fi
 ####
 ####
@@ -1019,30 +967,8 @@ exit ; fi
 if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
-case "$favorite_text_browser" in
-"$NULL")echo "$text_md [ notice  ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
-echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
-echo "$text_md [ info ] [ download ] [downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
-####
-####
-####  English: download fwiptables
-####  Spanish: descarga fwiptables
-####
-####
-echo "$text_md [ info ] [ download ] [ $fweb_development ]"
-echo "$text_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $fweb_development &> "$directory_temporal/$name_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rx $directory_temporal/$name_fwiptables-installer &> /dev/null
-####
-####
-#### English: launch install
-#### Spanish: lanza instalacion
-####
-####
-if [ -s "$directory_temporal/$name_fwiptables-installer" ] ;
-then echo "$text_md [  ok  ] [ downloaded fwiptables developer version ]"
-"$directory_temporal/$name_fwiptables-installer" install ; 
-else echo "$text_md [ fail ] [ install fail ]"; fi
+echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ download ] [ download    $cmd_fwiptables from $fweb_development ]"
 ####
 ####
 exit ; fi
@@ -2548,56 +2474,7 @@ $command_zenity  --forms $graphic_dimension --title="Gui Output || $cmd_fwiptabl
 exit; fi
 ####
 ####
-##########    english: gui-menu: gui menu general: gui con menu  ##########
-##########    spanish: gui-menu: gui menu general: gui con menu  ##########
-#### :rutina-inicial-gui-menu:
-####
-####
-if [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo " [ fail ] [ Install zenity to work ]"; exit ;; esac
-selection=$(zenity $graphic_dimension  \
- --list "01 Firewall Control" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool sockets" \
-"06 Tool connect" "07 Tool rule" "08 Tool forward" "09 Tool sshd" "10 Tool tcp" "11 Tool udp" "12 Tool icmp" \
-"13 Tool sudofw" "14 Tool game" "15 Tool speed" "16 Tool util" "17 Tool install" "18 Tool addblock" "19 Tool dev" \
-"20 Show hardware" "21 Show etc" "22 Show log" "23 Help about" "24 Help help" \
---column="Option list $name_fwiptables" --text="Select one option" --title="Gui Menu || $name_fwiptables || $fversion ||")
-#### 
-#### 
-case "$selection" in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_fwiptables good bye"; exit ;;
-"01 Firewall Control")$cmd_fwiptables gui-menu-firewall-control ; exit ;;
-"02 Firewall List")$cmd_fwiptables gui-menu-firewall-list ; exit ;;
-"03 Firewall Custom")$cmd_fwiptables gui-menu-firewall-custom ; exit ;;
-"04 Firewall Launch")$cmd_fwiptables gui-menu-firewall-launch ; exit ;;
-"05 Tool sockets")$cmd_fwiptables gui-menu-tool-sockets ; exit ;;
-"06 Tool connect")$cmd_fwiptables gui-menu-tool-connect ; exit ;;
-"07 Tool rule")$cmd_fwiptables gui-menu-tool-rule ; exit ;;
-"08 Tool forward")$cmd_fwiptables gui-menu-tool-forward ; exit ;;
-"09 Tool sshd")$cmd_fwiptables gui-menu-tool-sshd ; exit ;;
-"10 Tool tcp")$cmd_fwiptables gui-menu-tool-tcp ; exit ;;
-"11 Tool udp")$cmd_fwiptables gui-menu-tool-udp ; exit ;;
-"12 Tool icmp")$cmd_fwiptables gui-menu-tool-icmp ; exit ;;
-"13 Tool sudofw")$cmd_fwiptables gui-menu-tool-sudofw ; exit ;;
-"14 Tool game") $cmd_fwiptables gui-menu-tool-game ; exit ;;
-"15 Tool speed")$cmd_fwiptables gui-menu-tool-speed ; exit ;;
-"16 Tool util")$cmd_fwiptables gui-menu-tool-util ; exit ;;
-"17 Tool install")$cmd_fwiptables gui-menu-tool-install ; exit ;;
-"18 Tool addblock")$cmd_fwiptables gui-menu-tool-addblock ; exit ;;
-"19 Tool dev")$cmd_fwiptables gui-menu-tool-dev ; exit ;;
-"20 Show hardware")$cmd_fwiptables gui-menu-show-hardware ; exit ;;
-"21 Show etc")$cmd_fwiptables gui-menu-show-etc ; exit ;;
-"22 Show log")$cmd_fwiptables gui-menu-show-log ; exit ;;
-"23 Help about")$cmd_fwiptables gui-menu-help-about ; exit ;;
-"24 Help help")$cmd_fwiptables gui-menu-help-help ; exit ;;
-#### 
-esac
-####
-####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
-exit; fi
-####
-####
-#### :rutina-final-gui-menu:
+
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
