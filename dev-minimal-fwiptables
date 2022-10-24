@@ -426,7 +426,8 @@ fweb_main="https://sourceforge.net/projects/f-iptables/"
 fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
 fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+fweb_development_complete="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+fweb_development_minimal="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
 fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
 fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
@@ -481,7 +482,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
+#### if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
 ####
 ####
 #### :rutina-final-notice:
@@ -920,7 +921,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall.md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
 echo "$text_md [ info ] [ $name_fwiptables uninstall.. ]"
 echo "[ info ] [ To deinstall fwiptables ] [ delete $directory_binary/$cmd_fwiptables ]"
 exit; fi
@@ -933,11 +934,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "install" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install.md ] || ||"
+echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install md ] || ||"
 #### 
 #### 
-echo "$text_md [ info ] [ $name_fwiptables install ]"
-echo "[ info ] [ To install fwiptables ] [ copy this file in $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ To install fwiptables ] [ Copy this file from $pwd in $directory_binary ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
 exit ; fi
 ####
 ####
@@ -948,33 +948,18 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade.md ] || ||"
+echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
-####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ download ] [ download    $cmd_fwiptables from $fweb_latest ]"
+echo "$text_md [ info ] [ download ] [ the last stable complete version     ]  [ download:  $cmd_fwiptables from $fweb_latest  ]"
+echo "$text_md [ info ] [ download ] [ the dev complete version ] [ download:  $cmd_fwiptables from $fweb_development_complete ]"
+echo "$text_md [ info ] [ download ] [ the dev minimal  version ] [ download:  $cmd_fwiptables from $fweb_development_minimal  ]"
 ####
 ####
 exit ; fi
 ####
 ####
 #### :rutina-final-upgrade:
-##########    english: dev-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: dev-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
-#### :rutina-inicial-dev-upgrade:
-####
-####
-if [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade.md ] || ||"
-echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at development version from sourceforge.net git ]"
-echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ download ] [ download    $cmd_fwiptables from $fweb_development ]"
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-dev-upgrade:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
@@ -2271,7 +2256,7 @@ fi
 ####
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options.md ] || ||"
+echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "$title_md -t|-txt -c|-cli -g|-gui -w|-web -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
