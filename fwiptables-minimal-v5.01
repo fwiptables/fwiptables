@@ -152,7 +152,7 @@ fi; fi
 #### spanish: archivos permanentes: donde estan las rutas de archivo: nombre, comando e icono
 ####
 #### english: program name #### spanish: nombre del programa
-name_fwiptables="fwiptables"
+name_fwiptables="fwiptables-mini"
 #### english: program exec #### spanish: programa ejectutable
 cmd_fwiptables="fwiptables-mini"
 #### english: name icon #### spanish: nombre de icono
@@ -931,7 +931,7 @@ if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
 echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ download ] [ the last stable complete version     ]  [ download:  $cmd_fwiptables from $fweb_latest  ]"
+echo "$text_md [ info ] [ download ] [ the last stable  version ]  [ download:  $cmd_fwiptables from $fweb_latest  ]"
 echo "$text_md [ info ] [ download ] [ the dev complete version ] [ download:  $cmd_fwiptables from $fweb_development_complete ]"
 echo "$text_md [ info ] [ download ] [ the dev minimal  version ] [ download:  $cmd_fwiptables from $fweb_development_minimal  ]"
 ####
