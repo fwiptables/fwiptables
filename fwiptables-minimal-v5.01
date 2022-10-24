@@ -340,31 +340,9 @@ config_maxtries_shield="10"                   ## fwiptables-file-default ## void
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
-####       #### english: close from networking ping, trace.. with timeout in seconds 
-####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-## server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
-####       #### english: PING server for default         
-####       #### spanish: servidor de PING por defecto    
-## server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
-## server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast.com
-####       #### english: TRACEROUTE server for default         
-####       #### spanish: servidor de TRACEROUTE por defecto    
-## server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
-## server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
-####       #### english: iperf server for default for test net SPEED                 
-####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
-## serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
-## serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
-## serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
-## serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
-####       #### english: RADIO URL streaming audio for default
-####       #### spanish: direccion de RADIO DE INTERNET por defecto
-## radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-## radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-## radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -1438,7 +1416,7 @@ echo -E "$var81" "$tabz" "$spa81" &>> "$fs"
 echo -E "$var82" "$tabz" "$spa82" &>> "$fs"
 ####
 ####
-echo "# [  ok  ] [ Wizard and configs cfg templates regenerated ]"
+echo "# [  ok  ] [ Wizard and templates cfg regenerated ]"
 exit ; fi
 ####
 ####
@@ -2425,11 +2403,11 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 ####
 modify-default)
-cp "$directory_default/$name_fwiptables-default" "$directory_temporal/$name_fwiptables-default"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$name_fwiptables-default" \
---editable --title="MODIFY DEFAULT" &> "$directory_default/$name_fwiptables-default"
+cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-default" \
+--editable --title="MODIFY DEFAULT" &> "$directory_default/$cmd_fwiptables-default"
 if [  -s "$directory_default/$archivo" ]; then $nada ; 
-else cp "$directory_temporal/$name_fwiptables-default" "$directory_default/$name_fwiptables-default" ;
+else cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
@@ -3529,9 +3507,9 @@ exit ; fi
 if [ "$first_option" = "show-default" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
-cat $directory_default/$name_fwiptables-default
+cat $directory_default/$cmd_fwiptables-default
 echo 
-echo " [ info ] [ Change variables with: $cmd_fwiptables modify-default ] [ file: $directory_default/$name_fwiptables-default ]"
+echo " [ info ] [ Change variables with: $cmd_fwiptables modify-default ] [ file: $directory_default/$cmd_fwiptables-default ]"
 exit; fi
 ####
 ####
@@ -3552,15 +3530,15 @@ echo " [ info ] [ edit file $directory_default/$cmd_fwiptables to change variabl
 #### spanish: hace copia de seguridad
 ####
 ####
-cp "$directory_default/$name_fwiptables-default" "$directory_temporal/$name_fwiptables-default"
+cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
 ####
 ####
 #### english: edit file
 #### spanish: edita el archivo
 ####
 ####
-$command_dialog  --no-cancel --title "MODIFY FILE: $directory_default/$name_fwiptables-default" \
---editbox "$directory_temporal/$name_fwiptables-default" 0 0 2> "$directory_default/$name_fwiptables-default"
+$command_dialog  --no-cancel --title "MODIFY FILE: $directory_default/$cmd_fwiptables-default" \
+--editbox "$directory_temporal/$cmd_fwiptables-default" 0 0 2> "$directory_default/$cmd_fwiptables-default"
 clear
 ####
 ####
@@ -3568,8 +3546,8 @@ clear
 #### spanish: prueba que todo es correcto o lo recupera
 ####
 ####
-if [ ! -s "$directory_default/$name_fwiptables-default" ] ; then $nada
-cp "$directory_temporal/$name_fwiptables-default" "$directory_default/$name_fwiptables-default"; fi
+if [ ! -s "$directory_default/$cmd_fwiptables-default" ] ; then $nada
+cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default"; fi
 ####
 ####
 exit; fi
@@ -3762,12 +3740,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show one firewall saved ] || ||"
-echo 
+echo "$header_ok [ $first_option ]  [ Show one firewall saved ] || ||"
+echo
 case "$second_option" in
 "$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
+if [ ! -f $directory_fwrecover/$archivofin-legacy-ipv4 ] ; then exit; fi
 $command_ls -l $directory_fwrecover/$archivofin-arptables
 $command_ls -l $directory_fwrecover/$archivofin-ebtables
 $command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
