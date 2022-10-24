@@ -342,29 +342,29 @@ config_maxtries_shield="10"                   ## fwiptables-file-default ## void
 allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
+## server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
-server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
-server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast.com
+## server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
+## server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast.com
 ####       #### english: TRACEROUTE server for default         
 ####       #### spanish: servidor de TRACEROUTE por defecto    
-server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
-server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
+## server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
+## server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
 ####       #### english: iperf server for default for test net SPEED                 
 ####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
-serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
-serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
+## serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
+## serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
+## serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
+## serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
 ####       #### english: zenity GRAPHIC DIMENSIONS        
 ####       #### spanish: DIMESIONES GRAFICAS de zenity  
 graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 ####       #### english: RADIO URL streaming audio for default
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
+## radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+## radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+## radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -482,7 +482,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-#### if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
+if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install to be ready for $cmd_fwiptables config files" ; fi
 ####
 ####
 #### :rutina-final-notice:
@@ -923,7 +923,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
 echo "$text_md [ info ] [ $name_fwiptables uninstall.. ]"
-echo "[ info ] [ To deinstall fwiptables ] [ delete $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ To deinstall fwiptables ] [ delete $directory_binary/$cmd_fwiptables ]"
 exit; fi
 ####
 ####
@@ -937,7 +937,9 @@ if [ "$first_option" = "install" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $name_fwiptables $fversion installer ] [ install md ] || ||"
 #### 
 #### 
-echo "$text_md [ info ] [ To install fwiptables ] [ Copy this file from $pwd in $directory_binary ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ To install fwiptables ] [ Copy it manually ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
+echo "$text_md [ ok ] [ Regenerated: $cmd_fwiptables values for default ]"
 exit ; fi
 ####
 ####
