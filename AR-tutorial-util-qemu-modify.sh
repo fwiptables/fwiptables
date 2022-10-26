@@ -2,57 +2,68 @@
 source /etc/profile
 
 #### para valor vacio
-if [ "$1" == "$NULL" ]; then echo  "### launch: $0 status|start|stop|restart|mount|umount  imagen-hd [ imagen.iso ]"; exit ; fi
+if [ "$1" == "$NULL" ]; then echo  "### launch: $0 [ -null ] status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ; fi
 
-##### variables a modificar
-qemu_name="Qemu VM linux debian"
+#### para mandar al sunidero la salida
+if [ "$1" == "-null" ]; then $0 $2 $3 $4 &> /dev/null ; exit ; else  first_option=$1 ; second_option=$2 ; third_option=$3; fi
+
+##### variables a modificar ####
+qemu_name="Qemu VM"
 architecture="qemu-system-i386"
-qemu_vm="/qemu/debian-testing-i386.qcow2"
-qemu_cdrom="$NULL"
+memory_ram="1500M"
+processor_smp="4"
 
 #### variables estaticas
-if [ "$qemu_cdrom"  == "$NULL" ]; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $qemu_cdrom -boot d"; fi
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="/qemu/debian-i386.qcow2" ; else qemu_vm=$second_option ; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $qemu_cdrom -boot d"; fi
+display_vnc=":0"
 command_qemu="$(command -v $architecture)"
-qemu_options="-m 2G -machine type=pc,accel=kvm -k es -smp 4 -rtc base=localtime -display vnc=0.0.0.0:0"
+qemu_options="-m $memory_ram -machine type=pc,accel=kvm -k es -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
 qemu_full="$command_qemu $qemu_options $qemu_vm $qemu_cdrom"
 
 ##### #### status|stop|start|restart
 
+##### whith probe
+if [ "$first_option" == "probe" ]
+then echo $qemu_full
+echo " [ ok ] [ probe ]"
+exit; fi
+
 ##### with status
-if [ "$1" == "status" ]
+if [ "$first_option" == "status" ]
 then ps -Af | grep -i  "$architecture"
 echo " [  ok  ] [ status ] [ $architecture listed ]"
 exit; fi
 
 ##### with stop
-if [ "$1" == "stop" ]
+if [ "$first_option" == "stop" ]
 then killall -9 "$architecture"
 echo " [ ok ] [ stopped ] [ La maquina virtual detenida: $qemu_name ]"
 exit; fi
 
 ##### with start
-if [ "$1" == "start" ]
+if [ "$first_option" == "start" ]
 then
 $qemu_full &
 echo " [ ok ] [ started ] [ La maquina virtual iniciada: $qemu_name ]"
 exit; fi
 
 ##### with restart
-if [ "$1" == "restart" ] ; then
-$0 stop
-$0 start
+if [ "$first_option" == "restart" ] ; then
+$0 stop  &> /dev/null
+$0 start $2 $3 &> /dev/null
 echo " [ ok ] [ restarted ] [ La maquina virtual reiniciada ] [ $qemu_name ]"
 exit; fi
 
 #### #### mount:
 #### secuencia de montaje de nbd
-if [ "$1" == "mount" ] && [  -f "$2" ]; then
+if [ "$first_option" == "mount" ] && [  -f "$second_option" ]; then
 
 #### carga el modulo del kernel
 modprobe nbd max_part=8
 
 #### conecta un disco
-qemu-nbd --connect=/dev/nbd0 $2
+qemu-nbd --connect=/dev/nbd0 $second_option
 
 #### lista las particiones
 fdisk /dev/nbd0 -l
@@ -68,7 +79,7 @@ exit; fi
 
 #### #### umount:
 #### desmonta y desconecta la imagen de qemu
-if [ "$1" = "umount" ]; then
+if [ "$first_option" = "umount" ]; then
 umount $HOME/mnt/nbd0p* &> /dev/null
 qemu-nbd --disconnect /dev/nbd0 &> /dev/null
 echo "Ok. Umounted $HOME/mnt/nbd0p*"
