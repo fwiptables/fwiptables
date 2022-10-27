@@ -8708,7 +8708,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: $cmd_fwiptables show-default ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
@@ -8717,8 +8717,8 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
 #### emisora="$radio_mp3"
-echo "[ info ] [ launch $cmd_fwiptables radio-cadena100 ] [ for cadena 100 ]"
-echo "[ info ] [ launch $cmd_fwiptables radio-cadenadial ] [ for cadena dial ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-cadena100 ]    [ for cadena 100 ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-cadenadial ]   [ for cadena dial ]"
 echo "[ info ] [ launch $cmd_fwiptables radio-mp3 link-mp3 ] [ for one link from internet ]"
 exit
 else emisora="$second_option"; fi
@@ -8739,7 +8739,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: show-default ] [ only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: show-default ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
@@ -8766,7 +8766,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadenadial" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: show-default ] [ only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: show-default ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
