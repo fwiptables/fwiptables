@@ -2,10 +2,24 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 02. 
+
+ 01. comprobar los path temporales. trabajando
+
+ cambios en dev-fwiptables 5.02 en desarrollo
+
+ 03. cambio la plantillas mini y full. HECHO
+ 02. cambio de variables en shield. HECHO
+ 01. varios arreglos. HECHO
+
+ cambios en dev-fwiptables 5.01 lineas=3
+
+ 01. varios arreglos. HECHO
+
+ cambios en dev-fwiptables 4.17 lineas=1
+
  01. cambio de nombre a addblock en gui-menu y cli-menu. HECHO 
 
- cambios en dev-fwiptables desarrollo 4.16
+ cambios en dev-fwiptables 4.16 lineas=1
  
  05. cambiado los nombres blacklist-* por addblock-*, ahora tool-addblock, algunos arreglos. HECHO
  04. comentarios cambiados para vpn y blacklist, ahora especifican cada host. HECHO
