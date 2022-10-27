@@ -64,7 +64,7 @@ fdescription="One Script in bash for iptables firewall" ;
 #### #### english: program name          #### spanish: nombre del porgrama
 fprogram="Fran FireWall FWiptables Generator" ;
 #### #### english: version program name          #### spanish: version del porgrama
-fversion="complete-5.01" ;
+fversion="complete-5.02" ;
 ####
 ####
 #### :rutina-final-name:
