@@ -1152,9 +1152,8 @@ exit; fi
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
-####  echo "$text_md [ info ] [ upgrade $cmd_fwiptables in $directory_binary ]"
 case "$favorite_text_browser" in
-"$NULL")echo "$text_md $tab [ notice  ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
+"$NULL")echo "  [ notice  ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
 echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [ downloading $cmd_fwiptables with the command $favorite_text_browser browser ]"
 ####
