@@ -315,9 +315,6 @@ server_udp="" ;
 ####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
 ####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
 ####    graphic_dimension="--width=950 --height=650" ; 
-####    radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ; 
-####    radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;
-####    radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ; 
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -362,7 +359,8 @@ graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## def
 ####       #### spanish: direccion de RADIO DE INTERNET por defecto
 radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ;  ## fwiptables-file-default ## streaming url
+radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
+radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -684,6 +682,8 @@ if [ "$first_option" = "ram" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
+if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
+if [ "$first_option" = "mp3" ] ; then first_option="radio-mp3"; fi
 ####
 ####
 ####  english: $1 or or $2 or $3 for complete path per file and other excepcions
@@ -2609,7 +2609,7 @@ echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-p
 echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  tool-util          |  weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial      "
+echo "$text_md  tool-util          |  weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm          "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
@@ -2690,7 +2690,7 @@ echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-p
 echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                 "
 echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                       "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
-echo "$text_md    tool-util         | weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-cadenadial   "
+echo "$text_md    tool-util         | weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm   "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                        "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
@@ -5890,7 +5890,7 @@ clear ; $cmd_fwiptables md5sum $archivo ;;
 1603) clear ; archivo="$($command_dialog  --stdout --title "Type link mp3 station" --inputbox "Type link mp3 station" 0 0)"
 $cmd_fwiptables txt radio-mp3 $archivo ;;
 1604) clear ; $cmd_fwiptables txt radio-cadena100 ;;
-1605) clear ; $cmd_fwiptables txt radio-cadenadial ;;
+1605) clear ; $cmd_fwiptables txt radio-rockfm ;;
 1701) clear ; $zero_option install ;;
 1702) clear ; $cmd_fwiptables cli howto-upgrade ;;
 1703) clear ; $cmd_fwiptables cli upgrade ;;
@@ -8716,9 +8716,10 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
 #### emisora="$radio_mp3"
-echo "[ info ] [ launch $cmd_fwiptables radio-cadena100 ]    [ for cadena 100 ]"
-echo "[ info ] [ launch $cmd_fwiptables radio-cadenadial ]   [ for cadena dial ]"
-echo "[ info ] [ launch $cmd_fwiptables radio-mp3 link-mp3 ] [ for one link from internet ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-rockfm ]       [ for radio rockfm    ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-kissfm ]       [ for radio kissfm    ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-cadena100 ]    [ for radio cadena100 ]"
+echo "[ info ] [ launch $cmd_fwiptables radio-mp3 link-mp3 ] [ to open one link    ]"
 exit
 else emisora="$second_option"; fi
 ####
@@ -8758,12 +8759,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-radio-cadena100:
-##########    english: radio-cadenadial: url from one radio mp3    ##########
-##########    spanish: radio-cadenadial: url de una radio en mp3   ##########
-#### :rutina-inicial-radio-cadenadial:
+##########    english: radio-rockfm: url from one radio mp3    ##########
+##########    spanish: radio-rockfm: url de una radio en mp3   ##########
+#### :rutina-inicial-radio-rockfm:
 ####
 ####
-if [ "$first_option" = "radio-cadenadial" ]; then  echo $give_cover
+if [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "  [ info ] [ for choose default radio see: show-default ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -8773,7 +8774,7 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
-emisora="$radio_cadenadial"
+emisora="$radio_rockfm"
 else emisora="$second_option"; fi
 ####
 ####
@@ -8784,7 +8785,34 @@ sudo -u $(logname) $favorite_radio_command $emisora
 exit; fi
 ####
 ####
-#### :rutina-final-radio-cadenadial:
+#### :rutina-final-radio-rockfm:
+##########    english: radio-kissfm: url from one radio mp3    ##########
+##########    spanish: radio-kissfm: url de una radio en mp3   ##########
+#### :rutina-inicial-radio-kissfm:
+####
+####
+if [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ Listen radio online ]"
+echo "  [ info ] [ for choose default radio see: show-default ] [ for only protocol http ] || ||"
+echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
+####
+####
+case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+####
+####
+if [ "$second_option" = "$NULL" ]; then $nada
+emisora="$radio_kissfm"
+else emisora="$second_option"; fi
+####
+####
+echo "  [  ok  ] [ $favorite_radio_command $emisora ]"
+echo 
+echo 
+sudo -u $(logname) $favorite_radio_command $emisora
+exit; fi
+####
+####
+#### :rutina-final-radio-kissfm:
 ##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
 ##########    spanish: weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-weather:
