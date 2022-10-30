@@ -2676,25 +2676,25 @@ exit ; fi
 ####
 if [ "$first_option" = "options-tool" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Tool options ] [ options-tool md ]"
-echo "$title_md                                    | options-tool |                                 " 
-echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy         "
-echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert      "
-echo "$text_md    tool-connect      | iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client  "
-echo "$text_md    tool-rule         | rule-del-num rule-del-shield rule-add-shield                  "
-echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                     "
-echo "$text_md    tool-sshd         | sshd-tunnel-info sshd-tunnel-on sshd-tunnel-off               "
-echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                 "
-echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                       "
-echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                 "
-echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                 "
-echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                 "
-echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                       "
-echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                 "
+echo "$title_md                                    | options-tool |                                     " 
+echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy info-system "
+echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert              "
+echo "$text_md    tool-connect      | iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client      "
+echo "$text_md    tool-rule         | rule-del-num rule-del-shield rule-add-shield                      "
+echo "$text_md    tool-forward      | ipforward-list ipforward-on ipforward-off                         "
+echo "$text_md    tool-sshd         | sshd-tunnel-info sshd-tunnel-on sshd-tunnel-off                   "
+echo "$text_md    tool-tcp          | tracetcp-ip4 tracetcp-ip6 speed-ip4 speed-ip6                     "
+echo "$text_md    tool-udp          | host dig resolveip geoip ntpdate-client                           "
+echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-ip6                     "
+echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                     "
+echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                     "
+echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                           "
+echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                     "
 echo "$text_md    tool-util         | weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm   "
-echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                     "
-echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                        "
-echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                     "
-echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                 "
+echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                         "
+echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
+echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
+echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "
 echo "$text_md"
 echo "$text_md    | Group | options-interface | options-firewall | options-tool | options-show | options-help "
 exit ; fi
@@ -10306,6 +10306,72 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-net:
+##########    english: ip4 : get net info               ##########
+##########    spanish: ip4 : da informacion de la red   ##########
+#### :rutina-inicial-ip4:
+####
+####
+if [ "$first_option" = "ip4" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
+echo
+echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -4 route ; fi
+echo
+echo "  [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
+if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+else $command_ss -l4 | $command_sed 's/   / /g' ; fi
+echo
+echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+echo
+echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
+if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+else echo "$tab $public_ip4"; fi; fi
+echo
+echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "  [ info ] Proxy http:    $http_proxy"
+echo "  [ info ] Proxy https:   $https_proxy"
+exit; fi
+####
+####
+#### :rutina-final-ip4:
+##########    english: ip6 : get net info               ##########
+##########    spanish: ip6 : da informacion de la red   ##########
+#### :rutina-inicial-ip4:
+####
+####
+if [ "$first_option" = "ip6" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
+echo
+echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -6 route ; fi
+echo
+echo "  [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
+if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+else $command_ss -l6 | $command_sed 's/   / /g' ; fi
+echo
+echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+echo
+echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
+if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+else echo "$tab $public_ip6"; fi; fi
+echo
+echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "  [ info ] Proxy http:    $http_proxy"
+echo "  [ info ] Proxy https:   $https_proxy"
+exit; fi
+####
+####
+#### :rutina-final-ip4:
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
