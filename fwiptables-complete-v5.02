@@ -1198,8 +1198,8 @@ echo "  [ info ] [ download ] [downloading $cmd_fwiptables with the command $fav
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$text_md [ info ] [ download ] [ $fweb_development ]"
-echo "$text_md [ info ] [ download ] [ Waiting several seconds .. ]"
+echo "  [ info ] [ download ] [ $fweb_development ]"
+echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $fweb_development &> "$directory_temporal/$cmd_fwiptables-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$cmd_fwiptables-installer &> /dev/null
 ####

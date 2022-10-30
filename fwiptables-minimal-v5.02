@@ -901,7 +901,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
 echo "$text_md [ info ] [ $cmd_fwiptables uninstall.. ]"
-echo "$text_md [ info ] [ To deinstall fwiptables ] [ delete $directory_binary/$cmd_fwiptables ]"
+echo "$text_md [ info ] [ To deinstall fwiptables ] [ rm $directory_binary/$cmd_fwiptables ]"
 exit; fi
 ####
 ####
@@ -917,7 +917,7 @@ echo "$header_ok [ $first_option ] [ $cmd_fwiptables $fversion installer ] [ ins
 #### 
 echo "$text_md [ info ] [ To install fwiptables ] [ Copy it manually ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
 echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
-echo "$text_md [ ok ] [ Regenerated: $cmd_fwiptables values for default ]"
+echo "$text_md [ ok ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
 exit ; fi
 ####
 ####
