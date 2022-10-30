@@ -684,6 +684,7 @@ if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
 if [ "$first_option" = "mp3" ] ; then first_option="radio-mp3"; fi
+if [ "$first_option" = "ip" ] ; then first_option="ip4"; fi
 ####
 ####
 ####  english: $1 or or $2 or $3 for complete path per file and other excepcions
@@ -2536,8 +2537,8 @@ fi
 ####
 ####
 #### :rutina-final-system-rules:
-##########    english: mini-options: wellcome with semi help    ##########
-##########    spanish: mini-options: bienvenida con semi ayuda  ##########
+##########    english: options-mini: wellcome with semi help    ##########
+##########    spanish: options-mini: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-mini-options:
 ####
 ####
@@ -2570,8 +2571,8 @@ exit ; fi
 ####
 ####
 #### :rutina-final-mini-options:
-##########    english: options: and full-options: wellcome with semi help    ##########
-##########    spanish: options: and full-options: bienvenida con semi ayuda  ##########
+##########    english: options-all: and full-options: wellcome with semi help    ##########
+##########    spanish: options-all: and full-options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-full-options:
 ####
 ####
@@ -2588,16 +2589,16 @@ echo "$text_md                        list-security4 list-security6 list-ebtable
 echo "$text_md  firewall-custom    |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
-echo "$text_md firewall-launch     |  eraserules custom wizard-mini wizard-full off-line all-permisive          "
-echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands      "
-echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn   "
+echo "$text_md firewall-launch     |  eraserules custom wizard-mini wizard-full off-line all-permisive         "
+echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
+echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn  "
 echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh "
-echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news   "
-echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql          "
-echo "$text_md                        server-asterisk server-squid                                              "
+echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news  "
+echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
+echo "$text_md                        server-asterisk server-squid                                             "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
-echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy                    "
-echo "$text_md                        info-system ss lsof tcpdump netstat netstat-nat web-cert                 "
+echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
+echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
 echo "$text_md  tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
 echo "$text_md  tool-rule          |  rule-del-num rule-del-shield rule-add-shield                             "
 echo "$text_md  tool-forward       |  ipforward-list ipforward-on ipforward-off                                "
@@ -3414,6 +3415,12 @@ echo "$text_md $tab_lang_spanish          : Lista proxy del sistema"
 echo "$text_md $tab info-route"
 echo "$text_md $tab_lang_english          : Show net devices and ip route tables"
 echo "$text_md $tab_lang_spanish          : Muestra los dispositivos de red y la tabla de rutas"
+echo "$text_md $tab ip4"
+echo "$text_md $tab_lang_english          : List system net info ipv4"
+echo "$text_md $tab_lang_spanish          : Lista informacion de red del sistema ipv4"
+echo "$text_md $tab ip6"
+echo "$text_md $tab_lang_english          : List system net info ipv6"
+echo "$text_md $tab_lang_spanish          : Lista informacion de red del sistema ipv6"
 echo "$text_md $tab ss"
 echo "$text_md $tab_lang_english          : Show net sockets with command ss"
 echo "$text_md $tab_lang_spanish          : Muestra las conexiones de red con ss"
@@ -10655,6 +10662,8 @@ echo "$text_md     info-listen : List system listen socket list."
 echo "$text_md      info-route : Show net devices and ip route tables."
 echo "$text_md     info-system : Show info system."
 echo "$text_md        info-net : Show net info."
+echo "$text_md             ip4 : Show net ip4."
+echo "$text_md             ip6 : Show net ip6."
 echo "$text_md              ss : Show net sockets with command ss."
 echo "$text_md            lsof : Show net sockets with command lsof."
 echo "$text_md         netstat : Show net sockets with command netstat."
@@ -11008,6 +11017,8 @@ echo "$text_md     info-listen : Lista sockets a la escucha del sistema."
 echo "$text_md      info-route : Muestra los dispositivos de red y la tabla de rutas."
 echo "$text_md     info-system : Muestra la informacion del sistema."
 echo "$text_md        info-net : Muestra informacion de la red."
+echo "$text_md             ip4 : Muestra informacion de la red ipv4."
+echo "$text_md             ip6 : Muestra informacion de la red ipv6."
 echo "$text_md              ss : Muestra las conexiones con comando ss."
 echo "$text_md            lsof : Muestra las conexiones con command lsof."
 echo "$text_md         netstat : Muestra las conexiones con comando netstat."
