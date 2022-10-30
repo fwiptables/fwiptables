@@ -871,7 +871,7 @@ if [ "$first_option" = "-web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
-"$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
+"$NULL") echo "  [ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
 *-config) echo "$message_without_web" ; exit ;;
 game-*) echo "$message_without_web" ; exit ;;
@@ -6562,7 +6562,7 @@ exit; fi
 if [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ] || ||"
 if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
-echo "[ info ] [ The devices list with netstat for nat ]"
+echo "  [ info ] [ The devices list with netstat for nat ]"
 $command_netstat_nat
 exit; fi
 ####
@@ -8716,10 +8716,10 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
 #### emisora="$radio_mp3"
-echo "[ info ] [ launch $cmd_fwiptables radio-rockfm ]       [ for radio rockfm    ]"
-echo "[ info ] [ launch $cmd_fwiptables radio-kissfm ]       [ for radio kissfm    ]"
-echo "[ info ] [ launch $cmd_fwiptables radio-cadena100 ]    [ for radio cadena100 ]"
-echo "[ info ] [ launch $cmd_fwiptables radio-mp3 link-mp3 ] [ to open one link    ]"
+echo "  [ info ] [ launch $cmd_fwiptables radio-rockfm ]       [ for radio rockfm    ]"
+echo "  [ info ] [ launch $cmd_fwiptables radio-kissfm ]       [ for radio kissfm    ]"
+echo "  [ info ] [ launch $cmd_fwiptables radio-cadena100 ]    [ for radio cadena100 ]"
+echo "  [ info ] [ launch $cmd_fwiptables radio-mp3 link-mp3 ] [ to open one link    ]"
 exit
 else emisora="$second_option"; fi
 ####
@@ -10371,7 +10371,7 @@ exit; fi
 ####
 if [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_fwiptables temporal files ] || ||"
-echo "[ info ] [ cleaning $cmd_fwiptables temporal files ]"
+echo "  [ info ] [ cleaning $cmd_fwiptables temporal files ]"
 rm -rf "$directory_tmp" &> /dev/null
 echo "[  ok  ] [ cleaned temporal files ]"
 exit; fi
