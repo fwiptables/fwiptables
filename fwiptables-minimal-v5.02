@@ -912,7 +912,7 @@ exit; fi
 #### :rutina-inicial-uninstall:
 ####
 ####
-if [ "$first_option" = "uninstall" ] ; then $zero_option intro
+if [ "$first_option" = "uninstall" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
 echo "  [ info ] [ $cmd_fwiptables uninstall.. ]"
 echo "  [ info ] [ Delete this file to deinstall fwiptables: ] [ rm $directory_binary/$cmd_fwiptables ]"
@@ -930,8 +930,8 @@ echo "$header_ok [ $first_option ] [ $cmd_fwiptables $fversion installer ] [ ins
 #### 
 #### 
 echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
-echo "$text_md [ ok ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
-echo "  [ info ] [ Copy this file to deinstall fwiptables: ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
+echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
+echo "  [ info ] [ Copy this file to install fwiptables: ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
 exit ; fi
 ####
 ####
