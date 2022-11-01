@@ -2326,7 +2326,7 @@ case $second_option in
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$third_option"
 $command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NEW MINI CONFIG" &> "$directory_config/$third_option" ;
+--editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -2337,7 +2337,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled new file: $third_opt
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$third_option"
 $command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NEW FULL CONFIG" &> "$directory_config/$third_option" ;
+--editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -2348,7 +2348,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled new file: $third_opt
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_fwiptables-$third_option"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NUEVA MINI CONFIG" &> "$directory_config/$third_option" ;
+--editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -2359,7 +2359,7 @@ $command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_op
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_fwiptables-$third_option"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NUEVA COMPLETA CONFIG" &> "$directory_config/$third_option" ;
+--editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
@@ -2372,7 +2372,7 @@ if [ -f "$directory_config/$third_option" ] ; then $nada
 else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_fwiptables-$third_option"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="MODIFY CONFIG" &> "$directory_config/$third_option"
+--editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 $command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_fwiptables-$third_option" "$directory_config/$third_option"
@@ -2410,7 +2410,7 @@ wizard-mini)
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$archivo" \
---editable --title="WIZARD MINI" &> "$directory_config/$archivo"
+--editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
 else rm "$directory_config/$archivo" ;
@@ -2422,9 +2422,9 @@ wizard-full)
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$archivo" \
---editable --title="WIZARD FULL" &> "$directory_config/$archivo"
+--editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_fwiptables -gui custom $second_option ; $cmd_fwiptables -gui list ;
+$cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
 else rm "$directory_config/$archivo" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -2433,7 +2433,7 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 modify-default)
 cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-default" \
---editable --title="MODIFY DEFAULT" &> "$directory_default/$cmd_fwiptables-default"
+--editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-default"
 if [  -s "$directory_default/$archivo" ]; then $nada ; 
 else cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
@@ -3327,7 +3327,7 @@ if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_dialog  --no-cancel --title "NEW FULL CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 1> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3361,7 +3361,7 @@ if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_dialog  --no-cancel --title "NUEVA COMPLETA CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 1> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3395,7 +3395,7 @@ if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_dialog  --no-cancel --title "NEW MINI CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 1> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3429,7 +3429,7 @@ if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] 
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_dialog  --no-cancel --title "NUEVA MINI CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 1> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3465,7 +3465,7 @@ echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables modify-config config-existent ]
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
 $command_dialog  --no-cancel --title "MODIFY CONFIG" \
---editbox "$directory_temporal/$second_option" 0 0 2> "$directory_config/$second_option"
+--editbox "$directory_temporal/$second_option" 0 0 1> "$directory_config/$second_option"
 clear; fi
 ####
 ####
@@ -3627,7 +3627,7 @@ if [ "$first_option" = "wizard-mini" ]; then echo
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_fwiptables-$archivo" \
-0 0 2> "$directory_config/$archivo"
+0 0 1> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
@@ -3646,7 +3646,7 @@ if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_fwiptables-$archivo" \
-0 0 2> "$directory_config/$archivo"
+0 0 1> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
