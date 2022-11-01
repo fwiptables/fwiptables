@@ -407,8 +407,8 @@ message_without_gui="  [ fail ] [ gui ] [ Without support for output gui for thi
 message_without_web="  [ fail ] [ web ] [ Without support for output web for this option ]"
 message_without_help="  [ fail ] [ help in rst ] [ Without support for output rst for this option ]"
 message_without_info="  [ fail ] [ info in txt ] [ Without support for output info for this option ]"
-message_without_info="  [ fail ] [ log ] [ Without support for output log for this option ]"
-message_without_info="  [ fail ] [ null ] [ Without support for output null for this option ]"
+message_without_log="  [ fail ] [ log ] [ Without support for output log for this option ]"
+message_without_null="  [ fail ] [ null ] [ Without support for output null for this option ]"
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
 close_graphicall="1"
@@ -905,14 +905,14 @@ torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 if [ "$first_option" = "-help" ]
 then echo "$head_waiting_info"
 case "$second_option" in
-"$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ;
-$cmd_fwiptables; exit ;;
+"$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ; $cmd_fwiptables; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface);;
+default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="options-interface"; third_option="" ;;
-"ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="help-help"; third_option="" ;;
-"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
-list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
+"ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="options-help"; third_option="" ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="options-firewall"; third_option="" ;;
+list*|"status"|"ls"|"ls4"|"ls6") second_option=" options-firewall"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
@@ -960,6 +960,7 @@ case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -info option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface) ;;
+default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
@@ -2560,11 +2561,10 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
 echo "$text_md                       server-asterisk server-squid                                              "
-echo "$text_md     options-state  |  default-show default-modify default-regen install upgrade uninstall       "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options-all ] ### || ||      "
 echo "$text_md      $cmd_fwiptables options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options to firewall manage            "
-echo "$text_md      $cmd_fwiptables options-state            |  Show all options to default configs            "
+echo "$text_md      $cmd_fwiptables options-state            |  Show all options to default config             "
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_fwiptables options-help             |  Show all options to help informations          "
@@ -2598,7 +2598,7 @@ echo "$text_md                        client-tor client-ftp client-squid lan-tor
 echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news  "
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
 echo "$text_md                        server-asterisk server-squid                                             "
-echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                          "   
+echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                         "   
 echo "$text_md     options-state  |  default-show default-modify default-regen install upgrade uninstall       "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
@@ -10600,6 +10600,8 @@ echo "$text_md            cli-menu Or -cli-menu : Command line interface with me
 echo "$text_md            gui-menu Or -gui-menu : Graphicall interface with menus | whith zenity backend."
 echo "$text_md         gui-shell Or -shell-menu : Graphicall interface with shell | whith zenity backend."
 echo "$text_md"
+echo "$text_md       #################################################################"
+echo "$text_md"
 echo "$title_md        [ Control the iptables rules ]"
 echo "$text_md"
 echo "$text_md          stop : Save and stop firewall iptables."
@@ -10639,6 +10641,17 @@ echo "$text_md   list-security6 : List iptables security rules from ipv6"
 echo "$text_md    list-ebtables : List rules ebtables mac of ethernet."
 echo "$text_md    ist-arptables : List rules arptables arp."
 echo "$text_md"
+echo "$title_md         [ firewall config ]"
+echo "$text_md"
+echo "$text_md       new-full-config : Create a new configfile.cfg in english."
+echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish."
+echo "$text_md       new-mini-config : Create a new basic configfile.cfg in english."
+echo "$text_md     nueva-mini-config : Create a new basic configfile.cfg in spanish."
+echo "$text_md          regen-config : regen wizard files and templates cfg."
+echo "$text_md          names-config : List config files cfg."
+echo "$text_md         modify-config : Edit one config.cfg."
+echo "$text_md           show-config : Show one config.cfg."
+echo "$text_md            del-config : Delete one configuration file."
 $break_md
 echo "$title_md        [ Launch firewall iptables rules ]"
 echo "$text_md"
@@ -10680,17 +10693,17 @@ echo "$text_md         server-sql : Launch a firewall likes server sql."
 echo "$text_md    server-asterisk : Launch a firewall likes server asterisk."
 echo "$text_md       server-squid : Launch a firewall likes server squid."
 echo "$text_md"
-echo "$title_md         [ firewall config ]"
+echo "$text_md       #################################################################"
 echo "$text_md"
-echo "$text_md       new-full-config : Create a new configfile.cfg in english."
-echo "$text_md nueva-completa-config : Create a new configfile.cfg in spanish."
-echo "$text_md       new-mini-config : Create a new basic configfile.cfg in english."
-echo "$text_md     nueva-mini-config : Create a new basic configfile.cfg in spanish."
-echo "$text_md          regen-config : regen wizard files and templates cfg."
-echo "$text_md          names-config : List config files cfg."
-echo "$text_md         modify-config : Edit one config.cfg."
-echo "$text_md           show-config : Show one config.cfg."
-echo "$text_md            del-config : Delete one configuration file."
+echo "$title_md         [ options state ]"
+echo "$text_md"
+echo "$text_md      default-show   : Show values for default."
+echo "$text_md      default-modify : Modify values for default."
+echo "$text_md      default-regen  : Regenerate values for default."
+echo "$text_md      install        : Install $cmd_fwiptables."
+echo "$text_md      uninstall      : Uninstall $cmd_fwiptables."
+echo "$text_md      upgrade        : Upgrqade $cmd_fwiptables."
+echo "$text_md"
 echo "$text_md"
 echo "$title_md         [ List sockets ]"
 echo "$text_md"
