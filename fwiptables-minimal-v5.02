@@ -893,6 +893,20 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 #### :rutina-final-allow-autolog:
+##########   english: default:      fwiptables default      ##########
+##########   spanish: defecto:  fwiptables defecto   ##########
+#### :rutina-inicial-default:
+####
+####
+if [ "$first_option" = "default" ] ; then echo $give_cover
+echo "$header_ok [ $first_option ] [ $cmd_fwiptables default ] [ default md ] || ||"
+echo "  [ info ] [ $cmd_fwiptables default.. ]"
+echo "  [ info ] [ Show   default config for fwiptables: ] [ fwiptables show-default   ]"
+echo "  [ info ] [ Modify default config for fwiptables: ] [ fwiptables modify-default ]"
+exit; fi
+####
+####
+#### :rutina-final-default:
 ##########   english: uninstall:      fwiptables uninstall      ##########
 ##########   spanish: desinstalador:  fwiptables desistalador   ##########
 #### :rutina-inicial-uninstall:
@@ -2275,10 +2289,11 @@ echo "$text_md                       show-config modify-config del-config names-
 echo "$text_md    firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive          "
 echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands      "
 echo "$text_md                       client-web client-vnc client-mail client-news client-torrent client-vpn   "
-echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh "
+echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh  "
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
 echo "$text_md                       server-asterisk server-squid                                              "
+echo "$text_md    Others options  |  default show-default modify-default install upgrade uninstall             "
 exit ; fi
 ####
 ####
