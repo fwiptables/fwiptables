@@ -907,7 +907,7 @@ then echo "$head_waiting_info"
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ; $cmd_fwiptables; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface);;
-default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
+#### default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="options-interface"; third_option="" ;;
 "ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="options-help"; third_option="" ;;
@@ -960,7 +960,7 @@ case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -info option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface) ;;
-default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
+### default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
