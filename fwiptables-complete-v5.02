@@ -322,7 +322,7 @@ server_udp="" ;
 allow_legacy=""                     ## fwiptables-file-default ## void or no
 allow_nft="no"                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
-allow_ipv6=""                         ## fwiptables-file-default ## void or no
+allow_ipv6="no"                         ## fwiptables-file-default ## void or no
 ####       #### english: list all rules: list all rules, void in names or no in numbers
 ####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
@@ -1244,10 +1244,10 @@ spa1="$(echo $cinco INICIO .......... Opciones Necesarias .......... .......... 
 var2="$(echo $cinco NETFILTER $cinco )"
 eng2="$(echo $cinco the iptables firewall netfilter, choose one or two )"
 spa2="$(echo $cinco el iptables firewall netfilter, elige uno o dos )"
-var3="$(echo allow_legacy=no )"
+var3="$(echo allow_legacy= )"
 eng3="$(echo $cinco launch xtables, void to yes or type no )"
 spa3="$(echo $cinco lanza xtables, vacio para si, o escribe no )"
-var4="$(echo allow_nft= )"
+var4="$(echo allow_nft=no )"
 eng4="$(echo $cinco launch nftables, void to yes or type no )"
 spa4="$(echo $cinco lanza nftables, vacio para si, o escribe no )"
 var5="$(echo $cinco PROTOCOL IP $cinco )"
@@ -1256,7 +1256,7 @@ spa5="$(echo $cinco procolo ip, modificar con vacio o no )"
 var6="$(echo allow_ipv4= )"
 eng6="$(echo $cinco void to config firewall with ipv4 or no to dont configure ipv4 )"
 spa6="$(echo $cinco varcio para ejecutar el firewall con ipv4 o no para no )"
-var7="$(echo allow_ipv6= )"
+var7="$(echo allow_ipv6=no )"
 eng7="$(echo $cinco void to config firewall with ipv6 or no to dont configure ipv6 )"
 spa7="$(echo $cinco varcio para ejecutar el firewall con ipv6 o no para no )"
 var8="$(echo $cinco CLIENT PORTS $cinco )"
