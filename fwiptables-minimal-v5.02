@@ -963,14 +963,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-modify:
-##########   english: default:  fwiptables default   ##########
-##########   spanish: defecto:  fwiptables defecto   ##########
+##########   english: default-regen:  fwiptables default   ##########
+##########   spanish: default-regen:  fwiptables defecto   ##########
 #### :rutina-inicial-default:
 ####
 ####
 if [ "$first_option" = "default-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables default-regen ] [ default-regen md ] || ||"
 echo "  [ info ] [ $cmd_fwiptables default-regen.. ]"
+echo "$($0 config-regen)"  &> /dev/null
 echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
 echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
 exit; fi
