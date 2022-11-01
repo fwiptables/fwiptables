@@ -2560,10 +2560,11 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
 echo "$text_md                       server-asterisk server-squid                                              "
-echo "$text_md     state options  |  default-show default-modify default-regen install upgrade uninstall       "
+echo "$text_md     options-state  |  default-show default-modify default-regen install upgrade uninstall       "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_fwiptables options-all ] ### || ||      "
 echo "$text_md      $cmd_fwiptables options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_fwiptables options-firewall         |  Show all options to firewall manage            "
+echo "$text_md      $cmd_fwiptables options-state            |  Show all options to default configs            "
 echo "$text_md      $cmd_fwiptables options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_fwiptables options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_fwiptables options-help             |  Show all options to help informations          "
@@ -2597,6 +2598,8 @@ echo "$text_md                        client-tor client-ftp client-squid lan-tor
 echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news  "
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
 echo "$text_md                        server-asterisk server-squid                                             "
+echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                          "   
+echo "$text_md     options-state  |  default-show default-modify default-regen install upgrade uninstall       "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
 echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
@@ -2666,11 +2669,30 @@ echo "$text_md                        client-ftp client-squid lan-tor lan-vpn sh
 echo "$text_md                        server-samba server-print server-lamp server-news server-mail server-ftp "
 echo "$text_md                        server-teamspeak server-mumble server-sql server-asterisk server-squid   "
 echo "$text_md"
-echo "$text_md   | Group | options-interface | options-firewall | options-tool | options-show | options-help   "
+echo "$text_md   | Group | options-interface | options-satate | options-firewall | options-tool | options-show | options-help   "
 exit ; fi
 ####
 ####
 #### :rutina-final-options-firewall:
+
+
+##########    english: options-state: firewall options       ##########
+##########    spanish: options-state: opciones de firewall   ##########
+#### :rutina-final-options-state:
+####
+####
+if [ "$first_option" = "options-state" ] ; then echo $give_cover
+echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
+echo "$title_md                                  | options-state |                                          "
+echo "$text_md    state-control    | default-show default-modify default-regen install upgrade uninstall    "
+echo "$text_md"
+echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
+exit ; fi
+####
+####
+#### :rutina-final-options-firewall:
+
+
 ##########    english: options-tool: firewall options       ##########
 ##########    spanish: options-tool: opciones de firewall   ##########
 #### :rutina-final-options-tool:
@@ -2698,7 +2720,7 @@ echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off    
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "
 echo "$text_md"
-echo "$text_md    | Group | options-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md    | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2716,7 +2738,7 @@ echo "$text_md    show-log          | log-search log-ssh filelog autolog        
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
 echo "$text_md                        hosts.allow hosts.deny default-show default-modify    "
 echo "$text_md"
-echo "$text_md      | Group | options-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md      | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
@@ -2733,7 +2755,7 @@ echo "$text_md  help-about         |  about version depends config-eng config-sp
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$text_md"
-echo "$text_md      | Group | options-interface | options-firewall | options-tool | options-show | options-help "
+echo "$text_md      | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
 exit ; fi
 ####
 ####
