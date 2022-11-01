@@ -152,7 +152,7 @@ fi; fi
 #### spanish: archivos permanentes: donde estan las rutas de archivo: nombre, comando e icono
 ####
 #### english: program name #### spanish: nombre del programa
-name_fwiptables="fwiptables-mini"
+#### name_fwiptables="fwiptables-mini"
 #### english: program exec #### spanish: programa ejectutable
 cmd_fwiptables="fwiptables-mini"
 #### english: name icon #### spanish: nombre de icono
