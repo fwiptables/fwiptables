@@ -900,8 +900,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 if [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
-echo "$text_md [ info ] [ $cmd_fwiptables uninstall.. ]"
-echo "$text_md [ info ] [ To deinstall fwiptables ] [ rm $directory_binary/$cmd_fwiptables ]"
+echo "  [ info ] [ $cmd_fwiptables uninstall.. ]"
+echo "  [ info ] [ Delete this file to deinstall fwiptables: ] [ rm $directory_binary/$cmd_fwiptables ]"
 exit; fi
 ####
 ####
@@ -915,9 +915,9 @@ if [ "$first_option" = "install" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables $fversion installer ] [ install md ] || ||"
 #### 
 #### 
-echo "$text_md [ info ] [ To install fwiptables ] [ Copy it manually ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
 echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
 echo "$text_md [ ok ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
+echo "  [ info ] [ Copy this file to deinstall fwiptables: ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
 exit ; fi
 ####
 ####
@@ -928,12 +928,10 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
-echo "$text_md [ info ] [ upgrade  ] [ upgrade $cmd_fwiptables at latest version from sourceforge.net web ]"
-echo "$text_md [ info ] [ upgrade  ] [ upgrade The $cmd_fwiptables in file $directory_binary/$cmd_fwiptables ]"
-echo "$text_md [ info ] [ download ] [ the last stable  version ]  [ download:  $cmd_fwiptables from $fweb_latest  ]"
-echo "$text_md [ info ] [ download ] [ the dev complete version ] [ download:  $cmd_fwiptables from $fweb_development_complete ]"
-echo "$text_md [ info ] [ download ] [ the dev minimal  version ] [ download:  $cmd_fwiptables from $fweb_development_minimal  ]"
+echo "$header_ok  [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
+echo "  [ info ] [ download ] [ The last         version ] [ download:  $cmd_fwiptables from $fweb_latest  ]"
+echo "  [ info ] [ download ] [ The dev complete version ] [ download:  $cmd_fwiptables from $fweb_development_complete ]"
+echo "  [ info ] [ download ] [ The dev minimal  version ] [ download:  $cmd_fwiptables from $fweb_development_minimal  ]"
 ####
 ####
 exit ; fi
