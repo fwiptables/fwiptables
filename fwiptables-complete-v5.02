@@ -738,7 +738,7 @@ $cmd_fwiptables regen-config ;; esac
 #### :rutina-inicial-alias-campus:
 ####
 ####
-#### output txt:
+#### output txt:   |||    General text without warnings
 ####
 ####
 if [ "$first_option" = "-txt" ]; 
@@ -761,7 +761,7 @@ esac ; $cmd_fwiptables "$second_option" "$third_option" "$quad_option"
 exit; fi
 ####
 ####
-#### output cli:
+#### output cli:   |||| No cli necesary but works sometimes
 ####
 ####
 if [ "$first_option" = "-cli" ]
@@ -797,7 +797,7 @@ fw-*)  echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_optio
 esac ; fi
 ####
 ####
-#### output gui:
+#### output gui:  ||| Yes gui , with gui
 ####
 ####
 if [ "$first_option" = "-gui" ] 
@@ -812,7 +812,7 @@ then case "$second_option" in
 esac ; fi
 ####
 ####
-#### output log
+#### output log   ||| No log
 ####
 ####
 if [ "$first_option" = "-log" ]
@@ -841,7 +841,7 @@ echo "  [  ok  ] [ Output sended to $output_filelog ] [ show: fwiptables filelog
 exit ; fi
 ####
 ####
-#### output null
+#### output null  ||||   No null
 ####
 ####
 if [ "$first_option" = "-null" ]
@@ -865,7 +865,7 @@ $cmd_fwiptables "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
-#### output web:
+#### output web:    |||    No web
 ####
 ####
 if [ "$first_option" = "-web" ] ; then
@@ -891,7 +891,7 @@ $favorite_text_browser $temporal_text.html
 exit ; fi
 ####
 ####
-#### first_option tor
+#### first_option tor   |||  with tor
 ####
 ####
 if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
@@ -899,15 +899,15 @@ echo "$tab [ info ] [ to connect web is necessary tor configured and browser eli
 torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
-#### output help:
+#### output help:    |||  where is the help 
 ####
 ####
-if [ "$first_option" = "-help" ]
+if [ "$first_option" = "-help" ]  
 then echo "$head_waiting_info"
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -help option-choosen, OR to see options use: $cmd_fwiptables ]" ; $cmd_fwiptables; exit ;;
-firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface);;
-#### default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
+firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface) ;;
+default-*|"install"|"uninstall"|"upgrade") second_option="default-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="options-interface"; third_option="" ;;
 "ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="options-help"; third_option="" ;;
@@ -942,7 +942,7 @@ $cmd_fwiptables $second_option
 exit ; fi
 ####
 ####
-#### output info:
+#### output info:      |||    Whereis the info
 ####
 ####
 if [ "$first_option" = "-info" ] ; then
@@ -960,7 +960,7 @@ case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_fwiptables -info option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
 $cmd_fwiptables ; exit ;;
 firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface) ;;
-### default-*|"install"|"uninstall"|"upgrade") second-option="options-state" ;;
+default-*|"install"|"uninstall"|"upgrade") second_option="default-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
 list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
@@ -1101,11 +1101,11 @@ cp "$directory_temporal/fwiptables-tmp.sh" "$directory_binary/$cmd_fwiptables" &
 chmod 555 "$directory_binary/$cmd_fwiptables" &> /dev/null 
 ####
 ####
-####  english: generate fwiptables default
-####  spanish: genera fwiptables default
+####  english: generate fwiptables default config and templates
+####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
+$cmd_fwiptables default-regen &> /dev/null
 $cmd_fwiptables regen-config &> /dev/null
 ####
 ####
@@ -3409,6 +3409,39 @@ exit; fi
 ####
 ####
 #### :rutina-final-options-interface:
+##########    english: default-state: state for default     ##########
+##########    spanish: default-state: stado por defecto     ##########
+#### :rutina-inicial-default-state:
+####
+####
+if [ "$first_option" = "default-state" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ default state ] [ default-state md ] || ||"
+echo "$text_md"
+echo "$text_md [ english info ] [ default state ]"
+echo "$text_md [ spanish info ] [ Herramienta de stado por defecto ]"
+echo "$text_md"
+echo "$text_md $tab default-show"
+echo "$text_md $tab_lang_english          : Show the config for default to program"
+echo "$text_md $tab_lang_spanish          : Muestra la configuracion por defecto del programa"
+echo "$text_md $tab default-modify"
+echo "$text_md $tab_lang_english          : Modify the config for default to program"
+echo "$text_md $tab_lang_spanish          : modifica la configuracion por defecto del programa"
+echo "$text_md $tab default-regen"
+echo "$text_md $tab_lang_english          : Auto regen the config for default to program"
+echo "$text_md $tab_lang_spanish          : Auto regenera la configuracion por defecto del programa"
+echo "$text_md $tab install"
+echo "$text_md $tab_lang_english          : install this program"
+echo "$text_md $tab_lang_spanish          : Instala this program"
+echo "$text_md $tab uninstall"
+echo "$text_md $tab_lang_english          : uninstall this program"
+echo "$text_md $tab_lang_spanish          : Desinstala this program"
+echo "$text_md $tab install"
+echo "$text_md $tab_lang_english          : Upgrade this program"
+echo "$text_md $tab_lang_spanish          : Actualiza this program"
+exit; fi
+####
+####
+#### :rutina-final-default-state:
 ##########    english: tool-sockets: options sockets    ##########
 ##########    spanish: tool-sockets: opciones sockets   ##########
 #### :rutina-inicial-tool-sockets:
