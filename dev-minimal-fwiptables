@@ -382,7 +382,7 @@ tab_lang_spanish=" spa "
 #### show_lang_spanish="##"
 #### #### info list rules
 message_info_rules="### ### || || [ ok ] || [ Configure ] [ list rules with names or with numbers ] \
-[ Launch: $cmd_fwiptables modify-default ] || ||"
+[ Launch: $cmd_fwiptables default-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="  [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="  [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -753,7 +753,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_op
 "new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
-"modify-default") $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"default-modify") $cmd_fwiptables $second_option $third_option  ;  exit ;;
 nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
@@ -893,16 +893,86 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 #### :rutina-final-allow-autolog:
-##########   english: default:      fwiptables default      ##########
-##########   spanish: defecto:  fwiptables defecto   ##########
+##########   english: default:  fwiptables default      ##########
+##########   spanish: defecto:  fwiptables defecto      ##########
 #### :rutina-inicial-default:
 ####
 ####
 if [ "$first_option" = "default" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables default ] [ default md ] || ||"
 echo "  [ info ] [ $cmd_fwiptables default.. ]"
-echo "  [ info ] [ Show   default config for fwiptables: ] [ fwiptables show-default   ]"
-echo "  [ info ] [ Modify default config for fwiptables: ] [ fwiptables modify-default ]"
+echo "  [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables default-regen  ]"
+echo "  [ info ] [ Show   default config for fwiptables:         ] [ fwiptables default-show   ]"
+echo "  [ info ] [ Modify default config for fwiptables:         ] [ fwiptables default-modify ]"
+exit; fi
+####
+####
+#### :rutina-final-default:
+##########    english: default-show: show $directory_default/$cmd_fwiptables   ##########
+##########    spanish: default-show: show $directory_default/$cmd_fwiptables   ##########
+#### :rutina-inicial-default-show:
+####
+####
+if [ "$first_option" = "default-show" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
+echo 
+cat $directory_default/$cmd_fwiptables-default
+echo 
+echo "  [ info ] [ Change variables with: $cmd_fwiptables default-modify ] [ file: $directory_default/$cmd_fwiptables-default ]"
+exit; fi
+####
+####
+#### :rutina-final-default-show:
+##########    english: default-modify: modify $directory_default/$cmd_fwiptables   ##########
+##########    spanish: default-modify: modify $directory_default/$cmd_fwiptables   ##########
+#### :rutina-inicial-default-modify:
+####
+####
+if [ "$first_option" = "default-modify" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
+echo 
+echo 
+echo "  [ info ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
+####
+####
+#### english: make security copy file
+#### spanish: hace copia de seguridad
+####
+####
+cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
+####
+####
+#### english: edit file
+#### spanish: edita el archivo
+####
+####
+$command_dialog  --no-cancel --title "MODIFY FILE: $directory_default/$cmd_fwiptables-default" \
+--editbox "$directory_temporal/$cmd_fwiptables-default" 0 0 2> "$directory_default/$cmd_fwiptables-default"
+clear
+####
+####
+#### english: probe all that is correct or recover
+#### spanish: prueba que todo es correcto o lo recupera
+####
+####
+if [ ! -s "$directory_default/$cmd_fwiptables-default" ] ; then $nada
+cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default"; fi
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-default-modify:
+##########   english: default:  fwiptables default   ##########
+##########   spanish: defecto:  fwiptables defecto   ##########
+#### :rutina-inicial-default:
+####
+####
+if [ "$first_option" = "default-regen" ] ; then echo $give_cover
+echo "$header_ok [ $first_option ] [ $cmd_fwiptables default-regen ] [ default-regen md ] || ||"
+echo "  [ info ] [ $cmd_fwiptables default-regen.. ]"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_default/$cmd_fwiptables-default"
+echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
 exit; fi
 ####
 ####
@@ -1544,7 +1614,7 @@ $cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall custom ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
@@ -1578,7 +1648,7 @@ fi
 ####
 ####
 if [ "$first_option" = "off-line" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall off-line ]" ;
 launch_firewall="yes" ;
 type_firewall="off-line";
@@ -1591,7 +1661,7 @@ fi
 ####
 ####
 if [ "$first_option" = "all-permisive" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall all-permisive ]" ;
 launch_firewall="yes" ;
 type_firewall="all-permisive" ;
@@ -1604,7 +1674,7 @@ fi
 ####
 ####
 if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
@@ -1625,7 +1695,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -1645,7 +1715,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-vnc" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -1665,7 +1735,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1685,7 +1755,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1705,7 +1775,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1725,7 +1795,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1750,7 +1820,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1782,7 +1852,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -1802,7 +1872,7 @@ fi
 ####
 ####
 if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1822,7 +1892,7 @@ fi
 ####
 ####
 if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1843,7 +1913,7 @@ fi
 ####
 ####
 if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1864,7 +1934,7 @@ fi
 ####
 ####
 if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1884,7 +1954,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1904,7 +1974,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1924,7 +1994,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1944,7 +2014,7 @@ fi
 ####
 ####
 if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1964,7 +2034,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -1984,7 +2054,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-vnc" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2006,7 +2076,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2026,7 +2096,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2046,7 +2116,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2071,7 +2141,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2103,7 +2173,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2123,7 +2193,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2143,7 +2213,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2163,7 +2233,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2184,7 +2254,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2206,7 +2276,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2226,7 +2296,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2250,7 +2320,7 @@ fi
 ####
 ####
 if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables modify-default ]" ;
+echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
 echo "  [ info ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2293,7 +2363,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
 echo "$text_md                       server-asterisk server-squid                                              "
-echo "$text_md    Others options  |  default show-default modify-default install upgrade uninstall             "
+echo "$text_md    Others options  |  default-show default-modify default-regen install upgrade uninstall       "
 exit ; fi
 ####
 ####
@@ -2443,7 +2513,7 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
-modify-default)
+default-modify)
 cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-default" \
 --editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-default"
@@ -3540,61 +3610,6 @@ exit ; fi
 ####
 ####
 #### :rutina-final-del-config:
-##########    english: show-default: show $directory_default/$cmd_fwiptables   ##########
-##########    spanish: show-default: show $directory_default/$cmd_fwiptables   ##########
-#### :rutina-inicial-show-default:
-####
-####
-if [ "$first_option" = "show-default" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
-echo 
-cat $directory_default/$cmd_fwiptables-default
-echo 
-echo "  [ info ] [ Change variables with: $cmd_fwiptables modify-default ] [ file: $directory_default/$cmd_fwiptables-default ]"
-exit; fi
-####
-####
-#### :rutina-final-show-default:
-##########    english: modify-default: modify $directory_default/$cmd_fwiptables   ##########
-##########    spanish: modify-default: modify $directory_default/$cmd_fwiptables   ##########
-#### :rutina-inicial-modify-default:
-####
-####
-if [ "$first_option" = "modify-default" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
-echo 
-echo 
-echo "  [ info ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
-####
-####
-#### english: make security copy file
-#### spanish: hace copia de seguridad
-####
-####
-cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
-####
-####
-#### english: edit file
-#### spanish: edita el archivo
-####
-####
-$command_dialog  --no-cancel --title "MODIFY FILE: $directory_default/$cmd_fwiptables-default" \
---editbox "$directory_temporal/$cmd_fwiptables-default" 0 0 2> "$directory_default/$cmd_fwiptables-default"
-clear
-####
-####
-#### english: probe all that is correct or recover
-#### spanish: prueba que todo es correcto o lo recupera
-####
-####
-if [ ! -s "$directory_default/$cmd_fwiptables-default" ] ; then $nada
-cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default"; fi
-####
-####
-exit; fi
-####
-####
-#### :rutina-final-modify-default:
 ##########    english: names: file list whith rules in iptables format          ##########
 ##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
 #### :rutina-inicial-names:
