@@ -1308,9 +1308,15 @@ spa22="$(echo $cinco modificar escudo con los maximos intentos de logeo a nuestr
 var23="$(echo config_shield_port=22 )"
 eng23="$(echo $cinco modify shield ssh chaging maxtries port ssh o several ports with comma separate )"
 spa23="$(echo $cinco modificar escudo ssh cambiando puerto de intentos ssh o varios puertos separados por comma )"
-var24="$(echo $cinco END NECESARY $cinco )"
-eng24="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
-spa24="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
+var24="$(echo $cinco SEPARATE RULES $cinco )"
+eng24="$(echo $cinco Separate rules one for each port void for yes, and no for no )"
+spa24="$(echo $cinco seprar reglas una por cada puerto vacio para si, o no para no )"
+var25="$(echo separate_port_rules=no )"
+eng25="$(echo $cinco Separate the rules for each port or no )"
+spa25="$(echo $cinco separar reglas por cada puerto o no )"
+var26="$(echo $cinco END NECESARY $cinco )"
+eng26="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
+spa26="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
 ####
 ####
 #### english: advance options in configurations file cfg
@@ -1323,9 +1329,9 @@ spa31="$(echo $cinco INICIO .......... Opciones opcionales .......... ..........
 var32="$(echo $cinco choose void or no $cinco )"
 eng32="$(echo $cinco Allow Other Options,  modify with void, or no )"
 spa32="$(echo $cinco Permitir Otras Opciones, modificar con vacio o no )"
-var33="$(echo separate_port_rules=no )"
-eng33="$(echo $cinco Separate the rules for each port or no )"
-spa33="$(echo $cinco separar reglas por cada puerto o no )"
+# var33="$(echo separate_port_rules=no )"
+# eng33="$(echo $cinco Separate the rules for each port or no )"
+# spa33="$(echo $cinco separar reglas por cada puerto o no )"
 # var34="$(echo allow_shield_maxtries=no )"
 # eng34="$(echo $cinco void to allow one shield with max tries login in ssh for ip to each hour or no )"
 # spa34="$(echo $cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
@@ -1522,6 +1528,8 @@ echo -E "$var21" "$tabz" "$eng21" &>> "$me"
 echo -E "$var22" "$tabz" "$eng22" &>> "$me"
 echo -E "$var23" "$tabz" "$eng23" &>> "$me"
 echo -E "$var24" "$tabz" "$eng24" &>> "$me"
+echo -E "$var25" "$tabz" "$eng25" &>> "$me"
+echo -E "$var26" "$tabz" "$eng26" &>> "$me"
 ####
 ####
 #### wizard mini-spanish
@@ -1552,6 +1560,8 @@ echo "$var21" "$tabz" "$spa21" &>> "$ms"
 echo "$var22" "$tabz" "$spa22" &>> "$ms"
 echo "$var23" "$tabz" "$spa23" &>> "$ms"
 echo "$var24" "$tabz" "$spa24" &>> "$ms"
+echo "$var25" "$tabz" "$spa25" &>> "$ms"
+echo "$var26" "$tabz" "$spa26" &>> "$ms"
 ####
 ####
 #### wizard full-english
@@ -1582,6 +1592,8 @@ echo -E "$var21" "$tabz" "$eng21" &>> "$fe"
 echo -E "$var22" "$tabz" "$eng22" &>> "$fe"
 echo -E "$var23" "$tabz" "$eng23" &>> "$fe"
 echo -E "$var24" "$tabz" "$eng24" &>> "$fe"
+echo -E "$var25" "$tabz" "$eng25" &>> "$fe"
+echo -E "$var26" "$tabz" "$eng26" &>> "$fe"
 ##### english: advance variables
 ##### spanish: avanzadas variables
 echo -E "$var30" "$tabz" "$eng30" &>> "$fe"
@@ -1667,6 +1679,8 @@ echo -E "$var21" "$tabz" "$spa21" &>> "$fs"
 echo -E "$var22" "$tabz" "$spa22" &>> "$fs"
 echo -E "$var23" "$tabz" "$spa23" &>> "$fs"
 echo -E "$var24" "$tabz" "$spa24" &>> "$fs"
+echo -E "$var25" "$tabz" "$spa25" &>> "$fs"
+echo -E "$var26" "$tabz" "$spa26" &>> "$fs"
 ##### english: advance variables
 ##### spanish: avanzadas variables
 echo -E "$var30" "$tabz" "$spa30" &>> "$fs"
