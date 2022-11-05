@@ -3,9 +3,20 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 01. comprobar los path temporales. trabajando
 
- cambios en dev-fwiptables 5.02 en desarrollo
+
+ 02. cambiar comentarios en el regen config para decir siempre lo de vacio o void cuando sea necesario. pendiente
+ 01. mirar los list rules para la especificacion de iptables-legacy iptables-nft del texto. pendiente
+
+ cambios en dev-fwiptables 5.04 en desarrollo
+
+ 02. corregido error de wizard a nuevas config con cli y txt. hecho
+
+ camios en dev-fwiptables 50.3 lineas=1
+
+ 01. comprobar los path temporales. pendiente
+
+ cambios en dev-fwiptables 5.02 lineas=1
 
  03. cambio la plantillas mini y full. HECHO
  02. cambio de variables en shield. HECHO
