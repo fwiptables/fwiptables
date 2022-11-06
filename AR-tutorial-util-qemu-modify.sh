@@ -15,7 +15,7 @@ processor_smp="4"
 
 #### variables estaticas
 if [ "$second_option"  == "$NULL" ] ; then qemu_vm="/qemu/debian-i386.qcow2" ; else qemu_vm=$second_option ; fi
-if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $qemu_cdrom -boot d"; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option -boot menu=on"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
 qemu_options="-m $memory_ram -machine type=pc,accel=kvm -k es -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
