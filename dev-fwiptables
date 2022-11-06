@@ -1312,8 +1312,8 @@ var24="$(echo $cinco SEPARATE RULES $cinco )"
 eng24="$(echo $cinco Separate rules one for each port void for yes, and no for no )"
 spa24="$(echo $cinco seprar reglas una por cada puerto vacio para si, o no para no )"
 var25="$(echo separate_port_rules=no )"
-eng25="$(echo $cinco Separate the rules for each port or no )"
-spa25="$(echo $cinco separar reglas por cada puerto o no )"
+eng25="$(echo $cinco Void to separate the rules for each port or no )"
+spa25="$(echo $cinco Vacio para separar reglas por cada puerto o no )"
 var26="$(echo $cinco END NECESARY $cinco )"
 eng26="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
 spa26="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
@@ -6732,7 +6732,7 @@ $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
 echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6767,7 +6767,7 @@ $command_ip6tables_legacy -v -L $list_rules_conceptual
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
 echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -6827,7 +6827,7 @@ $command_iptables_legacy -t filter -v -L -n
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
 echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
@@ -7511,8 +7511,8 @@ cat /etc/sudoers.d/$cmd_fwiptables
 echo 
 fi
 if [ ! -f /etc/sudoers.d/$cmd_fwiptables ] ; then $nada
-echo "$tab [ info ] [ list users with root auth for launch $cmd_fwiptables ]"
-echo "$tab [ fail ] [ actual version $cmd_fwiptables Without root sudo from users ]"
+echo "  [ info ] [ list users with root auth for launch $cmd_fwiptables ]"
+echo "  [ fail ] [ actual version $cmd_fwiptables Without root sudo from users ]"
 fi
 ####
 ####
@@ -7528,9 +7528,9 @@ exit; fi
 if [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_fwiptables ]"
 echo 
-echo "$tab [ alias file ] [  /etc/profile.d/$cmd_fwiptables ]"
+echo " [ alias file ] [  /etc/profile.d/$cmd_fwiptables ]"
 cat /etc/bash_completion.d/$cmd_fwiptables
-echo "$tab [ alias file ] [  /etc/bash_completion.d/$cmd_fwiptables ]"
+echo " [ alias file ] [  /etc/bash_completion.d/$cmd_fwiptables ]"
 cat /etc/bash_completion.d/$cmd_fwiptables
 exit; fi
 ####
