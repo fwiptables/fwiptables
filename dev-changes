@@ -3,10 +3,10 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
-
+ 04. 
  03. actualiza la ayuda para listar reglas. HECHO
- 02. cambiar comentarios en el regen config para decir siempre lo de vacio o void cuando sea necesario. pendiente
- 01. mirar los list rules para la especificacion de iptables-legacy iptables-nft del texto. pendiente
+ 02. cambiar comentarios en el regen config para decir siempre lo de vacio o void cuando sea necesario. HECHO
+ 01. mirar los list rules para la especificacion de iptables-legacy a iptables-nft del texto. HECHO
 
  cambios en dev-fwiptables 5.05 en desarrollo
 
