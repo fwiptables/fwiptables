@@ -911,8 +911,8 @@ default-*|"install"|"uninstall"|"upgrade") second_option="default-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 txt|cli|gui|log|web|"info"|rst|"help"|cli-menu|gui-menu|gui-shell) second_option="options-interface"; third_option="" ;;
 "ayuda"|"help"|"readme"|"leeme"|"options-help"|"all-help") second_option="options-help"; third_option="" ;;
-"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="options-firewall"; third_option="" ;;
-list*|"status"|"ls"|"ls4"|"ls6") second_option=" options-firewall"; third_option="" ;;
+"stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-list"; third_option="" ;;
+list*|"status"|"ls"|"ls4"|"ls6") second_option="firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
@@ -963,7 +963,7 @@ firewall-*) ;; tool-*) ;; show-*) ;; group-options) ;; options-interface) ;;
 default-*|"install"|"uninstall"|"upgrade") second_option="default-state" ;;
 "ayuda"|"help"|"readme"|"leeme"|"all-options"|"all-help"|"options-interface") second_option="help-help"; third_option="" ;;
 "stop"|"continue"|"reset"|"names"|"actual"|"show"|"save"|"load") second_option="firewall-control"; third_option="" ;;
-list*|"status"|"ls"|"ls4"|"ls6") second_option=" firewall-list"; third_option="" ;;
+list*|"status"|"ls"|"ls4"|"ls6") second_option="firewall-list"; third_option="" ;;
 "eraserules"|wizard-*|"custom"|"off-line"|"all-permisive"|lan-*|game-*|games-*|server-*|shield-*|client-*)
 second_option=" firewall-launch"; third_option="" ;;
 *-config) second_option=" firewall-custom"; third_option="" ;;
