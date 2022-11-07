@@ -85,7 +85,7 @@ directory_images="/qemu"
 ####
 ####
 case "$1" in 
-"$NULL"|"-help") echo  "### launch: $0 [ -null|-txt|-gui|-help ] directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
+"$NULL"|"-help") echo  "### launch: $0 [ -null|-txt|-gui|-help ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
 "-gui")  echo " #### GUI still in develpment ####" ; exit ;;
@@ -107,8 +107,12 @@ qemu_full="$command_qemu $qemu_options $qemu_vm $qemu_cdrom"
 #### :rutina-inicial-principal:
 ####
 ####
-##### directory
+##### preferences
 case "$1" in 
+"preferences")
+echo " #### preferences still in develpment #### "
+exit ;;
+##### directory
 "directory")
 echo
 echo " [ ok ] [ directory ] [ $directory_images ]"
