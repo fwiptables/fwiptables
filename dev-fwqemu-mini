@@ -75,6 +75,7 @@ architecture="qemu-system-i386"
 memory_ram="1500M"
 processor_smp="4"
 directory_images="/qemu"
+default_vm="$directory_images/default-vm"
 #### #### #### #### #### #### #### #### #### #### #### #### variables to modify
 ####
 ####
@@ -116,7 +117,7 @@ if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
 ####
 ####
 #### static variables
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/default-vm" ; else qemu_vm="$second_option" ; fi
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$default_vm" ; else qemu_vm="$second_option" ; fi
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option -boot menu=on"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
