@@ -89,10 +89,10 @@ case "$1" in
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
 "-gui")  echo " #### GUI still in develpment ####" ; exit ;;
-*) ;;
+*) first_option="$1" second_option="$2" third_option="$3" ;;
 esac
 #### variables estaticas
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/default-vm" ; else qemu_vm=$second_option ; fi
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/default-vm" ; else qemu_vm="$second_option" ; fi
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option -boot menu=on"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
