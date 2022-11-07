@@ -260,6 +260,7 @@ allow_input_ping="no" ;
 allow_input_state="no" ;
 allow_mac_blacklist="no" ; 
 allow_mac_whitelist="no" ;
+allow_separate_rules="no" ;
 allow_shield_maxtries="no"
 allow_net_blacklist="no" ;
 allow_net_vpn="no" ; 
@@ -297,7 +298,6 @@ net_ipv4_client="0/0" ;
 net_ipv4_server="0/0" ;
 net_ipv6_client="::/0" ;
 net_ipv6_server="::/0" ;
-separate_port_rules="no" ;
 server_tcp="" ;
 server_udp="" ; 
 ####
@@ -1311,7 +1311,7 @@ spa23="$(echo $cinco modificar escudo ssh cambiando puerto de intentos ssh o var
 var24="$(echo $cinco SEPARATE RULES $cinco )"
 eng24="$(echo $cinco Separate rules one for each port void for yes, and no for no )"
 spa24="$(echo $cinco seprar reglas una por cada puerto vacio para si, o no para no )"
-var25="$(echo separate_port_rules=no )"
+var25="$(echo allow_separate_rules=no )"
 eng25="$(echo $cinco Void to separate the rules for each port or no )"
 spa25="$(echo $cinco Vacio para separar reglas por cada puerto o no )"
 var26="$(echo $cinco END NECESARY $cinco )"
@@ -1329,7 +1329,7 @@ spa31="$(echo $cinco INICIO .......... Opciones opcionales .......... ..........
 var32="$(echo $cinco choose void or no $cinco )"
 eng32="$(echo $cinco Allow Other Options,  modify with void, or no )"
 spa32="$(echo $cinco Permitir Otras Opciones, modificar con vacio o no )"
-# var33="$(echo separate_port_rules=no )"
+# var33="$(echo allow_separate_rules=no )"
 # eng33="$(echo $cinco Separate the rules for each port or no )"
 # spa33="$(echo $cinco separar reglas por cada puerto o no )"
 # var34="$(echo allow_shield_maxtries=no )"
@@ -12716,7 +12716,7 @@ done
 ####################################### spanish: reglas para permitir puertos cliente without separate rules
 ####
 ####
-if [ "$separate_port_rules" = "no" ]; then 
+if [ "$allow_separate_rules" = "no" ]; then 
 ####
 ####
 ####    CLIENT  UDP
@@ -12812,7 +12812,7 @@ fi
 ####################################### spanish: reglas para permitir puertos cliente with separate rules
 ####
 ####
-if [ "$separate_port_rules" = "" ]; then 
+if [ "$allow_separate_rules" = "" ]; then 
 for one_udp in $(echo $client_udp | $command_sed 's/,/ /g') ;
 do
 ####
@@ -12863,7 +12863,7 @@ $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
 done; fi
 ####
 ####
-if [ "$separate_port_rules" = "" ]; then 
+if [ "$allow_separate_rules" = "" ]; then 
 for one_tcp in $(echo $client_tcp | $command_sed 's/,/ /g') ;
 do
 ####
