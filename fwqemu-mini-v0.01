@@ -43,6 +43,7 @@
 #################################################################################
 #################################################################################
 source /etc/profile
+program="fwqemu-mini"
 ####
 ####
 ##########    english: are you root: uid 0 ?                ##########
@@ -80,10 +81,10 @@ directory_images="/qemu"
 #### :rutina-final-modify:
 #################################################################################
 #################################################################################
-#### :rutina-inicial-static:
+#### :rutina-inicial-backend:
 ####
 ####
-####
+####  backend
 case "$1" in 
 "$NULL"|"-help") echo  "### launch: $0 [ -null|-txt|-gui|-help ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
@@ -91,26 +92,63 @@ case "$1" in
 "-gui")  echo " #### GUI still in develpment ####" ; exit ;;
 *) first_option="$1" second_option="$2" third_option="$3" ;;
 esac
-#### variables estaticas
+####
+####
+#### :rutina-final-backend:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-sane:
+####
+####
+cache_path="$HOME/.cache/$program"
+config_path="$HOME/.config/$program"
+####
+####
+####  sane configs
+if [ ! -d $cache_path  ] ; then mkdir -p $cache_path  ; fi
+if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
+####
+####
+#### :rutina-final-sane:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-static:
+####
+####
+#### static variables
 if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/default-vm" ; else qemu_vm="$second_option" ; fi
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option -boot menu=on"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
 qemu_options="-m $memory_ram -machine type=pc,accel=kvm -k es -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
 qemu_full="$command_qemu $qemu_options $qemu_vm $qemu_cdrom"
-##### #### status|stop|start|restart
+####
+source "$config_path/config"
 ####
 ####
 #### :rutina-final-static:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-preferences:
+####
+####
+####
+####
+#### :rutina-final-preferences:
 #################################################################################
 #################################################################################
 #### :rutina-inicial-principal:
 ####
 ####
 ##### preferences
-case "$1" in 
+case "$first_option" in 
 "preferences")
-echo " #### preferences still in develpment #### "
+echo " $0 $first_option read|modify|reset"
+if [ "$second_option" == "read" ];    then echo ; cat "$config_path/config"; echo ; fi
+if [ "$second_option" == "modify" ];  then echo ; editor "$config_path/config" ; echo; fi
+if [ "$second_option" == "reset" ];   then echo ; thelines=14 ;
+cat $0 | grep -E ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_path/config" ;
+echo ; echo " #### values reset for default ####" ;  fi
 exit ;;
 ##### directory
 "directory")
@@ -176,7 +214,7 @@ echo "Ok. Umounted $HOME/mnt/nbd0p*"
 exit ;;
 ####
 esac
-#### otros parametros
+#### other parameters
 $0
 ####
 ####
