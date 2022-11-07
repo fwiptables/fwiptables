@@ -147,7 +147,7 @@ case "$first_option" in
 echo " $0 $first_option read|modify|reset"
 if [ "$second_option" == "read" ];    then echo ; cat "$config_path/config"; echo ; fi
 if [ "$second_option" == "modify" ];  then echo ; editor "$config_path/config" ; echo; fi
-if [ "$second_option" == "reset" ];   then echo ; thelines=14 ;
+if [ "$second_option" == "reset" ];   then echo ; thelines=12 ;
 cat $0 | grep -E ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_path/config" ;
 echo ; echo " #### values reset for default ####" ;  fi
 exit ;;
