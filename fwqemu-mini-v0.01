@@ -1,0 +1,183 @@
+#!/bin/bash
+#### #### #### #### for shell bash:
+#### #### #### #### #!/bin/bash
+####
+#### #### #### #### for shell zsh:
+#### #### #### #### #!/bin/zsh
+#### #### #### #### emulate -L bash
+####
+#### File:        fwqemu-mini
+#### Description: Mini Fran fwqemu
+#### Author:      Francisco Garcia <fwiptables@gmx.com>
+#### Copyright:   (c) 2020-2022 Francisco Garcia <fwiptables@gmx.com>
+####
+#### This program is free software; you can redistribute it and/or modify
+#### it under the terms of the GNU General Public License as published by
+#### the Free Software Foundation; either version 2 of the License, or
+#### (at your option) any later version.
+####
+#### This program is distributed in the hope that it will be useful,
+#### but WITHOUT ANY WARRANTY; without even the implied warranty of
+#### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#### GNU General Public License for more details.
+####
+#### You should have received a copy of the GNU General Public License along
+#### with this program; if not, write to the Free Software Foundation, Inc.,
+#### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
+####
+####
+####                 ## fwiptables license in source program
+####   English: This program has gpl license GPL v2, this program is copyleft, it is free.
+####   Spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
+####
+####
+####                 ## fwiptables comments in source program
+####   English: The comments are in english language and spanish language
+####   Spanish: Los comentarios estan en idioma ingles y en idioma español
+####
+####
+####                 ## Report bugs and Sum ideas
+####   Email: fwiptables@gmx.com
+####
+####
+#################################################################################
+#################################################################################
+source /etc/profile
+####
+####
+##########    english: are you root: uid 0 ?                ##########
+##########    spanish: eres admnistrador: identificador 0 ? ##########
+#### :rutina-inicial-admin:
+####
+####
+if [ "$(id -u)" == "0" ] ; then echo -n ; else
+echo
+echo "  [ info ] [ fwqemu needs to be root to work ]"
+echo
+echo "  [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
+exit ; fi
+####
+####
+#### :rutina-final-admin:
+#################################################################################
+#################################################################################
+####
+####
+#################################################################################
+#################################################################################
+#### :rutina-inicial-modify:
+####
+####
+#### #### #### #### #### #### #### #### #### #### #### #### variables to modify
+qemu_name="Qemu VM"
+architecture="qemu-system-i386"
+memory_ram="1500M"
+processor_smp="4"
+directory_images="/qemu"
+#### #### #### #### #### #### #### #### #### #### #### #### variables to modify
+####
+####
+#### :rutina-final-modify:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-static:
+####
+####
+####
+case "$1" in 
+"$NULL"|"-help") echo  "### launch: $0 [ -null|-txt|-gui|-help ] directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
+"-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
+"-txt")  $0 $2 $3 $4                    ; exit ;;
+"-gui")  echo " #### GUI still in develpment ####" ; exit ;;
+*) ;;
+esac
+#### variables estaticas
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/default-vm" ; else qemu_vm=$second_option ; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option -boot menu=on"; fi
+display_vnc=":0"
+command_qemu="$(command -v $architecture)"
+qemu_options="-m $memory_ram -machine type=pc,accel=kvm -k es -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
+qemu_full="$command_qemu $qemu_options $qemu_vm $qemu_cdrom"
+##### #### status|stop|start|restart
+####
+####
+#### :rutina-final-static:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-principal:
+####
+####
+##### directory
+case "$1" in 
+"directory")
+echo
+echo " [ ok ] [ directory ] [ $directory_images ]"
+echo
+echo " [ ok ] [ directory ] [ files: ]"
+echo
+ls -1 $directory_images
+echo
+echo " [ ok ] [ files ] [ listed from $directory_images ]"
+exit ;;
+##### whith probe
+"probe")
+echo $qemu_full
+echo " [ ok ] [ probe ]"
+exit ;;
+##### with status
+"status")
+ps -Af | grep -i  "$architecture"
+echo " [  ok  ] [ status ] [ process listed ] [ $architecture ]"
+exit ;;
+##### with stop
+"stop")
+killall -9 "$architecture"
+echo " [ ok ] [ stopped ] [ La maquina virtual detenida: $qemu_name ]"
+exit ;;
+##### with start
+"start")
+$qemu_full &
+echo " [ ok ] [ started ] [ La maquina virtual iniciada: $qemu_name ]"
+exit ;;
+##### with restart
+"restart")
+$0 stop  &> /dev/null
+$0 start $2 $3 &> /dev/null
+echo " [ ok ] [ restarted ] [ La maquina virtual reiniciada ] [ $qemu_name ]"
+exit ;;
+#### #### mount:
+"mount")
+#### secuencia de montaje de nbd
+if [  -f "$second_option" ]; then
+#### carga el modulo del kernel
+modprobe nbd max_part=8
+#### conecta un disco
+qemu-nbd --connect=/dev/nbd0 $second_option
+#### lista las particiones
+fdisk /dev/nbd0 -l
+#### monta la imagen de qemu
+mkdir -p $HOME/mnt/nbd0p1 &> /dev/null
+MKDIR -P $HOME/mnt/nbd0p2 &> /dev/null
+umount $HOME/mnt/nbd0p* &> /dev/null
+mount /dev/nbd0p1 $HOME/mnt/nbd0p1/ &> /dev/null
+mount /dev/nbd0p2 $HOME/mnt/nbd0p2/ &> /dev/null
+echo "OK. qemu image mounted in $HOME/mnt/nbd0p1 and nbd0p2"
+exit ; else echo " #### choose one image #### "; exit; fi ;;
+#### #### umount:
+#### desmonta y desconecta la imagen de qemu
+"umount")
+umount $HOME/mnt/nbd0p* &> /dev/null
+qemu-nbd --disconnect /dev/nbd0 &> /dev/null
+echo "Ok. Umounted $HOME/mnt/nbd0p*"
+exit ;;
+####
+esac
+#### otros parametros
+$0
+####
+####
+#### :rutina-final-principal:
+#################################################################################
+#################################################################################
+##### end script
+exit
