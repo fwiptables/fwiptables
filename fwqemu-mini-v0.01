@@ -43,7 +43,6 @@
 #################################################################################
 #################################################################################
 source /etc/profile
-program="fwqemu-mini"
 ####
 ####
 ##########    english: are you root: uid 0 ?                ##########
@@ -83,27 +82,12 @@ language_vm="es"
 #### :rutina-final-modify:
 #################################################################################
 #################################################################################
-#### :rutina-inicial-backend:
-####
-####
-####  backend
-case "$1" in 
-"$NULL"|"-help") echo  "### launch: $0 [ -null|-txt|-gui|-help ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
-"-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
-"-txt")  $0 $2 $3 $4                    ; exit ;;
-"-gui")  echo " #### GUI still in develpment ####" ; exit ;;
-*) first_option="$1" second_option="$2" third_option="$3" ;;
-esac
-####
-####
-#### :rutina-final-backend:
-#################################################################################
-#################################################################################
 #### :rutina-inicial-sane:
 ####
 ####
-cache_path="$HOME/.cache/$program"
-config_path="$HOME/.config/$program"
+cmd_program="fwqemu-mini"
+cache_path="$HOME/.cache/$cmd_program"
+config_path="$HOME/.config/$cmd_program"
 ####
 ####
 ####  sane configs
@@ -111,7 +95,30 @@ if [ ! -d $cache_path  ] ; then mkdir -p $cache_path  ; fi
 if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
 ####
 ####
+zero_option="$0" ; first_option="$1" ; second_option="$2" ; third_option="$3" ; quad_option="$4"
+####
+####
 #### :rutina-final-sane:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-backend:
+####
+####
+####  backend
+case "$first_option" in 
+"$NULL"|"-help") echo  "### launch: $zero_option [ -null|-txt|-gui|-help ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
+"-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
+"-txt")  $0 $2 $3 $4                    ; exit ;;
+"-cli") if [ "$first_option" == "preferences" ] && [ "$second_option" == "modify" ]; then echo -n ; exit ; fi ;;
+patio="$($cmd_program $second_option $third_option $quad_option)"
+dialog --stdout --title="CLI Output || $cmd_fwiptables ||" --inputbox "$patio" 0 0
+"-gui") if [ "$first_option" == "preferences" ] && [ "$second_option" == "modify" ]; then echo -n ; exit ; fi ;;
+zenity --forms --title="GUI Output || $cmd_fwiptables ||" --text="$($cmd_program $second_option $third_option $quad_option)" --auto-scroll ; exit ;;
+*) ;;
+esac
+####
+####
+#### :rutina-final-backend:
 #################################################################################
 #################################################################################
 #### :rutina-inicial-static:
@@ -145,7 +152,7 @@ source "$config_path/config"
 ##### preferences
 case "$first_option" in 
 "preferences")
-echo " $0 $first_option read|modify|reset"
+echo " $zero_option $first_option read|modify|reset"
 if [ "$second_option" == "read" ];    then echo ; cat "$config_path/config"; echo ; fi
 if [ "$second_option" == "modify" ];  then echo ; editor "$config_path/config" ; echo; fi
 if [ "$second_option" == "reset" ];   then echo ; thelines=12 ;
