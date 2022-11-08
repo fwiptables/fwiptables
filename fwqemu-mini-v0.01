@@ -68,7 +68,7 @@ exit ; fi
 #### :rutina-inicial-modify:
 ####
 ####
-#### #### #### #### #### #### #### #### #### #### #### #### variables to modify
+#### #### variables to modify
 qemu_name="Qemu VM"
 architecture="qemu-system-i386"
 memory_ram="1500M"
@@ -76,7 +76,7 @@ processor_smp="4"
 directory_images="/qemu"
 default_image="default-vm"
 language_vm="es"
-#### #### #### #### #### #### #### #### #### #### #### #### variables to modify
+#### #### #### variables to modify
 ####
 ####
 #### :rutina-final-modify:
@@ -88,6 +88,7 @@ language_vm="es"
 cmd_program="fwqemu-mini"
 cache_path="$HOME/.cache/$cmd_program"
 config_path="$HOME/.config/$cmd_program"
+config_file="$HOME/.config/$cmd_program/config.txt"
 ####
 ####
 ####  sane configs
@@ -109,11 +110,12 @@ case "$first_option" in
 "$NULL"|"-help") echo  "### launch: $zero_option [ -null|-txt|-gui|-help ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
-"-cli") if [ "$first_option" == "preferences" ] && [ "$second_option" == "modify" ]; then echo -n ; exit ; fi ;;
-patio="$($cmd_program $second_option $third_option $quad_option)"
-dialog --stdout --title="CLI Output || $cmd_fwiptables ||" --inputbox "$patio" 0 0
-"-gui") if [ "$first_option" == "preferences" ] && [ "$second_option" == "modify" ]; then echo -n ; exit ; fi ;;
-zenity --forms --title="GUI Output || $cmd_fwiptables ||" --text="$($cmd_program $second_option $third_option $quad_option)" --auto-scroll ; exit ;;
+"-cli") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] ;
+then dialog --stdout --scrollbar --clear --title "Edit preferences" --editbox "$config_file" 0 0 0 2>  $config_file ; reset ; exit ;
+else dialog --title "CLI Output: $cmd_program" --text "$($zero_option $second_option $third_option $quad_option)" 0 0 ; reset ; exit ; fi ;;
+"-gui") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] ; 
+then zenity --text-info --filename="$config_file" --editable --auto-scroll  0 0 1>  "$config_file" ; exit ;
+else zenity --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ; fi ;;
 *) ;;
 esac
 ####
@@ -132,7 +134,7 @@ command_qemu="$(command -v $architecture)"
 qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
-source "$config_path/config"
+source "$config_file"
 ####
 ####
 #### :rutina-final-static:
@@ -152,13 +154,13 @@ source "$config_path/config"
 ##### preferences
 case "$first_option" in 
 "preferences")
-echo " $zero_option $first_option read|modify|reset"
-if [ "$second_option" == "read" ];    then echo ; cat "$config_path/config"; echo ; fi
-if [ "$second_option" == "modify" ];  then echo ; editor "$config_path/config" ; echo; fi
-if [ "$second_option" == "reset" ];   then echo ; thelines=12 ;
-cat $0 | grep -E ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_path/config" ;
-echo ; echo " #### values reset for default ####" ;  fi
-exit ;;
+if [ "$second_option" = "read" ] || [ "$second_option" == "modify" ] || [ "$second_option" == "reset" ] ; then 
+if [ "$second_option" = "read"   ] ;  then cat "$config_file";  fi
+if [ "$second_option" = "modify" ] ;  then $0 -cli preferences modify ; fi
+if [ "$second_option" = "reset"  ] ;  then thelines=12 ;
+cat $0 | grep -E ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_file" ;
+echo ; echo " #### values reset for default ####" ; exit ; fi
+else echo " $zero_option $first_option read|modify|reset" ; exit ; fi
 ##### directory
 "directory")
 echo
@@ -178,8 +180,8 @@ echo " [ ok ] [ probe ]"
 exit ;;
 ##### with status
 "status")
-ps -Af | grep -i  "$architecture"
-echo " [  ok  ] [ status ] [ process listed ] [ $architecture ]"
+ps -Af | grep -i  "$architecture" 
+# echo " [  ok  ] [ status ] [ process listed ] [ $architecture ]"
 exit ;;
 ##### with stop
 "stop")
