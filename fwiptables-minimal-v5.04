@@ -243,6 +243,11 @@ if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/nu
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
 ####
 ####
+#### complete to command fwiptables to the next launching
+# complete -W "stop continue reset names actual show load ls ls list list6 status list-alltables \
+# eraserules custom wizard-mini wizard-full off-line all-permisive" "$directory_binary/$cmd_fwiptables"
+####
+####
 #### :rutina-final-dir-sane:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########

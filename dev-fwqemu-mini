@@ -118,7 +118,7 @@ if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
 ####
 ####
 #### static variables
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_image/$default_image" ; else qemu_vm="$second_option" ; fi
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/$default_image" ; else qemu_vm="$second_option" ; fi
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option -boot menu=on"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
