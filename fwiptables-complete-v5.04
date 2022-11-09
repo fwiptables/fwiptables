@@ -2665,8 +2665,8 @@ exit ; fi
 ####
 if [ "$first_option" = "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
-echo "$title_md                                  | options-state |                                          "
-echo "$text_md    default-state    | default-show default-modify default-regen install upgrade uninstall    "
+echo "$title_md                                  | options-state |                                                             "
+echo "$text_md    default-state    | default-show default-modify default-regen version install upgrade uninstall               "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
 exit ; fi
