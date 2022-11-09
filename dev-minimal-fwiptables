@@ -759,7 +759,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_op
 "nueva-completa-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
-"modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
+"default-modify") $cmd_fwiptables default-modify ; exit ;;
 "default-modify") $cmd_fwiptables $second_option $third_option  ;  exit ;;
 nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
@@ -2484,6 +2484,17 @@ else cp "$directory_temporal/$cmd_fwiptables-$third_option" "$directory_config/$
 $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
+####
+"default-modify")
+archivo="default"
+cp "$directory_default/$cmd_fwiptables-$archivo" "$directory_default/$cmd_fwiptables-$archivo-bak"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_default/$cmd_fwiptables-$archivo-bak" \
+--editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-$archivo"
+if [  -s "$directory_default/$cmd_fwiptables-$archivo" ]; then $nada ; 
+else cp "$directory_default/$cmd_fwiptables-$archivo-bak" "$directory_default/$cmd_fwiptables-$archivo" ;
+$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+;;
+####
 ####
 "game-word") $cmd_fwiptables game-word gui ; exit ;;
 "game-number") $cmd_fwiptables game-number gui ; exit ;;

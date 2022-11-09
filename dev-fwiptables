@@ -775,7 +775,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_op
 "new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "modify-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
-"default-modify") $cmd_fwiptables $second_option $third_option  ;  exit ;;
+"default-modify") $cmd_fwiptables default-modify ; exit ;;
 nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
@@ -4370,7 +4370,7 @@ case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" 
 case $second_option in
 #### 
 #### 
-wizard-mini)
+"wizard-mini")
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$archivo" \
@@ -4382,7 +4382,7 @@ $command_zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
-wizard-full)
+"wizard-full")
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$archivo" \
@@ -4394,12 +4394,13 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
-default-modify)
-cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-default" \
---editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-default"
-if [  -s "$directory_default/$archivo" ]; then $nada ; 
-else cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default" ;
+"default-modify")
+archivo="default"
+cp "$directory_default/$cmd_fwiptables-$archivo" "$directory_default/$cmd_fwiptables-$archivo-bak"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_default/$cmd_fwiptables-$archivo-bak" \
+--editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-$archivo"
+if [  -s "$directory_default/$cmd_fwiptables-$archivo" ]; then $nada ; 
+else cp "$directory_default/$cmd_fwiptables-$archivo-bak" "$directory_default/$cmd_fwiptables-$archivo" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
@@ -5259,7 +5260,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
-"resolv.conf" "default-show" "default-modify" \
+"resolv.conf" "default-show" "default-modify" "default-read" \
 --column="Option list $cmd_fwiptables" --text="Select one option" --title="[ Show etc ]  [ $cmd_fwiptables ]" )
 #### 
 #### 
@@ -5276,6 +5277,7 @@ case $selection in
 "resolv.conf") $cmd_fwiptables -gui resolv.conf ;;
 "default-show") $cmd_fwiptables -gui default-show ;;
 "default-modify") $cmd_fwiptables -gui default-modify ;;
+"read-modify") $cmd_fwiptables -gui default-read ;;
 esac
 ####
 ####
@@ -7896,6 +7898,17 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-show:
+##########    english: default-read: read $directory_default/$cmd_fwiptables   ##########
+##########    spanish: default-read: read $directory_default/$cmd_fwiptables   ##########
+#### :rutina-inicial-default-read:
+####
+####
+if [ "$first_option" = "default-read" ]; then echo $give_cover
+cat $directory_default/$cmd_fwiptables-default
+exit ; fi
+####
+####
+#### :rutina-final-default-read:
 ##########    english: default-modify: modify $directory_default/$cmd_fwiptables   ##########
 ##########    spanish: default-modify: modify $directory_default/$cmd_fwiptables   ##########
 #### :rutina-inicial-default-modify:
