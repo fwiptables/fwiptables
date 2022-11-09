@@ -88,12 +88,13 @@ language_vm="es"
 cmd_program="fwqemu-mini"
 cache_path="$HOME/.cache/$cmd_program"
 config_path="$HOME/.config/$cmd_program"
-config_file="$HOME/.config/$cmd_program/config.txt"
+config_file="$HOME/.config/$cmd_program/config"
 ####
 ####
 ####  sane configs
 if [ ! -d $cache_path  ] ; then mkdir -p $cache_path  ; fi
 if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
+if [ ! -f $config_file ] ; then $0 preferences reset &> /dev/null; else source $config_file ; fi
 ####
 ####
 zero_option="$0" ; first_option="$1" ; second_option="$2" ; third_option="$3" ; quad_option="$4"
@@ -110,12 +111,12 @@ case "$first_option" in
 "$NULL"|"-help") echo  "### launch: $zero_option [ -null|-txt|-gui|-help ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
-"-cli") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] ;
-then dialog --stdout --scrollbar --clear --title "Edit preferences" --editbox "$config_file" 0 0 0 2>  $config_file ; reset ; exit ;
+"-cli") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] 
+then dialog --title "Edit preferences" --editbox $config_file 0 0 12>  "$config_file" ; reset ; exit ;
 else dialog --title "CLI Output: $cmd_program" --text "$($zero_option $second_option $third_option $quad_option)" 0 0 ; reset ; exit ; fi ;;
-"-gui") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] ; 
-then zenity --text-info --filename="$config_file" --editable --auto-scroll  0 0 1>  "$config_file" ; exit ;
-else zenity --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ; fi ;;
+"-gui") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ]  
+then zenity --text-info --filename="/root/.config/fwqemu-mini/config" 12>  "$config_file" ; exit ;
+else zenity --forms --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ; fi ;;
 *) ;;
 esac
 ####
@@ -133,8 +134,6 @@ display_vnc=":0"
 command_qemu="$(command -v $architecture)"
 qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
-####
-source "$config_file"
 ####
 ####
 #### :rutina-final-static:
@@ -155,12 +154,12 @@ source "$config_file"
 case "$first_option" in 
 "preferences")
 if [ "$second_option" = "read" ] || [ "$second_option" == "modify" ] || [ "$second_option" == "reset" ] ; then 
-if [ "$second_option" = "read"   ] ;  then cat "$config_file";  fi
-if [ "$second_option" = "modify" ] ;  then $0 -cli preferences modify ; fi
+if [ "$second_option" = "read"   ] ;  then cat "$config_file" ;         exit ; fi
+if [ "$second_option" = "modify" ] ;  then $0 -cli preferences modify ; exit ; fi
 if [ "$second_option" = "reset"  ] ;  then thelines=12 ;
-cat $0 | grep -E ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_file" ;
+cat $0 | fgrep  ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_file" ;
 echo ; echo " #### values reset for default ####" ; exit ; fi
-else echo " $zero_option $first_option read|modify|reset" ; exit ; fi
+else echo " $zero_option $first_option read|modify|reset" ; exit ; fi ;;
 ##### directory
 "directory")
 echo
