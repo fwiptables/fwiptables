@@ -355,7 +355,7 @@ tab="     " ;
 rallica="_____" ;
 sinco=" || " ;
 title_md="### " ;
-text_md="     " ;
+text_md="  " ;
 brake_md="---" ;
 tabz="### _ _ _ _ _ _ _ " ;
 ralla="______________________" ;
@@ -363,18 +363,20 @@ duo_md="### ###" ;
 header_ok="### ### || || [ ok ] ||" ;
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="  [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_gui="  [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_log="  [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_web="  [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_help="  [ info ] [ help: help in rst txt format ] [ Loading.. ]"
-head_waiting_info="  [ info ] [ info: info in plain txt format ] [ loading.. ]"
+head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_gui="$duo_md [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_log="$duo_md [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_web="$duo_md [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_help="$duo_md [ info ] [ help: help in rst txt format ] [ Loading.. ]"
+head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -386,16 +388,16 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="### ### || || [ ok ] || [ Configure ] [ list rules with names or with numbers ] \
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ list rules with names or with numbers ] \
 [ Launch: $cmd_fwiptables default-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="  [ fail ] [ cli ] [ Without support for output cli for this option ]"
-message_without_gui="  [ fail ] [ gui ] [ Without support for output gui for this option ]"
-message_without_web="  [ fail ] [ web ] [ Without support for output web for this option ]"
-message_without_help="  [ fail ] [ help in rst ] [ Without support for output rst for this option ]"
-message_without_info="  [ fail ] [ info in txt ] [ Without support for output info for this option ]"
-message_without_info="  [ fail ] [ log ] [ Without support for output log for this option ]"
-message_without_info="  [ fail ] [ null ] [ Without support for output null for this option ]"
+message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
+message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
+message_without_web="$duo_md [ fail ] [ web ] [ Without support for output web for this option ]"
+message_without_help="$duo_md [ fail ] [ help in rst ] [ Without support for output rst for this option ]"
+message_without_info="$duo_md [ fail ] [ info in txt ] [ Without support for output info for this option ]"
+message_without_info="$duo_md [ fail ] [ log ] [ Without support for output log for this option ]"
+message_without_info="$duo_md [ fail ] [ null ] [ Without support for output null for this option ]"
 ####       #### english: close from graphicall with timeout in seconds #####
 ####       #### spanish: cierre desde graficos con retardo en segundos #####
 close_graphicall="1"
@@ -1667,9 +1669,8 @@ $cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
 #### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall custom ]" ;
+if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall custom ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
 name_firewall="$second_option" ;
@@ -1683,8 +1684,8 @@ if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]; then  $cmd_fwiptables cfg ; 
-echo "$tab [ info ] [ $cmd_fwiptables custom file-cfg ]"
-echo "$tab [ info ] [ $cmd_fwiptables firewall-custom ]"
+echo "$duo_md [ info ] [ $cmd_fwiptables custom file-cfg ]"
+echo "$duo_md [ info ] [ $cmd_fwiptables firewall-custom ]"
 exit; fi
 ####
 ####
@@ -1701,9 +1702,8 @@ fi
 ####   #### spanish: cortafuego del sistema off-line:
 ####
 ####
-if [ "$first_option" = "off-line" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall off-line ]" ;
+if [ "$first_option" = "off-line" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall off-line ]" ;
 launch_firewall="yes" ;
 type_firewall="off-line";
 name_firewall="$first_option";
@@ -1714,9 +1714,8 @@ fi
 ####   #### spanish: cortafuego del sistema all-permisive:
 ####
 ####
-if [ "$first_option" = "all-permisive" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall all-permisive ]" ;
+if [ "$first_option" = "all-permisive" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall all-permisive ]" ;
 launch_firewall="yes" ;
 type_firewall="all-permisive" ;
 name_firewall="$first_option";
@@ -1727,9 +1726,8 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall shield-ssh ]" ;
+if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
 name_firewall="$first_option" ;
@@ -1748,9 +1746,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-web ]" ;
+if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -1768,9 +1765,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-vnc:
 ####
 ####
-if [ "$first_option" = "client-vnc" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-vnc ]" ;
+if [ "$first_option" = "client-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -1788,9 +1784,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-torrent ]" ;
+if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1808,9 +1803,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-vpn ]" ;
+if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1828,9 +1822,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-tor ]" ;
+if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1848,9 +1841,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-news ]" ;
+if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1873,9 +1865,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-mail ]" ;
+if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1905,9 +1896,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-ftp ]" ;
+if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -1925,9 +1915,8 @@ fi
 ####   #### spanish: cortafuego del sistema client-squid:
 ####
 ####
-if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall client-squid ]" ;
+if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1945,9 +1934,8 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall lan-vpn ]" ;
+if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1966,9 +1954,8 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall lan-tor ]" ;
+if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -1987,9 +1974,8 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall games-shooter ]" ;
+if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2007,9 +1993,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall game-wesnoth ]" ;
+if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2027,9 +2012,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall game-minetest ]" ;
+if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2047,9 +2031,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall game-freeciv ]" ;
+if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2067,9 +2050,8 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall game-widelands ]" ;
+if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2087,9 +2069,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-web ]" ;
+if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2107,9 +2088,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-vnc:
 ####
 ####
-if [ "$first_option" = "server-vnc" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-vnc ]" ;
+if [ "$first_option" = "server-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2129,9 +2109,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-ftp ]" ;
+if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2149,9 +2128,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-squid:
 ####
 ####
-if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-squid ]" ;
+if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2169,9 +2147,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-news ]" ;
+if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2194,9 +2171,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-mail ]" ;
+if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2226,9 +2202,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-samba ]" ;
+if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2246,9 +2221,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-print ]" ;
+if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2266,9 +2240,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-ssh ]" ;
+if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
 name_firewall="$first_option" ;
@@ -2286,9 +2259,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-lamp ]" ;
+if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2307,9 +2279,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-asterisk ]" ;
+if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2329,9 +2300,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-mumble ]" ;
+if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2349,9 +2319,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-teamspeak ]" ;
+if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2373,9 +2342,8 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load ;
-echo "  [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]" ;
-echo "  [ info ] [ loading firewall server-sql ]" ;
+if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
 name_firewall="$first_option" ;
@@ -2570,7 +2538,7 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 default-modify)
 cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-default" \
---editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-default"
+--editable --title="MODIFY DEFAULT" 12> "$directory_default/$cmd_fwiptables-default"
 if [  -s "$directory_default/$archivo" ]; then $nada ; 
 else cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
