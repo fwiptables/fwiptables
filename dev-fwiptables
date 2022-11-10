@@ -4394,6 +4394,21 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
+#### 
+#### 
+"modify-config")
+if [ -f "$directory_config/$third_option" ] ; then $nada
+else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+cp "$directory_config/$third_option" "$directory_temporal/$cmd_fwiptables-$third_option"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
+--editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
+if [ -s "$directory_config/$third_option" ]; then $nada ; 
+$command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
+else cp "$directory_temporal/$cmd_fwiptables-$third_option" "$directory_config/$third_option"
+$command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+;;
+#### 
+####
 "default-modify")
 archivo="default"
 cp "$directory_default/$cmd_fwiptables-$archivo" "$directory_default/$cmd_fwiptables-$archivo-bak"

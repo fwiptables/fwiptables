@@ -760,7 +760,6 @@ wizard-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_op
 "new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
 "default-modify") $cmd_fwiptables default-modify ; exit ;;
-"default-modify") $cmd_fwiptables $second_option $third_option  ;  exit ;;
 nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
@@ -970,6 +969,27 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-modify:
+##########    english: default-read: modify default        ##########
+##########    spanish: default-read: modifica por defecto  ##########
+#### :rutina-inicial-default-read:
+####
+####
+if [ "$first_option" = "default-read" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ read the default fwiptables ] || ||"
+echo "$duo_md [ info ] [ Show file $directory_default/$cmd_fwiptables to read variables ]"
+####
+####
+#### english: show file
+#### spanish: muestra el archivo
+####
+####
+cat $directory_default/$cmd_fwiptables-default
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-default-read:
 ##########   english: default-regen:  fwiptables default   ##########
 ##########   spanish: default-regen:  fwiptables defecto   ##########
 #### :rutina-inicial-default-regen:
@@ -2486,13 +2506,20 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 #### 
 ####
 "default-modify")
+archivo_inicial_fijo="$directory_default/$cmd_fwiptables-default"
+archivo_temporal_var="$directory_temporal/$cmd_fwiptables-default.bak"
+####
+cp $archivo_inicial_fijo $archivo_temporal_var
+$command_zenity --text-info $graphic_dimension --filename="$archivo_temporal_var" --editable --title="MODIFY DEFAULT" 1> "$archivo_inicial_fijo"
+if [ ! -s "$archivo_inicial_fijo" ]; then cp $archivo_temporal_var $archivo_inicial_fijo ; $command_zenity  --info $graphic_dimension --text "Canceled"; fi
+;;
+#### 
+####
+"default-read")
 archivo="default"
-cp "$directory_default/$cmd_fwiptables-$archivo" "$directory_default/$cmd_fwiptables-$archivo-bak"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_default/$cmd_fwiptables-$archivo-bak" \
---editable --title="MODIFY DEFAULT" 1> "$directory_default/$cmd_fwiptables-$archivo"
-if [  -s "$directory_default/$cmd_fwiptables-$archivo" ]; then $nada ; 
-else cp "$directory_default/$cmd_fwiptables-$archivo-bak" "$directory_default/$cmd_fwiptables-$archivo" ;
-$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+####
+if [ ! -s "$directory_default/$cmd_fwiptables-$archivo" ] ; then $command_zenity  --forms $graphic_dimension --text="Probe: cmd_fwiptables modify-regen" ; exit ; fi ;
+$command_zenity --text-info $graphic_dimension --filename="$directory_default/$cmd_fwiptables-$archivo-bak" --title="READ DEFAULT" ;
 ;;
 ####
 ####
