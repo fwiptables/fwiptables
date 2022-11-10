@@ -345,9 +345,6 @@ config_shield_maxtries="10"                   ## fwiptables-file-default ## void
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
-####       #### english: zenity GRAPHIC DIMENSIONS        
-####       #### spanish: DIMESIONES GRAFICAS de zenity  
-graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -619,10 +616,6 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ####
 ####
 if [ "$first_option" = "tui-menu"  ] ; then first_option="cli-menu"  ; fi
-if [ "$first_option" = "-tui-menu"  ] || [ "$first_option" = "--tui-menu"  ] ; then first_option="cli-menu"  ; fi
-if [ "$first_option" = "-cli-menu"  ] || [ "$first_option" = "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
-if [ "$first_option" = "-gui-menu"  ] || [ "$first_option" = "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
-if [ "$first_option" = "-gui-shell" ] || [ "$first_option" = "--gui-shell" ] ; then first_option="gui-shell" ; fi
 if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]   ; then first_option="-txt"  ; fi
 if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ]    ; then first_option="-cli"  ; fi
 if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ]   ; then first_option="-txt"  ; fi
@@ -656,20 +649,13 @@ if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="li
 ####
 if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
 if [ "$first_option" = "mini-options" ] ; then first_option="options-mini" ; fi
-if [ "$first_option" = "options-full" ] ; then first_option="options-all" ; fi
-if [ "$first_option" = "full-options" ] ; then first_option="options-all" ; fi
 if [ "$first_option" = "examples" ] ; then first_option="options-examples"; fi
-if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
-if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
-if [ "$first_option" = "ntp" ] ; then first_option="ntpdate-client"; fi
 if [ "$first_option" = "sentlog" ] ; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ] ; then first_option="regen-config"; fi
 if [ "$first_option" = "cfg" ] ; then first_option="names-config" ; fi
 if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
 if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
-if [ "$first_option" = "ram" ] ; then first_option="free-ram"; fi
-if [ "$first_option" = "free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
 if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
 ####
@@ -783,21 +769,6 @@ fw-*)  echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_optio
 esac ; fi
 ####
 ####
-#### output gui:
-####
-####
-if [ "$first_option" = "-gui" ] 
-then case "$second_option" in 
-"ole_word") first_option="game-word" ; second_option="-gui" ;;
-"ole_number") first_option="game-number" ; second_option="-gui" ;;
-"ole_domain") first_option="game-domain" ; second_option="-gui" ;;
-"rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
-"gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
-"clean-tmp") $cmd_fwiptables clean-tmp &> /dev/null ; $command_zenity --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
-"info-nodes") echo "$message_without_gui" ;  exit ;;
-esac ; fi
-####
-####
 #### output log
 ####
 ####
@@ -849,39 +820,6 @@ esac
 ####
 $cmd_fwiptables "$second_option" "$third_option" &> /dev/null
 exit ; fi
-####
-####
-#### output web:
-####
-####
-if [ "$first_option" = "-web" ] ; then
-if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
-if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
-case "$second_option" in 
-"$NULL") echo "[ info ] [ use: $cmd_fwiptables -web option-choosen, OR to see options use: $cmd_fwiptables options ]" ;
-$cmd_fwiptables ; exit ;;
-*-config) echo "$message_without_web" ; exit ;;
-game-*) echo "$message_without_web" ; exit ;;
-game-*) echo "$message_without_web" ; exit ;;
-rule-del-number) echo "$message_without_web" ; exit ;;
-wpa-save) echo "$message_without_web" ; exit ;;
-wpa-load)  echo "$message_without_web" ; exit ;;
-esac
-echo $head_waiting_web
-rm "$temporal_text"* &> /dev/null
-$cmd_fwiptables $second_option $third_option &> $temporal_text.1 ;
-$command_sed -e 's/^/ /' $temporal_text.1 &> $temporal_text.2  ;
-$command_txt2html --outfile $temporal_text.html $temporal_text.2 ;
-$favorite_text_browser $temporal_text.html
-exit ; fi
-####
-####
-#### first_option tor
-####
-####
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
-echo "$tab [ info ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
-torify -i $cmd_fwiptables $second_option $third_option ; exit ; fi
 ####
 ####
 #### :rutina-final-alias-campus:
@@ -2389,7 +2327,7 @@ fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "$title_md -t|-txt -c|-cli -g|-gui -w|-web -l|-log -n|-null"
+echo "$title_md -t|-txt -c|-cli -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md      firewall-list |  ls ls6 list list6 status list-alltables list-filter4 list-filter6            "
@@ -2434,183 +2372,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-names-config:
-##########    english: -gui: Manage gui con three options  ##########
-##########    spanish: -gui: Maneja gui con tres opciones  ##########
-####
-####
-#### english: with third option
-#### spanish: con tercera opcion
-####
-####
-if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
-echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
-case $second_option in
-#### 
-#### 
-"new-mini-config")
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$third_option"
-$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
-$command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
-;;
-#### 
-#### 
-"new-full-config")
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$third_option"
-$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
-$command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
-;;
-#### 
-#### 
-"nueva-mini-config")
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_fwiptables-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
-$command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
-;;
-#### 
-#### 
-"nueva-completa-config")
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_fwiptables-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
-if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_fwiptables custom $third_option" ; exit
-else rm "$directory_config/$third_option" ; 
-$command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
-;;
-#### 
-#### 
-"modify-config")
-if [ -f "$directory_config/$third_option" ] ; then $nada
-else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "$directory_temporal/$cmd_fwiptables-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$third_option" \
---editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
-if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
-else cp "$directory_temporal/$cmd_fwiptables-$third_option" "$directory_config/$third_option"
-$command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
-;;
-#### 
-####
-"default-modify")
-archivo_inicial_fijo="$directory_default/$cmd_fwiptables-default"
-archivo_temporal_var="$directory_temporal/$cmd_fwiptables-default.bak"
-####
-cp $archivo_inicial_fijo $archivo_temporal_var
-$command_zenity --text-info $graphic_dimension --filename="$archivo_temporal_var" --editable --title="MODIFY DEFAULT" 1> "$archivo_inicial_fijo"
-if [ ! -s "$archivo_inicial_fijo" ]; then cp $archivo_temporal_var $archivo_inicial_fijo ; $command_zenity  --info $graphic_dimension --text "Canceled"; fi
-;;
-#### 
-####
-"default-read")
-archivo="default"
-####
-if [ ! -s "$directory_default/$cmd_fwiptables-$archivo" ] ; then $command_zenity  --forms $graphic_dimension --text="Probe: cmd_fwiptables modify-regen" ; exit ; fi ;
-$command_zenity --text-info $graphic_dimension --filename="$directory_default/$cmd_fwiptables-$archivo-bak" --title="READ DEFAULT" ;
-;;
-####
-####
-"game-word") $cmd_fwiptables game-word gui ; exit ;;
-"game-number") $cmd_fwiptables game-number gui ; exit ;;
-"game-domain") $cmd_fwiptables game-domain gui ; exit ;;
-####
-####
-*)$cmd_fwiptables "$second_option" "$third_option" "$quarter_option" &> "$temporal_guifinal"
-$command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
---filename="$temporal_guifinal" --auto-scroll ;;
-#### 
-#### 
-esac
-#### 
-#### 
-exit; fi
-####
-####
-##########    english: -gui: with second option    ##########
-##########    spanish: -gui: con segunda opcion    ##########
-####
-####
-if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $nada
-echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
-case $second_option in
-#### 
-#### 
-wizard-mini)
-archivo="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$archivo" \
---editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
-else rm "$directory_config/$archivo" ;
-$command_zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
-;;
-#### 
-#### 
-wizard-full)
-archivo="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-$archivo" \
---editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_fwiptables -gui custom $archivo ; $cmd_fwiptables -gui list ;
-else rm "$directory_config/$archivo" ;
-$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
-;;
-#### 
-####
-default-modify)
-cp "$directory_default/$cmd_fwiptables-default" "$directory_temporal/$cmd_fwiptables-default"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_fwiptables-default" \
---editable --title="MODIFY DEFAULT" 12> "$directory_default/$cmd_fwiptables-default"
-if [  -s "$directory_default/$archivo" ]; then $nada ; 
-else cp "$directory_temporal/$cmd_fwiptables-default" "$directory_default/$cmd_fwiptables-default" ;
-$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
-;;
-#### 
-####
-"game-word") $cmd_fwiptables game-word gui ; exit ;;
-"game-number") $cmd_fwiptables game-number gui ; exit ;;
-"game-domain") $cmd_fwiptables game-domain gui ; exit ;;
-####
-####
-*)$cmd_fwiptables $second_option $third_option &> $temporal_guifinal
-#### cat $temporal_gui | $command_grep -iv Warning: &> $temporal_guifinal
-$command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_fwiptables ||" \
---filename="$temporal_guifinal" --auto-scroll ;;
-#### 
-#### 
-esac
-#### 
-#### 
-exit; fi
-####
-####
-##########    english: -gui: without more options    ##########
-##########    spanish: -gui: sin mas opcion          ##########
-####
-####
-if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
-$command_zenity  --forms $graphic_dimension --title="Gui Output || $cmd_fwiptables || " --text="$($cmd_fwiptables mini-options)"
-exit; fi
-####
-####
-
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
 #### :rutina-inicial-text-pause:
