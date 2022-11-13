@@ -165,7 +165,7 @@ cmd_fwiptables="fwiptables-mini"
 ####
 directory_binary="/usr/bin"
 directory_data="$HOME/.config/$cmd_fwiptables"
-directory_preferences="$directory_default/$cmd_fwiptables-default"
+directory_preferences="$directory_default/default"
 ####
 ####
 #### english: directory tree 
@@ -198,8 +198,18 @@ output_filelog="$directory_log/$cmd_fwiptables-filelog"
 output_autolog="$directory_log/$cmd_fwiptables-autolog"
 ####
 ####
-##########    english: temporal files: files for fwiptables ##########
-##########    spanish: archivos temporales: de fwiptables   ##########
+#### english: preferences
+#### spanish: preferences
+####
+####
+default_preferences="$directory_data/default-preferences"
+####
+####
+if [ ! -f "$default_preferences" ]; then echo $zero_option default-regen ; fi
+####
+####
+##########    english: temporal files
+##########    spanish: archivos temporales
 ####
 ####
 #### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$cmd_fwiptables-$fversion-tmp"
@@ -224,9 +234,6 @@ temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
 temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
 output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
-####
-####
-#### if [ ! -s "$directory_preferences" ]; then echo " Regen the default preferences, please launch: $zero default-regen"; fi
 ####
 ####
 #### :rutina-final-files:
@@ -452,7 +459,7 @@ fwiptables_installed=""
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f $directory_default/fwiptables-default ] ; then . $directory_default/fwiptables-default ; fi
+if [ -f $directory_default/fwiptables-default ] ; then source $default_preferences ; fi
 ####
 ####
 #### english: if null option is void return default to mini-options
@@ -468,7 +475,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-if [ "$fwiptables_installed" == "no" ] ; then echo "  [ info ] [ type: $0 install ] [ to be ready for $cmd_fwiptables config files ]" ; fi
+#### if [ "$fwiptables_installed" == "no" ] ; then echo "  [ info ] [ type: $0 install ] [ to be ready for $cmd_fwiptables config files ]" ; fi
 ####
 ####
 #### :rutina-final-notice:
@@ -864,9 +871,9 @@ exit; fi
 if [ "$first_option" = "default-show" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
-cat $directory_preferences
+cat $default_preferences
 echo 
-echo "  [ info ] [ Change variables with: $cmd_fwiptables default-modify ] [ file: $directory_preferences ]"
+echo "  [ info ] [ Change variables with: $cmd_fwiptables default-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
@@ -880,31 +887,31 @@ if [ "$first_option" = "default-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 echo 
-echo "  [ info ] [ edit file $directory_default/$cmd_fwiptables to change variables ]"
+echo "  [ info ] [ edit file $default_preferences to change variables ]"
 ####
 ####
 #### english: make security copy file
 #### spanish: hace copia de seguridad
 ####
 ####
-cp "$directory_preferences" "$directory_temporal/$cmd_fwiptables-default"
+#### cp "$default_preferences" "$default_preferences.old"
 ####
 ####
 #### english: edit file
 #### spanish: edita el archivo
 ####
 ####
-$command_dialog  --no-cancel --title "MODIFY FILE: $directory_preferences" \
---editbox "$directory_temporal/$cmd_fwiptables-default" 0 0 2> "$directory_preferences"
-clear
+#### $command_dialog  --no-cancel --title "MODIFY FILE: $default_preferences" \
+#### --editbox "$directory_temporal/$cmd_fwiptables-default" 0 0 2> "$default_preferences"
+#### clear
 ####
 ####
 #### english: probe all that is correct or recover
 #### spanish: prueba que todo es correcto o lo recupera
 ####
 ####
-if [ ! -s "$directory_preferences" ] ; then $nada
-cp "$directory_temporal/$cmd_fwiptables-default" "$directory_preferences"; fi
+#### if [ ! -s "$default_preferences" ] ; then $nada
+#### cp "$default_preferences.old" "$default_preferences"; fi
 ####
 ####
 exit; fi
@@ -918,14 +925,14 @@ exit; fi
 ####
 if [ "$first_option" = "default-read" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ read the default fwiptables ] || ||"
-echo "$duo_md [ info ] [ Show file $directory_default/$cmd_fwiptables to read variables ]"
+echo "$duo_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
 ####
 #### english: show file
 #### spanish: muestra el archivo
 ####
 ####
-cat $directory_preferences
+cat $default_preferences
 ####
 ####
 exit; fi
@@ -941,7 +948,7 @@ if [ "$first_option" = "default-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables default-regen ] [ default-regen md ] || ||"
 echo "  [ info ] [ $cmd_fwiptables default-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_preferences"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
 echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
 exit; fi
 ####
@@ -969,7 +976,7 @@ if [ "$first_option" = "install" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_fwiptables $fversion installer ] [ install md ] || ||"
 #### 
 #### 
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$directory_preferences"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
 echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
 echo "  [ info ] [ Copy this file to install fwiptables: ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
 exit ; fi
