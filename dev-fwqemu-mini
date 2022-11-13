@@ -7,7 +7,7 @@
 #### #### #### #### emulate -L bash
 ####
 #### File:        fwqemu-mini
-#### Description: Mini Fran fwqemu
+#### Description: Mini Fran Cli QEMU
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
 #### Copyright:   (c) 2020-2022 Francisco Garcia <fwiptables@gmx.com>
 ####
@@ -85,7 +85,10 @@ language_vm="es"
 #### :rutina-inicial-sane:
 ####
 ####
+cmd_description="Mini Fran Cli QEMU"
 cmd_program="fwqemu-mini"
+cmd_version="v5.05"
+cmd_license="GPL v2"
 cache_path="$HOME/.cache/$cmd_program"
 config_path="$HOME/.config/$cmd_program"
 config_file="$HOME/.config/$cmd_program/config"
@@ -120,7 +123,8 @@ if [ "$first_option" == "-n" ]; then first_option="-null" ; fi
 ####
 ####  backend
 case "$first_option" in 
-"$NULL"|"-help") echo  "## launch: $zero_option [ -t|-txt -g|-gui -h|-help -n|-null ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
+"$NULL"|"-help") echo "## Description: $cmd_description ## Program: $cmd_program ## Version: $cmd_version ## License: $cmd_license ##" ;
+echo  "## launch: $zero_option [ -t|-txt -g|-gui -h|-help -n|-null ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] ";exit;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
 "-cli") dialog --title "CLI Output: $cmd_program" --msgbox "$($zero_option $second_option $third_option $quad_option)" 0 0 ; clear ; exit ;;
