@@ -120,7 +120,7 @@ if [ "$first_option" == "-n" ]; then first_option="-null" ; fi
 ####
 ####  backend
 case "$first_option" in 
-"$NULL"|"-help") echo  "## launch: $zero_option [ -txt|-gui|-help|-null ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
+"$NULL"|"-help") echo  "## launch: $zero_option [ -t|-txt -g|-gui -h|-help -n|-null ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
 "-cli") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] 
@@ -149,14 +149,6 @@ qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
 #### :rutina-final-static:
-#################################################################################
-#################################################################################
-#### :rutina-inicial-preferences:
-####
-####
-####
-####
-#### :rutina-final-preferences:
 #################################################################################
 #################################################################################
 #### :rutina-inicial-principal:
