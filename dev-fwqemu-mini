@@ -129,7 +129,7 @@ esac
 ####
 #### static variables
 if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/$default_image" ; else qemu_vm="$second_option" ; fi
-if [ -f "$qemu_vm" ]; then; fi
+if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
@@ -186,18 +186,18 @@ exit ;;
 ##### with stop
 "stop")
 killall -9 "$architecture"
-echo " [ ok ] [ stopped ] [ La maquina virtual detenida: $qemu_name ]"
+echo " [ ok ] [ stopped ] [ La maquina virtual detenida ]"
 exit ;;
 ##### with start
 "start")
 $qemu_full &
-echo " [ ok ] [ started ] [ La maquina virtual iniciada: $qemu_name ] [ vm: $qemu_vm ]"
+echo " [ ok ] [ started ] [ La maquina virtual iniciada] [ arch: $architecture ] [ vm: $qemu_vm ]"
 exit ;;
 ##### with restart
 "restart")
 $0 stop  &> /dev/null
 $0 start $2 $3 &> /dev/null
-echo " [ ok ] [ restarted ] [ La maquina virtual reiniciada ] [ $qemu_name ] [ vm: $qemu_vm ]"
+echo " [ ok ] [ restarted ] [ La maquina virtual reiniciada ] [ arch: $architecture ] [ vm: $qemu_vm ]"
 exit ;;
 #### #### mount:
 "mount")
