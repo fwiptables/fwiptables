@@ -123,12 +123,8 @@ case "$first_option" in
 "$NULL"|"-help") echo  "## launch: $zero_option [ -t|-txt -g|-gui -h|-help -n|-null ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
-"-cli") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ] 
-then dialog --title "CLI Output: $cmd_program"  --msgbox "edit $config_file" 0 0 ; clear ; exit ;
-else dialog --title "CLI Output: $cmd_program"  --msgbox "$($zero_option $second_option $third_option $quad_option)" 0 0 ; clear ; exit ; fi ;;
-"-gui") if [ "$second_option" = "preferences" ] && [ "$third_option" = "modify" ]  
-then zenity --forms --title="GUI Output: $cmd_program" --text="edit $config_file" --auto-scroll ; exit ;
-else zenity --forms --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ; fi ;;
+"-cli") dialog --title "CLI Output: $cmd_program" --msgbox "$($zero_option $second_option $third_option $quad_option)" 0 0 ; clear ; exit ;;
+"-gui") zenity --forms --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ;;
 *) ;;
 esac
 ####
@@ -229,9 +225,9 @@ qemu-nbd --disconnect /dev/nbd0 &> /dev/null
 echo "Ok. Umounted $HOME/mnt/nbd0p*"
 exit ;;
 ####
+*) $0 ; exit ;;
+####
 esac
-#### other parameters
-
 ####
 ####
 #### :rutina-final-principal:
