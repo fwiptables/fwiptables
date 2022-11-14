@@ -124,11 +124,14 @@ if [ "$first_option" == "-n" ]; then first_option="-null" ; fi
 ####  backend
 case "$first_option" in 
 "$NULL"|"-help") echo "## Description: $cmd_description ## Program: $cmd_program ## Version: $cmd_version ## License: $cmd_license ##" ;
-echo  "## launch: $zero_option [ -t|-txt -g|-gui -h|-help -n|-null ] preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] ";exit;;
+echo  "## launch: $zero_option [ -gui-menu -cli-menu -t|-txt -c|-cli -g|-gui -h|-help -n|-null ] \
+preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
 "-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
 "-txt")  $0 $2 $3 $4                    ; exit ;;
 "-cli") dialog --title "CLI Output: $cmd_program" --msgbox "$($zero_option $second_option $third_option $quad_option)" 0 0 ; clear ; exit ;;
 "-gui") zenity --forms --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ;;
+"-cli-menu") echo " ## still in development ";;
+"-gui-menu") echo " ## still in development ";;
 *) ;;
 esac
 ####
@@ -158,7 +161,7 @@ qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 case "$first_option" in 
 "preferences")
 if [ "$second_option" = "read"   ] ;  then cat "$config_file"         ; exit ; fi
-if [ "$second_option" = "modify" ] ;  then echo modify "$config_file" ; exit ; fi
+if [ "$second_option" = "modify" ] ;  then echo " modify file: $config_file" ; exit ; fi
 if [ "$second_option" = "reset"  ] ;  then thelines=12 ;
 cat $0 | fgrep  ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_file" ;
 echo ; echo " #### values reset for default ####" ; exit ;
