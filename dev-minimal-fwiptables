@@ -953,35 +953,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-regen:
-##########   english: uninstall:      fwiptables uninstall      ##########
-##########   spanish: desinstalador:  fwiptables desistalador   ##########
-#### :rutina-inicial-uninstall:
-####
-####
-if [ "$first_option" = "uninstall" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables uninstaller ] [ uninstall md ] || ||"
-echo "  [ info ] [ $cmd_fwiptables uninstall.. ]"
-echo "  [ info ] [ Delete this file to deinstall fwiptables: ] [ rm $directory_binary/$cmd_fwiptables ]"
-exit; fi
-####
-####
-#### :rutina-final-uninstall:
-##########       english: install:    fwiptables install          ##########
-##########       spanish: instalador: fwiptables instalador       ##########
-#### :rutina-inicial-install:
-####
-####
-if [ "$first_option" = "install" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables $fversion installer ] [ install md ] || ||"
-#### 
-#### 
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
-echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
-echo "  [ info ] [ Copy this file to install fwiptables: ] [ cp $0 $directory_binary/$cmd_fwiptables ]"
-exit ; fi
-####
-####
-#### :rutina-final-install:
 ##########       english: upgrade: upgrade in the file /usr/bin/fwiptables        ##########
 ##########       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables    ##########
 #### :rutina-inicial-upgrade:
@@ -2353,7 +2324,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     state options  |  default-show default-modify default-regen version install upgrade uninstall  "
+echo "$text_md     state options  |  default-show default-modify default-regen version upgrade                    "
 exit ; fi
 ####
 ####

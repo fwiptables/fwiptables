@@ -75,6 +75,7 @@ memory_ram="1500M"
 processor_smp="4"
 directory_images="/qemu"
 default_image="default-vm"
+display_vm="sdl"
 language_vm="es"
 #### #### #### variables to modify
 ####
@@ -147,7 +148,7 @@ if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/$default_i
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
 display_vnc=":0"
 command_qemu="$(command -v $architecture)"
-qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display vnc=$display_vnc"
+qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
@@ -197,14 +198,14 @@ exit ;;
 "start")
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 $qemu_full &
-echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture ] [ vm: $qemu_vm ]"
+echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture ] [ vm: $qemu_vm ] [ Display: $display_vm ]"
 exit ;;
 ##### with restart
 "restart")
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 $0 stop  &> /dev/null
 $0 start $2 $3 &> /dev/null
-echo " [ ok ] [ restarted ] [ reseted vm ] [ arch: $architecture ] [ vm: $qemu_vm ]"
+echo " [ ok ] [ restarted ] [ reseted vm ] [ arch: $architecture ] [ vm: $qemu_vm ] [ Display: $display_vm ]"
 exit ;;
 #### #### mount:
 "mount")
