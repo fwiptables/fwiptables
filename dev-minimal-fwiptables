@@ -380,7 +380,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program $cmd_fwiptables ] [ Version $fversion ] [ License GPL ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_fwiptables ] [ Version: $fversion ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -396,8 +396,7 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ list rules with names or with numbers ] \
-[ Launch: $cmd_fwiptables default-modify ] || ||"
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_fwiptables default-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -2365,7 +2364,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "names-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List configs cfg ] || ||"
+echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
 echo "$tab $tab [ English ] [ list configs files in cfg format ]"
 echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
@@ -2400,7 +2399,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "examples-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Show examples ] || ||"
+echo "$header_ok [ $first_option ] [ Show examples ] || ||"
 echo 
 echo "[ examples ] [ examples for some services in client mode ]"
 echo
@@ -2658,7 +2657,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-alltables" ]; then  echo $give_cover
- echo "$header_ok [ $first_option ]  [ List all rules ] || ||"
+ echo "$header_ok [ $first_option ] [ List all rules ] || ||"
  echo 
  echo; echo; echo "### LIST ARPTABLES ###"
  $cmd_fwiptables list-arptables
@@ -2695,7 +2694,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list4-ip" ]; then echo $give_cover
-echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -2730,7 +2729,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list6-ip" ]; then  echo $give_cover
-echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -2791,7 +2790,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "listnum" ]; then echo $give_cover
-echo "$header_ok [ list ] [ List iptables numerical filter ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ list ] [ List iptables numerical filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -2825,7 +2824,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "listnum6" ]; then echo $give_cover
-echo "$header_ok [ list ] [ List iptables numerical filter ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ list ] [ List iptables numerical filter ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 legacycuatro=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -2859,7 +2858,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-filter4" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-ip4"
 echo
@@ -2882,7 +2881,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-forward" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-forward-ip4"
 echo
@@ -2903,7 +2902,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-filter6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-ip6"
 echo
@@ -2926,7 +2925,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-forward6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter forward ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-forward-ip6"
 echo
@@ -2947,7 +2946,7 @@ exit; fi
 ####
 ####
  if [ "$first_option" = "list-nat4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables nat ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="nat-ip4"
 echo
@@ -2968,7 +2967,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-nat6" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables nat ipv6] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="nat-ip6"
 echo
@@ -2990,7 +2989,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "listnum-filter4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter ipv4 in numerical ] [ it is sufficent with legacy or nft ] || ||"
 fromrules="filter-ip4"
 echo
 echo "  [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
@@ -3010,7 +3009,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-forwardnum" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 in numerical ] [ it is sufficent with legacy or nft ] || ||"
 fromrules="filter-forward-ip4"
 echo
 echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3030,7 +3029,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "listnum-filter6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter ipv6 in numerical ] [ it is sufficent with legacy or nft ] || ||"
 fromrules="filter-ip6"
 echo
 echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
@@ -3050,7 +3049,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-forwardnum6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables filter forward ipv6 in numerical ] [ it is sufficent with legacy or nft ] || ||"
 fromrules="filter-forward-ip6"
 echo
 echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
@@ -3070,7 +3069,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-mangle4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables mangle ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="mangle-ip4"
 echo
@@ -3092,7 +3091,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-mangle6" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables mangle ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="mangle-ip6"
 echo
@@ -3114,7 +3113,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-raw4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables raw ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="raw-ip4"
 echo
@@ -3135,7 +3134,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-raw6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables raw ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="raw-ip6"
 echo
@@ -3156,7 +3155,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-security4" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables security ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="security-ip4"
 echo
@@ -3177,7 +3176,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-security6" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is sufficent with only one netfilter: legacy or nft ] || ||"
+echo "$header_ok [ $first_option ] [ List iptables security ipv6 ] [ it is sufficent with legacy or nft ] || ||"
 echo "$message_info_rules"
 fromrules="security-ip6"
 echo
@@ -3198,7 +3197,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-ebtables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List ebtables ] || ||"
+echo "$header_ok [ $first_option ] [ List ebtables ] || ||"
 fromrules="ebtables"
 echo
 echo "  [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
@@ -3218,7 +3217,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list-arptables" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List arptables ipv4 ] || ||"
+echo "$header_ok [ $first_option ] [ List arptables ipv4 ] || ||"
 fromrules="arptables"
 echo
 echo "  [ info ] [ arptables: filter arptables ] [ $fromrules ]"
@@ -3448,7 +3447,7 @@ exit ; fi
 ####
 ####
 if [ "$first_option" = "names" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List names from firewall saved ] || ||"
+echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
 echo
 echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
 echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
@@ -3469,7 +3468,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "reset" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Reset the firewall ] || ||"
+echo "$header_ok [ $first_option ] [ Reset the firewall ] || ||"
 echo "  [ info ] [ Reseting the firewall ]"
 $cmd_fwiptables stop &> /dev/null
 $cmd_fwiptables continue &> /dev/null
@@ -3588,7 +3587,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "save" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ save one firewall with one name ] || ||"
+echo "$header_ok [ $first_option ] [ save one firewall with one name ] || ||"
 case "$second_option" in
 "$NULL") echo "$tab [ info ] [ Usage: $cmd_fwiptables save fw-to-save ]" ; exit ;;
 *) archivofin="$second_option" ;; 
@@ -3628,7 +3627,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "show" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ Show one firewall saved ] || ||"
+echo "$header_ok [ $first_option ] [ Show one firewall saved ] || ||"
 echo
 case "$second_option" in
 "$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
@@ -3666,7 +3665,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "actual" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ show the last firewall saved ] || ||"
+echo "$header_ok [ $first_option ] [ show the last firewall saved ] || ||"
 echo 
 $command_arptables-save          &> $directory_fwrecover/$cmd_fwiptables-actual-arptables
 $command_ebtables-save           &> $directory_fwrecover/$cmd_fwiptables-actual-ebtables   
@@ -3698,7 +3697,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "stop" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Stop the firewall ] || ||"
+echo "$header_ok [ $first_option ] [ Stop the firewall ] || ||"
 ####
 ####
 #### english: save actual fw #### spanish: guarda actual fw
@@ -3728,7 +3727,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "continue" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ] || ||"
+echo "$header_ok [ $first_option ] [ Continue the stoped firewall ] || ||"
 ####
 ####
 #### english: restore last fw #### spanish: restaura el ultimo fw
@@ -3752,7 +3751,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ show variables cfg from english configuration ] || ||"
+echo "$header_ok [ $first_option ] [ show variables cfg from english configuration ] || ||"
 cat  $defaultfullcfg_eng
 exit; fi
 ####
@@ -3764,7 +3763,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "config-spa" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ] || ||"
+echo "$header_ok [ $first_option ] [ show variables cfg from spanish configuration ] || ||"
 cat $defaultfullcfg_spa
 exit; fi
 ####
