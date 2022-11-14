@@ -871,7 +871,7 @@ if [ "$first_option" = "default-show" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
-echo 
+echo
 echo "  [ info ] [ Change variables with: $cmd_fwiptables default-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
@@ -885,7 +885,7 @@ exit; fi
 if [ "$first_option" = "default-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
-echo 
+editor $default_preferences
 echo "  [ info ] [ edit file $default_preferences to change variables ]"
 ####
 ####
