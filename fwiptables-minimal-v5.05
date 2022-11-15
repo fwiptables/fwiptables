@@ -4393,10 +4393,10 @@ if [ "$type_firewall" = "predesignated" ]; then $cmd_fwiptables eraserules &> /d
 #### loopback localhost legacy ip4
 ####
 ####
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+$allow_legacy $command_iptables_legacy -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+$allow_legacy $command_iptables_legacy -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
@@ -4472,10 +4472,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 #### loopback localhost nft ip4
 ####
 ####
-$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+$allow_nft $command_iptables_nft -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+$allow_nft $command_iptables_nft -A OUTPUT \
 -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
@@ -4551,10 +4551,10 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 #### loopback localhost legacy ip6
 ####
 ####
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+$allow_legacy $command_ip6tables_legacy -A INPUT \
 -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_legacy  $allow_ipv6 $command_ip6tables_legacy -A OUTPUT \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
@@ -4633,10 +4633,10 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 #### loopback localhost nft ipv6
 ####
 ####
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
+$allow_nft $command_ip6tables_nft -A INPUT \
 -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_nft  $allow_ipv6  $command_ip6tables_nft -A OUTPUT \
+$allow_nft $command_ip6tables_nft -A OUTPUT \
 -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
@@ -4721,31 +4721,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT -j DROP   \
+$allow_legacy $command_iptables_legacy -A INPUT -j DROP   \
 -m comment --comment "close" &> /dev/null
-$allow_legacy  $allow_ipv4  $command_iptables_legacy -A OUTPUT -j DROP  \
+$allow_legacy $command_iptables_legacy -A OUTPUT -j DROP  \
 -m comment --comment "close" &> /dev/null
-$allow_nft  $allow_ipv4     $command_iptables_nft -A INPUT -j DROP \
+$allow_nft    $command_iptables_nft -A INPUT -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_nft  $allow_ipv4     $command_iptables_nft -A OUTPUT -j DROP \
+$allow_nft    $command_iptables_nft -A OUTPUT -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A INPUT -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -j DROP \
 -m comment --comment "close"  &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A INPUT -j DROP \
+$allow_nft    $command_ip6tables_nft -A INPUT -j DROP \
 -m comment --comment "close"  &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A OUTPUT -j DROP \
+$allow_nft    $command_ip6tables_nft -A OUTPUT -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-$allow_nft  $allow_ipv4   $command_iptables_nft -A FORWARD -j DROP \
+$allow_nft    $command_iptables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_legacy  $allow_ipv4   $command_iptables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_iptables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_nft  $allow_ipv6     $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_nft    $command_ip6tables_nft -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_ip6tables_legacy -A FORWARD -j DROP \
 -m comment --comment "close" &> /dev/null
 ####
 ####
