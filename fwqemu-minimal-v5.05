@@ -75,7 +75,7 @@ memory_ram="1500M"
 processor_smp="4"
 directory_images="/qemu"
 default_image="default-vm"
-display_vm="sdl"
+display_vm="vnc=:0"
 language_vm="es"
 #### #### #### variables to modify
 ####
