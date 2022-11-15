@@ -1,0 +1,247 @@
+#!/bin/bash
+#### #### #### #### for shell bash:
+#### #### #### #### #!/bin/bash
+####
+#### #### #### #### for shell zsh:
+#### #### #### #### #!/bin/zsh
+#### #### #### #### emulate -L bash
+####
+#### File:        fwqemu-mini
+#### Description: Mini Fran Cli QEMU
+#### Author:      Francisco Garcia <fwiptables@gmx.com>
+#### Copyright:   (c) 2020-2022 Francisco Garcia <fwiptables@gmx.com>
+####
+#### This program is free software; you can redistribute it and/or modify
+#### it under the terms of the GNU General Public License as published by
+#### the Free Software Foundation; either version 2 of the License, or
+#### (at your option) any later version.
+####
+#### This program is distributed in the hope that it will be useful,
+#### but WITHOUT ANY WARRANTY; without even the implied warranty of
+#### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#### GNU General Public License for more details.
+####
+#### You should have received a copy of the GNU General Public License along
+#### with this program; if not, write to the Free Software Foundation, Inc.,
+#### 51 Franklin St, Fifth Floor, Boston MA 02110-1301 USA
+####
+####
+####                 ## fwiptables license in source program
+####   English: This program has gpl license GPL v2, this program is copyleft, it is free.
+####   Spanish: Este programa tiene licencia GPL v2, este programa es copyleft, esto es libre.
+####
+####
+####                 ## fwiptables comments in source program
+####   English: The comments are in english language and spanish language
+####   Spanish: Los comentarios estan en idioma ingles y en idioma español
+####
+####
+####                 ## Report bugs and Sum ideas
+####   Email: fwiptables@gmx.com
+####
+####
+#################################################################################
+#################################################################################
+source /etc/profile
+####
+####
+##########    english: are you root: uid 0 ?                ##########
+##########    spanish: eres admnistrador: identificador 0 ? ##########
+#### :rutina-inicial-admin:
+####
+####
+if [ "$(id -u)" == "0" ] ; then echo -n ; else
+echo
+echo "  [ info ] [ fwqemu needs to be root to work ]"
+echo
+echo "  [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
+exit ; fi
+####
+####
+#### :rutina-final-admin:
+#################################################################################
+#################################################################################
+####
+####
+#################################################################################
+#################################################################################
+#### :rutina-inicial-modify:
+####
+####
+#### #### variables to modify
+qemu_name="Qemu VM"
+architecture="qemu-system-i386"
+memory_ram="1500M"
+processor_smp="4"
+directory_images="/qemu"
+default_image="default-vm"
+display_vm="vnc=:0"
+language_vm="es"
+#### #### #### variables to modify
+####
+####
+#### :rutina-final-modify:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-sane:
+####
+####
+cmd_description="Mini Fran Cli QEMU"
+cmd_program="fwqemu-mini"
+cmd_version="v5.05"
+cmd_license="GPL v2"
+####
+####
+cache_path="$HOME/.cache/$cmd_program"
+config_path="$HOME/.config/$cmd_program"
+config_file="$HOME/.config/$cmd_program/config"
+####
+####
+####  sane configs
+if [ ! -d $cache_path  ] ; then mkdir -p $cache_path  ; fi
+if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
+if [ ! -s $config_file ] ; then $0 preferences reset  ; else source $config_file ; fi
+####
+####
+zero_option="$0" ; first_option="$1" ; second_option="$2" ; third_option="$3" ; quad_option="$4"
+####
+####
+#### :rutina-final-sane:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-alias:
+####
+####
+if [ "$first_option" == "-t" ]; then first_option="-txt"  ; fi
+if [ "$first_option" == "-c" ]; then first_option="-cli"  ; fi
+if [ "$first_option" == "-g" ]; then first_option="-gui"  ; fi
+if [ "$first_option" == "-n" ]; then first_option="-null" ; fi
+####
+####
+#### :rutina-final-alias:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-backend:
+####
+####
+####  backend
+case "$first_option" in 
+"$NULL"|"-help") echo "## Description: $cmd_description ## Program: $cmd_program ## Version: $cmd_version ## License: $cmd_license ##" ;
+echo  "## launch: $zero_option [ -gui-menu -cli-menu -t|-txt -c|-cli -g|-gui -h|-help -n|-null ] \
+preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
+"-null") $0 $2 $3 $4 &> /dev/null       ; exit ;;
+"-txt")  $0 $2 $3 $4                    ; exit ;;
+"-cli") dialog --title "CLI Output: $cmd_program" --msgbox "$($zero_option $second_option $third_option $quad_option)" 0 0 ; clear ; exit ;;
+"-gui") zenity --forms --title="GUI Output: $cmd_program" --text="$($zero_option $second_option $third_option $quad_option)" --auto-scroll ; exit ;;
+"-cli-menu") echo " ## still in development ";;
+"-gui-menu") echo " ## still in development ";;
+*) ;;
+esac
+####
+####
+#### :rutina-final-backend:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-static:
+####
+####
+#### static variables
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/$default_image" ; else qemu_vm="$second_option" ; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+display_vnc=":0"
+command_qemu="$(command -v $architecture)"
+qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
+qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
+####
+####
+#### :rutina-final-static:
+#################################################################################
+#################################################################################
+#### :rutina-inicial-principal:
+####
+####
+##### preferences
+case "$first_option" in 
+"preferences")
+if [ "$second_option" = "read"   ] ;  then cat "$config_file"         ; exit ; fi
+if [ "$second_option" = "modify" ] ;  then echo " modify file: $config_file" ; exit ; fi
+if [ "$second_option" = "reset"  ] ;  then thelines=12 ;
+cat $0 | fgrep  ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_file" ;
+echo ; echo " #### values reset for default ####" ; exit ;
+else echo " $zero_option $first_option read|modify|reset" ; exit ; fi ;;
+##### directory
+"directory")
+echo
+echo " [ ok ] [ default directory ] [ $directory_images ]"
+echo " [ ok ] [ default file      ] [ $directory_images/$default_image ]"
+echo
+echo " [ ok ] [ default directory ] [ files from $directory_images ]"
+echo
+ls -1 $directory_images
+echo
+echo " [ ok ] [ list files ] [ listed from $directory_images ]"
+exit ;;
+##### whith probe
+"probe")
+echo $qemu_full
+echo " [ ok ] [ probe ]"
+exit ;;
+##### with status
+"status")
+ps -Af | grep -i  "$architecture" 
+# echo " [  ok  ] [ status ] [ process listed ] [ $architecture ]"
+exit ;;
+##### with stop
+"stop")
+killall -9 "$architecture"
+echo " [ ok ] [ stopped ] [ stopped all vm ]"
+exit ;;
+##### with start
+"start")
+if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
+$qemu_full &
+echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture ] [ vm: $qemu_vm ] [ Display: $display_vm ]"
+exit ;;
+##### with restart
+"restart")
+if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
+$0 stop  &> /dev/null
+$0 start $2 $3 &> /dev/null
+echo " [ ok ] [ restarted ] [ reseted vm ] [ arch: $architecture ] [ vm: $qemu_vm ] [ Display: $display_vm ]"
+exit ;;
+#### #### mount:
+"mount")
+#### secuencia de montaje de nbd
+if [  -f "$second_option" ]; then
+#### carga el modulo del kernel
+modprobe nbd max_part=8
+#### conecta un disco
+qemu-nbd --connect=/dev/nbd0 $second_option
+#### lista las particiones
+fdisk /dev/nbd0 -l
+#### monta la imagen de qemu
+mkdir -p $HOME/mnt/nbd0p1 &> /dev/null
+MKDIR -P $HOME/mnt/nbd0p2 &> /dev/null
+umount $HOME/mnt/nbd0p* &> /dev/null
+mount /dev/nbd0p1 $HOME/mnt/nbd0p1/ &> /dev/null
+mount /dev/nbd0p2 $HOME/mnt/nbd0p2/ &> /dev/null
+echo "OK. qemu image mounted in $HOME/mnt/nbd0p1 and nbd0p2"
+exit ; else echo " #### choose one image #### "; exit; fi ;;
+#### #### umount:
+#### desmonta y desconecta la imagen de qemu
+"umount")
+umount $HOME/mnt/nbd0p* &> /dev/null
+qemu-nbd --disconnect /dev/nbd0 &> /dev/null
+echo "Ok. Umounted $HOME/mnt/nbd0p*"
+exit ;;
+####
+*) $0 ; exit ;;
+####
+esac
+####
+####
+#### :rutina-final-principal:
+#################################################################################
+#################################################################################
+##### end script
+exit
