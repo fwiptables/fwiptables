@@ -59,12 +59,12 @@ exit ; fi
 #### :rutina-inicial-name:
 ####
 ####
-#### #### english: program description   #### spanish: descripcion del programa
-fdescription="One Script in bash for iptables firewall" ;
-#### #### english: program name          #### spanish: nombre del porgrama
-fprogram="Fran FireWall FWiptables Generator mini" ;
-#### #### english: version program name          #### spanish: version del porgrama
-fversion="minimal-v5.05" ;
+cmd_binary="fwiptables-cmd"
+cmd_version="complete-5.05" ;
+cmd_name="Fran FireWall FWiptables Generator" ;
+cmd_description="One Script in bash for iptables firewall" ;
+cmd_license="GPL v2"
+cmd_homepage="https://sourceforge.net/projects/f-iptables/"
 ####
 ####
 #### :rutina-final-name:
@@ -103,7 +103,7 @@ if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####     #### english: launch completion          #### spanish: lanza autocompletar
 ####
 ####
-if [ -f "/etc/bash_completion.d/$cmd_fwiptables" ] ; then . /etc/bash_completion.d/$cmd_fwiptables ; fi
+if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
 ####
 ####
 ####     #### english: stablished the path        #### spanish: establece el path
@@ -154,7 +154,7 @@ fi; fi
 #### english: program name #### spanish: nombre del programa
 #### name_fwiptables="fwiptables-mini"
 #### english: program exec #### spanish: programa ejectutable
-cmd_fwiptables="fwiptables-mini"
+cmd_binary="fwiptables-mini"
 #### english: name icon #### spanish: nombre de icono
 #### icon_fwiptables="zenity"
 ####
@@ -164,7 +164,7 @@ cmd_fwiptables="fwiptables-mini"
 ####
 ####
 directory_binary="/usr/bin"
-directory_data="$HOME/.config/$cmd_fwiptables"
+directory_data="$HOME/.config/$cmd_binary"
 directory_preferences="$directory_default/default"
 ####
 ####
@@ -194,8 +194,8 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/$cmd_fwiptables-filelog"
-output_autolog="$directory_log/$cmd_fwiptables-autolog"
+output_filelog="$directory_log/$cmd_binary-filelog"
+output_autolog="$directory_log/$cmd_binary-autolog"
 ####
 ####
 #### english: preferences
@@ -212,16 +212,16 @@ if [ ! -f "$default_preferences" ]; then echo $zero_option default-regen ; fi
 ##########    spanish: archivos temporales
 ####
 ####
-#### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$cmd_fwiptables-$fversion-tmp"
-#### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$cmd_fwiptables-$fversion-tmp"
+#### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$cmd_binary-$cmd_version-tmp"
+#### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$cmd_binary-$cmd_version-tmp"
 ####
 ####
 #### english: temporal directory
 #### spanish: directorio temporal
 ####
 ####
-directory_tmp="$HOME/.cache/$cmd_fwiptables"
-directory_temporal="$directory_tmp/.$cmd_fwiptables-$fversion-tmp"
+directory_tmp="$HOME/.cache/$cmd_binary"
+directory_temporal="$directory_tmp/.$cmd_binary-$cmd_version-tmp"
 ####
 ####
 #### english: temporal files
@@ -256,7 +256,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####
 #### complete to command fwiptables to the next launching
 # complete -W "stop continue reset names actual show load ls ls list list6 status list-alltables \
-# eraserules custom wizard-mini wizard-full off-line all-permisive" "$directory_binary/$cmd_fwiptables"
+# eraserules custom wizard-mini wizard-full off-line all-permisive" "$directory_binary/$cmd_binary"
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -378,13 +378,13 @@ head_waiting_web="$duo_md [ info ] [ web ] [ Wait several seconds.. ] [ With apr
 head_waiting_help="$duo_md [ info ] [ help: help in rst txt format ] [ Loading.. ]"
 head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loading.. ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_fwiptables ] [ Version: $fversion ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary ] [ Version: $cmd_version ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_fwiptables default-modify ]"
+give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary default-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -396,7 +396,7 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_fwiptables default-modify ] || ||"
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_binary default-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -450,7 +450,7 @@ fwiptables_installed=""
 ####
 ####
 ## if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
-## cmp -s $0 $directory_binary/$cmd_fwiptables || fwiptables_installed="no" 
+## cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
 ## fi
 ####
 ####
@@ -474,7 +474,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-notice:
 ####
 ####
-#### if [ "$fwiptables_installed" == "no" ] ; then echo "  [ info ] [ type: $0 install ] [ to be ready for $cmd_fwiptables config files ]" ; fi
+#### if [ "$fwiptables_installed" == "no" ] ; then echo "  [ info ] [ type: $0 install ] [ to be ready for $cmd_binary config files ]" ; fi
 ####
 ####
 #### :rutina-final-notice:
@@ -650,11 +650,12 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
-if [ "$first_option" = "ls" ]; then first_option="-txt"; second_option="status"; fi
-if [ "$first_option" = "ls4" ]; then first_option="-txt";  second_option="list4"; fi
-if [ "$first_option" = "list" ]  ; then first_option="-txt";  second_option="status" ; fi
-if [ "$first_option" = "ls6" ]; then first_option="-txt";  second_option="list6"; fi
-if [ "$first_option" = "list6" ]  ; then first_option="-txt";  second_option="list6" ; fi
+if [ "$first_option" = "ls"   ] ; then first_option="status"   ; fi
+if [ "$first_option" = "list" ] ; then first_option="status"   ; fi
+if [ "$first_option" = "ls4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
+if [ "$first_option" = "ls6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
+if [ "$first_option" = "list4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
+if [ "$first_option" = "list6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
 ####
 ####
 if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
@@ -709,10 +710,10 @@ if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
 ####
 case "$first_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_fwiptables regen-config ;; esac
+$cmd_binary regen-config ;; esac
 case "$second_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_fwiptables regen-config ;; esac
+$cmd_binary regen-config ;; esac
 ####
 ####
 #### :rutina-final-alias-simple:
@@ -728,17 +729,17 @@ if [ "$first_option" = "-txt" ];
 then case "$second_option" in
 ####
 ####
-"list4") $cmd_fwiptables list4-ip &> $temporal_text 
+"list4") $cmd_binary list4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-"list6") $cmd_fwiptables list6-ip &> $temporal_text 
+"list6") $cmd_binary list6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-esac ; $cmd_fwiptables "$second_option" "$third_option" "$quad_option"
+esac ; $cmd_binary "$second_option" "$third_option" "$quad_option"
 ####
 ####
 exit; fi
@@ -750,30 +751,30 @@ exit; fi
 if [ "$first_option" = "-cli" ]
 then echo "$head_waiting_cli"
 case "$second_option" in
-wizard-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
-"nueva-mini-config")  $cmd_fwiptables $second_option $third_option ;  exit ;;
-"nueva-completa-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
-"new-mini-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
-"new-full-config") $cmd_fwiptables $second_option $third_option ;  exit ;;
-"default-modify") $cmd_fwiptables default-modify ; exit ;;
-nmap-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
-"radio") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
-"speed-cpu") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
+wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
+"nueva-mini-config")  $cmd_binary $second_option $third_option ;  exit ;;
+"nueva-completa-config") $cmd_binary $second_option $third_option ;  exit ;;
+"new-mini-config") $cmd_binary $second_option $third_option ;  exit ;;
+"new-full-config") $cmd_binary $second_option $third_option ;  exit ;;
+"default-modify") $cmd_binary default-modify ; exit ;;
+nmap-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
+"radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
+"speed-cpu") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 "info-nodes") echo "$message_without_cli" ;  exit ;;
-"game-domain") $cmd_fwiptables game-domain -cli ; exit ;;
-"game-word") $cmd_fwiptables game-word -cli ; exit ;;
-"game-number") $cmd_fwiptables game-number -cli ; exit ;;
-"addblock-on") echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
-"gpg-notes") $cmd_fwiptables $second_option $third_option ; exit ;;
-"clean-tmp") $cmd_fwiptables $second_option $third_option ; exit ;;
+"game-domain") $cmd_binary game-domain -cli ; exit ;;
+"game-word") $cmd_binary game-word -cli ; exit ;;
+"game-number") $cmd_binary game-number -cli ; exit ;;
+"addblock-on") echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
+"gpg-notes") $cmd_binary $second_option $third_option ; exit ;;
+"clean-tmp") $cmd_binary $second_option $third_option ; exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
-clear; $cmd_fwiptables log-search $pattern ; exit ;; 
-log-*) echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option ;  exit ;;
-fw-*)  echo "$message_without_cli" ; $cmd_fwiptables $second_option $third_option  ;  exit ;;
-"hosts") echo "$message_without_cli" ; $cmd_fwiptables hosts ; exit ;;
-*) dialog --title "  Cli Output || $cmd_fwiptables ||" \
---msgbox "$($cmd_fwiptables $second_option $third_option)" 0 0 ;  clear ; exit ;;
+clear; $cmd_binary log-search $pattern ; exit ;; 
+log-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
+fw-*)  echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
+"hosts") echo "$message_without_cli" ; $cmd_binary hosts ; exit ;;
+*) dialog --title "  Cli Output || $cmd_binary ||" \
+--msgbox "$($cmd_binary $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
 esac ; fi
@@ -802,7 +803,7 @@ esac
 ####
 echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
-$cmd_fwiptables $second_option $third_option $quad_option &>> $output_log
+$cmd_binary $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
 echo "  [  ok  ] [ Output sended to $output_filelog ] [ show file: fwiptables filelog ]" ;
 exit ; fi
@@ -828,7 +829,7 @@ rule-*) echo "$message_without_null" ; exit ;;
 esac
 ####
 ####
-$cmd_fwiptables "$second_option" "$third_option" &> /dev/null
+$cmd_binary "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
@@ -842,7 +843,7 @@ exit ; fi
 ####   spanish: autoguardado
 ####
 ####
-head_autolog="[ $cmd_fwiptables ] [ $fversion ] [ $(date) ] [ $first_option $second_option $third_option ]"
+head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; fi
 ####
 ####
@@ -853,8 +854,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 if [ "$first_option" = "default" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables default ] [ default md ] || ||"
-echo "  [ info ] [ $cmd_fwiptables default.. ]"
+echo "$header_ok [ $first_option ] [ $cmd_binary default ] [ default md ] || ||"
+echo "  [ info ] [ $cmd_binary default.. ]"
 echo "  [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables default-regen  ]"
 echo "  [ info ] [ Show   default config for fwiptables:         ] [ fwiptables default-show   ]"
 echo "  [ info ] [ Modify default config for fwiptables:         ] [ fwiptables default-modify ]"
@@ -862,8 +863,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-default:
-##########    english: default-show: show $directory_default/$cmd_fwiptables   ##########
-##########    spanish: default-show: show $directory_default/$cmd_fwiptables   ##########
+##########    english: default-show: show $directory_default/$cmd_binary   ##########
+##########    spanish: default-show: show $directory_default/$cmd_binary   ##########
 #### :rutina-inicial-default-show:
 ####
 ####
@@ -872,13 +873,13 @@ echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
 echo
-echo "  [ info ] [ Change variables with: $cmd_fwiptables default-modify ] [ file: $default_preferences ]"
+echo "  [ info ] [ Change variables with: $cmd_binary default-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
 #### :rutina-final-default-show:
-##########    english: default-modify: modify $directory_default/$cmd_fwiptables   ##########
-##########    spanish: default-modify: modify $directory_default/$cmd_fwiptables   ##########
+##########    english: default-modify: modify $directory_default/$cmd_binary   ##########
+##########    spanish: default-modify: modify $directory_default/$cmd_binary   ##########
 #### :rutina-inicial-default-modify:
 ####
 ####
@@ -901,7 +902,7 @@ echo "  [ info ] [ edit file $default_preferences to change variables ]"
 ####
 ####
 #### $command_dialog  --no-cancel --title "MODIFY FILE: $default_preferences" \
-#### --editbox "$directory_temporal/$cmd_fwiptables-default" 0 0 2> "$default_preferences"
+#### --editbox "$directory_temporal/$cmd_binary-default" 0 0 2> "$default_preferences"
 #### clear
 ####
 ####
@@ -944,11 +945,11 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "default-regen" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_fwiptables default-regen ] [ default-regen md ] || ||"
-echo "  [ info ] [ $cmd_fwiptables default-regen.. ]"
+echo "$header_ok [ $first_option ] [ $cmd_binary default-regen ] [ default-regen md ] || ||"
+echo "  [ info ] [ $cmd_binary default-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
 echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
-echo "  [  ok  ] [ Regenerated: $cmd_fwiptables values for default in $directory_data ]"
+echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $directory_data ]"
 exit; fi
 ####
 ####
@@ -960,9 +961,9 @@ exit; fi
 ####
 if [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok  [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ download ] [ The last         version ] [ download:  $cmd_fwiptables from $fweb_latest  ]"
-echo "  [ info ] [ download ] [ The dev complete version ] [ download:  $cmd_fwiptables from $fweb_development_complete ]"
-echo "  [ info ] [ download ] [ The dev minimal  version ] [ download:  $cmd_fwiptables from $fweb_development_minimal  ]"
+echo "  [ info ] [ download ] [ The last         version ] [ download:  $cmd_binary from $fweb_latest  ]"
+echo "  [ info ] [ download ] [ The dev complete version ] [ download:  $cmd_binary from $fweb_development_complete ]"
+echo "  [ info ] [ download ] [ The dev minimal  version ] [ download:  $cmd_binary from $fweb_development_minimal  ]"
 ####
 ####
 exit ; fi
@@ -977,19 +978,19 @@ exit ; fi
 if [ "$first_option" = "version" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
 echo "$title_md [ Name program ]"
-echo "$text_md $fprogram"
+echo "$text_md $cmd_name"
 echo
 echo "$title_md [ Version program ]"
-echo "$text_md $fversion"
+echo "$text_md $cmd_version"
 echo
 echo "$title_md [ Description program ]"
-echo "$text_md $fdescription"
+echo "$text_md $cmd_description"
 echo
 echo "$title_md [ Location program ]"
-echo "$text_md $directory_binary/$cmd_fwiptables"
+echo "$text_md $directory_binary/$cmd_binary"
 echo
 echo "$title_md [ File format ]"
-echo "$text_md $(file $directory_binary/$cmd_fwiptables | cut -d "," -f 1-2)"
+echo "$text_md $(file $directory_binary/$cmd_binary | cut -d "," -f 1-2)"
 echo
 echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $0)"
@@ -1021,7 +1022,7 @@ echo "# [ info ] [ regenerating template wizard and template cfg ]"
 ####    spanish: opciones basicas en configuracion de archivo cfg
 ####
 ####
-var0="$(echo $cinco $fprogram from $cmd_fwiptables version $fversion $cinco )"
+var0="$(echo $cinco $cmd_name from $cmd_binary version $cmd_version $cinco )"
 var1="$(echo $cinco BEGIN NECESARY $cinco )"
 eng1="$(echo $cinco  .......... BEGIN Necesary options .......... .......... $cinco )"
 spa1="$(echo $cinco INICIO .......... Opciones Necesarias .......... .......... $cinco )"
@@ -1585,7 +1586,7 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then 
 echo "  [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
-$cmd_fwiptables save autosave-fwiptables &> /dev/null ; exit; fi
+$cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 #### :rutina-final-autosave:
@@ -1622,9 +1623,9 @@ name_firewall="$second_option" ;
 if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_option" ; fi
 ####
 ####
-if [ ! -f "$directory_config/$second_option" ]; then  $cmd_fwiptables cfg ; 
-echo "$duo_md [ info ] [ $cmd_fwiptables custom file-cfg ]"
-echo "$duo_md [ info ] [ $cmd_fwiptables firewall-custom ]"
+if [ ! -f "$directory_config/$second_option" ]; then  $cmd_binary cfg ; 
+echo "$duo_md [ info ] [ $cmd_binary custom file-cfg ]"
+echo "$duo_md [ info ] [ $cmd_binary firewall-custom ]"
 exit; fi
 ####
 ####
@@ -2631,29 +2632,29 @@ exit; fi
  echo "$header_ok [ $first_option ] [ List all rules ] || ||"
  echo 
  echo; echo; echo "### LIST ARPTABLES ###"
- $cmd_fwiptables list-arptables
+ $cmd_binary list-arptables
  echo; echo; echo "### LIST EBTABLES ###"
- $cmd_fwiptables list-ebtables
+ $cmd_binary list-ebtables
  echo; echo; echo "### LIST FILTER IP4 TABLE ###"
- $cmd_fwiptables list-filter4
+ $cmd_binary list-filter4
  echo; echo; echo "### LIST FILTER IP6 TABLE ###"
- $cmd_fwiptables list-filter6
+ $cmd_binary list-filter6
  echo; echo; echo "### LIST NAT IP4 TABLE ###"
- $cmd_fwiptables list-nat4
+ $cmd_binary list-nat4
  echo; echo; echo "### LIST NAT IP6 TABLE ###"
- $cmd_fwiptables list-nat6
+ $cmd_binary list-nat6
  echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
- $cmd_fwiptables list-security4
+ $cmd_binary list-security4
  echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
- $cmd_fwiptables list-security6
+ $cmd_binary list-security6
  echo; echo; echo "### LIST RAW IP4 TABLE ###"
- $cmd_fwiptables list-raw4
+ $cmd_binary list-raw4
  echo; echo; echo "### LIST RAW IP6 TABLE ###"
- $cmd_fwiptables list-raw6
+ $cmd_binary list-raw6
  echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
- $cmd_fwiptables list-mangle4
+ $cmd_binary list-mangle4
  echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
- $cmd_fwiptables list-mangle6
+ $cmd_binary list-mangle6
  echo 
  exit; fi
 ####
@@ -2664,9 +2665,8 @@ exit; fi
 #### :rutina-inicial-list4:
 ####
 ####
-if [ "$first_option" = "list4-ip" ]; then echo $give_cover
+if [ "$first_option" = "list4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
-echo "$message_info_rules"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
@@ -2693,15 +2693,14 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-list:
+#### :rutina-final-list4:
 ##########    english: list6-ip: list ipv6 rules filter           ##########
 ##########    spanish: list6-ip: lista reglas de filtros de ipv6  ##########
 #### :rutina-inicial-list6:
 ####
 ####
-if [ "$first_option" = "list6-ip" ]; then  echo $give_cover
+if [ "$first_option" = "list6-ip" ]; then  echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is sufficent with legacy or nft ] || ||"
-echo "$message_info_rules"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
 nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
@@ -2739,16 +2738,10 @@ exit; fi
 if [ "$first_option" = "status" ]; then
 ####
 ####
-$cmd_fwiptables list4
-#### if [ "$($command_ip -4 route | $command_grep -i  default | head -1)" != "$NULL" ]; then $cmd_fwiptables list
-#### else echo ; echo "$tab [ Without default route for rules xtables ipv4 ] [ iptables-legacy ]" 
-#### echo ; echo "$tab [ Without default route for rules xtables ipv4 ] [ iptables-legacy ]" ; fi
+$cmd_binary list4
 ####
 ####
-$cmd_fwiptables list6
-#### if [ "$($command_ip -6 route | $command_grep -i  default | head -1)" != "$NULL" ]; then $cmd_fwiptables list6
-#### else echo ; echo "$tab [ Without default route for rules xtables ipv6 ] [ ip6tables-legacy ]" 
-#### echo ; echo "$tab [ Without default route for rules xtables ipv6 ] [ ip6tables-legacy ]" ; fi
+$cmd_binary list6
 ####
 ####
 exit; fi
@@ -3204,15 +3197,15 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
-echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables new-full-config config-new ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_binary new-full-config config-new ]"
 exit; fi
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
 $command_dialog  --no-cancel --title "NEW FULL CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3223,7 +3216,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3238,15 +3231,15 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
-echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables nueva-completa-config config-nueva ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_binary nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_fwiptables-$archivo"
+cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_binary-$archivo"
 $command_dialog  --no-cancel --title "NUEVA COMPLETA CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3257,7 +3250,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3272,15 +3265,15 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
-echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables new-mini-config config-new ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_binary new-mini-config config-new ]"
 exit; fi
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
 $command_dialog  --no-cancel --title "NEW MINI CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3291,7 +3284,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3306,15 +3299,15 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  echo $give_cover
-echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables nueva-mini-config config-nueva ]"
+echo "$tab [ info ] [ usage: ] [ $cmd_binary nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_fwiptables-$archivo"
+cp "$defaultminicfg_spa" "$directory_temporal/$cmd_binary-$archivo"
 $command_dialog  --no-cancel --title "NUEVA MINI CONFIG" \
---editbox "$directory_temporal/$cmd_fwiptables-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3325,7 +3318,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_fwiptables-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3343,8 +3336,8 @@ if [ "$first_option" = "modify-config" ]; then  echo $give_cover
 ####
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
-$cmd_fwiptables names-config
-echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables modify-config config-existent ]" ; exit; fi
+$cmd_binary names-config
+echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
@@ -3360,7 +3353,7 @@ clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "$directory_temporal/$cmd_fwiptables-$second_option" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_binary-$second_option" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
@@ -3378,7 +3371,7 @@ if [ "$first_option" = "show-config" ] ; then echo $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$tab [ info ] [ Usage: $cmd_fwiptables show-config config-cfg ]" ; exit; fi
+echo "$tab [ info ] [ Usage: $cmd_binary show-config config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -3399,7 +3392,7 @@ if [ "$first_option" = "del-config" ]; then echo $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$tab [ info ] [ usage: ] [ $cmd_fwiptables del-config config-old ]" ; exit ; fi
+echo "$tab [ info ] [ usage: ] [ $cmd_binary del-config config-old ]" ; exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -3441,8 +3434,8 @@ exit; fi
 if [ "$first_option" = "reset" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Reset the firewall ] || ||"
 echo "  [ info ] [ Reseting the firewall ]"
-$cmd_fwiptables stop &> /dev/null
-$cmd_fwiptables continue &> /dev/null
+$cmd_binary stop &> /dev/null
+$cmd_binary continue &> /dev/null
 echo "  [  ok  ] [ firewall reseted ]"
 exit; fi
 ####
@@ -3455,12 +3448,12 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_fwiptables-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_binary-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
+$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
 else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo 
 exit; fi
@@ -3474,12 +3467,12 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_fwiptables-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_fwiptables-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_binary-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_fwiptables custom "$archivo" 
+$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
 else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo 
 exit; fi
@@ -3498,7 +3491,7 @@ if [ "$first_option" = "load" ]; then
 ####
 ####
 if [ "second_option" = "$NULL" ]; then
-$cmd_fwiptables names ; echo "$tab [ info ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]" ; exit ; fi
+$cmd_binary names ; echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [ See: $cmd_binary names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -3517,7 +3510,7 @@ echo "  [ info ] [ Loading rules ]"
 #### English: Remove all rules
 ####
 ####
-$cmd_fwiptables eraserules &> /dev/null
+$cmd_binary eraserules &> /dev/null
 ####
 ####
 #### English: Load all rules 
@@ -3542,8 +3535,8 @@ echo "  [  ok  ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 else
-$cmd_fwiptables names
-echo "$tab [ info ] [ usage: $cmd_fwiptables load fw-to-load ] [ See: $cmd_fwiptables names ]"
+$cmd_binary names
+echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [ See: $cmd_binary names ]"
 fi 
 ####
 ####
@@ -3560,7 +3553,7 @@ exit; fi
 if [ "$first_option" = "save" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ save one firewall with one name ] || ||"
 case "$second_option" in
-"$NULL") echo "$tab [ info ] [ Usage: $cmd_fwiptables save fw-to-save ]" ; exit ;;
+"$NULL") echo "$tab [ info ] [ Usage: $cmd_binary save fw-to-save ]" ; exit ;;
 *) archivofin="$second_option" ;; 
 esac
 ####
@@ -3601,7 +3594,7 @@ if [ "$first_option" = "show" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show one firewall saved ] || ||"
 echo
 case "$second_option" in
-"$NULL") $cmd_fwiptables names; echo "$tab [ info ] [ Use: $cmd_fwiptables show file-to-show ]" ; exit ;;
+"$NULL") $cmd_binary names; echo "$tab [ info ] [ Use: $cmd_binary show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
 if [ ! -f $directory_fwrecover/$archivofin-legacy-ipv4 ] ; then exit; fi
@@ -3638,24 +3631,24 @@ exit; fi
 if [ "$first_option" = "actual" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the last firewall saved ] || ||"
 echo 
-$command_arptables-save          &> $directory_fwrecover/$cmd_fwiptables-actual-arptables
-$command_ebtables-save           &> $directory_fwrecover/$cmd_fwiptables-actual-ebtables   
-$command_iptables_nft-save       &> $directory_fwrecover/$cmd_fwiptables-actual-nft-ipv4   
-$command_iptables_legacy-save    &> $directory_fwrecover/$cmd_fwiptables-actual-legacy-ipv4
-$command_ip6tables_nft-save      &> $directory_fwrecover/$cmd_fwiptables-actual-nft-ipv6   
-$command_ip6tables_legacy-save   &> $directory_fwrecover/$cmd_fwiptables-actual-legacy-ipv6
+$command_arptables-save          &> $directory_fwrecover/$cmd_binary-actual-arptables
+$command_ebtables-save           &> $directory_fwrecover/$cmd_binary-actual-ebtables   
+$command_iptables_nft-save       &> $directory_fwrecover/$cmd_binary-actual-nft-ipv4   
+$command_iptables_legacy-save    &> $directory_fwrecover/$cmd_binary-actual-legacy-ipv4
+$command_ip6tables_nft-save      &> $directory_fwrecover/$cmd_binary-actual-nft-ipv6   
+$command_ip6tables_legacy-save   &> $directory_fwrecover/$cmd_binary-actual-legacy-ipv6
 echo "$cincuenta arptables $cinco"
-cat $directory_fwrecover/$cmd_fwiptables-actual-arptables
+cat $directory_fwrecover/$cmd_binary-actual-arptables
 echo "$cincuenta ebtables $cinco"
-cat $directory_fwrecover/$cmd_fwiptables-actual-ebtables
+cat $directory_fwrecover/$cmd_binary-actual-ebtables
 echo "$cincuenta nft with ipv4 $cinco"
-cat $directory_fwrecover/$cmd_fwiptables-actual-nft-ipv4
+cat $directory_fwrecover/$cmd_binary-actual-nft-ipv4
 echo "$cincuenta legacy with ipv4 $cinco"
-cat $directory_fwrecover/$cmd_fwiptables-actual-legacy-ipv4
+cat $directory_fwrecover/$cmd_binary-actual-legacy-ipv4
 echo "$cincuenta nft with ipv6 $cinco"
-cat $directory_fwrecover/$cmd_fwiptables-actual-nft-ipv6
+cat $directory_fwrecover/$cmd_binary-actual-nft-ipv6
 echo "$cincuenta legacy with ipv6 $cinco"
-cat $directory_fwrecover/$cmd_fwiptables-actual-legacy-ipv6
+cat $directory_fwrecover/$cmd_binary-actual-legacy-ipv6
 echo
 echo "$tab  [ ok ] [ readed firewall actual ]"
 exit; fi
@@ -3674,18 +3667,18 @@ echo "$header_ok [ $first_option ] [ Stop the firewall ] || ||"
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$command_arptables-save &> $directory_fwrecover/$cmd_fwiptables-stoped-arptables
-$command_ebtables-save &> $directory_fwrecover/$cmd_fwiptables-stoped-ebtables             
-$command_iptables_nft-save &> $directory_fwrecover/$cmd_fwiptables-stoped-nft-ipv4         
-$command_iptables_legacy-save &> $directory_fwrecover/$cmd_fwiptables-stoped-legacy-ipv4   
-$command_ip6tables_nft-save &> $directory_fwrecover/$cmd_fwiptables-stoped-nft-ipv6        
-$command_ip6tables_legacy-save &> $directory_fwrecover/$cmd_fwiptables-stoped-legacy-ipv6  
+$command_arptables-save &> $directory_fwrecover/$cmd_binary-stoped-arptables
+$command_ebtables-save &> $directory_fwrecover/$cmd_binary-stoped-ebtables             
+$command_iptables_nft-save &> $directory_fwrecover/$cmd_binary-stoped-nft-ipv4         
+$command_iptables_legacy-save &> $directory_fwrecover/$cmd_binary-stoped-legacy-ipv4   
+$command_ip6tables_nft-save &> $directory_fwrecover/$cmd_binary-stoped-nft-ipv6        
+$command_ip6tables_legacy-save &> $directory_fwrecover/$cmd_binary-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
 ####
 ####
-$cmd_fwiptables eraserules &> /dev/null
+$cmd_binary eraserules &> /dev/null
 echo "  [ info ] [ stopping firewall ]"
 echo "  [  ok  ] [ firewall stopped ]"
 exit; fi
@@ -3704,12 +3697,12 @@ echo "$header_ok [ $first_option ] [ Continue the stoped firewall ] || ||"
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-cat $directory_fwrecover/$cmd_fwiptables-stoped-arptables | $command_arptables-restore
-cat $directory_fwrecover/$cmd_fwiptables-stoped-ebtables | $command_ebtables-restore
-cat $directory_fwrecover/$cmd_fwiptables-stoped-nft-ipv4 | $command_iptables_nft-restore  
-cat $directory_fwrecover/$cmd_fwiptables-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
-cat $directory_fwrecover/$cmd_fwiptables-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
-cat $directory_fwrecover/$cmd_fwiptables-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
+cat $directory_fwrecover/$cmd_binary-stoped-arptables | $command_arptables-restore
+cat $directory_fwrecover/$cmd_binary-stoped-ebtables | $command_ebtables-restore
+cat $directory_fwrecover/$cmd_binary-stoped-nft-ipv4 | $command_iptables_nft-restore  
+cat $directory_fwrecover/$cmd_binary-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
+cat $directory_fwrecover/$cmd_binary-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
+cat $directory_fwrecover/$cmd_binary-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
 echo "  [ info ] [ continue firewall ]"
 echo "  [  ok  ] [ firewall continued ]"
 exit; fi
@@ -3747,7 +3740,7 @@ exit; fi
 ####
 if [ "$launch_firewall" != "yes" ] ; then
 echo "### ### [ fail ] [ Option: $first_option ] ### [ it is not valid option. ]  ###  [ Choose a one valid option ... ] ###" ;
-$cmd_fwiptables $default_security ;
+$cmd_binary $default_security ;
 exit ; fi
 ####
 ####
@@ -3781,7 +3774,7 @@ exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "all-permisive" ]; then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$type_firewall" = "all-permisive" ]; then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -3925,7 +3918,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "off-line" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$type_firewall" = "off-line" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -4023,7 +4016,7 @@ exit; fi
 #### :rutina-inicial-code-shield-ssh:
 ####
 ####
-if [ "$type_firewall" = "shield-ssh" ];  then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$type_firewall" = "shield-ssh" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -4387,7 +4380,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ]; then $cmd_fwiptables eraserules &> /dev/null ;
+if [ "$type_firewall" = "predesignated" ]; then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -4820,7 +4813,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$cmd_fwiptables eraserules &> /dev/null
+$cmd_binary eraserules &> /dev/null
 ####
 ####
 #######################################        english: ebtables mac rules

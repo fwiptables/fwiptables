@@ -68,9 +68,9 @@ exit ; fi
 ####
 ####
 cmd_binary="fwiptables-cmd"
+cmd_version="complete-5.05" ;
 cmd_name="Fran FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
-cmd_version="complete-5.05" ;
 cmd_license="GPL v2"
 cmd_homepage="https://sourceforge.net/projects/f-iptables/"
 ####
@@ -672,6 +672,8 @@ if [ "$first_option" = "ls"   ] ; then first_option="status"   ; fi
 if [ "$first_option" = "list" ] ; then first_option="status"   ; fi
 if [ "$first_option" = "ls4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
 if [ "$first_option" = "ls6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
+if [ "$first_option" = "list4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
+if [ "$first_option" = "list6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
 ####
 ####
 if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
@@ -6733,7 +6735,7 @@ esac
 exit; fi
 ####
 ####
-#### :rutina-final-list:
+#### :rutina-final-list4:
 ##########    english: list6-ip: list ipv6 rules filter           ##########
 ##########    spanish: list6-ip: lista reglas de filtros de ipv6  ##########
 #### :rutina-inicial-list6:
