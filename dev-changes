@@ -3,7 +3,7 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
- 05. status y list y ls funciona igual, ls4 y list4 para ipv4, ls6 y list6 para ipv6. trabajando
+ 05. status y list y ls funciona igual, ls4 y list4 para ipv4, ls6 y list6 para ipv6. HECHO
  04. integrar fwiptables-mini en fwiptables-complete y pasar de uno a otro en las preferencias. trabajando
  03. rectificar cuando desactivado la direccion localhost en ip4 o 6 como allow. HECHO
  02. tener una variable para default_preferences. trabajando
