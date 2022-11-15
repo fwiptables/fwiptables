@@ -90,6 +90,8 @@ cmd_description="Mini Fran Cli QEMU"
 cmd_program="fwqemu-mini"
 cmd_version="v5.05"
 cmd_license="GPL v2"
+####
+####
 cache_path="$HOME/.cache/$cmd_program"
 config_path="$HOME/.config/$cmd_program"
 config_file="$HOME/.config/$cmd_program/config"
