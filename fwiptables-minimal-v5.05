@@ -848,8 +848,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 #### :rutina-final-allow-autolog:
-##########   english: default:  fwiptables default      ##########
-##########   spanish: defecto:  fwiptables defecto      ##########
+##########   english: default:  fwiptables preferences      ##########
+##########   spanish: defecto:  fwiptables preferences      ##########
 #### :rutina-inicial-default:
 ####
 ####
@@ -863,8 +863,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-default:
-##########    english: default-show: show $directory_default/$cmd_binary   ##########
-##########    spanish: default-show: show $directory_default/$cmd_binary   ##########
+##########    english: default-show: show preferences   ##########
+##########    spanish: default-show: show preferences   ##########
 #### :rutina-inicial-default-show:
 ####
 ####
@@ -878,8 +878,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-show:
-##########    english: default-modify: modify $directory_default/$cmd_binary   ##########
-##########    spanish: default-modify: modify $directory_default/$cmd_binary   ##########
+##########    english: default-modify: modify preferences   ##########
+##########    spanish: default-modify: modify preferences   ##########
 #### :rutina-inicial-default-modify:
 ####
 ####
@@ -918,8 +918,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-modify:
-##########    english: default-read: modify default        ##########
-##########    spanish: default-read: modifica por defecto  ##########
+##########    english: default-read: modify  preferences         ##########
+##########    spanish: default-read: modifica preferencias       ##########
 #### :rutina-inicial-default-read:
 ####
 ####
@@ -939,8 +939,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-read:
-##########   english: default-regen:  fwiptables default   ##########
-##########   spanish: default-regen:  fwiptables defecto   ##########
+##########   english: default-regen:  regen preferences       ##########
+##########   spanish: default-regen:  regenera preferencias   ##########
 #### :rutina-inicial-default-regen:
 ####
 ####
@@ -954,22 +954,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-default-regen:
-##########       english: upgrade: upgrade in the file /usr/bin/fwiptables        ##########
-##########       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables    ##########
-#### :rutina-inicial-upgrade:
-####
-####
-if [ "$first_option" = "upgrade" ]; then echo $give_cover
-echo "$header_ok  [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ download ] [ The last         version ] [ download:  $cmd_binary from $fweb_latest  ]"
-echo "  [ info ] [ download ] [ The dev complete version ] [ download:  $cmd_binary from $fweb_development_complete ]"
-echo "  [ info ] [ download ] [ The dev minimal  version ] [ download:  $cmd_binary from $fweb_development_minimal  ]"
-####
-####
-exit ; fi
-####
-####
-#### :rutina-final-upgrade:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
@@ -1000,6 +984,9 @@ echo "$text_md $directory_data"
 echo
 echo "$title_md [ Temp directory ]"
 echo "$text_md $directory_tmp"
+echo
+echo "$title_md [ Web page ]"
+echo "$text_md $cmd_homepage"
 exit ; fi
 ####
 ####
@@ -2325,7 +2312,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     state options  |  default-show default-modify default-regen version upgrade                    "
+echo "$text_md     state options  |  default-show default-modify default-regen version                            "
 exit ; fi
 ####
 ####
