@@ -4,7 +4,7 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
  04. integrar fwiptables-mini en fwiptables-complete y pasar de uno a otro en las preferencias. trabajando
  03. permitir la direccion localhost en ipv6 como allow. HECHO
  02. tener una variable para default_preferences. trabajando
- 01. actualizar el readme.md. trabajando.
+ 01. actualizar el readme.md. HECHO.
 
  cambios en dev-fwiptables 5.05 en desarrollo
 
