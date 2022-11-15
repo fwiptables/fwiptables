@@ -4843,27 +4843,27 @@ $allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j DR
 #######################################        spanish: aceptar reglas localhost
 ####
 ####
-$allow_legacy $allow_ipv4 $command_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $command_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_legacy $allow_ipv4 $command_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
--m comment --comment "localhost" &> /dev/null
-####
-####
-$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT \
--m comment --comment "localhost" &> /dev/null
-$allow_legacy $allow_ipv6 $command_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
+$allow_legacy $command_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv4 $command_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $command_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_nft $allow_ipv4 $command_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
-$allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT \
+$allow_nft $command_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
-$allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
+$allow_nft $command_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
+####
+####
+$allow_nft $command_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT \
+-m comment --comment "localhost" &> /dev/null
+$allow_nft $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
 -m comment --comment "localhost" &> /dev/null
 ####
 ####
