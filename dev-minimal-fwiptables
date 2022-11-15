@@ -2666,7 +2666,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "list4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
-echo "$header_ok [ list ] [ List iptables filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
+echo "$header_ok [ list4 ] [ List iptables filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
 nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
