@@ -165,7 +165,7 @@ cmd_binary="fwiptables-mini"
 ####
 directory_binary="/usr/bin"
 directory_data="$HOME/.config/$cmd_binary"
-directory_preferences="$directory_default/default"
+default_preferences="$directory_default/default"
 ####
 ####
 #### english: directory tree 
@@ -196,16 +196,6 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 ####
 output_filelog="$directory_log/$cmd_binary-filelog"
 output_autolog="$directory_log/$cmd_binary-autolog"
-####
-####
-#### english: preferences
-#### spanish: preferences
-####
-####
-default_preferences="$directory_data/default-preferences"
-####
-####
-if [ ! -f "$default_preferences" ]; then echo $zero_option preferences-regen ; fi
 ####
 ####
 ##########    english: temporal files
@@ -252,11 +242,6 @@ if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover
 if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
 if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-#### complete to command fwiptables to the next launching
-# complete -W "stop continue reset names actual show load ls ls list list6 status list-alltables \
-# eraserules custom wizard-mini wizard-full off-line all-permisive" "$directory_binary/$cmd_binary"
 ####
 ####
 #### :sincontarrutina-final-dir-sane:
@@ -436,9 +421,6 @@ fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-lis
 default_security="mini-options"
 ####
 ####
-fwiptables_installed=""
-####
-####
 #### :sincontarrutina-final-system-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
@@ -458,7 +440,7 @@ fwiptables_installed=""
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f $directory_default/fwiptables-default ] ; then source $default_preferences ; fi
+if [ -f "$default_preferences" ] ; then source $default_preferences ; fi
 ####
 ####
 #### english: if null option is void return default to mini-options
