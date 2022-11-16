@@ -2294,7 +2294,7 @@ fi
 #### :sincontarrutina-inicial-mini-options:
 ####
 ####
-if [ "$first_option" = "options-mini" ] ; then echo $give_cover
+if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
