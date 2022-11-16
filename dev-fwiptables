@@ -6103,6 +6103,9 @@ echo "$text_md $directory_data"
 echo
 echo "$title_md [ Temp directory ]"
 echo "$text_md $directory_tmp"
+echo
+echo "$title_md [ Web page ]"
+echo "$text_md $cmd_homepage"
 exit ; fi
 ####
 ####
