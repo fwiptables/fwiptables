@@ -114,12 +114,12 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ####     #### english: launch profile             #### spanish: lanza profile
 ####
 ####
-if [ -f /etc/profile ] ; then . /etc/profile ; fi
+#### if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####
 ####     #### english: launch completion          #### spanish: lanza autocompletar
 ####
 ####
-if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
+#### if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
 ####
 ####
 ####     #### english: stablished the path        #### spanish: establece el path
@@ -362,54 +362,6 @@ fwiptables_installed=""
 ####
 ####
 #### :rutina-final-system-variables:
-##########    english: Update variables             ##########
-##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-update-variables:
-####
-####
-####     #### english: variable to knows if fwiptables is installed
-####     #### spanish: variable para comprobar si fwiptables esta instalado
-####
-####
-#### if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
-#### cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
-#### fi
-####
-####
-####     #### english: launch default for update variables
-####     #### spanish: lanza default para actualizar variables
-####
-####
-if [ -f "$default_preferences" ] ; then . "$default_preferences" ; fi
-####
-####
-####  ralice sane very important variables post by default_preferences
-####
-####
-case "$default_preferences" in "no") ;; *) default_preferences="" ;; esac
-case "$allow_legacy"        in "no") ;; *) allow_legacy=""        ;; esac
-case "$allow_nft"           in "no") ;; *) allow_nft=""           ;; esac
-case "$allow_ipv4"          in "no") ;; *) allow_ipv4=""          ;; esac
-case "$allow_ipv6"          in "no") ;; *) allow_ipv6=""          ;; esac
-####
-####
-#### english: if null option is void return default to mini-options
-#### spanish: si la opcion por defecto esta vacia vuelve a mini-options
-####
-####
-if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
-####
-####
-#### :rutina-final-update-variables:
-##########    english: Notice Installer with intro      ##########
-##########    spanish: noticia de Instalador con intro  ##########
-#### :rutina-inicial-notice:
-####
-####
-#### if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
-####
-####
-#### :rutina-final-notice:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
@@ -506,6 +458,55 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####
 ####
 #### :rutina-final-dir-sane:
+##########    english: Update variables             ##########
+##########    spanish: Actualiza variables          ##########
+#### :rutina-inicial-update-variables:
+####
+####
+####     #### english: variable to knows if fwiptables is installed
+####     #### spanish: variable para comprobar si fwiptables esta instalado
+####
+####
+#### if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
+#### cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
+#### fi
+####
+####
+####     #### english: launch default for update variables
+####     #### spanish: lanza default para actualizar variables
+####
+####
+if [ -f "$default_preferences" ]; then source $default_preferences ; fi
+####
+####
+####  realice sane very important variables post by default_preferences
+####
+####
+case "$program_minimal"       in "no") ;; *) program_minimal="" ;; esac
+case "$allow_legacy"          in "no") ;; *) allow_legacy=""    ;; esac
+case "$allow_nft"             in "no") ;; *) allow_nft=""       ;; esac
+case "$allow_ipv4"            in "no") ;; *) allow_ipv4=""      ;; esac
+case "$allow_ipv6"            in "no") ;; *) allow_ipv6=""      ;; esac
+case "$list_rules_conceptual" in "$NULL") ;; *) list_rules_conceptual=" -n" ;; esac
+####
+####
+#### english: if null option is void return default to mini-options
+#### spanish: si la opcion por defecto esta vacia vuelve a mini-options
+####
+####
+if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
+####
+####
+#### :rutina-final-update-variables:
+##########    english: Notice Installer with intro      ##########
+##########    spanish: noticia de Instalador con intro  ##########
+#### :rutina-inicial-notice:
+####
+####
+#### if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
+####
+####
+#### :rutina-final-notice:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
@@ -1112,7 +1113,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" = "install" ] ; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version installer ] [ install md ] || ||"
 ####
 ####
