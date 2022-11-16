@@ -2312,7 +2312,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     state options  |  default-show default-modify default-regen version                            "
+echo "$text_md     options-state  |  default-show default-modify default-regen version                            "
 exit ; fi
 ####
 ####
