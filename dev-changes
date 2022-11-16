@@ -3,6 +3,10 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
+ 01. 
+
+ cambios en dev-fwiptables 5.06 en desarrollo
+
  06. integrar fwiptables-mini en fwiptables-complete y pasar de uno a otro con una variable en preferencias. HECHO
  05. pequeños cambios en variable preferences y su sano. HECHO
  04. status y list y ls funciona igual, ls4 y list4 para ipv4, ls6 y list6 para ipv6. HECHO
@@ -10,7 +14,7 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
  02. tener una variable para default_preferences. HECHO
  01. actualizar el readme.md. HECHO.
 
- cambios en dev-fwiptables 5.05 en desarrollo
+ cambios en dev-fwiptables 5.05 lineas=6
 
  05. modifycacion de default-read y modify-default. HECHO
  04. cambia la variable desde separate_port_rules hacia allow_separate_rules. HECHO 
