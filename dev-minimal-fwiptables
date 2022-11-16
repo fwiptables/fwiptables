@@ -205,7 +205,7 @@ output_autolog="$directory_log/$cmd_binary-autolog"
 default_preferences="$directory_data/default-preferences"
 ####
 ####
-if [ ! -f "$default_preferences" ]; then echo $zero_option default-regen ; fi
+if [ ! -f "$default_preferences" ]; then echo $zero_option preferences-regen ; fi
 ####
 ####
 ##########    english: temporal files
@@ -384,7 +384,7 @@ give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary ] [ Vers
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary default-modify ]"
+give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary preferences-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -396,7 +396,7 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_binary default-modify ] || ||"
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_binary preferences-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
@@ -756,7 +756,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option
 "nueva-completa-config") $cmd_binary $second_option $third_option ;  exit ;;
 "new-mini-config") $cmd_binary $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_binary $second_option $third_option ;  exit ;;
-"default-modify") $cmd_binary default-modify ; exit ;;
+"preferences-modify") $cmd_binary preferences-modify ; exit ;;
 nmap-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
@@ -856,34 +856,34 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 if [ "$first_option" = "default" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary default ] [ default md ] || ||"
 echo "  [ info ] [ $cmd_binary default.. ]"
-echo "  [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables default-regen  ]"
-echo "  [ info ] [ Show   default config for fwiptables:         ] [ fwiptables default-show   ]"
-echo "  [ info ] [ Modify default config for fwiptables:         ] [ fwiptables default-modify ]"
+echo "  [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
+echo "  [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
+echo "  [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
 exit; fi
 ####
 ####
 #### :sincontarrutina-final-default:
-##########    english: default-show: show preferences   ##########
-##########    spanish: default-show: show preferences   ##########
-#### :sincontarrutina-inicial-default-show:
+##########    english: preferences-read: show preferences   ##########
+##########    spanish: preferences-read: show preferences   ##########
+#### :sincontarrutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" = "default-show" ]; then  echo $give_cover
+if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
 echo
-echo "  [ info ] [ Change variables with: $cmd_binary default-modify ] [ file: $default_preferences ]"
+echo "  [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-default-show:
-##########    english: default-modify: modify preferences   ##########
-##########    spanish: default-modify: modify preferences   ##########
-#### :sincontarrutina-inicial-default-modify:
+#### :sincontarrutina-final-preferences-read:
+##########    english: preferences-modify: modify preferences   ##########
+##########    spanish: preferences-modify: modify preferences   ##########
+#### :sincontarrutina-inicial-preferences-modify:
 ####
 ####
-if [ "$first_option" = "default-modify" ]; then  echo $give_cover
+if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 editor $default_preferences
@@ -917,13 +917,13 @@ echo "  [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-default-modify:
-##########    english: default-read: modify  preferences         ##########
-##########    spanish: default-read: modifica preferencias       ##########
-#### :sincontarrutina-inicial-default-read:
+#### :sincontarrutina-final-preferences-modify:
+##########    english: preferences-read: modify  preferences         ##########
+##########    spanish: preferences-read: modifica preferencias       ##########
+#### :sincontarrutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" = "default-read" ]; then  echo $give_cover
+if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ read the default fwiptables ] || ||"
 echo "$duo_md [ info ] [ Show file $default_preferences to read variables ]"
 ####
@@ -938,22 +938,22 @@ cat $default_preferences
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-default-read:
-##########   english: default-regen:  regen preferences       ##########
-##########   spanish: default-regen:  regenera preferencias   ##########
-#### :sincontarrutina-inicial-default-regen:
+#### :sincontarrutina-final-preferences-read:
+##########   english: preferences-regen:  regen preferences       ##########
+##########   spanish: preferences-regen:  regenera preferencias   ##########
+#### :sincontarrutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" = "default-regen" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_binary default-regen ] [ default-regen md ] || ||"
-echo "  [ info ] [ $cmd_binary default-regen.. ]"
+if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
+echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
+echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
 echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
 echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $directory_data ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-default-regen:
+#### :sincontarrutina-final-preferences-regen:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :sincontarrutina-inicial-version:
@@ -2312,7 +2312,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  default-show default-modify default-regen version                            "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version                    "
 exit ; fi
 ####
 ####
