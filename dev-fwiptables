@@ -2594,7 +2594,7 @@ echo "$text_md                        server-vnc server-web server-samba server-
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
 echo "$text_md                        server-asterisk server-squid                                             "
 echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                         "   
-echo "$text_md     options-state  |  default-show preferences-modify preferences-regen install upgrade uninstall       "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen install upgrade uninstall       "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
 echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
@@ -2618,7 +2618,7 @@ echo "$duo_md || || [ options-show ]   || ||  ### ###                           
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh filelog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
-echo "$text_md                        protocols services default-show preferences-modify                           "
+echo "$text_md                        protocols services preferences-read preferences-modify                           "
 echo "$duo_md || || [ options-help ]   || ||  ### ###                                                          "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
@@ -2679,7 +2679,7 @@ exit ; fi
 if [ "$first_option" = "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                                                             "
-echo "$text_md    default-state    | default-show preferences-modify preferences-regen version install upgrade uninstall               "
+echo "$text_md    default-state    | preferences-read preferences-modify preferences-regen version install upgrade uninstall               "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
 exit ; fi
@@ -2731,7 +2731,7 @@ echo "$title_md                                   | options-show |              
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$text_md    show-log          | log-search log-ssh filelog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
-echo "$text_md                        hosts.allow hosts.deny default-show preferences-modify    "
+echo "$text_md                        hosts.allow hosts.deny preferences-read preferences-modify    "
 echo "$text_md"
 echo "$text_md      | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
 exit ; fi
@@ -3415,7 +3415,7 @@ echo "$text_md"
 echo "$text_md [ english info ] [ default state ]"
 echo "$text_md [ spanish info ] [ Herramienta de stado por defecto ]"
 echo "$text_md"
-echo "$text_md $tab default-show"
+echo "$text_md $tab preferences-read"
 echo "$text_md $tab_lang_english          : Show the config for default to program"
 echo "$text_md $tab_lang_spanish          : Muestra la configuracion por defecto del programa"
 echo "$text_md $tab preferences-modify"
@@ -3896,8 +3896,8 @@ echo "$text_md $tab md5sum"
 echo "$text_md $tab_lang_english           : Show md5sum from one file"
 echo "$text_md $tab_lang_spanish           : Muestra la suma md5sum de un archivo"
 echo "$text_md $tab radio-mp3"
-echo "$text_md $tab_lang_english           : connect to one server mp3, see: default-show or preferences-modify"
-echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: default-show o preferences-modify"
+echo "$text_md $tab_lang_english           : connect to one server mp3, see: preferences-read or preferences-modify"
+echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: preferences-read o preferences-modify"
 echo "$text_md $tab gpg-notes"
 echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
 echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
@@ -3958,7 +3958,7 @@ echo "$text_md $tab_lang_spanish           : Muestra /etc/hosts.deny, hosts dene
 echo "$text_md $tab resolv.conf"
 echo "$text_md $tab_lang_english           : Show /etc/resolv.conf, it are the dns configured"
 echo "$text_md $tab_lang_spanish           : Muestra /etc/resolv.conf, este es el dns configurado"
-echo "$text_md $tab default-show"
+echo "$text_md $tab preferences-read"
 echo "$text_md $tab_lang_english           : Show variables for default"
 echo "$text_md $tab_lang_spanish           : Muestra variables por defecto"
 echo "$text_md $tab preferences-modify"
@@ -5287,7 +5287,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
-"resolv.conf" "default-show" "preferences-modify" "preferences-read" \
+"resolv.conf" "preferences-read" "preferences-modify" "preferences-read" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show etc ]  [ $cmd_binary ]" )
 #### 
 #### 
@@ -5302,7 +5302,7 @@ case $selection in
 "hosts.allow") $cmd_binary -gui hosts.allow ;;
 "hosts.deny") $cmd_binary -gui hosts.deny ;;
 "resolv.conf") $cmd_binary -gui resolv.conf ;;
-"default-show") $cmd_binary -gui default-show ;;
+"preferences-read") $cmd_binary -gui preferences-read ;;
 "preferences-modify") $cmd_binary -gui preferences-modify ;;
 "read-modify") $cmd_binary -gui preferences-read ;;
 esac
@@ -5741,7 +5741,7 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 2204  "$tab hosts.allow" \
 2205  "$tab hosts.deny" \
 2206  "$tab resolv.conf" \
-2207  "$tab default-show" \
+2207  "$tab preferences-read" \
 2208  "$tab preferences-modify" \
 2300 "$quad [ Show Log ] $cinco" \
 2301  "$tab log-ssh" \
@@ -5996,7 +5996,7 @@ clear ; $cmd_binary addblock-on $resolve ;;
 2204) clear ; $cmd_binary cli hosts.allow ;;
 2205) clear ; $cmd_binary cli hosts.deny ;;
 2206) clear ; $cmd_binary cli resolv.conf ;;
-2207) clear ; $cmd_binary cli default-show ;;
+2207) clear ; $cmd_binary cli preferences-read ;;
 2208) clear ; $cmd_binary cli preferences-modify ;;
 2301) clear ; $cmd_binary cli log-ssh ;;
 2302) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
@@ -7902,12 +7902,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-regen:
-##########    english: default-show: show pregferences   ##########
-##########    spanish: default-show: show preferences   ##########
-#### :rutina-inicial-default-show:
+##########    english: preferences-read: show pregferences   ##########
+##########    spanish: preferences-read: show preferences   ##########
+#### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" = "default-show" ]; then  echo $give_cover
+if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
@@ -7916,7 +7916,7 @@ echo "  [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ fil
 exit; fi
 ####
 ####
-#### :rutina-final-default-show:
+#### :rutina-final-preferences-read:
 ##########    english: preferences-read: read preferences   ##########
 ##########    spanish: preferences-read: read preferences   ##########
 #### :rutina-inicial-preferences-read:
@@ -8796,7 +8796,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: $cmd_binary default-show ] [ for only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: $cmd_binary preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
@@ -8828,7 +8828,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: default-show ] [ for only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
@@ -8855,7 +8855,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: default-show ] [ for only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
@@ -8882,7 +8882,7 @@ exit; fi
 ####
 if [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: default-show ] [ for only protocol http ] || ||"
+echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
@@ -10741,7 +10741,7 @@ echo "$text_md       ###########################################################
 echo "$text_md"
 echo "$title_md         [ options state ]"
 echo "$text_md"
-echo "$text_md      default-show   : Show values for default."
+echo "$text_md      preferences-read   : Show values for default."
 echo "$text_md      preferences-modify : Modify values for default."
 echo "$text_md      preferences-regen  : Regenerate values for default."
 echo "$text_md      install        : Install $cmd_binary."
@@ -10848,7 +10848,7 @@ echo "$title_md         [ Tool util ]"
 echo "$text_md"
 echo "$text_md          weather : Show the weather in your city."
 echo "$text_md           md5sum : Show the one file md5sum."
-echo "$text_md        radio-mp3 : Connect to one server mp3, see default-show preferences-modify."
+echo "$text_md        radio-mp3 : Connect to one server mp3, see preferences-read preferences-modify."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
 echo "$text_md"
 echo "$title_md         [ Tool Install ]"
@@ -10903,7 +10903,7 @@ echo "$text_md        services : Show /etc/services, ports names."
 echo "$text_md     hosts.allow : Show /etc/hosts.allow, hosts allowed in some own server."
 echo "$text_md      hosts.deny : Show /etc/hosts.deny, hosts drops in some own server."
 echo "$text_md     resolv.conf : Show /etc/resolv.conf, it are the dns configured."
-echo "$text_md    default-show : Show show variables for fwiptables."
+echo "$text_md    preferences-read : Show show variables for fwiptables."
 echo "$text_md  preferences-modify : Modify variables for fwiptables."
 echo "$text_md"
 echo "$title_md         [ Show log ]"
@@ -11202,7 +11202,7 @@ echo "$title_md [ Herramienta de utilidad ]."
 echo "$text_md"
 echo "$text_md       weather : Muestra el tiempo en tu ciudad"
 echo "$text_md        md5sum : Muestra la huella md5sum de un archivo"
-echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira default-show o preferences-modify."
+echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira preferences-read o preferences-modify."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
 echo "$text_md"
 echo "$title_md [ Herramienta de instalacion ]."
@@ -11251,7 +11251,7 @@ echo "$text_md        services : Muestra /etc/services, nombres de puertos y ser
 echo "$text_md     hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores."
 echo "$text_md      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
 echo "$text_md     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
-echo "$text_md    default-show : Muestra muestra variables por defecto en fwiptables."
+echo "$text_md    preferences-read : Muestra muestra variables por defecto en fwiptables."
 echo "$text_md  preferences-modify : Modifica variables por defecto en fwiptables."
 echo "$text_md"
 echo "$title_md [ Mostrar log ]."
