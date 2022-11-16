@@ -3,9 +3,9 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
-
-
- 03. modificar en todas las ayudas donde pone ls a ls4 y donde pone list a list4.
+ 05. cuando legacy o nft es activado hay reglas para todos excepto si ip4 o ip6 no estan permitidos permite localhost y dropean resto. HECHO
+ 04. ipv4 y ipv6 activados por defecto en preferencias. HECHO
+ 03. modificar en todas las ayudas donde pone ls a ls4 y donde pone list a list4. HECHO
  02. readactar leeme.
  01. readactar readme. 
 
