@@ -2551,7 +2551,7 @@ fi
 ####
 if [ "$program_minimal" == "" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
+echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]  " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md      firewall-list |  ls ls6 list list6 status list-alltables list-filter4 list-filter6            "
@@ -2598,7 +2598,7 @@ echo "$text_md                       server-asterisk server-squid               
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
 echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_binary options-firewall         |  Show all options to firewall manage            "
-echo "$text_md      $cmd_binary options-state            |  Show all options to default config             "
+echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manage         "
 echo "$text_md      $cmd_binary options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_binary options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_binary options-help             |  Show all options to help informations          "
