@@ -1077,11 +1077,11 @@ echo "$text_md     [ link] [ $fweb_latest ]"
 echo "$text_md     # $flicense"
 echo "$text_md     [ link ] [ $license_gpl ]"
 #### #### #### 
-if [ "$fwiptables_installed" == "no" ]; then
-echo "$brake_md"
-echo 
-echo "  ### PLEASE, install this version, or copy $0 to $directory_binary/$cmd_binary" 
-fi
+## if [ "$fwiptables_installed" == "no" ]; then
+## echo "$brake_md"
+## echo 
+## echo "  ### PLEASE, install this version, or copy $0 to $directory_binary/$cmd_binary" 
+## fi
 #### #### #### 
 exit; fi
 ####
@@ -1212,7 +1212,7 @@ exit ; fi
 #### :rutina-inicial-dev-upgrade:
 ####
 ####
-if if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
