@@ -67,7 +67,7 @@ exit ; fi
 #### english: program exec #### spanish: programa ejectutable
 ####
 ####
-cmd_binary="fwiptables-cmd"
+cmd_binary="fwiptables-cmd" ;
 cmd_version="complete-5.05" ;
 cmd_name="Fran FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
@@ -157,13 +157,257 @@ fi; fi
 ####
 ####
 #### :rutina-final-x11:
+##########  english: variables: variables to declare     ##########
+##########  spanish: variables: variables para declarar  ##########
+#### :rutina-inicial-config-variables:
+####
+####
+allow_dmz_ip4="no" ; 
+allow_dmz_ip6="no" ;
+allow_forward_ip4="no" ; 
+allow_forward_ip6="no" ; 
+allow_gateway_ip4="no" ;
+allow_gateway_ip6="no" ;
+allow_input_all="no" ;
+allow_input_bandwidth="no" ; 
+allow_input_maxconnect="no" ;
+allow_input_ping="no" ;
+allow_input_state="no" ;
+allow_mac_blacklist="no" ; 
+allow_mac_whitelist="no" ;
+allow_separate_rules="no" ;
+allow_shield_maxtries="no"
+allow_net_blacklist="no" ;
+allow_net_vpn="no" ; 
+allow_others_protocols="no" ;
+allow_output_all="no" ; 
+allow_output_bandwidth="no" ;
+allow_output_gid="no" ;
+allow_output_maxconnect="no" ;
+allow_output_ping="no" ;
+allow_output_state="no" ;
+allow_output_uid="no" ; 
+client_tcp="ssh,http,https" ;
+client_udp="domain,bootpc,ntp,https" ;
+config_dmz_ip4="" ;
+config_dmz_ip6="" ;
+config_input_bandwidth="12512" ; 
+config_input_maxconnect="72" ; 
+config_input_state="new,related,established" ;
+config_mac_blacklist=""
+config_mac_whitelist="" ;
+config_shield_maxtries="12" ;
+config_net_blacklist="yandex.com" ;
+config_net_vpn="wesnoth.org" ; 
+config_others_protocols="icmp,igmp" ;
+config_output_bandwidth="512" ;
+config_output_gid="root" ;
+config_output_maxconnect="72" ;
+config_output_state="new,related,established" ;
+config_output_uid="root" ;
+logserver_prefix_input="fwlog-input::" ; 
+logserver_prefix_output="fwlog-output::" ;
+logserver_tcp="no" ;
+logserver_udp="no" ;
+net_ipv4_client="0/0" ; 
+net_ipv4_server="0/0" ;
+net_ipv6_client="::/0" ;
+net_ipv6_server="::/0" ;
+server_tcp="" ;
+server_udp="" ; 
+####
+####
+#### :rutina-final-config-variables:
+##########   english: the basic system variables         ##########
+##########   spanish: las variables basicas del sistema  ##########
+#### :rutina-inicial-system-variables:
+####
+####
+####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
+####
+####
+####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_shield_maxtries="20" ; config_shield_port="22" ;
+####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
+####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
+####    graphic_dimension="--width=950 --height=650" ; 
+####
+####
+####       #### english: void to complete program or no program minimal
+####       #### spanish: vacio para programa completo o no para para programa minimal
+program_minimal="no"                           ## fwiptables-file-default ## void or no
+####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
+####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
+allow_legacy=""                     ## fwiptables-file-default ## void or no
+allow_nft="no"                          ## fwiptables-file-default ## void or no
+allow_ipv4=""                         ## fwiptables-file-default ## void or no
+allow_ipv6="no"                         ## fwiptables-file-default ## void or no
+####       #### english: list all rules: list all rules, void in names or no in numbers
+####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
+list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
+####       #### english: ssh shield configured to works with ports choose ports tcp
+####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp
+config_shield_port="22"                   ## fwiptables-file-default ##  void o ports
+####       #### english: ssh tries per ip before shield
+####       #### spanish: intentos ssh por ip antes del escudo
+config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
+####       #### english: auto log from command input
+####       #### spanish: automatico log de linea introducida
+allow_autolog=""                    ## fwiptables-file-default ## void or no
+####       #### english: close from networking ping, trace.. with timeout in seconds 
+####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
+server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
+####       #### english: PING server for default         
+####       #### spanish: servidor de PING por defecto    
+server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
+server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast.com
+####       #### english: TRACEROUTE server for default         
+####       #### spanish: servidor de TRACEROUTE por defecto    
+server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
+server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
+####       #### english: iperf server for default for test net SPEED                 
+####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
+serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
+serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
+serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
+####       #### english: zenity GRAPHIC DIMENSIONS        
+####       #### spanish: DIMESIONES GRAFICAS de zenity  
+graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
+####       #### english: RADIO URL streaming audio for default
+####       #### spanish: direccion de RADIO DE INTERNET por defecto
+radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
+radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
+radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
+#### #### english: look  #### spanish: apariencia
+quad="####" ; 
+cinco="#####" ;
+tab="     " ;
+rallica="_____" ;
+sinco=" || " ;
+title_md="### " ;
+text_md="     " ;
+brake_md="---" ;
+tabz="### _ _ _ _ _ _ _ " ;
+ralla="______________________" ;
+duo_md="### ###" ;
+header_ok="### ### || || [ ok ] ||" ;
+cincuenta="##################################################" ;
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_gui="$duo_md [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_log="$duo_md [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_web="$duo_md [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
+head_waiting_help="$duo_md [ info ] [ help: help in rst txt format ] [ Loading.. ]"
+head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loading.. ]"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary ] [ Version: $cmd_version ] || || "
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
+#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
+give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary preferences-modify ]"
+#### #### info list rules
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_binary preferences-modify ] || ||"
+#### #### english: echo void            #### spanish: impresion vacia
+nada="echo -n" ; 
+#### #### english: echo void            #### spanish: impresion vacia
+nada="$(echo -n)" ; 
+#### #### several languages 
+tab_lang_english=" eng "
+tab_lang_spanish=" spa "
+#### #### your language 
+#### show_lang_english=""
+#### show_lang_spanish="##"
+#### #### english: without cli or gui   #### spanish: sin cli o gui
+message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
+message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
+message_without_web="$duo_md [ fail ] [ web ] [ Without support for output web for this option ]"
+message_without_help="$duo_md [ fail ] [ help in rst ] [ Without support for output rst for this option ]"
+message_without_info="$duo_md [ fail ] [ info in txt ] [ Without support for output info for this option ]"
+message_without_info="$duo_md [ fail ] [ log ] [ Without support for output log for this option ]"
+message_without_info="$duo_md [ fail ] [ null ] [ Without support for output null for this option ]"
+####       #### english: close from graphicall with timeout in seconds #####
+####       #### spanish: cierre desde graficos con retardo en segundos #####
+close_graphicall="1"
+####       #### english: message to close graphicall with timeout in seconds #####
+####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
+mensage_timeout="Closing gui menu in $close_graphicall seconds"
+####       #### english: autovariables        #### spanish: autovariables
+launch_firewall="no" ;   #  autoconfigure with launch iptables rules
+####       #### english: [download web link]  #### spanish: [descarga del enlace web]
+fweb_main="https://sourceforge.net/projects/f-iptables/"
+fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
+fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
+fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
+fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
+fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
+####       #### english: [Program license] #### spanish: [Licencia del programa]
+flicense="Copyleft, without warranty, gnu license GPL v2."
+license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
+fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
+####
+####
+#### english: if wrong in whithout_option
+#### spanish: si esta mal definidad definida whithout_option
+####
+####
+default_security="mini-options"
+####
+####
+fwiptables_installed=""
+####
+####
+#### :rutina-final-system-variables:
+##########    english: Update variables             ##########
+##########    spanish: Actualiza variables          ##########
+#### :rutina-inicial-update-variables:
+####
+####
+####     #### english: variable to knows if fwiptables is installed
+####     #### spanish: variable para comprobar si fwiptables esta instalado
+####
+####
+if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
+cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
+fi
+####
+####
+####     #### english: launch default for update variables
+####     #### spanish: lanza default para actualizar variables
+####
+####
+if [ -f "$default_preferences" ] ; then source "$default_preferences" ; fi
+####
+####
+#### english: if null option is void return default to mini-options
+#### spanish: si la opcion por defecto esta vacia vuelve a mini-options
+####
+####
+if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
+####
+####
+#### :rutina-final-update-variables:
+##########    english: Notice Installer with intro      ##########
+##########    spanish: noticia de Instalador con intro  ##########
+#### :rutina-inicial-notice:
+####
+####
+#### if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
+####
+####
+#### :rutina-final-notice:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
 ####
 ####
-#### english: name icon #### spanish: nombre de icono
-#### icon_fwiptables="zenity"
+#### if [ "$program_minimal" == "no" ] ; 
+#### then cmd_binary="fwiptables-cmd"  ; 
+#### else cmd_binary="fwiptables-mini" ; fi ;
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -172,7 +416,7 @@ fi; fi
 ####
 directory_binary="/usr/bin"
 directory_data="$HOME/.config/$cmd_binary"
-default_preferences="$directory_data/default"
+default_preferences="$directory_data/preferences"
 ####
 ####
 #### english: directory tree 
@@ -252,246 +496,6 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####
 ####
 #### :rutina-final-dir-sane:
-##########  english: variables: variables to declare     ##########
-##########  spanish: variables: variables para declarar  ##########
-#### :rutina-inicial-config-variables:
-####
-####
-allow_dmz_ip4="no" ; 
-allow_dmz_ip6="no" ;
-allow_forward_ip4="no" ; 
-allow_forward_ip6="no" ; 
-allow_gateway_ip4="no" ;
-allow_gateway_ip6="no" ;
-allow_input_all="no" ;
-allow_input_bandwidth="no" ; 
-allow_input_maxconnect="no" ;
-allow_input_ping="no" ;
-allow_input_state="no" ;
-allow_mac_blacklist="no" ; 
-allow_mac_whitelist="no" ;
-allow_separate_rules="no" ;
-allow_shield_maxtries="no"
-allow_net_blacklist="no" ;
-allow_net_vpn="no" ; 
-allow_others_protocols="no" ;
-allow_output_all="no" ; 
-allow_output_bandwidth="no" ;
-allow_output_gid="no" ;
-allow_output_maxconnect="no" ;
-allow_output_ping="no" ;
-allow_output_state="no" ;
-allow_output_uid="no" ; 
-client_tcp="ssh,http,https" ;
-client_udp="domain,bootpc,ntp,https" ;
-config_dmz_ip4="" ;
-config_dmz_ip6="" ;
-config_input_bandwidth="12512" ; 
-config_input_maxconnect="72" ; 
-config_input_state="new,related,established" ;
-config_mac_blacklist=""
-config_mac_whitelist="" ;
-config_shield_maxtries="12" ;
-config_net_blacklist="yandex.com" ;
-config_net_vpn="wesnoth.org" ; 
-config_others_protocols="icmp,igmp" ;
-config_output_bandwidth="512" ;
-config_output_gid="root" ;
-config_output_maxconnect="72" ;
-config_output_state="new,related,established" ;
-config_output_uid="root" ;
-logserver_prefix_input="fwlog-input::" ; 
-logserver_prefix_output="fwlog-output::" ;
-logserver_tcp="no" ;
-logserver_udp="no" ;
-net_ipv4_client="0/0" ; 
-net_ipv4_server="0/0" ;
-net_ipv6_client="::/0" ;
-net_ipv6_server="::/0" ;
-server_tcp="" ;
-server_udp="" ; 
-####
-####
-#### :rutina-final-config-variables:
-##########   english: the basic system variables         ##########
-##########   spanish: las variables basicas del sistema  ##########
-#### :rutina-inicial-system-variables:
-####
-####
-####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####
-####
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_shield_maxtries="20" ; config_shield_port="22" ;
-####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
-####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
-####    graphic_dimension="--width=950 --height=650" ; 
-####
-####
-####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
-####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
-allow_legacy=""                     ## fwiptables-file-default ## void or no
-allow_nft="no"                          ## fwiptables-file-default ## void or no
-allow_ipv4=""                         ## fwiptables-file-default ## void or no
-allow_ipv6="no"                         ## fwiptables-file-default ## void or no
-####       #### english: list all rules: list all rules, void in names or no in numbers
-####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
-list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
-####       #### english: ssh shield configured to works with ports choose ports tcp
-####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp
-config_shield_port="22"                   ## fwiptables-file-default ##  void o ports
-####       #### english: ssh tries per ip before shield
-####       #### spanish: intentos ssh por ip antes del escudo
-config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
-####       #### english: auto log from command input
-####       #### spanish: automatico log de linea introducida
-allow_autolog=""                    ## fwiptables-file-default ## void or no
-####       #### english: close from networking ping, trace.. with timeout in seconds 
-####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
-####       #### english: PING server for default         
-####       #### spanish: servidor de PING por defecto    
-server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
-server_ping_ipv6="fast.com"           ## fwiptables-file-default ## default fast.com
-####       #### english: TRACEROUTE server for default         
-####       #### spanish: servidor de TRACEROUTE por defecto    
-server_traceroute_ipv4="fast.com"     ## fwiptables-file-default ## default fast.com
-server_traceroute_ipv6="fast.com"     ## fwiptables-file-default ## default fast.com
-####       #### english: iperf server for default for test net SPEED                 
-####       #### spanish: servidor de iperf por defecto para testear VELOCIDAD de internet    
-serverip_iperf_ipv4="ping.online.net"   ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv4="5001"            ## fwiptables-file-default ## default 5201
-serverip_iperf_ipv6="ping6.online.net"   ## fwiptables-file-default ## default ping.online.net
-serverport_iperf_ipv6="5001"            ## fwiptables-file-default ## default 5201
-####       #### english: zenity GRAPHIC DIMENSIONS        
-####       #### spanish: DIMESIONES GRAFICAS de zenity  
-graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
-####       #### english: RADIO URL streaming audio for default
-####       #### spanish: direccion de RADIO DE INTERNET por defecto
-radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
-radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
-radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
-#### #### english: look  #### spanish: apariencia
-quad="####" ; 
-cinco="#####" ;
-tab="     " ;
-rallica="_____" ;
-sinco=" || " ;
-title_md="### " ;
-text_md="     " ;
-brake_md="---" ;
-tabz="### _ _ _ _ _ _ _ " ;
-ralla="______________________" ;
-duo_md="### ###" ;
-header_ok="### ### || || [ ok ] ||" ;
-cincuenta="##################################################" ;
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_gui="$duo_md [ info ] [ gui ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_log="$duo_md [ info ] [ log ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_web="$duo_md [ info ] [ web ] [ Wait several seconds.. ] [ With aprox several seconds ]"
-head_waiting_help="$duo_md [ info ] [ help: help in rst txt format ] [ Loading.. ]"
-head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loading.. ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary ] [ Version: $cmd_version ] || || "
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
-#### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary default-modify ]"
-#### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_binary default-modify ] || ||"
-#### #### english: echo void            #### spanish: impresion vacia
-nada="echo -n" ; 
-#### #### english: echo void            #### spanish: impresion vacia
-nada="$(echo -n)" ; 
-#### #### several languages 
-tab_lang_english=" eng "
-tab_lang_spanish=" spa "
-#### #### your language 
-#### show_lang_english=""
-#### show_lang_spanish="##"
-#### #### english: without cli or gui   #### spanish: sin cli o gui
-message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
-message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
-message_without_web="$duo_md [ fail ] [ web ] [ Without support for output web for this option ]"
-message_without_help="$duo_md [ fail ] [ help in rst ] [ Without support for output rst for this option ]"
-message_without_info="$duo_md [ fail ] [ info in txt ] [ Without support for output info for this option ]"
-message_without_info="$duo_md [ fail ] [ log ] [ Without support for output log for this option ]"
-message_without_info="$duo_md [ fail ] [ null ] [ Without support for output null for this option ]"
-####       #### english: close from graphicall with timeout in seconds #####
-####       #### spanish: cierre desde graficos con retardo en segundos #####
-close_graphicall="1"
-####       #### english: message to close graphicall with timeout in seconds #####
-####       #### spanish: mensage de cierre para graficos con retardo en segundos #####
-mensage_timeout="Closing gui menu in $close_graphicall seconds"
-####       #### english: autovariables        #### spanish: autovariables
-launch_firewall="no" ;   #  autoconfigure with launch iptables rules
-####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-fweb_main="https://sourceforge.net/projects/f-iptables/"
-fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
-fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
-fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
-fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
-fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
-fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
-####       #### english: [Program license] #### spanish: [Licencia del programa]
-flicense="Copyleft, without warranty, gnu license GPL v2."
-license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
-fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
-####
-####
-#### english: if wrong in whithout_option
-#### spanish: si esta mal definidad definida whithout_option
-####
-####
-default_security="mini-options"
-####
-####
-fwiptables_installed=""
-####
-####
-#### :rutina-final-system-variables:
-##########    english: Update variables             ##########
-##########    spanish: Actualiza variables          ##########
-#### :rutina-inicial-update-variables:
-####
-####
-####     #### english: variable to knows if fwiptables is installed
-####     #### spanish: variable para comprobar si fwiptables esta instalado
-####
-####
-if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
-cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
-fi
-####
-####
-####     #### english: launch default for update variables
-####     #### spanish: lanza default para actualizar variables
-####
-####
-if [ -f $default_preferences ] ; then source $default_preferences ; fi
-####
-####
-#### english: if null option is void return default to mini-options
-#### spanish: si la opcion por defecto esta vacia vuelve a mini-options
-####
-####
-if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
-####
-####
-#### :rutina-final-update-variables:
-##########    english: Notice Installer with intro      ##########
-##########    spanish: noticia de Instalador con intro  ##########
-#### :rutina-inicial-notice:
-####
-####
-if [ "$fwiptables_installed" == "no" ] ; then echo "type: $0 install" ; fi
-####
-####
-#### :rutina-final-notice:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :rutina-inicial-command:
@@ -784,7 +788,7 @@ wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option
 "new-mini-config") $cmd_binary $second_option $third_option ;  exit ;;
 "new-full-config") $cmd_binary $second_option $third_option ;  exit ;;
 "modify-config") $cmd_binary $second_option $third_option ;  exit ;;
-"default-modify") $cmd_binary default-modify ; exit ;;
+"preferences-modify") $cmd_binary preferences-modify ; exit ;;
 nmap-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
 "radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 "speed-cpu") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
@@ -1029,7 +1033,7 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 #### :rutina-inicial-intro:
 ####
 ####
-if [ "$first_option" = "intro" ]; then echo "$give_cover"
+if [ "$program_minimal" != "no" ] && [ "$first_option" = "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
 echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
@@ -1116,7 +1120,7 @@ chmod 555 "$directory_binary/$cmd_binary" &> /dev/null
 ####  spanish: genera fwiptables default configuracion y plantillas
 ####
 ####
-$cmd_binary default-regen &> /dev/null
+$cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
 ####
 ####
@@ -2534,7 +2538,7 @@ fi
 #### :rutina-inicial-options-mini:
 ####
 ####
-if [ "$first_option" = "options-mini" ] ; then echo $give_cover
+if [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
@@ -2590,7 +2594,7 @@ echo "$text_md                        server-vnc server-web server-samba server-
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
 echo "$text_md                        server-asterisk server-squid                                             "
 echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                         "   
-echo "$text_md     options-state  |  default-show default-modify default-regen install upgrade uninstall       "
+echo "$text_md     options-state  |  default-show preferences-modify preferences-regen install upgrade uninstall       "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
 echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
@@ -2614,7 +2618,7 @@ echo "$duo_md || || [ options-show ]   || ||  ### ###                           
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh filelog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
-echo "$text_md                        protocols services default-show default-modify                           "
+echo "$text_md                        protocols services default-show preferences-modify                           "
 echo "$duo_md || || [ options-help ]   || ||  ### ###                                                          "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
@@ -2675,7 +2679,7 @@ exit ; fi
 if [ "$first_option" = "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                                                             "
-echo "$text_md    default-state    | default-show default-modify default-regen version install upgrade uninstall               "
+echo "$text_md    default-state    | default-show preferences-modify preferences-regen version install upgrade uninstall               "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
 exit ; fi
@@ -2727,7 +2731,7 @@ echo "$title_md                                   | options-show |              
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
 echo "$text_md    show-log          | log-search log-ssh filelog autolog                    "
 echo "$text_md    show-etc          | hosts resolv.conf  protocols services                 "
-echo "$text_md                        hosts.allow hosts.deny default-show default-modify    "
+echo "$text_md                        hosts.allow hosts.deny default-show preferences-modify    "
 echo "$text_md"
 echo "$text_md      | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help "
 exit ; fi
@@ -2787,7 +2791,7 @@ echo "$text_md    $cmd_binary code lsof                |  source code to option 
 echo "$text_md    $cmd_binary radio-mp3 url..          |  connect to url:// mp3                      "
 echo "$text_md    $cmd_binary dev-changes              |  show last changes in $cmd_binary       "
 echo "$text_md    $cmd_binary autolog                  |  List last optiosn with $cmd_binary     "
-echo "$text_md    $cmd_binary default-modify           |  modify default variables                   "
+echo "$text_md    $cmd_binary preferences-modify           |  modify default variables                   "
 echo "$text_md    $cmd_binary depends                  |  depends to $cmd_binary                 "
 exit; fi
 ####
@@ -3414,10 +3418,10 @@ echo "$text_md"
 echo "$text_md $tab default-show"
 echo "$text_md $tab_lang_english          : Show the config for default to program"
 echo "$text_md $tab_lang_spanish          : Muestra la configuracion por defecto del programa"
-echo "$text_md $tab default-modify"
+echo "$text_md $tab preferences-modify"
 echo "$text_md $tab_lang_english          : Modify the config for default to program"
 echo "$text_md $tab_lang_spanish          : modifica la configuracion por defecto del programa"
-echo "$text_md $tab default-regen"
+echo "$text_md $tab preferences-regen"
 echo "$text_md $tab_lang_english          : Auto regen the config for default to program"
 echo "$text_md $tab_lang_spanish          : Auto regenera la configuracion por defecto del programa"
 echo "$text_md $tab install"
@@ -3892,8 +3896,8 @@ echo "$text_md $tab md5sum"
 echo "$text_md $tab_lang_english           : Show md5sum from one file"
 echo "$text_md $tab_lang_spanish           : Muestra la suma md5sum de un archivo"
 echo "$text_md $tab radio-mp3"
-echo "$text_md $tab_lang_english           : connect to one server mp3, see: default-show or default-modify"
-echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: default-show o default-modify"
+echo "$text_md $tab_lang_english           : connect to one server mp3, see: default-show or preferences-modify"
+echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: default-show o preferences-modify"
 echo "$text_md $tab gpg-notes"
 echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
 echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
@@ -3957,7 +3961,7 @@ echo "$text_md $tab_lang_spanish           : Muestra /etc/resolv.conf, este es e
 echo "$text_md $tab default-show"
 echo "$text_md $tab_lang_english           : Show variables for default"
 echo "$text_md $tab_lang_spanish           : Muestra variables por defecto"
-echo "$text_md $tab default-modify"
+echo "$text_md $tab preferences-modify"
 echo "$text_md $tab_lang_english           : Change variables for default"
 echo "$text_md $tab_lang_spanish           : Cambia variables por defecto"
 exit; fi
@@ -4418,7 +4422,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 ;;
 #### 
 ####
-"default-modify")
+"preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
 $command_zenity  --text-info $graphic_dimension --filename="$default_preferences.old" \
@@ -5283,7 +5287,7 @@ exit; fi
 if [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
-"resolv.conf" "default-show" "default-modify" "default-read" \
+"resolv.conf" "default-show" "preferences-modify" "preferences-read" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show etc ]  [ $cmd_binary ]" )
 #### 
 #### 
@@ -5299,8 +5303,8 @@ case $selection in
 "hosts.deny") $cmd_binary -gui hosts.deny ;;
 "resolv.conf") $cmd_binary -gui resolv.conf ;;
 "default-show") $cmd_binary -gui default-show ;;
-"default-modify") $cmd_binary -gui default-modify ;;
-"read-modify") $cmd_binary -gui default-read ;;
+"preferences-modify") $cmd_binary -gui preferences-modify ;;
+"read-modify") $cmd_binary -gui preferences-read ;;
 esac
 ####
 ####
@@ -5738,7 +5742,7 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 2205  "$tab hosts.deny" \
 2206  "$tab resolv.conf" \
 2207  "$tab default-show" \
-2208  "$tab default-modify" \
+2208  "$tab preferences-modify" \
 2300 "$quad [ Show Log ] $cinco" \
 2301  "$tab log-ssh" \
 2302  "$tab log-search" \
@@ -5993,7 +5997,7 @@ clear ; $cmd_binary addblock-on $resolve ;;
 2205) clear ; $cmd_binary cli hosts.deny ;;
 2206) clear ; $cmd_binary cli resolv.conf ;;
 2207) clear ; $cmd_binary cli default-show ;;
-2208) clear ; $cmd_binary cli default-modify ;;
+2208) clear ; $cmd_binary cli preferences-modify ;;
 2301) clear ; $cmd_binary cli log-ssh ;;
 2302) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
 clear ; $cmd_binary "log-search" "$pattern" | less ;;
@@ -7883,23 +7887,23 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-nodes:
-##########   english: default-regen:  fwiptables default   ##########
-##########   spanish: default-regen:  fwiptables defecto   ##########
-#### :rutina-inicial-default-regen:
+##########   english: preferences-regen:  regen preferences       ##########
+##########   spanish: preferences-regen:  regenera preferencias   ##########
+#### :rutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" = "default-regen" ] ; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_binary default-regen ] [ default-regen md ] || ||"
-echo "  [ info ] [ $cmd_binary default-regen.. ]"
+if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
+echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
+echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
+echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
 echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $default_preferences ]"
 exit; fi
 ####
 ####
-#### :rutina-final-default-regen:
-##########    english: default-show: show $directory_default/$cmd_binary   ##########
-##########    spanish: default-show: show $directory_default/$cmd_binary   ##########
+#### :rutina-final-preferences-regen:
+##########    english: default-show: show pregferences   ##########
+##########    spanish: default-show: show preferences   ##########
 #### :rutina-inicial-default-show:
 ####
 ####
@@ -7908,28 +7912,28 @@ echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
 echo 
-echo "  [ info ] [ Change variables with: $cmd_binary default-modify ] [ file: $default_preferences ]"
+echo "  [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
 #### :rutina-final-default-show:
-##########    english: default-read: read $directory_default/$cmd_binary   ##########
-##########    spanish: default-read: read $directory_default/$cmd_binary   ##########
-#### :rutina-inicial-default-read:
+##########    english: preferences-read: read preferences   ##########
+##########    spanish: preferences-read: read preferences   ##########
+#### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" = "default-read" ]; then echo $give_cover
+if [ "$first_option" = "preferences-read" ]; then echo $give_cover
 cat $default_preferences
 exit ; fi
 ####
 ####
-#### :rutina-final-default-read:
-##########    english: default-modify: modify $directory_default/$cmd_binary   ##########
-##########    spanish: default-modify: modify $directory_default/$cmd_binary   ##########
-#### :rutina-inicial-default-modify:
+#### :rutina-final-preferences-read:
+##########    english: preferences-modify: modify preferences   ##########
+##########    spanish: preferences-modify: modify preferences   ##########
+#### :rutina-inicial-preferences-modify:
 ####
 ####
-if [ "$first_option" = "default-modify" ]; then  echo $give_cover
+if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 echo 
@@ -7947,9 +7951,7 @@ cp $default_preferences $default_preferences.old
 #### spanish: edita el archivo
 ####
 ####
-$command_dialog  --no-cancel --title "MODIFY FILE: $default_preferences" \
---editbox "$default_preferences" 0 0 2> "$default_preferences"
-clear
+editor "$default_preferences"
 ####
 ####
 #### english: probe all that is correct or recover
@@ -7959,10 +7961,10 @@ clear
 if [ ! -s "$default_preferences" ] ; then cp $default_preferences.old $default_preferences ; fi
 ####
 ####
-exit; fi
+clear; exit; fi
 ####
 ####
-#### :rutina-final-default-modify:
+#### :rutina-final-preferences-modify:
 ##########    english: names: file list whith rules in iptables format          ##########
 ##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
 #### :rutina-inicial-names:
@@ -10740,8 +10742,8 @@ echo "$text_md"
 echo "$title_md         [ options state ]"
 echo "$text_md"
 echo "$text_md      default-show   : Show values for default."
-echo "$text_md      default-modify : Modify values for default."
-echo "$text_md      default-regen  : Regenerate values for default."
+echo "$text_md      preferences-modify : Modify values for default."
+echo "$text_md      preferences-regen  : Regenerate values for default."
 echo "$text_md      install        : Install $cmd_binary."
 echo "$text_md      uninstall      : Uninstall $cmd_binary."
 echo "$text_md      upgrade        : Upgrqade $cmd_binary."
@@ -10846,7 +10848,7 @@ echo "$title_md         [ Tool util ]"
 echo "$text_md"
 echo "$text_md          weather : Show the weather in your city."
 echo "$text_md           md5sum : Show the one file md5sum."
-echo "$text_md        radio-mp3 : Connect to one server mp3, see default-show default-modify."
+echo "$text_md        radio-mp3 : Connect to one server mp3, see default-show preferences-modify."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
 echo "$text_md"
 echo "$title_md         [ Tool Install ]"
@@ -10902,7 +10904,7 @@ echo "$text_md     hosts.allow : Show /etc/hosts.allow, hosts allowed in some ow
 echo "$text_md      hosts.deny : Show /etc/hosts.deny, hosts drops in some own server."
 echo "$text_md     resolv.conf : Show /etc/resolv.conf, it are the dns configured."
 echo "$text_md    default-show : Show show variables for fwiptables."
-echo "$text_md  default-modify : Modify variables for fwiptables."
+echo "$text_md  preferences-modify : Modify variables for fwiptables."
 echo "$text_md"
 echo "$title_md         [ Show log ]"
 echo "$text_md"
@@ -11200,7 +11202,7 @@ echo "$title_md [ Herramienta de utilidad ]."
 echo "$text_md"
 echo "$text_md       weather : Muestra el tiempo en tu ciudad"
 echo "$text_md        md5sum : Muestra la huella md5sum de un archivo"
-echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira default-show o default-modify."
+echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira default-show o preferences-modify."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
 echo "$text_md"
 echo "$title_md [ Herramienta de instalacion ]."
@@ -11250,7 +11252,7 @@ echo "$text_md     hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en a
 echo "$text_md      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
 echo "$text_md     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
 echo "$text_md    default-show : Muestra muestra variables por defecto en fwiptables."
-echo "$text_md  default-modify : Modifica variables por defecto en fwiptables."
+echo "$text_md  preferences-modify : Modifica variables por defecto en fwiptables."
 echo "$text_md"
 echo "$title_md [ Mostrar log ]."
 echo "$text_md"
