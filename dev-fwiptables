@@ -5574,7 +5574,7 @@ exit ; fi
 #### :rutina-inicial-cli-menu:
 ####
 ####
-if [ "$first_option" = "cli-menu" ]; then $nada
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "cli-menu" ]; then $nada
 case "$command_dialog" in "$NULL") echo "  [ fail ] [ Install dialog to work ]" ; exit ;; esac
 #### cd "$directory_config"
 menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
@@ -6222,7 +6222,7 @@ exit ; fi
 #### :rutina-inicial-code:
 ####
 ####
-if [ "$first_option" = "code" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "code" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
 echo "  [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
@@ -6264,7 +6264,7 @@ exit;  fi
 #### :rutina-inicial-howto-upgrade:
 ####
 ####
-if [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show howto upgrade ] || ||"
 echo "$tab [ info ] [ The actually version is: $cmd_binary $cmd_version actual ]"
 echo "$tab [ info ] [ The latest version is: ]"
@@ -6285,7 +6285,7 @@ exit;  fi
 #### :rutina-inicial-addblock-list:
 ####
 ####
-if [ "$first_option" = "addblock-list" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "addblock-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show blacklist servers ] || ||"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -6340,7 +6340,7 @@ exit; fi
 #### :rutina-inicial-addblock-on:
 ####
 ####
-if [ "$first_option" = "addblock-on" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "addblock-on" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Configure blacklist server ] || ||"
 echo
 ####
@@ -6403,7 +6403,7 @@ exit; fi
 #### :rutina-inicial-addblock-off:
 ####
 ####
-if [ "$first_option" = "addblock-off" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "addblock-off" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ] || ||"
 echo
 echo $directory_temporal
@@ -6550,7 +6550,7 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 ####
-if [ "$first_option" = "info-route" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-route" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show route tables ] || ||"
 if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
 echo "  [ info ] [ ip route ipv4 ]"
@@ -6567,7 +6567,7 @@ exit ; fi
 #### :rutina-inicial-ss:
 ####
 ####
-if [ "$first_option" = "ss" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ss" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "  [ info ] [ The ipv6 sockets ]"
@@ -6583,7 +6583,7 @@ exit; fi
 #### :rutina-inicial-lsof:
 ####
 ####
-if [ "$first_option" = "lsof" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsof" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
 if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
 echo "  [ info ] [The sockets with lsof ipv6 ]"
@@ -6599,7 +6599,7 @@ exit; fi
 #### :rutina-inicial-netstat:
 ####
 ####
-if [ "$first_option" = "netstat" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "netstat" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat ] || ||"
 if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
 echo "  [ info ] [The sockets list with netstat ]"
@@ -6613,7 +6613,7 @@ exit; fi
 #### :rutina-inicial-info-listen:
 ####
 ####
-if [ "$first_option" = "info-listen" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "  [ info ] [ Network Listen ] [ Listen ipv4 ]"
@@ -6630,7 +6630,7 @@ exit; fi
 #### :rutina-inicial-info-proxy:
 ####
 ####
-if [ "$first_option" = "info-proxy" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-proxy" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ] ||"
 echo "  [ info ] [ Info address proxy ]"
 echo "  [ info ] [ Web http_proxy:    $http_proxy ]"
@@ -6644,7 +6644,7 @@ exit; fi
 #### :rutina-inicial-netstat-nat:
 ####
 ####
-if [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ] || ||"
 if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
 echo "  [ info ] [ The devices list with netstat for nat ]"
@@ -6658,7 +6658,7 @@ exit; fi
 #### :rutina-inicial-ipforward-on:
 ####
 ####
-if [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ] || ||"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done
@@ -6671,7 +6671,7 @@ exit; fi
 #### :rutina-inicial-ipforward-off:
 ####
 ####
-if [ "$first_option" = "ipforward-off" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ipforward-off" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ] || ||"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done
@@ -7466,7 +7466,7 @@ exit ; fi
 #### :rutina-inicial-sudofw-adduser:
 ####
 ####
-if [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
 case $second_option in
 "$NULL") echo $give_cover ; echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
@@ -7488,7 +7488,7 @@ exit; fi
 #### :rutina-inicial-sudofw-deluser:
 ####
 ####
-if [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
 rm /etc/sudoers.d/$cmd_binary &> /dev/null
 rm /etc/sudoers.d/$cmd_binary &> /dev/null
 echo "  [ ok ] [ deleted auth sudo ]"
@@ -7503,7 +7503,7 @@ exit; fi
 #### :rutina-inicial-sudofw-listuser:
 ####
 ####
-if [ "$first_option" = "sudofw-listuser" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-listuser" ]; then echo $give_cover
 if [ -f /etc/sudoers.d/$cmd_binary ] ; then $nada
 echo "  [ info ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_binary ]"
 echo "  [  ok  ] [ With root sudo for $cmd_binary from some user ]"
@@ -7525,7 +7525,7 @@ exit; fi
 #### :rutina-inicial-aliasfw-list:
 ####
 ####
-if [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_binary ]"
 echo 
 echo " [ alias file ] [  /etc/profile.d/$cmd_binary ]"
@@ -7541,7 +7541,7 @@ exit; fi
 #### :rutina-inicial-md5sum:
 ####
 ####
-if [ "$first_option" = "md5sum" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "md5sum" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ] || ||"
 if [ "$command_md5sum" == "$NULL" ]; then echo "  [ info ] [ Install md5sum ]"; exit ; fi
 if [ "$second_option" == "$NULL" ]; then echo "  [ info ] [ $cmd_binary md5sum file ] [ choose file ]"; exit; fi
@@ -7557,7 +7557,7 @@ exit; fi
 #### :rutina-inicial-rule-add-shield:
 ####
 ####
-if [ "$first_option" = "rule-add-shield" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "rule-add-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Add shield ssh ] || ||"
 ####
 ####
@@ -7623,7 +7623,7 @@ exit ; fi
 #### :rutina-inicial-rule-del-shield:
 ####
 ####
-if [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset shield ssh ] || ||"
 $cmd_binary save no_default_tmp &> /dev/null
 for shield in $($command_ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
@@ -7647,7 +7647,7 @@ exit ; fi
 ####  del-rule cuando viene de otro distinto a -gui
 ####
 ####
-if [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
+if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
 menudelrule="$($command_dialog  --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
 01 "NFTABLES / filter-ip4 / INPUT" \
 02 "NFTABLES / filter-ip4 / FORWARD" \
@@ -7691,7 +7691,7 @@ clear ; exit; fi
 ####  del-rule cuando viene de -gui
 ####
 ####
-if [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
 case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($command_zenity $graphic_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
@@ -7769,10 +7769,10 @@ else) exit ;; esac ; exit; fi
 #### :rutina-inicial-iw-scan:
 ####
 ####
-if [ "$first_option" = "iw-scan" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "iw-scan" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
 echo 
-if [ "$command_iw" == "$NULL" ]; then  echo "  [ info ] [ Install iw ]" ; exit ; fi
+if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "  [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $a up ;
 $command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done 
 exit; fi
@@ -7784,10 +7784,10 @@ exit; fi
 #### :rutina-inicial-iw-info:
 ####
 ####
-if [ "$first_option" = "iw-info" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "iw-info" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ] || ||"
 echo 
-if [ "$command_iw" == "$NULL" ]; then  echo "  [ info ] [ Install iw ]" ; exit ; fi
+if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "  [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_iw $a info ; done 
 exit; fi
 ####
@@ -7798,7 +7798,7 @@ exit; fi
 #### :rutina-inicial-wpa-save:
 ####
 ####
-if [ "$first_option" = "wpa-save" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-save" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ] || ||"
 echo 
 if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo "  [ info ] [ Install wpa_passphrase ]" ; exit ; fi
@@ -7819,7 +7819,7 @@ exit; fi
 #### :rutina-inicial-wpa-load:
 ####
 ####
-if [ "$first_option" = "wpa-load" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-load" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-load wpa_file1 ] || ||"
 echo 
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "  [ info ] [ Install wpa_supplicant ]" ; exit ; fi
@@ -7840,10 +7840,10 @@ exit; fi
 #### :rutina-inicial-dhcp-client:
 ####
 ####
-if [ "$first_option" = "dhcp-client" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "dhcp-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp_command" ] || ||"
 echo 
-if [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
+if [ "$program_minimal" == "no" ] && [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
 else echo "  [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
 exit; fi
 ####
@@ -7854,7 +7854,7 @@ exit; fi
 #### :rutina-inicial-ipforward-list:
 ####
 ####
-if [ "$first_option" = "ipforward-list" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ipforward-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ] || ||"
 echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
 $command_sysctl -a | $command_grep -i  forwarding
@@ -7867,7 +7867,7 @@ exit; fi
 #### :rutina-inicial-tcpdump:
 ####
 ####
-if [ "$first_option" = "tcpdump" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "tcpdump" ]; then echo $give_cover
 case $command_tcpdump in "$NULL") echo "$tab [ fail ] [ Install tcpdump command ]" ; exit ;; esac
 echo "$tab [ info ] [ launch several seconds tcpdump ]"
 echo 
@@ -7886,7 +7886,7 @@ exit; fi
 #### :rutina-inicial-info-nodes:
 ####
 ####
-if [ "$first_option" = "info-nodes" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
 echo "  [ info ] [ local net: ip lan .. ]"
@@ -7928,23 +7928,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-preferences-read:
-##########    english: preferences-read: read preferences   ##########
-##########    spanish: preferences-read: read preferences   ##########
-#### :rutina-inicial-preferences-read:
-####
-####
-if [ "$first_option" = "preferences-read" ]; then echo $give_cover
-cat $default_preferences
-exit ; fi
-####
-####
-#### :rutina-final-preferences-read:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
 #### :rutina-inicial-preferences-modify:
 ####
 ####
-if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 echo 
@@ -8284,7 +8273,7 @@ exit; fi
 #### :rutina-inicial-ping-ip4:
 ####
 ####
-if [ "$first_option" = "ping-ip4" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ping-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]   [ ping ip or host with ipv4 ] || ||"
 echo 
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
@@ -8309,7 +8298,7 @@ exit; fi
 #### :rutina-inicial-ping-ip6:
 ####
 ####
-if [ "$first_option" = "ping-ip6" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ping-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ ping one ip or host with ipv6 ] || ||"
 echo 
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
@@ -8334,7 +8323,7 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip4:
 ####
 ####
-if [ "$first_option" = "tracetcp-ip4" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "tracetcp-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace ip or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8360,7 +8349,7 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip6:
 ####
 ####
-if [ "$first_option" = "tracetcp-ip6" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "tracetcp-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace one ip or host with ipv6 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
@@ -8385,7 +8374,7 @@ exit; fi
 #### :rutina-inicial-traceicmp-ip4:
 ####
 ####
-if [ "$first_option" = "traceicmp-ip4" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "traceicmp-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8411,7 +8400,7 @@ exit; fi
 #### :rutina-inicial-traceicmp-ip6:
 ####
 ####
-if [ "$first_option" = "traceicmp-ip6" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "traceicmp-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8437,18 +8426,18 @@ exit; fi
 #### :rutina-inicial-host:
 ####
 ####
- if [ "$first_option" = "host" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
- echo 
- case $command_host in "$NULL") echo "$tab [ fail ] [ Install host command ]" ; exit ;; esac
- case "$second_option" in
- "$NULL") echo "$$tab [ info ] [ Please select a one host to launch host ]"
- echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;; esac
- echo "  [ ok ] [ host $trazador ]"
- $command_host $trazador
- echo 
- exit; fi
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "host" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
+echo 
+case $command_host in "$NULL") echo "$tab [ fail ] [ Install host command ]" ; exit ;; esac
+case "$second_option" in
+"$NULL") echo "$$tab [ info ] [ Please select a one host to launch host ]"
+echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
+*) trazador="$second_option" ;; esac
+echo "  [ ok ] [ host $trazador ]"
+$command_host $trazador
+echo 
+exit; fi
 ####
 ####
 #### :rutina-final-host:
@@ -8457,18 +8446,18 @@ exit; fi
 #### :rutina-inicial-dig:
 ####
 ####
- if [ "$first_option" = "dig" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
- echo 
- case $command_dig in "$NULL") echo "$tab [ fail ] [ Install dig command ]" ; exit ;; esac
- case "$second_option" in
- "$NULL") echo "$tab [ info ] [ Use: Please select a one host to launch dig ]"
- echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;; esac
- echo "  [ ok ] [ dig $trazador ]"
- $command_dig $trazador | $command_grep ^$trazador
- echo 
- exit; fi
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "dig" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
+echo 
+case $command_dig in "$NULL") echo "$tab [ fail ] [ Install dig command ]" ; exit ;; esac
+case "$second_option" in
+"$NULL") echo "$tab [ info ] [ Use: Please select a one host to launch dig ]"
+echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
+*) trazador="$second_option" ;; esac
+echo "  [ ok ] [ dig $trazador ]"
+$command_dig $trazador | $command_grep ^$trazador
+echo 
+exit; fi
 ####
 ####
 #### :rutina-final-dig:
@@ -8477,18 +8466,18 @@ exit; fi
 #### :rutina-inicial-resolveip:
 ####
 ####
- if [ "$first_option" = "resolveip" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
- echo 
- case $command_resolveip in "$NULL") echo "$tab [ fail ] [ Install resolveip command ]" ; exit ;; esac
- case "$second_option" in
- "$NULL") echo "$cinco Please select a one host to launch resolveip"
- echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;; esac
- echo "  [ ok ] [ resolveip $trazador ]"
- $command_resolveip $trazador
- echo 
- exit; fi
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "resolveip" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
+echo 
+case $command_resolveip in "$NULL") echo "$tab [ fail ] [ Install resolveip command ]" ; exit ;; esac
+case "$second_option" in
+"$NULL") echo "$cinco Please select a one host to launch resolveip"
+echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
+*) trazador="$second_option" ;; esac
+echo "  [ ok ] [ resolveip $trazador ]"
+$command_resolveip $trazador
+echo 
+exit; fi
 ####
 ####
 #### :rutina-final-resolveip:
@@ -8497,17 +8486,17 @@ exit; fi
 #### :rutina-inicial-geoip:
 ####
 ####
- if [ "$first_option" = "geoip" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ] || ||"
- echo 
- case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
- case "$second_option" in
- "$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
- *) trazador="$second_option" ;; esac
- echo "  [ ok ] [ geoiplookup -i $trazador ]"
- $command_geoiplookup -i $trazador
- echo 
- exit; fi
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "geoip" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ] || ||"
+echo 
+case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
+case "$second_option" in
+"$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
+*) trazador="$second_option" ;; esac
+echo "  [ ok ] [ geoiplookup -i $trazador ]"
+$command_geoiplookup -i $trazador
+echo 
+exit; fi
 ####
 ####
 #### :rutina-final-geoip:
@@ -8516,7 +8505,7 @@ exit; fi
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
-if [ "$first_option" = "ntpdate-client" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ntpdate-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] || ||"
 echo
 if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
@@ -8536,162 +8525,12 @@ exit; fi
 #### :rutina-inicial-nmap-tcp:
 ####
 ####
-if [ "$first_option" = "nmap-tcp" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ scan with nmap tcp ] || ||"
- echo 
- case $command_nmap in $NULL) echo install nmap ; exit ;; esac
- echo "$tab [ info ] [ nmap $first_option ip/mask ]"
- echo "  [ ok ] [ Stoped firewall while launching nmap ]"
-####
-####
-#### english: stop the firewall #### spanish: para el firewall
-####
-####
- $cmd_binary stop
-####
-####
-#### english: launch nmap #### spanish: lanza nmap
-####
-####
- echo "  [ ok ] [ Doing nmap ]"
- $command_nmap -sT $2
-####
-####
-#### english: continue the firewall #### spanish: continua el firewall
-####
-####
- $cmd_binary continue
-####
-####
- echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
- echo 
- exit; fi
-####
-####
-#### :rutina-final-nmap-tcp:
-##########    english: nmap-syn: scan one net per syn         ##########
-##########    spanish: nmap-syn: rastrea una por peticiones   ##########
-#### :rutina-inicial-nmap-syn:
-####
-####
- if [ "$first_option" = "nmap-syn" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ scan with nmap syn ] || ||"
- echo 
- case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
- echo "$tab [ info ] [ nmap $first_option ip/mask ]"
- echo "  [ ok ] [ Stoped firewall while launch nmap ]"
-####
-####
-#### english: stop the firewall #### spanish: para el firewall
-####
-####
- $cmd_binary stop
-####
-####
-#### english: launch nmap #### spanish: lanza nmap
-####
-####
- echo "  [ ok ] [ Doing nmap ]"
- $command_nmap -sF $2
-####
-####
-#### english: continue the firewall #### spanish: continua el firewall
-####
-####
- $cmd_binary continue
- echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
- echo 
- exit; fi
-####
-####
-#### :rutina-final-nmap-syn:
-##########    english: nmap-fin: scan one net per conexiones      ##########
-##########    spanish: nmap-fin: rastrea una red por conexiones   ##########
-#### :rutina-inicial-nmap-fin:
-####
-####
- if [ "$first_option" = "nmap-fin" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ scan with nmap fin ] || ||"
- echo 
- case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
- echo "$tab [ info ] [ nmap $first_option ip/mask ]"
- echo "  [ ok ] [ Stoped firewall while launch nmap ]"
-####
-####
-#### english: stop the firewall #### spanish: para el firewall
-####
-####
- $cmd_binary stop
-####
-####
-#### english: launch nmap #### spanish: lanza nmap
-####
-####
- echo "  [ ok ] [ Doing nmap ]"
- $command_nmap -sF $2
-####
-####
-#### english: continue the firewall #### spanish: continua el firewall
-####
-####
- $cmd_binary continue
-####
-####
- echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
- echo 
- exit; fi
-####
-####
-#### :rutina-final-nmap-fin:
-##########    english: nmap-udp: scan one net per udp       ##########
-##########    spanish: nmap-udp: rastrea una red por udp    ##########
-#### :rutina-inicial-nmap-udp:
-####
-####
- if [ "$first_option" = "nmap-udp" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ scan with nmap udp ] || ||"
- echo 
- case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
- echo "$cinco [ info ] [ nmap $first_option ip/mask ]"
- echo "$cinco [ ok ] [ Stoped firewall while launch nmap ]"
-####
-####
-#### english: stop the firewall #### spanish: para el firewall
-####
-####
- $cmd_binary stop
-####
-####
-#### english: launch nmap #### spanish: lanza nmap
-####
-####
- echo "  [ ok ] [ Doing nmap ]"
- $command_nmap -sU $2
-####
-####
-#### english: continue the firewall #### spanish: continua el firewall
-####
-####
- $cmd_binary continue
-####
-####
- echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
- echo 
- exit; fi
-####
-####
-#### :rutina-final-nmap-udp:
-##########    english: nmap-ping: scan one net per ping     ##########
-##########    spanish: nmap-ping: rastrea una red por ping  ##########
-#### :rutina-inicial-nmap-ping:
-####
-####
- if [ "$first_option" = "nmap-ping" ]; then echo $give_cover
- echo "$header_ok [ $first_option ]  [ scan with nmap ping ] || ||"
- echo 
- case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
- echo "$tab [ info ] [ nmap $first_option ip/mask ]"
- echo "  [ ok ] [ Stopped firewall while launch nmap ]"
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-tcp" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ scan with nmap tcp ] || ||"
+echo 
+case $command_nmap in $NULL) echo install nmap ; exit ;; esac
+echo "$tab [ info ] [ nmap $first_option ip/mask ]"
+echo "  [ ok ] [ Stoped firewall while launching nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -8703,17 +8542,167 @@ $cmd_binary stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
- echo "  [ ok ] [ Doing nmap ]"
- $command_nmap -sn $2
+echo "  [ ok ] [ Doing nmap ]"
+$command_nmap -sT $2
 ####
 ####
 #### english: continue the firewall #### spanish: continua el firewall
 ####
 ####
- $cmd_binary continue
- echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
- echo 
- exit; fi
+$cmd_binary continue
+####
+####
+echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-nmap-tcp:
+##########    english: nmap-syn: scan one net per syn         ##########
+##########    spanish: nmap-syn: rastrea una por peticiones   ##########
+#### :rutina-inicial-nmap-syn:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-syn" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ scan with nmap syn ] || ||"
+echo 
+case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
+echo "$tab [ info ] [ nmap $first_option ip/mask ]"
+echo "  [ ok ] [ Stoped firewall while launch nmap ]"
+####
+####
+#### english: stop the firewall #### spanish: para el firewall
+####
+####
+$cmd_binary stop
+####
+####
+#### english: launch nmap #### spanish: lanza nmap
+####
+####
+echo "  [ ok ] [ Doing nmap ]"
+$command_nmap -sF $2
+####
+####
+#### english: continue the firewall #### spanish: continua el firewall
+####
+####
+$cmd_binary continue
+echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-nmap-syn:
+##########    english: nmap-fin: scan one net per conexiones      ##########
+##########    spanish: nmap-fin: rastrea una red por conexiones   ##########
+#### :rutina-inicial-nmap-fin:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-fin" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ scan with nmap fin ] || ||"
+echo 
+case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
+echo "$tab [ info ] [ nmap $first_option ip/mask ]"
+echo "  [ ok ] [ Stoped firewall while launch nmap ]"
+####
+####
+#### english: stop the firewall #### spanish: para el firewall
+####
+####
+$cmd_binary stop
+####
+####
+#### english: launch nmap #### spanish: lanza nmap
+####
+####
+echo "  [ ok ] [ Doing nmap ]"
+$command_nmap -sF $2
+####
+####
+#### english: continue the firewall #### spanish: continua el firewall
+####
+####
+$cmd_binary continue
+####
+####
+echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-nmap-fin:
+##########    english: nmap-udp: scan one net per udp       ##########
+##########    spanish: nmap-udp: rastrea una red por udp    ##########
+#### :rutina-inicial-nmap-udp:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-udp" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ scan with nmap udp ] || ||"
+echo 
+case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
+echo "$cinco [ info ] [ nmap $first_option ip/mask ]"
+echo "$cinco [ ok ] [ Stoped firewall while launch nmap ]"
+####
+####
+#### english: stop the firewall #### spanish: para el firewall
+####
+####
+$cmd_binary stop
+####
+####
+#### english: launch nmap #### spanish: lanza nmap
+####
+####
+echo "  [ ok ] [ Doing nmap ]"
+$command_nmap -sU $2
+####
+####
+#### english: continue the firewall #### spanish: continua el firewall
+####
+####
+$cmd_binary continue
+####
+####
+echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-nmap-udp:
+##########    english: nmap-ping: scan one net per ping     ##########
+##########    spanish: nmap-ping: rastrea una red por ping  ##########
+#### :rutina-inicial-nmap-ping:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-ping" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ scan with nmap ping ] || ||"
+echo 
+case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
+echo "$tab [ info ] [ nmap $first_option ip/mask ]"
+echo "  [ ok ] [ Stopped firewall while launch nmap ]"
+####
+####
+#### english: stop the firewall #### spanish: para el firewall
+####
+####
+$cmd_binary stop
+####
+####
+#### english: launch nmap #### spanish: lanza nmap
+####
+####
+echo "  [ ok ] [ Doing nmap ]"
+$command_nmap -sn $2
+####
+####
+#### english: continue the firewall #### spanish: continua el firewall
+####
+####
+$cmd_binary continue
+echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo 
+exit; fi
 ####
 ####
 #### :rutina-final-nmap-ping:
@@ -8722,7 +8711,7 @@ $cmd_binary stop
 #### :rutina-inicial-free-ram:
 ####
 ####
-if [ "$first_option" = "free-ram" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "free-ram" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] || ||"
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo " Actual Memory"
@@ -8740,7 +8729,7 @@ exit; fi
 #### :rutina-inicial-speed-disk:
 ####
 ####
-if [ "$first_option" = "speed-disk" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-disk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the disc speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
@@ -8757,7 +8746,7 @@ exit; fi
 #### :rutina-inicial-speed-ram:
 ####
 ####
-if [ "$first_option" = "speed-ram" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ram" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the ram speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 case "$(mount | $command_grep -i  "/tmp type tmpfs" | wc -l)" 
@@ -8776,7 +8765,7 @@ exit; fi
 #### :rutina-inicial-speed-glx:
 ####
 ####
-if [ "$first_option" = "speed-glx" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-glx" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ] || ||"
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
@@ -8790,7 +8779,7 @@ exit; fi
 #### :rutina-inicial-speed-cpu:
 ####
 ####
-if [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
 echo "  [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
@@ -8805,7 +8794,7 @@ exit; fi
 #### :rutina-inicial-radio-mp3:
 ####
 ####
-if [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "  [ info ] [ for choose default radio see: $cmd_binary preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -8837,7 +8826,7 @@ exit; fi
 #### :rutina-inicial-radio-cadena100:
 ####
 ####
-if [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -8864,7 +8853,7 @@ exit; fi
 #### :rutina-inicial-radio-rockfm:
 ####
 ####
-if [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -8891,7 +8880,7 @@ exit; fi
 #### :rutina-inicial-radio-kissfm:
 ####
 ####
-if [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -8916,7 +8905,7 @@ exit; fi
 ##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
 ##########    spanish: weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-weather:
-if [ "$first_option" = "weather" ]; then 
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "weather" ]; then 
 case $favorite_text_browser in "$NULL") echo "$tab [ fail ] [ Install a text browser ]"; exit ;; esac
 $favorite_text_browser -dump wttr.in
 exit; fi
@@ -8926,7 +8915,7 @@ exit; fi
 #### :rutina-inicial-game-rgb:
 ####
 ####
-if [ "$first_option" = "game-rgb" ]; then  $nada
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-rgb" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
 echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: fwiptables game-rgb 255000255 ]"
 else
@@ -8958,7 +8947,7 @@ fi; exit ; fi
 #### :rutina-inicial-game-hex:
 ####
 ####
-if [ "$first_option" = "game-hex" ]; then  $nada
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-hex" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
 echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: fwiptables game-hex FF00FF ]"
 else
@@ -8990,7 +8979,7 @@ fi ; exit; fi
 #### :rutina-inicial-game-domain:
 ####
 ####
-if [ "$first_option" = "game-domain" ] ; then
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-domain" ] ; then
 file_domain="$directory_default/$cmd_binary-domain"
 if [ -s $file_domain ]; then $nada 
 else echo "  [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
@@ -9036,7 +9025,7 @@ exit; fi
 #### :rutina-inicial-game-word:
 ####
 ####
-if [ "$first_option" = "game-word" ]; then  $nada
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-word" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -9453,7 +9442,7 @@ fi
 #### :rutina-inicial-game-number:
 ####
 ####
-if [ "$first_option" = "game-number" ]; then  $nada
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-number" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -9819,7 +9808,7 @@ fi
 #### :rutina-inicial-sshd-tunnel-info:
 ####
 ####
-if [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
 if [ "$command_lsof" == "$NULL" ] ; then echo "  [ fail ] [ Install lsof ]" ; exit ; fi
 #### ssh tunnel
@@ -9849,7 +9838,7 @@ exit; fi
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
-if [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ on: ssh server socks on port 1080 like active ssh tunnel ] || ||"
 if [ "$second_option" == "$NULL" ]; then echo "  [ fail ] [ type: $cmd_binary sshd-tunnel-on user@server ]"; exit ; fi
 echo "  [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
@@ -9864,7 +9853,7 @@ exit; fi
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
-if [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
 echo "  [ info ] [ killing procees with: ssh -f -N -D ]"
 for parada in $(ps aux | $command_grep "ssh \-f \-N \-D" | $command_grep -iv "grep ssh" | awk '{print $2}' -);
@@ -9879,7 +9868,7 @@ exit; fi
 #### :rutina-inicial-filelog:
 ####
 ####
-if [ "$first_option" = "filelog" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "filelog" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show $output_filelog ] || ||"
 cat  "$output_filelog"
 echo 
@@ -9893,7 +9882,7 @@ exit; fi
 #### :rutina-inicial-autolog:
 ####
 ####
-if [ "$first_option" = "autolog" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "autolog" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show "$output_autolog" ] || ||"
 cat  "$output_autolog"
 echo
@@ -9907,7 +9896,7 @@ exit; fi
 #### :rutina-inicial-log-ssh:
 ####
 ####
-if [ "$first_option" = "log-ssh" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "log-ssh" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ search sshd in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo "  [ fail ] [ Install zgrep ]"; exit ; fi
 $command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
@@ -9920,7 +9909,7 @@ exit; fi
 #### :rutina-inicial-log-search:
 ####
 ####
-if [ "$first_option" = "log-search" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "log-search" ]; then echo $give_cover
 echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo "  [ fail ] [ Install zgrep ]"; exit ; fi
 case "$second_option" in
@@ -9936,7 +9925,7 @@ exit; fi
 #### :rutina-inicial-dev-version:
 ####
 ####
-if [ "$first_option" = "dev-version" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-version" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ] || ||"
 echo $fweb_development
 exit; fi
@@ -9948,7 +9937,7 @@ exit; fi
 #### :rutina-inicial-dev-changes:
 ####
 #### 
-if [ "$first_option" = "dev-changes" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-changes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ] || ||"
 $favorite_text_browser -source $fweb_changes
 exit; fi
@@ -9960,7 +9949,7 @@ exit; fi
 #### :rutina-inicial-new-versions:
 ####
 ####
-if [ "$first_option" = "new-versions" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -9974,7 +9963,7 @@ exit; fi
 #### :rutina-inicial-gpg-notes:
 ####
 ####
-if [ "$first_option" = "gpg-notes" ]; then 
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "gpg-notes" ]; then 
 ####
 ####
 if [ "$second_option" == "-list" ] || [ "$second_option" == "$NULL" ] ; then
@@ -10060,7 +10049,7 @@ exit ; fi
 #### :rutina-inicial-pc-halt:
 ####
 ####
-if [ "$first_option" = "pc-halt" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "pc-halt" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ] || ||"
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -10075,7 +10064,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if [ "$first_option" = "pc-shutdown" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "pc-shutdown" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ] || ||"
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -10090,7 +10079,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if [ "$first_option" = "pc-reboot" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "pc-reboot" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ reboot computer ] || ||"
 demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
@@ -10105,7 +10094,7 @@ exit; fi
 #### :rutina-inicial-lpinfo:
 ####
 ####
-if [ "$first_option" = "lpinfo" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lpinfo" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ] || ||"
 echo "  [ info] [ lpinfo -v -l ]"
 echo
@@ -10125,7 +10114,7 @@ exit; fi
 #### :rutina-inicial-lsblk:
 ####
 ####
-if [ "$first_option" = "lsblk" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsblk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list disks ] || ||"
 echo "  [ info ] [ lsblk ]"
 $command_lsblk -o name,size,fsuse%,label,mountpoints || echo "  [ fail ] install lsblk"
@@ -10138,7 +10127,7 @@ exit; fi
 #### :rutina-inicial-lsusb:
 ####
 ####
-if [ "$first_option" = "lsusb" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsusb" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list usb ] || ||"
 echo "  [ info ] [ lsusb ]"
 $command_lsusb || echo "  [ fail ] install lsusb"
@@ -10151,7 +10140,7 @@ exit; fi
 #### :rutina-inicial-lscpu:
 ####
 ####
-if [ "$first_option" = "lscpu" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lscpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list cpu ] || ||"
 echo "  [ info ] [ lscpu ]"
 $command_lscpu || echo  "  [ fail ] install lscpu"
@@ -10164,7 +10153,7 @@ exit; fi
 #### :rutina-inicial-lspci:
 ####
 ####
-if [ "$first_option" = "lspci" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lspci" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list pci hardware sockets ] || ||"
 echo "  [ info ] [ lspci ]"
 $command_lspci || echo  "  [ fail ] install lspci"
@@ -10177,7 +10166,7 @@ exit; fi
 #### :rutina-inicial-lsgpu:
 ####
 ####
-if [ "$first_option" = "lsgpu" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsgpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list gpu ] || ||"
 echo "  [ info ] [ lsgpu ]"
 $command_lsgpu || echo "  [ fail ] install lsgpu"
@@ -10190,7 +10179,7 @@ exit; fi
 #### :rutina-inicial-lshw:
 ####
 ####
-if [ "$first_option" = "lshw" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "lshw" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list hardware ] || ||"
 echo "  [ info ] [ lshw ]"
 $command_lshw || echo  "  [ fail ] install lshw"
@@ -10203,7 +10192,7 @@ exit; fi
 #### :rutina-inicial-hosts:
 ####
 ####
-if [ "$first_option" = "hosts" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ] || ||"
 cat /etc/hosts
 echo "  [ ok ] [ This file is /etc/hosts ]"
@@ -10216,7 +10205,7 @@ exit; fi
 #### :rutina-inicial-protocols:
 ####
 ####
- if [ "$first_option" = "protocols" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "protocols" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ] || ||"
 cat /etc/protocols  | $command_sed s/\&//g 
 echo "  [ ok ] [ This file is /etc/protocols ]"
@@ -10229,7 +10218,7 @@ exit; fi
 #### :rutina-inicial-services:
 ####
 ####
-if [ "$first_option" = "services" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "services" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/services ] || ||"
 cat /etc/services | $command_sed s/\&//g 
 echo "  [ ok ] [ This file is /etc/services ]"
@@ -10242,7 +10231,7 @@ exit; fi
 #### :rutina-inicial-host.allow:
 ####
 ####
-if [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/allow ] || ||"
 cat /etc/hosts.allow
 echo "  [ ok ] [ This file is /etc/hosts.allow ]"
@@ -10255,7 +10244,7 @@ exit; fi
 #### :rutina-inicial-hosts.deny:
 ####
 ####
-if [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/deny ] || ||"
 cat /etc/hosts.deny
 echo "  [ ok ] [ This file is /etc/hosts.deny ]"
@@ -10268,7 +10257,7 @@ exit; fi
 #### :rutina-inicial-resolv.conf:
 ####
 ####
-if [ "$first_option" = "resolv.conf" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "resolv.conf" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show resolv.conf ] || ||"
 if [ -f /etc/resolv.conf.head ]; then
 echo "$tab  [ with resolv.conf.head ]"
@@ -10291,7 +10280,7 @@ exit; fi
 #### :rutina-inicial-about:
 ####
 ####
-if [ "$first_option" = "about" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "about" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ about ] [ about md ] || ||" 
 echo "$title_md [ $cmd_binary: ]"
 echo "$text_md [ Path Program ] $directory_binary/$cmd_binary"
@@ -10331,7 +10320,7 @@ exit; fi
 #### :rutina-inicial-info-system:
 ####
 ####
-if [ "$first_option" = "info-system" ]; then  echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
 echo
 echo "  [ info ] ### [ System info ] [ Distro ] ###"
@@ -10361,7 +10350,7 @@ exit; fi
 #### :rutina-inicial-info-net:
 ####
 ####
-if [ "$first_option" = "info-net" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ] || ||"
 echo
 echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
@@ -10411,7 +10400,7 @@ exit; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" = "ip4" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
 echo
 echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
@@ -10444,7 +10433,7 @@ exit; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" = "ip6" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] &&  [ "$first_option" = "ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
 echo
 echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
@@ -10477,7 +10466,7 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if [ "$first_option" = "speed-ip4" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "  [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
@@ -10497,7 +10486,7 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if [ "$first_option" = "speed-ip6" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
 ####
@@ -10517,7 +10506,7 @@ exit; fi
 #### :rutina-inicial-web-cert:
 ####
 ####
-if [ "$first_option" = "web-cert" ] ; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "web-cert" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
 case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
@@ -10535,7 +10524,7 @@ exit; fi
 #### :rutina-inicial-clean-tmp:
 ####
 ####
-if [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
 echo "  [ info ] [ cleaning $cmd_binary temporal files ]"
 rm -rf "$directory_tmp" &> /dev/null
@@ -10549,7 +10538,7 @@ exit; fi
 #### :rutina-inicial-config-eng:
 ####
 ####
-if [ "$first_option" = "config-eng" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "config-eng" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from english configuration ] || ||"
 cat  $defaultfullcfg_eng
 exit; fi
@@ -10561,7 +10550,7 @@ exit; fi
 #### :rutina-inicial-config-spa:
 ####
 ####
-if [ "$first_option" = "config-spa" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "config-spa" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ] || ||"
 cat $defaultfullcfg_spa
 exit; fi
@@ -10573,7 +10562,7 @@ exit; fi
 #### :rutina-inicial-info:
 ####
 ####
-if [ "$first_option" = "info" ]; then $nada
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "info" ]; then $nada
 if [ "$second_option" = "options-interface" ]; then $cmd_binary options-interface ; exit ; fi
 if [ "$second_option" = "firewall-control" ]; then $cmd_binary firewall-control ; exit ; fi
 if [ "$second_option" = "firewall-list" ]; then $cmd_binary firewall-list ; exit ; fi
@@ -10625,7 +10614,7 @@ exit; fi
 #### :rutina-inicial-readme:
 ####
 ####
-if [ "$first_option" = "readme" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "readme" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ help in english ] [ readme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
@@ -10755,9 +10744,9 @@ echo "$text_md"
 echo "$text_md      preferences-read   : Show values for default."
 echo "$text_md      preferences-modify : Modify values for default."
 echo "$text_md      preferences-regen  : Regenerate values for default."
-echo "$text_md      install        : Install $cmd_binary."
-echo "$text_md      uninstall      : Uninstall $cmd_binary."
-echo "$text_md      upgrade        : Upgrqade $cmd_binary."
+echo "$text_md      install            : Install program."
+echo "$text_md      uninstall          : Uninstall program."
+echo "$text_md      upgrade            : Upgrqade program."
 echo "$text_md"
 echo "$text_md"
 echo "$title_md         [ List sockets ]"
@@ -10981,7 +10970,7 @@ echo "$text_md     Ipv6 works too with: ipv4 procotols."
 echo "$text_md"
 echo "$title_md  [License]"
 echo "$text_md"
-echo "$text_md  Download the latest version $cmd_name from sourceforge"
+echo "$text_md  Download the latest version from sourceforge"
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
@@ -10996,7 +10985,7 @@ exit; fi
 #### :rutina-inicial-leeme:
 ####
 ####
-if [ "$first_option" = "leeme" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "leeme" ]; then echo $give_cover
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
@@ -11222,7 +11211,7 @@ echo "$text_md        install : Instala este programa actual."
 echo "$text_md        upgrade : Actualiza a la ultima estable version."
 echo "$text_md    dev-upgrade : Actualiza a la ultima git version."
 echo "$text_md  howto-upgrade : Indicacion para actualizar."
-echo "$text_md      clean-tmp : borra archivos temporales de $cmd_binary."
+echo "$text_md      clean-tmp : borra archivos temporales de program."
 echo "$text_md"
 echo "$title_md [ Herramienta de lista de bloqueo ]."
 echo "$text_md"
@@ -11329,7 +11318,7 @@ echo "$text_md     Ipv6 funciona tambien con: ipv4 procolos."
 echo "$text_md"
 echo "$title_md [Licencia]."
 echo "$text_md"
-echo "$text_md  Descarga la ultima version de $cmd_name desde la web de sourceforge."
+echo "$text_md  Descarga la ultima version desde la web de sourceforge."
 echo "$text_md  $fweb_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
