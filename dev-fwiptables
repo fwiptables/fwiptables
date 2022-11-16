@@ -355,7 +355,7 @@ fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-lis
 #### spanish: si esta mal definidad definida whithout_option
 ####
 ####
-default_security="mini-options"
+default_security="options-mini"
 ####
 ####
 fwiptables_installed=""
@@ -2544,6 +2544,34 @@ fi
 ####
 ####
 #### :rutina-final-system-rules:
+##########    english: options-mini: wellcome with semi help    ##########
+##########    spanish: options-mini: bienvenida con semi ayuda  ##########
+#### :sincontarrutina-inicial-mini-options:
+####
+####
+if [ "$program_minimal" == "" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
+echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
+echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
+echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
+echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
+echo "$text_md      firewall-list |  ls ls6 list list6 status list-alltables list-filter4 list-filter6            "
+echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                           "
+echo "$text_md                       new-mini-config nueva-mini-config examples-config                            "
+echo "$text_md                       show-config modify-config del-config names-config                            "
+echo "$text_md    firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
+echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
+echo "$text_md                       client-web client-vnc client-mail client-news client-torrent client-vpn      "
+echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
+echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
+echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
+echo "$text_md                       server-asterisk server-squid                                                 "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version                "
+exit ; fi
+####
+####
+#### :sincontarrutina-final-mini-options:
 ##########    english: options-mini: wellcome with semi help    ##########
 ##########    spanish: options-mini: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-options-mini:
