@@ -632,8 +632,8 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
-if [ "$first_option" = "ls"   ] ; then first_option="status"   ; fi
-if [ "$first_option" = "list" ] ; then first_option="status"   ; fi
+## if [ "$first_option" = "ls"   ] ; then first_option="status"   ; fi
+## if [ "$first_option" = "list" ] ; then first_option="status"   ; fi
 if [ "$first_option" = "ls4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
 if [ "$first_option" = "ls6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
 if [ "$first_option" = "list4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
