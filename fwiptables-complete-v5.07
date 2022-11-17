@@ -303,7 +303,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary ] [ Version: $cmd_version ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary $cmd_version"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -490,6 +490,10 @@ case "$allow_ipv6"            in "no") ;; *) allow_ipv6=""      ;; esac
 case "$list_rules_conceptual" in "$NULL") ;; *) list_rules_conceptual=" -n" ;; esac
 ####
 ####
+if [ "$program_minimal" == "no" ]; 
+then give_cover="$give_cover state:complete ] || ||"
+else give_cover="$give_cover state:mini ] || ||"
+fi
 #### english: if null option is void return default to mini-options
 #### spanish: si la opcion por defecto esta vacia vuelve a mini-options
 ####
@@ -1113,7 +1117,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "install" ]; then echo $give_cover
+if [ "$first_option" = "install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version installer ] [ install md ] || ||"
 ####
 ####
@@ -2567,7 +2571,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version                "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version notes          "
 exit ; fi
 ####
 ####
@@ -4153,7 +4157,7 @@ exit; fi
 #### :rutina-inicial-notes:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "notes" ]; then echo $give_cover
+if [ "$first_option" = "notes" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ] || ||"
 echo "$text_md"
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"

@@ -973,6 +973,76 @@ exit ; fi
 ####
 ####
 #### :sincontarrutina-final-version:
+##########    english: notes: notes to configure iptables      ##########
+##########    spanish: notes: notas para configurar iptables   ##########
+#### :sincontarrutina-inicial-notes:
+####
+####
+if [ "$first_option" = "notes" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ] || ||"
+echo "$text_md"
+echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
+echo "$text_md  [ legacy or nft ] [ con uno de ellos es suficiente ] [ porque cuando uno acepta despues va a la otro ]" 
+echo "$text_md"
+echo "$text_md  [ allow_shield_maxtries ] [ limit a attack per bruteforce to us ssh server] "
+echo "$text_md  [ allow_shield_maxtries ] [ limita un ataque por fuerza bruta a nuestro servidor ssh ]"
+echo "$text_md"
+echo "$text_md  [ net vpn ]  [ virtual private network ] [ whitelist ]"
+echo "$text_md  [ net vpn ] [ red privada virtual ]     [ lista blanca ]"
+echo "$text_md"
+echo "$text_md  Host [net vpn] excepcionals hosts has conection allowed in firewall"
+echo "$text_md  Host [net vpn] excepcionales hosts tienen la conexion permitida en el firewall"
+echo "$text_md"
+echo "$text_md  [net blacklist] [deny host]"
+echo "$text_md  [net blacklist] [Lista negra]"
+echo "$text_md"  
+echo "$text_md  Host [ net blacklist ] excepcionals hosts has conection dropped in firewall"
+echo "$text_md  Host [ net blacklist ] expcecionales hosts tienen la conexion denegada en firewall"
+echo "$text_md"
+echo "$text_md  [ allow output uid ] [user and group]"
+echo "$text_md  [ allow output uid ] [usuario y grupo]"
+echo "$text_md"
+echo "$text_md  User and/or group excepcional have output conection allowed in firewall"
+echo "$text_md  Usuario y/o grupo excepcional tienen la salida permitida en firewall"
+echo "$text_md"
+echo "$text_md  [ Notes ] [ Two iptables netfilter ]"
+echo "$text_md  [ Notas ] [ Dos iptables netfilter ]"
+echo "$text_md"
+echo "$text_md  iptables-legacy   is    support for xtables "
+echo "$text_md  iptables-nft      is    support for nftables "
+echo "$text_md"
+echo "$text_md  [ Notes ] [necesary ports to connect with ipv4 and ipv6 in UDP protocol]"
+echo "$text_md  [ Notas ] [puertos necesarios para conectar con ipv4 y ipv6 en UDP protocolo]"
+echo "$text_md"
+echo "$text_md  ntp    : Port necesary to update the time and date"
+echo "$text_md         : Puerto necesario para actualizar la hora y fecha"
+echo "$text_md  bootpc : Port necesary to dhcp and get ip"
+echo "$text_md         : Puerto necesario para actualizar y conseguir la ip"
+echo "$text_md  domain : This port is necesary to domain resolver"
+echo "$text_md         : Puerto necesario para resolver dominios"
+echo "$text_md  https  : This port is necesary for udp named web html5"
+echo "$text_md         : Puerto necesario para udp llamado web html5"
+echo "$text_md"
+echo "$text_md  [ Notes ] [necesary protocols for ip v6]"
+echo "$text_md  [ Notas ] [protocolos necesarios para ip v6]"
+echo "$text_md"
+echo "$text_md  ipv6-icmp : Necesary protocol in ipv6"
+echo "$text_md        : Protocolo necesario en ipv6"
+echo "$text_md  ipv4 protocols : ipv6 works too with old ipv4 procotols"
+echo "$text_md        : ipv6 funciona tambien con viejos ipv4 protocolos"
+echo "$text_md"
+echo "$text_md  [ License ]"
+echo "$text_md"
+echo "$text_md  Download the latest version $cmd_name from sourceforge"
+echo "$text_md  $fweb_latest"
+echo "$text_md  $flicense"
+echo "$text_md  $license_gpl"
+echo "$text_md"
+echo  
+exit; fi
+####
+####
+#### :sincontarrutina-final-notes:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :sincontarrutina-inicial-regen-config:
@@ -2281,7 +2351,7 @@ echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || 
 echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
-echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6            "
+echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
 echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
 echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables                   "
 echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                           "
@@ -2294,7 +2364,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version                    "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version notes          "
 exit ; fi
 ####
 ####
