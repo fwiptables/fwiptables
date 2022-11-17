@@ -6,7 +6,11 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
  01. integrar tool-qemu en fwiptables complete. trabjando
 
- cambios en dev-fwiptables 5.07 en desarrollo
+ cambios en dev-fwiptables 5.08 en desarrollo
+
+ 01. varios arreglos
+
+ cambios en dev-fwiptables 5.07 lineas=1
 
  05. cuando legacy o nft es activado hay reglas para todos excepto si ip4 o ip6 no estan permitidos permite localhost y dropean resto. HECHO
  04. ipv4 y ipv6 activados por defecto en preferencias. HECHO
