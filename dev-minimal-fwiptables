@@ -60,7 +60,7 @@ exit ; fi
 ####
 ####
 cmd_binary="fwiptables-mini"
-cmd_version="minimal-5.07" ;
+cmd_version="minimal-5.08" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2"
