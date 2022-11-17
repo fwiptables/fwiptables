@@ -59,10 +59,10 @@ exit ; fi
 #### :sincontarrutina-inicial-name:
 ####
 ####
-cmd_binary="fwiptables-cmd"
-cmd_version="minimal-5.06" ;
+cmd_binary="fwiptables-mini"
+cmd_version="minimal-5.07" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
-cmd_description="One Script in bash for iptables firewall" ;
+cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2"
 cmd_homepage="https://sourceforge.net/projects/f-iptables/"
 ####
