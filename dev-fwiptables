@@ -7968,7 +7968,7 @@ exit; fi
 #### :rutina-inicial-preferences-modify:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
+if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 echo 
