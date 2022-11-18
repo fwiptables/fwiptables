@@ -1051,7 +1051,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
-echo "$text_md     # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         "
+echo "$text_md     [ done ] [ Choose fwiptables-complete working like complete or working like minimal         "
+echo "$text_md     # Manage Fran Firewall # configure both iptables netfilter for linux with templates. #      "
 echo "$text_md     [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             "
 echo "$text_md     [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          "
 echo "$text_md     # Standard firewall # Create one firewall with one wizard and save it in standard file. #   "
@@ -1065,11 +1066,11 @@ echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     # $cmd_binary $cmd_version"
 #### #### #### 
-if [ "$fwiptables_installed" == "no" ]; then
-echo "$text_md     [ info ] [ Actually, NO, ] [ this version is not installed in $directory_binary/$cmd_binary ]" ; 
-else
-echo "$text_md     [ info ] [ Actually, YES, ] [ this version is installed in $directory_binary/$cmd_binary ]" ;
-fi
+# if [ "$fwiptables_installed" == "no" ]; then
+# echo "$text_md     [ info ] [ Actually, NO, ] [ this version is not installed in $directory_binary/$cmd_binary ]" ; 
+# else
+# echo "$text_md     [ info ] [ Actually, YES, ] [ this version is installed in $directory_binary/$cmd_binary ]" ;
+# fi
 #### #### #### 
 echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install ]" 
 echo "$text_md     [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-$cmd_version upgrade ]" 
