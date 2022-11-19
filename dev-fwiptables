@@ -9908,6 +9908,102 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-tunnel-off
+##########   english: qemu-start  Start qemu machine        ##########
+##########   spanish: qemu-start  Empieza una maquina qemu  ##########
+#### :rutina-inicial-qemu-start:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-start" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
+####
+####
+#### prepare static variables
+####
+####
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+####
+####
+command_qemu="$(command -v $architecture_vm)"
+qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
+qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
+####
+####
+if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
+$qemu_full &
+echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
+exit
+fi
+#### :rutina-final-qemu-start:
+##########   english: qemu-restart  Restart qemu machine        ##########
+##########   spanish: qemu-restart  Resetea una maquina qemu    ##########
+#### :rutina-inicial-qemu-restart:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-restart" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ restart qemu machine ] [ vm ] [ iso ] || ||"
+####
+####
+#### prepare static variables
+####
+####
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+####
+####
+command_qemu="$(command -v $architecture_vm)"
+qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
+qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
+####
+####
+if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
+$qemu_full &
+echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
+exit
+fi
+#### :rutina-final-qemu-restart:
+##########   english: qemu-probe  Probe qemu machine        ##########
+##########   spanish: qemu-probe  prueba una maquina qemu  ##########
+#### :rutina-inicial-qemu-probe:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-probe" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
+####
+####
+#### prepare static variables
+####
+####
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
+if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+####
+####
+command_qemu="$(command -v $architecture_vm)"
+qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
+qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
+####
+####
+if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
+echo $qemu_full
+echo " [ ok ] [ probe ]"
+exit
+fi
+#### :rutina-final-qemu-probe:
+##########   english: qemu-status  Status qemu machine        ##########
+##########   spanish: qemu-status  Estado de maquina qemu  ##########
+#### :rutina-inicial-qemu-status:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-status" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ status qemu machine ] || ||"
+ps -Af | grep -i  "qemu-system" 
+echo " [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
+exit; fi
+#### :rutina-final-qemu-status:
+
+##########   english: qemu-stop  Stop qemu machine        ##########
+##########   spanish: qemu-stop  Para la maquina qemu     ##########
+#### :rutina-inicial-qemu-stop:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-stop" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ stop qemu machine ] || ||"
+ps -Af | grep -i  "$architecture_vm"
+echo " [  ok  ] [ status ] [ process listed ]"
+killall -9 "$architecture_vm"
+echo " [ ok ] [ stopped ] [ stopped all vm ] [ $architecture_vm ]"
+exit; fi
+#### :rutina-final-qemu-stop:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
 #### :rutina-inicial-filelog:
