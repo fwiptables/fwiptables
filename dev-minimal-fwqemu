@@ -70,12 +70,12 @@ exit ; fi
 ####
 #### #### variables to modify
 qemu_name="Qemu VM"
-architecture="qemu-system-i386"
 memory_ram="1500M"
 processor_smp="4"
-directory_images="/qemu"
-default_image="default-vm"
-display_vm="vnc=:0"
+architecture_vm="qemu-system-i386"
+directory_vm="/qemu"
+default_vm="default-vm"
+display_vm="sdl"
 language_vm="es"
 #### #### #### variables to modify
 ####
@@ -86,6 +86,9 @@ language_vm="es"
 #### :rutina-inicial-sane:
 ####
 ####
+zero_option="$0" ; first_option="$1" ; second_option="$2" ; third_option="$3" ; quad_option="$4"
+####
+####
 cmd_description="Mini Fran Cli QEMU"
 cmd_program="fwqemu-mini"
 cmd_version="v5.05"
@@ -94,16 +97,13 @@ cmd_license="GPL v2"
 ####
 cache_path="$HOME/.cache/$cmd_program"
 config_path="$HOME/.config/$cmd_program"
-config_file="$HOME/.config/$cmd_program/config"
+config_file="$HOME/.config/$cmd_program/preferences"
 ####
 ####
 ####  sane configs
 if [ ! -d $cache_path  ] ; then mkdir -p $cache_path  ; fi
 if [ ! -d $config_path ] ; then mkdir -p $config_path ; fi
-if [ ! -s $config_file ] ; then $0 preferences reset  ; else source $config_file ; fi
-####
-####
-zero_option="$0" ; first_option="$1" ; second_option="$2" ; third_option="$3" ; quad_option="$4"
+if [ ! -f $config_file ] ; then echo "The first launch: $zero_option preferences reset" ; else source "$config_file" ; fi
 ####
 ####
 #### :rutina-final-sane:
@@ -114,7 +114,7 @@ zero_option="$0" ; first_option="$1" ; second_option="$2" ; third_option="$3" ; 
 ####
 if [ "$first_option" == "-t" ]; then first_option="-txt"  ; fi
 if [ "$first_option" == "-c" ]; then first_option="-cli"  ; fi
-if [ "$first_option" == "-g" ]; then first_option="-gui"  ; fi
+### if [ "$first_option" == "-g" ]; then first_option="-gui"  ; fi
 if [ "$first_option" == "-n" ]; then first_option="-null" ; fi
 ####
 ####
@@ -125,7 +125,7 @@ if [ "$first_option" == "-n" ]; then first_option="-null" ; fi
 ####
 ####
 ####  backend
-case "$first_option" in 
+case "$first_option" in
 "$NULL"|"-help") echo "## Description: $cmd_description ## Program: $cmd_program ## Version: $cmd_version ## License: $cmd_license ##" ;
 echo  "## launch: $zero_option [ -gui-menu -cli-menu -t|-txt -c|-cli -g|-gui -h|-help -n|-null ] \
 preferences|directory|probe|status|start|stop|restart|mount|umount  [ imagen-hd ] [ imagen.iso ] "; exit ;;
@@ -142,44 +142,47 @@ esac
 #### :rutina-final-backend:
 #################################################################################
 #################################################################################
-#### :rutina-inicial-static:
+#### :rutina-inicial-prepare-variables:
 ####
 ####
-#### static variables
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_images/$default_image" ; else qemu_vm="$second_option" ; fi
+#### prepare static variables
+####
+####
+if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
 if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
-display_vnc=":0"
-command_qemu="$(command -v $architecture)"
+####
+####
+command_qemu="$(command -v $architecture_vm)"
 qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
 qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 ####
-#### :rutina-final-static:
+#### :rutina-final-prepare-variables:
 #################################################################################
 #################################################################################
 #### :rutina-inicial-principal:
 ####
 ####
 ##### preferences
-case "$first_option" in 
+case "$first_option" in
 "preferences")
-if [ "$second_option" = "read"   ] ;  then cat "$config_file"         ; exit ; fi
-if [ "$second_option" = "modify" ] ;  then echo " modify file: $config_file" ; exit ; fi
+if [ "$second_option" = "read"   ] ;  then cat    "$config_file" ; exit ; fi
+if [ "$second_option" = "modify" ] ;  then editor "$config_file" ; exit ; fi
 if [ "$second_option" = "reset"  ] ;  then thelines=12 ;
-cat $0 | fgrep  ":rutina-final-modify:" -B $thelines  | head -$thelines &>  "$config_file" ;
-echo ; echo " #### values reset for default ####" ; exit ;
+cat $0 | grep  ":rutina-final-modify:" -B $thelines  | head -$thelines &>  $config_file ;
+echo ; echo " #### values reset for default ####" ; cat "$config_file" ; exit ;
 else echo " $zero_option $first_option read|modify|reset" ; exit ; fi ;;
 ##### directory
 "directory")
 echo
-echo " [ ok ] [ default directory ] [ $directory_images ]"
-echo " [ ok ] [ default file      ] [ $directory_images/$default_image ]"
+echo " [ ok ] [ default directory ] [ $directory_vm ]"
+echo " [ ok ] [ default file      ] [ $directory_vm/$default_vm ]"
 echo
-echo " [ ok ] [ default directory ] [ files from $directory_images ]"
+echo " [ ok ] [ default directory ] [ files from $directory_vm ]"
 echo
-ls -1 $directory_images
+ls -1 $directory_vm
 echo
-echo " [ ok ] [ list files ] [ listed from $directory_images ]"
+echo " [ ok ] [ list files ] [ listed from $directory_vm ]"
 exit ;;
 ##### whith probe
 "probe")
@@ -188,26 +191,26 @@ echo " [ ok ] [ probe ]"
 exit ;;
 ##### with status
 "status")
-ps -Af | grep -i  "$architecture" 
-# echo " [  ok  ] [ status ] [ process listed ] [ $architecture ]"
+ps -Af | grep -i  "$architecture_vm" 
+# echo " [  ok  ] [ status ] [ process listed ] [ $architecture_vm ]"
 exit ;;
 ##### with stop
 "stop")
-killall -9 "$architecture"
+killall -9 "$architecture_vm"
 echo " [ ok ] [ stopped ] [ stopped all vm ]"
 exit ;;
 ##### with start
 "start")
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 $qemu_full &
-echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture ] [ vm: $qemu_vm ] [ Display: $display_vm ]"
+echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
 exit ;;
 ##### with restart
 "restart")
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 $0 stop  &> /dev/null
 $0 start $2 $3 &> /dev/null
-echo " [ ok ] [ restarted ] [ reseted vm ] [ arch: $architecture ] [ vm: $qemu_vm ] [ Display: $display_vm ]"
+echo " [ ok ] [ restarted ] [ reseted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
 exit ;;
 #### #### mount:
 "mount")
