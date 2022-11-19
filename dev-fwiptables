@@ -279,6 +279,15 @@ radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ##
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
 radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
+#### #### variables to modify for qemu
+qemu_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
+memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
+processor_smp="4"						 ## fwiptables-file-default ## variable qemu
+architecture_vm="qemu-system-i386"			         ## fwiptables-file-default ## variable qemu
+directory_vm="/qemu"						 ## fwiptables-file-default ## variable qemu
+default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
+display_vm="sdl"						 ## fwiptables-file-default ## variable qemu						
+language_vm="es"						 ## fwiptables-file-default ## variable qemu
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -7943,7 +7952,7 @@ if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
+echo "$(head -350 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
 echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $default_preferences ]"
 exit; fi
 ####
