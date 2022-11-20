@@ -318,7 +318,7 @@ give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || |
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary preferences-modify ]"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch: $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch to configure: $cmd_binary preferences-modify ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
