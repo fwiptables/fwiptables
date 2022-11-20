@@ -9911,7 +9911,7 @@ exit; fi
 ##########   english: qemu-start  Start qemu machine        ##########
 ##########   spanish: qemu-start  Empieza una maquina qemu  ##########
 #### :rutina-inicial-qemu-start:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-start" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-start" ] ; then echo $give_cover; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -9936,7 +9936,7 @@ fi
 ##########   english: qemu-restart  Restart qemu machine        ##########
 ##########   spanish: qemu-restart  Resetea una maquina qemu    ##########
 #### :rutina-inicial-qemu-restart:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-restart" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-restart" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ restart qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -9961,7 +9961,7 @@ fi
 ##########   english: qemu-probe  Probe qemu machine        ##########
 ##########   spanish: qemu-probe  prueba una maquina qemu  ##########
 #### :rutina-inicial-qemu-probe:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-probe" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-probe" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -9986,7 +9986,7 @@ fi
 ##########   english: qemu-status  Status qemu machine        ##########
 ##########   spanish: qemu-status  Estado de maquina qemu  ##########
 #### :rutina-inicial-qemu-status:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-status" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-status" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ status qemu machine ] || ||"
 ps -Af | grep -i  "qemu-system" 
 echo " [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
@@ -9996,7 +9996,7 @@ exit; fi
 ##########   english: qemu-stop  Stop qemu machine        ##########
 ##########   spanish: qemu-stop  Para la maquina qemu     ##########
 #### :rutina-inicial-qemu-stop:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-stop" ] ; then  echo $give_cover
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ stop qemu machine ] || ||"
 ps -Af | grep -i  "$architecture_vm"
 echo " [  ok  ] [ status ] [ process listed ]"
