@@ -165,7 +165,7 @@ cmd_binary="fwiptables-mini"
 ####
 directory_binary="/usr/bin"
 directory_data="$HOME/.config/$cmd_binary"
-default_preferences="$directory_default/default"
+default_preferences="$directory_data/preferences"
 ####
 ####
 #### english: directory tree 
@@ -424,25 +424,40 @@ default_security="mini-options"
 #### :sincontarrutina-final-system-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
-#### :sincontarrutina-inicial-update-variables:
+#### :rutina-inicial-update-variables:
 ####
 ####
 ####     #### english: variable to knows if fwiptables is installed
 ####     #### spanish: variable para comprobar si fwiptables esta instalado
 ####
 ####
-## if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
-## cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
-## fi
+#### if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
+#### cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
+#### fi
 ####
 ####
 ####     #### english: launch default for update variables
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f "$default_preferences" ] ; then source $default_preferences ; fi
+if [ -f "$default_preferences" ]; then source $default_preferences ; fi
 ####
 ####
+####  realice sane very important variables post by default_preferences
+####
+####
+case "$program_minimal"       in "no") ;; *) program_minimal="" ;; esac
+case "$allow_legacy"          in "no") ;; *) allow_legacy=""    ;; esac
+case "$allow_nft"             in "no") ;; *) allow_nft=""       ;; esac
+case "$allow_ipv4"            in "no") ;; *) allow_ipv4=""      ;; esac
+case "$allow_ipv6"            in "no") ;; *) allow_ipv6=""      ;; esac
+case "$list_rules_conceptual" in "$NULL") ;; *) list_rules_conceptual=" -n" ;; esac
+####
+####
+if [ "$program_minimal" == "no" ]; 
+then give_cover="$give_cover state:complete ] || ||"
+else give_cover="$give_cover state:mini ] || ||"
+fi
 #### english: if null option is void return default to mini-options
 #### spanish: si la opcion por defecto esta vacia vuelve a mini-options
 ####
@@ -450,7 +465,7 @@ if [ -f "$default_preferences" ] ; then source $default_preferences ; fi
 if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
-#### :sincontarrutina-final-update-variables:
+#### :rutina-final-update-variables:
 ##########    english: Notice Installer with intro      ##########
 ##########    spanish: noticia de Instalador con intro  ##########
 #### :sincontarrutina-inicial-notice:
@@ -952,20 +967,23 @@ echo
 echo "$title_md [ Description program ]"
 echo "$text_md $cmd_description"
 echo
-echo "$title_md [ Location program ]"
-echo "$text_md $directory_binary/$cmd_binary"
+echo "$title_md [ Launched program ]"
+echo "$text_md $zero_option"
 echo
 echo "$title_md [ File format ]"
-echo "$text_md $(file $directory_binary/$cmd_binary | cut -d "," -f 1-2)"
+echo "$text_md $(file $zero_option | cut -d "," -f 1-2)"
 echo
 echo "$title_md [ MD5 sum ]"
 echo "$text_md $($command_md5sum $0)"
 echo
+echo "$title_md [ Temp directory ]"
+echo "$text_md $directory_tmp"
+echo
 echo "$title_md [ Data directory ]"
 echo "$text_md $directory_data"
 echo
-echo "$title_md [ Temp directory ]"
-echo "$text_md $directory_tmp"
+echo "$title_md [ Default preferences ]"
+echo "$text_md $default_preferences"
 echo
 echo "$title_md [ Web page ]"
 echo "$text_md $cmd_homepage"
