@@ -1059,7 +1059,7 @@ exit; fi
 #### :sincontarrutina-final-notes:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
-#### :sincontarrutina-inicial-regen-config:
+#### :rutina-inicial-regen-config:
 ####
 ####
 if [ "$first_option" = "regen-config" ]; then echo "# $give_cover"
@@ -1579,7 +1579,7 @@ echo "# [  ok  ] [ Wizard and templates cfg regenerated ]"
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-regen-config:
+#### :rutina-final-regen-config:
 ##########  english:  sane variables: for working sane         ########## 
 ##########  spanish:  sana variables: para funcionamiento sano ##########
 #### :sincontarrutina-inicial-sane:
