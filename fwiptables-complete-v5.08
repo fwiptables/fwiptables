@@ -69,7 +69,7 @@ exit ; fi
 ####
 cmd_binary="fwiptables-cmd" ;
 cmd_version="complete-5.08" ;
-cmd_name="Fran FireWall FWiptables Generator" ;
+cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2"
 cmd_homepage="https://sourceforge.net/projects/f-iptables/"
@@ -2764,6 +2764,7 @@ echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listu
 echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                           "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                     "
 echo "$text_md    tool-util         | weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm   "
+echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start qemu-restart                     "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                         "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
@@ -2946,6 +2947,9 @@ $cmd_binary tool-game
 echo "$text_md"
 echo "$brake_md"
 $cmd_binary tool-util
+echo "$text_md"
+echo "$brake_md"
+$cmd_binary tool-qemu
 echo "$text_md"
 echo "$brake_md"
 $cmd_binary tool-speed
