@@ -454,10 +454,6 @@ case "$allow_ipv6"            in "no") ;; *) allow_ipv6=""      ;; esac
 case "$list_rules_conceptual" in "$NULL") ;; *) list_rules_conceptual=" -n" ;; esac
 ####
 ####
-if [ "$program_minimal" == "no" ]; 
-then give_cover="$give_cover state:complete ] || ||"
-else give_cover="$give_cover state:mini ] || ||"
-fi
 #### english: if null option is void return default to mini-options
 #### spanish: si la opcion por defecto esta vacia vuelve a mini-options
 ####
