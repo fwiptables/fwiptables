@@ -2663,6 +2663,7 @@ echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listu
 echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
 echo "$text_md  tool-util          |  weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm          "
+echo "$text_md  tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
@@ -3957,7 +3958,34 @@ echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifra
 exit; fi
 ####
 ####
-#### :rutina-final-tool-speed:
+#### :rutina-final-tool-util:
+##########    english: tool-qemu: options   ##########
+##########    spanish: tool-qemu: opciones  ##########
+#### :rutina-inicial-tool-qemu:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-qemu" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool qemu ] [ tool-qemu md ] || ||"
+echo "$text_md"
+echo "$text_md [ english info ] [ Tool to manage machine virtual qemu ]"
+echo "$text_md [ spanish info ] [ Utilidad de maquinas virtuales qemu ]"
+echo "$text_md"
+echo "$text_md $tab qemu-status"
+echo "$text_md $tab_lang_english           : Status from qemu"
+echo "$text_md $tab_lang_spanish           : Estado de qemu"
+echo "$text_md $tab qemu-stop"
+echo "$text_md $tab_lang_english           : Stop de qemu virtual machines"
+echo "$text_md $tab_lang_spanish           : Para las maquinas virtuales qemu"
+echo "$text_md $tab qemu-start"
+echo "$text_md $tab_lang_english           : Start a quemu virtual machines"
+echo "$text_md $tab_lang_spanish           : Empieza una maquina virtual qemu"
+echo "$text_md $tab qemu-restart"
+echo "$text_md $tab_lang_english           : Stop and start"
+echo "$text_md $tab_lang_spanish           : Para e inicia una maquina virtual qemu"
+exit; fi
+####
+####
+#### :rutina-final-tool-qemu:
 ##########    english: tool-computer: options   ##########
 ##########    spanish: tool-computer: opciones  ##########
 #### :rutina-inicial-tool-computer:
@@ -10807,7 +10835,7 @@ echo "$text_md              ls4 : likes list-filter4."
 echo "$text_md              ls6 : likes list-filter6."
 echo "$text_md            list4 : likes list-filter4."
 echo "$text_md            list6 : likes list-filter6."
-echo "$text_md   ls|list|status : likes list4 more list6."
+echo "$text_md           status : likes list4 more list6."
 echo "$text_md          listnum : List iptables filter rules from ipv4 in numbers."
 echo "$text_md  list-forwardnum : List iptables filter rules foward in numbers."
 echo "$text_md         listnum6 : List iptables filter rules from ipv6 in numbers."
@@ -10995,6 +11023,13 @@ echo "$text_md           md5sum : Show the one file md5sum."
 echo "$text_md        radio-mp3 : Connect to one server mp3, see preferences-read preferences-modify."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
 echo "$text_md"
+echo "$title_md         [ Tool qemu ]"
+echo "$text_md"
+echo "$text_md       qemu-status : Status for qemu"
+echo "$text_md         qemu-stop : stop several maquines virtual qemu"
+echo "$text_md        qemu-start : Start one maquine virtual qemu"
+echo "$text_md      qemu-restart : Stop machines virtual qemu and start one new maquine virtual qemu"
+echo "$text_md"
 echo "$title_md         [ Tool Install ]"
 echo "$text_md"
 echo "$text_md         install : Install this program actual."
@@ -11176,7 +11211,7 @@ echo "$text_md               ls4 : similar a list-filter4."
 echo "$text_md               ls6 : similar a list-filter6."
 echo "$text_md             list4 : similar a list-filter4." 
 echo "$text_md             list6 : similar a list-filter6."
-echo "$text_md    ls|list|status : similar a list4 mas list6."
+echo "$text_md            status : similar a list4 mas list6."
 echo "$text_md           listnum : Lista las reglas de ipv4 de filtros en numeros."
 echo "$text_md   list-forwardnum : Lista las reglas de ipv4 de filtros de reenvio en numeros."
 echo "$text_md          list6num : Lista las reglas de ipv6 de filtros en numeros."
@@ -11348,6 +11383,13 @@ echo "$text_md       weather : Muestra el tiempo en tu ciudad"
 echo "$text_md        md5sum : Muestra la huella md5sum de un archivo"
 echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira preferences-read o preferences-modify."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
+echo "$text_md"
+echo "$title_md [ Herramienta de maquina virtual ]."
+echo "$text_md"
+echo "$text_md       qemu-status : Estado de qemu"
+echo "$text_md        qemu-start : Empieza una maquina virtual qemu"
+echo "$text_md      qemu-restart : Para las maquinas virtuales y empieza una virtual qemu"
+echo "$text_md         qemu-stop : Para maquinas virtuales qemu"
 echo "$text_md"
 echo "$title_md [ Herramienta de instalacion ]."
 echo "$text_md"
