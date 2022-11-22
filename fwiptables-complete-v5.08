@@ -286,7 +286,7 @@ processor_smp="4"						 ## fwiptables-file-default ## variable qemu
 architecture_vm="qemu-system-i386"			         ## fwiptables-file-default ## variable qemu
 directory_vm="/qemu"						 ## fwiptables-file-default ## variable qemu
 default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
-display_vm="sdl"						 ## fwiptables-file-default ## variable qemu						
+display_vm="gtk"						 ## fwiptables-file-default ## variable qemu						
 language_vm="es"						 ## fwiptables-file-default ## variable qemu
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
