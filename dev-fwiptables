@@ -605,6 +605,8 @@ command_lspci="$(command -v lspci)"
 command_lsgpu="$(command -v lsgpu)"
 command_lshw="$(command -v lshw)"
 command_gs="$(command -v gs)"
+command_pdfunite="$(command -v pdfunite)"
+command_pdfseparate="$(command -v pdfseparate)"
 ####
 ####
 #### :rutina-final-command:
@@ -2664,7 +2666,7 @@ echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
 echo "$text_md  tool-util          |  weather md5sum gpg-notes                                                 "
 echo "$text_md  tool-pdf           |  pdf-resize pdf-unite pdf-separate                                        "
-echo "$text_md  tool-radio         |  radio-mp3 radio-cadena100 radio-rockfm                                   "
+echo "$text_md  tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                   "
 echo "$text_md  tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
@@ -2767,7 +2769,7 @@ echo "$text_md    tool-game         | game-word game-number game-rgb game-hex   
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                     "
 echo "$text_md    tool-util         | weather md5sum gpg-notes                                          "
 echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
-echo "$text_md    tool-radio        | radio-mp3 radio-cadena100 radio-rockfm                            "
+echo "$text_md    tool-mp3        | radio-mp3 radio-cadena100 radio-rockfm                            "
 echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start qemu-restart                     "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                         "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
@@ -4005,7 +4007,7 @@ echo "$text_md $tab_lang_spanish           : redimensiona una pdf usando ghostsc
 echo "$text_md $tab pdf-unite"
 echo "$text_md $tab_lang_english           : join several pdf in one pdf"
 echo "$text_md $tab_lang_spanish           : junta varios pdf en un pdf"
-vecho "$text_md $tab pdf-separate"
+echo "$text_md $tab pdf-separate"
 echo "$text_md $tab_lang_english           : seprate one pdf en several pdf"
 echo "$text_md $tab_lang_spanish           : separa un pdf en varios pdf"
 exit; fi
@@ -9992,27 +9994,49 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-tunnel-off
-##########   english: qemu-status  Status qemu machine        ##########
-##########   spanish: qemu-status  Estado de maquina qemu  ##########
+##########   english: pdf-resize  resize one pdf                 ##########
+##########   spanish: pdf-resize  reescala la calidad de un pdf  ##########
 #### :rutina-inicial-pdf-resize:
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
-echo "$header_ok [ $first_option ]  [ pdf resize with gs ] || ||"
-if [ "$quad_option" == "$NULL" ] ; then echo "Capacity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output"; exit ;  fi
+echo "$header_ok [ $first_option ]  [ pdf resize with gs ] [ minimal pixels: screen | normal pixels: printer ] || ||"
+if [ "$quad_option" == "$NULL" ] ; then echo "Capacity to resize pdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output"; exit ;  fi
 #### capacity low o large pdf with: screen, printer, prepress, default
 case "$second_option" in
 "screen")   capacity="/screen"   ;;
 "printer")  capacity="/printer"  ;;
 "prepress") capacity="/prepress" ;;
 "default")  capacity="/default"  ;;
-*) echo " Capcity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output" ; exit ;;
+*) echo " Capcity to resize pdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output" ; exit ;;
 esac
-if [ ! -f "$third_option" ] ; then echo " $third_option is not a file" ; exit ; fi
+if [ ! -f "$third_option" ] ; then echo " choose one existent file for pdf-input" ; exit ; fi
 #### program
-if [ $command_gs == "$NULL" ]; then echo " [ info ] install ghostscript" ; exit ; fi
-$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$quad_option" "$third_option"
+if [ "$command_gs" == "$NULL" ]; then echo " [ info ] install ghostscript" ; exit ; fi
+$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$quad_option" "$third_option" && echo " [ info ] [ working.. ]"
 echo " [  ok  ] [ finished ]"
 exit; fi
-#### :rutina-final-qemu-status:
+#### :rutina-final-pdf-resize:
+##########   english: pdf-unite  join several pdf in one pdf    ##########
+##########   spanish: pdf-unite  junta varios pdf en un pdf     ##########
+#### :rutina-inicial-pdf-unite:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-unite" ] ; then  echo $give_cover ; echo $message_info_rules
+echo "$header_ok [ $first_option ]  [ all group pdf in this folder join in pdf_unite.pdf ] || ||"
+if [ "$command_pdfunite" == "$NULL" ]; then echo " [ info ] install poppler utils" ; exit ; fi
+if [ ! -d "$second_option" ] ; then echo " Choose one directory directory" ; exit ; fi
+$command_pdfunite $second_option/*.pdf pdf_unite.pdf && echo " [ info ] [ working.. Join all pdf in $second_option folder to pdf_unite.pdf ]"
+echo " [  ok  ] [ finished ]"
+exit; fi
+#### :rutina-final-pdf-unite:
+##########   english: pdf-separate  join several pdf in one pdf    ##########
+##########   spanish: pdf-separate  junta varios pdf en un pdf     ##########
+#### :rutina-inicial-pdf-separate:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-separate" ] ; then  echo $give_cover ; echo $message_info_rules
+echo "$header_ok [ $first_option ]  [ split one pdf in several pdf ] || ||"
+if [ "$command_pdfseparate" == "$NULL" ]; then echo " [ info ] install poppler utils" ; exit ; fi
+if [ ! -f "$second_option" ] ; then echo " Choose one existent file" ; exit ; fi
+$command_pdfseparate $second_option pdf-separate-%d.pdf	&& echo " [ info ] [ working.. ] [ output: pdf-separate-1,2... .pdf ]"
+echo " [  ok  ] [ finished ]"
+exit; fi
+#### :rutina-final-pdf-separate:
 ##########   english: qemu-start  Start qemu machine        ##########
 ##########   spanish: qemu-start  Empieza una maquina qemu  ##########
 #### :rutina-inicial-qemu-start:
