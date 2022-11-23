@@ -101,7 +101,7 @@ second_option="$(echo $2 | $command_sed s/\\///g -)" ;
 #### #### english: variable without "/"  #### spanish: variable sin "/"
 third_option="$(echo $3 | $command_sed s/\\///g -)"  ;                       
 #### #### english: variable without "/"  #### spanish: variable sin "/"
-quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
+quad_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
 ####
 ####
 #### :rutina-final-order-options:
@@ -2662,7 +2662,7 @@ echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-p
 echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  tool-util          |  weather md5sum gpg-notes pdf-resize pdf-unite pdf-separate               "
+echo "$text_md  tool-util          |  weather md5sum gpg-notes                                                 "
 echo "$text_md  tool-pdf           |  pdf-resize pdf-unite pdf-separate                                        "
 echo "$text_md  tool-radio         |  radio-mp3 radio-cadena100 radio-rockfm                                   "
 echo "$text_md  tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            "
@@ -2951,6 +2951,12 @@ $cmd_binary tool-game
 echo "$text_md"
 echo "$brake_md"
 $cmd_binary tool-util
+echo "$text_md"
+echo "$brake_md"
+$cmd_binary tool-mp3
+echo "$text_md"
+echo "$brake_md"
+$cmd_binary tool-pdf
 echo "$text_md"
 echo "$brake_md"
 $cmd_binary tool-qemu
@@ -3996,6 +4002,12 @@ echo "$text_md"
 echo "$text_md $tab pdf-resize"
 echo "$text_md $tab_lang_english           : resize one pdf using ghostscript"
 echo "$text_md $tab_lang_spanish           : redimensiona una pdf usando ghostscript"
+echo "$text_md $tab pdf-unite"
+echo "$text_md $tab_lang_english           : join several pdf in one pdf"
+echo "$text_md $tab_lang_spanish           : junta varios pdf en un pdf"
+vecho "$text_md $tab pdf-separate"
+echo "$text_md $tab_lang_english           : seprate one pdf en several pdf"
+echo "$text_md $tab_lang_spanish           : separa un pdf en varios pdf"
 exit; fi
 ####
 ####
@@ -4484,7 +4496,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 "game-domain") $cmd_binary game-domain gui ; exit ;;
 ####
 ####
-*)$cmd_binary "$second_option" "$third_option" "$quarter_option" &> "$temporal_guifinal"
+*)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
 $command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
@@ -9985,20 +9997,19 @@ exit; fi
 #### :rutina-inicial-pdf-resize:
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ pdf resize with gs ] || ||"
-
-if [ "$3" == "$NULL" ] ; then echo "Capacity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-grande-entrada pdf-pequeño-salida"; exit ;  fi
+if [ "$quad_option" == "$NULL" ] ; then echo "Capacity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output"; exit ;  fi
 #### capacity low o large pdf with: screen, printer, prepress, default
-case "$3" in
+case "$second_option" in
 "screen")   capacity="/screen"   ;;
 "printer")  capacity="/printer"  ;;
 "prepress") capacity="/prepress" ;;
 "default")  capacity="/default"  ;;
-*) echo " Capcity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-grande-entrada pdf-pequeño-salida" ; exit ;;
+*) echo " Capcity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output" ; exit ;;
 esac
-if [ ! -f "$4" ] ; then echo " $4 is not a file" ; exit ; fi
+if [ ! -f "$third_option" ] ; then echo " $third_option is not a file" ; exit ; fi
 #### program
 if [ $command_gs == "$NULL" ]; then echo " [ info ] install ghostscript" ; exit ; fi
-$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$4" "$5"
+$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$quad_option" "$third_option"
 echo " [  ok  ] [ finished ]"
 exit; fi
 #### :rutina-final-qemu-status:
@@ -11085,6 +11096,16 @@ echo "$text_md           md5sum : Show the one file md5sum."
 echo "$text_md  radio|radio-mp3 : Connect to one server mp3, see preferences-read preferences-modify."
 echo "$text_md        gpg-notes : Write and rewrite notes with crypto."
 echo "$text_md"
+echo "$title_md         [ Tool pdf ]"
+echo "$text_md"
+echo "$text_md         pdf-resize : Resize one pdf."
+echo "$text_md          pdf-unite : join several pdf in one pdf."
+echo "$text_md       pdf-separate : Separate one pdf in several pdf."
+echo "$text_md"
+echo "$title_md         [ Tool radio ]"
+echo "$text_md"
+echo "$text_md      radio-mp3 : play one link to mp3."
+echo "$text_md"
 echo "$title_md         [ Tool qemu ]"
 echo "$text_md"
 echo "$text_md       qemu-status : Status for qemu"
@@ -11445,6 +11466,16 @@ echo "$text_md       weather : Muestra el tiempo en tu ciudad"
 echo "$text_md        md5sum : Muestra la huella md5sum de un archivo"
 echo "$text_md     radio-mp3 : connecta a un servidor mp3, mira preferences-read o preferences-modify."
 echo "$text_md     gpg-notes : Escribre y reescribe notas con cifrado"
+echo "$text_md"
+echo "$title_md [ Herramienta de pdf ]"
+echo "$text_md"
+echo "$text_md        pdf-resize : Redimensiona la calidad de un pdf."
+echo "$text_md         pdf-unite : Junta varios pdf en un pdf."
+echo "$text_md       pdf-seprate : Separa un pdf en varios pdf."
+echo "$text_md"
+echo "$title_md [ Herramienta de radio ]"
+echo "$text_md"
+echo "$text_md         radio-mp3 : linnk to mp3 from internet."
 echo "$text_md"
 echo "$title_md [ Herramienta de maquina virtual ]."
 echo "$text_md"
