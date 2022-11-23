@@ -604,6 +604,7 @@ command_lscpu="$(command -v lscpu)"
 command_lspci="$(command -v lspci)"
 command_lsgpu="$(command -v lsgpu)"
 command_lshw="$(command -v lshw)"
+command_gs="$(command -v gs)"
 ####
 ####
 #### :rutina-final-command:
@@ -2661,7 +2662,9 @@ echo "$text_md  tool-nmap          |  nmap-tcp nmap-syn nmap-fin nmap-udp nmap-p
 echo "$text_md  tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            "
 echo "$text_md  tool-game          |  game-word game-number game-domain game-rgb game-hex                      "
 echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        "
-echo "$text_md  tool-util          |  weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm          "
+echo "$text_md  tool-util          |  weather md5sum gpg-notes pdf-resize pdf-unite pdf-separate               "
+echo "$text_md  tool-pdf           |  pdf-resize pdf-unite pdf-separate                                        "
+echo "$text_md  tool-radio         |  radio-mp3 radio-cadena100 radio-rockfm                                   "
 echo "$text_md  tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
@@ -2762,7 +2765,9 @@ echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-p
 echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                     "
 echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                           "
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                     "
-echo "$text_md    tool-util         | weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm   "
+echo "$text_md    tool-util         | weather md5sum gpg-notes                                          "
+echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
+echo "$text_md    tool-radio        | radio-mp3 radio-cadena100 radio-rockfm                            "
 echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start qemu-restart                     "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                         "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
@@ -3952,9 +3957,6 @@ echo "$text_md $tab_lang_spanish           : Muestra el tiempo en tu ciudad"
 echo "$text_md $tab md5sum"
 echo "$text_md $tab_lang_english           : Show md5sum from one file"
 echo "$text_md $tab_lang_spanish           : Muestra la suma md5sum de un archivo"
-echo "$text_md $tab radio|radio-mp3"
-echo "$text_md $tab_lang_english           : connect to one server mp3, see: preferences-read or preferences-modify"
-echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: preferences-read o preferences-modify"
 echo "$text_md $tab gpg-notes"
 echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
 echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
@@ -3962,6 +3964,42 @@ exit; fi
 ####
 ####
 #### :rutina-final-tool-util:
+##########    english: tool-mp3: options   ##########
+##########    spanish: tool-mp3: opciones  ##########
+#### :rutina-inicial-tool-mp3:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-mp3" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool mp3 ] [ tool-mp3 md ] || ||"
+echo "$text_md"
+echo "$text_md [ english info ] [ Tool mp3 ]"
+echo "$text_md [ spanish info ] [ Utilidad de mp3 ]"
+echo "$text_md"
+echo "$text_md $tab radio|radio-mp3"
+echo "$text_md $tab_lang_english           : connect to one server mp3, see: preferences-read or preferences-modify"
+echo "$text_md $tab_lang_spanish           : connecta a un servidor mp3, mira: preferences-read o preferences-modify"
+exit; fi
+####
+####
+#### :rutina-final-tool-mp3:
+##########    english: tool-pdf: options   ##########
+##########    spanish: tool-pdf: opciones  ##########
+#### :rutina-inicial-tool-pdf:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-pdf" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ tool pdf ] [ tool-pdf md ] || ||"
+echo "$text_md"
+echo "$text_md [ english info ] [ Tool pdf ]"
+echo "$text_md [ spanish info ] [ Utilidad de pdf ]"
+echo "$text_md"
+echo "$text_md $tab pdf-resize"
+echo "$text_md $tab_lang_english           : resize one pdf using ghostscript"
+echo "$text_md $tab_lang_spanish           : redimensiona una pdf usando ghostscript"
+exit; fi
+####
+####
+#### :rutina-final-tool-pdf:
 ##########    english: tool-qemu: options   ##########
 ##########    spanish: tool-qemu: opciones  ##########
 #### :rutina-inicial-tool-qemu:
@@ -9942,6 +9980,28 @@ exit; fi
 ####
 ####
 #### :rutina-final-sshd-tunnel-off
+##########   english: qemu-status  Status qemu machine        ##########
+##########   spanish: qemu-status  Estado de maquina qemu  ##########
+#### :rutina-inicial-pdf-resize:
+if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
+echo "$header_ok [ $first_option ]  [ pdf resize with gs ] || ||"
+
+if [ "$3" == "$NULL" ] ; then echo "Capacity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-grande-entrada pdf-pequeño-salida"; exit ;  fi
+#### capacity low o large pdf with: screen, printer, prepress, default
+case "$3" in
+"screen")   capacity="/screen"   ;;
+"printer")  capacity="/printer"  ;;
+"prepress") capacity="/prepress" ;;
+"default")  capacity="/default"  ;;
+*) echo " Capcity to reisizepdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-grande-entrada pdf-pequeño-salida" ; exit ;;
+esac
+if [ ! -f "$4" ] ; then echo " $4 is not a file" ; exit ; fi
+#### program
+if [ $command_gs == "$NULL" ]; then echo " [ info ] install ghostscript" ; exit ; fi
+$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$4" "$5"
+echo " [  ok  ] [ finished ]"
+exit; fi
+#### :rutina-final-qemu-status:
 ##########   english: qemu-start  Start qemu machine        ##########
 ##########   spanish: qemu-start  Empieza una maquina qemu  ##########
 #### :rutina-inicial-qemu-start:
@@ -10026,7 +10086,6 @@ ps -Af | grep -i  "qemu-system"
 echo " [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
 exit; fi
 #### :rutina-final-qemu-status:
-
 ##########   english: qemu-stop  Stop qemu machine        ##########
 ##########   spanish: qemu-stop  Para la maquina qemu     ##########
 #### :rutina-inicial-qemu-stop:
