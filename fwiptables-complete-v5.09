@@ -346,18 +346,17 @@ mensage_timeout="Closing gui menu in $close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_firewall="no" ;   #  autoconfigure with launch iptables rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-fweb_main="https://sourceforge.net/projects/f-iptables/"
-fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
-fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
-fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-fweb_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
-fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
-fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
-fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
+url_web_main="https://sourceforge.net/projects/f-iptables/"
+url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
+url_web_newfiles="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete" ;
+url_web_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
+url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 ####       #### english: [Program license] #### spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
-fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
+url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
 ####
 ####
 #### english: if wrong in whithout_option
@@ -878,7 +877,7 @@ echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_binary $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
-echo "  [  ok  ] [ Output sended to $output_filelog ] [ show: fwiptables filelog ]" ;
+echo "  [  ok  ] [ Output sended to $output_filelog ] [ show: $cmd_binary filelog ]" ;
 exit ; fi
 ####
 ####
@@ -1090,7 +1089,7 @@ echo "$text_md     [ info ] [ Uninstall $cmd_binary from the computer ] [ TYPE: 
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables project.  ###    "
 echo "$text_md     # Download the latest version $cmd_name from sourceforge"
-echo "$text_md     [ link] [ $fweb_latest ]"
+echo "$text_md     [ link] [ $url_web_latest ]"
 echo "$text_md     # $flicense"
 echo "$text_md     [ link ] [ $license_gpl ]"
 #### #### #### 
@@ -1197,7 +1196,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "upgrade" ]; then echo 
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
-"$NULL")echo "  [ notice  ] [ install a text web browser for upgrade fwiptables ]"; exit ;; esac
+"$NULL")echo "  [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
 echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file $directory_binary/$cmd_binary with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [ downloading $cmd_binary with the command $favorite_text_browser browser ]"
 ####
@@ -1206,9 +1205,9 @@ echo "  [ info ] [ download ] [ downloading $cmd_binary with the command $favori
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "  [ info ] [ download ] [ $fweb_latest ]"
+echo "  [ info ] [ download ] [ $url_web_latest ]"
 echo "  [ info ] [ download ] [ waiting several seconds .. ]"
-$favorite_text_browser -source "$fweb_latest" &> "$directory_temporal/$cmd_binary" || echo "[ fail ] [ disconnected ]"
+$favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/$cmd_binary" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$cmd_binary" &> /dev/null
 ####
 ####
@@ -1217,7 +1216,7 @@ chmod ugo+rwx "$directory_temporal/$cmd_binary" &> /dev/null
 ####
 ####
 if [ -f "$directory_temporal/$cmd_binary" ] ;
-then echo "  [  ok  ] [ download ] [ downloaded fwiptables latest version ]"
+then echo "  [  ok  ] [ download ] [ downloaded $cmd_binary latest version ]"
 "$directory_temporal/$cmd_binary" install ; 
 else echo "  [ fail ] [ install fail ]"; fi
 exit ; fi
@@ -1233,7 +1232,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then e
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
-"$NULL")echo "  [ notice  ] [ Install a text web browser for upgrade fwiptables ]"; exit ;; esac
+"$NULL")echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
 echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file $directory_binary/$cmd_binary with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [downloading $cmd_binary with the command $favorite_text_browser browser ]"
 ####
@@ -1242,9 +1241,9 @@ echo "  [ info ] [ download ] [downloading $cmd_binary with the command $favorit
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "  [ info ] [ download ] [ $fweb_development ]"
+echo "  [ info ] [ download ] [ $url_web_development ]"
 echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $fweb_development &> "$directory_temporal/$cmd_binary-installer" || echo "[ fail ] [ disconnected ]"
+$favorite_text_browser -source $url_web_development &> "$directory_temporal/$cmd_binary-installer" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rx $directory_temporal/$cmd_binary-installer &> /dev/null
 ####
 ####
@@ -1253,7 +1252,7 @@ chmod ugo+rx $directory_temporal/$cmd_binary-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$cmd_binary-installer" ] ;
-then echo "$text_md [  ok  ] [ downloaded fwiptables developer version ]"
+then echo "$text_md [  ok  ] [ downloaded $cmd_binary developer version ]"
 "$directory_temporal/$cmd_binary-installer" install ; 
 else echo "$text_md [ fail ] [ install fail ]"; fi
 ####
@@ -4306,7 +4305,7 @@ echo "$text_md"
 echo "$text_md  [ License ]"
 echo "$text_md"
 echo "$text_md  Download the latest version $cmd_name from sourceforge"
-echo "$text_md  $fweb_latest"
+echo "$text_md  $url_web_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
 echo "$text_md"
@@ -6399,11 +6398,12 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "howto-upgrade" ]; then
 echo "$header_ok [ $first_option ]  [ Show howto upgrade ] || ||"
 echo "$tab [ info ] [ The actually version is: $cmd_binary $cmd_version actual ]"
 echo "$tab [ info ] [ The latest version is: ]"
-$favorite_text_browser -dump $fweb_newfiles  | $command_grep -i  fwiptables | $command_grep -i  download | head -1
+$favorite_text_browser -dump $url_web_newfiles | grep -i fwiptables-complete-v | grep -i download
+#| $command_grep -i $cmd_binary | $command_grep -i  download | head -1
 echo 
-echo "$tab [ info ] [ Upgrade The fwiptables in file $directory_binary/$cmd_binary with $favorite_text_browser ]"
+echo "$tab [ info ] [ Upgrade The $cmd_binary in file $directory_binary/$cmd_binary with $favorite_text_browser ]"
 echo "$tab [ info ] [ OR download manually   || OR $cmd_binary upgrade || OR look down: ]"
-echo "$tab [ info ] [ launch: $favorite_text_browser -source $fweb_latest &> /tmp/$cmd_binary ]"
+echo "$tab [ info ] [ launch: $favorite_text_browser -source $url_web_latest &> /tmp/$cmd_binary ]"
 echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_binary ]"
 echo "$tab [ info ] [ launch: /tmp/$cmd_binary install ]"
 echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_binary/$cmd_binary ]"
@@ -7951,11 +7951,11 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-load" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: fwiptables wpa-load wpa_file1 ] || ||"
+echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: $cmd_binary wpa-load wpa_file1 ] || ||"
 echo 
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "  [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$($command_find $directory_default | $command_grep \\.wpa)" == "$NULL" ]; then
-echo "  [ Without old wpa file saved, run: fwiptables wpa-save SSID PASSWORD ]"; 
+echo "  [ Without old wpa file saved, run: $cmd_binary wpa-save SSID PASSWORD ]"; 
 else echo "  [ wpa old file saved: ]" 
 $command_find $directory_default | $command_grep \\.wpa | cut -d "/" -f 6- ; fi
 if [ -f "$directory_default/$second_option" ]; then
@@ -8050,7 +8050,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
+echo "$header_ok [ $first_option ] [ show the default $cmd_binary ] || ||"
 echo 
 cat $default_preferences
 echo 
@@ -8065,7 +8065,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
+echo "$header_ok [ $first_option ] [ modify the default $cmd_binary ] || ||"
 echo 
 echo 
 echo "  [ info ] [ edit file $default_preferences to change variables ]"
@@ -9048,7 +9048,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-rgb" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
-echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: fwiptables game-rgb 255000255 ]"
+echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: $cmd_binary game-rgb 255000255 ]"
 else
 rgb="$(echo "$second_option" | cut -c -9)"
 ##
@@ -9080,7 +9080,7 @@ fi; exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-hex" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
-echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: fwiptables game-hex FF00FF ]"
+echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: $cmd_binary game-hex FF00FF ]"
 else
 hexadecimal="$(echo $second_option | tr '[:lower:]' '[:upper:]'| cut -c 1-6)"
 ##
@@ -9114,7 +9114,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-domain" ] ; then
 file_domain="$directory_default/$cmd_binary-domain"
 if [ -s $file_domain ]; then $nada 
 else echo "  [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
-$favorite_text_browser -source $fweb_domain &> $file_domain ; fi
+$favorite_text_browser -source $url_web_domain &> $file_domain ; fi
 numero_maximo="$(cat $file_domain | wc -l)"
 numero_aleatorio_one="$(($RANDOM%"$numero_maximo"))"
 domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 2)"
@@ -10196,7 +10196,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-version" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ] || ||"
-echo $fweb_development
+echo $url_web_development
 exit; fi
 ####
 ####
@@ -10208,7 +10208,7 @@ exit; fi
 #### 
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-changes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ] || ||"
-$favorite_text_browser -source $fweb_changes
+$favorite_text_browser -source $url_web_changes
 exit; fi
 ####
 ####
@@ -10222,7 +10222,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then 
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $fweb_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+$favorite_text_browser -dump $url_web_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
 exit; fi
 ####
 ####
@@ -10559,25 +10559,25 @@ echo
 echo "$title_md [ Install: ]"
 echo "$text_md 1: chmod ugo+x fwiptables-version"
 echo "$text_md 2: ./fwiptables-version install"
-echo "$text_md And then fwiptables is in $directory_binary/$cmd_binary"
+echo "$text_md And then $cmd_binary is in $directory_binary/$cmd_binary"
 echo
 echo "$title_md [ Sources: ]"
 echo
 echo "$text_md [ Developer version program ]"
 echo "$text_md The fran iptables ver in development in git code at sourceforge:"
-echo "$text_md $fweb_development"
+echo "$text_md $url_web_development"
 echo 
 echo "$text_md [ New versions program ]"
 echo "$text_md The last versions in files repository at sourceforge:"
-echo "$text_md $fweb_newfiles"
+echo "$text_md $url_web_newfiles"
 echo
 echo "$text_md [ Access web with all versions program ]"
 echo "$text_md The fran iptables all versions in code repository at sourceforge:"
-echo "$text_md $fweb_tree"
+echo "$text_md $url_web_tree"
 echo
 echo "$text_md [ Git clone with all versions program ]"
 echo "$text_md The fran iptables all versions in code repository at sourceforge:"
-echo "$text_md git clone $fweb_git"
+echo "$text_md git clone $url_web_git"
 echo
 echo "$title_md [ Program License ] $flicense"
 exit; fi
@@ -11257,7 +11257,7 @@ echo "$text_md"
 echo "$title_md  [License]"
 echo "$text_md"
 echo "$text_md  Download the latest version from sourceforge"
-echo "$text_md  $fweb_latest"
+echo "$text_md  $url_web_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
 echo "$text_md"
@@ -11622,7 +11622,7 @@ echo "$text_md"
 echo "$title_md [Licencia]."
 echo "$text_md"
 echo "$text_md  Descarga la ultima version desde la web de sourceforge."
-echo "$text_md  $fweb_latest"
+echo "$text_md  $url_web_latest"
 echo "$text_md  $flicense"
 echo "$text_md  $license_gpl"
 echo "$text_md"
