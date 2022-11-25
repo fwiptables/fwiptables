@@ -1,11 +1,12 @@
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.07 state:complete ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.08 state:complete ] || ||
 ### ### || || [ ok ] || [ readme ] [ help in english ] [ readme md ] || ||
      
 ---
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.07 state:complete ] || ||
-### ### || || [ ok ] || [ intro ] [ fwiptables-cmd complete-5.07 intro ] [ intro md ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.08 state:complete ] || ||
+### ### || || [ ok ] || [ intro ] [ fwiptables-cmd complete-5.08 intro ] [ intro md ] || ||
 ###     ###  Fran fwiptables intro.  ###   
-          # Use Fran Firewall # configure both iptables netfilter for linux with templates. #         
+          [ done ] [ Choose fwiptables-complete working like complete or working like minimal         
+          # Manage Fran Firewall # configure both iptables netfilter for linux with templates. #      
           [ done ] [ Done with support in xtables and/or nftables and ipv4 and/or ipv6 ].             
           [ done ] [ Ready to run in command shell cmd, cli-menu, gui-menu, and gui-shell ].          
           # Standard firewall # Create one firewall with one wizard and save it in standard file. #   
@@ -17,20 +18,19 @@
           [ done ] [ Gone with options-show show config net files ].                                  
 ---
 ###     ###  Fran fwiptables installer.  ###
-          # fwiptables-cmd complete-5.07
-          [ info ] [ Actually, YES, ] [ this version is installed in /usr/bin/fwiptables-cmd ]
-          [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-complete-5.07 install ]
-          [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-complete-5.07 upgrade ]
-          [ info ] [ Uninstall fwiptables-cmd from the computer ] [ TYPE: ./fwiptables-complete-5.07 uninstall ]
+          # fwiptables-cmd complete-5.08
+          [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-complete-5.08 install ]
+          [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-complete-5.08 upgrade ]
+          [ info ] [ Uninstall fwiptables-cmd from the computer ] [ TYPE: ./fwiptables-complete-5.08 uninstall ]
 ---
 ###     ###  Fran fwiptables project.  ###    
-          # Download the latest version Fran FireWall FWiptables Generator from sourceforge
+          # Download the latest version Fran Complete FireWall FWiptables Generator from sourceforge
           [ link] [ https://sourceforge.net/projects/f-iptables/files/latest/download ]
           # Copyleft, without warranty, gnu license GPL v2.
           [ link ] [ https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw ]
      
 ---
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.07 state:complete ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.08 state:complete ] || ||
 ### ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### ### || ||  [ options-interface ]  || ||  ### ###                                                      
 ###  -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null
@@ -66,7 +66,10 @@
        tool-sudofw        |  sudofw-adduser sudofw-deluser sudofw-listuser                            
        tool-game          |  game-word game-number game-domain game-rgb game-hex                      
        tool-speed         |  free-ram speed-ram speed-disk speed-glx speed-cpu                        
-       tool-util          |  weather md5sum gpg-notes radio-mp3 radio-cadena100 radio-rockfm          
+       tool-util          |  weather md5sum gpg-notes                                                 
+       tool-pdf           |  pdf-resize pdf-unite pdf-separate                                        
+       tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                   
+       tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            
        tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      
        tool-addblock      |  addblock-list addblock-on addblock-off                                   
        tool-dev           |  new-versions dev-version dev-changes code intro                          
@@ -133,7 +136,7 @@
                    ls6 : likes list-filter6.
                  list4 : likes list-filter4.
                  list6 : likes list-filter6.
-        ls|list|status : likes list4 more list6.
+                status : likes list4 more list6.
                listnum : List iptables filter rules from ipv4 in numbers.
        list-forwardnum : List iptables filter rules foward in numbers.
               listnum6 : List iptables filter rules from ipv6 in numbers.
@@ -303,22 +306,39 @@
               game-word : Play game to discover a random word with five digits.
             game-number : Play game to discover a random number with five digits.
             game-domain : Discover one domain if generic or if country.
-            game-hex : convert one number hexadecimal in rgb.
-            game-rgb : convert one number rgb in hexadecimal.
+               game-hex : convert one number hexadecimal in rgb.
+               game-rgb : convert one number rgb in hexadecimal.
      
 ###          [ Tool speed ]
      
-              free-ram : Clean for innecesary ram memory.
-             speed-ram : Show the speed of ram memory.
-            speed-disk : Show the speed of root hard disc.
-             speed-glx : Show frammes for seconds with mesa graphicall.
+          ram|free|free-ram : Clean for innecesary ram memory.
+                  speed-ram : Show the speed of ram memory.
+                 speed-disk : Show the speed of root hard disc.
+                  speed-glx : Show frammes for seconds with mesa graphicall.
      
 ###          [ Tool util ]
      
                weather : Show the weather in your city.
                 md5sum : Show the one file md5sum.
-             radio-mp3 : Connect to one server mp3, see preferences-read preferences-modify.
+       radio|radio-mp3 : Connect to one server mp3, see preferences-read preferences-modify.
              gpg-notes : Write and rewrite notes with crypto.
+     
+###          [ Tool pdf ]
+     
+              pdf-resize : Resize one pdf.
+               pdf-unite : join several pdf in one pdf.
+            pdf-separate : Separate one pdf in several pdf.
+     
+###          [ Tool radio ]
+     
+           radio-mp3 : play one link to mp3.
+     
+###          [ Tool qemu ]
+     
+            qemu-status : Status for qemu
+              qemu-stop : stop several maquines virtual qemu
+             qemu-start : Start one maquine virtual qemu
+           qemu-restart : Stop machines virtual qemu and start one new maquine virtual qemu
      
 ###          [ Tool Install ]
      

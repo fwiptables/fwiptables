@@ -365,7 +365,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary ] [ Version: $cmd_version ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary $cmd_version ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -381,7 +381,7 @@ tab_lang_spanish=" spa "
 #### show_lang_english=""
 #### show_lang_spanish="##"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch to configure: $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ configure: $cmd_binary preferences-modify ] || ||"
 #### #### english: without cli or gui   #### spanish: sin cli o gui
 message_without_cli="$duo_md [ fail ] [ cli ] [ Without support for output cli for this option ]"
 message_without_gui="$duo_md [ fail ] [ gui ] [ Without support for output gui for this option ]"
