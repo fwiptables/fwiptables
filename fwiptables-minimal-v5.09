@@ -103,7 +103,7 @@ if [ -f /etc/profile ] ; then . /etc/profile ; fi
 ####     #### english: launch completion          #### spanish: lanza autocompletar
 ####
 ####
-if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
+#### if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
 ####
 ####
 ####     #### english: stablished the path        #### spanish: establece el path
@@ -703,10 +703,10 @@ if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
 ####
 case "$first_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_binary regen-config ;; esac
+$zero_option regen-config ;; esac
 case "$second_option" in
 "wizard-mini"|"wizard-full"|"new-mini-config"|"new-full-config"|"nueva-mini-config"|"nueva-completa-config")
-$cmd_binary regen-config ;; esac
+$zero_option regen-config ;; esac
 ####
 ####
 #### :sincontarrutina-final-alias-simple:
@@ -722,17 +722,17 @@ if [ "$first_option" = "-txt" ];
 then case "$second_option" in
 ####
 ####
-"list4") $cmd_binary list4-ip &> $temporal_text 
+"list4") $zero_option list4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-"list6") $cmd_binary list6-ip &> $temporal_text 
+"list6") $zero_option list6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-esac ; $cmd_binary "$second_option" "$third_option" "$quad_option"
+esac ; $zero_option "$second_option" "$third_option" "$quad_option"
 ####
 ####
 exit; fi
@@ -744,30 +744,30 @@ exit; fi
 if [ "$first_option" = "-cli" ]
 then echo "$head_waiting_cli"
 case "$second_option" in
-wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-"nueva-mini-config")  $cmd_binary $second_option $third_option ;  exit ;;
-"nueva-completa-config") $cmd_binary $second_option $third_option ;  exit ;;
-"new-mini-config") $cmd_binary $second_option $third_option ;  exit ;;
-"new-full-config") $cmd_binary $second_option $third_option ;  exit ;;
-"preferences-modify") $cmd_binary preferences-modify ; exit ;;
-nmap-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
-"radio") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-"speed-cpu") echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
+wizard-*) echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
+"nueva-mini-config")  $zero_option $second_option $third_option ;  exit ;;
+"nueva-completa-config") $zero_option $second_option $third_option ;  exit ;;
+"new-mini-config") $zero_option $second_option $third_option ;  exit ;;
+"new-full-config") $zero_option $second_option $third_option ;  exit ;;
+"preferences-modify") $zero_option preferences-modify ; exit ;;
+nmap-*) echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
+"radio") echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
+"speed-cpu") echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 "info-nodes") echo "$message_without_cli" ;  exit ;;
-"game-domain") $cmd_binary game-domain -cli ; exit ;;
-"game-word") $cmd_binary game-word -cli ; exit ;;
-"game-number") $cmd_binary game-number -cli ; exit ;;
-"addblock-on") echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
-"gpg-notes") $cmd_binary $second_option $third_option ; exit ;;
-"clean-tmp") $cmd_binary $second_option $third_option ; exit ;;
+"game-domain") $zero_option game-domain -cli ; exit ;;
+"game-word") $zero_option game-word -cli ; exit ;;
+"game-number") $zero_option game-number -cli ; exit ;;
+"addblock-on") echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
+"gpg-notes") $zero_option $second_option $third_option ; exit ;;
+"clean-tmp") $zero_option $second_option $third_option ; exit ;;
 "log-search") 
 pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
-clear; $cmd_binary log-search $pattern ; exit ;; 
-log-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
-fw-*)  echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
-"hosts") echo "$message_without_cli" ; $cmd_binary hosts ; exit ;;
-*) dialog --title "  Cli Output || $cmd_binary ||" \
---msgbox "$($cmd_binary $second_option $third_option)" 0 0 ;  clear ; exit ;;
+clear; $zero_option log-search $pattern ; exit ;; 
+log-*) echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
+fw-*)  echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
+"hosts") echo "$message_without_cli" ; $zero_option hosts ; exit ;;
+*) dialog --title "  Cli Output || $zero_option ||" \
+--msgbox "$($zero_option $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
 esac ; fi
@@ -796,7 +796,7 @@ esac
 ####
 echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
-$cmd_binary $second_option $third_option $quad_option &>> $output_log
+$zero_option $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
 echo "  [  ok  ] [ Output sended to $output_filelog ] [ show file: fwiptables filelog ]" ;
 exit ; fi
@@ -822,7 +822,7 @@ rule-*) echo "$message_without_null" ; exit ;;
 esac
 ####
 ####
-$cmd_binary "$second_option" "$third_option" &> /dev/null
+$zero_option "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
@@ -1639,7 +1639,7 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then 
 echo "  [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
-$cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
+$zero_option save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 #### :sincontarrutina-final-autosave:
@@ -1676,9 +1676,9 @@ name_firewall="$second_option" ;
 if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_option" ; fi
 ####
 ####
-if [ ! -f "$directory_config/$second_option" ]; then  $cmd_binary cfg ; 
-echo "$duo_md [ info ] [ $cmd_binary custom file-cfg ]"
-echo "$duo_md [ info ] [ $cmd_binary firewall-custom ]"
+if [ ! -f "$directory_config/$second_option" ]; then  $zero_option cfg ; 
+echo "$duo_md [ info ] [ $zero_option custom file-cfg ]"
+echo "$duo_md [ info ] [ $zero_option firewall-custom ]"
 exit; fi
 ####
 ####
@@ -2685,29 +2685,29 @@ exit; fi
  echo "$header_ok [ $first_option ] [ List all rules ] || ||"
  echo 
  echo; echo; echo "### LIST ARPTABLES ###"
- $cmd_binary list-arptables
+ $zero_option list-arptables
  echo; echo; echo "### LIST EBTABLES ###"
- $cmd_binary list-ebtables
+ $zero_option list-ebtables
  echo; echo; echo "### LIST FILTER IP4 TABLE ###"
- $cmd_binary list-filter4
+ $zero_option list-filter4
  echo; echo; echo "### LIST FILTER IP6 TABLE ###"
- $cmd_binary list-filter6
+ $zero_option list-filter6
  echo; echo; echo "### LIST NAT IP4 TABLE ###"
- $cmd_binary list-nat4
+ $zero_option list-nat4
  echo; echo; echo "### LIST NAT IP6 TABLE ###"
- $cmd_binary list-nat6
+ $zero_option list-nat6
  echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
- $cmd_binary list-security4
+ $zero_option list-security4
  echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
- $cmd_binary list-security6
+ $zero_option list-security6
  echo; echo; echo "### LIST RAW IP4 TABLE ###"
- $cmd_binary list-raw4
+ $zero_option list-raw4
  echo; echo; echo "### LIST RAW IP6 TABLE ###"
- $cmd_binary list-raw6
+ $zero_option list-raw6
  echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
- $cmd_binary list-mangle4
+ $zero_option list-mangle4
  echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
- $cmd_binary list-mangle6
+ $zero_option list-mangle6
  echo 
  exit; fi
 ####
@@ -2791,10 +2791,10 @@ exit; fi
 if [ "$first_option" = "status" ]; then
 ####
 ####
-$cmd_binary list4
+$zero_option list4
 ####
 ####
-$cmd_binary list6
+$zero_option list6
 ####
 ####
 exit; fi
@@ -3389,7 +3389,7 @@ if [ "$first_option" = "modify-config" ]; then  echo $give_cover
 ####
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
-$cmd_binary names-config
+$zero_option names-config
 echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; exit; fi
 ####
 ####
@@ -3487,8 +3487,8 @@ exit; fi
 if [ "$first_option" = "reset" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Reset the firewall ] || ||"
 echo "  [ info ] [ Reseting the firewall ]"
-$cmd_binary stop &> /dev/null
-$cmd_binary continue &> /dev/null
+$zero_option stop &> /dev/null
+$zero_option continue &> /dev/null
 echo "  [  ok  ] [ firewall reseted ]"
 exit; fi
 ####
@@ -3506,7 +3506,7 @@ $command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
+$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $zero_option custom "$archivo" 
 else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo 
 exit; fi
@@ -3525,7 +3525,7 @@ $command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
+$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $zero_option custom "$archivo" 
 else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo 
 exit; fi
@@ -3544,7 +3544,7 @@ if [ "$first_option" = "load" ]; then
 ####
 ####
 if [ "second_option" = "$NULL" ]; then
-$cmd_binary names ; echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [ See: $cmd_binary names ]" ; exit ; fi
+$zero_option names ; echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [ See: $cmd_binary names ]" ; exit ; fi
 ####
 ####
 #### English if do exist second option in load
@@ -3563,7 +3563,7 @@ echo "  [ info ] [ Loading rules ]"
 #### English: Remove all rules
 ####
 ####
-$cmd_binary eraserules &> /dev/null
+$zero_option eraserules &> /dev/null
 ####
 ####
 #### English: Load all rules 
@@ -3588,7 +3588,7 @@ echo "  [  ok  ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 else
-$cmd_binary names
+$zero_option names
 echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [ See: $cmd_binary names ]"
 fi 
 ####
@@ -3647,7 +3647,7 @@ if [ "$first_option" = "show" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show one firewall saved ] || ||"
 echo
 case "$second_option" in
-"$NULL") $cmd_binary names; echo "$tab [ info ] [ Use: $cmd_binary show file-to-show ]" ; exit ;;
+"$NULL") $zero_option names; echo "$tab [ info ] [ Use: $cmd_binary show file-to-show ]" ; exit ;;
 *) archivofin=$($command_sed 's/\///g' <<< "$second_option") ;;
 esac
 if [ ! -f $directory_fwrecover/$archivofin-legacy-ipv4 ] ; then exit; fi
@@ -3731,7 +3731,7 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/$cmd_binary-stoped-legacy
 #### english: erase the rules #### spanish: borra las reglas
 ####
 ####
-$cmd_binary eraserules &> /dev/null
+$zero_option eraserules &> /dev/null
 echo "  [ info ] [ stopping firewall ]"
 echo "  [  ok  ] [ firewall stopped ]"
 exit; fi
@@ -3792,7 +3792,7 @@ exit; fi
 ####
 if [ "$launch_firewall" != "yes" ] ; then
 echo "### ### [ fail ] [ Option: $first_option ] ### [ it is not valid option. ]  ###  [ Choose a one valid option ... ] ###" ;
-$cmd_binary $default_security ;
+$zero_option $default_security ;
 exit ; fi
 ####
 ####
@@ -3826,7 +3826,7 @@ exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "all-permisive" ]; then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" = "all-permisive" ]; then $zero_option eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -3970,7 +3970,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "off-line" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" = "off-line" ];  then $zero_option eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -4068,7 +4068,7 @@ exit; fi
 #### :rutina-inicial-code-shield-ssh:
 ####
 ####
-if [ "$type_firewall" = "shield-ssh" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" = "shield-ssh" ];  then $zero_option eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -4432,7 +4432,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ]; then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" = "predesignated" ]; then $zero_option eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -4865,7 +4865,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$cmd_binary eraserules &> /dev/null
+$zero_option eraserules &> /dev/null
 ####
 ####
 #######################################        english: ebtables mac rules
