@@ -349,7 +349,7 @@ launch_firewall="no" ;   #  autoconfigure with launch iptables rules
 url_web_main="https://sourceforge.net/projects/f-iptables/"
 url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-url_web_newfiles="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete" ;
+url_web_newfiles="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v5" ;
 url_web_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
