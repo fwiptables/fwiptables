@@ -60,6 +60,7 @@ exit ; fi
 ####
 ####
 cmd_binary="fwiptables-mini"
+cmd_config="fwiptables-mini"
 cmd_version="minimal-5.09" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
@@ -164,7 +165,7 @@ cmd_binary="fwiptables-mini"
 ####
 ####
 directory_binary="/usr/bin"
-directory_data="$HOME/.config/$cmd_binary"
+directory_data="$HOME/.config/$cmd_config"
 default_preferences="$directory_data/preferences"
 ####
 ####
@@ -194,8 +195,8 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/$cmd_binary-filelog"
-output_autolog="$directory_log/$cmd_binary-autolog"
+output_filelog="$directory_log/$cmd_config-filelog"
+output_autolog="$directory_log/$cmd_config-autolog"
 ####
 ####
 ##########    english: temporal files
@@ -210,8 +211,8 @@ output_autolog="$directory_log/$cmd_binary-autolog"
 #### spanish: directorio temporal
 ####
 ####
-directory_tmp="$HOME/.cache/$cmd_binary"
-directory_temporal="$directory_tmp/.$cmd_binary-$cmd_version-tmp"
+directory_tmp="$HOME/.cache/$cmd_config"
+directory_temporal="$directory_tmp/.$cmd_config-$cmd_version-tmp"
 ####
 ####
 #### english: temporal files
@@ -3256,9 +3257,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NEW FULL CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3269,7 +3270,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3290,9 +3291,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NUEVA COMPLETA CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3324,9 +3325,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NEW MINI CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3337,7 +3338,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3358,9 +3359,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NUEVA MINI CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3371,7 +3372,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -3406,7 +3407,7 @@ clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "$directory_temporal/$cmd_binary-$second_option" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$second_option" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
@@ -3501,8 +3502,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_binary-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_config-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -3520,8 +3521,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_binary-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_config-$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
@@ -3684,24 +3685,24 @@ exit; fi
 if [ "$first_option" = "actual" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the last firewall saved ] || ||"
 echo 
-$command_arptables-save          &> $directory_fwrecover/$cmd_binary-actual-arptables
-$command_ebtables-save           &> $directory_fwrecover/$cmd_binary-actual-ebtables   
-$command_iptables_nft-save       &> $directory_fwrecover/$cmd_binary-actual-nft-ipv4   
-$command_iptables_legacy-save    &> $directory_fwrecover/$cmd_binary-actual-legacy-ipv4
-$command_ip6tables_nft-save      &> $directory_fwrecover/$cmd_binary-actual-nft-ipv6   
-$command_ip6tables_legacy-save   &> $directory_fwrecover/$cmd_binary-actual-legacy-ipv6
+$command_arptables-save          &> $directory_fwrecover/$cmd_config-actual-arptables
+$command_ebtables-save           &> $directory_fwrecover/$cmd_config-actual-ebtables   
+$command_iptables_nft-save       &> $directory_fwrecover/$cmd_config-actual-nft-ipv4   
+$command_iptables_legacy-save    &> $directory_fwrecover/$cmd_config-actual-legacy-ipv4
+$command_ip6tables_nft-save      &> $directory_fwrecover/$cmd_config-actual-nft-ipv6   
+$command_ip6tables_legacy-save   &> $directory_fwrecover/$cmd_config-actual-legacy-ipv6
 echo "$cincuenta arptables $cinco"
-cat $directory_fwrecover/$cmd_binary-actual-arptables
+cat $directory_fwrecover/$cmd_config-actual-arptables
 echo "$cincuenta ebtables $cinco"
-cat $directory_fwrecover/$cmd_binary-actual-ebtables
+cat $directory_fwrecover/$cmd_config-actual-ebtables
 echo "$cincuenta nft with ipv4 $cinco"
-cat $directory_fwrecover/$cmd_binary-actual-nft-ipv4
+cat $directory_fwrecover/$cmd_config-actual-nft-ipv4
 echo "$cincuenta legacy with ipv4 $cinco"
-cat $directory_fwrecover/$cmd_binary-actual-legacy-ipv4
+cat $directory_fwrecover/$cmd_config-actual-legacy-ipv4
 echo "$cincuenta nft with ipv6 $cinco"
-cat $directory_fwrecover/$cmd_binary-actual-nft-ipv6
+cat $directory_fwrecover/$cmd_config-actual-nft-ipv6
 echo "$cincuenta legacy with ipv6 $cinco"
-cat $directory_fwrecover/$cmd_binary-actual-legacy-ipv6
+cat $directory_fwrecover/$cmd_config-actual-legacy-ipv6
 echo
 echo "$tab  [ ok ] [ readed firewall actual ]"
 exit; fi
@@ -3720,12 +3721,12 @@ echo "$header_ok [ $first_option ] [ Stop the firewall ] || ||"
 #### english: save actual fw #### spanish: guarda actual fw
 ####
 ####
-$command_arptables-save &> $directory_fwrecover/$cmd_binary-stoped-arptables
-$command_ebtables-save &> $directory_fwrecover/$cmd_binary-stoped-ebtables             
-$command_iptables_nft-save &> $directory_fwrecover/$cmd_binary-stoped-nft-ipv4         
-$command_iptables_legacy-save &> $directory_fwrecover/$cmd_binary-stoped-legacy-ipv4   
-$command_ip6tables_nft-save &> $directory_fwrecover/$cmd_binary-stoped-nft-ipv6        
-$command_ip6tables_legacy-save &> $directory_fwrecover/$cmd_binary-stoped-legacy-ipv6  
+$command_arptables-save &> $directory_fwrecover/$cmd_config-stoped-arptables
+$command_ebtables-save &> $directory_fwrecover/$cmd_config-stoped-ebtables             
+$command_iptables_nft-save &> $directory_fwrecover/$cmd_config-stoped-nft-ipv4         
+$command_iptables_legacy-save &> $directory_fwrecover/$cmd_config-stoped-legacy-ipv4   
+$command_ip6tables_nft-save &> $directory_fwrecover/$cmd_config-stoped-nft-ipv6        
+$command_ip6tables_legacy-save &> $directory_fwrecover/$cmd_config-stoped-legacy-ipv6  
 ####
 ####
 #### english: erase the rules #### spanish: borra las reglas
@@ -3750,12 +3751,12 @@ echo "$header_ok [ $first_option ] [ Continue the stoped firewall ] || ||"
 #### english: restore last fw #### spanish: restaura el ultimo fw
 ####
 ####
-cat $directory_fwrecover/$cmd_binary-stoped-arptables | $command_arptables-restore
-cat $directory_fwrecover/$cmd_binary-stoped-ebtables | $command_ebtables-restore
-cat $directory_fwrecover/$cmd_binary-stoped-nft-ipv4 | $command_iptables_nft-restore  
-cat $directory_fwrecover/$cmd_binary-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
-cat $directory_fwrecover/$cmd_binary-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
-cat $directory_fwrecover/$cmd_binary-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
+cat $directory_fwrecover/$cmd_config-stoped-arptables | $command_arptables-restore
+cat $directory_fwrecover/$cmd_config-stoped-ebtables | $command_ebtables-restore
+cat $directory_fwrecover/$cmd_config-stoped-nft-ipv4 | $command_iptables_nft-restore  
+cat $directory_fwrecover/$cmd_config-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
+cat $directory_fwrecover/$cmd_config-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
+cat $directory_fwrecover/$cmd_config-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
 echo "  [ info ] [ continue firewall ]"
 echo "  [  ok  ] [ firewall continued ]"
 exit; fi
