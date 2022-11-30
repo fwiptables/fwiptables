@@ -6,7 +6,7 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
  03. complete:  actualizar gui-menu. 
  02. complete:  actualizar cli-menu. 
- 01. complete:  la ruta para lanzar el programa desde dentro $zero_option ($0). 
+ 01. complete:  la ruta para lanzar el programa desde dentro $zero_option ($0). HECHO
  01. minimal:   la ruta para lanzar el programa desde dentro $zero_option ($0). HECHO
 
 cambios en dev-fwiptables 5.09 en desarrollo
