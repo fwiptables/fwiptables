@@ -68,9 +68,6 @@ cmd_license="GPL v2" ;
 cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
 ####
 ####
-directory_binary=""
-####
-####
 #### :sincontarrutina-final-name:
 ##########    english: options priority        ##########
 ##########    spanish: prioridad de opciones   ##########
@@ -428,15 +425,6 @@ default_security="mini-options"
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
-####
-####
-####     #### english: variable to knows if fwiptables is installed
-####     #### spanish: variable para comprobar si fwiptables esta instalado
-####
-####
-#### if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
-#### cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
-#### fi
 ####
 ####
 ####     #### english: launch default for update variables
