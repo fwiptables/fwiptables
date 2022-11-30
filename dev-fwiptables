@@ -1198,8 +1198,8 @@ echo "  [ info ] [ download ] [downloading $cmd_binary with the command $favorit
 ####
 echo "  [ info ] [ download ] [ $url_web_development ]"
 echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $url_web_development &> "$directory_temporal/$cmd_binary-installer" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rx $directory_temporal/$cmd_binary-installer &> /dev/null
+$favorite_text_browser -source $url_web_development &> "$directory_temporal/$cmd_config-installer" || echo "[ fail ] [ disconnected ]"
+chmod ugo+rx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
 #### English: launch install
@@ -1208,7 +1208,7 @@ chmod ugo+rx $directory_temporal/$cmd_binary-installer &> /dev/null
 ####
 if [ -s "$directory_temporal/$cmd_binary-installer" ] ;
 then echo "$text_md [  ok  ] [ downloaded $cmd_binary developer version ]"
-"$directory_temporal/$cmd_binary-installer" install ; 
+"$directory_temporal/$cmd_config-installer" install ; 
 else echo "$text_md [ fail ] [ install fail ]"; fi
 ####
 ####
