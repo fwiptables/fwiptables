@@ -63,8 +63,8 @@ exit ; fi
 #### spanish: archivos permanentes: donde estan las rutas de archivo: nombre, comando e icono
 ####
 #### english: program name #### spanish: nombre del programa
-#### name_fwiptables="fwiptables-cmd"
 #### english: program exec #### spanish: programa ejectutable
+#### name_fwiptables="fwiptables-cmd"
 ####
 ####
 cmd_binary="$0" ;
@@ -74,9 +74,6 @@ cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
 cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
-####
-####
-directory_binary=""
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
@@ -472,15 +469,6 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
-####
-####
-####     #### english: variable to knows if fwiptables is installed
-####     #### spanish: variable para comprobar si fwiptables esta instalado
-####
-####
-#### if [ "$1" != "install" ] && [ "$1" != "upgrade" ] && [ "$1" != "dev-upgrade" ]; then
-#### cmp -s $0 $directory_binary/$cmd_binary || fwiptables_installed="no" 
-#### fi
 ####
 ####
 ####     #### english: launch default for update variables
@@ -1080,12 +1068,6 @@ echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     # $cmd_binary $cmd_version"
 #### #### #### 
-# if [ "$fwiptables_installed" == "no" ]; then
-# echo "$text_md     [ info ] [ Actually, NO, ] [ this version is not installed in $directory_binary/$cmd_binary ]" ; 
-# else
-# echo "$text_md     [ info ] [ Actually, YES, ] [ this version is installed in $directory_binary/$cmd_binary ]" ;
-# fi
-#### #### #### 
 echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install ]" 
 echo "$text_md     [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-$cmd_version upgrade ]" 
 #### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$cmd_version dev-upgrade" 
@@ -1096,12 +1078,6 @@ echo "$text_md     # Download the latest version $cmd_name from sourceforge"
 echo "$text_md     [ link] [ $url_web_latest ]"
 echo "$text_md     # $flicense"
 echo "$text_md     [ link ] [ $license_gpl ]"
-#### #### #### 
-## if [ "$fwiptables_installed" == "no" ]; then
-## echo "$brake_md"
-## echo 
-## echo "  ### PLEASE, install this version, or copy $0 to $directory_binary/$cmd_binary" 
-## fi
 #### #### #### 
 exit; fi
 ####
@@ -1176,7 +1152,7 @@ echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
 "$NULL")echo "  [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file $directory_binary/$cmd_binary with $favorite_text_browser command ]"
+echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file /usr/bin/$cmd_binary with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [ downloading $cmd_binary with the command $favorite_text_browser browser ]"
 ####
 ####
@@ -1186,7 +1162,7 @@ echo "  [ info ] [ download ] [ downloading $cmd_binary with the command $favori
 ####
 echo "  [ info ] [ download ] [ $url_web_latest ]"
 echo "  [ info ] [ download ] [ waiting several seconds .. ]"
-$favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/$cmd_binary" || echo "[ fail ] [ disconnected ]"
+$favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/fwiptables-cmd" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$cmd_binary" &> /dev/null
 ####
 ####
@@ -1212,7 +1188,7 @@ echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ up
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
 "$NULL")echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file $directory_binary/$cmd_binary with $favorite_text_browser command ]"
+echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [downloading $cmd_binary with the command $favorite_text_browser browser ]"
 ####
 ####
@@ -6336,13 +6312,13 @@ echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
 echo "  [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
 if [ "$second_option" = "$NULL" ]; then echo "$code_error" ; echo
-salida_code="$(cat $directory_binary/$cmd_binary | $command_grep -i  rutina-inicial \
+salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
 | $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
 sort | $command_sed -s s/://g )"
 echo $salida_code
 exit ; fi
-value_first="$(cat -n $directory_binary/$cmd_binary | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
-value_second="$(cat -n $directory_binary/$cmd_binary | $command_grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
+value_first="$(cat -n $cmd_binary | $command_grep  :rutina-inicial-$2: | cut -d "#" -f 1 | head -1)"
+value_second="$(cat -n $cmd_binary | $command_grep :rutina-final-$2:  | cut -d "#" -f 1 | head -1)"
 value_count="$(("$value_second"-"$value_first+1"))"
 if [ ! -n "$value_first" ];   then echo; echo "$code_error" ; exit ; fi
 if [ ! -n "$value_second" ];  then echo; echo "$code_error" ; exit ; fi
@@ -6350,7 +6326,7 @@ if [ ! -n "$value_count" ];   then echo; echo "$code_error" ; exit ; fi
 echo "$tab [ code ] [ option: "$second_option" ] [ show $value_count lines ] \
 [ from the "$value_first" line number to "$value_second" line number ]"
 echo
-cat $directory_binary/$cmd_binary | head -n $value_second | tail -n $value_count
+cat $cmd_binary | head -n $value_second | tail -n $value_count
 exit; fi
 ####
 ####
@@ -6380,12 +6356,12 @@ echo "$tab [ info ] [ The latest version is: ]"
 $favorite_text_browser -dump $url_web_newfiles | grep -i fwiptables-complete-v | grep -i download
 #| $command_grep -i $cmd_binary | $command_grep -i  download | head -1
 echo 
-echo "$tab [ info ] [ Upgrade The $cmd_binary in file $directory_binary/$cmd_binary with $favorite_text_browser ]"
+echo "$tab [ info ] [ Upgrade The $cmd_binary in file /usr/bin/fwiptables-cmd with $favorite_text_browser ]"
 echo "$tab [ info ] [ OR download manually   || OR $cmd_binary upgrade || OR look down: ]"
 echo "$tab [ info ] [ launch: $favorite_text_browser -source $url_web_latest &> /tmp/$cmd_binary ]"
 echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_binary ]"
 echo "$tab [ info ] [ launch: /tmp/$cmd_binary install ]"
-echo "$tab [ info ] [ ok and it will be upgrade with the name $directory_binary/$cmd_binary ]"
+echo "$tab [ info ] [ ok and it will be upgrade with the name fwiptables-cmd ]"
 exit;  fi
 ####
 ####
@@ -7580,7 +7556,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; the
 case $second_option in
 "$NULL") echo $give_cover ; echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $directory_binary/$cmd_binary " &> /etc/sudoers.d/$cmd_binary
+echo "$autorizados ALL=(root) NOPASSWD: $cmd_binary " &> /etc/sudoers.d/$cmd_binary
 echo "alias $cmd_binary='sudo $cmd_binary'" &>  /etc/bash_completion.d/$cmd_binary
 echo $tab
 echo "  [ ok ] [ $autorizados will use:     $cmd_binary ]"
@@ -10537,14 +10513,14 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "about" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ about ] [ about md ] || ||" 
 echo "$title_md [ $cmd_binary: ]"
-echo "$text_md [ Path Program ] $directory_binary/$cmd_binary"
+echo "$text_md [ Path Program ] $cmd_binary"
 echo "$text_md [ Program Name ] $cmd_name"
 echo "$text_md [ Program Description] $cmd_description"
 echo
 echo "$title_md [ Install: ]"
 echo "$text_md 1: chmod ugo+x fwiptables-version"
 echo "$text_md 2: ./fwiptables-version install"
-echo "$text_md And then $cmd_binary is in $directory_binary/$cmd_binary"
+echo "$text_md And then $cmd_binary is in /usr/bin/fwiptables-cmd"
 echo
 echo "$title_md [ Sources: ]"
 echo
