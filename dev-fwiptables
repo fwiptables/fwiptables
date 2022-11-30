@@ -4412,8 +4412,8 @@ case $second_option in
 #### 
 #### 
 "new-mini-config")
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$third_option"
-$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$third_option" \
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
+$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
@@ -4423,8 +4423,8 @@ $command_zenity --forms $graphic_dimension --text="Canceled new file: $third_opt
 #### 
 #### 
 "new-full-config")
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$third_option"
-$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$third_option" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
+$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
@@ -4434,8 +4434,8 @@ $command_zenity --forms $graphic_dimension --text="Canceled new file: $third_opt
 #### 
 #### 
 "nueva-mini-config")
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_binary-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$third_option" \
+cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
@@ -4445,8 +4445,8 @@ $command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_op
 #### 
 #### 
 "nueva-completa-config")
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_binary-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$third_option" \
+cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
 $command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
@@ -4458,12 +4458,12 @@ $command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_op
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
 else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "$directory_temporal/$cmd_binary-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$third_option" \
+cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 $command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
-else cp "$directory_temporal/$cmd_binary-$third_option" "$directory_config/$third_option"
+else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
 $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
@@ -4496,8 +4496,8 @@ case $second_option in
 #### 
 "wizard-mini")
 archivo="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list ;
@@ -4508,8 +4508,8 @@ $command_zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 #### 
 "wizard-full")
 archivo="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list ;
@@ -4523,8 +4523,8 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
 else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
-cp "$directory_config/$third_option" "$directory_temporal/$cmd_binary-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_binary-$third_option" \
+cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
+$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
 $command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
@@ -7366,9 +7366,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NEW FULL CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -7379,7 +7379,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -7400,9 +7400,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NUEVA COMPLETA CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -7413,7 +7413,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -7434,9 +7434,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NEW MINI CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -7447,7 +7447,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -7468,9 +7468,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_binary-$archivo"
+cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$archivo"
 $command_dialog  --no-cancel --title "NUEVA MINI CONFIG" \
---editbox "$directory_temporal/$cmd_binary-$archivo" 0 0 2> "$directory_config/$archivo"
+--editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -7481,7 +7481,7 @@ fi
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
@@ -7516,7 +7516,7 @@ clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "$directory_temporal/$cmd_binary-$second_option" "$directory_config/$second_option" &> /dev/null
+cp "$directory_temporal/$cmd_config-$second_option" "$directory_config/$second_option" &> /dev/null
 $command_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
