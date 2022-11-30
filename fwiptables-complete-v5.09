@@ -68,12 +68,15 @@ exit ; fi
 ####
 ####
 cmd_binary="$0" ;
-cmd_config="fwiptables-cmd"
+cmd_config="fwiptables-cmd" ;
 cmd_version="complete-5.09" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
-cmd_homepage="https://sourceforge.net/projects/f-iptables/"
+cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
+####
+####
+directory_binary=""
 ####
 ####
 #### #### english: program description   #### spanish: descripcion del programa
@@ -313,7 +316,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary $cmd_version"
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config $cmd_version"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -385,7 +388,6 @@ fwiptables_installed=""
 #### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
-directory_binary=""
 directory_data="$HOME/.config/$cmd_config"
 default_preferences="$directory_data/preferences"
 ####
@@ -715,6 +717,7 @@ if [ "$first_option" = "examples" ] ; then first_option="options-examples"; fi
 if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
 if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
 if [ "$first_option" = "ntp" ] ; then first_option="ntpdate-client"; fi
+if [ "$first_option" = "dhcp" ] ; then first_option="dhcp-client"; fi
 if [ "$first_option" = "sentlog" ] ; then first_option="filelog"; fi
 if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
 if [ "$first_option" = "regen" ] ; then first_option="regen-config"; fi

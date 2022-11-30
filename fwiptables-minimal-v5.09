@@ -59,13 +59,16 @@ exit ; fi
 #### :sincontarrutina-inicial-name:
 ####
 ####
-cmd_binary="fwiptables-mini"
-cmd_config="fwiptables-mini"
+cmd_binary="$0" ;
+cmd_config="fwiptables-mini" ;
 cmd_version="minimal-5.09" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
-cmd_license="GPL v2"
-cmd_homepage="https://sourceforge.net/projects/f-iptables/"
+cmd_license="GPL v2" ;
+cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
+####
+####
+directory_binary=""
 ####
 ####
 #### :sincontarrutina-final-name:
@@ -164,7 +167,6 @@ cmd_binary="fwiptables-mini"
 #### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
-directory_binary="/usr/bin"
 directory_data="$HOME/.config/$cmd_config"
 default_preferences="$directory_data/preferences"
 ####
@@ -366,7 +368,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_binary $cmd_version ] || || "
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config $cmd_version ] || || "
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
