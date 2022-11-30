@@ -4,16 +4,16 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
+ 01. 
 
+cambios en dev-fwiptables 5.10 en desarrollo
 
- 06: complete:  control firewall corregido, arreglos. HECHO
- 05. minimal:   control firewall corregido, arreglos. HECHO
- 04. complete:  actualizar gui-menu. 
- 03. complete:  actualizar cli-menu. 
+ 04: complete:  control de firewall corregido, arreglos. HECHO
+ 03. minimal:   control de firewall corregido, arreglos. HECHO
  02. complete:  la ruta para lanzar el programa desde dentro $zero_option (cmd_binary="$0"). HECHO
  01. minimal:   la ruta para lanzar el programa desde dentro $zero_option (cmd_binary="$0"). HECHO
 
-cambios en dev-fwiptables 5.09 en desarrollo
+cambios en dev-fwiptables 5.09 lineas=4
 
  05. añadir tool-radio. HECHO
  04. añadir tool-pdf. HECHO
