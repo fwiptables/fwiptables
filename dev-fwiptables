@@ -67,11 +67,12 @@ exit ; fi
 #### english: program exec #### spanish: programa ejectutable
 ####
 ####
-cmd_binary="fwiptables-cmd" ;
+cmd_binary="$0" ;
+cmd_config="fwiptables-cmd"
 cmd_version="complete-5.09" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
-cmd_license="GPL v2"
+cmd_license="GPL v2" ;
 cmd_homepage="https://sourceforge.net/projects/f-iptables/"
 ####
 ####
@@ -384,8 +385,8 @@ fwiptables_installed=""
 #### spanish: directorio permanente: directorios permanentes y ruta de directorios de los archivos de configuracion
 ####
 ####
-directory_binary="/usr/bin"
-directory_data="$HOME/.config/$cmd_binary"
+directory_binary=""
+directory_data="$HOME/.config/$cmd_config"
 default_preferences="$directory_data/preferences"
 ####
 ####
@@ -415,8 +416,8 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/$cmd_binary-filelog"
-output_autolog="$directory_log/$cmd_binary-autolog"
+output_filelog="$directory_log/$cmd_config-filelog"
+output_autolog="$directory_log/$cmd_config-autolog"
 ####
 ####
 ##########    english: temporal files: files for fwiptables ##########
@@ -431,8 +432,8 @@ output_autolog="$directory_log/$cmd_binary-autolog"
 #### spanish: directorio temporal
 ####
 ####
-directory_tmp="$HOME/.cache/$cmd_binary"
-directory_temporal="$directory_tmp/.$cmd_binary-$cmd_version-tmp"
+directory_tmp="$HOME/.cache/$cmd_config"
+directory_temporal="$directory_tmp/.$cmd_config-$cmd_version-tmp"
 ####
 ####
 #### english: temporal files
@@ -1113,9 +1114,6 @@ echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] 
 echo "  [ info ] [ $cmd_binary uninstalling.. ]"
 if  [ -f $directory_binary/$cmd_binary ]; then
 rm $directory_binary/$cmd_binary &> /dev/null
-rm $directory_binary/$cmd_binary-cli-menu &> /dev/null
-rm $directory_binary/$cmd_binary-gui-menu &> /dev/null
-rm $directory_binary/$cmd_binary-gui-shell &> /dev/null
 echo "  [ info ] [ deleted binaries ]"
 echo "  [  ok  ] [ $cmd_binary uninstalled ]" ;
 else echo "  [ info ] [ $cmd_binary is not installed ]"; fi
@@ -1138,7 +1136,7 @@ echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version installer ] [ inst
 #### 
 echo "  [ info ] [ $cmd_binary installing.. ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
-cp "$directory_temporal/fwiptables-tmp.sh" "$directory_binary/$cmd_binary" &> /dev/null 
+cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/fwiptables-cmd" &> /dev/null 
 chmod 555 "$directory_binary/$cmd_binary" &> /dev/null 
 ####
 ####
@@ -1150,25 +1148,6 @@ $cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
 ####
 ####
-####  english: generate fwiptables-gui-menu fwiptables-gui-shell and fwiptables-cli-menu in /usr/bin
-####  spanish: genera fwiptables-gui-menu fwiptables-gui-shell y fwiptables-cli-menu en /usr/bin
-####
-####
-echo "#!/bin/bash" &> $directory_binary/$cmd_binary-cli-menu
-echo "sudo $cmd_binary cli-menu" &>> $directory_binary/$cmd_binary-cli-menu
-chmod 555 $directory_binary/$cmd_binary-cli-menu &> /dev/null
-####
-####
-echo "#!/bin/bash" &> $directory_binary/$cmd_binary-gui-menu
-echo "$command_xhost +SI:localuser:root" &>> $directory_binary/$cmd_binary-gui-menu
-echo "sudo $cmd_binary gui-menu" &>> $directory_binary/$cmd_binary-gui-menu
-chmod 555 $directory_binary/$cmd_binary-gui-menu &> /dev/null
-####
-####
-echo "#!/bin/bash" &> $directory_binary/$cmd_binary-gui-shell
-echo "$command_xhost +SI:localuser:root" &>> $directory_binary/$cmd_binary-gui-shell
-echo "sudo $cmd_binary gui-shell" &>> $directory_binary/$cmd_binary-gui-shell
-chmod 555 $directory_binary/$cmd_binary-gui-shell &> /dev/null
 ####
 ####
 ####   english: Show final status from installer
@@ -1177,10 +1156,7 @@ chmod 555 $directory_binary/$cmd_binary-gui-shell &> /dev/null
 ####
 echo "  [ info ] [ config dir:        ] [ $directory_data ]"
 echo "  [ info ] [ tmp dir:           ] [ $directory_tmp  ]"
-echo "  [ info ] [ command shell:     ] [ $directory_binary/$cmd_binary ]"
-echo "  [ info ] [ command cli-menu:  ] [ $directory_binary/$cmd_binary-cli-menu  ]"
-echo "  [ info ] [ command gui-menu:  ] [ $directory_binary/$cmd_binary-gui-menu  ]"
-echo "  [ info ] [ command gui-shell: ] [ $directory_binary/$cmd_binary-gui-shell ]"
+echo "  [ info ] [ command shell:     ] [ /usr/bin/fwiptables-cmd ]"
 echo "  [ info ] [ grant privileges to user: ] [ $cmd_binary sudofw-adduser user ]"
 echo "  [  ok  ] [ now. You are ready to run $cmd_binary ]"
 exit; fi
