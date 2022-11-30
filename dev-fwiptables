@@ -1115,11 +1115,11 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
 echo "  [ info ] [ $cmd_binary uninstalling.. ]"
-if  [ -f $directory_binary/$cmd_binary ]; then
-rm $directory_binary/$cmd_binary &> /dev/null
+if  [ -f /usr/bin/fwiptables-cmd ]; then
+rm /usr/bin/fwiptables-cmd &> /dev/null
 echo "  [ info ] [ deleted binaries ]"
-echo "  [  ok  ] [ $cmd_binary uninstalled ]" ;
-else echo "  [ info ] [ $cmd_binary is not installed ]"; fi
+echo "  [  ok  ] [ /usr/bin/fwiptables-cmd uninstalled ]" ;
+else echo "  [ info ] [ /usr/bin/fwiptables-cmd is not installed ]"; fi
 exit; fi
 ####
 ####
@@ -1130,7 +1130,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "install" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version installer ] [ install md ] || ||"
+echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ install md ] || ||"
 ####
 ####
 ####  english: copy the file to temporal folder and install
@@ -1140,7 +1140,7 @@ echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version installer ] [ inst
 echo "  [ info ] [ $cmd_binary installing.. ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/fwiptables-cmd" &> /dev/null 
-chmod 555 "$directory_binary/$cmd_binary" &> /dev/null 
+chmod 555 "/usr/bin/fwiptables-cmd" &> /dev/null 
 ####
 ####
 ####  english: generate fwiptables default config and templates
