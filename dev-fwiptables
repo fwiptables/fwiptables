@@ -319,7 +319,7 @@ give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || |
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary preferences-modify ]"
 #### #### info list rules
-message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Launch to configure: $cmd_binary preferences-modify ] || ||"
+message_info_rules="$duo_md || || [ ok ] || [ Configure ] [ Configure: $cmd_binary preferences-modify ] || ||"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -1185,11 +1185,11 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at development version from sourceforge.net git ]"
+echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
 "$NULL")echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
-echo "  [ info ] [ download ] [downloading $cmd_binary with the command $favorite_text_browser browser ]"
+echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1206,8 +1206,8 @@ chmod ugo+rx $directory_temporal/$cmd_config-installer &> /dev/null
 #### Spanish: lanza instalacion
 ####
 ####
-if [ -s "$directory_temporal/$cmd_binary-installer" ] ;
-then echo "$text_md [  ok  ] [ downloaded $cmd_binary developer version ]"
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "$text_md [  ok  ] [ downloaded $cmd_config developer version ]"
 "$directory_temporal/$cmd_config-installer" install ; 
 else echo "$text_md [ fail ] [ install fail ]"; fi
 ####
