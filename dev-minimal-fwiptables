@@ -155,7 +155,7 @@ fi; fi
 #### english: program name #### spanish: nombre del programa
 #### name_fwiptables="fwiptables-mini"
 #### english: program exec #### spanish: programa ejectutable
-cmd_binary="fwiptables-mini"
+#### cmd_binary="fwiptables-mini"
 #### english: name icon #### spanish: nombre de icono
 #### icon_fwiptables="zenity"
 ####
@@ -369,7 +369,7 @@ give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config $cmd_ver
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_preferences="$duo_md [ info ] [ Configure preferences with: ] [ $cmd_binary preferences-modify ]"
+give_preferences="$duo_md [ info ] [ Configure ] [ Configure: $cmd_binary preferences-modify ]"
 #### #### english: echo void            #### spanish: impresion vacia
 nada="echo -n" ; 
 #### #### english: echo void            #### spanish: impresion vacia
@@ -2353,7 +2353,7 @@ fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
+echo "$title_md launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
