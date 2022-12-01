@@ -1113,7 +1113,7 @@ echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ inst
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "  [ info ] [ $cmd_config installing.. ]"
+echo "  [ info ] [ fwiptables-cmd installing.. ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/fwiptables-cmd" &> /dev/null 
 chmod 555 "/usr/bin/fwiptables-cmd" &> /dev/null 
@@ -1207,9 +1207,9 @@ chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "$text_md [  ok  ] [ downloaded $cmd_config developer version ]" ;
+then echo "  [  ok  ] [ downloaded $cmd_config developer version ]" ;
 $directory_temporal/$cmd_config-installer install ; 
-else echo "$text_md [ fail ] [ install fail ]"; fi ;
+else echo "  [ fail ] [ install fail ]"; fi ;
 ####
 ####
 exit ; fi
