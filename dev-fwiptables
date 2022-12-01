@@ -1113,7 +1113,7 @@ echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ inst
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "  [ info ] [ $cmd_binary installing.. ]"
+echo "  [ info ] [ $cmd_config installing.. ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/fwiptables-cmd" &> /dev/null 
 chmod 555 "/usr/bin/fwiptables-cmd" &> /dev/null 
@@ -1136,8 +1136,8 @@ $cmd_binary regen-config &> /dev/null
 echo "  [ info ] [ config dir:        ] [ $directory_data ]"
 echo "  [ info ] [ tmp dir:           ] [ $directory_tmp  ]"
 echo "  [ info ] [ command shell:     ] [ /usr/bin/fwiptables-cmd ]"
-echo "  [ info ] [ grant privileges to user: ] [ $cmd_binary sudofw-adduser user ]"
-echo "  [  ok  ] [ now. You are ready to run $cmd_binary ]"
+echo "  [ info ] [ grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
+echo "  [  ok  ] [ now. You are ready to run fwiptables-cmd ]"
 exit; fi
 ####
 ####
@@ -1149,11 +1149,11 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ upgrade  ] [ upgrade $cmd_binary at latest version from sourceforge.net web ]"
+echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
 "$NULL")echo "  [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_binary in file /usr/bin/$cmd_binary with $favorite_text_browser command ]"
-echo "  [ info ] [ download ] [ downloading $cmd_binary with the command $favorite_text_browser browser ]"
+echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
@@ -1162,17 +1162,17 @@ echo "  [ info ] [ download ] [ downloading $cmd_binary with the command $favori
 ####
 echo "  [ info ] [ download ] [ $url_web_latest ]"
 echo "  [ info ] [ download ] [ waiting several seconds .. ]"
-$favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/fwiptables-cmd" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rwx "$directory_temporal/$cmd_binary" &> /dev/null
+$favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/$cmd_config-upgrader" || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx "$directory_temporal/$cmd_config-upgrader" &> /dev/null
 ####
 ####
 #### English: launch install
 #### Spanish: lanza instalacion
 ####
 ####
-if [ -f "$directory_temporal/$cmd_binary" ] ;
-then echo "  [  ok  ] [ download ] [ downloaded $cmd_binary latest version ]"
-"$directory_temporal/$cmd_binary" install ; 
+if [ -f "$directory_temporal/$cmd_config-upgrader" ] ;
+then echo "  [  ok  ] [ download ] [ downloaded $cmd_config latest version ]"
+$directory_temporal/$cmd_config-upgrader install ; 
 else echo "  [ fail ] [ install fail ]"; fi
 exit ; fi
 ####
@@ -1187,7 +1187,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then e
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in
-"$NULL")echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+"$NULL") echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
 echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
@@ -1198,8 +1198,8 @@ echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favori
 ####
 echo "  [ info ] [ download ] [ $url_web_development ]"
 echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $url_web_development &> "$directory_temporal/$cmd_config-installer" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rx $directory_temporal/$cmd_config-installer &> /dev/null
+$favorite_text_browser -source $url_web_development &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
 #### English: launch install
@@ -1207,9 +1207,9 @@ chmod ugo+rx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "$text_md [  ok  ] [ downloaded $cmd_config developer version ]"
-"$directory_temporal/$cmd_config-installer" install ; 
-else echo "$text_md [ fail ] [ install fail ]"; fi
+then echo "$text_md [  ok  ] [ downloaded $cmd_config developer version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$text_md [ fail ] [ install fail ]"; fi ;
 ####
 ####
 exit ; fi
