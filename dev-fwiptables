@@ -10180,8 +10180,10 @@ exit; fi
 #### :rutina-inicial-new-versions:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then echo $give_cover
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then 
+echo "  [ info ] [ Show the last minimal version ] "
 $cmd_binary minimal-versions
+echo "  [ info ] [ Show the last complete version ] "
 $cmd_binary complete-versions
 exit; fi
 ####
