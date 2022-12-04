@@ -10181,9 +10181,12 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then 
-echo "  [ info ] [ Show the last minimal version ] "
+echo "  ##### [ info ] [ Show the last minimal version ] "
+echo
 $cmd_binary minimal-versions
-echo "  [ info ] [ Show the last complete version ] "
+echo
+echo "  ##### [ info ] [ Show the last complete version ] "
+echo
 $cmd_binary complete-versions
 exit; fi
 ####
