@@ -346,15 +346,16 @@ close_graphicall="1"
 mensage_timeout="Closing gui menu in $close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_firewall="no" ;   #  autoconfigure with launch iptables rules
-####       #### english: [download web link]  #### spanish: [descarga del enlace web]
+####       #### english: web links  #### spanish: enlaces web
 url_web_main="https://sourceforge.net/projects/f-iptables/"
 url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
 url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
 url_web_newfiles="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v5" ;
+url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v5" ;
+url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v5" ;
 url_web_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
-####       #### english: [Program license] #### spanish: [Licencia del programa]
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
 url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
@@ -10188,6 +10189,34 @@ exit; fi
 ####
 ####
 #### :rutina-final-new-versions:
+##########    english: complete-versions: about of program      ##########
+##########    spanish: complete-versions: acerca del programa   ##########
+#### :rutina-inicial-complete-versions:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "complete-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
+case $favorite_text_browser in 
+"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
+$favorite_text_browser -dump $url_complete_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+exit; fi
+####
+####
+#### :rutina-final-complete-versions:
+##########    english: minimal-versions: about of program      ##########
+##########    spanish: minimal-versions: acerca del programa   ##########
+#### :rutina-inicial-minimal-versions:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "minimal-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
+case $favorite_text_browser in 
+"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
+$favorite_text_browser -dump $url_minimal_newfiles | $command_grep -E "[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+exit; fi
+####
+####
+#### :rutina-final-minimal-versions:
 ##########    english: gpg-notes: edit file gpg texts         ##########
 ##########    spanish: gpg-notes: edita archivo de gpg text   ##########
 #### :rutina-inicial-gpg-notes:
