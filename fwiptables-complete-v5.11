@@ -8119,7 +8119,7 @@ $command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
+$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
 else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo 
 exit; fi
@@ -14044,7 +14044,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####
 ####  
 ####
-if [ -f "$directory_config/$second_option" ]; then $nada
+if [ -f "$directory_config/$second_option" ]; then $cmd_binary reset &> /dev/null ;
 echo "  [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
