@@ -8095,11 +8095,11 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_binary-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_binary-$archivo" \
+cp "$defaultminicfg_eng" "$directory_temporal/$archivo"
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
+if [  -s "$directory_config/$archivo" ]; then echo
 $command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
 else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
 #### echo 
@@ -8114,8 +8114,8 @@ exit; fi
 ####
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_binary-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_binary-$archivo" \
+cp "$defaultfullcfg_eng" "$directory_temporal/$archivo"
+$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$archivo" \
 0 0 2> "$directory_config/$archivo"
 clear
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
