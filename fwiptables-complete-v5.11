@@ -45,7 +45,7 @@
 #### :rutina-inicial-admin:
 ####
 ####
-if [ "$(id -u)" == "0" ] ; then echo -n ; else
+if [ "$(id -u)" != "0" ] ; then echo
 echo
 echo "  [ info ] [ fwiptables needs to be root to work ]"
 echo
@@ -111,40 +111,17 @@ quad_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### :rutina-inicial-x11:
 ####
 ####
-####     #### english: program version            #### spanish: Version del programa
-####     #### english: launch profile             #### spanish: lanza profile
-####
-####
-#### if [ -f /etc/profile ] ; then . /etc/profile ; fi
-####
-####     #### english: launch completion          #### spanish: lanza autocompletar
-####
-####
-#### if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
-####
-####
 ####     #### english: stablished the path        #### spanish: establece el path
 ####
 ####
 PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
-####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
-####     #### code for add xhost to root for graphicall use
+####     #### english: add auth xhost for root for graphicall use 
+####     #### spanish: añade autorización xhost para root para uso grafico
 ####
 ####
-command_id="$(command -v id)"
-command_xhost="$(command -v xhost)"
-command_grep="$(command -v grep)"
-terminal_tty="$(tty | $command_grep -E -i tty | tail -1)"
-####
-####
-if [ "$terminal_tty" = "$NULL" ] ; then
-if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
-then
-sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-else
-sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-fi; fi
+command_xhost="$(command -v xhost)" ;
+$command_xhost +SI:localuser:root &> /dev/null ;
 ####
 ####
 #### deprecated
@@ -158,6 +135,96 @@ fi; fi
 ####
 ####
 #### :rutina-final-x11:
+##########   english: search programs: programs path           ##########
+##########   spanish: busca los programas: ruta de programas   ##########
+#### :rutina-inicial-command:
+####
+####
+command_arp="$(command -v arp)"
+command_arp_scan="$(command -v arp-scan)"
+command_arptables="$(command -v arptables)"
+command_bash="$(command -v bash)"
+command_bc="$(command -v bc)"
+command_curl="$(command -v curl)"
+command_cut="$(command -v cut)"
+command_date="$(command -v date)"
+command_dd="$(command -v dd)"
+command_dhclient="$(command -v dhclient)"
+command_dhclient_script="$(command -v dhclient-script)"
+command_dhcpcd="$(command -v dhcpcd)"
+command_dialog="$(command -v dialog)"
+command_dig="$(command -v dig)"
+command_ebtables="$(command -v ebtables)"
+command_elinks="$(command -v elinks)"
+command_find="$(command -v find)"
+command_fmt="$(command -v fmt)"
+command_geoiplookup="$(command -v geoiplookup)"
+command_glxgears="$(command -v glxgears)"
+command_gpg="$(command -v gpg)"
+command_grep="$(command -v grep)"
+command_halt="$(command -v halt)"
+command_host="$(command -v host)"
+command_ifconfig="$(command -v ifconfig)"
+command_ip="$(command -v ip)"
+command_ip6tables_legacy="$(command -v ip6tables-legacy)"
+command_ip6tables_nft="$(command -v ip6tables-nft)"
+command_iperf="$(command -v iperf)"
+command_iptables_legacy="$(command -v iptables-legacy)"
+command_iptables_nft="$(command -v iptables-nft)"
+command_iw="$(command -v iw)"
+command_links="$(command -v links)"
+command_links2="$(command -v links2)"
+command_ls="$(command -v ls)"
+command_lsof="$(command -v lsof)"
+command_lynx="$(command -v lynx)"
+command_m2r="$(command -v m2r)"
+command_md5sum="$(command -v md5sum)"
+command_mdp="$(command -v mdp)"
+command_mpg123="$(command -v mpg123)"
+command_mpg321="$(command -v mpg321)"
+command_netstat="$(command -v netstat)"
+command_netstat_nat="$(command -v netstat-nat)"
+command_nmap="$(command -v nmap)"
+command_ntpdate="$(command -v ntpdate)"
+command_openssl="$(command -v openssl)"
+command_ping="$(command -v ping)"
+command_rdate="$(command -v rdate)"
+command_reboot="$(command -v reboot)"
+command_resolveip="$(command -v resolveip)"
+command_route="$(command -v route)"
+command_sed="$(command -v sed)"
+command_shc="$(command -v shc)"
+command_shutdown="$(command -v shutdown)"
+command_sleep="$(command -v sleep)"
+command_sntp="$(command -v sntp) -S"
+command_ss="$(command -v ss)"
+command_sysctl="$(command -v sysctl)"
+command_tcpdump="$(command -v tcpdump)"
+command_tee="$(command -v tee)"
+command_torify="$(command -v torify)"
+command_traceroute="$(command -v traceroute)"
+command_txt2html="$(command -v txt2html)"
+command_uname="$(command -v uname)"
+command_wget="$(command -v wget)"
+command_wpa_passphrase="$(command -v wpa_passphrase)"
+command_wpa_supplicant="$(command -v wpa_supplicant)"
+command_xrandr="$(command -v xrandr)"
+command_zenity="$(command -v zenity)"
+command_zgrep="$(command -v zgrep)"
+command_lpinfo="$(command -v lpinfo)"
+command_lpstat="$(command -v lpstat)"
+command_lsblk="$(command -v lsblk)"
+command_lsusb="$(command -v lsusb)"
+command_lscpu="$(command -v lscpu)"
+command_lspci="$(command -v lspci)"
+command_lsgpu="$(command -v lsgpu)"
+command_lshw="$(command -v lshw)"
+command_gs="$(command -v gs)"
+command_pdfunite="$(command -v pdfunite)"
+command_pdfseparate="$(command -v pdfseparate)"
+####
+####
+#### :rutina-final-command:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########
 #### :rutina-inicial-config-variables:
@@ -368,18 +435,13 @@ url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-
 default_security="options-mini"
 ####
 ####
-fwiptables_installed=""
+#### fwiptables_installed=""
 ####
 ####
 #### :rutina-final-system-variables:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
-####
-####
-#### if [ "$program_minimal" == "no" ] ; 
-#### then cmd_binary="fwiptables-cmd"  ; 
-#### else cmd_binary="fwiptables-mini" ; fi ;
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -511,96 +573,6 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-notice:
-##########   english: search programs: programs path           ##########
-##########   spanish: busca los programas: ruta de programas   ##########
-#### :rutina-inicial-command:
-####
-####
-command_arp="$(command -v arp)"
-command_arp_scan="$(command -v arp-scan)"
-command_arptables="$(command -v arptables)"
-command_bash="$(command -v bash)"
-command_bc="$(command -v bc)"
-command_curl="$(command -v curl)"
-command_cut="$(command -v cut)"
-command_date="$(command -v date)"
-command_dd="$(command -v dd)"
-command_dhclient="$(command -v dhclient)"
-command_dhclient_script="$(command -v dhclient-script)"
-command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v dialog)"
-command_dig="$(command -v dig)"
-command_ebtables="$(command -v ebtables)"
-command_elinks="$(command -v elinks)"
-command_find="$(command -v find)"
-command_fmt="$(command -v fmt)"
-command_geoiplookup="$(command -v geoiplookup)"
-command_glxgears="$(command -v glxgears)"
-command_gpg="$(command -v gpg)"
-command_grep="$(command -v grep)"
-command_halt="$(command -v halt)"
-command_host="$(command -v host)"
-command_ifconfig="$(command -v ifconfig)"
-command_ip="$(command -v ip)"
-command_ip6tables_legacy="$(command -v ip6tables-legacy)"
-command_ip6tables_nft="$(command -v ip6tables-nft)"
-command_iperf="$(command -v iperf)"
-command_iptables_legacy="$(command -v iptables-legacy)"
-command_iptables_nft="$(command -v iptables-nft)"
-command_iw="$(command -v iw)"
-command_links="$(command -v links)"
-command_links2="$(command -v links2)"
-command_ls="$(command -v ls)"
-command_lsof="$(command -v lsof)"
-command_lynx="$(command -v lynx)"
-command_m2r="$(command -v m2r)"
-command_md5sum="$(command -v md5sum)"
-command_mdp="$(command -v mdp)"
-command_mpg123="$(command -v mpg123)"
-command_mpg321="$(command -v mpg321)"
-command_netstat="$(command -v netstat)"
-command_netstat_nat="$(command -v netstat-nat)"
-command_nmap="$(command -v nmap)"
-command_ntpdate="$(command -v ntpdate)"
-command_openssl="$(command -v openssl)"
-command_ping="$(command -v ping)"
-command_rdate="$(command -v rdate)"
-command_reboot="$(command -v reboot)"
-command_resolveip="$(command -v resolveip)"
-command_route="$(command -v route)"
-command_sed="$(command -v sed)"
-command_shc="$(command -v shc)"
-command_shutdown="$(command -v shutdown)"
-command_sleep="$(command -v sleep)"
-command_sntp="$(command -v sntp) -S"
-command_ss="$(command -v ss)"
-command_sysctl="$(command -v sysctl)"
-command_tcpdump="$(command -v tcpdump)"
-command_tee="$(command -v tee)"
-command_torify="$(command -v torify)"
-command_traceroute="$(command -v traceroute)"
-command_txt2html="$(command -v txt2html)"
-command_uname="$(command -v uname)"
-command_wget="$(command -v wget)"
-command_wpa_passphrase="$(command -v wpa_passphrase)"
-command_wpa_supplicant="$(command -v wpa_supplicant)"
-command_xrandr="$(command -v xrandr)"
-command_zenity="$(command -v zenity)"
-command_zgrep="$(command -v zgrep)"
-command_lpinfo="$(command -v lpinfo)"
-command_lpstat="$(command -v lpstat)"
-command_lsblk="$(command -v lsblk)"
-command_lsusb="$(command -v lsusb)"
-command_lscpu="$(command -v lscpu)"
-command_lspci="$(command -v lspci)"
-command_lsgpu="$(command -v lsgpu)"
-command_lshw="$(command -v lshw)"
-command_gs="$(command -v gs)"
-command_pdfunite="$(command -v pdfunite)"
-command_pdfseparate="$(command -v pdfseparate)"
-####
-####
-#### :rutina-final-command:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -696,6 +668,7 @@ if [ "$first_option" = "ls4" ]  ; then first_option="-txt" ; second_option="list
 if [ "$first_option" = "ls6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
 if [ "$first_option" = "list4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
 if [ "$first_option" = "list6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
+if [ "$first_option" = "list46" ]  ; then first_option="-txt" ; second_option="status" ; fi
 ####
 ####
 if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
@@ -725,8 +698,8 @@ if [ "$first_option" = "ip" ] ; then first_option="ip4"; fi
 ####
 ####
 if [ "$1" = "-n" ] ; then first_option="-null" ; fi
-if [ "$first_option" = "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
-if [ "$second_option" = "md5sum" ] ; then third_option="$3"  ; quad_option="$4"  ; fi
+if [ "$first_option"  = "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
+if [ "$second_option" = "md5sum" ]  ; then third_option="$3"  ; quad_option="$4"  ; fi
 ####
 ####
 #### english:  alias simple for firewall names 
@@ -1069,10 +1042,9 @@ echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables installer.  ###"
 echo "$text_md     # $cmd_binary $cmd_version"
 #### #### #### 
-echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install ]" 
-echo "$text_md     [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-$cmd_version upgrade ]" 
-#### echo "$text_md     Install development version from web git ||  TYPE:  ./fwiptables-$cmd_version dev-upgrade" 
-echo "$text_md     [ info ] [ Uninstall $cmd_binary from the computer ] [ TYPE: ./fwiptables-$cmd_version uninstall ]" 
+echo "$text_md     [ info ] [ Install this version from this file    ] [ TYPE: ./fwiptables-$cmd_version install   ]" 
+echo "$text_md     [ info ] [ Install lastest version from the web   ] [ TYPE: ./fwiptables-$cmd_version upgrade   ]" 
+echo "$text_md     [ info ] [ Uninstall fwiptables from the computer ] [ TYPE: ./fwiptables-$cmd_version uninstall ]" 
 echo "$brake_md"
 echo "$title_md    ###  Fran fwiptables project.  ###    "
 echo "$text_md     # Download the latest version $cmd_name from sourceforge"
@@ -1092,8 +1064,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "uninstall" ] ; then $zero_option intro
 echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
 echo "  [ info ] [ $cmd_binary uninstalling.. ]"
-if  [ -f /usr/bin/fwiptables-cmd ]; then
-rm /usr/bin/fwiptables-cmd &> /dev/null
+if  [ -f /usr/bin/fwiptables-cmd ]; then rm /usr/bin/fwiptables-cmd &> /dev/null
 echo "  [ info ] [ deleted binaries ]"
 echo "  [  ok  ] [ /usr/bin/fwiptables-cmd uninstalled ]" ;
 else echo "  [ info ] [ /usr/bin/fwiptables-cmd is not installed ]"; fi
@@ -1187,8 +1158,7 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
-case "$favorite_text_browser" in
-"$NULL") echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+case "$favorite_text_browser" in "$NULL") echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
 echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
 echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
@@ -7994,7 +7964,7 @@ if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -350 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
+echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
 echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $default_preferences ]"
 exit; fi
 ####
