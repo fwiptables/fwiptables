@@ -10009,8 +10009,8 @@ echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 #### prepare static variables
 ####
 ####
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
-if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+if [ "$2" == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$2" ; fi
+if [ "$3" == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $architecture_vm)"
@@ -10034,8 +10034,8 @@ echo "$header_ok [ $first_option ]  [ restart qemu machine ] [ vm ] [ iso ] || |
 #### prepare static variables
 ####
 ####
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
-if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+if [ "$2" == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$2" ; fi
+if [ "$3" == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $architecture_vm)"
@@ -10059,8 +10059,8 @@ echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 #### prepare static variables
 ####
 ####
-if [ "$second_option"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$second_option" ; fi
-if [ "$third_option"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $third_option"; fi
+if [ "$2"  == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$2" ; fi
+if [ "$3"   == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
 ####
 ####
 command_qemu="$(command -v $architecture_vm)"
