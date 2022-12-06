@@ -6,9 +6,9 @@ sum ideas to fwiptables@gmx.com, for example : tool-snort. tool-ipsec.
 
 
 
-
-
- 01. 
+ 03. 
+ 02. complete y minimal: incluye en la carga de reglas, un reset rules para agilizar ls4 y ls6. HECHO
+ 01. complete: cambios en qemu-start, qemu-probe, qemu-restart. HECHO
 
 cambios en dev-fwiptables 5.11 en desarrollo
 
