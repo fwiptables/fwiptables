@@ -3542,7 +3542,7 @@ echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi por prim
 echo "$text_md $tab wpa-load"
 echo "$text_md $tab_lang_english          : Connect to one ssid network wifi with a saved file"
 echo "$text_md $tab_lang_spanish          : Conecta a una red ssid wifi usando un archivo guardado"
-echo "$text_md $tab dhcp-client"
+echo "$text_md $tab dhcp|dhcp-client"
 echo "$text_md $tab_lang_english          : Launch a dhcp client"
 echo "$text_md $tab_lang_spanish          : Lanza un cliente dhcp"
 exit; fi
@@ -3698,7 +3698,7 @@ echo "$text_md $tab_lang_spanish          : Resuelve una direccion a ip y a host
 echo "$text_md $tab geoip"
 echo "$text_md $tab_lang_english          : Locate a one host or ip"
 echo "$text_md $tab_lang_spanish          : Localiza una direccion o ip"
-echo "$text_md $tab ntpdate-client"
+echo "$text_md $tab ntpdate|ntpdate-client"
 echo "$text_md $tab_lang_english          : Update the system date from ntp server"
 echo "$text_md $tab_lang_spanish          : Actualiza la fecha del sistema desde un servidor de fecha"
 exit; fi
@@ -4366,7 +4366,7 @@ cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
 $command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
+$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
@@ -4377,7 +4377,7 @@ cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
 $command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
+$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
@@ -4388,7 +4388,7 @@ cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
+$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
@@ -4399,7 +4399,7 @@ cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option || AND || launch: $cmd_binary custom $third_option" ; exit
+$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
 $command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
@@ -4438,9 +4438,9 @@ exit; fi
 ##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then $nada
-echo $head_waiting_gui
+if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
+####
 case $second_option in
 #### 
 #### 
@@ -4499,7 +4499,6 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 ####
 *)$cmd_binary $second_option $third_option &> $temporal_guifinal
-#### cat $temporal_gui | $command_grep -iv Warning: &> $temporal_guifinal
 $command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
@@ -4561,7 +4560,7 @@ case "$selection" in
 "22 Show log")$cmd_binary gui-menu-show-log ; exit ;;
 "23 Help about")$cmd_binary gui-menu-help-about ; exit ;;
 "24 Help help")$cmd_binary gui-menu-help-help ; exit ;;
-#### 
+#### ADD .. QEMU,MP3,PDF
 esac
 ####
 ####
@@ -5899,8 +5898,9 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0403) clear ; $cmd_binary cli wizard-full ; $cmd_binary txt list ;;
 0404) clear ; $cmd_binary cli off-line ; $cmd_binary txt list ;;
 0405) clear ; $cmd_binary cli all-permisive ; $cmd_binary txt list  ;;
-0406) archivo="$($command_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
-archivo=$(echo $archivo | $command_sed s/\\///g) ;  clear ; $cmd_binary custom $archivo ;;
+0406) 
+archivo="$($command_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
 0407) clear ; $cmd_binary cli games-shooter ; $cmd_binary txt list  ;; 
 0408) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary txt list ;;
 0409) clear ; $cmd_binary cli game-minetest ; $cmd_binary txt list ;;
