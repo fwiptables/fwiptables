@@ -45,7 +45,7 @@
 #### :sincontarrutina-inicial-admin:
 ####
 ####
-if [ "$(id -u)" == "0" ] ; then echo -n ; else
+if [ "$(id -u)" != "0" ] ; then echo
 echo
 echo "  [ info ] [ fwiptables needs to be root to work ]"
 echo
@@ -116,48 +116,9 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####     #### code for add xhost to root for graphicall use
 ####
 ####
-command_id="$(command -v id)"
-command_xhost="$(command -v xhost)"
-command_grep="$(command -v grep)"
-terminal_tty="$(tty | $command_grep -E -i tty | tail -1)"
-####
-####
-if [ "$terminal_tty" = "$NULL" ] ; then
-if [ "$(logname)" = "$NULL" ] || [ "$(logname)" = "root" ] ; 
-then
-sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-## sudo -u root $command_xhost +LOCAL &> /dev/null ;
-else
-sudo -u root $command_xhost +SI:localuser:root &> /dev/null ;
-## sudo -u root $command_xhost +LOCAL &> /dev/null ;
-fi; fi
-####
-####
-#### deprecated
-## sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
-## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
-## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
-####
-####
-#### :sincontarrutina-final-x11:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :sincontarrutina-inicial-files:
-####
-####
-#### english: permanent files: and where are file path: name, command and icon
-#### spanish: archivos permanentes: donde estan las rutas de archivo: nombre, comando e icono
-####
-#### english: program name #### spanish: nombre del programa
-#### name_fwiptables="fwiptables-mini"
-#### english: program exec #### spanish: programa ejectutable
-#### cmd_binary="fwiptables-mini"
-#### english: name icon #### spanish: nombre de icono
-#### icon_fwiptables="zenity"
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -245,6 +206,93 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####
 ####
 #### :sincontarrutina-final-dir-sane:
+##########   english: search programs: programs path           ##########
+##########   spanish: busca los programas: ruta de programas   ##########
+#### :sincontarrutina-inicial-command:
+####
+####
+command_arp="$(command -v arp)"
+command_arp_scan="$(command -v arp-scan)"
+command_arptables="$(command -v arptables)"
+command_bash="$(command -v bash)"
+command_bc="$(command -v bc)"
+command_curl="$(command -v curl)"
+command_cut="$(command -v cut)"
+command_date="$(command -v date)"
+command_dd="$(command -v dd)"
+command_dhclient="$(command -v dhclient)"
+command_dhclient_script="$(command -v dhclient-script)"
+command_dhcpcd="$(command -v dhcpcd)"
+command_dialog="$(command -v dialog)"
+command_dig="$(command -v dig)"
+command_ebtables="$(command -v ebtables)"
+command_elinks="$(command -v elinks)"
+command_find="$(command -v find)"
+command_fmt="$(command -v fmt)"
+command_geoiplookup="$(command -v geoiplookup)"
+command_glxgears="$(command -v glxgears)"
+command_gpg="$(command -v gpg)"
+command_grep="$(command -v grep)"
+command_halt="$(command -v halt)"
+command_host="$(command -v host)"
+command_ifconfig="$(command -v ifconfig)"
+command_ip="$(command -v ip)"
+command_ip6tables_legacy="$(command -v ip6tables-legacy)"
+command_ip6tables_nft="$(command -v ip6tables-nft)"
+command_iperf="$(command -v iperf)"
+command_iptables_legacy="$(command -v iptables-legacy)"
+command_iptables_nft="$(command -v iptables-nft)"
+command_iw="$(command -v iw)"
+command_links="$(command -v links)"
+command_links2="$(command -v links2)"
+command_ls="$(command -v ls)"
+command_lsof="$(command -v lsof)"
+command_lynx="$(command -v lynx)"
+command_m2r="$(command -v m2r)"
+command_md5sum="$(command -v md5sum)"
+command_mdp="$(command -v mdp)"
+command_mpg123="$(command -v mpg123)"
+command_mpg321="$(command -v mpg321)"
+command_netstat="$(command -v netstat)"
+command_netstat_nat="$(command -v netstat-nat)"
+command_nmap="$(command -v nmap)"
+command_ntpdate="$(command -v ntpdate)"
+command_openssl="$(command -v openssl)"
+command_ping="$(command -v ping)"
+command_rdate="$(command -v rdate)"
+command_reboot="$(command -v reboot)"
+command_resolveip="$(command -v resolveip)"
+command_route="$(command -v route)"
+command_sed="$(command -v sed)"
+command_shc="$(command -v shc)"
+command_shutdown="$(command -v shutdown)"
+command_sleep="$(command -v sleep)"
+command_sntp="$(command -v sntp) -S"
+command_ss="$(command -v ss)"
+command_sysctl="$(command -v sysctl)"
+command_tcpdump="$(command -v tcpdump)"
+command_tee="$(command -v tee)"
+command_torify="$(command -v torify)"
+command_traceroute="$(command -v traceroute)"
+command_txt2html="$(command -v txt2html)"
+command_uname="$(command -v uname)"
+command_wget="$(command -v wget)"
+command_wpa_passphrase="$(command -v wpa_passphrase)"
+command_wpa_supplicant="$(command -v wpa_supplicant)"
+command_xrandr="$(command -v xrandr)"
+command_zenity="$(command -v zenity)"
+command_zgrep="$(command -v zgrep)"
+command_lpinfo="$(command -v lpinfo)"
+command_lpstat="$(command -v lpstat)"
+command_lsblk="$(command -v lsblk)"
+command_lsusb="$(command -v lsusb)"
+command_lscpu="$(command -v lscpu)"
+command_lspci="$(command -v lspci)"
+command_lsgpu="$(command -v lsgpu)"
+command_lshw="$(command -v lshw)"
+####
+####
+#### :sincontarrutina-final-command:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########
 #### :sincontarrutina-inicial-config-variables:
@@ -309,18 +357,6 @@ server_udp="" ;
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
 #### :sincontarrutina-inicial-system-variables:
-####
-####
-####    # english: before declared variables for default # spanish: variables declaradas antes por defecto
-####
-####
-####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_shield_maxtries="20" ; config_shield_port="22" ;
-####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
-####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
-####    graphic_dimension="--width=950 --height=650" ; 
-####    radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ; 
-####    radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;
-####    radio_cadenadial="http://playerservices.streamtheworld.com/api/livestream-redirect/CADENADIAL.mp3" ; 
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -462,93 +498,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :sincontarrutina-final-notice:
-##########   english: search programs: programs path           ##########
-##########   spanish: busca los programas: ruta de programas   ##########
-#### :sincontarrutina-inicial-command:
-####
-####
-command_arp="$(command -v arp)"
-command_arp_scan="$(command -v arp-scan)"
-command_arptables="$(command -v arptables)"
-command_bash="$(command -v bash)"
-command_bc="$(command -v bc)"
-command_curl="$(command -v curl)"
-command_cut="$(command -v cut)"
-command_date="$(command -v date)"
-command_dd="$(command -v dd)"
-command_dhclient="$(command -v dhclient)"
-command_dhclient_script="$(command -v dhclient-script)"
-command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v dialog)"
-command_dig="$(command -v dig)"
-command_ebtables="$(command -v ebtables)"
-command_elinks="$(command -v elinks)"
-command_find="$(command -v find)"
-command_fmt="$(command -v fmt)"
-command_geoiplookup="$(command -v geoiplookup)"
-command_glxgears="$(command -v glxgears)"
-command_gpg="$(command -v gpg)"
-command_grep="$(command -v grep)"
-command_halt="$(command -v halt)"
-command_host="$(command -v host)"
-command_ifconfig="$(command -v ifconfig)"
-command_ip="$(command -v ip)"
-command_ip6tables_legacy="$(command -v ip6tables-legacy)"
-command_ip6tables_nft="$(command -v ip6tables-nft)"
-command_iperf="$(command -v iperf)"
-command_iptables_legacy="$(command -v iptables-legacy)"
-command_iptables_nft="$(command -v iptables-nft)"
-command_iw="$(command -v iw)"
-command_links="$(command -v links)"
-command_links2="$(command -v links2)"
-command_ls="$(command -v ls)"
-command_lsof="$(command -v lsof)"
-command_lynx="$(command -v lynx)"
-command_m2r="$(command -v m2r)"
-command_md5sum="$(command -v md5sum)"
-command_mdp="$(command -v mdp)"
-command_mpg123="$(command -v mpg123)"
-command_mpg321="$(command -v mpg321)"
-command_netstat="$(command -v netstat)"
-command_netstat_nat="$(command -v netstat-nat)"
-command_nmap="$(command -v nmap)"
-command_ntpdate="$(command -v ntpdate)"
-command_openssl="$(command -v openssl)"
-command_ping="$(command -v ping)"
-command_rdate="$(command -v rdate)"
-command_reboot="$(command -v reboot)"
-command_resolveip="$(command -v resolveip)"
-command_route="$(command -v route)"
-command_sed="$(command -v sed)"
-command_shc="$(command -v shc)"
-command_shutdown="$(command -v shutdown)"
-command_sleep="$(command -v sleep)"
-command_sntp="$(command -v sntp) -S"
-command_ss="$(command -v ss)"
-command_sysctl="$(command -v sysctl)"
-command_tcpdump="$(command -v tcpdump)"
-command_tee="$(command -v tee)"
-command_torify="$(command -v torify)"
-command_traceroute="$(command -v traceroute)"
-command_txt2html="$(command -v txt2html)"
-command_uname="$(command -v uname)"
-command_wget="$(command -v wget)"
-command_wpa_passphrase="$(command -v wpa_passphrase)"
-command_wpa_supplicant="$(command -v wpa_supplicant)"
-command_xrandr="$(command -v xrandr)"
-command_zenity="$(command -v zenity)"
-command_zgrep="$(command -v zgrep)"
-command_lpinfo="$(command -v lpinfo)"
-command_lpstat="$(command -v lpstat)"
-command_lsblk="$(command -v lsblk)"
-command_lsusb="$(command -v lsusb)"
-command_lscpu="$(command -v lscpu)"
-command_lspci="$(command -v lspci)"
-command_lsgpu="$(command -v lsgpu)"
-command_lshw="$(command -v lshw)"
-####
-####
-#### :sincontarrutina-final-command:
+
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :sincontarrutina-inicial-favorite-text-browser:
@@ -562,41 +512,6 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 ####
 ####
 #### :sincontarrutina-inicial-favorite-text-browser:
-##########      english: search favorite dhcp Discover ip net     ##########
-##########      spanish: busca preferido dhcp Descubre la ip      ##########
-#### :sincontarrutina-inicial-favorite-dhcp-command:
-####
-####
-favorite_dhcp_command=""
-if [ "$command_dhcpcd"  = "$NULL" ] ; then $nada         ; else favorite_dhcp_command="$command_dhcpcd"           ; fi
-if [ "$command_dhclient_script" = "$NULL" ] ; then $nada ; else favorite_dhcp_command="$command_dhclient_script"  ; fi
-if [ "$command_dhclient"   = "$NULL" ] ; then $nada      ; else favorite_dhcp_command="$command_dhclient"         ; fi
-####
-####
-#### :sincontarrutina-final-favorite-dhcp-command:
-##########      english: search favorite date: favorite date command        ##########
-##########      spanish: busca preferida fecha: favorita comando de fecha   ##########
-#### :sincontarrutina-inicial-favorite-date-command:
-####
-####
-favorite_date_command=""
-if [ "$command_rdate"   = "$NULL" ]; then $nada ; else favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    = "$NULL" ]; then $nada ; else favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" = "$NULL" ]; then $nada ; else favorite_date_command="$command_ntpdate"         ; fi
-####
-####
-#### :sincontarrutina-final-favorite-date-command:
-##########      english: search favorite music player            ##########
-##########      spanish: busca preferida reproductor de musica   ##########
-#### :sincontarrutina-inicial-favorite-music-command:
-####
-####
-favoite_music_command=""
-if [ "$command_mpg321" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
-if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
-####
-####
-#### :sincontarrutina-final-favorite-music-command:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :sincontarrutina-inicial-alias-simple:
@@ -932,7 +847,7 @@ if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -450 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
+echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
 echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $directory_data ]"
 exit; fi
 ####
