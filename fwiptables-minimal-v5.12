@@ -875,7 +875,7 @@ else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip4="$(timeout -s SIGINT -v 8 $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
@@ -908,7 +908,7 @@ else  $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v 127.
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
-public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+public_ip6="$(timeout -s SIGINT -v 8 $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
