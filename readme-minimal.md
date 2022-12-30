@@ -1,7 +1,7 @@
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.10 ] || ||
-### ### || || [ ok ] || [ Configure ] [ Configure: ./fwiptables-minimal-v5.10 preferences-modify ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.12 ] || ||
+### ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-minimal preferences-modify ] || ||
 ### ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
-###  launch: ./fwiptables-minimal-v5.10 [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          
+###  launch: /usr/bin/fwiptables-minimal [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]           
 ### ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               
      firewall-control |  stop continue reset names actual show save load                              
         firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          
@@ -17,4 +17,4 @@
                          server-vnc server-web server-samba server-print server-lamp server-news      
                          server-mail server-ftp server-teamspeak server-mumble server-sql             
                          server-asterisk server-squid                                                 
-       options-state  |  preferences-read preferences-modify preferences-regen version notes          
+       options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  

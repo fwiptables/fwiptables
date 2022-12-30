@@ -1,4 +1,4 @@
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.10 state:complete ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.12 state:complete ] || ||
 ### ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### ### || ||  [ options-interface ]  || ||  ### ###                                                      
 ###  -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null
@@ -19,7 +19,7 @@
                              server-mail server-ftp server-teamspeak server-mumble server-sql         
                              server-asterisk server-squid                                             
 ### ### || ||  [ options-state ]  || ||  ### ###                                                         
-          options-state  |  preferences-read preferences-modify preferences-regen install upgrade uninstall       
+          options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 install upgrade uninstall       
 ### ### || ||  [ options-tool ]  || ||  ### ###                                                          
        tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        
                              ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     
@@ -52,14 +52,14 @@
        help-help          |  all-help readme leeme notes options                                      
                              group-options mini-options full-options                                  
 ### ### || ||  [ Examples ]  || ||  ### ###                                                              
-       ./fwiptables-complete-v5.10 -cli-menu                |  All options in text menu                           
-       ./fwiptables-complete-v5.10 -gui-menu                |  All options in window menu                         
-       ./fwiptables-complete-v5.10 -gui-shell               |  All options in window shell                        
-       ./fwiptables-complete-v5.10 -txt list                |  List iptables rules with output txt                
-       ./fwiptables-complete-v5.10 -cli names               |  List firewall saved with output cli text menu      
-       ./fwiptables-complete-v5.10 -gui wizard-mini         |  Generate rules with output gui window              
-       ./fwiptables-complete-v5.10 -web ss                  |  Show ss with output text browser                   
-       ./fwiptables-complete-v5.10 -help readme             |  Show help of readme with output text plain         
-       ./fwiptables-complete-v5.10 -info lsof               |  Show info of lsof with output text rst             
-       ./fwiptables-complete-v5.10 -log info-route          |  Save log info-route with output text plain         
-       ./fwiptables-complete-v5.10 -null client-web         |  Launch client web firewall a null output           
+       /usr/bin/fwiptables-cmd -cli-menu                |  All options in text menu                           
+       /usr/bin/fwiptables-cmd -gui-menu                |  All options in window menu                         
+       /usr/bin/fwiptables-cmd -gui-shell               |  All options in window shell                        
+       /usr/bin/fwiptables-cmd -txt list                |  List iptables rules with output txt                
+       /usr/bin/fwiptables-cmd -cli names               |  List firewall saved with output cli text menu      
+       /usr/bin/fwiptables-cmd -gui wizard-mini         |  Generate rules with output gui window              
+       /usr/bin/fwiptables-cmd -web ss                  |  Show ss with output text browser                   
+       /usr/bin/fwiptables-cmd -help readme             |  Show help of readme with output text plain         
+       /usr/bin/fwiptables-cmd -info lsof               |  Show info of lsof with output text rst             
+       /usr/bin/fwiptables-cmd -log info-route          |  Save log info-route with output text plain         
+       /usr/bin/fwiptables-cmd -null client-web         |  Launch client web firewall a null output           
