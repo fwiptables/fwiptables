@@ -2509,7 +2509,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version notes          "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
 exit ; fi
 ####
 ####
@@ -2575,7 +2575,7 @@ echo "$text_md                        server-vnc server-web server-samba server-
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
 echo "$text_md                        server-asterisk server-squid                                             "
 echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                         "   
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen install upgrade uninstall       "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 install upgrade uninstall       "
 echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
 echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
@@ -2663,7 +2663,7 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                                                             "
-echo "$text_md    default-state    | preferences-read preferences-modify preferences-regen version install upgrade uninstall               "
+echo "$text_md    default-state    | preferences-read preferences-modify preferences-regen ip4 ip6 version install upgrade uninstall               "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
 exit ; fi
@@ -10633,7 +10633,7 @@ exit; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ip4" ]; then echo $give_cover
+if [ "$first_option" = "ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
 echo
 echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
@@ -10663,10 +10663,10 @@ exit; fi
 #### :rutina-final-ip4:
 ##########    english: ip6 : get net info               ##########
 ##########    spanish: ip6 : da informacion de la red   ##########
-#### :rutina-inicial-ip4:
+#### :rutina-inicial-ip6:
 ####
 ####
-if [ "$program_minimal" == "no" ] &&  [ "$first_option" = "ip6" ]; then echo $give_cover
+if [ "$first_option" = "ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
 echo
 echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
@@ -10693,7 +10693,7 @@ echo "  [ info ] Proxy https:   $https_proxy"
 exit; fi
 ####
 ####
-#### :rutina-final-ip4:
+#### :rutina-final-ip6:
 ##########    english: speed-ip4: speed from internet        ##########
 ##########    spanish: speed-ip4: velocidad desde internet   ##########
 #### :rutina-inicial-speed-ip4:
@@ -10977,6 +10977,8 @@ echo "$text_md"
 echo "$text_md      preferences-read   : Show values for default."
 echo "$text_md      preferences-modify : Modify values for default."
 echo "$text_md      preferences-regen  : Regenerate values for default."
+echo "$text_md      ip4                : Show net ip4."
+echo "$text_md      ip6                : Show net ip6."
 echo "$text_md      install            : Install program."
 echo "$text_md      uninstall          : Uninstall program."
 echo "$text_md      upgrade            : Upgrqade program."

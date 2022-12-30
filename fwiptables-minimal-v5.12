@@ -853,6 +853,72 @@ exit; fi
 ####
 ####
 #### :sincontarrutina-final-preferences-regen:
+##########    english: ip4 : get net info               ##########
+##########    spanish: ip4 : da informacion de la red   ##########
+#### :sicontarrutina-inicial-ip4:
+####
+####
+if [ "$first_option" = "ip4" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
+echo
+echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -4 route ; fi
+echo
+echo "  [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
+if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+else $command_ss -l4 | $command_sed 's/   / /g' ; fi
+echo
+echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+echo
+echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
+if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
+if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+else echo "$tab $public_ip4"; fi; fi
+echo
+echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "  [ info ] Proxy http:    $http_proxy"
+echo "  [ info ] Proxy https:   $https_proxy"
+exit; fi
+####
+####
+#### :sincontarrutina-final-ip4:
+##########    english: ip6 : get net info               ##########
+##########    spanish: ip6 : da informacion de la red   ##########
+#### :sincontarrutina-inicial-ip6:
+####
+####
+if [ "$first_option" = "ip6" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
+echo
+echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else $command_ip -6 route ; fi
+echo
+echo "  [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
+if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+else $command_ss -l6 | $command_sed 's/   / /g' ; fi
+echo
+echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
+if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+echo
+echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
+if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
+if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
+else echo "$tab $public_ip6"; fi; fi
+echo
+echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "  [ info ] Proxy http:    $http_proxy"
+echo "  [ info ] Proxy https:   $https_proxy"
+exit; fi
+####
+####
+#### :sincontarrutina-final-ip6:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :sincontarrutina-inicial-version:
@@ -2268,7 +2334,7 @@ fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "$title_md launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]          " 
+echo "$title_md launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]           " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
@@ -2284,7 +2350,7 @@ echo "$text_md                       client-tor client-ftp client-squid lan-tor 
 echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen version notes          "
+echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
 exit ; fi
 ####
 ####
