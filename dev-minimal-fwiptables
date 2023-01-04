@@ -61,7 +61,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-mini" ;
-cmd_version="minimal-5.12" ;
+cmd_version="minimal-5.13" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -1133,7 +1133,7 @@ spa24="$(echo $cinco Regla general en tabla )"
 var25="$(echo allow_separate_rules=no )"
 eng25="$(echo $cinco Void to separate the rules for each port or no )"
 spa25="$(echo $cinco Vacio para separar reglas por cada puerto o no )"
-var26="$(echo config_close_drop=DROP )"
+var26="$(echo config_close_deny=DROP )"
 eng26="$(echo $cinco choose close deny with or DROP or REJECT )"
 spa26="$(echo $cinco Elige cerrar denegacion con o DROP or REJECT )"
 var27="$(echo $cinco END NECESARY $cinco )"

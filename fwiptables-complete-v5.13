@@ -69,7 +69,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-5.12" ;
+cmd_version="complete-5.13" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -320,7 +320,7 @@ config_shield_port="22"                   ## fwiptables-file-default ##  void o 
 config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
 ####       #### english: close with deny is or DROP or REJECT
 ####       #### spanish: cierra con denegacion es o DROP or REJECT
-config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or REJECT
+config_close_deny="REJECT"                   ## fwiptables-file-default ## DROP or REJECT 
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
@@ -552,13 +552,7 @@ case "$allow_legacy"           in "no")     ;; *) allow_legacy=""             ;;
 case "$allow_nft"              in "no")     ;; *) allow_nft=""                ;; esac
 case "$allow_ipv4"             in "no")     ;; *) allow_ipv4=""               ;; esac
 case "$allow_ipv6"             in "no")     ;; *) allow_ipv6=""               ;; esac
-case "$config_close_deny"      in
-"ACCEPT") ;;
-"DROP")   ;;
-"REJECT") ;;
-"RETURN") ;;
-"LOG")    ;;
-*) config_close_deny="REJECT"  ;; esac
+case "$config_close_deny"      in "ACCEPT") ;; "DROP")   ;; "REJECT") ;; "RETURN") ;; "LOG") ;; *) config_close_deny="REJECT"  ;; esac
 case "$list_rules_conceptual"  in "$NULL")  ;; *) list_rules_conceptual=" -n" ;; esac
 ####
 ####
@@ -1292,7 +1286,7 @@ spa24="$(echo $cinco Reglas generales para la tabla )"
 var25="$(echo allow_separate_rules=no )"
 eng25="$(echo $cinco Void to separate the rules for each port or no )"
 spa25="$(echo $cinco Vacio para separar reglas por cada puerto o no )"
-var26="$(echo config_close_drop=DROP )"
+var26="$(echo config_close_deny=DROP )"
 eng26="$(echo $cinco choose close deny with or DROP or REJECT )"
 spa26="$(echo $cinco Elige cerrar denegacion con o DROP or REJECT )"
 var27="$(echo $cinco END NECESARY $cinco )"
