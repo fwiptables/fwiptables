@@ -318,6 +318,9 @@ config_shield_port="22"                   ## fwiptables-file-default ##  void o 
 ####       #### english: ssh tries per ip before shield
 ####       #### spanish: intentos ssh por ip antes del escudo
 config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
+####       #### english: close with deny is or drop or reject
+####       #### spanish: cierra con denegacion es o drop o reject
+config_close_deny="REJECT"                   ## fwiptables-file-default ## drop or reject
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
@@ -544,12 +547,13 @@ if [ -f "$default_preferences" ]; then source $default_preferences ; fi
 ####  realice sane very important variables post by default_preferences
 ####
 ####
-case "$program_minimal"       in "no") ;; *) program_minimal="" ;; esac
-case "$allow_legacy"          in "no") ;; *) allow_legacy=""    ;; esac
-case "$allow_nft"             in "no") ;; *) allow_nft=""       ;; esac
-case "$allow_ipv4"            in "no") ;; *) allow_ipv4=""      ;; esac
-case "$allow_ipv6"            in "no") ;; *) allow_ipv6=""      ;; esac
-case "$list_rules_conceptual" in "$NULL") ;; *) list_rules_conceptual=" -n" ;; esac
+case "$program_minimal"        in "no")     ;; *) program_minimal=""          ;; esac
+case "$allow_legacy"           in "no")     ;; *) allow_legacy=""             ;; esac
+case "$allow_nft"              in "no")     ;; *) allow_nft=""                ;; esac
+case "$allow_ipv4"             in "no")     ;; *) allow_ipv4=""               ;; esac
+case "$allow_ipv6"             in "no")     ;; *) allow_ipv6=""               ;; esac
+case "$config_close_deny"      in "DROP")   ;; *) config_close_deny="REJECT"  ;; esac
+case "$list_rules_conceptual"  in "$NULL")  ;; *) list_rules_conceptual=" -n" ;; esac
 ####
 ####
 if [ "$program_minimal" == "no" ]; 
@@ -7634,7 +7638,7 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1)
 ####
 if [ "$legacycuatro" != "$NULL" ]; then
 $command_iptables_legacy -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $command_iptables_legacy -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -7644,7 +7648,7 @@ fi
 ####
 if [ "$nftcuatro" != "$NULL" ]; then
 $command_iptables_nft -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $command_iptables_nft -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -7654,7 +7658,7 @@ fi
 ####
 if [ "$legacyseis" != "$NULL" ]; then
 $command_ip6tables_legacy -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $command_ip6tables_legacy -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -7664,7 +7668,7 @@ fi
 ####
 if [ "$nftseis" != "$NULL" ]; then
 $command_ip6tables_legacy -I INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $command_ip6tables_legacy -I INPUT \
 -p tcp -m multiport --dport ssh -m state --state NEW -m recent --set --name shield-tries \
@@ -11740,31 +11744,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 #### spanish: cierra con drop legacy y cierra con drop nft
 ####
 ####
-$allow_legacy $command_iptables_legacy -A INPUT -j DROP \
+$allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A INPUT -j DROP \
+$allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A OUTPUT -j DROP \
+$allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A INPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A INPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A OUTPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-$allow_legacy $command_iptables_nft -A FORWARD -j DROP \
+$allow_legacy $command_iptables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A FORWARD -j DROP \
+$allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_legacy $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -11840,32 +11844,32 @@ $allow_nft $command_ip6tables_nft -A OUTPUT \
 ########################################     spanish: cierra en off-line
 ####
 ####
-$allow_legacy $command_iptables_legacy -A INPUT -j DROP \
+$allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A FORWARD -j DROP \
--m comment --comment "close" &> /dev/null
-####
-$allow_nft $command_iptables_nft -A INPUT -j DROP \
--m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A OUTPUT -j DROP \
--m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A FORWARD -j DROP \
+$allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
-$allow_legacy $command_ip6tables_legacy -A INPUT -j DROP \
+$allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A OUTPUT -j DROP \
+$allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
+-m comment --comment "close" &> /dev/null
+$allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
+-m comment --comment "close" &> /dev/null
+####
+$allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
+-m comment --comment "close" &> /dev/null
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
 ç-m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
-$allow_nft $command_ip6tables_nft -A INPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A OUTPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####  
@@ -11901,7 +11905,7 @@ $allow_shield_maxtries $allow_legacy  $allow_ipv4  $command_iptables_legacy -A I
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -11976,7 +11980,7 @@ $allow_shield_maxtries $allow_nft  $allow_ipv4  $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports ssh -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_nft $allow_ipv4  $command_iptables_nft -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12057,7 +12061,7 @@ $allow_shield_maxtries $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A 
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12135,7 +12139,7 @@ $allow_shield_maxtries $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT 
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12205,31 +12209,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
-$allow_legacy $command_iptables_legacy -A INPUT -j DROP   \
+$allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny   \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A OUTPUT -j DROP  \
+$allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny  \
 -m comment --comment "close" &> /dev/null
-$allow_nft  $command_iptables_nft -A INPUT -j DROP \
+$allow_nft  $command_iptables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft  $command_iptables_nft -A OUTPUT -j DROP \
+$allow_nft  $command_iptables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A INPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close"  &> /dev/null
-$allow_nft  $command_ip6tables_nft -A INPUT -j DROP \
+$allow_nft  $command_ip6tables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close"  &> /dev/null
-$allow_nft  $command_ip6tables_nft -A OUTPUT -j DROP \
+$allow_nft  $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-$allow_nft  $command_iptables_nft -A FORWARD -j DROP \
+$allow_nft  $command_iptables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -12265,7 +12269,7 @@ $allow_shield_maxtries $allow_legacy $allow_ipv4 $command_iptables_legacy -A INP
 -p tcp -m multiport --dports "$config_shield_port" -m state --state NEW -m recent --set --name shield-tries \
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_legacy $allow_ipv4 $command_iptables_legacy -A INPUT \
--m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j DROP \
+-m recent --name shield-tries --update --seconds 3600 --hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12344,7 +12348,7 @@ $allow_shield_maxtries $allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
 -p tcp -m multiport --dports "$config_shield_port" -m state --state NEW -m recent --set --name "shield-tries" \
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_nft $allow_ipv4 $command_iptables_nft -A INPUT \
--m recent --name "shield-tries" --update --seconds 3600 --hitcount "$config_shield_maxtries" -j DROP \
+-m recent --name "shield-tries" --update --seconds 3600 --hitcount "$config_shield_maxtries" -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 #### 
 ####
@@ -12425,7 +12429,7 @@ $allow_shield_maxtries $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A IN
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_legacy $allow_ipv6 $command_ip6tables_legacy -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12507,7 +12511,7 @@ $allow_shield_maxtries $allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT \
 -m comment --comment "shield tries" &> /dev/null
 $allow_shield_maxtries $allow_nft $allow_ipv6 $command_ip6tables_nft -A INPUT \
 -m recent --name shield-tries --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 ####
 ####
@@ -12577,31 +12581,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 -m comment --comment "nexthop ip6" &> /dev/null
 ####
 ####
-$allow_legacy $command_iptables_legacy -A INPUT -j DROP   \
+$allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny   \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A OUTPUT -j DROP  \
+$allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny  \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A INPUT -j DROP \
+$allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A OUTPUT -j DROP \
+$allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A INPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close"  &> /dev/null
-$allow_nft $command_ip6tables_nft -A INPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close"  &> /dev/null
-$allow_nft $command_ip6tables_nft -A OUTPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
-$allow_nft $command_iptables_nft -A FORWARD -j DROP \
+$allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -12689,9 +12693,9 @@ $allow_mac_whitelist $command_ebtables -A OUTPUT -d $config_mac_whitelist  -j AC
 -m comment --comment "mac whitelist" &> /dev/null
 ####
 ####
-$allow_mac_blacklist $command_ebtables -A INPUT  -s $config_mac_blacklist  -j DROP \
+$allow_mac_blacklist $command_ebtables -A INPUT  -s $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist"  &> /dev/null
-$allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j DROP \
+$allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j $config_close_deny \
 -m comment --comment "mac blacklist" &> /dev/null
 ####
 ####
@@ -12748,19 +12752,19 @@ $allow_nft  $allow_ipv6  $command_ip6tables_nft -A INPUT \
 ####
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft     $allow_ipv4  $command_iptables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 $allow_nft     $allow_ipv6  $command_ip6tables_nft -A INPUT \
 -m recent --name count-tries-ssh --update --seconds 3600 \
---hitcount $config_shield_maxtries -j DROP \
+--hitcount $config_shield_maxtries -j $config_close_deny \
 -m comment --comment "shield tries" &> /dev/null
 fi
 ####
@@ -12775,25 +12779,25 @@ fi
 ####
 $allow_ipv4 $allow_legacy $allow_input_bandwidth $command_iptables_legacy     -A  INPUT \
 -m hashlimit --hashlimit-above   "$config_input_bandwidth"kb/sec \
---hashlimit-name maxinputlegacy  -j DROP \
+--hashlimit-name maxinputlegacy  -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_output_bandwidth $command_iptables_legacy    -A OUTPUT \
 -m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j DROP \
+--hashlimit-mode dstip --hashlimit-name maxoutputlegacy -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_input_bandwidth $command_iptables_nft           -A INPUT \
 -m hashlimit    --hashlimit-above "$config_input_bandwidth"kb/sec  \
---hashlimit-name maxinputnft  -j DROP \
+--hashlimit-name maxinputnft  -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_output_bandwidth $command_iptables_nft          -A OUTPUT \
 -m hashlimit  --hashlimit-above "$config_output_bandwidth"kb/sec \
---hashlimit-mode dstip  --hashlimit-name maxoutputnft -j DROP \
+--hashlimit-mode dstip  --hashlimit-name maxoutputnft -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
@@ -12802,22 +12806,22 @@ $allow_ipv4 $allow_nft $allow_output_bandwidth $command_iptables_nft          -A
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_bandwidth $command_ip6tables_legacy -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_output_bandwidth $command_ip6tables_legacy -A OUTPUT \
--m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP \
+-m hashlimit --hashlimit-above  "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_input_bandwidth $command_ip6tables_nft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_output_bandwidth $command_ip6tables_nft -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j DROP \
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput -j $config_close_deny \
 -m comment --comment "bandwidth kb/s"  &> /dev/null
 ####
 ####
@@ -12828,22 +12832,22 @@ $allow_ipv6 $allow_nft $allow_output_bandwidth $command_ip6tables_nft -A OUTPUT 
 #### english: ipv4  bandwidth
 #### spanish: ipv4  ancho de banda
 $allow_ipv4 $allow_legacy $allow_input_maxconnect  $command_iptables_legacy -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect   -j DROP  \
+-m connlimit --connlimit-above $config_input_maxconnect   -j $config_close_deny  \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_output_maxconnect $command_iptables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_input_maxconnect $command_iptables_nft   -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect       -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect       -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft $allow_output_maxconnect $command_iptables_nft  -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect      -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect      -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
@@ -12852,22 +12856,22 @@ $allow_ipv4 $allow_nft $allow_output_maxconnect $command_iptables_nft  -A OUTPUT
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_input_maxconnect  $command_ip6tables_legacy -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect  -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_output_maxconnect $command_ip6tables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_input_maxconnect $command_ip6tables_nft   -A INPUT  \
--m connlimit --connlimit-above $config_input_maxconnect       -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect       -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft $allow_output_maxconnect $command_ip6tables_nft  -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect      -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect      -j $config_close_deny \
 -m comment --comment "max connect"  &> /dev/null
 ####
 ####
@@ -12883,22 +12887,22 @@ for one_blacklist in $(echo $config_net_blacklist | $command_sed 's/,/ /g')
 ####
 do
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A INPUT  \
--s $one_blacklist -j DROP \
+-s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_legacy $allow_net_blacklist $command_iptables_legacy  -A OUTPUT \
--d $one_blacklist -j DROP \
+-d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A INPUT  \
--s $one_blacklist -j DROP \
+-s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTPUT \
--d $one_blacklist -j DROP \
+-d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
@@ -12906,22 +12910,22 @@ $allow_ipv4 $allow_nft    $allow_net_blacklist $command_iptables_nft     -A OUTP
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A INPUT  \
--s $one_blacklist -j DROP \
+-s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_legacy $allow_net_blacklist $command_ip6tables_legacy -A OUTPUT \
--d $one_blacklist -j DROP \
+-d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A INPUT  \
--s $one_blacklist -j DROP \
+-s $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 ####
 ####
 $allow_ipv6 $allow_nft    $allow_net_blacklist $command_ip6tables_nft    -A OUTPUT \
--d $one_blacklist -j DROP \
+-d $one_blacklist -j $config_close_deny \
 -m comment --comment "blacklist $one_blacklist" &> /dev/null
 done
 #### 
@@ -13700,37 +13704,37 @@ $allow_nft $allow_forward_ip6 $command_ip6tables_nft -A FORWARD -j ACCEPT &> /de
 ####
 ####
 #### ipv4 drop rules iptables-legacy
-$allow_legacy $command_iptables_legacy -A INPUT -j DROP \
+$allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_iptables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
 #### ipv6 drop rules iptables-legacy
-$allow_legacy $command_ip6tables_legacy -A INPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A OUTPUT -j DROP \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A FORWARD -j DROP \
+$allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
 #### ipv4 drop rules iptables-nft
-$allow_nft $command_iptables_nft -A INPUT -j DROP \
+$allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A OUTPUT -j DROP \
+$allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_iptables_nft -A FORWARD -j DROP \
+$allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 #### ipv6 drop rules iptables-nft
-$allow_nft $command_ip6tables_nft -A INPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A OUTPUT -j DROP \
+$allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$allow_nft $command_ip6tables_nft -A FORWARD -j DROP \
+$allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -13783,10 +13787,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $command_ip6tables_leg
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_input_bandwidth iptables-legacy -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_bandwidth ip6tables-legacy -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -13795,10 +13799,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_bandwidth
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_bandwidth iptables-nft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_bandwidth ip6tables-nft -A  INPUT \
--m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j DROP \
+-m hashlimit --hashlimit-above "$config_input_bandwidth"kb/sec --hashlimit-name maxinput  -j $config_close_deny \
 -m comment --comment "input-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -13807,10 +13811,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_bandwidth ip
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $allow_input_maxconnect  $command_iptables_legacy -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect  -j $config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_maxconnect $command_iptables_nft   -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect       -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect       -j $config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
 ####
 ####
@@ -13819,10 +13823,10 @@ $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_input_maxconnect $
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $allow_input_maxconnect  $command_ip6tables_legacy -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect  -j $config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $allow_input_maxconnect $command_ip6tables_nft   -A INPUT \
--m connlimit --connlimit-above $config_input_maxconnect       -j DROP \
+-m connlimit --connlimit-above $config_input_maxconnect       -j $config_close_deny \
 -m comment --comment "input maxconnect"  &> /dev/null
 ####
 ####
@@ -13855,10 +13859,10 @@ $config_input_state -j ACCEPT \
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_ipv4 $command_iptables_nft -t filter -A INPUT \
--j DROP \
+-j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A INPUT \
--j DROP \
+-j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -13867,10 +13871,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $command_iptables_legacy -t filter -A INPUT \
--j DROP \
+-j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A INPUT \
--j DROP \
+-j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -13925,10 +13929,10 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####
 #### 
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_output_bandwidth iptables-legacy -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP \
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j $config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_bandwidth ip6tables-legacy -A  OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP \
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j $config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -13937,10 +13941,10 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_bandwid
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_bandwidth iptables-nft -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP \
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j $config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_bandwidth ip6tables-nft -A OUTPUT \
--m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j DROP \
+-m hashlimit --hashlimit-above "$config_output_bandwidth"kb/sec --hashlimit-name maxoutput  -j $config_close_deny \
 -m comment --comment "output-bandwidth kb/s" &> /dev/null
 ####
 ####
@@ -13949,10 +13953,10 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_bandwidth 
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $allow_output_maxconnect  $command_iptables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_maxconnect $command_iptables_nft   -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 ####
 ####
@@ -13961,10 +13965,10 @@ $launch_custom $allow_output_all $allow_ipv4 $allow_nft $allow_output_maxconnect
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $allow_output_maxconnect  $command_ip6tables_legacy -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_nft $allow_output_maxconnect $command_ip6tables_nft   -A OUTPUT \
--m connlimit --connlimit-above $config_output_maxconnect  -j DROP \
+-m connlimit --connlimit-above $config_output_maxconnect  -j $config_close_deny \
 -m comment --comment "output maxconnect" &> /dev/null
 ####
 ####
@@ -13996,9 +14000,9 @@ $input_state -j ACCEPT \
 #### spanish: nft INPUT deniega todo
 ####
 ####
-$launch_custom $allow_output_all $allow_ipv4 $allow_nft $command_iptables_nft -t filter -A OUTPUT  -j DROP \
+$launch_custom $allow_output_all $allow_ipv4 $allow_nft $command_iptables_nft -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A OUTPUT  -j DROP \
+$launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
@@ -14006,9 +14010,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -
 #### spanish: legacy INPUT deniega todo
 ####
 ####
-$launch_custom $allow_output_all $allow_ipv4 $allow_legacy $command_iptables_legacy  -t filter -A OUTPUT  -j DROP \
+$launch_custom $allow_output_all $allow_ipv4 $allow_legacy $command_iptables_legacy  -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
-$launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A OUTPUT  -j DROP \
+$launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
 -m comment --comment "close" &> /dev/null
 ####
 ####
