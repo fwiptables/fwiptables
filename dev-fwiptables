@@ -1287,8 +1287,8 @@ var25="$(echo allow_separate_rules=no )"
 eng25="$(echo $cinco Void to separate the rules for each port or no )"
 spa25="$(echo $cinco Vacio para separar reglas por cada puerto o no )"
 var26="$(echo config_close_deny=DROP )"
-eng26="$(echo $cinco choose close deny with or DROP or REJECT )"
-spa26="$(echo $cinco Elige cerrar denegacion con o DROP or REJECT )"
+eng26="$(echo $cinco choose close deny to the rules with or DROP or REJECT )"
+spa26="$(echo $cinco Elige cerrar denegacion a las reglas con o DROP or REJECT )"
 var27="$(echo $cinco END NECESARY $cinco )"
 eng27="$(echo $cinco .......... END Necesary options .......... .......... $cinco )"
 spa27="$(echo $cinco FINAL .......... Opciones Necesarias .......... .......... $cinco )"
@@ -2604,7 +2604,7 @@ echo "$text_md  tool-speed         |  free-ram speed-ram speed-disk speed-glx sp
 echo "$text_md  tool-util          |  weather md5sum gpg-notes                                                 "
 echo "$text_md  tool-pdf           |  pdf-resize pdf-unite pdf-separate                                        "
 echo "$text_md  tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                   "
-echo "$text_md  tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            "
+echo "$text_md  tool-qemu          |  qemu-status qemu-stop qemu-start                                         "
 echo "$text_md  tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      "
 echo "$text_md  tool-addblock      |  addblock-list addblock-on addblock-off                                   "
 echo "$text_md  tool-dev           |  new-versions dev-version dev-changes code intro                          "
@@ -2706,8 +2706,8 @@ echo "$text_md    tool-game         | game-word game-number game-rgb game-hex   
 echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx radio                     "
 echo "$text_md    tool-util         | weather md5sum gpg-notes                                          "
 echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
-echo "$text_md    tool-mp3        | radio-mp3 radio-cadena100 radio-rockfm                            "
-echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start qemu-restart                     "
+echo "$text_md    tool-mp3          | radio-mp3 radio-cadena100 radio-rockfm                            "
+echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start                                  "
 echo "$text_md    tool-install      | install upgrade dev-upgrade howto-upgrade                         "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
@@ -3971,9 +3971,6 @@ echo "$text_md $tab_lang_spanish           : Para las maquinas virtuales qemu"
 echo "$text_md $tab qemu-start"
 echo "$text_md $tab_lang_english           : Start a quemu virtual machines"
 echo "$text_md $tab_lang_spanish           : Empieza una maquina virtual qemu"
-echo "$text_md $tab qemu-restart"
-echo "$text_md $tab_lang_english           : Stop and start"
-echo "$text_md $tab_lang_spanish           : Para e inicia una maquina virtual qemu"
 exit; fi
 ####
 ####
@@ -10006,31 +10003,6 @@ echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_v
 exit
 fi
 #### :rutina-final-qemu-start:
-##########   english: qemu-restart  Restart qemu machine        ##########
-##########   spanish: qemu-restart  Resetea una maquina qemu    ##########
-#### :rutina-inicial-qemu-restart:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-restart" ] ; then  echo $give_cover ; echo $message_info_rules
-echo "$header_ok [ $first_option ]  [ restart qemu machine ] [ vm ] [ iso ] || ||"
-####
-####
-#### prepare static variables
-####
-####
-if [ "$2" == "$NULL" ] ; then qemu_vm="$directory_vm/$default_vm" ; else qemu_vm="$2" ; fi
-if [ "$3" == "$NULL" ] ; then qemu_cdrom="" ; else qemu_cdrom="-cdrom $3"; fi
-####
-####
-command_qemu="$(command -v $architecture_vm)"
-qemu_options="-m $memory_ram -machine accel=kvm -k $language_vm -smp $processor_smp -rtc base=localtime -display $display_vm"
-qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
-####
-####
-if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
-$qemu_full &
-echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
-exit
-fi
-#### :rutina-final-qemu-restart:
 ##########   english: qemu-probe  Probe qemu machine        ##########
 ##########   spanish: qemu-probe  prueba una maquina qemu  ##########
 #### :rutina-inicial-qemu-probe:
@@ -11112,7 +11084,6 @@ echo "$text_md"
 echo "$text_md       qemu-status : Status for qemu"
 echo "$text_md         qemu-stop : stop several maquines virtual qemu"
 echo "$text_md        qemu-start : Start one maquine virtual qemu"
-echo "$text_md      qemu-restart : Stop machines virtual qemu and start one new maquine virtual qemu"
 echo "$text_md"
 echo "$title_md         [ Tool Install ]"
 echo "$text_md"
@@ -11482,7 +11453,6 @@ echo "$title_md [ Herramienta de maquina virtual ]."
 echo "$text_md"
 echo "$text_md       qemu-status : Estado de qemu"
 echo "$text_md        qemu-start : Empieza una maquina virtual qemu"
-echo "$text_md      qemu-restart : Para las maquinas virtuales y empieza una virtual qemu"
 echo "$text_md         qemu-stop : Para maquinas virtuales qemu"
 echo "$text_md"
 echo "$title_md [ Herramienta de instalacion ]."
