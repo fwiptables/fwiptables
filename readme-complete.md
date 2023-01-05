@@ -1,4 +1,4 @@
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.12 state:complete ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.13 state:complete ] || ||
 ### ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### ### || ||  [ options-interface ]  || ||  ### ###                                                      
 ###  -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null
@@ -37,7 +37,7 @@
        tool-util          |  weather md5sum gpg-notes                                                 
        tool-pdf           |  pdf-resize pdf-unite pdf-separate                                        
        tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                   
-       tool-qemu          |  qemu-status qemu-stop qemu-start qemu-restart                            
+       tool-qemu          |  qemu-status qemu-stop qemu-start                                         
        tool-install       |  install upgrade dev-upgrade howto-upgrade clean-tmp                      
        tool-addblock      |  addblock-list addblock-on addblock-off                                   
        tool-dev           |  new-versions dev-version dev-changes code intro                          
