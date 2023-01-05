@@ -69,7 +69,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-5.13" ;
+cmd_version="complete-5.14" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
