@@ -11746,31 +11746,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 $allow_legacy $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 echo "  [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
@@ -11846,32 +11846,32 @@ $allow_nft $command_ip6tables_nft -A OUTPUT \
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 $allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 $allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
-ç-m comment --comment "close" &> /dev/null
+ç-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 $allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####  
 echo "  [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
@@ -12211,31 +12211,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny   \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny  \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft  $command_iptables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft  $command_iptables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close"  &> /dev/null
+-m comment --comment "close rule"  &> /dev/null
 $allow_nft  $command_ip6tables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close"  &> /dev/null
+-m comment --comment "close rule"  &> /dev/null
 $allow_nft  $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 $allow_nft  $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 echo "  [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
@@ -12583,31 +12583,31 @@ $allow_nft $allow_ipv6 $command_ip6tables_nft -A OUTPUT -p ipv6-icmp -j ACCEPT \
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny   \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny  \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close"  &> /dev/null
+-m comment --comment "close rule"  &> /dev/null
 $allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close"  &> /dev/null
+-m comment --comment "close rule"  &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 $allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 echo "  [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
@@ -13706,37 +13706,37 @@ $allow_nft $allow_forward_ip6 $command_ip6tables_nft -A FORWARD -j ACCEPT &> /de
 ####
 #### ipv4 drop rules iptables-legacy
 $allow_legacy $command_iptables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_iptables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 #### ipv6 drop rules iptables-legacy
 $allow_legacy $command_ip6tables_legacy -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 #### ipv4 drop rules iptables-nft
 $allow_nft $command_iptables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_iptables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 #### ipv6 drop rules iptables-nft
 $allow_nft $command_ip6tables_nft -A INPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $allow_nft $command_ip6tables_nft -A FORWARD -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 ########################################       english: iptables ipv4 and ipv6 with variable input_all
@@ -13777,10 +13777,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $command_iptables_legacy -t filter -A INPUT \
 -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A INPUT \
 -s ::1 -d ::1 -j ACCEPT \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 #### english: legacy4 INPUT  limit bandwidth
@@ -13861,10 +13861,10 @@ $config_input_state -j ACCEPT \
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $allow_ipv4 $command_iptables_nft -t filter -A INPUT \
 -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A INPUT \
 -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 #### english: legacy INPUT DROP all
@@ -13873,10 +13873,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $command_iptables_legacy -t filter -A INPUT \
 -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A INPUT \
 -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 ####
@@ -14002,9 +14002,9 @@ $input_state -j ACCEPT \
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_nft $command_iptables_nft -t filter -A OUTPUT  -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A OUTPUT  -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 #### english: legacy INPUT DROP all
@@ -14012,9 +14012,9 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $command_iptables_legacy  -t filter -A OUTPUT  -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A OUTPUT  -j $config_close_deny \
--m comment --comment "close" &> /dev/null
+-m comment --comment "close rule" &> /dev/null
 ####
 ####
 ########################################       english: show text when active custom rules
