@@ -256,7 +256,7 @@ allow_output_ping="no" ;
 allow_output_state="no" ;
 allow_output_uid="no" ; 
 client_tcp="ssh,http,https" ;
-client_udp="domain,domain-s,bootpc,ntp,https" ;
+client_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 config_dmz_ip4="" ;
 config_dmz_ip6="" ;
 config_input_bandwidth="12512" ; 
@@ -1870,7 +1870,7 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 config_shield_maxtries="5" ;
 #### english: ports client and ports server
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
@@ -1891,7 +1891,7 @@ allow_shield_maxtries="no" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
 ####
@@ -1910,7 +1910,7 @@ allow_shield_maxtries="no" ;
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5900:5910" ;
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="" ;
 fi
 ####
@@ -1927,7 +1927,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### you can connect web normal and bittorrent too
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,9091,51413" ;
 server_port_tcp="9091,51413" ;
@@ -1947,7 +1947,7 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
-client_port_udp="domain,domain-s,bootpc,ntp,https,500,1194,1701,4500" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
 client_port_tcp="http,https,ssh,443,1701,1723" ; 
 server_port_tcp="" ;
 fi
@@ -1966,7 +1966,7 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="no" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,9000:9170" ;
 server_port_tcp="9000:9170" ;
 fi
@@ -1990,7 +1990,7 @@ allow_shield_maxtries="no" ;
 #### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
 #### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
 server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
 server_port_tcp="" ;
 fi
@@ -2021,7 +2021,7 @@ allow_shield_maxtries="no" ;
 #### negotiation submission     tls             465 and 587
 #### 
 server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
 server_port_tcp="" ;
 fi
@@ -2039,7 +2039,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### client ftp:
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
@@ -2058,7 +2058,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="" ;
@@ -2079,7 +2079,7 @@ allow_shield_maxtries="no" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
-client_port_udp="domain,domain-s,bootpc,ntp,500,1194,1701,4500" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,500,1194,1701,4500" ; 
 client_port_tcp="1701,1723" ; 
 server_port_tcp="" ;
 fi
@@ -2117,7 +2117,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="" ;
@@ -2136,7 +2136,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### game wesnoth port 14999 and 15001 usually
-client_port_udp="domain,domain-s,bootpc,ntp,https" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,14950:15050" ;
 server_port_tcp="14950:15050" ;
@@ -2155,7 +2155,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### game minetest and minecraft porst 25k and 35k /udp
-client_port_udp="domain,domain-s,bootpc,ntp,https,25000:35000" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,25000:35000" ;
 server_port_tcp="25000:35000" ;
@@ -2174,7 +2174,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 alllow_shield_ssh="no" ;
 #### for default 5556 port tcp perhaps 5555 too
-client_port_udp="domain,domain-s,bootpc,ntp,https" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5555:5556" ;
 server_port_tcp="5555:5556" ;
@@ -2193,7 +2193,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
 #### for default 7396 port tcp and 7396 udp
-client_port_udp="domain,domain-s,bootpc,ntp,https,7396" ; 
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
 client_port_tcp="http,https,ssh,7396" ;
 server_port_tcp="7396" ;
@@ -2212,7 +2212,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 #### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="http,https,ssh" ;
@@ -2235,7 +2235,7 @@ config_shield_port="22,5900:5910"
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5900:5910" ;
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_tcp="ssh,5900:5910" ;
 fi
 ####
@@ -2252,7 +2252,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 #### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
 server_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
@@ -2271,7 +2271,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 #### server http and https and ssh /tcp and https udp
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,8080,3128" ;
 server_port_tcp="http,https,ssh,8080,3128" ;
@@ -2296,7 +2296,7 @@ allow_shield_maxtries="" ;
 #### TCP port 563 is often used. This is sometimes referred to as NNTPS. 
 #### Alternatively, a plain-text connection over port 119 may be changed to use TLS via the STARTTLS command. 
 server_port_udp="" ; 
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 client_port_tcp="http,https,ssh,119,433,563" ;
 server_port_tcp="http,https,ssh,119,433,563" ;
 fi
@@ -2326,7 +2326,7 @@ allow_shield_maxtries="" ;
 #### POP3 (receiving mail)	Unencrypted	110
 #### negotiation submission     tls             465 and 587
 #### 
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
 server_port_tcp="http,https,ssh,25,119,433,563,25:26,995,110,465,587" ;
@@ -2346,7 +2346,7 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 #### server samba and active directory
 client_port_tcp="http,https,ssh,ldap,636,microsoft-ds" ;
-client_port_udp="domain,domain-s,bootpc,ntp,https,ldap,636,137:139" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
 server_port_tcp="ssh,ldap,636,microsoft-ds" ; 
 server_port_udp="ntp,domain,ldap,636,137:139" ;
 fi
@@ -2364,7 +2364,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 #### server ipp and printer
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh,printer,ipp" ;
@@ -2383,7 +2383,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 #### server ssh 22/tcp
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
 server_port_tcp="ssh" ;
@@ -2403,7 +2403,7 @@ name_firewall="$first_option" ;
 allow_shield_maxtries="" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
-client_port_udp="domain,domain-s,bootpc,ntp,https" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
 client_port_tcp="http,https,ssh,20,21,989,990" ;
 server_port_tcp="http,https,ssh,10000,3306,5432" ;
@@ -2424,7 +2424,7 @@ allow_shield_maxtries="" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
-client_port_udp="domain,domain-s,bootpc,ntp,https,5060,10000:20000,5036" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5060,10000:20000,5036" ;
 server_port_udp="5060,10000:20000,5036" ;
 client_port_tcp="http,https,ssh,5060" ;
 server_port_tcp="ssh,5060" ;
@@ -2443,7 +2443,7 @@ name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
 #### mumble port 64738 tcp and 64738 udp
-client_port_udp="domain,domain-s,bootpc,ntp,https,64738" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
 client_port_tcp="http,https,ssh,64738" ;
 server_port_tcp="ssh,64738" ;
@@ -2466,7 +2466,7 @@ allow_shield_maxtries="" ;
 #### Filetransfer	TCP	30033
 #### ServerQuery (raw)	TCP	10011
 #### ServerQuery (SSH)	TCP	10022
-client_port_udp="domain,domain-s,bootpc,ntp,https,9987" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,9987" ;
 server_port_udp="9987" ;
 client_port_tcp="http,https,ssh,30033,10011,10022" ;
 server_port_tcp="ssh,30033,10011,10022" ;
@@ -2489,7 +2489,7 @@ allow_shield_maxtries="" ;
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
 ####  MySQL Client to Server – New X Protocol – 33060	33060/tcp	Optional - pick at least 1
 ####  Connects via SSH Tunnel	22/tcp	Optional - pick at least 1
-client_port_udp="domain,domain-s,bootpc,ntp,https,5432" ;
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,5432" ;
 server_port_udp="5432" ;
 client_port_tcp="http,https,ssh,5432,3306,3360" ;
 server_port_tcp="ssh,5432,3306,3360" ;
@@ -6170,7 +6170,7 @@ echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 echo
 echo "# config games example #"
-echo "config_client_udp=domain,domain-s,bootpc,ntp,https,1025:65499; "
+echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
 echo "config_client_tcp=http,https"
 ####
 ####
@@ -6188,7 +6188,7 @@ echo "config_client_udp=domain,ntp,bootpc,http ;"
 ####
 echo
 echo "# config torrent example #"
-echo "config_client_udp=domain,domain-s,bootpc,ntp,https,1025:65499; "
+echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,1025:65499; "
 echo "config_client_tcp=http,https"
 ####
 ####
@@ -6197,7 +6197,7 @@ echo "config_client_tcp=http,https"
 ####
 echo
 echo "# config samba example #"
-echo "config_client_udp=domain,domain-s,bootpc,ntp,https,137:139 ; "
+echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,137:139 ; "
 echo "config_client_tcp=http,https,ipp,microsoft-ds"
 echo "allow_output_ping= ; allow_input_ping= ; "
 ####
@@ -6250,7 +6250,7 @@ echo "config_client_tcp=http,https,ssh,5900:5910"
 echo
 echo "# config ftp example #"
 echo "config_client_tcp=http,https,ftp,ftp-data,ftps,ftps-data,gsiftp,zope-ftp"
-echo "config_client_udp=domain,domain-s,bootpc,ntp,https,tftp"
+echo "config_client_udp=domain,domain-s,bootpc,bootps,ntp,https,tftp"
 ####
 ####
 #### config: printer-example1 ####
