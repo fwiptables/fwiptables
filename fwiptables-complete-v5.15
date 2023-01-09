@@ -1115,7 +1115,7 @@ $cmd_binary regen-config &> /dev/null
 echo "  [ info ] [ the config dir:        ] [ $directory_data ]"
 echo "  [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
 echo "  [ info ] [ Command shell ] [ /usr/bin/fwiptables-cmd ]"
-echo "  [ info ] [ Privileges ] [ $(cat /etc/sudoers.d/$cmd_config) ]"
+if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config | sort ) " ; fi
 echo "  [ info ] [ Grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
 echo "  [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
 exit; fi
@@ -4258,7 +4258,7 @@ echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] 
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_tmp"
-echo "$text_md Posible auth-users:      /etc/sudoers.d/$cmd_binary"
+echo "$text_md Posible auth-users:      /etc/sudoers.d/$cmd_config"
 echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt (bash):    $command_bash"
@@ -7515,13 +7515,9 @@ clear ; exit ; fi
 if [ "$first_option" = "show-config" ] ; then echo $give_cover
 ####
 ####
-if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$tab [ info ] [ Usage: $cmd_binary show-config config-cfg ]" ; exit; fi
-####
-####
 if [ -f "$directory_config"/"$second_option" ] ; then 
 cat $directory_config/$second_option ;
-echo  ; exit ; fi
+else echo "$tab [ info ] [ Usage: $cmd_binary show-config config-cfg ]" ; exit; fi
 ####
 ####
 exit; fi
@@ -7536,14 +7532,10 @@ exit; fi
 if [ "$first_option" = "del-config" ]; then echo $give_cover
 ####
 ####
-if [ ! -f $directory_config/$second_option ] ; then
-echo "$tab [ info ] [ usage: ] [ $cmd_binary del-config config-old ]" ; exit ; fi
-####
-####
 if [ -f $directory_config/$second_option ] ; then
 rm $directory_config/$second_option
 echo "$directory_config/$second_option Deleted"
-echo  ; exit ; fi
+else echo "$tab [ info ] [ usage: ] [ $cmd_binary del-config config-old ]" ; fi
 ####
 ####
 exit ; fi
@@ -7558,17 +7550,13 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
 case $second_option in
 "$NULL") echo $give_cover ; echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
-*) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $cmd_config " &> /etc/sudoers.d/$cmd_config
-### echo "alias $cmd_binary='sudo $cmd_config'" &>  /etc/bash_completion.d/$cmd_config
-echo
-echo "  [ ok ] [ $autorizados will use: $cmd_config ]"
-echo "  [ ok ] [ $cmd_binary will use alias with sudo ]"
-echo 
-echo "  [ sudoer file:   /etc/sudoers.d/$cmd_config ]"
-cat /etc/sudoers.d/$cmd_config
-echo 
-exit; fi
+*) autorizado="$second_option" ;; esac
+echo " $autorizado ALL=(root) NOPASSWD: /usr/bin/$cmd_config" > /etc/sudoers.d/$cmd_config
+#### echo "alias $cmd_binary='sudo $cmd_config'" >  /etc/bash_completion.d/$cmd_config
+echo "  [  ok  ] [ $autorizados will use $cmd_config ]"
+echo "  [  ok  ] [ $cmd_binary will use alias with sudo ]"
+echo "  [ list ] $(cat /etc/sudoers.d/$cmd_config | sort ) "
+exit ; fi
 ####
 ####
 #### :rutina-final-sudofw-adduser:
@@ -7580,27 +7568,27 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
 rm /etc/sudoers.d/$cmd_config &> /dev/null
 rm /etc/sudoers.d/$cmd_config &> /dev/null
-echo "  [ ok ] [ deleted auth sudo ]"
-echo "  [ ok ] [ deleted /etc/sudoers.d/$cmd_config ]"
-echo 
+echo "  [  ok  ] [ deleted auth sudo ]"
+echo "  [  ok  ] [ deleted /etc/sudoers.d/$cmd_config ]"
 exit; fi
 ####
 ####
 #### :rutina-final-sudofw-deluser:
-##########    english: sudofw-listuser: the sudofw-adduser option en english   ##########
-##########    spanish: sudofw-listuser: la opcion de sudofw-adduser en ingles  ##########
+##########    english: sudofw-listuser: the sudofw-listuser option en english   ##########
+##########    spanish: sudofw-listuser: la opcion de sudofw-listuser en ingles  ##########
 #### :rutina-inicial-sudofw-listuser:
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" == "sudofw-listuser" ]; then echo $give_cover
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then
-echo "  [ info ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_config ]"
-echo "  [  ok  ] [ With root sudo for $cmd_config from some user ]"
-echo "  [ list ] [ $(cat /etc/sudoers.d/$cmd_config) ]"
+echo "  [ info ] [ sudoer file:  /etc/sudoers.d/$cmd_config ]"
+#### echo "  [  ok  ] [ With root sudo for $cmd_config from some user ]"
+echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
+echo "  [ list ] $(cat /etc/sudoers.d/$cmd_config | sort ) "
 else
 echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
 echo "  [ fail ] [ actual $cmd_config Without root sudo from users ]"
-exit; fi ; fi
+fi ; exit;  fi
 ####
 ####
 #### :rutina-final-sudofw-listuser:
