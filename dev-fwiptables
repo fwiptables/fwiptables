@@ -243,7 +243,6 @@ allow_input_ping="no" ;
 allow_input_state="no" ;
 allow_mac_blacklist="no" ; 
 allow_mac_whitelist="no" ;
-allow_separate_rules="no" ;
 allow_shield_maxtries="no"
 allow_net_blacklist="no" ;
 allow_net_vpn="no" ; 
@@ -309,9 +308,12 @@ allow_legacy=""                     ## fwiptables-file-default ## void or no
 allow_nft="no"                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
-####       #### english: list all rules: list all rules, void in names or no in numbers
-####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
+####       #### english: list all rules in conceptual: list all rules, void in names or no in numbers
+####       #### spanish: list todas las reglas en conceptual: list todas las reglas, vacio en nombres o no en numeros
 list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
+####       #### english: separate all rules: separate all rules, void or no
+####       #### spanish: separar todas las reglas: separar todas las reglas, vacio o no
+allow_separate_rules="no"                           ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured to works with ports choose ports tcp
 ####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp
 config_shield_port="22"                   ## fwiptables-file-default ##  void o ports
@@ -1304,12 +1306,6 @@ spa31="$(echo $cinco INICIO .......... Opciones opcionales .......... ..........
 var32="$(echo $cinco choose void or no $cinco )"
 eng32="$(echo $cinco Allow Other Options,  modify with void, or no )"
 spa32="$(echo $cinco Permitir Otras Opciones, modificar con vacio o no )"
-# var33="$(echo allow_separate_rules=no )"
-# eng33="$(echo $cinco Separate the rules for each port or no )"
-# spa33="$(echo $cinco separar reglas por cada puerto o no )"
-# var34="$(echo allow_shield_maxtries=no )"
-# eng34="$(echo $cinco void to allow one shield with max tries login in ssh for ip to each hour or no )"
-# spa34="$(echo $cinco vacio para permitir un escudo con los intentos maximos de logins in ssh por ip a cada hora o no )"
 var35="$(echo allow_forward_ip4=no )"
 eng35="$(echo $cinco void to yes to forward ip4, or no to no )"
 spa35="$(echo $cinco vacio para reenvios ip4, o no para no )"
