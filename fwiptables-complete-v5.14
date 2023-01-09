@@ -13141,7 +13141,7 @@ done
 ####################################### spanish: reglas para permitir puertos cliente without separate rules
 ####
 ####
-if [ "$allow_separate_rules" = "no" ]; then 
+if [ "$allow_separate_rules" == "no" ]; then 
 ####
 ####
 ####    CLIENT  UDP
@@ -13237,7 +13237,7 @@ fi
 ####################################### spanish: reglas para permitir puertos cliente with separate rules
 ####
 ####
-if [ "$allow_separate_rules" = "" ]; then 
+if [ "$allow_separate_rules" != "no" ]; then 
 for one_udp in $(echo $client_udp | $command_sed 's/,/ /g') ;
 do
 ####
@@ -13288,7 +13288,7 @@ $allow_nft  $allow_ipv6 $command_ip6tables_nft -A OUTPUT \
 done; fi
 ####
 ####
-if [ "$allow_separate_rules" = "" ]; then 
+if [ "$allow_separate_rules" != "no" ]; then 
 for one_tcp in $(echo $client_tcp | $command_sed 's/,/ /g') ;
 do
 ####

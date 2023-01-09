@@ -4445,12 +4445,12 @@ exit; fi
 ####
 ####
 #### :rutina-final-code-shield-ssh:
-########################################     english: ipv4 iptables legacy
-########################################     spanish: ipv4 iptables legacy
+########################################     english: ipv4 iptables legacy rules default predesignated
+########################################     spanish: ipv4 iptables legacy reglas predesignadas por defecto
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ]; then $zero_option eraserules &> /dev/null ;
+if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/null ; $cmd_binary policytable &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -4496,9 +4496,11 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -m comment --comment "logserver tcp" &> /dev/null
 ####
 ####
-#### filter rules legacy ipv4
-#### reglas de filtros legacy ipv4 
+#### filter rules legacy ipv4 without separate rules
+#### reglas de filtros legacy ipv4 sin separar reglas
 ####
+####
+if [ "$allow_separate_rules" == "no" ]; then
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
@@ -4526,6 +4528,57 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+fi
+####
+####
+####
+#### filter rules legacy ipv4 with separte rules
+#### reglas de filtros legacy ipv4 con separar reglas
+####
+####
+if [ "$allow_separate_rules" != "no" ]; then
+####
+for client_portudp in $(echo $client_port_udp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --sports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+done
+for client_porttcp in $(echo $client_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+done
+####
+####
+for server_porttcp in $(echo $server_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp"&> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+done
+for server_portudp in $(echo $server_port_udp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+done
+####
+fi
 ####
 ####
 ########################################     english: ipv4 iptables nft
@@ -4575,8 +4628,11 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -m comment --comment "logserver tcp" &> /dev/null
 ####
 ####
-#### filter rules nft ipv4
-#### reglas de filtros nft ipv4 
+#### filter rules nft ipv4 with separate rules
+#### reglas de filtros nft ipv4 with separate rules
+####
+####
+if [ "$allow_separate_rules" == "no" ]; then
 ####
 ####
 $allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
@@ -4605,6 +4661,60 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+fi
+####
+####
+#### filter rules nft ipv4 without separate rules
+#### reglas de filtros nft ipv4 without separate rules
+####
+####
+if [ "$allow_separate_rules" != "no" ]; then
+####
+####
+for client_portudp in $(echo $client_port_udp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --sports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --dports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+done
+####
+for client_porttcp in $(echo $client_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --sports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --dports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+done
+####
+####
+for server_portudp in $(echo $server_port_udp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p udp -m multiport --dports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p udp -m multiport --sports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+done
+####
+for server_porttcp in $(echo $server_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv4   $command_iptables_nft -A INPUT \
+-p tcp -m multiport --dports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
+-p tcp -m multiport --sports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+done
+####
+####
+fi
 ####
 ####
 ########################################     english: ipv6 iptables legacy
@@ -4660,15 +4770,17 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 #### reglas de filtros legacy ipv6 
 ####
 ####
+if [ "$allow_separate_rules" == "no" ]; then
+####
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport --sports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
--m comment --comment "client tcp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --dports $server_port_udp -j ACCEPT \
 -m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
@@ -4677,15 +4789,61 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
 -p udp -m multiport --dports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
-$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
--p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
--m comment --comment "server tcp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports $client_port_tcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $client_port_tcp -j ACCEPT \
 -m comment --comment "client tcp" &> /dev/null
+####
+fi
+####
+####
+if [ "$allow_separate_rules" != "no" ]; then
+####
+for server_portudp in $(echo $server_port_udp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --sports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --dports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+done
+for server_porttcp in $(echo $server_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --sports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+done
+####
+####
+for clientport_udp in $(echo $client_port_udp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
+-p udp -m multiport --dports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+done
+for client_porttcp in $(echo $client_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A INPUT \
+-p tcp -m multiport --dports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+done
+####
+fi
 ####
 ####
 ########################################     english: ipv6 iptables nft
