@@ -12621,10 +12621,10 @@ done
 for clientport_udp in $(echo $client_port_udp | $command_sed 's/,/ /g');
 do
 $allow_legacy  $allow_ipv6  $command_ip6tables_legacy -A INPUT \
--p udp -m multiport --dports $client_port_udp -j ACCEPT \
+-p udp -m multiport --dports $client_portudp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
--p udp -m multiport --sports $client_port_udp -j ACCEPT \
+-p udp -m multiport --sports $client_portudp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
 done
 for client_porttcp in $(echo $client_port_tcp | $command_sed 's/,/ /g');
@@ -12694,6 +12694,8 @@ $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 #### reglas de filtros nft ipv6 
 ####
 ####
+if [ "$allow_separate_rules" == "no" ]; then
+####
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
 -m comment --comment "client udp" &> /dev/null
@@ -12720,6 +12722,54 @@ $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 $allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
 -p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+fi
+####
+####
+if [ "$allow_separate_rules" != "no" ]; then
+####
+for server_portudp in $(echo $server_port_udp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --sports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --sports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+done
+####
+for server_porttcp in $(echo $server_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --sports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --sports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+done
+####
+####
+for server_portudp in $(echo $server_port_udp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p udp -m multiport --dports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p udp -m multiport --dports $server_portudp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+done
+####
+for server_porttcp in $(echo $server_port_tcp | $command_sed 's/,/ /g');
+do
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A INPUT \
+-p tcp -m multiport --dports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+$allow_nft  $allow_ipv6      $command_ip6tables_nft -A OUTPUT \
+-p tcp -m multiport --dports $server_porttcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+done
+####
+fi
 ####
 ####
 ########################################     english: close iptables 
