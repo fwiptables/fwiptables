@@ -1115,7 +1115,7 @@ $cmd_binary regen-config &> /dev/null
 echo "  [ info ] [ the config dir:        ] [ $directory_data ]"
 echo "  [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
 echo "  [ info ] [ Command shell ] [ /usr/bin/fwiptables-cmd ]"
-if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config | sort ) " ; fi
+if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 echo "  [ info ] [ Grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
 echo "  [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
 exit; fi
@@ -7549,13 +7549,13 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
 case $second_option in
-"$NULL") echo $give_cover ; echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
+"$NULL") echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizado="$second_option" ;; esac
 echo " $autorizado ALL=(root) NOPASSWD: /usr/bin/$cmd_config" > /etc/sudoers.d/$cmd_config
 #### echo "alias $cmd_binary='sudo $cmd_config'" >  /etc/bash_completion.d/$cmd_config
 echo "  [  ok  ] [ $autorizados will use $cmd_config ]"
 echo "  [  ok  ] [ $cmd_binary will use alias with sudo ]"
-echo "  [ list ] $(cat /etc/sudoers.d/$cmd_config | sort ) "
+if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 exit ; fi
 ####
 ####
@@ -7584,7 +7584,7 @@ if [ -f "/etc/sudoers.d/$cmd_config" ] ; then
 echo "  [ info ] [ sudoer file:  /etc/sudoers.d/$cmd_config ]"
 #### echo "  [  ok  ] [ With root sudo for $cmd_config from some user ]"
 echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
-echo "  [ list ] $(cat /etc/sudoers.d/$cmd_config | sort ) "
+if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 else
 echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
 echo "  [ fail ] [ actual $cmd_config Without root sudo from users ]"
