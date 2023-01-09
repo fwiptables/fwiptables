@@ -7551,8 +7551,8 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; the
 case $second_option in
 "$NULL") echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizado="$second_option" ;; esac
-echo " $autorizado ALL=(root) NOPASSWD: /usr/bin/$cmd_config" > /etc/sudoers.d/$cmd_config
-#### echo "alias $cmd_binary='sudo $cmd_config'" >  /etc/bash_completion.d/$cmd_config
+echo "$autorizado ALL=(root) NOPASSWD: /usr/bin/$cmd_config" > /etc/sudoers.d/$cmd_config
+echo "alias $cmd_binary='sudo /usr/bin/$cmd_config'" >  /etc/bash_completion.d/$cmd_config
 echo "  [  ok  ] [ $autorizados will use $cmd_config ]"
 echo "  [  ok  ] [ $cmd_binary will use alias with sudo ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
@@ -7567,9 +7567,9 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
 rm /etc/sudoers.d/$cmd_config &> /dev/null
-rm /etc/sudoers.d/$cmd_config &> /dev/null
-echo "  [  ok  ] [ deleted auth sudo ]"
-echo "  [  ok  ] [ deleted /etc/sudoers.d/$cmd_config ]"
+rm /etc/bash_completion.d/$cmd_config &> /dev/null
+echo "  [  ok  ] [ deleted auth sudo ] [ /etc/sudoers.d/$cmd_config         ]"
+echo "  [  ok  ] [ deleted alias cmd ] [ /etc/bash_completion.d/$cmd_config ]"
 exit; fi
 ####
 ####
