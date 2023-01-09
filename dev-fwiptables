@@ -1112,10 +1112,11 @@ $cmd_binary regen-config &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "  [ info ] [ config dir:        ] [ $directory_data ]"
-echo "  [ info ] [ tmp dir:           ] [ $directory_tmp  ]"
-echo "  [ info ] [ command shell:     ] [ /usr/bin/fwiptables-cmd ]"
-echo "  [ info ] [ grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
+echo "  [ info ] [ the config dir:        ] [ $directory_data ]"
+echo "  [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
+echo "  [ info ] [ Command shell ] [ /usr/bin/fwiptables-cmd ]"
+echo "  [ info ] [ Privileges ] [ $(cat /etc/sudoers.d/$cmd_config) ]"
+echo "  [ info ] [ Grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
 echo "  [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
 exit; fi
 ####
@@ -7558,14 +7559,14 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; the
 case $second_option in
 "$NULL") echo $give_cover ; echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizados="$second_option" ;; esac
-echo "$autorizados ALL=(root) NOPASSWD: $cmd_binary " &> /etc/sudoers.d/$cmd_binary
-echo "alias $cmd_binary='sudo $cmd_binary'" &>  /etc/bash_completion.d/$cmd_binary
+echo "$autorizados ALL=(root) NOPASSWD: $cmd_config " &> /etc/sudoers.d/$cmd_config
+echo "alias $cmd_binary='sudo $cmd_config'" &>  /etc/bash_completion.d/$cmd_config
 echo $tab
-echo "  [ ok ] [ $autorizados will use:     $cmd_binary ]"
+echo "  [ ok ] [ $autorizados will use:     $cmd_config ]"
 echo "  [ ok ] [ $cmd_binary will use alias with sudo ]"
 echo $tab
-echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_binary ]"
-cat /etc/sudoers.d/$cmd_binary
+echo "$tab [ sudoer file:   /etc/sudoers.d/$cmd_config ]"
+cat /etc/sudoers.d/$cmd_config
 echo 
 exit; fi
 ####
@@ -7577,10 +7578,10 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
-rm /etc/sudoers.d/$cmd_binary &> /dev/null
-rm /etc/sudoers.d/$cmd_binary &> /dev/null
+rm /etc/sudoers.d/$cmd_config &> /dev/null
+rm /etc/sudoers.d/$cmd_config &> /dev/null
 echo "  [ ok ] [ deleted auth sudo ]"
-echo "  [ ok ] [ deleted /etc/sudoers.d/$cmd_binary ]"
+echo "  [ ok ] [ deleted /etc/sudoers.d/$cmd_config ]"
 echo 
 exit; fi
 ####
@@ -7592,15 +7593,15 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-listuser" ]; then echo $give_cover
-if [ -f /etc/sudoers.d/$cmd_binary ] ; then $nada
-echo "  [ info ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_binary ]"
-echo "  [  ok  ] [ With root sudo for $cmd_binary from some user ]"
-cat /etc/sudoers.d/$cmd_binary
+if [ -f /etc/sudoers.d/$cmd_config ] ; then $nada
+echo "  [ info ] [ actual version sudoer file:   /etc/sudoers.d/$cmd_config ]"
+echo "  [  ok  ] [ With root sudo for $cmd_config from some user ]"
+cat /etc/sudoers.d/$cmd_config
 echo 
 fi
 if [ ! -f /etc/sudoers.d/$cmd_binary ] ; then $nada
-echo "  [ info ] [ list users with root auth for launch $cmd_binary ]"
-echo "  [ fail ] [ actual version $cmd_binary Without root sudo from users ]"
+echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
+echo "  [ fail ] [ actual version $cmd_config Without root sudo from users ]"
 fi
 ####
 ####
@@ -7614,12 +7615,12 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_binary ]"
+echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_config ]"
 echo 
-echo " [ alias file ] [  /etc/profile.d/$cmd_binary ]"
-cat /etc/bash_completion.d/$cmd_binary
-echo " [ alias file ] [  /etc/bash_completion.d/$cmd_binary ]"
-cat /etc/bash_completion.d/$cmd_binary
+echo " [ alias file ] [  /etc/profile.d/$cmd_config ]"
+cat /etc/bash_completion.d/$cmd_config
+echo " [ alias file ] [  /etc/bash_completion.d/$cmd_config ]"
+cat /etc/bash_completion.d/$cmd_config
 exit; fi
 ####
 ####
