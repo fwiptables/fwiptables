@@ -69,7 +69,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-5.14" ;
+cmd_version="complete-5.15" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -2500,7 +2500,7 @@ fi
 ####
 if [ "$program_minimal" == "" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "$title_md launch: $zero_option [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]  " 
+echo "Launch: $zero_option [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]            "
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
@@ -2528,7 +2528,8 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
+echo "Launch: $zero_option [-cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui                             "
+echo "                     -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]            "
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
 echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6       "
@@ -2563,13 +2564,14 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
-echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                      "
-echo "$title_md -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null"
+echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                     "
+echo "Launch: $zero_option [-cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui                             "
+echo "                     -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]            "
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls4 ls6 list4 list6 listnum listnum6 status list-alltables               "
 echo "$text_md                        list-filter4 list-filter6 listnum-filter4 listnum-filter6                "
-echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        " 
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        "
 echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables               "
 echo "$text_md  firewall-custom    |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
@@ -2581,9 +2583,9 @@ echo "$text_md                        client-tor client-ftp client-squid lan-tor
 echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news  "
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql         "
 echo "$text_md                        server-asterisk server-squid                                             "
-echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                         "   
+echo "$duo_md || ||  [ options-state ]  || ||  ### ###                                                         "
 echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 install upgrade uninstall       "
-echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "   
+echo "$duo_md || ||  [ options-tool ]  || ||  ### ###                                                          "
 echo "$text_md  tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        "
 echo "$text_md                        ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     "
 echo "$text_md  tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             "
@@ -2609,23 +2611,23 @@ echo "$duo_md || || [ options-show ]   || ||  ### ###                           
 echo "$text_md  show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md  show-log           |  log-search log-ssh filelog autolog                                       "
 echo "$text_md  show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
-echo "$text_md                        protocols services preferences-read preferences-modify                           "
+echo "$text_md                        protocols services preferences-read preferences-modify                   "
 echo "$duo_md || || [ options-help ]   || ||  ### ###                                                          "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md  help-help          |  all-help readme leeme notes options                                      "
 echo "$text_md                        group-options mini-options full-options                                  "
 echo "$duo_md || ||  [ Examples ]  || ||  ### ###                                                              "
-echo "$text_md  $cmd_binary -cli-menu                |  All options in text menu                           "
-echo "$text_md  $cmd_binary -gui-menu                |  All options in window menu                         "
-echo "$text_md  $cmd_binary -gui-shell               |  All options in window shell                        "
-echo "$text_md  $cmd_binary -txt list                |  List iptables rules with output txt                "
-echo "$text_md  $cmd_binary -cli names               |  List firewall saved with output cli text menu      "
-echo "$text_md  $cmd_binary -gui wizard-mini         |  Generate rules with output gui window              "
-echo "$text_md  $cmd_binary -web ss                  |  Show ss with output text browser                   "
-echo "$text_md  $cmd_binary -help readme             |  Show help of readme with output text plain         "
-echo "$text_md  $cmd_binary -info lsof               |  Show info of lsof with output text rst             "
-echo "$text_md  $cmd_binary -log info-route          |  Save log info-route with output text plain         "
-echo "$text_md  $cmd_binary -null client-web         |  Launch client web firewall a null output           "
+echo "$text_md  $cmd_binary -cli-menu                |  All options in text menu                               "
+echo "$text_md  $cmd_binary -gui-menu                |  All options in window menu                             "
+echo "$text_md  $cmd_binary -gui-shell               |  All options in window shell                            "
+echo "$text_md  $cmd_binary -txt list                |  List iptables rules with output txt                    "
+echo "$text_md  $cmd_binary -cli names               |  List firewall saved with output cli text menu          "
+echo "$text_md  $cmd_binary -gui wizard-mini         |  Generate rules with output gui window                  "
+echo "$text_md  $cmd_binary -web ss                  |  Show ss with output text browser                       "
+echo "$text_md  $cmd_binary -help readme             |  Show help of readme with output text plain             "
+echo "$text_md  $cmd_binary -info lsof               |  Show info of lsof with output text rst                 "
+echo "$text_md  $cmd_binary -log info-route          |  Save log info-route with output text plain             "
+echo "$text_md  $cmd_binary -null client-web         |  Launch client web firewall a null output               "
 exit ; fi
 ####
 ####
@@ -2636,10 +2638,10 @@ exit ; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-firewall" ] ; then echo $give_cover
-echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall md ]"
+echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall md ]                            "
 echo "$title_md                                  | options-firewall |                                          "
 echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
-echo "$text_md firewall-list       |  list4 listnum list6 listnum6                                              "
+echo "$text_md firewall-list       |  list4 listnum list6 listnum6                                             "
 echo "$text_md                        list-alltables list-forward list-forward6                                "
 echo "$text_md                        list-filter4 list-filter6 list-nat4 list-nat6                            "
 echo "$text_md                        list-raw4 list-raw6 list-mangle4 list-mangle6                            "
