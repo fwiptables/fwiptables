@@ -12290,9 +12290,11 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -m comment --comment "logserver tcp" &> /dev/null
 ####
 ####
-#### filter rules legacy ipv4
-#### reglas de filtros legacy ipv4 
+#### filter rules legacy ipv4 without separte rules
+#### reglas de filtros legacy ipv4 sin separar reglas
 ####
+####
+if [ "$allow_separate_rules" != "" ]; then
 ####
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
 -p udp -m multiport --sports $client_port_udp -j ACCEPT \
@@ -12320,6 +12322,49 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 -p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
 -m comment --comment "server tcp" &> /dev/null
+####
+fi
+####
+####
+####
+#### filter rules legacy ipv4 with separte rules
+#### reglas de filtros legacy ipv4 con separar reglas
+####
+####
+if [ "$allow_separate_rules" == "" ]; then
+####
+for $client_port_udp in $(echo $client_portudp | $command_sed 's/,/ /g'); then
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --sports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+$allow_legacy $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --dports $client_portudp -j ACCEPT \
+-m comment --comment "client udp" &> /dev/null
+done
+for $client_port_tcp in $(echo $client_porttcp | $command_sed 's/,/ /g'); then
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --sports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --dports $client_porttcp -j ACCEPT \
+-m comment --comment "client tcp" &> /dev/null
+done
+####
+####
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p udp -m multiport --dports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A INPUT \
+-p tcp -m multiport --dports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp"&> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p udp -m multiport --sports $server_port_udp -j ACCEPT \
+-m comment --comment "server udp" &> /dev/null
+$allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
+-p tcp -m multiport --sports $server_port_tcp -j ACCEPT \
+-m comment --comment "server tcp" &> /dev/null
+####
+fi
 ####
 ####
 ########################################     english: ipv4 iptables nft
