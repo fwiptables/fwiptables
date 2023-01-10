@@ -1114,7 +1114,7 @@ $cmd_binary regen-config &> /dev/null
 ####
 echo "  [ info ] [ the config dir:        ] [ $directory_data ]"
 echo "  [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
-echo "  [ info ] [ Command shell ] [ /usr/bin/fwiptables-cmd ]"
+echo "  [ info ] [ the Command shell:     ] [ /usr/bin/fwiptables-cmd ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 echo "  [ info ] [ Grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
 echo "  [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
@@ -7580,15 +7580,21 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" == "sudofw-listuser" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ list sudoer and alias for $cmd_config ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then
-echo "  [ info ] [ sudoer file:  /etc/sudoers.d/$cmd_config ]"
-#### echo "  [  ok  ] [ With root sudo for $cmd_config from some user ]"
-echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
-if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
-else
-echo "  [ info ] [ list users with root auth for launch $cmd_config ]"
-echo "  [ fail ] [ actual $cmd_config Without root sudo from users ]"
-fi ; exit;  fi
+echo "  [  ok  ] [ sudoer file:  /etc/sudoers.d/$cmd_config         ]"
+echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
+####
+if [ -f "/etc/bash_completion.d/$cmd_config" ] ; then
+echo "  [  ok  ] [ alias file:  /etc/bash_completion.d/$cmd_config ]"
+echo "  [ info ] [ Privileges ]  $(cat /etc/bash_completion.d/$cmd_config ) " ; fi
+####
+####
+if [ ! -f "/etc/sudoers.d/$cmd_config" ] ; then
+echo "  [  ok  ] [ list users with root auth for launch $cmd_config ]"
+echo "  [ fail ] [ actual $cmd_config Without root sudo from users ]" ; fi
+####
+exit;  fi
 ####
 ####
 #### :rutina-final-sudofw-listuser:
