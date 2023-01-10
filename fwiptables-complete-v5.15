@@ -7552,10 +7552,10 @@ case $second_option in
 "$NULL") echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizado="$second_option" ;; esac
 echo "$autorizado ALL=(root) NOPASSWD: /usr/bin/$cmd_config" > /etc/sudoers.d/$cmd_config
-echo "alias $cmd_binary='sudo /usr/bin/$cmd_config'" >  /etc/bash_completion.d/$cmd_config
+echo "alias fwiptables-cmd='sudo /usr/bin/$cmd_config'" >  /etc/bash_completion.d/$cmd_config
 echo "  [  ok  ] [ $autorizados will use $cmd_config ]"
 echo "  [  ok  ] [ $cmd_binary will use alias with sudo ]"
-if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
+if [ -f "/etc/sudoers.d/fwiptables-cmd" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 exit ; fi
 ####
 ####
