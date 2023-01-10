@@ -372,8 +372,8 @@ text_md="     " ;
 brake_md="---" ;
 tabz="### _ _ _ _ _ _ _ " ;
 ralla="______________________" ;
-duo_md="### ###" ;
-header_ok="### ### || || [ ok ] ||" ;
+duo_md="###" ;
+header_ok="### || || [ ok ] ||" ;
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
@@ -2530,7 +2530,7 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "Launch: $zero_option [-cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui                             "
-echo "                     -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]            "
+echo "        -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]                         "
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
 echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6       "
@@ -2567,7 +2567,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-all" ] ; then 
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                     "
 echo "Launch: $zero_option [-cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui                             "
-echo "                     -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]            "
+echo "        -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]                         "
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
 echo "$text_md  firewall-list      |  ls4 ls6 list4 list6 listnum listnum6 status list-alltables               "
