@@ -1,7 +1,7 @@
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.14 ] || ||
-### ### || || [ ok ] || [ Configure ] [ Configure: ./fwiptables-minimal-v5.14 preferences-modify ] || ||
+### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.15 ] || ||
+### ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-minimal preferences-modify ] || ||
 ### ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
-###  launch: ./fwiptables-minimal-v5.14 [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]           
+Launch: /usr/bin/fwiptables-minimal [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                     
 ### ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               
      firewall-control |  stop continue reset names actual show save load                              
         firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          

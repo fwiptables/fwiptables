@@ -2353,7 +2353,7 @@ fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                     " 
+echo "        Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]             " 
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
 echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "

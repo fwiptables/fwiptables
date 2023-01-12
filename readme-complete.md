@@ -1,8 +1,9 @@
-### ### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.14 state:complete ] || ||
-### ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
-### ### || ||  [ options-interface ]  || ||  ### ###                                                      
-###  -cli-menu -gui-menu -gui-shell -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null
-### ### || ||  [ options-firewall ]  || ||  ### ###                                                      
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-5.15 state:complete ] || ||
+### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
+### || ||  [ options-interface ]  || ||  ### ###                                                     
+        Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-shell                                             
+        -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option] 
+### || ||  [ options-firewall ]  || ||  ### ###                                                      
        firewall-control   |  stop continue reset names actual show save load                          
        firewall-list      |  ls4 ls6 list4 list6 listnum listnum6 status list-alltables               
                              list-filter4 list-filter6 listnum-filter4 listnum-filter6                
@@ -18,9 +19,9 @@
                              server-vnc server-web server-samba server-print server-lamp server-news  
                              server-mail server-ftp server-teamspeak server-mumble server-sql         
                              server-asterisk server-squid                                             
-### ### || ||  [ options-state ]  || ||  ### ###                                                         
+### || ||  [ options-state ]  || ||  ### ###                                                         
           options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 install upgrade uninstall       
-### ### || ||  [ options-tool ]  || ||  ### ###                                                          
+### || ||  [ options-tool ]  || ||  ### ###                                                          
        tool-sockets       |  info-listen info-nodes info-route info-net info-proxy info-system        
                              ip4 ip6 ss lsof tcpdump netstat netstat-nat web-cert                     
        tool-connect       |  iw-scan iw-info wpa-save wpa-load dhcp-client ntpdate-client             
@@ -42,24 +43,24 @@
        tool-addblock      |  addblock-list addblock-on addblock-off                                   
        tool-dev           |  new-versions dev-version dev-changes code intro                          
        tool-computer      |  pc-halt pc-shutdown pc-reboot                                            
-### ### || || [ options-show ]   || ||  ### ###                                                          
+### || || [ options-show ]   || ||  ### ###                                                          
        show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                
        show-log           |  log-search log-ssh filelog autolog                                       
        show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 
-                             protocols services preferences-read preferences-modify                           
-### ### || || [ options-help ]   || ||  ### ###                                                          
+                             protocols services preferences-read preferences-modify                   
+### || || [ options-help ]   || ||  ### ###                                                          
        help-about         |  about version depends config-eng config-spa license                      
        help-help          |  all-help readme leeme notes options                                      
                              group-options mini-options full-options                                  
-### ### || ||  [ Examples ]  || ||  ### ###                                                              
-       ./fwiptables-complete-v5.14 -cli-menu                |  All options in text menu                           
-       ./fwiptables-complete-v5.14 -gui-menu                |  All options in window menu                         
-       ./fwiptables-complete-v5.14 -gui-shell               |  All options in window shell                        
-       ./fwiptables-complete-v5.14 -txt list                |  List iptables rules with output txt                
-       ./fwiptables-complete-v5.14 -cli names               |  List firewall saved with output cli text menu      
-       ./fwiptables-complete-v5.14 -gui wizard-mini         |  Generate rules with output gui window              
-       ./fwiptables-complete-v5.14 -web ss                  |  Show ss with output text browser                   
-       ./fwiptables-complete-v5.14 -help readme             |  Show help of readme with output text plain         
-       ./fwiptables-complete-v5.14 -info lsof               |  Show info of lsof with output text rst             
-       ./fwiptables-complete-v5.14 -log info-route          |  Save log info-route with output text plain         
-       ./fwiptables-complete-v5.14 -null client-web         |  Launch client web firewall a null output           
+### || ||  [ Examples ]  || ||  ### ###                                                              
+       /usr/bin/fwiptables-cmd -cli-menu                |  All options in text menu                               
+       /usr/bin/fwiptables-cmd -gui-menu                |  All options in window menu                             
+       /usr/bin/fwiptables-cmd -gui-shell               |  All options in window shell                            
+       /usr/bin/fwiptables-cmd -txt list                |  List iptables rules with output txt                    
+       /usr/bin/fwiptables-cmd -cli names               |  List firewall saved with output cli text menu          
+       /usr/bin/fwiptables-cmd -gui wizard-mini         |  Generate rules with output gui window                  
+       /usr/bin/fwiptables-cmd -web ss                  |  Show ss with output text browser                       
+       /usr/bin/fwiptables-cmd -help readme             |  Show help of readme with output text plain             
+       /usr/bin/fwiptables-cmd -info lsof               |  Show info of lsof with output text rst                 
+       /usr/bin/fwiptables-cmd -log info-route          |  Save log info-route with output text plain             
+       /usr/bin/fwiptables-cmd -null client-web         |  Launch client web firewall a null output               
