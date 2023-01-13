@@ -298,6 +298,7 @@ command_lshw="$(command -v lshw)"
 #### :sincontarrutina-inicial-config-variables:
 ####
 ####
+list_rules_conceptual="" ;
 allow_dmz_ip4="no" ; 
 allow_dmz_ip6="no" ;
 allow_forward_ip4="no" ; 
@@ -364,9 +365,6 @@ allow_legacy=""                     ## fwiptables-file-default ## void or no
 allow_nft="no"                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
-####       #### english: list all rules: list all rules, void in names or no in numbers
-####       #### spanish: list all rules: list todas las reglas, vacio en nombres o no en numeros
-list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
 ####       #### english: separate all rules: separate all rules, void or no
 ####       #### spanish: separar todas las reglas: separar todas las reglas, vacio o no
 allow_separate_rules="no"                         ## fwiptables-file-default ## void or no
@@ -490,7 +488,6 @@ case "$config_close_deny"      in
 "RETURN") ;;
 "LOG")    ;;
 *) config_close_deny="REJECT"  ;; esac
-case "$list_rules_conceptual" in "$NULL")  ;; *) list_rules_conceptual=" -n"  ;; esac
 ####
 ####
 #### english: if null option is void return default to mini-options
@@ -533,6 +530,110 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 ##########     ALIAS SIMPLE
 ####
 ####
+#### english:  alias firewall-list with conceputal firewall-conceptual:
+####
+####
+if [ "$first_option" = "ls4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "ls6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "status" ]  ; then first_option="status" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-alltables" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-filter4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-filter6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-nat4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-nat6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-raw4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-raw6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-mangle4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-mangle6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-security4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+if [ "$first_option" = "list-security6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
+case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_rules_conceptual=" -n"  ;; esac
+####
+####
+#### english:  alias firewall-list with numeral firewall-numeral:
+####
+####
+if [ "$first_option" = "ls4" ]     ; then first_option="-txt"   ; second_option="list4" ; fi
+if [ "$first_option" = "ls6" ]     ; then first_option="-txt"   ; second_option="list6" ; fi
+if [ "$first_option" = "ls46" ]    ; then first_option="status" ; fi
+if [ "$first_option" = "list4" ]   ; then first_option="-txt"   ; second_option="list4" ; fi
+if [ "$first_option" = "list6" ]   ; then first_option="-txt"   ; second_option="list6" ; fi
+if [ "$first_option" = "list46" ]  ; then first_option="status" ; fi
+####
+####
+case "$first_option" in 
+"ls4")    list_rules_conceptual="" ;;
+"ls6")    list_rules_conceptual="" ;;
+"list4")  list_rules_conceptual="" ;;
+"list6")  list_rules_conceptual="" ;;
+"status") list_rules_conceptual="" ;;
+"list-alltables") list_rules_conceptual="" ;;
+"list-filter4")   list_rules_conceptual="" ;;
+"list-filter5")   list_rules_conceptual="" ;;
+"list-nat4")   list_rules_conceptual="" ;;
+"list-nat6")   list_rules_conceptual="" ;;
+"list-raw4")   list_rules_conceptual="" ;;
+"list-raw6")   list_rules_conceptual="" ;;
+"list-mangle4")   list_rules_conceptual="" ;;
+"list-mangle6")   list_rules_conceptual="" ;;
+"list-security4")   list_rules_conceptual="" ;;
+"list-security6")   list_rules_conceptual="" ;;
+"lsn4")    list_rules_conceptual="no"; first_option="list4-ip"  ;;
+"lsn6")    list_rules_conceptual="no"; first_option="list6-ip"  ;;
+"listn4")  list_rules_conceptual="no" ; first_option="list4-ip" ;;
+"listn6")  list_rules_conceptual="no" ; first_option="list6-ip" ;;
+"statusn") list_rules_conceptual="no" ; first_option="status" ;;
+"listn-alltables") list_rules_conceptual="no" ;;
+"listn-filter4")   list_rules_conceptual="no" ;;
+"listn-filter5")   list_rules_conceptual="no" ;;
+"listn-nat4")   list_rules_conceptual="no" ;;
+"listn-nat6")   list_rules_conceptual="no" ;;
+"listn-raw4")   list_rules_conceptual="no" ;;
+"listn-raw6")   list_rules_conceptual="no" ;;
+"listn-mangle4")   list_rules_conceptual="no" ;;
+"listn-mangle6")   list_rules_conceptual="no" ;;
+"listn-security4")   list_rules_conceptual="no" ;;
+"listn-security6")   list_rules_conceptual="no" ;;
+esac
+case "$second_option" in 
+"ls4")    list_rules_conceptual="" ;;
+"ls6")    list_rules_conceptual="" ;;
+"list4")  list_rules_conceptual="" ;;
+"list6")  list_rules_conceptual="" ;;
+"status") list_rules_conceptual="" ;;
+"list-alltables") list_rules_conceptual="" ;;
+"list-filter4")   list_rules_conceptual="" ;;
+"list-filter5")   list_rules_conceptual="" ;;
+"list-nat4")   list_rules_conceptual="" ;;
+"list-nat6")   list_rules_conceptual="" ;;
+"list-raw4")   list_rules_conceptual="" ;;
+"list-raw6")   list_rules_conceptual="" ;;
+"list-mangle4")   list_rules_conceptual="" ;;
+"list-mangle6")   list_rules_conceptual="" ;;
+"list-security4")   list_rules_conceptual="" ;;
+"list-security6")   list_rules_conceptual="" ;;
+"lsn4")    list_rules_conceptual="no"; second_option="list4-ip"  ;;
+"lsn6")    list_rules_conceptual="no"; second_option="list6-ip"  ;;
+"listn4")  list_rules_conceptual="no" ; second_option="list4-ip" ;;
+"listn6")  list_rules_conceptual="no" ; second_option="list6-ip" ;;
+"statusn") list_rules_conceptual="no" ; second_option="status" ;;
+"listn-alltables") list_rules_conceptual="no" ;;
+"listn-filter4")   list_rules_conceptual="no" ;;
+"listn-filter5")   list_rules_conceptual="no" ;;
+"listn-nat4")   list_rules_conceptual="no" ;;
+"listn-nat6")   list_rules_conceptual="no" ;;
+"listn-raw4")   list_rules_conceptual="no" ;;
+"listn-raw6")   list_rules_conceptual="no" ;;
+"listn-mangle4")   list_rules_conceptual="no" ;;
+"listn-mangle6")   list_rules_conceptual="no" ;;
+"listn-security4")   list_rules_conceptual="no" ;;
+"listn-security6")   list_rules_conceptual="no" ;;
+esac
+case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_rules_conceptual=" -n"  ;; esac
+####
+####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
@@ -559,14 +660,6 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
-####
-####
-if [ "$first_option" = "ls4" ]     ; then first_option="-txt"   ; second_option="list4" ; fi
-if [ "$first_option" = "ls6" ]     ; then first_option="-txt"   ; second_option="list6" ; fi
-if [ "$first_option" = "ls46" ]    ; then first_option="status" ; fi
-if [ "$first_option" = "list4" ]   ; then first_option="-txt"   ; second_option="list4" ; fi
-if [ "$first_option" = "list6" ]   ; then first_option="-txt"   ; second_option="list6" ; fi
-if [ "$first_option" = "list46" ]  ; then first_option="status" ; fi
 ####
 ####
 if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
@@ -1609,7 +1702,7 @@ case "$NULL" in "$allow_output_state")     ;;  *)  allow_output_state="no";; esa
 case "$NULL" in "$allow_output_uid")       ;;  *)  allow_output_uid="no";; esac
 case "$NULL" in "$choosed_iptables")       ;;  *)  choosed_iptables="no";; esac
 case "$NULL" in "$launch_firewall")        ;;  *)  launch_firewall="no" ;; esac
-case "$NULL" in "$list_rules_conceptual")  ;;  *)  list_rules_conceptual="-n";; esac
+####  case "$NULL" in "$list_rules_conceptual")  ;;  *)  list_rules_conceptual="-n";; esac
 case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
 case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
@@ -2353,23 +2446,26 @@ fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "    Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                 " 
-echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
-echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
-echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
-echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
-echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables                   "
-echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                           "
-echo "$text_md                       new-mini-config nueva-mini-config examples-config                            "
-echo "$text_md                       show-config modify-config del-config names-config                            "
-echo "$text_md    firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
-echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
-echo "$text_md                       client-web client-vnc client-mail client-news client-torrent client-vpn      "
-echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
-echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
-echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
-echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
+echo "    Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                  " 
+echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                "
+echo "$text_md    firewall-control |  stop continue reset names actual show save load                              "
+echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md                        listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md                        listn-security4 listn-security6 list-ebtables list-arptables                 "
+echo "$text_md     firewall-custom |  new-full-config nueva-completa-config regen-config                           "
+echo "$text_md                        new-mini-config nueva-mini-config examples-config                            "
+echo "$text_md                        show-config modify-config del-config names-config                            "
+echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
+echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
+echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn      "
+echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
+echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news      "
+echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
+echo "$text_md                        server-asterisk server-squid                                                 "
+echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
 exit ; fi
 ####
 ####
