@@ -533,25 +533,6 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 #### english:  alias firewall-list with conceputal firewall-conceptual:
 ####
 ####
-if [ "$first_option" = "ls4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "ls6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "status" ]  ; then first_option="status" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-alltables" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-filter4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-filter6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-nat4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-nat6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-raw4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-raw6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-mangle4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-mangle6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-security4" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-if [ "$first_option" = "list-security6" ]  ; then first_option="ls4" ; list_rules_conceptual=""  ; fi
-case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_rules_conceptual=" -n"  ;; esac
-####
-####
 #### english:  alias firewall-list with numeral firewall-numeral:
 ####
 ####
@@ -584,52 +565,18 @@ case "$first_option" in
 "lsn6")    list_rules_conceptual="no"; first_option="list6-ip"  ;;
 "listn4")  list_rules_conceptual="no" ; first_option="list4-ip" ;;
 "listn6")  list_rules_conceptual="no" ; first_option="list6-ip" ;;
-"statusn") list_rules_conceptual="no" ; first_option="status" ;;
-"listn-alltables") list_rules_conceptual="no" ;;
-"listn-filter4")   list_rules_conceptual="no" ;;
-"listn-filter5")   list_rules_conceptual="no" ;;
-"listn-nat4")   list_rules_conceptual="no" ;;
-"listn-nat6")   list_rules_conceptual="no" ;;
-"listn-raw4")   list_rules_conceptual="no" ;;
-"listn-raw6")   list_rules_conceptual="no" ;;
-"listn-mangle4")   list_rules_conceptual="no" ;;
-"listn-mangle6")   list_rules_conceptual="no" ;;
-"listn-security4")   list_rules_conceptual="no" ;;
-"listn-security6")   list_rules_conceptual="no" ;;
-esac
-case "$second_option" in 
-"ls4")    list_rules_conceptual="" ;;
-"ls6")    list_rules_conceptual="" ;;
-"list4")  list_rules_conceptual="" ;;
-"list6")  list_rules_conceptual="" ;;
-"status") list_rules_conceptual="" ;;
-"list-alltables") list_rules_conceptual="" ;;
-"list-filter4")   list_rules_conceptual="" ;;
-"list-filter5")   list_rules_conceptual="" ;;
-"list-nat4")   list_rules_conceptual="" ;;
-"list-nat6")   list_rules_conceptual="" ;;
-"list-raw4")   list_rules_conceptual="" ;;
-"list-raw6")   list_rules_conceptual="" ;;
-"list-mangle4")   list_rules_conceptual="" ;;
-"list-mangle6")   list_rules_conceptual="" ;;
-"list-security4")   list_rules_conceptual="" ;;
-"list-security6")   list_rules_conceptual="" ;;
-"lsn4")    list_rules_conceptual="no"; second_option="list4-ip"  ;;
-"lsn6")    list_rules_conceptual="no"; second_option="list6-ip"  ;;
-"listn4")  list_rules_conceptual="no" ; second_option="list4-ip" ;;
-"listn6")  list_rules_conceptual="no" ; second_option="list6-ip" ;;
-"statusn") list_rules_conceptual="no" ; second_option="status" ;;
-"listn-alltables") list_rules_conceptual="no" ;;
-"listn-filter4")   list_rules_conceptual="no" ;;
-"listn-filter5")   list_rules_conceptual="no" ;;
-"listn-nat4")   list_rules_conceptual="no" ;;
-"listn-nat6")   list_rules_conceptual="no" ;;
-"listn-raw4")   list_rules_conceptual="no" ;;
-"listn-raw6")   list_rules_conceptual="no" ;;
-"listn-mangle4")   list_rules_conceptual="no" ;;
-"listn-mangle6")   list_rules_conceptual="no" ;;
-"listn-security4")   list_rules_conceptual="no" ;;
-"listn-security6")   list_rules_conceptual="no" ;;
+"statusn") list_rules_conceptual="no" ; first_option="statusn"   ;;
+"listn-alltables") list_rules_conceptual="no" ; first_option="list-alltables" ;;
+"listn-filter4")   list_rules_conceptual="no" ; first_option="list-filter4"   ;;
+"listn-filter6")   list_rules_conceptual="no" ; first_option="list-filter6"   ;;
+"listn-nat4")   list_rules_conceptual="no" ; first_option="list-nat4" ;;
+"listn-nat6")   list_rules_conceptual="no" ; first_option="list-nat6" ;;
+"listn-raw4")   list_rules_conceptual="no" ; first_option="list-raw4" ;;
+"listn-raw6")   list_rules_conceptual="no" ; first_option="list_raw6" ;;
+"listn-mangle4")   list_rules_conceptual="no" ; first_option="list-mangle4"     ;;
+"listn-mangle6")   list_rules_conceptual="no" ; first_option="list-mangle6"     ;;
+"listn-security4")   list_rules_conceptual="no" ; first_option="list-security4" ;;
+"listn-security6")   list_rules_conceptual="no" ; first_option="list-security6" ;;
 esac
 case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_rules_conceptual=" -n"  ;; esac
 ####
@@ -2912,6 +2859,24 @@ exit; fi
 ####
 ####
 #### :sincontarrutina-final-satus:
+##########    english: statusn: The list option ipv4 and ipv6    ##########
+##########    spanish: statusn: La opcion lista ipv4 y ipv6      ##########
+#### :sincontarrutina-inicial-statusn:
+####
+####
+if [ "$first_option" = "statusn" ]; then
+####
+####
+$zero_option listn4
+####
+####
+$zero_option listn6
+####
+####
+exit; fi
+####
+####
+#### :sincontarrutina-final-satusn:
 ##########    english: listnum: The list option   ##########
 ##########    spanish: listnum: La opcion lista   ##########
 #### :sincontarrutina-inicial-listnum:
