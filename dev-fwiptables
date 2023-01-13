@@ -230,6 +230,7 @@ command_pdfseparate="$(command -v pdfseparate)"
 #### :rutina-inicial-config-variables:
 ####
 ####
+list_rules_conceptual="" ;
 allow_dmz_ip4="no" ; 
 allow_dmz_ip6="no" ;
 allow_forward_ip4="no" ; 
@@ -308,9 +309,6 @@ allow_legacy=""                     ## fwiptables-file-default ## void or no
 allow_nft="no"                          ## fwiptables-file-default ## void or no
 allow_ipv4=""                         ## fwiptables-file-default ## void or no
 allow_ipv6=""                         ## fwiptables-file-default ## void or no
-####       #### english: list all rules in conceptual: list all rules, void in names or no in numbers
-####       #### spanish: list todas las reglas en conceptual: list todas las reglas, vacio en nombres o no en numeros
-list_rules_conceptual=""                           ## fwiptables-file-default ## void or no
 ####       #### english: separate all rules: separate all rules, void or no
 ####       #### spanish: separar todas las reglas: separar todas las reglas, vacio o no
 allow_separate_rules="no"                           ## fwiptables-file-default ## void or no
@@ -636,6 +634,57 @@ if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$c
 ##########     ALIAS SIMPLE
 ####
 ####
+#### english:  alias firewall-list with conceputal firewall-conceptual:
+####
+####
+#### english:  alias firewall-list with numeral firewall-numeral:
+####
+####
+if [ "$first_option" = "ls4" ]     ; then first_option="-txt"   ; second_option="list4" ; fi
+if [ "$first_option" = "ls6" ]     ; then first_option="-txt"   ; second_option="list6" ; fi
+if [ "$first_option" = "ls46" ]    ; then first_option="status" ; fi
+if [ "$first_option" = "list4" ]   ; then first_option="-txt"   ; second_option="list4" ; fi
+if [ "$first_option" = "list6" ]   ; then first_option="-txt"   ; second_option="list6" ; fi
+if [ "$first_option" = "list46" ]  ; then first_option="status" ; fi
+####
+####
+case "$first_option" in 
+"ls4")    list_rules_conceptual="" ;;
+"ls6")    list_rules_conceptual="" ;;
+"list4")  list_rules_conceptual="" ;;
+"list6")  list_rules_conceptual="" ;;
+"status") list_rules_conceptual="" ;;
+"list-alltables") list_rules_conceptual="" ;;
+"list-filter4")   list_rules_conceptual="" ;;
+"list-filter5")   list_rules_conceptual="" ;;
+"list-nat4")   list_rules_conceptual="" ;;
+"list-nat6")   list_rules_conceptual="" ;;
+"list-raw4")   list_rules_conceptual="" ;;
+"list-raw6")   list_rules_conceptual="" ;;
+"list-mangle4")   list_rules_conceptual="" ;;
+"list-mangle6")   list_rules_conceptual="" ;;
+"list-security4")   list_rules_conceptual="" ;;
+"list-security6")   list_rules_conceptual="" ;;
+"lsn4")    list_rules_conceptual="no"; first_option="list4-ip"  ;;
+"lsn6")    list_rules_conceptual="no"; first_option="list6-ip"  ;;
+"listn4")  list_rules_conceptual="no" ; first_option="list4-ip" ;;
+"listn6")  list_rules_conceptual="no" ; first_option="list6-ip" ;;
+"statusn") list_rules_conceptual="no" ; first_option="statusn"   ;;
+"listn-alltables") list_rules_conceptual="no" ; first_option="list-alltables" ;;
+"listn-filter4")   list_rules_conceptual="no" ; first_option="list-filter4"   ;;
+"listn-filter6")   list_rules_conceptual="no" ; first_option="list-filter6"   ;;
+"listn-nat4")   list_rules_conceptual="no" ; first_option="list-nat4" ;;
+"listn-nat6")   list_rules_conceptual="no" ; first_option="list-nat6" ;;
+"listn-raw4")   list_rules_conceptual="no" ; first_option="list-raw4" ;;
+"listn-raw6")   list_rules_conceptual="no" ; first_option="list_raw6" ;;
+"listn-mangle4")   list_rules_conceptual="no" ; first_option="list-mangle4"     ;;
+"listn-mangle6")   list_rules_conceptual="no" ; first_option="list-mangle6"     ;;
+"listn-security4")   list_rules_conceptual="no" ; first_option="list-security4" ;;
+"listn-security6")   list_rules_conceptual="no" ; first_option="list-security6" ;;
+esac
+case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_rules_conceptual=" -n"  ;; esac
+####
+####
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
@@ -666,16 +715,6 @@ if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_
 ####
 ####
 if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
-####
-####
-## if [ "$first_option" = "ls"   ] ; then first_option="status"   ; fi
-## if [ "$first_option" = "list" ] ; then first_option="status"   ; fi
-if [ "$first_option" = "ls4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
-if [ "$first_option" = "ls6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
-if [ "$first_option" = "ls46" ]  ; then first_option="status" ; fi
-if [ "$first_option" = "list4" ]  ; then first_option="-txt" ; second_option="list4" ; fi
-if [ "$first_option" = "list6" ]  ; then first_option="-txt" ; second_option="list6" ; fi
-if [ "$first_option" = "list46" ]  ; then first_option="status" ; fi
 ####
 ####
 if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
@@ -2501,23 +2540,26 @@ fi
 ####
 if [ "$program_minimal" == "" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "    Launch: $zero_option [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]        "
-echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||               "
-echo "$text_md   firewall-control |  stop continue reset names actual show save load                              "
-echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
-echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
-echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables                   "
-echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                           "
-echo "$text_md                       new-mini-config nueva-mini-config examples-config                            "
-echo "$text_md                       show-config modify-config del-config names-config                            "
-echo "$text_md    firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
-echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
-echo "$text_md                       client-web client-vnc client-mail client-news client-torrent client-vpn      "
-echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
-echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news      "
-echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql             "
-echo "$text_md                       server-asterisk server-squid                                                 "
-echo "$text_md     options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
+echo "     Launch: $zero_option [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]        "
+echo "$duo_md || || [ firewall ]   ### [  Control firewalls and rules to manage iptables ] ### || ||               "
+echo "$text_md    firewall-control |  stop continue reset names actual show save load                              "
+echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md                        listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md                        listn-security4 listn-security6 list-ebtables list-arptables                 "
+echo "$text_md     firewall-custom |  new-full-config nueva-completa-config regen-config                           "
+echo "$text_md                        new-mini-config nueva-mini-config examples-config                            "
+echo "$text_md                        show-config modify-config del-config names-config                            "
+echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
+echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
+echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn      "
+echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
+echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news      "
+echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
+echo "$text_md                        server-asterisk server-squid                                                 "
+echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
 exit ; fi
 ####
 ####
@@ -2529,23 +2571,26 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                 "
-echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]     "
-echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||            "
-echo "$text_md   firewall-control |  stop continue reset names actual show save load                           "
-echo "$text_md      firewall-list |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6       "
-echo "$text_md                       list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6         "
-echo "$text_md                       list-security4 list-security6 list-ebtables list-arptables                "
-echo "$text_md    firewall-custom |  new-full-config nueva-completa-config regen-config                        "
-echo "$text_md                       new-mini-config nueva-mini-config examples-config                         "
-echo "$text_md                       show-config modify-config del-config names-config                         "
-echo "$text_md    firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive          "
-echo "$text_md                       games-shooter game-wesnoth game-minetest game-freeciv game-widelands      "
-echo "$text_md                       client-web client-vnc client-mail client-news client-torrent client-vpn   "
-echo "$text_md                       client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh "
-echo "$text_md                       server-vnc server-web server-samba server-print server-lamp server-news   "
-echo "$text_md                       server-mail server-ftp server-teamspeak server-mumble server-sql          "
-echo "$text_md                       server-asterisk server-squid                                              "
+echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                     "
+echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]         "
+echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                "
+echo "$text_md    firewall-control |  stop continue reset names actual show save load                              " 
+echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md                        listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md                        listn-security4 listn-security6 list-ebtables list-arptables                 "
+echo "$text_md     firewall-custom |  new-full-config nueva-completa-config regen-config                           "
+echo "$text_md                        new-mini-config nueva-mini-config examples-config                            "
+echo "$text_md                        show-config modify-config del-config names-config                            "
+echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
+echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
+echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn      "
+echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
+echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news      "
+echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
+echo "$text_md                        server-asterisk server-squid                                                 "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
 echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_binary options-firewall         |  Show all options to firewall manage            "
@@ -2570,14 +2615,16 @@ echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                  
 echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]     "
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                      "
 echo "$text_md  firewall-control   |  stop continue reset names actual show save load                          "
-echo "$text_md  firewall-list      |  ls4 ls6 list4 list6 listnum listnum6 status list-alltables               "
-echo "$text_md                        list-filter4 list-filter6 listnum-filter4 listnum-filter6                "
-echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6        "
-echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables               "
+echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md  firewall-numeral   |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md                        listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md                        listn-security4 listn-security6 list-ebtables list-arptables                 "
 echo "$text_md  firewall-custom    |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
-echo "$text_md firewall-launch     |  eraserules custom wizard-mini wizard-full off-line all-permisive         "
+echo "$text_md  firewall-launch    |  eraserules custom wizard-mini wizard-full off-line all-permisive         "
 echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands     "
 echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn  "
 echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh "
@@ -2642,12 +2689,12 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-firewall" ] ; 
 echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall md ]                            "
 echo "$title_md                                  | options-firewall |                                          "
 echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
-echo "$text_md firewall-list       |  list4 listnum list6 listnum6                                             "
-echo "$text_md                        list-alltables list-forward list-forward6                                "
-echo "$text_md                        list-filter4 list-filter6 list-nat4 list-nat6                            "
-echo "$text_md                        list-raw4 list-raw6 list-mangle4 list-mangle6                            "
-echo "$text_md                        list-security4 list-security6                                            "
-echo "$text_md                        list-ebtables list-arptables                                             "
+echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md firewall-numeral    |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md                        listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md                        listn-security4 listn-security6 list-ebtables list-arptables                 "
 echo "$text_md firewall-custom     |  new-full-config nueva-completa-config regen-config                       "
 echo "$text_md                        new-mini-config nueva-mini-config examples-config                        "
 echo "$text_md                        show-config modify-config del-config names-config                        "
@@ -6893,6 +6940,24 @@ exit; fi
 ####
 ####
 #### :rutina-final-satus:
+##########    english: statusn: The list option ipv4 and ipv6    ##########
+##########    spanish: statusn: La opcion lista ipv4 y ipv6      ##########
+#### :rutina-inicial-statusn:
+####
+####
+if [ "$first_option" = "statusn" ]; then
+####
+####
+$cmd_binary -txt listn4
+####
+####
+$cmd_binary -txt listn6
+####
+####
+exit; fi
+####
+####
+#### :rutina-final-satusn:
 ##########    english: listnum: The list option   ##########
 ##########    spanish: listnum: La opcion lista   ##########
 #### :rutina-inicial-listnum:
