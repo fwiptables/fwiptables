@@ -10757,7 +10757,7 @@ else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1"  | cut -d "/" -f 1 ; fi
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else

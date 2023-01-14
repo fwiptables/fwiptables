@@ -391,8 +391,8 @@ text_md="  " ;
 brake_md="---" ;
 tabz="### _ _ _ _ _ _ _ " ;
 ralla="______________________" ;
-duo_md="### ###" ;
-header_ok="### ### || || [ ok ] ||" ;
+duo_md="###" ;
+header_ok="### || || [ ok ] ||" ;
 cincuenta="##################################################" ;
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_waiting_cli="$duo_md [ info ] [ cli ] [ Wait several seconds.. ] [ With aprox several seconds ]"
@@ -956,7 +956,7 @@ else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1"  | cut -d "/" -f 1 ; fi
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -2394,25 +2394,25 @@ fi
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "    Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                  " 
-echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                "
-echo "$text_md    firewall-control |  stop continue reset names actual show save load                              "
-echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
-echo "$text_md                        list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
-echo "$text_md                        list-security4 list-security6 list-ebtables list-arptables                   "
-echo "$text_md    firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
-echo "$text_md                        listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
-echo "$text_md                        listn-security4 listn-security6 list-ebtables list-arptables                 "
-echo "$text_md     firewall-custom |  new-full-config nueva-completa-config regen-config                           "
-echo "$text_md                        new-mini-config nueva-mini-config examples-config                            "
-echo "$text_md                        show-config modify-config del-config names-config                            "
-echo "$text_md     firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
-echo "$text_md                        games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
-echo "$text_md                        client-web client-vnc client-mail client-news client-torrent client-vpn      "
-echo "$text_md                        client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
-echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news      "
-echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
-echo "$text_md                        server-asterisk server-squid                                                 "
-echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
+echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                 "
+echo "$text_md      firewall-control |  stop continue reset names actual show save load                              "
+echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
+echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
+echo "$text_md                          list-security4 list-security6 list-ebtables list-arptables                   "
+echo "$text_md      firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
+echo "$text_md                          listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
+echo "$text_md                          listn-security4 listn-security6 list-ebtables list-arptables                 "
+echo "$text_md       firewall-custom |  new-full-config nueva-completa-config regen-config                           "
+echo "$text_md                          new-mini-config nueva-mini-config examples-config                            "
+echo "$text_md                          show-config modify-config del-config names-config                            "
+echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
+echo "$text_md                          games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
+echo "$text_md                          client-web client-vnc client-mail client-news client-torrent client-vpn      "
+echo "$text_md                          client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
+echo "$text_md                          server-vnc server-web server-samba server-print server-lamp server-news      "
+echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
+echo "$text_md                          server-asterisk server-squid                                                 "
+echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
 exit ; fi
 ####
 ####
