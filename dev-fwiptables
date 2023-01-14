@@ -426,6 +426,7 @@ url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
 url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v5" ;
 url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v5" ;
 url_web_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
@@ -1243,6 +1244,43 @@ exit ; fi
 ####
 ####
 #### :rutina-final-dev-upgrade:
+##########    english: devmini-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: devmini-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-devmini-upgrade:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "devmini-upgrade" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
+echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "  [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
+$favorite_text_browser -source $url_web_minidevelopment &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "  [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "  [ fail ] [ install fail ]"; fi ;
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-devmini-upgrade:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
@@ -2602,10 +2640,9 @@ echo "$text_md                        server-vnc server-web server-samba server-
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                        server-asterisk server-squid                                                 "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
-echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
-echo "$text_md      $cmd_binary options-state            |  Show all options to program state              "
-echo "$text_md      $cmd_binary options-firewall         |  Show all options to firewall manage            "
 echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manage         "
+echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
+echo "$text_md      $cmd_binary options-firewall         |  Show all options to firewall manage            "
 echo "$text_md      $cmd_binary options-tool             |  Show all options to tool working               "
 echo "$text_md      $cmd_binary options-show             |  Show all options to read configs               "
 echo "$text_md      $cmd_binary options-help             |  Show all options to help informations          "
