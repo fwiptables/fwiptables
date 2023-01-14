@@ -231,6 +231,8 @@ command_pdfseparate="$(command -v pdfseparate)"
 ####
 ####
 list_rules_conceptual="" ;
+host_ip4_localhost="127.0.0.1" ;
+host_ip6_localhost="::1" ;
 allow_dmz_ip4="no" ; 
 allow_dmz_ip6="no" ;
 allow_forward_ip4="no" ; 
@@ -11721,13 +11723,13 @@ if [ "$type_firewall" = "all-permisive" ]; then $cmd_binary eraserules &> /dev/n
 ####
 ####
 $allow_legacy  $command_iptables_legacy -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy  $command_iptables_legacy -A INPUT \
 $input_state  -j ACCEPT \
 -m comment --comment "state input" &> /dev/null
 $allow_legacy  $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy  $command_iptables_legacy -A OUTPUT \
 -j ACCEPT \
@@ -11742,13 +11744,13 @@ $allow_legacy  $command_iptables_legacy -A FORWARD \
 ####
 ####
 $allow_nft $command_iptables_nft -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
 -m comment --comment "state input" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $allow_ipv4   $command_iptables_nft -A OUTPUT \
 -j ACCEPT \
@@ -11767,7 +11769,7 @@ $allow_nft $allow_ipv4   $command_iptables_nft -A FORWARD \
 ####
 ####
 $allow_legacy $command_ip6tables_legacy -A INPUT  \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A INPUT \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
@@ -11785,7 +11787,7 @@ $allow_legacy $command_ip6tables_legacy -A FORWARD \
 ####
 ####
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $allow_ipv6   $command_ip6tables_nft -A INPUT   \
 -m state --state NEW,RELATED,ESTABLISHED -j ACCEPT \
@@ -11865,10 +11867,10 @@ if [ "$type_firewall" = "off-line" ];  then $cmd_binary eraserules &> /dev/null 
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT  \
--s 127.0.0.1 -d 127.0.0.1   -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost    -j ACCEPT \
 -m comment --comment "host localhost"  &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -11877,10 +11879,10 @@ $allow_legacy $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $command_iptables_nft -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -11893,10 +11895,10 @@ $allow_nft $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_legacy $command_ip6tables_legacy -A INPUT  \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -11905,10 +11907,10 @@ $allow_legacy $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $command_ip6tables_nft -A INPUT  \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -11962,10 +11964,10 @@ if [ "$type_firewall" = "shield-ssh" ];  then $cmd_binary eraserules &> /dev/nul
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12037,10 +12039,10 @@ $allow_legacy  $allow_ipv4   $command_iptables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $command_iptables_nft -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12116,10 +12118,10 @@ $allow_nft  $allow_ipv4   $command_iptables_nft -A OUTPUT \
 ####
 ####
 $allow_legacy  $command_ip6tables_legacy -A INPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy  $command_ip6tables_legacy -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12194,10 +12196,10 @@ $allow_legacy  $allow_ipv6   $command_ip6tables_legacy -A OUTPUT \
 ####
 ####
 $allow_nft $command_ip6tables_nft -A INPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12326,10 +12328,10 @@ if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/
 ####
 ####
 $allow_legacy $command_iptables_legacy -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy $command_iptables_legacy -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12458,10 +12460,10 @@ fi
 ####
 ####
 $allow_nft $command_iptables_nft -A INPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $command_iptables_nft -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12594,10 +12596,10 @@ fi
 ####
 ####
 $allow_legacy $command_ip6tables_legacy -A INPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_legacy $command_ip6tables_legacy -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12724,10 +12726,10 @@ fi
 ####
 ####
 $allow_nft $command_ip6tables_nft -A INPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $allow_nft $command_ip6tables_nft -A OUTPUT \
--s ::1 -d ::1  -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -12983,27 +12985,27 @@ $allow_mac_blacklist $command_ebtables -A OUTPUT -d $config_mac_blacklist  -j $c
 #######################################        spanish: aceptar reglas localhost
 ####
 ####
-$allow_legacy $command_iptables_legacy -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $command_iptables_legacy -A INPUT  -s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_legacy $command_iptables_legacy -A OUTPUT -s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
--m comment --comment "host localhost" &> /dev/null
-####
-####
-$allow_legacy $command_ip6tables_legacy -A INPUT  -s ::1 -d ::1  -j ACCEPT \
--m comment --comment "host localhost" &> /dev/null
-$allow_legacy $command_ip6tables_legacy -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
+$allow_legacy $command_iptables_legacy -A OUTPUT -s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
-$allow_nft $command_iptables_nft -A INPUT  -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $command_ip6tables_legacy -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_nft $command_iptables_nft -A OUTPUT -s 127.0.0.1 -d 127.0.0.1  -j ACCEPT \
+$allow_legacy $command_ip6tables_legacy -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
-$allow_nft $command_ip6tables_nft -A INPUT  -s ::1 -d ::1  -j ACCEPT \
+$allow_nft $command_iptables_nft -A INPUT  -s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
-$allow_nft $command_ip6tables_nft -A OUTPUT -s ::1 -d ::1 -j ACCEPT \
+$allow_nft $command_iptables_nft -A OUTPUT -s $config_ip4_localhost -d $config_ip4_localhost   -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+####
+####
+$allow_nft $command_ip6tables_nft -A INPUT  -s $config_ip6_localhost -d $config_ip6_localhost   -j ACCEPT \
+-m comment --comment "host localhost" &> /dev/null
+$allow_nft $command_ip6tables_nft -A OUTPUT -s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -14043,10 +14045,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $command_ip6tables_leg
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_nft $command_iptables_nft -t filter -A INPUT \
--s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A INPUT \
--s ::1 -d ::1 -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -14055,10 +14057,10 @@ $launch_custom $allow_input_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t
 ####
 ####
 $launch_custom $allow_input_all $allow_ipv4 $allow_legacy $command_iptables_legacy -t filter -A INPUT \
--s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "close rule" &> /dev/null
 $launch_custom $allow_input_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A INPUT \
--s ::1 -d ::1 -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "close rule" &> /dev/null
 ####
 ####
@@ -14185,10 +14187,10 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_nft $command_iptables_nft -t filter -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -t filter -A OUTPUT \
--s ::1 -d ::1 -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
@@ -14197,10 +14199,10 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_nft $command_ip6tables_nft -
 ####
 ####
 $launch_custom $allow_output_all $allow_ipv4 $allow_legacy $command_iptables_legacy -t filter -A OUTPUT \
--s 127.0.0.1 -d 127.0.0.1 -j ACCEPT \
+-s $config_ip4_localhost -d $config_ip4_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_legacy -t filter -A OUTPUT \
--s ::1 -d ::1 -j ACCEPT \
+-s $config_ip6_localhost -d $config_ip6_localhost  -j ACCEPT \
 -m comment --comment "host localhost" &> /dev/null
 ####
 ####
