@@ -538,15 +538,12 @@ if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 #### english:  alias firewall-list with numeral firewall-numeral:
 ####
 ####
-if [ "$first_option" = "ls4" ]     ; then first_option="-txt"   ; second_option="list4" ; fi
-if [ "$first_option" = "ls6" ]     ; then first_option="-txt"   ; second_option="list6" ; fi
-if [ "$first_option" = "ls46" ]    ; then first_option="status" ; fi
-if [ "$first_option" = "list4" ]   ; then first_option="-txt"   ; second_option="list4" ; fi
-if [ "$first_option" = "list6" ]   ; then first_option="-txt"   ; second_option="list6" ; fi
-if [ "$first_option" = "list46" ]  ; then first_option="status" ; fi
-####
-####
-case "$first_option" in 
+case "$first_option" in
+"ls4")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="list4"  ;;
+"ls6")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="list6"  ;;
+"list4")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="list4"  ;;
+"list6")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="list6"  ;;
+"status") list_rules_conceptual="no" ; first_option="status" ;;
 "ls4")    list_rules_conceptual="" ;;
 "ls6")    list_rules_conceptual="" ;;
 "list4")  list_rules_conceptual="" ;;
@@ -563,11 +560,11 @@ case "$first_option" in
 "list-mangle6")   list_rules_conceptual="" ;;
 "list-security4")   list_rules_conceptual="" ;;
 "list-security6")   list_rules_conceptual="" ;;
-"lsn4")    list_rules_conceptual="no"; first_option="list4-ip"  ;;
-"lsn6")    list_rules_conceptual="no"; first_option="list6-ip"  ;;
-"listn4")  list_rules_conceptual="no" ; first_option="list4-ip" ;;
-"listn6")  list_rules_conceptual="no" ; first_option="list6-ip" ;;
-"statusn") list_rules_conceptual="no" ; first_option="statusn"   ;;
+"lsn4")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn4"  ;;
+"lsn6")    list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn6"  ;;
+"listn4")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn4"  ;;
+"listn6")  list_rules_conceptual="no" ; first_option="-txt" ; second_option="listn6"  ;;
+"statusn") list_rules_conceptual="no" ; first_option="statusn"  ;;
 "listn-alltables") list_rules_conceptual="no" ; first_option="list-alltables" ;;
 "listn-filter4")   list_rules_conceptual="no" ; first_option="list-filter4"   ;;
 "listn-filter6")   list_rules_conceptual="no" ; first_option="list-filter6"   ;;
@@ -672,27 +669,36 @@ $zero_option regen-config ;; esac
 #### :sincontarrutina-final-alias-simple:
 ##########    ALIAS CAMPUS
 ##########    ALIAS CAMPUS
-#### :sincontarrutina-inicial-alias-campus:
+#### :rutina-inicial-alias-campus:
 ####
 ####
-#### output txt:
+#### output txt:   |||    General text without warnings
 ####
 ####
-if [ "$first_option" = "-txt" ]; 
-then case "$second_option" in
+if [ "$first_option" = "-txt" ]; then case "$second_option" in
 ####
 ####
-"list4") $zero_option list4-ip &> $temporal_text 
+"list4") $cmd_binary list4-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-"list6") $zero_option list6-ip &> $temporal_text 
+"list6") $cmd_binary list6-ip &> $temporal_text 
 cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
 cat $temporal_textfinal ; exit ;;
 ####
 ####
-esac ; $zero_option "$second_option" "$third_option" "$quad_option"
+"listn4") $cmd_binary listn4-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal ; exit ;;
+####
+####
+"listn6") $cmd_binary listn6-ip &> $temporal_text 
+cat $temporal_text | $command_grep -iv Warning:  &> $temporal_textfinal
+cat $temporal_textfinal ; exit ;;
+####
+####
+esac ; $cmd_binary "$second_option" "$third_option" "$quad_option"
 ####
 ####
 exit; fi
@@ -2844,6 +2850,76 @@ exit; fi
 ####
 ####
 #### :sincontarrutina-final-list6:
+##########    english: listn4-ip: The list option   ##########
+##########    spanish: listn4-ip: La opcion lista   ##########
+#### :sincontarrutina-inicial-listn4-ip:
+####
+####
+if [ "$first_option" = "listn4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
+echo "$header_ok [ list4 ] [ List filter ipv4 ] [ it is sufficent with legacy or nft ] || ||"
+legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
+"$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
+nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
+"$command_iptables_nft" -t filter -L OUTPUT 1 ) &> /dev/null
+fromrules="filter-ip4"
+echo
+case $legacycuatro in
+"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+*)
+echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo
+$command_iptables_legacy -t filter -v -L -n
+;;
+esac
+echo "$tab"
+case $nftcuatro in
+"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+*)
+echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo
+$command_iptables_nft -t filter -v -L -n
+;;
+esac
+exit; fi
+####
+####
+#### :sincontarrutina-final-listn4-ip:
+##########    english: listn6-ip: list ipv6 rules filter           ##########
+##########    spanish: listn6-ip: lista reglas de filtros de ipv6  ##########
+#### :sincontarrutina-inicial-listn6-ip:
+####
+####
+if [ "$first_option" = "listn6-ip" ]; then  echo $give_cover ; echo "$message_info_rules"
+echo "$header_ok [ list6 ] [ List filter ipv6 ] [ it is sufficent with legacy or nft ] || ||"
+legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
+"$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
+nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
+"$command_ip6tables_nft" -t filter -L OUTPUT 1 )
+fromrules="filter-ip6"
+echo
+case $legacyseis in
+"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+*)
+echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo
+$command_ip6tables_legacy -v -L -n
+;;
+esac
+echo $tab
+case $nftseis in
+"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+*)
+echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo
+$command_ip6tables_nft -v -L -n
+;;
+esac
+####
+####
+exit; fi
+####
+####
+#### :sincontarrutina-final-listn6-ip:
 ##########    english: status: The list option ipv4 and ipv6    ##########
 ##########    spanish: status: La opcion lista ipv4 y ipv6      ##########
 #### :sincontarrutina-inicial-status:
