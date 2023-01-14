@@ -572,7 +572,7 @@ case "$first_option" in
 "listn-nat4")   list_rules_conceptual="no" ; first_option="list-nat4" ;;
 "listn-nat6")   list_rules_conceptual="no" ; first_option="list-nat6" ;;
 "listn-raw4")   list_rules_conceptual="no" ; first_option="list-raw4" ;;
-"listn-raw6")   list_rules_conceptual="no" ; first_option="list_raw6" ;;
+"listn-raw6")   list_rules_conceptual="no" ; first_option="list-raw6" ;;
 "listn-mangle4")   list_rules_conceptual="no" ; first_option="list-mangle4"     ;;
 "listn-mangle6")   list_rules_conceptual="no" ; first_option="list-mangle6"     ;;
 "listn-security4")   list_rules_conceptual="no" ; first_option="list-security4" ;;
