@@ -931,7 +931,7 @@ else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
 echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -964,7 +964,7 @@ else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1"  | cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -2421,7 +2421,7 @@ echo "$text_md                          server-vnc server-web server-samba serve
 echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                          server-asterisk server-squid                                                 "
 echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen                        "
-echo "$text_md                          ip4 ip6 version notes examples install uninstall                             "
+echo "$text_md                          ip4 ip6 version notes examples-config install uninstall                      "
 exit ; fi
 ####
 ####
