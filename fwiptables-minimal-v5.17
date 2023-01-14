@@ -2395,8 +2395,8 @@ fi
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "    Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                  " 
-echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                 "
+echo "    Launch: $cmd_binary [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                    " 
+echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                  "
 echo "$text_md      firewall-control |  stop continue reset names actual show save load                              "
 echo "$text_md   firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
 echo "$text_md                          list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
@@ -2414,7 +2414,8 @@ echo "$text_md                          client-tor client-ftp client-squid lan-t
 echo "$text_md                          server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                          server-asterisk server-squid                                                 "
-echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  "
+echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen                        "
+echo "$text_md                          ip4 ip6 version notes examples install uninstall                             "
 exit ; fi
 ####
 ####
@@ -3572,6 +3573,34 @@ exit; fi
 ####
 ####
 #### :sincontarrutina-final-reset:
+##########    english: install: install fwiptables-minimal    ##########
+##########    spanish: install: instala fwiptables-minimal    ##########
+#### :sincontarrutina-inicial-install:
+####
+####
+if [ "$first_option" = "install" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
+echo "  [ info ] [ Installing the firewall ]"
+cp "$zero_option" "/usr/bin/fwiptables-minimal"
+echo "  [  ok  ] [ Installed fwiptables-minimal to /usr/bin/fwiptables-minimal ]"
+exit; fi
+####
+####
+#### :sincontarrutina-final-install:
+##########    english: install: uninstall fwiptables-minimal    ##########
+##########    spanish: install: uninstala fwiptables-minimal    ##########
+#### :sincontarrutina-inicial-uninstall:
+####
+####
+if [ "$first_option" = "uninstall" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
+echo "  [ info ] [ Uninstalling the fwiptables-minimal ]"
+rm "/usr/bin/fwiptables-minimal"
+echo "  [  ok  ] [ Uninstalled fwiptables-minimal to /usr/bin/fwiptables-minimal ]"
+exit; fi
+####
+####
+#### :sincontarrutina-final-install:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
 #### :sincontarrutina-inicial-wizard-mini:
