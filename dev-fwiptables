@@ -10790,8 +10790,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-info-net:
-##########    english: ip4 : get net info               ##########
-##########    spanish: ip4 : da informacion de la red   ##########
+##########    english: ip4: get net info               ##########
+##########    spanish: ip4: da informacion de la red   ##########
 #### :rutina-inicial-ip4:
 ####
 ####
@@ -10808,7 +10808,7 @@ else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
 echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
+else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
@@ -10823,8 +10823,8 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip4:
-##########    english: ip6 : get net info               ##########
-##########    spanish: ip6 : da informacion de la red   ##########
+##########    english: ip6: get net info               ##########
+##########    spanish: ip6: da informacion de la red   ##########
 #### :rutina-inicial-ip6:
 ####
 ####
@@ -10841,7 +10841,7 @@ else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
-else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1"  | cut -d "/" -f 1 ; fi
+else  $command_ip -6 address | $command_grep -i inet | $command_grep -iv  "inet6 ::1"  | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
 echo
 echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
