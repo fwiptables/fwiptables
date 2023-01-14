@@ -231,8 +231,8 @@ command_pdfseparate="$(command -v pdfseparate)"
 ####
 ####
 list_rules_conceptual="" ;
-host_ip4_localhost="127.0.0.1" ;
-host_ip6_localhost="::1" ;
+config_ip4_localhost="127.0.0.1" ;
+config_ip6_localhost="::1" ;
 allow_dmz_ip4="no" ; 
 allow_dmz_ip6="no" ;
 allow_forward_ip4="no" ; 
