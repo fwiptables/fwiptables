@@ -2799,7 +2799,7 @@ echo "$text_md    tool-icmp         | traceicmp-ip4 traceicmp-ip6 ping-ip4 ping-
 echo "$text_md    tool-nmap         | nmap-tcp nmap-syn nmap-fin nmap-udp nmap-ping                     "
 echo "$text_md    tool-sudofw       | sudofw-adduser sudofw-deluser sudofw-listuser                     "
 echo "$text_md    tool-game         | game-word game-number game-rgb game-hex                           "
-echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx speed-pi                  "
+echo "$text_md    tool-speed        | free-ram speed-ram speed-disk speed-glx speed-cpu                 "
 echo "$text_md    tool-util         | weather md5sum gpg-notes                                          "
 echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
 echo "$text_md    tool-mp3          | radio-mp3 radio-cadena100 radio-rockfm                            "
@@ -3980,7 +3980,7 @@ echo "$text_md $tab_lang_spanish           : Muestra la velocidad de el disco du
 echo "$text_md $tab speed-glx"
 echo "$text_md $tab_lang_english           : Show frammes for seconds with mesa graphicall"
 echo "$text_md $tab_lang_spanish           : Muestra fotogramas por segundo con graficos mesa"
-echo "$text_md $tab speed-pi"
+echo "$text_md $tab speed-cpu"
 echo "$text_md $tab_lang_english           : Time processor for calculate pi"
 echo "$text_md $tab_lang_spanish           : Tiempo de procesador para calcular pi"
 exit; fi
@@ -9056,11 +9056,11 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-pi" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ test pi speed ] [ for default max $server_waiting seconds ] || ||"
+digitos=2000
+echo "$header_ok [ $first_option ]  [ test pi speed ] [ Calculate pi number with $digitos digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc ]"; exit ;; esac
-digitos=10000
 time bc -l <<< "scale=$digitos;4*a(1)"
-echo  "The time of proccessor with $digitos"
+echo  " [  ok  ] The time of proccessor to calculate pi with $digitos digits"
 exit; fi
 ####
 ####
