@@ -1,8 +1,8 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.16 ] || ||
-### || || [ ok ] || [ Configure ] [ Configure: ./fwiptables-minimal-v5.16 preferences-modify ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.17 ] || ||
+### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
-    Launch: ./fwiptables-minimal-v5.16 [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                  
-### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                 
+    Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                    
+### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                  
         firewall-control |  stop continue reset names actual show save load                              
      firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          
                             list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            
@@ -20,4 +20,5 @@
                             server-vnc server-web server-samba server-print server-lamp server-news      
                             server-mail server-ftp server-teamspeak server-mumble server-sql             
                             server-asterisk server-squid                                                 
-          options-state  |  preferences-read preferences-modify preferences-regen ip4 ip6 version notes  
+          options-state  |  preferences-read preferences-modify preferences-regen                        
+                            ip4 ip6 version notes examples-config install uninstall                      
