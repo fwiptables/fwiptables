@@ -126,7 +126,10 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 ####
 directory_data="$HOME/.config/$cmd_config"
+####
+####
 default_preferences="$directory_data/preferences"
+DIALOGRC="$directory_data/dialog.rc"
 ####
 ####
 #### english: directory tree 

@@ -455,7 +455,12 @@ default_security="options-mini"
 ####
 ####
 directory_data="$HOME/.config/$cmd_config"
+####
+####
 default_preferences="$directory_data/preferences"
+default_dialogrc="$directory_data/dialog.rc"
+DIALOGRC="$directory_data/dialog.rc"
+export DIALOGRC
 ####
 ####
 #### english: directory tree 
@@ -580,6 +585,21 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-notice:
+##########    english: create dialog.rc      ##########
+##########    spanish: crea dialog.rc        ##########
+#### :rutina-inicial-dialog-rc:
+####
+####
+if [ "$first_option" == "dialog-rc" ] ; then 
+if [ "$command_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
+cp $dialogrc $default_dialogrc.old
+$command_dialog --create-rc "$default_dialogrc"
+sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc
+sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc
+exit; fi
+####
+####
+#### :rutina-final-dialog-rc:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -1153,6 +1173,7 @@ chmod 555 "/usr/bin/fwiptables-cmd" &> /dev/null
 ####
 $cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
+$cmd_binary dialog-rc &> /dev/null
 ####
 ####
 ####
