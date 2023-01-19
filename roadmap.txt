@@ -1,0 +1,2 @@
+comprobar en ip4 y en ip6 que hay dns resolve
+
