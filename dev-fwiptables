@@ -10898,6 +10898,9 @@ echo
 echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo "  [ info ] Proxy http:    $http_proxy"
 echo "  [ info ] Proxy https:   $https_proxy"
+echo
+echo "  [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^#
 exit; fi
 ####
 ####
@@ -10931,6 +10934,9 @@ echo
 echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
 echo "  [ info ] Proxy http:    $http_proxy"
 echo "  [ info ] Proxy https:   $https_proxy"
+echo
+echo "  [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^#
 exit; fi
 ####
 ####
