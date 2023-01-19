@@ -1,3 +1,4 @@
 comprobar en ip4 y en ip6 que hay dns resolve. hecho
-estructuracion de carpetas en .config/fwiptables-cmd/ o .config/fwiptables-mini/. pendiente
+estructuracion de carpetas en .config/fwiptables-cmd/ o .config/fwiptables-mini/. hecho
+
 
