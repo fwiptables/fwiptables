@@ -128,10 +128,6 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 directory_data="$HOME/.config/$cmd_config"
 ####
 ####
-default_preferences="$directory_data/preferences"
-DIALOGRC="$directory_data/dialog.rc"
-####
-####
 #### english: directory tree 
 #### spanish: arbol de directorio
 ####
@@ -151,7 +147,17 @@ defaultcfg="$directory_config/default-full-english.cfg"
 defaultfullcfg_eng="$directory_config/default-full-english.cfg"     
 defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
 defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
-defaultminicfg_spa="$directory_config/default-mini-spanish.cfg" 
+defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
+####
+####
+#### english: default config to shell
+#### spanish: default config to shell
+####
+####
+default_preferences="$directory_shell/preferences.rc"
+default_dialogrc="$directory_shell/dialog.rc"
+DIALOGRC="$default_dialogrc"
+export DIALOGRC
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -810,6 +816,22 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 #### :sincontarrutina-final-allow-autolog:
+##########    english: create dialog.rc      ##########
+##########    spanish: crea dialog.rc        ##########
+#### :sincontarrutina-inicial-dialog-rc:
+####
+####
+if [ "$first_option" == "dialog-rc" ] ; then 
+if [ "$command_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
+$command_dialog --create-rc $default_dialogrc &> /dev/null
+cp $default_dialogrc $default_dialogrc.old &> /dev/null
+sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc > $default_dialogrc.old
+sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialog_rc.old
+cp $default_dialogrc.old $default_dialogrc &> /dev/null
+exit; fi
+####
+####
+#### :sincontarrutina-final-dialog-rc:
 ##########   english: default:  fwiptables preferences      ##########
 ##########   spanish: defecto:  fwiptables preferences      ##########
 #### :sincontarrutina-inicial-default:
@@ -3667,6 +3689,9 @@ if [ "$first_option" = "install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
 echo "  [ info ] [ Installing the firewall ]"
 cp "$zero_option" "/usr/bin/fwiptables-mini"
+$zero_option preferences-regen &> /dev/null
+$zero_option dialog-rc &> /dev/null
+echo "  [  ok  ] [ Update configs ]"
 echo "  [  ok  ] [ Installed fwiptables-mini to /usr/bin/fwiptables-mini ]"
 exit; fi
 ####
