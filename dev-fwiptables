@@ -457,10 +457,7 @@ default_security="options-mini"
 directory_data="$HOME/.config/$cmd_config"
 ####
 ####
-default_preferences="$directory_data/preferences"
-default_dialogrc="$directory_data/dialog.rc"
-DIALOGRC="$directory_data/dialog.rc"
-export DIALOGRC
+
 ####
 ####
 #### english: directory tree 
@@ -483,6 +480,16 @@ defaultfullcfg_eng="$directory_config/default-full-english.cfg"
 defaultfullcfg_spa="$directory_config/default-full-spanish.cfg"     
 defaultminicfg_eng="$directory_config/default-mini-english.cfg"     
 defaultminicfg_spa="$directory_config/default-mini-spanish.cfg" 
+####
+####
+#### english: default config to shell
+#### spanish: default config to shell
+####
+####
+default_preferences="$directory_shell/preferences"
+default_dialogrc="$directory_shell/dialog.rc"
+DIALOGRC="$default_dialogrc"
+export DIALOGRC
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -592,10 +599,10 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 if [ "$first_option" == "dialog-rc" ] ; then 
 if [ "$command_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
-cp $dialogrc $default_dialogrc.old
-$command_dialog --create-rc "$default_dialogrc"
-sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc
-sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc
+$command_dialog --create-rc $default_dialogrc.old &> /dev/null
+sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc > $default_dialogrc.old
+sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialog_rc.old
+cp $dialogrc.old $default_dialogrc &> /dev/null
 exit; fi
 ####
 ####
