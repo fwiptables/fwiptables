@@ -209,6 +209,7 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 command_mkdir="$(command -v mkdir)"
 ####
 ####
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
 if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
 if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
 if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi

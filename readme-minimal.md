@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-5.17 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.00 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                    
