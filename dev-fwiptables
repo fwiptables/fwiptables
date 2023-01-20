@@ -445,6 +445,24 @@ default_security="options-mini"
 ####
 ####
 #### :rutina-final-system-variables:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir)"
+####
+####
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+####
+####
+#### :rutina-final-dir-sane:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
@@ -486,7 +504,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### spanish: default config to shell
 ####
 ####
-default_preferences="$directory_shell/preferences"
+default_preferences="$directory_shell/preferences.rc"
 default_dialogrc="$directory_shell/dialog.rc"
 DIALOGRC="$default_dialogrc"
 export DIALOGRC
@@ -529,24 +547,6 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 ####
 #### :rutina-final-files:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-dir-sane:
-####
-####
-command_mkdir="$(command -v mkdir)"
-####
-####
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-#### :rutina-final-dir-sane:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
@@ -1193,6 +1193,7 @@ $cmd_binary dialog-rc &> /dev/null
 echo "  [ info ] [ the config dir:        ] [ $directory_data ]"
 echo "  [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
 echo "  [ info ] [ the Command shell:     ] [ /usr/bin/fwiptables-cmd ]"
+echo "  [  ok  ] [ update configs         ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 echo "  [ info ] [ Grant privileges to user: ] [ fwiptables-cmd sudofw-adduser user ]"
 echo "  [  ok  ] [ Now. Ready to run fwiptables-cmd ]"

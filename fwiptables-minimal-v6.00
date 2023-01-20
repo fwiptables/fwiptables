@@ -116,6 +116,24 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####     #### code for add xhost to root for graphicall use
 ####
 ####
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :sincontarrutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir)"
+####
+####
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+####
+####
+#### :sincontarrutina-final-dir-sane:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :sincontarrutina-inicial-files:
@@ -197,24 +215,6 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 ####
 #### :sincontarrutina-final-files:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :sincontarrutina-inicial-dir-sane:
-####
-####
-command_mkdir="$(command -v mkdir)"
-####
-####
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-#### :sincontarrutina-final-dir-sane:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
 #### :sincontarrutina-inicial-command:
@@ -932,8 +932,8 @@ if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> "$default_preferences"
-echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $directory_data ]"
+echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
+echo "  [  ok  ] [ Update values for default in $directory_shell ]"
 exit; fi
 ####
 ####
@@ -3691,7 +3691,7 @@ echo "  [ info ] [ Installing the firewall ]"
 cp "$zero_option" "/usr/bin/fwiptables-mini"
 $zero_option preferences-regen &> /dev/null
 $zero_option dialog-rc &> /dev/null
-echo "  [  ok  ] [ Update configs ]"
+echo "  [  ok  ] [ Updated configs ]"
 echo "  [  ok  ] [ Installed fwiptables-mini to /usr/bin/fwiptables-mini ]"
 exit; fi
 ####
