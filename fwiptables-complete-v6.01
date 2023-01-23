@@ -362,7 +362,7 @@ default_vm="default-vm"						 ## fwiptables-file-default ## variable qemu
 display_vm="gtk"						 ## fwiptables-file-default ## variable qemu						
 language_vm="es"						 ## fwiptables-file-default ## variable qemu
 #### #### english: look  #### spanish: apariencia
-quad="####" ; 
+quad=" ####" ; 
 cinco="#####" ;
 tab="     " ;
 rallica="_____" ;
@@ -5942,7 +5942,7 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0321  "$tab list-arptables" \
 0400 "$quad [ Firewall List With Numeral ] $cinco" \
 0401  "$tab listn4" \
-0402  "$tab listn6"  \
+0402  "$tab listn6" \
 0403  "$tab listn-filter4" \
 0404  "$tab listn-filter6" \
 0405  "$tab listn-forward" \
@@ -6012,6 +6012,7 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0707  "$tab examples" \
 0708  "$tab depends" \
 0709  "$tab install" \
+0710  "$tab upgrade" \
 0800 "$quad [ Tool Connect ] $cinco" \
 0801  "$tab iw-scan" \
 0802  "$tab iw-info" \
@@ -6293,6 +6294,7 @@ clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0707) clear ; $cmd_binary cli examples ;;
 0708) clear ; $cmd_binary cli depends ;;
 0709) clear ; $cmd_binary cli install ;;
+0710) clear ; $cmd_binary cli upgrade ;;
 ################################################################################
 0801) clear ; $cmd_binary iw-scan ;;
 0802) clear ; $cmd_binary iw-info ;;
