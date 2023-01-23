@@ -4647,7 +4647,7 @@ cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_binary -gui custom $archivo ; $cmd_binary -gui list ;
+$cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
 $command_zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
@@ -4659,7 +4659,7 @@ cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$cmd_binary -gui custom $archivo ; $cmd_binary -gui list ;
+$cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -4792,40 +4792,40 @@ case "$selection" in
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-launch ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-launch ;;
-"eraserules") $cmd_binary -gui eraserules ; $cmd_binary gui list ;;
-"wizard-full") $cmd_binary -gui wizard-full ; $cmd_binary gui list ;;
-"wizard-mini") $cmd_binary -gui wizard-mini ; $cmd_binary gui list ;;
-"off-line") $cmd_binary -gui off-line ; $cmd_binary gui list ;;
-"all-permisive") $cmd_binary -gui all-permisive ; $cmd_binary gui list ;;
-"client-web") $cmd_binary -gui client-web ; $cmd_binary gui list ;;
-"client-vnc") $cmd_binary -gui client-vnc ; $cmd_binary gui list ;;
-"client-torrent") $cmd_binary -gui client-torrent ; $cmd_binary gui list ;;
-"client-vpn") $cmd_binary -gui client-vpn ; $cmd_binary gui list ;;
-"client-tor") $cmd_binary -gui client-tor ; $cmd_binary gui list ;;
-"games-shooter") $cmd_binary -gui games-shooter ; $cmd_binary gui list ;;
-"game-wesnoth") $cmd_binary -gui game-wesnoth ; $cmd_binary gui list ;;
-"game-minetest") $cmd_binary -gui game-minetest ; $cmd_binary gui list ;;
-"game-freeciv") $cmd_binary -gui game-freeciv ; $cmd_binary gui list ;;
-"game-widelands") $cmd_binary -gui game-widelands ; $cmd_binary gui list ;;
-"lan-tor") $cmd_binary -gui lan-tor ; $cmd_binary gui list ;;
-"lan-vpn") $cmd_binary -gui lan-vpn ; $cmd_binary gui list ;;
-"shield-ssh") $cmd_binary -gui shield-ssh ; $cmd_binary gui list ;;
-"server-ssh") $cmd_binary -gui server-ssh ; $cmd_binary gui list ;;
-"server-web") $cmd_binary -gui server-web ; $cmd_binary gui list ;;
-"server-vnc") $cmd_binary -gui server-vnc ; $cmd_binary gui list ;;
-"server-samba") $cmd_binary -gui server-samba ; $cmd_binary gui list ;;
-"server-news")  $cmd_binary -gui server-news ; $cmd_binary gui list ;;
-"server-mail")  $cmd_binary -gui server-mail ; $cmd_binary gui list ;;
-"server-ftp")  $cmd_binary -gui server-ftp ; $cmd_binary gui list ;;
-"server-print") $cmd_binary -gui server-print ; $cmd_binary gui list ;;
-"server-lamp") $cmd_binary -gui server-lamp ; $cmd_binary gui list ;;
-"server-teamspeak") $cmd_binary -gui server-teamspeak ; $cmd_binary gui list ;;
-"server-mumble") $cmd_binary -gui server-mumble ; $cmd_binary gui list ;;
-"server-sql") $cmd_binary -gui server-sql ; $cmd_binary gui list ;;
-"server-asterisk") $cmd_binary -gui server-asterisk ; $cmd_binary gui list ;;
+"eraserules") $cmd_binary -gui eraserules ; $cmd_binary gui list4;;
+"wizard-full") $cmd_binary -gui wizard-full ; $cmd_binary gui list4;;
+"wizard-mini") $cmd_binary -gui wizard-mini ; $cmd_binary gui list4;;
+"off-line") $cmd_binary -gui off-line ; $cmd_binary gui list4;;
+"all-permisive") $cmd_binary -gui all-permisive ; $cmd_binary gui list4;;
+"client-web") $cmd_binary -gui client-web ; $cmd_binary gui list4;;
+"client-vnc") $cmd_binary -gui client-vnc ; $cmd_binary gui list4;;
+"client-torrent") $cmd_binary -gui client-torrent ; $cmd_binary gui list4;;
+"client-vpn") $cmd_binary -gui client-vpn ; $cmd_binary gui list4;;
+"client-tor") $cmd_binary -gui client-tor ; $cmd_binary gui list4;;
+"games-shooter") $cmd_binary -gui games-shooter ; $cmd_binary gui list4;;
+"game-wesnoth") $cmd_binary -gui game-wesnoth ; $cmd_binary gui list4;;
+"game-minetest") $cmd_binary -gui game-minetest ; $cmd_binary gui list4;;
+"game-freeciv") $cmd_binary -gui game-freeciv ; $cmd_binary gui list4;;
+"game-widelands") $cmd_binary -gui game-widelands ; $cmd_binary gui list4;;
+"lan-tor") $cmd_binary -gui lan-tor ; $cmd_binary gui list4;;
+"lan-vpn") $cmd_binary -gui lan-vpn ; $cmd_binary gui list4;;
+"shield-ssh") $cmd_binary -gui shield-ssh ; $cmd_binary gui list4;;
+"server-ssh") $cmd_binary -gui server-ssh ; $cmd_binary gui list4;;
+"server-web") $cmd_binary -gui server-web ; $cmd_binary gui list4;;
+"server-vnc") $cmd_binary -gui server-vnc ; $cmd_binary gui list4;;
+"server-samba") $cmd_binary -gui server-samba ; $cmd_binary gui list4;;
+"server-news")  $cmd_binary -gui server-news ; $cmd_binary gui list4;;
+"server-mail")  $cmd_binary -gui server-mail ; $cmd_binary gui list4;;
+"server-ftp")  $cmd_binary -gui server-ftp ; $cmd_binary gui list4;;
+"server-print") $cmd_binary -gui server-print ; $cmd_binary gui list4;;
+"server-lamp") $cmd_binary -gui server-lamp ; $cmd_binary gui list4;;
+"server-teamspeak") $cmd_binary -gui server-teamspeak ; $cmd_binary gui list4;;
+"server-mumble") $cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
+"server-sql") $cmd_binary -gui server-sql ; $cmd_binary gui list4;;
+"server-asterisk") $cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
 "custom cfg") archivo="$($command_zenity  --entry $graphic_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
-$cmd_binary -gui custom $archivo ; $cmd_binary gui list ;;
+$cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
@@ -4854,16 +4854,16 @@ case "$selection" in
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-control ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-control ;;
-"stop") $cmd_binary -gui stop ; $cmd_binary -gui list ;;
-"continue") $cmd_binary -gui continue ; $cmd_binary -gui list ;;
-"reset") $cmd_binary -gui reset ; $cmd_binary -gui list ;;
+"stop") $cmd_binary -gui stop ; $cmd_binary -gui list4;;
+"continue") $cmd_binary -gui continue ; $cmd_binary -gui list4;;
+"reset") $cmd_binary -gui reset ; $cmd_binary -gui list4;;
 "names") $cmd_binary -gui names ;;
 "show")archivo="$($command_zenity  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
 $cmd_binary -gui show $archivo ;;
 "save")archivo="$($command_zenity  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
 $cmd_binary -gui save $archivo ;;
 "load")archivo="$($command_zenity  --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
-$cmd_binary -gui load $archivo ; $cmd_binary -gui list ;;
+$cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 "actual") $cmd_binary -gui actual ;;
 esac
 ####
