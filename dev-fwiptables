@@ -4673,7 +4673,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Firewall Control" "02 Firewall List Conceptual" "02 Firewall List Numeral" "03 Firewall Custom" "04 Firewall Launch" "05 Tool sockets" \
+ --list "01 Firewall Control" "02 Firewall List With Conceptual" "02 Firewall List With Numeral" "03 Firewall Custom" "04 Firewall Launch" "05 Tool sockets" \
 "06 Tool connect" "07 Tool rule" "08 Tool forward" "09 Tool sshd" "10 Tool tcp" "11 Tool udp" "12 Tool icmp" \
 "13 Tool sudofw" "14 Tool game" "15 Tool speed" "16 Tool util" "17 Tool install" "18 Tool addblock" "19 Tool dev" \
 "20 Show hardware" "21 Show etc" "22 Show log" "23 Help about" "24 Help help" \
@@ -4683,8 +4683,8 @@ selection=$(zenity $graphic_dimension  \
 case "$selection" in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "01 Firewall Control")$cmd_binary gui-menu-firewall-control ; exit ;;
-"02 Firewall List Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
-"02 Firewall List Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
+"02 Firewall List With Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
+"02 Firewall List With Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
 "03 Firewall Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
 "04 Firewall Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
 "05 Tool sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
@@ -5830,7 +5830,7 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0206  "$tab save" \
 0207  "$tab load" \
 0208  "$tab actual" \
-0300 "$quad [ Firewall List ] $cinco" \
+0300 "$quad [ Firewall List With Conceptual ] $cinco" \
 0301  "$tab list" \
 0302  "$tab list6"  \
 0303  "$tab list-filter4" \
@@ -5840,10 +5840,6 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0307  "$tab list-nat4" \
 0308  "$tab list-nat6" \
 0309  "$tab list-alltables" \
-0310  "$tab listnum" \
-0311  "$tab list-forwardnum" \
-0312  "$tab listnum6" \
-0313  "$tab list-forwardnum6" \
 0314  "$tab list-raw4" \
 0315  "$tab list-raw6" \
 0316  "$tab list-mangle4" \
@@ -5852,167 +5848,186 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0319  "$tab list-security6" \
 0320  "$tab list-ebtables" \
 0321  "$tab list-arptables" \
-0400 "$quad [ Firewall Launch ] $cinco" \
-0401  "$tab eraserules" \
-0402  "$tab wizard-mini" \
-0403  "$tab wizard-full" \
-0404  "$tab off-line" \
-0405  "$tab all-permisive" \
-0406  "$tab custom" \
-0407  "$tab games-shooter" \
-0408  "$tab game-wesnoth" \
-0409  "$tab game-minetest" \
-0410  "$tab game-freeciv" \
-0411  "$tab game-widelands" \
-0412  "$tab client-web" \
-0413  "$tab client-vnc" \
-0414  "$tab client-tor" \
-0415  "$tab client-vpn" \
-0416  "$tab client-torrent" \
-0417  "$tab lan-tor" \
-0418  "$tab lan-vpn" \
-0419  "$tab shield-ssh" \
-0420  "$tab server-ssh" \
-0421  "$tab server-web" \
-0422  "$tab server-vnc" \
-0423  "$tab server-print" \
-0424  "$tab server-samba" \
-0425  "$tab server-lamp" \
-0426  "$tab server-mail" \
-0427  "$tab server-ftp" \
-0428  "$tab server-news" \
-0429  "$tab server-teamspeak" \
-0430  "$tab server-mumble" \
-0431  "$tab server-sql" \
-0432  "$tab server-asterisk" \
-0500 "$quad [ Firewall Custom ] $cinco" \
-0501  "$tab new-full-config" \
-0502  "$tab nueva-completa-config" \
-0503  "$tab new-mini-config" \
-0504  "$tab nueva-mini-config" \
-0505  "$tab show-config" \
-0506  "$tab modify-config" \
-0507  "$tab del-config" \
-0508  "$tab names-config" \
-0509  "$tab regen-config" \
-0510  "$tab examples-config" \
-0600 "$quad [ Tool Connect ] $cinco" \
-0601  "$tab iw-scan" \
-0602  "$tab iw-info" \
-0603  "$tab wpa-save" \
-0604  "$tab wpa-load" \
-0605  "$tab dhcp-client" \
-0700 "$quad [ Tool rules ] $cinco" \
-0701  "$tab rule-del-num" \
-0702  "$tab rule-del-shield" \
-0703  "$tab rule-add-shield" \
-0800 "$quad [ Tool Sockets ] $cinco" \
-0801  "$tab ss" \
-0802  "$tab netstat" \
-0803  "$tab lsof" \
-0804  "$tab tcpdump" \
-0805  "$tab info-route" \
-0806  "$tab info-nodes" \
-0807  "$tab info-listen" \
-0808  "$tab info-proxy" \
-0809  "$tab info-net" \
-0810  "$tab info-system" \
-0811  "$tab ntpdate-client" \
-0900 "$quad [ Tool forwarding ] $cinco" \
-0901  "$tab ipforward-list" \
-0902  "$tab ipforward-on" \
-0903  "$tab ipforward-off" \
-1000 "$quad [ Tool ssh tunnel ] $cinco" \
-1001  "$tab sshd-tunnel-info" \
-1002  "$tab sshd-tunnel-on" \
-1003  "$tab sshd-tunnel-off" \
-1100 "$quad [ Tool Tcp ] $cinco " \
-1101  "$tab speed-ip4" \
-1102  "$tab speed-ip6" \
-1103  "$tab tracetcp-ip4" \
-1104  "$tab tracetcp-ip6" \
-1200 "$quad [ Tool Icmp ] $cinco" \
-1201  "$tab traceicmp-ip4" \
-1202  "$tab traceicmp-ip6" \
-1203  "$tab ping-ip4" \
-1204  "$tab ping-ip6" \
-1300 "$quad [ Tool Udp ] $cinco"  \
-1301  "$tab host" \
-1302  "$tab dig" \
-1303  "$tab resolveip" \
-1304  "$tab geoip" \
-1305  "$tab ntpdate-client" \
-1400 "$quad [ Tool Sudo ] $cinco"  \
-1401  "$tab sudofw-adduser" \
-1402  "$tab sudofw-deluser" \
-1403  "$tab sudofw-listuser" \
-1500 "$quad [ Tool Game ] $cinco" \
-1501  "$tab game-word" \
-1502  "$tab game-number" \
-1503  "$tab game-rgb" \
-1504  "$tab game-hex" \
-1600 "$quad [ Tool utils ]" \
-1601  "$tab md5sum" \
-1602  "$tab gpg-notes" \
-1603  "$tab radio-mp3" \
-1604  "$tab cadena100" \
-1605  "$tab cadenadial" \
-1700 "$quad [ Tool Install ] $cinco" \
-1701  "$tab install" \
-1702  "$tab howto-upgrade" \
-1703  "$tab upgrade" \
-1704  "$tab intro" \
-1800 "$quad [ Tool addblock ] $cinco" \
-1801  "$tab addblock-list" \
-1802  "$tab addblock-list info" \
-1803  "$tab addblock-on" \
-1804  "$tab addblock-off" \
-1900 "$quad [ Tool Dev ] $cinco" \
-1901  "$tab new-versions" \
-1902  "$tab dev-version" \
-1903  "$tab dev-changes" \
+0400 "$quad [ Firewall List With Numeral ] $cinco" \
+0401  "$tab listn" \
+0402  "$tab listn6"  \
+0403  "$tab listn-filter4" \
+0404  "$tab listn-filter6" \
+0405  "$tab listn-forward" \
+0406  "$tab listn-forward6" \
+0407  "$tab listn-nat4" \
+0408  "$tab listn-nat6" \
+0409  "$tab listn-alltables" \
+0414  "$tab listn-raw4" \
+0415  "$tab listn-raw6" \
+0416  "$tab listn-mangle4" \
+0417  "$tab listn-mangle6" \
+0418  "$tab listn-security4" \
+0419  "$tab listn-security6" \
+0420  "$tab listn-ebtables" \
+0421  "$tab listn-arptables" \
+0600 "$quad [ Firewall Launch ] $cinco" \
+0601  "$tab eraserules" \
+0602  "$tab wizard-mini" \
+0603  "$tab wizard-full" \
+0604  "$tab off-line" \
+0605  "$tab all-permisive" \
+0606  "$tab custom" \
+0607  "$tab games-shooter" \
+0608  "$tab game-wesnoth" \
+0609  "$tab game-minetest" \
+0610  "$tab game-freeciv" \
+0611  "$tab game-widelands" \
+0612  "$tab client-web" \
+0613  "$tab client-vnc" \
+0614  "$tab client-tor" \
+0615  "$tab client-vpn" \
+0616  "$tab client-torrent" \
+0617  "$tab lan-tor" \
+0618  "$tab lan-vpn" \
+0619  "$tab shield-ssh" \
+0620  "$tab server-ssh" \
+0621  "$tab server-web" \
+0622  "$tab server-vnc" \
+0623  "$tab server-print" \
+0624  "$tab server-samba" \
+0625  "$tab server-lamp" \
+0626  "$tab server-mail" \
+0627  "$tab server-ftp" \
+0628  "$tab server-news" \
+0629  "$tab server-teamspeak" \
+0630  "$tab server-mumble" \
+0631  "$tab server-sql" \
+0632  "$tab server-asterisk" \
+0700 "$quad [ Firewall Custom ] $cinco" \
+0701  "$tab new-full-config" \
+0702  "$tab nueva-completa-config" \
+0703  "$tab new-mini-config" \
+0704  "$tab nueva-mini-config" \
+0705  "$tab show-config" \
+0706  "$tab modify-config" \
+0707  "$tab del-config" \
+0708  "$tab names-config" \
+0709  "$tab regen-config" \
+0710  "$tab examples-config" \
+0800 "$quad [ Tool Connect ] $cinco" \
+0801  "$tab iw-scan" \
+0802  "$tab iw-info" \
+0803  "$tab wpa-save" \
+0804  "$tab wpa-load" \
+0805  "$tab dhcp-client" \
+0900 "$quad [ Tool rules ] $cinco" \
+0901  "$tab rule-del-num" \
+0902  "$tab rule-del-shield" \
+0903  "$tab rule-add-shield" \
+1000 "$quad [ Tool Sockets ] $cinco" \
+1001  "$tab ss" \
+1002  "$tab netstat" \
+1003  "$tab lsof" \
+1004  "$tab tcpdump" \
+1005  "$tab info-route" \
+1006  "$tab info-nodes" \
+1007  "$tab info-listen" \
+1008  "$tab info-proxy" \
+1009  "$tab info-net" \
+1010  "$tab info-system" \
+1011  "$tab ntpdate-client" \
+1100 "$quad [ Tool forwarding ] $cinco" \
+1101  "$tab ipforward-list" \
+1102  "$tab ipforward-on" \
+1103  "$tab ipforward-off" \
+1200 "$quad [ Tool ssh tunnel ] $cinco" \
+1201  "$tab sshd-tunnel-info" \
+1202  "$tab sshd-tunnel-on" \
+1203  "$tab sshd-tunnel-off" \
+1300 "$quad [ Tool Tcp ] $cinco " \
+1301  "$tab speed-ip4" \
+1302  "$tab speed-ip6" \
+1303  "$tab tracetcp-ip4" \
+1304  "$tab tracetcp-ip6" \
+1400 "$quad [ Tool Icmp ] $cinco" \
+1401  "$tab traceicmp-ip4" \
+1402  "$tab traceicmp-ip6" \
+1403  "$tab ping-ip4" \
+1404  "$tab ping-ip6" \
+1500 "$quad [ Tool Udp ] $cinco"  \
+1501  "$tab host" \
+1502  "$tab dig" \
+1503  "$tab resolveip" \
+1504  "$tab geoip" \
+1505  "$tab ntpdate-client" \
+1600 "$quad [ Tool Sudo ] $cinco"  \
+1601  "$tab sudofw-adduser" \
+1602  "$tab sudofw-deluser" \
+1603  "$tab sudofw-listuser" \
+1700 "$quad [ Tool Game ] $cinco" \
+1701  "$tab game-word" \
+1702  "$tab game-number" \
+1703  "$tab game-rgb" \
+1704  "$tab game-hex" \
+1800 "$quad [ Tool utils ] $cinco" \
+1801  "$tab md5sum" \
+1802  "$tab gpg-notes" \
+1803  "$tab radio-mp3" \
+1804  "$tab cadena100" \
+1805  "$tab cadenadial" \
+1900 "$quad [ Tool Install ] $cinco" \
+1901  "$tab install" \
+1902  "$tab howto-upgrade" \
+1903  "$tab upgrade" \
 1904  "$tab intro" \
-2000 "$quad [ Tool Speed ] $cinco" \
-2001  "$tab free-ram" \
-2002  "$tab speed-ram" \
-2003  "$tab speed-disk" \
-2004  "$tab speed-glx" \
-2100 "$quad [ Show Hardware ] $cinco" \
-2101  "$tab lpinfo" \
-2102  "$tab lsblk" \
-2103  "$tab lsusb" \
-2104  "$tab lscpu" \
-2105  "$tab lspci" \
-2106  "$tab lsgpu" \
-2107  "$tab lshw" \
-2200 "$quad [ Show Etc ] $cinco" \
-2201  "$tab hosts" \
-2202  "$tab protocols" \
-2203  "$tab services" \
-2204  "$tab hosts.allow" \
-2205  "$tab hosts.deny" \
-2206  "$tab resolv.conf" \
-2207  "$tab preferences-read" \
-2208  "$tab preferences-modify" \
-2300 "$quad [ Show Log ] $cinco" \
-2301  "$tab log-ssh" \
-2302  "$tab log-search" \
-2303  "$tab filelog" \
-2304  "$tab autolog" \
-2400 "$quad [ Show About ] $cinco" \
-2401  "$tab about" \
-2402  "$tab depends" \
-2403  "$tab config-eng" \
-2404  "$tab config-spa" \
-2500 "$quad [ Show Help ] $cinco" \
-2501  "$tab mini-options" \
-2502  "$tab full-options" \
-2503  "$tab readme" \
-2504  "$tab leeme" \
-2505  "$tab all-help" \
-2506  "$tab notes" \
-2507  "$tab license" \
- )"  
+2000 "$quad [ Tool addblock ] $cinco" \
+2001  "$tab addblock-list" \
+2002  "$tab addblock-list info" \
+2003  "$tab addblock-on" \
+2004  "$tab addblock-off" \
+2100 "$quad [ Tool Dev ] $cinco" \
+2101  "$tab new-versions" \
+2102  "$tab dev-version" \
+2103  "$tab dev-changes" \
+2104  "$tab intro" \
+2200 "$quad [ Tool Speed ] $cinco" \
+2201  "$tab free-ram" \
+2202  "$tab speed-ram" \
+2203  "$tab speed-disk" \
+2204  "$tab speed-glx" \
+2300 "$quad [ Show Hardware ] $cinco" \
+2301  "$tab lpinfo" \
+2302  "$tab lsblk" \
+2303  "$tab lsusb" \
+2304  "$tab lscpu" \
+2305  "$tab lspci" \
+2306  "$tab lsgpu" \
+2307  "$tab lshw" \
+2400 "$quad [ Show Etc ] $cinco" \
+2401  "$tab hosts" \
+2402  "$tab protocols" \
+2403  "$tab services" \
+2404  "$tab hosts.allow" \
+2405  "$tab hosts.deny" \
+2406  "$tab resolv.conf" \
+2407  "$tab preferences-read" \
+2408  "$tab preferences-modify" \
+2500 "$quad [ Show Log ] $cinco" \
+2501  "$tab log-ssh" \
+2502  "$tab log-search" \
+2503  "$tab filelog" \
+2504  "$tab autolog" \
+2600 "$quad [ Show About ] $cinco" \
+2601  "$tab about" \
+2602  "$tab depends" \
+2603  "$tab config-eng" \
+2604  "$tab config-spa" \
+2700 "$quad [ Show Help ] $cinco" \
+2701  "$tab mini-options" \
+2702  "$tab full-options" \
+2703  "$tab readme" \
+2704  "$tab leeme" \
+2705  "$tab all-help" \
+2706  "$tab notes" \
+2707  "$tab license" \
+ )"
+################################################################################
 #### 
 #### 
 #### english: dialog choosed #### spanish: dialogo elegido
@@ -6024,31 +6039,31 @@ case "$menuprincipal" in
 0000) clear ; $cmd_binary info ;;
 0100) clear ; $cmd_binary cli options ;;
 0200) clear ; $cmd_binary cli firewall-control ;;
-0300) clear ; $cmd_binary cli firewall-list ;;
-0400) clear ; $cmd_binary cli firewall-launch ;;
-0500) clear ; $cmd_binary cli firewall-custom ;;
-0600) clear ; $cmd_binary cli tool-connect ;;
-0700) clear ; $cmd_binary cli tool-rule ;;
-0800) clear ; $cmd_binary cli tool-sockets ;;
-0900) clear ; $cmd_binary cli tool-forward ;;
-1000) clear ; $cmd_binary cli tool-sshd ;;
-1100) clear ; $cmd_binary cli tool-tcp ;;
-1200) clear ; $cmd_binary cli tool-icmp ;;
-1300) clear ; $cmd_binary cli tool-udp ;;
-1400) clear ; $cmd_binary cli tool-sudofw ;;
-1500) clear ; $cmd_binary cli tool-game ;;
-1600) clear ; $cmd_binary cli tool-util ;;
-1700) clear ; $cmd_binary cli tool-install ;;
-1800) clear ; $cmd_binary cli tool-addblock ;;
-1900) clear ; $cmd_binary cli tool-dev ;;
-2000) clear ; $cmd_binary cli tool-speed ;;
-2100) clear ; $cmd_binary cli show-hardware ;;
-2200) clear ; $cmd_binary cli show-etc ;;
-2300) clear ; $cmd_binary cli show-log ;;
-2400) clear ; $cmd_binary cli help-about ;;
-2500) clear ; $cmd_binary cli help-help ;;
-##########
-##########
+0300) clear ; $cmd_binary cli firewall-conceptual ;;
+0400) clear ; $cmd_binary cli firewall-numeral ;;
+0600) clear ; $cmd_binary cli firewall-launch ;;
+0700) clear ; $cmd_binary cli firewall-custom ;;
+0800) clear ; $cmd_binary cli tool-connect ;;
+0900) clear ; $cmd_binary cli tool-rule ;;
+1000) clear ; $cmd_binary cli tool-sockets ;;
+1100) clear ; $cmd_binary cli tool-forward ;;
+1200) clear ; $cmd_binary cli tool-sshd ;;
+1300) clear ; $cmd_binary cli tool-tcp ;;
+1400) clear ; $cmd_binary cli tool-icmp ;;
+1500) clear ; $cmd_binary cli tool-udp ;;
+1600) clear ; $cmd_binary cli tool-sudofw ;;
+1700) clear ; $cmd_binary cli tool-game ;;
+1800) clear ; $cmd_binary cli tool-util ;;
+1900) clear ; $cmd_binary cli tool-install ;;
+2000) clear ; $cmd_binary cli tool-addblock ;;
+2100) clear ; $cmd_binary cli tool-dev ;;
+2200) clear ; $cmd_binary cli tool-speed ;;
+2300) clear ; $cmd_binary cli show-hardware ;;
+2400) clear ; $cmd_binary cli show-etc ;;
+2500) clear ; $cmd_binary cli show-log ;;
+2600) clear ; $cmd_binary cli help-about ;;
+2700) clear ; $cmd_binary cli help-help ;;
+################################################################################
 0201) clear ; $cmd_binary cli stop ;;
 0202) clear ; $cmd_binary cli continue ;;
 0203) clear ; $cmd_binary cli reset ;;
@@ -6063,6 +6078,7 @@ clear ;  echo "$cincuenta saved $archivo" ; $cmd_binary save $archivo ;;
 read -p "| Type the firewall name to restore |   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nombrecillo ;;
 0208) clear ; $cmd_binary cli actual ;;
+################################################################################
 0301) clear ; $cmd_binary cli list ;;
 0302) clear ; $cmd_binary cli list6 ;;
 0303) clear ; $cmd_binary cli list-filter4 ;;
@@ -6072,10 +6088,6 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0307) clear ; $cmd_binary cli list-nat4 ;;
 0308) clear ; $cmd_binary cli list-nat6 ;;
 0309) clear ; $cmd_binary cli list-alltables ;;
-0310) clear ; $cmd_binary cli listnum ;;
-0311) clear ; $cmd_binary cli list-forwardnum ;;
-0312) clear ; $cmd_binary cli listnum6 ;;
-0313) clear ; $cmd_binary cli list-forwardnum6 ;;
 0314) clear ; $cmd_binary cli list-raw4 ;;
 0315) clear ; $cmd_binary cli list-raw6 ;;
 0316) clear ; $cmd_binary cli list-mangle4 ;; 
@@ -6084,188 +6096,229 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0319) clear ; $cmd_binary cli list-security6 ;;
 0320) clear ; $cmd_binary cli list-ebtables ;;
 0321) clear ; $cmd_binary cli list-arptables ;;
-0401) clear ; $cmd_binary cli eraserules ; $cmd_binary txt list  ;;
-0402) clear ; $cmd_binary cli wizard-mini ; $cmd_binary txt list ;;
-0403) clear ; $cmd_binary cli wizard-full ; $cmd_binary txt list ;;
-0404) clear ; $cmd_binary cli off-line ; $cmd_binary txt list ;;
-0405) clear ; $cmd_binary cli all-permisive ; $cmd_binary txt list  ;;
-0406) 
+################################################################################
+0301) clear ; $cmd_binary cli listn ;;
+0302) clear ; $cmd_binary cli listn6 ;;
+0303) clear ; $cmd_binary cli listn-filter4 ;;
+0304) clear ; $cmd_binary cli listn-filter6 ;;
+0305) clear ; $cmd_binary cli listn-forward ;;
+0306) clear ; $cmd_binary cli listn-forward6 ;;
+0307) clear ; $cmd_binary cli listn-nat4 ;;
+0308) clear ; $cmd_binary cli listn-nat6 ;;
+0309) clear ; $cmd_binary cli listn-alltables ;;
+0314) clear ; $cmd_binary cli listn-raw4 ;;
+0315) clear ; $cmd_binary cli listn-raw6 ;;
+0316) clear ; $cmd_binary cli listn-mangle4 ;; 
+0317) clear ; $cmd_binary cli listn-mangle6 ;;
+0318) clear ; $cmd_binary cli listn-security4 ;;
+0319) clear ; $cmd_binary cli listn-security6 ;;
+0320) clear ; $cmd_binary cli list-ebtables ;;
+0321) clear ; $cmd_binary cli list-arptables ;;
+################################################################################
+0601) clear ; $cmd_binary cli eraserules ; $cmd_binary txt list  ;;
+0602) clear ; $cmd_binary cli wizard-mini ; $cmd_binary txt list ;;
+0603) clear ; $cmd_binary cli wizard-full ; $cmd_binary txt list ;;
+0604) clear ; $cmd_binary cli off-line ; $cmd_binary txt list ;;
+0605) clear ; $cmd_binary cli all-permisive ; $cmd_binary txt list  ;;
+0606) 
 archivo="$($command_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
-0407) clear ; $cmd_binary cli games-shooter ; $cmd_binary txt list  ;; 
-0408) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary txt list ;;
-0409) clear ; $cmd_binary cli game-minetest ; $cmd_binary txt list ;;
-0410) clear ; $cmd_binary cli game-freeciv ; $cmd_binary txt list ;;
-0411) clear ; $cmd_binary cli game-widelands ; $cmd_binary txt list ;;
-0412) clear ; $cmd_binary cli client-web ; $cmd_binary txt list  ;;
-0413) clear ; $cmd_binary cli client-vnc ; $cmd_binary txt list ;;
-0414) clear ; $cmd_binary cli client-tor ; $cmd_binary txt list  ;;
-0415) clear ; $cmd_binary cli client-vpn ; $cmd_binary txt list ;;
-0416) clear ; $cmd_binary cli client-torrent ; $cmd_binary txt list ;;
-0417) clear ; $cmd_binary cli lan-tor ; $cmd_binary txt list ;;
-0418) clear ; $cmd_binary cli lan-vpn ; $cmd_binary txt list ;; 
-0419) clear ; $cmd_binary cli shield-ssh ; $cmd_binary txt list  ;; 
-0420) clear ; $cmd_binary cli server-ssh ; $cmd_binary txt list  ;;
-0421) clear ; $cmd_binary cli server-web ; $cmd_binary txt list ;;
-0422) clear ; $cmd_binary cli server-vnc ; $cmd_binary txt list ;;
-0423) clear ; $cmd_binary cli server-print ; $cmd_binary txt list ;;
-0424) clear ; $cmd_binary cli server-samba ; $cmd_binary txt list ;;
-0425) clear ; $cmd_binary cli server-lamp ; $cmd_binary txt list ;;
-0426) clear ; $cmd_binary cli server-mail ; $cmd_binary txt list ;;
-0427) clear ; $cmd_binary cli server-ftp ; $cmd_binary txt list ;;
-0428) clear ; $cmd_binary cli server-news ; $cmd_binary txt list ;;
-0429) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary txt list ;;
-0430) clear ; $cmd_binary cli server-mumble ; $cmd_binary txt list ;;
-0431) clear ; $cmd_binary cli server-sql ; $cmd_binary txt list ;;
-0432) clear ; $cmd_binary cli server-asterisk ; $cmd_binary txt list ;;
-0501) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
+0607) clear ; $cmd_binary cli games-shooter ; $cmd_binary txt list  ;; 
+0608) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary txt list ;;
+0609) clear ; $cmd_binary cli game-minetest ; $cmd_binary txt list ;;
+0610) clear ; $cmd_binary cli game-freeciv ; $cmd_binary txt list ;;
+0611) clear ; $cmd_binary cli game-widelands ; $cmd_binary txt list ;;
+0612) clear ; $cmd_binary cli client-web ; $cmd_binary txt list  ;;
+0613) clear ; $cmd_binary cli client-vnc ; $cmd_binary txt list ;;
+0614) clear ; $cmd_binary cli client-tor ; $cmd_binary txt list  ;;
+0615) clear ; $cmd_binary cli client-vpn ; $cmd_binary txt list ;;
+0616) clear ; $cmd_binary cli client-torrent ; $cmd_binary txt list ;;
+0617) clear ; $cmd_binary cli lan-tor ; $cmd_binary txt list ;;
+0618) clear ; $cmd_binary cli lan-vpn ; $cmd_binary txt list ;; 
+0619) clear ; $cmd_binary cli shield-ssh ; $cmd_binary txt list  ;; 
+0620) clear ; $cmd_binary cli server-ssh ; $cmd_binary txt list  ;;
+0621) clear ; $cmd_binary cli server-web ; $cmd_binary txt list ;;
+0622) clear ; $cmd_binary cli server-vnc ; $cmd_binary txt list ;;
+0623) clear ; $cmd_binary cli server-print ; $cmd_binary txt list ;;
+0624) clear ; $cmd_binary cli server-samba ; $cmd_binary txt list ;;
+0625) clear ; $cmd_binary cli server-lamp ; $cmd_binary txt list ;;
+0626) clear ; $cmd_binary cli server-mail ; $cmd_binary txt list ;;
+0627) clear ; $cmd_binary cli server-ftp ; $cmd_binary txt list ;;
+0628) clear ; $cmd_binary cli server-news ; $cmd_binary txt list ;;
+0629) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary txt list ;;
+0630) clear ; $cmd_binary cli server-mumble ; $cmd_binary txt list ;;
+0631) clear ; $cmd_binary cli server-sql ; $cmd_binary txt list ;;
+0632) clear ; $cmd_binary cli server-asterisk ; $cmd_binary txt list ;;
+################################################################################
+0701) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary new-full-config $archivo ;;
-0502) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+0702) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary nueva-completa-config $archivo ;;
-0503) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" \
+0703) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary new-mini-config $archivo ;;
-0504) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+0704) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary nueva-mini-config $archivo ;;
-0505) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" \
+0705) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_binary custom $archivo ]";;
-0506) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" \
+0706) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary modify-config $archivo ;;
-0507) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+0707) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
-0508) clear ; $cmd_binary cli names-config ;;
-0509) clear ; $cmd_binary cli regen-config ;;
-0510) clear ; $cmd_binary cli examples-config ;;
-0601) clear ; $cmd_binary iw-scan ;;
-0602) clear ; $cmd_binary iw-info ;;
-0603) clear ;
+0708) clear ; $cmd_binary cli names-config ;;
+0709) clear ; $cmd_binary cli regen-config ;;
+0710) clear ; $cmd_binary cli examples-config ;;
+################################################################################
+0801) clear ; $cmd_binary iw-scan ;;
+0802) clear ; $cmd_binary iw-info ;;
+0803) clear ;
 archivoa="$($command_dialog  --stdout --title "Type SSID to connect" --inputbox "$($cmd_binary iw-scan)" 0 0)" 
 archivob="$($command_dialog  --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
 $cmd_binary wpa-save archivoa archivob;;
-0604) clear ; 
+0804) clear ; 
 archivo="$($command_dialog  --stdout --title "type wpa file to load" \
 --inputbox "$($command_find $directory_default | cut -d "/" -f 4- | $command_grep \\.wpa)" 0 0)"
 $cmd_binary wpa-load $archivo ;;
-0605) clear ; $cmd_binary dhcp-client ;;
-0701) clear ; $cmd_binary rule-del-num ;;
-0702) clear ; $cmd_binary rule-del-shield ;;
-0703) clear ; $cmd_binary rule-add-shield ;;
-0801) clear ; $cmd_binary cli ss ;;
-0802) clear ; $cmd_binary cli netstat ;;
-0803) clear ; $cmd_binary cli lsof ;;
-0804) clear ; $cmd_binary cli tcpdump ;;
-0805) clear ; $cmd_binary cli info-route ;;
-0806) clear ; $cmd_binary cli info-nodes ;;
-0807) clear ; $cmd_binary cli info-listen ;;
-0808) clear ; $cmd_binary cli info-proxy ;;
-0809) clear ; $cmd_binary cli info-net ;;
-0810) clear ; $cmd_binary cli info-system ;;
-0811) clear ; $cmd_binary cli ntpdate-client ;;
-0901) clear ; $cmd_binary cli ipforward-list ;;
-0902) clear ; $cmd_binary cli ipforward-on ;;
-0903) clear ; $cmd_binary cli ipforward-off ;;
-1001) clear ; $cmd_binary cli sshd-tunnel-info ;;
-1002) clear ; 
+0805) clear ; $cmd_binary dhcp-client ;;
+################################################################################
+0901) clear ; $cmd_binary rule-del-num ;;
+0902) clear ; $cmd_binary rule-del-shield ;;
+0903) clear ; $cmd_binary rule-add-shield ;;
+################################################################################
+1001) clear ; $cmd_binary cli ss ;;
+1002) clear ; $cmd_binary cli netstat ;;
+1003) clear ; $cmd_binary cli lsof ;;
+1004) clear ; $cmd_binary cli tcpdump ;;
+1005) clear ; $cmd_binary cli info-route ;;
+1006) clear ; $cmd_binary cli info-nodes ;;
+1007) clear ; $cmd_binary cli info-listen ;;
+1008) clear ; $cmd_binary cli info-proxy ;;
+1009) clear ; $cmd_binary cli info-net ;;
+1010) clear ; $cmd_binary cli info-system ;;
+1011) clear ; $cmd_binary cli ntpdate-client ;;
+################################################################################
+1101) clear ; $cmd_binary cli ipforward-list ;;
+1102) clear ; $cmd_binary cli ipforward-on ;;
+1103) clear ; $cmd_binary cli ipforward-off ;;
+################################################################################
+1201) clear ; $cmd_binary cli sshd-tunnel-info ;;
+1202) clear ; 
 archivo="$($command_dialog  --stdout --title "Type: user@my-localhost to connect" \
 --inputbox "Type: user@my-localhost to connect" 0 0)" 
  $cmd_binary cli sshd-tunnel-on $archivo ;; 
-1003) clear ; $cmd_binary cli sshd-tunnel-off ;;
-1101) clear ; $cmd_binary cli speed-ip4 ;;
-1102) clear ; $cmd_binary cli speed-ip6 ;;
-1103) clear ; $cmd_binary cli tracetcp-ip4 ;;
-1104) clear ; $cmd_binary cli tracetcp-ip6 ;;
-1201) clear ; $cmd_binary cli traceicmp-ip4 ;;
-1202) clear ; $cmd_binary cli traceicmp-ip6 ;;
-1203) clear ; $cmd_binary cli ping-ip4 ;;
-1204) clear ; $cmd_binary cli ping-ip6 ;;
-1301) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+1203) clear ; $cmd_binary cli sshd-tunnel-off ;;
+################################################################################
+1301) clear ; $cmd_binary cli speed-ip4 ;;
+1302) clear ; $cmd_binary cli speed-ip6 ;;
+1303) clear ; $cmd_binary cli tracetcp-ip4 ;;
+1304) clear ; $cmd_binary cli tracetcp-ip6 ;;
+################################################################################
+1401) clear ; $cmd_binary cli traceicmp-ip4 ;;
+1402) clear ; $cmd_binary cli traceicmp-ip6 ;;
+1403) clear ; $cmd_binary cli ping-ip4 ;;
+1404) clear ; $cmd_binary cli ping-ip6 ;;
+################################################################################
+1501) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary host $resolve ;;
-1302) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+1502) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary dig $resolve ;;
-1303) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+1503) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary resolveip $resolve ;;
-1304) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+1504) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary geoip $resolve ;;
-1305) clear ; $cmd_binary "ntpdate-client" ;;
-1401) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+1505) clear ; $cmd_binary "ntpdate-client" ;;
+################################################################################
+1601) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
 clear ; $cmd_binary sudofw-adduser $resolve ;;
-1402) clear ; $cmd_binary cli sudofw-deluser ;;
-1403) clear ; $cmd_binary cli sudofw-listuser ;;
-1501) clear ; $cmd_binary cli game-word  ;;
-1502) clear ; $cmd_binary cli game-number ;;
-1503) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+1602) clear ; $cmd_binary cli sudofw-deluser ;;
+1603) clear ; $cmd_binary cli sudofw-listuser ;;
+################################################################################
+1701) clear ; $cmd_binary cli game-word  ;;
+1702) clear ; $cmd_binary cli game-number ;;
+1703) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
 $cmd_binary cli game-rgb $resolve ;;
-1504) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+1704) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
 $cmd_binary cli game-hex $resolve ;;
-1601) archivo="$($command_dialog  --stdout --title "Type location file to mp5sum" \
+1701) archivo="$($command_dialog  --stdout --title "Type location file to mp5sum" \
 --inputbox "Type location file to mp5sum" 0 0)" 
 clear ; $cmd_binary md5sum $archivo ;;
-1602) clear ; $cmd_binary cli gpg-notes ;;
-1603) clear ; archivo="$($command_dialog  --stdout --title "Type link mp3 station" --inputbox "Type link mp3 station" 0 0)"
+################################################################################
+1802) clear ; $cmd_binary cli gpg-notes ;;
+1803) clear ; archivo="$($command_dialog  --stdout --title "Type link mp3 station" --inputbox "Type link mp3 station" 0 0)"
 $cmd_binary txt radio-mp3 $archivo ;;
-1604) clear ; $cmd_binary txt radio-cadena100 ;;
-1605) clear ; $cmd_binary txt radio-rockfm ;;
-1701) clear ; $zero_option install ;;
-1702) clear ; $cmd_binary cli howto-upgrade ;;
-1703) clear ; $cmd_binary cli upgrade ;;
-1704) clear ; $cmd_binary cli intro ;;
-1801) clear ; $cmd_binary cli addblock-list ;;
-1802) clear ; $cmd_binary cli addblock-list info ;;
-1803) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
+1804) clear ; $cmd_binary txt radio-cadena100 ;;
+1805) clear ; $cmd_binary txt radio-rockfm ;;
+################################################################################
+1901) clear ; $zero_option install ;;
+1902) clear ; $cmd_binary cli howto-upgrade ;;
+1903) clear ; $cmd_binary cli upgrade ;;
+1904) clear ; $cmd_binary cli intro ;;
+################################################################################
+2001) clear ; $cmd_binary cli addblock-list ;;
+2002) clear ; $cmd_binary cli addblock-list info ;;
+2003) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
 --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
 clear ; $cmd_binary addblock-on $resolve ;;
-1804) clear ; $cmd_binary cli addblock-off ;;
-1901) clear ; $cmd_binary cli new-versions ;;
-1902) clear ; $cmd_binary cli dev-version ;;
-1903) clear ; $cmd_binary cli dev-changes ;;
-1904) clear ; $cmd_binary cli intro ;;
-2001) clear ; $cmd_binary cli free-ram ;;
-2002) clear ; $cmd_binary cli speed-ram ;;
-2003) clear ; $cmd_binary cli speed-disk ;;
-2004) clear ; $cmd_binary cli speed-glx ;;
-2101) clear ; $cmd_binary cli lpinfo ;;
-2102) clear ; $cmd_binary cli lsblk ;;
-2103) clear ; $cmd_binary cli lsusb ;; 
-2104) clear ; $cmd_binary cli lscpu ;;
-2105) clear ; $cmd_binary cli lspci ;;  
-2106) clear ; $cmd_binary cli lsgpu ;;
-2107) clear ; $cmd_binary cli lshw ;;
-2201) clear ; $cmd_binary cli hosts ;;
-2202) clear ; $cmd_binary cli protocols ;;
-2203) clear ; $cmd_binary cli services ;;
-2204) clear ; $cmd_binary cli hosts.allow ;;
-2205) clear ; $cmd_binary cli hosts.deny ;;
-2206) clear ; $cmd_binary cli resolv.conf ;;
-2207) clear ; $cmd_binary cli preferences-read ;;
-2208) clear ; $cmd_binary cli preferences-modify ;;
-2301) clear ; $cmd_binary cli log-ssh ;;
-2302) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+2004) clear ; $cmd_binary cli addblock-off ;;
+################################################################################
+2101) clear ; $cmd_binary cli new-versions ;;
+2102) clear ; $cmd_binary cli dev-version ;;
+2103) clear ; $cmd_binary cli dev-changes ;;
+2104) clear ; $cmd_binary cli intro ;;
+################################################################################
+2201) clear ; $cmd_binary cli free-ram ;;
+2202) clear ; $cmd_binary cli speed-ram ;;
+2203) clear ; $cmd_binary cli speed-disk ;;
+2204) clear ; $cmd_binary cli speed-glx ;;
+################################################################################
+2301) clear ; $cmd_binary cli lpinfo ;;
+2302) clear ; $cmd_binary cli lsblk ;;
+2303) clear ; $cmd_binary cli lsusb ;; 
+2304) clear ; $cmd_binary cli lscpu ;;
+2305) clear ; $cmd_binary cli lspci ;;  
+2306) clear ; $cmd_binary cli lsgpu ;;
+2307) clear ; $cmd_binary cli lshw ;;
+################################################################################
+2401) clear ; $cmd_binary cli hosts ;;
+2402) clear ; $cmd_binary cli protocols ;;
+2403) clear ; $cmd_binary cli services ;;
+2404) clear ; $cmd_binary cli hosts.allow ;;
+2405) clear ; $cmd_binary cli hosts.deny ;;
+2406) clear ; $cmd_binary cli resolv.conf ;;
+2407) clear ; $cmd_binary cli preferences-read ;;
+2408) clear ; $cmd_binary cli preferences-modify ;;
+################################################################################
+2501) clear ; $cmd_binary cli log-ssh ;;
+2502) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
 clear ; $cmd_binary "log-search" "$pattern" | less ;;
-2303) clear ; $cmd_binary txt filelog ;;
-2304) clear ; $cmd_binary cli autolog ;;
-2401) clear ; $cmd_binary cli about ;;
-2402) clear ; $cmd_binary cli depends ;;
-2403) clear ; $cmd_binary cli config-eng ;;
-2404) clear ; $cmd_binary cli config-spa ;;
-2501) clear ; $cmd_binary cli mini-options ;;
-2502) clear ; $cmd_binary cli full-options ;;
-2503) clear ; $cmd_binary cli readme ;;
-2504) clear ; $cmd_binary cli leeme ;;
-2505) clear ; $cmd_binary cli all-help ;;
-2506) clear ; $cmd_binary cli notes ;;
-2507) clear ; $cmd_binary cli license ;;
+2503) clear ; $cmd_binary txt filelog ;;
+2504) clear ; $cmd_binary cli autolog ;;
+################################################################################
+2601) clear ; $cmd_binary cli about ;;
+2602) clear ; $cmd_binary cli depends ;;
+2603) clear ; $cmd_binary cli config-eng ;;
+2604) clear ; $cmd_binary cli config-spa ;;
+################################################################################
+2701) clear ; $cmd_binary cli mini-options ;;
+2702) clear ; $cmd_binary cli full-options ;;
+2703) clear ; $cmd_binary cli readme ;;
+2704) clear ; $cmd_binary cli leeme ;;
+2705) clear ; $cmd_binary cli all-help ;;
+2706) clear ; $cmd_binary cli notes ;;
+2707) clear ; $cmd_binary cli license ;;
+################################################################################
 *) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
 esac 
 $cmd_binary text-pause
