@@ -4447,7 +4447,8 @@ echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] 
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_tmp"
-echo "$text_md Posible auth-users:      /etc/sudoers.d/$cmd_config"
+echo "$text_md Directory data:          $directory_data"
+echo "$text_md Preferences file:        $default_preferences"
 echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt (bash):    $command_bash"
