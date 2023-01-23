@@ -9,7 +9,7 @@
 #### File:        fwiptables-cmd
 #### Description: Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
-#### Copyright:   (c) 2020-2022 Francisco Garcia <fwiptables@gmx.com>
+#### Copyright:   (c) 2020-2023 Francisco Garcia <fwiptables@gmx.com>
 ####
 #### This program is free software; you can redistribute it and/or modify
 #### it under the terms of the GNU General Public License as published by
@@ -4673,7 +4673,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
- --list "01 Firewall Control" "02 Firewall List" "03 Firewall Custom" "04 Firewall Launch" "05 Tool sockets" \
+ --list "01 Firewall Control" "02 Firewall List Conceptual" "02 Firewall List Numeral" "03 Firewall Custom" "04 Firewall Launch" "05 Tool sockets" \
 "06 Tool connect" "07 Tool rule" "08 Tool forward" "09 Tool sshd" "10 Tool tcp" "11 Tool udp" "12 Tool icmp" \
 "13 Tool sudofw" "14 Tool game" "15 Tool speed" "16 Tool util" "17 Tool install" "18 Tool addblock" "19 Tool dev" \
 "20 Show hardware" "21 Show etc" "22 Show log" "23 Help about" "24 Help help" \
@@ -4683,7 +4683,8 @@ selection=$(zenity $graphic_dimension  \
 case "$selection" in
 1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "01 Firewall Control")$cmd_binary gui-menu-firewall-control ; exit ;;
-"02 Firewall List")$cmd_binary gui-menu-firewall-list ; exit ;;
+"02 Firewall List Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
+"02 Firewall List Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
 "03 Firewall Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
 "04 Firewall Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
 "05 Tool sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
@@ -4823,15 +4824,15 @@ exit; fi
 ####
 ####
 #### :rutina-final-gui-menu-firewall-control:
-##########    english: gui-menu-firewall-list: gui with menu   ##########
-##########    spanish: gui-menu-firewall-list: gui con menu    ##########
-#### :rutina-inicial-gui-menu-firewall-list:
+##########    english: gui-menu-firewall-conceptual: gui with menu   ##########
+##########    spanish: gui-menu-firewall-conceptual: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-conceptual:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-list" ] ; then $nada ;
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "list" "list6" "list-filter4" "list-filter6" "list-alltables" \
-"listnum" "listnum6" "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
+"list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ firewall list ] [ $cmd_binary ]" )
 #### 
@@ -4841,15 +4842,11 @@ case $selection in
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-list ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-list ;;
-"list") $cmd_binary -gui list ;;
-"list6") $cmd_binary -gui list6 ;;
+"ls4") $cmd_binary -gui ls4 ;;
+"ls6") $cmd_binary -gui ls6 ;;
 "list-alltables") $cmd_binary -gui list-alltables ;;
 "list-filter4") $cmd_binary -gui list-filter4 ;;
 "list-filter6") $cmd_binary -gui list-filter6 ;;
-"list-forward") $cmd_binary -gui forward ;;
-"list-forward6") $cmd_binary -gui forward6 ;;
-"listnum") $cmd_binary -gui listnum ;;
-"listnum6") $cmd_binary -gui listnum6 ;;
 "list-nat4") $cmd_binary -gui list-nat4 ;;
 "list-nat6") $cmd_binary -gui list-nat6 ;;
 "list-mangle4") $cmd_binary -gui list-mangle4 ;;
@@ -4871,7 +4868,52 @@ $command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --tex
 exit; fi
 ####
 ####
-#### :rutina-final-gui-menu-firewall-list:
+#### :rutina-final-gui-menu-firewall-conceptual:
+##########    english: gui-menu-firewall-numeral: gui with menu   ##########
+##########    spanish: gui-menu-firewall-numeral: gui con menu    ##########
+#### :rutina-inicial-gui-menu-firewall-numeral:
+####
+####
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-numeral" ] ; then $nada ;
+selection=$($command_zenity  $graphic_dimension \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
+"listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
+"listn-security4" "listn-security6" "list-ebtables" "list-arptables" \
+--column="Option list $cmd_binary" --text="Select one option" --title="[ firewall list ] [ $cmd_binary ]" )
+#### 
+#### 
+case $selection in
+1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+"Gui Principal Menu")$cmd_binary gui-menu ;;
+"Gui Help Menu") $cmd_binary -gui help firewall-list ;;
+"Gui Info Menu") $cmd_binary -gui info firewall-list ;;
+"lsn4") $cmd_binary -gui lsn4 ;;
+"lsn6") $cmd_binary -gui lsn6 ;;
+"listn-alltables") $cmd_binary -gui listn-alltables ;;
+"listn-filter4") $cmd_binary -gui listn-filter4 ;;
+"listn-filter6") $cmd_binary -gui listn-filter6 ;;
+"listn-nat4") $cmd_binary -gui listn-nat4 ;;
+"listn-nat6") $cmd_binary -gui listn-nat6 ;;
+"listn-mangle4") $cmd_binary -gui listn-mangle4 ;;
+"listn-mangle6") $cmd_binary -gui listn-mangle6 ;;
+"listn-raw4") $cmd_binary -gui listn-raw4 ;;
+"listn-raw6") $cmd_binary -gui listn-raw6 ;;
+"listn-security4") $cmd_binary -gui listn-security4 ;;
+"listn-security6") $cmd_binary -gui listn-security6 ;;
+"list-ebtables") $cmd_binary -gui list-ebtables ;;
+"list-arptables") $cmd_binary -gui list-arptables ;;
+esac
+####
+####
+$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
+####
+####
+$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
+#### :rutina-final-gui-menu-firewall-numeral:
 ##########    english: gui-menu-firewall-custom: gui with menu   ##########
 ##########    spanish: gui-menu-firewall-custom: gui con menu    ##########
 #### :rutina-inicial-gui-menu-firewall-custom:
