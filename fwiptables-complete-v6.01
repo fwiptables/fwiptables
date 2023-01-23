@@ -5910,6 +5910,16 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0608  "$tab names-config" \
 0609  "$tab regen-config" \
 0610  "$tab examples-config" \
+0700 "$quad [ Options State ] $cinco" \
+0701  "$tab preferences-read" \
+0702  "$tab preferences-modify" \
+0703  "$tab preferences-regen" \
+0704  "$tab ip4" \
+0705  "$tab ip6" \
+0706  "$tab version" \
+0707  "$tab examples" \
+0708  "$tab depends" \
+0709  "$tab install" \
 0800 "$quad [ Tool Connect ] $cinco" \
 0801  "$tab iw-scan" \
 0802  "$tab iw-info" \
@@ -6181,6 +6191,15 @@ clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0609) clear ; $cmd_binary cli regen-config ;;
 0610) clear ; $cmd_binary cli examples-config ;;
 ################################################################################
+0701) clear ; $cmd_binary cli preferences-read ;;
+0702) clear ; $cmd_binary cli preferences-modify ;;
+0703) clear ; $cmd_binary cli preferences-regen ;;
+0704) clear ; $cmd_binary cli ip4 ;;
+0705) clear ; $cmd_binary cli ip6 ;;
+0706) clear ; $cmd_binary cli version ;;
+0707) clear ; $cmd_binary cli examples ;;
+0708) clear ; $cmd_binary cli depends ;;
+0709) clear ; $cmd_binary cli install ;;
 ################################################################################
 0801) clear ; $cmd_binary iw-scan ;;
 0802) clear ; $cmd_binary iw-info ;;
