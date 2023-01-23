@@ -4975,7 +4975,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Connect ] [ $cmd_binary ]" )
 #### 
 #### 
@@ -4996,7 +4996,8 @@ $cmd_binary -gui iw-scan
 name_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
 pass_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
 $cmd_binary wpa-save $name_ssid $pass_ssid ; $cmd_binary -gui iw-info ;;
-"dhcp-client")       $cmd_binary -gui dhcp-client ;;
+"dhcp-client")    $cmd_binary -gui dhcp-client ;;
+"ntpdate-client") $cmd_binary -gui ntpdate-client ;;
 esac
 ####
 ####
@@ -5047,7 +5048,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "info-proxy" "info-listen" "info-route" "info-nodes" \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Sockets ] [ $cmd_binary ]" )
 #### 
@@ -5057,6 +5058,8 @@ case $selection in
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_binary -gui info tool-sockets ;;
+"ip4") $cmd_binary -gui ip4 ;;
+"ip6") $cmd_binary -gui ip6 ;;
 "info-route") $cmd_binary -gui route ;;
 "info-nodes") $cmd_binary -gui info-nodes ;;
 "info-net") $cmd_binary -gui info-net ;;
