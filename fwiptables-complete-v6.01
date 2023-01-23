@@ -6219,40 +6219,40 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0420) clear ; $cmd_binary cli list-ebtables ;;
 0421) clear ; $cmd_binary cli list-arptables ;;
 ################################################################################
-0501) clear ; $cmd_binary cli eraserules ; $cmd_binary txt list  ;;
-0502) clear ; $cmd_binary cli wizard-mini ; $cmd_binary txt list ;;
-0503) clear ; $cmd_binary cli wizard-full ; $cmd_binary txt list ;;
-0504) clear ; $cmd_binary cli off-line ; $cmd_binary txt list ;;
-0505) clear ; $cmd_binary cli all-permisive ; $cmd_binary txt list  ;;
+0501) clear ; $cmd_binary cli eraserules ; $cmd_binary cli list4   ;;
+0502) clear ; $cmd_binary cli wizard-mini ; $cmd_binary cli list4  ;;
+0503) clear ; $cmd_binary cli wizard-full ; $cmd_binary cli list4  ;;
+0504) clear ; $cmd_binary cli off-line ; $cmd_binary cli list4  ;;
+0505) clear ; $cmd_binary cli all-permisive ; $cmd_binary cli list4   ;;
 0506) 
 archivo="$($command_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
-0507) clear ; $cmd_binary cli games-shooter ; $cmd_binary txt list  ;; 
-0508) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary txt list ;;
-0509) clear ; $cmd_binary cli game-minetest ; $cmd_binary txt list ;;
-0510) clear ; $cmd_binary cli game-freeciv ; $cmd_binary txt list ;;
-0511) clear ; $cmd_binary cli game-widelands ; $cmd_binary txt list ;;
-0512) clear ; $cmd_binary cli client-web ; $cmd_binary txt list  ;;
-0513) clear ; $cmd_binary cli client-vnc ; $cmd_binary txt list ;;
-0514) clear ; $cmd_binary cli client-tor ; $cmd_binary txt list  ;;
-0515) clear ; $cmd_binary cli client-vpn ; $cmd_binary txt list ;;
-0516) clear ; $cmd_binary cli client-torrent ; $cmd_binary txt list ;;
-0517) clear ; $cmd_binary cli lan-tor ; $cmd_binary txt list ;;
-0518) clear ; $cmd_binary cli lan-vpn ; $cmd_binary txt list ;; 
-0519) clear ; $cmd_binary cli shield-ssh ; $cmd_binary txt list  ;; 
-0520) clear ; $cmd_binary cli server-ssh ; $cmd_binary txt list  ;;
-0521) clear ; $cmd_binary cli server-web ; $cmd_binary txt list ;;
-0522) clear ; $cmd_binary cli server-vnc ; $cmd_binary txt list ;;
-0523) clear ; $cmd_binary cli server-print ; $cmd_binary txt list ;;
-0524) clear ; $cmd_binary cli server-samba ; $cmd_binary txt list ;;
-0525) clear ; $cmd_binary cli server-lamp ; $cmd_binary txt list ;;
-0526) clear ; $cmd_binary cli server-mail ; $cmd_binary txt list ;;
-0527) clear ; $cmd_binary cli server-ftp ; $cmd_binary txt list ;;
-0528) clear ; $cmd_binary cli server-news ; $cmd_binary txt list ;;
-0529) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary txt list ;;
-0530) clear ; $cmd_binary cli server-mumble ; $cmd_binary txt list ;;
-0531) clear ; $cmd_binary cli server-sql ; $cmd_binary txt list ;;
-0532) clear ; $cmd_binary cli server-asterisk ; $cmd_binary txt list ;;
+0507) clear ; $cmd_binary cli games-shooter ; $cmd_binary cli list4  ;; 
+0508) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary cli list4  ;;
+0509) clear ; $cmd_binary cli game-minetest ; $cmd_binary cli list4  ;;
+0510) clear ; $cmd_binary cli game-freeciv ; $cmd_binary cli list4  ;;
+0511) clear ; $cmd_binary cli game-widelands ; $cmd_binary cli list4  ;;
+0512) clear ; $cmd_binary cli client-web ; $cmd_binary cli list4   ;;
+0513) clear ; $cmd_binary cli client-vnc ; $cmd_binary cli list4  ;;
+0514) clear ; $cmd_binary cli client-tor ; $cmd_binary cli list4   ;;
+0515) clear ; $cmd_binary cli client-vpn ; $cmd_binary cli list4  ;;
+0516) clear ; $cmd_binary cli client-torrent ; $cmd_binary cli list4  ;;
+0517) clear ; $cmd_binary cli lan-tor ; $cmd_binary cli list4  ;;
+0518) clear ; $cmd_binary cli lan-vpn ; $cmd_binary cli list4  ;; 
+0519) clear ; $cmd_binary cli shield-ssh ; $cmd_binary cli list4  ;; 
+0520) clear ; $cmd_binary cli server-ssh ; $cmd_binary cli list4   ;;
+0521) clear ; $cmd_binary cli server-web ; $cmd_binary cli list4  ;;
+0522) clear ; $cmd_binary cli server-vnc ; $cmd_binary cli list4  ;;
+0523) clear ; $cmd_binary cli server-print ; $cmd_binary cli list4  ;;
+0524) clear ; $cmd_binary cli server-samba ; $cmd_binary cli list4  ;;
+0525) clear ; $cmd_binary cli server-lamp ; $cmd_binary cli list4  ;;
+0526) clear ; $cmd_binary cli server-mail ; $cmd_binary cli list4  ;;
+0527) clear ; $cmd_binary cli server-ftp ; $cmd_binary cli list4  ;;
+0528) clear ; $cmd_binary cli server-news ; $cmd_binary cli list4  ;;
+0529) clear ; $cmd_binary cli server-teamspeak ; $cmd_binary cli list4  ;;
+0530) clear ; $cmd_binary cli server-mumble ; $cmd_binary cli list4  ;;
+0531) clear ; $cmd_binary cli server-sql ; $cmd_binary cli list4  ;;
+0532) clear ; $cmd_binary cli server-asterisk ; $cmd_binary cli list4  ;;
 ################################################################################
 0601) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
