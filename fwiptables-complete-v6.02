@@ -6139,8 +6139,8 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 case "$menuprincipal" in
 ##########
 ##########
-0000) clear ; $cmd_binary info ;;
-0100) clear ; $cmd_binary cli options ;;
+0000) clear ; $cmd_binary txt options | less ;;
+0100) clear ; $cmd_binary txt options | less ;;
 0200) clear ; $cmd_binary cli firewall-control ;;
 0300) clear ; $cmd_binary cli firewall-conceptual ;;
 0400) clear ; $cmd_binary cli firewall-numeral ;;
