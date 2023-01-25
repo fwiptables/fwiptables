@@ -607,7 +607,7 @@ if [ "$command_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ;
 $command_dialog --create-rc $default_dialogrc &> /dev/null
 cp $default_dialogrc $default_dialogrc.old &> /dev/null
 sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc > $default_dialogrc.old
-sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialog_rc.old
+sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialogrc.old
 cp $default_dialogrc.old $default_dialogrc &> /dev/null
 exit; fi
 ####
