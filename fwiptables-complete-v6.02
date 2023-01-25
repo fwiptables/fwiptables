@@ -1150,13 +1150,13 @@ exit; fi
 #### :rutina-inicial-uninstall:
 ####
 ####
-if [ "$first_option" = "uninstall" ] ; then $zero_option intro
+if [ "$first_option" = "uninstall" ] ; then
 echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
-echo "  [ info ] [ $cmd_binary uninstalling fwiptables-cmd ]"
+echo "$duo_md [ info ] [ $cmd_binary uninstalling fwiptables-cmd ]"
 if  [ -f /usr/bin/fwiptables-cmd ]; then rm /usr/bin/fwiptables-cmd &> /dev/null
-echo "  [ info ] [ deleted binaries ]"
-echo "  [  ok  ] [ /usr/bin/fwiptables-cmd uninstalled ]" ;
-else echo "  [ info ] [ /usr/bin/fwiptables-cmd is not installed ]"; fi
+echo "$duo_md [ info ] [ deleted binaries ]"
+echo "$duo_md [  ok  ] [ /usr/bin/fwiptables-cmd uninstalled ]" ;
+else echo "$duo_md [ info ] [ /usr/bin/fwiptables-cmd is not installed ]"; fi
 exit; fi
 ####
 ####
@@ -1174,7 +1174,7 @@ echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ inst
 ####  spanish: copia el archivo a carpeta temporal y instala
 #### 
 #### 
-echo "  [ info ] [ fwiptables-cmd installing.. ]"
+echo "$duo_md [ info ] [ fwiptables-cmd installing.. ]"
 cp "$zero_option" "$directory_temporal/fwiptables-tmp.sh" &> /dev/null
 cp "$directory_temporal/fwiptables-tmp.sh" "/usr/bin/fwiptables-cmd" &> /dev/null 
 chmod 555 "/usr/bin/fwiptables-cmd" &> /dev/null 
@@ -1195,13 +1195,13 @@ $cmd_binary dialog-rc &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "  [ info ] [ the config dir:        ] [ $directory_data ]"
-echo "  [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
-echo "  [ info ] [ the Command shell:     ] [ /usr/bin/fwiptables-cmd ]"
-if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
-echo "  [ info ] [ Grant privileges to user with    ] [ fwiptables-cmd sudofw-adduser user ]"
-echo "  [  ok  ] [ update configs and variables     ]"
-echo "  [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
+echo "$duo_md [ info ] [ the config dir:        ] [ $directory_data ]"
+echo "$duo_md [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
+echo "$duo_md [ info ] [ the Command shell:     ] [ /usr/bin/fwiptables-cmd ]"
+if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
+echo "$duo_md [ info ] [ Grant privileges to user with    ] [ fwiptables-cmd sudofw-adduser user ]"
+echo "$duo_md [  ok  ] [ update configs and variables     ]"
+echo "$duo_md [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
 exit; fi
 ####
 ####
@@ -1213,19 +1213,19 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
 "$NULL")echo "  [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
-echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "  [ info ] [ download ] [ $url_web_latest ]"
-echo "  [ info ] [ download ] [ waiting several seconds .. ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_latest ]"
+echo "$duo_md [ info ] [ download ] [ waiting several seconds .. ]"
 $favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/$cmd_config-upgrader" || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx "$directory_temporal/$cmd_config-upgrader" &> /dev/null
 ####
@@ -1235,9 +1235,9 @@ chmod ugo+rwx "$directory_temporal/$cmd_config-upgrader" &> /dev/null
 ####
 ####
 if [ -f "$directory_temporal/$cmd_config-upgrader" ] ;
-then echo "  [  ok  ] [ download ] [ downloaded $cmd_config latest version ]"
+then echo "$duo_md [  ok  ] [ download ] [ downloaded $cmd_config latest version ]"
 $directory_temporal/$cmd_config-upgrader install ; 
-else echo "  [ fail ] [ install fail ]"; fi
+else echo "$duo_md [ fail ] [ install fail ]"; fi
 exit ; fi
 ####
 ####
