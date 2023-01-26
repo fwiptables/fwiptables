@@ -1821,6 +1821,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### you can connect normal web
 server_port_udp="" ;
 client_port_tcp="http,https,ssh" ;
@@ -1840,6 +1841,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### you can connect normal web and vnc
 server_port_udp="" ;
 client_port_tcp="http,https,ssh,5900:5910" ;
@@ -1859,6 +1861,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### you can connect web normal and bittorrent too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -1878,6 +1881,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### you can connect web normal and web vpn
 server_port_udp="" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,500,1194,1701,4500" ; 
@@ -1897,6 +1901,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### you can connect web normal and web tor
 server_port_udp="" ; 
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -1916,6 +1921,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1940,6 +1946,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -1971,6 +1978,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### client ftp:
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -1990,6 +1998,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -2009,6 +2018,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### vpn ports to connects ports vpn
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -2029,6 +2039,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### lan tor, 9000:9170 for connect to tor
 #### with necesary ports to connect gatway and date, domain for your ip
 server_port_udp="" ;
@@ -2049,6 +2060,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="1025:65000" ;
@@ -2068,6 +2080,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### game wesnoth port 14999 and 15001 usually
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -2087,6 +2100,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### game minetest and minecraft porst 25k and 35k /udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,25000:35000" ; 
 server_port_udp="" ;
@@ -2106,6 +2120,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 alllow_shield_ssh="no" ;
+config_shield_port="" ;
 #### for default 5556 port tcp perhaps 5555 too
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ; 
 server_port_udp="" ;
@@ -2125,6 +2140,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="no" ;
+config_shield_port="" ;
 #### for default 7396 port tcp and 7396 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,7396" ; 
 server_port_udp="7396" ;
@@ -2144,6 +2160,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="https" ;
@@ -2203,6 +2220,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### server http and https and ssh /tcp and https udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -2222,6 +2240,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -2246,6 +2265,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### client news:
 #### The well-known TCP port 119 is reserved for NNTP. Well-known TCP port 433 (NNSP) 
 #### may be used when doing a bulk transfer of articles from one 
@@ -2277,6 +2297,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### server samba and active directory
 client_port_tcp="http,https,ssh,ldap,636,microsoft-ds" ;
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,ldap,636,137:139" ;
@@ -2296,6 +2317,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### server ipp and printer
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -2315,6 +2337,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### server ssh 22/tcp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
 server_port_udp="" ;
@@ -2334,6 +2357,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 ####  english: udp: 20 is ftp-data, 21 is ftp, 989 is ftps-data y 990 is ftps
 ####  english: tcp: 10000 is webmin, 3306 is mysql, 5432 is postgresql
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
@@ -2354,6 +2378,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 ####    UDP:5060 SIP (sip.conf), newer Versions support TCP:5060
 ####    UDP:10000-20000 RTP (rtp.conf) for the media stream, a higher Portrange
 ####    UDP:5036 IAX2
@@ -2375,6 +2400,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### mumble port 64738 tcp and 64738 udp
 client_port_udp="domain,domain-s,bootpc,bootps,ntp,https,64738" ;
 server_port_udp="64738" ;
@@ -2394,6 +2420,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 #### Service	        Protocol	Local Port (Server)
 #### Voice	        UDP	9987
 #### Filetransfer	TCP	30033
@@ -2417,6 +2444,7 @@ type_firewall="predesignated" ;
 name_firewall="$first_option" ;
 #### english: max tries for each hour 
 allow_shield_maxtries="" ;
+config_shield_port="ssh" ;
 ####  POSTGRESQL 5432/tcp and 5432/udp
 ####  Technology	Default Port	Required
 ####  MySQL Client to Server - MySQL Protocol – 3306	3306/tcp	Optional - pick at least 1
