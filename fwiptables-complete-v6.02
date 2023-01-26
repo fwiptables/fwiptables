@@ -11260,6 +11260,9 @@ echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
+echo
+echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
+echo
 $cmd_binary stop
 echo
 echo "$duo_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
@@ -11280,6 +11283,9 @@ echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
+echo
+echo "$duo_md [ info ] Stop firewall & Run speed ip4 & Continue firewall"
+echo
 $cmd_binary stop
 echo
 echo "$duo_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
