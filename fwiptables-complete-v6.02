@@ -322,7 +322,7 @@ config_shield_port="21"                   ## fwiptables-file-default ##  void o 
 config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
 ####       #### english: close with deny is or DROP or REJECT
 ####       #### spanish: cierra con denegacion es o DROP or REJECT
-config_close_deny="REJECT"                   ## fwiptables-file-default ## DROP or REJECT 
+config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or REJECT 
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
