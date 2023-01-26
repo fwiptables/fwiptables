@@ -11175,12 +11175,12 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
-case "$command_iperf"  in  $NULL) echo "  [ fail ] [ Install Iperf command ]"; exit ;; esac
+case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
 ####
 $cmd_binary stop
 echo
-echo "$tab [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
+echo "$duo_md [ Doing bandwidth in ipv4 to $serverip_iperf_ipv4 ] [ with max $server_waiting seconds ]"
 $command_iperf -c $serverip_iperf_ipv4 -t 4 -P 1 -p $serverport_iperf_ipv4 |tail -3
 echo
 $cmd_binary continue
@@ -11195,12 +11195,12 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
-case "$command_iperf"  in  $NULL) echo "$tab [ fail ] [ install iperf command ]"; exit ;; esac
+case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
 ####
 $cmd_binary stop
 echo
-echo "$tab [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
+echo "$duo_md [ Doing bandwidth in ipv6 to $serverip_iperf_ipv6 ] [ with max $server_waiting seconds ]"
 $command_iperf -c $serverip_iperf_ipv6 -V -t 4 -P 1 -p $serverport_iperf_ipv6 | tail -3
 echo
 $cmd_binary continue
