@@ -8511,10 +8511,10 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset the firewall ] || ||"
-echo "  [ info ] [ Reseting the firewall ]"
+echo "duo_md [ info ] [ Reseting the firewall ]"
 $cmd_binary stop &> /dev/null
 $cmd_binary continue &> /dev/null
-echo "  [  ok  ] [ firewall reseted ]"
+echo "duo_md [  ok  ] [ firewall reseted ]"
 exit; fi
 ####
 ####
@@ -8762,8 +8762,8 @@ $command_ip6tables_legacy-save &> $directory_fwrecover/$cmd_config-stoped-legacy
 ####
 ####
 $cmd_binary eraserules &> /dev/null
-echo "  [ info ] [ stopping firewall ]"
-echo "  [  ok  ] [ firewall stopped ]"
+echo "$duo_md [ info ] [ stopping firewall ]"
+echo "$duo_md [  ok  ] [ firewall stopped  ]"
 exit; fi
 ####
 ####
@@ -8786,8 +8786,8 @@ cat $directory_fwrecover/$cmd_config-stoped-nft-ipv4 | $command_iptables_nft-res
 cat $directory_fwrecover/$cmd_config-stoped-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$cmd_config-stoped-nft-ipv6 | $command_ip6tables_nft-restore  
 cat $directory_fwrecover/$cmd_config-stoped-legacy-ipv6 | $command_ip6tables_legacy-restore  
-echo "  [ info ] [ continue firewall ]"
-echo "  [  ok  ] [ firewall continued ]"
+echo "$duo_md [ info ] [ continue firewall  ]"
+echo "$duo_md [  ok  ] [ firewall continued ]"
 exit; fi
 ####
 ####
