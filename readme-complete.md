@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.01 state:complete ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.02 state:complete ] || ||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                          
     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-shell                                                      

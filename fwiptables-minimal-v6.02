@@ -862,7 +862,8 @@ echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
 echo
-echo "$duo_md [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
+echo "$duo_md [ info ] [ Change variables with: $cmd_binary preferences-modify ]"
+echo "$duo_md [ info ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
@@ -938,7 +939,7 @@ echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferenc
 echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
 echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
-echo "$duo_md [  ok  ] [ Update values for default in $directory_shell ]"
+echo "$duo_md [  ok  ] [ Updated values for default in $default_preferences ]"
 exit; fi
 ####
 ####
@@ -3696,7 +3697,7 @@ if [ "$first_option" = "show-config" ] ; then echo $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
-echo "$tab [ info ] [ Usage: $cmd_binary show-config config-cfg ]" ; exit; fi
+echo "$duo_md [ info ] [ Usage: $cmd_binary show-config config-cfg ]" ; exit; fi
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -3717,7 +3718,7 @@ if [ "$first_option" = "del-config" ]; then echo $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
-echo "$tab [ info ] [ usage: ] [ $cmd_binary del-config config-old ]" ; exit ; fi
+echo "$duo_md [ info ] [ usage: ] [ $cmd_binary del-config config-old ]" ; exit ; fi
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -3738,8 +3739,8 @@ exit ; fi
 if [ "$first_option" = "names" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
 echo
-echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
-echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+echo "$duo_md [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
+echo "$duo_md [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
 echo 
 echo "$duo_md [ info ] [ Listing firewall names ]"
 $command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
@@ -3789,10 +3790,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "uninstall" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
-echo "$duo_md [ info ] [ Uninstalling the fwiptables-minimal ]"
+echo "$header_ok [ $first_option ] [ Uninstall fwiptables ] || ||"
+echo "$duo_md [ info ] [ Uninstalling fwiptables-minimal ]"
 rm "/usr/bin/fwiptables-mini" &> /dev/null
-echo "$duo_md [  ok  ] [ Uninstalled fwiptables-mini to /usr/bin/fwiptables-mini ]"
+echo "$duo_md [  ok  ] [ Uninstalled /usr/bin/fwiptables-mini ]"
 exit; fi
 ####
 ####
