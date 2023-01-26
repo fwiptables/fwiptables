@@ -47,9 +47,9 @@
 ####
 if [ "$(id -u)" != "0" ] ; then echo
 echo
-echo "  [ info ] [ fwiptables needs to be root to work ]"
+echo "### [ info ] [ fwiptables needs to be root to work ]"
 echo
-echo "  [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
+echo "### [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
 exit ; fi
 ####
 ####
@@ -932,7 +932,7 @@ echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_binary $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
-echo "  [  ok  ] [ Output sended to $output_filelog ] [ show: $cmd_binary filelog ]" ;
+echo "$duo_md [  ok  ] [ Output sended to $output_filelog ] [ show: $cmd_binary filelog ]" ;
 exit ; fi
 ####
 ####
@@ -967,7 +967,7 @@ if [ "$first_option" = "-web" ] ; then
 if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
 if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
-"$NULL") echo "  [ info ] [ use: $cmd_binary -web option-choosen, OR to see options use: $cmd_binary options ]" ;
+"$NULL") echo "$duo_md [ info ] [ use: $cmd_binary -web option-choosen, OR to see options use: $cmd_binary options ]" ;
 $cmd_binary ; exit ;;
 *-config) echo "$message_without_web" ; exit ;;
 game-*) echo "$message_without_web" ; exit ;;
@@ -1215,7 +1215,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "upgrade" ]; then echo 
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
-"$NULL")echo "  [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+"$NULL")echo "$duo_md [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
 echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
@@ -1249,18 +1249,18 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
-case "$favorite_text_browser" in "$NULL") echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
-echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "  [ info ] [ download ] [ $url_web_development ]"
-echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_development ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_development &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
@@ -1270,9 +1270,9 @@ chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "  [  ok  ] [ downloaded $cmd_config developer version ]" ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config developer version ]" ;
 $directory_temporal/$cmd_config-installer install ; 
-else echo "  [ fail ] [ install fail ]"; fi ;
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 ####
 ####
 exit ; fi
@@ -1286,18 +1286,18 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "devmini-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
-echo "  [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
-case "$favorite_text_browser" in "$NULL") echo "  [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "  [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
-echo "  [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
 ####
 ####
 ####  English: download fwiptables
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "  [ info ] [ download ] [ $url_web_minidevelopment ]"
-echo "  [ info ] [ download ] [ Waiting several seconds .. ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_minidevelopment &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
@@ -1307,9 +1307,9 @@ chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
 if [ -s "$directory_temporal/$cmd_config-installer" ] ;
-then echo "  [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
 $directory_temporal/$cmd_config-installer install ; 
-else echo "  [ fail ] [ install fail ]"; fi ;
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 ####
 ####
 exit ; fi
@@ -1898,7 +1898,7 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
 if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then 
-echo "  [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
+echo "$duo_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
@@ -1923,7 +1923,7 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
 if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
-echo "  [ info ] [ loading firewall custom ]" ;
+echo "$duo_md [ info ] [ loading firewall custom ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
 name_firewall="$second_option" ;
@@ -3507,8 +3507,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "list-numrules" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List rules in numerical ] [ list-numrules md ] || ||"
-echo "  [ List iptables numerical rules ]"
-echo "  [ Lista reglas numericas de iptables ]"
+echo "$duo_md [ List iptables numerical rules ]"
+echo "$duo_md [ Lista reglas numericas de iptables ]"
 echo
 echo "               listnum : List iptables filter rules input and output ipv4 in numbers"
 echo "                       : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
@@ -4584,7 +4584,7 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -4666,7 +4666,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 case $second_option in
 #### 
@@ -4741,7 +4741,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 $command_zenity  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
 ####
@@ -4752,7 +4752,7 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Firewall Control" "02 Firewall List With Conceptual" "02 Firewall List With Numeral" \
 "03 Firewall Custom" "04 Firewall Launch" "05 Options State" "06 Tool sockets" \
@@ -5800,7 +5800,7 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5937,7 +5937,7 @@ exit ; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "cli-menu" ]; then $nada
-case "$command_dialog" in "$NULL") echo "  [ fail ] [ Install dialog to work ]" ; exit ;; esac
+case "$command_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog to work ]" ; exit ;; esac
 menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
 Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
@@ -6668,7 +6668,7 @@ exit ; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "code" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
-echo "  [ info ] [ code ] [ show source code for options from $cmd_binary ]"
+echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
 if [ "$second_option" = "$NULL" ]; then echo "$code_error" ; echo
 salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
@@ -6861,7 +6861,7 @@ echo "ff02::1 ip6-allnodes" >> $directory_temporal/$first_option-hosts
 echo "ff02::2 ip6-allrouters"  >> $directory_temporal/$first_option-hosts
 echo $cincuenta >> $directory_temporal/$first_option-hosts
 cat  $directory_temporal/$first_option-hosts | $command_sed "s/localhost.localdomain/$HOSTNAME/g" > /etc/hosts
-echo "  [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
+echo "$duo_md [ ok ] [ HOSTS RESTAURED ] [ FILE BASIC HOSTS FOR DEFAULT, hostname: $HOSTNAME ]"
 cat  /etc/hosts
 exit; fi
 ####
@@ -6981,8 +6981,8 @@ $command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "  [ info ] [ Deleting the iptables rules firewall ]" 
-echo "  [  ok  ] [ Firewall is erased ] [ Deleted rules ]"
+echo "$duo_md [ info ] [ Deleting the iptables rules firewall ]" 
+echo "$duo_md [  ok  ] [ Firewall is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
@@ -7022,10 +7022,10 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-route" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show route tables ] || ||"
 if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
-echo "  [ info ] [ ip route ipv4 ]"
+echo "$duo_md [ info ] [ ip route ipv4 ]"
 echo "$($command_ip -4 route)"
 echo
-echo "  [ info ] [ ip route ipv6 ]"
+echo "$duo_md [ info ] [ ip route ipv6 ]"
 echo "$($command_ip -6 route)"
 exit ; fi
 ####
@@ -7039,9 +7039,9 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "ss" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "  [ info ] [ The ipv6 sockets ]"
+echo "$duo_md [ info ] [ The ipv6 sockets ]"
 $command_ss -a6 | $command_sed 's/   / /g'
-echo "  [ info ] [ The ipv4 sockets ]"
+echo "$duo_md [ info ] [ The ipv4 sockets ]"
 $command_ss -a4 | $command_sed 's/   / /g'
 exit; fi
 ####
@@ -7055,9 +7055,9 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsof" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
 if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
-echo "  [ info ] [The sockets with lsof ipv6 ]"
+echo "$duo_md [ info ] [The sockets with lsof ipv6 ]"
 $command_lsof -i | $command_grep -i  ipv6
-echo "  [ info ] [The sockets with lsof ipv4 ]"
+echo "$duo_md [ info ] [The sockets with lsof ipv4 ]"
 $command_lsof -i | $command_grep -i  ipv4
 exit; fi
 ####
@@ -7071,7 +7071,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "netstat" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat ] || ||"
 if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
-echo "  [ info ] [The sockets list with netstat ]"
+echo "$duo_md [ info ] [The sockets list with netstat ]"
 $command_netstat -a -4 -6
 exit; fi
 ####
@@ -7085,10 +7085,10 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
-echo "  [ info ] [ Network Listen ] [ Listen ipv4 ]"
+echo "$duo_md [ info ] [ Network Listen ] [ Listen ipv4 ]"
 $command_ss -l4 | $command_sed 's/   / /g'
 echo $tab
-echo "  [ info ] [ Network Listen ] [ Listen ipv6 ]"
+echo "$duo_md [ info ] [ Network Listen ] [ Listen ipv6 ]"
 $command_ss -l6 | $command_sed 's/   / /g'
 exit; fi
 ####
@@ -7101,9 +7101,9 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-proxy" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ] ||"
-echo "  [ info ] [ Info address proxy ]"
-echo "  [ info ] [ Web http_proxy:    $http_proxy ]"
-echo "  [ info ] [ Web https_proxy:   $https_proxy ]"
+echo "$duo_md [ info ] [ Info address proxy ]"
+echo "$duo_md [ info ] [ Web http_proxy:    $http_proxy ]"
+echo "$duo_md [ info ] [ Web https_proxy:   $https_proxy ]"
 exit; fi
 ####
 ####
@@ -7116,7 +7116,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ] || ||"
 if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
-echo "  [ info ] [ The devices list with netstat for nat ]"
+echo "$duo_md [ info ] [ The devices list with netstat for nat ]"
 $command_netstat_nat
 exit; fi
 ####
@@ -7199,18 +7199,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ;;
@@ -7233,18 +7233,18 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 ;;
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
 ;;
@@ -7270,18 +7270,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n 
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -7304,18 +7304,18 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L -n
 ;;
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L -n
 ;;
@@ -7376,18 +7376,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -7410,18 +7410,18 @@ nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -7440,11 +7440,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is only s
 echo "$message_info_rules"
 fromrules="filter-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ####
@@ -7463,11 +7463,11 @@ echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 ] [ it is
 echo "$message_info_rules"
 fromrules="filter-forward-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L FORWARD $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
@@ -7484,11 +7484,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is only s
 echo "$message_info_rules"
 fromrules="filter-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
 ####
@@ -7507,11 +7507,11 @@ echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it i
 echo "$message_info_rules"
 fromrules="filter-forward-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t filter -v -L FORWARD $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
@@ -7528,11 +7528,11 @@ echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is only suff
 echo "$message_info_rules"
 fromrules="nat-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t nat -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t nat -v -L $list_rules_conceptual
 exit; fi
@@ -7549,11 +7549,11 @@ echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is only suffi
 echo "$message_info_rules"
 fromrules="nat-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t nat -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t nat -v -L $list_rules_conceptual 
 #### echo 
@@ -7570,11 +7570,11 @@ if [ "$first_option" = "listnum-filter4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-ip4"
 echo
-echo "  [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
+echo "$duo_md [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
 echo
 $command_iptables_legacy -v -L -n 
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -v -L -n
 exit; fi
@@ -7590,11 +7590,11 @@ if [ "$first_option" = "list-forwardnum" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-forward-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L FORWARD -n
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t filter -v -L FORWARD -n
 exit; fi
@@ -7610,11 +7610,11 @@ if [ "$first_option" = "listnum-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L -n
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L -n
 exit; fi
@@ -7630,11 +7630,11 @@ if [ "$first_option" = "list-forwardnum6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-forward-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t filter -v -L FORWARD -n
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -L FORWARD -n
 exit; fi
@@ -7651,11 +7651,11 @@ echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is only s
 echo "$message_info_rules"
 fromrules="mangle-ip4"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t mangle -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t mangle -v -L $list_rules_conceptual
 echo 
@@ -7673,11 +7673,11 @@ echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is only s
 echo "$message_info_rules"
 fromrules="mangle-ip6"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t mangle -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t mangle -v -L $list_rules_conceptual
 #### echo 
@@ -7695,11 +7695,11 @@ echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is only suff
 echo "$message_info_rules"
 fromrules="raw-ip4"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t raw -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
@@ -7716,11 +7716,11 @@ echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is only suff
 echo "$message_info_rules"
 fromrules="raw-ip6"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t raw -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
@@ -7737,11 +7737,11 @@ echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is only
 echo "$message_info_rules"
 fromrules="security-ip4"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t security -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t security -v -L $list_rules_conceptual
 exit; fi
@@ -7758,11 +7758,11 @@ echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is only
 echo "$message_info_rules"
 fromrules="security-ip6"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t security -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t security -v -L $list_rules_conceptual
 exit; fi
@@ -7778,11 +7778,11 @@ if [ "$first_option" = "list-ebtables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List ebtables ] || ||"
 fromrules="ebtables"
 echo
-echo "  [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
+echo "$duo_md [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t filter
 echo
-echo "  [ info ] [ ebtables: nat ethernet ] [ $fromrules ]"
+echo "$duo_md [ info ] [ ebtables: nat ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t nat
 exit; fi
@@ -7798,7 +7798,7 @@ if [ "$first_option" = "list-arptables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List arptables ipv4 ] || ||"
 fromrules="arptables"
 echo
-echo "  [ info ] [ arptables: filter arptables ] [ $fromrules ]"
+echo "$duo_md [ info ] [ arptables: filter arptables ] [ $fromrules ]"
 echo
 $command_arptables -L
 exit; fi
@@ -8022,9 +8022,9 @@ case $second_option in
 *) autorizado="$second_option" ;; esac
 echo "$autorizado ALL=(root) NOPASSWD: /usr/bin/$cmd_config" > /etc/sudoers.d/$cmd_config
 echo "alias fwiptables-cmd='sudo /usr/bin/$cmd_config'" >  /etc/bash_completion.d/$cmd_config
-echo "  [  ok  ] [ $autorizados will use $cmd_config ]"
-echo "  [  ok  ] [ $cmd_binary will use alias with sudo ]"
-if [ -f "/etc/sudoers.d/fwiptables-cmd" ] ; then echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
+echo "$duo_md [  ok  ] [ $autorizados will use $cmd_config ]"
+echo "$duo_md [  ok  ] [ $cmd_binary will use alias with sudo ]"
+if [ -f "/etc/sudoers.d/fwiptables-cmd" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 exit ; fi
 ####
 ####
@@ -8037,8 +8037,8 @@ exit ; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
 rm /etc/sudoers.d/$cmd_config &> /dev/null
 rm /etc/bash_completion.d/$cmd_config &> /dev/null
-echo "  [  ok  ] [ deleted auth sudo ] [ /etc/sudoers.d/$cmd_config         ]"
-echo "  [  ok  ] [ deleted alias cmd ] [ /etc/bash_completion.d/$cmd_config ]"
+echo "$duo_md [  ok  ] [ deleted auth sudo ] [ /etc/sudoers.d/$cmd_config         ]"
+echo "$duo_md [  ok  ] [ deleted alias cmd ] [ /etc/bash_completion.d/$cmd_config ]"
 exit; fi
 ####
 ####
@@ -8051,17 +8051,17 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" == "sudofw-listuser" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list sudoer and alias for $cmd_config ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then
-echo "  [  ok  ] [ sudoer file:  /etc/sudoers.d/$cmd_config         ]"
-echo "  [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
+echo "$duo_md [  ok  ] [ sudoer file:  /etc/sudoers.d/$cmd_config         ]"
+echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 ####
 if [ -f "/etc/bash_completion.d/$cmd_config" ] ; then
-echo "  [  ok  ] [ alias file:  /etc/bash_completion.d/$cmd_config ]"
-echo "  [ info ] [ Privileges ]  $(cat /etc/bash_completion.d/$cmd_config ) " ; fi
+echo "$duo_md [  ok  ] [ alias file:  /etc/bash_completion.d/$cmd_config ]"
+echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/bash_completion.d/$cmd_config ) " ; fi
 ####
 ####
 if [ ! -f "/etc/sudoers.d/$cmd_config" ] ; then
-echo "  [  ok  ] [ list users with root auth for launch $cmd_config ]"
-echo "  [ fail ] [ actual $cmd_config Without root sudo from users ]" ; fi
+echo "$duo_md [  ok  ] [ list users with root auth for launch $cmd_config ]"
+echo "$duo_md [ fail ] [ actual $cmd_config Without root sudo from users ]" ; fi
 ####
 exit;  fi
 ####
@@ -8075,9 +8075,9 @@ exit;  fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_config ]"
 echo 
-echo " [ alias file ] [  /etc/profile.d/$cmd_config ]"
+echo "$duo_md [ info ] [ alias file ] [  /etc/profile.d/$cmd_config ]"
 cat /etc/bash_completion.d/$cmd_config
-echo " [ alias file ] [  /etc/bash_completion.d/$cmd_config ]"
+echo "$duo_md [ info ] [ alias file ] [  /etc/bash_completion.d/$cmd_config ]"
 cat /etc/bash_completion.d/$cmd_config
 exit; fi
 ####
@@ -8090,11 +8090,11 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "md5sum" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ] || ||"
-if [ "$command_md5sum" == "$NULL" ]; then echo "  [ info ] [ Install md5sum ]"; exit ; fi
-if [ "$second_option" == "$NULL" ]; then echo "  [ info ] [ $cmd_binary md5sum file ] [ choose file ]"; exit; fi
+if [ "$command_md5sum" == "$NULL" ]; then echo "$duo_md [ info ] [ Install md5sum ]"; exit ; fi
+if [ "$second_option" == "$NULL" ]; then echo "$duo_md [ info ] [ $cmd_binary md5sum file ] [ choose file ]"; exit; fi
 file_md5="$2"
 if [ -f "$file_md5" ]; then "$command_md5sum" "$file_md5" ;
-else echo "  [ info ] [ $cmd_binary md5sum file ] [ file not found ]"; fi
+else echo "$duo_md [ info ] [ $cmd_binary md5sum file ] [ file not found ]"; fi
 exit; fi
 ####
 ####
@@ -8239,7 +8239,7 @@ clear ; exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($command_zenity $graphic_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
 "04 XTABLES / filter-ip4  / INPUT" "05 XTABLES / filter-ip4 / FORWARD"  "06 XTABLES / filter-ip4 / OUTPUT" \
@@ -8319,7 +8319,7 @@ else) exit ;; esac ; exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "iw-scan" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
 echo 
-if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "  [ info ] [ Install iw ]" ; exit ; fi
+if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $a up ;
 $command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done 
 exit; fi
@@ -8334,7 +8334,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "iw-info" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ] || ||"
 echo 
-if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "  [ info ] [ Install iw ]" ; exit ; fi
+if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_iw $a info ; done 
 exit; fi
 ####
@@ -8348,10 +8348,10 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-save" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ] || ||"
 echo 
-if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo "  [ info ] [ Install wpa_passphrase ]" ; exit ; fi
-if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "  [ info ] [ Install wpa_supplicant ]" ; exit ; fi
-if [ "$2" == "$NULL" ]; then  echo "  [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else ssid="$2"     ; fi
-if [ "$3" == "$NULL" ]; then  echo "  [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else password="$3" ; fi
+if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_passphrase ]" ; exit ; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_supplicant ]" ; exit ; fi
+if [ "$2" == "$NULL" ]; then  echo "$duo_md [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else ssid="$2"     ; fi
+if [ "$3" == "$NULL" ]; then  echo "$duo_md [ info ] [ launch: fwiptables-cmd wpa-save SSID PASSWORD ]" ; exit ; else password="$3" ; fi
 for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig "$dispositivo" up ;
 $command_wpa_passphrase "$ssid" "$password" > "$directory_default/$dispositivo-$ssid.wpa"
 $command_wpa_supplicant -B -i "$dispositivo" -c "$directory_default/$dispositivo-$ssid.wpa"
@@ -8369,10 +8369,10 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-load" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: $cmd_binary wpa-load wpa_file1 ] || ||"
 echo 
-if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "  [ info ] [ Install wpa_supplicant ]" ; exit ; fi
+if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_supplicant ]" ; exit ; fi
 if [ "$($command_find $directory_default | $command_grep \\.wpa)" == "$NULL" ]; then
-echo "  [ Without old wpa file saved, run: $cmd_binary wpa-save SSID PASSWORD ]"; 
-else echo "  [ wpa old file saved: ]" 
+echo "$duo_md [ Without old wpa file saved, run: $cmd_binary wpa-save SSID PASSWORD ]"; 
+else echo "$duo_md [ wpa old file saved: ]" 
 $command_find $directory_default | $command_grep \\.wpa | cut -d "/" -f 6- ; fi
 if [ -f "$directory_default/$second_option" ]; then
 for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do 
@@ -8391,7 +8391,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "dhcp-client" ]; then e
 echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp_command" ] || ||"
 echo 
 if [ "$program_minimal" == "no" ] && [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
-else echo "  [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
+else echo "$duo_md [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
 exit; fi
 ####
 ####
@@ -8436,9 +8436,9 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
-echo "  [ info ] [ local net: ip lan .. ]"
+echo "$duo_md [ info ] [ local net: ip lan .. ]"
 $command_ip -4 route | $command_grep -i -v default
-echo "  [ info ] [ local scan: arp lan scan .. ]"
+echo "$duo_md [ info ] [ local scan: arp lan scan .. ]"
 #### $command_arp_scan -l -x & sleep $server_waiting && killall -9 $command_arp_scan
 timeout -s SIGINT -v $server_waiting $command_arp_scan -l -x
 exit; fi
@@ -8452,10 +8452,10 @@ exit; fi
 ####
 if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
-echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
+echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
 echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
-echo "  [  ok  ] [ Regenerated: $cmd_binary values for default in $default_preferences ]"
+echo "$duo_md [  ok  ] [ Regenerated: $cmd_binary values for default in $default_preferences ]"
 exit; fi
 ####
 ####
@@ -8470,7 +8470,7 @@ echo "$header_ok [ $first_option ] [ show the default $cmd_binary ] || ||"
 echo 
 cat $default_preferences
 echo 
-echo "  [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
+echo "$duo_md [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
@@ -8484,7 +8484,7 @@ if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default $cmd_binary ] || ||"
 echo 
 echo 
-echo "  [ info ] [ edit file $default_preferences to change variables ]"
+echo "$duo_md [ info ] [ edit file $default_preferences to change variables ]"
 ####
 ####
 #### english: make security copy file
@@ -8523,12 +8523,12 @@ echo
 echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
 echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
 echo 
-echo "  [ info ] [ Listing firewall names ]"
+echo "$duo_md [ info ] [ Listing firewall names ]"
 $command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
 $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
 $command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
 echo
-echo "  [  ok  ] [ Listed firewall names ]"
+echo "$duo_md [  ok  ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
@@ -8611,7 +8611,7 @@ echo $give_load
 #### English: show message
 ####
 ####
-echo "  [ info ] [ Loading rules ]"
+echo "$duo_md [ info ] [ Loading rules ]"
 ####
 ####
 #### English: Remove all rules
@@ -8635,7 +8635,7 @@ cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restor
 cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "  [  ok  ] [ firewall loaded ] [ $second_option ]"
+echo "$duo_md [  ok  ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
@@ -8665,7 +8665,7 @@ case "$second_option" in
 esac
 ####
 ####
-echo "  [ info ] [ saving firewall ] [ $archivofin ]"
+echo "$duo_md [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
 $command_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -8682,7 +8682,7 @@ if [ "$command_ip6tables_legacy"  = "$NULL"  ]; then $nada ; else
 $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6 ; fi
 ####
 ####
-echo "  [  ok  ] [ firewall saved ] [ $archivofin ]"
+echo "$duo_md [  ok  ] [ firewall saved ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -8693,7 +8693,7 @@ $command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
-echo "  [  ok  ] [ firewall listed ] [ $archivofin ]"
+echo "$duo_md [  ok  ] [ firewall listed ] [ $archivofin ]"
 exit; fi
 ####
 ####
@@ -8716,7 +8716,7 @@ $command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
-echo "  [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
+echo "$duo_md [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
 echo "$cincuenta $archivofin-arptables"
 cat $directory_fwrecover/$archivofin-arptables
 echo "$cincuenta $archivofin-ebtables"
@@ -8729,7 +8729,7 @@ echo "$cincuenta $archivofin-nft-ipv6"
 cat $directory_fwrecover/$archivofin-nft-ipv6
 echo "$cincuenta archivofin-legacy-ipv6"
 cat $directory_fwrecover/$archivofin-legacy-ipv6
-echo "  [ ok ] [ firewall readed ] [ $archivofin ]"
+echo "$duo_md [ ok ] [ firewall readed ] [ $archivofin ]"
 echo 
 exit; fi
 ####
@@ -8838,7 +8838,7 @@ case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; e
 $cmd_binary stop
 echo $head_waiting_gui
 if [ "$second_option" = "$NULL" ]; then $nada ; else server_ping_ipv4="$second_option"; fi
-echo "  [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
+echo "$duo_md [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
 timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
 $cmd_binary continue
 echo 
@@ -8863,7 +8863,7 @@ case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; e
 $cmd_binary stop
 echo $head_waiting_gui
 if [ "$second_option" = "$NULL" ]; then $nada ; else server_ping_ipv6="$second_option"; fi
-echo "  [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
+echo "$duo_md [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
 timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
 $cmd_binary continue
 echo 
@@ -8888,7 +8888,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 $cmd_binary stop
 echo $head_waiting_gui
 if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
-echo "  [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
+echo "$duo_md [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
 timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
 echo $head_waiting_gui
 $cmd_binary continue
@@ -8914,7 +8914,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 $cmd_binary stop
 echo $head_waiting_gui
 if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
-echo "  [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
+echo "$duo_md [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
 timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
 $cmd_binary continue
 echo 
@@ -8939,7 +8939,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 $cmd_binary stop
 echo $head_waiting_gui
 if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
-echo "  [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
+echo "$duo_md [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
 timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
 echo $head_waiting_gui
 $cmd_binary continue
@@ -8965,7 +8965,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 $cmd_binary stop
 echo $head_waiting_gui
 if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
-echo "  [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
+echo "$duo_md [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
 timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
 echo $head_waiting_gui
 $cmd_binary continue
@@ -8987,7 +8987,7 @@ case "$second_option" in
 "$NULL") echo "$$tab [ info ] [ Please select a one host to launch host ]"
 echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
-echo "  [ ok ] [ host $trazador ]"
+echo "$duo_md [ ok ] [ host $trazador ]"
 $command_host $trazador
 echo 
 exit; fi
@@ -9007,7 +9007,7 @@ case "$second_option" in
 "$NULL") echo "$tab [ info ] [ Use: Please select a one host to launch dig ]"
 echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
-echo "  [ ok ] [ dig $trazador ]"
+echo "$duo_md [ ok ] [ dig $trazador ]"
 $command_dig $trazador | $command_grep ^$trazador
 echo 
 exit; fi
@@ -9027,7 +9027,7 @@ case "$second_option" in
 "$NULL") echo "$cinco Please select a one host to launch resolveip"
 echo "$tab Selecting host to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
-echo "  [ ok ] [ resolveip $trazador ]"
+echo "$duo_md [ ok ] [ resolveip $trazador ]"
 $command_resolveip $trazador
 echo 
 exit; fi
@@ -9046,7 +9046,7 @@ case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup 
 case "$second_option" in
 "$NULL") echo "$cinco Selecting host geoip to fast.com for default" ; trazador="fast.com" ;;
 *) trazador="$second_option" ;; esac
-echo "  [ ok ] [ geoiplookup -i $trazador ]"
+echo "$duo_md [ ok ] [ geoiplookup -i $trazador ]"
 $command_geoiplookup -i $trazador
 echo 
 exit; fi
@@ -9083,7 +9083,7 @@ echo "$header_ok [ $first_option ]  [ scan with nmap tcp ] || ||"
 echo 
 case $command_nmap in $NULL) echo install nmap ; exit ;; esac
 echo "$tab [ info ] [ nmap $first_option ip/mask ]"
-echo "  [ ok ] [ Stoped firewall while launching nmap ]"
+echo "$duo_md [ ok ] [ Stoped firewall while launching nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -9095,7 +9095,7 @@ $cmd_binary stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "  [ ok ] [ Doing nmap ]"
+echo "$duo_md [ ok ] [ Doing nmap ]"
 $command_nmap -sT $2
 ####
 ####
@@ -9105,7 +9105,7 @@ $command_nmap -sT $2
 $cmd_binary continue
 ####
 ####
-echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo "$duo_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
 ####
@@ -9121,7 +9121,7 @@ echo "$header_ok [ $first_option ]  [ scan with nmap syn ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
 echo "$tab [ info ] [ nmap $first_option ip/mask ]"
-echo "  [ ok ] [ Stoped firewall while launch nmap ]"
+echo "$duo_md [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -9133,7 +9133,7 @@ $cmd_binary stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "  [ ok ] [ Doing nmap ]"
+echo "$duo_md [ ok ] [ Doing nmap ]"
 $command_nmap -sF $2
 ####
 ####
@@ -9141,7 +9141,7 @@ $command_nmap -sF $2
 ####
 ####
 $cmd_binary continue
-echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo "$duo_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
 ####
@@ -9157,7 +9157,7 @@ echo "$header_ok [ $first_option ]  [ scan with nmap fin ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
 echo "$tab [ info ] [ nmap $first_option ip/mask ]"
-echo "  [ ok ] [ Stoped firewall while launch nmap ]"
+echo "$duo_md [ ok ] [ Stoped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -9169,7 +9169,7 @@ $cmd_binary stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "  [ ok ] [ Doing nmap ]"
+echo "$duo_md [ ok ] [ Doing nmap ]"
 $command_nmap -sF $2
 ####
 ####
@@ -9179,7 +9179,7 @@ $command_nmap -sF $2
 $cmd_binary continue
 ####
 ####
-echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo "$duo_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
 ####
@@ -9207,7 +9207,7 @@ $cmd_binary stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "  [ ok ] [ Doing nmap ]"
+echo "$duo_md [ ok ] [ Doing nmap ]"
 $command_nmap -sU $2
 ####
 ####
@@ -9217,7 +9217,7 @@ $command_nmap -sU $2
 $cmd_binary continue
 ####
 ####
-echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo "$duo_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
 ####
@@ -9233,7 +9233,7 @@ echo "$header_ok [ $first_option ]  [ scan with nmap ping ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
 echo "$tab [ info ] [ nmap $first_option ip/mask ]"
-echo "  [ ok ] [ Stopped firewall while launch nmap ]"
+echo "$duo_md [ ok ] [ Stopped firewall while launch nmap ]"
 ####
 ####
 #### english: stop the firewall #### spanish: para el firewall
@@ -9245,7 +9245,7 @@ $cmd_binary stop
 #### english: launch nmap #### spanish: lanza nmap
 ####
 ####
-echo "  [ ok ] [ Doing nmap ]"
+echo "$duo_md [ ok ] [ Doing nmap ]"
 $command_nmap -sn $2
 ####
 ####
@@ -9253,7 +9253,7 @@ $command_nmap -sn $2
 ####
 ####
 $cmd_binary continue
-echo "  [ ok ] [ Reloaded firewall rules after run nmap ]"
+echo "$duo_md [ ok ] [ Reloaded firewall rules after run nmap ]"
 echo 
 exit; fi
 ####
@@ -9304,7 +9304,7 @@ echo "$header_ok [ $first_option ]  [ test the ram speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 case "$(mount | $command_grep -i  "/tmp type tmpfs" | wc -l)" 
 in "1")  ;; *) echo "$cinco Mount /tmp with tmpfs so: mount -t tmpfs tmpfs /tmp"; exit ;; esac
-echo "  [ Test speed with the temporal file /tmp/borrame.img.img about 100Mb ]"
+echo "$duo_md [ Test speed with the temporal file /tmp/borrame.img.img about 100Mb ]"
 ####
 ####
 $command_dd if=/dev/zero of=/tmp/borrame.img.img status=progress bs=1M count=100
@@ -9350,8 +9350,8 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
-echo "  [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
-echo "  [ info ] [ For example with 2ghz/cpu is 5 seconds aprox. ] "
+echo "$duo_md [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
+echo "$duo_md [ info ] [ For example with 2ghz/cpu is 5 seconds aprox. ] "
 time echo 'scale=2000; a(1)*4' | $command_bc -l | tail -0 
 exit; fi
 ####
@@ -9364,8 +9364,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: $cmd_binary preferences-read ] [ for only protocol http ] || ||"
-echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
+echo "$duo_md [ info ] [ for choose default radio see: $cmd_binary preferences-read ] [ for only protocol http ] || ||"
+echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -9373,15 +9373,15 @@ case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console
 ####
 if [ "$second_option" = "$NULL" ]; then $nada
 #### emisora="$radio_mp3"
-echo "  [ info ] [ launch $cmd_binary radio-rockfm ]       [ for radio rockfm    ]"
-echo "  [ info ] [ launch $cmd_binary radio-kissfm ]       [ for radio kissfm    ]"
-echo "  [ info ] [ launch $cmd_binary radio-cadena100 ]    [ for radio cadena100 ]"
-echo "  [ info ] [ launch $cmd_binary radio-mp3 link-mp3 ] [ to open one link    ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-rockfm ]       [ for radio rockfm    ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-kissfm ]       [ for radio kissfm    ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-cadena100 ]    [ for radio cadena100 ]"
+echo "$duo_md [ info ] [ launch $cmd_binary radio-mp3 link-mp3 ] [ to open one link    ]"
 exit
 else emisora="$second_option"; fi
 ####
 ####
-echo "  [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -9396,8 +9396,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
-echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
+echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
+echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -9408,7 +9408,7 @@ emisora="$radio_cadena100"
 else emisora="$second_option"; fi
 ####
 ####
-echo "  [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -9423,8 +9423,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
-echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
+echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
+echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -9435,7 +9435,7 @@ emisora="$radio_rockfm"
 else emisora="$second_option"; fi
 ####
 ####
-echo "  [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -9450,8 +9450,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
-echo "  [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
-echo "  [ info ] [ Usually it do not working likes root, probe as user ]"
+echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
+echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
@@ -9462,7 +9462,7 @@ emisora="$radio_kissfm"
 else emisora="$second_option"; fi
 ####
 ####
-echo "  [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
 echo 
 echo 
 sudo -u $(logname) $favorite_radio_command $emisora
@@ -9501,11 +9501,11 @@ binary_red="$(echo   " ibase=A   ; obase=2  ; $number_a" | bc)"
 binary_green="$(echo " ibase=A   ; obase=2  ; $number_b" | bc)"
 binary_blue="$(echo  " ibase=A   ; obase=2  ; $number_c" | bc)"
 ##
-echo "  [ Colour RGB ________:  $number_a $number_b $number_c ]"
-echo "  [ Getting colours ] [ binary and hexadecimal ]"
+echo "$duo_md [ Colour RGB ________:  $number_a $number_b $number_c ]"
+echo "$duo_md [ Getting colours ] [ binary and hexadecimal ]"
 echo " Number binary________:  $binary_red $binary_green $binary_blue"
 echo " Colour HEXADECIMAL___:  $hexa_red $hexa_green $hexa_blue"
-echo "  [ ok ] [ Colour converted ]"
+echo "$duo_md [ ok ] [ Colour converted ]"
 fi; exit ; fi
 ####
 ####
@@ -9533,11 +9533,11 @@ rgb_red="$(echo   " ibase=16; obase=A ; $hexa_a" | bc)"
 rgb_green="$(echo " ibase=16; obase=A ; $hexa_b" | bc)"
 rgb_blue="$(echo  " ibase=16; obase=A ; $hexa_c" | bc)"
 ##
-echo "  [ Colour HEXADECIMAL_:  $hexa_a  $hexa_b  $hexa_c ]"
-echo "  [ Getting colours ] [ binary and RGB ]"
+echo "$duo_md [ Colour HEXADECIMAL_:  $hexa_a  $hexa_b  $hexa_c ]"
+echo "$duo_md [ Getting colours ] [ binary and RGB ]"
 echo " Number binary________:  $binary_red  $binary_green  $binary_blue "
 echo " Colour RGB __________:  $rgb_red  $rgb_green  $rgb_blue "
-echo "  [ ok ] [ Colour converted ]"
+echo "$duo_md [ ok ] [ Colour converted ]"
 fi ; exit; fi
 ####
 ####
@@ -9550,7 +9550,7 @@ fi ; exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-domain" ] ; then
 file_domain="$directory_default/$cmd_binary-domain"
 if [ -s $file_domain ]; then $nada 
-else echo "  [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
+else echo "$duo_md [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
 $favorite_text_browser -source $url_web_domain &> $file_domain ; fi
 numero_maximo="$(cat $file_domain | wc -l)"
 numero_aleatorio_one="$(($RANDOM%"$numero_maximo"))"
@@ -9559,7 +9559,7 @@ type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
-case "$command_dialog" in "$NULL") echo "  [ fail ] [ Install dialog ]"; exit ;; esac
+case "$command_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog ]"; exit ;; esac
 $command_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Is this a country domain or a generic domain ? :  $domain_one"  0 0
 $command_dialog  --stdout --title "Play game domain ole" \
@@ -9568,7 +9568,7 @@ clear ; exit ; fi
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ] ; then
-case "$command_zenity" in "$NULL") echo "  [ fail ] [ Install zenity ]"; exit ;; esac
+case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity ]"; exit ;; esac
 $(zenity $graphic_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
 $(zenity $graphic_dimension --info --title="gui game-domain" \
@@ -9651,17 +9651,17 @@ esac
 if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
-if [ -s "$language_english" ]; then echo; else echo "  [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
+if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-english
-echo "  [ ok ] [ english dictionary downloaded ]" ; fi ; fi
+echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
-if [ -s "$language_spanish" ]; then echo; else echo "  [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
+if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-spanish
-echo "  [ ok ] [ diccionario español descargado ]" ; fi ; fi
+echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
 text_1="$texten_1"
@@ -9777,17 +9777,17 @@ if [ "$?" -eq "1" ]; then exit; fi
 if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
-if [ -s "$language_english" ]; then echo; else echo "  [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
+if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-english
-echo "  [ ok ] [ english dictionary downloaded ]" ; fi ; fi
+echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
-if [ -s "$language_spanish" ]; then echo; else echo "  [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
+if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-spanish
-echo "  [ ok ] [ diccionario español descargado ]" ; fi ; fi
+echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 #####
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
 ##### language of interface english
@@ -9900,17 +9900,17 @@ echo; done
 if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
-if [ -s "$language_english" ]; then echo; else echo "  [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
+if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-english
-echo "  [ ok ] [ english dictionary downloaded ]" ; fi ; fi
+echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish" 
-if [ -s "$language_spanish" ]; then echo; else echo "  [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
+if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
 $favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-spanish
-echo "  [ ok ] [ diccionario español descargado ]" ; fi ; fi
+echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
 text_1="$texten_1"
@@ -10378,25 +10378,25 @@ fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
-if [ "$command_lsof" == "$NULL" ] ; then echo "  [ fail ] [ Install lsof ]" ; exit ; fi
+if [ "$command_lsof" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install lsof ]" ; exit ; fi
 #### ssh tunnel
-echo "  [ info ] [ 127.0.0.1 ] [ Above ssh tunnel process ] [ search ssh tunnel with ps ]"
+echo "$duo_md [ info ] [ 127.0.0.1 ] [ Above ssh tunnel process ] [ search ssh tunnel with ps ]"
 ps aux | $command_grep "ssh -f -N -D" | $command_grep -iv "grep ssh"
 #### sshd server
-echo "  [ info ] [ 127.0.0.1 ] [ Above server sshd ] [ search sshd with lsof ]"
+echo "$duo_md [ info ] [ 127.0.0.1 ] [ Above server sshd ] [ search sshd with lsof ]"
 $command_lsof -i | $command_grep -i  sshd
 #### sshd file
 ssh_file="/etc/ssh/sshd_config"
-echo "  [ info ] [ 127.0.0.1 ] [ Above config file ] [ options: gatewaysports and forwardings ]"
-if [ ! -f "$ssh_file" ] ; then echo "  [ without file $ssh_file ]"
+echo "$duo_md [ info ] [ 127.0.0.1 ] [ Above config file ] [ options: gatewaysports and forwardings ]"
+if [ ! -f "$ssh_file" ] ; then echo "$duo_md [ without file $ssh_file ]"
 else cat $ssh_file | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; fi
 #### sshd directory
 ssh_dir="/etc/ssh/sshd_config.d"
-echo "  [ info ] [ 127.0.0.1 ] [ Above config directory ] [ options: gatewaysports and forwardings ]"
-if [ ! -d "$ssh_dir" ] ; then echo "  [ without directory $ssh_dir ]"
+echo "$duo_md [ info ] [ 127.0.0.1 ] [ Above config directory ] [ options: gatewaysports and forwardings ]"
+if [ ! -d "$ssh_dir" ] ; then echo "$duo_md [ without directory $ssh_dir ]"
 else for a in $($command_ls "$ssh_dir"); do cat $a | $command_grep -i -v ^# | $command_grep -E -i "gatewayports|forwarding"; done ; fi
-echo "  [ info ] [ server ] [ configure ] [ $cmd_binary sshd-tunnel-on user@server ] "
-echo "  [ info ] [ client ] [ configure ] [ socks=user@server:1080 | http_proxy=user@server:1080 | https_proxy=user@server:1080 ]"
+echo "$duo_md [ info ] [ server ] [ configure ] [ $cmd_binary sshd-tunnel-on user@server ] "
+echo "$duo_md [ info ] [ client ] [ configure ] [ socks=user@server:1080 | http_proxy=user@server:1080 | https_proxy=user@server:1080 ]"
 exit; fi
 ####
 ####
@@ -10408,10 +10408,10 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ on: ssh server socks on port 1080 like active ssh tunnel ] || ||"
-if [ "$second_option" == "$NULL" ]; then echo "  [ fail ] [ type: $cmd_binary sshd-tunnel-on user@server ]"; exit ; fi
-echo "  [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
+if [ "$second_option" == "$NULL" ]; then echo "$duo_md [ fail ] [ type: $cmd_binary sshd-tunnel-on user@server ]"; exit ; fi
+echo "$duo_md [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
 ssh -f -N -D 1080 "$second_option" || echo "error no tunnel"
-echo "  [  ok  ] [ Now, tunnel ssh active in port 1080 ] [ $second_option ]"
+echo "$duo_md [  ok  ] [ Now, tunnel ssh active in port 1080 ] [ $second_option ]"
 exit; fi
 ####
 ####
@@ -10423,10 +10423,10 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
-echo "  [ info ] [ killing procees with: ssh -f -N -D ]"
+echo "$duo_md [ info ] [ killing procees with: ssh -f -N -D ]"
 for parada in $(ps aux | $command_grep "ssh \-f \-N \-D" | $command_grep -iv "grep ssh" | awk '{print $2}' -);
 do echo  "  [ info ] [ kill pid $parada ]"; kill -9 "$parada" ; done
-echo "  [  ok  ] [ sshd-tunnel-off finished ]"
+echo "$duo_md [  ok  ] [ sshd-tunnel-off finished ]"
 exit; fi
 ####
 ####
@@ -10447,9 +10447,9 @@ case "$second_option" in
 esac
 if [ ! -f "$third_option" ] ; then echo " choose one existent file for pdf-input" ; exit ; fi
 #### program
-if [ "$command_gs" == "$NULL" ]; then echo " [ info ] install ghostscript" ; exit ; fi
-$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$quad_option" "$third_option" && echo " [ info ] [ working.. ]"
-echo " [  ok  ] [ finished ]"
+if [ "$command_gs" == "$NULL" ]; then echo "$duo_md [ info ] install ghostscript" ; exit ; fi
+$command_gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS="$capacity" -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$quad_option" "$third_option" && echo "$duo_md [ info ] [ working.. ]"
+echo "$duo_md [  ok  ] [ finished ]"
 exit; fi
 #### :rutina-final-pdf-resize:
 ##########   english: pdf-unite  join several pdf in one pdf    ##########
@@ -10457,10 +10457,10 @@ exit; fi
 #### :rutina-inicial-pdf-unite:
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-unite" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ all group pdf in this folder join in pdf_unite.pdf ] || ||"
-if [ "$command_pdfunite" == "$NULL" ]; then echo " [ info ] install poppler utils" ; exit ; fi
+if [ "$command_pdfunite" == "$NULL" ]; then echo "$duo_md [ info ] install poppler utils" ; exit ; fi
 if [ ! -d "$second_option" ] ; then echo " Choose one directory directory" ; exit ; fi
-$command_pdfunite $second_option/*.pdf pdf_unite.pdf && echo " [ info ] [ working.. Join all pdf in $second_option folder to pdf_unite.pdf ]"
-echo " [  ok  ] [ finished ]"
+$command_pdfunite $second_option/*.pdf pdf_unite.pdf && echo "$duo_md [ info ] [ working.. Join all pdf in $second_option folder to pdf_unite.pdf ]"
+echo "$duo_md [  ok  ] [ finished ]"
 exit; fi
 #### :rutina-final-pdf-unite:
 ##########   english: pdf-separate  join several pdf in one pdf    ##########
@@ -10468,10 +10468,10 @@ exit; fi
 #### :rutina-inicial-pdf-separate:
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-separate" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ split one pdf in several pdf ] || ||"
-if [ "$command_pdfseparate" == "$NULL" ]; then echo " [ info ] install poppler utils" ; exit ; fi
+if [ "$command_pdfseparate" == "$NULL" ]; then echo "$duo_md [ info ] install poppler utils" ; exit ; fi
 if [ ! -f "$second_option" ] ; then echo " Choose one existent file" ; exit ; fi
-$command_pdfseparate $second_option pdf-separate-%d.pdf	&& echo " [ info ] [ working.. ] [ output: pdf-separate-1,2... .pdf ]"
-echo " [  ok  ] [ finished ]"
+$command_pdfseparate $second_option pdf-separate-%d.pdf	&& echo "$duo_md [ info ] [ working.. ] [ output: pdf-separate-1,2... .pdf ]"
+echo "$duo_md [  ok  ] [ finished ]"
 exit; fi
 #### :rutina-final-pdf-separate:
 ##########   english: qemu-start  Start qemu machine        ##########
@@ -10495,7 +10495,7 @@ qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 $qemu_full &
-echo " [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
+echo "$duo_md [ ok ] [ started ] [ booted vm ] [ arch: $architecture_vm ] [ vm: $qemu_vm ] [ display: $display_vm ]"
 exit
 fi
 #### :rutina-final-qemu-start:
@@ -10520,7 +10520,7 @@ qemu_full="$command_qemu $qemu_options -boot menu=on -hda $qemu_vm $qemu_cdrom"
 ####
 if [ ! -f "$qemu_vm" ]; then echo " VM image is not ready" ; exit ; fi 
 echo $qemu_full
-echo " [ ok ] [ probe ]"
+echo "$duo_md [ ok ] [ probe ]"
 exit
 fi
 #### :rutina-final-qemu-probe:
@@ -10530,7 +10530,7 @@ fi
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-status" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ status qemu machine ] || ||"
 ps -Af | grep -i  "qemu-system" 
-echo " [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
+echo "$duo_md [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
 exit; fi
 #### :rutina-final-qemu-status:
 ##########   english: qemu-stop  Stop qemu machine        ##########
@@ -10539,9 +10539,9 @@ exit; fi
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ stop qemu machine ] || ||"
 ps -Af | grep -i  "$architecture_vm"
-echo " [  ok  ] [ status ] [ process listed ]"
+echo "$duo_md [  ok  ] [ status ] [ process listed ]"
 killall -9 "$architecture_vm"
-echo " [ ok ] [ stopped ] [ stopped all vm ] [ $architecture_vm ]"
+echo "$duo_md [ ok ] [ stopped ] [ stopped all vm ] [ $architecture_vm ]"
 exit; fi
 #### :rutina-final-qemu-stop:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
@@ -10567,7 +10567,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "autolog" ] ; then  ech
 echo "$header_ok [ $first_option ] [ show "$output_autolog" ] || ||"
 cat  "$output_autolog"
 echo
-echo "  [ info ] [ last end of file showed ] [ $output_autolog ]"
+echo "$duo_md [ info ] [ last end of file showed ] [ $output_autolog ]"
 exit; fi
 ####
 ####
@@ -10579,7 +10579,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "log-ssh" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ search sshd in logs ] || ||"
-if [ "$command_zgrep" == "$NULL" ] ; then echo "  [ fail ] [ Install zgrep ]"; exit ; fi
+if [ "$command_zgrep" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install zgrep ]"; exit ; fi
 $command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
 exit; fi
 ####
@@ -10592,7 +10592,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "log-search" ]; then echo $give_cover
 echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] || ||"
-if [ "$command_zgrep" == "$NULL" ] ; then echo "  [ fail ] [ Install zgrep ]"; exit ; fi
+if [ "$command_zgrep" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install zgrep ]"; exit ; fi
 case "$second_option" in
 $NULL) echo "$tab [ fail ] [ use: $cmd_binary $first_option pattern ]" ;;
 *) $command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "$second_option" ;;
@@ -10698,14 +10698,14 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "gpg-notes" ]; then
 ####
 if [ "$second_option" == "-list" ] || [ "$second_option" == "$NULL" ] ; then
 $command_find "$directory_default" | $command_grep -i .gpg | $command_sed 's/\.gpg//g'
-echo "  [ info ] [ type $cmd_binary gpg-notes name-of-gpg" ; exit ; fi
+echo "$duo_md [ info ] [ type $cmd_binary gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
 ####  when it is -gui
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-if [ "$command_zenity" == "$NULL" ]; then echo "  [ fail ] [ install zenity ]"; exit ; fi
+if [ "$command_zenity" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity ]"; exit ; fi
 original="$($command_zenity $graphic_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
 --text "$($command_find $directory_default | $command_grep .gpg | $command_sed 's/\.gpg//g' )")"
 origina="$(echo "$original" | $command_sed s/\\///g -)" ;
@@ -10740,7 +10740,7 @@ exit; fi
 ####
 ####
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
-if [ "$command_dialog" == "$NULL" ]; then echo "  [ fail ] [ install dialog ]"; exit ; fi
+if [ "$command_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install dialog ]"; exit ; fi
 original="$($command_dialog --stdout --title "  [ NAME file gpg to choose WITHOUT path ] " \
 --inputbox "$($command_find $directory_default/*.gpg | $command_sed 's/\.gpg//g')" 0 0 )"
 origina="$(echo "$original" | $command_sed s/\\///g -)"  ;
@@ -10826,15 +10826,15 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lpinfo" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ] || ||"
-echo "  [ info] [ lpinfo -v -l ]"
+echo "$duo_md [ info] [ lpinfo -v -l ]"
 echo
-$command_lpinfo -v -l || echo "  [ fail ] install lpinfo"
+$command_lpinfo -v -l || echo "$duo_md [ fail ] install lpinfo"
 echo
-echo "  [ info ] [ lpstat -v ]"
+echo "$duo_md [ info ] [ lpstat -v ]"
 echo
-$command_lpstat -v || echo "  [ fail ] install lpstat"
+$command_lpstat -v || echo "$duo_md [ fail ] install lpstat"
 echo 
-echo "  [ info ] [ Use lp or lpr to print with those printers, or lpadmin to admin. ]"
+echo "$duo_md [ info ] [ Use lp or lpr to print with those printers, or lpadmin to admin. ]"
 exit; fi
 ####
 ####
@@ -10846,8 +10846,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsblk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list disks ] || ||"
-echo "  [ info ] [ lsblk ]"
-$command_lsblk -o name,size,fsuse%,label,mountpoints || echo "  [ fail ] install lsblk"
+echo "$duo_md [ info ] [ lsblk ]"
+$command_lsblk -o name,size,fsuse%,label,mountpoints || echo "$duo_md [ fail ] install lsblk"
 exit; fi
 ####
 ####
@@ -10859,8 +10859,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsusb" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list usb ] || ||"
-echo "  [ info ] [ lsusb ]"
-$command_lsusb || echo "  [ fail ] install lsusb"
+echo "$duo_md [ info ] [ lsusb ]"
+$command_lsusb || echo "$duo_md [ fail ] install lsusb"
 exit; fi
 ####
 ####
@@ -10872,7 +10872,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lscpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list cpu ] || ||"
-echo "  [ info ] [ lscpu ]"
+echo "$duo_md [ info ] [ lscpu ]"
 $command_lscpu || echo  "  [ fail ] install lscpu"
 exit; fi
 ####
@@ -10885,7 +10885,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lspci" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list pci hardware sockets ] || ||"
-echo "  [ info ] [ lspci ]"
+echo "$duo_md [ info ] [ lspci ]"
 $command_lspci || echo  "  [ fail ] install lspci"
 exit; fi
 ####
@@ -10898,8 +10898,8 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsgpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list gpu ] || ||"
-echo "  [ info ] [ lsgpu ]"
-$command_lsgpu || echo "  [ fail ] install lsgpu"
+echo "$duo_md [ info ] [ lsgpu ]"
+$command_lsgpu || echo "$duo_md [ fail ] install lsgpu"
 exit; fi
 ####
 ####
@@ -10911,7 +10911,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "lshw" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list hardware ] || ||"
-echo "  [ info ] [ lshw ]"
+echo "$duo_md [ info ] [ lshw ]"
 $command_lshw || echo  "  [ fail ] install lshw"
 exit; fi
 ####
@@ -10925,7 +10925,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ] || ||"
 cat /etc/hosts
-echo "  [ ok ] [ This file is /etc/hosts ]"
+echo "$duo_md [ ok ] [ This file is /etc/hosts ]"
 exit; fi
 ####
 ####
@@ -10938,7 +10938,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "protocols" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ] || ||"
 cat /etc/protocols  | $command_sed s/\&//g 
-echo "  [ ok ] [ This file is /etc/protocols ]"
+echo "$duo_md [ ok ] [ This file is /etc/protocols ]"
 exit; fi
 ####
 ####
@@ -10951,7 +10951,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "services" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/services ] || ||"
 cat /etc/services | $command_sed s/\&//g 
-echo "  [ ok ] [ This file is /etc/services ]"
+echo "$duo_md [ ok ] [ This file is /etc/services ]"
 exit; fi
 ####
 ####
@@ -10964,7 +10964,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/allow ] || ||"
 cat /etc/hosts.allow
-echo "  [ ok ] [ This file is /etc/hosts.allow ]"
+echo "$duo_md [ ok ] [ This file is /etc/hosts.allow ]"
 exit; fi
 ####
 ####
@@ -10977,7 +10977,7 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/deny ] || ||"
 cat /etc/hosts.deny
-echo "  [ ok ] [ This file is /etc/hosts.deny ]"
+echo "$duo_md [ ok ] [ This file is /etc/hosts.deny ]"
 exit; fi
 ####
 ####
@@ -11053,23 +11053,23 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
 echo
-echo "  [ info ] ### [ System info ] [ Distro ] ###"
+echo "$duo_md [ info ] ### [ System info ] [ Distro ] ###"
 cat /etc/*-release | $command_grep -i  pretty_name | cut -d "=" -f 2 | $command_sed 's/\"//g'
 echo
-echo "  [ info ] ### [ System info ][ Kernel Linux ] ###"
+echo "$duo_md [ info ] ### [ System info ][ Kernel Linux ] ###"
 $command_uname -srom
 echo
-echo "  [ info ] ### [ Boot system ] [ it works with pid number 1 ] ###"
+echo "$duo_md [ info ] ### [ Boot system ] [ it works with pid number 1 ] ###"
 ps -p1 
 echo "$tab Behind /proc/1/com $(cat /proc/1/comm)"
 echo
-echo "  [ info ] ### [ System info ] [ Processor ] ###"
+echo "$duo_md [ info ] ### [ System info ] [ Processor ] ###"
 lscpu | $command_grep -E -i "socket|Model name|cpu max"
 echo
-echo "  [ info ] ### [ System info ] [ Memory RAM ] ###"
+echo "$duo_md [ info ] ### [ System info ] [ Memory RAM ] ###"
 free -h
 echo
-echo "  [ info ] ### [ System info ] [ Disks ] ###"
+echo "$duo_md [ info ] ### [ System info ] [ Disks ] ###"
 lsblk -o name,size,fsuse%,label,mountpoints
 exit; fi
 ####
@@ -11083,44 +11083,44 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ] || ||"
 echo
-echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
-echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
-echo "  [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
-echo "  [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
-echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
 echo
-echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v ::1/128 | cut -d "/" -f 1 ; fi
 echo
-echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
-echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 echo "$tab $public_ip6"; fi
 echo
-echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo "  [ info ] Proxy http:    $http_proxy"
-echo "  [ info ] Proxy https:   $https_proxy"
+echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$duo_md [ info ] Proxy http:    $http_proxy"
+echo "$duo_md [ info ] Proxy https:   $https_proxy"
 exit; fi
 ####
 ####
@@ -11133,29 +11133,29 @@ exit; fi
 if [ "$first_option" = "ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
 echo
-echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
-echo "  [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
-echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
 echo
-echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
-echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo "  [ info ] Proxy http:    $http_proxy"
-echo "  [ info ] Proxy https:   $https_proxy"
+echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$duo_md [ info ] Proxy http:    $http_proxy"
+echo "$duo_md [ info ] Proxy https:   $https_proxy"
 echo
-echo "  [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
 exit; fi
 ####
@@ -11169,29 +11169,29 @@ exit; fi
 if [ "$first_option" = "ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
 echo
-echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
-echo "  [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
-echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -6 address | $command_grep -i inet | $command_grep -iv  "inet6 ::1"  | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
 echo
-echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
-echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo "  [ info ] Proxy http:    $http_proxy"
-echo "  [ info ] Proxy https:   $https_proxy"
+echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$duo_md [ info ] Proxy http:    $http_proxy"
+echo "$duo_md [ info ] Proxy https:   $https_proxy"
 echo
-echo "  [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
 exit; fi
 ####
@@ -11262,7 +11262,7 @@ exit; fi
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
-echo "  [ info ] [ cleaning $cmd_binary temporal files ]"
+echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
 rm -rf "$directory_tmp" &> /dev/null
 echo "[  ok  ] [ cleaned temporal files ]"
 exit; fi

@@ -47,9 +47,9 @@
 ####
 if [ "$(id -u)" != "0" ] ; then echo
 echo
-echo "  [ info ] [ fwiptables needs to be root to work ]"
+echo "### [ info ] [ fwiptables needs to be root to work ]"
 echo
-echo "  [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
+echo "### [ fail ] [ Be root to work with fwiptables in your system ] [ Try with root user ]"
 exit ; fi
 ####
 ####
@@ -519,7 +519,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :sincontarrutina-inicial-notice:
 ####
 ####
-#### if [ "$fwiptables_installed" == "no" ] ; then echo "  [ info ] [ type: $0 install ] [ to be ready for $cmd_binary config files ]" ; fi
+#### if [ "$fwiptables_installed" == "no" ] ; then echo "$duo_md [ info ] [ type: $0 install ] [ to be ready for $cmd_binary config files ]" ; fi
 ####
 ####
 #### :sincontarrutina-final-notice:
@@ -778,7 +778,7 @@ echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $zero_option $second_option $third_option $quad_option &>> $output_log
 cat $output_log | $command_grep -iv Warning: &>> $output_filelog
-echo "  [  ok  ] [ Output sended to $output_filelog ] [ show file: fwiptables filelog ]" ;
+echo "$duo_md [  ok  ] [ Output sended to $output_filelog ] [ show file: fwiptables filelog ]" ;
 exit ; fi
 ####
 ####
@@ -844,10 +844,10 @@ exit; fi
 ####
 if [ "$first_option" = "default" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary default ] [ default md ] || ||"
-echo "  [ info ] [ $cmd_binary default.. ]"
-echo "  [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
-echo "  [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
-echo "  [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
+echo "$duo_md [ info ] [ $cmd_binary default.. ]"
+echo "$duo_md [ info ] [ Autoregenerate default config for fwiptables: ] [ fwiptables preferences-regen  ]"
+echo "$duo_md [ info ] [ Show   default config for fwiptables:         ] [ fwiptables preferences-read   ]"
+echo "$duo_md [ info ] [ Modify default config for fwiptables:         ] [ fwiptables preferences-modify ]"
 exit; fi
 ####
 ####
@@ -862,7 +862,7 @@ echo "$header_ok [ $first_option ] [ show the default fwiptables ] || ||"
 echo 
 cat $default_preferences
 echo
-echo "  [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
+echo "$duo_md [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
@@ -876,7 +876,7 @@ if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 editor $default_preferences
-echo "  [ info ] [ edit file $default_preferences to change variables ]"
+echo "$duo_md [ info ] [ edit file $default_preferences to change variables ]"
 ####
 ####
 #### english: make security copy file
@@ -935,10 +935,10 @@ exit; fi
 ####
 if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
-echo "  [ info ] [ $cmd_binary preferences-regen.. ]"
+echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
 echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
-echo "  [  ok  ] [ Update values for default in $directory_shell ]"
+echo "$duo_md [  ok  ] [ Update values for default in $directory_shell ]"
 exit; fi
 ####
 ####
@@ -951,29 +951,29 @@ exit; fi
 if [ "$first_option" = "ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
 echo
-echo "  [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
-echo "  [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
-echo "  [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -iv 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
 echo
-echo "  [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
+echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v 8 $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
-echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo "  [ info ] Proxy http:    $http_proxy"
-echo "  [ info ] Proxy https:   $https_proxy"
+echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$duo_md [ info ] Proxy http:    $http_proxy"
+echo "$duo_md [ info ] Proxy https:   $https_proxy"
 echo
-echo "  [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
 exit; fi
 ####
@@ -987,29 +987,29 @@ exit; fi
 if [ "$first_option" = "ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
 echo
-echo "  [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
-echo "  [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
 if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
-echo "  [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
 if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -6 address | $command_grep -i  inet | $command_grep -iv  "inet6 ::1" | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
 echo
-echo "  [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
+echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
 if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v 8 $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
 echo
-echo "  [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo "  [ info ] Proxy http:    $http_proxy"
-echo "  [ info ] Proxy https:   $https_proxy"
+echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
+echo "$duo_md [ info ] Proxy http:    $http_proxy"
+echo "$duo_md [ info ] Proxy https:   $https_proxy"
 echo
-echo "  [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
+echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 's/nameserver/     nameserver/g'
 exit; fi
 ####
@@ -1713,7 +1713,7 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
 if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then 
-echo "  [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
+echo "$duo_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $zero_option save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
@@ -2777,8 +2777,8 @@ $command_ip6tables_legacy -t security -P FORWARD ACCEPT &> /dev/null
 $command_ip6tables_legacy -t security -P OUTPUT ACCEPT &> /dev/null
 ####
 ####
-echo "  [ info ] [ Deleting the iptables rules firewall ]" 
-echo "  [  ok  ] [ Firewall is erased ] [ Deleted rules ]"
+echo "$duo_md [ info ] [ Deleting the iptables rules firewall ]" 
+echo "$duo_md [  ok  ] [ Firewall is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
@@ -2858,18 +2858,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ;;
@@ -2892,18 +2892,18 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 ;;
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
 ;;
@@ -2928,18 +2928,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -2962,18 +2962,18 @@ nftseis=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-ip6"
 echo
 case $legacyseis in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_legacy -v -L -n
 ;;
 esac
 echo $tab
 case $nftseis in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_ip6tables_nft -v -L -n
 ;;
@@ -3034,18 +3034,18 @@ nftcuatro=$("$command_iptables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip4"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ] [ listing rules .. ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -3068,18 +3068,18 @@ nftcuatro=$("$command_ip6tables_nft" -t filter -L INPUT 1 && \
 fromrules="filter-numerical-ip6"
 echo
 case $legacycuatro in
-"$NULL") echo "  [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules xtables ] [ iptables-legacy ] [ $fromrules ] [ no list ]" ;;
 *)
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L -n
 ;;
 esac
 echo "$tab"
 case $nftcuatro in
-"$NULL") echo "  [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
+"$NULL") echo "$duo_md [ info ] [ Without rules nftables ] [ iptables-nft ] [ $fromrules ] [ listing rules .. ]" ;;
 *)
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L -n
 ;;
@@ -3098,11 +3098,11 @@ echo "$header_ok [ $first_option ] [ List filter ipv4 ] [ it is only sufficent o
 echo "$message_info_rules"
 fromrules="filter-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_iptables_nft -t filter -v -L $list_rules_conceptual
 ####
@@ -3121,11 +3121,11 @@ echo "$header_ok [ $first_option ] [ List filter forward ipv4 ] [ it is only suf
 echo "$message_info_rules"
 fromrules="filter-forward-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L FORWARD $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
@@ -3142,11 +3142,11 @@ echo "$header_ok [ $first_option ] [ List filter ipv6 ] [ it is only sufficent o
 echo "$message_info_rules"
 fromrules="filter-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L $list_rules_conceptual
 ####
@@ -3165,11 +3165,11 @@ echo "$header_ok [ $first_option ] [ List filter forward ipv6 ] [ it is only suf
 echo "$message_info_rules"
 fromrules="filter-forward-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t filter -v -L FORWARD $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
@@ -3186,11 +3186,11 @@ echo "$header_ok [ $first_option ] [ List nat ipv4 ] [ it is only sufficent or w
 echo "$message_info_rules"
 fromrules="nat-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t nat -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t nat -v -L $list_rules_conceptual
 exit; fi
@@ -3207,11 +3207,11 @@ echo "$header_ok [ $first_option ] [ List nat ipv6] [ it is only sufficent or wi
 echo "$message_info_rules"
 fromrules="nat-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t nat -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t nat -v -L $list_rules_conceptual 
 #### echo 
@@ -3228,11 +3228,11 @@ if [ "$first_option" = "listnum-filter4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-ip4"
 echo
-echo "  [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
+echo "$duo_md [ info ] [ With rules netfilter ] [ iptables-nft ] [ $fromrules ]"  
 echo
 $command_iptables_legacy -v -L -n 
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -v -L -n
 exit; fi
@@ -3248,11 +3248,11 @@ if [ "$first_option" = "list-forwardnum" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-forward-ip4"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t filter -v -L FORWARD -n
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t filter -v -L FORWARD -n
 exit; fi
@@ -3268,11 +3268,11 @@ if [ "$first_option" = "listnum-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_legacy -v -L -n
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]" 
 echo
 $command_ip6tables_nft -v -L -n
 exit; fi
@@ -3288,11 +3288,11 @@ if [ "$first_option" = "list-forwardnum6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-forward-ip6"
 echo
-echo "  [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t filter -v -L FORWARD -n
 echo
-echo "  [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ With rules nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t filter -v -L FORWARD -n
 exit; fi
@@ -3309,11 +3309,11 @@ echo "$header_ok [ $first_option ] [ List mangle ipv4 ] [ it is only sufficent o
 echo "$message_info_rules"
 fromrules="mangle-ip4"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t mangle -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t mangle -v -L $list_rules_conceptual
 echo 
@@ -3331,11 +3331,11 @@ echo "$header_ok [ $first_option ] [ List mangle ipv6 ] [ it is only sufficent o
 echo "$message_info_rules"
 fromrules="mangle-ip6"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t mangle -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t mangle -v -L $list_rules_conceptual
 #### echo 
@@ -3353,11 +3353,11 @@ echo "$header_ok [ $first_option ] [ List raw ipv4 ] [ it is only sufficent or w
 echo "$message_info_rules"
 fromrules="raw-ip4"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t raw -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
@@ -3374,11 +3374,11 @@ echo "$header_ok [ $first_option ] [ List raw ipv6 ] [ it is only sufficent or w
 echo "$message_info_rules"
 fromrules="raw-ip6"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t raw -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
@@ -3395,11 +3395,11 @@ echo "$header_ok [ $first_option ] [ List security ipv4 ] [ it is only sufficent
 echo "$message_info_rules"
 fromrules="security-ip4"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_iptables_legacy -t security -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_iptables_nft -t security -v -L $list_rules_conceptual
 exit; fi
@@ -3416,11 +3416,11 @@ echo "$header_ok [ $first_option ] [ List security ipv6 ] [ it is only sufficent
 echo "$message_info_rules"
 fromrules="security-ip6"
 echo
-echo "  [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The xtables ] [ iptables-legacy ] [ $fromrules ]"
 echo
 $command_ip6tables_legacy -t security -v -L $list_rules_conceptual
 echo
-echo "  [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
+echo "$duo_md [ info ] [ The nftables ] [ iptables-nft ] [ $fromrules ]"
 echo
 $command_ip6tables_nft -t security -v -L $list_rules_conceptual
 exit; fi
@@ -3436,11 +3436,11 @@ if [ "$first_option" = "list-ebtables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List ebtables ] || ||"
 fromrules="ebtables"
 echo
-echo "  [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
+echo "$duo_md [ info ] [ ebtables: filter ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t filter
 echo
-echo "  [ info ] [ ebtables: nat ethernet ] [ $fromrules ]"
+echo "$duo_md [ info ] [ ebtables: nat ethernet ] [ $fromrules ]"
 echo
 $command_ebtables -L -t nat
 exit; fi
@@ -3456,7 +3456,7 @@ if [ "$first_option" = "list-arptables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List arptables ipv4 ] || ||"
 fromrules="arptables"
 echo
-echo "  [ info ] [ arptables: filter arptables ] [ $fromrules ]"
+echo "$duo_md [ info ] [ arptables: filter arptables ] [ $fromrules ]"
 echo
 $command_arptables -L
 exit; fi
@@ -3688,12 +3688,12 @@ echo
 echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
 echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
 echo 
-echo "  [ info ] [ Listing firewall names ]"
+echo "$duo_md [ info ] [ Listing firewall names ]"
 $command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
 $command_sed s/\-legacy\-ipv4//g | $command_sed s/\-nft\-ipv4//g | \
 $command_sed s/\-arptables//g | $command_sed s/\-ebtables//g | sort -u 
 echo
-echo "  [  ok  ] [ Listed firewall names ]"
+echo "$duo_md [  ok  ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
@@ -3807,7 +3807,7 @@ echo $give_load
 #### English: show message
 ####
 ####
-echo "  [ info ] [ Loading rules ]"
+echo "$duo_md [ info ] [ Loading rules ]"
 ####
 ####
 #### English: Remove all rules
@@ -3831,7 +3831,7 @@ cat $directory_fwrecover/$second_option-nft-ipv4 |  $command_iptables_nft-restor
 cat $directory_fwrecover/$second_option-legacy-ipv4 | $command_iptables_legacy-restore  
 cat $directory_fwrecover/$second_option-nft-ipv6 | $command_ip6tables_nft-restore       
 cat $directory_fwrecover/$second_option-legacy-ipv6 | $command_ip6tables_legacy-restore 
-echo "  [  ok  ] [ firewall loaded ] [ $second_option ]"
+echo "$duo_md [  ok  ] [ firewall loaded ] [ $second_option ]"
 ####
 ####
 #### english: if no found #### spanish: si no encuentra
@@ -3861,7 +3861,7 @@ case "$second_option" in
 esac
 ####
 ####
-echo "  [ info ] [ saving firewall ] [ $archivofin ]"
+echo "$duo_md [ info ] [ saving firewall ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
 $command_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -3878,7 +3878,7 @@ if [ "$command_ip6tables_legacy"  = "$NULL"  ]; then $nada ; else
 $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6 ; fi
 ####
 ####
-echo "  [  ok  ] [ firewall saved ] [ $archivofin ]"
+echo "$duo_md [  ok  ] [ firewall saved ] [ $archivofin ]"
 if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
@@ -3889,7 +3889,7 @@ $command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
-echo "  [  ok  ] [ firewall listed ] [ $archivofin ]"
+echo "$duo_md [  ok  ] [ firewall listed ] [ $archivofin ]"
 exit; fi
 ####
 ####
@@ -3912,7 +3912,7 @@ $command_ls -l $directory_fwrecover/$archivofin-nft-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-nft-ipv6
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv4
 $command_ls -l $directory_fwrecover/$archivofin-legacy-ipv6
-echo "  [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
+echo "$duo_md [ ok ] [ FIREWALL LISTED ] [ $archivofin ]"
 echo "$cincuenta $archivofin-arptables"
 cat $directory_fwrecover/$archivofin-arptables
 echo "$cincuenta $archivofin-ebtables"
@@ -3925,7 +3925,7 @@ echo "$cincuenta $archivofin-nft-ipv6"
 cat $directory_fwrecover/$archivofin-nft-ipv6
 echo "$cincuenta archivofin-legacy-ipv6"
 cat $directory_fwrecover/$archivofin-legacy-ipv6
-echo "  [ ok ] [ firewall readed ] [ $archivofin ]"
+echo "$duo_md [ ok ] [ firewall readed ] [ $archivofin ]"
 echo 
 exit; fi
 ####
