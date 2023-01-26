@@ -1195,12 +1195,12 @@ $cmd_binary dialog-rc &> /dev/null
 ####   spanish: Muestra el estatus final desde el instalador
 ####
 ####
-echo "$duo_md [ info ] [ the config dir:        ] [ $directory_data ]"
-echo "$duo_md [ info ] [ the tmp dir:           ] [ $directory_tmp  ]"
-echo "$duo_md [ info ] [ the Command shell:     ] [ /usr/bin/fwiptables-cmd ]"
+echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
+echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
+echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/fwiptables-cmd ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then echo "$duo_md [ info ] [ Privileges ]  $(cat /etc/sudoers.d/$cmd_config ) " ; fi
 echo "$duo_md [ info ] [ Grant privileges to user with    ] [ fwiptables-cmd sudofw-adduser user ]"
-echo "$duo_md [  ok  ] [ update configs and variables     ]"
+echo "$duo_md [  ok  ] [ Update configs and variables     ]"
 echo "$duo_md [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
 exit; fi
 ####
@@ -7185,6 +7185,43 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-alltables:
+##########     english: listn-alltables: list all rules         ##########
+##########     spanish: listn-alltables: list todas las reglas  ##########
+#### :rutina-inicial-listn-alltables:
+####
+####
+ if [ "$first_option" = "listn-alltables" ]; then  echo $give_cover
+ echo "$header_ok [ $first_option ]  [ List all rules ] || ||"
+ echo 
+ echo; echo; echo "### LIST EBTABLES ###"
+ $cmd_binary list-ebtables
+ echo; echo; echo "### LIST ARPTABLES ###"
+ $cmd_binary listn-arptables
+ echo; echo; echo "### LIST FILTER IP4 TABLE ###"
+ $cmd_binary listn-filter4
+ echo; echo; echo "### LIST FILTER IP6 TABLE ###"
+ $cmd_binary listn-filter6
+ echo; echo; echo "### LIST NAT IP4 TABLE ###"
+ $cmd_binary listn-nat4
+ echo; echo; echo "### LIST NAT IP6 TABLE ###"
+ $cmd_binary listn-nat6
+ echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
+ $cmd_binary listn-security4
+ echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
+ $cmd_binary listn-security6
+ echo; echo; echo "### LIST RAW IP4 TABLE ###"
+ $cmd_binary listn-raw4
+ echo; echo; echo "### LIST RAW IP6 TABLE ###"
+ $cmd_binary listn-raw6
+ echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
+ $cmd_binary listn-mangle4
+ echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
+ $cmd_binary listn-mangle6
+ echo 
+ exit; fi
+####
+####
+#### :rutina-final-listn-alltables:
 ##########    english: list4-ip: The list option   ##########
 ##########    spanish: list4-ip: La opcion lista   ##########
 #### :rutina-inicial-list4:
@@ -7805,6 +7842,22 @@ exit; fi
 ####
 ####
 #### :rutina-final-list-arptables:
+##########    english: listn-arptables: list rules arptables with arp        ##########
+##########    spanish: listn-arptables: lista reglas de arptables with arp   ##########
+#### :rutina-inicial-listn-arptables:
+####
+####
+if [ "$first_option" = "listn-arptables" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ List arptables ipv4 ] || ||"
+fromrules="arptables"
+echo
+echo "$duo_md [ info ] [ arptables: filter arptables ] [ $fromrules ]"
+echo
+$command_arptables -L -n
+exit; fi
+####
+####
+#### :rutina-final-listn-arptables:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
 #### :rutina-inicial-new-full-config:
