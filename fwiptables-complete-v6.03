@@ -222,6 +222,7 @@ command_lshw="$(command -v lshw)"
 command_gs="$(command -v gs)"
 command_pdfunite="$(command -v pdfunite)"
 command_pdfseparate="$(command -v pdfseparate)"
+command_cvlc="$(command -v cvlc)"
 ####
 ####
 #### :rutina-final-command:
@@ -316,10 +317,10 @@ allow_ipv6=""                         ## fwiptables-file-default ## void or no
 allow_separate_rules="no"                           ## fwiptables-file-default ## void or no
 ####       #### english: ssh shield configured to works with ports choose ports tcp with comma separate
 ####       #### spanish: ssh escudo configurado para funcionar con elegidos puertos tcp con separacion de comas
-config_shield_port="21"                   ## fwiptables-file-default ##  void o ports
+config_shield_port="22"                   ## fwiptables-file-default ##  void o ports
 ####       #### english: ssh tries per ip before shield
 ####       #### spanish: intentos ssh por ip antes del escudo
-config_shield_maxtries="10"                   ## fwiptables-file-default ## void or no
+config_shield_maxtries="10"                 ## fwiptables-file-default ## void or no
 ####       #### english: close with deny is or DROP or REJECT
 ####       #### spanish: cierra con denegacion es o DROP or REJECT
 config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or REJECT 
@@ -457,9 +458,6 @@ default_security="options-mini"
 directory_data="$HOME/.config/$cmd_config"
 ####
 ####
-
-####
-####
 #### english: directory tree 
 #### spanish: arbol de directorio
 ####
@@ -530,6 +528,13 @@ temporal_gui="$directory_temporal/$first_option-$second_option-$third_option"
 temporal_guifinal="$directory_temporal/$first_option-$second_option-$third_option-guifinal"
 output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
+####
+####
+#### alias
+#### command_dialog="$command_dialog --file $default_dialogrc"
+DIALOGRC="$default_dialogrc"
+export $DIALOGRC
+set $DIALOGRC
 ####
 ####
 #### :rutina-final-files:
@@ -656,8 +661,9 @@ if [ "$command_ntpdate" = "$NULL" ]; then $nada ; else favorite_date_command="$c
 ####
 ####
 favoite_music_command=""
-if [ "$command_mpg321" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg321"   ; fi
-if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg123"   ; fi
+if [ "$command_cvlc" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_cvlc"     ; fi
+if [ "$command_mpg321" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg321" ; fi
+if [ "$command_mpg123" = "$NULL" ]; then $nada ; else favorite_radio_command="$command_mpg123" ; fi
 ####
 ####
 #### :rutina-final-favorite-music-command:
