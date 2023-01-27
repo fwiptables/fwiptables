@@ -148,6 +148,8 @@ command_bc="$(command -v bc)"
 command_curl="$(command -v curl)"
 command_cut="$(command -v cut)"
 command_date="$(command -v date)"
+command_dialog="$(command -v dialog)"
+command_whiptail="$(command -v whiptail)"
 command_dd="$(command -v dd)"
 command_dhclient="$(command -v dhclient)"
 command_dhclient_script="$(command -v dhclient-script)"
@@ -485,9 +487,6 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 ####
 ####
 default_preferences="$directory_shell/preferences.rc"
-default_dialogrc="$directory_shell/dialog.rc"
-DIALOGRC="$default_dialogrc"
-set $DIALOGRC
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -531,7 +530,7 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 ####
 #### alias
-#### command_dialog="$command_dialog --file $default_dialogrc"
+#### command_dialog="$favorite_text_dialog --file $default_dialogrc"
 ####
 ####
 #### :rutina-final-files:
@@ -599,22 +598,17 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-notice:
-##########    english: create dialog.rc      ##########
-##########    spanish: crea dialog.rc        ##########
-#### :rutina-inicial-dialog-rc:
+##########      english: search favorite dialog: favorite dialog     ##########
+##########      spanish: busca preferido dialogo: favorite dialog   ##########
+#### :sincontarrutina-inicial-favorite-text-dialog:
 ####
 ####
-if [ "$first_option" == "dialog-rc" ] ; then 
-if [ "$command_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
-$command_dialog --create-rc $default_dialogrc &> /dev/null
-cp $default_dialogrc $default_dialogrc.old &> /dev/null
-sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc > $default_dialogrc.old
-sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialogrc.old
-cp $default_dialogrc.old $default_dialogrc &> /dev/null
-exit; fi
+favorite_text_dialog=""
+if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog"   ; fi
+if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail" ; fi
 ####
 ####
-#### :rutina-final-dialog-rc:
+#### :sincontarrutina-inicial-favorite-text-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -1189,7 +1183,6 @@ chmod 555 "/usr/bin/fwiptables-cmd" &> /dev/null
 ####
 $cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
-$cmd_binary dialog-rc &> /dev/null
 ####
 ####
 ####
@@ -4479,12 +4472,11 @@ echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] 
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_tmp"
-echo "$text_md Directory data:          $directory_data"
 echo "$text_md Preferences file:        $default_preferences"
 echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt (bash):    $command_bash"
-echo "$text_md Interface cli (dialog):  $command_dialog"
+echo "$text_md Interface cli (dialog):  $favorite_text_dialog"
 echo "$text_md Interface gui (zenity):  $command_zenity"
 echo 
 echo "$title_md [ Automatic iptables ]"
@@ -4501,78 +4493,6 @@ echo "$text_md Automatic date:      rdate or sntp or ntpdate :   $favorite_date_
 echo "$text_md Automatic music:     mpg321 or mpg123         :   $favorite_radio_command"
 echo "$text_md Automatic dhcp:      dhcpcd or dhclient       :   $favorite_dhcp_command" 
 echo 
-echo "$title_md [ Automatic depends ]"
-echo "$text_md arp:$command_arp"
-echo "$text_md arp_scan:$command_arp_scan"
-echo "$text_md arptables:$command_arptables"
-echo "$text_md bash:$command_bash"
-echo "$text_md bc:$command_bc"
-echo "$text_md curl:$command_curl"
-echo "$text_md cut:$command_cut"
-echo "$text_md date:$command_date"
-echo "$text_md dd:$command_dd"
-echo "$text_md dhclient:$command_dhclient"
-echo "$text_md dhclient_script:$command_dhclient_script"
-echo "$text_md dhcpcd:$command_dhcpcd"
-echo "$text_md dialog:$command_dialog"
-echo "$text_md dig:$command_dig"
-echo "$text_md ebtables:$command_ebtables"
-echo "$text_md elinks:$command_elinks"
-echo "$text_md find:$command_find"
-echo "$text_md fmt:$command_fmt"
-echo "$text_md geoiplookup:$command_geoiplookup"
-echo "$text_md glxgears:$command_glxgears"
-echo "$text_md gpg:$command_gpg"
-echo "$text_md grep:$command_grep"
-echo "$text_md halt:$command_halt"
-echo "$text_md host:$command_host"
-echo "$text_md ifconfig:$command_ifconfig"
-echo "$text_md ip:$command_ip"
-echo "$text_md ip6tables_legacy:$command_ip6tables_legacy"
-echo "$text_md ip6tables_nft:$command_ip6tables_nft"
-echo "$text_md iperf:$command_iperf"
-echo "$text_md iptables_legacy:$command_iptables_legacy"
-echo "$text_md iptables_nft:$command_iptables_nft"
-echo "$text_md iw:$command_iw"
-echo "$text_md links:$command_links"
-echo "$text_md links2:$command_links2"
-echo "$text_md ls:$command_ls"
-echo "$text_md lsof:$command_lsof"
-echo "$text_md lynx:$command_lynx"
-echo "$text_md m2r:$command_m2r"
-echo "$text_md md5sum:$command_md5sum"
-echo "$text_md mdp:$command_mdp"
-echo "$text_md mpg123:$command_mpg123"
-echo "$text_md mpg321:$command_mpg321"
-echo "$text_md netstat:$command_netstat"
-echo "$text_md netstat_nat:$command_netstat_nat"
-echo "$text_md nmap:$command_nmap"
-echo "$text_md ntpdate:$command_ntpdate"
-echo "$text_md openssl:$command_openssl"
-echo "$text_md ping:$command_ping"
-echo "$text_md rdate:$command_rdate"
-echo "$text_md reboot:$command_reboot"
-echo "$text_md resolveip:$command_resolveip"
-echo "$text_md route:$command_route"
-echo "$text_md sed:$command_sed"
-echo "$text_md shc:$command_shc"
-echo "$text_md shutdown:$command_shutdown"
-echo "$text_md sleep:$command_sleep"
-echo "$text_md sntp:$command_sntp"
-echo "$text_md ss:$command_ss"
-echo "$text_md sysctl:$command_sysctl"
-echo "$text_md tcpdump:$command_tcpdump"
-echo "$text_md tee:$command_tee"
-echo "$text_md torify:$command_torify"
-echo "$text_md traceroute:$command_traceroute"
-echo "$text_md txt2html:$command_txt2html"
-echo "$text_md uname:$command_uname"
-echo "$text_md wget:$command_wget"
-echo "$text_md wpa_passphrase:$command_wpa_passphrase"
-echo "$text_md wpa_supplicant:$command_wpa_supplicant"
-echo "$text_md xrandr:$command_xrandr"
-echo "$text_md zenity:$command_zenity"
-echo "$text_md zgrep:$command_zgrep"
 exit; fi
 ####
 ####
@@ -5940,8 +5860,8 @@ exit ; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "cli-menu" ]; then $nada
-case "$command_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog to work ]" ; exit ;; esac
-menuprincipal="$($command_dialog --stdout --clear --no-tags --title " \
+case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog to work ]" ; exit ;; esac
+menuprincipal="$($favorite_text_dialog --stdout --clear --no-tags --title " \
 Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
 0100 "$quad [ Full Options ] $cinco" \
@@ -6207,7 +6127,7 @@ case "$menuprincipal" in
 0205) clear ; $cmd_binary names ; echo "$cincuenta"
 read -p "Type the firewall name to read   " nombrecillo
 nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary show $nombrecillo ;; 
-0206)archivo="$($command_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
+0206)archivo="$($favorite_text_dialog --stdout --title "| Save the firewall format standar  |" --inputbox "New name" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ;  echo "$cincuenta saved $archivo" ; $cmd_binary save $archivo ;;
 0207) clear ; $cmd_binary names ; echo "$cincuenta"
@@ -6257,7 +6177,7 @@ nombrecillo=$(echo $nombrecillo | $command_sed s/\\///g) ; $cmd_binary load $nom
 0504) clear ; $cmd_binary cli off-line ; $cmd_binary cli list4  ;;
 0505) clear ; $cmd_binary cli all-permisive ; $cmd_binary cli list4   ;;
 0506) 
-archivo="$($command_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
+archivo="$($favorite_text_dialog  --title "custom" --stdout --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom $archivo ;;
 0507) clear ; $cmd_binary cli games-shooter ; $cmd_binary cli list4  ;; 
 0508) clear ; $cmd_binary cli game-wesnoth ; $cmd_binary cli list4  ;;
@@ -6286,31 +6206,31 @@ archivo="$(echo $archivo | $command_sed s/\\///g)" ;  clear ; $cmd_binary custom
 0531) clear ; $cmd_binary cli server-sql ; $cmd_binary cli list4  ;;
 0532) clear ; $cmd_binary cli server-asterisk ; $cmd_binary cli list4  ;;
 ################################################################################
-0601) archivo="$($command_dialog  --stdout --title "new-full-config example: file.cfg" \
+0601) archivo="$($favorite_text_dialog  --stdout --title "new-full-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary new-full-config $archivo ;;
-0602) archivo="$($command_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
+0602) archivo="$($favorite_text_dialog  --stdout --title "nueva-completa-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary nueva-completa-config $archivo ;;
-0603) archivo="$($command_dialog  --stdout --title "new-mini-config example: file.cfg" \
+0603) archivo="$($favorite_text_dialog  --stdout --title "new-mini-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary new-mini-config $archivo ;;
-0604) archivo="$($command_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
+0604) archivo="$($favorite_text_dialog  --stdout --title "nueva-mini-config example: archivo.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary nueva-mini-config $archivo ;;
-0605) archivo="$($command_dialog  --stdout --title "show-config example: file.cfg" \
+0605) archivo="$($favorite_text_dialog  --stdout --title "show-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary show-config $archivo ; echo "$tab [ info ] [ Use: Launch: $cmd_binary custom $archivo ]";;
-0606) archivo="$($command_dialog  --stdout --title "modify-config example: file.cfg" \
+0606) archivo="$($favorite_text_dialog  --stdout --title "modify-config example: file.cfg" \
 --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary modify-config $archivo ;;
-0607) archivo="$($command_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
+0607) archivo="$($favorite_text_dialog  --stdout --title "del-config" --inputbox "$($command_ls $directory_config)" 0 0)"
 archivo=$(echo $archivo | $command_sed s/\\///g)
 clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0608) clear ; $cmd_binary cli names-config ;;
@@ -6331,11 +6251,11 @@ clear ; $cmd_binary del-config $archivo ; echo "deleted $archivo" ;;
 0801) clear ; $cmd_binary iw-scan ;;
 0802) clear ; $cmd_binary iw-info ;;
 0803) clear ;
-archivoa="$($command_dialog  --stdout --title "Type SSID to connect" --inputbox "$($cmd_binary iw-scan)" 0 0)" 
-archivob="$($command_dialog  --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
+archivoa="$($favorite_text_dialog  --stdout --title "Type SSID to connect" --inputbox "$($cmd_binary iw-scan)" 0 0)" 
+archivob="$($favorite_text_dialog  --stdout --title "Type PASSWORD to connect at $archivoa" --inputbox "Type password for $archivoa" 0 0)" 
 $cmd_binary wpa-save archivoa archivob;;
 0804) clear ; 
-archivo="$($command_dialog  --stdout --title "type wpa file to load" \
+archivo="$($favorite_text_dialog  --stdout --title "type wpa file to load" \
 --inputbox "$($command_find $directory_default | cut -d "/" -f 4- | $command_grep \\.wpa)" 0 0)"
 $cmd_binary wpa-load $archivo ;;
 0805) clear ; $cmd_binary dhcp-client ;;
@@ -6362,7 +6282,7 @@ $cmd_binary wpa-load $archivo ;;
 ################################################################################
 1201) clear ; $cmd_binary cli sshd-tunnel-info ;;
 1202) clear ; 
-archivo="$($command_dialog  --stdout --title "Type: user@my-localhost to connect" \
+archivo="$($favorite_text_dialog  --stdout --title "Type: user@my-localhost to connect" \
 --inputbox "Type: user@my-localhost to connect" 0 0)" 
  $cmd_binary cli sshd-tunnel-on $archivo ;; 
 1203) clear ; $cmd_binary cli sshd-tunnel-off ;;
@@ -6377,33 +6297,33 @@ archivo="$($command_dialog  --stdout --title "Type: user@my-localhost to connect
 1403) clear ; $cmd_binary cli ping-ip4 ;;
 1404) clear ; $cmd_binary cli ping-ip6 ;;
 ################################################################################
-1501) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+1501) resolve="$($favorite_text_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary host $resolve ;;
-1502) resolve="$($command_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
+1502) resolve="$($favorite_text_dialog  --stdout --title "type host to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary dig $resolve ;;
-1503) resolve="$($command_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
+1503) resolve="$($favorite_text_dialog  --stdout --title "type host  or ip to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary resolveip $resolve ;;
-1504) resolve="$($command_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
+1504) resolve="$($favorite_text_dialog  --stdout --title "type host or ip to resolve" --inputbox "example: fast.com" 0 0)"
 clear ; $cmd_binary geoip $resolve ;;
 1505) clear ; $cmd_binary "ntpdate-client" ;;
 ################################################################################
-1601) resolve="$($command_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
+1601) resolve="$($favorite_text_dialog  --stdout --title "type username to auth sudo" --inputbox "example: user1,user2,user3" 0 0)"
 clear ; $cmd_binary sudofw-adduser $resolve ;;
 1602) clear ; $cmd_binary cli sudofw-deluser ;;
 1603) clear ; $cmd_binary cli sudofw-listuser ;;
 ################################################################################
 1701) clear ; $cmd_binary cli game-word  ;;
 1702) clear ; $cmd_binary cli game-number ;;
-1703) resolve="$($command_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
+1703) resolve="$($favorite_text_dialog  --stdout --title "type one colour in rgb with 9 digits" --inputbox "example: 255000255" 0 0)"
 $cmd_binary cli game-rgb $resolve ;;
-1704) resolve="$($command_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
+1704) resolve="$($favorite_text_dialog  --stdout --title "type one colour in hex with 6 digits" --inputbox "example: ff00ff" 0 0)"
 $cmd_binary cli game-hex $resolve ;;
-1701) archivo="$($command_dialog  --stdout --title "Type location file to mp5sum" \
+1701) archivo="$($favorite_text_dialog  --stdout --title "Type location file to mp5sum" \
 --inputbox "Type location file to mp5sum" 0 0)" 
 clear ; $cmd_binary md5sum $archivo ;;
 ################################################################################
 1802) clear ; $cmd_binary cli gpg-notes ;;
-1803) clear ; archivo="$($command_dialog  --stdout --title "Type link mp3 station" --inputbox "Type link mp3 station" 0 0)"
+1803) clear ; archivo="$($favorite_text_dialog  --stdout --title "Type link mp3 station" --inputbox "Type link mp3 station" 0 0)"
 $cmd_binary txt radio-mp3 $archivo ;;
 1804) clear ; $cmd_binary txt radio-cadena100 ;;
 1805) clear ; $cmd_binary txt radio-rockfm ;;
@@ -6415,7 +6335,7 @@ $cmd_binary txt radio-mp3 $archivo ;;
 ################################################################################
 2001) clear ; $cmd_binary cli addblock-list ;;
 2002) clear ; $cmd_binary cli addblock-list info ;;
-2003) clear ; resolve="$($command_dialog  --stdout --title "type the blacklist" \
+2003) clear ; resolve="$($favorite_text_dialog  --stdout --title "type the blacklist" \
 --inputbox "type only one: fademind mvps adaway stevenblack" 0 0)" 
 clear ; $cmd_binary addblock-on $resolve ;;
 2004) clear ; $cmd_binary cli addblock-off ;;
@@ -6448,7 +6368,7 @@ clear ; $cmd_binary addblock-on $resolve ;;
 2408) clear ; $cmd_binary cli preferences-modify ;;
 ################################################################################
 2501) clear ; $cmd_binary txt log-ssh ;;
-2502) pattern="$($command_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
+2502) pattern="$($favorite_text_dialog  --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)"
 clear ; $cmd_binary "log-search" "$pattern" | less ;;
 2503) clear ; $cmd_binary txt filelog ;;
 2504) clear ; $cmd_binary txt autolog ;;
@@ -6466,7 +6386,7 @@ clear ; $cmd_binary "log-search" "$pattern" | less ;;
 2706) clear ; $cmd_binary cli notes ;;
 2707) clear ; $cmd_binary cli license ;;
 ################################################################################
-*) clear ; $command_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
+*) clear ; $favorite_text_dialog  --msgbox "fwiptables good bye" 0 0 ; clear ; exit ;;
 esac 
 $cmd_binary text-pause
 clear ; 
@@ -7863,7 +7783,7 @@ exit; fi
 #### :rutina-final-listn-arptables:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
-#### :rutina-inicial-new-full-config:
+#### :sincontarrutina-inicial-new-full-config:
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -7874,12 +7794,11 @@ exit; fi
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NEW FULL CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
 echo 
 fi
 ####
@@ -7887,17 +7806,17 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-new-full-config:
+#### :sincontarrutina-final-new-full-config:
 ##########    english: nueva-completa-config: create new configs                             ##########
 ##########    spanish: nueva-completa-config: nueva-completa-config para cear nuevas config  ##########
-#### :rutina-inicial-nueva-completa-config:
+#### :sincontarrutina-inicial-nueva-completa-config:
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -7908,30 +7827,29 @@ exit; fi
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NUEVA COMPLETA CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
 echo 
 fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
+cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
+$favorite_text_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-nueva-completa-config:
+#### :sincontarrutina-final-nueva-completa-config:
 ##########    english: new-mini-config: create new configs   ##########
 ##########    spanish: new--mini config: cea nuevas config   ##########
-#### :rutina-inicial-new-mini-config:
+#### :sincontarrutina-inicial-new-mini-config:
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -7942,12 +7860,11 @@ exit; fi
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NEW MINI CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
 echo 
 fi
 ####
@@ -7955,17 +7872,17 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-new-mini-config:
+#### :sincontarrutina-final-new-mini-config:
 ##########    english: nueva-mini-config: create new configs   ##########
 ##########    spanish: nueva-mini-config: crea nuevas config   ##########
-#### :rutina-inicial-nueva-mini-config:
+#### :sincontarrutina-inicial-nueva-mini-config:
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  echo $give_cover
@@ -7976,12 +7893,11 @@ exit; fi
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NUEVA MINI CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
 echo 
 fi
 ####
@@ -7989,49 +7905,14 @@ fi
 if [ ! -s "$directory_config/$second_option" ]; then $nada 
 rm "$directory_config/$second_option" &> /dev/null
 cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
+$favorite_text_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
 fi
 ####
 ####
 exit; fi
 ####
 ####
-#### :rutina-final-nueva-mini-config:
-##########    english: modify-config: modify a one config.cfg        ##########
-##########    spanish: modify-config: modify una configuracion.cfg   ##########
-#### :rutina-inicial-modify-config:
-####
-####
-if [ "$first_option" = "modify-config" ]; then  echo $give_cover
-####
-###
-if [ ! -f "$directory_config/$second_option" ] ; then $nada
-$cmd_binary names-config
-echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; exit; fi
-####
-####
-if [ -f "$directory_config/$second_option" ] ; then $nada
-cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
-$command_dialog  --no-cancel --title "MODIFY CONFIG" \
---editbox "$directory_temporal/$second_option" 0 0 2> "$directory_config/$second_option"
-clear; fi
-####
-####
-if [  -s "$directory_config/$second_option" ] ; then
-$command_dialog  --msgbox "[OK file modify config file: $second_option]" 0 0 
-clear ; exit ; fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "$directory_temporal/$cmd_config-$second_option" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
-clear ; exit ; fi
-####
-####
-clear ; exit ; fi
-####
-####
-#### :rutina-final-modify-config:
+#### :sincontarrutina-final-nueva-mini-config:
 ##########    english: show-config: show a one config          ##########
 ##########    spanish: show-config: muestra una configuracion  ##########
 #### :rutina-inicial-show-config:
@@ -8251,7 +8132,7 @@ exit ; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
-menudelrule="$($command_dialog  --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
+menudelrule="$($favorite_text_dialog  --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
 01 "NFTABLES / filter-ip4 / INPUT" \
 02 "NFTABLES / filter-ip4 / FORWARD" \
 03 "NFTABLES / filter-ip4 / OUTPUT" \
@@ -8279,10 +8160,10 @@ case "$menudelrule" in
 "15") fire_wall="$command_ip6tables_legacy" ; table_wall="filter" ; code_wall="FORWARD" ;;
 "16") fire_wall="$command_ip6tables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"  ;;
 *) clear ; exit ;; esac ;
-lalista="$($command_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
-deleterule="$($command_dialog --stdout --title " Type the number rule to delete " --inputbox "example: 2" 0 0 )"
+lalista="$($favorite_text_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
+deleterule="$($favorite_text_dialog --stdout --title " Type the number rule to delete " --inputbox "example: 2" 0 0 )"
 "$($fire_wall -t $table_wall -D $code_wall "$deleterule")" ; 
-lalista="$($command_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
+lalista="$($favorite_text_dialog --stdout --title " Show Rules " --msgbox "$($fire_wall -t $table_wall -L $code_wall --line-numbers )" 0 0 )"
 clear ; exit; fi
 ####
 ####
@@ -8606,42 +8487,40 @@ exit; fi
 #### :rutina-final-reset:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
-#### :rutina-inicial-wizard-mini:
+#### :sincontarrutina-inicial-wizard-mini:
 ####
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
-cp "$defaultminicfg_eng" "$directory_temporal/$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$archivo" \
-0 0 2> "$directory_config/$archivo"
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
+editor "$directory_temporal/$cmd_config-$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then echo
-$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
-else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
-#### echo 
+$favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
+&& cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear
+####
+####
 exit; fi
 ####
 ####
-#### :rutina-final-wizard-mini:
+#### :sincontarrutina-final-wizard-mini:
 ##########    english: wizard-full: wizard-full     ##########
 ##########    spanish: wizard-full: asistente       ##########
-#### :rutina-inicial-wizard-full:
+#### :sincontarrutina-inicial-wizard-full:
 ####
 ####
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
-cp "$defaultfullcfg_eng" "$directory_temporal/$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$archivo" \
-0 0 2> "$directory_config/$archivo"
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
+editor "$directory_temporal/$cmd_config-$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $cmd_binary custom "$archivo" 
-else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
-#### echo 
+$favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
+&& cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear 
+####
+####
 exit; fi
 ####
 ####
-#### :rutina-final-wizard-full:
+#### :sincontarrutina-final-wizard-full:
 ##########    english: load: load the rules in iptables format      ##########
 ##########    spanish: load: carga las reglas en formato iptables   ##########
 #### :rutina-inicial-load:
@@ -9615,10 +9494,10 @@ type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d
 ####
 ####
 if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
-case "$command_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog ]"; exit ;; esac
-$command_dialog  --stdout --title "Play game domain ole" \
+case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog ]"; exit ;; esac
+$favorite_text_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Is this a country domain or a generic domain ? :  $domain_one"  0 0
-$command_dialog  --stdout --title "Play game domain ole" \
+$favorite_text_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Really $domain_one is a $type_domain_one domain."  0 0
 clear ; exit ; fi
 ####
@@ -9691,7 +9570,7 @@ if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-menuprincipal="$($command_dialog --stdout --clear --title "  Play game word ole" --menu "Select:" 0 0 0\
+menuprincipal="$($favorite_text_dialog --stdout --clear --title "  Play game word ole" --menu "Select:" 0 0 0\
   01 "    Play word ole in english" \
   02 "    Play word ole in spanish" \
   03 "    quit word ole" \
@@ -9754,10 +9633,10 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear ; 
-acierto="$($command_dialog  --stdout --title "  Play game word ole" --msgbox "$text_1 $palabra_aleatoria"  0 0)" ; clear ; exit ; fi
+acierto="$($favorite_text_dialog  --stdout --title "  Play game word ole" --msgbox "$text_1 $palabra_aleatoria"  0 0)" ; clear ; exit ; fi
 if [ "$intento" -gt "$intento_maximo" ]; then clear
 echo "$text_1" "  " " || $palabra_aleatoria ||" ; clear ; exit ; fi
-bucle="$($command_dialog  --stdout --title "Play game word ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
+bucle="$($favorite_text_dialog  --stdout --title "Play game word ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
 $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
 intento="$(($intento+1))"
@@ -9804,7 +9683,7 @@ if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done
 #### when fail the answer
 clear
-acierto="$($command_dialog  --stdout --title "Play game word ole" --msgbox "$text_8 $palabra_aleatoria"  0 0)"
+acierto="$($favorite_text_dialog  --stdout --title "Play game word ole" --msgbox "$text_8 $palabra_aleatoria"  0 0)"
 clear; exit; fi
 ####
 ####
@@ -10107,7 +9986,7 @@ if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-menuprincipal="$($command_dialog  --stdout --clear --title "  Play game number ole" --menu "Select:" 0 0 0\
+menuprincipal="$($favorite_text_dialog  --stdout --clear --title "  Play game number ole" --menu "Select:" 0 0 0\
   01 "    Play number ole in english" \
   02 "    Play number ole in spanish" \
   03 "    quit number ole" \
@@ -10154,10 +10033,10 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear ; 
-acierto="$($command_dialog  --stdout --title "  Play game number ole" --msgbox "$text_1 $numero_aleatorio"  0 0)" ; clear ; exit ; fi
+acierto="$($favorite_text_dialog  --stdout --title "  Play game number ole" --msgbox "$text_1 $numero_aleatorio"  0 0)" ; clear ; exit ; fi
 if [ "$intento" -gt "$intento_maximo" ]; then clear
 echo "$text_1" "  " " || $numero_aleatorio ||" ; clear ; exit ; fi
-bucle="$($command_dialog  --stdout --title "Play game number ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
+bucle="$($favorite_text_dialog  --stdout --title "Play game number ole" --inputbox " $text_6 $intento /// $intento_maximo \n \
 $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||"  0 0)"
 intento="$(($intento+1))"
@@ -10203,7 +10082,7 @@ if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
 if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
 done
 #### when fail the answer
-$command_dialog  --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0
+$favorite_text_dialog  --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0
 clear ; exit ; fi
 ####
 ####
@@ -10803,11 +10682,11 @@ exit; fi
 ####
 ####
 if [ "$second_option" != "gui" ] && [ "$second_option" != "-gui" ]; then
-if [ "$command_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install dialog ]"; exit ; fi
-original="$($command_dialog --stdout --title "  [ NAME file gpg to choose WITHOUT path ] " \
+if [ "$favorite_text_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install dialog ]"; exit ; fi
+original="$($favorite_text_dialog --stdout --title "  [ NAME file gpg to choose WITHOUT path ] " \
 --inputbox "$($command_find $directory_default/*.gpg | $command_sed 's/\.gpg//g')" 0 0 )"
 origina="$(echo "$original" | $command_sed s/\\///g -)"  ;
-consigna="$($command_dialog --stdout --title "  [ Passwowrd ] " \
+consigna="$($favorite_text_dialog --stdout --title "  [ Passwowrd ] " \
 --inputbox "[ Passwowrd ]" 0 0 )"
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
@@ -10818,14 +10697,14 @@ gpg_temporal_gpg="$directory_temporal/$origina.gpg"
 ####
 if [ -f "$gpg_origen_gpg" ];  then
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
-$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt &&
+$favorite_text_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt &&
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_binary clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
 ####
 ####
 if [ ! -f "$gpg_origen_gpg" ]; then 
 echo "File created" > "$gpg_modify_txt"
-$command_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt
+$favorite_text_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt
 $command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_binary clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
 ####

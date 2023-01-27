@@ -235,7 +235,8 @@ command_dd="$(command -v dd)"
 command_dhclient="$(command -v dhclient)"
 command_dhclient_script="$(command -v dhclient-script)"
 command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v whiptail)"
+command_dialog="$(command -v dialog)"
+command_whiptail="$(command -v whiptail)"
 command_dig="$(command -v dig)"
 command_ebtables="$(command -v ebtables)"
 command_elinks="$(command -v elinks)"
@@ -527,11 +528,8 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 favorite_text_dialog=""
-command_dialog="$(command -v dialog)"
-command_whiptail="$(command -v dialog)"
 if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog"   ; fi
 if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail" ; fi
-command_dialog="$favorite_text_dialog"
 ####
 ####
 #### :sincontarrutina-inicial-favorite-text-dialog:
@@ -752,12 +750,12 @@ nmap-*) echo "$message_without_cli" ; $zero_option $second_option $third_option 
 "gpg-notes") $zero_option $second_option $third_option ; exit ;;
 "clean-tmp") $zero_option $second_option $third_option ; exit ;;
 "log-search") 
-pattern="$($command_dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
+pattern="$($favorite_text_dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $zero_option log-search $pattern ; exit ;; 
 log-*) echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 fw-*)  echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
 "hosts") echo "$message_without_cli" ; $zero_option hosts ; exit ;;
-*) $command_dialog --title "  Cli Output || $zero_option ||" \
+*) $favorite_text_dialog --title "  Cli Output || $zero_option ||" \
 --msgbox "$($zero_option $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
@@ -838,8 +836,8 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; 
 ####
 ####
 if [ "$first_option" == "dialog-rc" ] ; then 
-if [ "$command_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
-$command_dialog --create-rc $default_dialogrc &> /dev/null
+if [ "$favorite_text_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
+$favorite_text_dialog --create-rc $default_dialogrc &> /dev/null
 cp $default_dialogrc $default_dialogrc.old &> /dev/null
 sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc > $default_dialogrc.old
 sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialog_rc.old
@@ -3528,21 +3526,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultfullcfg_eng" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [ info ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3561,21 +3547,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultfullcfg_spa" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [ info ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3594,21 +3568,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultminicfg_eng" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [ info ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3627,21 +3589,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$command_dialog  --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultminicfg_spa" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [ info ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3668,13 +3618,13 @@ clear; fi
 ####
 ####
 if [  -s "$directory_config/$second_option" ] ; then
-$command_dialog  --msgbox "[OK file modify config file: $second_option]" 0 0 
+$favorite_text_dialog  --msgbox "[OK file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
 ####
 if [ ! -s "$directory_config/$second_option" ] ; then $nada
 cp "$directory_temporal/$cmd_config-$second_option" "$directory_config/$second_option" &> /dev/null
-$command_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
+$favorite_text_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
 clear ; exit ; fi
 ####
 ####
@@ -3801,7 +3751,7 @@ archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; na
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
 editor "$directory_temporal/$cmd_config-$archivo"
 clear
-$command_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
+$favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear
 ####
 ####
@@ -3819,7 +3769,7 @@ archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; na
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
 editor "$directory_temporal/$cmd_config-$archivo"
 clear
-$command_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
+$favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear 
 ####
 ####
