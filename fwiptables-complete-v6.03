@@ -10683,16 +10683,23 @@ exit; fi
 #### :rutina-inicial-new-versions:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then 
-echo "  ##### [ info ] [ Show the index version ] "
+if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
+echo
+echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
+echo
+echo "$duo_md [ info ] [ Show the index version ]"
+echo "$duo_md [ info ] [ $url_index_files ]"
 echo
 $cmd_binary index-versions
 echo
-echo "  ##### [ info ] [ Show the last minimal version ] "
+echo "$duo_md [ info ] [ Show the last minimal version ]"
+echo "$duo_md [ info ] [ $url_minimal_files ]"
 echo
 $cmd_binary minimal-versions
 echo
-echo "  ##### [ info ] [ Show the last complete version ] "
+echo "$duo_md [ info ] [ Show the last complete version ]"
+echo "$duo_md [ info ] [ $url_complete_files ]"
 echo
 $cmd_binary complete-versions
 exit; fi
@@ -10708,7 +10715,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "index-versions" ]; the
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $url_index_files | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]"
+$favorite_text_browser -dump $url_index_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]"
 exit; fi
 ####
 ####
@@ -10722,7 +10729,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "complete-versions" ]; 
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $url_complete_files | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+$favorite_text_browser -dump $url_complete_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
 exit; fi
 ####
 ####
@@ -10736,7 +10743,7 @@ if [ "$program_minimal" == "no" ] && [ "$first_option" = "minimal-versions" ]; t
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
-$favorite_text_browser -dump $url_minimal_files | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+$favorite_text_browser -dump $url_minimal_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
 exit; fi
 ####
 ####
