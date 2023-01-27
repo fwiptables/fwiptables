@@ -155,9 +155,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 ####
 ####
 default_preferences="$directory_shell/preferences.rc"
-default_dialogrc="$directory_shell/dialog.rc"
-DIALOGRC="$default_dialogrc"
-export DIALOGRC
+#### default_dialogrc="$HOME/.dialogrc"
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -237,7 +235,7 @@ command_dd="$(command -v dd)"
 command_dhclient="$(command -v dhclient)"
 command_dhclient_script="$(command -v dhclient-script)"
 command_dhcpcd="$(command -v dhcpcd)"
-command_dialog="$(command -v dialog)"
+command_dialog="$(command -v whiptail)"
 command_dig="$(command -v dig)"
 command_ebtables="$(command -v ebtables)"
 command_elinks="$(command -v elinks)"
@@ -523,7 +521,20 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :sincontarrutina-final-notice:
-
+##########      english: search favorite dialog: favorite dialog     ##########
+##########      spanish: busca preferido dialogo: favorite dialog   ##########
+#### :sincontarrutina-inicial-favorite-text-dialog:
+####
+####
+favorite_text_dialog=""
+command_dialog="$(command -v dialog)"
+command_whiptail="$(command -v dialog)"
+if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog"   ; fi
+if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail" ; fi
+command_dialog="$favorite_text_dialog"
+####
+####
+#### :sincontarrutina-inicial-favorite-text-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :sincontarrutina-inicial-favorite-text-browser:
@@ -741,12 +752,12 @@ nmap-*) echo "$message_without_cli" ; $zero_option $second_option $third_option 
 "gpg-notes") $zero_option $second_option $third_option ; exit ;;
 "clean-tmp") $zero_option $second_option $third_option ; exit ;;
 "log-search") 
-pattern="$(dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
+pattern="$($command_dialog --stdout --title "type the pattern to search" --inputbox "example: sshd" 0 0)" 
 clear; $zero_option log-search $pattern ; exit ;; 
 log-*) echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 fw-*)  echo "$message_without_cli" ; $zero_option $second_option $third_option  ;  exit ;;
 "hosts") echo "$message_without_cli" ; $zero_option hosts ; exit ;;
-*) dialog --title "  Cli Output || $zero_option ||" \
+*) $command_dialog --title "  Cli Output || $zero_option ||" \
 --msgbox "$($zero_option $second_option $third_option)" 0 0 ;  clear ; exit ;;
 ####
 ####
@@ -878,36 +889,24 @@ echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
 editor $default_preferences
 echo "$duo_md [ info ] [ edit file $default_preferences to change variables ]"
-####
-####
-#### english: make security copy file
-#### spanish: hace copia de seguridad
-####
-####
-#### cp "$default_preferences" "$default_preferences.old"
-####
-####
-#### english: edit file
-#### spanish: edita el archivo
-####
-####
-#### $command_dialog  --no-cancel --title "MODIFY FILE: $default_preferences" \
-#### --editbox "$directory_temporal/$cmd_binary-default" 0 0 2> "$default_preferences"
-#### clear
-####
-####
-#### english: probe all that is correct or recover
-#### spanish: prueba que todo es correcto o lo recupera
-####
-####
-#### if [ ! -s "$default_preferences" ] ; then $nada
-#### cp "$default_preferences.old" "$default_preferences"; fi
-####
-####
 exit; fi
 ####
 ####
 #### :sincontarrutina-final-preferences-modify:
+##########    english: dialog-modify: modify dialog   ##########
+##########    spanish: dialog-modify: modify dialog   ##########
+#### :sincontarrutina-inicial-dialog-modify:
+####
+####
+if [ "$first_option" = "dialog-modify" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ modify the default dialog ] || ||"
+echo 
+editor $default_dialogrc
+echo "$duo_md [ info ] [ edit file $default_dialogrc to change variables ]"
+exit; fi
+####
+####
+#### :sincontarrutina-final-dialog-modify:
 ##########    english: preferences-read: modify  preferences         ##########
 ##########    spanish: preferences-read: modifica preferencias       ##########
 #### :sincontarrutina-inicial-preferences-read:
@@ -1131,9 +1130,9 @@ exit; fi
 #### :rutina-inicial-regen-config:
 ####
 ####
-if [ "$first_option" = "regen-config" ]; then echo "# $give_cover"
-echo "# $header_ok [ $first_option ] [ Generate templates wizard and cfg ] || ||"
-echo "# [ info ] [ regenerating template wizard and template cfg ]"
+if [ "$first_option" = "regen-config" ]; then echo "$give_cover"
+echo "$header_ok [ $first_option ] [ Generate templates wizard and cfg ] || ||"
+echo "$duo_md [ info ] [ regenerating template wizard and template cfg ]"
 ####
 ####
 ####    english: variables to prepare to gen files
@@ -1651,7 +1650,7 @@ echo -E "$var81" "$tabz" "$spa81" &>> "$fs"
 echo -E "$var82" "$tabz" "$spa82" &>> "$fs"
 ####
 ####
-echo "# [  ok  ] [ Wizard and templates cfg regenerated ]"
+echo "$duo_md [  ok  ] [ Wizard and templates cfg regenerated ]"
 exit ; fi
 ####
 ####
@@ -3530,8 +3529,7 @@ exit; fi
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NEW FULL CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3564,8 +3562,7 @@ exit; fi
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NUEVA COMPLETA CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3598,8 +3595,7 @@ exit; fi
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NEW MINI CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3632,8 +3628,7 @@ exit; fi
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --no-cancel --title "NUEVA MINI CONFIG" \
---editbox "$directory_temporal/$cmd_config-$archivo" 0 0 2> "$directory_config/$archivo"
+editor "$directory_config/$archivo"
 ####
 ####
 if [ -s "$directory_config/$second_option" ]; then $nada 
@@ -3668,8 +3663,7 @@ echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; 
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
-$command_dialog  --no-cancel --title "MODIFY CONFIG" \
---editbox "$directory_temporal/$second_option" 0 0 2> "$directory_config/$second_option"
+editor "$directory_config/$second_option"
 clear; fi
 ####
 ####
@@ -3777,7 +3771,6 @@ echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
 echo "$duo_md [ info ] [ Installing the firewall ]"
 cp "$zero_option" "/usr/bin/fwiptables-mini"
 $zero_option preferences-regen &> /dev/null
-$zero_option dialog-rc &> /dev/null
 echo "$duo_md [  ok  ] [ Updated configs ]"
 echo "$duo_md [  ok  ] [ Installed fwiptables-mini to /usr/bin/fwiptables-mini ]"
 exit; fi
@@ -3806,13 +3799,12 @@ exit; fi
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_config-$archivo" \
-0 0 2> "$directory_config/$archivo"
+editor "$directory_temporal/$cmd_config-$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$command_dialog  --msgbox "wizard full ready" 0 0 ; clear ; $zero_option custom "$archivo" 
-else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
-#### echo 
+$command_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
+&& cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear
+####
+####
 exit; fi
 ####
 ####
@@ -3825,13 +3817,12 @@ exit; fi
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_dialog  --clear --no-cancel --title "MODIFY FILE" --editbox "$directory_temporal/$cmd_config-$archivo" \
-0 0 2> "$directory_config/$archivo"
+editor "$directory_temporal/$cmd_config-$archivo"
 clear
-if [  -s "$directory_config/$archivo" ]; then $nada ; 
-$$command_dialog  --msgbox "Wizard full ready" 0 0 ; clear ; $zero_option custom "$archivo" 
-else rm "$directory_config/$archivo" ; $command_dialog  --msgbox "Wizard full canceled" 0 0 ; clear ; fi
-#### echo 
+$command_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
+&& cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear 
+####
+####
 exit; fi
 ####
 ####
@@ -6724,7 +6715,7 @@ $launch_custom $allow_output_all $allow_ipv6 $allow_legacy $command_ip6tables_le
 ####  
 ####
 if [ -f "$directory_config/$second_option" ]; then $cmd_binary reset
-echo "$duo [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
+echo "$duo_md [  ok  ] [ Launched: firewall ] [ Type: $type_firewall ] [ Name: $name_firewall ]"
 exit ; else $nada ; fi
 ####
 ####

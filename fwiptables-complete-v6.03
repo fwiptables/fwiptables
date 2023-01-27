@@ -487,7 +487,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 default_preferences="$directory_shell/preferences.rc"
 default_dialogrc="$directory_shell/dialog.rc"
 DIALOGRC="$default_dialogrc"
-export DIALOGRC
+set $DIALOGRC
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -532,9 +532,6 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 #### alias
 #### command_dialog="$command_dialog --file $default_dialogrc"
-DIALOGRC="$default_dialogrc"
-export $DIALOGRC
-set $DIALOGRC
 ####
 ####
 #### :rutina-final-files:
