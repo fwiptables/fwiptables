@@ -69,7 +69,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-6.03" ;
+cmd_version="complete-6.04" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -2763,8 +2763,7 @@ echo "$text_md   tool-computer      |  pc-halt pc-shutdown pc-reboot            
 echo "$duo_md || || [ options-show ]   || ||  ### ###                                                           "
 echo "$text_md   show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                "
 echo "$text_md   show-log           |  log-search log-ssh filelog autolog                                       "
-echo "$text_md   show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 "
-echo "$text_md                         protocols services preferences-read preferences-modify                   "
+echo "$text_md   show-etc           |  hosts resolv.conf hosts.allow hosts.deny protocols services              "
 echo "$duo_md || || [ options-help ]   || ||  ### ###                                                           "
 echo "$text_md   help-about         |  about version depends config-eng config-spa license                      "
 echo "$text_md   help-help          |  all-help readme leeme notes options                                      "
@@ -4237,12 +4236,6 @@ echo "$text_md $tab_lang_spanish           : Muestra /etc/hosts.deny, hosts dene
 echo "$text_md $tab resolv.conf"
 echo "$text_md $tab_lang_english           : Show /etc/resolv.conf, it are the dns configured"
 echo "$text_md $tab_lang_spanish           : Muestra /etc/resolv.conf, este es el dns configurado"
-echo "$text_md $tab preferences-read"
-echo "$text_md $tab_lang_english           : Show variables for default"
-echo "$text_md $tab_lang_spanish           : Muestra variables por defecto"
-echo "$text_md $tab preferences-modify"
-echo "$text_md $tab_lang_english           : Change variables for default"
-echo "$text_md $tab_lang_spanish           : Cambia variables por defecto"
 exit; fi
 ####
 ####
