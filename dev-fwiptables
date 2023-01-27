@@ -529,10 +529,6 @@ output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
-#### alias
-#### command_dialog="$favorite_text_dialog --file $default_dialogrc"
-####
-####
 #### :rutina-final-files:
 ##########   english: if sane config directory                       ##########
 ##########   spanish: comprobar sanos directorios de configuracion   ##########
@@ -10697,16 +10693,17 @@ gpg_temporal_gpg="$directory_temporal/$origina.gpg"
 ####
 if [ -f "$gpg_origen_gpg" ];  then
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
-$favorite_text_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt &&
-$command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-$cmd_binary clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
+editor $gpg_modify_txt
+$command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_modify_txt" ;
+rm $gpg_modify_txt
+echo "$duo_md file ok"
 ####
-####
-if [ ! -f "$gpg_origen_gpg" ]; then 
-echo "File created" > "$gpg_modify_txt"
-$favorite_text_dialog --clear --no-cancel --title "MODIFY FILE" --editbox "$gpg_modify_txt" 0 0 2> $gpg_temporal_txt
+else
+editor $gpg_modify_txt
 $command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
-$cmd_binary clean-tmp &> /dev/null ; $command_sleep 3 ; clear ; exit ; fi
+rm $gpg_modify_txt
+echo "$duo_md file ok"
+exit ; fi
 ####
 ####
 exit ; fi
