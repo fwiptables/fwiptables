@@ -3528,7 +3528,7 @@ if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_config/$archivo"
 editor $directory_config/$archivo
-echo " [ info ] created file $archivo"
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3549,7 +3549,7 @@ if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_config/$archivo"
 editor $directory_config/$archivo
-echo " [ info ] created file $archivo"
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3570,7 +3570,7 @@ if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; 
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_config/$archivo"
 editor $directory_config/$archivo
-echo " [ info ] created file $archivo"
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3591,7 +3591,7 @@ if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] 
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_config/$archivo"
 editor $directory_config/$archivo
-echo " [ info ] created file $archivo"
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -3614,18 +3614,8 @@ echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; 
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
 editor "$directory_config/$second_option"
+echo "$duo_md [  ok  ] [ Custom file $second_option ]"
 clear; fi
-####
-####
-if [  -s "$directory_config/$second_option" ] ; then
-$favorite_text_dialog  --msgbox "[OK file modify config file: $second_option]" 0 0 
-clear ; exit ; fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ] ; then $nada
-cp "$directory_temporal/$cmd_config-$second_option" "$directory_config/$second_option" &> /dev/null
-$favorite_text_dialog  --msgbox "[Canceled file modify config file: $second_option]" 0 0 
-clear ; exit ; fi
 ####
 ####
 clear ; exit ; fi

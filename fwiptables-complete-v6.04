@@ -7782,21 +7782,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$favorite_text_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$favorite_text_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultfullcfg_eng" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -7815,21 +7803,9 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$favorite_text_dialog  --msgbox "[ OK. Modificado. $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_binary-$archivo" "$directory_config/$second_option" &> /dev/null
-$favorite_text_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultfullcfg_spa" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -7848,21 +7824,9 @@ exit; fi
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$favorite_text_dialog  --msgbox "[ OK. Modify $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$favorite_text_dialog  --msgbox "[ OK. Canceled. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultminicfg_eng" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
@@ -7881,27 +7845,82 @@ exit; fi
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
-cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_config/$archivo"
-####
-####
-if [ -s "$directory_config/$second_option" ]; then $nada 
-$favorite_text_dialog  --msgbox "[ OK. Modificado $second_option ]" 0 0 ; clear
-echo 
-fi
-####
-####
-if [ ! -s "$directory_config/$second_option" ]; then $nada 
-rm "$directory_config/$second_option" &> /dev/null
-cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$second_option" &> /dev/null
-$favorite_text_dialog  --msgbox "[ OK. Cancelado. $second_option ]" 0 0 ; clear
-fi
+cp "$defaultminicfg_spa" "$directory_config/$archivo"
+editor $directory_config/$archivo
+echo " [  ok  ] created file $archivo"
 ####
 ####
 exit; fi
 ####
 ####
 #### :sincontarrutina-final-nueva-mini-config:
+##########    english: modify-config: modify a one config.cfg        ##########
+##########    spanish: modify-config: modify una configuracion.cfg   ##########
+#### :sincontarrutina-inicial-modify-config:
+####
+####
+if [ "$first_option" = "modify-config" ]; then  echo $give_cover
+####
+###
+if [ ! -f "$directory_config/$second_option" ] ; then $nada
+$zero_option names-config
+echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; exit; fi
+####
+####
+if [ -f "$directory_config/$second_option" ] ; then $nada
+cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
+editor "$directory_config/$second_option"
+echo "$duo_md [  ok  ] [ Custom file $second_option ]"
+clear; fi
+####
+####
+clear ; exit ; fi
+####
+####
+#### :sincontarrutina-final-modify-config:
+##########    english: show-config: show a one config          ##########
+##########    spanish: show-config: muestra una configuracion  ##########
+#### :sincontarrutina-inicial-show-config:
+####
+####
+if [ "$first_option" = "show-config" ] ; then echo $give_cover
+####
+####
+if [ ! -f "$directory_config"/"$second_option" ] ; then 
+echo "$duo_md [ info ] [ Usage: $cmd_binary show-config config-cfg ]" ; exit; fi
+####
+####
+if [ -f "$directory_config"/"$second_option" ] ; then 
+cat $directory_config/$second_option ;
+echo  ; exit ; fi
+####
+####
+exit; fi
+####
+####
+#### :sincontarrutina-final-show-config:
+##########    english: del-config: delete a old config               ##########
+##########    spanish: del-config: elimina una vieja configuracion   ##########
+#### :sincontarrutina-inicial-del-config:
+####
+####
+if [ "$first_option" = "del-config" ]; then echo $give_cover
+####
+####
+if [ ! -f $directory_config/$second_option ] ; then
+echo "$duo_md [ info ] [ usage: ] [ $cmd_binary del-config config-old ]" ; exit ; fi
+####
+####
+if [ -f $directory_config/$second_option ] ; then
+rm $directory_config/$second_option
+echo "$directory_config/$second_option Deleted"
+echo  ; exit ; fi
+####
+####
+exit ; fi
+####
+####
+#### :sincontarrutina-final-del-config:
 ##########    english: show-config: show a one config          ##########
 ##########    spanish: show-config: muestra una configuracion  ##########
 #### :rutina-inicial-show-config:
