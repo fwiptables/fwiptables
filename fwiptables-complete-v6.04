@@ -600,8 +600,8 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 favorite_text_dialog=""
-if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog"   ; fi
-if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail" ; fi
+if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog --no-tags"   ; fi
+if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail --notags"  ; fi
 ####
 ####
 #### :sincontarrutina-inicial-favorite-text-dialog:
@@ -5849,9 +5849,8 @@ exit ; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "cli-menu" ]; then $nada
-case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog to work ]" ; exit ;; esac
-menuprincipal="$($favorite_text_dialog --stdout --clear --no-tags --title " \
-Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
+case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
+menuprincipal="$($favorite_text_dialog --clear --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
 0100 "$quad [ Full Options ] $cinco" \
 0200 "$quad [ Firewall Control ] $cinco" \
@@ -6070,7 +6069,8 @@ Cli Menu || $cmd_binary || $cmd_version" --menu "Select:" 0 0 0 \
 2705  "$tab all-help" \
 2706  "$tab notes" \
 2707  "$tab license" \
- )"
+3>&1 1>&2 2>&3 \
+)"
 ################################################################################
 #### 
 #### 
@@ -8140,7 +8140,7 @@ exit ; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
-menudelrule="$($favorite_text_dialog  --stdout --clear --no-tags --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
+menudelrule="$($favorite_text_dialog  --stdout --clear --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
 01 "NFTABLES / filter-ip4 / INPUT" \
 02 "NFTABLES / filter-ip4 / FORWARD" \
 03 "NFTABLES / filter-ip4 / OUTPUT" \
