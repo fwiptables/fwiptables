@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.03 state:complete ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.04 state:complete ] || ||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                          
     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-shell                                                      
@@ -49,8 +49,7 @@
 ### || || [ options-show ]   || ||  ### ###                                                           
         show-hardware      |  lpinfo lsblk lsusb lscpu lspci lsgpu lshw                                
         show-log           |  log-search log-ssh filelog autolog                                       
-        show-etc           |  hosts resolv.conf hosts.allow hosts.deny                                 
-                              protocols services preferences-read preferences-modify                   
+        show-etc           |  hosts resolv.conf hosts.allow hosts.deny protocols services              
 ### || || [ options-help ]   || ||  ### ###                                                           
         help-about         |  about version depends config-eng config-spa license                      
         help-help          |  all-help readme leeme notes options                                      
