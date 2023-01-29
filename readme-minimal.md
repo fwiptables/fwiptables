@@ -1,4 +1,5 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.04 ] || ||
+### || || [ ok ] || [ Date and Time ] [ dom 29 ene 2023 10:47:57 CET ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.05 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                    
@@ -20,5 +21,5 @@
                             server-vnc server-web server-samba server-print server-lamp server-news      
                             server-mail server-ftp server-teamspeak server-mumble server-sql             
                             server-asterisk server-squid                                                 
-          options-state  |  preferences-read preferences-modify preferences-regen                        
+          options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        
                             ip4 ip6 version notes examples-config install uninstall                      
