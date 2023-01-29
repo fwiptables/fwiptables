@@ -162,12 +162,8 @@ default_preferences="$directory_shell/preferences.rc"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/filelog"
-output_autolog="$directory_log/autolog"
-####
-####
-if [ ! -f $output_filelog ] ; then touch $output_filelog ; fi
-if [ ! -f $output_autolog ] ; then touch $output_autolog ; fi
+default_filelog="$directory_log/default_filelog"
+default_autolog="$directory_log/default_autolog"
 ####
 ####
 ##########    english: temporal files
@@ -528,8 +524,8 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 favorite_text_dialog=""
-if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog"   ; fi
-if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail" ; fi
+if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_dialog --no-tags"   ; fi
+if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail --notags"  ; fi
 ####
 ####
 #### :rutina-inicial-favorite-text-dialog:
@@ -786,8 +782,8 @@ esac
 echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $zero_option $second_option $third_option $quad_option &>> $output_log
-cat $output_log | $command_grep -iv Warning: &>> $output_filelog
-echo "$duo_md [  ok  ] [ Output sended to $output_filelog ] [ show file: fwiptables filelog ]" ;
+cat $output_log | $command_grep -iv Warning: &>> $default_filelog
+echo "$duo_md [  ok  ] [ Output sended to $default_filelog ] [ show file: fwiptables filelog ]" ;
 exit ; fi
 ####
 ####
@@ -826,7 +822,7 @@ exit ; fi
 ####
 ####
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
-if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> $output_autolog ; fi
+if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
@@ -836,10 +832,10 @@ if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> $output_autolog ; fi
 ####
 ####
 if [ "$first_option" = "filelog" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show $output_filelog ] || ||"
-cat  "$output_filelog"
+echo "$header_ok [ $first_option ]  [ show $default_filelog ] || ||"
+cat  "$default_filelog"
 echo 
-echo "### ### [ this file is: ] [ $output_filelog ]"
+echo "### ### [ this file is: ] [ $default_filelog ]"
 exit; fi
 ####
 ####
@@ -850,10 +846,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "autolog" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ show "$output_autolog" ] || ||"
-cat  "$output_autolog"
+echo "$header_ok [ $first_option ] [ show "$default_autolog" ] || ||"
+cat  "$default_autolog"
 echo
-echo "$duo_md [ info ] [ last end of file showed ] [ $output_autolog ]"
+echo "$duo_md [ info ] [ last end of file showed ] [ $default_autolog ]"
 exit; fi
 ####
 ####
@@ -1025,6 +1021,39 @@ exit; fi
 ####
 ####
 #### :rutina-final-ip6:
+##########    english: depends: depends            ##########
+##########    spanish: dependencias: dependencias  ##########
+#### :rutina-inicial-depends:
+####
+####
+if [ "$first_option" = "depends" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] || ||"
+echo "$title_md [ Configuration files ]"
+echo "$text_md Directory data:          $directory_data"
+echo "$text_md Directory temp:          $directory_tmp"
+echo "$text_md File Preferences:        $default_preferences"
+echo
+echo "$title_md [ Log files ]"
+echo "$text_md File autolog:            $default_autolog"
+echo "$text_md File filelog:            $default_filelog"
+echo
+echo "$title_md [ Automatic interfaces  ]"
+echo "$text_md Interface txt:           $command_bash"
+echo "$text_md Interface cli:           $favorite_text_dialog"
+echo "$text_md Interface gui:           $command_zenity"
+echo 
+echo "$title_md [ Automatic iptables ]"
+echo "$text_md iptables legacy:         $command_iptables_legacy"
+echo "$text_md iptables nft:            $command_iptables_nft"
+echo "$text_md ip6tables legacy:        $command_ip6tables_legacy"
+echo "$text_md ip6tables nft:           $command_ip6tables_nft"
+echo "$text_md arptables:               $command_arptables"
+echo "$text_md ebtables:                $command_ebtables"
+echo 
+exit; fi
+####
+####
+#### :rutina-final-depends:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
 #### :rutina-inicial-version:
@@ -1058,6 +1087,12 @@ echo "$text_md $directory_data"
 echo
 echo "$title_md [ Default preferences ]"
 echo "$text_md $default_preferences"
+echo
+echo "$title_md [ Default autolog ]"
+echo "$text_md $default_autolog"
+echo
+echo "$title_md [ Default filelog ]"
+echo "$text_md $default_filelog"
 echo
 echo "$title_md [ Web page ]"
 echo "$text_md $cmd_homepage"

@@ -493,12 +493,8 @@ default_preferences="$directory_shell/preferences.rc"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/filelog"
-output_autolog="$directory_log/autolog"
-####
-####
-if [ ! -f $output_filelog ] ; then touch $output_filelog ; fi
-if [ ! -f $output_autolog ] ; then touch $output_autolog ; fi
+default_filelog="$directory_log/default_filelog"
+default_autolog="$directory_log/default_autolog"
 ####
 ####
 ##########    english: temporal files: files for fwiptables ##########
@@ -924,8 +920,8 @@ esac
 echo "$head_waiting_log"
 echo "### ### [ info ] [ $second_option $third_option $quad_option ] [ $($command_date) ]" &> $output_log
 $cmd_binary $second_option $third_option $quad_option &>> $output_log
-cat $output_log | $command_grep -iv Warning: &>> $output_filelog
-echo "$duo_md [  ok  ] [ Output sended to $output_filelog ] [ show: $cmd_binary filelog ]" ;
+cat $output_log | $command_grep -iv Warning: &>> $default_filelog
+echo "$duo_md [  ok  ] [ Output sended to $default_filelog ] [ show: $cmd_binary filelog ]" ;
 exit ; fi
 ####
 ####
@@ -1097,7 +1093,7 @@ exit ; fi
 ####
 ####
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
-if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; fi
+if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$default_autolog" ; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
@@ -4462,12 +4458,16 @@ echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] 
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_tmp"
-echo "$text_md Preferences file:        $default_preferences"
+echo "$text_md File Preferences:        $default_preferences"
+echo
+echo "$title_md [ Log files ]"
+echo "$text_md File autolog:            $default_autolog"
+echo "$text_md File filelog:            $default_filelog"
 echo
 echo "$title_md [ Automatic interfaces  ]"
-echo "$text_md Interface txt (bash):    $command_bash"
-echo "$text_md Interface cli (dialog):  $favorite_text_dialog"
-echo "$text_md Interface gui (zenity):  $command_zenity"
+echo "$text_md Interface txt:           $command_bash"
+echo "$text_md Interface cli:           $favorite_text_dialog"
+echo "$text_md Interface gui:           $command_zenity"
 echo 
 echo "$title_md [ Automatic iptables ]"
 echo "$text_md iptables legacy:         $command_iptables_legacy"
@@ -6429,6 +6429,12 @@ echo "$text_md $directory_data"
 echo
 echo "$title_md [ Default preferences ]"
 echo "$text_md $default_preferences"
+echo
+echo "$title_md [ Default autolog ]"
+echo "$text_md $default_autolog"
+echo
+echo "$title_md [ Default filelog ]"
+echo "$text_md $default_filelog"
 echo
 echo "$title_md [ Web page ]"
 echo "$text_md $cmd_homepage"
@@ -10488,10 +10494,10 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] &&[ "$first_option" = "filelog" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ show $output_filelog ] || ||"
-cat  "$output_filelog"
+echo "$header_ok [ $first_option ]  [ show $default_filelog ] || ||"
+cat  "$default_filelog"
 echo 
-echo "### ### [ this file is: ] [ $output_filelog ]"
+echo "### ### [ this file is: ] [ $default_filelog ]"
 exit; fi
 ####
 ####
@@ -10502,10 +10508,10 @@ exit; fi
 ####
 ####
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "autolog" ] ; then  echo $give_cover
-echo "$header_ok [ $first_option ] [ show "$output_autolog" ] || ||"
-cat  "$output_autolog"
+echo "$header_ok [ $first_option ] [ show "$default_autolog" ] || ||"
+cat  "$default_autolog"
 echo
-echo "$duo_md [ info ] [ last end of file showed ] [ $output_autolog ]"
+echo "$duo_md [ info ] [ last end of file showed ] [ $default_autolog ]"
 exit; fi
 ####
 ####
