@@ -3756,7 +3756,7 @@ exit; fi
 if [ "$first_option" = "install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
 echo "$duo_md [ info ] [ Installing the firewall ]"
-cp "$zero_option" "/usr/bin/fwiptables-mini"
+cp "$zero_option" "/usr/bin/fwiptables-mini" &> /dev/null
 $cmd_binary preferences-regen &> /dev/null
 $cmd_binary regen-config &> /dev/null
 echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
