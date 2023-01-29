@@ -154,8 +154,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### spanish: default config to shell
 ####
 ####
-default_preferences="$directory_shell/preferences.rc"
-#### default_dialogrc="$HOME/.dialogrc"
+default_preferences="$directory_shell/default_preferences"
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -393,7 +392,7 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: show date and show time
 ####       #### spanish: muestra la fecha y el tiempo
-allow_timespam=""                    ## fwiptables-file-default ## void or no
+allow_showtime=""                    ## fwiptables-file-default ## void or no
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -822,7 +821,7 @@ echo $head_autolog >> $default_autolog ; fi
 #### :rutina-inicial-allow-timespam:
 ####
 ####
-if [ "$allow_timespam" != "no" ] ; then
+if [ "$allow_showtime" != "no" ] ; then
 head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
 echo $head_timespam ; fi
 ####
