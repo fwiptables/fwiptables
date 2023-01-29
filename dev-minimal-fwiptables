@@ -2535,7 +2535,7 @@ echo "$text_md                          server-vnc server-web server-samba serve
 echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                          server-asterisk server-squid                                                 "
 echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                          ip4 ip6 version notes examples-config install uninstall                      "
+echo "$text_md                          ip4 ip6 version notes examples-config license install uninstall              "
 exit ; fi
 ####
 ####
@@ -3782,6 +3782,19 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
+##########    english: license: license gpl v2   ##########
+##########    spanish: license: license gpl v2   ##########
+#### :rutina-inicial-license:
+####
+####
+if [ "$first_option" = "license" ]; then echo $give_cover
+echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] || ||"
+echo "license text for gpl v2 downloading from .. $license_gpl "
+$favorite_text_browser -source "$license_gpl" | more
+exit;  fi
+####
+####
+#### :rutina-final-license:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
 #### :rutina-inicial-wizard-mini:
