@@ -42,7 +42,7 @@
 ####
 ##########    english: are you root: uid 0 ?                ##########
 ##########    spanish: eres admnistrador: identificador 0 ? ##########
-#### :sincontarrutina-inicial-admin:
+#### :rutina-inicial-admin:
 ####
 ####
 if [ "$(id -u)" != "0" ] ; then echo
@@ -53,10 +53,10 @@ echo "### [ fail ] [ Be root to work with fwiptables in your system ] [ Try with
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-admin:
+#### :rutina-final-admin:
 ##########     english name, description and version    ##########
 ##########     spanish: nombre, descripcion y version   ##########
-#### :sincontarrutina-inicial-name:
+#### :rutina-inicial-name:
 ####
 ####
 cmd_binary="$0" ;
@@ -68,10 +68,10 @@ cmd_license="GPL v2" ;
 cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
 ####
 ####
-#### :sincontarrutina-final-name:
+#### :rutina-final-name:
 ##########    english: options priority        ##########
 ##########    spanish: prioridad de opciones   ##########
-#### :sincontarrutina-inicial-order-options:
+#### :rutina-inicial-order-options:
 ####
 ####
 command_sed="$(command -v sed)"
@@ -89,10 +89,10 @@ third_option="$(echo $3 | $command_sed s/\\///g -)"  ;
 quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;                     
 ####
 ####
-#### :sincontarrutina-final-order-options:
+#### :rutina-final-order-options:
 ##########   english: profile y support X11       ##########
 ##########   spanish: profile y soporte de X11    ##########
-#### :sincontarrutina-inicial-x11:
+#### :rutina-inicial-x11:
 ####
 ####
 ####     #### english: program version            #### spanish: Version del programa
@@ -118,7 +118,7 @@ PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
-#### :sincontarrutina-inicial-files:
+#### :rutina-inicial-files:
 ####
 ####
 #### english: permanent directory:   permanent directory and path directory config files
@@ -198,10 +198,10 @@ output_log="$directory_temporal/$first_option-$second_option-$third_option"
 output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-logfinal"
 ####
 ####
-#### :sincontarrutina-final-files:
+#### :rutina-final-files:
 ##########   english: if sane config directory                       ##########
 ##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :sincontarrutina-inicial-dir-sane:
+#### :rutina-inicial-dir-sane:
 ####
 ####
 command_mkdir="$(command -v mkdir)"
@@ -217,10 +217,10 @@ if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/nu
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
 ####
 ####
-#### :sincontarrutina-final-dir-sane:
+#### :rutina-final-dir-sane:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
-#### :sincontarrutina-inicial-command:
+#### :rutina-inicial-command:
 ####
 ####
 command_arp="$(command -v arp)"
@@ -305,10 +305,10 @@ command_lsgpu="$(command -v lsgpu)"
 command_lshw="$(command -v lshw)"
 ####
 ####
-#### :sincontarrutina-final-command:
+#### :rutina-final-command:
 ##########  english: variables: variables to declare     ##########
 ##########  spanish: variables: variables para declarar  ##########
-#### :sincontarrutina-inicial-config-variables:
+#### :rutina-inicial-config-variables:
 ####
 ####
 list_rules_conceptual="" ;
@@ -368,10 +368,10 @@ server_tcp="" ;
 server_udp="" ; 
 ####
 ####
-#### :sincontarrutina-final-config-variables:
+#### :rutina-final-config-variables:
 ##########   english: the basic system variables         ##########
 ##########   spanish: las variables basicas del sistema  ##########
-#### :sincontarrutina-inicial-system-variables:
+#### :rutina-inicial-system-variables:
 ####
 ####
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
@@ -475,7 +475,7 @@ fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-lis
 default_security="mini-options"
 ####
 ####
-#### :sincontarrutina-final-system-variables:
+#### :rutina-final-system-variables:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
@@ -515,16 +515,16 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-final-update-variables:
 ##########    english: Notice Installer with intro      ##########
 ##########    spanish: noticia de Instalador con intro  ##########
-#### :sincontarrutina-inicial-notice:
+#### :rutina-inicial-notice:
 ####
 ####
 #### if [ "$fwiptables_installed" == "no" ] ; then echo "$duo_md [ info ] [ type: $0 install ] [ to be ready for $cmd_binary config files ]" ; fi
 ####
 ####
-#### :sincontarrutina-final-notice:
+#### :rutina-final-notice:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
-#### :sincontarrutina-inicial-favorite-text-dialog:
+#### :rutina-inicial-favorite-text-dialog:
 ####
 ####
 favorite_text_dialog=""
@@ -532,10 +532,10 @@ if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$
 if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail" ; fi
 ####
 ####
-#### :sincontarrutina-inicial-favorite-text-dialog:
+#### :rutina-inicial-favorite-text-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
-#### :sincontarrutina-inicial-favorite-text-browser:
+#### :rutina-inicial-favorite-text-browser:
 ####
 ####
 favorite_text_browser=""
@@ -545,10 +545,10 @@ if [ "$command_lynx"   = "$NULL" ] ; then $nada ; else favorite_text_browser="$c
 if [ "$command_elinks" = "$NULL" ] ; then $nada ; else favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
-#### :sincontarrutina-inicial-favorite-text-browser:
+#### :rutina-inicial-favorite-text-browser:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
-#### :sincontarrutina-inicial-alias-simple:
+#### :rutina-inicial-alias-simple:
 ####
 ####
 ##########     ALIAS SIMPLE
@@ -689,7 +689,7 @@ case "$second_option" in
 $zero_option regen-config ;; esac
 ####
 ####
-#### :sincontarrutina-final-alias-simple:
+#### :rutina-final-alias-simple:
 ##########    ALIAS CAMPUS
 ##########    ALIAS CAMPUS
 #### :rutina-inicial-alias-campus:
@@ -815,10 +815,10 @@ $zero_option "$second_option" "$third_option" &> /dev/null
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-alias-campus:
+#### :rutina-final-alias-campus:
 ##########     english: autolog:         ##########
 ##########     spanish: autoguardado     ##########
-#### :sincontarrutina-inicial-allow-autolog:
+#### :rutina-inicial-allow-autolog:
 ####
 ####
 ####   english: autolog  
@@ -829,7 +829,7 @@ head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $seco
 if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> $output_autolog ; fi
 ####
 ####
-#### :sincontarrutina-final-allow-autolog:
+#### :rutina-final-allow-autolog:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
 #### :rutina-inicial-filelog:
@@ -860,7 +860,7 @@ exit; fi
 #### :rutina-final-autolog:
 ##########   english: default:  fwiptables preferences      ##########
 ##########   spanish: defecto:  fwiptables preferences      ##########
-#### :sincontarrutina-inicial-default:
+#### :rutina-inicial-default:
 ####
 ####
 if [ "$first_option" = "default" ] ; then echo $give_cover
@@ -872,10 +872,10 @@ echo "$duo_md [ info ] [ Modify default config for fwiptables:         ] [ fwipt
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-default:
+#### :rutina-final-default:
 ##########    english: preferences-read: show preferences   ##########
 ##########    spanish: preferences-read: show preferences   ##########
-#### :sincontarrutina-inicial-preferences-read:
+#### :rutina-inicial-preferences-read:
 ####
 ####
 if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
@@ -888,10 +888,10 @@ echo "$duo_md [ info ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-preferences-read:
+#### :rutina-final-preferences-read:
 ##########    english: preferences-modify: modify preferences   ##########
 ##########    spanish: preferences-modify: modify preferences   ##########
-#### :sincontarrutina-inicial-preferences-modify:
+#### :rutina-inicial-preferences-modify:
 ####
 ####
 if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
@@ -902,10 +902,10 @@ echo "$duo_md [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-preferences-modify:
+#### :rutina-final-preferences-modify:
 ##########    english: dialog-modify: modify dialog   ##########
 ##########    spanish: dialog-modify: modify dialog   ##########
-#### :sincontarrutina-inicial-dialog-modify:
+#### :rutina-inicial-dialog-modify:
 ####
 ####
 if [ "$first_option" = "dialog-modify" ]; then  echo $give_cover
@@ -916,10 +916,10 @@ echo "$duo_md [ info ] [ edit file $default_dialogrc to change variables ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-dialog-modify:
+#### :rutina-final-dialog-modify:
 ##########    english: preferences-read: modify  preferences         ##########
 ##########    spanish: preferences-read: modifica preferencias       ##########
-#### :sincontarrutina-inicial-preferences-read:
+#### :rutina-inicial-preferences-read:
 ####
 ####
 if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
@@ -937,10 +937,10 @@ cat $default_preferences
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-preferences-read:
+#### :rutina-final-preferences-read:
 ##########   english: preferences-regen:  regen preferences       ##########
 ##########   spanish: preferences-regen:  regenera preferencias   ##########
-#### :sincontarrutina-inicial-preferences-regen:
+#### :rutina-inicial-preferences-regen:
 ####
 ####
 if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
@@ -952,7 +952,7 @@ echo "$duo_md [  ok  ] [ Updated values for default in $default_preferences ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-preferences-regen:
+#### :rutina-final-preferences-regen:
 ##########    english: ip4 : get net info               ##########
 ##########    spanish: ip4 : da informacion de la red   ##########
 #### :sicontarrutina-inicial-ip4:
@@ -988,10 +988,10 @@ cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-ip4:
+#### :rutina-final-ip4:
 ##########    english: ip6 : get net info               ##########
 ##########    spanish: ip6 : da informacion de la red   ##########
-#### :sincontarrutina-inicial-ip6:
+#### :rutina-inicial-ip6:
 ####
 ####
 if [ "$first_option" = "ip6" ]; then echo $give_cover
@@ -1024,10 +1024,10 @@ cat /etc/resolv.conf | $command_grep -i nameserver | $command_grep -iv ^# | sed 
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-ip6:
+#### :rutina-final-ip6:
 ##########    english: version: system script, the version option              ##########
 ##########    spanish: version: script de sistema, la opcion mostrar version   ##########
-#### :sincontarrutina-inicial-version:
+#### :rutina-inicial-version:
 ####
 ####
 if [ "$first_option" = "version" ]; then echo $give_cover
@@ -1064,10 +1064,10 @@ echo "$text_md $cmd_homepage"
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-version:
+#### :rutina-final-version:
 ##########    english: notes: notes to configure iptables      ##########
 ##########    spanish: notes: notas para configurar iptables   ##########
-#### :sincontarrutina-inicial-notes:
+#### :rutina-inicial-notes:
 ####
 ####
 if [ "$first_option" = "notes" ]; then echo $give_cover
@@ -1134,7 +1134,7 @@ echo
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-notes:
+#### :rutina-final-notes:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
@@ -1667,7 +1667,7 @@ exit ; fi
 #### :rutina-final-regen-config:
 ##########  english:  sane variables: for working sane         ########## 
 ##########  spanish:  sana variables: para funcionamiento sano ##########
-#### :sincontarrutina-inicial-sane:
+#### :rutina-inicial-sane:
 ####
 ####
 case "$NULL" in "$allow_autosave")         ;;  *)  allow_autosave="no" ;;  esac
@@ -1708,10 +1708,10 @@ case "$NULL" in "$name_firewall")          ;;  *)  name_firewall="no" ;; esac
 case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 ####
 ####
-#### :sincontarrutina-final-sane:
+#### :rutina-final-sane:
 ##########    english: autosave: autosave of firewall to restore standard rules                 ##########
 ##########    english: autosave: autoguardado de firewall para recuperador de reglas estandar   ##########
-#### :sincontarrutina-inicial-autosave:
+#### :rutina-inicial-autosave:
 ####
 ####
 #### english: iptables saved
@@ -1727,7 +1727,7 @@ echo "$duo_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $zero_option save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ####
-#### :sincontarrutina-final-autosave:
+#### :rutina-final-autosave:
 ##########    english: ready system rules con its option               ##########
 ##########    spanish: preprara reglas del sistema con sus opciones    ##########
 ####
@@ -1744,7 +1744,7 @@ $zero_option save autosave-fwiptables &> /dev/null ; exit; fi
 ####
 ##########   english: custom firewall      ##########
 ##########   spanish: custom cortafuegos   ##########
-#### :sincontarrutina-inicial-custom-rules:
+#### :rutina-inicial-custom-rules:
 ####
 ####
 if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
@@ -1770,10 +1770,10 @@ exit; fi
 fi
 ####
 ####
-#### :sincontarrutina-final-custom-rules:
+#### :rutina-final-custom-rules:
 ##########   english: system firewall           ##########
 ##########   spanish: cortafuegos del sistema   ##########
-#### :sincontarrutina-inicial-system-rules:
+#### :rutina-inicial-system-rules:
 ####
 ####
 ####   #### english: firewall of system off-line:
@@ -2467,10 +2467,10 @@ server_port_tcp="ssh,5432,3306,3360" ;
 fi
 ####
 ####
-#### :sincontarrutina-final-system-rules:
+#### :rutina-final-system-rules:
 ##########    english: options-mini: wellcome with semi help    ##########
 ##########    spanish: options-mini: bienvenida con semi ayuda  ##########
-#### :sincontarrutina-inicial-mini-options:
+#### :rutina-inicial-mini-options:
 ####
 ####
 if [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
@@ -2499,10 +2499,10 @@ echo "$text_md                          ip4 ip6 version notes examples-config in
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-mini-options:
+#### :rutina-final-mini-options:
 ##########    english: names-config: list some config       ##########
 ##########    spanish: names-config: lista alguna config    ##########
-#### :sincontarrutina-inicial-names-config:
+#### :rutina-inicial-names-config:
 ####
 ####
 if [ "$first_option" = "names-config" ]; then echo $give_cover
@@ -2524,10 +2524,10 @@ echo
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-names-config:
+#### :rutina-final-names-config:
 ##########    english: text-pause: do pause     ##########
 ##########    spanish: text-pause: hace pausa   ##########
-#### :sincontarrutina-inicial-text-pause:
+#### :rutina-inicial-text-pause:
 ####
 ####
 if [ "$first_option" = "text-pause" ]; then $nada
@@ -2535,10 +2535,10 @@ read -p '##### [ ok ] ##### Press [enter] to continue now with the cli-menu ####
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-text-pause:
+#### :rutina-final-text-pause:
 ##########     english: examples-config: Show config files examples            ##########
 ##########     spanish: examples-config: Muestra ejemplos de configuraciones   ##########
-#### :sincontarrutina-inicial-examples-config:
+#### :rutina-inicial-examples-config:
 ####
 ####
 if [ "$first_option" = "examples-config" ]; then echo $give_cover
@@ -2673,10 +2673,10 @@ echo
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-examples-config:
+#### :rutina-final-examples-config:
 ##########    english: eraserules: Erase rules option   ##########
 ##########    spanish: eraserules: Opcion borra reglas  ##########
-#### :sincontarrutina-inicial-eraserules:
+#### :rutina-inicial-eraserules:
 ####
 ####
 if [ "$first_option" = "eraserules" ]; then echo $give_cover 
@@ -2812,10 +2812,10 @@ echo "$duo_md [  ok  ] [ Firewall is erased ] [ Deleted rules ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-eraserules:
+#### :rutina-final-eraserules:
 ##########     english: list-alltables: list all rules         ##########
 ##########     spanish: list-alltables: list todas las reglas  ##########
-#### :sincontarrutina-inicial-list-alltables:
+#### :rutina-inicial-list-alltables:
 ####
 ####
 if [ "$first_option" = "list-alltables" ]; then  echo $give_cover
@@ -2849,10 +2849,10 @@ echo
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-alltables:
+#### :rutina-final-list-alltables:
 ##########     english: listn-alltables: list all rules         ##########
 ##########     spanish: listn-alltables: list todas las reglas  ##########
-#### :sincontarrutina-inicial-listn-alltables:
+#### :rutina-inicial-listn-alltables:
 ####
 ####
 if [ "$first_option" = "listn-alltables" ]; then  echo $give_cover
@@ -2886,10 +2886,10 @@ echo
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listn-alltables:
+#### :rutina-final-listn-alltables:
 ##########    english: list4-ip: The list option   ##########
 ##########    spanish: list4-ip: La opcion lista   ##########
-#### :sincontarrutina-inicial-list4:
+#### :rutina-inicial-list4:
 ####
 ####
 if [ "$first_option" = "list4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
@@ -2920,10 +2920,10 @@ esac
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list4:
+#### :rutina-final-list4:
 ##########    english: list6-ip: list ipv6 rules filter           ##########
 ##########    spanish: list6-ip: lista reglas de filtros de ipv6  ##########
-#### :sincontarrutina-inicial-list6:
+#### :rutina-inicial-list6:
 ####
 ####
 if [ "$first_option" = "list6-ip" ]; then  echo $give_cover ; echo "$message_info_rules"
@@ -2956,10 +2956,10 @@ esac
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list6:
+#### :rutina-final-list6:
 ##########    english: listn4-ip: The list option   ##########
 ##########    spanish: listn4-ip: La opcion lista   ##########
-#### :sincontarrutina-inicial-listn4-ip:
+#### :rutina-inicial-listn4-ip:
 ####
 ####
 if [ "$first_option" = "listn4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
@@ -2990,10 +2990,10 @@ esac
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listn4-ip:
+#### :rutina-final-listn4-ip:
 ##########    english: listn6-ip: list ipv6 rules filter           ##########
 ##########    spanish: listn6-ip: lista reglas de filtros de ipv6  ##########
-#### :sincontarrutina-inicial-listn6-ip:
+#### :rutina-inicial-listn6-ip:
 ####
 ####
 if [ "$first_option" = "listn6-ip" ]; then  echo $give_cover ; echo "$message_info_rules"
@@ -3026,10 +3026,10 @@ esac
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listn6-ip:
+#### :rutina-final-listn6-ip:
 ##########    english: status: The list option ipv4 and ipv6    ##########
 ##########    spanish: status: La opcion lista ipv4 y ipv6      ##########
-#### :sincontarrutina-inicial-status:
+#### :rutina-inicial-status:
 ####
 ####
 if [ "$first_option" = "status" ]; then
@@ -3044,10 +3044,10 @@ $zero_option list6
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-satus:
+#### :rutina-final-satus:
 ##########    english: statusn: The list option ipv4 and ipv6    ##########
 ##########    spanish: statusn: La opcion lista ipv4 y ipv6      ##########
-#### :sincontarrutina-inicial-statusn:
+#### :rutina-inicial-statusn:
 ####
 ####
 if [ "$first_option" = "statusn" ]; then
@@ -3062,10 +3062,10 @@ $zero_option listn6
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-satusn:
+#### :rutina-final-satusn:
 ##########    english: listnum: The list option   ##########
 ##########    spanish: listnum: La opcion lista   ##########
-#### :sincontarrutina-inicial-listnum:
+#### :rutina-inicial-listnum:
 ####
 ####
 if [ "$first_option" = "listnum" ]; then echo $give_cover
@@ -3096,10 +3096,10 @@ esac
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listnum:
+#### :rutina-final-listnum:
 ##########    english: listnum6: The list option   ##########
 ##########    spanish: listnum6: La opcion lista   ##########
-#### :sincontarrutina-inicial-listnum-filter6:
+#### :rutina-inicial-listnum-filter6:
 ####
 ####
 if [ "$first_option" = "listnum6" ]; then echo $give_cover
@@ -3130,10 +3130,10 @@ esac
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listnum6:
+#### :rutina-final-listnum6:
 ##########    english: list-filter4: The list option   ##########
 ##########    spanish: list-filter4: La opcion lista   ##########
-#### :sincontarrutina-inicial-list-filter4:
+#### :rutina-inicial-list-filter4:
 ####
 ####
 if [ "$first_option" = "list-filter4" ]; then echo $give_cover
@@ -3153,10 +3153,10 @@ $command_iptables_nft -t filter -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-filter4:
+#### :rutina-final-list-filter4:
 ##########    english: list-forward: List filter forward rules       ##########
 ##########    spanish: list-forward: lista reglas de iptables filter forward  ##########
-#### :sincontarrutina-inicial-list-forward:
+#### :rutina-inicial-list-forward:
 ####
 ####
 if [ "$first_option" = "list-forward" ]; then  echo $give_cover
@@ -3174,10 +3174,10 @@ $command_iptables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-forward:
+#### :rutina-final-list-forward:
 ##########    english: list-filter6: list ipv6 rules filter           ##########
 ##########    spanish: list-filter6: lista reglas de filtros de ipv6  ##########
-#### :sincontarrutina-inicial-list-filter6:
+#### :rutina-inicial-list-filter6:
 ####
 ####
 if [ "$first_option" = "list-filter6" ]; then  echo $give_cover
@@ -3197,10 +3197,10 @@ $command_ip6tables_nft -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-filter6:
+#### :rutina-final-list-filter6:
 ##########    english: list-forward6: List filter forward rules ipv6        ##########
 ##########    spanish: list-forward6: lista reglas de iptables filter forward ipv6   ##########
-#### :sincontarrutina-inicial-list-forward6:
+#### :rutina-inicial-list-forward6:
 ####
 ####
 if [ "$first_option" = "list-forward6" ]; then  echo $give_cover
@@ -3218,10 +3218,10 @@ $command_ip6tables_nft -t filter -v -L FORWARD $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-forward6:
+#### :rutina-final-list-forward6:
 ##########    english: list-nat4: list NAT rules of ipv4       ##########
 ##########    spanish: list-nat4: lista reglas de NAT de ipv4  ##########
-#### :sincontarrutina-inicial-list-nat-4:
+#### :rutina-inicial-list-nat-4:
 ####
 ####
  if [ "$first_option" = "list-nat4" ]; then  echo $give_cover
@@ -3239,10 +3239,10 @@ $command_iptables_nft -t nat -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-nat-4:
+#### :rutina-final-list-nat-4:
 ##########    english: list-nat6: list NAT rules of ipv6       ##########
 ##########    spanish: list-nat6: lista reglas de NAT de ipv6  ##########
-#### :sincontarrutina-inicial-list-nat6:
+#### :rutina-inicial-list-nat6:
 ####
 ####
 if [ "$first_option" = "list-nat6" ]; then echo $give_cover
@@ -3261,10 +3261,10 @@ $command_ip6tables_nft -t nat -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-nat6:
+#### :rutina-final-list-nat6:
 ##########    english: listnum-filter4: list option numerical filter ipv4   ##########
 ##########    spanish: listnum-filter4: lista numeral filter ipv4           ##########
-#### :sincontarrutina-inicial-listnum-filter4:
+#### :rutina-inicial-listnum-filter4:
 ####
 ####
 if [ "$first_option" = "listnum-filter4" ]; then  echo $give_cover
@@ -3281,10 +3281,10 @@ $command_iptables_nft -v -L -n
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listnum-filter4:
+#### :rutina-final-listnum-filter4:
 ##########    english: list-forwardnum: List filter forward rules in numerical     ##########
 ##########    spanish: list-forwardnum: lista reglas de iptables filter forward in numeros  ##########
-#### :sincontarrutina-inicial-list-forwardnum:
+#### :rutina-inicial-list-forwardnum:
 ####
 ####
 if [ "$first_option" = "list-forwardnum" ]; then  echo $give_cover
@@ -3301,10 +3301,10 @@ $command_iptables_nft -t filter -v -L FORWARD -n
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-forwardnum:
+#### :rutina-final-list-forwardnum:
 ##########    english: listnum-filter6: list option numerical filter ipv6   ##########
 ##########    spanish: listnum-filter6: lista numeral filter ipv6           ##########
-#### :sincontarrutina-inicial-listnum-filter6:
+#### :rutina-inicial-listnum-filter6:
 ####
 ####
 if [ "$first_option" = "listnum-filter6" ]; then  echo $give_cover
@@ -3321,10 +3321,10 @@ $command_ip6tables_nft -v -L -n
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-listnum-filter6:
+#### :rutina-final-listnum-filter6:
 ##########    english: list-forwardnum6: List filter forward rules in numerical ipv6      ##########
 ##########    spanish: list-forwardnum6: lista reglas de iptables filter forward in numeros ipv6   ##########
-#### :sincontarrutina-inicial-list-forwardnum6:
+#### :rutina-inicial-list-forwardnum6:
 ####
 ####
 if [ "$first_option" = "list-forwardnum6" ]; then  echo $give_cover
@@ -3341,10 +3341,10 @@ $command_ip6tables_nft -t filter -v -L FORWARD -n
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-forwardnum6:
+#### :rutina-final-list-forwardnum6:
 ##########    english: list-mangle4: list mangle rules from ipv4      ##########
 ##########    spanish: list-mangle4: lista reglas de mangle de ipv4   ##########
-#### :sincontarrutina-inicial-list-mangle4:
+#### :rutina-inicial-list-mangle4:
 ####
 ####
 if [ "$first_option" = "list-mangle4" ]; then  echo $give_cover
@@ -3363,10 +3363,10 @@ echo
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-mangle4:
+#### :rutina-final-list-mangle4:
 ##########    english: list-mangle6: list mangle rules from ipv6     ##########
 ##########    spanish: list-mangle6: lista reglas de mangle de ipv6  ##########
-#### :sincontarrutina-inicial-list-mangle6:
+#### :rutina-inicial-list-mangle6:
 ####
 ####
 if [ "$first_option" = "list-mangle6" ]; then echo $give_cover
@@ -3385,10 +3385,10 @@ $command_ip6tables_nft -t mangle -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-mangle6:
+#### :rutina-final-list-mangle6:
 ##########    english: list-raw4: list raw rules from ipv4  ##########
 ##########    spanish: list-raw4: lista reglas raw de ipv4  ##########
-#### :sincontarrutina-inicial-list-raw4:
+#### :rutina-inicial-list-raw4:
 ####
 ####
 if [ "$first_option" = "list-raw4" ]; then  echo $give_cover
@@ -3406,10 +3406,10 @@ $command_iptables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-raw4:
+#### :rutina-final-list-raw4:
 ##########    english: list-raw6: list raw rules from ipv6  ##########
 ##########    spanish: list-raw6: lista reglas raw de ipv6  ##########
-#### :sincontarrutina-inicial-list-raw6:
+#### :rutina-inicial-list-raw6:
 ####
 ####
 if [ "$first_option" = "list-raw6" ]; then  echo $give_cover
@@ -3427,10 +3427,10 @@ $command_ip6tables_nft -t raw -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-raw6:
+#### :rutina-final-list-raw6:
 ##########    english: list-security4: list security rules from ipv4     ##########
 ##########    spanish: list-security4: lista reglas de security de ipv4  ##########
-#### :sincontarrutina-inicial-list-security4:
+#### :rutina-inicial-list-security4:
 ####
 ####
 if [ "$first_option" = "list-security4" ]; then  echo $give_cover
@@ -3448,10 +3448,10 @@ $command_iptables_nft -t security -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-security4:
+#### :rutina-final-list-security4:
 ##########    english: list-security6: list security rules from ipv6     ##########
 ##########    spanish: list-security6: lista reglas de security de ipv6  ##########
-#### :sincontarrutina-inicial-list-security6:
+#### :rutina-inicial-list-security6:
 ####
 ####
 if [ "$first_option" = "list-security6" ]; then  echo $give_cover
@@ -3469,10 +3469,10 @@ $command_ip6tables_nft -t security -v -L $list_rules_conceptual
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-security6:
+#### :rutina-final-list-security6:
 ##########    english: list-ebtables: list ebtables rules with mac adress       ##########
 ##########    spanish: list-ebtables: lista reglas de ebtables with mac adress  ##########
-#### :sincontarrutina-inicial-list-ebtables:
+#### :rutina-inicial-list-ebtables:
 ####
 ####
 if [ "$first_option" = "list-ebtables" ]; then  echo $give_cover
@@ -3489,10 +3489,10 @@ $command_ebtables -L -t nat
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-ebtables:
+#### :rutina-final-list-ebtables:
 ##########    english: list-arptables: list rules arptables with arp        ##########
 ##########    spanish: list-arptables: lista reglas de arptables with arp   ##########
-#### :sincontarrutina-inicial-list-arptables:
+#### :rutina-inicial-list-arptables:
 ####
 ####
 if [ "$first_option" = "list-arptables" ]; then  echo $give_cover
@@ -3505,10 +3505,10 @@ $command_arptables -L
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-arptables:
+#### :rutina-final-list-arptables:
 ##########    english: list-arptables: list rules arptables with arp        ##########
 ##########    spanish: list-arptables: lista reglas de arptables with arp   ##########
-#### :sincontarrutina-inicial-list-arptables:
+#### :rutina-inicial-list-arptables:
 ####
 ####
 if [ "$first_option" = "listn-arptables" ]; then  echo $give_cover
@@ -3521,10 +3521,10 @@ $command_arptables -L -n
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-list-arptables:
+#### :rutina-final-list-arptables:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
-#### :sincontarrutina-inicial-new-full-config:
+#### :rutina-inicial-new-full-config:
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -3542,10 +3542,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-new-full-config:
+#### :rutina-final-new-full-config:
 ##########    english: nueva-completa-config: create new configs                             ##########
 ##########    spanish: nueva-completa-config: nueva-completa-config para cear nuevas config  ##########
-#### :sincontarrutina-inicial-nueva-completa-config:
+#### :rutina-inicial-nueva-completa-config:
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -3563,10 +3563,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-nueva-completa-config:
+#### :rutina-final-nueva-completa-config:
 ##########    english: new-mini-config: create new configs   ##########
 ##########    spanish: new--mini config: cea nuevas config   ##########
-#### :sincontarrutina-inicial-new-mini-config:
+#### :rutina-inicial-new-mini-config:
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -3584,10 +3584,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-new-mini-config:
+#### :rutina-final-new-mini-config:
 ##########    english: nueva-mini-config: create new configs   ##########
 ##########    spanish: nueva-mini-config: crea nuevas config   ##########
-#### :sincontarrutina-inicial-nueva-mini-config:
+#### :rutina-inicial-nueva-mini-config:
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  echo $give_cover
@@ -3605,10 +3605,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-nueva-mini-config:
+#### :rutina-final-nueva-mini-config:
 ##########    english: modify-config: modify a one config.cfg        ##########
 ##########    spanish: modify-config: modify una configuracion.cfg   ##########
-#### :sincontarrutina-inicial-modify-config:
+#### :rutina-inicial-modify-config:
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then  echo $give_cover
@@ -3629,10 +3629,10 @@ clear; fi
 clear ; exit ; fi
 ####
 ####
-#### :sincontarrutina-final-modify-config:
+#### :rutina-final-modify-config:
 ##########    english: show-config: show a one config          ##########
 ##########    spanish: show-config: muestra una configuracion  ##########
-#### :sincontarrutina-inicial-show-config:
+#### :rutina-inicial-show-config:
 ####
 ####
 if [ "$first_option" = "show-config" ] ; then echo $give_cover
@@ -3650,10 +3650,10 @@ echo  ; exit ; fi
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-show-config:
+#### :rutina-final-show-config:
 ##########    english: del-config: delete a old config               ##########
 ##########    spanish: del-config: elimina una vieja configuracion   ##########
-#### :sincontarrutina-inicial-del-config:
+#### :rutina-inicial-del-config:
 ####
 ####
 if [ "$first_option" = "del-config" ]; then echo $give_cover
@@ -3672,10 +3672,10 @@ echo  ; exit ; fi
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-del-config:
+#### :rutina-final-del-config:
 ##########    english: names: file list whith rules in iptables format          ##########
 ##########    spanish: names: lista de archivos con reglas en formato iptables  ##########
-#### :sincontarrutina-inicial-names:
+#### :rutina-inicial-names:
 ####
 ####
 if [ "$first_option" = "names" ]; then  echo $give_cover
@@ -3692,10 +3692,10 @@ echo "$duo_md [  ok  ] [ Listed firewall names ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-names:
+#### :rutina-final-names:
 ##########    english: reset: reset counter rules            ##########
 ##########    spanish: reset: resetea contadores de reglas   ##########
-#### :sincontarrutina-inicial-reset:
+#### :rutina-inicial-reset:
 ####
 ####
 if [ "$first_option" = "reset" ]; then echo $give_cover
@@ -3707,10 +3707,10 @@ echo "$duo_md [  ok  ] [ firewall reseted ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-reset:
+#### :rutina-final-reset:
 ##########    english: install: install fwiptables-minimal    ##########
 ##########    spanish: install: instala fwiptables-minimal    ##########
-#### :sincontarrutina-inicial-install:
+#### :rutina-inicial-install:
 ####
 ####
 if [ "$first_option" = "install" ]; then echo $give_cover
@@ -3723,10 +3723,10 @@ echo "$duo_md [  ok  ] [ Installed fwiptables-mini to /usr/bin/fwiptables-mini ]
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-install:
+#### :rutina-final-install:
 ##########    english: install: uninstall fwiptables-minimal    ##########
 ##########    spanish: install: uninstala fwiptables-minimal    ##########
-#### :sincontarrutina-inicial-uninstall:
+#### :rutina-inicial-uninstall:
 ####
 ####
 if [ "$first_option" = "uninstall" ]; then echo $give_cover
@@ -3737,10 +3737,10 @@ echo "$duo_md [  ok  ] [ Uninstalled /usr/bin/fwiptables-mini ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-install:
+#### :rutina-final-install:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
-#### :sincontarrutina-inicial-wizard-mini:
+#### :rutina-inicial-wizard-mini:
 ####
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
@@ -3755,10 +3755,10 @@ $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-wizard-mini:
+#### :rutina-final-wizard-mini:
 ##########    english: wizard-full: wizard-full     ##########
 ##########    spanish: wizard-full: asistente       ##########
-#### :sincontarrutina-inicial-wizard-full:
+#### :rutina-inicial-wizard-full:
 ####
 ####
 if [ "$first_option" = "wizard-full" ]; then $nada
@@ -3773,7 +3773,7 @@ $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-wizard-full:
+#### :rutina-final-wizard-full:
 ##########    english: load: load the rules in iptables format      ##########
 ##########    spanish: load: carga las reglas en formato iptables   ##########
 #### :rutina-inicial-load:
@@ -4011,7 +4011,7 @@ exit; fi
 #### :rutina-final-continue:
 ##########    english: config-eng: several options to config in english        ##########
 ##########    spanish: config-eng: varias opciones para configurar en ingles   ##########
-#### :sincontarrutina-inicial-config-eng:
+#### :rutina-inicial-config-eng:
 ####
 ####
 if [ "$first_option" = "config-eng" ]; then echo $give_cover
@@ -4020,10 +4020,10 @@ cat  $defaultfullcfg_eng
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-config-eng:
+#### :rutina-final-config-eng:
 ##########    english: config-spa: several options to config in spanish         ##########
 ##########    spanish: config-spa: varias opciones para configurar en spanish   ##########
-#### :sincontarrutina-inicial-config-spa:
+#### :rutina-inicial-config-spa:
 ####
 ####
 if [ "$first_option" = "config-spa" ]; then echo $give_cover
@@ -4032,7 +4032,7 @@ cat $defaultfullcfg_spa
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-config-spa:
+#### :rutina-final-config-spa:
 ############################       english: default: without other valid options
 ############################	   spanish: default: sin otra valida opcion
 ####
