@@ -162,8 +162,8 @@ default_preferences="$directory_shell/preferences.rc"
 #### spanish: archivos log: archivos log y ruta de los archivos de configuracion
 ####
 ####
-output_filelog="$directory_log/$cmd_config-filelog"
-output_autolog="$directory_log/$cmd_config-autolog"
+output_filelog="$directory_log/filelog"
+output_autolog="$directory_log/autolog"
 ####
 ####
 if [ ! -f $output_filelog ] ; then touch $output_filelog ; fi
@@ -826,26 +826,38 @@ exit ; fi
 ####
 ####
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
-if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$output_autolog" ; fi
+if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> $output_autolog ; fi
 ####
 ####
 #### :sincontarrutina-final-allow-autolog:
-##########    english: create dialog.rc      ##########
-##########    spanish: crea dialog.rc        ##########
-#### :sincontarrutina-inicial-dialog-rc:
+##########   english: filelog: Read log fwiptables-filelog  ##########
+##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
+#### :rutina-inicial-filelog:
 ####
 ####
-if [ "$first_option" == "dialog-rc" ] ; then 
-if [ "$favorite_text_dialog" == "$NULL" ]; then echo "[ fail ] install dialog"; exit ; fi
-$favorite_text_dialog --create-rc $default_dialogrc &> /dev/null
-cp $default_dialogrc $default_dialogrc.old &> /dev/null
-sed 's/use_scrollbar = OFF/use_scrollbar = ON/g' $default_dialogrc > $default_dialogrc.old
-sed 's/use_colors = ON/use_colors = OFF/g' $default_dialogrc > $default_dialog_rc.old
-cp $default_dialogrc.old $default_dialogrc &> /dev/null
+if [ "$first_option" = "filelog" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ]  [ show $output_filelog ] || ||"
+cat  "$output_filelog"
+echo 
+echo "### ### [ this file is: ] [ $output_filelog ]"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-dialog-rc:
+#### :rutina-final-fw-filelog:
+##########    english: autolog: Read log fwiptables-autolog   ##########
+##########    spanish: autolog: Lee log  fwiptables-autolog   ##########
+#### :rutina-inicial-autolog:
+####
+####
+if [ "$first_option" = "autolog" ] ; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ show "$output_autolog" ] || ||"
+cat  "$output_autolog"
+echo
+echo "$duo_md [ info ] [ last end of file showed ] [ $output_autolog ]"
+exit; fi
+####
+####
+#### :rutina-final-autolog:
 ##########   english: default:  fwiptables preferences      ##########
 ##########   spanish: defecto:  fwiptables preferences      ##########
 #### :sincontarrutina-inicial-default:
@@ -2482,7 +2494,7 @@ echo "$text_md                          client-tor client-ftp client-squid lan-t
 echo "$text_md                          server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                          server-asterisk server-squid                                                 "
-echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen                        "
+echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
 echo "$text_md                          ip4 ip6 version notes examples-config install uninstall                      "
 exit ; fi
 ####
