@@ -329,10 +329,10 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
-####       #### english: show date and show time
-####       #### spanish: muestra la fecha y el tiempo
-allow_timespam=""  
-####       #### english: close from networking ping, trace.. with timeout in seconds 
+####       #### english: auto time in command
+####       #### spanish: automatico fecha de linea
+allow_showtime=""                    ## fwiptables-file-default ## void or no
+####       #### english: close from networking ping, trace.. with timeout in seconds
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
 ####       #### english: PING server for default         
@@ -451,6 +451,25 @@ default_security="options-mini"
 ####
 ####
 #### :rutina-final-system-variables:
+##########   english: if sane config directory                       ##########
+##########   spanish: comprobar sanos directorios de configuracion   ##########
+#### :rutina-inicial-dir-sane:
+####
+####
+command_mkdir="$(command -v mkdir)"
+####
+####
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
+if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
+if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
+if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
+if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
+if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
+if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
+####
+####
+#### :rutina-final-dir-sane:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
@@ -489,7 +508,7 @@ defaultminicfg_spa="$directory_config/default-mini-spanish.cfg"
 #### spanish: default config to shell
 ####
 ####
-default_preferences="$directory_shell/preferences.rc"
+default_preferences="$directory_shell/default_preferences"
 ####
 ####
 #### english: file log:     log files and path files config files
@@ -529,25 +548,6 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 ####
 #### :rutina-final-files:
-##########   english: if sane config directory                       ##########
-##########   spanish: comprobar sanos directorios de configuracion   ##########
-#### :rutina-inicial-dir-sane:
-####
-####
-command_mkdir="$(command -v mkdir)"
-####
-####
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
-if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
-if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
-if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
-if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-####
-####
-#### :rutina-final-dir-sane:
 ##########    english: Update variables             ##########
 ##########    spanish: Actualiza variables          ##########
 #### :rutina-inicial-update-variables:
@@ -557,7 +557,7 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f "$default_preferences" ]; then source $default_preferences ; fi
+if [ -f "$default_preferences" ]; then source "$default_preferences" ; fi
 ####
 ####
 ####  realice sane very important variables post by default_preferences
@@ -1102,7 +1102,7 @@ echo $head_autolog >> $default_autolog ; fi
 #### :rutina-inicial-allow-timespam:
 ####
 ####
-if [ "$allow_timespam" != "no" ] ; then
+if [ "$allow_showtime" != "no" ] ; then
 head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
 echo $head_timespam ; fi
 ####
@@ -4637,8 +4637,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-$command_zenity  --text-info $graphic_dimension --filename="$default_preferences.old" \
---editable --title="MODIFY DEFAULT" 1> "$default_preferences"
+editor $default_preferences
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -8411,9 +8410,8 @@ exit; fi
 if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
-echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
-echo "$duo_md [  ok  ] [ Regenerated: $cmd_binary values for default in $default_preferences ]"
+head -600 $0 | $command_grep -B 2 fwiptables-file-default > $default_preferences
+echo "$duo_md [  ok  ] [ Regenerated: $cmd_binary values for default in default_preferences ]"
 exit; fi
 ####
 ####
@@ -8428,7 +8426,8 @@ echo "$header_ok [ $first_option ] [ show the default $cmd_binary ] || ||"
 echo 
 cat $default_preferences
 echo 
-echo "$duo_md [ info ] [ Change variables with: $cmd_binary preferences-modify ] [ file: $default_preferences ]"
+echo "$duo_md [ info ] [ Change variables with: $cmd_binary preferences-modify ]"
+echo "$duo_md [ info ] [ file: $default_preferences ]"
 exit; fi
 ####
 ####
@@ -11985,12 +11984,12 @@ echo "$text_md            lshw : Muestra los dispositivos de hardware."
 echo "$text_md"
 echo "$title_md [ Mostrar etc ]."
 echo "$text_md"
-echo "$text_md           hosts : Muestra /etc/hosts, hosts locales y hosts estaticos."
-echo "$text_md      protocolos : Muestra /etc/protocols, nombres de protocolos."
-echo "$text_md        services : Muestra /etc/services, nombres de puertos y servicios."
-echo "$text_md     hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores."
-echo "$text_md      hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
-echo "$text_md     resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
+echo "$text_md               hosts : Muestra /etc/hosts, hosts locales y hosts estaticos."
+echo "$text_md          protocolos : Muestra /etc/protocols, nombres de protocolos."
+echo "$text_md            services : Muestra /etc/services, nombres de puertos y servicios."
+echo "$text_md         hosts.allow : Muestra /etc/hosts.allow, hosts permitidas en algunos propios servidores."
+echo "$text_md          hosts.deny : Muestra /etc/hosts.deny, hosts denegadas en algunos propios servidores."
+echo "$text_md         resolv.conf : Muestra /etc/resolv.conf, este es el dns configurado."
 echo "$text_md    preferences-read : Muestra muestra variables por defecto en fwiptables."
 echo "$text_md  preferences-modify : Modifica variables por defecto en fwiptables."
 echo "$text_md"
