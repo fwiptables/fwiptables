@@ -3757,9 +3757,13 @@ if [ "$first_option" = "install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Install fwiptables ] || ||"
 echo "$duo_md [ info ] [ Installing the firewall ]"
 cp "$zero_option" "/usr/bin/fwiptables-mini"
-$zero_option preferences-regen &> /dev/null
-echo "$duo_md [  ok  ] [ Updated configs ]"
-echo "$duo_md [  ok  ] [ Installed fwiptables-mini to /usr/bin/fwiptables-mini ]"
+$cmd_binary preferences-regen &> /dev/null
+$cmd_binary regen-config &> /dev/null
+echo "$duo_md [ info ] [ The config dir:        ] [ $directory_data ]"
+echo "$duo_md [ info ] [ The tmp dir:           ] [ $directory_tmp  ]"
+echo "$duo_md [ info ] [ The Command shell:     ] [ /usr/bin/fwiptables-mini ]"
+echo "$duo_md [  ok  ] [ Update configs and variables     ]"
+echo "$duo_md [  ok  ] [ Now. Ready to run fwiptables-cmd ]"
 exit; fi
 ####
 ####
