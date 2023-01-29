@@ -2495,8 +2495,9 @@ exit ; fi
 ####
 if [ "$first_option" = "names-config" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
-echo "$tab $tab [ English ] [ list configs files in cfg format ]"
-echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
+echo "$duo_md [ info ] [ list configs files in cfg format ]"
+echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
+echo 
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
 echo "$tab"
@@ -2670,6 +2671,25 @@ if [ "$first_option" = "eraserules" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ erase all iptables rules ] || ||"
 ####
 ####
+#### english: table policy 
+#### spanish: table policy
+####
+####
+rule_table_policy="ACCEPT"
+$command_iptables_legacy   -t filter  -P INPUT    $rule_table_policy
+$command_iptables_nft      -t filter  -P INPUT    $rule_table_policy
+$command_ip6tables_legacy  -t filter  -P INPUT    $rule_table_policy
+$command_ip6tables_nft     -t filter  -P INPUT    $rule_table_policy
+$command_iptables_legacy   -t filter  -P FORWARD  $rule_table_policy
+$command_iptables_nft      -t filter  -P FORWARD  $rule_table_policy
+$command_ip6tables_legacy  -t filter  -P FORWARD  $rule_table_policy
+$command_ip6tables_nft     -t filter  -P FORWARD  $rule_table_policy
+$command_iptables_legacy   -t filter  -P OUTPUT   $rule_table_policy
+$command_iptables_nft      -t filter  -P OUTPUT   $rule_table_policy
+$command_ip6tables_legacy  -t filter  -P OUTPUT   $rule_table_policy
+$command_ip6tables_nft     -t filter  -P OUTPUT   $rule_table_policy
+####
+####
 #### english: erase the rules
 #### spanish: borra las reglas
 ####
@@ -2781,64 +2801,40 @@ exit; fi
 ####
 ####
 #### :sincontarrutina-final-eraserules:
-##########    english: policytable policy from the filter table   ##########
-##########    spanish: policytable politica de la tabla filter    ##########
-#### :sincontarrutina-inicial-policytable:
-####
-####
-if [ "$first_option" = "policytable" ]; then rule_table_policy="ACCEPT"
-####
-####
-$command_iptables_legacy   -t filter  -P INPUT    $rule_table_policy
-$command_iptables_nft      -t filter  -P INPUT    $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P INPUT    $rule_table_policy
-$command_ip6tables_nft     -t filter  -P INPUT    $rule_table_policy
-$command_iptables_legacy   -t filter  -P FORWARD  $rule_table_policy
-$command_iptables_nft      -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tables_nft     -t filter  -P FORWARD  $rule_table_policy
-$command_iptables_legacy   -t filter  -P OUTPUT   $rule_table_policy
-$command_iptables_nft      -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tables_nft     -t filter  -P OUTPUT   $rule_table_policy
-exit ; fi
-####
-####
-#### :sincontarrutina-final-policytable:
 ##########     english: list-alltables: list all rules         ##########
 ##########     spanish: list-alltables: list todas las reglas  ##########
 #### :sincontarrutina-inicial-list-alltables:
 ####
 ####
- if [ "$first_option" = "list-alltables" ]; then  echo $give_cover
- echo "$header_ok [ $first_option ] [ List all rules ] || ||"
- echo 
- echo; echo; echo "### LIST ARPTABLES ###"
- $zero_option list-arptables
- echo; echo; echo "### LIST EBTABLES ###"
- $zero_option list-ebtables
- echo; echo; echo "### LIST FILTER IP4 TABLE ###"
- $zero_option list-filter4
- echo; echo; echo "### LIST FILTER IP6 TABLE ###"
- $zero_option list-filter6
- echo; echo; echo "### LIST NAT IP4 TABLE ###"
- $zero_option list-nat4
- echo; echo; echo "### LIST NAT IP6 TABLE ###"
- $zero_option list-nat6
- echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
- $zero_option list-security4
- echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
- $zero_option list-security6
- echo; echo; echo "### LIST RAW IP4 TABLE ###"
- $zero_option list-raw4
- echo; echo; echo "### LIST RAW IP6 TABLE ###"
- $zero_option list-raw6
- echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
- $zero_option list-mangle4
- echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
- $zero_option list-mangle6
- echo 
- exit; fi
+if [ "$first_option" = "list-alltables" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ List all rules ] || ||"
+echo 
+echo; echo; echo "### LIST ARPTABLES ###"
+$zero_option list-arptables
+echo; echo; echo "### LIST EBTABLES ###"
+$zero_option list-ebtables
+echo; echo; echo "### LIST FILTER IP4 TABLE ###"
+$zero_option list-filter4
+echo; echo; echo "### LIST FILTER IP6 TABLE ###"
+$zero_option list-filter6
+echo; echo; echo "### LIST NAT IP4 TABLE ###"
+$zero_option list-nat4
+echo; echo; echo "### LIST NAT IP6 TABLE ###"
+$zero_option list-nat6
+echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
+$zero_option list-security4
+echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
+$zero_option list-security6
+echo; echo; echo "### LIST RAW IP4 TABLE ###"
+$zero_option list-raw4
+echo; echo; echo "### LIST RAW IP6 TABLE ###"
+$zero_option list-raw6
+echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
+$zero_option list-mangle4
+echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
+$zero_option list-mangle6
+echo 
+exit; fi
 ####
 ####
 #### :sincontarrutina-final-list-alltables:
@@ -2847,35 +2843,35 @@ exit ; fi
 #### :sincontarrutina-inicial-listn-alltables:
 ####
 ####
- if [ "$first_option" = "listn-alltables" ]; then  echo $give_cover
- echo "$header_ok [ $first_option ] [ List all rules ] || ||"
- echo 
- echo; echo; echo "### LIST EBTABLES ###"
- $zero_option list-ebtables
- echo; echo; echo "### LIST ARPTABLES ###"
- $zero_option listn-arptables
- echo; echo; echo "### LIST FILTER IP4 TABLE ###"
- $zero_option listn-filter4
- echo; echo; echo "### LIST FILTER IP6 TABLE ###"
- $zero_option listn-filter6
- echo; echo; echo "### LIST NAT IP4 TABLE ###"
- $zero_option listn-nat4
- echo; echo; echo "### LIST NAT IP6 TABLE ###"
- $zero_option listn-nat6
- echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
- $zero_option listn-security4
- echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
- $zero_option listn-security6
- echo; echo; echo "### LIST RAW IP4 TABLE ###"
- $zero_option listn-raw4
- echo; echo; echo "### LIST RAW IP6 TABLE ###"
- $zero_option listn-raw6
- echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
- $zero_option listn-mangle4
- echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
- $zero_option listn-mangle6
- echo 
- exit; fi
+if [ "$first_option" = "listn-alltables" ]; then  echo $give_cover
+echo "$header_ok [ $first_option ] [ List all rules ] || ||"
+echo 
+echo; echo; echo "### LIST EBTABLES ###"
+$zero_option list-ebtables
+echo; echo; echo "### LIST ARPTABLES ###"
+$zero_option listn-arptables
+echo; echo; echo "### LIST FILTER IP4 TABLE ###"
+$zero_option listn-filter4
+echo; echo; echo "### LIST FILTER IP6 TABLE ###"
+$zero_option listn-filter6
+echo; echo; echo "### LIST NAT IP4 TABLE ###"
+$zero_option listn-nat4
+echo; echo; echo "### LIST NAT IP6 TABLE ###"
+$zero_option listn-nat6
+echo; echo; echo "### LIST SECURITY IP4 TABLE ###"
+$zero_option listn-security4
+echo; echo; echo "### LIST SECURITY IP6 TABLE ###"
+$zero_option listn-security6
+echo; echo; echo "### LIST RAW IP4 TABLE ###"
+$zero_option listn-raw4
+echo; echo; echo "### LIST RAW IP6 TABLE ###"
+$zero_option listn-raw6
+echo; echo; echo "### LIST MANGLE IP4 TABLE ###"
+$zero_option listn-mangle4
+echo; echo; echo "### LIST MANGLE IP6 TABLE ###"
+$zero_option listn-mangle6
+echo 
+exit; fi
 ####
 ####
 #### :sincontarrutina-final-listn-alltables:
@@ -3672,9 +3668,8 @@ exit ; fi
 ####
 if [ "$first_option" = "names" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
-echo
-echo "$duo_md [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
-echo "$duo_md [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+echo "$duo_md [ info ] [ list configs files in standard format ]"
+echo "$duo_md [ info ] [ folder ] [ $directory_fwrecover ]"
 echo 
 echo "$duo_md [ info ] [ Listing firewall names ]"
 $command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
@@ -4672,7 +4667,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/null ; $cmd_binary policytable &> /dev/null ;
+if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4

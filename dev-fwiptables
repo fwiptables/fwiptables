@@ -596,7 +596,7 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-final-notice:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
-#### :sincontarrutina-inicial-favorite-text-dialog:
+#### :rutina-inicial-favorite-text-dialog:
 ####
 ####
 favorite_text_dialog=""
@@ -604,7 +604,7 @@ if [ "$command_dialog"   = "$NULL" ] ; then $nada ; else favorite_text_dialog="$
 if [ "$command_whiptail" = "$NULL" ] ; then $nada ; else favorite_text_dialog="$command_whiptail --notags"  ; fi
 ####
 ####
-#### :sincontarrutina-inicial-favorite-text-dialog:
+#### :rutina-inicial-favorite-text-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -2638,7 +2638,7 @@ fi
 #### :rutina-final-system-rules:
 ##########    english: options-mini: wellcome with semi help    ##########
 ##########    spanish: options-mini: bienvenida con semi ayuda  ##########
-#### :sincontarrutina-inicial-mini-options:
+#### :rutina-inicial-mini-options:
 ####
 ####
 if [ "$program_minimal" == "" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
@@ -2667,7 +2667,7 @@ echo "$text_md                         ip4 ip6 version notes examples install un
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-mini-options:
+#### :rutina-final-mini-options:
 ##########    english: options-mini: wellcome with semi help    ##########
 ##########    spanish: options-mini: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-options-mini:
@@ -3103,9 +3103,10 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "names-config" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List configs cfg ] || ||"
-echo "$tab $tab [ English ] [ list configs files in cfg format ]"
-echo "$tab $tab [ Spanish ] [ Lista de archivos de configuraciones en cfg formato ]"
+echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
+echo "$duo_md [ info ] [ list configs files in cfg format ]"
+echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
+echo 
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
 echo "$tab"
@@ -6788,6 +6789,25 @@ if [ "$first_option" = "eraserules" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ erase all iptables rules ] || ||"
 ####
 ####
+#### english: table policy 
+#### spanish: table policy
+####
+####
+rule_table_policy="ACCEPT"
+$command_iptables_legacy   -t filter  -P INPUT    $rule_table_policy
+$command_iptables_nft      -t filter  -P INPUT    $rule_table_policy
+$command_ip6tables_legacy  -t filter  -P INPUT    $rule_table_policy
+$command_ip6tables_nft     -t filter  -P INPUT    $rule_table_policy
+$command_iptables_legacy   -t filter  -P FORWARD  $rule_table_policy
+$command_iptables_nft      -t filter  -P FORWARD  $rule_table_policy
+$command_ip6tables_legacy  -t filter  -P FORWARD  $rule_table_policy
+$command_ip6tables_nft     -t filter  -P FORWARD  $rule_table_policy
+$command_iptables_legacy   -t filter  -P OUTPUT   $rule_table_policy
+$command_iptables_nft      -t filter  -P OUTPUT   $rule_table_policy
+$command_ip6tables_legacy  -t filter  -P OUTPUT   $rule_table_policy
+$command_ip6tables_nft     -t filter  -P OUTPUT   $rule_table_policy
+####
+####
 #### english: erase the rules
 #### spanish: borra las reglas
 ####
@@ -6899,30 +6919,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-eraserules:
-##########    english: policytable policy from the filter table   ##########
-##########    spanish: policytable politica de la tabla filter    ##########
-#### :sincontarrutina-inicial-policytable:
-####
-####
-if [ "$first_option" = "policytable" ]; then rule_table_policy="ACCEPT"
-####
-####
-$command_iptables_legacy   -t filter  -P INPUT    $rule_table_policy
-$command_iptables_nft      -t filter  -P INPUT    $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P INPUT    $rule_table_policy
-$command_ip6tables_nft     -t filter  -P INPUT    $rule_table_policy
-$command_iptables_legacy   -t filter  -P FORWARD  $rule_table_policy
-$command_iptables_nft      -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P FORWARD  $rule_table_policy
-$command_ip6tables_nft     -t filter  -P FORWARD  $rule_table_policy
-$command_iptables_legacy   -t filter  -P OUTPUT   $rule_table_policy
-$command_iptables_nft      -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tables_legacy  -t filter  -P OUTPUT   $rule_table_policy
-$command_ip6tables_nft     -t filter  -P OUTPUT   $rule_table_policy
-exit ; fi
-####
-####
-#### :sincontarrutina-final-policytable:
 ##########     english: info-route: The route option   ##########
 ##########     spanish: info-route: La opcion route    ##########
 #### :rutina-inicial-info-route:
@@ -7772,7 +7768,7 @@ exit; fi
 #### :rutina-final-listn-arptables:
 ##########    english: new-full-config: new-full-config option to create new configs   ##########
 ##########    spanish: new-full-config: new-full-config para cear nuevas config        ##########
-#### :sincontarrutina-inicial-new-full-config:
+#### :rutina-inicial-new-full-config:
 ####
 ####
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -7790,10 +7786,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-new-full-config:
+#### :rutina-final-new-full-config:
 ##########    english: nueva-completa-config: create new configs                             ##########
 ##########    spanish: nueva-completa-config: nueva-completa-config para cear nuevas config  ##########
-#### :sincontarrutina-inicial-nueva-completa-config:
+#### :rutina-inicial-nueva-completa-config:
 ####
 ####
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -7811,10 +7807,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-nueva-completa-config:
+#### :rutina-final-nueva-completa-config:
 ##########    english: new-mini-config: create new configs   ##########
 ##########    spanish: new--mini config: cea nuevas config   ##########
-#### :sincontarrutina-inicial-new-mini-config:
+#### :rutina-inicial-new-mini-config:
 ####
 ####
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
@@ -7832,10 +7828,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-new-mini-config:
+#### :rutina-final-new-mini-config:
 ##########    english: nueva-mini-config: create new configs   ##########
 ##########    spanish: nueva-mini-config: crea nuevas config   ##########
-#### :sincontarrutina-inicial-nueva-mini-config:
+#### :rutina-inicial-nueva-mini-config:
 ####
 ####
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  echo $give_cover
@@ -7853,10 +7849,10 @@ echo " [  ok  ] created file $archivo"
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-nueva-mini-config:
+#### :rutina-final-nueva-mini-config:
 ##########    english: modify-config: modify a one config.cfg        ##########
 ##########    spanish: modify-config: modify una configuracion.cfg   ##########
-#### :sincontarrutina-inicial-modify-config:
+#### :rutina-inicial-modify-config:
 ####
 ####
 if [ "$first_option" = "modify-config" ]; then  echo $give_cover
@@ -7877,10 +7873,10 @@ clear; fi
 clear ; exit ; fi
 ####
 ####
-#### :sincontarrutina-final-modify-config:
+#### :rutina-final-modify-config:
 ##########    english: show-config: show a one config          ##########
 ##########    spanish: show-config: muestra una configuracion  ##########
-#### :sincontarrutina-inicial-show-config:
+#### :rutina-inicial-show-config:
 ####
 ####
 if [ "$first_option" = "show-config" ] ; then echo $give_cover
@@ -7898,10 +7894,10 @@ echo  ; exit ; fi
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-show-config:
+#### :rutina-final-show-config:
 ##########    english: del-config: delete a old config               ##########
 ##########    spanish: del-config: elimina una vieja configuracion   ##########
-#### :sincontarrutina-inicial-del-config:
+#### :rutina-inicial-del-config:
 ####
 ####
 if [ "$first_option" = "del-config" ]; then echo $give_cover
@@ -7920,7 +7916,7 @@ echo  ; exit ; fi
 exit ; fi
 ####
 ####
-#### :sincontarrutina-final-del-config:
+#### :rutina-final-del-config:
 ##########    english: show-config: show a one config          ##########
 ##########    spanish: show-config: muestra una configuracion  ##########
 #### :rutina-inicial-show-config:
@@ -8463,10 +8459,9 @@ clear; exit; fi
 ####
 ####
 if [ "$first_option" = "names" ]; then  echo $give_cover
-echo "$header_ok [ $first_option ]  [ List names from firewall saved ] || ||"
-echo
-echo "$tab $tab [English:] [File list with iptables format in folder:] [$directory_fwrecover]"
-echo "$tab $tab [Spanish:] [Lista de archivos con iptables formato en carpeta:] [$directory_fwrecover]"
+echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
+echo "$duo_md [ info ] [ list configs files in standard format ]"
+echo "$duo_md [ info ] [ folder ] [ $directory_fwrecover ]"
 echo 
 echo "$duo_md [ info ] [ Listing firewall names ]"
 $command_ls -1 $directory_fwrecover | $command_sed s/\-legacy\-ipv6//g | $command_sed s/\-nft\-ipv6//g | \
@@ -8495,7 +8490,7 @@ exit; fi
 #### :rutina-final-reset:
 ##########    english: wizard-mini: wizard-mini      ##########
 ##########    spanish: wizard-mini: mini-asistente   ##########
-#### :sincontarrutina-inicial-wizard-mini:
+#### :rutina-inicial-wizard-mini:
 ####
 ####
 if [ "$first_option" = "wizard-mini" ]; then echo 
@@ -8510,10 +8505,10 @@ $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-wizard-mini:
+#### :rutina-final-wizard-mini:
 ##########    english: wizard-full: wizard-full     ##########
 ##########    spanish: wizard-full: asistente       ##########
-#### :sincontarrutina-inicial-wizard-full:
+#### :rutina-inicial-wizard-full:
 ####
 ####
 if [ "$first_option" = "wizard-full" ]; then $nada
@@ -8528,7 +8523,7 @@ $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard
 exit; fi
 ####
 ####
-#### :sincontarrutina-final-wizard-full:
+#### :rutina-final-wizard-full:
 ##########    english: load: load the rules in iptables format      ##########
 ##########    spanish: load: carga las reglas en formato iptables   ##########
 #### :rutina-inicial-load:
@@ -12096,7 +12091,7 @@ exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "all-permisive" ]; then $cmd_binary eraserules &> /dev/null ; $cmd_binary policytable &> /dev/null ;
+if [ "$type_firewall" = "all-permisive" ]; then $cmd_binary eraserules &> /dev/null ; 
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -12240,7 +12235,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "off-line" ];  then $cmd_binary eraserules &> /dev/null ; $cmd_binary policytable &> /dev/null ;
+if [ "$type_firewall" = "off-line" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -12702,7 +12697,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/null ; $cmd_binary policytable &> /dev/null ;
+if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -13343,7 +13338,7 @@ if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 #### spanish: borra todas las reglas
 ####
 ####
-$cmd_binary eraserules &> /dev/null ; $cmd_binary policytable &> /dev/null ;
+$cmd_binary eraserules &> /dev/null ; 
 ####
 ####
 #######################################        english: ebtables mac rules
