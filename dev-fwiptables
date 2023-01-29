@@ -329,6 +329,9 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
+####       #### english: show date and show time
+####       #### spanish: muestra la fecha y el tiempo
+allow_timespam=""  
 ####       #### english: close from networking ping, trace.. with timeout in seconds 
 ####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
 server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
@@ -1083,20 +1086,28 @@ exit ; fi
 ####
 ####
 #### :rutina-final-alias-campus:
-##########     english: autolog:         ##########
+##########     english: autolog          ##########
 ##########     spanish: autoguardado     ##########
 #### :rutina-inicial-allow-autolog:
 ####
 ####
-####   english: autolog  
-####   spanish: autoguardado
-####
-####
+if [ "$allow_autolog" != "no" ]; then 
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
-if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> "$default_autolog" ; fi
+echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
+##########     english: timespam          ##########
+##########     spanish: mostrar fecha     ##########
+#### :rutina-inicial-allow-timespam:
+####
+####
+if [ "$allow_timespam" != "no" ] ; then
+head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
+echo $head_timespam ; fi
+####
+####
+#### :rutina-final-allow-timespam:
 ##########   english: intro: show intro      ##########
 ##########   spanish: intro: muestra intro   ##########
 #### :rutina-inicial-intro:

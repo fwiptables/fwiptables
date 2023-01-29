@@ -391,6 +391,9 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
 allow_autolog=""                    ## fwiptables-file-default ## void or no
+####       #### english: show date and show time
+####       #### spanish: muestra la fecha y el tiempo
+allow_timespam=""                    ## fwiptables-file-default ## void or no
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -509,15 +512,6 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-update-variables:
-##########    english: Notice Installer with intro      ##########
-##########    spanish: noticia de Instalador con intro  ##########
-#### :rutina-inicial-notice:
-####
-####
-#### if [ "$fwiptables_installed" == "no" ] ; then echo "$duo_md [ info ] [ type: $0 install ] [ to be ready for $cmd_binary config files ]" ; fi
-####
-####
-#### :rutina-final-notice:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
 #### :rutina-inicial-favorite-text-dialog:
@@ -817,15 +811,23 @@ exit ; fi
 #### :rutina-inicial-allow-autolog:
 ####
 ####
-####   english: autolog  
-####   spanish: autoguardado
-####
-####
+if [ "$allow_autolog" != "no" ]; then 
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
-if [ "$allow_autolog" != "no" ]; then echo $head_autolog >> $default_autolog ; fi
+echo $head_autolog >> $default_autolog ; fi
 ####
 ####
 #### :rutina-final-allow-autolog:
+##########     english: timespam          ##########
+##########     spanish: mostrar fecha     ##########
+#### :rutina-inicial-allow-timespam:
+####
+####
+if [ "$allow_timespam" != "no" ] ; then
+head_timespam="$duo_md || || [ ok ] || [ Date and Time ] [ $(date) ] || || "
+echo $head_timespam ; fi
+####
+####
+#### :rutina-final-allow-timespam:
 ##########   english: filelog: Read log fwiptables-filelog  ##########
 ##########   spanish: filelog: Lee log  fwiptables-filelog  ##########
 #### :rutina-inicial-filelog:
