@@ -9221,11 +9221,11 @@ exit; fi
 if [ "$program_minimal" == "no" ] && [ "$first_option" = "free-ram" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] || ||"
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
-echo " Actual Memory"
+echo "$duo_md [ info ] Actual Memory"
 free -hw 
 echo 3 | $command_tee /proc/sys/vm/drop_caches &> /dev/null
 sync
-echo -e "\n With New Memory ram freedom .. Actual memory now .."
+echo "$duo_md [ info ] Now with New Memory ram freedom .. Actual memory now .."
 free -hw
 exit; fi
 ####
