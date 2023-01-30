@@ -239,9 +239,11 @@ command_cvlc="$(command -v cvlc)"
 #### :rutina-inicial-config-variables:
 ####
 ####
+program_minimal="no" ;
 list_rules_conceptual="" ;
 config_ip4_localhost="127.0.0.1" ;
 config_ip6_localhost="::1" ;
+server_waiting="9s" ;
 allow_dmz_ip4="no" ; 
 allow_dmz_ip6="no" ;
 allow_forward_ip4="no" ; 
@@ -311,9 +313,6 @@ server_udp="" ;
 ####    graphic_dimension="--width=950 --height=650" ; 
 ####
 ####
-####       #### english: void to complete program or no program minimal
-####       #### spanish: vacio para programa completo o no para para programa minimal
-program_minimal="no"                           ## fwiptables-file-default ## void or no
 ####       #### english: for all predefined system firewall: EXCEPT custom, and wizards, and load
 ####       #### spanish: para todos los cortafuegos predefinidos del sistema: EXCEPTO custom, y wizards, y load
 allow_legacy=""                     ## fwiptables-file-default ## void or no
@@ -338,9 +337,6 @@ allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: auto time in command
 ####       #### spanish: automatico fecha de linea
 allow_showtime=""                    ## fwiptables-file-default ## void or no
-####       #### english: close from networking ping, trace.. with timeout in seconds
-####       #### spanish: cierra conexion de ping, trace.. con retardo en segundos    
-server_waiting="9s"                    ## fwiptables-file-default ## choose seconds: 1s..,9s..30s..
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
@@ -397,7 +393,7 @@ head_waiting_info="$duo_md  [ info ] [ info: info in plain txt format ] [ loadin
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
-give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config $cmd_version"
+give_cover="$duo_md || || [ ok ] || [ Firewall ] [ Program: $cmd_config $cmd_version ] |||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
 give_load="$duo_md || || [ ok ] || [ Load firewall ] [ netfilter iptables ] || ||"
 #### #### english: [characters to show] #### spanish: [caracteres a mostrar]
@@ -577,10 +573,9 @@ case "$config_close_deny"      in "ACCEPT") ;; "DROP")   ;; "REJECT") ;; "RETURN
 case "$list_rules_conceptual"  in "$NULL")  ;; *) list_rules_conceptual=" -n" ;; esac
 ####
 ####
-if [ "$program_minimal" == "no" ]; 
-then give_cover="$give_cover state:complete ] || ||"
-else give_cover="$give_cover state:mini ] || ||"
-fi
+####
+####
+####
 #### english: if null option is void return default to mini-options
 #### spanish: si la opcion por defecto esta vacia vuelve a mini-options
 ####
