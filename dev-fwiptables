@@ -239,7 +239,6 @@ command_cvlc="$(command -v cvlc)"
 #### :rutina-inicial-config-variables:
 ####
 ####
-program_minimal="no" ;
 list_rules_conceptual="" ;
 config_ip4_localhost="127.0.0.1" ;
 config_ip6_localhost="::1" ;
@@ -564,7 +563,6 @@ if [ -f "$default_preferences" ]; then source "$default_preferences" ; fi
 ####  realice sane very important variables post by default_preferences
 ####
 ####
-case "$program_minimal"        in "no")     ;; *) program_minimal=""          ;; esac
 case "$allow_legacy"           in "no")     ;; *) allow_legacy=""             ;; esac
 case "$allow_nft"              in "no")     ;; *) allow_nft=""                ;; esac
 case "$allow_ipv4"             in "no")     ;; *) allow_ipv4=""               ;; esac
@@ -1118,7 +1116,7 @@ echo $head_timespam ; fi
 #### :rutina-inicial-intro:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "intro" ]; then echo "$give_cover"
+if  [ "$first_option" = "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
 echo "$text_md     [ done ] [ Choose fwiptables-complete working like complete or working like minimal         "
@@ -1215,7 +1213,7 @@ exit; fi
 #### :rutina-inicial-upgrade:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "upgrade" ]; then echo $give_cover
+if   [ "$first_option" = "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
@@ -1251,7 +1249,7 @@ exit ; fi
 #### :rutina-inicial-dev-upgrade:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
+if  [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -1288,7 +1286,7 @@ exit ; fi
 #### :rutina-inicial-devmini-upgrade:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "devmini-upgrade" ]; then echo $give_cover
+if   [ "$first_option" = "devmini-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -2650,42 +2648,10 @@ fi
 #### :rutina-final-system-rules:
 ##########    english: options-mini: wellcome with semi help    ##########
 ##########    spanish: options-mini: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-mini-options:
-####
-####
-if [ "$program_minimal" == "" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ; echo "$message_info_rules"
-echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "     Launch: $zero_option [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]        "
-echo "$duo_md || || [ firewall ]   ### [  Control firewalls and rules to manage iptables ] ### || ||               "
-echo "$text_md     firewall-control |  stop continue reset names actual show save load                              "
-echo "$text_md  firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
-echo "$text_md                         list-nat4 list-nat6 list-raw4 list-raw6 list-mangle4 list-mangle6            "
-echo "$text_md                         list-security4 list-security6 list-ebtables list-arptables                   "
-echo "$text_md     firewall-numeral |  lsn4 lsn6 listn4 listn6 statusn listn-alltables listn-filter4 listn-filter6  "
-echo "$text_md                         listn-nat4 listn-nat6 listn-raw4 listn-raw6 listn-mangle4 listn-mangle6      "
-echo "$text_md                         listn-security4 listn-security6 list-ebtables list-arptables                 "
-echo "$text_md      firewall-custom |  new-full-config nueva-completa-config regen-config                           "
-echo "$text_md                         new-mini-config nueva-mini-config examples-config                            "
-echo "$text_md                         show-config modify-config del-config names-config                            "
-echo "$text_md      firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
-echo "$text_md                         games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
-echo "$text_md                         client-web client-vnc client-mail client-news client-torrent client-vpn      "
-echo "$text_md                         client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
-echo "$text_md                         server-vnc server-web server-samba server-print server-lamp server-news      "
-echo "$text_md                         server-mail server-ftp server-teamspeak server-mumble server-sql             "
-echo "$text_md                         server-asterisk server-squid                                                 "
-echo "$text_md       options-state  |  preferences-read preferences-modify preferences-regen                        "
-echo "$text_md                         ip4 ip6 version notes examples install uninstall                             "
-exit ; fi
-####
-####
-#### :rutina-final-mini-options:
-##########    english: options-mini: wellcome with semi help    ##########
-##########    spanish: options-mini: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-options-mini:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
+if   [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                     "
 echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]         "
@@ -2726,7 +2692,7 @@ exit ; fi
 #### :rutina-inicial-full-options:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-all" ] ; then echo $give_cover
+if   [ "$first_option" = "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                          "
 echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                      "
@@ -2803,7 +2769,7 @@ exit ; fi
 #### :rutina-final-options-firewall:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-firewall" ] ; then echo $give_cover
+if   [ "$first_option" = "options-firewall" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall md ]                            "
 echo "$title_md                                  | options-firewall |                                          "
 echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
@@ -2835,7 +2801,7 @@ exit ; fi
 #### :rutina-final-options-state:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-state" ] ; then echo $give_cover
+if   [ "$first_option" = "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                          "
 echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
@@ -2853,7 +2819,7 @@ exit ; fi
 #### :rutina-final-options-tool:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-tool" ] ; then echo $give_cover
+if   [ "$first_option" = "options-tool" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Tool options ] [ options-tool md ]"
 echo "$title_md                                    | options-tool |                                     " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy info-system "
@@ -2888,7 +2854,7 @@ exit ; fi
 #### :rutina-final-options-show:
 ####
 ####
-if [ "$program_minimal" == "no" ] &&  [ "$first_option" = "options-show" ] ; then echo $give_cover
+if    [ "$first_option" = "options-show" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Show options ] [ options-show md ]"
 echo "$title_md                                   | options-show |                          " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
@@ -2906,7 +2872,7 @@ exit ; fi
 #### :rutina-final-options-show:
 ####
 ####
-if [ "$program_minimal" == "no" ] &&  [ "$first_option" = "options-help" ] ; then echo $give_cover
+if    [ "$first_option" = "options-help" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Show help options ] [ options-help md ]"
 echo "$title_md                                   | options-help |                                             "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
@@ -2965,7 +2931,7 @@ exit; fi
 #### :rutina-inicial-all-options:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "all-options" ]; then echo $give_cover
+if   [ "$first_option" = "all-options" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List group options help ] || ||"
 $cmd_binary options-interface
 $cmd_binary options-firewall
@@ -2981,7 +2947,7 @@ exit; fi
 #### :rutina-inicial-all-help:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "all-help" ]; then echo $give_cover
+if   [ "$first_option" = "all-help" ]; then echo $give_cover
 echo "$title_md [ $first_option ] [ help in english and spanish ] [ all-help md ]"
 echo "$text_md [ Choose only help in english ]        [ Type:     $cmd_binary help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $cmd_binary ayuda ]"
@@ -3141,7 +3107,7 @@ exit; fi
 #### :rutina-inicial-group-options:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "group-options" ]; then echo $give_cover
+if   [ "$first_option" = "group-options" ]; then echo $give_cover
 echo "$text_md [ ok ] [ $first_option ] [ List group options ] [ group-options md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ Help to one group ]"
@@ -3226,7 +3192,7 @@ exit; fi
 #### :rutina-inicial-firewall-launch:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "firewall-launch" ]; then echo $give_cover
+if   [ "$first_option" = "firewall-launch" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ launch rules ] [ firewall-launch md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Launch iptables rules ]"
@@ -3343,7 +3309,7 @@ exit; fi
 #### :rutina-inicial-firewall-control:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "firewall-control" ]; then echo $give_cover
+if   [ "$first_option" = "firewall-control" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ control rules ] [ firewall-control md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ Control iptables rules ]"
@@ -3385,7 +3351,7 @@ exit; fi
 #### :rutina-inicial-firewall-conceptual:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "firewall-conceptual" ]; then echo $give_cover
+if   [ "$first_option" = "firewall-conceptual" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List rules ] [ firewall-conceptual md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ List filter iptables rules ]"
@@ -3448,7 +3414,7 @@ exit; fi
 #### :rutina-inicial-firewall-numeral:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "firewall-numeral" ]; then echo $give_cover
+if   [ "$first_option" = "firewall-numeral" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List rules ] [ firewall-numeral md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ List filter iptables rules ]"
@@ -3511,7 +3477,7 @@ exit; fi
 #### :rutina-inicial-list-numrules:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "list-numrules" ]; then echo $give_cover
+if   [ "$first_option" = "list-numrules" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List rules in numerical ] [ list-numrules md ] || ||"
 echo "$duo_md [ List iptables numerical rules ]"
 echo "$duo_md [ Lista reglas numericas de iptables ]"
@@ -3534,7 +3500,7 @@ exit; fi
 #### :rutina-inicial-firewall-custom:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "firewall-custom" ]; then echo $give_cover
+if   [ "$first_option" = "firewall-custom" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool custom rules config ] [ firewall-custom md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ custom configs ]"
@@ -3576,7 +3542,7 @@ exit; fi
 #### :rutina-inicial-options-interface:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "options-interface" ]; then echo $give_cover
+if   [ "$first_option" = "options-interface" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ control interface ] [ options-interface md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ control interface ]" 
@@ -3627,7 +3593,7 @@ exit; fi
 #### :rutina-inicial-default-state:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "default-state" ]; then echo $give_cover
+if   [ "$first_option" = "default-state" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ default state ] [ default-state md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ default state ]"
@@ -3666,7 +3632,7 @@ exit; fi
 #### :rutina-inicial-tool-sockets:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-sockets" ]; then echo $give_cover
+if   [ "$first_option" = "tool-sockets" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool sockets ] [ tool-sockets md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool sockets ]"
@@ -3723,7 +3689,7 @@ exit; fi
 #### :rutina-inicial-tool-game:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-game" ]; then echo $give_cover
+if   [ "$first_option" = "tool-game" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool game ] [ tool-game md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool game ]"
@@ -3753,7 +3719,7 @@ exit; fi
 #### :rutina-inicial-tool-connect:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-connect" ]; then echo $give_cover
+if   [ "$first_option" = "tool-connect" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool connect ] [ tool-connect md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool connect ]"
@@ -3783,7 +3749,7 @@ exit; fi
 #### :rutina-inicial-tool-rule:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-rule" ]; then echo $give_cover
+if   [ "$first_option" = "tool-rule" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rule md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool rules ]"
@@ -3807,7 +3773,7 @@ exit; fi
 #### :rutina-inicial-tool-forward:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-forward" ]; then echo $give_cover
+if   [ "$first_option" = "tool-forward" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool forward ] [ tool-forward md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool forward ]"
@@ -3831,7 +3797,7 @@ exit; fi
 #### :rutina-inicial-tool-sshd:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-sshd" ]; then echo $give_cover
+if   [ "$first_option" = "tool-sshd" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool ssh tunnel ] [ tool-sshd md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool ssh tunnel ]"
@@ -3855,7 +3821,7 @@ exit; fi
 #### :rutina-inicial-tool-icmp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-icmp" ]; then echo $give_cover
+if   [ "$first_option" = "tool-icmp" ]; then echo $give_cover
 echo "$tab [ ok ] [ $first_option ] [ tool icmp ] [ tool-icmp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool icmp ]"
@@ -3882,7 +3848,7 @@ exit; fi
 #### :rutina-inicial-tool-tcp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-tcp" ]; then echo $give_cover
+if   [ "$first_option" = "tool-tcp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool tcp ] [ tool-tcp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool tcp ]"
@@ -3909,7 +3875,7 @@ exit; fi
 #### :rutina-inicial-tool-udp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-udp" ]; then echo $give_cover
+if   [ "$first_option" = "tool-udp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool udp ] [ tool-udp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool udp ]"
@@ -3939,7 +3905,7 @@ exit; fi
 #### :rutina-inicial-tool-nmap:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-nmap" ]; then echo $give_cover
+if   [ "$first_option" = "tool-nmap" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool nmap ] [ tool-nmap.md] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool nmap ]"
@@ -3969,7 +3935,7 @@ exit; fi
 #### :rutina-inicial-tool-sudofw:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-sudofw" ]; then echo $give_cover
+if   [ "$first_option" = "tool-sudofw" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudofw md ] || ||"
 echo "$text_md"
 echo "$text_md [ Tool sudo ]"
@@ -3996,7 +3962,7 @@ exit; fi
 #### :rutina-inicial-tool-install:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-install" ]; then echo $give_cover
+if   [ "$first_option" = "tool-install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool install ] [ tool-install md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
@@ -4029,7 +3995,7 @@ exit; fi
 #### :rutina-inicial-tool-addblock:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-addblock" ]; then echo $give_cover
+if   [ "$first_option" = "tool-addblock" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool addblock in /etc/hosts ] [ tool-addblock md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool addblock ]"
@@ -4053,7 +4019,7 @@ exit; fi
 #### :rutina-inicial-tool-dev:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-dev" ]; then echo $give_cover
+if   [ "$first_option" = "tool-dev" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool install ] [ tool-dev md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
@@ -4083,7 +4049,7 @@ exit; fi
 #### :rutina-inicial-tool-speed:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-speed" ]; then echo $give_cover
+if   [ "$first_option" = "tool-speed" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool speed ] [ tool-speed md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool benchmark speed ]"
@@ -4113,7 +4079,7 @@ exit; fi
 #### :rutina-inicial-tool-util:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-util" ]; then echo $give_cover
+if   [ "$first_option" = "tool-util" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool util ] [ tool-util md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool utils ]"
@@ -4137,7 +4103,7 @@ exit; fi
 #### :rutina-inicial-tool-mp3:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-mp3" ]; then echo $give_cover
+if   [ "$first_option" = "tool-mp3" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool mp3 ] [ tool-mp3 md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool mp3 ]"
@@ -4155,7 +4121,7 @@ exit; fi
 #### :rutina-inicial-tool-pdf:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-pdf" ]; then echo $give_cover
+if   [ "$first_option" = "tool-pdf" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool pdf ] [ tool-pdf md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool pdf ]"
@@ -4179,7 +4145,7 @@ exit; fi
 #### :rutina-inicial-tool-qemu:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-qemu" ]; then echo $give_cover
+if   [ "$first_option" = "tool-qemu" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool qemu ] [ tool-qemu md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool to manage machine virtual qemu ]"
@@ -4203,7 +4169,7 @@ exit; fi
 #### :rutina-inicial-tool-computer:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tool-computer" ]; then echo $give_cover
+if   [ "$first_option" = "tool-computer" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool computer ] [ tool-computer md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool computer ]"
@@ -4227,7 +4193,7 @@ exit; fi
 #### :rutina-inicial-show-etc:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "show-etc" ]; then echo $give_cover
+if   [ "$first_option" = "show-etc" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show etc files ] [ show-etc md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show configs files from etc ]"
@@ -4260,7 +4226,7 @@ exit; fi
 #### :rutina-inicial-show-hardware:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "show-hardware" ]; then echo $give_cover
+if   [ "$first_option" = "show-hardware" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show hardware info ] [ show-hardware md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show hardware info ]"
@@ -4296,7 +4262,7 @@ exit; fi
 #### :rutina-inicial-show-log:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "show-log" ]; then echo $give_cover
+if   [ "$first_option" = "show-log" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show log files ] [ show-log md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show log ]"
@@ -4326,7 +4292,7 @@ exit; fi
 #### :rutina-inicial-help-about:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "help-about" ]; then echo $give_cover
+if   [ "$first_option" = "help-about" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show about ] [ help-about md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show about ]"
@@ -4362,7 +4328,7 @@ exit; fi
 #### :rutina-inicial-help-help:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "help-help" ]; then echo $give_cover
+if   [ "$first_option" = "help-help" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show help ] [ help-help md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show help ]"
@@ -4683,7 +4649,7 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
+if   [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Firewall Control" "02 Firewall List With Conceptual" "02 Firewall List With Numeral" \
@@ -4736,7 +4702,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-launch:
 ####
 ####  
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
@@ -4805,7 +4771,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-control:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-control" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-firewall-control" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Firewall Rules ] [ $cmd_binary ]")
@@ -4844,7 +4810,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-conceptual:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
 "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
@@ -4889,7 +4855,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-numeral:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-numeral" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-firewall-numeral" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
 "listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
@@ -4934,7 +4900,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-custom:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config" \
@@ -4988,7 +4954,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-options-state:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-options-state" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-options-state" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "preferences-read" "preferences-modify" "preferences-regen" \
 "ip4" "ip6" "version" "examples" "depends" "install" "upgrade" \
@@ -5027,7 +4993,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-connect:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Connect ] [ $cmd_binary ]" )
@@ -5069,7 +5035,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-rule:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-rule" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-rule" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool rules ] [ $cmd_binary ]" )
@@ -5100,7 +5066,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sockets:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" \
@@ -5174,7 +5140,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sshd:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-sshd" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-sshd" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool sshd ] [ $cmd_binary ]" )
@@ -5207,7 +5173,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-icmp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Icmp ] [ $cmd_binary ]" )
@@ -5243,7 +5209,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-udp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool udp ] [ $cmd_binary ]" )
@@ -5280,7 +5246,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-tcp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool tcp ] [ $cmd_binary ]" )
@@ -5314,7 +5280,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sudofw:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-sudofw" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-sudofw" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Sudo ] [ $cmd_binary ]" )
@@ -5347,7 +5313,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-game:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool game ] [ $cmd_binary ]" )
@@ -5384,7 +5350,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-speed:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-speed" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-speed" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" \
 "speed-ram" "speed-disk" "speed-glx" "speed-cpu" \
@@ -5418,7 +5384,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-util:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-util" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-util" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Utils ] [ $cmd_binary ]" )
@@ -5453,7 +5419,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-install:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Install ] [ $cmd_binary ]" )
@@ -5485,7 +5451,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-addblock:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" \
 "addblock-on" "addblock-off" \
@@ -5520,7 +5486,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-dev:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
 selection=$(zenity $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool dev ] [ $cmd_binary ]" )
@@ -5554,7 +5520,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-show-hardware:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show hardware ] [ $cmd_binary ]" )
@@ -5589,7 +5555,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-show-etc:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "preferences-read" "preferences-modify" "preferences-read" \
@@ -5627,7 +5593,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-show-log:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show log ] [ $cmd_binary ]" )
@@ -5661,7 +5627,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-help-about:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-help-about" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-help-about" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" \
 "depends" "config-eng" "config-spa" \
@@ -5695,7 +5661,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-help-help:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-menu-help-help" ] ; then $nada ;
+if   [ "$first_option" = "gui-menu-help-help" ] ; then $nada ;
 selection=$($command_zenity  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" \
 "all-help" "readme" "leeme" "notes" "license" \
@@ -5731,7 +5697,7 @@ exit; fi
 #### :rutina-inicial-gui-shell:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
+if   [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
 case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 ####
@@ -5868,7 +5834,7 @@ exit ; fi
 #### :rutina-inicial-cli-menu:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "cli-menu" ]; then $nada
+if   [ "$first_option" = "cli-menu" ]; then $nada
 case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
 menuprincipal="$($favorite_text_dialog --clear --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
@@ -6604,7 +6570,7 @@ exit ; fi
 #### :rutina-inicial-code:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "code" ]; then echo $give_cover
+if   [ "$first_option" = "code" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
 echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
@@ -6646,7 +6612,7 @@ exit;  fi
 #### :rutina-inicial-howto-upgrade:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
+if   [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show howto upgrade ] || ||"
 echo "$tab [ info ] [ The actually version is: $cmd_binary $cmd_version actual ]"
 echo "$tab [ info ] [ The latest version is: ]"
@@ -6668,7 +6634,7 @@ exit;  fi
 #### :rutina-inicial-addblock-list:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "addblock-list" ]; then echo $give_cover
+if   [ "$first_option" = "addblock-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show blacklist servers ] || ||"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -6723,7 +6689,7 @@ exit; fi
 #### :rutina-inicial-addblock-on:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "addblock-on" ]; then echo $give_cover
+if   [ "$first_option" = "addblock-on" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Configure blacklist server ] || ||"
 echo
 ####
@@ -6786,7 +6752,7 @@ exit; fi
 #### :rutina-inicial-addblock-off:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "addblock-off" ]; then echo $give_cover
+if   [ "$first_option" = "addblock-off" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ] || ||"
 echo
 echo $directory_temporal
@@ -6952,7 +6918,7 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-route" ]; then  echo $give_cover
+if   [ "$first_option" = "info-route" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show route tables ] || ||"
 if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
 echo "$duo_md [ info ] [ ip route ipv4 ]"
@@ -6969,7 +6935,7 @@ exit ; fi
 #### :rutina-inicial-ss:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ss" ]; then  echo $give_cover
+if   [ "$first_option" = "ss" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$duo_md [ info ] [ The ipv6 sockets ]"
@@ -6985,7 +6951,7 @@ exit; fi
 #### :rutina-inicial-lsof:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsof" ]; then echo $give_cover
+if   [ "$first_option" = "lsof" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
 if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
 echo "$duo_md [ info ] [The sockets with lsof ipv6 ]"
@@ -7001,7 +6967,7 @@ exit; fi
 #### :rutina-inicial-netstat:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "netstat" ]; then echo $give_cover
+if   [ "$first_option" = "netstat" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat ] || ||"
 if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
 echo "$duo_md [ info ] [The sockets list with netstat ]"
@@ -7015,7 +6981,7 @@ exit; fi
 #### :rutina-inicial-info-listen:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-listen" ]; then  echo $give_cover
+if   [ "$first_option" = "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ] || ||"
 if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$duo_md [ info ] [ Network Listen ] [ Listen ipv4 ]"
@@ -7032,7 +6998,7 @@ exit; fi
 #### :rutina-inicial-info-proxy:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-proxy" ]; then  echo $give_cover
+if   [ "$first_option" = "info-proxy" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ] ||"
 echo "$duo_md [ info ] [ Info address proxy ]"
 echo "$duo_md [ info ] [ Web http_proxy:    $http_proxy ]"
@@ -7046,7 +7012,7 @@ exit; fi
 #### :rutina-inicial-netstat-nat:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
+if   [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ] || ||"
 if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
 echo "$duo_md [ info ] [ The devices list with netstat for nat ]"
@@ -7060,7 +7026,7 @@ exit; fi
 #### :rutina-inicial-ipforward-on:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
+if   [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ] || ||"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done
@@ -7073,7 +7039,7 @@ exit; fi
 #### :rutina-inicial-ipforward-off:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ipforward-off" ]; then  echo $give_cover
+if   [ "$first_option" = "ipforward-off" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ] || ||"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done
@@ -7982,7 +7948,7 @@ exit ; fi
 #### :rutina-inicial-sudofw-adduser:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
+if   [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
 case $second_option in
 "$NULL") echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizado="$second_option" ;; esac
@@ -8000,7 +7966,7 @@ exit ; fi
 #### :rutina-inicial-sudofw-deluser:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
+if   [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
 rm /etc/sudoers.d/$cmd_config &> /dev/null
 rm /etc/bash_completion.d/$cmd_config &> /dev/null
 echo "$duo_md [  ok  ] [ deleted auth sudo ] [ /etc/sudoers.d/$cmd_config         ]"
@@ -8014,7 +7980,7 @@ exit; fi
 #### :rutina-inicial-sudofw-listuser:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" == "sudofw-listuser" ]; then echo $give_cover
+if   [ "$first_option" == "sudofw-listuser" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list sudoer and alias for $cmd_config ]"
 if [ -f "/etc/sudoers.d/$cmd_config" ] ; then
 echo "$duo_md [  ok  ] [ sudoer file:  /etc/sudoers.d/$cmd_config         ]"
@@ -8038,7 +8004,7 @@ exit;  fi
 #### :rutina-inicial-aliasfw-list:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
+if   [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_config ]"
 echo 
 echo "$duo_md [ info ] [ alias file ] [  /etc/profile.d/$cmd_config ]"
@@ -8054,7 +8020,7 @@ exit; fi
 #### :rutina-inicial-md5sum:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "md5sum" ]; then echo $give_cover
+if   [ "$first_option" = "md5sum" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ] || ||"
 if [ "$command_md5sum" == "$NULL" ]; then echo "$duo_md [ info ] [ Install md5sum ]"; exit ; fi
 if [ "$second_option" == "$NULL" ]; then echo "$duo_md [ info ] [ $cmd_binary md5sum file ] [ choose file ]"; exit; fi
@@ -8070,7 +8036,7 @@ exit; fi
 #### :rutina-inicial-rule-add-shield:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "rule-add-shield" ]; then echo $give_cover
+if   [ "$first_option" = "rule-add-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Add shield ssh ] || ||"
 ####
 ####
@@ -8136,7 +8102,7 @@ exit ; fi
 #### :rutina-inicial-rule-del-shield:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
+if   [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset shield ssh ] || ||"
 $cmd_binary save no_default_tmp &> /dev/null
 for shield in $($command_ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
@@ -8160,7 +8126,7 @@ exit ; fi
 ####  del-rule cuando viene de otro distinto a -gui
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
+if   [ "$first_option" == "rule-del-num" ] && [ "$second_option" != "-gui" ]; then
 menudelrule="$($favorite_text_dialog  --stdout --clear --title " Delete one rule in one table " --menu "Select:" 0 0 0 \
 01 "NFTABLES / filter-ip4 / INPUT" \
 02 "NFTABLES / filter-ip4 / FORWARD" \
@@ -8204,7 +8170,7 @@ clear ; exit; fi
 ####  del-rule cuando viene de -gui
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
+if   [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
 case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($command_zenity $graphic_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
@@ -8282,10 +8248,10 @@ else) exit ;; esac ; exit; fi
 #### :rutina-inicial-iw-scan:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "iw-scan" ]; then echo $give_cover
+if   [ "$first_option" = "iw-scan" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
 echo 
-if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
+if   [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $a up ;
 $command_iw $a scan | $command_grep -E -i "on $a|ssid" ; done 
 exit; fi
@@ -8297,10 +8263,10 @@ exit; fi
 #### :rutina-inicial-iw-info:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "iw-info" ]; then echo $give_cover
+if   [ "$first_option" = "iw-info" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ] || ||"
 echo 
-if [ "$program_minimal" == "no" ] && [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
+if   [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
 for a in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_iw $a info ; done 
 exit; fi
 ####
@@ -8311,7 +8277,7 @@ exit; fi
 #### :rutina-inicial-wpa-save:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-save" ]; then echo $give_cover
+if   [ "$first_option" = "wpa-save" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ] || ||"
 echo 
 if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_passphrase ]" ; exit ; fi
@@ -8332,7 +8298,7 @@ exit; fi
 #### :rutina-inicial-wpa-load:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "wpa-load" ]; then echo $give_cover
+if   [ "$first_option" = "wpa-load" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: $cmd_binary wpa-load wpa_file1 ] || ||"
 echo 
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_supplicant ]" ; exit ; fi
@@ -8353,10 +8319,10 @@ exit; fi
 #### :rutina-inicial-dhcp-client:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "dhcp-client" ]; then echo $give_cover
+if   [ "$first_option" = "dhcp-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp_command" ] || ||"
 echo 
-if [ "$program_minimal" == "no" ] && [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
+if   [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
 else echo "$duo_md [ info ] [ Install dhcpcd or dhclient or dhclient-script ]"; fi
 exit; fi
 ####
@@ -8367,7 +8333,7 @@ exit; fi
 #### :rutina-inicial-ipforward-list:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ipforward-list" ]; then echo $give_cover
+if   [ "$first_option" = "ipforward-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ] || ||"
 echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
 $command_sysctl -a | $command_grep -i  forwarding
@@ -8380,7 +8346,7 @@ exit; fi
 #### :rutina-inicial-tcpdump:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tcpdump" ]; then echo $give_cover
+if   [ "$first_option" = "tcpdump" ]; then echo $give_cover
 case $command_tcpdump in "$NULL") echo "$tab [ fail ] [ Install tcpdump command ]" ; exit ;; esac
 echo "$tab [ info ] [ launch several seconds tcpdump ]"
 echo 
@@ -8399,7 +8365,7 @@ exit; fi
 #### :rutina-inicial-info-nodes:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-nodes" ]; then  echo $give_cover
+if   [ "$first_option" = "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
 echo "$duo_md [ info ] [ local net: ip lan .. ]"
@@ -8789,7 +8755,7 @@ exit; fi
 #### :rutina-inicial-ping-ip4:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ping-ip4" ]; then echo $give_cover
+if   [ "$first_option" = "ping-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]   [ ping ip or host with ipv4 ] || ||"
 echo 
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
@@ -8814,7 +8780,7 @@ exit; fi
 #### :rutina-inicial-ping-ip6:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ping-ip6" ]; then echo $give_cover
+if   [ "$first_option" = "ping-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ ping one ip or host with ipv6 ] || ||"
 echo 
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
@@ -8839,7 +8805,7 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip4:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tracetcp-ip4" ]; then echo $give_cover
+if   [ "$first_option" = "tracetcp-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace ip or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8865,7 +8831,7 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip6:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "tracetcp-ip6" ]; then echo $give_cover
+if   [ "$first_option" = "tracetcp-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace one ip or host with ipv6 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
@@ -8890,7 +8856,7 @@ exit; fi
 #### :rutina-inicial-traceicmp-ip4:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "traceicmp-ip4" ]; then echo $give_cover
+if   [ "$first_option" = "traceicmp-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8916,7 +8882,7 @@ exit; fi
 #### :rutina-inicial-traceicmp-ip6:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "traceicmp-ip6" ]; then echo $give_cover
+if   [ "$first_option" = "traceicmp-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8942,7 +8908,7 @@ exit; fi
 #### :rutina-inicial-host:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "host" ]; then echo $give_cover
+if   [ "$first_option" = "host" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
 echo 
 case $command_host in "$NULL") echo "$tab [ fail ] [ Install host command ]" ; exit ;; esac
@@ -8962,7 +8928,7 @@ exit; fi
 #### :rutina-inicial-dig:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "dig" ]; then echo $give_cover
+if   [ "$first_option" = "dig" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
 echo 
 case $command_dig in "$NULL") echo "$tab [ fail ] [ Install dig command ]" ; exit ;; esac
@@ -8982,7 +8948,7 @@ exit; fi
 #### :rutina-inicial-resolveip:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "resolveip" ]; then echo $give_cover
+if   [ "$first_option" = "resolveip" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
 echo 
 case $command_resolveip in "$NULL") echo "$tab [ fail ] [ Install resolveip command ]" ; exit ;; esac
@@ -9002,7 +8968,7 @@ exit; fi
 #### :rutina-inicial-geoip:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "geoip" ]; then echo $give_cover
+if   [ "$first_option" = "geoip" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ] || ||"
 echo 
 case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
@@ -9021,7 +8987,7 @@ exit; fi
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "ntpdate-client" ]; then echo $give_cover
+if   [ "$first_option" = "ntpdate-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] || ||"
 echo
 if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
@@ -9041,7 +9007,7 @@ exit; fi
 #### :rutina-inicial-nmap-tcp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-tcp" ]; then echo $give_cover
+if   [ "$first_option" = "nmap-tcp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap tcp ] || ||"
 echo 
 case $command_nmap in $NULL) echo install nmap ; exit ;; esac
@@ -9079,7 +9045,7 @@ exit; fi
 #### :rutina-inicial-nmap-syn:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-syn" ]; then echo $give_cover
+if   [ "$first_option" = "nmap-syn" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap syn ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
@@ -9115,7 +9081,7 @@ exit; fi
 #### :rutina-inicial-nmap-fin:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-fin" ]; then echo $give_cover
+if   [ "$first_option" = "nmap-fin" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap fin ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
@@ -9153,7 +9119,7 @@ exit; fi
 #### :rutina-inicial-nmap-udp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-udp" ]; then echo $give_cover
+if   [ "$first_option" = "nmap-udp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap udp ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
@@ -9191,7 +9157,7 @@ exit; fi
 #### :rutina-inicial-nmap-ping:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "nmap-ping" ]; then echo $give_cover
+if   [ "$first_option" = "nmap-ping" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap ping ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
@@ -9227,7 +9193,7 @@ exit; fi
 #### :rutina-inicial-free-ram:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "free-ram" ]; then echo $give_cover
+if   [ "$first_option" = "free-ram" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] || ||"
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$duo_md [ info ] Actual Memory"
@@ -9245,7 +9211,7 @@ exit; fi
 #### :rutina-inicial-speed-disk:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-disk" ]; then  echo $give_cover
+if   [ "$first_option" = "speed-disk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the disc speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
@@ -9262,7 +9228,7 @@ exit; fi
 #### :rutina-inicial-speed-ram:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ram" ]; then  echo $give_cover
+if   [ "$first_option" = "speed-ram" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the ram speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 case "$(mount | $command_grep -i  "/tmp type tmpfs" | wc -l)" 
@@ -9281,7 +9247,7 @@ exit; fi
 #### :rutina-inicial-speed-glx:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-glx" ]; then  echo $give_cover
+if   [ "$first_option" = "speed-glx" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ] || ||"
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
@@ -9295,7 +9261,7 @@ exit; fi
 #### :rutina-inicial-speed-pi:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-pi" ]; then  echo $give_cover
+if   [ "$first_option" = "speed-pi" ]; then  echo $give_cover
 digitos=2000
 echo "$header_ok [ $first_option ]  [ test pi speed ] [ Calculate pi number with $digitos digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc ]"; exit ;; esac
@@ -9310,7 +9276,7 @@ exit; fi
 #### :rutina-inicial-speed-cpu:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
+if   [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
 echo "$duo_md [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
@@ -9325,7 +9291,7 @@ exit; fi
 #### :rutina-inicial-radio-mp3:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
+if   [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: $cmd_binary preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9357,7 +9323,7 @@ exit; fi
 #### :rutina-inicial-radio-cadena100:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
+if   [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9384,7 +9350,7 @@ exit; fi
 #### :rutina-inicial-radio-rockfm:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
+if   [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9411,7 +9377,7 @@ exit; fi
 #### :rutina-inicial-radio-kissfm:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
+if   [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9436,7 +9402,7 @@ exit; fi
 ##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
 ##########    spanish: weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-weather:
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "weather" ]; then 
+if   [ "$first_option" = "weather" ]; then 
 case $favorite_text_browser in "$NULL") echo "$tab [ fail ] [ Install a text browser ]"; exit ;; esac
 $favorite_text_browser -dump wttr.in
 exit; fi
@@ -9446,7 +9412,7 @@ exit; fi
 #### :rutina-inicial-game-rgb:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-rgb" ]; then  $nada
+if   [ "$first_option" = "game-rgb" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
 echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: $cmd_binary game-rgb 255000255 ]"
 else
@@ -9478,7 +9444,7 @@ fi; exit ; fi
 #### :rutina-inicial-game-hex:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-hex" ]; then  $nada
+if   [ "$first_option" = "game-hex" ]; then  $nada
 if [ "$second_option" = "$NULL" ]; then
 echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: $cmd_binary game-hex FF00FF ]"
 else
@@ -9510,7 +9476,7 @@ fi ; exit; fi
 #### :rutina-inicial-game-domain:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-domain" ] ; then
+if   [ "$first_option" = "game-domain" ] ; then
 file_domain="$directory_default/$cmd_binary-domain"
 if [ -s $file_domain ]; then $nada 
 else echo "$duo_md [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
@@ -9556,7 +9522,7 @@ exit; fi
 #### :rutina-inicial-game-word:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-word" ]; then  $nada
+if   [ "$first_option" = "game-word" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -9973,7 +9939,7 @@ fi
 #### :rutina-inicial-game-number:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "game-number" ]; then  $nada
+if   [ "$first_option" = "game-number" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -10339,7 +10305,7 @@ fi
 #### :rutina-inicial-sshd-tunnel-info:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
+if   [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
 if [ "$command_lsof" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install lsof ]" ; exit ; fi
 #### ssh tunnel
@@ -10369,7 +10335,7 @@ exit; fi
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
+if   [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ on: ssh server socks on port 1080 like active ssh tunnel ] || ||"
 if [ "$second_option" == "$NULL" ]; then echo "$duo_md [ fail ] [ type: $cmd_binary sshd-tunnel-on user@server ]"; exit ; fi
 echo "$duo_md [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
@@ -10384,7 +10350,7 @@ exit; fi
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
+if   [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
 echo "$duo_md [ info ] [ killing procees with: ssh -f -N -D ]"
 for parada in $(ps aux | $command_grep "ssh \-f \-N \-D" | $command_grep -iv "grep ssh" | awk '{print $2}' -);
@@ -10397,7 +10363,7 @@ exit; fi
 ##########   english: pdf-resize  resize one pdf                 ##########
 ##########   spanish: pdf-resize  reescala la calidad de un pdf  ##########
 #### :rutina-inicial-pdf-resize:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" = "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ pdf resize with gs ] [ minimal pixels: screen | normal pixels: printer ] || ||"
 if [ "$quad_option" == "$NULL" ] ; then echo "Capacity to resize pdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output"; exit ;  fi
 #### capacity low o large pdf with: screen, printer, prepress, default
@@ -10418,7 +10384,7 @@ exit; fi
 ##########   english: pdf-unite  join several pdf in one pdf    ##########
 ##########   spanish: pdf-unite  junta varios pdf en un pdf     ##########
 #### :rutina-inicial-pdf-unite:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-unite" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" = "pdf-unite" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ all group pdf in this folder join in pdf_unite.pdf ] || ||"
 if [ "$command_pdfunite" == "$NULL" ]; then echo "$duo_md [ info ] install poppler utils" ; exit ; fi
 if [ ! -d "$second_option" ] ; then echo " Choose one directory directory" ; exit ; fi
@@ -10429,7 +10395,7 @@ exit; fi
 ##########   english: pdf-separate  join several pdf in one pdf    ##########
 ##########   spanish: pdf-separate  junta varios pdf en un pdf     ##########
 #### :rutina-inicial-pdf-separate:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "pdf-separate" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" = "pdf-separate" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ split one pdf in several pdf ] || ||"
 if [ "$command_pdfseparate" == "$NULL" ]; then echo "$duo_md [ info ] install poppler utils" ; exit ; fi
 if [ ! -f "$second_option" ] ; then echo " Choose one existent file" ; exit ; fi
@@ -10440,7 +10406,7 @@ exit; fi
 ##########   english: qemu-start  Start qemu machine        ##########
 ##########   spanish: qemu-start  Empieza una maquina qemu  ##########
 #### :rutina-inicial-qemu-start:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-start" ] ; then echo $give_cover; echo $message_info_rules
+if  [ "$first_option" = "qemu-start" ] ; then echo $give_cover; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -10465,7 +10431,7 @@ fi
 ##########   english: qemu-probe  Probe qemu machine        ##########
 ##########   spanish: qemu-probe  prueba una maquina qemu  ##########
 #### :rutina-inicial-qemu-probe:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-probe" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" = "qemu-probe" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -10490,7 +10456,7 @@ fi
 ##########   english: qemu-status  Status qemu machine        ##########
 ##########   spanish: qemu-status  Estado de maquina qemu  ##########
 #### :rutina-inicial-qemu-status:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-status" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" = "qemu-status" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ status qemu machine ] || ||"
 ps -Af | grep -i  "qemu-system" 
 echo "$duo_md [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
@@ -10499,7 +10465,7 @@ exit; fi
 ##########   english: qemu-stop  Stop qemu machine        ##########
 ##########   spanish: qemu-stop  Para la maquina qemu     ##########
 #### :rutina-inicial-qemu-stop:
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" = "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ stop qemu machine ] || ||"
 ps -Af | grep -i  "$architecture_vm"
 echo "$duo_md [  ok  ] [ status ] [ process listed ]"
@@ -10512,7 +10478,7 @@ exit; fi
 #### :rutina-inicial-filelog:
 ####
 ####
-if [ "$program_minimal" == "no" ] &&[ "$first_option" = "filelog" ] ; then  echo $give_cover
+if  [ "$first_option" = "filelog" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show $default_filelog ] || ||"
 if [ ! -f $default_filelog ]; then touch $default_filelog ; fi
 echo
@@ -10528,7 +10494,7 @@ exit; fi
 #### :rutina-inicial-autolog:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "autolog" ] ; then  echo $give_cover
+if   [ "$first_option" = "autolog" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show "$default_autolog" ] || ||"
 if [ ! -f $default_autolog ]; then touch $default_autolog ; fi
 echo
@@ -10544,7 +10510,7 @@ exit; fi
 #### :rutina-inicial-log-ssh:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "log-ssh" ]; then  echo $give_cover
+if   [ "$first_option" = "log-ssh" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ search sshd in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install zgrep ]"; exit ; fi
 $command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
@@ -10557,7 +10523,7 @@ exit; fi
 #### :rutina-inicial-log-search:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "log-search" ]; then echo $give_cover
+if   [ "$first_option" = "log-search" ]; then echo $give_cover
 echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install zgrep ]"; exit ; fi
 case "$second_option" in
@@ -10573,7 +10539,7 @@ exit; fi
 #### :rutina-inicial-dev-version:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-version" ]; then  echo $give_cover
+if   [ "$first_option" = "dev-version" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ] || ||"
 echo $url_web_development
 exit; fi
@@ -10585,7 +10551,7 @@ exit; fi
 #### :rutina-inicial-dev-changes:
 ####
 #### 
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "dev-changes" ]; then  echo $give_cover
+if   [ "$first_option" = "dev-changes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ] || ||"
 $favorite_text_browser -source $url_web_changes
 exit; fi
@@ -10597,7 +10563,7 @@ exit; fi
 #### :rutina-inicial-new-versions:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "new-versions" ]; then echo $give_cover
+if   [ "$first_option" = "new-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
 echo
 echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
@@ -10625,7 +10591,7 @@ exit; fi
 #### :rutina-inicial-complete-versions:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "index-versions" ]; then echo $give_cover
+if   [ "$first_option" = "index-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -10639,7 +10605,7 @@ exit; fi
 #### :rutina-inicial-complete-versions:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "complete-versions" ]; then echo $give_cover
+if   [ "$first_option" = "complete-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -10653,7 +10619,7 @@ exit; fi
 #### :rutina-inicial-minimal-versions:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "minimal-versions" ]; then echo $give_cover
+if   [ "$first_option" = "minimal-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -10667,7 +10633,7 @@ exit; fi
 #### :rutina-inicial-gpg-notes:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "gpg-notes" ]; then 
+if   [ "$first_option" = "gpg-notes" ]; then 
 ####
 ####
 if [ "$second_option" == "-list" ] || [ "$second_option" == "$NULL" ] ; then
@@ -10754,7 +10720,7 @@ exit ; fi
 #### :rutina-inicial-pc-halt:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "pc-halt" ]; then echo $give_cover
+if   [ "$first_option" = "pc-halt" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ] || ||"
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -10769,7 +10735,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "pc-shutdown" ]; then echo $give_cover
+if   [ "$first_option" = "pc-shutdown" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ] || ||"
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -10784,7 +10750,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "pc-reboot" ]; then echo $give_cover
+if   [ "$first_option" = "pc-reboot" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ reboot computer ] || ||"
 demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
@@ -10799,7 +10765,7 @@ exit; fi
 #### :rutina-inicial-lpinfo:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lpinfo" ]; then  echo $give_cover
+if   [ "$first_option" = "lpinfo" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ] || ||"
 echo "$duo_md [ info] [ lpinfo -v -l ]"
 echo
@@ -10819,7 +10785,7 @@ exit; fi
 #### :rutina-inicial-lsblk:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsblk" ]; then  echo $give_cover
+if   [ "$first_option" = "lsblk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list disks ] || ||"
 echo "$duo_md [ info ] [ lsblk ]"
 $command_lsblk -o name,size,fsuse%,label,mountpoints || echo "$duo_md [ fail ] install lsblk"
@@ -10832,7 +10798,7 @@ exit; fi
 #### :rutina-inicial-lsusb:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsusb" ]; then  echo $give_cover
+if   [ "$first_option" = "lsusb" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list usb ] || ||"
 echo "$duo_md [ info ] [ lsusb ]"
 $command_lsusb || echo "$duo_md [ fail ] install lsusb"
@@ -10845,7 +10811,7 @@ exit; fi
 #### :rutina-inicial-lscpu:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lscpu" ]; then  echo $give_cover
+if   [ "$first_option" = "lscpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list cpu ] || ||"
 echo "$duo_md [ info ] [ lscpu ]"
 $command_lscpu || echo  "  [ fail ] install lscpu"
@@ -10858,7 +10824,7 @@ exit; fi
 #### :rutina-inicial-lspci:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lspci" ]; then  echo $give_cover
+if   [ "$first_option" = "lspci" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list pci hardware sockets ] || ||"
 echo "$duo_md [ info ] [ lspci ]"
 $command_lspci || echo  "  [ fail ] install lspci"
@@ -10871,7 +10837,7 @@ exit; fi
 #### :rutina-inicial-lsgpu:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lsgpu" ]; then  echo $give_cover
+if   [ "$first_option" = "lsgpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list gpu ] || ||"
 echo "$duo_md [ info ] [ lsgpu ]"
 $command_lsgpu || echo "$duo_md [ fail ] install lsgpu"
@@ -10884,7 +10850,7 @@ exit; fi
 #### :rutina-inicial-lshw:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "lshw" ]; then  echo $give_cover
+if   [ "$first_option" = "lshw" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list hardware ] || ||"
 echo "$duo_md [ info ] [ lshw ]"
 $command_lshw || echo  "  [ fail ] install lshw"
@@ -10897,7 +10863,7 @@ exit; fi
 #### :rutina-inicial-hosts:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts" ]; then  echo $give_cover
+if   [ "$first_option" = "hosts" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ] || ||"
 cat /etc/hosts
 echo "$duo_md [ ok ] [ This file is /etc/hosts ]"
@@ -10910,7 +10876,7 @@ exit; fi
 #### :rutina-inicial-protocols:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "protocols" ]; then  echo $give_cover
+if   [ "$first_option" = "protocols" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ] || ||"
 cat /etc/protocols  | $command_sed s/\&//g 
 echo "$duo_md [ ok ] [ This file is /etc/protocols ]"
@@ -10923,7 +10889,7 @@ exit; fi
 #### :rutina-inicial-services:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "services" ]; then  echo $give_cover
+if   [ "$first_option" = "services" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/services ] || ||"
 cat /etc/services | $command_sed s/\&//g 
 echo "$duo_md [ ok ] [ This file is /etc/services ]"
@@ -10936,7 +10902,7 @@ exit; fi
 #### :rutina-inicial-host.allow:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
+if   [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/allow ] || ||"
 cat /etc/hosts.allow
 echo "$duo_md [ ok ] [ This file is /etc/hosts.allow ]"
@@ -10949,7 +10915,7 @@ exit; fi
 #### :rutina-inicial-hosts.deny:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
+if   [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/deny ] || ||"
 cat /etc/hosts.deny
 echo "$duo_md [ ok ] [ This file is /etc/hosts.deny ]"
@@ -10962,7 +10928,7 @@ exit; fi
 #### :rutina-inicial-resolv.conf:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "resolv.conf" ]; then  echo $give_cover
+if   [ "$first_option" = "resolv.conf" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show resolv.conf ] || ||"
 if [ -f /etc/resolv.conf.head ]; then
 echo "$tab  [ with resolv.conf.head ]"
@@ -10985,7 +10951,7 @@ exit; fi
 #### :rutina-inicial-about:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "about" ]; then  echo $give_cover
+if   [ "$first_option" = "about" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ about ] [ about md ] || ||" 
 echo "$title_md [ $cmd_binary: ]"
 echo "$text_md [ Path Program ] $cmd_binary"
@@ -11025,7 +10991,7 @@ exit; fi
 #### :rutina-inicial-info-system:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-system" ]; then  echo $give_cover
+if   [ "$first_option" = "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
 echo
 echo "$duo_md [ info ] ### [ System info ] [ Distro ] ###"
@@ -11055,7 +11021,7 @@ exit; fi
 #### :rutina-inicial-info-net:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info-net" ]; then echo $give_cover
+if   [ "$first_option" = "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ] || ||"
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
@@ -11177,7 +11143,7 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ip4" ]; then echo $give_cover
+if   [ "$first_option" = "speed-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
@@ -11200,7 +11166,7 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "speed-ip6" ]; then echo $give_cover
+if   [ "$first_option" = "speed-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
@@ -11223,7 +11189,7 @@ exit; fi
 #### :rutina-inicial-web-cert:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "web-cert" ] ; then echo $give_cover
+if   [ "$first_option" = "web-cert" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
 case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
@@ -11241,7 +11207,7 @@ exit; fi
 #### :rutina-inicial-clean-tmp:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
+if   [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
 echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
 rm -rf "$directory_tmp" &> /dev/null
@@ -11255,7 +11221,7 @@ exit; fi
 #### :rutina-inicial-config-eng:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "config-eng" ]; then echo $give_cover
+if   [ "$first_option" = "config-eng" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from english configuration ] || ||"
 cat  $defaultfullcfg_eng
 exit; fi
@@ -11267,7 +11233,7 @@ exit; fi
 #### :rutina-inicial-config-spa:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "config-spa" ]; then echo $give_cover
+if   [ "$first_option" = "config-spa" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ] || ||"
 cat $defaultfullcfg_spa
 exit; fi
@@ -11279,7 +11245,7 @@ exit; fi
 #### :rutina-inicial-info:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "info" ]; then $nada
+if   [ "$first_option" = "info" ]; then $nada
 if [ "$second_option" = "options-interface" ]; then $cmd_binary options-interface ; exit ; fi
 if [ "$second_option" = "firewall-control" ]; then $cmd_binary firewall-control ; exit ; fi
 if [ "$second_option" = "firewall-numeral" ]; then $cmd_binary firewall-conceptual ; exit ; fi
@@ -11332,7 +11298,7 @@ exit; fi
 #### :rutina-inicial-readme:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "readme" ]; then echo $give_cover
+if   [ "$first_option" = "readme" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ help in english ] [ readme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
@@ -11721,7 +11687,7 @@ exit; fi
 #### :rutina-inicial-leeme:
 ####
 ####
-if [ "$program_minimal" == "no" ] && [ "$first_option" = "leeme" ]; then echo $give_cover
+if   [ "$first_option" = "leeme" ]; then echo $give_cover
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
