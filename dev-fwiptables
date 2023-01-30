@@ -1899,7 +1899,7 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 #### spanish: autoguardado con nombre autosave
 ####
 ####
-if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then 
+if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then
 echo "$duo_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
@@ -1939,8 +1939,8 @@ if [ -f "$directory_config/$second_option" ]; then . "$directory_config/$second_
 ####
 ####
 if [ ! -f "$directory_config/$second_option" ]; then  $cmd_binary cfg ; 
-echo "$tab [ info ] [ $cmd_binary custom file-cfg ]"
-echo "$tab [ info ] [ $cmd_binary firewall-custom ]"
+echo "$duo_md [ info ] [ $cmd_binary custom file-cfg ]"
+echo "$duo_md [ info ] [ $cmd_binary firewall-custom ]"
 exit; fi
 ####
 ####
@@ -3089,14 +3089,14 @@ echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
 echo 
 default_files_cfg="default-full-english.cfg|default-full-spanish.cfg\
 |default-mini-english|default-mini-spanish|wizard-full|wizard-mini|nodefault-tmp"
-echo "$tab"
+echo "$duo_md"
 echo "$tab [ System files ]"
 $command_ls -1 $directory_config/ | $command_grep -E -i $default_files_cfg
-echo "$tab"
-echo "$tab [ User files ]"
+echo "$duo_md"
+echo "$duo_md [ User files ]"
 $command_ls -1 $directory_config/ | $command_grep -E -iv $default_files_cfg
-echo "$tab"
-echo "$tab [ OK CFG FILES NAMES ]"
+echo "$duo_md"
+echo "$duo_md [ OK CFG FILES NAMES ]"
 echo 
 exit; fi
 ####
@@ -3472,29 +3472,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-firewall-numeral:
-##########    english: list-numrules: options    ##########
-##########    spanish: list-numrules: opciones   ##########
-#### :rutina-inicial-list-numrules:
-####
-####
-if   [ "$first_option" = "list-numrules" ]; then echo $give_cover
-echo "$header_ok [ $first_option ]  [ List rules in numerical ] [ list-numrules md ] || ||"
-echo "$duo_md [ List iptables numerical rules ]"
-echo "$duo_md [ Lista reglas numericas de iptables ]"
-echo
-echo "               listnum : List iptables filter rules input and output ipv4 in numbers"
-echo "                       : Lista la tabla de reglas de filtros de entrada y salida ipv4 in numeros"
-echo "       list-forwardnum : List iptables filter rules foward in numbers"
-echo "                       : Lista la tabla de reglas de filtros de reenvio ipv4 in numeros"
-echo "              listnum6 : List iptables filter rules input and output ipv6 in numbers"
-echo "                       : Lista la tabla de reglas de filtros de entrada y salida ipv6 in numeros"
-echo "      list-forwardnum6 : List iptables filter rules forward ipv6 in numbers"
-echo "                       : Lista la tabla de reglas de filtros de reenvio ipv6 in numeros"
-echo
-exit; fi
-####
-####
-#### :rutina-final-list-numrules:
 ##########    english: firewall-custom: options   ##########
 ##########    spanish: firewall-custom: opciones  ##########
 #### :rutina-inicial-firewall-custom:
@@ -3822,7 +3799,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "tool-icmp" ]; then echo $give_cover
-echo "$tab [ ok ] [ $first_option ] [ tool icmp ] [ tool-icmp md ] || ||"
+echo "$header_ok [ $first_option ] [ tool icmp ] [ tool-icmp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool icmp ]"
 echo "$text_md [ spanish info ] [ Herramienta icmp ]"
@@ -4612,7 +4589,8 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-$favorite_text_editor $default_preferences
+$command_zenity  --text-info $graphic_dimension --filename="$default_preferences.old" \
+--editable --title="MODIFY CONFIG" 1> "$default_preferences"
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -6614,17 +6592,17 @@ exit;  fi
 ####
 if   [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show howto upgrade ] || ||"
-echo "$tab [ info ] [ The actually version is: $cmd_binary $cmd_version actual ]"
-echo "$tab [ info ] [ The latest version is: ]"
+echo "$duo_md [ info ] [ The actually version is: $cmd_binary $cmd_version actual ]"
+echo "$duo_md [ info ] [ The latest version is: ]"
 $favorite_text_browser -dump $url_web_newfiles | grep -i fwiptables-complete-v | grep -i download
 #### $command_grep -i $cmd_binary | $command_grep -i  download | head -1
 echo 
-echo "$tab [ info ] [ Upgrade The $cmd_binary in file /usr/bin/fwiptables-cmd with $favorite_text_browser ]"
-echo "$tab [ info ] [ OR download manually   || OR $cmd_binary upgrade || OR look down: ]"
-echo "$tab [ info ] [ launch: $favorite_text_browser -source $url_web_latest &> /tmp/$cmd_binary ]"
-echo "$tab [ info ] [ launch: chmod ugo+x /tmp/$cmd_binary ]"
-echo "$tab [ info ] [ launch: /tmp/$cmd_binary install ]"
-echo "$tab [ info ] [ ok and it will be upgrade with the name fwiptables-cmd ]"
+echo "$duo_md [ info ] [ Upgrade The $cmd_binary in file /usr/bin/fwiptables-cmd with $favorite_text_browser ]"
+echo "$duo_md [ info ] [ OR download manually   || OR $cmd_binary upgrade || OR look down: ]"
+echo "$duo_md [ info ] [ launch: $favorite_text_browser -source $url_web_latest &> /tmp/$cmd_binary ]"
+echo "$duo_md [ info ] [ launch: chmod ugo+x /tmp/$cmd_binary ]"
+echo "$duo_md [ info ] [ launch: /tmp/$cmd_binary install ]"
+echo "$duo_md [ info ] [ ok and it will be upgrade with the name fwiptables-cmd ]"
 exit;  fi
 ####
 ####
@@ -6643,20 +6621,19 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 echo
-echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
-echo "$tab [ actually ] [ Show the file: $cmd_binary hosts ]"
+echo "$duo_md [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
+echo "$duo_md [ actually ] [ Show the file: $cmd_binary hosts ]"
 echo
-echo "$tab [   info:  ] [ Get server lines numbers total ] [ $cmd_binary addblock-list info ]"
-echo "$tab [ change:  ] [ $cmd_binary addblock-on name-bl ] OR [ $cmd_binary addblock-off ]" 
+echo "$duo_md [   info:  ] [ Get server lines numbers total ] [ $cmd_binary addblock-list info ]"
+echo "$duo_md [ change:  ] [ $cmd_binary addblock-on name-bl ] OR [ $cmd_binary addblock-off ]" 
 echo
-echo "$tab"
-echo "$tab"
-echo "$tab  name-bl          link-bl"
-echo "$tab fademind        $blacklist_server_fademind"
-echo "$tab mvps            $blacklist_server_mvps"
-echo "$tab adaway          $blacklist_server_adaway"
-echo "$tab stevenblack     $blacklist_server_stevenblack"
-echo "$tab"
+echo 
+echo "$duo_md  name-bl          link-bl"
+echo "$duo_md fademind        $blacklist_server_fademind"
+echo "$duo_md mvps            $blacklist_server_mvps"
+echo "$duo_md adaway          $blacklist_server_adaway"
+echo "$duo_md stevenblack     $blacklist_server_stevenblack"
+echo
 ####
 ####
 if [ "$second_option" = "info" ]; then echo "$tab Getting lines numbers total.."; echo 
@@ -6695,7 +6672,7 @@ echo
 ####
 ####
 if [ "$second_option" = "$NULL" ]; then
-echo "$tab [ Launched without options ] [ $cmd_binary addblock-list ]"
+echo "$duo_md [ Launched without options ] [ $cmd_binary addblock-list ]"
 echo
 $cmd_binary addblock-list
 echo
@@ -6709,7 +6686,7 @@ blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/host
 ####
 ####
 if [ "$second_option" = "fademind" ]; then 
-echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
 $cmd_binary addblock-off &> /dev/null
 cat $directory_temporal/hosts.fademind | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
@@ -6717,7 +6694,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "adaway" ]; then 
-echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
 $cmd_binary addblock-off &> /dev/null
 cat $directory_temporal/hosts.adaway | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
@@ -6725,7 +6702,7 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "mvps" ]; then 
-echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
 $cmd_binary addblock-off &> /dev/null
 cat $directory_temporal/hosts.mvps | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
@@ -6733,11 +6710,11 @@ echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/ho
 ####
 ####
 if [ "$second_option" = "stevenblack" ]; then 
-echo "$tab [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
+echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
 $cmd_binary addblock-off &> /dev/null
 cat $directory_temporal/hosts.stevenblack | $command_sed 's/localhost/the-localhost/g' >> /etc/hosts
-echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
+echo "$duo_md New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
 echo "$tab [ Invalid option ] [ See: $cmd_binary addblock-list ]"
@@ -7191,7 +7168,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-list6:
-
 ##########    english: listn4-ip: The list option   ##########
 ##########    spanish: listn4-ip: La opcion lista   ##########
 #### :rutina-inicial-listn4-ip:
