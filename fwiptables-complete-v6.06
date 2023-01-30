@@ -140,6 +140,7 @@ $command_xhost +SI:localuser:root &> /dev/null ;
 #### :rutina-inicial-command:
 ####
 ####
+command_editor="$(command -v editor)"
 command_mkdir="$(command -v mkdir)"
 command_arp="$(command -v arp)"
 command_arp_scan="$(command -v arp-scan)"
@@ -4489,10 +4490,11 @@ echo "$text_md arptables:               $command_arptables"
 echo "$text_md ebtables:                $command_ebtables"
 echo
 echo "$title_md [ Automatic favorites ]"
-echo "$text_md Automatic browser:   lynx or links or links2  :   $favorite_text_browser"
-echo "$text_md Automatic date:      rdate or sntp or ntpdate :   $favorite_date_command"
-echo "$text_md Automatic music:     mpg321 or mpg123         :   $favorite_radio_command"
-echo "$text_md Automatic dhcp:      dhcpcd or dhclient       :   $favorite_dhcp_command" 
+echo "$text_md Automatic text editor:    Text editor command      :   $command_editor"
+echo "$text_md Automatic text browser:   lynx or links or links2  :   $favorite_text_browser"
+echo "$text_md Automatic text music:     mpg321 or mpg123         :   $favorite_radio_command"
+echo "$text_md Automatic text date:      rdate or sntp or ntpdate :   $favorite_date_command"
+echo "$text_md Automatic text dhcp:      dhcpcd or dhclient       :   $favorite_dhcp_command" 
 echo 
 exit; fi
 ####
@@ -4637,7 +4639,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-editor $default_preferences
+$command_editor $default_preferences
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
 $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
@@ -7795,7 +7797,7 @@ exit; fi
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_config/$archivo"
-editor $directory_config/$archivo
+$command_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -7816,7 +7818,7 @@ exit; fi
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_config/$archivo"
-editor $directory_config/$archivo
+$command_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -7837,7 +7839,7 @@ exit; fi
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_config/$archivo"
-editor $directory_config/$archivo
+$command_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -7858,7 +7860,7 @@ exit; fi
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_config/$archivo"
-editor $directory_config/$archivo
+$command_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -7881,7 +7883,7 @@ echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; 
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
-editor "$directory_config/$second_option"
+$command_editor "$directory_config/$second_option"
 echo "$duo_md [  ok  ] [ Custom file $second_option ]"
 clear; fi
 ####
@@ -8455,7 +8457,7 @@ cp $default_preferences $default_preferences.old
 #### spanish: edita el archivo
 ####
 ####
-editor "$default_preferences"
+$command_editor "$default_preferences"
 ####
 ####
 #### english: probe all that is correct or recover
@@ -8512,7 +8514,7 @@ exit; fi
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_temporal/$cmd_config-$archivo"
+$command_editor "$directory_temporal/$cmd_config-$archivo"
 clear
 $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear
@@ -8530,7 +8532,7 @@ exit; fi
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-editor "$directory_temporal/$cmd_config-$archivo"
+$command_editor "$directory_temporal/$cmd_config-$archivo"
 clear
 $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear 
@@ -10720,13 +10722,13 @@ gpg_temporal_gpg="$directory_temporal/$origina.gpg"
 ####
 if [ -f "$gpg_origen_gpg" ];  then
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
-editor $gpg_modify_txt
+$command_editor $gpg_modify_txt
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_modify_txt" ;
 rm $gpg_modify_txt
 echo "$duo_md file ok"
 ####
 else
-editor $gpg_modify_txt
+$command_editor $gpg_modify_txt
 $command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 rm $gpg_modify_txt
 echo "$duo_md file ok"
