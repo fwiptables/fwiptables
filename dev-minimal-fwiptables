@@ -1034,6 +1034,7 @@ exit; fi
 ####
 if [ "$first_option" = "depends" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] || ||"
+echo
 echo "$title_md [ Configuration files ]"
 echo "$text_md Directory data:          $directory_data"
 echo "$text_md Directory temp:          $directory_tmp"
