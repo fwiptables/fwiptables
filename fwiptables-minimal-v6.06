@@ -522,11 +522,11 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 favorite_text_editor=""
-if [ "$command_vi"  ! = "$NULL" ]  ; then    favorite_text_editor="$command_im"      ; fi
-if [ "$command_vim"  ! = "$NULL" ]  ; then   favorite_text_editor="$command_vim"     ; fi
-if [ "$command_nano"  ! = "$NULL" ] ; then   favorite_text_editor="$command_nano"    ; fi
-if [ "$command_pico" ! = "$NULL" ] ; then  favorite_text_editor="$command_pico"      ; fi
-if [ "$command_editor" ! = "$NULL" ] ; then  favorite_text_editor="$command_editor"  ; fi
+if [ "$command_vi"  != "$NULL" ]  ; then    favorite_text_editor="$command_vi"      ; fi
+if [ "$command_vim"  != "$NULL" ]  ; then   favorite_text_editor="$command_vim"     ; fi
+if [ "$command_nano"  != "$NULL" ] ; then   favorite_text_editor="$command_nano"    ; fi
+if [ "$command_pico" != "$NULL" ] ; then  favorite_text_editor="$command_pico"      ; fi
+if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_editor"  ; fi
 ####
 ####
 #### :rutina-inicial-favorite-text-editor:
@@ -536,8 +536,8 @@ if [ "$command_editor" ! = "$NULL" ] ; then  favorite_text_editor="$command_edit
 ####
 ####
 favorite_text_dialog=""
-if [ "$command_dialog"  ! = "$NULL" ]  ; then  favorite_text_dialog="$command_dialog --no-tags"   ; fi
-if [ "$command_whiptail" ! = "$NULL" ] ; then  favorite_text_dialog="$command_whiptail --notags"  ; fi
+if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog --no-tags"   ; fi
+if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail --notags"  ; fi
 ####
 ####
 #### :rutina-inicial-favorite-text-dialog:
@@ -547,10 +547,10 @@ if [ "$command_whiptail" ! = "$NULL" ] ; then  favorite_text_dialog="$command_wh
 ####
 ####
 favorite_text_browser=""
-if [ "$command_links"  ! = "$NULL" ] ; then  favorite_text_browser="$command_links"   ; fi
-if [ "$command_links2" ! = "$NULL" ] ; then  favorite_text_browser="$command_links2"  ; fi
-if [ "$command_lynx"   ! = "$NULL" ] ; then  favorite_text_browser="$command_lynx"    ; fi
-if [ "$command_elinks" ! = "$NULL" ] ; then  favorite_text_browser="$command_elinks"  ; fi
+if [ "$command_links"  != "$NULL" ] ; then  favorite_text_browser="$command_links"   ; fi
+if [ "$command_links2" != "$NULL" ] ; then  favorite_text_browser="$command_links2"  ; fi
+if [ "$command_lynx"   != "$NULL" ] ; then  favorite_text_browser="$command_lynx"    ; fi
+if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elinks"  ; fi
 ####
 ####
 #### :rutina-inicial-favorite-text-browser:
@@ -560,9 +560,9 @@ if [ "$command_elinks" ! = "$NULL" ] ; then  favorite_text_browser="$command_eli
 ####
 ####
 favorite_dhcp_command=""
-if [ "$command_dhcpcd"  ! = "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
-if [ "$command_dhclient_script" ! = "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
-if [ "$command_dhclient"   ! = "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
+if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
+if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
+if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
 ####
 ####
 #### :rutina-final-favorite-dhcp-command:
@@ -572,9 +572,9 @@ if [ "$command_dhclient"   ! = "$NULL" ] ;      then  favorite_dhcp_command="$co
 ####
 ####
 favorite_date_command=""
-if [ "$command_rdate"   ! = "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    ! = "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" ! = "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
@@ -584,9 +584,9 @@ if [ "$command_ntpdate" ! = "$NULL" ]; then  favorite_date_command="$command_ntp
 ####
 ####
 favoite_music_command=""
-if [ "$command_cvlc" ! = "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
-if [ "$command_mpg321" ! = "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
-if [ "$command_mpg123" ! = "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
+if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
+if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
 ####
 ####
 #### :rutina-final-favorite-music-command:
