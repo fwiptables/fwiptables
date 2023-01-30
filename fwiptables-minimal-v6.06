@@ -219,6 +219,9 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 ####
 ####
 command_editor="$(command -v editor)"
+command_vi="$(command -v vi)"
+command_vim="$(command -v vim)"
+command_nano="$(command -v nano)"
 command_arp="$(command -v arp)"
 command_arp_scan="$(command -v arp-scan)"
 command_arptables="$(command -v arptables)"
@@ -512,6 +515,18 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 ####
 ####
 #### :rutina-final-update-variables:
+##########      english: search favorite text editor: favorite editor text     ##########
+##########      spanish: busca preferido editor: favorite editor de texto     ##########
+#### :rutina-inicial-favorite-text-editor:
+####
+####
+if [ "$command_vi"   = "$NULL" ]  ; then $nada ;  else favorite_text_editor="$command_im"      ; fi
+if [ "$command_vim"   = "$NULL" ]  ; then $nada ; else favorite_text_editor="$command_vim"     ; fi
+if [ "$command_nano"   = "$NULL" ] ; then $nada ; else favorite_text_editor="$command_nano"    ; fi
+if [ "$command_editor" = "$NULL" ] ; then $nada ; else favorite_text_editor="$command_editor"  ; fi
+####
+####
+#### :rutina-inicial-favorite-text-editor:
 ##########      english: search favorite dialog: favorite dialog     ##########
 ##########      spanish: busca preferido dialogo: favorite dialog   ##########
 #### :rutina-inicial-favorite-text-dialog:
@@ -899,7 +914,7 @@ exit; fi
 if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default fwiptables ] || ||"
 echo 
-$command_editor $default_preferences
+$favorite_text_editor $default_preferences
 echo "$duo_md [ info ] [ edit file $default_preferences to change variables ]"
 exit; fi
 ####
@@ -913,7 +928,7 @@ exit; fi
 if [ "$first_option" = "dialog-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default dialog ] || ||"
 echo 
-$command_editor $default_dialogrc
+$favorite_text_editor $default_dialogrc
 echo "$duo_md [ info ] [ edit file $default_dialogrc to change variables ]"
 exit; fi
 ####
@@ -1058,7 +1073,7 @@ echo "$text_md arptables:               $command_arptables"
 echo "$text_md ebtables:                $command_ebtables"
 echo
 echo "$title_md [ Automatic favorites ]"
-echo "$text_md Automatic text editor:    Text editor command      :   $command_editor"
+echo "$text_md Automatic text editor:    Text editor command      :   $favorite_text_editor"
 # echo "$text_md Automatic text browser:   lynx or links or links2  :   $favorite_text_browser"
 # echo "$text_md Automatic text music:     mpg321 or mpg123         :   $favorite_radio_command"
 # echo "$text_md Automatic text date:      rdate or sntp or ntpdate :   $favorite_date_command"
@@ -3584,7 +3599,7 @@ exit; fi
 if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_config/$archivo"
-$command_editor $directory_config/$archivo
+$favorite_text_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -3605,7 +3620,7 @@ exit; fi
 if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_config/$archivo"
-$command_editor $directory_config/$archivo
+$favorite_text_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -3626,7 +3641,7 @@ exit; fi
 if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_config/$archivo"
-$command_editor $directory_config/$archivo
+$favorite_text_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -3647,7 +3662,7 @@ exit; fi
 if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_config/$archivo"
-$command_editor $directory_config/$archivo
+$favorite_text_editor $directory_config/$archivo
 echo " [  ok  ] created file $archivo"
 ####
 ####
@@ -3670,7 +3685,7 @@ echo "$tab [ info ] [ usage: ] [ $cmd_binary modify-config config-existent ]" ; 
 ####
 if [ -f "$directory_config/$second_option" ] ; then $nada
 cp "$directory_config/$second_option" "$directory_temporal/$second_option" &> /dev/null
-$command_editor "$directory_config/$second_option"
+$favorite_text_editor "$directory_config/$second_option"
 echo "$duo_md [  ok  ] [ Custom file $second_option ]"
 clear; fi
 ####
@@ -3812,7 +3827,7 @@ exit;  fi
 if [ "$first_option" = "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_editor "$directory_temporal/$cmd_config-$archivo"
+$favorite_text_editor "$directory_temporal/$cmd_config-$archivo"
 clear
 $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear
@@ -3830,7 +3845,7 @@ exit; fi
 if [ "$first_option" = "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_editor "$directory_temporal/$cmd_config-$archivo"
+$favorite_text_editor "$directory_temporal/$cmd_config-$archivo"
 clear
 $favorite_text_dialog --clear --title "Run this wizard" --yesno "Run this wizard" 0 0 && clear \
 && cp "$directory_temporal/$cmd_config-$archivo" "$directory_config/$archivo" && $zero_option custom $archivo || clear 
