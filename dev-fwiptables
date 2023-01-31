@@ -810,7 +810,6 @@ if [ "$second_option" = "md5sum" ]  ; then third_option="$3"  ; quad_option="$4"
 ####
 
 if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
-if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
 if [ "$first_option" = "offline" ] ; then first_option="off-line" ; fi
 if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
 if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
@@ -2286,6 +2285,26 @@ server_port_tcp="" ;
 fi
 ####
 ####
+####   #### english: firewall of system games-udp:
+####   #### spanish: cortafuego del sistema games-udp:
+####
+####
+if [ "$first_option" = "games-udp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall games-udp ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ;
+fi
+####
+####
 ####   #### english: firewall of system game-wesnoth:
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
@@ -2703,7 +2722,7 @@ echo "$text_md                        server-vnc server-web server-samba server-
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                        server-asterisk server-squid                                                 "
 echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                        ip4 ip6 version notes depends license install uninstall                      "
+echo "$text_md                        ip4 ip6 version notes depends license new-versions install uninstall         "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
 echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manager        "
 echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
@@ -2833,8 +2852,8 @@ exit ; fi
 if   [ "$first_option" = "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                          "
-echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                        ip4 ip6 version notes depends license install uninstall                      "
+echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog  "
+echo "$text_md                        ip4 ip6 version notes depends license new-versions install uninstall   "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
 exit ; fi

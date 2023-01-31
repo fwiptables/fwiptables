@@ -461,19 +461,19 @@ mensage_timeout="Closing gui menu in $close_graphicall seconds"
 ####       #### english: autovariables        #### spanish: autovariables
 launch_firewall="no" ;   #  autoconfigure with launch iptables rules
 ####       #### english: [download web link]  #### spanish: [descarga del enlace web]
-fweb_main="https://sourceforge.net/projects/f-iptables/"
-fweb_files="https://sourceforge.net/projects/f-iptables/files/" ;
-fweb_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
-fweb_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
-fweb_development_complete="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
-fweb_development_minimal="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
-fweb_newfiles="https://sourceforge.net/projects/f-iptables/files" ;
-fweb_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
-fweb_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
-####       #### english: [Program license] #### spanish: [Licencia del programa]
+url_web_main="https://sourceforge.net/projects/f-iptables/"
+url_web_latest="https://sourceforge.net/projects/f-iptables/files/latest/download" ;
+url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-changes?format=raw" ;
+url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
+url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v6" ;
+url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v6" ;
+url_web_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
+url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
+url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
 license_gpl="https://sourceforge.net/p/f-iptables/code/ci/master/tree/LICENSE.txt?format=raw"
-fweb_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
+url_web_domain="https://sourceforge.net/p/f-iptables/code/ci/master/tree/domain-list?format=raw"
 ####
 ####
 #### english: if wrong in whithout_option
@@ -542,8 +542,8 @@ fi
 ####
 ####
 if [ "$favorite_text_dialog" == "$NULL" ]; then
-if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog --no-tags"   ; fi
-if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail --notags"  ; fi
+if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog"    ; fi
+if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail"  ; fi
 fi
 ####
 ####
@@ -724,13 +724,11 @@ if [ "$second_option" = "md5sum" ] ; then third_option="$3"  ; quad_option="$4" 
 ####
 
 if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
-if [ "$first_option" = "games-udp" ]; then first_option="games-shooter"; fi
 if [ "$first_option" = "offline" ] ; then first_option="off-line" ; fi
 if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
 if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
 if [ "$first_option" = "game-minecraft" ] ; then first_option="game-minetest" ; fi
 if [ "$first_option" = "game-westnoth" ] ; then first_option="game-wesnoth" ; fi
-if [ "$first_option" = "gamesudp" ] ; then first_option="games-shooter" ; fi
 if [ "$first_option" = "allpermisive" ] ; then first_option="all-permisive" ; fi
 if [ "$first_option" = "torbrowser" ] ; then first_option="client-tor" ; fi
 if [ "$first_option" = "tor-browser" ] ; then first_option="client-tor" ; fi
@@ -1136,7 +1134,7 @@ echo "$text_md ebtables:                $command_ebtables"
 echo
 echo "$title_md [ Automatic favorites ]"
 echo "$text_md Automatic text editor:    Text editor command      :   $favorite_text_editor"
-# echo "$text_md Automatic text browser:   lynx or links or links2  :   $favorite_text_browser"
+echo "$text_md Automatic text browser:   Text browser command     :   $favorite_text_browser"
 # echo "$text_md Automatic text music:     mpg321 or mpg123         :   $favorite_radio_command"
 # echo "$text_md Automatic text date:      rdate or sntp or ntpdate :   $favorite_date_command"
 # echo "$text_md Automatic text dhcp:      dhcpcd or dhclient       :   $favorite_dhcp_command" 
@@ -2205,6 +2203,26 @@ server_port_tcp="" ;
 fi
 ####
 ####
+####   #### english: firewall of system games-udp:
+####   #### spanish: cortafuego del sistema games-udp:
+####
+####
+if [ "$first_option" = "games-udp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+echo "$duo_md [ info ] [ loading firewall games-udp ]" ;
+launch_firewall="yes" ; 
+type_firewall="predesignated" ; 
+name_firewall="$first_option" ;
+#### english: max tries for each hour 
+allow_shield_maxtries="no" ;
+config_shield_port="" ;
+#### games shooter 3D all udp without the root ports 1:1024 and ftp for download maps
+client_port_udp="domain,domain-s,bootpc,bootps,ntp,https" ;
+server_port_udp="1025:65000" ;
+client_port_tcp="http,https,ssh,ftp,ftp-data,ftps,ftps-data" ;
+server_port_tcp="" ;
+fi
+####
+####
 ####   #### english: firewall of system game-wesnoth:
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
@@ -2594,6 +2612,76 @@ fi
 ####
 ####
 #### :rutina-final-system-rules:
+##########    english: new-versions: about of program      ##########
+##########    spanish: new-versions: acerca del programa   ##########
+#### :rutina-inicial-new-versions:
+####
+####
+if   [ "$first_option" = "new-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
+echo
+echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
+echo
+echo "$duo_md [ info ] [ Show the index version ]"
+echo "$duo_md [ info ] [ $url_index_files ]"
+echo
+$cmd_binary index-versions
+echo
+echo "$duo_md [ info ] [ Show the last minimal version ]"
+echo "$duo_md [ info ] [ $url_minimal_files ]"
+echo
+$cmd_binary minimal-versions
+echo
+echo "$duo_md [ info ] [ Show the last complete version ]"
+echo "$duo_md [ info ] [ $url_complete_files ]"
+echo
+$cmd_binary complete-versions
+exit; fi
+####
+####
+#### :rutina-final-new-versions:
+##########    english: index-versions: about of program      ##########
+##########    spanish: index-versions: acerca del programa   ##########
+#### :rutina-inicial-complete-versions:
+####
+####
+if   [ "$first_option" = "index-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
+case $favorite_text_browser in 
+"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
+$favorite_text_browser -dump $url_index_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]"
+exit; fi
+####
+####
+#### :rutina-final-complete-versions:
+##########    english: complete-versions: about of program      ##########
+##########    spanish: complete-versions: acerca del programa   ##########
+#### :rutina-inicial-complete-versions:
+####
+####
+if   [ "$first_option" = "complete-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
+case $favorite_text_browser in 
+"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
+$favorite_text_browser -dump $url_complete_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+exit; fi
+####
+####
+#### :rutina-final-complete-versions:
+##########    english: minimal-versions: about of program      ##########
+##########    spanish: minimal-versions: acerca del programa   ##########
+#### :rutina-inicial-minimal-versions:
+####
+####
+if   [ "$first_option" = "minimal-versions" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
+case $favorite_text_browser in 
+"$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
+$favorite_text_browser -dump $url_minimal_files | $command_grep -i fwiptables | $command_grep -E " ago |[0123456789]-[0123456789][0123456789]-[0123456789]" | $command_sed s/\<//g | $command_sed s/\>//g 
+exit; fi
+####
+####
+#### :rutina-final-minimal-versions:
 ##########    english: options-mini: wellcome with semi help    ##########
 ##########    spanish: options-mini: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-mini-options:
@@ -2621,7 +2709,7 @@ echo "$text_md                          server-vnc server-web server-samba serve
 echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                          server-asterisk server-squid                                                 "
 echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                          ip4 ip6 version notes depends license install uninstall                      "
+echo "$text_md                          ip4 ip6 version notes depends license new-versions install uninstall         "
 exit ; fi
 ####
 ####
