@@ -2590,7 +2590,7 @@ echo "$text_md                          listn-security4 listn-security6 list-ebt
 echo "$text_md       firewall-custom |  new-full-config nueva-completa-config regen-config                           "
 echo "$text_md                          new-mini-config nueva-mini-config examples-config                            "
 echo "$text_md                          show-config modify-config del-config names-config                            "
-echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             "
+echo "$text_md       firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive games-udp   "
 echo "$text_md                          games-shooter game-wesnoth game-minetest game-freeciv game-widelands         "
 echo "$text_md                          client-web client-vnc client-mail client-news client-torrent client-vpn      "
 echo "$text_md                          client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     "
