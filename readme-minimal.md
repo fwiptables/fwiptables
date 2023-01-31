@@ -1,5 +1,5 @@
-### || || [ ok ] || [ Date and Time ] [ lun 30 ene 2023 17:23:52 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.06 ] || ||
+### || || [ ok ] || [ Date and Time ] [ mar 31 ene 2023 16:03:57 CET ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.07 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                    
@@ -14,7 +14,7 @@
          firewall-custom |  new-full-config nueva-completa-config regen-config                           
                             new-mini-config nueva-mini-config examples-config                            
                             show-config modify-config del-config names-config                            
-         firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive             
+         firewall-launch |  eraserules custom wizard-mini wizard-full off-line all-permisive games-udp   
                             games-shooter game-wesnoth game-minetest game-freeciv game-widelands         
                             client-web client-vnc client-mail client-news client-torrent client-vpn      
                             client-tor client-ftp client-squid lan-tor lan-vpn shield-ssh server-ssh     
@@ -22,4 +22,4 @@
                             server-mail server-ftp server-teamspeak server-mumble server-sql             
                             server-asterisk server-squid                                                 
           options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        
-                            ip4 ip6 version notes depends license install uninstall                      
+                            ip4 ip6 version notes depends license new-versions install uninstall         
