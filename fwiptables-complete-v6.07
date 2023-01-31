@@ -735,14 +735,14 @@ if [ "$first_option" = "-tui-menu"  ] || [ "$first_option" = "--tui-menu"  ] ; t
 if [ "$first_option" = "-cli-menu"  ] || [ "$first_option" = "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" = "-gui-menu"  ] || [ "$first_option" = "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
 if [ "$first_option" = "-gui-shell" ] || [ "$first_option" = "--gui-shell" ] ; then first_option="gui-shell" ; fi
-if [ "$first_option" = "text" ] || [ "$first_option" = "-text" ]   ; then first_option="-txt"  ; fi
-if [ "$first_option" = "tui"  ] || [ "$first_option" = "-tui" ]    ; then first_option="-cli"  ; fi
-if [ "$first_option" = "txt"  ] || [ "$first_option" = "-txt"  ]   ; then first_option="-txt"  ; fi
-if [ "$first_option" = "cli"  ] || [ "$first_option" = "-cli"  ]   ; then first_option="-cli"  ; fi
-if [ "$first_option" = "gui"  ] || [ "$first_option" = "-gui"  ]   ; then first_option="-gui"  ; fi
-if [ "$first_option" = "web"  ] || [ "$first_option" = "-web"  ]   ; then first_option="-web"  ; fi
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ]   ; then first_option="-tor"  ; fi
-if [ "$first_option" = "help" ] || [ "$first_option" = "-help"  ]  ; then first_option="-help" ; fi
+if [ "$first_option" = "text" ] || [ "$first_option" = "--text" ]   ; then first_option="-txt"  ; fi
+if [ "$first_option" = "tui"  ] || [ "$first_option" = "--tui" ]    ; then first_option="-cli"  ; fi
+if [ "$first_option" = "txt"  ] || [ "$first_option" = "--txt"  ]   ; then first_option="-txt"  ; fi
+if [ "$first_option" = "cli"  ] || [ "$first_option" = "--cli"  ]   ; then first_option="-cli"  ; fi
+if [ "$first_option" = "gui"  ] || [ "$first_option" = "--gui"  ]   ; then first_option="-gui"  ; fi
+if [ "$first_option" = "web"  ] || [ "$first_option" = "--web"  ]   ; then first_option="-web"  ; fi
+if [ "$first_option" = "tor"  ] || [ "$first_option" = "--tor"  ]   ; then first_option="-tor"  ; fi
+if [ "$first_option" = "help" ] || [ "$first_option" = "--help"  ]  ; then first_option="-help" ; fi
 if [ "$first_option" = "-h"   ] || [ "$first_option" = "--help"  ] ; then first_option="-help" ; fi
 if [ "$first_option" = "-t"   ] || [ "$first_option" = "--txt"  ]  ; then first_option="-txt"  ; fi
 if [ "$first_option" = "-c"   ] || [ "$first_option" = "--cli"  ]  ; then first_option="-cli"  ; fi
@@ -906,9 +906,9 @@ esac ; fi
 ####
 if [ "$first_option" = "-gui" ] 
 then case "$second_option" in 
-"ole_word") first_option="game-word" ; second_option="-gui" ;;
-"ole_number") first_option="game-number" ; second_option="-gui" ;;
-"ole_domain") first_option="game-domain" ; second_option="-gui" ;;
+"game_word") first_option="game-word" ; second_option="-gui" ;;
+"game_number") first_option="game-number" ; second_option="-gui" ;;
+"game_domain") first_option="game-domain" ; second_option="-gui" ;;
 "rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
 "gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
 "clean-tmp") $cmd_binary clean-tmp &> /dev/null ; $favorite_graphicall_dialog --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
@@ -9547,7 +9547,7 @@ textes_8=" ##### La respuesta correcta         es:  "
 #### spanish: game-word en cli
 ####
 ####
-if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
+if [ "$second_option" = "-cli" ] ; then
 ####
 ####
 ##### INICIO ####
@@ -9675,7 +9675,7 @@ clear; exit; fi
 #### spanish: game-word en gui
 ####
 ####
-if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
+if [ "$second_option" = "-gui" ] ; then
 ####
 ####
 ##### INICIO ####
