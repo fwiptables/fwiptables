@@ -196,6 +196,7 @@ command_nmap="$(command -v nmap)"
 command_ntpdate="$(command -v ntpdate)"
 command_openssl="$(command -v openssl)"
 command_ping="$(command -v ping)"
+command_pump="$(command -v pump)"
 command_rdate="$(command -v rdate)"
 command_reboot="$(command -v reboot)"
 command_resolveip="$(command -v resolveip)"
@@ -626,6 +627,7 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 ####
 ####
 favorite_dhcp_command=""
+# if [ "$command_pump"  != "$NULL" ] ;           then  favorite_dhcp_command="$command_pump"             ; fi
 if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
 if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
 if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
@@ -4441,10 +4443,10 @@ echo "$text_md ebtables:                $command_ebtables"
 echo
 echo "$title_md [ Automatic favorites ]"
 echo "$text_md Automatic text editor:    Text editor command      :   $favorite_text_editor"
-echo "$text_md Automatic text browser:   lynx or links or links2  :   $favorite_text_browser"
-echo "$text_md Automatic text music:     mpg321 or mpg123         :   $favorite_radio_command"
-echo "$text_md Automatic text date:      rdate or sntp or ntpdate :   $favorite_date_command"
-echo "$text_md Automatic text dhcp:      dhcpcd or dhclient       :   $favorite_dhcp_command" 
+echo "$text_md Automatic text browser:   Text browser command     :   $favorite_text_browser"
+echo "$text_md Automatic text music:     music player command     :   $favorite_radio_command"
+echo "$text_md Automatic text date:      date client command      :   $favorite_date_command"
+echo "$text_md Automatic text dhcp:      dhcp client command      :   $favorite_dhcp_command" 
 echo 
 exit; fi
 ####

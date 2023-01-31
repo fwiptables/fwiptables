@@ -559,10 +559,10 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 #### :rutina-inicial-favorite-dhcp-command:
 ####
 ####
-favorite_dhcp_command=""
-if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
-if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
-if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
+# favorite_dhcp_command=""
+# if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
+# if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
+#if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
 ####
 ####
 #### :rutina-final-favorite-dhcp-command:
@@ -571,10 +571,10 @@ if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$com
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
-favorite_date_command=""
-if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
-if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
-if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+# favorite_date_command=""
+# if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
+# if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
+# if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
@@ -583,10 +583,10 @@ if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpd
 #### :rutina-inicial-favorite-music-command:
 ####
 ####
-favoite_music_command=""
-if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
-if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
-if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+# favoite_music_command=""
+# if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
+# if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
+# if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
 ####
 ####
 #### :rutina-final-favorite-music-command:
