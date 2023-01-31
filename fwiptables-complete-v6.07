@@ -568,8 +568,8 @@ case "$allow_legacy"           in "no")     ;; *) allow_legacy=""             ;;
 case "$allow_nft"              in "no")     ;; *) allow_nft=""                ;; esac
 case "$allow_ipv4"             in "no")     ;; *) allow_ipv4=""               ;; esac
 case "$allow_ipv6"             in "no")     ;; *) allow_ipv6=""               ;; esac
-case "$config_close_deny"      in "ACCEPT") ;; "DROP")   ;; "REJECT") ;; "RETURN") ;; "LOG") ;; *) config_close_deny="REJECT"  ;; esac
 case "$list_rules_conceptual"  in "$NULL")  ;; *) list_rules_conceptual=" -n" ;; esac
+case "$config_close_deny"      in "ACCEPT") ;; "DROP")   ;; "REJECT") ;; "LOG") ;; *) config_close_deny="REJECT"  ;; esac
 ####
 ####
 ####
