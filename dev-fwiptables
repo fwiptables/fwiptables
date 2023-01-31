@@ -8449,10 +8449,10 @@ exit; fi
 ####
 if [ "$first_option" = "reset" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset the firewall ] || ||"
-echo "duo_md [ info ] [ Reseting the firewall ]"
+echo "$duo_md [ info ] [ Reseting the firewall ]"
 $cmd_binary stop &> /dev/null
 $cmd_binary continue &> /dev/null
-echo "duo_md [  ok  ] [ firewall reseted ]"
+echo "$duo_md [  ok  ] [ firewall reseted ]"
 exit; fi
 ####
 ####
