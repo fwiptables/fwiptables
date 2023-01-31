@@ -232,6 +232,7 @@ command_gs="$(command -v gs)"
 command_pdfunite="$(command -v pdfunite)"
 command_pdfseparate="$(command -v pdfseparate)"
 command_cvlc="$(command -v cvlc)"
+command_yad="$(command -v yad)"
 ####
 ####
 #### :rutina-final-command:
@@ -597,8 +598,8 @@ if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_edito
 ####
 ####
 #### :rutina-inicial-favorite-text-editor:
-##########      english: search favorite dialog: favorite dialog     ##########
-##########      spanish: busca preferido dialogo: favorite dialog   ##########
+##########      english: search favorite text dialog: favorite text dialog     ##########
+##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
 #### :rutina-inicial-favorite-text-dialog:
 ####
 ####
@@ -608,6 +609,17 @@ if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whi
 ####
 ####
 #### :rutina-inicial-favorite-text-dialog:
+##########      english: search favorite dialog: favorite dialog     ##########
+##########      spanish: busca preferido dialogo: favorite dialog   ##########
+#### :rutina-inicial-favorite-graphicall-dialog:
+####
+####
+favorite_graphicall_dialog=""
+if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
+if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+####
+####
+#### :rutina-inicial-favorite-graphicall-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
@@ -899,7 +911,7 @@ then case "$second_option" in
 "ole_domain") first_option="game-domain" ; second_option="-gui" ;;
 "rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
 "gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
-"clean-tmp") $cmd_binary clean-tmp &> /dev/null ; $command_zenity --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
+"clean-tmp") $cmd_binary clean-tmp &> /dev/null ; $favorite_graphicall_dialog --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
 "info-nodes") echo "$message_without_gui" ;  exit ;;
 esac ; fi
 ####
@@ -4431,7 +4443,7 @@ echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt:           $command_bash"
 echo "$text_md Interface cli:           $favorite_text_dialog"
-echo "$text_md Interface gui:           $command_zenity"
+echo "$text_md Interface gui:           $favorite_graphicall_dialog"
 echo 
 echo "$title_md [ Automatic iptables ]"
 echo "$text_md iptables legacy:         $command_iptables_legacy"
@@ -4462,64 +4474,64 @@ exit; fi
 ####
 if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
 #### 
 #### 
 "new-mini-config")
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "new-full-config")
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
-$command_zenity --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$command_zenity --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-mini-config")
 cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "nueva-completa-config")
 cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
 if [ -s "$directory_config/$third_option" ]; then $nada ;
-$command_zenity  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
 else rm "$directory_config/$third_option" ; 
-$command_zenity  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
 ;;
 #### 
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
-$command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
@@ -4529,7 +4541,7 @@ $command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option
 ####
 ####
 *)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
-$command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4544,7 +4556,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 case $second_option in
 #### 
@@ -4552,24 +4564,24 @@ case $second_option in
 "wizard-mini")
 archivo="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
-$command_zenity --info $graphic_dimension --text "Ok. $archivo canceled"; fi
+$favorite_graphicall_dialog --info $graphic_dimension --text "Ok. $archivo canceled"; fi
 ;;
 #### 
 #### 
 "wizard-full")
 archivo="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
 --editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
 if [  -s "$directory_config/$archivo" ]; then $nada ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
 else rm "$directory_config/$archivo" ;
-$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4577,24 +4589,24 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 #### 
 "modify-config")
 if [ -f "$directory_config/$third_option" ] ; then $nada
-else $command_zenity  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
 cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
-$command_zenity  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
 --editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
 if [ -s "$directory_config/$third_option" ]; then $nada ; 
-$command_zenity  --forms $graphic_dimension --text="OK. file: $third_option"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
 else cp "$directory_temporal/$cmd_binary-$third_option" "$directory_config/$third_option"
-$command_zenity --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
 ;;
 #### 
 ####
 "preferences-modify")
 archivo="default"
 cp "$default_preferences" "$default_preferences.old"
-$command_zenity  --text-info $graphic_dimension --filename="$default_preferences.old" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$default_preferences.old" \
 --editable --title="MODIFY CONFIG" 1> "$default_preferences"
 if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
-$command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ;;
 #### 
 ####
@@ -4604,7 +4616,7 @@ $command_zenity  --info $graphic_dimension --text "OK. $archivo canceled"; fi
 ####
 ####
 *)$cmd_binary $second_option $third_option &> $temporal_guifinal
-$command_zenity  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
 --filename="$temporal_guifinal" --auto-scroll ;;
 #### 
 #### 
@@ -4619,8 +4631,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
-$command_zenity  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+$favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
 ####
 ####
@@ -4630,7 +4642,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection=$(zenity $graphic_dimension  \
  --list "01 Firewall Control" "02 Firewall List With Conceptual" "02 Firewall List With Numeral" \
 "03 Firewall Custom" "04 Firewall Launch" "05 Options State" "06 Tool sockets" \
@@ -4641,7 +4653,7 @@ selection=$(zenity $graphic_dimension  \
 #### 
 #### 
 case "$selection" in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "01 Firewall Control")$cmd_binary gui-menu-firewall-control ; exit ;;
 "02 Firewall List With Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
 "02 Firewall List With Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
@@ -4672,7 +4684,7 @@ case "$selection" in
 esac
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4683,7 +4695,7 @@ exit; fi
 ####
 ####  
 if   [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
@@ -4696,7 +4708,7 @@ selection=$($command_zenity  $graphic_dimension \
 #### 
 #### 
 case "$selection" in
-1) $command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1) $favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-launch ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-launch ;;
@@ -4731,17 +4743,17 @@ case "$selection" in
 "server-mumble") $cmd_binary -gui server-mumble ; $cmd_binary gui list4;;
 "server-sql") $cmd_binary -gui server-sql ; $cmd_binary gui list4;;
 "server-asterisk") $cmd_binary -gui server-asterisk ; $cmd_binary gui list4;;
-"custom cfg") archivo="$($command_zenity  --entry $graphic_dimension \
+"custom cfg") archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension \
 --title "[Launch Custom]" --text="$($command_ls -1 $directory_config)")" ; 
 $cmd_binary -gui custom $archivo ; $cmd_binary gui list4;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4752,13 +4764,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-firewall-control" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Firewall Rules ] [ $cmd_binary ]")
 #### 
 #### 
 case "$selection" in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-control ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-control ;;
@@ -4766,21 +4778,21 @@ case "$selection" in
 "continue") $cmd_binary -gui continue ; $cmd_binary -gui list4;;
 "reset") $cmd_binary -gui reset ; $cmd_binary -gui list4;;
 "names") $cmd_binary -gui names ;;
-"show")archivo="$($command_zenity  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+"show")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
 $cmd_binary -gui show $archivo ;;
-"save")archivo="$($command_zenity  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
+"save")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[Save Firewall]" --text="$($cmd_binary names)")" ; 
 $cmd_binary -gui save $archivo ;;
-"load")archivo="$($command_zenity  --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
+"load")archivo="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[Load Firewall]" --text="$($cmd_binary names)")" ;
 $cmd_binary -gui load $archivo ; $cmd_binary -gui list4;;
 "actual") $cmd_binary -gui actual ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4791,7 +4803,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
 "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
 "list-security4" "list-security6" "list-ebtables" "list-arptables" \
@@ -4799,7 +4811,7 @@ selection=$($command_zenity  $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-conceptual ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-conceptual ;;
@@ -4821,11 +4833,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4836,7 +4848,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-firewall-numeral" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
 "listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
 "listn-security4" "listn-security6" "list-ebtables" "list-arptables" \
@@ -4844,7 +4856,7 @@ selection=$($command_zenity  $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-numeral ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-numeral ;;
@@ -4866,11 +4878,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4888,43 +4900,43 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help firewall-custom ;;
 "Gui Info Menu") $cmd_binary -gui info firewall-custom ;;
 "new-full-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[new-full-config]" --text="Input file name to new full configuration")" ;
 $cmd_binary -gui new-full-config $archivo ;;
 "nueva-completa-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[nueva-completa-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_binary -gui nueva-completa-config $archivo ;;
 "new-mini-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[new-mini-config]" --text="Input file name to new mini configuration")" ;
 $cmd_binary -gui new-mini-config $archivo ;;
 "nueva-mini-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[nueva-mini-config]" --text="Introduce el nombre del nuevo archivo cfg")" ;
 $cmd_binary -gui nueva-mini-config $archivo ;;
 "names-config")
 $cmd_binary -gui names-config ;;
 "show-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[show-config]" --text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui show-config $archivo ;;
 "modify-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[modify-config]" --text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui modify-config $archivo ;;
 "del-config")
-archivo="$($command_zenity  $graphic_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[del-config]" --text="$($cmd_binary cfg)")" ;
 $cmd_binary -gui del-config $archivo ;;
 "regen-config") $cmd_binary -gui regen-config ;;
 "examples-config") $cmd_binary gui examples-config ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4935,14 +4947,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-options-state" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "preferences-read" "preferences-modify" "preferences-regen" \
 "ip4" "ip6" "version" "examples" "depends" "install" "upgrade" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Firewall Rules ] [ $cmd_binary ]")
 #### 
 #### 
 case "$selection" in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help status-state ;;
 "Gui Info Menu") $cmd_binary -gui info status-state ;;
@@ -4959,11 +4971,11 @@ case "$selection" in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -4974,13 +4986,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Connect ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_binary -gui info tool-sockets ;;
@@ -4993,19 +5005,19 @@ $cmd_binary -gui wpa-load $archivo ; $cmd_binary -gui iw-info ;;
 "wpa-save")
 for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
 $cmd_binary -gui iw-scan
-name_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
-pass_ssid="$($command_zenity  --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
+name_ssid="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[ TYPE : Name of ssid ]" --text="[ TYPE : Name of ssid ]" )"  ;
+pass_ssid="$($favorite_graphicall_dialog  --entry $graphic_dimension --title "[ TYPE : Pass of ssid ]" --text="PASSWORD SSID $name_ssid" )" ;
 $cmd_binary wpa-save $name_ssid $pass_ssid ; $cmd_binary -gui iw-info ;;
 "dhcp-client")    $cmd_binary -gui dhcp-client ;;
 "ntpdate-client") $cmd_binary -gui ntpdate-client ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5016,13 +5028,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-rule" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool rules ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu")    $cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu")    $cmd_binary -gui info tool-sockets ;;
@@ -5032,11 +5044,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5047,14 +5059,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Sockets ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-sockets ;;
 "Gui Info Menu") $cmd_binary -gui info tool-sockets ;;
@@ -5075,11 +5087,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5090,13 +5102,13 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-forward" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool forward ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-forward ;;
 "Gui Info Menu") $cmd_binary -gui info tool-forward ;;
@@ -5106,11 +5118,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5121,13 +5133,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-sshd" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool sshd ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-forward ;;
 "Gui Info Menu") $cmd_binary -gui info tool-forward ;;
@@ -5139,11 +5151,11 @@ $cmd_binary -gui sshd-tunnel-on $archivo ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5154,13 +5166,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Icmp ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-icmp ;;
 "Gui Info Menu") $cmd_binary -gui info tool-icmp ;;
@@ -5175,11 +5187,11 @@ $cmd_binary -gui ping-ip6 $archivo ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5190,33 +5202,33 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool udp ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-udp ;;
 "Gui Info Menu") $cmd_binary -gui info tool-udp ;;
-"host")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"host")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui host $archivo ;;
-"dig")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"dig")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui dig $archivo ;;
-"resolveip")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
+"resolveip")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv6 or host to resolve with ipv6 ]")" ; 
 $cmd_binary -gui resolveip $archivo ;;
-"geoip")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
+"geoip")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ipv4 or host to resolve with ipv4 ]")" ;
 $cmd_binary -gui geoip $archivo ;;
 "ntpdate-client")$cmd_binary -gui ntpdate-client ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5227,30 +5239,30 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool tcp ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-tcp ;;
 "Gui Info Menu") $cmd_binary -gui info tool-tcp ;;
-"tracetcp-ip4")  archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"tracetcp-ip4")  archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui tracetcp-ip4 $archivo  ;;
-"tracetcp-ip6")  archivo="$($command_zenity  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"tracetcp-ip6")  archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui tracetcp-ip6 $archivo  ;;
 "speed-ip4") $cmd_binary -gui speed-ip4  ;;
 "speed-ip6") $cmd_binary -gui speed-ip6  ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5261,17 +5273,17 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-sudofw" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Sudo ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-sudofw ;;
 "Gui Info Menu") $cmd_binary -gui info tool-sudofw ;;
-"sudofw-adduser")archivo="$($command_zenity  $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
+"sudofw-adduser")archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type username to allow sudo: username1,username2 ]")" ;
 $cmd_binary -gui sudofw-adduser $archivo ;;
 "sudofw-deluser")$cmd_binary -gui sudofw-deluser ;;
 "sudofw-listuser")$cmd_binary -gui sudofw-listuser ;;
@@ -5279,11 +5291,11 @@ $cmd_binary -gui sudofw-adduser $archivo ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5294,13 +5306,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool game ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-game ;;
 "Gui Info Menu") $cmd_binary -gui info tool-game ;;
@@ -5308,19 +5320,19 @@ case $selection in
 "game-number")$cmd_binary -gui game-number ;;
 "game-domain")$cmd_binary -gui game-domain ;;
 "game-rgb")
-onecolour="$($command_zenity  $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
+onecolour="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one colour in RGB with 9 digits. Example: 255000255 ]")" ;
 $cmd_binary gui game-rgb $onecolour ;;
 "game-hex") 
-onecolour="$($command_zenity  $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
+onecolour="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one colour in HEX with 6 digits. Example: ff00ff ]")" ;
 $cmd_binary gui game-hex $onecolour ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5338,7 +5350,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-speed ;;
 "Gui Info Menu") $cmd_binary -gui info tool-speed ;;
@@ -5350,11 +5362,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5371,7 +5383,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-speed ;;
 "Gui Info Menu") $cmd_binary -gui info tool-speed ;;
@@ -5379,17 +5391,17 @@ case $selection in
 "md5sum") archivo="$(zenity --file-selection)" ;
 $cmd_binary -gui md5sum $archivo ;;
 "radio-mp3 link") 
-radio_enlace="$($command_zenity  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
+radio_enlace="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
 $cmd_binary -gui radio-mp3 $radio_enlace ;;
 "gpg-notes") $cmd_binary -gui gpg-notes ;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5400,13 +5412,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Install ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help tool-install ;;
 "Gui Info Menu") $cmd_binary -gui info tool-install ;;
@@ -5417,11 +5429,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5432,31 +5444,31 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" \
 "addblock-on" "addblock-off" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Tool addblock ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu;;
 "Gui Help Menu") $cmd_binary -gui help tool-addblock ;;
 "Gui Info Menu") $cmd_binary -gui info tool-addblock ;;
 "addblock-list")$cmd_binary -gui addblock-list;;
 "addblock-list info")$cmd_binary -gui addblock-list info ;;
 "addblock-on")
- archivo="$($command_zenity  $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
+ archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one: fademind, mvps, adaway, stevenblack ]")" ;
  $cmd_binary -gui addblock-on $archivo;;
 "addblock-off") $cmd_binary -gui addblock-off;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5473,7 +5485,7 @@ selection=$(zenity $graphic_dimension \
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu  ;;
 "Gui Help Menu") $cmd_binary -gui help tool-dev ;;
 "Gui Info Menu") $cmd_binary -gui info tool-dev ;;
@@ -5481,16 +5493,16 @@ case $selection in
 "dev-version") $cmd_binary -gui dev-version  ;;
 "dev-changes") $cmd_binary -gui dev-changes ;;
 "intro") $cmd_binary -gui intro ;;
-"code") archivo="$($command_zenity  $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
+"code") archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type one option to show its source code ]")" 
 $cmd_binary -gui code $archivo
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5501,13 +5513,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show hardware ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help show-hardware ;;
 "Gui Info Menu") $cmd_binary -gui info show-hardware ;;
@@ -5521,11 +5533,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5536,14 +5548,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "preferences-read" "preferences-modify" "preferences-read" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show etc ]  [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help show-etc ;;
 "Gui Info Menu") $cmd_binary -gui info show-etc ;;
@@ -5559,11 +5571,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5574,13 +5586,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show log ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help show-log ;;
 "Gui Info Menu") $cmd_binary -gui info show-log ;;
@@ -5588,16 +5600,16 @@ case $selection in
 "filelog") $cmd_binary -gui filelog ;;
 "autolog") $cmd_binary -gui autolog ;;
 "log-search")
-pattern="$($command_zenity  $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
+pattern="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ type a one PATTERN to search in log files ]")" ;
 $cmd_binary -gui log-search $pattern;;
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5608,14 +5620,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-help-about" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" \
 "depends" "config-eng" "config-spa" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show about ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help help-about ;;
 "Gui Info Menu") $cmd_binary -gui info help-about ;;
@@ -5627,11 +5639,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5642,14 +5654,14 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-help-help" ] ; then $nada ;
-selection=$($command_zenity  $graphic_dimension \
+selection=$($favorite_graphicall_dialog  $graphic_dimension \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" \
 "all-help" "readme" "leeme" "notes" "license" \
 --column="Option list $cmd_binary" --text="Select one option" --title="[ Show help ] [ $cmd_binary ]" )
 #### 
 #### 
 case $selection in
-1)$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
+1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu") $cmd_binary gui-menu ;;
 "Gui Help Menu") $cmd_binary -gui help help-help ;;
 "Gui Info Menu") $cmd_binary -gui info help-help ;;
@@ -5663,11 +5675,11 @@ case $selection in
 esac
 ####
 ####
-$command_zenity  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
+$favorite_graphicall_dialog  --question --text="  Continue ?" --ok-label="Yes" --cancel-label="No"
 if [ "$?" -eq 0 ]; then $cmd_binary gui-menu ; exit ; fi
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
@@ -5678,7 +5690,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -5691,7 +5703,7 @@ untexto="$cmd_binary gui-shell"
 #### cd $directory_config
 ####
 ####
-menugtk=$($command_zenity  --forms $graphic_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
+menugtk=$($favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Shell || $cmd_binary || $cmd_version ||" \
 --text="$($cmd_binary mini-options)" --add-entry="$cmd_binary " )
 case $? in
 1)
@@ -5700,7 +5712,7 @@ case $? in
 #### zenity --info $graphic_dimension --text="$cmd_binary good bye";
 ####
 ####
-$command_zenity  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" \
 --auto-close --auto-kill ; exit;;
 esac
 ####
@@ -5723,19 +5735,19 @@ case $menugtk in
 ####
 ####
 "new-full-config")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
 ;;
 "new-mini-config")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
 ;;
 "modify-config")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5744,19 +5756,19 @@ $command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_bi
 ####
 ####
 "new-full-config ")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-full-config config.cfg ]"
 ;;
 "new-mini-config ")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary new-mini-config config.cfg ]"
 ;;
 "nueva-completa-config ")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-completa-config config.cfg ]"
 ;;
 "new-mini-config ")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary nueva-mini-config config.cfg ]"
 ;;
 "modify-config ")
-$command_zenity  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="$tab [ info ] [ Use: $cmd_binary modify-config config.cfg ]"
 ;;
 ####
 ####
@@ -5797,10 +5809,10 @@ wizard-mini*) $cmd_binary gui wizard-mini ;;
 ####
 ####
 "$NULL")
-$command_zenity  --info $graphic_dimension --text="$cmd_binary good bye";
-$command_zenity  --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
+$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye";
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=1 --text="Closing gui menu" --auto-close --auto-kill ; exit ;;
 *) fecha_temporal=$(date | $command_sed s/\ //g) ; $cmd_binary $menugtk &> /tmp/fwiptables-$fecha_temporal
-$command_zenity  --text-info $graphic_dimension --title "[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
+$favorite_graphicall_dialog  --text-info $graphic_dimension --title "[ $cmd_binary gui-shell ] [ $menugtk ]" --filename=/tmp/fwiptables-$fecha_temporal --auto-scroll
 rm /tmp/fwiptables-$fecha_temporal
 ;;
 esac
@@ -8149,8 +8161,8 @@ clear ; exit; fi
 ####
 ####
 if   [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
-selection="$($command_zenity $graphic_dimension  \
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+selection="$($favorite_graphicall_dialog $graphic_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
 "04 XTABLES / filter-ip4  / INPUT" "05 XTABLES / filter-ip4 / FORWARD"  "06 XTABLES / filter-ip4 / OUTPUT" \
 "11 NFTABLES filter-ip6 INPUT"  "12 NFTABLES / filter-ip6 / FORWARD"  "13 NFTABLES / filter-ip6 / OUTPUT" \
@@ -8158,65 +8170,65 @@ selection="$($command_zenity $graphic_dimension  \
 --column="Option list $cmd_binary" --text="Select one option" --title="Gui Menu || $cmd_binary || $(date) ")"
 case "$selection" in
 "01 NFTABLES filter-ip4 INPUT")
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D INPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L INPUT --line-numbers)" )" ;;
 "02 NFTABLES / filter-ip4 / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D FORWARD $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )" ;;
 "03 NFTABLES / filter-ip4 / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT" 
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_nft -t filter -D OUTPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
 "04 XTABLES / filter-ip4 / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_legacy -t filter -D INPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L INPUT --line-numbers)" )" ;;
 "05 XTABLES / filter-ip4 / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_legacy -t filter -D FORWARD $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
 "06 XTABLES / filter-ip4 / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_iptables_legacy -t filter -D OUTPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
 "11 NFTABLES filter-ip6 INPUT")
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_nft -t filter -D INPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L INPUT --line-numbers)" )" ;;
 "12 NFTABLES / filter-ip6 / FORWARD") fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_nft -t filter -D FORWARD $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L FORWARD --line-numbers)" )" ;;
 "13 NFTABLES / filter-ip6 / OUTPUT")  fire_wall="$command_iptables_nft" ; table_wall="filter" ; code_wall="OUTPUT" 
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_iptables_nft -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_nft -t filter -D OUTPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_nft -t filter -L OUTPUT --line-numbers)" )" ;;
 "14 XTABLES / filter-ip6 / INPUT")     fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="INPUT"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_legacy -t filter -D INPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L INPUT --line-numbers)" )" ;;
 "15 XTABLES / filter-ip6 / FORWARD")   fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="FORWARD"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_legacy -t filter -D FORWARD $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L FORWARD --line-numbers)" )" ;;
 "16 XTABLES / filter-ip6 / OUTPUT")    fire_wall="$command_iptables_legacy" ; table_wall="filter" ; code_wall="OUTPUT"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )"
-deleterule="$($command_zenity $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )"
+deleterule="$($favorite_graphicall_dialog $graphic_dimension --entry --title "number rule to delete" --text "remove number rule")"
 deletedrule="$($command_ip6tables_legacy -t filter -D OUTPUT $deleterule)"
-listrule="$($command_zenity $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
+listrule="$($favorite_graphicall_dialog $graphic_dimension --forms --text "$($command_ip6tables_legacy -t filter -L OUTPUT --line-numbers)" )" ;;
 else) exit ;; esac ; exit; fi 
 ####
 ####
@@ -9475,7 +9487,7 @@ clear ; exit ; fi
 ####
 ####
 if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ] ; then
-case "$command_zenity" in "$NULL") echo "$duo_md [ fail ] [ Install zenity ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity ]"; exit ;; esac
 $(zenity $graphic_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
 $(zenity $graphic_dimension --info --title="gui game-domain" \
@@ -9670,7 +9682,7 @@ if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
 --title="Play word ole game")
 case $selection in
@@ -10069,7 +10081,7 @@ if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-case "$command_zenity" in "$NULL") echo " Install zenity to work"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo " Install zenity to work"; exit ;; esac
 selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
 --title="Play number ole game")
 case $selection in
@@ -10623,11 +10635,11 @@ echo "$duo_md [ info ] [ type $cmd_binary gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-if [ "$command_zenity" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity ]"; exit ; fi
-original="$($command_zenity $graphic_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
+if [ "$favorite_graphicall_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity ]"; exit ; fi
+original="$($favorite_graphicall_dialog $graphic_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
 --text "$($command_find $directory_default | $command_grep .gpg | $command_sed 's/\.gpg//g' )")"
 origina="$(echo "$original" | $command_sed s/\\///g -)" ;
-consigna="$($command_zenity $graphic_dimension --entry --title "[ Passwowrd ]" --text "[ Passwowrd ]")"
+consigna="$($favorite_graphicall_dialog $graphic_dimension --entry --title "[ Passwowrd ]" --text "[ Passwowrd ]")"
 gpg_origen_gpg="$directory_default/$origina.gpg"
 gpg_firma_gpg="$directory_default/$origina.sign"
 gpg_modify_txt="$directory_temporal/$origina.modify"
@@ -10637,7 +10649,7 @@ gpg_temporal_gpg="$directory_temporal/$origina.gpg"
 ####
 if [ -f "$gpg_origen_gpg" ];  then
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_modify_txt" -d "$gpg_origen_gpg" &&
-$command_zenity --text-info $graphic_dimension --filename="$gpg_modify_txt" \
+$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$gpg_modify_txt" \
 --editable --title="MODIFY FILE" &> "$gpg_temporal_txt" &&
 $command_gpg --yes --batch --passphrase $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_binary clean-tmp &> /dev/null ; exit ; fi
@@ -10645,7 +10657,7 @@ $cmd_binary clean-tmp &> /dev/null ; exit ; fi
 ####
 if [ ! -f "$gpg_origen_gpg" ]; then 
 echo "File created" > "$gpg_modify_txt"
-$command_zenity --text-info $graphic_dimension --filename="$gpg_modify_txt" \
+$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$gpg_modify_txt" \
 --editable --title="MODIFY FILE" &> "$gpg_temporal_txt" ;
 $command_gpg --yes --batch --passphrase  $consigna -o "$gpg_origen_gpg" -c "$gpg_temporal_txt" ;
 $cmd_binary clean-tmp &> /dev/null ; exit ; fi
