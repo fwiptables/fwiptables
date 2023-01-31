@@ -398,6 +398,11 @@ allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: show date and show time
 ####       #### spanish: muestra la fecha y el tiempo
 allow_showtime=""                    ## fwiptables-file-default ## void or no
+####       #### english: configure a one stablished command or void for automatic command
+####       #### spanish: configura un establecido comando o vacio para comando automatico
+favorite_text_editor=""          ## fwiptables-file-default ## void or command
+favorite_text_dialog=""          ## fwiptables-file-default ## void or command
+favorite_text_browser=""         ## fwiptables-file-default ## void or command
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -521,36 +526,51 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-favorite-text-editor:
 ####
 ####
-favorite_text_editor=""
+if [ "$favorite_text_editor" == "$NULL" ]; then
 if [ "$command_vi"  != "$NULL" ]  ; then    favorite_text_editor="$command_vi"      ; fi
 if [ "$command_vim"  != "$NULL" ]  ; then   favorite_text_editor="$command_vim"     ; fi
 if [ "$command_nano"  != "$NULL" ] ; then   favorite_text_editor="$command_nano"    ; fi
 if [ "$command_pico" != "$NULL" ] ; then  favorite_text_editor="$command_pico"      ; fi
 if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_editor"  ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-text-editor:
-##########      english: search favorite dialog: favorite dialog     ##########
-##########      spanish: busca preferido dialogo: favorite dialog   ##########
+##########      english: search favorite text dialog: favorite text dialog     ##########
+##########      spanish: busca preferido text dialogo: favorite text dialog    ##########
 #### :rutina-inicial-favorite-text-dialog:
 ####
 ####
-favorite_text_dialog=""
+if [ "$favorite_text_dialog" == "$NULL" ]; then
 if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog --no-tags"   ; fi
 if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail --notags"  ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-text-dialog:
+##########      english: search favorite dialog: favorite dialog     ##########
+##########      spanish: busca preferido dialogo: favorite dialog   ##########
+#### :rutina-inicial-favorite-graphicall-dialog:
+####
+####
+if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
+if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
+if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+fi
+####
+####
+#### :rutina-inicial-favorite-graphicall-dialog:
 ##########      english: search favorite browser: favorite browser     ##########
 ##########      spanish: busca preferido navegador: favorite browser   ##########
 #### :rutina-inicial-favorite-text-browser:
 ####
 ####
-favorite_text_browser=""
+if [ "$favorite_text_browser" == "$NULL" ]; then
 if [ "$command_links"  != "$NULL" ] ; then  favorite_text_browser="$command_links"   ; fi
 if [ "$command_links2" != "$NULL" ] ; then  favorite_text_browser="$command_links2"  ; fi
 if [ "$command_lynx"   != "$NULL" ] ; then  favorite_text_browser="$command_lynx"    ; fi
 if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elinks"  ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-text-browser:
@@ -559,10 +579,11 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 #### :rutina-inicial-favorite-dhcp-command:
 ####
 ####
-# favorite_dhcp_command=""
-# if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
-# if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
-#if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
+if [ "$favorite_dhcp_command" == "$NULL" ]; then
+if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
+if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
+if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
+fi
 ####
 ####
 #### :rutina-final-favorite-dhcp-command:
@@ -571,25 +592,27 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
-# favorite_date_command=""
-# if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
-# if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
-# if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+if [ "$favorite_date_command" == "$NULL" ]; then
+if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
+if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
+if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
 ##########      english: search favorite music player            ##########
 ##########      spanish: busca preferida reproductor de musica   ##########
-#### :rutina-inicial-favorite-music-command:
+#### :rutina-inicial-favorite-radio-command:
 ####
 ####
-# favoite_music_command=""
-# if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
-# if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
-# if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+if [ "$favorite_radio_command" == "$NULL" ]; then
+if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
+if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
+if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+fi
 ####
 ####
-#### :rutina-final-favorite-music-command:
+#### :rutina-final-favorite-radio-command:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:

@@ -361,6 +361,15 @@ radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ##
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
 radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
+####       #### english: configure a one stablished command or void for automatic command
+####       #### spanish: configura un establecido comando o vacio para comando automatico
+favorite_text_editor=""          ## fwiptables-file-default ## void or command
+favorite_text_dialog=""          ## fwiptables-file-default ## void or command
+favorite_graphicall_dialog=""    ## fwiptables-file-default ## void or command
+favorite_text_browser=""         ## fwiptables-file-default ## void or command
+favorite_date_command=""         ## fwiptables-file-default ## void or command
+favorite_dhcp_command=""         ## fwiptables-file-default ## void or command
+favorite_radio_command=""        ## fwiptables-file-default ## void or command
 #### #### variables to modify for qemu
 qemu_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
 memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
@@ -589,12 +598,13 @@ if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ;
 #### :rutina-inicial-favorite-text-editor:
 ####
 ####
-favorite_text_editor=""
+if [ "$favorite_text_editor" == "$NULL" ]; then
 if [ "$command_vi"  != "$NULL" ]  ; then    favorite_text_editor="$command_vi"      ; fi
 if [ "$command_vim"  != "$NULL" ]  ; then   favorite_text_editor="$command_vim"     ; fi
 if [ "$command_nano"  != "$NULL" ] ; then   favorite_text_editor="$command_nano"    ; fi
 if [ "$command_pico" != "$NULL" ] ; then  favorite_text_editor="$command_pico"      ; fi
 if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_editor"  ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-text-editor:
@@ -603,9 +613,10 @@ if [ "$command_editor" != "$NULL" ] ; then  favorite_text_editor="$command_edito
 #### :rutina-inicial-favorite-text-dialog:
 ####
 ####
-favorite_text_dialog=""
-if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog --no-tags"   ; fi
-if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail --notags"  ; fi
+if [ "$favorite_text_dialog" == "$NULL" ]; then
+if [ "$command_dialog"  != "$NULL" ]  ; then  favorite_text_dialog="$command_dialog  "  ; fi
+if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whiptail"  ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-text-dialog:
@@ -614,9 +625,10 @@ if [ "$command_whiptail" != "$NULL" ] ; then  favorite_text_dialog="$command_whi
 #### :rutina-inicial-favorite-graphicall-dialog:
 ####
 ####
-favorite_graphicall_dialog=""
+if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
 if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-graphicall-dialog:
@@ -625,11 +637,12 @@ if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$comman
 #### :rutina-inicial-favorite-text-browser:
 ####
 ####
-favorite_text_browser=""
+if [ "$favorite_text_browser" == "$NULL" ]; then
 if [ "$command_links"  != "$NULL" ] ; then  favorite_text_browser="$command_links"   ; fi
 if [ "$command_links2" != "$NULL" ] ; then  favorite_text_browser="$command_links2"  ; fi
 if [ "$command_lynx"   != "$NULL" ] ; then  favorite_text_browser="$command_lynx"    ; fi
 if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elinks"  ; fi
+fi
 ####
 ####
 #### :rutina-inicial-favorite-text-browser:
@@ -638,11 +651,11 @@ if [ "$command_elinks" != "$NULL" ] ; then  favorite_text_browser="$command_elin
 #### :rutina-inicial-favorite-dhcp-command:
 ####
 ####
-favorite_dhcp_command=""
-# if [ "$command_pump"  != "$NULL" ] ;           then  favorite_dhcp_command="$command_pump"             ; fi
+if [ "$favorite_dhcp_command" == "$NULL" ]; then
 if [ "$command_dhcpcd"  != "$NULL" ] ;         then  favorite_dhcp_command="$command_dhcpcd"           ; fi
 if [ "$command_dhclient_script" != "$NULL" ] ; then  favorite_dhcp_command="$command_dhclient_script"  ; fi
 if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$command_dhclient"         ; fi
+fi
 ####
 ####
 #### :rutina-final-favorite-dhcp-command:
@@ -651,25 +664,27 @@ if [ "$command_dhclient"   != "$NULL" ] ;      then  favorite_dhcp_command="$com
 #### :rutina-inicial-favorite-date-command:
 ####
 ####
-favorite_date_command=""
+if [ "$favorite_date_command" == "$NULL" ]; then
 if [ "$command_rdate"   != "$NULL" ]; then  favorite_date_command="$command_rdate -4 -a -n"  ; fi
 if [ "$command_sntp"    != "$NULL" ]; then  favorite_date_command="$command_sntp"            ; fi
 if [ "$command_ntpdate" != "$NULL" ]; then  favorite_date_command="$command_ntpdate"         ; fi
+fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
 ##########      english: search favorite music player            ##########
 ##########      spanish: busca preferida reproductor de musica   ##########
-#### :rutina-inicial-favorite-music-command:
+#### :rutina-inicial-favorite-radio-command:
 ####
 ####
-favoite_music_command=""
+if [ "$favorite_radio_command" == "$NULL" ]; then
 if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
 if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
 if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+fi
 ####
 ####
-#### :rutina-final-favorite-music-command:
+#### :rutina-final-favorite-radio-command:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -5828,7 +5843,7 @@ exit ; fi
 ####
 if   [ "$first_option" = "cli-menu" ]; then $nada
 case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
-menuprincipal="$($favorite_text_dialog --clear --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
+menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
 0100 "$quad [ Full Options ] $cinco" \
 0200 "$quad [ Firewall Control ] $cinco" \
