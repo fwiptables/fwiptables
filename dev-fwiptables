@@ -9608,16 +9608,20 @@ if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+#### Dicctionary english if download
+if [ "$language_number" == "1" ]; then dictionary="$language_english"
+if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
+#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
+$favorite_text_browser -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/dictionary-english
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
- | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$directory_english
+ | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/dictionary-english
 echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
-$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/dictionary-spanish
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
- | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/directory_english
+ | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/dicionary-spanish
 echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -9736,18 +9740,17 @@ if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$favorite_text_browser -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/dictionary-english
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
- | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$directory_english
+ | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/dictionary-english
 echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
-$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/dictionary-spanish
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
- | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/directory_english
+ | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/dicionary-spanish
 echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
-#####
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
 ##### language of interface english
 ##### language of interface english
@@ -9861,16 +9864,16 @@ if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
 #### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$favorite_text_browser -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/dictionary-english
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
- | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$directory_english
+ | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/dictionary-english
 echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
-$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/dictionary-spanish
 $command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
- | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/directory_english
+ | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/dicionary-spanish
 echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
