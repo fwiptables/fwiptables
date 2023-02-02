@@ -4682,7 +4682,7 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
 14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
-21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help )"
+21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help)"
 #### 
 #### 
 case "$selection" in
@@ -4921,10 +4921,9 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog $graphic_dimension \
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
-"names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Firewall custom ] [ $cmd_binary ]" )
+"names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config")"
 #### 
 #### 
 case $selection in
@@ -4974,13 +4973,12 @@ exit; fi
 #### :rutina-inicial-gui-menu-options-state:
 ####
 ####
-if   [ "$first_option" = "gui-menu-options-state" ] ; then 
-selection_list="$($favorite_graphicall_dialog $graphic_dimension --column="Option list" --text="Select one option" --title="[ Firewall Rules ]" \
---radiolist Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends install upgrade)"
+if   [ "$first_option" = "gui-menu-options-state" ]; then 
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends install upgrade)"
 #### 
 ####
-# selection_uno="$?"
-case $selection_list in
+case "$selection" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 Gui-Principal-Menu)$cmd_binary gui-menu ;;
 Gui-Help-Menu)$cmd_binary -gui help status-state ;;
@@ -5013,9 +5011,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Connect ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
 #### 
 #### 
 case $selection in
