@@ -624,8 +624,8 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
+if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
 fi
 ####
 ####
@@ -4506,7 +4506,7 @@ exit; fi
 ####
 if [ "$first_option" == "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
 case $second_option in
 #### 
 #### 
@@ -4588,7 +4588,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
 ####
 case $second_option in
 #### 
@@ -4663,7 +4663,7 @@ exit; fi
 ####
 ####
 if [ "$first_option" == "-gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
 $favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
 ####
@@ -4673,7 +4673,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
 ####
 $favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
@@ -4685,7 +4685,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity yad to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
@@ -5727,7 +5727,7 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-shell" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]" ; exit ;; esac
 ####
 ####
 ####  english: principal gui  #### spanish: principal gui
@@ -8197,7 +8197,7 @@ clear ; exit; fi
 ####
 ####
 if   [ "$first_option" == "rule-del-num" ] && [ "$second_option" == "-gui" ]; then echo $give_cover
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_dimension  \
 --list  "01 NFTABLES filter-ip4 INPUT"  "02 NFTABLES / filter-ip4 / FORWARD"  "03 NFTABLES / filter-ip4 / OUTPUT" \
 "04 XTABLES / filter-ip4  / INPUT" "05 XTABLES / filter-ip4 / FORWARD"  "06 XTABLES / filter-ip4 / OUTPUT" \
@@ -9523,7 +9523,7 @@ clear ; exit ; fi
 ####
 ####
 if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ] ; then
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad ]"; exit ;; esac
 $(zenity $graphic_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
 $(zenity $graphic_dimension --info --title="gui game-domain" \
@@ -9720,7 +9720,7 @@ if [ "$second_option" == "-gui" ] ; then
 #### Choose language english or spanish
 ####
 ####
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list english spanish quit )"
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -10122,7 +10122,7 @@ if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list english spanish quit )"
 selection_final="$(echo $selection | sed 's/\|//g')"
@@ -10672,7 +10672,7 @@ echo "$duo_md [ info ] [ type $cmd_binary gpg-notes name-of-gpg" ; exit ; fi
 ####
 ####
 if [ "$second_option" == "gui" ] || [ "$second_option" == "-gui" ]; then
-if [ "$favorite_graphicall_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity]"; exit ; fi
+if [ "$favorite_graphicall_dialog" == "$NULL" ]; then echo "$duo_md [ fail ] [ install zenity or yad ]"; exit ; fi
 original="$($favorite_graphicall_dialog $graphic_dimension --entry --title "  [ NAME file gpg to choose WITHOUT path ]" \
 --text "$($command_find $directory_default | $command_grep .gpg | $command_sed 's/\.gpg//g' )")"
 origina="$(echo "$original" | $command_sed s/\\///g -)" ;
