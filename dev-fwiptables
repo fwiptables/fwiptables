@@ -587,7 +587,7 @@ case "$config_close_deny"      in "ACCEPT") ;; "DROP")   ;; "REJECT") ;; "LOG") 
 #### spanish: si la opcion por defecto esta vacia vuelve a mini-options
 ####
 ####
-if [ "$whithout_option" = "$NULL" ] ; then whithout_option="$default_security" ; fi
+if [ "$whithout_option" == "$NULL" ] ; then whithout_option="$default_security" ; fi
 ####
 ####
 #### :rutina-final-update-variables:
@@ -743,89 +743,89 @@ case "$list_rules_conceptual" in "$NULL") list_rules_conceptual="" ;; *) list_ru
 #### english:  alias alias simple for output gui, -txt or -cli or -gui and more
 ####
 ####
-if [ "$first_option" = "tui-menu"  ] ; then first_option="cli-menu"  ; fi
-if [ "$first_option" = "-tui-menu"  ] || [ "$first_option" = "--tui-menu"  ] ; then first_option="cli-menu"  ; fi
-if [ "$first_option" = "-cli-menu"  ] || [ "$first_option" = "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
-if [ "$first_option" = "-gui-menu"  ] || [ "$first_option" = "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
-if [ "$first_option" = "-gui-shell" ] || [ "$first_option" = "--gui-shell" ] ; then first_option="gui-shell" ; fi
-if [ "$first_option" = "text" ] || [ "$first_option" = "--text" ]   ; then first_option="-txt"  ; fi
-if [ "$first_option" = "tui"  ] || [ "$first_option" = "--tui" ]    ; then first_option="-cli"  ; fi
-if [ "$first_option" = "txt"  ] || [ "$first_option" = "--txt"  ]   ; then first_option="-txt"  ; fi
-if [ "$first_option" = "cli"  ] || [ "$first_option" = "--cli"  ]   ; then first_option="-cli"  ; fi
-if [ "$first_option" = "gui"  ] || [ "$first_option" = "--gui"  ]   ; then first_option="-gui"  ; fi
-if [ "$first_option" = "web"  ] || [ "$first_option" = "--web"  ]   ; then first_option="-web"  ; fi
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "--tor"  ]   ; then first_option="-tor"  ; fi
-if [ "$first_option" = "help" ] || [ "$first_option" = "--help"  ]  ; then first_option="-help" ; fi
-if [ "$first_option" = "-h"   ] || [ "$first_option" = "--help"  ] ; then first_option="-help" ; fi
-if [ "$first_option" = "-t"   ] || [ "$first_option" = "--txt"  ]  ; then first_option="-txt"  ; fi
-if [ "$first_option" = "-c"   ] || [ "$first_option" = "--cli"  ]  ; then first_option="-cli"  ; fi
-if [ "$first_option" = "-g"   ] || [ "$first_option" = "--gui"  ]  ; then first_option="-gui"  ; fi
-if [ "$first_option" = "-i"   ] || [ "$first_option" = "--info"  ] ; then first_option="-info" ; fi
-if [ "$first_option" = "-w"   ] || [ "$first_option" = "--web"  ]  ; then first_option="-web"  ; fi
-if [ "$first_option" = "-l"   ] || [ "$first_option" = "--log"  ]  ; then first_option="-log"  ; fi
-if [ "$first_option" = "-n"   ] || [ "$first_option" = "--null"  ] ; then first_option="-null" ; fi
+if [ "$first_option" == "tui-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "-tui-menu"  ] || [ "$first_option" == "--tui-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "-cli-menu"  ] || [ "$first_option" == "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
+if [ "$first_option" == "-gui-menu"  ] || [ "$first_option" == "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
+if [ "$first_option" == "-gui-shell" ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
+if [ "$first_option" == "text" ] || [ "$first_option" == "--text" ]   ; then first_option="-txt"  ; fi
+if [ "$first_option" == "tui"  ] || [ "$first_option" == "--tui" ]    ; then first_option="-cli"  ; fi
+if [ "$first_option" == "txt"  ] || [ "$first_option" == "--txt"  ]   ; then first_option="-txt"  ; fi
+if [ "$first_option" == "cli"  ] || [ "$first_option" == "--cli"  ]   ; then first_option="-cli"  ; fi
+if [ "$first_option" == "gui"  ] || [ "$first_option" == "--gui"  ]   ; then first_option="-gui"  ; fi
+if [ "$first_option" == "web"  ] || [ "$first_option" == "--web"  ]   ; then first_option="-web"  ; fi
+if [ "$first_option" == "tor"  ] || [ "$first_option" == "--tor"  ]   ; then first_option="-tor"  ; fi
+if [ "$first_option" == "help" ] || [ "$first_option" == "--help"  ]  ; then first_option="-help" ; fi
+if [ "$first_option" == "-h"   ] || [ "$first_option" == "--help"  ] ; then first_option="-help" ; fi
+if [ "$first_option" == "-t"   ] || [ "$first_option" == "--txt"  ]  ; then first_option="-txt"  ; fi
+if [ "$first_option" == "-c"   ] || [ "$first_option" == "--cli"  ]  ; then first_option="-cli"  ; fi
+if [ "$first_option" == "-g"   ] || [ "$first_option" == "--gui"  ]  ; then first_option="-gui"  ; fi
+if [ "$first_option" == "-i"   ] || [ "$first_option" == "--info"  ] ; then first_option="-info" ; fi
+if [ "$first_option" == "-w"   ] || [ "$first_option" == "--web"  ]  ; then first_option="-web"  ; fi
+if [ "$first_option" == "-l"   ] || [ "$first_option" == "--log"  ]  ; then first_option="-log"  ; fi
+if [ "$first_option" == "-n"   ] || [ "$first_option" == "--null"  ] ; then first_option="-null" ; fi
 ####
 ####
 #### english: alias simple for options commons
 ####
 ####
-if [ "$first_option" = "$NULL" ]  ; then first_option="options-mini" ; fi
+if [ "$first_option" == "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
-if [ "$first_option" = "options" ] ; then first_option="options-all" ; fi
-if [ "$first_option" = "mini-options" ] ; then first_option="options-mini" ; fi
-if [ "$first_option" = "options-full" ] ; then first_option="options-all" ; fi
-if [ "$first_option" = "full-options" ] ; then first_option="options-all" ; fi
-if [ "$first_option" = "examples" ] ; then first_option="options-examples"; fi
-if [ "$first_option" = "output-interface" ] ; then first_option="options-interface" ; fi
-if [ "$first_option" = "output" ] ; then first_option="options-interface" ; fi
-if [ "$first_option" = "ntp" ] ; then first_option="ntpdate-client"; fi
-if [ "$first_option" = "dhcp" ] ; then first_option="dhcp-client"; fi
-if [ "$first_option" = "sentlog" ] ; then first_option="filelog"; fi
-if [ "$first_option" = "radio" ] ; then first_option="radio-mp3"; fi
-if [ "$first_option" = "regen" ] ; then first_option="regen-config"; fi
-if [ "$first_option" = "cfg" ] ; then first_option="names-config" ; fi
-if [ "$first_option" = "cfg-custom" ] ; then first_option="custom" ; fi
-if [ "$first_option" = "list-fw" ] ; then first_option="names"; fi
-if [ "$first_option" = "ram" ] ; then first_option="free-ram"; fi
-if [ "$first_option" = "free" ] ; then first_option="free-ram"; fi
-if [ "$first_option" = "ram-free" ] ; then first_option="free-ram"; fi
-if [ "$first_option" = "list-allrules" ] ; then first_option="list-alltables"; fi
-if [ "$first_option" = "mp3" ] ; then first_option="radio-mp3"; fi
-if [ "$first_option" = "ip" ] ; then first_option="ip4"; fi
+if [ "$first_option" == "options" ] ; then first_option="options-all" ; fi
+if [ "$first_option" == "mini-options" ] ; then first_option="options-mini" ; fi
+if [ "$first_option" == "options-full" ] ; then first_option="options-all" ; fi
+if [ "$first_option" == "full-options" ] ; then first_option="options-all" ; fi
+if [ "$first_option" == "examples" ] ; then first_option="options-examples"; fi
+if [ "$first_option" == "output-interface" ] ; then first_option="options-interface" ; fi
+if [ "$first_option" == "output" ] ; then first_option="options-interface" ; fi
+if [ "$first_option" == "ntp" ] ; then first_option="ntpdate-client"; fi
+if [ "$first_option" == "dhcp" ] ; then first_option="dhcp-client"; fi
+if [ "$first_option" == "sentlog" ] ; then first_option="filelog"; fi
+if [ "$first_option" == "radio" ] ; then first_option="radio-mp3"; fi
+if [ "$first_option" == "regen" ] ; then first_option="regen-config"; fi
+if [ "$first_option" == "cfg" ] ; then first_option="names-config" ; fi
+if [ "$first_option" == "cfg-custom" ] ; then first_option="custom" ; fi
+if [ "$first_option" == "list-fw" ] ; then first_option="names"; fi
+if [ "$first_option" == "ram" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "ram-free" ] ; then first_option="free-ram"; fi
+if [ "$first_option" == "list-allrules" ] ; then first_option="list-alltables"; fi
+if [ "$first_option" == "mp3" ] ; then first_option="radio-mp3"; fi
+if [ "$first_option" == "ip" ] ; then first_option="ip4"; fi
 ####
 ####
 ####  english: $1 or or $2 or $3 for complete path per file and other excepcions
 ####
 ####
-if [ "$1" = "-n" ] ; then first_option="-null" ; fi
+if [ "$1" == "-n" ] ; then first_option="-null" ; fi
 if [ "$first_option"  = "md5sum"  ] ; then second_option="$2" ; third_option="$3" ; fi
-if [ "$second_option" = "md5sum" ]  ; then third_option="$3"  ; quad_option="$4"  ; fi
+if [ "$second_option" == "md5sum" ]  ; then third_option="$3"  ; quad_option="$4"  ; fi
 ####
 ####
 #### english:  alias simple for firewall names 
 ####
 ####
 
-if [ "$first_option" = "erase-rules" ] ; then first_option="eraserules" ; fi
-if [ "$first_option" = "offline" ] ; then first_option="off-line" ; fi
-if [ "$first_option" = "clientweb" ] ; then first_option="client-web" ; fi
-if [ "$first_option" = "clientvpn" ] ; then first_option="client-vpn" ; fi
-if [ "$first_option" = "game-minecraft" ] ; then first_option="game-minetest" ; fi
-if [ "$first_option" = "game-westnoth" ] ; then first_option="game-wesnoth" ; fi
-if [ "$first_option" = "gamesudp" ] ; then first_option="games-shooter" ; fi
-if [ "$first_option" = "allpermisive" ] ; then first_option="all-permisive" ; fi
-if [ "$first_option" = "torbrowser" ] ; then first_option="client-tor" ; fi
-if [ "$first_option" = "tor-browser" ] ; then first_option="client-tor" ; fi
-if [ "$first_option" = "client-email" ] ; then first_option="client-mail" ; fi
-if [ "$first_option" = "onlyweb-tor" ] ; then first_option="lan-tor" ; fi
-if [ "$first_option" = "serversamba" ] ; then first_option="server-samba" ; fi
-if [ "$first_option" = "serverprint" ] ; then first_option="server-print" ; fi
-if [ "$first_option" = "serverweb" ] ; then first_option="server-web" ; fi
-if [ "$first_option" = "serverssh" ] ; then first_option="server-ssh" ; fi
-if [ "$first_option" = "serverlamp" ] ; then first_option="server-lamp" ; fi
-if [ "$first_option" = "server-ts" ] ; then first_option="server-teamspeak" ; fi
-if [ "$first_option" = "server-email" ] ; then first_option="server-mail" ; fi
+if [ "$first_option" == "erase-rules" ] ; then first_option="eraserules" ; fi
+if [ "$first_option" == "offline" ] ; then first_option="off-line" ; fi
+if [ "$first_option" == "clientweb" ] ; then first_option="client-web" ; fi
+if [ "$first_option" == "clientvpn" ] ; then first_option="client-vpn" ; fi
+if [ "$first_option" == "game-minecraft" ] ; then first_option="game-minetest" ; fi
+if [ "$first_option" == "game-westnoth" ] ; then first_option="game-wesnoth" ; fi
+if [ "$first_option" == "gamesudp" ] ; then first_option="games-shooter" ; fi
+if [ "$first_option" == "allpermisive" ] ; then first_option="all-permisive" ; fi
+if [ "$first_option" == "torbrowser" ] ; then first_option="client-tor" ; fi
+if [ "$first_option" == "tor-browser" ] ; then first_option="client-tor" ; fi
+if [ "$first_option" == "client-email" ] ; then first_option="client-mail" ; fi
+if [ "$first_option" == "onlyweb-tor" ] ; then first_option="lan-tor" ; fi
+if [ "$first_option" == "serversamba" ] ; then first_option="server-samba" ; fi
+if [ "$first_option" == "serverprint" ] ; then first_option="server-print" ; fi
+if [ "$first_option" == "serverweb" ] ; then first_option="server-web" ; fi
+if [ "$first_option" == "serverssh" ] ; then first_option="server-ssh" ; fi
+if [ "$first_option" == "serverlamp" ] ; then first_option="server-lamp" ; fi
+if [ "$first_option" == "server-ts" ] ; then first_option="server-teamspeak" ; fi
+if [ "$first_option" == "server-email" ] ; then first_option="server-mail" ; fi
 ####
 ####
 #### english:  alias simple for regenerate configurations templates
@@ -848,7 +848,7 @@ $cmd_binary regen-config ;; esac
 #### output txt:   |||    General text without warnings
 ####
 ####
-if [ "$first_option" = "-txt" ]; then case "$second_option" in
+if [ "$first_option" == "-txt" ]; then case "$second_option" in
 ####
 ####
 "list4")$cmd_binary list4-ip &> $temporal_text 
@@ -880,7 +880,7 @@ exit; fi
 #### output cli:   |||| No cli necesary but works sometimes
 ####
 ####
-if [ "$first_option" = "-cli" ]
+if [ "$first_option" == "-cli" ]
 then echo "$head_waiting_cli"
 case "$second_option" in
 wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
@@ -916,7 +916,7 @@ esac ; fi
 #### output gui:  ||| Yes gui , with gui
 ####
 ####
-if [ "$first_option" = "-gui" ] 
+if [ "$first_option" == "-gui" ] 
 then case "$second_option" in 
 "game_word") first_option="game-word" ; second_option="gui" ;;
 "game_number") first_option="game-number" ; second_option="gui" ;;
@@ -931,7 +931,7 @@ esac ; fi
 #### output log   ||| No log
 ####
 ####
-if [ "$first_option" = "-log" ]
+if [ "$first_option" == "-log" ]
 then case "$second_option" in 
 "wizard") echo "$message_without_log" ; exit ;;
 "wizard-full") echo "$message_without_log" ; exit ;;
@@ -960,7 +960,7 @@ exit ; fi
 #### output null  ||||   No null
 ####
 ####
-if [ "$first_option" = "-null" ]
+if [ "$first_option" == "-null" ]
 then case "$second_option" in 
 "wizard") echo "$message_without_null" ; exit ;;
 "wizard-full") echo "$message_without_null" ; exit ;;
@@ -984,9 +984,9 @@ exit ; fi
 #### output web:    |||    No web
 ####
 ####
-if [ "$first_option" = "-web" ] ; then
-if [ "$command_txt2html" = "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
-if [ "$favorite_text_browser" = "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
+if [ "$first_option" == "-web" ] ; then
+if [ "$command_txt2html" == "$NULL" ]; then echo [ fail ] [ install txt2html command ]; exit; fi
+if [ "$favorite_text_browser" == "$NULL" ]; then echo [ fail ] [ install one text browser ]; exit; fi
 case "$second_option" in 
 "$NULL") echo "$duo_md [ info ] [ use: $cmd_binary -web option-choosen, OR to see options use: $cmd_binary options ]" ;
 $cmd_binary ; exit ;;
@@ -1010,7 +1010,7 @@ exit ; fi
 #### first_option tor   |||  with tor
 ####
 ####
-if [ "$first_option" = "tor"  ] || [ "$first_option" = "-tor"  ] ; then $nada
+if [ "$first_option" == "tor"  ] || [ "$first_option" == "-tor"  ] ; then $nada
 echo "$tab [ info ] [ to connect web is necessary tor configured and browser elinks or lynx ]"
 torify -i $cmd_binary $second_option $third_option ; exit ; fi
 ####
@@ -1018,7 +1018,7 @@ torify -i $cmd_binary $second_option $third_option ; exit ; fi
 #### output help:    |||  where is the help 
 ####
 ####
-if [ "$first_option" = "-help" ]  
+if [ "$first_option" == "-help" ]  
 then echo "$head_waiting_info"
 case "$second_option" in
 "$NULL") echo "[ fail ] [ use: $cmd_binary -help option-choosen, OR to see options use: $cmd_binary ]" ; $cmd_binary; exit ;;
@@ -1061,13 +1061,13 @@ exit ; fi
 #### output info:      |||    Whereis the info
 ####
 ####
-if [ "$first_option" = "-info" ] ; then
+if [ "$first_option" == "-info" ] ; then
 ####
-if [ "$command_m2r" = "$NULL" ]; then $nada ;
+if [ "$command_m2r" == "$NULL" ]; then $nada ;
 echo "[ fail ] [ install m2r command ] [ or launch $cmd_binary -help option ]" ;
 exit; fi
 ####
-if [ "$command_txt2html" = "$NULL" ]; then $nada
+if [ "$command_txt2html" == "$NULL" ]; then $nada
 echo "[ fail ] [ install txt2html command ] [ or launch $cmd_binary -help option ]" ;
 exit; fi
 ####
@@ -1142,7 +1142,7 @@ echo $head_timespam ; fi
 #### :rutina-inicial-intro:
 ####
 ####
-if  [ "$first_option" = "intro" ]; then echo "$give_cover"
+if  [ "$first_option" == "intro" ]; then echo "$give_cover"
 echo "$header_ok [ $first_option ] [ $cmd_binary $cmd_version intro ] [ intro md ] || ||"
 echo "$title_md    ###  Fran fwiptables intro.  ###   "
 echo "$text_md     [ done ] [ Choose fwiptables-complete working like complete or working like minimal         "
@@ -1179,7 +1179,7 @@ exit; fi
 #### :rutina-inicial-uninstall:
 ####
 ####
-if [ "$first_option" = "uninstall" ] ; then
+if [ "$first_option" == "uninstall" ] ; then
 echo "$header_ok [ $first_option ] [ $cmd_binary uninstaller ] [ uninstall md ] || ||"
 echo "$duo_md [ info ] [ $cmd_binary uninstalling fwiptables-cmd ]"
 if  [ -f /usr/bin/fwiptables-cmd ]; then rm /usr/bin/fwiptables-cmd &> /dev/null
@@ -1195,7 +1195,7 @@ exit; fi
 #### :rutina-inicial-install:
 ####
 ####
-if [ "$first_option" = "install" ]; then echo $give_cover
+if [ "$first_option" == "install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_config $cmd_version installer ] [ install md ] || ||"
 ####
 ####
@@ -1239,7 +1239,7 @@ exit; fi
 #### :rutina-inicial-upgrade:
 ####
 ####
-if   [ "$first_option" = "upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
 case "$favorite_text_browser" in
@@ -1275,7 +1275,7 @@ exit ; fi
 #### :rutina-inicial-dev-upgrade:
 ####
 ####
-if  [ "$first_option" = "dev-upgrade" ]; then echo $give_cover
+if  [ "$first_option" == "dev-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -1312,7 +1312,7 @@ exit ; fi
 #### :rutina-inicial-devmini-upgrade:
 ####
 ####
-if   [ "$first_option" = "devmini-upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "devmini-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -1349,7 +1349,7 @@ exit ; fi
 #### :rutina-inicial-regen-config:
 ####
 ####
-if [ "$first_option" = "regen-config" ]; then echo "# $give_cover"
+if [ "$first_option" == "regen-config" ]; then echo "# $give_cover"
 echo "# $header_ok [ $first_option ] [ Generate templates wizard and cfg ] || ||"
 echo "# [ info ] [ regenerating template wizard and template cfg ]"
 ####
@@ -1925,7 +1925,7 @@ case "$NULL" in "$type_firewall")          ;;  *)  type_firewall="no" ;; esac
 #### spanish: autoguardado con nombre autosave
 ####
 ####
-if [ "$first_option" = "autosave" ] && [ "$allow_autosave" = "$NULL" ]; then
+if [ "$first_option" == "autosave" ] && [ "$allow_autosave" == "$NULL" ]; then
 echo "$duo_md [ autosave ] [ firewall saved ] [ autosave-fwiptables ]" ;
 $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 ####
@@ -1950,7 +1950,7 @@ $cmd_binary save autosave-fwiptables &> /dev/null ; exit; fi
 #### :rutina-inicial-custom-rules:
 ####
 ####
-if [ "$first_option" = "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "custom" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall custom ]" ;
 launch_firewall="yes" ;
 type_firewall="custom" ;
@@ -1983,7 +1983,7 @@ fi
 ####   #### spanish: cortafuego del sistema off-line:
 ####
 ####
-if [ "$first_option" = "off-line" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "off-line" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall off-line ]" ;
 launch_firewall="yes" ;
 type_firewall="off-line";
@@ -1995,7 +1995,7 @@ fi
 ####   #### spanish: cortafuego del sistema all-permisive:
 ####
 ####
-if [ "$first_option" = "all-permisive" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "all-permisive" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall all-permisive ]" ;
 launch_firewall="yes" ;
 type_firewall="all-permisive" ;
@@ -2007,7 +2007,7 @@ fi
 ####   #### spanish: cortafuego del sistema shield-ssh:
 ####
 ####
-if [ "$first_option" = "shield-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "shield-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall shield-ssh ]" ;
 launch_firewall="yes" ;
 type_firewall="shield-ssh"    ; 
@@ -2028,7 +2028,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-web:
 ####
 ####
-if [ "$first_option" = "client-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2048,7 +2048,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vnc:
 ####
 ####
-if [ "$first_option" = "client-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2068,7 +2068,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-torrent:
 ####
 ####
-if [ "$first_option" = "client-torrent" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-torrent" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-torrent ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2088,7 +2088,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-vpn:
 ####
 ####
-if [ "$first_option" = "client-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2108,7 +2108,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-tor:
 ####
 ####
-if [ "$first_option" = "client-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2128,7 +2128,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-news:
 ####
 ####
-if [ "$first_option" = "client-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2153,7 +2153,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-mail:
 ####
 ####
-if [ "$first_option" = "client-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2185,7 +2185,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-ftp:
 ####
 ####
-if [ "$first_option" = "client-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2205,7 +2205,7 @@ fi
 ####   #### spanish: cortafuego del sistema client-squid:
 ####
 ####
-if [ "$first_option" = "client-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "client-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall client-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2225,7 +2225,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-vpn:
 ####
 ####
-if [ "$first_option" = "lan-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "lan-vpn" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall lan-vpn ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2246,7 +2246,7 @@ fi
 ####   #### spanish: cortafuego del sistema lan-tor:
 ####
 ####
-if [ "$first_option" = "lan-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "lan-tor" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall lan-tor ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2267,7 +2267,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-shooter:
 ####
 ####
-if [ "$first_option" = "games-shooter" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "games-shooter" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall games-shooter ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2287,7 +2287,7 @@ fi
 ####   #### spanish: cortafuego del sistema games-udp:
 ####
 ####
-if [ "$first_option" = "games-udp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "games-udp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall games-udp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2307,7 +2307,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-wesnoth:
 ####
 ####
-if [ "$first_option" = "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-wesnoth" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall game-wesnoth ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2327,7 +2327,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-minetest:
 ####
 ####
-if [ "$first_option" = "game-minetest" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-minetest" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall game-minetest ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2347,7 +2347,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-freeciv:
 ####
 ####
-if [ "$first_option" = "game-freeciv" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-freeciv" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall game-freeciv ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2367,7 +2367,7 @@ fi
 ####   #### spanish: cortafuego del sistema game-widelands:
 ####
 ####
-if [ "$first_option" = "game-widelands" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "game-widelands" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall game-widelands ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2387,7 +2387,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-web:
 ####
 ####
-if [ "$first_option" = "server-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-web" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-web ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2407,7 +2407,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-vnc:
 ####
 ####
-if [ "$first_option" = "server-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-vnc" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-vnc ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2428,7 +2428,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ftp:
 ####
 ####
-if [ "$first_option" = "server-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-ftp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-ftp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2448,7 +2448,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-squid:
 ####
 ####
-if [ "$first_option" = "server-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-squid" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-squid ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2468,7 +2468,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-news:
 ####
 ####
-if [ "$first_option" = "server-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-news" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-news ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2493,7 +2493,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mail:
 ####
 ####
-if [ "$first_option" = "server-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-mail" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-mail ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2525,7 +2525,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-samba:
 ####
 ####
-if [ "$first_option" = "server-samba" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-samba" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-samba ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2544,7 +2544,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-print:
 ####
 ####
-if [ "$first_option" = "server-print" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-print" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-print ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2564,7 +2564,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-ssh:
 ####
 ####
-if [ "$first_option" = "server-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-ssh" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-ssh ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ;
@@ -2584,7 +2584,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-lamp:
 ####
 ####
-if [ "$first_option" = "server-lamp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-lamp" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-lamp ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2605,7 +2605,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-asterisk:
 ####
 ####
-if [ "$first_option" = "server-asterisk" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-asterisk" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-asterisk ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2627,7 +2627,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-mumble:
 ####
 ####
-if [ "$first_option" = "server-mumble" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-mumble" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-mumble ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2647,7 +2647,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-teamspeak:
 ####
 ####
-if [ "$first_option" = "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-teamspeak" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-teamspeak ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2671,7 +2671,7 @@ fi
 ####   #### spanish: cortafuego del sistema server-sql:
 ####
 ####
-if [ "$first_option" = "server-sql" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
+if [ "$first_option" == "server-sql" ]; then echo $give_cover ; echo $give_load ; echo $give_preferences ;
 echo "$duo_md [ info ] [ loading firewall server-sql ]" ;
 launch_firewall="yes" ; 
 type_firewall="predesignated" ; 
@@ -2697,7 +2697,7 @@ fi
 #### :rutina-inicial-options-mini:
 ####
 ####
-if   [ "$first_option" = "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
+if   [ "$first_option" == "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
 echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
 echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                     "
 echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]         "
@@ -2738,7 +2738,7 @@ exit ; fi
 #### :rutina-inicial-full-options:
 ####
 ####
-if   [ "$first_option" = "options-all" ] ; then echo $give_cover
+if   [ "$first_option" == "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                          "
 echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                      "
@@ -2815,7 +2815,7 @@ exit ; fi
 #### :rutina-final-options-firewall:
 ####
 ####
-if   [ "$first_option" = "options-firewall" ] ; then echo $give_cover
+if   [ "$first_option" == "options-firewall" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List firewall options ] [ options-firewall md ]                            "
 echo "$title_md                                  | options-firewall |                                          "
 echo "$text_md firewall-control    |  stop continue reset names actual show save load                          "
@@ -2847,7 +2847,7 @@ exit ; fi
 #### :rutina-final-options-state:
 ####
 ####
-if   [ "$first_option" = "options-state" ] ; then echo $give_cover
+if   [ "$first_option" == "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                          "
 echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog  "
@@ -2865,7 +2865,7 @@ exit ; fi
 #### :rutina-final-options-tool:
 ####
 ####
-if   [ "$first_option" = "options-tool" ] ; then echo $give_cover
+if   [ "$first_option" == "options-tool" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Tool options ] [ options-tool md ]"
 echo "$title_md                                    | options-tool |                                     " 
 echo "$text_md    tool-sockets      | info-listen info-nodes info-route info-net info-proxy info-system "
@@ -2900,7 +2900,7 @@ exit ; fi
 #### :rutina-final-options-show:
 ####
 ####
-if    [ "$first_option" = "options-show" ] ; then echo $give_cover
+if    [ "$first_option" == "options-show" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Show options ] [ options-show md ]"
 echo "$title_md                                   | options-show |                          " 
 echo "$text_md    show-hardware     | lpinfo lsblk lsusb lscpu lspci lsgpu lshw             "
@@ -2918,7 +2918,7 @@ exit ; fi
 #### :rutina-final-options-show:
 ####
 ####
-if    [ "$first_option" = "options-help" ] ; then echo $give_cover
+if    [ "$first_option" == "options-help" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ Show help options ] [ options-help md ]"
 echo "$title_md                                   | options-help |                                             "
 echo "$text_md  help-about         |  about version depends config-eng config-spa license                      "
@@ -2935,7 +2935,7 @@ exit ; fi
 #### :rutina-inicial-options-examples:
 ####
 ####
-if [ "$first_option" = "options-examples" ]; then echo $give_cover
+if [ "$first_option" == "options-examples" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List examples ] [ options-examples md ] || ||"
 echo "$text_md $tab [ list examples ]"
 echo "$text_md $tab [ Lista ejemplos ]"
@@ -2977,7 +2977,7 @@ exit; fi
 #### :rutina-inicial-all-options:
 ####
 ####
-if   [ "$first_option" = "all-options" ]; then echo $give_cover
+if   [ "$first_option" == "all-options" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List group options help ] || ||"
 $cmd_binary options-interface
 $cmd_binary options-firewall
@@ -2993,7 +2993,7 @@ exit; fi
 #### :rutina-inicial-all-help:
 ####
 ####
-if   [ "$first_option" = "all-help" ]; then echo $give_cover
+if   [ "$first_option" == "all-help" ]; then echo $give_cover
 echo "$title_md [ $first_option ] [ help in english and spanish ] [ all-help md ]"
 echo "$text_md [ Choose only help in english ]        [ Type:     $cmd_binary help ]"
 echo "$text_md [ Elige solo ayuda en español ]        [ Escribe:  $cmd_binary ayuda ]"
@@ -3128,7 +3128,7 @@ exit; fi
 #### :rutina-inicial-names-config:
 ####
 ####
-if [ "$first_option" = "names-config" ]; then echo $give_cover
+if [ "$first_option" == "names-config" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List configs cfg ] || ||"
 echo "$duo_md [ info ] [ list configs files in cfg format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_config ]"
@@ -3153,7 +3153,7 @@ exit; fi
 #### :rutina-inicial-group-options:
 ####
 ####
-if   [ "$first_option" = "group-options" ]; then echo $give_cover
+if   [ "$first_option" == "group-options" ]; then echo $give_cover
 echo "$text_md [ ok ] [ $first_option ] [ List group options ] [ group-options md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ Help to one group ]"
@@ -3238,7 +3238,7 @@ exit; fi
 #### :rutina-inicial-firewall-launch:
 ####
 ####
-if   [ "$first_option" = "firewall-launch" ]; then echo $give_cover
+if   [ "$first_option" == "firewall-launch" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ launch rules ] [ firewall-launch md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Launch iptables rules ]"
@@ -3355,7 +3355,7 @@ exit; fi
 #### :rutina-inicial-firewall-control:
 ####
 ####
-if   [ "$first_option" = "firewall-control" ]; then echo $give_cover
+if   [ "$first_option" == "firewall-control" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ control rules ] [ firewall-control md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ Control iptables rules ]"
@@ -3397,7 +3397,7 @@ exit; fi
 #### :rutina-inicial-firewall-conceptual:
 ####
 ####
-if   [ "$first_option" = "firewall-conceptual" ]; then echo $give_cover
+if   [ "$first_option" == "firewall-conceptual" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List rules ] [ firewall-conceptual md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ List filter iptables rules ]"
@@ -3460,7 +3460,7 @@ exit; fi
 #### :rutina-inicial-firewall-numeral:
 ####
 ####
-if   [ "$first_option" = "firewall-numeral" ]; then echo $give_cover
+if   [ "$first_option" == "firewall-numeral" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List rules ] [ firewall-numeral md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ List filter iptables rules ]"
@@ -3523,7 +3523,7 @@ exit; fi
 #### :rutina-inicial-firewall-custom:
 ####
 ####
-if   [ "$first_option" = "firewall-custom" ]; then echo $give_cover
+if   [ "$first_option" == "firewall-custom" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool custom rules config ] [ firewall-custom md ] || ||"
 echo "$text_md" 
 echo "$text_md [ english info ] [ custom configs ]"
@@ -3565,7 +3565,7 @@ exit; fi
 #### :rutina-inicial-options-interface:
 ####
 ####
-if   [ "$first_option" = "options-interface" ]; then echo $give_cover
+if   [ "$first_option" == "options-interface" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ control interface ] [ options-interface md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ control interface ]" 
@@ -3616,7 +3616,7 @@ exit; fi
 #### :rutina-inicial-default-state:
 ####
 ####
-if   [ "$first_option" = "default-state" ]; then echo $give_cover
+if   [ "$first_option" == "default-state" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ default state ] [ default-state md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ default state ]"
@@ -3655,7 +3655,7 @@ exit; fi
 #### :rutina-inicial-tool-sockets:
 ####
 ####
-if   [ "$first_option" = "tool-sockets" ]; then echo $give_cover
+if   [ "$first_option" == "tool-sockets" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool sockets ] [ tool-sockets md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool sockets ]"
@@ -3712,7 +3712,7 @@ exit; fi
 #### :rutina-inicial-tool-game:
 ####
 ####
-if   [ "$first_option" = "tool-game" ]; then echo $give_cover
+if   [ "$first_option" == "tool-game" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool game ] [ tool-game md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool game ]"
@@ -3742,7 +3742,7 @@ exit; fi
 #### :rutina-inicial-tool-connect:
 ####
 ####
-if   [ "$first_option" = "tool-connect" ]; then echo $give_cover
+if   [ "$first_option" == "tool-connect" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool connect ] [ tool-connect md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool connect ]"
@@ -3772,7 +3772,7 @@ exit; fi
 #### :rutina-inicial-tool-rule:
 ####
 ####
-if   [ "$first_option" = "tool-rule" ]; then echo $give_cover
+if   [ "$first_option" == "tool-rule" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool rules ] [ tool-rule md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool rules ]"
@@ -3796,7 +3796,7 @@ exit; fi
 #### :rutina-inicial-tool-forward:
 ####
 ####
-if   [ "$first_option" = "tool-forward" ]; then echo $give_cover
+if   [ "$first_option" == "tool-forward" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool forward ] [ tool-forward md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool forward ]"
@@ -3820,7 +3820,7 @@ exit; fi
 #### :rutina-inicial-tool-sshd:
 ####
 ####
-if   [ "$first_option" = "tool-sshd" ]; then echo $give_cover
+if   [ "$first_option" == "tool-sshd" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool ssh tunnel ] [ tool-sshd md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool ssh tunnel ]"
@@ -3844,7 +3844,7 @@ exit; fi
 #### :rutina-inicial-tool-icmp:
 ####
 ####
-if   [ "$first_option" = "tool-icmp" ]; then echo $give_cover
+if   [ "$first_option" == "tool-icmp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool icmp ] [ tool-icmp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool icmp ]"
@@ -3871,7 +3871,7 @@ exit; fi
 #### :rutina-inicial-tool-tcp:
 ####
 ####
-if   [ "$first_option" = "tool-tcp" ]; then echo $give_cover
+if   [ "$first_option" == "tool-tcp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool tcp ] [ tool-tcp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool tcp ]"
@@ -3898,7 +3898,7 @@ exit; fi
 #### :rutina-inicial-tool-udp:
 ####
 ####
-if   [ "$first_option" = "tool-udp" ]; then echo $give_cover
+if   [ "$first_option" == "tool-udp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool udp ] [ tool-udp md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool udp ]"
@@ -3928,7 +3928,7 @@ exit; fi
 #### :rutina-inicial-tool-nmap:
 ####
 ####
-if   [ "$first_option" = "tool-nmap" ]; then echo $give_cover
+if   [ "$first_option" == "tool-nmap" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool nmap ] [ tool-nmap.md] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool nmap ]"
@@ -3958,7 +3958,7 @@ exit; fi
 #### :rutina-inicial-tool-sudofw:
 ####
 ####
-if   [ "$first_option" = "tool-sudofw" ]; then echo $give_cover
+if   [ "$first_option" == "tool-sudofw" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool sudo ] [ tool-sudofw md ] || ||"
 echo "$text_md"
 echo "$text_md [ Tool sudo ]"
@@ -3985,7 +3985,7 @@ exit; fi
 #### :rutina-inicial-tool-install:
 ####
 ####
-if   [ "$first_option" = "tool-install" ]; then echo $give_cover
+if   [ "$first_option" == "tool-install" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool install ] [ tool-install md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
@@ -4018,7 +4018,7 @@ exit; fi
 #### :rutina-inicial-tool-addblock:
 ####
 ####
-if   [ "$first_option" = "tool-addblock" ]; then echo $give_cover
+if   [ "$first_option" == "tool-addblock" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool addblock in /etc/hosts ] [ tool-addblock md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool addblock ]"
@@ -4042,7 +4042,7 @@ exit; fi
 #### :rutina-inicial-tool-dev:
 ####
 ####
-if   [ "$first_option" = "tool-dev" ]; then echo $give_cover
+if   [ "$first_option" == "tool-dev" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool install ] [ tool-dev md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool install ]"
@@ -4072,7 +4072,7 @@ exit; fi
 #### :rutina-inicial-tool-speed:
 ####
 ####
-if   [ "$first_option" = "tool-speed" ]; then echo $give_cover
+if   [ "$first_option" == "tool-speed" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool speed ] [ tool-speed md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool benchmark speed ]"
@@ -4102,7 +4102,7 @@ exit; fi
 #### :rutina-inicial-tool-util:
 ####
 ####
-if   [ "$first_option" = "tool-util" ]; then echo $give_cover
+if   [ "$first_option" == "tool-util" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool util ] [ tool-util md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool utils ]"
@@ -4126,7 +4126,7 @@ exit; fi
 #### :rutina-inicial-tool-mp3:
 ####
 ####
-if   [ "$first_option" = "tool-mp3" ]; then echo $give_cover
+if   [ "$first_option" == "tool-mp3" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool mp3 ] [ tool-mp3 md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool mp3 ]"
@@ -4144,7 +4144,7 @@ exit; fi
 #### :rutina-inicial-tool-pdf:
 ####
 ####
-if   [ "$first_option" = "tool-pdf" ]; then echo $give_cover
+if   [ "$first_option" == "tool-pdf" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool pdf ] [ tool-pdf md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool pdf ]"
@@ -4168,7 +4168,7 @@ exit; fi
 #### :rutina-inicial-tool-qemu:
 ####
 ####
-if   [ "$first_option" = "tool-qemu" ]; then echo $give_cover
+if   [ "$first_option" == "tool-qemu" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool qemu ] [ tool-qemu md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool to manage machine virtual qemu ]"
@@ -4192,7 +4192,7 @@ exit; fi
 #### :rutina-inicial-tool-computer:
 ####
 ####
-if   [ "$first_option" = "tool-computer" ]; then echo $give_cover
+if   [ "$first_option" == "tool-computer" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ tool computer ] [ tool-computer md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Tool computer ]"
@@ -4216,7 +4216,7 @@ exit; fi
 #### :rutina-inicial-show-etc:
 ####
 ####
-if   [ "$first_option" = "show-etc" ]; then echo $give_cover
+if   [ "$first_option" == "show-etc" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show etc files ] [ show-etc md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show configs files from etc ]"
@@ -4249,7 +4249,7 @@ exit; fi
 #### :rutina-inicial-show-hardware:
 ####
 ####
-if   [ "$first_option" = "show-hardware" ]; then echo $give_cover
+if   [ "$first_option" == "show-hardware" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show hardware info ] [ show-hardware md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show hardware info ]"
@@ -4285,7 +4285,7 @@ exit; fi
 #### :rutina-inicial-show-log:
 ####
 ####
-if   [ "$first_option" = "show-log" ]; then echo $give_cover
+if   [ "$first_option" == "show-log" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show log files ] [ show-log md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show log ]"
@@ -4315,7 +4315,7 @@ exit; fi
 #### :rutina-inicial-help-about:
 ####
 ####
-if   [ "$first_option" = "help-about" ]; then echo $give_cover
+if   [ "$first_option" == "help-about" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show about ] [ help-about md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show about ]"
@@ -4351,7 +4351,7 @@ exit; fi
 #### :rutina-inicial-help-help:
 ####
 ####
-if   [ "$first_option" = "help-help" ]; then echo $give_cover
+if   [ "$first_option" == "help-help" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show help ] [ help-help md ] || ||"
 echo "$text_md"
 echo "$text_md [ english info ] [ Show help ]"
@@ -4390,7 +4390,7 @@ exit; fi
 #### :rutina-inicial-notes:
 ####
 ####
-if [ "$first_option" = "notes" ]; then echo $give_cover
+if [ "$first_option" == "notes" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List notes about ] [ notes md ] || ||"
 echo "$text_md"
 echo "$text_md  [ legacy or nft ] [ whith one of them is sufficent ] [ becouse when one accept then go to the other one ]"
@@ -4460,7 +4460,7 @@ exit; fi
 #### :rutina-inicial-depends:
 ####
 ####
-if [ "$first_option" = "depends" ]; then echo $give_cover
+if [ "$first_option" == "depends" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List for depends programs ] [ depends md ] || ||"
 echo
 echo "$title_md [ Configuration files ]"
@@ -4504,7 +4504,7 @@ exit; fi
 #### spanish: con tercera opcion
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
+if [ "$first_option" == "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
 echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 case $second_option in
@@ -4587,7 +4587,7 @@ exit; fi
 ##########    spanish: -gui: con segunda opcion    ##########
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 case $second_option in
@@ -4662,7 +4662,7 @@ exit; fi
 ##########    spanish: -gui: sin mas opcion          ##########
 ####
 ####
-if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
+if [ "$first_option" == "-gui" ] && [ "$second_option" == "$NULL" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 $favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
 exit; fi
@@ -4672,7 +4672,7 @@ exit; fi
 ##########    spanish: gui-rool: gui menu general: gui con roll  ##########
 ####
 ####
-if   [ "$first_option" = "gui-roll" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 ####
 $favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
@@ -4684,7 +4684,7 @@ exit; fi
 #### :rutina-inicial-gui-menu:
 ####
 ####
-if   [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-menu" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
@@ -4737,7 +4737,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-launch:
 ####
 ####  
-if   [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-firewall-launch" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
@@ -4805,7 +4805,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-control:
 ####
 ####
-if   [ "$first_option" = "gui-menu-firewall-control" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-firewall-control" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" )"
 #### 
@@ -4844,7 +4844,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-conceptual:
 ####
 ####
-if   [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then 
+if   [ "$first_option" == "gui-menu-firewall-conceptual" ] ; then 
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
 "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
@@ -4889,7 +4889,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-numeral:
 ####
 ####
-if   [ "$first_option" = "gui-menu-firewall-numeral" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-firewall-numeral" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
 "listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
@@ -4934,7 +4934,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-custom:
 ####
 ####
-if   [ "$first_option" = "gui-menu-firewall-custom" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-firewall-custom" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-full-config" "nueva-completa-config" "new-mini-config" "nueva-mini-config" \
 "names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config")"
@@ -4988,7 +4988,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-options-state:
 ####
 ####
-if   [ "$first_option" = "gui-menu-options-state" ]; then 
+if   [ "$first_option" == "gui-menu-options-state" ]; then 
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends install upgrade)"
 #### 
@@ -5026,7 +5026,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-connect:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-connect" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-connect" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
 #### 
@@ -5068,7 +5068,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-rule:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-rule" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-rule" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
 #### 
@@ -5099,7 +5099,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sockets:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-sockets" ] ; then
+if   [ "$first_option" == "gui-menu-tool-sockets" ] ; then
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" )"
@@ -5142,7 +5142,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-forward:
 ####
 ####
-if [ "$first_option" = "gui-menu-tool-forward" ] ; then $nada ;
+if [ "$first_option" == "gui-menu-tool-forward" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off")"
 #### 
@@ -5173,7 +5173,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sshd:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-sshd" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-sshd" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
 #### 
@@ -5206,7 +5206,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-icmp:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-icmp" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
 #### 
@@ -5242,7 +5242,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-udp:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-udp" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
 #### 
@@ -5279,7 +5279,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-tcp:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-tcp" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
 #### 
@@ -5313,7 +5313,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sudofw:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-sudofw" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-sudofw" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
 #### 
@@ -5346,7 +5346,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-game:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-game" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
 #### 
@@ -5383,7 +5383,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-speed:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-speed" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-speed" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
 #### 
@@ -5416,7 +5416,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-util:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-util" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-util" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" )"
 #### 
@@ -5451,7 +5451,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-install:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-install" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp")"
 #### 
@@ -5483,7 +5483,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-addblock:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-addblock" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" "addblock-on" "addblock-off" )"
 #### 
@@ -5517,7 +5517,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-dev:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-tool-dev" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" )"
 #### 
@@ -5551,7 +5551,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-show-hardware:
 ####
 ####
-if   [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-show-hardware" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw")"
 #### 
@@ -5586,7 +5586,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-show-etc:
 ####
 ####
-if   [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-show-etc" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
 "resolv.conf" "preferences-read" "preferences-modify" "preferences-read" )"
@@ -5624,7 +5624,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-show-log:
 ####
 ####
-if   [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-show-log" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search")"
 #### 
@@ -5658,7 +5658,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-help-about:
 ####
 ####
-if   [ "$first_option" = "gui-menu-help-about" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-help-about" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" "depends" "config-eng" "config-spa" )"
 #### 
@@ -5691,7 +5691,7 @@ exit; fi
 #### :rutina-inicial-gui-menu-help-help:
 ####
 ####
-if   [ "$first_option" = "gui-menu-help-help" ] ; then $nada ;
+if   [ "$first_option" == "gui-menu-help-help" ] ; then $nada ;
 selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" "all-help" "readme" "leeme" "notes" "license" )"
 #### 
@@ -5726,7 +5726,7 @@ exit; fi
 #### :rutina-inicial-gui-shell:
 ####
 ####
-if   [ "$first_option" = "gui-shell" ] ; then echo $head_waiting_gui
+if   [ "$first_option" == "gui-shell" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
 ####
 ####
@@ -5863,7 +5863,7 @@ exit ; fi
 #### :rutina-inicial-cli-menu:
 ####
 ####
-if   [ "$first_option" = "cli-menu" ]; then $nada
+if   [ "$first_option" == "cli-menu" ]; then $nada
 case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or dialog or whiptail to work ]" ; exit ;; esac
 menuprincipal="$($favorite_text_dialog --clear --notags --title "Cli Menu With $cmd_version" --menu "Select" 0 0 0 \
 0000 "$quad $tab [$cmd_binary cli-menu] $tab $cinco" \
@@ -6403,7 +6403,7 @@ exit; fi
 #### :rutina-inicial-text-pause:
 ####
 ####
-if [ "$first_option" = "text-pause" ]; then $nada
+if [ "$first_option" == "text-pause" ]; then $nada
 read -p '##### [ ok ] ##### Press [enter] to continue now with the cli-menu ##### '
 exit; fi
 ####
@@ -6414,7 +6414,7 @@ exit; fi
 #### :rutina-inicial-version:
 ####
 ####
-if [ "$first_option" = "version" ]; then echo $give_cover
+if [ "$first_option" == "version" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ Show version about ] [ version.md] || ||"
 echo "$title_md [ Name program ]"
 echo "$text_md $cmd_name"
@@ -6460,7 +6460,7 @@ exit ; fi
 #### :rutina-inicial-examples-config:
 ####
 ####
-if [ "$first_option" = "examples-config" ]; then echo $give_cover
+if [ "$first_option" == "examples-config" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show examples ] || ||"
 echo 
 echo "[ examples ] [ examples for some services in client mode ]"
@@ -6598,11 +6598,11 @@ exit ; fi
 #### :rutina-inicial-code:
 ####
 ####
-if   [ "$first_option" = "code" ]; then echo $give_cover
+if   [ "$first_option" == "code" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show source code for each option ] || ||"
 echo "$duo_md [ info ] [ code ] [ show source code for options from $cmd_binary ]"
 code_error="  [ info ] [ Usage ] [ $cmd_binary code option_choosed ]"
-if [ "$second_option" = "$NULL" ]; then echo "$code_error" ; echo
+if [ "$second_option" == "$NULL" ]; then echo "$code_error" ; echo
 salida_code="$(cat $cmd_binary | $command_grep -i  rutina-inicial \
 | $command_grep -i -v cat | $command_sed -s s/####\ :rutina-inicial-//g | \
 sort | $command_sed -s s/://g )"
@@ -6627,7 +6627,7 @@ exit; fi
 #### :rutina-inicial-license:
 ####
 ####
-if [ "$first_option" = "license" ]; then echo $give_cover
+if [ "$first_option" == "license" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show license from git sourceforge for $cmd_binary ] || ||"
 echo "license text for gpl v2 downloading from .. $license_gpl "
 $favorite_text_browser -source "$license_gpl" | more
@@ -6640,7 +6640,7 @@ exit;  fi
 #### :rutina-inicial-howto-upgrade:
 ####
 ####
-if   [ "$first_option" = "howto-upgrade" ]; then echo $give_cover
+if   [ "$first_option" == "howto-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show howto upgrade ] || ||"
 echo "$duo_md [ info ] [ The actually version is: $cmd_binary $cmd_version actual ]"
 echo "$duo_md [ info ] [ The latest version is: ]"
@@ -6662,7 +6662,7 @@ exit;  fi
 #### :rutina-inicial-addblock-list:
 ####
 ####
-if   [ "$first_option" = "addblock-list" ]; then echo $give_cover
+if   [ "$first_option" == "addblock-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show blacklist servers ] || ||"
 blacklist_server_fademind="https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts"
 blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
@@ -6686,7 +6686,7 @@ echo "$duo_md stevenblack     $blacklist_server_stevenblack"
 echo
 ####
 ####
-if [ "$second_option" = "info" ]; then echo "$tab Getting lines numbers total.."; echo 
+if [ "$second_option" == "info" ]; then echo "$tab Getting lines numbers total.."; echo 
 echo
 echo "$tab [ actually ] [ File /etc/hosts has "$(cat /etc/hosts | wc -l)" numbers lines ]"
 echo "$tab [ actually ] [ Show the file: $cmd_binary hosts ]"
@@ -6716,12 +6716,12 @@ exit; fi
 #### :rutina-inicial-addblock-on:
 ####
 ####
-if   [ "$first_option" = "addblock-on" ]; then echo $give_cover
+if   [ "$first_option" == "addblock-on" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Configure blacklist server ] || ||"
 echo
 ####
 ####
-if [ "$second_option" = "$NULL" ]; then
+if [ "$second_option" == "$NULL" ]; then
 echo "$duo_md [ Launched without options ] [ $cmd_binary addblock-list ]"
 echo
 $cmd_binary addblock-list
@@ -6735,7 +6735,7 @@ blacklist_server_mvps="http://winhelp2002.mvps.org/hosts.txt"
 blacklist_server_stevenblack="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 ####
 ####
-if [ "$second_option" = "fademind" ]; then 
+if [ "$second_option" == "fademind" ]; then 
 echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_fademind" > $directory_temporal/hosts.fademind 
 $cmd_binary addblock-off &> /dev/null
@@ -6743,7 +6743,7 @@ cat $directory_temporal/hosts.fademind | $command_sed 's/localhost/the-localhost
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
-if [ "$second_option" = "adaway" ]; then 
+if [ "$second_option" == "adaway" ]; then 
 echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_adaway" > $directory_temporal/hosts.adaway 
 $cmd_binary addblock-off &> /dev/null
@@ -6751,7 +6751,7 @@ cat $directory_temporal/hosts.adaway | $command_sed 's/localhost/the-localhost/g
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
-if [ "$second_option" = "mvps" ]; then 
+if [ "$second_option" == "mvps" ]; then 
 echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_mvps" > $directory_temporal/hosts.mvps 
 $cmd_binary addblock-off &> /dev/null
@@ -6759,7 +6759,7 @@ cat $directory_temporal/hosts.mvps | $command_sed 's/localhost/the-localhost/g' 
 echo "$tab New file /etc/hosts has its hostname: $HOSTNAME, and " "$(cat /etc/hosts | wc -l)" " hosts blockeds likes localhost"; exit; fi
 ####
 ####
-if [ "$second_option" = "stevenblack" ]; then 
+if [ "$second_option" == "stevenblack" ]; then 
 echo "$duo_md [ Working ] [ Waiting a moment ] [ Getting adblocker $second_option ]"
 $favorite_text_browser -source "$blacklist_server_stevenblack" > $directory_temporal/hosts.stevenblack 
 $cmd_binary addblock-off &> /dev/null
@@ -6779,7 +6779,7 @@ exit; fi
 #### :rutina-inicial-addblock-off:
 ####
 ####
-if   [ "$first_option" = "addblock-off" ]; then echo $give_cover
+if   [ "$first_option" == "addblock-off" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Remove blacklist server ] || ||"
 echo
 echo $directory_temporal
@@ -6803,7 +6803,7 @@ exit; fi
 #### :rutina-inicial-eraserules:
 ####
 ####
-if [ "$first_option" = "eraserules" ]; then echo $give_cover 
+if [ "$first_option" == "eraserules" ]; then echo $give_cover 
 echo "$header_ok [ $first_option ] [ erase all iptables rules ] || ||"
 ####
 ####
@@ -6945,9 +6945,9 @@ exit; fi
 #### comments: sed is necesary to full work in graphicall
 ####
 ####
-if   [ "$first_option" = "info-route" ]; then  echo $give_cover
+if   [ "$first_option" == "info-route" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show route tables ] || ||"
-if [ "$command_ip" = "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
+if [ "$command_ip" == "$NULL" ]; then echo "$tab [ fail ] [ Install ip command ]"; exit; fi
 echo "$duo_md [ info ] [ ip route ipv4 ]"
 echo "$($command_ip -4 route)"
 echo
@@ -6962,9 +6962,9 @@ exit ; fi
 #### :rutina-inicial-ss:
 ####
 ####
-if   [ "$first_option" = "ss" ]; then  echo $give_cover
+if   [ "$first_option" == "ss" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show sockets with ss ] || ||"
-if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$duo_md [ info ] [ The ipv6 sockets ]"
 $command_ss -a6 | $command_sed 's/   / /g'
 echo "$duo_md [ info ] [ The ipv4 sockets ]"
@@ -6978,9 +6978,9 @@ exit; fi
 #### :rutina-inicial-lsof:
 ####
 ####
-if   [ "$first_option" = "lsof" ]; then echo $give_cover
+if   [ "$first_option" == "lsof" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with lsof ] || ||"
-if [ "command_lsof" = "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
+if [ "command_lsof" == "$NULL" ]; then echo "$tab [ fail ] [ Install lsof command ]"; exit; fi
 echo "$duo_md [ info ] [The sockets with lsof ipv6 ]"
 $command_lsof -i | $command_grep -i  ipv6
 echo "$duo_md [ info ] [The sockets with lsof ipv4 ]"
@@ -6994,9 +6994,9 @@ exit; fi
 #### :rutina-inicial-netstat:
 ####
 ####
-if   [ "$first_option" = "netstat" ]; then echo $give_cover
+if   [ "$first_option" == "netstat" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat ] || ||"
-if [ "$command_netstat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
+if [ "$command_netstat" == "$NULL" ]; then echo "$tab [ fail ] [ Install netstat command ]"; exit; fi
 echo "$duo_md [ info ] [The sockets list with netstat ]"
 $command_netstat -a -4 -6
 exit; fi
@@ -7008,9 +7008,9 @@ exit; fi
 #### :rutina-inicial-info-listen:
 ####
 ####
-if   [ "$first_option" = "info-listen" ]; then  echo $give_cover
+if   [ "$first_option" == "info-listen" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy ] || ||"
-if [ "$command_ss" = "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
+if [ "$command_ss" == "$NULL" ]; then echo "$tab [ fail ] [ Install ss command ]"; exit; fi
 echo "$duo_md [ info ] [ Network Listen ] [ Listen ipv4 ]"
 $command_ss -l4 | $command_sed 's/   / /g'
 echo $tab
@@ -7025,7 +7025,7 @@ exit; fi
 #### :rutina-inicial-info-proxy:
 ####
 ####
-if   [ "$first_option" = "info-proxy" ]; then  echo $give_cover
+if   [ "$first_option" == "info-proxy" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show info address proxy whith its system variable ] ||"
 echo "$duo_md [ info ] [ Info address proxy ]"
 echo "$duo_md [ info ] [ Web http_proxy:    $http_proxy ]"
@@ -7039,9 +7039,9 @@ exit; fi
 #### :rutina-inicial-netstat-nat:
 ####
 ####
-if   [ "$first_option" = "netstat-nat" ]; then  echo $give_cover
+if   [ "$first_option" == "netstat-nat" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sockets with netstat for proxy ] || ||"
-if [ "$command_netstat_nat" = "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
+if [ "$command_netstat_nat" == "$NULL" ]; then echo "$tab [ fail ] [ Install netstat-nat command ]"; exit; fi
 echo "$duo_md [ info ] [ The devices list with netstat for nat ]"
 $command_netstat_nat
 exit; fi
@@ -7053,7 +7053,7 @@ exit; fi
 #### :rutina-inicial-ipforward-on:
 ####
 ####
-if   [ "$first_option" = "ipforward-on" ]; then  echo $give_cover
+if   [ "$first_option" == "ipforward-on" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Active ip forwading in kernel ] || ||"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=1 ; done
@@ -7066,7 +7066,7 @@ exit; fi
 #### :rutina-inicial-ipforward-off:
 ####
 ####
-if   [ "$first_option" = "ipforward-off" ]; then  echo $give_cover
+if   [ "$first_option" == "ipforward-off" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Deactive ip forwading in kernel ] || ||"
 for a in $($command_sysctl -a | $command_grep -i  forwarding | cut -d " " -f 1)
 do $command_sysctl -w $a=0 ; done
@@ -7079,7 +7079,7 @@ exit; fi
 #### :rutina-inicial-list-alltables:
 ####
 ####
- if [ "$first_option" = "list-alltables" ]; then  echo $give_cover
+ if [ "$first_option" == "list-alltables" ]; then  echo $give_cover
  echo "$header_ok [ $first_option ]  [ List all rules ] || ||"
  echo 
  echo; echo; echo "### LIST ARPTABLES ###"
@@ -7116,7 +7116,7 @@ exit; fi
 #### :rutina-inicial-listn-alltables:
 ####
 ####
- if [ "$first_option" = "listn-alltables" ]; then  echo $give_cover
+ if [ "$first_option" == "listn-alltables" ]; then  echo $give_cover
  echo "$header_ok [ $first_option ]  [ List all rules ] || ||"
  echo 
  echo; echo; echo "### LIST EBTABLES ###"
@@ -7153,7 +7153,7 @@ exit; fi
 #### :rutina-inicial-list4:
 ####
 ####
-if [ "$first_option" = "list4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "list4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ list4 ] [ List iptables filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -7187,7 +7187,7 @@ exit; fi
 #### :rutina-inicial-list6:
 ####
 ####
-if [ "$first_option" = "list6-ip" ]; then  echo $give_cover; echo "$message_info_rules"
+if [ "$first_option" == "list6-ip" ]; then  echo $give_cover; echo "$message_info_rules"
 echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -7223,7 +7223,7 @@ exit; fi
 #### :rutina-inicial-listn4-ip:
 ####
 ####
-if [ "$first_option" = "listn4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
+if [ "$first_option" == "listn4-ip" ]; then echo $give_cover ; echo "$message_info_rules"
 echo "$header_ok [ list4 ] [ List iptables filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -7257,7 +7257,7 @@ exit; fi
 #### :rutina-inicial-listn6-ip:
 ####
 ####
-if [ "$first_option" = "listn6-ip" ]; then  echo $give_cover; echo "$message_info_rules"
+if [ "$first_option" == "listn6-ip" ]; then  echo $give_cover; echo "$message_info_rules"
 echo "$header_ok [ list6 ] [ List iptables filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacyseis=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 )
@@ -7293,7 +7293,7 @@ exit; fi
 #### :rutina-inicial-status:
 ####
 ####
-if [ "$first_option" = "status" ]; then
+if [ "$first_option" == "status" ]; then
 ####
 ####
 $cmd_binary -txt list4
@@ -7311,7 +7311,7 @@ exit; fi
 #### :rutina-inicial-statusn:
 ####
 ####
-if [ "$first_option" = "statusn" ]; then
+if [ "$first_option" == "statusn" ]; then
 ####
 ####
 $cmd_binary -txt listn4
@@ -7329,7 +7329,7 @@ exit; fi
 #### :rutina-inicial-listnum:
 ####
 ####
-if [ "$first_option" = "listnum" ]; then echo $give_cover
+if [ "$first_option" == "listnum" ]; then echo $give_cover
 echo "$header_ok [ list ] [ List iptables numerical filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacycuatro=$("$command_iptables_legacy" -t filter -L INPUT 1 && \
 "$command_iptables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -7363,7 +7363,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter6:
 ####
 ####
-if [ "$first_option" = "listnum6" ]; then echo $give_cover
+if [ "$first_option" == "listnum6" ]; then echo $give_cover
 echo "$header_ok [ list ] [ List iptables numerical filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 legacycuatro=$("$command_ip6tables_legacy" -t filter -L INPUT 1 && \
 "$command_ip6tables_legacy" -t filter -L OUTPUT 1 ) &> /dev/null
@@ -7397,7 +7397,7 @@ exit; fi
 #### :rutina-inicial-list-filter4:
 ####
 ####
-if [ "$first_option" = "list-filter4" ]; then echo $give_cover
+if [ "$first_option" == "list-filter4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-ip4"
@@ -7420,7 +7420,7 @@ exit; fi
 #### :rutina-inicial-list-forward:
 ####
 ####
-if [ "$first_option" = "list-forward" ]; then  echo $give_cover
+if [ "$first_option" == "list-forward" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List iptables filter forward ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-forward-ip4"
@@ -7441,7 +7441,7 @@ exit; fi
 #### :rutina-inicial-list-filter6:
 ####
 ####
-if [ "$first_option" = "list-filter6" ]; then  echo $give_cover
+if [ "$first_option" == "list-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-ip6"
@@ -7464,7 +7464,7 @@ exit; fi
 #### :rutina-inicial-list-forward6:
 ####
 ####
-if [ "$first_option" = "list-forward6" ]; then  echo $give_cover
+if [ "$first_option" == "list-forward6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="filter-forward-ip6"
@@ -7485,7 +7485,7 @@ exit; fi
 #### :rutina-inicial-list-nat-4:
 ####
 ####
- if [ "$first_option" = "list-nat4" ]; then  echo $give_cover
+ if [ "$first_option" == "list-nat4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables nat ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="nat-ip4"
@@ -7506,7 +7506,7 @@ exit; fi
 #### :rutina-inicial-list-nat6:
 ####
 ####
-if [ "$first_option" = "list-nat6" ]; then echo $give_cover
+if [ "$first_option" == "list-nat6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables nat ipv6] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="nat-ip6"
@@ -7528,7 +7528,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter4:
 ####
 ####
-if [ "$first_option" = "listnum-filter4" ]; then  echo $give_cover
+if [ "$first_option" == "listnum-filter4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-ip4"
 echo
@@ -7548,7 +7548,7 @@ exit; fi
 #### :rutina-inicial-list-forwardnum:
 ####
 ####
-if [ "$first_option" = "list-forwardnum" ]; then  echo $give_cover
+if [ "$first_option" == "list-forwardnum" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv4 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-forward-ip4"
 echo
@@ -7568,7 +7568,7 @@ exit; fi
 #### :rutina-inicial-listnum-filter6:
 ####
 ####
-if [ "$first_option" = "listnum-filter6" ]; then  echo $give_cover
+if [ "$first_option" == "listnum-filter6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-ip6"
 echo
@@ -7588,7 +7588,7 @@ exit; fi
 #### :rutina-inicial-list-forwardnum6:
 ####
 ####
-if [ "$first_option" = "list-forwardnum6" ]; then  echo $give_cover
+if [ "$first_option" == "list-forwardnum6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables filter forward ipv6 in numerical ] [ it is only sufficent or with legacy or with nft ] || ||"
 fromrules="filter-forward-ip6"
 echo
@@ -7608,7 +7608,7 @@ exit; fi
 #### :rutina-inicial-list-mangle4:
 ####
 ####
-if [ "$first_option" = "list-mangle4" ]; then  echo $give_cover
+if [ "$first_option" == "list-mangle4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables mangle ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="mangle-ip4"
@@ -7630,7 +7630,7 @@ exit; fi
 #### :rutina-inicial-list-mangle6:
 ####
 ####
-if [ "$first_option" = "list-mangle6" ]; then echo $give_cover
+if [ "$first_option" == "list-mangle6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables mangle ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="mangle-ip6"
@@ -7652,7 +7652,7 @@ exit; fi
 #### :rutina-inicial-list-raw4:
 ####
 ####
-if [ "$first_option" = "list-raw4" ]; then  echo $give_cover
+if [ "$first_option" == "list-raw4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables raw ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="raw-ip4"
@@ -7673,7 +7673,7 @@ exit; fi
 #### :rutina-inicial-list-raw6:
 ####
 ####
-if [ "$first_option" = "list-raw6" ]; then  echo $give_cover
+if [ "$first_option" == "list-raw6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables raw ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="raw-ip6"
@@ -7694,7 +7694,7 @@ exit; fi
 #### :rutina-inicial-list-security4:
 ####
 ####
-if [ "$first_option" = "list-security4" ]; then  echo $give_cover
+if [ "$first_option" == "list-security4" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables security ipv4 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="security-ip4"
@@ -7715,7 +7715,7 @@ exit; fi
 #### :rutina-inicial-list-security6:
 ####
 ####
-if [ "$first_option" = "list-security6" ]; then  echo $give_cover
+if [ "$first_option" == "list-security6" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List iptables security ipv6 ] [ it is only sufficent or with legacy or with nft ] || ||"
 echo "$message_info_rules"
 fromrules="security-ip6"
@@ -7736,7 +7736,7 @@ exit; fi
 #### :rutina-inicial-list-ebtables:
 ####
 ####
-if [ "$first_option" = "list-ebtables" ]; then  echo $give_cover
+if [ "$first_option" == "list-ebtables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List ebtables ] || ||"
 fromrules="ebtables"
 echo
@@ -7756,7 +7756,7 @@ exit; fi
 #### :rutina-inicial-list-arptables:
 ####
 ####
-if [ "$first_option" = "list-arptables" ]; then  echo $give_cover
+if [ "$first_option" == "list-arptables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List arptables ipv4 ] || ||"
 fromrules="arptables"
 echo
@@ -7772,7 +7772,7 @@ exit; fi
 #### :rutina-inicial-listn-arptables:
 ####
 ####
-if [ "$first_option" = "listn-arptables" ]; then  echo $give_cover
+if [ "$first_option" == "listn-arptables" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ List arptables ipv4 ] || ||"
 fromrules="arptables"
 echo
@@ -7788,12 +7788,12 @@ exit; fi
 #### :rutina-inicial-new-full-config:
 ####
 ####
-if [ "$first_option" = "new-full-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
+if [ "$first_option" == "new-full-config" ] && [ "$second_option" == "$NULL" ]  ; then echo $give_cover
 echo "$tab [ info ] [ usage: ] [ $cmd_binary new-full-config config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" = "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
+if [ "$first_option" == "new-full-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_eng" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -7809,12 +7809,12 @@ exit; fi
 #### :rutina-inicial-nueva-completa-config:
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
+if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" == "$NULL" ]  ; then echo $give_cover
 echo "$tab [ info ] [ usage: ] [ $cmd_binary nueva-completa-config config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" = "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
+if [ "$first_option" == "nueva-completa-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultfullcfg_spa" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -7830,12 +7830,12 @@ exit; fi
 #### :rutina-inicial-new-mini-config:
 ####
 ####
-if [ "$first_option" = "new-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then echo $give_cover
+if [ "$first_option" == "new-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then echo $give_cover
 echo "$tab [ info ] [ usage: ] [ $cmd_binary new-mini-config config-new ]"
 exit; fi
 ####
 ####
-if [ "$first_option" = "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
+if [ "$first_option" == "new-mini-config" ] && [ "$second_option" != "$NULL" ] ; then echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_eng" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -7851,12 +7851,12 @@ exit; fi
 #### :rutina-inicial-nueva-mini-config:
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" = "$NULL" ]  ; then  echo $give_cover
+if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" == "$NULL" ]  ; then  echo $give_cover
 echo "$tab [ info ] [ usage: ] [ $cmd_binary nueva-mini-config config-nueva ]"
 exit; fi
 ####
 ####
-if [ "$first_option" = "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
+if [ "$first_option" == "nueva-mini-config" ] && [ "$second_option" != "$NULL" ] ; then  echo $give_cover
 archivo="$second_option"
 cp "$defaultminicfg_spa" "$directory_config/$archivo"
 $favorite_text_editor $directory_config/$archivo
@@ -7872,7 +7872,7 @@ exit; fi
 #### :rutina-inicial-modify-config:
 ####
 ####
-if [ "$first_option" = "modify-config" ]; then  echo $give_cover
+if [ "$first_option" == "modify-config" ]; then  echo $give_cover
 ####
 ###
 if [ ! -f "$directory_config/$second_option" ] ; then $nada
@@ -7896,7 +7896,7 @@ clear ; exit ; fi
 #### :rutina-inicial-show-config:
 ####
 ####
-if [ "$first_option" = "show-config" ] ; then echo $give_cover
+if [ "$first_option" == "show-config" ] ; then echo $give_cover
 ####
 ####
 if [ ! -f "$directory_config"/"$second_option" ] ; then 
@@ -7917,7 +7917,7 @@ exit; fi
 #### :rutina-inicial-del-config:
 ####
 ####
-if [ "$first_option" = "del-config" ]; then echo $give_cover
+if [ "$first_option" == "del-config" ]; then echo $give_cover
 ####
 ####
 if [ ! -f $directory_config/$second_option ] ; then
@@ -7939,7 +7939,7 @@ exit ; fi
 #### :rutina-inicial-show-config:
 ####
 ####
-if [ "$first_option" = "show-config" ] ; then echo $give_cover
+if [ "$first_option" == "show-config" ] ; then echo $give_cover
 ####
 ####
 if [ -f "$directory_config"/"$second_option" ] ; then 
@@ -7956,7 +7956,7 @@ exit; fi
 #### :rutina-inicial-del-config:
 ####
 ####
-if [ "$first_option" = "del-config" ]; then echo $give_cover
+if [ "$first_option" == "del-config" ]; then echo $give_cover
 ####
 ####
 if [ -f $directory_config/$second_option ] ; then
@@ -7974,7 +7974,7 @@ exit ; fi
 #### :rutina-inicial-sudofw-adduser:
 ####
 ####
-if   [ "$first_option" = "sudofw-adduser" ]; then echo $give_cover
+if   [ "$first_option" == "sudofw-adduser" ]; then echo $give_cover
 case $second_option in
 "$NULL") echo  ; echo "$tab [ info ] [ usage: ] [ $cmd_binary sudofw-adduser user ]" ; exit ;;
 *) autorizado="$second_option" ;; esac
@@ -7992,7 +7992,7 @@ exit ; fi
 #### :rutina-inicial-sudofw-deluser:
 ####
 ####
-if   [ "$first_option" = "sudofw-deluser" ]; then echo $give_cover
+if   [ "$first_option" == "sudofw-deluser" ]; then echo $give_cover
 rm /etc/sudoers.d/$cmd_config &> /dev/null
 rm /etc/bash_completion.d/$cmd_config &> /dev/null
 echo "$duo_md [  ok  ] [ deleted auth sudo ] [ /etc/sudoers.d/$cmd_config         ]"
@@ -8030,7 +8030,7 @@ exit;  fi
 #### :rutina-inicial-aliasfw-list:
 ####
 ####
-if   [ "$first_option" = "aliasfw-list" ]; then echo $give_cover
+if   [ "$first_option" == "aliasfw-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ list alias and autocomplete for $cmd_config ]"
 echo 
 echo "$duo_md [ info ] [ alias file ] [  /etc/profile.d/$cmd_config ]"
@@ -8046,7 +8046,7 @@ exit; fi
 #### :rutina-inicial-md5sum:
 ####
 ####
-if   [ "$first_option" = "md5sum" ]; then echo $give_cover
+if   [ "$first_option" == "md5sum" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show sum md5 from one file ] || ||"
 if [ "$command_md5sum" == "$NULL" ]; then echo "$duo_md [ info ] [ Install md5sum ]"; exit ; fi
 if [ "$second_option" == "$NULL" ]; then echo "$duo_md [ info ] [ $cmd_binary md5sum file ] [ choose file ]"; exit; fi
@@ -8062,7 +8062,7 @@ exit; fi
 #### :rutina-inicial-rule-add-shield:
 ####
 ####
-if   [ "$first_option" = "rule-add-shield" ]; then echo $give_cover
+if   [ "$first_option" == "rule-add-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Add shield ssh ] || ||"
 ####
 ####
@@ -8128,7 +8128,7 @@ exit ; fi
 #### :rutina-inicial-rule-del-shield:
 ####
 ####
-if   [ "$first_option" = "rule-del-shield" ]; then echo $give_cover
+if   [ "$first_option" == "rule-del-shield" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset shield ssh ] || ||"
 $cmd_binary save no_default_tmp &> /dev/null
 for shield in $($command_ls -1 $directory_fwrecover/no_default_tmp-* | $command_grep -i -v less)
@@ -8274,7 +8274,7 @@ else) exit ;; esac ; exit; fi
 #### :rutina-inicial-iw-scan:
 ####
 ####
-if   [ "$first_option" = "iw-scan" ]; then echo $give_cover
+if   [ "$first_option" == "iw-scan" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show SSID from net wifi ] || ||"
 echo 
 if   [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
@@ -8289,7 +8289,7 @@ exit; fi
 #### :rutina-inicial-iw-info:
 ####
 ####
-if   [ "$first_option" = "iw-info" ]; then echo $give_cover
+if   [ "$first_option" == "iw-info" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show connected SSID from net wifi ] || ||"
 echo 
 if   [ "$command_iw" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install iw ]" ; exit ; fi
@@ -8303,7 +8303,7 @@ exit; fi
 #### :rutina-inicial-wpa-save:
 ####
 ####
-if   [ "$first_option" = "wpa-save" ]; then echo $give_cover
+if   [ "$first_option" == "wpa-save" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $command_wpa_passphrase ] [ $command_wpa_supplicant ] || ||"
 echo 
 if [ "$command_wpa_passphrase" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_passphrase ]" ; exit ; fi
@@ -8324,7 +8324,7 @@ exit; fi
 #### :rutina-inicial-wpa-load:
 ####
 ####
-if   [ "$first_option" = "wpa-load" ]; then echo $give_cover
+if   [ "$first_option" == "wpa-load" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Connect to file wpa ] [ For example: $cmd_binary wpa-load wpa_file1 ] || ||"
 echo 
 if [ "$command_wpa_supplicant" == "$NULL" ]; then  echo "$duo_md [ info ] [ Install wpa_supplicant ]" ; exit ; fi
@@ -8345,7 +8345,7 @@ exit; fi
 #### :rutina-inicial-dhcp-client:
 ####
 ####
-if   [ "$first_option" = "dhcp-client" ]; then echo $give_cover
+if   [ "$first_option" == "dhcp-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Discover ip network ] [ Using "$favorite_dhcp_command" ] || ||"
 echo 
 if   [ "$favorite_dhcp_command" != "$NULL" ]; then $favorite_dhcp_command ; $command_ifconfig 
@@ -8359,7 +8359,7 @@ exit; fi
 #### :rutina-inicial-ipforward-list:
 ####
 ####
-if   [ "$first_option" = "ipforward-list" ]; then echo $give_cover
+if   [ "$first_option" == "ipforward-list" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Show ip forwading in kernel ] || ||"
 echo "$tab [ Active 1 or deactive 0 for ipforwading with sysctl ]"
 $command_sysctl -a | $command_grep -i  forwarding
@@ -8372,7 +8372,7 @@ exit; fi
 #### :rutina-inicial-tcpdump:
 ####
 ####
-if   [ "$first_option" = "tcpdump" ]; then echo $give_cover
+if   [ "$first_option" == "tcpdump" ]; then echo $give_cover
 case $command_tcpdump in "$NULL") echo "$tab [ fail ] [ Install tcpdump command ]" ; exit ;; esac
 echo "$tab [ info ] [ launch several seconds tcpdump ]"
 echo 
@@ -8391,7 +8391,7 @@ exit; fi
 #### :rutina-inicial-info-nodes:
 ####
 ####
-if   [ "$first_option" = "info-nodes" ]; then  echo $give_cover
+if   [ "$first_option" == "info-nodes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ Show the list arp-scan in the lan ] || ||"
 if [ $command_arp_scan == "$NULL" ]; then echo "$tab [ fail ] [ install arp-scan command ]"; exit ; fi
 echo "$duo_md [ info ] [ local net: ip lan .. ]"
@@ -8408,7 +8408,7 @@ exit; fi
 #### :rutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
+if [ "$first_option" == "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
 head -600 $0 | $command_grep -B 2 fwiptables-file-default > $default_preferences
@@ -8422,7 +8422,7 @@ exit; fi
 #### :rutina-inicial-preferences-read:
 ####
 ####
-if [ "$first_option" = "preferences-read" ]; then  echo $give_cover
+if [ "$first_option" == "preferences-read" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ show the default $cmd_binary ] || ||"
 echo 
 cat $default_preferences
@@ -8438,7 +8438,7 @@ exit; fi
 #### :rutina-inicial-preferences-modify:
 ####
 ####
-if [ "$first_option" = "preferences-modify" ]; then  echo $give_cover
+if [ "$first_option" == "preferences-modify" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ modify the default $cmd_binary ] || ||"
 echo 
 echo 
@@ -8475,7 +8475,7 @@ clear; exit; fi
 #### :rutina-inicial-names:
 ####
 ####
-if [ "$first_option" = "names" ]; then  echo $give_cover
+if [ "$first_option" == "names" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ List names from firewall saved ] || ||"
 echo "$duo_md [ info ] [ list configs files in standard format ]"
 echo "$duo_md [ info ] [ folder ] [ $directory_fwrecover ]"
@@ -8495,7 +8495,7 @@ exit; fi
 #### :rutina-inicial-reset:
 ####
 ####
-if [ "$first_option" = "reset" ]; then echo $give_cover
+if [ "$first_option" == "reset" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Reset the firewall ] || ||"
 echo "$duo_md [ info ] [ Reseting the firewall ]"
 $cmd_binary stop &> /dev/null
@@ -8510,7 +8510,7 @@ exit; fi
 #### :rutina-inicial-wizard-mini:
 ####
 ####
-if [ "$first_option" = "wizard-mini" ]; then echo 
+if [ "$first_option" == "wizard-mini" ]; then echo 
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-mini" ; name_firewall="wizard-mini"
 cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $favorite_text_editor "$directory_temporal/$cmd_config-$archivo"
@@ -8528,7 +8528,7 @@ exit; fi
 #### :rutina-inicial-wizard-full:
 ####
 ####
-if [ "$first_option" = "wizard-full" ]; then $nada
+if [ "$first_option" == "wizard-full" ]; then $nada
 archivo="$first_option" ; launch_firewall=yes ; type_firewall="wizard-full" ; name_firewall="wizard-full"
 cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
 $favorite_text_editor "$directory_temporal/$cmd_config-$archivo"
@@ -8546,13 +8546,13 @@ exit; fi
 #### :rutina-inicial-load:
 ####
 ####
-if [ "$first_option" = "load" ]; then 
+if [ "$first_option" == "load" ]; then 
 ####
 ####
 #### English: Void in second option
 ####
 ####
-if [ "second_option" = "$NULL" ]; then
+if [ "second_option" == "$NULL" ]; then
 $cmd_binary names ; echo "$tab [ info ] [ usage: $cmd_binary load fw-to-load ] [ See: $cmd_binary names ]" ; exit ; fi
 ####
 ####
@@ -8612,7 +8612,7 @@ exit; fi
 #### :rutina-inicial-save:
 ####
 ####
-if [ "$first_option" = "save" ]; then echo $give_cover
+if [ "$first_option" == "save" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ save one firewall with one name ] || ||"
 case "$second_option" in
 "$NULL") echo "$tab [ info ] [ Usage: $cmd_binary save fw-to-save ]" ; exit ;;
@@ -8621,7 +8621,7 @@ esac
 ####
 ####
 echo "$duo_md [ info ] [ saving firewall ] [ $archivofin ]"
-if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
+if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
 $command_arptables-save          &> $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
 $command_ebtables-save           &> $directory_fwrecover/$archivofin-ebtables; fi
@@ -8638,7 +8638,7 @@ $command_ip6tables_legacy-save   &> $directory_fwrecover/$archivofin-legacy-ipv6
 ####
 ####
 echo "$duo_md [  ok  ] [ firewall saved ] [ $archivofin ]"
-if [ "$command_arptables" = "$NULL"  ]; then $nada ; else
+if [ "$command_arptables" == "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-arptables; fi
 if [ "$command_ebtables"  = "$NULL"  ]; then $nada ; else
 $command_ls -l $directory_fwrecover/$archivofin-ebtables; fi
@@ -8658,7 +8658,7 @@ exit; fi
 #### :rutina-inicial-show:
 ####
 ####
-if [ "$first_option" = "show" ]; then  echo $give_cover
+if [ "$first_option" == "show" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show one firewall saved ] || ||"
 echo 
 case "$second_option" in
@@ -8695,7 +8695,7 @@ exit; fi
 #### :rutina-inicial-actual:
 ####
 ####
-if [ "$first_option" = "actual" ]; then echo $give_cover
+if [ "$first_option" == "actual" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the last firewall saved ] || ||"
 echo 
 $command_arptables-save          &> $directory_fwrecover/$cmd_config-actual-arptables
@@ -8727,7 +8727,7 @@ exit; fi
 #### :rutina-inicial-stop:
 ####
 ####
-if [ "$first_option" = "stop" ]; then echo $give_cover
+if [ "$first_option" == "stop" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Stop the firewall ] || ||"
 ####
 ####
@@ -8757,7 +8757,7 @@ exit; fi
 #### :rutina-inicial-continue:
 ####
 ####
-if [ "$first_option" = "continue" ]; then echo $give_cover
+if [ "$first_option" == "continue" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ Continue the stoped firewall ] || ||"
 ####
 ####
@@ -8781,7 +8781,7 @@ exit; fi
 #### :rutina-inicial-ping-ip4:
 ####
 ####
-if   [ "$first_option" = "ping-ip4" ]; then echo $give_cover
+if   [ "$first_option" == "ping-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]   [ ping ip or host with ipv4 ] || ||"
 echo 
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
@@ -8792,7 +8792,7 @@ case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; e
 ####
 $cmd_binary stop
 echo $head_waiting_gui
-if [ "$second_option" = "$NULL" ]; then $nada ; else server_ping_ipv4="$second_option"; fi
+if [ "$second_option" == "$NULL" ]; then $nada ; else server_ping_ipv4="$second_option"; fi
 echo "$duo_md [ ok ] [  ping -4 -c 5 -A $server_ping_ipv4 ]"
 timeout -s SIGINT -v $server_waiting $command_ping -4 -c 5 -A $server_ping_ipv4
 $cmd_binary continue
@@ -8806,7 +8806,7 @@ exit; fi
 #### :rutina-inicial-ping-ip6:
 ####
 ####
-if   [ "$first_option" = "ping-ip6" ]; then echo $give_cover
+if   [ "$first_option" == "ping-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ ping one ip or host with ipv6 ] || ||"
 echo 
 case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; exit ;; esac
@@ -8817,7 +8817,7 @@ case $command_ping in "$NULL") echo "$tab [ fail ] [ Install ping command ]" ; e
 ####
 $cmd_binary stop
 echo $head_waiting_gui
-if [ "$second_option" = "$NULL" ]; then $nada ; else server_ping_ipv6="$second_option"; fi
+if [ "$second_option" == "$NULL" ]; then $nada ; else server_ping_ipv6="$second_option"; fi
 echo "$duo_md [ ok ] [ ping -6 -c 5 -A $server_ping_ipv6 ]"
 timeout -s SIGINT -v $server_waiting $command_ping -6 -c 5 -A $server_ping_ipv6
 $cmd_binary continue
@@ -8831,7 +8831,7 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip4:
 ####
 ####
-if   [ "$first_option" = "tracetcp-ip4" ]; then echo $give_cover
+if   [ "$first_option" == "tracetcp-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace ip or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8842,7 +8842,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 ####
 $cmd_binary stop
 echo $head_waiting_gui
-if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
+if [ "$second_option" == "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
 echo "$duo_md [ ok ] [ traceroute -4 -T $server_traceroute_ipv4 ] "
 timeout -s SIGINT -v $server_waiting $command_traceroute -4 -T $server_traceroute_ipv4
 echo $head_waiting_gui
@@ -8857,7 +8857,7 @@ exit; fi
 #### :rutina-inicial-tracetcp-ip6:
 ####
 ####
-if   [ "$first_option" = "tracetcp-ip6" ]; then echo $give_cover
+if   [ "$first_option" == "tracetcp-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace one ip or host with ipv6 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;; esac
@@ -8868,7 +8868,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 ####
 $cmd_binary stop
 echo $head_waiting_gui
-if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
+if [ "$second_option" == "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
 echo "$duo_md [ ok ] [ traceroute -6 -T $server_traceroute_ipv6 ]"
 timeout -s SIGINT -v $server_waiting $command_traceroute -6 -T $server_traceroute_ipv6
 $cmd_binary continue
@@ -8882,7 +8882,7 @@ exit; fi
 #### :rutina-inicial-traceicmp-ip4:
 ####
 ####
-if   [ "$first_option" = "traceicmp-ip4" ]; then echo $give_cover
+if   [ "$first_option" == "traceicmp-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8893,7 +8893,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 ####
 $cmd_binary stop
 echo $head_waiting_gui
-if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
+if [ "$second_option" == "$NULL" ]; then $nada ; else server_traceroute_ipv4="$second_option"; fi
 echo "$duo_md [ ok ] [ traceroute -4 -I $server_traceroute_ipv4 ]"
 timeout -s SIGINT -v $server_waiting $command_traceroute -4 -I $server_traceroute_ipv4
 echo $head_waiting_gui
@@ -8908,7 +8908,7 @@ exit; fi
 #### :rutina-inicial-traceicmp-ip6:
 ####
 ####
-if   [ "$first_option" = "traceicmp-ip6" ]; then echo $give_cover
+if   [ "$first_option" == "traceicmp-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ trace icmp or host with ipv4 ] || ||"
 echo 
 case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute command ]" ; exit ;;  esac
@@ -8919,7 +8919,7 @@ case $command_traceroute in "$NULL") echo "$tab [ fail ] [ Install traceroute co
 ####
 $cmd_binary stop
 echo $head_waiting_gui
-if [ "$second_option" = "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
+if [ "$second_option" == "$NULL" ]; then $nada ; else server_traceroute_ipv6="$second_option"; fi
 echo "$duo_md [ ok ] [ traceroute -6 -I $server_traceroute_ipv6 ]"
 timeout -s SIGINT -v $server_waiting $command_traceroute -6 -I $server_traceroute_ipv4
 echo $head_waiting_gui
@@ -8934,7 +8934,7 @@ exit; fi
 #### :rutina-inicial-host:
 ####
 ####
-if   [ "$first_option" = "host" ]; then echo $give_cover
+if   [ "$first_option" == "host" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
 echo 
 case $command_host in "$NULL") echo "$tab [ fail ] [ Install host command ]" ; exit ;; esac
@@ -8954,7 +8954,7 @@ exit; fi
 #### :rutina-inicial-dig:
 ####
 ####
-if   [ "$first_option" = "dig" ]; then echo $give_cover
+if   [ "$first_option" == "dig" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
 echo 
 case $command_dig in "$NULL") echo "$tab [ fail ] [ Install dig command ]" ; exit ;; esac
@@ -8974,7 +8974,7 @@ exit; fi
 #### :rutina-inicial-resolveip:
 ####
 ####
-if   [ "$first_option" = "resolveip" ]; then echo $give_cover
+if   [ "$first_option" == "resolveip" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve one ip or host ] || ||"
 echo 
 case $command_resolveip in "$NULL") echo "$tab [ fail ] [ Install resolveip command ]" ; exit ;; esac
@@ -8994,7 +8994,7 @@ exit; fi
 #### :rutina-inicial-geoip:
 ####
 ####
-if   [ "$first_option" = "geoip" ]; then echo $give_cover
+if   [ "$first_option" == "geoip" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ resolve the location to one ip or host ] || ||"
 echo 
 case $command_geoiplookup in "$NULL") echo "$tab [ fail ] [ Install geoiplookup command ]" ; exit  ;; esac
@@ -9013,10 +9013,10 @@ exit; fi
 #### :rutina-inicial-ntpdate-client:
 ####
 ####
-if   [ "$first_option" = "ntpdate-client" ]; then echo $give_cover
+if   [ "$first_option" == "ntpdate-client" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ update the computer time and date from internet ] || ||"
 echo
-if [ "$favorite_date_command" = "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
+if [ "$favorite_date_command" == "$NULL" ]; then echo "$tab [ fail ] [ Install one ntp client ]" ; fi
 echo "$tab Old date: $($command_date)"
 echo "$tab [ Updating the time and the date .. ]"
 pool0="0.debian.pool.ntp.org"
@@ -9033,7 +9033,7 @@ exit; fi
 #### :rutina-inicial-nmap-tcp:
 ####
 ####
-if   [ "$first_option" = "nmap-tcp" ]; then echo $give_cover
+if   [ "$first_option" == "nmap-tcp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap tcp ] || ||"
 echo 
 case $command_nmap in $NULL) echo install nmap ; exit ;; esac
@@ -9071,7 +9071,7 @@ exit; fi
 #### :rutina-inicial-nmap-syn:
 ####
 ####
-if   [ "$first_option" = "nmap-syn" ]; then echo $give_cover
+if   [ "$first_option" == "nmap-syn" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap syn ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
@@ -9107,7 +9107,7 @@ exit; fi
 #### :rutina-inicial-nmap-fin:
 ####
 ####
-if   [ "$first_option" = "nmap-fin" ]; then echo $give_cover
+if   [ "$first_option" == "nmap-fin" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap fin ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ info ] [ Install nmap command ]" ; exit ;; esac
@@ -9145,7 +9145,7 @@ exit; fi
 #### :rutina-inicial-nmap-udp:
 ####
 ####
-if   [ "$first_option" = "nmap-udp" ]; then echo $give_cover
+if   [ "$first_option" == "nmap-udp" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap udp ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
@@ -9183,7 +9183,7 @@ exit; fi
 #### :rutina-inicial-nmap-ping:
 ####
 ####
-if   [ "$first_option" = "nmap-ping" ]; then echo $give_cover
+if   [ "$first_option" == "nmap-ping" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ scan with nmap ping ] || ||"
 echo 
 case $command_nmap in "$NULL") echo "$tab [ fail ] [ Install nmap command ]" ; exit ;; esac
@@ -9219,7 +9219,7 @@ exit; fi
 #### :rutina-inicial-free-ram:
 ####
 ####
-if   [ "$first_option" = "free-ram" ]; then echo $give_cover
+if   [ "$first_option" == "free-ram" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ freedom from innecesary ram ] || ||"
 case $command_tee in "$NULL") echo "$tab [ fail ] [ Install tee command ]"; exit ;; esac
 echo "$duo_md [ info ] Actual Memory"
@@ -9237,7 +9237,7 @@ exit; fi
 #### :rutina-inicial-speed-disk:
 ####
 ####
-if   [ "$first_option" = "speed-disk" ]; then  echo $give_cover
+if   [ "$first_option" == "speed-disk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the disc speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 echo "$tab Testing speed with the temporal file $directory_temporal/borrame.img.img about 100Mb"
@@ -9254,7 +9254,7 @@ exit; fi
 #### :rutina-inicial-speed-ram:
 ####
 ####
-if   [ "$first_option" = "speed-ram" ]; then  echo $give_cover
+if   [ "$first_option" == "speed-ram" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test the ram speed ] || ||"
 case $command_dd in "$NULL") echo "$tab [ fail ] [ Install dd command ]"; exit ;; esac
 case "$(mount | $command_grep -i  "/tmp type tmpfs" | wc -l)" 
@@ -9273,7 +9273,7 @@ exit; fi
 #### :rutina-inicial-speed-glx:
 ####
 ####
-if   [ "$first_option" = "speed-glx" ]; then  echo $give_cover
+if   [ "$first_option" == "speed-glx" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test gl mesa3D speed ] [ for default max $server_waiting seconds ] || ||"
 case $command_glxgears in "$NULL") echo "$tab [ fail ] [ Install mesa utils ]"; exit ;; esac
 vblank_mode=0  timeout -s SIGINT -v $server_waiting $command_glxgears
@@ -9287,7 +9287,7 @@ exit; fi
 #### :rutina-inicial-speed-pi:
 ####
 ####
-if   [ "$first_option" = "speed-pi" ]; then  echo $give_cover
+if   [ "$first_option" == "speed-pi" ]; then  echo $give_cover
 digitos=2000
 echo "$header_ok [ $first_option ]  [ test pi speed ] [ Calculate pi number with $digitos digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc ]"; exit ;; esac
@@ -9302,7 +9302,7 @@ exit; fi
 #### :rutina-inicial-speed-cpu:
 ####
 ####
-if   [ "$first_option" = "speed-cpu" ]; then  echo $give_cover
+if   [ "$first_option" == "speed-cpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ test cpu processor ] [ calcule pi with 2000 digits ] || ||"
 case $command_bc in "$NULL") echo "$tab [ fail ] [ Install bc command ]"; exit ;; esac
 echo "$duo_md [ info ] [ Calculate pi with 2000 digits in only one cpu ]"
@@ -9317,7 +9317,7 @@ exit; fi
 #### :rutina-inicial-radio-mp3:
 ####
 ####
-if   [ "$first_option" = "radio-mp3" ]; then  echo $give_cover
+if   [ "$first_option" == "radio-mp3" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: $cmd_binary preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9326,7 +9326,7 @@ echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
 ####
 ####
-if [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" == "$NULL" ]; then $nada
 #### emisora="$radio_mp3"
 echo "$duo_md [ info ] [ launch $cmd_binary radio-rockfm ]       [ for radio rockfm    ]"
 echo "$duo_md [ info ] [ launch $cmd_binary radio-kissfm ]       [ for radio kissfm    ]"
@@ -9349,7 +9349,7 @@ exit; fi
 #### :rutina-inicial-radio-cadena100:
 ####
 ####
-if   [ "$first_option" = "radio-cadena100" ]; then  echo $give_cover
+if   [ "$first_option" == "radio-cadena100" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9358,7 +9358,7 @@ echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
 ####
 ####
-if [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" == "$NULL" ]; then $nada
 emisora="$radio_cadena100"
 else emisora="$second_option"; fi
 ####
@@ -9376,7 +9376,7 @@ exit; fi
 #### :rutina-inicial-radio-rockfm:
 ####
 ####
-if   [ "$first_option" = "radio-rockfm" ]; then  echo $give_cover
+if   [ "$first_option" == "radio-rockfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9385,7 +9385,7 @@ echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
 ####
 ####
-if [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" == "$NULL" ]; then $nada
 emisora="$radio_rockfm"
 else emisora="$second_option"; fi
 ####
@@ -9403,7 +9403,7 @@ exit; fi
 #### :rutina-inicial-radio-kissfm:
 ####
 ####
-if   [ "$first_option" = "radio-kissfm" ]; then  echo $give_cover
+if   [ "$first_option" == "radio-kissfm" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ Listen radio online ]"
 echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for only protocol http ] || ||"
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
@@ -9412,7 +9412,7 @@ echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
 ####
 ####
-if [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" == "$NULL" ]; then $nada
 emisora="$radio_kissfm"
 else emisora="$second_option"; fi
 ####
@@ -9428,7 +9428,7 @@ exit; fi
 ##########    english: el tiempo: muestra el tiempo con wttr.in   ##########
 ##########    spanish: weather: show the weather with wttr.in     ##########
 #### :rutina-inicial-weather:
-if   [ "$first_option" = "weather" ]; then 
+if   [ "$first_option" == "weather" ]; then 
 case $favorite_text_browser in "$NULL") echo "$tab [ fail ] [ Install a text browser ]"; exit ;; esac
 $favorite_text_browser -dump wttr.in
 exit; fi
@@ -9438,8 +9438,8 @@ exit; fi
 #### :rutina-inicial-game-rgb:
 ####
 ####
-if   [ "$first_option" = "game-rgb" ]; then  $nada
-if [ "$second_option" = "$NULL" ]; then
+if   [ "$first_option" == "game-rgb" ]; then  $nada
+if [ "$second_option" == "$NULL" ]; then
 echo " $cinco [ TYPE one colour in RGB with 9 digits ] [ Example: $cmd_binary game-rgb 255000255 ]"
 else
 rgb="$(echo "$second_option" | cut -c -9)"
@@ -9470,8 +9470,8 @@ fi; exit ; fi
 #### :rutina-inicial-game-hex:
 ####
 ####
-if   [ "$first_option" = "game-hex" ]; then  $nada
-if [ "$second_option" = "$NULL" ]; then
+if   [ "$first_option" == "game-hex" ]; then  $nada
+if [ "$second_option" == "$NULL" ]; then
 echo " $cinco [ TYPE one colour in HEXADECIMAL with 6 digits ] [ example: $cmd_binary game-hex FF00FF ]"
 else
 hexadecimal="$(echo $second_option | tr '[:lower:]' '[:upper:]'| cut -c 1-6)"
@@ -9502,7 +9502,7 @@ fi ; exit; fi
 #### :rutina-inicial-game-domain:
 ####
 ####
-if   [ "$first_option" = "game-domain" ] ; then
+if   [ "$first_option" == "game-domain" ] ; then
 file_domain="$directory_default/dictionary-domain"
 if [ -s $file_domain ]; then $nada 
 else echo "$duo_md [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
@@ -9513,7 +9513,7 @@ domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " 
 type_domain_one="$(head -"$numero_aleatorio_one" $file_domain | tail -1 | cut -d " " -f 1)"
 ####
 ####
-if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ] ; then
+if [ "$second_option" == "-cli" ] || [ "$second_option" == "cli" ] ; then
 case "$favorite_text_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install dialog ]"; exit ;; esac
 $favorite_text_dialog  --stdout --title "Play game domain ole" \
 --msgbox " Is this a country domain or a generic domain ? :  $domain_one"  0 0
@@ -9522,7 +9522,7 @@ $favorite_text_dialog  --stdout --title "Play game domain ole" \
 clear ; exit ; fi
 ####
 ####
-if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ] ; then
+if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ] ; then
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity ]"; exit ;; esac
 $(zenity $graphic_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
@@ -9548,7 +9548,7 @@ exit; fi
 #### :rutina-inicial-game-word:
 ####
 ####
-if   [ "$first_option" = "game-word" ]; then  $nada
+if   [ "$first_option" == "game-word" ]; then  $nada
 ####
 ####
 #### variables shared
@@ -9583,7 +9583,7 @@ textes_8=" ##### La respuesta correcta         es:  "
 #### spanish: game-word en cli
 ####
 ####
-if [ "$second_option" = "-cli" ] ; then
+if [ "$second_option" == "-cli" ] ; then
 ####
 ####
 ##### INICIO ####
@@ -9604,10 +9604,6 @@ esac
 ####
 #### Quit game
 if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
-#### Dicctionary english if download
-if [ "$language_number" == "1" ]; then dictionary="$language_english"
-if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
-#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
@@ -9658,7 +9654,7 @@ aleatoria_5="$(echo $palabra_aleatoria | cut -c 5)"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
-if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear ; 
+if [ "$cinco_caracteres" == "$palabra_aleatoria" ]; then clear ; 
 acierto="$($favorite_text_dialog  --stdout --title "  Play game word ole" --msgbox "$text_1 $palabra_aleatoria"  0 0)" ; clear ; exit ; fi
 if [ "$intento" -gt "$intento_maximo" ]; then clear
 echo "$text_1" "  " " || $palabra_aleatoria ||" ; clear ; exit ; fi
@@ -9676,36 +9672,36 @@ caracter_4="$(echo $caracteres | cut -c 4)"
 caracter_5="$(echo $caracteres | cut -c 5)"
 echo "$Text_5" "$cinco_caracteres"
 echo "$text_6" "$intento /// $intento_maximo"
-if [ "$aleatoria_1" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_1" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_1" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_1" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_1" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_2" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_2" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_2" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_2" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_2" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_3" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_3" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_3" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_3" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_3" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_4" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_4" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_4" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_4" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_4" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_5" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_5" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_5" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_5" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_5" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_1" = "$caracter_1" ]; then seat_1="$caracter_1"; fi
-if [ "$aleatoria_2" = "$caracter_2" ]; then seat_2="$caracter_2"; fi
-if [ "$aleatoria_3" = "$caracter_3" ]; then seat_3="$caracter_3"; fi
-if [ "$aleatoria_4" = "$caracter_4" ]; then seat_4="$caracter_4"; fi
-if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
+if [ "$aleatoria_1" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_1" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_1" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_1" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_1" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_2" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_2" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_2" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_2" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_2" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_3" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_3" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_3" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_3" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_3" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_4" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_4" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_4" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_4" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_4" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_5" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_5" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_5" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_5" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_5" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_1" == "$caracter_1" ]; then seat_1="$caracter_1"; fi
+if [ "$aleatoria_2" == "$caracter_2" ]; then seat_2="$caracter_2"; fi
+if [ "$aleatoria_3" == "$caracter_3" ]; then seat_3="$caracter_3"; fi
+if [ "$aleatoria_4" == "$caracter_4" ]; then seat_4="$caracter_4"; fi
+if [ "$aleatoria_5" == "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done
 #### when fail the answer
 clear
@@ -9717,7 +9713,7 @@ clear; exit; fi
 #### spanish: game-word en gui
 ####
 ####
-if [ "$second_option" = "-gui" ] ; then
+if [ "$second_option" == "-gui" ] ; then
 ####
 ####
 ##### INICIO ####
@@ -9789,11 +9785,11 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 ####
-if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then clear 
+if [ "$cinco_caracteres" == "$palabra_aleatoria" ]; then clear 
 acierto="$(zenity $graphic_dimension --info --title="gui game-word" --text="$text_1 $palabra_aleatoria")"
 clear; exit; fi
 ####
-if [ "$intento" = "$intento_maximo" ]; then clear
+if [ "$intento" == "$intento_maximo" ]; then clear
 fallo="$(zenity $graphic_dimension --info --title="gui game-word" --text="$text_8 $palabra_aleatoria")"
 clear ; exit ; fi
 ####
@@ -9810,36 +9806,36 @@ caracter_2="$(echo $caracteres | cut -c 2)"
 caracter_3="$(echo $caracteres | cut -c 3)"
 caracter_4="$(echo $caracteres | cut -c 4)"
 caracter_5="$(echo $caracteres | cut -c 5)"
-if [ "$aleatoria_1" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_1" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_1" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_1" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_1" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_2" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_2" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_2" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_2" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_2" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_3" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_3" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_3" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_3" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_3" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_4" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_4" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_4" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_4" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_4" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_5" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_5" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_5" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_5" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_5" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_1" = "$caracter_1" ]; then seat_1="$caracter_1"; fi
-if [ "$aleatoria_2" = "$caracter_2" ]; then seat_2="$caracter_2"; fi
-if [ "$aleatoria_3" = "$caracter_3" ]; then seat_3="$caracter_3"; fi
-if [ "$aleatoria_4" = "$caracter_4" ]; then seat_4="$caracter_4"; fi
-if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
+if [ "$aleatoria_1" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_1" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_1" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_1" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_1" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_2" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_2" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_2" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_2" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_2" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_3" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_3" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_3" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_3" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_3" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_4" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_4" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_4" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_4" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_4" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_5" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_5" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_5" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_5" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_5" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_1" == "$caracter_1" ]; then seat_1="$caracter_1"; fi
+if [ "$aleatoria_2" == "$caracter_2" ]; then seat_2="$caracter_2"; fi
+if [ "$aleatoria_3" == "$caracter_3" ]; then seat_3="$caracter_3"; fi
+if [ "$aleatoria_4" == "$caracter_4" ]; then seat_4="$caracter_4"; fi
+if [ "$aleatoria_5" == "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
@@ -9847,7 +9843,7 @@ done ; clear ; exit ; fi
 #### spanish:  game-word en txt
 ####
 ####
-if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" == "-txt" ] || [ "$second_option" == "txt" ] || [ "$second_option" == "$NULL" ]; then $nada
 echo 
 echo "$header_ok [ $first_option ]  [ play game clone game-word ]"
 echo ""
@@ -9908,7 +9904,7 @@ aleatoria_4="$(echo $palabra_aleatoria | cut -c 4)"
 aleatoria_5="$(echo $palabra_aleatoria | cut -c 5)"
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
-if [ "$cinco_caracteres" = "$palabra_aleatoria" ]; then  echo "$text_1 $palabra_aleatoria" ; exit; fi
+if [ "$cinco_caracteres" == "$palabra_aleatoria" ]; then  echo "$text_1 $palabra_aleatoria" ; exit; fi
 if [ "$intento" -gt "$intento_maximo" ]; then
 echo "$text_1" "  " " || $palabra_aleatoria ||" ; exit ; fi
 echo "$text_2"
@@ -9924,36 +9920,36 @@ caracter_4="$(echo $caracteres | cut -c 4)"
 caracter_5="$(echo $caracteres | cut -c 5)"
 echo "$Text_5" "$cinco_caracteres"
 echo "$text_6" "$intento /// $intento_maximo"
-if [ "$aleatoria_1" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_1" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_1" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_1" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_1" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_2" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_2" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_2" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_2" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_2" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_3" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_3" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_3" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_3" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_3" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_4" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_4" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_4" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_4" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_4" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_5" = "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
-if [ "$aleatoria_5" = "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
-if [ "$aleatoria_5" = "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
-if [ "$aleatoria_5" = "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
-if [ "$aleatoria_5" = "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
-if [ "$aleatoria_1" = "$caracter_1" ]; then seat_1="$caracter_1"; fi
-if [ "$aleatoria_2" = "$caracter_2" ]; then seat_2="$caracter_2"; fi
-if [ "$aleatoria_3" = "$caracter_3" ]; then seat_3="$caracter_3"; fi
-if [ "$aleatoria_4" = "$caracter_4" ]; then seat_4="$caracter_4"; fi
-if [ "$aleatoria_5" = "$caracter_5" ]; then seat_5="$caracter_5"; fi
+if [ "$aleatoria_1" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_1" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_1" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_1" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_1" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_2" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_2" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_2" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_2" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_2" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_3" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_3" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_3" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_3" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_3" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_4" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_4" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_4" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_4" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_4" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_5" == "$caracter_1" ]; then contenido="$contenido:$caracter_1" ; fi
+if [ "$aleatoria_5" == "$caracter_2" ]; then contenido="$contenido:$caracter_2" ; fi
+if [ "$aleatoria_5" == "$caracter_3" ]; then contenido="$contenido:$caracter_3" ; fi
+if [ "$aleatoria_5" == "$caracter_4" ]; then contenido="$contenido:$caracter_4" ; fi
+if [ "$aleatoria_5" == "$caracter_5" ]; then contenido="$contenido:$caracter_5" ; fi
+if [ "$aleatoria_1" == "$caracter_1" ]; then seat_1="$caracter_1"; fi
+if [ "$aleatoria_2" == "$caracter_2" ]; then seat_2="$caracter_2"; fi
+if [ "$aleatoria_3" == "$caracter_3" ]; then seat_3="$caracter_3"; fi
+if [ "$aleatoria_4" == "$caracter_4" ]; then seat_4="$caracter_4"; fi
+if [ "$aleatoria_5" == "$caracter_5" ]; then seat_5="$caracter_5"; fi
 done
 #### when fail the answer
 echo
@@ -9974,7 +9970,7 @@ fi
 #### :rutina-inicial-game-number:
 ####
 ####
-if   [ "$first_option" = "game-number" ]; then  
+if   [ "$first_option" == "game-number" ]; then  
 ####
 ####
 #### variables shared
@@ -10008,7 +10004,7 @@ textes_8=" ##### La respuesta correcta           es:  "
 #### spanish: game-number en cli
 ####
 ####
-if [ "$second_option" = "-cli" ] || [ "$second_option" = "cli" ]; then $nada
+if [ "$second_option" == "-cli" ] || [ "$second_option" == "cli" ]; then $nada
 ####
 ####
 ##### INICIO ####
@@ -10061,7 +10057,7 @@ aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
-if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear ; 
+if [ "$cinco_digitos" == "$numero_aleatorio" ]; then clear ; 
 acierto="$($favorite_text_dialog  --stdout --title "  Play game number ole" --msgbox "$text_1 $numero_aleatorio"  0 0)" ; clear ; exit ; fi
 if [ "$intento" -gt "$intento_maximo" ]; then clear
 echo "$text_1" "  " " || $numero_aleatorio ||" ; clear ; exit ; fi
@@ -10079,36 +10075,36 @@ digito_4="$(echo $digitos | cut -c 4)"
 digito_5="$(echo $digitos | cut -c 5)"
 echo "$Text_5" "$cinco_digitos"
 echo "$text_6" "$intento /// $intento_maximo"
-if [ "$aleatoria_1" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_1" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_1" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_1" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_1" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_2" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_2" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_2" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_2" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_2" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_3" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_3" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_3" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_3" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_3" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_4" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_4" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_4" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_4" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_4" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_5" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_5" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_5" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_5" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_5" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_1" = "$digito_1" ]; then seat_1="$digito_1"; fi
-if [ "$aleatoria_2" = "$digito_2" ]; then seat_2="$digito_2"; fi
-if [ "$aleatoria_3" = "$digito_3" ]; then seat_3="$digito_3"; fi
-if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
-if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
+if [ "$aleatoria_1" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_1" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_1" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_1" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_1" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_2" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_2" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_2" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_2" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_2" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_3" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_3" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_3" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_3" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_3" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_4" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_4" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_4" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_4" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_4" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_5" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_5" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_5" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_5" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_5" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_1" == "$digito_1" ]; then seat_1="$digito_1"; fi
+if [ "$aleatoria_2" == "$digito_2" ]; then seat_2="$digito_2"; fi
+if [ "$aleatoria_3" == "$digito_3" ]; then seat_3="$digito_3"; fi
+if [ "$aleatoria_4" == "$digito_4" ]; then seat_4="$digito_4"; fi
+if [ "$aleatoria_5" == "$digito_5" ]; then seat_5="$digito_5"; fi
 done
 #### when fail the answer
 $favorite_text_dialog  --stdout --title "Play game number ole" --msgbox "$text_8 $numero_aleatorio"  0 0
@@ -10119,7 +10115,7 @@ clear ; exit ; fi
 #### spanish: game-number en gui
 ####
 ####
-if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
+if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ]; then $nada
 ####
 ####
 ##### INICIO ####
@@ -10174,11 +10170,11 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 #### 
-if [ "$cinco_digitos" = "$numero_aleatorio" ]; then clear 
+if [ "$cinco_digitos" == "$numero_aleatorio" ]; then clear 
 acierto="$(zenity $graphic_dimension --info --title="gui game-number" --text="$text_1 $numero_aleatorio")"
 clear; exit; fi
 ####
-if [ "$intento" = "$intento_maximo" ]; then clear
+if [ "$intento" == "$intento_maximo" ]; then clear
 fallo="$(zenity $graphic_dimension --info --title="gui game-number" --text="$text_8 $numero_aleatorio")"
 clear ; exit ; fi
 ####
@@ -10195,36 +10191,36 @@ digito_2="$(echo $digitos | cut -c 2)"
 digito_3="$(echo $digitos | cut -c 3)"
 digito_4="$(echo $digitos | cut -c 4)"
 digito_5="$(echo $digitos | cut -c 5)"
-if [ "$aleatoria_1" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_1" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_1" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_1" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_1" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_2" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_2" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_2" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_2" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_2" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_3" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_3" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_3" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_3" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_3" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_4" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_4" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_4" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_4" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_4" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_5" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_5" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_5" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_5" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_5" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_1" = "$digito_1" ]; then seat_1="$digito_1"; fi
-if [ "$aleatoria_2" = "$digito_2" ]; then seat_2="$digito_2"; fi
-if [ "$aleatoria_3" = "$digito_3" ]; then seat_3="$digito_3"; fi
-if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
-if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
+if [ "$aleatoria_1" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_1" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_1" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_1" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_1" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_2" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_2" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_2" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_2" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_2" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_3" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_3" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_3" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_3" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_3" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_4" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_4" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_4" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_4" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_4" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_5" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_5" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_5" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_5" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_5" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_1" == "$digito_1" ]; then seat_1="$digito_1"; fi
+if [ "$aleatoria_2" == "$digito_2" ]; then seat_2="$digito_2"; fi
+if [ "$aleatoria_3" == "$digito_3" ]; then seat_3="$digito_3"; fi
+if [ "$aleatoria_4" == "$digito_4" ]; then seat_4="$digito_4"; fi
+if [ "$aleatoria_5" == "$digito_5" ]; then seat_5="$digito_5"; fi
 done ; clear ; exit ; fi
 ####
 ####
@@ -10232,7 +10228,7 @@ done ; clear ; exit ; fi
 #### spanish: game-number en txt
 ####
 ####
-if [ "$second_option" = "-txt" ] || [ "$second_option" = "txt" ] || [ "$second_option" = "$NULL" ]; then $nada
+if [ "$second_option" == "-txt" ] || [ "$second_option" == "txt" ] || [ "$second_option" == "$NULL" ]; then $nada
 echo
 echo "$header_ok [ $first_option ]  [ play game clone game-number ]"
 echo ""
@@ -10276,7 +10272,7 @@ aleatoria_4="$(echo $numero_aleatorio | cut -c 4)"
 aleatoria_5="$(echo $numero_aleatorio | cut -c 5)"
 #### loop of game
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
-if [ "$cinco_digitos" = "$numero_aleatorio" ]; then  echo "$text_1 $numero_aleatorio" ; exit; fi
+if [ "$cinco_digitos" == "$numero_aleatorio" ]; then  echo "$text_1 $numero_aleatorio" ; exit; fi
 if [ "$intento" -gt "$intento_maximo" ]; then $nada
 echo "$text_1" "  " " || $numero_aleatorio ||" ; exit ; fi
 echo "$text_2"
@@ -10292,36 +10288,36 @@ digito_4="$(echo $digitos | cut -c 4)"
 digito_5="$(echo $digitos | cut -c 5)"
 echo "$Text_5" "$cinco_digitos"
 echo "$text_6" "$intento /// $intento_maximo"
-if [ "$aleatoria_1" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_1" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_1" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_1" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_1" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_2" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_2" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_2" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_2" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_2" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_3" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_3" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_3" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_3" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_3" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_4" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_4" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_4" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_4" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_4" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_5" = "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
-if [ "$aleatoria_5" = "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
-if [ "$aleatoria_5" = "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
-if [ "$aleatoria_5" = "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
-if [ "$aleatoria_5" = "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
-if [ "$aleatoria_1" = "$digito_1" ]; then seat_1="$digito_1"; fi
-if [ "$aleatoria_2" = "$digito_2" ]; then seat_2="$digito_2"; fi
-if [ "$aleatoria_3" = "$digito_3" ]; then seat_3="$digito_3"; fi
-if [ "$aleatoria_4" = "$digito_4" ]; then seat_4="$digito_4"; fi
-if [ "$aleatoria_5" = "$digito_5" ]; then seat_5="$digito_5"; fi
+if [ "$aleatoria_1" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_1" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_1" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_1" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_1" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_2" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_2" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_2" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_2" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_2" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_3" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_3" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_3" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_3" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_3" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_4" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_4" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_4" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_4" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_4" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_5" == "$digito_1" ]; then contenido="$contenido:$digito_1" ; fi
+if [ "$aleatoria_5" == "$digito_2" ]; then contenido="$contenido:$digito_2" ; fi
+if [ "$aleatoria_5" == "$digito_3" ]; then contenido="$contenido:$digito_3" ; fi
+if [ "$aleatoria_5" == "$digito_4" ]; then contenido="$contenido:$digito_4" ; fi
+if [ "$aleatoria_5" == "$digito_5" ]; then contenido="$contenido:$digito_5" ; fi
+if [ "$aleatoria_1" == "$digito_1" ]; then seat_1="$digito_1"; fi
+if [ "$aleatoria_2" == "$digito_2" ]; then seat_2="$digito_2"; fi
+if [ "$aleatoria_3" == "$digito_3" ]; then seat_3="$digito_3"; fi
+if [ "$aleatoria_4" == "$digito_4" ]; then seat_4="$digito_4"; fi
+if [ "$aleatoria_5" == "$digito_5" ]; then seat_5="$digito_5"; fi
 done
 #### when fail the answer
 echo
@@ -10340,7 +10336,7 @@ fi
 #### :rutina-inicial-sshd-tunnel-info:
 ####
 ####
-if   [ "$first_option" = "sshd-tunnel-info" ] ; then  echo $give_cover
+if   [ "$first_option" == "sshd-tunnel-info" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server info ] || ||"
 if [ "$command_lsof" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install lsof ]" ; exit ; fi
 #### ssh tunnel
@@ -10370,7 +10366,7 @@ exit; fi
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
-if   [ "$first_option" = "sshd-tunnel-on" ] ; then  echo $give_cover
+if   [ "$first_option" == "sshd-tunnel-on" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ on: ssh server socks on port 1080 like active ssh tunnel ] || ||"
 if [ "$second_option" == "$NULL" ]; then echo "$duo_md [ fail ] [ type: $cmd_binary sshd-tunnel-on user@server ]"; exit ; fi
 echo "$duo_md [ info ] [ Port Forwarding Sockets with ssh like proxy ]"
@@ -10385,7 +10381,7 @@ exit; fi
 #### :rutina-inicial-sshd-tunnel-on:
 ####
 ####
-if   [ "$first_option" = "sshd-tunnel-off" ] ; then  echo $give_cover
+if   [ "$first_option" == "sshd-tunnel-off" ] ; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ tool ssh server for deactive ssh tunnel ] || ||"
 echo "$duo_md [ info ] [ killing procees with: ssh -f -N -D ]"
 for parada in $(ps aux | $command_grep "ssh \-f \-N \-D" | $command_grep -iv "grep ssh" | awk '{print $2}' -);
@@ -10398,7 +10394,7 @@ exit; fi
 ##########   english: pdf-resize  resize one pdf                 ##########
 ##########   spanish: pdf-resize  reescala la calidad de un pdf  ##########
 #### :rutina-inicial-pdf-resize:
-if  [ "$first_option" = "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" == "pdf-resize" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ pdf resize with gs ] [ minimal pixels: screen | normal pixels: printer ] || ||"
 if [ "$quad_option" == "$NULL" ] ; then echo "Capacity to resize pdf with: $zero_option $first_option [screen|printer|prepress|default] pdf-input pdf-output"; exit ;  fi
 #### capacity low o large pdf with: screen, printer, prepress, default
@@ -10419,7 +10415,7 @@ exit; fi
 ##########   english: pdf-unite  join several pdf in one pdf    ##########
 ##########   spanish: pdf-unite  junta varios pdf en un pdf     ##########
 #### :rutina-inicial-pdf-unite:
-if  [ "$first_option" = "pdf-unite" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" == "pdf-unite" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ all group pdf in this folder join in pdf_unite.pdf ] || ||"
 if [ "$command_pdfunite" == "$NULL" ]; then echo "$duo_md [ info ] install poppler utils" ; exit ; fi
 if [ ! -d "$second_option" ] ; then echo " Choose one directory directory" ; exit ; fi
@@ -10430,7 +10426,7 @@ exit; fi
 ##########   english: pdf-separate  join several pdf in one pdf    ##########
 ##########   spanish: pdf-separate  junta varios pdf en un pdf     ##########
 #### :rutina-inicial-pdf-separate:
-if  [ "$first_option" = "pdf-separate" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" == "pdf-separate" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ split one pdf in several pdf ] || ||"
 if [ "$command_pdfseparate" == "$NULL" ]; then echo "$duo_md [ info ] install poppler utils" ; exit ; fi
 if [ ! -f "$second_option" ] ; then echo " Choose one existent file" ; exit ; fi
@@ -10441,7 +10437,7 @@ exit; fi
 ##########   english: qemu-start  Start qemu machine        ##########
 ##########   spanish: qemu-start  Empieza una maquina qemu  ##########
 #### :rutina-inicial-qemu-start:
-if  [ "$first_option" = "qemu-start" ] ; then echo $give_cover; echo $message_info_rules
+if  [ "$first_option" == "qemu-start" ] ; then echo $give_cover; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -10466,7 +10462,7 @@ fi
 ##########   english: qemu-probe  Probe qemu machine        ##########
 ##########   spanish: qemu-probe  prueba una maquina qemu  ##########
 #### :rutina-inicial-qemu-probe:
-if  [ "$first_option" = "qemu-probe" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" == "qemu-probe" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ start qemu machine ] [ vm ] [ iso ] || ||"
 ####
 ####
@@ -10491,7 +10487,7 @@ fi
 ##########   english: qemu-status  Status qemu machine        ##########
 ##########   spanish: qemu-status  Estado de maquina qemu  ##########
 #### :rutina-inicial-qemu-status:
-if  [ "$first_option" = "qemu-status" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" == "qemu-status" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ status qemu machine ] || ||"
 ps -Af | grep -i  "qemu-system" 
 echo "$duo_md [  ok  ] [ status ] [ process listed ] [ qemu-system ]"
@@ -10500,7 +10496,7 @@ exit; fi
 ##########   english: qemu-stop  Stop qemu machine        ##########
 ##########   spanish: qemu-stop  Para la maquina qemu     ##########
 #### :rutina-inicial-qemu-stop:
-if  [ "$first_option" = "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
+if  [ "$first_option" == "qemu-stop" ] ; then  echo $give_cover ; echo $message_info_rules
 echo "$header_ok [ $first_option ]  [ stop qemu machine ] || ||"
 ps -Af | grep -i  "$architecture_vm"
 echo "$duo_md [  ok  ] [ status ] [ process listed ]"
@@ -10513,13 +10509,11 @@ exit; fi
 #### :rutina-inicial-filelog:
 ####
 ####
-if  [ "$first_option" = "filelog" ] ; then  echo $give_cover
+if  [ "$first_option" == "filelog" ] ; then  echo $give_cover
+if [ ! -s $default_filelog ]; then touch $default_filelog ; fi
 echo "$header_ok [ $first_option ]  [ show $default_filelog ] || ||"
-if [ ! -f $default_filelog ]; then touch $default_filelog ; fi
-echo
-cat  "$default_filelog"
-echo 
-echo "### ### [ this file is: ] [ $default_filelog ]"
+cat $default_filelog
+echo "$duo_md [ this file is: ] [ $default_filelog ]"
 exit; fi
 ####
 ####
@@ -10529,13 +10523,11 @@ exit; fi
 #### :rutina-inicial-autolog:
 ####
 ####
-if   [ "$first_option" = "autolog" ] ; then  echo $give_cover
+if [ "$first_option" == "autolog" ]; then  echo $give_cover
+if [ ! -s $default_autolog ]; then touch $default_autolog ; fi
 echo "$header_ok [ $first_option ] [ show "$default_autolog" ] || ||"
-if [ ! -f $default_autolog ]; then touch $default_autolog ; fi
-echo
-cat  "$default_autolog"
-echo
-echo "$duo_md [ info ] [ last end of file showed ] [ $default_autolog ]"
+cat $default_autolog
+echo "$duo_md [ info ] [ this file is: ] [ $default_autolog ]"
 exit; fi
 ####
 ####
@@ -10545,7 +10537,7 @@ exit; fi
 #### :rutina-inicial-log-ssh:
 ####
 ####
-if   [ "$first_option" = "log-ssh" ]; then  echo $give_cover
+if   [ "$first_option" == "log-ssh" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ search sshd in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install zgrep ]"; exit ; fi
 $command_find /var/log -maxdepth 5 -type f | xargs $command_zgrep -a -i "ssh"
@@ -10558,7 +10550,7 @@ exit; fi
 #### :rutina-inicial-log-search:
 ####
 ####
-if   [ "$first_option" = "log-search" ]; then echo $give_cover
+if   [ "$first_option" == "log-search" ]; then echo $give_cover
 echo "$cinco [ $first_option $second_option ] [ search a one pattern in logs ] || ||"
 if [ "$command_zgrep" == "$NULL" ] ; then echo "$duo_md [ fail ] [ Install zgrep ]"; exit ; fi
 case "$second_option" in
@@ -10574,7 +10566,7 @@ exit; fi
 #### :rutina-inicial-dev-version:
 ####
 ####
-if   [ "$first_option" = "dev-version" ]; then  echo $give_cover
+if   [ "$first_option" == "dev-version" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ] || ||"
 echo $url_web_development
 exit; fi
@@ -10586,7 +10578,7 @@ exit; fi
 #### :rutina-inicial-dev-changes:
 ####
 #### 
-if   [ "$first_option" = "dev-changes" ]; then  echo $give_cover
+if   [ "$first_option" == "dev-changes" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev-changes from git repository ] || ||"
 $favorite_text_browser -source $url_web_changes
 exit; fi
@@ -10598,7 +10590,7 @@ exit; fi
 #### :rutina-inicial-new-versions:
 ####
 ####
-if   [ "$first_option" = "new-versions" ]; then echo $give_cover
+if   [ "$first_option" == "new-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
 echo
 echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
@@ -10626,7 +10618,7 @@ exit; fi
 #### :rutina-inicial-complete-versions:
 ####
 ####
-if   [ "$first_option" = "index-versions" ]; then echo $give_cover
+if   [ "$first_option" == "index-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -10640,7 +10632,7 @@ exit; fi
 #### :rutina-inicial-complete-versions:
 ####
 ####
-if   [ "$first_option" = "complete-versions" ]; then echo $give_cover
+if   [ "$first_option" == "complete-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -10654,7 +10646,7 @@ exit; fi
 #### :rutina-inicial-minimal-versions:
 ####
 ####
-if   [ "$first_option" = "minimal-versions" ]; then echo $give_cover
+if   [ "$first_option" == "minimal-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the new versions in the web ] || ||"
 case $favorite_text_browser in 
 "$NULL") echo "Install a one text browser like:   elinks, or lynx, or links, or links2"; exit; esac
@@ -10668,7 +10660,7 @@ exit; fi
 #### :rutina-inicial-gpg-notes:
 ####
 ####
-if   [ "$first_option" = "gpg-notes" ]; then 
+if   [ "$first_option" == "gpg-notes" ]; then 
 ####
 ####
 if [ "$second_option" == "-list" ] || [ "$second_option" == "$NULL" ] ; then
@@ -10755,7 +10747,7 @@ exit ; fi
 #### :rutina-inicial-pc-halt:
 ####
 ####
-if   [ "$first_option" = "pc-halt" ]; then echo $give_cover
+if   [ "$first_option" == "pc-halt" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ] || ||"
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -10770,7 +10762,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if   [ "$first_option" = "pc-shutdown" ]; then echo $give_cover
+if   [ "$first_option" == "pc-shutdown" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ power off computer ] || ||"
 demora="5"
 echo "Halt to power off computer ... in $demora seconds"
@@ -10785,7 +10777,7 @@ exit; fi
 #### :rutina-inicial-pc-shutdown:
 ####
 ####
-if   [ "$first_option" = "pc-reboot" ]; then echo $give_cover
+if   [ "$first_option" == "pc-reboot" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ reboot computer ] || ||"
 demora="5"
 echo "Reboot to power reboot ... in $demora seconds"
@@ -10800,7 +10792,7 @@ exit; fi
 #### :rutina-inicial-lpinfo:
 ####
 ####
-if   [ "$first_option" = "lpinfo" ]; then  echo $give_cover
+if   [ "$first_option" == "lpinfo" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list printers with lpinfo and lpstat ] || ||"
 echo "$duo_md [ info] [ lpinfo -v -l ]"
 echo
@@ -10820,7 +10812,7 @@ exit; fi
 #### :rutina-inicial-lsblk:
 ####
 ####
-if   [ "$first_option" = "lsblk" ]; then  echo $give_cover
+if   [ "$first_option" == "lsblk" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list disks ] || ||"
 echo "$duo_md [ info ] [ lsblk ]"
 $command_lsblk -o name,size,fsuse%,label,mountpoints || echo "$duo_md [ fail ] install lsblk"
@@ -10833,7 +10825,7 @@ exit; fi
 #### :rutina-inicial-lsusb:
 ####
 ####
-if   [ "$first_option" = "lsusb" ]; then  echo $give_cover
+if   [ "$first_option" == "lsusb" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list usb ] || ||"
 echo "$duo_md [ info ] [ lsusb ]"
 $command_lsusb || echo "$duo_md [ fail ] install lsusb"
@@ -10846,7 +10838,7 @@ exit; fi
 #### :rutina-inicial-lscpu:
 ####
 ####
-if   [ "$first_option" = "lscpu" ]; then  echo $give_cover
+if   [ "$first_option" == "lscpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list cpu ] || ||"
 echo "$duo_md [ info ] [ lscpu ]"
 $command_lscpu || echo  "  [ fail ] install lscpu"
@@ -10859,7 +10851,7 @@ exit; fi
 #### :rutina-inicial-lspci:
 ####
 ####
-if   [ "$first_option" = "lspci" ]; then  echo $give_cover
+if   [ "$first_option" == "lspci" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list pci hardware sockets ] || ||"
 echo "$duo_md [ info ] [ lspci ]"
 $command_lspci || echo  "  [ fail ] install lspci"
@@ -10872,7 +10864,7 @@ exit; fi
 #### :rutina-inicial-lsgpu:
 ####
 ####
-if   [ "$first_option" = "lsgpu" ]; then  echo $give_cover
+if   [ "$first_option" == "lsgpu" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list gpu ] || ||"
 echo "$duo_md [ info ] [ lsgpu ]"
 $command_lsgpu || echo "$duo_md [ fail ] install lsgpu"
@@ -10885,7 +10877,7 @@ exit; fi
 #### :rutina-inicial-lshw:
 ####
 ####
-if   [ "$first_option" = "lshw" ]; then  echo $give_cover
+if   [ "$first_option" == "lshw" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ list hardware ] || ||"
 echo "$duo_md [ info ] [ lshw ]"
 $command_lshw || echo  "  [ fail ] install lshw"
@@ -10898,7 +10890,7 @@ exit; fi
 #### :rutina-inicial-hosts:
 ####
 ####
-if   [ "$first_option" = "hosts" ]; then  echo $give_cover
+if   [ "$first_option" == "hosts" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/hosts ] || ||"
 cat /etc/hosts
 echo "$duo_md [ ok ] [ This file is /etc/hosts ]"
@@ -10911,7 +10903,7 @@ exit; fi
 #### :rutina-inicial-protocols:
 ####
 ####
-if   [ "$first_option" = "protocols" ]; then  echo $give_cover
+if   [ "$first_option" == "protocols" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/protocols ] || ||"
 cat /etc/protocols  | $command_sed s/\&//g 
 echo "$duo_md [ ok ] [ This file is /etc/protocols ]"
@@ -10924,7 +10916,7 @@ exit; fi
 #### :rutina-inicial-services:
 ####
 ####
-if   [ "$first_option" = "services" ]; then  echo $give_cover
+if   [ "$first_option" == "services" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/services ] || ||"
 cat /etc/services | $command_sed s/\&//g 
 echo "$duo_md [ ok ] [ This file is /etc/services ]"
@@ -10937,7 +10929,7 @@ exit; fi
 #### :rutina-inicial-host.allow:
 ####
 ####
-if   [ "$first_option" = "hosts.allow" ]; then  echo $give_cover
+if   [ "$first_option" == "hosts.allow" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/allow ] || ||"
 cat /etc/hosts.allow
 echo "$duo_md [ ok ] [ This file is /etc/hosts.allow ]"
@@ -10950,7 +10942,7 @@ exit; fi
 #### :rutina-inicial-hosts.deny:
 ####
 ####
-if   [ "$first_option" = "hosts.deny" ]; then  echo $give_cover
+if   [ "$first_option" == "hosts.deny" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the file /etc/deny ] || ||"
 cat /etc/hosts.deny
 echo "$duo_md [ ok ] [ This file is /etc/hosts.deny ]"
@@ -10963,7 +10955,7 @@ exit; fi
 #### :rutina-inicial-resolv.conf:
 ####
 ####
-if   [ "$first_option" = "resolv.conf" ]; then  echo $give_cover
+if   [ "$first_option" == "resolv.conf" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show resolv.conf ] || ||"
 if [ -f /etc/resolv.conf.head ]; then
 echo "$tab  [ with resolv.conf.head ]"
@@ -10986,7 +10978,7 @@ exit; fi
 #### :rutina-inicial-about:
 ####
 ####
-if   [ "$first_option" = "about" ]; then  echo $give_cover
+if   [ "$first_option" == "about" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ] [ about ] [ about md ] || ||" 
 echo "$title_md [ $cmd_binary: ]"
 echo "$text_md [ Path Program ] $cmd_binary"
@@ -11026,7 +11018,7 @@ exit; fi
 #### :rutina-inicial-info-system:
 ####
 ####
-if   [ "$first_option" = "info-system" ]; then  echo $give_cover
+if   [ "$first_option" == "info-system" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about system ] || ||"
 echo
 echo "$duo_md [ info ] ### [ System info ] [ Distro ] ###"
@@ -11056,41 +11048,41 @@ exit; fi
 #### :rutina-inicial-info-net:
 ####
 ####
-if   [ "$first_option" = "info-net" ]; then echo $give_cover
+if   [ "$first_option" == "info-net" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ] || ||"
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
 echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
-if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
 echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
-if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | cut -d "/" -f 1 ; fi
 echo
 echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 address | $command_grep -i  inet | $command_grep -i -v ::1/128 | cut -d "/" -f 1 ; fi
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
-if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 echo "$tab $public_ip6"; fi
 echo
@@ -11106,23 +11098,23 @@ exit; fi
 #### :rutina-inicial-ip4:
 ####
 ####
-if [ "$first_option" = "ip4" ]; then echo $give_cover
+if [ "$first_option" == "ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip4 ] || ||"
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv4 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -4 route ; fi
 echo
 echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv4 ] ###"
-if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l4 | $command_sed 's/   / /g' ; fi
 echo
 echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv4 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -4 address | $command_grep -i  inet | $command_grep -i -v 127.0.0.1 | $command_sed 's/inet//g' | cut -d "/" -f 1 ; fi
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv4 ] ###"
-if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip4="$(timeout -s SIGINT -v $server_waiting $command_curl -s -4 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip4" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip4"; fi; fi
@@ -11142,23 +11134,23 @@ exit; fi
 #### :rutina-inicial-ip6:
 ####
 ####
-if [ "$first_option" = "ip6" ]; then echo $give_cover
+if [ "$first_option" == "ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show info about net ip6 ] || ||"
 echo
 echo "$duo_md [ info ] ### [ Network Route ] [ Route ipv6 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else $command_ip -6 route ; fi
 echo
 echo "$duo_md [ info ] ### [ Network Listen ] [ Listen ipv6 ] ###"
-if [ "$command_ss" = "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
+if [ "$command_ss" == "$NULL" ] ; then echo "$tab [ info ] [ install ss command ]"
 else $command_ss -l6 | $command_sed 's/   / /g' ; fi
 echo
 echo "$duo_md [ info ] ### [ Private ip ] [ Address ipv6 ] ###"
-if [ "$command_ip" = "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
+if [ "$command_ip" == "$NULL" ] ; then echo "$tab [ info ] [ install ip command ]"
 else  $command_ip -6 address | $command_grep -i inet | $command_grep -iv  "inet6 ::1"  | $command_sed 's/inet6//g' | cut -d "/" -f 1 ; fi
 echo
 echo "$duo_md [ info ] ### [ Public ip ] [ Address ipv6 ] ###"
-if [ "$command_curl" = "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
+if [ "$command_curl" == "$NULL" ] ; then echo "$tab [ info ] [ install curl command ]" ; else
 public_ip6="$(timeout -s SIGINT -v $server_waiting $command_curl -s -6 http://ifconfig.co/ip -w "\n"| head -1)"
 if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden for dns server" ;
 else echo "$tab $public_ip6"; fi; fi
@@ -11178,7 +11170,7 @@ exit; fi
 #### :rutina-inicial-speed-ip4:
 ####
 ####
-if   [ "$first_option" = "speed-ip4" ]; then echo $give_cover
+if   [ "$first_option" == "speed-ip4" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv4 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ Install Iperf command ]"; exit ;; esac
 ####
@@ -11201,7 +11193,7 @@ exit; fi
 #### :rutina-inicial-speed-ip6:
 ####
 ####
-if   [ "$first_option" = "speed-ip6" ]; then echo $give_cover
+if   [ "$first_option" == "speed-ip6" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ test speed ipv6 with internet ] || ||"
 case "$command_iperf"  in  $NULL) echo "$duo_md [ fail ] [ install iperf command ]"; exit ;; esac
 ####
@@ -11224,12 +11216,12 @@ exit; fi
 #### :rutina-inicial-web-cert:
 ####
 ####
-if   [ "$first_option" = "web-cert" ] ; then echo $give_cover
+if   [ "$first_option" == "web-cert" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ get one web certifcate from one server with port 443] || ||"
 case "$command_openssl"  in  $NULL) echo "$tab [ fail ] [ install openssl ]"; exit ;; esac
 ####
 ####
-if [ "$second_option" = "$NULL" ]; then echo $tab $tab $tab
+if [ "$second_option" == "$NULL" ]; then echo $tab $tab $tab
 echo "[ get one web certifcate ] [ Example: $cmd_binary web-cert www.fast.com ]"; exit; fi
 echo
 echo | timeout -s SIGINT -v $server_waiting $command_openssl s_client -connect $second_option:443
@@ -11242,7 +11234,7 @@ exit; fi
 #### :rutina-inicial-clean-tmp:
 ####
 ####
-if   [ "$first_option" = "clean-tmp" ] ; then echo $give_cover
+if   [ "$first_option" == "clean-tmp" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ clean $cmd_binary temporal files ] || ||"
 echo "$duo_md [ info ] [ cleaning $cmd_binary temporal files ]"
 rm -rf "$directory_tmp" &> /dev/null
@@ -11256,7 +11248,7 @@ exit; fi
 #### :rutina-inicial-config-eng:
 ####
 ####
-if   [ "$first_option" = "config-eng" ]; then echo $give_cover
+if   [ "$first_option" == "config-eng" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from english configuration ] || ||"
 cat  $defaultfullcfg_eng
 exit; fi
@@ -11268,7 +11260,7 @@ exit; fi
 #### :rutina-inicial-config-spa:
 ####
 ####
-if   [ "$first_option" = "config-spa" ]; then echo $give_cover
+if   [ "$first_option" == "config-spa" ]; then echo $give_cover
 echo "$header_ok [ $first_option ]  [ show variables cfg from spanish configuration ] || ||"
 cat $defaultfullcfg_spa
 exit; fi
@@ -11280,29 +11272,29 @@ exit; fi
 #### :rutina-inicial-info:
 ####
 ####
-if   [ "$first_option" = "info" ]; then $nada
-if [ "$second_option" = "options-interface" ]; then $cmd_binary options-interface ; exit ; fi
-if [ "$second_option" = "firewall-control" ]; then $cmd_binary firewall-control ; exit ; fi
-if [ "$second_option" = "firewall-numeral" ]; then $cmd_binary firewall-conceptual ; exit ; fi
-if [ "$second_option" = "firewall-conceptual" ]; then $cmd_binary firewall-numeral ; exit ; fi
-if [ "$second_option" = "firewall-launch" ]; then $cmd_binary firewall-launch ; exit ; fi
-if [ "$second_option" = "firewall-custom" ]; then $cmd_binary firewall-custom ; exit ; fi
-if [ "$second_option" = "tool-sockets" ]; then $cmd_binary tool-sockets ; exit ; fi
-if [ "$second_option" = "tool-forward" ]; then $cmd_binary tool-forward ; exit ; fi
-if [ "$second_option" = "tool-tcp" ]; then $cmd_binary tool-tcp ; exit ; fi
-if [ "$second_option" = "tool-udp" ]; then $cmd_binary tool-udp ; exit ; fi
-if [ "$second_option" = "tool-icmp" ]; then $cmd_binary tool-icmp ; exit ; fi
-if [ "$second_option" = "tool-nmap" ]; then $cmd_binary tool-nmap ; exit ; fi
-if [ "$second_option" = "tool-sudofw" ]; then $cmd_binary tool-sudofw ; exit ; fi
-if [ "$second_option" = "tool-install" ]; then $cmd_binary tool-install ; exit ; fi
-if [ "$second_option" = "tool-addblock" ]; then $cmd_binary tool-addblock ; exit ; fi
-if [ "$second_option" = "tool-dev" ]; then $cmd_binary tool-dev ; exit ; fi
-if [ "$second_option" = "tool-speed" ]; then $cmd_binary tool-speed ; exit ; fi
-if [ "$second_option" = "show-hardware" ]; then $cmd_binary show-hardware ; exit ; fi
-if [ "$second_option" = "show-etc" ]; then $cmd_binary show-etc ; exit ; fi
-if [ "$second_option" = "show-log" ]; then $cmd_binary show-log ; exit ; fi
-if [ "$second_option" = "help-about" ]; then $cmd_binary help-about ; exit ; fi
-if [ "$second_option" = "help-help" ]; then $cmd_binary help-help ; exit ; fi
+if   [ "$first_option" == "info" ]; then $nada
+if [ "$second_option" == "options-interface" ]; then $cmd_binary options-interface ; exit ; fi
+if [ "$second_option" == "firewall-control" ]; then $cmd_binary firewall-control ; exit ; fi
+if [ "$second_option" == "firewall-numeral" ]; then $cmd_binary firewall-conceptual ; exit ; fi
+if [ "$second_option" == "firewall-conceptual" ]; then $cmd_binary firewall-numeral ; exit ; fi
+if [ "$second_option" == "firewall-launch" ]; then $cmd_binary firewall-launch ; exit ; fi
+if [ "$second_option" == "firewall-custom" ]; then $cmd_binary firewall-custom ; exit ; fi
+if [ "$second_option" == "tool-sockets" ]; then $cmd_binary tool-sockets ; exit ; fi
+if [ "$second_option" == "tool-forward" ]; then $cmd_binary tool-forward ; exit ; fi
+if [ "$second_option" == "tool-tcp" ]; then $cmd_binary tool-tcp ; exit ; fi
+if [ "$second_option" == "tool-udp" ]; then $cmd_binary tool-udp ; exit ; fi
+if [ "$second_option" == "tool-icmp" ]; then $cmd_binary tool-icmp ; exit ; fi
+if [ "$second_option" == "tool-nmap" ]; then $cmd_binary tool-nmap ; exit ; fi
+if [ "$second_option" == "tool-sudofw" ]; then $cmd_binary tool-sudofw ; exit ; fi
+if [ "$second_option" == "tool-install" ]; then $cmd_binary tool-install ; exit ; fi
+if [ "$second_option" == "tool-addblock" ]; then $cmd_binary tool-addblock ; exit ; fi
+if [ "$second_option" == "tool-dev" ]; then $cmd_binary tool-dev ; exit ; fi
+if [ "$second_option" == "tool-speed" ]; then $cmd_binary tool-speed ; exit ; fi
+if [ "$second_option" == "show-hardware" ]; then $cmd_binary show-hardware ; exit ; fi
+if [ "$second_option" == "show-etc" ]; then $cmd_binary show-etc ; exit ; fi
+if [ "$second_option" == "show-log" ]; then $cmd_binary show-log ; exit ; fi
+if [ "$second_option" == "help-about" ]; then $cmd_binary help-about ; exit ; fi
+if [ "$second_option" == "help-help" ]; then $cmd_binary help-help ; exit ; fi
 ####
 ####
 echo $give_cover
@@ -11333,7 +11325,7 @@ exit; fi
 #### :rutina-inicial-readme:
 ####
 ####
-if   [ "$first_option" = "readme" ]; then echo $give_cover
+if   [ "$first_option" == "readme" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ help in english ] [ readme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
@@ -11722,7 +11714,7 @@ exit; fi
 #### :rutina-inicial-leeme:
 ####
 ####
-if   [ "$first_option" = "leeme" ]; then echo $give_cover
+if   [ "$first_option" == "leeme" ]; then echo $give_cover
 echo "$title_md $tab [ $first_option ] [ ayuda en español ] [ leeme md ] || ||"
 echo "$text_md"
 echo "$brake_md"
@@ -12121,7 +12113,7 @@ exit ; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "all-permisive" ]; then $cmd_binary eraserules &> /dev/null ; 
+if [ "$type_firewall" == "all-permisive" ]; then $cmd_binary eraserules &> /dev/null ; 
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept and the others legacy ipv4 accept too
@@ -12265,7 +12257,7 @@ exit; fi
 #### legacy ip4
 ####
 ####
-if [ "$type_firewall" = "off-line" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "off-line" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### english: legacy ipv4 127.0.0.1 acept
@@ -12363,7 +12355,7 @@ exit; fi
 #### :rutina-inicial-code-shield-ssh:
 ####
 ####
-if [ "$type_firewall" = "shield-ssh" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "shield-ssh" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -12727,7 +12719,7 @@ exit; fi
 #### :rutina-inicial-code-rulesdefault:
 ####
 ####
-if [ "$type_firewall" = "predesignated" ];  then $cmd_binary eraserules &> /dev/null ;
+if [ "$type_firewall" == "predesignated" ];  then $cmd_binary eraserules &> /dev/null ;
 ####
 ####
 #### loopback localhost legacy ip4
@@ -13328,7 +13320,7 @@ exit; fi
 ##############################       spanish: sobreescribe las variables con la config cfg
 ####
 ####
-if [ "$first_option" = "custom" ]; then if [ -f $directory_config/$second_option ]; 
+if [ "$first_option" == "custom" ]; then if [ -f $directory_config/$second_option ]; 
 then source $directory_config/$second_option &> /dev/null ; else echo "$tab [ fail ] [ Config file not found ]"; exit ; fi ; fi
 ####
 ####
@@ -13336,9 +13328,9 @@ then source $directory_config/$second_option &> /dev/null ; else echo "$tab [ fa
 ##############################      spanish: estado selectivo de entrada/salida        #####################
 ####
 ####
-if [ "$allow_input_state" = "$NULL" ]  ; then config_input_state="-m state --state $config_input_state"   ;
+if [ "$allow_input_state" == "$NULL" ]  ; then config_input_state="-m state --state $config_input_state"   ;
 else config_input_state="$NULL"  ; fi
-if [ "$allow_output_state" = "$NULL" ] ; then config_output_state="-m state --state $config_output_state" ;
+if [ "$allow_output_state" == "$NULL" ] ; then config_output_state="-m state --state $config_output_state" ;
 else config_output_state="$NULL" ; fi
 ####
 ####
@@ -13347,8 +13339,8 @@ else config_output_state="$NULL" ; fi
 ####
 ####
 config_uid_gid=no
-if [ "$allow_output_uid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
-if [ "$allow_output_gid" = "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
+if [ "$allow_output_uid" == "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
+if [ "$allow_output_gid" == "$NULL" ]; then config_uid_gid="" ; else $nada ; fi
 ####
 ####
 ###############################################################################################################
@@ -13419,7 +13411,7 @@ $allow_nft $command_ip6tables_nft -A OUTPUT -s $config_ip6_localhost -d $config_
 ####################################### spanish: reglas for max ties for ssh
 ####
 ####
-if [ "$allow_shield_maxtries" = "" ]; then $nada
+if [ "$allow_shield_maxtries" == "" ]; then $nada
 $allow_legacy  $allow_ipv4  $command_iptables_legacy -A INPUT \
 -p tcp -m multiport --dports $config_shield_port -m state --state NEW -m recent \
 --set --name count-tries-ssh \
