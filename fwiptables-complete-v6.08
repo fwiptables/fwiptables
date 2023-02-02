@@ -4677,13 +4677,12 @@ exit; fi
 ####
 if   [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or yad or zenity to work ]"; exit ;; esac
-selection=$($favorite_graphicall_dialog $graphic_dimension \
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Gui Menu" --separator=" " \
 --list 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
 14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
-21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help \
---column="Option list $cmd_binary" --text="Select one option" --title="Gui Menu || $cmd_binary || $cmd_version ||")
+21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help )"
 #### 
 #### 
 case "$selection" in
