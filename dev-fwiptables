@@ -4677,7 +4677,7 @@ exit; fi
 ####
 if   [ "$first_option" = "gui-menu" ] ; then echo $head_waiting_gui
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or yad or zenity to work ]"; exit ;; esac
-selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Gui Menu" --separator=" " \
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
@@ -4688,8 +4688,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 case "$selection" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "01-Firewall-Control")$cmd_binary gui-menu-firewall-control ; exit ;;
-"02-Firewall-List-With Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
-"02-Firewall-List-With Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
+"02-Firewall-List-With-Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
+"02-Firewall-List-With-Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
 "03-Firewall-Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
 "04-Firewall-Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
 "05-Options-State")$cmd_binary gui-menu-options-state ; exit ;;
@@ -4728,16 +4728,14 @@ exit; fi
 ####
 ####  
 if   [ "$first_option" = "gui-menu-firewall-launch" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "eraserules" \
 "wizard-mini" "wizard-full" "custom cfg" "off-line" "all-permisive" \
 "games-shooter" "game-wesnoth" "game-minetest" "game-freeciv" "game-widelands" \
 "client-web" "client-vnc" "client-torrent" "client-vpn" "client-tor" "lan-tor" "lan-vpn" "shield-ssh" \
 "server-web" "server-vnc" "server-samba" "server-ssh" "server-print" "server-lamp" \
 "server-news" "server-mail" "server-ftp" "server-teamspeak" "server-mumble" \
-"server-sql" "server-asterisk" \
---column="Option list $cmd_binary" --text="Select one option" \
---title="[ firewall launch ] [ $cmd_binary ]")
+"server-sql" "server-asterisk" )"
 #### 
 #### 
 case "$selection" in
@@ -4797,9 +4795,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-firewall-control" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Firewall Rules ] [ $cmd_binary ]")
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" )"
 #### 
 #### 
 case "$selection" in
@@ -4835,15 +4832,14 @@ exit; fi
 #### :rutina-inicial-gui-menu-firewall-conceptual:
 ####
 ####
-if   [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
+if   [ "$first_option" = "gui-menu-firewall-conceptual" ] ; then 
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ls4" "ls6" "list-filter4" "list-filter6" "list-alltables" \
 "list-nat4" "list-nat6" "list-mangle4" "list-mangle6" "list-raw4" "list-raw6" \
-"list-security4" "list-security6" "list-ebtables" "list-arptables" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ firewall list ] [ $cmd_binary ]" )
+"list-security4" "list-security6" "list-ebtables" "list-arptables")"
 #### 
 #### 
-case $selection in
+case "$selection" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-conceptual ;;
@@ -4881,14 +4877,13 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-firewall-numeral" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lsn4" "lsn6" "listn-filter4" "listn-filter6" "listn-alltables" \
 "listn-nat4" "listn-nat6" "listn-mangle4" "listn-mangle6" "listn-raw4" "listn-raw6" \
-"listn-security4" "listn-security6" "list-ebtables" "list-arptables" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ firewall list ] [ $cmd_binary ]" )
+"listn-security4" "listn-security6" "list-ebtables" "list-arptables" )"
 #### 
 #### 
-case $selection in
+case "$selection" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-numeral ;;
