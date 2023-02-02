@@ -5052,9 +5052,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-rule" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool rules ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
 #### 
 #### 
 case $selection in
@@ -5082,11 +5081,10 @@ exit; fi
 #### :rutina-inicial-gui-menu-tool-sockets:
 ####
 ####
-if   [ "$first_option" = "gui-menu-tool-sockets" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
+if   [ "$first_option" = "gui-menu-tool-sockets" ] ; then
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ip4" "ip6" "info-proxy" "info-listen" "info-route" "info-nodes" \
-"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Sockets ] [ $cmd_binary ]" )
+"info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" )"
 #### 
 #### 
 case $selection in
@@ -5126,9 +5124,8 @@ exit; fi
 ####
 ####
 if [ "$first_option" = "gui-menu-tool-forward" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool forward ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off")"
 #### 
 #### 
 case $selection in
@@ -5157,9 +5154,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-sshd" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool sshd ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
 #### 
 #### 
 case $selection in
@@ -5190,9 +5186,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-icmp" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Icmp ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
 #### 
 #### 
 case $selection in
@@ -5226,9 +5221,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-udp" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool udp ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
 #### 
 #### 
 case $selection in
@@ -5263,9 +5257,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-tcp" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool tcp ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
 #### 
 #### 
 case $selection in
@@ -5297,9 +5290,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-sudofw" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Sudo ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
 #### 
 #### 
 case $selection in
@@ -5330,9 +5322,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-game" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool game ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
 #### 
 #### 
 case $selection in
@@ -5367,10 +5358,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-speed" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" \
-"speed-ram" "speed-disk" "speed-glx" "speed-cpu" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Speed ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
 #### 
 #### 
 case $selection in
@@ -5401,9 +5390,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-util" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Utils ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" )"
 #### 
 #### 
 case $selection in
@@ -5436,9 +5424,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-install" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool Install ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp")"
 #### 
 #### 
 case $selection in
@@ -5468,10 +5455,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-addblock" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" \
-"addblock-on" "addblock-off" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool addblock ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" "addblock-on" "addblock-off" )"
 #### 
 #### 
 case $selection in
@@ -5503,9 +5488,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-tool-dev" ] ; then $nada ;
-selection=$(zenity $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Tool dev ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" )"
 #### 
 #### 
 case $selection in
@@ -5537,9 +5521,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-show-hardware" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Show hardware ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw")"
 #### 
 #### 
 case $selection in
@@ -5572,10 +5555,9 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-show-etc" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "hosts" "protocols" "services" "hosts.allow" "hosts.deny" \
-"resolv.conf" "preferences-read" "preferences-modify" "preferences-read" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Show etc ]  [ $cmd_binary ]" )
+"resolv.conf" "preferences-read" "preferences-modify" "preferences-read" )"
 #### 
 #### 
 case $selection in
@@ -5610,9 +5592,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-show-log" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Show log ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search")"
 #### 
 #### 
 case $selection in
@@ -5644,9 +5625,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-help-about" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" "depends" "config-eng" "config-spa" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Show about ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" "depends" "config-eng" "config-spa" )"
 #### 
 #### 
 case $selection in
@@ -5677,10 +5657,8 @@ exit; fi
 ####
 ####
 if   [ "$first_option" = "gui-menu-help-help" ] ; then $nada ;
-selection=$($favorite_graphicall_dialog  $graphic_dimension \
---list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" \
-"all-help" "readme" "leeme" "notes" "license" \
---column="Option list $cmd_binary" --text="Select one option" --title="[ Show help ] [ $cmd_binary ]" )
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" "all-help" "readme" "leeme" "notes" "license" )"
 #### 
 #### 
 case $selection in
