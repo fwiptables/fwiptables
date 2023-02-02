@@ -9503,7 +9503,7 @@ fi ; exit; fi
 ####
 ####
 if   [ "$first_option" = "game-domain" ] ; then
-file_domain="$directory_default/$cmd_binary-domain"
+file_domain="$directory_default/dictionary-domain"
 if [ -s $file_domain ]; then $nada 
 else echo "$duo_md [ info ] [ Downloading txt file to play with $favorite_text_browser ]"
 $favorite_text_browser -source $url_web_domain &> $file_domain ; fi
