@@ -1,5 +1,5 @@
-### || || [ ok ] || [ Date and Time ] [ mar 31 ene 2023 16:03:57 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.07 ] || ||
+### || || [ ok ] || [ Date and Time ] [ jue 02 feb 2023 14:32:57 CET ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.08 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -l|-log -n|-null ] first_option [ second_option ]                    
