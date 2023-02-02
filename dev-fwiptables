@@ -626,8 +626,8 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_dialog" == "$NULL" ]; then
-# if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
 if [ "$command_zenity"  != "$NULL" ] ; then  favorite_graphicall_dialog="$command_zenity"   ; fi
+if [ "$command_yad"     != "$NULL" ] ; then  favorite_graphicall_dialog="$command_yad"      ; fi
 fi
 ####
 ####
@@ -4670,6 +4670,17 @@ $favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $
 exit; fi
 ####
 ####
+##########    english: gui-roll: gui menu general: gui con roll  ##########
+##########    spanish: gui-rool: gui menu general: gui con roll  ##########
+####
+####
+if   [ "$first_option" = "gui-roll" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+####
+$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+exit; fi
+####
+####
 ##########    english: gui-menu: gui menu general: gui con menu  ##########
 ##########    spanish: gui-menu: gui menu general: gui con menu  ##########
 #### :rutina-inicial-gui-menu:
@@ -4684,8 +4695,9 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
 21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help)"
 #### 
-#### 
-case "$selection" in
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "01-Firewall-Control")$cmd_binary gui-menu-firewall-control ; exit ;;
 "02-Firewall-List-With-Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
@@ -4738,7 +4750,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 "server-sql" "server-asterisk" )"
 #### 
 #### 
-case "$selection" in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1) $favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-launch ;;
@@ -4799,7 +4812,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "stop" "continue" "reset" "names" "show" "save" "load" "actual" )"
 #### 
 #### 
-case "$selection" in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-control ;;
@@ -4839,7 +4853,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 "list-security4" "list-security6" "list-ebtables" "list-arptables")"
 #### 
 #### 
-case "$selection" in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-conceptual ;;
@@ -4883,7 +4898,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 "listn-security4" "listn-security6" "list-ebtables" "list-arptables" )"
 #### 
 #### 
-case "$selection" in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-numeral ;;
@@ -4926,7 +4942,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 "names-config" "show-config" "modify-config" "del-config" "regen-config" "examples-config")"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help firewall-custom ;;
@@ -4978,7 +4995,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list Gui-Principal-Menu Gui-Help-Menu Gui-Info-Menu preferences-read preferences-modify preferences-regen ip4 ip6 version examples depends install upgrade)"
 #### 
 ####
-case "$selection" in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 Gui-Principal-Menu)$cmd_binary gui-menu ;;
 Gui-Help-Menu)$cmd_binary -gui help status-state ;;
@@ -5015,7 +5033,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "iw-scan" "iw-info" "wpa-save" "wpa-load" "dhcp-client" "ntpdate-client" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
@@ -5056,7 +5075,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "rule-del-num" "rule-del-shield" "rule-add-shield" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
@@ -5087,7 +5107,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 "info-net" "info-system" "ss" "lsof" "netstat" "netstat-nat" "tcpdump" "ntpdate-client" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sockets ;;
@@ -5128,7 +5149,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "ipforward-list" "ipforward-on" "ipforward-off")"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-forward ;;
@@ -5158,7 +5180,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sshd-tunnel-info" "sshd-tunnel-on" "sshd-tunnel-off" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-forward ;;
@@ -5190,7 +5213,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "traceicmp-ip4" "traceicmp-ip6" "ping-ip4" "ping-ip6" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-icmp ;;
@@ -5225,7 +5249,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "host" "dig" "resolveip" "geoip" "ntpdate-client" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-udp ;;
@@ -5261,7 +5286,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "tracetcp-ip4" "tracetcp-ip6" "speed-ip4" "speed-ip6")"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-tcp ;;
@@ -5294,7 +5320,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "sudofw-adduser" "sudofw-deluser" "sudofw-listuser" "aliasfw-list" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-sudofw ;;
@@ -5326,7 +5353,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "game-word" "game-number" "game-domain" "game-rgb" "game-hex" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-game ;;
@@ -5362,7 +5390,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "free-ram" "speed-ram" "speed-disk" "speed-glx" "speed-cpu" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-speed ;;
@@ -5394,7 +5423,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "weather" "md5sum" "radio-mp3 link" "gpg-notes" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-speed ;;
@@ -5428,7 +5458,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "install" "howto-upgrade" "upgrade" "clean-tmp")"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-install ;;
@@ -5459,7 +5490,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "addblock-list" "addblock-list info" "addblock-on" "addblock-off" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu;;
 "Gui Help Menu")$cmd_binary -gui help tool-addblock ;;
@@ -5492,7 +5524,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "new-versions" "dev-version" "dev-changes" "code" "intro" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu  ;;
 "Gui Help Menu")$cmd_binary -gui help tool-dev ;;
@@ -5525,7 +5558,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "lpinfo" "lsblk" "lsusb" "lscpu" "lspci" "lsgpu" "lshw")"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help show-hardware ;;
@@ -5560,7 +5594,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 "resolv.conf" "preferences-read" "preferences-modify" "preferences-read" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help show-etc ;;
@@ -5596,7 +5631,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "log-ssh" "filelog" "autolog" "log-search")"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help show-log ;;
@@ -5629,7 +5665,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "about" "version" "depends" "config-eng" "config-spa" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help help-about ;;
@@ -5661,7 +5698,8 @@ selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --
 --list "Gui Principal Menu" "Gui Help Menu" "Gui Info Menu" "mini-options" "full-options" "all-help" "readme" "leeme" "notes" "license" )"
 #### 
 #### 
-case $selection in
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
 1)$favorite_graphicall_dialog  --info $graphic_dimension --text="$cmd_binary good bye"; exit ;;
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help help-help ;;
