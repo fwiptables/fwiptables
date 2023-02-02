@@ -294,6 +294,7 @@ command_wpa_passphrase="$(command -v wpa_passphrase)"
 command_wpa_supplicant="$(command -v wpa_supplicant)"
 command_xrandr="$(command -v xrandr)"
 command_zenity="$(command -v zenity)"
+command_yad="$(command -v yad)"
 command_zgrep="$(command -v zgrep)"
 command_lpinfo="$(command -v lpinfo)"
 command_lpstat="$(command -v lpstat)"
@@ -403,6 +404,8 @@ allow_showtime=""                    ## fwiptables-file-default ## void or no
 favorite_text_editor=""          ## fwiptables-file-default ## void or command
 favorite_text_dialog=""          ## fwiptables-file-default ## void or command
 favorite_text_browser=""         ## fwiptables-file-default ## void or command
+#### #### english: look  #### spanish: apariencia
+graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
 #### #### english: look  #### spanish: apariencia
 quad="####" ; 
 cinco="#####" ;
@@ -1122,7 +1125,7 @@ echo
 echo "$title_md [ Automatic interfaces  ]"
 echo "$text_md Interface txt:           $command_bash"
 echo "$text_md Interface cli:           $favorite_text_dialog"
-# echo "$text_md Interface gui:           $command_zenity"
+echo "$text_md Interface gui:           $favorite_graphicall_dialog"
 echo 
 echo "$title_md [ Automatic iptables ]"
 echo "$text_md iptables legacy:         $command_iptables_legacy"
@@ -4240,6 +4243,178 @@ exit; fi
 ####
 ####
 #### :rutina-final-continue:
+##########    english: -gui: Manage gui con three options  ##########
+##########    spanish: -gui: Maneja gui con tres opciones  ##########
+####
+####
+#### english: with third option
+#### spanish: con tercera opcion
+####
+####
+if [ "$first_option" = "-gui" ] && [ "$third_option" != "$NULL" ] ; then $nada
+echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+case $second_option in
+#### 
+#### 
+"new-mini-config")
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$third_option"
+$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+--editable --title="NEW MINI CONFIG" 1> "$directory_config/$third_option" ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
+$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+else rm "$directory_config/$third_option" ; 
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+;;
+#### 
+#### 
+"new-full-config")
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$third_option"
+$favorite_graphicall_dialog --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+--editable --title="NEW FULL CONFIG" 1> "$directory_config/$third_option" ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
+$favorite_graphicall_dialog --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+else rm "$directory_config/$third_option" ; 
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+;;
+#### 
+#### 
+"nueva-mini-config")
+cp "$defaultminicfg_spa" "$directory_temporal/$cmd_config-$third_option"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+--editable --title="NUEVA MINI CONFIG" 1> "$directory_config/$third_option" ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+else rm "$directory_config/$third_option" ; 
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+;;
+#### 
+#### 
+"nueva-completa-config")
+cp "$defaultfullcfg_spa" "$directory_temporal/$cmd_config-$third_option"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+--editable --title="NUEVA COMPLETA CONFIG" 1> "$directory_config/$third_option" ;
+if [ -s "$directory_config/$third_option" ]; then $nada ;
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK new config file: $third_option AND launch: $cmd_binary custom $third_option" ; exit
+else rm "$directory_config/$third_option" ; 
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="Canceled new file: $third_option" ; exit; fi
+;;
+#### 
+#### 
+"modify-config")
+if [ -f "$directory_config/$third_option" ] ; then $nada
+else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+--editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
+if [ -s "$directory_config/$third_option" ]; then $nada ; 
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
+else cp "$directory_temporal/$cmd_config-$third_option" "$directory_config/$third_option"
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+;;
+#### 
+####
+"game-word")$cmd_binary game-word -gui ; exit ;;
+"game-number")$cmd_binary game-number -gui ; exit ;;
+"game-domain")$cmd_binary game-domain -gui ; exit ;;
+####
+####
+*)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+--filename="$temporal_guifinal" --auto-scroll ;;
+#### 
+#### 
+esac
+#### 
+#### 
+exit; fi
+####
+####
+##########    english: -gui: with second option    ##########
+##########    spanish: -gui: con segunda opcion    ##########
+####
+####
+if [ "$first_option" = "-gui" ] && [ "$second_option" != "$NULL" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+####
+case $second_option in
+#### 
+#### 
+"wizard-mini")
+archivo="wizard-mini"
+cp "$defaultminicfg_eng" "$directory_temporal/$cmd_config-$archivo"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+--editable --title="WIZARD MINI" 1> "$directory_config/$archivo"
+if [  -s "$directory_config/$archivo" ]; then $nada ; 
+$cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
+else rm "$directory_config/$archivo" ;
+$favorite_graphicall_dialog --info $graphic_dimension --text "Ok. $archivo canceled"; fi
+;;
+#### 
+#### 
+"wizard-full")
+archivo="wizard-full"
+cp "$defaultfullcfg_eng" "$directory_temporal/$cmd_config-$archivo"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$archivo" \
+--editable --title="WIZARD FULL" 1> "$directory_config/$archivo"
+if [  -s "$directory_config/$archivo" ]; then $nada ; 
+$cmd_binary -gui custom $archivo ; $cmd_binary -gui list4;
+else rm "$directory_config/$archivo" ;
+$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+;;
+#### 
+####
+#### 
+#### 
+"modify-config")
+if [ -f "$directory_config/$third_option" ] ; then $nada
+else $favorite_graphicall_dialog  --forms $graphic_dimension --text="file not found: $third_option" ; exit ; fi 
+cp "$directory_config/$third_option" "$directory_temporal/$cmd_config-$third_option"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$directory_temporal/$cmd_config-$third_option" \
+--editable --title="MODIFY CONFIG" 1> "$directory_config/$third_option"
+if [ -s "$directory_config/$third_option" ]; then $nada ; 
+$favorite_graphicall_dialog  --forms $graphic_dimension --text="OK. file: $third_option"
+else cp "$directory_temporal/$cmd_binary-$third_option" "$directory_config/$third_option"
+$favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $third_option"; fi
+;;
+#### 
+####
+"preferences-modify")
+archivo="default"
+cp "$default_preferences" "$default_preferences.old"
+$favorite_graphicall_dialog  --text-info $graphic_dimension --filename="$default_preferences.old" \
+--editable --title="MODIFY CONFIG" 1> "$default_preferences"
+if [ ! -s "$default_preferences" ]; then cp "$default_preferences.old" "$default_preferences" ;
+$favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canceled"; fi
+;;
+#### 
+####
+"game-word")$cmd_binary game-word -gui ; exit ;;
+"game-number")$cmd_binary game-number -gui ; exit ;;
+"game-domain")$cmd_binary game-domain -gui ; exit ;;
+####
+####
+*)$cmd_binary $second_option $third_option &> $temporal_guifinal
+$favorite_graphicall_dialog  --text-info $graphic_dimension --title="Gui Output || $cmd_binary ||" \
+--filename="$temporal_guifinal" --auto-scroll ;;
+#### 
+#### 
+esac
+#### 
+#### 
+exit; fi
+####
+####
+##########    english: -gui: without more options    ##########
+##########    spanish: -gui: sin mas opcion          ##########
+####
+####
+if [ "$first_option" = "-gui" ] && [ "$second_option" = "$NULL" ] ; then echo $head_waiting_gui
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]" ; exit ;; esac
+$favorite_graphicall_dialog  --forms $graphic_dimension --title="Gui Output || $cmd_binary || " --text="$($cmd_binary mini-options)"
+exit; fi
+####
+####
 ##########    english: config-eng: several options to config in english        ##########
 ##########    spanish: config-eng: varias opciones para configurar en ingles   ##########
 #### :rutina-inicial-config-eng:
