@@ -549,8 +549,6 @@ output_logfinal="$directory_temporal/$first_option-$second_option-$third_option-
 ####
 if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
 if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
-if [ ! -d "$directory_data" ]; then $command_mkdir -p $directory_data &> /dev/null ; fi
-if [ ! -d "$directory_temporal" ]; then $command_mkdir -p $directory_temporal &> /dev/null ; fi
 if [ ! -d "$directory_config" ]; then $command_mkdir -p "$directory_config" &> /dev/null ; fi
 if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover" &> /dev/null ; fi
 if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
@@ -920,11 +918,11 @@ esac ; fi
 ####
 if [ "$first_option" = "-gui" ] 
 then case "$second_option" in 
-"game_word") first_option="game-word" ; second_option="-gui" ;;
-"game_number") first_option="game-number" ; second_option="-gui" ;;
-"game_domain") first_option="game-domain" ; second_option="-gui" ;;
-"rule-del-num") first_option="rule-del-num" ; second_option="-gui" ;;
-"gpg-notes") first_option="gpg-notes" ; second_option="-gui" ;;
+"game_word") first_option="game-word" ; second_option="gui" ;;
+"game_number") first_option="game-number" ; second_option="gui" ;;
+"game_domain") first_option="game-domain" ; second_option="gui" ;;
+"rule-del-num") first_option="rule-del-num" ; second_option="gui" ;;
+"gpg-notes") first_option="gpg-notes" ; second_option="gui" ;;
 "clean-tmp")$cmd_binary clean-tmp &> /dev/null ; $favorite_graphicall_dialog --info --text "$(echo [ ok ] [ deleted cache $fwiptables ])"; exit ;;
 "info-nodes") echo "$message_without_gui" ;  exit ;;
 esac ; fi
@@ -4569,9 +4567,9 @@ $favorite_graphicall_dialog --forms $graphic_dimension --text="Canceled. file: $
 ;;
 #### 
 ####
-"game-word")$cmd_binary game-word gui ; exit ;;
-"game-number")$cmd_binary game-number gui ; exit ;;
-"game-domain")$cmd_binary game-domain gui ; exit ;;
+"game-word")$cmd_binary game-word -gui ; exit ;;
+"game-number")$cmd_binary game-number -gui ; exit ;;
+"game-domain")$cmd_binary game-domain -gui ; exit ;;
 ####
 ####
 *)$cmd_binary "$second_option" "$third_option" "$quad_option" &> "$temporal_guifinal"
@@ -4644,9 +4642,9 @@ $favorite_graphicall_dialog  --info $graphic_dimension --text "OK. $archivo canc
 ;;
 #### 
 ####
-"game-word")$cmd_binary game-word gui ; exit ;;
-"game-number")$cmd_binary game-number gui ; exit ;;
-"game-domain")$cmd_binary game-domain gui ; exit ;;
+"game-word")$cmd_binary game-word -gui ; exit ;;
+"game-number")$cmd_binary game-number -gui ; exit ;;
+"game-domain")$cmd_binary game-domain -gui ; exit ;;
 ####
 ####
 *)$cmd_binary $second_option $third_option &> $temporal_guifinal
@@ -9556,8 +9554,8 @@ if   [ "$first_option" = "game-word" ]; then  $nada
 #### variables shared
 ####
 ####
-language_english="$directory_default/$cmd_binary-english"
-language_spanish="$directory_default/$cmd_binary-spanish"
+language_english="$directory_default/dictionary-english"
+language_spanish="$directory_default/dictionary-spanish"
 language_number="0"
 caracteres="" ; cinco_caracteres="" ; intento="0" ; intento_maximo="12"
 seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
@@ -9609,15 +9607,17 @@ if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
-#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-english
+#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
+$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
+ | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$directory_english
 echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
-$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-spanish
+$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
+ | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/directory_english
 echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -9720,30 +9720,32 @@ if [ "$second_option" = "-gui" ] ; then
 #### Choose language english or spanish
 ####
 ####
-case "$favorite_graphicall_dialog" in "$NULL") echo " Install zenity to work"; exit ;; esac
-selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
---title="Play word ole game")
-case $selection in
-"01 english") language_number="1" ;;
-"02 spanish") language_number="2" ;;
-"03 quit")    language_number="q" ;;
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list english spanish quit )"
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+"english") language_number="1" ;;
+"spanish") language_number="2" ;;
+"quit")    language_number="q" ;;
 esac
-if [ "$?" -eq "1" ]; then exit; fi 
 ####
 #### Quit game
 if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
-#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-english
+#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
+$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
+ | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$directory_english
 echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
 if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-spanish
+$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
+ | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/directory_english
 echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 #####
 if [ "$language_number" == "1" ] || [ "$language_number" == "2" ]; then echo -n ; else exit ; fi
@@ -9858,15 +9860,17 @@ if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit
 #### Dicctionary english if download
 if [ "$language_number" == "1" ]; then dictionary="$language_english"
 if [ -s "$language_english" ]; then echo; else echo "$duo_md [ Wait ] [ Waiting to downloading the english dictionary for first time ] "
-#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > /tmp/fwiptables-word-eng
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-eng
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-eng | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-english
+#### links -source https://github.com/dolph/dictionary/blob/master/popular.txt > $directory_temporal/directory_english
+$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
+ | $command_sed  'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$directory_english
 echo "$duo_md [ ok ] [ english dictionary downloaded ]" ; fi ; fi
 #### Dicctionary spanish if dowload
-if [ "$language_number" == "2" ]; then dictionary="$language_spanish" 
+if [ "$language_number" == "2" ]; then dictionary="$language_spanish"
 if [ -s "$language_spanish" ]; then echo; else echo "$duo_md [ Espera ] [ Esperando para descargar el diccionario español por primera vez ] "
-$favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > /tmp/fwiptables-word-spa
-$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ /tmp/fwiptables-word-spa | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/$cmd_binary-spanish
+$ favorite_text_browser -source https://raw.githubusercontent.com/JorgeDuenasLerin/diccionario-espanol-txt/master/length/05.txt > $directory_temporal/directory_english
+$command_grep ^[a-z][a-z][a-z][a-z][a-z]$ $directory_temporal/directory_english \
+ | $command_sed 'y/áÁàÀãÃâÂéÉêÊíÍóÓõÕôÔúÚñÑçÇªº/aAaAaAaAeEeEiIoOoOoOuUnNcCao/' > $directory_default/directory_english
 echo "$duo_md [ ok ] [ diccionario español descargado ]" ; fi ; fi
 ##### language of interface english
 if [ "$language_number" -eq "1" ]; then
@@ -9967,7 +9971,7 @@ fi
 #### :rutina-inicial-game-number:
 ####
 ####
-if   [ "$first_option" = "game-number" ]; then  $nada
+if   [ "$first_option" = "game-number" ]; then  
 ####
 ####
 #### variables shared
@@ -10119,15 +10123,15 @@ if [ "$second_option" = "-gui" ] || [ "$second_option" = "gui" ]; then $nada
 #### Choose language english or spanish
 ####
 ####
-case "$favorite_graphicall_dialog" in "$NULL") echo " Install zenity to work"; exit ;; esac
-selection=$(zenity $graphic_dimension --list "01 english" "02 spanish" "03 quit" --column="Option list" --text="Select one option" \
---title="Play number ole game")
-case $selection in
-"01 english") language_number="1" ;;
-"02 spanish") language_number="2" ;;
-"03 quit")    language_number="q" ;;
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity to work ]"; exit ;; esac
+selection="$($favorite_graphicall_dialog $graphic_dimension --column="Column" --text="Options" --title="Menu" --separator=" " \
+--list english spanish quit )"
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+"english") language_number="1" ;;
+"spanish") language_number="2" ;;
+"quit")    language_number="q" ;;
 esac
-if [ "$?" -eq "1" ]; then exit; fi 
 ####
 #### Quit game
 if [ "$language_number" == "q" ]; then echo "$cinco [ ok ] [ Exit game ]" ; exit ; fi
