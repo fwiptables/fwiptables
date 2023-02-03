@@ -4674,10 +4674,11 @@ exit; fi
 ####
 ####
 if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install yad to work ]"; exit ;; esac
+case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install or zenity or yad to work ]"; exit ;; esac
 ####
 selection=""
 ####
+if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-With-Numeral| \
 03-Firewall-Custom|04-Firewall-Launch|05-Options-State|06-Tool-sockets| \
 07-Tool-connect|08-Tool-rule|09-Tool-forward|10-Tool-sshd|11-Tool-tcp|12-Tool-udp|13-Tool-icmp| \
@@ -4685,11 +4686,11 @@ gui_menu="01-Firewall-Control|02-Firewall-List-With-Conceptual|02-Firewall-List-
 21-Show-hardware|22-Show-etc|23-Show-log|24-Help-about|25-Help-help"
 ####
 ####
-if [ "$favorite_graphicall_dialog" == "$command_zenity" ]; then 
 selection="$($command_zenity --text="Options" --title="Menu" \
 --forms --add-combo="Options" --combo-values="$gui_menu")"; fi
 ####
 ####
+if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
 gui_menu="01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
 03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
 07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
@@ -4697,7 +4698,6 @@ gui_menu="01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-
 21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help"
 ####
 ####
-if [ "$favorite_graphicall_dialog" == "$command_yad" ]; then 
 selection="$($command_yad --text="Options" --title="Menu" \
  --entry $gui_menu )"; fi
 ####
@@ -5099,7 +5099,7 @@ case "$selection_final" in
 "iw-info")$cmd_binary -gui iw-info ;;
 "wpa-load")
 $cmd_binary -gui wpa-load
-archivo="$(zenity  $graphic_dimension --entry --title "[ Load old file ]")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[ Load old file ]")" ;
 $cmd_binary -gui wpa-load $archivo ; $cmd_binary -gui iw-info ;;
 "wpa-save")
 for dispositivo in $(cat /proc/net/dev | $command_grep -i  : | cut -d ":" -f 1); do $command_ifconfig $dispositivo up ; done
@@ -5244,7 +5244,7 @@ case "$selection_final" in
 "Gui Info Menu")$cmd_binary -gui info tool-forward ;;
 "sshd-tunnel-info")$cmd_binary -gui sshd-tunnel-info ;;
 "sshd-tunnel-on")
-archivo="$(zenity  $graphic_dimension --entry --title "[ type: user@host ]" --text "[ type: user@host ]")" ;
+archivo="$($favorite_graphicall_dialog  $graphic_dimension --entry --title "[ type: user@host ]" --text "[ type: user@host ]")" ;
 $cmd_binary -gui sshd-tunnel-on $archivo ;;
 "sshd-tunnel-off")$cmd_binary -gui sshd-tunnel-off ;;
 esac
@@ -5275,13 +5275,13 @@ case "$selection_final" in
 "Gui Principal Menu")$cmd_binary gui-menu ;;
 "Gui Help Menu")$cmd_binary -gui help tool-icmp ;;
 "Gui Info Menu")$cmd_binary -gui info tool-icmp ;;
-"traceicmp-ip4") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"traceicmp-ip4") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui traceicmp-ip4 $archivo ;;
-"traceicmp-ip6") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"traceicmp-ip6") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui traceicmp-ip6 $archivo ;;
-"ping-ip4") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ;
+"ping-ip4") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ;
 $cmd_binary -gui ping-ip4 $archivo ;;
-"ping-ip6") archivo="$(zenity $graphic_dimension --entry --text="[ type the ip or host ]")" ; 
+"ping-ip6") archivo="$($favorite_graphicall_dialog $graphic_dimension --entry --text="[ type the ip or host ]")" ; 
 $cmd_binary -gui ping-ip6 $archivo ;;
 esac
 ####
@@ -5486,7 +5486,7 @@ case "$selection_final" in
 "Gui Help Menu")$cmd_binary -gui help tool-speed ;;
 "Gui Info Menu")$cmd_binary -gui info tool-speed ;;
 "weather")$cmd_binary -gui weather ;;
-"md5sum")archivo="$(zenity --file-selection)" ;
+"md5sum")archivo="$($favorite_graphicall_dialog --file-selection)" ;
 $cmd_binary -gui md5sum $archivo ;;
 "radio-mp3 link") 
 radio_enlace="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
@@ -9582,9 +9582,9 @@ clear ; exit ; fi
 ####
 if [ "$second_option" == "-gui" ] || [ "$second_option" == "gui" ] ; then
 case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad ]"; exit ;; esac
-$(zenity $graphic_dimension --info --title="gui game-domain" \
+$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-domain" \
 --text=" Is this a country domain or a generic domain ? :  $domain_one")
-$(zenity $graphic_dimension --info --title="gui game-domain" \
+$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-domain" \
 --text=" Really $domain_one is a $type_domain_one domain.")
 exit; fi
 ####
@@ -9844,14 +9844,14 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 ####
 if [ "$cinco_caracteres" == "$palabra_aleatoria" ]; then clear 
-acierto="$(zenity $graphic_dimension --info --title="gui game-word" --text="$text_1 $palabra_aleatoria")"
+acierto="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-word" --text="$text_1 $palabra_aleatoria")"
 clear; exit; fi
 ####
 if [ "$intento" == "$intento_maximo" ]; then clear
-fallo="$(zenity $graphic_dimension --info --title="gui game-word" --text="$text_8 $palabra_aleatoria")"
+fallo="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-word" --text="$text_8 $palabra_aleatoria")"
 clear ; exit ; fi
 ####
-bucle="$(zenity $graphic_dimension --entry --title "Play game word ole" \
+bucle="$($favorite_graphicall_dialog $graphic_dimension --entry --title "Play game word ole" \
 --text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
 if [ "$?" != 0 ]; then clear; echo "$cinco [ ok ] [ Exit game ]" ; exit; fi
@@ -10229,14 +10229,14 @@ seat_1="" ; seat_2=""; seat_3=""; seat_4=""; seat_5=""
 until [ "$intento" -eq "$intento_maximo" ]; do $nada
 #### 
 if [ "$cinco_digitos" == "$numero_aleatorio" ]; then clear 
-acierto="$(zenity $graphic_dimension --info --title="gui game-number" --text="$text_1 $numero_aleatorio")"
+acierto="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-number" --text="$text_1 $numero_aleatorio")"
 clear; exit; fi
 ####
 if [ "$intento" == "$intento_maximo" ]; then clear
-fallo="$(zenity $graphic_dimension --info --title="gui game-number" --text="$text_8 $numero_aleatorio")"
+fallo="$($favorite_graphicall_dialog $graphic_dimension --info --title="gui game-number" --text="$text_8 $numero_aleatorio")"
 clear ; exit ; fi
 ####
-bucle="$(zenity $graphic_dimension --entry --title "Play game number ole" \
+bucle="$($favorite_graphicall_dialog $graphic_dimension --entry --title "Play game number ole" \
 --text " $text_6 $intento /// $intento_maximo \n  $text_2 \n # $text_3 # \n \
 || $seat_1 - $seat_2 - $seat_3 - $seat_4 - $seat_5 || \n # $text_4 # \n || $contenido ||")"
 if [ "$?" -eq "0" ]; then echo -n ; else exit; fi
