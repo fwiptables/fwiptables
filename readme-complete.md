@@ -1,5 +1,5 @@
-### || || [ ok ] || [ Date and Time ] [ jue 02 feb 2023 14:32:50 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.08 ] |||
+### || || [ ok ] || [ Date and Time ] [ vie 03 feb 2023 09:54:21 CET ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.09 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-shell                                                     
