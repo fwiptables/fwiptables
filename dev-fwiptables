@@ -747,6 +747,7 @@ if [ "$first_option" == "tui-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-tui-menu"  ] || [ "$first_option" == "--tui-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-cli-menu"  ] || [ "$first_option" == "--cli-menu"  ] ; then first_option="cli-menu"  ; fi
 if [ "$first_option" == "-gui-menu"  ] || [ "$first_option" == "--gui-menu"  ] ; then first_option="gui-menu"  ; fi
+if [ "$first_option" == "-gui-roll"  ] || [ "$first_option" == "--gui-roll"  ] ; then first_option="gui-roll"  ; fi
 if [ "$first_option" == "-gui-shell" ] || [ "$first_option" == "--gui-shell" ] ; then first_option="gui-shell" ; fi
 if [ "$first_option" == "text" ] || [ "$first_option" == "--text" ]   ; then first_option="-txt"  ; fi
 if [ "$first_option" == "tui"  ] || [ "$first_option" == "--tui" ]    ; then first_option="-cli"  ; fi
@@ -773,7 +774,7 @@ if [ "$first_option" == "$NULL" ]  ; then first_option="options-mini" ; fi
 ####
 ####
 if [ "$first_option" == "options" ] ; then first_option="options-all" ; fi
-if [ "$first_option" == "mini-options" ] ; then first_option="options-mini" ; fi
+if [ "$first_option" == "options-mini" ] ; then first_option="mini-options" ; fi
 if [ "$first_option" == "options-full" ] ; then first_option="options-all" ; fi
 if [ "$first_option" == "full-options" ] ; then first_option="options-all" ; fi
 if [ "$first_option" == "examples" ] ; then first_option="options-examples"; fi
@@ -2692,15 +2693,15 @@ fi
 ####
 ####
 #### :rutina-final-system-rules:
-##########    english: options-mini: wellcome with semi help    ##########
-##########    spanish: options-mini: bienvenida con semi ayuda  ##########
-#### :rutina-inicial-options-mini:
+##########    english: mini-options: wellcome with semi help    ##########
+##########    spanish: mini-options: bienvenida con semi ayuda  ##########
+#### :rutina-inicial-mini-options:
 ####
 ####
-if   [ "$first_option" == "options-mini" ] ; then echo $give_cover ;  echo "$message_info_rules"
-echo "$header_ok [ $first_option ] [ List mini options ] [ mini-options md ] || ||"
-echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                     "
-echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]         "
+if   [ "$first_option" == "mini-options" ] ; then echo $give_cover ;  echo "$message_info_rules"
+echo "$header_ok [ $first_option ] [ List mini options ] [ options-mini md ] || ||"
+echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell                                          "
+echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]        "
 echo "$duo_md || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                "
 echo "$text_md    firewall-control |  stop continue reset names actual show save load                              " 
 echo "$text_md firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
@@ -2732,7 +2733,7 @@ echo "$text_md      $cmd_binary options-examples         |  Show examples       
 exit ; fi
 ####
 ####
-#### :rutina-final-options-mini:
+#### :rutina-final-mini-options:
 ##########    english: options-all: and full-options: wellcome with semi help    ##########
 ##########    spanish: options-all: and full-options: bienvenida con semi ayuda  ##########
 #### :rutina-inicial-full-options:
@@ -2741,7 +2742,7 @@ exit ; fi
 if   [ "$first_option" == "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                          "
-echo "    Launch: $zero_option [-cli-menu -gui-menu -gui-shell                                                      "
+echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell                                           "
 echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]          "
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                           "
 echo "$text_md   firewall-control   |  stop continue reset names actual show save load                              "
