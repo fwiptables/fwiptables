@@ -4669,13 +4669,53 @@ exit; fi
 ####
 ####
 ##########    english: gui-roll: gui menu general: gui con roll  ##########
-##########    spanish: gui-rool: gui menu general: gui con roll  ##########
+##########    spanish: gui-roll: gui menu general: gui con roll  ##########
 ####
 ####
 if   [ "$first_option" == "gui-roll" ] ; then echo $head_waiting_gui
-case "$favorite_graphicall_dialog" in "$NULL") echo "$duo_md [ fail ] [ Install zenity or yad to work ]"; exit ;; esac
+case "$command_yad" in "$NULL") echo "$duo_md [ fail ] [ Install yad to work ]"; exit ;; esac
 ####
-$favorite_graphicall_dialog  --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
+####
+selection="$($command_yad $graphic_dimension --column="Column" --text="$($cmd_binary)" --title="Menu" --separator=" " \
+--entry --completion --entry-text 01-Firewall-Control 02-Firewall-List-With-Conceptual 02-Firewall-List-With-Numeral \
+03-Firewall-Custom 04-Firewall-Launch 05-Options-State 06-Tool-sockets \
+07-Tool-connect 08-Tool-rule 09-Tool-forward 10-Tool-sshd 11-Tool-tcp 12-Tool-udp 13-Tool-icmp \
+14-Tool-sudofw 15-Tool-game 16-Tool-speed 17-Tool-util 18-Tool-install 19-Tool-addblock 20-Tool-dev \
+21-Show-hardware 22-Show-etc 23-Show-log 24-Help-about 25-Help-help)"
+####
+####
+selection_final="$(echo $selection | sed 's/\|//g')"
+case "$selection_final" in
+"01-Firewall-Control")$cmd_binary gui-menu-firewall-control ; exit ;;
+"02-Firewall-List-With-Conceptual")$cmd_binary gui-menu-firewall-conceptual ; exit ;;
+"02-Firewall-List-With-Numeral")$cmd_binary gui-menu-firewall-numeral ; exit ;;
+"03-Firewall-Custom")$cmd_binary gui-menu-firewall-custom ; exit ;;
+"04-Firewall-Launch")$cmd_binary gui-menu-firewall-launch ; exit ;;
+"05-Options-State")$cmd_binary gui-menu-options-state ; exit ;;
+"06-Tool-sockets")$cmd_binary gui-menu-tool-sockets ; exit ;;
+"07-Tool-connect")$cmd_binary gui-menu-tool-connect ; exit ;;
+"08-Tool-rule")$cmd_binary gui-menu-tool-rule ; exit ;;
+"09-Tool-forward")$cmd_binary gui-menu-tool-forward ; exit ;;
+"10-Tool-sshd")$cmd_binary gui-menu-tool-sshd ; exit ;;
+"11-Tool-tcp")$cmd_binary gui-menu-tool-tcp ; exit ;;
+"12-Tool-udp")$cmd_binary gui-menu-tool-udp ; exit ;;
+"13-Tool-icmp")$cmd_binary gui-menu-tool-icmp ; exit ;;
+"14-Tool-sudofw")$cmd_binary gui-menu-tool-sudofw ; exit ;;
+"15-Tool-game")$cmd_binary gui-menu-tool-game ; exit ;;
+"16-Tool-speed")$cmd_binary gui-menu-tool-speed ; exit ;;
+"17-Tool-util")$cmd_binary gui-menu-tool-util ; exit ;;
+"18-Tool-install")$cmd_binary gui-menu-tool-install ; exit ;;
+"19-Tool-addblock")$cmd_binary gui-menu-tool-addblock ; exit ;;
+"20-Tool-dev")$cmd_binary gui-menu-tool-dev ; exit ;;
+"21-Show-hardware")$cmd_binary gui-menu-show-hardware ; exit ;;
+"22-Show-etc")$cmd_binary gui-menu-show-etc ; exit ;;
+"23-Show-log")$cmd_binary gui-menu-show-log ; exit ;;
+"24-Help-about")$cmd_binary gui-menu-help-about ; exit ;;
+"25-Help-help")$cmd_binary gui-menu-help-help ; exit ;;
+esac
+####
+####
+$command_yad --progress $graphic_dimension --timeout=$close_graphicall --text="$mensage_timeout" --auto-close --auto-kill
 exit; fi
 ####
 ####
