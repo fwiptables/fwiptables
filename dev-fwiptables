@@ -233,6 +233,7 @@ command_pdfunite="$(command -v pdfunite)"
 command_pdfseparate="$(command -v pdfseparate)"
 command_cvlc="$(command -v cvlc)"
 command_yad="$(command -v yad)"
+command_vlc="$(command -v vlc)"
 ####
 ####
 #### :rutina-final-command:
@@ -369,7 +370,8 @@ favorite_graphicall_dialog=""    ## fwiptables-file-default ## void or command
 favorite_text_browser=""         ## fwiptables-file-default ## void or command
 favorite_date_command=""         ## fwiptables-file-default ## void or command
 favorite_dhcp_command=""         ## fwiptables-file-default ## void or command
-favorite_radio_command=""        ## fwiptables-file-default ## void or command
+favorite_text_music=""           ## fwiptables-file-default ## void or command
+favorite_graphicall_music=""     ## fwiptables-file-default ## void or command
 #### #### variables to modify for qemu
 qemu_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
 memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
@@ -670,19 +672,30 @@ fi
 ####
 ####
 #### :rutina-final-favorite-date-command:
-##########      english: search favorite music player            ##########
-##########      spanish: busca preferida reproductor de musica   ##########
-#### :rutina-inicial-favorite-radio-command:
+##########      english: search favorite text music player             ##########
+##########      spanish: busca preferida texto reproductor de musica   ##########
+#### :rutina-inicial-favorite-text-music:
 ####
 ####
-if [ "$favorite_radio_command" == "$NULL" ]; then
-if [ "$command_cvlc" != "$NULL" ]; then  favorite_radio_command="$command_cvlc"     ; fi
-if [ "$command_mpg321" != "$NULL" ]; then  favorite_radio_command="$command_mpg321" ; fi
-if [ "$command_mpg123" != "$NULL" ]; then  favorite_radio_command="$command_mpg123" ; fi
+if [ "$favorite_text_music" == "$NULL" ]; then
+if [ "$command_cvlc" != "$NULL" ]; then  favorite_text_music="$command_cvlc"     ; fi
+if [ "$command_mpg321" != "$NULL" ]; then  favorite_text_music="$command_mpg321" ; fi
+if [ "$command_mpg123" != "$NULL" ]; then  favorite_text_music="$command_mpg123" ; fi
 fi
 ####
 ####
-#### :rutina-final-favorite-radio-command:
+#### :rutina-final-favorite-text-music:
+##########      english: search favorite graphicall music player            ##########
+##########      spanish: busca preferida grafica reproductor de musica      ##########
+#### :rutina-inicial-favorite-graphicall-music:
+####
+####
+if [ "$favorite_graphicall_music" == "$NULL" ]; then
+if [ "$command_vlc" != "$NULL" ]; then  favorite_graphicall_music="$command_vlc"     ; fi
+fi
+####
+####
+#### :rutina-final-favorite-graphicall-music:
 ##########    english: ALIAS  simple y firewall y campus       ##########
 ##########    spanish: ALIAS  simple y cortafuegos y campo     ##########
 #### :rutina-inicial-alias-simple:
@@ -4489,7 +4502,8 @@ echo
 echo "$title_md [ Automatic favorites ]"
 echo "$text_md Automatic text editor:    Text editor command      :   $favorite_text_editor"
 echo "$text_md Automatic text browser:   Text browser command     :   $favorite_text_browser"
-echo "$text_md Automatic text music:     music player command     :   $favorite_radio_command"
+echo "$text_md Automatic text music:     music console command    :   $favorite_text_music"
+echo "$text_md Automatic text music:     music graphicall command :   $favorite_grahpicall_music"
 echo "$text_md Automatic text date:      date client command      :   $favorite_date_command"
 echo "$text_md Automatic text dhcp:      dhcp client command      :   $favorite_dhcp_command" 
 echo 
@@ -5490,7 +5504,7 @@ case "$selection_final" in
 $cmd_binary -gui md5sum $archivo ;;
 "radio-mp3 link") 
 radio_enlace="$($favorite_graphicall_dialog  $graphic_dimension --entry --text="[ typea one mp3 link ] [ example: $radio_mp3 ]")" ;
-$cmd_binary -gui radio-mp3 $radio_enlace ;;
+$cmd_binary -gui radio-mp3 $radio_enlace gui ;;
 "gpg-notes")$cmd_binary -gui gpg-notes ;;
 esac
 ####
@@ -9381,7 +9395,9 @@ echo "$duo_md [ info ] [ for choose default radio see: $cmd_binary preferences-r
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
-case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$favorite_text_music" in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$third_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favorite_graphicall_music" ; 
+case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
 if [ "$second_option" == "$NULL" ]; then $nada
@@ -9394,10 +9410,10 @@ exit
 else emisora="$second_option"; fi
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_radio_command $emisora
+sudo -u $(logname) $favorite_text_music $emisora
 exit; fi
 ####
 ####
@@ -9413,18 +9429,18 @@ echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for 
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
-case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$favorite_text_music" in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favorite_graphicall_music" ; 
+case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then $nada
 emisora="$radio_cadena100"
-else emisora="$second_option"; fi
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_radio_command $emisora
+sudo -u $(logname) $favorite_text_music $emisora
 exit; fi
 ####
 ####
@@ -9440,18 +9456,18 @@ echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for 
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
-case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$favorite_text_music" in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favorite_graphicall_music" ; 
+case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then $nada
 emisora="$radio_rockfm"
-else emisora="$second_option"; fi
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_radio_command $emisora
+sudo -u $(logname) $favorite_text_music $emisora
 exit; fi
 ####
 ####
@@ -9467,18 +9483,18 @@ echo "$duo_md [ info ] [ for choose default radio see: preferences-read ] [ for 
 echo "$duo_md [ info ] [ Usually it do not working likes root, probe as user ]"
 ####
 ####
-case $favorite_radio_command in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$favorite_text_music" in "$NULL") echo "$tab [ fail ] [ Install a console mp3 player ]"; exit ;; esac
+case "$second_option" in "gui"|"-gui"|"-g"|"--gui") favorite_text_music="$favorite_graphicall_music" ; 
+case "$favorite_graphicall_music" in "$NULL") echo "$tab [ fail ] [ Install a graphicall mp3 player ]"; exit ;; esac;; esac
 ####
 ####
-if [ "$second_option" == "$NULL" ]; then $nada
 emisora="$radio_kissfm"
-else emisora="$second_option"; fi
 ####
 ####
-echo "$duo_md [  ok  ] [ $favorite_radio_command $emisora ]"
+echo "$duo_md [  ok  ] [ $favorite_text_music $emisora ]"
 echo 
 echo 
-sudo -u $(logname) $favorite_radio_command $emisora
+sudo -u $(logname) $favorite_text_music $emisora
 exit; fi
 ####
 ####

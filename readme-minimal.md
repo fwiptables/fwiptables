@@ -1,8 +1,8 @@
-### || || [ ok ] || [ Date and Time ] [ vie 03 feb 2023 09:54:28 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.09 ] || ||
+### || || [ ok ] || [ Date and Time ] [ vie 03 feb 2023 17:12:04 CET ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.10 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
-   Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]             
+    Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]            
 ### || || [ firewall ]  ### [  Control firewalls and rules to manage iptables ] ### || ||                  
         firewall-control |  stop continue reset names actual show save load                              
      firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          
