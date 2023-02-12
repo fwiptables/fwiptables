@@ -69,7 +69,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-cmd" ;
-cmd_version="complete-6.10" ;
+cmd_version="complete-6.11" ;
 cmd_name="Fran Complete FireWall FWiptables Generator" ;
 cmd_description="One Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -338,7 +338,7 @@ config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or
 allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: auto time in command
 ####       #### spanish: automatico fecha de linea
-allow_showtime=""                    ## fwiptables-file-default ## void or no
+allow_showtime="no"                    ## fwiptables-file-default ## void or no
 ####       #### english: PING server for default         
 ####       #### spanish: servidor de PING por defecto    
 server_ping_ipv4="fast.com"           ## fwiptables-file-default ## default fast.com
