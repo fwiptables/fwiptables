@@ -445,7 +445,7 @@ url_web_changes="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-ch
 url_index_files="https://sourceforge.net/projects/f-iptables/files/" ;
 url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-v6" ;
 url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v6" ;
-url_web_development="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
+url_web_fulldevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
@@ -1305,9 +1305,9 @@ echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$duo_md [ info ] [ download ] [ $url_web_development ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_fulldevelopment ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
-$favorite_text_browser -source $url_web_development &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+$favorite_text_browser -source $url_web_fulldevelopment &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
 ####
 ####
@@ -2738,7 +2738,8 @@ echo "$text_md                        server-vnc server-web server-samba server-
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                        server-asterisk server-squid                                                 "
 echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                        ip4 ip6 version notes depends license new-versions install uninstall         "
+echo "$text_md                        ip4 ip6 version notes depends license new-versions                           "
+echo "$text_md                        install uninstall devmini-upgrade devfull-upgrade                            "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
 echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manager        "
 echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
@@ -10658,7 +10659,7 @@ exit; fi
 ####
 if   [ "$first_option" == "dev-version" ]; then  echo $give_cover
 echo "$header_ok [ $first_option ]  [ show the link to dev version from git repository ] || ||"
-echo $url_web_development
+echo $url_web_fulldevelopment
 exit; fi
 ####
 ####
@@ -11084,7 +11085,7 @@ echo "$title_md [ Sources: ]"
 echo
 echo "$text_md [ Developer version program ]"
 echo "$text_md The fran iptables ver in development in git code at sourceforge:"
-echo "$text_md $url_web_development"
+echo "$text_md $url_web_fulldevelopment"
 echo 
 echo "$text_md [ New versions program ]"
 echo "$text_md The last versions in files repository at sourceforge:"
