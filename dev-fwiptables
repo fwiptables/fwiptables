@@ -932,6 +932,8 @@ esac ; fi
 ####
 if [ "$first_option" == "-gui" ] 
 then case "$second_option" in 
+"radio-mp3") first_option="$second_option" ; second_option="$third_option" ; third_option="gui" ;;
+radio-*) first_option="$second_option" ; second_option="gui" ;;
 "game_word") first_option="game-word" ; second_option="gui" ;;
 "game_number") first_option="game-number" ; second_option="gui" ;;
 "game_domain") first_option="game-domain" ; second_option="gui" ;;
@@ -1107,7 +1109,7 @@ traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 nmap-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
-free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx|radio-*)  second_option="tool-speed"; third_option="" ;;
 "install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
