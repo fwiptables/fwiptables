@@ -1056,10 +1056,11 @@ iw-info|iw-scan|wpa-save|wpa-load|dhcp-client) second_option="tool-connect"; thi
 rule-del-num|rule-del-shield|rule-add-shield) second_option="tool-rule"; third_option="" ;;
 traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 nmap-*)  second_option="tool-nmap"; third_option="" ;;
+weather|gpg-notes|md5-sum|radio-*) second_option="tool-util" ; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
-free-ram|speed-ram|speed-disk|speed-glx|radio-mp3)  second_option="tool-speed"; third_option="" ;;
-"install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx)  second_option="tool-speed"; third_option="" ;;
+"install"|dev*-upgrade|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
@@ -1109,8 +1110,9 @@ traceicmp-*|ping-*)  second_option="tool-icmp"; third_option="" ;;
 nmap-*)  second_option="tool-nmap"; third_option="" ;;
 sudo-*|alias-*)  second_option="tool-sudofw"; third_option="" ;;
 game-*|game-*)  second_option="tool-game"; third_option="" ;;
-free-ram|speed-ram|speed-disk|speed-glx|radio-*)  second_option="tool-speed"; third_option="" ;;
-"install"|"dev-upgrade"|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
+weather|gpg-notes|md5-sum|radio-*) second_option="tool-util" ; third_option="" ;;
+free-ram|speed-ram|speed-disk|speed-glx)  second_option="tool-speed"; third_option="" ;;
+"install"|dev*-upgrade|"upgrade"|"howto-upgrade"|"clean-tmp")  second_option="tool-install"; third_option="" ;;
 addblock-*)  second_option="tool-addblock"; third_option="" ;;
 new-versions|dev-version|dev-changes|code|gpg-notes)  second_option="tool-dev"; third_option="" ;;
 lpinfo|lsblk|lsusb|lscpu|lspci|lsgpu|lshw)  second_option="show-hardware"; third_option="" ;;
@@ -1286,12 +1288,12 @@ exit ; fi
 ####
 ####
 #### :rutina-final-upgrade:
-##########    english: dev-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
-##########    spanish: dev-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
-#### :rutina-inicial-dev-upgrade:
+##########    english: devfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: devfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-devfull-upgrade:
 ####
 ####
-if  [ "$first_option" == "dev-upgrade" ]; then echo $give_cover
+if  [ "$first_option" == "devfull-upgrade" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
 echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
 case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
@@ -1322,7 +1324,7 @@ else echo "$duo_md [ fail ] [ install fail ]"; fi ;
 exit ; fi
 ####
 ####
-#### :rutina-final-dev-upgrade:
+#### :rutina-final-devfull-upgrade:
 ##########    english: devmini-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
 ##########    spanish: devmini-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
 #### :rutina-inicial-devmini-upgrade:
@@ -2798,7 +2800,7 @@ echo "$text_md   tool-util          |  weather md5sum gpg-notes                 
 echo "$text_md   tool-pdf           |  pdf-resize pdf-unite pdf-separate                                            "
 echo "$text_md   tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                       "
 echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start                                             "
-echo "$text_md   tool-install       |  install upgrade dev-upgrade devmini-upgrade howto-upgrade clean-tmp          "
+echo "$text_md   tool-install       |  install upgrade devfull-upgrade devmini-upgrade howto-upgrade clean-tmp      "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                       "
 echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                              "
 echo "$text_md   tool-computer      |  pc-halt pc-shutdown pc-reboot                                                "
@@ -2901,7 +2903,7 @@ echo "$text_md    tool-util         | weather md5sum gpg-notes                  
 echo "$text_md    tool-pdf          | pdf-resize pdf-unite pdf-separate                                 "
 echo "$text_md    tool-mp3          | radio-mp3 radio-cadena100 radio-rockfm                            "
 echo "$text_md    tool-qemu         | qemu-status qemu-stop qemu-start                                  "
-echo "$text_md    tool-install      | install howto-upgrade upgrade dev-upgrade devmini-upgrade         "
+echo "$text_md    tool-install      | install howto-upgrade upgrade devmini-upgrade devfull-upgrade     "
 echo "$text_md    tool-addblock     | addblock-list addblock-on addblock-off                            "
 echo "$text_md    tool-dev          | new-versions dev-version dev-changes code                         "
 echo "$text_md    tool-computer     | pc-halt pc-shutdown pc-reboot                                     "
@@ -4016,12 +4018,12 @@ echo "$text_md $tab_lang_spanish          : Muestra como actualizar a la ultima 
 echo "$text_md $tab upgrade"
 echo "$text_md $tab_lang_english          : Upgrade at the latest stable version"
 echo "$text_md $tab_lang_spanish          : Actualiza a la ultima estable version"
-echo "$text_md $tab dev-upgrade"
-echo "$text_md $tab_lang_english          : Upgrade at the latest git complete-version"
-echo "$text_md $tab_lang_spanish          : Actualiza a la ultima git completa-version"
+echo "$text_md $tab devfull-upgrade"
+echo "$text_md $tab_lang_english          : Upgrade at the latest git developer version"
+echo "$text_md $tab_lang_spanish          : Actualiza a la ultima git developer version"
 echo "$text_md $tab devmini-upgrade"
-echo "$text_md $tab_lang_english          : Upgrade at the latest git mini-version"
-echo "$text_md $tab_lang_spanish          : Actualiza a la ultima git mini-version"
+echo "$text_md $tab_lang_english          : Upgrade at the latest git stable version"
+echo "$text_md $tab_lang_spanish          : Actualiza a la ultima git stable version"
 echo "$text_md $tab clean-tmp"
 echo "$text_md $tab_lang_english          : Remove temporal files of $cmd_binary"
 echo "$text_md $tab_lang_spanish          : Borra archivos temporales of $cmd_binary"
@@ -4133,6 +4135,18 @@ echo "$text_md $tab_lang_spanish           : Muestra la suma md5sum de un archiv
 echo "$text_md $tab gpg-notes"
 echo "$text_md $tab_lang_english           : Write and reewrite notes with crypto"
 echo "$text_md $tab_lang_spanish           : Escribe y reescribe notas con cifrado"
+echo "$text_md $tab radio-mp3"
+echo "$text_md $tab_lang_english           : Play un link mp3"
+echo "$text_md $tab_lang_spanish           : Reproduce un enlace mp3"
+echo "$text_md $tab radio-cadena100"
+echo "$text_md $tab_lang_english           : Play un link radio"
+echo "$text_md $tab_lang_spanish           : Reproduce un enlace de radio"
+echo "$text_md $tab radio-rockfm"
+echo "$text_md $tab_lang_english           : Play un link radio"
+echo "$text_md $tab_lang_spanish           : Reproduce un enlace de radio"
+echo "$text_md $tab radio-kissfm"
+echo "$text_md $tab_lang_english           : Play un link radio"
+echo "$text_md $tab_lang_spanish           : Reproduce un enlace de radio"
 exit; fi
 ####
 ####
@@ -11658,12 +11672,13 @@ echo "$text_md        qemu-start : Start one maquine virtual qemu"
 echo "$text_md"
 echo "$title_md         [ Tool Install ]"
 echo "$text_md"
-echo "$text_md         install : Install this program actual."
-echo "$text_md   howto-upgrade : Howto install the latest version."
-echo "$text_md         upgrade : Upgrade at the latest stable version."
-echo "$text_md     dev-upgrade : Upgrade at the latest git version."
-echo "$text_md       clean-tmp : Remove temporal files of fwiptables."
-echo "$text_md"
+echo "$text_md              install : Install this program actual."
+echo "$text_md        howto-upgrade : Howto install the latest version."
+echo "$text_md              upgrade : Upgrade at the latest stable version."
+echo "$text_md      devfull-upgrade : Upgrade at the latest git version developer."
+echo "$text_md      devmini-upgrade : Upgrade at the latest git version stable."
+echo "$text_md            clean-tmp : Remove temporal files of fwiptables."
+echo "$text_md" 
 echo "$title_md         [ Tool addblock ]"
 echo "$text_md"
 echo "$text_md  addblock-list : List options to block dangerous hosts."
@@ -12028,11 +12043,12 @@ echo "$text_md         qemu-stop : Para maquinas virtuales qemu"
 echo "$text_md"
 echo "$title_md [ Herramienta de instalacion ]."
 echo "$text_md"
-echo "$text_md        install : Instala este programa actual."
-echo "$text_md        upgrade : Actualiza a la ultima estable version."
-echo "$text_md    dev-upgrade : Actualiza a la ultima git version."
-echo "$text_md  howto-upgrade : Indicacion para actualizar."
-echo "$text_md      clean-tmp : borra archivos temporales de program."
+echo "$text_md             install : Instala este programa actual."
+echo "$text_md             upgrade : Actualiza a la ultima estable version."
+echo "$text_md     devmini-upgrade : Actualiza a la ultima git stable version."
+echo "$text_md     devfull-upgrade : Actualiza a la ultima git developer version."
+echo "$text_md       howto-upgrade : Indicacion para actualizar."
+echo "$text_md           clean-tmp : borra archivos temporales de program."
 echo "$text_md"
 echo "$title_md [ Herramienta de lista de bloqueo ]."
 echo "$text_md"
