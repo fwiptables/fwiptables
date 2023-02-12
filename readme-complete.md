@@ -1,5 +1,4 @@
-### || || [ ok ] || [ Date and Time ] [ vie 03 feb 2023 17:11:47 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.10 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.11 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                          
@@ -23,7 +22,8 @@
                              server-mail server-ftp server-teamspeak server-mumble server-sql             
                              server-asterisk server-squid                                                 
            options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        
-                             ip4 ip6 version notes depends license new-versions install uninstall         
+                             install uninstall devmini-upgrade devfull-upgrade upgrade                    
+                             ip4 ip6 version notes depends license new-versions                           
 ### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options-all ] ### || ||      
            /usr/bin/fwiptables-cmd options-state            |  Show all options to preferences manager        
            /usr/bin/fwiptables-cmd options-interface        |  Show all options to output interface           

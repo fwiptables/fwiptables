@@ -234,6 +234,7 @@ command_pdfseparate="$(command -v pdfseparate)"
 command_cvlc="$(command -v cvlc)"
 command_yad="$(command -v yad)"
 command_vlc="$(command -v vlc)"
+command_qmmp="$(command -v qmmp)"
 ####
 ####
 #### :rutina-final-command:
@@ -691,7 +692,8 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_music" == "$NULL" ]; then
-if [ "$command_vlc" != "$NULL" ]; then  favorite_graphicall_music="$command_vlc"     ; fi
+if [ "$command_qmmp" != "$NULL" ]; then  favorite_graphicall_music="$command_qmmp"  ; fi
+if [ "$command_vlc" != "$NULL" ]; then  favorite_graphicall_music="$command_vlc"    ; fi
 fi
 ####
 ####

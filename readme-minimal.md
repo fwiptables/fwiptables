@@ -1,5 +1,4 @@
-### || || [ ok ] || [ Date and Time ] [ vie 03 feb 2023 17:12:04 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.10 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.11 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]            
@@ -22,4 +21,5 @@
                             server-mail server-ftp server-teamspeak server-mumble server-sql             
                             server-asterisk server-squid                                                 
           options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        
-                            ip4 ip6 version notes depends license new-versions install uninstall         
+                            install uninstall devmini-upgrade devfull-upgrade upgrade                    
+                            ip4 ip6 version notes depends license new-versions                           

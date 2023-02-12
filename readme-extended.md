@@ -1,5 +1,4 @@
-### || || [ ok ] || [ Date and Time ] [ vie 03 feb 2023 17:11:38 CET ] || ||
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.10 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.11 ] |||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                          
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                           
@@ -43,7 +42,7 @@
         tool-pdf           |  pdf-resize pdf-unite pdf-separate                                            
         tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                       
         tool-qemu          |  qemu-status qemu-stop qemu-start                                             
-        tool-install       |  install upgrade dev-upgrade devmini-upgrade howto-upgrade clean-tmp          
+        tool-install       |  install upgrade devfull-upgrade devmini-upgrade howto-upgrade clean-tmp      
         tool-addblock      |  addblock-list addblock-on addblock-off                                       
         tool-dev           |  new-versions dev-version dev-changes code intro                              
         tool-computer      |  pc-halt pc-shutdown pc-reboot                                                
