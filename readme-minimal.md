@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.11 ] || ||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-mini minimal-6.12 ] || ||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-mini preferences-modify ] || ||
 ### || || [ ok ] || [ options-mini ] [ List mini options ] [ mini-options md ] || ||
     Launch: /usr/bin/fwiptables-mini [ -t|-txt -c|-cli -g|-gui -l|-log -n|-null ] first_option [ second_option ]            
@@ -20,6 +20,6 @@
                             server-vnc server-web server-samba server-print server-lamp server-news      
                             server-mail server-ftp server-teamspeak server-mumble server-sql             
                             server-asterisk server-squid                                                 
-          options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        
-                            install uninstall devmini-upgrade devfull-upgrade upgrade                    
+           options-state |  preferences-read preferences-modify preferences-regen filelog autolog        
+                            install uninstall actualmini-upgrade actualfull-upgrade                      
                             ip4 ip6 version notes depends license new-versions                           

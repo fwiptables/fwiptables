@@ -1,4 +1,4 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.11 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.12 ] |||
 ### || || [ ok ] || [ Configure ] [ Configure: /usr/bin/fwiptables-cmd preferences-modify ] || ||
 ### || || [ ok ] || [ mini-options ] [ List mini options ] [ options-mini md ] || ||
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                          
@@ -21,8 +21,8 @@
                              server-vnc server-web server-samba server-print server-lamp server-news      
                              server-mail server-ftp server-teamspeak server-mumble server-sql             
                              server-asterisk server-squid                                                 
-           options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        
-                             install uninstall devmini-upgrade devfull-upgrade upgrade                    
+            options-state |  preferences-read preferences-modify preferences-regen filelog autolog        
+                             install uninstall actualmini-upgrade actualfull-upgrade                      
                              ip4 ip6 version notes depends license new-versions                           
 ### || ||  [ Options ]  ### [  Show all posible option: /usr/bin/fwiptables-cmd options-all ] ### || ||      
            /usr/bin/fwiptables-cmd options-state            |  Show all options to preferences manager        

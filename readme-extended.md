@@ -1,8 +1,8 @@
-### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.11 ] |||
+### || || [ ok ] || [ Firewall ] [ Program: fwiptables-cmd complete-6.12 ] |||
 ### || || [ ok ] || [ options-all ] [ List full options ] [ full-options md ] || ||
 ### || ||  [ options-interface ]  || ||  ### ###                                                          
      Launch: /usr/bin/fwiptables-cmd [-cli-menu -gui-menu -gui-roll -gui-shell                                           
-    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]          
+     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]         
 ### || ||  [ options-firewall ]  || ||  ### ###                                                           
         firewall-control   |  stop continue reset names actual show save load                              
        firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          
@@ -42,7 +42,7 @@
         tool-pdf           |  pdf-resize pdf-unite pdf-separate                                            
         tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                       
         tool-qemu          |  qemu-status qemu-stop qemu-start                                             
-        tool-install       |  install upgrade devfull-upgrade devmini-upgrade howto-upgrade clean-tmp      
+        tool-install       |  install clean-tmp actualmini-upgrade actualfull-upgrade                      
         tool-addblock      |  addblock-list addblock-on addblock-off                                       
         tool-dev           |  new-versions dev-version dev-changes code intro                              
         tool-computer      |  pc-halt pc-shutdown pc-reboot                                                
