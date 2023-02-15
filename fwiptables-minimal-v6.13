@@ -403,6 +403,7 @@ allow_showtime="no"                    ## fwiptables-file-default ## void or no
 ####       #### spanish: configura un establecido comando o vacio para comando automatico
 favorite_text_editor=""          ## fwiptables-file-default ## void or command
 favorite_text_dialog=""          ## fwiptables-file-default ## void or command
+favorite_graphicall_dialog=""    ## fwiptables-file-default ## void or command
 favorite_text_browser=""         ## fwiptables-file-default ## void or command
 #### #### english: look  #### spanish: apariencia
 graphic_dimension="--width=950 --height=650"   ## fwiptables-file-default ## default: "--width=950 --height=650"
