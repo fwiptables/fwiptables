@@ -1256,42 +1256,7 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-##########       english: upgrade: upgrade in the file /usr/bin/fwiptables        ##########
-##########       spanish: upgrade: actualiza en el archivo /usr/bin/fwiptables    ##########
-#### :rutina-inicial-upgrade:
-####
-####
-if   [ "$first_option" == "upgrade" ]; then echo $give_cover
-echo "$header_ok [ $first_option ] [ upgrade latest version from web ] [ upgrade md ] || ||"
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at latest version from sourceforge.net web ]"
-case "$favorite_text_browser" in
-"$NULL")echo "$duo_md [ notice  ] [ install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
-echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
-echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
-####
-####
-####  English: download fwiptables
-####  Spanish: descarga fwiptables
-####
-####
-echo "$duo_md [ info ] [ download ] [ $url_web_latest ]"
-echo "$duo_md [ info ] [ download ] [ waiting several seconds .. ]"
-$favorite_text_browser -source "$url_web_latest" &> "$directory_temporal/$cmd_config-upgrader" || echo "[ fail ] [ disconnected ]"
-chmod ugo+rwx "$directory_temporal/$cmd_config-upgrader" &> /dev/null
-####
-####
-#### English: launch install
-#### Spanish: lanza instalacion
-####
-####
-if [ -f "$directory_temporal/$cmd_config-upgrader" ] ;
-then echo "$duo_md [  ok  ] [ download ] [ downloaded $cmd_config latest version ]"
-$directory_temporal/$cmd_config-upgrader install ; 
-else echo "$duo_md [ fail ] [ install fail ]"; fi
-exit ; fi
-####
-####
-#### :rutina-final-upgrade:
+
 ##########    english: devfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
 ##########    spanish: devfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
 #### :rutina-inicial-devfull-upgrade:
