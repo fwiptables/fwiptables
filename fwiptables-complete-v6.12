@@ -2840,7 +2840,7 @@ if   [ "$first_option" == "options-all" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ List full options ] [ full-options md ] || ||"
 echo "$duo_md || ||  [ options-interface ]  || ||  ### ###                                                          "
 echo "     Launch: $zero_option [-cli-menu -gui-menu -gui-roll -gui-shell                                           "
-echo "    -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]          "
+echo "     -t|-txt -c|-cli -g|-gui -w|-web -h|-help -i|-info -l|-log -n|-null] first_option [second_option]         "
 echo "$duo_md || ||  [ options-firewall ]  || ||  ### ###                                                           "
 echo "$text_md   firewall-control   |  stop continue reset names actual show save load                              "
 echo "$text_md  firewall-conceptual |  ls4 ls6 list4 list6 status list-alltables list-filter4 list-filter6          "
