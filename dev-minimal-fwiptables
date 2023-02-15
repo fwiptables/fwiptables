@@ -472,6 +472,8 @@ url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables
 url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v6" ;
 url_web_fulldevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
+url_web_actualfull="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-actual/download" ;
+url_web_actualmini="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-actual/download" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
@@ -2711,8 +2713,8 @@ echo "$text_md                          client-tor client-ftp client-squid lan-t
 echo "$text_md                          server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                          server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                          server-asterisk server-squid                                                 "
-echo "$text_md        options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                          install uninstall devmini-upgrade devfull-upgrade upgrade                    "
+echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog        "
+echo "$text_md                          install uninstall actualmini-upgrade actualfull-upgrade                      "
 echo "$text_md                          ip4 ip6 version notes depends license new-versions                           "
 exit ; fi
 ####
@@ -4280,6 +4282,80 @@ exit ; fi
 ####
 ####
 #### :rutina-final-upgrade:
+##########    english: actualfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: actualfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-actualfull-upgrade:
+####
+####
+if   [ "$first_option" == "actualfull-upgrade" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
+$favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-actualfull-upgrade:
+##########    english: actualmini-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: actualmini-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-actualmini-upgrade:
+####
+####
+if   [ "$first_option" == "actualmini-upgrade" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
+$favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-actualmini-upgrade:
 ##########    english: devfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
 ##########    spanish: devfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
 #### :rutina-inicial-devfull-upgrade:

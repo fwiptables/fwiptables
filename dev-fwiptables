@@ -448,6 +448,8 @@ url_complete_files="https://sourceforge.net/projects/f-iptables/files/fwiptables
 url_minimal_files="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-v6" ;
 url_web_fulldevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-fwiptables?format=raw" ;
 url_web_minidevelopment="https://sourceforge.net/p/f-iptables/code/ci/master/tree/dev-minimal-fwiptables?format=raw" ;
+url_web_actualfull="https://sourceforge.net/projects/f-iptables/files/fwiptables-complete-actual/download" ;
+url_web_actualmini="https://sourceforge.net/projects/f-iptables/files/fwiptables-minimal-actual/download" ;
 url_web_tree="https://sourceforge.net/p/f-iptables/code/ci/master/tree/" ;
 url_web_git="https://git.code.sf.net/p/f-iptables/code f-iptables-code" ;
 flicense="Copyleft, without warranty, gnu license GPL v2."
@@ -692,8 +694,8 @@ fi
 ####
 ####
 if [ "$favorite_graphicall_music" == "$NULL" ]; then
-if [ "$command_qmmp" != "$NULL" ]; then  favorite_graphicall_music="$command_qmmp"  ; fi
 if [ "$command_vlc" != "$NULL" ]; then  favorite_graphicall_music="$command_vlc"    ; fi
+if [ "$command_qmmp" != "$NULL" ]; then  favorite_graphicall_music="$command_qmmp"  ; fi
 fi
 ####
 ####
@@ -1364,6 +1366,81 @@ exit ; fi
 ####
 ####
 #### :rutina-final-devmini-upgrade:
+
+##########    english: actualfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: actualfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-actualfull-upgrade:
+####
+####
+if   [ "$first_option" == "actualfull-upgrade" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
+$favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-actualfull-upgrade:
+##########    english: actualmini-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
+##########    spanish: actualmini-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
+#### :rutina-inicial-actualmini-upgrade:
+####
+####
+if   [ "$first_option" == "actualmini-upgrade" ]; then echo $give_cover
+echo "$header_ok [ $first_option ] [ upgrade development version from web ] [ upgrade md ] || ||"
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade $cmd_config at development version from sourceforge.net git ]"
+case "$favorite_text_browser" in "$NULL") echo "$duo_md [ notice  ] [ Install a text web browser for upgrade $cmd_binary ]"; exit ;; esac
+echo "$duo_md [ info ] [ upgrade  ] [ upgrade The $cmd_config in file /usr/bin/fwiptables-cmd with $favorite_text_browser command ]"
+echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $favorite_text_browser browser ]"
+####
+####
+####  English: download fwiptables
+####  Spanish: descarga fwiptables
+####
+####
+echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
+$favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
+chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
+####
+####
+#### English: launch install
+#### Spanish: lanza instalacion
+####
+####
+if [ -s "$directory_temporal/$cmd_config-installer" ] ;
+then echo "$duo_md [  ok  ] [ downloaded $cmd_config mini developer version ]" ;
+$directory_temporal/$cmd_config-installer install ; 
+else echo "$duo_md [ fail ] [ install fail ]"; fi ;
+####
+####
+exit ; fi
+####
+####
+#### :rutina-final-actualmini-upgrade:
 ##########   english: regen-config: regen-config template wizard files       ##########
 ##########   spanish: regen-config: regen-configera template wizard archivos ##########
 #### :rutina-inicial-regen-config:
@@ -2739,8 +2816,8 @@ echo "$text_md                        client-tor client-ftp client-squid lan-tor
 echo "$text_md                        server-vnc server-web server-samba server-print server-lamp server-news      "
 echo "$text_md                        server-mail server-ftp server-teamspeak server-mumble server-sql             "
 echo "$text_md                        server-asterisk server-squid                                                 "
-echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog        "
-echo "$text_md                        install uninstall devmini-upgrade devfull-upgrade upgrade                    "
+echo "$text_md       options-state |  preferences-read preferences-modify preferences-regen filelog autolog        "
+echo "$text_md                        install uninstall actualmini-upgrade actualcomplete-upgrade                  "
 echo "$text_md                        ip4 ip6 version notes depends license new-versions                           "
 echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
 echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manager        "
@@ -2803,7 +2880,7 @@ echo "$text_md   tool-util          |  weather md5sum gpg-notes                 
 echo "$text_md   tool-pdf           |  pdf-resize pdf-unite pdf-separate                                            "
 echo "$text_md   tool-mp3           |  radio-mp3 radio-cadena100 radio-rockfm                                       "
 echo "$text_md   tool-qemu          |  qemu-status qemu-stop qemu-start                                             "
-echo "$text_md   tool-install       |  install upgrade devfull-upgrade devmini-upgrade howto-upgrade clean-tmp      "
+echo "$text_md   tool-install       |  install clean-tmp actualcomplete-upgrade actualmini-upgrade                  "
 echo "$text_md   tool-addblock      |  addblock-list addblock-on addblock-off                                       "
 echo "$text_md   tool-dev           |  new-versions dev-version dev-changes code intro                              "
 echo "$text_md   tool-computer      |  pc-halt pc-shutdown pc-reboot                                                "
@@ -2872,7 +2949,8 @@ if   [ "$first_option" == "options-state" ] ; then echo $give_cover
 echo "$title_md [ $first_option ] [ List state options ] [ options-state md ]"
 echo "$title_md                                  | options-state |                          "
 echo "$text_md      options-state  |  preferences-read preferences-modify preferences-regen filelog autolog  "
-echo "$text_md                        ip4 ip6 version notes depends license new-versions install uninstall   "
+echo "$text_md                        install uninstall actualmini-upgrade actualcomplete-upgrade            "
+echo "$text_md                        ip4 ip6 version notes depends license new-versions                     "
 echo "$text_md"
 echo "$text_md   | Group | options-interface | options-firewall | options-state | options-tool | options-show | options-help   "
 exit ; fi
@@ -4522,7 +4600,7 @@ echo "$title_md [ Automatic favorites ]"
 echo "$text_md Automatic text editor:    Text editor command      :   $favorite_text_editor"
 echo "$text_md Automatic text browser:   Text browser command     :   $favorite_text_browser"
 echo "$text_md Automatic text music:     music console command    :   $favorite_text_music"
-echo "$text_md Automatic text music:     music graphicall command :   $favorite_grahpicall_music"
+echo "$text_md Automatic text music:     music graphicall command :   $favorite_graphicall_music"
 echo "$text_md Automatic text date:      date client command      :   $favorite_date_command"
 echo "$text_md Automatic text dhcp:      dhcp client command      :   $favorite_dhcp_command" 
 echo 
