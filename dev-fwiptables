@@ -363,16 +363,23 @@ radio_mp3="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ##
 radio_cadena100="http://cadena100-cope-rrcast.flumotion.com/cope/cadena100.mp3" ;   ## fwiptables-file-default ## streaming url
 radio_rockfm="http://flucast-b02-06.flumotion.com/cope/rockfm.mp3" ;  ## fwiptables-file-default ## streaming url
 radio_kissfm="http://kissfm.kissfmradio.cires21.com/kissfm.mp3" ;  ## fwiptables-file-default ## streaming url
-####       #### english: configure a one stablished command or void for automatic command
-####       #### spanish: configura un establecido comando o vacio para comando automatico
-favorite_text_editor=""          ## fwiptables-file-default ## void or command
-favorite_text_dialog=""          ## fwiptables-file-default ## void or command
-favorite_graphicall_dialog=""    ## fwiptables-file-default ## void or command
-favorite_text_browser=""         ## fwiptables-file-default ## void or command
-favorite_date_command=""         ## fwiptables-file-default ## void or command
-favorite_dhcp_command=""         ## fwiptables-file-default ## void or command
-favorite_text_music=""           ## fwiptables-file-default ## void or command
-favorite_graphicall_music=""     ## fwiptables-file-default ## void or command
+####       #### english: void for automatic command #### spanish: vacio para comando automatico
+#### favorite_text_editor        ... for example nano
+favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or dialog or whiptail
+#### favorite_text_dialog        .... or dialog or whiptail
+favorite_text_dialog=""          ## fwiptables-file-default ## or void for autoamtic or zenity or yad
+#### favorite_graphicall_dialog  ... or zenity or yad
+favorite_graphicall_dialog=""    ## fwiptables-file-default ## or void for autoamtic or command
+#### favorite_text_brwoser       ... for example elinks
+favorite_text_browser=""         ## fwiptables-file-default ## or void for autoamtic or command
+#### favorite_date_command       ... for example ntpdate
+favorite_date_command=""         ## fwiptables-file-default ## or void for autoamtic or command
+#### favorite_dhcp_command       ... for example dhcpcd-client     
+favorite_dhcp_command=""         ## fwiptables-file-default ## or void for autoamtic or command
+#### favorite_text_music         ... for example mpg123
+favorite_text_music=""           ## fwiptables-file-default ## or void for autoamtic or command
+#### favorite_text_editor        ,,, for example vlc
+favorite_graphicall_music=""     ## fwiptables-file-default ## or void for autoamtic or command
 #### #### variables to modify for qemu
 qemu_name="Qemu VM"						 ## fwiptables-file-default ## variable qemu
 memory_ram="1500M"						 ## fwiptables-file-default ## variable qemu
