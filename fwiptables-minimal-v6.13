@@ -399,8 +399,6 @@ allow_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: show date and show time
 ####       #### spanish: muestra la fecha y el tiempo
 allow_showtime="no"                    ## fwiptables-file-default ## void or no
-####       #### english: configure a one stablished command or void for automatic command
-####       #### spanish: configura un establecido comando o vacio para comando automatico
 ####       #### english: void for automatic command #### spanish: vacio para comando automatico
 #### favorite_text_editor        ... for example nano
 favorite_text_editor=""          ## fwiptables-file-default ## or void for autoamtic or dialog or whiptail
