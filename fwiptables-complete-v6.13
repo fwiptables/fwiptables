@@ -1256,7 +1256,6 @@ exit; fi
 ####
 ####
 #### :rutina-final-install:
-
 ##########    english: devfull-upgrade: upgrade in the file /usr/bin/fwiptables       ##########
 ##########    spanish: devfull-upgrade: actualiza en el archivo /usr/bin/fwiptables   ##########
 #### :rutina-inicial-devfull-upgrade:
@@ -10729,10 +10728,9 @@ exit; fi
 if   [ "$first_option" == "new-versions" ]; then echo $give_cover
 echo "$header_ok [ $first_option ] [ show the versions in the web ] || ||"
 echo
+echo "$duo_md [ info ] [ new versions ]"
 echo "$duo_md [ info ] [ latest version ] [ $url_web_latest ]"
-echo
-echo "$duo_md [ info ] [ Show the index version ]"
-echo "$duo_md [ info ] [ $url_index_files ]"
+echo "$duo_md [ info ] [ index version  ] [ $url_index_files ]"
 echo
 $cmd_binary index-versions
 echo
