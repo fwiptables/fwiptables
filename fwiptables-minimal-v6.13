@@ -1106,8 +1106,8 @@ if [ "$public_ip6" == "<!DOCTYPE html>" ] ; then echo "fail: public ip hidden fo
 else echo "$tab $public_ip6"; fi; fi
 echo
 echo "$duo_md [ info ] ### [ Proxy ip ] [ Address proxy ] ###"
-echo "$duo_md [ info ] Proxy http:    $http_proxy"
-echo "$duo_md [ info ] Proxy https:   $https_proxy"
+echo " [ info ] Proxy http:    $http_proxy"
+echo " [ info ] Proxy https:   $https_proxy"
 echo
 echo "$duo_md [ info ] ### [ domain resolve ] [ Resolv.conf ] ###"
 if [ -f /etc/resolv.conf.head ]; then echo ; echo "$duo_md [ info ] [ /etc/resolv.conf.head ]";  cat /etc/resolv.conf.head; fi
