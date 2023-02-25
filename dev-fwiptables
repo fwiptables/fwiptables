@@ -2788,7 +2788,7 @@ echo "$text_md                          server-web server-print server-lamp serv
 echo "$text_md                          server-teamspeak server-mumble server-sql server-asterisk server-squid           "
 echo "$text_md         options-state |  preferences-read preferences-modify preferences-regen filelog autolog ip4 ip6    "
 echo "$text_md                          version notes depends license new-versions install uninstall actualfull-upgrade  "
-echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options-all ] ### || ||      "
+echo "$duo_md || ||  [ Options ]  ### [  Show all posible option: $cmd_binary options ] ### || ||          "
 echo "$text_md      $cmd_binary options-state            |  Show all options to preferences manager        "
 echo "$text_md      $cmd_binary options-interface        |  Show all options to output interface           "
 echo "$text_md      $cmd_binary options-firewall         |  Show all options to firewall manage            "
