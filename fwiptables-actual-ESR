@@ -6,7 +6,7 @@
 #### #### #### #### #!/bin/zsh
 #### #### #### #### emulate -L bash
 ####
-#### File:        fwiptables-mini
+#### File:        fwiptables-esr
 #### Description: Mini Fran FireWall fwiptables Generator
 #### Author:      Francisco Garcia <fwiptables@gmx.com>
 #### Copyright:   (c) 2020-2023 Francisco Garcia <fwiptables@gmx.com>
@@ -60,9 +60,9 @@ exit ; fi
 ####
 ####
 cmd_binary="$0" ;
-cmd_config="fwiptables-mini" ;
-cmd_version="minimal-6.14" ;
-cmd_name="Fran Mini FireWall FWiptables Generator" ;
+cmd_config="fwiptables-esr" ;
+cmd_version="ESR-6.14" ;
+cmd_name="Fran Edittion Stable Release FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
 cmd_homepage="https://sourceforge.net/projects/f-iptables/" ;
