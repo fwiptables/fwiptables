@@ -61,7 +61,7 @@ exit ; fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-esr" ;
-cmd_version="ESR-6.14" ;
+cmd_version="ESR-6.13" ;
 cmd_name="Fran Edittion Stable Release FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
