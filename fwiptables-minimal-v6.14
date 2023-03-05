@@ -395,7 +395,7 @@ config_shield_maxtries="10"                   ## fwiptables-file-default ## void
 config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or REJECT
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
-allow_autolog=""                    ## fwiptables-file-default ## void or no
+allow_save_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: show date and show time
 ####       #### spanish: muestra la fecha y el tiempo
 allow_showtime="no"                    ## fwiptables-file-default ## void or no
@@ -896,7 +896,7 @@ exit ; fi
 #### :rutina-inicial-allow-autolog:
 ####
 ####
-if [ "$allow_autolog" != "no" ]; then 
+if [ "$allow_save_autolog" != "no" ]; then 
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 echo $head_autolog >> $default_autolog ; fi
 ####

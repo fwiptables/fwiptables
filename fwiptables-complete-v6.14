@@ -311,7 +311,7 @@ server_udp="" ;
 ####
 ####
 ####    allow_legacy="" ; allow_nft="" ; allow_ipv4="" ; allow_ipv6="" ; config_shield_maxtries="20" ; config_shield_port="22" ;
-####    allow_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
+####    allow_save_autolog="" ; server_waiting="9s" ; server_ping_ipv4="fast.com" ; server_ping_ipv6="fast.com" ;
 ####    serverip_iperf_ipv4="ping.online.net" ; serverport_iperf_ipv4="5001" ; serverip_iperf_ipv6="ping6.online.net" ; serverport_iperf_ipv6="5001" ;
 ####    graphic_dimension="--width=950 --height=650" ; 
 ####
@@ -336,7 +336,7 @@ config_shield_maxtries="10"                 ## fwiptables-file-default ## void o
 config_close_deny="DROP"                   ## fwiptables-file-default ## DROP or REJECT 
 ####       #### english: auto log from command input
 ####       #### spanish: automatico log de linea introducida
-allow_autolog=""                    ## fwiptables-file-default ## void or no
+allow_save_autolog=""                    ## fwiptables-file-default ## void or no
 ####       #### english: auto time in command
 ####       #### spanish: automatico fecha de linea
 allow_showtime="no"                    ## fwiptables-file-default ## void or no
@@ -1149,7 +1149,7 @@ exit ; fi
 #### :rutina-inicial-allow-autolog:
 ####
 ####
-if [ "$allow_autolog" != "no" ]; then 
+if [ "$allow_save_autolog" != "no" ]; then 
 head_autolog="[ $cmd_binary ] [ $cmd_version ] [ $(date) ] [ $first_option $second_option $third_option ]"
 echo $head_autolog >> $default_autolog ; fi
 ####
