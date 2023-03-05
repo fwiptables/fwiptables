@@ -907,6 +907,7 @@ exit; fi
 ####
 if [ "$first_option" == "-cli" ]
 then echo "$head_waiting_cli"
+if [ "$favorite_text_dialog" == "$NULL" ]; then "### [ info ] Please install or dialog or whiptail to work with cli"; exit; fi
 case "$second_option" in
 wizard-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $cmd_binary $second_option $third_option ;  exit ;;
@@ -931,8 +932,8 @@ clear; $cmd_binary log-search $pattern ; exit ;;
 log-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 fw-*)  echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
 "hosts") echo "$message_without_cli" ; $cmd_binary hosts ; exit ;;
-*) dialog --title "  Cli Output || $cmd_binary ||" \
---msgbox "$($cmd_binary $second_option $third_option)" 0 0 ;  clear ; exit ;;
+*) $favorite_text_dialog --clear --notags --title "Cli With $cmd_version" \
+--msgbox "$($cmd_binary $second_option $third_option)" 0 0 0  ; exit ;;
 ####
 ####
 esac ; fi

@@ -806,6 +806,7 @@ exit; fi
 ####
 if [ "$first_option" = "-cli" ]
 then echo "$head_waiting_cli"
+if [ "$favorite_text_dialog" == "$NULL" ]; then "### [ info ] Please install or dialog or whiptail to work with cli";  exit; fi
 case "$second_option" in
 wizard-*) echo "$message_without_cli" ; $zero_option $second_option $third_option ;  exit ;;
 "nueva-mini-config")  $zero_option $second_option $third_option ;  exit ;;
