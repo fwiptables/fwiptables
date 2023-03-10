@@ -932,7 +932,7 @@ clear; $cmd_binary log-search $pattern ; exit ;;
 log-*) echo "$message_without_cli" ; $cmd_binary $second_option $third_option ;  exit ;;
 fw-*)  echo "$message_without_cli" ; $cmd_binary $second_option $third_option  ;  exit ;;
 "hosts") echo "$message_without_cli" ; $cmd_binary hosts ; exit ;;
-*) $favorite_text_dialog --clear --notags --title "Cli With $cmd_version" \
+*)$favorite_text_dialog --clear --notags --title "Cli With $cmd_version" \
 --msgbox "$($cmd_binary $second_option $third_option)" 0 0 0  ; exit ;;
 ####
 ####
@@ -1356,7 +1356,7 @@ echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
@@ -1393,7 +1393,7 @@ echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_actualmini ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null

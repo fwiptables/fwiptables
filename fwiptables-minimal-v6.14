@@ -4272,7 +4272,7 @@ echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_actualfull ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualfull &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
@@ -4309,7 +4309,7 @@ echo "$duo_md [ info ] [ download ] [ downloading $cmd_config with the command $
 ####  Spanish: descarga fwiptables
 ####
 ####
-echo "$duo_md [ info ] [ download ] [ $url_web_minidevelopment ]"
+echo "$duo_md [ info ] [ download ] [ $url_web_actualmini ]"
 echo "$duo_md [ info ] [ download ] [ Waiting several seconds .. ]"
 $favorite_text_browser -source $url_web_actualmini &> $directory_temporal/$cmd_config-installer || echo "[ fail ] [ disconnected ]"
 chmod ugo+rwx $directory_temporal/$cmd_config-installer &> /dev/null
