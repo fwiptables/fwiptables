@@ -213,9 +213,6 @@ if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /de
 if [ ! -f "$default_preferences" ]; then $0 preferences-regen &> /dev/null ; fi
 ####
 ####
-if [ -f "$default_preferences" ]; then source "$default_preferences" ; fi
-####
-####
 #### :rutina-final-dir-sane:
 ##########   english: search programs: programs path           ##########
 ##########   spanish: busca los programas: ruta de programas   ##########
@@ -507,7 +504,10 @@ default_security="mini-options"
 ####     #### spanish: lanza default para actualizar variables
 ####
 ####
-if [ -f "$default_preferences" ]; then source $default_preferences ; fi
+####
+####
+if [ ! -f "$default_preferences" ]; then touch $default_preferences ; $cmd_binary preferences-regen ; fi
+if [ -f "$default_preferences"   ]; then source $default_preferences   ; fi
 ####
 ####
 ####  realice sane very important variables post by default_preferences
@@ -1038,7 +1038,7 @@ if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
 echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
 echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -500 $0 | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
+echo "$(head -400 $cmd_binary | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
 echo "$duo_md [  ok  ] [ Updated values for default in $default_preferences ]"
 exit; fi
 ####
