@@ -40,6 +40,16 @@
 ####   Email: fwiptables@gmx.com
 ####
 ####
+#####################################################################################
+#####################################################################################
+####
+####
+####     #### english: stablished the path        #### spanish: establece el path
+####
+####
+PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
+####
+####
 ##########    english: are you root: uid 0 ?                ##########
 ##########    spanish: eres admnistrador: identificador 0 ? ##########
 #### :rutina-inicial-admin:
@@ -61,6 +71,8 @@ exit ; fi
 ####
 command_iptables_legacy="$(command -v iptables-legacy)"
 command_iptables_nft="$(command -v iptables-nft)"
+####
+####
 if [ "$command_iptables_legacy" == "$NULL" ] || [ "$command_iptables_nft" == "$NULL" ] ; then echo
 echo
 echo "### [ info ] [ fwiptables needs iptables legacy and iptables nft to work ]"
@@ -126,11 +138,6 @@ quad_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 ##########   spanish: profile y soporte de X11    ##########
 #### :rutina-inicial-x11:
 ####
-####
-####     #### english: stablished the path        #### spanish: establece el path
-####
-####
-PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
 ####
 ####     #### english: add auth xhost for root for graphicall use 
 ####     #### spanish: añade autorización xhost para root para uso grafico
