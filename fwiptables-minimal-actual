@@ -89,7 +89,7 @@ fi
 ####
 cmd_binary="$0" ;
 cmd_config="fwiptables-mini" ;
-cmd_version="minimal-6.16" ;
+cmd_version="minimal-6.17" ;
 cmd_name="Fran Mini FireWall FWiptables Generator" ;
 cmd_description="One Mini Script in bash for iptables firewall" ;
 cmd_license="GPL v2" ;
@@ -123,27 +123,25 @@ quarter_option="$(echo $4 | $command_sed s/\\///g -)"  ;
 #### :rutina-inicial-x11:
 ####
 ####
-####     #### english: program version            #### spanish: Version del programa
-####     #### english: launch profile             #### spanish: lanza profile
+####     #### english: add auth xhost for root for graphicall use 
+####     #### spanish: añade autorización xhost para root para uso grafico
 ####
 ####
-if [ -f /etc/profile ] ; then . /etc/profile ; fi
-####
-####     #### english: launch completion          #### spanish: lanza autocompletar
-####
-####
-#### if [ -f "/etc/bash_completion.d/$cmd_binary" ] ; then . /etc/bash_completion.d/$cmd_binary ; fi
+command_xhost="$(command -v xhost)" ; 
+$command_xhost +SI:localuser:root &> /dev/null ;
 ####
 ####
-####     #### english: stablished the path        #### spanish: establece el path
+#### deprecated
+## sudo -u "$(logname)" $command_xhost +SI:localuser:root &> /dev/null
+## sudo -u "$(logname)" command_xhost +root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +INET:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +INET6:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +DNET:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +KRB:root@127.0.0.1 &> /dev/null
+## sudo -u "$(logname)" command_xhost +NIS:root@127.0.0.1 &> /dev/null
 ####
 ####
-PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:$PATH"
-####
-####     #### english: add auth xhost for root    #### spanish: añade autorización xhost para root
-####     #### code for add xhost to root for graphicall use
-####
-####
+#### :rutina-final-x11:
 ##########  english: permanent files: files and folders from fwiptables          ##########
 ##########  spanish: archivos permanentes: archivos y carpetas desde fwiptables  ##########
 #### :rutina-inicial-files:
@@ -195,10 +193,6 @@ default_autolog="$directory_log/default_autolog"
 ####
 ##########    english: temporal files
 ##########    spanish: archivos temporales
-####
-####
-#### for tmp in /tmp  , old-use ,  then directory_temporal_path="/tmp/$cmd_binary-$cmd_version-tmp"
-#### for tmp in /root , new-use ,  then directory_temporal_path="$HOME/.$cmd_binary-$cmd_version-tmp"
 ####
 ####
 #### english: temporal directory
@@ -275,6 +269,7 @@ command_geoiplookup="$(command -v geoiplookup)"
 command_glxgears="$(command -v glxgears)"
 command_gpg="$(command -v gpg)"
 command_grep="$(command -v grep)"
+command_egrep="$(command -v egrep)"
 command_halt="$(command -v halt)"
 command_host="$(command -v host)"
 command_ifconfig="$(command -v ifconfig)"
@@ -534,7 +529,7 @@ default_security="mini-options"
 ####
 ####
 ####
-if [ ! -f "$default_preferences" ]; then touch $default_preferences ; $cmd_binary preferences-regen ; fi
+if [ ! -f "$default_preferences" ]; then touch $default_preferences    ; fi
 if [ -f "$default_preferences"   ]; then source $default_preferences   ; fi
 ####
 ####
@@ -1062,12 +1057,13 @@ exit; fi
 #### :rutina-inicial-preferences-regen:
 ####
 ####
-if [ "$first_option" = "preferences-regen" ] ; then echo $give_cover
+if [ "$first_option" == "preferences-regen" ] ; then echo $give_cover
 echo "$header_ok [ $first_option ] [ $cmd_binary preferences-regen ] [ preferences-regen md ] || ||"
-echo "$duo_md [ info ] [ $cmd_binary preferences-regen.. ]"
-echo "$($0 config-regen)"  &> /dev/null
-echo "$(head -400 $cmd_binary | $command_grep -B 2 fwiptables-file-default)" &> $default_preferences
-echo "$duo_md [  ok  ] [ Updated values for default in $default_preferences ]"
+rm $default_preferences
+echo "$duo_md [  ok  ] [ $cmd_binary deleted old configs ]"
+cat $cmd_binary | $command_grep fwiptables-file-default | $command_grep -iv cmd_binary &> $default_preferences
+echo "$duo_md [  ok  ] [ Regenerated: $cmd_binary values for default in ]"
+echo "$duo_md [  ok  ] [ Regenerated: $default_preferences ]"
 exit; fi
 ####
 ####
