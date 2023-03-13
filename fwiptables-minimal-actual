@@ -232,7 +232,6 @@ if [ ! -d "$directory_fwrecover" ]; then $command_mkdir -p "$directory_fwrecover
 if [ ! -d "$directory_default" ]; then $command_mkdir -p "$directory_default" &> /dev/null ; fi
 if [ ! -d "$directory_log" ]; then $command_mkdir -p "$directory_log" &> /dev/null ; fi
 if [ ! -d "$directory_shell" ]; then $command_mkdir -p "$directory_shell" &> /dev/null ; fi
-if [ ! -f "$default_preferences" ]; then $0 preferences-regen &> /dev/null ; fi
 ####
 ####
 #### :rutina-final-dir-sane:
@@ -529,8 +528,7 @@ default_security="mini-options"
 ####
 ####
 ####
-if [ ! -f "$default_preferences" ]; then touch $default_preferences    ; fi
-if [ -f "$default_preferences"   ]; then source $default_preferences   ; fi
+if [ -f "$default_preferences"   ]; then source $default_preferences ; else touch $default_preferences  ; fi
 ####
 ####
 ####  realice sane very important variables post by default_preferences
