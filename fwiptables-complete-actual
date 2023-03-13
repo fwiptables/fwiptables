@@ -78,7 +78,7 @@ echo
 echo "### [ info ] [ fwiptables needs iptables legacy and iptables nft to work ]"
 echo
 echo "### [ fail ] [ it needs iptables to works with fwiptables in your system ]"
-exit ; fi
+fi
 ####
 ####
 #### :rutina-final-iptables:
